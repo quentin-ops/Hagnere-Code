@@ -1,9 +1,11 @@
 "use client";
-import React from "react";
-import { IconMailFilled } from "@tabler/icons-react";
+import React, { useState, useRef, useCallback } from "react";
+import { IconMailFilled, IconSearch, IconLoader2, IconMicrophone, IconPlayerStop } from "@tabler/icons-react";
 import { useId } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { PhoneInput } from "@/components/ui/phone-input";
 
 export function ContactFormGridWithDetails() {
   return (
@@ -44,68 +46,552 @@ export function ContactFormGridWithDetails() {
           />
         </div>
       </div>
-      <div className="relative mx-auto flex w-full max-w-2xl flex-col items-start gap-4 overflow-hidden rounded-3xl bg-gradient-to-b from-gray-100 to-gray-200 p-4 sm:p-10 dark:from-neutral-900 dark:to-neutral-950">
-        <Grid size={20} />
-        <div className="relative z-20 mb-4 w-full">
-          <label
-            className="mb-2 inline-block text-sm font-medium text-neutral-600 dark:text-neutral-300"
-            htmlFor="name"
-          >
-            Nom complet
-          </label>
-          <input
-            id="name"
-            type="text"
-            placeholder="Jean Dupont"
-            className="shadow-input h-10 w-full rounded-md border border-transparent bg-white pl-4 text-sm text-neutral-700 placeholder-neutral-500 outline-none focus:ring-2 focus:ring-neutral-800 focus:outline-none active:outline-none dark:border-neutral-800 dark:bg-neutral-800 dark:text-white"
-          />
-        </div>
-        <div className="relative z-20 mb-4 w-full">
-          <label
-            className="mb-2 inline-block text-sm font-medium text-neutral-600 dark:text-neutral-300"
-            htmlFor="email"
-          >
-            Adresse email
-          </label>
-          <input
-            id="email"
-            type="email"
-            placeholder="contact@exemple.com"
-            className="shadow-input h-10 w-full rounded-md border border-transparent bg-white pl-4 text-sm text-neutral-700 placeholder-neutral-500 outline-none focus:ring-2 focus:ring-neutral-800 focus:outline-none active:outline-none dark:border-neutral-800 dark:bg-neutral-800 dark:text-white"
-          />
-        </div>
-        <div className="relative z-20 mb-4 w-full">
-          <label
-            className="mb-2 inline-block text-sm font-medium text-neutral-600 dark:text-neutral-300"
-            htmlFor="company"
-          >
-            Entreprise
-          </label>
-          <input
-            id="company"
-            type="text"
-            placeholder="Ma Société SAS"
-            className="shadow-input h-10 w-full rounded-md border border-transparent bg-white pl-4 text-sm text-neutral-700 placeholder-neutral-500 outline-none focus:ring-2 focus:ring-neutral-800 focus:outline-none active:outline-none dark:border-neutral-800 dark:bg-neutral-800 dark:text-white"
-          />
-        </div>
-        <div className="relative z-20 mb-4 w-full">
-          <label
-            className="mb-2 inline-block text-sm font-medium text-neutral-600 dark:text-neutral-300"
-            htmlFor="message"
-          >
-            Message
-          </label>
-          <textarea
-            id="message"
-            rows={5}
-            placeholder="Décrivez votre projet..."
-            className="shadow-input w-full rounded-md border border-transparent bg-white pt-4 pl-4 text-sm text-neutral-700 placeholder-neutral-500 outline-none focus:ring-2 focus:ring-neutral-800 focus:outline-none active:outline-none dark:border-neutral-800 dark:bg-neutral-800 dark:text-white"
-          />
-        </div>
-        <button className="relative z-10 flex items-center justify-center rounded-md border border-transparent bg-neutral-800 px-4 py-2 text-sm font-medium text-white shadow-[0px_1px_0px_0px_#FFFFFF20_inset] transition duration-200 hover:bg-neutral-900 md:text-sm">
-          Envoyer
-        </button>
-      </div>
+      <ContactForm />
+    </div>
+  );
+}
+
+// Voice Recorder Button Component
+function VoiceRecorderButton({
+  onTranscription,
+  disabled
+}: {
+  onTranscription: (text: string) => void;
+  disabled?: boolean;
+}) {
+  const [isRecording, setIsRecording] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
+
+  const startRecording = useCallback(async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const mediaRecorder = new MediaRecorder(stream, {
+        mimeType: MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : 'audio/mp4'
+      });
+
+      mediaRecorderRef.current = mediaRecorder;
+      chunksRef.current = [];
+
+      mediaRecorder.ondataavailable = (e) => {
+        if (e.data.size > 0) {
+          chunksRef.current.push(e.data);
+        }
+      };
+
+      mediaRecorder.onstop = async () => {
+        setIsProcessing(true);
+
+        const audioBlob = new Blob(chunksRef.current, {
+          type: mediaRecorder.mimeType
+        });
+
+        // Stop all tracks
+        stream.getTracks().forEach(track => track.stop());
+
+        try {
+          const formData = new FormData();
+          formData.append('audio', audioBlob, 'recording.webm');
+
+          const response = await fetch('/api/transcribe', {
+            method: 'POST',
+            body: formData,
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.text) {
+            onTranscription(data.text);
+          }
+        } catch (error) {
+          console.error('Transcription error:', error);
+        } finally {
+          setIsProcessing(false);
+        }
+      };
+
+      mediaRecorder.start();
+      setIsRecording(true);
+    } catch (error) {
+      console.error('Error accessing microphone:', error);
+    }
+  }, [onTranscription]);
+
+  const stopRecording = useCallback(() => {
+    if (mediaRecorderRef.current && isRecording) {
+      mediaRecorderRef.current.stop();
+      setIsRecording(false);
+    }
+  }, [isRecording]);
+
+  const toggleRecording = useCallback(() => {
+    if (isProcessing) return;
+
+    if (isRecording) {
+      stopRecording();
+    } else {
+      startRecording();
+    }
+  }, [isRecording, isProcessing, startRecording, stopRecording]);
+
+  return (
+    <button
+      type="button"
+      onClick={toggleRecording}
+      disabled={disabled || isProcessing}
+      className={cn(
+        "relative flex h-9 w-9 items-center justify-center rounded-lg transition",
+        "text-neutral-600 hover:bg-white hover:text-neutral-900",
+        "dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-white",
+        "disabled:opacity-50 disabled:cursor-not-allowed",
+        isRecording && "text-red-600 dark:text-red-500",
+        isProcessing && "text-blue-600 dark:text-blue-500"
+      )}
+      title={isRecording ? "Arrêter l'enregistrement" : "Dicter votre message"}
+    >
+      {/* Microphone icon (inactive state) */}
+      {!isRecording && !isProcessing && (
+        <IconMicrophone className="h-5 w-5" />
+      )}
+
+      {/* Stop icon (recording state) */}
+      {isRecording && !isProcessing && (
+        <IconPlayerStop className="h-5 w-5" />
+      )}
+
+      {/* Loading icon (processing state) */}
+      {isProcessing && (
+        <IconLoader2 className="h-5 w-5 animate-spin" />
+      )}
+
+      {/* Pulsing red dot (visible only during recording) */}
+      {isRecording && !isProcessing && (
+        <span className="absolute -top-1 -right-1 flex h-3 w-3">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+          <span className="relative inline-flex h-3 w-3 rounded-full bg-red-500"></span>
+        </span>
+      )}
+    </button>
+  );
+}
+
+function ContactForm() {
+  const [activeTab, setActiveTab] = useState("individual");
+
+  // Individual form state
+  const [individualForm, setIndividualForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  // Company form state
+  const [companyForm, setCompanyForm] = useState({
+    firstName: "",
+    lastName: "",
+    siren: "",
+    companyName: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const [sirenLoading, setSirenLoading] = useState(false);
+  const [sirenError, setSirenError] = useState("");
+  const [submitLoading, setSubmitLoading] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleSirenSearch = async () => {
+    if (!companyForm.siren) return;
+
+    setSirenLoading(true);
+    setSirenError("");
+
+    try {
+      const response = await fetch(`/api/sirene?siren=${companyForm.siren}`);
+      const data = await response.json();
+
+      if (!response.ok) {
+        setSirenError(data.error || "Erreur lors de la recherche");
+        return;
+      }
+
+      setCompanyForm((prev) => ({
+        ...prev,
+        companyName: data.companyName,
+      }));
+    } catch {
+      setSirenError("Erreur de connexion. Veuillez réessayer.");
+    } finally {
+      setSirenLoading(false);
+    }
+  };
+
+  const handleIndividualSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitLoading(true);
+    setSubmitError("");
+    setSubmitSuccess(false);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "individual",
+          ...individualForm,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setSubmitError(data.error || "Erreur lors de l'envoi");
+        return;
+      }
+
+      setSubmitSuccess(true);
+      setIndividualForm({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    } catch {
+      setSubmitError("Erreur de connexion. Veuillez réessayer.");
+    } finally {
+      setSubmitLoading(false);
+    }
+  };
+
+  const handleCompanySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitLoading(true);
+    setSubmitError("");
+    setSubmitSuccess(false);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "company",
+          ...companyForm,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setSubmitError(data.error || "Erreur lors de l'envoi");
+        return;
+      }
+
+      setSubmitSuccess(true);
+      setCompanyForm({
+        firstName: "",
+        lastName: "",
+        siren: "",
+        companyName: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    } catch {
+      setSubmitError("Erreur de connexion. Veuillez réessayer.");
+    } finally {
+      setSubmitLoading(false);
+    }
+  };
+
+  const handleIndividualTranscription = useCallback((text: string) => {
+    setIndividualForm((prev) => ({
+      ...prev,
+      message: prev.message ? `${prev.message} ${text}` : text,
+    }));
+  }, []);
+
+  const handleCompanyTranscription = useCallback((text: string) => {
+    setCompanyForm((prev) => ({
+      ...prev,
+      message: prev.message ? `${prev.message} ${text}` : text,
+    }));
+  }, []);
+
+  const inputClassName = "shadow-input h-10 w-full rounded-md border border-transparent bg-white pl-4 text-sm text-neutral-700 placeholder-neutral-500 outline-none focus:ring-2 focus:ring-neutral-800 focus:outline-none active:outline-none dark:border-neutral-800 dark:bg-neutral-800 dark:text-white";
+  const labelClassName = "mb-2 inline-block text-sm font-medium text-neutral-600 dark:text-neutral-300";
+
+  return (
+    <div className="relative mx-auto flex w-full max-w-2xl flex-col items-start gap-4 overflow-hidden rounded-3xl bg-gradient-to-b from-gray-100 to-gray-200 p-4 sm:p-10 dark:from-neutral-900 dark:to-neutral-950">
+      <Grid size={20} />
+
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="relative z-20 w-full">
+        <TabsList className="w-full mb-6">
+          <TabsTrigger value="individual" className="flex-1">Particulier</TabsTrigger>
+          <TabsTrigger value="company" className="flex-1">Entreprise</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="individual">
+          <form onSubmit={handleIndividualSubmit} className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className={labelClassName} htmlFor="firstName">
+                  Prénom *
+                </label>
+                <input
+                  id="firstName"
+                  type="text"
+                  placeholder="Jean"
+                  value={individualForm.firstName}
+                  onChange={(e) => setIndividualForm((prev) => ({ ...prev, firstName: e.target.value }))}
+                  className={inputClassName}
+                  required
+                />
+              </div>
+              <div>
+                <label className={labelClassName} htmlFor="lastName">
+                  Nom *
+                </label>
+                <input
+                  id="lastName"
+                  type="text"
+                  placeholder="Dupont"
+                  value={individualForm.lastName}
+                  onChange={(e) => setIndividualForm((prev) => ({ ...prev, lastName: e.target.value }))}
+                  className={inputClassName}
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className={labelClassName} htmlFor="individualEmail">
+                Adresse email *
+              </label>
+              <input
+                id="individualEmail"
+                type="email"
+                placeholder="contact@exemple.com"
+                value={individualForm.email}
+                onChange={(e) => setIndividualForm((prev) => ({ ...prev, email: e.target.value }))}
+                className={inputClassName}
+                required
+              />
+            </div>
+
+            <div>
+              <label className={labelClassName} htmlFor="individualPhone">
+                Téléphone
+              </label>
+              <PhoneInput
+                value={individualForm.phone}
+                onChange={(value) => setIndividualForm((prev) => ({ ...prev, phone: value || "" }))}
+              />
+            </div>
+
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <label className="text-sm font-medium text-neutral-600 dark:text-neutral-300" htmlFor="individualMessage">
+                  Message *
+                </label>
+                <VoiceRecorderButton
+                  onTranscription={handleIndividualTranscription}
+                  disabled={submitLoading}
+                />
+              </div>
+              <textarea
+                id="individualMessage"
+                rows={5}
+                placeholder="Décrivez votre projet..."
+                value={individualForm.message}
+                onChange={(e) => setIndividualForm((prev) => ({ ...prev, message: e.target.value }))}
+                className="shadow-input w-full rounded-md border border-transparent bg-white pt-4 pl-4 text-sm text-neutral-700 placeholder-neutral-500 outline-none focus:ring-2 focus:ring-neutral-800 focus:outline-none active:outline-none dark:border-neutral-800 dark:bg-neutral-800 dark:text-white"
+                required
+              />
+            </div>
+
+            {submitError && <p className="text-sm text-red-500">{submitError}</p>}
+            {submitSuccess && (
+              <div className="text-sm text-green-500 space-y-1">
+                <p className="font-medium">Message envoyé avec succès !</p>
+                <p className="text-green-600/80">Nous revenons vers vous d&apos;ici 24h ouvrées maximum par mail ou par téléphone. Pensez à consulter vos spams.</p>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={submitLoading}
+              className="relative z-10 flex items-center justify-center rounded-md border border-transparent bg-neutral-800 px-4 py-2 text-sm font-medium text-white shadow-[0px_1px_0px_0px_#FFFFFF20_inset] transition duration-200 hover:bg-neutral-900 disabled:opacity-50 disabled:cursor-not-allowed md:text-sm"
+            >
+              {submitLoading ? (
+                <>
+                  <IconLoader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Envoi en cours...
+                </>
+              ) : (
+                "Envoyer"
+              )}
+            </button>
+          </form>
+        </TabsContent>
+
+        <TabsContent value="company">
+          <form onSubmit={handleCompanySubmit} className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className={labelClassName} htmlFor="companyFirstName">
+                  Prénom *
+                </label>
+                <input
+                  id="companyFirstName"
+                  type="text"
+                  placeholder="Jean"
+                  value={companyForm.firstName}
+                  onChange={(e) => setCompanyForm((prev) => ({ ...prev, firstName: e.target.value }))}
+                  className={inputClassName}
+                  required
+                />
+              </div>
+              <div>
+                <label className={labelClassName} htmlFor="companyLastName">
+                  Nom *
+                </label>
+                <input
+                  id="companyLastName"
+                  type="text"
+                  placeholder="Dupont"
+                  value={companyForm.lastName}
+                  onChange={(e) => setCompanyForm((prev) => ({ ...prev, lastName: e.target.value }))}
+                  className={inputClassName}
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className={labelClassName} htmlFor="siren">
+                Numéro SIREN *
+              </label>
+              <div className="flex gap-2">
+                <input
+                  id="siren"
+                  type="text"
+                  placeholder="123 456 789"
+                  value={companyForm.siren}
+                  onChange={(e) => {
+                    setCompanyForm((prev) => ({ ...prev, siren: e.target.value }));
+                    setSirenError("");
+                  }}
+                  className={cn(inputClassName, "flex-1")}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={handleSirenSearch}
+                  disabled={sirenLoading || !companyForm.siren}
+                  className="flex items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-sm font-medium text-white transition duration-200 hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {sirenLoading ? (
+                    <IconLoader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <IconSearch className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+              {sirenError && <p className="text-sm text-red-500 mt-1">{sirenError}</p>}
+            </div>
+
+            <div>
+              <label className={labelClassName} htmlFor="companyName">
+                Dénomination sociale *
+              </label>
+              <input
+                id="companyName"
+                type="text"
+                placeholder="Auto-rempli après recherche SIREN"
+                value={companyForm.companyName}
+                onChange={(e) => setCompanyForm((prev) => ({ ...prev, companyName: e.target.value }))}
+                className={cn(inputClassName, companyForm.companyName && "bg-green-50 dark:bg-green-900/20")}
+                required
+              />
+            </div>
+
+            <div>
+              <label className={labelClassName} htmlFor="companyEmail">
+                Adresse email *
+              </label>
+              <input
+                id="companyEmail"
+                type="email"
+                placeholder="contact@entreprise.com"
+                value={companyForm.email}
+                onChange={(e) => setCompanyForm((prev) => ({ ...prev, email: e.target.value }))}
+                className={inputClassName}
+                required
+              />
+            </div>
+
+            <div>
+              <label className={labelClassName} htmlFor="companyPhone">
+                Téléphone
+              </label>
+              <PhoneInput
+                value={companyForm.phone}
+                onChange={(value) => setCompanyForm((prev) => ({ ...prev, phone: value || "" }))}
+              />
+            </div>
+
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <label className="text-sm font-medium text-neutral-600 dark:text-neutral-300" htmlFor="companyMessage">
+                  Message *
+                </label>
+                <VoiceRecorderButton
+                  onTranscription={handleCompanyTranscription}
+                  disabled={submitLoading}
+                />
+              </div>
+              <textarea
+                id="companyMessage"
+                rows={5}
+                placeholder="Décrivez votre projet..."
+                value={companyForm.message}
+                onChange={(e) => setCompanyForm((prev) => ({ ...prev, message: e.target.value }))}
+                className="shadow-input w-full rounded-md border border-transparent bg-white pt-4 pl-4 text-sm text-neutral-700 placeholder-neutral-500 outline-none focus:ring-2 focus:ring-neutral-800 focus:outline-none active:outline-none dark:border-neutral-800 dark:bg-neutral-800 dark:text-white"
+                required
+              />
+            </div>
+
+            {submitError && <p className="text-sm text-red-500">{submitError}</p>}
+            {submitSuccess && (
+              <div className="text-sm text-green-500 space-y-1">
+                <p className="font-medium">Message envoyé avec succès !</p>
+                <p className="text-green-600/80">Nous revenons vers vous d&apos;ici 24h ouvrées maximum par mail ou par téléphone. Pensez à consulter vos spams.</p>
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={submitLoading}
+              className="relative z-10 flex items-center justify-center rounded-md border border-transparent bg-neutral-800 px-4 py-2 text-sm font-medium text-white shadow-[0px_1px_0px_0px_#FFFFFF20_inset] transition duration-200 hover:bg-neutral-900 disabled:opacity-50 disabled:cursor-not-allowed md:text-sm"
+            >
+              {submitLoading ? (
+                <>
+                  <IconLoader2 className="h-4 w-4 mr-2 animate-spin" />
+                  Envoi en cours...
+                </>
+              ) : (
+                "Envoyer"
+              )}
+            </button>
+          </form>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }
