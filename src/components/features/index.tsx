@@ -13,12 +13,12 @@ export const Features = () => {
     <Container className="py-10 md:py-20 lg:py-32">
       <div className="flex xl:flex-row flex-col xl:items-baseline-last justify-between gap-10">
         <Heading className="text-center lg:text-left">
-          Built for Fast Moving <br /> Teams That Need Control.
+          Réduisez vos coûts <br /> de 30 à 70% en 18 mois.
         </Heading>
         <Subheading className="text-center lg:text-left mx-auto lg:mx-0">
-          Agents work inside your existing tools, with built-in approvals, brand
-          and policy guardrails, and full traceability. Every action is
-          auditable, every outcome accountable.
+          Devenez propriétaire de vos outils sur-mesure. Profitez d&apos;une
+          personnalisation totale et d&apos;une automatisation IA avancée pour
+          remplacer les tâches répétitives et optimiser votre productivité.
         </Subheading>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 my-10 md:my-20">
@@ -27,7 +27,7 @@ export const Features = () => {
             <SkeletonOne />
           </CardSkeleton>
           <CardContent>
-            <CardTitle>Prebuilt Agents, Tuned to Your Workflows</CardTitle>
+            <CardTitle>Outils sur-mesure adaptés à vos processus</CardTitle>
             <CardCTA>
               <IconPlus />
             </CardCTA>
@@ -38,7 +38,7 @@ export const Features = () => {
             <SkeletonTwo />
           </CardSkeleton>
           <CardContent>
-            <CardTitle>Automate Handoffs, Reduce Ops Friction</CardTitle>
+            <CardTitle>Automatisation complète, friction réduite</CardTitle>
             <CardCTA>
               <IconPlus />
             </CardCTA>
@@ -49,7 +49,7 @@ export const Features = () => {
             <SkeletonThree />
           </CardSkeleton>
           <CardContent>
-            <CardTitle>Approvals, Guardrails, and Full Auditability</CardTitle>
+            <CardTitle>Propriété totale, contrôle absolu</CardTitle>
             <CardCTA>
               <IconPlus />
             </CardCTA>
