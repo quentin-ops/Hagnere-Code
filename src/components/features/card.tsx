@@ -65,9 +65,37 @@ export const CardTitle = ({
   children: React.ReactNode;
 }) => {
   return (
+    <div className={cn("flex flex-col items-start gap-2", className)}>
+      {children}
+    </div>
+  );
+};
+
+export const CardTitleText = ({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) => {
+  return (
     <h3 className={cn("text-lg md:text-2xl font-bold font-display", className)}>
       {children}
     </h3>
+  );
+};
+
+export const CardDescription = ({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <p className={cn("text-sm text-neutral-500 dark:text-neutral-400 mt-2", className)}>
+      {children}
+    </p>
   );
 };
 

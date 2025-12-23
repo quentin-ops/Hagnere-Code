@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   title: "Hagnéré Code - Agence de développement logiciels boostés à l'IA",
   description:
     "Développement de SaaS, outils et applications sur-mesure boostés à l'IA. Votre vision est notre seule limite.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({

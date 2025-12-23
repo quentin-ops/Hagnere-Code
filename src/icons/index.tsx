@@ -579,6 +579,80 @@ export const UsersIcon = (props: React.SVGProps<SVGSVGElement>) => {
   );
 };
 
+export const ClaudeIcon = (props: React.SVGAttributes<SVGSVGElement>) => {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M4.709 15.955l4.72-2.647.08-.08 2.726-4.721c.08-.08.08-.16 0-.24l-2.646-4.72-.08-.08-4.72 2.726c-.08.08-.16.08-.24 0L-.17 3.467l-.08-.08L2.476 8.1c.08.08.08.16 0 .24l-2.647 4.72-.08.08 4.72 2.726c.08.08.08.16 0 .24l-2.647 4.72.08.08 4.72-2.647c.08-.08.16-.08.24 0l4.72 2.647.08-.08-2.647-4.72c-.08-.08-.08-.16 0-.24l4.72-2.726.08-.08-2.726-4.72c-.08-.08-.08-.16 0-.24l2.726-4.72-.08-.08-4.72 2.647c-.08.08-.16.08-.24 0l-4.72-2.647-.08.08 2.647 4.72c.08.08.08.16 0 .24l-2.647 4.72.08.08z"
+        fill="#D97706"
+      />
+    </svg>
+  );
+};
+
+export const CursorIcon = (props: React.SVGAttributes<SVGSVGElement>) => {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M5.5 3.21V20.8c0 .45.54.67.85.35l4.86-4.86a.5.5 0 0 1 .35-.15h6.87a.5.5 0 0 0 .35-.85L6.35 2.86a.5.5 0 0 0-.85.35z"
+        fill="#000"
+      />
+    </svg>
+  );
+};
+
+export const CopilotIcon = (props: React.SVGAttributes<SVGSVGElement>) => {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 1.5a8.5 8.5 0 1 1 0 17 8.5 8.5 0 0 1 0-17zm-3.25 6a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zm6.5 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zM8 14.75a.75.75 0 0 1 .75-.75h6.5a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1-.75-.75z"
+        fill="#6366F1"
+      />
+    </svg>
+  );
+};
+
+export const VSCodeIcon = (props: React.SVGAttributes<SVGSVGElement>) => {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M17.583 2.207a1.29 1.29 0 0 0-.96-.148L2.37 6.016a1.29 1.29 0 0 0-.87.89l-.5 1.86c-.13.47.05.97.45 1.23l12.13 7.89c.29.19.65.23.97.1l4.6-1.89c.42-.17.7-.58.7-1.04V3.707c0-.72-.58-1.3-1.27-1.5zm-1.05 14.92l-4.5 1.84-10.15-6.6 10.15-6.6 4.5 1.84v9.52z"
+        fill="#007ACC"
+      />
+    </svg>
+  );
+};
+
 export const LoopIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg

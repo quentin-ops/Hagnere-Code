@@ -15,11 +15,10 @@ export const FeaturesTertiary = () => {
           <div className="md:border-r border-b border-neutral-200 dark:border-neutral-800">
             <CardContent>
               <h2 className="text-lg font-bold text-neutral-800 dark:text-neutral-200">
-                Audit Trail
+                Devis immédiat par IA
               </h2>
               <CardDescription>
-                Tracks every agent action with full input-output visibility and
-                timestamps.
+                Notre outil d&apos;estimation basé sur l&apos;IA analyse votre besoin, la complexité fonctionnelle et les ressources nécessaires pour vous fournir une première estimation claire et cohérente, en quelques minutes.
               </CardDescription>
             </CardContent>
             <CardSkeleton>
@@ -29,11 +28,10 @@ export const FeaturesTertiary = () => {
           <div className="border-b border-neutral-200 dark:border-neutral-800">
             <CardContent>
               <h2 className="text-lg font-bold text-neutral-800 dark:text-neutral-200">
-                Role-Based Access
+                Allocation des ressources
               </h2>
               <CardDescription>
-                Controls who can launch, review, or manage agents based on
-                roles.
+                Nous sélectionnons et affectons les profils les plus pertinents pour votre projet : développeurs, experts IA, designers ou DevOps, en fonction de vos objectifs, de vos contraintes et de votre calendrier.
               </CardDescription>
             </CardContent>
             <CardSkeleton className="mask-radial-from-20% ">
@@ -43,11 +41,10 @@ export const FeaturesTertiary = () => {
           <div className="md:border-r border-neutral-200 dark:border-neutral-800">
             <CardContent>
               <h2 className="text-lg font-bold text-neutral-800 dark:text-neutral-200">
-                Approval Queue
+                Processus & pilotage
               </h2>
               <CardDescription>
-                Sends agent-generated content to human reviewers before it's
-                published.
+                Chaque projet suit un cadre clair : jalons définis, rapports hebdomadaires, feedback régulier et validations successives. Vous gardez une visibilité constante sur l&apos;avancement et les décisions clés.
               </CardDescription>
             </CardContent>
             <CardSkeleton className="mask-radial-from-20%  mask-r-from-50%">
@@ -57,10 +54,10 @@ export const FeaturesTertiary = () => {
           <div className=" dark:border-neutral-800">
             <CardContent>
               <h2 className="text-lg font-bold text-neutral-800 dark:text-neutral-200">
-                Guardrail Engine
+                Gouvernance, qualité & sécurité
               </h2>
               <CardDescription>
-                Applies brand, tone, and policy checks before output goes live.
+                Nos outils et méthodes intègrent des mécanismes de contrôle, de validation et de sécurité pour garantir des livrables fiables, conformes et exploitables en production.
               </CardDescription>
             </CardContent>
             <CardSkeleton className="">

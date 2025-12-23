@@ -2,12 +2,11 @@
 
 import {
   CogIcon,
-  ErrorIcon,
   FileIcon,
-  HubspotIcon,
   HumanIcon,
-  SalesforceIcon,
-  SheetsIcon,
+  ClaudeIcon,
+  CursorIcon,
+  CopilotIcon,
 } from "@/icons";
 import { cn } from "@/lib/utils";
 import { motion, useInView } from "motion/react";
@@ -23,36 +22,36 @@ export const SkeletonOne = () => {
 
   const items = [
     {
-      title: "Connect Data",
+      title: "Génération de code",
       topIcon: <FileIcon className="size-4" />,
       description:
-        "Link CRMs, helpdesks, and APIs to give agents secure, role-based access.",
+        "Création de composants, fonctions et modules complets à partir de prompts en langage naturel.",
       tags: [
-        { text: "Salesforce", icon: <SalesforceIcon className="size-3" /> },
-        { text: "Hubspot", icon: <HubspotIcon className="size-3" /> },
-        { text: "Sheets", icon: <SheetsIcon className="size-3" /> },
+        { text: "Claude Code", icon: <ClaudeIcon className="size-3" /> },
+        { text: "Cursor", icon: <CursorIcon className="size-3" /> },
+        { text: "Copilot", icon: <CopilotIcon className="size-3" /> },
       ],
     },
     {
-      title: "Define Processing Logic",
+      title: "Refactoring intelligent",
       topIcon: <CogIcon className="size-4" />,
       description:
-        "Create workflows, decision points, and conditional actions for each task.",
+        "Analyse et restructuration automatique du code pour améliorer lisibilité et performances.",
       tags: [
-        { text: "Salesforce", icon: <SalesforceIcon className="size-3" /> },
-        { text: "Hubspot", icon: <HubspotIcon className="size-3" /> },
-        { text: "Sheets", icon: <SheetsIcon className="size-3" /> },
+        { text: "Claude Code", icon: <ClaudeIcon className="size-3" /> },
+        { text: "Cursor", icon: <CursorIcon className="size-3" /> },
+        { text: "Copilot", icon: <CopilotIcon className="size-3" /> },
       ],
     },
     {
-      title: "Human-in-the-Loop",
+      title: "Revue par un dev senior",
       topIcon: <HumanIcon className="size-4 text-white" />,
       description:
-        "Add reviews, approvals and escalations without slowing work.",
+        "Chaque livrable est validé par un expert pour garantir qualité et maintenabilité.",
       tags: [
-        { text: "Salesforce", icon: <SalesforceIcon className="size-3" /> },
-        { text: "Hubspot", icon: <HubspotIcon className="size-3" /> },
-        { text: "Sheets", icon: <SheetsIcon className="size-3" /> },
+        { text: "Claude Code", icon: <ClaudeIcon className="size-3" /> },
+        { text: "Cursor", icon: <CursorIcon className="size-3" /> },
+        { text: "Copilot", icon: <CopilotIcon className="size-3" /> },
       ],
     },
   ];

@@ -13,24 +13,27 @@ export const SkeletonOne = () => {
     <div className="perspective-distant rotate-z-15 -rotate-y-20 rotate-x-30 scale-[1.2] h-full w-full -translate-y-10 mask-radial-from-50% mask-r-from-50%">
       <SkeletonCard
         className="absolute bottom-0 left-12  max-w-[90%] z-30"
-        icon={<IconCircleDashedCheck className="size-4" />}
-        title="Campaign Planner"
-        description="Creates clear, ready-to-use campaign briefs using product info, audience data, and past results."
-        badge={<Badge text="120S" variant="danger" />}
+        icon={<IconExclamationCircle className="size-4" />}
+        title="Saisie manuelle des factures"
+        description="Ressaisir chaque facture dans 3 logiciels différents, avec risque d'erreurs à chaque étape."
+        badge={<Badge text="45min" variant="danger" />}
+        tags={["Répétitif", "Risque erreur", "Chronophage"]}
       />
       <SkeletonCard
         className="absolute bottom-8 left-8 z-20"
-        icon={<IconExclamationCircle className="size-4" />}
-        title="Issue Tracker"
-        description="Creates clear, ready-to-use campaign briefs using product info, audience data, and past results."
-        badge={<Badge text="10S" variant="success" />}
+        icon={<IconClock className="size-4" />}
+        title="Export/Import de données"
+        description="Exporter d'un outil, reformater dans Excel, réimporter ailleurs... chaque jour."
+        badge={<Badge text="2h/jour" variant="danger" />}
+        tags={["Manuel", "Fragile", "Ennuyeux"]}
       />
       <SkeletonCard
         className="absolute bottom-20 left-4 max-w-[80%] z-10"
         icon={<IconPrison className="size-4" />}
-        title="Risk Analysis"
-        description="Creates clear, ready-to-use campaign briefs using product info, audience data, and past results."
-        badge={<Badge text="40s" variant="warning" />}
+        title="Relances clients"
+        description="Vérifier les impayés, rédiger les mails, suivre les réponses... un par un."
+        badge={<Badge text="1h30" variant="warning" />}
+        tags={["Répétitif", "Oublis", "Stress"]}
       />
     </div>
   );
@@ -41,12 +44,14 @@ const SkeletonCard = ({
   title,
   description,
   badge,
+  tags,
   className,
 }: {
   icon: React.ReactNode;
   title: string;
   description: string;
   badge: React.ReactNode;
+  tags: string[];
   className?: string;
 }) => {
   return (
@@ -67,9 +72,9 @@ const SkeletonCard = ({
         {description}
       </p>
       <div className="flex items-center gap-2 flex-wrap mt-4">
-        <Tag text="Google Ads" />
-        <Tag text="SaaS" />
-        <Tag text="Content" />
+        {tags.map((tag) => (
+          <Tag key={tag} text={tag} />
+        ))}
       </div>
     </div>
   );

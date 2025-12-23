@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  CogIcon,
-  ErrorIcon,
-  FileIcon,
-  HubspotIcon,
-  SalesforceIcon,
-  SheetsIcon,
-} from "@/icons";
+import React from "react";
 import { cn } from "@/lib/utils";
 import {
   IconClipboardData,
@@ -16,75 +9,55 @@ import {
   IconFilter2Search,
   IconPointerUp,
 } from "@tabler/icons-react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 export const SkeletonFour = () => {
   const items = [
     {
-      title: "Brand & Style",
+      title: "Traçabilité & audit",
+      screenTitle: "Audit & traçabilité des actions",
       icon: <IconClipboardData className="size-4 text-blue-500" />,
       className:
         "bg-blue-100 border border-blue-200 dark:bg-blue-100/10 dark:border-blue-200/10",
       description:
-        "Link CRMs, helpdesks, and APIs to give agents secure, role-based access.",
-      tags: [
-        { text: "Salesforce", icon: <SalesforceIcon className="size-3" /> },
-        { text: "Hubspot", icon: <HubspotIcon className="size-3" /> },
-        { text: "Sheets", icon: <SheetsIcon className="size-3" /> },
-      ],
+        "Chaque action, modification ou génération est tracée et horodatée. Vous disposez d'une visibilité complète sur les décisions, les livrables et les évolutions du projet.",
     },
     {
-      title: "Compliance & Policy",
+      title: "Accès et rôles",
+      screenTitle: "Gestion des accès par rôle",
       icon: <IconFileDotsFilled className="size-4 text-green-500" />,
       className:
         "bg-green-100 border border-green-200 dark:bg-green-100/10 dark:border-green-200/10",
       description:
-        "Ensure your AI agents follow company policies and regulatory requirements with built-in compliance controls.",
-      tags: [
-        { text: "Salesforce", icon: <SalesforceIcon className="size-3" /> },
-        { text: "Hubspot", icon: <HubspotIcon className="size-3" /> },
-        { text: "Sheets", icon: <SheetsIcon className="size-3" /> },
-      ],
+        "Les droits sont définis selon les rôles : consultation, validation, administration. Vous gardez le contrôle sur qui peut agir, modifier ou valider les éléments du projet.",
     },
     {
-      title: "Content Safety Filters",
+      title: "Validation humaine",
+      screenTitle: "Validation humaine intégrée",
       icon: <IconFeatherFilled className="size-4 text-indigo-500" />,
       className:
         "bg-indigo-100 border border-indigo-200 dark:bg-indigo-100/10 dark:border-indigo-200/10",
       description:
-        "Protect your brand from harmful content with built-in safety filters that block sensitive or inappropriate material.",
-      tags: [
-        { text: "Salesforce", icon: <SalesforceIcon className="size-3" /> },
-        { text: "Hubspot", icon: <HubspotIcon className="size-3" /> },
-        { text: "Sheets", icon: <SheetsIcon className="size-3" /> },
-      ],
+        "Les livrables critiques passent par des étapes de validation avant mise en production. L'IA accélère, l'humain décide.",
     },
     {
-      title: "Approval Triggers",
+      title: "Qualité & cohérence",
+      screenTitle: "Contrôles de qualité automatisés",
       icon: <IconPointerUp className="size-4 text-neutral-500" />,
       className:
         "bg-neutral-100 border border-neutral-200 dark:bg-neutral-100/10 dark:border-neutral-200/10",
       description:
-        "Automatically trigger approvals based on predefined criteria, ensuring timely review and compliance.",
-      tags: [
-        { text: "Salesforce", icon: <SalesforceIcon className="size-3" /> },
-        { text: "Hubspot", icon: <HubspotIcon className="size-3" /> },
-        { text: "Sheets", icon: <SheetsIcon className="size-3" /> },
-      ],
+        "Des contrôles sont appliqués pour garantir la cohérence fonctionnelle, la qualité du code et le respect des standards définis en amont.",
     },
     {
-      title: "Output Quality Checks",
+      title: "Conformité & sécurité",
+      screenTitle: "Sécurité et conformité dès la conception",
       icon: <IconFilter2Search className="size-4 text-purple-500" />,
       className:
         "bg-purple-100 border border-purple-200 dark:bg-purple-100/10 dark:border-purple-200/10",
       description:
-        "Automatically trigger approvals based on predefined criteria, ensuring timely review and compliance.",
-      tags: [
-        { text: "Salesforce", icon: <SalesforceIcon className="size-3" /> },
-        { text: "Hubspot", icon: <HubspotIcon className="size-3" /> },
-        { text: "Sheets", icon: <SheetsIcon className="size-3" /> },
-      ],
+        "Gestion des accès, journalisation, conformité RGPD et bonnes pratiques de sécurité sont intégrées dès la phase de conception, sans surcoût ni ajout tardif.",
     },
   ];
 
@@ -140,9 +113,8 @@ export const SkeletonFour = () => {
       <div className="flex-1 rounded-t-3xl gap-2 flex flex-col bg-neutral-100 dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-200 max-w-[20rem] lg:max-w-sm mx-auto w-full h-full absolute inset-x-0 p-2">
         <Card
           topIcon={selected.icon}
-          title={selected.title}
+          title={selected.screenTitle}
           description={selected.description}
-          tags={selected.tags}
           className={selected.className}
         />
       </div>
@@ -154,13 +126,11 @@ const Card = ({
   topIcon,
   title,
   description,
-  tags,
   className,
 }: {
   topIcon: React.ReactNode;
   title: string;
   description: string;
-  tags: { text: string; icon: React.ReactNode }[];
   className?: string;
 }) => {
   return (
@@ -199,32 +169,11 @@ const Card = ({
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <p className="text-base text-neutral-600">Tone Guidelines</p>
-        <p className="text-sm mt-2 mb-4 text-neutral-600 dark:text-neutral-400 rounded-sm border border-neutral-200 dark:border-neutral-200/10 px-2 border-dashed py-1">
+        <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
           {description}
         </p>
-        <div className="mt-2 flex flex-row flex-wrap gap-2">
-          {tags.map((tag, idx) => (
-            <motion.div
-              key={tag.text + idx}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 + idx * 0.1 }}
-            >
-              <Tag key={tag.text + idx} text={tag.text} icon={tag.icon} />
-            </motion.div>
-          ))}
-        </div>
       </motion.div>
     </motion.div>
   );
 };
 
-const Tag = ({ text, icon }: { text: string; icon: React.ReactNode }) => {
-  return (
-    <div className="flex items-center gap-1 w-fit rounded-sm px-1 py-0.5 border border-neutral-200 dark:border-neutral-200/10 text-sm">
-      {icon}
-      <p className="text-xs text-neutral-500">{text}</p>
-    </div>
-  );
-};

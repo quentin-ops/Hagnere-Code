@@ -23,44 +23,48 @@ export const SkeletonTwo = () => {
       <div className="flex gap-3 items-center">
         <IconCircleDashedCheck className="size-4" />
         <p className="text-sm font-normal text-black dark:text-white">
-          Campaign Planner
+          Recherche d&apos;une information client
         </p>
       </div>
       <div className="relative  flex-1 bg-neutral-200 dark:bg-neutral-800 dark:border-neutral-700 mt-4 border border-neutral-200 rounded-2xl">
         <Pattern />
         <div className="absolute rounded-2xl translate-x-2 -translate-y-2 group-hover:translate-x-0 group-hover:-translate-y-0 transition-all duration-300 inset-0 bg-white dark:bg-neutral-900 h-full w-full">
           <Row
-            icon={<IconCheck className="size-3 stroke-white fill-green-500" />}
-            text="Fetching Data"
-            time="10s"
+            icon={<IconLoader2 className="size-3 text-white animate-spin" />}
+            text="Chercher dans le CRM"
+            time="3min"
+            variant="warning"
           />
           <GradientHr />
           <Row
-            icon={<IconCheck className="size-3 stroke-white fill-green-500" />}
-            text="Processing Data"
-            time="20s"
-          />
-          <GradientHr />
-
-          <Row
-            icon={<IconCheck className="size-3 stroke-white fill-green-500" />}
-            text="Performing Action"
-            time="30s"
-          />
-          <GradientHr />
-
-          <Row
-            icon={<IconCheck className="size-3 stroke-white fill-green-500" />}
-            text="Waiting"
-            time="40s"
+            icon={<IconLoader2 className="size-3 text-white animate-spin" />}
+            text="Vérifier les emails"
+            time="5min"
+            variant="warning"
           />
           <GradientHr />
 
           <Row
             icon={<IconLoader2 className="size-3 text-white animate-spin" />}
-            text="Generating Report"
-            time="50s"
+            text="Fouiller dans le Drive"
+            time="8min"
             variant="warning"
+          />
+          <GradientHr />
+
+          <Row
+            icon={<IconLoader2 className="size-3 text-white animate-spin" />}
+            text="Demander à un collègue"
+            time="15min"
+            variant="danger"
+          />
+          <GradientHr />
+
+          <Row
+            icon={<IconLoader2 className="size-3 text-white animate-spin" />}
+            text="Toujours pas trouvé..."
+            time="???"
+            variant="danger"
           />
         </div>
       </div>
@@ -92,7 +96,8 @@ const Row = ({
           className={cn(
             "size-4 flex items-center justify-center rounded-full",
             variant === "success" && "bg-green-500",
-            variant === "warning" && "bg-yellow-500"
+            variant === "warning" && "bg-yellow-500",
+            variant === "danger" && "bg-red-500"
           )}
         >
           {icon}

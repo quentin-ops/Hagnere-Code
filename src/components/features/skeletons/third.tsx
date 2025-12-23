@@ -14,7 +14,7 @@ export const SkeletonThree = () => {
         colorLightVar="--color-neutral-500"
         glowColorLightVar="--color-neutral-600"
         colorDarkVar="--color-neutral-500"
-        glowColorDarkVar="--color-sky-800"
+        glowColorDarkVar="--color-red-800"
         backgroundOpacity={0}
         speedMin={0.3}
         speedMax={1.6}

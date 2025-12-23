@@ -1,23 +1,18 @@
 "use client";
 
 import { LogoIcon } from "@/components/logo";
-import {
-  CogIcon,
-  ErrorIcon,
-  FileIcon,
-  HubspotIcon,
-  SalesforceIcon,
-  SheetsIcon,
-  SlackIcon,
-} from "@/icons";
 import { cn } from "@/lib/utils";
 import {
-  IconBrandInstagram,
-  IconBrandMeta,
-  IconBrandSlack,
+  IconBrandNextjs,
+  IconBrandReact,
+  IconBrandTypescript,
+  IconBrandTailwind,
+  IconBrandLaravel,
+  IconBrandPhp,
+  IconBrandVite,
+  IconDatabase,
   IconCircleDashedCheck,
 } from "@tabler/icons-react";
-import { motion } from "motion/react";
 
 export const SkeletonTwo = () => {
   return (
@@ -29,33 +24,50 @@ export const SkeletonTwo = () => {
     >
       <Circle className="flex items-center justify-center border-neutral-200 dark:border-neutral-700 shadow-sm">
         <LogoIcon className="size-10 text-neutral-400" />
+        {/* Orbite intérieure */}
         <RevolvingCard className="bg-white dark:bg-neutral-800">
-          <IconBrandSlack className="size-8" />
+          <IconBrandNextjs className="size-8" />
         </RevolvingCard>
-        <RevolvingCard className="[--initial-position:80deg] [--translate-position:160px] [--orbit-duration:20s] bg-white dark:bg-neutral-800">
-          <IconBrandMeta className="size-8 text-blue-500" />
+        <RevolvingCard className="[--initial-position:120deg] [--translate-position:120px] [--orbit-duration:12s] bg-white dark:bg-neutral-800">
+          <IconBrandReact className="size-8 text-cyan-500" />
         </RevolvingCard>
-        <RevolvingCard className="[--initial-position:140deg] [--translate-position:180px] [--orbit-duration:15s] bg-white dark:bg-neutral-800">
-          <IconBrandInstagram className="size-8 text-red-500" />
-        </RevolvingCard>
-        <RevolvingCard className="[--initial-position:240deg] [--translate-position:220px] [--orbit-duration:25s] bg-white dark:bg-neutral-800">
-          <SheetsIcon className="size-8" />
+        <RevolvingCard className="[--initial-position:240deg] [--translate-position:120px] [--orbit-duration:12s] bg-white dark:bg-neutral-800">
+          <IconBrandVite className="size-8 text-purple-500" />
         </RevolvingCard>
 
-        <RevolvingCard className="[--initial-position:20deg] [--translate-position:250px] [--orbit-duration:30s] size-auto ring-0 shadow-none bg-transparent w-60">
+        {/* Orbite médiane */}
+        <RevolvingCard className="[--initial-position:30deg] [--translate-position:160px] [--orbit-duration:18s] bg-white dark:bg-neutral-800">
+          <IconBrandTypescript className="size-8 text-blue-600" />
+        </RevolvingCard>
+        <RevolvingCard className="[--initial-position:120deg] [--translate-position:160px] [--orbit-duration:18s] bg-white dark:bg-neutral-800">
+          <IconBrandTailwind className="size-8 text-sky-400" />
+        </RevolvingCard>
+        <RevolvingCard className="[--initial-position:210deg] [--translate-position:160px] [--orbit-duration:18s] bg-white dark:bg-neutral-800">
+          <IconBrandLaravel className="size-8 text-red-500" />
+        </RevolvingCard>
+        <RevolvingCard className="[--initial-position:300deg] [--translate-position:160px] [--orbit-duration:18s] bg-white dark:bg-neutral-800">
+          <IconBrandPhp className="size-8 text-indigo-400" />
+        </RevolvingCard>
+
+        {/* Orbite extérieure */}
+        <RevolvingCard className="[--initial-position:60deg] [--translate-position:200px] [--orbit-duration:25s] bg-white dark:bg-neutral-800">
+          <IconDatabase className="size-8 text-emerald-500" />
+        </RevolvingCard>
+
+        <RevolvingCard className="[--initial-position:20deg] [--translate-position:250px] [--orbit-duration:30s] size-auto ring-0 shadow-none bg-transparent w-48">
           <SkeletonCard
-            className="absolute bottom-0 left-12  max-w-[90%] z-30 bg-white dark:bg-neutral-800"
+            className="z-30 bg-white dark:bg-neutral-800"
             icon={<IconCircleDashedCheck className="size-4" />}
-            title="Campaign Planner"
-            description="Creates clear, ready-to-use campaign briefs using product info."
+            title="Architecture scalable"
+            description="Conçue pour évoluer avec votre activité sans refonte majeure."
           />
         </RevolvingCard>
 
-        <RevolvingCard className="[--initial-position:60deg] [--translate-position:210px] [--orbit-duration:20s] size-auto ring-0 shadow-none bg-transparent w-60">
+        <RevolvingCard className="[--initial-position:180deg] [--translate-position:230px] [--orbit-duration:22s] size-auto ring-0 shadow-none bg-transparent w-44">
           <SkeletonCard
-            className="absolute bottom-0 left-12  max-w-[90%] z-30 bg-white dark:bg-neutral-800"
+            className="z-30 bg-white dark:bg-neutral-800"
             icon={<IconCircleDashedCheck className="size-4" />}
-            title="Ready made solutions"
+            title="Code maintenable"
           />
         </RevolvingCard>
       </Circle>
@@ -81,7 +93,7 @@ const SkeletonCard = ({
   return (
     <div
       className={cn(
-        "max-w-[85%] h-fit my-auto bg-transparent mx-auto w-full p-3 rounded-2xl border border-neutral-200 dark:border-neutral-700 shadow-2xl",
+        "w-full h-fit p-3 rounded-2xl border border-neutral-200 dark:border-neutral-700 shadow-2xl",
         className
       )}
     >

@@ -2,7 +2,6 @@ import React from "react";
 import { Container } from "./container";
 import { Heading } from "./heading";
 import { Subheading } from "./subheading";
-import { LoopIcon, UsersIcon, LockIcon } from "@/icons";
 import { Button } from "./ui/button";
 import { IconCircleCheckFilled } from "@tabler/icons-react";
 import Link from "next/link";
@@ -10,37 +9,7 @@ import Link from "next/link";
 export const Pricing = () => {
   return (
     <section className="py-10 md:py-20 lg:py-32 relative overflow-hidden">
-      <Container className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        <div className="flex flex-col gap-4">
-          <Subheading className="mt-2">
-            Trusted by 500+ enterprise companies
-          </Subheading>
-          <Heading>
-            Affordable pricing. <br />
-            Easy scaling.
-          </Heading>
-          <Subheading className="mt-4">
-            Start small to explore automation, add agents as you scale, and
-            unlock enterprise-grade guardrails, orchestration, and reporting
-            when you're ready
-          </Subheading>
-          <ul className="list-none *:flex *:items-center *:gap-2 *:font-medium mt-4 flex flex-col gap-2">
-            <li>
-              <LockIcon />
-              <p>Built-in Guardrails</p>
-            </li>
-            <li>
-              <UsersIcon />
-              <p>Agent Orchestration</p>
-            </li>
-            <li>
-              <LoopIcon />
-              <p>Human-in-the-Loop</p>
-            </li>
-          </ul>
-        </div>
-
-        <div className="flex flex-col gap-4">
+      <Container className="flex flex-col gap-4 max-w-4xl">
           <PricingCard
             price="10"
             description="Perfect for individuals or small teams exploring automation."
@@ -66,7 +35,6 @@ export const Pricing = () => {
               "ROI Insights",
             ]}
           />
-        </div>
       </Container>
     </section>
   );

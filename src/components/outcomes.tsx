@@ -1,28 +1,30 @@
+"use client";
+
 import React from "react";
+import { GradientDivider } from "./gradient-divider";
 import { Container } from "./container";
 import { Heading } from "./heading";
 import { Subheading } from "./subheading";
-import { LandingImages } from "./landing-images";
-import { GradientDivider } from "./gradient-divider";
+import Image from "next/image";
 
 export const Outcomes = () => {
   return (
-    <section className="pt-10 md:pt-20 lg:pt-32 relative overflow-hidden">
-      <Container>
-        <Heading>
-          Governed AI, <br />
-          Trusted Outcomes
+    <section className="relative overflow-hidden bg-white dark:bg-neutral-950 py-20">
+      <Container className="flex flex-col items-center text-center">
+        <Subheading>Nos réalisations</Subheading>
+        <Heading className="mt-4">
+          Nos meilleurs <br /> Saas et Sites
         </Heading>
-
-        <Subheading className="py-8">
-          Deploy AI agents with built-in approvals, brand guardrails, and audit
-          trails. Every step is visible, reviewable, and compliant.
-        </Subheading>
-
-        <LandingImages
-          firstImageSrc={"https://assets.aceternity.com/screenshots/5.jpg"}
-          secondImageSrc={"https://assets.aceternity.com/screenshots/6.jpg"}
-        />
+        <div className="mt-12 w-full max-w-7xl">
+          <Image
+            src="/images/display.webp"
+            alt="Nos réalisations - Affichage sur différents appareils"
+            width={4000}
+            height={2670}
+            className="w-full h-auto"
+            priority
+          />
+        </div>
       </Container>
       <GradientDivider />
     </section>

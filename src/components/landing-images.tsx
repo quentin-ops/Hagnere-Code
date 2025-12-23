@@ -40,7 +40,7 @@ export const LandingImages = ({
             width={1920}
             draggable={false}
             className={cn(
-              "absolute inset-0 rounded-lg mask-r-from-20% mask-b-from-20% shadow-xl select-none pointer-events-none"
+              "absolute inset-0 rounded-lg shadow-xl select-none pointer-events-none"
             )}
             style={{
               transform: "rotateY(20deg) rotateX(40deg) rotateZ(-20deg)",
@@ -74,7 +74,7 @@ export const LandingImages = ({
             width={1920}
             draggable={false}
             className={cn(
-              "absolute inset-0 -translate-x-10 rounded-lg mask-r-from-50% mask-b-from-50% shadow-xl select-none pointer-events-none"
+              "absolute inset-0 -translate-x-10 rounded-lg shadow-xl select-none pointer-events-none"
             )}
             style={{
               transform: "rotateY(20deg) rotateX(40deg) rotateZ(-20deg)",

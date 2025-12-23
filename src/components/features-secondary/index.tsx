@@ -3,22 +3,48 @@ import { Container } from "@/components/container";
 import { cn } from "@/lib/utils";
 import { SkeletonOne } from "./skeletons/first";
 import { SkeletonTwo } from "./skeletons/second";
-import { HumanIcon, IntegrationIcon, WorkflowIcon } from "@/icons";
+import { SkeletonThree } from "./skeletons/third";
 
 export const FeaturesSecondary = () => {
   return (
     <section className="pt-10 md:pt-20 lg:py-32 relative overflow-hidden">
       <Container>
+        {/* Header */}
+        <div className="text-center mb-12 md:mb-16">
+          <p className="text-sm font-medium uppercase tracking-wider text-indigo-500 dark:text-indigo-400">
+            Notre avantage
+          </p>
+          <h2 className="mt-4 text-2xl font-bold text-neutral-800 md:text-4xl dark:text-neutral-100">
+            Plus rapides, plus compétents, moins chers
+          </h2>
+          <p className="mx-auto mt-4 max-w-3xl text-base text-neutral-600 md:text-lg dark:text-neutral-400">
+            Nous combinons l&apos;IA, des frameworks éprouvés et des développeurs seniors pour livrer plus vite, avec une qualité irréprochable — et un budget maîtrisé.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 border-y border-neutral-200 dark:border-neutral-800 divide-y md:divide-y-0 md:divide-x divide-neutral-200 dark:divide-neutral-800">
           <div>
             <CardContent>
               <h2 className="text-lg font-bold text-neutral-800 dark:text-neutral-200">
-                Agent Studio
+                L&apos;intelligence artificielle intégrée à chaque étape
               </h2>
               <CardDescription>
-                Design, launch and customize AI agents for marketing, sales,
-                support and ops, built around your workflows.
+                Nous utilisons les modèles d&apos;IA les plus avancés pour accélérer la conception, le développement et l&apos;optimisation de vos projets. L&apos;IA n&apos;est pas un gadget : c&apos;est un levier de productivité quotidien, encadré par des développeurs seniors.
               </CardDescription>
+              <ul className="mt-4 space-y-2 text-sm text-neutral-500">
+                <li className="flex items-center gap-2">
+                  <span className="h-1 w-1 rounded-full bg-indigo-500" />
+                  Accélération du développement et du refactoring
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1 w-1 rounded-full bg-indigo-500" />
+                  Amélioration continue de la qualité du code
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1 w-1 rounded-full bg-indigo-500" />
+                  Gain de temps sans compromis sur la robustesse
+                </li>
+              </ul>
             </CardContent>
             <CardSkeleton>
               <SkeletonOne />
@@ -27,12 +53,25 @@ export const FeaturesSecondary = () => {
           <div>
             <CardContent>
               <h2 className="text-lg font-bold text-neutral-800 dark:text-neutral-200">
-                Multi-Agent Orchestration
+                Des stacks techniques adaptées, pas des choix par défaut
               </h2>
               <CardDescription>
-                Coordinate multiple agents across workflows using memory,
-                interrupts, and conditional logic.
+                Chaque projet repose sur une stack technique choisie pour sa performance, sa maintenabilité et sa capacité à évoluer. Nous nous appuyons sur des frameworks éprouvés pour éviter de réinventer l&apos;existant et accélérer la mise en œuvre.
               </CardDescription>
+              <ul className="mt-4 space-y-2 text-sm text-neutral-500">
+                <li className="flex items-center gap-2">
+                  <span className="h-1 w-1 rounded-full bg-indigo-500" />
+                  Frameworks modernes et maintenus
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1 w-1 rounded-full bg-indigo-500" />
+                  Composants UI robustes et performants
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1 w-1 rounded-full bg-indigo-500" />
+                  Architecture pensée pour évoluer
+                </li>
+              </ul>
             </CardContent>
             <CardSkeleton className="mask-radial-from-50% mask-t-from-50%">
               <SkeletonTwo />
@@ -40,44 +79,35 @@ export const FeaturesSecondary = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10 md:mt-20">
-          <div>
-            <div className="flex items-center gap-2">
-              <WorkflowIcon />
-              <h3 className="font-bold text-lg text-neutral-600 dark:text-neutral-400">
-                Workflow Automation
-              </h3>
+        <div className="border-b border-neutral-200 dark:border-neutral-800">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            <div>
+              <CardContent>
+                <h2 className="text-lg font-bold text-neutral-800 dark:text-neutral-200">
+                  Des composants UI éprouvés, pas réinventés
+                </h2>
+                <CardDescription>
+                  Nous nous appuyons sur des librairies de composants reconnues pour leur qualité et leur accessibilité. Cela nous permet de livrer plus vite des interfaces soignées, tout en gardant une base de code maintenable.
+                </CardDescription>
+                <ul className="mt-4 space-y-2 text-sm text-neutral-500">
+                  <li className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-indigo-500" />
+                    shadcn/ui, Radix et autres briques solides
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-indigo-500" />
+                    Accessibilité native et bonnes pratiques
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="h-1 w-1 rounded-full bg-indigo-500" />
+                    Personnalisation complète selon vos besoins
+                  </li>
+                </ul>
+              </CardContent>
             </div>
-
-            <p className="text-neutral-500 text-base mt-2">
-              Automate campaigns, tickets and CRM updates without manual
-              handoffs.
-            </p>
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <IntegrationIcon />
-              <h3 className="font-bold text-lg text-neutral-600 dark:text-neutral-400">
-                Integration Fabric
-              </h3>
-            </div>
-
-            <p className="text-neutral-500 text-base mt-2">
-              Connect CRMs, service desks, data warehouses and cloud apps
-              seamlessly.
-            </p>
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <HumanIcon />
-              <h3 className="font-bold text-lg text-neutral-600 dark:text-neutral-400">
-                Human-in-the-Loop
-              </h3>
-            </div>
-
-            <p className="text-neutral-500 text-base mt-2">
-              Add reviews, approvals and escalations without slowing work.
-            </p>
+            <CardSkeleton>
+              <SkeletonThree />
+            </CardSkeleton>
           </div>
         </div>
       </Container>

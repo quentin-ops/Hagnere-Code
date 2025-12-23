@@ -25,56 +25,55 @@ export const SkeletonOne = () => {
     {
       icon: <FirstIcon />,
       iconClassName: "bg-blue-500",
-      title: "Personalized Email",
-      description: "Personalized Email sent to ••••• @gmail.com",
+      title: "Analyse du besoin",
+      description: "Extraction des fonctionnalités clés du brief client",
       badge: (
         <div className="flex gap-1 items-center px-1 py-0.5 rounded-md border border-neutral-200 dark:border-neutral-200/10 dark:bg-neutral-200/10">
           <IconClock className="size-3" />
           <p className="text-[10px] font-bold text-neutral-600 dark:text-neutral-400">
-            15s
+            12s
           </p>
         </div>
       ),
     },
     {
       icon: <SecondIcon />,
-      iconClassName: "bg-red-500",
-      title: "Peer Review",
-      description:
-        "Reviewed and approved 2 outputs from Content Drafting Agent",
+      iconClassName: "bg-green-500",
+      title: "Estimation complexité",
+      description: "Évaluation de la charge technique et fonctionnelle",
       badge: (
-        <div className="flex gap-1 items-center px-1 py-0.5 rounded-md bg-red-100 border border-red-200 dark:bg-red-100/10 dark:border-red-200/10">
-          <p className="text-[10px] font-bold text-red-500">FAILED</p>
+        <div className="flex gap-1 items-center px-1 py-0.5 rounded-md bg-green-100 border border-green-200 dark:bg-green-100/10 dark:border-green-200/10">
+          <p className="text-[10px] font-bold text-green-500">TERMINÉ</p>
         </div>
       ),
     },
     {
       icon: <ThirdIcon />,
       iconClassName: "bg-orange-500",
-      title: "Content Drafting",
-      description: "Generated draft campaign brief",
+      title: "Calcul ressources",
+      description: "Identification des profils et compétences requises",
       badge: (
         <div className="flex gap-1 items-center px-1 py-0.5 rounded-md bg-orange-100 border border-orange-200 dark:bg-orange-100/10 dark:border-orange-200/10">
-          <p className="text-[10px] font-bold text-orange-500">PROCESSING</p>
+          <p className="text-[10px] font-bold text-orange-500">EN COURS</p>
         </div>
       ),
     },
     {
       icon: <FourthIcon />,
       iconClassName: "bg-black",
-      title: "Admin Approval",
-      description: "Final approval of marketing copy before publishing",
+      title: "Génération devis",
+      description: "Création du document d'estimation détaillé",
       badge: (
         <div className="flex gap-1 items-center px-1 py-0.5 rounded-md bg-orange-100 dark:bg-orange-100/10 dark:border-orange-100/10  border border-orange-200">
-          <p className="text-[10px] font-bold text-orange-500">PROCESSING</p>
+          <p className="text-[10px] font-bold text-orange-500">EN COURS</p>
         </div>
       ),
     },
     {
       icon: <FifthIcon />,
       iconClassName: "bg-indigo-500",
-      title: "Weekly Campaign Report",
-      description: "Generated campaign performance report",
+      title: "Validation technique",
+      description: "Vérification de la cohérence par un expert",
       badge: (
         <div className="flex gap-1 items-center px-1 py-0.5 rounded-md border border-neutral-200 dark:border-neutral-200/10 dark:bg-neutral-200/10">
           <IconClock className="size-3" />
@@ -85,24 +84,23 @@ export const SkeletonOne = () => {
 
     {
       icon: <SecondIcon />,
-      iconClassName: "bg-red-500",
-      title: "SEO Audit",
-      description:
-        "Reviewed and approved 2 outputs from Content Drafting Agent",
+      iconClassName: "bg-blue-500",
+      title: "Envoi client",
+      description: "Transmission du devis au client par email",
       badge: (
-        <div className="flex gap-1 items-center px-1 py-0.5 rounded-md bg-red-100 border border-red-200 dark:bg-red-100/10 dark:border-red-200/10">
-          <p className="text-[10px] font-bold text-red-500">FAILED</p>
+        <div className="flex gap-1 items-center px-1 py-0.5 rounded-md bg-blue-100 border border-blue-200 dark:bg-blue-100/10 dark:border-blue-200/10">
+          <p className="text-[10px] font-bold text-blue-500">EN ATTENTE</p>
         </div>
       ),
     },
     {
       icon: <ThirdIcon />,
-      iconClassName: "bg-orange-500",
-      title: "Price Monitoring Agent",
-      description: "Generated draft campaign brief",
+      iconClassName: "bg-purple-500",
+      title: "Suivi réponse",
+      description: "Monitoring de l'acceptation et relances automatiques",
       badge: (
-        <div className="flex gap-1 items-center px-1 py-0.5 rounded-md bg-orange-100 border border-orange-200 dark:bg-orange-100/10 dark:border-orange-200/10">
-          <p className="text-[10px] font-bold text-orange-500">PROCESSING</p>
+        <div className="flex gap-1 items-center px-1 py-0.5 rounded-md bg-purple-100 border border-purple-200 dark:bg-purple-100/10 dark:border-purple-200/10">
+          <p className="text-[10px] font-bold text-purple-500">PLANIFIÉ</p>
         </div>
       ),
     },
@@ -140,7 +138,7 @@ const Card = ({ children }: { children: React.ReactNode }) => {
       <div className="flex items-center gap-2 border-b w-full py-2 px-4">
         <RecentActivityIcon />
         <p className="text-sm font-bold text-neutral-800 dark:text-neutral-200">
-          Recent Activity
+          Activité en cours
         </p>
       </div>
 

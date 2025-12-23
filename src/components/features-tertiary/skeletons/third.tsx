@@ -23,11 +23,11 @@ export const SkeletonThree = () => {
       >
         <div className="px-4 py-2 rounded-full bg-orange-100 border border-orange-300 text-orange-500 font-medium flex items-center gap-2">
           <IconSettings className="size-4" />
-          <span>Processing</span>
+          <span>En cours</span>
         </div>
         <div className="px-4 py-2 rounded-full bg-green-100 border border-green-300 text-green-500 font-medium flex items-center gap-2">
           <IconSparkles className="size-4" />
-          <span>Feedback</span>
+          <span>Validation</span>
         </div>
       </div>
     </div>
