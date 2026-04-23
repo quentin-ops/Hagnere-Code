@@ -148,29 +148,31 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
 
     // Scenario toggle — used on service pages (SaaS .sa-scenarios, Outils internes .oi-scenarios,
     // E-commerce .ec-scenarios, Sites vitrines .sv-scenarios, SEO .seo-scenarios, Ads .ads-scenarios,
-    // Contenu & vidéo .cv-scenarios, Maintenance & évolution .me-scenarios).
+    // Contenu & vidéo .cv-scenarios, Maintenance & évolution .me-scenarios, Audit technique .at-scenarios).
     // Each container has data-active + child tabs [data-scenario] + panels [data-panel].
     const scenarioContainers = Array.from(
       root.querySelectorAll<HTMLElement>(
-        ".sa-scenarios, .oi-scenarios, .ec-scenarios, .sv-scenarios, .seo-scenarios, .ads-scenarios, .cv-scenarios, .me-scenarios",
+        ".sa-scenarios, .oi-scenarios, .ec-scenarios, .sv-scenarios, .seo-scenarios, .ads-scenarios, .cv-scenarios, .me-scenarios, .at-scenarios",
       ),
     );
     scenarioContainers.forEach((scenarios) => {
-      const prefix = scenarios.classList.contains("me-scenarios")
-        ? "me"
-        : scenarios.classList.contains("ads-scenarios")
-          ? "ads"
-          : scenarios.classList.contains("seo-scenarios")
-            ? "seo"
-            : scenarios.classList.contains("cv-scenarios")
-              ? "cv"
-              : scenarios.classList.contains("oi-scenarios")
-                ? "oi"
-                : scenarios.classList.contains("ec-scenarios")
-                  ? "ec"
-                  : scenarios.classList.contains("sv-scenarios")
-                    ? "sv"
-                    : "sa";
+      const prefix = scenarios.classList.contains("at-scenarios")
+        ? "at"
+        : scenarios.classList.contains("me-scenarios")
+          ? "me"
+          : scenarios.classList.contains("ads-scenarios")
+            ? "ads"
+            : scenarios.classList.contains("seo-scenarios")
+              ? "seo"
+              : scenarios.classList.contains("cv-scenarios")
+                ? "cv"
+                : scenarios.classList.contains("oi-scenarios")
+                  ? "oi"
+                  : scenarios.classList.contains("ec-scenarios")
+                    ? "ec"
+                    : scenarios.classList.contains("sv-scenarios")
+                      ? "sv"
+                      : "sa";
       const tabs = Array.from(
         scenarios.querySelectorAll<HTMLButtonElement>(`.${prefix}-scen-tab`),
       );
@@ -337,6 +339,215 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         listeners.forEach(([el, ev, fn]) => el.removeEventListener(ev, fn));
       });
     }
+
+    // Mini-audit — 5 questions + scoring + priorities + email capture.
+    // Used on /services/maintenance-evolution (.me-audit) and /services/audit-technique (.at-audit).
+    const auditSection = root.querySelector<HTMLElement>(".me-audit, .at-audit");
+    if (auditSection) {
+      const box = auditSection.querySelector<HTMLElement>(".me-audit-box");
+      const resultPanel = auditSection.querySelector<HTMLElement>("[data-audit-result]");
+      const questions = Array.from(
+        auditSection.querySelectorAll<HTMLElement>("[data-audit-q]"),
+      );
+      const currentLabel = auditSection.querySelector<HTMLElement>("[data-audit-current]");
+      const fill = auditSection.querySelector<HTMLElement>("[data-audit-fill]");
+      const prevBtn = auditSection.querySelector<HTMLButtonElement>("[data-audit-prev]");
+      const nextBtn = auditSection.querySelector<HTMLButtonElement>("[data-audit-next]");
+      const restartBtn = auditSection.querySelector<HTMLButtonElement>("[data-audit-restart]");
+      const emailForm = auditSection.querySelector<HTMLFormElement>("[data-audit-email-form]");
+      const emailInput = auditSection.querySelector<HTMLInputElement>("[data-audit-email]");
+      const emailAck = auditSection.querySelector<HTMLElement>("[data-audit-email-ack]");
+
+      if (box && questions.length === 5 && currentLabel && fill && prevBtn && nextBtn && resultPanel) {
+        let step = 0;
+        const answers: number[] = new Array(5).fill(-1);
+        const questionTopics = [
+          "Monitoring d'erreurs",
+          "Patch des CVE / dépendances",
+          "Backups testés en restauration",
+          "Procédure d'incident (runbook)",
+          "Bus factor",
+        ];
+        const remediations = [
+          "<b>Brancher Sentry + Better Stack + Grafana</b> dans les 14 premiers jours. Alertes Slack contextualisées, pas du bruit. MTTD médian cible : 2-4 min.",
+          "<b>Activer Dependabot + Snyk + auto-merge mineurs</b> sous CI verte. CVE critiques patchés sous 48 h, majors en revue humaine.",
+          "<b>Tester les backups en restauration chaque trimestre</b> sur environnement isolé. Runbook DR versionné. RPO 15 min · RTO 1 h.",
+          "<b>Écrire runbooks par type d'incident</b> + astreinte PagerDuty + post-mortem sous 72 h sans blame. MTTR divisé par 3.",
+          "<b>Binôme obligatoire dès J+1</b> + documentation vivante (Notion + Loom) + onboarding reproductible. Bus factor ≥ 2.",
+        ];
+
+        const showStep = (s: number) => {
+          step = s;
+          questions.forEach((q, i) => q.classList.toggle("is-active", i === s));
+          currentLabel.textContent = String(s + 1);
+          fill.style.width = `${((s + 1) / 5) * 100}%`;
+          prevBtn.disabled = s === 0;
+          nextBtn.disabled = answers[s] === -1;
+          nextBtn.innerHTML =
+            s === 4
+              ? `Voir mon score <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`
+              : `Question suivante <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+          box.dataset.auditStep = String(s);
+        };
+
+        const computeResult = () => {
+          const total = answers.reduce((sum, v) => sum + (v < 0 ? 0 : v), 0);
+          const badge = resultPanel.querySelector<HTMLElement>("[data-audit-badge]");
+          const verdict = resultPanel.querySelector<HTMLElement>("[data-audit-verdict]");
+          const scoreSmall = resultPanel.querySelector<HTMLElement>("[data-audit-score]");
+          const scoreBig = resultPanel.querySelector<SVGTextElement>("[data-audit-score-big]");
+          const prioritiesList = resultPanel.querySelector<HTMLElement>("[data-audit-priorities]");
+          const arc = resultPanel.querySelector<SVGPathElement>("[data-audit-arc]");
+          const needle = resultPanel.querySelector<SVGCircleElement>("[data-audit-needle]");
+
+          if (scoreSmall) scoreSmall.textContent = String(total);
+          if (scoreBig) scoreBig.textContent = String(total);
+
+          let level = "healthy";
+          let label = "Healthy";
+          let verdictText = "Votre app est globalement en bonne santé. Quelques points à consolider pour passer de « bon » à « excellent ».";
+          if (total < 40) {
+            level = "critical";
+            label = "Remédiation urgente";
+            verdictText = "Votre app est en fragilité critique sur plusieurs axes. Un audit complet + plan de remédiation sur 6-12 mois est vivement recommandé.";
+          } else if (total < 70) {
+            level = "attention";
+            label = "Needs attention";
+            verdictText = "Votre app tient, mais plusieurs zones méritent une reprise en main. Les 3 priorités ci-dessous feront la différence en 3 mois.";
+          }
+          if (badge) {
+            badge.textContent = label;
+            badge.dataset.level = level;
+          }
+          if (verdict) verdict.textContent = verdictText;
+
+          // Gauge arc animation
+          if (arc) {
+            const pct = Math.min(100, Math.max(0, total)) / 100;
+            const length = 251;
+            arc.style.transition = "stroke-dashoffset 0.9s cubic-bezier(0.4, 0, 0.2, 1)";
+            arc.style.strokeDashoffset = String(length * (1 - pct));
+          }
+          if (needle) {
+            const pct = Math.min(100, Math.max(0, total)) / 100;
+            const angle = Math.PI * (1 - pct);
+            const cx = 100 + Math.cos(angle) * 80;
+            const cy = 100 - Math.sin(angle) * 80;
+            needle.style.transition = "all 0.9s cubic-bezier(0.4, 0, 0.2, 1)";
+            needle.setAttribute("cx", String(cx));
+            needle.setAttribute("cy", String(cy));
+          }
+
+          // Top 3 priorities = 3 lowest-scoring questions
+          if (prioritiesList) {
+            const scored = answers.map((v, i) => ({ v, i, topic: questionTopics[i], rem: remediations[i] }));
+            scored.sort((a, b) => a.v - b.v);
+            const top3 = scored.slice(0, 3).filter((s) => s.v < 20);
+            prioritiesList.innerHTML = top3.length
+              ? top3.map((s) => `<li><div><b>${s.topic}</b><br>${s.rem}</div></li>`).join("")
+              : `<li><div><b>Tout est vert</b><br>Félicitations — votre setup M&E est au niveau des meilleures pratiques 2026. Gardez le cap.</div></li>`;
+          }
+
+          box.hidden = true;
+          resultPanel.hidden = false;
+          setTimeout(() => resultPanel.classList.add("in"), 20);
+        };
+
+        // Radio listener per question
+        questions.forEach((qEl, qIdx) => {
+          const radios = Array.from(qEl.querySelectorAll<HTMLInputElement>("[data-audit-answer]"));
+          radios.forEach((r) => {
+            const onChange = () => {
+              answers[qIdx] = parseInt(r.value, 10);
+              nextBtn.disabled = false;
+            };
+            r.addEventListener("change", onChange);
+            cleanups.push(() => r.removeEventListener("change", onChange));
+          });
+        });
+
+        const onPrev = () => {
+          if (step > 0) showStep(step - 1);
+        };
+        const onNext = () => {
+          if (answers[step] === -1) return;
+          if (step < 4) showStep(step + 1);
+          else computeResult();
+        };
+        const onRestart = () => {
+          answers.fill(-1);
+          questions.forEach((q) => {
+            q.querySelectorAll<HTMLInputElement>("input[type=radio]").forEach((r) => {
+              r.checked = false;
+            });
+          });
+          resultPanel.hidden = true;
+          box.hidden = false;
+          if (emailAck) emailAck.hidden = true;
+          if (emailInput) emailInput.value = "";
+          showStep(0);
+        };
+
+        prevBtn.addEventListener("click", onPrev);
+        nextBtn.addEventListener("click", onNext);
+        if (restartBtn) restartBtn.addEventListener("click", onRestart);
+        cleanups.push(() => {
+          prevBtn.removeEventListener("click", onPrev);
+          nextBtn.removeEventListener("click", onNext);
+          if (restartBtn) restartBtn.removeEventListener("click", onRestart);
+        });
+
+        // Email capture (placeholder — TODO: wire to Resend endpoint)
+        if (emailForm && emailInput && emailAck) {
+          const onSubmit = (e: Event) => {
+            e.preventDefault();
+            const email = emailInput.value.trim();
+            if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return;
+            // Persist locally for now; real impl will POST to /api/audit-report
+            try {
+              localStorage.setItem("me-audit-email", email);
+              localStorage.setItem(
+                "me-audit-score",
+                JSON.stringify({ answers, ts: Date.now() }),
+              );
+            } catch {}
+            emailAck.hidden = false;
+          };
+          emailForm.addEventListener("submit", onSubmit);
+          cleanups.push(() => emailForm.removeEventListener("submit", onSubmit));
+        }
+
+        // Init
+        showStep(0);
+      }
+    }
+
+    // FAQ persona filters — used on service pages that tag faq-items with data-persona.
+    const faqFilterContainers = Array.from(
+      root.querySelectorAll<HTMLElement>(".me-faq-filters, .at-faq-filters"),
+    );
+    faqFilterContainers.forEach((container) => {
+      const buttons = Array.from(
+        container.querySelectorAll<HTMLButtonElement>(".me-faq-filter"),
+      );
+      // Find the nearest .faq-list within the same faq section
+      const section = container.closest<HTMLElement>(".faq");
+      const list = section?.querySelector<HTMLElement>(".faq-list");
+      if (!list) return;
+      buttons.forEach((btn) => {
+        const onClick = () => {
+          const key = btn.dataset.faqFilter || "all";
+          list.dataset.faqFilter = key;
+          buttons.forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle("is-active", active);
+            b.setAttribute("aria-selected", active ? "true" : "false");
+          });
+        };
+        btn.addEventListener("click", onClick);
+        cleanups.push(() => btn.removeEventListener("click", onClick));
+      });
+    });
 
     const navItem = root.querySelector<HTMLElement>(".nav-item");
     const navTrigger = navItem?.querySelector<HTMLElement>(".nav-trigger");

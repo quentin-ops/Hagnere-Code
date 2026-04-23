@@ -1,6 +1,6 @@
 export const deriskHtml = `
 <!-- DE-RISK M&E : 4 peurs du dirigeant / CTO -->
-<section class="me-derisk">
+<section class="at-derisk">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
@@ -13,10 +13,10 @@ export const deriskHtml = `
       </div>
     </div>
 
-    <div class="me-derisk-grid">
+    <div class="at-derisk-grid">
       <!-- PEUR 01 : Payer pour rien certains mois -->
-      <div class="me-derisk-card reveal">
-        <div class="me-derisk-fear">
+      <div class="at-derisk-card reveal">
+        <div class="at-derisk-fear">
           « Et si je paye le forfait et que je <b>n'ai rien à faire faire</b> certains mois ? »
         </div>
         <h4>Rollover 30 % + timesheet transparent + downgrade trimestriel</h4>
@@ -24,7 +24,7 @@ export const deriskHtml = `
         Vous voyez le timesheet Linear/Notion en temps réel, on documente chaque jour. Si votre usage réel
         est sous le forfait pendant 2 trimestres consécutifs, <b>on propose un downgrade</b> sans discussion —
         parce qu'on veut que vous restiez 5 ans, pas qu'on vous facture pour rien.</p>
-        <div class="me-derisk-proof">
+        <div class="at-derisk-proof">
           <span>✓ Rollover 30 %</span>
           <span>✓ Timesheet live</span>
           <span>✓ Downgrade proposé</span>
@@ -32,8 +32,8 @@ export const deriskHtml = `
       </div>
 
       <!-- PEUR 02 : Vendor lock-in -->
-      <div class="me-derisk-card reveal reveal-d-1">
-        <div class="me-derisk-fear">
+      <div class="at-derisk-card reveal reveal-d-1">
+        <div class="at-derisk-fear">
           « Je vais être <b>enfermé avec vous</b> sans pouvoir partir. »
         </div>
         <h4>Réversibilité contractuelle · passation 5 j offerte · 0 lock-in</h4>
@@ -41,7 +41,7 @@ export const deriskHtml = `
         <b>5 jours de passation offerts</b> à votre prestataire suivant. Repo GitHub, comptes cloud, pixels,
         comptes SaaS tiers&nbsp;: <b>tout est sur votre organisation depuis J+1</b>. Rien chez nous. Vous partez
         quand vous voulez, sans rachat d'heures, sans "bonus" planqué, sans retention par l'ignorance.</p>
-        <div class="me-derisk-proof">
+        <div class="at-derisk-proof">
           <span>✓ Préavis 60 j</span>
           <span>✓ Passation 5 j offerte</span>
           <span>✓ Tout en propriété client</span>
@@ -49,8 +49,8 @@ export const deriskHtml = `
       </div>
 
       <!-- PEUR 03 : Rotation équipe -->
-      <div class="me-derisk-card reveal reveal-d-2">
-        <div class="me-derisk-fear">
+      <div class="at-derisk-card reveal reveal-d-2">
+        <div class="at-derisk-fear">
           « L'équipe va <b>tourner</b> et la qualité va baisser au bout de 6 mois. »
         </div>
         <h4>Équipe nommée dans le contrat · 1 remplacement max · overlap 2 sem.</h4>
@@ -58,7 +58,7 @@ export const deriskHtml = `
         inclus. <b>Maximum 1 remplacement sur 12 mois</b> sauf cas de force majeure documenté. En cas de changement,
         <b>overlap obligatoire de 2 semaines</b> entre sortant et remplaçant. Notre turnover interne est &lt; 10 %
         (vs industrie à 25 %), ancienneté moyenne des devs&nbsp;: 4 ans. NPS client trimestriel comme garde-fou.</p>
-        <div class="me-derisk-proof">
+        <div class="at-derisk-proof">
           <span>✓ Nom dans le contrat</span>
           <span>✓ Overlap 2 sem.</span>
           <span>✓ NPS trimestriel</span>
@@ -66,8 +66,8 @@ export const deriskHtml = `
       </div>
 
       <!-- PEUR 04 : Incidents hors horaires -->
-      <div class="me-derisk-card reveal reveal-d-3">
-        <div class="me-derisk-fear">
+      <div class="at-derisk-card reveal reveal-d-3">
+        <div class="at-derisk-fear">
           « Un incident la nuit / le week-end — <b>personne ne va répondre</b>. »
         </div>
         <h4>Astreinte contractuelle + Statuspage + post-mortem 72 h · pénalités auto</h4>
@@ -75,7 +75,7 @@ export const deriskHtml = `
         auto (Slack → SMS → téléphone). <b>MTTR contractuel &lt; 30 min P1</b>. Si on dépasse&nbsp;:
         <b>pénalités SLA auto-appliquées en avoir</b>, sans discussion. Statuspage publique, post-mortem sans
         blame sous 72 h, action items trackés. <b>Vous n'apprenez jamais un incident par un client mécontent</b>.</p>
-        <div class="me-derisk-proof">
+        <div class="at-derisk-proof">
           <span>✓ Astreinte 7j/7</span>
           <span>✓ MTTR &lt; 30 min</span>
           <span>✓ Pénalités auto</span>
@@ -83,13 +83,13 @@ export const deriskHtml = `
       </div>
 
       <!-- PEUR 05 : Complémentarité avec CTO interne -->
-      <div class="me-derisk-card reveal">
-        <div class="me-derisk-fear">
+      <div class="at-derisk-card reveal">
+        <div class="at-derisk-fear">
           « On a déjà un <b>CTO / lead dev</b> en interne — à quoi bon vous ? »
         </div>
         <h4>On est votre multiplicateur, pas votre remplaçant</h4>
         <p>Votre CTO bosse sur le <b>core product</b>. Nous, on prend tout ce qui l'empêche de dormir mais ne scale pas son impact&nbsp;: <b>astreinte 7j/7, monitoring, patches sécurité, dépendances, incidents, reporting board</b>. 90 % de nos clients Scale ont un CTO interne — on sync avec lui en revue hebdo. <b>Il garde le cerveau produit. On prend le cerveau run.</b></p>
-        <div class="me-derisk-proof">
+        <div class="at-derisk-proof">
           <span>✓ Binôme CTO interne</span>
           <span>✓ Revue hebdo partagée</span>
           <span>✓ 90 % de nos clients Scale</span>
@@ -97,13 +97,13 @@ export const deriskHtml = `
       </div>
 
       <!-- PEUR 06 : Localisation Chambéry -->
-      <div class="me-derisk-card reveal reveal-d-1">
-        <div class="me-derisk-fear">
+      <div class="at-derisk-card reveal reveal-d-1">
+        <div class="at-derisk-fear">
           « Vous êtes à Chambéry, pas à Paris — <b>vous tiendrez la distance</b> ? »
         </div>
         <h4>Fuseau FR, coûts maîtrisés, zéro turnover parisien</h4>
         <p>On est basés à Chambéry (Savoie), par choix&nbsp;: <b>fuseau horaire français</b>, loyers 3× plus bas, <b>turnover tech divisé par 3 vs. Paris</b> (nos devs restent en moyenne 4 ans vs 18 mois sur le marché parisien). Résultat&nbsp;: vos forfaits sont 20-30 % moins chers à qualité équivalente, et la personne qui commence votre projet sera encore là dans 3 ans. <b>Pas d'off-shore, pas de near-shore — équipe 100 % France</b>.</p>
-        <div class="me-derisk-proof">
+        <div class="at-derisk-proof">
           <span>✓ Équipe 100 % FR</span>
           <span>✓ Turnover ÷ 3 vs Paris</span>
           <span>✓ Visio + 1 déplacement/trim. inclus</span>
@@ -111,13 +111,13 @@ export const deriskHtml = `
       </div>
 
       <!-- PEUR 07 : Et si faillite / rachat -->
-      <div class="me-derisk-card reveal reveal-d-2">
-        <div class="me-derisk-fear">
+      <div class="at-derisk-card reveal reveal-d-2">
+        <div class="at-derisk-fear">
           « Et si vous <b>faites faillite</b> ou vous faites <b>racheter</b> ? »
         </div>
         <h4>Clause d'escrow · partenaire secondaire nommé · comptabilité publique</h4>
         <p>Trois parades contractuelles&nbsp;: (1) <b>clause d'escrow du code + documentation</b> déposée chez un tiers de confiance (Codex Escrow ou équivalent) — si on disparaît, vous récupérez tout sous 7 j. (2) <b>Partenaire secondaire nommé dans le contrat</b> (une agence partenaire avec qui on a un accord de reprise réciproque). (3) Hagnéré Code SAS est <b>rentable, sans dette, sans dépendance investisseur</b> — comptabilité publique consultable sur societe.com.</p>
-        <div class="me-derisk-proof">
+        <div class="at-derisk-proof">
           <span>✓ Escrow code + docs</span>
           <span>✓ Partenaire secondaire</span>
           <span>✓ Bilan public · 0 dette</span>

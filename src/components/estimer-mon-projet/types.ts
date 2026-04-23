@@ -378,6 +378,7 @@ export interface CalculatorInput {
   email?: string;
   firstName?: string;
   company?: string;
+  rgpdConsent?: boolean; // required if any contact field is provided
   honeypot?: string;
 }
 

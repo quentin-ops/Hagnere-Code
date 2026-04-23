@@ -48,7 +48,7 @@ export const bodyHtml = `
           </div>
           <div class="dd-col">
             <h6>Protéger &amp; opérer</h6>
-            <a class="dd-link" href="/services/maintenance-evolution">
+            <a class="dd-link" href="/services/audit-technique">
               <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
               <div class="dd-meta"><div class="dd-title">Maintenance &amp; évolution</div><div class="dd-sub">Forfait mensuel, support prioritaire.</div></div>
             </a>
@@ -104,35 +104,35 @@ export const bodyHtml = `
     <div>
       <div class="shero-eyebrow">
         <span class="pill"><span class="dot"></span> Service · Maintenance &amp; évolution · TMA long-terme</span>
-        <a href="https://status.hagnere-code.fr" target="_blank" rel="noopener" class="me-status-pill" aria-label="Voir notre Statuspage publique">
-          <span class="me-status-dot"></span>
-          <span class="me-status-txt">status.hagnere-code.fr</span>
-          <span class="me-status-state">● operational</span>
+        <a href="https://status.hagnere-code.fr" target="_blank" rel="noopener" class="at-status-pill" aria-label="Voir notre Statuspage publique">
+          <span class="at-status-dot"></span>
+          <span class="at-status-txt">status.hagnere-code.fr</span>
+          <span class="at-status-state">● operational</span>
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
       </div>
       <h1>Votre équipe tech<br>dans 3 ans, 5 ans, 10 ans.<br><span class="accent">Pas un prestataire qui disparaît.</span></h1>
 
       <!-- KPI bar : chiffres concrets juste sous le H1 -->
-      <div class="me-hero-kpis">
-        <div class="me-hero-kpi">
-          <div class="me-hero-kpi-v">99,98<span>%</span></div>
-          <div class="me-hero-kpi-k">Uptime 12 mois · mesuré Better Stack</div>
+      <div class="at-hero-kpis">
+        <div class="at-hero-kpi">
+          <div class="at-hero-kpi-v">99,98<span>%</span></div>
+          <div class="at-hero-kpi-k">Uptime 12 mois · mesuré Better Stack</div>
         </div>
-        <div class="me-hero-kpi-sep"></div>
-        <div class="me-hero-kpi">
-          <div class="me-hero-kpi-v">14<span>/trim</span></div>
-          <div class="me-hero-kpi-k">Deploys · DORA elite</div>
+        <div class="at-hero-kpi-sep"></div>
+        <div class="at-hero-kpi">
+          <div class="at-hero-kpi-v">14<span>/trim</span></div>
+          <div class="at-hero-kpi-k">Deploys · DORA elite</div>
         </div>
-        <div class="me-hero-kpi-sep"></div>
-        <div class="me-hero-kpi">
-          <div class="me-hero-kpi-v">23<span>min</span></div>
-          <div class="me-hero-kpi-k">MTTR médian · P1 astreinte</div>
+        <div class="at-hero-kpi-sep"></div>
+        <div class="at-hero-kpi">
+          <div class="at-hero-kpi-v">23<span>min</span></div>
+          <div class="at-hero-kpi-k">MTTR médian · P1 astreinte</div>
         </div>
-        <div class="me-hero-kpi-sep"></div>
-        <div class="me-hero-kpi">
-          <div class="me-hero-kpi-v">4,3<span>ans</span></div>
-          <div class="me-hero-kpi-k">Ancienneté moyenne clients</div>
+        <div class="at-hero-kpi-sep"></div>
+        <div class="at-hero-kpi">
+          <div class="at-hero-kpi-v">4,3<span>ans</span></div>
+          <div class="at-hero-kpi-k">Ancienneté moyenne clients</div>
         </div>
       </div>
 
