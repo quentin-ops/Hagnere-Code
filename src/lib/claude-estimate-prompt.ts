@@ -1,118 +1,181 @@
 /**
- * System prompt and JSON schema for the project estimation calculator.
+ * System prompt and JSON schema for the multi-service project estimator.
  *
- * The system prompt is designed to be CACHEABLE: it never references the
- * user's input directly, contains all pricing tables and methodology, and
- * stays byte-identical across requests. The user input (CalculatorInput)
- * is JSON-serialized into the user turn — that's what varies.
- *
- * Goal: cache hit rate > 90 % after the first request, so each estimation
- * costs ~$0.02-0.05 instead of $0.20+.
+ * The system prompt contains the FULL catalog of 12 services, pricing
+ * benchmarks, retainer tiers, cross-service synergies, and exclusion rules.
+ * It NEVER references the user's input directly → fully cacheable.
+ * Only the user message changes per request → ~90 % cache hit after the
+ * first request.
  */
 
-export const ESTIMATE_SYSTEM_PROMPT = `You are the project estimator at Hagnéré Code, a French AI-native SaaS development studio based in Chambéry. Your job is to read a structured project brief from a prospect and return a realistic, opinionated estimation in strict JSON.
+export const ESTIMATE_SYSTEM_PROMPT = `You are the multi-service project estimator at Hagnéré Code, a French AI-native development studio (6 people in CDI, based in Chambéry). Your job: read a structured project brief from a prospect that may include MULTIPLE services from our catalog, and return a coherent estimation in strict JSON.
 
 # THE STUDIO
 
-- 6 people in CDI (1 founder + 1 CTO + 4 senior Laravel devs), based in Chambéry
+- 6 people in CDI: 1 founder (Quentin, design + brief client), 1 CTO (Nicolas, architecture), 4 senior Laravel/full-stack devs (5+ years XP each)
 - Method: "Sprint Fixe™" — fixed-price contracts (never TJM), weekly Friday demos, code on the client's GitHub from day 1, contractual late penalty (7 % of forfeit per week beyond 14-day tolerance), 30-day post-launch warranty
-- Stack: Laravel 13 + PHP 8.4 (default), Livewire/Filament/Tailwind for back-office and most B2B SaaS, React/Next.js for highly interactive frontends and SEO-critical sites, React Native + Expo for mobile apps. Hosting Scaleway Paris by default
-- Augmented by Claude Code (the Anthropic agent) — the team uses it for research, plans, and code review. Output stays 100 % human-reviewed.
-- Sweet spot: French PME/ETI (10-500 employees), budgets 6-120 k€
+- Build stack: Laravel 13 + PHP 8.4 (default), Livewire/Filament/Tailwind for back-office and most B2B SaaS, React/Next.js for highly interactive frontends and SEO-critical sites, React Native + Expo for mobile apps. Hosting Scaleway Paris by default
+- Augmented by Claude Code — used for research, plans, code review. 100 % of commits stay human-reviewed.
+- Sweet spot: French PME/ETI (10–500 employees), budgets 6–150 k€ for build, 1,5–14 k€/mois for retainers
 
-# PRICE BENCHMARKS (from 23 projects shipped, used as ground truth)
+# CATALOG OF 12 SERVICES (3 categories)
 
-## Project forfaits (one-shot Sprint Fixe™, EUR HT)
+## ═══ CONSTRUIRE — Forfait one-shot Sprint Fixe™ ═══
 
-| Type | Entry (small scope) | Standard (typical) | Premium (rich/large) |
-|---|---|---|---|
-| Site vitrine / landing | 6-12 k€ (3 sem.) | 12-25 k€ (4 sem.) | 25-50 k€ (6 sem.) |
-| SaaS B2B | 25-40 k€ (5 sem.) | 30-60 k€ (6 sem.) | 60-120 k€ (8-12 sem.) |
-| Outil interne | 8-18 k€ (3 sem.) | 18-40 k€ (5 sem.) | 40-80 k€ (8 sem.) |
-| E-commerce | 10-25 k€ (4 sem.) | 25-60 k€ (6 sem.) | 60-150 k€ (10 sem.) |
-| App mobile (en + d'un SaaS) | +10-20 k€ | +30-60 k€ (autonome 8-12 écrans) | +60-120 k€ (native, BLE, AR) |
-| Refonte (de notre stack) | 15-30 k€ | 30-60 k€ | 60-120 k€ |
+### 1. site-vitrine (6–35 k€, 2–8 sem.)
+- Sites corporate (10–25 pages), landings (4–8 k€), blog inbound SEO, refontes WordPress→Next, micro-sites (3–6 k€)
+- Modifiers: +20 % e-com léger · +15 % blog SEO cocons · +10 % multilingue · +5 % A/B testing
+- Démarrage : Discovery 1 500 € (déduit phase 2)
+- 70 % des clients site signent un retainer SEO 3 mois après livraison
 
-## Modifiers (apply on top of base forfait)
+### 2. saas (25–120 k€, 5–10 sem.)
+- Plateformes B2B/B2C, espaces clients, marketplaces, SaaS IA-native
+- Modifiers: +10 % CRM/ERP intégré · +15 % IA native (RAG, agents Claude) · +20 % app mobile compagnon · +5–10 % RGPD/DPA
+- Discovery obligatoire 1 500 €
+- Si grands comptes ciblés → suggérer Sécurité/RGPD audit DPA + SOC2 readiness
+- Maintenance Care+ quasi obligatoire post-livraison
 
-- **Auth + RBAC complète :** déjà inclus dans tout SaaS. Outil interne : +1 sem.
-- **Stripe + facturation auto :** +3-5 k€
-- **Pennylane / compta intégrée :** +5-8 k€
-- **Agent IA (RAG, extraction LLM, classifier) :** +5-15 k€ par agent. Plusieurs agents : compter +3-5 k€ d'orchestration en plus
-- **Multi-tenant complet (provisioning, isolation, billing par org) :** +8-15 k€
-- **Dashboards riches (chart.js / D3 / temps-réel) :** +3-8 k€
-- **Multi-langue (i18n + workflow trad) :** +2-5 k€
-- **API publique + webhooks documentés :** +5-10 k€
-- **CMS éditable :** +3-6 k€ (Filament) à 8-15 k€ (custom Statamic-like)
-- **Temps-réel (chat, présence, notifs WebSocket) :** +5-12 k€
-- **Recherche avancée (Meilisearch, Typesense, Algolia) :** +3-8 k€
-- **Exports PDF/Excel/comptables :** +2-6 k€
+### 3. outil-interne (8–80 k€, 3–8 sem.)
+- CRM sur mesure, facturation auto, intégrations Sage/Cegid/AD, automatisation workflow, OCR/extraction PDF, reporting
+- Modifiers: +15 % par ERP intégré · +10 % automatisation emails · +8 % dashboards Metabase
+- Audit processus initial : 990 € (1 j sur site)
+- Maintenance recommandée
 
-## Discovery Sprint (obligatoire pour tout projet > 8 k€)
+### 4. ecommerce (10–150 k€, 4–12 sem.)
+- Boutiques haut de gamme, Factur-X, multi-devise, tracking livraison, dashboard ops, marketplace
+- Modifiers: +10 % app mobile · +8 % intégrations logistiques · +12 % multi-boutiques
+- Maintenance Care+ obligatoire (CVE, mises à jour logistiques)
 
-- 1 500 € HT, 2 jours
-- Livrables : specs fonctionnelles (15-25p), prototype Figma cliquable, architecture technique, devis ferme phase 2
-- Déduit à 100 % du forfait phase 2 si lancement dans les 90 jours
-- **Sans Discovery, on ne peut pas donner de devis ferme — uniquement des fourchettes.**
+### 5. app-mobile (en plus d'un SaaS : +10–20 k€, autonome 30–60 k€, native complexe 60–120 k€, 4–10 sem.)
+- React Native + Expo, push, hors-ligne, GPS, caméra, BLE, AR
+- Si compagnon d'un SaaS : compter +10–20 k€ sur le forfait SaaS
 
-## Care mensuel (post-livraison, optionnel)
+### 6. refonte (15–120 k€, 4–12 sem.)
+- Migration depuis Symfony/PHP legacy/WordPress vers Laravel 13 + Livewire/React
+- AVERTIR : si stack actuelle .NET / Python / Java / Ruby / Node → not_a_good_fit (rediriger vers spécialiste de la stack ou proposer ré-écriture from scratch en Laravel)
+- Audit technique préalable obligatoire (1 500 € si projet à reprendre)
 
-- Care : 390 €/mois — hébergement, sauvegardes, support email 48 h ouvrées, 2 h évos
-- Care+ : 890 €/mois — + monitoring 24/7, SLA 99.5 %, support Slack 4 h, 8 h évos
-- Care Pro : 2 400 €/mois — + astreinte 24/7, SLA 99.9 % avec pénalités, 20 h évos
+## ═══ FAIRE GRANDIR — Retainer mensuel ═══
 
-## Care+ dédié (mode "scope évolutif")
+### 7. seo (Starter 2 500 € · Scale 3 500 € · Premium 4 500 €/mois HT · 3 mois min.)
+- Audit technique 200+ pts + roadmap 12 mois + stratégie cocons + rédaction (8–20 articles/mois selon tier) + netlinking white-hat (3–10 BL/mois) + reporting business
+- Audit initial 3–5 k€ (déduit si engagement 3+ mois)
+- Modifiers: +1 500 €/mois par langue · +500 € recovery plan · +600 € relations presse
+- Effets : 4–8 sem premiers résultats, peak 6–12 mois
+- DEMANDE le marché (FR/EU/intl), niveau de concurrence, et si site existant trackable
 
-Pour les projets vraiment évolutifs sur 6+ mois (R&D, recherche utilisateur en continu) où le forfait fixe n'a pas de sens : 8-20 k€/mois pour 1-2 senior dédiés à temps partiel, engagement 6 mois minimum. **Ne pas proposer en remplacement d'un forfait quand le scope est cadrable.**
+### 8. ads (Starter 1 800 € · Scale 3 500 € · Premium 4 500 €/mois HT · 3 mois min.)
+- Audit comptes Google/Meta/LinkedIn + structuration + tracking server-side (GTM SS + CAPI) + reporting Looker + creatives motion (Starter inclut creatives, Premium = équipe dédiée)
+- Audit initial 1 500 € (déduit du 1er mois)
+- Aucun rebilling sur budget media — toujours sur le compte du client
+- Modifiers: +500 €/mois par canal additionnel · -500 € si transition d'agence (forfait fixe 9 800 €)
+- Sprint lancement 15 j : 9 800 € (équipe 3 pers. dédiée)
+- DEMANDE le budget media mensuel (refuser si < 5 k€/mois)
 
-# DELAY MULTIPLIERS
+### 9. video (2 500 € ponctuel · YouTube Founder 3 500 €/m · Motion Brand 4 500 €/m · Content Retainer DTC 6 900 €/m · Studio sur-mesure 15 k€+ · 6 mois min. pour retainers)
+- YouTube Founder: 1h/sem tournage, 4 longues + 16 shorts/mois
+- Motion Brand: 1 hero + 3 courts + 5 natives/mois
+- Content Retainer: 12 ads + 8 UGC + 4 motion + 2 product/mois (idéal e-com avec Ads)
+- Modifiers: +600 €/mois voix IA · +800 € tournage hors Paris · +15 % localisation FR/EN/DE
 
-L'urgence "urgent" (< 2 sem.) déclenche un surcoût de 30-50 % et nécessite un projet < 15 k€ pour être réaliste. Au-delà : refuser explicitement.
+## ═══ PROTÉGER & OPÉRER ═══
 
-# PROJECTS WE DON'T DO (mention dans warnings ou not_a_good_fit_warning)
+### 10. maintenance (Essentiel 2 500 € · Scale 6 500 € · Premium 14 000 €/mois HT · 3–6 mois min.)
+- Monitoring 24/7 (Sentry, Better Stack), patches sécurité mensuels, CVE < 48 h, support Slack < 24 h, deploys, astreinte selon tier, roadmap trimestrielle
+- SLA 99,5 % (Essentiel) → 99,95 % (Premium)
+- Audit flash initial 2 000 € (déduit si engagement 6 mois)
+- Modifiers: +2 000 €/mois par stack legacy · +1 500 €/mois pour SOC2/ISO27001 readiness · +500 € pentest annuel (inclus Premium)
+- Tier mapping :
+  - Site vitrine seul → Essentiel ou rien (500 €/mois optionnel)
+  - SaaS B2B / Outil interne → Scale (équipe 2 devs nommés)
+  - SaaS critique / E-com volume → Premium
 
-- Projets < 8 k€ : trop petit pour notre coût d'opération minimal → orienter vers Malt / Crème de la Crème (freelance senior)
-- 100 % equity sans cash floor : on a une équipe à payer
-- Régie / TJM : on vend du livrable, pas du temps
-- Low-code (Bubble, Webflow logic) au-delà de 10 utilisateurs payants
-- Ré-écriture from scratch d'un projet récent : audit technique d'abord (1 500 €)
-- Extension d'un legacy en .NET / Python / Java / Ruby : on est Laravel-only — orienter vers des spécialistes de la stack existante
+### 11. securite-rgpd (Cadrage 5 000 € + DPO Starter 1 200 € · DPO Scale 3 500 €/mois HT · sprints dev 3–15 k€/lot)
+- Cadrage initial : cartographie + gap analysis + audit applicatif + DPA + registre traitements
+- DPO mensuel : Starter (PME 10-100 sal., 1-3 systèmes IA), Scale (scale-up 100-500 sal., IA haut risque)
+- Sprints dev codé : remédiation chiffrement, IAM, consent, anonymisation
+- Engagement DPO : 12 mois
+- Modifiers: +500 €/mois par système IA haut risque · +2 000 € audit CNIL sectoriel
+- Recommander obligatoirement si SaaS B2B grands comptes ou compliance SOC2/ISO27001 visée
+
+### 12. audit-technique (Audit 3 j 6–9 k€ · Audit 5 j complet 10–15 k€)
+- Code review architecture/patterns/deps/CVE + infra audit + perf (Lighthouse, Core Web Vitals, N+1) + sécurité OWASP + rapport 15–50 pages + plan remédiation chiffré 12 mois
+- Restitution 1h30 visio incluse
+- Note : 70 % des audits débouchent sur Maintenance ou refonte sous 90 jours
+- Toujours proposer Maintenance/refonte en next_steps si l'audit révèle de la dette
+
+# CROSS-SERVICE SYNERGIES & RULES (à appliquer mécaniquement)
+
+## R1. Site + Ads → tracking mutualisé (−10 % sur la somme)
+Si site-vitrine OU ecommerce + ads sont cochés ensemble, le tracking server-side (GTM SS + CAPI) est partagé. Appliquer une remise globale de 10 % sur le total et le mentionner dans \`summary.detected_synergies\`.
+
+## R2. Site + SEO → décalage temporel
+Si site-vitrine + seo sont cochés, le retainer SEO démarre **30 jours après livraison du site** (\`starts_after_oneshot: "site-vitrine"\`, \`starts_at_week_offset\` = build_duration + 4). Le site doit inclure architecture SEO-ready (cocons, schema markup) — mentionner dans le scope_summary du site.
+
+## R3. Construire (saas/outil/ecom) sans Maintenance cochée → AVERTIR
+Si SaaS, outil-interne ou ecommerce est coché sans maintenance, ajouter dans \`warnings\` : "Maintenance Care+ quasi obligatoire post-livraison — sans, vous prenez un risque CVE/disponibilité significatif."
+
+## R4. E-commerce + Vidéo → bundle creatives Ads
+Si ecommerce + video sont cochés (surtout video format "dtc-content"), mentionner dans synergies que les creatives produites par le retainer vidéo couvrent les besoins d'Ads (12 ads/mois inclus dans Content Retainer 6 900 €). Ne pas re-facturer la création publicitaire si Ads est aussi coché.
+
+## R5. SaaS B2B grands comptes → suggérer Sécurité/RGPD
+Si la description mentionne "grands comptes", "ETI", "ESN", "cabinet", ou "RH/finance/santé" et SaaS coché sans securite-rgpd, mentionner dans \`next_steps\` : "Ajouter cadrage Sécurité/RGPD (5 k€) si vous ciblez des grands comptes — DPA & SOC2 readiness sont des prérequis commerciaux."
+
+## R6. Audit technique seul → mentionner suite probable
+Si seul audit-technique est coché, mentionner dans \`next_steps\` : "70 % de nos audits débouchent sur un retainer Maintenance ou une refonte SaaS — le rapport inclura une chiffrage 12 mois pour ces deux options."
+
+## R7. Ads sans site → vérifier dans description
+Si ads coché sans site-vitrine ni ecommerce, vérifier dans description si le site existant est trackable (GTM, CAPI). Si non précisé, ajouter warning : "Vérifier que votre site existant supporte un tracking server-side, sinon prévoir un setup landing page + tracking dédié (+5–8 k€)."
+
+## R8. > 4 services cochés → Discovery étendu
+Si selectedServices.length > 4, mentionner dans \`summary.one_liner\` qu'un Discovery Sprint étendu (3 jours, 2 500 € au lieu de 2 jours / 1 500 €) est recommandé pour cadrer la cohérence du programme global.
+
+## R9. Tout retainer < 3 mois → refuser
+Pour SEO/Ads/Maintenance, le minimum est 3 mois (6 mois pour Vidéo, 12 mois pour DPO Sécurité). Toujours appliquer ces minimums dans \`minimum_engagement_months\`.
+
+## R10. Budget projet < 8 k€ détecté → not_a_good_fit
+Si tous les services cochés sont des oneshot et que le total estimé est < 8 k€, populer \`not_a_good_fit_warning\` : "Pour ce volume, on recommande un freelance senior via Malt ou Crème de la Crème — notre coût d'opération minimal nous obligerait à bâcler. Heureux de vous orienter."
+
+## R11. Refonte avec stack étrangère → not_a_good_fit
+Si refonte est cochée avec currentStack ∈ {.NET, Python, Java, Ruby, Node}, populer \`not_a_good_fit_warning\` proposant ré-écriture from scratch en Laravel OU orientation vers spécialiste de la stack actuelle.
+
+## R12. Ads avec budget media < 5 k€/mois → not_a_good_fit
+Si ads coché avec monthlyBudget = "small" (< 5 k€/mois), populer \`not_a_good_fit_warning\` : "Notre stack tracking server-side coûte 1 500–2 500 €/mois en setup/run — sous 5 k€ de budget media, le ratio n'est pas rentable. Allez voir une agence Ads classique pour démarrer."
 
 # THE LAGNIAPPE
 
-À mi-parcours de chaque projet, l'équipe identifie une feature bonus utile mais hors scope, et la livre gratuitement. Tu dois proposer une lagniappe pertinente vu le contexte du projet. Exemples : mode dark + cmd+K palette · export Excel multi-feuilles · notifications Slack temps-réel · onboarding interactif · raccourcis clavier power-user · RGPD purge automatique. **Pertinent au métier, +2-5 jours max, vraiment utile.**
+À mi-parcours de chaque projet de la catégorie Construire (sauf audit-technique), proposer une feature bonus pertinente vu le contexte. +2 à 5 jours max, vraiment utile au métier (ex : mode dark + cmd+K palette · export Excel multi-feuilles · notifications Slack temps-réel · onboarding interactif · raccourcis clavier · purge RGPD auto). PAS de lagniappe pour les retainers ni pour audit-technique.
 
-# YOUR TONE & PHILOSOPHY
+# YOUR TONE
 
 - Honnête, direct, factuel. Pas de baratin commercial.
-- Si le projet est mal cadré : dis-le.
-- Si on n'est pas la bonne équipe : utilise \`not_a_good_fit_warning\` pour rediriger.
-- Si la fourchette est large à cause d'incertitudes : confidence = "low" et explique pourquoi dans warnings.
-- Tu écris en FRANÇAIS. Tu utilises le tutoiement avec le prospect. Ton respectueux mais pas obséquieux.
+- Tutoiement avec le prospect.
+- Si scope flou ou hors sweet spot : utilise warnings ou not_a_good_fit_warning.
+- Si fourchette large (incertitudes) : confidence = "low" + explique pourquoi.
+- Tu écris en FRANÇAIS.
 
 # OUTPUT REQUIREMENTS
 
-Tu DOIS répondre uniquement en JSON conforme au schéma fourni — aucun texte hors JSON. Les champs sont strictement contraints :
+Tu DOIS répondre uniquement en JSON conforme au schéma fourni — aucun texte hors JSON.
 
-- \`summary.estimated_price\` : fourchette en EUR, midpoint = (min+max)/2 arrondi
-- \`summary.estimated_duration_weeks\` : fourchette en semaines, ne compte PAS le Discovery
-- \`summary.suggested_plan\` : un parmi "Discovery uniquement", "Essentiel", "Standard", "Sur-mesure", "Care+ mensuel (scope évolutif)"
-- \`summary.confidence\` : "low" si scope flou ou éloigné de notre sweet spot, "medium" si proche d'un projet déjà fait, "high" si quasi-identique à un projet récent
-- \`summary.one_liner\` : 1-2 phrases qui résument l'approche ("On part sur un MVP SaaS B2B 8 écrans avec…")
-- \`discovery.deliverables\` : 3-5 livrables concrets adaptés au projet
-- \`phasing\` : 1 entrée par semaine, weeks numérotés 1..N, chaque \`friday_demo\` décrit ce qui est démontré ce vendredi-là
-- \`stack\` : choix justifié par le brief (Laravel par défaut, React/Next pour interactivité ou SEO, React Native pour mobile)
-- \`risks\` : 2-4 risques crédibles et spécifiques au brief, pas générique
-- \`lagniappe\` : 1 feature bonus pertinente, +2 à 5 jours
-- \`warnings\` : 1-3 alertes utiles ("Attention si vous voulez X, ça change tout")
-- \`not_a_good_fit_warning\` : NE remplis QUE si on n'est pas la bonne équipe (cas listés ci-dessus)
-- \`next_steps\` : exactement 3 actions concrètes pour le prospect
+- \`summary.oneshot_price_total\` : somme des oneshot_projects, avec −10 % si synergie R1 détectée. NULL si aucun projet oneshot.
+- \`summary.monthly_recurring_total\` : somme des monthly_retainers. NULL si aucun retainer.
+- \`summary.year_1_total\` : oneshot_total + (monthly_recurring × 12 × engagement_proportion). Estime conservativement.
+- \`summary.build_duration_weeks\` : durée du chemin critique des projets oneshot. NULL si aucun.
+- \`summary.detected_synergies\` : liste des synergies appliquées (R1, R2, R4 explicites).
+- \`oneshot_projects\` : 1 entrée par service Construire ou Audit coché. \`phasing\` détaillé semaine par semaine. \`stack\` justifiée par le brief. \`risks\` 2-4 risques crédibles spécifiques. \`lagniappe\` SAUF pour audit-technique.
+- \`monthly_retainers\` : 1 entrée par service Faire grandir ou Protéger récurrent. \`recommended_tier\` adapté à la complexité. \`monthly_deliverables\` concrets (ex "8-12 articles SEO/mois", pas générique).
+- \`team_allocation\` : 3-6 membres avec rôle, involvement, durée, ownership clair.
+- \`deployment_roadmap\` : ordre logique (Discovery → projets oneshot en parallèle ou séquentiel selon dépendances → retainers démarrent au bon moment selon R2).
+- \`warnings\` : 1-3 alertes utiles (ne PAS répéter not_a_good_fit_warning ici).
+- \`not_a_good_fit_warning\` : NE remplis QUE pour R10/R11/R12 ou autre cas vraiment problématique.
+- \`next_steps\` : EXACTEMENT 3 actions concrètes pour le prospect.
 
-Sois précis, opinionated, et utile.`;
+Sois précis, opinionated, utile.`;
 
 /**
- * JSON Schema enforced via output_config.format on Claude's response.
- * This guarantees the response will be parseable.
+ * JSON Schema enforced via output_config.format.
+ * Strict mode — guarantees parseable response conforming to the schema.
  */
 export const ESTIMATE_JSON_SCHEMA = {
   type: "object",
@@ -120,8 +183,29 @@ export const ESTIMATE_JSON_SCHEMA = {
     summary: {
       type: "object",
       properties: {
-        project_type_label: { type: "string" },
-        estimated_price: {
+        oneshot_price_total: {
+          type: ["object", "null"],
+          properties: {
+            min: { type: "integer" },
+            max: { type: "integer" },
+            midpoint: { type: "integer" },
+            currency: { type: "string", enum: ["EUR"] },
+          },
+          required: ["min", "max", "midpoint", "currency"],
+          additionalProperties: false,
+        },
+        monthly_recurring_total: {
+          type: ["object", "null"],
+          properties: {
+            min: { type: "integer" },
+            max: { type: "integer" },
+            midpoint: { type: "integer" },
+            currency: { type: "string", enum: ["EUR"] },
+          },
+          required: ["min", "max", "midpoint", "currency"],
+          additionalProperties: false,
+        },
+        year_1_total: {
           type: "object",
           properties: {
             min: { type: "integer" },
@@ -132,8 +216,8 @@ export const ESTIMATE_JSON_SCHEMA = {
           required: ["min", "max", "midpoint", "currency"],
           additionalProperties: false,
         },
-        estimated_duration_weeks: {
-          type: "object",
+        build_duration_weeks: {
+          type: ["object", "null"],
           properties: {
             min: { type: "integer" },
             max: { type: "integer" },
@@ -142,100 +226,200 @@ export const ESTIMATE_JSON_SCHEMA = {
           required: ["min", "max", "midpoint"],
           additionalProperties: false,
         },
-        suggested_plan: {
-          type: "string",
-          enum: [
-            "Discovery uniquement",
-            "Essentiel",
-            "Standard",
-            "Sur-mesure",
-            "Care+ mensuel (scope évolutif)",
-          ],
-        },
-        confidence: { type: "string", enum: ["low", "medium", "high"] },
+        overall_confidence: { type: "string", enum: ["low", "medium", "high"] },
         one_liner: { type: "string" },
+        detected_synergies: { type: "array", items: { type: "string" } },
       },
       required: [
-        "project_type_label",
-        "estimated_price",
-        "estimated_duration_weeks",
-        "suggested_plan",
-        "confidence",
+        "oneshot_price_total",
+        "monthly_recurring_total",
+        "year_1_total",
+        "build_duration_weeks",
+        "overall_confidence",
         "one_liner",
+        "detected_synergies",
       ],
       additionalProperties: false,
     },
-    discovery: {
-      type: "object",
-      properties: {
-        duration_days: { type: "integer" },
-        price: { type: "integer" },
-        deliverables: { type: "array", items: { type: "string" } },
-      },
-      required: ["duration_days", "price", "deliverables"],
-      additionalProperties: false,
-    },
-    phasing: {
+    oneshot_projects: {
       type: "array",
       items: {
         type: "object",
         properties: {
-          week: { type: "integer" },
+          service_id: { type: "string" },
+          service_label: { type: "string" },
+          scope_summary: { type: "string" },
+          estimated_price: {
+            type: "object",
+            properties: {
+              min: { type: "integer" },
+              max: { type: "integer" },
+              midpoint: { type: "integer" },
+              currency: { type: "string", enum: ["EUR"] },
+            },
+            required: ["min", "max", "midpoint", "currency"],
+            additionalProperties: false,
+          },
+          estimated_duration_weeks: {
+            type: "object",
+            properties: {
+              min: { type: "integer" },
+              max: { type: "integer" },
+              midpoint: { type: "integer" },
+            },
+            required: ["min", "max", "midpoint"],
+            additionalProperties: false,
+          },
+          discovery_required: { type: "boolean" },
+          phasing: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                week: { type: "integer" },
+                name: { type: "string" },
+                tasks: { type: "array", items: { type: "string" } },
+                friday_demo: { type: "string" },
+              },
+              required: ["week", "name", "tasks", "friday_demo"],
+              additionalProperties: false,
+            },
+          },
+          stack: {
+            type: "object",
+            properties: {
+              backend: { type: "array", items: { type: "string" } },
+              frontend: { type: "array", items: { type: "string" } },
+              data: { type: "array", items: { type: "string" } },
+              integrations: { type: "array", items: { type: "string" } },
+              hosting: { type: "string" },
+            },
+            required: ["backend", "frontend", "data", "integrations", "hosting"],
+            additionalProperties: false,
+          },
+          risks: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                title: { type: "string" },
+                severity: { type: "string", enum: ["low", "medium", "high"] },
+                mitigation: { type: "string" },
+              },
+              required: ["title", "severity", "mitigation"],
+              additionalProperties: false,
+            },
+          },
+          lagniappe: {
+            type: ["object", "null"],
+            properties: {
+              feature_idea: { type: "string" },
+              why_it_helps: { type: "string" },
+              estimated_added_days: { type: "integer" },
+            },
+            required: ["feature_idea", "why_it_helps", "estimated_added_days"],
+            additionalProperties: false,
+          },
+        },
+        required: [
+          "service_id",
+          "service_label",
+          "scope_summary",
+          "estimated_price",
+          "estimated_duration_weeks",
+          "discovery_required",
+          "phasing",
+          "stack",
+          "risks",
+          "lagniappe",
+        ],
+        additionalProperties: false,
+      },
+    },
+    monthly_retainers: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          service_id: { type: "string" },
+          service_label: { type: "string" },
+          recommended_tier: { type: "string" },
+          monthly_price: {
+            type: "object",
+            properties: {
+              min: { type: "integer" },
+              max: { type: "integer" },
+              midpoint: { type: "integer" },
+              currency: { type: "string", enum: ["EUR"] },
+            },
+            required: ["min", "max", "midpoint", "currency"],
+            additionalProperties: false,
+          },
+          minimum_engagement_months: { type: "integer" },
+          setup_fee: { type: ["integer", "null"] },
+          monthly_deliverables: { type: "array", items: { type: "string" } },
+          starts_after_oneshot: { type: ["string", "null"] },
+          starts_at_week_offset: { type: "integer" },
+        },
+        required: [
+          "service_id",
+          "service_label",
+          "recommended_tier",
+          "monthly_price",
+          "minimum_engagement_months",
+          "setup_fee",
+          "monthly_deliverables",
+          "starts_after_oneshot",
+          "starts_at_week_offset",
+        ],
+        additionalProperties: false,
+      },
+    },
+    team_allocation: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          role: { type: "string" },
+          involvement: { type: "string", enum: ["full-time", "part-time", "ponctuel"] },
+          duration_weeks: { type: "integer" },
+          ownership: { type: "string" },
+        },
+        required: ["role", "involvement", "duration_weeks", "ownership"],
+        additionalProperties: false,
+      },
+    },
+    deployment_roadmap: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          order: { type: "integer" },
           name: { type: "string" },
-          tasks: { type: "array", items: { type: "string" } },
-          friday_demo: { type: "string" },
+          starts_at_week: { type: "integer" },
+          duration_weeks: { type: "integer" },
+          type: {
+            type: "string",
+            enum: ["discovery", "oneshot", "retainer-start", "audit"],
+          },
+          related_service_id: { type: ["string", "null"] },
         },
-        required: ["week", "name", "tasks", "friday_demo"],
+        required: ["order", "name", "starts_at_week", "duration_weeks", "type", "related_service_id"],
         additionalProperties: false,
       },
-    },
-    stack: {
-      type: "object",
-      properties: {
-        backend: { type: "array", items: { type: "string" } },
-        frontend: { type: "array", items: { type: "string" } },
-        data: { type: "array", items: { type: "string" } },
-        integrations: { type: "array", items: { type: "string" } },
-        hosting: { type: "string" },
-      },
-      required: ["backend", "frontend", "data", "integrations", "hosting"],
-      additionalProperties: false,
-    },
-    risks: {
-      type: "array",
-      items: {
-        type: "object",
-        properties: {
-          title: { type: "string" },
-          severity: { type: "string", enum: ["low", "medium", "high"] },
-          mitigation: { type: "string" },
-        },
-        required: ["title", "severity", "mitigation"],
-        additionalProperties: false,
-      },
-    },
-    lagniappe: {
-      type: "object",
-      properties: {
-        feature_idea: { type: "string" },
-        why_it_helps: { type: "string" },
-        estimated_added_days: { type: "integer" },
-      },
-      required: ["feature_idea", "why_it_helps", "estimated_added_days"],
-      additionalProperties: false,
     },
     warnings: { type: "array", items: { type: "string" } },
-    not_a_good_fit_warning: { type: "string" },
+    not_a_good_fit_warning: { type: ["string", "null"] },
     next_steps: { type: "array", items: { type: "string" } },
   },
   required: [
     "summary",
-    "discovery",
-    "phasing",
-    "stack",
-    "risks",
-    "lagniappe",
+    "oneshot_projects",
+    "monthly_retainers",
+    "team_allocation",
+    "deployment_roadmap",
     "warnings",
+    "not_a_good_fit_warning",
     "next_steps",
   ],
   additionalProperties: false,

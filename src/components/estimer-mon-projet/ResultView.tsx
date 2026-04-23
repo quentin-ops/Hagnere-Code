@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import type { EstimateResult, RiskSeverity } from "./types";
+import type { MultiServiceEstimate, RiskSeverity } from "./types";
 
 interface ResultViewProps {
-  result: EstimateResult;
+  result: MultiServiceEstimate;
   tokensUsed: number;
   contactEmail: string;
   onRestart: () => void;
@@ -21,61 +21,127 @@ const SEVERITY_LABELS: Record<RiskSeverity, string> = {
 };
 
 export function ResultView({ result, tokensUsed, contactEmail, onRestart }: ResultViewProps) {
-  const { summary, discovery, phasing, stack, risks, lagniappe, warnings, not_a_good_fit_warning, next_steps } = result;
+  const {
+    summary,
+    oneshot_projects,
+    monthly_retainers,
+    team_allocation,
+    deployment_roadmap,
+    risks_global,
+    warnings,
+    not_a_good_fit_warning,
+    next_steps,
+  } = {
+    risks_global: [], // not in v1 schema yet, kept for future
+    ...result,
+  };
+  void risks_global;
 
-  // Prefill mailto for the "demander un devis" CTA
-  const calendlyMailtoBody = encodeURIComponent(
+  // Build mailto with the synthesis pre-filled
+  const mailtoBody = encodeURIComponent(
     `Bonjour,\n\nJ'ai utilisé votre calculateur IA et l'estimation me paraît cohérente. ` +
       `Je voudrais réserver un Discovery Sprint pour avoir un devis ferme.\n\n` +
       `Synthèse de l'estimation :\n` +
-      `- ${summary.project_type_label}\n` +
-      `- Fourchette : ${euro(summary.estimated_price.min)}–${euro(summary.estimated_price.max)} € · ${summary.estimated_duration_weeks.min}-${summary.estimated_duration_weeks.max} sem.\n` +
-      `- Plan suggéré : ${summary.suggested_plan}\n\n` +
-      `Merci !`
+      `- Projets one-shot : ${
+        summary.oneshot_price_total
+          ? `${euro(summary.oneshot_price_total.min)} – ${euro(summary.oneshot_price_total.max)} €`
+          : "aucun"
+      }\n` +
+      `- Mensuel récurrent : ${
+        summary.monthly_recurring_total
+          ? `${euro(summary.monthly_recurring_total.min)} – ${euro(summary.monthly_recurring_total.max)} €/mois`
+          : "aucun"
+      }\n` +
+      `- Année 1 totale : ${euro(summary.year_1_total.min)} – ${euro(summary.year_1_total.max)} €\n\n` +
+      `Services dans le scope : ${[
+        ...oneshot_projects.map((p) => p.service_label),
+        ...monthly_retainers.map((r) => r.service_label),
+      ].join(", ")}\n\nMerci !`,
   );
   const mailtoHref = `mailto:hello@hagnere-code.fr?subject=${encodeURIComponent(
-    "Demande de Discovery Sprint suite estimation IA"
-  )}&body=${calendlyMailtoBody}`;
+    "Demande de Discovery Sprint suite estimation IA",
+  )}&body=${mailtoBody}`;
 
   return (
     <section className="rview">
       <div className="wrap">
-        {/* Hero card — the big estimate */}
+        {/* ═══ HERO ═══ */}
         <div className="rview-hero">
           <div className="rview-hero-bg-grid" />
           <div className="rview-hero-bg-radial" />
 
           <div className="rview-hero-tag">
-            <span className="rview-hero-tag-pill">ESTIMATION IA</span>
+            <span className="rview-hero-tag-pill">ESTIMATION IA MULTI-SERVICES</span>
             <span className="rview-hero-tag-text">
-              Générée par Claude Opus 4.7 · ~{Math.round(tokensUsed / 100) / 10} k tokens
+              Claude Opus 4.7 · ~{Math.round(tokensUsed / 100) / 10} k tokens
             </span>
           </div>
 
-          <h1 className="rview-hero-title">
-            <span className="rview-hero-amount">
-              {euro(summary.estimated_price.min)}
-              <span className="rview-hero-currency">–</span>
-              {euro(summary.estimated_price.max)}
-              <span className="rview-hero-currency"> € HT</span>
-            </span>
-          </h1>
+          {/* Multi-volet pricing */}
+          <div className="rview-hero-prices">
+            {summary.oneshot_price_total && (
+              <div className="rview-hero-price">
+                <div className="rview-hero-price-label">PROJETS ONE-SHOT</div>
+                <div className="rview-hero-price-amount">
+                  {euro(summary.oneshot_price_total.min)}
+                  <span className="rview-hero-price-sep">–</span>
+                  {euro(summary.oneshot_price_total.max)}
+                  <span className="rview-hero-price-currency"> € HT</span>
+                </div>
+              </div>
+            )}
+            {summary.monthly_recurring_total && (
+              <div className="rview-hero-price">
+                <div className="rview-hero-price-label">MENSUEL RÉCURRENT</div>
+                <div className="rview-hero-price-amount">
+                  {euro(summary.monthly_recurring_total.min)}
+                  <span className="rview-hero-price-sep">–</span>
+                  {euro(summary.monthly_recurring_total.max)}
+                  <span className="rview-hero-price-currency"> € / mois</span>
+                </div>
+              </div>
+            )}
+            <div className="rview-hero-price rview-hero-price-total">
+              <div className="rview-hero-price-label">ANNÉE 1 TOTALE</div>
+              <div className="rview-hero-price-amount">
+                {euro(summary.year_1_total.min)}
+                <span className="rview-hero-price-sep">–</span>
+                {euro(summary.year_1_total.max)}
+                <span className="rview-hero-price-currency"> € HT</span>
+              </div>
+            </div>
+          </div>
 
           <div className="rview-hero-subline">
+            {summary.build_duration_weeks && (
+              <span>
+                <b>{summary.build_duration_weeks.min}–{summary.build_duration_weeks.max}</b> semaines de build
+              </span>
+            )}
+            {summary.build_duration_weeks && <span className="sep" />}
             <span>
-              <b>{summary.estimated_duration_weeks.min}–{summary.estimated_duration_weeks.max}</b> semaines
-            </span>
-            <span className="sep" />
-            <span>
-              Plan suggéré&nbsp;: <b>{summary.suggested_plan}</b>
-            </span>
-            <span className="sep" />
-            <span>
-              Confiance&nbsp;: <ConfidenceBadge confidence={summary.confidence} />
+              Confiance&nbsp;: <ConfidenceBadge confidence={summary.overall_confidence} />
             </span>
           </div>
 
           <p className="rview-hero-oneliner">{summary.one_liner}</p>
+
+          {/* Synergies détectées */}
+          {summary.detected_synergies.length > 0 && (
+            <div className="rview-hero-synergies">
+              <div className="rview-hero-synergies-h">SYNERGIES DÉTECTÉES</div>
+              <ul>
+                {summary.detected_synergies.map((s, i) => (
+                  <li key={i}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <path d="M5 12l5 5L20 7" />
+                    </svg>
+                    <span>{s}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <div className="rview-hero-disclaimer">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -89,7 +155,7 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
           </div>
         </div>
 
-        {/* Not-a-good-fit alert */}
+        {/* Misfit alert */}
         {not_a_good_fit_warning && (
           <div className="rview-misfit">
             <div className="rview-misfit-ic">
@@ -104,133 +170,91 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
           </div>
         )}
 
-        {/* Discovery + Phasing */}
-        <div className="rview-grid">
-          <div className="rview-discovery">
+        {/* ═══ ROADMAP DE DÉPLOIEMENT ═══ */}
+        {deployment_roadmap.length > 0 && (
+          <div className="rview-roadmap">
             <div className="rview-section-h">
-              <span className="eyebrow">— Étape 0 · Avant le projet</span>
-              <h2>Discovery Sprint</h2>
+              <span className="eyebrow">— Plan de déploiement</span>
+              <h2>
+                L&apos;ordre <span className="grad-accent">recommandé.</span>
+              </h2>
             </div>
-            <div className="rview-discovery-card">
-              <div className="rview-discovery-price">
-                <span className="rview-discovery-amount">{euro(discovery.price)} €</span>
-                <span className="rview-discovery-meta">{discovery.duration_days} jours · déduits si phase 2</span>
+            <RoadmapTimeline phases={deployment_roadmap} />
+          </div>
+        )}
+
+        {/* ═══ DEUX COLONNES : One-shot + Retainers ═══ */}
+        <div className="rview-two-cols">
+          {/* One-shot column */}
+          {oneshot_projects.length > 0 && (
+            <div className="rview-col">
+              <div className="rview-section-h">
+                <span className="eyebrow">— Forfaits projet</span>
+                <h2>
+                  {oneshot_projects.length} projet{oneshot_projects.length > 1 ? "s" : ""}
+                  <br />
+                  <span className="grad-accent">one-shot.</span>
+                </h2>
               </div>
-              <ul className="rview-discovery-list">
-                {discovery.deliverables.map((d) => (
-                  <li key={d}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12l5 5L20 7" />
-                    </svg>
-                    <span>{d}</span>
-                  </li>
+              <div className="rview-projects">
+                {oneshot_projects.map((p) => (
+                  <ProjectCard key={p.service_id} project={p} />
                 ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="rview-phasing">
-            <div className="rview-section-h">
-              <span className="eyebrow">— Phasing semaine par semaine</span>
-              <h2>
-                Le Sprint Fixe™ <span className="grad-accent">en {phasing.length} semaines</span>
-              </h2>
-            </div>
-            <div className="rview-phasing-rail">
-              {phasing.map((week) => (
-                <div key={week.week} className="rview-phasing-row">
-                  <div className="rview-phasing-marker">
-                    <span>{week.week}</span>
-                  </div>
-                  <div className="rview-phasing-card">
-                    <div className="rview-phasing-meta">
-                      <span className="rview-phasing-week">SEMAINE {week.week}</span>
-                      <span className="rview-phasing-name">{week.name}</span>
-                    </div>
-                    <ul className="rview-phasing-tasks">
-                      {week.tasks.map((task, i) => (
-                        <li key={i}>{task}</li>
-                      ))}
-                    </ul>
-                    <div className="rview-phasing-friday">
-                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <polygon points="5 3 19 12 5 21 5 3" />
-                      </svg>
-                      <span>
-                        <b>Démo vendredi&nbsp;:</b> {week.friday_demo}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Stack + Lagniappe */}
-        <div className="rview-grid-2">
-          <div className="rview-stack">
-            <div className="rview-section-h">
-              <span className="eyebrow">— Stack recommandée</span>
-              <h2>L&apos;outillage technique.</h2>
-            </div>
-            <div className="rview-stack-list">
-              <StackRow label="Backend" items={stack.backend} />
-              <StackRow label="Frontend" items={stack.frontend} />
-              <StackRow label="Data &amp; stockage" items={stack.data} />
-              <StackRow label="Intégrations" items={stack.integrations} />
-              <StackRow label="Hébergement" items={[stack.hosting]} />
-            </div>
-          </div>
-
-          <div className="rview-lagniappe">
-            <div className="rview-section-h">
-              <span className="eyebrow">— La lagniappe</span>
-              <h2>
-                Le cadeau <span className="grad-accent">offert.</span>
-              </h2>
-            </div>
-            <div className="rview-lagniappe-card">
-              <div className="rview-lagniappe-icon">🎁</div>
-              <h3 className="rview-lagniappe-feature">{lagniappe.feature_idea}</h3>
-              <p className="rview-lagniappe-why">{lagniappe.why_it_helps}</p>
-              <div className="rview-lagniappe-meta">
-                <span className="rview-lagniappe-pill">+{lagniappe.estimated_added_days} jours</span>
-                <span>Inclus, jamais facturé</span>
               </div>
             </div>
-          </div>
+          )}
+
+          {/* Retainers column */}
+          {monthly_retainers.length > 0 && (
+            <div className="rview-col">
+              <div className="rview-section-h">
+                <span className="eyebrow">— Retainers mensuels</span>
+                <h2>
+                  {monthly_retainers.length} prestation{monthly_retainers.length > 1 ? "s" : ""}
+                  <br />
+                  <span className="grad-accent">récurrente{monthly_retainers.length > 1 ? "s" : ""}.</span>
+                </h2>
+              </div>
+              <div className="rview-retainers">
+                {monthly_retainers.map((r) => (
+                  <RetainerCard key={r.service_id} retainer={r} />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
-        {/* Risks */}
-        {risks.length > 0 && (
-          <div className="rview-risks">
+        {/* ═══ ÉQUIPE ALLOUÉE ═══ */}
+        {team_allocation.length > 0 && (
+          <div className="rview-team">
             <div className="rview-section-h">
-              <span className="eyebrow">— Risques identifiés</span>
+              <span className="eyebrow">— Équipe allouée</span>
               <h2>
-                Ce qu&apos;il faut <span className="grad-accent">anticiper.</span>
+                Qui fait quoi, <span className="grad-accent">combien de temps.</span>
               </h2>
             </div>
-            <div className="rview-risks-grid">
-              {risks.map((risk, i) => (
-                <div key={i} className={`rview-risk rview-risk-${risk.severity}`}>
-                  <div className="rview-risk-meta">
-                    <span className={`rview-risk-pill rview-risk-pill-${risk.severity}`}>
-                      {SEVERITY_LABELS[risk.severity]}
+            <div className="rview-team-grid">
+              {team_allocation.map((m, i) => (
+                <div key={i} className="rview-team-card">
+                  <div className="rview-team-role">{m.role}</div>
+                  <div className="rview-team-meta">
+                    <span className={`rview-team-pill rview-team-pill-${m.involvement}`}>
+                      {m.involvement === "full-time" && "Plein temps"}
+                      {m.involvement === "part-time" && "Temps partiel"}
+                      {m.involvement === "ponctuel" && "Ponctuel"}
+                    </span>
+                    <span>
+                      <b>{m.duration_weeks}</b> sem.
                     </span>
                   </div>
-                  <h3 className="rview-risk-title">{risk.title}</h3>
-                  <div className="rview-risk-mitigation">
-                    <span className="rview-risk-mitigation-h">MITIGATION</span>
-                    <p>{risk.mitigation}</p>
-                  </div>
+                  <div className="rview-team-ownership">{m.ownership}</div>
                 </div>
               ))}
             </div>
           </div>
         )}
 
-        {/* Warnings */}
+        {/* ═══ WARNINGS ═══ */}
         {warnings.length > 0 && (
           <div className="rview-warnings">
             <div className="rview-warnings-h">
@@ -247,7 +271,7 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
           </div>
         )}
 
-        {/* Next steps + CTAs */}
+        {/* ═══ NEXT STEPS + CTAs ═══ */}
         <div className="rview-next">
           <div className="rview-next-bg-grid" />
           <div className="rview-next-bg-radial" />
@@ -274,7 +298,7 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
               </svg>
             </Link>
             <Link href="/tarifs" className="rview-next-btn-ghost">
-              Voir les fourchettes de prix
+              Voir les fourchettes par service
             </Link>
             <button type="button" onClick={onRestart} className="rview-next-btn-ghost">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -295,16 +319,242 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
   );
 }
 
+// =====================================================================
+// Sub-components
+// =====================================================================
+
 function ConfidenceBadge({ confidence }: { confidence: "low" | "medium" | "high" }) {
   const labels = { low: "faible", medium: "moyenne", high: "élevée" };
   return <span className={`rview-conf rview-conf-${confidence}`}>{labels[confidence]}</span>;
+}
+
+function ProjectCard({
+  project,
+}: {
+  project: MultiServiceEstimate["oneshot_projects"][number];
+}) {
+  return (
+    <details className="rview-project" open>
+      <summary className="rview-project-summary">
+        <div className="rview-project-head">
+          <div>
+            <div className="rview-project-label">{project.service_label}</div>
+            <div className="rview-project-scope">{project.scope_summary}</div>
+          </div>
+          <div className="rview-project-price">
+            <div className="rview-project-amount">
+              {euro(project.estimated_price.min)} – {euro(project.estimated_price.max)} €
+            </div>
+            <div className="rview-project-meta">
+              {project.estimated_duration_weeks.min}–{project.estimated_duration_weeks.max} sem.
+              {project.discovery_required && " · Discovery requis"}
+            </div>
+          </div>
+        </div>
+      </summary>
+
+      {/* Phasing */}
+      {project.phasing.length > 0 && (
+        <div className="rview-project-section">
+          <div className="rview-project-section-h">PHASING</div>
+          <div className="rview-phasing-rail">
+            {project.phasing.map((week) => (
+              <div key={week.week} className="rview-phasing-row">
+                <div className="rview-phasing-marker">
+                  <span>{week.week}</span>
+                </div>
+                <div className="rview-phasing-card">
+                  <div className="rview-phasing-meta">
+                    <span className="rview-phasing-week">SEMAINE {week.week}</span>
+                    <span className="rview-phasing-name">{week.name}</span>
+                  </div>
+                  <ul className="rview-phasing-tasks">
+                    {week.tasks.map((task, i) => (
+                      <li key={i}>{task}</li>
+                    ))}
+                  </ul>
+                  <div className="rview-phasing-friday">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                    <span>
+                      <b>Démo vendredi&nbsp;:</b> {week.friday_demo}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Stack */}
+      <div className="rview-project-section">
+        <div className="rview-project-section-h">STACK</div>
+        <div className="rview-stack-list">
+          <StackRow label="Backend" items={project.stack.backend} />
+          <StackRow label="Frontend" items={project.stack.frontend} />
+          <StackRow label="Data" items={project.stack.data} />
+          <StackRow label="Intégrations" items={project.stack.integrations} />
+          <StackRow label="Hébergement" items={[project.stack.hosting]} />
+        </div>
+      </div>
+
+      {/* Risks */}
+      {project.risks.length > 0 && (
+        <div className="rview-project-section">
+          <div className="rview-project-section-h">RISQUES &amp; MITIGATION</div>
+          <div className="rview-risks-grid">
+            {project.risks.map((r, i) => (
+              <div key={i} className={`rview-risk rview-risk-${r.severity}`}>
+                <span className={`rview-risk-pill rview-risk-pill-${r.severity}`}>
+                  {SEVERITY_LABELS[r.severity]}
+                </span>
+                <h4 className="rview-risk-title">{r.title}</h4>
+                <p className="rview-risk-mit">{r.mitigation}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Lagniappe */}
+      {project.lagniappe && (
+        <div className="rview-project-section">
+          <div className="rview-lagniappe-card">
+            <div className="rview-lagniappe-icon">🎁</div>
+            <div className="rview-lagniappe-body">
+              <div className="rview-lagniappe-h">LAGNIAPPE — feature bonus offerte</div>
+              <h4 className="rview-lagniappe-feature">{project.lagniappe.feature_idea}</h4>
+              <p className="rview-lagniappe-why">{project.lagniappe.why_it_helps}</p>
+              <div className="rview-lagniappe-meta">
+                <span className="rview-lagniappe-pill">+{project.lagniappe.estimated_added_days} jours offerts</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </details>
+  );
+}
+
+function RetainerCard({
+  retainer,
+}: {
+  retainer: MultiServiceEstimate["monthly_retainers"][number];
+}) {
+  return (
+    <div className="rview-retainer">
+      <div className="rview-retainer-head">
+        <div>
+          <div className="rview-retainer-label">{retainer.service_label}</div>
+          <div className="rview-retainer-tier">Tier recommandé : <b>{retainer.recommended_tier}</b></div>
+        </div>
+        <div className="rview-retainer-price">
+          <div className="rview-retainer-amount">
+            {euro(retainer.monthly_price.min)} – {euro(retainer.monthly_price.max)} €
+          </div>
+          <div className="rview-retainer-per">/ mois HT</div>
+        </div>
+      </div>
+
+      <div className="rview-retainer-meta">
+        <span>
+          Engagement min&nbsp;: <b>{retainer.minimum_engagement_months} mois</b>
+        </span>
+        {retainer.setup_fee && retainer.setup_fee > 0 && (
+          <span>
+            · Setup&nbsp;: <b>{euro(retainer.setup_fee)} €</b>
+          </span>
+        )}
+        {retainer.starts_after_oneshot && (
+          <span>
+            · Démarre après <b>{retainer.starts_after_oneshot}</b>
+            {retainer.starts_at_week_offset > 0 ? ` (S+${retainer.starts_at_week_offset})` : ""}
+          </span>
+        )}
+      </div>
+
+      {retainer.monthly_deliverables.length > 0 && (
+        <div className="rview-retainer-deliverables">
+          <div className="rview-retainer-deliverables-h">LIVRABLES MENSUELS</div>
+          <ul>
+            {retainer.monthly_deliverables.map((d, i) => (
+              <li key={i}>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M5 12l5 5L20 7" />
+                </svg>
+                <span>{d}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function RoadmapTimeline({
+  phases,
+}: {
+  phases: MultiServiceEstimate["deployment_roadmap"];
+}) {
+  if (phases.length === 0) return null;
+  // Compute total span for scaling
+  const sorted = [...phases].sort((a, b) => a.order - b.order);
+  const lastPhase = sorted[sorted.length - 1];
+  const totalWeeks = Math.max(
+    lastPhase.starts_at_week + lastPhase.duration_weeks,
+    8,
+  );
+
+  return (
+    <div className="rview-roadmap-list">
+      {sorted.map((phase) => {
+        const startPct = (phase.starts_at_week / totalWeeks) * 100;
+        const widthPct = Math.max(
+          (phase.duration_weeks / totalWeeks) * 100,
+          // visual minimum so very short phases stay visible
+          4,
+        );
+        const isShortLabel = widthPct < 18;
+        return (
+          <div key={phase.order} className={`rview-roadmap-row rview-roadmap-row-${phase.type}`}>
+            <div className="rview-roadmap-meta">
+              <span className="rview-roadmap-order">#{phase.order}</span>
+              <span className="rview-roadmap-week">
+                S{phase.starts_at_week}
+                {phase.duration_weeks > 0 ? `–S${phase.starts_at_week + phase.duration_weeks}` : ""}
+              </span>
+            </div>
+            <div className="rview-roadmap-track">
+              <div
+                className={`rview-roadmap-bar ${isShortLabel ? "rview-roadmap-bar-short" : ""}`}
+                style={{ left: `${startPct}%`, width: `${widthPct}%` }}
+                title={`${phase.name} (S${phase.starts_at_week} → S${phase.starts_at_week + phase.duration_weeks})`}
+              >
+                <span className="rview-roadmap-bar-label">{phase.name}</span>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+      <div className="rview-roadmap-axis">
+        <span>S0</span>
+        <span>S{Math.round(totalWeeks / 4)}</span>
+        <span>S{Math.round(totalWeeks / 2)}</span>
+        <span>S{Math.round((totalWeeks * 3) / 4)}</span>
+        <span>S{totalWeeks}</span>
+      </div>
+    </div>
+  );
 }
 
 function StackRow({ label, items }: { label: string; items: string[] }) {
   if (items.length === 0) return null;
   return (
     <div className="rview-stack-row">
-      <div className="rview-stack-label">{label.replace(/&amp;/g, "&")}</div>
+      <div className="rview-stack-label">{label}</div>
       <div className="rview-stack-chips">
         {items.map((item) => (
           <span key={item} className="rview-stack-chip">
