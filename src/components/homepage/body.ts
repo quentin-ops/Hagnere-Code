@@ -99,7 +99,7 @@ export const bodyHtml = `<!-- NAV -->
       <p class="hero-sub" id="hero-sub">
         On imagine, on conçoit, on développe, on lance et on maintient
         vos <b>sites, applications métier et SaaS sur mesure</b>. Un seul interlocuteur
-        qui parle votre langue — pas de sous-traitance, pas de jargon technique.
+        qui traduit le technique dans votre langue — pas de sous-traitance, pas de bullshit.
       </p>
       <div class="hero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
@@ -246,8 +246,8 @@ export const bodyHtml = `<!-- NAV -->
           <g transform="translate(370 380)">
             <rect x="0" y="0" width="110" height="34" rx="7" fill="#fff" stroke="#E5E5E5"/>
             <circle cx="14" cy="17" r="4" fill="#a3e47f"/>
-            <text x="26" y="15" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">98 % uptime</text>
-            <text x="26" y="27" font-family="Geist Mono" font-size="8" fill="#737373">30 derniers jours</text>
+            <text x="26" y="15" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">99,9 % uptime</text>
+            <text x="26" y="27" font-family="Geist Mono" font-size="8" fill="#737373">nos 4 apps · 90j</text>
           </g>
         </g>
         <g class="tower-float" style="animation-delay:-3s">
@@ -585,12 +585,13 @@ export const bodyHtml = `<!-- NAV -->
             <path d="M0,48 C30,46 50,40 72,34 C100,24 130,28 160,18 L200,8 L200,60 L0,60 Z" fill="currentColor" opacity="0.12"/>
             <circle cx="200" cy="8" r="3.5" fill="currentColor"/>
           </svg>
-          <span class="st-metric">+340%</span>
+          <span class="st-metric">+340%<sup>*</sup></span>
         </div>
         <div class="st-foot">
           <span>Mensuel</span>
           <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
+        <div class="st-disclaimer">* Cas Hagnéré Patrimoine sur 18 mois. Non garanti, dépend du secteur.</div>
       </a>
 
       <!-- 05 Publicité -->
@@ -649,7 +650,7 @@ export const bodyHtml = `<!-- NAV -->
         <p>Forfait mensuel, support prioritaire, évolutions continues.</p>
         <div class="st-viz st-viz-status">
           <div class="sts"><div class="sts-dot"></div><div><b>Uptime 30 j</b><span>99,98%</span></div></div>
-          <div class="sts"><div class="sts-dot yellow"></div><div><b>Astreinte</b><span>24/5</span></div></div>
+          <div class="sts"><div class="sts-dot yellow"></div><div><b>Astreinte</b><span>Lun–Ven 8h–20h</span></div></div>
         </div>
         <div class="st-foot">
           <span>Forfait mensuel</span>
@@ -1083,19 +1084,20 @@ export const bodyHtml = `<!-- NAV -->
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Réalisations</div>
-        <h2>Ce qu'on a construit<br>ces 18 derniers mois.</h2>
+        <div class="eyebrow">— Nos produits internes</div>
+        <h2>Ce qu'on a construit<br>pour le groupe Hagnéré.</h2>
       </div>
       <div class="right">
-        Quatre projets représentatifs. Deux SaaS IA de comptabilité immobilière lancés
-        en 2025, et deux sites vitrines qui convertissent dans la gestion de patrimoine.
-        Cliquez pour voir les détails.
+        Quatre produits du groupe, conçus et opérés par le studio : deux SaaS IA de
+        comptabilité immobilière lancés en 2025, et deux sites à forte conversion dans
+        la gestion de patrimoine. <b>Nos projets clients externes sont sous NDA</b> —
+        références et cas détaillés disponibles en rendez-vous.
       </div>
     </div>
 
     <div class="real-grid">
-      <!-- LMNP.AI — violet/indigo -->
-      <a href="/realisations/lmnp-ai" class="real-card reveal" style="--brand:#6D28D9;--brand-soft:#EDE9FE">
+      <!-- LMNP.AI — noir / blanc -->
+      <a href="/realisations/lmnp-ai" class="real-card reveal" style="--brand:#0A0A0A;--brand-soft:#F5F5F5">
         <div class="real-shot" style="background:#0A0A0A">
           <svg width="100%" height="100%" viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice">
             <rect width="600" height="340" fill="#0A0A0A"/>
@@ -1104,15 +1106,15 @@ export const bodyHtml = `<!-- NAV -->
             <rect width="600" height="340" fill="url(#gridLmnp)"/>
             <!-- Floating card: résultat simulateur -->
             <rect x="110" y="56" width="380" height="228" rx="14" fill="#121212" stroke="#262626"/>
-            <circle cx="132" cy="82" r="4" fill="#6D28D9"/>
-            <text x="146" y="86" font-family="Geist Mono" font-size="11" fill="#A78BFA" letter-spacing="1">LMNP.AI · RÉSULTAT</text>
+            <circle cx="132" cy="82" r="4" fill="#ffffff"/>
+            <text x="146" y="86" font-family="Geist Mono" font-size="11" fill="#D4D4D4" letter-spacing="1">LMNP.AI · RÉSULTAT</text>
             <text x="132" y="130" font-family="Geist" font-weight="700" font-size="15" fill="#737373">Économie annuelle estimée</text>
-            <text x="132" y="180" font-family="Geist" font-weight="700" font-size="52" fill="#fff" letter-spacing="-2">4 128<tspan font-size="30" fill="#A78BFA"> €</tspan></text>
+            <text x="132" y="180" font-family="Geist" font-weight="700" font-size="52" fill="#fff" letter-spacing="-2">4 128<tspan font-size="30" fill="#A3A3A3"> €</tspan></text>
             <rect x="132" y="200" width="336" height="1" fill="#262626"/>
             <text x="132" y="226" font-family="Geist Mono" font-size="10" fill="#737373" letter-spacing="1">RÉGIME RECOMMANDÉ</text>
             <text x="132" y="248" font-family="Geist" font-weight="600" font-size="17" fill="#fff">LMNP au réel simplifié</text>
             <rect x="132" y="260" width="336" height="10" rx="5" fill="#1f1f1f"/>
-            <rect x="132" y="260" width="280" height="10" rx="5" fill="#6D28D9"/>
+            <rect x="132" y="260" width="280" height="10" rx="5" fill="#ffffff"/>
           </svg>
         </div>
         <div class="real-head">
@@ -1124,52 +1126,52 @@ export const bodyHtml = `<!-- NAV -->
           <span class="real-chip">SaaS B2C</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">LARAVEL 12 <span class="dot"></span> CLAUDE <span class="dot"></span> LIVRÉ 2025</div>
-          <p>Logiciel de comptabilité LMNP/LMP en ligne. L'IA guide l'investisseur dans sa liasse fiscale, amortissements, transmission EDI. Offre autonomie ou validation expert-comptable.</p>
+          <div class="real-meta">LARAVEL 12 <span class="dot"></span> LIVRÉ 2023</div>
+          <p>Logiciel de comptabilité LMNP/LMP en ligne. L'IA guide l'investisseur dans sa liasse fiscale, amortissements, transmission EDI. 183 guides fiscaux rédigés, 7,2 M impressions Google sur 12 mois, +61 % de marge nette grâce à l'automatisation.</p>
           <div class="real-metric">
-            <div class="rm"><div class="n">5,4<span class="s"> k</span></div><div class="l">clients actifs</div></div>
-            <div class="rm"><div class="n">163</div><div class="l">guides rédigés</div></div>
-            <div class="rm"><div class="n">15<span class="s"> min</span></div><div class="l">de compta/an</div></div>
+            <div class="rm"><div class="n">6<span class="s"> k+</span></div><div class="l">inscrits</div></div>
+            <div class="rm"><div class="n">156<span class="s"> k</span></div><div class="l">clics SEO · 12 mois</div></div>
+            <div class="rm"><div class="n">3,8<span class="s"> M€</span></div><div class="l">valo · &lt;3 ans</div></div>
           </div>
         </div>
       </a>
 
-      <!-- SCI-AI.app — bleu/cyan -->
-      <a href="/realisations/sci-ai" class="real-card reveal reveal-d-1" style="--brand:#0066FF;--brand-soft:#E0ECFF">
-        <div class="real-shot" style="background:#F5F8FF">
+      <!-- SCI-AI.app — indigo -->
+      <a href="/realisations/sci-ai" class="real-card reveal reveal-d-1" style="--brand:#4F46E5;--brand-soft:#E0E7FF">
+        <div class="real-shot" style="background:#EEF2FF">
           <svg width="100%" height="100%" viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice">
-            <rect width="600" height="340" fill="#F5F8FF"/>
+            <rect width="600" height="340" fill="#EEF2FF"/>
             <!-- Dashboard SCI -->
-            <rect x="40" y="40" width="520" height="260" rx="14" fill="#fff" stroke="#D9E4F5"/>
+            <rect x="40" y="40" width="520" height="260" rx="14" fill="#fff" stroke="#E0E7FF"/>
             <rect x="40" y="40" width="520" height="48" rx="14" fill="#fff"/>
-            <rect x="40" y="86" width="520" height="1" fill="#E5ECF5"/>
-            <circle cx="62" cy="64" r="5" fill="#0066FF"/>
+            <rect x="40" y="86" width="520" height="1" fill="#EEF2FF"/>
+            <circle cx="62" cy="64" r="5" fill="#4F46E5"/>
             <text x="76" y="68" font-family="Geist" font-weight="700" font-size="13" fill="#0A0A0A">SCI-AI.app</text>
             <text x="540" y="68" text-anchor="end" font-family="Geist Mono" font-size="10" fill="#737373">Liasse 2065 · IS</text>
             <!-- KPIs -->
             <g font-family="Geist">
-              <rect x="64" y="108" width="152" height="76" rx="10" fill="#F5F8FF"/>
+              <rect x="64" y="108" width="152" height="76" rx="10" fill="#EEF2FF"/>
               <text x="78" y="128" font-family="Geist Mono" font-size="9" fill="#6B7B96" letter-spacing="1">BÉNÉFICE NET</text>
               <text x="78" y="158" font-weight="700" font-size="22" fill="#0A0A0A">12 840 €</text>
-              <text x="78" y="174" font-family="Geist Mono" font-size="9" fill="#0066FF">+ IS 15 %</text>
+              <text x="78" y="174" font-family="Geist Mono" font-size="9" fill="#4F46E5">+ IS 15 %</text>
 
-              <rect x="224" y="108" width="152" height="76" rx="10" fill="#F5F8FF"/>
+              <rect x="224" y="108" width="152" height="76" rx="10" fill="#EEF2FF"/>
               <text x="238" y="128" font-family="Geist Mono" font-size="9" fill="#6B7B96" letter-spacing="1">AMORT. ANNUEL</text>
               <text x="238" y="158" font-weight="700" font-size="22" fill="#0A0A0A">8 920 €</text>
-              <text x="238" y="174" font-family="Geist Mono" font-size="9" fill="#0066FF">6 composants</text>
+              <text x="238" y="174" font-family="Geist Mono" font-size="9" fill="#4F46E5">6 composants</text>
 
-              <rect x="384" y="108" width="152" height="76" rx="10" fill="#0066FF"/>
-              <text x="398" y="128" font-family="Geist Mono" font-size="9" fill="#BFD4FF" letter-spacing="1">ASSOCIÉS</text>
+              <rect x="384" y="108" width="152" height="76" rx="10" fill="#4F46E5"/>
+              <text x="398" y="128" font-family="Geist Mono" font-size="9" fill="#C7D2FE" letter-spacing="1">ASSOCIÉS</text>
               <text x="398" y="158" font-weight="700" font-size="22" fill="#fff">3</text>
-              <text x="398" y="174" font-family="Geist Mono" font-size="9" fill="#BFD4FF">parts à jour</text>
+              <text x="398" y="174" font-family="Geist Mono" font-size="9" fill="#C7D2FE">parts à jour</text>
             </g>
             <!-- Bottom row -->
-            <rect x="64" y="200" width="472" height="80" rx="10" fill="#F5F8FF"/>
+            <rect x="64" y="200" width="472" height="80" rx="10" fill="#EEF2FF"/>
             <text x="80" y="222" font-family="Geist" font-weight="600" font-size="12" fill="#0A0A0A">Transmission EDI · 2065</text>
             <text x="80" y="240" font-family="Geist Mono" font-size="10" fill="#6B7B96">DGFiP · accusé de réception reçu</text>
-            <rect x="80" y="252" width="280" height="8" rx="4" fill="#D9E4F5"/>
-            <rect x="80" y="252" width="280" height="8" rx="4" fill="#0066FF"/>
-            <text x="522" y="244" text-anchor="end" font-family="Geist Mono" font-weight="600" font-size="14" fill="#0066FF">✓ Validée</text>
+            <rect x="80" y="252" width="280" height="8" rx="4" fill="#E0E7FF"/>
+            <rect x="80" y="252" width="280" height="8" rx="4" fill="#4F46E5"/>
+            <text x="522" y="244" text-anchor="end" font-family="Geist Mono" font-weight="600" font-size="14" fill="#4F46E5">✓ Validée</text>
           </svg>
         </div>
         <div class="real-head">
@@ -1181,11 +1183,11 @@ export const bodyHtml = `<!-- NAV -->
           <span class="real-chip">SaaS B2C</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">LARAVEL 12 <span class="dot"></span> EDI DGFiP <span class="dot"></span> LIVRÉ 2025</div>
+          <div class="real-meta">LARAVEL 13 <span class="dot"></span> EDI DGFiP <span class="dot"></span> LIVRÉ AVRIL 2026</div>
           <p>Logiciel de comptabilité SCI (IR et IS). Liasses 2033, 2065, 2072 générées et télétransmises. Gestion des associés, parts, comptes courants, démembrement et amortissements par composants.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">2</div><div class="l">régimes (IR/IS)</div></div>
-            <div class="rm"><div class="n">3</div><div class="l">liasses auto-générées</div></div>
+            <div class="rm"><div class="n">3,8<span class="s"> M€</span></div><div class="l">valo · &lt;3 ans</div></div>
             <div class="rm"><div class="n">229<span class="s"> €</span></div><div class="l">/an autonomie</div></div>
           </div>
         </div>
@@ -1225,42 +1227,48 @@ export const bodyHtml = `<!-- NAV -->
           <div class="real-meta">LARAVEL <span class="dot"></span> SEO + ADS <span class="dot"></span> LIVRÉ 2024</div>
           <p>Refonte complète du cabinet de gestion de patrimoine : site vitrine premium, prise de RDV, tunnel de qualification, stratégie SEO longue traîne et campagnes Google Ads sur les requêtes patrimoniales.</p>
           <div class="real-metric">
-            <div class="rm"><div class="n">+340<span class="s"> %</span></div><div class="l">trafic organique</div></div>
-            <div class="rm"><div class="n">4,2<span class="s"> %</span></div><div class="l">taux conversion</div></div>
-            <div class="rm"><div class="n">×3</div><div class="l">pipeline commercial</div></div>
+            <div class="rm"><div class="n">1,46<span class="s"> M</span></div><div class="l">impressions · 12 mois</div></div>
+            <div class="rm"><div class="n">26<span class="s"> k+</span></div><div class="l">clics SEO · 12 mois</div></div>
+            <div class="rm"><div class="n">×12</div><div class="l">trafic SEO · 12 mois</div></div>
           </div>
         </div>
       </a>
 
-      <!-- HAGNÉRÉ INVESTISSEMENT — vert émeraude / clean -->
-      <a href="/realisations/hagnere-investissement" class="real-card reveal reveal-d-3" style="--brand:#0F766E;--brand-soft:#D1FAE5">
-        <div class="real-shot" style="background:#F7F9F8">
+      <!-- HAGNÉRÉ INVESTISSEMENT — navy / premium -->
+      <a href="/realisations/hagnere-investissement" class="real-card reveal reveal-d-3" style="--brand:#0F172A;--brand-soft:#E2E8F0">
+        <div class="real-shot" style="background:#F8FAFC">
           <svg width="100%" height="100%" viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice">
-            <rect width="600" height="340" fill="#F7F9F8"/>
+            <defs>
+              <linearGradient id="hiNavy" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#1E293B"/>
+                <stop offset="100%" stop-color="#0F172A"/>
+              </linearGradient>
+            </defs>
+            <rect width="600" height="340" fill="#F8FAFC"/>
             <!-- Hero -->
-            <rect x="40" y="40" width="330" height="260" rx="14" fill="#0F766E"/>
-            <text x="62" y="70" font-family="Geist Mono" font-size="10" fill="#A7F3D0" letter-spacing="1.5">◆ HAGNÉRÉ INVESTISSEMENT</text>
+            <rect x="40" y="40" width="330" height="260" rx="14" fill="url(#hiNavy)"/>
+            <text x="62" y="70" font-family="Geist Mono" font-size="10" fill="#94A3B8" letter-spacing="1.5">◆ HAGNÉRÉ INVESTISSEMENT</text>
             <text x="62" y="128" font-family="Geist" font-weight="700" font-size="28" fill="#fff" letter-spacing="-1">Investir dans</text>
-            <text x="62" y="160" font-family="Geist" font-weight="700" font-size="28" fill="#fff" letter-spacing="-1">l'immobilier</text>
-            <text x="62" y="192" font-family="Geist" font-weight="700" font-size="28" fill="#A7F3D0" letter-spacing="-1">clé en main.</text>
+            <text x="62" y="160" font-family="Geist" font-weight="700" font-size="28" fill="#fff" letter-spacing="-1">l'immobilier rentable,</text>
+            <text x="62" y="192" font-family="Geist" font-weight="700" font-size="28" fill="#94A3B8" letter-spacing="-1">100% clé-en-main.</text>
             <rect x="62" y="232" width="170" height="42" rx="8" fill="#fff"/>
-            <text x="147" y="258" text-anchor="middle" font-family="Geist" font-weight="600" font-size="13" fill="#0F766E">Prendre RDV →</text>
+            <text x="147" y="258" text-anchor="middle" font-family="Geist" font-weight="600" font-size="13" fill="#0F172A">Prendre RDV →</text>
             <!-- Right: rendement card -->
-            <rect x="390" y="40" width="170" height="125" rx="14" fill="#fff" stroke="#E5ECE9"/>
-            <text x="410" y="66" font-family="Geist Mono" font-size="9" fill="#6B7B74" letter-spacing="1">RENDEMENT NET</text>
-            <text x="410" y="108" font-family="Geist" font-weight="700" font-size="34" fill="#0F766E" letter-spacing="-1">7,2 %</text>
-            <text x="410" y="128" font-family="Geist Mono" font-size="9" fill="#6B7B74">moyenne clients 2024</text>
-            <rect x="410" y="138" width="130" height="4" rx="2" fill="#D1FAE5"/>
-            <rect x="410" y="138" width="110" height="4" rx="2" fill="#0F766E"/>
+            <rect x="390" y="40" width="170" height="125" rx="14" fill="#fff" stroke="#E2E8F0"/>
+            <text x="410" y="66" font-family="Geist Mono" font-size="9" fill="#64748B" letter-spacing="1">BRUT MOYEN</text>
+            <text x="410" y="108" font-family="Geist" font-weight="700" font-size="34" fill="#0F172A" letter-spacing="-1">8,6 %</text>
+            <text x="410" y="128" font-family="Geist Mono" font-size="9" fill="#64748B">net d'impôts · garanti</text>
+            <rect x="410" y="138" width="130" height="4" rx="2" fill="#E2E8F0"/>
+            <rect x="410" y="138" width="116" height="4" rx="2" fill="#0F172A"/>
             <!-- Right card 2 -->
-            <rect x="390" y="175" width="170" height="125" rx="14" fill="#fff" stroke="#E5ECE9"/>
-            <text x="410" y="200" font-family="Geist Mono" font-size="9" fill="#6B7B74" letter-spacing="1">CLIENTS ACCOMPAGNÉS</text>
-            <text x="410" y="242" font-family="Geist" font-weight="700" font-size="34" fill="#0F766E" letter-spacing="-1">612</text>
-            <text x="410" y="262" font-family="Geist Mono" font-size="9" fill="#6B7B74">depuis 2021</text>
-            <circle cx="420" cy="282" r="6" fill="#0F766E"/>
-            <circle cx="432" cy="282" r="6" fill="#0F766E" opacity="0.7"/>
-            <circle cx="444" cy="282" r="6" fill="#0F766E" opacity="0.4"/>
-            <text x="460" y="286" font-family="Geist Mono" font-size="9" fill="#6B7B74">+ chaque mois</text>
+            <rect x="390" y="175" width="170" height="125" rx="14" fill="#fff" stroke="#E2E8F0"/>
+            <text x="410" y="200" font-family="Geist Mono" font-size="9" fill="#64748B" letter-spacing="1">LOGEMENTS RÉNOVÉS</text>
+            <text x="410" y="242" font-family="Geist" font-weight="700" font-size="34" fill="#0F172A" letter-spacing="-1">149</text>
+            <text x="410" y="262" font-family="Geist Mono" font-size="9" fill="#64748B">en 3 ans</text>
+            <circle cx="420" cy="282" r="6" fill="#0F172A"/>
+            <circle cx="432" cy="282" r="6" fill="#0F172A" opacity="0.7"/>
+            <circle cx="444" cy="282" r="6" fill="#0F172A" opacity="0.4"/>
+            <text x="460" y="286" font-family="Geist Mono" font-size="9" fill="#64748B">+ chaque mois</text>
           </svg>
         </div>
         <div class="real-head">
@@ -1275,8 +1283,8 @@ export const bodyHtml = `<!-- NAV -->
           <div class="real-meta">LARAVEL <span class="dot"></span> SEO + ADS <span class="dot"></span> LIVRÉ 2024</div>
           <p>Site marque du cabinet d'investissement immobilier clé en main. Funnel de qualification de prospects investisseurs, simulateur de rendement, prise de RDV, contenus YouTube intégrés.</p>
           <div class="real-metric">
-            <div class="rm"><div class="n">612</div><div class="l">clients accompagnés</div></div>
-            <div class="rm"><div class="n">7,2<span class="s"> %</span></div><div class="l">rendement moyen</div></div>
+            <div class="rm"><div class="n">149</div><div class="l">logements rénovés</div></div>
+            <div class="rm"><div class="n">8,6<span class="s"> %</span></div><div class="l">brut moyen</div></div>
             <div class="rm"><div class="n">×2,5</div><div class="l">leads qualifiés</div></div>
           </div>
         </div>
@@ -1292,29 +1300,29 @@ export const bodyHtml = `<!-- NAV -->
     <div class="stats-head reveal">
       <div class="eyebrow on-dark">— En chiffres</div>
       <h2 style="margin-top:14px">Un studio jeune,<br>des résultats mesurables.</h2>
-      <p>Studio jeune, focus absolu sur la livraison. Voici les chiffres de nos projets en production depuis notre lancement — tous sont vérifiables.</p>
+      <p>On ne gonfle pas les chiffres. Tous ceux ci-dessous sont issus directement des 4 réalisations présentées plus haut — Google Search Console à l'appui, vérifiables en un clic.</p>
     </div>
 
     <div class="stats-grid">
       <div class="stat reveal">
-        <div class="k">PROJETS LIVRÉS</div>
-        <div class="n">23</div>
-        <div class="l">Tous livrés dans le forfait initial, dans les délais annoncés.</div>
+        <div class="k">PROJETS EN PROD</div>
+        <div class="n">4</div>
+        <div class="l">2 SaaS IA vivants + 2 sites vitrines à conversion, tous livrés en forfait fixe.</div>
       </div>
       <div class="stat reveal reveal-d-1">
-        <div class="k">CLIENTS ACTIFS</div>
-        <div class="n">18</div>
-        <div class="l">Dont 14 en maintenance mensuelle, 4 en nouveau projet.</div>
+        <div class="k">IMPRESSIONS GOOGLE · 12 MOIS</div>
+        <div class="n">8,76<span class="s"> M</span></div>
+        <div class="l">Cumulées sur LMNP.AI, Hagnéré Patrimoine et SCI-AI — position moyenne top 10.</div>
       </div>
       <div class="stat reveal reveal-d-2">
-        <div class="k">SATISFACTION</div>
-        <div class="n">4,9<span class="s">/5</span></div>
-        <div class="l">Note moyenne post-projet sur 23 répondants.</div>
+        <div class="k">CLICS SEO · 12 MOIS</div>
+        <div class="n">183<span class="s"> k+</span></div>
+        <div class="l">Trafic organique cumulé sur les 3 sites. LMNP.AI seul : 156 k clics, ×2,6 vs l'an passé.</div>
       </div>
       <div class="stat reveal reveal-d-3">
-        <div class="k">NPS</div>
-        <div class="n">+72</div>
-        <div class="l">Taux de recommandation net. 84 % nous ont recommandés.</div>
+        <div class="k">VALORISATION GROUPE</div>
+        <div class="n">3,8<span class="s"> M€</span></div>
+        <div class="l">Cessions de parts + levée (LMNP.AI / SCI-AI), en moins de 3 ans.</div>
       </div>
     </div>
   </div>
@@ -1344,12 +1352,25 @@ export const bodyHtml = `<!-- NAV -->
             ASSOCIÉ DIRIGEANT
           </div>
           <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
-            <rect width="400" height="500" fill="#171717"/>
-            <defs><radialGradient id="photoGrad" cx="50%" cy="30%" r="60%"><stop offset="0%" stop-color="#2a2a2a"/><stop offset="100%" stop-color="#0f0f0f"/></radialGradient></defs>
+            <defs>
+              <linearGradient id="photoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1a1a1a"/>
+                <stop offset="55%" stop-color="#0f0f0f"/>
+                <stop offset="100%" stop-color="#1e1b3a"/>
+              </linearGradient>
+              <radialGradient id="photoGlow" cx="30%" cy="25%" r="70%">
+                <stop offset="0%" stop-color="#6D28D9" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#6D28D9" stop-opacity="0"/>
+              </radialGradient>
+              <pattern id="photoDots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="#ffffff" fill-opacity="0.05"/>
+              </pattern>
+            </defs>
             <rect width="400" height="500" fill="url(#photoGrad)"/>
-            <circle cx="200" cy="210" r="82" fill="#262626"/>
-            <rect x="118" y="292" width="164" height="210" fill="#262626" rx="82"/>
-            <text x="200" y="470" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#525252" letter-spacing="1">// PHOTO À VENIR</text>
+            <rect width="400" height="500" fill="url(#photoDots)"/>
+            <rect width="400" height="500" fill="url(#photoGlow)"/>
+            <text x="200" y="295" text-anchor="middle" font-family="Geist" font-weight="700" font-size="180" fill="#ffffff" letter-spacing="-8">QH</text>
+            <text x="200" y="345" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#a3a3a3" letter-spacing="4">QUENTIN HAGNÉRÉ</text>
           </svg>
         </div>
         <div class="eq-founder-body">
@@ -1482,8 +1503,8 @@ export const bodyHtml = `<!-- NAV -->
             <div class="l">basés à Chambéry</div>
           </div>
           <div class="eqs">
-            <div class="n">×3</div>
-            <div class="l">productivité avec Claude Code</div>
+            <div class="n">×2<span class="s">–×3</span></div>
+            <div class="l">vélocité mesurée sur nos derniers sprints</div>
           </div>
         </div>
       </div>
@@ -1576,7 +1597,7 @@ export const bodyHtml = `<!-- NAV -->
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée 2 à 5 personnes</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Roadmap co-construite</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA 99,9 % · astreinte 24/5</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA : uptime 99,9 % · astreinte Lun–Ven 8h–20h</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 6 mois minimum</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parlons-en</a></div>
@@ -1626,9 +1647,12 @@ export const bodyHtml = `<!-- NAV -->
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Laravel est <b>le meilleur framework web de 2026</b> pour les applications métier : rapide à développer,
-            facile à maintenir, compatible avec tous les devs PHP du marché. Sa version 13 inclut une
-            couche IA native qui change la donne. Et c'est en open-source, donc pas de dépendance à un éditeur.
+            Laravel est <b>notre framework de référence depuis 2020</b> pour les applications métier :
+            rapide à développer, facile à maintenir, compatible avec tous les devs PHP du marché. Sa
+            version 13 inclut une couche IA native qui accélère les agents, les workflows et
+            l'extraction documentaire. Et c'est open-source, donc pas de dépendance à un éditeur.
+            Next.js ou Rails auraient aussi très bien pu marcher — on a simplement choisi celui
+            qu'on maîtrise à fond.
           </div>
         </div>
 

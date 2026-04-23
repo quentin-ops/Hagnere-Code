@@ -228,7 +228,7 @@
   .cmp-head,
   .cmp-row { grid-template-columns: 1.2fr 1fr 1.1fr 1fr; }
   .cmp-col { padding: 16px 14px; font-size: 12.5px; }
-  .vt-grid { grid-template-columns: 1fr; }
+  .vt-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -263,14 +263,15 @@
     z-index: 1;
     font-size: 10.5px;
   }
-  .cmp-head .cmp-col-us::before { font-size: 9px; padding: 2px 8px; top: -9px; }
+  .cmp-head .cmp-col-us { padding-top: 28px; }
+  .cmp-head .cmp-col-us::before { font-size: 9px; padding: 2px 8px; top: 8px; }
   .cmp-title { font-size: 15px; }
   .cmp-row-verdict .cmp-col { padding: 16px 12px; font-size: 12px; }
   .cmp-disclaimer { margin-top: 20px; padding: 14px 16px; font-size: 13px; flex-direction: column; align-items: flex-start; }
 
   /* Verticals */
   .verticals { padding: 72px 0; }
-  .vt-grid { gap: 14px; }
+  .vt-grid { grid-template-columns: 1fr; gap: 14px; }
   .vt-card { padding: 22px; }
   .vt-card h3 { font-size: 19px; }
 }
