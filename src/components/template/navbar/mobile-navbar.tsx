@@ -6,7 +6,7 @@ import { IoIosMenu } from "react-icons/io";
 import { IoIosClose } from "react-icons/io";
 import { Button } from "../button";
 import { Logo } from "../Logo";
-import { useMotionValueEvent, useScroll } from "framer-motion";
+import { useMotionValueEvent, useScroll } from "motion/react";
 
 export const MobileNavbar = ({ navItems }: any) => {
   const [open, setOpen] = useState(false);

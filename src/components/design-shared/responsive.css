@@ -1,0 +1,286 @@
+/* =========================================================================
+   Responsive overrides for Homepage + service pages (Hagnéré Code design)
+   Covers: mobile nav, stacked layouts, fluid typography.
+   Loaded after each page's own CSS, so specificity wins without !important.
+   ========================================================================= */
+
+/* --- Mobile hamburger button (hidden on desktop) --- */
+.nav-burger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ink-2);
+}
+.nav-burger svg { width: 18px; height: 18px; }
+
+/* ============ < 1024px : tablette ============ */
+@media (max-width: 1024px) {
+  .wrap { padding: 0 28px; }
+
+  h1 { font-size: 56px; line-height: 1.02; }
+  h2 { font-size: 40px; }
+
+  .hero-inner,
+  .lb-inner,
+  .descr-grid,
+  .eq-grid,
+  .faq-grid,
+  .section-head {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .tower { height: 420px; }
+
+  .svc-hero {
+    grid-template-columns: 1fr !important;
+  }
+  .svc-hero-right { padding: 32px 24px; }
+
+  .svc-row,
+  .meth-grid,
+  .real-grid,
+  .stats-grid,
+  .foot-cols {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Pricing 4-col → 2×2 on tablet */
+  .price-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px !important;
+  }
+  .eq-devs { grid-template-columns: repeat(2, 1fr) !important; }
+  .eq-stats { grid-template-columns: repeat(2, 1fr) !important; }
+
+  .meth-rail::before { display: none; }
+
+  .dc-q-row { grid-template-columns: 1fr !important; }
+  .dc-q-k { white-space: normal; }
+}
+
+/* ============ < 768px : mobile ============ */
+@media (max-width: 768px) {
+  .wrap { padding: 0 20px; }
+
+  h1 { font-size: 40px; letter-spacing: -0.03em; }
+  h2 { font-size: 30px; letter-spacing: -0.025em; }
+  h3 { font-size: 18px; }
+
+  /* Nav: show burger, hide link bar */
+  .nav-inner { height: 56px; }
+  .nav-links { display: none; }
+  .nav-cta .btn-ghost { display: none; }
+  .nav-cta .btn { padding: 8px 12px; font-size: 13px; }
+  .nav-burger { display: inline-flex; }
+
+  /* Mobile menu overlay (toggled via .nav-open on .nav) */
+  .nav.nav-open .nav-links {
+    display: flex;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    padding: 12px 0;
+  }
+  .nav.nav-open .nav-links > a,
+  .nav.nav-open .nav-links > .nav-item > .nav-trigger {
+    padding: 14px 24px;
+    font-size: 15px;
+    border-bottom: 1px solid var(--line-2);
+  }
+  .nav.nav-open .nav-links .nav-item:last-child > .nav-trigger { border-bottom: none; }
+
+  /* Nav dropdown — reflow inside the mobile menu when open */
+  .nav.nav-open .nav-dd {
+    position: static;
+    width: auto;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    grid-template-columns: 1fr;
+    border: none;
+    box-shadow: none;
+    padding: 8px 12px 16px 12px;
+    gap: 0;
+  }
+  .nav.nav-open .dd-col { padding: 0 12px; }
+  .nav.nav-open .dd-cta { margin-top: 16px; }
+
+  /* Hero */
+  .hero { padding: 48px 0 64px; }
+  .hero-sub { font-size: 16px; margin-top: 20px; }
+  .hero-cta { margin-top: 28px; flex-direction: column; align-items: stretch; }
+  .hero-cta .btn { justify-content: center; }
+  .hero-meta { gap: 12px; font-size: 12px; }
+  .hero-meta .sep { display: none; }
+  .tower { height: 320px; margin-top: 24px; }
+
+  /* Logo bar / studio / sections padding */
+  .logobar { padding: 64px 0; }
+  .studio, .describe, .methode, .real, .equipe, .pricing, .faq, .fcta, .stats { padding: 72px 0; }
+  .studio-head h2 { font-size: 38px; }
+  .fcta h2 { font-size: 40px; }
+
+  /* All multi-col grids → single column */
+  .svc-row,
+  .meth-grid,
+  .real-grid,
+  .stats-grid,
+  .price-grid,
+  .foot-cols,
+  .lb-stack,
+  .eq-devs,
+  .eq-stats,
+  .svc-hero-list,
+  .dc-q-breakdown,
+  .svc-mock-kanban {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Studio hero service card */
+  .svc-hero-left { padding: 32px 24px; }
+  .svc-hero h3 { font-size: 28px; }
+  .svc-hero-lead { font-size: 14px; }
+  .svc-hero-foot { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+  /* Mockup product — simplify on mobile */
+  .svc-mock-body { grid-template-columns: 1fr !important; height: auto; }
+  .svc-mock-side { display: none; }
+  .svc-float { display: none; }
+
+  /* Describe */
+  .descr-copy { position: static; }
+  .descr-copy h2 { font-size: 32px; }
+  .dc-subject { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .dc-msg, .dc-msg.us { padding: 18px 18px; }
+  .dc-q-total { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .dc-q-tval { font-size: 32px; }
+  .dc-q-actions { flex-direction: column; }
+  .dc-q-actions .btn-accent, .dc-q-actions .btn-ghost { width: 100%; justify-content: center; }
+
+  /* Méthode */
+  .meth-rail::before { display: none; }
+  .meth-step { min-height: auto; }
+
+  /* Realisations */
+  .real-shot { aspect-ratio: 16 / 11; }
+  .real-metric { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .rm .n { font-size: 18px; }
+
+  /* Stats (dark section) */
+  .stat { padding: 24px 0; border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+  .stat:last-child { border-bottom: none; }
+  .stat .n { font-size: 48px; }
+
+  /* Equipe */
+  .eq-founder { min-height: auto; }
+
+  /* Pricing */
+  .plan { padding: 24px; }
+  .plan-price .amount { font-size: 36px; }
+
+  /* FAQ */
+  .faq-q { font-size: 15px; gap: 12px; }
+  .faq-a { font-size: 14px; }
+
+  /* CTA final */
+  .fcta-cta { flex-direction: column; align-items: stretch; }
+  .fcta-cta .btn { justify-content: center; }
+
+  /* Footer */
+  .foot-top { flex-direction: column; }
+  .foot-cols { gap: 32px; }
+  .foot-bot { flex-direction: column; gap: 8px; text-align: center; }
+
+  /* Studio foot CTA */
+  .studio-foot { flex-direction: column; align-items: flex-start; gap: 20px; padding: 24px; }
+
+  /* SaaS page specific */
+  .sp-hero,
+  .sp-hero-inner,
+  .sp-stack-grid,
+  .sp-mockup,
+  .sp-pricing,
+  .sp-kpis {
+    grid-template-columns: 1fr !important;
+  }
+  .crumb { font-size: 11px; padding: 14px 0; }
+}
+
+/* ---- New homepage sections (logo wall / comparison / verticals) ---- */
+@media (max-width: 1024px) {
+  .cw-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 12px;
+  }
+  .cw-sep { display: none; }
+  .cmp-head,
+  .cmp-row { grid-template-columns: 1.2fr 1fr 1.1fr 1fr; }
+  .cmp-col { padding: 16px 14px; font-size: 12.5px; }
+  .vt-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  /* Logo wall — 2 cols, centered */
+  .clients-wall { padding: 40px 0 48px; }
+  .cw-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 8px;
+    max-width: 420px;
+  }
+  .cw-logo { min-height: 56px; padding: 4px 12px; }
+  .cw-logo img { max-height: 40px; max-width: 140px; }
+  .cw-foot { margin-top: 20px; font-size: 12px; }
+
+  /* Comparison — horizontal scroll with sticky label column */
+  .compare { padding: 72px 0; }
+  .cmp-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 14px;
+  }
+  .cmp-head,
+  .cmp-row {
+    grid-template-columns: 120px 200px 220px 200px;
+    min-width: 740px;
+  }
+  .cmp-col { padding: 14px 12px; font-size: 12px; line-height: 1.45; }
+  .cmp-col-label {
+    position: sticky;
+    left: 0;
+    background: var(--paper-3);
+    z-index: 1;
+    font-size: 10.5px;
+  }
+  .cmp-head .cmp-col-us::before { font-size: 9px; padding: 2px 8px; top: -9px; }
+  .cmp-title { font-size: 15px; }
+  .cmp-row-verdict .cmp-col { padding: 16px 12px; font-size: 12px; }
+  .cmp-disclaimer { margin-top: 20px; padding: 14px 16px; font-size: 13px; flex-direction: column; align-items: flex-start; }
+
+  /* Verticals */
+  .verticals { padding: 72px 0; }
+  .vt-grid { gap: 14px; }
+  .vt-card { padding: 22px; }
+  .vt-card h3 { font-size: 19px; }
+}
+
+@media (max-width: 480px) {
+  .wrap { padding: 0 16px; }
+  h1 { font-size: 34px; }
+  h2 { font-size: 26px; }
+  .brand-name { font-size: 14px; }
+  .real-metric { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .rm .n { font-size: 16px; }
+  .rm .l { font-size: 10px; }
+}

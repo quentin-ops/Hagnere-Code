@@ -1,0 +1,118 @@
+/* ======================================================================
+   Team section polish: LinkedIn icons on dev cards + founder card polish.
+   ====================================================================== */
+
+/* Dev avatar wrapper — contains the initials avatar + LinkedIn badge */
+.eq-dev-avatar-wrap {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.eq-li-link {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0a66c2;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(10, 102, 194, 0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+  z-index: 2;
+}
+.eq-li-link:hover {
+  transform: scale(1.12);
+  box-shadow: 0 3px 10px rgba(10, 102, 194, 0.5);
+}
+.eq-li-link .eq-li-icon { width: 10px; height: 10px; }
+
+/* Founder LinkedIn link — inline under role */
+.eq-founder-li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.15s;
+  width: fit-content;
+}
+.eq-founder-li:hover {
+  background: #0a66c2;
+  color: #fff;
+  border-color: #0a66c2;
+}
+.eq-founder-li .eq-li-icon { width: 12px; height: 12px; }
+
+/* Small hint overlay on founder photo — "Photo à venir" */
+.eq-founder-photo {
+  position: relative;
+}
+.eq-founder-photo::after {
+  content: "Photo pro à venir";
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-family: var(--font-geist-mono);
+  font-size: 9.5px;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 9px;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
+/* CTO card — distinct avatar + tag next to name */
+.eq-dev-avatar.eq-dev-avatar-cto {
+  background: linear-gradient(135deg, var(--accent-ink), var(--accent));
+  border: 2px solid rgba(167, 139, 250, 0.3);
+  box-shadow: 0 4px 14px -4px rgba(109, 40, 217, 0.4);
+}
+.eq-dev-tag {
+  display: inline-block;
+  font-family: var(--font-geist-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: var(--accent);
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+  line-height: 1.4;
+}
+
+/* Photos-à-venir note for the dev grid */
+.eq-devs::after {
+  content: "Photos équipe ajoutées sous peu — en attendant, chaque badge LinkedIn pointe vers le profil.";
+  display: block;
+  grid-column: 1 / -1;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--paper-3);
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  color: var(--mute);
+  letter-spacing: 0.01em;
+  text-align: center;
+  line-height: 1.5;
+}

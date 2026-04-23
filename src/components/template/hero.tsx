@@ -4,7 +4,7 @@ import Balancer from "react-wrap-balancer";
 import { Button } from "./button";
 import { HiArrowRight } from "react-icons/hi2";
 import { Badge } from "./badge";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";

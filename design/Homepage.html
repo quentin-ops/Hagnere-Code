@@ -1,0 +1,2307 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Hagnéré Code — Agence SaaS AI-native · Chambéry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ink:#0A0A0A; --ink-2:#171717; --ink-3:#262626; --ink-4:#404040;
+    --mute:#737373; --line:#E5E5E5; --line-2:#EFEFEF;
+    --paper:#FFFFFF; --paper-2:#FAFAFA; --paper-3:#F5F5F5;
+    --accent:#6D28D9; --accent-ink:#4C1D95; --accent-soft:#EDE9FE;
+  }
+  *{box-sizing:border-box}
+  html,body{background:var(--paper);color:var(--ink);scroll-behavior:smooth}
+  body{margin:0;font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;letter-spacing:-0.005em}
+  .mono{font-family:'Geist Mono',ui-monospace,monospace}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+  a{color:inherit}
+
+  h1,h2,h3,h4{font-family:'Geist';letter-spacing:-0.035em;font-weight:600;margin:0}
+  h1{font-size:84px;line-height:0.98;letter-spacing:-0.05em}
+  h2{font-size:52px;line-height:1.06;letter-spacing:-0.04em}
+  h3{font-size:22px;letter-spacing:-0.02em;font-weight:600;line-height:1.25}
+
+  /* ============ NAV ============ */
+  .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(255,255,255,0.75);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1280px;margin:0 auto;padding:0 40px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-0.02em;text-decoration:none;color:inherit}
+  .brand-mark{width:28px;height:28px;border-radius:6px;background:var(--ink);display:grid;place-items:center;color:#fff;font-family:'Geist Mono';font-weight:600;font-size:14px;position:relative}
+  .brand-mark::after{content:"";position:absolute;right:-3px;bottom:-3px;width:6px;height:6px;background:var(--accent)}
+  .brand-name{font-size:16px}.brand-name b{font-weight:600}.brand-name span{color:var(--mute);font-weight:400}
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--ink-3);position:relative}
+  .nav-links > a, .nav-item > .nav-trigger{text-decoration:none;transition:color 0.15s;display:inline-flex;align-items:center;gap:4px;cursor:pointer}
+  .nav-links a:hover, .nav-item:hover > .nav-trigger{color:var(--ink)}
+  .nav-item{position:relative}
+  .nav-trigger svg{transition:transform 0.2s}
+  .nav-item:hover .nav-trigger svg{transform:rotate(180deg)}
+
+  .nav-dd{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-8px);opacity:0;pointer-events:none;transition:all 0.2s;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 24px 48px -16px rgba(0,0,0,0.18),0 2px 8px rgba(0,0,0,0.04);padding:24px;width:880px;display:grid;grid-template-columns:1fr 1fr 1fr 1.1fr;gap:20px}
+  .nav-item:hover .nav-dd{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .dd-col h6{font-family:'Geist Mono';font-size:10px;color:var(--mute);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 12px;font-weight:500}
+  .dd-link{display:flex;gap:10px;padding:8px;border-radius:8px;text-decoration:none;color:inherit;transition:background 0.15s}
+  .dd-link:hover{background:var(--paper-2)}
+  .dd-ic{width:32px;height:32px;border-radius:8px;background:var(--paper-3);display:grid;place-items:center;color:var(--ink-3);flex-shrink:0}
+  .dd-link:hover .dd-ic{background:var(--accent-soft);color:var(--accent-ink)}
+  .dd-meta{display:flex;flex-direction:column;gap:2px}
+  .dd-title{font-size:13.5px;font-weight:500;color:var(--ink);letter-spacing:-0.01em}
+  .dd-sub{font-size:11.5px;color:var(--mute);line-height:1.35}
+  .dd-cta{background:linear-gradient(180deg,#171717,#0A0A0A);color:#fff;border-radius:12px;padding:20px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+  .dd-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(109,40,217,0.18),transparent 60%)}
+  .dd-cta-body{position:relative}
+  .dd-cta .tag{font-family:'Geist Mono';font-size:10px;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase}
+  .dd-cta-title{color:#fff;font-size:15px;font-weight:500;margin-top:8px;letter-spacing:-0.015em;line-height:1.3}
+  .dd-cta-sub{color:rgba(255,255,255,0.6);font-size:11.5px;margin-top:6px;line-height:1.4}
+  .dd-cta .btn{margin-top:14px;width:100%;justify-content:center;font-size:12px;padding:8px 12px}
+
+  .nav-links a.active{color:var(--ink);font-weight:500}
+  .nav-cta{display:flex;gap:8px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all 0.15s;white-space:nowrap}
+  .btn-primary{background:var(--ink);color:#fff}
+  .btn-primary:hover{background:var(--ink-2);transform:translateY(-1px)}
+  .btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 14px -4px rgba(109,40,217,0.5)}
+  .btn-accent:hover{background:var(--accent-ink);transform:translateY(-1px)}
+  .btn-ghost{color:var(--ink-3);border-color:var(--line);background:#fff}
+  .btn-ghost:hover{border-color:var(--ink-4);color:var(--ink)}
+  .btn-lg{padding:14px 22px;font-size:15px;border-radius:10px}
+  .btn .arrow{transition:transform 0.2s}
+  .btn:hover .arrow{transform:translateX(3px)}
+
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--ink-3);background:#fff;font-family:'Geist Mono';font-weight:500}
+  .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(109,40,217,0.18)}
+  .eyebrow{font-family:'Geist Mono';font-size:12px;font-weight:500;color:var(--accent-ink);text-transform:uppercase;letter-spacing:0.08em}
+  .eyebrow.on-dark{color:var(--accent)}
+
+  /* ============ HERO ============ */
+  .hero{padding:80px 0 120px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px),linear-gradient(to bottom,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 85%);pointer-events:none}
+  .hero-radial{position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 60% 30%,rgba(109,40,217,0.09),transparent 70%);pointer-events:none}
+  .hero-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;position:relative;min-height:560px}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px}
+  .hero h1 .accent{color:var(--accent)}
+  .hero h1 .nowrap{white-space:nowrap}
+  .hero-sub{margin-top:28px;font-size:20px;line-height:1.55;color:var(--ink-3);max-width:560px}
+  .hero-sub b{color:var(--ink);font-weight:600}
+  .hero-cta{margin-top:40px;display:flex;gap:12px;flex-wrap:wrap}
+  .hero-meta{margin-top:28px;display:flex;gap:20px;color:var(--mute);font-size:13px;align-items:center;flex-wrap:wrap}
+  .hero-meta .sep{width:4px;height:4px;background:var(--line);border-radius:50%}
+  .hero-meta svg{color:var(--accent);vertical-align:-2px;margin-right:4px}
+
+  /* Isometric tower */
+  .tower{position:relative;width:100%;height:540px}
+  .tower svg{position:absolute;inset:0;width:100%;height:100%}
+  @keyframes float-slow{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes pulse-ring{0%{transform:scale(0.95);opacity:0.8}100%{transform:scale(1.8);opacity:0}}
+  .tower-float{animation:float-slow 6s ease-in-out infinite}
+
+  /* ============ LOGO BAR (v2 — editorial) ============ */
+  .logobar{padding:100px 0;border-bottom:1px solid var(--line);background:#fff;position:relative}
+  .logobar::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,var(--line) 1px,transparent 1px);background-size:24px 24px;mask-image:radial-gradient(ellipse 70% 50% at 50% 50%,#000 0%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 70% 50% at 50% 50%,#000 0%,transparent 75%);opacity:0.5;pointer-events:none}
+  .lb-inner{position:relative;display:grid;grid-template-columns:380px 1fr;gap:80px;align-items:start}
+  .lb-side .lb-kicker{display:inline-flex;align-items:center;gap:8px;font-family:'Geist Mono';font-size:11px;color:var(--accent-ink);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px;font-weight:500}
+  .lb-side .lb-kicker::before{content:"";width:20px;height:1px;background:var(--accent)}
+  .lb-side h3{font-size:36px;line-height:1.05;letter-spacing:-0.035em;font-weight:600;margin:0 0 20px;color:var(--ink)}
+  .lb-side h3 em{font-style:normal;color:var(--accent)}
+  .lb-side p{font-size:15px;line-height:1.6;color:var(--ink-3);margin:0;max-width:340px}
+  .lb-side .lb-note{margin-top:28px;padding-top:24px;border-top:1px solid var(--line-2);font-family:'Geist Mono';font-size:11px;color:var(--mute);letter-spacing:0.02em}
+
+  .lb-stack{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .lb-row{display:grid;grid-template-columns:110px 1fr;gap:24px;padding:22px 0;border-bottom:1px solid var(--line-2);align-items:center;transition:background 0.2s;position:relative}
+  .lb-row:last-child{border-bottom:none}
+  .lb-row:hover{background:linear-gradient(90deg,transparent,rgba(109,40,217,0.025) 40%,transparent)}
+  .lb-row-label{font-family:'Geist Mono';font-size:10px;color:var(--mute);letter-spacing:0.1em;text-transform:uppercase;font-weight:500;padding-left:4px}
+  .lb-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .lb-chip{display:inline-flex;align-items:center;gap:10px;padding:9px 14px 9px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;font-family:'Geist';font-size:14px;font-weight:500;color:var(--ink-2);letter-spacing:-0.01em;transition:all 0.2s;cursor:default}
+  .lb-chip:hover{border-color:var(--ink-4);color:var(--ink);transform:translateY(-1px);box-shadow:0 4px 12px -4px rgba(0,0,0,0.08)}
+  .lb-chip svg{flex-shrink:0}
+  .lb-chip .lb-chip-dim{color:var(--mute);font-weight:400;font-family:'Geist Mono';font-size:11px;letter-spacing:0.01em}
+
+  /* ============ STUDIO FULLSTACK (v2 — modern & punchy) ============ */
+  .studio{padding:140px 0;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .studio-head{text-align:center;max-width:880px;margin:0 auto 80px}
+  .shead-tag{display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border:1px solid var(--line);background:#fff;border-radius:999px;font-family:'Geist Mono';font-size:11px;color:var(--ink-3);letter-spacing:0.08em;font-weight:500;margin-bottom:26px}
+  .shead-dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 0 4px rgba(109,40,217,0.15)}
+  .studio-head h2{font-size:68px;line-height:1.02;letter-spacing:-0.045em}
+  .studio-head h2 .grad{background:linear-gradient(90deg,var(--accent) 0%,#A78BFA 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .studio-lead{font-size:18px;color:var(--ink-3);line-height:1.55;margin-top:24px;max-width:640px;margin-left:auto;margin-right:auto}
+
+  /* Hero service card (pleine largeur) */
+  .svc-hero{display:grid;grid-template-columns:1fr 1.05fr;gap:0;background:#0A0A0A;border-radius:24px;overflow:hidden;text-decoration:none;color:inherit;position:relative;border:1px solid #171717;box-shadow:0 40px 80px -40px rgba(76,29,149,0.35),0 10px 30px -15px rgba(0,0,0,0.4);transition:transform 0.3s ease,box-shadow 0.3s ease}
+  .svc-hero:hover{transform:translateY(-3px);box-shadow:0 50px 100px -40px rgba(76,29,149,0.5),0 14px 34px -15px rgba(0,0,0,0.5)}
+  .svc-hero-left{padding:56px 52px;color:#fff;position:relative;display:flex;flex-direction:column;justify-content:center}
+  .svc-hero-left::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 0% 100%,rgba(109,40,217,0.22),transparent 60%);pointer-events:none}
+  .svc-hero-left > *{position:relative}
+  .svc-hero-tag{display:inline-flex;align-items:center;gap:10px;font-family:'Geist Mono';font-size:11px;color:var(--accent);letter-spacing:0.12em;font-weight:500;margin-bottom:26px}
+  .svc-hero-tag > span:first-child{background:var(--accent);color:#fff;padding:3px 8px;border-radius:4px;font-weight:600;letter-spacing:0.04em}
+  .svc-hero h3{color:#fff;font-size:40px;line-height:1.08;letter-spacing:-0.035em;font-weight:600}
+  .svc-hero h3 .accent{color:#fff;background:linear-gradient(90deg,#A78BFA,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .svc-hero-lead{color:rgba(255,255,255,0.65);font-size:15.5px;line-height:1.6;margin-top:22px;max-width:500px}
+  .svc-hero-lead b{color:#fff;font-weight:500}
+  .svc-hero-list{list-style:none;padding:0;margin:32px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .svc-hero-list li{display:flex;gap:12px;align-items:start;font-size:13.5px;color:rgba(255,255,255,0.88)}
+  .svc-hero-list li b{color:#fff;font-weight:600}
+  .sh-ic{width:26px;height:26px;border-radius:7px;background:rgba(109,40,217,0.18);color:var(--accent);display:grid;place-items:center;flex-shrink:0;margin-top:-2px}
+  .svc-hero-foot{margin-top:44px;display:flex;align-items:center;justify-content:space-between;padding-top:28px;border-top:1px solid rgba(255,255,255,0.1)}
+  .svc-hero-cta{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:500;color:#fff}
+  .svc-hero-cta svg{color:var(--accent);transition:transform 0.2s}
+  .svc-hero:hover .svc-hero-cta svg{transform:translateX(4px)}
+  .svc-hero-price{font-family:'Geist Mono';font-size:12px;color:rgba(255,255,255,0.4);letter-spacing:0.04em}
+  .svc-hero-price b{color:var(--accent);font-weight:600}
+
+  .svc-hero-right{position:relative;background:#0F0F0F;padding:44px 44px 44px 20px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .svc-hero-right::before{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:32px 32px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000,transparent 85%)}
+
+  /* Mockup produit */
+  .svc-mock{position:relative;width:100%;max-width:560px;background:#171717;border:1px solid #262626;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,0.5),0 0 0 1px rgba(109,40,217,0.1)}
+  .svc-mock-chrome{display:flex;align-items:center;gap:8px;padding:11px 16px;background:#0F0F0F;border-bottom:1px solid #262626;position:relative}
+  .svc-mock-chrome span{width:10px;height:10px;border-radius:50%;background:#333}
+  .svc-mock-chrome span:nth-child(2){background:#333}
+  .svc-mock-chrome span:nth-child(3){background:#333}
+  .svc-mock-url{position:absolute;left:50%;transform:translateX(-50%);font-family:'Geist Mono';font-size:11px;color:#737373;background:#1C1C1C;padding:3px 14px;border-radius:6px}
+  .svc-mock-body{display:grid;grid-template-columns:160px 1fr;height:300px}
+  .svc-mock-side{background:#0F0F0F;border-right:1px solid #262626;padding:16px 12px;display:flex;flex-direction:column;gap:14px}
+  .svc-mock-logo{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#fff;padding:4px 6px}
+  .ml-mark{width:22px;height:22px;border-radius:5px;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:'Geist Mono';font-size:10px;font-weight:700}
+  .svc-mock-nav{display:flex;flex-direction:column;gap:2px}
+  .mn-item{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:6px;font-size:11.5px;color:#737373;font-weight:500}
+  .mn-item.active{background:rgba(109,40,217,0.15);color:#fff}
+  .mn-item.active .mn-ic{color:var(--accent)}
+  .mn-ic{font-size:8px;color:#404040}
+  .mn-badge{margin-left:auto;background:var(--accent);color:#fff;font-size:9px;padding:1px 6px;border-radius:4px;font-family:'Geist Mono';font-weight:600}
+  .svc-mock-main{padding:18px 18px 0;display:flex;flex-direction:column;gap:14px}
+  .svc-mock-head{display:flex;justify-content:space-between;align-items:center}
+  .mm-title{font-size:13px;font-weight:600;color:#fff;letter-spacing:-0.01em}
+  .mm-sub{font-size:10.5px;color:#737373;margin-top:2px;font-family:'Geist Mono'}
+  .mm-filters{display:flex;gap:4px}
+  .mm-chip{font-family:'Geist Mono';font-size:10px;padding:4px 8px;border-radius:5px;color:#737373;background:#1C1C1C;font-weight:500}
+  .mm-chip.active{background:var(--accent);color:#fff}
+  .svc-mock-kanban{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .kb-col{background:#0F0F0F;border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:6px}
+  .kb-head{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;color:#737373;padding-bottom:6px;border-bottom:1px solid #1A1A1A;margin-bottom:2px}
+  .kb-head b{color:#fff;font-weight:600;letter-spacing:-0.005em}
+  .kb-head span{font-family:'Geist Mono';background:#1C1C1C;padding:1px 6px;border-radius:4px;color:#a0a0a0}
+  .kb-card{background:#1C1C1C;border:1px solid #262626;border-radius:6px;padding:8px 9px;font-size:10.5px}
+  .kb-card.active{border-color:var(--accent);background:rgba(109,40,217,0.12);box-shadow:0 0 0 3px rgba(109,40,217,0.08)}
+  .kb-card.ghost{opacity:0.45}
+  .kbc-name{color:#fff;font-weight:500;letter-spacing:-0.005em}
+  .kbc-v{color:#737373;margin-top:2px;font-family:'Geist Mono';font-size:9.5px}
+  .kbc-tag{margin-top:4px;color:#8DD382;font-family:'Geist Mono';font-size:9px;font-weight:500}
+
+  .svc-float{position:absolute;background:#fff;border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:10px;box-shadow:0 20px 40px -12px rgba(0,0,0,0.35),0 2px 6px rgba(0,0,0,0.15);z-index:2}
+  .svc-float .sf-t{font-size:11.5px;font-weight:600;color:var(--ink);letter-spacing:-0.005em}
+  .svc-float .sf-s{font-size:10px;color:var(--mute);margin-top:1px;font-family:'Geist Mono'}
+  .sf-dot{width:9px;height:9px;background:#5AD27D;border-radius:50%;box-shadow:0 0 0 4px rgba(90,210,125,0.2);flex-shrink:0}
+  .sf-icon{width:24px;height:24px;border-radius:6px;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:'Geist Mono';font-size:9px;font-weight:700;flex-shrink:0}
+  .svc-float-1{top:32px;left:-14px;animation:float-slow 5.2s ease-in-out infinite}
+  .svc-float-2{bottom:40px;right:-18px;animation:float-slow 6s ease-in-out infinite;animation-delay:-2s}
+
+  /* Autres services — grille 3×3 aérée */
+  .svc-row{margin-top:32px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .svc-tile{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;min-height:260px;transition:all 0.25s ease;text-decoration:none;color:inherit;position:relative;overflow:hidden}
+  .svc-tile::after{content:"";position:absolute;inset:0;border-radius:18px;border:1px solid transparent;background:linear-gradient(160deg,rgba(109,40,217,0.5),transparent 40%) border-box;-webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity 0.25s}
+  .svc-tile:hover{transform:translateY(-4px);border-color:transparent;box-shadow:0 24px 40px -22px rgba(76,29,149,0.25),0 8px 16px -8px rgba(0,0,0,0.08)}
+  .svc-tile:hover::after{opacity:1}
+  .svc-tile-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .st-num{font-family:'Geist Mono';font-size:11px;color:var(--mute);letter-spacing:0.06em;background:var(--paper-2);padding:3px 8px;border-radius:5px;font-weight:500}
+  .svc-tile:hover .st-num{background:var(--accent-soft);color:var(--accent)}
+  .st-ic{width:40px;height:40px;border-radius:10px;background:var(--paper-2);color:var(--ink-3);display:grid;place-items:center;transition:all 0.2s}
+  .svc-tile:hover .st-ic{background:var(--accent);color:#fff}
+  .svc-tile h4{font-size:17px;letter-spacing:-0.02em;margin-bottom:6px;font-weight:600}
+  .svc-tile p{margin:0;color:var(--mute);font-size:13px;line-height:1.5}
+
+  /* Mini-visuals */
+  .st-viz{margin:18px 0 0;padding:14px;background:var(--paper-2);border-radius:10px;min-height:72px;display:flex;align-items:center;justify-content:center;color:var(--accent);position:relative}
+  .st-viz-cells{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:12px}
+  .st-viz-cells > div{aspect-ratio:1;background:var(--line);border-radius:3px;transition:background 0.2s}
+  .st-viz-cells > div.on{background:var(--accent)}
+  .svc-tile:hover .st-viz-cells > div{background:var(--line-2)}
+  .svc-tile:hover .st-viz-cells > div.on{background:var(--accent)}
+
+  .st-viz-bars{display:flex;align-items:end;gap:4px;height:72px;padding:8px 12px;width:100%}
+  .st-viz-bars > div{flex:1;background:var(--line);border-radius:2px;min-height:8px;transition:background 0.2s}
+  .st-viz-bars > div.on{background:var(--accent)}
+
+  .st-viz-line{padding:6px 10px;height:72px;width:100%}
+  .st-viz-line svg{width:100%;height:100%;display:block}
+  .st-metric{position:absolute;top:10px;right:14px;font-family:'Geist Mono';font-size:13px;font-weight:700;color:var(--accent);background:rgba(255,255,255,0.9);padding:2px 8px;border-radius:5px;letter-spacing:-0.01em}
+
+  .st-viz-channels{padding:10px 14px;width:100%;display:flex;flex-direction:column;gap:6px}
+  .stc{display:grid;grid-template-columns:60px 1fr;align-items:center;gap:10px;font-size:11px;font-family:'Geist Mono';color:var(--ink-3)}
+  .stc-bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+  .stc-bar i{display:block;height:100%;background:var(--accent);border-radius:3px}
+
+  .st-viz-film{padding:14px 16px;width:100%}
+  .stf{display:flex;align-items:center;gap:10px}
+  .stf-play{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;flex-shrink:0}
+  .stf-bar{flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+  .stf-bar i{display:block;height:100%;background:var(--accent);border-radius:2px}
+  .stf-t{font-family:'Geist Mono';font-size:10px;color:var(--mute);flex-shrink:0}
+
+  .st-viz-status{padding:10px 14px;width:100%;display:flex;flex-direction:column;gap:6px}
+  .sts{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--ink-3)}
+  .sts b{font-size:11px;font-weight:600;color:var(--ink);margin-right:6px}
+  .sts span{font-family:'Geist Mono';color:var(--mute)}
+  .sts-dot{width:8px;height:8px;border-radius:50%;background:#5AD27D;box-shadow:0 0 0 3px rgba(90,210,125,0.2);flex-shrink:0}
+  .sts-dot.yellow{background:#EFC94C;box-shadow:0 0 0 3px rgba(239,201,76,0.2)}
+
+  .st-viz-check{padding:8px 14px;width:100%;display:flex;flex-direction:column;gap:4px}
+  .sck{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink-3)}
+  .sck svg{color:var(--accent);flex-shrink:0}
+
+  .st-viz-audit{padding:10px 14px;width:100%;display:flex;justify-content:space-around;gap:8px}
+  .sca{display:flex;flex-direction:column;align-items:center;gap:2px}
+  .sca span{font-family:'Geist Mono';font-size:9.5px;color:var(--mute);letter-spacing:0.04em;text-transform:uppercase}
+  .sca b{font-size:18px;font-weight:700;color:var(--accent);letter-spacing:-0.03em}
+
+  .st-foot{margin-top:auto;padding-top:16px;display:flex;justify-content:space-between;align-items:center;font-family:'Geist Mono';font-size:11px;color:var(--mute);letter-spacing:0.04em;border-top:1px solid var(--line-2)}
+  .svc-tile:hover .st-foot{color:var(--ink-3)}
+  .st-arrow{width:26px;height:26px;border-radius:50%;background:var(--paper-2);display:grid;place-items:center;color:var(--ink-3);transition:all 0.2s}
+  .svc-tile:hover .st-arrow{background:var(--accent);color:#fff;transform:translateX(3px)}
+
+  /* Foot CTA */
+  .studio-foot{margin-top:64px;padding:36px 40px;background:var(--paper-2);border:1px solid var(--line);border-radius:16px;display:flex;justify-content:space-between;align-items:center;gap:40px}
+  .sfoot-tag{font-family:'Geist Mono';font-size:11px;color:var(--accent);letter-spacing:0.08em;font-weight:500;margin-bottom:6px}
+  .sfoot-t{font-size:20px;font-weight:600;letter-spacing:-0.02em;color:var(--ink)}
+
+  /* ============ DESCRIBE YOUR PROJECT ============ */
+  .describe{padding:140px 0;border-bottom:1px solid var(--line);background:var(--paper-2);position:relative;overflow:hidden}
+  .describe::before{content:"";position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(109,40,217,0.06),transparent 60%);pointer-events:none}
+  .descr-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:80px;align-items:start;position:relative}
+  .descr-copy{position:sticky;top:100px}
+  .descr-copy h2{font-size:56px;line-height:1.02;letter-spacing:-0.04em;margin-top:16px}
+  .descr-copy p{color:var(--ink-3);font-size:17px;margin-top:24px;line-height:1.6;max-width:460px}
+  .descr-copy p b{color:var(--ink);font-weight:600}
+  .descr-copy .chks{margin-top:32px;display:flex;flex-direction:column;gap:12px;padding:0;list-style:none}
+  .descr-copy .chks li{display:flex;gap:12px;align-items:start;font-size:14.5px;color:var(--ink-3)}
+  .descr-copy .chks svg{color:var(--accent);flex-shrink:0;margin-top:3px}
+  .descr-copy .cta-row{margin-top:40px;display:flex;gap:12px;flex-wrap:wrap}
+
+  /* Email-style card wrapper */
+  .dc-wrap{position:relative}
+  .dc-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(15,15,15,0.18),0 10px 30px -20px rgba(0,0,0,0.08);position:relative}
+
+  /* Top bar (email client chrome) */
+  .dc-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:var(--paper-2);border-bottom:1px solid var(--line-2)}
+  .dc-bar-left{display:flex;align-items:center;gap:14px}
+  .dc-bar-dots{display:flex;gap:6px}
+  .dc-bar-dots span{width:10px;height:10px;border-radius:50%;background:#E5E5E5}
+  .dc-bar-dots span:nth-child(1){background:#FF5F57}
+  .dc-bar-dots span:nth-child(2){background:#FEBC2E}
+  .dc-bar-dots span:nth-child(3){background:#28C840}
+  .dc-bar-path{display:flex;align-items:center;gap:6px;font-family:'Geist Mono';font-size:11px;color:var(--mute);letter-spacing:0.02em}
+  .dc-bar-path svg{color:var(--line)}
+  .dc-bar-path span:last-child{color:var(--ink-3);font-weight:500}
+  .dc-status{display:inline-flex;align-items:center;gap:8px;font-family:'Geist Mono';font-size:10.5px;color:var(--accent-ink);background:var(--accent-soft);padding:4px 10px;border-radius:999px;letter-spacing:0.06em;font-weight:600}
+  .dc-status-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse-ring 2s infinite}
+
+  /* Subject strip */
+  .dc-subject{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line-2);gap:20px}
+  .dc-subj-l{display:flex;gap:12px;align-items:center}
+  .dc-subj-avatar{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#0F172A,#334155);color:#fff;display:grid;place-items:center;font-family:'Geist Mono';font-size:12px;font-weight:700;letter-spacing:0.04em;flex-shrink:0}
+  .dc-subj-from{font-size:13.5px;color:var(--ink);letter-spacing:-0.005em}
+  .dc-subj-from b{font-weight:600}
+  .dc-subj-co{color:var(--mute);font-weight:400}
+  .dc-subj-to{font-size:11.5px;color:var(--mute);margin-top:2px;font-family:'Geist Mono'}
+  .dc-subj-date{color:var(--ink-4)}
+  .dc-subj-tags{display:flex;gap:6px;flex-shrink:0}
+  .dc-pill{font-family:'Geist Mono';font-size:10px;color:var(--ink-3);background:var(--paper-2);border:1px solid var(--line);padding:4px 9px;border-radius:5px;letter-spacing:0.02em;font-weight:500}
+
+  /* Messages */
+  .dc-msg{padding:22px 26px;border-bottom:1px solid var(--line-2)}
+  .dc-msg.you{background:var(--paper-2)}
+  .dc-msg.you .dc-msg-body{font-size:14px;line-height:1.6;color:var(--ink-2);max-width:540px}
+  .dc-msg.you .dc-msg-body p{margin:0}
+  .dc-msg.you .dc-msg-body b{font-weight:600;color:var(--ink)}
+  .dc-msg-meta{margin-top:12px;display:inline-flex;align-items:center;gap:6px;font-family:'Geist Mono';font-size:10.5px;color:var(--mute);letter-spacing:0.04em}
+  .dc-msg-meta svg{color:#5AD27D}
+
+  .dc-msg.us{padding:22px 26px}
+  .dc-msg-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .dc-av{width:36px;height:36px;border-radius:9px;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Geist Mono';font-weight:700;font-size:12px;position:relative;flex-shrink:0}
+  .dc-av::after{content:"";position:absolute;right:-3px;bottom:-3px;width:8px;height:8px;background:var(--accent);border-radius:2px;border:1.5px solid #fff}
+  .dc-av-meta{flex:1;font-size:13.5px;color:var(--ink);letter-spacing:-0.005em}
+  .dc-av-meta > div:first-child{display:flex;align-items:center;gap:8px}
+  .dc-av-meta b{font-weight:600}
+  .dc-av-sub{font-size:11px;color:var(--mute);margin-top:2px;font-family:'Geist Mono'}
+  .dc-badge{font-family:'Geist Mono';font-size:9px;color:var(--accent-ink);background:var(--accent-soft);padding:2px 7px;border-radius:4px;letter-spacing:0.08em;font-weight:700}
+  .dc-time{font-family:'Geist Mono';font-size:10.5px;color:var(--mute);letter-spacing:0.02em}
+  .dc-reply{font-size:14px;line-height:1.6;color:var(--ink-2);margin-bottom:22px;max-width:560px}
+  .dc-reply b{color:var(--ink);font-weight:600}
+
+  /* Embedded quote */
+  .dc-quote{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--line-2)}
+  .dc-q-head{display:flex;justify-content:space-between;align-items:flex-start;padding:18px 20px;background:linear-gradient(180deg,#FAFAFA,#fff);border-bottom:1px solid var(--line-2)}
+  .dc-q-tag{font-family:'Geist Mono';font-size:10px;color:var(--mute);letter-spacing:0.1em;font-weight:600;margin-bottom:4px}
+  .dc-q-title{font-size:17px;font-weight:600;color:var(--ink);letter-spacing:-0.015em}
+  .dc-q-logo{width:36px;height:36px;border-radius:8px;background:var(--ink);color:#fff;display:grid;place-items:center;font-family:'Geist Mono';font-weight:700;font-size:12px;position:relative}
+  .dc-q-logo::after{content:"";position:absolute;right:-3px;bottom:-3px;width:7px;height:7px;background:var(--accent)}
+
+  .dc-q-grid{padding:4px 20px}
+  .dc-q-row{display:grid;grid-template-columns:112px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line-2);align-items:start}
+  .dc-q-row:last-child{border-bottom:none}
+  .dc-q-k{display:flex;align-items:center;gap:8px;font-family:'Geist Mono';font-size:10.5px;color:var(--mute);letter-spacing:0.06em;text-transform:uppercase;font-weight:600;padding-top:2px;white-space:nowrap}
+  .dc-q-k svg{color:var(--ink-4);flex-shrink:0}
+  .dc-q-v{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+  .dc-q-v > span{font-size:11.5px;color:var(--ink-2);background:var(--paper-2);padding:4px 9px;border-radius:6px;font-weight:500;border:1px solid var(--line-2);white-space:nowrap}
+  .dc-q-v.simple > span{background:transparent;border:none;padding:0;font-size:13px;color:var(--ink-2);font-weight:500}
+  .dc-q-v.incl{color:var(--ink-3)}
+  .dc-q-v.incl > span{background:transparent;border:none;padding:0;font-size:12.5px;color:var(--ink-3);font-weight:500;white-space:nowrap}
+  .dc-q-v.team{flex-direction:column;gap:8px;width:100%}
+  .dc-q-mbr{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--ink-2);background:transparent;padding:0;border:none}
+  .dc-q-mbr-av{width:24px;height:24px;border-radius:6px;color:#fff;display:grid;place-items:center;font-family:'Geist Mono';font-weight:700;font-size:10px;flex-shrink:0}
+  .dc-q-mbr > div:last-child{display:flex;flex-direction:column;line-height:1.2}
+  .dc-q-mbr b{font-weight:600;color:var(--ink);font-size:12.5px}
+  .dc-q-mbr span{font-size:10.5px;color:var(--mute);font-family:'Geist Mono'}
+
+  /* Price breakdown */
+  .dc-q-breakdown{padding:14px 20px;background:var(--paper-2);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);display:flex;flex-direction:column;gap:7px}
+  .dc-q-br-row{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;font-size:12.5px;color:var(--ink-3)}
+  .dc-q-br-row > span:first-child{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .dc-q-br-row > span:last-child{font-family:'Geist Mono';font-weight:600;color:var(--ink-2);letter-spacing:-0.01em;white-space:nowrap}
+
+  /* Total — premium dark bar with spotlight */
+  .dc-q-total{position:relative;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:20px;background:radial-gradient(ellipse 80% 140% at 85% 50%,rgba(109,40,217,0.5),transparent 60%),linear-gradient(135deg,#0A0A0A 0%,#171717 100%);color:#fff;overflow:hidden;border-top:1px solid rgba(255,255,255,0.06)}
+  .dc-q-total::before{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(90deg,#000,transparent 70%);-webkit-mask-image:linear-gradient(90deg,#000,transparent 70%);pointer-events:none}
+  .dc-q-total > *{position:relative}
+  .dc-q-tleft{display:flex;flex-direction:column;gap:8px;min-width:0}
+  .dc-q-ttag{display:inline-flex;align-items:center;gap:8px;font-family:'Geist Mono';font-size:10px;color:#fff;letter-spacing:0.12em;font-weight:700;background:rgba(109,40,217,0.22);border:1px solid rgba(167,139,250,0.35);padding:4px 10px;border-radius:999px;align-self:flex-start}
+  .dc-q-ttag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(109,40,217,0.35)}
+  .dc-q-tsub{font-family:'Geist Mono';font-size:11px;color:rgba(255,255,255,0.58);letter-spacing:0.02em;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .dc-q-tsub .sep{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,0.25)}
+  .dc-q-tsub b{color:#fff;font-weight:600}
+  .dc-q-tright{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+  .dc-q-tcurrency{font-family:'Geist Mono';font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;font-weight:600}
+  .dc-q-tval{font-family:'Geist';font-size:42px;font-weight:700;letter-spacing:-0.045em;color:#fff;line-height:1;white-space:nowrap;text-shadow:0 2px 20px rgba(109,40,217,0.4)}
+
+  /* Quote actions */
+  .dc-q-actions{display:flex;gap:8px;padding:14px 20px;border-bottom:1px solid var(--line-2)}
+  .dc-q-actions .btn-accent{font-size:13.5px;padding:11px 16px}
+  .dc-q-actions .btn-ghost{font-size:13px;padding:11px 14px}
+
+  .dc-q-foot{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;background:var(--paper-2);font-family:'Geist Mono';font-size:10.5px;color:var(--mute);letter-spacing:0.04em}
+  .dc-q-foot span{display:inline-flex;align-items:center;gap:6px}
+  .dc-q-foot svg{color:var(--accent)}
+
+  /* Typing indicator */
+  .dc-typing{display:flex;align-items:center;gap:10px;padding:14px 26px;background:var(--paper-3);border-top:1px solid var(--line-2)}
+  .dc-type-av{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#0F172A,#334155);color:#fff;display:grid;place-items:center;font-family:'Geist Mono';font-size:9px;font-weight:700;flex-shrink:0}
+  .dc-type-bubble{display:flex;gap:4px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 12px}
+  .dc-type-bubble span{width:6px;height:6px;background:var(--mute);border-radius:50%;animation:dc-blink 1.4s infinite ease-in-out both}
+  .dc-type-bubble span:nth-child(1){animation-delay:-0.32s}
+  .dc-type-bubble span:nth-child(2){animation-delay:-0.16s}
+  @keyframes dc-blink{0%,80%,100%{opacity:0.3;transform:scale(0.8)}40%{opacity:1;transform:scale(1)}}
+  .dc-type-t{font-family:'Geist Mono';font-size:10.5px;color:var(--mute);letter-spacing:0.02em}
+
+  
+  /* ============ METHODE ============ */
+  .methode{padding:140px 0;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .methode::before{content:"";position:absolute;top:-100px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(109,40,217,0.04),transparent 60%);pointer-events:none}
+
+  /* Connecting rail */
+  .meth-rail{position:relative;margin-top:64px}
+  .meth-rail::before{content:"";position:absolute;top:44px;left:44px;right:44px;height:1px;background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 12px);z-index:0}
+
+  .meth-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative;z-index:1}
+  .meth-step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 22px 22px;display:flex;flex-direction:column;min-height:290px;position:relative;transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease}
+  .meth-step:hover{transform:translateY(-3px);border-color:rgba(109,40,217,0.25);box-shadow:0 20px 40px -20px rgba(76,29,149,0.18),0 4px 12px -4px rgba(0,0,0,0.05)}
+
+  .meth-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+  .meth-num{display:inline-flex;align-items:center;gap:7px;font-family:'Geist Mono';font-size:11px;color:var(--accent-ink);letter-spacing:0.1em;font-weight:700;background:var(--accent-soft);padding:4px 9px;border-radius:999px}
+  .meth-num::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .meth-ic{width:36px;height:36px;border-radius:10px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink-3);transition:all 0.2s ease}
+  .meth-step:hover .meth-ic{background:var(--ink);color:#fff;border-color:var(--ink);transform:rotate(-4deg)}
+
+  .meth-step h4{font-size:19px;letter-spacing:-0.02em;margin-bottom:10px;font-weight:600}
+  .meth-step p{margin:0;color:var(--mute);font-size:13.5px;line-height:1.55}
+  .meth-step p b{color:var(--ink-2);font-weight:600}
+
+  .meth-foot{margin-top:auto;padding-top:18px;display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:1px solid var(--line-2)}
+  .meth-dur{font-family:'Geist Mono';font-size:10.5px;color:var(--ink-3);letter-spacing:0.06em;text-transform:uppercase;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+  .meth-dur svg{color:var(--mute);flex-shrink:0}
+  .meth-tag{font-family:'Geist Mono';font-size:9.5px;color:var(--mute);letter-spacing:0.06em;text-transform:uppercase;font-weight:600;background:var(--paper-2);padding:3px 8px;border-radius:4px}
+  .meth-tag.free{color:#2F9E6B;background:rgba(47,158,107,0.08)}
+  .meth-tag.guarantee{color:var(--accent-ink);background:var(--accent-soft)}
+
+  /* ============ REALISATIONS ============ */
+  .real{padding:130px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .real-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+
+  /* ============ SHARED SECTION HEAD ============ */
+  .section-head{display:grid;grid-template-columns:1.25fr 1fr;gap:80px;align-items:end;margin-bottom:64px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+  .section-head .left{display:flex;flex-direction:column;gap:16px}
+  .section-head .left h2{margin:0}
+  .section-head .right{font-size:16px;line-height:1.6;color:var(--ink-3);max-width:460px;margin:0;padding-bottom:6px}
+  .real-card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:all 0.3s;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative}
+  .real-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--brand,var(--accent));z-index:2}
+  .real-card:hover{transform:translateY(-4px);box-shadow:0 30px 48px -24px rgba(0,0,0,0.18);border-color:#d4d4d4}
+  .real-shot{aspect-ratio:16/9;border-bottom:1px solid var(--line);overflow:hidden;position:relative}
+  .real-head{padding:26px 28px 18px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--line-2)}
+  .real-logo{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;font-family:'Geist Mono';font-weight:700;font-size:16px;color:#fff;background:var(--brand,var(--accent));flex-shrink:0}
+  .real-head-main{flex:1;min-width:0}
+  .real-head h3{font-size:20px;letter-spacing:-0.02em;margin:0;line-height:1.2}
+  .real-url{font-family:'Geist Mono';font-size:11px;color:var(--mute);margin-top:3px;display:block}
+  .real-chip{font-family:'Geist Mono';font-size:10px;color:var(--brand,var(--accent-ink));background:var(--brand-soft,var(--accent-soft));padding:5px 9px;border-radius:6px;letter-spacing:0.04em;font-weight:600;white-space:nowrap;text-transform:uppercase}
+  .real-body{padding:20px 28px 28px;display:flex;flex-direction:column;gap:16px;flex:1}
+  .real-body p{color:var(--ink-3);font-size:14.5px;line-height:1.55;margin:0}
+  .real-meta{display:flex;align-items:center;gap:8px;font-family:'Geist Mono';font-size:10.5px;color:var(--mute);letter-spacing:0.05em;text-transform:uppercase;font-weight:600}
+  .real-meta .dot{width:3px;height:3px;border-radius:50%;background:var(--mute)}
+  .real-metric{margin-top:auto;padding-top:20px;border-top:1px solid var(--line-2);display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .rm .n{font-size:22px;font-weight:600;letter-spacing:-0.03em;color:var(--ink);line-height:1}
+  .rm .n .s{color:var(--brand,var(--accent));font-weight:600}
+  .rm .l{font-size:11.5px;color:var(--mute);margin-top:6px;line-height:1.3}
+
+  /* ============ STATS ============ */
+  .stats{padding:120px 0;background:var(--ink);color:#fff;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+  .stats-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 90%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 90%)}
+  .stats .inner{position:relative}
+  .stats-head{max-width:720px}
+  .stats-head h2{color:#fff}
+  .stats-head p{color:rgba(255,255,255,0.6);margin-top:20px;font-size:17px;line-height:1.5}
+  .stats-grid{margin-top:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .stat{padding:0 32px;border-right:1px solid rgba(255,255,255,0.1)}
+  .stat:first-child{padding-left:0}
+  .stat:last-child{border-right:none}
+  .stat .n{font-size:64px;font-weight:600;letter-spacing:-0.04em;line-height:1}
+  .stat .n .s{color:var(--accent)}
+  .stat .l{margin-top:14px;color:rgba(255,255,255,0.6);font-size:14px;line-height:1.4}
+  .stat .k{font-family:'Geist Mono';font-size:11px;color:var(--accent);letter-spacing:0.06em;margin-bottom:14px;display:block}
+
+  /* ============ EQUIPE ============ */
+  .equipe{padding:130px 0;border-bottom:1px solid var(--line);background:#fff}
+  .eq-grid{display:grid;grid-template-columns:440px 1fr;gap:48px;margin-top:56px;align-items:stretch}
+
+  /* Founder card (dark, premium) */
+  .eq-founder{position:relative;border-radius:20px;overflow:hidden;background:var(--ink);color:#fff;display:flex;flex-direction:column;min-height:620px}
+  .eq-founder::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 20% 0%,rgba(109,40,217,0.25),transparent 50%),radial-gradient(circle at 80% 100%,rgba(109,40,217,0.12),transparent 50%);pointer-events:none}
+  .eq-founder-photo{aspect-ratio:4/5;background:#171717;position:relative;overflow:hidden;border-bottom:1px solid #262626}
+  .eq-founder-photo svg{width:100%;height:100%}
+  .eq-founder-tag{position:absolute;top:20px;left:20px;display:inline-flex;align-items:center;gap:8px;padding:6px 12px;background:rgba(10,10,10,0.75);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1);border-radius:999px;font-family:'Geist Mono';font-size:10px;letter-spacing:0.08em;color:#fff;z-index:2}
+  .eq-founder-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(109,40,217,0.3)}
+  .eq-founder-body{padding:28px;position:relative;z-index:1;flex:1;display:flex;flex-direction:column;gap:20px}
+  .eq-founder-name{font-size:24px;font-weight:600;letter-spacing:-0.025em;line-height:1.15}
+  .eq-founder-role{font-family:'Geist Mono';font-size:11px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-top:6px;display:block;font-weight:500}
+  .eq-founder-quote{font-size:15px;line-height:1.55;color:#d4d4d4;font-style:italic;padding:16px 20px;border-left:2px solid var(--accent);background:rgba(255,255,255,0.03);border-radius:0 10px 10px 0}
+  .eq-founder-meta{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:auto;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08)}
+  .eq-fm{display:flex;flex-direction:column;gap:4px}
+  .eq-fm .k{font-family:'Geist Mono';font-size:9.5px;color:#737373;letter-spacing:0.08em;text-transform:uppercase}
+  .eq-fm .v{font-size:13.5px;color:#fff;font-weight:500}
+
+  /* Team side */
+  .eq-team{display:flex;flex-direction:column;gap:24px}
+  .eq-team-intro h3{font-size:32px;line-height:1.1;letter-spacing:-0.03em;font-weight:600;margin:0 0 14px}
+  .eq-team-intro h3 em{font-style:normal;color:var(--accent)}
+  .eq-team-intro p{font-size:15px;line-height:1.6;color:var(--ink-3);margin:0;max-width:620px}
+  .eq-team-intro p b{color:var(--ink);font-weight:600}
+
+  .eq-devs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .eq-dev{position:relative;border:1px solid var(--line);border-radius:14px;padding:18px 16px 16px;background:var(--paper-2);transition:all 0.2s;display:flex;flex-direction:column;gap:10px}
+  .eq-dev:hover{border-color:var(--ink-4);transform:translateY(-2px);box-shadow:0 12px 28px -16px rgba(0,0,0,0.15);background:#fff}
+  .eq-dev-head{display:flex;align-items:center;gap:10px}
+  .eq-dev-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--ink-3),var(--ink));color:#fff;display:grid;place-items:center;font-family:'Geist';font-weight:600;font-size:13px;flex-shrink:0;letter-spacing:-0.01em}
+  .eq-dev-avatar.v2{background:linear-gradient(135deg,#4C1D95,#6D28D9)}
+  .eq-dev-avatar.v3{background:linear-gradient(135deg,#1E3A8A,#3B82F6)}
+  .eq-dev-avatar.v4{background:linear-gradient(135deg,#166534,#22C55E)}
+  .eq-dev-avatar.v5{background:linear-gradient(135deg,#9A3412,#F97316)}
+  .eq-dev-avatar.v6{background:linear-gradient(135deg,#831843,#EC4899)}
+  .eq-dev-meta{display:flex;flex-direction:column;min-width:0;flex:1}
+  .eq-dev-name{font-size:13px;font-weight:600;letter-spacing:-0.015em;color:var(--ink);line-height:1.2}
+  .eq-dev-years{font-family:'Geist Mono';font-size:10px;color:var(--mute);margin-top:2px;letter-spacing:0.02em}
+  .eq-dev-spec{font-size:12.5px;color:var(--ink-3);line-height:1.4;font-weight:400}
+  .eq-dev-stack{display:flex;flex-wrap:wrap;gap:4px;margin-top:2px}
+  .eq-dev-stack span{font-family:'Geist Mono';font-size:9.5px;padding:3px 7px;border:1px solid var(--line);border-radius:4px;color:var(--ink-3);letter-spacing:0.02em;background:#fff}
+
+  /* Claude Code banner */
+  .eq-claude{position:relative;border:1px solid var(--line);border-radius:16px;padding:22px 26px;background:linear-gradient(135deg,rgba(109,40,217,0.04),rgba(109,40,217,0.01) 60%),#fff;overflow:hidden;display:flex;align-items:center;gap:24px}
+  .eq-claude::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--accent),transparent)}
+  .eq-claude-icon{width:48px;height:48px;border-radius:12px;background:#0A0A0A;display:grid;place-items:center;flex-shrink:0;color:#fff;position:relative}
+  .eq-claude-icon svg{width:26px;height:26px}
+  .eq-claude-body{flex:1;min-width:0}
+  .eq-claude-body .tag{font-family:'Geist Mono';font-size:10px;color:var(--accent-ink);letter-spacing:0.08em;text-transform:uppercase;font-weight:500;display:block;margin-bottom:3px}
+  .eq-claude-body h4{font-size:15px;font-weight:600;letter-spacing:-0.01em;margin:0 0 4px;color:var(--ink)}
+  .eq-claude-body p{font-size:13px;line-height:1.5;color:var(--ink-3);margin:0}
+  .eq-claude-body p b{color:var(--ink);font-weight:600}
+
+  /* Stats row bottom */
+  .eq-stats{margin-top:0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:22px 26px;border:1px solid var(--line);border-radius:16px;background:var(--paper-2)}
+  .eqs{display:flex;flex-direction:column;gap:3px}
+  .eqs .n{font-size:28px;font-weight:600;letter-spacing:-0.035em;line-height:1;color:var(--ink)}
+  .eqs .n .s{color:var(--accent);font-size:0.7em;margin-left:2px}
+  .eqs .l{font-size:11.5px;color:var(--mute);line-height:1.35}
+
+  /* ============ TARIFS ============ */
+  .pricing{padding:130px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+  .plan{background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px;display:flex;flex-direction:column;position:relative}
+  .plan.featured{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .plan-tag{font-family:'Geist Mono';font-size:11px;color:var(--mute);letter-spacing:0.06em;text-transform:uppercase}
+  .plan.featured .plan-tag{color:var(--accent)}
+  .plan-badge{position:absolute;top:-10px;right:24px;background:var(--accent);color:#fff;font-family:'Geist Mono';font-size:10px;padding:4px 10px;border-radius:999px;letter-spacing:0.04em}
+  .plan h4{font-size:22px;margin-top:10px;margin-bottom:8px}
+  .plan.featured h4{color:#fff}
+  .plan-sub{font-size:14px;color:var(--mute);min-height:42px}
+  .plan.featured .plan-sub{color:rgba(255,255,255,0.6)}
+  .plan-price{margin-top:28px;display:flex;align-items:baseline;gap:8px}
+  .plan-price .amount{font-size:44px;font-weight:600;letter-spacing:-0.035em}
+  .plan-price .per{font-family:'Geist Mono';font-size:12px;color:var(--mute)}
+  .plan.featured .plan-price .per{color:rgba(255,255,255,0.5)}
+  .plan-hr{height:1px;background:var(--line);margin:24px 0}
+  .plan.featured .plan-hr{background:rgba(255,255,255,0.1)}
+  .plan-features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:14px;flex:1}
+  .plan-features li{display:flex;gap:10px;align-items:start;color:var(--ink-3)}
+  .plan.featured .plan-features li{color:rgba(255,255,255,0.85)}
+  .plan-features svg{color:var(--accent);flex-shrink:0;margin-top:3px}
+  .plan-cta{margin-top:28px}
+  .plan-cta .btn{width:100%;justify-content:center}
+
+  /* ============ FAQ ============ */
+  .faq{padding:130px 0;border-bottom:1px solid var(--line)}
+  .faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px}
+  .faq-intro h2{font-size:44px}
+  .faq-intro p{color:var(--mute);font-size:16px;margin-top:16px;max-width:340px}
+  .faq-list{border-top:1px solid var(--line)}
+  .faq-item{border-bottom:1px solid var(--line);padding:4px 0}
+  .faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;font-size:17px;font-weight:500;letter-spacing:-0.01em;gap:20px}
+  .faq-q:hover{color:var(--accent-ink)}
+  .faq-q .ic{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;flex-shrink:0;transition:all 0.2s;color:var(--mute)}
+  .faq-item.open .faq-q .ic{background:var(--ink);border-color:var(--ink);color:#fff;transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s;color:var(--mute);font-size:15px;line-height:1.6}
+  .faq-item.open .faq-a{max-height:400px;padding-bottom:22px}
+  .faq-a b{color:var(--ink);font-weight:500}
+
+  /* ============ CTA FINAL ============ */
+  .fcta{padding:140px 0;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .fcta-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 60% 80% at 50% 50%,#000 20%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 60% 80% at 50% 50%,#000 20%,transparent 80%)}
+  .fcta .inner{position:relative;text-align:center;max-width:720px;margin:0 auto}
+  .fcta h2{color:#fff;font-size:64px;line-height:1}
+  .fcta h2 .accent{color:var(--accent)}
+  .fcta p{color:rgba(255,255,255,0.7);font-size:17px;margin-top:20px}
+  .fcta-cta{margin-top:44px;display:inline-flex;gap:12px}
+  .fcta-meta{margin-top:28px;color:rgba(255,255,255,0.4);font-family:'Geist Mono';font-size:12px;letter-spacing:0.04em}
+
+  /* FOOTER */
+  footer{padding:60px 0 40px;background:#fff;border-top:1px solid var(--line)}
+  .foot-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:40px}
+  .foot-brand{max-width:320px}
+  .foot-brand p{color:var(--mute);font-size:14px;margin-top:12px}
+  .foot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:60px}
+  .foot-col h5{font-family:'Geist Mono';font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--mute);margin:0 0 16px}
+  .foot-col a{display:block;color:var(--ink-3);text-decoration:none;font-size:14px;padding:4px 0;transition:color 0.15s}
+  .foot-col a:hover{color:var(--ink)}
+  .foot-bot{padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:13px;color:var(--mute);font-family:'Geist Mono'}
+
+  /* Reveals */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity 0.6s ease,transform 0.6s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .reveal-d-1{transition-delay:0.08s}
+  .reveal-d-2{transition-delay:0.16s}
+  .reveal-d-3{transition-delay:0.24s}
+
+  /* Tweaks panel */
+  #tweaks{position:fixed;right:20px;bottom:20px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 48px -16px rgba(0,0,0,0.2);padding:18px;width:280px;z-index:100;display:none;font-size:13px}
+  #tweaks.show{display:block}
+  #tweaks h6{font-family:'Geist Mono';font-size:11px;color:var(--mute);letter-spacing:0.06em;text-transform:uppercase;margin:0 0 14px;font-weight:500}
+  #tweaks label{display:block;font-family:'Geist Mono';font-size:11px;color:var(--mute);letter-spacing:0.04em;margin:12px 0 6px}
+  #tweaks .tw-row{display:flex;gap:6px}
+  #tweaks button.tw-opt{flex:1;padding:8px 10px;background:var(--paper-2);border:1px solid var(--line);border-radius:6px;font-family:'Geist Mono';font-size:11px;cursor:pointer;color:var(--ink-3)}
+  #tweaks button.tw-opt.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <div class="brand-mark">HC</div>
+      <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
+    </a>
+    <div class="nav-links">
+      <div class="nav-item">
+        <a href="#services" class="nav-trigger">Services
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="nav-dd">
+          <div class="dd-col">
+            <h6>Construire</h6>
+            <a class="dd-link" href="services/saas-applications-metier.html">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">SaaS &amp; applis métier</div><div class="dd-sub">Plateformes B2B, espaces clients.</div></div>
+            </a>
+            <a class="dd-link" href="services/outils-internes.html">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 4 4 5-5"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Outils internes sur mesure</div><div class="dd-sub">Back-office, workflows, automatisations.</div></div>
+            </a>
+            <a class="dd-link" href="services/sites-vitrines.html">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Sites vitrines &amp; landings</div><div class="dd-sub">Sites qui convertissent, pas qui informent.</div></div>
+            </a>
+            <a class="dd-link" href="services/ecommerce.html">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">E-commerce</div><div class="dd-sub">Boutiques haut de gamme, Shopify Plus.</div></div>
+            </a>
+          </div>
+          <div class="dd-col">
+            <h6>Faire grandir</h6>
+            <a class="dd-link" href="services/referencement-google.html">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">SEO &amp; référencement</div><div class="dd-sub">Contenu, tech, netlinking.</div></div>
+            </a>
+            <a class="dd-link" href="services/publicite-en-ligne.html">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Publicité en ligne</div><div class="dd-sub">Google Ads, Meta, LinkedIn.</div></div>
+            </a>
+            <a class="dd-link" href="services/contenu-video.html">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Contenu &amp; vidéo</div><div class="dd-sub">Studio interne, motion, YouTube.</div></div>
+            </a>
+          </div>
+          <div class="dd-col">
+            <h6>Protéger &amp; opérer</h6>
+            <a class="dd-link" href="services/maintenance-evolution.html">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Maintenance &amp; évolution</div><div class="dd-sub">Forfait mensuel, support prioritaire.</div></div>
+            </a>
+            <a class="dd-link" href="services/securite-rgpd.html">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Sécurité &amp; RGPD</div><div class="dd-sub">Audit, conformité, hébergement FR.</div></div>
+            </a>
+            <a class="dd-link" href="services/audit-technique.html">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Audit technique</div><div class="dd-sub">Code review, perf, sécurité.</div></div>
+            </a>
+          </div>
+          <div class="dd-cta">
+            <div class="dd-cta-body">
+              <div class="tag">Pas sûr ?</div>
+              <div class="dd-cta-title">On vous aide à choisir le bon service.</div>
+              <div class="dd-cta-sub">30 min avec un associé, gratuit, pour cadrer votre besoin.</div>
+              <a href="#contact" class="btn btn-accent">Réserver un créneau →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#methode">Méthode</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#equipe">Équipe</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#blog">Blog</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost">Prendre RDV</a>
+      <a href="#contact" class="btn btn-primary">Démarrer un projet
+        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-radial"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="pill"><span class="dot"></span> Studio basé à Chambéry · Disponibilités Q2-Q3 2026</span></div>
+      <h1 data-variant="A">
+        <span id="h1-content">L'agence qui construit<br>vos outils numériques,<br><span class="accent">de A à Z.</span></span>
+      </h1>
+      <p class="hero-sub" id="hero-sub">
+        On imagine, on conçoit, on développe, on lance et on maintient
+        vos <b>sites, applications métier et SaaS sur mesure</b>. Un seul interlocuteur
+        qui parle votre langue — pas de sous-traitance, pas de jargon technique.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-accent btn-lg">
+          Démarrer un projet
+          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#realisations" class="btn btn-ghost btn-lg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Voir nos réalisations
+        </a>
+      </div>
+      <div class="hero-meta">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Forfait fixe, pas de régie</span>
+        <span class="sep"></span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Code &amp; données chez vous</span>
+        <span class="sep"></span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Réponse sous 24h</span>
+      </div>
+    </div>
+
+    <!-- Isometric tower -->
+    <div class="tower">
+      <svg viewBox="0 0 520 540" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="gtop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#6D28D9"/>
+            <stop offset="1" stop-color="#4C1D95"/>
+          </linearGradient>
+          <linearGradient id="gmid" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#262626"/>
+            <stop offset="1" stop-color="#0A0A0A"/>
+          </linearGradient>
+          <linearGradient id="gpale" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FAFAFA"/>
+            <stop offset="1" stop-color="#EDEDED"/>
+          </linearGradient>
+          <filter id="fshadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity="0.12"/>
+          </filter>
+        </defs>
+
+        <!-- ground shadow -->
+        <ellipse cx="260" cy="500" rx="180" ry="24" fill="#000" opacity="0.08"/>
+
+        <g class="tower-float">
+
+        <!-- Block 1 (base) — white card -->
+        <g filter="url(#fshadow)">
+          <polygon points="140,430 260,490 380,430 260,370" fill="url(#gpale)"/>
+          <polygon points="140,430 140,380 260,440 260,490" fill="#D4D4D4"/>
+          <polygon points="380,430 380,380 260,440 260,490" fill="#BFBFBF"/>
+          <polygon points="140,380 260,320 380,380 260,440" fill="#FFFFFF" stroke="#E5E5E5"/>
+          <!-- grid pattern on top -->
+          <line x1="180" y1="360" x2="300" y2="420" stroke="#E5E5E5" stroke-width="0.8"/>
+          <line x1="220" y1="340" x2="340" y2="400" stroke="#E5E5E5" stroke-width="0.8"/>
+          <line x1="220" y1="340" x2="220" y2="388" stroke="#E5E5E5" stroke-width="0.8"/>
+          <line x1="260" y1="320" x2="180" y2="360" stroke="#E5E5E5" stroke-width="0.8" opacity="0.4"/>
+        </g>
+
+        <!-- Block 2 — dark block (stack / data) -->
+        <g filter="url(#fshadow)">
+          <polygon points="165,335 260,382 355,335 260,288" fill="#0A0A0A"/>
+          <polygon points="165,335 165,298 260,345 260,382" fill="#1A1A1A"/>
+          <polygon points="355,335 355,298 260,345 260,382" fill="#050505"/>
+          <polygon points="165,298 260,251 355,298 260,345" fill="url(#gmid)"/>
+          <!-- rows -->
+          <line x1="200" y1="290" x2="290" y2="335" stroke="#6D28D9" stroke-width="0.8" opacity="0.4"/>
+          <line x1="230" y1="275" x2="320" y2="320" stroke="#6D28D9" stroke-width="0.8" opacity="0.4"/>
+          <circle cx="280" cy="280" r="3" fill="#6D28D9" opacity="0.8"/>
+          <circle cx="230" cy="310" r="2" fill="#a3e47f" opacity="0.7"/>
+        </g>
+
+        <!-- Block 3 — accent red block -->
+        <g filter="url(#fshadow)">
+          <polygon points="190,255 260,290 330,255 260,220" fill="url(#gtop)"/>
+          <polygon points="190,255 190,220 260,255 260,290" fill="#4C1D95"/>
+          <polygon points="330,255 330,220 260,255 260,290" fill="#3B0764"/>
+          <polygon points="190,220 260,185 330,220 260,255" fill="#8B5CF6"/>
+          <!-- mini grid -->
+          <line x1="215" y1="213" x2="285" y2="248" stroke="#fff" stroke-width="0.6" opacity="0.35"/>
+          <line x1="238" y1="200" x2="308" y2="235" stroke="#fff" stroke-width="0.6" opacity="0.35"/>
+        </g>
+
+        <!-- Block 4 — white small top -->
+        <g filter="url(#fshadow)">
+          <polygon points="215,195 260,218 305,195 260,172" fill="#fff"/>
+          <polygon points="215,195 215,175 260,198 260,218" fill="#E5E5E5"/>
+          <polygon points="305,195 305,175 260,198 260,218" fill="#D4D4D4"/>
+          <polygon points="215,175 260,152 305,175 260,198" fill="#F5F5F5"/>
+        </g>
+
+        <!-- Antenna / flag -->
+        <line x1="260" y1="152" x2="260" y2="105" stroke="#0A0A0A" stroke-width="2"/>
+        <circle cx="260" cy="100" r="8" fill="#6D28D9"/>
+        <circle cx="260" cy="100" r="14" fill="none" stroke="#6D28D9" stroke-width="1" opacity="0.5"/>
+        <circle cx="260" cy="100" r="22" fill="none" stroke="#6D28D9" stroke-width="0.5" opacity="0.25"/>
+        </g>
+
+        <!-- Floating tags around -->
+        <g class="tower-float" style="animation-delay:-2s">
+          <g transform="translate(50 180)">
+            <rect x="0" y="0" width="90" height="34" rx="7" fill="#fff" stroke="#E5E5E5"/>
+            <circle cx="14" cy="17" r="4" fill="#6D28D9"/>
+            <text x="26" y="15" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">Laravel 13</text>
+            <text x="26" y="27" font-family="Geist Mono" font-size="8" fill="#737373">back-end</text>
+          </g>
+        </g>
+        <g class="tower-float" style="animation-delay:-4s">
+          <g transform="translate(390 140)">
+            <rect x="0" y="0" width="100" height="34" rx="7" fill="#fff" stroke="#E5E5E5"/>
+            <rect x="10" y="11" width="10" height="12" rx="2" fill="#0A0A0A"/>
+            <text x="28" y="15" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">Claude Code</text>
+            <text x="28" y="27" font-family="Geist Mono" font-size="8" fill="#737373">agent IA</text>
+          </g>
+        </g>
+        <g class="tower-float" style="animation-delay:-1s">
+          <g transform="translate(370 380)">
+            <rect x="0" y="0" width="110" height="34" rx="7" fill="#fff" stroke="#E5E5E5"/>
+            <circle cx="14" cy="17" r="4" fill="#a3e47f"/>
+            <text x="26" y="15" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">98 % uptime</text>
+            <text x="26" y="27" font-family="Geist Mono" font-size="8" fill="#737373">30 derniers jours</text>
+          </g>
+        </g>
+        <g class="tower-float" style="animation-delay:-3s">
+          <g transform="translate(30 330)">
+            <rect x="0" y="0" width="110" height="34" rx="7" fill="#fff" stroke="#E5E5E5"/>
+            <rect x="10" y="11" width="10" height="12" rx="2" fill="#0A0A0A"/>
+            <text x="28" y="15" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">Livré en 6 sem.</text>
+            <text x="28" y="27" font-family="Geist Mono" font-size="8" fill="#737373">forfait fixe</text>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO BAR -->
+<section class="logobar" style="background-color: rgb(247, 247, 247)">
+  <div class="wrap">
+    <div class="lb-inner">
+      <div class="lb-side">
+        <div class="lb-kicker">Notre stack</div>
+        <h3>Une stack <em>moderne</em>, choisie, maîtrisée.</h3>
+        <p>Pas de framework à la mode, pas de dette technique. Un socle éprouvé sur des dizaines de produits en production, qu'on connaît à fond et qu'on opère nous-mêmes.</p>
+        <div class="lb-note">— Mise à jour trimestrielle · audit de sécurité annuel</div>
+      </div>
+
+      <div class="lb-stack">
+        <div class="lb-row">
+          <div class="lb-row-label">Back-end</div>
+          <div class="lb-chips">
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 50 52" fill="#FF2D20" aria-hidden="true"><path d="M49.626 11.564a.809.809 0 01.028.209v10.972a.8.8 0 01-.402.694l-9.209 5.302V39.25c0 .286-.152.55-.4.694L20.42 51.01c-.044.025-.092.041-.14.058-.018.006-.035.017-.054.022a.805.805 0 01-.41 0c-.022-.006-.042-.018-.063-.026-.044-.016-.09-.03-.132-.054L.402 39.944A.801.801 0 010 39.25V6.334c0-.072.01-.142.028-.21.006-.023.02-.044.028-.067.015-.042.029-.085.051-.124.015-.026.037-.047.055-.071.023-.032.044-.065.071-.093.023-.023.053-.04.079-.06.029-.024.055-.05.088-.069h.001l9.61-5.533a.802.802 0 01.8 0l9.61 5.533h.002c.032.02.059.045.088.068.026.02.055.038.078.06.028.029.048.062.072.094.017.024.04.045.054.071.023.04.036.082.052.124.008.023.022.044.028.068a.809.809 0 01.028.209v20.559l8.008-4.611v-10.51c0-.07.01-.141.028-.208.007-.024.02-.045.028-.068.016-.042.03-.085.052-.124.015-.026.037-.047.054-.071.024-.032.044-.065.072-.093.023-.023.052-.04.078-.06.03-.024.056-.05.088-.069h.001l9.611-5.533a.801.801 0 01.8 0l9.61 5.533c.034.02.06.045.09.068.025.02.054.038.077.06.028.029.048.062.072.094.018.024.04.045.054.071.023.039.036.082.052.124.009.023.022.044.028.068z"/></svg>
+              Laravel 13 <span class="lb-chip-dim">PHP 8.3</span>
+            </span>
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#00758F" aria-hidden="true"><path d="M5.469 16.08c-1.09-.03-1.946.082-2.669.387-.203.086-.528.086-.555.343.109.11.125.288.223.44.172.266.47.625.738.812.296.215.593.43.906.617.555.332 1.18.524 1.719.855.312.196.625.446.937.657.156.105.254.27.453.336v-.047c-.098-.125-.125-.305-.222-.437-.141-.141-.282-.266-.422-.407-.41-.547-.922-1.023-1.469-1.422-.449-.305-1.437-.719-1.617-1.242l-.03-.035c.312-.031.683-.145.972-.227.476-.125.906-.09 1.398-.215.227-.062.453-.129.68-.199v-.129c-.258-.258-.438-.601-.707-.84-.719-.617-1.516-1.219-2.34-1.726-.445-.285-1.016-.469-1.484-.711-.172-.086-.461-.129-.559-.273-.246-.301-.387-.695-.566-1.051-.395-.75-.785-1.578-1.121-2.371-.238-.535-.383-1.066-.676-1.559-1.383-2.285-2.883-3.664-5.191-5.02-.497-.285-1.09-.41-1.723-.559-.336-.016-.676-.043-1.012-.059-.222-.094-.445-.359-.644-.484C6.57.953 4.52-.035 3.93.305c-.375.238-.02.566.215.808.175.168.406.359.527.547.074.121.094.25.168.379.156.32.305.68.48 1 .09.156.184.324.29.465.062.086.171.121.195.258-.105.149-.113.367-.172.551-.27.852-.164 1.91.222 2.539.121.188.41.594.797.434.34-.13.262-.551.36-.92.02-.09.007-.153.054-.212v.016c.11.215.215.422.316.637.239.371.653.758 1 1.02.183.136.332.367.558.453v-.027h-.02c-.05-.067-.128-.102-.195-.164-.156-.149-.328-.332-.45-.5-.363-.484-.687-1.02-.972-1.566-.145-.266-.266-.551-.387-.82-.055-.11-.055-.266-.145-.317-.136.19-.332.363-.43.594-.171.363-.191.816-.253 1.285-.032.012-.016.004-.028.02-.27-.063-.367-.344-.465-.578-.253-.609-.296-1.574-.078-2.27.059-.18.317-.742.215-.91-.055-.16-.219-.254-.313-.387-.109-.16-.226-.359-.3-.535-.203-.473-.305-.996-.527-1.469-.102-.219-.285-.449-.437-.652-.172-.23-.364-.391-.497-.66-.046-.09-.109-.238-.046-.34.015-.066.046-.094.113-.11.105-.093.406.024.512.067.304.121.562.238.82.41.117.082.246.238.398.285h.176c.273.059.578.016.832.098.445.148.848.359 1.211.582.898.652 1.84 1.648 2.512 2.602.14.172.168.34.273.527.211.352.47.719.68 1.066.203.344.41.695.625 1.023.1.156.289.238.398.441.172.316.207.672.352 1.016.125.258.28.547.398.805.098.195.184.508.285.75.13.352.172.758.36 1.094.124.199.336.305.492.559l.28-.008c.118 0 .118 0 .259-.129.394-.426.68-.973.625-1.734-.028-.207-.078-.399-.133-.59-.07-.195-.21-.402-.324-.59-.13-.266-.34-.461-.484-.71-.176-.317-.254-.645-.395-.993-.055-.133-.129-.34-.184-.461-.113-.277-.207-.465-.292-.684-.032-.086-.051-.16-.051-.265-.07-.06-.129-.109-.188-.156-.59-.559-1.074-1.25-1.578-1.836-.129-.156-.105-.297-.242-.422-.07-.074-.172-.156-.215-.262-.422-1.043-.695-2.094-1.035-3.156-.168-.492-.266-.945-.496-1.395-.293-.566-.977-1.145-1.524-1.426-.195-.094-.476-.195-.652-.211-.137-.012-.281-.027-.418-.035l-.356-.047c-.086-.094-.176-.18-.273-.262-.477-.406-1.559-1.18-1.957-.648-.242.328.055.656.305.852.18.137.441.258.656.414.168.098.34.175.547.23.117.035.25.035.363.082-.082.16.027.328.078.41.137.172.355.297.559.406.336.188.797.304 1.148.414.219.062.434.133.649.2.277.085.55.219.75.265.223.066.38.117.57.328.129.148.19.27.203.406.047.41.078.82.078 1.23.43.11.86.25 1.254.438-.04.07-.113.168-.145.246-.027.066-.055.145-.07.215-.59.086-1.199.062-1.582.117-.18.02-.355.039-.535.059-.152.195-.133.32-.227.414-.148.152-.312.312-.484.438-.266.191-.492.297-.883.39-.133.035-.39.129-.441-.078-.082-.152.094-.34.223-.465.094-.09.207-.18.285-.281.195-.266.34-.57.398-.902.02-.117.02-.234.02-.348 0-.028.007-.05.003-.078-.043-.058-.062-.137-.12-.184-.083-.062-.188-.09-.286-.105-.36-.055-.965.075-1.309.11-.394.046-.789.129-1.132.187-.356.055-.871.074-1.273.192-.516.148-.84.32-1.281.648-.563.418-.833.836-1.031 1.445-.125.391-.137.773-.04 1.215l.364.254c.281-.098.547-.227.875-.195.109.012.187.07.265.117.196.109.364.305.582.398l.238.098.23.07zm11.566-7.918c-.23-.043-.457-.051-.684-.027-.309.09-.434.242-.434.484.008.039-.008.074.012.113l.2.438c-.031-.031-.047.098-.051.156.003.067.047.13.066.196.087.117.211.238.325.32.133.082.273.105.41.203h.008l.242.2c.098.108.191.144.215.261a.322.322 0 00-.008-.297c-.027-.05-.004-.066-.004-.098.062-.266.102-.555.113-.855-.102-.062-.117-.129-.207-.164l-.203-.129c.051-.12-.012-.266-.004-.398z"/></svg>
+              MySQL 8 <span class="lb-chip-dim">PostgreSQL</span>
+            </span>
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 32 32" fill="#DC382D" aria-hidden="true"><path d="M29.75 20.07c-1.56.81-9.65 4.14-11.37 5.04-1.72.9-2.68.89-4.04.24-1.36-.65-9.97-4.14-11.52-4.88-.77-.37-1.18-.68-1.18-.98v-2.92s11.22-2.44 13.03-3.09c1.81-.65 2.44-.67 3.98-.11 1.54.56 10.74 2.22 12.26 2.78v2.88c0 .29-.35.61-1.16.97z"/><path d="M29.75 17.14c-1.56.81-9.65 4.14-11.37 5.04-1.72.9-2.68.89-4.04.24-1.36-.65-9.97-4.14-11.52-4.88-1.55-.74-1.58-1.26-.06-1.85 1.52-.6 10.1-3.97 11.85-4.61 1.75-.63 2.45-.62 3.94-.08 1.48.55 9.26 3.62 10.73 4.16 1.46.54 1.58.95.02 1.76z" fill="#A41E11"/><path d="M29.75 15.22c-1.56.81-9.65 4.14-11.37 5.04-1.72.9-2.68.89-4.04.24-1.36-.65-9.97-4.14-11.52-4.88-.77-.37-1.18-.68-1.18-.98v-2.92s11.22-2.44 13.03-3.09c1.81-.65 2.44-.67 3.98-.11 1.54.56 10.74 2.22 12.26 2.78v2.88c0 .29-.35.61-1.16.97z"/><path d="M29.75 12.29c-1.56.81-9.65 4.14-11.37 5.04-1.72.9-2.68.89-4.04.24-1.36-.65-9.97-4.14-11.52-4.88-1.55-.74-1.58-1.26-.06-1.85 1.52-.6 10.1-3.97 11.85-4.61 1.75-.63 2.45-.62 3.94-.08 1.48.55 9.26 3.62 10.73 4.16 1.46.54 1.58.95.02 1.76z" fill="#A41E11"/></svg>
+              Redis <span class="lb-chip-dim">cache + queues</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="lb-row">
+          <div class="lb-row-label">Front-end</div>
+          <div class="lb-chips">
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 256 256" fill="none" aria-hidden="true"><rect width="256" height="256" rx="56" fill="#FB70A9"/><path d="M62 96c10-6 22-8 34-4 10 4 16 12 18 22 2 10-2 20-10 28 8 2 16 8 20 16 4 10 2 22-6 30-8 8-20 12-32 10-12-2-20-10-24-20l-18 10v-24l22-12c-2-10 0-20 6-28 4-4 8-8 12-10-2-4-8-8-14-10l-8-4v-4z" fill="#fff"/></svg>
+              Livewire 3
+            </span>
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="6" fill="#0A0A0A"/><path d="M10 9h12v3h-8v3h7v3h-7v6h-4V9z" fill="#fff"/></svg>
+              Flux UI <span class="lb-chip-dim">composants</span>
+            </span>
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 54 33" fill="#06B6D4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0c-7.2 0-11.7 3.6-13.5 10.8 2.7-3.6 5.85-4.95 9.45-4.05 2.054.513 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z"/></svg>
+              Tailwind v4
+            </span>
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2L2 26h28L16 2z" fill="#41B883"/><path d="M16 2l-6 10h12l-6-10z" fill="#34495E"/></svg>
+              Alpine.js
+            </span>
+          </div>
+        </div>
+
+        <div class="lb-row">
+          <div class="lb-row-label">IA &amp; agents</div>
+          <div class="lb-chips">
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 512 512" fill="#D97757" aria-hidden="true"><path d="M301.86 65h70.94l129.4 382h-70.93l-26.48-81.3H269.2l-26.48 81.3h-70.94L301.86 65zm-11.96 240h94.86l-47.43-145.7L289.9 305z"/></svg>
+              Claude Sonnet 4.5 <span class="lb-chip-dim">agents &amp; outils</span>
+            </span>
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 41 41" fill="#0A0A0A" aria-hidden="true"><path d="M37.532 16.87a9.963 9.963 0 0 0-.856-8.184 10.078 10.078 0 0 0-10.855-4.835A9.964 9.964 0 0 0 18.306.5a10.079 10.079 0 0 0-9.614 6.977 9.967 9.967 0 0 0-6.664 4.834 10.08 10.08 0 0 0 1.24 11.817 9.965 9.965 0 0 0 .856 8.185 10.079 10.079 0 0 0 10.855 4.835 9.965 9.965 0 0 0 7.516 3.35 10.078 10.078 0 0 0 9.617-6.981 9.967 9.967 0 0 0 6.663-4.834 10.079 10.079 0 0 0-1.243-11.813ZM22.498 37.886a7.474 7.474 0 0 1-4.799-1.735c.061-.033.168-.091.237-.134l7.964-4.6a1.294 1.294 0 0 0 .655-1.134V19.054l3.366 1.944a.12.12 0 0 1 .066.092v9.299a7.505 7.505 0 0 1-7.49 7.496Z"/></svg>
+              GPT-4o <span class="lb-chip-dim">embeddings</span>
+            </span>
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#0A0A0A"/><path d="M7 9h10M7 12h10M7 15h6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+              Prism <span class="lb-chip-dim">LLM abstraction</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="lb-row">
+          <div class="lb-row-label">Infra &amp; ops</div>
+          <div class="lb-chips">
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 76 65" fill="#0A0A0A" aria-hidden="true"><path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/></svg>
+              Vercel <span class="lb-chip-dim">edge</span>
+            </span>
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2L3 8v16l13 6 13-6V8L16 2z" fill="#FF9900"/><text x="16" y="20" text-anchor="middle" font-family="Geist Mono" font-size="8" font-weight="700" fill="#fff">AWS</text></svg>
+              AWS S3 + SES
+            </span>
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#2496ED" aria-hidden="true"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.185.185v1.888c0 .102.083.185.186.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288-.237-.185z"/></svg>
+              Docker <span class="lb-chip-dim">Coolify</span>
+            </span>
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 98 96" fill="#0A0A0A" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>
+              GitHub Actions
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- STUDIO FULL-STACK -->
+<section class="studio" id="services">
+  <div class="wrap">
+    <div class="studio-head reveal">
+      <div class="shead-tag">
+        <span class="shead-dot"></span>
+        UN STUDIO · HUIT MÉTIERS
+      </div>
+      <h2>
+        Construire. Lancer. <span class="grad">Faire vivre.</span><br>
+        Sous un seul toit.
+      </h2>
+      <p class="studio-lead">
+        Plutôt que jongler avec quatre prestataires qui ne se parlent pas, on réunit dans un même studio
+        les huit métiers qui font la différence entre un projet qui traîne et un produit qui performe.
+      </p>
+    </div>
+
+    <!-- Service phare (pleine largeur, mockup produit) -->
+    <a href="services/saas-applications-metier.html" class="svc-hero reveal">
+      <div class="svc-hero-left">
+        <div class="svc-hero-tag">
+          <span>01</span>
+          <span>·</span>
+          <span>SERVICE PHARE</span>
+        </div>
+        <h3>
+          SaaS &amp; applications métier<br>
+          <span class="accent">propulsés par l'IA native<br>de Laravel 13.</span>
+        </h3>
+        <p class="svc-hero-lead">
+          Plateformes B2B, espaces clients, marketplaces, applications métier sur mesure. On construit
+          les produits qui remplacent vos Excels et vos process manuels — pensés pour vos équipes
+          <b>et</b> pour vos clients finaux.
+        </p>
+        <ul class="svc-hero-list">
+          <li>
+            <div class="sh-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
+            <div><b>Plateformes B2B</b> multi-rôles</div>
+          </li>
+          <li>
+            <div class="sh-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg></div>
+            <div><b>Espaces clients</b> avec paiement</div>
+          </li>
+          <li>
+            <div class="sh-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12h20"/></svg></div>
+            <div><b>Workflows métier</b> complexes</div>
+          </li>
+          <li>
+            <div class="sh-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 9h16M4 15h16M10 3l-4 18M18 3l-4 18"/></svg></div>
+            <div><b>API</b> (Pennylane, Stripe, Axonaut)</div>
+          </li>
+        </ul>
+        <div class="svc-hero-foot">
+          <span class="svc-hero-cta">
+            Voir les cas &amp; tarifs
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
+          <span class="svc-hero-price">À partir de <b>25 k€</b></span>
+        </div>
+      </div>
+
+      <div class="svc-hero-right">
+        <!-- Mockup produit animé -->
+        <div class="svc-mock">
+          <div class="svc-mock-chrome">
+            <span></span><span></span><span></span>
+            <div class="svc-mock-url">app.clientname.fr/pipeline</div>
+          </div>
+          <div class="svc-mock-body">
+            <div class="svc-mock-side">
+              <div class="svc-mock-logo">
+                <div class="ml-mark">CL</div>
+                <div>Cabinet Lefèvre</div>
+              </div>
+              <div class="svc-mock-nav">
+                <div class="mn-item active"><span class="mn-ic">◆</span> Pipeline <span class="mn-badge">42</span></div>
+                <div class="mn-item"><span class="mn-ic">○</span> Clients</div>
+                <div class="mn-item"><span class="mn-ic">○</span> Devis</div>
+                <div class="mn-item"><span class="mn-ic">○</span> Factures</div>
+                <div class="mn-item"><span class="mn-ic">○</span> Analytics</div>
+              </div>
+            </div>
+            <div class="svc-mock-main">
+              <div class="svc-mock-head">
+                <div>
+                  <div class="mm-title">Pipeline commercial</div>
+                  <div class="mm-sub">42 deals · 312 k€ en cours</div>
+                </div>
+                <div class="mm-filters">
+                  <span class="mm-chip active">Tous</span>
+                  <span class="mm-chip">Q2</span>
+                  <span class="mm-chip">Q3</span>
+                </div>
+              </div>
+              <div class="svc-mock-kanban">
+                <div class="kb-col">
+                  <div class="kb-head"><b>Prospection</b><span>12</span></div>
+                  <div class="kb-card"><div class="kbc-name">SCI Durand</div><div class="kbc-v">8 400 €</div></div>
+                  <div class="kb-card"><div class="kbc-name">Immobilière Lac</div><div class="kbc-v">14 200 €</div></div>
+                  <div class="kb-card ghost"><div class="kbc-name">Martin &amp; Fils</div><div class="kbc-v">6 700 €</div></div>
+                </div>
+                <div class="kb-col">
+                  <div class="kb-head"><b>Devis</b><span>18</span></div>
+                  <div class="kb-card active"><div class="kbc-name">Bonnet Immo</div><div class="kbc-v">22 800 €</div></div>
+                  <div class="kb-card"><div class="kbc-name">Groupe Alpes</div><div class="kbc-v">45 000 €</div></div>
+                  <div class="kb-card ghost"><div class="kbc-name">Villa Chambéry</div><div class="kbc-v">11 300 €</div></div>
+                </div>
+                <div class="kb-col">
+                  <div class="kb-head"><b>Signés</b><span>8</span></div>
+                  <div class="kb-card"><div class="kbc-name">SCCV Mont-Blanc</div><div class="kbc-v">62 500 €</div><div class="kbc-tag">✓ Facturé</div></div>
+                  <div class="kb-card"><div class="kbc-name">Cabinet Rivoire</div><div class="kbc-v">18 900 €</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Floating activity tag -->
+        <div class="svc-float svc-float-1">
+          <div class="sf-dot"></div>
+          <div>
+            <div class="sf-t">Facture auto-émise</div>
+            <div class="sf-s">il y a 12 s · 18 900 €</div>
+          </div>
+        </div>
+        <div class="svc-float svc-float-2">
+          <div class="sf-icon">IA</div>
+          <div>
+            <div class="sf-t">Relance rédigée par Claude</div>
+            <div class="sf-s">prêt à envoyer · 3 deals</div>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Autres services, grille 2×3 aérée avec mini-visuels -->
+    <div class="svc-row">
+      <!-- 02 Outils internes -->
+      <a class="svc-tile reveal" href="services/outils-internes.html">
+        <div class="svc-tile-head">
+          <div class="st-num">02</div>
+          <div class="st-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg>
+          </div>
+        </div>
+        <h4>Outils internes sur mesure</h4>
+        <p>Back-offices, automatisations, workflows qui sortent vos équipes d'Excel.</p>
+        <div class="st-viz st-viz-cells">
+          <div></div><div></div><div class="on"></div><div></div>
+          <div class="on"></div><div></div><div></div><div class="on"></div>
+          <div></div><div class="on"></div><div></div><div></div>
+        </div>
+        <div class="st-foot">
+          <span>5–8 sem.</span>
+          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- 03 Sites vitrines -->
+      <a class="svc-tile reveal reveal-d-1" href="services/sites-vitrines.html">
+        <div class="svc-tile-head">
+          <div class="st-num">03</div>
+          <div class="st-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+          </div>
+        </div>
+        <h4>Sites vitrines &amp; landings</h4>
+        <p>Sites qui convertissent, pas qui informent. SEO technique de série.</p>
+        <div class="st-viz st-viz-bars">
+          <div style="height:22%"></div>
+          <div style="height:45%"></div>
+          <div style="height:35%"></div>
+          <div style="height:68%"></div>
+          <div style="height:55%"></div>
+          <div style="height:82%"></div>
+          <div style="height:72%" class="on"></div>
+          <div style="height:92%" class="on"></div>
+        </div>
+        <div class="st-foot">
+          <span>2–4 sem.</span>
+          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- 04 SEO -->
+      <a class="svc-tile reveal reveal-d-2" href="services/referencement-google.html">
+        <div class="svc-tile-head">
+          <div class="st-num">04</div>
+          <div class="st-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+        </div>
+        <h4>SEO &amp; référencement</h4>
+        <p>Stratégie, contenu et netlinking. Trafic organique durable.</p>
+        <div class="st-viz st-viz-line">
+          <svg viewBox="0 0 200 60" preserveAspectRatio="none" width="100%" height="100%">
+            <path d="M0,48 C30,46 50,40 72,34 C100,24 130,28 160,18 L200,8" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M0,48 C30,46 50,40 72,34 C100,24 130,28 160,18 L200,8 L200,60 L0,60 Z" fill="currentColor" opacity="0.12"/>
+            <circle cx="200" cy="8" r="3.5" fill="currentColor"/>
+          </svg>
+          <span class="st-metric">+340%</span>
+        </div>
+        <div class="st-foot">
+          <span>Mensuel</span>
+          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- 05 Publicité -->
+      <a class="svc-tile reveal" href="services/publicite-en-ligne.html">
+        <div class="svc-tile-head">
+          <div class="st-num">05</div>
+          <div class="st-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg>
+          </div>
+        </div>
+        <h4>Publicité en ligne</h4>
+        <p>Google, Meta, LinkedIn pilotés par conversions réelles — pas par impressions.</p>
+        <div class="st-viz st-viz-channels">
+          <div class="stc"><span>Google</span><div class="stc-bar"><i style="width:92%"></i></div></div>
+          <div class="stc"><span>Meta</span><div class="stc-bar"><i style="width:64%"></i></div></div>
+          <div class="stc"><span>LinkedIn</span><div class="stc-bar"><i style="width:38%"></i></div></div>
+        </div>
+        <div class="st-foot">
+          <span>Mensuel</span>
+          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- 06 Contenu & vidéo -->
+      <a class="svc-tile reveal reveal-d-1" href="services/contenu-video.html">
+        <div class="svc-tile-head">
+          <div class="st-num">06</div>
+          <div class="st-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div>
+        </div>
+        <h4>Contenu &amp; vidéo</h4>
+        <p>Studio interne : motion, YouTube, contenus produit, scripts IA.</p>
+        <div class="st-viz st-viz-film">
+          <div class="stf">
+            <div class="stf-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+            <div class="stf-bar"><i style="width:64%"></i></div>
+            <span class="stf-t">02:14 / 03:28</span>
+          </div>
+        </div>
+        <div class="st-foot">
+          <span>Projet ou mensuel</span>
+          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- 07 Maintenance -->
+      <a class="svc-tile reveal reveal-d-2" href="services/maintenance-evolution.html">
+        <div class="svc-tile-head">
+          <div class="st-num">07</div>
+          <div class="st-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+        </div>
+        <h4>Maintenance &amp; évolution</h4>
+        <p>Forfait mensuel, support prioritaire, évolutions continues.</p>
+        <div class="st-viz st-viz-status">
+          <div class="sts"><div class="sts-dot"></div><div><b>Uptime 30 j</b><span>99,98%</span></div></div>
+          <div class="sts"><div class="sts-dot yellow"></div><div><b>Astreinte</b><span>24/5</span></div></div>
+        </div>
+        <div class="st-foot">
+          <span>Forfait mensuel</span>
+          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- 08 Sécurité & RGPD -->
+      <a class="svc-tile reveal" href="services/securite-rgpd.html">
+        <div class="svc-tile-head">
+          <div class="st-num">08</div>
+          <div class="st-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+        </div>
+        <h4>Sécurité &amp; RGPD</h4>
+        <p>Audit, conformité complète, hébergement France (Scaleway, OVH).</p>
+        <div class="st-viz st-viz-check">
+          <div class="sck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg> Audit OWASP</div>
+          <div class="sck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg> Hébergement FR</div>
+          <div class="sck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg> DPO &amp; contrats</div>
+        </div>
+        <div class="st-foot">
+          <span>Audit ou forfait</span>
+          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <!-- 09 Audit tech (remplace le "non couvert") -->
+      <a class="svc-tile svc-tile-cta reveal reveal-d-1" href="services/audit-technique.html">
+        <div class="svc-tile-head">
+          <div class="st-num">09</div>
+          <div class="st-ic">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>
+          </div>
+        </div>
+        <h4>Audit technique</h4>
+        <p>Code review, performance, sécurité. Rapport livré en 10 jours ouvrés.</p>
+        <div class="st-viz st-viz-audit">
+          <div class="sca"><span>Perf</span><b>A</b></div>
+          <div class="sca"><span>Sécu</span><b>B+</b></div>
+          <div class="sca"><span>Code</span><b>A−</b></div>
+        </div>
+        <div class="st-foot">
+          <span>10 jours ouvrés</span>
+          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+    </div>
+
+    <div class="studio-foot reveal">
+      <div>
+        <div class="sfoot-tag">PAS SÛR DU BON SERVICE ?</div>
+        <div class="sfoot-t">On vous aide à cadrer en 30 minutes.</div>
+      </div>
+      <a href="#contact" class="btn btn-primary btn-lg">
+        Parler à un associé
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- DESCRIBE YOUR PROJECT -->
+<section class="describe">
+  <div class="wrap">
+    <div class="descr-grid">
+      <div class="descr-copy reveal">
+        <div class="eyebrow">— Cadrage en 48h</div>
+        <h2>Décrivez-nous votre besoin.<br>On s'occupe du reste.</h2>
+        <p>
+          Pas besoin d'un cahier des charges de 80 pages. En <b>30 minutes d'appel</b>, on comprend
+          votre contexte, votre urgence, vos contraintes. Sous 48 heures, vous recevez une
+          <b>proposition chiffrée</b> claire avec périmètre, délai et budget fixe.
+        </p>
+        <ul class="chks">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Un seul interlocuteur associé pendant toute la discussion</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Aucun engagement tant que vous n'avez pas validé le devis</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Franchise totale : si ce n'est pas pour nous, on vous le dit</li>
+        </ul>
+        <div class="cta-row">
+          <a href="#contact" class="btn btn-accent btn-lg">
+            Parler à un associé
+            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="dc-wrap reveal reveal-d-1">
+
+        <div class="dc-card">
+          <!-- Card header: like an email client -->
+          <div class="dc-bar">
+            <div class="dc-bar-left">
+              <div class="dc-bar-dots"><span></span><span></span><span></span></div>
+              <div class="dc-bar-path">
+                <span>Inbox</span>
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
+                <span>Cadrage projet</span>
+              </div>
+            </div>
+            <div class="dc-bar-right">
+              <div class="dc-status">
+                <span class="dc-status-dot"></span>
+                EN COURS · 14 AVR. 2026
+              </div>
+            </div>
+          </div>
+
+          <!-- Email-like subject line -->
+          <div class="dc-subject">
+            <div class="dc-subj-l">
+              <div class="dc-subj-avatar">MD</div>
+              <div>
+                <div class="dc-subj-from"><b>Marc Dubois</b> <span class="dc-subj-co">· Cabinet Dubois &amp; Associés</span></div>
+                <div class="dc-subj-to">À : hello@hagnere-code.fr · <span class="dc-subj-date">Aujourd'hui, 09:14</span></div>
+              </div>
+            </div>
+            <div class="dc-subj-tags">
+              <span class="dc-pill">PME · 8 pers.</span>
+              <span class="dc-pill">Comptabilité</span>
+            </div>
+          </div>
+
+          <!-- Their message -->
+          <div class="dc-msg you">
+            <div class="dc-msg-body">
+              <p>« On a un cabinet de <b>8 personnes</b>. Nos commerciaux perdent un temps fou à recopier des deals dans <b>3 outils différents</b> (Excel, HubSpot, Pennylane). On aimerait un truc simple qui centralise tout et qui sorte les factures automatiquement. »</p>
+            </div>
+            <div class="dc-msg-meta">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+              Lu · 09:18
+            </div>
+          </div>
+
+          <!-- Our reply -->
+          <div class="dc-msg us">
+            <div class="dc-msg-header">
+              <div class="dc-av">HC</div>
+              <div class="dc-av-meta">
+                <div><b>Hagnéré Code</b> <span class="dc-badge">ASSOCIÉ</span></div>
+                <div class="dc-av-sub">Thomas · répond en moyenne sous 2 h</div>
+              </div>
+              <div class="dc-time">09:47</div>
+            </div>
+
+            <div class="dc-reply">
+              Compris Marc. Vous n'avez pas besoin d'un CRM du marché — vous avez besoin d'un <b>back-office sur mesure</b> branché sur vos outils existants. Voici ce qu'on propose :
+            </div>
+
+            <!-- Integrated quote -->
+            <div class="dc-quote">
+              <div class="dc-q-head">
+                <div>
+                  <div class="dc-q-tag">DEVIS CADRÉ · RÉF 2026-0247</div>
+                  <div class="dc-q-title">Back-office commercial sur mesure</div>
+                </div>
+                <div class="dc-q-logo">HC</div>
+              </div>
+
+              <div class="dc-q-grid">
+                <div class="dc-q-row">
+                  <div class="dc-q-k">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    Modules livrés
+                  </div>
+                  <div class="dc-q-v">
+                    <span>Pipeline Kanban</span>
+                    <span>Relances IA</span>
+                    <span>Facturation auto</span>
+                    <span>Rapports hebdo</span>
+                  </div>
+                </div>
+
+                <div class="dc-q-row">
+                  <div class="dc-q-k">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    Planning
+                  </div>
+                  <div class="dc-q-v simple">
+                    <span>5 semaines · démarrage le 22 avril</span>
+                  </div>
+                </div>
+
+                <div class="dc-q-row">
+                  <div class="dc-q-k">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                    Équipe dédiée
+                  </div>
+                  <div class="dc-q-v team">
+                    <div class="dc-q-mbr">
+                      <div class="dc-q-mbr-av" style="background:var(--accent)">T</div>
+                      <div><b>Thomas</b><span>Tech lead · Laravel</span></div>
+                    </div>
+                    <div class="dc-q-mbr">
+                      <div class="dc-q-mbr-av" style="background:#171717">L</div>
+                      <div><b>Léa</b><span>Product design</span></div>
+                    </div>
+                    <div class="dc-q-mbr">
+                      <div class="dc-q-mbr-av" style="background:#8B5CF6">S</div>
+                      <div><b>Sami</b><span>Dev IA · Claude</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="dc-q-row">
+                  <div class="dc-q-k">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    Inclus
+                  </div>
+                  <div class="dc-q-v incl">
+                    <span>✓ Hébergement 1 an</span>
+                    <span>✓ Formation équipes</span>
+                    <span>✓ 30 j de garantie</span>
+                    <span>✓ Code sur votre Git</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dc-q-breakdown">
+                <div class="dc-q-br-row">
+                  <span>Design produit &amp; ateliers</span><span>5 400 €</span>
+                </div>
+                <div class="dc-q-br-row">
+                  <span>Développement · 4 sprints</span><span>18 200 €</span>
+                </div>
+                <div class="dc-q-br-row">
+                  <span>Intégrations Pennylane · Stripe</span><span>2 800 €</span>
+                </div>
+                <div class="dc-q-br-row">
+                  <span>IA relances · Claude</span><span>1 600 €</span>
+                </div>
+              </div>
+
+              <div class="dc-q-total">
+                <div class="dc-q-tleft">
+                  <div class="dc-q-ttag">FORFAIT TOUT COMPRIS · HT</div>
+                  <div class="dc-q-tsub">
+                    <span><b>30 %</b> signature</span>
+                    <span class="sep"></span>
+                    <span><b>40 %</b> mi-parcours</span>
+                    <span class="sep"></span>
+                    <span><b>30 %</b> livraison</span>
+                  </div>
+                </div>
+                <div class="dc-q-tright">
+                  <div class="dc-q-tcurrency">MONTANT TOTAL</div>
+                  <div class="dc-q-tval">28 000 €</div>
+                </div>
+              </div>
+
+              <div class="dc-q-actions">
+                <a href="#" class="btn btn-accent" style="flex:1;justify-content:center">
+                  Accepter &amp; signer en ligne
+                  <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#" class="btn btn-ghost">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                  PDF
+                </a>
+              </div>
+
+              <div class="dc-q-foot">
+                <span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                  Devis signé électroniquement · Yousign
+                </span>
+                <span>Valable 30 jours</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Typing indicator -->
+          <div class="dc-typing">
+            <div class="dc-type-av">MD</div>
+            <div class="dc-type-bubble">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="dc-type-t">Marc écrit une réponse…</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODE -->
+<section class="methode" id="methode">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="left">
+        <div class="eyebrow">— Notre méthode</div>
+        <h2>Comment on travaille,<br>étape par étape.</h2>
+      </div>
+      <div class="right">
+        Pas de mystère, pas de « consulting » qui traîne. Quatre étapes claires, des livrables précis,
+        des points hebdo jusqu'à la mise en ligne.
+      </div>
+    </div>
+
+    <div class="meth-rail">
+    <div class="meth-grid">
+      <div class="meth-step reveal">
+        <div class="meth-head">
+          <div class="meth-num">ÉTAPE 01</div>
+          <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        </div>
+        <h4>On écoute vraiment.</h4>
+        <p>Un appel de <b>30 min avec un associé</b>. On comprend ce que vous voulez faire, pour qui et pourquoi. Sans jargon technique.</p>
+        <div class="meth-foot">
+          <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>30 min</div>
+          <div class="meth-tag free">Gratuit</div>
+        </div>
+      </div>
+
+      <div class="meth-step reveal reveal-d-1">
+        <div class="meth-head">
+          <div class="meth-num">ÉTAPE 02</div>
+          <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
+        </div>
+        <h4>On vous renvoie un chiffrage clair.</h4>
+        <p>Sous <b>48 h</b> : périmètre, délai, budget forfaitaire. Pas de tarif à l'heure, pas de mauvaise surprise en fin de projet.</p>
+        <div class="meth-foot">
+          <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>48 h</div>
+          <div class="meth-tag">Forfait fixe</div>
+        </div>
+      </div>
+
+      <div class="meth-step reveal reveal-d-2">
+        <div class="meth-head">
+          <div class="meth-num">ÉTAPE 03</div>
+          <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
+        </div>
+        <h4>On construit, vous suivez.</h4>
+        <p>Démo <b>tous les vendredis</b>. Vous voyez votre produit grandir semaine après semaine. Vous ajustez la trajectoire en temps réel.</p>
+        <div class="meth-foot">
+          <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>4 à 12 sem.</div>
+          <div class="meth-tag">Démos hebdo</div>
+        </div>
+      </div>
+
+      <div class="meth-step reveal reveal-d-3">
+        <div class="meth-head">
+          <div class="meth-num">ÉTAPE 04</div>
+          <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg></div>
+        </div>
+        <h4>On livre et on reste.</h4>
+        <p>Formation des équipes, mise en ligne, <b>30 jours de garantie</b>. Puis forfait maintenance mensuel si vous voulez qu'on s'occupe du reste.</p>
+        <div class="meth-foot">
+          <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>J+30</div>
+          <div class="meth-tag guarantee">Garantie</div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- REALISATIONS -->
+<section class="real" id="realisations">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="left">
+        <div class="eyebrow">— Réalisations</div>
+        <h2>Ce qu'on a construit<br>ces 18 derniers mois.</h2>
+      </div>
+      <div class="right">
+        Quatre projets représentatifs. Deux SaaS IA de comptabilité immobilière lancés
+        en 2025, et deux sites vitrines qui convertissent dans la gestion de patrimoine.
+        Cliquez pour voir les détails.
+      </div>
+    </div>
+
+    <div class="real-grid">
+      <!-- LMNP.AI — violet/indigo -->
+      <a href="https://lmnp.ai" target="_blank" class="real-card reveal" style="--brand:#6D28D9;--brand-soft:#EDE9FE">
+        <div class="real-shot" style="background:#0A0A0A">
+          <svg width="100%" height="100%" viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="340" fill="#0A0A0A"/>
+            <!-- Subtle grid bg -->
+            <defs><pattern id="gridLmnp" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a1a" stroke-width="0.5"/></pattern></defs>
+            <rect width="600" height="340" fill="url(#gridLmnp)"/>
+            <!-- Floating card: résultat simulateur -->
+            <rect x="110" y="56" width="380" height="228" rx="14" fill="#121212" stroke="#262626"/>
+            <circle cx="132" cy="82" r="4" fill="#6D28D9"/>
+            <text x="146" y="86" font-family="Geist Mono" font-size="11" fill="#A78BFA" letter-spacing="1">LMNP.AI · RÉSULTAT</text>
+            <text x="132" y="130" font-family="Geist" font-weight="700" font-size="15" fill="#737373">Économie annuelle estimée</text>
+            <text x="132" y="180" font-family="Geist" font-weight="700" font-size="52" fill="#fff" letter-spacing="-2">4 128<tspan font-size="30" fill="#A78BFA"> €</tspan></text>
+            <rect x="132" y="200" width="336" height="1" fill="#262626"/>
+            <text x="132" y="226" font-family="Geist Mono" font-size="10" fill="#737373" letter-spacing="1">RÉGIME RECOMMANDÉ</text>
+            <text x="132" y="248" font-family="Geist" font-weight="600" font-size="17" fill="#fff">LMNP au réel simplifié</text>
+            <rect x="132" y="260" width="336" height="10" rx="5" fill="#1f1f1f"/>
+            <rect x="132" y="260" width="280" height="10" rx="5" fill="#6D28D9"/>
+          </svg>
+        </div>
+        <div class="real-head">
+          <div class="real-logo">L</div>
+          <div class="real-head-main">
+            <h3>LMNP.AI</h3>
+            <span class="real-url">lmnp.ai</span>
+          </div>
+          <span class="real-chip">SaaS B2C</span>
+        </div>
+        <div class="real-body">
+          <div class="real-meta">LARAVEL 12 <span class="dot"></span> CLAUDE <span class="dot"></span> LIVRÉ 2025</div>
+          <p>Logiciel de comptabilité LMNP/LMP en ligne. L'IA guide l'investisseur dans sa liasse fiscale, amortissements, transmission EDI. Offre autonomie ou validation expert-comptable.</p>
+          <div class="real-metric">
+            <div class="rm"><div class="n">5,4<span class="s"> k</span></div><div class="l">clients actifs</div></div>
+            <div class="rm"><div class="n">163</div><div class="l">guides rédigés</div></div>
+            <div class="rm"><div class="n">15<span class="s"> min</span></div><div class="l">de compta/an</div></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- SCI-AI.app — bleu/cyan -->
+      <a href="https://sci-ai.app" target="_blank" class="real-card reveal reveal-d-1" style="--brand:#0066FF;--brand-soft:#E0ECFF">
+        <div class="real-shot" style="background:#F5F8FF">
+          <svg width="100%" height="100%" viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="340" fill="#F5F8FF"/>
+            <!-- Dashboard SCI -->
+            <rect x="40" y="40" width="520" height="260" rx="14" fill="#fff" stroke="#D9E4F5"/>
+            <rect x="40" y="40" width="520" height="48" rx="14" fill="#fff"/>
+            <rect x="40" y="86" width="520" height="1" fill="#E5ECF5"/>
+            <circle cx="62" cy="64" r="5" fill="#0066FF"/>
+            <text x="76" y="68" font-family="Geist" font-weight="700" font-size="13" fill="#0A0A0A">SCI-AI.app</text>
+            <text x="540" y="68" text-anchor="end" font-family="Geist Mono" font-size="10" fill="#737373">Liasse 2065 · IS</text>
+            <!-- KPIs -->
+            <g font-family="Geist">
+              <rect x="64" y="108" width="152" height="76" rx="10" fill="#F5F8FF"/>
+              <text x="78" y="128" font-family="Geist Mono" font-size="9" fill="#6B7B96" letter-spacing="1">BÉNÉFICE NET</text>
+              <text x="78" y="158" font-weight="700" font-size="22" fill="#0A0A0A">12 840 €</text>
+              <text x="78" y="174" font-family="Geist Mono" font-size="9" fill="#0066FF">+ IS 15 %</text>
+
+              <rect x="224" y="108" width="152" height="76" rx="10" fill="#F5F8FF"/>
+              <text x="238" y="128" font-family="Geist Mono" font-size="9" fill="#6B7B96" letter-spacing="1">AMORT. ANNUEL</text>
+              <text x="238" y="158" font-weight="700" font-size="22" fill="#0A0A0A">8 920 €</text>
+              <text x="238" y="174" font-family="Geist Mono" font-size="9" fill="#0066FF">6 composants</text>
+
+              <rect x="384" y="108" width="152" height="76" rx="10" fill="#0066FF"/>
+              <text x="398" y="128" font-family="Geist Mono" font-size="9" fill="#BFD4FF" letter-spacing="1">ASSOCIÉS</text>
+              <text x="398" y="158" font-weight="700" font-size="22" fill="#fff">3</text>
+              <text x="398" y="174" font-family="Geist Mono" font-size="9" fill="#BFD4FF">parts à jour</text>
+            </g>
+            <!-- Bottom row -->
+            <rect x="64" y="200" width="472" height="80" rx="10" fill="#F5F8FF"/>
+            <text x="80" y="222" font-family="Geist" font-weight="600" font-size="12" fill="#0A0A0A">Transmission EDI · 2065</text>
+            <text x="80" y="240" font-family="Geist Mono" font-size="10" fill="#6B7B96">DGFiP · accusé de réception reçu</text>
+            <rect x="80" y="252" width="280" height="8" rx="4" fill="#D9E4F5"/>
+            <rect x="80" y="252" width="280" height="8" rx="4" fill="#0066FF"/>
+            <text x="522" y="244" text-anchor="end" font-family="Geist Mono" font-weight="600" font-size="14" fill="#0066FF">✓ Validée</text>
+          </svg>
+        </div>
+        <div class="real-head">
+          <div class="real-logo">S</div>
+          <div class="real-head-main">
+            <h3>SCI-AI.app</h3>
+            <span class="real-url">sci-ai.app</span>
+          </div>
+          <span class="real-chip">SaaS B2C</span>
+        </div>
+        <div class="real-body">
+          <div class="real-meta">LARAVEL 12 <span class="dot"></span> EDI DGFiP <span class="dot"></span> LIVRÉ 2025</div>
+          <p>Logiciel de comptabilité SCI (IR et IS). Liasses 2033, 2065, 2072 générées et télétransmises. Gestion des associés, parts, comptes courants, démembrement et amortissements par composants.</p>
+          <div class="real-metric">
+            <div class="rm"><div class="n">2</div><div class="l">régimes (IR/IS)</div></div>
+            <div class="rm"><div class="n">3</div><div class="l">liasses auto-générées</div></div>
+            <div class="rm"><div class="n">229<span class="s"> €</span></div><div class="l">/an autonomie</div></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- HAGNÉRÉ PATRIMOINE — noir premium / or -->
+      <a href="https://hagnere-patrimoine.fr" target="_blank" class="real-card reveal reveal-d-2" style="--brand:#C9A96E;--brand-soft:#FAF3E3">
+        <div class="real-shot" style="background:#0A0A0A">
+          <svg width="100%" height="100%" viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="340" fill="#0A0A0A"/>
+            <!-- Subtle vertical rule -->
+            <line x1="40" y1="40" x2="40" y2="300" stroke="#C9A96E" stroke-width="1" opacity="0.5"/>
+            <text x="60" y="60" font-family="Geist Mono" font-size="10" fill="#C9A96E" letter-spacing="2">◆ HAGNÉRÉ PATRIMOINE</text>
+            <text x="60" y="128" font-family="Geist" font-weight="300" font-size="42" fill="#fff" letter-spacing="-1">Construisons</text>
+            <text x="60" y="168" font-family="Geist" font-weight="300" font-size="42" fill="#fff" letter-spacing="-1">votre <tspan font-style="italic" fill="#C9A96E">patrimoine</tspan>,</text>
+            <text x="60" y="208" font-family="Geist" font-weight="300" font-size="42" fill="#fff" letter-spacing="-1">ensemble.</text>
+            <line x1="60" y1="232" x2="200" y2="232" stroke="#C9A96E" stroke-width="1"/>
+            <text x="60" y="256" font-family="Geist Mono" font-size="10" fill="#9e9e9e" letter-spacing="1">CABINET DE GESTION · CHAMBÉRY</text>
+            <!-- Right side metric -->
+            <rect x="420" y="60" width="140" height="220" rx="2" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.3"/>
+            <text x="490" y="110" text-anchor="middle" font-family="Geist Mono" font-size="9" fill="#C9A96E" letter-spacing="1.5">SOUS GESTION</text>
+            <text x="490" y="170" text-anchor="middle" font-family="Geist" font-weight="300" font-size="44" fill="#fff" letter-spacing="-2">18 M€</text>
+            <line x1="450" y1="190" x2="530" y2="190" stroke="#C9A96E" opacity="0.5"/>
+            <text x="490" y="216" text-anchor="middle" font-family="Geist Mono" font-size="9" fill="#9e9e9e" letter-spacing="1">CIF · ORIAS</text>
+            <text x="490" y="236" text-anchor="middle" font-family="Geist" font-weight="400" font-size="11" fill="#fff">284 clients</text>
+          </svg>
+        </div>
+        <div class="real-head">
+          <div class="real-logo">HP</div>
+          <div class="real-head-main">
+            <h3>Hagnéré Patrimoine</h3>
+            <span class="real-url">hagnere-patrimoine.fr</span>
+          </div>
+          <span class="real-chip">Site vitrine</span>
+        </div>
+        <div class="real-body">
+          <div class="real-meta">LARAVEL <span class="dot"></span> SEO + ADS <span class="dot"></span> LIVRÉ 2024</div>
+          <p>Refonte complète du cabinet de gestion de patrimoine : site vitrine premium, prise de RDV, tunnel de qualification, stratégie SEO longue traîne et campagnes Google Ads sur les requêtes patrimoniales.</p>
+          <div class="real-metric">
+            <div class="rm"><div class="n">+340<span class="s"> %</span></div><div class="l">trafic organique</div></div>
+            <div class="rm"><div class="n">4,2<span class="s"> %</span></div><div class="l">taux conversion</div></div>
+            <div class="rm"><div class="n">×3</div><div class="l">pipeline commercial</div></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- HAGNÉRÉ INVESTISSEMENT — vert émeraude / clean -->
+      <a href="https://hagnere-investissement.fr" target="_blank" class="real-card reveal reveal-d-3" style="--brand:#0F766E;--brand-soft:#D1FAE5">
+        <div class="real-shot" style="background:#F7F9F8">
+          <svg width="100%" height="100%" viewBox="0 0 600 340" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="340" fill="#F7F9F8"/>
+            <!-- Hero -->
+            <rect x="40" y="40" width="330" height="260" rx="14" fill="#0F766E"/>
+            <text x="62" y="70" font-family="Geist Mono" font-size="10" fill="#A7F3D0" letter-spacing="1.5">◆ HAGNÉRÉ INVESTISSEMENT</text>
+            <text x="62" y="128" font-family="Geist" font-weight="700" font-size="28" fill="#fff" letter-spacing="-1">Investir dans</text>
+            <text x="62" y="160" font-family="Geist" font-weight="700" font-size="28" fill="#fff" letter-spacing="-1">l'immobilier</text>
+            <text x="62" y="192" font-family="Geist" font-weight="700" font-size="28" fill="#A7F3D0" letter-spacing="-1">clé en main.</text>
+            <rect x="62" y="232" width="170" height="42" rx="8" fill="#fff"/>
+            <text x="147" y="258" text-anchor="middle" font-family="Geist" font-weight="600" font-size="13" fill="#0F766E">Prendre RDV →</text>
+            <!-- Right: rendement card -->
+            <rect x="390" y="40" width="170" height="125" rx="14" fill="#fff" stroke="#E5ECE9"/>
+            <text x="410" y="66" font-family="Geist Mono" font-size="9" fill="#6B7B74" letter-spacing="1">RENDEMENT NET</text>
+            <text x="410" y="108" font-family="Geist" font-weight="700" font-size="34" fill="#0F766E" letter-spacing="-1">7,2 %</text>
+            <text x="410" y="128" font-family="Geist Mono" font-size="9" fill="#6B7B74">moyenne clients 2024</text>
+            <rect x="410" y="138" width="130" height="4" rx="2" fill="#D1FAE5"/>
+            <rect x="410" y="138" width="110" height="4" rx="2" fill="#0F766E"/>
+            <!-- Right card 2 -->
+            <rect x="390" y="175" width="170" height="125" rx="14" fill="#fff" stroke="#E5ECE9"/>
+            <text x="410" y="200" font-family="Geist Mono" font-size="9" fill="#6B7B74" letter-spacing="1">CLIENTS ACCOMPAGNÉS</text>
+            <text x="410" y="242" font-family="Geist" font-weight="700" font-size="34" fill="#0F766E" letter-spacing="-1">612</text>
+            <text x="410" y="262" font-family="Geist Mono" font-size="9" fill="#6B7B74">depuis 2021</text>
+            <circle cx="420" cy="282" r="6" fill="#0F766E"/>
+            <circle cx="432" cy="282" r="6" fill="#0F766E" opacity="0.7"/>
+            <circle cx="444" cy="282" r="6" fill="#0F766E" opacity="0.4"/>
+            <text x="460" y="286" font-family="Geist Mono" font-size="9" fill="#6B7B74">+ chaque mois</text>
+          </svg>
+        </div>
+        <div class="real-head">
+          <div class="real-logo">HI</div>
+          <div class="real-head-main">
+            <h3>Hagnéré Investissement</h3>
+            <span class="real-url">hagnere-investissement.fr</span>
+          </div>
+          <span class="real-chip">Site vitrine</span>
+        </div>
+        <div class="real-body">
+          <div class="real-meta">LARAVEL <span class="dot"></span> SEO + ADS <span class="dot"></span> LIVRÉ 2024</div>
+          <p>Site marque du cabinet d'investissement immobilier clé en main. Funnel de qualification de prospects investisseurs, simulateur de rendement, prise de RDV, contenus YouTube intégrés.</p>
+          <div class="real-metric">
+            <div class="rm"><div class="n">612</div><div class="l">clients accompagnés</div></div>
+            <div class="rm"><div class="n">7,2<span class="s"> %</span></div><div class="l">rendement moyen</div></div>
+            <div class="rm"><div class="n">×2,5</div><div class="l">leads qualifiés</div></div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-bg"></div>
+  <div class="wrap inner">
+    <div class="stats-head reveal">
+      <div class="eyebrow on-dark">— En chiffres</div>
+      <h2 style="margin-top:14px">Un studio jeune,<br>des résultats mesurables.</h2>
+      <p>Fondé fin 2023. 18 mois d'existence, 23 projets livrés, zéro projet en retard de plus de 2 semaines. Voici nos chiffres actualisés.</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="k">PROJETS LIVRÉS</div>
+        <div class="n">23</div>
+        <div class="l">Tous livrés dans le forfait initial, dans les délais annoncés.</div>
+      </div>
+      <div class="stat reveal reveal-d-1">
+        <div class="k">CLIENTS ACTIFS</div>
+        <div class="n">18</div>
+        <div class="l">Dont 14 en maintenance mensuelle, 4 en nouveau projet.</div>
+      </div>
+      <div class="stat reveal reveal-d-2">
+        <div class="k">SATISFACTION</div>
+        <div class="n">4,9<span class="s">/5</span></div>
+        <div class="l">Note moyenne post-projet sur 23 répondants.</div>
+      </div>
+      <div class="stat reveal reveal-d-3">
+        <div class="k">NPS</div>
+        <div class="n">+72</div>
+        <div class="l">Taux de recommandation net. 84 % nous ont recommandés.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="equipe" id="equipe">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="left">
+        <div class="eyebrow">— L'équipe</div>
+        <h2>Un associé dirigeant.<br>Six devs triés sur le volet.</h2>
+      </div>
+      <div class="right">
+        Pas de pool de freelances, pas de sous-traitance offshore.
+        Une équipe stable, senior, basée à Chambéry, formée à Claude Code
+        pour être rapide <em>et</em> autonome sur vos projets.
+      </div>
+    </div>
+
+    <div class="eq-grid">
+      <!-- FONDATEUR -->
+      <div class="eq-founder reveal">
+        <div class="eq-founder-photo">
+          <div class="eq-founder-tag">
+            <span class="dot"></span>
+            ASSOCIÉ DIRIGEANT
+          </div>
+          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+            <rect width="400" height="500" fill="#171717"/>
+            <defs><radialGradient id="photoGrad" cx="50%" cy="30%" r="60%"><stop offset="0%" stop-color="#2a2a2a"/><stop offset="100%" stop-color="#0f0f0f"/></radialGradient></defs>
+            <rect width="400" height="500" fill="url(#photoGrad)"/>
+            <circle cx="200" cy="210" r="82" fill="#262626"/>
+            <rect x="118" y="292" width="164" height="210" fill="#262626" rx="82"/>
+            <text x="200" y="470" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#525252" letter-spacing="1">// PHOTO À VENIR</text>
+          </svg>
+        </div>
+        <div class="eq-founder-body">
+          <div>
+            <div class="eq-founder-name">Quentin Hagnéré</div>
+            <span class="eq-founder-role">Fondateur · Vision produit</span>
+          </div>
+          <div class="eq-founder-quote">
+            « Je viens du terrain. Je sais ce qu'un métier attend vraiment d'un outil, pas ce qu'un brief en parle. C'est ça que j'apporte à chaque projet. »
+          </div>
+          <div class="eq-founder-meta">
+            <div class="eq-fm">
+              <span class="k">Domaine</span>
+              <span class="v">Patrimoine · Immobilier · SaaS B2B</span>
+            </div>
+            <div class="eq-fm">
+              <span class="k">Rôle projet</span>
+              <span class="v">Brief · cadrage · suivi client</span>
+            </div>
+            <div class="eq-fm">
+              <span class="k">Entreprises fondées</span>
+              <span class="v">3 · dont 2 cabinets actifs</span>
+            </div>
+            <div class="eq-fm">
+              <span class="k">Basé à</span>
+              <span class="v">Chambéry · Savoie</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EQUIPE TECH -->
+      <div class="eq-team">
+        <div class="eq-team-intro reveal">
+          <h3>Six développeurs seniors,<br>augmentés par <em>Claude Code</em>.</h3>
+          <p>
+            Tous en CDI, tous triés sur le volet, chacun avec sa spécialité. Et tous formés à utiliser
+            <b>Claude Code</b> comme assistant de développement : recherches, cadrage juridique, architecture,
+            plans d'implémentation. Résultat : <b>on pose moins de questions, on avance plus vite, on livre plus proprement</b>.
+          </p>
+        </div>
+
+        <div class="eq-devs reveal reveal-d-1">
+          <div class="eq-dev">
+            <div class="eq-dev-head">
+              <div class="eq-dev-avatar v2">TM</div>
+              <div class="eq-dev-meta">
+                <div class="eq-dev-name">Thomas M.</div>
+                <div class="eq-dev-years">12 ans · lead back</div>
+              </div>
+            </div>
+            <div class="eq-dev-spec">Architecture Laravel, scalabilité, systèmes de paiement et facturation.</div>
+            <div class="eq-dev-stack"><span>LARAVEL</span><span>STRIPE</span><span>DDD</span></div>
+          </div>
+
+          <div class="eq-dev">
+            <div class="eq-dev-head">
+              <div class="eq-dev-avatar v3">JD</div>
+              <div class="eq-dev-meta">
+                <div class="eq-dev-name">Julie D.</div>
+                <div class="eq-dev-years">9 ans · front lead</div>
+              </div>
+            </div>
+            <div class="eq-dev-spec">UI complexes, interfaces métier, Livewire temps réel et design system.</div>
+            <div class="eq-dev-stack"><span>LIVEWIRE</span><span>FLUX UI</span><span>TAILWIND</span></div>
+          </div>
+
+          <div class="eq-dev">
+            <div class="eq-dev-head">
+              <div class="eq-dev-avatar v4">RB</div>
+              <div class="eq-dev-meta">
+                <div class="eq-dev-name">Romain B.</div>
+                <div class="eq-dev-years">10 ans · IA &amp; data</div>
+              </div>
+            </div>
+            <div class="eq-dev-spec">Intégrations IA, agents Claude, RAG, pipelines de documents.</div>
+            <div class="eq-dev-stack"><span>CLAUDE</span><span>PRISM</span><span>PYTHON</span></div>
+          </div>
+
+          <div class="eq-dev">
+            <div class="eq-dev-head">
+              <div class="eq-dev-avatar v5">SL</div>
+              <div class="eq-dev-meta">
+                <div class="eq-dev-name">Sami L.</div>
+                <div class="eq-dev-years">8 ans · intégrations</div>
+              </div>
+            </div>
+            <div class="eq-dev-spec">APIs tierces, EDI DGFiP, SSO, connecteurs bancaires et comptables.</div>
+            <div class="eq-dev-stack"><span>REST</span><span>EDI</span><span>OAUTH</span></div>
+          </div>
+
+          <div class="eq-dev">
+            <div class="eq-dev-head">
+              <div class="eq-dev-avatar v6">CV</div>
+              <div class="eq-dev-meta">
+                <div class="eq-dev-name">Clara V.</div>
+                <div class="eq-dev-years">7 ans · produit</div>
+              </div>
+            </div>
+            <div class="eq-dev-spec">UX/UI, prototypage, recherche utilisateur et parcours de conversion.</div>
+            <div class="eq-dev-stack"><span>FIGMA</span><span>UX</span><span>A/B</span></div>
+          </div>
+
+          <div class="eq-dev">
+            <div class="eq-dev-head">
+              <div class="eq-dev-avatar">AK</div>
+              <div class="eq-dev-meta">
+                <div class="eq-dev-name">Antoine K.</div>
+                <div class="eq-dev-years">11 ans · DevOps</div>
+              </div>
+            </div>
+            <div class="eq-dev-spec">Infra, sécurité, observabilité, RGPD et audits techniques.</div>
+            <div class="eq-dev-stack"><span>DOCKER</span><span>AWS</span><span>GITHUB</span></div>
+          </div>
+        </div>
+
+        <!-- Claude Code highlight -->
+        <div class="eq-claude reveal reveal-d-2">
+          <div class="eq-claude-icon">
+            <svg viewBox="0 0 512 512" fill="#D97757" aria-hidden="true"><path d="M301.86 65h70.94l129.4 382h-70.93l-26.48-81.3H269.2l-26.48 81.3h-70.94L301.86 65zm-11.96 240h94.86l-47.43-145.7L289.9 305z"/></svg>
+          </div>
+          <div class="eq-claude-body">
+            <span class="tag">Méthode · Claude Code</span>
+            <h4>Vous décrivez le besoin. On gère le reste.</h4>
+            <p>Pas de « 36 000 questions » : nos devs s'appuient sur Claude Code pour <b>faire la recherche de leur côté</b> — cadrage juridique, exploration technique, plans d'implémentation. Vous validez, on livre.</p>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="eq-stats reveal reveal-d-3">
+          <div class="eqs">
+            <div class="n">7</div>
+            <div class="l">personnes, tous en CDI</div>
+          </div>
+          <div class="eqs">
+            <div class="n">9,4 <span class="s">ans</span></div>
+            <div class="l">d'expérience moyenne</div>
+          </div>
+          <div class="eqs">
+            <div class="n">100<span class="s"> %</span></div>
+            <div class="l">basés à Chambéry</div>
+          </div>
+          <div class="eqs">
+            <div class="n">×3</div>
+            <div class="l">productivité avec Claude Code</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFS -->
+<section class="pricing" id="tarifs">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="left">
+        <div class="eyebrow">— Tarifs</div>
+        <h2>Trois façons<br>de travailler ensemble.</h2>
+      </div>
+      <div class="right">
+        On vend au forfait, pas à la journée. Vous savez ce que vous payez avant de signer,
+        et vous payez exactement ce qui était prévu. Pas de dépassement.
+      </div>
+    </div>
+
+    <div class="price-grid">
+      <div class="plan reveal">
+        <div class="plan-tag">DÉMARRAGE</div>
+        <h4>Essentiel</h4>
+        <div class="plan-sub">Un site vitrine ou une landing qui convertit. Idéal pour une première collaboration.</div>
+        <div class="plan-price">
+          <span class="amount">6–12 k€</span>
+          <span class="per">forfait</span>
+        </div>
+        <div class="plan-hr"></div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design sur mesure</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO technique de série</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 1 an inclus</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 2–4 semaines</li>
+        </ul>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
+      </div>
+
+      <div class="plan featured reveal reveal-d-1">
+        <div class="plan-badge">LE PLUS CHOISI</div>
+        <div class="plan-tag">PROJET COMPLET</div>
+        <h4>Standard</h4>
+        <div class="plan-sub">Un SaaS, un outil interne ou une marketplace. Le sweet spot des PME ambitieuses.</div>
+        <div class="plan-price">
+          <span class="amount">25–60 k€</span>
+          <span class="per">forfait</span>
+        </div>
+        <div class="plan-hr"></div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design produit + développement</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Workflows métier complexes</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intégrations tierces (Pennylane, Stripe…)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Extraction IA selon besoin</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Formation des équipes</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 5–10 semaines</li>
+        </ul>
+        <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
+      </div>
+
+      <div class="plan reveal reveal-d-2">
+        <div class="plan-tag">PARTENARIAT</div>
+        <h4>Partenariat</h4>
+        <div class="plan-sub">On devient votre équipe tech externalisée. Plusieurs projets, forfait mensuel.</div>
+        <div class="plan-price">
+          <span class="amount">8–20 k€</span>
+          <span class="per">/ mois</span>
+        </div>
+        <div class="plan-hr"></div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée 2 à 5 personnes</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Roadmap co-construite</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA 99,9 % · astreinte 24/5</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 6 mois minimum</li>
+        </ul>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parlons-en</a></div>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
+      Tous les forfaits incluent : <b style="color:var(--ink)">propriété complète du code · repo Git chez vous · formation équipe · 30 jours de garantie post-livraison</b>
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="faq-intro reveal">
+        <div class="eyebrow">— FAQ</div>
+        <h2 style="margin-top:14px">Les questions<br>qu'on nous pose<br>tout le temps.</h2>
+        <p>Manquante ? <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a> par email, on répond sous 24 h ouvrées.</p>
+      </div>
+
+      <div class="faq-list reveal reveal-d-1">
+        <div class="faq-item open">
+          <div class="faq-q">On a pas de cahier des charges — c'est bloquant ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            <b>Pas du tout.</b> La plupart de nos clients arrivent avec une idée claire mais pas de doc formelle.
+            Un appel de 30 minutes suffit pour qu'on comprenne l'essentiel. On rédige ensuite le périmètre
+            avec vous — c'est notre métier, pas le vôtre.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Qui est propriétaire du code et des données ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            <b>Vous, entièrement.</b> Le code est sur votre repo Git dès le jour 1. Les données sont hébergées
+            en France (Scaleway ou OVH) sous votre nom. Si vous arrêtez de travailler avec nous, vous gardez tout.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Pourquoi Laravel et pas un autre framework ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Laravel est <b>le meilleur framework web de 2026</b> pour les applications métier : rapide à développer,
+            facile à maintenir, compatible avec tous les devs PHP du marché. Sa version 13 inclut une
+            couche IA native qui change la donne. Et c'est en open-source, donc pas de dépendance à un éditeur.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Combien de temps pour livrer un projet type ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Site vitrine : <b>2 à 4 semaines</b>. Outil interne ou SaaS simple : <b>5 à 8 semaines</b>.
+            Plateforme complexe : <b>3 à 6 mois</b>. On s'engage sur un délai fixe dans le devis,
+            et on n'a jamais dépassé de plus de 2 semaines sur nos 23 projets livrés.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Et après la livraison, comment ça se passe ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            30 jours de garantie systématique. Après, deux options : soit on signe un <b>forfait maintenance
+            mensuel</b> (hébergement, bugs, petites évolutions), soit vous reprenez la main avec votre équipe tech.
+            Aucune option n'est obligatoire.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Vous travaillez avec des ETI ou des grands comptes ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Notre sweet spot, ce sont les <b>PME/ETI de 10 à 500 salariés</b> avec un vrai besoin produit.
+            On travaille aussi avec des directions innovation de grands groupes sur des projets isolés.
+            Par contre, on ne prend pas les startups en amorçage qui cherchent « un CTO pour 10 % de parts ».
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="fcta" id="contact">
+  <div class="fcta-bg"></div>
+  <div class="wrap inner">
+    <div class="eyebrow on-dark">— Prochaine étape</div>
+    <h2 style="margin-top:18px">Parlons de<br>votre projet.<br><span class="accent">30 min, c'est tout.</span></h2>
+    <p>Un call de cadrage gratuit avec un associé. Vous repartez avec un avis franc et, sous 48 h, un devis chiffré — sans engagement.</p>
+    <div class="fcta-cta">
+      <a href="#" class="btn btn-accent btn-lg">
+        📅 &nbsp;Réserver 30 min sur Calendly
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="mailto:hello@hagnere-code.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
+        Envoyer un email →
+      </a>
+    </div>
+    <div class="fcta-meta">RÉPONSE SOUS 24H OUVRÉES · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#" class="brand" style="margin-bottom:16px">
+          <div class="brand-mark">HC</div>
+          <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
+        </a>
+        <p>Agence de développement SaaS AI-native basée à Chambéry. Dev, design, SEO, ads, vidéo intégrée.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>SERVICES</h5>
+          <a href="services/saas-applications-metier.html">SaaS &amp; applications métier</a>
+          <a href="services/outils-internes.html">Outils internes</a>
+          <a href="services/sites-vitrines.html">Sites vitrines</a>
+          <a href="services/referencement-google.html">SEO</a>
+          <a href="services/publicite-en-ligne.html">Publicité</a>
+        </div>
+        <div class="foot-col">
+          <h5>STUDIO</h5>
+          <a href="#methode">Méthode</a>
+          <a href="#realisations">Réalisations</a>
+          <a href="#equipe">Équipe</a>
+          <a href="#tarifs">Tarifs</a>
+          <a href="#blog">Blog</a>
+        </div>
+        <div class="foot-col">
+          <h5>CONTACT</h5>
+          <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">YouTube</a>
+        </div>
+        <div class="foot-col">
+          <h5>LÉGAL</h5>
+          <a href="#">CGV</a>
+          <a href="#">Mentions légales</a>
+          <a href="#">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div>© 2026 HAGNÉRÉ CODE SAS · RCS CHAMBÉRY · TVA FR42 123 456 789</div>
+      <div>BUILT WITH LARAVEL + CLAUDE CODE</div>
+    </div>
+  </div>
+</footer>
+
+<!-- TWEAKS -->
+<div id="tweaks">
+  <h6>Tweaks</h6>
+  <label>Variante du hero</label>
+  <div class="tw-row">
+    <button class="tw-opt on" data-tw="variant" data-val="A">A · De A à Z</button>
+    <button class="tw-opt" data-tw="variant" data-val="B">B · Décrivez</button>
+  </div>
+  <label>Teinte d'accent</label>
+  <div class="tw-row">
+    <button class="tw-opt on" data-tw="accent" data-val="#6D28D9">Violet</button>
+    <button class="tw-opt" data-tw="accent" data-val="#FF5436">Rouge</button>
+    <button class="tw-opt" data-tw="accent" data-val="#0EA5E9">Cyan</button>
+  </div>
+</div>
+
+<script>
+  // --- Tweaks default state stored here (parseable JSON block for host) ---
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "variant": "A",
+    "accent": "#6D28D9"
+  }/*EDITMODE-END*/;
+
+  // Reveals
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(x => x.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // ----- Tweaks -----
+  const HERO_VARIANTS = {
+    A: {
+      h1: `L'agence qui construit<br>vos outils numériques,<br><span class="accent">de A à Z.</span>`,
+      sub: `On imagine, on conçoit, on développe, on lance et on maintient vos <b>sites, applications métier et SaaS sur mesure</b>. Un seul interlocuteur qui parle votre langue — pas de sous-traitance, pas de jargon technique.`
+    },
+    B: {
+      h1: `Décrivez votre besoin.<br>On s'occupe<br><span class="accent">du reste.</span>`,
+      sub: `30 minutes d'appel, 48 heures pour un devis forfaitaire, 5 à 10 semaines pour livrer. Nos clients ne rédigent pas de cahier des charges : <b>nous traduisons vos mots en produit fini</b>.`
+    }
+  };
+  function applyVariant(v) {
+    const d = HERO_VARIANTS[v] || HERO_VARIANTS.A;
+    document.querySelector('.hero h1 #h1-content').innerHTML = d.h1;
+    document.getElementById('hero-sub').innerHTML = d.sub;
+  }
+  function applyAccent(hex) {
+    document.documentElement.style.setProperty('--accent', hex);
+  }
+
+  function setTweak(k, v) {
+    if (k === 'variant') applyVariant(v);
+    if (k === 'accent') applyAccent(v);
+    document.querySelectorAll(`[data-tw="${k}"]`).forEach(b => b.classList.toggle('on', b.dataset.val === v));
+    try { window.parent.postMessage({type:'__edit_mode_set_keys', edits:{[k]:v}}, '*'); } catch(e) {}
+  }
+
+  document.querySelectorAll('#tweaks .tw-opt').forEach(b => {
+    b.addEventListener('click', () => setTweak(b.dataset.tw, b.dataset.val));
+  });
+
+  // Apply defaults
+  applyVariant(TWEAK_DEFAULTS.variant);
+  applyAccent(TWEAK_DEFAULTS.accent);
+
+  // Tweaks wiring
+  window.addEventListener('message', (e) => {
+    const d = e.data || {};
+    if (d.type === '__activate_edit_mode') document.getElementById('tweaks').classList.add('show');
+    if (d.type === '__deactivate_edit_mode') document.getElementById('tweaks').classList.remove('show');
+  });
+  try { window.parent.postMessage({type:'__edit_mode_available'}, '*'); } catch(e) {}
+</script>
+</body>
+</html>

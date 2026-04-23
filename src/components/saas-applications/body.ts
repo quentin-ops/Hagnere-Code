@@ -1,0 +1,961 @@
+export const bodyHtml = `
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="brand">
+      <div class="brand-mark">HC</div>
+      <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
+    </a>
+    <div class="nav-links">
+      <div class="nav-item">
+        <a href="/#services" class="nav-trigger active">Services
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
+        <div class="nav-dd">
+          <div class="dd-col">
+            <h6>Construire</h6>
+            <a class="dd-link" href="/services/saas-applications-metier">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">SaaS &amp; applis métier</div><div class="dd-sub">Plateformes B2B, espaces clients.</div></div>
+            </a>
+            <a class="dd-link" href="/services/outils-internes-sur-mesure">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 4 4 5-5"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Outils internes sur mesure</div><div class="dd-sub">Back-office, workflows, automatisations.</div></div>
+            </a>
+            <a class="dd-link" href="/services/sites-vitrines">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Sites vitrines &amp; landings</div><div class="dd-sub">Sites qui convertissent, pas qui informent.</div></div>
+            </a>
+            <a class="dd-link" href="/services/ecommerce">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">E-commerce</div><div class="dd-sub">Boutiques haut de gamme, Shopify Plus.</div></div>
+            </a>
+          </div>
+          <div class="dd-col">
+            <h6>Faire grandir</h6>
+            <a class="dd-link" href="/services/referencement-google">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">SEO &amp; référencement</div><div class="dd-sub">Contenu, tech, netlinking.</div></div>
+            </a>
+            <a class="dd-link" href="/services/publicite-en-ligne">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Publicité en ligne</div><div class="dd-sub">Google Ads, Meta, LinkedIn.</div></div>
+            </a>
+            <a class="dd-link" href="/services/contenu-video">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Contenu &amp; vidéo</div><div class="dd-sub">Studio interne, motion, YouTube.</div></div>
+            </a>
+          </div>
+          <div class="dd-col">
+            <h6>Protéger &amp; opérer</h6>
+            <a class="dd-link" href="/services/maintenance-evolution">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Maintenance &amp; évolution</div><div class="dd-sub">Forfait mensuel, support prioritaire.</div></div>
+            </a>
+            <a class="dd-link" href="/services/securite-rgpd">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Sécurité &amp; RGPD</div><div class="dd-sub">Audit, conformité, hébergement FR.</div></div>
+            </a>
+            <a class="dd-link" href="/services/audit-technique">
+              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
+              <div class="dd-meta"><div class="dd-title">Audit technique</div><div class="dd-sub">Code review, perf, sécurité.</div></div>
+            </a>
+          </div>
+          <div class="dd-cta">
+            <div class="dd-cta-body">
+              <div class="tag">Pas sûr ?</div>
+              <div class="dd-cta-title">On vous aide à choisir le bon service.</div>
+              <div class="dd-cta-sub">30 min avec un associé, gratuit, pour cadrer votre besoin.</div>
+              <a href="/#contact" class="btn btn-accent">Réserver un créneau →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/methode">Méthode</a>
+      <a href="/#realisations">Réalisations</a>
+      <a href="/equipe">Équipe</a>
+      <a href="/tarifs">Tarifs</a>
+    </div>
+    <div class="nav-cta">
+      <a href="/#contact" class="btn btn-ghost">Prendre RDV</a>
+      <a href="/#contact" class="btn btn-primary">Démarrer un projet
+        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="wrap">
+  <div class="crumb">
+    <a href="/">Accueil</a>
+    <span class="sep">/</span>
+    <a href="/#services">Services</a>
+    <span class="sep">/</span>
+    <span style="color:var(--ink-3)">SaaS &amp; applications métier</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="shero">
+  <div class="shero-grid"></div>
+  <div class="shero-radial"></div>
+  <div class="wrap shero-inner">
+    <div>
+      <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Développement SaaS sur mesure</span></div>
+      <h1>Le <span class="accent">SaaS sur mesure</span><br>qui fait vraiment<br>votre métier.</h1>
+      <div class="shero-tagline">
+        <span>⚡ Accéléré par l'IA</span>
+        <span class="sep"></span>
+        <span>🧑‍💻 Codé par des seniors</span>
+        <span class="sep"></span>
+        <span>💶 Livré en forfait fixe</span>
+      </div>
+      <p class="shero-sub">
+        Vous avez une idée de plateforme, un <b>outil interne</b> qui tourne sur Excel depuis trop longtemps,
+        ou un <b>besoin métier</b> qu'aucun logiciel du marché ne couvre vraiment. On construit la solution —
+        <b>web, mobile iOS/Android, back-office, IA native</b>. De la première maquette jusqu'au premier client payant,
+        <b>code, design, hébergement et support sous un seul toit</b>.
+      </p>
+      <div class="shero-cta">
+        <a href="#contact" class="btn btn-accent btn-lg">
+          Cadrer mon projet <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="btn btn-ghost btn-lg">Discovery Sprint · 2j · 1 500 €</a>
+      </div>
+      <div class="shero-meta">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> MVP livré en 3 à 6 semaines</span>
+        <span class="sep"></span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Forfait fixe · zéro avenant</span>
+        <span class="sep"></span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Repo Git chez vous J+1</span>
+      </div>
+    </div>
+
+    <!-- VISUAL: stacked product mock -->
+    <div class="shero-visual">
+      <div class="mock-window mw-main">
+        <div class="win-chrome">
+          <div class="win-dots"><span></span><span></span><span></span></div>
+          <div class="win-url">app.votre-entreprise.fr / dashboard</div>
+        </div>
+        <svg width="100%" viewBox="0 0 540 360" style="display:block">
+          <rect width="540" height="360" fill="#fff"/>
+          <!-- sidebar -->
+          <rect x="0" y="0" width="140" height="360" fill="#fafafa"/>
+          <rect x="0" y="0" width="140" height="360" fill="none" stroke="#eee"/>
+          <rect x="16" y="20" width="60" height="10" rx="3" fill="#0A0A0A"/>
+          <rect x="16" y="56" width="108" height="26" rx="5" fill="#EDE9FE"/>
+          <rect x="26" y="67" width="70" height="4" rx="2" fill="#6D28D9"/>
+          <rect x="16" y="90" width="108" height="22" rx="5"/>
+          <rect x="26" y="100" width="60" height="4" rx="2" fill="#a3a3a3"/>
+          <rect x="16" y="118" width="108" height="22" rx="5"/>
+          <rect x="26" y="128" width="72" height="4" rx="2" fill="#a3a3a3"/>
+          <rect x="16" y="146" width="108" height="22" rx="5"/>
+          <rect x="26" y="156" width="54" height="4" rx="2" fill="#a3a3a3"/>
+          <rect x="16" y="174" width="108" height="22" rx="5"/>
+          <rect x="26" y="184" width="64" height="4" rx="2" fill="#a3a3a3"/>
+
+          <!-- header -->
+          <text x="164" y="40" font-family="Geist" font-weight="700" font-size="18" fill="#0A0A0A">Vue d'ensemble</text>
+          <text x="164" y="58" font-family="Geist Mono" font-size="9" fill="#737373">aperçu — données de démo</text>
+
+          <!-- Stat cards -->
+          <rect x="164" y="80" width="110" height="72" rx="8" fill="#F5F5F5"/>
+          <text x="178" y="102" font-family="Geist Mono" font-size="8" fill="#737373">PIPELINE</text>
+          <text x="178" y="132" font-family="Geist" font-weight="700" font-size="22" fill="#0A0A0A">184</text>
+          <text x="178" y="146" font-family="Geist Mono" font-size="9" fill="#6D28D9">+12 cette semaine</text>
+
+          <rect x="284" y="80" width="110" height="72" rx="8" fill="#EDE9FE"/>
+          <text x="298" y="102" font-family="Geist Mono" font-size="8" fill="#4C1D95">MRR</text>
+          <text x="298" y="132" font-family="Geist" font-weight="700" font-size="22" fill="#0A0A0A">42,1k€</text>
+          <text x="298" y="146" font-family="Geist Mono" font-size="9" fill="#6D28D9">+8,2%</text>
+
+          <rect x="404" y="80" width="120" height="72" rx="8" fill="#0A0A0A"/>
+          <text x="418" y="102" font-family="Geist Mono" font-size="8" fill="#737373">AI TASKS</text>
+          <text x="418" y="132" font-family="Geist" font-weight="700" font-size="18" fill="#fff">1 240 / jour</text>
+          <text x="418" y="146" font-family="Geist Mono" font-size="9" fill="#6D28D9">98,4% OK</text>
+
+          <!-- Chart -->
+          <rect x="164" y="166" width="360" height="172" rx="8" fill="#fff" stroke="#E5E5E5"/>
+          <text x="180" y="188" font-family="Geist Mono" font-size="9" fill="#737373">ÉVOLUTION · 30 JOURS</text>
+          <g transform="translate(180 204)">
+            <path d="M0 110 L30 95 L60 100 L90 80 L120 85 L150 60 L180 68 L210 42 L240 48 L270 30 L300 35 L330 18" stroke="#6D28D9" stroke-width="2" fill="none"/>
+            <path d="M0 110 L30 95 L60 100 L90 80 L120 85 L150 60 L180 68 L210 42 L240 48 L270 30 L300 35 L330 18 L330 120 L0 120 Z" fill="#6D28D9" opacity="0.08"/>
+            <circle cx="330" cy="18" r="4" fill="#6D28D9"/>
+            <circle cx="330" cy="18" r="9" fill="none" stroke="#6D28D9" stroke-width="1" opacity="0.3"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="mock-window mw-side">
+        <div class="win-chrome" style="background:#0d0d0d;border-color:rgba(255,255,255,0.08)">
+          <div class="win-dots"><span></span><span></span><span></span></div>
+          <div class="win-url" style="color:rgba(255,255,255,0.5)">terminal · laravel.local</div>
+        </div>
+        <div style="padding:16px 18px;background:#0A0A0A;color:#E5E5E5;font-family:'Geist Mono';font-size:11px;line-height:1.85">
+<span style="color:#6D28D9">$</span> php artisan make:model Invoice <span style="color:#737373">-mfc</span><br>
+<span style="color:#a3e47f">✓ Invoice model, migration, factory, controller</span><br>
+<span style="color:#6D28D9">$</span> php artisan db:seed<br>
+<span style="color:#a3e47f">✓ seeded in 1,24s · 420 records</span><br>
+<span style="color:#6D28D9">$</span> php artisan test <span style="color:#737373">--parallel</span><br>
+<span style="color:#a3e47f">✓ 64 tests OK</span> <span style="color:#737373">(3,1s)</span><br>
+<span style="color:#6D28D9">$</span> <span style="background:rgba(109,40,217,0.15);padding:1px 2px">_</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section class="whatweb">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="left">
+        <div class="eyebrow">— Ce qu'on construit</div>
+        <h2>Un SaaS, ce n'est pas<br>juste une page web avec un login.</h2>
+      </div>
+      <div class="right">
+        On construit des plateformes métier qui tournent en production, avec utilisateurs, facturation,
+        permissions, emails transactionnels et tout ce qui fait qu'un logiciel existe vraiment.
+      </div>
+    </div>
+
+    <div class="use-grid">
+      <div class="uc reveal">
+        <div class="uc-num">/ 01</div>
+        <h3>Plateformes B2B</h3>
+        <p>Votre logiciel vendu en abonnement à d'autres entreprises. Multi-utilisateurs, plans tarifaires, facturation Stripe, onboarding guidé, gestion des droits.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Multi-tenant</span>
+          <span class="uc-tag">Stripe / GoCardless</span>
+          <span class="uc-tag">RBAC</span>
+        </div>
+      </div>
+
+      <div class="uc reveal reveal-d-1">
+        <div class="uc-num">/ 02</div>
+        <h3>Espaces clients</h3>
+        <p>Un portail sécurisé où vos clients consultent leurs documents, suivent leurs dossiers, signent des contrats, règlent leurs factures et échangent avec votre équipe.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Documents</span>
+          <span class="uc-tag">Signature électronique</span>
+          <span class="uc-tag">Paiement</span>
+        </div>
+      </div>
+
+      <div class="uc reveal reveal-d-2">
+        <div class="uc-num">/ 03</div>
+        <h3>Applications métier spécifiques</h3>
+        <p>Le logiciel qui n'existe pas sur le marché parce que votre métier est trop spécifique. Comptabilité sectorielle, gestion de stock particulière, workflows réglementés.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Métier réglementé</span>
+          <span class="uc-tag">Calculs complexes</span>
+          <span class="uc-tag">Exports fiscaux</span>
+        </div>
+      </div>
+
+      <div class="uc reveal">
+        <div class="uc-num">/ 04</div>
+        <h3>Marketplaces &amp; plateformes multi-acteurs</h3>
+        <p>Deux catégories d'utilisateurs (offre / demande), paiement entre tiers via Stripe Connect, gestion des litiges, mise en relation, recherche avancée.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Stripe Connect</span>
+          <span class="uc-tag">Matching</span>
+          <span class="uc-tag">Messagerie</span>
+        </div>
+      </div>
+
+      <div class="uc reveal reveal-d-1">
+        <div class="uc-num">/ 05</div>
+        <h3>SaaS boostés par l'IA</h3>
+        <p>Extraction de données depuis des documents, assistants conversationnels, génération de contenu, analyses prédictives. L'IA au cœur du produit, pas en feature marketing.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Claude</span>
+          <span class="uc-tag">GPT-4</span>
+          <span class="uc-tag">OCR / RAG</span>
+        </div>
+      </div>
+
+      <div class="uc reveal reveal-d-2">
+        <div class="uc-num">/ 06</div>
+        <h3>Refontes techniques</h3>
+        <p>Votre SaaS existe, mais il rame, il plante, il coûte trop cher en infra, ou l'ancien développeur est parti. On reprend le code, on stabilise, on modernise.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Audit</span>
+          <span class="uc-tag">Migration</span>
+          <span class="uc-tag">Reprise</span>
+        </div>
+      </div>
+
+      <div class="uc reveal">
+        <div class="uc-num">/ 07</div>
+        <h3>Applications mobiles iOS &amp; Android</h3>
+        <p>Quand le navigateur ne suffit plus : notifications push, appareil photo, géoloc, mode hors-ligne, signature tactile. Une seule codebase React Native, deux stores, même UX que le web.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">React Native · Expo</span>
+          <span class="uc-tag">iOS &amp; Android</span>
+          <span class="uc-tag">Push · Offline · Caméra</span>
+        </div>
+      </div>
+
+      <div class="uc reveal reveal-d-1">
+        <div class="uc-num">/ 08</div>
+        <h3>Dashboards &amp; front-ends React/Next</h3>
+        <p>Pour les interfaces ultra-interactives qui dépassent ce que Livewire peut faire : apps de trading, éditeurs temps-réel, tableaux de bord collaboratifs, canvases. Next.js sur Vercel, API Laravel derrière.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">React 19</span>
+          <span class="uc-tag">Next.js 15</span>
+          <span class="uc-tag">Temps réel</span>
+        </div>
+      </div>
+
+      <div class="uc reveal reveal-d-2">
+        <div class="uc-num">/ 09</div>
+        <h3>IA agentique &amp; automatisations</h3>
+        <p>Agents Claude qui lisent vos documents, écrivent vos relances, classent vos emails, enrichissent vos CRM. Pas un chatbot en façade — des workflows IA qui bossent en arrière-plan 24/7.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Claude Agents</span>
+          <span class="uc-tag">MCP · Tools</span>
+          <span class="uc-tag">Human-in-the-loop</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES (dark) -->
+<section class="caps">
+  <div class="caps-grid-bg"></div>
+  <div class="wrap inner">
+    <div class="reveal">
+      <div class="eyebrow on-dark">— Ce qu'on sait faire</div>
+      <h2 style="margin-top:14px">20 briques techniques.<br>Combinables à volonté.</h2>
+      <p class="caps-sub">
+        Pas de magie : un bon SaaS, c'est l'assemblage de briques qu'on maîtrise
+        individuellement depuis des années. Voici les 20 blocs qu'on ne (re)code plus —
+        on les branche, on les adapte, on livre un produit stable dès la première démo.
+      </p>
+    </div>
+
+    <div class="caps-grid">
+      <div class="cap reveal">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21"/></svg></div>
+        <h4>Authentification &amp; SSO</h4>
+        <p>Email/password, Google, Microsoft, SSO SAML entreprise, 2FA.</p>
+      </div>
+      <div class="cap reveal reveal-d-1">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
+        <h4>Facturation abonnements</h4>
+        <p>Plans mensuels/annuels, essai gratuit, up/downgrade proraté, Stripe.</p>
+      </div>
+      <div class="cap reveal reveal-d-2">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <h4>Permissions granulaires</h4>
+        <p>Équipes, rôles, droits par ressource, audit log.</p>
+      </div>
+      <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div>
+        <h4>Emails transactionnels</h4>
+        <p>Postmark / Resend, templates versionnés, analytics d'ouverture.</p>
+      </div>
+
+      <div class="cap reveal">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+        <h4>Gestion documentaire</h4>
+        <p>Upload, versioning, stockage S3, prévisualisation, signature.</p>
+      </div>
+      <div class="cap reveal reveal-d-1">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
+        <h4>Agents IA</h4>
+        <p>Extraction structurée, classification, résumés, RAG avec citations.</p>
+      </div>
+      <div class="cap reveal reveal-d-2">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h4>Messagerie interne</h4>
+        <p>Chat temps réel, commentaires contextuels, notifications push.</p>
+      </div>
+      <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
+        <h4>Dashboards &amp; reporting</h4>
+        <p>KPI temps réel, exports CSV/Excel, rapports PDF automatiques.</p>
+      </div>
+
+      <div class="cap reveal">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></div>
+        <h4>API publique</h4>
+        <p>REST, OpenAPI, clés d'API, rate-limiting, webhooks.</p>
+      </div>
+      <div class="cap reveal reveal-d-1">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6 1.65 1.65 0 0010 3.09V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82v0a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+        <h4>Intégrations tierces</h4>
+        <p>Pennylane, Axonaut, HubSpot, Pipedrive, Slack, Teams, Zapier.</p>
+      </div>
+      <div class="cap reveal reveal-d-2">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h4>Sécurité &amp; RGPD</h4>
+        <p>Chiffrement at-rest, RGPD by-design, registre traitements, DPA.</p>
+      </div>
+      <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h4>Tâches planifiées</h4>
+        <p>Cron, rappels email, génération de rapports périodiques.</p>
+      </div>
+
+      <div class="cap reveal">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
+        <h4>Recherche avancée</h4>
+        <p>Full-text Meilisearch, filtres facettés, pertinence tunée.</p>
+      </div>
+      <div class="cap reveal reveal-d-1">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-6 0v4M5 9h14l-1 12H6z"/></svg></div>
+        <h4>Multi-boutiques</h4>
+        <p>White-label, sous-domaines, thèmes par client, branding dynamique.</p>
+      </div>
+      <div class="cap reveal reveal-d-2">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h4>Back-office admin</h4>
+        <p>Filament · impersonation, support utilisateur, stats de santé.</p>
+      </div>
+      <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 010-4h12v4M4 6v12a2 2 0 002 2h14v-4"/><circle cx="16" cy="14" r="2"/></svg></div>
+        <h4>Paiements &amp; abonnements</h4>
+        <p>Stripe, GoCardless, CB + SEPA, gestion des relances automatique.</p>
+      </div>
+
+      <div class="cap reveal">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <h4>Apps mobiles iOS &amp; Android</h4>
+        <p>React Native / Expo, push, caméra, offline-first, publication App Store &amp; Play Store.</p>
+      </div>
+      <div class="cap reveal reveal-d-1">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h4>Front-ends React / Next</h4>
+        <p>Interfaces temps-réel, éditeurs, canvases, dashboards interactifs. Déployés sur Vercel.</p>
+      </div>
+      <div class="cap reveal reveal-d-2">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+        <h4>Agents IA autonomes</h4>
+        <p>Claude agents via MCP, tool-calling typé, human-in-the-loop, exécution long-running.</p>
+      </div>
+      <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H4zM2 20h20"/><path d="M9 8l3 3 3-3"/></svg></div>
+        <h4>White-label &amp; multi-tenants</h4>
+        <p>Un code, N clients finaux, chacun avec son domaine, ses couleurs, ses utilisateurs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:0">
+      <div class="left">
+        <div class="eyebrow">— Notre process</div>
+        <h2>De l'idée au premier<br>utilisateur en 5 étapes.</h2>
+      </div>
+      <div class="right">
+        On ne disparaît pas trois mois pour revenir avec un gros livrable. Vous voyez le produit
+        grandir chaque semaine, avec un livrable démontrable à chaque sprint.
+      </div>
+    </div>
+
+    <div class="proc-grid reveal reveal-d-1">
+      <div class="proc-step">
+        <div class="proc-num">ÉTAPE 01</div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
+        <h4>Cadrage</h4>
+        <p>Workshop de 2 jours avec les décideurs. On définit le périmètre exact du MVP, les user stories, les écrans clés.</p>
+        <div class="proc-dur">1 SEMAINE</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">ÉTAPE 02</div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h4>Design</h4>
+        <p>Maquettes hautes-fidélité sur Figma, prototype cliquable, tests utilisateurs avant une seule ligne de code.</p>
+        <div class="proc-dur">1 SEMAINE</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">ÉTAPE 03</div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <h4>Développement</h4>
+        <p>Sprints d'une semaine. Démo live à chaque fin. Accès repo Git dès J+1. Vous voyez le code grandir en direct.</p>
+        <div class="proc-dur">3–6 SEMAINES</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">ÉTAPE 04</div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
+        <h4>QA &amp; conformité</h4>
+        <p>Tests automatisés, audit sécurité OWASP, revue RGPD, mise en conformité CGV, DPA, registre des traitements.</p>
+        <div class="proc-dur">3–5 JOURS</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">ÉTAPE 05</div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <h4>Mise en ligne</h4>
+        <p>Déploiement sur notre infra ou la vôtre. Formation de vos équipes. Transfert du code. Support mensuel optionnel.</p>
+        <div class="proc-dur">CONTINU</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="stack">
+  <div class="wrap">
+    <div class="stack-grid">
+      <div class="reveal">
+        <div class="eyebrow">— Notre stack</div>
+        <h2 style="margin-top:14px">Une stack choisie,<br>maîtrisée, opérée.</h2>
+        <p style="color:var(--mute);font-size:16px;margin-top:20px;max-width:480px">
+          On a fait Symfony, Rails, Node, Django. On est revenus sur Laravel parce qu'il livre
+          vite, propre, avec moins de bugs — sur plus de 20 projets en production, sans dette technique.
+          Pour le mobile et les interfaces ultra-réactives, on complète avec React, Next.js et React Native.
+        </p>
+
+        <div class="stack-list">
+          <div class="sl-row">
+            <div class="sl-cat">BACKEND</div>
+            <div class="sl-val">Laravel 13 · PHP 8.3</div>
+            <div class="sl-note">TYPED · TESTED</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">FRONTEND WEB</div>
+            <div class="sl-val">React · Next.js · Livewire · Inertia · Tailwind</div>
+            <div class="sl-note">SELON CAS</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">MOBILE</div>
+            <div class="sl-val">React Native · Expo · iOS &amp; Android</div>
+            <div class="sl-note">1 CODEBASE · 2 STORES</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">UI / BACK-OFFICE</div>
+            <div class="sl-val">Tailwind CSS · Filament · Flux UI</div>
+            <div class="sl-note">DESIGN SYSTEM</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">DATABASE</div>
+            <div class="sl-val">PostgreSQL · MySQL · Redis</div>
+            <div class="sl-note">SAUVEGARDES 15&nbsp;MIN</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">IA / LLM</div>
+            <div class="sl-val">Claude Sonnet 4.5 · GPT-4o · Embeddings · Prism</div>
+            <div class="sl-note">AGENTS TYPÉS</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">INFRA</div>
+            <div class="sl-val">Laravel Cloud · Scaleway · Vercel · AWS</div>
+            <div class="sl-note">DONNÉES EN FRANCE</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">OBSERVABILITÉ</div>
+            <div class="sl-val">Sentry · Pulse · Horizon</div>
+            <div class="sl-note">ALERTES 24/7</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack-visual reveal reveal-d-2">
+        <div class="stack-orbit">
+          <div class="orbit-ring"></div>
+          <div class="orbit-ring r2"></div>
+          <div class="orbit-center">
+            <div class="mark">HC<span class="dot">.</span></div>
+          </div>
+          <div class="orbit-node" style="top:2%;left:50%;transform:translateX(-50%)">
+            <span class="nd" style="background:#FF2D20"></span>Laravel
+          </div>
+          <div class="orbit-node" style="top:22%;right:-10px">
+            <span class="nd" style="background:#61DAFB"></span>React / Next
+          </div>
+          <div class="orbit-node" style="bottom:22%;right:-5px">
+            <span class="nd" style="background:#38BDF8"></span>Tailwind
+          </div>
+          <div class="orbit-node" style="bottom:2%;left:50%;transform:translateX(-50%)">
+            <span class="nd" style="background:#336791"></span>PostgreSQL
+          </div>
+          <div class="orbit-node" style="bottom:22%;left:-10px">
+            <span class="nd" style="background:#61DAFB"></span>React Native
+          </div>
+          <div class="orbit-node" style="top:22%;left:-20px">
+            <span class="nd" style="background:#0A0A0A"></span>Claude · GPT
+          </div>
+          <div class="orbit-node" style="top:50%;left:-14%;transform:translateY(-50%)">
+            <span class="nd" style="background:#635BFF"></span>Stripe
+          </div>
+          <div class="orbit-node" style="top:50%;right:-14%;transform:translateY(-50%)">
+            <span class="nd" style="background:#00B14F"></span>Postmark
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED CASES -->
+<section class="scases">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="left">
+        <div class="eyebrow">— Ils ont choisi ce service</div>
+        <h2>Des SaaS livrés,<br>en production, mesurables.</h2>
+      </div>
+      <div class="right">
+        <a href="/#realisations" class="btn btn-ghost">Toutes les réalisations →</a>
+      </div>
+    </div>
+
+    <div class="scase-grid">
+      <a class="scase reveal" href="/#realisations">
+        <div class="scase-shot">
+          <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#F5F5F5">
+            <rect width="600" height="380" fill="#F5F5F5"/>
+            <rect x="40" y="30" width="520" height="330" rx="10" fill="#fff" stroke="#E5E5E5"/>
+            <rect x="40" y="30" width="110" height="330" fill="#FAFAFA" stroke="#E5E5E5"/>
+            <text x="60" y="55" font-family="Geist" font-weight="700" font-size="13" fill="#0A0A0A">LMNP<tspan fill="#6D28D9">.AI</tspan></text>
+            <rect x="55" y="80" width="80" height="6" rx="2" fill="#0A0A0A"/>
+            <rect x="55" y="100" width="60" height="4" rx="2" fill="#d4d4d4"/>
+            <rect x="55" y="115" width="70" height="4" rx="2" fill="#d4d4d4"/>
+            <text x="175" y="60" font-family="Geist" font-weight="700" font-size="18" fill="#0A0A0A">Dashboard fiscal</text>
+            <rect x="175" y="100" width="110" height="70" rx="6" fill="#F5F5F5"/>
+            <text x="185" y="150" font-family="Geist" font-weight="700" font-size="22" fill="#0A0A0A">18 420€</text>
+            <rect x="295" y="100" width="110" height="70" rx="6" fill="#EDE9FE"/>
+            <text x="305" y="150" font-family="Geist" font-weight="700" font-size="22" fill="#0A0A0A">+4 210€</text>
+            <rect x="415" y="100" width="125" height="70" rx="6" fill="#0A0A0A"/>
+            <text x="425" y="150" font-family="Geist" font-weight="700" font-size="16" fill="#fff">Prête ✓</text>
+            <rect x="175" y="185" width="365" height="150" rx="6" fill="#fff" stroke="#E5E5E5"/>
+            <path d="M195 310 L235 290 L315 275 L395 260 L475 210 L515 215" stroke="#6D28D9" stroke-width="2.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="scase-body">
+          <div class="scase-meta"><span>SaaS B2C</span><span class="tag-stack">Laravel · Livewire</span><span>— en production</span></div>
+          <h3>LMNP.AI</h3>
+          <p>Comptabilité fiscale automatisée pour loueurs meublés. Extraction de factures et génération de liasse 2031 par IA.</p>
+          <div class="scase-metric">
+            <div class="scm"><div class="n">6 000<span class="s">+</span></div><div class="l">Clients payants</div></div>
+            <div class="scm"><div class="n">100<span class="s">%</span></div><div class="l">Growth organique</div></div>
+          </div>
+        </div>
+      </a>
+
+      <a class="scase reveal reveal-d-1" href="/#realisations">
+        <div class="scase-shot">
+          <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#0A0A0A">
+            <rect width="600" height="380" fill="#0A0A0A"/>
+            <text x="40" y="60" font-family="Geist" font-weight="700" font-size="16" fill="#fff">Comptabilité<tspan fill="#6D28D9"> AI</tspan></text>
+            <text x="40" y="80" font-family="Geist Mono" font-size="9" fill="#737373">bilan.2025.xlsx</text>
+            <g font-family="Geist Mono" font-size="10">
+              <rect x="40" y="100" width="520" height="22" fill="rgba(255,255,255,0.03)" rx="4"/>
+              <text x="52" y="115" fill="#737373">2025-03-14</text>
+              <text x="142" y="115" fill="#fff">HT Vente produit A</text>
+              <text x="330" y="115" fill="#fff">707000</text>
+              <text x="440" y="115" fill="#6D28D9">+ 14 800,00</text>
+              <rect x="40" y="128" width="520" height="22" fill="rgba(255,255,255,0.03)" rx="4"/>
+              <text x="52" y="143" fill="#737373">2025-03-14</text>
+              <text x="142" y="143" fill="#fff">TVA collectée 20%</text>
+              <text x="330" y="143" fill="#fff">445710</text>
+              <text x="440" y="143" fill="#6D28D9">+ 2 960,00</text>
+              <rect x="40" y="184" width="520" height="22" fill="rgba(109,40,217,0.1)" stroke="#6D28D9" stroke-width="0.5" rx="4"/>
+              <text x="52" y="199" fill="#6D28D9">AI-SUGG</text>
+              <text x="142" y="199" fill="#fff">Détection doublon avec écriture #1042</text>
+            </g>
+            <rect x="40" y="232" width="520" height="108" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)"/>
+            <text x="54" y="254" font-family="Geist Mono" font-size="9" fill="#6D28D9">◆ BILAN AI · génération en cours</text>
+            <rect x="54" y="268" width="360" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
+            <rect x="54" y="268" width="280" height="4" rx="2" fill="#6D28D9"/>
+          </svg>
+        </div>
+        <div class="scase-body">
+          <div class="scase-meta"><span>SaaS B2B</span><span class="tag-stack">Laravel · Inertia</span><span>— levée en cours</span></div>
+          <h3>Comptabilité AI</h3>
+          <p>Comptabilité en partie double pour PME avec bilan automatisé par IA. Positionnement Blue Ocean.</p>
+          <div class="scase-metric">
+            <div class="scm"><div class="n">0<span class="s">→1</span></div><div class="l">Du MVP à la levée en 5 mois</div></div>
+            <div class="scm"><div class="n">4</div><div class="l">Investisseurs confirmés</div></div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="tarifs">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:0">
+      <div class="left">
+        <div class="eyebrow">— Forfaits</div>
+        <h2>Trois formats, un prix fixe.<br>Jamais de surprise.</h2>
+      </div>
+      <div class="right">
+        On vend au forfait, pas au temps passé. Vous savez exactement ce que vous payez
+        et ce que vous recevez avant de signer.
+      </div>
+    </div>
+
+    <div class="price-grid">
+      <div class="plan reveal">
+        <div class="plan-tag">MVP COURT</div>
+        <h4>Essentiel</h4>
+        <div class="plan-sub">Un SaaS fonctionnel avec les 3–5 features qui comptent, prêt à montrer à des premiers clients.</div>
+        <div class="plan-price">
+          <span class="amount">15–30 k€</span>
+          <span class="per">forfait TTC</span>
+        </div>
+        <div class="plan-hr"></div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>3–5 écrans clés + back-office</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Auth, facturation Stripe, emails</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 6 mois inclus</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison en 3–4 semaines</li>
+        </ul>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
+      </div>
+
+      <div class="plan featured reveal reveal-d-1">
+        <div class="plan-badge">LE PLUS CHOISI</div>
+        <div class="plan-tag">MVP COMPLET</div>
+        <h4>Standard</h4>
+        <div class="plan-sub">Un SaaS prêt à monter en charge : multi-utilisateurs, permissions, dashboards, intégrations tierces. App mobile en option.</div>
+        <div class="plan-price">
+          <span class="amount">30–60 k€</span>
+          <span class="per">forfait TTC</span>
+        </div>
+        <div class="plan-hr"></div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>10–15 écrans web + back-office riche</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design system Figma complet</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>API publique + webhooks</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1–2 agents IA (extraction, RAG)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Conformité RGPD clé en main</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>App mobile iOS/Android en option (+10–20 k€)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison en 5–6 semaines</li>
+        </ul>
+        <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
+      </div>
+
+      <div class="plan reveal reveal-d-2">
+        <div class="plan-tag">CO-BUILD</div>
+        <h4>Partenariat</h4>
+        <div class="plan-sub">On construit avec vous dans la durée. Build produit, growth, support. Engagement sur résultats.</div>
+        <div class="plan-price">
+          <span class="amount">Sur-mesure</span>
+          <span class="per">à partir de 120 k€</span>
+        </div>
+        <div class="plan-hr"></div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée 3–5 personnes</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Product + design + dev + growth</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO + ads + contenus inclus</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intéressement possible (equity)</li>
+        </ul>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parlons-en</a></div>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:40px;color:var(--mute);font-size:14px">
+      Tous les forfaits incluent : <b style="color:var(--ink)">propriété complète du code · repo Git chez vous · formation de vos équipes · 30 jours de garantie après livraison</b>
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="faq-intro reveal">
+        <div class="eyebrow">— Questions fréquentes</div>
+        <h2 style="margin-top:14px">Vous avez<br>des questions.</h2>
+        <p>Les plus fréquentes en phase commerciale, traitées directement.</p>
+      </div>
+
+      <div class="faq-list reveal reveal-d-1">
+        <div class="faq-item open">
+          <div class="faq-q">
+            Combien de temps pour livrer un SaaS ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Entre <b>3 et 6 semaines</b> pour un MVP production-ready, selon la complexité. Pour un périmètre plus large
+            (10–15 écrans, permissions complexes, intégrations multiples), comptez 6 à 10 semaines. On fixe les dates
+            avec vous au cadrage et on les tient : tous nos forfaits ont une clause de pénalité de retard.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            C'est quoi le Discovery Sprint à 1 500 € ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Un format d'entrée <b>peu engageant</b> pour valider qu'on est la bonne équipe. <b>2 jours</b>,
+            <b>1 500 € TTC</b>. On challenge votre besoin, on défriche les 3 à 5 écrans clés,
+            on sort un <b>prototype Figma cliquable</b> et un <b>cadrage technique chiffré</b>. Si on part
+            ensemble derrière, les 1 500 € sont <b>déduits du forfait final</b>. Si on ne part pas, vous repartez avec
+            un livrable utilisable par une autre équipe.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Est-ce qu'on est propriétaire du code ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            <b>Oui, intégralement</b>. Le repo Git est chez vous dès J+1. Vous pouvez à tout moment le récupérer
+            et le faire travailler par une autre équipe. On ne fait pas de lock-in technique, on ne vous facture pas
+            de royalties. Vous nous payez pour construire un actif qui vous appartient.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Vous faites du low-code / no-code ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Non. On écrit du <b>vrai code Laravel</b>, testé, typé, versionné. Le low-code est très bien pour prototyper
+            ou pour des automatisations internes, mais au-delà de 10 utilisateurs payants, ça devient un
+            piège technique et économique. On construit des bases qui tiendront 10 ans.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Que se passe-t-il après la livraison ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Trois options, au choix. <b>(1)</b> Vous reprenez le code et votre équipe technique prend le relais.
+            <b>(2)</b> Vous prenez un forfait de maintenance mensuel chez nous (bug fixes, petites évos, support).
+            <b>(3)</b> On continue à construire avec vous en mode co-build long terme. Dans tous les cas, 30 jours
+            de garantie sur les bugs critiques sont inclus.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Vous reprenez un projet existant mal fichu ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Oui, après un <b>audit technique payant</b> (1 500 €, déduits du devis si mission). On regarde le code,
+            la dette technique, la faisabilité de reprise. Dans 70% des cas, on reprend. Dans 30%, on recommande
+            une réécriture parce que le coût de reprise dépasse celui d'un nouveau build.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Nos données sont-elles hébergées en France ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Par défaut <b>oui</b> — Scaleway Paris ou OVH Roubaix. Pour les clients qui préfèrent un hébergement
+            global (Laravel Cloud, AWS), on peut configurer. Les données sont chiffrées at-rest et in-transit,
+            avec sauvegardes toutes les 15 minutes.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Vous faites aussi du mobile iOS / Android ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            <b>Oui.</b> On utilise <b>React Native + Expo</b> : une seule codebase, deux stores (App Store + Play Store),
+            même API que le web. Idéal quand il faut <b>du push, de la caméra, du GPS, du hors-ligne ou de la signature tactile</b>.
+            Compter +10 à 20 k€ sur le forfait SaaS pour une app mobile compagnon bien finie, publiée sur les stores avec vos comptes.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            React, Next.js, Laravel… qu'est-ce qui détermine la stack ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Le cas d'usage, pas la mode. <b>Laravel 13 + Livewire</b> pour 80 % des SaaS B2B (on livre 2× plus vite qu'en
+            SPA pure). <b>Next.js / React</b> pour les interfaces temps-réel, éditeurs, apps très interactives ou pages publiques
+            SEO-critiques. <b>React Native</b> pour le mobile. On choisit après le cadrage, pas avant.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="scta" id="contact">
+  <div class="scta-bg"></div>
+  <div class="wrap inner">
+    <div class="eyebrow on-dark">— Prochaine étape</div>
+    <h2 style="margin-top:14px">Parlons de votre SaaS.<br><span class="accent">30 minutes suffisent.</span></h2>
+    <p>Un call de cadrage gratuit avec un de nos seniors. On vous dit honnêtement si on est la bonne agence pour vous. Si on ne l'est pas, on vous oriente ailleurs.</p>
+    <div class="scta-cta">
+      <a href="#" class="btn btn-accent btn-lg">
+        📅 &nbsp;Réserver 30 min sur Calendly
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="mailto:hello@hagnere-code.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
+        Envoyer un email →
+      </a>
+    </div>
+    <div class="scta-meta">RÉPONSE SOUS 24H OUVRÉES · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="/" class="brand" style="margin-bottom:16px">
+          <div class="brand-mark">HC</div>
+          <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
+        </a>
+        <p>Agence de développement SaaS AI-native basée à Chambéry. Dev, design, SEO, ads, vidéo intégrée.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>SERVICES</h5>
+          <a href="/services/saas-applications-metier">SaaS &amp; applications métier</a>
+          <a href="/services/outils-internes-sur-mesure">Outils internes</a>
+          <a href="/services/sites-vitrines">Sites vitrines</a>
+          <a href="/services/referencement-google">SEO</a>
+          <a href="/services/publicite-en-ligne">Publicité</a>
+        </div>
+        <div class="foot-col">
+          <h5>STUDIO</h5>
+          <a href="/methode">Méthode</a>
+          <a href="/#realisations">Réalisations</a>
+          <a href="/equipe">Équipe</a>
+          <a href="/tarifs">Tarifs</a>
+          <a href="/#blog">Blog</a>
+        </div>
+        <div class="foot-col">
+          <h5>CONTACT</h5>
+          <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">YouTube</a>
+        </div>
+        <div class="foot-col">
+          <h5>LÉGAL</h5>
+          <a href="#">CGV</a>
+          <a href="#">Mentions légales</a>
+          <a href="#">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
+      <div>BUILT WITH LARAVEL + CLAUDE CODE</div>
+    </div>
+  </div>
+</footer>
+
+`;

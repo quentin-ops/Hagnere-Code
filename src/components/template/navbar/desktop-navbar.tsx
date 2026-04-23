@@ -7,7 +7,7 @@ import {
   useScroll,
   motion,
   AnimatePresence,
-} from "framer-motion";
+} from "motion/react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import Link from "next/link";

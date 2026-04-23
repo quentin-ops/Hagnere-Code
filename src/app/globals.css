@@ -329,6 +329,52 @@
   box-shadow: 0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08);
 }
 
+/* Skip-to-content link — visible on keyboard focus only (a11y WCAG 2.4.1) */
+.skip-to-content {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 18px;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: top 0.15s ease-out;
+}
+.skip-to-content:focus,
+.skip-to-content:focus-visible {
+  top: 16px;
+  outline: 2px solid #ff6b2b;
+  outline-offset: 2px;
+}
+
+/* Global keyboard focus indicator (a11y WCAG 2.4.7) */
+:focus-visible {
+  outline: 2px solid var(--ring, #ff6b2b);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+[role="button"]:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 html {
   scroll-padding-top: 80px;
   scroll-behavior: smooth;

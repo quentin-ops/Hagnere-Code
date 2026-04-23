@@ -1,0 +1,369 @@
+/* ======================================================================
+   Site footer + "Parlons de votre projet" section.
+   Dark panel with grid bg (matches .fcta and .stats style), two-col grid.
+   ====================================================================== */
+
+.sf-contact {
+  position: relative;
+  background: var(--ink);
+  color: #fff;
+  padding: 120px 0 110px;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+}
+.sf-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 80% at 50% 40%, #000 20%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 40%, #000 20%, transparent 85%);
+  pointer-events: none;
+}
+.sf-contact-inner { position: relative; }
+
+.sf-contact-head {
+  max-width: 720px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+.sf-contact-head h2 {
+  color: #fff;
+  font-size: 52px;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-top: 18px;
+}
+.sf-contact-head h2 .sf-accent { color: var(--accent); }
+.sf-contact-head p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 17px;
+  margin-top: 20px;
+  line-height: 1.55;
+}
+.sf-contact-head p b { color: #fff; font-weight: 600; }
+
+/* --- Grid: Calendly left / Form right --- */
+.sf-contact-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.sf-left { display: flex; flex-direction: column; gap: 20px; }
+
+/* Calendly card */
+.sf-card {
+  background: linear-gradient(180deg, #171717, #0f0f0f);
+  border: 1px solid #262626;
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.sf-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(109, 40, 217, 0.18), transparent 60%);
+  pointer-events: none;
+}
+.sf-card > * { position: relative; }
+.sf-card-top { display: flex; gap: 14px; align-items: flex-start; }
+.sf-card-ic {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(109, 40, 217, 0.2);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.sf-card-kind {
+  font-family: var(--font-geist-mono);
+  font-size: 10.5px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.sf-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+.sf-card-body {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0;
+}
+.sf-card-cta { align-self: flex-start; }
+.sf-card-meta {
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.02em;
+}
+.sf-card-meta svg { color: #5ad27d; }
+
+/* Direct info block under the Calendly card */
+.sf-direct {
+  border: 1px solid #262626;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.sf-direct-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  font-size: 13.5px;
+}
+.sf-direct-k {
+  font-family: var(--font-geist-mono);
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.sf-direct-v {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+a.sf-direct-v:hover { color: var(--accent); }
+.sf-direct-addr { font-weight: 400; color: rgba(255, 255, 255, 0.8); line-height: 1.45; }
+
+/* Form card */
+.sf-form {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--ink);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.3);
+}
+.sf-form-head { margin-bottom: 6px; }
+.sf-form-head .sf-card-kind { color: var(--accent-ink); }
+.sf-form-head .sf-card-title { color: var(--ink); }
+
+.sf-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.sf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sf-field > span {
+  font-family: var(--font-geist-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.sf-field > span .sf-opt {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--mute);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+.sf-field > em {
+  font-style: normal;
+  font-size: 12px;
+  color: #991b1b;
+  margin-top: -2px;
+}
+.sf-field input,
+.sf-field select,
+.sf-field textarea {
+  font: inherit;
+  font-size: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+.sf-field textarea { resize: vertical; min-height: 80px; }
+.sf-field input:focus,
+.sf-field select:focus,
+.sf-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.12);
+}
+.sf-field input[aria-invalid="true"],
+.sf-field textarea[aria-invalid="true"] {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+.sf-field select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2.5'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.sf-honeypot { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
+.sf-submit { margin-top: 4px; width: 100%; justify-content: center; }
+
+.sf-alert {
+  margin-top: 4px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+.sf-alert-ok {
+  background: rgba(34, 197, 94, 0.08);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  color: #166534;
+}
+.sf-alert-err {
+  background: rgba(220, 38, 38, 0.06);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  color: #991b1b;
+}
+
+.sf-legal-note {
+  margin: 0;
+  padding-top: 4px;
+  font-size: 11.5px;
+  color: var(--mute);
+  line-height: 1.5;
+}
+
+/* Trust row */
+.sf-trust-row {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: var(--font-geist-mono);
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.02em;
+}
+.sf-trust-row .sep {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- Footer principal (columns + legal bottom) ---------- */
+.sf-footer {
+  padding: 60px 0 36px;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+}
+.sf-foot-top {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 60px;
+  margin-bottom: 48px;
+}
+.sf-foot-brand .brand { margin-bottom: 14px; }
+.sf-foot-brand p {
+  color: var(--mute);
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 14px 0 0;
+}
+.sf-foot-cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+.sf-foot-col h5 {
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 0 0 14px;
+  font-weight: 600;
+}
+.sf-foot-col a {
+  display: block;
+  color: var(--ink-3);
+  text-decoration: none;
+  font-size: 13.5px;
+  padding: 4px 0;
+  transition: color 0.15s;
+}
+.sf-foot-col a:hover { color: var(--ink); }
+.sf-foot-bot {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 12.5px;
+  color: var(--mute);
+  font-family: var(--font-geist-mono);
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .sf-contact-grid { grid-template-columns: 1fr; gap: 20px; }
+  .sf-foot-top { grid-template-columns: 1fr; gap: 40px; }
+  .sf-foot-cols { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+}
+@media (max-width: 768px) {
+  .sf-contact { padding: 80px 0 72px; }
+  .sf-contact-head { margin-bottom: 40px; }
+  .sf-contact-head h2 { font-size: 34px; }
+  .sf-contact-head p { font-size: 15px; }
+  .sf-card, .sf-form { padding: 24px; border-radius: 16px; }
+  .sf-direct-row { grid-template-columns: 80px 1fr; font-size: 13px; }
+  .sf-grid-2 { grid-template-columns: 1fr; gap: 14px; }
+  .sf-trust-row { font-size: 10.5px; gap: 10px; margin-top: 36px; }
+  .sf-trust-row .sep { display: none; }
+
+  .sf-footer { padding: 48px 0 28px; }
+  .sf-foot-cols { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .sf-foot-bot { flex-direction: column; gap: 8px; font-size: 11.5px; }
+}
+@media (max-width: 480px) {
+  .sf-contact-head h2 { font-size: 28px; }
+  .sf-foot-cols { grid-template-columns: 1fr; }
+}

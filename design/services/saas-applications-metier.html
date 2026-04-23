@@ -1,0 +1,1061 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>SaaS &amp; applications métier — Hagnéré Code</title>
+<template id="__bundler_thumbnail" data-bg-color="#0A0A0A">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#0A0A0A"/>
+    <g transform="translate(600 380)">
+      <rect x="-180" y="-110" width="360" height="220" rx="14" fill="none" stroke="#6D28D9" stroke-width="2" opacity="0.55"/>
+      <rect x="-150" y="-80" width="140" height="10" rx="2" fill="#6D28D9" opacity="0.9"/>
+      <rect x="-150" y="-58" width="300" height="6" rx="2" fill="#404040"/>
+      <rect x="-150" y="-42" width="240" height="6" rx="2" fill="#404040"/>
+      <rect x="-150" y="-20" width="90" height="60" rx="6" fill="#6D28D9" opacity="0.7"/>
+      <rect x="-50" y="-20" width="90" height="60" rx="6" fill="#262626" stroke="#404040"/>
+      <rect x="50" y="-20" width="90" height="60" rx="6" fill="#262626" stroke="#404040"/>
+      <rect x="-150" y="52" width="280" height="6" rx="2" fill="#404040"/>
+      <rect x="-150" y="70" width="180" height="6" rx="2" fill="#404040"/>
+      <text x="0" y="200" text-anchor="middle" fill="#FAFAFA" font-family="ui-sans-serif, system-ui, sans-serif" font-size="44" font-weight="600" letter-spacing="-1">SaaS &amp; applications métier</text>
+      <text x="0" y="236" text-anchor="middle" fill="#737373" font-family="ui-monospace, monospace" font-size="18" letter-spacing="4">HAGNÉRÉ CODE · CHAMBÉRY</text>
+    </g>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ink:#0A0A0A; --ink-2:#171717; --ink-3:#262626; --ink-4:#404040;
+    --mute:#737373; --line:#E5E5E5; --line-2:#EFEFEF;
+    --paper:#FFFFFF; --paper-2:#FAFAFA; --paper-3:#F5F5F5;
+    --accent:#6D28D9; --accent-ink:#4C1D95; --accent-soft:#EDE9FE;
+  }
+  *{box-sizing:border-box}
+  html,body{background:var(--paper);color:var(--ink)}
+  body{margin:0;font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;letter-spacing:-0.005em}
+  .mono{font-family:'Geist Mono',ui-monospace,monospace}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+  a{color:inherit}
+
+  h1,h2,h3,h4{font-family:'Geist';letter-spacing:-0.035em;font-weight:600;margin:0}
+  h1{font-size:72px;line-height:1;letter-spacing:-0.045em}
+  h2{font-size:44px;line-height:1.08;letter-spacing:-0.035em}
+  h3{font-size:22px;letter-spacing:-0.02em;font-weight:600;line-height:1.25}
+
+  /* NAV (simplified, same visuals) */
+  .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(255,255,255,0.75);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1280px;margin:0 auto;padding:0 40px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-0.02em;text-decoration:none;color:inherit}
+  .brand-mark{width:28px;height:28px;border-radius:6px;background:var(--ink);display:grid;place-items:center;color:#fff;font-family:'Geist Mono';font-weight:600;font-size:14px;position:relative}
+  .brand-mark::after{content:"";position:absolute;right:-3px;bottom:-3px;width:6px;height:6px;background:var(--accent)}
+  .brand-name{font-size:16px}.brand-name b{font-weight:600}.brand-name span{color:var(--mute);font-weight:400}
+  .nav-links{display:flex;gap:32px;font-size:14px;color:var(--ink-3)}
+  .nav-links a{text-decoration:none;transition:color 0.15s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.active{color:var(--ink);font-weight:500}
+  .nav-cta{display:flex;gap:8px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all 0.15s;white-space:nowrap}
+  .btn-primary{background:var(--ink);color:#fff}
+  .btn-primary:hover{background:var(--ink-2);transform:translateY(-1px)}
+  .btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 14px -4px rgba(109,40,217,0.5)}
+  .btn-accent:hover{background:var(--accent-ink);transform:translateY(-1px)}
+  .btn-ghost{color:var(--ink-3);border-color:var(--line);background:#fff}
+  .btn-ghost:hover{border-color:var(--ink-4);color:var(--ink)}
+  .btn-lg{padding:14px 22px;font-size:15px;border-radius:10px}
+  .btn .arrow{transition:transform 0.2s}
+  .btn:hover .arrow{transform:translateX(3px)}
+
+  .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--ink-3);background:#fff;font-family:'Geist Mono';font-weight:500}
+  .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(109,40,217,0.18)}
+  .eyebrow{font-family:'Geist Mono';font-size:12px;font-weight:500;color:var(--accent-ink);text-transform:uppercase;letter-spacing:0.08em}
+  .eyebrow.on-dark{color:var(--accent)}
+
+  /* Breadcrumb */
+  .crumb{padding:20px 0;font-family:'Geist Mono';font-size:12px;color:var(--mute);border-bottom:1px solid var(--line-2)}
+  .crumb a{color:inherit;text-decoration:none}
+  .crumb a:hover{color:var(--ink)}
+  .crumb .sep{margin:0 10px;color:var(--line)}
+
+  /* ============ HERO SERVICE ============ */
+  .shero{padding:72px 0 96px;position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+  .shero-radial{position:absolute;inset:-80px 0 0 0;background:radial-gradient(ellipse 60% 50% at 70% 20%,rgba(109,40,217,0.07),transparent 70%);pointer-events:none}
+  .shero-grid{position:absolute;inset:0;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px),linear-gradient(to bottom,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 85%);pointer-events:none}
+  .shero-inner{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center;position:relative}
+  .shero h1 .accent{color:var(--accent)}
+  .shero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:24px}
+  .shero-sub{margin-top:28px;font-size:19px;line-height:1.55;color:var(--ink-3);max-width:560px}
+  .shero-sub b{color:var(--ink);font-weight:600}
+  .shero-cta{margin-top:36px;display:flex;gap:12px;flex-wrap:wrap}
+  .shero-meta{margin-top:28px;display:flex;gap:20px;color:var(--mute);font-size:13px;align-items:center;flex-wrap:wrap}
+  .shero-meta .sep{width:4px;height:4px;background:var(--line);border-radius:50%}
+  .shero-meta svg{color:var(--accent);vertical-align:-2px;margin-right:4px}
+
+  /* Stacked mock product window in hero */
+  .shero-visual{position:relative;height:520px}
+  .mock-window{position:absolute;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 32px 64px -24px rgba(0,0,0,0.18),0 2px 6px rgba(0,0,0,0.04);overflow:hidden}
+  .mock-window .win-chrome{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fafafa;border-bottom:1px solid var(--line)}
+  .mock-window .win-dots{display:flex;gap:6px}
+  .mock-window .win-dots span{width:10px;height:10px;border-radius:50%;background:#e5e5e5}
+  .mock-window .win-url{flex:1;text-align:center;font-family:'Geist Mono';font-size:11px;color:var(--mute)}
+  .mw-main{width:540px;left:0;top:30px;z-index:3}
+  .mw-side{width:320px;right:0;top:280px;z-index:4}
+
+  /* ============ WHAT WE BUILD ============ */
+  .whatweb{padding:100px 0;border-bottom:1px solid var(--line)}
+  .section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:56px;gap:40px}
+  .section-head .left{max-width:640px}
+  .section-head h2{margin-top:14px}
+  .section-head .right{color:var(--mute);font-size:15px;max-width:360px;padding-bottom:6px}
+
+  .use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .uc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px;min-height:280px;display:flex;flex-direction:column;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s}
+  .uc:hover{transform:translateY(-2px);box-shadow:0 18px 30px -20px rgba(0,0,0,0.12);border-color:#d4d4d4}
+  .uc-num{font-family:'Geist Mono';font-size:11px;color:var(--mute);letter-spacing:0.06em}
+  .uc h3{margin:14px 0 10px}
+  .uc p{margin:0;color:var(--mute);font-size:14px;line-height:1.55}
+  .uc-tags{margin-top:auto;padding-top:20px;display:flex;gap:6px;flex-wrap:wrap}
+  .uc-tag{font-family:'Geist Mono';font-size:10px;padding:3px 8px;background:var(--paper-3);color:var(--ink-3);border-radius:4px;letter-spacing:0.02em}
+
+  /* ============ CAPABILITIES (dark) ============ */
+  .caps{padding:120px 0;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .caps-grid-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 90%);-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 40%,#000 30%,transparent 90%)}
+  .caps .inner{position:relative}
+  .caps h2{color:#fff;max-width:720px}
+  .caps-sub{color:rgba(255,255,255,0.65);max-width:640px;margin-top:20px;font-size:17px}
+  .caps-grid{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .cap{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:24px;transition:background 0.2s,border-color 0.2s}
+  .cap:hover{background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.15)}
+  .cap-icon{width:44px;height:44px;border-radius:10px;background:rgba(109,40,217,0.12);display:grid;place-items:center;color:var(--accent);margin-bottom:16px}
+  .cap h4{color:#fff;font-size:15px;margin-bottom:6px}
+  .cap p{margin:0;color:rgba(255,255,255,0.55);font-size:13px;line-height:1.5}
+
+  /* ============ PROCESS ============ */
+  .process{padding:120px 0;border-bottom:1px solid var(--line);background:var(--paper-2)}
+  .proc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:64px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+  .proc-step{padding:32px;border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .proc-step:last-child{border-right:none}
+  .proc-num{font-family:'Geist Mono';font-size:11px;color:var(--accent);letter-spacing:0.06em;margin-bottom:36px}
+  .proc-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-soft);display:grid;place-items:center;margin-bottom:20px}
+  .proc-step h4{font-size:16px;margin-bottom:8px}
+  .proc-step p{margin:0;color:var(--mute);font-size:13px;line-height:1.5}
+  .proc-dur{margin-top:auto;padding-top:24px;font-family:'Geist Mono';font-size:11px;color:var(--ink-3);letter-spacing:0.04em}
+
+  /* ============ STACK ============ */
+  .stack{padding:120px 0;border-bottom:1px solid var(--line)}
+  .stack-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center}
+  .stack-list{border-top:1px solid var(--line)}
+  .sl-row{display:grid;grid-template-columns:180px 1fr auto;gap:24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:center}
+  .sl-cat{font-family:'Geist Mono';font-size:11px;color:var(--mute);letter-spacing:0.06em}
+  .sl-val{font-size:15px;font-weight:500;color:var(--ink)}
+  .sl-note{font-size:12px;color:var(--mute);text-align:right;font-family:'Geist Mono'}
+  .stack-visual{position:relative;height:420px;display:grid;place-items:center}
+  .stack-orbit{position:relative;width:360px;height:360px}
+  .orbit-ring{position:absolute;inset:0;border:1px dashed var(--line);border-radius:50%}
+  .orbit-ring.r2{inset:40px;border-color:#f0f0f0}
+  .orbit-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100px;height:100px;border-radius:20px;background:var(--ink);color:#fff;display:grid;place-items:center;box-shadow:0 24px 48px -20px rgba(0,0,0,0.25)}
+  .orbit-center .mark{font-family:'Geist';font-weight:700;font-size:24px;letter-spacing:-0.02em}
+  .orbit-center .mark .dot{color:var(--accent)}
+  .orbit-node{position:absolute;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:8px;font-family:'Geist Mono';font-size:12px;font-weight:500;box-shadow:0 8px 16px -8px rgba(0,0,0,0.1)}
+  .orbit-node .nd{width:8px;height:8px;border-radius:50%}
+
+  /* ============ CASES ============ */
+  .scases{padding:120px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .scase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .scase{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:all 0.25s;cursor:pointer}
+  .scase:hover{transform:translateY(-3px);box-shadow:0 24px 40px -24px rgba(0,0,0,0.16);border-color:#d4d4d4}
+  .scase-shot{aspect-ratio:16/10;background:var(--paper-3);border-bottom:1px solid var(--line);overflow:hidden}
+  .scase-body{padding:26px;display:flex;flex-direction:column;gap:6px}
+  .scase-meta{display:flex;align-items:center;gap:10px;font-family:'Geist Mono';font-size:11px;color:var(--mute);letter-spacing:0.04em}
+  .scase-meta .tag-stack{padding:3px 8px;background:var(--paper-3);border-radius:4px;color:var(--ink-3)}
+  .scase h3{margin-top:10px;font-size:22px}
+  .scase p{color:var(--mute);font-size:14px;line-height:1.5;margin:0}
+  .scase-metric{margin-top:18px;display:flex;gap:32px}
+  .scm .n{font-size:24px;font-weight:600;letter-spacing:-0.03em;color:var(--ink)}
+  .scm .n .s{color:var(--accent)}
+  .scm .l{font-size:12px;color:var(--mute)}
+
+  /* ============ PRICING ============ */
+  .pricing{padding:120px 0;border-bottom:1px solid var(--line)}
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+  .plan{background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px;display:flex;flex-direction:column;position:relative}
+  .plan.featured{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .plan.featured .mute{color:rgba(255,255,255,0.55)}
+  .plan.featured h4{color:#fff}
+  .plan-tag{font-family:'Geist Mono';font-size:11px;color:var(--mute);letter-spacing:0.06em;text-transform:uppercase}
+  .plan.featured .plan-tag{color:var(--accent)}
+  .plan-badge{position:absolute;top:-10px;right:24px;background:var(--accent);color:#fff;font-family:'Geist Mono';font-size:10px;padding:4px 10px;border-radius:999px;letter-spacing:0.04em}
+  .plan h4{font-size:20px;margin-top:10px;margin-bottom:8px}
+  .plan-sub{font-size:14px;color:var(--mute);min-height:42px}
+  .plan.featured .plan-sub{color:rgba(255,255,255,0.6)}
+  .plan-price{margin-top:28px;display:flex;align-items:baseline;gap:8px}
+  .plan-price .amount{font-size:42px;font-weight:600;letter-spacing:-0.035em}
+  .plan-price .per{font-family:'Geist Mono';font-size:12px;color:var(--mute)}
+  .plan.featured .plan-price .per{color:rgba(255,255,255,0.5)}
+  .plan-hr{height:1px;background:var(--line);margin:24px 0}
+  .plan.featured .plan-hr{background:rgba(255,255,255,0.1)}
+  .plan-features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:14px;flex:1}
+  .plan-features li{display:flex;gap:10px;align-items:start;color:var(--ink-3)}
+  .plan.featured .plan-features li{color:rgba(255,255,255,0.85)}
+  .plan-features svg{color:var(--accent);flex-shrink:0;margin-top:3px}
+  .plan-cta{margin-top:28px}
+  .plan-cta .btn{width:100%;justify-content:center}
+
+  /* ============ FAQ ============ */
+  .faq{padding:120px 0;background:var(--paper-2);border-bottom:1px solid var(--line)}
+  .faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px}
+  .faq-intro h2{font-size:40px}
+  .faq-intro p{color:var(--mute);font-size:16px;margin-top:16px;max-width:340px}
+  .faq-list{border-top:1px solid var(--line)}
+  .faq-item{border-bottom:1px solid var(--line);padding:4px 0}
+  .faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;font-size:17px;font-weight:500;letter-spacing:-0.01em;gap:20px}
+  .faq-q:hover{color:var(--accent-ink)}
+  .faq-q .ic{width:24px;height:24px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;flex-shrink:0;transition:all 0.2s;color:var(--mute)}
+  .faq-item.open .faq-q .ic{background:var(--ink);border-color:var(--ink);color:#fff;transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s;color:var(--mute);font-size:15px;line-height:1.6}
+  .faq-item.open .faq-a{max-height:400px;padding-bottom:22px}
+  .faq-a b{color:var(--ink);font-weight:500}
+
+  /* ============ CTA ============ */
+  .scta{padding:140px 0;background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .scta-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 60% 80% at 50% 50%,#000 20%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 60% 80% at 50% 50%,#000 20%,transparent 80%)}
+  .scta .inner{position:relative;text-align:center;max-width:720px;margin:0 auto}
+  .scta h2{color:#fff;font-size:56px}
+  .scta h2 .accent{color:var(--accent)}
+  .scta p{color:rgba(255,255,255,0.7);font-size:17px;margin-top:20px}
+  .scta-cta{margin-top:40px;display:inline-flex;gap:12px}
+  .scta-meta{margin-top:28px;color:rgba(255,255,255,0.4);font-family:'Geist Mono';font-size:12px;letter-spacing:0.04em}
+
+  /* FOOTER */
+  footer{padding:60px 0 40px;background:#fff;border-top:1px solid var(--line)}
+  .foot-top{display:flex;justify-content:space-between;align-items:start;margin-bottom:48px;flex-wrap:wrap;gap:40px}
+  .foot-brand{max-width:320px}
+  .foot-brand p{color:var(--mute);font-size:14px;margin-top:12px}
+  .foot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:60px}
+  .foot-col h5{font-family:'Geist Mono';font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--mute);margin:0 0 16px}
+  .foot-col a{display:block;color:var(--ink-3);text-decoration:none;font-size:14px;padding:4px 0;transition:color 0.15s}
+  .foot-col a:hover{color:var(--ink)}
+  .foot-bot{padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:13px;color:var(--mute);font-family:'Geist Mono'}
+
+  /* Reveals */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity 0.6s ease,transform 0.6s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .reveal-d-1{transition-delay:0.08s}
+  .reveal-d-2{transition-delay:0.16s}
+  .reveal-d-3{transition-delay:0.24s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../Homepage.html" class="brand">
+      <div class="brand-mark">HC</div>
+      <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="../Homepage.html#services" class="active">Services</a>
+      <a href="../Homepage.html#methode">Méthode</a>
+      <a href="../Homepage.html#realisations">Réalisations</a>
+      <a href="../Homepage.html#equipe">Équipe</a>
+      <a href="../Homepage.html#tarifs">Tarifs</a>
+      <a href="../Homepage.html#blog">Blog</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost">Prendre RDV</a>
+      <a href="#contact" class="btn btn-primary">Démarrer un projet
+        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="wrap">
+  <div class="crumb">
+    <a href="../Homepage.html">Accueil</a>
+    <span class="sep">/</span>
+    <a href="../Homepage.html#services">Services</a>
+    <span class="sep">/</span>
+    <span style="color:var(--ink-3)">SaaS &amp; applications métier</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="shero">
+  <div class="shero-grid"></div>
+  <div class="shero-radial"></div>
+  <div class="wrap shero-inner">
+    <div>
+      <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Développement sur mesure</span></div>
+      <h1>Le <span class="accent">SaaS sur mesure</span><br>qui fait vraiment<br>votre métier.</h1>
+      <p class="shero-sub">
+        Vous avez une idée de plateforme, un <b>outil interne</b> qui tourne sur Excel depuis trop longtemps,
+        ou un <b>besoin métier</b> qu'aucun logiciel du marché ne couvre vraiment. On construit la solution.
+        De la première maquette jusqu'au premier client payant — <b>code, design, hébergement et support, sous un seul toit</b>.
+      </p>
+      <div class="shero-cta">
+        <a href="#contact" class="btn btn-accent btn-lg">
+          Cadrer mon projet <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#process" class="btn btn-ghost btn-lg">Voir comment on travaille</a>
+      </div>
+      <div class="shero-meta">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> MVP en 3 à 6 semaines</span>
+        <span class="sep"></span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Code que vous possédez</span>
+        <span class="sep"></span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Évolutif sans nous</span>
+      </div>
+    </div>
+
+    <!-- VISUAL: stacked product mock -->
+    <div class="shero-visual">
+      <div class="mock-window mw-main">
+        <div class="win-chrome">
+          <div class="win-dots"><span></span><span></span><span></span></div>
+          <div class="win-url">app.votre-entreprise.fr / dashboard</div>
+        </div>
+        <svg width="100%" viewBox="0 0 540 360" style="display:block">
+          <rect width="540" height="360" fill="#fff"/>
+          <!-- sidebar -->
+          <rect x="0" y="0" width="140" height="360" fill="#fafafa"/>
+          <rect x="0" y="0" width="140" height="360" fill="none" stroke="#eee"/>
+          <rect x="16" y="20" width="60" height="10" rx="3" fill="#0A0A0A"/>
+          <rect x="16" y="56" width="108" height="26" rx="5" fill="#EDE9FE"/>
+          <rect x="26" y="67" width="70" height="4" rx="2" fill="#6D28D9"/>
+          <rect x="16" y="90" width="108" height="22" rx="5"/>
+          <rect x="26" y="100" width="60" height="4" rx="2" fill="#a3a3a3"/>
+          <rect x="16" y="118" width="108" height="22" rx="5"/>
+          <rect x="26" y="128" width="72" height="4" rx="2" fill="#a3a3a3"/>
+          <rect x="16" y="146" width="108" height="22" rx="5"/>
+          <rect x="26" y="156" width="54" height="4" rx="2" fill="#a3a3a3"/>
+          <rect x="16" y="174" width="108" height="22" rx="5"/>
+          <rect x="26" y="184" width="64" height="4" rx="2" fill="#a3a3a3"/>
+
+          <!-- header -->
+          <text x="164" y="40" font-family="Geist" font-weight="700" font-size="18" fill="#0A0A0A">Vue d'ensemble</text>
+          <text x="164" y="58" font-family="Geist Mono" font-size="9" fill="#737373">avril 2026 · temps réel</text>
+
+          <!-- Stat cards -->
+          <rect x="164" y="80" width="110" height="72" rx="8" fill="#F5F5F5"/>
+          <text x="178" y="102" font-family="Geist Mono" font-size="8" fill="#737373">PIPELINE</text>
+          <text x="178" y="132" font-family="Geist" font-weight="700" font-size="22" fill="#0A0A0A">184</text>
+          <text x="178" y="146" font-family="Geist Mono" font-size="9" fill="#6D28D9">+12 cette semaine</text>
+
+          <rect x="284" y="80" width="110" height="72" rx="8" fill="#EDE9FE"/>
+          <text x="298" y="102" font-family="Geist Mono" font-size="8" fill="#4C1D95">MRR</text>
+          <text x="298" y="132" font-family="Geist" font-weight="700" font-size="22" fill="#0A0A0A">42,1k€</text>
+          <text x="298" y="146" font-family="Geist Mono" font-size="9" fill="#6D28D9">+8,2%</text>
+
+          <rect x="404" y="80" width="120" height="72" rx="8" fill="#0A0A0A"/>
+          <text x="418" y="102" font-family="Geist Mono" font-size="8" fill="#737373">AI TASKS</text>
+          <text x="418" y="132" font-family="Geist" font-weight="700" font-size="18" fill="#fff">1 240 / jour</text>
+          <text x="418" y="146" font-family="Geist Mono" font-size="9" fill="#6D28D9">98,4% OK</text>
+
+          <!-- Chart -->
+          <rect x="164" y="166" width="360" height="172" rx="8" fill="#fff" stroke="#E5E5E5"/>
+          <text x="180" y="188" font-family="Geist Mono" font-size="9" fill="#737373">ÉVOLUTION · 30 JOURS</text>
+          <g transform="translate(180 204)">
+            <path d="M0 110 L30 95 L60 100 L90 80 L120 85 L150 60 L180 68 L210 42 L240 48 L270 30 L300 35 L330 18" stroke="#6D28D9" stroke-width="2" fill="none"/>
+            <path d="M0 110 L30 95 L60 100 L90 80 L120 85 L150 60 L180 68 L210 42 L240 48 L270 30 L300 35 L330 18 L330 120 L0 120 Z" fill="#6D28D9" opacity="0.08"/>
+            <circle cx="330" cy="18" r="4" fill="#6D28D9"/>
+            <circle cx="330" cy="18" r="9" fill="none" stroke="#6D28D9" stroke-width="1" opacity="0.3"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="mock-window mw-side">
+        <div class="win-chrome" style="background:#0d0d0d;border-color:rgba(255,255,255,0.08)">
+          <div class="win-dots"><span></span><span></span><span></span></div>
+          <div class="win-url" style="color:rgba(255,255,255,0.5)">terminal · laravel.local</div>
+        </div>
+        <div style="padding:16px 18px;background:#0A0A0A;color:#E5E5E5;font-family:'Geist Mono';font-size:11px;line-height:1.85">
+<span style="color:#6D28D9">$</span> php artisan make:model Invoice <span style="color:#737373">-mfc</span><br>
+<span style="color:#a3e47f">✓ Invoice model, migration, factory, controller</span><br>
+<span style="color:#6D28D9">$</span> php artisan db:seed<br>
+<span style="color:#a3e47f">✓ seeded in 1,24s · 420 records</span><br>
+<span style="color:#6D28D9">$</span> php artisan test <span style="color:#737373">--parallel</span><br>
+<span style="color:#a3e47f">✓ 64 tests OK</span> <span style="color:#737373">(3,1s)</span><br>
+<span style="color:#6D28D9">$</span> <span style="background:rgba(109,40,217,0.15);padding:1px 2px">_</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section class="whatweb">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="left">
+        <div class="eyebrow">— Ce qu'on construit</div>
+        <h2>Un SaaS, ce n'est pas<br>juste une page web avec un login.</h2>
+      </div>
+      <div class="right">
+        On construit des plateformes métier qui tournent en production, avec utilisateurs, facturation,
+        permissions, emails transactionnels et tout ce qui fait qu'un logiciel existe vraiment.
+      </div>
+    </div>
+
+    <div class="use-grid">
+      <div class="uc reveal">
+        <div class="uc-num">/ 01</div>
+        <h3>Plateformes B2B</h3>
+        <p>Votre logiciel vendu en abonnement à d'autres entreprises. Multi-utilisateurs, plans tarifaires, facturation Stripe, onboarding guidé, gestion des droits.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Multi-tenant</span>
+          <span class="uc-tag">Stripe / GoCardless</span>
+          <span class="uc-tag">RBAC</span>
+        </div>
+      </div>
+
+      <div class="uc reveal reveal-d-1">
+        <div class="uc-num">/ 02</div>
+        <h3>Espaces clients</h3>
+        <p>Un portail sécurisé où vos clients consultent leurs documents, suivent leurs dossiers, signent des contrats, règlent leurs factures et échangent avec votre équipe.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Documents</span>
+          <span class="uc-tag">Signature électronique</span>
+          <span class="uc-tag">Paiement</span>
+        </div>
+      </div>
+
+      <div class="uc reveal reveal-d-2">
+        <div class="uc-num">/ 03</div>
+        <h3>Applications métier spécifiques</h3>
+        <p>Le logiciel qui n'existe pas sur le marché parce que votre métier est trop spécifique. Comptabilité sectorielle, gestion de stock particulière, workflows réglementés.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Métier réglementé</span>
+          <span class="uc-tag">Calculs complexes</span>
+          <span class="uc-tag">Exports fiscaux</span>
+        </div>
+      </div>
+
+      <div class="uc reveal">
+        <div class="uc-num">/ 04</div>
+        <h3>Marketplaces &amp; plateformes multi-acteurs</h3>
+        <p>Deux catégories d'utilisateurs (offre / demande), paiement entre tiers via Stripe Connect, gestion des litiges, mise en relation, recherche avancée.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Stripe Connect</span>
+          <span class="uc-tag">Matching</span>
+          <span class="uc-tag">Messagerie</span>
+        </div>
+      </div>
+
+      <div class="uc reveal reveal-d-1">
+        <div class="uc-num">/ 05</div>
+        <h3>SaaS boostés par l'IA</h3>
+        <p>Extraction de données depuis des documents, assistants conversationnels, génération de contenu, analyses prédictives. L'IA au cœur du produit, pas en feature marketing.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Claude</span>
+          <span class="uc-tag">GPT-4</span>
+          <span class="uc-tag">OCR / RAG</span>
+        </div>
+      </div>
+
+      <div class="uc reveal reveal-d-2">
+        <div class="uc-num">/ 06</div>
+        <h3>Refontes techniques</h3>
+        <p>Votre SaaS existe, mais il rame, il plante, il coûte trop cher en infra, ou l'ancien développeur est parti. On reprend le code, on stabilise, on modernise.</p>
+        <div class="uc-tags">
+          <span class="uc-tag">Audit</span>
+          <span class="uc-tag">Migration</span>
+          <span class="uc-tag">Reprise</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES (dark) -->
+<section class="caps">
+  <div class="caps-grid-bg"></div>
+  <div class="wrap inner">
+    <div class="reveal">
+      <div class="eyebrow on-dark">— Ce qu'on sait faire</div>
+      <h2 style="margin-top:14px">16 briques techniques.<br>Combinables à volonté.</h2>
+      <p class="caps-sub">
+        Pas de magie : un bon SaaS, c'est un assemblage de briques qu'on maîtrise individuellement.
+        Voici ce qu'on sait assembler sans écrire une ligne d'architecture depuis zéro.
+      </p>
+    </div>
+
+    <div class="caps-grid">
+      <div class="cap reveal">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21"/></svg></div>
+        <h4>Authentification &amp; SSO</h4>
+        <p>Email/password, Google, Microsoft, SSO SAML entreprise, 2FA.</p>
+      </div>
+      <div class="cap reveal reveal-d-1">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
+        <h4>Facturation abonnements</h4>
+        <p>Plans mensuels/annuels, essai gratuit, up/downgrade proraté, Stripe.</p>
+      </div>
+      <div class="cap reveal reveal-d-2">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <h4>Permissions granulaires</h4>
+        <p>Équipes, rôles, droits par ressource, audit log.</p>
+      </div>
+      <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div>
+        <h4>Emails transactionnels</h4>
+        <p>Postmark / Resend, templates versionnés, analytics d'ouverture.</p>
+      </div>
+
+      <div class="cap reveal">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
+        <h4>Gestion documentaire</h4>
+        <p>Upload, versioning, stockage S3, prévisualisation, signature.</p>
+      </div>
+      <div class="cap reveal reveal-d-1">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
+        <h4>Agents IA</h4>
+        <p>Extraction structurée, classification, résumés, RAG avec citations.</p>
+      </div>
+      <div class="cap reveal reveal-d-2">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h4>Messagerie interne</h4>
+        <p>Chat temps réel, commentaires contextuels, notifications push.</p>
+      </div>
+      <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
+        <h4>Dashboards &amp; reporting</h4>
+        <p>KPI temps réel, exports CSV/Excel, rapports PDF automatiques.</p>
+      </div>
+
+      <div class="cap reveal">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></div>
+        <h4>API publique</h4>
+        <p>REST, OpenAPI, clés d'API, rate-limiting, webhooks.</p>
+      </div>
+      <div class="cap reveal reveal-d-1">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6 1.65 1.65 0 0010 3.09V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82v0a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
+        <h4>Intégrations tierces</h4>
+        <p>Pennylane, Axonaut, HubSpot, Pipedrive, Slack, Teams, Zapier.</p>
+      </div>
+      <div class="cap reveal reveal-d-2">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h4>Sécurité &amp; RGPD</h4>
+        <p>Chiffrement at-rest, RGPD by-design, registre traitements, DPA.</p>
+      </div>
+      <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h4>Tâches planifiées</h4>
+        <p>Cron, rappels email, génération de rapports périodiques.</p>
+      </div>
+
+      <div class="cap reveal">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
+        <h4>Recherche avancée</h4>
+        <p>Full-text Meilisearch, filtres facettés, pertinence tunée.</p>
+      </div>
+      <div class="cap reveal reveal-d-1">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-6 0v4M5 9h14l-1 12H6z"/></svg></div>
+        <h4>Multi-boutiques</h4>
+        <p>White-label, sous-domaines, thèmes par client, branding dynamique.</p>
+      </div>
+      <div class="cap reveal reveal-d-2">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h4>Back-office admin</h4>
+        <p>Filament · impersonation, support utilisateur, stats de santé.</p>
+      </div>
+      <div class="cap reveal reveal-d-3">
+        <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 010-4h12v4M4 6v12a2 2 0 002 2h14v-4"/><circle cx="16" cy="14" r="2"/></svg></div>
+        <h4>Paiements &amp; abonnements</h4>
+        <p>Stripe, GoCardless, CB + SEPA, gestion des relances automatique.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:0">
+      <div class="left">
+        <div class="eyebrow">— Notre process</div>
+        <h2>De l'idée au premier<br>utilisateur en 5 étapes.</h2>
+      </div>
+      <div class="right">
+        On ne disparaît pas trois mois pour revenir avec un gros livrable. Vous voyez le produit
+        grandir chaque semaine, avec un livrable démontrable à chaque sprint.
+      </div>
+    </div>
+
+    <div class="proc-grid reveal reveal-d-1">
+      <div class="proc-step">
+        <div class="proc-num">ÉTAPE 01</div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
+        <h4>Cadrage</h4>
+        <p>Workshop de 2 jours avec les décideurs. On définit le périmètre exact du MVP, les user stories, les écrans clés.</p>
+        <div class="proc-dur">1 SEMAINE</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">ÉTAPE 02</div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <h4>Design</h4>
+        <p>Maquettes hautes-fidélité sur Figma, prototype cliquable, tests utilisateurs avant une seule ligne de code.</p>
+        <div class="proc-dur">1 SEMAINE</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">ÉTAPE 03</div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <h4>Développement</h4>
+        <p>Sprints d'une semaine. Démo live à chaque fin. Accès repo Git dès J+1. Vous voyez le code grandir en direct.</p>
+        <div class="proc-dur">3–6 SEMAINES</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">ÉTAPE 04</div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
+        <h4>QA &amp; conformité</h4>
+        <p>Tests automatisés, audit sécurité OWASP, revue RGPD, mise en conformité CGV, DPA, registre des traitements.</p>
+        <div class="proc-dur">3–5 JOURS</div>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">ÉTAPE 05</div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <h4>Mise en ligne</h4>
+        <p>Déploiement sur notre infra ou la vôtre. Formation de vos équipes. Transfert du code. Support mensuel optionnel.</p>
+        <div class="proc-dur">CONTINU</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="stack">
+  <div class="wrap">
+    <div class="stack-grid">
+      <div class="reveal">
+        <div class="eyebrow">— Notre stack</div>
+        <h2 style="margin-top:14px">La stack la plus solide<br>qu'on ait vue en 12 ans.</h2>
+        <p style="color:var(--mute);font-size:16px;margin-top:20px;max-width:480px">
+          On a fait Symfony, Rails, Node, Django. On est revenus sur Laravel parce qu'il livre
+          10× plus vite, avec moins de bugs, sur des projets de même ampleur. La productivité n'est pas un hasard,
+          c'est un écosystème.
+        </p>
+
+        <div class="stack-list">
+          <div class="sl-row">
+            <div class="sl-cat">BACKEND</div>
+            <div class="sl-val">Laravel 11 · PHP 8.3</div>
+            <div class="sl-note">TYPED · TESTED</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">FRONTEND</div>
+            <div class="sl-val">Livewire · Alpine · Vue · Inertia</div>
+            <div class="sl-note">SELON CAS</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">UI / DESIGN</div>
+            <div class="sl-val">Tailwind CSS · Filament</div>
+            <div class="sl-note">DESIGN SYSTEM</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">DATABASE</div>
+            <div class="sl-val">PostgreSQL · Redis</div>
+            <div class="sl-note">SAUVEGARDES 15&nbsp;MIN</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">IA / LLM</div>
+            <div class="sl-val">Claude Sonnet · GPT-4 · Embeddings</div>
+            <div class="sl-note">AGENTS TYPÉS</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">INFRA</div>
+            <div class="sl-val">Laravel Cloud · Scaleway · Vercel</div>
+            <div class="sl-note">DONNÉES EN FRANCE</div>
+          </div>
+          <div class="sl-row">
+            <div class="sl-cat">OBSERVABILITÉ</div>
+            <div class="sl-val">Sentry · Pulse · Horizon</div>
+            <div class="sl-note">ALERTES 24/7</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack-visual reveal reveal-d-2">
+        <div class="stack-orbit">
+          <div class="orbit-ring"></div>
+          <div class="orbit-ring r2"></div>
+          <div class="orbit-center">
+            <div class="mark">HC<span class="dot">.</span></div>
+          </div>
+          <div class="orbit-node" style="top:2%;left:50%;transform:translateX(-50%)">
+            <span class="nd" style="background:#FF2D20"></span>Laravel
+          </div>
+          <div class="orbit-node" style="top:22%;right:-10px">
+            <span class="nd" style="background:#4FC08D"></span>Livewire
+          </div>
+          <div class="orbit-node" style="bottom:22%;right:-5px">
+            <span class="nd" style="background:#38BDF8"></span>Tailwind
+          </div>
+          <div class="orbit-node" style="bottom:2%;left:50%;transform:translateX(-50%)">
+            <span class="nd" style="background:#336791"></span>PostgreSQL
+          </div>
+          <div class="orbit-node" style="bottom:22%;left:-10px">
+            <span class="nd" style="background:#D33833"></span>Redis
+          </div>
+          <div class="orbit-node" style="top:22%;left:-20px">
+            <span class="nd" style="background:#0A0A0A"></span>Claude · GPT
+          </div>
+          <div class="orbit-node" style="top:50%;left:-14%;transform:translateY(-50%)">
+            <span class="nd" style="background:#635BFF"></span>Stripe
+          </div>
+          <div class="orbit-node" style="top:50%;right:-14%;transform:translateY(-50%)">
+            <span class="nd" style="background:#00B14F"></span>Postmark
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED CASES -->
+<section class="scases">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="left">
+        <div class="eyebrow">— Ils ont choisi ce service</div>
+        <h2>Des SaaS livrés,<br>en production, mesurables.</h2>
+      </div>
+      <div class="right">
+        <a href="../Homepage.html#realisations" class="btn btn-ghost">Toutes les réalisations →</a>
+      </div>
+    </div>
+
+    <div class="scase-grid">
+      <div class="scase reveal">
+        <div class="scase-shot">
+          <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#F5F5F5">
+            <rect width="600" height="380" fill="#F5F5F5"/>
+            <rect x="40" y="30" width="520" height="330" rx="10" fill="#fff" stroke="#E5E5E5"/>
+            <rect x="40" y="30" width="110" height="330" fill="#FAFAFA" stroke="#E5E5E5"/>
+            <text x="60" y="55" font-family="Geist" font-weight="700" font-size="13" fill="#0A0A0A">LMNP<tspan fill="#6D28D9">.AI</tspan></text>
+            <rect x="55" y="80" width="80" height="6" rx="2" fill="#0A0A0A"/>
+            <rect x="55" y="100" width="60" height="4" rx="2" fill="#d4d4d4"/>
+            <rect x="55" y="115" width="70" height="4" rx="2" fill="#d4d4d4"/>
+            <text x="175" y="60" font-family="Geist" font-weight="700" font-size="18" fill="#0A0A0A">Dashboard fiscal</text>
+            <rect x="175" y="100" width="110" height="70" rx="6" fill="#F5F5F5"/>
+            <text x="185" y="150" font-family="Geist" font-weight="700" font-size="22" fill="#0A0A0A">18 420€</text>
+            <rect x="295" y="100" width="110" height="70" rx="6" fill="#EDE9FE"/>
+            <text x="305" y="150" font-family="Geist" font-weight="700" font-size="22" fill="#0A0A0A">+4 210€</text>
+            <rect x="415" y="100" width="125" height="70" rx="6" fill="#0A0A0A"/>
+            <text x="425" y="150" font-family="Geist" font-weight="700" font-size="16" fill="#fff">Prête ✓</text>
+            <rect x="175" y="185" width="365" height="150" rx="6" fill="#fff" stroke="#E5E5E5"/>
+            <path d="M195 310 L235 290 L315 275 L395 260 L475 210 L515 215" stroke="#6D28D9" stroke-width="2.5" fill="none"/>
+          </svg>
+        </div>
+        <div class="scase-body">
+          <div class="scase-meta"><span>SaaS B2C</span><span class="tag-stack">Laravel · Livewire</span><span>— en production</span></div>
+          <h3>LMNP.AI</h3>
+          <p>Comptabilité fiscale automatisée pour loueurs meublés. Extraction de factures et génération de liasse 2031 par IA.</p>
+          <div class="scase-metric">
+            <div class="scm"><div class="n">6 000<span class="s">+</span></div><div class="l">Clients payants</div></div>
+            <div class="scm"><div class="n">100<span class="s">%</span></div><div class="l">Growth organique</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scase reveal reveal-d-1">
+        <div class="scase-shot">
+          <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#0A0A0A">
+            <rect width="600" height="380" fill="#0A0A0A"/>
+            <text x="40" y="60" font-family="Geist" font-weight="700" font-size="16" fill="#fff">Comptabilité<tspan fill="#6D28D9"> AI</tspan></text>
+            <text x="40" y="80" font-family="Geist Mono" font-size="9" fill="#737373">bilan.2025.xlsx</text>
+            <g font-family="Geist Mono" font-size="10">
+              <rect x="40" y="100" width="520" height="22" fill="rgba(255,255,255,0.03)" rx="4"/>
+              <text x="52" y="115" fill="#737373">2025-03-14</text>
+              <text x="142" y="115" fill="#fff">HT Vente produit A</text>
+              <text x="330" y="115" fill="#fff">707000</text>
+              <text x="440" y="115" fill="#6D28D9">+ 14 800,00</text>
+              <rect x="40" y="128" width="520" height="22" fill="rgba(255,255,255,0.03)" rx="4"/>
+              <text x="52" y="143" fill="#737373">2025-03-14</text>
+              <text x="142" y="143" fill="#fff">TVA collectée 20%</text>
+              <text x="330" y="143" fill="#fff">445710</text>
+              <text x="440" y="143" fill="#6D28D9">+ 2 960,00</text>
+              <rect x="40" y="184" width="520" height="22" fill="rgba(109,40,217,0.1)" stroke="#6D28D9" stroke-width="0.5" rx="4"/>
+              <text x="52" y="199" fill="#6D28D9">AI-SUGG</text>
+              <text x="142" y="199" fill="#fff">Détection doublon avec écriture #1042</text>
+            </g>
+            <rect x="40" y="232" width="520" height="108" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)"/>
+            <text x="54" y="254" font-family="Geist Mono" font-size="9" fill="#6D28D9">◆ BILAN AI · génération en cours</text>
+            <rect x="54" y="268" width="360" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
+            <rect x="54" y="268" width="280" height="4" rx="2" fill="#6D28D9"/>
+          </svg>
+        </div>
+        <div class="scase-body">
+          <div class="scase-meta"><span>SaaS B2B</span><span class="tag-stack">Laravel · Inertia</span><span>— levée en cours</span></div>
+          <h3>Comptabilité AI</h3>
+          <p>Comptabilité en partie double pour PME avec bilan automatisé par IA. Positionnement Blue Ocean.</p>
+          <div class="scase-metric">
+            <div class="scm"><div class="n">0<span class="s">→1</span></div><div class="l">Du MVP à la levée en 5 mois</div></div>
+            <div class="scm"><div class="n">4</div><div class="l">Investisseurs confirmés</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="tarifs">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:0">
+      <div class="left">
+        <div class="eyebrow">— Forfaits</div>
+        <h2>Trois formats, un prix fixe.<br>Jamais de surprise.</h2>
+      </div>
+      <div class="right">
+        On vend au forfait, pas au temps passé. Tu sais exactement ce que tu payes
+        et ce que tu reçois avant de signer.
+      </div>
+    </div>
+
+    <div class="price-grid">
+      <div class="plan reveal">
+        <div class="plan-tag">MVP COURT</div>
+        <h4>Essentiel</h4>
+        <div class="plan-sub">Un SaaS fonctionnel avec les 3–5 features qui comptent, prêt à montrer à des premiers clients.</div>
+        <div class="plan-price">
+          <span class="amount">15–30 k€</span>
+          <span class="per">forfait TTC</span>
+        </div>
+        <div class="plan-hr"></div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>3–5 écrans clés + back-office</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Auth, facturation Stripe, emails</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 6 mois inclus</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison en 3–4 semaines</li>
+        </ul>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
+      </div>
+
+      <div class="plan featured reveal reveal-d-1">
+        <div class="plan-badge">LE PLUS CHOISI</div>
+        <div class="plan-tag">MVP COMPLET</div>
+        <h4>Standard</h4>
+        <div class="plan-sub">Un SaaS prêt à monter en charge : multi-utilisateurs, permissions, dashboards, intégrations tierces.</div>
+        <div class="plan-price">
+          <span class="amount">30–60 k€</span>
+          <span class="per">forfait TTC</span>
+        </div>
+        <div class="plan-hr"></div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>10–15 écrans + back-office riche</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design system Figma complet</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>API publique + webhooks</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1–2 agents IA (extraction, RAG)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Conformité RGPD clé en main</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison en 5–6 semaines</li>
+        </ul>
+        <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
+      </div>
+
+      <div class="plan reveal reveal-d-2">
+        <div class="plan-tag">CO-BUILD</div>
+        <h4>Partenariat</h4>
+        <div class="plan-sub">On construit avec vous dans la durée. Build produit, growth, support. Engagement sur résultats.</div>
+        <div class="plan-price">
+          <span class="amount">Sur-mesure</span>
+          <span class="per">à partir de 120 k€</span>
+        </div>
+        <div class="plan-hr"></div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée 3–5 personnes</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Product + design + dev + growth</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO + ads + contenus inclus</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intéressement possible (equity)</li>
+        </ul>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parlons-en</a></div>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:40px;color:var(--mute);font-size:14px">
+      Tous les forfaits incluent : <b style="color:var(--ink)">propriété complète du code · repo Git chez vous · formation de vos équipes · 30 jours de garantie après livraison</b>
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="faq-intro reveal">
+        <div class="eyebrow">— Questions fréquentes</div>
+        <h2 style="margin-top:14px">Vous avez<br>des questions.</h2>
+        <p>Les plus fréquentes en phase commerciale, traitées directement.</p>
+      </div>
+
+      <div class="faq-list reveal reveal-d-1">
+        <div class="faq-item open">
+          <div class="faq-q">
+            Combien de temps pour livrer un SaaS ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Entre <b>3 et 6 semaines</b> pour un MVP production-ready, selon la complexité. Pour un périmètre plus large
+            (10–15 écrans, permissions complexes, intégrations multiples), comptez 6 à 10 semaines. On fixe les dates
+            avec vous au cadrage et on les tient : tous nos forfaits ont une clause de pénalité de retard.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Est-ce qu'on est propriétaire du code ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            <b>Oui, intégralement</b>. Le repo Git est chez vous dès J+1. Vous pouvez à tout moment le récupérer
+            et le faire travailler par une autre équipe. On ne fait pas de lock-in technique, on ne vous facture pas
+            de royalties. Vous nous payez pour construire un actif qui vous appartient.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Vous faites du low-code / no-code ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Non. On écrit du <b>vrai code Laravel</b>, testé, typé, versionné. Le low-code est très bien pour prototyper
+            ou pour des automatisations internes, mais au-delà de 10 utilisateurs payants, ça devient un
+            piège technique et économique. On construit des bases qui tiendront 10 ans.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Que se passe-t-il après la livraison ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Trois options, au choix. <b>(1)</b> Vous reprenez le code et votre équipe technique prend le relais.
+            <b>(2)</b> Vous prenez un forfait de maintenance mensuel chez nous (bug fixes, petites évos, support).
+            <b>(3)</b> On continue à construire avec vous en mode co-build long terme. Dans tous les cas, 30 jours
+            de garantie sur les bugs critiques sont inclus.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Vous reprenez un projet existant mal fichu ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Oui, après un <b>audit technique payant</b> (1 500 €, déduits du devis si mission). On regarde le code,
+            la dette technique, la faisabilité de reprise. Dans 70% des cas, on reprend. Dans 30%, on recommande
+            une réécriture parce que le coût de reprise dépasse celui d'un nouveau build.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">
+            Nos données sont-elles hébergées en France ?
+            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
+          </div>
+          <div class="faq-a">
+            Par défaut <b>oui</b> — Scaleway Paris ou OVH Roubaix. Pour les clients qui préfèrent un hébergement
+            global (Laravel Cloud, AWS), on peut configurer. Les données sont chiffrées at-rest et in-transit,
+            avec sauvegardes toutes les 15 minutes.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="scta" id="contact">
+  <div class="scta-bg"></div>
+  <div class="wrap inner">
+    <div class="eyebrow on-dark">— Prochaine étape</div>
+    <h2 style="margin-top:14px">Parlons de votre SaaS.<br><span class="accent">30 minutes suffisent.</span></h2>
+    <p>Un call de cadrage gratuit avec un de nos seniors. On vous dit honnêtement si on est la bonne agence pour vous. Si on ne l'est pas, on vous oriente ailleurs.</p>
+    <div class="scta-cta">
+      <a href="#" class="btn btn-accent btn-lg">
+        📅 &nbsp;Réserver 30 min sur Calendly
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="mailto:hello@hagnere-code.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
+        Envoyer un email →
+      </a>
+    </div>
+    <div class="scta-meta">RÉPONSE SOUS 24H OUVRÉES · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="../Homepage.html" class="brand" style="margin-bottom:16px">
+          <div class="brand-mark">HC</div>
+          <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
+        </a>
+        <p>Agence de développement SaaS AI-native basée à Chambéry. Dev, design, SEO, ads, vidéo intégrée.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>SERVICES</h5>
+          <a href="saas-applications-metier.html">SaaS &amp; applications métier</a>
+          <a href="outils-internes.html">Outils internes</a>
+          <a href="sites-vitrines.html">Sites vitrines</a>
+          <a href="referencement-google.html">SEO</a>
+          <a href="publicite-en-ligne.html">Publicité</a>
+        </div>
+        <div class="foot-col">
+          <h5>STUDIO</h5>
+          <a href="../Homepage.html#methode">Méthode</a>
+          <a href="../Homepage.html#realisations">Réalisations</a>
+          <a href="../Homepage.html#equipe">Équipe</a>
+          <a href="../Homepage.html#tarifs">Tarifs</a>
+          <a href="../Homepage.html#blog">Blog</a>
+        </div>
+        <div class="foot-col">
+          <h5>CONTACT</h5>
+          <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">YouTube</a>
+        </div>
+        <div class="foot-col">
+          <h5>LÉGAL</h5>
+          <a href="#">CGV</a>
+          <a href="#">Mentions légales</a>
+          <a href="#">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div>© 2026 HAGNÉRÉ CODE SAS · RCS CHAMBÉRY · TVA FR42 123 456 789</div>
+      <div>BUILT WITH LARAVEL + CLAUDE CODE</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Reveals
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(x => x.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
