@@ -37,7 +37,7 @@ export const comparisonHtml = `
       <div class="cmp-row">
         <div class="cmp-col cmp-col-label">Équipe dédiée à votre projet</div>
         <div class="cmp-col">1 personne</div>
-        <div class="cmp-col cmp-col-us"><b>3 à 5 seniors</b> (associé, dev, designer, IA)</div>
+        <div class="cmp-col cmp-col-us"><b>Binôme à trinôme de seniors</b> (associé-lead, dev, designer ou expert IA selon besoin), piochés dans une équipe de 7</div>
         <div class="cmp-col">1 senior + 4 à 8 juniors</div>
       </div>
 

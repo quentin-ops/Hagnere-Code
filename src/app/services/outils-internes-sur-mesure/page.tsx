@@ -4,7 +4,7 @@ import { OutilsInternes } from "@/components/outils-internes/OutilsInternes";
 export const metadata: Metadata = {
   title: "Outils internes sur mesure PME & ETI — Sortez d'Excel en 4 semaines | Hagnéré Code",
   description:
-    "Outils internes sur mesure pour PME et ETI : CRM métier, ERP léger, back-offices, automatisations. Intégrations Sage, Cegid, Pennylane, Salesforce. Forfait fixe 8–120 k€, livré en 4–10 semaines, hébergé en France.",
+    "Outils internes sur mesure pour PME et ETI : CRM métier, ERP léger, back-offices, automatisations. Intégrations Sage, Cegid, Pennylane, Salesforce. Forfait fixe 8–80 k€, livré en 2–12 semaines, hébergé en France.",
   alternates: { canonical: "/services/outils-internes-sur-mesure" },
   openGraph: {
     title: "Outils internes sur mesure PME & ETI — Hagnéré Code",

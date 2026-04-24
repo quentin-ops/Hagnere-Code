@@ -1,112 +1,185 @@
 export const pricingHtml = `
-<!-- PRICING M&E · 3 tiers + audit -->
+<!-- PRICING AUDIT · 4 tiers + 5 extras chiffrés à l'avance -->
 <section class="pricing" id="tarifs">
   <div class="wrap">
     <div class="section-head reveal" style="margin-bottom:0">
       <div class="left">
-        <div class="eyebrow">— Forfaits TMA</div>
-        <h2>Un audit pour commencer,<br>trois rythmes pour tenir.</h2>
+        <div class="eyebrow">— Tarifs publics · fixes</div>
+        <h2>Quatre formats d'audit,<br>prix fixe publié.<br>Extras chiffrés à l'avance.</h2>
       </div>
       <div class="right">
-        Tout est inclus dans le forfait&nbsp;: monitoring, sécurité, deploys, patches, reporting, astreinte (selon tier).
-        <b>Aucun rebilling.</b> Cloud et licences SaaS tierces à votre nom. Engagement 3 à 6 mois, puis mensuel.
+        Zéro "nous consulter" sur le prix — ça casse 80 % de la friction commerciale 2026.
+        <b>NDA signé à J0</b>, clause de non-conflit d'intérêt publique, garantie ≥ 3 recos actionnables ou 50 % remboursé.
+        100 % déductible si une mission de remédiation &gt; 50 k€ suit.
       </div>
     </div>
 
     <div class="price-grid">
-      <!-- AUDIT FLASH -->
+      <!-- EXPRESS -->
       <div class="plan reveal">
-        <div class="plan-tag">PORTE D'ENTRÉE</div>
-        <h4>Audit flash</h4>
-        <div class="plan-sub">5 jours d'audit code + infra + sécurité + dette. Rapport 15-25 pages + plan de remédiation priorisé 12 mois. Livré en visio 1h30.</div>
+        <div class="plan-tag">EXPRESS · URGENCE</div>
+        <h4>Express</h4>
+        <div class="plan-sub">Post-incident, pré-décision urgente, 2e avis rapide. 3-5 jours · 1 senior · livrable Notion + Loom 15 min. Sans deck board-ready.</div>
         <div class="plan-price">
-          <span class="amount">2 000 €</span>
-          <span class="per">HT · one-shot</span>
+          <span class="amount">8 000 €</span>
+          <span class="per">HT · fixe · one-shot</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Audit code + dépendances + CVE</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Audit infra + backups + DR</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Plan de remédiation 12 mois chiffré</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Check-list sécurité SOC2-ready</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Restitution 1h30 en visio</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg><b>Déduit du 1er mois si TMA</b></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>3 à 5 j · 1 senior dédié</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>4 à 5 dimensions couvertes</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livrable Notion + Loom 15 min</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tech Debt P&amp;L simplifié</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Démarrage sous 3 j ouvrés</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Déduit 100 % si Standard suit</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Réserver l'audit</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Cadrer l'Express</a></div>
       </div>
 
-      <!-- ESSENTIEL -->
-      <div class="plan reveal reveal-d-1">
-        <div class="plan-tag">ESSENTIEL · RUN</div>
-        <h4>Essentiel</h4>
-        <div class="plan-sub">App stable, peu d'évolutions, PME 10-30 salariés. On tient la prod, on patche, on évolue au rythme de vos besoins métier.</div>
-        <div class="plan-price">
-          <span class="amount">2 500 €</span>
-          <span class="per">HT / mois</span>
-        </div>
-        <div class="plan-hr"></div>
-        <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1-2 j/mois d'intervention dev</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Monitoring Sentry + Better Stack 24/7</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Patches sécurité mensuels + CVE &lt; 48 h</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Support Slack HO · &lt; 24 h</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA uptime 99,5 %</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Rapport mensuel · rollover 30 %</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 3 mois min.</li>
-        </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Cadrer mon forfait</a></div>
-      </div>
-
-      <!-- SCALE (featured) -->
-      <div class="plan featured reveal reveal-d-2">
+      <!-- STANDARD (featured) -->
+      <div class="plan featured reveal reveal-d-1">
         <div class="plan-badge">LE PLUS CHOISI</div>
-        <div class="plan-tag">SCALE · ÉVOLUTION</div>
-        <h4>Scale</h4>
-        <div class="plan-sub">Scale-up 30-150 salariés, SaaS en croissance. Équipe dédiée 2 pers., sprint mensuel d'évolutions, astreinte 7j/7.</div>
+        <div class="plan-tag">STANDARD · 10 J</div>
+        <h4>Standard</h4>
+        <div class="plan-sub">Le format complet&nbsp;: 8 dimensions couvertes, rapport board-ready, Tech Debt P&amp;L, deck 12-18 slides. Baseline CTO, pré-levée, SOC2-gap, go/no-go.</div>
         <div class="plan-price">
-          <span class="amount">6 500 €</span>
-          <span class="per">HT / mois</span>
+          <span class="amount">18 000 €</span>
+          <span class="per">HT · fixe · one-shot</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>4-6 j/mois · 2 devs nommés</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Stack obs complète + Grafana Cloud</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Astreinte 7j/7 PagerDuty · MTTR &lt; 30 min</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Support Slack prioritaire · &lt; 2 h HO</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA uptime 99,9 %</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Roadmap trimestrielle + comité mensuel</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Scan Snyk + pentest annuel sur option</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 6 mois min.</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>10 j ouvrés · 2 seniors + associé-lead</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg><b>8 dimensions couvertes · scoring /100</b></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tech Debt P&amp;L chiffré en euros</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Deck 12-18 slides board-ready</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Version board-safe anonymisée</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Backlog Notion 20-30 tickets chiffrés</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>5-8 entretiens équipe no-blame</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Benchmark percentile 47 audits</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Roadmap 6/12/18 mois · 3 scenarios</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Déduit 100 % si mission &gt; 50 k€</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer le scale</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-accent">Cadrer le Standard</a></div>
       </div>
 
-      <!-- PREMIUM -->
-      <div class="plan reveal reveal-d-3">
-        <div class="plan-tag">PREMIUM · PARTNER</div>
-        <h4>Premium</h4>
-        <div class="plan-sub">ETI &amp; scale-up série B+, éditeurs B2B avec clients grands comptes. Équipe dédiée 3-4 pers., SLA 99,95 %, compliance SOC2/ISO27001-ready.</div>
+      <!-- DEEP -->
+      <div class="plan reveal reveal-d-2">
+        <div class="plan-tag">DEEP · REFONTE / LEVÉE</div>
+        <h4>Deep</h4>
+        <div class="plan-sub">Pour les décisions &gt; 500 k€&nbsp;: go/no-go refonte, Série B côté vendeur, gros gap SOC2. 15-20 jours · 3 seniors + architecte + associé.</div>
         <div class="plan-price">
-          <span class="amount">14 000 €</span>
-          <span class="per">HT / mois</span>
+          <span class="amount">38 000 €</span>
+          <span class="per">HT · fixe · one-shot</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>12-16 j/mois · équipe 3-4 pers. + PO</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Astreinte 24/7 · MTTR &lt; 1 h P1</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA uptime 99,95 % + pénalités chiffrées</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Pentest annuel + audit sécurité trim.</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>RPO 15 min · RTO 1 h testés</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SOC2-ready + DPA + NDA + ISO27001-ready</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>2 slots max en parallèle · sélectif</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 12 mois min.</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>15 à 20 j · 3 seniors + architecte + associé</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout inclus dans Standard &nbsp;·&nbsp; plus&nbsp;:</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Rapport 60-80 p. (vs. 40-70)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>3 scenarios chiffrés sur 3 ans</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Restitution trilatérale CEO + CTO + CFO</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Dashboard comparatif opex vs capex</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Version data-room contrôlée (levée)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Démarrage sous 5 j ouvrés</li>
+        </ul>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Cadrer le Deep</a></div>
+      </div>
+
+      <!-- TECH DD M&A -->
+      <div class="plan reveal reveal-d-3">
+        <div class="plan-tag">TECH DD · M&amp;A</div>
+        <h4>Tech DD M&amp;A</h4>
+        <div class="plan-sub">Pour les acquéreurs&nbsp;: DD avant rachat scale-up. 20-30 jours · 4 pers. dédiées + associé-lead · coordination avocats.</div>
+        <div class="plan-price">
+          <span class="amount">68 000 €</span>
+          <span class="per">HT · fixe · one-shot</span>
+        </div>
+        <div class="plan-hr"></div>
+        <ul class="plan-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>20 à 30 j · 4 pers. dédiées</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout inclus dans Deep &nbsp;·&nbsp; plus&nbsp;:</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Rapport format M&amp;A 80-120 p.</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Analyse licences OSS · IP · copyright</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Liste deal-breakers flaggés go/no-go</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Coordination avocats M&amp;A · clauses garantie</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Restitution comité investissement</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>NDA renforcé · attorney-client privilege</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Démarrage sous 3 j ouvrés</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parler à un associé</a></div>
       </div>
     </div>
 
+    <!-- Extras chiffrés à l'avance -->
+    <div class="at-pricing-extras reveal" style="margin-top:56px">
+      <div class="at-pricing-extras-head">
+        <div class="eyebrow">— Extras chiffrés à l'avance</div>
+        <h3 style="margin:12px 0 14px">Cinq options récurrentes,<br>toutes au prix fixe publié.</h3>
+        <p style="color:var(--mute);max-width:640px;margin:0 0 28px">
+          Chaque extra est chiffré <b style="color:var(--ink)">dans le devis initial</b>, pas facturé en avenant surprise.
+          Vous choisissez de les activer ou non au cadrage. Aucun ajout en cours d'audit sans votre accord écrit.
+        </p>
+      </div>
+
+      <div class="at-pricing-extras-grid">
+        <div class="at-pricing-extra">
+          <div class="at-pricing-extra-ic">🔐</div>
+          <div class="at-pricing-extra-body">
+            <div class="at-pricing-extra-title">Pentest externe CERT-FR</div>
+            <div class="at-pricing-extra-price">+ 8 000 à 15 000 € HT</div>
+            <div class="at-pricing-extra-sub">Partenaire agréé CERT-FR · OWASP top 10 complet · rapport CVSS · obligatoire SOC2/ISO</div>
+          </div>
+        </div>
+
+        <div class="at-pricing-extra">
+          <div class="at-pricing-extra-ic">🔁</div>
+          <div class="at-pricing-extra-body">
+            <div class="at-pricing-extra-title">Retest post-remédiation 60-90 j</div>
+            <div class="at-pricing-extra-price">+ 30 % du prix initial</div>
+            <div class="at-pricing-extra-sub">Vérifie l'implémentation des recos P1/P2 · livrable "après / avant" chiffré</div>
+          </div>
+        </div>
+
+        <div class="at-pricing-extra">
+          <div class="at-pricing-extra-ic">👤</div>
+          <div class="at-pricing-extra-body">
+            <div class="at-pricing-extra-title">Shadow CTO · 1 mois post-audit</div>
+            <div class="at-pricing-extra-price">+ 8 000 à 15 000 € HT</div>
+            <div class="at-pricing-extra-sub">Un senior embarque votre équipe 4 semaines pour implémenter les recos P1 sans dérapage</div>
+          </div>
+        </div>
+
+        <div class="at-pricing-extra">
+          <div class="at-pricing-extra-ic">📋</div>
+          <div class="at-pricing-extra-body">
+            <div class="at-pricing-extra-title">Restitution board physique · demi-journée</div>
+            <div class="at-pricing-extra-price">+ 1 500 à 3 000 € HT</div>
+            <div class="at-pricing-extra-sub">Paris / Lyon / Chambéry · Quentin + auditeur lead présentent au CA en direct</div>
+          </div>
+        </div>
+
+        <div class="at-pricing-extra">
+          <div class="at-pricing-extra-ic">☁️</div>
+          <div class="at-pricing-extra-body">
+            <div class="at-pricing-extra-title">FinOps deep-dive cloud</div>
+            <div class="at-pricing-extra-price">+ 4 000 à 8 000 € HT</div>
+            <div class="at-pricing-extra-sub">3-5 j supplémentaires sur AWS/GCP/OVH · économies typiques 20-40 % budget cloud</div>
+          </div>
+        </div>
+
+        <div class="at-pricing-extra">
+          <div class="at-pricing-extra-ic">🤖</div>
+          <div class="at-pricing-extra-body">
+            <div class="at-pricing-extra-title">Couche IA / LLM</div>
+            <div class="at-pricing-extra-price">+ 3 000 à 6 000 € HT</div>
+            <div class="at-pricing-extra-sub">Si app utilise Claude / GPT / Gemini · audit prompts, coûts tokens, hallucination, AI Act</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
-      <b style="color:var(--ink)">Tous les forfaits incluent</b> : Sentry · Better Stack · statuspage publique · Dependabot · Renovate · GitGuardian · Linear · Slack Connect · comptes au nom du client · <b style="color:var(--ink)">rollover 30 % des jours non consommés</b> sur 3 mois.
+      <b style="color:var(--ink)">Tous les formats incluent</b> : NDA mutuel J0 · clause de non-conflit d'intérêt publique · version board-safe anonymisée · licences enterprise SonarQube / Snyk / Datadog · garantie ≥ 3 recos actionnables ou 50 % remboursé · <b style="color:var(--ink)">propriété client exclusive des livrables</b>.
     </p>
   </div>
 </section>

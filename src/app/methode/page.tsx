@@ -120,7 +120,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Site vitrine 6 pages : 6-12 k€ en 3 semaines. Outil interne complet : 15-30 k€ en 5 semaines. MVP SaaS B2B : 25-50 k€ en 6 semaines. Refonte e-commerce Shopify Plus : 30-60 k€ en 8 semaines. Le Discovery Sprint à 1 500 € est obligatoire pour tout projet supérieur à 8 k€ — il transforme ces fourchettes en devis ferme à un chiffre unique.",
+          "Site vitrine Performance : 14,9 k€ en 5-7 semaines. Outil interne Pro : 25 k€ en 5-8 semaines. MVP SaaS Standard : 30 k€ en 5-6 semaines. E-commerce Scale : 30 k€ en 8-12 semaines. Le Discovery Sprint à 1 500 € est obligatoire pour tout projet supérieur à 8 k€ — il transforme ces fourchettes en devis ferme à un chiffre unique.",
       },
     },
     {

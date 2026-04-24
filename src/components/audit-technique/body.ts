@@ -92,7 +92,7 @@ export const bodyHtml = `
     <span class="sep">/</span>
     <a href="/#services">Services</a>
     <span class="sep">/</span>
-    <span style="color:var(--ink-3)">Maintenance &amp; évolution</span>
+    <span style="color:var(--ink-3)">Audit technique</span>
   </div>
 </div>
 
@@ -103,57 +103,56 @@ export const bodyHtml = `
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow">
-        <span class="pill"><span class="dot"></span> Service · Maintenance &amp; évolution · TMA long-terme</span>
-        <a href="https://status.hagnere-code.fr" target="_blank" rel="noopener" class="at-status-pill" aria-label="Voir notre Statuspage publique">
-          <span class="at-status-dot"></span>
-          <span class="at-status-txt">status.hagnere-code.fr</span>
-          <span class="at-status-state">● operational</span>
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-        </a>
+        <span class="pill"><span class="dot"></span> Service · Audit technique · one-shot · 10 j ouvrés</span>
+        <span class="at-nda-pill" aria-label="NDA mutuel signé dès le cadrage">
+          <span class="at-nda-dot"></span>
+          <span class="at-nda-txt">NDA mutuel signé</span>
+          <span class="at-nda-state">● dès J0</span>
+        </span>
       </div>
-      <h1>Votre équipe tech<br>dans 3 ans, 5 ans, 10 ans.<br><span class="accent">Pas un prestataire qui disparaît.</span></h1>
+      <h1>Votre dette technique<br>en <span class="accent">euros</span>. Livrée<br>en 10 jours.</h1>
 
       <!-- KPI bar : chiffres concrets juste sous le H1 -->
       <div class="at-hero-kpis">
         <div class="at-hero-kpi">
-          <div class="at-hero-kpi-v">99,98<span>%</span></div>
-          <div class="at-hero-kpi-k">Uptime 12 mois · mesuré Better Stack</div>
+          <div class="at-hero-kpi-v">47</div>
+          <div class="at-hero-kpi-k">Audits livrés · 2022 → 2026</div>
         </div>
         <div class="at-hero-kpi-sep"></div>
         <div class="at-hero-kpi">
-          <div class="at-hero-kpi-v">14<span>/trim</span></div>
-          <div class="at-hero-kpi-k">Deploys · DORA elite</div>
+          <div class="at-hero-kpi-v">92<span>%</span></div>
+          <div class="at-hero-kpi-k">Recos implémentées sous 6 mois</div>
         </div>
         <div class="at-hero-kpi-sep"></div>
         <div class="at-hero-kpi">
-          <div class="at-hero-kpi-v">23<span>min</span></div>
-          <div class="at-hero-kpi-k">MTTR médian · P1 astreinte</div>
+          <div class="at-hero-kpi-v">18<span>k€</span></div>
+          <div class="at-hero-kpi-k">Prix fixe standard · 10 j ouvrés</div>
         </div>
         <div class="at-hero-kpi-sep"></div>
         <div class="at-hero-kpi">
-          <div class="at-hero-kpi-v">4,3<span>ans</span></div>
-          <div class="at-hero-kpi-k">Ancienneté moyenne clients</div>
+          <div class="at-hero-kpi-v">72</div>
+          <div class="at-hero-kpi-k">NPS dirigeants post-audit</div>
         </div>
       </div>
 
       <p class="shero-sub">
-        On reprend votre app — construite chez nous, par un freelance disparu ou une autre agence —
-        et on en devient votre <b>équipe tech long-terme</b>. Monitoring 24/7, patches sécurité,
-        évolutions continues, hébergement &amp; infra ops. <b>Forfait fixe mensuel, équipe nommée dans le contrat,
-        comptes et code chez vous, aucun vendor lock-in.</b>
+        Audit indépendant pour <b>VC en due diligence, acquéreur M&amp;A, CTO entrant, dirigeant avant refonte ou certification SOC2/ISO 27001</b>.
+        Rapport board-ready avec <b>scoring /100 par dimension, Tech Debt P&amp;L chiffré en euros, matrice impact × effort, roadmap 6/12/18 mois</b>.
+        Clause de <b>non-conflit d'intérêt publique</b>&nbsp;: 100 % du prix déduit si mission de remédiation &gt; 50 k€ suit.
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
-          Reprendre mon app en main <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          📄 Télécharger un sample de rapport
+          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="#contact" class="btn btn-ghost btn-lg">Audit maintenance offert · 20 min</a>
+        <a href="#contact" class="btn btn-ghost btn-lg">Call de cadrage · 30 min offert</a>
       </div>
       <div class="shero-meta">
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Forfait fixe · pas à la ticket</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Prix fixe · publié sur cette page</span>
         <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Astreinte 7j/7 · MTTR &lt; 30 min</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Garantie ≥ 3 recos actionnables ou 50 % remboursé</span>
         <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Code &amp; comptes chez vous</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Version board-safe incluse</span>
       </div>
     </div>
 
@@ -162,18 +161,17 @@ export const bodyHtml = `
       <div class="mock-window mw-main">
         <div class="win-chrome">
           <div class="win-dots"><span></span><span></span><span></span></div>
-          <div class="win-url">hagnere-code · production · health</div>
+          <div class="win-url">hagnere-code · audit tech · report v1.0</div>
         </div>
         <svg width="100%" viewBox="0 0 540 360" style="display:block">
           <defs>
-            <linearGradient id="me-sla-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#10B981"/>
-              <stop offset="100%" stop-color="#34D399"/>
+            <linearGradient id="at-debt-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#6D28D9"/>
+              <stop offset="100%" stop-color="#0A0A0A"/>
             </linearGradient>
-            <linearGradient id="me-sla-fill" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#10B981" stop-opacity="0.25"/>
-              <stop offset="100%" stop-color="#10B981" stop-opacity="0"/>
-            </linearGradient>
+            <linearGradient id="at-bar-green" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#34D399"/></linearGradient>
+            <linearGradient id="at-bar-amber" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#FCD34D"/></linearGradient>
+            <linearGradient id="at-bar-red" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#EF4444"/><stop offset="100%" stop-color="#FCA5A5"/></linearGradient>
           </defs>
           <rect width="540" height="360" fill="#fff"/>
 
@@ -182,149 +180,224 @@ export const bodyHtml = `
           <rect x="0" y="43" width="540" height="1" fill="#f0f0f0"/>
           <rect x="20" y="14" width="28" height="16" rx="4" fill="#0A0A0A"/>
           <text x="34" y="25" text-anchor="middle" font-family="Geist Mono" font-weight="700" font-size="9" fill="#fff">HC</text>
-          <text x="56" y="27" font-family="Geist" font-weight="700" font-size="13" fill="#0A0A0A">production · health</text>
-          <circle cx="438" cy="22" r="4" fill="#10B981">
-            <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
-          </circle>
-          <rect x="448" y="12" width="78" height="20" rx="4" fill="#ECFDF5"/>
-          <text x="487" y="26" text-anchor="middle" font-family="Geist Mono" font-size="9" font-weight="700" fill="#047857">● OPERATIONAL</text>
+          <text x="56" y="27" font-family="Geist" font-weight="700" font-size="13" fill="#0A0A0A">audit · report v1.0</text>
+          <rect x="380" y="12" width="72" height="20" rx="4" fill="#FEF2F2" stroke="#FCA5A5"/>
+          <text x="416" y="26" text-anchor="middle" font-family="Geist Mono" font-size="9" font-weight="700" fill="#B91C1C">● CONFIDENTIEL</text>
+          <rect x="460" y="12" width="66" height="20" rx="4" fill="#F5F5F5"/>
+          <text x="493" y="26" text-anchor="middle" font-family="Geist Mono" font-size="9" font-weight="600" fill="#737373">Client · N.D.A.</text>
 
-          <!-- SLA Gauge (hero stat) -->
+          <!-- Tech Debt P&L card (gauche, dark) -->
           <g transform="translate(24 64)">
-            <rect x="0" y="0" width="248" height="108" rx="12" fill="#0A0A0A"/>
-            <text x="20" y="24" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">UPTIME · 30 DERNIERS JOURS</text>
-            <text x="20" y="72" font-family="Geist" font-weight="700" font-size="46" fill="#fff" letter-spacing="-0.03em">99,98<tspan font-size="26" fill="#10B981">%</tspan></text>
-            <text x="20" y="94" font-family="Geist Mono" font-size="9" fill="#10B981" font-weight="600">▲ 8 min downtime · bien sous SLA 99,9%</text>
-            <!-- tiny sparkline -->
-            <path d="M 148 72 L 158 72 L 168 72 L 178 60 L 188 72 L 198 72 L 208 72 L 218 72 L 228 72" stroke="url(#me-sla-grad)" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <circle cx="228" cy="72" r="3" fill="#10B981"/>
+            <rect x="0" y="0" width="218" height="268" rx="14" fill="url(#at-debt-grad)"/>
+            <text x="20" y="26" font-family="Geist Mono" font-size="8" fill="rgba(255,255,255,0.6)" letter-spacing="1">TECH DEBT P&amp;L</text>
+            <rect x="182" y="14" width="20" height="16" rx="4" fill="rgba(167,139,250,0.2)" stroke="rgba(167,139,250,0.4)"/>
+            <text x="192" y="25" text-anchor="middle" font-family="Geist Mono" font-size="8" font-weight="700" fill="#A78BFA">P1</text>
+
+            <text x="20" y="80" font-family="Geist" font-weight="700" font-size="42" fill="#fff" letter-spacing="-0.03em">420<tspan font-size="24" fill="rgba(255,255,255,0.55)"> k€</tspan></text>
+            <text x="20" y="102" font-family="Geist Mono" font-size="9" fill="rgba(255,255,255,0.6)" letter-spacing="0.04em">DETTE TECH ESTIMÉE</text>
+
+            <rect x="20" y="116" width="178" height="1" fill="rgba(255,255,255,0.1)"/>
+
+            <text x="20" y="140" font-family="Geist" font-size="11" fill="rgba(255,255,255,0.82)" font-weight="500">≈ 8 mois de vélocité perdue</text>
+            <text x="20" y="158" font-family="Geist Mono" font-size="9" fill="rgba(255,255,255,0.5)">par an sur l'équipe actuelle (6 devs)</text>
+
+            <rect x="20" y="176" width="178" height="1" fill="rgba(255,255,255,0.1)"/>
+
+            <!-- 3 mini chips breakdown -->
+            <g transform="translate(20 192)">
+              <rect x="0" y="0" width="58" height="24" rx="6" fill="rgba(239,68,68,0.18)" stroke="rgba(239,68,68,0.3)"/>
+              <text x="29" y="10" text-anchor="middle" font-family="Geist Mono" font-size="7" font-weight="700" fill="#FCA5A5">SÉCURITÉ</text>
+              <text x="29" y="19" text-anchor="middle" font-family="Geist" font-size="9" font-weight="700" fill="#fff">165 k€</text>
+
+              <rect x="62" y="0" width="58" height="24" rx="6" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.3)"/>
+              <text x="91" y="10" text-anchor="middle" font-family="Geist Mono" font-size="7" font-weight="700" fill="#FCD34D">ARCHI</text>
+              <text x="91" y="19" text-anchor="middle" font-family="Geist" font-size="9" font-weight="700" fill="#fff">128 k€</text>
+
+              <rect x="124" y="0" width="58" height="24" rx="6" fill="rgba(107,114,128,0.2)" stroke="rgba(107,114,128,0.3)"/>
+              <text x="153" y="10" text-anchor="middle" font-family="Geist Mono" font-size="7" font-weight="700" fill="#D4D4D8">FINOPS</text>
+              <text x="153" y="19" text-anchor="middle" font-family="Geist" font-size="9" font-weight="700" fill="#fff">127 k€</text>
+            </g>
+
+            <text x="20" y="244" font-family="Geist Mono" font-size="8" fill="rgba(255,255,255,0.45)" letter-spacing="0.04em">COÛT DE RÉMÉDIATION</text>
+            <text x="20" y="258" font-family="Geist" font-size="13" font-weight="600" fill="#A78BFA">~180 k€ · 4-6 mois</text>
           </g>
 
-          <!-- 3 KPI stacked right -->
-          <g transform="translate(284 64)">
-            <rect x="0" y="0" width="232" height="32" rx="8" fill="#F5F5F5"/>
-            <text x="14" y="20" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">INCIDENTS · 30J</text>
-            <text x="214" y="21" font-family="Geist" font-weight="700" font-size="15" fill="#10B981" text-anchor="end">0</text>
+          <!-- 9 dimensions score (droite) -->
+          <g transform="translate(254 64)">
+            <rect x="0" y="0" width="262" height="268" rx="14" fill="#FAFAFA" stroke="#E5E5E5"/>
+            <text x="16" y="24" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">SCORE /100 · 9 DIMENSIONS</text>
+            <rect x="212" y="14" width="36" height="14" rx="3" fill="#FEF3C7"/>
+            <text x="230" y="24" text-anchor="middle" font-family="Geist Mono" font-size="8" font-weight="700" fill="#92400E">72/100</text>
 
-            <rect x="0" y="38" width="232" height="32" rx="8" fill="#EDE9FE"/>
-            <text x="14" y="58" font-family="Geist Mono" font-size="8" fill="#4C1D95" letter-spacing="1">DEPLOYS · TRIMESTRE</text>
-            <text x="214" y="59" font-family="Geist" font-weight="700" font-size="15" fill="#6D28D9" text-anchor="end">14</text>
+            <!-- 9 dimensions rows -->
+            <!-- Code quality 65 amber -->
+            <g transform="translate(16 44)">
+              <text x="0" y="8" font-family="Geist" font-size="10" font-weight="500" fill="#0A0A0A">Code quality</text>
+              <rect x="108" y="2" width="108" height="8" rx="4" fill="#F0F0F0"/>
+              <rect x="108" y="2" width="70" height="8" rx="4" fill="url(#at-bar-amber)"/>
+              <text x="222" y="9" font-family="Geist Mono" font-size="9" font-weight="700" fill="#92400E">65</text>
+            </g>
 
-            <rect x="0" y="76" width="114" height="32" rx="8" fill="#F5F5F5"/>
-            <text x="14" y="96" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">CVE PATCHÉS</text>
-            <text x="100" y="97" font-family="Geist" font-weight="700" font-size="15" fill="#0A0A0A" text-anchor="end">7</text>
+            <!-- Architecture 58 amber -->
+            <g transform="translate(16 66)">
+              <text x="0" y="8" font-family="Geist" font-size="10" font-weight="500" fill="#0A0A0A">Architecture</text>
+              <rect x="108" y="2" width="108" height="8" rx="4" fill="#F0F0F0"/>
+              <rect x="108" y="2" width="63" height="8" rx="4" fill="url(#at-bar-amber)"/>
+              <text x="222" y="9" font-family="Geist Mono" font-size="9" font-weight="700" fill="#92400E">58</text>
+            </g>
 
-            <rect x="118" y="76" width="114" height="32" rx="8" fill="#F5F5F5"/>
-            <text x="132" y="96" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">MTTR · P1</text>
-            <text x="218" y="97" font-family="Geist" font-weight="700" font-size="15" fill="#0A0A0A" text-anchor="end">23 min</text>
+            <!-- Performance 82 green -->
+            <g transform="translate(16 88)">
+              <text x="0" y="8" font-family="Geist" font-size="10" font-weight="500" fill="#0A0A0A">Performance</text>
+              <rect x="108" y="2" width="108" height="8" rx="4" fill="#F0F0F0"/>
+              <rect x="108" y="2" width="89" height="8" rx="4" fill="url(#at-bar-green)"/>
+              <text x="222" y="9" font-family="Geist Mono" font-size="9" font-weight="700" fill="#047857">82</text>
+            </g>
+
+            <!-- Sécurité 34 red -->
+            <g transform="translate(16 110)">
+              <text x="0" y="8" font-family="Geist" font-size="10" font-weight="500" fill="#0A0A0A">Sécurité</text>
+              <rect x="108" y="2" width="108" height="8" rx="4" fill="#F0F0F0"/>
+              <rect x="108" y="2" width="37" height="8" rx="4" fill="url(#at-bar-red)"/>
+              <text x="222" y="9" font-family="Geist Mono" font-size="9" font-weight="700" fill="#B91C1C">34</text>
+            </g>
+
+            <!-- Infra 70 amber -->
+            <g transform="translate(16 132)">
+              <text x="0" y="8" font-family="Geist" font-size="10" font-weight="500" fill="#0A0A0A">Infrastructure</text>
+              <rect x="108" y="2" width="108" height="8" rx="4" fill="#F0F0F0"/>
+              <rect x="108" y="2" width="76" height="8" rx="4" fill="url(#at-bar-amber)"/>
+              <text x="222" y="9" font-family="Geist Mono" font-size="9" font-weight="700" fill="#92400E">70</text>
+            </g>
+
+            <!-- DevEx 75 green -->
+            <g transform="translate(16 154)">
+              <text x="0" y="8" font-family="Geist" font-size="10" font-weight="500" fill="#0A0A0A">DevEx · DORA</text>
+              <rect x="108" y="2" width="108" height="8" rx="4" fill="#F0F0F0"/>
+              <rect x="108" y="2" width="81" height="8" rx="4" fill="url(#at-bar-green)"/>
+              <text x="222" y="9" font-family="Geist Mono" font-size="9" font-weight="700" fill="#047857">75</text>
+            </g>
+
+            <!-- Produit/UX 88 green -->
+            <g transform="translate(16 176)">
+              <text x="0" y="8" font-family="Geist" font-size="10" font-weight="500" fill="#0A0A0A">Produit / UX</text>
+              <rect x="108" y="2" width="108" height="8" rx="4" fill="#F0F0F0"/>
+              <rect x="108" y="2" width="95" height="8" rx="4" fill="url(#at-bar-green)"/>
+              <text x="222" y="9" font-family="Geist Mono" font-size="9" font-weight="700" fill="#047857">88</text>
+            </g>
+
+            <!-- FinOps 42 red -->
+            <g transform="translate(16 198)">
+              <text x="0" y="8" font-family="Geist" font-size="10" font-weight="500" fill="#0A0A0A">FinOps cloud</text>
+              <rect x="108" y="2" width="108" height="8" rx="4" fill="#F0F0F0"/>
+              <rect x="108" y="2" width="45" height="8" rx="4" fill="url(#at-bar-red)"/>
+              <text x="222" y="9" font-family="Geist Mono" font-size="9" font-weight="700" fill="#B91C1C">42</text>
+            </g>
+
+            <!-- Équipe 68 amber -->
+            <g transform="translate(16 220)">
+              <text x="0" y="8" font-family="Geist" font-size="10" font-weight="500" fill="#0A0A0A">Équipe &amp; org</text>
+              <rect x="108" y="2" width="108" height="8" rx="4" fill="#F0F0F0"/>
+              <rect x="108" y="2" width="73" height="8" rx="4" fill="url(#at-bar-amber)"/>
+              <text x="222" y="9" font-family="Geist Mono" font-size="9" font-weight="700" fill="#92400E">68</text>
+            </g>
+
+            <rect x="16" y="240" width="230" height="1" fill="#E5E5E5"/>
+            <text x="16" y="258" font-family="Geist Mono" font-size="8" fill="#737373">2 dim. critiques · 3 à améliorer · 4 saines</text>
           </g>
-
-          <!-- Services grid -->
-          <rect x="24" y="190" width="492" height="148" rx="12" fill="#fff" stroke="#E5E5E5"/>
-          <text x="40" y="212" font-family="Geist Mono" font-size="9" fill="#737373" letter-spacing="1">SERVICES · STATUS LIVE</text>
-
-          <!-- Service row 1 -->
-          <g transform="translate(40 226)">
-            <circle cx="6" cy="6" r="4" fill="#10B981"/>
-            <text x="20" y="10" font-family="Geist" font-weight="500" font-size="11" fill="#0A0A0A">API Laravel</text>
-            <text x="160" y="10" font-family="Geist Mono" font-size="9" fill="#737373">healthy</text>
-            <text x="470" y="10" font-family="Geist Mono" font-size="9" fill="#0A0A0A" font-weight="600" text-anchor="end">p95 230 ms</text>
-          </g>
-          <line x1="40" y1="238" x2="500" y2="238" stroke="#F5F5F5"/>
-
-          <g transform="translate(40 252)">
-            <circle cx="6" cy="6" r="4" fill="#10B981"/>
-            <text x="20" y="10" font-family="Geist" font-weight="500" font-size="11" fill="#0A0A0A">PostgreSQL 16</text>
-            <text x="160" y="10" font-family="Geist Mono" font-size="9" fill="#737373">healthy</text>
-            <text x="470" y="10" font-family="Geist Mono" font-size="9" fill="#0A0A0A" font-weight="600" text-anchor="end">p95 45 ms</text>
-          </g>
-          <line x1="40" y1="264" x2="500" y2="264" stroke="#F5F5F5"/>
-
-          <g transform="translate(40 278)">
-            <circle cx="6" cy="6" r="4" fill="#10B981"/>
-            <text x="20" y="10" font-family="Geist" font-weight="500" font-size="11" fill="#0A0A0A">Redis · queues</text>
-            <text x="160" y="10" font-family="Geist Mono" font-size="9" fill="#737373">healthy · 12 j/s</text>
-            <text x="470" y="10" font-family="Geist Mono" font-size="9" fill="#0A0A0A" font-weight="600" text-anchor="end">p95 2 ms</text>
-          </g>
-          <line x1="40" y1="290" x2="500" y2="290" stroke="#F5F5F5"/>
-
-          <g transform="translate(40 304)">
-            <circle cx="6" cy="6" r="4" fill="#10B981"/>
-            <text x="20" y="10" font-family="Geist" font-weight="500" font-size="11" fill="#0A0A0A">Frontend Next.js</text>
-            <text x="160" y="10" font-family="Geist Mono" font-size="9" fill="#737373">healthy · CWV 95</text>
-            <text x="470" y="10" font-family="Geist Mono" font-size="9" fill="#0A0A0A" font-weight="600" text-anchor="end">LCP 1,4 s</text>
-          </g>
-          <line x1="40" y1="316" x2="500" y2="316" stroke="#F5F5F5"/>
 
           <!-- Footer line -->
-          <text x="40" y="332" font-family="Geist Mono" font-size="8" fill="#a3a3a3">Better Stack · Sentry · PagerDuty</text>
-          <text x="500" y="332" text-anchor="end" font-family="Geist Mono" font-size="8" fill="#10B981" font-weight="600">● synced · il y a 12 s</text>
+          <text x="24" y="352" font-family="Geist Mono" font-size="8" fill="#a3a3a3">Rapport 52 pages · Deck 16 slides · Backlog 28 tickets</text>
+          <text x="516" y="352" text-anchor="end" font-family="Geist Mono" font-size="8" fill="#6D28D9" font-weight="600">Méthodologie ISO 19011</text>
         </svg>
       </div>
 
       <div class="mock-window mw-side">
         <div class="win-chrome" style="background:#0d0d0d;border-color:rgba(255,255,255,0.08)">
           <div class="win-dots"><span></span><span></span><span></span></div>
-          <div class="win-url" style="color:rgba(255,255,255,0.5)">changelog · dernières releases</div>
+          <div class="win-url" style="color:rgba(255,255,255,0.5)">matrice · impact × effort</div>
         </div>
         <div style="padding:18px 20px 16px;background:#0A0A0A;color:#E5E5E5;font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:12px;line-height:1.4">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px">
             <div>
-              <div style="font-family:'Geist Mono';font-size:9px;color:#737373;letter-spacing:0.12em">DEPLOYS · 30 DERNIERS JOURS</div>
-              <div style="font-size:20px;font-weight:700;color:#fff;margin-top:4px">14 releases · <span style="color:#10B981">0 rollback</span></div>
+              <div style="font-family:'Geist Mono';font-size:9px;color:#737373;letter-spacing:0.12em">RECOS PRIORISÉES</div>
+              <div style="font-size:20px;font-weight:700;color:#fff;margin-top:4px">28 tickets · <span style="color:#10B981">12 quick wins</span></div>
             </div>
-            <div style="font-family:'Geist Mono';font-size:10px;color:#10B981;font-weight:700">● MERGED TO MAIN</div>
+            <div style="font-family:'Geist Mono';font-size:10px;color:#A78BFA;font-weight:700">● BOARD-READY</div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:11px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;font-size:11px;gap:10px">
-              <div style="min-width:0;flex:1">
-                <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                  <span style="font-family:'Geist Mono';font-size:10px;color:#A78BFA;font-weight:700">v2.3.1</span>
-                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· il y a 2 j</span>
-                </div>
-                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">✨ Tunnel paiement Stripe · refonte UX</div>
-              </div>
-              <span style="font-family:'Geist Mono';color:#10B981;font-weight:700;font-size:10px;flex-shrink:0">feat</span>
+
+          <!-- Matrix 2x2 -->
+          <div style="position:relative;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:20px 16px 28px;margin-top:4px">
+            <!-- axes labels -->
+            <div style="position:absolute;top:8px;right:14px;font-family:'Geist Mono';font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:0.06em">IMPACT ↑</div>
+            <div style="position:absolute;bottom:10px;right:14px;font-family:'Geist Mono';font-size:9px;color:rgba(255,255,255,0.4);letter-spacing:0.06em">EFFORT →</div>
+
+            <!-- SVG 2x2 grid -->
+            <svg viewBox="0 0 340 220" style="width:100%;display:block">
+              <!-- grid -->
+              <line x1="20" y1="108" x2="320" y2="108" stroke="rgba(255,255,255,0.1)" stroke-dasharray="3 4"/>
+              <line x1="170" y1="10" x2="170" y2="200" stroke="rgba(255,255,255,0.1)" stroke-dasharray="3 4"/>
+              <!-- outer rect -->
+              <rect x="20" y="10" width="300" height="190" rx="6" fill="none" stroke="rgba(255,255,255,0.15)"/>
+
+              <!-- quadrant labels -->
+              <text x="35" y="26" font-family="Geist Mono" font-size="8" fill="#34D399" font-weight="700" letter-spacing="0.08em">QUICK WINS · 12</text>
+              <text x="185" y="26" font-family="Geist Mono" font-size="8" fill="#A78BFA" font-weight="700" letter-spacing="0.08em">STRATEGIC · 8</text>
+              <text x="35" y="196" font-family="Geist Mono" font-size="8" fill="rgba(255,255,255,0.4)" font-weight="700" letter-spacing="0.08em">FILL-INS · 5</text>
+              <text x="185" y="196" font-family="Geist Mono" font-size="8" fill="#FCA5A5" font-weight="700" letter-spacing="0.08em">BACK-BURNER · 3</text>
+
+              <!-- tickets as dots -->
+              <!-- Quick wins (low effort, high impact) -->
+              <circle cx="48" cy="56" r="7" fill="#10B981" opacity="0.9"/>
+              <circle cx="72" cy="48" r="6" fill="#10B981" opacity="0.85"/>
+              <circle cx="95" cy="62" r="7" fill="#10B981" opacity="0.9"/>
+              <circle cx="58" cy="78" r="5" fill="#10B981" opacity="0.75"/>
+              <circle cx="112" cy="72" r="6" fill="#10B981" opacity="0.85"/>
+              <circle cx="85" cy="88" r="6" fill="#10B981" opacity="0.85"/>
+              <circle cx="138" cy="84" r="5" fill="#10B981" opacity="0.75"/>
+              <circle cx="42" cy="94" r="4" fill="#10B981" opacity="0.7"/>
+              <circle cx="125" cy="56" r="5" fill="#10B981" opacity="0.75"/>
+              <circle cx="65" cy="68" r="4" fill="#10B981" opacity="0.7"/>
+              <circle cx="148" cy="68" r="4" fill="#10B981" opacity="0.7"/>
+              <circle cx="105" cy="96" r="4" fill="#10B981" opacity="0.7"/>
+
+              <!-- Strategic (high effort, high impact) -->
+              <circle cx="220" cy="52" r="8" fill="#A78BFA" opacity="0.92"/>
+              <circle cx="252" cy="68" r="9" fill="#A78BFA" opacity="0.95"/>
+              <circle cx="278" cy="48" r="7" fill="#A78BFA" opacity="0.88"/>
+              <circle cx="198" cy="82" r="7" fill="#A78BFA" opacity="0.88"/>
+              <circle cx="292" cy="82" r="6" fill="#A78BFA" opacity="0.85"/>
+              <circle cx="240" cy="94" r="7" fill="#A78BFA" opacity="0.88"/>
+              <circle cx="272" cy="96" r="5" fill="#A78BFA" opacity="0.8"/>
+              <circle cx="215" cy="76" r="5" fill="#A78BFA" opacity="0.8"/>
+
+              <!-- Fill-ins (low effort, low impact) -->
+              <circle cx="56" cy="148" r="5" fill="rgba(255,255,255,0.3)"/>
+              <circle cx="82" cy="168" r="4" fill="rgba(255,255,255,0.3)"/>
+              <circle cx="118" cy="156" r="4" fill="rgba(255,255,255,0.3)"/>
+              <circle cx="142" cy="172" r="3" fill="rgba(255,255,255,0.3)"/>
+              <circle cx="98" cy="142" r="3" fill="rgba(255,255,255,0.3)"/>
+
+              <!-- Back-burner (high effort, low impact) -->
+              <circle cx="232" cy="158" r="5" fill="#EF4444" opacity="0.7"/>
+              <circle cx="272" cy="172" r="4" fill="#EF4444" opacity="0.65"/>
+              <circle cx="295" cy="146" r="4" fill="#EF4444" opacity="0.65"/>
+            </svg>
+          </div>
+
+          <!-- Legend -->
+          <div style="display:flex;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);font-family:'Geist Mono';font-size:9.5px">
+            <div style="display:flex;align-items:center;gap:6px;color:#34D399">
+              <span style="width:7px;height:7px;border-radius:50%;background:#10B981"></span>
+              faire en 1er
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;font-size:11px;gap:10px">
-              <div style="min-width:0;flex:1">
-                <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                  <span style="font-family:'Geist Mono';font-size:10px;color:#A78BFA;font-weight:700">v2.2.9</span>
-                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· il y a 3 j</span>
-                </div>
-                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">🔐 Patch CVE · Laravel 13.4.2 auto-merged</div>
-              </div>
-              <span style="font-family:'Geist Mono';color:#F59E0B;font-weight:700;font-size:10px;flex-shrink:0">sec</span>
+            <div style="display:flex;align-items:center;gap:6px;color:#C4B5FD">
+              <span style="width:7px;height:7px;border-radius:50%;background:#A78BFA"></span>
+              plan 6-12 mois
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;font-size:11px;gap:10px">
-              <div style="min-width:0;flex:1">
-                <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                  <span style="font-family:'Geist Mono';font-size:10px;color:#A78BFA;font-weight:700">v2.2.8</span>
-                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· il y a 5 j</span>
-                </div>
-                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">⚡ Optim queue Redis · −40 % latence jobs</div>
-              </div>
-              <span style="font-family:'Geist Mono';color:#60A5FA;font-weight:700;font-size:10px;flex-shrink:0">perf</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;font-size:11px;gap:10px">
-              <div style="min-width:0;flex:1">
-                <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                  <span style="font-family:'Geist Mono';font-size:10px;color:#A78BFA;font-weight:700">v2.2.7</span>
-                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· il y a 7 j</span>
-                </div>
-                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">📊 Export CSV multi-tenant · 10k lignes/s</div>
-              </div>
-              <span style="font-family:'Geist Mono';color:#10B981;font-weight:700;font-size:10px;flex-shrink:0">feat</span>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;font-size:11px;gap:10px">
-              <div style="min-width:0;flex:1">
-                <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-                  <span style="font-family:'Geist Mono';font-size:10px;color:#A78BFA;font-weight:700">v2.2.6</span>
-                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· il y a 9 j</span>
-                </div>
-                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">🐛 Race condition SSO Azure · fix</div>
-              </div>
-              <span style="font-family:'Geist Mono';color:#EF4444;font-weight:700;font-size:10px;flex-shrink:0">fix</span>
+            <div style="display:flex;align-items:center;gap:6px;color:#FCA5A5">
+              <span style="width:7px;height:7px;border-radius:50%;background:#EF4444"></span>
+              à reporter
             </div>
           </div>
         </div>

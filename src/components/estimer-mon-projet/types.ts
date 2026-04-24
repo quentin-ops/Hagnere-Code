@@ -58,7 +58,7 @@ export const SERVICES: Record<ServiceId, ServiceDef> = {
     label: "Site vitrine ou landing",
     shortLabel: "Site vitrine",
     pricingModel: "oneshot",
-    description: "Showcase, conversion, blog SEO. 6–35 k€",
+    description: "Landing, vitrine 10-20 pages, blog SEO. 6,9 – 22 k€",
   },
   saas: {
     id: "saas",
@@ -66,7 +66,7 @@ export const SERVICES: Record<ServiceId, ServiceDef> = {
     label: "SaaS / appli métier",
     shortLabel: "SaaS",
     pricingModel: "oneshot",
-    description: "Plateforme B2B/B2C, multi-tenant, IA. 25–120 k€",
+    description: "MVP → SaaS multi-tenant + IA. 15 – 120 k€",
   },
   "outil-interne": {
     id: "outil-interne",
@@ -74,7 +74,7 @@ export const SERVICES: Record<ServiceId, ServiceDef> = {
     label: "Outil interne / back-office",
     shortLabel: "Outil interne",
     pricingModel: "oneshot",
-    description: "CRM, workflow, automatisation. 8–80 k€",
+    description: "CRM, workflow, automatisation. 8 – 80 k€",
   },
   ecommerce: {
     id: "ecommerce",
@@ -82,7 +82,7 @@ export const SERVICES: Record<ServiceId, ServiceDef> = {
     label: "E-commerce sur mesure",
     shortLabel: "E-commerce",
     pricingModel: "oneshot",
-    description: "Boutique haut de gamme, Shopify Plus. 10–150 k€",
+    description: "Boutique custom, B2B, multi-pays. 15 – 70 k€",
   },
   "app-mobile": {
     id: "app-mobile",
@@ -90,7 +90,7 @@ export const SERVICES: Record<ServiceId, ServiceDef> = {
     label: "App mobile iOS / Android",
     shortLabel: "App mobile",
     pricingModel: "oneshot",
-    description: "React Native, push, hors-ligne. +10–60 k€",
+    description: "React Native, push, hors-ligne. +12 – 60 k€",
   },
   refonte: {
     id: "refonte",
@@ -98,7 +98,7 @@ export const SERVICES: Record<ServiceId, ServiceDef> = {
     label: "Refonte d'un projet existant",
     shortLabel: "Refonte",
     pricingModel: "oneshot",
-    description: "Migration, modernisation. 15–120 k€ + audit",
+    description: "Migration, modernisation. 19 – 80 k€ + audit",
   },
 
   // ── FAIRE GRANDIR ──
@@ -108,7 +108,7 @@ export const SERVICES: Record<ServiceId, ServiceDef> = {
     label: "SEO & référencement",
     shortLabel: "SEO",
     pricingModel: "retainer",
-    description: "Audit, contenu, tech, netlinking. 2,5–5 k€/mois",
+    description: "Audit, contenu, tech, netlinking. 1,45 – 4,9 k€/mois",
   },
   ads: {
     id: "ads",
@@ -124,7 +124,7 @@ export const SERVICES: Record<ServiceId, ServiceDef> = {
     label: "Contenu & vidéo",
     shortLabel: "Vidéo",
     pricingModel: "retainer",
-    description: "YouTube, motion, UGC. 2,5–6,9 k€/mois",
+    description: "YouTube, motion, UGC. 3,5 – 6,9 k€/mois (ou 2,5 k€ ponctuelle)",
   },
 
   // ── PROTÉGER & OPÉRER ──
@@ -134,7 +134,7 @@ export const SERVICES: Record<ServiceId, ServiceDef> = {
     label: "Maintenance & évolution",
     shortLabel: "Maintenance",
     pricingModel: "retainer",
-    description: "Run, monitoring, SLA, évos mensuelles. 2,5–14 k€/mois",
+    description: "Run, monitoring, SLA, évos mensuelles. 2,5 – 14 k€/mois",
   },
   "securite-rgpd": {
     id: "securite-rgpd",
@@ -142,7 +142,7 @@ export const SERVICES: Record<ServiceId, ServiceDef> = {
     label: "Sécurité & RGPD / DPO",
     shortLabel: "Sécurité",
     pricingModel: "mixed",
-    description: "Cadrage + DPO mensuel + sprints. 5 k€ + 1,2–3,5 k€/mois",
+    description: "Cadrage + DPO mensuel + sprints. 5 k€ + 1,2 – 3,5 k€/mois",
   },
   "audit-technique": {
     id: "audit-technique",
@@ -150,7 +150,7 @@ export const SERVICES: Record<ServiceId, ServiceDef> = {
     label: "Audit technique",
     shortLabel: "Audit tech",
     pricingModel: "oneshot",
-    description: "Code review, perf, sécurité, archi. 6–15 k€",
+    description: "Code review, perf, sécurité, archi. 8 – 38 k€",
   },
 };
 

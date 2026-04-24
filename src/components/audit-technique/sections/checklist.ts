@@ -1,15 +1,16 @@
 export const checklistHtml = `
-<!-- CHECKLIST INCLUS / HORS SCOPE — M&E -->
+<!-- DELIVERABLES · Ce qu'il y a dans votre rapport (12 inclus + 6 extras) -->
 <section class="at-check">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ce que "TMA Hagnéré" veut dire</div>
-        <h2>Douze briques incluses<br>dans chaque forfait mensuel.</h2>
+        <div class="eyebrow">— Ce qu'il y a dans votre rapport</div>
+        <h2>Douze livrables inclus,<br>six extras facturables —<br>tarifs publics.</h2>
       </div>
       <div class="right">
-        "On fait de la maintenance" c'est trop vague. Voilà la liste exacte de ce qui rentre
-        dans le forfait — et ce qui n'y rentre pas. <b>Pas d'avenant surprise à J+60.</b>
+        « Audit » chez Hagnéré ne veut pas dire « un PDF générique de 80 pages ». Voici la liste <b>exhaustive</b>
+        des artefacts livrés dans chaque audit Standard — plus ce qui est en option si votre contexte le demande.
+        <b>Sample anonymisé téléchargeable</b> avant signature.
       </div>
     </div>
 
@@ -19,101 +20,101 @@ export const checklistHtml = `
         <div class="at-check-head">
           <div class="at-check-badge at-check-badge-in">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>
-            INCLUS DANS LE FORFAIT
+            INCLUS DANS L'AUDIT STANDARD · 18 k€
           </div>
-          <h3>Douze briques, tous les mois.</h3>
+          <h3>Douze livrables, à chaque audit.</h3>
         </div>
         <ul class="at-check-list">
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Équipe nommée dans le contrat</b> — photo, prénom, rôle des 2 à 4 personnes qui gèrent votre compte. Remplacement garanti sous préavis, overlap 2 semaines.</div>
+            <div><b>Rapport PDF 40-70 pages</b> — structuré par les 8 dimensions auditées, chaque recommandation chiffrée en jours/homme + priorité P1/P2/P3.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Monitoring 24/7</b> — Sentry (erreurs), Better Stack (uptime + statuspage), Grafana (métriques), Axiom (logs). Alerte Slack &lt; 5 min sur incident P1.</div>
+            <div><b>Tech Debt P&amp;L · livrable signature</b> — dette technique traduite en euros, breakdown par dimension, coût de remédiation 6/12/18 mois. Le document que votre board va lire en premier.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Patches sécurité automatisés</b> — Dependabot + Renovate en mode merge-auto pour les mises à jour non-breaking, revue humaine pour les major bumps.</div>
+            <div><b>Deck exécutif 12-18 slides</b> — format 16:9, board-ready, éditable Keynote/Google Slides. Pensé pour être présenté en 20 min par votre CEO ou CTO.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>CVE critiques patchés sous 48 h</b> — CVSS ≥ 7, on patche en priorité absolue. Hotfix + déploiement + communication client documentée.</div>
+            <div><b>Version board-safe</b> — même contenu, mais <b>anonymisée</b> (sans noms de devs), no-blame, sans détails qui pourraient se retourner en négo salariale ou en M&amp;A.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Déploiements zero-downtime</b> — blue-green deploy, migrations Laravel en expand/migrate/contract, rollback 1-clic. Jamais de maintenance planifiée visible.</div>
+            <div><b>Backlog priorisé Notion / Linear</b> — 20 à 30 tickets actionnables, chiffrés en j/h et €, taggés par dimension et priorité. Votre CTO peut les injecter en sprint dès J+11.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Backups continus &amp; DR testée</b> — PostgreSQL WAL continu, rétention 30 jours + snapshot hebdo 1 an. <b>RPO 15 min · RTO 1 h</b>. Restauration testée tous les trimestres.</div>
+            <div><b>Matrice impact × effort 2×2</b> — les 28 tickets placés graphiquement&nbsp;: quick wins, strategic, fill-ins, back-burner. Aide à la décision pour les 90 jours suivants.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Support prioritaire Slack Connect</b> — canal partagé avec votre équipe. Réponse &lt; 2 h en heures ouvrées, &lt; 30 min pour les urgences.</div>
+            <div><b>Score /100 par dimension</b> — 8 scores + score global pondéré. Méthodologie ISO 19011 documentée, benchmark percentile vs. base propriétaire Hagnéré (47 audits comparables).</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Astreinte contractuelle</b> — PagerDuty, MTTR cible &lt; 30 min P1. Pénalités SLA chiffrées et auto-appliquées en avoir si SLA manqué.</div>
+            <div><b>Diagrammes archi C4 AS-IS + TO-BE</b> — system, container, component. Exportés SVG + PDF, réutilisables dans votre documentation long-terme.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Roadmap trimestrielle partagée</b> — Linear ou Notion ouvert, OKRs tech alignés sur vos OKRs produit. Comité produit/tech mensuel 1 h.</div>
+            <div><b>Loom de restitution 20-30 min</b> — asynchrone, partageable avec votre board, VC ou acquéreur. Signé Quentin + l'auditeur lead.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Post-mortem sous 72 h</b> — pour chaque incident P1/P2, rapport documenté sans blame, action items trackés dans le backlog. Culture d'apprentissage.</div>
+            <div><b>Roadmap remédiation 6/12/18 mois</b> — 3 scenarios (conservateur, médian, ambitieux), chacun chiffré en j/h et capex. Votre CFO peut l'intégrer au budget N+1.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Rapport mensuel business-ready</b> — uptime, incidents, deploys, patches, velocity, consommation jours. Chiffres bruts, pas de marketing.</div>
+            <div><b>Exports techniques bruts</b> — SAST (SonarQube/Semgrep), dépendances CVE (Snyk), logs benchmarks, profils de performance. Vos devs peuvent creuser.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Passation de fin de contrat</b> — si vous partez, 5 jours offerts pour former votre équipe suivante, docs exhaustives, Loom d'onboarding. <b>Pas de rétention par l'ignorance</b>.</div>
+            <div><b>NDA mutuel + clause de non-conflit d'intérêt</b> — signés à J0. 100 % de l'audit déduit d'une mission de remédiation &gt; 50 k€ si vous nous la confiez (optionnel, aligne nos intérêts).</div>
           </li>
         </ul>
       </div>
 
-      <!-- HORS SCOPE -->
+      <!-- HORS SCOPE / EXTRAS -->
       <div class="at-check-col at-check-out reveal reveal-d-1">
         <div class="at-check-head">
           <div class="at-check-badge at-check-badge-out">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M6 18L18 6"/></svg>
-            HORS SCOPE (ON VOUS LE DIT TÔT)
+            EXTRAS · FACTURÉS SÉPARÉMENT SI BESOIN
           </div>
-          <h3>Ce qu'on ne fera pas<br>dans le forfait.</h3>
+          <h3>Six options<br>selon votre contexte.</h3>
         </div>
         <ul class="at-check-list at-check-list-out">
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Refonte complète ou v2 from scratch</b> — si votre app doit repartir de zéro, c'est notre <b>service SaaS &amp; applications métier</b>, scoping et facturation séparés.</div>
+            <div><b>Pentest externe agréé CERT-FR · +8 à 15 k€</b> — partenaire spécialisé, OWASP top 10 complet, rapport CVSS, obligatoire pour SOC2 / ISO 27001 sérieuses.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Factures cloud</b> — AWS / OVH / Scaleway / Vercel restent sur <b>votre compte</b>, facturés directement par le provider. Pas de rebilling, pas de margeage, pas de lock-in.</div>
+            <div><b>Retest post-remédiation 60-90j · +3 à 6 k€</b> — 30 % du prix initial. Vérifie que les recos P1/P2 ont été implémentées correctement. Livrable "après / avant" chiffré.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Licences SaaS tiers</b> — Stripe, Intercom, HubSpot, Sentry enterprise : ces abonnements sont à votre nom. On les paramètre et les opère, mais les factures sont chez vous.</div>
+            <div><b>Shadow CTO 1 mois post-audit · +8 à 15 k€</b> — un de nos seniors accompagne votre équipe (ou votre nouveau CTO) pendant 4 semaines pour embarquer les premières recommandations sans dérapage.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Support end-user</b> — vos utilisateurs finaux, c'est votre équipe ou une solution dédiée (Crisp, Intercom, CS). On livre un back-office solide, pas des agents humains.</div>
+            <div><b>Restitution board physique · +1,5 à 3 k€</b> — demi-journée sur site à Paris/Lyon/Chambéry, Quentin + l'auditeur lead présentent au CA, répondent aux questions.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Applications mobiles natives</b> — Swift, Kotlin, React Native gros volume&nbsp;: scoping séparé. On sait maintenir des webviews + PWA, pas remplacer une équipe mobile dédiée.</div>
+            <div><b>FinOps deep-dive cloud · +4 à 8 k€</b> — 3-5 j supplémentaires sur l'optimisation AWS/OVH/Scaleway/GCP. Économies typiques identifiées&nbsp;: 20-40 % du budget cloud annuel.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Certifications officielles lourdes</b> — SOC2 Type 2, ISO 27001, HDS. <b>On prépare le terrain</b>, on monte le dossier, mais l'audit officiel est mené par un tiers habilité (Vanta, Drata, puis auditeur).</div>
+            <div><b>Couche IA / LLM · +3 à 6 k€</b> — si votre app utilise Claude / GPT / Gemini&nbsp;: audit des prompts, coût tokens, hallucination monitoring, observabilité IA, conformité Act AI.</div>
           </li>
         </ul>
 
         <div class="at-check-note">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-          Si un de ces points doit rentrer dans le forfait, on en parle au cadrage et on ajuste le périmètre ensemble — pas via avenant surprise.
+          Les extras sont <b>chiffrés à l'avance</b> dans le devis initial. Aucun extra facturé pendant l'audit sans votre accord écrit. <b>Pas de "petites précisions" déguisées en avenants</b>.
         </div>
       </div>
     </div>

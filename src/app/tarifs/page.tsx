@@ -4,12 +4,12 @@ import { TarifsPage } from "@/components/tarifs/TarifsPage";
 export const metadata: Metadata = {
   title: "Tarifs — Forfait fixe, jamais de surprise · Hagnéré Code",
   description:
-    "Discovery Sprint à 1 500 €, MVP SaaS dès 15 k€, sites vitrines dès 6 k€, partenariat 8–20 k€/mois. Tous nos forfaits, tarifs détaillés par service, maintenance et comparatif. Code chez vous, garantie 30 jours.",
+    "Discovery Sprint à 1 500 €, MVP SaaS dès 15 k€, sites vitrines dès 6,9 k€, partenariat dès 120 k€. Tous nos forfaits, tarifs détaillés par service, maintenance et comparatif. Code chez vous, garantie 30 jours.",
   alternates: { canonical: "/tarifs" },
   openGraph: {
     title: "Tarifs — Hagnéré Code · Forfait fixe, jamais de surprise",
     description:
-      "Discovery Sprint 1 500 €, MVP SaaS dès 15 k€, sites vitrines dès 6 k€. Code chez vous, garantie 30 jours.",
+      "Discovery Sprint 1 500 €, MVP SaaS dès 15 k€, sites vitrines dès 6,9 k€. Code chez vous, garantie 30 jours.",
     url: "/tarifs",
     type: "website",
   },

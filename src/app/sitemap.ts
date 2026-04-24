@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { CASE_SLUGS } from "@/components/realisations/cases";
 
 const baseUrl = "https://hagnere-code.fr";
 
@@ -81,5 +82,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...serviceRoutes];
+  const caseRoutes: MetadataRoute.Sitemap = CASE_SLUGS.map((slug) => ({
+    url: `${baseUrl}/realisations/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...serviceRoutes, ...caseRoutes];
 }

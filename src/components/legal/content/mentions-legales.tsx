@@ -261,6 +261,129 @@ export const mentionsLegalesSections: LegalSection[] = [
   },
 
   {
+    id: "calculateur-ia",
+    label: "Calculateur IA",
+    title: "Calculateur d'estimation IA — sous-traitance et flux de données",
+    body: (
+      <>
+        <p>
+          Le Site propose un outil d&apos;estimation de projet intitulé{" "}
+          <a href="/estimer-mon-projet">« Estimer mon projet »</a> qui repose sur
+          le service <strong>Claude (modèle Opus 4.7)</strong> fourni par la
+          société <strong>Anthropic, PBC</strong>. Conformément à l&apos;article 28
+          du RGPD, Anthropic agit en qualité de <strong>sous-traitant</strong>{" "}
+          de HAGNÉRÉ CODE SAS pour le traitement automatisé de la description
+          de projet saisie par l&apos;utilisateur.
+        </p>
+
+        <h3>Données transmises à Anthropic</h3>
+        <ul>
+          <li>
+            <strong>La description libre du projet</strong> saisie par
+            l&apos;utilisateur dans le formulaire (champ texte de 50 à 4 000
+            caractères).
+          </li>
+          <li>
+            <strong>Les réponses structurées</strong> aux questionnaires par
+            service (cases cochées, niveaux d&apos;urgence, périmètres
+            sélectionnés) — ces données sont anonymes et ne contiennent
+            aucune donnée personnelle.
+          </li>
+          <li>
+            <strong>Aucune donnée de contact</strong> (nom, prénom, email,
+            entreprise) n&apos;est transmise à Anthropic. Les coordonnées
+            facultatives saisies à la dernière étape du calculateur sont
+            traitées séparément, uniquement par HAGNÉRÉ CODE SAS, et ne
+            transitent jamais par l&apos;API d&apos;Anthropic.
+          </li>
+        </ul>
+
+        <h3>Localisation et garanties</h3>
+        <p>
+          Les serveurs d&apos;Anthropic sont situés aux <strong>États-Unis</strong>.
+          Anthropic, PBC est certifiée au titre du{" "}
+          <strong>EU-US Data Privacy Framework (DPF)</strong> depuis 2024, ce
+          qui constitue, au sens des articles 44 et suivants du RGPD, une
+          décision d&apos;adéquation valide pour le transfert de données
+          personnelles depuis l&apos;Union européenne. La politique de
+          confidentialité d&apos;Anthropic est consultable à l&apos;adresse{" "}
+          <a
+            href="https://www.anthropic.com/legal/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            anthropic.com/legal/privacy
+          </a>
+          .
+        </p>
+        <p>
+          Conformément aux conditions commerciales d&apos;Anthropic applicables aux
+          appels API, <strong>les données transmises ne sont pas utilisées
+          pour entraîner les modèles</strong> et sont conservées au maximum 30
+          jours pour des raisons de conformité (détection d&apos;usages abusifs).
+        </p>
+
+        <h3>Conservation côté HAGNÉRÉ CODE</h3>
+        <p>
+          La description du projet et l&apos;estimation générée{" "}
+          <strong>ne sont pas stockées sur nos serveurs</strong>. Elles
+          transitent en flux entre votre navigateur, l&apos;API d&apos;Anthropic et le
+          rendu affiché à l&apos;écran, puis sont effacées à la fermeture de
+          l&apos;onglet. Seules les coordonnées de contact que vous choisissez de
+          nous communiquer sont conservées (3 ans après le dernier échange,
+          cf. section « Données personnelles »).
+        </p>
+
+        <h3>Vos droits spécifiques au calculateur</h3>
+        <ul>
+          <li>
+            <strong>Utilisation anonyme</strong> : vous pouvez utiliser le
+            calculateur sans laisser aucune coordonnée. Le résultat s&apos;affiche
+            à l&apos;écran et reste sur votre appareil uniquement.
+          </li>
+          <li>
+            <strong>Droit d&apos;opposition</strong> : vous pouvez à tout moment
+            refuser cette sous-traitance et nous contacter directement par les
+            canaux classiques (téléphone, email, formulaire de contact) pour
+            obtenir un devis manuel.
+          </li>
+          <li>
+            <strong>Droit à l&apos;effacement</strong> : si vous avez fourni vos
+            coordonnées et souhaitez en demander la suppression, écrivez-nous
+            à{" "}
+            <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>{" "}
+            (suppression sous 30 jours).
+          </li>
+        </ul>
+
+        <div className="lp-callout">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 8v4M12 16h.01" />
+          </svg>
+          <div>
+            <b>Caractère indicatif des estimations.</b> Les fourchettes
+            tarifaires renvoyées par le calculateur IA sont une simulation
+            statistique fondée sur nos barèmes internes et nos projets
+            antérieurs. Elles n&apos;engagent en aucun cas HAGNÉRÉ CODE SAS sur un
+            chiffrage définitif, qui fait toujours l&apos;objet d&apos;un{" "}
+            <strong>Discovery Sprint payant</strong> (1 500 € HT, déduits du
+            devis final en cas de signature) débouchant sur un devis nominatif
+            ferme.
+          </div>
+        </div>
+      </>
+    ),
+  },
+
+  {
     id: "cookies",
     label: "Cookies",
     title: "Cookies et traceurs",

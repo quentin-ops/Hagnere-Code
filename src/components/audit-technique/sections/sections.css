@@ -5016,3 +5016,415 @@
   box-shadow: 0 10px 24px -12px rgba(109, 40, 217, 0.45);
 }
 .at-testi-casestudy svg { flex-shrink: 0; }
+
+/* ================================================================
+   HERO · NDA pill (signed-at-kickoff static pill, audit tech)
+   ================================================================ */
+.at-nda-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 11px 5px 8px;
+  background: linear-gradient(135deg, #EDE9FE 0%, #DDD6FE 100%);
+  border: 1px solid #C4B5FD;
+  border-radius: 999px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #4C1D95;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.at-nda-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7C3AED;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.22);
+  animation: at-nda-pulse 2.4s ease-in-out infinite;
+}
+@keyframes at-nda-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.22); }
+  50%      { box-shadow: 0 0 0 6px rgba(124, 58, 237, 0.08); }
+}
+.at-nda-txt {
+  color: #4C1D95;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+.at-nda-state {
+  color: #6D28D9;
+  font-weight: 700;
+  font-size: 10.5px;
+  padding-left: 8px;
+  margin-left: 2px;
+  border-left: 1px solid rgba(109, 40, 217, 0.3);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+@media (max-width: 640px) {
+  .at-nda-pill { font-size: 10.5px; padding: 4px 9px 4px 6px; }
+  .at-nda-state { display: none; }
+}
+
+/* ================================================================
+   TIMELINE · frise horizontale 10 jours (audit technique)
+   ================================================================ */
+.at-timeline {
+  margin: 56px 0 32px;
+  padding: 32px 40px 36px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 40px 80px -40px rgba(109, 40, 217, 0.3);
+  position: relative;
+}
+.at-timeline-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.at-timeline-k {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.at-timeline-meta {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.04em;
+}
+
+/* The rail with 7 milestones */
+.at-timeline-rail {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+  position: relative;
+  padding: 40px 0 12px;
+}
+.at-timeline-bar {
+  position: absolute;
+  top: 58px;
+  left: 7.14%; /* center first dot */
+  right: 7.14%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  z-index: 0;
+}
+.at-timeline-fill {
+  position: absolute;
+  top: 58px;
+  left: 7.14%;
+  width: calc(3.5 / 6 * (100% - 14.28%)); /* fills through 4th dot */
+  height: 2px;
+  background: linear-gradient(90deg, #6D28D9 0%, #A78BFA 100%);
+  border-radius: 2px;
+  z-index: 1;
+  box-shadow: 0 0 16px rgba(167, 139, 250, 0.4);
+}
+
+.at-timeline-step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 8px;
+}
+.at-timeline-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid #1a1030;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+  position: relative;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+.at-timeline-step.is-done .at-timeline-dot {
+  background: #6D28D9;
+  box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.25);
+}
+.at-timeline-step.is-active .at-timeline-dot {
+  background: #A78BFA;
+  box-shadow: 0 0 0 5px rgba(167, 139, 250, 0.25), 0 0 18px rgba(167, 139, 250, 0.45);
+  animation: at-tl-pulse 2.4s ease-in-out infinite;
+}
+.at-timeline-step.is-end .at-timeline-dot {
+  background: #10B981;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+}
+@keyframes at-tl-pulse {
+  0%, 100% { box-shadow: 0 0 0 5px rgba(167, 139, 250, 0.25), 0 0 18px rgba(167, 139, 250, 0.45); }
+  50%      { box-shadow: 0 0 0 7px rgba(167, 139, 250, 0.15), 0 0 22px rgba(167, 139, 250, 0.55); }
+}
+
+.at-timeline-label {
+  margin-top: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 120px;
+}
+.at-timeline-day {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.at-timeline-step.is-done .at-timeline-day { color: #C4B5FD; }
+.at-timeline-step.is-active .at-timeline-day { color: #A78BFA; }
+.at-timeline-step.is-end .at-timeline-day { color: #34D399; }
+
+.at-timeline-title {
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+.at-timeline-body {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.4;
+  max-width: 160px;
+  margin: 0 auto;
+}
+.at-timeline-milestone {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: rgba(167, 139, 250, 0.15);
+  color: #C4B5FD;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  white-space: nowrap;
+  align-self: center;
+}
+.at-timeline-step.is-end .at-timeline-milestone {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34D399;
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.at-timeline-legend {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+.at-timeline-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.04em;
+}
+.at-timeline-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.at-timeline-legend-dot.is-done { background: #6D28D9; box-shadow: 0 0 0 2px rgba(109, 40, 217, 0.3); }
+.at-timeline-legend-dot.is-active { background: #A78BFA; box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.4); }
+.at-timeline-legend-dot.is-end { background: #10B981; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.4); }
+
+/* Mobile : stack vertical */
+@media (max-width: 1100px) {
+  .at-timeline { padding: 24px 20px 28px; }
+  .at-timeline-rail {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px 0 12px;
+  }
+  .at-timeline-bar,
+  .at-timeline-fill { display: none; }
+  .at-timeline-step {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0;
+    gap: 16px;
+    padding-left: 12px;
+    border-left: 2px solid rgba(167, 139, 250, 0.2);
+  }
+  .at-timeline-step.is-done { border-left-color: #6D28D9; }
+  .at-timeline-step.is-active { border-left-color: #A78BFA; }
+  .at-timeline-step.is-end { border-left-color: #10B981; }
+  .at-timeline-dot {
+    margin-top: 2px;
+    margin-left: -20px;
+    flex-shrink: 0;
+  }
+  .at-timeline-label {
+    margin-top: 0;
+    text-align: left;
+    min-height: auto;
+  }
+  .at-timeline-body { max-width: none; margin: 0; }
+  .at-timeline-milestone { align-self: flex-start; }
+  .at-timeline-legend { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+@media (max-width: 640px) {
+  .at-timeline-head { flex-direction: column; gap: 6px; align-items: flex-start; }
+}
+
+/* ================================================================
+   PRICING EXTRAS · 6 extras chiffrés à l'avance
+   ================================================================ */
+.at-pricing-extras {
+  padding: 32px 36px;
+  background: linear-gradient(160deg, #fff 0%, var(--paper-2) 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+.at-pricing-extras-head {
+  max-width: 700px;
+}
+.at-pricing-extras-head h3 {
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.at-pricing-extras-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.at-pricing-extra {
+  display: flex;
+  gap: 14px;
+  padding: 18px 18px 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.at-pricing-extra:hover {
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--line) 72%);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 30px -22px rgba(109, 40, 217, 0.2);
+}
+.at-pricing-extra-ic {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.at-pricing-extra-body {
+  flex: 1;
+  min-width: 0;
+}
+.at-pricing-extra-title {
+  font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.at-pricing-extra-price {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12px;
+  color: var(--accent-ink);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+.at-pricing-extra-sub {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .at-pricing-extras { padding: 24px 20px; }
+  .at-pricing-extras-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .at-pricing-extras-grid { grid-template-columns: 1fr; }
+}
+
+/* ================================================================
+   PRICING · 4 tiers override (Express / Standard / Deep / Tech DD M&A)
+   ================================================================ */
+.pricing .price-grid {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.pricing .plan {
+  padding: 22px 20px;
+}
+.pricing .plan h4 {
+  font-size: 22px;
+}
+.pricing .plan-sub {
+  font-size: 13px;
+  line-height: 1.5;
+  min-height: 60px;
+}
+.pricing .plan-price {
+  flex-wrap: wrap;
+  row-gap: 4px;
+}
+.pricing .plan-price .amount {
+  font-size: 34px;
+  white-space: nowrap;
+}
+.pricing .plan-price .per {
+  white-space: nowrap;
+}
+.pricing .plan-features {
+  font-size: 13.5px;
+}
+.pricing .plan-features li {
+  gap: 8px;
+  padding: 5px 0;
+}
+
+@media (max-width: 1200px) {
+  .pricing .price-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pricing .plan-sub {
+    min-height: unset;
+  }
+}
+@media (max-width: 640px) {
+  .pricing .price-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* FAQ filter · VC persona (audit-technique uniquement) */
+.faq-list[data-faq-filter="vc"] .faq-item:not([data-persona~="vc"]) { display: none; }

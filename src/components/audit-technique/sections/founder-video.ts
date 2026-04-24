@@ -1,6 +1,6 @@
 export const founderVideoHtml = `
-<!-- FOUNDER VIDEO · message 60-90s pour décideur non-tech -->
-<section class="me-founder-video" id="founder-video">
+<!-- FOUNDER VIDEO · angle Conflict of Interest (audit tech) -->
+<section class="at-founder-video" id="founder-video">
   <div class="wrap">
     <div class="at-fv-grid reveal">
       <!-- Video thumbnail -->
@@ -24,7 +24,6 @@ export const founderVideoHtml = `
                 </radialGradient>
               </defs>
               <rect width="400" height="240" fill="url(#at-fv-bg)"/>
-              <!-- subtle grid -->
               <g opacity="0.08" stroke="#fff" stroke-width="0.5">
                 <line x1="0" y1="60" x2="400" y2="60"/>
                 <line x1="0" y1="120" x2="400" y2="120"/>
@@ -33,41 +32,41 @@ export const founderVideoHtml = `
                 <line x1="200" y1="0" x2="200" y2="240"/>
                 <line x1="300" y1="0" x2="300" y2="240"/>
               </g>
-              <!-- glow behind avatar -->
               <circle cx="200" cy="110" r="120" fill="url(#at-fv-glow)"/>
-              <!-- avatar placeholder -->
               <circle cx="200" cy="110" r="52" fill="url(#at-fv-avatar)"/>
               <text x="200" y="122" text-anchor="middle" font-family="Geist" font-weight="600" font-size="32" fill="#fff">QH</text>
-              <!-- caption at bottom -->
               <rect x="20" y="196" width="120" height="26" rx="13" fill="rgba(0,0,0,0.7)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
               <text x="34" y="212" font-family="Geist" font-size="11" fill="#fff" font-weight="500">Quentin Hagnéré</text>
-              <rect x="330" y="198" width="52" height="22" rx="4" fill="rgba(239,68,68,0.9)"/>
-              <text x="356" y="213" text-anchor="middle" font-family="Geist Mono" font-size="10" font-weight="700" fill="#fff">● LIVE</text>
+              <!-- "Conflict of interest free" badge instead of LIVE -->
+              <rect x="268" y="198" width="114" height="22" rx="4" fill="rgba(16,185,129,0.9)"/>
+              <text x="325" y="213" text-anchor="middle" font-family="Geist Mono" font-size="10" font-weight="700" fill="#fff">● ZÉRO CONFLIT D'INTÉRÊT</text>
             </svg>
           </div>
           <div class="at-fv-play-btn">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><polygon points="8 5 19 12 8 19 8 5"/></svg>
           </div>
-          <div class="at-fv-duration">1 min 22 s</div>
+          <div class="at-fv-duration">1 min 45 s</div>
         </button>
       </div>
 
       <!-- Body -->
       <div class="at-fv-body">
         <div class="eyebrow">— Message du fondateur</div>
-        <h2>« Pourquoi on fait de la TMA<br>alors que c'est moins rentable<br>qu'un nouveau projet. »</h2>
-        <p>Une minute et demie avec Quentin Hagnéré pour répondre à la question qu'on entend le plus en call&nbsp;:
-        pourquoi une agence qui sait construire des SaaS de zéro a choisi de faire de la maintenance long-terme
-        son cœur de métier. <b>Ce qui nous motive, ce qui nous gonfle, et pourquoi nos clients restent 4 ans en moyenne.</b></p>
+        <h2>« Pourquoi on refuse<br>de vous vendre une refonte<br>derrière un audit. »</h2>
+        <p>Une minute et demie avec Quentin Hagnéré pour répondre à <b>la question qu'on entend le plus en call</b>&nbsp;:
+        pourquoi une agence qui fait du développement SaaS accepte de livrer des audits où
+        <b>100 % du prix est déduit si vous nous confiez la remédiation</b>. Ce qui nous motive à
+        ne pas noircir le rapport pour vendre une mission derrière — et pourquoi cette clause
+        est publique sur notre landing.</p>
 
         <div class="at-fv-meta">
           <div class="at-fv-meta-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <span><b>1 min 22 s</b> · sans script</span>
+            <span><b>1 min 45 s</b> · sans script</span>
           </div>
           <div class="at-fv-meta-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-            <span>Sous-titres FR · accessibilité WCAG</span>
+            <span>Clause CoI publique dans nos CGV</span>
           </div>
           <div class="at-fv-meta-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
@@ -76,7 +75,7 @@ export const founderVideoHtml = `
         </div>
 
         <a href="#contact" class="btn btn-ghost btn-lg at-fv-cta">
-          Pas le temps de regarder&nbsp;? Réservez 20 min direct
+          Pas le temps de regarder&nbsp;? Télécharger le sample report
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </div>

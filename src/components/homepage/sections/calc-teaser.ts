@@ -38,7 +38,8 @@ export const calcTeaserHtml = `
             <span class="ct-mock-kind">COÛT ANNUEL ESTIMÉ</span>
           </div>
           <div class="ct-mock-big">54 000 €</div>
-          <div class="ct-mock-sub">5 personnes · 6 h/sem · 45 k€ brut chargé</div>
+          <div class="ct-mock-sub">≈ 47 k€ temps perdu + 7 k€ corrections d'erreurs</div>
+          <div class="ct-mock-formula">5 pers × 6 h/sem × 46 sem × 34 €/h chargé × 1,15</div>
           <div class="ct-mock-sliders">
             <div class="ct-slider">
               <div class="ct-slider-label"><span>Personnes concernées</span><b>5</b></div>

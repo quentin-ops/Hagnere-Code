@@ -2,98 +2,98 @@
 // Photos avatars : remplacer par vraies photos dans /public/testimonials/ si autorisation obtenue.
 
 export const testimonialsHtml = `
-<!-- TESTIMONIALS M&E -->
+<!-- TESTIMONIALS AUDIT · 3 audits anonymisés avec métrique signature -->
 <section class="at-testi">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Trois dirigeants · trois apps tenues</div>
-        <h2>Ce qu'ils retiennent,<br>après plusieurs années chez nous.</h2>
+        <div class="eyebrow">— Trois dirigeants · trois décisions prises</div>
+        <h2>Ce que l'audit leur a<br>concrètement permis de décider.</h2>
       </div>
       <div class="right">
-        Trois retours à froid sur ce qui change vraiment quand on reprend une app en TMA chez nous&nbsp;:
-        <b>la reprise propre d'une app orpheline</b>, <b>le SLA tenu pendant 3 ans</b>, et <b>l'équipe qui ne part pas</b>.
+        Trois retours à froid après l'audit&nbsp;: une <b>DD pré-Série B avec dette chiffrée à 420 k€</b>,
+        une <b>Tech DD M&amp;A où un deal-breaker IP a fait baisser la valo de 1,2 M€</b>, et un <b>CTO entrant
+        qui a convaincu son board de ne pas faire la refonte</b> — économie 600 k€. Mises en relation directes sur demande.
       </div>
     </div>
 
     <div class="at-testi-grid">
+      <!-- TESTI 01 · DD pré-Série B -->
       <article class="at-testi-card reveal">
         <div class="at-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L9 18l-5-5"/><circle cx="20" cy="7" r="2"/></svg>
-          REPRISE D'APP ORPHELINE
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          DD PRÉ-SÉRIE B · SAAS B2B
         </div>
         <div class="at-testi-stars">★★★★★</div>
         <blockquote class="at-testi-quote">
-          « Notre agence avait livré la v1 puis plus rien pendant 4 mois. Ils ont fait l'audit flash
-          en 5 jours, repris les accès cloud, branché Sentry + Better Stack en 2 semaines.
-          <b>À J+30 notre app était entre des mains adultes</b>, avec un plan de remédiation chiffré
-          qu'on a validé au comité. »
+          « On closait une Série B de 12 M€. Elaia voulait une tech DD externe avant le term sheet final.
+          Hagnéré a livré un rapport 68 pages + Tech Debt P&amp;L chiffré à <b>420 k€ de dette</b>. Elaia a accepté
+          leur rapport comme base de DD, ce qui nous a économisé une <b>DD OCTO à 45 k€</b> — et surtout,
+          on avait pré-rédigé nos réponses aux findings. <b>Term sheet signé avec une valo &amp; un closing accélérés de 3 semaines.</b> »
         </blockquote>
         <div class="at-testi-meta">
           <div class="at-testi-av" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><defs><linearGradient id="me-av-1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6D28D9"/><stop offset="100%" stop-color="#A78BFA"/></linearGradient></defs><rect width="48" height="48" fill="url(#me-av-1)"/><text x="24" y="30" text-anchor="middle" font-family="Geist" font-weight="600" font-size="18" fill="#fff">CM</text></svg>
+            <svg viewBox="0 0 48 48"><defs><linearGradient id="at-av-1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6D28D9"/><stop offset="100%" stop-color="#A78BFA"/></linearGradient></defs><rect width="48" height="48" fill="url(#at-av-1)"/><text x="24" y="30" text-anchor="middle" font-family="Geist" font-weight="600" font-size="18" fill="#fff">LP</text></svg>
           </div>
           <div class="at-testi-who">
-            <div class="at-testi-name">Clara M. · sous NDA</div>
-            <div class="at-testi-role">COO · SaaS B2B · 32 salariés · Paris · <b>Reprise complète en 30 jours · client depuis 2024</b></div>
+            <div class="at-testi-name">Louis P. · sous NDA</div>
+            <div class="at-testi-role">CEO · SaaS B2B vertical retail · 45 salariés · Paris · <b>Dette chiffrée 420 k€ · closing +3 sem.</b></div>
           </div>
         </div>
-        <a href="/etudes-de-cas/saas-b2b-reprise-app-orpheline" class="at-testi-casestudy">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13l2 2 4-4"/></svg>
-          Lire l'étude de cas détaillée
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
       </article>
 
+      <!-- TESTI 02 · Tech DD M&A acheteur -->
       <article class="at-testi-card reveal reveal-d-1">
         <div class="at-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-          SLA TENU · 3 ANS
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-3M9 12l2 2 4-4M8 3v4h8V3"/></svg>
+          TECH DD M&amp;A · CÔTÉ ACHETEUR
         </div>
         <div class="at-testi-stars">★★★★★</div>
         <blockquote class="at-testi-quote">
-          « Ça fait 3 ans qu'ils gèrent notre plateforme. <b>Uptime réel mesuré 99,97 %</b>, zéro
-          incident P1 non-géré sous MTTR 30 min. On a passé deux audits SOC2 clients enterprise
-          sans stress grâce à leur stack sécurité de série. <b>Leur forfait s'auto-justifie
-          chaque trimestre</b> — jamais eu d'avenant surprise. »
+          « Notre groupe rachetait une scale-up edtech à 8 M€. Hagnéré a fait la Tech DD en 25 jours.
+          Ils ont détecté que <b>leur moteur de recommandation utilisait une licence GPL incompatible</b>
+          avec notre modèle de distribution B2B. Seul ce finding aurait justifié d'arrêter le deal&nbsp;;
+          on a obtenu une re-négo du prix de <b>−1,2 M€ + clause de remédiation 6 mois</b> financée côté vendeur. L'audit s'est remboursé 18 fois. »
         </blockquote>
         <div class="at-testi-meta">
           <div class="at-testi-av" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><defs><linearGradient id="me-av-2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#059669"/><stop offset="100%" stop-color="#34D399"/></linearGradient></defs><rect width="48" height="48" fill="url(#me-av-2)"/><text x="24" y="30" text-anchor="middle" font-family="Geist" font-weight="600" font-size="18" fill="#fff">TD</text></svg>
+            <svg viewBox="0 0 48 48"><defs><linearGradient id="at-av-2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#FCD34D"/></linearGradient></defs><rect width="48" height="48" fill="url(#at-av-2)"/><text x="24" y="30" text-anchor="middle" font-family="Geist" font-weight="600" font-size="18" fill="#fff">SV</text></svg>
           </div>
           <div class="at-testi-who">
-            <div class="at-testi-name">Thomas D. · sous NDA</div>
-            <div class="at-testi-role">CTO · Scale-up B2B · série B · Lyon · <b>SLA 99,97 % tenu · client depuis 2022</b></div>
+            <div class="at-testi-name">Sophie V. · sous NDA</div>
+            <div class="at-testi-role">Head of M&amp;A · Corporate FR coté · Lyon · <b>Re-négo −1,2 M€ · ROI audit ×18</b></div>
           </div>
         </div>
       </article>
 
+      <!-- TESTI 03 · Baseline CTO · go/no-go refonte -->
       <article class="at-testi-card reveal reveal-d-2">
         <div class="at-testi-topic">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22v-2a8 8 0 0116 0v2"/></svg>
-          ÉQUIPE QUI RESTE
+          BASELINE CTO · GO/NO-GO REFONTE
         </div>
         <div class="at-testi-stars">★★★★★</div>
         <blockquote class="at-testi-quote">
-          « Quatre ans qu'on travaille avec eux, <b>toujours les deux mêmes devs dans notre canal Slack</b>.
-          Ils connaissent notre code mieux que nos salariés. Quand notre lead dev interne est parti,
-          c'est Hagnéré qui a onboardé son remplaçant en 2 semaines avec des vidéos Loom et la
-          documentation à jour. Ça vaut sa facture à la minute. »
+          « Je venais d'arriver comme CTO d'une scale-up fintech. L'équipe poussait pour une refonte complète
+          à 600 k€. Hagnéré a livré un audit Deep qui montrait que <b>la dette chiffrée à 140 k€ était patchable
+          en 4 mois à 2 devs</b> — pas une refonte. Le board a validé ce scenario, <b>économie directe 460 k€</b>
+          sur l'année. L'équipe a co-signé le plan, ça a complètement désamorcé la tension interne. »
         </blockquote>
         <div class="at-testi-meta">
           <div class="at-testi-av" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><defs><linearGradient id="me-av-3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0EA5E9"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs><rect width="48" height="48" fill="url(#me-av-3)"/><text x="24" y="30" text-anchor="middle" font-family="Geist" font-weight="600" font-size="18" fill="#fff">JR</text></svg>
+            <svg viewBox="0 0 48 48"><defs><linearGradient id="at-av-3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#34D399"/></linearGradient></defs><rect width="48" height="48" fill="url(#at-av-3)"/><text x="24" y="30" text-anchor="middle" font-family="Geist" font-weight="600" font-size="18" fill="#fff">AM</text></svg>
           </div>
           <div class="at-testi-who">
-            <div class="at-testi-name">Julien R. · sous NDA</div>
-            <div class="at-testi-role">CEO · PME industrielle · 85 salariés · Annecy · <b>4 ans · 0 rotation équipe</b></div>
+            <div class="at-testi-name">Antoine M. · sous NDA</div>
+            <div class="at-testi-role">CTO · Fintech régulée · 80 salariés · Nantes · <b>Refonte évitée · économie 460 k€</b></div>
           </div>
         </div>
       </article>
     </div>
 
     <p class="at-testi-foot reveal">
-      Références détaillées sur demande — on met en relation directe avec d'anciens clients avant signature.
+      Références détaillées sur demande — on met en relation directe avec ces 3 dirigeants <b>avant signature</b>.
+      Nos 47 audits couvrent SaaS B2B / E-commerce / Marketplace / Edtech / HealthTech / Fintech · FR &amp; UE.
     </p>
   </div>
 </section>

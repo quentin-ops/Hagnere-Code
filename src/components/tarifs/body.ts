@@ -561,10 +561,10 @@ export const bodyHtml = `
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>6–12 k€</b><span>5–8 pages</span></div>
-        <div class="ptcol"><b>12–25 k€</b><span>15–25 pages, blog</span></div>
-        <div class="ptcol"><b>25–50 k€</b><span>multi-langue, CMS, Studio</span></div>
-        <div class="ptcol ptcol-time"><b>2–6 sem.</b></div>
+        <div class="ptcol"><b>6,9 k€</b><span>Essentiel — 3–5 pages</span></div>
+        <div class="ptcol"><b>14,9 k€</b><span>Performance — 10–20 pages, blog</span></div>
+        <div class="ptcol"><b>22 k€</b><span>Sur-mesure — multi-langue, e-com</span></div>
+        <div class="ptcol ptcol-time"><b>2–14 sem.</b></div>
       </div>
 
       <div class="ptable-row">
@@ -579,10 +579,10 @@ export const bodyHtml = `
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>15–30 k€</b><span>MVP 3–5 écrans</span></div>
-        <div class="ptcol"><b>30–60 k€</b><span>10–15 écrans + IA</span></div>
-        <div class="ptcol"><b>60–120 k€</b><span>multi-tenant, mobile</span></div>
-        <div class="ptcol ptcol-time"><b>3–10 sem.</b></div>
+        <div class="ptcol"><b>15 k€</b><span>Essentiel — MVP 3–5 écrans</span></div>
+        <div class="ptcol"><b>30 k€</b><span>Standard — 10–15 écrans + IA</span></div>
+        <div class="ptcol"><b>120 k€</b><span>Partenariat — équipe dédiée</span></div>
+        <div class="ptcol ptcol-time"><b>3–24 sem.</b></div>
       </div>
 
       <div class="ptable-row">
@@ -597,10 +597,10 @@ export const bodyHtml = `
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>8–18 k€</b><span>1 workflow, 1 équipe</span></div>
-        <div class="ptcol"><b>18–40 k€</b><span>multi-équipes, intégrations</span></div>
-        <div class="ptcol"><b>40–80 k€</b><span>ERP léger, IA, BI</span></div>
-        <div class="ptcol ptcol-time"><b>3–8 sem.</b></div>
+        <div class="ptcol"><b>8 k€</b><span>Starter — process ciblé, 1 équipe</span></div>
+        <div class="ptcol"><b>25 k€</b><span>Pro — CRM/ERP léger + intégrations</span></div>
+        <div class="ptcol"><b>80 k€</b><span>Enterprise — SSO, multi-départements</span></div>
+        <div class="ptcol ptcol-time"><b>2–12 sem.</b></div>
       </div>
 
       <div class="ptable-row">
@@ -615,10 +615,10 @@ export const bodyHtml = `
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>10–25 k€</b><span>Shopify thème custom</span></div>
-        <div class="ptcol"><b>25–60 k€</b><span>Shopify Plus, ERP</span></div>
-        <div class="ptcol"><b>60–150 k€</b><span>headless, marketplace</span></div>
-        <div class="ptcol ptcol-time"><b>4–12 sem.</b></div>
+        <div class="ptcol"><b>15 k€</b><span>Launch — 500 produits, Stripe/Alma</span></div>
+        <div class="ptcol"><b>30 k€</b><span>Scale — + app mobile, marketplaces</span></div>
+        <div class="ptcol"><b>70 k€</b><span>Enterprise — B2B + multi-pays</span></div>
+        <div class="ptcol ptcol-time"><b>6–16 sem.</b></div>
       </div>
 
       <div class="ptable-row">
@@ -633,9 +633,9 @@ export const bodyHtml = `
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>+10–20 k€</b><span>compagnon d'un SaaS</span></div>
-        <div class="ptcol"><b>30–60 k€</b><span>app autonome 8–12 écrans</span></div>
-        <div class="ptcol"><b>60–120 k€</b><span>app native, BLE, AR</span></div>
+        <div class="ptcol"><b>+12,5 k€</b><span>compagnon d'un SaaS</span></div>
+        <div class="ptcol"><b>30 k€</b><span>app autonome 8–12 écrans</span></div>
+        <div class="ptcol"><b>60 k€</b><span>native complexe (BLE, AR)</span></div>
         <div class="ptcol ptcol-time"><b>4–10 sem.</b></div>
       </div>
 
@@ -651,10 +651,10 @@ export const bodyHtml = `
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>2–4 k€/m</b><span>10 articles, audit</span></div>
-        <div class="ptcol"><b>4–8 k€/m</b><span>contenu + tech + liens</span></div>
-        <div class="ptcol"><b>8–15 k€/m</b><span>équipe dédiée, vidéo</span></div>
-        <div class="ptcol ptcol-time"><b>6 mois min.</b></div>
+        <div class="ptcol"><b>1 450 €/m</b><span>Fondations — 8 articles + 3 BL</span></div>
+        <div class="ptcol"><b>2 850 €/m</b><span>Croissance — 14 articles + 6 BL</span></div>
+        <div class="ptcol"><b>4 900 €/m</b><span>Premium — 20+ contenus + équipe</span></div>
+        <div class="ptcol ptcol-time"><b>3 mois min.</b></div>
       </div>
 
       <div class="ptable-row">
@@ -669,9 +669,9 @@ export const bodyHtml = `
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>1,5–3 k€/m</b><span>+ 12 % budget média</span></div>
-        <div class="ptcol"><b>3–6 k€/m</b><span>multi-canaux, créa</span></div>
-        <div class="ptcol"><b>6–12 k€/m</b><span>équipe dédiée</span></div>
+        <div class="ptcol"><b>1 800 €/m</b><span>Starter — 2 canaux + tracking SS</span></div>
+        <div class="ptcol"><b>3 500 €/m</b><span>Scale — 3+1 canaux + 8-12 creatives</span></div>
+        <div class="ptcol"><b>4 500 €/m</b><span>Premium — 4-6 canaux + équipe 3 pers.</span></div>
         <div class="ptcol ptcol-time"><b>3 mois min.</b></div>
       </div>
 
@@ -687,10 +687,10 @@ export const bodyHtml = `
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>500–1,5 k€</b><span>vidéo unique</span></div>
-        <div class="ptcol"><b>3–6 k€/m</b><span>4 vidéos / mois</span></div>
-        <div class="ptcol"><b>6–12 k€/m</b><span>YouTube + courts</span></div>
-        <div class="ptcol ptcol-time"><b>2–4 sem./vidéo</b></div>
+        <div class="ptcol"><b>2 500 €</b><span>vidéo unique, sans engagement</span></div>
+        <div class="ptcol"><b>3 500 €/m</b><span>YouTube Founder — 4 longues + 16 shorts</span></div>
+        <div class="ptcol"><b>6 900 €/m</b><span>Content Retainer — 25+ livrables/mois</span></div>
+        <div class="ptcol ptcol-time"><b>6 mois min. retainer</b></div>
       </div>
 
       <div class="ptable-row">
@@ -705,10 +705,10 @@ export const bodyHtml = `
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>1 500 €</b><span>audit éclair 2 j.</span></div>
-        <div class="ptcol"><b>4–8 k€</b><span>audit complet 1 sem.</span></div>
-        <div class="ptcol"><b>8–20 k€</b><span>+ refacto / fixes</span></div>
-        <div class="ptcol ptcol-time"><b>2–10 j.</b></div>
+        <div class="ptcol"><b>8 k€</b><span>Express — 3-5 j ouvrés, 1 senior</span></div>
+        <div class="ptcol"><b>18 k€</b><span>Standard — 10 j, rapport 40-70 p.</span></div>
+        <div class="ptcol"><b>38 k€</b><span>Deep — 15-20 j, restitution CEO/CTO/CFO</span></div>
+        <div class="ptcol ptcol-time"><b>3–20 j. ouvrés</b></div>
       </div>
     </div>
 

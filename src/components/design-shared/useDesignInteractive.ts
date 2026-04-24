@@ -344,7 +344,7 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
     // Used on /services/maintenance-evolution (.me-audit) and /services/audit-technique (.at-audit).
     const auditSection = root.querySelector<HTMLElement>(".me-audit, .at-audit");
     if (auditSection) {
-      const box = auditSection.querySelector<HTMLElement>(".me-audit-box");
+      const box = auditSection.querySelector<HTMLElement>(".me-audit-box, .at-audit-box");
       const resultPanel = auditSection.querySelector<HTMLElement>("[data-audit-result]");
       const questions = Array.from(
         auditSection.querySelectorAll<HTMLElement>("[data-audit-q]"),
@@ -361,20 +361,49 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       if (box && questions.length === 5 && currentLabel && fill && prevBtn && nextBtn && resultPanel) {
         let step = 0;
         const answers: number[] = new Array(5).fill(-1);
-        const questionTopics = [
+
+        // Branche la logique du mini-audit selon la page (M&E vs audit-technique).
+        const isAuditTech = auditSection.classList.contains("at-audit");
+
+        // --- Config M&E : diagnostic "santé de votre app" sur /100 ---
+        const meTopics = [
           "Monitoring d'erreurs",
           "Patch des CVE / dépendances",
           "Backups testés en restauration",
           "Procédure d'incident (runbook)",
           "Bus factor",
         ];
-        const remediations = [
+        const meRemediations = [
           "<b>Brancher Sentry + Better Stack + Grafana</b> dans les 14 premiers jours. Alertes Slack contextualisées, pas du bruit. MTTD médian cible : 2-4 min.",
           "<b>Activer Dependabot + Snyk + auto-merge mineurs</b> sous CI verte. CVE critiques patchés sous 48 h, majors en revue humaine.",
           "<b>Tester les backups en restauration chaque trimestre</b> sur environnement isolé. Runbook DR versionné. RPO 15 min · RTO 1 h.",
           "<b>Écrire runbooks par type d'incident</b> + astreinte PagerDuty + post-mortem sous 72 h sans blame. MTTR divisé par 3.",
           "<b>Binôme obligatoire dès J+1</b> + documentation vivante (Notion + Loom) + onboarding reproductible. Bus factor ≥ 2.",
         ];
+
+        // --- Config audit-technique : recommandation tier sur /160 ---
+        const atTopics = [
+          "Déclencheur de l'audit",
+          "Enjeu business de la décision",
+          "Timeline requise",
+          "Destinataires du rapport",
+          "Maturité actuelle de la tech",
+        ];
+        const atTierLabels = [
+          "Express recommandé · 8 000 €",
+          "Standard recommandé · 18 000 €",
+          "Deep recommandé · 38 000 €",
+          "Tech DD M&A recommandé · 68 000 €",
+        ];
+        const atTierVerdicts = [
+          "Vos réponses indiquent un besoin <b>rapide et ciblé</b>. Format Express 3-5 jours, 1 senior, livrable Notion + Loom. Démarrage sous 3 j ouvrés. <b>8 000 € HT fixe</b>.",
+          "Vos réponses indiquent un besoin <b>complet board-ready</b>. Format Standard 10 jours ouvrés, 2 seniors + associé-lead, 8 dimensions couvertes, Tech Debt P&L chiffré, deck 12-18 slides. <b>18 000 € HT fixe</b>.",
+          "Vos réponses indiquent une <b>décision majeure en jeu</b> (levée, refonte &gt; 500 k€, compliance). Format Deep 15-20 jours, 3 seniors + architecte + associé, rapport 60-80 pages, 3 scenarios chiffrés sur 3 ans. <b>38 000 € HT fixe</b>.",
+          "Vos réponses indiquent une <b>Tech Due Diligence M&amp;A</b>. Format Tech DD M&A 20-30 jours, 4 personnes dédiées + coordination avocats, rapport 80-120 pages, analyse licences OSS + IP, attorney-client privilege. <b>68 000 € HT fixe</b>.",
+        ];
+
+        const questionTopics = isAuditTech ? atTopics : meTopics;
+        const remediations = isAuditTech ? [] : meRemediations;
 
         const showStep = (s: number) => {
           step = s;
@@ -406,7 +435,26 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
           let level = "healthy";
           let label = "Healthy";
           let verdictText = "Votre app est globalement en bonne santé. Quelques points à consolider pour passer de « bon » à « excellent ».";
-          if (total < 40) {
+
+          if (isAuditTech) {
+            // Scoring audit-technique (max 160) → recommande un tier
+            let tierIdx = 1; // default Standard
+            if (total < 50) {
+              tierIdx = 0; // Express
+              level = "healthy";
+            } else if (total < 90) {
+              tierIdx = 1; // Standard
+              level = "healthy";
+            } else if (total < 130) {
+              tierIdx = 2; // Deep
+              level = "attention";
+            } else {
+              tierIdx = 3; // Tech DD M&A
+              level = "critical";
+            }
+            label = atTierLabels[tierIdx];
+            verdictText = atTierVerdicts[tierIdx];
+          } else if (total < 40) {
             level = "critical";
             label = "Remédiation urgente";
             verdictText = "Votre app est en fragilité critique sur plusieurs axes. Un audit complet + plan de remédiation sur 6-12 mois est vivement recommandé.";
@@ -419,17 +467,25 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
             badge.textContent = label;
             badge.dataset.level = level;
           }
-          if (verdict) verdict.textContent = verdictText;
+          if (verdict) {
+            // audit-tech verdicts contiennent du HTML (<b>), M&E verdicts sont du texte pur
+            if (isAuditTech) {
+              verdict.innerHTML = verdictText;
+            } else {
+              verdict.textContent = verdictText;
+            }
+          }
 
-          // Gauge arc animation
+          // Gauge arc animation (scale /100 pour M&E, /160 pour audit-tech)
+          const maxScore = isAuditTech ? 160 : 100;
           if (arc) {
-            const pct = Math.min(100, Math.max(0, total)) / 100;
+            const pct = Math.min(maxScore, Math.max(0, total)) / maxScore;
             const length = 251;
             arc.style.transition = "stroke-dashoffset 0.9s cubic-bezier(0.4, 0, 0.2, 1)";
             arc.style.strokeDashoffset = String(length * (1 - pct));
           }
           if (needle) {
-            const pct = Math.min(100, Math.max(0, total)) / 100;
+            const pct = Math.min(maxScore, Math.max(0, total)) / maxScore;
             const angle = Math.PI * (1 - pct);
             const cx = 100 + Math.cos(angle) * 80;
             const cy = 100 - Math.sin(angle) * 80;
@@ -438,14 +494,24 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
             needle.setAttribute("cy", String(cy));
           }
 
-          // Top 3 priorities = 3 lowest-scoring questions
+          // Résultats : "Pourquoi ce format" pour audit-tech, "Top 3 priorités" pour M&E
           if (prioritiesList) {
-            const scored = answers.map((v, i) => ({ v, i, topic: questionTopics[i], rem: remediations[i] }));
-            scored.sort((a, b) => a.v - b.v);
-            const top3 = scored.slice(0, 3).filter((s) => s.v < 20);
-            prioritiesList.innerHTML = top3.length
-              ? top3.map((s) => `<li><div><b>${s.topic}</b><br>${s.rem}</div></li>`).join("")
-              : `<li><div><b>Tout est vert</b><br>Félicitations — votre setup M&E est au niveau des meilleures pratiques 2026. Gardez le cap.</div></li>`;
+            if (isAuditTech) {
+              // Afficher les 5 critères avec la valeur sélectionnée, expliquant le tier
+              const criteriaExplainer = answers.map((v, i) => {
+                const weight = v >= 25 ? "fort" : v >= 15 ? "moyen" : "faible";
+                return `<li><div><b>${questionTopics[i]}</b><br>Poids ${weight} dans votre profil · contribue à ${v} pts.</div></li>`;
+              });
+              prioritiesList.innerHTML = criteriaExplainer.join("");
+            } else {
+              // Top 3 priorities = 3 lowest-scoring questions (M&E)
+              const scored = answers.map((v, i) => ({ v, i, topic: questionTopics[i], rem: remediations[i] }));
+              scored.sort((a, b) => a.v - b.v);
+              const top3 = scored.slice(0, 3).filter((s) => s.v < 20);
+              prioritiesList.innerHTML = top3.length
+                ? top3.map((s) => `<li><div><b>${s.topic}</b><br>${s.rem}</div></li>`).join("")
+                : `<li><div><b>Tout est vert</b><br>Félicitations — votre setup M&E est au niveau des meilleures pratiques 2026. Gardez le cap.</div></li>`;
+            }
           }
 
           box.hidden = true;
@@ -528,7 +594,7 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
     );
     faqFilterContainers.forEach((container) => {
       const buttons = Array.from(
-        container.querySelectorAll<HTMLButtonElement>(".me-faq-filter"),
+        container.querySelectorAll<HTMLButtonElement>(".me-faq-filter, .at-faq-filter"),
       );
       // Find the nearest .faq-list within the same faq section
       const section = container.closest<HTMLElement>(".faq");
@@ -548,6 +614,34 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         cleanups.push(() => btn.removeEventListener("click", onClick));
       });
     });
+
+    // Verticals cards — cursor-follow spotlight via --mx / --my CSS vars.
+    // Updates throttled to rAF; listener only active while pointer is over the card.
+    const vtCards = Array.from(root.querySelectorAll<HTMLElement>(".vt-card"));
+    if (vtCards.length && !window.matchMedia("(hover: none)").matches) {
+      vtCards.forEach((card) => {
+        let frame = 0;
+        let pendingX = 0;
+        let pendingY = 0;
+
+        const flush = () => {
+          frame = 0;
+          card.style.setProperty("--mx", `${pendingX}px`);
+          card.style.setProperty("--my", `${pendingY}px`);
+        };
+        const onMove = (e: PointerEvent) => {
+          const rect = card.getBoundingClientRect();
+          pendingX = e.clientX - rect.left;
+          pendingY = e.clientY - rect.top;
+          if (!frame) frame = requestAnimationFrame(flush);
+        };
+        card.addEventListener("pointermove", onMove);
+        cleanups.push(() => {
+          card.removeEventListener("pointermove", onMove);
+          if (frame) cancelAnimationFrame(frame);
+        });
+      });
+    }
 
     const navItem = root.querySelector<HTMLElement>(".nav-item");
     const navTrigger = navItem?.querySelector<HTMLElement>(".nav-trigger");

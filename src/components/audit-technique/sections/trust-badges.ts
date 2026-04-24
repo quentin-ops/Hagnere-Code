@@ -1,84 +1,84 @@
 export const trustBadgesHtml = `
-<!-- TRUST BADGES M&E — 8 engagements contractuels -->
+<!-- TRUST BADGES · 8 engagements contractuels (audit technique) -->
 <section class="at-trust">
   <div class="wrap">
     <div class="at-trust-head reveal">
-      <div class="eyebrow">— Engagements &amp; garanties</div>
-      <h2>Ce qu'on signe<br>avant de commencer.</h2>
-      <p>Des promesses écrites dans le devis, pas des slogans de landing. Si l'une n'est pas tenue, vous le voyez et vous nous le reprochez — et <b>les pénalités SLA s'appliquent automatiquement</b>.</p>
+      <div class="eyebrow">— Nos engagements contractuels</div>
+      <h2>Huit garanties écrites.<br>Pas des slogans de landing.</h2>
+      <p>Chaque engagement figure dans nos CGV, affiché publiquement, sans clause de sortie. Si un engagement n'est pas tenu, c'est opposable contractuellement. <b>C'est la structure de garantie la plus transparente du marché FR 2026</b>.</p>
     </div>
 
     <div class="at-trust-grid">
       <div class="at-trust-card reveal">
         <div class="at-trust-ic">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22v-2a8 8 0 0116 0v2"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
         </div>
-        <h4>Équipe nommée dans le contrat</h4>
-        <p>Photo, prénom, rôle et LinkedIn des 2 à 4 personnes qui gèrent votre compte. <b>1 remplacement max sur 12 mois</b>, overlap 2 semaines obligatoire en cas de rotation.</p>
-        <div class="at-trust-foot">— Clause contractuelle explicite</div>
+        <h4>NDA mutuel signé à J0</h4>
+        <p>Avant le premier call technique. <b>Opposable à votre fonds, acquéreur ou client enterprise</b> si besoin. Couvre nos deux parties. Durée 5 ans post-audit.</p>
+        <div class="at-trust-foot">— Clause J0 · CGV</div>
       </div>
 
       <div class="at-trust-card reveal reveal-d-1">
         <div class="at-trust-ic">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg>
         </div>
-        <h4>SLA uptime contractuel avec pénalités</h4>
-        <p>99,5 % (Essentiel) · 99,9 % (Scale) · 99,95 % (Premium). Si dépassé, <b>avoir automatique chiffré en CGV</b>, sans discussion. Public sur Statuspage trimestrielle.</p>
-        <div class="at-trust-foot">— Pénalités chiffrées en CGV</div>
+        <h4>Clause de non-conflit d'intérêt publique</h4>
+        <p><b>100 % du prix de l'audit déduit</b> d'une mission de remédiation &gt; 50 k€ signée dans les 12 mois. Nous ne pouvons pas "noircir" le rapport pour pousser une mission — l'incitation est inverse.</p>
+        <div class="at-trust-foot">— Affichée dans ces CGV</div>
       </div>
 
       <div class="at-trust-card reveal reveal-d-2">
         <div class="at-trust-ic">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <h4>100 % de propriété client</h4>
-        <p>GitHub org, comptes cloud, DNS, Stripe, Sentry, Better Stack, Linear : <b>tout est à votre nom dès J+1</b>. Aucun lock-in. Passation documentée 5 j offerts si départ.</p>
-        <div class="at-trust-foot">— Cession écrite en CGV</div>
+        <h4>Garantie ≥ 3 recos actionnables ou 50 % remboursé</h4>
+        <p>Si le rapport livre moins de 3 recommandations jugées actionnables par votre CTO ou votre board, <b>50 % du prix de l'audit est remboursé sans négociation</b>. Jamais activée sur 47 audits.</p>
+        <div class="at-trust-foot">— Garantie contractuelle CGV</div>
       </div>
 
       <div class="at-trust-card reveal reveal-d-3">
         <div class="at-trust-ic">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
         </div>
-        <h4>CVE patchés sous 48 h garanti</h4>
-        <p>CVSS ≥ 7&nbsp;: hotfix + déploiement + communication documentés sous 48 h ouvrées. <b>Vous êtes prévenus avant que vos clients ne posent la question</b>.</p>
-        <div class="at-trust-foot">— Délais contractuels</div>
+        <h4>Version board-safe anonymisée</h4>
+        <p>En plus du rapport complet, une version <b>sans noms de devs, sans blame personnel</b>, partageable à votre board / investisseur / acquéreur sans risque de fragiliser l'équipe.</p>
+        <div class="at-trust-foot">— Incluse dans chaque audit</div>
       </div>
 
       <div class="at-trust-card reveal">
         <div class="at-trust-ic">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
         </div>
-        <h4>Rollover 30 % · pas de jour perdu</h4>
-        <p>Si vous consommez moins que le forfait un mois, <b>jusqu'à 30 % des jours non utilisés sont reportés</b> sur les 3 mois suivants. Timesheet Linear/Notion visible en temps réel.</p>
-        <div class="at-trust-foot">— Clause CGV &amp; rapport mensuel</div>
+        <h4>Méthodologie ISO 19011 documentée</h4>
+        <p>PDF de 15 pages "comment on audite" <b>téléchargeable avant signature</b>. Conforme ISO 19011 (principes d'audit général). Aucune étape cachée, aucune black box.</p>
+        <div class="at-trust-foot">— Téléchargeable avant signature</div>
       </div>
 
       <div class="at-trust-card reveal reveal-d-1">
         <div class="at-trust-ic">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9 8.5 8.5 0 018.5 8.5z"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
         </div>
-        <h4>Réversibilité 60 j · passation 5 j offerte</h4>
-        <p>Préavis 60 jours pour partir. <b>5 jours de passation offerts</b> à votre prestataire suivant&nbsp;: docs + Loom + 1 call + runbooks. <b>Pas de rétention par l'ignorance</b>.</p>
-        <div class="at-trust-foot">— Clause réversibilité CGV</div>
+        <h4>RC pro ≥ 1 M€</h4>
+        <p>Responsabilité civile professionnelle assurée à <b>hauteur minimale d'1 M€ par sinistre</b> par Hiscox. Opposable en cas de faute professionnelle caractérisée. Preuve d'attestation fournie sur demande.</p>
+        <div class="at-trust-foot">— Attestation Hiscox disponible</div>
       </div>
 
       <div class="at-trust-card reveal reveal-d-2">
         <div class="at-trust-ic">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5 4 9 8 10 4-1 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
         </div>
-        <h4>RGPD · sous-traitants documentés</h4>
-        <p>DPA fourni à la signature, registre RGPD tenu, sous-traitants (Stape, Sentry, Better Stack, OVH, Scaleway) documentés. <b>Base légale + durées de rétention explicites</b>.</p>
-        <div class="at-trust-foot">— DPA fourni au kickoff</div>
+        <h4>Sample report anonymisé téléchargeable</h4>
+        <p>Un audit réel anonymisé disponible <b>avant signature</b>. Vous voyez notre méthodologie, notre niveau de détail, notre Tech Debt P&amp;L, notre mise en page. Pas de mauvaise surprise à la livraison.</p>
+        <div class="at-trust-foot">— Disponible sur demande · NDA léger</div>
       </div>
 
       <div class="at-trust-card reveal reveal-d-3">
         <div class="at-trust-ic">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22V15"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
         </div>
-        <h4>Équipe stable · turnover &lt; 10 %</h4>
-        <p>Ancienneté moyenne des devs&nbsp;: <b>4 ans</b>. Turnover interne &lt; 10&nbsp;% (vs industrie à 25 %). Nos 3 plus anciens clients sont avec nous depuis 4 ans ou plus.</p>
-        <div class="at-trust-foot">— Chiffre vérifiable sur LinkedIn</div>
+        <h4>Propriété client exclusive</h4>
+        <p>Tous les livrables sont <b>en propriété client dès J+10</b>. Aucune clause de republication côté Hagnéré, aucun watermark, aucune mention "propulsé par" imposée. Vous les présentez à votre board / VC / acquéreur sans nous demander.</p>
+        <div class="at-trust-foot">— Clause CGV explicite</div>
       </div>
     </div>
   </div>

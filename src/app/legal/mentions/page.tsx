@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
 import { mentionsLegalesSections } from "@/components/legal/content/mentions-legales";
 
-const LAST_UPDATED = "2026-04-22";
+const LAST_UPDATED = "2026-04-23";
 
 export const metadata: Metadata = {
   title: "Mentions légales — Hagnéré Code",

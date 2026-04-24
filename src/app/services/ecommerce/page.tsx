@@ -4,7 +4,7 @@ import { Ecommerce } from "@/components/ecommerce/Ecommerce";
 export const metadata: Metadata = {
   title: "Boutique e-commerce sur mesure PME & ETI — Alternative Shopify Plus | Hagnéré Code",
   description:
-    "Boutiques e-commerce sur mesure : Next.js + Laravel 13 + React Native. Intégrations FR natives (Stripe, Alma, Colissimo, Sage, Pennylane, Chorus Pro). Forfait fixe 15-120 k€, zéro % sur vos ventes. Factur-X 2026-ready.",
+    "Boutiques e-commerce sur mesure : Next.js + Laravel 13 + React Native. Intégrations FR natives (Stripe, Alma, Colissimo, Sage, Pennylane, Chorus Pro). Forfait fixe 15-70 k€, zéro % sur vos ventes. Factur-X 2026-ready.",
   alternates: { canonical: "/services/ecommerce" },
   openGraph: {
     title: "Boutique e-commerce sur mesure — Hagnéré Code",
@@ -76,7 +76,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Entre 15 k€ (Launch, nouvelle boutique simple) et 120 k€ (Enterprise multi-pays B2B+B2C). Le prix est fixe, contractuel, zéro % sur les ventes après livraison. Break-even vs Shopify Plus en général à partir de 500 k€ de GMV annuel, vers 12-18 mois.",
+          "Entre 15 k€ (Launch, nouvelle boutique simple) et 70 k€ (Enterprise multi-pays B2B+B2C). Le prix est fixe, contractuel, zéro % sur les ventes après livraison. Break-even vs Shopify Plus en général à partir de 500 k€ de GMV annuel, vers 12-18 mois.",
       },
     },
     {

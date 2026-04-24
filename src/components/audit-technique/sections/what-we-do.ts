@@ -1,78 +1,77 @@
 export const whatWeDoHtml = `
-<!-- WHAT WE DO M&E — 8 services, code-couleur par famille -->
-<section class="at-wwd" id="services">
+<!-- WHAT WE AUDIT · 8 dimensions color-codées (audit technique) -->
+<section class="at-wwd" id="dimensions">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ce qu'on fait, tous les jours</div>
-        <h2>Huit métiers qu'on tient<br>pour que votre app vive<br>3, 5, 10 ans.</h2>
+        <div class="eyebrow">— Ce qu'on audite</div>
+        <h2>Huit dimensions couvertes,<br>chacune scorée /100,<br>chiffrée en euros de dette.</h2>
       </div>
       <div class="right">
-        Pas un simple "support", pas une régie à la journée. Une équipe nommée qui
-        <b>reprend, surveille, patche, fait évoluer</b> votre app — et reste là quand les autres
-        ont envoyé la facture finale.
+        Un audit tech sérieux en 2026 ne se limite pas au code. On couvre <b>les 8 dimensions
+        qui font qu'une app tient 5 ans en production</b> sans exploser les coûts ou la sécurité.
+        Chaque dimension = score /100 + liste de recos priorisées + estimation € de la dette.
       </div>
     </div>
 
     <div class="at-wwd-grid">
 
-      <!-- 01 · HANDOVER / REPRISE -->
-      <article class="at-wwd-card at-wwd-card-flag reveal" data-family="handover">
+      <!-- 01 · CODE QUALITY -->
+      <article class="at-wwd-card reveal" data-family="handover">
         <div class="at-wwd-top">
           <span class="at-wwd-num">01</span>
           <div class="at-wwd-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L9 18l-5-5"/><circle cx="20" cy="7" r="2"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           </div>
-          <span class="at-wwd-badge at-wwd-badge-handover">Reprise</span>
+          <span class="at-wwd-badge at-wwd-badge-handover">Code</span>
         </div>
-        <h3>Reprise d'app orpheline</h3>
-        <p>Votre prestataire a disparu, le code est là, mais plus d'équipe. On fait un <b>audit flash en 5 jours</b> (code, infra, sécurité, dette), puis on reprend en main. L'entrée la plus fréquente chez nous — 40 % des nouveaux clients.</p>
+        <h3>Code quality</h3>
+        <p>SAST (SonarQube Enterprise, Semgrep, PHPStan niveau 8), test coverage par module, complexité cyclomatique, duplication, dead code, linter adherence. <b>On ne se contente pas du score SonarQube</b> — on explique ce qu'il cache.</p>
         <div class="at-wwd-tags">
-          <span class="at-wwd-tag">Audit flash 5 j</span>
-          <span class="at-wwd-tag">Plan de reprise</span>
-          <span class="at-wwd-tag">Bascule propre</span>
+          <span class="at-wwd-tag">SAST · Sonar / Semgrep</span>
+          <span class="at-wwd-tag">Coverage par module</span>
+          <span class="at-wwd-tag">Complexité CC</span>
         </div>
-        <div class="at-wwd-flag">Point d'entrée n°1</div>
       </article>
 
-      <!-- 02 · MAINTENANCE APPLICATIVE -->
+      <!-- 02 · ARCHITECTURE -->
       <article class="at-wwd-card reveal reveal-d-1" data-family="maintenance">
         <div class="at-wwd-top">
           <span class="at-wwd-num">02</span>
           <div class="at-wwd-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
-          <span class="at-wwd-badge at-wwd-badge-maintenance">Maintenance</span>
+          <span class="at-wwd-badge at-wwd-badge-maintenance">Archi</span>
         </div>
-        <h3>Maintenance corrective &amp; évolutive</h3>
-        <p>Bugs, régressions, feature requests métier, refactos ciblés. <b>Tous les jours, pas au trimestre</b>. Vous remontez dans Linear, on shippe dans la semaine. Backlog priorisé ensemble au comité mensuel, pas imposé.</p>
+        <h3>Architecture</h3>
+        <p>Couplage, cohésion, separation of concerns, data flow, gestion d'états, modularité. Diagrammes <b>C4 AS-IS + TO-BE</b> produits pendant l'audit, livrés avec le rapport. Identification des bottlenecks structurels cachés.</p>
         <div class="at-wwd-tags">
-          <span class="at-wwd-tag">Bug fixes &lt; 48h</span>
-          <span class="at-wwd-tag">Features hebdo</span>
-          <span class="at-wwd-tag">Refactos ciblés</span>
+          <span class="at-wwd-tag">Diagrammes C4</span>
+          <span class="at-wwd-tag">Data flow</span>
+          <span class="at-wwd-tag">AS-IS / TO-BE</span>
         </div>
       </article>
 
-      <!-- 03 · OBSERVABILITY -->
+      <!-- 03 · PERFORMANCE -->
       <article class="at-wwd-card reveal reveal-d-2" data-family="observability">
         <div class="at-wwd-top">
           <span class="at-wwd-num">03</span>
           <div class="at-wwd-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l3 3 4-8 4 12 3-5h4"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
           </div>
-          <span class="at-wwd-badge at-wwd-badge-observability">Observabilité</span>
+          <span class="at-wwd-badge at-wwd-badge-observability">Perf</span>
         </div>
-        <h3>Monitoring &amp; observabilité 24/7</h3>
-        <p>Sentry (erreurs), Better Stack (uptime &amp; statuspage), Grafana (métriques), Axiom (logs). <b>Alerte &lt; 5 min</b> sur incident P1, détection proactive. Vous découvrez l'incident par Slack — pas par vos clients.</p>
+        <h3>Performance</h3>
+        <p>Latence p95/p99 API, requêtes DB (N+1, index manquants, full scans), Core Web Vitals front, bundle size, stratégie de cache, Redis eviction. <b>Benchmark vs. votre percentile secteur</b>&nbsp;: vous êtes dans le top 20 % ou pas&nbsp;?</p>
         <div class="at-wwd-tags">
-          <span class="at-wwd-tag">Sentry</span>
-          <span class="at-wwd-tag">Better Stack</span>
-          <span class="at-wwd-tag">Grafana</span>
+          <span class="at-wwd-tag">p95 / p99</span>
+          <span class="at-wwd-tag">N+1 &amp; index</span>
+          <span class="at-wwd-tag">CWV · bundle</span>
         </div>
       </article>
 
-      <!-- 04 · SÉCURITÉ CONTINUE -->
-      <article class="at-wwd-card reveal" data-family="security">
+      <!-- 04 · SÉCURITÉ -->
+      <article class="at-wwd-card at-wwd-card-flag reveal" data-family="security">
         <div class="at-wwd-top">
           <span class="at-wwd-num">04</span>
           <div class="at-wwd-icon">
@@ -80,16 +79,17 @@ export const whatWeDoHtml = `
           </div>
           <span class="at-wwd-badge at-wwd-badge-security">Sécurité</span>
         </div>
-        <h3>Sécurité continue &amp; CVE patchés</h3>
-        <p>Dependabot + Snyk + GitGuardian + SAST (PHPStan / Psalm / ESLint). <b>CVE critiques patchés sous 48 h</b>. Pentest annuel optionnel (tier Premium). Prêt pour votre prochain audit SOC2 / ISO27001 client.</p>
+        <h3>Sécurité</h3>
+        <p>OWASP Top 10 complet, CVE sur dépendances (Snyk + GitGuardian), secrets leaks, auth/authz, RGPD, logs sensibles, chiffrement at-rest/in-transit. <b>Pentest externe CERT-FR en option</b> (+8-15 k€). Livrable critique pour SOC2 / ISO 27001.</p>
         <div class="at-wwd-tags">
-          <span class="at-wwd-tag">Snyk · Dependabot</span>
-          <span class="at-wwd-tag">CVE &lt; 48h</span>
-          <span class="at-wwd-tag">SOC2-ready</span>
+          <span class="at-wwd-tag">OWASP · CVE</span>
+          <span class="at-wwd-tag">SAST · secrets</span>
+          <span class="at-wwd-tag">Pentest en option</span>
         </div>
+        <div class="at-wwd-flag">Dimension critique</div>
       </article>
 
-      <!-- 05 · INFRA & HÉBERGEMENT -->
+      <!-- 05 · INFRASTRUCTURE -->
       <article class="at-wwd-card reveal reveal-d-1" data-family="infra">
         <div class="at-wwd-top">
           <span class="at-wwd-num">05</span>
@@ -98,66 +98,66 @@ export const whatWeDoHtml = `
           </div>
           <span class="at-wwd-badge at-wwd-badge-infra">Infra</span>
         </div>
-        <h3>Hébergement &amp; infra ops</h3>
-        <p>Laravel Forge / Ploi / Vapor / Vercel / Fly.io selon votre stack. <b>Infra sur votre compte cloud</b> (AWS, OVH, Scaleway) — pas de rebilling, pas de lock-in. Backups testés mensuellement, RPO 15 min, RTO 1 h.</p>
+        <h3>Infrastructure</h3>
+        <p>IaC (Terraform/Pulumi), backups testés, DR plan, monitoring (Sentry, Datadog, Grafana snapshot), autoscaling, multi-AZ, vendor lock-in cloud. <b>RTO/RPO mesurés, pas déclarés</b>. Identification des single points of failure.</p>
         <div class="at-wwd-tags">
-          <span class="at-wwd-tag">Forge · Vercel · Fly</span>
-          <span class="at-wwd-tag">Compte cloud client</span>
-          <span class="at-wwd-tag">RPO 15 min</span>
+          <span class="at-wwd-tag">IaC &amp; DR</span>
+          <span class="at-wwd-tag">RTO / RPO testés</span>
+          <span class="at-wwd-tag">SPOF</span>
         </div>
       </article>
 
-      <!-- 06 · ROADMAP PRODUIT -->
+      <!-- 06 · DEVEX & DORA -->
       <article class="at-wwd-card reveal reveal-d-2" data-family="roadmap">
         <div class="at-wwd-top">
           <span class="at-wwd-num">06</span>
           <div class="at-wwd-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l3-3 3 3M3 12l4-4 5 5 5-5 4 4"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg>
           </div>
-          <span class="at-wwd-badge at-wwd-badge-roadmap">Roadmap</span>
+          <span class="at-wwd-badge at-wwd-badge-roadmap">DevEx</span>
         </div>
-        <h3>Roadmap produit trimestrielle</h3>
-        <p>Pas un exécutant passif. On <b>propose, challenge, priorise</b> au comité mensuel. Roadmap 12 mois partagée, OKRs tech, revue trimestrielle. Votre board voit clair sur les 6 prochains mois — sans attendre votre CTO interne.</p>
+        <h3>DevEx &amp; DORA metrics</h3>
+        <p>CI/CD (lead time, change failure rate, MTTR, deploy freq), PR review flow, documentation, onboarding, <b>bus factor</b>, feature flags, revue de deploys. <b>4 métriques DORA chiffrées vs. benchmark elite</b> Google SPACE.</p>
         <div class="at-wwd-tags">
-          <span class="at-wwd-tag">Comité mensuel</span>
-          <span class="at-wwd-tag">Roadmap 12 mois</span>
-          <span class="at-wwd-tag">OKRs partagés</span>
+          <span class="at-wwd-tag">4 DORA metrics</span>
+          <span class="at-wwd-tag">Bus factor</span>
+          <span class="at-wwd-tag">Onboarding flow</span>
         </div>
       </article>
 
-      <!-- 07 · PERFORMANCE & SCALING -->
+      <!-- 07 · FINOPS -->
       <article class="at-wwd-card reveal" data-family="performance">
         <div class="at-wwd-top">
           <span class="at-wwd-num">07</span>
           <div class="at-wwd-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           </div>
-          <span class="at-wwd-badge at-wwd-badge-performance">Performance</span>
+          <span class="at-wwd-badge at-wwd-badge-performance">FinOps</span>
         </div>
-        <h3>Performance, scaling &amp; FinOps</h3>
-        <p>Profiling Laravel Pulse / Chrome DevTools, caching Redis / CDN, DB indexes, query tuning. <b>FinOps cloud</b>&nbsp;: on surveille vos factures AWS / OVH, on coupe le gras. Lighthouse 95+ maintenu, CWV dans le vert.</p>
+        <h3>FinOps cloud</h3>
+        <p>Coût cloud <b>par feature et par client</b>, over-provisioning, reserved instances, egress data transfer, ressources zombie. Potentiel d'économie typique <b>20-40 %</b> sur AWS / OVH / Scaleway chez les clients sans FinOps actif.</p>
         <div class="at-wwd-tags">
-          <span class="at-wwd-tag">Laravel Pulse</span>
-          <span class="at-wwd-tag">CDN &amp; cache</span>
-          <span class="at-wwd-tag">FinOps cloud</span>
+          <span class="at-wwd-tag">Cost per feature</span>
+          <span class="at-wwd-tag">Over-provisioning</span>
+          <span class="at-wwd-tag">Économies 20-40 %</span>
         </div>
       </article>
 
-      <!-- 08 · INCIDENT RESPONSE -->
+      <!-- 08 · ÉQUIPE & ORG -->
       <article class="at-wwd-card reveal reveal-d-1" data-family="incident">
         <div class="at-wwd-top">
           <span class="at-wwd-num">08</span>
           <div class="at-wwd-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><circle cx="17" cy="11" r="3"/></svg>
           </div>
-          <span class="at-wwd-badge at-wwd-badge-incident">Astreinte</span>
+          <span class="at-wwd-badge at-wwd-badge-incident">Équipe</span>
         </div>
-        <h3>Incident response &amp; astreinte</h3>
-        <p>PagerDuty / incident.io, processus IR documenté, <b>post-mortem sous 72 h</b> sans blame. Astreinte 7j/7 (tier Scale &amp; Premium), MTTR cible &lt; 30 min P1. Statuspage publique, communication client assumée — pas cachée.</p>
+        <h3>Équipe &amp; organisation</h3>
+        <p>Séniorité équipe, turnover 12 mois, compétences manquantes, vélocité mesurée, maturité agile, documentation tribale. <b>5 à 8 entretiens no-blame avec vos devs</b> pour identifier les blocages vécus vs. déclarés.</p>
         <div class="at-wwd-tags">
-          <span class="at-wwd-tag">PagerDuty 7j/7</span>
-          <span class="at-wwd-tag">MTTR &lt; 30 min</span>
-          <span class="at-wwd-tag">Post-mortem 72 h</span>
+          <span class="at-wwd-tag">5-8 entretiens</span>
+          <span class="at-wwd-tag">Turnover · vélocité</span>
+          <span class="at-wwd-tag">No-blame</span>
         </div>
       </article>
 

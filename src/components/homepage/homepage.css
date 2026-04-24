@@ -248,6 +248,8 @@
   .sca b{font-size:18px;font-weight:700;color:var(--accent);letter-spacing:-0.03em}
 
   .st-foot{margin-top:auto;padding-top:16px;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.04em;border-top:1px solid var(--line-2)}
+  .st-disclaimer{margin-top:10px;font-size:10.5px;line-height:1.4;color:var(--mute);font-style:italic}
+  .st-metric sup{font-size:0.6em;color:var(--accent-ink);margin-left:2px;font-weight:600}
   .svc-tile:hover .st-foot{color:var(--ink-3)}
   .st-arrow{width:26px;height:26px;border-radius:50%;background:var(--paper-2);display:grid;place-items:center;color:var(--ink-3);transition:all 0.2s}
   .svc-tile:hover .st-arrow{background:var(--accent);color:#fff;transform:translateX(3px)}

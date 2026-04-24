@@ -1,84 +1,83 @@
 export const arsenalHtml = `
-<!-- ARSENAL M&E — 9 outils pros, 3 colonnes -->
+<!-- ARSENAL AUDIT · 9 outils pros · Analyse statique · Sécurité · Observabilité -->
 <section class="at-arsenal" id="arsenal">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Notre arsenal</div>
-        <h2>Les outils qu'on opère<br>vraiment, pas un mur de logos.</h2>
+        <div class="eyebrow">— Notre arsenal d'audit</div>
+        <h2>Neuf outils pros qu'on opère,<br>pas un mur de logos.</h2>
       </div>
       <div class="right">
-        Neuf outils, trois missions. Aucun ne fait le travail à notre place —
-        chacun surveille, sécurise ou pilote une partie précise de votre app.
-        <b>Tous inclus dans votre forfait · comptes à votre nom · 0 rebilling.</b>
+        Trois familles d'outils, trois missions. Chacun documente, accélère ou vérifie une étape précise des 10 jours.
+        <b>Licences enterprise incluses dans le prix fixe · 0 rebilling.</b> Vos données n'entrent jamais dans des outils dont vous ne maîtrisez pas le cycle de vie.
       </div>
     </div>
 
     <div class="at-arsenal-grid reveal">
-      <!-- Column 1 : OBSERVABILITY -->
+      <!-- Column 1 : ANALYSE STATIQUE & QUALITÉ -->
       <div class="at-arsenal-col">
         <div class="at-arsenal-col-head">
           <div class="at-arsenal-col-step">01</div>
-          <div class="at-arsenal-col-title">Observabilité &amp; monitoring</div>
+          <div class="at-arsenal-col-title">Analyse statique &amp; qualité</div>
         </div>
 
         <div class="at-arsenal-tool">
           <div class="at-arsenal-tool-top">
-            <div class="at-arsenal-tool-logo" style="background:#362D59">
+            <div class="at-arsenal-tool-logo" style="background:#4E9BCD">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
-                <path d="M12 2L2 20h7l3-5 3 5h7L12 2z"/>
-                <circle cx="12" cy="15" r="1.5" fill="#362D59"/>
+                <path d="M3 12h18M12 3v18" stroke="#fff" stroke-width="2"/>
+                <circle cx="12" cy="12" r="3" fill="#fff"/>
               </svg>
             </div>
             <div>
-              <div class="at-arsenal-tool-name">Sentry</div>
-              <div class="at-arsenal-tool-kind">Error tracking front + back</div>
+              <div class="at-arsenal-tool-name">SonarQube Enterprise</div>
+              <div class="at-arsenal-tool-kind">SAST · coverage · complexité</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Capture erreurs avec stack trace complet, context user/tenant/release, breadcrumbs. <b>Alerte Slack sur erreurs nouvelles</b>, issue auto-assignée au dev qui a touché le code.</div>
-          <div class="at-arsenal-tool-chip">Monitoré 24/7</div>
+          <div class="at-arsenal-tool-body">Branché sur votre repo pendant 10 jours. <b>Bugs, smells, vulnérabilités, security hotspots</b> priorisés CVSS. Analyse de complexité cyclomatique, détection de god-classes, ratio de duplication. Licence enterprise incluse, révoquée à J+11.</div>
+          <div class="at-arsenal-tool-chip">Licence pro · incluse</div>
         </div>
 
         <div class="at-arsenal-tool">
           <div class="at-arsenal-tool-top">
-            <div class="at-arsenal-tool-logo" style="background:#2563EB">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="3"/>
-                <path d="M8 13l3 3 5-7"/>
-              </svg>
-            </div>
-            <div>
-              <div class="at-arsenal-tool-name">Better Stack</div>
-              <div class="at-arsenal-tool-kind">Uptime + statuspage publique</div>
-            </div>
-          </div>
-          <div class="at-arsenal-tool-body">Monitoring HTTP + TCP + SSL toutes les 30 s depuis 6 régions, <b>statuspage publique avec historique 12 mois</b>, on-call Slack + SMS + téléphone en escalation.</div>
-          <div class="at-arsenal-tool-chip">Check toutes les 30 s</div>
-        </div>
-
-        <div class="at-arsenal-tool">
-          <div class="at-arsenal-tool-top">
-            <div class="at-arsenal-tool-logo" style="background:#F46800">
+            <div class="at-arsenal-tool-logo" style="background:#1B1F23">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" fill="none" stroke="#fff" stroke-width="1.8"/>
-                <path d="M6 14l3-3 3 3 4-5 2 2" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+                <polyline points="16 18 22 12 16 6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <polyline points="8 6 2 12 8 18" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
             <div>
-              <div class="at-arsenal-tool-name">Grafana Cloud</div>
-              <div class="at-arsenal-tool-kind">Métriques infra + applicatif</div>
+              <div class="at-arsenal-tool-name">Semgrep Pro</div>
+              <div class="at-arsenal-tool-kind">Règles custom · anti-patterns</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Dashboards sur-mesure pour votre app&nbsp;: CPU, RAM, DB slow queries, Redis eviction, queues Horizon. <b>Corrélation trace ID avec Sentry + Axiom</b> — root cause en 10 min max.</div>
-          <div class="at-arsenal-tool-chip">Dashboards sur mesure</div>
+          <div class="at-arsenal-tool-body">Règles custom que SonarQube ne détecte pas. <b>Patterns spécifiques à votre stack</b> (Laravel ActiveRecord leaks, React hooks stale closures, SQL injection complexes). Bibliothèque propriétaire de 200+ règles accumulée sur 47 audits.</div>
+          <div class="at-arsenal-tool-chip">Règles propriétaires</div>
+        </div>
+
+        <div class="at-arsenal-tool">
+          <div class="at-arsenal-tool-top">
+            <div class="at-arsenal-tool-logo" style="background:#777BB4">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="#fff" stroke-width="1.8"/>
+                <path d="M8 12h8M12 8v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="at-arsenal-tool-name">PHPStan / Psalm / TS strict</div>
+              <div class="at-arsenal-tool-kind">Typage · niveau 8</div>
+            </div>
+          </div>
+          <div class="at-arsenal-tool-body">Pour Laravel/Symfony&nbsp;: PHPStan niveau 8. Pour Next.js/Node&nbsp;: TypeScript strict. Détection des <b>erreurs de typage, null-safety, dead branches, retours non explicites</b>. Un des 3 premiers indicateurs de qualité d'un code base.</div>
+          <div class="at-arsenal-tool-chip">Niveau 8 benchmarké</div>
         </div>
       </div>
 
-      <!-- Column 2 : SÉCURITÉ & QUALITÉ (accent) -->
+      <!-- Column 2 : SÉCURITÉ (accent mid) -->
       <div class="at-arsenal-col at-arsenal-col-mid">
         <div class="at-arsenal-col-head">
           <div class="at-arsenal-col-step">02</div>
-          <div class="at-arsenal-col-title">Sécurité &amp; qualité code</div>
+          <div class="at-arsenal-col-title">Sécurité &amp; vulnérabilités</div>
         </div>
 
         <div class="at-arsenal-tool">
@@ -90,29 +89,12 @@ export const arsenalHtml = `
               </svg>
             </div>
             <div>
-              <div class="at-arsenal-tool-name">Snyk</div>
-              <div class="at-arsenal-tool-kind">SCA dépendances + containers</div>
+              <div class="at-arsenal-tool-name">Snyk + Dependabot</div>
+              <div class="at-arsenal-tool-kind">SCA · CVE dépendances</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Scan continu composer, npm, Docker, IaC. Priorisation CVSS + exploit actif connu. <b>CVE critiques patchés sous 48 h, majors sous 7 j</b>. Rapport trimestriel exportable.</div>
-          <div class="at-arsenal-tool-chip">Licence enterprise incluse</div>
-        </div>
-
-        <div class="at-arsenal-tool">
-          <div class="at-arsenal-tool-top">
-            <div class="at-arsenal-tool-logo" style="background:#0A0A0A">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
-                <circle cx="12" cy="12" r="10" fill="none" stroke="#fff" stroke-width="1.8"/>
-                <path d="M8 12l3 3 5-6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <div class="at-arsenal-tool-name">Dependabot + Renovate</div>
-              <div class="at-arsenal-tool-kind">Mises à jour automatisées</div>
-            </div>
-          </div>
-          <div class="at-arsenal-tool-body">Mises à jour mineures <b>auto-mergées</b> sous CI verte. Majors bumps en PR dédiées avec checklist de régression + tests end-to-end avant merge humain.</div>
-          <div class="at-arsenal-tool-chip">Auto-merge sous CI verte</div>
+          <div class="at-arsenal-tool-body">Scan complet composer / npm / Docker. <b>Priorisation CVSS</b>, exploit maturity, fix disponible. Rapport détaillé par dépendance avec chemin d'attaque possible. Critique pour la partie SOC2 / ISO 27001 si visée.</div>
+          <div class="at-arsenal-tool-chip">Licence enterprise · incluse</div>
         </div>
 
         <div class="at-arsenal-tool">
@@ -125,76 +107,86 @@ export const arsenalHtml = `
             </div>
             <div>
               <div class="at-arsenal-tool-name">GitGuardian</div>
-              <div class="at-arsenal-tool-kind">Secrets scanning</div>
+              <div class="at-arsenal-tool-kind">Secrets leaks · historique git</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Scan pre-commit + CI + historique git. <b>Alerte immédiate</b> sur API key, token, private key leaks. Rotation automatique via workflow GitHub Actions dédié.</div>
-          <div class="at-arsenal-tool-chip">Hooks pre-commit</div>
+          <div class="at-arsenal-tool-body">Scan complet de l'historique git à la recherche de <b>secrets commités</b>&nbsp;: API keys, tokens, private keys, JWT secrets. Une majorité des audits que nous faisons révèle au moins 1 secret encore actif dans l'historique.</div>
+          <div class="at-arsenal-tool-chip">Historique complet scanné</div>
+        </div>
+
+        <div class="at-arsenal-tool">
+          <div class="at-arsenal-tool-top">
+            <div class="at-arsenal-tool-logo" style="background:#DC2626">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="#fff" stroke-width="1.8"/>
+                <path d="M12 2v10l6 4" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="at-arsenal-tool-name">Partenaire pentest CERT-FR</div>
+              <div class="at-arsenal-tool-kind">Option · +8-15 k€</div>
+            </div>
+          </div>
+          <div class="at-arsenal-tool-body">Pentest externe via partenaire agréé CERT-FR pour les audits qui visent SOC2 / ISO 27001 / clients enterprise exigeants. <b>OWASP top 10 complet, rapport CVSS</b>, dashboard de follow-up, re-test après remédiation. Chiffré à l'avance dans le devis initial.</div>
+          <div class="at-arsenal-tool-chip">Partenaire externe · transparent</div>
         </div>
       </div>
 
-      <!-- Column 3 : PILOTAGE & INCIDENTS -->
+      <!-- Column 3 : OBSERVABILITÉ & BENCHMARK -->
       <div class="at-arsenal-col">
         <div class="at-arsenal-col-head">
           <div class="at-arsenal-col-step">03</div>
-          <div class="at-arsenal-col-title">Pilotage &amp; incidents</div>
+          <div class="at-arsenal-col-title">Observabilité &amp; benchmark</div>
         </div>
 
         <div class="at-arsenal-tool">
           <div class="at-arsenal-tool-top">
-            <div class="at-arsenal-tool-logo" style="background:#06AC38">
+            <div class="at-arsenal-tool-logo" style="background:#632CA6">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+                <path d="M12 2l3 7h7l-6 4 2 8-6-4-6 4 2-8-6-4h7z"/>
+              </svg>
+            </div>
+            <div>
+              <div class="at-arsenal-tool-name">Datadog APM snapshot</div>
+              <div class="at-arsenal-tool-kind">Traces 30 jours · p95/p99</div>
+            </div>
+          </div>
+          <div class="at-arsenal-tool-body">Branchement APM temporaire (trial enterprise) pour capturer <b>30 jours de traces, p95/p99 latence, DB slow queries, erreurs en cascade</b>. Vue exhaustive du comportement réel de votre app en production, sans se baser sur du déclaratif.</div>
+          <div class="at-arsenal-tool-chip">30 j traces live · révoqué J+11</div>
+        </div>
+
+        <div class="at-arsenal-tool">
+          <div class="at-arsenal-tool-top">
+            <div class="at-arsenal-tool-logo" style="background:#F46800">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
                 <circle cx="12" cy="12" r="10" fill="none" stroke="#fff" stroke-width="1.8"/>
-                <path d="M12 6v6l4 2" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M6 14l3-3 3 3 4-5 2 2" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
               </svg>
             </div>
             <div>
-              <div class="at-arsenal-tool-name">PagerDuty</div>
-              <div class="at-arsenal-tool-kind">Astreinte 7j/7 · escalation</div>
+              <div class="at-arsenal-tool-name">Grafana Cloud</div>
+              <div class="at-arsenal-tool-kind">Dashboards · FinOps · CWV</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Rotation on-call documentée, escalation auto (Slack → SMS → téléphone → manager), runbooks versionnés par type d'incident. <b>MTTR contractuel avec pénalités auto-appliquées</b>.</div>
-          <div class="at-arsenal-tool-chip">7j/7 tier Scale &amp; Premium</div>
+          <div class="at-arsenal-tool-body">Dashboards sur-mesure pour la partie FinOps (breakdown coût AWS/GCP), les Core Web Vitals, les logs structurés. <b>Partageables à votre CTO</b> avant la restitution, permettent d'anticiper les questions du board.</div>
+          <div class="at-arsenal-tool-chip">Dashboards sur mesure</div>
         </div>
 
         <div class="at-arsenal-tool">
           <div class="at-arsenal-tool-top">
-            <div class="at-arsenal-tool-logo" style="background:#5E6AD2">
+            <div class="at-arsenal-tool-logo" style="background:#6D28D9">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
-                <rect x="4" y="4" width="16" height="16" rx="3" fill="none" stroke="#fff" stroke-width="1.5"/>
-                <circle cx="8" cy="8" r="2"/>
-                <circle cx="16" cy="16" r="2"/>
-                <path d="M10 8h8M6 16h8" stroke="#fff" stroke-width="1.5"/>
+                <rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="#fff" stroke-width="2"/>
+                <path d="M9 9l6 6M15 9l-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
               </svg>
             </div>
             <div>
-              <div class="at-arsenal-tool-name">Linear</div>
-              <div class="at-arsenal-tool-kind">Backlog partagé transparent</div>
+              <div class="at-arsenal-tool-name">Méthodologie propriétaire</div>
+              <div class="at-arsenal-tool-kind">47 audits · benchmark percentile</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Votre équipe voit nos tickets en temps réel, peut prioriser avec nous. <b>Roadmap 12 mois publique</b>, OKRs tech alignés sur vos OKRs produit. Zéro opacité.</div>
-          <div class="at-arsenal-tool-chip">Accès équipe client illimité</div>
-        </div>
-
-        <div class="at-arsenal-tool">
-          <div class="at-arsenal-tool-top">
-            <div class="at-arsenal-tool-logo" style="background:#4A154B">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
-                <rect x="3" y="3" width="7" height="4" rx="2"/>
-                <rect x="3" y="10" width="7" height="4" rx="2"/>
-                <rect x="3" y="17" width="7" height="4" rx="2"/>
-                <rect x="14" y="3" width="7" height="4" rx="2"/>
-                <rect x="14" y="10" width="7" height="4" rx="2"/>
-                <rect x="14" y="17" width="7" height="4" rx="2"/>
-              </svg>
-            </div>
-            <div>
-              <div class="at-arsenal-tool-name">Slack Connect</div>
-              <div class="at-arsenal-tool-kind">Canal dédié · pas d'email tunnel</div>
-            </div>
-          </div>
-          <div class="at-arsenal-tool-body">Canal Slack partagé entre votre équipe et la nôtre. Threads par sujet, ping non-intrusifs. <b>Réponse &lt; 2 h en heures ouvrées, &lt; 30 min sur urgence P1</b>.</div>
-          <div class="at-arsenal-tool-chip">Réponse &lt; 2h HO</div>
+          <div class="at-arsenal-tool-body">Votre score n'est pas absolu, il est <b>comparé à notre base de 47 audits</b> SaaS B2B / e-commerce / edtech français comparables. « Vous êtes au 42e percentile sur la sécurité » est plus utile que « Votre score est 54 / 100 ». Base propriétaire qui grossit à chaque audit.</div>
+          <div class="at-arsenal-tool-chip">Benchmark percentile</div>
         </div>
       </div>
     </div>

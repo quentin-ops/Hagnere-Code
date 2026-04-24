@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { CalendlyEmbed } from "./CalendlyEmbed";
+import { TrustBand } from "./TrustBand";
 import type { MultiServiceEstimate, RiskSeverity } from "./types";
 
 interface ResultViewProps {
@@ -271,7 +273,10 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
           </div>
         )}
 
-        {/* ═══ NEXT STEPS + CTAs ═══ */}
+        {/* ═══ TRUST BAND ═══ */}
+        <TrustBand />
+
+        {/* ═══ NEXT STEPS ═══ */}
         <div className="rview-next">
           <div className="rview-next-bg-grid" />
           <div className="rview-next-bg-radial" />
@@ -290,17 +295,56 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
               </li>
             ))}
           </ol>
-          <div className="rview-next-cta">
-            <Link href={mailtoHref} className="btn btn-accent btn-lg">
-              📅 Réserver un Discovery Sprint
-              <svg className="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M13 5l7 7-7 7" />
+        </div>
+
+        {/* ═══ CALENDLY INLINE — la conversion principale ═══ */}
+        <div className="rview-calendly">
+          <div className="rview-calendly-h">
+            <span className="eyebrow">— Réserve ton créneau Discovery</span>
+            <h2>
+              30 min en visio avec <span className="grad-accent">Quentin ou Nicolas.</span>
+            </h2>
+            <p>
+              On revoit ton estimation ensemble, on cadre les zones grises, on te dit
+              honnêtement si Sprint Fixe™ est la bonne approche pour toi.
+              <b> Gratuit · sans engagement · réponse sous 24h.</b>
+            </p>
+          </div>
+          <CalendlyEmbed height={720} />
+        </div>
+
+        {/* ═══ CTAs SECONDAIRES ═══ */}
+        <div className="rview-secondary-cta rview-print-hide">
+          <div className="rview-secondary-cta-h">Pas prêt(e) à réserver ?</div>
+          <div className="rview-secondary-cta-row">
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="rview-secondary-cta-btn"
+              aria-label="Télécharger l'estimation en PDF (via la boîte de dialogue d'impression)"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="6 9 6 2 18 2 18 9" />
+                <path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2" />
+                <rect x="6" y="14" width="12" height="8" />
               </svg>
+              Télécharger en PDF
+            </button>
+            <Link href={mailtoHref} className="rview-secondary-cta-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              Nous envoyer l&apos;estimation par mail
             </Link>
-            <Link href="/tarifs" className="rview-next-btn-ghost">
+            <Link href="/tarifs" className="rview-secondary-cta-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M9 7h6M9 12h6M9 17h3" />
+              </svg>
               Voir les fourchettes par service
             </Link>
-            <button type="button" onClick={onRestart} className="rview-next-btn-ghost">
+            <button type="button" onClick={onRestart} className="rview-secondary-cta-btn">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="23 4 23 10 17 10" />
                 <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10" />
@@ -309,8 +353,9 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
             </button>
           </div>
           {contactEmail && (
-            <p className="rview-next-emailed">
-              On t&apos;enverra un récap par email à <b>{contactEmail}</b> sous 24 h ouvrées.
+            <p className="rview-emailed">
+              Tes coordonnées sont bien enregistrées (<b>{contactEmail}</b>). On te
+              recontacte sous 24 h ouvrées avec une fourchette ferme + 3 créneaux Discovery.
             </p>
           )}
         </div>

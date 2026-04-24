@@ -1,126 +1,100 @@
 export const deriskHtml = `
-<!-- DE-RISK M&E : 4 peurs du dirigeant / CTO -->
+<!-- DE-RISK · 6 peurs qui empêchent de signer un audit -->
 <section class="at-derisk">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Les 7 peurs qu'on désamorce</div>
-        <h2>Ce qui vous empêche de signer<br>un contrat TMA — et ce<br>qu'on fait pour.</h2>
+        <div class="eyebrow">— Les 6 peurs qu'on désamorce</div>
+        <h2>Ce qui vous empêche de signer<br>un audit — et ce qu'on fait<br>pour le neutraliser contractuellement.</h2>
       </div>
       <div class="right">
-        Sept peurs reviennent dans 9 calls sur 10 sur un engagement TMA. Voici comment on les neutralise
-        <b>contractuellement</b>, pas en paroles rassurantes.
+        Six peurs reviennent dans 9 calls sur 10 quand on parle d'audit. Chacune est légitime — et chacune
+        se traite par une <b>clause écrite dans le devis</b>, pas par une parole rassurante. Voici ce qu'on signe.
       </div>
     </div>
 
     <div class="at-derisk-grid">
-      <!-- PEUR 01 : Payer pour rien certains mois -->
+      <!-- PEUR 01 : Trouver des cadavres -->
       <div class="at-derisk-card reveal">
         <div class="at-derisk-fear">
-          « Et si je paye le forfait et que je <b>n'ai rien à faire faire</b> certains mois ? »
+          « On va <b>trouver des cadavres</b> qu'on préfère ne pas voir. »
         </div>
-        <h4>Rollover 30 % + timesheet transparent + downgrade trimestriel</h4>
-        <p>Jours non consommés sur un mois&nbsp;? <b>Reportés jusqu'à 30 % sur les 3 mois suivants</b>.
-        Vous voyez le timesheet Linear/Notion en temps réel, on documente chaque jour. Si votre usage réel
-        est sous le forfait pendant 2 trimestres consécutifs, <b>on propose un downgrade</b> sans discussion —
-        parce qu'on veut que vous restiez 5 ans, pas qu'on vous facture pour rien.</p>
+        <h4>NDA mutuel · version board-safe · méthodologie no-blame</h4>
+        <p>Le rapport est <b>strictement confidentiel</b>, propriété 100 % client, NDA mutuel signé à J0 (opposable aux deux parties). Version <b>board-safe anonymisée</b> livrée en plus du rapport complet&nbsp;: pas de noms de devs, pas de blame personnel, focus sur les systèmes. <b>Vos équipes co-signent le plan de remédiation</b> — le rapport devient un outil d'alignement, pas d'accusation.</p>
         <div class="at-derisk-proof">
-          <span>✓ Rollover 30 %</span>
-          <span>✓ Timesheet live</span>
-          <span>✓ Downgrade proposé</span>
+          <span>✓ NDA mutuel J0</span>
+          <span>✓ Version board-safe</span>
+          <span>✓ Co-signature équipe</span>
         </div>
       </div>
 
-      <!-- PEUR 02 : Vendor lock-in -->
+      <!-- PEUR 02 : Rapport retourné en négo -->
       <div class="at-derisk-card reveal reveal-d-1">
         <div class="at-derisk-fear">
-          « Je vais être <b>enfermé avec vous</b> sans pouvoir partir. »
+          « Le rapport va se <b>retourner contre nous</b> en négo (levée / M&A). »
         </div>
-        <h4>Réversibilité contractuelle · passation 5 j offerte · 0 lock-in</h4>
-        <p>Clause CGV&nbsp;: <b>préavis 60 j</b>, documentation exhaustive livrée en continu (pas rétroactivement),
-        <b>5 jours de passation offerts</b> à votre prestataire suivant. Repo GitHub, comptes cloud, pixels,
-        comptes SaaS tiers&nbsp;: <b>tout est sur votre organisation depuis J+1</b>. Rien chez nous. Vous partez
-        quand vous voulez, sans rachat d'heures, sans "bonus" planqué, sans retention par l'ignorance.</p>
+        <h4>Audit vendeur avant la DD · version data-room contrôlée</h4>
+        <p>Côté vendeur (levée ou M&A vente)&nbsp;: on audite <b>avant</b> que le fonds ou l'acquéreur ne mandate sa propre DD. Vous découvrez les findings avant eux, vous préparez les réponses, vous livrez vous-même la version data-room que <b>vous choisissez de partager</b>. Vous gardez le contrôle narratif&nbsp;: ce qui est dans le rapport, ce qui est dans la data room, ce qui reste interne.</p>
         <div class="at-derisk-proof">
-          <span>✓ Préavis 60 j</span>
-          <span>✓ Passation 5 j offerte</span>
-          <span>✓ Tout en propriété client</span>
+          <span>✓ Contrôle narratif client</span>
+          <span>✓ Version data-room dédiée</span>
+          <span>✓ Réponses pré-rédigées</span>
         </div>
       </div>
 
-      <!-- PEUR 03 : Rotation équipe -->
+      <!-- PEUR 03 : Conflit d'intérêt / agenda caché -->
       <div class="at-derisk-card reveal reveal-d-2">
         <div class="at-derisk-fear">
-          « L'équipe va <b>tourner</b> et la qualité va baisser au bout de 6 mois. »
+          « Les consultants vont pousser <b>leur propre agenda</b> (nous vendre une refonte). »
         </div>
-        <h4>Équipe nommée dans le contrat · 1 remplacement max · overlap 2 sem.</h4>
-        <p>Les 2 à 4 personnes qui gèrent votre compte sont <b>nommées dans le contrat</b>, photos + LinkedIn
-        inclus. <b>Maximum 1 remplacement sur 12 mois</b> sauf cas de force majeure documenté. En cas de changement,
-        <b>overlap obligatoire de 2 semaines</b> entre sortant et remplaçant. Notre turnover interne est &lt; 10 %
-        (vs industrie à 25 %), ancienneté moyenne des devs&nbsp;: 4 ans. NPS client trimestriel comme garde-fou.</p>
+        <h4>Clause de non-conflit d'intérêt publique · 100 % déduit si mission suit</h4>
+        <p>Clause écrite dans nos CGV et affichée <b>publiquement sur cette page</b>&nbsp;: si une mission de remédiation &gt; 50 k€ suit l'audit, <b>100 % du prix de l'audit est déduit de la première facture</b>. Résultat&nbsp;: notre intérêt économique est aligné sur la qualité du diagnostic, pas sur le spin. Plus le rapport est rigoureux, plus vous avez confiance pour signer ensuite. C'est <b>la garantie la plus forte du marché FR</b>.</p>
         <div class="at-derisk-proof">
-          <span>✓ Nom dans le contrat</span>
-          <span>✓ Overlap 2 sem.</span>
-          <span>✓ NPS trimestriel</span>
+          <span>✓ Clause CoI publique</span>
+          <span>✓ 100 % déduit si mission</span>
+          <span>✓ Cabinet refonte partenaire dispo</span>
         </div>
       </div>
 
-      <!-- PEUR 04 : Incidents hors horaires -->
+      <!-- PEUR 04 : 10 jours trop long -->
       <div class="at-derisk-card reveal reveal-d-3">
         <div class="at-derisk-fear">
-          « Un incident la nuit / le week-end — <b>personne ne va répondre</b>. »
+          « <b>10 jours c'est trop long</b>, on a besoin du rapport pour dans 2 semaines. »
         </div>
-        <h4>Astreinte contractuelle + Statuspage + post-mortem 72 h · pénalités auto</h4>
-        <p>Tier Scale &amp; Premium&nbsp;: <b>astreinte 7j/7</b> via PagerDuty, rotation documentée, escalation
-        auto (Slack → SMS → téléphone). <b>MTTR contractuel &lt; 30 min P1</b>. Si on dépasse&nbsp;:
-        <b>pénalités SLA auto-appliquées en avoir</b>, sans discussion. Statuspage publique, post-mortem sans
-        blame sous 72 h, action items trackés. <b>Vous n'apprenez jamais un incident par un client mécontent</b>.</p>
+        <h4>Format Express 3-5 j · démarrage sous 5 j ouvrés · premiers insights J+5</h4>
+        <p>Trois leviers&nbsp;: <b>format Express 3-5 jours</b> pour les urgences (8 000 € HT fixe, livrable Notion + Loom 15 min, sans deck), <b>démarrage sous 5 j ouvrés</b> après signature (3 j pour une urgence justifiée), et <b>premiers insights transmis à J+5</b> sur le format Standard — vous n'attendez jamais 10 jours pour savoir où on en est. Si le scope doit pivoter à J+5, vous ne perdez pas le reste de l'audit.</p>
         <div class="at-derisk-proof">
-          <span>✓ Astreinte 7j/7</span>
-          <span>✓ MTTR &lt; 30 min</span>
-          <span>✓ Pénalités auto</span>
+          <span>✓ Express 3-5 j</span>
+          <span>✓ Démarrage 5 j ouvrés</span>
+          <span>✓ Insights J+5</span>
         </div>
       </div>
 
-      <!-- PEUR 05 : Complémentarité avec CTO interne -->
+      <!-- PEUR 05 : Rapport générique -->
       <div class="at-derisk-card reveal">
         <div class="at-derisk-fear">
-          « On a déjà un <b>CTO / lead dev</b> en interne — à quoi bon vous ? »
+          « Le rapport sera <b>générique</b>, on l'aura déjà lu 10 fois. »
         </div>
-        <h4>On est votre multiplicateur, pas votre remplaçant</h4>
-        <p>Votre CTO bosse sur le <b>core product</b>. Nous, on prend tout ce qui l'empêche de dormir mais ne scale pas son impact&nbsp;: <b>astreinte 7j/7, monitoring, patches sécurité, dépendances, incidents, reporting board</b>. 90 % de nos clients Scale ont un CTO interne — on sync avec lui en revue hebdo. <b>Il garde le cerveau produit. On prend le cerveau run.</b></p>
+        <h4>Sample report téléchargeable · benchmark percentile · recos chiffrées en €</h4>
+        <p>Sample anonymisé d'un audit réel <b>téléchargeable avant signature</b> — vous voyez notre méthodologie, notre niveau de détail, notre Tech Debt P&amp;L. Chaque recommandation est <b>chiffrée en jours/homme et en euros</b>, pas une liste générique "améliorer la sécurité". Votre score est comparé à notre <b>base propriétaire de 47 audits</b> SaaS B2B français comparables — pas à un benchmark public marketing.</p>
         <div class="at-derisk-proof">
-          <span>✓ Binôme CTO interne</span>
-          <span>✓ Revue hebdo partagée</span>
-          <span>✓ 90 % de nos clients Scale</span>
+          <span>✓ Sample téléchargeable</span>
+          <span>✓ Recos chiffrées j/h + €</span>
+          <span>✓ Benchmark percentile 47 audits</span>
         </div>
       </div>
 
-      <!-- PEUR 06 : Localisation Chambéry -->
+      <!-- PEUR 06 : Équipe le prendra mal -->
       <div class="at-derisk-card reveal reveal-d-1">
         <div class="at-derisk-fear">
-          « Vous êtes à Chambéry, pas à Paris — <b>vous tiendrez la distance</b> ? »
+          « <b>Mes devs vont le prendre mal</b>, je vais les perdre. »
         </div>
-        <h4>Fuseau FR, coûts maîtrisés, zéro turnover parisien</h4>
-        <p>On est basés à Chambéry (Savoie), par choix&nbsp;: <b>fuseau horaire français</b>, loyers 3× plus bas, <b>turnover tech divisé par 3 vs. Paris</b> (nos devs restent en moyenne 4 ans vs 18 mois sur le marché parisien). Résultat&nbsp;: vos forfaits sont 20-30 % moins chers à qualité équivalente, et la personne qui commence votre projet sera encore là dans 3 ans. <b>Pas d'off-shore, pas de near-shore — équipe 100 % France</b>.</p>
+        <h4>Méthodologie no-blame · équipe co-auteure · entretiens off-the-record</h4>
+        <p>5 à 8 interviews 45 min <b>off-the-record</b> avec vos devs (CTO, lead devs, staff). Leurs retours intègrent le rapport sans citation nominative. <b>Focus sur les systèmes, pas les personnes</b>&nbsp;: une dette tech n'est pas la faute d'un dev, c'est souvent un symptôme de pression temporelle ou de contraintes organisationnelles. Le <b>plan de remédiation est co-écrit avec votre équipe</b> — ils en deviennent co-auteurs. Chez nos 47 audits, <b>NPS équipe post-audit = 68</b> (mesuré à 30 j).</p>
         <div class="at-derisk-proof">
-          <span>✓ Équipe 100 % FR</span>
-          <span>✓ Turnover ÷ 3 vs Paris</span>
-          <span>✓ Visio + 1 déplacement/trim. inclus</span>
-        </div>
-      </div>
-
-      <!-- PEUR 07 : Et si faillite / rachat -->
-      <div class="at-derisk-card reveal reveal-d-2">
-        <div class="at-derisk-fear">
-          « Et si vous <b>faites faillite</b> ou vous faites <b>racheter</b> ? »
-        </div>
-        <h4>Clause d'escrow · partenaire secondaire nommé · comptabilité publique</h4>
-        <p>Trois parades contractuelles&nbsp;: (1) <b>clause d'escrow du code + documentation</b> déposée chez un tiers de confiance (Codex Escrow ou équivalent) — si on disparaît, vous récupérez tout sous 7 j. (2) <b>Partenaire secondaire nommé dans le contrat</b> (une agence partenaire avec qui on a un accord de reprise réciproque). (3) Hagnéré Code SAS est <b>rentable, sans dette, sans dépendance investisseur</b> — comptabilité publique consultable sur societe.com.</p>
-        <div class="at-derisk-proof">
-          <span>✓ Escrow code + docs</span>
-          <span>✓ Partenaire secondaire</span>
-          <span>✓ Bilan public · 0 dette</span>
+          <span>✓ Off-the-record</span>
+          <span>✓ Co-auteurs du plan</span>
+          <span>✓ NPS équipe 68</span>
         </div>
       </div>
     </div>

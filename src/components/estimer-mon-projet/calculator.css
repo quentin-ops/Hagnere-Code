@@ -372,6 +372,133 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════
+   v2.1 — Sprint C: Conversion (Calendly + TrustBand + RGPD checkbox)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Step title hint (optionnel) */
+.calc-step-title-hint{font-size:0.6em;color:var(--mute);font-weight:500;letter-spacing:0;margin-left:8px}
+
+/* RGPD checkbox */
+.calc-rgpd{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--paper-2);border:1.5px solid var(--line);border-radius:10px;cursor:pointer;transition:all 0.15s;margin:18px 0}
+.calc-rgpd:hover{border-color:rgba(109,40,217,0.3);background:rgba(109,40,217,0.03)}
+.calc-rgpd.checked{border-color:var(--accent);background:rgba(109,40,217,0.05)}
+.calc-rgpd-input{position:absolute;opacity:0;pointer-events:none}
+.calc-rgpd-box{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--line);display:grid;place-items:center;flex-shrink:0;background:#fff;margin-top:2px;color:#fff;transition:all 0.15s}
+.calc-rgpd.checked .calc-rgpd-box{background:var(--accent);border-color:var(--accent)}
+.calc-rgpd-input:focus-visible + .calc-rgpd-box{outline:2px solid var(--accent);outline-offset:2px}
+.calc-rgpd-text{font-size:13px;color:var(--ink-3);line-height:1.55}
+.calc-rgpd-text b{color:var(--ink);font-weight:600}
+.calc-rgpd-text a{color:var(--accent-ink);text-decoration:underline}
+.calc-rgpd-required{display:inline;color:#B91C1C;font-weight:600;font-size:12.5px;margin-left:4px}
+
+/* ─── TrustBand (réassurance entre estimation et CTA) ─── */
+.rview-trust{max-width:920px;margin:0 auto 32px;padding:48px 36px;background:linear-gradient(180deg,#FAFAFA 0%,#fff 100%);border:1px solid var(--line);border-radius:20px;text-align:center}
+.rview-trust-tag{display:inline-flex;margin-bottom:16px}
+.rview-trust-tag-pill{font-family:var(--font-geist-mono);font-size:11px;color:var(--accent-ink);letter-spacing:0.12em;font-weight:700;background:var(--accent-soft);padding:5px 11px;border-radius:5px}
+.rview-trust-title{font-family:var(--font-geist);font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-0.035em;line-height:1.15;color:var(--ink);margin-bottom:32px}
+
+.rview-trust-founders{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:32px;text-align:left}
+.rview-trust-founder{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:border-color 0.2s,box-shadow 0.2s}
+.rview-trust-founder:hover{border-color:rgba(109,40,217,0.25);box-shadow:0 12px 24px -16px rgba(76,29,149,0.12)}
+.rview-trust-founder-head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.rview-trust-avatar{width:48px;height:48px;border-radius:50%;color:#fff;display:grid;place-items:center;font-family:var(--font-geist);font-weight:700;font-size:15px;letter-spacing:-0.01em;flex-shrink:0;box-shadow:0 6px 14px -6px rgba(0,0,0,0.2)}
+.rview-trust-avatar-qh{background:linear-gradient(135deg,#0A0A0A,#262626);border:2px solid rgba(167,139,250,0.5)}
+.rview-trust-avatar-nw{background:linear-gradient(135deg,var(--accent-ink),var(--accent));border:2px solid rgba(167,139,250,0.3)}
+.rview-trust-founder-name{font-size:15px;font-weight:600;color:var(--ink);letter-spacing:-0.01em;line-height:1.2}
+.rview-trust-founder-role{font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.04em;margin-top:2px}
+.rview-trust-li{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;background:#0a66c2;color:#fff;text-decoration:none;transition:transform 0.15s,box-shadow 0.15s;flex-shrink:0;margin-left:auto;box-shadow:0 4px 10px -3px rgba(10,102,194,0.4)}
+.rview-trust-li:hover{transform:scale(1.08);box-shadow:0 6px 14px -4px rgba(10,102,194,0.55)}
+.rview-trust-quote{margin:0;font-size:13.5px;line-height:1.55;color:var(--ink-3);font-style:italic;border-left:2px solid var(--accent);padding-left:14px}
+
+.rview-trust-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px;background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:32px}
+.rview-trust-stat{text-align:center;display:flex;flex-direction:column;gap:4px}
+.rview-trust-stat-value{font-family:var(--font-geist);font-size:24px;font-weight:700;letter-spacing:-0.035em;color:var(--accent-ink);line-height:1}
+.rview-trust-stat-label{font-family:var(--font-geist-mono);font-size:10px;color:var(--mute);letter-spacing:0.04em;line-height:1.3}
+
+.rview-trust-clients-h{font-family:var(--font-geist-mono);font-size:10px;color:var(--mute);letter-spacing:0.12em;font-weight:700;margin-bottom:14px}
+.rview-trust-clients-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.rview-trust-client{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#fff;
+  border:1px solid var(--line-2);
+  border-radius:10px;
+  padding:12px;
+  transition:all 0.15s ease;
+  min-height:64px;
+}
+.rview-trust-client:hover{
+  border-color:rgba(109,40,217,0.25);
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(15,15,15,0.04);
+}
+.rview-trust-client-mono{
+  flex-shrink:0;
+  width:36px;height:36px;
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-geist);
+  font-size:18px;
+  font-weight:700;
+  color:#fff;
+  letter-spacing:-0.02em;
+  line-height:1;
+}
+.rview-trust-client-text{min-width:0;flex:1}
+.rview-trust-client-name{font-family:var(--font-geist);font-size:13px;font-weight:700;letter-spacing:-0.01em;color:var(--ink);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rview-trust-client-domain{font-family:var(--font-geist-mono);font-size:9.5px;color:var(--mute);letter-spacing:0.04em;margin-top:3px;line-height:1.3}
+.rview-trust-clients-foot{
+  font-family:var(--font-geist-mono);
+  font-size:11px;
+  color:var(--mute);
+  text-align:center;
+  margin-top:14px;
+  letter-spacing:0.02em;
+  font-style:italic;
+}
+
+/* ─── Calendly section (la conversion principale) ─── */
+.rview-calendly{max-width:920px;margin:0 auto 32px;padding:32px 28px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 48px -24px rgba(76,29,149,0.18)}
+.rview-calendly-h{text-align:center;margin-bottom:24px}
+.rview-calendly-h .eyebrow{display:block;margin-bottom:8px}
+.rview-calendly-h h2{font-size:clamp(22px,2.6vw,28px);letter-spacing:-0.025em;line-height:1.2;margin-bottom:12px}
+.rview-calendly-h p{font-size:14px;color:var(--ink-3);line-height:1.55;max-width:560px;margin:0 auto}
+.rview-calendly-h p b{color:var(--ink);font-weight:600}
+
+/* Calendly inline embed iframe wrapper */
+.calendly-inline-widget{border-radius:12px;overflow:hidden;background:var(--paper-2)}
+
+/* Fallback if Calendly script fails to load */
+.cal-fallback{padding:40px 24px;text-align:center;background:var(--paper-2);border:1px dashed var(--line);border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.cal-fallback p{color:var(--ink-3);font-size:14px;margin:0}
+
+/* ─── Secondary CTAs (under Calendly) ─── */
+.rview-secondary-cta{max-width:920px;margin:0 auto;padding:24px 28px;background:var(--paper-2);border:1px dashed var(--line);border-radius:14px;text-align:center}
+.rview-secondary-cta-h{font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.04em;font-weight:600;margin-bottom:14px}
+.rview-secondary-cta-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.rview-secondary-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink-3);font-size:13px;font-weight:500;text-decoration:none;cursor:pointer;transition:all 0.15s;font-family:inherit}
+.rview-secondary-cta-btn:hover{border-color:var(--ink-4);color:var(--ink);transform:translateY(-1px)}
+.rview-secondary-cta-btn svg{color:var(--accent);flex-shrink:0}
+.rview-emailed{margin-top:14px;font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.02em}
+.rview-emailed b{color:var(--ink-3);font-weight:600}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Responsive Sprint C
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .rview-trust{padding:32px 20px}
+  .rview-trust-founders{grid-template-columns:1fr}
+  .rview-trust-stats{grid-template-columns:1fr 1fr}
+  .rview-trust-clients-grid{grid-template-columns:1fr 1fr}
+  .rview-calendly{padding:24px 18px}
+  .rview-calendly-h h2{font-size:22px}
+  .rview-secondary-cta{padding:20px 18px}
+  .rview-secondary-cta-row{flex-direction:column;align-items:stretch}
+  .rview-secondary-cta-btn{justify-content:center}
+}
+
+/* ═══════════════════════════════════════════════════════════════════
    MULTI-SERVICES (v2) — additions
    ═══════════════════════════════════════════════════════════════════ */
 
@@ -593,3 +720,358 @@
   .rview-stack-row{grid-template-columns:1fr;gap:4px}
   .rview-team-grid{grid-template-columns:1fr}
 }
+
+/* =====================================================================
+   Sprint D — UX wizard improvements
+   - Quick presets row (step 1)
+   - Filter input (step 1)
+   - Time-remaining label in progress bar
+   - Skip-module button (service step)
+   - Pre-fill-from-choices button (description step)
+   ===================================================================== */
+
+.calc-progress-time{
+  color:var(--ink-3);
+  font-weight:500;
+  margin-left:6px;
+}
+
+.calc-step-head-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:8px;
+  flex-wrap:wrap;
+}
+.calc-step-head-row .calc-step-title{margin-bottom:0;flex:1 1 auto;min-width:240px}
+
+/* Quick presets */
+.calc-presets{
+  margin:18px 0 22px;
+  padding:18px;
+  background:linear-gradient(180deg,rgba(217,119,87,0.05) 0%,rgba(217,119,87,0.02) 100%);
+  border:1px solid rgba(217,119,87,0.18);
+  border-radius:14px;
+}
+.calc-presets-h{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:12px;
+}
+.calc-presets-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.calc-preset{
+  text-align:left;
+  padding:14px 14px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  cursor:pointer;
+  transition:all 0.15s ease;
+  font-family:inherit;
+}
+.calc-preset:hover{
+  border-color:var(--accent);
+  background:rgba(217,119,87,0.04);
+  transform:translateY(-1px);
+  box-shadow:0 6px 18px rgba(217,119,87,0.12);
+}
+.calc-preset-label{
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink-1);
+  margin-bottom:4px;
+  line-height:1.3;
+}
+.calc-preset-desc{
+  font-size:12px;
+  color:var(--ink-3);
+  line-height:1.4;
+}
+
+/* Filter input */
+.calc-filter{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 16px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:10px;
+  margin:0 0 18px;
+  transition:border-color 0.15s ease;
+}
+.calc-filter:focus-within{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(217,119,87,0.12);
+}
+.calc-filter > svg{color:var(--ink-3);flex-shrink:0}
+.calc-filter-input{
+  flex:1;
+  border:none;
+  outline:none;
+  background:transparent;
+  font-size:14px;
+  color:var(--ink-1);
+  font-family:inherit;
+  min-width:0;
+}
+.calc-filter-input::placeholder{color:var(--ink-3)}
+.calc-filter-clear{
+  background:none;
+  border:none;
+  color:var(--ink-3);
+  font-size:20px;
+  line-height:1;
+  cursor:pointer;
+  padding:0 4px;
+  flex-shrink:0;
+}
+.calc-filter-clear:hover{color:var(--ink-1)}
+
+/* Skip-module button */
+.calc-skip-btn,
+.calc-prefill-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 12px;
+  font-size:12px;
+  font-weight:600;
+  color:var(--ink-2);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:8px;
+  cursor:pointer;
+  transition:all 0.15s ease;
+  font-family:inherit;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.calc-skip-btn:hover{
+  color:var(--ink-1);
+  border-color:var(--ink-3);
+  background:#fafaf7;
+}
+.calc-prefill-btn{
+  color:var(--accent);
+  border-color:rgba(217,119,87,0.3);
+  background:rgba(217,119,87,0.04);
+}
+.calc-prefill-btn:hover{
+  color:#fff;
+  background:var(--accent);
+  border-color:var(--accent);
+}
+
+@media (max-width:760px){
+  .calc-presets-row{grid-template-columns:1fr}
+  .calc-step-head-row{flex-direction:column;gap:8px}
+  .calc-skip-btn,.calc-prefill-btn{align-self:flex-start}
+}
+
+/* =====================================================================
+   Sprint E — Editable recap card (contact step)
+   ===================================================================== */
+
+.calc-recap{
+  margin:0 0 28px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 1px 2px rgba(15,15,15,0.03);
+}
+.calc-recap-h{
+  padding:14px 18px;
+  background:linear-gradient(180deg,#fafaf7 0%,#fff 100%);
+  border-bottom:1px solid var(--line);
+}
+.calc-recap-tag{
+  display:inline-block;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  color:var(--accent);
+  margin-bottom:4px;
+}
+.calc-recap-title{
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink-1);
+}
+.calc-recap-rows{
+  display:flex;
+  flex-direction:column;
+}
+.calc-recap-row{
+  display:grid;
+  grid-template-columns:120px 1fr auto;
+  gap:14px;
+  align-items:center;
+  padding:12px 18px;
+  border-top:1px solid var(--line);
+  font-size:13px;
+}
+.calc-recap-row:first-child{border-top:none}
+.calc-recap-row-sub{
+  background:rgba(0,0,0,0.015);
+  padding-top:8px;
+  padding-bottom:8px;
+  font-size:12px;
+}
+.calc-recap-row-label{
+  color:var(--ink-3);
+  font-weight:500;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:0.04em;
+}
+.calc-recap-row-sub .calc-recap-row-label{
+  text-transform:none;
+  letter-spacing:0;
+  font-size:12px;
+  color:var(--ink-2);
+  padding-left:8px;
+}
+.calc-recap-row-value{
+  color:var(--ink-1);
+  line-height:1.5;
+  min-width:0;
+}
+.calc-recap-row-desc{
+  font-size:12px;
+  color:var(--ink-2);
+  line-height:1.55;
+}
+.calc-recap-meta{
+  display:block;
+  font-size:11px;
+  color:var(--ink-3);
+  margin-top:4px;
+}
+.calc-recap-empty{color:var(--ink-3);font-style:italic}
+.calc-recap-ok{color:#3a8c5b;font-weight:500}
+.calc-recap-skip{color:var(--ink-3);font-style:italic}
+.calc-recap-edit{
+  background:none;
+  border:1px solid var(--line);
+  color:var(--accent);
+  font-size:11px;
+  font-weight:600;
+  padding:5px 11px;
+  border-radius:6px;
+  cursor:pointer;
+  transition:all 0.15s ease;
+  font-family:inherit;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.calc-recap-edit:hover{
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent);
+}
+
+@media (max-width:760px){
+  .calc-recap-row{
+    grid-template-columns:1fr auto;
+    grid-template-areas: "label edit" "value value";
+    gap:6px;
+  }
+  .calc-recap-row-label{grid-area:label}
+  .calc-recap-edit{grid-area:edit;justify-self:end}
+  .calc-recap-row-value{grid-area:value}
+}
+
+/* =====================================================================
+   Sprint F — A11y & mobile
+   - Focus ring on the step region (keyboard / SR users)
+   - Sticky bottom CTA bar on mobile so the "Suivant" button is always reachable
+   - Screen-reader-only utility
+   ===================================================================== */
+
+.calc-step:focus{outline:none}
+.calc-step:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:6px;
+  border-radius:6px;
+}
+
+.calc-sr-only{
+  position:absolute;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);
+  white-space:nowrap;border:0;
+}
+
+@media (max-width:760px){
+  /* Reserve space at the bottom of the wizard so sticky CTA never overlaps content */
+  .calc-wizard{padding-bottom:96px}
+
+  .calc-nav{
+    position:fixed;
+    bottom:0;left:0;right:0;
+    padding:12px 16px env(safe-area-inset-bottom,12px);
+    background:rgba(255,255,255,0.96);
+    backdrop-filter:saturate(180%) blur(10px);
+    -webkit-backdrop-filter:saturate(180%) blur(10px);
+    border-top:1px solid var(--line);
+    margin:0;
+    z-index:50;
+    box-shadow:0 -4px 20px rgba(15,15,15,0.06);
+  }
+  .calc-nav .btn{flex:1;justify-content:center}
+}
+
+/* =====================================================================
+   Print stylesheet — clean PDF output of the result view
+   - Hides interactive UI (nav, Calendly, secondary CTAs)
+   - Force single column, B&W-friendly colors
+   - Avoid awkward page breaks inside cards
+   ===================================================================== */
+
+@media print {
+  body{background:#fff !important;color:#000 !important}
+  .hc-design-nav,
+  .calc-main > .calc-wizard,
+  .calc-nav,
+  .rview-calendly,
+  .rview-print-hide,
+  .rview-trust,
+  .calc-loading,
+  .site-footer,
+  .nav-dropdown,
+  header[class*="hc-design"]{
+    display:none !important;
+  }
+  .wrap{max-width:100% !important;padding:0 !important}
+  .rview{padding:0 !important}
+  .rview-hero,
+  .rview-section,
+  .rview-card,
+  .rview-project,
+  .rview-retainer,
+  .rview-team-card{
+    box-shadow:none !important;
+    border-color:#ccc !important;
+    page-break-inside:avoid;
+  }
+  .rview-hero{background:#fff !important;color:#000 !important}
+  .rview-hero *{color:#000 !important;background:transparent !important}
+  .grad-accent{background:none !important;-webkit-text-fill-color:#000 !important;color:#000 !important}
+  a{color:#000 !important;text-decoration:underline}
+  /* Print URL after important links */
+  a[href^="https://calendly.com"]::after{content:" (" attr(href) ")";font-size:10pt;color:#555}
+}
+
+
