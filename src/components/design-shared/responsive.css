@@ -4,6 +4,14 @@
    Loaded after each page's own CSS, so specificity wins without !important.
    ========================================================================= */
 
+/* Content must remain visible if JavaScript, IntersectionObserver, print/full-page
+   capture, or reduced-motion tooling does not run the scroll reveal path. */
+.reveal,
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
 /* --- Mobile hamburger button (hidden on desktop) --- */
 .nav-burger {
   display: none;
@@ -119,6 +127,8 @@
 
   /* Hero */
   .hero { padding: 48px 0 64px; }
+  .hero-eyebrow .pill { gap: 6px; justify-content: center; text-align: center; }
+  .hero-eyebrow .pill .dot { display: none; }
   .hero-sub { font-size: 16px; margin-top: 20px; }
   .hero-cta { margin-top: 28px; flex-direction: column; align-items: stretch; }
   .hero-cta .btn { justify-content: center; }

@@ -32,6 +32,7 @@
 }
 
 .hero-video {
+  display: block;
   position: relative;
   width: 100%;
   max-width: 460px;
@@ -48,6 +49,7 @@
     0 0 0 1px rgba(109, 40, 217, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: #fff;
+  text-decoration: none;
   text-align: left;
   font-family: inherit;
 }

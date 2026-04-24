@@ -5,7 +5,7 @@ export const founderVideoHtml = `
     <div class="at-fv-grid reveal">
       <!-- Video thumbnail -->
       <div class="at-fv-player">
-        <button type="button" class="at-fv-play hero-video" data-loom-url="placeholder" aria-label="Lire le message du fondateur">
+        <a class="at-fv-play hero-video" href="#contact" aria-label="Demander un échange sur l'audit technique">
           <div class="at-fv-thumb">
             <svg viewBox="0 0 400 240" class="at-fv-thumb-svg" aria-hidden="true">
               <defs>
@@ -45,15 +45,15 @@ export const founderVideoHtml = `
           <div class="at-fv-play-btn">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><polygon points="8 5 19 12 8 19 8 5"/></svg>
           </div>
-          <div class="at-fv-duration">1 min 45 s</div>
-        </button>
+          <div class="at-fv-duration">20 min</div>
+        </a>
       </div>
 
       <!-- Body -->
       <div class="at-fv-body">
         <div class="eyebrow">— Message du fondateur</div>
-        <h2>« Pourquoi on refuse<br>de vous vendre une refonte<br>derrière un audit. »</h2>
-        <p>Une minute et demie avec Quentin Hagnéré pour répondre à <b>la question qu'on entend le plus en call</b>&nbsp;:
+        <h2>Vérifiez notre posture<br>avant de lancer<br>un audit technique.</h2>
+        <p>Un échange court avec Quentin Hagnéré pour répondre à <b>la question qu'on entend le plus en call</b>&nbsp;:
         pourquoi une agence qui fait du développement SaaS accepte de livrer des audits où
         <b>100 % du prix est déduit si vous nous confiez la remédiation</b>. Ce qui nous motive à
         ne pas noircir le rapport pour vendre une mission derrière — et pourquoi cette clause
@@ -62,7 +62,7 @@ export const founderVideoHtml = `
         <div class="at-fv-meta">
           <div class="at-fv-meta-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <span><b>1 min 45 s</b> · sans script</span>
+            <span><b>20 min</b> · cadrage direct</span>
           </div>
           <div class="at-fv-meta-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
@@ -70,12 +70,12 @@ export const founderVideoHtml = `
           </div>
           <div class="at-fv-meta-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            <span>Hébergé sur Loom · pas de tracking tiers</span>
+            <span>Pas d'intermédiaire commercial</span>
           </div>
         </div>
 
         <a href="#contact" class="btn btn-ghost btn-lg at-fv-cta">
-          Pas le temps de regarder&nbsp;? Télécharger le sample report
+          Demander un extrait de rapport
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </div>

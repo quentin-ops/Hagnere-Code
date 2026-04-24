@@ -130,7 +130,7 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
     }
 
     // Hero founder-video button — logs intent until a real Loom URL is wired.
-    const heroVideo = root.querySelector<HTMLButtonElement>(".hero-video");
+    const heroVideo = root.querySelector<HTMLButtonElement>("button.hero-video");
     if (heroVideo) {
       const onVideoClick: EventListener = () => {
         const url = heroVideo.dataset.loomUrl;

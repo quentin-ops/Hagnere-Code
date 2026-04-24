@@ -9,7 +9,7 @@ export const techFaqHtml = `
       </div>
       <div class="right">
         Les huit questions techniques qu'on entend systématiquement de la part des
-        CTO / lead devs qui évaluent notre travail. Réponses directes, sans bullshit.
+        CTO / lead devs qui évaluent notre travail. Réponses directes, sans jargon.
       </div>
     </div>
 

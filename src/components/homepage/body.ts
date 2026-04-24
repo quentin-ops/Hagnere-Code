@@ -92,14 +92,14 @@ export const bodyHtml = `<!-- NAV -->
   <div class="hero-radial"></div>
   <div class="wrap hero-inner">
     <div>
-      <div class="hero-eyebrow"><span class="pill"><span class="dot"></span> On prend 6 projets par an · <b style="color:var(--ink);font-weight:600">2 places ouvertes pour Q3 2026</b></span></div>
+      <div class="hero-eyebrow"><span class="pill"><span class="dot"></span> 6 projets/an <b style="color:var(--ink);font-weight:600">2 créneaux prochain trimestre</b></span></div>
       <h1 data-variant="A">
         <span id="h1-content">L'agence qui construit<br>vos outils numériques,<br><span class="accent">de A à Z.</span></span>
       </h1>
       <p class="hero-sub" id="hero-sub">
         On imagine, on conçoit, on développe, on lance et on maintient
         vos <b>sites, applications métier et SaaS sur mesure</b>. Un seul interlocuteur
-        qui traduit le technique dans votre langue — pas de sous-traitance, pas de bullshit.
+        qui traduit le technique dans votre langue — pas de sous-traitance, pas de jargon creux.
       </p>
       <div class="hero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
@@ -126,7 +126,7 @@ export const bodyHtml = `<!-- NAV -->
     <!-- Founder video (isometric tower as backdrop) -->
     <div class="hero-visual">
       <div class="hero-video-wrap">
-        <button class="hero-video" type="button" data-loom-url="https://www.loom.com/share/placeholder">
+        <a class="hero-video" href="#contact" aria-label="Réserver un échange avec Quentin Hagnéré">
           <div class="hero-video-thumb" aria-hidden="true">
             <div class="hero-video-gradient"></div>
             <div class="hero-video-grid"></div>
@@ -142,11 +142,11 @@ export const bodyHtml = `<!-- NAV -->
             <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           </div>
           <div class="hero-video-caption">
-            <span class="hero-video-tag">VIDÉO · 1:18</span>
-            <span class="hero-video-title">« Pourquoi on fait ça, et en quoi on est différents. »</span>
+            <span class="hero-video-tag">ÉCHANGE · 30 MIN</span>
+            <span class="hero-video-title">Parlez directement avec l'associé qui cadrera et codera votre projet.</span>
           </div>
-          <span class="hero-video-soon">Vidéo tournée, en cours de montage — thumbnail réel à venir</span>
-        </button>
+          <span class="hero-video-soon">Créneau de cadrage gratuit, sans commercial entre vous et l'équipe technique.</span>
+        </a>
       </div>
       <div class="tower tower-bg" aria-hidden="true">
       <svg viewBox="0 0 520 540" preserveAspectRatio="xMidYMid meet">
@@ -413,7 +413,7 @@ export const bodyHtml = `<!-- NAV -->
         </div>
         <h3>
           SaaS &amp; applications métier<br>
-          <span class="accent">propulsés par l'IA native<br>de Laravel 13.</span>
+          <span class="accent">sur Laravel 13, Next.js<br>et agents IA utiles.</span>
         </h3>
         <p class="svc-hero-lead">
           Plateformes B2B, espaces clients, marketplaces, applications métier sur mesure. On construit

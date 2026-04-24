@@ -5,7 +5,7 @@ export const founderVideoHtml = `
     <div class="me-fv-grid reveal">
       <!-- Video thumbnail -->
       <div class="me-fv-player">
-        <button type="button" class="me-fv-play hero-video" data-loom-url="placeholder" aria-label="Lire le message du fondateur">
+        <a class="me-fv-play hero-video" href="#contact" aria-label="Réserver un échange avec le fondateur">
           <div class="me-fv-thumb">
             <svg viewBox="0 0 400 240" class="me-fv-thumb-svg" aria-hidden="true">
               <defs>
@@ -48,30 +48,30 @@ export const founderVideoHtml = `
           <div class="me-fv-play-btn">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><polygon points="8 5 19 12 8 19 8 5"/></svg>
           </div>
-          <div class="me-fv-duration">1 min 22 s</div>
-        </button>
+          <div class="me-fv-duration">20 min</div>
+        </a>
       </div>
 
       <!-- Body -->
       <div class="me-fv-body">
         <div class="eyebrow">— Message du fondateur</div>
-        <h2>« Pourquoi on fait de la TMA<br>alors que c'est moins rentable<br>qu'un nouveau projet. »</h2>
-        <p>Une minute et demie avec Quentin Hagnéré pour répondre à la question qu'on entend le plus en call&nbsp;:
+        <h2>Parlez directement<br>avec la personne qui cadrera<br>la reprise technique.</h2>
+        <p>Un échange court avec Quentin Hagnéré pour répondre à la question qu'on entend le plus en call&nbsp;:
         pourquoi une agence qui sait construire des SaaS de zéro a choisi de faire de la maintenance long-terme
-        son cœur de métier. <b>Ce qui nous motive, ce qui nous gonfle, et pourquoi nos clients restent 4 ans en moyenne.</b></p>
+        son cœur de métier. <b>On regarde vos risques, vos accès et vos priorités avant de proposer un forfait.</b></p>
 
         <div class="me-fv-meta">
           <div class="me-fv-meta-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <span><b>1 min 22 s</b> · sans script</span>
+            <span><b>20 min</b> · cadrage direct</span>
           </div>
           <div class="me-fv-meta-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-            <span>Sous-titres FR · accessibilité WCAG</span>
+            <span>Questions techniques bienvenues</span>
           </div>
           <div class="me-fv-meta-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-            <span>Hébergé sur Loom · pas de tracking tiers</span>
+            <span>Pas d'intermédiaire commercial</span>
           </div>
         </div>
 

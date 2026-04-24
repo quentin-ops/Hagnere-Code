@@ -26,12 +26,12 @@ export function ContactFormGridWithDetails() {
 
         <div className="mt-10 hidden flex-col items-center gap-4 md:flex-row lg:flex">
           <p className="text-sm text-neutral-500 dark:text-neutral-400">
-            contact@hagnere-code.com
+            hello@hagnere-code.fr
           </p>
 
           <div className="h-1 w-1 rounded-full bg-neutral-500 dark:bg-neutral-400" />
           <p className="text-sm text-neutral-500 dark:text-neutral-400">
-            +33 6 XX XX XX XX
+            +33 3 74 47 20 18
           </p>
         </div>
         <div className="div relative mt-20 flex w-[600px] flex-shrink-0 -translate-x-10 items-center justify-center [perspective:800px] [transform-style:preserve-3d] sm:-translate-x-0 lg:-translate-x-32">
@@ -689,6 +689,14 @@ export const FeatureIconContainer = ({
   );
 };
 
+const DEFAULT_GRID_PATTERN = [
+  [8, 2],
+  [9, 5],
+  [10, 3],
+  [7, 6],
+  [11, 4],
+];
+
 export const Grid = ({
   pattern,
   size,
@@ -696,13 +704,7 @@ export const Grid = ({
   pattern?: number[][];
   size?: number;
 }) => {
-  const p = pattern ?? [
-    [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-    [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-    [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-    [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-    [Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-  ];
+  const p = pattern ?? DEFAULT_GRID_PATTERN;
   return (
     <div className="pointer-events-none absolute top-0 left-1/2 -mt-2 -ml-20 h-full w-full [mask-image:linear-gradient(white,transparent)]">
       <div className="absolute inset-0 bg-gradient-to-r from-zinc-900/30 to-zinc-900/30 [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] opacity-10 dark:from-zinc-900/30 dark:to-zinc-900/30">
@@ -719,7 +721,22 @@ export const Grid = ({
   );
 };
 
-export function GridPattern({ width, height, x, y, squares, ...props }: any) {
+type GridPatternProps = React.SVGProps<SVGSVGElement> & {
+  width: number;
+  height: number;
+  x: string;
+  y: string;
+  squares?: number[][];
+};
+
+export function GridPattern({
+  width,
+  height,
+  x,
+  y,
+  squares,
+  ...props
+}: GridPatternProps) {
   const patternId = useId();
 
   return (
@@ -744,14 +761,14 @@ export function GridPattern({ width, height, x, y, squares, ...props }: any) {
       />
       {squares && (
         <svg x={x} y={y} className="overflow-visible">
-          {squares.map(([x, y]: any, idx: number) => (
+          {squares.map(([squareX, squareY], idx) => (
             <rect
               strokeWidth="0"
-              key={`${x}-${y}-${idx}`}
+              key={`${squareX}-${squareY}-${idx}`}
               width={width + 1}
               height={height + 1}
-              x={x * width}
-              y={y * height}
+              x={squareX * width}
+              y={squareY * height}
             />
           ))}
         </svg>

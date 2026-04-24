@@ -917,7 +917,7 @@ export const bodyHtml = `
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">Discovery / cadrage</div>
         <div class="vsm-cell vsm-cell-us"><b>1 500 €</b><span>Déduit à 100 % phase 2</span></div>
-        <div class="vsm-cell"><span class="x">Gratuit (= bullshit)</span><span>Pour vendre, pas cadrer</span></div>
+        <div class="vsm-cell"><span class="x">Gratuit (= argument commercial)</span><span>Pour vendre, pas cadrer</span></div>
         <div class="vsm-cell"><span>500–2 000 €</span><span>Selon le freelance</span></div>
       </div>
 

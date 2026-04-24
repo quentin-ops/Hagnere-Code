@@ -12,87 +12,93 @@ import { cn } from "@/lib/utils";
 import { motion, useInView } from "motion/react";
 import React, { useEffect, useRef, useState } from "react";
 
+type Item = {
+  title: string;
+  topIcon: React.ReactNode;
+  description: string;
+  tags: { text: string; icon: React.ReactNode }[];
+};
+
+const ITEMS: Item[] = [
+  {
+    title: "Génération de code",
+    topIcon: <FileIcon className="size-4" />,
+    description:
+      "Création de composants, fonctions et modules complets à partir de prompts en langage naturel.",
+    tags: [
+      { text: "Claude Code", icon: <ClaudeIcon className="size-3" /> },
+      { text: "Cursor", icon: <CursorIcon className="size-3" /> },
+      { text: "Copilot", icon: <CopilotIcon className="size-3" /> },
+    ],
+  },
+  {
+    title: "Refactoring intelligent",
+    topIcon: <CogIcon className="size-4" />,
+    description:
+      "Analyse et restructuration automatique du code pour améliorer lisibilité et performances.",
+    tags: [
+      { text: "Claude Code", icon: <ClaudeIcon className="size-3" /> },
+      { text: "Cursor", icon: <CursorIcon className="size-3" /> },
+      { text: "Copilot", icon: <CopilotIcon className="size-3" /> },
+    ],
+  },
+  {
+    title: "Revue par un dev senior",
+    topIcon: <HumanIcon className="size-4 text-white" />,
+    description:
+      "Chaque livrable est validé par un expert pour garantir qualité et maintenabilité.",
+    tags: [
+      { text: "Claude Code", icon: <ClaudeIcon className="size-3" /> },
+      { text: "Cursor", icon: <CursorIcon className="size-3" /> },
+      { text: "Copilot", icon: <CopilotIcon className="size-3" /> },
+    ],
+  },
+];
+
+const CARD_COLORS = [
+  "var(--color-blue-500)",
+  "var(--color-green-500)",
+  "var(--color-red-500)",
+];
+
 export const SkeletonOne = () => {
-  type Item = {
-    title: string;
-    topIcon: React.ReactNode;
-    description: string;
-    tags: { text: string; icon: React.ReactNode }[];
-  };
-
-  const items = [
-    {
-      title: "Génération de code",
-      topIcon: <FileIcon className="size-4" />,
-      description:
-        "Création de composants, fonctions et modules complets à partir de prompts en langage naturel.",
-      tags: [
-        { text: "Claude Code", icon: <ClaudeIcon className="size-3" /> },
-        { text: "Cursor", icon: <CursorIcon className="size-3" /> },
-        { text: "Copilot", icon: <CopilotIcon className="size-3" /> },
-      ],
-    },
-    {
-      title: "Refactoring intelligent",
-      topIcon: <CogIcon className="size-4" />,
-      description:
-        "Analyse et restructuration automatique du code pour améliorer lisibilité et performances.",
-      tags: [
-        { text: "Claude Code", icon: <ClaudeIcon className="size-3" /> },
-        { text: "Cursor", icon: <CursorIcon className="size-3" /> },
-        { text: "Copilot", icon: <CopilotIcon className="size-3" /> },
-      ],
-    },
-    {
-      title: "Revue par un dev senior",
-      topIcon: <HumanIcon className="size-4 text-white" />,
-      description:
-        "Chaque livrable est validé par un expert pour garantir qualité et maintenabilité.",
-      tags: [
-        { text: "Claude Code", icon: <ClaudeIcon className="size-3" /> },
-        { text: "Cursor", icon: <CursorIcon className="size-3" /> },
-        { text: "Copilot", icon: <CopilotIcon className="size-3" /> },
-      ],
-    },
-  ];
-
-  const [activeCards, setActiveCards] = useState<Item[] | null>(null);
+  const [activeCards, setActiveCards] = useState<Item[]>([ITEMS[0]]);
 
   const ref = useRef<HTMLDivElement>(null);
+  const hasStartedRef = useRef(false);
   const isInView = useInView(ref);
 
-  let interval: NodeJS.Timeout;
-
   useEffect(() => {
-    animate();
-    return () => clearInterval(interval);
-  }, [items]);
-
-  const animate = () => {
-    if (isInView) {
-      console.log("here");
-      interval = setInterval(() => {
-        setActiveCards((prev) => {
-          if (!prev) {
-            return [items[0]];
-          }
-          if (prev.length >= items.length) {
-            clearInterval(interval);
-            return prev;
-          }
-          return [items[prev.length], ...prev];
-        });
-      }, 1000);
+    if (!isInView || hasStartedRef.current) {
+      return;
     }
-  };
+
+    hasStartedRef.current = true;
+    let nextIndex = 1;
+    const interval = setInterval(() => {
+      setActiveCards((prev) => {
+        if (nextIndex >= ITEMS.length) {
+          clearInterval(interval);
+          return prev;
+        }
+
+        const next = [...prev, ITEMS[nextIndex]];
+        nextIndex += 1;
+        return next;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isInView]);
+
   return (
     <motion.div
       ref={ref}
       layout
       className="flex-1 rounded-t-3xl gap-2 flex flex-col bg-neutral-100  dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 max-w-[20rem] lg:max-w-sm mx-auto w-full h-full absolute inset-x-0 p-2"
     >
-      {activeCards?.map((item, idx) => (
-        <Card key={item?.title} {...item} />
+      {activeCards.map((item, idx) => (
+        <Card key={item?.title} color={CARD_COLORS[idx % CARD_COLORS.length]} {...item} />
       ))}
     </motion.div>
   );
@@ -103,17 +109,14 @@ const Card = ({
   title,
   description,
   tags,
+  color,
 }: {
   topIcon: React.ReactNode;
   title: string;
   description: string;
   tags: { text: string; icon: React.ReactNode }[];
+  color: string;
 }) => {
-  const randomColors = [
-    "var(--color-blue-500)",
-    "var(--color-green-500)",
-    "var(--color-red-500)",
-  ];
   return (
     <motion.div
       layout
@@ -127,8 +130,7 @@ const Card = ({
           "size-6 shrink-0 rounded-full bg-blue-500 flex mt-1 items-center justify-center"
         )}
         style={{
-          backgroundColor:
-            randomColors[Math.floor(Math.random() * randomColors.length)],
+          backgroundColor: color,
         }}
       >
         {topIcon}

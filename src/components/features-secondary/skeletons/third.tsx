@@ -1,22 +1,21 @@
 "use client";
 
-import { animate, motion } from "motion/react";
+import { animate, motion, type AnimationSequence } from "motion/react";
 import React, { useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 export const SkeletonThree = () => {
-  const scale = [1, 1.1, 1];
-  const transform = ["translateY(0px)", "translateY(-4px)", "translateY(0px)"];
-  const sequence = [
-    [".circle-1", { scale, transform }, { duration: 0.8 }],
-    [".circle-2", { scale, transform }, { duration: 0.8 }],
-    [".circle-3", { scale, transform }, { duration: 0.8 }],
-    [".circle-4", { scale, transform }, { duration: 0.8 }],
-    [".circle-5", { scale, transform }, { duration: 0.8 }],
-  ];
-
   useEffect(() => {
-    // @ts-expect-error - animate sequence type
+    const scale = [1, 1.1, 1];
+    const transform = ["translateY(0px)", "translateY(-4px)", "translateY(0px)"];
+    const sequence: AnimationSequence = [
+      [".circle-1", { scale, transform }, { duration: 0.8 }],
+      [".circle-2", { scale, transform }, { duration: 0.8 }],
+      [".circle-3", { scale, transform }, { duration: 0.8 }],
+      [".circle-4", { scale, transform }, { duration: 0.8 }],
+      [".circle-5", { scale, transform }, { duration: 0.8 }],
+    ];
+
     animate(sequence, {
       repeat: Infinity,
       repeatDelay: 1,
@@ -52,30 +51,39 @@ export const SkeletonThree = () => {
   );
 };
 
+const sparkles = Array.from({ length: 12 }, (_, i) => {
+  const seed = i + 1;
+  return {
+    animateTop: `calc(${(seed * 37) % 100}% + ${((seed * 5) % 3) - 1}px)`,
+    animateLeft: `calc(${(seed * 53) % 100}% + ${((seed * 7) % 3) - 1}px)`,
+    duration: 4 + ((seed * 11) % 20) / 10,
+    initialTop: `${(seed * 29) % 100}%`,
+    initialLeft: `${(seed * 41) % 100}%`,
+    opacity: 0.35 + (((seed * 13) % 55) / 100),
+  };
+});
+
 const Sparkles = () => {
-  const randomMove = () => Math.random() * 2 - 1;
-  const randomOpacity = () => Math.random();
-  const random = () => Math.random();
   return (
     <div className="absolute inset-0">
-      {[...Array(12)].map((_, i) => (
+      {sparkles.map((sparkle, i) => (
         <motion.span
           key={`star-${i}`}
           animate={{
-            top: `calc(${random() * 100}% + ${randomMove()}px)`,
-            left: `calc(${random() * 100}% + ${randomMove()}px)`,
-            opacity: randomOpacity(),
+            top: sparkle.animateTop,
+            left: sparkle.animateLeft,
+            opacity: sparkle.opacity,
             scale: [1, 1.2, 0],
           }}
           transition={{
-            duration: random() * 2 + 4,
+            duration: sparkle.duration,
             repeat: Infinity,
             ease: "linear",
           }}
           style={{
             position: "absolute",
-            top: `${random() * 100}%`,
-            left: `${random() * 100}%`,
+            top: sparkle.initialTop,
+            left: sparkle.initialLeft,
             width: `2px`,
             height: `2px`,
             borderRadius: "50%",

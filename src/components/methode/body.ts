@@ -1317,8 +1317,8 @@ export const bodyHtml = `
             On limite volontairement à <b>3 projets actifs en parallèle</b> sur l'équipe tech (1 par binôme).
             C'est ce qui nous permet de tenir les démos vendredi sans contexte switching destructeur.
             Si on est en flux tendu, on vous le dit en cadrage et on vous propose une date de démarrage
-            décalée — jamais on ne signe un projet qu'on ne peut pas honorer dans les délais. <b>2 places
-            ouvertes pour Q3 2026.</b>
+            décalée — jamais on ne signe un projet qu'on ne peut pas honorer dans les délais. <b>2 créneaux
+            ouverts pour le prochain trimestre.</b>
           </div>
         </div>
 

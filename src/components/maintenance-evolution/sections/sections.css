@@ -4304,6 +4304,7 @@
   cursor: pointer;
   padding: 0;
   display: block;
+  text-decoration: none;
   transition: transform 0.25s ease;
 }
 .me-fv-play:hover { transform: scale(1.01); }

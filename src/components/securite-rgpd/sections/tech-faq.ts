@@ -9,7 +9,7 @@ export const techFaqHtml = `
       </div>
       <div class="right">
         Huit questions techniques qu'on entend systématiquement de la part des CTO, DPO techniques, RSSI
-        de PME tech qui évaluent une équipe DPO + cyber. Réponses directes, sans bullshit marketing.
+        de PME tech qui évaluent une équipe DPO + cyber. Réponses directes, sans jargon marketing.
       </div>
     </div>
 

@@ -1,7 +1,18 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const SITE_URL = "https://hagnere-code.fr";
+const CONTACT_EMAIL = "hello@hagnere-code.fr";
+
+function getResend() {
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
+    return null;
+  }
+
+  return new Resend(apiKey);
+}
 
 interface ContactFormData {
   type: "individual" | "company";
@@ -18,6 +29,16 @@ interface ContactFormData {
 
 export async function POST(request: NextRequest) {
   try {
+    const resend = getResend();
+
+    if (!resend) {
+      console.error("[api/contact] RESEND_API_KEY is not set.");
+      return NextResponse.json(
+        { error: "Le formulaire est temporairement indisponible." },
+        { status: 503 }
+      );
+    }
+
     const data: ContactFormData = await request.json();
 
     // Validate required fields
@@ -53,7 +74,7 @@ export async function POST(request: NextRequest) {
                       <table width="100%" cellpadding="0" cellspacing="0">
                         <tr>
                           <td style="vertical-align: middle;">
-                            <img src="https://hagnere-code.ai/logos/logo-email.png" alt="Hagnéré Code" width="44" height="44" style="display: block; border-radius: 50%;" />
+                            <img src="${SITE_URL}/logos/logo-email.png" alt="Hagnéré Code" width="44" height="44" style="display: block; border-radius: 50%;" />
                           </td>
                           <td style="padding-left: 14px; vertical-align: middle;">
                             <h1 style="margin: 0; font-size: 18px; font-weight: 600; color: #ffffff; letter-spacing: -0.3px;">
@@ -137,7 +158,7 @@ ${data.message}
                     <td style="padding: 24px 40px; border-top: 1px solid #e5e5e5; background-color: #fafafa;">
                       <p style="margin: 0; font-size: 12px; color: #a3a3a3; text-align: center;">
                         Ce message a été envoyé depuis le formulaire de contact de
-                        <a href="https://hagnere-code.ai" style="color: #737373; text-decoration: none; font-weight: 500;">hagnere-code.ai</a>
+                        <a href="${SITE_URL}" style="color: #737373; text-decoration: none; font-weight: 500;">hagnere-code.fr</a>
                       </p>
                     </td>
                   </tr>
@@ -166,12 +187,12 @@ Message:
 ${data.message}
 
 ---
-Envoyé depuis hagnere-code.ai
+Envoyé depuis hagnere-code.fr
     `.trim();
 
     // Email de notification pour Hagnéré Code
     const { data: emailData, error } = await resend.emails.send({
-      from: "Hagnéré Code <contact@hagnere-code.ai>",
+      from: `Hagnéré Code <${CONTACT_EMAIL}>`,
       to: ["quentin@hagnere-patrimoine.fr"],
       replyTo: data.email,
       subject: subject,
@@ -207,7 +228,7 @@ Envoyé depuis hagnere-code.ai
                       <table cellpadding="0" cellspacing="0">
                         <tr>
                           <td style="vertical-align: middle;">
-                            <img src="https://hagnere-code.ai/logos/logo-email.png" alt="Hagnéré Code" width="44" height="44" style="display: block; border-radius: 50%;" />
+                            <img src="${SITE_URL}/logos/logo-email.png" alt="Hagnéré Code" width="44" height="44" style="display: block; border-radius: 50%;" />
                           </td>
                           <td style="padding-left: 14px; vertical-align: middle;">
                             <h1 style="margin: 0; font-size: 18px; font-weight: 600; color: #ffffff; letter-spacing: -0.3px;">
@@ -270,8 +291,8 @@ ${data.message}
                         <table cellpadding="0" cellspacing="0">
                           <tr>
                             <td style="padding-right: 16px; padding-bottom: 8px;">
-                              <a href="mailto:contact@hagnere-code.ai" style="color: #171717; font-weight: 500; text-decoration: none; font-size: 14px;">
-                                contact@hagnere-code.ai
+                              <a href="mailto:${CONTACT_EMAIL}" style="color: #171717; font-weight: 500; text-decoration: none; font-size: 14px;">
+                                ${CONTACT_EMAIL}
                               </a>
                             </td>
                           </tr>
@@ -298,7 +319,7 @@ ${data.message}
                         L'équipe Hagnéré Code
                       </p>
                       <p style="margin: 0 0 4px 0; font-size: 12px; color: #a3a3a3; text-align: center;">
-                        <a href="https://hagnere-code.ai" style="color: #737373; text-decoration: none;">hagnere-code.ai</a>
+                        <a href="${SITE_URL}" style="color: #737373; text-decoration: none;">hagnere-code.fr</a>
                       </p>
                       <p style="margin: 0; font-size: 12px; color: #a3a3a3; text-align: center;">
                         7 Rue Ernest Filliard, 73000 Chambéry
@@ -328,19 +349,19 @@ ${data.message}
 
 ---
 Une question urgente ? Contactez-nous directement :
-- Email : contact@hagnere-code.ai
+- Email : ${CONTACT_EMAIL}
 - Téléphone : +33 3 74 47 20 18
 
 À très bientôt,
 L'équipe Hagnéré Code
 
-hagnere-code.ai
+hagnere-code.fr
 7 Rue Ernest Filliard, 73000 Chambéry
     `.trim();
 
     // Envoyer l'email de confirmation au client (ne pas bloquer si ça échoue)
     await resend.emails.send({
-      from: "Hagnéré Code <contact@hagnere-code.ai>",
+      from: `Hagnéré Code <${CONTACT_EMAIL}>`,
       to: [data.email],
       subject: "Nous avons bien reçu votre message - Hagnéré Code",
       html: confirmationHtml,

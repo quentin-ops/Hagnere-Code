@@ -9,7 +9,7 @@ export const techFaqHtml = `
       </div>
       <div class="right">
         Huit questions techniques qu'on entend systématiquement de la part des CTO, lead devs
-        ou DPO qui évaluent notre TMA. Réponses directes, sans bullshit.
+        ou DPO qui évaluent notre TMA. Réponses directes, sans jargon.
       </div>
     </div>
 

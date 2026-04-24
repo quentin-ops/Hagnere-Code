@@ -9,7 +9,7 @@ export const techFaqHtml = `
       </div>
       <div class="right">
         Huit questions techniques qu'on entend systématiquement de la part des CTO / lead devs / responsables
-        DSI qui évaluent une agence e-commerce. Réponses directes, sans bullshit marketing.
+        DSI qui évaluent une agence e-commerce. Réponses directes, sans jargon marketing.
       </div>
     </div>
 

@@ -9,7 +9,7 @@ export const techFaqHtml = `
       </div>
       <div class="right">
         Huit questions techniques qu'on entend systématiquement de la part des directions artistiques,
-        head of brand, CMO exigeants. Réponses directes, sans bullshit marketing.
+        head of brand, CMO exigeants. Réponses directes, sans jargon marketing.
       </div>
     </div>
 

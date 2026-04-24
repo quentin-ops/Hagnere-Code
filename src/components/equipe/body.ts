@@ -760,7 +760,7 @@ export const bodyHtml = `
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
         <h3>Retro mensuelle · 1 h</h3>
-        <p>Une fois par mois, on regarde ce qui a marché, ce qui a foiré, ce qu'on change. Pas de blame, pas de bullshit. C'est ce rituel qui fait qu'on s'améliore mois après mois.</p>
+        <p>Une fois par mois, on regarde ce qui a marché, ce qui a dérapé, ce qu'on change. Pas de blâme, pas de posture. C'est ce rituel qui fait qu'on s'améliore mois après mois.</p>
         <div class="rit-foot">
           <span class="rit-tag">CHAQUE MOIS</span>
         </div>
@@ -958,7 +958,7 @@ export const bodyHtml = `
           <div class="rec-job">
             <div class="rec-job-status open">
               <span class="dot"></span>
-              POSTE OUVERT · Q3 2026
+              POSTE OUVERT · PROCHAIN CYCLE
             </div>
             <div class="rec-job-name">Designer produit / UX senior</div>
             <div class="rec-job-meta">CDI · Chambéry · 5+ ans · Figma + design system</div>
@@ -978,7 +978,7 @@ export const bodyHtml = `
         <div class="rec-cta-card">
           <div class="rec-cta-tag">CANDIDATURES SPONTANÉES</div>
           <h4>Vous ne trouvez pas votre poste ?</h4>
-          <p>Si vous êtes <b>5+ ans d'expérience</b>, basé(e) ou prêt(e) à venir à Chambéry, et alignées avec nos valeurs, on étudie votre CV.</p>
+          <p>Si vous êtes <b>5+ ans d'expérience</b>, basé(e) ou prêt(e) à venir à Chambéry, et aligné(e) avec nos valeurs, on étudie votre CV.</p>
           <a href="mailto:hello@hagnere-code.fr?subject=Candidature%20spontan%C3%A9e" class="btn btn-accent">
             Envoyer ma candidature
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -1102,7 +1102,7 @@ export const bodyHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Toujours</b> pour des profils alignés. Notre prochain recrutement prévu (Q3 2026)
+            <b>Toujours</b> pour des profils alignés. Le prochain recrutement prévu
             est un <b>Designer produit / UX senior</b>. Les candidatures spontanées sont étudiées
             sous 5 jours ouvrés à <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a> —
             uniquement profils 5+ ans d'expérience, basés ou prêts à venir à Chambéry.

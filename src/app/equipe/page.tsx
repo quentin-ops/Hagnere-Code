@@ -150,7 +150,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Toujours pour des profils alignés. Notre prochain recrutement prévu (Q3 2026) est un Designer produit / UX. Les candidatures spontanées sont étudiées sous 5 jours ouvrés à hello@hagnere-code.fr — uniquement profils 5+ ans d'expérience, basés ou prêts à venir à Chambéry.",
+          "Toujours pour des profils alignés. Le prochain recrutement prévu est un Designer produit / UX senior. Les candidatures spontanées sont étudiées sous 5 jours ouvrés à hello@hagnere-code.fr — uniquement profils 5+ ans d'expérience, basés ou prêts à venir à Chambéry.",
       },
     },
   ],
