@@ -415,6 +415,12 @@ export interface PhasingWeek {
   week: number;
   name: string;
   tasks: string[];
+  /** Concrete artifact handed over at end of week (Figma file, deployed URL, doc, etc.) */
+  client_deliverable: string;
+  /** Verifiable acceptance criteria — written as testable present-tense statements. */
+  acceptance_criteria: string[];
+  /** Quality gates that must pass before the week is signed off. */
+  quality_gates: string[];
   friday_demo: string;
 }
 
@@ -428,6 +434,42 @@ export interface Lagniappe {
   feature_idea: string;
   why_it_helps: string;
   estimated_added_days: number;
+}
+
+/** Étape préliminaire obligatoire avant tout build > 5 k€. */
+export interface DiscoverySprint {
+  duration_days: number;
+  price: number;
+  currency: "EUR";
+  /** Déductible à 100 % de la phase 2 si engagée < 90j. */
+  deductible: boolean;
+  /** Ateliers menés pendant le Discovery. */
+  workshops: string[];
+  /** Livrables remis au prospect en fin de Discovery. */
+  deliverables: string[];
+  /** Motivation contextualisée pour ce projet précis. */
+  rationale: string;
+}
+
+/** Une étape du parcours post-signature, vue par le prospect. */
+export interface ClientJourneyStep {
+  /** Décalage en jours par rapport à la signature du Discovery. */
+  day_offset: number;
+  /** Libellé court de l'étape ("Tu signes", "Kickoff async", "Workshop Discovery"). */
+  label: string;
+  /** Livrable concret remis ou activé à cette étape. */
+  deliverable: string;
+  /** Qui fait quoi à cette étape. */
+  owner: string;
+}
+
+/** Mapping objectif coché → phase(s) qui l'adressent. */
+export interface ObjectiveAddressed {
+  objective: string;
+  /** Indices ou identifiants des phases du deployment_roadmap qui adressent l'objectif. */
+  addressed_in: string[];
+  confidence: Confidence;
+  note?: string;
 }
 
 export interface ProjectQuote {
@@ -479,6 +521,12 @@ export interface RoadmapPhase {
 
 export interface MultiServiceEstimate {
   summary: OverallSummary;
+  /** Étape préliminaire obligatoire (Discovery Sprint) — null seulement pour les retainers seuls. */
+  discovery_sprint: DiscoverySprint | null;
+  /** Parcours client post-signature, du jour 0 (signature) à la mise en run. */
+  client_journey: ClientJourneyStep[];
+  /** Mapping explicite des objectifs cochés vers les phases qui les adressent. */
+  objectives_addressed: ObjectiveAddressed[];
   oneshot_projects: ProjectQuote[];
   monthly_retainers: RetainerQuote[];
   team_allocation: TeamMember[];

@@ -136,7 +136,7 @@ export function FeaturesWithStickyScroll() {
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="/contact"
+              href="/demarrer-un-projet"
               className="flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-medium text-black shadow-[0_0_30px_rgba(255,255,255,0.5)] hover:shadow-[0_0_40px_rgba(255,255,255,0.7)] transition-all duration-300"
             >
               <span>Démarrer un projet</span>

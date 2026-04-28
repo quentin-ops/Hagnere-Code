@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
+import { CookieBanner } from "@/components/cookies/CookieBanner";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -20,15 +21,15 @@ const isProd = process.env.NEXT_PUBLIC_ENV === "production";
 export const metadata: Metadata = {
   metadataBase: new URL("https://hagnere-code.fr"),
   title: {
-    default: "Hagnéré Code — Agence SaaS AI-native · Chambéry",
+    default: "Hagnéré Code — Studio produit · SaaS & outils métier",
     template: "%s",
   },
   description:
-    "On imagine, conçoit, développe, lance et maintient vos sites, applications métier et SaaS sur mesure. Un seul interlocuteur à Chambéry — pas de sous-traitance, pas de jargon.",
+    "Studio produit à Chambéry. On conçoit, développe et maintient des sites, applications métier et SaaS sur mesure, avec forfait fixe et preuves internes assumées.",
   applicationName: "Hagnéré Code",
   authors: [{ name: "Hagnéré Code" }],
   keywords: [
-    "agence développement SaaS",
+    "studio développement SaaS",
     "Laravel Chambéry",
     "applications métier",
     "outils internes sur mesure",
@@ -40,21 +41,21 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://hagnere-code.fr",
     siteName: "Hagnéré Code",
-    title: "Hagnéré Code — Agence SaaS AI-native · Chambéry",
+    title: "Hagnéré Code — Studio produit · SaaS & outils métier",
     description:
-      "Studio de développement SaaS, applications métier et outils internes, basé à Chambéry. Laravel 13, Claude Code, forfait fixe.",
+      "Studio produit à Chambéry. SaaS, applications métier, outils internes, forfait fixe, Laravel et workflows IA.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Hagnéré Code — Agence SaaS AI-native · Chambéry",
+        alt: "Hagnéré Code — Studio produit · SaaS & outils métier",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hagnéré Code — Agence SaaS AI-native · Chambéry",
+    title: "Hagnéré Code — Studio produit · SaaS & outils métier",
     description:
       "Studio de développement SaaS et applications métier, basé à Chambéry. Laravel 13, Claude Code.",
     images: ["/og-image.png"],
@@ -117,6 +118,9 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        {/* Pré-installé, désactivé tant que NEXT_PUBLIC_COOKIE_BANNER!=1.
+            Activer dès qu'un outil analytique sera ajouté (Plausible, GA, etc.). */}
+        <CookieBanner />
       </body>
     </html>
   );

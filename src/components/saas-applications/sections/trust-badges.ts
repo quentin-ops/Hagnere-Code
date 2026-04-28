@@ -1,6 +1,6 @@
-// TODO: confirmer les statuts exacts auprès de Quentin
-//       (CIR agréé, Qualiopi, Laravel Partner officiel, RC Pro montant exact).
-//       En attendant, seuls les items 100 % factuels sont affichés sans badge "officiel".
+// Trust badges : engagements contractuels factuels (forfait fixe, propriété code,
+// garantie bugs, hébergement FR, audit de sortie). Pas de revendication de certifications
+// non détenues — les options de financement sont présentées comme éligibilité à étudier.
 
 export const trustBadgesHtml = `
 <!-- TRUST BADGES -->
@@ -17,9 +17,9 @@ export const trustBadgesHtml = `
         <div class="sa-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg>
         </div>
-        <h4>CIR éligible</h4>
-        <p>Nos prestations de R&amp;D et d'IA sont <b>éligibles au Crédit Impôt Recherche</b>. Vos 30 % de réduction fiscale sont documentés dans un livrable dédié.</p>
-        <div class="sa-trust-foot">— Dossier type fourni à la livraison</div>
+        <h4>R&amp;D documentée pour le CIR</h4>
+        <p>Sur les projets à composante R&amp;D ou IA, on fournit un livrable de documentation technique adapté pour <b>l'instruction d'un dossier CIR</b> par votre conseil. L'éligibilité reste à valider par votre expert-comptable.</p>
+        <div class="sa-trust-foot">— Livrable technique structuré au handover</div>
       </div>
 
       <div class="sa-trust-card reveal reveal-d-1">
@@ -80,9 +80,9 @@ export const trustBadgesHtml = `
         <div class="sa-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
         </div>
-        <h4>Qualiopi — financement OPCO</h4>
-        <p>Le volet formation de votre projet (1 à 2 jours post-livraison) est <b>finançable par votre OPCO</b>. Dossier monté avec vous si besoin.</p>
-        <div class="sa-trust-foot">— Prise en charge partielle fréquente</div>
+        <h4>Formation post-livraison incluse</h4>
+        <p>1 à 2 jours de formation à votre équipe sont inclus dans chaque projet, plus une documentation utilisateur. Pas de surcoût caché, pas de "module premium" à acheter ensuite.</p>
+        <div class="sa-trust-foot">— Inclus dans tous les forfaits</div>
       </div>
     </div>
   </div>

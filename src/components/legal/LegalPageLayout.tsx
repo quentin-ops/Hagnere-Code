@@ -122,16 +122,18 @@ export function LegalPageLayout({
           <div className="nav-links">
             <Link href="/#services">Services</Link>
             <Link href="/methode">Méthode</Link>
-            <Link href="/#realisations">Réalisations</Link>
+            <Link href="/realisations">Réalisations</Link>
             <Link href="/equipe">Équipe</Link>
             <Link href="/tarifs">Tarifs</Link>
-            <Link href="/blog">Blog</Link>
+            <Link href="/guide">Guide</Link>
+
+            <Link href="/contact">Contact</Link>
           </div>
           <div className="nav-cta">
             <Link href="/#contact" className="btn btn-ghost">
               Prendre RDV
             </Link>
-            <Link href="/#contact" className="btn btn-primary">
+            <Link href="/demarrer-un-projet" className="btn btn-primary">
               Démarrer un projet
               <svg
                 className="arrow"
@@ -157,7 +159,7 @@ export function LegalPageLayout({
           <div className="crumb">
             <Link href="/">Accueil</Link>
             <span className="sep">/</span>
-            <Link href="/#contact">Légal</Link>
+            <Link href="/legal/mentions">Légal</Link>
             <span className="sep">/</span>
             <span>{breadcrumb}</span>
           </div>
@@ -276,7 +278,7 @@ export function LegalPageLayout({
 
             <div className="lp-article-foot">
               <div>
-                <div className="lp-foot-kicker">Besoin d'une précision ?</div>
+                <div className="lp-foot-kicker">Besoin d&apos;une précision ?</div>
                 <div className="lp-foot-title">
                   Notre équipe répond à toute demande sous 5 jours ouvrés.
                 </div>

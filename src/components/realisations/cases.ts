@@ -44,7 +44,7 @@ export const CASES: Record<string, CaseStudy> = {
       "Première plateforme française qui fait la comptabilité LMNP au réel en autonomie, guidée par IA, avec télétransmission EDI à la DGFiP.",
     year: "2025",
     duration: "4 mois (MVP) + évolutions continues",
-    team: ["Thomas (lead back)", "Julie (front)", "Romain (IA)", "Quentin (produit)"],
+    team: ["Nicolas (CTO)", "Arthur (front)", "Frédéric (IA)", "Quentin (produit)"],
     stack: [
       "Laravel 12",
       "Livewire 3",
@@ -130,7 +130,7 @@ export const CASES: Record<string, CaseStudy> = {
       quote:
         "On a cadré ce SaaS en 6 semaines avec l'équipe. L'impact sur l'adoption du régime réel est concret : 5,4 k clients en moins d'un an.",
       author: "Quentin Hagnéré",
-      role: "Fondateur · LMNP.AI",
+      role: "Fondateur · LMNP.AI (mot du fondateur — produit interne du groupe Hagnéré)",
       initials: "QH",
     },
   },
@@ -148,7 +148,7 @@ export const CASES: Record<string, CaseStudy> = {
       "Le premier logiciel de comptabilité SCI qui gère les deux régimes (IR et IS) dans une seule interface, avec télétransmission EDI DGFiP complète.",
     year: "2025",
     duration: "5 mois",
-    team: ["Thomas (lead back)", "Sami (intégrations EDI)", "Romain (IA)", "Clara (UX)"],
+    team: ["Nicolas (CTO)", "Ryan (intégrations)", "Frédéric (IA)", "Killian (front)"],
     stack: [
       "Laravel 12",
       "Livewire 3",
@@ -233,7 +233,7 @@ export const CASES: Record<string, CaseStudy> = {
       quote:
         "La bascule IR → IS est le moment le plus risqué pour une SCI. On l'a automatisée proprement grâce à un gros travail de cadrage fiscal avec l'équipe.",
       author: "Quentin Hagnéré",
-      role: "Co-fondateur · SCI-AI.app",
+      role: "Co-fondateur · SCI-AI.app (mot du fondateur — produit interne du groupe Hagnéré)",
       initials: "QH",
     },
   },
@@ -251,7 +251,7 @@ export const CASES: Record<string, CaseStudy> = {
       "Refonte complète d'un cabinet de conseil en gestion de patrimoine : positionnement premium, SEO longue traîne, tunnels de qualification et Google Ads.",
     year: "2024",
     duration: "6 semaines",
-    team: ["Clara (UX / produit)", "Julie (intégration)", "Quentin (SEO / ads)"],
+    team: ["Killian (UX / front)", "Arthur (intégration)", "Quentin (SEO / ads)"],
     stack: [
       "Laravel 11",
       "Livewire 3",
@@ -333,7 +333,7 @@ export const CASES: Record<string, CaseStudy> = {
       quote:
         "Le site nous a repositionné en haut de gamme et a débloqué un flux de prospects qualifiés qu'on n'avait jamais eu en 8 ans d'activité.",
       author: "Direction",
-      role: "Cabinet Hagnéré Patrimoine",
+      role: "Cabinet Hagnéré Patrimoine (cabinet du groupe Hagnéré)",
       initials: "HP",
     },
   },
@@ -351,7 +351,7 @@ export const CASES: Record<string, CaseStudy> = {
       "Plateforme marketing d'un cabinet d'investissement immobilier clé en main, avec simulateur de rendement, funnel de qualification et intégration YouTube.",
     year: "2024",
     duration: "8 semaines",
-    team: ["Clara (UX)", "Julie (front)", "Sami (intégrations)", "Quentin (SEO)"],
+    team: ["Killian (UX)", "Arthur (front)", "Ryan (intégrations)", "Quentin (SEO)"],
     stack: [
       "Laravel 11",
       "Livewire 3",
@@ -409,7 +409,7 @@ export const CASES: Record<string, CaseStudy> = {
     ],
     metrics: [
       { value: "612", label: "clients accompagnés", note: "depuis 2021" },
-      { value: "7,2 %", label: "rendement net moyen", note: "clients 2024" },
+      { value: "7,2 %", label: "rendement net moyen", note: "clients 2024 — performances passées non garantes du futur, capital non garanti" },
       { value: "× 2,5", label: "leads qualifiés", note: "vs ancien site" },
       { value: "< 80 €", label: "CPA segment A", note: "objectif tenu" },
     ],
@@ -434,7 +434,7 @@ export const CASES: Record<string, CaseStudy> = {
       quote:
         "Le simulateur à lui seul a doublé le volume de leads qualifiés. Les commerciaux passent enfin leur temps avec des prospects sérieux.",
       author: "Direction",
-      role: "Hagnéré Investissement",
+      role: "Hagnéré Investissement (cabinet du groupe Hagnéré)",
       initials: "HI",
     },
   },

@@ -380,6 +380,37 @@
   .ec-stage:hover .ec-phone { transform: none; }
 }
 
+@media (max-width: 720px) {
+  .shero-badges {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .shero-badge {
+    padding: 11px 12px;
+  }
+  .shero-badge:nth-child(n+3) {
+    display: none;
+  }
+  .ec-stage {
+    height: 320px;
+    min-height: 320px;
+    overflow: hidden;
+  }
+  .ec-desktop-path {
+    display: none;
+  }
+  .ec-desktop-domain {
+    padding-inline: 10px;
+  }
+  .ec-desktop-domain > span {
+    max-width: 100%;
+  }
+  .ec-phone {
+    display: none;
+  }
+}
+
 
 /* ==================== STACK 3 TRACKS ==================== */
 .ec-stack-section {

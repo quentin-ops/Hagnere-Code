@@ -3,14 +3,14 @@ import { MaintenanceEvolution } from "@/components/maintenance-evolution/Mainten
 
 export const metadata: Metadata = {
   title:
-    "Maintenance & évolution — TMA SaaS, SLA 99,9 %, forfait fixe | Hagnéré Code",
+    "TMA SaaS — Maintenance, SLA, forfait fixe | Hagnéré Code",
   description:
-    "TMA applicative premium : monitoring 24/7, patches sécurité CVE < 48h, évolutions continues, hébergement & infra ops. Équipe nommée dans le contrat, forfait fixe, SLA 99,5–99,95 % avec pénalités auto. Reprise d'apps orphelines en 5 jours.",
+    "TMA applicative : monitoring 24/7, patches CVE < 48 h, évolutions continues, infra ops. Équipe nommée au contrat, forfait fixe, SLA 99,5–99,95 % avec pénalités auto.",
   alternates: { canonical: "/services/maintenance-evolution" },
   openGraph: {
     title: "Maintenance & évolution — Hagnéré Code",
     description:
-      "99,98 % d'uptime. 14 deploys ce trimestre. 0 ticket sans réponse. SLA contractuel, deploys hebdo, CVE patchés sous 48 h, forfait fixe mensuel.",
+      "SLA 99,5–99,95 % avec pénalités. Deploys hebdo, CVE patchés sous 48 h, forfait fixe mensuel. Reprise d'apps orphelines en 5 jours.",
     url: "/services/maintenance-evolution",
     type: "website",
   },
@@ -25,7 +25,7 @@ const serviceJsonLd = JSON.stringify({
     "@type": "Organization",
     name: "Hagnéré Code",
     url: "https://hagnere-code.fr",
-    logo: "https://hagnere-code.fr/logo.png",
+    logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {
       "@type": "PostalAddress",
       streetAddress: "7 rue Ernest Filliard",
@@ -34,7 +34,7 @@ const serviceJsonLd = JSON.stringify({
       addressCountry: "FR",
     },
     email: "hello@hagnere-code.fr",
-    telephone: "+33-3-74-47-20-18",
+    telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
@@ -177,7 +177,7 @@ const breadcrumbJsonLd = JSON.stringify({
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/#services" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/services" },
     {
       "@type": "ListItem",
       position: 3,

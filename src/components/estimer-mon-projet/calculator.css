@@ -18,6 +18,27 @@
 .hc-design > main{flex:1}
 .hc-design a{color:inherit}
 .hc-design .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+.hc-design .wrap,
+.hc-design .wrap > *,
+.calc-progress,
+.calc-progress-label-row,
+.calc-step,
+.calc-step > *,
+.calc-nav,
+.calc-service,
+.calc-service-body,
+.rview,
+.rview > *,
+.rview-grid > *,
+.rview-grid-2 > *,
+.rview-roadmap,
+.rview-roadmap-list,
+.rview-roadmap-row,
+.rview-roadmap-track,
+.rview-stack-row,
+.rview-stack-chips {
+  min-width: 0;
+}
 .hc-design h1,.hc-design h2,.hc-design h3,.hc-design h4{font-family:var(--font-geist);letter-spacing:-0.035em;font-weight:600;margin:0}
 .hc-design h2{font-size:28px;line-height:1.1;letter-spacing:-0.025em}
 
@@ -721,6 +742,36 @@
   .rview-team-grid{grid-template-columns:1fr}
 }
 
+@media (max-width: 480px) {
+  .calc-progress-label-row { flex-wrap: wrap; gap: 6px 12px; }
+  .calc-progress-name { width: 100%; }
+  .calc-service { flex-wrap: wrap; }
+  .calc-service-pill { white-space: normal; overflow-wrap: anywhere; }
+  .rview-roadmap-row {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .rview-roadmap-track {
+    height: auto;
+    min-height: 34px;
+    overflow: visible;
+  }
+  .rview-roadmap-bar {
+    position: static;
+    width: 100% !important;
+    min-height: 34px;
+    white-space: normal;
+    overflow: visible;
+  }
+  .rview-roadmap-bar-label {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+  .rview-roadmap-axis { display: none; }
+}
+
 /* =====================================================================
    Sprint D — UX wizard improvements
    - Quick presets row (step 1)
@@ -1033,6 +1084,28 @@
   .calc-nav .btn{flex:1;justify-content:center}
 }
 
+@media (max-width:900px){
+  .nav.nav-open .nav-links{
+    justify-content:flex-start !important;
+  }
+  .nav .nav-dd{
+    position:static !important;
+    width:auto !important;
+    transform:none !important;
+    grid-template-columns:1fr !important;
+    border:none !important;
+    box-shadow:none !important;
+    padding:8px 12px 16px 12px !important;
+    gap:0 !important;
+  }
+  .nav.nav-open .nav-item.nav-item-open .nav-dd{
+    display:grid !important;
+    opacity:1 !important;
+    pointer-events:auto !important;
+    transform:none !important;
+  }
+}
+
 /* =====================================================================
    Print stylesheet — clean PDF output of the result view
    - Hides interactive UI (nav, Calendly, secondary CTAs)
@@ -1040,38 +1113,675 @@
    - Avoid awkward page breaks inside cards
    ===================================================================== */
 
+/* ==========================================================================
+   Print stylesheet — PDF qualité agence (window.print → "Save as PDF")
+   ========================================================================== */
+
+@page {
+  size: A4;
+  margin: 18mm 14mm 18mm 14mm;
+}
+
 @media print {
-  body{background:#fff !important;color:#000 !important}
+  /* Reset général */
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #0a0a0a !important;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+
+  /* Tout ce qui n'apporte rien sur PDF disparait */
   .hc-design-nav,
   .calc-main > .calc-wizard,
   .calc-nav,
-  .rview-calendly,
-  .rview-print-hide,
-  .rview-trust,
   .calc-loading,
   .site-footer,
   .nav-dropdown,
-  header[class*="hc-design"]{
-    display:none !important;
+  .rview-calendly,
+  .rview-print-hide,
+  .rview-toc,
+  .rview-secondary-cta,
+  .pf-topbar,
+  .pf-sidebar,
+  .pf-actions,
+  .pf-saved-badge,
+  .pf-social-proof,
+  .pf-reassure,
+  header[class*="hc-design"] {
+    display: none !important;
   }
-  .wrap{max-width:100% !important;padding:0 !important}
-  .rview{padding:0 !important}
-  .rview-hero,
+
+  .wrap { max-width: 100% !important; padding: 0 !important; }
+  .rview { padding: 0 !important; }
+  .pf-root { background: none !important; }
+  .pf-shell { display: block !important; }
+  .pf-main-card { box-shadow: none !important; border: none !important; padding: 0 !important; }
+
+  /* Carte des prix : encadré simple noir */
+  .rview-hero {
+    background: #fff !important;
+    color: #0a0a0a !important;
+    border: 2px solid #0a0a0a !important;
+    border-radius: 8px !important;
+    padding: 18mm !important;
+    margin-bottom: 14mm !important;
+    page-break-inside: avoid;
+  }
+  .rview-hero * { color: #0a0a0a !important; background: transparent !important; }
+  .rview-hero-bg-grid,
+  .rview-hero-bg-radial,
+  .rview-next-bg-grid,
+  .rview-next-bg-radial { display: none !important; }
+  .rview-hero-tag-pill {
+    background: #0a0a0a !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    padding: 3px 8px !important;
+  }
+  .rview-hero-price-amount { font-size: 22pt !important; font-weight: 700 !important; }
+
+  /* Discovery Sprint — encadré beige conservé (couleur critique) */
+  .rview-discovery {
+    background: #fffbeb !important;
+    border: 1.5pt solid #92400e !important;
+    border-radius: 4mm !important;
+    page-break-inside: avoid;
+    margin: 6mm 0 !important;
+    padding: 8mm !important;
+  }
+  .rview-discovery-tag {
+    background: #92400e !important;
+    color: #fffbeb !important;
+  }
+  .rview-discovery-deductible {
+    background: #16a34a !important;
+    color: #fff !important;
+  }
+
+  /* Section headings — bandeau gris pour nav rapide visuelle */
+  .rview-section-h h2 {
+    border-bottom: 1pt solid #d4d4d4;
+    padding-bottom: 4mm;
+    margin-bottom: 6mm;
+  }
+
+  /* Page breaks intelligents */
+  .rview-discovery,
+  .rview-journey,
+  .rview-obj-addr,
+  .rview-roadmap,
+  .rview-projects > details,
+  .rview-retainer,
+  .rview-team-card,
+  .rview-phasing-row {
+    page-break-inside: avoid;
+  }
+
+  .rview-roadmap,
+  .rview-two-cols,
+  .rview-team,
+  .rview-warnings,
+  .rview-next {
+    page-break-before: auto;
+  }
+
+  /* Sortir les details (phasing) en open par défaut sur PDF */
+  details, details > summary { display: block !important; }
+  details > summary::-webkit-details-marker { display: none !important; }
+
+  /* Cartes et timelines */
   .rview-section,
   .rview-card,
   .rview-project,
   .rview-retainer,
-  .rview-team-card{
-    box-shadow:none !important;
-    border-color:#ccc !important;
-    page-break-inside:avoid;
+  .rview-team-card,
+  .rview-projects > details {
+    box-shadow: none !important;
+    border: 0.5pt solid #d4d4d4 !important;
+    background: #fff !important;
+    page-break-inside: avoid;
+    margin-bottom: 4mm;
   }
-  .rview-hero{background:#fff !important;color:#000 !important}
-  .rview-hero *{color:#000 !important;background:transparent !important}
-  .grad-accent{background:none !important;-webkit-text-fill-color:#000 !important;color:#000 !important}
-  a{color:#000 !important;text-decoration:underline}
-  /* Print URL after important links */
-  a[href^="https://calendly.com"]::after{content:" (" attr(href) ")";font-size:10pt;color:#555}
+
+  /* Confirmé / risque / objectifs : icônes couleur conservées */
+  .rview-obj-addr-conf-high,
+  .rview-risk-pill-low { background: #dcfce7 !important; color: #166534 !important; }
+  .rview-obj-addr-conf-medium,
+  .rview-risk-pill-medium { background: #fef3c7 !important; color: #92400e !important; }
+  .rview-obj-addr-conf-low,
+  .rview-risk-pill-high { background: #fee2e2 !important; color: #991b1b !important; }
+
+  /* Liens : noir + URL imprimée pour les liens externes critiques */
+  a { color: #0a0a0a !important; text-decoration: underline; }
+  a[href^="https://calendly.com"]::after,
+  a[href^="https://hagnere-code.fr"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #525252;
+  }
+
+  /* Gradients texte → noir */
+  .grad-accent {
+    background: none !important;
+    -webkit-text-fill-color: #0a0a0a !important;
+    color: #0a0a0a !important;
+  }
+
+  /* Footer info bandeau légal en bas de chaque page */
+  body::after {
+    content: "Hagnéré Code SAS · 7 rue Ernest Filliard, 73000 Chambéry · hello@hagnere-code.fr · Estimation indicative — devis ferme délivré après le Discovery Sprint";
+    display: block;
+    margin-top: 8mm;
+    padding-top: 4mm;
+    border-top: 0.5pt solid #d4d4d4;
+    font-size: 8pt;
+    color: #737373;
+    text-align: center;
+  }
 }
 
+/* ==========================================================================
+   Discovery Sprint card (étape préliminaire)
+   ========================================================================== */
 
+.rview-discovery {
+  position: relative;
+  margin: 32px 0;
+  padding: clamp(28px, 4vw, 44px);
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  border: 1px solid #f59e0b;
+  border-radius: 22px;
+  box-shadow: 0 10px 40px -20px rgba(245, 158, 11, 0.4);
+}
+
+.rview-discovery-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 18px;
+  background: #92400e;
+  color: #fffbeb;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.rview-discovery-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.rview-discovery-title {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #1c1917;
+}
+
+.rview-discovery-rationale {
+  margin: 0;
+  color: #57534e;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 580px;
+}
+
+.rview-discovery-price {
+  text-align: right;
+}
+
+.rview-discovery-price-amount {
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 700;
+  color: #92400e;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.rview-discovery-price-meta {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #78716c;
+}
+
+.rview-discovery-deductible {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  background: #16a34a;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.rview-discovery-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 720px) {
+  .rview-discovery-head { grid-template-columns: 1fr; }
+  .rview-discovery-price { text-align: left; }
+  .rview-discovery-body { grid-template-columns: 1fr; }
+}
+
+.rview-discovery-section-h {
+  margin-bottom: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #92400e;
+}
+
+.rview-discovery-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  color: #1c1917;
+  line-height: 1.6;
+}
+
+.rview-discovery-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(146, 64, 14, 0.15);
+}
+
+.rview-discovery-list-check li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.rview-discovery-list-check li svg {
+  flex-shrink: 0;
+  color: #16a34a;
+  margin-top: 4px;
+}
+
+/* ==========================================================================
+   Client Journey timeline
+   ========================================================================== */
+
+.rview-journey {
+  margin: 40px 0;
+}
+
+.rview-journey-sub {
+  margin: 6px 0 0;
+  color: var(--ink-3);
+  font-size: 14px;
+}
+
+.rview-journey-list {
+  margin-top: 24px;
+}
+
+.rview-journey-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 16px;
+  position: relative;
+}
+
+.rview-journey-day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rview-journey-day-num {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6d28d9 0%, #4c1d95 100%);
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.rview-journey-line {
+  flex: 1;
+  width: 2px;
+  background: linear-gradient(180deg, #6d28d9 0%, transparent 100%);
+  opacity: 0.3;
+  margin-top: 4px;
+  min-height: 30px;
+}
+
+.rview-journey-content {
+  padding: 8px 0 24px;
+}
+
+.rview-journey-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink-1);
+  margin-bottom: 4px;
+}
+
+.rview-journey-deliverable {
+  font-size: 14px;
+  color: var(--ink-3);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.rview-journey-owner {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  background: rgba(109, 40, 217, 0.08);
+  color: #4c1d95;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Objectives Addressed
+   ========================================================================== */
+
+.rview-obj-addr {
+  margin: 40px 0;
+}
+
+.rview-obj-addr-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.rview-obj-addr-row {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  gap: 16px;
+  align-items: start;
+  padding: 16px 18px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px -8px rgba(10, 10, 10, 0.05);
+}
+
+.rview-obj-addr-high { border-left: 3px solid #16a34a; }
+.rview-obj-addr-medium { border-left: 3px solid #f59e0b; }
+.rview-obj-addr-low { border-left: 3px solid #dc2626; }
+
+.rview-obj-addr-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: #ecfdf5;
+  color: #16a34a;
+  border-radius: 999px;
+}
+
+.rview-obj-addr-row.rview-obj-addr-medium .rview-obj-addr-icon {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.rview-obj-addr-row.rview-obj-addr-low .rview-obj-addr-icon {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.rview-obj-addr-objective {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink-1);
+  margin-bottom: 6px;
+}
+
+.rview-obj-addr-phases {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.rview-obj-addr-meta {
+  font-size: 11px;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-right: 4px;
+}
+
+.rview-obj-addr-chip {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--bg-2);
+  color: var(--ink-2);
+  border-radius: 999px;
+  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+.rview-obj-addr-note {
+  margin-top: 6px;
+  color: var(--ink-3);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.rview-obj-addr-conf {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.rview-obj-addr-conf-high {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.rview-obj-addr-conf-medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.rview-obj-addr-conf-low {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ==========================================================================
+   Phasing enrichi (deliverable + criteria + gates)
+   ========================================================================== */
+
+.rview-phasing-deliverable,
+.rview-phasing-criteria,
+.rview-phasing-gates {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: rgba(109, 40, 217, 0.04);
+  border-left: 2px solid rgba(109, 40, 217, 0.4);
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.rview-phasing-deliverable-h,
+.rview-phasing-criteria-h,
+.rview-phasing-gates-h {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #4c1d95;
+  margin-bottom: 4px;
+}
+
+.rview-phasing-criteria ul,
+.rview-phasing-gates ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rview-phasing-criteria li,
+.rview-phasing-gates li {
+  position: relative;
+  padding: 2px 0 2px 14px;
+  line-height: 1.5;
+}
+
+.rview-phasing-criteria li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.rview-phasing-gates li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #4c1d95;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   ResultView — TOC sticky droite (desktop), top sur mobile
+   ========================================================================== */
+
+.rview-toc {
+  position: fixed;
+  top: 100px;
+  right: 24px;
+  z-index: 5;
+  width: 200px;
+}
+
+.rview-toc-inner {
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px -16px rgba(10, 10, 10, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}
+
+.rview-toc-h {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  margin-bottom: 8px;
+}
+
+.rview-toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.rview-toc li a {
+  display: block;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: var(--ink-2);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.12s ease;
+  border-left: 2px solid transparent;
+}
+
+.rview-toc li a:hover {
+  background: var(--bg-2);
+  color: var(--ink-1);
+}
+
+.rview-toc li a.is-active {
+  background: rgba(109, 40, 217, 0.07);
+  color: #4c1d95;
+  border-left-color: #6d28d9;
+  font-weight: 500;
+}
+
+@media (max-width: 1280px) {
+  .rview-toc { display: none; }
+}
+
+/* ==========================================================================
+   Calendly placeholder (lazy-load)
+   ========================================================================== */
+
+.cal-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(109, 40, 217, 0.04), rgba(109, 40, 217, 0.08));
+  border: 1px dashed rgba(109, 40, 217, 0.25);
+  border-radius: 16px;
+}
+
+.cal-placeholder-inner {
+  text-align: center;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.cal-placeholder-loading,
+.cal-placeholder-hint {
+  font-size: 13px;
+  color: var(--ink-3);
+}
+
+.cal-placeholder-link {
+  display: inline-block;
+  padding: 9px 16px;
+  background: #6d28d9;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cal-placeholder-link:hover { background: #4c1d95; }
+
+@media print {
+  .rview-toc { display: none; }
+}

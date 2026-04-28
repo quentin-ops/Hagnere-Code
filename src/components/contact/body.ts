@@ -66,24 +66,25 @@ export const bodyHtml = `
               <div class="tag">Pas sûr ?</div>
               <div class="dd-cta-title">On vous aide à choisir le bon service.</div>
               <div class="dd-cta-sub">30 min avec un associé, gratuit, pour cadrer votre besoin.</div>
-              <a href="#contact" class="btn btn-accent">Réserver un créneau →</a>
+              <a href="https://calendly.com/hagnere-code/30min" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Réserver un créneau →</a>
             </div>
           </div>
         </div>
       </div>
       <a href="/methode">Méthode</a>
-      <a href="/#realisations">Réalisations</a>
+      <a href="/realisations">Réalisations</a>
       <a href="/equipe">Équipe</a>
       <a href="/tarifs">Tarifs</a>
-      <a href="/outils/estimer-mon-projet">Calculateur</a>
-      <a href="/blog">Blog</a>
+      <a href="/demarrer-un-projet">Calculateur</a>
+      <a href="/guide">Guide</a>
+      <a href="/contact" class="active">Contact</a>
     </div>
     <div class="nav-cta">
       <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
       <a href="#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="#contact" class="btn btn-primary">Démarrer un projet
+      <a href="/demarrer-un-projet" class="btn btn-primary">Démarrer un projet
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -111,7 +112,7 @@ export const bodyHtml = `
           Formulaire projet
           <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="#contact" class="btn btn-ghost btn-lg">Réserver 30 min →</a>
+        <a href="https://calendly.com/hagnere-code/30min" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Réserver 30 min →</a>
       </div>
       <div class="c-hero-meta">
         <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Réponse sous 24 h</span>
@@ -166,6 +167,86 @@ export const bodyHtml = `
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETS & ZONE -->
+<section class="c-fit">
+  <div class="wrap">
+    <div class="c-fit-head reveal">
+      <div>
+        <div class="eyebrow">— Pour quels projets nous contacter</div>
+        <h2>Si c'est un outil web stratégique, on sait le cadrer.</h2>
+      </div>
+      <p>
+        Hagnéré Code accompagne les PME, ETI et indépendants structurés sur des
+        projets web sur mesure : application métier, SaaS B2B, outil interne,
+        reprise Laravel ou site vitrine orienté conversion.
+      </p>
+    </div>
+
+    <div class="c-fit-grid">
+      <a class="c-fit-card reveal" href="/services/saas-applications-metier">
+        <span class="c-fit-tag">SaaS &amp; app métier</span>
+        <h3>Construire un produit web maintenable.</h3>
+        <p>Portail client, plateforme B2B, espace abonné, workflow métier ou MVP exploitable.</p>
+      </a>
+
+      <a class="c-fit-card reveal reveal-d-1" href="/services/outils-internes-sur-mesure">
+        <span class="c-fit-tag">Back-office</span>
+        <h3>Remplacer Excel, Notion ou un CRM bricolé.</h3>
+        <p>Outil interne, automatisation, reporting, facturation, relance ou synchronisation d'outils.</p>
+      </a>
+
+      <a class="c-fit-card reveal reveal-d-2" href="/services/audit-technique">
+        <span class="c-fit-tag">Reprise / audit</span>
+        <h3>Reprendre une base Laravel ou Next.js.</h3>
+        <p>Audit, stabilisation, dette technique, sécurité, performance et plan de reprise réaliste.</p>
+      </a>
+
+      <a class="c-fit-card reveal reveal-d-3" href="/services/sites-vitrines">
+        <span class="c-fit-tag">Site &amp; acquisition</span>
+        <h3>Lancer un site qui sert le commercial.</h3>
+        <p>Site vitrine premium, landing SEO/Ads, pages services, formulaires et tracking propre.</p>
+      </a>
+    </div>
+
+    <div class="c-local reveal">
+      <div class="c-local-main">
+        <div class="eyebrow">— Studio basé à Chambéry</div>
+        <h2>Savoie, Haute-Savoie, Lyon, Grenoble — et France entière en visio.</h2>
+        <p>
+          Notre bureau est au <b>7 rue Ernest Filliard, 73000 Chambéry</b>.
+          On travaille localement avec les dirigeants et équipes métiers quand
+          la proximité aide, et à distance quand le projet demande surtout de la
+          méthode, du code propre et des points courts.
+        </p>
+      </div>
+      <div class="c-local-aside">
+        <div class="c-local-row"><span>Réponse</span><b>Sous 24 h ouvrées</b></div>
+        <div class="c-local-row"><span>Premier échange</span><b>30 min gratuites</b></div>
+        <div class="c-local-row"><span>Horaires</span><b>Lun-ven · 9 h-19 h</b></div>
+        <div class="c-local-row"><span>Téléphone</span><a href="tel:+33374472018">+33 3 74 47 20 18</a></div>
+      </div>
+    </div>
+
+    <div class="c-proof-mini reveal">
+      <a href="/realisations/lmnp-ai" class="c-proof-item">
+        <span>SaaS comptable</span>
+        <b>LMNP.AI</b>
+        <em>Produit en production, clients payants, automatisations métier.</em>
+      </a>
+      <a href="/realisations/sci-ai" class="c-proof-item">
+        <span>Application métier</span>
+        <b>SCI-AI.app</b>
+        <em>Comptabilité SCI, parcours guidé, logique réglementaire.</em>
+      </a>
+      <a href="/realisations/hagnere-patrimoine" class="c-proof-item">
+        <span>Acquisition B2B</span>
+        <b>Hagnéré Patrimoine</b>
+        <em>SEO, qualification commerciale, site premium orienté leads.</em>
+      </a>
     </div>
   </div>
 </section>
@@ -287,7 +368,7 @@ export const bodyHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Normal. <a href="/#realisations" style="color:var(--accent-ink);text-decoration:underline">Nos 4 projets publics</a>
+            Normal. <a href="/realisations" style="color:var(--accent-ink);text-decoration:underline">Nos 4 projets publics</a>
             (LMNP.AI, SCI-AI, Hagnéré Patrimoine, Hagnéré Investissement) sont tous visitables en direct.
             Pendant l'appel de 30 min, on peut aussi vous faire une démo live en partage d'écran sur nos
             repos Git privés.

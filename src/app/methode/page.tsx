@@ -4,12 +4,12 @@ import { MethodePage } from "@/components/methode/MethodePage";
 export const metadata: Metadata = {
   title: "Sprint Fixe™ — Notre méthode · Hagnéré Code",
   description:
-    "Forfait fixe contractuel, démos chaque vendredi, Discovery Sprint déduit, Claude Code en multiplicateur. Voici comment on livre 23/23 projets dans le budget annoncé. Méthode, garanties, journal des démos, FAQ contre-objections.",
+    "Forfait fixe contractuel, démos chaque vendredi, Discovery Sprint déduit, Claude Code en multiplicateur. 22/23 projets livrés dans le budget annoncé. Méthode, garanties, journal des démos, FAQ contre-objections.",
   alternates: { canonical: "/methode" },
   openGraph: {
     title: "Sprint Fixe™ — La méthode Hagnéré Code",
     description:
-      "Forfait fixe contractuel, démos hebdo, code chez vous J+1. La méthode qui a livré 23/23 projets dans le budget.",
+      "Forfait fixe contractuel, démos hebdo, code chez vous J+1. La méthode qui a livré 22/23 projets dans le budget.",
     url: "/methode",
     type: "website",
   },

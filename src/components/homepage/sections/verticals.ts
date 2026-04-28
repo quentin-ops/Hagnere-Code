@@ -1,173 +1,124 @@
 export const verticalsHtml = `
-<!-- VERTICALS -->
+<!-- SITUATIONS -->
 <section class="verticals" id="metiers">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— On connaît votre métier</div>
-        <h2>Nos terrains de jeu<br>favoris.</h2>
+        <div class="eyebrow">— Pas une agence sectorielle</div>
+        <h2>Les situations où<br>on est vraiment utile.</h2>
       </div>
       <div class="right">
-        Des secteurs où nous avons déjà livré en production, d'autres où notre
-        stack fait la différence. Si votre activité y figure, vous gagnez des
-        semaines de cadrage — on connaît déjà vos contraintes métier.
+        On ne prétend pas avoir déjà travaillé dans tous les secteurs. Nos preuves
+        les plus fortes viennent du patrimoine, de l'immobilier et de la comptabilité.
+        Ce qu'on sait surtout faire : transformer un problème métier en produit clair,
+        maintenable et exploitable par vos équipes.
       </div>
     </div>
 
-    <div class="vt-grid">
-      <!-- Patrimoine -->
-      <a class="vt-card reveal" data-accent="gold" href="#realisations">
+    <div class="vt-proof-panel reveal">
+      <div class="vt-proof-copy">
+        <span class="vt-proof-kicker">Positionnement honnête</span>
+        <p>
+          Vous n'avez pas besoin d'être dans notre secteur historique. Vous devez surtout
+          avoir un process important, répétitif, coûteux ou impossible à scaler proprement.
+        </p>
+      </div>
+      <div class="vt-proof-tags" aria-label="Preuves actuelles du studio">
+        <span><b>4</b> produits groupe en production</span>
+        <span>Patrimoine</span>
+        <span>Immobilier</span>
+        <span>Comptabilité IA</span>
+      </div>
+    </div>
+
+    <div class="vt-grid vt-grid-situations">
+      <a class="vt-card vt-card-situation vt-card--wide reveal" data-accent="violet" href="/services/outils-internes-sur-mesure">
         <div class="vt-head">
           <div class="vt-ic">
             <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/>
+              <path d="M4 5h16M4 12h16M4 19h16"/>
+              <path d="M8 5v14M16 5v14"/>
             </svg>
           </div>
-          <span class="vt-tag vt-tag-live"><span class="vt-dot"></span>3 clients actifs</span>
+          <span class="vt-tag vt-tag-live"><span class="vt-dot"></span>Très fréquent</span>
         </div>
-        <h3>Gestion de patrimoine &amp; CGP</h3>
+        <div class="vt-index">01</div>
+        <h3>Votre activité tourne encore sur Excel, Notion ou des copier-coller.</h3>
         <p>
-          Sites premium, parcours de qualification, espace client avec
-          docs fiscaux, prise de RDV, campagnes Google Ads sur requêtes
-          patrimoniales. On parle CIF, ORIAS, AMF, LCB-FT — pas en théorie.
+          On remplace le fichier fragile par un outil interne : rôles utilisateurs,
+          historique, exports, validations, alertes, dashboards et intégrations avec
+          vos logiciels existants.
         </p>
+        <div class="vt-mini vt-mini-grid" aria-hidden="true">
+          <span></span><span></span><span class="on"></span><span></span>
+          <span class="on"></span><span></span><span></span><span class="on"></span>
+          <span></span><span class="on"></span><span></span><span></span>
+        </div>
         <div class="vt-feats">
-          <span>Parcours qualification</span>
-          <span>SEO patrimonial</span>
-          <span>Prise de RDV</span>
+          <span>Back-office</span>
+          <span>Workflows</span>
+          <span>Automatisation</span>
         </div>
-        <div class="vt-foot">
-          Exemples : Hagnéré Patrimoine, Hagnéré Investissement
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M13 5l7 7-7 7"/>
-          </svg>
-        </div>
+        <div class="vt-outcome">Résultat : moins de ressaisie, moins d'erreurs, un process visible.</div>
       </a>
 
-      <!-- Immobilier -->
-      <a class="vt-card reveal reveal-d-1" data-accent="blue" href="#realisations">
+      <a class="vt-card vt-card-situation reveal reveal-d-1" data-accent="blue" href="/services/saas-applications-metier">
         <div class="vt-head">
           <div class="vt-ic">
             <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M3 9l9-7 9 7v13a1 1 0 01-1 1h-5v-7H10v7H5a1 1 0 01-1-1V9z"/>
+              <rect x="3" y="4" width="18" height="16" rx="2"/>
+              <path d="M7 9h10M7 13h6M15 17h2"/>
             </svg>
           </div>
-          <span class="vt-tag vt-tag-live"><span class="vt-dot"></span>2 SaaS en prod</span>
+          <span class="vt-tag">Portail client</span>
         </div>
-        <h3>Investissement immobilier &amp; SCI</h3>
+        <div class="vt-index">02</div>
+        <h3>Vos clients vous demandent un espace en ligne.</h3>
         <p>
-          SaaS de comptabilité LMNP, SCI (IR / IS), liasses 2031 / 2033 /
-          2065 / 2072 auto-générées et télétransmises via EDI DGFiP.
-          Gestion associés, parts, amortissements par composants.
+          Portail sécurisé, documents, suivi de dossiers, paiements, notifications,
+          messagerie, signature électronique et espace admin pour vos équipes.
         </p>
+        <div class="vt-mini vt-mini-window" aria-hidden="true">
+          <i></i><i></i><i></i>
+          <strong></strong>
+          <span></span><span></span><span></span>
+        </div>
         <div class="vt-feats">
-          <span>EDI DGFiP</span>
-          <span>Amortissements composants</span>
-          <span>Liasses fiscales auto</span>
+          <span>Espace client</span>
+          <span>Documents</span>
+          <span>Paiement</span>
         </div>
-        <div class="vt-foot">
-          Exemples : LMNP.AI, SCI-AI.app
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M13 5l7 7-7 7"/>
-          </svg>
-        </div>
+        <div class="vt-outcome">Résultat : moins d'emails, plus d'autonomie côté client.</div>
       </a>
 
-      <!-- Compta / Fiscal -->
-      <a class="vt-card reveal reveal-d-2" data-accent="emerald" href="#contact">
+      <a class="vt-card vt-card-situation reveal reveal-d-2" data-accent="emerald" href="#contact">
         <div class="vt-head">
           <div class="vt-ic">
             <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M9 2h6l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2h3z"/>
-              <path d="M14 2v6h6M8 12h8M8 16h8M8 20h4"/>
+              <path d="M12 3v4M12 17v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M3 12h4M17 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/>
+              <circle cx="12" cy="12" r="3"/>
             </svg>
           </div>
-          <span class="vt-tag vt-tag-expertise">Expertise IA forte</span>
+          <span class="vt-tag vt-tag-expertise">IA utile</span>
         </div>
-        <h3>Expertise-comptable &amp; fiscal</h3>
+        <div class="vt-index">03</div>
+        <h3>Vos équipes répètent les mêmes tâches chaque semaine.</h3>
         <p>
-          Automatisation de saisie, extraction IA de pièces comptables,
-          intégrations Pennylane / Tiime / Fulll / Cegid, tableaux de
-          bord clients, relances automatisées rédigées par Claude.
+          Agents IA, extraction documentaire, génération de réponses, relances,
+          synthèses, contrôles, routage de demandes et synchronisation entre outils.
         </p>
+        <div class="vt-mini vt-mini-flow" aria-hidden="true">
+          <span>Doc</span><i></i><span>IA</span><i></i><span>Action</span>
+        </div>
         <div class="vt-feats">
           <span>Extraction IA</span>
-          <span>Pennylane · Tiime</span>
-          <span>Relances rédigées par IA</span>
+          <span>RAG</span>
+          <span>Tool calling</span>
         </div>
-        <div class="vt-foot">
-          Parlez-nous de votre cabinet
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M13 5l7 7-7 7"/>
-          </svg>
-        </div>
+        <div class="vt-outcome">Résultat : l'IA agit dans un workflow, pas dans une démo isolée.</div>
       </a>
 
-      <!-- E-commerce -->
-      <a class="vt-card reveal reveal-d-3" data-accent="pink" href="#contact">
-        <div class="vt-head">
-          <div class="vt-ic">
-            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M3 3h2l2.5 12.5a2 2 0 002 1.5h9.5a2 2 0 002-1.6L22 7H6"/>
-              <circle cx="9" cy="20" r="1.5"/>
-              <circle cx="18" cy="20" r="1.5"/>
-            </svg>
-          </div>
-          <span class="vt-tag vt-tag-live"><span class="vt-dot"></span>Shopify &amp; headless</span>
-        </div>
-        <h3>E-commerce &amp; marques DTC</h3>
-        <p>
-          Shopify Plus, boutiques headless (Next.js + Shopify/Stripe),
-          abonnements (Recharge, Stripe Billing), CRM &amp; email (Klaviyo),
-          Google Shopping, logistique (ShipStation, Sendcloud). Du catalogue
-          à la rétention client.
-        </p>
-        <div class="vt-feats">
-          <span>Shopify Plus</span>
-          <span>Headless commerce</span>
-          <span>Klaviyo · Recharge</span>
-        </div>
-        <div class="vt-foot">
-          Parlez-nous de votre marque
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M13 5l7 7-7 7"/>
-          </svg>
-        </div>
-      </a>
-
-      <!-- Applications mobiles -->
-      <a class="vt-card reveal reveal-d-1" data-accent="indigo" href="#contact">
-        <div class="vt-head">
-          <div class="vt-ic">
-            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <rect x="6" y="2" width="12" height="20" rx="2"/>
-              <path d="M11 18h2"/>
-            </svg>
-          </div>
-          <span class="vt-tag">iOS &amp; Android</span>
-        </div>
-        <h3>Applications mobiles</h3>
-        <p>
-          React Native par défaut (un codebase, deux stores), Swift ou
-          Kotlin quand le besoin l'exige. Notifications push (FCM · APNs),
-          paiements in-app (StoreKit 2 · Play Billing), offline-first,
-          publication App Store / Play Store.
-        </p>
-        <div class="vt-feats">
-          <span>React Native</span>
-          <span>StoreKit 2 · Play Billing</span>
-          <span>App Store · Play Store</span>
-        </div>
-        <div class="vt-foot">
-          Du prototype à la v1 publiée
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M13 5l7 7-7 7"/>
-          </svg>
-        </div>
-      </a>
-
-      <!-- Startups & SaaS -->
-      <a class="vt-card reveal reveal-d-2" data-accent="violet" href="#contact">
+      <a class="vt-card vt-card-situation reveal" data-accent="gold" href="/services/saas-applications-metier">
         <div class="vt-head">
           <div class="vt-ic">
             <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -175,125 +126,85 @@ export const verticalsHtml = `
               <path d="M13 5l6 6"/>
             </svg>
           </div>
-          <span class="vt-tag vt-tag-expertise">Du MVP à la V3</span>
+          <span class="vt-tag">SaaS métier</span>
         </div>
-        <h3>Startups &amp; SaaS B2B</h3>
+        <div class="vt-index">04</div>
+        <h3>Vous voulez lancer un logiciel métier sans monter une équipe tech.</h3>
         <p>
-          On sort un MVP propre en 6 à 8 semaines, puis on fait évoluer
-          sans jeter : auth, multi-tenant, facturation Stripe, webhooks,
-          observabilité. Stack prête pour la levée.
+          MVP propre, authentification, abonnements, rôles, back-office, analytics,
+          emails transactionnels et socle technique prêt à évoluer.
         </p>
+        <div class="vt-mini vt-mini-stack" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
         <div class="vt-feats">
-          <span>Multi-tenant</span>
-          <span>Stripe Billing</span>
-          <span>Investor-ready</span>
+          <span>MVP</span>
+          <span>Stripe</span>
+          <span>Back-office</span>
         </div>
-        <div class="vt-foot">
-          Early-stage &amp; scale-up
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M13 5l7 7-7 7"/>
-          </svg>
-        </div>
+        <div class="vt-outcome">Résultat : un produit lançable, pas un prototype jetable.</div>
       </a>
 
-      <!-- Professions libérales -->
-      <a class="vt-card reveal reveal-d-3" data-accent="teal" href="#contact">
+      <a class="vt-card vt-card-situation reveal reveal-d-1" data-accent="pink" href="/services/sites-vitrines">
         <div class="vt-head">
           <div class="vt-ic">
             <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/>
+              <path d="M4 19V5a2 2 0 012-2h12a2 2 0 012 2v14"/>
+              <path d="M8 9h8M8 13h5M7 19h10"/>
+            </svg>
+          </div>
+          <span class="vt-tag">Acquisition</span>
+        </div>
+        <div class="vt-index">05</div>
+        <h3>Votre site existe, mais il ne génère pas assez de demandes qualifiées.</h3>
+        <p>
+          Refonte orientée conversion, landing pages, SEO technique, tracking,
+          prise de rendez-vous, contenus et campagnes branchées sur de vrais objectifs.
+        </p>
+        <div class="vt-mini vt-mini-chart" aria-hidden="true">
+          <span style="height:34%"></span><span style="height:48%"></span><span style="height:42%"></span><span class="on" style="height:74%"></span><span class="on" style="height:92%"></span>
+        </div>
+        <div class="vt-feats">
+          <span>Conversion</span>
+          <span>SEO</span>
+          <span>Tracking</span>
+        </div>
+        <div class="vt-outcome">Résultat : un site qui vend votre valeur, pas une brochure.</div>
+      </a>
+
+      <a class="vt-card vt-card-situation vt-card--dark reveal reveal-d-2" data-accent="orange" href="/services/audit-technique">
+        <div class="vt-head">
+          <div class="vt-ic">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
               <path d="M9 12l2 2 4-4"/>
             </svg>
           </div>
-          <span class="vt-tag">Avocats · Médecins</span>
+          <span class="vt-tag">Reprise produit</span>
         </div>
-        <h3>Professions libérales</h3>
+        <div class="vt-index">06</div>
+        <h3>Vous avez déjà un produit, mais il devient fragile.</h3>
         <p>
-          Sites vitrines premium, prise de RDV (Doctolib côté santé,
-          Cal.com / Calendly ailleurs), portails clients sécurisés,
-          signature électronique (Yousign, DocuSign), référencement
-          local. RGPD et secret pro pris au sérieux.
+          Audit, dette technique, sécurité, performance, refonte progressive,
+          tests, CI/CD, monitoring et plan de reprise sans tout recoder.
         </p>
+        <div class="vt-mini vt-mini-health" aria-hidden="true">
+          <span><b>A</b> Perf</span>
+          <span><b>B+</b> Code</span>
+          <span><b>A-</b> Sécu</span>
+        </div>
         <div class="vt-feats">
-          <span>Prise de RDV</span>
-          <span>Signature électronique</span>
-          <span>SEO local</span>
+          <span>Audit</span>
+          <span>Sécurité</span>
+          <span>Maintenance</span>
         </div>
-        <div class="vt-foot">
-          Confidentialité &amp; conformité
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M13 5l7 7-7 7"/>
-          </svg>
-        </div>
-      </a>
-
-      <!-- Agences & studios -->
-      <a class="vt-card reveal" data-accent="rose" href="#contact">
-        <div class="vt-head">
-          <div class="vt-ic">
-            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <circle cx="12" cy="12" r="9"/>
-              <path d="M12 3c3 3 3 15 0 18M3 12h18"/>
-              <path d="M12 3c-3 3-3 15 0 18"/>
-            </svg>
-          </div>
-          <span class="vt-tag vt-tag-expertise">White-label dispo</span>
-        </div>
-        <h3>Agences &amp; studios créatifs</h3>
-        <p>
-          On prend en charge la partie dev pour vos clients :
-          intégration Figma → code, CMS headless (Sanity, Payload),
-          performance Core Web Vitals, en marque blanche ou co-brandé.
-        </p>
-        <div class="vt-feats">
-          <span>Figma → code</span>
-          <span>Sanity · Payload</span>
-          <span>White-label</span>
-        </div>
-        <div class="vt-foot">
-          Parlez-nous de votre agence
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M13 5l7 7-7 7"/>
-          </svg>
-        </div>
-      </a>
-
-      <!-- PME industrielle -->
-      <a class="vt-card reveal reveal-d-1" data-accent="orange" href="#contact">
-        <div class="vt-head">
-          <div class="vt-ic">
-            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <path d="M3 21h18M4 21V9l6 3V7l6 4V6l4 3v12"/>
-              <circle cx="8" cy="17" r="1"/>
-              <circle cx="13" cy="17" r="1"/>
-              <circle cx="17" cy="17" r="1"/>
-            </svg>
-          </div>
-          <span class="vt-tag">Nouveau en 2026</span>
-        </div>
-        <h3>PME industrielles &amp; BTP</h3>
-        <p>
-          Outils internes pour sortir d'Excel : planning atelier,
-          suivi chantier, ERP léger, portails fournisseurs. Intégrations
-          ERP historiques (Sage, Cegid) sans tout casser.
-        </p>
-        <div class="vt-feats">
-          <span>Planning atelier</span>
-          <span>Portails fournisseurs</span>
-          <span>Sage · Cegid</span>
-        </div>
-        <div class="vt-foot">
-          Early-adopters 2026 bienvenus
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M13 5l7 7-7 7"/>
-          </svg>
-        </div>
+        <div class="vt-outcome">Résultat : une trajectoire propre, sans big bang risqué.</div>
       </a>
     </div>
 
     <div class="vt-disclaimer reveal">
-      Un autre secteur ? <a href="#contact">On regarde ensemble</a>. On a déjà dit non à
-      des projets hors de nos zones de maîtrise — c'est aussi ça, être honnête.
+      Vous êtes dans un autre secteur ? <a href="#contact">On regarde le problème métier</a>,
+      pas l'étiquette de votre marché. Si ce n'est pas pour nous, on vous le dira avant le devis.
     </div>
   </div>
 </section>

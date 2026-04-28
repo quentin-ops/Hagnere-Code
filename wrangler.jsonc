@@ -9,6 +9,8 @@
     "binding": "ASSETS"
   },
   "vars": {
-    "AUTH_TRUST_HOST": "true"
+    // Doit être défini en production pour que /robots.ts autorise l'indexation
+    // et que metadata.robots.index passe à true (cf. src/app/layout.tsx).
+    "NEXT_PUBLIC_ENV": "production"
   }
 }

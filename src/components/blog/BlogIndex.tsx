@@ -71,18 +71,20 @@ export function BlogIndex() {
           <div className="nav-links">
             <Link href="/#services">Services</Link>
             <Link href="/methode">Méthode</Link>
-            <Link href="/#realisations">Réalisations</Link>
+            <Link href="/realisations">Réalisations</Link>
             <Link href="/equipe">Équipe</Link>
             <Link href="/tarifs">Tarifs</Link>
-            <Link href="/blog" className="active">
-              Blog
+            <Link href="/guide" className="active">
+              Guide
             </Link>
+
+            <Link href="/contact">Contact</Link>
           </div>
           <div className="nav-cta">
             <Link href="/#contact" className="btn btn-ghost">
               Prendre RDV
             </Link>
-            <Link href="/#contact" className="btn btn-primary">
+            <Link href="/demarrer-un-projet" className="btn btn-primary">
               Démarrer un projet
               <svg className="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M13 5l7 7-7 7" />
@@ -105,7 +107,7 @@ export function BlogIndex() {
           <p>
             Un blog technique et business pour les dirigeants et équipes tech
             qui construisent des SaaS et outils métier sérieux. Deux articles
-            par mois, zéro filler — que du retour terrain publié par l'équipe.
+            par mois, zéro filler — que du retour terrain publié par l&apos;équipe.
           </p>
 
           <form className="bl-newsletter" onSubmit={onSubscribe}>
@@ -161,7 +163,7 @@ export function BlogIndex() {
             <div className="right">
               Voici ce sur quoi nous travaillons en priorité. Une entrée = un
               sujet que nous avons vécu en vrai sur un projet client récent, et
-              que nous voulons documenter proprement pour d'autres.
+              que nous voulons documenter proprement pour d&apos;autres.
             </div>
           </div>
 
@@ -217,10 +219,10 @@ export function BlogIndex() {
           <div className="section-head">
             <div className="left">
               <div className="eyebrow">— Rubriques</div>
-              <h2>Ce qu'on va couvrir.</h2>
+              <h2>Ce qu&apos;on va couvrir.</h2>
             </div>
             <div className="right">
-              Pas de généralités. Les sujets d'ingénierie pointus, les décisions
+              Pas de généralités. Les sujets d&apos;ingénierie pointus, les décisions
               business difficiles, et les retours honnêtes sur nos ratés.
             </div>
           </div>
@@ -229,8 +231,8 @@ export function BlogIndex() {
               <div className="bl-topic-ic">🧠</div>
               <div className="bl-topic-title">Méthode &amp; outillage</div>
               <div className="bl-topic-body">
-                Claude Code, agents IA, workflows internes, ce qu'on a arrêté
-                d'utiliser.
+                Claude Code, agents IA, workflows internes, ce qu&apos;on a arrêté
+                d&apos;utiliser.
               </div>
             </div>
             <div className="bl-topic">

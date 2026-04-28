@@ -53,7 +53,7 @@ export default async function Page({
       name: "Hagnéré Code",
       logo: {
         "@type": "ImageObject",
-        url: "https://hagnere-code.fr/logo.png",
+        url: "https://hagnere-code.fr/logos/logo-dark.png",
       },
     },
     mainEntityOfPage: {

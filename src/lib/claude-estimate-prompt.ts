@@ -21,20 +21,158 @@
  */
 
 import { buildPromptCatalogSection } from "./pricing-model";
+import {
+  buildCaseStudiesSection,
+  buildTeamSection,
+  buildRisksSection,
+} from "./knowledge-base";
 
-export const ESTIMATE_SYSTEM_PROMPT = `You are the multi-service project estimator at Hagnéré Code, a French AI-native development studio (6 people, mostly CDI, based in Chambéry). Your job: read a structured project brief from a prospect that may include MULTIPLE services from our catalog, and return a coherent estimation in strict JSON.
+/**
+ * Anthropic structured output (output_config.format.schema) accepte un
+ * SOUS-ENSEMBLE de JSON Schema : pas de `minimum`/`maximum` sur integers,
+ * pas de `minLength`/`maxLength`/`pattern` sur strings, pas de
+ * `minItems`/`maxItems` sur arrays.
+ *
+ * On garde le schéma "riche" comme source de doc + base pour la validation
+ * post-hoc côté serveur, mais on le sanitize avant envoi à Claude pour
+ * éviter les 400 "property not supported".
+ *
+ * Liste des keywords NON supportés à retirer (basé sur tests réels API) :
+ *   - minimum, maximum, exclusiveMinimum, exclusiveMaximum
+ *   - minLength, maxLength, pattern, format
+ *   - minItems, maxItems, uniqueItems
+ *   - minProperties, maxProperties, multipleOf
+ *
+ * Ce qui RESTE supporté : type, enum, properties, required, items,
+ * additionalProperties, description, $ref, oneOf/anyOf.
+ */
+const UNSUPPORTED_KEYWORDS = new Set([
+  "minimum",
+  "maximum",
+  "exclusiveMinimum",
+  "exclusiveMaximum",
+  "minLength",
+  "maxLength",
+  "pattern",
+  "format",
+  "minItems",
+  "maxItems",
+  "uniqueItems",
+  "minProperties",
+  "maxProperties",
+  "multipleOf",
+]);
+
+export function sanitizeSchemaForAnthropic(node: unknown): unknown {
+  if (Array.isArray(node)) return node.map(sanitizeSchemaForAnthropic);
+  if (!node || typeof node !== "object") return node;
+  const out: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(node as Record<string, unknown>)) {
+    if (UNSUPPORTED_KEYWORDS.has(key)) continue;
+    out[key] = sanitizeSchemaForAnthropic(value);
+  }
+  return out;
+}
+
+/**
+ * Construit le prompt système complet en injectant la KB (case studies,
+ * équipe, risques) chargée depuis Postgres et cachée 5 min.
+ *
+ * Cacheable côté Anthropic via `cache_control: { type: "ephemeral" }` —
+ * le prompt reste identique tant que la KB n'est pas mise à jour, donc
+ * 92-96 % de cache hit attendu après warmup.
+ */
+export async function buildEstimateSystemPrompt(): Promise<string> {
+  const [caseStudies, team, risks] = await Promise.all([
+    buildCaseStudiesSection(),
+    buildTeamSection(),
+    buildRisksSection(),
+  ]);
+  return `${ESTIMATE_PROMPT_HEAD}
+
+${team}
+
+${buildPromptCatalogSection()}
+
+${caseStudies}
+
+${risks}
+
+${ESTIMATE_PROMPT_TAIL}`;
+}
+
+const ESTIMATE_PROMPT_HEAD = `You are the multi-service project estimator at Hagnéré Code, a French AI-native development studio (6 people, mostly CDI, based in Chambéry). Your job: read a structured project brief from a prospect that may include MULTIPLE services from our catalog, and return a coherent estimation in strict JSON.
 
 # THE STUDIO
 
-- 6 people — la plupart en CDI, quelques freelances long terme : Quentin (Founder, design + brief client), Nicolas (CTO, architecture), 4 senior Laravel/full-stack devs (5+ years XP each)
+- 6 people — la plupart en CDI, quelques freelances long terme :
+  - **Quentin Hagnéré** (Fondateur — brief client, design, front-end, back-office)
+  - **Nicolas Wallerand** (CTO — architecture, code review, choix tech)
+  - **Kylian** (Senior Dev Laravel — fonctionnalités complexes)
+  - **Frédéric Curinckx** (Senior Dev — full-stack senior)
+  - **Arthur Monney** (Senior Dev — IA, intégration LLM)
+  - **Ryan Mazzitelli** (Senior Dev — intégration, IA, exécution)
+  - **Peter** (Intégration + QA)
 - Method: "Sprint Fixe™" — fixed-price contracts (never TJM), weekly Friday demos, code on the client's GitHub from day 1, contractual late penalty (7 % of forfeit per week beyond 14-day tolerance), 30-day post-launch warranty
 - Build stack: Laravel 13 + PHP 8.4 (default), Livewire/Filament/Tailwind for back-office and most B2B SaaS, React/Next.js for highly interactive frontends and SEO-critical sites, React Native + Expo for mobile apps. Hosting Scaleway Paris by default
 - Augmented by Claude Code — used for research, plans, code review. 100 % of commits stay human-reviewed.
 - Sweet spot: French PME/ETI (10–500 employees), budgets 6–150 k€ for build, 1,5–14 k€/mois for retainers
 
-${buildPromptCatalogSection()}
+# DISCOVERY SPRINT (étape préliminaire OBLIGATOIRE)
 
-# CROSS-SERVICE SYNERGIES & RULES (à appliquer mécaniquement)
+- **Durée** : 2 jours (3 jours si > 4 services cochés via R8)
+- **Prix** : 1 500 € (ou 2 500 € si Discovery étendu)
+- **Déductible 100 %** de la phase 2 si engagée < 90 jours
+- **Workshops** : Discovery business (4h), Atelier UX (4h), Spec technique (4h, optionnel)
+- **Livrables systématiques** :
+  - Maquettes Figma cliquables (3-8 écrans clés)
+  - Specs techniques 15-30 pages
+  - Devis ferme phase 2 (plus de fourchette)
+  - Plan de tests E2E (Pest + Playwright)
+  - Choix de stack tranchés et justifiés
+- **Quand le déclencher** : OBLIGATOIRE si \`oneshot.midpoint > 5 000 €\`. Optionnel sinon (\`discovery_sprint = null\`).
+- **Rationale** : sans Discovery, on s'engage sur du flou et on ne peut PAS produire un devis ferme — on serait obligés de gonfler la marge de risque.
+
+# CLIENT JOURNEY (à TOUJOURS produire pour les builds, peut être minimal pour retainer-only)
+
+Le parcours client est l'output qui rend l'estimation crédible. Il DOIT contenir entre 4 et 12 étapes minimum, ordonnées par \`day_offset\` croissant. Pour un build standard SaaS 30 k€ :
+
+- J0 : Tu signes le Discovery → Slack créé, contrat envoyé pour signature électronique
+- J+1 : Kickoff async → repo GitHub provisionné, Linear ouvert, accès aux comptes outils
+- J+3 : Workshop Discovery → on consolide brief, scope, objectifs avec toi
+- J+5 : Restitution Discovery → maquettes Figma + devis ferme + plan
+- J+7 : Phase 2 démarre → Sprint 1 commence, première démo prévue à J+12
+- J+12 : Démo vendredi 1 → tu valides, on continue
+- ... (un point par démo vendredi)
+- J+(durée*7) : Livraison + recette UAT → 5 jours ouvrés pour valider
+- J+(durée*7+5) : Mise en production
+- J+(durée*7+35) : Fin de warranty post-launch (30j)
+- J+(durée*7+35+1) : Bascule retainer maintenance si applicable
+
+Owner = qui pilote ("Quentin", "Nicolas + Quentin", "Le client", "Toute l'équipe").
+
+# OBJECTIVES_ADDRESSED (toujours produire)
+
+Le prospect a coché un ou plusieurs **objectifs** côté front (ex : "Lancer un MVP exploitable", "RGPD pour grands comptes"). Pour CHAQUE objectif présent dans la description du brief sous "Objectifs principaux :" ou "Objectif principal :", tu produis une entrée dans \`objectives_addressed\` :
+
+- \`objective\` : recopie l'objectif exact du prospect
+- \`addressed_in\` : liste les noms des phases du \`deployment_roadmap\` ou les \`service_id\` qui l'adressent (ex : \`["Discovery", "saas-build", "retainer-securite"]\`)
+- \`confidence\` : "high" si plusieurs phases couvrent, "medium" si une seule, "low" si flou
+- \`note\` : 1 phrase optionnelle expliquant le mapping
+
+Si un objectif n'est couvert nulle part dans ta proposition → ajoute-le dans \`warnings\` avec \`confidence = "low"\`.
+
+# QUALITY GATES & ACCEPTANCE CRITERIA (par semaine de phasing)
+
+Chaque semaine du \`phasing[]\` DOIT contenir :
+- \`client_deliverable\` : artefact concret remis (ex: "Maquettes Figma 8 écrans Auth cliquables", "URL staging avec parcours signup fonctionnel")
+- \`acceptance_criteria\` (2-6) : statements verifiables au PRÉSENT ("L'utilisateur peut créer un compte", "L'email de confirmation arrive en < 30s", JAMAIS "Mise en place de…")
+- \`quality_gates\` (1-5) : barrières techniques avant validation (ex: "Tests Pest > 80% sur AuthController", "Lighthouse perf > 90 sur /login", "Migration Postgres réversible testée")
+- \`friday_demo\` : ce que tu montreras en démo (1 phrase concrète)
+
+`;
+
+const ESTIMATE_PROMPT_TAIL = `# CROSS-SERVICE SYNERGIES & RULES (à appliquer mécaniquement)
 
 ## R1. Site + Ads → tracking mutualisé (−10 % sur le SETUP Ads uniquement)
 Si (site-vitrine OU ecommerce) ET ads sont cochés ensemble, calcule:
@@ -155,7 +293,10 @@ Tu DOIS répondre uniquement en JSON conforme au schéma fourni — aucun texte 
 - \`summary.year_1_total\` : oneshot_total + (monthly_recurring × engagement_proportion × 12). Estime conservativement.
 - \`summary.build_duration_weeks\` : durée du chemin critique des projets oneshot. NULL si aucun.
 - \`summary.detected_synergies\` : liste des synergies appliquées (R1, R2, R4 explicites avec leur numéro).
-- \`oneshot_projects\` : 1 entrée par service Construire ou Audit coché. \`phasing\` 1 entrée par semaine, 3-5 tâches/sem. \`stack\` justifiée par le brief. \`risks\` 2-4 risques crédibles spécifiques. \`lagniappe\` SAUF audit ou projet < 15 k€/4 sem.
+- \`discovery_sprint\` : OBLIGATOIRE si total oneshot > 5 000 €. Sinon \`null\`. Mention le tarif (1 500 € ou 2 500 €), la durée, les workshops, les livrables, et un rationale **contextualisé au brief** (pas générique).
+- \`client_journey\` : 4-12 étapes ordonnées par day_offset. **Toujours produire** dès qu'il y a un build. Pour un retainer pur, raccourci OK (4-5 étapes) mais doit exister.
+- \`objectives_addressed\` : 1 entrée par objectif explicitement coché par le prospect. Voir section dédiée.
+- \`oneshot_projects\` : 1 entrée par service Construire ou Audit coché. \`phasing\` 1 entrée par semaine, 3-5 tâches/sem + client_deliverable + acceptance_criteria + quality_gates obligatoires. \`stack\` justifiée par le brief. \`risks\` 2-4 risques crédibles spécifiques. \`lagniappe\` SAUF audit ou projet < 15 k€/4 sem.
 - \`monthly_retainers\` : 1 entrée par service Faire grandir ou Protéger récurrent. \`recommended_tier\` STRICT depuis l'enum du schéma. \`monthly_deliverables\` concrets ET chiffrés. \`starts_at_week_offset\` ∈ [0,52].
 - \`team_allocation\` : 3-6 membres avec rôle STRICT depuis l'enum, involvement, durée, ownership.
 - \`deployment_roadmap\` : ordre logique (Discovery → projets oneshot en parallèle ou séquentiel selon dépendances → retainers démarrent au bon moment selon R2).
@@ -186,14 +327,18 @@ const SERVICE_ID_ENUM = [
   "audit-technique",
 ] as const;
 
+// Vrais noms et spécialités — synchronisés avec /equipe et pricing-model.ts.
+// Quand l'IA alloue de l'équipe, elle DOIT choisir parmi ces étiquettes
+// (pas d'inventions, pas de freelances inconnus).
 const TEAM_ROLE_ENUM = [
-  "Quentin (Founder, design + brief)",
-  "Nicolas (CTO, architecture)",
-  "Senior Dev Laravel #1",
-  "Senior Dev Laravel #2",
-  "Senior Dev Laravel #3",
-  "Senior Dev Laravel #4",
-  "Claude Code (assistance research/review)",
+  "Quentin Hagnéré (Fondateur — brief, design, front-end, back-office)",
+  "Nicolas Wallerand (CTO — architecture, code review, choix tech)",
+  "Kylian (Senior Dev Laravel — fonctionnalités complexes, full-stack)",
+  "Frédéric Curinckx (Senior Dev — full-stack senior)",
+  "Arthur Monney (Senior Dev — IA, intégration LLM)",
+  "Ryan Mazzitelli (Senior Dev — intégration, IA, exécution)",
+  "Peter (Intégration + QA — tests, recettes, volume)",
+  "Claude Code (assistance recherche/review automatisée)",
 ] as const;
 
 const RETAINER_TIER_ENUM = [
@@ -319,9 +464,30 @@ export const ESTIMATE_JSON_SCHEMA = {
                   maxItems: 6,
                   items: { type: "string", maxLength: 120 },
                 },
+                client_deliverable: { type: "string", maxLength: 200 },
+                acceptance_criteria: {
+                  type: "array",
+                  minItems: 2,
+                  maxItems: 6,
+                  items: { type: "string", maxLength: 200 },
+                },
+                quality_gates: {
+                  type: "array",
+                  minItems: 1,
+                  maxItems: 5,
+                  items: { type: "string", maxLength: 160 },
+                },
                 friday_demo: { type: "string", maxLength: 200 },
               },
-              required: ["week", "name", "tasks", "friday_demo"],
+              required: [
+                "week",
+                "name",
+                "tasks",
+                "client_deliverable",
+                "acceptance_criteria",
+                "quality_gates",
+                "friday_demo",
+              ],
               additionalProperties: false,
             },
           },
@@ -406,10 +572,10 @@ export const ESTIMATE_JSON_SCHEMA = {
             maxItems: 8,
             items: { type: "string", maxLength: 140 },
           },
-          starts_after_oneshot: {
-            type: ["string", "null"],
-            enum: [...SERVICE_ID_ENUM, null] as unknown as (string | null)[],
-          },
+          // Anthropic structured output rejette enum mixte string+null.
+          // On accepte string ou null sans enum strict — le prompt
+          // instructit l'IA de choisir parmi SERVICE_ID_ENUM.
+          starts_after_oneshot: { type: ["string", "null"] },
           starts_at_week_offset: { type: "integer", minimum: 0, maximum: 52 },
         },
         required: [
@@ -457,10 +623,8 @@ export const ESTIMATE_JSON_SCHEMA = {
             type: "string",
             enum: ["discovery", "oneshot", "retainer-start", "audit"],
           },
-          related_service_id: {
-            type: ["string", "null"],
-            enum: [...SERVICE_ID_ENUM, null] as unknown as (string | null)[],
-          },
+          // Idem starts_after_oneshot : enum string+null pas supporté.
+          related_service_id: { type: ["string", "null"] },
         },
         required: [
           "order",
@@ -470,6 +634,74 @@ export const ESTIMATE_JSON_SCHEMA = {
           "type",
           "related_service_id",
         ],
+        additionalProperties: false,
+      },
+    },
+    discovery_sprint: {
+      type: ["object", "null"],
+      properties: {
+        duration_days: { type: "integer", minimum: 1, maximum: 5 },
+        price: { type: "integer", minimum: 0, maximum: 10000 },
+        currency: { type: "string", enum: ["EUR"] },
+        deductible: { type: "boolean" },
+        workshops: {
+          type: "array",
+          minItems: 1,
+          maxItems: 6,
+          items: { type: "string", maxLength: 140 },
+        },
+        deliverables: {
+          type: "array",
+          minItems: 2,
+          maxItems: 8,
+          items: { type: "string", maxLength: 180 },
+        },
+        rationale: { type: "string", maxLength: 400 },
+      },
+      required: [
+        "duration_days",
+        "price",
+        "currency",
+        "deductible",
+        "workshops",
+        "deliverables",
+        "rationale",
+      ],
+      additionalProperties: false,
+    },
+    client_journey: {
+      type: "array",
+      minItems: 4,
+      maxItems: 12,
+      items: {
+        type: "object",
+        properties: {
+          day_offset: { type: "integer", minimum: 0, maximum: 365 },
+          label: { type: "string", maxLength: 80 },
+          deliverable: { type: "string", maxLength: 200 },
+          owner: { type: "string", maxLength: 100 },
+        },
+        required: ["day_offset", "label", "deliverable", "owner"],
+        additionalProperties: false,
+      },
+    },
+    objectives_addressed: {
+      type: "array",
+      maxItems: 12,
+      items: {
+        type: "object",
+        properties: {
+          objective: { type: "string", maxLength: 200 },
+          addressed_in: {
+            type: "array",
+            minItems: 1,
+            maxItems: 6,
+            items: { type: "string", maxLength: 80 },
+          },
+          confidence: { type: "string", enum: ["low", "medium", "high"] },
+          note: { type: "string", maxLength: 240 },
+        },
+        required: ["objective", "addressed_in", "confidence"],
         additionalProperties: false,
       },
     },
@@ -484,6 +716,9 @@ export const ESTIMATE_JSON_SCHEMA = {
   },
   required: [
     "summary",
+    "discovery_sprint",
+    "client_journey",
+    "objectives_addressed",
     "oneshot_projects",
     "monthly_retainers",
     "team_allocation",

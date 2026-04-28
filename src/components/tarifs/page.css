@@ -479,15 +479,23 @@
   .ct-cta .btn{justify-content:center}
 
   /* Hero quote mock */
+  .thero-inner{gap:32px !important}
+  .qmock{border-radius:14px}
+  .qmock-bar{padding:9px 12px}
+  .qmock-path{display:none}
   .qmock-head{flex-direction:column;align-items:flex-start;gap:14px}
   .qmock-tags{max-width:100%;justify-content:flex-start}
+  .qmock-tags .qmock-tag:nth-child(n+3){display:none}
+  .qmock-row:nth-child(n+4){display:none}
+  .qmock-row{padding:12px 10px}
   .qmock-row{flex-direction:column;align-items:flex-start;gap:10px}
   .qmock-row-r{align-items:flex-start;text-align:left}
   .qmock-total{flex-direction:column;align-items:flex-start;gap:14px}
   .qmock-total-r{align-items:flex-start}
   .qmock-total-val{font-size:32px}
-  .qmock-foot{justify-content:flex-start;flex-wrap:wrap;gap:10px 16px;padding:14px 16px}
-  .qmock-float{position:static;margin-top:14px}
+  .qmock-total-sub{display:none}
+  .qmock-foot,
+  .qmock-float{display:none}
 
   /* Price table → cards layout (rebuild as stacked on mobile) */
   .ptable-head{display:none}
@@ -523,4 +531,8 @@
   .disc-card h2{font-size:28px}
   .ct-card h3{font-size:24px}
   .vsm-head,.vsm-row{grid-template-columns:120px 180px 180px 180px;min-width:660px}
+  .qmock-head{padding:14px 16px}
+  .qmock-from-sub{display:none}
+  .qmock-total{padding:18px 16px}
+  .qmock-total-val{font-size:30px}
 }

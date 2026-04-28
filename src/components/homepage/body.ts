@@ -1,7 +1,7 @@
 export const bodyHtml = `<!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#" class="brand">
+    <a href="/" class="brand">
       <div class="brand-mark">HC</div>
       <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
     </a>
@@ -71,15 +71,16 @@ export const bodyHtml = `<!-- NAV -->
         </div>
       </div>
       <a href="/methode">Méthode</a>
-      <a href="#realisations">Réalisations</a>
+      <a href="/realisations">Réalisations</a>
       <a href="/equipe">Équipe</a>
       <a href="/tarifs">Tarifs</a>
-      <a href="/outils/estimer-mon-projet">Calculateur</a>
-      <a href="/blog">Blog</a>
+      <a href="/demarrer-un-projet">Calculateur</a>
+      <a href="/guide">Guide</a>
+      <a href="/contact">Contact</a>
     </div>
     <div class="nav-cta">
       <a href="#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="#contact" class="btn btn-primary">Démarrer un projet
+      <a href="/demarrer-un-projet" class="btn btn-primary">Démarrer un projet
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -94,19 +95,20 @@ export const bodyHtml = `<!-- NAV -->
     <div>
       <div class="hero-eyebrow"><span class="pill"><span class="dot"></span> 6 projets/an <b style="color:var(--ink);font-weight:600">2 créneaux prochain trimestre</b></span></div>
       <h1 data-variant="A">
-        <span id="h1-content">L'agence qui construit<br>vos outils numériques,<br><span class="accent">de A à Z.</span></span>
+        <span id="h1-content">Le studio qui construit<br>vos outils numériques,<br><span class="accent">sans survente.</span></span>
       </h1>
       <p class="hero-sub" id="hero-sub">
         On imagine, on conçoit, on développe, on lance et on maintient
-        vos <b>sites, applications métier et SaaS sur mesure</b>. Un seul interlocuteur
-        qui traduit le technique dans votre langue — pas de sous-traitance, pas de jargon creux.
+        vos <b>sites, applications métier et SaaS sur mesure</b>. On est un studio jeune :
+        nos preuves viennent surtout des produits qu'on a construits pour le groupe Hagnéré,
+        pas d'un portefeuille client gonflé.
       </p>
       <div class="hero-cta">
-        <a href="#contact" class="btn btn-accent btn-lg">
+        <a href="/demarrer-un-projet" class="btn btn-accent btn-lg">
           Démarrer un projet
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="#realisations" class="btn btn-ghost btn-lg">
+        <a href="/realisations" class="btn btn-ghost btn-lg">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           Voir nos réalisations
         </a>
@@ -271,8 +273,8 @@ export const bodyHtml = `<!-- NAV -->
       <div class="lb-side">
         <div class="lb-kicker">Notre stack</div>
         <h3>Une stack <em>moderne</em>, choisie, maîtrisée.</h3>
-        <p>Pas de framework à la mode, pas de dette technique. Un socle éprouvé sur des dizaines de produits en production, qu'on connaît à fond et qu'on opère nous-mêmes — du back Laravel aux interfaces React / Next jusqu'aux apps mobiles iOS &amp; Android.</p>
-        <div class="lb-note">— Mise à jour trimestrielle · audit de sécurité annuel</div>
+        <p>Pas de framework choisi pour faire joli. Un socle standard, maintenable et lisible par d'autres équipes : Laravel, React/Next, bases SQL, CI/CD, observabilité et agents IA modernes. Chaque brique a un rôle clair.</p>
+        <div class="lb-note">— Versions revues trimestriellement · sécurité et dépendances surveillées</div>
       </div>
 
       <div class="lb-stack">
@@ -280,16 +282,28 @@ export const bodyHtml = `<!-- NAV -->
           <div class="lb-row-label">Back-end</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 50 52" fill="#FF2D20" aria-hidden="true"><path d="M49.626 11.564a.809.809 0 01.028.209v10.972a.8.8 0 01-.402.694l-9.209 5.302V39.25c0 .286-.152.55-.4.694L20.42 51.01c-.044.025-.092.041-.14.058-.018.006-.035.017-.054.022a.805.805 0 01-.41 0c-.022-.006-.042-.018-.063-.026-.044-.016-.09-.03-.132-.054L.402 39.944A.801.801 0 010 39.25V6.334c0-.072.01-.142.028-.21.006-.023.02-.044.028-.067.015-.042.029-.085.051-.124.015-.026.037-.047.055-.071.023-.032.044-.065.071-.093.023-.023.053-.04.079-.06.029-.024.055-.05.088-.069h.001l9.61-5.533a.802.802 0 01.8 0l9.61 5.533h.002c.032.02.059.045.088.068.026.02.055.038.078.06.028.029.048.062.072.094.017.024.04.045.054.071.023.04.036.082.052.124.008.023.022.044.028.068a.809.809 0 01.028.209v20.559l8.008-4.611v-10.51c0-.07.01-.141.028-.208.007-.024.02-.045.028-.068.016-.042.03-.085.052-.124.015-.026.037-.047.054-.071.024-.032.044-.065.072-.093.023-.023.052-.04.078-.06.03-.024.056-.05.088-.069h.001l9.611-5.533a.801.801 0 01.8 0l9.61 5.533c.034.02.06.045.09.068.025.02.054.038.077.06.028.029.048.062.072.094.018.024.04.045.054.071.023.039.036.082.052.124.009.023.022.044.028.068z"/></svg>
-              Laravel 13 <span class="lb-chip-dim">PHP 8.3</span>
+              <img src="https://cdn.simpleicons.org/laravel/FF2D20" alt="" loading="lazy" decoding="async" />
+              Laravel 13 <span class="lb-chip-dim">PHP 8.4</span>
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#00758F" aria-hidden="true"><path d="M5.469 16.08c-1.09-.03-1.946.082-2.669.387-.203.086-.528.086-.555.343.109.11.125.288.223.44.172.266.47.625.738.812.296.215.593.43.906.617.555.332 1.18.524 1.719.855.312.196.625.446.937.657.156.105.254.27.453.336v-.047c-.098-.125-.125-.305-.222-.437-.141-.141-.282-.266-.422-.407-.41-.547-.922-1.023-1.469-1.422-.449-.305-1.437-.719-1.617-1.242l-.03-.035c.312-.031.683-.145.972-.227.476-.125.906-.09 1.398-.215.227-.062.453-.129.68-.199v-.129c-.258-.258-.438-.601-.707-.84-.719-.617-1.516-1.219-2.34-1.726-.445-.285-1.016-.469-1.484-.711-.172-.086-.461-.129-.559-.273-.246-.301-.387-.695-.566-1.051-.395-.75-.785-1.578-1.121-2.371-.238-.535-.383-1.066-.676-1.559-1.383-2.285-2.883-3.664-5.191-5.02-.497-.285-1.09-.41-1.723-.559-.336-.016-.676-.043-1.012-.059-.222-.094-.445-.359-.644-.484C6.57.953 4.52-.035 3.93.305c-.375.238-.02.566.215.808.175.168.406.359.527.547.074.121.094.25.168.379.156.32.305.68.48 1 .09.156.184.324.29.465.062.086.171.121.195.258-.105.149-.113.367-.172.551-.27.852-.164 1.91.222 2.539.121.188.41.594.797.434.34-.13.262-.551.36-.92.02-.09.007-.153.054-.212v.016c.11.215.215.422.316.637.239.371.653.758 1 1.02.183.136.332.367.558.453v-.027h-.02c-.05-.067-.128-.102-.195-.164-.156-.149-.328-.332-.45-.5-.363-.484-.687-1.02-.972-1.566-.145-.266-.266-.551-.387-.82-.055-.11-.055-.266-.145-.317-.136.19-.332.363-.43.594-.171.363-.191.816-.253 1.285-.032.012-.016.004-.028.02-.27-.063-.367-.344-.465-.578-.253-.609-.296-1.574-.078-2.27.059-.18.317-.742.215-.91-.055-.16-.219-.254-.313-.387-.109-.16-.226-.359-.3-.535-.203-.473-.305-.996-.527-1.469-.102-.219-.285-.449-.437-.652-.172-.23-.364-.391-.497-.66-.046-.09-.109-.238-.046-.34.015-.066.046-.094.113-.11.105-.093.406.024.512.067.304.121.562.238.82.41.117.082.246.238.398.285h.176c.273.059.578.016.832.098.445.148.848.359 1.211.582.898.652 1.84 1.648 2.512 2.602.14.172.168.34.273.527.211.352.47.719.68 1.066.203.344.41.695.625 1.023.1.156.289.238.398.441.172.316.207.672.352 1.016.125.258.28.547.398.805.098.195.184.508.285.75.13.352.172.758.36 1.094.124.199.336.305.492.559l.28-.008c.118 0 .118 0 .259-.129.394-.426.68-.973.625-1.734-.028-.207-.078-.399-.133-.59-.07-.195-.21-.402-.324-.59-.13-.266-.34-.461-.484-.71-.176-.317-.254-.645-.395-.993-.055-.133-.129-.34-.184-.461-.113-.277-.207-.465-.292-.684-.032-.086-.051-.16-.051-.265-.07-.06-.129-.109-.188-.156-.59-.559-1.074-1.25-1.578-1.836-.129-.156-.105-.297-.242-.422-.07-.074-.172-.156-.215-.262-.422-1.043-.695-2.094-1.035-3.156-.168-.492-.266-.945-.496-1.395-.293-.566-.977-1.145-1.524-1.426-.195-.094-.476-.195-.652-.211-.137-.012-.281-.027-.418-.035l-.356-.047c-.086-.094-.176-.18-.273-.262-.477-.406-1.559-1.18-1.957-.648-.242.328.055.656.305.852.18.137.441.258.656.414.168.098.34.175.547.23.117.035.25.035.363.082-.082.16.027.328.078.41.137.172.355.297.559.406.336.188.797.304 1.148.414.219.062.434.133.649.2.277.085.55.219.75.265.223.066.38.117.57.328.129.148.19.27.203.406.047.41.078.82.078 1.23.43.11.86.25 1.254.438-.04.07-.113.168-.145.246-.027.066-.055.145-.07.215-.59.086-1.199.062-1.582.117-.18.02-.355.039-.535.059-.152.195-.133.32-.227.414-.148.152-.312.312-.484.438-.266.191-.492.297-.883.39-.133.035-.39.129-.441-.078-.082-.152.094-.34.223-.465.094-.09.207-.18.285-.281.195-.266.34-.57.398-.902.02-.117.02-.234.02-.348 0-.028.007-.05.003-.078-.043-.058-.062-.137-.12-.184-.083-.062-.188-.09-.286-.105-.36-.055-.965.075-1.309.11-.394.046-.789.129-1.132.187-.356.055-.871.074-1.273.192-.516.148-.84.32-1.281.648-.563.418-.833.836-1.031 1.445-.125.391-.137.773-.04 1.215l.364.254c.281-.098.547-.227.875-.195.109.012.187.07.265.117.196.109.364.305.582.398l.238.098.23.07zm11.566-7.918c-.23-.043-.457-.051-.684-.027-.309.09-.434.242-.434.484.008.039-.008.074.012.113l.2.438c-.031-.031-.047.098-.051.156.003.067.047.13.066.196.087.117.211.238.325.32.133.082.273.105.41.203h.008l.242.2c.098.108.191.144.215.261a.322.322 0 00-.008-.297c-.027-.05-.004-.066-.004-.098.062-.266.102-.555.113-.855-.102-.062-.117-.129-.207-.164l-.203-.129c.051-.12-.012-.266-.004-.398z"/></svg>
-              MySQL 8 <span class="lb-chip-dim">PostgreSQL</span>
+              <img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="" loading="lazy" decoding="async" />
+              PostgreSQL <span class="lb-chip-dim">Neon / Supabase</span>
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 32 32" fill="#DC382D" aria-hidden="true"><path d="M29.75 20.07c-1.56.81-9.65 4.14-11.37 5.04-1.72.9-2.68.89-4.04.24-1.36-.65-9.97-4.14-11.52-4.88-.77-.37-1.18-.68-1.18-.98v-2.92s11.22-2.44 13.03-3.09c1.81-.65 2.44-.67 3.98-.11 1.54.56 10.74 2.22 12.26 2.78v2.88c0 .29-.35.61-1.16.97z"/><path d="M29.75 17.14c-1.56.81-9.65 4.14-11.37 5.04-1.72.9-2.68.89-4.04.24-1.36-.65-9.97-4.14-11.52-4.88-1.55-.74-1.58-1.26-.06-1.85 1.52-.6 10.1-3.97 11.85-4.61 1.75-.63 2.45-.62 3.94-.08 1.48.55 9.26 3.62 10.73 4.16 1.46.54 1.58.95.02 1.76z" fill="#A41E11"/><path d="M29.75 15.22c-1.56.81-9.65 4.14-11.37 5.04-1.72.9-2.68.89-4.04.24-1.36-.65-9.97-4.14-11.52-4.88-.77-.37-1.18-.68-1.18-.98v-2.92s11.22-2.44 13.03-3.09c1.81-.65 2.44-.67 3.98-.11 1.54.56 10.74 2.22 12.26 2.78v2.88c0 .29-.35.61-1.16.97z"/><path d="M29.75 12.29c-1.56.81-9.65 4.14-11.37 5.04-1.72.9-2.68.89-4.04.24-1.36-.65-9.97-4.14-11.52-4.88-1.55-.74-1.58-1.26-.06-1.85 1.52-.6 10.1-3.97 11.85-4.61 1.75-.63 2.45-.62 3.94-.08 1.48.55 9.26 3.62 10.73 4.16 1.46.54 1.58.95.02 1.76z" fill="#A41E11"/></svg>
+              <img src="https://cdn.simpleicons.org/redis/FF4438" alt="" loading="lazy" decoding="async" />
               Redis <span class="lb-chip-dim">cache + queues</span>
+            </span>
+            <span class="lb-chip">
+              <img src="https://cdn.simpleicons.org/drizzle/C5F74F" alt="" loading="lazy" decoding="async" />
+              Drizzle ORM <span class="lb-chip-dim">migrations typées</span>
+            </span>
+            <span class="lb-chip">
+              <img src="https://authjs.dev/img/etc/logo-sm.webp" alt="" loading="lazy" decoding="async" />
+              Auth.js <span class="lb-chip-dim">SSO / sessions</span>
+            </span>
+            <span class="lb-chip">
+              <img src="https://cdn.simpleicons.org/mysql/4479A1" alt="" loading="lazy" decoding="async" />
+              MySQL 8 <span class="lb-chip-dim">legacy &amp; métier</span>
             </span>
           </div>
         </div>
@@ -298,24 +312,36 @@ export const bodyHtml = `<!-- NAV -->
           <div class="lb-row-label">Front-end web</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#61DAFB" aria-hidden="true"><circle cx="12" cy="12" r="2.05"/><g fill="none" stroke="#61DAFB" stroke-width="1"><ellipse cx="12" cy="12" rx="11" ry="4.2"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)"/></g></svg>
-              React 19
+              <img src="https://cdn.simpleicons.org/react/61DAFB" alt="" loading="lazy" decoding="async" />
+              React 19.2
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#0A0A0A" aria-hidden="true"><circle cx="12" cy="12" r="12"/><path d="M9.5 7h1.5v10H9.5zM14 7h1.5v7.5L9.5 7H8v10h1.5V9.5L15.5 17H17V7h-1.5z" fill="#fff"/></svg>
-              Next.js 15
+              <img src="https://cdn.simpleicons.org/nextdotjs/000000" alt="" loading="lazy" decoding="async" />
+              Next.js 16
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 256 256" fill="none" aria-hidden="true"><rect width="256" height="256" rx="56" fill="#FB70A9"/><path d="M62 96c10-6 22-8 34-4 10 4 16 12 18 22 2 10-2 20-10 28 8 2 16 8 20 16 4 10 2 22-6 30-8 8-20 12-32 10-12-2-20-10-24-20l-18 10v-24l22-12c-2-10 0-20 6-28 4-4 8-8 12-10-2-4-8-8-14-10l-8-4v-4z" fill="#fff"/></svg>
-              Livewire 3
+              <img src="https://cdn.simpleicons.org/livewire/FB70A9" alt="" loading="lazy" decoding="async" />
+              Livewire 4
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="6" fill="#0A0A0A"/><path d="M10 9h12v3h-8v3h7v3h-7v6h-4V9z" fill="#fff"/></svg>
+              <img src="https://fluxui.dev/faviconcircle32x32.png" alt="" loading="lazy" decoding="async" />
               Flux UI <span class="lb-chip-dim">composants</span>
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 54 33" fill="#06B6D4" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M27 0c-7.2 0-11.7 3.6-13.5 10.8 2.7-3.6 5.85-4.95 9.45-4.05 2.054.513 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.513-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z"/></svg>
+              <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="" loading="lazy" decoding="async" />
               Tailwind v4
+            </span>
+            <span class="lb-chip">
+              <img src="https://cdn.simpleicons.org/typescript/3178C6" alt="" loading="lazy" decoding="async" />
+              TypeScript 5 <span class="lb-chip-dim">strict</span>
+            </span>
+            <span class="lb-chip">
+              <img src="https://cdn.simpleicons.org/radixui/161618" alt="" loading="lazy" decoding="async" />
+              Radix UI <span class="lb-chip-dim">accessibilité</span>
+            </span>
+            <span class="lb-chip">
+              <img src="https://framerusercontent.com/images/3aQX5dnH5Yqgsn98QXKF2ZXxIE.png" alt="" loading="lazy" decoding="async" />
+              Motion <span class="lb-chip-dim">interactions</span>
             </span>
           </div>
         </div>
@@ -324,15 +350,16 @@ export const bodyHtml = `<!-- NAV -->
           <div class="lb-row-label">Mobile iOS/Android</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#61DAFB" aria-hidden="true"><circle cx="12" cy="12" r="2.05"/><g fill="none" stroke="#61DAFB" stroke-width="1"><ellipse cx="12" cy="12" rx="11" ry="4.2"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="11" ry="4.2" transform="rotate(120 12 12)"/></g></svg>
+              <img src="https://cdn.simpleicons.org/react/61DAFB" alt="" loading="lazy" decoding="async" />
               React Native
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 32 32" fill="#0A0A0A" aria-hidden="true"><circle cx="16" cy="16" r="16"/><path d="M16 7l7 12H9l7-12z" fill="#fff"/></svg>
+              <img src="https://cdn.simpleicons.org/expo/000020" alt="" loading="lazy" decoding="async" />
               Expo SDK
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#0A0A0A" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <img src="https://cdn.simpleicons.org/apple/000000" alt="" loading="lazy" decoding="async" />
+              <img src="https://cdn.simpleicons.org/android/3DDC84" alt="" loading="lazy" decoding="async" />
               iOS &amp; Android
             </span>
             <span class="lb-chip">
@@ -346,16 +373,24 @@ export const bodyHtml = `<!-- NAV -->
           <div class="lb-row-label">IA &amp; agents</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 512 512" fill="#D97757" aria-hidden="true"><path d="M301.86 65h70.94l129.4 382h-70.93l-26.48-81.3H269.2l-26.48 81.3h-70.94L301.86 65zm-11.96 240h94.86l-47.43-145.7L289.9 305z"/></svg>
-              Claude Sonnet 4.5 <span class="lb-chip-dim">agents &amp; outils</span>
+              <img src="https://cdn.simpleicons.org/anthropic/D97757" alt="" loading="lazy" decoding="async" />
+              Claude Opus 4.7 <span class="lb-chip-dim">agents &amp; code</span>
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 41 41" fill="#0A0A0A" aria-hidden="true"><path d="M37.532 16.87a9.963 9.963 0 0 0-.856-8.184 10.078 10.078 0 0 0-10.855-4.835A9.964 9.964 0 0 0 18.306.5a10.079 10.079 0 0 0-9.614 6.977 9.967 9.967 0 0 0-6.664 4.834 10.08 10.08 0 0 0 1.24 11.817 9.965 9.965 0 0 0 .856 8.185 10.079 10.079 0 0 0 10.855 4.835 9.965 9.965 0 0 0 7.516 3.35 10.078 10.078 0 0 0 9.617-6.981 9.967 9.967 0 0 0 6.663-4.834 10.079 10.079 0 0 0-1.243-11.813ZM22.498 37.886a7.474 7.474 0 0 1-4.799-1.735c.061-.033.168-.091.237-.134l7.964-4.6a1.294 1.294 0 0 0 .655-1.134V19.054l3.366 1.944a.12.12 0 0 1 .066.092v9.299a7.505 7.505 0 0 1-7.49 7.496Z"/></svg>
-              GPT-4o <span class="lb-chip-dim">embeddings</span>
+              <img src="https://api.iconify.design/simple-icons:openai.svg?color=%230A0A0A" alt="" loading="lazy" decoding="async" />
+              GPT-5.5 <span class="lb-chip-dim">raisonnement &amp; code</span>
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#0A0A0A"/><path d="M7 9h10M7 12h10M7 15h6" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <img src="https://prismphp.com/assets/prism-logo.webp" alt="" loading="lazy" decoding="async" />
               Prism <span class="lb-chip-dim">LLM abstraction</span>
+            </span>
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="3" fill="#0A0A0A"/><path d="M8 10h8M8 14h5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+              RAG <span class="lb-chip-dim">embeddings + citations</span>
+            </span>
+            <span class="lb-chip">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#6D28D9"/><path d="M8 12h8M12 8v8" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Tool calling <span class="lb-chip-dim">agents métier</span>
             </span>
           </div>
         </div>
@@ -364,20 +399,36 @@ export const bodyHtml = `<!-- NAV -->
           <div class="lb-row-label">Infra &amp; ops</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 76 65" fill="#0A0A0A" aria-hidden="true"><path d="M37.5274 0L75.0548 65H0L37.5274 0Z"/></svg>
+              <img src="https://cdn.simpleicons.org/vercel/000000" alt="" loading="lazy" decoding="async" />
               Vercel <span class="lb-chip-dim">edge</span>
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2L3 8v16l13 6 13-6V8L16 2z" fill="#FF9900"/><text x="16" y="20" text-anchor="middle" font-family="Geist Mono" font-size="8" font-weight="700" fill="#fff">AWS</text></svg>
+              <img src="https://cdn.simpleicons.org/cloudflare/F38020" alt="" loading="lazy" decoding="async" />
+              Cloudflare <span class="lb-chip-dim">OpenNext</span>
+            </span>
+            <span class="lb-chip">
+              <img src="https://api.iconify.design/simple-icons:amazonaws.svg?color=%23FF9900" alt="" loading="lazy" decoding="async" />
               AWS S3 + SES
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#2496ED" aria-hidden="true"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.185.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.185.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.185.185 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.185.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.185.185v1.888c0 .102.083.185.186.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.185.185 0 00-.184-.186h-2.12a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.376 11.376 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288-.237-.185z"/></svg>
+              <img src="https://cdn.simpleicons.org/docker/2496ED" alt="" loading="lazy" decoding="async" />
               Docker <span class="lb-chip-dim">Coolify</span>
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 98 96" fill="#0A0A0A" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/></svg>
+              <img src="https://cdn.simpleicons.org/githubactions/2088FF" alt="" loading="lazy" decoding="async" />
               GitHub Actions
+            </span>
+            <span class="lb-chip">
+              <img src="https://cdn.simpleicons.org/sentry/362D59" alt="" loading="lazy" decoding="async" />
+              Sentry <span class="lb-chip-dim">erreurs</span>
+            </span>
+            <span class="lb-chip">
+              <img src="https://cdn.simpleicons.org/betterstack/000000" alt="" loading="lazy" decoding="async" />
+              Better Stack <span class="lb-chip-dim">uptime</span>
+            </span>
+            <span class="lb-chip">
+              <img src="https://cdn.simpleicons.org/dependabot/025E8C" alt="" loading="lazy" decoding="async" />
+              Dependabot <span class="lb-chip-dim">CVE</span>
             </span>
           </div>
         </div>
@@ -391,15 +442,16 @@ export const bodyHtml = `<!-- NAV -->
     <div class="studio-head reveal">
       <div class="shead-tag">
         <span class="shead-dot"></span>
-        UN STUDIO · HUIT MÉTIERS
+        UN STUDIO · TOUT LE CYCLE PRODUIT
       </div>
       <h2>
-        Construire. Lancer. <span class="grad">Faire vivre.</span><br>
-        Sous un seul toit.
+        Construire. Faire grandir.<br>
+        <span class="grad">Protéger &amp; opérer.</span>
       </h2>
       <p class="studio-lead">
-        Plutôt que jongler avec quatre prestataires qui ne se parlent pas, on réunit dans un même studio
-        les huit métiers qui font la différence entre un projet qui traîne et un produit qui performe.
+        Vous pouvez venir avec une idée, un process qui bloque, un site qui ne convertit pas
+        ou un produit existant à reprendre. On couvre le cadrage, le design, le développement,
+        l'acquisition et l'exploitation technique.
       </p>
     </div>
 
@@ -409,41 +461,41 @@ export const bodyHtml = `<!-- NAV -->
         <div class="svc-hero-tag">
           <span>01</span>
           <span>·</span>
-          <span>SERVICE PHARE</span>
+          <span>DEMANDE LA PLUS FRÉQUENTE</span>
         </div>
         <h3>
-          SaaS &amp; applications métier<br>
-          <span class="accent">sur Laravel 13, Next.js<br>et agents IA utiles.</span>
+          Transformer un process métier<br>
+          <span class="accent">en outil clair et rentable.</span>
         </h3>
         <p class="svc-hero-lead">
-          Plateformes B2B, espaces clients, marketplaces, applications métier sur mesure. On construit
-          les produits qui remplacent vos Excels et vos process manuels — pensés pour vos équipes
-          <b>et</b> pour vos clients finaux.
+          CRM interne, portail client, suivi de dossiers, automatisation, paiement,
+          reporting : on part de votre quotidien réel et on construit l'outil qui
+          enlève les frictions au lieu d'ajouter une couche de complexité.
         </p>
         <ul class="svc-hero-list">
           <li>
             <div class="sh-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
-            <div><b>Plateformes B2B</b> multi-rôles</div>
+            <div><b>Centraliser</b> vos dossiers, clients et actions</div>
           </li>
           <li>
             <div class="sh-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg></div>
-            <div><b>Espaces clients</b> avec paiement</div>
+            <div><b>Donner accès</b> à vos clients ou partenaires</div>
           </li>
           <li>
             <div class="sh-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M2 12h20"/></svg></div>
-            <div><b>Workflows métier</b> complexes</div>
+            <div><b>Automatiser</b> relances, documents et validations</div>
           </li>
           <li>
             <div class="sh-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 9h16M4 15h16M10 3l-4 18M18 3l-4 18"/></svg></div>
-            <div><b>API</b> (Pennylane, Stripe, Axonaut)</div>
+            <div><b>Connecter</b> Stripe, Pennylane, CRM et API</div>
           </li>
         </ul>
         <div class="svc-hero-foot">
           <span class="svc-hero-cta">
-            Voir les cas &amp; tarifs
+            Parler d'un outil sur mesure
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </span>
-          <span class="svc-hero-price">À partir de <b>25 k€</b></span>
+          <span class="svc-hero-price">Projet cadré dès <b>25 k€</b></span>
         </div>
       </div>
 
@@ -520,185 +572,96 @@ export const bodyHtml = `<!-- NAV -->
       </div>
     </a>
 
-    <!-- Autres services, grille 2×3 aérée avec mini-visuels -->
-    <div class="svc-row">
-      <!-- 02 Outils internes -->
-      <a class="svc-tile reveal" href="/services/outils-internes-sur-mesure">
-        <div class="svc-tile-head">
-          <div class="st-num">02</div>
-          <div class="st-ic">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg>
-          </div>
+    <div class="svc-service-map reveal">
+      <div class="svc-family" data-family="build">
+        <div class="svc-family-head">
+          <span class="svc-family-kicker">Construire</span>
+          <h3>Créer le produit ou l'outil dont votre équipe a besoin.</h3>
+          <p>Du site vitrine au SaaS métier complet : on transforme le besoin en interface utilisable, maintenable et connectée à vos outils.</p>
         </div>
-        <h4>Outils internes sur mesure</h4>
-        <p>Back-offices, automatisations, workflows qui sortent vos équipes d'Excel.</p>
-        <div class="st-viz st-viz-cells">
-          <div></div><div></div><div class="on"></div><div></div>
-          <div class="on"></div><div></div><div></div><div class="on"></div>
-          <div></div><div class="on"></div><div></div><div></div>
+        <div class="svc-family-list">
+          <a class="svc-mini-card" href="/services/saas-applications-metier">
+            <span class="svc-mini-num">01</span>
+            <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+            <b>SaaS &amp; applications métier</b>
+            <em>Plateformes B2B, espaces clients, rôles, paiements, workflows.</em>
+          </a>
+          <a class="svc-mini-card" href="/services/outils-internes-sur-mesure">
+            <span class="svc-mini-num">02</span>
+            <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg></span>
+            <b>Outils internes sur mesure</b>
+            <em>Back-office, automatisations, validations, exports, tableaux de bord.</em>
+          </a>
+          <a class="svc-mini-card" href="/services/sites-vitrines">
+            <span class="svc-mini-num">03</span>
+            <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></span>
+            <b>Sites vitrines &amp; landings</b>
+            <em>Site clair, rapide, orienté conversion et prise de contact.</em>
+          </a>
+          <a class="svc-mini-card" href="/services/ecommerce">
+            <span class="svc-mini-num">04</span>
+            <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></span>
+            <b>E-commerce</b>
+            <em>Boutiques, paiements, catalogue, tunnels d'achat et automatisations.</em>
+          </a>
         </div>
-        <div class="st-foot">
-          <span>5–8 sem.</span>
-          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
+      </div>
 
-      <!-- 03 Sites vitrines -->
-      <a class="svc-tile reveal reveal-d-1" href="/services/sites-vitrines">
-        <div class="svc-tile-head">
-          <div class="st-num">03</div>
-          <div class="st-ic">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
-          </div>
+      <div class="svc-family" data-family="grow">
+        <div class="svc-family-head">
+          <span class="svc-family-kicker">Faire grandir</span>
+          <h3>Générer plus de demandes qualifiées après la mise en ligne.</h3>
+          <p>Un bon produit ne suffit pas toujours : on peut aussi travailler l'acquisition, le contenu et la mesure de la conversion.</p>
         </div>
-        <h4>Sites vitrines &amp; landings</h4>
-        <p>Sites qui convertissent, pas qui informent. SEO technique de série.</p>
-        <div class="st-viz st-viz-bars">
-          <div style="height:22%"></div>
-          <div style="height:45%"></div>
-          <div style="height:35%"></div>
-          <div style="height:68%"></div>
-          <div style="height:55%"></div>
-          <div style="height:82%"></div>
-          <div style="height:72%" class="on"></div>
-          <div style="height:92%" class="on"></div>
+        <div class="svc-family-list">
+          <a class="svc-mini-card" href="/services/referencement-google">
+            <span class="svc-mini-num">05</span>
+            <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span>
+            <b>SEO &amp; référencement</b>
+            <em>Structure technique, contenus, pages business, suivi Search Console.</em>
+          </a>
+          <a class="svc-mini-card" href="/services/publicite-en-ligne">
+            <span class="svc-mini-num">06</span>
+            <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></span>
+            <b>Publicité en ligne</b>
+            <em>Google, Meta, LinkedIn, landing pages et tracking des conversions.</em>
+          </a>
+          <a class="svc-mini-card" href="/services/contenu-video">
+            <span class="svc-mini-num">07</span>
+            <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span>
+            <b>Contenu &amp; vidéo</b>
+            <em>Pages, scripts, motion, contenus produit et supports de vente.</em>
+          </a>
         </div>
-        <div class="st-foot">
-          <span>2–4 sem.</span>
-          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
+      </div>
 
-      <!-- 04 SEO -->
-      <a class="svc-tile reveal reveal-d-2" href="/services/referencement-google">
-        <div class="svc-tile-head">
-          <div class="st-num">04</div>
-          <div class="st-ic">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-          </div>
+      <div class="svc-family" data-family="operate">
+        <div class="svc-family-head">
+          <span class="svc-family-kicker">Protéger &amp; opérer</span>
+          <h3>Garder le produit fiable, sécurisé et capable d'évoluer.</h3>
+          <p>Après la livraison, on peut rester pour maintenir, auditer, sécuriser et faire évoluer votre socle sans repartir de zéro.</p>
         </div>
-        <h4>SEO &amp; référencement</h4>
-        <p>Stratégie, contenu et netlinking. Trafic organique durable.</p>
-        <div class="st-viz st-viz-line">
-          <svg viewBox="0 0 200 60" preserveAspectRatio="none" width="100%" height="100%">
-            <path d="M0,48 C30,46 50,40 72,34 C100,24 130,28 160,18 L200,8" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M0,48 C30,46 50,40 72,34 C100,24 130,28 160,18 L200,8 L200,60 L0,60 Z" fill="currentColor" opacity="0.12"/>
-            <circle cx="200" cy="8" r="3.5" fill="currentColor"/>
-          </svg>
-          <span class="st-metric">+340%<sup>*</sup></span>
+        <div class="svc-family-list">
+          <a class="svc-mini-card" href="/services/maintenance-evolution">
+            <span class="svc-mini-num">08</span>
+            <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <b>Maintenance &amp; évolution</b>
+            <em>Corrections, petites évolutions, monitoring, support prioritaire.</em>
+          </a>
+          <a class="svc-mini-card" href="/services/securite-rgpd">
+            <span class="svc-mini-num">09</span>
+            <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+            <b>Sécurité &amp; RGPD</b>
+            <em>Audit, hébergement, sauvegardes, conformité et données sensibles.</em>
+          </a>
+          <a class="svc-mini-card" href="/services/audit-technique">
+            <span class="svc-mini-num">10</span>
+            <span class="svc-mini-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></span>
+            <b>Audit technique</b>
+            <em>Performance, sécurité, dette technique et plan de reprise.</em>
+          </a>
         </div>
-        <div class="st-foot">
-          <span>Mensuel</span>
-          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-        </div>
-        <div class="st-disclaimer">* Cas Hagnéré Patrimoine sur 18 mois. Non garanti, dépend du secteur.</div>
-      </a>
-
-      <!-- 05 Publicité -->
-      <a class="svc-tile reveal" href="/services/publicite-en-ligne">
-        <div class="svc-tile-head">
-          <div class="st-num">05</div>
-          <div class="st-ic">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg>
-          </div>
-        </div>
-        <h4>Publicité en ligne</h4>
-        <p>Google, Meta, LinkedIn pilotés par conversions réelles — pas par impressions.</p>
-        <div class="st-viz st-viz-channels">
-          <div class="stc"><span>Google</span><div class="stc-bar"><i style="width:92%"></i></div></div>
-          <div class="stc"><span>Meta</span><div class="stc-bar"><i style="width:64%"></i></div></div>
-          <div class="stc"><span>LinkedIn</span><div class="stc-bar"><i style="width:38%"></i></div></div>
-        </div>
-        <div class="st-foot">
-          <span>Mensuel</span>
-          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
-
-      <!-- 06 Contenu & vidéo -->
-      <a class="svc-tile reveal reveal-d-1" href="/services/contenu-video">
-        <div class="svc-tile-head">
-          <div class="st-num">06</div>
-          <div class="st-ic">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-          </div>
-        </div>
-        <h4>Contenu &amp; vidéo</h4>
-        <p>Studio interne : motion, YouTube, contenus produit, scripts IA.</p>
-        <div class="st-viz st-viz-film">
-          <div class="stf">
-            <div class="stf-play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
-            <div class="stf-bar"><i style="width:64%"></i></div>
-            <span class="stf-t">02:14 / 03:28</span>
-          </div>
-        </div>
-        <div class="st-foot">
-          <span>Projet ou mensuel</span>
-          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
-
-      <!-- 07 Maintenance -->
-      <a class="svc-tile reveal reveal-d-2" href="/services/maintenance-evolution">
-        <div class="svc-tile-head">
-          <div class="st-num">07</div>
-          <div class="st-ic">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          </div>
-        </div>
-        <h4>Maintenance &amp; évolution</h4>
-        <p>Forfait mensuel, support prioritaire, évolutions continues.</p>
-        <div class="st-viz st-viz-status">
-          <div class="sts"><div class="sts-dot"></div><div><b>Uptime 30 j</b><span>99,98%</span></div></div>
-          <div class="sts"><div class="sts-dot yellow"></div><div><b>Astreinte</b><span>Lun–Ven 8h–20h</span></div></div>
-        </div>
-        <div class="st-foot">
-          <span>Forfait mensuel</span>
-          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
-
-      <!-- 08 Sécurité & RGPD -->
-      <a class="svc-tile reveal" href="/services/securite-rgpd">
-        <div class="svc-tile-head">
-          <div class="st-num">08</div>
-          <div class="st-ic">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-        </div>
-        <h4>Sécurité &amp; RGPD</h4>
-        <p>Audit, conformité complète, hébergement France (Scaleway, OVH).</p>
-        <div class="st-viz st-viz-check">
-          <div class="sck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg> Audit OWASP</div>
-          <div class="sck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg> Hébergement FR</div>
-          <div class="sck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg> DPO &amp; contrats</div>
-        </div>
-        <div class="st-foot">
-          <span>Audit ou forfait</span>
-          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
-
-      <!-- 09 Audit tech (remplace le "non couvert") -->
-      <a class="svc-tile svc-tile-cta reveal reveal-d-1" href="/services/audit-technique">
-        <div class="svc-tile-head">
-          <div class="st-num">09</div>
-          <div class="st-ic">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>
-          </div>
-        </div>
-        <h4>Audit technique</h4>
-        <p>Code review, performance, sécurité. Rapport livré en 10 jours ouvrés.</p>
-        <div class="st-viz st-viz-audit">
-          <div class="sca"><span>Perf</span><b>A</b></div>
-          <div class="sca"><span>Sécu</span><b>B+</b></div>
-          <div class="sca"><span>Code</span><b>A−</b></div>
-        </div>
-        <div class="st-foot">
-          <span>10 jours ouvrés</span>
-          <span class="st-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
+      </div>
     </div>
 
     <div class="studio-foot reveal">
@@ -743,149 +706,84 @@ export const bodyHtml = `<!-- NAV -->
       <div class="dc-wrap reveal reveal-d-1">
 
         <div class="dc-card">
-          <!-- Card header: like an email client -->
           <div class="dc-bar">
             <div class="dc-bar-left">
               <div class="dc-bar-dots"><span></span><span></span><span></span></div>
               <div class="dc-bar-path">
                 <span>Inbox</span>
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
-                <span>Cadrage projet</span>
+                <span>Cadrage 48h</span>
               </div>
             </div>
             <div class="dc-bar-right">
               <div class="dc-status">
                 <span class="dc-status-dot"></span>
-                EN COURS · 14 AVR. 2026
+                PRÊT À SIGNER
               </div>
             </div>
           </div>
 
-          <!-- Email-like subject line -->
-          <div class="dc-subject">
-            <div class="dc-subj-l">
-              <div class="dc-subj-avatar">MD</div>
-              <div>
-                <div class="dc-subj-from"><b>Marc Dubois</b> <span class="dc-subj-co">· Cabinet Dubois &amp; Associés</span></div>
-                <div class="dc-subj-to">À : hello@hagnere-code.fr · <span class="dc-subj-date">Aujourd'hui, 09:14</span></div>
-              </div>
-            </div>
-            <div class="dc-subj-tags">
-              <span class="dc-pill">PME · 8 pers.</span>
-              <span class="dc-pill">Comptabilité</span>
-            </div>
-          </div>
-
-          <!-- Their message -->
-          <div class="dc-msg you">
-            <div class="dc-msg-body">
-              <p>« On a un cabinet de <b>8 personnes</b>. Nos commerciaux perdent un temps fou à recopier des deals dans <b>3 outils différents</b> (Excel, HubSpot, Pennylane). On aimerait un truc simple qui centralise tout et qui sorte les factures automatiquement. »</p>
-            </div>
-            <div class="dc-msg-meta">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-              Lu · 09:18
-            </div>
-          </div>
-
-          <!-- Our reply -->
-          <div class="dc-msg us">
-            <div class="dc-msg-header">
-              <div class="dc-av">HC</div>
-              <div class="dc-av-meta">
-                <div><b>Hagnéré Code</b> <span class="dc-badge">ASSOCIÉ</span></div>
-                <div class="dc-av-sub">Thomas · répond en moyenne sous 2 h</div>
-              </div>
-              <div class="dc-time">09:47</div>
-            </div>
-
-            <div class="dc-reply">
-              Compris Marc. Vous n'avez pas besoin d'un CRM du marché — vous avez besoin d'un <b>back-office sur mesure</b> branché sur vos outils existants. Voici ce qu'on propose :
-            </div>
-
-            <!-- Integrated quote -->
-            <div class="dc-quote">
-              <div class="dc-q-head">
+          <div class="dc-hero">
+            <div class="dc-thread">
+              <div class="dc-subj-l">
+                <div class="dc-subj-avatar">MD</div>
                 <div>
-                  <div class="dc-q-tag">DEVIS CADRÉ · RÉF 2026-0247</div>
-                  <div class="dc-q-title">Back-office commercial sur mesure</div>
-                </div>
-                <div class="dc-q-logo">HC</div>
-              </div>
-
-              <div class="dc-q-grid">
-                <div class="dc-q-row">
-                  <div class="dc-q-k">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                    Modules livrés
-                  </div>
-                  <div class="dc-q-v">
-                    <span>Pipeline Kanban</span>
-                    <span>Relances IA</span>
-                    <span>Facturation auto</span>
-                    <span>Rapports hebdo</span>
-                  </div>
-                </div>
-
-                <div class="dc-q-row">
-                  <div class="dc-q-k">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    Planning
-                  </div>
-                  <div class="dc-q-v simple">
-                    <span>5 semaines · démarrage le 22 avril</span>
-                  </div>
-                </div>
-
-                <div class="dc-q-row">
-                  <div class="dc-q-k">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-                    Équipe dédiée
-                  </div>
-                  <div class="dc-q-v team">
-                    <div class="dc-q-mbr">
-                      <div class="dc-q-mbr-av" style="background:var(--accent)">T</div>
-                      <div><b>Thomas</b><span>Tech lead · Laravel</span></div>
-                    </div>
-                    <div class="dc-q-mbr">
-                      <div class="dc-q-mbr-av" style="background:#171717">L</div>
-                      <div><b>Léa</b><span>Product design</span></div>
-                    </div>
-                    <div class="dc-q-mbr">
-                      <div class="dc-q-mbr-av" style="background:#8B5CF6">S</div>
-                      <div><b>Sami</b><span>Dev IA · Claude</span></div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="dc-q-row">
-                  <div class="dc-q-k">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                    Inclus
-                  </div>
-                  <div class="dc-q-v incl">
-                    <span>✓ Hébergement 1 an</span>
-                    <span>✓ Formation équipes</span>
-                    <span>✓ 30 j de garantie</span>
-                    <span>✓ Code sur votre Git</span>
-                  </div>
+                  <div class="dc-subj-from"><b>Marc Dubois</b> <span class="dc-subj-co">· Cabinet Dubois &amp; Associés</span></div>
+                  <div class="dc-subj-to">PME · 8 personnes · comptabilité</div>
                 </div>
               </div>
-
-              <div class="dc-q-breakdown">
-                <div class="dc-q-br-row">
-                  <span>Design produit &amp; ateliers</span><span>5 400 €</span>
-                </div>
-                <div class="dc-q-br-row">
-                  <span>Développement · 4 sprints</span><span>18 200 €</span>
-                </div>
-                <div class="dc-q-br-row">
-                  <span>Intégrations Pennylane · Stripe</span><span>2 800 €</span>
-                </div>
-                <div class="dc-q-br-row">
-                  <span>IA relances · Claude</span><span>1 600 €</span>
-                </div>
+              <p>« On recopie des deals entre Excel, HubSpot et Pennylane. On veut centraliser et sortir les factures automatiquement. »</p>
+              <div class="dc-signal-row">
+                <span><b>3</b> outils à connecter</span>
+                <span><b>5</b> semaines</span>
+                <span><b>48h</b> pour cadrer</span>
               </div>
+            </div>
 
+            <div class="dc-decision">
+              <div class="dc-decision-kicker">Réponse Hagnéré Code</div>
+              <h3>Back-office commercial sur mesure</h3>
+              <p>Un outil interne branché sur l'existant, livré au forfait fixe, avec devis signable en ligne.</p>
+              <div class="dc-decision-price">
+                <span>Forfait HT</span>
+                <b>28 000 €</b>
+              </div>
+            </div>
+          </div>
+
+          <div class="dc-output">
+            <div class="dc-output-head">
+              <div>
+                <div class="dc-q-tag">DEVIS CADRÉ · RÉF 2026-0247</div>
+                <div class="dc-q-title">Ce que vous recevez sous 48h</div>
+              </div>
+              <div class="dc-q-logo">HC</div>
+            </div>
+
+            <div class="dc-plan-grid">
+              <div class="dc-plan-card">
+                <span class="dc-plan-num">01</span>
+                <b>Diagnostic</b>
+                <p>CRM du marché inutile : besoin d'un back-office branché sur vos outils.</p>
+              </div>
+              <div class="dc-plan-card">
+                <span class="dc-plan-num">02</span>
+                <b>Périmètre</b>
+                <p>Pipeline Kanban, relances IA, facturation auto, rapports hebdo.</p>
+              </div>
+              <div class="dc-plan-card">
+                <span class="dc-plan-num">03</span>
+                <b>Engagement</b>
+                <p>5 semaines, équipe dédiée, budget verrouillé avant la première ligne de code.</p>
+              </div>
+            </div>
+
+            <div class="dc-quote-compact">
+              <div class="dc-mini-breakdown">
+                <div><span>Produit &amp; ateliers</span><b>5 400 €</b></div>
+                <div><span>Développement · 4 sprints</span><b>18 200 €</b></div>
+                <div><span>Intégrations + IA</span><b>4 400 €</b></div>
+              </div>
               <div class="dc-q-total">
                 <div class="dc-q-tleft">
                   <div class="dc-q-ttag">FORFAIT TOUT COMPRIS · HT</div>
@@ -896,41 +794,22 @@ export const bodyHtml = `<!-- NAV -->
                     <span class="sep"></span>
                     <span><b>30 %</b> livraison</span>
                   </div>
+                  <div class="dc-q-footline">Hébergement 1 an · formation · 30 j de garantie · code sur votre Git</div>
                 </div>
                 <div class="dc-q-tright">
                   <div class="dc-q-tcurrency">MONTANT TOTAL</div>
                   <div class="dc-q-tval">28 000 €</div>
                 </div>
               </div>
-
-              <div class="dc-q-actions">
-                <a href="#" class="btn btn-accent" style="flex:1;justify-content:center">
-                  Accepter &amp; signer en ligne
-                  <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-                </a>
-                <a href="#" class="btn btn-ghost">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                  PDF
-                </a>
-              </div>
-
-              <div class="dc-q-foot">
-                <span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                  Devis signé électroniquement · Yousign
-                </span>
-                <span>Valable 30 jours</span>
-              </div>
             </div>
-          </div>
 
-          <!-- Typing indicator -->
-          <div class="dc-typing">
-            <div class="dc-type-av">MD</div>
-            <div class="dc-type-bubble">
-              <span></span><span></span><span></span>
+            <div class="dc-q-actions">
+              <a href="#contact" class="btn btn-accent" style="flex:1;justify-content:center">
+                Obtenir mon cadrage
+                <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+              <div class="dc-action-note">30 min avec un associé · devis sous 48h</div>
             </div>
-            <span class="dc-type-t">Marc écrit une réponse…</span>
           </div>
         </div>
 
@@ -958,19 +837,28 @@ export const bodyHtml = `<!-- NAV -->
       <div class="sf-manifesto-pitch">
         <div class="sf-manifesto-tag">
           <span class="sf-manifesto-dot"></span>
-          Notre engagement · breveté nulle part, tenu partout
+          Notre engagement · simple, écrit, vérifiable
         </div>
         <h3>
           Le prix annoncé <span class="sf-manifesto-accent">est</span> le prix payé.<br>
-          La date annoncée <span class="sf-manifesto-accent">est</span> la date livrée.<br>
-          Ou bien on vous rembourse le retard.
+          Le périmètre annoncé <span class="sf-manifesto-accent">est</span> le périmètre livré.<br>
+          Les arbitrages sont visibles chaque semaine.
         </h3>
+        <p class="sf-manifesto-copy">
+          Une méthode courte pour passer d'un besoin flou à un périmètre signé,
+          puis à des démos régulières sans tunnel ni surprise budgétaire.
+        </p>
+        <div class="sf-proof-strip">
+          <span><b>30 min</b> cadrage</span>
+          <span><b>48 h</b> devis</span>
+          <span><b>J+30</b> garantie</span>
+        </div>
       </div>
 
       <div class="sf-manifesto-pillars">
         <div class="sf-pillar">
           <div class="sf-pillar-n">01</div>
-          <div class="sf-pillar-title">Périmètre verrouillé, évolutif proprement</div>
+          <div class="sf-pillar-title">Périmètre verrouillé</div>
           <div class="sf-pillar-body">
             Le périmètre est figé au devis. Tout ajout passe par un avenant
             écrit, chiffré, signé — jamais une mauvaise surprise en fin de projet.
@@ -979,7 +867,7 @@ export const bodyHtml = `<!-- NAV -->
 
         <div class="sf-pillar">
           <div class="sf-pillar-n">02</div>
-          <div class="sf-pillar-title">Sprints de 2 semaines, démo chaque vendredi</div>
+          <div class="sf-pillar-title">Démo chaque vendredi</div>
           <div class="sf-pillar-body">
             Vous voyez votre produit grandir en direct. Vous corrigez la trajectoire
             avant que ce soit coûteux. Pas de « grande révélation » en fin de projet.
@@ -988,7 +876,7 @@ export const bodyHtml = `<!-- NAV -->
 
         <div class="sf-pillar">
           <div class="sf-pillar-n">03</div>
-          <div class="sf-pillar-title">Claude Code dans la boucle, dès le premier commit</div>
+          <div class="sf-pillar-title">Claude Code dès J1</div>
           <div class="sf-pillar-body">
             IA comme augmentation de l'équipe, pas comme vitrine marketing.
             Recherche, cadrage, tests, revues de code, doc — tout passe par
@@ -998,7 +886,7 @@ export const bodyHtml = `<!-- NAV -->
 
         <div class="sf-pillar">
           <div class="sf-pillar-n">04</div>
-          <div class="sf-pillar-title">Code &amp; données à vous, dès J1</div>
+          <div class="sf-pillar-title">Code &amp; données à vous</div>
           <div class="sf-pillar-body">
             Repo Git sur votre organisation, hébergement à votre nom,
             documentation à jour en continu. Si vous arrêtez demain, vous
@@ -1013,15 +901,18 @@ export const bodyHtml = `<!-- NAV -->
           <path d="M9 12l2 2 4-4"/>
         </svg>
         <div>
-          <b>La garantie Sprint Fixe™</b> — si on dépasse la date de livraison
-          annoncée de plus de 2 semaines, chaque semaine supplémentaire vous
-          est facturée 0 € et déduite du solde. Depuis nos premiers projets,
-          cette clause n'a jamais été activée.
+          <b>La garantie Sprint Fixe™</b> — devis clair, périmètre écrit,
+          démos régulières, aucune ligne de régie cachée. Si le projet doit changer,
+          l'avenant est chiffré avant de coder.
         </div>
       </div>
     </div>
 
     <div class="meth-rail">
+    <div class="meth-rail-head">
+      <span>Déroulé concret</span>
+      <b>De l'appel au lancement</b>
+    </div>
     <div class="meth-grid">
       <div class="meth-step reveal">
         <div class="meth-head">
@@ -1089,9 +980,9 @@ export const bodyHtml = `<!-- NAV -->
       </div>
       <div class="right">
         Quatre produits du groupe, conçus et opérés par le studio : deux SaaS IA de
-        comptabilité immobilière lancés en 2025, et deux sites à forte conversion dans
-        la gestion de patrimoine. <b>Nos projets clients externes sont sous NDA</b> —
-        références et cas détaillés disponibles en rendez-vous.
+        comptabilité immobilière, et deux sites à forte conversion dans la gestion
+        de patrimoine. Ce sont nos preuves principales aujourd'hui : des produits
+        réels, en production, avec des chiffres que l'on peut expliquer.
       </div>
     </div>
 
@@ -1530,10 +1421,10 @@ export const bodyHtml = `<!-- NAV -->
       <div class="plan plan-discovery reveal">
         <div class="plan-tag">LE POINT DE DÉPART</div>
         <h4>Discovery Sprint</h4>
-        <div class="plan-sub">2 semaines payées pour transformer votre idée en plan exécutable. Aucun engagement sur la phase 2.</div>
+        <div class="plan-sub">2 jours payés pour transformer votre idée en plan exécutable. Aucun engagement sur la phase 2.</div>
         <div class="plan-price">
-          <span class="amount">3 900 €</span>
-          <span class="per">forfait 2 sem.</span>
+          <span class="amount">1 500 €</span>
+          <span class="per">forfait 2 jours</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -1551,7 +1442,7 @@ export const bodyHtml = `<!-- NAV -->
         <h4>Essentiel</h4>
         <div class="plan-sub">Un site vitrine ou une landing qui convertit. Idéal pour une première collaboration.</div>
         <div class="plan-price">
-          <span class="amount">6–12 k€</span>
+          <span class="amount">6–15 k€</span>
           <span class="per">forfait</span>
         </div>
         <div class="plan-hr"></div>
@@ -1626,7 +1517,7 @@ export const bodyHtml = `<!-- NAV -->
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Pas du tout.</b> La plupart de nos clients arrivent avec une idée claire mais pas de doc formelle.
+            <b>Pas du tout.</b> Beaucoup de projets démarrent avec une idée claire mais pas de doc formelle.
             Un appel de 30 minutes suffit pour qu'on comprenne l'essentiel. On rédige ensuite le périmètre
             avec vous — c'est notre métier, pas le vôtre.
           </div>
@@ -1663,7 +1554,8 @@ export const bodyHtml = `<!-- NAV -->
           <div class="faq-a">
             Site vitrine : <b>2 à 4 semaines</b>. Outil interne ou SaaS simple : <b>5 à 8 semaines</b>.
             Plateforme complexe : <b>3 à 6 mois</b>. On s'engage sur un délai fixe dans le devis,
-            et on n'a jamais dépassé de plus de 2 semaines sur nos 23 projets livrés.
+            puis on vous montre l'avancement chaque semaine. Quand un risque apparaît, on le dit tôt,
+            pas à la veille de la livraison.
           </div>
         </div>
 
@@ -1683,9 +1575,9 @@ export const bodyHtml = `<!-- NAV -->
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Notre sweet spot, ce sont les <b>PME/ETI de 10 à 500 salariés</b> avec un vrai besoin produit.
-            On travaille aussi avec des directions innovation de grands groupes sur des projets isolés.
-            Par contre, on ne prend pas les startups en amorçage qui cherchent « un CTO pour 10 % de parts ».
+            Notre sweet spot, ce sont les <b>dirigeants de PME, cabinets spécialisés et équipes métier</b>
+            qui veulent un outil concret sans monter une équipe tech complète. Pour les très grandes
+            organisations, on est pertinent sur un périmètre cadré, pas comme ESN généraliste.
           </div>
         </div>
       </div>
@@ -1701,7 +1593,7 @@ export const bodyHtml = `<!-- NAV -->
     <h2 style="margin-top:18px">Parlons de<br>votre projet.<br><span class="accent">30 min, c'est tout.</span></h2>
     <p>Un call de cadrage gratuit avec un associé. Vous repartez avec un avis franc et, sous 48 h, un devis chiffré — sans engagement.</p>
     <div class="fcta-cta">
-      <a href="#" class="btn btn-accent btn-lg">
+      <a href="https://calendly.com/hagnere-code/30min" target="_blank" rel="noopener" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -1718,11 +1610,11 @@ export const bodyHtml = `<!-- NAV -->
   <div class="wrap">
     <div class="foot-top">
       <div class="foot-brand">
-        <a href="#" class="brand" style="margin-bottom:16px">
+        <a href="/" class="brand" style="margin-bottom:16px">
           <div class="brand-mark">HC</div>
           <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
         </a>
-        <p>Agence de développement SaaS AI-native basée à Chambéry. Dev, design, SEO, ads, vidéo intégrée.</p>
+        <p>Studio produit basé à Chambéry. SaaS, applications métier, sites vitrines et outils internes au forfait fixe.</p>
       </div>
       <div class="foot-cols">
         <div class="foot-col">
@@ -1736,22 +1628,23 @@ export const bodyHtml = `<!-- NAV -->
         <div class="foot-col">
           <h5>STUDIO</h5>
           <a href="/methode">Méthode</a>
-          <a href="#realisations">Réalisations</a>
+          <a href="/realisations">Réalisations</a>
           <a href="/equipe">Équipe</a>
           <a href="/tarifs">Tarifs</a>
-          <a href="/blog">Blog</a>
+          <a href="/guide">Guide</a>
         </div>
         <div class="foot-col">
           <h5>CONTACT</h5>
           <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">YouTube</a>
+          <a href="/contact">Formulaire contact</a>
+          <a href="/demarrer-un-projet">Démarrer un projet</a>
         </div>
         <div class="foot-col">
           <h5>LÉGAL</h5>
-          <a href="#">CGV</a>
-          <a href="#">Mentions légales</a>
-          <a href="#">Confidentialité</a>
+          <a href="/legal/cgv">CGV</a>
+          <a href="/legal/mentions">Mentions légales</a>
+          <a href="/legal/confidentialite">Confidentialité</a>
+          <a href="/legal/cookies">Cookies</a>
         </div>
       </div>
     </div>

@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { ContactPage } from "@/components/contact/ContactPage";
 
 export const metadata: Metadata = {
-  title: "Contact — Parlons de votre projet · Hagnéré Code",
+  title: "Contact projet web sur mesure à Chambéry · Hagnéré Code",
   description:
-    "Contactez Hagnéré Code : un associé qui code vous répond sous 24 h ouvrées. Formulaire, Calendly, email ou téléphone. Cadrage 30 min gratuit, sans engagement.",
+    "Contactez Hagnéré Code à Chambéry pour un SaaS B2B, une application métier, un outil interne, une reprise Laravel ou un site web sur mesure. Réponse sous 24 h ouvrées.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Contact — Hagnéré Code · Studio SaaS à Chambéry",
+    title: "Contact projet web sur mesure — Hagnéré Code Chambéry",
     description:
-      "Associé qui code en direct. Réponse sous 24 h. Cadrage 30 min gratuit.",
+      "SaaS, applications métier, outils internes, reprise Laravel. Un associé qui code répond sous 24 h ouvrées.",
     url: "/contact",
     type: "website",
   },
@@ -21,10 +21,15 @@ const contactJsonLd = JSON.stringify({
   name: "Contact — Hagnéré Code",
   url: "https://hagnere-code.fr/contact",
   description:
-    "Prendre contact avec Hagnéré Code : formulaire projet, Calendly, email direct, téléphone, adresse Chambéry.",
+    "Prendre contact avec Hagnéré Code pour un projet web sur mesure : SaaS B2B, application métier, outil interne, reprise Laravel ou site vitrine.",
   mainEntity: {
-    "@type": "Organization",
+    "@type": "ProfessionalService",
     name: "Hagnéré Code",
+    legalName: "HAGNÉRÉ CODE SAS",
+    url: "https://hagnere-code.fr",
+    logo: "https://hagnere-code.fr/og-image.png",
+    image: "https://hagnere-code.fr/og-image.png",
+    priceRange: "€€€",
     email: "hello@hagnere-code.fr",
     telephone: "+33374472018",
     address: {
@@ -34,9 +39,23 @@ const contactJsonLd = JSON.stringify({
       postalCode: "73000",
       addressCountry: "FR",
     },
+    areaServed: [
+      "Chambéry",
+      "Savoie",
+      "Haute-Savoie",
+      "Lyon",
+      "Grenoble",
+      "France",
+    ],
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "19:00",
+    },
     contactPoint: {
       "@type": "ContactPoint",
-      contactType: "customer service",
+      contactType: "sales",
       email: "hello@hagnere-code.fr",
       telephone: "+33374472018",
       availableLanguage: ["French"],

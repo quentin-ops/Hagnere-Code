@@ -142,15 +142,17 @@ export function ExcelCalculator() {
           <div className="nav-links">
             <Link href="/#services">Services</Link>
             <Link href="/methode">Méthode</Link>
-            <Link href="/#realisations">Réalisations</Link>
+            <Link href="/realisations">Réalisations</Link>
             <Link href="/tarifs">Tarifs</Link>
-            <Link href="/blog">Blog</Link>
+            <Link href="/guide">Guide</Link>
+
+            <Link href="/contact">Contact</Link>
           </div>
           <div className="nav-cta">
             <Link href="/#contact" className="btn btn-ghost">
               Prendre RDV
             </Link>
-            <Link href="/#contact" className="btn btn-primary">
+            <Link href="/demarrer-un-projet" className="btn btn-primary">
               Démarrer un projet
             </Link>
           </div>
@@ -169,7 +171,7 @@ export function ExcelCalculator() {
           </h1>
           <p>
             Calculez en 2 minutes le coût caché de vos tableurs métier : temps
-            perdu, erreurs de saisie, ressaisies. Comparez avec le prix d'un
+            perdu, erreurs de saisie, ressaisies. Comparez avec le prix d&apos;un
             outil sur mesure et obtenez votre ROI en mois.
           </p>
           <div className="calc-hero-meta">
@@ -251,7 +253,7 @@ export function ExcelCalculator() {
 
               <div className="calc-field">
                 <label>
-                  <span>Taux d'erreur dans ces fichiers (estimé)</span>
+                  <span>Taux d&apos;erreur dans ces fichiers (estimé)</span>
                   <b className="calc-val">{errorRate} %</b>
                 </label>
                 <input
@@ -270,7 +272,7 @@ export function ExcelCalculator() {
 
               <div className="calc-field">
                 <label>
-                  <span>Coût moyen d'un incident causé par l'Excel</span>
+                  <span>Coût moyen d&apos;un incident causé par l&apos;Excel</span>
                   <b className="calc-val">{euro(errorCostPerIncident)}</b>
                 </label>
                 <input
@@ -298,7 +300,7 @@ export function ExcelCalculator() {
                   </li>
                   <li>
                     <b>Incidents</b> = 1 incident tous les 10 heures Excel pondéré
-                    par le taux d'erreur
+                    par le taux d&apos;erreur
                   </li>
                   <li>
                     <b>Comparatif outil sur mesure</b> : forfait standard
@@ -331,7 +333,7 @@ export function ExcelCalculator() {
               <div className="calc-res-kind on-dark">SUR 3 ANS</div>
               <div className="calc-res-big">{euro(result.totalThreeYears)}</div>
               <div className="calc-res-sub on-dark">
-                C'est ce que coûte le statu quo
+                C&apos;est ce que coûte le statu quo
               </div>
             </div>
 
@@ -429,9 +431,9 @@ export function ExcelCalculator() {
               <div className="eyebrow">— Pour cadrer</div>
               <h2>Ce que ce calculateur ne dit pas.</h2>
               <p>
-                Un outil sur mesure ne remplace pas l'Excel par magie. Il y a
-                des coûts et des risques que ce calcul n'intègre pas
-                volontairement, et qu'on préfère discuter honnêtement avant
+                Un outil sur mesure ne remplace pas l&apos;Excel par magie. Il y a
+                des coûts et des risques que ce calcul n&apos;intègre pas
+                volontairement, et qu&apos;on préfère discuter honnêtement avant
                 signature.
               </p>
             </div>
@@ -439,9 +441,9 @@ export function ExcelCalculator() {
               <div className="calc-context-item">
                 <div className="calc-context-item-num">⚠️</div>
                 <div>
-                  <b>Adoption par l'équipe</b> — un outil bien conçu, mal
+                  <b>Adoption par l&apos;équipe</b> — un outil bien conçu, mal
                   déployé, échoue. Notre forfait inclut la formation et
-                  l'accompagnement au changement.
+                  l&apos;accompagnement au changement.
                 </div>
               </div>
               <div className="calc-context-item">
@@ -464,7 +466,7 @@ export function ExcelCalculator() {
                 <div className="calc-context-item-num">⚠️</div>
                 <div>
                   <b>Le bon moment</b> — parfois, garder Excel 6 mois de plus
-                  est la décision la plus économique. On vous le dira si c'est
+                  est la décision la plus économique. On vous le dira si c&apos;est
                   le cas.
                 </div>
               </div>

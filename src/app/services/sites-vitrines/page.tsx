@@ -3,7 +3,7 @@ import { SitesVitrines } from "@/components/sites-vitrines/SitesVitrines";
 
 export const metadata: Metadata = {
   title:
-    "Sites vitrines & landing pages — Lighthouse 95+, forfait fixe | Hagnéré Code",
+    "Sites vitrines & landing — Forfait fixe | Hagnéré Code",
   description:
     "Sites vitrines, landing pages, refontes WordPress → Next.js. SEO technique, Core Web Vitals garantis, CMS éditeur-friendly. Forfait fixe 6–25 k€, livré en 2 à 8 semaines, code 100 % à vous.",
   alternates: { canonical: "/services/sites-vitrines" },
@@ -25,7 +25,7 @@ const serviceJsonLd = JSON.stringify({
     "@type": "Organization",
     name: "Hagnéré Code",
     url: "https://hagnere-code.fr",
-    logo: "https://hagnere-code.fr/logo.png",
+    logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {
       "@type": "PostalAddress",
       streetAddress: "7 rue Ernest Filliard",
@@ -34,7 +34,7 @@ const serviceJsonLd = JSON.stringify({
       addressCountry: "FR",
     },
     email: "hello@hagnere-code.fr",
-    telephone: "+33-3-74-47-20-18",
+    telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
@@ -151,7 +151,7 @@ const breadcrumbJsonLd = JSON.stringify({
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/#services" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/services" },
     {
       "@type": "ListItem",
       position: 3,

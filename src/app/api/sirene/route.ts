@@ -1,4 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
+import {
+  checkRateLimit,
+  createRateLimitStore,
+  gcRateLimitStore,
+  getClientIp,
+} from "@/lib/rate-limit";
+
+export const runtime = "nodejs";
+
+const sireneRateStore = createRateLimitStore();
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
+const RATE_LIMIT_MAX = 60; // 60 lookups / IP / hour
 
 interface SearchResult {
   siren: string;
@@ -15,6 +27,27 @@ interface SearchResponse {
 }
 
 export async function GET(request: NextRequest) {
+  // 0. Rate limit (la route fait du fan-out vers une API gouv : on protège l'IP).
+  gcRateLimitStore(sireneRateStore);
+  const ip = getClientIp(request);
+  const rate = checkRateLimit(sireneRateStore, ip, {
+    windowMs: RATE_LIMIT_WINDOW_MS,
+    max: RATE_LIMIT_MAX,
+  });
+  if (!rate.ok) {
+    return NextResponse.json(
+      {
+        error: `Trop de recherches SIREN. Réessayez dans ${Math.ceil(
+          (rate.retryAfterSec || 3600) / 60,
+        )} minutes.`,
+      },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rate.retryAfterSec || 3600) },
+      },
+    );
+  }
+
   const searchParams = request.nextUrl.searchParams;
   const siren = searchParams.get("siren");
 

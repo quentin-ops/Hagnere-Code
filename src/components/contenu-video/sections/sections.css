@@ -1174,6 +1174,7 @@
   padding: 36px 32px;
   position: relative;
   transition: border-color 0.3s;
+  min-width: 0;
 }
 .cv-track:hover { border-color: rgba(109,40,217,0.35); }
 .cv-track-b {
@@ -1388,6 +1389,22 @@
 
 @media (max-width: 1024px) {
   .cv-pipeline-tracks { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .cv-pipeline-tracks { grid-template-columns: minmax(0, 1fr); }
+  .cv-track { padding: 26px 20px; border-radius: 16px; }
+  .cv-track-title { font-size: 26px; }
+  .cv-track-steps li {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 12px;
+  }
+  .cv-step-tag {
+    grid-column: 2;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
+  }
 }
 
 /* ==================== PROCESS · Roadmap timeline ==================== */
@@ -2520,6 +2537,35 @@
 }
 
 @media (max-width: 720px) {
+  .shero-badges {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .shero-badge {
+    padding: 11px 12px;
+  }
+  .shero-badge:nth-child(n+3) {
+    display: none;
+  }
+  .cv-stage {
+    height: 320px;
+    min-height: 320px;
+    overflow: hidden;
+  }
+  .cv-ai-card,
+  .cv-short {
+    display: none;
+  }
+  .cv-track-foot {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    line-height: 1.45;
+  }
+  .cv-track-foot span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
   .cv-cw-grid { grid-template-columns: 1fr 1fr; }
   .cv-cw-sep { display: none; }
 }

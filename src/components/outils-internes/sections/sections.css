@@ -824,6 +824,7 @@
   padding: 120px 0;
   background: var(--paper);
   border-bottom: 1px solid var(--line);
+  overflow: hidden;
 }
 .oi-compare-table {
   margin-top: 16px;
@@ -831,6 +832,8 @@
   border-radius: 16px;
   overflow: hidden;
   background: #fff;
+  width: 100%;
+  max-width: 100%;
 }
 .oi-compare-row {
   display: grid;
@@ -1265,8 +1268,12 @@
 
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 1280px) {
-  .oi-compare-table { overflow-x: auto; }
-  .oi-compare-row { min-width: 1100px; }
+  .oi-compare-table {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .oi-compare-row { min-width: 1100px; width: 100%; }
   .oi-tl-rail { grid-template-columns: repeat(4, 1fr); gap: 24px 18px; }
   .oi-tl-track { display: none; }
   .oi-tl-dot { box-shadow: 0 0 0 4px var(--paper-2), 0 0 0 5px var(--accent); }
@@ -1301,6 +1308,67 @@
   .oi-trust-grid { grid-template-columns: 1fr; }
   .oi-scen-tabs { grid-template-columns: 1fr; }
   .oi-scen-panel { padding: 24px; }
+  .oi-arch-diagram {
+    overflow: hidden;
+  }
+  .oi-arch-diagram svg {
+    min-width: 0;
+    width: 100%;
+  }
+  .oi-compare-table {
+    display: grid;
+    gap: 12px;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    overflow: visible;
+    contain: inline-size;
+  }
+  .oi-compare-head {
+    display: none;
+  }
+  .oi-compare-row {
+    min-width: 0;
+    width: 100%;
+    grid-template-columns: 1fr;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .oi-compare-cell {
+    display: block;
+    border-right: none;
+    border-top: 1px solid var(--line-2);
+    padding: 14px 16px;
+  }
+  .oi-compare-cell:first-child {
+    border-top: none;
+  }
+  .oi-compare-cell-k {
+    background: var(--paper-2);
+  }
+  .oi-compare-row:not(.oi-compare-head) .oi-compare-cell:not(.oi-compare-cell-k)::before {
+    display: block;
+    margin-bottom: 6px;
+    font-family: var(--font-geist-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+  .oi-compare-row:not(.oi-compare-head) .oi-compare-cell:nth-child(2)::before {
+    content: "Hagnéré Code";
+    color: var(--accent);
+  }
+  .oi-compare-row:not(.oi-compare-head) .oi-compare-cell:nth-child(3)::before { content: "Freelance"; }
+  .oi-compare-row:not(.oi-compare-head) .oi-compare-cell:nth-child(4)::before { content: "ESN"; }
+  .oi-compare-row:not(.oi-compare-head) .oi-compare-cell:nth-child(5)::before { content: "SaaS générique"; }
+  .oi-compare-dot {
+    display: inline-block;
+    margin: 0 8px 0 0;
+    vertical-align: -1px;
+  }
   .shero-tagline { font-size: 11px; gap: 10px; }
   .shero-proof { grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 100%; }
   .oi-tl-rail { grid-template-columns: 1fr; }

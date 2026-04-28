@@ -3,9 +3,9 @@ import { AuditTechnique } from "@/components/audit-technique/AuditTechnique";
 
 export const metadata: Metadata = {
   title:
-    "Audit technique — Dette tech chiffrée en euros, livrée en 10 jours | Hagnéré Code",
+    "Audit technique — Dette chiffrée, livrée en 10 j | Hagnéré Code",
   description:
-    "Audit technique indépendant pour VC en DD, acquéreur M&A, CTO entrant, dirigeant avant refonte ou certification SOC2/ISO 27001. Rapport board-ready avec Tech Debt P&L chiffré, scoring /100 par dimension, matrice impact × effort. 4 formats (8 / 18 / 38 / 68 k€), prix fixe publié, NDA dès J0, clause de non-conflit d'intérêt publique.",
+    "Audit technique indépendant pour VC en DD, acquéreur M&A, CTO entrant ou refonte. Rapport board-ready : Tech Debt P&L chiffré, scoring /100, matrice impact × effort. 4 formats (8 à 68 k€).",
   alternates: { canonical: "/services/audit-technique" },
   openGraph: {
     title: "Audit technique — Hagnéré Code",
@@ -25,7 +25,7 @@ const serviceJsonLd = JSON.stringify({
     "@type": "Organization",
     name: "Hagnéré Code",
     url: "https://hagnere-code.fr",
-    logo: "https://hagnere-code.fr/logo.png",
+    logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {
       "@type": "PostalAddress",
       streetAddress: "7 rue Ernest Filliard",
@@ -34,7 +34,7 @@ const serviceJsonLd = JSON.stringify({
       addressCountry: "FR",
     },
     email: "hello@hagnere-code.fr",
-    telephone: "+33-3-74-47-20-18",
+    telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
@@ -177,7 +177,7 @@ const breadcrumbJsonLd = JSON.stringify({
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/#services" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/services" },
     {
       "@type": "ListItem",
       position: 3,

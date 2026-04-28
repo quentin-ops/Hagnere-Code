@@ -72,18 +72,19 @@ export const bodyHtml = `
         </div>
       </div>
       <a href="/methode">Méthode</a>
-      <a href="/#realisations">Réalisations</a>
+      <a href="/realisations">Réalisations</a>
       <a href="/equipe" class="active">Équipe</a>
       <a href="/tarifs">Tarifs</a>
-      <a href="/outils/estimer-mon-projet">Calculateur</a>
-      <a href="/blog">Blog</a>
+      <a href="/demarrer-un-projet">Calculateur</a>
+      <a href="/guide">Guide</a>
+      <a href="/contact">Contact</a>
     </div>
     <div class="nav-cta">
       <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
       <a href="/#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="/#contact" class="btn btn-primary">Démarrer un projet
+      <a href="/demarrer-un-projet" class="btn btn-primary">Démarrer un projet
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -186,7 +187,7 @@ export const bodyHtml = `
       </div>
 
       <div class="emos-legend">
-        <span><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg> Photos pros à venir — chaque carte est cliquable</span>
+        <span><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="6"/></svg> Cliquez sur une carte pour ouvrir le profil LinkedIn de la personne</span>
       </div>
     </div>
   </div>
@@ -251,7 +252,7 @@ export const bodyHtml = `
             <rect width="400" height="500" fill="url(#founderAccent)"/>
             <circle cx="200" cy="200" r="92" fill="#262626"/>
             <rect x="108" y="290" width="184" height="220" fill="#262626" rx="92"/>
-            <text x="200" y="478" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#525252" letter-spacing="1">// PHOTO PRO À VENIR</text>
+            <text x="200" y="478" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#525252" letter-spacing="1">// PROFIL LINKEDIN</text>
           </svg>
           <div class="founder-photo-tag">
             <span class="dot"></span>
@@ -368,7 +369,7 @@ export const bodyHtml = `
             <rect width="400" height="500" fill="url(#ctoGrad)"/>
             <circle cx="200" cy="200" r="88" fill="#1f1f1f"/>
             <rect x="112" y="290" width="176" height="220" fill="#1f1f1f" rx="88"/>
-            <text x="200" y="478" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#525252" letter-spacing="1">// PHOTO PRO À VENIR</text>
+            <text x="200" y="478" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#525252" letter-spacing="1">// PROFIL LINKEDIN</text>
           </svg>
           <div class="cto-photo-tag">
             <span class="dot"></span>
@@ -584,7 +585,7 @@ export const bodyHtml = `
 
     <p class="tech-note reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      <span>Photos pros à venir — chaque carte ouvre le profil LinkedIn de la personne, où vous trouverez son visage, son parcours et son réseau.</span>
+      <span>Chaque carte ouvre le profil LinkedIn de la personne, où vous trouverez son visage, son parcours et son réseau.</span>
     </p>
   </div>
 </section>
@@ -928,7 +929,7 @@ export const bodyHtml = `
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
         </div>
         <h4>Délais tenus</h4>
-        <p>Date de livraison fixée et contractualisée au cadrage. Pénalité de retard prévue dans chaque devis. 23 / 23 projets livrés à date depuis le lancement de l'agence.</p>
+        <p>Date de livraison fixée et contractualisée au cadrage. Pénalité de retard prévue dans chaque devis. 22 / 23 projets livrés à date depuis le lancement de l'agence.</p>
       </div>
     </div>
   </div>

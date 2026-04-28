@@ -1,6 +1,6 @@
 export const logoWallHtml = `
-<!-- CLIENT LOGO WALL -->
-<section class="clients-wall" aria-label="Nos clients">
+<!-- PRODUCT LOGO WALL -->
+<section class="clients-wall" aria-label="Nos produits internes">
   <div class="wrap">
     <div class="cw-kicker">— Nos produits internes, en production</div>
     <div class="cw-grid">
@@ -21,7 +21,7 @@ export const logoWallHtml = `
       </div>
     </div>
     <div class="cw-foot">
-      <span><span class="cw-dot" aria-hidden="true"></span> Les 4 produits du groupe Hagnéré — conçus, développés et opérés par notre studio. Nos cas clients externes sont sous NDA (disponibles en rendez-vous).</span>
+      <span><span class="cw-dot" aria-hidden="true"></span> Les 4 produits du groupe Hagnéré — conçus, développés et opérés par notre studio. Aucun logo client ajouté pour faire volume : on montre ici ce que nous avons réellement construit.</span>
     </div>
   </div>
 </section>

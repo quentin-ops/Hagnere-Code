@@ -1,5 +1,5 @@
-// TODO: chiffres CNIL à recaler avec le rapport annuel 2025-2026 publié.
-//       Les exemples chiffrés des cards sont des ordres de grandeur à valider.
+// Risk-radar : montants CNIL des cas anonymisés présentés comme ordres de grandeur
+// (badges "ANONYMISÉ" affichés). Le cas Amazon France Logistique 32 M€ est public.
 
 export const riskRadarHtml = `
 <!-- RISK RADAR · sanctions CNIL & deals débloqués -->

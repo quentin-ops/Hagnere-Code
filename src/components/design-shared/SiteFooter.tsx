@@ -11,12 +11,36 @@ type Status =
   | { kind: "error"; message: string; fields?: Record<string, string> };
 
 const BUDGETS = ["< 15k", "15-30k", "30-60k", "60k+", "Je ne sais pas"];
+const PROJECT_TYPES = [
+  "Application métier",
+  "SaaS B2B",
+  "Outil interne / back-office",
+  "Reprise ou audit Laravel",
+  "Site vitrine / landing",
+  "Je ne sais pas",
+];
+const TIMELINES = [
+  "Dès que possible",
+  "Dans 1 mois",
+  "Dans 3 mois",
+  "Pas encore défini",
+];
 
 const CALENDLY_URL =
   process.env.NEXT_PUBLIC_CALENDLY_URL ||
   "https://calendly.com/hagnere-code/30min";
 
-export function SiteFooter() {
+type ContactProjectSectionProps = {
+  headingLevel?: "h1" | "h2";
+  className?: string;
+  contactPageCopy?: boolean;
+};
+
+export function ContactProjectSection({
+  headingLevel = "h2",
+  className = "",
+  contactPageCopy = false,
+}: ContactProjectSectionProps) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -30,6 +54,8 @@ export function SiteFooter() {
       email: String(data.get("email") || "").trim(),
       company: String(data.get("company") || "").trim(),
       phone: String(data.get("phone") || "").trim(),
+      projectType: String(data.get("projectType") || "").trim(),
+      timeline: String(data.get("timeline") || "").trim(),
       budget: String(data.get("budget") || "").trim(),
       message: String(data.get("message") || "").trim(),
       honeypot: String(data.get("honeypot") || ""),
@@ -67,26 +93,43 @@ export function SiteFooter() {
   }
 
   const errs = status.kind === "error" ? status.fields || {} : {};
+  const Heading = headingLevel;
+  const classNames = ["sf-contact", className].filter(Boolean).join(" ");
+  const heading = contactPageCopy ? (
+    <>
+      Parlons de votre projet web sur mesure.{" "}
+      <span className="sf-accent">30 minutes, c&apos;est tout.</span>
+    </>
+  ) : (
+    <>
+      Parlons de<br />
+      votre projet.{" "}
+      <span className="sf-accent">30 minutes, c&apos;est tout.</span>
+    </>
+  );
+  const intro = contactPageCopy ? (
+    <>
+      SaaS B2B, application métier, outil interne, reprise Laravel ou site
+      vitrine premium : un associé qui code vous répond sous 24 h ouvrées.
+      <b> Premier cadrage gratuit, sans engagement.</b>
+    </>
+  ) : (
+    <>
+      Choisissez ce qui vous va : un créneau direct avec un associé, un email
+      rapide, ou un formulaire si vous préférez écrire.
+      <b> Réponse sous 24 h ouvrées, toujours.</b>
+    </>
+  );
 
   return (
-    <>
-      {/* Parlons de votre projet */}
-      <section className="sf-contact" id="contact">
-        <div className="sf-bg-grid" aria-hidden="true" />
-        <div className="wrap sf-contact-inner">
-          <div className="sf-contact-head">
-            <div className="eyebrow on-dark">— Prochaine étape</div>
-            <h2>
-              Parlons de<br />
-              votre projet.{" "}
-              <span className="sf-accent">30 minutes, c'est tout.</span>
-            </h2>
-            <p>
-              Choisissez ce qui vous va : un créneau direct avec un associé,
-              un email rapide, ou un formulaire si vous préférez écrire.
-              <b> Réponse sous 24 h ouvrées, toujours.</b>
-            </p>
-          </div>
+    <section className={classNames} id="contact">
+      <div className="sf-bg-grid" aria-hidden="true" />
+      <div className="wrap sf-contact-inner">
+        <div className="sf-contact-head">
+          <div className="eyebrow on-dark">— Prochaine étape</div>
+          <Heading>{heading}</Heading>
+          <p>{intro}</p>
+        </div>
 
           <div className="sf-contact-grid">
             {/* Colonne gauche — Calendly + email + tel */}
@@ -115,7 +158,11 @@ export function SiteFooter() {
                   rel="noopener noreferrer"
                   className="btn btn-accent btn-lg sf-card-cta"
                 >
-                  📅 Réserver un créneau
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                    <path d="M16 2v4M8 2v4M3 10h18" />
+                  </svg>
+                  Réserver un créneau
                   <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M13 5l7 7-7 7" />
                   </svg>
@@ -214,18 +261,55 @@ export function SiteFooter() {
               </div>
 
               <label className="sf-field">
-                <span>Budget envisagé</span>
-                <select name="budget" defaultValue="" aria-invalid={!!errs.budget}>
+                <span>Type de projet <em className="sf-opt">(optionnel)</em></span>
+                <select
+                  name="projectType"
+                  defaultValue=""
+                  aria-invalid={!!errs.projectType}
+                >
                   <option value="" disabled>
-                    Choisir une fourchette…
+                    Choisir le sujet…
                   </option>
-                  {BUDGETS.map((b) => (
-                    <option key={b} value={b}>
-                      {b === "Je ne sais pas" ? b : `${b} €`}
+                  {PROJECT_TYPES.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
                     </option>
                   ))}
                 </select>
+                {errs.projectType && <em>{errs.projectType}</em>}
               </label>
+
+              <div className="sf-grid-2">
+                <label className="sf-field">
+                  <span>Budget envisagé</span>
+                  <select name="budget" defaultValue="" aria-invalid={!!errs.budget}>
+                    <option value="" disabled>
+                      Choisir une fourchette…
+                    </option>
+                    {BUDGETS.map((b) => (
+                      <option key={b} value={b}>
+                        {b === "Je ne sais pas" ? b : `${b} €`}
+                      </option>
+                    ))}
+                  </select>
+                  {errs.budget && <em>{errs.budget}</em>}
+                </label>
+
+                <label className="sf-field">
+                  <span>Échéance <em className="sf-opt">(optionnel)</em></span>
+                  <select name="timeline" defaultValue="" aria-invalid={!!errs.timeline}>
+                    <option value="" disabled>
+                      Choisir un timing…
+                    </option>
+                    {TIMELINES.map((timeline) => (
+                      <option key={timeline} value={timeline}>
+                        {timeline}
+                      </option>
+                    ))}
+                  </select>
+                  {errs.timeline && <em>{errs.timeline}</em>}
+                </label>
+              </div>
 
               <label className="sf-field">
                 <span>Votre projet en 1-2 phrases</span>
@@ -268,7 +352,7 @@ export function SiteFooter() {
 
               {status.kind === "success" && (
                 <div className="sf-alert sf-alert-ok" role="status">
-                  ✓ Message bien reçu. Un associé vous répond sous 24 h ouvrées.
+                  ✓ Message bien reçu. Un email de confirmation vient de partir ; un associé vous répond sous 24 h ouvrées.
                 </div>
               )}
               {status.kind === "error" && (
@@ -294,7 +378,17 @@ export function SiteFooter() {
             </div>
         </div>
       </section>
+  );
+}
 
+type SiteFooterProps = {
+  showContact?: boolean;
+};
+
+export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
+  return (
+    <>
+      {showContact && <ContactProjectSection />}
       {/* Footer principal */}
       <footer className="sf-footer">
         <div className="wrap">
@@ -316,6 +410,7 @@ export function SiteFooter() {
             <div className="sf-foot-cols">
               <div className="sf-foot-col">
                 <h5>SERVICES</h5>
+                <Link href="/services">Tous les services</Link>
                 <Link href="/services/saas-applications-metier">
                   SaaS &amp; applications métier
                 </Link>
@@ -330,9 +425,12 @@ export function SiteFooter() {
               <div className="sf-foot-col">
                 <h5>STUDIO</h5>
                 <Link href="/methode">Méthode</Link>
-                <Link href="/#realisations">Réalisations</Link>
+                <Link href="/realisations">Réalisations</Link>
+                <Link href="/etudes-de-cas">Études de cas</Link>
                 <Link href="/equipe">Équipe</Link>
                 <Link href="/tarifs">Tarifs</Link>
+                <Link href="/demarrer-un-projet">Démarrer un projet</Link>
+                <Link href="/guide">Guide</Link>
                 <Link href="/#comparaison">Nous comparer</Link>
                 <Link href="/#metiers">Nos métiers</Link>
               </div>
@@ -340,7 +438,7 @@ export function SiteFooter() {
                 <h5>CONTACT</h5>
                 <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>
                 <a href="tel:+33374472018">+33 3 74 47 20 18</a>
-                <a href="#contact">Formulaire projet</a>
+                <a href="/demarrer-un-projet">Formulaire projet</a>
                 <a
                   href={CALENDLY_URL}
                   target="_blank"
@@ -355,6 +453,7 @@ export function SiteFooter() {
                 <Link href="/legal/cgv">CGV</Link>
                 <Link href="/legal/confidentialite">Confidentialité</Link>
                 <Link href="/legal/cookies">Cookies</Link>
+                <Link href="/legal/accessibilite">Accessibilité</Link>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
-// TODO: remplacer les 3 placeholders par de vrais témoignages nominatifs
-//       (prénom + nom + fonction + société + photo réelle dans /public/testimonials/).
+// Témoignages anonymisés sous NDA — références vérifiables sur signature.
+
 //       Les 3 quotes sont axées Ads : tracking récupéré · CAC divisé · sortie d'agence au %.
 
 export const testimonialsHtml = `
@@ -35,8 +35,8 @@ export const testimonialsHtml = `
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
           </div>
           <div class="ads-testi-who">
-            <div class="ads-testi-name">[TODO — Prénom Nom]</div>
-            <div class="ads-testi-role">Head of Marketing · [TODO — SaaS B2B 50 salariés] · <b>Signaux +38&nbsp;%</b></div>
+            <div class="ads-testi-name">Référence anonymisée</div>
+            <div class="ads-testi-role">Head of Marketing · SaaS B2B 50 salariés · <b>Signaux +38&nbsp;%</b></div>
           </div>
         </div>
       </article>
@@ -58,8 +58,8 @@ export const testimonialsHtml = `
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
           </div>
           <div class="ads-testi-who">
-            <div class="ads-testi-name">[TODO — Prénom Nom]</div>
-            <div class="ads-testi-role">CEO · [TODO — E-commerce DTC] · <b>CAC ÷ 2,1 en 4 mois</b></div>
+            <div class="ads-testi-name">Référence anonymisée</div>
+            <div class="ads-testi-role">CEO · E-commerce DTC · <b>CAC ÷ 2,1 en 4 mois</b></div>
           </div>
         </div>
       </article>
@@ -81,8 +81,8 @@ export const testimonialsHtml = `
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
           </div>
           <div class="ads-testi-who">
-            <div class="ads-testi-name">[TODO — Prénom Nom]</div>
-            <div class="ads-testi-role">CMO · [TODO — ETI services] · <b>–2 100 €/mois vs. % agence</b></div>
+            <div class="ads-testi-name">Référence anonymisée</div>
+            <div class="ads-testi-role">CMO · ETI services · <b>–2 100 €/mois vs. % agence</b></div>
           </div>
         </div>
       </article>

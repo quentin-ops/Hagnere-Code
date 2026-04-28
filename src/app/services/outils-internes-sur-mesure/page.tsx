@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { OutilsInternes } from "@/components/outils-internes/OutilsInternes";
 
 export const metadata: Metadata = {
-  title: "Outils internes sur mesure PME & ETI — Sortez d'Excel en 4 semaines | Hagnéré Code",
+  title: "Outils internes sur mesure — Sortir d'Excel | Hagnéré Code",
   description:
     "Outils internes sur mesure pour PME et ETI : CRM métier, ERP léger, back-offices, automatisations. Intégrations Sage, Cegid, Pennylane, Salesforce. Forfait fixe 8–80 k€, livré en 2–12 semaines, hébergé en France.",
   alternates: { canonical: "/services/outils-internes-sur-mesure" },
@@ -24,7 +24,7 @@ const serviceJsonLd = JSON.stringify({
     "@type": "Organization",
     name: "Hagnéré Code",
     url: "https://hagnere-code.fr",
-    logo: "https://hagnere-code.fr/logo.png",
+    logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {
       "@type": "PostalAddress",
       streetAddress: "7 rue Ernest Filliard",
@@ -33,7 +33,7 @@ const serviceJsonLd = JSON.stringify({
       addressCountry: "FR",
     },
     email: "hello@hagnere-code.fr",
-    telephone: "+33-3-74-47-20-18",
+    telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
@@ -154,7 +154,7 @@ const breadcrumbJsonLd = JSON.stringify({
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/#services" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/services" },
     {
       "@type": "ListItem",
       position: 3,

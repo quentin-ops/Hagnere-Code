@@ -36,17 +36,19 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
           <div className="nav-links">
             <Link href="/#services">Services</Link>
             <Link href="/methode">Méthode</Link>
-            <Link href="/#realisations" className="active">
+            <Link href="/realisations" className="active">
               Réalisations
             </Link>
             <Link href="/equipe">Équipe</Link>
             <Link href="/tarifs">Tarifs</Link>
+
+            <Link href="/contact">Contact</Link>
           </div>
           <div className="nav-cta">
             <Link href="/#contact" className="btn btn-ghost">
               Prendre RDV
             </Link>
-            <Link href="/#contact" className="btn btn-primary">
+            <Link href="/demarrer-un-projet" className="btn btn-primary">
               Démarrer un projet
               <svg className="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M13 5l7 7-7 7" />
@@ -61,7 +63,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
         <div className="crumb">
           <Link href="/">Accueil</Link>
           <span className="sep">/</span>
-          <Link href="/#realisations">Réalisations</Link>
+          <Link href="/realisations">Réalisations</Link>
           <span className="sep">/</span>
           <span>{c.brandName}</span>
         </div>
@@ -131,7 +133,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
         <div className="wrap">
           <div className="cs-section-head">
             <div className="eyebrow">— Le contexte</div>
-            <h2>D'où on part.</h2>
+            <h2>D&apos;où on part.</h2>
           </div>
           <p className="cs-prose">{c.context}</p>
         </div>
@@ -161,7 +163,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
         <div className="wrap">
           <div className="cs-section-head">
             <div className="eyebrow">— La solution</div>
-            <h2>Comment on s'y est pris.</h2>
+            <h2>Comment on s&apos;y est pris.</h2>
           </div>
           <div className="cs-cards">
             {c.solution.map((s, i) => (
@@ -263,6 +265,43 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
         </div>
       </section>
 
+      {/* AMF / disclaimer pour les cas patrimoine et investissement */}
+      {(c.slug === "hagnere-investissement" || c.slug === "hagnere-patrimoine") && (
+        <section className="cs-section">
+          <div className="wrap">
+            <div
+              style={{
+                background: "#fafafa",
+                border: "1px solid #e5e5e5",
+                borderRadius: 12,
+                padding: "20px 24px",
+                fontSize: 13,
+                lineHeight: 1.55,
+                color: "#525252",
+              }}
+            >
+              <p style={{ margin: 0 }}>
+                <strong>Avertissement.</strong> Le cabinet présenté ({c.brandName})
+                exerce une activité réglementée en matière d&apos;investissement
+                immobilier et/ou de conseil en gestion de patrimoine. Les
+                chiffres affichés (rendement, performance, volumes clients)
+                sont des données historiques propres au cabinet et ne
+                constituent <strong>ni une offre, ni une recommandation
+                d&apos;investissement</strong>. Les{" "}
+                <strong>performances passées ne préjugent pas des performances
+                futures</strong>, le capital investi n&apos;est pas garanti et
+                tout placement présente un risque de perte. Les mentions
+                réglementaires (immatriculation ORIAS, statut CGP, agrément
+                AMF le cas échéant) sont disponibles sur le site du cabinet
+                concerné. HAGNÉRÉ CODE SAS intervient ici en qualité de
+                prestataire technique et marketing — sans démarchage ni
+                conseil financier au visiteur.
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Other cases */}
       <section className="cs-section cs-section-soft">
         <div className="wrap">
@@ -287,7 +326,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
                 </div>
                 <p>{o.tagline}</p>
                 <div className="cs-other-foot">
-                  Lire l'étude
+                  Lire l&apos;étude
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M13 5l7 7-7 7" />
                   </svg>

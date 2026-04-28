@@ -72,13 +72,14 @@ export const bodyHtml = `
         </div>
       </div>
       <a href="/methode">Méthode</a>
-      <a href="/#realisations">Réalisations</a>
+      <a href="/realisations">Réalisations</a>
       <a href="/equipe">Équipe</a>
       <a href="/tarifs">Tarifs</a>
+      <a href="/contact">Contact</a>
     </div>
     <div class="nav-cta">
       <a href="/#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="/#contact" class="btn btn-primary">Démarrer un projet
+      <a href="/demarrer-un-projet" class="btn btn-primary">Démarrer un projet
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -645,12 +646,12 @@ export const bodyHtml = `
         <h2>Des stratégies SEO<br>qui rapportent du CA.</h2>
       </div>
       <div class="right">
-        <a href="/#realisations" class="btn btn-ghost">Toutes les réalisations →</a>
+        <a href="/realisations" class="btn btn-ghost">Toutes les réalisations →</a>
       </div>
     </div>
 
     <div class="scase-grid">
-      <a class="scase reveal" href="/#realisations">
+      <a class="scase reveal" href="/realisations">
         <div class="scase-shot">
           <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#F5F5F5">
             <rect width="600" height="380" fill="#F5F5F5"/>
@@ -682,7 +683,7 @@ export const bodyHtml = `
         </div>
       </a>
 
-      <a class="scase reveal reveal-d-1" href="/#realisations">
+      <a class="scase reveal reveal-d-1" href="/realisations">
         <div class="scase-shot">
           <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#0A0A0A">
             <rect width="600" height="380" fill="#0A0A0A"/>
@@ -993,10 +994,10 @@ export const bodyHtml = `
         <div class="foot-col">
           <h5>STUDIO</h5>
           <a href="/methode">Méthode</a>
-          <a href="/#realisations">Réalisations</a>
+          <a href="/realisations">Réalisations</a>
           <a href="/equipe">Équipe</a>
           <a href="/tarifs">Tarifs</a>
-          <a href="/#blog">Blog</a>
+          <a href="/guide">Guide</a>
         </div>
         <div class="foot-col">
           <h5>CONTACT</h5>

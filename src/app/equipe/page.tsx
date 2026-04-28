@@ -20,7 +20,7 @@ const orgJsonLd = JSON.stringify({
   "@type": "Organization",
   name: "Hagnéré Code",
   url: "https://hagnere-code.fr",
-  logo: "https://hagnere-code.fr/logo.png",
+  logo: "https://hagnere-code.fr/logos/logo-dark.png",
   email: "hello@hagnere-code.fr",
   telephone: "+33-3-74-47-20-18",
   address: {

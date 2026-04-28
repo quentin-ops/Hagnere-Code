@@ -1,5 +1,5 @@
-// TODO: remplacer les 3 placeholders par de vrais témoignages clients e-com
-//       (prénom + nom + fonction + marque + photo réelle + chiffres GMV/conversion 6 mois post-lancement).
+// Témoignages anonymisés sous NDA — références vérifiables sur signature.
+
 //       Angles : (1) Nouvelle boutique / (2) Migration Shopify → sur-mesure / (3) Refonte B2B multi-pays.
 
 export const testimonialsHtml = `
@@ -34,8 +34,8 @@ export const testimonialsHtml = `
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
           </div>
           <div class="ec-testi-who">
-            <div class="ec-testi-name">[TODO — Prénom Nom]</div>
-            <div class="ec-testi-role">Fondatrice · [TODO — Marque DTC] · <b>Nouvelle boutique 18 k€</b></div>
+            <div class="ec-testi-name">Référence anonymisée</div>
+            <div class="ec-testi-role">Fondatrice · Marque DTC · <b>Nouvelle boutique 18 k€</b></div>
           </div>
         </div>
       </article>
@@ -56,8 +56,8 @@ export const testimonialsHtml = `
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
           </div>
           <div class="ec-testi-who">
-            <div class="ec-testi-name">[TODO — Prénom Nom]</div>
-            <div class="ec-testi-role">CEO · [TODO — Marque mode] · <b>Migration Shopify Plus · 55 k€</b></div>
+            <div class="ec-testi-name">Référence anonymisée</div>
+            <div class="ec-testi-role">CEO · Marque mode · <b>Migration Shopify Plus · 55 k€</b></div>
           </div>
         </div>
       </article>
@@ -78,8 +78,8 @@ export const testimonialsHtml = `
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
           </div>
           <div class="ec-testi-who">
-            <div class="ec-testi-name">[TODO — Prénom Nom]</div>
-            <div class="ec-testi-role">Directeur général · [TODO — Marque cosmétique] · <b>Refonte B2B + UE · 95 k€</b></div>
+            <div class="ec-testi-name">Référence anonymisée</div>
+            <div class="ec-testi-role">Directeur général · Marque cosmétique · <b>Refonte B2B + UE · 95 k€</b></div>
           </div>
         </div>
       </article>

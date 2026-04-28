@@ -1,5 +1,5 @@
-// TODO: remplacer par les vrais logos des marques dont on a produit du contenu
-//       (YouTube channel, motion, UGC, product video, ...).
+// Logo-wall vidéo : clients du groupe Hagnéré (Patrimoine, Investissement) et
+// produits internes (LMNP.AI, SCI-AI). À enrichir au fil des livraisons externes.
 
 export const logoWallHtml = `
 <!-- CLIENT LOGO WALL -->

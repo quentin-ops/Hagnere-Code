@@ -3,7 +3,7 @@ import { SeoReferencement } from "@/components/seo-referencement/SeoReferencemen
 
 export const metadata: Metadata = {
   title:
-    "SEO & référencement Google — Consultant senior dédié, KPIs business | Hagnéré Code",
+    "SEO & référencement Google — Consultant senior | Hagnéré Code",
   description:
     "Accompagnement SEO pour PME et ETI : audit technique, stratégie sémantique, contenu éditorial expert, netlinking qualitatif, reporting business. Consultant senior dédié. Forfait 1 450 à 4 900 €/mois, engagement 3 mois puis mensuel.",
   alternates: { canonical: "/services/referencement-google" },
@@ -24,7 +24,7 @@ const serviceJsonLd = JSON.stringify({
     "@type": "Organization",
     name: "Hagnéré Code",
     url: "https://hagnere-code.fr",
-    logo: "https://hagnere-code.fr/logo.png",
+    logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {
       "@type": "PostalAddress",
       streetAddress: "7 rue Ernest Filliard",
@@ -33,7 +33,7 @@ const serviceJsonLd = JSON.stringify({
       addressCountry: "FR",
     },
     email: "hello@hagnere-code.fr",
-    telephone: "+33-3-74-47-20-18",
+    telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
@@ -158,7 +158,7 @@ const breadcrumbJsonLd = JSON.stringify({
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/#services" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/services" },
     {
       "@type": "ListItem",
       position: 3,

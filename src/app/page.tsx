@@ -3,14 +3,14 @@ import Script from "next/script";
 import { HomepageDesign } from "@/components/homepage/HomepageDesign";
 
 export const metadata: Metadata = {
-  title: "Hagnéré Code — Agence SaaS AI-native · Chambéry",
+  title: "Hagnéré Code — Studio produit · SaaS & outils métier",
   description:
-    "Studio de développement SaaS, applications métier, sites vitrines et outils internes. Laravel 13, Claude Code, forfait fixe. Basé à Chambéry.",
+    "Studio produit à Chambéry. Sites, applications métier et SaaS sur mesure, au forfait fixe, avec preuves internes assumées.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Hagnéré Code — Agence SaaS AI-native · Chambéry",
+    title: "Hagnéré Code — Studio produit · SaaS & outils métier",
     description:
-      "Studio de développement SaaS et applications métier. Laravel 13, IA native, forfait fixe.",
+      "Studio produit à Chambéry. SaaS, applications métier, outils internes, forfait fixe.",
     url: "/",
     type: "website",
   },

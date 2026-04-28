@@ -5,12 +5,12 @@ import { CASES } from "@/components/realisations/cases";
 export const metadata: Metadata = {
   title: "Réalisations — Études de cas Hagnéré Code",
   description:
-    "4 études de cas chiffrées : LMNP.AI (5 400 clients), SCI-AI.app, et 2 sites vitrines premium. Résultats mesurés : +340 % SEO, ×2,5 leads, NPS +74.",
+    "Découvrez les réalisations Hagnéré Code : SaaS fiscaux, applications métier et sites d'acquisition. Contexte, modules livrés, stack technique et résultats mesurés.",
   alternates: { canonical: "/realisations" },
   openGraph: {
     title: "Réalisations — Hagnéré Code",
     description:
-      "Du code livré, des résultats mesurés. 4 études de cas, NPS +74, 100 % des projets livrés au prix annoncé.",
+      "Quatre projets documentés : contexte, fonctionnement, stack et modules livrés.",
     url: "/realisations",
     type: "website",
   },

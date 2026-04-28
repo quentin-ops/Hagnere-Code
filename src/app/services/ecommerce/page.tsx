@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Ecommerce } from "@/components/ecommerce/Ecommerce";
 
 export const metadata: Metadata = {
-  title: "Boutique e-commerce sur mesure PME & ETI — Alternative Shopify Plus | Hagnéré Code",
+  title: "E-commerce sur mesure — Alternative Shopify Plus | Hagnéré Code",
   description:
     "Boutiques e-commerce sur mesure : Next.js + Laravel 13 + React Native. Intégrations FR natives (Stripe, Alma, Colissimo, Sage, Pennylane, Chorus Pro). Forfait fixe 15-70 k€, zéro % sur vos ventes. Factur-X 2026-ready.",
   alternates: { canonical: "/services/ecommerce" },
@@ -24,7 +24,7 @@ const serviceJsonLd = JSON.stringify({
     "@type": "Organization",
     name: "Hagnéré Code",
     url: "https://hagnere-code.fr",
-    logo: "https://hagnere-code.fr/logo.png",
+    logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {
       "@type": "PostalAddress",
       streetAddress: "7 rue Ernest Filliard",
@@ -33,7 +33,7 @@ const serviceJsonLd = JSON.stringify({
       addressCountry: "FR",
     },
     email: "hello@hagnere-code.fr",
-    telephone: "+33-3-74-47-20-18",
+    telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
@@ -168,7 +168,7 @@ const breadcrumbJsonLd = JSON.stringify({
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/#services" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/services" },
     {
       "@type": "ListItem",
       position: 3,

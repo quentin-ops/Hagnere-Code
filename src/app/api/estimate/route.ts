@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
-import {
-  ESTIMATE_SYSTEM_PROMPT,
-  ESTIMATE_JSON_SCHEMA,
-} from "@/lib/claude-estimate-prompt";
+import { eq } from "drizzle-orm";
+import { buildEstimateSystemPrompt } from "@/lib/claude-estimate-prompt";
+import { log } from "@/lib/logger";
+import { getDb } from "@/db";
+import { projectBrief } from "@/db/schema";
 import {
   SERVICE_IDS,
   SERVICES,
@@ -21,64 +22,37 @@ import {
 } from "@/components/estimer-mon-projet/types";
 
 export const runtime = "nodejs";
-// Hard cap on the function execution time on Vercel/Cloudflare
-export const maxDuration = 180;
+// Hard cap on the function execution time. Cloudflare Workers max = 5 min.
+// On va au plafond pour ne JAMAIS bloquer l'IA pendant la rédaction d'un
+// devis riche — le coût marginal d'une exécution longue (~0,10 €) est
+// négligeable vs la valeur d'un lead qualifié.
+export const maxDuration = 300;
 
 // =====================================================================
 // Constants — security & timeouts
 // =====================================================================
 
 const MAX_BODY_SIZE_BYTES = 50_000;
-const CLAUDE_TIMEOUT_MS = 120_000; // 2 min
+// 4m40s : laisse 20s de buffer avant le hard cap Cloudflare (300s) pour
+// que l'erreur soit propre côté API au lieu d'être tuée brutalement.
+// Permet à Opus 4.7 + thinking high + 32k tokens output de respirer.
+const CLAUDE_TIMEOUT_MS = 280_000;
 const MAX_PER_SERVICE_TEXT_FIELD = 500;
 const MAX_DESCRIPTION_CHARS = 4000;
 const MIN_DESCRIPTION_CHARS = 50;
 
 // =====================================================================
-// Rate limiting — in-memory per-IP bucket.
-// PER-INSTANCE: if Next.js scales horizontally (Vercel functions), each
-// instance has its own Map → effective limit is N × 5 reqs/h. Acceptable
-// for low-volume launch; migrate to Redis when traffic grows.
+// Rate limiting — Postgres-backed (cf. src/lib/ai-rate-limit.ts).
+// Survit aux cold starts Cloudflare Workers, agrège global / IP / email,
+// circuit breaker coût si tokens cumulés/jour > seuil.
 // =====================================================================
 
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
-const RATE_LIMIT_MAX_REQUESTS = 5;
-const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
-
-function getClientIp(request: Request): string {
-  // Trust the proxy: in Vercel/Cloudflare environments the platform
-  // controls x-forwarded-for. If we ever self-host behind a proxy we
-  // don't control, this becomes spoofable — log the issue then.
-  const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) {
-    const first = forwarded.split(",")[0]!.trim();
-    // basic shape check — drop obviously invalid
-    if (/^[0-9a-fA-F:.]+$/.test(first)) return first;
-  }
-  return request.headers.get("x-real-ip") || "unknown";
-}
-
-function checkRateLimit(ip: string): { ok: boolean; retryAfterSec?: number } {
-  const now = Date.now();
-  const bucket = rateLimitStore.get(ip);
-  if (!bucket || bucket.resetAt < now) {
-    rateLimitStore.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return { ok: true };
-  }
-  if (bucket.count >= RATE_LIMIT_MAX_REQUESTS) {
-    return { ok: false, retryAfterSec: Math.ceil((bucket.resetAt - now) / 1000) };
-  }
-  bucket.count += 1;
-  return { ok: true };
-}
-
-function gcRateLimitStore() {
-  if (rateLimitStore.size < 1000) return;
-  const now = Date.now();
-  for (const [ip, bucket] of rateLimitStore.entries()) {
-    if (bucket.resetAt < now) rateLimitStore.delete(ip);
-  }
-}
+import {
+  checkAiRateLimit,
+  logAiCall,
+  verifyTurnstileToken,
+} from "@/lib/ai-rate-limit";
+import { getClientIp } from "@/lib/rate-limit";
 
 // =====================================================================
 // Prompt-injection detection — server-side, before sending to Claude
@@ -415,6 +389,99 @@ function buildUserMessage(input: CalculatorInput, injectionFlag: boolean): strin
 // Catches obvious shape errors before sending to the client.
 // =====================================================================
 
+/**
+ * Auto-correction post-hoc des coquilles fréquentes de l'IA (sans schema
+ * strict, l'IA improvise parfois). On mute le JSON en place — appelé
+ * AVANT validateEstimateShape.
+ *
+ * Corrige :
+ *   - recommended_tier en minuscule → capitalize ("scale" → "Scale")
+ *   - overall_confidence absent → "medium" par défaut
+ *   - monthly_price.min === max → étendre artificiellement ±10% pour
+ *     éviter "fourchette" 6500-6500 qui rend mal côté UI
+ *   - phasing[].acceptance_criteria/quality_gates absents → []
+ *   - stack avec sous-clés manquantes → []
+ */
+function normalizeEstimateResult(json: unknown): void {
+  if (!json || typeof json !== "object") return;
+  const j = json as Record<string, unknown> & Partial<MultiServiceEstimate>;
+
+  // 1. recommended_tier — capitalize first letter de chaque mot
+  const TIER_CANONICAL = [
+    "Starter", "Scale", "Premium", "Essentiel", "Founder",
+    "Motion Brand", "DTC Content", "DPO Starter", "DPO Scale", "Sur-mesure",
+    "Fondations", "Croissance",
+  ];
+  if (Array.isArray(j.monthly_retainers)) {
+    for (const r of j.monthly_retainers) {
+      if (typeof r?.recommended_tier === "string") {
+        const lower = r.recommended_tier.toLowerCase();
+        const match = TIER_CANONICAL.find((t) => t.toLowerCase() === lower);
+        if (match) r.recommended_tier = match;
+      }
+      // monthly_price.min === max → forcer une fourchette réaliste
+      if (r?.monthly_price && typeof r.monthly_price === "object") {
+        const p = r.monthly_price as { min: number; max: number; midpoint: number };
+        if (
+          typeof p.min === "number" &&
+          typeof p.max === "number" &&
+          p.min === p.max &&
+          p.min > 0
+        ) {
+          // Élargit ±10 % autour de la valeur fixe pour donner un range
+          // honnête. Le midpoint reste le centre.
+          const center = p.min;
+          p.min = Math.round(center * 0.9);
+          p.max = Math.round(center * 1.1);
+          p.midpoint = center;
+        }
+      }
+    }
+  }
+
+  // 2. overall_confidence par défaut = "medium" si null/manquant
+  if (j.summary && typeof j.summary === "object") {
+    const s = j.summary as { overall_confidence?: string | null };
+    if (!s.overall_confidence || typeof s.overall_confidence !== "string") {
+      s.overall_confidence = "medium";
+    } else {
+      // Normalize case ("HIGH" → "high")
+      const lower = s.overall_confidence.toLowerCase();
+      if (["low", "medium", "high"].includes(lower)) {
+        s.overall_confidence = lower;
+      }
+    }
+  }
+
+  // 3. Phasing : forcer acceptance_criteria/quality_gates en []
+  if (Array.isArray(j.oneshot_projects)) {
+    for (const p of j.oneshot_projects) {
+      if (Array.isArray(p?.phasing)) {
+        for (const w of p.phasing) {
+          if (!w || typeof w !== "object") continue;
+          if (!Array.isArray(w.acceptance_criteria)) w.acceptance_criteria = [];
+          if (!Array.isArray(w.quality_gates)) w.quality_gates = [];
+          if (typeof w.client_deliverable !== "string") w.client_deliverable = "";
+        }
+      }
+      // Stack par défaut si manquante (évite les bugs UI)
+      if (p?.stack && typeof p.stack === "object") {
+        const st = p.stack as Record<string, unknown>;
+        for (const k of ["backend", "frontend", "data", "integrations"]) {
+          if (!Array.isArray(st[k])) st[k] = [];
+        }
+        if (typeof st.hosting !== "string") st.hosting = "";
+      }
+    }
+  }
+
+  // 4. Arrays globaux par défaut
+  if (!Array.isArray(j.client_journey)) j.client_journey = [];
+  if (!Array.isArray(j.objectives_addressed)) j.objectives_addressed = [];
+  if (!Array.isArray(j.warnings)) j.warnings = [];
+  if (!Array.isArray(j.next_steps)) j.next_steps = [];
+}
+
 function validateEstimateShape(json: unknown): { ok: true } | { ok: false; reasons: string[] } {
   const reasons: string[] = [];
   if (!json || typeof json !== "object") return { ok: false, reasons: ["not an object"] };
@@ -424,9 +491,41 @@ function validateEstimateShape(json: unknown): { ok: true } | { ok: false; reaso
   if (!Array.isArray(j.monthly_retainers)) reasons.push("monthly_retainers not an array");
   if (!Array.isArray(j.team_allocation)) reasons.push("team_allocation not an array");
   if (!Array.isArray(j.deployment_roadmap)) reasons.push("deployment_roadmap not an array");
+  if (!Array.isArray(j.client_journey)) reasons.push("client_journey not an array");
+  if (Array.isArray(j.client_journey) && j.client_journey.length < 4)
+    reasons.push(`client_journey must have >= 4 steps, got ${j.client_journey.length}`);
+  if (!Array.isArray(j.objectives_addressed)) reasons.push("objectives_addressed not an array");
   if (!Array.isArray(j.next_steps)) reasons.push("next_steps not an array");
   if (Array.isArray(j.next_steps) && j.next_steps.length !== 3)
     reasons.push(`next_steps must have exactly 3 entries, got ${j.next_steps.length}`);
+
+  // Discovery Sprint: required if any oneshot project exists with midpoint > 5k.
+  if (Array.isArray(j.oneshot_projects) && j.oneshot_projects.length > 0) {
+    const totalMidpoint = j.oneshot_projects.reduce((sum, p) => {
+      const mid = p?.estimated_price?.midpoint;
+      return sum + (typeof mid === "number" ? mid : 0);
+    }, 0);
+    if (totalMidpoint > 5000 && j.discovery_sprint == null) {
+      reasons.push(`discovery_sprint required for oneshot total > 5000 € (got ${totalMidpoint})`);
+    }
+  }
+
+  // Phasing weeks must include the new richer fields.
+  if (Array.isArray(j.oneshot_projects)) {
+    for (const p of j.oneshot_projects) {
+      if (Array.isArray(p?.phasing)) {
+        for (const w of p.phasing) {
+          if (!w || typeof w !== "object") continue;
+          if (!w.client_deliverable)
+            reasons.push(`project ${p.service_id} week ${w.week}: missing client_deliverable`);
+          if (!Array.isArray(w.acceptance_criteria) || w.acceptance_criteria.length < 2)
+            reasons.push(`project ${p.service_id} week ${w.week}: needs >= 2 acceptance_criteria`);
+          if (!Array.isArray(w.quality_gates) || w.quality_gates.length < 1)
+            reasons.push(`project ${p.service_id} week ${w.week}: needs >= 1 quality_gates`);
+        }
+      }
+    }
+  }
 
   // Price coherence on oneshot projects
   if (Array.isArray(j.oneshot_projects)) {
@@ -471,22 +570,37 @@ function validateEstimateShape(json: unknown): { ok: true } | { ok: false; reaso
 
 async function callClaudeOnce(
   client: Anthropic,
+  systemPrompt: string,
   userMessage: string,
   signal: AbortSignal,
 ): Promise<{ result: MultiServiceEstimate; tokens_used: number; raw: string }> {
-  const response = await client.messages.create(
+  // Mode STREAMING obligatoire avec max_tokens=32k + effort=high :
+  // le SDK estime que l'opération peut dépasser 10 min et refuse le
+  // non-streaming. Le streaming nous donne aussi un signal de progression
+  // (utile pour debug et futurs heartbeats UI).
+  //
+  // On utilise le mode "plain JSON" plutôt que `output_config.format.json_schema` :
+  // notre schéma (avec discovery_sprint, client_journey, phasing enrichi,
+  // case studies, risks) compile à une grammar trop large pour Anthropic
+  // structured output. Le retry + validateEstimateShape() + normalize
+  // garantissent la conformité côté serveur.
+  const stream = client.messages.stream(
     {
       model: "claude-opus-4-7",
-      max_tokens: 16000,
+      // Plafond Opus 4.7 — on ne bride PAS l'IA. Un devis détaillé peut
+      // facilement réclamer 15-25k tokens (Discovery + Journey 12 étapes
+      // + 6-12 sem de phasing avec acceptance/gates + équipe + risques
+      // détaillés). 32k laisse de la marge pour les briefs très riches.
+      max_tokens: 32000,
       thinking: { type: "adaptive" },
-      output_config: {
-        effort: "high",
-        format: { type: "json_schema", schema: ESTIMATE_JSON_SCHEMA },
-      },
+      // Effort "high" : le prospect mérite la meilleure réflexion sur
+      // son chiffrage. Coût marginal ~0,02-0,05 € de plus, valeur d'un
+      // devis crédible >> 100x ce coût.
+      output_config: { effort: "high" },
       system: [
         {
           type: "text",
-          text: ESTIMATE_SYSTEM_PROMPT,
+          text: systemPrompt,
           cache_control: { type: "ephemeral" },
         },
       ],
@@ -495,15 +609,34 @@ async function callClaudeOnce(
     { signal },
   );
 
+  // On attend la réponse complète accumulée par le stream. Pas besoin de
+  // diffuser au client (la latence est dominée par thinking, l'utilisateur
+  // voit déjà le LoadingView avec phases simulées).
+  const response = await stream.finalMessage();
+
   const textBlock = response.content.find((b) => b.type === "text");
   if (!textBlock || textBlock.type !== "text") {
     throw new Error("Claude returned no text block");
   }
   const raw = textBlock.text;
+  // En mode JSON plain, l'IA peut wrapper dans ```json ... ``` ou ajouter
+  // un préambule. On extrait le bloc JSON le plus large détecté.
+  let jsonText = raw.trim();
+  // Strip ```json fence si présent
+  const fenceMatch = jsonText.match(/```(?:json)?\s*\n?([\s\S]*?)\n?```/);
+  if (fenceMatch) jsonText = fenceMatch[1]!.trim();
+  // Sinon, prendre du premier { au dernier } (couvre le cas
+  // "Voici le JSON: { ... }").
+  if (!jsonText.startsWith("{")) {
+    const first = jsonText.indexOf("{");
+    const last = jsonText.lastIndexOf("}");
+    if (first >= 0 && last > first) jsonText = jsonText.slice(first, last + 1);
+  }
   let parsed: unknown;
   try {
-    parsed = JSON.parse(raw);
+    parsed = JSON.parse(jsonText);
   } catch {
+    log.error("estimate_non_json_response", { rawPreview: raw.slice(0, 500) });
     throw new Error("Claude returned non-JSON content");
   }
 
@@ -515,12 +648,26 @@ async function callClaudeOnce(
   return { result: parsed as MultiServiceEstimate, tokens_used, raw };
 }
 
+class AnthropicConfigError extends Error {
+  constructor() {
+    super("ANTHROPIC_API_KEY missing");
+    this.name = "AnthropicConfigError";
+  }
+}
+
 async function callClaude(input: CalculatorInput, injectionFlag: boolean): Promise<{
   result: MultiServiceEstimate;
   tokens_used: number;
 }> {
+  if (!process.env.ANTHROPIC_API_KEY) {
+    log.error("estimate_anthropic_key_missing", {});
+    throw new AnthropicConfigError();
+  }
   const client = new Anthropic();
   const userMessage = buildUserMessage(input, injectionFlag);
+  // Build the system prompt fresh per call — KB is cached 5 min in
+  // knowledge-base.ts so this is cheap (one Postgres roundtrip every 5 min).
+  const systemPrompt = await buildEstimateSystemPrompt();
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), CLAUDE_TIMEOUT_MS);
@@ -528,13 +675,14 @@ async function callClaude(input: CalculatorInput, injectionFlag: boolean): Promi
 
   try {
     // 1st attempt
-    const first = await callClaudeOnce(client, userMessage, controller.signal);
+    const first = await callClaudeOnce(client, systemPrompt, userMessage, controller.signal);
     totalTokens += first.tokens_used;
+    normalizeEstimateResult(first.result);
     const v1 = validateEstimateShape(first.result);
     if (v1.ok) return { result: first.result, tokens_used: totalTokens };
 
     // Shape error → retry once with a corrective addendum
-    console.warn("Claude estimate shape error, retrying:", v1.reasons.join("; "));
+    log.warn("estimate_shape_invalid_retrying", { reasons: v1.reasons });
     const correctedMessage =
       userMessage +
       "\n\n---\n# CORRECTION DEMANDÉE\n" +
@@ -544,8 +692,9 @@ async function callClaude(input: CalculatorInput, injectionFlag: boolean): Promi
       "- Pour chaque price : min ≤ midpoint ≤ max\n" +
       "- next_steps contient exactement 3 entrées\n" +
       "- Tous les arrays attendus sont présents (même si vides)";
-    const second = await callClaudeOnce(client, correctedMessage, controller.signal);
+    const second = await callClaudeOnce(client, systemPrompt, correctedMessage, controller.signal);
     totalTokens += second.tokens_used;
+    normalizeEstimateResult(second.result);
     return { result: second.result, tokens_used: totalTokens };
   } finally {
     clearTimeout(timeoutId);
@@ -587,37 +736,144 @@ export async function POST(request: Request): Promise<NextResponse<EstimateApiRe
     );
   }
 
-  // 3. Rate limit
-  gcRateLimitStore();
   const ip = getClientIp(request);
-  const rateCheck = checkRateLimit(ip);
-  if (!rateCheck.ok) {
+  const userAgent = request.headers.get("user-agent");
+
+  // 3. Cloudflare Turnstile : bot check côté serveur (token transmis
+  // par le client). Si TURNSTILE_SECRET_KEY n'est pas configuré, skip
+  // silencieusement (mode dev / migration progressive).
+  const turnstileToken =
+    typeof (body as Record<string, unknown>).turnstileToken === "string"
+      ? ((body as Record<string, unknown>).turnstileToken as string)
+      : undefined;
+  const turnstile = await verifyTurnstileToken(turnstileToken, ip);
+  if (!turnstile.valid) {
+    await logAiCall({
+      ip,
+      userAgent,
+      status: "blocked",
+      blockReason: "captcha_failed",
+    });
     return NextResponse.json(
       {
         ok: false,
-        error: `Trop de demandes. Réessaye dans ${Math.ceil((rateCheck.retryAfterSec || 3600) / 60)} minutes.`,
+        error:
+          "Vérification anti-bot échouée. Recharge la page puis réessaye, ou contacte hello@hagnere-code.ai.",
       },
-      { status: 429, headers: { "Retry-After": String(rateCheck.retryAfterSec || 3600) } },
+      { status: 403 },
     );
   }
 
-  // 4. Validate
+  // 4. Rate limit Postgres-backed (multi-tier + circuit breaker coût)
+  // On extrait l'email AVANT la validation pour pouvoir compter les
+  // tentatives par email même si le payload est invalide ailleurs.
+  const emailFromBody =
+    typeof (body as Record<string, unknown>).email === "string"
+      ? ((body as Record<string, unknown>).email as string)
+      : null;
+  const rateCheck = await checkAiRateLimit(ip, emailFromBody);
+  if (!rateCheck.allowed) {
+    await logAiCall({
+      ip,
+      email: emailFromBody,
+      userAgent,
+      status: "blocked",
+      blockReason: rateCheck.reason,
+    });
+    return NextResponse.json(
+      {
+        ok: false,
+        error: rateCheck.message || "Trop de demandes. Réessaye plus tard.",
+      },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateCheck.retryAfterSec || 3600) },
+      },
+    );
+  }
+
+  // 5. Validate payload
   const v = validate(body);
   if (!v.ok || !v.input) {
+    await logAiCall({
+      ip,
+      email: emailFromBody,
+      userAgent,
+      status: "validation",
+    });
     return NextResponse.json(
       { ok: false, error: "Formulaire invalide.", field_errors: v.errors },
       { status: 400 },
     );
   }
 
-  // 5. Call Claude with timeout + post-hoc validation + 1 retry
+  // Optional briefId — when present, the funnel created a project_brief
+  // row in /api/project-inquiry and wants us to attach the AI estimate
+  // to it. Best-effort: a DB failure does NOT break the IA response.
+  const briefId =
+    typeof (body as Record<string, unknown>).briefId === "number"
+      ? ((body as Record<string, unknown>).briefId as number)
+      : null;
+
+  // 6. Call Claude with timeout + post-hoc validation + 1 retry
+  const startedAt = Date.now();
   try {
     const { result, tokens_used } = await callClaude(v.input, v.injectionFlag || false);
+    const durationMs = Date.now() - startedAt;
+    await logAiCall({
+      ip,
+      email: v.input.email,
+      userAgent,
+      status: "ok",
+      tokensUsed: tokens_used,
+      durationMs,
+      briefId,
+    });
+
+    // Persist the AI estimate to the brief row if we have one. Wrapped in
+    // its own try/catch so a Postgres hiccup never breaks the response.
+    if (briefId !== null) {
+      try {
+        await getDb()
+          .update(projectBrief)
+          .set({
+            aiEstimate: result,
+            aiTokensUsed: tokens_used,
+            updatedAt: new Date(),
+          })
+          .where(eq(projectBrief.id, briefId));
+        log.info("project_brief_ai_attached", { briefId, tokens_used });
+      } catch (err) {
+        log.error("project_brief_ai_attach_failed", { err: err as Error, briefId });
+      }
+    }
+
     return NextResponse.json({ ok: true, result, tokens_used });
   } catch (err) {
+    // Logge la tentative en échec dans ai_call_log (consomme rate limit
+    // pour éviter le retry-spam, mais marque clairement comme erreur IA).
+    await logAiCall({
+      ip,
+      email: v.input.email,
+      userAgent,
+      status: "ai_error",
+      durationMs: Date.now() - startedAt,
+      briefId,
+    });
+    // Missing ANTHROPIC_API_KEY → service unavailable, message UX clair.
+    if (err instanceof AnthropicConfigError) {
+      return NextResponse.json(
+        {
+          ok: false,
+          error:
+            "Estimation IA temporairement indisponible. Le formulaire reste bien envoyé — on revient vers vous sous 24 h ouvrées.",
+        },
+        { status: 503 },
+      );
+    }
     // AbortError from timeout
     if (err instanceof Error && err.name === "AbortError") {
-      console.error("Claude timeout after", CLAUDE_TIMEOUT_MS, "ms");
+      log.error("estimate_timeout", { timeoutMs: CLAUDE_TIMEOUT_MS, ip });
       return NextResponse.json(
         {
           ok: false,
@@ -628,7 +884,11 @@ export async function POST(request: Request): Promise<NextResponse<EstimateApiRe
       );
     }
     if (err instanceof Anthropic.APIError) {
-      console.error("Anthropic API error:", err.status, err.message);
+      log.error("anthropic_api_error", {
+        status: err.status,
+        anthropic_message: err.message,
+        ip,
+      });
       if (err.status === 429) {
         return NextResponse.json(
           { ok: false, error: "Service temporairement surchargé. Réessaye dans 1 minute." },
@@ -646,7 +906,7 @@ export async function POST(request: Request): Promise<NextResponse<EstimateApiRe
         { status: 500 },
       );
     }
-    console.error("Unexpected estimate error:", err);
+    log.error("estimate_unexpected_error", { err: err as Error, ip });
     return NextResponse.json(
       { ok: false, error: "Erreur inattendue. Merci de réessayer." },
       { status: 500 },

@@ -530,18 +530,21 @@
 
   /* Hero */
   .mhero{padding:32px 0 48px;min-height:auto}
+  .mhero-inner{gap:28px}
+  .mhero-bottom{gap:20px;padding-top:18px}
   .mhero-title{font-size:clamp(36px,11vw,52px);padding:8px 0}
   .mhero-title .line em{text-decoration-thickness:4px;text-underline-offset:4px}
-  .mhero-creds{grid-template-columns:1fr;gap:0;padding-top:8px}
-  .mhero-cred{padding:14px 0;border-right:none;border-bottom:1px solid rgba(255,255,255,0.08)}
-  .mhero-cred:first-child{padding-top:0}
-  .mhero-cred:last-child{border-bottom:none}
-  .mhero-cred-n{font-size:32px}
+  .mhero-creds{grid-template-columns:1fr 1fr;gap:0;padding-top:8px}
+  .mhero-cred{padding:12px 14px;border-right:1px solid rgba(255,255,255,0.08);border-bottom:none}
+  .mhero-cred:first-child{padding-top:12px;padding-left:0}
+  .mhero-cred:nth-child(n+3){display:none}
+  .mhero-cred:last-child{border-right:none}
+  .mhero-cred-n{font-size:28px}
+  .mhero-cred-l{font-size:11.5px;margin-top:7px}
   .mhero-cta{flex-direction:column;align-items:stretch}
   .mhero-cta .btn{justify-content:center}
   .mhero-btn-ghost{justify-content:center}
-  .mhero-sig-line{flex-direction:column;align-items:flex-start;gap:8px}
-  .mhero-sig-line svg{height:32px}
+  .mhero-signature{display:none}
   .mhero-scroll{display:none}
 
   /* Sections padding */

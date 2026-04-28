@@ -8,9 +8,9 @@ export const trustHtml = `
         <h2>Ce sur quoi<br>vous pouvez vraiment compter.</h2>
       </div>
       <div class="right">
-        Pas d'awards obscurs ni de badges décoratifs. Les garanties contractuelles,
-        techniques et légales que nous tenons pour chaque projet — avec les notes
-        publiques à venir dès les premiers avis clients.
+        Pas d'awards obscurs, pas de faux avis, pas de logos inventés. Voici les
+        engagements que l'on peut réellement tenir aujourd'hui : propriété du code,
+        forfait clair, équipe identifiée et produits déjà opérés en production.
       </div>
     </div>
 
@@ -51,8 +51,8 @@ export const trustHtml = `
           <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <div class="tr-body">
-          <div class="tr-title">Forfait fixe, délai tenu</div>
-          <div class="tr-sub">Prix annoncé = prix payé. 2 % du forfait remboursés par semaine de retard au-delà de J+7.</div>
+          <div class="tr-title">Forfait fixe, pilotage visible</div>
+          <div class="tr-sub">Prix annoncé = prix payé. Démo régulière, arbitrages écrits, aucun dépassement non validé.</div>
         </div>
       </div>
 
@@ -101,30 +101,24 @@ export const trustHtml = `
     <!-- Rangée 3 : preuves honnêtes, chiffres vérifiables -->
     <div class="tr-ratings reveal reveal-d-2">
       <div class="tr-rating">
-        <div class="tr-rating-value">5<span>/5</span></div>
-        <div class="tr-rating-stars">
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.92 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.08-1.01L12 2z"/></svg>
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.92 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.08-1.01L12 2z"/></svg>
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.92 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.08-1.01L12 2z"/></svg>
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.92 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.08-1.01L12 2z"/></svg>
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.92 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.08-1.01L12 2z"/></svg>
-        </div>
-        <div class="tr-rating-source">Satisfaction projet</div>
-        <div class="tr-rating-meta">Note attribuée par chacun de nos projets livrés</div>
+        <div class="tr-rating-value">4</div>
+        <div class="tr-rating-kind">Produits en production</div>
+        <div class="tr-rating-source">Preuves internes assumées</div>
+        <div class="tr-rating-meta">Deux SaaS IA et deux sites métier du groupe Hagnéré, visibles et opérés par nous.</div>
       </div>
 
       <div class="tr-rating">
         <div class="tr-rating-value">100<span>%</span></div>
         <div class="tr-rating-kind">Forfait fixe tenu</div>
         <div class="tr-rating-source">Prix annoncé = prix payé</div>
-        <div class="tr-rating-meta">Aucun avenant surprise, aucun dépassement budget sur les projets livrés</div>
+        <div class="tr-rating-meta">Notre modèle commercial : un périmètre cadré, un prix écrit, pas de régie masquée.</div>
       </div>
 
       <div class="tr-rating">
         <div class="tr-rating-value">0</div>
-        <div class="tr-rating-kind">Retard</div>
-        <div class="tr-rating-source">Délais respectés</div>
-        <div class="tr-rating-meta">Tous nos projets livrés à la date contractuelle annoncée</div>
+        <div class="tr-rating-kind">Sous-traitance cachée</div>
+        <div class="tr-rating-source">Vous parlez aux personnes qui codent</div>
+        <div class="tr-rating-meta">Pas de commercial qui vend une équipe que vous ne verrez jamais.</div>
       </div>
     </div>
   </div>

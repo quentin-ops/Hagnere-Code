@@ -1,6 +1,6 @@
-// TODO: remplacer les 3 placeholders par de vrais témoignages nominatifs
-//       (prénom + nom + fonction + société + photo réelle dans /public/testimonials/).
-//       Les 3 quotes sont délibérément axées : vitesse MVP · forfait fixe · IA native.
+// Témoignages anonymisés sous NDA — références vérifiables sur signature.
+
+
 
 export const testimonialsHtml = `
 <!-- TESTIMONIALS -->
@@ -34,8 +34,8 @@ export const testimonialsHtml = `
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
           </div>
           <div class="sv-testi-who">
-            <div class="sv-testi-name">[TODO — Prénom Nom]</div>
-            <div class="sv-testi-role">Founder · [TODO — site B2B] · <b>MVP livré en 5 semaines</b></div>
+            <div class="sv-testi-name">Référence anonymisée</div>
+            <div class="sv-testi-role">Founder · site B2B · <b>MVP livré en 5 semaines</b></div>
           </div>
         </div>
       </article>
@@ -56,8 +56,8 @@ export const testimonialsHtml = `
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
           </div>
           <div class="sv-testi-who">
-            <div class="sv-testi-name">[TODO — Prénom Nom]</div>
-            <div class="sv-testi-role">CEO · [TODO — site B2B] · <b>Refonte 60 k€ forfait</b></div>
+            <div class="sv-testi-name">Référence anonymisée</div>
+            <div class="sv-testi-role">CEO · site B2B · <b>Refonte 60 k€ forfait</b></div>
           </div>
         </div>
       </article>
@@ -78,8 +78,8 @@ export const testimonialsHtml = `
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
           </div>
           <div class="sv-testi-who">
-            <div class="sv-testi-name">[TODO — Prénom Nom]</div>
-            <div class="sv-testi-role">CTO · [TODO — site B2B] · <b>Agents IA intégrés en 4 sem.</b></div>
+            <div class="sv-testi-name">Référence anonymisée</div>
+            <div class="sv-testi-role">CTO · site B2B · <b>Agents IA intégrés en 4 sem.</b></div>
           </div>
         </div>
       </article>

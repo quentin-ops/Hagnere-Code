@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import type { LegalSection } from "../LegalPageLayout";
 
 export const mentionsLegalesSections: LegalSection[] = [
@@ -268,7 +269,7 @@ export const mentionsLegalesSections: LegalSection[] = [
       <>
         <p>
           Le Site propose un outil d&apos;estimation de projet intitulé{" "}
-          <a href="/estimer-mon-projet">« Estimer mon projet »</a> qui repose sur
+          <a href="/demarrer-un-projet">« Démarrer un projet »</a> qui repose sur
           le service <strong>Claude (modèle Opus 4.7)</strong> fourni par la
           société <strong>Anthropic, PBC</strong>. Conformément à l&apos;article 28
           du RGPD, Anthropic agit en qualité de <strong>sous-traitant</strong>{" "}

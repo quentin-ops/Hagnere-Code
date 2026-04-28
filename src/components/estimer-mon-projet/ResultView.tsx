@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { CalendlyEmbed } from "./CalendlyEmbed";
 import { TrustBand } from "./TrustBand";
 import type { MultiServiceEstimate, RiskSeverity } from "./types";
@@ -10,6 +11,8 @@ interface ResultViewProps {
   tokensUsed: number;
   contactEmail: string;
   onRestart: () => void;
+  /** Si fourni, affiche un bouton "Copier le lien permanent" pour partager. */
+  briefId?: string | null;
 }
 
 function euro(n: number): string {
@@ -22,22 +25,26 @@ const SEVERITY_LABELS: Record<RiskSeverity, string> = {
   high: "Risque élevé",
 };
 
-export function ResultView({ result, tokensUsed, contactEmail, onRestart }: ResultViewProps) {
+export function ResultView({
+  result,
+  tokensUsed,
+  contactEmail,
+  onRestart,
+  briefId,
+}: ResultViewProps) {
   const {
     summary,
+    discovery_sprint,
+    client_journey,
+    objectives_addressed,
     oneshot_projects,
     monthly_retainers,
     team_allocation,
     deployment_roadmap,
-    risks_global,
     warnings,
     not_a_good_fit_warning,
     next_steps,
-  } = {
-    risks_global: [], // not in v1 schema yet, kept for future
-    ...result,
-  };
-  void risks_global;
+  } = result;
 
   // Build mailto with the synthesis pre-filled
   const mailtoBody = encodeURIComponent(
@@ -64,11 +71,28 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
     "Demande de Discovery Sprint suite estimation IA",
   )}&body=${mailtoBody}`;
 
+  // Sections présentes dans la sortie — la TOC ne montre que celles qui
+  // existent réellement (Discovery null pour retainer-only, etc.).
+  const tocSections: { id: string; label: string }[] = [
+    { id: "rview-hero", label: "Synthèse" },
+    ...(discovery_sprint ? [{ id: "rview-discovery", label: "Discovery" }] : []),
+    ...(client_journey.length > 0 ? [{ id: "rview-journey", label: "Parcours" }] : []),
+    ...(objectives_addressed.length > 0 ? [{ id: "rview-objectives", label: "Objectifs" }] : []),
+    ...(deployment_roadmap.length > 0 ? [{ id: "rview-roadmap", label: "Roadmap" }] : []),
+    ...(oneshot_projects.length > 0 ? [{ id: "rview-oneshot", label: "Forfaits" }] : []),
+    ...(monthly_retainers.length > 0 ? [{ id: "rview-retainers", label: "Retainers" }] : []),
+    ...(team_allocation.length > 0 ? [{ id: "rview-team", label: "Équipe" }] : []),
+    { id: "rview-next", label: "Prochaines étapes" },
+    { id: "rview-calendly", label: "Réserver" },
+  ];
+
   return (
     <section className="rview">
       <div className="wrap">
+        <ResultToc sections={tocSections} />
+
         {/* ═══ HERO ═══ */}
-        <div className="rview-hero">
+        <div id="rview-hero" className="rview-hero">
           <div className="rview-hero-bg-grid" />
           <div className="rview-hero-bg-radial" />
 
@@ -172,9 +196,30 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
           </div>
         )}
 
+        {/* ═══ DISCOVERY SPRINT (étape préliminaire) ═══ */}
+        {discovery_sprint && (
+          <div id="rview-discovery">
+            <DiscoverySprintCard sprint={discovery_sprint} />
+          </div>
+        )}
+
+        {/* ═══ CLIENT JOURNEY (parcours post-signature) ═══ */}
+        {client_journey.length > 0 && (
+          <div id="rview-journey">
+            <ClientJourneyTimeline steps={client_journey} />
+          </div>
+        )}
+
+        {/* ═══ OBJECTIFS ADRESSÉS ═══ */}
+        {objectives_addressed.length > 0 && (
+          <div id="rview-objectives">
+            <ObjectivesAddressedSection items={objectives_addressed} />
+          </div>
+        )}
+
         {/* ═══ ROADMAP DE DÉPLOIEMENT ═══ */}
         {deployment_roadmap.length > 0 && (
-          <div className="rview-roadmap">
+          <div id="rview-roadmap" className="rview-roadmap">
             <div className="rview-section-h">
               <span className="eyebrow">— Plan de déploiement</span>
               <h2>
@@ -189,7 +234,7 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
         <div className="rview-two-cols">
           {/* One-shot column */}
           {oneshot_projects.length > 0 && (
-            <div className="rview-col">
+            <div id="rview-oneshot" className="rview-col">
               <div className="rview-section-h">
                 <span className="eyebrow">— Forfaits projet</span>
                 <h2>
@@ -208,7 +253,7 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
 
           {/* Retainers column */}
           {monthly_retainers.length > 0 && (
-            <div className="rview-col">
+            <div id="rview-retainers" className="rview-col">
               <div className="rview-section-h">
                 <span className="eyebrow">— Retainers mensuels</span>
                 <h2>
@@ -228,7 +273,7 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
 
         {/* ═══ ÉQUIPE ALLOUÉE ═══ */}
         {team_allocation.length > 0 && (
-          <div className="rview-team">
+          <div id="rview-team" className="rview-team">
             <div className="rview-section-h">
               <span className="eyebrow">— Équipe allouée</span>
               <h2>
@@ -277,7 +322,7 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
         <TrustBand />
 
         {/* ═══ NEXT STEPS ═══ */}
-        <div className="rview-next">
+        <div id="rview-next" className="rview-next">
           <div className="rview-next-bg-grid" />
           <div className="rview-next-bg-radial" />
           <div className="rview-next-tag">
@@ -298,7 +343,7 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
         </div>
 
         {/* ═══ CALENDLY INLINE — la conversion principale ═══ */}
-        <div className="rview-calendly">
+        <div id="rview-calendly" className="rview-calendly">
           <div className="rview-calendly-h">
             <span className="eyebrow">— Réserve ton créneau Discovery</span>
             <h2>
@@ -344,6 +389,7 @@ export function ResultView({ result, tokensUsed, contactEmail, onRestart }: Resu
               </svg>
               Voir les fourchettes par service
             </Link>
+            {briefId && <SharePermalinkButton briefId={briefId} />}
             <button type="button" onClick={onRestart} className="rview-secondary-cta-btn">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="23 4 23 10 17 10" />
@@ -418,6 +464,32 @@ function ProjectCard({
                       <li key={i}>{task}</li>
                     ))}
                   </ul>
+                  {week.client_deliverable && (
+                    <div className="rview-phasing-deliverable">
+                      <div className="rview-phasing-deliverable-h">LIVRABLE CLIENT</div>
+                      <div>{week.client_deliverable}</div>
+                    </div>
+                  )}
+                  {week.acceptance_criteria && week.acceptance_criteria.length > 0 && (
+                    <div className="rview-phasing-criteria">
+                      <div className="rview-phasing-criteria-h">CRITÈRES D&apos;ACCEPTATION</div>
+                      <ul>
+                        {week.acceptance_criteria.map((c, i) => (
+                          <li key={i}>{c}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                  {week.quality_gates && week.quality_gates.length > 0 && (
+                    <div className="rview-phasing-gates">
+                      <div className="rview-phasing-gates-h">QUALITY GATES</div>
+                      <ul>
+                        {week.quality_gates.map((g, i) => (
+                          <li key={i}>{g}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                   <div className="rview-phasing-friday">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <polygon points="5 3 19 12 5 21 5 3" />
@@ -437,11 +509,18 @@ function ProjectCard({
       <div className="rview-project-section">
         <div className="rview-project-section-h">STACK</div>
         <div className="rview-stack-list">
-          <StackRow label="Backend" items={project.stack.backend} />
-          <StackRow label="Frontend" items={project.stack.frontend} />
-          <StackRow label="Data" items={project.stack.data} />
-          <StackRow label="Intégrations" items={project.stack.integrations} />
-          <StackRow label="Hébergement" items={[project.stack.hosting]} />
+          {project.stack && (
+            <>
+              <StackRow label="Backend" items={project.stack.backend} />
+              <StackRow label="Frontend" items={project.stack.frontend} />
+              <StackRow label="Data" items={project.stack.data} />
+              <StackRow label="Intégrations" items={project.stack.integrations} />
+              <StackRow
+                label="Hébergement"
+                items={project.stack.hosting ? [project.stack.hosting] : undefined}
+              />
+            </>
+          )}
         </div>
       </div>
 
@@ -595,8 +674,108 @@ function RoadmapTimeline({
   );
 }
 
-function StackRow({ label, items }: { label: string; items: string[] }) {
-  if (items.length === 0) return null;
+// =====================================================================
+// Bouton "Copier le lien permanent" — visible quand briefId présent.
+// L'utilisateur peut partager l'URL /demarrer-un-projet/r/{id} à son CTO.
+// =====================================================================
+
+function SharePermalinkButton({ briefId }: { briefId: string }) {
+  const [copied, setCopied] = useState(false);
+  const url =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/demarrer-un-projet/r/${briefId}`
+      : "";
+  return (
+    <button
+      type="button"
+      className="rview-secondary-cta-btn"
+      onClick={async () => {
+        try {
+          await navigator.clipboard.writeText(url);
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
+        } catch {
+          window.prompt("Copie le lien :", url);
+        }
+      }}
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+        <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+      </svg>
+      {copied ? "Lien copié ✓" : "Copier le lien partageable"}
+    </button>
+  );
+}
+
+// =====================================================================
+// Table of contents — sticky droite (desktop) / collapsed top (mobile).
+// Permet au prospect de jump entre Discovery / Roadmap / Réserver sans
+// scroll the wall (la page mesure ~5000px sur un brief riche).
+// =====================================================================
+
+function ResultToc({
+  sections,
+}: {
+  sections: { id: string; label: string }[];
+}) {
+  const [active, setActive] = useState(sections[0]?.id || "");
+
+  // Highlight la section visible via IntersectionObserver. rootMargin top
+  // négatif pour que la section devienne "active" quand son haut entre
+  // dans le tiers supérieur de la viewport.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        // Garde l'entry la plus haute qui est intersecting (sinon last
+        // intersected wins, ce qui peut être faux quand on remonte).
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]?.target.id) setActive(visible[0].target.id);
+      },
+      { rootMargin: "-30% 0px -60% 0px" },
+    );
+    for (const s of sections) {
+      const node = document.getElementById(s.id);
+      if (node) obs.observe(node);
+    }
+    return () => obs.disconnect();
+  }, [sections]);
+
+  return (
+    <nav className="rview-toc" aria-label="Sommaire de l'estimation">
+      <div className="rview-toc-inner">
+        <div className="rview-toc-h">SOMMAIRE</div>
+        <ul>
+          {sections.map((s) => (
+            <li key={s.id}>
+              <a
+                href={`#${s.id}`}
+                className={active === s.id ? "is-active" : ""}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById(s.id)?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }}
+              >
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+function StackRow({ label, items }: { label: string; items: string[] | undefined }) {
+  // Defense en profondeur : l'IA peut rendre stack partiellement (ex.
+  // omettre `data: []` quand vide), on accepte undefined.
+  if (!items || items.length === 0) return null;
   return (
     <div className="rview-stack-row">
       <div className="rview-stack-label">{label}</div>
@@ -605,6 +784,171 @@ function StackRow({ label, items }: { label: string; items: string[] }) {
           <span key={item} className="rview-stack-chip">
             {item}
           </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// =====================================================================
+// Discovery Sprint card — étape préliminaire obligatoire
+// =====================================================================
+
+function DiscoverySprintCard({
+  sprint,
+}: {
+  sprint: NonNullable<MultiServiceEstimate["discovery_sprint"]>;
+}) {
+  return (
+    <div className="rview-discovery">
+      <div className="rview-discovery-tag">ÉTAPE PRÉLIMINAIRE · DISCOVERY SPRINT</div>
+      <div className="rview-discovery-head">
+        <div>
+          <h2 className="rview-discovery-title">
+            {sprint.duration_days} jour{sprint.duration_days > 1 ? "s" : ""} de cadrage
+            <br />
+            <span className="grad-accent">avant tout engagement.</span>
+          </h2>
+          <p className="rview-discovery-rationale">{sprint.rationale}</p>
+        </div>
+        <div className="rview-discovery-price">
+          <div className="rview-discovery-price-amount">
+            {sprint.price.toLocaleString("fr-FR")} €
+          </div>
+          <div className="rview-discovery-price-meta">
+            HT
+            {sprint.deductible && (
+              <span className="rview-discovery-deductible">100 % déductible</span>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="rview-discovery-body">
+        {sprint.workshops.length > 0 && (
+          <div>
+            <div className="rview-discovery-section-h">ATELIERS PENDANT LE DISCOVERY</div>
+            <ul className="rview-discovery-list">
+              {sprint.workshops.map((w, i) => (
+                <li key={i}>{w}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {sprint.deliverables.length > 0 && (
+          <div>
+            <div className="rview-discovery-section-h">CE QUE TU REPARTS AVEC</div>
+            <ul className="rview-discovery-list rview-discovery-list-check">
+              {sprint.deliverables.map((d, i) => (
+                <li key={i}>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                    <path d="M5 12l5 5L20 7" />
+                  </svg>
+                  <span>{d}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// =====================================================================
+// Client Journey timeline — parcours post-signature
+// =====================================================================
+
+function ClientJourneyTimeline({
+  steps,
+}: {
+  steps: MultiServiceEstimate["client_journey"];
+}) {
+  if (steps.length === 0) return null;
+  // Sort by day_offset just in case the AI returned them out of order.
+  const sorted = [...steps].sort((a, b) => a.day_offset - b.day_offset);
+  return (
+    <div className="rview-journey">
+      <div className="rview-section-h">
+        <span className="eyebrow">— Le parcours client</span>
+        <h2>
+          Concrètement, <span className="grad-accent">il se passe quoi ?</span>
+        </h2>
+        <p className="rview-journey-sub">
+          De la signature du Discovery jusqu&apos;à la mise en run, chaque étape avec
+          son livrable et son responsable.
+        </p>
+      </div>
+      <div className="rview-journey-list">
+        {sorted.map((step, i) => (
+          <div key={i} className="rview-journey-row">
+            <div className="rview-journey-day">
+              <div className="rview-journey-day-num">
+                {step.day_offset === 0 ? "J0" : `J+${step.day_offset}`}
+              </div>
+              {i < sorted.length - 1 && <div className="rview-journey-line" />}
+            </div>
+            <div className="rview-journey-content">
+              <div className="rview-journey-label">{step.label}</div>
+              <div className="rview-journey-deliverable">{step.deliverable}</div>
+              <div className="rview-journey-owner">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                {step.owner}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// =====================================================================
+// Objectives Addressed — mapping objectif → phases qui l'adressent
+// =====================================================================
+
+function ObjectivesAddressedSection({
+  items,
+}: {
+  items: MultiServiceEstimate["objectives_addressed"];
+}) {
+  return (
+    <div className="rview-obj-addr">
+      <div className="rview-section-h">
+        <span className="eyebrow">— Tes objectifs</span>
+        <h2>
+          Comment chaque objectif <span className="grad-accent">est adressé.</span>
+        </h2>
+      </div>
+      <div className="rview-obj-addr-list">
+        {items.map((it, i) => (
+          <div key={i} className={`rview-obj-addr-row rview-obj-addr-${it.confidence}`}>
+            <div className="rview-obj-addr-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12l5 5L20 7" />
+              </svg>
+            </div>
+            <div className="rview-obj-addr-body">
+              <div className="rview-obj-addr-objective">{it.objective}</div>
+              <div className="rview-obj-addr-phases">
+                <span className="rview-obj-addr-meta">Adressé dans :</span>
+                {it.addressed_in.map((p, idx) => (
+                  <span key={idx} className="rview-obj-addr-chip">
+                    {p}
+                  </span>
+                ))}
+              </div>
+              {it.note && <div className="rview-obj-addr-note">{it.note}</div>}
+            </div>
+            <div className={`rview-obj-addr-conf rview-obj-addr-conf-${it.confidence}`}>
+              {it.confidence === "high" && "Confiance élevée"}
+              {it.confidence === "medium" && "Confiance moyenne"}
+              {it.confidence === "low" && "À cadrer"}
+            </div>
+          </div>
         ))}
       </div>
     </div>

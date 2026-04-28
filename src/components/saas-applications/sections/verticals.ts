@@ -14,7 +14,7 @@ export const verticalsHtml = `
     </div>
 
     <div class="sa-vt-grid">
-      <a class="sa-vt-card reveal" href="/#realisations">
+      <a class="sa-vt-card reveal" href="/realisations">
         <div class="sa-vt-head">
           <div class="sa-vt-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>
@@ -33,7 +33,7 @@ export const verticalsHtml = `
         </div>
       </a>
 
-      <a class="sa-vt-card reveal reveal-d-1" href="/#realisations">
+      <a class="sa-vt-card reveal reveal-d-1" href="/realisations">
         <div class="sa-vt-head">
           <div class="sa-vt-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v13a1 1 0 01-1 1h-5v-7H10v7H5a1 1 0 01-1-1V9z"/></svg>

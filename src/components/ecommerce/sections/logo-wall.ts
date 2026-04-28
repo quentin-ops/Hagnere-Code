@@ -1,5 +1,5 @@
-// TODO: remplacer par de vrais logos de boutiques livrées dès qu'il y en a.
-//       En attendant, on garde les 4 logos Hagnéré existants pour la cohérence visuelle.
+// Logo-wall : clients du groupe Hagnéré (Patrimoine, Investissement) et produits
+// internes de la maison (LMNP.AI, SCI-AI.app). À enrichir au fil des livraisons e-com.
 
 export const logoWallHtml = `
 <!-- CLIENT LOGO WALL -->

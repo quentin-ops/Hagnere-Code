@@ -72,13 +72,14 @@ export const bodyHtml = `
         </div>
       </div>
       <a href="/methode">Méthode</a>
-      <a href="/#realisations">Réalisations</a>
+      <a href="/realisations">Réalisations</a>
       <a href="/equipe">Équipe</a>
       <a href="/tarifs">Tarifs</a>
+      <a href="/contact">Contact</a>
     </div>
     <div class="nav-cta">
       <a href="/#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="/#contact" class="btn btn-primary">Démarrer un projet
+      <a href="/demarrer-un-projet" class="btn btn-primary">Démarrer un projet
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>

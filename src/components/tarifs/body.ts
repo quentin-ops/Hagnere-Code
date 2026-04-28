@@ -72,18 +72,19 @@ export const bodyHtml = `
         </div>
       </div>
       <a href="/methode">Méthode</a>
-      <a href="/#realisations">Réalisations</a>
+      <a href="/realisations">Réalisations</a>
       <a href="/equipe">Équipe</a>
       <a href="/tarifs" class="active">Tarifs</a>
-      <a href="/outils/estimer-mon-projet">Calculateur</a>
-      <a href="/blog">Blog</a>
+      <a href="/demarrer-un-projet">Calculateur</a>
+      <a href="/guide">Guide</a>
+      <a href="/contact">Contact</a>
     </div>
     <div class="nav-cta">
       <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
       <a href="/#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="/#contact" class="btn btn-primary">Démarrer un projet
+      <a href="/demarrer-un-projet" class="btn btn-primary">Démarrer un projet
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -231,7 +232,7 @@ export const bodyHtml = `
         <div class="qmf-ic">€</div>
         <div>
           <div class="qmf-t">Forfait fixe</div>
-          <div class="qmf-s">23 / 23 projets dans le budget annoncé</div>
+          <div class="qmf-s">22 / 23 projets dans le budget annoncé</div>
         </div>
       </div>
     </div>
@@ -247,7 +248,7 @@ export const bodyHtml = `
         <div class="kpi-l">Forfait fixe.<br>Pas de TJM caché.</div>
       </div>
       <div class="kpi reveal reveal-d-1">
-        <div class="kpi-n">23<span class="kpi-s">/23</span></div>
+        <div class="kpi-n">22<span class="kpi-s">/23</span></div>
         <div class="kpi-l">Projets livrés<br>dans le budget annoncé.</div>
       </div>
       <div class="kpi reveal reveal-d-2">

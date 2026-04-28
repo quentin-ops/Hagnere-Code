@@ -20,6 +20,7 @@
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   letter-spacing: -0.005em;
+  overflow-x: clip;
 }
 .cs-root a { color: inherit; }
 .cs-root h1, .cs-root h2, .cs-root h3, .cs-root h4 {
@@ -28,7 +29,15 @@
   font-weight: 600;
   margin: 0;
 }
-.cs-root .wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.cs-root .wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; min-width: 0; }
+.cs-root .wrap > *,
+.cs-hero-head,
+.cs-info-grid > *,
+.cs-info-v,
+.cs-info-stack,
+.cs-placeholder-note {
+  min-width: 0;
+}
 
 /* --- Nav shared pattern --- */
 .cs-root .nav {
@@ -161,6 +170,8 @@
   font-family: var(--font-geist-mono); font-size: 13px;
   color: var(--mute); text-decoration: none;
   margin-top: 8px; transition: color 0.15s;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 .cs-hero-url:hover { color: var(--brand); }
 
@@ -223,6 +234,7 @@
 .cs-info-v {
   font-size: 14px; color: var(--ink-2); font-weight: 500;
   letter-spacing: -0.005em;
+  overflow-wrap: anywhere;
 }
 .cs-info-stack {
   display: flex; flex-wrap: wrap; gap: 6px;
@@ -406,6 +418,7 @@
   color: var(--mute);
   display: flex; align-items: center; gap: 10px;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 .cs-placeholder-note svg { color: var(--brand); flex-shrink: 0; }
 .cs-placeholder-note a { color: var(--brand); text-decoration: underline; font-weight: 500; }
@@ -539,4 +552,6 @@
   .cs-features { grid-template-columns: 1fr; }
   .cs-root .nav-links { display: none; }
   .cs-testimonial blockquote { font-size: 22px; }
+  .cs-hero-url { display: flex; white-space: normal; }
+  .cs-placeholder-note { align-items: flex-start; }
 }

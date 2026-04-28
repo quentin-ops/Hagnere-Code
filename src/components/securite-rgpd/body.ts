@@ -66,19 +66,20 @@ export const bodyHtml = `
               <div class="tag">AI Act · 2 août 2026</div>
               <div class="dd-cta-title">Vous ne savez pas si l'AI Act vous concerne ?</div>
               <div class="dd-cta-sub">15 min de diagnostic gratuit avec un consultant DPO + dev.</div>
-              <a href="/#contact" class="btn btn-accent">Diagnostic AI Act →</a>
+              <a href="/demarrer-un-projet" class="btn btn-accent">Diagnostic AI Act →</a>
             </div>
           </div>
         </div>
       </div>
       <a href="/methode">Méthode</a>
-      <a href="/#realisations">Réalisations</a>
+      <a href="/realisations">Réalisations</a>
       <a href="/equipe">Équipe</a>
       <a href="/tarifs">Tarifs</a>
+      <a href="/contact">Contact</a>
     </div>
     <div class="nav-cta">
-      <a href="/#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="/#contact" class="btn btn-primary">Auditer mon exposition
+      <a href="/demarrer-un-projet" class="btn btn-ghost">Prendre RDV</a>
+      <a href="/demarrer-un-projet" class="btn btn-primary">Auditer mon exposition
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>

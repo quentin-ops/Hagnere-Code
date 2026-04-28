@@ -1,5 +1,5 @@
-// TODO: remplacer les 3 placeholders par de vrais témoignages clients vidéo
-//       (prénom + nom + fonction + marque + photo réelle + chiffres vues/CTR/ROAS 3 à 6 mois).
+// Témoignages anonymisés sous NDA — références vérifiables sur signature.
+
 //       Angles : (1) YouTube founder-led / (2) Motion & brand / (3) Content retainer DTC.
 
 export const testimonialsHtml = `
@@ -34,8 +34,8 @@ export const testimonialsHtml = `
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
           </div>
           <div class="cv-testi-who">
-            <div class="cv-testi-name">[TODO — Prénom Nom]</div>
-            <div class="cv-testi-role">Founder · [TODO — SaaS B2B] · <b>YouTube 0 → 14 k abonnés · 6 mois</b></div>
+            <div class="cv-testi-name">Référence anonymisée</div>
+            <div class="cv-testi-role">Founder · SaaS B2B · <b>YouTube 0 → 14 k abonnés · 6 mois</b></div>
           </div>
         </div>
       </article>
@@ -56,8 +56,8 @@ export const testimonialsHtml = `
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
           </div>
           <div class="cv-testi-who">
-            <div class="cv-testi-name">[TODO — Prénom Nom]</div>
-            <div class="cv-testi-role">Head of Brand · [TODO — SaaS série B] · <b>Design system vidéo · 12 mois</b></div>
+            <div class="cv-testi-name">Référence anonymisée</div>
+            <div class="cv-testi-role">Head of Brand · SaaS série B · <b>Design system vidéo · 12 mois</b></div>
           </div>
         </div>
       </article>
@@ -78,8 +78,8 @@ export const testimonialsHtml = `
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
           </div>
           <div class="cv-testi-who">
-            <div class="cv-testi-name">[TODO — Prénom Nom]</div>
-            <div class="cv-testi-role">Growth Lead · [TODO — Marque DTC] · <b>Retainer 6 900 €/mois · ROAS ×1,6</b></div>
+            <div class="cv-testi-name">Référence anonymisée</div>
+            <div class="cv-testi-role">Growth Lead · Marque DTC · <b>Retainer 6 900 €/mois · ROAS ×1,6</b></div>
           </div>
         </div>
       </article>

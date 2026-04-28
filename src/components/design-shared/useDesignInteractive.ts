@@ -24,6 +24,10 @@ function setBurgerIcon(btn: HTMLElement, open: boolean) {
   btn.replaceChildren(makeSvg(open ? CLOSE_PATHS : MENU_PATHS));
 }
 
+function makeChevron(): SVGElement {
+  return makeSvg([{ d: "M6 9l6 6 6-6" }]);
+}
+
 export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const root = rootRef.current;
@@ -83,21 +87,184 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
 
     const nav = root.querySelector<HTMLElement>(".nav");
     const navCta = root.querySelector<HTMLElement>(".nav-cta");
+    const navLinks = root.querySelector<HTMLElement>(".nav-links");
+    const existingContactLink = navLinks?.querySelector<HTMLAnchorElement>(
+      ':scope > a[href="/contact"]',
+    );
+    if (existingContactLink && window.location.pathname === "/contact") {
+      existingContactLink.classList.add("active");
+    }
+    if (navLinks && !existingContactLink) {
+      const contactLink = document.createElement("a");
+      contactLink.href = "/contact";
+      contactLink.textContent = "Contact";
+      if (window.location.pathname === "/contact") contactLink.classList.add("active");
+      navLinks.appendChild(contactLink);
+      cleanups.push(() => contactLink.remove());
+    }
+
+    if (navLinks && !navLinks.querySelector(".nav-mobile-panel")) {
+      const mobilePanel = document.createElement("div");
+      mobilePanel.className = "nav-mobile-panel";
+
+      const mobileEyebrow = document.createElement("span");
+      mobileEyebrow.className = "nav-mobile-eyebrow";
+      mobileEyebrow.textContent = "Prochaine étape";
+
+      const mobileTitle = document.createElement("strong");
+      mobileTitle.textContent = "Cadrer votre projet en 30 min.";
+
+      const mobileText = document.createElement("p");
+      mobileText.textContent = "Un associé qui code vous répond, sans engagement.";
+
+      const mobileActions = document.createElement("div");
+      mobileActions.className = "nav-mobile-actions";
+
+      const primaryAction = document.createElement("a");
+      primaryAction.href = "/demarrer-un-projet";
+      primaryAction.textContent = "Démarrer";
+
+      const secondaryAction = document.createElement("a");
+      secondaryAction.href = "/contact";
+      secondaryAction.textContent = "Contact";
+
+      mobileActions.append(primaryAction, secondaryAction);
+      mobilePanel.append(mobileEyebrow, mobileTitle, mobileText, mobileActions);
+      navLinks.prepend(mobilePanel);
+      cleanups.push(() => mobilePanel.remove());
+    }
+
+    if (navLinks && !navLinks.querySelector(".nav-more")) {
+      const secondaryLinks = Array.from(
+        navLinks.querySelectorAll<HTMLAnchorElement>(":scope > a"),
+      ).filter((link) =>
+        ["Équipe", "Calculateur", "Blog"].includes(link.textContent?.trim() || ""),
+      );
+
+      if (secondaryLinks.length >= 2) {
+        const more = document.createElement("div");
+        more.className = "nav-item nav-more";
+        const movedLinks = [...secondaryLinks];
+
+        const trigger = document.createElement("button");
+        trigger.type = "button";
+        trigger.className = "nav-trigger nav-more-trigger";
+        trigger.setAttribute("aria-haspopup", "true");
+        trigger.setAttribute("aria-expanded", "false");
+        trigger.append("À consulter", makeChevron());
+
+        const menu = document.createElement("div");
+        menu.className = "nav-more-menu";
+
+        secondaryLinks.forEach((link) => {
+          const item = document.createElement("a");
+          item.href = link.getAttribute("href") || link.href;
+          item.textContent = link.textContent?.trim() || "";
+          if (link.classList.contains("active")) item.classList.add("active");
+          menu.appendChild(item);
+          link.remove();
+        });
+
+        more.append(trigger, menu);
+        const contact = navLinks.querySelector(':scope > a[href="/contact"]');
+        if (contact) {
+          navLinks.insertBefore(more, contact);
+        } else {
+          navLinks.appendChild(more);
+        }
+
+        const setMoreOpen = (open: boolean) => {
+          more.classList.toggle("is-open", open);
+          trigger.setAttribute("aria-expanded", open ? "true" : "false");
+        };
+        const onTriggerClick = (e: MouseEvent) => {
+          e.stopPropagation();
+          setMoreOpen(!more.classList.contains("is-open"));
+        };
+        const onDocClick = (e: MouseEvent) => {
+          if (!more.contains(e.target as Node)) setMoreOpen(false);
+        };
+        const onEsc = (e: KeyboardEvent) => {
+          if (e.key === "Escape") setMoreOpen(false);
+        };
+        trigger.addEventListener("click", onTriggerClick);
+        document.addEventListener("click", onDocClick);
+        document.addEventListener("keydown", onEsc);
+        cleanups.push(() => {
+          trigger.removeEventListener("click", onTriggerClick);
+          document.removeEventListener("click", onDocClick);
+          document.removeEventListener("keydown", onEsc);
+          if (more.parentNode === navLinks) {
+            movedLinks.forEach((link) => navLinks.insertBefore(link, more));
+          }
+          more.remove();
+        });
+      }
+    }
+
     if (nav && navCta) {
-      const burger = document.createElement("button");
-      burger.type = "button";
-      burger.className = "nav-burger";
+      document.body.classList.remove("nav-menu-lock");
+      document.documentElement.classList.remove("nav-menu-lock");
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+      document.body.style.width = "";
+
+      let burger = navCta.querySelector<HTMLButtonElement>(".nav-burger");
+      const createdBurger = !burger;
+      if (!burger) {
+        burger = document.createElement("button");
+        burger.type = "button";
+        burger.className = "nav-burger";
+        navCta.appendChild(burger);
+      }
       burger.setAttribute("aria-label", "Ouvrir le menu");
       burger.setAttribute("aria-expanded", "false");
       setBurgerIcon(burger, false);
-      navCta.appendChild(burger);
+      nav.classList.add("nav-ready");
 
+      let lockedScrollY = 0;
+      const closeMobileDropdowns = () => {
+        nav.querySelectorAll<HTMLElement>(".nav-item-open").forEach((item) => {
+          item.classList.remove("nav-item-open");
+          item.querySelector(".nav-trigger")?.setAttribute("aria-expanded", "false");
+        });
+      };
+      const setScrollLock = (locked: boolean) => {
+        if (locked) {
+          lockedScrollY = window.scrollY;
+          document.documentElement.classList.add("nav-menu-lock");
+          document.body.classList.add("nav-menu-lock");
+          document.body.style.position = "fixed";
+          document.body.style.top = `-${lockedScrollY}px`;
+          document.body.style.left = "0";
+          document.body.style.right = "0";
+          document.body.style.width = "100%";
+          document.body.style.overflow = "hidden";
+          return;
+        }
+
+        const restoreY = lockedScrollY;
+        document.documentElement.classList.remove("nav-menu-lock");
+        document.body.classList.remove("nav-menu-lock");
+        document.body.style.overflow = "";
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.width = "";
+        if (restoreY > 0) window.scrollTo(0, restoreY);
+        lockedScrollY = 0;
+      };
       const setOpen = (open: boolean) => {
         nav.classList.toggle("nav-open", open);
         burger.setAttribute("aria-expanded", open ? "true" : "false");
         burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
         setBurgerIcon(burger, open);
-        document.body.style.overflow = open ? "hidden" : "";
+        setScrollLock(open);
+        closeMobileDropdowns();
       };
       const toggle = () => setOpen(!nav.classList.contains("nav-open"));
       const onBurger: EventListener = (e) => {
@@ -109,23 +276,33 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         if (!nav.contains(e.target as Node)) setOpen(false);
       };
       const onLinkClick: EventListener = (e) => {
-        const a = (e.target as Element)?.closest("a");
+        const target = e.target as Element;
+        if (target?.closest(".nav-trigger")) return;
+        const a = target?.closest("a");
         if (a && nav.classList.contains("nav-open")) setOpen(false);
       };
       const onEsc = (e: KeyboardEvent) => {
         if (e.key === "Escape" && nav.classList.contains("nav-open")) setOpen(false);
       };
+      const onResize = () => {
+        if (window.matchMedia("(min-width: 901px)").matches && nav.classList.contains("nav-open")) {
+          setOpen(false);
+        }
+      };
       burger.addEventListener("click", onBurger);
       document.addEventListener("click", onDocClick);
       nav.addEventListener("click", onLinkClick);
       document.addEventListener("keydown", onEsc);
+      window.addEventListener("resize", onResize);
       cleanups.push(() => {
         burger.removeEventListener("click", onBurger);
         document.removeEventListener("click", onDocClick);
         nav.removeEventListener("click", onLinkClick);
         document.removeEventListener("keydown", onEsc);
-        document.body.style.overflow = "";
-        burger.remove();
+        window.removeEventListener("resize", onResize);
+        setScrollLock(false);
+        nav.classList.remove("nav-ready");
+        if (createdBurger) burger.remove();
       });
     }
 
@@ -643,18 +820,29 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       });
     }
 
-    const navItem = root.querySelector<HTMLElement>(".nav-item");
-    const navTrigger = navItem?.querySelector<HTMLElement>(".nav-trigger");
-    if (navItem && navTrigger) {
+    const navDropdownItems = Array.from(
+      root.querySelectorAll<HTMLElement>(".nav-item"),
+    ).filter((item) => item.querySelector(".nav-dd"));
+    navDropdownItems.forEach((navItem) => {
+      const navTrigger = navItem.querySelector<HTMLElement>(".nav-trigger");
+      if (!navTrigger) return;
+      navTrigger.setAttribute("aria-expanded", "false");
       const onTriggerClick: EventListener = (e) => {
-        if (window.matchMedia("(max-width: 768px)").matches) {
+        if (window.matchMedia("(max-width: 900px)").matches) {
           e.preventDefault();
-          navItem.classList.toggle("nav-item-open");
+          e.stopPropagation();
+          const willOpen = !navItem.classList.contains("nav-item-open");
+          navDropdownItems.forEach((item) => {
+            item.classList.remove("nav-item-open");
+            item.querySelector(".nav-trigger")?.setAttribute("aria-expanded", "false");
+          });
+          navItem.classList.toggle("nav-item-open", willOpen);
+          navTrigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
         }
       };
       navTrigger.addEventListener("click", onTriggerClick);
       cleanups.push(() => navTrigger.removeEventListener("click", onTriggerClick));
-    }
+    });
 
     return () => cleanups.forEach((fn) => fn());
   }, [rootRef]);

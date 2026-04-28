@@ -72,18 +72,19 @@ export const bodyHtml = `
         </div>
       </div>
       <a href="/methode" class="active">Méthode</a>
-      <a href="/#realisations">Réalisations</a>
+      <a href="/realisations">Réalisations</a>
       <a href="/equipe">Équipe</a>
       <a href="/tarifs">Tarifs</a>
-      <a href="/outils/estimer-mon-projet">Calculateur</a>
-      <a href="/blog">Blog</a>
+      <a href="/demarrer-un-projet">Calculateur</a>
+      <a href="/guide">Guide</a>
+      <a href="/contact">Contact</a>
     </div>
     <div class="nav-cta">
       <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
       <a href="/#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="/#contact" class="btn btn-primary">Démarrer un projet
+      <a href="/demarrer-un-projet" class="btn btn-primary">Démarrer un projet
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -105,7 +106,7 @@ export const bodyHtml = `
       </div>
       <div class="mhero-stamp">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4 9 4z"/></svg>
-        <span>MARQUE DÉPOSÉE · 2024</span>
+        <span>MÉTHODE PROPRIÉTAIRE · DEPUIS 2024</span>
       </div>
     </div>
 
@@ -885,12 +886,14 @@ export const bodyHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Le journal du vendredi</div>
-        <h2>Les 5 dernières démos.<br>Anonymisées.<br><span class="grad-accent">Mais réelles.</span></h2>
+        <h2>Cinq démos récentes.<br>Anonymisées.<br><span class="grad-accent">Mais réelles.</span></h2>
       </div>
       <div class="right">
         Chaque vendredi à 16 h, on fait une démo en visio à chaque client actif.
-        Voici, anonymisées, les 5 dernières. Si vous voulez creuser un cas précis,
-        on vous met en relation avec le client (avec son accord).
+        Voici, anonymisées, cinq démos issues de notre journal de bord (extrait sur
+        une période récente). Si vous voulez creuser un cas précis, on vous met en
+        relation avec le client concerné (avec son accord). Pour le journal complet
+        à jour, <a href="mailto:hello@hagnere-code.fr?subject=Journal%20du%20vendredi%20-%20demande%20d%27acc%C3%A8s">demandez-nous l'accès</a>.
       </div>
     </div>
 
@@ -1034,7 +1037,7 @@ export const bodyHtml = `
           <span>OUTIL</span>
           <span>Claude Code · pas un pilier, un copilote</span>
         </div>
-        <h3>6 développeurs seniors,<br>Claude Code en copilote<br><span class="accent">sur les tâches répétitives.</span></h3>
+        <h3>Une équipe de 6 en CDI,<br>Claude Code en copilote<br><span class="accent">sur les tâches répétitives.</span></h3>
         <p class="claude-lead">
           Beaucoup d'agences brandissent l'IA comme un argument marketing. Chez nous, c'est un
           outil de productivité opéré par chaque dev senior — recherche de doc, exploration de bibliothèques,
@@ -1226,9 +1229,9 @@ export const bodyHtml = `
         <h3>Votre scope est franchement flou.</h3>
         <p>Vous avez « une intuition », pas un objectif clair. Le forfait fixe n'a aucun sens — on signerait
         un chiffre qu'on ne pourrait pas tenir. <b>Faites d'abord un Discovery Sprint</b> (1 500 €, 2 jours).
-        Si après ça le scope reste flou, on vous oriente vers une mission de pré-cadrage produit chez un
-        confrère type Theodo, Premier Octet, ou Padok.</p>
-        <div class="nfy-redir">→ Discovery Sprint d'abord, ou pré-cadrage chez un confrère.</div>
+        Si après ça le scope reste flou, on vous oriente vers une mission de pré-cadrage produit
+        chez un cabinet de consulting produit ou un studio orienté discovery.</p>
+        <div class="nfy-redir">→ Discovery Sprint d'abord, ou pré-cadrage chez un cabinet produit.</div>
       </div>
 
       <div class="nfy-card reveal reveal-d-1">
@@ -1236,9 +1239,9 @@ export const bodyHtml = `
         <h3>Votre projet fait moins de 8 k€.</h3>
         <p>Notre coût d'opération minimal sur un projet (cadrage, démos, garantie 30 j, doc, formation)
         rend non-rentable un forfait inférieur à 8 k€. <b>Ce n'est pas que ça ne nous intéresse pas —
-        c'est qu'on perdrait votre confiance en bâclant.</b> On vous oriente vers <b>Malt</b> ou
-        <b>Crème de la Crème</b> pour trouver un freelance senior avec lequel ça marchera mieux.</p>
-        <div class="nfy-redir">→ Malt / Crème de la Crème pour un freelance senior.</div>
+        c'est qu'on perdrait votre confiance en bâclant.</b> On vous oriente vers une plateforme
+        de freelances seniors avec laquelle ça marchera mieux pour ce périmètre.</p>
+        <div class="nfy-redir">→ Plateforme de freelances seniors pour les missions courtes.</div>
       </div>
 
       <div class="nfy-card reveal reveal-d-2">
@@ -1246,9 +1249,9 @@ export const bodyHtml = `
         <h3>Vous voulez du temps &amp; matériel (régie / TJM).</h3>
         <p>Sprint Fixe™, c'est l'inverse de la régie. Si votre process interne <b>nécessite</b> des feuilles
         de temps, des ajustements quotidiens, et un développeur loué à la journée, on n'est pas la
-        bonne équipe — on en perdrait notre âme et vous votre méthode. <b>On vous oriente vers une ESN</b>
-        qui maîtrise ce modèle (Devoteam, Octo, Sopra) ou vers <b>Comet</b> pour des seniors en mission longue.</p>
-        <div class="nfy-redir">→ ESN classique ou Comet pour de la mission longue en régie.</div>
+        bonne équipe — on en perdrait notre âme et vous votre méthode. <b>On vous oriente vers une ESN
+        classique</b> qui maîtrise ce modèle, ou une plateforme de freelances seniors en mission longue.</p>
+        <div class="nfy-redir">→ ESN classique ou plateforme de freelances pour la régie.</div>
       </div>
 
       <div class="nfy-card reveal reveal-d-3">
@@ -1257,9 +1260,8 @@ export const bodyHtml = `
         <p>On code en Laravel + React. Si votre existant est dans une autre stack et qu'il faut
         l'étendre <b>en restant dessus</b>, on n'est pas la bonne équipe — on apprendrait
         sur votre projet, et c'est exactement ce qu'on s'interdit. On vous oriente vers
-        des spécialistes (<b>Padok</b> pour DevOps tout-stack, <b>Inato</b> ou <b>Theodo</b> pour
-        Python, <b>Premier Octet</b> pour Node/TS).</p>
-        <div class="nfy-redir">→ Spécialistes par stack, on a des contacts à recommander.</div>
+        des spécialistes par stack ; on a des contacts éprouvés à recommander selon le contexte.</p>
+        <div class="nfy-redir">→ Spécialistes par stack, on partage des contacts éprouvés.</div>
       </div>
     </div>
 
