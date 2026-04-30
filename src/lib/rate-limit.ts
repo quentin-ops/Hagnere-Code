@@ -65,12 +65,23 @@ export function gcRateLimitStore(store: RateLimitStore): void {
 }
 
 /**
- * Extracts a client IP from a Request. Trusts the platform's
- * x-forwarded-for since Vercel/Cloudflare control the header. If you
- * self-host behind a proxy you don't control, this becomes spoofable —
- * log a warning and add an allow-list at the edge.
+ * Extracts a client IP from a Request.
+ *
+ * Order:
+ *   1. `cf-connecting-ip` — réécrit par Cloudflare, **impossible à spoofer**
+ *      côté client (Cloudflare strip toute valeur fournie en amont). Source
+ *      de vérité quand on est derrière Cloudflare Workers / CDN.
+ *   2. `x-forwarded-for[0]` — réécrit par Vercel et la plupart des reverse
+ *      proxies, mais peut être chained par un client malveillant si on est
+ *      derrière un proxy qui ne strip pas. Acceptable en fallback.
+ *   3. `x-real-ip` — fallback pour les setups custom.
+ *   4. "unknown" — dernier recours, le rate-limit groupera tous les requêteurs
+ *      sans IP identifiable dans le même bucket.
  */
 export function getClientIp(request: Request): string {
+  const cfIp = request.headers.get("cf-connecting-ip");
+  if (cfIp && /^[0-9a-fA-F:.]+$/.test(cfIp.trim())) return cfIp.trim();
+
   const forwarded = request.headers.get("x-forwarded-for");
   if (forwarded) {
     const first = forwarded.split(",")[0]?.trim() ?? "";

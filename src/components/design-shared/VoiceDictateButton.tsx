@@ -1,6 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  TurnstileWidget,
+  TURNSTILE_ENABLED,
+} from "@/components/project-funnel/TurnstileWidget";
 
 type Status =
   | { kind: "idle" }
@@ -59,14 +63,22 @@ export function VoiceDictateButton({
   processingLabel = "Transcription…",
 }: Props) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
 
+  // En dev (NEXT_PUBLIC_ENV='development'), le serveur skip Turnstile :
+  // on autorise toujours pour ne pas bloquer le local quand la site key
+  // de prod n'est pas whitelistée sur localhost. En prod, on attend le token.
+  const isDev = process.env.NEXT_PUBLIC_ENV === "development";
+  const canRecord = isDev || !TURNSTILE_ENABLED || turnstileToken !== null;
+
   useEffect(() => {
     return () => {
       try {
-        mediaRecorderRef.current?.state !== "inactive" && mediaRecorderRef.current?.stop();
+        const recorder = mediaRecorderRef.current;
+        if (recorder && recorder.state !== "inactive") recorder.stop();
       } catch {
         /* noop */
       }
@@ -114,6 +126,7 @@ export function VoiceDictateButton({
           const audio = new Blob(chunksRef.current, { type: mimeType });
           const formData = new FormData();
           formData.append("audio", audio, getAudioFilename(mimeType));
+          if (turnstileToken) formData.append("turnstileToken", turnstileToken);
           const res = await fetch("/api/transcribe", {
             method: "POST",
             body: formData,
@@ -146,7 +159,7 @@ export function VoiceDictateButton({
       streamRef.current = null;
       setStatus({ kind: "error", message: microphoneErrorMessage(err) });
     }
-  }, [onTranscribed]);
+  }, [onTranscribed, turnstileToken]);
 
   const stopRecording = useCallback(() => {
     const recorder = mediaRecorderRef.current;
@@ -160,11 +173,17 @@ export function VoiceDictateButton({
 
   return (
     <div className={`vdb-wrap ${className}`}>
+      {/* Turnstile invisible — fournit le token avant l'enregistrement.
+          En dev sans NEXT_PUBLIC_TURNSTILE_SITE_KEY, le widget retourne null. */}
+      <TurnstileWidget
+        onToken={setTurnstileToken}
+        onExpire={() => setTurnstileToken(null)}
+      />
       <button
         type="button"
         className={`vdb-btn ${isRecording ? "is-recording" : ""} ${isProcessing ? "is-processing" : ""}`}
         onClick={isRecording ? stopRecording : startRecording}
-        disabled={isProcessing}
+        disabled={isProcessing || (!isRecording && !canRecord)}
         aria-label={
           isRecording ? "Arrêter la dictée" : isProcessing ? "Transcription en cours" : "Dicter votre projet"
         }

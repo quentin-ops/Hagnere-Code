@@ -2,12 +2,12 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { eq } from "drizzle-orm";
 import { randomBytes } from "node:crypto";
+import { getClientIp } from "@/lib/rate-limit";
 import {
-  checkRateLimit,
-  createRateLimitStore,
-  gcRateLimitStore,
-  getClientIp,
-} from "@/lib/rate-limit";
+  checkServiceRateLimit,
+  logAiCall,
+  verifyTurnstileToken,
+} from "@/lib/ai-rate-limit";
 import { getDb } from "@/db";
 import { projectBrief } from "@/db/schema";
 import { log } from "@/lib/logger";
@@ -15,10 +15,6 @@ import { log } from "@/lib/logger";
 export const runtime = "nodejs";
 
 const MAX_BODY_BYTES = 50_000;
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
-const RATE_LIMIT_MAX = 5; // 5 lead submissions / IP / hour
-
-const inquiryRateStore = createRateLimitStore();
 
 // Extended payload — the funnel sends the FULL state so we can persist
 // every field in the DB (the email message stays the human-readable summary).
@@ -33,6 +29,7 @@ type Body = {
   message?: string;
   phone?: string;
   honeypot?: string;
+  turnstileToken?: string;
 
   // Funnel-specific fields (added for DB persistence)
   role?: string;
@@ -132,28 +129,10 @@ function renderEmailShell(preheader: string, innerHtml: string): string {
 }
 
 export async function POST(request: Request) {
-  // 0. Rate limit (before any body work)
-  gcRateLimitStore(inquiryRateStore);
   const ip = getClientIp(request);
-  const rate = checkRateLimit(inquiryRateStore, ip, {
-    windowMs: RATE_LIMIT_WINDOW_MS,
-    max: RATE_LIMIT_MAX,
-  });
-  if (!rate.ok) {
-    return NextResponse.json(
-      {
-        error: `Trop de demandes. Réessayez dans ${Math.ceil(
-          (rate.retryAfterSec || 3600) / 60,
-        )} minutes.`,
-      },
-      {
-        status: 429,
-        headers: { "Retry-After": String(rate.retryAfterSec || 3600) },
-      },
-    );
-  }
+  const userAgent = request.headers.get("user-agent");
 
-  // 0bis. Body size cap (cheap pre-read check)
+  // 0. Body size cap (cheap pre-read check)
   const contentLength = request.headers.get("content-length");
   if (contentLength && parseInt(contentLength, 10) > MAX_BODY_BYTES) {
     return NextResponse.json(
@@ -169,9 +148,57 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 
-  // Anti-bot honeypot: bots fill every field, humans never see it.
+  // 1. Anti-bot honeypot: bots fill every field, humans never see it.
+  // Feign success silently so the bot doesn't retry.
   if (body.honeypot) {
     return NextResponse.json({ ok: true });
+  }
+
+  // 2. Cloudflare Turnstile : bot check côté serveur. Fail-closed —
+  // si le secret est manquant en prod, verifyTurnstileToken bloquera.
+  const turnstile = await verifyTurnstileToken(body.turnstileToken, ip);
+  if (!turnstile.valid) {
+    await logAiCall({
+      service: "inquiry",
+      ip,
+      userAgent,
+      status: "blocked",
+      blockReason:
+        turnstile.reason === "secret_misconfigured"
+          ? "secret_misconfigured"
+          : "captcha_failed",
+    });
+    return NextResponse.json(
+      {
+        error:
+          "Vérification anti-bot échouée. Recharge la page puis réessaye, ou contacte quentin@hagnere-patrimoine.fr.",
+      },
+      { status: 403 },
+    );
+  }
+
+  // 3. Rate limit Postgres-backed (multi-tier, partagé avec les autres
+  // routes via la table ai_call_log filtrée par service='inquiry').
+  // On extrait l'email AVANT validation pour pouvoir compter par email
+  // même sur les payloads invalides.
+  const emailFromBody = (body.email || "").trim() || null;
+  const rateCheck = await checkServiceRateLimit(ip, emailFromBody, "inquiry");
+  if (!rateCheck.allowed) {
+    await logAiCall({
+      service: "inquiry",
+      ip,
+      email: emailFromBody,
+      userAgent,
+      status: "blocked",
+      blockReason: rateCheck.reason,
+    });
+    return NextResponse.json(
+      { error: rateCheck.message || "Trop de demandes. Réessaye plus tard." },
+      {
+        status: 429,
+        headers: { "Retry-After": String(rateCheck.retryAfterSec || 3600) },
+      },
+    );
   }
 
   const firstName = (body.firstName || "").trim().slice(0, 80);
@@ -216,6 +243,13 @@ export async function POST(request: Request) {
   }
 
   if (Object.keys(errors).length > 0) {
+    await logAiCall({
+      service: "inquiry",
+      ip,
+      email: emailFromBody,
+      userAgent,
+      status: "validation",
+    });
     return NextResponse.json({ errors }, { status: 400 });
   }
 
@@ -472,6 +506,14 @@ export async function POST(request: Request) {
 
     if (result.error) {
       log.error("project_inquiry_resend_team_failed", { err: result.error, briefId });
+      await logAiCall({
+        service: "inquiry",
+        ip,
+        email,
+        userAgent,
+        status: "ai_error",
+        briefId,
+      });
       return NextResponse.json(
         { error: "Email service error", briefId, briefSlug },
         { status: 502 },
@@ -502,9 +544,25 @@ export async function POST(request: Request) {
     }
 
     await markMailSent();
+    await logAiCall({
+      service: "inquiry",
+      ip,
+      email,
+      userAgent,
+      status: "ok",
+      briefId,
+    });
     return NextResponse.json({ ok: true, briefId, briefSlug });
   } catch (err) {
     log.error("project_inquiry_unexpected_error", { err: err as Error, briefId });
+    await logAiCall({
+      service: "inquiry",
+      ip,
+      email,
+      userAgent,
+      status: "ai_error",
+      briefId,
+    });
     return NextResponse.json(
       { error: "Internal error", briefId, briefSlug },
       { status: 500 },

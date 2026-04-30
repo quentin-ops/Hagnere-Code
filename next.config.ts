@@ -29,9 +29,11 @@ const securityHeaders = [
     value: "on",
   },
   {
-    // Content-Security-Policy permissif pour les besoins actuels :
+    // Content-Security-Policy :
     // - script-src : self + Calendly + GTM/Plausible/PostHog (analytics
     //   futurs) + 'unsafe-inline' pour les JSON-LD inline.
+    //   `'unsafe-eval'` retiré (aucune lib ne l'utilise dans le bundle
+    //   actuel) → bloque eval() / new Function() en cas d'XSS.
     // - frame-src : Calendly inline embed.
     // - connect-src : self + APIs externes que la page appelle (Anthropic
     //   est server-side, pas listé). Ajoute Calendly et Cloudflare R2.
@@ -43,12 +45,12 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://calendly.com https://*.calendly.com https://www.googletagmanager.com https://plausible.io https://eu.posthog.com",
+      "script-src 'self' 'unsafe-inline' https://calendly.com https://*.calendly.com https://www.googletagmanager.com https://plausible.io https://eu.posthog.com https://challenges.cloudflare.com",
       "style-src 'self' 'unsafe-inline' https://calendly.com https://*.calendly.com",
       "img-src 'self' data: blob: https://assets.aceternity.com https://images.unsplash.com https://i.pravatar.cc https://*.r2.cloudflarestorage.com https://calendly.com https://*.calendly.com",
       "font-src 'self' data: https://calendly.com https://*.calendly.com",
-      "connect-src 'self' https://recherche-entreprises.api.gouv.fr https://api.groq.com https://calendly.com https://*.calendly.com https://plausible.io https://eu.posthog.com https://*.r2.cloudflarestorage.com",
-      "frame-src 'self' https://calendly.com https://*.calendly.com",
+      "connect-src 'self' https://recherche-entreprises.api.gouv.fr https://api.groq.com https://calendly.com https://*.calendly.com https://plausible.io https://eu.posthog.com https://*.r2.cloudflarestorage.com https://challenges.cloudflare.com",
+      "frame-src 'self' https://calendly.com https://*.calendly.com https://challenges.cloudflare.com",
       "media-src 'self' blob:",
       "object-src 'none'",
       "base-uri 'self'",

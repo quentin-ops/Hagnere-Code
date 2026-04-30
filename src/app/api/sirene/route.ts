@@ -5,6 +5,7 @@ import {
   gcRateLimitStore,
   getClientIp,
 } from "@/lib/rate-limit";
+import { log } from "@/lib/logger";
 
 export const runtime = "nodejs";
 
@@ -106,8 +107,8 @@ export async function GET(request: NextRequest) {
       siren: company.siren,
       companyName: company.nom_complet || company.nom_raison_sociale || "Nom non disponible",
     });
-  } catch (error) {
-    console.error("SIRENE API error:", error);
+  } catch (err) {
+    log.error("sirene_api_error", { err: err as Error, siren: sirenClean });
     return NextResponse.json(
       { error: "Erreur lors de la recherche. Veuillez réessayer." },
       { status: 500 }

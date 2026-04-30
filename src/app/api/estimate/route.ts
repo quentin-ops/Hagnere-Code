@@ -48,7 +48,7 @@ const MIN_DESCRIPTION_CHARS = 50;
 // =====================================================================
 
 import {
-  checkAiRateLimit,
+  checkServiceRateLimit,
   logAiCall,
   verifyTurnstileToken,
 } from "@/lib/ai-rate-limit";
@@ -749,6 +749,7 @@ export async function POST(request: Request): Promise<NextResponse<EstimateApiRe
   const turnstile = await verifyTurnstileToken(turnstileToken, ip);
   if (!turnstile.valid) {
     await logAiCall({
+      service: "estimate",
       ip,
       userAgent,
       status: "blocked",
@@ -771,9 +772,10 @@ export async function POST(request: Request): Promise<NextResponse<EstimateApiRe
     typeof (body as Record<string, unknown>).email === "string"
       ? ((body as Record<string, unknown>).email as string)
       : null;
-  const rateCheck = await checkAiRateLimit(ip, emailFromBody);
+  const rateCheck = await checkServiceRateLimit(ip, emailFromBody, "estimate");
   if (!rateCheck.allowed) {
     await logAiCall({
+      service: "estimate",
       ip,
       email: emailFromBody,
       userAgent,
@@ -796,6 +798,7 @@ export async function POST(request: Request): Promise<NextResponse<EstimateApiRe
   const v = validate(body);
   if (!v.ok || !v.input) {
     await logAiCall({
+      service: "estimate",
       ip,
       email: emailFromBody,
       userAgent,
@@ -821,6 +824,7 @@ export async function POST(request: Request): Promise<NextResponse<EstimateApiRe
     const { result, tokens_used } = await callClaude(v.input, v.injectionFlag || false);
     const durationMs = Date.now() - startedAt;
     await logAiCall({
+      service: "estimate",
       ip,
       email: v.input.email,
       userAgent,
@@ -853,6 +857,7 @@ export async function POST(request: Request): Promise<NextResponse<EstimateApiRe
     // Logge la tentative en échec dans ai_call_log (consomme rate limit
     // pour éviter le retry-spam, mais marque clairement comme erreur IA).
     await logAiCall({
+      service: "estimate",
       ip,
       email: v.input.email,
       userAgent,

@@ -6,6 +6,7 @@ import {
   jsonb,
   integer,
   boolean,
+  index,
 } from "drizzle-orm/pg-core";
 
 // Contacts particuliers (Individual contacts)
@@ -134,19 +135,31 @@ export const projectBrief = pgTable("project_brief", {
  */
 export const aiCallLog = pgTable("ai_call_log", {
   id: serial("id").primaryKey(),
+  /**
+   * Service consommé : 'estimate' (Anthropic) | 'transcribe' (Groq Whisper)
+   * | 'inquiry' (Resend mail). Permet de partitionner les compteurs et
+   * cost-breakers par route. Default 'estimate' = backfill compatible.
+   */
+  service: text("service").notNull().default("estimate"),
   ip: text("ip").notNull(),
   /** Hash base64url tronqué de l'email — pour dedup sans stocker en clair. */
   emailHash: text("email_hash"),
   /**
    * Statut de la tentative :
-   *  - "ok"        : appel IA terminé avec succès
-   *  - "ai_error"  : Anthropic a renvoyé une erreur
-   *  - "blocked"   : refusé avant l'appel IA (rate limit, captcha, breaker)
+   *  - "ok"        : appel terminé avec succès
+   *  - "ai_error"  : provider a renvoyé une erreur (Anthropic, Groq, Resend)
+   *  - "blocked"   : refusé en amont (rate limit, captcha, breaker)
    *  - "validation": payload invalide
    */
   status: text("status").notNull(),
-  /** Sous-raison si blocked (rate_ip_hour, rate_ip_day, rate_global, rate_email, captcha_failed, cost_breaker). */
+  /** Sous-raison si blocked (rate_ip_hour, rate_ip_day, rate_global, rate_email, captcha_failed, cost_breaker, secret_misconfigured). */
   blockReason: text("block_reason"),
+  /**
+   * Cost unit générique :
+   *  - 'estimate' → tokens Anthropic cumulés
+   *  - 'transcribe' → bytes audio uploadés (proxy de la durée)
+   *  - 'inquiry' → 0 (pas de cost unit pertinent, juste un compteur d'appels)
+   */
   tokensUsed: integer("tokens_used").default(0).notNull(),
   /** Latence en ms (de la requête à la réponse). */
   durationMs: integer("duration_ms"),
@@ -154,7 +167,15 @@ export const aiCallLog = pgTable("ai_call_log", {
   briefId: integer("brief_id"),
   userAgent: text("user_agent"),
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
-});
+}, (t) => [
+  // (service, ip, created_at) — sert les compteurs per-IP-per-hour et
+  // per-IP-per-day filtrés par service. Aussi utile pour le compteur global
+  // qui filtre juste (service, created_at) — Postgres peut leading-prefix.
+  index("ai_call_log_service_ip_created_at_idx").on(t.service, t.ip, t.createdAt),
+  // (service, email_hash, created_at) — sert le compteur per-email-per-day
+  // (utilisé seulement par 'estimate' et 'inquiry' aujourd'hui).
+  index("ai_call_log_service_email_created_at_idx").on(t.service, t.emailHash, t.createdAt),
+]);
 
 /**
  * team_member — la vraie équipe Hagnéré Code, source de vérité pour le
