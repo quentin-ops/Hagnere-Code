@@ -148,7 +148,7 @@ export const integrationsHtml = `
             <svg viewBox="0 0 24 24" fill="#fff"><rect x="3" y="3" width="18" height="18" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="M8 12h8M12 8v8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
           <div class="at-eco-tile-name">Méthodologie propriétaire</div>
-          <div class="at-eco-tile-sub">9 dim × 47 audits · benchmark</div>
+          <div class="at-eco-tile-sub">9 dimensions auditées · benchmark</div>
         </div>
       </div>
     </article>

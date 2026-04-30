@@ -45,7 +45,7 @@ prompt IA se réalignent automatiquement.
 Le prompt Claude n'est plus codé en dur — il charge **4 tables** depuis
 Postgres au runtime (cache 5 min) et les injecte dans le system prompt :
 
-- `team_member` (7 lignes) — vraie équipe Hagnéré Code (Quentin, Nicolas, Kylian, Frédéric, Arthur, Ryan, Peter)
+- `team_member` (7 lignes) — vraie équipe Hagnéré Code (Quentin, Nicolas, Killian, Frédéric, Arthur, Ryan, Peter)
 - `case_study` (4 lignes) — projets livrés référencables (LMNP.AI, SCI-AI, Hagnéré Patrimoine, Hagnéré Investissement)
 - `risk_template` (28 lignes) — catalogue de risques typés par service avec mitigation
 - `phasing_template` (20 lignes) — modèles semaine-par-semaine (3 scales × 12 services, partiel pour l'instant)
@@ -66,7 +66,7 @@ Au-delà du chiffrage initial, l'IA produit maintenant :
 - **`phasing[].client_deliverable`** — artefact concret remis en fin de semaine (Figma, URL staging, doc).
 - **`phasing[].acceptance_criteria`** — 2-6 critères verifiables au présent ("L'utilisateur peut créer un compte").
 - **`phasing[].quality_gates`** — 1-5 barrières techniques avant validation (Lighthouse > 95, Pest > 80%, etc.).
-- **`team_allocation[].role`** — vrais noms (Quentin Hagnéré, Nicolas Wallerand, Kylian, Frédéric Curinckx, Arthur Monney, Ryan Mazzitelli, Peter) au lieu de "Senior Dev #1".
+- **`team_allocation[].role`** — vrais noms (Quentin Hagnéré, Nicolas Wallerand, Killian, Frédéric Curinckx, Arthur Monney, Ryan Mazzitelli, Peter) au lieu de "Senior Dev #1".
 
 ### Validation post-hoc
 

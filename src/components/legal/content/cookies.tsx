@@ -155,7 +155,7 @@ export const cookiesSections: LegalSection[] = [
         <p>
           Pour toute question relative aux cookies ou à la protection de vos
           données, contactez{" "}
-          <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>.
+          <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>.
         </p>
       </>
     ),

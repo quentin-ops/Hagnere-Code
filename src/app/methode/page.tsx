@@ -4,14 +4,22 @@ import { MethodePage } from "@/components/methode/MethodePage";
 export const metadata: Metadata = {
   title: "Sprint Fixe™ — Notre méthode · Hagnéré Code",
   description:
-    "Forfait fixe contractuel, démos chaque vendredi, Discovery Sprint déduit, Claude Code en multiplicateur. 22/23 projets livrés dans le budget annoncé. Méthode, garanties, journal des démos, FAQ contre-objections.",
+    "Forfait fixe contractuel, démos chaque vendredi, Discovery Sprint déduit, Claude Code en multiplicateur. Méthode, garanties, journal des démos, FAQ contre-objections.",
   alternates: { canonical: "/methode" },
   openGraph: {
     title: "Sprint Fixe™ — La méthode Hagnéré Code",
     description:
-      "Forfait fixe contractuel, démos hebdo, code chez vous J+1. La méthode qui a livré 22/23 projets dans le budget.",
+      "Forfait fixe contractuel, démos hebdo, code chez vous J+1. La méthode qui livre dans le budget annoncé.",
     url: "/methode",
     type: "website",
+    images: [
+      {
+        url: "/illustrations/methode-sprint.png",
+        width: 1024,
+        height: 1024,
+        alt: "Sprint Fixe™ — méthode propriétaire Hagnéré Code (forfait fixe, démos vendredi, code J+1)",
+      },
+    ],
   },
 };
 
@@ -75,12 +83,12 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Tout ajout passe par un avenant chiffré au forfait fixe, signé avant que la moindre ligne de code ne soit écrite. Vous décidez si l'ajout vaut le coup. Le périmètre initial reste figé, le total reste contrôlé. On n'a jamais facturé d'avenant non-signé en 23 projets.",
+          "Tout ajout passe par un avenant chiffré au forfait fixe, signé avant que la moindre ligne de code ne soit écrite. Vous décidez si l'ajout vaut le coup. Le périmètre initial reste figé, le total reste contrôlé. On n'a jamais facturé d'avenant non-signé.",
       },
     },
     {
       "@type": "Question",
-      name: "Vous n'êtes que 6 — qu'est-ce qui se passe si quelqu'un démissionne ou tombe malade ?",
+      name: "Vous n'êtes que 7 — qu'est-ce qui se passe si quelqu'un démissionne ou tombe malade ?",
       acceptedAnswer: {
         "@type": "Answer",
         text:

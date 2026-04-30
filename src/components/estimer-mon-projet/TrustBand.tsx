@@ -147,7 +147,7 @@ export function TrustBand() {
           ))}
         </div>
         <div className="rview-trust-clients-foot">
-          + 19 autres projets livrés depuis 2022
+          + d'autres projets livrés depuis le lancement de l'agence
         </div>
       </div>
     </section>

@@ -12,6 +12,14 @@ export const metadata: Metadata = {
     description:
       "Votre dette technique, chiffrée en euros. Livrée en 10 jours. Rapport board-ready exploitable par VC / acquéreur / board. 100 % déductible si mission de remédiation > 50 k€ suit.",
     url: "/services/audit-technique",
+    images: [
+      {
+        url: "/og-image-services.png",
+        width: 1200,
+        height: 630,
+        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
+      },
+    ],
     type: "website",
   },
 };
@@ -33,12 +41,12 @@ const serviceJsonLd = JSON.stringify({
       addressLocality: "Chambéry",
       addressCountry: "FR",
     },
-    email: "hello@hagnere-code.fr",
+    email: "quentin@hagnere-patrimoine.fr",
     telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "Audit technique one-shot pour PME, ETI, scale-up et investisseurs français : 8 dimensions couvertes (Code quality, Architecture, Performance, Sécurité, Infrastructure, DevEx/DORA, FinOps cloud, Équipe & organisation), Tech Debt P&L chiffré en euros, deck exécutif board-ready, backlog priorisé Notion/Linear, version board-safe anonymisée, diagrammes C4 AS-IS/TO-BE, roadmap 6/12/18 mois. Méthodologie ISO 19011, clause de non-conflit d'intérêt publique (100 % déduit si mission de remédiation > 50 k€ suit), garantie ≥ 3 recommandations actionnables ou 50 % remboursé, RC pro 1 M€.",
+    "Audit technique one-shot pour PME, ETI, scale-up et investisseurs français : 8 dimensions couvertes (Code quality, Architecture, Performance, Sécurité, Infrastructure, DevEx/DORA, FinOps cloud, Équipe & organisation), Tech Debt P&L chiffré en euros, deck exécutif board-ready, backlog priorisé Notion/Linear, version board-safe anonymisée, diagrammes C4 AS-IS/TO-BE, roadmap 6/12/18 mois. Méthodologie ISO 19011, clause de non-conflit d'intérêt publique (100 % déduit si mission de remédiation > 50 k€ suit), garantie ≥ 3 recommandations actionnables ou 50 % remboursé.",
   offers: [
     {
       "@type": "Offer",
@@ -112,7 +120,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Huit engagements écrits en CGV : NDA mutuel J0 opposable, clause de non-conflit d'intérêt publique (100 % déduit si mission > 50 k€), garantie ≥ 3 recos actionnables ou 50 % remboursé, version board-safe anonymisée incluse, méthodologie ISO 19011 téléchargeable, RC pro 1 M€ chez Hiscox, sample report anonymisé disponible avant signature, propriété client exclusive des livrables sans watermark ni clause de republication.",
+          "Sept engagements écrits en CGV : NDA mutuel J0 opposable, clause de non-conflit d'intérêt publique (100 % déduit si mission > 50 k€), garantie ≥ 3 recos actionnables ou 50 % remboursé, version board-safe anonymisée incluse, méthodologie ISO 19011 téléchargeable, sample report anonymisé disponible avant signature, propriété client exclusive des livrables sans watermark ni clause de republication.",
       },
     },
     {

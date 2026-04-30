@@ -1278,7 +1278,7 @@
 
   /* Footer info bandeau légal en bas de chaque page */
   body::after {
-    content: "Hagnéré Code SAS · 7 rue Ernest Filliard, 73000 Chambéry · hello@hagnere-code.fr · Estimation indicative — devis ferme délivré après le Discovery Sprint";
+    content: "Hagnéré Code SAS · 7 rue Ernest Filliard, 73000 Chambéry · quentin@hagnere-patrimoine.fr · Estimation indicative — devis ferme délivré après le Discovery Sprint";
     display: block;
     margin-top: 8mm;
     padding-top: 4mm;

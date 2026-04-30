@@ -52,7 +52,7 @@ export const mentionsLegalesSections: LegalSection[] = [
 
           <dt>Courriel</dt>
           <dd>
-            <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>
+            <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
           </dd>
         </dl>
       </>
@@ -74,7 +74,7 @@ export const mentionsLegalesSections: LegalSection[] = [
           Toute demande relative au contenu éditorial du Site peut lui être
           adressée par courrier postal au siège social de la société, ou par
           courriel à l'adresse{" "}
-          <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>.
+          <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>.
         </p>
       </>
     ),
@@ -225,7 +225,7 @@ export const mentionsLegalesSections: LegalSection[] = [
           et de portabilité de vos données, ainsi que du droit de retirer votre
           consentement à tout moment. Vous pouvez exercer ces droits par
           courriel à{" "}
-          <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>, ou
+          <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>, ou
           par courrier postal à l'adresse du siège social.
         </p>
 
@@ -352,7 +352,7 @@ export const mentionsLegalesSections: LegalSection[] = [
             <strong>Droit à l&apos;effacement</strong> : si vous avez fourni vos
             coordonnées et souhaitez en demander la suppression, écrivez-nous
             à{" "}
-            <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>{" "}
+            <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>{" "}
             (suppression sous 30 jours).
           </li>
         </ul>

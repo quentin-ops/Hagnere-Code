@@ -337,11 +337,22 @@ a.sf-direct-v:hover { color: var(--accent); }
   border-top: 1px solid var(--line);
   color: var(--ink);
 }
-.sf-foot-top {
+/* ──────────────────────────────────────────────────────────────
+   Layout : 3 rangées
+     1. Brand row    → pitch + chips à gauche, gros CTA à droite
+     2. Services row → 10 services en grille 5 cols
+     3. 3 colonnes   → Studio | Contact | Légal
+   ──────────────────────────────────────────────────────────── */
+
+/* ---- Row 1 : Brand + CTA ---- */
+.sf-foot-brand-row {
   display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 60px;
-  margin-bottom: 48px;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 36px;
 }
 .sf-foot-brand .brand { margin-bottom: 14px; }
 .sf-foot-brand p {
@@ -349,11 +360,128 @@ a.sf-direct-v:hover { color: var(--accent); }
   font-size: 14px;
   line-height: 1.55;
   margin: 14px 0 0;
+  max-width: 480px;
 }
+
+/* ---- Brand chips ---- */
+.sf-foot-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+.sf-foot-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--ink-3);
+  letter-spacing: -0.005em;
+}
+.sf-foot-chip .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sf-foot-chip .dot-green { background: #16A34A; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.18); }
+.sf-foot-chip .dot-accent { background: var(--accent); box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.18); }
+
+/* ---- Row 1 right : gros CTA "10 services" ---- */
+.sf-foot-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: linear-gradient(135deg, var(--accent-soft), rgba(237, 233, 254, 0.4));
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+}
+.sf-foot-cta:hover {
+  border-color: rgba(109, 40, 217, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -16px rgba(76, 29, 149, 0.4);
+}
+.sf-foot-cta-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.sf-foot-cta-kicker {
+  font-family: var(--font-geist-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+.sf-foot-cta-title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+.sf-foot-cta-arrow {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--accent-ink);
+  border: 1px solid rgba(109, 40, 217, 0.2);
+  flex-shrink: 0;
+  transition: background 0.18s, color 0.18s;
+}
+.sf-foot-cta:hover .sf-foot-cta-arrow { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ---- Row 2 : Services full width ---- */
+.sf-foot-services {
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--line);
+}
+.sf-foot-services h5 {
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+  margin: 0 0 16px;
+  font-weight: 600;
+}
+
+.sf-tile-grid-services {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+/* ---- Row 3 : 3 colonnes (Studio | Contact | Légal) ---- */
 .sf-foot-cols {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-bottom: 36px;
+}
+.sf-foot-col {
+  padding: 0 32px;
+  border-left: 1px solid var(--line);
+}
+.sf-foot-col:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+.sf-foot-col:last-child {
+  padding-right: 0;
 }
 .sf-foot-col h5 {
   font-family: var(--font-geist-mono);
@@ -364,15 +492,68 @@ a.sf-direct-v:hover { color: var(--accent); }
   margin: 0 0 14px;
   font-weight: 600;
 }
-.sf-foot-col a {
-  display: block;
+
+/* ──────────────────────────────────────────────────────────────
+   .sf-tile : composant unifié — utilisé pour TOUS les liens du
+   footer (services / studio / contact / légal). Tuile icône
+   carrée + label, hover violet cohérent.
+   ──────────────────────────────────────────────────────────── */
+.sf-tile-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.sf-tile,
+.sf-foot-col a.sf-tile,
+.sf-foot-services a.sf-tile {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px 7px 7px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: transparent;
   color: var(--ink-3);
   text-decoration: none;
-  font-size: 13.5px;
-  padding: 4px 0;
-  transition: color 0.15s;
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: -0.005em;
+  min-width: 0;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
-.sf-foot-col a:hover { color: var(--ink); }
+
+.sf-tile-label {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sf-tile-ic {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--paper-2);
+  color: var(--accent-ink);
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.sf-tile:hover {
+  color: var(--ink);
+  background: var(--accent-soft);
+  border-color: rgba(109, 40, 217, 0.16);
+}
+.sf-tile:hover .sf-tile-ic {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: scale(1.06);
+}
 .sf-foot-bot {
   padding-top: 24px;
   border-top: 1px solid var(--line);
@@ -390,8 +571,11 @@ a.sf-direct-v:hover { color: var(--accent); }
   .sf-contact-grid { grid-template-columns: 1fr; gap: 20px; }
   .sf-contact--contact-hero .sf-contact-grid { grid-template-columns: 1fr; }
   .sf-contact--contact-hero .sf-contact-head h1 { font-size: 48px; }
-  .sf-foot-top { grid-template-columns: 1fr; gap: 40px; }
+  .sf-foot-brand-row { grid-template-columns: 1fr; gap: 28px; }
+  .sf-tile-grid-services { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .sf-foot-cols { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .sf-foot-col { padding: 0; border-left: none; }
+  .sf-foot-col:nth-child(2) { border-left: 1px solid var(--line); padding-left: 32px; }
 }
 @media (max-width: 768px) {
   .sf-contact { padding: 80px 0 72px; }
@@ -419,10 +603,17 @@ a.sf-direct-v:hover { color: var(--accent); }
   .sf-trust-row .sep { display: none; }
 
   .sf-footer { padding: 48px 0 28px; }
-  .sf-foot-cols { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .sf-tile-grid-services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sf-foot-cols { grid-template-columns: 1fr; gap: 28px; }
+  .sf-foot-col,
+  .sf-foot-col:nth-child(2) { padding: 0; border-left: none; border-top: 1px solid var(--line); padding-top: 24px; }
+  .sf-foot-col:first-child { border-top: none; padding-top: 0; }
+  .sf-foot-cta { flex-direction: row; padding: 18px 20px; }
+  .sf-foot-cta-title { font-size: 14px; }
   .sf-foot-bot { flex-direction: column; gap: 8px; font-size: 11.5px; }
 }
 @media (max-width: 480px) {
+  .sf-tile-grid-services { grid-template-columns: 1fr; }
   .sf-contact-head h1,
   .sf-contact-head h2 { font-size: 28px; }
   .sf-contact--contact-hero .sf-contact-head h1 {
@@ -433,4 +624,106 @@ a.sf-direct-v:hover { color: var(--accent); }
   .sf-contact--contact-hero .sf-card,
   .sf-contact--contact-hero .sf-form { padding: 18px; }
   .sf-foot-cols { grid-template-columns: 1fr; }
+}
+
+/* ======================================================================
+   Voice dictation (Groq Whisper-large-v3) — message field
+   ====================================================================== */
+.sf-field-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sf-field .sf-field-head > span {
+  font-family: var(--font-geist-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.vdb-wrap {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.vdb-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+.vdb-btn:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+.vdb-btn:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.vdb-btn.is-recording {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.18);
+  animation: vdb-pulse 1.2s ease-in-out infinite;
+}
+.vdb-btn.is-recording:hover {
+  background: #b91c1c;
+  border-color: #b91c1c;
+  color: #fff;
+}
+
+.vdb-btn.is-processing {
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+@keyframes vdb-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.18); }
+  50%      { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0.05); }
+}
+
+.vdb-spin {
+  animation: vdb-spin 0.9s linear infinite;
+}
+@keyframes vdb-spin {
+  to { transform: rotate(360deg); }
+}
+
+.vdb-hint {
+  font-family: var(--font-geist-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.vdb-error {
+  flex-basis: 100%;
+  font-family: inherit;
+  font-size: 12px;
+  color: #b91c1c;
+  margin-top: 4px;
+}
+
+@media (max-width: 480px) {
+  .vdb-hint { display: none; }
 }

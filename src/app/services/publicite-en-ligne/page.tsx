@@ -12,6 +12,14 @@ export const metadata: Metadata = {
     description:
       "SEA + Paid Social piloté par le CAC, pas le ROAS vanity. Tracking server-side inclus, forfait fixe mensuel, budget media sur vos comptes.",
     url: "/services/publicite-en-ligne",
+    images: [
+      {
+        url: "/og-image-services.png",
+        width: 1200,
+        height: 630,
+        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
+      },
+    ],
     type: "website",
   },
 };
@@ -33,7 +41,7 @@ const serviceJsonLd = JSON.stringify({
       addressLocality: "Chambéry",
       addressCountry: "FR",
     },
-    email: "hello@hagnere-code.fr",
+    email: "quentin@hagnere-patrimoine.fr",
     telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },

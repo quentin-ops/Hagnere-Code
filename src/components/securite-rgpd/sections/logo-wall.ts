@@ -18,7 +18,7 @@ export const logoWallHtml = `
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
             <path d="M9 12l2 2 4-4" stroke-width="2"/>
           </svg>
-          <span><b>RC Pro souscrite</b> · attestation fournie au devis</span>
+          <span><b>NDA mutuel J0</b> · signé avant tout accès</span>
         </div>
         <div class="sr-trust-sep" aria-hidden="true"></div>
         <div class="sr-trust-cell">

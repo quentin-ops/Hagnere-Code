@@ -174,7 +174,16 @@ export const teamMember = pgTable("team_member", {
   pricingProfileId: text("pricing_profile_id"),
   hourlySellRate: integer("hourly_sell_rate"),
   availableHoursPerWeek: integer("available_hours_per_week"),
+  /** @deprecated Utilise externalProfileUrl + externalProfileLabel à la place. Conservé pour rétrocompat. */
   linkedinUrl: text("linkedin_url"),
+  /**
+   * URL du profil professionnel externe (LinkedIn, Codeur, GitHub, etc.).
+   * Remplace linkedinUrl qui était trop spécifique — un freelance peut
+   * n'avoir qu'un Codeur.com sans LinkedIn par exemple.
+   */
+  externalProfileUrl: text("external_profile_url"),
+  /** Label affichable : "LinkedIn", "Codeur", "GitHub". Affiché en alt + tooltip. */
+  externalProfileLabel: text("external_profile_label"),
   photoUrl: text("photo_url"),
   active: boolean("active").notNull().default(true),
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),

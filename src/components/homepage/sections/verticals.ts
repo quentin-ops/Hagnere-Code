@@ -172,7 +172,7 @@ export const verticalsHtml = `
         <div class="vt-outcome">Résultat : un site qui vend votre valeur, pas une brochure.</div>
       </a>
 
-      <a class="vt-card vt-card-situation vt-card--dark reveal reveal-d-2" data-accent="orange" href="/services/audit-technique">
+      <a class="vt-card vt-card-situation reveal reveal-d-2" data-accent="orange" href="/services/audit-technique">
         <div class="vt-head">
           <div class="vt-ic">
             <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -199,6 +199,34 @@ export const verticalsHtml = `
           <span>Maintenance</span>
         </div>
         <div class="vt-outcome">Résultat : une trajectoire propre, sans big bang risqué.</div>
+      </a>
+
+      <a class="vt-card vt-card-situation reveal" data-accent="violet" href="/services/application-mobile">
+        <div class="vt-head">
+          <div class="vt-ic">
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="5" y="2" width="14" height="20" rx="2.5"/>
+              <path d="M11 18h2"/>
+            </svg>
+          </div>
+          <span class="vt-tag">iOS + Android</span>
+        </div>
+        <div class="vt-index">07</div>
+        <h3>Vos clients fidèles vous demandent une vraie app sur leur téléphone.</h3>
+        <p>
+          App native iOS + Android (React Native + Expo), publiée sous vos comptes
+          App Store + Google Play, paiement Apple Pay, push géolocalisée, fidélité,
+          mode hors-ligne. Code et stores 100 % à vous.
+        </p>
+        <div class="vt-mini vt-mini-stack" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="vt-feats">
+          <span>iOS + Android</span>
+          <span>App Store + Play Store</span>
+          <span>OTA EAS</span>
+        </div>
+        <div class="vt-outcome">Résultat : présence sur l'écran d'accueil, panier moyen +40 %.</div>
       </a>
     </div>
 

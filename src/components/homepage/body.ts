@@ -1,267 +1,195 @@
-export const bodyHtml = `<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="brand">
-      <div class="brand-mark">HC</div>
-      <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
-    </a>
-    <div class="nav-links">
-      <div class="nav-item">
-        <a href="#services" class="nav-trigger">Services
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </a>
-        <div class="nav-dd">
-          <div class="dd-col">
-            <h6>Construire</h6>
-            <a class="dd-link" href="/services/saas-applications-metier">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">SaaS &amp; applis métier</div><div class="dd-sub">Plateformes B2B, espaces clients.</div></div>
-            </a>
-            <a class="dd-link" href="/services/outils-internes-sur-mesure">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 4 4 5-5"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Outils internes sur mesure</div><div class="dd-sub">Back-office, workflows, automatisations.</div></div>
-            </a>
-            <a class="dd-link" href="/services/sites-vitrines">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Sites vitrines &amp; landings</div><div class="dd-sub">Sites qui convertissent, pas qui informent.</div></div>
-            </a>
-            <a class="dd-link" href="/services/ecommerce">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">E-commerce</div><div class="dd-sub">Boutiques haut de gamme, Shopify Plus.</div></div>
-            </a>
-          </div>
-          <div class="dd-col">
-            <h6>Faire grandir</h6>
-            <a class="dd-link" href="/services/referencement-google">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">SEO &amp; référencement</div><div class="dd-sub">Contenu, tech, netlinking.</div></div>
-            </a>
-            <a class="dd-link" href="/services/publicite-en-ligne">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Publicité en ligne</div><div class="dd-sub">Google Ads, Meta, LinkedIn.</div></div>
-            </a>
-            <a class="dd-link" href="/services/contenu-video">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Contenu &amp; vidéo</div><div class="dd-sub">Studio interne, motion, YouTube.</div></div>
-            </a>
-          </div>
-          <div class="dd-col">
-            <h6>Protéger &amp; opérer</h6>
-            <a class="dd-link" href="/services/maintenance-evolution">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Maintenance &amp; évolution</div><div class="dd-sub">Forfait mensuel, support prioritaire.</div></div>
-            </a>
-            <a class="dd-link" href="/services/securite-rgpd">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Sécurité &amp; RGPD</div><div class="dd-sub">Audit, conformité, hébergement FR.</div></div>
-            </a>
-            <a class="dd-link" href="/services/audit-technique">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Audit technique</div><div class="dd-sub">Code review, perf, sécurité.</div></div>
-            </a>
-          </div>
-          <div class="dd-cta">
-            <div class="dd-cta-body">
-              <div class="tag">Pas sûr ?</div>
-              <div class="dd-cta-title">On vous aide à choisir le bon service.</div>
-              <div class="dd-cta-sub">30 min avec un associé, gratuit, pour cadrer votre besoin.</div>
-              <a href="#contact" class="btn btn-accent">Réserver un créneau →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a href="/methode">Méthode</a>
-      <a href="/realisations">Réalisations</a>
-      <a href="/equipe">Équipe</a>
-      <a href="/tarifs">Tarifs</a>
-      <a href="/demarrer-un-projet">Calculateur</a>
-      <a href="/guide">Guide</a>
-      <a href="/contact">Contact</a>
-    </div>
-    <div class="nav-cta">
-      <a href="#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="/demarrer-un-projet" class="btn btn-primary">Démarrer un projet
-        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</nav>
+import { navHtml } from "@/components/design-shared/nav-html";
 
+export const bodyHtml = `${navHtml}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg-grid"></div>
   <div class="hero-radial"></div>
   <div class="wrap hero-inner">
     <div>
-      <div class="hero-eyebrow"><span class="pill"><span class="dot"></span> 6 projets/an <b style="color:var(--ink);font-weight:600">2 créneaux prochain trimestre</b></span></div>
+      <div class="hero-eyebrow"><span class="pill hero-pill"><span class="dot"></span><span class="hero-pill-brand">Hagnéré Code</span><span class="hero-pill-tag">L'expertise humaine boostée à l'intelligence artificielle</span></span></div>
       <h1 data-variant="A">
-        <span id="h1-content">Le studio qui construit<br>vos outils numériques,<br><span class="accent">sans survente.</span></span>
+        <span id="h1-content">Le studio qui construit<br>les outils numériques<br><span class="accent">dont vous rêvez.</span></span>
       </h1>
       <p class="hero-sub" id="hero-sub">
-        On imagine, on conçoit, on développe, on lance et on maintient
-        vos <b>sites, applications métier et SaaS sur mesure</b>. On est un studio jeune :
-        nos preuves viennent surtout des produits qu'on a construits pour le groupe Hagnéré,
-        pas d'un portefeuille client gonflé.
+        On imagine, on conçoit, on développe, on lance et on maintient vos
+        <b>sites, applications métier et SaaS sur mesure</b>. Une équipe d'experts
+        qui combine savoir-faire technique pointu et intelligence artificielle
+        pour livrer plus vite des produits qui transforment vraiment votre activité.
       </p>
       <div class="hero-cta">
         <a href="/demarrer-un-projet" class="btn btn-accent btn-lg">
           Démarrer un projet
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="/realisations" class="btn btn-ghost btn-lg">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          Voir nos réalisations
-        </a>
+        <button type="button" class="btn btn-ghost btn-lg" data-calendly-open>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Réserver un rendez-vous
+        </button>
       </div>
       <p class="hero-micro">
         Vous tomberez sur <b>un associé qui code</b>, pas sur un commercial. 30 min, sans engagement.
       </p>
-      <div class="hero-meta">
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Forfait fixe, pas de régie</span>
-        <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Code &amp; données chez vous</span>
-        <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Réponse sous 24h</span>
-      </div>
+      <ul class="hero-badges" role="list">
+        <li class="hero-badge">
+          <span class="hero-badge-ic"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>
+          Forfait fixe, pas de régie
+        </li>
+        <li class="hero-badge">
+          <span class="hero-badge-ic"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>
+          Code &amp; données chez vous
+        </li>
+        <li class="hero-badge">
+          <span class="hero-badge-ic"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>
+          Réponse sous 24h
+        </li>
+      </ul>
     </div>
 
-    <!-- Founder video (isometric tower as backdrop) -->
-    <div class="hero-visual">
-      <div class="hero-video-wrap">
-        <a class="hero-video" href="#contact" aria-label="Réserver un échange avec Quentin Hagnéré">
-          <div class="hero-video-thumb" aria-hidden="true">
-            <div class="hero-video-gradient"></div>
-            <div class="hero-video-grid"></div>
+    <!-- Hero visual : "Living Product" — carte produit en glass-morphism + pills orbitales + lignes connectées -->
+    <div class="hero-visual hero-visual-v2" aria-hidden="true">
+      <div class="hv-bg-glow"></div>
+      <div class="hv-bg-grid"></div>
+
+      <!-- Particules ambiantes -->
+      <div class="hv-particles">
+        <span style="--x:12%;--d:0s;--dur:11s"></span>
+        <span style="--x:28%;--d:-2s;--dur:13s"></span>
+        <span style="--x:48%;--d:-4s;--dur:9s"></span>
+        <span style="--x:67%;--d:-1s;--dur:14s"></span>
+        <span style="--x:82%;--d:-6s;--dur:12s"></span>
+        <span style="--x:92%;--d:-3s;--dur:10s"></span>
+      </div>
+
+      <!-- Services row (top) — types de produits qu'on construit -->
+      <div class="hv-services" role="list">
+        <span class="hv-svc" role="listitem">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          SaaS
+        </span>
+        <span class="hv-svc" role="listitem">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Outils internes
+        </span>
+        <span class="hv-svc" role="listitem">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Sites vitrine
+        </span>
+        <span class="hv-svc" role="listitem">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+          E-commerce
+        </span>
+        <span class="hv-svc" role="listitem">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2.5"/><path d="M12 18h.01"/></svg>
+          App mobile
+        </span>
+      </div>
+
+      <!-- Lignes connectant les rangées et la carte produit -->
+      <svg class="hv-lines" viewBox="0 0 520 540" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="hvLine" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#6D28D9" stop-opacity="0"/>
+            <stop offset="50%" stop-color="#6D28D9" stop-opacity="0.5"/>
+            <stop offset="100%" stop-color="#6D28D9" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- Top descending lines from services row -->
+        <path class="hv-line" d="M 90 50 C 130 110, 180 160, 200 200" />
+        <path class="hv-line" d="M 200 50 C 210 110, 230 160, 240 200" />
+        <path class="hv-line" d="M 320 50 C 310 110, 290 160, 280 200" />
+        <path class="hv-line" d="M 430 50 C 390 110, 340 160, 320 200" />
+        <!-- Bottom rising lines from stack row -->
+        <path class="hv-line" d="M 90 490 C 140 440, 190 380, 210 340" />
+        <path class="hv-line" d="M 200 500 C 220 440, 240 380, 250 340" />
+        <path class="hv-line" d="M 320 500 C 300 440, 280 380, 270 340" />
+        <path class="hv-line" d="M 430 490 C 380 440, 330 380, 310 340" />
+      </svg>
+
+      <!-- Carte produit centrale (glass) -->
+      <div class="hv-product">
+        <div class="hv-product-header">
+          <span class="hv-tl"></span>
+          <span class="hv-tl"></span>
+          <span class="hv-tl"></span>
+          <div class="hv-product-url">app.votre-projet.fr</div>
+        </div>
+        <div class="hv-product-body">
+          <div class="hv-product-eyebrow">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12l3 3 5-5"/><path d="M3 19l3 3 5-5"/><path d="M14 8h7"/><path d="M14 15h7"/></svg>
+            Tableau de bord
           </div>
-          <div class="hero-video-founder">
-            <div class="hero-video-avatar">QH</div>
-            <div class="hero-video-founder-meta">
-              <div class="hero-video-name">Quentin Hagnéré</div>
-              <div class="hero-video-role">Fondateur · Hagnéré Code</div>
+          <div class="hv-product-stats">
+            <div class="hv-stat">
+              <div class="hv-stat-v">2&thinsp;480</div>
+              <div class="hv-stat-k">utilisateurs actifs</div>
+            </div>
+            <div class="hv-stat hv-stat-accent">
+              <div class="hv-stat-v">+47<span class="pct">%</span></div>
+              <div class="hv-stat-k">vs mois dernier</div>
             </div>
           </div>
-          <div class="hero-video-play" aria-hidden="true">
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          <div class="hv-product-chart">
+            <div class="hv-bar" style="--h:42%;--d:.05s"></div>
+            <div class="hv-bar" style="--h:58%;--d:.10s"></div>
+            <div class="hv-bar" style="--h:50%;--d:.15s"></div>
+            <div class="hv-bar" style="--h:78%;--d:.20s"></div>
+            <div class="hv-bar hv-bar-on" style="--h:88%;--d:.25s"></div>
+            <div class="hv-bar hv-bar-on" style="--h:100%;--d:.30s"></div>
           </div>
-          <div class="hero-video-caption">
-            <span class="hero-video-tag">ÉCHANGE · 30 MIN</span>
-            <span class="hero-video-title">Parlez directement avec l'associé qui cadrera et codera votre projet.</span>
+          <div class="hv-product-rows">
+            <div class="hv-row"></div>
+            <div class="hv-row hv-row-short"></div>
           </div>
-          <span class="hero-video-soon">Créneau de cadrage gratuit, sans commercial entre vous et l'équipe technique.</span>
-        </a>
+        </div>
+        <div class="hv-product-footer">
+          <span class="hv-product-status"><span class="hv-status-dot"></span> EN PRODUCTION</span>
+          <span class="hv-product-version">v1.4.2</span>
+        </div>
       </div>
-      <div class="tower tower-bg" aria-hidden="true">
-      <svg viewBox="0 0 520 540" preserveAspectRatio="xMidYMid meet">
-        <defs>
-          <linearGradient id="gtop" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#6D28D9"/>
-            <stop offset="1" stop-color="#4C1D95"/>
-          </linearGradient>
-          <linearGradient id="gmid" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#262626"/>
-            <stop offset="1" stop-color="#0A0A0A"/>
-          </linearGradient>
-          <linearGradient id="gpale" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#FAFAFA"/>
-            <stop offset="1" stop-color="#EDEDED"/>
-          </linearGradient>
-          <filter id="fshadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000" flood-opacity="0.12"/>
-          </filter>
-        </defs>
 
-        <!-- ground shadow -->
-        <ellipse cx="260" cy="500" rx="180" ry="24" fill="#000" opacity="0.08"/>
+      <!-- Stack row (bottom) — pills tech existantes -->
+      <div class="hv-stack">
+        <div class="hv-orbit">
+          <span class="hv-orbit-ic">
+            <img src="/logos/stack/authjs.webp" alt="Auth.js" loading="lazy" decoding="async" />
+          </span>
+          <div class="hv-orbit-body">
+            <span class="hv-orbit-k">Auth.js</span>
+            <span class="hv-orbit-v">SSO + 2FA</span>
+          </div>
+        </div>
 
-        <g class="tower-float">
+        <div class="hv-orbit">
+          <span class="hv-orbit-ic hv-orbit-ic-stripe">
+            <img src="/logos/stack/stripe.svg" alt="Stripe" loading="lazy" decoding="async" />
+          </span>
+          <div class="hv-orbit-body">
+            <span class="hv-orbit-k">Paiements</span>
+            <span class="hv-orbit-v">Stripe natif</span>
+          </div>
+        </div>
 
-        <!-- Block 1 (base) — white card -->
-        <g filter="url(#fshadow)">
-          <polygon points="140,430 260,490 380,430 260,370" fill="url(#gpale)"/>
-          <polygon points="140,430 140,380 260,440 260,490" fill="#D4D4D4"/>
-          <polygon points="380,430 380,380 260,440 260,490" fill="#BFBFBF"/>
-          <polygon points="140,380 260,320 380,380 260,440" fill="#FFFFFF" stroke="#E5E5E5"/>
-          <!-- grid pattern on top -->
-          <line x1="180" y1="360" x2="300" y2="420" stroke="#E5E5E5" stroke-width="0.8"/>
-          <line x1="220" y1="340" x2="340" y2="400" stroke="#E5E5E5" stroke-width="0.8"/>
-          <line x1="220" y1="340" x2="220" y2="388" stroke="#E5E5E5" stroke-width="0.8"/>
-          <line x1="260" y1="320" x2="180" y2="360" stroke="#E5E5E5" stroke-width="0.8" opacity="0.4"/>
-        </g>
+        <div class="hv-orbit">
+          <span class="hv-orbit-ic hv-orbit-ic-laravel">
+            <img src="/logos/stack/laravel.svg" alt="Laravel" loading="lazy" decoding="async" />
+          </span>
+          <div class="hv-orbit-body">
+            <span class="hv-orbit-k">Back-end</span>
+            <span class="hv-orbit-v">Laravel 13</span>
+          </div>
+        </div>
 
-        <!-- Block 2 — dark block (stack / data) -->
-        <g filter="url(#fshadow)">
-          <polygon points="165,335 260,382 355,335 260,288" fill="#0A0A0A"/>
-          <polygon points="165,335 165,298 260,345 260,382" fill="#1A1A1A"/>
-          <polygon points="355,335 355,298 260,345 260,382" fill="#050505"/>
-          <polygon points="165,298 260,251 355,298 260,345" fill="url(#gmid)"/>
-          <!-- rows -->
-          <line x1="200" y1="290" x2="290" y2="335" stroke="#6D28D9" stroke-width="0.8" opacity="0.4"/>
-          <line x1="230" y1="275" x2="320" y2="320" stroke="#6D28D9" stroke-width="0.8" opacity="0.4"/>
-          <circle cx="280" cy="280" r="3" fill="#6D28D9" opacity="0.8"/>
-          <circle cx="230" cy="310" r="2" fill="#a3e47f" opacity="0.7"/>
-        </g>
-
-        <!-- Block 3 — accent red block -->
-        <g filter="url(#fshadow)">
-          <polygon points="190,255 260,290 330,255 260,220" fill="url(#gtop)"/>
-          <polygon points="190,255 190,220 260,255 260,290" fill="#4C1D95"/>
-          <polygon points="330,255 330,220 260,255 260,290" fill="#3B0764"/>
-          <polygon points="190,220 260,185 330,220 260,255" fill="#8B5CF6"/>
-          <!-- mini grid -->
-          <line x1="215" y1="213" x2="285" y2="248" stroke="#fff" stroke-width="0.6" opacity="0.35"/>
-          <line x1="238" y1="200" x2="308" y2="235" stroke="#fff" stroke-width="0.6" opacity="0.35"/>
-        </g>
-
-        <!-- Block 4 — white small top -->
-        <g filter="url(#fshadow)">
-          <polygon points="215,195 260,218 305,195 260,172" fill="#fff"/>
-          <polygon points="215,195 215,175 260,198 260,218" fill="#E5E5E5"/>
-          <polygon points="305,195 305,175 260,198 260,218" fill="#D4D4D4"/>
-          <polygon points="215,175 260,152 305,175 260,198" fill="#F5F5F5"/>
-        </g>
-
-        <!-- Antenna / flag -->
-        <line x1="260" y1="152" x2="260" y2="105" stroke="#0A0A0A" stroke-width="2"/>
-        <circle cx="260" cy="100" r="8" fill="#6D28D9"/>
-        <circle cx="260" cy="100" r="14" fill="none" stroke="#6D28D9" stroke-width="1" opacity="0.5"/>
-        <circle cx="260" cy="100" r="22" fill="none" stroke="#6D28D9" stroke-width="0.5" opacity="0.25"/>
-        </g>
-
-        <!-- Floating tags around -->
-        <g class="tower-float" style="animation-delay:-2s">
-          <g transform="translate(50 180)">
-            <rect x="0" y="0" width="90" height="34" rx="7" fill="#fff" stroke="#E5E5E5"/>
-            <circle cx="14" cy="17" r="4" fill="#6D28D9"/>
-            <text x="26" y="15" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">Laravel 13</text>
-            <text x="26" y="27" font-family="Geist Mono" font-size="8" fill="#737373">back-end</text>
-          </g>
-        </g>
-        <g class="tower-float" style="animation-delay:-4s">
-          <g transform="translate(390 140)">
-            <rect x="0" y="0" width="100" height="34" rx="7" fill="#fff" stroke="#E5E5E5"/>
-            <rect x="10" y="11" width="10" height="12" rx="2" fill="#0A0A0A"/>
-            <text x="28" y="15" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">Claude Code</text>
-            <text x="28" y="27" font-family="Geist Mono" font-size="8" fill="#737373">agent IA</text>
-          </g>
-        </g>
-        <g class="tower-float" style="animation-delay:-1s">
-          <g transform="translate(370 380)">
-            <rect x="0" y="0" width="110" height="34" rx="7" fill="#fff" stroke="#E5E5E5"/>
-            <circle cx="14" cy="17" r="4" fill="#a3e47f"/>
-            <text x="26" y="15" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">99,9 % uptime</text>
-            <text x="26" y="27" font-family="Geist Mono" font-size="8" fill="#737373">nos 4 apps · 90j</text>
-          </g>
-        </g>
-        <g class="tower-float" style="animation-delay:-3s">
-          <g transform="translate(30 330)">
-            <rect x="0" y="0" width="110" height="34" rx="7" fill="#fff" stroke="#E5E5E5"/>
-            <rect x="10" y="11" width="10" height="12" rx="2" fill="#0A0A0A"/>
-            <text x="28" y="15" font-family="Geist" font-weight="600" font-size="10" fill="#0A0A0A">Livré en 6 sem.</text>
-            <text x="28" y="27" font-family="Geist Mono" font-size="8" fill="#737373">forfait fixe</text>
-          </g>
-        </g>
-      </svg>
-    </div>
+        <div class="hv-orbit">
+          <span class="hv-orbit-ic hv-orbit-ic-claude">
+            <img src="/logos/stack/anthropic.svg" alt="Claude" loading="lazy" decoding="async" />
+          </span>
+          <div class="hv-orbit-body">
+            <span class="hv-orbit-k">Claude Code</span>
+            <span class="hv-orbit-v">agent IA quotidien</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -282,27 +210,27 @@ export const bodyHtml = `<!-- NAV -->
           <div class="lb-row-label">Back-end</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/laravel/FF2D20" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/laravel.svg" alt="Laravel" loading="lazy" decoding="async" />
               Laravel 13 <span class="lb-chip-dim">PHP 8.4</span>
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/postgresql.svg" alt="PostgreSQL" loading="lazy" decoding="async" />
               PostgreSQL <span class="lb-chip-dim">Neon / Supabase</span>
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/redis/FF4438" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/redis.svg" alt="Redis" loading="lazy" decoding="async" />
               Redis <span class="lb-chip-dim">cache + queues</span>
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/drizzle/C5F74F" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/drizzle.svg" alt="Drizzle ORM" loading="lazy" decoding="async" />
               Drizzle ORM <span class="lb-chip-dim">migrations typées</span>
             </span>
             <span class="lb-chip">
-              <img src="https://authjs.dev/img/etc/logo-sm.webp" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/authjs.webp" alt="Auth.js" loading="lazy" decoding="async" />
               Auth.js <span class="lb-chip-dim">SSO / sessions</span>
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/mysql/4479A1" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/mysql.svg" alt="MySQL" loading="lazy" decoding="async" />
               MySQL 8 <span class="lb-chip-dim">legacy &amp; métier</span>
             </span>
           </div>
@@ -312,35 +240,35 @@ export const bodyHtml = `<!-- NAV -->
           <div class="lb-row-label">Front-end web</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/react/61DAFB" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/react.svg" alt="React" loading="lazy" decoding="async" />
               React 19.2
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/nextdotjs/000000" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/nextjs.svg" alt="Next.js" loading="lazy" decoding="async" />
               Next.js 16
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/livewire/FB70A9" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/livewire.svg" alt="Livewire" loading="lazy" decoding="async" />
               Livewire 4
             </span>
             <span class="lb-chip">
-              <img src="https://fluxui.dev/faviconcircle32x32.png" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/fluxui.png" alt="Flux UI" loading="lazy" decoding="async" />
               Flux UI <span class="lb-chip-dim">composants</span>
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/tailwindcss.svg" alt="Tailwind CSS" loading="lazy" decoding="async" />
               Tailwind v4
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/typescript/3178C6" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/typescript.svg" alt="TypeScript" loading="lazy" decoding="async" />
               TypeScript 5 <span class="lb-chip-dim">strict</span>
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/radixui/161618" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/radixui.svg" alt="Radix UI" loading="lazy" decoding="async" />
               Radix UI <span class="lb-chip-dim">accessibilité</span>
             </span>
             <span class="lb-chip">
-              <img src="https://framerusercontent.com/images/3aQX5dnH5Yqgsn98QXKF2ZXxIE.png" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/motion.png" alt="Motion" loading="lazy" decoding="async" />
               Motion <span class="lb-chip-dim">interactions</span>
             </span>
           </div>
@@ -350,16 +278,16 @@ export const bodyHtml = `<!-- NAV -->
           <div class="lb-row-label">Mobile iOS/Android</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/react/61DAFB" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/react.svg" alt="React Native" loading="lazy" decoding="async" />
               React Native
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/expo/000020" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/expo.svg" alt="Expo" loading="lazy" decoding="async" />
               Expo SDK
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/apple/000000" alt="" loading="lazy" decoding="async" />
-              <img src="https://cdn.simpleicons.org/android/3DDC84" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/apple.svg" alt="iOS" loading="lazy" decoding="async" />
+              <img src="/logos/stack/android.svg" alt="Android" loading="lazy" decoding="async" />
               iOS &amp; Android
             </span>
             <span class="lb-chip">
@@ -373,15 +301,15 @@ export const bodyHtml = `<!-- NAV -->
           <div class="lb-row-label">IA &amp; agents</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/anthropic/D97757" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/anthropic.svg" alt="Anthropic Claude" loading="lazy" decoding="async" />
               Claude Opus 4.7 <span class="lb-chip-dim">agents &amp; code</span>
             </span>
             <span class="lb-chip">
-              <img src="https://api.iconify.design/simple-icons:openai.svg?color=%230A0A0A" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/openai.svg" alt="OpenAI" loading="lazy" decoding="async" />
               GPT-5.5 <span class="lb-chip-dim">raisonnement &amp; code</span>
             </span>
             <span class="lb-chip">
-              <img src="https://prismphp.com/assets/prism-logo.webp" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/prism.webp" alt="Prism PHP" loading="lazy" decoding="async" />
               Prism <span class="lb-chip-dim">LLM abstraction</span>
             </span>
             <span class="lb-chip">
@@ -399,35 +327,35 @@ export const bodyHtml = `<!-- NAV -->
           <div class="lb-row-label">Infra &amp; ops</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/vercel/000000" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/vercel.svg" alt="Vercel" loading="lazy" decoding="async" />
               Vercel <span class="lb-chip-dim">edge</span>
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/cloudflare/F38020" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/cloudflare.svg" alt="Cloudflare" loading="lazy" decoding="async" />
               Cloudflare <span class="lb-chip-dim">OpenNext</span>
             </span>
             <span class="lb-chip">
-              <img src="https://api.iconify.design/simple-icons:amazonaws.svg?color=%23FF9900" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/aws.svg" alt="AWS" loading="lazy" decoding="async" />
               AWS S3 + SES
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/docker/2496ED" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/docker.svg" alt="Docker" loading="lazy" decoding="async" />
               Docker <span class="lb-chip-dim">Coolify</span>
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/githubactions/2088FF" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/githubactions.svg" alt="GitHub Actions" loading="lazy" decoding="async" />
               GitHub Actions
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/sentry/362D59" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/sentry.svg" alt="Sentry" loading="lazy" decoding="async" />
               Sentry <span class="lb-chip-dim">erreurs</span>
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/betterstack/000000" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/betterstack.svg" alt="Better Stack" loading="lazy" decoding="async" />
               Better Stack <span class="lb-chip-dim">uptime</span>
             </span>
             <span class="lb-chip">
-              <img src="https://cdn.simpleicons.org/dependabot/025E8C" alt="" loading="lazy" decoding="async" />
+              <img src="/logos/stack/dependabot.svg" alt="Dependabot" loading="lazy" decoding="async" />
               Dependabot <span class="lb-chip-dim">CVE</span>
             </span>
           </div>
@@ -808,7 +736,7 @@ export const bodyHtml = `<!-- NAV -->
                 Obtenir mon cadrage
                 <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </a>
-              <div class="dc-action-note">30 min avec un associé · devis sous 48h</div>
+              <div class="dc-action-note">30 min avec le gérant · devis sous 48h</div>
             </div>
           </div>
         </div>
@@ -966,6 +894,22 @@ export const bodyHtml = `<!-- NAV -->
         </div>
       </div>
     </div>
+
+    <div class="meth-deepdive reveal">
+      <div class="meth-deepdive-copy">
+        <span class="meth-deepdive-tag">Aller plus loin</span>
+        <p>
+          Livrables détaillés par étape, exemples concrets, garanties contractuelles et
+          comparatif avec une agence classique — tout est documenté.
+        </p>
+      </div>
+      <a href="/methode" class="btn btn-accent btn-lg meth-deepdive-cta">
+        Découvrir la méthode Sprint Fixe™ en détail
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M5 12h14M13 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
     </div>
   </div>
 </section>
@@ -1017,7 +961,7 @@ export const bodyHtml = `<!-- NAV -->
           <span class="real-chip">SaaS B2C</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">LARAVEL 12 <span class="dot"></span> LIVRÉ 2023</div>
+          <div class="real-meta">LARAVEL 12 <span class="dot"></span> SaaS B2C</div>
           <p>Logiciel de comptabilité LMNP/LMP en ligne. L'IA guide l'investisseur dans sa liasse fiscale, amortissements, transmission EDI. 183 guides fiscaux rédigés, 7,2 M impressions Google sur 12 mois, +61 % de marge nette grâce à l'automatisation.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">6<span class="s"> k+</span></div><div class="l">inscrits</div></div>
@@ -1115,7 +1059,7 @@ export const bodyHtml = `<!-- NAV -->
           <span class="real-chip">Site vitrine</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">LARAVEL <span class="dot"></span> SEO + ADS <span class="dot"></span> LIVRÉ 2024</div>
+          <div class="real-meta">LARAVEL <span class="dot"></span> SEO + ADS <span class="dot"></span> Site vitrine</div>
           <p>Refonte complète du cabinet de gestion de patrimoine : site vitrine premium, prise de RDV, tunnel de qualification, stratégie SEO longue traîne et campagnes Google Ads sur les requêtes patrimoniales.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">1,46<span class="s"> M</span></div><div class="l">impressions · 12 mois</div></div>
@@ -1171,7 +1115,7 @@ export const bodyHtml = `<!-- NAV -->
           <span class="real-chip">Site vitrine</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">LARAVEL <span class="dot"></span> SEO + ADS <span class="dot"></span> LIVRÉ 2024</div>
+          <div class="real-meta">LARAVEL <span class="dot"></span> SEO + ADS <span class="dot"></span> Site vitrine</div>
           <p>Site marque du cabinet d'investissement immobilier clé en main. Funnel de qualification de prospects investisseurs, simulateur de rendement, prise de RDV, contenus YouTube intégrés.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">149</div><div class="l">logements rénovés</div></div>
@@ -1225,12 +1169,13 @@ export const bodyHtml = `<!-- NAV -->
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— L'équipe</div>
-        <h2>Un fondateur, un CTO,<br>quatre devs seniors Laravel.</h2>
+        <h2>Un gérant, un CTO, deux devs CDI<br>+ trois freelances long-terme.</h2>
       </div>
       <div class="right">
-        Pas de pool de freelances, pas de sous-traitance offshore.
-        Une équipe stable, senior, basée à Chambéry, formée à Claude Code
-        pour être rapide <em>et</em> autonome sur vos projets.
+        Pas de pool de freelances anonyme, pas de sous-traitance offshore.
+        Studio 7 personnes&nbsp;: <b>1 gérant + 3 CDI Laravel</b> à Chambéry +
+        <b>3 freelances long-terme</b> intégrés à nos rituels, formés à Claude Code,
+        rapides <em>et</em> autonomes sur vos projets.
       </div>
     </div>
 
@@ -1242,32 +1187,12 @@ export const bodyHtml = `<!-- NAV -->
             <span class="dot"></span>
             ASSOCIÉ DIRIGEANT
           </div>
-          <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <linearGradient id="photoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#1a1a1a"/>
-                <stop offset="55%" stop-color="#0f0f0f"/>
-                <stop offset="100%" stop-color="#1e1b3a"/>
-              </linearGradient>
-              <radialGradient id="photoGlow" cx="30%" cy="25%" r="70%">
-                <stop offset="0%" stop-color="#6D28D9" stop-opacity="0.35"/>
-                <stop offset="100%" stop-color="#6D28D9" stop-opacity="0"/>
-              </radialGradient>
-              <pattern id="photoDots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-                <circle cx="1" cy="1" r="1" fill="#ffffff" fill-opacity="0.05"/>
-              </pattern>
-            </defs>
-            <rect width="400" height="500" fill="url(#photoGrad)"/>
-            <rect width="400" height="500" fill="url(#photoDots)"/>
-            <rect width="400" height="500" fill="url(#photoGlow)"/>
-            <text x="200" y="295" text-anchor="middle" font-family="Geist" font-weight="700" font-size="180" fill="#ffffff" letter-spacing="-8">QH</text>
-            <text x="200" y="345" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#a3a3a3" letter-spacing="4">QUENTIN HAGNÉRÉ</text>
-          </svg>
+          <img src="/team/quentin.webp" alt="Quentin Hagnéré, gérant associé codeur de Hagnéré Code" loading="lazy" />
         </div>
         <div class="eq-founder-body">
           <div>
             <div class="eq-founder-name">Quentin Hagnéré</div>
-            <span class="eq-founder-role">Fondateur · Front-end / Design / Back-office</span>
+            <span class="eq-founder-role">Gérant associé codeur · Brief / Design / Front-end / Back-office</span>
             <a class="eq-founder-li" href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Quentin Hagnéré"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> Voir le profil</a>
           </div>
           <div class="eq-founder-quote">
@@ -1297,11 +1222,14 @@ export const bodyHtml = `<!-- NAV -->
       <!-- EQUIPE TECH -->
       <div class="eq-team">
         <div class="eq-team-intro reveal">
-          <h3>Un CTO et quatre seniors Laravel,<br>augmentés par <em>Claude Code</em>.</h3>
+          <h3>Un CTO, deux seniors CDI<br>et trois freelances long-terme,<br>augmentés par <em>Claude Code</em>.</h3>
           <p>
-            Tous en CDI, tous seniors, tous spécialisés en écosystème Laravel. Notre CTO apporte la vision transverse et le management tech, les devs la profondeur d'exécution. Et tous formés à utiliser
-            <b>Claude Code</b> comme assistant de développement : recherches, cadrage juridique, architecture,
-            plans d'implémentation. Résultat : <b>on pose moins de questions, on avance plus vite, on livre plus proprement</b>.
+            <b>3 CDI</b> (Nicolas, Killian, Frédéric) et <b>3 freelances long-terme intégrés à nos rituels</b>
+            (Arthur, Ryan, Peter). Tous seniors ou confirmés, tous spécialisés en écosystème Laravel.
+            Le CTO apporte la vision transverse et le management tech, les devs la profondeur d'exécution.
+            Et tous utilisent <b>Claude Code</b> comme assistant de développement : recherches, cadrage,
+            architecture, plans d'implémentation. Résultat : <b>on pose moins de questions, on avance
+            plus vite, on livre plus proprement</b>.
           </p>
         </div>
 
@@ -1322,8 +1250,8 @@ export const bodyHtml = `<!-- NAV -->
             <div class="eq-dev-head">
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v2">AM</div><a class="eq-li-link" href="https://www.linkedin.com/in/arthurmonney/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Arthur Monney" title="LinkedIn Arthur Monney"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
               <div class="eq-dev-meta">
-                <div class="eq-dev-name">Arthur Monney</div>
-                <div class="eq-dev-years">Senior Dev · Back-end Laravel</div>
+                <div class="eq-dev-name">Arthur Monney<span class="eq-dev-tag">FREELANCE</span></div>
+                <div class="eq-dev-years">Senior Dev · Back-end Laravel · Freelance long-terme</div>
               </div>
             </div>
             <div class="eq-dev-spec">Architecture Laravel, systèmes complexes, paiements et facturation.</div>
@@ -1335,7 +1263,7 @@ export const bodyHtml = `<!-- NAV -->
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v3">FC</div><a class="eq-li-link" href="https://www.linkedin.com/in/frederic-curinckx/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Frédéric Curinckx" title="LinkedIn Frédéric Curinckx"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
               <div class="eq-dev-meta">
                 <div class="eq-dev-name">Frédéric Curinckx</div>
-                <div class="eq-dev-years">Senior Dev · Back-end Laravel</div>
+                <div class="eq-dev-years">Senior Dev · Back-end Laravel · CDI</div>
               </div>
             </div>
             <div class="eq-dev-spec">Laravel + Livewire, formulaires métier, interfaces temps-réel et queues.</div>
@@ -1346,8 +1274,8 @@ export const bodyHtml = `<!-- NAV -->
             <div class="eq-dev-head">
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v4">RM</div><a class="eq-li-link" href="https://www.linkedin.com/in/ryan-mazzitelli-907716262/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Ryan Mazzitelli" title="LinkedIn Ryan Mazzitelli"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
               <div class="eq-dev-meta">
-                <div class="eq-dev-name">Ryan Mazzitelli</div>
-                <div class="eq-dev-years">Senior Dev · Back-end Laravel</div>
+                <div class="eq-dev-name">Ryan Mazzitelli<span class="eq-dev-tag">FREELANCE</span></div>
+                <div class="eq-dev-years">Senior Dev · Back-end Laravel · Freelance long-terme</div>
               </div>
             </div>
             <div class="eq-dev-spec">Laravel + intégrations IA, agents Claude, webhooks et APIs tierces.</div>
@@ -1359,11 +1287,23 @@ export const bodyHtml = `<!-- NAV -->
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v5">KH</div><a class="eq-li-link" href="https://www.linkedin.com/in/killian-hoarau-960927138/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Killian Hoarau" title="LinkedIn Killian Hoarau"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
               <div class="eq-dev-meta">
                 <div class="eq-dev-name">Killian Hoarau</div>
-                <div class="eq-dev-years">Senior Dev · Back-end Laravel</div>
+                <div class="eq-dev-years">Senior Dev · Back-end Laravel · CDI</div>
               </div>
             </div>
             <div class="eq-dev-spec">Laravel + DevOps, sécurité, scalabilité, CI/CD et tests automatisés.</div>
             <div class="eq-dev-stack"><span>LARAVEL</span><span>DOCKER</span><span>AWS</span></div>
+          </div>
+
+          <div class="eq-dev">
+            <div class="eq-dev-head">
+              <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v6">PS</div><a class="eq-li-link" href="https://www.codeur.com/-peterssk" target="_blank" rel="noopener noreferrer" aria-label="Profil Codeur Peter Sum Sie Kung" title="Profil Codeur Peter Sum Sie Kung"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a></div>
+              <div class="eq-dev-meta">
+                <div class="eq-dev-name">Peter Sum Sie Kung<span class="eq-dev-tag">FREELANCE</span></div>
+                <div class="eq-dev-years">Dev confirmé · Back-end Laravel · Freelance long-terme</div>
+              </div>
+            </div>
+            <div class="eq-dev-spec">Full-stack PHP/Laravel/Symfony + React/Vue. Renforts API, modélisation BDD et intégrations.</div>
+            <div class="eq-dev-stack"><span>LARAVEL</span><span>SYMFONY</span><span>REACT</span></div>
           </div>
         </div>
 
@@ -1382,8 +1322,8 @@ export const bodyHtml = `<!-- NAV -->
         <!-- Stats -->
         <div class="eq-stats reveal reveal-d-3">
           <div class="eqs">
-            <div class="n">5</div>
-            <div class="l">personnes · tech en CDI (CTO + 4 devs)</div>
+            <div class="n">3<span class="s"> + 3</span></div>
+            <div class="l">3 CDI (CTO + 2 devs) + 3 freelances long-terme</div>
           </div>
           <div class="eqs">
             <div class="n">Senior</div>
@@ -1412,9 +1352,27 @@ export const bodyHtml = `<!-- NAV -->
         <h2>Quatre façons<br>de travailler ensemble.</h2>
       </div>
       <div class="right">
-        On vend au forfait, pas à la journée. Un Discovery Sprint payé de 2 semaines pour cadrer,
-        puis un plan chiffré forfait ferme. Vous payez exactement ce qui était prévu. Jamais de dépassement.
+        On vend au forfait, pas à la journée. Un Discovery Sprint payé pour cadrer,
+        puis un plan chiffré forfait ferme. Chaque projet est unique : <b>pas de prix de catalogue</b> —
+        chaque devis est calé sur votre périmètre réel.
       </div>
+    </div>
+
+    <div class="price-context reveal">
+      <div class="price-context-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        Comment lire les fourchettes
+      </div>
+      <p>
+        Les fourchettes ci-dessous sont <b>indicatives sur des projets-types récurrents</b>
+        (site vitrine, SaaS PME, partenariat tech). Votre projet — son périmètre, sa complexité, ses intégrations,
+        son délai — sera <b>chiffré individuellement après cadrage</b>. Pour un ordre de grandeur en 5 min,
+        passez par notre estimateur en ligne ; pour un devis ferme, on commence par un Discovery Sprint.
+      </p>
+      <a href="/estimer-mon-projet" class="price-context-cta">
+        Estimer mon projet en 5 min
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
     </div>
 
     <div class="price-grid">
@@ -1424,7 +1382,7 @@ export const bodyHtml = `<!-- NAV -->
         <div class="plan-sub">2 jours payés pour transformer votre idée en plan exécutable. Aucun engagement sur la phase 2.</div>
         <div class="plan-price">
           <span class="amount">1 500 €</span>
-          <span class="per">forfait 2 jours</span>
+          <span class="per">forfait fixe · 2 jours</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -1442,17 +1400,17 @@ export const bodyHtml = `<!-- NAV -->
         <h4>Essentiel</h4>
         <div class="plan-sub">Un site vitrine ou une landing qui convertit. Idéal pour une première collaboration.</div>
         <div class="plan-price">
-          <span class="amount">6–15 k€</span>
-          <span class="per">forfait</span>
+          <span class="amount">Sur devis</span>
+          <span class="per">≈ 6–15 k€ sur projet-type · forfait fixe</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design sur mesure</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO technique de série</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 1 an inclus</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 2–4 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Délai variable selon scope (cadrage en 30 min)</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
+        <div class="plan-cta"><a href="/estimer-mon-projet" class="btn btn-ghost">Obtenir une fourchette</a></div>
       </div>
 
       <div class="plan featured reveal reveal-d-1">
@@ -1461,8 +1419,8 @@ export const bodyHtml = `<!-- NAV -->
         <h4>Standard</h4>
         <div class="plan-sub">Un SaaS, un outil interne ou une marketplace. Le sweet spot des PME ambitieuses.</div>
         <div class="plan-price">
-          <span class="amount">25–60 k€</span>
-          <span class="per">forfait</span>
+          <span class="amount">Sur devis</span>
+          <span class="per">≈ 25–60 k€ sur projet-type · forfait fixe</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -1471,9 +1429,9 @@ export const bodyHtml = `<!-- NAV -->
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intégrations tierces (Pennylane, Stripe…)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Extraction IA selon besoin</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Formation des équipes</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 5–10 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Délai variable selon scope · démos hebdo</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
+        <div class="plan-cta"><a href="/estimer-mon-projet" class="btn btn-accent">Estimer mon projet</a></div>
       </div>
 
       <div class="plan reveal reveal-d-2">
@@ -1481,12 +1439,12 @@ export const bodyHtml = `<!-- NAV -->
         <h4>Partenariat</h4>
         <div class="plan-sub">On devient votre équipe tech externalisée. Plusieurs projets, forfait mensuel.</div>
         <div class="plan-price">
-          <span class="amount">8–20 k€</span>
-          <span class="per">/ mois</span>
+          <span class="amount">Sur mesure</span>
+          <span class="per">≈ 8–20 k€ / mois selon équipe dédiée</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée 2 à 5 personnes</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée dimensionnée selon vos besoins</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Roadmap co-construite</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA : uptime 99,9 % · astreinte Lun–Ven 8h–20h</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 6 mois minimum</li>
@@ -1538,7 +1496,7 @@ export const bodyHtml = `<!-- NAV -->
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Laravel est <b>notre framework de référence depuis 2020</b> pour les applications métier :
+            Laravel est <b>notre framework de référence</b> pour les applications métier :
             rapide à développer, facile à maintenir, compatible avec tous les devs PHP du marché. Sa
             version 13 inclut une couche IA native qui accélère les agents, les workflows et
             l'extraction documentaire. Et c'est open-source, donc pas de dépendance à un éditeur.
@@ -1593,11 +1551,11 @@ export const bodyHtml = `<!-- NAV -->
     <h2 style="margin-top:18px">Parlons de<br>votre projet.<br><span class="accent">30 min, c'est tout.</span></h2>
     <p>Un call de cadrage gratuit avec un associé. Vous repartez avec un avis franc et, sous 48 h, un devis chiffré — sans engagement.</p>
     <div class="fcta-cta">
-      <a href="https://calendly.com/hagnere-code/30min" target="_blank" rel="noopener" class="btn btn-accent btn-lg">
+      <a href="https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte" target="_blank" rel="noopener" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
-      <a href="mailto:hello@hagnere-code.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
+      <a href="mailto:quentin@hagnere-patrimoine.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
         Envoyer un email →
       </a>
     </div>
@@ -1631,11 +1589,10 @@ export const bodyHtml = `<!-- NAV -->
           <a href="/realisations">Réalisations</a>
           <a href="/equipe">Équipe</a>
           <a href="/tarifs">Tarifs</a>
-          <a href="/guide">Guide</a>
         </div>
         <div class="foot-col">
           <h5>CONTACT</h5>
-          <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>
+          <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
           <a href="/contact">Formulaire contact</a>
           <a href="/demarrer-un-projet">Démarrer un projet</a>
         </div>

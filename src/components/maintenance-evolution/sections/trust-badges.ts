@@ -77,8 +77,8 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22V15"/></svg>
         </div>
         <h4>Équipe stable · turnover &lt; 10 %</h4>
-        <p>Ancienneté moyenne des devs&nbsp;: <b>4 ans</b>. Turnover interne &lt; 10&nbsp;% (vs industrie à 25 %). Nos 3 plus anciens clients sont avec nous depuis 4 ans ou plus.</p>
-        <div class="me-trust-foot">— Chiffre vérifiable sur LinkedIn</div>
+        <p>Équipe nommée dans votre contrat · 3 CDI Laravel + 3 freelances long-terme. Turnover interne &lt; 10&nbsp;% (vs industrie à 25 %). <b>Pas de pool tournant, pas d'offshore</b>.</p>
+        <div class="me-trust-foot">— Profils vérifiables sur LinkedIn</div>
       </div>
     </div>
   </div>

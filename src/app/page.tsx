@@ -35,7 +35,7 @@ const organizationJsonLd = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
-    email: "hello@hagnere-code.fr",
+    email: "quentin@hagnere-patrimoine.fr",
     availableLanguage: ["French"],
     areaServed: "FR",
   },

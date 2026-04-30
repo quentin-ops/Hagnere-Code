@@ -41,8 +41,8 @@ export const pricingHtml = `
         <h4>Essentiel</h4>
         <div class="plan-sub">App stable, peu d'évolutions, PME 10-30 salariés. On tient la prod, on patche, on évolue au rythme de vos besoins métier.</div>
         <div class="plan-price">
-          <span class="amount">2 500 €</span>
-          <span class="per">HT / mois</span>
+          <span class="amount">Sur devis</span>
+          <span class="per">forfait mensuel</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -64,8 +64,8 @@ export const pricingHtml = `
         <h4>Scale</h4>
         <div class="plan-sub">Scale-up 30-150 salariés, SaaS en croissance. Équipe dédiée 2 pers., sprint mensuel d'évolutions, astreinte 7j/7.</div>
         <div class="plan-price">
-          <span class="amount">6 500 €</span>
-          <span class="per">HT / mois</span>
+          <span class="amount">Sur devis</span>
+          <span class="per">forfait mensuel</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -87,8 +87,8 @@ export const pricingHtml = `
         <h4>Premium</h4>
         <div class="plan-sub">ETI &amp; scale-up série B+, éditeurs B2B avec clients grands comptes. Équipe dédiée 3-4 pers., SLA 99,95 %, compliance SOC2/ISO27001-ready.</div>
         <div class="plan-price">
-          <span class="amount">14 000 €</span>
-          <span class="per">HT / mois</span>
+          <span class="amount">Sur devis</span>
+          <span class="per">forfait mensuel</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -101,7 +101,7 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>2 slots max en parallèle · sélectif</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 12 mois min.</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parler à un associé</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parler au gérant</a></div>
       </div>
     </div>
 

@@ -185,7 +185,7 @@ export const roiDashboardHtml = `
 
       <div class="at-roi-how-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        Méthodologie mesurée sur 47 audits livrés 2022 → 2026. Adaptable au format Express (3-5 j) ou Deep (15-20 j). Pour les Tech DD M&amp;A à 20-30 j, <b>ajout d'une phase d'analyse légale / IP</b> en coordination avec vos avocats.
+        Méthodologie mesurée sur audits livrés. Adaptable au format Express (3-5 j) ou Deep (15-20 j). Pour les Tech DD M&amp;A à 20-30 j, <b>ajout d'une phase d'analyse légale / IP</b> en coordination avec vos avocats.
       </div>
     </div>
   </div>

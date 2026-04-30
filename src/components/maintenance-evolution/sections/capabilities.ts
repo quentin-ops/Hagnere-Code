@@ -108,7 +108,7 @@ export const capabilitiesHtml = `
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M9 9h6v6H9z"/></svg></div>
         <h4>CodeRabbit · AI PR review</h4>
-        <p>Revue automatique des PR par IA (Claude Sonnet 4.6) avant revue humaine&nbsp;: bugs latents, sécurité, style, patterns. <b>2&times; moins de back-and-forth</b>.</p>
+        <p>Revue automatique des PR par IA (Claude Opus 4.7) avant revue humaine&nbsp;: bugs latents, sécurité, style, patterns. <b>2&times; moins de back-and-forth</b>.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></div>

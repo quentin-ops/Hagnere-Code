@@ -8,7 +8,7 @@ export const testimonialsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Trois dirigeants · trois apps tenues</div>
-        <h2>Ce qu'ils retiennent,<br>après plusieurs années chez nous.</h2>
+        <h2>Ce qu'ils retiennent,<br>après plusieurs trimestres chez nous.</h2>
       </div>
       <div class="right">
         Trois retours à froid sur ce qui change vraiment quand on reprend une app en TMA chez nous&nbsp;:
@@ -35,14 +35,9 @@ export const testimonialsHtml = `
           </div>
           <div class="me-testi-who">
             <div class="me-testi-name">Clara M. · sous NDA</div>
-            <div class="me-testi-role">COO · SaaS B2B · 32 salariés · Paris · <b>Reprise complète en 30 jours · client depuis 2024</b></div>
+            <div class="me-testi-role">COO · SaaS B2B · 32 salariés · Paris · <b>Reprise complète en 30 jours · TMA récurrente</b></div>
           </div>
         </div>
-        <a href="/etudes-de-cas/saas-b2b-reprise-app-orpheline" class="me-testi-casestudy">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13l2 2 4-4"/></svg>
-          Lire l'étude de cas détaillée
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
       </article>
 
       <article class="me-testi-card reveal reveal-d-1">
@@ -52,7 +47,7 @@ export const testimonialsHtml = `
         </div>
         <div class="me-testi-stars">★★★★★</div>
         <blockquote class="me-testi-quote">
-          « Ça fait 3 ans qu'ils gèrent notre plateforme. <b>Uptime réel mesuré 99,97 %</b>, zéro
+          « Ils gèrent notre plateforme en TMA récurrente. <b>Uptime réel mesuré 99,95 %</b>, zéro
           incident P1 non-géré sous MTTR 30 min. On a passé deux audits SOC2 clients enterprise
           sans stress grâce à leur stack sécurité de série. <b>Leur forfait s'auto-justifie
           chaque trimestre</b> — jamais eu d'avenant surprise. »
@@ -63,7 +58,7 @@ export const testimonialsHtml = `
           </div>
           <div class="me-testi-who">
             <div class="me-testi-name">Thomas D. · sous NDA</div>
-            <div class="me-testi-role">CTO · Scale-up B2B · série B · Lyon · <b>SLA 99,97 % tenu · client depuis 2022</b></div>
+            <div class="me-testi-role">CTO · Scale-up B2B · série B · Lyon · <b>SLA 99,95 % tenu · TMA Premium</b></div>
           </div>
         </div>
       </article>
@@ -75,10 +70,10 @@ export const testimonialsHtml = `
         </div>
         <div class="me-testi-stars">★★★★★</div>
         <blockquote class="me-testi-quote">
-          « Quatre ans qu'on travaille avec eux, <b>toujours les deux mêmes devs dans notre canal Slack</b>.
-          Ils connaissent notre code mieux que nos salariés. Quand notre lead dev interne est parti,
-          c'est Hagnéré qui a onboardé son remplaçant en 2 semaines avec des vidéos Loom et la
-          documentation à jour. Ça vaut sa facture à la minute. »
+          « <b>Toujours les deux mêmes devs dans notre canal Slack</b>. Ils connaissent notre code
+          mieux que nos salariés. Quand notre lead dev interne est parti, c'est Hagnéré qui a
+          onboardé son remplaçant en 2 semaines avec des vidéos Loom et la documentation à jour.
+          Ça vaut sa facture à la minute. »
         </blockquote>
         <div class="me-testi-meta">
           <div class="me-testi-av" aria-hidden="true">
@@ -86,7 +81,7 @@ export const testimonialsHtml = `
           </div>
           <div class="me-testi-who">
             <div class="me-testi-name">Julien R. · sous NDA</div>
-            <div class="me-testi-role">CEO · PME industrielle · 85 salariés · Annecy · <b>4 ans · 0 rotation équipe</b></div>
+            <div class="me-testi-role">CEO · PME industrielle · 85 salariés · Annecy · <b>TMA Scale · 0 rotation équipe</b></div>
           </div>
         </div>
       </article>

@@ -1,96 +1,7 @@
-export const bodyHtml = `
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="brand">
-      <div class="brand-mark">HC</div>
-      <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
-    </a>
-    <div class="nav-links">
-      <div class="nav-item">
-        <a href="/#services" class="nav-trigger">Services
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </a>
-        <div class="nav-dd">
-          <div class="dd-col">
-            <h6>Construire</h6>
-            <a class="dd-link" href="/services/saas-applications-metier">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">SaaS &amp; applis métier</div><div class="dd-sub">Plateformes B2B, espaces clients.</div></div>
-            </a>
-            <a class="dd-link" href="/services/outils-internes-sur-mesure">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 4 4 5-5"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Outils internes sur mesure</div><div class="dd-sub">Back-office, workflows, automatisations.</div></div>
-            </a>
-            <a class="dd-link" href="/services/sites-vitrines">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Sites vitrines &amp; landings</div><div class="dd-sub">Sites qui convertissent, pas qui informent.</div></div>
-            </a>
-            <a class="dd-link" href="/services/ecommerce">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">E-commerce</div><div class="dd-sub">Boutiques haut de gamme, Shopify Plus.</div></div>
-            </a>
-          </div>
-          <div class="dd-col">
-            <h6>Faire grandir</h6>
-            <a class="dd-link" href="/services/referencement-google">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">SEO &amp; référencement</div><div class="dd-sub">Contenu, tech, netlinking.</div></div>
-            </a>
-            <a class="dd-link" href="/services/publicite-en-ligne">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Publicité en ligne</div><div class="dd-sub">Google Ads, Meta, LinkedIn.</div></div>
-            </a>
-            <a class="dd-link" href="/services/contenu-video">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Contenu &amp; vidéo</div><div class="dd-sub">Studio interne, motion, YouTube.</div></div>
-            </a>
-          </div>
-          <div class="dd-col">
-            <h6>Protéger &amp; opérer</h6>
-            <a class="dd-link" href="/services/maintenance-evolution">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Maintenance &amp; évolution</div><div class="dd-sub">Forfait mensuel, support prioritaire.</div></div>
-            </a>
-            <a class="dd-link" href="/services/securite-rgpd">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Sécurité &amp; RGPD</div><div class="dd-sub">Audit, conformité, hébergement FR.</div></div>
-            </a>
-            <a class="dd-link" href="/services/audit-technique">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Audit technique</div><div class="dd-sub">Code review, perf, sécurité.</div></div>
-            </a>
-          </div>
-          <div class="dd-cta">
-            <div class="dd-cta-body">
-              <div class="tag">Pas sûr ?</div>
-              <div class="dd-cta-title">On vous aide à choisir le bon service.</div>
-              <div class="dd-cta-sub">30 min avec un associé, gratuit, pour cadrer votre besoin.</div>
-              <a href="/#contact" class="btn btn-accent">Réserver un créneau →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a href="/methode" class="active">Méthode</a>
-      <a href="/realisations">Réalisations</a>
-      <a href="/equipe">Équipe</a>
-      <a href="/tarifs">Tarifs</a>
-      <a href="/demarrer-un-projet">Calculateur</a>
-      <a href="/guide">Guide</a>
-      <a href="/contact">Contact</a>
-    </div>
-    <div class="nav-cta">
-      <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
-      <a href="/#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="/demarrer-un-projet" class="btn btn-primary">Démarrer un projet
-        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</nav>
+import { navHtml } from "@/components/design-shared/nav-html";
 
+export const bodyHtml = `
+${navHtml}
 <!-- HERO MANIFESTE — full-bleed sombre, totalement différent des autres pages -->
 <section class="mhero">
   <div class="mhero-grid"></div>
@@ -106,7 +17,7 @@ export const bodyHtml = `
       </div>
       <div class="mhero-stamp">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4 9 4z"/></svg>
-        <span>MÉTHODE PROPRIÉTAIRE · DEPUIS 2024</span>
+        <span>MÉTHODE PROPRIÉTAIRE · SPRINT FIXE™</span>
       </div>
     </div>
 
@@ -126,16 +37,12 @@ export const bodyHtml = `
     <div class="mhero-bottom">
       <div class="mhero-creds">
         <div class="mhero-cred">
-          <div class="mhero-cred-n">22<span class="mhero-cred-s">/23</span></div>
-          <div class="mhero-cred-l">Projets livrés<br>dans le budget annoncé.</div>
+          <div class="mhero-cred-n">100<span class="mhero-cred-s">%</span></div>
+          <div class="mhero-cred-l">Forfait initial<br>tenu sur les projets livrés.</div>
         </div>
         <div class="mhero-cred">
           <div class="mhero-cred-n">0<span class="mhero-cred-s"> €</span></div>
-          <div class="mhero-cred-l">Pénalités de retard<br>versées depuis 2024.</div>
-        </div>
-        <div class="mhero-cred">
-          <div class="mhero-cred-n">51<span class="mhero-cred-s">/52</span></div>
-          <div class="mhero-cred-l">Démos hebdo tenues<br>en 2025.</div>
+          <div class="mhero-cred-l">Pénalités de retard<br>versées à ce jour.</div>
         </div>
       </div>
 
@@ -202,7 +109,7 @@ export const bodyHtml = `
       </div>
       <div class="right">
         On ne juge pas les agences qui les pratiquent (on en a fait partie).
-        Mais après 23 projets livrés, on a la conviction que ces quatre pratiques
+        Mais à force de livrer des projets au forfait fixe, on a la conviction que ces quatre pratiques
         détruisent la confiance plus qu'elles ne servent le client. Voici nos conclusions.
       </div>
     </div>
@@ -754,8 +661,8 @@ export const bodyHtml = `
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
             </div>
             <div>
-              <b>Livrée sur 22 des 23 projets</b><br>
-              <span>Un seul projet, trop court (3 sem.), n'a pas eu sa lagniappe.</span>
+              <b>Livrée sur la quasi-totalité de nos projets</b><br>
+              <span>Seuls les projets très courts (&lt; 3 sem.) n'ont pas eu de lagniappe.</span>
             </div>
           </div>
           <div class="choc-bullet">
@@ -831,12 +738,12 @@ export const bodyHtml = `
     <div class="proof-grid">
       <div class="proof-card reveal">
         <div class="proof-meta">PROMESSE · BUDGET</div>
-        <div class="proof-n">22<span class="proof-s">/23</span></div>
-        <div class="proof-l">Projets livrés <b>dans le budget annoncé</b>.</div>
+        <div class="proof-n">100<span class="proof-s">%</span></div>
+        <div class="proof-l">Forfait initial <b>tenu sur les projets livrés</b>.</div>
         <div class="proof-bar">
-          <div class="proof-bar-fill" style="width:96%"></div>
+          <div class="proof-bar-fill" style="width:100%"></div>
         </div>
-        <div class="proof-since">1 dépassement de 12 % en 2025 · scope flou côté client, à charge nous</div>
+        <div class="proof-since">Quand le scope dérape côté client, l'écart est absorbé à notre charge — pas facturé.</div>
       </div>
 
       <div class="proof-card proof-zero reveal reveal-d-1">
@@ -846,7 +753,7 @@ export const bodyHtml = `
         <div class="proof-bar">
           <div class="proof-bar-fill proof-bar-fill-zero" style="width:0%"></div>
         </div>
-        <div class="proof-since">Clause active depuis 2024</div>
+        <div class="proof-since">Clause active sur tous nos contrats</div>
       </div>
 
       <div class="proof-card reveal reveal-d-2">
@@ -860,13 +767,13 @@ export const bodyHtml = `
       </div>
 
       <div class="proof-card reveal reveal-d-3">
-        <div class="proof-meta">PROMESSE · NPS</div>
-        <div class="proof-n">+74<span class="proof-s">/100</span></div>
-        <div class="proof-l">Net Promoter Score <b>moyen post-livraison</b>.</div>
+        <div class="proof-meta">PROMESSE · J+1</div>
+        <div class="proof-n">100<span class="proof-s">%</span></div>
+        <div class="proof-l">Repo Git <b>ouvert chez vous dès J+1</b>.</div>
         <div class="proof-bar">
-          <div class="proof-bar-fill" style="width:87%"></div>
+          <div class="proof-bar-fill" style="width:100%"></div>
         </div>
-        <div class="proof-since">19 répondants sur 23 · médiane +80</div>
+        <div class="proof-since">Aucune licence, aucun lock-in, aucun avenant gratté.</div>
       </div>
 
     </div>
@@ -875,7 +782,7 @@ export const bodyHtml = `
       <div class="proof-foot-ic">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
       </div>
-      <span>Compteur mis à jour <b>après chaque livraison</b>. Quand on ratera une promesse, ce sera affiché ici — pas un trophée, un journal de bord. Pour vérifier une métrique, <a href="mailto:hello@hagnere-code.fr?subject=Demande%20historique%20m%C3%A9triques">demandez-nous l'historique brut</a>.</span>
+      <span>Compteur mis à jour <b>après chaque livraison</b>. Quand on ratera une promesse, ce sera affiché ici — pas un trophée, un journal de bord. Pour vérifier une métrique, <a href="mailto:quentin@hagnere-patrimoine.fr?subject=Demande%20historique%20m%C3%A9triques">demandez-nous l'historique brut</a>.</span>
     </div>
   </div>
 </section>
@@ -893,7 +800,7 @@ export const bodyHtml = `
         Voici, anonymisées, cinq démos issues de notre journal de bord (extrait sur
         une période récente). Si vous voulez creuser un cas précis, on vous met en
         relation avec le client concerné (avec son accord). Pour le journal complet
-        à jour, <a href="mailto:hello@hagnere-code.fr?subject=Journal%20du%20vendredi%20-%20demande%20d%27acc%C3%A8s">demandez-nous l'accès</a>.
+        à jour, <a href="mailto:quentin@hagnere-patrimoine.fr?subject=Journal%20du%20vendredi%20-%20demande%20d%27acc%C3%A8s">demandez-nous l'accès</a>.
       </div>
     </div>
 
@@ -934,7 +841,7 @@ export const bodyHtml = `
             <span class="fri-meta-dur">52 min de démo</span>
           </div>
           <h4>Back-office logistique multi-sites (livraison)</h4>
-          <p>Démo de mise en production. Formation des 14 utilisateurs en parallèle. Garantie 30 j enclenchée. NPS post-livraison : <b>+92/100</b>. Care+ activé pour 12 mois.</p>
+          <p>Démo de mise en production. Formation des 14 utilisateurs en parallèle. Garantie 30 j enclenchée. Care+ activé pour 12 mois.</p>
         </div>
         <div class="fri-status fri-status-done">
           <span class="fri-status-dot"></span>
@@ -1037,7 +944,7 @@ export const bodyHtml = `
           <span>OUTIL</span>
           <span>Claude Code · pas un pilier, un copilote</span>
         </div>
-        <h3>Une équipe de 6 en CDI,<br>Claude Code en copilote<br><span class="accent">sur les tâches répétitives.</span></h3>
+        <h3>Un gérant qui code, 3 CDI Laravel<br>+ 3 freelances long-terme,<br><span class="accent">Claude Code en copilote.</span></h3>
         <p class="claude-lead">
           Beaucoup d'agences brandissent l'IA comme un argument marketing. Chez nous, c'est un
           outil de productivité opéré par chaque dev senior — recherche de doc, exploration de bibliothèques,
@@ -1071,7 +978,7 @@ export const bodyHtml = `
             <span class="claude-stat-cred">NOTRE CONSTAT INTERNE</span>
           </div>
           <div class="claude-stat-n">−1<span> sem.</span></div>
-          <div class="claude-stat-l">Gain moyen mesuré sur un MVP de 6 semaines (vs 2024).</div>
+          <div class="claude-stat-l">Gain moyen mesuré sur un MVP de 6 semaines (vs cycle pré-Claude).</div>
         </div>
         <div class="claude-stat">
           <div class="claude-stat-row">
@@ -1194,7 +1101,7 @@ export const bodyHtml = `
           </div>
           <div class="quote-context">
             <span class="quote-context-tag">PROJET 24 K€</span>
-            <span class="quote-context-meta">SaaS comptabilité · NPS +95</span>
+            <span class="quote-context-meta">SaaS comptabilité · livré dans le budget</span>
           </div>
         </figcaption>
       </figure>
@@ -1291,13 +1198,13 @@ export const bodyHtml = `
           <div class="faq-a">
             Tout ajout passe par un <b>avenant chiffré au forfait fixe</b>, signé avant que la moindre
             ligne de code ne soit écrite. Vous décidez si l'ajout vaut le coup. Le périmètre initial
-            reste figé, le total reste contrôlé. <b>On n'a jamais facturé d'avenant non-signé en 23 projets.</b>
+            reste figé, le total reste contrôlé. <b>On n'a jamais facturé d'avenant non-signé.</b>
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q">
-            Vous n'êtes que 6 — qu'est-ce qui se passe si quelqu'un démissionne ou tombe malade ?
+            Vous êtes une équipe restreinte — qu'est-ce qui se passe si quelqu'un démissionne ou tombe malade ?
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
@@ -1359,10 +1266,11 @@ export const bodyHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Site vitrine 6 pages : 6–12 k€ (3 sem.)</b> · <b>Outil interne complet : 15–30 k€ (5 sem.)</b>
-            · <b>MVP SaaS B2B : 25–50 k€ (6 sem.)</b> · <b>Refonte e-commerce Shopify Plus : 30–60 k€ (8 sem.)</b>.
-            Le Discovery Sprint à 1 500 € est obligatoire pour tout projet &gt; 8 k€ — il transforme
-            ces fourchettes en devis ferme à un chiffre unique. <a href="/tarifs">Détails complets sur la page tarifs</a>.
+            <b>Tout est sur devis</b>. Chaque projet (site vitrine, outil interne, MVP SaaS, refonte
+            e-commerce) est cadré et chiffré individuellement — la durée et le prix dépendent du
+            périmètre, des intégrations, des ressources de votre côté. Le <b>Discovery Sprint à
+            1 500 €</b> est obligatoire pour tout projet engagé : il transforme votre besoin en
+            devis ferme à un chiffre unique. <a href="/tarifs">Détails complets sur la page tarifs</a>.
           </div>
         </div>
 
@@ -1442,7 +1350,7 @@ export const bodyHtml = `
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 7h6M9 12h6M9 17h3"/></svg>
         Voir les fourchettes de prix
       </a>
-      <a href="mailto:hello@hagnere-code.fr?subject=Demande%20du%20contrat%20type%20Sprint%20Fixe" class="mfinal-btn-ghost">
+      <a href="mailto:quentin@hagnere-patrimoine.fr?subject=Demande%20du%20contrat%20type%20Sprint%20Fixe" class="mfinal-btn-ghost">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg>
         Demander le contrat type
       </a>

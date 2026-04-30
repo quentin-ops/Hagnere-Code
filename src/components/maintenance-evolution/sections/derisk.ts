@@ -57,11 +57,11 @@ export const deriskHtml = `
         <p>Les 2 à 4 personnes qui gèrent votre compte sont <b>nommées dans le contrat</b>, photos + LinkedIn
         inclus. <b>Maximum 1 remplacement sur 12 mois</b> sauf cas de force majeure documenté. En cas de changement,
         <b>overlap obligatoire de 2 semaines</b> entre sortant et remplaçant. Notre turnover interne est &lt; 10 %
-        (vs industrie à 25 %), ancienneté moyenne des devs&nbsp;: 4 ans. NPS client trimestriel comme garde-fou.</p>
+        (vs industrie à 25 %), ancienneté moyenne des devs&nbsp;: 4 ans. Revue trimestrielle avec vous comme garde-fou.</p>
         <div class="me-derisk-proof">
           <span>✓ Nom dans le contrat</span>
           <span>✓ Overlap 2 sem.</span>
-          <span>✓ NPS trimestriel</span>
+          <span>✓ Revue trimestrielle</span>
         </div>
       </div>
 

@@ -5,13 +5,21 @@ export const metadata: Metadata = {
   title:
     "Sécurité & RGPD — DPO externalisé, AI Act, audit cyber | Hagnéré Code",
   description:
-    "Studio qui code ET audite. Cartographie de vos sous-traitants (Stripe, Anthropic, OVH...), conformité RGPD + AI Act + DORA + NIS2, remédiation codée par nos devs. Forfait cadrage + DPO mensuel, RC Pro souscrite, basé à Chambéry.",
+    "Studio qui code ET audite. Cartographie de vos sous-traitants (Stripe, Anthropic, OVH...), conformité RGPD + AI Act + DORA + NIS2, remédiation codée par nos devs. Forfait cadrage + DPO mensuel, basé à Chambéry.",
   alternates: { canonical: "/services/securite-rgpd" },
   openGraph: {
     title: "Sécurité & RGPD — Hagnéré Code",
     description:
       "DPO externalisé pour PME tech 2026. Audit + remédiation codée dans la même mission. RGPD · AI Act · DORA · NIS2 · SOC 2 readiness.",
     url: "/services/securite-rgpd",
+    images: [
+      {
+        url: "/og-image-services.png",
+        width: 1200,
+        height: 630,
+        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
+      },
+    ],
     type: "website",
   },
 };
@@ -32,7 +40,7 @@ const serviceJsonLd = JSON.stringify({
       addressLocality: "Chambéry",
       addressCountry: "FR",
     },
-    email: "hello@hagnere-code.fr",
+    email: "quentin@hagnere-patrimoine.fr",
     telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },
@@ -108,11 +116,11 @@ const faqJsonLd = JSON.stringify({
     },
     {
       "@type": "Question",
-      name: "Que couvre votre RC Pro et comment vous engagez-vous ?",
+      name: "Comment vous engagez-vous contractuellement ?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Une responsabilité civile professionnelle est souscrite et l'attestation est fournie au devis. Les missions DPO externalisé incluent un engagement contractuel sur la disponibilité, le délai de réponse aux droits des personnes et le traitement des incidents.",
+          "Les missions DPO externalisé incluent un engagement contractuel sur la disponibilité, le délai de réponse aux demandes d'exercice de droits, le traitement des incidents (notification CNIL 72 h) et la confidentialité (NDA mutuel signé J0). Tous ces engagements sont écrits dans le contrat et opposables.",
       },
     },
   ],

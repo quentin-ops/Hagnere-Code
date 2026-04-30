@@ -21,10 +21,10 @@ export const techFaqHtml = `
         </div>
         <div class="faq-a">
           <b>Storefront</b> : Next.js 15 App Router (React 19, Server Components, Server Actions) + Tailwind v4.
-          <b>Back</b> : Laravel 13 (PHP 8.3), Cashier Stripe, Horizon queues Redis, Filament 3 admin, Scout + Meilisearch.
+          <b>Back</b> : Laravel 13 (PHP 8.4), Cashier Stripe, Horizon queues Redis, Filament 3 admin, Scout + Meilisearch.
           <b>Mobile</b> : React Native + Expo, EAS Build + Update.
           <b>DB</b> : PostgreSQL 17 + <b>pgvector</b> pour la recherche sémantique, Redis 7 cache/queues/sessions.
-          <b>IA</b> : Claude Sonnet 4.5 via Prism, embeddings Voyage ou OpenAI.
+          <b>IA</b> : Claude Opus 4.7 via Prism, embeddings Voyage ou OpenAI.
           <b>Infra</b> : Scaleway ou OVH, Vercel pour le front, Cloudflare CDN + WAF + sGTM Worker.
         </div>
       </div>

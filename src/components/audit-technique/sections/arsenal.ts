@@ -51,7 +51,7 @@ export const arsenalHtml = `
               <div class="at-arsenal-tool-kind">Règles custom · anti-patterns</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Règles custom que SonarQube ne détecte pas. <b>Patterns spécifiques à votre stack</b> (Laravel ActiveRecord leaks, React hooks stale closures, SQL injection complexes). Bibliothèque propriétaire de 200+ règles accumulée sur 47 audits.</div>
+          <div class="at-arsenal-tool-body">Règles custom que SonarQube ne détecte pas. <b>Patterns spécifiques à votre stack</b> (Laravel ActiveRecord leaks, React hooks stale closures, SQL injection complexes). Bibliothèque propriétaire de 200+ règles accumulée sur nos audits.</div>
           <div class="at-arsenal-tool-chip">Règles propriétaires</div>
         </div>
 
@@ -182,10 +182,10 @@ export const arsenalHtml = `
             </div>
             <div>
               <div class="at-arsenal-tool-name">Méthodologie propriétaire</div>
-              <div class="at-arsenal-tool-kind">47 audits · benchmark percentile</div>
+              <div class="at-arsenal-tool-kind">benchmark percentile ·</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Votre score n'est pas absolu, il est <b>comparé à notre base de 47 audits</b> SaaS B2B / e-commerce / edtech français comparables. « Vous êtes au 42e percentile sur la sécurité » est plus utile que « Votre score est 54 / 100 ». Base propriétaire qui grossit à chaque audit.</div>
+          <div class="at-arsenal-tool-body">Votre score n'est pas absolu, il est <b>comparé à notre base d.audits</b> SaaS B2B / e-commerce / edtech français comparables. « Vous êtes au 42e percentile sur la sécurité » est plus utile que « Votre score est 54 / 100 ». Base propriétaire qui grossit à chaque audit.</div>
           <div class="at-arsenal-tool-chip">Benchmark percentile</div>
         </div>
       </div>

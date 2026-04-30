@@ -29,7 +29,7 @@ import { ctaFinalHtml } from "./sections/cta-final";
  *
  * Flow complet :
  *   NAV → Breadcrumb → HERO (Tech Debt P&L + Matrice impact/effort) →
- *   LOGO WALL → PROOF STRIP (47 audits · 92 % recos · NPS 72) →
+ *   LOGO WALL → PROOF STRIP (8 dimensions · ISO 19011 · 0 CoI · NDA J0) →
  *   FOUNDER VIDEO (Conflict of Interest) → PROBLEMS (6 triggers business) →
  *   WHAT WE AUDIT (8 dimensions) → DELIVERABLES checklist (12 + 6 extras) →
  *   TIMELINE 10 JOURS → CAPABILITIES 21 briques → METHODOLOGY ECOSYSTEM →

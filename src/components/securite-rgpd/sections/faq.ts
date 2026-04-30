@@ -26,9 +26,9 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Oui, désignation officielle CNIL.</b> Notre DPO référent est certifié AFNOR + CIPP/E (IAPP),
-            membre AFCDP, RC Pro DPO Hiscox 2 M€. Vous nous nommez via le formulaire CNIL, on apparaît comme
-            point de contact officiel pour vos clients, partenaires et l'autorité.
+            <b>Oui, désignation officielle CNIL.</b> Vous nous nommez via le formulaire CNIL, on apparaît comme
+            point de contact officiel pour vos clients, partenaires et l'autorité. Engagement contractuel
+            sur la disponibilité (réponse 4 h ouvrées) et le traitement des incidents (notification CNIL 72 h).
           </div>
         </div>
 

@@ -56,9 +56,9 @@ export const scenariosHtml = `
         </div>
         <aside class="sa-scen-aside">
           <div class="sa-scen-meta">
-            <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">3 à 6 semaines</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">1 associé + 1 dev + 1 designer</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Prix indicatif</span><span class="v">15 à 60 k€ forfait</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 1 dev senior + 1 designer</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
             <div class="sa-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 2 semaines</span></div>
             <div class="sa-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Discovery Sprint 2j · 1 500 €</span></div>
           </div>
@@ -96,9 +96,9 @@ export const scenariosHtml = `
         </div>
         <aside class="sa-scen-aside">
           <div class="sa-scen-meta">
-            <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">2 à 4 mois</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">1 associé + 2 devs + 1 designer + 1 IA</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Prix indicatif</span><span class="v">60 à 150 k€ forfait</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 2 devs + 1 designer + 1 IA</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
             <div class="sa-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 3 à 4 semaines</span></div>
             <div class="sa-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit technique 1 jour · 1 500 €</span></div>
           </div>
@@ -136,9 +136,9 @@ export const scenariosHtml = `
         </div>
         <aside class="sa-scen-aside">
           <div class="sa-scen-meta">
-            <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">2 à 6 mois selon l'existant</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
             <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">2 à 4 seniors full-stack</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Prix indicatif</span><span class="v">Sur devis après audit</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis après audit</span></div>
             <div class="sa-scen-meta-row"><span class="k">Démarrage</span><span class="v">Audit en 2 semaines</span></div>
             <div class="sa-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit technique · 1 500 € (déductibles)</span></div>
           </div>

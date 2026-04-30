@@ -7,6 +7,7 @@
  */
 
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { ResultView } from "@/components/estimer-mon-projet/ResultView";
 import type { MultiServiceEstimate } from "@/components/estimer-mon-projet/types";
 import "@/components/estimer-mon-projet/calculator.css";
@@ -40,11 +41,9 @@ export function ResultViewClient({
           </div>
         </div>
         <nav className="pf-topnav" aria-label="Navigation secondaire">
-          <Link href="/methode" className="pf-topnav-link">Méthode</Link>
-          <Link href="/realisations" className="pf-topnav-link">Réalisations</Link>
-          <Link href="/contact" className="pf-topnav-link">Contact direct</Link>
-          <Link href="/demarrer-un-projet" className="pf-site-return">
-            Refaire un brief
+          <Link href="/" className="pf-site-return">
+            <ArrowLeft size={16} strokeWidth={2} />
+            <span>Retour au site vitrine</span>
           </Link>
         </nav>
       </header>

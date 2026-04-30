@@ -30,7 +30,7 @@ const contactJsonLd = JSON.stringify({
     logo: "https://hagnere-code.fr/og-image.png",
     image: "https://hagnere-code.fr/og-image.png",
     priceRange: "€€€",
-    email: "hello@hagnere-code.fr",
+    email: "quentin@hagnere-patrimoine.fr",
     telephone: "+33374472018",
     address: {
       "@type": "PostalAddress",
@@ -56,7 +56,7 @@ const contactJsonLd = JSON.stringify({
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
-      email: "hello@hagnere-code.fr",
+      email: "quentin@hagnere-patrimoine.fr",
       telephone: "+33374472018",
       availableLanguage: ["French"],
       areaServed: "FR",

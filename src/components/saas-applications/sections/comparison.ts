@@ -83,7 +83,7 @@ export const comparisonHtml = `
         <div class="sa-cmp-col sa-cmp-bad">Via Zapier, fragile</div>
         <div class="sa-cmp-col">Pas l'objet</div>
         <div class="sa-cmp-col">Si c'est sa spécialité</div>
-        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Claude Sonnet 4.5 / GPT-4o, agents typés</b></div>
+        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Claude Opus 4.7 / GPT-4o, agents typés</b></div>
       </div>
 
       <div class="sa-cmp-row">

@@ -129,7 +129,7 @@ export function CookieBanner() {
                   {
                     title: "Vos droits",
                     description:
-                      "Vous pouvez modifier vos choix à tout moment depuis la page <a href=\"/legal/cookies\">politique cookies</a>. Pour exercer vos droits RGPD : <a href=\"mailto:hello@hagnere-code.fr\">hello@hagnere-code.fr</a>.",
+                      "Vous pouvez modifier vos choix à tout moment depuis la page <a href=\"/legal/cookies\">politique cookies</a>. Pour exercer vos droits RGPD : <a href=\"mailto:quentin@hagnere-patrimoine.fr\">quentin@hagnere-patrimoine.fr</a>.",
                   },
                 ],
               },

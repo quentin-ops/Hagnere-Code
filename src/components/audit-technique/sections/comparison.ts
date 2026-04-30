@@ -66,8 +66,8 @@ export const comparisonHtml = `
       <div class="at-cmp-row">
         <div class="at-cmp-col at-cmp-col-label">NDA mutuel &amp; confidentialité</div>
         <div class="at-cmp-col">CGU SaaS standard · données sur leur infra</div>
-        <div class="at-cmp-col">NDA optionnel · RC pro incertaine</div>
-        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>NDA mutuel J0 · RC pro 1 M€ · 0 republication</b></div>
+        <div class="at-cmp-col">NDA optionnel · clauses incertaines</div>
+        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>NDA mutuel J0 · 0 republication · propriété client exclusive</b></div>
         <div class="at-cmp-col at-cmp-good">NDA renforcé · assurances solides</div>
       </div>
 

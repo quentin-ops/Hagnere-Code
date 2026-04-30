@@ -4,8 +4,10 @@ import Link from "next/link";
 import { useMemo, useRef, useState, type FormEvent } from "react";
 import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
+import { MainNav } from "@/components/design-shared/MainNav";
 import "./excel-calculator.css";
 import "@/components/design-shared/responsive.css";
+import "@/components/design-shared/nav-dropdown.css";
 import "@/components/design-shared/site-footer.css";
 
 type CaptureStatus =
@@ -122,7 +124,7 @@ export function ExcelCalculator() {
       setStatus({
         kind: "error",
         message:
-          "Envoi impossible pour le moment. Réessayez ou écrivez-nous à hello@hagnere-code.fr.",
+          "Envoi impossible pour le moment. Réessayez ou écrivez-nous à quentin@hagnere-patrimoine.fr.",
       });
     }
   }
@@ -130,34 +132,7 @@ export function ExcelCalculator() {
   // --- UI
   return (
     <div ref={rootRef} className="hc-design calc-root">
-      {/* Nav */}
-      <nav className="nav">
-        <div className="nav-inner">
-          <Link href="/" className="brand">
-            <div className="brand-mark">HC</div>
-            <div className="brand-name">
-              <b>Hagnéré</b> <span>Code</span>
-            </div>
-          </Link>
-          <div className="nav-links">
-            <Link href="/#services">Services</Link>
-            <Link href="/methode">Méthode</Link>
-            <Link href="/realisations">Réalisations</Link>
-            <Link href="/tarifs">Tarifs</Link>
-            <Link href="/guide">Guide</Link>
-
-            <Link href="/contact">Contact</Link>
-          </div>
-          <div className="nav-cta">
-            <Link href="/#contact" className="btn btn-ghost">
-              Prendre RDV
-            </Link>
-            <Link href="/demarrer-un-projet" className="btn btn-primary">
-              Démarrer un projet
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <MainNav />
 
       {/* Hero */}
       <section className="calc-hero">
@@ -349,7 +324,12 @@ export function ExcelCalculator() {
                 Livré en 5-10 semaines · forfait fixe · code à vous
               </div>
 
-              <div className="calc-res-savings">
+              <div
+                className={
+                  "calc-res-savings" +
+                  (result.savingsOverToolCost > 0 ? "" : " is-neutral")
+                }
+              >
                 <div className="calc-res-savings-kind">
                   {result.savingsOverToolCost > 0 ? "GAIN NET SUR 3 ANS" : "ÉCART"}
                 </div>

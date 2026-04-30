@@ -61,7 +61,7 @@ export const testimonialsHtml = `
             <div class="oi-testim-av">DAF</div>
             <div>
               <div class="oi-testim-name">DAF · ETI industrielle</div>
-              <div class="oi-testim-meta">140 collaborateurs · Rhône-Alpes · livré 2024</div>
+              <div class="oi-testim-meta">140 collaborateurs · Rhône-Alpes · sous NDA</div>
             </div>
           </div>
           <div class="oi-testim-kpi">
@@ -89,7 +89,7 @@ export const testimonialsHtml = `
             <div class="oi-testim-av">DG</div>
             <div>
               <div class="oi-testim-name">Dirigeant · PME BTP</div>
-              <div class="oi-testim-meta">42 collaborateurs · Haute-Savoie · livré 2024</div>
+              <div class="oi-testim-meta">42 collaborateurs · Haute-Savoie · sous NDA</div>
             </div>
           </div>
           <div class="oi-testim-kpi">
@@ -103,7 +103,7 @@ export const testimonialsHtml = `
     <div class="oi-testim-bar reveal">
       <div class="oi-testim-bar-stat">
         <div class="oi-testim-bar-v">+30</div>
-        <div class="oi-testim-bar-k">outils internes<br>livrés depuis 2021</div>
+        <div class="oi-testim-bar-k">outils internes<br>livrés à ce jour</div>
       </div>
       <div class="oi-testim-bar-sep"></div>
       <div class="oi-testim-bar-stat">
@@ -112,8 +112,8 @@ export const testimonialsHtml = `
       </div>
       <div class="oi-testim-bar-sep"></div>
       <div class="oi-testim-bar-stat">
-        <div class="oi-testim-bar-v">9 / 10</div>
-        <div class="oi-testim-bar-k">projets livrés<br>dans la date fixée</div>
+        <div class="oi-testim-bar-v">100 %</div>
+        <div class="oi-testim-bar-k">date contractuelle<br>tenue ou pénalité</div>
       </div>
       <div class="oi-testim-bar-sep"></div>
       <div class="oi-testim-bar-stat">

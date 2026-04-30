@@ -76,11 +76,11 @@ export const deriskHtml = `
           « Le rapport sera <b>générique</b>, on l'aura déjà lu 10 fois. »
         </div>
         <h4>Sample report téléchargeable · benchmark percentile · recos chiffrées en €</h4>
-        <p>Sample anonymisé d'un audit réel <b>téléchargeable avant signature</b> — vous voyez notre méthodologie, notre niveau de détail, notre Tech Debt P&amp;L. Chaque recommandation est <b>chiffrée en jours/homme et en euros</b>, pas une liste générique "améliorer la sécurité". Votre score est comparé à notre <b>base propriétaire de 47 audits</b> SaaS B2B français comparables — pas à un benchmark public marketing.</p>
+        <p>Sample anonymisé d'un audit réel <b>téléchargeable avant signature</b> — vous voyez notre méthodologie, notre niveau de détail, notre Tech Debt P&amp;L. Chaque recommandation est <b>chiffrée en jours/homme et en euros</b>, pas une liste générique "améliorer la sécurité". Votre score est comparé à notre <b>base propriétaire d.audits</b> SaaS B2B français comparables — pas à un benchmark public marketing.</p>
         <div class="at-derisk-proof">
           <span>✓ Sample téléchargeable</span>
           <span>✓ Recos chiffrées j/h + €</span>
-          <span>✓ Benchmark percentile 47 audits</span>
+          <span>✓ Benchmark percentile audits</span>
         </div>
       </div>
 
@@ -90,11 +90,11 @@ export const deriskHtml = `
           « <b>Mes devs vont le prendre mal</b>, je vais les perdre. »
         </div>
         <h4>Méthodologie no-blame · équipe co-auteure · entretiens off-the-record</h4>
-        <p>5 à 8 interviews 45 min <b>off-the-record</b> avec vos devs (CTO, lead devs, staff). Leurs retours intègrent le rapport sans citation nominative. <b>Focus sur les systèmes, pas les personnes</b>&nbsp;: une dette tech n'est pas la faute d'un dev, c'est souvent un symptôme de pression temporelle ou de contraintes organisationnelles. Le <b>plan de remédiation est co-écrit avec votre équipe</b> — ils en deviennent co-auteurs. Chez nos 47 audits, <b>NPS équipe post-audit = 68</b> (mesuré à 30 j).</p>
+        <p>5 à 8 interviews 45 min <b>off-the-record</b> avec vos devs (CTO, lead devs, staff). Leurs retours intègrent le rapport sans citation nominative. <b>Focus sur les systèmes, pas les personnes</b>&nbsp;: une dette tech n'est pas la faute d'un dev, c'est souvent un symptôme de pression temporelle ou de contraintes organisationnelles. Le <b>plan de remédiation est co-écrit avec votre équipe</b> — ils en deviennent co-auteurs.</p>
         <div class="at-derisk-proof">
           <span>✓ Off-the-record</span>
           <span>✓ Co-auteurs du plan</span>
-          <span>✓ NPS équipe 68</span>
+          <span>✓ Aucune citation nominative</span>
         </div>
       </div>
     </div>

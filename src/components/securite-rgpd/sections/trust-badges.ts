@@ -1,14 +1,12 @@
 export const trustBadgesHtml = `
 <!-- TRUST BADGES SÉCURITÉ & RGPD -->
-<!-- Les 4 accréditations (RC Pro, AFNOR, AFCDP, ISO 27001) sont déjà dans le
-     trust strip du logo wall en haut de page. Cette section se concentre sur
-     les engagements contractuels spécifiques — le "comment on travaille". -->
+<!-- Engagements contractuels concrets — le "comment on travaille". -->
 <section class="sr-trust-section">
   <div class="wrap">
     <div class="sr-trust-section-head reveal">
       <div class="eyebrow">— Engagements contractuels</div>
       <h2>Ce qu'on signe<br>avant de démarrer.</h2>
-      <p>Les accréditations (RC Pro, DPO AFNOR, AFCDP, ISO 27001) sont listées dans le bandeau en haut de page. Ici, on détaille <b>comment on travaille</b> — écrit noir sur blanc dans les CGV, pas dans la brochure.</p>
+      <p>On détaille ici <b>comment on travaille</b> — écrit noir sur blanc dans les CGV, pas dans la brochure. NDA mutuel signé J0, DPA contractualisé, sous-traitants UE par défaut, bonnes pratiques alignées ISO 27001.</p>
     </div>
 
     <div class="sr-trust-section-grid">
@@ -36,9 +34,9 @@ export const trustBadgesHtml = `
 
       <div class="sr-trust-section-card reveal reveal-d-3">
         <div class="sr-trust-section-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
-        <h4>Formation OPCO finançable</h4>
-        <p>Ateliers <b>RGPD / AI Act / cybersécurité</b> pour vos équipes (dev, RH, direction). Hagnéré Code est <b>Qualiopi</b>, dossier OPCO monté par nous, prise en charge partielle fréquente selon votre branche.</p>
-        <div class="sr-trust-section-foot">— Dossier OPCO clé en main</div>
+        <h4>Formation post-livraison incluse</h4>
+        <p>Ateliers <b>RGPD / AI Act / cybersécurité</b> pour vos équipes (dev, RH, direction), inclus à chaque mission DPO. Documentation pédagogique + Loom vidéo + suivi 30 / 90 jours.</p>
+        <div class="sr-trust-section-foot">— Inclus dans tous les forfaits DPO</div>
       </div>
 
       <div class="sr-trust-section-card reveal">

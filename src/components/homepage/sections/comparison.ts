@@ -14,30 +14,49 @@ export const comparisonHtml = `
       </div>
     </div>
 
+    <div class="cmp-context reveal">
+      <div class="cmp-context-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        Lecture du tableau
+      </div>
+      <p>
+        Les fourchettes ci-dessous sont <b>indicatives</b> et reposent sur un projet-type récurrent
+        chez nous : <b>un SaaS métier ou outil interne PME — 8 à 15 écrans, authentification,
+        paiements Stripe, dashboard, back-office, hébergement FR</b>. Un projet plus simple
+        (landing, site vitrine) descend nettement, un projet plus complexe (multi-tenant, IA, marketplace)
+        monte. <b>Votre cas est chiffré individuellement</b> en 48 h après un cadrage de 30 min — ou en
+        5 min via notre estimateur en ligne.
+      </p>
+      <a href="/estimer-mon-projet" class="cmp-context-cta">
+        Estimer mon projet en 5 min
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
     <div class="cmp-table reveal">
       <div class="cmp-head">
         <div class="cmp-col cmp-col-label"></div>
         <div class="cmp-col">
           <div class="cmp-kind">Option A</div>
           <div class="cmp-title">Freelance solo</div>
-          <div class="cmp-price">5 – 15 k€</div>
+          <div class="cmp-price">≈ 5 – 15 k€<span class="cmp-price-note">sur le projet-type</span></div>
         </div>
         <div class="cmp-col cmp-col-us">
           <div class="cmp-kind">Nous</div>
           <div class="cmp-title">Hagnéré Code</div>
-          <div class="cmp-price">25 – 60 k€</div>
+          <div class="cmp-price">≈ 25 – 60 k€<span class="cmp-price-note">sur le projet-type · sur devis</span></div>
         </div>
         <div class="cmp-col">
           <div class="cmp-kind">Option C</div>
           <div class="cmp-title">Grand cabinet / ESN</div>
-          <div class="cmp-price">80 – 200 k€</div>
+          <div class="cmp-price">≈ 80 – 200 k€<span class="cmp-price-note">sur le projet-type</span></div>
         </div>
       </div>
 
       <div class="cmp-row">
         <div class="cmp-col cmp-col-label">Équipe dédiée à votre projet</div>
         <div class="cmp-col">1 personne</div>
-        <div class="cmp-col cmp-col-us"><b>Binôme à trinôme de seniors</b> (associé-lead, dev, designer ou expert IA selon besoin), piochés dans une équipe de 6</div>
+        <div class="cmp-col cmp-col-us"><b>Binôme à trinôme de seniors</b> (gérant-lead, dev, designer ou expert IA selon besoin), piochés dans une équipe de 7</div>
         <div class="cmp-col">1 senior + 4 à 8 juniors</div>
       </div>
 
@@ -70,10 +89,10 @@ export const comparisonHtml = `
       </div>
 
       <div class="cmp-row">
-        <div class="cmp-col cmp-col-label">Délai de livraison</div>
+        <div class="cmp-col cmp-col-label">Délai de livraison <span class="cmp-row-hint">(projet-type)</span></div>
         <div class="cmp-col">Variable, dépend d'une personne</div>
-        <div class="cmp-col cmp-col-us"><b>2 à 12 semaines</b> · démos hebdo</div>
-        <div class="cmp-col">3 à 12 mois · jalons trimestriels</div>
+        <div class="cmp-col cmp-col-us"><b>4 à 10 semaines</b> · démos hebdo · cadrage en 30 min</div>
+        <div class="cmp-col">6 à 12 mois · jalons trimestriels</div>
       </div>
 
       <div class="cmp-row">
@@ -100,17 +119,17 @@ export const comparisonHtml = `
       <div class="cmp-row cmp-row-verdict">
         <div class="cmp-col cmp-col-label">À choisir si…</div>
         <div class="cmp-col">
-          Besoin ponctuel &lt; 15 k€,<br>
+          Projet ponctuel &amp; circonscrit,<br>
           compétence précise,<br>
           vous pilotez vous-même
         </div>
         <div class="cmp-col cmp-col-us">
-          <b>Projet PME/ETI 25-100 k€,</b><br>
-          pas (ou peu) d'équipe tech,<br>
+          <b>PME/ETI sans équipe tech,</b><br>
+          besoin d'un produit complet,<br>
           forfait fixe &amp; transparence
         </div>
         <div class="cmp-col">
-          Budget 150 k€+,<br>
+          Gros volumes,<br>
           enjeux réglementaires lourds,<br>
           besoin d'une marque rassurante
         </div>
@@ -119,7 +138,11 @@ export const comparisonHtml = `
 
     <div class="cmp-disclaimer reveal">
       <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-      Pas sûr d'être dans notre zone ? <a href="#contact">Parlons-en 30 minutes</a> — si ce n'est pas pour nous, on vous oriente vers le bon interlocuteur, franchement.
+      <span>
+        <b>Tous les chiffrages sont sur devis</b> — la fourchette ci-dessus n'a de sens que sur le projet-type cité.
+        Pour votre cas&nbsp;: <a href="/estimer-mon-projet">estimateur en ligne (5 min)</a> ou
+        <a href="#contact">cadrage 30 min avec un associé</a>.
+      </span>
     </div>
   </div>
 </section>

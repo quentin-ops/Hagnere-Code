@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
+import { MainNav } from "@/components/design-shared/MainNav";
 import "./guide.css";
 import "@/components/design-shared/nav-dropdown.css";
 import "@/components/design-shared/responsive.css";
@@ -91,72 +92,6 @@ function ArrowIcon() {
   return <ArrowRight size={14} strokeWidth={2.2} aria-hidden="true" />;
 }
 
-function MainNav() {
-  return (
-    <nav className="nav">
-      <div className="nav-inner">
-        <Link href="/" className="brand">
-          <div className="brand-mark">HC</div>
-          <div className="brand-name">
-            <b>Hagnéré</b> <span>Code</span>
-          </div>
-        </Link>
-
-        <div className="nav-links">
-          <div className="nav-item">
-            <Link href="/services" className="nav-trigger">
-              Services
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </Link>
-            <div className="nav-dd">
-              <div className="dd-col">
-                <h6>Build</h6>
-                <Link className="dd-link" href="/services/saas-applications-metier"><span className="dd-ic">S</span><span className="dd-meta"><span className="dd-title">SaaS & applis métier</span><span className="dd-sub">Plateformes B2B, espaces clients.</span></span></Link>
-                <Link className="dd-link" href="/services/outils-internes-sur-mesure"><span className="dd-ic">O</span><span className="dd-meta"><span className="dd-title">Outils internes</span><span className="dd-sub">Back-office, workflows.</span></span></Link>
-                <Link className="dd-link" href="/services/sites-vitrines"><span className="dd-ic">W</span><span className="dd-meta"><span className="dd-title">Sites vitrines</span><span className="dd-sub">Sites qui convertissent.</span></span></Link>
-                <Link className="dd-link" href="/services/ecommerce"><span className="dd-ic">E</span><span className="dd-meta"><span className="dd-title">E-commerce</span><span className="dd-sub">Boutiques et tunnels.</span></span></Link>
-              </div>
-              <div className="dd-col">
-                <h6>Grow</h6>
-                <Link className="dd-link" href="/services/referencement-google"><span className="dd-ic">R</span><span className="dd-meta"><span className="dd-title">SEO & référencement</span><span className="dd-sub">Contenu, tech, netlinking.</span></span></Link>
-                <Link className="dd-link" href="/services/publicite-en-ligne"><span className="dd-ic">A</span><span className="dd-meta"><span className="dd-title">Publicité en ligne</span><span className="dd-sub">Google, Meta, LinkedIn.</span></span></Link>
-                <Link className="dd-link" href="/services/contenu-video"><span className="dd-ic">V</span><span className="dd-meta"><span className="dd-title">Contenu & vidéo</span><span className="dd-sub">Studio, motion, YouTube.</span></span></Link>
-              </div>
-              <div className="dd-col">
-                <h6>Run</h6>
-                <Link className="dd-link" href="/services/maintenance-evolution"><span className="dd-ic">M</span><span className="dd-meta"><span className="dd-title">Maintenance</span><span className="dd-sub">Support et évolution.</span></span></Link>
-                <Link className="dd-link" href="/services/securite-rgpd"><span className="dd-ic">G</span><span className="dd-meta"><span className="dd-title">Sécurité & RGPD</span><span className="dd-sub">Audit, conformité.</span></span></Link>
-                <Link className="dd-link" href="/services/audit-technique"><span className="dd-ic">T</span><span className="dd-meta"><span className="dd-title">Audit technique</span><span className="dd-sub">Code, perf, sécurité.</span></span></Link>
-              </div>
-              <div className="dd-cta">
-                <div className="dd-cta-body">
-                  <div className="tag">Diagnostic</div>
-                  <div className="dd-cta-title">Vous ne savez pas quelle offre choisir ?</div>
-                  <div className="dd-cta-sub">Décrivez le contexte. On vous oriente franchement.</div>
-                  <Link href="/contact" className="btn btn-accent">Parler à un associé</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <Link href="/methode">Méthode</Link>
-          <Link href="/realisations">Réalisations</Link>
-          <Link href="/equipe">Équipe</Link>
-          <Link href="/tarifs">Tarifs</Link>
-          <Link href="/demarrer-un-projet">Cadrage</Link>
-          <Link href="/guide" className="active">Guide</Link>
-          <Link href="/contact">Contact</Link>
-        </div>
-
-        <div className="nav-cta">
-          <Link href="/contact" className="btn btn-ghost">Prendre RDV</Link>
-          <Link href="/demarrer-un-projet" className="btn btn-primary">Démarrer un projet <ArrowIcon /></Link>
-        </div>
-      </div>
-    </nav>
-  );
-}
 
 export function GuideIndex() {
   const rootRef = useRef<HTMLDivElement>(null);

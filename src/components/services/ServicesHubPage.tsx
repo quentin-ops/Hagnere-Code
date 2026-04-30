@@ -17,11 +17,13 @@ import {
   PlaySquare,
   ShieldCheck,
   ShoppingCart,
+  Smartphone,
   Sparkles,
   Wrench,
 } from "lucide-react";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
+import { MainNav } from "@/components/design-shared/MainNav";
 import "./services-hub.css";
 import "@/components/design-shared/nav-dropdown.css";
 import "@/components/design-shared/responsive.css";
@@ -57,10 +59,10 @@ const services: Service[] = [
     title: "Lancer une application qui devient un actif.",
     description:
       "MVP SaaS, portail client, app métier, API, auth, facturation, IA et back-office. On part du besoin business et on livre un produit exploitable.",
-    proof: "MVP en 3-6 semaines selon périmètre",
+    proof: "MVP cadré et chiffré au devis",
     idealFor: "Création ou refonte produit",
-    duration: "3-12 sem.",
-    budget: "15-120 k€",
+    duration: "Sur devis",
+    budget: "Sur devis",
     accent: "purple",
     icon: Layers3,
   },
@@ -71,10 +73,10 @@ const services: Service[] = [
     title: "Sortir d'Excel sans créer une usine à gaz.",
     description:
       "CRM métier, back-office, pipeline Kanban, automatisations, documents, relances, reporting. Le bon outil pour un processus précis.",
-    proof: "Premier workflow livrable en 2-4 semaines",
+    proof: "Premier workflow chiffré au devis",
     idealFor: "Excel, Notion, process manuel",
-    duration: "2-8 sem.",
-    budget: "8-80 k€",
+    duration: "Sur devis",
+    budget: "Sur devis",
     accent: "green",
     icon: Wrench,
   },
@@ -87,8 +89,8 @@ const services: Service[] = [
       "Site institutionnel, landing pages, architecture SEO, contenus, tracking, formulaires, pages locales et pages offres.",
     proof: "Pages prêtes pour campagnes et SEO",
     idealFor: "PME, cabinets, offres premium",
-    duration: "2-6 sem.",
-    budget: "7-22 k€",
+    duration: "Sur devis",
+    budget: "Sur devis",
     accent: "blue",
     icon: Gauge,
   },
@@ -101,10 +103,24 @@ const services: Service[] = [
       "Catalogue, tunnel, paiement, ERP, stock, facturation, tracking server-side et SEO produit. Alternative maîtrisée au bricolage Shopify.",
     proof: "Tunnel + tracking + catalogue propre",
     idealFor: "Retail, B2B, catalogue complexe",
-    duration: "5-12 sem.",
-    budget: "15-70 k€",
+    duration: "Sur devis",
+    budget: "Sur devis",
     accent: "amber",
     icon: ShoppingCart,
+  },
+  {
+    href: "/services/application-mobile",
+    label: "Application mobile",
+    eyebrow: "Mobile",
+    title: "Une vraie app iOS + Android, publiée sous vos comptes stores.",
+    description:
+      "App native React Native + Expo, paiement Apple Pay/Google Pay, push, mode hors-ligne, soumission App Store + Google Play. Comptes stores et code 100 % à vous.",
+    proof: "MVP cadré et chiffré au devis",
+    idealFor: "Fidélité, RDV, e-com, terrain B2B",
+    duration: "Sur devis",
+    budget: "Sur devis",
+    accent: "purple",
+    icon: Smartphone,
   },
   {
     href: "/services/referencement-google",
@@ -115,8 +131,8 @@ const services: Service[] = [
       "Audit technique, contenus, cocons, maillage, schema.org, performance, Search Console et pages à intention business.",
     proof: "Architecture + production + reporting",
     idealFor: "Trafic qualifié long terme",
-    duration: "3-6 mois",
-    budget: "2-8 k€/mois",
+    duration: "Sur devis",
+    budget: "Sur devis",
     accent: "blue",
     icon: BarChart3,
   },
@@ -130,7 +146,7 @@ const services: Service[] = [
     proof: "Tracking propre avant scaling",
     idealFor: "Demande active ou retargeting",
     duration: "Mensuel",
-    budget: "1,8-8 k€/mois",
+    budget: "Sur devis",
     accent: "red",
     icon: Sparkles,
   },
@@ -144,7 +160,7 @@ const services: Service[] = [
     proof: "Pipeline contenu + diffusion",
     idealFor: "Expertise difficile à expliquer",
     duration: "Sprint ou récurrent",
-    budget: "4-25 k€",
+    budget: "Sur devis",
     accent: "slate",
     icon: PlaySquare,
   },
@@ -158,7 +174,7 @@ const services: Service[] = [
     proof: "Audit flash puis run mensuel",
     idealFor: "App existante, équipe absente",
     duration: "Audit + mensuel",
-    budget: "3-16 k€/mois",
+    budget: "Sur devis",
     accent: "green",
     icon: Clock3,
   },
@@ -171,8 +187,8 @@ const services: Service[] = [
       "Audit code, performance, SEO technique, sécurité, dette, infra, tracking et roadmap priorisée. On transforme le flou en décisions.",
     proof: "Rapport actionnable + plan chiffré",
     idealFor: "Avant refonte, reprise ou levée",
-    duration: "5-10 j",
-    budget: "8-38 k€",
+    duration: "10 j ouvrés",
+    budget: "Sur devis",
     accent: "slate",
     icon: LockKeyhole,
   },
@@ -185,8 +201,8 @@ const services: Service[] = [
       "Audit sécurité, RGPD, DPA, registre, flux, droits, hébergement, logs, durées de conservation et corrections prioritaires.",
     proof: "Plan d'action exploitable",
     idealFor: "Données sensibles, due diligence",
-    duration: "2-6 sem.",
-    budget: "6-35 k€",
+    duration: "Sur devis",
+    budget: "Sur devis",
     accent: "purple",
     icon: ShieldCheck,
   },
@@ -257,78 +273,11 @@ const proofLinks = [
   { href: "/realisations", label: "Réalisations", value: "4 cas documentés" },
   { href: "/demarrer-un-projet", label: "Estimer mon projet", value: "Budget indicatif" },
   { href: "/outils/calculateur-cout-excel", label: "Coût Excel", value: "ROI outil interne" },
-  { href: "/equipe", label: "Équipe", value: "Associés + seniors" },
+  { href: "/equipe", label: "Équipe", value: "1 gérant + 3 CDI + 3 freelances" },
 ];
 
 function ArrowIcon() {
   return <ArrowRight size={14} strokeWidth={2.2} aria-hidden="true" />;
-}
-
-function MainNav() {
-  return (
-    <nav className="nav">
-      <div className="nav-inner">
-        <Link href="/" className="brand">
-          <div className="brand-mark">HC</div>
-          <div className="brand-name">
-            <b>Hagnéré</b> <span>Code</span>
-          </div>
-        </Link>
-
-        <div className="nav-links">
-          <div className="nav-item">
-            <Link href="/services" className="nav-trigger active">
-              Services
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </Link>
-            <div className="nav-dd">
-              <div className="dd-col">
-                <h6>Construire</h6>
-                <Link className="dd-link" href="/services/saas-applications-metier"><span className="dd-ic">S</span><span className="dd-meta"><span className="dd-title">SaaS & applis métier</span><span className="dd-sub">Plateformes B2B, espaces clients.</span></span></Link>
-                <Link className="dd-link" href="/services/outils-internes-sur-mesure"><span className="dd-ic">O</span><span className="dd-meta"><span className="dd-title">Outils internes</span><span className="dd-sub">Back-office, workflows.</span></span></Link>
-                <Link className="dd-link" href="/services/sites-vitrines"><span className="dd-ic">W</span><span className="dd-meta"><span className="dd-title">Sites vitrines</span><span className="dd-sub">Sites qui convertissent.</span></span></Link>
-                <Link className="dd-link" href="/services/ecommerce"><span className="dd-ic">E</span><span className="dd-meta"><span className="dd-title">E-commerce</span><span className="dd-sub">Boutiques et tunnels.</span></span></Link>
-              </div>
-              <div className="dd-col">
-                <h6>Faire grandir</h6>
-                <Link className="dd-link" href="/services/referencement-google"><span className="dd-ic">R</span><span className="dd-meta"><span className="dd-title">SEO & référencement</span><span className="dd-sub">Contenu, tech, netlinking.</span></span></Link>
-                <Link className="dd-link" href="/services/publicite-en-ligne"><span className="dd-ic">A</span><span className="dd-meta"><span className="dd-title">Publicité en ligne</span><span className="dd-sub">Google, Meta, LinkedIn.</span></span></Link>
-                <Link className="dd-link" href="/services/contenu-video"><span className="dd-ic">V</span><span className="dd-meta"><span className="dd-title">Contenu & vidéo</span><span className="dd-sub">Studio, motion, YouTube.</span></span></Link>
-              </div>
-              <div className="dd-col">
-                <h6>Protéger & opérer</h6>
-                <Link className="dd-link" href="/services/maintenance-evolution"><span className="dd-ic">M</span><span className="dd-meta"><span className="dd-title">Maintenance</span><span className="dd-sub">Support et évolution.</span></span></Link>
-                <Link className="dd-link" href="/services/securite-rgpd"><span className="dd-ic">G</span><span className="dd-meta"><span className="dd-title">Sécurité & RGPD</span><span className="dd-sub">Audit, conformité.</span></span></Link>
-                <Link className="dd-link" href="/services/audit-technique"><span className="dd-ic">T</span><span className="dd-meta"><span className="dd-title">Audit technique</span><span className="dd-sub">Code, perf, sécurité.</span></span></Link>
-              </div>
-              <div className="dd-cta">
-                <div className="dd-cta-body">
-                  <div className="tag">Diagnostic</div>
-                  <div className="dd-cta-title">Vous ne savez pas quelle offre choisir ?</div>
-                  <div className="dd-cta-sub">Décrivez le contexte. On vous oriente franchement.</div>
-                  <Link href="/contact" className="btn btn-accent">Parler à un associé</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <Link href="/methode">Méthode</Link>
-          <Link href="/realisations">Réalisations</Link>
-          <Link href="/equipe">Équipe</Link>
-          <Link href="/tarifs">Tarifs</Link>
-          <Link href="/demarrer-un-projet">Calculateur</Link>
-          <Link href="/guide">Guide</Link>
-          <Link href="/contact">Contact</Link>
-        </div>
-
-        <div className="nav-cta">
-          <Link href="/contact" className="btn btn-ghost">Prendre RDV</Link>
-          <Link href="/demarrer-un-projet" className="btn btn-primary">Démarrer un projet <ArrowIcon /></Link>
-        </div>
-      </div>
-    </nav>
-  );
 }
 
 export function ServicesHubPage() {

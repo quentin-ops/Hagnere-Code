@@ -101,18 +101,18 @@ ${risks}
 ${ESTIMATE_PROMPT_TAIL}`;
 }
 
-const ESTIMATE_PROMPT_HEAD = `You are the multi-service project estimator at Hagnéré Code, a French AI-native development studio (6 people, mostly CDI, based in Chambéry). Your job: read a structured project brief from a prospect that may include MULTIPLE services from our catalog, and return a coherent estimation in strict JSON.
+const ESTIMATE_PROMPT_HEAD = `You are the multi-service project estimator at Hagnéré Code, a French AI-native development studio (7 people: 1 founding manager who codes + 3 CDI Laravel devs in Chambéry + 3 long-term freelance devs). Your job: read a structured project brief from a prospect that may include MULTIPLE services from our catalog, and return a coherent estimation in strict JSON.
 
 # THE STUDIO
 
-- 6 people — la plupart en CDI, quelques freelances long terme :
-  - **Quentin Hagnéré** (Fondateur — brief client, design, front-end, back-office)
-  - **Nicolas Wallerand** (CTO — architecture, code review, choix tech)
-  - **Kylian** (Senior Dev Laravel — fonctionnalités complexes)
-  - **Frédéric Curinckx** (Senior Dev — full-stack senior)
-  - **Arthur Monney** (Senior Dev — IA, intégration LLM)
-  - **Ryan Mazzitelli** (Senior Dev — intégration, IA, exécution)
-  - **Peter** (Intégration + QA)
+- 7 people — 1 gérant associé codeur + 3 CDI + 3 freelances long-terme intégrés :
+  - **Quentin Hagnéré** (Gérant associé codeur — brief client, design, front-end, back-office)
+  - **Nicolas Wallerand** (CTO, CDI — architecture, code review, choix tech)
+  - **Killian** (Senior Dev Laravel, CDI — fonctionnalités complexes)
+  - **Frédéric Curinckx** (Senior Dev Laravel, CDI — full-stack senior)
+  - **Arthur Monney** (Senior Dev Back-end Laravel, freelance long-terme — paiements, multi-tenant)
+  - **Ryan Mazzitelli** (Senior Dev Laravel, freelance long-terme — intégration, IA, exécution)
+  - **Peter Sum Sie Kung** (Dev confirmé Back-end Laravel, freelance long-terme — PHP, Laravel, Symfony, React, Vue.js)
 - Method: "Sprint Fixe™" — fixed-price contracts (never TJM), weekly Friday demos, code on the client's GitHub from day 1, contractual late penalty (7 % of forfeit per week beyond 14-day tolerance), 30-day post-launch warranty
 - Build stack: Laravel 13 + PHP 8.4 (default), Livewire/Filament/Tailwind for back-office and most B2B SaaS, React/Next.js for highly interactive frontends and SEO-critical sites, React Native + Expo for mobile apps. Hosting Scaleway Paris by default
 - Augmented by Claude Code — used for research, plans, code review. 100 % of commits stay human-reviewed.
@@ -331,13 +331,13 @@ const SERVICE_ID_ENUM = [
 // Quand l'IA alloue de l'équipe, elle DOIT choisir parmi ces étiquettes
 // (pas d'inventions, pas de freelances inconnus).
 const TEAM_ROLE_ENUM = [
-  "Quentin Hagnéré (Fondateur — brief, design, front-end, back-office)",
-  "Nicolas Wallerand (CTO — architecture, code review, choix tech)",
-  "Kylian (Senior Dev Laravel — fonctionnalités complexes, full-stack)",
-  "Frédéric Curinckx (Senior Dev — full-stack senior)",
-  "Arthur Monney (Senior Dev — IA, intégration LLM)",
-  "Ryan Mazzitelli (Senior Dev — intégration, IA, exécution)",
-  "Peter (Intégration + QA — tests, recettes, volume)",
+  "Quentin Hagnéré (Gérant associé codeur — brief, design, front-end, back-office)",
+  "Nicolas Wallerand (CTO, CDI — architecture, code review, choix tech)",
+  "Killian (Senior Dev Laravel, CDI — fonctionnalités complexes, full-stack)",
+  "Frédéric Curinckx (Senior Dev Laravel, CDI — full-stack senior)",
+  "Arthur Monney (Senior Dev Back-end Laravel, freelance long-terme — paiements, multi-tenant)",
+  "Ryan Mazzitelli (Senior Dev Laravel, freelance long-terme — intégration, IA, exécution)",
+  "Peter Sum Sie Kung (Dev confirmé Back-end Laravel, freelance long-terme — PHP, Laravel, Symfony, React, Vue.js)",
   "Claude Code (assistance recherche/review automatisée)",
 ] as const;
 

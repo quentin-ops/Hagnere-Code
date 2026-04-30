@@ -10,7 +10,7 @@ export const teamHtml = `
       <div class="right">
         Pas de "notre équipe d'experts" anonyme. Votre audit Standard mobilise <b>2 seniors + un associé-lead</b>
         nommés dès le devis — dans la liste ci-dessous. Chaque dimension du rapport a un <b>owner dédié</b>
-        qui la signe. Chez nos 47 audits&nbsp;: <b>0 rotation d'équipe</b> en cours d'audit.
+        qui la signe. Engagement contractuel : <b>0 rotation d'équipe</b> en cours d'audit.
       </div>
     </div>
 
@@ -171,7 +171,7 @@ export const teamHtml = `
       <div>
         <b>Votre audit Standard mobilise 2 seniors parmi les 4 (Arthur · Frédéric · Ryan · Killian) + Nicolas sur l'archi + Quentin en lead.</b>
         Composition définie au cadrage selon vos dimensions critiques. <b>Nommés dans le devis</b>, zéro rotation en cours d'audit.
-        Équipe 100 % salariée Chambéry. Ancienneté moyenne chez Hagnéré&nbsp;: 4 ans.
+        Studio 7 personnes&nbsp;: 1 gérant + 3 CDI Laravel + 3 freelances long-terme — France &amp; Europe, intégrés à nos rituels. Pas d'offshore, pas de pool tournant.
       </div>
     </div>
   </div>

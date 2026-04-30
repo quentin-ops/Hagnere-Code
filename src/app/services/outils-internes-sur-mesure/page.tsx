@@ -11,6 +11,14 @@ export const metadata: Metadata = {
     description:
       "Back-offices, CRM métier, ERP légers. Intégrations Sage, Cegid, Pennylane. Laravel 13 + IA. Forfait fixe, données en France.",
     url: "/services/outils-internes-sur-mesure",
+    images: [
+      {
+        url: "/og-image-services.png",
+        width: 1200,
+        height: 630,
+        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
+      },
+    ],
     type: "website",
   },
 };
@@ -32,7 +40,7 @@ const serviceJsonLd = JSON.stringify({
       addressLocality: "Chambéry",
       addressCountry: "FR",
     },
-    email: "hello@hagnere-code.fr",
+    email: "quentin@hagnere-patrimoine.fr",
     telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },

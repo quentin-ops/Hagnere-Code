@@ -306,6 +306,76 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       });
     }
 
+    // Calendly popup triggers — buttons with [data-calendly-open] open the
+    // standard Calendly popup widget. Script + CSS are lazy-loaded on first
+    // click; subsequent clicks reuse the cached widget. Falls back to opening
+    // Calendly in a new tab if the script fails to load.
+    const calendlyTriggers = Array.from(
+      root.querySelectorAll<HTMLElement>("[data-calendly-open]"),
+    );
+    if (calendlyTriggers.length) {
+      const CALENDLY_URL =
+        "https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte?hide_gdpr_banner=1";
+      const SCRIPT_SRC = "https://assets.calendly.com/assets/external/widget.js";
+      const CSS_HREF = "https://assets.calendly.com/assets/external/widget.css";
+
+      let scriptPromise: Promise<void> | null = null;
+      const ensureCalendly = () => {
+        if (scriptPromise) return scriptPromise;
+        scriptPromise = new Promise<void>((resolve, reject) => {
+          // Already loaded? (page revisit, other trigger clicked first)
+          if ((window as unknown as { Calendly?: unknown }).Calendly) {
+            resolve();
+            return;
+          }
+          if (!document.querySelector(`link[href="${CSS_HREF}"]`)) {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = CSS_HREF;
+            document.head.appendChild(link);
+          }
+          const existing = document.querySelector<HTMLScriptElement>(
+            `script[src="${SCRIPT_SRC}"]`,
+          );
+          if (existing) {
+            existing.addEventListener("load", () => resolve(), { once: true });
+            existing.addEventListener("error", () => reject(new Error("calendly")), { once: true });
+            return;
+          }
+          const script = document.createElement("script");
+          script.src = SCRIPT_SRC;
+          script.async = true;
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error("calendly"));
+          document.body.appendChild(script);
+        });
+        return scriptPromise;
+      };
+
+      calendlyTriggers.forEach((trigger) => {
+        const url = trigger.getAttribute("data-calendly-url") || CALENDLY_URL;
+        const onClick = (e: Event) => {
+          e.preventDefault();
+          ensureCalendly()
+            .then(() => {
+              const Calendly = (window as unknown as {
+                Calendly?: { initPopupWidget: (opts: { url: string }) => void };
+              }).Calendly;
+              if (Calendly?.initPopupWidget) {
+                Calendly.initPopupWidget({ url });
+              } else {
+                window.open(url, "_blank", "noopener,noreferrer");
+              }
+            })
+            .catch(() => {
+              window.open(url, "_blank", "noopener,noreferrer");
+            });
+        };
+        trigger.addEventListener("click", onClick);
+        cleanups.push(() => trigger.removeEventListener("click", onClick));
+      });
+    }
+
     // Hero founder-video button — logs intent until a real Loom URL is wired.
     const heroVideo = root.querySelector<HTMLButtonElement>("button.hero-video");
     if (heroVideo) {
@@ -823,25 +893,156 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
     const navDropdownItems = Array.from(
       root.querySelectorAll<HTMLElement>(".nav-item"),
     ).filter((item) => item.querySelector(".nav-dd"));
+
+    const closeAllNavDropdowns = () => {
+      navDropdownItems.forEach((item) => {
+        item.classList.remove("nav-item-open");
+        item.querySelector(".nav-trigger")?.setAttribute("aria-expanded", "false");
+      });
+    };
+
     navDropdownItems.forEach((navItem) => {
       const navTrigger = navItem.querySelector<HTMLElement>(".nav-trigger");
       if (!navTrigger) return;
       navTrigger.setAttribute("aria-expanded", "false");
+
+      // Le click toggle l'état "ouvert" sur toutes les tailles d'écran.
+      // Sur desktop, l'utilisateur peut hover OU cliquer (la CSS gère les deux états).
       const onTriggerClick: EventListener = (e) => {
-        if (window.matchMedia("(max-width: 900px)").matches) {
-          e.preventDefault();
-          e.stopPropagation();
-          const willOpen = !navItem.classList.contains("nav-item-open");
-          navDropdownItems.forEach((item) => {
-            item.classList.remove("nav-item-open");
-            item.querySelector(".nav-trigger")?.setAttribute("aria-expanded", "false");
-          });
-          navItem.classList.toggle("nav-item-open", willOpen);
-          navTrigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
-        }
+        e.preventDefault();
+        e.stopPropagation();
+        const willOpen = !navItem.classList.contains("nav-item-open");
+        closeAllNavDropdowns();
+        navItem.classList.toggle("nav-item-open", willOpen);
+        navTrigger.setAttribute("aria-expanded", willOpen ? "true" : "false");
       };
       navTrigger.addEventListener("click", onTriggerClick);
       cleanups.push(() => navTrigger.removeEventListener("click", onTriggerClick));
+    });
+
+    // Click hors du dropdown → ferme + Escape → ferme
+    if (navDropdownItems.length) {
+      const onDocClickClose = (e: MouseEvent) => {
+        const target = e.target as Node;
+        const insideOpen = navDropdownItems.some(
+          (item) => item.classList.contains("nav-item-open") && item.contains(target),
+        );
+        if (!insideOpen) closeAllNavDropdowns();
+      };
+      const onEscClose = (e: KeyboardEvent) => {
+        if (e.key === "Escape") closeAllNavDropdowns();
+      };
+      document.addEventListener("click", onDocClickClose);
+      document.addEventListener("keydown", onEscClose);
+      cleanups.push(() => {
+        document.removeEventListener("click", onDocClickClose);
+        document.removeEventListener("keydown", onEscClose);
+      });
+    }
+
+    // ----- New pill + mega-menu (.hc-nav) ---------------------------------
+    // Wires hover/click to open the panel, hover on a left-sidebar category
+    // to swap the right pane, and outside-click + Escape to close.
+    root.querySelectorAll<HTMLElement>("[data-mega-root]").forEach((megaRoot) => {
+      const trigger = megaRoot.querySelector<HTMLElement>("[data-mega-trigger]");
+      const panel = megaRoot.querySelector<HTMLElement>("[data-mega-panel]");
+      if (!trigger || !panel) return;
+
+      const cats = Array.from(megaRoot.querySelectorAll<HTMLElement>(".hc-mega-cat[data-cat]"));
+      const panes = Array.from(megaRoot.querySelectorAll<HTMLElement>(".hc-mega-pane[data-pane]"));
+
+      const setOpen = (open: boolean) => {
+        megaRoot.dataset.megaOpen = open ? "true" : "false";
+        trigger.setAttribute("aria-expanded", open ? "true" : "false");
+      };
+      const setActive = (cat: string) => {
+        cats.forEach((c) => c.classList.toggle("is-active", c.dataset.cat === cat));
+        panes.forEach((p) => p.classList.toggle("is-active", p.dataset.pane === cat));
+      };
+
+      // Default: first category active
+      const initial = cats[0]?.dataset.cat;
+      if (initial) setActive(initial);
+
+      // Hover: open on enter, close on leave (with grace delay)
+      let closeTimer: number | undefined;
+      const cancelClose = () => {
+        if (closeTimer !== undefined) {
+          window.clearTimeout(closeTimer);
+          closeTimer = undefined;
+        }
+      };
+      const scheduleClose = () => {
+        cancelClose();
+        closeTimer = window.setTimeout(() => setOpen(false), 120);
+      };
+      // Hover open/close — only on devices that actually support hover
+      // (desktop pointers). On touch devices, tapping fires synthetic
+      // mouseenter+click events which would open then immediately toggle
+      // closed, making the menu unusable.
+      const hoverSupported =
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      const onMouseEnter = () => {
+        cancelClose();
+        setOpen(true);
+      };
+      if (hoverSupported) {
+        megaRoot.addEventListener("mouseenter", onMouseEnter);
+        megaRoot.addEventListener("mouseleave", scheduleClose);
+      }
+
+      // Click on trigger toggles (mobile-friendly)
+      const onTriggerClick = (e: MouseEvent) => {
+        e.preventDefault();
+        const willOpen = megaRoot.dataset.megaOpen !== "true";
+        setOpen(willOpen);
+      };
+      trigger.addEventListener("click", onTriggerClick);
+
+      // Hover/focus/click on a category swaps the right pane.
+      // Click is required on touch devices (mouseenter doesn't fire from a tap).
+      cats.forEach((cat) => {
+        const cl = () => {
+          const c = cat.dataset.cat;
+          if (c) setActive(c);
+        };
+        const onClick = (e: MouseEvent) => {
+          e.preventDefault();
+          cl();
+        };
+        cat.addEventListener("mouseenter", cl);
+        cat.addEventListener("focus", cl);
+        cat.addEventListener("click", onClick);
+        cleanups.push(() => {
+          cat.removeEventListener("mouseenter", cl);
+          cat.removeEventListener("focus", cl);
+          cat.removeEventListener("click", onClick);
+        });
+      });
+
+      // Outside click closes
+      const onDocClick = (e: MouseEvent) => {
+        if (!megaRoot.contains(e.target as Node)) setOpen(false);
+      };
+      document.addEventListener("click", onDocClick);
+
+      // Escape closes
+      const onKey = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setOpen(false);
+      };
+      document.addEventListener("keydown", onKey);
+
+      cleanups.push(() => {
+        trigger.removeEventListener("click", onTriggerClick);
+        if (hoverSupported) {
+          megaRoot.removeEventListener("mouseenter", onMouseEnter);
+          megaRoot.removeEventListener("mouseleave", scheduleClose);
+        }
+        document.removeEventListener("click", onDocClick);
+        document.removeEventListener("keydown", onKey);
+        cancelClose();
+      });
     });
 
     return () => cleanups.forEach((fn) => fn());

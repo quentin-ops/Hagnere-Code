@@ -7,8 +7,10 @@ import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import "./homepage.css";
 import "./sections/sections.css";
 import "./sections/hero-video.css";
+import "./sections/hero-visual.css";
 import "./sections/team-polish.css";
 import "./sections/sprint-fixe.css";
+import "@/components/design-shared/nav-dropdown.css";
 import "@/components/design-shared/responsive.css";
 import "@/components/design-shared/site-footer.css";
 

@@ -99,7 +99,7 @@
 .mhero-title .line.accent{background:linear-gradient(90deg,#A78BFA 0%,var(--accent) 60%);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700;text-shadow:0 4px 30px rgba(109,40,217,0.4)}
 
 .mhero-bottom{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:end;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08)}
-.mhero-creds{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding-top:14px}
+.mhero-creds{display:grid;grid-template-columns:repeat(2,1fr);gap:0;padding-top:14px}
 .mhero-cred{padding:0 24px;border-right:1px solid rgba(255,255,255,0.08)}
 .mhero-cred:first-child{padding-left:0}
 .mhero-cred:last-child{border-right:none}
@@ -630,9 +630,12 @@
 
 @media (max-width: 480px) {
   .hc-design .wrap{padding:0 16px}
+  .mhero{padding:24px 0 36px;min-height:auto}
   .mhero-top{font-size:9.5px}
-  .mhero-stamp{padding:5px 10px}
+  .mhero-stamp{padding:5px 10px;font-size:9.5px}
   .mhero-tag{flex-direction:column;align-items:flex-start;gap:8px}
+  .mhero-title{font-size:clamp(26px,8vw,36px);padding:6px 0;letter-spacing:-0.02em;line-height:1.05}
+  .mhero-title .line em{text-decoration-thickness:3px;text-underline-offset:3px}
   .anti-card{padding:18px}
   .pil-card{min-height:auto;padding:22px 18px 18px}
   .proof-grid{grid-template-columns:1fr}

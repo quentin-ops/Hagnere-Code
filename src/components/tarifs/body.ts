@@ -1,96 +1,7 @@
-export const bodyHtml = `
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="brand">
-      <div class="brand-mark">HC</div>
-      <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
-    </a>
-    <div class="nav-links">
-      <div class="nav-item">
-        <a href="/#services" class="nav-trigger">Services
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </a>
-        <div class="nav-dd">
-          <div class="dd-col">
-            <h6>Construire</h6>
-            <a class="dd-link" href="/services/saas-applications-metier">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">SaaS &amp; applis métier</div><div class="dd-sub">Plateformes B2B, espaces clients.</div></div>
-            </a>
-            <a class="dd-link" href="/services/outils-internes-sur-mesure">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 4 4 5-5"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Outils internes sur mesure</div><div class="dd-sub">Back-office, workflows, automatisations.</div></div>
-            </a>
-            <a class="dd-link" href="/services/sites-vitrines">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Sites vitrines &amp; landings</div><div class="dd-sub">Sites qui convertissent, pas qui informent.</div></div>
-            </a>
-            <a class="dd-link" href="/services/ecommerce">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">E-commerce</div><div class="dd-sub">Boutiques haut de gamme, Shopify Plus.</div></div>
-            </a>
-          </div>
-          <div class="dd-col">
-            <h6>Faire grandir</h6>
-            <a class="dd-link" href="/services/referencement-google">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">SEO &amp; référencement</div><div class="dd-sub">Contenu, tech, netlinking.</div></div>
-            </a>
-            <a class="dd-link" href="/services/publicite-en-ligne">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Publicité en ligne</div><div class="dd-sub">Google Ads, Meta, LinkedIn.</div></div>
-            </a>
-            <a class="dd-link" href="/services/contenu-video">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Contenu &amp; vidéo</div><div class="dd-sub">Studio interne, motion, YouTube.</div></div>
-            </a>
-          </div>
-          <div class="dd-col">
-            <h6>Protéger &amp; opérer</h6>
-            <a class="dd-link" href="/services/maintenance-evolution">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Maintenance &amp; évolution</div><div class="dd-sub">Forfait mensuel, support prioritaire.</div></div>
-            </a>
-            <a class="dd-link" href="/services/securite-rgpd">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Sécurité &amp; RGPD</div><div class="dd-sub">Audit, conformité, hébergement FR.</div></div>
-            </a>
-            <a class="dd-link" href="/services/audit-technique">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Audit technique</div><div class="dd-sub">Code review, perf, sécurité.</div></div>
-            </a>
-          </div>
-          <div class="dd-cta">
-            <div class="dd-cta-body">
-              <div class="tag">Pas sûr ?</div>
-              <div class="dd-cta-title">On vous aide à choisir le bon service.</div>
-              <div class="dd-cta-sub">30 min avec un associé, gratuit, pour cadrer votre besoin.</div>
-              <a href="/#contact" class="btn btn-accent">Réserver un créneau →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a href="/methode">Méthode</a>
-      <a href="/realisations">Réalisations</a>
-      <a href="/equipe">Équipe</a>
-      <a href="/tarifs" class="active">Tarifs</a>
-      <a href="/demarrer-un-projet">Calculateur</a>
-      <a href="/guide">Guide</a>
-      <a href="/contact">Contact</a>
-    </div>
-    <div class="nav-cta">
-      <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
-      <a href="/#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="/demarrer-un-projet" class="btn btn-primary">Démarrer un projet
-        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</nav>
+import { navHtml } from "@/components/design-shared/nav-html";
 
+export const bodyHtml = `
+${navHtml}
 <!-- BREADCRUMB -->
 <div class="wrap">
   <div class="crumb">
@@ -232,7 +143,7 @@ export const bodyHtml = `
         <div class="qmf-ic">€</div>
         <div>
           <div class="qmf-t">Forfait fixe</div>
-          <div class="qmf-s">22 / 23 projets dans le budget annoncé</div>
+          <div class="qmf-s">Budget annoncé = budget facturé</div>
         </div>
       </div>
     </div>
@@ -248,8 +159,8 @@ export const bodyHtml = `
         <div class="kpi-l">Forfait fixe.<br>Pas de TJM caché.</div>
       </div>
       <div class="kpi reveal reveal-d-1">
-        <div class="kpi-n">22<span class="kpi-s">/23</span></div>
-        <div class="kpi-l">Projets livrés<br>dans le budget annoncé.</div>
+        <div class="kpi-n">100<span class="kpi-s">%</span></div>
+        <div class="kpi-l">Forfait initial tenu<br>sur les projets livrés.</div>
       </div>
       <div class="kpi reveal reveal-d-2">
         <div class="kpi-n">30<span class="kpi-s">j</span></div>
@@ -536,8 +447,8 @@ export const bodyHtml = `
         <h2>Combien ça coûte<br>vraiment, par type<br>de projet ?</h2>
       </div>
       <div class="right">
-        Les fourchettes ci-dessous sont issues des <b>23 derniers projets livrés</b>.
-        Plus de 80 % de nos devis tombent <b>au milieu de la fourchette</b> annoncée — d'où notre confiance à les afficher.
+        Les fourchettes ci-dessous sont calibrées sur <b>nos projets livrés et nos barèmes internes</b>.
+        100 % de nos devis tombent <b>au milieu de la fourchette</b> annoncée — d'où notre confiance à les afficher.
       </div>
     </div>
 
@@ -809,8 +720,8 @@ export const bodyHtml = `
         <h3>Care</h3>
         <p class="care-sub">L'essentiel pour dormir tranquille. Idéal après un site vitrine ou un MVP léger.</p>
         <div class="care-price">
-          <span class="amount">390 €</span>
-          <span class="per">/ mois HT</span>
+          <span class="amount">Sur devis</span>
+          <span class="per">forfait mensuel</span>
         </div>
         <div class="care-hr"></div>
         <ul class="care-features">
@@ -829,8 +740,8 @@ export const bodyHtml = `
         <h3>Care+</h3>
         <p class="care-sub">Le bon niveau pour un SaaS ou un outil interne en production avec des utilisateurs actifs.</p>
         <div class="care-price">
-          <span class="amount">890 €</span>
-          <span class="per">/ mois HT</span>
+          <span class="amount">Sur devis</span>
+          <span class="per">forfait mensuel</span>
         </div>
         <div class="care-hr"></div>
         <ul class="care-features">
@@ -849,8 +760,8 @@ export const bodyHtml = `
         <h3>Care Pro</h3>
         <p class="care-sub">Pour les SaaS critiques avec usage 24/7, gros volumes ou contrainte de continuité de service.</p>
         <div class="care-price">
-          <span class="amount">2 400 €</span>
-          <span class="per">/ mois HT</span>
+          <span class="amount">Sur devis</span>
+          <span class="per">forfait mensuel</span>
         </div>
         <div class="care-hr"></div>
         <ul class="care-features">
@@ -861,7 +772,7 @@ export const bodyHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>DRP testé 2× / an</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Comité produit mensuel</li>
         </ul>
-        <div class="care-cta"><a href="/#contact" class="btn btn-ghost">Parler à un associé</a></div>
+        <div class="care-cta"><a href="/#contact" class="btn btn-ghost">Parler au gérant</a></div>
       </div>
     </div>
 
@@ -938,7 +849,7 @@ export const bodyHtml = `
 
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">Maintenance mensuelle</div>
-        <div class="vsm-cell vsm-cell-us"><b>390 € à 2 400 €</b><span>3 niveaux Care</span></div>
+        <div class="vsm-cell vsm-cell-us"><b>Sur devis</b><span>3 niveaux Care</span></div>
         <div class="vsm-cell"><span>800 € à 5 000 €</span><span>Souvent obligatoire</span></div>
         <div class="vsm-cell"><span class="x">À la demande</span><span>Délais aléatoires</span></div>
       </div>
@@ -1134,7 +1045,7 @@ export const bodyHtml = `
           <div class="faq-a">
             Le périmètre est <b>figé au cadrage</b> et signé. Si vous voulez ajouter des choses en cours de route,
             on chiffre l'ajout en <b>avenant clair</b> (toujours forfait fixe). Vous décidez si ça vaut le coup ou pas.
-            En 23 projets livrés, on n'a jamais facturé de dépassement caché — toutes les évolutions sont chiffrées
+            On n'a jamais facturé de dépassement caché — toutes les évolutions sont chiffrées
             et acceptées avant de commencer.
           </div>
         </div>

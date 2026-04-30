@@ -133,14 +133,23 @@
 .pf-topnav .pf-site-return {
   display: inline-flex;
   align-items: center;
-  min-height: 34px;
-  padding: 0 12px;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
   color: var(--pf-ink);
   background: #fff;
   border: 1px solid var(--pf-line);
   border-radius: 999px;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: -0.005em;
   box-shadow: 0 12px 28px -24px rgba(10, 10, 10, 0.4);
+  transition: border-color 0.15s, color 0.15s, transform 0.15s;
+}
+
+.pf-topnav .pf-site-return:hover {
+  border-color: var(--pf-ink);
+  transform: translateX(-1px);
 }
 
 .pf-shell {
@@ -1692,10 +1701,16 @@
 
 .pf-kind-group-summary::-webkit-details-marker { display: none; }
 
-.pf-kind-group-emoji {
-  font-size: 22px;
-  line-height: 1;
+.pf-kind-group-icon {
   flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--pf-accent-soft);
+  color: var(--pf-accent-dark);
+  border: 1px solid color-mix(in srgb, var(--pf-accent) 14%, transparent);
 }
 
 .pf-kind-group-meta {
@@ -2060,30 +2075,6 @@
 }
 
 .pf-loading-longrun svg { flex-shrink: 0; color: var(--pf-accent); }
-
-/* ==========================================================================
-   Topbar enrichi
-   ========================================================================== */
-
-.pf-topnav-link {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 11px;
-  border-radius: 999px;
-  font-size: 13px;
-  color: var(--pf-soft);
-  transition: all 0.15s ease;
-  text-decoration: none;
-}
-
-.pf-topnav-link:hover {
-  background: var(--pf-bg);
-  color: var(--pf-ink);
-}
-
-@media (max-width: 760px) {
-  .pf-topnav-link { display: none; }
-}
 
 /* ==========================================================================
    Chip "Voir plus / Réduire"

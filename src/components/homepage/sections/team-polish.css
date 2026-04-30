@@ -56,27 +56,7 @@
 }
 .eq-founder-li .eq-li-icon { width: 12px; height: 12px; }
 
-/* Small hint overlay on founder photo — "Photo à venir" */
-.eq-founder-photo {
-  position: relative;
-}
-.eq-founder-photo::after {
-  content: "Photo pro à venir";
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  font-family: var(--font-geist-mono);
-  font-size: 9.5px;
-  color: rgba(255, 255, 255, 0.55);
-  background: rgba(10, 10, 10, 0.75);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 4px 9px;
-  border-radius: 999px;
-  letter-spacing: 0.04em;
-  z-index: 2;
-}
+/* (Le badge "Photo pro à venir" est retiré — la photo réelle est en place.) */
 
 /* CTO card — distinct avatar + tag next to name */
 .eq-dev-avatar.eq-dev-avatar-cto {

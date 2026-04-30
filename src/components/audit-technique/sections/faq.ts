@@ -65,7 +65,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Garantie contractuelle</b>&nbsp;: si le rapport livre moins de 3 recommandations jugées actionnables par votre CTO ou board, <b>50 % du prix est remboursé</b> sans négociation. Jamais activée sur nos 47 audits. Après livraison, si vous voulez discuter d'un finding, réunion de re-restitution sous 15 j incluse.
+            <b>Garantie contractuelle</b>&nbsp;: si le rapport livre moins de 3 recommandations jugées actionnables par votre CTO ou board, <b>50 % du prix est remboursé</b> sans négociation. Jamais activée sur nos audits. Après livraison, si vous voulez discuter d'un finding, réunion de re-restitution sous 15 j incluse.
           </div>
         </div>
 
@@ -74,7 +74,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>NDA mutuel J0</b> · <b>clause CoI publique</b> (100 % déduit si mission &gt; 50 k€) · <b>garantie ≥ 3 recos actionnables ou 50 % remboursé</b> · <b>RC pro 1 M€</b> chez Hiscox · <b>méthodologie ISO 19011</b> documentée · <b>version board-safe</b> anonymisée incluse · <b>propriété client exclusive</b> des livrables. 8 engagements écrits dans les CGV.
+            <b>NDA mutuel J0</b> · <b>clause CoI publique</b> (100 % déduit si mission &gt; 50 k€) · <b>garantie ≥ 3 recos actionnables ou 50 % remboursé</b> · <b>méthodologie ISO 19011</b> documentée · <b>version board-safe</b> anonymisée incluse · <b>propriété client exclusive</b> des livrables. 7 engagements écrits dans les CGV.
           </div>
         </div>
 
@@ -101,7 +101,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>2 seniors + un associé-lead nommés dans le devis</b> (photo, prénom, LinkedIn — <a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir la section Équipe</a>). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. <b>Chaque dimension a un owner dédié</b> qui la signe. Zéro rotation en cours d'audit. Équipe 100 % salariée Chambéry, ancienneté moyenne 4 ans.
+            <b>2 seniors + le gérant-lead nommés dans le devis</b> (photo, prénom, LinkedIn — <a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir la section Équipe</a>). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. <b>Chaque dimension a un owner dédié</b> qui la signe. Zéro rotation en cours d'audit. Studio 7 personnes&nbsp;: 1 gérant + 3 CDI Laravel + 3 freelances long-terme intégrés à nos rituels.
           </div>
         </div>
 

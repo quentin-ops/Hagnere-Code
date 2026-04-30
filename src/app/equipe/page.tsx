@@ -2,16 +2,24 @@ import type { Metadata } from "next";
 import { EquipePage } from "@/components/equipe/EquipePage";
 
 export const metadata: Metadata = {
-  title: "L'équipe — 6 personnes en CDI à Chambéry · Hagnéré Code",
+  title: "L'équipe — 7 personnes · 3 CDI à Chambéry · Hagnéré Code",
   description:
-    "Un fondateur, un CTO et 4 développeurs Laravel seniors, tous en CDI à Chambéry. Pas de sous-traitance, pas d'offshore, pas de pool de freelances. L'équipe qui construit votre produit.",
+    "Un gérant associé codeur, un CTO et 5 développeurs Laravel — 3 CDI à Chambéry et 3 freelances long-terme intégrés à nos rituels. Pas d'offshore, pas de pool anonyme. L'équipe qui construit votre produit.",
   alternates: { canonical: "/equipe" },
   openGraph: {
-    title: "L'équipe Hagnéré Code · 6 personnes seniors à Chambéry",
+    title: "L'équipe Hagnéré Code · 7 personnes seniors · 3 CDI à Chambéry",
     description:
-      "Un fondateur, un CTO, 4 devs Laravel seniors. Tous en CDI, basés à Chambéry. Augmentés par Claude Code.",
+      "1 gérant associé codeur + 3 CDI (CTO + 2 devs) + 3 freelances long-terme intégrés. Tous seniors ou confirmés, écosystème Laravel. Augmentés par Claude Code.",
     url: "/equipe",
     type: "website",
+    images: [
+      {
+        url: "/illustrations/equipe-atmosphere.png",
+        width: 1792,
+        height: 1024,
+        alt: "L'équipe Hagnéré Code — 3 CDI + 3 freelances long-terme, zéro pool anonyme, stack maîtrisée",
+      },
+    ],
   },
 };
 
@@ -21,7 +29,7 @@ const orgJsonLd = JSON.stringify({
   name: "Hagnéré Code",
   url: "https://hagnere-code.fr",
   logo: "https://hagnere-code.fr/logos/logo-dark.png",
-  email: "hello@hagnere-code.fr",
+  email: "quentin@hagnere-patrimoine.fr",
   telephone: "+33-3-74-47-20-18",
   address: {
     "@type": "PostalAddress",
@@ -30,49 +38,57 @@ const orgJsonLd = JSON.stringify({
     addressLocality: "Chambéry",
     addressCountry: "FR",
   },
-  numberOfEmployees: { "@type": "QuantitativeValue", value: 6 },
+  numberOfEmployees: { "@type": "QuantitativeValue", value: 4 },
   founder: {
     "@type": "Person",
     name: "Quentin Hagnéré",
-    jobTitle: "Fondateur",
+    jobTitle: "Gérant associé codeur",
     sameAs: ["https://www.linkedin.com/in/quentin-hagnere"],
   },
   employee: [
     {
       "@type": "Person",
       name: "Quentin Hagnéré",
-      jobTitle: "Fondateur — Front-end / Design / Brief client",
+      jobTitle: "Gérant associé codeur — Brief client / Design / Front-end / Back-office",
       sameAs: ["https://www.linkedin.com/in/quentin-hagnere"],
     },
     {
       "@type": "Person",
       name: "Nicolas Wallerand",
-      jobTitle: "CTO — Direction technique",
+      jobTitle: "CTO — Direction technique (CDI)",
       sameAs: ["https://www.linkedin.com/in/nicolas-wallerand-86b0a079/"],
     },
     {
       "@type": "Person",
-      name: "Arthur Monney",
-      jobTitle: "Senior Dev — Back-end Laravel",
-      sameAs: ["https://www.linkedin.com/in/arthurmonney/"],
-    },
-    {
-      "@type": "Person",
       name: "Frédéric Curinckx",
-      jobTitle: "Senior Dev — Back-end Laravel",
+      jobTitle: "Senior Dev — Back-end Laravel + Livewire (CDI)",
       sameAs: ["https://www.linkedin.com/in/frederic-curinckx/"],
     },
     {
       "@type": "Person",
+      name: "Killian Hoarau",
+      jobTitle: "Senior Dev — Back-end Laravel + DevOps (CDI)",
+      sameAs: ["https://www.linkedin.com/in/killian-hoarau-960927138/"],
+    },
+  ],
+  contractor: [
+    {
+      "@type": "Person",
+      name: "Arthur Monney",
+      jobTitle: "Senior Dev Back-end Laravel — Paiements (Freelance long-terme)",
+      sameAs: ["https://www.linkedin.com/in/arthurmonney/"],
+    },
+    {
+      "@type": "Person",
       name: "Ryan Mazzitelli",
-      jobTitle: "Senior Dev — Back-end Laravel + IA",
+      jobTitle: "Senior Dev Back-end Laravel — IA / Agents (Freelance long-terme)",
       sameAs: ["https://www.linkedin.com/in/ryan-mazzitelli-907716262/"],
     },
     {
       "@type": "Person",
-      name: "Killian Hoarau",
-      jobTitle: "Senior Dev — Back-end Laravel + DevOps",
-      sameAs: ["https://www.linkedin.com/in/killian-hoarau-960927138/"],
+      name: "Peter Sum Sie Kung",
+      jobTitle: "Dev confirmé Back-end Laravel — Full-stack PHP/JS (Freelance long-terme)",
+      sameAs: ["https://www.codeur.com/-peterssk"],
     },
   ],
 });
@@ -96,7 +112,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Quentin (le fondateur) reste votre interlocuteur principal du brief à la livraison, pour tout ce qui touche au produit, au cadrage et au design. Nicolas (CTO) intervient sur les questions d'architecture et de jalons techniques. Le dev référent du projet est nommé au cadrage et reste le même jusqu'à la livraison — pas de tournante.",
+          "Quentin (gérant associé codeur) reste votre interlocuteur principal du brief à la livraison, pour tout ce qui touche au produit, au cadrage et au design. Nicolas (CTO) intervient sur les questions d'architecture et de jalons techniques. Le dev référent du projet — qu'il soit en CDI ou freelance long-terme — est nommé au cadrage et reste le même jusqu'à la livraison. Pas de tournante.",
       },
     },
     {
@@ -105,7 +121,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Non. Toutes les personnes qui touchent à votre code sont salariées en CDI chez Hagnéré Code, basées à Chambéry. Pas de pool de freelances qui changent à chaque projet, pas de sous-traitance offshore, pas de white-label déguisé. C'est un choix structurant qui explique nos prix au forfait.",
+          "Oui, mais pas n'importe lesquels. L'équipe est composée de 3 CDI à Chambéry (CTO + 2 devs seniors) et de 3 freelances long-terme nommés (Arthur, Ryan, Peter) intégrés à nos rituels — daily, démo hebdo, revue de code. Pas de pool anonyme qui change à chaque projet, pas de sous-traitance offshore, pas de white-label déguisé. Ce sont les mêmes personnes d'un projet à l'autre, et leurs noms sont dans le devis.",
       },
     },
     {
@@ -132,7 +148,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "5 ans et plus pour tous les développeurs (CTO inclus). Personne en stage, personne en alternance, personne en première année. Cela coûte plus cher à Hagnéré Code, mais cela garantit qu'aucun client ne sert de terrain d'apprentissage.",
+          "5 ans et plus pour tous les seniors (CTO inclus, CDI comme freelances long-terme). Notre freelance long-terme Peter est dev confirmé (3+ ans XP) et opère systématiquement sous code review du CTO et d'un senior. Personne en stage, personne en alternance, personne en première année. Cela coûte plus cher, mais cela garantit qu'aucun client ne sert de terrain d'apprentissage.",
       },
     },
     {
@@ -150,7 +166,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Toujours pour des profils alignés. Le prochain recrutement prévu est un Designer produit / UX senior. Les candidatures spontanées sont étudiées sous 5 jours ouvrés à hello@hagnere-code.fr — uniquement profils 5+ ans d'expérience, basés ou prêts à venir à Chambéry.",
+          "Toujours pour des profils alignés. Le prochain recrutement prévu est un Designer produit / UX senior. Les candidatures spontanées sont étudiées sous 5 jours ouvrés à quentin@hagnere-patrimoine.fr — uniquement profils 5+ ans d'expérience, basés ou prêts à venir à Chambéry.",
       },
     },
   ],

@@ -10,6 +10,8 @@ import {
   ClipboardList,
   Code2,
   FileText,
+  Hammer,
+  HelpCircle,
   Layers3,
   Loader2,
   Mail,
@@ -22,7 +24,9 @@ import {
   ShieldCheck,
   Sparkles,
   Timer,
+  TrendingUp,
   UserRound,
+  Wrench,
   X,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, useCallback, type ReactNode } from "react";
@@ -1273,11 +1277,11 @@ function ButtonCheck({ active }: { active: boolean }) {
  * verticalement les 3-4 services qui le concernent.
  */
 type FamilyId = "Build" | "Grow" | "Run" | "Trust";
-const FAMILY_META: Record<FamilyId, { label: string; sub: string; emoji: string }> = {
-  Build: { label: "Construire", sub: "Site, app, SaaS, outil interne", emoji: "🏗️" },
-  Grow: { label: "Faire grandir", sub: "SEO, Ads, contenu vidéo", emoji: "📈" },
-  Run: { label: "Maintenir / auditer", sub: "Run, audit, reprise", emoji: "🛠️" },
-  Trust: { label: "Sécuriser", sub: "RGPD, DPO, conformité", emoji: "🛡️" },
+const FAMILY_META: Record<FamilyId, { label: string; sub: string; Icon: typeof Hammer }> = {
+  Build: { label: "Construire", sub: "Site, app, SaaS, outil interne", Icon: Hammer },
+  Grow: { label: "Faire grandir", sub: "SEO, Ads, contenu vidéo", Icon: TrendingUp },
+  Run: { label: "Maintenir / auditer", sub: "Run, audit, reprise", Icon: Wrench },
+  Trust: { label: "Sécuriser", sub: "RGPD, DPO, conformité", Icon: ShieldCheck },
 };
 
 function ProjectKindsGroupedGrid({
@@ -1310,7 +1314,9 @@ function ProjectKindsGroupedGrid({
         return (
           <details key={family} className="pf-kind-group" open>
             <summary className="pf-kind-group-summary">
-              <span className="pf-kind-group-emoji" aria-hidden="true">{meta.emoji}</span>
+              <span className="pf-kind-group-icon" aria-hidden="true">
+                <meta.Icon size={20} strokeWidth={1.7} />
+              </span>
               <span className="pf-kind-group-meta">
                 <b>{meta.label}</b>
                 <small>{meta.sub}</small>
@@ -1837,7 +1843,9 @@ export function ProjectFunnel() {
       const raw = window.localStorage.getItem(DRAFT_STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw) as Partial<FunnelState>;
-        setState((prev) => ({ ...prev, ...parsed }));
+        // Toujours arriver sur la page avec aucun service coché — l'utilisateur
+        // doit re-sélectionner explicitement, même s'il avait sauvegardé un brouillon.
+        setState((prev) => ({ ...prev, ...parsed, projectKinds: [] }));
       }
     } catch {
       /* corrupt JSON / private mode — ignore */
@@ -2122,11 +2130,9 @@ export function ProjectFunnel() {
           </div>
         </div>
         <nav className="pf-topnav" aria-label="Navigation secondaire">
-          <Link href="/methode" className="pf-topnav-link">Méthode</Link>
-          <Link href="/realisations" className="pf-topnav-link">Réalisations</Link>
-          <Link href="/contact" className="pf-topnav-link">Contact direct</Link>
           <Link href="/" className="pf-site-return">
-            Retour au site vitrine
+            <ArrowLeft size={16} strokeWidth={2} />
+            <span>Retour au site vitrine</span>
           </Link>
         </nav>
       </header>
@@ -2252,7 +2258,9 @@ export function ProjectFunnel() {
                     )
                   }
                 >
-                  <span className="pf-unknown-cta-icon">?</span>
+                  <span className="pf-unknown-cta-icon">
+                    <HelpCircle size={20} strokeWidth={1.7} />
+                  </span>
                   <span>
                     <b>Je ne sais pas encore</b>
                     <small>Tu as un problème métier mais pas la bonne forme — on cadre ensemble.</small>
@@ -2269,18 +2277,13 @@ export function ProjectFunnel() {
 
                 <div className="pf-social-proof">
                   <div className="pf-social-proof-item">
-                    <b>23+</b>
-                    <span>projets livrés</span>
+                    <b>Forfait</b>
+                    <span>fixe contractuel</span>
                   </div>
                   <div className="pf-social-proof-divider" aria-hidden="true" />
                   <div className="pf-social-proof-item">
-                    <b>96 %</b>
+                    <b>100 %</b>
                     <span>livrés à l&apos;heure</span>
-                  </div>
-                  <div className="pf-social-proof-divider" aria-hidden="true" />
-                  <div className="pf-social-proof-item">
-                    <b>9.2/10</b>
-                    <span>NPS clients</span>
                   </div>
                   <div className="pf-social-proof-divider" aria-hidden="true" />
                   <div className="pf-social-proof-item">
@@ -2485,7 +2488,7 @@ export function ProjectFunnel() {
                       J&apos;accepte que Hagnéré Code utilise mes coordonnées pour
                       analyser ma demande et me recontacter. Mes données ne sont
                       jamais transmises à un tiers et peuvent être supprimées sur
-                      simple demande à hello@hagnere-code.fr.
+                      simple demande à quentin@hagnere-patrimoine.fr.
                     </small>
                   </span>
                 </label>
@@ -2609,7 +2612,7 @@ export function ProjectFunnel() {
                   </div>
                   <div className="pf-reassure-item">
                     <ShieldCheck size={14} />
-                    <span><b>Tes données restent privées</b> &middot; pas de revente, RGPD&nbsp;✓</span>
+                    <span><b>Tes données restent privées</b> &middot; pas de revente, conforme RGPD</span>
                   </div>
                   <div className="pf-reassure-item">
                     <Mail size={14} />

@@ -78,7 +78,7 @@ const TIMELINES = [
   "Dans 3 mois",
   "Pas encore défini",
 ] as const;
-const CALENDLY_URL = "https://calendly.com/hagnere-code/30min";
+const CALENDLY_URL = "https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte";
 
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
@@ -119,7 +119,7 @@ function renderEmailShell(preheader: string, innerHtml: string): string {
                 <tr>
                   <td style="padding:22px 28px;background:#fafafa;border-top:1px solid #ededed;color:#737373;font-size:12px;line-height:1.55">
                     Hagnéré Code SAS · 7 rue Ernest Filliard, 73000 Chambéry<br>
-                    <a href="mailto:hello@hagnere-code.fr" style="color:#4c1d95;text-decoration:none">hello@hagnere-code.fr</a> · <a href="tel:+33374472018" style="color:#4c1d95;text-decoration:none">+33 3 74 47 20 18</a>
+                    <a href="mailto:quentin@hagnere-patrimoine.fr" style="color:#4c1d95;text-decoration:none">quentin@hagnere-patrimoine.fr</a> · <a href="tel:+33374472018" style="color:#4c1d95;text-decoration:none">+33 3 74 47 20 18</a>
                   </td>
                 </tr>
               </table>
@@ -280,7 +280,7 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const toAddr = process.env.CONTACT_TO_EMAIL || "hello@hagnere-code.fr";
+  const toAddr = process.env.CONTACT_TO_EMAIL || "quentin@hagnere-patrimoine.fr";
   const fromAddr = process.env.CONTACT_FROM_EMAIL || "contact@hagnere-code.fr";
 
   const subject = `[Projet] ${company} — ${fullName}`;

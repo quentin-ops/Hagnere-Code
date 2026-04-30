@@ -48,7 +48,7 @@ export const stackHtml = `
         </div>
         <p>Accélérateurs invisibles pour gagner 30 à 50 % de post-prod. Toujours validés par l'humain avant livraison. Charte éthique publiée.</p>
         <div class="cv-stack-chips">
-          <span class="cv-chip-star">Claude Sonnet 4.5</span>
+          <span class="cv-chip-star">Claude Opus 4.7</span>
           <span class="cv-chip-star">Runway Gen-4</span>
           <span class="cv-chip-star">ElevenLabs v3</span>
           <span>HeyGen</span>

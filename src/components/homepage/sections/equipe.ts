@@ -1,0 +1,223 @@
+/**
+ * Section ÉQUIPE de la homepage.
+ *
+ * Source de vérité : src/lib/team.ts. Quand on change un nom, un statut ou
+ * une photo dans team.ts, ce module se régénère automatiquement et toutes
+ * les pages qui consomment ce HTML reflètent la modif.
+ *
+ * Préserve les classes CSS existantes (.eq-*) — pas de migration CSS nécessaire.
+ */
+
+import { CTO, DEVS, FOUNDER, TEAM, type TeamMember } from "@/lib/team";
+
+const LINKEDIN_SVG = `<svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`;
+
+const CODEUR_SVG = `<svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg>`;
+
+/** Avatar 36px : photo si dispo, sinon initiales sur fond gradient (variant numéroté). */
+function devAvatar(member: TeamMember, variantClass: string): string {
+  if (member.photoAvailable) {
+    return `<div class="eq-dev-avatar eq-dev-avatar-photo"><img src="${member.photo}" alt="${member.fullName}" loading="lazy" /></div>`;
+  }
+  return `<div class="eq-dev-avatar ${variantClass}">${member.initials}</div>`;
+}
+
+/** Lien profil (LinkedIn ou Codeur) en bas de l'avatar. */
+function devProfileLink(member: TeamMember): string {
+  if (member.linkedin) {
+    return `<a class="eq-li-link" href="${member.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn ${member.fullName}" title="LinkedIn ${member.fullName}">${LINKEDIN_SVG}</a>`;
+  }
+  if (member.codeur) {
+    return `<a class="eq-li-link" href="${member.codeur}" target="_blank" rel="noopener noreferrer" aria-label="Profil Codeur ${member.fullName}" title="Profil Codeur ${member.fullName}">${CODEUR_SVG}</a>`;
+  }
+  return "";
+}
+
+/** Tag à droite du nom : CTO / FREELANCE (rien pour CDI). */
+function devNameTag(member: TeamMember): string {
+  if (member.id === "nicolas") return `<span class="eq-dev-tag">CTO</span>`;
+  if (member.status === "freelance") return `<span class="eq-dev-tag">FREELANCE</span>`;
+  return "";
+}
+
+/** Sous-titre rôle + statut. */
+function devYears(member: TeamMember): string {
+  if (member.id === "nicolas") return "CTO · Direction technique";
+  const statusSuffix = member.status === "freelance" ? "Freelance long-terme" : "CDI";
+  return `${member.role} · ${statusSuffix}`;
+}
+
+function renderDevCard(member: TeamMember, variantClass: string): string {
+  return `
+          <div class="eq-dev">
+            <div class="eq-dev-head">
+              <div class="eq-dev-avatar-wrap">${devAvatar(member, variantClass)}${devProfileLink(member)}</div>
+              <div class="eq-dev-meta">
+                <div class="eq-dev-name">${member.fullName}${devNameTag(member)}</div>
+                <div class="eq-dev-years">${devYears(member)}</div>
+              </div>
+            </div>
+            <div class="eq-dev-spec">${member.specialty || ""}</div>
+            <div class="eq-dev-stack">${member.stack.slice(0, 3).map((s) => `<span>${s}</span>`).join("")}</div>
+          </div>`;
+}
+
+/** Photo / placeholder du fondateur (grand format à gauche). */
+function renderFounderPhoto(): string {
+  if (FOUNDER.photoAvailable) {
+    return `<img src="${FOUNDER.photo}" alt="${FOUNDER.fullName}, ${FOUNDER.role.toLowerCase()} de Hagnéré Code" loading="lazy" />`;
+  }
+  // Fallback : SVG initiales géantes sur fond dégradé violet (état historique).
+  return `<svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="photoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1a1a1a"/>
+                <stop offset="55%" stop-color="#0f0f0f"/>
+                <stop offset="100%" stop-color="#1e1b3a"/>
+              </linearGradient>
+              <radialGradient id="photoGlow" cx="30%" cy="25%" r="70%">
+                <stop offset="0%" stop-color="#6D28D9" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#6D28D9" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="400" height="500" fill="url(#photoGrad)"/>
+            <rect width="400" height="500" fill="url(#photoGlow)"/>
+            <text x="200" y="295" text-anchor="middle" font-family="Geist" font-weight="700" font-size="180" fill="#ffffff" letter-spacing="-8">${FOUNDER.initials}</text>
+          </svg>`;
+}
+
+// Variants visuels d'avatar par dev (gradient / accent unique par carte).
+// On garde la convention historique v1..v6 pour ne rien casser au CSS.
+const DEV_VARIANT_BY_ID: Record<string, string> = {
+  nicolas: "v1",
+  killian: "v5",
+  frederic: "v3",
+  arthur: "v2",
+  ryan: "v4",
+  peter: "v6",
+};
+
+// Ordre d'affichage : CTO en premier, puis CDI, puis freelances par "ancienneté" projet.
+const DISPLAY_ORDER = ["nicolas", "killian", "frederic", "arthur", "ryan", "peter"] as const;
+
+const devCardsHtml = DISPLAY_ORDER
+  .map((id) => {
+    const member = TEAM[id];
+    const variant = DEV_VARIANT_BY_ID[id] || "";
+    return renderDevCard(member, `eq-dev-avatar-${variant} ${variant}`);
+  })
+  .join("\n");
+
+void CTO;
+void DEVS; // exposed for future iterations (filtered grids)
+
+export const equipeHtml = `
+<!-- EQUIPE -->
+<section class="equipe" id="equipe">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="left">
+        <div class="eyebrow">— L'équipe</div>
+        <h2>Un gérant, un CTO, deux devs CDI<br>+ trois freelances long-terme.</h2>
+      </div>
+      <div class="right">
+        Pas de pool de freelances anonyme, pas de sous-traitance offshore.
+        Studio 7 personnes&nbsp;: <b>1 gérant + 3 CDI Laravel</b> à Chambéry +
+        <b>3 freelances long-terme</b> intégrés à nos rituels, formés à Claude Code,
+        rapides <em>et</em> autonomes sur vos projets.
+      </div>
+    </div>
+
+    <div class="eq-grid">
+      <!-- FONDATEUR -->
+      <div class="eq-founder reveal">
+        <div class="eq-founder-photo">
+          <div class="eq-founder-tag">
+            <span class="dot"></span>
+            ASSOCIÉ DIRIGEANT
+          </div>
+          ${renderFounderPhoto()}
+        </div>
+        <div class="eq-founder-body">
+          <div>
+            <div class="eq-founder-name">${FOUNDER.fullName}</div>
+            <span class="eq-founder-role">${FOUNDER.role} · ${FOUNDER.roleDetail}</span>
+            <a class="eq-founder-li" href="${FOUNDER.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn ${FOUNDER.fullName}">${LINKEDIN_SVG} Voir le profil</a>
+          </div>
+          <div class="eq-founder-quote">
+            « ${FOUNDER.quote} »
+          </div>
+          <div class="eq-founder-meta">
+            <div class="eq-fm">
+              <span class="k">Domaine</span>
+              <span class="v">${FOUNDER.domains}</span>
+            </div>
+            <div class="eq-fm">
+              <span class="k">Rôle projet</span>
+              <span class="v">Brief · cadrage · design · intégration front</span>
+            </div>
+            <div class="eq-fm">
+              <span class="k">Entreprises fondées</span>
+              <span class="v">3 · dont 2 cabinets actifs</span>
+            </div>
+            <div class="eq-fm">
+              <span class="k">Basé à</span>
+              <span class="v">${FOUNDER.basedAt}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EQUIPE TECH -->
+      <div class="eq-team">
+        <div class="eq-team-intro reveal">
+          <h3>Un CTO, deux seniors CDI<br>et trois freelances long-terme,<br>augmentés par <em>Claude Code</em>.</h3>
+          <p>
+            <b>3 CDI</b> (Nicolas, Killian, Frédéric) et <b>3 freelances long-terme intégrés à nos rituels</b>
+            (Arthur, Ryan, Peter). Tous seniors ou confirmés, tous spécialisés en écosystème Laravel.
+            Le CTO apporte la vision transverse et le management tech, les devs la profondeur d'exécution.
+            Et tous utilisent <b>Claude Code</b> comme assistant de développement : recherches, cadrage,
+            architecture, plans d'implémentation. Résultat : <b>on pose moins de questions, on avance
+            plus vite, on livre plus proprement</b>.
+          </p>
+        </div>
+
+        <div class="eq-devs reveal reveal-d-1">${devCardsHtml}
+        </div>
+
+        <!-- Claude Code highlight -->
+        <div class="eq-claude reveal reveal-d-2">
+          <div class="eq-claude-icon">
+            <svg viewBox="0 0 512 512" fill="#D97757" aria-hidden="true"><path d="M301.86 65h70.94l129.4 382h-70.93l-26.48-81.3H269.2l-26.48 81.3h-70.94L301.86 65zm-11.96 240h94.86l-47.43-145.7L289.9 305z"/></svg>
+          </div>
+          <div class="eq-claude-body">
+            <span class="tag">Méthode · Claude Code</span>
+            <h4>Vous décrivez le besoin. On gère le reste.</h4>
+            <p>Pas de « 36 000 questions » : nos devs s'appuient sur Claude Code pour <b>faire la recherche de leur côté</b> — cadrage juridique, exploration technique, plans d'implémentation. Vous validez, on livre.</p>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="eq-stats reveal reveal-d-3">
+          <div class="eqs">
+            <div class="n">3<span class="s"> + 3</span></div>
+            <div class="l">3 CDI (CTO + 2 devs) + 3 freelances long-terme</div>
+          </div>
+          <div class="eqs">
+            <div class="n">Senior</div>
+            <div class="l">niveau moyen de l'équipe tech</div>
+          </div>
+          <div class="eqs">
+            <div class="n">100<span class="s"> %</span></div>
+            <div class="l">basés à Chambéry</div>
+          </div>
+          <div class="eqs">
+            <div class="n">×2<span class="s">–×3</span></div>
+            <div class="l">vélocité mesurée sur nos derniers sprints</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+`;

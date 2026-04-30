@@ -148,7 +148,7 @@ export const roiDashboardHtml = `
 
       <div class="ads-roi-how-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        Chiffres issus de 9 missions Scale &amp; Premium · 2024-2026. Budget media médian&nbsp;: 22 k€/mois. Secteurs&nbsp;: SaaS B2B, e-commerce DTC, formation pro, services. Les chiffres bruts de chaque mission sont partagés en call sous NDA.
+        Chiffres issus de 9 missions Scale &amp; Premium sur 12 mois glissants. Budget media médian&nbsp;: 22 k€/mois. Secteurs&nbsp;: SaaS B2B, e-commerce DTC, formation pro, services. Les chiffres bruts de chaque mission sont partagés en call sous NDA.
       </div>
     </div>
   </div>

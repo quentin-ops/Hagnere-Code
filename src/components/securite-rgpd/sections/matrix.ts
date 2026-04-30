@@ -144,7 +144,7 @@ export const matrixHtml = `
           <div class="sr-matrix-num">04</div>
           <div class="sr-matrix-title">
             <div class="sr-matrix-kind">DPO externalisé</div>
-            <h3>Forfait mensuel, RC Pro 2 M€.</h3>
+            <h3>Forfait mensuel, engagement contractuel.</h3>
           </div>
           <div class="sr-matrix-ic sr-matrix-ic-dpo">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">

@@ -272,8 +272,9 @@
 .me-stats-grid {
   margin-top: 56px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 720px;
 }
 .me-stat {
   border-left: 2px solid rgba(255,255,255,0.1);

@@ -71,7 +71,7 @@ export const architectureHtml = `
         <text x="60" y="220" font-family="Geist Mono" font-size="11" fill="#6D28D9" letter-spacing="0.08em">— CORE API</text>
         <g transform="translate(340 240)">
           <rect width="520" height="96" rx="12" fill="#6D28D9" stroke="rgba(255,255,255,0.18)"/>
-          <text x="24" y="34" font-family="Geist Mono" font-size="11" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">LARAVEL 13 · PHP 8.3</text>
+          <text x="24" y="34" font-family="Geist Mono" font-size="11" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">LARAVEL 13 · PHP 8.4</text>
           <text x="24" y="60" font-family="Geist" font-size="20" font-weight="600" fill="#fff">Hagnéré Core</text>
           <text x="24" y="82" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.8)">Auth · RBAC · Billing · Multi-tenant · API · Events · Jobs</text>
         </g>

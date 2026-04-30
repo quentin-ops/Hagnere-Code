@@ -92,7 +92,7 @@ export const arsenalHtml = `
               <svg width="20" height="20" viewBox="0 0 512 512" fill="#fff" aria-hidden="true"><path d="M301.86 65h70.94l129.4 382h-70.93l-26.48-81.3H269.2l-26.48 81.3h-70.94L301.86 65zm-11.96 240h94.86l-47.43-145.7L289.9 305z"/></svg>
             </div>
             <div>
-              <div class="seo-arsenal-tool-name">Claude Sonnet 4.5</div>
+              <div class="seo-arsenal-tool-name">Claude Opus 4.7</div>
               <div class="seo-arsenal-tool-kind">Briefs &amp; structure</div>
             </div>
           </div>

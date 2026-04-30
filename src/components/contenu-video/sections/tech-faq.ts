@@ -35,7 +35,7 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Scripts</b> : Claude Sonnet 4.5 avec prompts maison (tone of voice client, angle testé).
+          <b>Scripts</b> : Claude Opus 4.7 avec prompts maison (tone of voice client, angle testé).
           <b>Voix</b> : ElevenLabs v3 (voix multilingues FR/EN/DE + clone de la vôtre si activé).
           <b>Rush secs</b> : Descript pour le transcript + cut silences, Opus Clip pour suggérer les shorts.
           <b>Avatars</b> : HeyGen <b>uniquement sur votre image avec consentement écrit</b>.

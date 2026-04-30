@@ -13,7 +13,7 @@ export const trustBadgesHtml = `
         <div class="ec-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></div>
         <h4>Forfait fixe · zéro % sur vos ventes</h4>
         <p>Le prix du devis est le prix final. <b>Aucun avenant</b> sur le périmètre validé au cadrage. Et après livraison, <b>zéro commission</b> sur votre GMV.</p>
-        <div class="ec-trust-foot">— Pénalités de retard contractuelles J+7</div>
+        <div class="ec-trust-foot">— Pénalité 7 % / semaine au-delà de J+14</div>
       </div>
 
       <div class="ec-trust-card reveal reveal-d-1">
@@ -46,16 +46,16 @@ export const trustBadgesHtml = `
 
       <div class="ec-trust-card reveal reveal-d-1">
         <div class="ec-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
-        <h4>Qualiopi · financement OPCO</h4>
-        <p>Formation équipe post-livraison <b>finançable par votre OPCO</b>. Dossier monté avec vous. Prise en charge partielle fréquente selon votre branche.</p>
-        <div class="ec-trust-foot">— Dossier OPCO clé en main</div>
+        <h4>Formation post-livraison incluse</h4>
+        <p>Atelier équipe post-livraison (back-office, gestion catalogue, gestion commandes) inclus à chaque mission. Loom + guide PDF + suivi à 30 j et 90 j.</p>
+        <div class="ec-trust-foot">— Inclus dans tous les forfaits</div>
       </div>
 
       <div class="ec-trust-card reveal reveal-d-2">
-        <div class="ec-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <h4>RC Pro 2 M€ · Hiscox</h4>
-        <p>Responsabilité civile professionnelle à <b>2 millions d'euros</b>. Si un paiement passe mal malgré nos tests, votre boutique est couverte. Attestation sur demande.</p>
-        <div class="ec-trust-foot">— Attestation Hiscox fournie</div>
+        <div class="ec-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/><path d="M12 22a10 10 0 000-20"/></svg></div>
+        <h4>Audit de sortie écrit</h4>
+        <p>À la livraison, un <b>audit technique écrit</b> : qualité du code, dépendances, zones à risque, roadmap technique conseillée. Utilisable tel quel par la prochaine équipe qui reprendra la boutique.</p>
+        <div class="ec-trust-foot">— Livrable PDF inclus au handover</div>
       </div>
 
       <div class="ec-trust-card reveal reveal-d-3">

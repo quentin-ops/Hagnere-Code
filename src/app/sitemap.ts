@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { CASE_STUDIES } from "@/components/case-study/cases";
 import { CASE_SLUGS } from "@/components/realisations/cases";
 
 const baseUrl = "https://hagnere-code.fr";
@@ -65,12 +64,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/etudes-de-cas`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
       url: `${baseUrl}/equipe`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -83,16 +76,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${baseUrl}/rendez-vous`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/demarrer-un-projet`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/guide`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.6,
     },
   ];
 
@@ -108,13 +101,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: now,
     changeFrequency: "monthly",
     priority: 0.7,
-  }));
-
-  const studyRoutes: MetadataRoute.Sitemap = Object.keys(CASE_STUDIES).map((slug) => ({
-    url: `${baseUrl}/etudes-de-cas/${slug}`,
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.65,
   }));
 
   const toolSitemapRoutes: MetadataRoute.Sitemap = toolRoutes.map((route) => ({
@@ -135,7 +121,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticRoutes,
     ...serviceRoutes,
     ...caseRoutes,
-    ...studyRoutes,
     ...toolSitemapRoutes,
     ...legalSitemapRoutes,
   ];

@@ -56,9 +56,9 @@ export const scenariosHtml = `
         </div>
         <aside class="oi-scen-aside">
           <div class="oi-scen-meta">
-            <div class="oi-scen-meta-row"><span class="k">Durée</span><span class="v">2 à 5 semaines</span></div>
-            <div class="oi-scen-meta-row"><span class="k">Équipe</span><span class="v">1 associé + 1 dev</span></div>
-            <div class="oi-scen-meta-row"><span class="k">Prix indicatif</span><span class="v">8 à 25 k€ forfait</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 1 dev senior</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
             <div class="oi-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 10 jours</span></div>
             <div class="oi-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit processus 1j · 990 €</span></div>
           </div>
@@ -96,9 +96,9 @@ export const scenariosHtml = `
         </div>
         <aside class="oi-scen-aside">
           <div class="oi-scen-meta">
-            <div class="oi-scen-meta-row"><span class="k">Durée</span><span class="v">4 à 8 semaines</span></div>
-            <div class="oi-scen-meta-row"><span class="k">Équipe</span><span class="v">1 associé + 2 devs + 1 designer</span></div>
-            <div class="oi-scen-meta-row"><span class="k">Prix indicatif</span><span class="v">25 à 60 k€ forfait</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 2 devs + 1 designer</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
             <div class="oi-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 3 semaines</span></div>
             <div class="oi-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit processus 1j · 990 €</span></div>
           </div>
@@ -137,9 +137,9 @@ export const scenariosHtml = `
         </div>
         <aside class="oi-scen-aside">
           <div class="oi-scen-meta">
-            <div class="oi-scen-meta-row"><span class="k">Durée</span><span class="v">5 à 10 semaines</span></div>
-            <div class="oi-scen-meta-row"><span class="k">Équipe</span><span class="v">1 associé + 2 devs + 1 mobile + 1 IA</span></div>
-            <div class="oi-scen-meta-row"><span class="k">Prix indicatif</span><span class="v">40 à 120 k€ forfait</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 2 devs + 1 mobile + 1 IA</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
             <div class="oi-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 3 à 4 semaines</span></div>
             <div class="oi-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit processus 1j sur site · 990 €</span></div>
           </div>

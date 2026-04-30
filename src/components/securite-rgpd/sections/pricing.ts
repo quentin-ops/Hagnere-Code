@@ -85,7 +85,7 @@ export const pricingHtml = `
     </div>
 
     <p class="sr-price-foot">
-      Tous les forfaits incluent : <b>RC Pro DPO Hiscox 2 M€ · DPO certifié AFNOR · CIPP/E in-house · membre AFCDP · SMSI aligné ISO 27001</b>. TVA en sus. Prix valables 30 jours.
+      Tous les forfaits incluent : <b>NDA mutuel J0 · DPA contractualisé · sous-traitants UE par défaut (Scaleway / OVH / Cloudflare EU) · bonnes pratiques alignées ISO 27001</b>. TVA en sus. Prix valables 30 jours.
     </p>
   </div>
 </section>

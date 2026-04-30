@@ -159,7 +159,7 @@ export const processHtml = `
           </div>
         </div>
         <h4>Scoring, Tech Debt P&amp;L &amp; rédaction</h4>
-        <p>Consolidation&nbsp;: score /100 par dimension pondéré, benchmark percentile vs. base 47 audits, <b>Tech Debt P&amp;L chiffré en euros</b>, matrice impact × effort, roadmap 6/12/18 mois. Rédaction du PDF 40-70 p. + deck 12-18 slides board-ready + version board-safe anonymisée. Revue interne associé-lead.</p>
+        <p>Consolidation&nbsp;: score /100 par dimension pondéré, benchmark percentile vs. base benchmark, <b>Tech Debt P&amp;L chiffré en euros</b>, matrice impact × effort, roadmap 6/12/18 mois. Rédaction du PDF 40-70 p. + deck 12-18 slides board-ready + version board-safe anonymisée. Revue interne associé-lead.</p>
         <div class="at-proc-step-foot">J8 → J9 · 2 devs + associé-lead</div>
       </article>
 

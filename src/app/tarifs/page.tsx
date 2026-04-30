@@ -112,7 +112,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Le périmètre est figé au cadrage et signé. Si vous voulez ajouter des choses en cours de route, on chiffre l'ajout en avenant clair (toujours forfait fixe). On n'a jamais facturé de dépassement caché en 23 projets.",
+          "Le périmètre est figé au cadrage et signé. Si vous voulez ajouter des choses en cours de route, on chiffre l'ajout en avenant clair (toujours forfait fixe). On n'a jamais facturé de dépassement caché.",
       },
     },
     {

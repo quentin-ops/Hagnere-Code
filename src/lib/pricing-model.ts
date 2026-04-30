@@ -87,12 +87,11 @@ function buildProfile(
 }
 
 export const PROFILES = {
-  // Founder — billed at market freelance rate, not on a salary curve.
-  // hourlyCost is the rate Quentin pratiques (100 €/h HT),
-  // sell rate is what the studio bills for his time.
+  // Quentin — gérant associé codeur, facturé au taux freelance marché.
+  // hourlyCost = 100 €/h HT, hourlySellRate = ce que le studio facture pour son temps.
   quentin: {
     id: "quentin",
-    label: "Quentin Hagnéré (Founder)",
+    label: "Quentin Hagnéré (Gérant associé codeur)",
     status: "gerant" as const,
     monthlyCost: 0, // N/A — invoiced at hourly rate
     monthlyHours: 0,
@@ -100,30 +99,43 @@ export const PROFILES = {
     hourlySellRate: 100 * SELL_MULTIPLIER, // 160
   },
 
-  // CTO — forfait cadre jour, ~48 h/sem
+  // CDI — 3 personnes
+  // Nicolas (CTO) : forfait cadre jour, ~48 h/sem
   nicolas: buildProfile("nicolas", "Nicolas Wallerand (CTO)", "CDI", 6_000, Math.round(48 * WEEKS_PER_MONTH)),
+  // Killian + Frédéric : devs seniors CDI 35 h/sem
+  killian: buildProfile("killian", "Killian Hoarau (Dev senior Laravel)", "CDI", 4_200, Math.round(35 * WEEKS_PER_MONTH)),
+  frederic: buildProfile("frederic", "Frédéric Curinckx (Dev senior Laravel)", "CDI", 4_700, Math.round(35 * WEEKS_PER_MONTH)),
 
-  // Devs CDI 35 h/sem
-  kylian: buildProfile("kylian", "Kylian (Dev senior)", "CDI", 4_200, Math.round(35 * WEEKS_PER_MONTH)),
-  frederic: buildProfile("frederic", "Frédéric (Dev senior)", "CDI", 4_700, Math.round(35 * WEEKS_PER_MONTH)),
-
-  // Freelance design / archi — 48 h/mois
-  arthur: buildProfile("arthur", "Arthur (Design lead)", "freelance", 4_200, 48),
-
-  // Freelances dev exécution — heures par semaine
-  ryan: buildProfile("ryan", "Ryan (Dev intégration)", "freelance", 4_000, Math.round(48 * WEEKS_PER_MONTH)),
-  peter: buildProfile("peter", "Peter (Dev intégration)", "freelance", 2_800, Math.round(35 * WEEKS_PER_MONTH)),
+  // Freelances long-terme — 3 personnes intégrées aux rituels
+  // Arthur Monney : senior dev back-end Laravel · 48 h/sem
+  arthur: buildProfile("arthur", "Arthur Monney (Dev senior Laravel)", "freelance", 4_200, Math.round(48 * WEEKS_PER_MONTH)),
+  // Ryan Mazzitelli : senior dev intégration · 48 h/sem
+  ryan: buildProfile("ryan", "Ryan Mazzitelli (Dev intégration)", "freelance", 4_000, Math.round(48 * WEEKS_PER_MONTH)),
+  // Peter Sum Sie Kung : dev confirmé back-end Laravel · 35 h/sem
+  // 2 812 € / 152 h ≈ 18,50 €/h cost rate × 1,6 = 29,60 €/h sell rate.
+  // Profil Codeur : https://www.codeur.com/-peterssk
+  peter: buildProfile("peter", "Peter Sum Sie Kung (Dev confirmé Laravel)", "freelance", 2_812, Math.round(35 * WEEKS_PER_MONTH)),
 } as const satisfies Record<string, Profile>;
 
 // =====================================================================
 // 3. ROLES — pricing abstraction
 // =====================================================================
 
+/**
+ * IMPORTANT — Role = ACTIVITY, not a person.
+ *
+ * Une brick alloue des heures par activité. La même personne peut endosser
+ * plusieurs rôles sur un projet (ex : Nicolas fait 20 h archi + 50 h dev senior).
+ * Le pricing sépare ces deux postes, le planning humain s'occupe de qui fait quoi.
+ *
+ * Conséquence : un même profile peut figurer dans plusieurs rôles. Le taux
+ * d'un rôle est la moyenne des taux des profiles qui peuvent le jouer.
+ */
 export type Role =
   | "pilotage-strat" // Quentin — arbitrage client, go/no-go, signature
   | "architecture-cto" // Nicolas — cadrage tech, choix stack, revue PR
-  | "design-senior" // Arthur — design UI/UX, direction artistique
-  | "dev-senior" // Kylian / Frédéric — front/back senior, fonctionnalités complexes
+  | "design-senior" // Quentin — design UI/UX, direction artistique (designer historique du studio)
+  | "dev-senior" // Nicolas / Killian / Frédéric / Arthur — front/back senior, fonctionnalités complexes
   | "dev-integration" // Ryan / Peter — intégration, volume, fixes
   | "qa"; // Peter principalement — tests, recettes
 
@@ -131,8 +143,12 @@ export type Role =
 const ROLE_TO_PROFILES: Record<Role, Array<keyof typeof PROFILES>> = {
   "pilotage-strat": ["quentin"],
   "architecture-cto": ["nicolas"],
-  "design-senior": ["arthur"],
-  "dev-senior": ["kylian", "frederic"],
+  "design-senior": ["quentin"],
+  // Nicolas code aussi régulièrement sur les projets, pas juste de l'archi.
+  "dev-senior": ["nicolas", "killian", "frederic", "arthur"],
+  // Quentin n'est PAS dans dev-integration : quand il met les mains dans le code,
+  // ses heures sont allouées à pilotage-strat ou design-senior (à 160 €/h),
+  // pas à un taux d'intégration. Ryan & Peter sont les seuls vrais intégrateurs.
   "dev-integration": ["ryan", "peter"],
   qa: ["peter"],
 };

@@ -12,6 +12,14 @@ export const metadata: Metadata = {
     description:
       "Next.js statique, Lighthouse 95+, SEO technique, CMS headless. Forfait fixe, livré en 2 à 8 semaines, hébergé en France.",
     url: "/services/sites-vitrines",
+    images: [
+      {
+        url: "/og-image-services.png",
+        width: 1200,
+        height: 630,
+        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
+      },
+    ],
     type: "website",
   },
 };
@@ -33,7 +41,7 @@ const serviceJsonLd = JSON.stringify({
       addressLocality: "Chambéry",
       addressCountry: "FR",
     },
-    email: "hello@hagnere-code.fr",
+    email: "quentin@hagnere-patrimoine.fr",
     telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },

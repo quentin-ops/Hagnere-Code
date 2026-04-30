@@ -11,6 +11,14 @@ export const metadata: Metadata = {
     description:
       "Plateformes B2B et apps mobiles propulsées par Laravel 13, React/Next et IA. Forfait fixe, MVP 3-6 semaines.",
     url: "/services/saas-applications-metier",
+    images: [
+      {
+        url: "/og-image-services.png",
+        width: 1200,
+        height: 630,
+        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
+      },
+    ],
     type: "website",
   },
 };
@@ -34,7 +42,7 @@ const serviceJsonLd = JSON.stringify({
       addressLocality: "Chambéry",
       addressCountry: "FR",
     },
-    email: "hello@hagnere-code.fr",
+    email: "quentin@hagnere-patrimoine.fr",
     telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },

@@ -67,7 +67,7 @@ export function ResultView({
         ...monthly_retainers.map((r) => r.service_label),
       ].join(", ")}\n\nMerci !`,
   );
-  const mailtoHref = `mailto:hello@hagnere-code.fr?subject=${encodeURIComponent(
+  const mailtoHref = `mailto:quentin@hagnere-patrimoine.fr?subject=${encodeURIComponent(
     "Demande de Discovery Sprint suite estimation IA",
   )}&body=${mailtoBody}`;
 
@@ -175,7 +175,7 @@ export function ResultView({
               <path d="M12 16v-4M12 8h.01" />
             </svg>
             <span>
-              <b>Estimation indicative</b> basée sur ton brief et nos 23 projets livrés.
+              <b>Estimation indicative</b> basée sur ton brief et nos barèmes internes.
               Le devis ferme est délivré après le Discovery Sprint (1 500 €, déduit phase 2).
             </span>
           </div>

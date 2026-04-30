@@ -140,7 +140,7 @@ export async function checkAiRateLimit(
       allowed: false,
       reason: "cost_breaker",
       message:
-        "Service temporairement indisponible (volume exceptionnel). Réessaye demain ou contacte hello@hagnere-code.ai.",
+        "Service temporairement indisponible (volume exceptionnel). Réessaye demain ou contacte quentin@hagnere-patrimoine.fr.",
       retryAfterSec: 3600,
     };
   }
@@ -162,7 +162,7 @@ export async function checkAiRateLimit(
       allowed: false,
       reason: "rate_email_day",
       message:
-        "Tu as déjà soumis plusieurs briefs aujourd'hui. Si tu as un projet précis, écris-nous à hello@hagnere-code.ai.",
+        "Tu as déjà soumis plusieurs briefs aujourd'hui. Si tu as un projet précis, écris-nous à quentin@hagnere-patrimoine.fr.",
       retryAfterSec: DAY_MS / 1000,
     };
   }

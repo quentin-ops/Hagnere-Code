@@ -758,7 +758,7 @@ export async function POST(request: Request): Promise<NextResponse<EstimateApiRe
       {
         ok: false,
         error:
-          "Vérification anti-bot échouée. Recharge la page puis réessaye, ou contacte hello@hagnere-code.ai.",
+          "Vérification anti-bot échouée. Recharge la page puis réessaye, ou contacte quentin@hagnere-patrimoine.fr.",
       },
       { status: 403 },
     );
@@ -878,7 +878,7 @@ export async function POST(request: Request): Promise<NextResponse<EstimateApiRe
         {
           ok: false,
           error:
-            "L'estimation a pris trop de temps (> 2 min). Réessaye dans un instant ou écris-nous à hello@hagnere-code.fr.",
+            "L'estimation a pris trop de temps (> 2 min). Réessaye dans un instant ou écris-nous à quentin@hagnere-patrimoine.fr.",
         },
         { status: 504 },
       );
@@ -902,7 +902,7 @@ export async function POST(request: Request): Promise<NextResponse<EstimateApiRe
         );
       }
       return NextResponse.json(
-        { ok: false, error: "Erreur lors de l'estimation. Réessaye ou écris-nous à hello@hagnere-code.fr." },
+        { ok: false, error: "Erreur lors de l'estimation. Réessaye ou écris-nous à quentin@hagnere-patrimoine.fr." },
         { status: 500 },
       );
     }

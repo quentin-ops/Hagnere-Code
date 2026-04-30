@@ -11,7 +11,7 @@ export const confidentialiteSections: LegalSection[] = [
           Les données personnelles collectées via le site hagnere-code.fr sont
           traitées par <strong>HAGNÉRÉ CODE SAS</strong>, 7 rue Ernest Filliard,
           73000 Chambéry, France. Pour toute question, vous pouvez écrire à{" "}
-          <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>.
+          <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>.
         </p>
         <p>
           <strong>Délégué à la protection des données (DPO).</strong>{" "}
@@ -22,7 +22,7 @@ export const confidentialiteSections: LegalSection[] = [
           demandes RGPD et toute question relative à la protection des données
           sont traitées directement par le président de HAGNÉRÉ CODE SAS,
           joignable à{" "}
-          <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>.
+          <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>.
         </p>
       </>
     ),
@@ -167,7 +167,7 @@ export const confidentialiteSections: LegalSection[] = [
             demander à ce que votre brief soit étudié uniquement par un
             humain (sans passage par l&apos;IA d&apos;estimation) — il suffit
             de nous écrire à{" "}
-            <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>{" "}
+            <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>{" "}
             avant ou pendant la soumission ;
           </li>
           <li>
@@ -314,7 +314,7 @@ export const confidentialiteSections: LegalSection[] = [
         </ul>
         <p>
           Vous pouvez obtenir une copie des garanties applicables sur simple
-          demande à <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>.
+          demande à <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>.
         </p>
       </>
     ),
@@ -441,7 +441,7 @@ export const confidentialiteSections: LegalSection[] = [
         </ul>
         <p>
           Pour exercer vos droits, contactez{" "}
-          <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a>.
+          <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>.
           Nous répondons sous un mois (article 12.3 RGPD), prolongeable de
           deux mois en cas de demande complexe. Vous pouvez aussi adresser
           une réclamation à la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener noreferrer">CNIL</a> si

@@ -304,7 +304,7 @@ function LoadingView() {
   const [phase, setPhase] = useState(0);
   const phases = [
     "Lecture de ton brief multi-services…",
-    "Croisement des barèmes Sprint Fixe™ avec les 23 projets livrés…",
+    "Croisement des barèmes Sprint Fixe™ avec nos projets livrés…",
     "Détection des synergies (tracking mutualisé, retainers décalés)…",
     "Choix de la stack et de l'équipe à allouer…",
     "Construction de la roadmap de déploiement…",

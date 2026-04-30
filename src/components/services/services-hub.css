@@ -955,3 +955,14 @@
     width: 100%;
   }
 }
+
+@media (max-width: 480px) {
+  .services-hero h1 { font-size: 30px; line-height: 1.05; letter-spacing: -0.02em; }
+  .services-hub h2 { font-size: 24px; line-height: 1.1; }
+  .services-hub p, .services-hero p { font-size: 14.5px; }
+  .services-hero { padding-top: 48px; padding-bottom: 32px; }
+  .service-card-content h3, .path-card h3 { font-size: 17px; }
+  .services-hub h1, .services-hub h2, .services-hub h3 {
+    overflow-wrap: anywhere; word-break: break-word;
+  }
+}

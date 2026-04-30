@@ -4,6 +4,7 @@ import { verticalsHtml } from "./sections/verticals";
 import { comparisonHtml } from "./sections/comparison";
 import { trustHtml } from "./sections/trust";
 import { calcTeaserHtml } from "./sections/calc-teaser";
+import { equipeHtml } from "./sections/equipe";
 
 /**
  * Compose the final homepage body HTML by splicing new sections
@@ -29,6 +30,7 @@ function compose(raw: string): string {
   let out = raw;
   const stackHtml = getCommentedSection(out, "<!-- LOGO BAR -->");
   const methodeHtml = getCommentedSection(out, "<!-- METHODE -->");
+  const rawEquipeHtml = getCommentedSection(out, "<!-- EQUIPE -->");
 
   // Replace the early technical stack with a compact proof strip.
   if (stackHtml) {
@@ -38,6 +40,12 @@ function compose(raw: string): string {
   // Move the method below the proof sections, where process questions come up.
   if (methodeHtml) {
     out = out.replace(methodeHtml, "");
+  }
+
+  // Replace the static EQUIPE section with the team-driven version.
+  // The new module reads from src/lib/team.ts (single source of truth).
+  if (rawEquipeHtml) {
+    out = out.replace(rawEquipeHtml, equipeHtml.trim());
   }
 
   // Verticals: after services, so prospects can quickly recognize their case.

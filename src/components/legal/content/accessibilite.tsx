@@ -124,7 +124,7 @@ export const accessibiliteSections: LegalSection[] = [
       <p>
         Si une fonctionnalité du site vous est inaccessible, vous pouvez à
         tout moment nous contacter directement par email à{" "}
-        <a href="mailto:hello@hagnere-code.fr">hello@hagnere-code.fr</a> ou
+        <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a> ou
         par téléphone au{" "}
         <a href="tel:+33374472018">+33 3 74 47 20 18</a>. Nous nous
         engageons à fournir une alternative équivalente (PDF accessible,

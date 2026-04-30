@@ -6,7 +6,7 @@ export const roiDashboardHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Ce qu'on signe, mesuré</div>
-        <h2>99,98 % d'uptime réel.<br>Les 4 métriques DORA qu'on<br>publie chaque trimestre.</h2>
+        <h2>SLA 99,95 % contractuel.<br>Les 4 métriques DORA qu'on<br>publie chaque trimestre.</h2>
       </div>
       <div class="right">
         Pas des engagements marketing vagues. Les chiffres mesurés sur nos 9 plus gros contrats
@@ -45,7 +45,7 @@ export const roiDashboardHtml = `
               <text x="16" y="135" text-anchor="middle">99,0%</text>
               <text x="46" y="70" text-anchor="middle">99,5%</text>
               <text x="110" y="36" text-anchor="middle">99,9%</text>
-              <text x="175" y="70" text-anchor="middle">99,99%</text>
+              <text x="175" y="70" text-anchor="middle">99,95 %</text>
               <text x="204" y="135" text-anchor="middle">100%</text>
             </g>
             <!-- needle dot -->
@@ -53,7 +53,7 @@ export const roiDashboardHtml = `
           </svg>
 
           <div class="me-roi-dial-value">
-            <span class="v">99,98<span style="font-size:0.5em;color:#6EE7B7;margin-left:2px">%</span></span>
+            <span class="v">99,95<span style="font-size:0.5em;color:#6EE7B7;margin-left:2px">%</span></span>
             <span class="k">Uptime 12 mois</span>
           </div>
         </div>
@@ -144,7 +144,7 @@ export const roiDashboardHtml = `
           </div>
           <h4>Équipe nommée · pas de pool tournant</h4>
           <p>2 à 4 personnes nommément identifiées dans votre contrat. <b>Binôme obligatoire</b> sur chaque projet (pas de bus factor = 1). Overlap 2 semaines si rotation.</p>
-          <div class="me-roi-step-foot">→ ancienneté équipe moyenne&nbsp;: 4 ans</div>
+          <div class="me-roi-step-foot">→ équipe stable depuis le lancement</div>
         </div>
       </div>
 

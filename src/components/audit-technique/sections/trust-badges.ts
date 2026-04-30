@@ -32,7 +32,7 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
         <h4>Garantie ≥ 3 recos actionnables ou 50 % remboursé</h4>
-        <p>Si le rapport livre moins de 3 recommandations jugées actionnables par votre CTO ou votre board, <b>50 % du prix de l'audit est remboursé sans négociation</b>. Jamais activée sur 47 audits.</p>
+        <p>Si le rapport livre moins de 3 recommandations jugées actionnables par votre CTO ou votre board, <b>50 % du prix de l'audit est remboursé sans négociation</b>. Garantie ferme à activer si besoin.</p>
         <div class="at-trust-foot">— Garantie contractuelle CGV</div>
       </div>
 
@@ -56,11 +56,11 @@ export const trustBadgesHtml = `
 
       <div class="at-trust-card reveal reveal-d-1">
         <div class="at-trust-ic">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <h4>RC pro ≥ 1 M€</h4>
-        <p>Responsabilité civile professionnelle assurée à <b>hauteur minimale d'1 M€ par sinistre</b> par Hiscox. Opposable en cas de faute professionnelle caractérisée. Preuve d'attestation fournie sur demande.</p>
-        <div class="at-trust-foot">— Attestation Hiscox disponible</div>
+        <h4>NDA mutuel signé J0</h4>
+        <p>Avant le moindre accès à votre code, dépôt ou documentation, un <b>accord de confidentialité mutuel</b> est signé. Aucune référence client ne sort sans votre accord écrit explicite, et la version « board-safe » anonymisée du rapport est livrée par défaut.</p>
+        <div class="at-trust-foot">— Modèle NDA disponible avant signature</div>
       </div>
 
       <div class="at-trust-card reveal reveal-d-2">

@@ -56,11 +56,11 @@ export const scenariosHtml = `
         </div>
         <aside class="ec-scen-aside">
           <div class="ec-scen-meta">
-            <div class="ec-scen-meta-row"><span class="k">Durée</span><span class="v">6 à 8 semaines</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">1 associé + 1 designer + 1 dev</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Prix indicatif</span><span class="v">15 à 30 k€ forfait</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 1 designer + 1 dev senior</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
             <div class="ec-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 2 semaines</span></div>
-            <div class="ec-scen-meta-row"><span class="k">App mobile</span><span class="v">En option (+15–25 k€)</span></div>
+            <div class="ec-scen-meta-row"><span class="k">App mobile</span><span class="v">En option · sur devis</span></div>
           </div>
           <a href="#contact" class="btn btn-accent ec-scen-cta">
             Discuter de ce scénario
@@ -97,9 +97,9 @@ export const scenariosHtml = `
         </div>
         <aside class="ec-scen-aside">
           <div class="ec-scen-meta">
-            <div class="ec-scen-meta-row"><span class="k">Durée</span><span class="v">8 à 12 semaines</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">1 associé + 1 designer + 2 devs + 1 mobile</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Prix indicatif</span><span class="v">30 à 70 k€ forfait</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 1 designer + 2 devs + 1 mobile</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
             <div class="ec-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 3 à 4 semaines</span></div>
             <div class="ec-scen-meta-row"><span class="k">Break-even vs Shopify</span><span class="v">~12–18 mois</span></div>
           </div>
@@ -138,9 +138,9 @@ export const scenariosHtml = `
         </div>
         <aside class="ec-scen-aside">
           <div class="ec-scen-meta">
-            <div class="ec-scen-meta-row"><span class="k">Durée</span><span class="v">12 à 16 semaines</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">1 associé + 1 designer + 3 devs + 1 mobile + 1 IA</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Prix indicatif</span><span class="v">70 à 120 k€ forfait</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 1 designer + 3 devs + 1 mobile + 1 IA</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
             <div class="ec-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 4 à 6 semaines</span></div>
             <div class="ec-scen-meta-row"><span class="k">Accompagnement</span><span class="v">6 mois post-lancement inclus</span></div>
           </div>

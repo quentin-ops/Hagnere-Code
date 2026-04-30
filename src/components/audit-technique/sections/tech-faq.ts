@@ -22,7 +22,7 @@ export const techFaqHtml = `
         <div class="faq-a">
           <b>IAM read-only uniquement</b> sur votre cloud (rôles restreints), accès GitHub avec <b>membre "external" sans droits d'écriture</b>,
           Sentry / Datadog avec rôles "viewer". <b>Tout est journalisé côté vous</b>&nbsp;: vous pouvez auditer nos actions via CloudTrail
-          ou équivalent. Les accès sont <b>révoqués à J+11 automatiquement</b> (script partagé dans le devis). Nos 47 audits&nbsp;: 0 incident de modification.
+          ou équivalent. Les accès sont <b>révoqués à J+11 automatiquement</b> (script partagé dans le devis). Nos audits&nbsp;: 0 incident de modification.
         </div>
       </div>
 
@@ -74,7 +74,7 @@ export const techFaqHtml = `
           <b>Off-the-record total</b>&nbsp;: les interviews ne sont ni enregistrées, ni retranscrites nominativement dans le rapport.
           Framework SPACE (Satisfaction, Performance, Activity, Communication, Efficiency) de Google + MS Research. <b>Focus sur les systèmes, pas les personnes</b>&nbsp;:
           un bottleneck vient presque toujours d'une contrainte orga ou temporelle, pas d'un dev. Les devs sont <b>co-auteurs du plan de remédiation</b>,
-          pas cibles. NPS équipe post-audit&nbsp;: 68 sur nos 47 missions.
+          pas cibles. Aucune citation nominative, aucun « blame personnel ».
         </div>
       </div>
 
@@ -93,11 +93,11 @@ export const techFaqHtml = `
 
       <div class="faq-item">
         <div class="faq-q">
-          Benchmark percentile vs. 47 audits · méthodologie ?
+          Benchmark percentile vs. audits · méthodologie ?
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Base propriétaire anonymisée</b> de 47 audits livrés entre 2022 et 2026. Chaque audit score /100 par dimension (code, archi, perf, sécu, infra, DevEx, FinOps, équipe).
+          <b>Base propriétaire anonymisée</b> de audits livrés depuis le lancement. Chaque audit score /100 par dimension (code, archi, perf, sécu, infra, DevEx, FinOps, équipe).
           On extrait <b>votre percentile sectoriel</b>&nbsp;: "vous êtes au 42e percentile sur la sécurité vs. vos pairs SaaS B2B FR 30-100 salariés".
           Plus utile qu'un "vous avez 54/100". On <b>catégorise</b> par vertical (SaaS B2B, E-commerce, Marketplace, Edtech, HealthTech, Fintech) et par taille (MAU et headcount).
           Base enrichie à chaque nouvel audit.

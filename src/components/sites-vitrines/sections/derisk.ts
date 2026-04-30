@@ -58,7 +58,7 @@ export const deriskHtml = `
           « Et si le <b>projet dérape</b> et dépasse le budget ? »
         </div>
         <h4>Forfait fixe, pénalités de retard, 2 révisions cadrées</h4>
-        <p>Prix annoncé = prix payé. Jamais d'avenant surprise. Si on dépasse la date de livraison de plus de 2 semaines&nbsp;: pénalités contractuelles (chaque semaine vous est remise). Design validé avec 2 tours de révisions inclus — au-delà, option écrite.</p>
+        <p>Prix annoncé = prix payé. Jamais d'avenant surprise. Si on dépasse la date de livraison de plus de 14 jours calendaires&nbsp;: <b>pénalité de 7 % du forfait par semaine de retard</b> (chaque semaine vous est remise). Design validé avec 2 tours de révisions inclus — au-delà, option écrite.</p>
         <div class="sv-derisk-proof">
           <span>✓ Forfait contractuel</span>
           <span>✓ Pénalités retard</span>

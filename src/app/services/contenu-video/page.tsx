@@ -12,6 +12,14 @@ export const metadata: Metadata = {
     description:
       "Studio FR qui code et filme. Pipeline IA audité (Claude, Runway, ElevenLabs, HeyGen), motion natif web, forfait mensuel transparent.",
     url: "/services/contenu-video",
+    images: [
+      {
+        url: "/og-image-services.png",
+        width: 1200,
+        height: 630,
+        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
+      },
+    ],
     type: "website",
   },
 };
@@ -32,7 +40,7 @@ const serviceJsonLd = JSON.stringify({
       addressLocality: "Chambéry",
       addressCountry: "FR",
     },
-    email: "hello@hagnere-code.fr",
+    email: "quentin@hagnere-patrimoine.fr",
     telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },

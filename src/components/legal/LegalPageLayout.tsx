@@ -4,8 +4,10 @@ import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
+import { MainNav } from "@/components/design-shared/MainNav";
 import "./legal-page.css";
 import "@/components/design-shared/responsive.css";
+import "@/components/design-shared/nav-dropdown.css";
 import "@/components/design-shared/site-footer.css";
 
 export type LegalSection = {
@@ -110,46 +112,7 @@ export function LegalPageLayout({
 
   return (
     <div ref={rootRef} className="hc-design lp-root">
-      {/* Nav (shared shell) */}
-      <nav className="nav">
-        <div className="nav-inner">
-          <Link href="/" className="brand">
-            <div className="brand-mark">HC</div>
-            <div className="brand-name">
-              <b>Hagnéré</b> <span>Code</span>
-            </div>
-          </Link>
-          <div className="nav-links">
-            <Link href="/#services">Services</Link>
-            <Link href="/methode">Méthode</Link>
-            <Link href="/realisations">Réalisations</Link>
-            <Link href="/equipe">Équipe</Link>
-            <Link href="/tarifs">Tarifs</Link>
-            <Link href="/guide">Guide</Link>
-
-            <Link href="/contact">Contact</Link>
-          </div>
-          <div className="nav-cta">
-            <Link href="/#contact" className="btn btn-ghost">
-              Prendre RDV
-            </Link>
-            <Link href="/demarrer-un-projet" className="btn btn-primary">
-              Démarrer un projet
-              <svg
-                className="arrow"
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <MainNav />
 
       {/* Hero */}
       <section className="lp-hero">
@@ -285,8 +248,8 @@ export function LegalPageLayout({
                 <p>
                   Pour toute question relative à ce document, à vos droits,
                   ou à un incident, écrivez à{" "}
-                  <a href="mailto:hello@hagnere-code.fr">
-                    hello@hagnere-code.fr
+                  <a href="mailto:quentin@hagnere-patrimoine.fr">
+                    quentin@hagnere-patrimoine.fr
                   </a>{" "}
                   ou appelez-nous au{" "}
                   <a href="tel:+33374472018">+33 3 74 47 20 18</a>.

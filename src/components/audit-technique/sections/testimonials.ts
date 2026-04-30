@@ -93,7 +93,7 @@ export const testimonialsHtml = `
 
     <p class="at-testi-foot reveal">
       Références détaillées sur demande — on met en relation directe avec ces 3 dirigeants <b>avant signature</b>.
-      Nos 47 audits couvrent SaaS B2B / E-commerce / Marketplace / Edtech / HealthTech / Fintech · FR &amp; UE.
+      Nos missions couvrent SaaS B2B / E-commerce / Marketplace / Edtech / HealthTech / Fintech · FR &amp; UE.
     </p>
   </div>
 </section>

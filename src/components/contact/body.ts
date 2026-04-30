@@ -1,96 +1,7 @@
-export const bodyHtml = `
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="brand">
-      <div class="brand-mark">HC</div>
-      <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
-    </a>
-    <div class="nav-links">
-      <div class="nav-item">
-        <a href="/#services" class="nav-trigger">Services
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-        </a>
-        <div class="nav-dd">
-          <div class="dd-col">
-            <h6>Construire</h6>
-            <a class="dd-link" href="/services/saas-applications-metier">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">SaaS &amp; applis métier</div><div class="dd-sub">Plateformes B2B, espaces clients.</div></div>
-            </a>
-            <a class="dd-link" href="/services/outils-internes-sur-mesure">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 4 4 5-5"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Outils internes sur mesure</div><div class="dd-sub">Back-office, workflows, automatisations.</div></div>
-            </a>
-            <a class="dd-link" href="/services/sites-vitrines">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Sites vitrines &amp; landings</div><div class="dd-sub">Sites qui convertissent, pas qui informent.</div></div>
-            </a>
-            <a class="dd-link" href="/services/ecommerce">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">E-commerce</div><div class="dd-sub">Boutiques haut de gamme, Shopify Plus.</div></div>
-            </a>
-          </div>
-          <div class="dd-col">
-            <h6>Faire grandir</h6>
-            <a class="dd-link" href="/services/referencement-google">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">SEO &amp; référencement</div><div class="dd-sub">Contenu, tech, netlinking.</div></div>
-            </a>
-            <a class="dd-link" href="/services/publicite-en-ligne">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Publicité en ligne</div><div class="dd-sub">Google Ads, Meta, LinkedIn.</div></div>
-            </a>
-            <a class="dd-link" href="/services/contenu-video">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Contenu &amp; vidéo</div><div class="dd-sub">Studio interne, motion, YouTube.</div></div>
-            </a>
-          </div>
-          <div class="dd-col">
-            <h6>Protéger &amp; opérer</h6>
-            <a class="dd-link" href="/services/maintenance-evolution">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Maintenance &amp; évolution</div><div class="dd-sub">Forfait mensuel, support prioritaire.</div></div>
-            </a>
-            <a class="dd-link" href="/services/securite-rgpd">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Sécurité &amp; RGPD</div><div class="dd-sub">Audit, conformité, hébergement FR.</div></div>
-            </a>
-            <a class="dd-link" href="/services/audit-technique">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Audit technique</div><div class="dd-sub">Code review, perf, sécurité.</div></div>
-            </a>
-          </div>
-          <div class="dd-cta">
-            <div class="dd-cta-body">
-              <div class="tag">Pas sûr ?</div>
-              <div class="dd-cta-title">On vous aide à choisir le bon service.</div>
-              <div class="dd-cta-sub">30 min avec un associé, gratuit, pour cadrer votre besoin.</div>
-              <a href="https://calendly.com/hagnere-code/30min" target="_blank" rel="noopener noreferrer" class="btn btn-accent">Réserver un créneau →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a href="/methode">Méthode</a>
-      <a href="/realisations">Réalisations</a>
-      <a href="/equipe">Équipe</a>
-      <a href="/tarifs">Tarifs</a>
-      <a href="/demarrer-un-projet">Calculateur</a>
-      <a href="/guide">Guide</a>
-      <a href="/contact" class="active">Contact</a>
-    </div>
-    <div class="nav-cta">
-      <button class="nav-burger" type="button" aria-label="Menu" aria-expanded="false">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
-      <a href="#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="/demarrer-un-projet" class="btn btn-primary">Démarrer un projet
-        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</nav>
+import { navHtml } from "@/components/design-shared/nav-html";
 
+export const bodyHtml = `
+${navHtml}
 <!-- CONTACT HERO -->
 <section class="c-hero">
   <div class="wrap c-hero-inner">
@@ -112,7 +23,7 @@ export const bodyHtml = `
           Formulaire projet
           <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="https://calendly.com/hagnere-code/30min" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Réserver 30 min →</a>
+        <a href="https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Réserver 30 min →</a>
       </div>
       <div class="c-hero-meta">
         <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Réponse sous 24 h</span>
@@ -128,13 +39,13 @@ export const bodyHtml = `
         <div class="c-dir-kicker">CANAUX DIRECTS</div>
         <div class="c-dir-title">Vous préférez un contact direct ?</div>
 
-        <a href="mailto:hello@hagnere-code.fr" class="c-dir-row">
+        <a href="mailto:quentin@hagnere-patrimoine.fr" class="c-dir-row">
           <div class="c-dir-ic">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
           </div>
           <div class="c-dir-body">
             <div class="c-dir-k">Email</div>
-            <div class="c-dir-v">hello@hagnere-code.fr</div>
+            <div class="c-dir-v">quentin@hagnere-patrimoine.fr</div>
           </div>
           <svg class="c-dir-arr" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>

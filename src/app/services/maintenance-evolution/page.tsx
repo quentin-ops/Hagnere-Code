@@ -12,6 +12,14 @@ export const metadata: Metadata = {
     description:
       "SLA 99,5–99,95 % avec pénalités. Deploys hebdo, CVE patchés sous 48 h, forfait fixe mensuel. Reprise d'apps orphelines en 5 jours.",
     url: "/services/maintenance-evolution",
+    images: [
+      {
+        url: "/og-image-services.png",
+        width: 1200,
+        height: 630,
+        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
+      },
+    ],
     type: "website",
   },
 };
@@ -33,7 +41,7 @@ const serviceJsonLd = JSON.stringify({
       addressLocality: "Chambéry",
       addressCountry: "FR",
     },
-    email: "hello@hagnere-code.fr",
+    email: "quentin@hagnere-patrimoine.fr",
     telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },

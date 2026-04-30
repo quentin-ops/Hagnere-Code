@@ -64,7 +64,7 @@ export const integrationsHtml = `
           </div>
         </div>
         <div class="sa-integ-chips">
-          <span>Claude Sonnet 4.5</span>
+          <span>Claude Opus 4.7</span>
           <span>Claude Agents + MCP</span>
           <span>GPT-4o</span>
           <span>Prism</span>

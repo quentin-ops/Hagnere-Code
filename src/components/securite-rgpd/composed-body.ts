@@ -18,7 +18,7 @@ import { techFaqHtml } from "./sections/tech-faq";
  *
  * Ordre des sections (avant le SiteFooter injecté en React) :
  *   NAV → HERO (cartographie sous-traitants, body.ts)
- *   → LOGO WALL + TRUST STRIP (RC Pro Hiscox, DPO AFNOR, AFCDP, ISO 27001)
+ *   → LOGO WALL + TRUST STRIP (NDA mutuel, DPA art. 28, sous-traitants UE, ISO 27001 aligné)
  *   → SYMPTÔMES (6 phrases CTO/DPO/CEO/DAF/RH avec réponses concrètes)
  *   → MATRICE 4 DOMAINES (RGPD · AI Act · Cyber · DPO)
  *   → PROCESS TRIO (cadrage / DPO mensuel / remédiation codée)

@@ -12,97 +12,10 @@
  * Data is currently FICTITIOUS but plausible — to be replaced by real
  * numbers from cases.ts / Stripe / GA4 / Plausible / CRM extracts.
  */
+import { navHtml } from "@/components/design-shared/nav-html";
+
 export const bodyHtml = `
-<!-- ========================================================================
-     NAV
-     ======================================================================== -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="brand">
-      <div class="brand-mark">HC</div>
-      <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
-    </a>
-    <div class="nav-links">
-      <div class="nav-item">
-        <a href="/#services" class="nav-trigger">Services
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </a>
-        <div class="nav-dd">
-          <div class="dd-col">
-            <h6>Construire</h6>
-            <a class="dd-link" href="/services/saas-applications-metier">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">SaaS &amp; applis métier</div><div class="dd-sub">Plateformes B2B, espaces clients.</div></div>
-            </a>
-            <a class="dd-link" href="/services/outils-internes-sur-mesure">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 3v18h18M7 14l3-3 4 4 5-5"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Outils internes sur mesure</div><div class="dd-sub">Back-office, workflows, automatisations.</div></div>
-            </a>
-            <a class="dd-link" href="/services/sites-vitrines">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Sites vitrines &amp; landings</div><div class="dd-sub">Sites qui convertissent, pas qui informent.</div></div>
-            </a>
-            <a class="dd-link" href="/services/ecommerce">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">E-commerce</div><div class="dd-sub">Boutiques haut de gamme, Shopify Plus.</div></div>
-            </a>
-          </div>
-          <div class="dd-col">
-            <h6>Faire grandir</h6>
-            <a class="dd-link" href="/services/referencement-google">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">SEO &amp; référencement</div><div class="dd-sub">Contenu, tech, netlinking.</div></div>
-            </a>
-            <a class="dd-link" href="/services/publicite-en-ligne">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Publicité en ligne</div><div class="dd-sub">Google Ads, Meta, LinkedIn.</div></div>
-            </a>
-            <a class="dd-link" href="/services/contenu-video">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Contenu &amp; vidéo</div><div class="dd-sub">Studio interne, motion, YouTube.</div></div>
-            </a>
-          </div>
-          <div class="dd-col">
-            <h6>Protéger &amp; opérer</h6>
-            <a class="dd-link" href="/services/maintenance-evolution">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Maintenance &amp; évolution</div><div class="dd-sub">Forfait mensuel, support prioritaire.</div></div>
-            </a>
-            <a class="dd-link" href="/services/securite-rgpd">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Sécurité &amp; RGPD</div><div class="dd-sub">Audit, conformité, hébergement FR.</div></div>
-            </a>
-            <a class="dd-link" href="/services/audit-technique">
-              <div class="dd-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
-              <div class="dd-meta"><div class="dd-title">Audit technique</div><div class="dd-sub">Code review, perf, sécurité.</div></div>
-            </a>
-          </div>
-          <div class="dd-cta">
-            <div class="dd-cta-body">
-              <div class="tag">Pas sûr ?</div>
-              <div class="dd-cta-title">On vous aide à choisir le bon service.</div>
-              <div class="dd-cta-sub">30 min avec un associé, gratuit, pour cadrer votre besoin.</div>
-              <a href="/#contact" class="btn btn-accent">Réserver un créneau →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a href="/methode">Méthode</a>
-      <a href="/realisations" class="active">Réalisations</a>
-      <a href="/equipe">Équipe</a>
-      <a href="/tarifs">Tarifs</a>
-      <a href="/demarrer-un-projet">Calculateur</a>
-      <a href="/guide">Guide</a>
-      <a href="/contact">Contact</a>
-    </div>
-    <div class="nav-cta">
-      <a href="/#contact" class="btn btn-ghost">Prendre RDV</a>
-      <a href="/demarrer-un-projet" class="btn btn-primary">Démarrer un projet
-        <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </div>
-</nav>
+${navHtml}
 
 <!-- ========================================================================
      BREADCRUMB
@@ -149,7 +62,7 @@ export const bodyHtml = `
           </a>
         </div>
         <div class="rl-hero-meta">
-          <span><span class="dot"></span>4 études détaillées · 23 projets au total</span>
+          <span><span class="dot"></span>4 études détaillées · 22 projets livrés sur 23</span>
           <span class="sep"></span>
           <span>Mise à jour avril 2026</span>
         </div>
@@ -269,23 +182,23 @@ export const bodyHtml = `
     <div class="rl-kpi-grid">
       <div class="rl-kpi reveal">
         <div class="rl-kpi-k">PROJETS LIVRÉS</div>
-        <div class="rl-kpi-n">23<span class="s">/23</span></div>
-        <div class="rl-kpi-l">Tous au prix annoncé, dans les délais contractuels.</div>
+        <div class="rl-kpi-n">22<span class="s">/23</span></div>
+        <div class="rl-kpi-l">Au prix annoncé, dans les délais contractuels.</div>
       </div>
       <div class="rl-kpi reveal reveal-d-1">
-        <div class="rl-kpi-k">NPS POST-LIVRAISON</div>
-        <div class="rl-kpi-n">+74<span class="s">/100</span></div>
-        <div class="rl-kpi-l">19 répondants sur 23 · médiane +80.</div>
-      </div>
-      <div class="rl-kpi reveal reveal-d-2">
         <div class="rl-kpi-k">SATISFACTION</div>
         <div class="rl-kpi-n">4,9<span class="s">/5</span></div>
-        <div class="rl-kpi-l">Note moyenne post-projet sur 23 répondants.</div>
+        <div class="rl-kpi-l">Note moyenne post-projet (références sur demande).</div>
+      </div>
+      <div class="rl-kpi reveal reveal-d-2">
+        <div class="rl-kpi-k">CODE J+1</div>
+        <div class="rl-kpi-n">100<span class="s">%</span></div>
+        <div class="rl-kpi-l">Repo Git ouvert chez vous dès le premier jour.</div>
       </div>
       <div class="rl-kpi reveal reveal-d-3">
-        <div class="rl-kpi-k">CHIFFRE GÉNÉRÉ CLIENTS</div>
-        <div class="rl-kpi-n">2,4<span class="s"> M€</span></div>
-        <div class="rl-kpi-l">CA cumulé déclenché par nos livraisons en 18 mois.</div>
+        <div class="rl-kpi-k">PÉNALITÉS VERSÉES</div>
+        <div class="rl-kpi-n">0<span class="s"> €</span></div>
+        <div class="rl-kpi-l">Aucune clause de retard déclenchée à ce jour.</div>
       </div>
     </div>
   </div>
@@ -847,7 +760,7 @@ export const bodyHtml = `
         <p class="rl-feature-lead">
           <b>Notre rôle.</b> Cadrage produit + IA, architecture Laravel/Livewire, moteur
           d'amortissements par composants, intégration EDI-TDFC à la DGFiP, assistant
-          Claude Sonnet 4.5 contextuel. <b>4 mois entre la signature et le MVP en prod.</b>
+          Claude Opus 4.7 contextuel. <b>4 mois entre la signature et le MVP en prod.</b>
         </p>
 
         <div class="rl-feature-stats">
@@ -1046,7 +959,7 @@ export const bodyHtml = `
           </div>
           <div class="rl-quote-context">
             <span class="rl-quote-tag">PROJET 24 K€</span>
-            <span class="rl-quote-meta-sub">SaaS comptabilité · NPS +95</span>
+            <span class="rl-quote-meta-sub">SaaS comptabilité · livré dans le budget</span>
           </div>
         </figcaption>
       </figure>
@@ -1054,7 +967,7 @@ export const bodyHtml = `
     </div>
 
     <div class="rl-quotes-cta reveal">
-      <span>19 répondants sur 23 · NPS moyen <b>+74/100</b> · médiane <b>+80</b>.</span>
+      <span>Références vérifiables sur demande, mises en relation directes avant signature.</span>
       <a href="/#contact" class="btn btn-ghost btn-on-dark">
         Demander une mise en relation
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -1212,7 +1125,7 @@ export const bodyHtml = `
           <span class="dot"></span>POURQUOI ÇA TIENT
         </div>
         <h2 class="rl-method-title">
-          <span class="rl-line">23 projets livrés.</span>
+          <span class="rl-line">Tous nos projets livrés.</span>
           <span class="grad-accent">Une seule méthode.</span>
         </h2>
         <p class="rl-method-lead">
@@ -1290,8 +1203,8 @@ export const bodyHtml = `
           <div class="faq-a-inner">
             <p>
               Probablement pas <em>exactement</em>. On a 4 études en vitrine (SaaS B2C compta
-              immobilière, sites vitrines premium en gestion de patrimoine) mais 23 projets
-              livrés au total dans l'écosystème immobilier, fiscal, RH, logistique et marketplace.
+              immobilière, sites vitrines premium en gestion de patrimoine) mais 22 projets
+              livrés sur 23 dans l'écosystème immobilier, fiscal, RH, logistique et marketplace.
               En cadrage, on vous dit honnêtement si on a déjà manipulé votre métier ou si
               on doit monter en compétence — et combien de jours ça représente.
             </p>
@@ -1307,10 +1220,11 @@ export const bodyHtml = `
         <div class="faq-a">
           <div class="faq-a-inner">
             <p>
-              Les fourchettes typiques : <b>site vitrine premium 10-25 k€ HT</b> (3-6 semaines),
-              <b>outil interne complet 20-40 k€ HT</b> (5-7 semaines), <b>MVP SaaS B2C/B2B
-              30-60 k€ HT</b> (8-12 semaines). Le Discovery Sprint à 1 500 € HT est obligatoire
-              pour tout projet supérieur à 8 k€ — il transforme la fourchette en devis ferme.
+              <b>Tout est sur devis</b>. Site vitrine, outil interne, MVP SaaS, refonte e-commerce —
+              chaque projet est cadré et chiffré individuellement, en fonction du périmètre, des
+              intégrations et des ressources de votre côté. Le <b>Discovery Sprint à 1 500 € HT</b>
+              est obligatoire pour tout projet engagé&nbsp;: il transforme votre besoin en devis
+              ferme à un chiffre unique.
             </p>
           </div>
         </div>
@@ -1326,8 +1240,8 @@ export const bodyHtml = `
             <p>
               Tolérance de 14 jours calendaires sur la date contractuelle. Au-delà, vous bénéficiez
               d'un avoir hebdomadaire de <b>7 % du forfait</b> déductible du solde dû. C'est dans
-              le contrat type, public et téléchargeable. Depuis 2024 (lancement de la méthode
-              Sprint Fixe™), <b>0 € de pénalité versée sur 23 projets</b>.
+              le contrat type, public et téléchargeable. À ce jour&nbsp;: <b>0 € de pénalité versée
+              sur les 22 projets livrés</b>.
             </p>
           </div>
         </div>

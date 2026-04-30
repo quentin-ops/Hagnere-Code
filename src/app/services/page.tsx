@@ -11,6 +11,14 @@ export const metadata: Metadata = {
     description:
       "Choisissez le bon levier : produit, acquisition, run ou confiance. Services web, SaaS, outils métier et accompagnement au forfait fixe.",
     url: "/services",
+    images: [
+      {
+        url: "/og-image-services.png",
+        width: 1200,
+        height: 630,
+        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
+      },
+    ],
     type: "website",
   },
 };

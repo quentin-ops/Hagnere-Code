@@ -110,16 +110,16 @@ export const scenariosHtml = `
         <aside class="sv-scen-aside">
           <div class="sv-scen-aside-head">
             <span class="sv-scen-aside-kind">Forfait estimé</span>
-            <div class="sv-scen-aside-price">12 000 – 22 000 <span>€ HT</span></div>
+            <div class="sv-scen-aside-price">Sur devis</div>
           </div>
           <dl class="sv-scen-meta">
             <div class="sv-scen-meta-row">
               <dt>Délai</dt>
-              <dd>5 à 7 semaines</dd>
+              <dd>Sur devis</dd>
             </div>
             <div class="sv-scen-meta-row">
               <dt>Équipe</dt>
-              <dd>1 associé · 1 designer · 1 dev senior</dd>
+              <dd>1 gérant · 1 designer · 1 dev senior</dd>
             </div>
             <div class="sv-scen-meta-row">
               <dt>Livrables</dt>
@@ -188,10 +188,10 @@ export const scenariosHtml = `
         <aside class="sv-scen-aside">
           <div class="sv-scen-aside-head">
             <span class="sv-scen-aside-kind">Forfait estimé</span>
-            <div class="sv-scen-aside-price">6 900 – 10 000 <span>€ HT</span></div>
+            <div class="sv-scen-aside-price">Sur devis</div>
           </div>
           <dl class="sv-scen-meta">
-            <div class="sv-scen-meta-row"><dt>Délai</dt><dd>2 à 4 semaines</dd></div>
+            <div class="sv-scen-meta-row"><dt>Délai</dt><dd>Sur devis</dd></div>
             <div class="sv-scen-meta-row"><dt>Équipe</dt><dd>1 designer · 1 dev senior</dd></div>
             <div class="sv-scen-meta-row"><dt>Livrables</dt><dd>LP live · rapport A/B setup</dd></div>
             <div class="sv-scen-meta-row"><dt>Paiement</dt><dd>50 % / 50 %</dd></div>
@@ -251,10 +251,10 @@ export const scenariosHtml = `
         <aside class="sv-scen-aside">
           <div class="sv-scen-aside-head">
             <span class="sv-scen-aside-kind">Forfait estimé</span>
-            <div class="sv-scen-aside-price">18 000 – 30 000 <span>€ HT</span></div>
+            <div class="sv-scen-aside-price">Sur devis</div>
           </div>
           <dl class="sv-scen-meta">
-            <div class="sv-scen-meta-row"><dt>Délai</dt><dd>8 à 12 semaines</dd></div>
+            <div class="sv-scen-meta-row"><dt>Délai</dt><dd>Sur devis</dd></div>
             <div class="sv-scen-meta-row"><dt>Équipe</dt><dd>1 SEO · 1 designer · 1 dev senior</dd></div>
             <div class="sv-scen-meta-row"><dt>Livrables</dt><dd>Site + blog + stratégie + monitoring</dd></div>
             <div class="sv-scen-meta-row"><dt>Paiement</dt><dd>30 % / 40 % / 30 %</dd></div>

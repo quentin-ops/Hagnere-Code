@@ -36,7 +36,7 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
         </div>
         <h4>Forfait fixe contractuel</h4>
-        <p>Le prix du devis est le prix final. <b>Aucun avenant</b> sur le périmètre validé au cadrage. Pénalités de retard à partir de J+7.</p>
+        <p>Le prix du devis est le prix final. <b>Aucun avenant</b> sur le périmètre validé au cadrage. Pénalité de 7 % du forfait par semaine de retard au-delà de J+14.</p>
         <div class="seo-trust-foot">— Clause de pénalité dans le contrat</div>
       </div>
 
@@ -72,7 +72,7 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22V15"/></svg>
         </div>
         <h4>Partenaire techno vérifié</h4>
-        <p>Stack : <b>Laravel 13</b>, <b>React / Next.js</b>, <b>Stripe</b>, <b>Claude Sonnet 4.5</b>, <b>OVH / Scaleway</b>. Équipe formée aux dernières versions stables.</p>
+        <p>Stack : <b>Laravel 13</b>, <b>React / Next.js</b>, <b>Stripe</b>, <b>Claude Opus 4.7</b>, <b>OVH / Scaleway</b>. Équipe formée aux dernières versions stables.</p>
         <div class="seo-trust-foot">— Mise à jour trimestrielle</div>
       </div>
 

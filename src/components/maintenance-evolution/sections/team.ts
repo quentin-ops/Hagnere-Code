@@ -8,8 +8,8 @@ export const teamHtml = `
         <h2>On promet "équipe nommée<br>dans le contrat". On la montre<br>avant la signature.</h2>
       </div>
       <div class="right">
-        Pas de pool tournant, pas de "vous verrez quand on signera". Voici les <b>6 personnes</b>
-        qui gèrent vos apps en TMA — prénom, rôle, ancienneté, LinkedIn.
+        Pas de pool tournant, pas de "vous verrez quand on signera". Voici les <b>7 personnes</b>
+        qui gèrent vos apps en TMA — prénom, rôle, LinkedIn. <b>1 gérant + 3 CDI + 3 freelances long-terme</b>.
         Votre binôme référent est nommé au <b>kickoff</b>, overlap 2 semaines si rotation.
       </div>
     </div>
@@ -164,13 +164,35 @@ export const teamHtml = `
           </a>
         </div>
       </article>
+
+      <!-- Peter Sum Sie Kung -->
+      <article class="me-tm-card">
+        <div class="me-tm-avatar">
+          <svg viewBox="0 0 80 80" aria-hidden="true">
+            <defs><linearGradient id="me-tm-ps" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0EA5E9"/><stop offset="100%" stop-color="#7DD3FC"/></linearGradient></defs>
+            <rect width="80" height="80" rx="16" fill="url(#me-tm-ps)"/>
+            <text x="40" y="50" text-anchor="middle" font-family="Geist" font-weight="600" font-size="28" fill="#fff">PS</text>
+          </svg>
+          <span class="me-tm-badge">Freelance long-terme</span>
+        </div>
+        <div class="me-tm-body">
+          <h4>Peter Sum Sie Kung</h4>
+          <p class="me-tm-role">Dev confirmé · Laravel + front</p>
+          <p class="me-tm-bio">Renfort produit en TMA récurrente. Intégrations CMS, debugging applicatif, support utilisateur niveau 2. Bus factor maîtrisé sur les apps les plus chargées.</p>
+          <div class="me-tm-meta">
+            <span class="me-tm-chip">🛠️ TMA Laravel</span>
+            <span class="me-tm-chip">📦 Intégrations CMS</span>
+          </div>
+          <span class="me-tm-li me-tm-li-nda">Profil sur demande sous NDA</span>
+        </div>
+      </article>
     </div>
 
     <div class="me-tm-note reveal reveal-d-2">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
       <div>
-        <b>Équipe 100 % salariée</b>, basée à Chambéry. <b>Ancienneté moyenne&nbsp;: 4 ans</b>. Turnover interne &lt; 10 %
-        (vs industrie à 25 %). Binôme référent nommé au kickoff, overlap 2 semaines en cas de rotation (clause CGV).
+        <b>1 gérant + 3 CDI Laravel + 3 freelances long-terme</b>, France &amp; Europe. <b>Pas de pool tournant, pas d'offshore</b>.
+        Turnover interne &lt; 10 % (vs industrie à 25 %). Binôme référent nommé au kickoff, overlap 2 semaines en cas de rotation (clause CGV).
       </div>
     </div>
   </div>

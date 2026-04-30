@@ -11,6 +11,14 @@ export const metadata: Metadata = {
     description:
       "Alternative Shopify Plus pour PME/ETI : Next.js + Laravel + IA Claude + app mobile React Native. Forfait fixe, 0 % sur vos ventes. Factur-X, Chorus Pro, intégrations FR natives.",
     url: "/services/ecommerce",
+    images: [
+      {
+        url: "/og-image-services.png",
+        width: 1200,
+        height: 630,
+        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
+      },
+    ],
     type: "website",
   },
 };
@@ -32,7 +40,7 @@ const serviceJsonLd = JSON.stringify({
       addressLocality: "Chambéry",
       addressCountry: "FR",
     },
-    email: "hello@hagnere-code.fr",
+    email: "quentin@hagnere-patrimoine.fr",
     telephone: "+33374472018",
   },
   areaServed: { "@type": "Country", name: "France" },

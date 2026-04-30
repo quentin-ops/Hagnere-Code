@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef, type CSSProperties } from "react";
 import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
+import { MainNav } from "@/components/design-shared/MainNav";
 import { CASES } from "./cases";
 import "./index-page.css";
 import "@/components/design-shared/nav-dropdown.css";
@@ -12,193 +13,280 @@ import "@/components/design-shared/site-footer.css";
 
 const cases = Object.values(CASES);
 
-function Nav() {
-  return (
-    <nav className="nav">
-      <div className="nav-inner">
-        <Link href="/" className="brand">
-          <div className="brand-mark">HC</div>
-          <div className="brand-name">
-            <b>Hagnéré</b> <span>Code</span>
-          </div>
-        </Link>
-        <div className="nav-links">
-          <div className="nav-item">
-            <Link href="/#services" className="nav-trigger">
-              Services
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </Link>
-            <div className="nav-dd">
-              <div className="dd-col">
-                <h6>Construire</h6>
-                <Link className="dd-link" href="/services/saas-applications-metier"><span className="dd-ic">S</span><span className="dd-meta"><span className="dd-title">SaaS & applis métier</span><span className="dd-sub">Plateformes B2B, espaces clients.</span></span></Link>
-                <Link className="dd-link" href="/services/outils-internes-sur-mesure"><span className="dd-ic">O</span><span className="dd-meta"><span className="dd-title">Outils internes</span><span className="dd-sub">Back-office, workflows.</span></span></Link>
-                <Link className="dd-link" href="/services/sites-vitrines"><span className="dd-ic">W</span><span className="dd-meta"><span className="dd-title">Sites vitrines</span><span className="dd-sub">Sites qui convertissent.</span></span></Link>
-                <Link className="dd-link" href="/services/ecommerce"><span className="dd-ic">E</span><span className="dd-meta"><span className="dd-title">E-commerce</span><span className="dd-sub">Boutiques et tunnels.</span></span></Link>
-              </div>
-              <div className="dd-col">
-                <h6>Faire grandir</h6>
-                <Link className="dd-link" href="/services/referencement-google"><span className="dd-ic">R</span><span className="dd-meta"><span className="dd-title">SEO & référencement</span><span className="dd-sub">Contenu, tech, netlinking.</span></span></Link>
-                <Link className="dd-link" href="/services/publicite-en-ligne"><span className="dd-ic">A</span><span className="dd-meta"><span className="dd-title">Publicité en ligne</span><span className="dd-sub">Google, Meta, LinkedIn.</span></span></Link>
-                <Link className="dd-link" href="/services/contenu-video"><span className="dd-ic">V</span><span className="dd-meta"><span className="dd-title">Contenu & vidéo</span><span className="dd-sub">Studio, motion, YouTube.</span></span></Link>
-              </div>
-              <div className="dd-col">
-                <h6>Opérer</h6>
-                <Link className="dd-link" href="/services/maintenance-evolution"><span className="dd-ic">M</span><span className="dd-meta"><span className="dd-title">Maintenance</span><span className="dd-sub">Support et évolution.</span></span></Link>
-                <Link className="dd-link" href="/services/securite-rgpd"><span className="dd-ic">G</span><span className="dd-meta"><span className="dd-title">Sécurité & RGPD</span><span className="dd-sub">Audit, conformité.</span></span></Link>
-                <Link className="dd-link" href="/services/audit-technique"><span className="dd-ic">T</span><span className="dd-meta"><span className="dd-title">Audit technique</span><span className="dd-sub">Code, perf, sécurité.</span></span></Link>
-              </div>
-              <div className="dd-cta">
-                <div className="dd-cta-body">
-                  <div className="tag">Pas sûr ?</div>
-                  <div className="dd-cta-title">On vous aide à choisir le bon service.</div>
-                  <div className="dd-cta-sub">30 min avec un associé pour cadrer votre besoin.</div>
-                  <Link href="/contact" className="btn btn-accent">Réserver un créneau</Link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <Link href="/methode">Méthode</Link>
-          <Link href="/realisations" className="active">Réalisations</Link>
-          <Link href="/tarifs">Tarifs</Link>
-          <Link href="/contact">Contact</Link>
-        </div>
-        <div className="nav-cta">
-          <Link href="/contact" className="btn btn-ghost">Prendre RDV</Link>
-          <Link href="/demarrer-un-projet" className="btn btn-primary">
-            Démarrer un projet
-            <svg className="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
-          </Link>
-        </div>
-      </div>
-    </nav>
-  );
-}
-
 export function RealisationsIndexPage() {
   const rootRef = useRef<HTMLDivElement>(null);
   useDesignInteractive(rootRef);
 
   return (
     <div ref={rootRef} className="hc-design rl-modern">
-      <Nav />
+      <MainNav />
 
       <main>
+        {/* ─── HERO ─────────────────────────────────────────────── */}
         <section className="rlm-hero">
+          <div className="rlm-hero-bg" aria-hidden="true">
+            <div className="rlm-hero-glow" />
+            <div className="rlm-hero-grid" />
+          </div>
+
           <div className="wrap rlm-hero-inner">
-            <div className="rlm-copy">
-              <div className="eyebrow">— Réalisations</div>
-              <h1>Quatre projets, quatre mécaniques business.</h1>
+            <div className="rlm-copy reveal">
+              <div className="rlm-eyebrow-pill">
+                <span className="rlm-eyebrow-dot" />
+                <span><b>4 produits</b> · en production · 2024-2026</span>
+              </div>
+              <h1>
+                4 produits réels.<br />
+                Construits par{" "}
+                <span className="rlm-accent">Hagnéré Code</span>.
+              </h1>
               <p>
-                Une vraie page réalisations doit expliquer le contexte, ce qui a été construit,
-                comment ça fonctionne et quels chiffres peuvent être publiés. Voici quatre cas
-                détaillés avec stack, modules livrés et résultats mesurés.
+                Chaque cas est documenté en détail&nbsp;: contexte, ce qui a été construit,
+                comment ça fonctionne, modules livrés, stack, et chiffres mesurés.
+                Pas de logos volés ni de témoignages anonymes — uniquement nos produits internes,
+                qu&apos;on opère et qu&apos;on assume.
               </p>
               <div className="rlm-actions">
-                <Link href="#cas" className="btn btn-primary btn-lg">Voir les 4 cas</Link>
-                <Link href="/contact" className="btn btn-ghost btn-lg">Discuter d&apos;un projet</Link>
-              </div>
-            </div>
-            <div className="rlm-panel" aria-label="Synthèse des réalisations">
-              <div className="rlm-panel-top">Ce qu&apos;on documente</div>
-              <div className="rlm-panel-grid">
-                <span>Contexte</span>
-                <span>Fonctionnement</span>
-                <span>Modules livrés</span>
-                <span>Chiffres</span>
-                <span>Stack</span>
-                <span>Suite possible</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="rlm-proof">
-          <div className="wrap rlm-proof-grid">
-            <div><b>2 SaaS fiscaux</b><span>LMNP.AI et SCI-AI.app</span></div>
-            <div><b>2 sites acquisition</b><span>Patrimoine et investissement</span></div>
-            <div><b>4 pages détaillées</b><span>Avec contexte, modules livrés, stack et résultats</span></div>
-          </div>
-        </section>
-
-        <section className="rlm-cases" id="cas">
-          <div className="wrap">
-            <div className="section-head">
-              <div className="left">
-                <div className="eyebrow">— Les cas</div>
-                <h2>Des fiches faites pour vendre, pas juste montrer.</h2>
-              </div>
-              <div className="right">
-                Chaque carte mène vers une étude détaillée : contexte, problème, solution, modules livrés, stack et résultats mesurés.
+                <Link href="#cas" className="btn btn-accent btn-lg">
+                  Découvrir les 4 cas
+                  <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </Link>
+                <Link href="/contact" className="btn btn-ghost btn-lg">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                  Discuter d&apos;un projet
+                </Link>
               </div>
             </div>
 
-            <div className="rlm-case-list">
-              {cases.map((c) => (
-                <article className="rlm-case" key={c.slug} style={{ "--brand": c.brandColor, "--brand-soft": c.brandSoft } as CSSProperties}>
-                  <div className="rlm-case-head">
-                    <div className="rlm-logo">{c.brandLogo}</div>
-                    <div>
-                      <div className="rlm-kind">{c.category}</div>
-                      <h3>{c.brandName}</h3>
-                    </div>
+            {/* Right visual: 4 floating brand cards */}
+            <div className="rlm-hero-visual reveal" aria-hidden="true">
+              {cases.map((c, i) => (
+                <div
+                  key={c.slug}
+                  className={`rlm-float-card rlm-float-${i + 1}`}
+                  style={{
+                    "--brand": c.brandColor,
+                    "--brand-soft": c.brandSoft,
+                  } as CSSProperties}
+                >
+                  <div className="rlm-float-logo">{c.brandLogo}</div>
+                  <div className="rlm-float-meta">
+                    <span className="rlm-float-name">{c.brandName}</span>
+                    <span className="rlm-float-cat">{c.category.split(" · ")[0]}</span>
                   </div>
-
-                  <p className="rlm-tagline">{c.tagline}</p>
-                  <p className="rlm-intro">{c.heroIntro}</p>
-
-                  <div className="rlm-split">
-                    <div>
-                      <h4>Ce qui fonctionne</h4>
-                      <ul>
-                        {c.solution.slice(0, 3).map((item) => (
-                          <li key={item.title}>{item.title}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h4>Modules clés</h4>
-                      <ul>
-                        {c.features.slice(0, 5).map((feature) => (
-                          <li key={feature}>{feature}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="rlm-metrics">
-                    {c.metrics.slice(0, 4).map((metric) => (
-                      <div className="rlm-metric" key={`${c.slug}-${metric.label}`}>
-                        <strong>{metric.value}</strong>
-                        <span>{metric.label}</span>
-                        {metric.note && <em>{metric.note}</em>}
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="rlm-case-foot">
-                    <div className="rlm-stack">{c.stack.slice(0, 4).join(" · ")}</div>
-                    <Link href={`/realisations/${c.slug}`} className="btn btn-primary">Lire le cas</Link>
-                  </div>
-                </article>
+                  <span className="rlm-float-status">
+                    <span className="rlm-float-dot" /> EN PROD
+                  </span>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="rlm-needed">
-          <div className="wrap rlm-needed-inner">
-            <div>
-              <div className="eyebrow on-dark">— Études de cas approfondies</div>
-              <h2>Vous voulez plus de détails ?</h2>
+        {/* ─── STATS STRIP ─────────────────────────────────────────── */}
+        <section className="rlm-stats">
+          <div className="wrap">
+            <div className="rlm-stats-grid">
+              <div className="rlm-stat reveal">
+                <div className="rlm-stat-ic">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                </div>
+                <div className="rlm-stat-body">
+                  <div className="rlm-stat-v">4</div>
+                  <div className="rlm-stat-k">produits opérés en production</div>
+                </div>
+              </div>
+
+              <div className="rlm-stat reveal reveal-d-1">
+                <div className="rlm-stat-ic">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
+                </div>
+                <div className="rlm-stat-body">
+                  <div className="rlm-stat-v">2 + 2</div>
+                  <div className="rlm-stat-k">2 SaaS fiscaux · 2 sites acquisition</div>
+                </div>
+              </div>
+
+              <div className="rlm-stat reveal reveal-d-2">
+                <div className="rlm-stat-ic">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3-3M22 11l-3 3M19 8h6"/></svg>
+                </div>
+                <div className="rlm-stat-body">
+                  <div className="rlm-stat-v">8 000<span className="rlm-stat-sup">+</span></div>
+                  <div className="rlm-stat-k">utilisateurs payants cumulés</div>
+                </div>
+              </div>
+
+              <div className="rlm-stat reveal reveal-d-3">
+                <div className="rlm-stat-ic">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M3 12a9 9 0 1118 0 9 9 0 01-18 0z"/><path d="M9 12l2 2 4-4"/></svg>
+                </div>
+                <div className="rlm-stat-body">
+                  <div className="rlm-stat-v">100<span className="rlm-stat-sup">%</span></div>
+                  <div className="rlm-stat-k">propriété client · code &amp; données</div>
+                </div>
+              </div>
             </div>
-            <div className="rlm-needed-list">
-              <p>Récits techniques longs, métriques avant/après, captures produit, retours d&apos;expérience anonymisés sous NDA : voir les <Link href="/etudes-de-cas" style={{ color: "#c4b5fd", textDecoration: "underline" }}>études de cas approfondies</Link>. Pour mise en relation directe avec d&apos;anciens clients avant signature, écrivez-nous.</p>
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <Link href="/etudes-de-cas" className="btn btn-ghost">Voir les études de cas</Link>
-                <Link href="/contact" className="btn btn-accent">Demander une mise en relation</Link>
+          </div>
+        </section>
+
+        {/* ─── CASES GRID 2×2 ──────────────────────────────────────── */}
+        <section className="rlm-cases" id="cas">
+          <div className="wrap">
+            <div className="section-head reveal">
+              <div className="left">
+                <div className="eyebrow">— Les cas</div>
+                <h2>4 produits internes,<br />4 mécaniques différentes.</h2>
+              </div>
+              <div className="right">
+                Chaque carte renvoie vers une étude détaillée&nbsp;: contexte,
+                problème, solution, modules livrés, stack et résultats mesurés.
+                <b> Aucun client externe à exposer ici</b> — on assume nos produits maison
+                comme preuve principale.
+              </div>
+            </div>
+
+            <div className="rlm-group-note reveal" role="note">
+              <div className="rlm-group-note-badges" aria-hidden="true">
+                <span className="rlm-group-note-badge" style={{ "--brand": "#6D28D9" } as CSSProperties}>L</span>
+                <span className="rlm-group-note-badge" style={{ "--brand": "#0066FF" } as CSSProperties}>S</span>
+              </div>
+              <div className="rlm-group-note-body">
+                <span className="rlm-group-note-eyebrow">Même groupe</span>
+                <p>
+                  <b>LMNP.AI</b> et <b>SCI-AI.app</b> appartiennent à la même société —
+                  valorisée à plus de <b>3,8&nbsp;M€</b> en moins de <b>2 ans et demi</b>.
+                </p>
+              </div>
+            </div>
+
+            <div className="rlm-case-grid">
+              {cases.map((c, idx) => (
+                <Link
+                  key={c.slug}
+                  href={`/realisations/${c.slug}`}
+                  className="rlm-case reveal"
+                  style={{
+                    "--brand": c.brandColor,
+                    "--brand-soft": c.brandSoft,
+                    "--reveal-delay": `${idx * 0.08}s`,
+                  } as CSSProperties}
+                >
+                  {/* Branded header strip */}
+                  <div className="rlm-case-cover">
+                    <div className="rlm-case-cover-glow" aria-hidden="true" />
+                    <div className="rlm-case-cover-grid" aria-hidden="true" />
+                    <div className="rlm-case-logo">{c.brandLogo}</div>
+                    <span className="rlm-case-status">
+                      <span className="rlm-case-status-dot" /> EN PRODUCTION
+                    </span>
+                    <span className="rlm-case-year">{c.year}</span>
+                  </div>
+
+                  <div className="rlm-case-body">
+                    <div className="rlm-case-meta">
+                      <span className="rlm-case-cat">{c.category}</span>
+                      <span className="rlm-case-sep" />
+                      <span className="rlm-case-dur">{c.duration}</span>
+                    </div>
+
+                    <h3>{c.brandName}</h3>
+                    <p className="rlm-case-tagline">{c.tagline}</p>
+
+                    {/* Top 3 metrics as inline pills */}
+                    <div className="rlm-case-metrics">
+                      {c.metrics.slice(0, 3).map((metric) => (
+                        <div className="rlm-case-metric" key={`${c.slug}-${metric.label}`}>
+                          <strong>{metric.value}</strong>
+                          <span>{metric.label}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Modules clés */}
+                    <div className="rlm-case-section">
+                      <div className="rlm-case-section-h">Modules clés</div>
+                      <div className="rlm-case-features">
+                        {c.features.slice(0, 5).map((feat) => (
+                          <span key={feat}>{feat}</span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Stack */}
+                    <div className="rlm-case-section">
+                      <div className="rlm-case-section-h">Stack</div>
+                      <div className="rlm-case-stack">
+                        {c.stack.slice(0, 5).map((s) => (
+                          <span key={s}>{s}</span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="rlm-case-foot">
+                      <span className="rlm-case-cta">
+                        Lire l&apos;étude détaillée
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── CTA "Mise en relation" ──────────────────────────────── */}
+        <section className="rlm-cta">
+          <div className="wrap">
+            <div className="rlm-cta-card reveal">
+              <div className="rlm-cta-bg" aria-hidden="true">
+                <div className="rlm-cta-glow rlm-cta-glow-1" />
+                <div className="rlm-cta-glow rlm-cta-glow-2" />
+                <div className="rlm-cta-grid" />
+              </div>
+
+              <div className="rlm-cta-body">
+                <div className="rlm-cta-eyebrow">
+                  <span className="rlm-cta-dot" /> MISE EN RELATION
+                </div>
+                <h2>
+                  Vous voulez parler à<br />
+                  <span className="rlm-cta-accent">un utilisateur réel ?</span>
+                </h2>
+                <p>
+                  Avant signature, on organise volontiers une visio avec un utilisateur
+                  ou opérateur d&apos;un de nos produits. Captures, métriques avant/après,
+                  retours d&apos;expérience honnêtes — partagés sous NDA.
+                </p>
+                <div className="rlm-cta-actions">
+                  <Link href="/contact" className="btn btn-accent btn-lg">
+                    Demander une mise en relation
+                    <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                  </Link>
+                  <Link href="/methode" className="btn btn-ghost-light btn-lg">
+                    Voir notre méthode
+                  </Link>
+                </div>
+              </div>
+
+              <div className="rlm-cta-side" aria-hidden="true">
+                <div className="rlm-cta-tile">
+                  <div className="rlm-cta-tile-k">4</div>
+                  <div className="rlm-cta-tile-l">produits<br />en production</div>
+                </div>
+                <div className="rlm-cta-tile rlm-cta-tile-accent">
+                  <div className="rlm-cta-tile-k">8&thinsp;000<span>+</span></div>
+                  <div className="rlm-cta-tile-l">utilisateurs<br />payants</div>
+                </div>
+                <div className="rlm-cta-tile">
+                  <div className="rlm-cta-tile-k">99,9<span>%</span></div>
+                  <div className="rlm-cta-tile-l">uptime<br />sur 90 j</div>
+                </div>
+                <div className="rlm-cta-tile rlm-cta-tile-accent">
+                  <div className="rlm-cta-tile-k">2026</div>
+                  <div className="rlm-cta-tile-l">millésime<br />du studio</div>
+                </div>
               </div>
             </div>
           </div>

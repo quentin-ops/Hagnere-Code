@@ -5,7 +5,7 @@ export const verticalsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Pour qui on audite le mieux</div>
-        <h2>Six verticales où notre méthode<br>a été affûtée sur 47 audits.</h2>
+        <h2>Six verticales où notre méthode<br>est éprouvée.</h2>
       </div>
       <div class="right">
         Pas parce qu'on refuse les autres, mais parce qu'on a <b>développé des benchmarks propriétaires</b>

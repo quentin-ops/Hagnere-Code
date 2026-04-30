@@ -4,9 +4,11 @@ import Link from "next/link";
 import { useRef } from "react";
 import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
+import { MainNav } from "@/components/design-shared/MainNav";
 import { CaseStudy, CASES } from "./cases";
 import "./case-study.css";
 import "@/components/design-shared/responsive.css";
+import "@/components/design-shared/nav-dropdown.css";
 import "@/components/design-shared/site-footer.css";
 
 type Props = { caseStudy: CaseStudy };
@@ -24,39 +26,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
 
   return (
     <div ref={rootRef} className="hc-design cs-root" style={brandVars}>
-      {/* Nav */}
-      <nav className="nav">
-        <div className="nav-inner">
-          <Link href="/" className="brand">
-            <div className="brand-mark">HC</div>
-            <div className="brand-name">
-              <b>Hagnéré</b> <span>Code</span>
-            </div>
-          </Link>
-          <div className="nav-links">
-            <Link href="/#services">Services</Link>
-            <Link href="/methode">Méthode</Link>
-            <Link href="/realisations" className="active">
-              Réalisations
-            </Link>
-            <Link href="/equipe">Équipe</Link>
-            <Link href="/tarifs">Tarifs</Link>
-
-            <Link href="/contact">Contact</Link>
-          </div>
-          <div className="nav-cta">
-            <Link href="/#contact" className="btn btn-ghost">
-              Prendre RDV
-            </Link>
-            <Link href="/demarrer-un-projet" className="btn btn-primary">
-              Démarrer un projet
-              <svg className="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <MainNav />
 
       {/* Breadcrumb */}
       <div className="wrap">

@@ -101,7 +101,7 @@ export const scenariosHtml = `
         <aside class="ads-scen-aside">
           <div class="ads-scen-aside-head">
             <span class="ads-scen-aside-kind">Forfait mensuel</span>
-            <div class="ads-scen-aside-price">2 500 <span>€ HT / mois</span></div>
+            <div class="ads-scen-aside-price">Sur devis</div>
           </div>
           <dl class="ads-scen-meta">
             <div class="ads-scen-meta-row"><dt>Budget media client</dt><dd>15–40 k€ / mois</dd></div>
@@ -148,7 +148,7 @@ export const scenariosHtml = `
         <aside class="ads-scen-aside">
           <div class="ads-scen-aside-head">
             <span class="ads-scen-aside-kind">Forfait fixe</span>
-            <div class="ads-scen-aside-price">2 500 <span>€ HT / mois</span></div>
+            <div class="ads-scen-aside-price">Sur devis</div>
           </div>
           <dl class="ads-scen-meta">
             <div class="ads-scen-meta-row"><dt>Budget media client</dt><dd>20–80 k€ / mois</dd></div>
@@ -194,7 +194,7 @@ export const scenariosHtml = `
         <aside class="ads-scen-aside ads-scen-aside-hot">
           <div class="ads-scen-aside-head">
             <span class="ads-scen-aside-kind">Sprint 15 jours</span>
-            <div class="ads-scen-aside-price">9 800 <span>€ HT forfait</span></div>
+            <div class="ads-scen-aside-price">Sur devis</div>
           </div>
           <dl class="ads-scen-meta">
             <div class="ads-scen-meta-row"><dt>Budget media client</dt><dd>10–50 k€ sur la période</dd></div>
@@ -240,7 +240,7 @@ export const scenariosHtml = `
         <aside class="ads-scen-aside">
           <div class="ads-scen-aside-head">
             <span class="ads-scen-aside-kind">Forfait mensuel</span>
-            <div class="ads-scen-aside-price">4 500 <span>€ HT / mois</span></div>
+            <div class="ads-scen-aside-price">Sur devis</div>
           </div>
           <dl class="ads-scen-meta">
             <div class="ads-scen-meta-row"><dt>Budget media client</dt><dd>30–120 k€ / mois</dd></div>
@@ -250,7 +250,7 @@ export const scenariosHtml = `
             <div class="ads-scen-meta-row"><dt>Engagement</dt><dd>3 mois puis mois par mois</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg ads-scen-cta">
-            Parler à un associé
+            Parler au gérant
             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <div class="ads-scen-aside-foot">

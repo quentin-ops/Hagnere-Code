@@ -46,16 +46,16 @@ export const trustBadgesHtml = `
 
       <div class="cv-trust-card reveal reveal-d-1">
         <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
-        <h4>Qualiopi · financement OPCO</h4>
-        <p>Formation équipe post-livraison (montage, brief, direction artistique) <b>finançable par votre OPCO</b>. Dossier monté avec vous.</p>
-        <div class="cv-trust-foot">— Dossier OPCO clé en main</div>
+        <h4>Formation post-livraison incluse</h4>
+        <p>Atelier équipe post-livraison (montage, brief, direction artistique) inclus à chaque mission. Loom + guide PDF + suivi à 30 j et 90 j.</p>
+        <div class="cv-trust-foot">— Inclus dans tous les forfaits</div>
       </div>
 
       <div class="cv-trust-card reveal reveal-d-2">
-        <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <h4>RC Pro 2 M€ · Hiscox</h4>
-        <p>Responsabilité civile professionnelle à <b>2 millions d'euros</b>. Droits d'auteur musique, droit à l'image, licences d'archives — tout est couvert et tracé.</p>
-        <div class="cv-trust-foot">— Attestation Hiscox fournie</div>
+        <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h4>Droits d'auteur tracés</h4>
+        <p>Musiques sous licence Artlist / Epidemic Sound, droit à l'image signé par les intervenants, licences d'archives documentées. <b>Chaque actif est traçable</b> et fourni avec sa licence à la livraison.</p>
+        <div class="cv-trust-foot">— Tableau des licences fourni</div>
       </div>
 
       <div class="cv-trust-card reveal reveal-d-3">

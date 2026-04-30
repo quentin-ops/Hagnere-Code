@@ -150,7 +150,76 @@
   font-size: 12px;
   color: var(--ink-3);
   letter-spacing: 0.02em;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
+.cmp-price-note {
+  font-size: 9.5px;
+  color: var(--mute);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.cmp-row-hint {
+  font-family: var(--font-geist-mono);
+  font-size: 10px;
+  color: var(--mute);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-left: 4px;
+  font-weight: 400;
+}
+
+/* Context callout above the table */
+.cmp-context {
+  margin: 0 0 24px;
+  padding: 18px 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: linear-gradient(180deg, var(--accent-soft), rgba(237, 233, 254, 0.3));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+}
+.cmp-context-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-geist-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  flex-shrink: 0;
+}
+.cmp-context p {
+  flex: 1;
+  min-width: 280px;
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-3);
+}
+.cmp-context p b { color: var(--ink); font-weight: 600; }
+.cmp-context-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent-ink);
+  text-decoration: none;
+  border: 1px solid rgba(109, 40, 217, 0.3);
+  background: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.cmp-context-cta:hover { border-color: var(--accent); transform: translateY(-1px); }
 
 /* Highlight "us" column */
 .cmp-col-us {
@@ -678,17 +747,24 @@
   place-items: center;
   gap: 3px;
   border-radius: 10px;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.72);
+  background: rgb(var(--vt-accent-rgb) / 0.08);
+  border: 1px solid rgb(var(--vt-accent-rgb) / 0.18);
+  color: var(--vt-accent-ink);
   font-size: 10px;
   font-family: var(--font-geist-mono);
 }
 .vt-mini-health b {
-  color: #fff;
+  color: var(--vt-accent-ink);
   font-family: var(--font-geist);
   font-size: 18px;
+  font-weight: 600;
 }
+.vt-card--dark .vt-mini-health span {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.72);
+}
+.vt-card--dark .vt-mini-health b { color: #fff; }
 
 .vt-feats {
   display: flex;
@@ -1162,4 +1238,271 @@
   .ct-left h2 { font-size: 28px; }
   .ct-meta { font-size: 10.5px; }
   .ct-mock-big { font-size: 28px; }
+}
+
+/* ============================================================
+ * FEATURED CTA — hero-card with bg image + 3 contact tiles
+ * ============================================================ */
+.fcta {
+  padding: 96px 0 120px;
+  background: var(--paper);
+}
+
+.fcta-hero {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 30px 80px -30px rgba(10, 10, 10, 0.45),
+    0 8px 24px -8px rgba(76, 29, 149, 0.25);
+}
+
+.fcta-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Background image — drop a JPG/WebP at /images/cta-featured.jpg.
+   If the image is missing, the radial gradients below provide a polished
+   fallback (deep purple → near-black) so the section still looks intentional. */
+.fcta-hero-image {
+  position: absolute;
+  inset: 0;
+  background-color: #0A0A0A;
+  background-image:
+    url('/images/cta-featured.jpg'),
+    radial-gradient(ellipse 60% 90% at 18% 50%, rgba(124, 58, 237, 0.45), transparent 60%),
+    radial-gradient(ellipse 80% 60% at 80% 30%, rgba(76, 29, 149, 0.55), transparent 65%),
+    radial-gradient(ellipse 50% 60% at 70% 100%, rgba(167, 139, 250, 0.18), transparent 70%),
+    linear-gradient(135deg, #1A0B3D 0%, #0A0A0A 100%);
+  background-size: cover, auto, auto, auto, auto;
+  background-position: center, center, center, center, center;
+  background-repeat: no-repeat;
+}
+
+.fcta-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 10, 10, 0.35) 0%, rgba(10, 10, 10, 0.55) 100%),
+    radial-gradient(ellipse 60% 90% at 50% 50%, transparent 30%, rgba(10, 10, 10, 0.55) 100%);
+}
+
+.fcta-hero-glow {
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(ellipse 30% 30% at 50% 50%, rgba(124, 58, 237, 0.2), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.fcta-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 60% 80% at 50% 50%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 80% at 50% 50%, #000 30%, transparent 80%);
+}
+
+.fcta-hero-frame {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: clamp(56px, 9vw, 120px) clamp(20px, 5vw, 64px);
+  min-height: 460px;
+}
+
+.fcta-hero-card {
+  position: relative;
+  width: min(720px, 100%);
+  padding: clamp(28px, 5vw, 56px);
+  border-radius: 20px;
+  background: rgba(10, 10, 10, 0.45);
+  border: 1px solid rgba(167, 139, 250, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  text-align: center;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 24px 60px -20px rgba(0, 0, 0, 0.5);
+}
+
+.fcta-hero-title {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(32px, 4.6vw, 52px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.fcta-hero-sub {
+  margin: 18px auto 0;
+  max-width: 540px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(14.5px, 1.3vw, 16.5px);
+  line-height: 1.55;
+}
+
+.fcta-hero-meta {
+  margin-top: 22px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  font-family: var(--font-geist-mono);
+}
+
+.fcta-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fcta-meta-accent {
+  color: #C4B5FD;
+}
+
+.fcta-meta-sep {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.fcta-hero-cta {
+  margin-top: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px 14px 18px;
+  border: none;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 12px 32px -8px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(167, 139, 250, 0.25);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.fcta-hero-cta:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 18px 40px -10px rgba(76, 29, 149, 0.45),
+    0 0 0 1px rgba(167, 139, 250, 0.45);
+}
+
+.fcta-hero-cta svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ----- 3 contact tiles below ----- */
+.fcta-cards {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.fcta-card {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 22px 22px 24px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #161616 0%, #0E0E0E 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+  color: #fff;
+  min-height: 158px;
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.fcta-card:hover {
+  border-color: rgba(167, 139, 250, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -16px rgba(76, 29, 149, 0.4);
+}
+
+.fcta-card-ic {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.fcta-card-ic-wa {
+  border: none;
+  background: linear-gradient(180deg, #25D366 0%, #128C7E 100%);
+  color: #fff;
+  box-shadow: 0 8px 20px -8px rgba(37, 211, 102, 0.55);
+}
+
+.fcta-card-wa {
+  background: linear-gradient(180deg, #0E1F14 0%, #0A0A0A 100%);
+  border-color: rgba(37, 211, 102, 0.18);
+}
+
+.fcta-card-wa:hover {
+  border-color: rgba(37, 211, 102, 0.55);
+  box-shadow: 0 18px 40px -16px rgba(37, 211, 102, 0.35);
+}
+
+.fcta-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: auto;
+}
+
+.fcta-card-title {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #fff;
+}
+
+.fcta-card-meta {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: -0.005em;
+}
+
+@media (max-width: 900px) {
+  .fcta { padding: 64px 0 80px; }
+  .fcta-hero-frame { padding: 56px 18px; min-height: 420px; }
+  .fcta-cards { grid-template-columns: 1fr; gap: 12px; }
+  .fcta-card { min-height: 0; flex-direction: row; align-items: center; gap: 16px; }
+  .fcta-card-body { margin-top: 0; }
+  .fcta-card-title { font-size: 18px; }
+}
+
+@media (max-width: 540px) {
+  .fcta-hero-card { padding: 28px 22px; }
+  .fcta-hero-cta { padding: 12px 18px 12px 14px; font-size: 14px; }
+  .fcta-hero-cta span { white-space: normal; text-align: left; }
 }

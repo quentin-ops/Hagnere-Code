@@ -1,21 +1,16 @@
 export const proofStripHtml = `
-<!-- PROOF STRIP · audit technique (47 audits livrés · 92% recos implémentées · NPS 72 · 0 CoI · 10 j) -->
+<!-- PROOF STRIP · audit technique (8 dimensions · ISO 19011 · 0 CoI · 10 j · NDA J0) -->
 <section class="at-proof-strip">
   <div class="wrap">
     <div class="at-proof-strip-inner reveal">
       <div class="at-proof-item">
-        <div class="at-proof-n">47<span></span></div>
-        <div class="at-proof-k">Audits livrés<br>2022 → 2026</div>
+        <div class="at-proof-n">8<span></span></div>
+        <div class="at-proof-k">Dimensions auditées<br>(code, archi, perf, sécu...)</div>
       </div>
       <div class="at-proof-sep"></div>
       <div class="at-proof-item">
-        <div class="at-proof-n">92<span>%</span></div>
-        <div class="at-proof-k">Recommandations implémentées<br>sous 6 mois post-audit</div>
-      </div>
-      <div class="at-proof-sep"></div>
-      <div class="at-proof-item">
-        <div class="at-proof-n">72<span></span></div>
-        <div class="at-proof-k">NPS dirigeants<br>mesuré à 90 j post-audit</div>
+        <div class="at-proof-n">10<span>j</span></div>
+        <div class="at-proof-k">Ouvrés médian<br>de l'audit standard</div>
       </div>
       <div class="at-proof-sep"></div>
       <div class="at-proof-item">
@@ -24,13 +19,18 @@ export const proofStripHtml = `
       </div>
       <div class="at-proof-sep"></div>
       <div class="at-proof-item">
-        <div class="at-proof-n">10<span>j</span></div>
-        <div class="at-proof-k">Ouvrés médian<br>de l'audit standard</div>
+        <div class="at-proof-n">100<span>%</span></div>
+        <div class="at-proof-k">Propriété client<br>0 watermark, 0 republication</div>
+      </div>
+      <div class="at-proof-sep"></div>
+      <div class="at-proof-item">
+        <div class="at-proof-n">J0<span></span></div>
+        <div class="at-proof-k">NDA mutuel signé<br>avant tout accès</div>
       </div>
     </div>
     <div class="at-proof-strip-note reveal reveal-d-1">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      Chiffres mesurés sur 47 audits livrés entre 2022 et 2026. Secteurs&nbsp;: SaaS B2B, e-commerce DTC, edtech, fintech, healthtech. Mise en relation avec 3 anciens clients (sous NDA signé) disponible <b>avant signature</b>.
+      Méthodologie ISO 19011 documentée. Sample report anonymisé disponible <b>avant signature</b>. Mise en relation avec d'anciens clients sous NDA possible avant engagement.
     </div>
   </div>
 </section>

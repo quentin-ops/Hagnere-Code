@@ -14,7 +14,7 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
         </div>
         <h4>Forfait fixe contractuel</h4>
-        <p>Prix du devis = prix final. <b>Zéro avenant</b> sur le périmètre validé au cadrage. Pénalité de retard écrite au contrat dès J+7 au-delà de la date annoncée.</p>
+        <p>Prix du devis = prix final. <b>Zéro avenant</b> sur le périmètre validé au cadrage. Pénalité de 7 % du forfait par semaine de retard au-delà de J+14.</p>
         <div class="oi-trust-foot">— Pénalités de retard contractuelles</div>
       </div>
 
@@ -49,18 +49,18 @@ export const trustBadgesHtml = `
         <div class="oi-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
         </div>
-        <h4>Qualiopi — financement OPCO</h4>
-        <p>La journée de formation post-livraison est <b>finançable par votre OPCO</b>. Dossier monté avec vous, prise en charge partielle fréquente selon l'OPCO et votre branche.</p>
-        <div class="oi-trust-foot">— Prise en charge OPCO sur demande</div>
+        <h4>Formation post-livraison incluse</h4>
+        <p>Une journée de formation utilisateurs (super-users + équipe métier) est incluse à chaque livraison. Loom + guide PDF + Q&amp;A à 30 j et 90 j post-déploiement.</p>
+        <div class="oi-trust-foot">— Inclus dans tous les forfaits</div>
       </div>
 
       <div class="oi-trust-card reveal reveal-d-1">
         <div class="oi-trust-ic">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/><path d="M12 22a10 10 0 000-20"/></svg>
         </div>
-        <h4>RC Pro 2 M€ · Hiscox</h4>
-        <p>Responsabilité civile professionnelle <b>2 millions d'euros</b>. Si une intégration casse malgré nos précautions, vous êtes couverts. Attestation sur demande.</p>
-        <div class="oi-trust-foot">— Attestation Hiscox fournie</div>
+        <h4>Audit de sortie écrit</h4>
+        <p>À la livraison, un <b>audit technique écrit</b> documente le code, les dépendances, les zones à risque et la roadmap conseillée. Reprise possible par toute autre équipe Laravel sans dépendance à nous.</p>
+        <div class="oi-trust-foot">— Livrable PDF inclus au handover</div>
       </div>
 
       <div class="oi-trust-card reveal reveal-d-2">
