@@ -67,7 +67,6 @@ ${navHtml}
               <div class="emos-name">Nicolas Wallerand</div>
               <div class="emos-role">CTO</div>
             </div>
-            <div class="emos-tag emos-tag-cto">ASSOCIÉ</div>
             <span class="emos-card-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </a>
 
