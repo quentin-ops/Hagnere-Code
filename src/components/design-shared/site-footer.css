@@ -521,6 +521,13 @@ a.sf-direct-v:hover { color: var(--accent); }
   min-width: 0;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
+/* Reset pour les .sf-tile rendus comme <button> (ex: "Gérer mes cookies"). */
+button.sf-tile {
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
 
 .sf-tile-label {
   flex: 1;
