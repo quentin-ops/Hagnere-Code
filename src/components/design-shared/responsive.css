@@ -1203,3 +1203,102 @@ body.nav-menu-lock { overflow: hidden; }
   .hc-design h2 { font-size: 20px !important; }
   .hero-cta .btn, .hero-cta .btn-lg { font-size: 13.5px; padding: 12px 16px; }
 }
+
+/* =====================================================================
+   GLOBAL MOBILE PERF OVERRIDES (toutes les pages du site)
+   ----------------------------------------------------------------------
+   Sur iOS Safari, combiner sticky + backdrop-filter, masks lourds et
+   animations infinies fait éjecter les tuiles GPU au scroll rapide
+   (page blanche le temps de re-rasteriser). Chargé après tous les
+   page.css → ces règles gagnent sur la spécificité égale.
+   ================================================================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Nav sticky (présente sur 14 page.css en copie identique) */
+  .nav {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(255, 255, 255, 0.96) !important;
+  }
+  /* Cartes / panneaux glass-morphism — opaques au lieu de translucides.
+     Inclut les boîtes blur(20px) des pages services (at-/me-/ec-/sa-...). */
+  .dc-bar,
+  .eq-founder-tag,
+  .cto-photo-tag,
+  .founder-photo-tag,
+  .emos-frame,
+  .mtoc-inner,
+  .hc-design .mtoc-inner,
+  .fcta-hero-card,
+  .at-audit-box,
+  .at-audit-result,
+  .at-timeline,
+  .me-audit-box,
+  .me-audit-result,
+  .me-timeline {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  /* Halos/glows pleine page en filter:blur(20-60px) — coûteux à composer.
+     Convention du repo : tout *-glow est un glow décoratif. */
+  [class*="-glow"] {
+    filter: blur(12px) !important;
+    opacity: 0.5 !important;
+    animation: none !important;
+  }
+  /* Animations infinies de "respiration" / pulse, off-screen la plupart
+     du temps mais qui consomment du CPU + forcent une couche GPU.
+     Pattern : convention du repo = classes en *-pulse / *-blink / *-spin
+     pour les dots décoratifs (sr-blink, cv-badge-pulse, ec-b-ai-pulse,
+     at-status-pulse, at-tl-pulse, etc.). */
+  .dc-status-dot,
+  .ct-dot,
+  .cto-photo-tag .dot,
+  .founder-photo-tag .dot,
+  .eq-founder-tag .dot,
+  .hv-status-dot,
+  /* Pulses/blinks décoratifs (status dots, badges qui respirent).
+     Filet large via attribut — on ré-active explicitement plus bas
+     les pulsations qui font partie d'un état de chargement réel. */
+  [class*="-pulse"],
+  [class*="-blink"],
+  /* Spinners décoratifs intégrés à des mockups (pas des vraies vues
+     de chargement — vdb-spin du VoiceDictate doit rester actif) */
+  .sr-pr-mock-spinner,
+  .cv-ai-spinner,
+  /* Flow SVG décoratifs sur les pages services (eco-flow) */
+  .at-eco-flow svg,
+  .me-eco-flow svg,
+  .ads-eco-flow svg,
+  .seo-eco-flow svg,
+  /* Barre de progression décorative (e-commerce mockups) */
+  .ec-b-ai-progress > span,
+  /* Cartes flottantes /realisations — l'animation infinie sur chaque
+     carte multiplie les couches GPU et pénalise le scroll long */
+  .rlm-float-card {
+    animation: none !important;
+  }
+  /* Re-activation des animations qui font partie d'un état de chargement
+     réel — sinon le user n'aurait plus de feedback visuel pendant
+     l'estimation IA (5-10 s). */
+  .calc-loading-pulse {
+    animation: calc-orb-pulse 2.4s ease-out infinite !important;
+  }
+  .pf-loading-pulse {
+    animation: pf-pulse 2s ease-out infinite !important;
+  }
+  /* mask-image radial pleine viewport sur les hero — Safari rastérise
+     l'alpha par tuile à chaque scroll. On retire le mask et on baisse
+     l'opacité pour conserver l'effet visuel sans le coût composite. */
+  .hero-bg-grid,
+  .ct-bg-grid,
+  .fcta-hero-grid {
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+    opacity: 0.5 !important;
+  }
+  /* Sticky décoratif (founder-photo-wrap sur /equipe) — pas pertinent
+     en mobile, le contenu passe au-dessus naturellement. */
+  .founder-photo-wrap {
+    position: static !important;
+  }
+}

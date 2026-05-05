@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "Réservez 30 min en visio ou téléphone avec un associé qui code (pas un commercial). On cadre votre projet web sur mesure : SaaS, application métier, outil interne, reprise Laravel ou site vitrine. Gratuit, sans engagement.",
   alternates: { canonical: "/rendez-vous" },
   openGraph: {
-    title: "Réserver un rendez-vous découverte — Hagnéré Code",
+    title: "Réserver un rendez-vous découverte · Hagnéré Code",
     description:
       "30 min avec un associé qui code. On écoute, on challenge, on chiffre. Gratuit, sans engagement.",
     url: "/rendez-vous",
@@ -18,21 +18,24 @@ export const metadata: Metadata = {
 const rdvJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "ReservationPackage",
-  name: "Rendez-vous découverte — Hagnéré Code",
+  name: "Rendez-vous découverte · Hagnéré Code",
   url: "https://hagnere-code.fr/rendez-vous",
   description:
     "Rendez-vous découverte de 30 minutes en visio ou téléphone avec Hagnéré Code pour cadrer un projet web sur mesure.",
   provider: {
     "@type": "ProfessionalService",
+    "@id": "https://hagnere-code.fr/#business",
     name: "Hagnéré Code",
     legalName: "HAGNÉRÉ CODE SAS",
     url: "https://hagnere-code.fr",
     telephone: "+33374472018",
     email: "quentin@hagnere-patrimoine.fr",
+    vatID: "FR30993672856",
     address: {
       "@type": "PostalAddress",
       streetAddress: "7 rue Ernest Filliard",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       postalCode: "73000",
       addressCountry: "FR",
     },

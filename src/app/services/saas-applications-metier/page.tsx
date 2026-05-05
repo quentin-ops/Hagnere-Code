@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { SaasApplicationsMetier } from "@/components/saas-applications/SaasApplicationsMetier";
 
 export const metadata: Metadata = {
-  title: "SaaS, applications métier & apps mobiles — Hagnéré Code",
+  title: "SaaS, applications métier & apps mobiles · Hagnéré Code",
   description:
     "Plateformes B2B, espaces clients, marketplaces, applications métier et apps mobiles sur mesure. Stack Laravel 13, React, Next.js, React Native et IA native. Forfait fixe, MVP livré en 3 à 6 semaines.",
   alternates: { canonical: "/services/saas-applications-metier" },
   openGraph: {
-    title: "SaaS, applications métier & apps mobiles — Hagnéré Code",
+    title: "SaaS, applications métier & apps mobiles · Hagnéré Code",
     description:
       "Plateformes B2B et apps mobiles propulsées par Laravel 13, React/Next et IA. Forfait fixe, MVP 3-6 semaines.",
     url: "/services/saas-applications-metier",
@@ -33,6 +33,9 @@ const serviceJsonLd = JSON.stringify({
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
+    "@id": "https://hagnere-code.fr/#organization",
+    legalName: "HAGNÉRÉ CODE SAS",
+    vatID: "FR30993672856",
     url: "https://hagnere-code.fr",
     logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {

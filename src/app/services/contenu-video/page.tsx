@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { ContenuVideo } from "@/components/contenu-video/ContenuVideo";
 
 export const metadata: Metadata = {
-  title:
-    "Studio contenu & vidéo — Motion, YouTube, UGC & IA | Hagnéré Code",
+  title: "Studio contenu & vidéo · YouTube, motion, IA · Hagnéré Code",
   description:
     "Studio tech + contenu + IA : YouTube founder-led, motion design, UGC, vidéo produit. Pipeline Claude + Runway + ElevenLabs, 3× plus rapide qu'un studio classique. Forfait mensuel affiché, basé à Chambéry.",
   alternates: { canonical: "/services/contenu-video" },
@@ -31,6 +30,9 @@ const serviceJsonLd = JSON.stringify({
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
+    "@id": "https://hagnere-code.fr/#organization",
+    legalName: "HAGNÉRÉ CODE SAS",
+    vatID: "FR30993672856",
     url: "https://hagnere-code.fr",
     logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {

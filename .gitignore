@@ -46,3 +46,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# image optimization — on garde les originaux en local pour réoptimiser
+# si besoin, mais on ne commit pas (lourd et redondant avec les .opt.png)
+public/*.original.png
+public/**/*.original.png

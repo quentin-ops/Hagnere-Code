@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { MobileApplication } from "@/components/application-mobile/MobileApplication";
 
 export const metadata: Metadata = {
-  title:
-    "Application mobile iOS & Android — Forfait fixe sur devis | Hagnéré Code",
+  title: "Application mobile iOS & Android · Hagnéré Code",
   description:
     "Création d'applications mobiles natives iOS + Android (React Native + Expo). Publiées sous vos comptes App Store & Google Play, code 100 % à vous. Forfait fixe sur devis après cadrage, livraison 8 à 20 semaines, 30 j de garantie post-stores.",
   alternates: { canonical: "/services/application-mobile" },
@@ -32,6 +31,9 @@ const serviceJsonLd = JSON.stringify({
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
+    "@id": "https://hagnere-code.fr/#organization",
+    legalName: "HAGNÉRÉ CODE SAS",
+    vatID: "FR30993672856",
     url: "https://hagnere-code.fr",
     logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {

@@ -16,8 +16,8 @@ import type { MultiServiceEstimate } from "@/components/estimer-mon-projet/types
 import { ResultViewClient } from "@/components/project-funnel/ResultViewClient";
 
 export const metadata: Metadata = {
-  title: "Estimation Hagnéré Code",
-  description: "Estimation projet — Hagnéré Code",
+  title: "Estimation projet · Hagnéré Code",
+  description: "Estimation projet · Hagnéré Code",
   robots: { index: false, follow: false },
 };
 

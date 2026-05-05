@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "Discovery Sprint à 1 500 €, MVP SaaS dès 15 k€, sites vitrines dès 6,9 k€, partenariat dès 120 k€. Tous nos forfaits, tarifs détaillés par service, maintenance et comparatif. Code chez vous, garantie 30 jours.",
   alternates: { canonical: "/tarifs" },
   openGraph: {
-    title: "Tarifs — Hagnéré Code · Forfait fixe, jamais de surprise",
+    title: "Tarifs · Forfait fixe, jamais de surprise · Hagnéré Code",
     description:
       "Discovery Sprint 1 500 €, MVP SaaS dès 15 k€, sites vitrines dès 6,9 k€. Code chez vous, garantie 30 jours.",
     url: "/tarifs",
@@ -21,13 +21,17 @@ const offersJsonLd = JSON.stringify({
   name: "Tarifs Hagnéré Code",
   provider: {
     "@type": "Organization",
+    "@id": "https://hagnere-code.fr/#organization",
     name: "Hagnéré Code",
+    legalName: "HAGNÉRÉ CODE SAS",
     url: "https://hagnere-code.fr",
+    vatID: "FR30993672856",
     address: {
       "@type": "PostalAddress",
       streetAddress: "7 rue Ernest Filliard",
       postalCode: "73000",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       addressCountry: "FR",
     },
   },

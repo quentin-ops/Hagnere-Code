@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { AuditTechnique } from "@/components/audit-technique/AuditTechnique";
 
 export const metadata: Metadata = {
-  title:
-    "Audit technique — Dette chiffrée, livrée en 10 j | Hagnéré Code",
+  title: "Audit technique · Dette chiffrée en 10 j · Hagnéré Code",
   description:
     "Audit technique indépendant pour VC en DD, acquéreur M&A, CTO entrant ou refonte. Rapport board-ready : Tech Debt P&L chiffré, scoring /100, matrice impact × effort. 4 formats (8 à 68 k€).",
   alternates: { canonical: "/services/audit-technique" },
@@ -32,6 +31,9 @@ const serviceJsonLd = JSON.stringify({
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
+    "@id": "https://hagnere-code.fr/#organization",
+    legalName: "HAGNÉRÉ CODE SAS",
+    vatID: "FR30993672856",
     url: "https://hagnere-code.fr",
     logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {

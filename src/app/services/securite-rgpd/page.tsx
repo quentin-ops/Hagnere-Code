@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { SecuriteRgpd } from "@/components/securite-rgpd/SecuriteRgpd";
 
 export const metadata: Metadata = {
-  title:
-    "Sécurité & RGPD — DPO externalisé, AI Act, audit cyber | Hagnéré Code",
+  title: "Sécurité & RGPD · DPO externalisé · Hagnéré Code",
   description:
     "Studio qui code ET audite. Cartographie de vos sous-traitants (Stripe, Anthropic, OVH...), conformité RGPD + AI Act + DORA + NIS2, remédiation codée par nos devs. Forfait cadrage + DPO mensuel, basé à Chambéry.",
   alternates: { canonical: "/services/securite-rgpd" },
@@ -31,6 +30,9 @@ const serviceJsonLd = JSON.stringify({
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
+    "@id": "https://hagnere-code.fr/#organization",
+    legalName: "HAGNÉRÉ CODE SAS",
+    vatID: "FR30993672856",
     url: "https://hagnere-code.fr",
     logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ExcelCalculator } from "@/components/tools/ExcelCalculator";
 
 export const metadata: Metadata = {
-  title: "Calculateur : combien vous coûte votre Excel ? — Hagnéré Code",
+  title: "Calculateur : combien vous coûte votre Excel ? · Hagnéré Code",
   description:
     "Calculez en 2 min le coût caché de vos Excel métier : temps perdu, erreurs, ressaisies. Comparez avec le prix d'un outil sur mesure et obtenez votre ROI en mois. Gratuit, sans engagement.",
   alternates: { canonical: "/outils/calculateur-cout-excel" },

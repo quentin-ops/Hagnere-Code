@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { PubliciteEnLigne } from "@/components/publicite-en-ligne/PubliciteEnLigne";
 
 export const metadata: Metadata = {
-  title:
-    "Publicité en ligne — SEA, Paid Social, tracking server-side | Hagnéré Code",
+  title: "Publicité en ligne · SEA & Paid Social · Hagnéré Code",
   description:
     "Agence Ads pilotée par le CAC, pas le ROAS vanity. Google Ads, Meta, LinkedIn, TikTok, avec tracking server-side (GTM SS + CAPI), attribution CRM et forfait fixe. 1 500 € audit, retainers 1 800 – 4 500 €/mois, budget media sur votre compte.",
   alternates: { canonical: "/services/publicite-en-ligne" },
@@ -32,6 +31,9 @@ const serviceJsonLd = JSON.stringify({
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
+    "@id": "https://hagnere-code.fr/#organization",
+    legalName: "HAGNÉRÉ CODE SAS",
+    vatID: "FR30993672856",
     url: "https://hagnere-code.fr",
     logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {

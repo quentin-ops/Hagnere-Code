@@ -12,7 +12,7 @@ ${navHtml}
         <span>Contact</span>
       </div>
       <div class="eyebrow">— Contact</div>
-      <h1>Dites-nous<br>bonjour.</h1>
+      <h1>Contact Hagnéré Code.<br><span class="accent">Dites-nous bonjour.</span></h1>
       <p class="c-hero-lead">
         Un associé qui code lit votre message, vous répond <b>sous 24 h ouvrées</b>,
         et vous dit franchement si c'est pour nous — ou pas. Pas de commercial,

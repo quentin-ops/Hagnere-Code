@@ -27,7 +27,7 @@ export const comparisonHtml = `
         monte. <b>Votre cas est chiffré individuellement</b> en 48 h après un cadrage de 30 min — ou en
         5 min via notre estimateur en ligne.
       </p>
-      <a href="/estimer-mon-projet" class="cmp-context-cta">
+      <a href="/demarrer-un-projet" class="cmp-context-cta">
         Estimer mon projet en 5 min
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -140,7 +140,7 @@ export const comparisonHtml = `
       <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
       <span>
         <b>Tous les chiffrages sont sur devis</b> — la fourchette ci-dessus n'a de sens que sur le projet-type cité.
-        Pour votre cas&nbsp;: <a href="/estimer-mon-projet">estimateur en ligne (5 min)</a> ou
+        Pour votre cas&nbsp;: <a href="/demarrer-un-projet">estimateur en ligne (5 min)</a> ou
         <a href="#contact">cadrage 30 min avec un associé</a>.
       </span>
     </div>

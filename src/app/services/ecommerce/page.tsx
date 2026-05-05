@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Ecommerce } from "@/components/ecommerce/Ecommerce";
 
 export const metadata: Metadata = {
-  title: "E-commerce sur mesure — Alternative Shopify Plus | Hagnéré Code",
+  title: "E-commerce sur mesure · Alternative Shopify · Hagnéré Code",
   description:
     "Boutiques e-commerce sur mesure : Next.js + Laravel 13 + React Native. Intégrations FR natives (Stripe, Alma, Colissimo, Sage, Pennylane, Chorus Pro). Forfait fixe 15-70 k€, zéro % sur vos ventes. Factur-X 2026-ready.",
   alternates: { canonical: "/services/ecommerce" },
@@ -31,6 +31,9 @@ const serviceJsonLd = JSON.stringify({
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
+    "@id": "https://hagnere-code.fr/#organization",
+    legalName: "HAGNÉRÉ CODE SAS",
+    vatID: "FR30993672856",
     url: "https://hagnere-code.fr",
     logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {

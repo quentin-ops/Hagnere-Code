@@ -638,3 +638,49 @@
   #tweaks .tw-row{display:flex;gap:6px}
   #tweaks button.tw-opt{flex:1;padding:8px 10px;background:var(--paper-2);border:1px solid var(--line);border-radius:6px;font-family:var(--font-geist-mono);font-size:11px;cursor:pointer;color:var(--ink-3)}
   #tweaks button.tw-opt.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  /* ============ OFF-SCREEN PAINT BUDGET ============
+   * content-visibility: auto laisse le navigateur skipper le paint
+   * et le layout des sections hors viewport. Indispensable pour libérer
+   * la mémoire des tuiles GPU sur iOS et tenir 60fps au scroll long.
+   * On garde hero + logobar + studio peints (au-dessus du fold + juste
+   * après) pour ne pas pénaliser le LCP.
+   * ============================================================= */
+  .real,
+  .stats,
+  .equipe,
+  .methode,
+  .pricing,
+  .faq,
+  .fcta,
+  .verticals,
+  .trust,
+  .comparison,
+  .calc-teaser{
+    content-visibility:auto;
+    contain-intrinsic-size:auto 900px;
+  }
+
+  /* ============ MOBILE PERF OVERRIDES ============
+   * iOS Safari sur scroll rapide jette les tuiles GPU et affiche du blanc
+   * dès qu'on combine sticky + backdrop-filter, animations infinies, masks
+   * ou filter:blur lourds. On simplifie la composition sur tactile.
+   * ============================================================= */
+  @media (hover: none) and (pointer: coarse) {
+    /* Nav sticky : opaque au lieu de translucide blurry */
+    .nav{
+      backdrop-filter:none;
+      -webkit-backdrop-filter:none;
+      background:rgba(255,255,255,0.96);
+    }
+    /* Petits backdrop-filter dispersés qui forcent une couche GPU */
+    .dc-bar{backdrop-filter:none;background:#fafafa}
+    .eq-founder-tag{backdrop-filter:none;background:rgba(10,10,10,0.85)}
+    /* Hero radial + grid : on garde l'image visuelle mais on supprime le mask
+       gradient (coûteux à rasteriser sur iOS) en remplaçant par un fade alpha */
+    .hero-bg-grid{mask-image:none;-webkit-mask-image:none;opacity:0.6}
+    /* Sticky décoratif : pas pertinent en mobile (la copie passe au-dessus) */
+    .descr-copy{position:static}
+    /* Animation pulse infinie, off-screen la plupart du temps */
+    .dc-status-dot{animation:none}
+  }

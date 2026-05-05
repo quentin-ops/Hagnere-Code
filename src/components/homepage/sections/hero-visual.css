@@ -509,3 +509,28 @@
   .hv-orbit-v { font-size: 9px; }
   .hv-lines { display: none; }
 }
+
+/* ─── Touch devices: kill infinite animations + heavy blurs ─────────
+ * iOS Safari recompose les couches GPU (backdrop-filter, filter:blur,
+ * mask-image) à chaque frame de scroll. Avec 5+ animations infinies en
+ * parallèle, les tuiles sont éjectées de la cache mémoire et la page
+ * affiche du blanc le temps de re-rasteriser. On coupe tout ce qui
+ * tourne en arrière-plan + on baisse le rayon des blurs.
+ * ----------------------------------------------------------------- */
+@media (hover: none) and (pointer: coarse) {
+  .hv-bg-glow,
+  .hv-product,
+  .hv-orbit,
+  .hv-status-dot,
+  .hv-line,
+  .hv-particles span,
+  .hv-bar {
+    animation: none !important;
+  }
+  .hv-particles { display: none; }
+  .hv-bg-glow { filter: blur(12px); }
+  .hv-product {
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+  }
+}

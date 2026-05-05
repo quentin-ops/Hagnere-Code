@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { OutilsInternes } from "@/components/outils-internes/OutilsInternes";
 
 export const metadata: Metadata = {
-  title: "Outils internes sur mesure — Sortir d'Excel | Hagnéré Code",
+  title: "Outils internes sur mesure · Sortir d'Excel · Hagnéré Code",
   description:
     "Outils internes sur mesure pour PME et ETI : CRM métier, ERP léger, back-offices, automatisations. Intégrations Sage, Cegid, Pennylane, Salesforce. Forfait fixe 8–80 k€, livré en 2–12 semaines, hébergé en France.",
   alternates: { canonical: "/services/outils-internes-sur-mesure" },
@@ -31,6 +31,9 @@ const serviceJsonLd = JSON.stringify({
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
+    "@id": "https://hagnere-code.fr/#organization",
+    legalName: "HAGNÉRÉ CODE SAS",
+    vatID: "FR30993672856",
     url: "https://hagnere-code.fr",
     logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {

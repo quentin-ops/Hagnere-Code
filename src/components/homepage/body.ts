@@ -1369,7 +1369,7 @@ export const bodyHtml = `${navHtml}
         son délai — sera <b>chiffré individuellement après cadrage</b>. Pour un ordre de grandeur en 5 min,
         passez par notre estimateur en ligne ; pour un devis ferme, on commence par un Discovery Sprint.
       </p>
-      <a href="/estimer-mon-projet" class="price-context-cta">
+      <a href="/demarrer-un-projet" class="price-context-cta">
         Estimer mon projet en 5 min
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -1410,7 +1410,7 @@ export const bodyHtml = `${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 1 an inclus</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Délai variable selon scope (cadrage en 30 min)</li>
         </ul>
-        <div class="plan-cta"><a href="/estimer-mon-projet" class="btn btn-ghost">Obtenir une fourchette</a></div>
+        <div class="plan-cta"><a href="/demarrer-un-projet" class="btn btn-ghost">Obtenir une fourchette</a></div>
       </div>
 
       <div class="plan featured reveal reveal-d-1">
@@ -1431,7 +1431,7 @@ export const bodyHtml = `${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Formation des équipes</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Délai variable selon scope · démos hebdo</li>
         </ul>
-        <div class="plan-cta"><a href="/estimer-mon-projet" class="btn btn-accent">Estimer mon projet</a></div>
+        <div class="plan-cta"><a href="/demarrer-un-projet" class="btn btn-accent">Estimer mon projet</a></div>
       </div>
 
       <div class="plan reveal reveal-d-2">

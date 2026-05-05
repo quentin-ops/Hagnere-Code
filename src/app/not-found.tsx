@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Page introuvable — Hagnéré Code",
+  title: "Page introuvable · Hagnéré Code",
   description: "La page demandée n'existe pas ou a été déplacée.",
-  robots: { index: false, follow: false },
+  // index:false (ne pas indexer la 404) mais follow:true pour que Google
+  // suive les liens de récupération vers /, /services, /contact ci-dessous.
+  robots: { index: false, follow: true },
 };
 
 export default function NotFound() {

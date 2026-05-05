@@ -18,7 +18,7 @@ ${navHtml}
   <div class="wrap ehero-inner">
     <div class="ehero-copy">
       <div class="ehero-eyebrow"><span class="pill hero-pill"><span class="dot"></span><span class="hero-pill-brand">L'équipe</span><span class="hero-pill-tag">7 personnes · 3 CDI + 3 freelances long-terme</span></span></div>
-      <h1>Vous parlez avec<br>celles &amp; ceux qui<br><span class="accent">vont coder.</span></h1>
+      <h1>L'équipe Hagnéré Code.<br>Celles &amp; ceux qui<br><span class="accent">vont coder.</span></h1>
       <p class="ehero-sub">
         Pas de pool de freelances anonymes. Pas de sous-traitance offshore. Pas de white-label déguisé.
         <b>1 gérant associé codeur, 3 salariés en CDI</b> et <b>3 freelances long-terme intégrés</b> à nos rituels —

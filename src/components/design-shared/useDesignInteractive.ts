@@ -28,12 +28,31 @@ function makeChevron(): SVGElement {
   return makeSvg([{ d: "M6 9l6 6 6-6" }]);
 }
 
+type IdleCb = (cb: () => void, opts?: { timeout?: number }) => number;
+
+function runWhenIdle(fn: () => void): () => void {
+  const ric = (window as unknown as { requestIdleCallback?: IdleCb })
+    .requestIdleCallback;
+  if (ric) {
+    const handle = ric(fn, { timeout: 300 });
+    return () => {
+      const cic = (window as unknown as {
+        cancelIdleCallback?: (h: number) => void;
+      }).cancelIdleCallback;
+      if (cic) cic(handle);
+    };
+  }
+  const handle = window.setTimeout(fn, 0);
+  return () => window.clearTimeout(handle);
+}
+
 export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return;
 
     const cleanups: Array<() => void> = [];
+    let cancelDeferred: (() => void) | null = null;
 
     const io = new IntersectionObserver(
       (entries) => {
@@ -138,7 +157,7 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       const secondaryLinks = Array.from(
         navLinks.querySelectorAll<HTMLAnchorElement>(":scope > a"),
       ).filter((link) =>
-        ["Équipe", "Calculateur", "Blog"].includes(link.textContent?.trim() || ""),
+        ["Équipe", "Calculateur"].includes(link.textContent?.trim() || ""),
       );
 
       if (secondaryLinks.length >= 2) {
@@ -392,6 +411,16 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       heroVideo.addEventListener("click", onVideoClick);
       cleanups.push(() => heroVideo.removeEventListener("click", onVideoClick));
     }
+
+    // ======================================================================
+    // DEFERRED SETUP — page-specific widgets (scenarios, calculator, audit,
+    // FAQ filters, verticals spotlight). On the homepage most of these find
+    // nothing, but the querySelectorAll scans still walked the giant DOM and
+    // blocked the main thread for ~200-500ms on mobile after first paint.
+    // We push them to requestIdleCallback so the browser can paint and
+    // respond to touch first.
+    // ======================================================================
+    const deferredSetup = () => {
 
     // Scenario toggle — used on service pages (SaaS .sa-scenarios, Outils internes .oi-scenarios,
     // E-commerce .ec-scenarios, Sites vitrines .sv-scenarios, SEO .seo-scenarios, Ads .ads-scenarios,
@@ -890,6 +919,9 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       });
     }
 
+    }; // end deferredSetup
+    cancelDeferred = runWhenIdle(deferredSetup);
+
     const navDropdownItems = Array.from(
       root.querySelectorAll<HTMLElement>(".nav-item"),
     ).filter((item) => item.querySelector(".nav-dd"));
@@ -1045,6 +1077,9 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       });
     });
 
-    return () => cleanups.forEach((fn) => fn());
+    return () => {
+      if (cancelDeferred) cancelDeferred();
+      cleanups.forEach((fn) => fn());
+    };
   }, [rootRef]);
 }

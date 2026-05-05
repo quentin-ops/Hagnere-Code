@@ -297,7 +297,9 @@ export function ServicesHubPage() {
                 <span /> Services web, SaaS et outils métier
               </div>
               <h1>
-                Choisir le bon levier avant de lancer le chantier.
+                Nos services web, SaaS et outils métier.
+                <br />
+                <span className="services-hero-accent">Le bon levier avant le chantier.</span>
               </h1>
               <p>
                 Un site, une app, un CRM, du SEO ou une reprise technique ne se décident pas au catalogue.

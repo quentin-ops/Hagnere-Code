@@ -578,12 +578,6 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 </span>
                 <span className="sf-tile-label">Estimer mon projet</span>
               </Link>
-              <Link className="sf-tile" href="/blog">
-                <span className="sf-tile-ic">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>
-                </span>
-                <span className="sf-tile-label">Blog</span>
-              </Link>
               <Link className="sf-tile" href="/outils">
                 <span className="sf-tile-ic">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14.7 6.3a3 3 0 00-4.2 4.2l-7 7v3h3l7-7a3 3 0 004.2-4.2l-1.5 1.5-1.5-1.5 1.5-1.5z"/></svg>

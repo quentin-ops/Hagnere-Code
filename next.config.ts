@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 
 const securityHeaders = [
   {
@@ -64,6 +65,9 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
+  turbopack: {
+    root: path.resolve(__dirname),
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [

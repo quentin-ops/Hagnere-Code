@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { ServicesHubPage } from "@/components/services/ServicesHubPage";
 
 export const metadata: Metadata = {
-  title: "Services web, SaaS et outils métier — Hagnéré Code",
+  title: "Services web, SaaS et outils métier · Hagnéré Code",
   description:
     "Tous les services Hagnéré Code : SaaS, applications métier, outils internes, sites vitrines, e-commerce, SEO, publicité, contenu, maintenance, sécurité et RGPD.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Services web, SaaS et outils métier — Hagnéré Code",
+    title: "Services web, SaaS et outils métier · Hagnéré Code",
     description:
       "Choisissez le bon levier : produit, acquisition, run ou confiance. Services web, SaaS, outils métier et accompagnement au forfait fixe.",
     url: "/services",
@@ -53,6 +53,7 @@ export default function Page() {
           url: `https://hagnere-code.fr${url}`,
           provider: {
             "@type": "Organization",
+            "@id": "https://hagnere-code.fr/#organization",
             name: "Hagnéré Code",
             url: "https://hagnere-code.fr",
           },

@@ -26,18 +26,25 @@ export const metadata: Metadata = {
 const orgJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://hagnere-code.fr/#organization",
   name: "Hagnéré Code",
+  legalName: "HAGNÉRÉ CODE SAS",
   url: "https://hagnere-code.fr",
   logo: "https://hagnere-code.fr/logos/logo-dark.png",
   email: "quentin@hagnere-patrimoine.fr",
-  telephone: "+33-3-74-47-20-18",
+  telephone: "+33374472018",
+  vatID: "FR30993672856",
+  foundingDate: "2025-09-30",
   address: {
     "@type": "PostalAddress",
     streetAddress: "7 rue Ernest Filliard",
     postalCode: "73000",
     addressLocality: "Chambéry",
+    addressRegion: "Savoie",
     addressCountry: "FR",
   },
+  // 4 personnes au sens schema.org "employee" (CDI, fondateur inclus).
+  // L'équipe complète (7 pers.) est listée via employee + contractor.
   numberOfEmployees: { "@type": "QuantitativeValue", value: 4 },
   founder: {
     "@type": "Person",

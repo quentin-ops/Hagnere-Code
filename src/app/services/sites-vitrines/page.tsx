@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { SitesVitrines } from "@/components/sites-vitrines/SitesVitrines";
 
 export const metadata: Metadata = {
-  title:
-    "Sites vitrines & landing — Forfait fixe | Hagnéré Code",
+  title: "Sites vitrines & landing pages · Hagnéré Code",
   description:
     "Sites vitrines, landing pages, refontes WordPress → Next.js. SEO technique, Core Web Vitals garantis, CMS éditeur-friendly. Forfait fixe 6–25 k€, livré en 2 à 8 semaines, code 100 % à vous.",
   alternates: { canonical: "/services/sites-vitrines" },
@@ -32,6 +31,9 @@ const serviceJsonLd = JSON.stringify({
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
+    "@id": "https://hagnere-code.fr/#organization",
+    legalName: "HAGNÉRÉ CODE SAS",
+    vatID: "FR30993672856",
     url: "https://hagnere-code.fr",
     logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {

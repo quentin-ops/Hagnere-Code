@@ -377,5 +377,9 @@ a:focus:not(:focus-visible),
 
 html {
   scroll-padding-top: 80px;
-  scroll-behavior: smooth;
+}
+@media (hover: hover) and (pointer: fine) {
+  html {
+    scroll-behavior: smooth;
+  }
 }

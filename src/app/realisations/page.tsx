@@ -3,12 +3,12 @@ import { RealisationsIndexPage } from "@/components/realisations/RealisationsInd
 import { CASES } from "@/components/realisations/cases";
 
 export const metadata: Metadata = {
-  title: "Réalisations — Études de cas Hagnéré Code",
+  title: "Réalisations · Études de cas · Hagnéré Code",
   description:
     "Découvrez les réalisations Hagnéré Code : SaaS fiscaux, applications métier et sites d'acquisition. Contexte, modules livrés, stack technique et résultats mesurés.",
   alternates: { canonical: "/realisations" },
   openGraph: {
-    title: "Réalisations — Hagnéré Code",
+    title: "Réalisations · Hagnéré Code",
     description:
       "Quatre projets documentés : contexte, fonctionnement, stack et modules livrés.",
     url: "/realisations",

@@ -1506,3 +1506,14 @@
   .fcta-hero-cta { padding: 12px 18px 12px 14px; font-size: 14px; }
   .fcta-hero-cta span { white-space: normal; text-align: left; }
 }
+
+/* ─── Touch devices: alléger les composites lourds du CTA final ──── */
+@media (hover: none) and (pointer: coarse) {
+  .fcta-hero-glow { filter: blur(20px); opacity: 0.6; }
+  .fcta-hero-card {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+  .fcta-hero-grid { mask-image: none; -webkit-mask-image: none; opacity: 0.4; }
+  .ct-bg-grid { mask-image: none; -webkit-mask-image: none; opacity: 0.4; }
+}

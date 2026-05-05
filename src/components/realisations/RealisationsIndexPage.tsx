@@ -36,9 +36,9 @@ export function RealisationsIndexPage() {
                 <span><b>4 produits</b> · en production · 2024-2026</span>
               </div>
               <h1>
-                4 produits réels.<br />
-                Construits par{" "}
-                <span className="rlm-accent">Hagnéré Code</span>.
+                Réalisations Hagnéré Code.<br />
+                4 produits réels{" "}
+                <span className="rlm-accent">en production</span>.
               </h1>
               <p>
                 Chaque cas est documenté en détail&nbsp;: contexte, ce qui a été construit,

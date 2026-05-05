@@ -325,6 +325,10 @@
   font-size: 70px;
   line-height: 0.98;
 }
+.services-hero h1 .services-hero-accent {
+  color: #C4B5FD;
+  font-weight: 500;
+}
 
 .services-hero p {
   max-width: 650px;

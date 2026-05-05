@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { SeoReferencement } from "@/components/seo-referencement/SeoReferencement";
 
 export const metadata: Metadata = {
-  title:
-    "SEO & référencement Google — Consultant senior | Hagnéré Code",
+  title: "SEO & référencement Google · Hagnéré Code",
   description:
     "Accompagnement SEO pour PME et ETI : audit technique, stratégie sémantique, contenu éditorial expert, netlinking qualitatif, reporting business. Consultant senior dédié. Forfait 1 450 à 4 900 €/mois, engagement 3 mois puis mensuel.",
   alternates: { canonical: "/services/referencement-google" },
@@ -31,6 +30,9 @@ const serviceJsonLd = JSON.stringify({
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
+    "@id": "https://hagnere-code.fr/#organization",
+    legalName: "HAGNÉRÉ CODE SAS",
+    vatID: "FR30993672856",
     url: "https://hagnere-code.fr",
     logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {

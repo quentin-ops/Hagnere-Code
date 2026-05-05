@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { MaintenanceEvolution } from "@/components/maintenance-evolution/MaintenanceEvolution";
 
 export const metadata: Metadata = {
-  title:
-    "TMA SaaS — Maintenance, SLA, forfait fixe | Hagnéré Code",
+  title: "TMA SaaS · Maintenance & évolution · Hagnéré Code",
   description:
     "TMA applicative : monitoring 24/7, patches CVE < 48 h, évolutions continues, infra ops. Équipe nommée au contrat, forfait fixe, SLA 99,5–99,95 % avec pénalités auto.",
   alternates: { canonical: "/services/maintenance-evolution" },
@@ -32,6 +31,9 @@ const serviceJsonLd = JSON.stringify({
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
+    "@id": "https://hagnere-code.fr/#organization",
+    legalName: "HAGNÉRÉ CODE SAS",
+    vatID: "FR30993672856",
     url: "https://hagnere-code.fr",
     logo: "https://hagnere-code.fr/logos/logo-dark.png",
     address: {
