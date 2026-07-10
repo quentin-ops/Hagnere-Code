@@ -28,18 +28,20 @@ métriques IA ne seront pas persistées.
 | Variable | Valeur attendue | Usage |
 |---|---|---|
 | `NEXT_PUBLIC_ENV` | `production` | Active `index/follow` dans `robots.ts` et `metadata.robots`. Sans ça → site `noindex`. **Déjà déclaré dans `wrangler.jsonc`**. |
-| `DATABASE_URL` | URL Neon prod | Persistance des briefs, KB IA, ai_call_log. |
+| `DATABASE_URL` | URL Neon prod | Persistance des briefs, ai_call_log. |
 | `RESEND_API_KEY` | Clé Resend prod | Envoi emails formulaire. |
-| `ANTHROPIC_API_KEY` | Clé Anthropic prod | Estimation IA `/api/estimate`. |
 | `GROQ_API_KEY` | Clé Groq prod | Transcription audio `/api/transcribe`. |
 | `CONTACT_TO_EMAIL` | `hello@hagnere-code.fr` | Destinataire interne formulaire. |
 | `CONTACT_FROM_EMAIL` | `contact@hagnere-code.fr` | Expéditeur Resend (doit être DKIM-validé). |
-| `SITE_ORIGIN` | `https://hagnere-code.fr` | Origine canonique pour les liens permanents (récap brief). |
 | `NEXT_PUBLIC_CALENDLY_URL` | URL Calendly réelle | Optionnel — fallback `https://calendly.com/hagnere-code/30min`. |
 | `NEXT_PUBLIC_COOKIE_BANNER` | `0` (par défaut désactivé) | Mettre `1` le jour où un outil analytique est ajouté (Plausible, GA, etc.). |
-| `TURNSTILE_SECRET_KEY` (si activé) | Secret Cloudflare Turnstile | Anti-bot sur `/api/estimate`. Optionnel — la lib `ai-rate-limit` accepte l'absence en mode dev. |
+| `TURNSTILE_SECRET_KEY` | Secret Cloudflare Turnstile | Anti-bot sur `/api/project-inquiry` et `/api/transcribe`. Requis en prod (fail-closed) ; l'absence n'est tolérée qu'en dev (`NEXT_PUBLIC_ENV=development`). |
 
 Les autres secrets doivent être posés via `wrangler secret put` ou l'UI Cloudflare.
+
+> Nettoyage post-suppression de l'estimateur IA : `ANTHROPIC_API_KEY` et
+> `SITE_ORIGIN` ne sont plus utilisés par le code — ils peuvent être retirés
+> des secrets du worker Cloudflare après le prochain déploiement.
 
 ### 3. Vérifier les domaines DKIM Resend
 Resend refuse les `from` non-vérifiés. Vérifier que `hagnere-code.fr` est
@@ -78,13 +80,12 @@ Calendly. Sinon, créer le créneau ou définir `NEXT_PUBLIC_CALENDLY_URL`.
 - ✅ `/docs/dpa-template.md` — template d'accord de sous-traitance art. 28 RGPD à annexer aux contrats clients
 
 ### Sécurité technique
-- ✅ Slug aléatoire `nanoid(21)` pour `/r/<slug>` (anti-IDOR)
+- ✅ Slug aléatoire (`public_slug`) sur `project_brief` (anti-IDOR, réservé backoffice)
 - ✅ Rate-limit Postgres-backed + Turnstile (lib `ai-rate-limit`)
 - ✅ Honeypot inline + `pf-hp` CSS (double anti-bot)
 - ✅ Headers : HSTS preload, CSP, X-Frame, X-Content-Type, Permissions-Policy
 - ✅ Validation phone serveur
 - ✅ Logs PII : email haché en base64url tronqué (jamais en clair)
-- ✅ ANTHROPIC_API_KEY check explicite (UX 503 plutôt que 500)
 - ✅ Bannière cookies pré-installée (`vanilla-cookieconsent` v3) — désactivée par défaut, prête à être activée via `NEXT_PUBLIC_COOKIE_BANNER=1`
 
 ### Risques sectoriels
@@ -140,11 +141,9 @@ Calendly. Sinon, créer le créneau ou définir `NEXT_PUBLIC_CALENDLY_URL`.
 
 ### Flow de conversion critique
 - [ ] Soumettre le funnel `/demarrer-un-projet` → email reçu côté admin et côté prospect
-- [ ] Vérifier que l'email de confirmation contient le lien `/demarrer-un-projet/r/<slug>`
-- [ ] Cliquer le lien → la page récap s'affiche (slug aléatoire, pas un id numérique)
-- [ ] Tenter `/demarrer-un-projet/r/1` → 404 (pas un brief existant)
+- [ ] Vérifier qu'une ligne `project_brief` est créée en base (avec `public_slug` rempli)
 - [ ] Soumettre `/contact` (formulaire footer) → email reçu
-- [ ] Vérifier qu'une ligne `ai_call_log` est créée à chaque appel `/api/estimate`
+- [ ] Vérifier qu'une ligne `ai_call_log` est créée à chaque appel `/api/project-inquiry`
 
 ### SEO / sitemap
 - [ ] Vérifier `https://hagnere-code.fr/sitemap.xml` (doit inclure /etudes-de-cas et /legal/accessibilite)
@@ -154,8 +153,7 @@ Calendly. Sinon, créer le créneau ou définir `NEXT_PUBLIC_CALENDLY_URL`.
 
 ### Sécurité
 - [ ] `curl -I https://hagnere-code.fr` (HSTS, CSP, X-Frame, X-Content-Type)
-- [ ] Tenter énumération `/api/brief/1` → 400 "slug invalide"
-- [ ] Tester rate-limit `/api/estimate` (5 requêtes / IP / heure)
+- [ ] Tester rate-limit `/api/project-inquiry` (5 requêtes / IP / heure)
 - [ ] Tester rate-limit `/api/sirene` (60 req / IP / heure)
 
 ### Légal
@@ -169,7 +167,7 @@ Calendly. Sinon, créer le créneau ou définir `NEXT_PUBLIC_CALENDLY_URL`.
 
 - **P0 (16/16)** : harmonisations chiffrées, IDOR slug, /template supprimé, équipe portfolio, footer liens, CTA Calendly, etc.
 - **P1 (23/23)** : not-found / error pages, dead code supprimé, JSON-LD complétés, anglicismes retirés, CGV art. 28 ajouté, etc.
-- **P2 (10/12)** : rate-limit Sirene, ANTHROPIC check, phone validation, honeypot, logs PII, dates Journal, env vars, lien récap email, ai_call_log Postgres-backed.
+- **P2 (10/12)** : rate-limit Sirene, phone validation, honeypot, logs PII, dates Journal, env vars, ai_call_log Postgres-backed.
 - **Maillage interne** : /etudes-de-cas linké depuis /realisations + footer + sitemap, breadcrumbs corrigés, .ai → .fr partout.
 - **Légal complet** : DPO, durées détaillées, IA (AI Act), transferts UE, sous-traitants tableau, art. 22, page accessibilité, AMF investissement/patrimoine, registre des traitements (interne), procédure incident, policy marketing emails, DPA template, bannière cookies pré-installée.
 

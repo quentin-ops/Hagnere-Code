@@ -1,0 +1,12 @@
+/* =========================================================================
+   Calendly inline embed — styles partagés (CalendlyEmbed.tsx).
+   Extrait de l'ancien estimer-mon-projet/calculator.css (supprimé).
+   Le fallback #FAFAFA reprend --paper-2 des tokens design partagés
+   (définis dans homepage.css :root).
+   ========================================================================= */
+
+.calendly-inline-widget {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--paper-2, #fafafa);
+}

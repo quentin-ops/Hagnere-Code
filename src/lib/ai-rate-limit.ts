@@ -1,15 +1,14 @@
 /**
  * Rate limiter Postgres-backed multi-services.
  *
- * Sert 3 routes coûteuses :
- *   - 'estimate'   → Anthropic Claude Opus 4.7 (cost = tokens IA)
+ * Sert 2 routes coûteuses :
  *   - 'transcribe' → Groq Whisper (cost = bytes audio uploadés)
  *   - 'inquiry'    → Resend mail (pas de cost unit, juste compteur)
  *
  * 4 protections empilées par service :
  *   1. Per-IP / heure   → anti-burst d'un même prospect
  *   2. Per-IP / 24h     → anti-flood lent depuis 1 IP
- *   3. Per-email / 24h  → anti-spam même boîte mail (estimate + inquiry)
+ *   3. Per-email / 24h  → anti-spam même boîte mail (inquiry)
  *   4. Global / 24h     → circuit breaker volume
  *
  * 5e protection : circuit breaker COÛT — si cost units cumulés/jour > seuil,
@@ -30,7 +29,9 @@ import { createHash } from "node:crypto";
 import { log } from "@/lib/logger";
 
 // ── Service identifiers ──────────────────────────────────────────────
-export type ServiceId = "estimate" | "transcribe" | "inquiry";
+// NB : la table ai_call_log contient encore des rows historiques avec
+// service='estimate' (ancien estimateur IA supprimé) — ne pas purger.
+export type ServiceId = "transcribe" | "inquiry";
 
 // ── Limites par service (defaults conservateurs) ─────────────────────
 //
@@ -52,17 +53,6 @@ interface ServiceLimits {
 }
 
 const SERVICE_LIMITS: Record<ServiceId, ServiceLimits> = {
-  estimate: {
-    perIpHour: parseInt(process.env.AI_RATE_PER_IP_HOUR || "5", 10),
-    perIpDay: parseInt(process.env.AI_RATE_PER_IP_DAY || "10", 10),
-    perEmailDay: parseInt(process.env.AI_RATE_PER_EMAIL_DAY || "3", 10),
-    globalDay: parseInt(process.env.AI_RATE_GLOBAL_DAY || "300", 10),
-    /**
-     * 5_000_000 tokens ≈ 90 € (Opus 4.7 input+output mix). Largement
-     * au-dessus du trafic légitime (300 calls × 15k tokens ≈ 4.5M).
-     */
-    costBreaker: parseInt(process.env.AI_COST_BREAKER_TOKENS_DAY || "5000000", 10),
-  },
   transcribe: {
     perIpHour: parseInt(process.env.TRANSCRIBE_RATE_PER_IP_HOUR || "20", 10),
     perIpDay: parseInt(process.env.TRANSCRIBE_RATE_PER_IP_DAY || "50", 10),
@@ -237,18 +227,6 @@ export async function checkServiceRateLimit(
 
   return { allowed: true };
 }
-
-/**
- * Backwards-compat alias — l'ancien checkAiRateLimit ciblait uniquement
- * 'estimate'. Conservé pour ne pas casser un import qui aurait survécu
- * à la migration. Marqué deprecated pour nouvelle vague.
- *
- * @deprecated utilise checkServiceRateLimit(ip, email, 'estimate').
- */
-export const checkAiRateLimit = (
-  ip: string,
-  email: string | undefined | null,
-): Promise<RateLimitDecision> => checkServiceRateLimit(ip, email, "estimate");
 
 /**
  * Logge une tentative d'appel. Le service et le cost unit (tokens, bytes)

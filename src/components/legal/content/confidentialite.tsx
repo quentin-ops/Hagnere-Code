@@ -124,14 +124,13 @@ export const confidentialiteSections: LegalSection[] = [
         <h3>Traitements concernés</h3>
         <ul>
           <li>
-            <strong>Estimation de projet</strong>{" "}
+            <strong>Brief de projet</strong>{" "}
             (<a href="/demarrer-un-projet">/demarrer-un-projet</a>) : la
-            description de projet que vous saisissez est analysée par le
-            modèle Claude (Opus 4.7) édité par Anthropic, PBC, afin de
-            produire une fourchette budgétaire et un calendrier indicatifs.
-            Cette estimation reste un <strong>outil d&apos;aide au cadrage</strong>{" "}
-            — elle n&apos;a aucune valeur contractuelle et toute proposition
-            commerciale finale est validée par un humain (associé HAGNÉRÉ CODE).
+            description de projet que vous saisissez n&apos;est{" "}
+            <strong>analysée par aucune intelligence artificielle</strong> —
+            elle est lue et traitée personnellement par un humain (le gérant
+            de HAGNÉRÉ CODE), qui vous répond sous 24 heures ouvrées. Aucune
+            estimation tarifaire automatisée n&apos;est produite par le site.
           </li>
           <li>
             <strong>Transcription audio</strong> : si vous utilisez la dictée
@@ -150,12 +149,12 @@ export const confidentialiteSections: LegalSection[] = [
         </ul>
         <h3>Décisions automatisées</h3>
         <p>
-          Les estimations IA produites par le site <strong>ne constituent pas
+          Les traitements IA listés ci-dessus <strong>ne constituent pas
           des décisions automatisées au sens de l&apos;article 22 du RGPD</strong>{" "}
-          : elles n&apos;entraînent aucune conséquence juridique ni effet
+          : ils n&apos;entraînent aucune conséquence juridique ni effet
           significatif vous concernant. Aucun refus, score, classement ou
           décision contraignante n&apos;est pris par un algorithme à votre
-          égard sur ce site. Tout devis, refus ou recommandation finale fait
+          égard sur ce site. Tout devis, refus ou recommandation fait
           l&apos;objet d&apos;une décision humaine.
         </p>
         <h3>Vos droits spécifiques IA</h3>
@@ -164,15 +163,14 @@ export const confidentialiteSections: LegalSection[] = [
         </p>
         <ul>
           <li>
-            demander à ce que votre brief soit étudié uniquement par un
-            humain (sans passage par l&apos;IA d&apos;estimation) — il suffit
-            de nous écrire à{" "}
-            <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>{" "}
-            avant ou pendant la soumission ;
+            renoncer à la dictée vocale et décrire votre projet entièrement
+            au clavier — aucune donnée ne transite alors par un fournisseur
+            d&apos;IA ;
           </li>
           <li>
-            demander la suppression de la session IA stockée (estimation et
-            brief) ;
+            demander la suppression du brief de projet stocké — il suffit de
+            nous écrire à{" "}
+            <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a> ;
           </li>
           <li>
             connaître les fournisseurs et catégories de modèles utilisés —
@@ -190,11 +188,12 @@ export const confidentialiteSections: LegalSection[] = [
       <p>
         Le site n&apos;effectue <strong>aucune décision individuelle
         automatisée</strong> produisant des effets juridiques ou affectant
-        de manière significative la personne concernée. Les estimations
-        produites par les outils IA sont des fourchettes indicatives sans
-        valeur contractuelle, et les éventuels refus de mission, propositions
-        commerciales ou recommandations sont systématiquement validés par un
-        associé humain de HAGNÉRÉ CODE SAS avant communication.
+        de manière significative la personne concernée. Les simulateurs
+        proposés sur le site (calculateur du coût Excel notamment) produisent
+        des chiffres purement indicatifs sans valeur contractuelle, et les
+        éventuels refus de mission, propositions commerciales ou
+        recommandations sont systématiquement validés par un humain de
+        HAGNÉRÉ CODE SAS avant communication.
       </p>
     ),
   },
@@ -246,12 +245,6 @@ export const confidentialiteSections: LegalSection[] = [
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Envoi des emails transactionnels (confirmation, notification).</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>États-Unis</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>DPF + SCC. Conservation 30 j.</td>
-              </tr>
-              <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Anthropic, PBC</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Modèle Claude (Opus 4.7) pour estimation projet.</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>États-Unis</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>DPF + SCC. <strong>Pas d&apos;entraînement</strong> (Anthropic Commercial Terms). Conservation 30 j max.</td>
               </tr>
               <tr>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Groq, Inc.</td>
@@ -368,7 +361,7 @@ export const confidentialiteSections: LegalSection[] = [
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>—</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Données IA (briefs + estimations)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Briefs de projet</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>3 ans (alignée sur prospects), suppressible sur demande</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>—</td>
               </tr>

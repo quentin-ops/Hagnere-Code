@@ -139,12 +139,12 @@ const PANE_CABINET = pane({
 const PANE_OUTILS = pane({
   cat: "outils",
   eyebrow: "RESSOURCES",
-  title: "Outils, calculateurs<br>et guides — gratuits.",
-  seeAllHref: "/outils",
-  seeAllLabel: "Voir tous les outils",
-  groupLabel: "ESTIMER &amp; APPRENDRE",
+  title: "Démarrer un projet<br>et outils gratuits.",
+  seeAllHref: "/outils/calculateur-cout-excel",
+  seeAllLabel: "Voir le calculateur",
+  groupLabel: "DÉMARRER &amp; APPRENDRE",
   cards:
-    paneCard("/demarrer-un-projet", ICON.estim, "Estimer mon projet", "Devis chiffré en 60 secondes par Claude.") +
+    paneCard("/demarrer-un-projet", ICON.estim, "Décrire mon projet", "3 minutes — réponse personnelle sous 24 h ouvrées.") +
     paneCard("/outils/calculateur-cout-excel", ICON.excel, "Coût Excel", "Combien vous coûte vraiment votre Excel ?"),
 });
 

@@ -17,7 +17,8 @@ const servicesSlugs = [
 ];
 
 const toolRoutes = [
-  // /outils/estimer-mon-projet → redirect 308 vers /demarrer-un-projet, retiré du sitemap
+  // /outils et /outils/estimer-mon-projet (ancien estimateur, supprimé)
+  // redirigent vers /demarrer-un-projet — retirés du sitemap.
   "outils/calculateur-cout-excel",
 ];
 

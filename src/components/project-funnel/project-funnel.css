@@ -228,7 +228,8 @@
   font-weight: 700;
 }
 
-.pf-side-card h1 {
+.pf-side-card h1,
+.pf-side-card .pf-side-title {
   max-width: 14ch;
   margin: 0;
   color: var(--pf-ink);
@@ -869,20 +870,31 @@
   justify-content: center;
   gap: 8px;
   min-height: 42px;
+  padding: 0 18px;
   border-radius: 10px;
   font: inherit;
   font-size: 13px;
   font-weight: 750;
+  text-align: center;
+  text-decoration: none;
   cursor: pointer;
   transition: transform 0.16s, background 0.16s, border-color 0.16s;
 }
 
+/* `.pf-root a { color: inherit }` est plus spécifique que `.pf-primary`
+   seul : les boutons rendus en <a> héritaient d'un texte sombre illisible
+   sur fond violet. On force la couleur au même niveau de spécificité. */
 .pf-submit,
-.pf-primary {
+.pf-primary,
+.pf-root a.pf-primary {
   color: #fff;
   background: var(--pf-accent);
   border: 1px solid var(--pf-accent);
   box-shadow: 0 18px 34px -24px rgba(109, 40, 217, 0.8);
+}
+
+.pf-root a.pf-secondary {
+  color: var(--pf-ink);
 }
 
 .pf-submit {
@@ -979,7 +991,8 @@
     align-content: start;
   }
 
-  .pf-side-card h1 {
+  .pf-side-card h1,
+.pf-side-card .pf-side-title {
     max-width: 20ch;
   }
 
@@ -1031,7 +1044,8 @@
     gap: 10px;
   }
 
-  .pf-side-card h1 {
+  .pf-side-card h1,
+.pf-side-card .pf-side-title {
     display: none;
   }
 
@@ -1297,6 +1311,7 @@
   color: var(--pf-green);
 }
 
+.pf-success-card h1,
 .pf-success-card h2 {
   margin: 0 0 10px;
   font-size: clamp(22px, 4vw, 28px);
@@ -2110,4 +2125,214 @@
 .pf-submit:disabled {
   opacity: 0.55;
   cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Landing — hero de conversion au-dessus du stepper
+   ========================================================================== */
+
+.pf-landing {
+  padding: clamp(48px, 8vw, 96px) clamp(18px, 4vw, 56px) clamp(28px, 4vw, 48px);
+}
+
+.pf-landing-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 18px;
+}
+
+.pf-landing h1 {
+  margin: 0;
+  max-width: 22ch;
+  color: var(--pf-ink);
+  font-size: clamp(30px, 4.4vw, 52px);
+  font-weight: 680;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+}
+
+.pf-landing-accent {
+  color: var(--pf-accent-dark);
+}
+
+.pf-landing-sub {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--pf-soft);
+  font-size: clamp(14px, 1.6vw, 16.5px);
+  line-height: 1.55;
+}
+
+.pf-landing-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 26px;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: 12px;
+}
+
+.pf-landing-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 22px;
+  color: var(--pf-muted);
+  font-size: 12.5px;
+}
+
+.pf-landing-badges span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pf-landing-badges svg {
+  color: var(--pf-green);
+}
+
+.pf-landing-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pf-landing-steps li {
+  display: grid;
+  justify-items: start;
+  gap: 6px;
+  padding: 18px;
+  text-align: left;
+  background: var(--pf-paper);
+  border: 1px solid var(--pf-line);
+  border-radius: 16px;
+  box-shadow: 0 14px 40px -34px rgba(10, 10, 10, 0.4);
+}
+
+.pf-landing-step-num {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  color: var(--pf-accent-dark);
+  background: var(--pf-accent-soft);
+  border-radius: 8px;
+  font-family: var(--font-geist-mono);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pf-landing-steps b {
+  color: var(--pf-ink);
+  font-size: 14.5px;
+  font-weight: 640;
+}
+
+.pf-landing-steps small {
+  color: var(--pf-muted);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+@media (max-width: 760px) {
+  .pf-landing-steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   FAQ — sous le stepper
+   ========================================================================== */
+
+.pf-landing-faq {
+  padding: clamp(36px, 6vw, 72px) clamp(18px, 4vw, 56px) clamp(56px, 8vw, 104px);
+}
+
+.pf-landing-faq h2 {
+  margin: 0 0 22px;
+  color: var(--pf-ink);
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 680;
+  line-height: 1.1;
+}
+
+.pf-landing-faq dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
+.pf-faq-item {
+  padding: 18px 20px;
+  background: var(--pf-paper);
+  border: 1px solid var(--pf-line);
+  border-radius: 16px;
+}
+
+.pf-faq-item dt {
+  margin: 0 0 8px;
+  color: var(--pf-ink);
+  font-size: 14.5px;
+  font-weight: 640;
+}
+
+.pf-faq-item dd {
+  margin: 0;
+  color: var(--pf-soft);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+@media (max-width: 760px) {
+  .pf-landing-faq dl {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Page /merci — étapes suivantes
+   ========================================================================== */
+
+.pf-next-steps {
+  display: grid;
+  gap: 12px;
+  margin: 4px 0 6px;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.pf-next-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--pf-bg);
+  border: 1px solid var(--pf-line);
+  border-radius: 12px;
+  color: var(--pf-soft);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.pf-next-steps li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--pf-accent-dark);
+}
+
+.pf-next-steps li b {
+  color: var(--pf-ink);
 }

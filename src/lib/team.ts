@@ -9,7 +9,6 @@
  *  - sections team des pages services (publicite-en-ligne, sites-vitrines,
  *    saas-applications, seo-referencement, audit-technique, maintenance-evolution)
  *  - JSON-LD Organization
- *  - prompt IA estimateur (claude-estimate-prompt.ts)
  *
  * Photos : déposez les fichiers dans /public/team/{id}.webp ou .jpeg, puis
  * mettez `photoAvailable: true`. Tant que c'est false, on affiche les

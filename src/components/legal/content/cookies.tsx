@@ -95,25 +95,32 @@ export const cookiesSections: LegalSection[] = [
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Persistant (jusqu&apos;à effacement)</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>pf:draft:v1</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>pf:draft:v2</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>localStorage</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.fr</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Sauvegarde le brouillon du formulaire de cadrage projet pour éviter sa perte en cas de rafraîchissement.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Sauvegarde le brouillon du formulaire de description de projet pour éviter sa perte en cas de rafraîchissement.</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Persistant (effacé après envoi)</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>pf:result:v1</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hc_consent_v1</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>localStorage</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.fr</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Cache local du résultat d&apos;estimation pour éviter de relancer un calcul après rafraîchissement.</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Persistant (effacé manuellement)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Mémorise votre choix de consentement exprimé via la bannière cookies.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Persistant (jusqu&apos;à effacement)</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>pf:briefSlug:v1</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>localStorage</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>pf:opened</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>sessionStorage</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.fr</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Identifiant aléatoire du brief soumis, pour permettre le partage du lien permanent du résumé.</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Persistant (effacé manuellement)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Évite de comptabiliser plusieurs fois l&apos;ouverture du formulaire projet dans la même session (mesure anonyme, sans identifiant).</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Session (effacé à la fermeture de l&apos;onglet)</td>
+              </tr>
+              <tr>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>pf:converted</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>sessionStorage</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.fr</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Évite de comptabiliser deux fois l&apos;envoi d&apos;un même brief dans la même session (mesure anonyme, sans identifiant).</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Session (effacé à la fermeture de l&apos;onglet)</td>
               </tr>
             </tbody>
           </table>

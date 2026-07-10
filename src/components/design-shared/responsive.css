@@ -1279,10 +1279,7 @@ body.nav-menu-lock { overflow: hidden; }
   }
   /* Re-activation des animations qui font partie d'un état de chargement
      réel — sinon le user n'aurait plus de feedback visuel pendant
-     l'estimation IA (5-10 s). */
-  .calc-loading-pulse {
-    animation: calc-orb-pulse 2.4s ease-out infinite !important;
-  }
+     l'envoi du brief de projet. */
   .pf-loading-pulse {
     animation: pf-pulse 2s ease-out infinite !important;
   }

@@ -59,7 +59,7 @@ ${navHtml}
         <a href="/rendez-vous" class="btn btn-accent btn-lg">
           Cadrer mon app en 30 min <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="/demarrer-un-projet" class="btn btn-ghost btn-lg">Estimer mon projet en 60 s</a>
+        <a href="/demarrer-un-projet" class="btn btn-ghost btn-lg">Décrire mon projet (3 min)</a>
       </div>
       <div class="shero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Livré en 8 à 20 semaines</span>

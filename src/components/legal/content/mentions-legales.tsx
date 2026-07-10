@@ -262,96 +262,76 @@ export const mentionsLegalesSections: LegalSection[] = [
   },
 
   {
-    id: "calculateur-ia",
-    label: "Calculateur IA",
-    title: "Calculateur d'estimation IA — sous-traitance et flux de données",
+    id: "formulaire-projet",
+    label: "Formulaire projet",
+    title: "Formulaire « Démarrer un projet » — dictée vocale et flux de données",
     body: (
       <>
         <p>
-          Le Site propose un outil d&apos;estimation de projet intitulé{" "}
-          <a href="/demarrer-un-projet">« Démarrer un projet »</a> qui repose sur
-          le service <strong>Claude (modèle Opus 4.7)</strong> fourni par la
-          société <strong>Anthropic, PBC</strong>. Conformément à l&apos;article 28
-          du RGPD, Anthropic agit en qualité de <strong>sous-traitant</strong>{" "}
-          de HAGNÉRÉ CODE SAS pour le traitement automatisé de la description
-          de projet saisie par l&apos;utilisateur.
+          Le Site propose un formulaire de description de projet intitulé{" "}
+          <a href="/demarrer-un-projet">« Démarrer un projet »</a>. Le brief
+          que vous y rédigez est <strong>lu et traité personnellement par un
+          humain</strong> (le président de HAGNÉRÉ CODE SAS), qui vous apporte
+          une réponse argumentée sous 24 heures ouvrées. Aucune estimation
+          tarifaire n&apos;est générée automatiquement, et aucune décision
+          n&apos;est prise par un algorithme sur la base de votre brief.
         </p>
 
-        <h3>Données transmises à Anthropic</h3>
+        <h3>Dictée vocale — sous-traitance Groq</h3>
+        <p>
+          Le formulaire propose, en option, une <strong>dictée vocale</strong>{" "}
+          pour décrire votre projet à l&apos;oral. Si vous l&apos;utilisez,
+          l&apos;audio capté est transmis au modèle de transcription{" "}
+          <strong>Whisper (large-v3)</strong> opéré par la société{" "}
+          <strong>Groq, Inc.</strong>, qui agit en qualité de{" "}
+          <strong>sous-traitant</strong> de HAGNÉRÉ CODE SAS au sens de
+          l&apos;article 28 du RGPD, à seule fin de convertir votre voix en
+          texte.
+        </p>
         <ul>
           <li>
-            <strong>La description libre du projet</strong> saisie par
-            l&apos;utilisateur dans le formulaire (champ texte de 50 à 4 000
-            caractères).
+            <strong>Données transmises à Groq</strong> : uniquement le flux
+            audio de la dictée. Aucune donnée de contact (nom, prénom, email,
+            entreprise) n&apos;est transmise à Groq.
           </li>
           <li>
-            <strong>Les réponses structurées</strong> aux questionnaires par
-            service (cases cochées, niveaux d&apos;urgence, périmètres
-            sélectionnés) — ces données sont anonymes et ne contiennent
-            aucune donnée personnelle.
+            <strong>Localisation et garanties</strong> : les serveurs de Groq
+            sont situés aux <strong>États-Unis</strong> ; le transfert est
+            encadré par les clauses contractuelles types (SCC) de la
+            Commission européenne.
           </li>
           <li>
-            <strong>Aucune donnée de contact</strong> (nom, prénom, email,
-            entreprise) n&apos;est transmise à Anthropic. Les coordonnées
-            facultatives saisies à la dernière étape du calculateur sont
-            traitées séparément, uniquement par HAGNÉRÉ CODE SAS, et ne
-            transitent jamais par l&apos;API d&apos;Anthropic.
+            <strong>Conservation</strong> : l&apos;audio n&apos;est pas
+            conservé — la transcription est réalisée en temps réel, puis le
+            texte est traité comme une saisie classique.
           </li>
         </ul>
 
-        <h3>Localisation et garanties</h3>
-        <p>
-          Les serveurs d&apos;Anthropic sont situés aux <strong>États-Unis</strong>.
-          Anthropic, PBC est certifiée au titre du{" "}
-          <strong>EU-US Data Privacy Framework (DPF)</strong> depuis 2024, ce
-          qui constitue, au sens des articles 44 et suivants du RGPD, une
-          décision d&apos;adéquation valide pour le transfert de données
-          personnelles depuis l&apos;Union européenne. La politique de
-          confidentialité d&apos;Anthropic est consultable à l&apos;adresse{" "}
-          <a
-            href="https://www.anthropic.com/legal/privacy"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            anthropic.com/legal/privacy
-          </a>
-          .
-        </p>
-        <p>
-          Conformément aux conditions commerciales d&apos;Anthropic applicables aux
-          appels API, <strong>les données transmises ne sont pas utilisées
-          pour entraîner les modèles</strong> et sont conservées au maximum 30
-          jours pour des raisons de conformité (détection d&apos;usages abusifs).
-        </p>
-
         <h3>Conservation côté HAGNÉRÉ CODE</h3>
         <p>
-          La description du projet et l&apos;estimation générée{" "}
-          <strong>ne sont pas stockées sur nos serveurs</strong>. Elles
-          transitent en flux entre votre navigateur, l&apos;API d&apos;Anthropic et le
-          rendu affiché à l&apos;écran, puis sont effacées à la fermeture de
-          l&apos;onglet. Seules les coordonnées de contact que vous choisissez de
-          nous communiquer sont conservées (3 ans après le dernier échange,
-          cf. section « Données personnelles »).
+          Le brief de projet et les coordonnées que vous nous communiquez
+          sont conservés sur nos serveurs (base de données hébergée dans
+          l&apos;Union européenne) afin de permettre la réponse personnalisée
+          et le suivi de votre demande, pendant 3 ans après le dernier
+          échange (cf. section « Données personnelles »).
         </p>
 
-        <h3>Vos droits spécifiques au calculateur</h3>
+        <h3>Vos droits spécifiques au formulaire</h3>
         <ul>
           <li>
-            <strong>Utilisation anonyme</strong> : vous pouvez utiliser le
-            calculateur sans laisser aucune coordonnée. Le résultat s&apos;affiche
-            à l&apos;écran et reste sur votre appareil uniquement.
+            <strong>Dictée vocale facultative</strong> : vous pouvez décrire
+            votre projet entièrement au clavier, sans qu&apos;aucune donnée ne
+            transite par Groq.
           </li>
           <li>
             <strong>Droit d&apos;opposition</strong> : vous pouvez à tout moment
-            refuser cette sous-traitance et nous contacter directement par les
-            canaux classiques (téléphone, email, formulaire de contact) pour
-            obtenir un devis manuel.
+            préférer les canaux classiques (téléphone, email, formulaire de
+            contact) pour nous décrire votre projet.
           </li>
           <li>
-            <strong>Droit à l&apos;effacement</strong> : si vous avez fourni vos
-            coordonnées et souhaitez en demander la suppression, écrivez-nous
-            à{" "}
+            <strong>Droit à l&apos;effacement</strong> : si vous souhaitez
+            demander la suppression de votre brief et de vos coordonnées,
+            écrivez-nous à{" "}
             <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>{" "}
             (suppression sous 30 jours).
           </li>
@@ -370,11 +350,11 @@ export const mentionsLegalesSections: LegalSection[] = [
             <path d="M12 8v4M12 16h.01" />
           </svg>
           <div>
-            <b>Caractère indicatif des estimations.</b> Les fourchettes
-            tarifaires renvoyées par le calculateur IA sont une simulation
-            statistique fondée sur nos barèmes internes et nos projets
-            antérieurs. Elles n&apos;engagent en aucun cas HAGNÉRÉ CODE SAS sur un
-            chiffrage définitif, qui fait toujours l&apos;objet d&apos;un{" "}
+            <b>Caractère indicatif de la première réponse.</b> La réponse
+            apportée à votre brief constitue une première orientation
+            (faisabilité, approche, ordre de grandeur éventuel) et n&apos;engage
+            en aucun cas HAGNÉRÉ CODE SAS sur un chiffrage définitif, qui fait
+            toujours l&apos;objet d&apos;un{" "}
             <strong>Discovery Sprint payant</strong> (1 500 € HT, déduits du
             devis final en cas de signature) débouchant sur un devis nominatif
             ferme.

@@ -7,7 +7,7 @@ import {
   ContactProjectSection,
   SiteFooter,
 } from "@/components/design-shared/SiteFooter";
-import { CalendlyEmbed } from "@/components/estimer-mon-projet/CalendlyEmbed";
+import { CalendlyEmbed } from "@/components/design-shared/CalendlyEmbed";
 import "@/components/homepage/homepage.css";
 import "@/components/homepage/sections/sections.css";
 import "@/components/design-shared/nav-dropdown.css";

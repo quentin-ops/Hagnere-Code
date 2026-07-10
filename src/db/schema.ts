@@ -3,7 +3,6 @@ import {
   text,
   timestamp,
   serial,
-  jsonb,
   integer,
   boolean,
   index,
@@ -37,7 +36,6 @@ export const contactCompany = pgTable("contact_company", {
  * Captures the full state of the wizard so that:
  *  - leads aren't lost if the Resend mail fails or lands in spam
  *  - we can analyse drop-off and conversion patterns later
- *  - the AI estimate (full JSON) is browsable when calling the prospect
  *
  * All "optional" funnel inputs are nullable rather than required, since
  * users can skip the périmètre / contraintes steps. Strings stored as
@@ -49,10 +47,9 @@ export const projectBrief = pgTable("project_brief", {
   id: serial("id").primaryKey(),
 
   /**
-   * Slug aléatoire (nanoid 21) exposé publiquement à la place de l'id PK
-   * pour empêcher l'énumération IDOR sur /demarrer-un-projet/r/<slug>
-   * et /api/brief/<slug>. Nullable pendant la migration ; toute nouvelle
-   * insertion remplit cette colonne.
+   * Slug aléatoire exposé publiquement à la place de l'id PK pour empêcher
+   * l'énumération IDOR. Conservé pour un futur backoffice. Nullable pendant
+   * la migration ; toute nouvelle insertion remplit cette colonne.
    */
   publicSlug: text("public_slug").unique(),
 
@@ -85,18 +82,6 @@ export const projectBrief = pgTable("project_brief", {
   budget: text("budget"),
   decisionStage: text("decision_stage"),
 
-  // ── Pré-estimation déterministe affichée ──
-  estimateOneshotMin: integer("estimate_oneshot_min"),
-  estimateOneshotMax: integer("estimate_oneshot_max"),
-  estimateMonthlyMin: integer("estimate_monthly_min"),
-  estimateMonthlyMax: integer("estimate_monthly_max"),
-
-  // ── Estimation IA (Claude Opus 4.7) ──
-  // Stocké en JSONB pour pouvoir requêter sur des champs précis plus tard
-  // (ex: WHERE ai_estimate->'summary'->'overall_confidence' = '"high"').
-  aiEstimate: jsonb("ai_estimate"),
-  aiTokensUsed: integer("ai_tokens_used"),
-
   // ── Méta ──
   consent: boolean("consent").notNull().default(false),
   ip: text("ip"),
@@ -106,19 +91,6 @@ export const projectBrief = pgTable("project_brief", {
   createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
   updatedAt: timestamp("updated_at", { mode: "date" }).defaultNow().notNull(),
 });
-
-// ===========================================================================
-// KNOWLEDGE BASE — feeds the AI prompt at runtime
-// ===========================================================================
-//
-// Quatre tables qui structurent la connaissance du studio (équipe, projets
-// livrés, risques typiques, modèles de phasing). Le prompt Claude charge
-// ces données au runtime au lieu de tout coder en dur, ce qui permet
-// d'ajuster la KB sans redéploiement.
-//
-// Chaque table a un flag `active` pour archiver des entrées sans les
-// supprimer (utile quand un membre quitte ou un projet devient public).
-// ===========================================================================
 
 /**
  * ai_call_log — chaque tentative d'appel IA (réussi, refusé, bloqué).
@@ -176,103 +148,3 @@ export const aiCallLog = pgTable("ai_call_log", {
   // (utilisé seulement par 'estimate' et 'inquiry' aujourd'hui).
   index("ai_call_log_service_email_created_at_idx").on(t.service, t.emailHash, t.createdAt),
 ]);
-
-/**
- * team_member — la vraie équipe Hagnéré Code, source de vérité pour le
- * prompt et /equipe (à terme). Les coûts viennent de pricing-model.ts ;
- * cette table contient les méta affichables (specialties, photo, links).
- */
-export const teamMember = pgTable("team_member", {
-  id: serial("id").primaryKey(),
-  /** Slug stable pour référencer le membre dans le code (e.g. "quentin"). */
-  slug: text("slug").notNull().unique(),
-  fullName: text("full_name").notNull(),
-  /** Étiquette officielle utilisée dans le prompt et la sortie IA. */
-  promptLabel: text("prompt_label").notNull(),
-  role: text("role").notNull(),
-  specialties: text("specialties").array().notNull().default([]),
-  /** Profils auxquels ce membre peut être affecté (depuis pricing-model.ts). */
-  pricingProfileId: text("pricing_profile_id"),
-  hourlySellRate: integer("hourly_sell_rate"),
-  availableHoursPerWeek: integer("available_hours_per_week"),
-  /** @deprecated Utilise externalProfileUrl + externalProfileLabel à la place. Conservé pour rétrocompat. */
-  linkedinUrl: text("linkedin_url"),
-  /**
-   * URL du profil professionnel externe (LinkedIn, Codeur, GitHub, etc.).
-   * Remplace linkedinUrl qui était trop spécifique — un freelance peut
-   * n'avoir qu'un Codeur.com sans LinkedIn par exemple.
-   */
-  externalProfileUrl: text("external_profile_url"),
-  /** Label affichable : "LinkedIn", "Codeur", "GitHub". Affiché en alt + tooltip. */
-  externalProfileLabel: text("external_profile_label"),
-  photoUrl: text("photo_url"),
-  active: boolean("active").notNull().default(true),
-  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
-});
-
-/**
- * case_study — projets réels que l'IA peut référencer pour rendre
- * l'estimation crédible ("comme LMNP.AI livré en 8 semaines"). Pré-rempli
- * avec les 4 réalisations publiques + extensible.
- */
-export const caseStudy = pgTable("case_study", {
-  id: serial("id").primaryKey(),
-  slug: text("slug").notNull().unique(),
-  clientName: text("client_name").notNull(),
-  industry: text("industry").notNull(),
-  /** ServiceIds applicables (correspondance avec services). */
-  services: text("services").array().notNull().default([]),
-  /** Combinaison de ProjectKindId pour matching combo. */
-  projectKinds: text("project_kinds").array().notNull().default([]),
-  durationWeeks: integer("duration_weeks").notNull(),
-  teamSize: integer("team_size").notNull(),
-  priceMin: integer("price_min"),
-  priceMax: integer("price_max"),
-  monthlyMin: integer("monthly_min"),
-  monthlyMax: integer("monthly_max"),
-  /** Synthèse 1-2 phrases injectable dans le prompt. */
-  promptSummary: text("prompt_summary").notNull(),
-  outcomeSummary: text("outcome_summary"),
-  stack: text("stack").array().notNull().default([]),
-  integrations: text("integrations").array().notNull().default([]),
-  testimonial: text("testimonial"),
-  publicSlug: text("public_slug"),
-  publicUrl: text("public_url"),
-  active: boolean("active").notNull().default(true),
-  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
-});
-
-/**
- * risk_template — risques typés par service. L'IA puise ici au lieu
- * d'inventer, ce qui garantit cohérence d'un appel à l'autre.
- */
-export const riskTemplate = pgTable("risk_template", {
-  id: serial("id").primaryKey(),
-  serviceId: text("service_id").notNull(),
-  severity: text("severity").notNull(), // 'low' | 'medium' | 'high'
-  title: text("title").notNull(),
-  mitigation: text("mitigation").notNull(),
-  /** Conditions optionnelles ("multi_tenant=true", "users>500") qui activent ce risque. */
-  triggers: text("triggers").array().notNull().default([]),
-  active: boolean("active").notNull().default(true),
-  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
-});
-
-/**
- * phasing_template — modèles de phasing par service × scale (low/mid/high).
- * Donne à l'IA un squelette à customiser au lieu de tout inventer.
- */
-export const phasingTemplate = pgTable("phasing_template", {
-  id: serial("id").primaryKey(),
-  serviceId: text("service_id").notNull(),
-  scale: text("scale").notNull(), // 'low' | 'mid' | 'high'
-  week: integer("week").notNull(),
-  weekName: text("week_name").notNull(),
-  tasks: text("tasks").array().notNull().default([]),
-  clientDeliverable: text("client_deliverable").notNull(),
-  acceptanceCriteria: text("acceptance_criteria").array().notNull().default([]),
-  qualityGates: text("quality_gates").array().notNull().default([]),
-  fridayDemo: text("friday_demo").notNull(),
-  active: boolean("active").notNull().default(true),
-  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
-});

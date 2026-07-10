@@ -271,7 +271,7 @@ const bundles = [
 
 const proofLinks = [
   { href: "/realisations", label: "Réalisations", value: "4 cas documentés" },
-  { href: "/demarrer-un-projet", label: "Estimer mon projet", value: "Budget indicatif" },
+  { href: "/demarrer-un-projet", label: "Décrire mon projet", value: "Réponse sous 24 h ouvrées" },
   { href: "/outils/calculateur-cout-excel", label: "Coût Excel", value: "ROI outil interne" },
   { href: "/equipe", label: "Équipe", value: "1 gérant + 3 CDI + 3 freelances" },
 ];
@@ -306,11 +306,11 @@ export function ServicesHubPage() {
                 On part de votre blocage, du niveau de risque et du retour attendu, puis on compose la mission utile.
               </p>
               <div className="services-hero-actions">
-                <Link href="/contact" className="btn btn-accent btn-lg">
-                  Décrire mon besoin <ArrowIcon />
+                <Link href="/demarrer-un-projet" className="btn btn-accent btn-lg">
+                  Décrire mon projet <ArrowIcon />
                 </Link>
-                <Link href="/demarrer-un-projet" className="btn btn-ghost btn-lg">
-                  Estimer le budget
+                <Link href="/contact" className="btn btn-ghost btn-lg">
+                  Nous contacter
                 </Link>
               </div>
             </div>

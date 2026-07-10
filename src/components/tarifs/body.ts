@@ -29,9 +29,9 @@ ${navHtml}
           Voir les forfaits
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="/outils/calculateur-cout-excel" class="btn btn-ghost btn-lg">
+        <a href="/demarrer-un-projet" class="btn btn-ghost btn-lg">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 7h6M9 12h6M9 17h3"/></svg>
-          Calculer mon devis
+          Décrire mon projet (3 min)
         </a>
       </div>
       <div class="thero-meta">
@@ -632,8 +632,8 @@ ${navHtml}
         <b>Comment lire ce tableau ?</b> Les fourchettes sont par projet (forfait fixe), sauf pour SEO / Ads / Vidéo qui sont des prestations récurrentes.
         Le prix exact est figé après le Discovery Sprint, dans un devis ferme contractuel.
       </div>
-      <a href="/outils/calculateur-cout-excel" class="btn btn-ghost ptf-cta">
-        Estimer mon projet
+      <a href="/demarrer-un-projet" class="btn btn-ghost ptf-cta">
+        Décrire mon projet
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -947,7 +947,7 @@ ${navHtml}
   </div>
 </section>
 
-<!-- CALCULATEUR TEASER -->
+<!-- BRIEF FUNNEL TEASER -->
 <section class="calc-teaser">
   <div class="wrap">
     <div class="ct-card reveal">
@@ -956,25 +956,25 @@ ${navHtml}
 
       <div class="ct-left">
         <div class="ct-tag">
-          <span>OUTIL GRATUIT</span>
-          <span>Calculateur de coût</span>
+          <span>DÉMARRER UN PROJET</span>
+          <span>Brief en ligne</span>
         </div>
-        <h3>Estimez votre projet<br><span class="accent">en 90 secondes.</span></h3>
+        <h3>Décrivez votre projet<br><span class="accent">en 3 minutes.</span></h3>
         <p class="ct-lead">
-          Notre calculateur Excel reprend exactement les barèmes de cette page,
-          étoffés de 60+ lignes de paramètres. Vous le téléchargez, vous le modifiez,
-          vous gardez le résultat. Aucun email demandé.
+          Quelques questions guidées sur votre besoin, votre contexte et vos délais —
+          puis notre équipe lit votre brief et vous adresse une réponse personnelle
+          et argumentée sous 24 h ouvrées. Pas de robot, pas d'appel commercial.
         </p>
 
         <div class="ct-bullets">
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Excel + Google Sheets</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> 60+ lignes paramétrables</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Sans création de compte</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> 3 minutes chrono</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Réponse personnelle sous 24 h ouvrées</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Sans engagement ni création de compte</span>
         </div>
 
         <div class="ct-cta">
-          <a href="/outils/calculateur-cout-excel" class="btn btn-accent btn-lg">
-            Ouvrir le calculateur
+          <a href="/demarrer-un-projet" class="btn btn-accent btn-lg">
+            Décrire mon projet
             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <a href="/#contact" class="btn btn-ghost btn-lg">Préférer un appel direct</a>
@@ -985,27 +985,27 @@ ${navHtml}
         <div class="ct-mini">
           <div class="ct-mini-bar">
             <div class="ct-mini-dots"><span></span><span></span><span></span></div>
-            <div class="ct-mini-name">calculateur-hagnere-code.xlsx</div>
+            <div class="ct-mini-name">votre-brief — hagnere-code.fr</div>
           </div>
           <div class="ct-mini-tabs">
-            <div class="ct-mini-tab active">Estimation</div>
-            <div class="ct-mini-tab">Hypothèses</div>
-            <div class="ct-mini-tab">Plan paiement</div>
+            <div class="ct-mini-tab active">Votre brief</div>
+            <div class="ct-mini-tab">Envoi</div>
+            <div class="ct-mini-tab">Réponse</div>
           </div>
           <div class="ct-mini-rows">
             <div class="ct-mini-row"><span>Type de projet</span><span><b>SaaS B2B</b></span></div>
-            <div class="ct-mini-row"><span>Nombre d'écrans</span><span><b>12</b></span></div>
-            <div class="ct-mini-row"><span>Auth + facturation</span><span><b>oui</b></span></div>
-            <div class="ct-mini-row"><span>Agent IA</span><span><b>1 RAG</b></span></div>
-            <div class="ct-mini-row"><span>App mobile</span><span><b>non</b></span></div>
+            <div class="ct-mini-row"><span>Objectif</span><span><b>automatiser la facturation</b></span></div>
+            <div class="ct-mini-row"><span>Utilisateurs</span><span><b>≈ 40 internes</b></span></div>
+            <div class="ct-mini-row"><span>Intégrations</span><span><b>Stripe, CRM</b></span></div>
+            <div class="ct-mini-row"><span>Existant</span><span><b>Excel partagé</b></span></div>
             <div class="ct-mini-row"><span>Délai souhaité</span><span><b>6 sem.</b></span></div>
           </div>
           <div class="ct-mini-total">
             <div class="ct-mini-total-l">
-              <div class="ct-mini-total-tag">ESTIMATION</div>
-              <div class="ct-mini-total-sub">forfait fixe estimé</div>
+              <div class="ct-mini-total-tag">BRIEF ENVOYÉ</div>
+              <div class="ct-mini-total-sub">réponse personnelle et argumentée</div>
             </div>
-            <div class="ct-mini-total-r">42 500 €</div>
+            <div class="ct-mini-total-r">sous 24 h</div>
           </div>
         </div>
       </div>

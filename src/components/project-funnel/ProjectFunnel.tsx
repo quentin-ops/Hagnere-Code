@@ -30,36 +30,21 @@ import {
   X,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, useCallback, type ReactNode } from "react";
+import { useRouter } from "next/navigation";
 import "./project-funnel.css";
-import "@/components/estimer-mon-projet/calculator.css";
-import { ResultView } from "@/components/estimer-mon-projet/ResultView";
 import { TurnstileWidget, TURNSTILE_ENABLED } from "./TurnstileWidget";
-import {
-  mapFunnelStateToCalculatorInput,
-  canSubmitToEstimateApi,
-} from "./funnel-to-input";
-import type {
-  EstimateApiResponse,
-  MultiServiceEstimate,
-} from "@/components/estimer-mon-projet/types";
-import {
-  ONESHOT_BRICKS,
-  RETAINER_BRICKS,
-  getOneshotRange,
-  getRetainerRange,
-} from "@/lib/pricing-model";
+import { compileBrief } from "./brief-format";
 import { trackFunnelEvent } from "@/lib/funnel-analytics";
 
 type StepId = "projet" | "contexte" | "perimetre" | "contraintes" | "contact" | "recap";
 type Status =
   | { kind: "idle" }
-  | { kind: "submitting"; phase: number }
-  | { kind: "success"; aiResult?: MultiServiceEstimate; aiTokens?: number }
+  | { kind: "submitting" }
   | { kind: "error"; message: string };
 
-const DRAFT_STORAGE_KEY = "pf:draft:v1";
-const BRIEF_ID_STORAGE_KEY = "pf:briefSlug:v1";
-const RESULT_STORAGE_KEY = "pf:result:v1";
+const DRAFT_STORAGE_KEY = "pf:draft:v2";
+// Clés de l'ancien funnel avec estimation IA — purgées au premier chargement.
+const LEGACY_STORAGE_KEYS = ["pf:draft:v1", "pf:briefSlug:v1", "pf:result:v1"];
 
 type ProjectKindId =
   | "site"
@@ -81,7 +66,6 @@ type ProjectKind = {
   label: string;
   family: "Build" | "Grow" | "Run" | "Trust" | "À définir";
   text: string;
-  base: number;
 };
 
 type FunnelState = {
@@ -150,7 +134,7 @@ const steps: Array<{
     id: "contexte",
     label: "Contexte",
     title: "Décrivez le besoin avec vos mots.",
-    help: "Champ ouvert volontairement large : texte ou dictée vocale, l'IA analysera ensuite les angles morts.",
+    help: "Champ ouvert volontairement large : texte ou dictée vocale, avec vos mots — c'est la première chose que nous lisons.",
     substeps: ["Problème actuel", "Utilisateurs", "Résultat attendu"],
   },
   {
@@ -176,27 +160,27 @@ const steps: Array<{
   },
   {
     id: "recap",
-    label: "Pré-cadrage",
-    title: "Votre brief est prêt à être analysé.",
-    help: "Vous voyez la synthèse avant envoi. Le chiffrage affiché reste une pré-estimation.",
-    substeps: ["Synthèse", "Fourchette", "Envoi"],
+    label: "Envoi",
+    title: "Votre brief est prêt à partir.",
+    help: "Relisez la synthèse, puis envoyez — réponse personnalisée sous 24 h ouvrées.",
+    substeps: ["Synthèse", "Envoi"],
   },
 ];
 
 const projectKinds: ProjectKind[] = [
-  { id: "site", family: "Build", label: "Site web / landing", text: "Vitrine, refonte, pages de conversion, contenus SEO.", base: 9000 },
-  { id: "saas", family: "Build", label: "SaaS / application métier", text: "Produit web, rôles utilisateurs, espace client, abonnement.", base: 34000 },
-  { id: "mobile", family: "Build", label: "Application mobile", text: "React Native, iOS / Android, app terrain ou compagnon SaaS.", base: 26000 },
-  { id: "outil", family: "Build", label: "Outil interne", text: "CRM métier, back-office, automatisation, reporting.", base: 24000 },
-  { id: "ecommerce", family: "Build", label: "E-commerce", text: "Boutique, catalogue, paiement, B2B, intégrations.", base: 26000 },
-  { id: "seo", family: "Grow", label: "SEO / référencement", text: "Audit, architecture, contenus, maillage, pages qui rankent.", base: 9000 },
-  { id: "ads", family: "Grow", label: "Publicité / tracking", text: "Google, Meta, LinkedIn, landing pages, attribution, CAC.", base: 8000 },
-  { id: "content", family: "Grow", label: "Contenu & vidéo", text: "Guides, scripts, YouTube, motion, assets pour ads et sales.", base: 7000 },
-  { id: "maintenance", family: "Run", label: "Maintenance & évolution", text: "TMA, incidents, dette, monitoring, roadmap, passation.", base: 16000 },
-  { id: "audit", family: "Run", label: "Audit technique", text: "Code, sécurité, performance, infra, dette, roadmap chiffrée.", base: 14000 },
-  { id: "security", family: "Trust", label: "Sécurité & RGPD", text: "DPA, registre, sous-traitants, droits, logs, conformité.", base: 15000 },
-  { id: "automatisation", family: "Build", label: "Automatisation / IA", text: "Workflows, assistants, transcription, génération, reporting.", base: 18000 },
-  { id: "unknown", family: "À définir", label: "Je ne sais pas encore", text: "Vous avez le problème, pas encore la bonne forme.", base: 10000 },
+  { id: "site", family: "Build", label: "Site web / landing", text: "Vitrine, refonte, pages de conversion, contenus SEO." },
+  { id: "saas", family: "Build", label: "SaaS / application métier", text: "Produit web, rôles utilisateurs, espace client, abonnement." },
+  { id: "mobile", family: "Build", label: "Application mobile", text: "React Native, iOS / Android, app terrain ou compagnon SaaS." },
+  { id: "outil", family: "Build", label: "Outil interne", text: "CRM métier, back-office, automatisation, reporting." },
+  { id: "ecommerce", family: "Build", label: "E-commerce", text: "Boutique, catalogue, paiement, B2B, intégrations." },
+  { id: "seo", family: "Grow", label: "SEO / référencement", text: "Audit, architecture, contenus, maillage, pages qui rankent." },
+  { id: "ads", family: "Grow", label: "Publicité / tracking", text: "Google, Meta, LinkedIn, landing pages, attribution, CAC." },
+  { id: "content", family: "Grow", label: "Contenu & vidéo", text: "Guides, scripts, YouTube, motion, assets pour ads et sales." },
+  { id: "maintenance", family: "Run", label: "Maintenance & évolution", text: "TMA, incidents, dette, monitoring, roadmap, passation." },
+  { id: "audit", family: "Run", label: "Audit technique", text: "Code, sécurité, performance, infra, dette, roadmap chiffrée." },
+  { id: "security", family: "Trust", label: "Sécurité & RGPD", text: "DPA, registre, sous-traitants, droits, logs, conformité." },
+  { id: "automatisation", family: "Build", label: "Automatisation / IA", text: "Workflows, assistants, transcription, génération, reporting." },
+  { id: "unknown", family: "À définir", label: "Je ne sais pas encore", text: "Vous avez le problème, pas encore la bonne forme." },
 ];
 
 const commonObjectives = [
@@ -345,7 +329,7 @@ const featuresByKind: Record<ProjectKindId, string[]> = {
   audit: ["Audit code", "Audit infra", "Audit performance", "Audit sécurité", "Dette technique chiffrée", "Roadmap 6/12 mois"],
   security: ["Registre RGPD", "DPA / sous-traitants", "Consent Mode", "Droits / IAM", "Logs / conservation", "Plan de remédiation"],
   automatisation: ["Transcription vocale", "Génération IA", "Assistant interne", "RPA / workflow", "Synchronisation outils", "Validation humaine"],
-  unknown: ["Atelier de cadrage", "Cartographie du besoin", "Pré-estimation", "Orientation service"],
+  unknown: ["Atelier de cadrage", "Cartographie du besoin", "Plan d'action priorisé", "Orientation service"],
 };
 
 const integrationBase = ["API métier existante", "Google Workspace", "Notion / Airtable", "Aucune pour l'instant"];
@@ -642,7 +626,7 @@ const COMBO_BONUS_OBJECTIVES: Array<{
     ],
   },
   // Note : "refonte" is handled via the "audit" kind + description in the
-  // funnel. The IA prompt detects refonte intent from the brief itself.
+  // funnel — the brief itself carries the refonte intent.
 
   // ── SaaS × Acquisition ──
   {
@@ -966,7 +950,7 @@ function mapProjectType(state: FunnelState): string {
   return labels.length > 0 ? labels.join(" + ") : "Préfère en discuter";
 }
 
-function makeLeadMessage(state: FunnelState, estimate: ReturnType<typeof computeEstimate>): string {
+function makeLeadMessage(state: FunnelState): string {
   const selectedKinds = state.projectKinds
     .map((id) => projectKinds.find((kind) => kind.id === id)?.label)
     .filter(Boolean)
@@ -976,158 +960,10 @@ function makeLeadMessage(state: FunnelState, estimate: ReturnType<typeof compute
     "Brief envoyé depuis le funnel de cadrage.",
     "",
     `Projet : ${selectedKinds || "Non précisé"}`,
-    `Objectifs : ${state.objectives.length > 0 ? state.objectives.join(" · ") : "Non précisé"}`,
-    `Échéance : ${state.timeline || "Non précisée"}`,
-    `Budget déclaré : ${state.budget || "Non précisé"}`,
-    `Maturité : ${state.decisionStage || "Non précisée"}`,
-    `Pré-estimation affichée : ${estimate.combinedLabel}`,
-    state.siren ? `SIREN : ${state.siren}` : "",
     "",
-    "Description :",
-    state.description || "Non renseigné",
-    "",
-    "Situation actuelle :",
-    state.currentSituation || "Non renseignée",
-    "",
-    `Utilisateurs / audience : ${state.audience || "Non précisé"}`,
-    `Fonctionnalités : ${state.mustHaves.join(", ") || "Non précisées"}`,
-    `Intégrations : ${state.integrations.join(", ") || "Non précisées"}`,
-    `Existant : ${state.existingAssets.join(", ") || "Non précisé"}`,
-    "",
-    "Périmètre libre :",
-    state.openScope || "Non renseigné",
-    "",
-    `Rôle du contact : ${state.role || "Non précisé"}`,
+    compileBrief(state),
   ].join("\n");
 }
-
-type FunnelEstimate = {
-  oneshotMin: number;
-  oneshotMax: number;
-  monthlyMin: number;
-  monthlyMax: number;
-  oneshotLabel: string;
-  monthlyLabel: string;
-  combinedLabel: string;
-  complexity: string;
-  /** Legacy fields kept for the lead-mail formatter that already references them. */
-  low: string;
-  high: string;
-};
-
-/**
- * Live estimate. Backed by pricing-model.ts (real team costs × margins ×
- * AI productivity × risk × acq). Replaces a previous fictional formula
- * that was diverging from the actual /tarifs grid by 30-50 %.
- *
- * Returns separate oneshot vs monthly ranges so the display can surface
- * both ("12 000 – 25 000 € + 2 000 – 4 500 €/mois").
- */
-function computeEstimate(state: FunnelState): FunnelEstimate {
-  const services = state.projectKinds
-    .map((k) => KIND_TO_SERVICE_ID[k])
-    .filter((s): s is string => s !== null);
-
-  let oneshotMin = 0;
-  let oneshotMax = 0;
-  let monthlyMin = 0;
-  let monthlyMax = 0;
-
-  for (const sid of services) {
-    const oneshot = ONESHOT_BRICKS.find((b) => b.id === sid);
-    if (oneshot) {
-      const range = getOneshotRange(oneshot);
-      oneshotMin += range.min;
-      oneshotMax += range.max;
-      continue;
-    }
-    const retainer = RETAINER_BRICKS.find((b) => b.id === sid);
-    if (retainer) {
-      const range = getRetainerRange(retainer);
-      monthlyMin += range.min;
-      monthlyMax += range.max;
-    }
-  }
-
-  // Urgency premium on build only (retainers are per-month, urgency irrelevant).
-  // Mirrors the /api/estimate prompt's "+30-50 % urgent" rule, conservatively.
-  const urgencyFactor =
-    state.timeline.toLowerCase().includes("immédiat") ||
-    state.timeline === "Dès que possible" ||
-    state.timeline.toLowerCase().includes("urgent")
-      ? 1.25
-      : state.timeline === "Dans 1 mois"
-        ? 1.1
-        : 1;
-  oneshotMin = Math.round(oneshotMin * urgencyFactor);
-  oneshotMax = Math.round(oneshotMax * urgencyFactor);
-
-  // No oneshot AND no retainer (only "unknown" selected) → conservative
-  // default that signals "à cadrer ensemble".
-  if (oneshotMin === 0 && monthlyMin === 0) {
-    oneshotMin = 8000;
-    oneshotMax = 25000;
-  }
-
-  const oneshotLabel =
-    oneshotMin > 0 ? `${formatThousands(oneshotMin)} – ${formatThousands(oneshotMax)} € HT` : "";
-  const monthlyLabel =
-    monthlyMin > 0 ? `${formatThousands(monthlyMin)} – ${formatThousands(monthlyMax)} €/mois HT` : "";
-
-  let combinedLabel: string;
-  if (oneshotLabel && monthlyLabel) {
-    combinedLabel = `${oneshotLabel} (build) + ${monthlyLabel}`;
-  } else {
-    combinedLabel = oneshotLabel || monthlyLabel;
-  }
-
-  // Complexity heuristic — used to nuance the copy.
-  const totalSignal = oneshotMax + monthlyMax * 12;
-  const complexity =
-    totalSignal > 90_000 || state.mustHaves.length >= 8
-      ? "Élevée"
-      : totalSignal > 35_000 || state.integrations.length >= 3
-        ? "Intermédiaire"
-        : "Cadrable rapidement";
-
-  return {
-    oneshotMin,
-    oneshotMax,
-    monthlyMin,
-    monthlyMax,
-    oneshotLabel,
-    monthlyLabel,
-    combinedLabel,
-    complexity,
-    low: oneshotLabel || monthlyLabel,
-    high: combinedLabel,
-  };
-}
-
-function formatThousands(n: number): string {
-  return n.toLocaleString("fr-FR");
-}
-
-/**
- * Mirrors the FunnelProjectKindId → ServiceId map in funnel-to-input.ts
- * but inlined here as an object lookup (we don't import to avoid a hard
- * dependency cycle, and the IDs are tiny and stable).
- */
-const KIND_TO_SERVICE_ID: Record<ProjectKindId, string | null> = {
-  site: "site-vitrine",
-  saas: "saas",
-  mobile: "app-mobile",
-  outil: "outil-interne",
-  ecommerce: "ecommerce",
-  seo: "seo",
-  ads: "ads",
-  content: "video",
-  maintenance: "maintenance",
-  audit: "audit-technique",
-  security: "securite-rgpd",
-  automatisation: "outil-interne",
-  unknown: null,
-};
 
 /**
  * Résumé court d'un step pour l'afficher dans le sidebar (au lieu des
@@ -1217,7 +1053,6 @@ function ObjectivesField({
   const [expanded, setExpanded] = useState(false);
   const COLLAPSED_LIMIT = 6;
   const visible = expanded ? options : options.slice(0, COLLAPSED_LIMIT);
-  const hidden = options.length - visible.length;
   // Toujours afficher les chips déjà sélectionnés même si dans la "queue".
   const merged = expanded
     ? options
@@ -1225,6 +1060,9 @@ function ObjectivesField({
         ...visible,
         ...options.slice(COLLAPSED_LIMIT).filter((o) => selected.includes(o)),
       ];
+  // Compte des options réellement masquées (les sélectionnées de la queue
+  // sont ré-affichées ci-dessus — les inclure gonflerait le compteur).
+  const hidden = options.length - merged.length;
 
   return (
     <div className="pf-field">
@@ -1454,12 +1292,36 @@ function VoiceTextarea({
   const analyserRef = useRef<AnalyserNode | null>(null);
   const rafRef = useRef<number | null>(null);
   const startTimeRef = useRef<number>(0);
+  const streamRef = useRef<MediaStream | null>(null);
+  // Toujours la dernière valeur du textarea — recorder.onstop est assigné
+  // une seule fois au démarrage de l'enregistrement et capturerait sinon
+  // une `value` périmée, écrasant ce que l'utilisateur tape pendant la
+  // dictée ou la transcription.
+  const valueRef = useRef(value);
+  useEffect(() => {
+    valueRef.current = value;
+  }, [value]);
 
-  // Cleanup web-audio resources when recording stops.
+  // Cleanup on unmount : rAF + AudioContext, mais aussi le MediaRecorder
+  // et les pistes micro — sinon, naviguer vers une autre étape en cours
+  // de dictée laisse le micro ouvert (indicateur rouge du navigateur)
+  // jusqu'à la fermeture de l'onglet.
   useEffect(() => {
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       audioContextRef.current?.close().catch(() => {});
+      const recorder = mediaRecorderRef.current;
+      if (recorder && recorder.state !== "inactive") {
+        // Pas de transcription à l'unmount : on neutralise onstop avant
+        // d'arrêter pour éviter un setState sur composant démonté.
+        recorder.onstop = null;
+        try {
+          recorder.stop();
+        } catch {
+          /* already stopped */
+        }
+      }
+      streamRef.current?.getTracks().forEach((track) => track.stop());
     };
   }, []);
 
@@ -1527,6 +1389,7 @@ function VoiceTextarea({
       const mimeType = recorder.mimeType || preferredMimeType || "audio/webm";
       const activeStream = stream;
       mediaRecorderRef.current = recorder;
+      streamRef.current = stream;
       chunksRef.current = [];
 
       recorder.ondataavailable = (event) => {
@@ -1546,7 +1409,8 @@ function VoiceTextarea({
             return;
           }
           if (json.text) {
-            const next = value.trim() ? `${value.trim()}\n\n${json.text.trim()}` : json.text.trim();
+            const latest = valueRef.current;
+            const next = latest.trim() ? `${latest.trim()}\n\n${json.text.trim()}` : json.text.trim();
             onChange(next);
           }
         } catch {
@@ -1634,7 +1498,7 @@ function VoiceTextarea({
       })();
       setError(enriched);
     }
-  }, [onChange, value]);
+  }, [onChange]);
 
   const stopRecording = useCallback(() => {
     if (!mediaRecorderRef.current || !recording) return;
@@ -1740,8 +1604,8 @@ function VoiceTextarea({
               </ol>
               <p>
                 Pas grave si ça reste bloqué : <b>vous pouvez écrire votre réponse à
-                la main</b> dans la zone de texte au-dessus, l&apos;IA traite les
-                deux de la même façon.
+                la main</b> dans la zone de texte au-dessus, le résultat est
+                exactement le même.
               </p>
             </details>
           )}
@@ -1790,6 +1654,7 @@ userAgent         : ${error.diag.userAgent.slice(0, 80)}…`}</pre>
 }
 
 export function ProjectFunnel() {
+  const router = useRouter();
   const [activeStep, setActiveStep] = useState(0);
   // Always initialize with INITIAL_STATE so SSR and the first client
   // render produce identical markup. Hydration of any saved draft happens
@@ -1798,20 +1663,30 @@ export function ProjectFunnel() {
   // match the client" warning on data that lives in localStorage.
   const [state, setState] = useState<FunnelState>(INITIAL_STATE);
   const [hydrated, setHydrated] = useState(false);
-  // Cloudflare Turnstile token — récolté avant submit pour anti-bot.
+  // Cloudflare Turnstile token — récolté avant submit pour anti-bot,
+  // transmis à /api/project-inquiry qui le vérifie en fail-closed.
   // Si TURNSTILE_ENABLED est false (NEXT_PUBLIC_TURNSTILE_SITE_KEY absent),
-  // on bypass : le bouton submit est actif sans token et /api/estimate
-  // skip aussi la vérification (mode dev).
+  // le bouton submit est actif sans token. Attention : le bypass serveur
+  // est keyé sur NEXT_PUBLIC_ENV === "development" (ai-rate-limit.ts), un
+  // autre env var — en production sans site key, la route refuse quand
+  // même (fail-closed).
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  // Incrémenté après un échec d'envoi : le serveur consomme le token
+  // (usage unique) même quand la requête échoue ensuite — il faut donc
+  // un reset du widget pour que le retry parte avec un token frais.
+  const [turnstileResetKey, setTurnstileResetKey] = useState(0);
+  // En dev (NEXT_PUBLIC_ENV='development'), le serveur skip Turnstile :
+  // on autorise la soumission même sans token (utile quand la site key
+  // de prod n'est pas whitelistée sur localhost). Même logique que le
+  // formulaire du footer (SiteFooter.tsx).
+  const turnstileReady =
+    process.env.NEXT_PUBLIC_ENV === "development" || !TURNSTILE_ENABLED || turnstileToken !== null;
   const [showValidation, setShowValidation] = useState(false);
   const [skippedSteps, setSkippedSteps] = useState<Set<StepId>>(new Set());
   const [status, setStatus] = useState<Status>({ kind: "idle" });
 
   // Hydrate the saved draft after mount. Client-only (useEffect doesn't
   // run on the server), so SSR markup matches the first client render.
-  // Si un résultat IA précédent est en cache local, on le re-affiche
-  // directement — l'utilisateur peut refresh ou revenir le lendemain
-  // pour retrouver son estimation sans tout refaire.
   // Hydration depuis localStorage : pattern canonical SSR-safe pour
   // synchroniser React avec un système externe (le storage navigateur).
   // La règle react-hooks/set-state-in-effect est volontairement désactivée
@@ -1820,25 +1695,8 @@ export function ProjectFunnel() {
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     try {
-      const rawResult = window.localStorage.getItem(RESULT_STORAGE_KEY);
-      if (rawResult) {
-        const parsed = JSON.parse(rawResult) as {
-          aiResult?: MultiServiceEstimate;
-          aiTokens?: number;
-          email?: string;
-        };
-        if (parsed.aiResult) {
-          setStatus({
-            kind: "success",
-            aiResult: parsed.aiResult,
-            aiTokens: parsed.aiTokens || 0,
-          });
-          if (parsed.email) {
-            setState((prev) => ({ ...prev, email: parsed.email || prev.email }));
-          }
-          setHydrated(true);
-          return;
-        }
+      for (const key of LEGACY_STORAGE_KEYS) {
+        window.localStorage.removeItem(key);
       }
       const raw = window.localStorage.getItem(DRAFT_STORAGE_KEY);
       if (raw) {
@@ -1859,13 +1717,12 @@ export function ProjectFunnel() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (!hydrated) return;
-    if (status.kind === "success") return;
     try {
       window.localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(state));
     } catch {
       /* quota / private mode — ignore */
     }
-  }, [state, status.kind, hydrated]);
+  }, [state, hydrated]);
 
   // Fire one open event per session — we use sessionStorage to avoid
   // double-firing on Strict Mode double-mounts in dev.
@@ -1886,7 +1743,6 @@ export function ProjectFunnel() {
   const timelineOptions = useMemo(() => getTimelineOptions(state.projectKinds), [state.projectKinds]);
   const budgetOptions = useMemo(() => getBudgetOptions(state.projectKinds), [state.projectKinds]);
   const decisionOptions = useMemo(() => getDecisionOptions(state.projectKinds), [state.projectKinds]);
-  const estimate = useMemo(() => computeEstimate(state), [state]);
   const completedStepCount = steps.filter((step) => step.id !== "recap" && stepIsComplete(step.id, state)).length;
 
   function patch<K extends keyof FunnelState>(key: K, value: FunnelState[K]) {
@@ -1965,22 +1821,14 @@ export function ProjectFunnel() {
       setActiveStep(4);
       return;
     }
-    setStatus({ kind: "submitting", phase: 0 });
-    const message = makeLeadMessage(state, estimate);
-    const wantsAi = canSubmitToEstimateApi(state);
+    setStatus({ kind: "submitting" });
+    const message = makeLeadMessage(state);
     trackFunnelEvent("pf:submit_start", {
       services: state.projectKinds.length,
-      with_ai: wantsAi,
       has_siren: state.siren.replace(/\D/g, "").length === 9,
       has_phone: Boolean(state.phone.trim()),
     });
 
-    // STEP 1 — Lead capture + mail (always). Sequential first call so the
-    // DB row gets created and we receive a briefId/Slug to attach the AI
-    // estimate to next. The ~1s wait is negligible against the 30-60s
-    // Claude call that follows.
-    let briefId: number | null = null;
-    let briefSlug: string | null = null;
     let mailOk = false;
     let mailError = "";
     try {
@@ -1999,6 +1847,9 @@ export function ProjectFunnel() {
           budget: state.budget,
           message,
           honeypot: state.honeypot,
+          // Cloudflare Turnstile token (anti-bot). Vérifié server-side en
+          // fail-closed : sans token valide, la route refuse en production.
+          turnstileToken: turnstileToken || undefined,
           // Full funnel state for DB persistence (project_brief table)
           role: state.role.trim(),
           siren: state.siren,
@@ -2012,10 +1863,6 @@ export function ProjectFunnel() {
           existingAssets: state.existingAssets,
           openScope: state.openScope,
           decisionStage: state.decisionStage,
-          estimateOneshotMin: estimate.oneshotMin || null,
-          estimateOneshotMax: estimate.oneshotMax || null,
-          estimateMonthlyMin: estimate.monthlyMin || null,
-          estimateMonthlyMax: estimate.monthlyMax || null,
           consent: state.consent,
         }),
       });
@@ -2023,96 +1870,42 @@ export function ProjectFunnel() {
         ok?: boolean;
         error?: string;
         errors?: Record<string, string>;
-        briefId?: number;
-        briefSlug?: string;
       };
       mailOk = mailRes.ok;
       mailError =
         mailJson.error ||
         Object.values(mailJson.errors || {}).join(" ") ||
-        (mailOk ? "" : "Le brief n'a pas pu être envoyé par email.");
-      briefId = mailJson.briefId ?? null;
-      briefSlug = mailJson.briefSlug ?? null;
+        (mailOk ? "" : "Le brief n'a pas pu être envoyé.");
     } catch {
       mailError = "Impossible de contacter le serveur d'envoi.";
     }
 
-    // STEP 2 — AI estimate. Pass briefId so the route can write the
-    // result back to the same DB row.
-    let aiData: MultiServiceEstimate | undefined;
-    let aiTokens: number | undefined;
-    if (wantsAi) {
-      try {
-        const aiRes = await fetch("/api/estimate", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ...mapFunnelStateToCalculatorInput(state),
-            briefId,
-            // Cloudflare Turnstile token (anti-bot). Vérifié server-side
-            // avant l'appel Anthropic. Null si pas configuré (mode dev).
-            turnstileToken: turnstileToken || undefined,
-          }),
-        });
-        const aiJson = (await aiRes.json()) as EstimateApiResponse;
-        if (aiRes.ok && aiJson.ok) {
-          aiData = aiJson.result;
-          aiTokens = aiJson.tokens_used;
-        }
-      } catch {
-        /* AI failed — mail might still have succeeded */
-      }
-    }
-
-    // Outcome dispatch
-    if (mailOk || aiData) {
-      setStatus({ kind: "success", aiResult: aiData, aiTokens });
+    if (mailOk) {
       trackFunnelEvent("pf:submit_success", {
-        mail_ok: mailOk,
-        ai_ok: Boolean(aiData),
-        tokens: aiTokens || 0,
+        services: state.projectKinds.length,
       });
       try {
         window.localStorage.removeItem(DRAFT_STORAGE_KEY);
-        if (briefSlug !== null) {
-          window.localStorage.setItem(BRIEF_ID_STORAGE_KEY, briefSlug);
-        }
-        // Cache local du résultat IA → un refresh ne perd plus
-        // l'estimation ; partage facile vers son CTO.
-        if (aiData) {
-          window.localStorage.setItem(
-            RESULT_STORAGE_KEY,
-            JSON.stringify({ aiResult: aiData, aiTokens, email: state.email }),
-          );
-        }
       } catch {
         /* ignore */
       }
+      // Page de confirmation dédiée — URL stable pour brancher les pixels
+      // de conversion (GA4, Meta, LinkedIn) sur une vue de page.
+      router.push("/demarrer-un-projet/merci");
       return;
     }
 
     trackFunnelEvent("pf:submit_error", { mail_error: mailError });
+    // Le token vient d'être consommé par la vérification server-side —
+    // on le purge et on reset le widget pour que le retry reparte propre.
+    setTurnstileToken(null);
+    setTurnstileResetKey((k) => k + 1);
     setStatus({
       kind: "error",
       message:
         mailError ||
         "Impossible d'envoyer le brief pour le moment. Réessayez dans un instant.",
     });
-  }
-
-  function restart() {
-    setState(INITIAL_STATE);
-    setStatus({ kind: "idle" });
-    setActiveStep(0);
-    setShowValidation(false);
-    try {
-      window.localStorage.removeItem(DRAFT_STORAGE_KEY);
-      window.localStorage.removeItem(BRIEF_ID_STORAGE_KEY);
-      window.localStorage.removeItem(RESULT_STORAGE_KEY);
-    } catch {
-      /* ignore */
-    }
-    trackFunnelEvent("pf:restart", {});
   }
 
   return (
@@ -2137,30 +1930,65 @@ export function ProjectFunnel() {
         </nav>
       </header>
 
-      {status.kind === "submitting" ? (
-        <FunnelLoadingView />
-      ) : status.kind === "success" && status.aiResult ? (
-        <ResultView
-          result={status.aiResult}
-          tokensUsed={status.aiTokens || 0}
-          contactEmail={state.email}
-          onRestart={restart}
-          briefId={(typeof window !== "undefined" && window.localStorage.getItem(BRIEF_ID_STORAGE_KEY)) || null}
-        />
-      ) : status.kind === "success" ? (
-        <FunnelMailSentView email={state.email} onRestart={restart} />
-      ) : (
-      <main className="pf-shell">
+      <section className="pf-landing">
+        <div className="pf-landing-inner">
+          <span className="pf-kicker">
+            <Sparkles size={14} /> Démarrer un projet
+          </span>
+          <h1>
+            Décrivez votre projet en 3 minutes.
+            <br />
+            <span className="pf-landing-accent">On revient vers vous avec un plan concret.</span>
+          </h1>
+          <p className="pf-landing-sub">
+            Un parcours guidé pour transmettre votre besoin — au clavier ou à la voix.
+            Pas de devis automatique, pas de robot : chaque brief est lu par notre
+            équipe, qui vous répond personnellement sous 24 h ouvrées.
+          </p>
+          <a
+            href="#brief"
+            className="pf-primary pf-landing-cta"
+            onClick={() => trackFunnelEvent("pf:landing_cta_click", {})}
+          >
+            Décrire mon projet
+            <ArrowRight size={16} />
+          </a>
+          <div className="pf-landing-badges">
+            <span><Check size={13} strokeWidth={3} /> Gratuit, sans engagement</span>
+            <span><Check size={13} strokeWidth={3} /> Réponse personnelle sous 24 h ouvrées</span>
+            <span><Check size={13} strokeWidth={3} /> Données privées, conforme RGPD</span>
+          </div>
+          <ol className="pf-landing-steps">
+            <li>
+              <span className="pf-landing-step-num">1</span>
+              <b>Décrivez votre besoin</b>
+              <small>2-3 minutes, par étapes. Dictée vocale disponible si vous préférez parler.</small>
+            </li>
+            <li>
+              <span className="pf-landing-step-num">2</span>
+              <b>Analyse humaine</b>
+              <small>Votre brief est lu en détail par notre équipe — pas d&apos;algorithme, pas de réponse générique.</small>
+            </li>
+            <li>
+              <span className="pf-landing-step-num">3</span>
+              <b>Réponse argumentée</b>
+              <small>Sous 24 h ouvrées : premières recommandations et, si pertinent, un créneau d&apos;échange.</small>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <main className="pf-shell" id="brief">
         <aside className="pf-sidebar" aria-label="Progression du cadrage">
           <div className="pf-side-card">
             <div className="pf-side-top">
               <span className="pf-kicker"><Sparkles size={14} /> Cadrage projet</span>
               <span className="pf-count">{activeStep + 1}/{steps.length}</span>
             </div>
-            <h1>Démarrer un projet, sans brief interminable.</h1>
+            <h2 className="pf-side-title">Un brief complet, sans réunion interminable.</h2>
             <p>
-              On récupère les informations utiles, on clarifie le périmètre, puis on prépare
-              une première base de chiffrage.
+              On récupère les informations utiles, on clarifie le périmètre, et on
+              vous répond personnellement sous 24 h ouvrées.
             </p>
             <div className="pf-progress-block">
               <div className="pf-progress-meta">
@@ -2220,7 +2048,7 @@ export function ProjectFunnel() {
             {hydrated && (
               <div className="pf-saved-badge" aria-live="polite">
                 <Check size={11} strokeWidth={3} />
-                <span>Sauvegardé localement — tu peux fermer et revenir.</span>
+                <span>Sauvegardé localement — vous pouvez fermer et revenir.</span>
               </div>
             )}
           </div>
@@ -2235,7 +2063,7 @@ export function ProjectFunnel() {
             </div>
             <div className="pf-estimate-pill">
               <Timer size={16} />
-              <span>5-7 min</span>
+              <span>2-3 min</span>
             </div>
           </div>
 
@@ -2263,7 +2091,7 @@ export function ProjectFunnel() {
                   </span>
                   <span>
                     <b>Je ne sais pas encore</b>
-                    <small>Tu as un problème métier mais pas la bonne forme — on cadre ensemble.</small>
+                    <small>Vous avez un problème métier mais pas la bonne forme — on cadre ensemble.</small>
                   </span>
                 </button>
 
@@ -2288,7 +2116,7 @@ export function ProjectFunnel() {
                   <div className="pf-social-proof-divider" aria-hidden="true" />
                   <div className="pf-social-proof-item">
                     <b>30 j</b>
-                    <span>warranty post-launch</span>
+                    <span>de garantie post-lancement</span>
                   </div>
                 </div>
               </div>
@@ -2407,17 +2235,11 @@ export function ProjectFunnel() {
                 <div className="pf-insight">
                   <ClipboardList size={18} />
                   <div>
-                    <b>Fourchette indicative (pré-IA)</b>
-                    {estimate.oneshotLabel && (
-                      <span><strong>Build :</strong> {estimate.oneshotLabel}</span>
-                    )}
-                    {estimate.monthlyLabel && (
-                      <span><strong>Récurrent :</strong> {estimate.monthlyLabel}</span>
-                    )}
+                    <b>Pourquoi ces questions ?</b>
                     <span>
-                      <em>Calcul brut</em> sur les briques cochées. L&apos;IA affinera ±20-30%
-                      selon synergies, urgence et description du brief — la vraie
-                      fourchette s&apos;affiche à la fin.
+                      Délais, budget et maturité nous permettent de vous répondre avec
+                      une proposition réaliste — pas de calcul automatique, votre brief
+                      est analysé par notre équipe.
                     </span>
                   </div>
                 </div>
@@ -2517,23 +2339,6 @@ export function ProjectFunnel() {
 
             {current.id === "recap" && (
               <div className="pf-recap">
-                <div className="pf-result-card">
-                  <div>
-                    <span className="pf-eyebrow">Pré-estimation (avant analyse IA)</span>
-                    <strong>{estimate.combinedLabel}</strong>
-                    <p>
-                      Fourchette indicative basée sur les briques cochées, les
-                      intégrations et l&apos;urgence. L&apos;IA Claude Opus 4.7 va
-                      maintenant analyser ton brief en détail pour produire un
-                      chiffrage multi-volets, une roadmap et l&apos;équipe à allouer.
-                    </p>
-                  </div>
-                  <div className="pf-result-meta">
-                    <span>{estimate.complexity}</span>
-                    <span>{state.timeline || "Délai à préciser"}</span>
-                  </div>
-                </div>
-
                 <div className="pf-summary-grid">
                   <SummaryBlock
                     icon={<Layers3 size={18} />}
@@ -2575,13 +2380,16 @@ export function ProjectFunnel() {
 
                 <div className="pf-brief-preview">
                   <b>Brief transmis</b>
-                  <p>{state.description || "Votre description apparaîtra ici."}</p>
+                  <p style={{ whiteSpace: "pre-line" }}>
+                    {compileBrief(state) || "Votre description apparaîtra ici."}
+                  </p>
                 </div>
 
                 {TURNSTILE_ENABLED && (
                   <TurnstileWidget
                     onToken={setTurnstileToken}
                     onExpire={() => setTurnstileToken(null)}
+                    resetKey={turnstileResetKey}
                   />
                 )}
 
@@ -2589,34 +2397,30 @@ export function ProjectFunnel() {
                   type="button"
                   className="pf-submit"
                   onClick={submitBrief}
-                  disabled={TURNSTILE_ENABLED && !turnstileToken}
-                  aria-disabled={TURNSTILE_ENABLED && !turnstileToken}
-                  title={
-                    TURNSTILE_ENABLED && !turnstileToken
-                      ? "Vérification anti-bot en cours…"
-                      : undefined
-                  }
+                  disabled={status.kind === "submitting" || !turnstileReady}
+                  aria-disabled={status.kind === "submitting" || !turnstileReady}
+                  title={!turnstileReady ? "Vérification anti-bot en cours…" : undefined}
                 >
-                  <Send size={18} />
-                  Lancer l&apos;analyse IA et envoyer le brief
+                  {status.kind === "submitting" ? (
+                    <Loader2 size={18} className="pf-spin" />
+                  ) : (
+                    <Send size={18} />
+                  )}
+                  {status.kind === "submitting" ? "Envoi en cours…" : "Envoyer mon brief"}
                 </button>
 
                 <div className="pf-reassure">
                   <div className="pf-reassure-item">
-                    <Timer size={14} />
-                    <span><b>30 à 60 s</b> &middot; durée moyenne de l&apos;analyse</span>
+                    <Mail size={14} />
+                    <span><b>Réponse personnalisée sous 24 h ouvrées</b> &middot; analyse humaine de votre brief</span>
                   </div>
                   <div className="pf-reassure-item">
                     <Sparkles size={14} />
-                    <span><b>Gratuit, sans engagement</b> &middot; tu peux fermer l&apos;onglet</span>
+                    <span><b>Gratuit, sans engagement</b> &middot; vous restez libre de la suite</span>
                   </div>
                   <div className="pf-reassure-item">
                     <ShieldCheck size={14} />
-                    <span><b>Tes données restent privées</b> &middot; pas de revente, conforme RGPD</span>
-                  </div>
-                  <div className="pf-reassure-item">
-                    <Mail size={14} />
-                    <span><b>Réponse humaine sous 24 h</b> &middot; Quentin ou Nicolas te recontacte</span>
+                    <span><b>Vos données restent privées</b> &middot; pas de revente, conforme RGPD</span>
                   </div>
                 </div>
 
@@ -2655,145 +2459,46 @@ export function ProjectFunnel() {
           )}
         </section>
       </main>
-      )}
-    </div>
-  );
-}
 
-// =====================================================================
-// Loading view — shown while /api/estimate runs (30-60s typical).
-// Phase ticker mirrors EstimerMonProjet's so the wait feels intentional.
-// =====================================================================
-
-function FunnelLoadingView() {
-  const [phase, setPhase] = useState(0);
-  const [elapsedSec, setElapsedSec] = useState(0);
-  const phases = [
-    "Lecture du brief multi-services…",
-    "Croisement avec les barèmes Sprint Fixe™…",
-    "Détection des synergies (tracking mutualisé, retainers décalés)…",
-    "Choix de la stack et de l'équipe à allouer…",
-    "Construction de la roadmap de déploiement…",
-    "Rédaction de l'estimation finale…",
-  ];
-  useEffect(() => {
-    const phaseId = setInterval(
-      () => setPhase((p) => Math.min(p + 1, phases.length - 1)),
-      6000,
-    );
-    const tickId = setInterval(() => setElapsedSec((s) => s + 1), 1000);
-    return () => {
-      clearInterval(phaseId);
-      clearInterval(tickId);
-    };
-  }, [phases.length]);
-
-  // Messages contextuels selon le temps écoulé.
-  const longRunNote =
-    elapsedSec > 90
-      ? "C'est plus long qu'à l'habitude — on tient bon. Tu peux fermer l'onglet, l'estimation arrivera par email si tu as renseigné ton mail."
-      : elapsedSec > 45
-        ? "C'est presque fini — l'IA termine la rédaction des phases."
-        : null;
-
-  return (
-    <main className="pf-shell pf-shell-loading">
-      <div className="pf-loading-card" role="status" aria-live="polite" aria-busy="true">
-        <div className="pf-loading-orb">
-          <Sparkles size={28} />
-          <span className="pf-loading-pulse" />
-        </div>
-        <div className="pf-loading-tag">
-          <span className="dot" />
-          CLAUDE OPUS 4.7 · ANALYSE DU BRIEF · {Math.floor(elapsedSec / 60)}:{String(elapsedSec % 60).padStart(2, "0")}
-        </div>
-        <h2 className="pf-loading-title">
-          On chiffre votre projet
-          <br />
-          <span className="pf-grad">comme un Discovery élargi.</span>
-        </h2>
-        <p className="pf-loading-sub">
-          L&apos;IA croise les services, détecte les synergies, choisit la stack
-          et renvoie une fourchette globale + un plan de déploiement cohérent.
-          30 à 60 secondes en moyenne.
-        </p>
-        <div className="pf-loading-phases">
-          {phases.map((label, i) => (
-            <div
-              key={label}
-              className={`pf-loading-phase ${
-                i < phase ? "is-done" : i === phase ? "is-active" : ""
-              }`}
-            >
-              <span className="pf-loading-phase-dot">
-                {i < phase ? (
-                  <Check size={11} strokeWidth={3} />
-                ) : i === phase ? (
-                  <Loader2 size={11} className="pf-spin" />
-                ) : null}
-              </span>
-              <span>{label}</span>
+      <section className="pf-landing-faq" aria-label="Questions fréquentes">
+        <div className="pf-landing-inner">
+          <h2>Questions fréquentes</h2>
+          <dl>
+            <div className="pf-faq-item">
+              <dt>Vais-je recevoir un prix immédiatement ?</dt>
+              <dd>
+                Non — et c&apos;est volontaire. Un chiffrage sérieux demande une lecture
+                attentive de votre contexte. Vous recevez sous 24 h ouvrées une réponse
+                argumentée, puis un devis ferme après échange.
+              </dd>
             </div>
-          ))}
+            <div className="pf-faq-item">
+              <dt>Et si mon projet est encore flou ?</dt>
+              <dd>
+                Aucun problème : choisissez «&nbsp;Je ne sais pas encore&nbsp;» et décrivez
+                le problème avec vos mots. C&apos;est justement le rôle du cadrage de
+                transformer une idée floue en plan exploitable.
+              </dd>
+            </div>
+            <div className="pf-faq-item">
+              <dt>Que deviennent mes informations ?</dt>
+              <dd>
+                Elles servent uniquement à qualifier votre demande et à vous répondre.
+                Pas de revente, pas de newsletter forcée — suppression sur simple demande,
+                conformément au RGPD.
+              </dd>
+            </div>
+            <div className="pf-faq-item">
+              <dt>Suis-je engagé en envoyant un brief ?</dt>
+              <dd>
+                Non. Le brief et la réponse sont gratuits et sans engagement. Vous décidez
+                ensuite si vous souhaitez poursuivre.
+              </dd>
+            </div>
+          </dl>
         </div>
-        {longRunNote && (
-          <div className="pf-loading-longrun" role="status">
-            <Loader2 size={13} className="pf-spin" />
-            <span>{longRunNote}</span>
-          </div>
-        )}
-      </div>
-    </main>
-  );
-}
-
-// =====================================================================
-// Mail-sent view — fallback when AI couldn't run (only "unknown" was
-// selected) or AI failed but the lead mail went through.
-// =====================================================================
-
-function FunnelMailSentView({
-  email,
-  onRestart,
-}: {
-  email: string;
-  onRestart: () => void;
-}) {
-  return (
-    <main className="pf-shell pf-shell-success">
-      <div className="pf-success-card">
-        <div className="pf-success-icon">
-          <Check size={28} strokeWidth={2.4} />
-        </div>
-        <h2>Brief envoyé à l&apos;équipe.</h2>
-        <p>
-          On a bien reçu votre demande{email ? <> à <b>{email}</b></> : null}.
-          Quentin ou Nicolas revient vers vous sous 24 h ouvrées avec une
-          fourchette ferme et 3 créneaux Discovery.
-          <br />
-          <br />
-          Pour gagner 24 h&nbsp;: réservez directement un créneau Discovery
-          (gratuit, 30 min, sans engagement).
-        </p>
-        <div className="pf-success-actions">
-          <a
-            href="https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pf-primary"
-          >
-            Réserver 30 min Discovery
-            <ArrowRight size={16} />
-          </a>
-          <Link href="/realisations" className="pf-secondary">
-            Voir les réalisations
-          </Link>
-          <button type="button" className="pf-secondary" onClick={onRestart}>
-            Refaire un brief
-          </button>
-        </div>
-      </div>
-    </main>
+      </section>
+    </div>
   );
 }
 

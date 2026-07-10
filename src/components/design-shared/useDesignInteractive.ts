@@ -134,7 +134,7 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       mobileTitle.textContent = "Cadrer votre projet en 30 min.";
 
       const mobileText = document.createElement("p");
-      mobileText.textContent = "Un associé qui code vous répond, sans engagement.";
+      mobileText.textContent = "Quelqu'un qui code vous répond, sans engagement.";
 
       const mobileActions = document.createElement("div");
       mobileActions.className = "nav-mobile-actions";
@@ -630,9 +630,6 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       const prevBtn = auditSection.querySelector<HTMLButtonElement>("[data-audit-prev]");
       const nextBtn = auditSection.querySelector<HTMLButtonElement>("[data-audit-next]");
       const restartBtn = auditSection.querySelector<HTMLButtonElement>("[data-audit-restart]");
-      const emailForm = auditSection.querySelector<HTMLFormElement>("[data-audit-email-form]");
-      const emailInput = auditSection.querySelector<HTMLInputElement>("[data-audit-email]");
-      const emailAck = auditSection.querySelector<HTMLElement>("[data-audit-email-ack]");
 
       if (box && questions.length === 5 && currentLabel && fill && prevBtn && nextBtn && resultPanel) {
         let step = 0;
@@ -666,16 +663,16 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
           "Maturité actuelle de la tech",
         ];
         const atTierLabels = [
-          "Express recommandé · 8 000 €",
-          "Standard recommandé · 18 000 €",
-          "Deep recommandé · 38 000 €",
-          "Tech DD M&A recommandé · 68 000 €",
+          "Format Express recommandé",
+          "Format Standard recommandé",
+          "Format Deep recommandé",
+          "Format Tech DD M&A recommandé",
         ];
         const atTierVerdicts = [
-          "Vos réponses indiquent un besoin <b>rapide et ciblé</b>. Format Express 3-5 jours, 1 senior, livrable Notion + Loom. Démarrage sous 3 j ouvrés. <b>8 000 € HT fixe</b>.",
-          "Vos réponses indiquent un besoin <b>complet board-ready</b>. Format Standard 10 jours ouvrés, 2 seniors + associé-lead, 8 dimensions couvertes, Tech Debt P&L chiffré, deck 12-18 slides. <b>18 000 € HT fixe</b>.",
-          "Vos réponses indiquent une <b>décision majeure en jeu</b> (levée, refonte &gt; 500 k€, compliance). Format Deep 15-20 jours, 3 seniors + architecte + associé, rapport 60-80 pages, 3 scenarios chiffrés sur 3 ans. <b>38 000 € HT fixe</b>.",
-          "Vos réponses indiquent une <b>Tech Due Diligence M&amp;A</b>. Format Tech DD M&A 20-30 jours, 4 personnes dédiées + coordination avocats, rapport 80-120 pages, analyse licences OSS + IP, attorney-client privilege. <b>68 000 € HT fixe</b>.",
+          "Vos réponses indiquent un besoin <b>rapide et ciblé</b>. Format Express 3-5 jours, 1 senior, livrable Notion + Loom. Démarrage sous 3 j ouvrés. <b>Chiffrage sur devis après un échange de 30 min</b>.",
+          "Vos réponses indiquent un besoin <b>complet board-ready</b>. Format Standard 10 jours ouvrés, 2 seniors + associé-lead, 8 dimensions couvertes, Tech Debt P&L chiffré, deck 12-18 slides. <b>Chiffrage sur devis après un échange de 30 min</b>.",
+          "Vos réponses indiquent une <b>décision majeure en jeu</b> (levée, refonte &gt; 500 k€, compliance). Format Deep 15-20 jours, 3 seniors + architecte + associé, rapport 60-80 pages, 3 scenarios chiffrés sur 3 ans. <b>Chiffrage sur devis après un échange de 30 min</b>.",
+          "Vos réponses indiquent une <b>Tech Due Diligence M&amp;A</b>. Format Tech DD M&A 20-30 jours, 4 personnes dédiées + coordination avocats, rapport 80-120 pages, analyse licences OSS + IP, attorney-client privilege. <b>Chiffrage sur devis après un échange de 30 min</b>.",
         ];
 
         const questionTopics = isAuditTech ? atTopics : meTopics;
@@ -825,8 +822,6 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
           });
           resultPanel.hidden = true;
           box.hidden = false;
-          if (emailAck) emailAck.hidden = true;
-          if (emailInput) emailInput.value = "";
           showStep(0);
         };
 
@@ -838,26 +833,6 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
           nextBtn.removeEventListener("click", onNext);
           if (restartBtn) restartBtn.removeEventListener("click", onRestart);
         });
-
-        // Email capture (placeholder — TODO: wire to Resend endpoint)
-        if (emailForm && emailInput && emailAck) {
-          const onSubmit = (e: Event) => {
-            e.preventDefault();
-            const email = emailInput.value.trim();
-            if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return;
-            // Persist locally for now; real impl will POST to /api/audit-report
-            try {
-              localStorage.setItem("me-audit-email", email);
-              localStorage.setItem(
-                "me-audit-score",
-                JSON.stringify({ answers, ts: Date.now() }),
-              );
-            } catch {}
-            emailAck.hidden = false;
-          };
-          emailForm.addEventListener("submit", onSubmit);
-          cleanups.push(() => emailForm.removeEventListener("submit", onSubmit));
-        }
 
         // Init
         showStep(0);

@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { ProjectFunnel } from "@/components/project-funnel/ProjectFunnel";
 
 export const metadata: Metadata = {
-  title: "Démarrer un projet · Cadrage & pré-devis · Hagnéré Code",
+  title: "Démarrer un projet · Décrivez votre besoin en 3 minutes · Hagnéré Code",
   description:
-    "Cadrez votre projet web, SaaS, application métier ou reprise technique en quelques étapes. Décrivez le besoin, estimez le périmètre et envoyez un brief clair à Hagnéré Code.",
+    "Décrivez votre projet web, SaaS, application métier ou reprise technique en quelques étapes guidées. Réponse personnelle et argumentée sous 24 h ouvrées.",
   alternates: { canonical: "/demarrer-un-projet" },
   openGraph: {
     title: "Démarrer un projet web · Hagnéré Code",
     description:
-      "Un parcours de cadrage pour transformer une idée floue en brief exploitable, avec dictée vocale et pré-estimation.",
+      "Un parcours guidé de 3 minutes pour transmettre votre besoin — texte ou dictée vocale. Réponse personnelle et argumentée sous 24 h ouvrées.",
     url: "/demarrer-un-projet",
     type: "website",
   },
@@ -18,17 +18,15 @@ export const metadata: Metadata = {
 export default function Page() {
   const jsonLd = JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "Cadrage projet Hagnéré Code",
-    applicationCategory: "BusinessApplication",
-    operatingSystem: "Web",
+    "@type": "ContactPage",
+    name: "Démarrer un projet — Hagnéré Code",
     url: "https://hagnere-code.fr/demarrer-un-projet",
     description:
-      "Parcours de cadrage pour préparer un projet web, SaaS, application métier, e-commerce ou reprise technique avant devis.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "EUR",
+      "Parcours guidé pour décrire un projet web, SaaS, application métier, e-commerce ou reprise technique. Réponse personnelle sous 24 h ouvrées.",
+    provider: {
+      "@type": "Organization",
+      name: "Hagnéré Code",
+      url: "https://hagnere-code.fr",
     },
   });
 

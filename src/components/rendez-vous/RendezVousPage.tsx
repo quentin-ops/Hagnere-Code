@@ -1,9 +1,10 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { MainNav } from "@/components/design-shared/MainNav";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
-import { CalendlyEmbed } from "@/components/estimer-mon-projet/CalendlyEmbed";
+import { CalendlyEmbed } from "@/components/design-shared/CalendlyEmbed";
 import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
 import "@/components/homepage/homepage.css";
 import "@/components/homepage/sections/sections.css";
@@ -11,7 +12,7 @@ import "@/components/design-shared/nav-dropdown.css";
 import "@/components/design-shared/responsive.css";
 import "@/components/design-shared/site-footer.css";
 import "@/components/contact/page.css";
-import "@/components/estimer-mon-projet/calculator.css";
+import "@/components/design-shared/calendly.css";
 import "./page.css";
 
 export function RendezVousPage() {
@@ -26,7 +27,7 @@ export function RendezVousPage() {
           <div className="wrap c-hero-inner">
             <div className="c-hero-left">
               <div className="c-crumb">
-                <a href="/">Accueil</a>
+                <Link href="/">Accueil</Link>
                 <span className="sep">/</span>
                 <span>Rendez-vous</span>
               </div>

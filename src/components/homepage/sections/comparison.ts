@@ -24,11 +24,11 @@ export const comparisonHtml = `
         chez nous : <b>un SaaS métier ou outil interne PME — 8 à 15 écrans, authentification,
         paiements Stripe, dashboard, back-office, hébergement FR</b>. Un projet plus simple
         (landing, site vitrine) descend nettement, un projet plus complexe (multi-tenant, IA, marketplace)
-        monte. <b>Votre cas est chiffré individuellement</b> en 48 h après un cadrage de 30 min — ou en
-        5 min via notre estimateur en ligne.
+        monte. <b>Votre cas est chiffré individuellement</b> en 48 h après un cadrage de 30 min — vous
+        pouvez aussi décrire votre projet en 3 min et recevoir une réponse personnelle sous 24 h ouvrées.
       </p>
       <a href="/demarrer-un-projet" class="cmp-context-cta">
-        Estimer mon projet en 5 min
+        Décrire mon projet (3 min)
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -140,8 +140,8 @@ export const comparisonHtml = `
       <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
       <span>
         <b>Tous les chiffrages sont sur devis</b> — la fourchette ci-dessus n'a de sens que sur le projet-type cité.
-        Pour votre cas&nbsp;: <a href="/demarrer-un-projet">estimateur en ligne (5 min)</a> ou
-        <a href="#contact">cadrage 30 min avec un associé</a>.
+        Pour votre cas&nbsp;: <a href="/demarrer-un-projet">décrivez votre projet (3 min)</a> ou
+        <a href="#contact">réservez un cadrage de 30 min avec l'équipe</a>.
       </span>
     </div>
   </div>

@@ -21,7 +21,6 @@
     "cf:deploy": "opennextjs-cloudflare deploy"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.90.0",
     "@auth/drizzle-adapter": "^1.11.1",
     "@neondatabase/serverless": "^1.0.2",
     "@opennextjs/cloudflare": "^1.14.7",

@@ -572,17 +572,17 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 </span>
                 <span className="sf-tile-label">Tarifs</span>
               </Link>
-              <Link className="sf-tile" href="/outils/estimer-mon-projet">
+              <Link className="sf-tile" href="/demarrer-un-projet">
                 <span className="sf-tile-ic">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
                 </span>
-                <span className="sf-tile-label">Estimer mon projet</span>
+                <span className="sf-tile-label">Décrire mon projet</span>
               </Link>
-              <Link className="sf-tile" href="/outils">
+              <Link className="sf-tile" href="/outils/calculateur-cout-excel">
                 <span className="sf-tile-ic">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14.7 6.3a3 3 0 00-4.2 4.2l-7 7v3h3l7-7a3 3 0 004.2-4.2l-1.5 1.5-1.5-1.5 1.5-1.5z"/></svg>
                 </span>
-                <span className="sf-tile-label">Outils gratuits</span>
+                <span className="sf-tile-label">Calculateur coût Excel</span>
               </Link>
             </div>
 

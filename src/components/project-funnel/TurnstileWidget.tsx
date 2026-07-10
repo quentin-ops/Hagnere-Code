@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 // Public site key — exposable côté client. La secret key est server-only
-// (utilisée dans /api/estimate via verifyTurnstileToken).
+// (utilisée dans /api/project-inquiry via verifyTurnstileToken).
 const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "";
 const TURNSTILE_SCRIPT_SRC =
   "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
@@ -35,9 +35,10 @@ declare global {
 /**
  * Cloudflare Turnstile (CAPTCHA invisible / interaction-only).
  *
- * Anti-bot avant l'appel /api/estimate (qui coûte 0,30 € par call).
- * Le widget est rendu seulement si NEXT_PUBLIC_TURNSTILE_SITE_KEY est
- * présent — sinon on skip silencieusement (mode dev / setup pas fini).
+ * Anti-bot devant POST /api/project-inquiry (vérification fail-closed
+ * server-side). Le widget est rendu seulement si
+ * NEXT_PUBLIC_TURNSTILE_SITE_KEY est présent — sinon on skip
+ * silencieusement (mode dev / setup pas fini).
  *
  * `appearance: "interaction-only"` = invisible 99 % du temps, ne montre
  * un challenge que si Cloudflare a un signal de risque sur la session.
@@ -45,17 +46,33 @@ declare global {
  * Le parent reçoit le token via `onToken` quand validé. Le token expire
  * 5 min, donc on le rafraîchit si l'utilisateur reste longtemps sur la
  * page récap (geste rare en pratique).
+ *
+ * `resetKey` : les tokens sont à usage unique — le serveur les consomme
+ * en les vérifiant, même quand la requête échoue ensuite (validation,
+ * rate limit, Resend). Incrémenter `resetKey` après un échec d'envoi
+ * force un `turnstile.reset()` pour obtenir un token frais avant retry.
  */
 export function TurnstileWidget({
   onToken,
   onExpire,
+  resetKey = 0,
 }: {
   onToken: (token: string) => void;
   onExpire?: () => void;
+  resetKey?: number;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const [scriptLoaded, setScriptLoaded] = useState(false);
+  // Les callbacks vivent dans des refs : leur identité change à chaque
+  // render du parent et les mettre en deps de l'effet de rendu ferait
+  // détruire/recréer le widget Cloudflare en permanence.
+  const onTokenRef = useRef(onToken);
+  const onExpireRef = useRef(onExpire);
+  useEffect(() => {
+    onTokenRef.current = onToken;
+    onExpireRef.current = onExpire;
+  });
 
   // 1. Charge le script Turnstile une seule fois (dédupliqué si déjà DOM).
   // Le setState ici synchronise React avec le namespace global Cloudflare
@@ -110,9 +127,9 @@ export function TurnstileWidget({
       appearance: "interaction-only",
       theme: "light",
       size: "normal",
-      callback: (token) => onToken(token),
+      callback: (token) => onTokenRef.current(token),
       "expired-callback": () => {
-        if (onExpire) onExpire();
+        onExpireRef.current?.();
       },
       "error-callback": () => {
         // Log silencieux — Cloudflare retry automatiquement
@@ -130,7 +147,19 @@ export function TurnstileWidget({
         widgetIdRef.current = null;
       }
     };
-  }, [scriptLoaded, onToken, onExpire]);
+  }, [scriptLoaded]);
+
+  // 3. Reset explicite après un échec d'envoi (token consommé côté serveur).
+  useEffect(() => {
+    if (resetKey === 0) return;
+    if (widgetIdRef.current && window.turnstile) {
+      try {
+        window.turnstile.reset(widgetIdRef.current);
+      } catch {
+        /* widget déjà nettoyé */
+      }
+    }
+  }, [resetKey]);
 
   if (!SITE_KEY) return null;
 

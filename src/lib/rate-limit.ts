@@ -1,5 +1,5 @@
 /**
- * Per-IP, in-memory rate limit. Same pattern used in /api/estimate.
+ * Per-IP, in-memory rate limit.
  *
  * PER-INSTANCE caveat: Next.js can scale horizontally (Vercel/Cloudflare
  * Workers spawn new instances per cold start), so the effective limit is

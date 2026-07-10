@@ -5,12 +5,12 @@ export const miniAuditHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow on-dark">— Mini-audit de pré-qualification · 90 secondes</div>
-        <h2 style="color:#fff">Quel format d'audit<br>vous correspond&nbsp;? <span class="accent">Réponse en 90 s.</span></h2>
+        <div class="eyebrow on-dark">— Mini-audit de pré-qualification · 2 minutes</div>
+        <h2 style="color:#fff">Quel format d'audit<br>vous correspond&nbsp;? <span class="accent">Réponse en 2 min.</span></h2>
       </div>
       <div class="right" style="color:rgba(255,255,255,0.65)">
-        Cinq questions sur votre situation. <b style="color:#fff">Un score sur 100 et une recommandation de format</b>&nbsp;:
-        Express 8 k€, Standard 18 k€, Deep 38 k€ ou Tech DD M&amp;A 68 k€. Aucune donnée stockée sans votre accord.
+        Cinq questions sur votre situation. <b style="color:#fff">Un score et une recommandation de format</b>&nbsp;:
+        Express, Standard, Deep ou Tech DD M&amp;A — le chiffrage exact est établi sur devis, après échange. Aucune donnée stockée sans votre accord.
       </div>
     </div>
 
@@ -19,7 +19,7 @@ export const miniAuditHtml = `
       <div class="at-audit-progress">
         <div class="at-audit-progress-info">
           <span class="at-audit-step-label">Question <b data-audit-current>1</b> / 5</span>
-          <span class="at-audit-duration">⏱ 90 s max</span>
+          <span class="at-audit-duration">⏱ 2 min max</span>
         </div>
         <div class="at-audit-progress-bar">
           <div class="at-audit-progress-fill" data-audit-fill style="width: 20%"></div>
@@ -263,9 +263,9 @@ export const miniAuditHtml = `
     <!-- RESULT PANEL (hidden until computed) -->
     <div class="at-audit-result reveal" data-audit-result hidden>
       <div class="at-audit-result-head">
-        <div class="at-audit-result-badge" data-audit-badge>Standard recommandé</div>
+        <div class="at-audit-result-badge" data-audit-badge>Format Standard recommandé</div>
         <h3>Votre score&nbsp;: <span data-audit-score>0</span> / 160</h3>
-        <p data-audit-verdict>Selon votre profil, le format Standard (18 000 €, 10 jours ouvrés) couvre votre besoin. Détails ci-dessous.</p>
+        <p data-audit-verdict>Selon votre profil, le format Standard (10 jours ouvrés) couvre votre besoin. Chiffrage sur devis après échange. Détails ci-dessous.</p>
       </div>
 
       <!-- KPI cards -->
@@ -294,20 +294,11 @@ export const miniAuditHtml = `
         </div>
       </div>
 
-      <!-- Email capture + CTA -->
+      <!-- CTA -->
       <div class="at-audit-result-cta">
-        <form class="at-audit-email-form" data-audit-email-form>
-          <label class="at-audit-email-label">Recevoir un devis personnalisé + sample report par email</label>
-          <div class="at-audit-email-row">
-            <input type="email" placeholder="prenom@entreprise.fr" class="at-audit-email-input" data-audit-email required>
-            <button type="submit" class="btn btn-ghost at-audit-email-btn">
-              📩 Recevoir
-            </button>
-          </div>
-          <div class="at-audit-email-ack" data-audit-email-ack hidden>
-            ✓ Devis + sample envoyés. Check votre boîte (pensez aux spams).
-          </div>
-        </form>
+        <a href="/demarrer-un-projet" class="btn btn-ghost at-audit-cta">
+          Décrire mon projet (3 min) — réponse sous 24 h ouvrées
+        </a>
 
         <div class="at-audit-or">ou</div>
 
