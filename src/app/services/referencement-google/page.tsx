@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
 import { SeoReferencement } from "@/components/seo-referencement/SeoReferencement";
+import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "SEO & référencement Google · Hagnéré Code",
+  title: "Agence SEO PME · Forfaits dès 1 450 €/mois · Hagnéré Code",
   description:
-    "Accompagnement SEO pour PME et ETI : audit technique, stratégie sémantique, contenu éditorial expert, netlinking qualitatif, reporting business. Consultant senior dédié. Forfait 1 450 à 4 900 €/mois, engagement 3 mois puis mensuel.",
+    "SEO pour PME : +150 % de trafic en 9 mois. Consultant senior dédié, forfaits clairs de 1 450 à 4 900 €/mois, engagement limité à 3 mois.",
   alternates: { canonical: "/services/referencement-google" },
   openGraph: {
+    ...OG_BASE,
     title: "SEO & référencement Google — Hagnéré Code",
     description:
       "Consultant senior dédié, KPIs business, reporting mensuel. Audit 2 400 €, retainer 1 450–4 900 €/mois. 3 mois puis mois par mois.",
     url: "/services/referencement-google",
-    images: [
-      {
-        url: "/og-image-services.png",
-        width: 1200,
-        height: 630,
-        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
-      },
-    ],
-    type: "website",
+    images: [SERVICES_OG_IMAGE],
   },
+  twitter: { images: [SERVICES_OG_IMAGE.url] },
 };
 
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  name: "SEO & référencement Google pour PME et ETI",
+  url: "https://hagnere-code.fr/services/referencement-google",
   serviceType: "Accompagnement SEO et référencement Google pour PME et ETI",
   provider: {
     "@type": "Organization",
@@ -40,6 +37,7 @@ const serviceJsonLd = JSON.stringify({
       streetAddress: "7 rue Ernest Filliard",
       postalCode: "73000",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       addressCountry: "FR",
     },
     email: "quentin@hagnere-patrimoine.fr",

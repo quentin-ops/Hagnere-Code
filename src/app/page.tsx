@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { HomepageDesign } from "@/components/homepage/HomepageDesign";
+import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Hagnéré Code — Studio produit · SaaS & outils métier",
+  title: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
   description:
-    "Studio produit à Chambéry. Sites, applications métier et SaaS sur mesure, au forfait fixe, avec preuves internes assumées.",
+    "Studio à Chambéry : SaaS, applications métier et sites sur mesure au forfait fixe. Code livré chez vous, garantie 30 jours, réponse sous 24 h.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Hagnéré Code — Studio produit · SaaS & outils métier",
+    ...OG_BASE,
+    title: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
     description:
-      "Studio produit à Chambéry. SaaS, applications métier, outils internes, forfait fixe.",
+      "Studio à Chambéry : SaaS, applications métier et sites sur mesure au forfait fixe. Code livré chez vous, garantie 30 jours, réponse sous 24 h.",
     url: "/",
-    type: "website",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
@@ -27,7 +28,7 @@ const organizationJsonLd = {
   logo: "https://hagnere-code.fr/logos/logo-dark.png",
   image: "https://hagnere-code.fr/og-image.png",
   description:
-    "Studio de développement SaaS, applications métier, sites vitrines et outils internes. Laravel 13, Claude Code, forfait fixe. Basé à Chambéry.",
+    "Studio de développement SaaS, applications métier, sites vitrines et outils internes. Next.js, React, TypeScript, IA native, forfait fixe. Basé à Chambéry.",
   foundingDate: "2025-09-30",
   founder: {
     "@type": "Person",
@@ -70,9 +71,11 @@ const organizationJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": "https://hagnere-code.fr/#website",
   name: "Hagnéré Code",
   url: "https://hagnere-code.fr",
   inLanguage: "fr-FR",
+  publisher: { "@id": "https://hagnere-code.fr/#organization" },
 };
 
 const localBusinessJsonLd = {
@@ -121,13 +124,13 @@ export default function Home() {
   ]);
   return (
     <>
-      <Script
-        id="homepage-jsonld"
+      {/* JSON-LD inline dans le HTML initial : next/script beforeInteractive
+          n'est pas supporté hors root layout et n'émet pas de balise
+          application/ld+json parsable par les crawlers. */}
+      <script
         type="application/ld+json"
-        strategy="beforeInteractive"
-      >
-        {jsonLd}
-      </Script>
+        dangerouslySetInnerHTML={{ __html: jsonLd }}
+      />
       <HomepageDesign />
     </>
   );

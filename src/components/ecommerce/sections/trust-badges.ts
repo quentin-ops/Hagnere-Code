@@ -26,7 +26,7 @@ export const trustBadgesHtml = `
       <div class="ec-trust-card reveal reveal-d-2">
         <div class="ec-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
         <h4>Code à vous J+1</h4>
-        <p>Repo Git sur votre organisation dès J+1. Aucune licence propriétaire, aucun royalties, aucun outil Hagnéré obligatoire. Reprise possible par n'importe quelle ESN Laravel.</p>
+        <p>Repo Git sur votre organisation dès J+1. Aucune licence propriétaire, aucun royalties, aucun outil Hagnéré obligatoire. Reprise possible par n'importe quelle ESN React/Next.js.</p>
         <div class="ec-trust-foot">— Cession écrite au CGV</div>
       </div>
 
@@ -62,7 +62,7 @@ export const trustBadgesHtml = `
         <div class="ec-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
         <h4>30 jours de garantie bugs + monitoring</h4>
         <p>Sur bugs critiques, correction gratuite sous 48 h ouvrées, écriture de tests de non-régression. Monitoring Sentry + UptimeRobot 24/7 actif dès la mise en prod.</p>
-        <div class="ec-trust-foot">— SLA 4 h ouvrées sur bloquants</div>
+        <div class="ec-trust-foot">— Bugs bloquants pris en charge sous 4 h ouvrées, corrigés sous 48 h ouvrées</div>
       </div>
 
       <div class="ec-trust-card reveal">

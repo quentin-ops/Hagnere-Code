@@ -1,32 +1,29 @@
 import type { Metadata } from "next";
 import { OutilsInternes } from "@/components/outils-internes/OutilsInternes";
+import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Outils internes sur mesure · Sortir d'Excel · Hagnéré Code",
   description:
-    "Outils internes sur mesure pour PME et ETI : CRM métier, ERP léger, back-offices, automatisations. Intégrations Sage, Cegid, Pennylane, Salesforce. Forfait fixe 8–80 k€, livré en 2–12 semaines, hébergé en France.",
+    "CRM, ERP léger, back-office : remplacez Excel par un outil métier sur mesure. Forfait fixe de 8 à 80 k€, livré en 2 à 10 semaines, hébergé en France.",
   alternates: { canonical: "/services/outils-internes-sur-mesure" },
   openGraph: {
+    ...OG_BASE,
     title: "Outils internes sur mesure PME & ETI — Hagnéré Code",
     description:
       "Back-offices, CRM métier, ERP légers. Intégrations Sage, Cegid, Pennylane. Laravel 13 + IA. Forfait fixe, données en France.",
     url: "/services/outils-internes-sur-mesure",
-    images: [
-      {
-        url: "/og-image-services.png",
-        width: 1200,
-        height: 630,
-        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
-      },
-    ],
-    type: "website",
+    images: [SERVICES_OG_IMAGE],
   },
+  twitter: { images: [SERVICES_OG_IMAGE.url] },
 };
 
 // JSON-LD structured data
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  name: "Développement d'outils internes sur mesure pour PME et ETI",
+  url: "https://hagnere-code.fr/services/outils-internes-sur-mesure",
   serviceType: "Développement d'outils internes sur mesure pour PME et ETI",
   provider: {
     "@type": "Organization",
@@ -41,6 +38,7 @@ const serviceJsonLd = JSON.stringify({
       streetAddress: "7 rue Ernest Filliard",
       postalCode: "73000",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       addressCountry: "FR",
     },
     email: "quentin@hagnere-patrimoine.fr",

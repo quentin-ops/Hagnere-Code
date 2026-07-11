@@ -5,6 +5,10 @@ import { useMemo, useRef, useState, type FormEvent } from "react";
 import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { MainNav } from "@/components/design-shared/MainNav";
+import {
+  TurnstileWidget,
+  TURNSTILE_ENABLED,
+} from "@/components/project-funnel/TurnstileWidget";
 import "./excel-calculator.css";
 import "@/components/design-shared/responsive.css";
 import "@/components/design-shared/nav-dropdown.css";
@@ -67,6 +71,12 @@ export function ExcelCalculator() {
 
   // --- Email capture
   const [status, setStatus] = useState<CaptureStatus>({ kind: "idle" });
+  // Anti-bot Cloudflare Turnstile — /api/project-inquiry vérifie le token
+  // en fail-closed : sans lui, chaque envoi serait rejeté 403 en production.
+  // Même logique de bypass dev que le footer (SiteFooter.tsx).
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const isDev = process.env.NEXT_PUBLIC_ENV === "development";
+  const canSubmit = isDev || !TURNSTILE_ENABLED || turnstileToken !== null;
 
   async function onCapture(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -116,6 +126,7 @@ export function ExcelCalculator() {
           company,
           budget: result.totalYearCost > 20000 ? "15-30k" : "< 15k",
           message,
+          turnstileToken: turnstileToken || undefined,
         }),
       });
       if (!res.ok) throw new Error("fail");
@@ -372,10 +383,18 @@ export function ExcelCalculator() {
                 <input name="company" type="text" required autoComplete="organization" />
               </label>
 
+              {TURNSTILE_ENABLED && (
+                <TurnstileWidget
+                  onToken={setTurnstileToken}
+                  onExpire={() => setTurnstileToken(null)}
+                />
+              )}
+
               <button
                 type="submit"
                 className="btn btn-accent btn-lg calc-capture-submit"
-                disabled={status.kind === "submitting"}
+                disabled={status.kind === "submitting" || !canSubmit}
+                title={!canSubmit ? "Vérification anti-bot en cours…" : undefined}
               >
                 {status.kind === "submitting"
                   ? "Envoi en cours…"
@@ -387,7 +406,7 @@ export function ExcelCalculator() {
 
               {status.kind === "success" && (
                 <div className="calc-alert calc-alert-ok">
-                  ✓ Demande reçue. Un associé vous envoie le rapport sous 24 h.
+                  ✓ Demande reçue. Notre équipe vous envoie le rapport sous 24 h ouvrées.
                 </div>
               )}
               {status.kind === "error" && (
@@ -411,7 +430,14 @@ export function ExcelCalculator() {
               <div className="eyebrow">— Pour cadrer</div>
               <h2>Ce que ce calculateur ne dit pas.</h2>
               <p>
-                Un outil sur mesure ne remplace pas l&apos;Excel par magie. Il y a
+                Un{" "}
+                <Link
+                  href="/services/outils-internes-sur-mesure"
+                  style={{ textDecoration: "underline" }}
+                >
+                  outil sur mesure
+                </Link>{" "}
+                ne remplace pas l&apos;Excel par magie. Il y a
                 des coûts et des risques que ce calcul n&apos;intègre pas
                 volontairement, et qu&apos;on préfère discuter honnêtement avant
                 signature.
@@ -454,7 +480,7 @@ export function ExcelCalculator() {
           </div>
 
           <div className="calc-cta-back">
-            <Link href="/#contact" className="btn btn-primary btn-lg">
+            <Link href="/demarrer-un-projet" className="btn btn-primary btn-lg">
               Parler de mon projet avec un associé
               <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M13 5l7 7-7 7" />

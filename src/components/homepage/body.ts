@@ -171,12 +171,12 @@ export const bodyHtml = `${navHtml}
         </div>
 
         <div class="hv-orbit">
-          <span class="hv-orbit-ic hv-orbit-ic-laravel">
-            <img src="/logos/stack/laravel.svg" alt="Laravel" loading="lazy" decoding="async" />
+          <span class="hv-orbit-ic">
+            <img src="/logos/stack/nextjs.svg" alt="Next.js" loading="lazy" decoding="async" />
           </span>
           <div class="hv-orbit-body">
             <span class="hv-orbit-k">Back-end</span>
-            <span class="hv-orbit-v">Laravel 13</span>
+            <span class="hv-orbit-v">Next.js · Node</span>
           </div>
         </div>
 
@@ -201,7 +201,7 @@ export const bodyHtml = `${navHtml}
       <div class="lb-side">
         <div class="lb-kicker">Notre stack</div>
         <h3>Une stack <em>moderne</em>, choisie, maîtrisée.</h3>
-        <p>Pas de framework choisi pour faire joli. Un socle standard, maintenable et lisible par d'autres équipes : Laravel, React/Next, bases SQL, CI/CD, observabilité et agents IA modernes. Chaque brique a un rôle clair.</p>
+        <p>Pas de framework choisi pour faire joli. Un socle standard, maintenable et lisible par d'autres équipes : Next.js/React, TypeScript, bases SQL, CI/CD, observabilité et agents IA modernes. Chaque brique a un rôle clair.</p>
         <div class="lb-note">— Versions revues trimestriellement · sécurité et dépendances surveillées</div>
       </div>
 
@@ -210,8 +210,12 @@ export const bodyHtml = `${navHtml}
           <div class="lb-row-label">Back-end</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <img src="/logos/stack/laravel.svg" alt="Laravel" loading="lazy" decoding="async" />
-              Laravel 13 <span class="lb-chip-dim">PHP 8.4</span>
+              <img src="/logos/stack/nextjs.svg" alt="Next.js" loading="lazy" decoding="async" />
+              Next.js 16 <span class="lb-chip-dim">React 19 · Node</span>
+            </span>
+            <span class="lb-chip">
+              <img src="/logos/stack/typescript.svg" alt="TypeScript" loading="lazy" decoding="async" />
+              TypeScript <span class="lb-chip-dim">bout en bout</span>
             </span>
             <span class="lb-chip">
               <img src="/logos/stack/postgresql.svg" alt="PostgreSQL" loading="lazy" decoding="async" />
@@ -233,6 +237,10 @@ export const bodyHtml = `${navHtml}
               <img src="/logos/stack/mysql.svg" alt="MySQL" loading="lazy" decoding="async" />
               MySQL 8 <span class="lb-chip-dim">legacy &amp; métier</span>
             </span>
+            <span class="lb-chip">
+              <img src="/logos/stack/laravel.svg" alt="Laravel" loading="lazy" decoding="async" />
+              Laravel <span class="lb-chip-dim">reprises d'existant</span>
+            </span>
           </div>
         </div>
 
@@ -248,12 +256,8 @@ export const bodyHtml = `${navHtml}
               Next.js 16
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/livewire.svg" alt="Livewire" loading="lazy" decoding="async" />
-              Livewire 4
-            </span>
-            <span class="lb-chip">
-              <img src="/logos/stack/fluxui.png" alt="Flux UI" loading="lazy" decoding="async" />
-              Flux UI <span class="lb-chip-dim">composants</span>
+              <img src="/logos/stack/react.svg" alt="React Server Components" loading="lazy" decoding="async" />
+              React Server Components
             </span>
             <span class="lb-chip">
               <img src="/logos/stack/tailwindcss.svg" alt="Tailwind CSS" loading="lazy" decoding="async" />
@@ -423,7 +427,7 @@ export const bodyHtml = `${navHtml}
             Parler d'un outil sur mesure
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </span>
-          <span class="svc-hero-price">Projet cadré dès <b>25 k€</b></span>
+          <span class="svc-hero-price">Projet cadré dès <b>8 k€</b></span>
         </div>
       </div>
 
@@ -615,8 +619,9 @@ export const bodyHtml = `${navHtml}
         <h2>Décrivez-nous votre besoin.<br>On s'occupe du reste.</h2>
         <p>
           Pas besoin d'un cahier des charges de 80 pages. En <b>30 minutes d'appel</b>, on comprend
-          votre contexte, votre urgence, vos contraintes. Sous 48 heures, vous recevez une
-          <b>proposition chiffrée</b> claire avec périmètre, délai et budget fixe.
+          votre contexte, votre urgence, vos contraintes. Réponse argumentée sous <b>24 h ouvrées</b>,
+          fourchette et plan sous <b>48 h</b> après l'échange — le devis ferme est établi après le
+          Discovery Sprint (1 500 € HT, déduit à 100 % du forfait).
         </p>
         <ul class="chks">
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Un seul interlocuteur associé pendant toute la discussion</li>
@@ -683,7 +688,7 @@ export const bodyHtml = `${navHtml}
             <div class="dc-output-head">
               <div>
                 <div class="dc-q-tag">DEVIS CADRÉ · RÉF 2026-0247</div>
-                <div class="dc-q-title">Ce que vous recevez sous 48h</div>
+                <div class="dc-q-title">Votre devis ferme après le Discovery Sprint</div>
               </div>
               <div class="dc-q-logo">HC</div>
             </div>
@@ -702,7 +707,7 @@ export const bodyHtml = `${navHtml}
               <div class="dc-plan-card">
                 <span class="dc-plan-num">03</span>
                 <b>Engagement</b>
-                <p>5 semaines, équipe dédiée, budget verrouillé avant la première ligne de code.</p>
+                <p>5 semaines, équipe dédiée, budget verrouillé au Discovery Sprint, avant la première ligne de code.</p>
               </div>
             </div>
 
@@ -718,9 +723,9 @@ export const bodyHtml = `${navHtml}
                   <div class="dc-q-tsub">
                     <span><b>30 %</b> signature</span>
                     <span class="sep"></span>
-                    <span><b>40 %</b> mi-parcours</span>
+                    <span><b>30 %</b> mi-parcours</span>
                     <span class="sep"></span>
-                    <span><b>30 %</b> livraison</span>
+                    <span><b>40 %</b> livraison</span>
                   </div>
                   <div class="dc-q-footline">Hébergement 1 an · formation · 30 j de garantie · code sur votre Git</div>
                 </div>
@@ -736,7 +741,7 @@ export const bodyHtml = `${navHtml}
                 Obtenir mon cadrage
                 <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </a>
-              <div class="dc-action-note">30 min avec le gérant · devis sous 48h</div>
+              <div class="dc-action-note">30 min avec le gérant · fourchette sous 48 h · devis ferme après Discovery Sprint</div>
             </div>
           </div>
         </div>
@@ -778,7 +783,7 @@ export const bodyHtml = `${navHtml}
         </p>
         <div class="sf-proof-strip">
           <span><b>30 min</b> cadrage</span>
-          <span><b>48 h</b> devis</span>
+          <span><b>48 h</b> fourchette &amp; plan</span>
           <span><b>J+30</b> garantie</span>
         </div>
       </div>
@@ -861,7 +866,7 @@ export const bodyHtml = `${navHtml}
           <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
         </div>
         <h4>On vous renvoie un chiffrage clair.</h4>
-        <p>Sous <b>48 h</b> : périmètre, délai, budget forfaitaire. Pas de tarif à l'heure, pas de mauvaise surprise en fin de projet.</p>
+        <p>Réponse argumentée sous <b>24 h ouvrées</b>, fourchette et plan sous <b>48 h</b> après l'échange. Devis ferme après le Discovery Sprint (1 500 € HT, déduit à 100 %).</p>
         <div class="meth-foot">
           <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>48 h</div>
           <div class="meth-tag">Forfait fixe</div>
@@ -962,7 +967,7 @@ export const bodyHtml = `${navHtml}
         </div>
         <div class="real-body">
           <div class="real-meta">LARAVEL 12 <span class="dot"></span> SaaS B2C</div>
-          <p>Logiciel de comptabilité LMNP/LMP en ligne. L'IA guide l'investisseur dans sa liasse fiscale, amortissements, transmission EDI. 183 guides fiscaux rédigés, 7,2 M impressions Google sur 12 mois, +61 % de marge nette grâce à l'automatisation.</p>
+          <p>Logiciel de comptabilité LMNP/LMP en ligne. L'IA guide l'investisseur dans sa liasse fiscale, amortissements, transmission EDI. 163 guides fiscaux rédigés, 7,2 M impressions Google sur 12 mois, +61 % de marge nette grâce à l'automatisation.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">6<span class="s"> k+</span></div><div class="l">inscrits</div></div>
             <div class="rm"><div class="n">156<span class="s"> k</span></div><div class="l">clics SEO · 12 mois</div></div>
@@ -1018,7 +1023,7 @@ export const bodyHtml = `${navHtml}
           <span class="real-chip">SaaS B2C</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">LARAVEL 13 <span class="dot"></span> EDI DGFiP <span class="dot"></span> LIVRÉ AVRIL 2026</div>
+          <div class="real-meta">LARAVEL 12 <span class="dot"></span> EDI DGFiP <span class="dot"></span> LIVRÉ AVRIL 2026</div>
           <p>Logiciel de comptabilité SCI (IR et IS). Liasses 2033, 2065, 2072 générées et télétransmises. Gestion des associés, parts, comptes courants, démembrement et amortissements par composants.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">2</div><div class="l">régimes (IR/IS)</div></div>
@@ -1059,7 +1064,7 @@ export const bodyHtml = `${navHtml}
           <span class="real-chip">Site vitrine</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">LARAVEL <span class="dot"></span> SEO + ADS <span class="dot"></span> Site vitrine</div>
+          <div class="real-meta">NEXT.JS <span class="dot"></span> SEO + ADS <span class="dot"></span> Site vitrine</div>
           <p>Refonte complète du cabinet de gestion de patrimoine : site vitrine premium, prise de RDV, tunnel de qualification, stratégie SEO longue traîne et campagnes Google Ads sur les requêtes patrimoniales.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">1,46<span class="s"> M</span></div><div class="l">impressions · 12 mois</div></div>
@@ -1115,7 +1120,7 @@ export const bodyHtml = `${navHtml}
           <span class="real-chip">Site vitrine</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">LARAVEL <span class="dot"></span> SEO + ADS <span class="dot"></span> Site vitrine</div>
+          <div class="real-meta">NEXT.JS <span class="dot"></span> SEO + ADS <span class="dot"></span> Site vitrine</div>
           <p>Site marque du cabinet d'investissement immobilier clé en main. Funnel de qualification de prospects investisseurs, simulateur de rendement, prise de RDV, contenus YouTube intégrés.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">149</div><div class="l">logements rénovés</div></div>
@@ -1173,7 +1178,7 @@ export const bodyHtml = `${navHtml}
       </div>
       <div class="right">
         Pas de pool de freelances anonyme, pas de sous-traitance offshore.
-        Studio 7 personnes&nbsp;: <b>1 gérant + 3 CDI Laravel</b> à Chambéry +
+        Studio 7 personnes&nbsp;: <b>1 gérant + 3 CDI développeurs full-stack</b> à Chambéry +
         <b>3 freelances long-terme</b> intégrés à nos rituels, formés à Claude Code,
         rapides <em>et</em> autonomes sur vos projets.
       </div>
@@ -1225,7 +1230,8 @@ export const bodyHtml = `${navHtml}
           <h3>Un CTO, deux seniors CDI<br>et trois freelances long-terme,<br>augmentés par <em>Claude Code</em>.</h3>
           <p>
             <b>3 CDI</b> (Nicolas, Killian, Frédéric) et <b>3 freelances long-terme intégrés à nos rituels</b>
-            (Arthur, Ryan, Peter). Tous seniors ou confirmés, tous spécialisés en écosystème Laravel.
+            (Arthur, Ryan, Peter). Tous seniors ou confirmés, spécialisés React/Next.js et TypeScript,
+            avec une expertise Laravel pour les reprises d'existant.
             Le CTO apporte la vision transverse et le management tech, les devs la profondeur d'exécution.
             Et tous utilisent <b>Claude Code</b> comme assistant de développement : recherches, cadrage,
             architecture, plans d'implémentation. Résultat : <b>on pose moins de questions, on avance
@@ -1243,7 +1249,7 @@ export const bodyHtml = `${navHtml}
               </div>
             </div>
             <div class="eq-dev-spec">Vision architecture, management transverse, cadrage des projets complexes et revue de code senior.</div>
-            <div class="eq-dev-stack"><span>ARCHITECTURE</span><span>LARAVEL</span><span>MANAGEMENT</span></div>
+            <div class="eq-dev-stack"><span>ARCHITECTURE</span><span>TYPESCRIPT</span><span>MANAGEMENT</span></div>
           </div>
 
           <div class="eq-dev">
@@ -1251,11 +1257,11 @@ export const bodyHtml = `${navHtml}
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v2">AM</div><a class="eq-li-link" href="https://www.linkedin.com/in/arthurmonney/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Arthur Monney" title="LinkedIn Arthur Monney"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
               <div class="eq-dev-meta">
                 <div class="eq-dev-name">Arthur Monney<span class="eq-dev-tag">FREELANCE</span></div>
-                <div class="eq-dev-years">Senior Dev · Back-end Laravel · Freelance long-terme</div>
+                <div class="eq-dev-years">Senior Dev · Back-end · Freelance long-terme</div>
               </div>
             </div>
-            <div class="eq-dev-spec">Architecture Laravel, systèmes complexes, paiements et facturation.</div>
-            <div class="eq-dev-stack"><span>LARAVEL</span><span>STRIPE</span><span>MySQL</span></div>
+            <div class="eq-dev-spec">Architecture back-end, systèmes complexes, paiements et facturation. Reprises Laravel.</div>
+            <div class="eq-dev-stack"><span>TYPESCRIPT</span><span>STRIPE</span><span>LARAVEL</span></div>
           </div>
 
           <div class="eq-dev">
@@ -1263,11 +1269,11 @@ export const bodyHtml = `${navHtml}
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v3">FC</div><a class="eq-li-link" href="https://www.linkedin.com/in/frederic-curinckx/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Frédéric Curinckx" title="LinkedIn Frédéric Curinckx"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
               <div class="eq-dev-meta">
                 <div class="eq-dev-name">Frédéric Curinckx</div>
-                <div class="eq-dev-years">Senior Dev · Back-end Laravel · CDI</div>
+                <div class="eq-dev-years">Senior Dev · Full-stack · CDI</div>
               </div>
             </div>
-            <div class="eq-dev-spec">Laravel + Livewire, formulaires métier, interfaces temps-réel et queues.</div>
-            <div class="eq-dev-stack"><span>LARAVEL</span><span>LIVEWIRE</span><span>FLUX UI</span></div>
+            <div class="eq-dev-spec">Formulaires métier, interfaces temps-réel et queues — React Server Components, reprises Laravel/Livewire.</div>
+            <div class="eq-dev-stack"><span>REACT</span><span>NEXT.JS</span><span>LARAVEL</span></div>
           </div>
 
           <div class="eq-dev">
@@ -1275,11 +1281,11 @@ export const bodyHtml = `${navHtml}
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v4">RM</div><a class="eq-li-link" href="https://www.linkedin.com/in/ryan-mazzitelli-907716262/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Ryan Mazzitelli" title="LinkedIn Ryan Mazzitelli"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
               <div class="eq-dev-meta">
                 <div class="eq-dev-name">Ryan Mazzitelli<span class="eq-dev-tag">FREELANCE</span></div>
-                <div class="eq-dev-years">Senior Dev · Back-end Laravel · Freelance long-terme</div>
+                <div class="eq-dev-years">Senior Dev · Back-end & IA · Freelance long-terme</div>
               </div>
             </div>
-            <div class="eq-dev-spec">Laravel + intégrations IA, agents Claude, webhooks et APIs tierces.</div>
-            <div class="eq-dev-stack"><span>LARAVEL</span><span>CLAUDE</span><span>PRISM</span></div>
+            <div class="eq-dev-spec">Intégrations IA, agents Claude, webhooks et APIs tierces. Reprises Laravel.</div>
+            <div class="eq-dev-stack"><span>TYPESCRIPT</span><span>CLAUDE</span><span>LARAVEL</span></div>
           </div>
 
           <div class="eq-dev">
@@ -1287,11 +1293,11 @@ export const bodyHtml = `${navHtml}
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v5">KH</div><a class="eq-li-link" href="https://www.linkedin.com/in/killian-hoarau-960927138/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Killian Hoarau" title="LinkedIn Killian Hoarau"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
               <div class="eq-dev-meta">
                 <div class="eq-dev-name">Killian Hoarau</div>
-                <div class="eq-dev-years">Senior Dev · Back-end Laravel · CDI</div>
+                <div class="eq-dev-years">Senior Dev · Back-end & DevOps · CDI</div>
               </div>
             </div>
-            <div class="eq-dev-spec">Laravel + DevOps, sécurité, scalabilité, CI/CD et tests automatisés.</div>
-            <div class="eq-dev-stack"><span>LARAVEL</span><span>DOCKER</span><span>AWS</span></div>
+            <div class="eq-dev-spec">DevOps, sécurité, scalabilité, CI/CD et tests automatisés.</div>
+            <div class="eq-dev-stack"><span>TYPESCRIPT</span><span>DOCKER</span><span>AWS</span></div>
           </div>
 
           <div class="eq-dev">
@@ -1299,11 +1305,11 @@ export const bodyHtml = `${navHtml}
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v6">PS</div><a class="eq-li-link" href="https://www.codeur.com/-peterssk" target="_blank" rel="noopener noreferrer" aria-label="Profil Codeur Peter Sum Sie Kung" title="Profil Codeur Peter Sum Sie Kung"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a></div>
               <div class="eq-dev-meta">
                 <div class="eq-dev-name">Peter Sum Sie Kung<span class="eq-dev-tag">FREELANCE</span></div>
-                <div class="eq-dev-years">Dev confirmé · Back-end Laravel · Freelance long-terme</div>
+                <div class="eq-dev-years">Dev confirmé · Full-stack · Freelance long-terme</div>
               </div>
             </div>
-            <div class="eq-dev-spec">Full-stack PHP/Laravel/Symfony + React/Vue. Renforts API, modélisation BDD et intégrations.</div>
-            <div class="eq-dev-stack"><span>LARAVEL</span><span>SYMFONY</span><span>REACT</span></div>
+            <div class="eq-dev-spec">Full-stack React/Vue + PHP (Laravel, Symfony). Renforts API, modélisation BDD et intégrations.</div>
+            <div class="eq-dev-stack"><span>REACT</span><span>VUE.JS</span><span>LARAVEL</span></div>
           </div>
         </div>
 
@@ -1492,16 +1498,15 @@ export const bodyHtml = `${navHtml}
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Pourquoi Laravel et pas un autre framework ?
+          <div class="faq-q">Pourquoi Next.js et React ?
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Laravel est <b>notre framework de référence</b> pour les applications métier :
-            rapide à développer, facile à maintenir, compatible avec tous les devs PHP du marché. Sa
-            version 13 inclut une couche IA native qui accélère les agents, les workflows et
-            l'extraction documentaire. Et c'est open-source, donc pas de dépendance à un éditeur.
-            Next.js ou Rails auraient aussi très bien pu marcher — on a simplement choisi celui
-            qu'on maîtrise à fond.
+            Next.js et React sont <b>notre stack de référence</b> : TypeScript de bout en bout,
+            du formulaire à la base de données, et l'écosystème le plus large du marché — n'importe
+            quelle équipe React peut reprendre le code demain. Les performances statiques et le SSR
+            portent le SEO, et React Native mutualise le développement mobile avec le web.
+            Et si votre existant est en Laravel ou PHP, on le reprend et on l'audite aussi.
           </div>
         </div>
 
@@ -1549,7 +1554,7 @@ export const bodyHtml = `${navHtml}
   <div class="wrap inner">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:18px">Parlons de<br>votre projet.<br><span class="accent">30 min, c'est tout.</span></h2>
-    <p>Un call de cadrage gratuit avec un associé. Vous repartez avec un avis franc et, sous 48 h, un devis chiffré — sans engagement.</p>
+    <p>Un call de cadrage gratuit avec un associé. Vous repartez avec un avis franc et, sous 48 h, une fourchette et un plan — sans engagement.</p>
     <div class="fcta-cta">
       <a href="https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte" target="_blank" rel="noopener" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly
@@ -1607,7 +1612,7 @@ export const bodyHtml = `${navHtml}
     </div>
     <div class="foot-bot">
       <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
-      <div>BUILT WITH LARAVEL + CLAUDE CODE</div>
+      <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
     </div>
   </div>
 </footer>

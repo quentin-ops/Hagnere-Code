@@ -24,8 +24,8 @@ export const deriskHtml = `
         <h3>Forfait fixe contractuel · clause de pénalité.</h3>
         <p>
           Le périmètre est gelé au cadrage. Prix annoncé = prix final, <b>zéro avenant
-          sur le scope validé</b>. Des pénalités de retard sont écrites dans le contrat
-          dès J+7 au-delà de la date livrée.
+          sur le scope validé</b>. Des pénalités de retard sont écrites dans le contrat,
+          au-delà de 14 jours calendaires de retard sur la date de livraison contractuelle.
         </p>
         <div class="sa-derisk-proof">
           <span>✓ Devis au forfait</span>

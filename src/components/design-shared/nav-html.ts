@@ -75,7 +75,7 @@ function pane(args: {
         <div class="hc-mega-pane-eyebrow">${args.eyebrow}</div>
         <a class="hc-mega-pane-all" href="${args.seeAllHref}">${args.seeAllLabel} ${ICON.arrowRight}</a>
       </div>
-      <h3 class="hc-mega-pane-title">${args.title}</h3>
+      <p class="hc-mega-pane-title" role="presentation">${args.title}</p>
       <div class="hc-mega-pane-group">${args.groupLabel}</div>
       <div class="hc-mega-pane-grid">${args.cards}
       </div>
@@ -133,19 +133,20 @@ const PANE_CABINET = pane({
   cards:
     paneCard("/methode", ICON.methode, "Méthode", "Sprint Fixe™ : prix tenu, dates contractuelles.") +
     paneCard("/realisations", ICON.realisations, "Réalisations", "4 études détaillées · 22 projets livrés sur 23.") +
-    paneCard("/equipe", ICON.equipe, "Équipe", "1 gérant + 3 CDI Laravel + 3 freelances long-terme."),
+    paneCard("/equipe", ICON.equipe, "Équipe", "1 gérant + 3 CDI full-stack + 3 freelances long-terme."),
 });
 
 const PANE_OUTILS = pane({
   cat: "outils",
   eyebrow: "RESSOURCES",
-  title: "Démarrer un projet<br>et outils gratuits.",
-  seeAllHref: "/outils/calculateur-cout-excel",
-  seeAllLabel: "Voir le calculateur",
+  title: "Démarrer un projet,<br>guides et outils gratuits.",
+  seeAllHref: "/guides",
+  seeAllLabel: "Voir les guides",
   groupLabel: "DÉMARRER &amp; APPRENDRE",
   cards:
     paneCard("/demarrer-un-projet", ICON.estim, "Décrire mon projet", "3 minutes — réponse personnelle sous 24 h ouvrées.") +
-    paneCard("/outils/calculateur-cout-excel", ICON.excel, "Coût Excel", "Combien vous coûte vraiment votre Excel ?"),
+    paneCard("/guides", ICON.outils, "Guides web", "Budget, SEO, SaaS : guides pratiques et chiffrés.") +
+    paneCard("/outils/calculateur-cout-excel", ICON.excel, "Calculateur coût Excel", "Combien vous coûte vraiment votre Excel ?"),
 });
 
 export const navHtml = `<!-- NAV -->
@@ -209,9 +210,9 @@ export const navHtml = `<!-- NAV -->
     </div>
 
     <div class="hc-nav-actions">
-      <a href="${process.env.NEXT_PUBLIC_BACKOFFICE_URL || "http://localhost:8000"}" class="hc-nav-cta hc-nav-cta-icon" aria-label="Backoffice" title="Backoffice">
+      ${process.env.NEXT_PUBLIC_BACKOFFICE_URL ? `<a href="${process.env.NEXT_PUBLIC_BACKOFFICE_URL}" rel="nofollow noopener" class="hc-nav-cta hc-nav-cta-icon" aria-label="Backoffice" title="Backoffice">
         ${ICON.user}
-      </a>
+      </a>` : ""}
       <a href="/rendez-vous" class="hc-nav-cta hc-nav-cta-rdv">
         ${ICON.calendarCheck}<span>Rendez-vous</span>
       </a>

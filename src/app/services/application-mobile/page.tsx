@@ -1,31 +1,35 @@
 import type { Metadata } from "next";
 import { MobileApplication } from "@/components/application-mobile/MobileApplication";
+import { OG_BASE } from "@/lib/seo";
+
+const MOBILE_OG_IMAGE = {
+  url: "/og-image-services.png",
+  width: 1200,
+  height: 630,
+  alt: "Services Hagnéré Code — applications mobiles iOS & Android sur mesure",
+};
 
 export const metadata: Metadata = {
-  title: "Application mobile iOS & Android · Hagnéré Code",
+  title: "Création d'application mobile iOS & Android · Hagnéré Code",
   description:
-    "Création d'applications mobiles natives iOS + Android (React Native + Expo). Publiées sous vos comptes App Store & Google Play, code 100 % à vous. Forfait fixe sur devis après cadrage, livraison 8 à 20 semaines, 30 j de garantie post-stores.",
+    "Votre app iOS + Android sur les stores dès 12 semaines (React Native). Forfait fixe, code et comptes 100 % à vous, 30 jours de garantie.",
   alternates: { canonical: "/services/application-mobile" },
   openGraph: {
+    ...OG_BASE,
     title: "Application mobile iOS & Android — Hagnéré Code",
     description:
       "React Native + Expo, soumission App Store + Play Store incluse, comptes stores à votre nom, OTA updates en 10 min. Forfait fixe sur devis, livraison 8 à 20 semaines.",
     url: "/services/application-mobile",
-    images: [
-      {
-        url: "/og-image-services.png",
-        width: 1200,
-        height: 630,
-        alt: "Services Hagnéré Code — applications mobiles iOS & Android sur mesure",
-      },
-    ],
-    type: "website",
+    images: [MOBILE_OG_IMAGE],
   },
+  twitter: { images: [MOBILE_OG_IMAGE.url] },
 };
 
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  name: "Création d'application mobile iOS & Android sur mesure",
+  url: "https://hagnere-code.fr/services/application-mobile",
   serviceType:
     "Création d'applications mobiles natives iOS et Android sur mesure",
   provider: {
@@ -41,6 +45,7 @@ const serviceJsonLd = JSON.stringify({
       streetAddress: "7 rue Ernest Filliard",
       postalCode: "73000",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       addressCountry: "FR",
     },
     email: "quentin@hagnere-patrimoine.fr",

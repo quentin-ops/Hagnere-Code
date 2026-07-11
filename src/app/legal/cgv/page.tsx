@@ -1,32 +1,46 @@
 import type { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
 import { cgvSections } from "@/components/legal/content/cgv";
+import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 const LAST_UPDATED = "2026-04-26";
 
 export const metadata: Metadata = {
-  title: "Conditions générales de vente — Hagnéré Code",
+  title: "Conditions générales de vente · Hagnéré Code",
   description:
-    "Conditions générales applicables aux prestations de conseil, développement, audit, maintenance et évolution réalisées par HAGNÉRÉ CODE SAS.",
+    "CGV des prestations Hagnéré Code : forfaits fixes, propriété du code, réversibilité Git complète, garanties et clause RGPD (DPA art. 28).",
   alternates: { canonical: "/legal/cgv" },
   openGraph: {
-    title: "Conditions générales de vente — Hagnéré Code",
+    ...OG_BASE,
+    type: "article",
+    title: "Conditions générales de vente · Hagnéré Code",
     description:
       "Cadre contractuel général des prestations réalisées par HAGNÉRÉ CODE SAS.",
     url: "/legal/cgv",
-    type: "article",
+    images: [DEFAULT_OG_IMAGE],
   },
-  robots: { index: true, follow: true },
 };
+
+const breadcrumbJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
+    { "@type": "ListItem", position: 2, name: "Conditions générales de vente", item: "https://hagnere-code.fr/legal/cgv" },
+  ],
+});
 
 export default function Page() {
   return (
-    <LegalPageLayout
-      title={"Conditions\ngénérales."}
-      intro="Cadre général applicable aux prestations réalisées par HAGNÉRÉ CODE SAS, sauf conditions particulières prévues au devis ou au contrat."
-      lastUpdated={LAST_UPDATED}
-      breadcrumb="CGV"
-      sections={cgvSections}
-    />
+    <>
+      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <LegalPageLayout
+        title={"Conditions\ngénérales."}
+        intro="Cadre général applicable aux prestations réalisées par HAGNÉRÉ CODE SAS, sauf conditions particulières prévues au devis ou au contrat."
+        lastUpdated={LAST_UPDATED}
+        breadcrumb="CGV"
+        sections={cgvSections}
+      />
+    </>
   );
 }

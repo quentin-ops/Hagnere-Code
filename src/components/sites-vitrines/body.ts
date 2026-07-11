@@ -7,7 +7,7 @@ ${navHtml}
   <div class="crumb">
     <a href="/">Accueil</a>
     <span class="sep">/</span>
-    <a href="/#services">Services</a>
+    <a href="/services">Services</a>
     <span class="sep">/</span>
     <span style="color:var(--ink-3)">Sites vitrines &amp; landing pages</span>
   </div>
@@ -174,7 +174,7 @@ ${navHtml}
         <h2>Un site vitrine, ce n'est pas<br>juste une brochure en ligne.</h2>
       </div>
       <div class="right">
-        On construit des sites qui vendent vraiment : SEO technique de série, CWV verts,
+        On construit des sites qui vendent vraiment : <a href="/services/referencement-google">SEO technique</a> de série, CWV verts,
         CMS que vous éditez sans nous, formulaires branchés au CRM, tunnel de conversion pensé au pixel.
       </div>
     </div>
@@ -456,18 +456,18 @@ ${navHtml}
         <div class="eyebrow">— Notre stack</div>
         <h2 style="margin-top:14px">Une stack pensée<br>pour la vitesse.</h2>
         <p style="color:var(--mute);font-size:16px;margin-top:20px;max-width:480px">
-          Pour les sites vitrines et landing pages, on choisit <b>Next.js en pré-rendu statique (SSG)</b> : HTML livré en une requête, LCP sous 1 s, sécurité native, coût d'hébergement proche de zéro. Laravel arrive uniquement si vous avez besoin d'un back-office, d'espace client ou d'intégrations métier lourdes.
+          Pour les sites vitrines et landing pages, on choisit <b>Next.js en pré-rendu statique (SSG)</b> : HTML livré en une requête, LCP sous 1 s, sécurité native, coût d'hébergement proche de zéro. La même stack monte en gamme si vous avez besoin d'un back-office, d'un espace client ou d'intégrations métier lourdes.
         </p>
 
         <div class="stack-list">
           <div class="sl-row">
             <div class="sl-cat">BACKEND</div>
-            <div class="sl-val">Laravel 13 · PHP 8.4</div>
+            <div class="sl-val">Next.js 16 · TypeScript · Node · PostgreSQL</div>
             <div class="sl-note">TYPED · TESTED</div>
           </div>
           <div class="sl-row">
             <div class="sl-cat">FRONTEND WEB</div>
-            <div class="sl-val">React · Next.js · Livewire · Inertia · Tailwind</div>
+            <div class="sl-val">React 19 · Next.js · Tailwind</div>
             <div class="sl-note">SELON CAS</div>
           </div>
           <div class="sl-row">
@@ -477,7 +477,7 @@ ${navHtml}
           </div>
           <div class="sl-row">
             <div class="sl-cat">UI / BACK-OFFICE</div>
-            <div class="sl-val">Tailwind CSS · Filament · Flux UI</div>
+            <div class="sl-val">React 19 · Tailwind</div>
             <div class="sl-note">DESIGN SYSTEM</div>
           </div>
           <div class="sl-row">
@@ -487,17 +487,17 @@ ${navHtml}
           </div>
           <div class="sl-row">
             <div class="sl-cat">IA / LLM</div>
-            <div class="sl-val">Claude Opus 4.7 · GPT-4o · Embeddings · Prism</div>
+            <div class="sl-val">Claude Opus 4.7 · GPT-4o · Embeddings</div>
             <div class="sl-note">AGENTS TYPÉS</div>
           </div>
           <div class="sl-row">
             <div class="sl-cat">INFRA</div>
-            <div class="sl-val">Laravel Cloud · Scaleway · Vercel · AWS</div>
+            <div class="sl-val">Vercel · Cloudflare · Scaleway · AWS</div>
             <div class="sl-note">DONNÉES EN FRANCE</div>
           </div>
           <div class="sl-row">
             <div class="sl-cat">OBSERVABILITÉ</div>
-            <div class="sl-val">Sentry · Pulse · Horizon</div>
+            <div class="sl-val">Sentry · Monitoring applicatif · Files Redis</div>
             <div class="sl-note">ALERTES 24/7</div>
           </div>
         </div>
@@ -511,7 +511,7 @@ ${navHtml}
             <div class="mark">HC<span class="dot">.</span></div>
           </div>
           <div class="orbit-node" style="top:2%;left:50%;transform:translateX(-50%)">
-            <span class="nd" style="background:#FF2D20"></span>Laravel
+            <span class="nd" style="background:#0A0A0A"></span>Next.js
           </div>
           <div class="orbit-node" style="top:22%;right:-10px">
             <span class="nd" style="background:#61DAFB"></span>React / Next
@@ -554,7 +554,7 @@ ${navHtml}
     </div>
 
     <div class="scase-grid">
-      <a class="scase reveal" href="/realisations">
+      <a class="scase reveal" href="/realisations/lmnp-ai">
         <div class="scase-shot">
           <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#F5F5F5">
             <rect width="600" height="380" fill="#F5F5F5"/>
@@ -576,7 +576,7 @@ ${navHtml}
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>SaaS B2C</span><span class="tag-stack">Laravel · Livewire</span><span>— en production</span></div>
+          <div class="scase-meta"><span>SaaS B2C</span><span class="tag-stack">IA native · Stripe</span><span>— en production</span></div>
           <h3>LMNP.AI</h3>
           <p>Comptabilité fiscale automatisée pour loueurs meublés. Extraction de factures et génération de liasse 2031 par IA.</p>
           <div class="scase-metric">
@@ -586,7 +586,7 @@ ${navHtml}
         </div>
       </a>
 
-      <a class="scase reveal reveal-d-1" href="/realisations">
+      <a class="scase reveal reveal-d-1" href="/realisations/sci-ai">
         <div class="scase-shot">
           <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#0A0A0A">
             <rect width="600" height="380" fill="#0A0A0A"/>
@@ -614,7 +614,7 @@ ${navHtml}
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>SaaS B2B</span><span class="tag-stack">Laravel · Inertia</span><span>— levée en cours</span></div>
+          <div class="scase-meta"><span>SaaS B2B</span><span class="tag-stack">IA native</span><span>— levée en cours</span></div>
           <h3>Comptabilité AI</h3>
           <p>Comptabilité en partie double pour PME avec bilan automatisé par IA. Positionnement Blue Ocean.</p>
           <div class="scase-metric">
@@ -705,7 +705,7 @@ ${navHtml}
     </div>
 
     <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
-      <b style="color:var(--ink)">Tous les forfaits incluent</b> : propriété complète du code · repo Git sur votre compte · hébergement 12 mois inclus · formation · 30 jours de garantie post-livraison · <b style="color:var(--ink)">paiement 30 / 40 / 30</b>.
+      <b style="color:var(--ink)">Tous les forfaits incluent</b> : propriété complète du code · repo Git sur votre compte · hébergement 12 mois inclus · formation · 30 jours de garantie post-livraison · <b style="color:var(--ink)">paiement 30 / 30 / 40</b>.
     </p>
   </div>
 </section>
@@ -727,7 +727,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Le délai dépend du périmètre</b> — landing page, site corporate 10–20 pages avec blog et SEO technique, ou plateforme multilingue. Au cadrage, on chiffre le projet et on contractualise une date de livraison ferme, avec <b>pénalité de 7 % du forfait par semaine de retard au-delà de J+14</b>.
+            <b>Le délai dépend du périmètre</b> — landing page, site corporate 10–20 pages avec blog et SEO technique, ou plateforme multilingue. Au cadrage, on chiffre le projet et on contractualise une date de livraison ferme, avec <b>pénalité de 7 % du forfait par semaine, au-delà de 14 jours calendaires de retard sur la date de livraison contractuelle</b>.
           </div>
         </div>
 
@@ -827,7 +827,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Acompte <b>30 %</b> à la signature du devis, <b>40 %</b> à la validation du design Figma, <b>30 %</b> à la mise en ligne. Devis + contrat signés électroniquement (Yousign). Facturation SAS française avec TVA 20 %. Jamais de demande de paiement avant la signature du devis détaillé.
+            Acompte <b>30 %</b> à la signature du devis, <b>30 %</b> à la validation du design Figma, <b>40 %</b> à la mise en ligne. Devis + contrat signés électroniquement (Yousign). Facturation SAS française avec TVA 20 %. Jamais de demande de paiement avant la signature du devis détaillé.
           </div>
         </div>
       </div>
@@ -869,7 +869,7 @@ ${navHtml}
       <div class="foot-cols">
         <div class="foot-col">
           <h5>SERVICES</h5>
-          <a href="/services/saas-applications-metier">Sites vitrines &amp; landing pages</a>
+          <a href="/services/saas-applications-metier">SaaS &amp; applications métier</a>
           <a href="/services/outils-internes-sur-mesure">Outils internes</a>
           <a href="/services/sites-vitrines">Sites vitrines</a>
           <a href="/services/referencement-google">SEO</a>
@@ -898,7 +898,7 @@ ${navHtml}
     </div>
     <div class="foot-bot">
       <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
-      <div>BUILT WITH LARAVEL + CLAUDE CODE</div>
+      <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
     </div>
   </div>
 </footer>

@@ -9,6 +9,6 @@
 import { navHtml } from "@/components/design-shared/nav-html";
 
 export function MainNav() {
-  // eslint-disable-next-line react/no-danger
+   
   return <div dangerouslySetInnerHTML={{ __html: navHtml }} />;
 }

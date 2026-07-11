@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
 import { ContenuVideo } from "@/components/contenu-video/ContenuVideo";
+import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Studio contenu & vidéo · YouTube, motion, IA · Hagnéré Code",
   description:
-    "Studio tech + contenu + IA : YouTube founder-led, motion design, UGC, vidéo produit. Pipeline Claude + Runway + ElevenLabs, 3× plus rapide qu'un studio classique. Forfait mensuel affiché, basé à Chambéry.",
+    "Vidéos YouTube, motion design et UGC produits 3× plus vite grâce à notre pipeline IA. Dès 2 500 €/vidéo, masters et rushes 100 % à vous.",
   alternates: { canonical: "/services/contenu-video" },
   openGraph: {
+    ...OG_BASE,
     title: "Studio contenu & vidéo — Hagnéré Code",
     description:
       "Studio FR qui code et filme. Pipeline IA audité (Claude, Runway, ElevenLabs, HeyGen), motion natif web, forfait mensuel transparent.",
     url: "/services/contenu-video",
-    images: [
-      {
-        url: "/og-image-services.png",
-        width: 1200,
-        height: 630,
-        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
-      },
-    ],
-    type: "website",
+    images: [SERVICES_OG_IMAGE],
   },
+  twitter: { images: [SERVICES_OG_IMAGE.url] },
 };
 
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  name: "Production de contenu et vidéo avec pipeline IA",
+  url: "https://hagnere-code.fr/services/contenu-video",
   serviceType: "Production de contenu et vidéo avec pipeline IA",
   provider: {
     "@type": "Organization",
@@ -40,6 +37,7 @@ const serviceJsonLd = JSON.stringify({
       streetAddress: "7 rue Ernest Filliard",
       postalCode: "73000",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       addressCountry: "FR",
     },
     email: "quentin@hagnere-patrimoine.fr",
@@ -48,81 +46,137 @@ const serviceJsonLd = JSON.stringify({
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Studio hybride tech + contenu + IA : production de vidéos YouTube, motion design, UGC, product demos, interviews founder. Pipeline IA avec Claude (scripts), Runway Gen-4 (b-roll), ElevenLabs v3 (voix multilingues), HeyGen (avatars), Descript (post-production). Forfait mensuel transparent.",
+  // Offres alignées sur les 4 cartes visibles de la section Forfaits & tarifs
+  // (consigne Google : le balisage doit refléter le contenu affiché).
   offers: [
     {
       "@type": "Offer",
-      name: "Sprint vidéo",
-      price: "4000",
+      name: "Vidéo ponctuelle",
+      price: "2500",
       priceCurrency: "EUR",
       description:
-        "Lot ponctuel de vidéos courtes (UGC, product demo, motion). Script, tournage ou capture, montage, livrables web/social. Sur 2 à 4 semaines.",
+        "1 vidéo unique, sans engagement mensuel : 1 brief & 1 script, montage Premiere Pro senior, 1 version longue + 3 shorts, livraison en 10-14 jours.",
     },
     {
       "@type": "Offer",
-      name: "Retainer mensuel",
+      name: "YouTube Founder — retainer mensuel",
+      price: "3500",
+      priceCurrency: "EUR",
+      description:
+        "Chaîne YouTube clé en main pour CEO / expert : 1 h de tournage par semaine, 4 vidéos longues + 16 shorts par mois, scripts + thumbnails A/B, publication & VidIQ. Engagement 6 mois.",
+    },
+    {
+      "@type": "Offer",
+      name: "Content Retainer — pipeline mensuel",
       price: "6900",
       priceCurrency: "EUR",
       description:
-        "Pipeline contenu mensuel : 1 vidéo founder-led + 4 à 8 formats courts. Briefs, tournage, montage, motion, distribution. Forfait fixe mensuel, engagement 3 mois.",
+        "Pipeline industriel pour marques DTC / SaaS : ~25 livrables par mois (12 ads, 8 UGC, 4 motion + 2 vidéos e-com), localisation FR/EN/DE, dashboard ROAS mensuel. Engagement 6 mois.",
     },
     {
       "@type": "Offer",
-      name: "Studio premium",
-      price: "12000",
+      name: "Studio dédié — sur-mesure",
       priceCurrency: "EUR",
       description:
-        "Production éditoriale étendue : YouTube hebdo + UGC + ads + product. Avec dédié rédaction + motion + post-prod. Pour scale-up et marques DTC.",
+        "Brand film hero, campagne multi-canaux, volumes hors cadre : équipe dédiée 2-4 personnes, tournage multi-jours, motion custom. Sur devis, à partir de 15 k€.",
     },
   ],
 });
 
+// FAQ alignée mot pour mot sur les 10 questions visibles de la section FAQ
+// (consigne Google : un FAQPage doit reprendre le contenu affiché sur la page).
 const faqJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "Vous filmez sur place ou tout est tourné en studio ?",
+      name: "Qui monte réellement mes vidéos — un humain ou Opus Clip ?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Les deux selon le format. Founder-led et interviews : on se déplace dans vos bureaux ou on capte en visio HD selon la qualité visée. UGC et product demos : capture d'écran + voix off ou tournage léger. Motion : 100 % studio.",
+          "Un monteur senior humain sur Premiere Pro, toujours. On a deux monteurs seniors en interne (10+ ans chacun), jamais d'auto-cut algorithmique livré brut. L'IA (Descript, Opus Clip, Claude) sert d'accélérateur sur les sous-titres, les rushs secs, les scripts — pas de remplacement du montage.",
       },
     },
     {
       "@type": "Question",
-      name: "Quelle est la part d'IA dans votre pipeline ?",
+      name: "Combien de temps avant la première livraison ?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "L'IA accélère les tâches répétitives (transcription, sous-titrage multilingue, b-roll génératif, voix de doublage), mais l'écriture éditoriale, le montage final et la direction artistique restent humains. Aucun deepfake ni avatar trompeur.",
+          "Première vidéo livrée à J+14 après signature (cadrage + 1 tournage + 1 cycle de montage). La cadence pleine du retainer démarre au mois 2. Pour une vidéo ponctuelle (2 500 €), 10 à 14 jours entre brief validé et livraison.",
       },
     },
     {
       "@type": "Question",
-      name: "Vous prenez en charge la diffusion (YouTube, ads, social) ?",
+      name: "Pourquoi un engagement de 6 mois sur les retainers ?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui sur le retainer et le studio premium : programmation YouTube, snippets pour ads (Meta, TikTok, LinkedIn), exports formats verticaux, vignettes A/B testées. Pas de gestion de comptes ads (voir service Publicité en ligne).",
+          "Parce que la vidéo est un jeu de consistance, pas un coup unique. Les premiers résultats (CTR stabilisé, rétention YouTube, ROAS Meta) se voient à 3-4 mois minimum. 6 mois nous permet aussi de bloquer les créneaux monteurs et d'investir dans votre charte visuelle. Pas de retainer < 6 mois — sinon, prenez la vidéo ponctuelle à 2 500 €.",
       },
     },
     {
       "@type": "Question",
-      name: "Pourquoi un retainer plutôt qu'un projet one-shot ?",
+      name: "Qu'est-ce qui se passe si je ne suis pas satisfait après 3 mois ?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Le contenu performe par la régularité, pas la perfection. Un retainer garantit un pipeline mensuel stable, des itérations basées sur la performance réelle (vues, engagement, leads) et un coût de production amorti. Pour un one-shot ponctuel, on propose le Sprint vidéo.",
+          "Revue de pilotage à 3 mois avec KPIs chiffrés. Si les jalons ne sont pas atteints, on ajuste la stratégie sans frais. Si vous voulez sortir, on arrête à 6 mois comme prévu — rushs, projets Premiere, licences musique, tout vous est livré. Pas de lock-in, pas de royalties.",
       },
     },
     {
       "@type": "Question",
-      name: "Qui est propriétaire des vidéos et des rushes ?",
+      name: "Vous garantissez un nombre de vues ou un ROAS ?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Vous, à 100 %. Tous les masters, rushes, fichiers projet motion, voix générées, scripts vous sont remis sur votre Drive ou DAM à chaque livraison. Aucune licence, aucun royalties, aucun lock-in studio.",
+          "Non, et personne de sérieux ne garantit un chiffre précis sur la vidéo. Trop de variables : votre sujet, votre niche, la saisonnalité, les algos YouTube / Meta. On garantit la cadence, la qualité éditoriale, les délais contractuels et le reporting mensuel. Si la trajectoire dérape, on adapte sans refacturer.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Je n'ai pas de studio ni de matos — je dois en acheter ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Non. Deux options : (1) vous tournez face cam iPhone chez vous — on vous envoie un kit lumière + micro RØDE Wireless Pro (offert, vous gardez). (2) vous venez tourner à notre studio Chambéry — fond blanc ou scène éditoriale, caméras Sony FX3/A7S III, lumières Aputure. Pas besoin d'investir en matos.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "On a déjà des vidéos qui traînent — vous pouvez repartir de ça ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Oui. Audit des rushs / webinars / vieux contenus inclus dans le cadrage. On repackage ce qui est exploitable en shorts, clips LinkedIn, extraits ads. Un vieux webinar d'1 h peut sortir 20+ shorts. On utilise Descript + Opus Clip pour le premier tri, humain pour la validation.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Le dashboard mensuel, c'est juste un PDF ou c'est live ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Looker Studio connecté à YouTube Studio, Meta Ads Manager, TikTok Ads, GA4, VidIQ. Accès 24/7, URL partagée à votre équipe, pas de PDF qui prend la poussière. On y pose aussi les objectifs et la trajectoire pour que vous puissiez juger à froid. Revue commentée 1 fois par mois en visio avec le DA et le media buyer.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Si on part, on récupère quoi ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Tout : rushs originaux (vidéo + son), projets Premiere Pro & After Effects, assets motion, templates thumbnails Figma, scripts validés, prompts Claude, clone de voix ElevenLabs si vous l'avez activé, fichiers VidIQ. Passation de 2 semaines incluse avec transfert docs + 1 call avec le prestataire suivant si besoin.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Combien ça coûte de vraiment démarrer ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "2 500 € pour une vidéo ponctuelle sans engagement (pour tester notre patte). 3 500 à 6 900 €/mois pour un retainer (engagement 6 mois). À partir de 15 k€ pour un pack sur-mesure (brand film, campagne hero). Les prix sont affichés sur la section Forfaits & tarifs, pas de « sur devis » caché.",
       },
     },
   ],

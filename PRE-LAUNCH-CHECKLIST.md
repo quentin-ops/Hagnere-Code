@@ -33,7 +33,7 @@ métriques IA ne seront pas persistées.
 | `GROQ_API_KEY` | Clé Groq prod | Transcription audio `/api/transcribe`. |
 | `CONTACT_TO_EMAIL` | `hello@hagnere-code.fr` | Destinataire interne formulaire. |
 | `CONTACT_FROM_EMAIL` | `contact@hagnere-code.fr` | Expéditeur Resend (doit être DKIM-validé). |
-| `NEXT_PUBLIC_CALENDLY_URL` | URL Calendly réelle | Optionnel — fallback `https://calendly.com/hagnere-code/30min`. |
+| `NEXT_PUBLIC_CALENDLY_URL` | URL Calendly réelle | Optionnel — fallback `https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte`. |
 | `NEXT_PUBLIC_COOKIE_BANNER` | `0` (par défaut désactivé) | Mettre `1` le jour où un outil analytique est ajouté (Plausible, GA, etc.). |
 | `TURNSTILE_SECRET_KEY` | Secret Cloudflare Turnstile | Anti-bot sur `/api/project-inquiry` et `/api/transcribe`. Requis en prod (fail-closed) ; l'absence n'est tolérée qu'en dev (`NEXT_PUBLIC_ENV=development`). |
 
@@ -53,16 +53,16 @@ Trois fichiers physiques sont référencés mais absents :
 
 - `/public/og-image.png` (1200 × 630) — utilisé partout dans les `openGraph`.
 - `/public/apple-touch-icon.png` (180 × 180) — référencé dans `layout.tsx`.
-- `/public/cookieconsent.css` — déjà copié ✅ (32 ko, copié depuis `vanilla-cookieconsent`).
 - `/public/logos/logo-dark.png` — déjà présent ✅.
 
 Tant que les deux PNG manquants ne sont pas produits, les partages réseaux
 sociaux n'auront pas d'image et iOS affichera un favicon dégradé.
 
 ### 5. Vérifier l'URL Calendly
-`https://calendly.com/hagnere-code/30min` est codée en dur dans le footer
-React et utilisée comme fallback. Vérifier que ce slug existe sur le compte
-Calendly. Sinon, créer le créneau ou définir `NEXT_PUBLIC_CALENDLY_URL`.
+`https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte`
+est codée en dur dans le footer React et utilisée comme fallback. Vérifier que
+ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
+`NEXT_PUBLIC_CALENDLY_URL`.
 
 ## ⚖️ VOLET LÉGAL — état complet
 
@@ -86,7 +86,7 @@ Calendly. Sinon, créer le créneau ou définir `NEXT_PUBLIC_CALENDLY_URL`.
 - ✅ Headers : HSTS preload, CSP, X-Frame, X-Content-Type, Permissions-Policy
 - ✅ Validation phone serveur
 - ✅ Logs PII : email haché en base64url tronqué (jamais en clair)
-- ✅ Bannière cookies pré-installée (`vanilla-cookieconsent` v3) — désactivée par défaut, prête à être activée via `NEXT_PUBLIC_COOKIE_BANNER=1`
+- ✅ Bannière cookies maison (`CookieBanner.tsx`, RGPD) — désactivée par défaut, prête à être activée via `NEXT_PUBLIC_COOKIE_BANNER=1`
 
 ### Risques sectoriels
 - ✅ Mention AMF / "performances passées non garanties / capital non garanti" sur les cas `hagnere-investissement` et `hagnere-patrimoine` + bannière dédiée en bas de page
@@ -130,8 +130,8 @@ Calendly. Sinon, créer le créneau ou définir `NEXT_PUBLIC_CALENDLY_URL`.
 - [ ] `/demarrer-un-projet` (funnel complet)
 - [ ] `/outils` + `/outils/calculateur-cout-excel`
 - [ ] `/outils/estimer-mon-projet` (redirect 308 vers /demarrer-un-projet)
-- [ ] `/blog` (redirect vers /guide)
-- [ ] `/guide`
+- [ ] `/blog` (redirect 308 vers /)
+- [ ] `/guide` (redirect 308 vers /guides)
 - [ ] `/legal/mentions`
 - [ ] `/legal/cgv` (sections art. 28, confidentialité, force majeure, réversibilité)
 - [ ] `/legal/confidentialite` (DPO, durées tableau, IA, transferts UE, sous-traitants tableau)

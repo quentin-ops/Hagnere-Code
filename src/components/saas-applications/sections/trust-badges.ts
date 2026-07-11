@@ -36,7 +36,7 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
         </div>
         <h4>Forfait fixe contractuel</h4>
-        <p>Le prix du devis est le prix final. <b>Aucun avenant</b> sur le périmètre validé au cadrage. Pénalité de 7 % du forfait par semaine de retard au-delà de J+14.</p>
+        <p>Le prix du devis est le prix final. <b>Aucun avenant</b> sur le périmètre validé au cadrage. Pénalité de 7 % du forfait par semaine, au-delà de 14 jours calendaires de retard sur la date de livraison contractuelle.</p>
         <div class="sa-trust-foot">— Clause de pénalité dans le contrat</div>
       </div>
 
@@ -55,7 +55,7 @@ export const trustBadgesHtml = `
         </div>
         <h4>30 jours de garantie bugs</h4>
         <p>Sur tout bug critique, écriture de tests de non-régression incluse. Après, maintenance mensuelle optionnelle, sans engagement de durée.</p>
-        <div class="sa-trust-foot">— SLA 4 h ouvrées sur bugs bloquants</div>
+        <div class="sa-trust-foot">— Bugs bloquants pris en charge sous 4 h ouvrées, corrigés sous 48 h ouvrées</div>
       </div>
 
       <div class="sa-trust-card reveal reveal-d-1">
@@ -72,7 +72,7 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22V15"/></svg>
         </div>
         <h4>Partenaire techno vérifié</h4>
-        <p>Stack : <b>Laravel 13</b>, <b>React / Next.js</b>, <b>Stripe</b>, <b>Claude Opus 4.7</b>, <b>OVH / Scaleway</b>. Équipe formée aux dernières versions stables.</p>
+        <p>Stack : <b>Next.js</b>, <b>React</b>, <b>TypeScript</b>, <b>Stripe</b>, <b>Claude</b>. Équipe formée aux dernières versions stables.</p>
         <div class="sa-trust-foot">— Mise à jour trimestrielle</div>
       </div>
 

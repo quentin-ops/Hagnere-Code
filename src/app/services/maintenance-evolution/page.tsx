@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
 import { MaintenanceEvolution } from "@/components/maintenance-evolution/MaintenanceEvolution";
+import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "TMA SaaS · Maintenance & évolution · Hagnéré Code",
+  title: "Maintenance applicative & TMA · SLA 99,95 % · Hagnéré Code",
   description:
-    "TMA applicative : monitoring 24/7, patches CVE < 48 h, évolutions continues, infra ops. Équipe nommée au contrat, forfait fixe, SLA 99,5–99,95 % avec pénalités auto.",
+    "TMA au forfait fixe dès 2 500 €/mois : monitoring 24/7, patchs CVE sous 48 h, équipe nommée au contrat, SLA jusqu'à 99,95 % avec pénalités.",
   alternates: { canonical: "/services/maintenance-evolution" },
   openGraph: {
+    ...OG_BASE,
     title: "Maintenance & évolution — Hagnéré Code",
     description:
       "SLA 99,5–99,95 % avec pénalités. Deploys hebdo, CVE patchés sous 48 h, forfait fixe mensuel. Reprise d'apps orphelines en 5 jours.",
     url: "/services/maintenance-evolution",
-    images: [
-      {
-        url: "/og-image-services.png",
-        width: 1200,
-        height: 630,
-        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
-      },
-    ],
-    type: "website",
+    images: [SERVICES_OG_IMAGE],
   },
+  twitter: { images: [SERVICES_OG_IMAGE.url] },
 };
 
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  name: "Maintenance applicative (TMA) et évolution continue",
+  url: "https://hagnere-code.fr/services/maintenance-evolution",
   serviceType:
     "Tierce maintenance applicative (TMA) et évolution de logiciels SaaS avec SLA contractuel",
   provider: {
@@ -41,6 +38,7 @@ const serviceJsonLd = JSON.stringify({
       streetAddress: "7 rue Ernest Filliard",
       postalCode: "73000",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       addressCountry: "FR",
     },
     email: "quentin@hagnere-patrimoine.fr",

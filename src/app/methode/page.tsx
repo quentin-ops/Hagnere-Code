@@ -1,26 +1,28 @@
 import type { Metadata } from "next";
 import { MethodePage } from "@/components/methode/MethodePage";
+import { OG_BASE } from "@/lib/seo";
+
+const METHODE_OG_IMAGE = {
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Sprint Fixe™ — méthode propriétaire Hagnéré Code (forfait fixe, démos vendredi, code J+1)",
+};
 
 export const metadata: Metadata = {
-  title: "Sprint Fixe™ — Notre méthode · Hagnéré Code",
+  title: "Notre méthode au forfait fixe : Sprint Fixe™ · Hagnéré Code",
   description:
-    "Forfait fixe contractuel, démos chaque vendredi, Discovery Sprint déduit, Claude Code en multiplicateur. Méthode, garanties, journal des démos, FAQ contre-objections.",
+    "Prix annoncé = prix payé, sinon chaque semaine de retard est offerte. Démos tous les vendredis, code chez vous dès J+1, garantie 30 jours.",
   alternates: { canonical: "/methode" },
   openGraph: {
+    ...OG_BASE,
     title: "Sprint Fixe™ — La méthode Hagnéré Code",
     description:
       "Forfait fixe contractuel, démos hebdo, code chez vous J+1. La méthode qui livre dans le budget annoncé.",
     url: "/methode",
-    type: "website",
-    images: [
-      {
-        url: "/illustrations/methode-sprint.png",
-        width: 1024,
-        height: 1024,
-        alt: "Sprint Fixe™ — méthode propriétaire Hagnéré Code (forfait fixe, démos vendredi, code J+1)",
-      },
-    ],
+    images: [METHODE_OG_IMAGE],
   },
+  twitter: { images: [METHODE_OG_IMAGE] },
 };
 
 const howToJsonLd = JSON.stringify({
@@ -137,7 +139,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "On code en Laravel 13 + Livewire/React par défaut. Si vous avez un existant en .NET / Node / Python qu'on devrait étendre, on vous le dit honnêtement : on n'est pas la bonne équipe et on vous oriente vers des confrères spécialisés. En revanche, si vous voulez ré-écrire from scratch ou ajouter un outil nouveau à côté de votre existant, Laravel marche très bien — vos deux outils communiquent par API.",
+          "On code en Next.js + React (TypeScript) par défaut. On reprend aussi l'existant Laravel/PHP — audit, maintenance, évolutions. Si vous avez un existant en .NET / Node / Python qu'on devrait étendre, on vous le dit honnêtement : on n'est pas la bonne équipe et on vous oriente vers des confrères spécialisés. En revanche, si vous voulez ré-écrire from scratch ou ajouter un outil nouveau à côté de votre existant, Next.js marche très bien — vos deux outils communiquent par API.",
       },
     },
     {
@@ -155,7 +157,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Vous gardez tout : repo Git sur votre compte dès J+1, hébergement à votre nom, documentation à jour, runbook ops. N'importe quelle autre équipe Laravel peut reprendre votre projet en moins de 5 jours. Pas de lock-in technique, pas de royalties, pas de dépendance.",
+          "Vous gardez tout : repo Git sur votre compte dès J+1, hébergement à votre nom, documentation à jour, runbook ops. N'importe quelle équipe React/Next.js peut reprendre le code en moins de 5 jours. Pas de lock-in technique, pas de royalties, pas de dépendance.",
       },
     },
   ],

@@ -4,11 +4,11 @@ export const checklistHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ce que "un SaaS Hagnéré" veut dire</div>
+        <div class="eyebrow">— Ce que "un site Hagnéré" veut dire</div>
         <h2>Douze briques incluses<br>dans chaque livraison.</h2>
       </div>
       <div class="right">
-        "On fait un SaaS" c'est trop vague. Voilà la liste exacte de ce qui rentre dans
+        "On fait un site vitrine" c'est trop vague. Voilà la liste exacte de ce qui rentre dans
         le forfait — et ce qui n'y rentre pas. Pas d'avenant surprise à J+60.
       </div>
     </div>
@@ -26,51 +26,51 @@ export const checklistHtml = `
         <ul class="sv-check-list">
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Architecture multi-tenant</b> — plusieurs clients finaux sur un seul code, isolation des données, déploiement par sous-domaine ou custom domain.</div>
+            <div><b>Design system sur mesure</b> — direction artistique, maquettes Figma validées, composants réutilisables, révisions cadrées incluses.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Auth complète + SSO</b> — email, Google, Microsoft, Apple, SAML entreprise, invitations, récupération de mot de passe, 2FA.</div>
+            <div><b>CMS headless &amp; édition autonome</b> — Sanity ou Strapi, interface simple pour votre équipe marketing, formation 2 h + guide PDF + vidéo.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Facturation SaaS Stripe</b> — plans, essais gratuits, proratas up/downgrade, webhooks, relances, portail client Stripe, factures PDF.</div>
+            <div><b>Formulaires connectés à votre CRM</b> — HubSpot, Brevo ou Salesforce, anti-spam, notifications, chaque lead atterrit au bon endroit.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Permissions RGPD-ready (CNIL 2024)</b> — équipes, rôles, droits par ressource, délégation, audit log horodaté.</div>
+            <div><b>SEO technique complet</b> — schema.org, sitemap, robots.txt, redirections 301, Open Graph, structure Hn et maillage interne propres.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Onboarding guidé</b> — tunnel d'inscription, données de démo, checklist premier usage, emails de démarrage.</div>
+            <div><b>Analytics &amp; tracking propres</b> — GA4 ou Plausible, events de conversion, consentement conforme, tableau de bord lisible.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Back-office admin Filament</b> — impersonation support, stats de santé, gestion utilisateurs, feature flags, overrides.</div>
+            <div><b>Pages locales &amp; SEO local</b> — pages villes ou agences, schema LocalBusiness, cohérence Google Business Profile.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Emails transactionnels</b> — templates versionnés, analytics d'ouverture, DKIM/SPF/DMARC, anti-bounce.</div>
+            <div><b>Multi-langue prêt à l'emploi</b> — hreflang, URLs localisées, gestion des traductions directement dans le CMS.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Conformité RGPD clé en main</b> — DPA, registre, cookies, export &amp; droit à l'oubli, sous-traitants.</div>
+            <div><b>Performance mesurée</b> — Next.js statique, Lighthouse ≥ 95 mobile, LCP &lt; 1,5 s, images optimisées, CDN.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Observabilité</b> — Sentry erreurs, Pulse perfs, Horizon queues, logs structurés, alertes 24/7.</div>
+            <div><b>Accessibilité RGAA / WCAG 2.1 AA</b> — contrastes, navigation clavier, aria, alternatives textuelles, audit Lighthouse + axe.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Infra hébergée en France</b> — Scaleway/OVH, chiffrement AES-256, sauvegardes toutes les 15 min, TLS 1.3.</div>
+            <div><b>Conformité RGPD clé en main</b> — bannière cookies conforme, politique de confidentialité, registre, sous-traitants documentés.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>CI/CD + tests + Docker</b> — GitHub Actions, tests unitaires &amp; end-to-end, déploiement zéro-downtime, rollback 1 clic.</div>
+            <div><b>Hébergement 12 mois + monitoring</b> — Vercel ou OVH à votre nom, TLS, uptime monitoring, sauvegardes du CMS.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Documentation + formation</b> — README technique, guides d'exploitation, journée de passation, repo Git livré chez vous.</div>
+            <div><b>Documentation + garantie 30 jours</b> — README technique, formation, repo Git chez vous, bugs bloquants pris en charge sous 4 h ouvrées.</div>
           </li>
         </ul>
       </div>
@@ -87,27 +87,27 @@ export const checklistHtml = `
         <ul class="sv-check-list sv-check-list-out">
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Acquisition marketing</b> — SEO, Ads, outbound, cold emails : c'est nos <b>autres services</b>, pas dans le dev.</div>
+            <div><b>Acquisition marketing</b> — SEO éditorial continu, Ads, outbound : c'est nos <b>autres services</b>, pas dans le forfait site.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Comptes développeur Apple / Google</b> — vous les ouvrez (c'est rapide), on publie les apps mobiles dessus.</div>
+            <div><b>Rédaction complète des contenus</b> — les textes viennent de vous ; option rédaction SEO à la page si besoin.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Support utilisateur final</b> — c'est vous (ou une équipe dédiée). On livre un back-office support, pas des agents humains.</div>
+            <div><b>Shooting photo / vidéo</b> — on part de vos visuels ou de banques premium ; photographe partenaire sur demande.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Migrations massives de données tierces</b> — scoping séparé si &gt; 100k enregistrements ou structure exotique.</div>
+            <div><b>Création de logo &amp; identité de marque</b> — on intègre votre charte existante ; la créer est une mission design séparée.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Certifications lourdes</b> — SOC2, ISO 27001, HDS : on prépare le terrain, l'audit officiel est chez un tiers habilité.</div>
+            <div><b>E-commerce complet</b> — panier, paiement, stock : c'est notre offre e-commerce dédiée, pas le forfait vitrine.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Garanties business</b> — on livre un produit solide, pas des promesses d'ARR. Le marché, c'est votre job.</div>
+            <div><b>Garanties business</b> — on livre un site rapide et propre, pas des promesses de leads. Le marché, c'est votre job.</div>
           </li>
         </ul>
 

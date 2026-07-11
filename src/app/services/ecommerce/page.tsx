@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
 import { Ecommerce } from "@/components/ecommerce/Ecommerce";
+import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "E-commerce sur mesure · Alternative Shopify · Hagnéré Code",
   description:
-    "Boutiques e-commerce sur mesure : Next.js + Laravel 13 + React Native. Intégrations FR natives (Stripe, Alma, Colissimo, Sage, Pennylane, Chorus Pro). Forfait fixe 15-70 k€, zéro % sur vos ventes. Factur-X 2026-ready.",
+    "Boutique e-commerce sur mesure, 0 % de commission sur vos ventes. Stripe, Alma, Colissimo intégrés, Factur-X 2026 natif, forfait fixe de 15 à 70 k€.",
   alternates: { canonical: "/services/ecommerce" },
   openGraph: {
+    ...OG_BASE,
     title: "Boutique e-commerce sur mesure — Hagnéré Code",
     description:
       "Alternative Shopify Plus pour PME/ETI : Next.js + Laravel + IA Claude + app mobile React Native. Forfait fixe, 0 % sur vos ventes. Factur-X, Chorus Pro, intégrations FR natives.",
     url: "/services/ecommerce",
-    images: [
-      {
-        url: "/og-image-services.png",
-        width: 1200,
-        height: 630,
-        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
-      },
-    ],
-    type: "website",
+    images: [SERVICES_OG_IMAGE],
   },
+  twitter: { images: [SERVICES_OG_IMAGE.url] },
 };
 
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  name: "Développement de boutiques e-commerce sur mesure",
+  url: "https://hagnere-code.fr/services/ecommerce",
   serviceType:
     "Développement de boutiques e-commerce sur mesure pour PME et ETI",
   provider: {
@@ -41,6 +38,7 @@ const serviceJsonLd = JSON.stringify({
       streetAddress: "7 rue Ernest Filliard",
       postalCode: "73000",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       addressCountry: "FR",
     },
     email: "quentin@hagnere-patrimoine.fr",

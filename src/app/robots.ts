@@ -15,10 +15,11 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/legal/draft/"],
+        // Ne pas bloquer /_next/ : Google a besoin du CSS/JS et de
+        // /_next/image pour rendre et indexer correctement les pages.
+        disallow: ["/api/"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
-    host: baseUrl,
   };
 }

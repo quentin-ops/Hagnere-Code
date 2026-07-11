@@ -1,26 +1,28 @@
 import type { Metadata } from "next";
 import { EquipePage } from "@/components/equipe/EquipePage";
+import { OG_BASE } from "@/lib/seo";
+
+const EQUIPE_OG_IMAGE = {
+  url: "/illustrations/equipe-atmosphere.png",
+  width: 1792,
+  height: 1024,
+  alt: "L'équipe Hagnéré Code — 3 CDI + 3 freelances long-terme, zéro pool anonyme, stack maîtrisée",
+};
 
 export const metadata: Metadata = {
-  title: "L'équipe — 7 personnes · 3 CDI à Chambéry · Hagnéré Code",
+  title: "L'équipe · Développeurs full-stack à Chambéry · Hagnéré Code",
   description:
-    "Un gérant associé codeur, un CTO et 5 développeurs Laravel — 3 CDI à Chambéry et 3 freelances long-terme intégrés à nos rituels. Pas d'offshore, pas de pool anonyme. L'équipe qui construit votre produit.",
+    "1 gérant qui code, 1 CTO et 5 développeurs full-stack seniors — 3 CDI à Chambéry, zéro offshore. Les noms de votre équipe figurent dans le devis.",
   alternates: { canonical: "/equipe" },
   openGraph: {
+    ...OG_BASE,
     title: "L'équipe Hagnéré Code · 7 personnes seniors · 3 CDI à Chambéry",
     description:
-      "1 gérant associé codeur + 3 CDI (CTO + 2 devs) + 3 freelances long-terme intégrés. Tous seniors ou confirmés, écosystème Laravel. Augmentés par Claude Code.",
+      "1 gérant associé codeur + 3 CDI (CTO + 2 devs) + 3 freelances long-terme intégrés. Tous seniors ou confirmés, écosystème React/Next.js (et Laravel pour les reprises). Augmentés par Claude Code.",
     url: "/equipe",
-    type: "website",
-    images: [
-      {
-        url: "/illustrations/equipe-atmosphere.png",
-        width: 1792,
-        height: 1024,
-        alt: "L'équipe Hagnéré Code — 3 CDI + 3 freelances long-terme, zéro pool anonyme, stack maîtrisée",
-      },
-    ],
+    images: [EQUIPE_OG_IMAGE],
   },
+  twitter: { images: [EQUIPE_OG_IMAGE] },
 };
 
 const orgJsonLd = JSON.stringify({
@@ -68,13 +70,13 @@ const orgJsonLd = JSON.stringify({
     {
       "@type": "Person",
       name: "Frédéric Curinckx",
-      jobTitle: "Senior Dev — Back-end Laravel + Livewire (CDI)",
+      jobTitle: "Développeur full-stack senior (CDI)",
       sameAs: ["https://www.linkedin.com/in/frederic-curinckx/"],
     },
     {
       "@type": "Person",
       name: "Killian Hoarau",
-      jobTitle: "Senior Dev — Back-end Laravel + DevOps (CDI)",
+      jobTitle: "Développeur back-end senior + DevOps (CDI)",
       sameAs: ["https://www.linkedin.com/in/killian-hoarau-960927138/"],
     },
   ],
@@ -82,19 +84,19 @@ const orgJsonLd = JSON.stringify({
     {
       "@type": "Person",
       name: "Arthur Monney",
-      jobTitle: "Senior Dev Back-end Laravel — Paiements (Freelance long-terme)",
+      jobTitle: "Développeur back-end senior — Paiements (Freelance long-terme)",
       sameAs: ["https://www.linkedin.com/in/arthurmonney/"],
     },
     {
       "@type": "Person",
       name: "Ryan Mazzitelli",
-      jobTitle: "Senior Dev Back-end Laravel — IA / Agents (Freelance long-terme)",
+      jobTitle: "Développeur back-end senior — IA / Agents (Freelance long-terme)",
       sameAs: ["https://www.linkedin.com/in/ryan-mazzitelli-907716262/"],
     },
     {
       "@type": "Person",
       name: "Peter Sum Sie Kung",
-      jobTitle: "Dev confirmé Back-end Laravel — Full-stack PHP/JS (Freelance long-terme)",
+      jobTitle: "Développeur full-stack confirmé (Freelance long-terme)",
       sameAs: ["https://www.codeur.com/-peterssk"],
     },
   ],

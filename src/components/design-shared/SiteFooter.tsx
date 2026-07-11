@@ -451,7 +451,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
               </Link>
               <p>
                 Studio de développement SaaS, applications métier et
-                outils internes, basé à Chambéry. Laravel 13, Claude Code,
+                outils internes, basé à Chambéry. Next.js, React, Claude Code,
                 forfait fixe.
               </p>
               <div className="sf-foot-trust">
@@ -471,9 +471,9 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
             </Link>
           </div>
 
-          {/* ── Row 2 : Services (10 tuiles, plein largeur) ───────── */}
+          {/* ── Row 2 : Services (11 tuiles, plein largeur) ───────── */}
           <div className="sf-foot-services">
-            <h5>Services</h5>
+            <p className="sf-foot-title">Services</p>
             <div className="sf-tile-grid sf-tile-grid-services">
               <Link className="sf-tile" href="/services/saas-applications-metier">
                 <span className="sf-tile-ic">
@@ -509,13 +509,13 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 <span className="sf-tile-ic">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>
                 </span>
-                <span className="sf-tile-label">SEO</span>
+                <span className="sf-tile-label">SEO &amp; référencement</span>
               </Link>
               <Link className="sf-tile" href="/services/publicite-en-ligne">
                 <span className="sf-tile-ic">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 11v2a4 4 0 004 4l9 4V5L7 9a4 4 0 00-4 2z"/><path d="M11 18v2"/></svg>
                 </span>
-                <span className="sf-tile-label">Publicité Ads</span>
+                <span className="sf-tile-label">Publicité en ligne</span>
               </Link>
               <Link className="sf-tile" href="/services/contenu-video">
                 <span className="sf-tile-ic">
@@ -533,7 +533,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 <span className="sf-tile-ic">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0115-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 01-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
                 </span>
-                <span className="sf-tile-label">Maintenance</span>
+                <span className="sf-tile-label">Maintenance &amp; évolution</span>
               </Link>
               <Link className="sf-tile" href="/services/audit-technique">
                 <span className="sf-tile-ic">
@@ -547,7 +547,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
           {/* ── Row 3 : Studio | Contact | Légal ─────────────────── */}
           <div className="sf-foot-cols">
             <div className="sf-foot-col">
-              <h5>Studio</h5>
+              <p className="sf-foot-title">Studio</p>
               <Link className="sf-tile" href="/methode">
                 <span className="sf-tile-ic">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
@@ -584,10 +584,16 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 </span>
                 <span className="sf-tile-label">Calculateur coût Excel</span>
               </Link>
+              <Link className="sf-tile" href="/guides">
+                <span className="sf-tile-ic">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                </span>
+                <span className="sf-tile-label">Guides web</span>
+              </Link>
             </div>
 
             <div className="sf-foot-col">
-              <h5>Contact</h5>
+              <p className="sf-foot-title">Contact</p>
               <a className="sf-tile" href="mailto:quentin@hagnere-patrimoine.fr">
                 <span className="sf-tile-ic">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
@@ -605,6 +611,18 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
                 </span>
                 <span className="sf-tile-label">Formulaire projet</span>
+              </Link>
+              <Link className="sf-tile" href="/contact">
+                <span className="sf-tile-ic">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+                </span>
+                <span className="sf-tile-label">Page contact</span>
+              </Link>
+              <Link className="sf-tile" href="/rendez-vous">
+                <span className="sf-tile-ic">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9 16l2 2 4-4"/></svg>
+                </span>
+                <span className="sf-tile-label">Rendez-vous 30 min</span>
               </Link>
               <a
                 className="sf-tile"
@@ -626,7 +644,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
             </div>
 
             <div className="sf-foot-col">
-              <h5>Légal</h5>
+              <p className="sf-foot-title">Légal</p>
               <Link className="sf-tile" href="/legal/mentions">
                 <span className="sf-tile-ic">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
@@ -677,7 +695,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
               993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z · 7 rue Ernest Filliard, 73000
               Chambéry
             </div>
-            <div>BUILT WITH LARAVEL + CLAUDE CODE</div>
+            <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
           </div>
         </div>
       </footer>

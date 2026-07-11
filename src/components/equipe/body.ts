@@ -26,7 +26,7 @@ ${navHtml}
         et qui reste vos interlocuteurs après.
       </p>
       <div class="ehero-cta">
-        <a href="/#contact" class="btn btn-accent btn-lg">
+        <a href="#contact" class="btn btn-accent btn-lg">
           Rencontrer l'équipe
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
@@ -217,7 +217,7 @@ ${navHtml}
           <p>
             Quentin a fondé <b>3 entreprises</b> dans le patrimoine et le conseil, dont 2 cabinets
             toujours actifs aujourd'hui. Il code en parallèle depuis plus de 10 ans : front-end,
-            design, intégration, back-office Laravel. Le déclic Hagnéré Code est venu
+            design, intégration, back-offices React/Next.js. Le déclic Hagnéré Code est venu
             quand il s'est rendu compte qu'<b>aucune agence ne savait construire un outil métier
             sans le réduire à un cahier des charges</b>. D'où le studio.
           </p>
@@ -228,7 +228,7 @@ ${navHtml}
           <ul class="founder-list">
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> <b>Discovery &amp; cadrage métier</b> — c'est lui qui pose les bonnes questions.</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> <b>Design produit (Figma)</b> — wireframes, parcours, design system.</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> <b>Intégration front-end</b> — Tailwind, Livewire, animations.</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> <b>Intégration front-end</b> — Tailwind, React, animations.</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> <b>Interlocuteur unique</b> — du brief à la livraison, et après.</li>
           </ul>
         </div>
@@ -244,9 +244,9 @@ ${navHtml}
           <div class="founder-stack-row">
             <span class="founder-stack-tag mono">Figma</span>
             <span class="founder-stack-tag mono">Tailwind</span>
-            <span class="founder-stack-tag mono">Livewire</span>
-            <span class="founder-stack-tag mono">Laravel 13</span>
-            <span class="founder-stack-tag mono">Filament</span>
+            <span class="founder-stack-tag mono">React</span>
+            <span class="founder-stack-tag mono">Next.js</span>
+            <span class="founder-stack-tag mono">TypeScript</span>
           </div>
         </div>
       </div>
@@ -575,11 +575,11 @@ ${navHtml}
       <div class="stack-row">
         <div class="stack-row-k">FRONT-END</div>
         <div class="stack-row-v">
+          <span class="sk-chip mono">React 19</span>
+          <span class="sk-chip mono">Next.js 16</span>
+          <span class="sk-chip mono">TypeScript</span>
           <span class="sk-chip mono">Tailwind CSS</span>
-          <span class="sk-chip mono">Livewire</span>
-          <span class="sk-chip mono">Flux UI</span>
-          <span class="sk-chip mono">Alpine.js</span>
-          <span class="sk-chip mono">React / Next.js</span>
+          <span class="sk-chip mono">Radix UI</span>
           <span class="sk-chip mono">React Native + Expo</span>
         </div>
       </div>
@@ -587,12 +587,12 @@ ${navHtml}
       <div class="stack-row">
         <div class="stack-row-k">BACK-END</div>
         <div class="stack-row-v">
-          <span class="sk-chip mono">Laravel 13</span>
-          <span class="sk-chip mono">PHP 8.4</span>
-          <span class="sk-chip mono">Filament</span>
-          <span class="sk-chip mono">Eloquent</span>
-          <span class="sk-chip mono">Octane</span>
-          <span class="sk-chip mono">Horizon / Pulse</span>
+          <span class="sk-chip mono">Next.js 16 · Node</span>
+          <span class="sk-chip mono">TypeScript</span>
+          <span class="sk-chip mono">Drizzle ORM</span>
+          <span class="sk-chip mono">Auth.js</span>
+          <span class="sk-chip mono">React Server Components</span>
+          <span class="sk-chip mono">Laravel / PHP (reprises)</span>
         </div>
       </div>
 
@@ -852,7 +852,7 @@ ${navHtml}
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3z"/></svg>
         </div>
         <h4>Pas de sous-traitance anonyme</h4>
-        <p>Aucun pool de freelances anonyme, aucun offshore, aucun white-label. Chaque personne qui touche votre code est <b>nommée</b>, intégrée à nos rituels et signe un NDA — 1 gérant + 3 CDI Laravel à Chambéry + 3 freelances long-terme (Arthur, Ryan, Peter), point.</p>
+        <p>Aucun pool de freelances anonyme, aucun offshore, aucun white-label. Chaque personne qui touche votre code est <b>nommée</b>, intégrée à nos rituels et signe un NDA — 1 gérant + 3 CDI full-stack à Chambéry + 3 freelances long-terme (Arthur, Ryan, Peter), point.</p>
       </div>
 
       <div class="val-card reveal reveal-d-2">
@@ -964,7 +964,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— Questions fréquentes</div>
         <h2 style="margin-top:14px">Sur l'équipe.<br>Et la collaboration.</h2>
-        <p>Manquante ? <a href="/#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a>, on répond sous 24 h ouvrées.</p>
+        <p>Manquante ? <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a>, on répond sous 24 h ouvrées.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
@@ -989,7 +989,7 @@ ${navHtml}
           </div>
           <div class="faq-a">
             <b>Pas de pool de freelances anonymes, jamais.</b> Studio 7 personnes&nbsp;:
-            <b>1 gérant + 3 CDI Laravel à Chambéry</b> (Quentin, Nicolas CTO, Frédéric, Killian)
+            <b>1 gérant + 3 CDI full-stack à Chambéry</b> (Quentin, Nicolas CTO, Frédéric, Killian)
             + <b>3 freelances long-terme nommément identifiés</b> (Arthur Monney et Ryan Mazzitelli en seniors,
             Peter Sum Sie Kung en dev confirmé), tous intégrés à nos rituels (daily, code review, démo client),
             tous sous NDA, tous présents sur cette page. Pas de sous-traitance offshore, pas de white-label,
@@ -1030,7 +1030,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>5 ans et plus</b> pour tous les CDI (fondateur, CTO, quatre seniors Laravel).
+            <b>5 ans et plus</b> pour tous les CDI (fondateur, CTO, quatre seniors full-stack).
             Notre freelance long-terme Peter est <b>dev confirmé</b> (3+ ans XP) et travaille
             <b>toujours sous revue de code</b> du CTO et d'un senior — il n'est jamais seul
             décisionnaire sur un projet. Personne en stage, personne en alternance, personne en

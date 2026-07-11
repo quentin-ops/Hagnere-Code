@@ -20,7 +20,7 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Migrations Laravel versionnées</b> + review en pair avant merge. Déploiement
+          <b>Migrations SQL versionnées (Drizzle)</b> + review en pair avant merge. Déploiement
           zero-downtime (expand / migrate / contract) pour les schémas sensibles. Pour les
           très grosses tables, on utilise <b>pt-online-schema-change</b> ou des colonnes temporaires
           backfillées en batch via queue, jamais de ALTER bloquant en prod.
@@ -34,7 +34,7 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Laravel Horizon + Redis</b>. Queues séparées par criticité (default, notifications,
+          <b>Files d'attente Redis</b>. Queues séparées par criticité (default, notifications,
           ai-heavy, exports). <b>Retries exponentiels</b>, dead-letter queue sur échec définitif,
           alerting Sentry + Pulse sur backlog &gt; X. Les jobs IA coûteux tournent sur
           une queue dédiée avec rate-limit + timeout strict pour ne jamais bloquer l'API.
@@ -61,7 +61,7 @@ export const techFaqHtml = `
         </div>
         <div class="faq-a">
           <b>Sentry</b> pour les erreurs (front + back + mobile) avec context riche (user,
-          tenant, release). <b>Laravel Pulse</b> pour perfs &amp; slow queries. <b>Horizon</b>
+          tenant, release). <b>Monitoring applicatif</b> pour perfs &amp; slow queries. <b>Horizon</b>
           pour les queues. <b>Logs structurés JSON</b> (Monolog → stdout → agrégateur).
           <b>PostHog</b> pour les events produit. Alerting Slack 24/7 sur signaux critiques.
         </div>
@@ -74,7 +74,7 @@ export const techFaqHtml = `
         </div>
         <div class="faq-a">
           Architecture pensée <b>stateless</b>, scale horizontal via Docker/Coolify ou
-          Laravel Cloud. <b>PostgreSQL avec index ciblés + partitioning sur tables chaudes</b>.
+          Vercel / Cloudflare. <b>PostgreSQL avec index ciblés + partitioning sur tables chaudes</b>.
           Redis pour le cache applicatif, les sessions, le rate-limit. Queries lentes
           tracées, réécrites, parfois réindexées par IA. On a des SaaS en prod qui tiennent
           sans effort plusieurs milliers de requêtes / seconde.

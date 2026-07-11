@@ -1,44 +1,34 @@
 import type { Metadata } from "next";
 import { RendezVousPage } from "@/components/rendez-vous/RendezVousPage";
+import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Rendez-vous découverte projet web · Hagnéré Code",
+  title: "Rendez-vous 30 min avec un dev associé · Hagnéré Code",
   description:
-    "Réservez 30 min en visio ou téléphone avec un associé qui code (pas un commercial). On cadre votre projet web sur mesure : SaaS, application métier, outil interne, reprise Laravel ou site vitrine. Gratuit, sans engagement.",
+    "Réservez 30 minutes gratuites en visio avec un associé qui code. Cadrage de votre projet, fourchette de budget et calendrier réaliste. Sans engagement.",
   alternates: { canonical: "/rendez-vous" },
   openGraph: {
+    ...OG_BASE,
     title: "Réserver un rendez-vous découverte · Hagnéré Code",
     description:
       "30 min avec un associé qui code. On écoute, on challenge, on chiffre. Gratuit, sans engagement.",
     url: "/rendez-vous",
-    type: "website",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
 const rdvJsonLd = JSON.stringify({
   "@context": "https://schema.org",
-  "@type": "ReservationPackage",
-  name: "Rendez-vous découverte · Hagnéré Code",
+  "@type": "Service",
+  name: "Rendez-vous découverte — 30 minutes",
   url: "https://hagnere-code.fr/rendez-vous",
   description:
     "Rendez-vous découverte de 30 minutes en visio ou téléphone avec Hagnéré Code pour cadrer un projet web sur mesure.",
-  provider: {
-    "@type": "ProfessionalService",
-    "@id": "https://hagnere-code.fr/#business",
-    name: "Hagnéré Code",
-    legalName: "HAGNÉRÉ CODE SAS",
-    url: "https://hagnere-code.fr",
-    telephone: "+33374472018",
-    email: "quentin@hagnere-patrimoine.fr",
-    vatID: "FR30993672856",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "7 rue Ernest Filliard",
-      addressLocality: "Chambéry",
-      addressRegion: "Savoie",
-      postalCode: "73000",
-      addressCountry: "FR",
-    },
+  provider: { "@id": "https://hagnere-code.fr/#business" },
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
   },
   potentialAction: {
     "@type": "ReserveAction",
@@ -59,10 +49,20 @@ const rdvJsonLd = JSON.stringify({
   },
 });
 
+const breadcrumbJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
+    { "@type": "ListItem", position: 2, name: "Rendez-vous", item: "https://hagnere-code.fr/rendez-vous" },
+  ],
+});
+
 export default function Page() {
   return (
     <>
       <script type="application/ld+json">{rdvJsonLd}</script>
+      <script type="application/ld+json">{breadcrumbJsonLd}</script>
       <RendezVousPage />
     </>
   );

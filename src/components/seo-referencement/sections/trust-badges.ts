@@ -72,7 +72,7 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22V15"/></svg>
         </div>
         <h4>Partenaire techno vérifié</h4>
-        <p>Stack : <b>Laravel 13</b>, <b>React / Next.js</b>, <b>Stripe</b>, <b>Claude Opus 4.7</b>, <b>OVH / Scaleway</b>. Équipe formée aux dernières versions stables.</p>
+        <p>Stack : <b>Next.js</b>, <b>React</b>, <b>TypeScript</b>, <b>Stripe</b>, <b>Claude</b>. Équipe formée aux dernières versions stables.</p>
         <div class="seo-trust-foot">— Mise à jour trimestrielle</div>
       </div>
 

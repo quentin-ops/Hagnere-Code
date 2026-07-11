@@ -45,7 +45,7 @@ export const deriskHtml = `
         </div>
         <h3>Code chez vous J+1 · stack standard · zéro lock-in.</h3>
         <p>
-          Repo Git sur <b>votre organisation dès J+1</b>. Stack 100 % standard (Laravel, React,
+          Repo Git sur <b>votre organisation dès J+1</b>. Stack 100 % standard (Next.js, React, TypeScript,
           PostgreSQL), documentation technique, runbook d'exploitation, Docker compose livré.
           Votre DSI interne ou n'importe quelle autre ESN française peut reprendre le code
           demain — aucun royalties, aucune licence propriétaire, aucune clé cachée.

@@ -12,7 +12,7 @@ export const logoWallHtml = `
       </div>
       <div class="seo-cw-sep"></div>
       <div class="seo-cw-logo">
-        <img src="/logos/clients/hagnere-patrimoine.png" alt="Hagnéré Patrimoine" loading="lazy" />
+        <img src="/logos/clients/hagnere-patrimoine.webp" alt="Hagnéré Patrimoine" loading="lazy" />
       </div>
       <div class="seo-cw-sep"></div>
       <div class="seo-cw-logo">

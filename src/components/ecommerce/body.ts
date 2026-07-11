@@ -6,7 +6,7 @@ ${navHtml}
   <div class="crumb">
     <a href="/">Accueil</a>
     <span class="sep">/</span>
-    <a href="/#services">Services</a>
+    <a href="/services">Services</a>
     <span class="sep">/</span>
     <span style="color:var(--ink-3)">E-commerce sur mesure</span>
   </div>
@@ -706,7 +706,7 @@ ${navHtml}
         <div class="proc-num">ÉTAPE 03</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
         <h4>Sprint dev</h4>
-        <p>Next.js + Laravel + intégrations FR, par sprints d'1 semaine. Accès Git dès J+1. Démo live chaque vendredi.</p>
+        <p>Next.js + TypeScript + intégrations FR, par sprints d'1 semaine. Accès Git dès J+1. Démo live chaque vendredi.</p>
         <div class="proc-dur">4–8 SEMAINES</div>
       </div>
       <div class="proc-step">
@@ -742,7 +742,7 @@ ${navHtml}
       <h2>Il n'y a pas UN bon stack e-commerce.<br>Il y a le bon <em>pour vous</em>.</h2>
       <p>
         Shopify + Hydrogen domine le DTC. Medusa.js explose dans l'open-source. Sylius reste la référence
-        B2B Symfony. On ne fait pas semblant que Laravel bat tout le monde en e-commerce — <b>on qualifie
+        B2B Symfony. On ne fait pas semblant qu'une seule stack bat tout le monde en e-commerce — <b>on qualifie
         votre cas avant de proposer un moteur</b>. Trois tracks, un avis tranché sur chacun.
       </p>
     </div>
@@ -810,27 +810,27 @@ ${navHtml}
         </div>
       </article>
 
-      <!-- Track C : Plateforme métier Laravel -->
+      <!-- Track C : Plateforme métier sur mesure -->
       <article class="ec-stack-track reveal reveal-d-2">
         <div class="ec-stack-track-head">
           <div class="ec-stack-track-tag">TRACK C</div>
           <div class="ec-stack-track-when">Pour plateformes métier avec composante commerce</div>
         </div>
-        <h3 class="ec-stack-track-title">Laravel 13 + Filament + <em>Cashier Stripe</em>.</h3>
+        <h3 class="ec-stack-track-title">Next.js + TypeScript + <em>Stripe Billing</em>.</h3>
         <p class="ec-stack-track-pitch">
-          Le seul track où <b>Laravel est en première ligne</b> — parce que c'est là qu'il bat tout le monde.
-          SaaS avec paiement complexe, marketplace verticale, plateforme B2B propriétaire, back-office métier lourd.
-          Cashier pour les abonnements, Filament pour un admin en 2 semaines au lieu de 2 mois.
+          Le track du <b>sur-mesure intégral</b> : SaaS avec paiement complexe, marketplace verticale,
+          plateforme B2B propriétaire, back-office métier lourd.
+          Stripe Billing pour les abonnements, back-office React taillé pour vos ops en 2 semaines au lieu de 2 mois.
           Pas pour remplacer Shopify sur une boutique classique — pour <b>les cas où Shopify et Medusa ne sont pas les bons outils</b>.
         </p>
         <div class="ec-stack-track-chips">
-          <span class="ec-stack-chip ec-stack-chip-main">Laravel 13</span>
-          <span class="ec-stack-chip ec-stack-chip-main">Filament 3</span>
-          <span class="ec-stack-chip">Cashier Stripe</span>
-          <span class="ec-stack-chip">Livewire · Flux UI</span>
-          <span class="ec-stack-chip">Next.js / React Native</span>
+          <span class="ec-stack-chip ec-stack-chip-main">Next.js 16</span>
+          <span class="ec-stack-chip ec-stack-chip-main">TypeScript</span>
+          <span class="ec-stack-chip">Stripe Billing</span>
+          <span class="ec-stack-chip">React 19 · Tailwind</span>
+          <span class="ec-stack-chip">React Native</span>
           <span class="ec-stack-chip">PostgreSQL 17</span>
-          <span class="ec-stack-chip">Horizon · Pulse</span>
+          <span class="ec-stack-chip">Redis · Sentry</span>
         </div>
         <div class="ec-stack-track-meta">
           <div><span class="k">Sweet spot</span><span class="v">SaaS avec commerce · marketplaces verticales</span></div>
@@ -860,7 +860,7 @@ ${navHtml}
           <div class="ec-stack-extra-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
           </div>
-          <h4>Back-office métier Filament</h4>
+          <h4>Back-office métier sur mesure (React)</h4>
           <p>Taillé pour votre équipe ops, pas un admin générique. Stocks, SAV, retours, reporting.</p>
         </div>
         <div class="ec-stack-extra">
@@ -875,7 +875,7 @@ ${navHtml}
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <h4>Infra EU + observabilité</h4>
-          <p>Scaleway / OVH, Vercel Edge + Cloudflare CDN, Sentry + Pulse + PostHog, alertes 24/7.</p>
+          <p>Scaleway / OVH, Vercel Edge + Cloudflare CDN, Sentry + PostHog, alertes 24/7.</p>
         </div>
       </div>
     </div>
@@ -888,7 +888,7 @@ ${navHtml}
       <div class="ec-stack-honest-body">
         <h4>Ce qu'on ne fait pas</h4>
         <p>
-          Réinventer un checkout quand Shopify le fait mieux. Vendre du Laravel en moteur e-commerce
+          Réinventer un checkout quand Shopify le fait mieux. Vendre du sur-mesure en moteur e-commerce
           quand Medusa ou Shopify est le bon outil. Livrer une boutique "templatée" déguisée en sur-mesure.
           Si votre cas est mieux servi par un intégrateur Shopify standard, on vous oriente — franchement.
         </p>
@@ -1022,7 +1022,7 @@ ${navHtml}
           </div>
           <div class="faq-a">
             Trois options : <b>(1)</b> forfait TMA mensuel chez nous (monitoring + évolutions + hotline, 800 à 2 500 €/mois selon ampleur) ;
-            <b>(2)</b> votre équipe interne reprend (stack 100 % standard Laravel + React, doc livrée) ;
+            <b>(2)</b> votre équipe interne reprend (stack 100 % standard Next.js + React + TypeScript, doc livrée) ;
             <b>(3)</b> une autre ESN française prend le relais (on vous met en relation si besoin). 30 jours de garantie bugs inclus dans tous les cas.
           </div>
         </div>
@@ -1080,7 +1080,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Oui : infra <b>stateless</b>, scale horizontal auto (Laravel Vapor, OVH Public Cloud ou Scaleway scale set), CDN Cloudflare devant, queues Redis isolées.
+            Oui : infra <b>stateless</b>, scale horizontal auto (Vercel, OVH Public Cloud ou Scaleway scale set), CDN Cloudflare devant, queues Redis isolées.
             Chaque livraison inclut un <b>test de charge à 10× le pic normal</b> avant go-live. Si la boutique ramait chez vous avant, on mesure le before/after en chiffres.
           </div>
         </div>

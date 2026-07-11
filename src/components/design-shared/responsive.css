@@ -523,8 +523,8 @@ body.nav-menu-lock { overflow: hidden; }
 @media (max-width: 1024px) {
   .wrap { padding: 0 28px; }
 
-  h1 { font-size: 56px; line-height: 1.02; }
-  h2 { font-size: 40px; }
+  .hc-design h1 { font-size: 56px; line-height: 1.02; }
+  .hc-design h2 { font-size: 40px; }
 
   .hero-inner,
   .lb-inner,
@@ -649,9 +649,9 @@ body.nav-menu-lock { overflow: hidden; }
 @media (max-width: 768px) {
   .wrap { padding: 0 20px; }
 
-  h1 { font-size: 40px; letter-spacing: -0.03em; }
-  h2 { font-size: 30px; letter-spacing: -0.025em; }
-  h3 { font-size: 18px; }
+  .hc-design h1 { font-size: 40px; letter-spacing: -0.03em; }
+  .hc-design h2 { font-size: 30px; letter-spacing: -0.025em; }
+  .hc-design h3 { font-size: 18px; }
 
   /* Hero */
   .hero { padding: 40px 0 48px; }

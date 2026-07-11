@@ -5,7 +5,7 @@ export const teamHtml = buildServiceTeamHtml({
   heading: "Un gérant qui code,<br>six développeurs seniors.",
   description: `
     Pas de commercial entre vous et le produit, pas de sous-traitance offshore, pas de junior
-    qui découvre Laravel sur votre projet. <b>3 CDI à Chambéry</b> (CTO + 2 devs) et <b>3 freelances long-terme intégrés</b>
+    qui découvre React sur votre projet. <b>3 CDI à Chambéry</b> (CTO + 2 devs) et <b>3 freelances long-terme intégrés</b>
     à nos rituels — toujours les mêmes personnes, nommées au cadrage.`,
   devsIntroTitle: "Six devs seniors,<br>augmentés par <em>Claude Code</em>.",
   devsIntroBody: `

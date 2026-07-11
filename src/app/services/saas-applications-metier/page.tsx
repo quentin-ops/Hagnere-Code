@@ -1,26 +1,21 @@
 import type { Metadata } from "next";
 import { SaasApplicationsMetier } from "@/components/saas-applications/SaasApplicationsMetier";
+import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "SaaS, applications métier & apps mobiles · Hagnéré Code",
+  title: "SaaS sur mesure · MVP livré en 3-6 semaines · Hagnéré Code",
   description:
-    "Plateformes B2B, espaces clients, marketplaces, applications métier et apps mobiles sur mesure. Stack Laravel 13, React, Next.js, React Native et IA native. Forfait fixe, MVP livré en 3 à 6 semaines.",
+    "Plateformes SaaS et applications métier sur mesure (Next.js, React, IA). Forfait fixe dès 15 k€, MVP en 3 à 6 semaines, code à vous dès J+1.",
   alternates: { canonical: "/services/saas-applications-metier" },
   openGraph: {
-    title: "SaaS, applications métier & apps mobiles · Hagnéré Code",
+    ...OG_BASE,
+    title: "SaaS sur mesure · MVP livré en 3-6 semaines · Hagnéré Code",
     description:
-      "Plateformes B2B et apps mobiles propulsées par Laravel 13, React/Next et IA. Forfait fixe, MVP 3-6 semaines.",
+      "Plateformes B2B et apps mobiles propulsées par Next.js, React/TypeScript et IA. Forfait fixe, MVP 3-6 semaines.",
     url: "/services/saas-applications-metier",
-    images: [
-      {
-        url: "/og-image-services.png",
-        width: 1200,
-        height: 630,
-        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
-      },
-    ],
-    type: "website",
+    images: [SERVICES_OG_IMAGE],
   },
+  twitter: { images: [SERVICES_OG_IMAGE.url] },
 };
 
 // JSON-LD structured data — static, author-controlled content.
@@ -29,6 +24,8 @@ export const metadata: Metadata = {
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  name: "Développement SaaS et applications métier sur mesure",
+  url: "https://hagnere-code.fr/services/saas-applications-metier",
   serviceType: "Développement de SaaS et applications métier sur mesure",
   provider: {
     "@type": "Organization",
@@ -43,6 +40,7 @@ const serviceJsonLd = JSON.stringify({
       streetAddress: "7 rue Ernest Filliard",
       postalCode: "73000",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       addressCountry: "FR",
     },
     email: "quentin@hagnere-patrimoine.fr",
@@ -50,7 +48,7 @@ const serviceJsonLd = JSON.stringify({
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "Développement de plateformes B2B, espaces clients, marketplaces, applications métier et apps mobiles iOS/Android. Stack Laravel 13, React, Next.js, React Native, IA native (Claude, GPT-4o).",
+    "Développement de plateformes B2B, espaces clients, marketplaces, applications métier et apps mobiles iOS/Android. Stack Next.js, React, TypeScript, React Native, IA native (Claude, GPT-4o).",
   offers: [
     {
       "@type": "Offer",
@@ -104,7 +102,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Non. Nous écrivons du vrai code Laravel 13 / React / Next.js, testé, typé, versionné. Le low-code est adapté pour prototyper ou pour des automatisations internes, mais au-delà de 10 utilisateurs payants, cela devient un piège technique et économique.",
+          "Non. Nous écrivons du vrai code TypeScript / React / Next.js, testé, typé, versionné. Le low-code est adapté pour prototyper ou pour des automatisations internes, mais au-delà de 10 utilisateurs payants, cela devient un piège technique et économique.",
       },
     },
     {
@@ -131,7 +129,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Par défaut oui — Scaleway Paris ou OVH Roubaix. Pour les clients qui préfèrent un hébergement global (Laravel Cloud, AWS), on peut configurer. Les données sont chiffrées at-rest et in-transit, avec sauvegardes toutes les 15 minutes.",
+          "Par défaut oui — Scaleway Paris ou OVH Roubaix. Pour les clients qui préfèrent un hébergement global (Vercel, Cloudflare, AWS), on peut configurer. Les données sont chiffrées at-rest et in-transit, avec sauvegardes toutes les 15 minutes.",
       },
     },
     {
@@ -149,7 +147,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Le cas d'usage, pas la mode. Laravel 13 + Livewire pour 80% des SaaS B2B. Next.js / React pour les interfaces temps-réel, éditeurs, apps très interactives ou pages publiques SEO-critiques. React Native pour le mobile. La stack est choisie après le cadrage, pas avant.",
+          "Le cas d'usage, pas la mode. Next.js + React (TypeScript) pour l'immense majorité des SaaS B2B : interfaces temps-réel, éditeurs, apps très interactives et pages publiques SEO-critiques. React Native pour le mobile. Nous reprenons et étendons aussi les SaaS Laravel existants — audit, maintenance, évolutions. La stack est choisie après le cadrage, pas avant.",
       },
     },
   ],

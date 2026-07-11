@@ -95,6 +95,18 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
               ))}
             </div>
           </div>
+          {c.services && c.services.length > 0 && (
+            <div>
+              <div className="cs-info-k">Services</div>
+              <div className="cs-info-v cs-info-stack">
+                {c.services.map((s) => (
+                  <Link key={s.href} href={s.href}>
+                    {s.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
@@ -304,6 +316,12 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
               </Link>
             ))}
           </div>
+          <p className="cs-placeholder-note">
+            <span>
+              Un projet similaire ?{" "}
+              <Link href="/demarrer-un-projet">Décrivez-le-nous</Link>.
+            </span>
+          </p>
         </div>
       </section>
 

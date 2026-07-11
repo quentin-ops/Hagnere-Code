@@ -7,7 +7,7 @@ export const logoWallHtml = `
   <div class="wrap">
     <div class="ec-cw-grid">
       <div class="ec-cw-logo">
-        <img src="/logos/clients/hagnere-patrimoine.png" alt="Hagnéré Patrimoine" loading="lazy" />
+        <img src="/logos/clients/hagnere-patrimoine.webp" alt="Hagnéré Patrimoine" loading="lazy" />
       </div>
       <div class="ec-cw-sep"></div>
       <div class="ec-cw-logo">

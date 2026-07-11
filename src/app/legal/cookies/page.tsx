@@ -1,32 +1,46 @@
 import type { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
 import { cookiesSections } from "@/components/legal/content/cookies";
+import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 const LAST_UPDATED = "2026-04-26";
 
 export const metadata: Metadata = {
-  title: "Politique cookies — Hagnéré Code",
+  title: "Politique cookies · Zéro tracker publicitaire · Hagnéré Code",
   description:
-    "Informations sur l'utilisation des cookies et services tiers sur le site hagnere-code.fr.",
+    "Aucun cookie publicitaire ni analytics tiers sur hagnere-code.fr. La liste complète des stockages navigateur et le cas du widget Calendly.",
   alternates: { canonical: "/legal/cookies" },
   openGraph: {
-    title: "Politique cookies — Hagnéré Code",
+    ...OG_BASE,
+    type: "article",
+    title: "Politique cookies · Zéro tracker publicitaire · Hagnéré Code",
     description:
       "Gestion des cookies, services tiers et choix utilisateur sur hagnere-code.fr.",
     url: "/legal/cookies",
-    type: "article",
+    images: [DEFAULT_OG_IMAGE],
   },
-  robots: { index: true, follow: true },
 };
+
+const breadcrumbJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
+    { "@type": "ListItem", position: 2, name: "Politique cookies", item: "https://hagnere-code.fr/legal/cookies" },
+  ],
+});
 
 export default function Page() {
   return (
-    <LegalPageLayout
-      title={"Politique\ncookies."}
-      intro="Informations sur les cookies, services tiers et moyens de gérer vos choix lors de la navigation sur hagnere-code.fr."
-      lastUpdated={LAST_UPDATED}
-      breadcrumb="Cookies"
-      sections={cookiesSections}
-    />
+    <>
+      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <LegalPageLayout
+        title={"Politique\ncookies."}
+        intro="Informations sur les cookies, services tiers et moyens de gérer vos choix lors de la navigation sur hagnere-code.fr."
+        lastUpdated={LAST_UPDATED}
+        breadcrumb="Cookies"
+        sections={cookiesSections}
+      />
+    </>
   );
 }

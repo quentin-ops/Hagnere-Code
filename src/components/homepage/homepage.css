@@ -12,12 +12,12 @@
   #main-content{display:block;min-height:100vh;overflow:visible}
   .mono{font-family:var(--font-geist-mono),ui-monospace,monospace}
   .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
-  a{color:inherit}
+  .hc-design a{color:inherit}
 
-  h1,h2,h3,h4{font-family:var(--font-geist);letter-spacing:-0.035em;font-weight:600;margin:0}
-  h1{font-size:84px;line-height:0.98;letter-spacing:-0.05em}
-  h2{font-size:52px;line-height:1.06;letter-spacing:-0.04em}
-  h3{font-size:22px;letter-spacing:-0.02em;font-weight:600;line-height:1.25}
+  .hc-design h1,.hc-design h2,.hc-design h3,.hc-design h4{font-family:var(--font-geist);letter-spacing:-0.035em;font-weight:600;margin:0}
+  .hc-design h1{font-size:84px;line-height:0.98;letter-spacing:-0.05em}
+  .hc-design h2{font-size:52px;line-height:1.06;letter-spacing:-0.04em}
+  .hc-design h3{font-size:22px;letter-spacing:-0.02em;font-weight:600;line-height:1.25}
 
   /* ============ NAV ============ */
   .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(255,255,255,0.75);border-bottom:1px solid var(--line)}

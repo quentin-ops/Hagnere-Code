@@ -158,6 +158,11 @@ ${navHtml}
         <b>Hagnéré Patrimoine</b>
         <em>SEO, qualification commerciale, site premium orienté leads.</em>
       </a>
+      <a href="/realisations/hagnere-investissement" class="c-proof-item">
+        <span>Génération de leads</span>
+        <b>Hagnéré Investissement</b>
+        <em>Site vitrine, simulateur de rendement, funnel 3 segments.</em>
+      </a>
     </div>
   </div>
 </section>
@@ -269,8 +274,8 @@ ${navHtml}
           </div>
           <div class="faq-a">
             On vous le dit en 2 minutes et on vous oriente. Réseau de confrères freelances et studios sur
-            Chambéry, Lyon, Paris, Bordeaux. Si ce n'est pas Laravel, pas PME/ETI, pas web — on vous envoie
-            vers le bon interlocuteur. <b>Zéro intérêt à vous garder chez nous si on n'est pas la bonne équipe.</b>
+            Chambéry, Lyon, Paris, Bordeaux. Si ce n'est pas du web (Next.js/React ou reprise Laravel/PHP),
+            pas PME/ETI — on vous envoie vers le bon interlocuteur. <b>Zéro intérêt à vous garder chez nous si on n'est pas la bonne équipe.</b>
           </div>
         </div>
 

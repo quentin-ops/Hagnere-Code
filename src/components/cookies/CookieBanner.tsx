@@ -69,14 +69,18 @@ export function CookieBanner() {
   const [analyticsChoice, setAnalyticsChoice] = useState(false);
 
   // Premier mount : afficher si pas de consent valide
+  // (setTimeout : évite un setState synchrone dans l'effet — react-hooks/set-state-in-effect)
   useEffect(() => {
     if (!COOKIE_BANNER_ENABLED) return;
-    const existing = readConsent();
-    if (!existing) {
-      setOpen(true);
-    } else {
-      setAnalyticsChoice(existing.analytics);
-    }
+    const id = window.setTimeout(() => {
+      const existing = readConsent();
+      if (!existing) {
+        setOpen(true);
+      } else {
+        setAnalyticsChoice(existing.analytics);
+      }
+    }, 0);
+    return () => window.clearTimeout(id);
   }, []);
 
   // Expose API globale pour le bouton du footer

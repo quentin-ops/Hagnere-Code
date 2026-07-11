@@ -6,7 +6,7 @@ ${navHtml}
   <div class="crumb">
     <a href="/">Accueil</a>
     <span class="sep">/</span>
-    <a href="/#services">Services</a>
+    <a href="/services">Services</a>
     <span class="sep">/</span>
     <span style="color:var(--ink-3)">Outils internes sur mesure</span>
   </div>
@@ -183,7 +183,7 @@ ${navHtml}
         <h2>Les 8 fuites silencieuses<br>qui coûtent 50 k€/an à une PME.</h2>
       </div>
       <div class="right">
-        Chaque point ci-dessous, on l'a chiffré chez au moins trois clients.
+        Chaque point ci-dessous, <a href="/outils/calculateur-cout-excel">on l'a chiffré</a> chez au moins trois clients.
         Pris individuellement, ça passe. Cumulés, c'est un salaire annuel qui part en fumée.
       </div>
     </div>
@@ -959,7 +959,7 @@ ${navHtml}
           <div class="faq-a">
             L'outil est <b>vôtre</b>. Vous pouvez le faire évoluer avec nous (on propose un forfait de
             maintenance + évolutions mensuel), avec votre équipe technique, ou avec une autre agence.
-            Le code est standard Laravel, propre, documenté, testé : n'importe quel développeur
+            Le code est standard Next.js/TypeScript, propre, documenté, testé : n'importe quel développeur
             expérimenté peut reprendre la main.
           </div>
         </div>
@@ -1067,7 +1067,7 @@ ${navHtml}
     </div>
     <div class="foot-bot">
       <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
-      <div>BUILT WITH LARAVEL + CLAUDE CODE</div>
+      <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
     </div>
   </div>
 </footer>

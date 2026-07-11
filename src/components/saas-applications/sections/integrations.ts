@@ -107,10 +107,10 @@ export const integrationsHtml = `
           <span>OVH</span>
           <span>AWS</span>
           <span>Vercel</span>
-          <span>Laravel Cloud</span>
+          <span>Cloudflare</span>
           <span>Sentry</span>
           <span>PostHog</span>
-          <span>Laravel Pulse</span>
+          <span>UptimeRobot</span>
           <span>GitHub Actions</span>
           <span>Docker / Coolify</span>
         </div>

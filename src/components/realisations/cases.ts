@@ -1,5 +1,9 @@
 export type CaseStudy = {
   slug: string;
+  /** Title/description SEO dédiés (fallback : template brandName · category). */
+  seo?: { title: string; description: string };
+  /** Services Hagnéré Code mobilisés sur le cas (maillage interne). */
+  services?: { label: string; href: string }[];
   brandName: string;
   brandLogo: string;
   brandColor: string;
@@ -33,6 +37,14 @@ export type CaseStudy = {
 export const CASES: Record<string, CaseStudy> = {
   "lmnp-ai": {
     slug: "lmnp-ai",
+    seo: {
+      title: "Étude de cas LMNP.AI · SaaS à 5 400 clients · Hagnéré Code",
+      description:
+        "Comment on a construit LMNP.AI : SaaS de comptabilité fiscale guidé par IA, MVP en 4 mois, 5 400 clients payants. Stack Laravel, Livewire, Stripe.",
+    },
+    services: [
+      { label: "Développement SaaS", href: "/services/saas-applications-metier" },
+    ],
     brandName: "LMNP.AI",
     brandLogo: "L",
     brandColor: "#6D28D9",
@@ -137,6 +149,14 @@ export const CASES: Record<string, CaseStudy> = {
 
   "sci-ai": {
     slug: "sci-ai",
+    seo: {
+      title: "Étude de cas SCI-AI · SaaS compta SCI IR/IS · Hagnéré Code",
+      description:
+        "Le premier logiciel de comptabilité SCI gérant IR et IS, livré en 5 mois : liasses EDI DGFiP, bilan de clôture en 30 min. Par Hagnéré Code.",
+    },
+    services: [
+      { label: "Développement SaaS", href: "/services/saas-applications-metier" },
+    ],
     brandName: "SCI-AI.app",
     brandLogo: "S",
     brandColor: "#0066FF",
@@ -240,6 +260,15 @@ export const CASES: Record<string, CaseStudy> = {
 
   "hagnere-patrimoine": {
     slug: "hagnere-patrimoine",
+    seo: {
+      title: "Refonte site + CRM patrimoine : +340 % SEO · Hagnéré Code",
+      description:
+        "Refonte d'un cabinet de gestion de patrimoine : +340 % de trafic en 6 mois, 4,2 % de conversion en RDV, CRM sur mesure. Livré en 6 semaines.",
+    },
+    services: [
+      { label: "Sites vitrines", href: "/services/sites-vitrines" },
+      { label: "SEO & référencement", href: "/services/referencement-google" },
+    ],
     brandName: "Hagnéré Patrimoine",
     brandLogo: "HP",
     brandColor: "#C9A96E",
@@ -347,6 +376,15 @@ export const CASES: Record<string, CaseStudy> = {
 
   "hagnere-investissement": {
     slug: "hagnere-investissement",
+    seo: {
+      title: "Étude de cas : site vitrine à ×2,5 leads · Hagnéré Code",
+      description:
+        "Site de génération de leads pour un cabinet d'investissement : simulateur de rendement, funnel 3 segments, ×2,5 leads qualifiés. Livré en 8 semaines.",
+    },
+    services: [
+      { label: "Sites vitrines", href: "/services/sites-vitrines" },
+      { label: "Publicité en ligne", href: "/services/publicite-en-ligne" },
+    ],
     brandName: "Hagnéré Investissement",
     brandLogo: "HI",
     brandColor: "#0F766E",

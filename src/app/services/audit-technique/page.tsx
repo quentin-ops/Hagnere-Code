@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
 import { AuditTechnique } from "@/components/audit-technique/AuditTechnique";
+import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Audit technique · Dette chiffrée en 10 j · Hagnéré Code",
+  title: "Audit technique · Dette chiffrée en 10 jours · Hagnéré Code",
   description:
-    "Audit technique indépendant pour VC en DD, acquéreur M&A, CTO entrant ou refonte. Rapport board-ready : Tech Debt P&L chiffré, scoring /100, matrice impact × effort. 4 formats (8 à 68 k€).",
+    "Audit technique indépendant pour dirigeants, VC et M&A : dette chiffrée en euros, rapport board-ready en 10 jours. 4 formats de 8 à 68 k€.",
   alternates: { canonical: "/services/audit-technique" },
   openGraph: {
+    ...OG_BASE,
     title: "Audit technique — Hagnéré Code",
     description:
       "Votre dette technique, chiffrée en euros. Livrée en 10 jours. Rapport board-ready exploitable par VC / acquéreur / board. 100 % déductible si mission de remédiation > 50 k€ suit.",
     url: "/services/audit-technique",
-    images: [
-      {
-        url: "/og-image-services.png",
-        width: 1200,
-        height: 630,
-        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
-      },
-    ],
-    type: "website",
+    images: [SERVICES_OG_IMAGE],
   },
+  twitter: { images: [SERVICES_OG_IMAGE.url] },
 };
 
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  name: "Audit technique indépendant, dette chiffrée en euros",
+  url: "https://hagnere-code.fr/services/audit-technique",
   serviceType:
     "Audit technique indépendant (code, architecture, sécurité, performance, infrastructure, DevEx, FinOps, équipe) avec livrable board-ready Tech Debt P&L",
   provider: {
@@ -41,6 +38,7 @@ const serviceJsonLd = JSON.stringify({
       streetAddress: "7 rue Ernest Filliard",
       postalCode: "73000",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       addressCountry: "FR",
     },
     email: "quentin@hagnere-patrimoine.fr",

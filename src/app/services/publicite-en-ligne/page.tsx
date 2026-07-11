@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
 import { PubliciteEnLigne } from "@/components/publicite-en-ligne/PubliciteEnLigne";
+import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Publicité en ligne · SEA & Paid Social · Hagnéré Code",
+  title: "Agence Google Ads & Meta Ads · Forfait fixe · Hagnéré Code",
   description:
-    "Agence Ads pilotée par le CAC, pas le ROAS vanity. Google Ads, Meta, LinkedIn, TikTok, avec tracking server-side (GTM SS + CAPI), attribution CRM et forfait fixe. 1 500 € audit, retainers 1 800 – 4 500 €/mois, budget media sur votre compte.",
+    "Pilotage Google Ads, Meta et LinkedIn au forfait fixe, 0 % de commission sur votre budget. Tracking server-side inclus, CAC suivi dans votre CRM.",
   alternates: { canonical: "/services/publicite-en-ligne" },
   openGraph: {
+    ...OG_BASE,
     title: "Publicité en ligne — Hagnéré Code",
     description:
       "SEA + Paid Social piloté par le CAC, pas le ROAS vanity. Tracking server-side inclus, forfait fixe mensuel, budget media sur vos comptes.",
     url: "/services/publicite-en-ligne",
-    images: [
-      {
-        url: "/og-image-services.png",
-        width: 1200,
-        height: 630,
-        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
-      },
-    ],
-    type: "website",
+    images: [SERVICES_OG_IMAGE],
   },
+  twitter: { images: [SERVICES_OG_IMAGE.url] },
 };
 
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  name: "Gestion de publicité en ligne — Google Ads, Meta & LinkedIn",
+  url: "https://hagnere-code.fr/services/publicite-en-ligne",
   serviceType:
     "Gestion de campagnes publicitaires en ligne (SEA, Paid Social, Display) avec tracking server-side",
   provider: {
@@ -41,6 +38,7 @@ const serviceJsonLd = JSON.stringify({
       streetAddress: "7 rue Ernest Filliard",
       postalCode: "73000",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       addressCountry: "FR",
     },
     email: "quentin@hagnere-patrimoine.fr",

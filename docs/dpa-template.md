@@ -69,7 +69,6 @@ Les sous-traitants ultérieurs actuels sont :
 | Neon, Inc. | Hébergement base de données PostgreSQL | UE (Frankfurt) | Aucun transfert hors UE |
 | Cloudflare, Inc. | Hébergement Workers + CDN | Edge mondial | DPF + SCC |
 | Resend, Inc. | Envoi d'emails transactionnels | États-Unis | DPF + SCC |
-| Anthropic, PBC | Modèle Claude (estimation IA) | États-Unis | DPF + SCC + non-entraînement |
 | Groq, Inc. | Transcription audio Whisper | États-Unis | SCC + audio non conservé |
 
 Le Sous-traitant impose à chaque sous-traitant ultérieur les mêmes obligations de protection des données par contrat. En cas de défaillance, il demeure pleinement responsable devant le Responsable de traitement.

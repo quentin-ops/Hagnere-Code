@@ -223,7 +223,7 @@
 }
 .cs-info-grid {
   display: grid;
-  grid-template-columns: 0.8fr 1.4fr 2fr;
+  grid-template-columns: 0.7fr 1.3fr 1.7fr 1fr;
   gap: 36px;
 }
 .cs-info-k {
@@ -239,13 +239,16 @@
 .cs-info-stack {
   display: flex; flex-wrap: wrap; gap: 6px;
 }
-.cs-info-stack span {
+.cs-info-stack span,
+.cs-info-stack a {
   font-family: var(--font-geist-mono); font-size: 11px;
   color: var(--ink-3); background: #fff;
   border: 1px solid var(--line);
   padding: 4px 9px; border-radius: 6px;
   letter-spacing: 0.01em; font-weight: 500;
 }
+.cs-info-stack a { text-decoration: none; }
+.cs-info-stack a:hover { color: var(--brand); border-color: var(--brand); }
 
 /* --- Sections --- */
 .cs-section {

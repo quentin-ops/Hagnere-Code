@@ -127,7 +127,7 @@ ${navHtml}
             </div>
           </div>
           <div class="qmock-total-r">
-            <div class="qmock-total-cur">EUR · TTC</div>
+            <div class="qmock-total-cur">EUR · HT</div>
             <div class="qmock-total-val">42 500 €</div>
           </div>
         </div>
@@ -279,7 +279,7 @@ ${navHtml}
         </ul>
 
         <div class="disc-foot">
-          <a href="/#contact" class="btn btn-accent btn-lg">
+          <a href="#contact" class="btn btn-accent btn-lg">
             Démarrer un Discovery
             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
@@ -295,7 +295,7 @@ ${navHtml}
           <div class="disc-price-tag">FORFAIT FIXE</div>
           <div class="disc-price-row">
             <span class="disc-price-amount">1 500</span>
-            <span class="disc-price-cur">€ TTC</span>
+            <span class="disc-price-cur">€ HT</span>
           </div>
           <div class="disc-price-line">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
@@ -369,7 +369,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Devis phase 2 forfait fixe</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Déduit à 100 % si lancement</li>
         </ul>
-        <div class="plan-cta"><a href="/#contact" class="btn btn-ghost">Démarrer un Discovery</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Démarrer un Discovery</a></div>
       </div>
 
       <div class="plan reveal reveal-d-1">
@@ -388,7 +388,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 1 an inclus</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 2–4 semaines</li>
         </ul>
-        <div class="plan-cta"><a href="/#contact" class="btn btn-ghost">Demander un devis</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
       </div>
 
       <div class="plan featured reveal reveal-d-2">
@@ -409,7 +409,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Conformité RGPD clé en main</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 5–10 semaines</li>
         </ul>
-        <div class="plan-cta"><a href="/#contact" class="btn btn-accent">Démarrer mon projet</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
       </div>
 
       <div class="plan reveal reveal-d-3">
@@ -424,11 +424,11 @@ ${navHtml}
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée 2 à 5 personnes</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Roadmap co-construite</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA 99,9 % · astreinte 24/5</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA 99,9 % · astreinte Lun–Ven 8 h–20 h</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 6 mois minimum</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Equity en complément possible</li>
         </ul>
-        <div class="plan-cta"><a href="/#contact" class="btn btn-ghost">Parlons-en</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parlons-en</a></div>
       </div>
     </div>
 
@@ -535,7 +535,7 @@ ${navHtml}
 
       <div class="ptable-row">
         <div class="ptcol ptcol-svc">
-          <a href="/services/saas-applications-metier">
+          <a href="/services/application-mobile">
             <div class="ptcol-svc-ic" style="background:#DBEAFE;color:#1E3A8A">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
             </div>
@@ -708,7 +708,7 @@ ${navHtml}
         <h2>Forfaits Care.<br>On reste à vos côtés.</h2>
       </div>
       <div class="right">
-        Hébergement, monitoring, sauvegardes, bug fixes, petites évolutions.
+        <a href="/services/maintenance-evolution" style="color:var(--accent-ink);text-decoration:underline">Hébergement, monitoring, sauvegardes, bug fixes, petites évolutions</a>.
         <b>Trois niveaux</b>, sans engagement de durée. Vous arrêtez quand vous voulez,
         avec préavis d'un mois.
       </div>
@@ -731,7 +731,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Support email · 48h ouvrées</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>2 h de petites évos / mois</li>
         </ul>
-        <div class="care-cta"><a href="/#contact" class="btn btn-ghost">Activer Care</a></div>
+        <div class="care-cta"><a href="#contact" class="btn btn-ghost">Activer Care</a></div>
       </div>
 
       <div class="care-card featured reveal reveal-d-1">
@@ -752,7 +752,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>8 h évos / mois (cumulables)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Audit perf trimestriel</li>
         </ul>
-        <div class="care-cta"><a href="/#contact" class="btn btn-accent">Activer Care+</a></div>
+        <div class="care-cta"><a href="#contact" class="btn btn-accent">Activer Care+</a></div>
       </div>
 
       <div class="care-card reveal reveal-d-2">
@@ -772,7 +772,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>DRP testé 2× / an</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Comité produit mensuel</li>
         </ul>
-        <div class="care-cta"><a href="/#contact" class="btn btn-ghost">Parler au gérant</a></div>
+        <div class="care-cta"><a href="#contact" class="btn btn-ghost">Parler au gérant</a></div>
       </div>
     </div>
 
@@ -913,7 +913,7 @@ ${navHtml}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg>
         </div>
         <h4>Low-code (Bubble, Webflow logic)</h4>
-        <p>Bien pour prototyper, piège technique au-delà de 10 utilisateurs payants. On préfère un Laravel propre et durable.</p>
+        <p>Bien pour prototyper, piège technique au-delà de 10 utilisateurs payants. On préfère un code Next.js/TypeScript propre et durable.</p>
         <div class="ref-because">→ partenaires Bubble certifiés disponibles sur demande.</div>
       </div>
 
@@ -931,7 +931,7 @@ ${navHtml}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg>
         </div>
         <h4>Maintenance d'un projet qu'on n'a pas fait</h4>
-        <p>Hors audit technique préalable (1 500 €). Reprendre du code mal écrit aveuglément, c'est nous mettre dans une position perdante.</p>
+        <p>Hors Discovery Sprint de cadrage (1 500 € HT). Reprendre du code mal écrit aveuglément, c'est nous mettre dans une position perdante.</p>
         <div class="ref-because">→ commençons par un audit, on décide ensuite.</div>
       </div>
 
@@ -977,7 +977,7 @@ ${navHtml}
             Décrire mon projet
             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <a href="/#contact" class="btn btn-ghost btn-lg">Préférer un appel direct</a>
+          <a href="#contact" class="btn btn-ghost btn-lg">Préférer un appel direct</a>
         </div>
       </div>
 
@@ -1020,7 +1020,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— Questions fréquentes</div>
         <h2 style="margin-top:14px">Sur les prix.<br>Et la facturation.</h2>
-        <p>Manquante ? <a href="/#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a>, on répond sous 24h ouvrées.</p>
+        <p>Manquante ? <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a>, on répond sous 24h ouvrées.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">

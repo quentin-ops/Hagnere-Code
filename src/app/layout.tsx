@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { CookieBanner } from "@/components/cookies/CookieBanner";
+import { SkipToContent } from "@/components/design-shared/SkipToContent";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -21,43 +22,35 @@ const isProd = process.env.NEXT_PUBLIC_ENV === "production";
 export const metadata: Metadata = {
   metadataBase: new URL("https://hagnere-code.fr"),
   title: {
-    default: "Hagnéré Code — Studio produit · SaaS & outils métier",
+    default: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
     template: "%s",
   },
   description:
-    "Studio produit à Chambéry. On conçoit, développe et maintient des sites, applications métier et SaaS sur mesure, avec forfait fixe et preuves internes assumées.",
+    "Studio à Chambéry : SaaS, applications métier et sites sur mesure au forfait fixe. Code livré chez vous, garantie 30 jours, réponse sous 24 h.",
   applicationName: "Hagnéré Code",
   authors: [{ name: "Hagnéré Code" }],
-  keywords: [
-    "studio développement SaaS",
-    "Laravel Chambéry",
-    "applications métier",
-    "outils internes sur mesure",
-    "AI-native",
-    "Claude Code",
-  ],
   openGraph: {
     type: "website",
     locale: "fr_FR",
     url: "https://hagnere-code.fr",
     siteName: "Hagnéré Code",
-    title: "Hagnéré Code — Studio produit · SaaS & outils métier",
+    title: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
     description:
-      "Studio produit à Chambéry. SaaS, applications métier, outils internes, forfait fixe, Laravel et workflows IA.",
+      "Studio à Chambéry : SaaS, applications métier, outils internes et sites sur mesure au forfait fixe, IA native.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Hagnéré Code — Studio produit · SaaS & outils métier",
+        alt: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hagnéré Code — Studio produit · SaaS & outils métier",
+    title: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
     description:
-      "Studio de développement SaaS et applications métier, basé à Chambéry. Laravel 13, Claude Code.",
+      "Studio de développement SaaS et applications métier à Chambéry. Forfait fixe, code livré chez vous, réponse sous 24 h.",
     images: ["/og-image.png"],
   },
   robots: isProd
@@ -73,9 +66,9 @@ export const metadata: Metadata = {
         },
       }
     : { index: false, follow: false },
+  // favicon.ico est servi par la convention de fichier src/app/favicon.ico ;
+  // ne déclarer que l'apple-touch-icon évite les balises <link rel=icon> dupliquées.
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
   formatDetection: {
@@ -107,9 +100,7 @@ export default function RootLayout({
       className={`${geist.variable} ${geistMono.variable}`}
     >
       <body className="antialiased">
-        <a href="#main-content" className="skip-to-content">
-          Aller au contenu principal
-        </a>
+        <SkipToContent />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

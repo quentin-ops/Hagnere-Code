@@ -191,7 +191,7 @@ export const teamHtml = `
     <div class="me-tm-note reveal reveal-d-2">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
       <div>
-        <b>1 gérant + 3 CDI Laravel + 3 freelances long-terme</b>, France &amp; Europe. <b>Pas de pool tournant, pas d'offshore</b>.
+        <b>1 gérant + 3 CDI full-stack + 3 freelances long-terme</b>, France &amp; Europe. <b>Pas de pool tournant, pas d'offshore</b>.
         Turnover interne &lt; 10 % (vs industrie à 25 %). Binôme référent nommé au kickoff, overlap 2 semaines en cas de rotation (clause CGV).
       </div>
     </div>

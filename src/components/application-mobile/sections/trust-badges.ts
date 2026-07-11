@@ -34,7 +34,7 @@ export const trustBadgesHtml = `
         <div class="mob-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
         <h4>30 jours garantie post-stores</h4>
         <p>Bugs critiques corrigés gratuitement sous 48 h ouvrées. Hot-fixes via OTA EAS si possible (10 min), sinon nouvelle review Apple gérée. Monitoring Sentry + Crashlytics 24/7 actif dès la mise en prod.</p>
-        <div class="mob-trust-foot">— SLA 4 h ouvrées sur bloquant</div>
+        <div class="mob-trust-foot">— Bugs bloquants pris en charge sous 4 h ouvrées, corrigés sous 48 h ouvrées</div>
       </div>
 
       <div class="mob-trust-card reveal">

@@ -9,7 +9,7 @@ export const architectureHtml = `
       </div>
       <div class="right">
         Pas une slide marketing. L'architecture réelle d'un de nos SaaS en production,
-        simplifiée : front-ends web &amp; mobile, API Laravel, data, services externes,
+        simplifiée : front-ends web &amp; mobile, API Next.js, data, services externes,
         infra. Chaque brique est un standard industriel.
       </div>
     </div>
@@ -48,7 +48,7 @@ export const architectureHtml = `
         <g transform="translate(620 80)">
           <rect width="260" height="88" rx="10" fill="#171717" stroke="rgba(255,255,255,0.12)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">BACK-OFFICE ADMIN</text>
-          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Filament + Livewire</text>
+          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Back-office React</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Support, stats, impersonation</text>
         </g>
         <!-- Public API -->
@@ -71,7 +71,7 @@ export const architectureHtml = `
         <text x="60" y="220" font-family="Geist Mono" font-size="11" fill="#6D28D9" letter-spacing="0.08em">— CORE API</text>
         <g transform="translate(340 240)">
           <rect width="520" height="96" rx="12" fill="#6D28D9" stroke="rgba(255,255,255,0.18)"/>
-          <text x="24" y="34" font-family="Geist Mono" font-size="11" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">LARAVEL 13 · PHP 8.4</text>
+          <text x="24" y="34" font-family="Geist Mono" font-size="11" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">NEXT.JS 16 · TYPESCRIPT</text>
           <text x="24" y="60" font-family="Geist" font-size="20" font-weight="600" fill="#fff">Hagnéré Core</text>
           <text x="24" y="82" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.8)">Auth · RBAC · Billing · Multi-tenant · API · Events · Jobs</text>
         </g>
@@ -80,13 +80,13 @@ export const architectureHtml = `
         <g transform="translate(60 240)">
           <rect width="240" height="96" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">AGENTS IA</text>
-          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Claude · GPT-4o · Prism</text>
+          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Claude · GPT-4o</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Extraction, RAG, tool-calling</text>
         </g>
         <g transform="translate(900 240)">
           <rect width="240" height="96" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">QUEUES &amp; CRON</text>
-          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Horizon + Redis</text>
+          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Files d'attente Redis</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Jobs async, retries, observabilité</text>
         </g>
 

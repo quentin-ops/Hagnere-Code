@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
 import { ContactPage } from "@/components/contact/ContactPage";
+import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Contact projet web sur mesure à Chambéry · Hagnéré Code",
+  title: "Contact agence web Chambéry · Réponse 24 h · Hagnéré Code",
   description:
-    "Contactez Hagnéré Code à Chambéry pour un SaaS B2B, une application métier, un outil interne, une reprise Laravel ou un site web sur mesure. Réponse sous 24 h ouvrées.",
+    "Parlez à un associé qui code — pas à un commercial. Réponse sous 24 h ouvrées (souvent 3 à 6 h), 30 min de cadrage gratuit. Bureau à Chambéry.",
   alternates: { canonical: "/contact" },
   openGraph: {
+    ...OG_BASE,
     title: "Contact projet web sur mesure · Hagnéré Code Chambéry",
     description:
       "SaaS, applications métier, outils internes, reprise Laravel. Un associé qui code répond sous 24 h ouvrées.",
     url: "/contact",
-    type: "website",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
@@ -74,10 +76,73 @@ const contactJsonLd = JSON.stringify({
   },
 });
 
+const breadcrumbJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
+    { "@type": "ListItem", position: 2, name: "Contact", item: "https://hagnere-code.fr/contact" },
+  ],
+});
+
+const faqJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Je n'ai pas encore de brief précis — je vous dérange ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Non, au contraire. La moitié de nos prospects arrive avec une idée mais pas de cahier des charges. C'est exactement le moment où un cadrage honnête vous fait gagner 3 mois. On vous pose les bonnes questions, vous repartez avec une direction claire — même si on ne bosse finalement pas ensemble.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "C'est gratuit, vraiment ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Oui, 100 %. Le premier échange (30 min), le cadrage léger et l'avis franc sont gratuits. Si on décide ensemble de creuser, on passe à un Discovery Sprint payé (1 500 €, 2 jours, entièrement déduit du devis final). Aucune facturation avant signature d'un forfait.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Combien de temps avant votre réponse ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "24 h ouvrées maximum, en pratique 3–6 h la plupart du temps. Le week-end et les jours fériés, on coupe : mieux vaut un associé reposé le lundi qu'un associé rincé le dimanche.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Et si mon projet n'est pas pour vous ?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "On vous le dit en 2 minutes et on vous oriente. Réseau de confrères freelances et studios sur Chambéry, Lyon, Paris, Bordeaux. Si ce n'est pas du web (Next.js/React ou reprise Laravel/PHP), pas PME/ETI — on vous envoie vers le bon interlocuteur. Zéro intérêt à vous garder chez nous si on n'est pas la bonne équipe.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Je veux voir du code avant de vous parler.",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text:
+          "Normal. Nos 4 projets publics (LMNP.AI, SCI-AI, Hagnéré Patrimoine, Hagnéré Investissement) sont tous visitables en direct. Pendant l'appel de 30 min, on peut aussi vous faire une démo live en partage d'écran sur nos repos Git privés.",
+      },
+    },
+  ],
+});
+
 export default function Page() {
   return (
     <>
       <script type="application/ld+json">{contactJsonLd}</script>
+      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <script type="application/ld+json">{faqJsonLd}</script>
       <ContactPage />
     </>
   );

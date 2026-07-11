@@ -51,7 +51,7 @@ ${navHtml}
           trafic SEO, leads qualifiés. Vérifiable sur demande.
         </p>
         <div class="rl-hero-cta">
-          <a href="/#contact" class="btn btn-accent btn-lg">
+          <a href="#contact" class="btn btn-accent btn-lg">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-2.26 1.13a11.04 11.04 0 005.52 5.52l1.13-2.26a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2 16 16 0 01-16-16z"/></svg>
             Démarrer mon cadrage
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -454,7 +454,7 @@ ${navHtml}
       </div>
       <span>
         Vous voulez parler à l'un de ces clients avant de signer ? <b>On vous met en relation</b>
-        — avec leur accord et sous 48 h. <a href="/#contact">Demander un contact référence →</a>
+        — avec leur accord et sous 48 h. <a href="#contact">Demander un contact référence →</a>
       </span>
     </div>
   </div>
@@ -662,7 +662,7 @@ ${navHtml}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
       </div>
       <span>
-        <b>Méthodologie.</b> Données extraites des outils de tracking client (Stripe pour le CA, Search Console / Plausible pour le SEO, GA4 + CRM pour les leads). Période de référence : J+0 = mise en production. Toutes les métriques sont vérifiables — <a href="/#contact">demandez l'export brut</a>.
+        <b>Méthodologie.</b> Données extraites des outils de tracking client (Stripe pour le CA, Search Console / Plausible pour le SEO, GA4 + CRM pour les leads). Période de référence : J+0 = mise en production. Toutes les métriques sont vérifiables — <a href="#contact">demandez l'export brut</a>.
       </span>
     </div>
   </div>
@@ -968,7 +968,7 @@ ${navHtml}
 
     <div class="rl-quotes-cta reveal">
       <span>Références vérifiables sur demande, mises en relation directes avant signature.</span>
-      <a href="/#contact" class="btn btn-ghost btn-on-dark">
+      <a href="#contact" class="btn btn-ghost btn-on-dark">
         Demander une mise en relation
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>

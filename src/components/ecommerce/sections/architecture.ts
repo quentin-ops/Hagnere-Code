@@ -9,7 +9,7 @@ export const architectureHtml = `
       </div>
       <div class="right">
         Pas une slide marketing. L'architecture réelle d'une de nos boutiques en production : storefront
-        Next.js + app mobile React Native + cœur Laravel + intégrations FR natives. Headless, standard,
+        Next.js + app mobile React Native + cœur TypeScript + intégrations FR natives. Headless, standard,
         remplaçable. Votre DSI peut reprendre demain si besoin.
       </div>
     </div>
@@ -40,7 +40,7 @@ export const architectureHtml = `
         <g transform="translate(620 80)">
           <rect width="260" height="88" rx="10" fill="#171717" stroke="rgba(255,255,255,0.12)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">BACK-OFFICE OPS</text>
-          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Filament 3 · Livewire</text>
+          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Back-office React</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Commandes, étiquettes, stock</text>
         </g>
         <g transform="translate(900 80)">
@@ -61,7 +61,7 @@ export const architectureHtml = `
         <text x="60" y="220" font-family="Geist Mono" font-size="11" fill="#6D28D9" letter-spacing="0.08em">— CŒUR MÉTIER E-COMMERCE</text>
         <g transform="translate(340 240)">
           <rect width="520" height="96" rx="12" fill="#6D28D9" stroke="rgba(255,255,255,0.18)"/>
-          <text x="24" y="34" font-family="Geist Mono" font-size="11" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">LARAVEL 13 · PHP 8.4 · CASHIER STRIPE</text>
+          <text x="24" y="34" font-family="Geist Mono" font-size="11" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">NEXT.JS 16 · TYPESCRIPT · STRIPE BILLING</text>
           <text x="24" y="60" font-family="Geist" font-size="20" font-weight="600" fill="#fff">Hagnéré Commerce Core</text>
           <text x="24" y="82" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.8)">Catalogue · panier · checkout · commandes · promo · loyalty · RGPD</text>
         </g>
@@ -69,13 +69,13 @@ export const architectureHtml = `
         <g transform="translate(60 240)">
           <rect width="240" height="96" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">AGENTS IA</text>
-          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Claude · Prism · pgvector</text>
+          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Claude · pgvector</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Descriptions, reco, SAV, recherche</text>
         </g>
         <g transform="translate(900 240)">
           <rect width="240" height="96" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">JOBS &amp; CRON</text>
-          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Horizon + Redis</text>
+          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Files d'attente Redis</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Étiquettes, factures, feeds</text>
         </g>
 
@@ -177,7 +177,7 @@ export const architectureHtml = `
       </div>
       <p>
         Aucun framework propriétaire, aucune boîte noire, aucun SaaS tiers obligatoire.
-        Votre équipe technique peut reprendre ce code avec n'importe quelle ESN française qui fait du Laravel +
+        Votre équipe technique peut reprendre ce code avec n'importe quelle ESN française qui fait du React +
         Next.js. C'est exactement ça, le "sur mesure".
       </p>
     </div>

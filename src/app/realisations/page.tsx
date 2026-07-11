@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import { RealisationsIndexPage } from "@/components/realisations/RealisationsIndexPage";
 import { CASES } from "@/components/realisations/cases";
+import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Réalisations · Études de cas · Hagnéré Code",
+  title: "Réalisations : 4 produits en production · Hagnéré Code",
   description:
-    "Découvrez les réalisations Hagnéré Code : SaaS fiscaux, applications métier et sites d'acquisition. Contexte, modules livrés, stack technique et résultats mesurés.",
+    "4 études de cas documentées : SaaS à 5 400 clients payants, +340 % de trafic SEO en 6 mois. Contexte, stack, résultats mesurés — zéro logo volé.",
   alternates: { canonical: "/realisations" },
   openGraph: {
+    ...OG_BASE,
     title: "Réalisations · Hagnéré Code",
     description:
       "Quatre projets documentés : contexte, fonctionnement, stack et modules livrés.",
     url: "/realisations",
-    type: "website",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 

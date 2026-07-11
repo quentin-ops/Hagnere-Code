@@ -51,7 +51,7 @@ ${navHtml}
           Lire la méthode
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
         </a>
-        <a href="/#contact" class="mhero-btn-ghost">
+        <a href="#contact" class="mhero-btn-ghost">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-2.26 1.13a11.04 11.04 0 005.52 5.52l1.13-2.26a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2 16 16 0 01-16-16z"/></svg>
           Réserver un cadrage
         </a>
@@ -91,7 +91,7 @@ ${navHtml}
       <li><a class="mtoc-link" href="#temoignages" data-section="temoignages"><span class="mtoc-num">8.0</span><span class="mtoc-t">Ce qu'en disent les clients</span></a></li>
       <li><a class="mtoc-link" href="#exclusion" data-section="exclusion"><span class="mtoc-num">9.0</span><span class="mtoc-t">Pas pour vous si…</span></a></li>
       <li><a class="mtoc-link" href="#faq" data-section="faq"><span class="mtoc-num">10.0</span><span class="mtoc-t">Contre-objections (FAQ)</span></a></li>
-      <li><a class="mtoc-link" href="#cta-finale" data-section="cta-finale"><span class="mtoc-num">11.0</span><span class="mtoc-t">Cadrer votre projet</span></a></li>
+      <li><a class="mtoc-link" href="#contact" data-section="contact"><span class="mtoc-num">11.0</span><span class="mtoc-t">Cadrer votre projet</span></a></li>
     </ol>
     <div class="mtoc-foot">
       <span class="mtoc-foot-tag">SPRINT FIXE™ · v.4.2</span>
@@ -413,7 +413,7 @@ ${navHtml}
           <p>Notre contrat type Sprint Fixe™ (8 pages, juridiquement validé) est public.
           Téléchargez-le, faites-le relire par votre juriste, posez-nous toutes les questions
           avant de vous engager.</p>
-          <a href="/#contact" class="btn btn-ghost btn-dl">
+          <a href="#contact" class="btn btn-ghost btn-dl">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
             Demander le contrat type (PDF)
           </a>
@@ -476,7 +476,7 @@ ${navHtml}
             <span class="tl-dur">J+1 → J+5</span>
           </div>
           <h4>Setup &amp; design system</h4>
-          <p>Repo Git créé sur votre organisation. Setup Laravel + base de données + design system Tailwind. Les premiers écrans Figma deviennent des composants codés.</p>
+          <p>Repo Git créé sur votre organisation. Setup Next.js + base de données + design system Tailwind. Les premiers écrans Figma deviennent des composants codés.</p>
           <div class="tl-deliv">
             <span class="tl-deliv-item">🔐 Repo Git ouvert J+1</span>
             <span class="tl-deliv-item">⚙️ Stack opérationnelle</span>
@@ -924,7 +924,7 @@ ${navHtml}
         <b>Vous voulez voir une démo en direct ?</b>
         <span>On vous invite gratuitement à une démo client réelle (avec leur accord) pour que vous voyiez la méthode en action avant de signer.</span>
       </div>
-      <a href="/#contact" class="btn btn-ghost">
+      <a href="#contact" class="btn btn-ghost">
         Assister à une démo
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -944,7 +944,7 @@ ${navHtml}
           <span>OUTIL</span>
           <span>Claude Code · pas un pilier, un copilote</span>
         </div>
-        <h3>Un gérant qui code, 3 CDI Laravel<br>+ 3 freelances long-terme,<br><span class="accent">Claude Code en copilote.</span></h3>
+        <h3>Un gérant qui code, 3 CDI full-stack<br>+ 3 freelances long-terme,<br><span class="accent">Claude Code en copilote.</span></h3>
         <p class="claude-lead">
           Beaucoup d'agences brandissent l'IA comme un argument marketing. Chez nous, c'est un
           outil de productivité opéré par chaque dev senior — recherche de doc, exploration de bibliothèques,
@@ -1164,7 +1164,7 @@ ${navHtml}
       <div class="nfy-card reveal reveal-d-3">
         <div class="nfy-num">CAS 04</div>
         <h3>Vous voulez étendre un legacy en .NET, Python ou Java.</h3>
-        <p>On code en Laravel + React. Si votre existant est dans une autre stack et qu'il faut
+        <p>On code en Next.js + React. Si votre existant est dans une autre stack et qu'il faut
         l'étendre <b>en restant dessus</b>, on n'est pas la bonne équipe — on apprendrait
         sur votre projet, et c'est exactement ce qu'on s'interdit. On vous oriente vers
         des spécialistes par stack ; on a des contacts éprouvés à recommander selon le contexte.</p>
@@ -1186,7 +1186,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— Contre-objections</div>
         <h2 style="margin-top:14px">Neuf objections<br>qu'on entend tout<br>le temps.</h2>
-        <p>Les réponses honnêtes, pas les réponses commerciales. Manquante ? <a href="/#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a>.</p>
+        <p>Les réponses honnêtes, pas les réponses commerciales. Manquante ? <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a>.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
@@ -1239,9 +1239,9 @@ ${navHtml}
           <div class="faq-a">
             Bonne question. <b>Sprint Fixe™ marche bien sur des projets à périmètre cadrable</b>
             (MVP SaaS, refonte vitrine, outil interne défini). Pour un projet vraiment évolutif
-            (R&amp;D, recherche utilisateur en continu, pivot fréquent), on bascule sur un format
-            <b>Care+ avec capacité dédiée mensuelle</b> — un développeur senior à temps partiel,
-            engagement 6 mois, livrables par sprints de 2 semaines. C'est plus adapté qu'un forfait fixe
+            (R&amp;D, recherche utilisateur en continu, pivot fréquent), on bascule sur un forfait
+            <b>Care+ mensuel, sur devis</b> — 8 h d'évolutions par mois (cumulables), sans engagement
+            de durée, préavis d'un mois. C'est plus adapté qu'un forfait fixe
             qui se réécrirait tous les mois.
           </div>
         </div>
@@ -1280,11 +1280,12 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            On code en <b>Laravel 13 + Livewire/React</b> par défaut — c'est la stack qui nous fait gagner
-            le plus de temps. Si vous avez un existant en .NET / Node / Python qu'on devrait étendre,
+            On code en <b>Next.js + React (TypeScript)</b> par défaut — c'est la stack qui nous fait gagner
+            le plus de temps. On reprend aussi l'existant <b>Laravel/PHP</b> — audit, maintenance, évolutions.
+            Si vous avez un existant en .NET / Node / Python qu'on devrait étendre,
             on vous le dit honnêtement : <b>on n'est pas la bonne équipe</b>, et on vous oriente vers
             des confrères spécialisés. En revanche, si vous voulez <b>ré-écrire from scratch</b> ou
-            ajouter un outil nouveau à côté de votre existant, Laravel marche très bien — vos deux outils
+            ajouter un outil nouveau à côté de votre existant, Next.js marche très bien — vos deux outils
             communiquent par API.
           </div>
         </div>
@@ -1309,7 +1310,7 @@ ${navHtml}
           </div>
           <div class="faq-a">
             <b>Vous gardez tout :</b> repo Git sur votre compte dès J+1, hébergement à votre nom,
-            documentation à jour, runbook ops complet. N'importe quelle autre équipe Laravel
+            documentation à jour, runbook ops complet. N'importe quelle équipe React/Next.js
             peut reprendre votre projet en moins de 5 jours. Pas de lock-in technique,
             pas de royalties, pas de dépendance. C'est pour ça qu'on impose le pilier #5.
           </div>
@@ -1342,7 +1343,7 @@ ${navHtml}
     </p>
 
     <div class="mfinal-cta">
-      <a href="/#contact" class="btn btn-accent btn-lg mfinal-btn">
+      <a href="#contact" class="btn btn-accent btn-lg mfinal-btn">
         📅 Réserver 30 min sur Calendly
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>

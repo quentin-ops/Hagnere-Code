@@ -9,7 +9,7 @@ export const architectureHtml = `
       </div>
       <div class="right">
         Pas une slide marketing. L'architecture réelle d'un de nos SaaS en production,
-        simplifiée : front-ends web &amp; mobile, API Laravel, data, services externes,
+        simplifiée : front-ends web &amp; mobile, API Next.js, data, services externes,
         infra. Chaque brique est un standard industriel.
       </div>
     </div>
@@ -48,7 +48,7 @@ export const architectureHtml = `
         <g transform="translate(620 80)">
           <rect width="260" height="88" rx="10" fill="#171717" stroke="rgba(255,255,255,0.12)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">BACK-OFFICE ADMIN</text>
-          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Filament + Livewire</text>
+          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Back-office React</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Support, stats, impersonation</text>
         </g>
         <!-- Public API -->

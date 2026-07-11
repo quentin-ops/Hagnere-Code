@@ -451,7 +451,8 @@ a.sf-direct-v:hover { color: var(--accent); }
   padding-bottom: 36px;
   border-bottom: 1px solid var(--line);
 }
-.sf-foot-services h5 {
+.sf-foot-services h5,
+.sf-foot-services .sf-foot-title {
   font-family: var(--font-geist-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -483,7 +484,8 @@ a.sf-direct-v:hover { color: var(--accent); }
 .sf-foot-col:last-child {
   padding-right: 0;
 }
-.sf-foot-col h5 {
+.sf-foot-col h5,
+.sf-foot-col .sf-foot-title {
   font-family: var(--font-geist-mono);
   font-size: 11px;
   letter-spacing: 0.08em;

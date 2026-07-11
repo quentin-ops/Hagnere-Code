@@ -62,7 +62,7 @@ export const deriskHtml = `
         <h3>Test de charge à 10× le pic normal avant go-live.</h3>
         <p>
           Avant la bascule, on lance un <b>test de charge k6</b> à 10× votre pic de commandes attendu.
-          On valide : temps de réponse API sous charge, auto-scaling workers Horizon, tenue de la DB,
+          On valide : temps de réponse API sous charge, auto-scaling des workers de queues, tenue de la DB,
           rollback en 5 min si alerte. Infra <b>stateless</b>, scale horizontal auto, CDN Cloudflare devant.
           Monitoring Sentry + UptimeRobot 24/7 avec alertes Slack.
         </p>
@@ -81,8 +81,8 @@ export const deriskHtml = `
         </div>
         <h3>Code à vous dès J+1 · stack standard · zéro lock-in.</h3>
         <p>
-          Repo Git <b>sur votre organisation dès J+1</b>. Stack 100 % standard (Laravel, Next.js, PostgreSQL),
-          documentation technique, runbook, Docker compose. Une autre ESN française Laravel/React peut
+          Repo Git <b>sur votre organisation dès J+1</b>. Stack 100 % standard (Next.js, TypeScript, PostgreSQL),
+          documentation technique, runbook, Docker compose. Une autre ESN française React/Next.js peut
           reprendre en <b>2-3 semaines de ramp-up</b>. Aucun framework propriétaire, aucune clé cachée,
           escrow contractuel possible si votre DSI le souhaite.
         </p>

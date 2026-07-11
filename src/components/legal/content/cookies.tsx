@@ -22,12 +22,19 @@ export const cookiesSections: LegalSection[] = [
       <>
         <p>
           <strong>
-            À ce jour, le site hagnere-code.fr ne dépose aucun cookie soumis à
-            consentement.
+            À ce jour, hagnere-code.fr ne dépose lui-même aucun cookie de
+            mesure d&apos;audience ni de publicité.
           </strong>{" "}
           Aucun outil d&apos;analyse d&apos;audience non exempté (Google Analytics, Meta
           Pixel, etc.) n&apos;est intégré, et aucun pixel publicitaire n&apos;est chargé
           sur le site.
+        </p>
+        <p>
+          Seule exception : les pages <strong>/contact</strong> et{" "}
+          <strong>/rendez-vous</strong> intègrent le module de prise de
+          rendez-vous <strong>Calendly</strong> directement dans la page.
+          Ce module tiers est susceptible de déposer ses propres cookies —
+          voir la section « Services tiers » ci-dessous.
         </p>
         <p>
           Seuls des éléments strictement nécessaires au fonctionnement du site
@@ -126,8 +133,11 @@ export const cookiesSections: LegalSection[] = [
           </table>
         </div>
         <p>
-          Aucun cookie HTTP, aucun pixel de tracking et aucun outil d&apos;analytics
-          tiers n&apos;est actuellement déposé.
+          En dehors des stockages listés ci-dessus, hagnere-code.fr ne dépose
+          lui-même aucun cookie HTTP, aucun pixel de tracking ni aucun outil
+          d&apos;analytics tiers. Seul le module Calendly embarqué sur les pages de
+          prise de rendez-vous est susceptible de déposer des cookies tiers
+          (voir la section suivante).
         </p>
       </>
     ),
@@ -135,16 +145,45 @@ export const cookiesSections: LegalSection[] = [
   {
     id: "tiers",
     label: "Services tiers",
-    title: "Services tiers (ouverts volontairement)",
+    title: "Services tiers : le module Calendly",
     body: (
-      <p>
-        Certains liens peuvent vous diriger vers des services externes, par
-        exemple <strong>Calendly</strong> pour réserver un rendez-vous. Ces
-        services sont ouverts dans une nouvelle fenêtre via un lien classique
-        (pas de widget embarqué côté hagnere-code.fr) — ils peuvent déposer
-        leurs propres cookies selon leurs politiques de confidentialité que
-        nous vous invitons à consulter directement chez ces éditeurs.
-      </p>
+      <>
+        <p>
+          Les pages <strong>/contact</strong> et <strong>/rendez-vous</strong>{" "}
+          intègrent le module de réservation <strong>Calendly</strong>{" "}
+          (Calendly, LLC) directement dans la page, sous forme de widget
+          embarqué (iframe). Lorsque vous consultez l&apos;une de ces pages, votre
+          navigateur charge du contenu depuis les serveurs de Calendly, qui
+          peut à cette occasion déposer ses propres cookies. Ces cookies sont
+          régis par la politique de confidentialité de Calendly, que nous vous
+          invitons à consulter :{" "}
+          <a
+            href="https://calendly.com/legal/privacy-notice"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            calendly.com/legal/privacy-notice
+          </a>
+          .
+        </p>
+        <p>
+          Ces cookies sont émis par Calendly et non par hagnere-code.fr, et
+          nous ne les exploitons pas. Si vous ne souhaitez pas charger ce
+          module, vous pouvez prendre contact sans passer par ces pages, en
+          écrivant directement à{" "}
+          <a href="mailto:quentin@hagnere-patrimoine.fr">
+            quentin@hagnere-patrimoine.fr
+          </a>
+          .
+        </p>
+        <p>
+          Par ailleurs, certains liens du site peuvent vous diriger vers des
+          services externes ouverts dans une nouvelle fenêtre — ils peuvent
+          déposer leurs propres cookies selon leurs politiques de
+          confidentialité que nous vous invitons à consulter directement chez
+          ces éditeurs.
+        </p>
+      </>
     ),
   },
   {
@@ -160,8 +199,9 @@ export const cookiesSections: LegalSection[] = [
           formulaire) sans empêcher la consultation du site.
         </p>
         <p>
-          Pour toute question relative aux cookies ou à la protection de vos
-          données, contactez{" "}
+          Pour toute question relative aux cookies ou à{" "}
+          <a href="/legal/confidentialite">la protection de vos données</a>,
+          contactez{" "}
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>.
         </p>
       </>

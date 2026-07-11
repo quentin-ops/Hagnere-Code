@@ -8,12 +8,12 @@ export const testimonialsHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Trois founders, trois site en prod</div>
+        <div class="eyebrow">— Trois clients, trois sites en prod</div>
         <h2>Ce qu'ils retiennent,<br>plusieurs mois après.</h2>
       </div>
       <div class="right">
         Trois retours à froid sur ce qui change vraiment quand on fait construire son site chez nous :
-        <b>la vitesse du MVP</b>, <b>le forfait fixe tenu</b>, et <b>l'IA vraiment dans le produit</b>.
+        <b>la mise en ligne rapide</b>, <b>le forfait fixe tenu</b>, et <b>la performance mesurable</b>.
       </div>
     </div>
 
@@ -21,13 +21,13 @@ export const testimonialsHtml = `
       <article class="sv-testi-card reveal">
         <div class="sv-testi-topic">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          VITESSE DE MVP
+          MISE EN LIGNE RAPIDE
         </div>
         <div class="sv-testi-stars">★★★★★</div>
         <blockquote class="sv-testi-quote">
-          « Brief le lundi, première démo le vendredi. MVP live à J+35 avec Stripe, Auth,
-          multi-tenant, back-office — exactement ce qu'on avait dessiné. On a signé les premiers
-          clients avant même d'avoir fini le site marketing. »
+          « Brief le lundi, première démo le vendredi. Site en ligne à J+35 avec design sur mesure,
+          blog, formulaires branchés au CRM — exactement ce qu'on avait dessiné. Les premiers
+          leads sont arrivés la semaine de la mise en ligne. »
         </blockquote>
         <div class="sv-testi-meta">
           <div class="sv-testi-av" aria-hidden="true">
@@ -35,7 +35,7 @@ export const testimonialsHtml = `
           </div>
           <div class="sv-testi-who">
             <div class="sv-testi-name">Référence anonymisée</div>
-            <div class="sv-testi-role">Founder · site B2B · <b>MVP livré en 5 semaines</b></div>
+            <div class="sv-testi-role">Dirigeant · site corporate B2B · <b>Site livré en 5 semaines</b></div>
           </div>
         </div>
       </article>
@@ -57,7 +57,7 @@ export const testimonialsHtml = `
           </div>
           <div class="sv-testi-who">
             <div class="sv-testi-name">Référence anonymisée</div>
-            <div class="sv-testi-role">CEO · site B2B · <b>Refonte 60 k€ forfait</b></div>
+            <div class="sv-testi-role">CEO · refonte corporate · <b>Refonte multilingue au forfait</b></div>
           </div>
         </div>
       </article>
@@ -65,13 +65,13 @@ export const testimonialsHtml = `
       <article class="sv-testi-card reveal reveal-d-2">
         <div class="sv-testi-topic">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg>
-          IA VRAIMENT DANS LE PRODUIT
+          PERFORMANCE &amp; SEO
         </div>
         <div class="sv-testi-stars">★★★★★</div>
         <blockquote class="sv-testi-quote">
-          « L'IA est dans le produit, pas sur la landing. Les agents Claude classent les tickets
-          la nuit, extraient les factures, relancent les impayés. On a divisé le support par trois
-          et gagné 2 employés en productivité. Retour sur invest en 4 mois. »
+          « On est passés d'un WordPress qui chargeait en 6 secondes à un site statique
+          sous la seconde. 98 % de nos positions Google conservées après la migration,
+          et chaque formulaire remplit enfin le CRM tout seul. Le taux de conversion a suivi. »
         </blockquote>
         <div class="sv-testi-meta">
           <div class="sv-testi-av" aria-hidden="true">
@@ -79,7 +79,7 @@ export const testimonialsHtml = `
           </div>
           <div class="sv-testi-who">
             <div class="sv-testi-name">Référence anonymisée</div>
-            <div class="sv-testi-role">CTO · site B2B · <b>Agents IA intégrés en 4 sem.</b></div>
+            <div class="sv-testi-role">Dir. marketing · migration WordPress → Next.js · <b>LCP &lt; 1 s</b></div>
           </div>
         </div>
       </article>

@@ -122,7 +122,7 @@ export const equipeHtml = `
       </div>
       <div class="right">
         Pas de pool de freelances anonyme, pas de sous-traitance offshore.
-        Studio 7 personnes&nbsp;: <b>1 gérant + 3 CDI Laravel</b> à Chambéry +
+        Studio 7 personnes&nbsp;: <b>1 gérant + 3 CDI développeurs full-stack</b> à Chambéry +
         <b>3 freelances long-terme</b> intégrés à nos rituels, formés à Claude Code,
         rapides <em>et</em> autonomes sur vos projets.
       </div>
@@ -174,7 +174,8 @@ export const equipeHtml = `
           <h3>Un CTO, deux seniors CDI<br>et trois freelances long-terme,<br>augmentés par <em>Claude Code</em>.</h3>
           <p>
             <b>3 CDI</b> (Nicolas, Killian, Frédéric) et <b>3 freelances long-terme intégrés à nos rituels</b>
-            (Arthur, Ryan, Peter). Tous seniors ou confirmés, tous spécialisés en écosystème Laravel.
+            (Arthur, Ryan, Peter). Tous seniors ou confirmés, spécialisés React/Next.js et TypeScript,
+            avec une expertise Laravel pour les reprises d'existant.
             Le CTO apporte la vision transverse et le management tech, les devs la profondeur d'exécution.
             Et tous utilisent <b>Claude Code</b> comme assistant de développement : recherches, cadrage,
             architecture, plans d'implémentation. Résultat : <b>on pose moins de questions, on avance

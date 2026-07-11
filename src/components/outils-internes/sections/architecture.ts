@@ -9,7 +9,7 @@ export const architectureHtml = `
       </div>
       <div class="right">
         Pas une slide marketing. L'architecture réelle d'un outil métier qu'on a livré,
-        simplifiée : utilisateurs internes via SSO, cœur métier Laravel, agents IA, <b>connecteurs
+        simplifiée : utilisateurs internes via SSO, cœur métier Next.js, agents IA, <b>connecteurs
         à votre SI existant</b> (Sage, Cegid, Active Directory). Tout est standard, auditable, remplaçable.
       </div>
     </div>
@@ -70,7 +70,7 @@ export const architectureHtml = `
         <text x="60" y="220" font-family="Geist Mono" font-size="11" fill="#6D28D9" letter-spacing="0.08em">— CŒUR MÉTIER</text>
         <g transform="translate(340 240)">
           <rect width="520" height="96" rx="12" fill="#6D28D9" stroke="rgba(255,255,255,0.18)"/>
-          <text x="24" y="34" font-family="Geist Mono" font-size="11" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">LARAVEL 13 · PHP 8.4</text>
+          <text x="24" y="34" font-family="Geist Mono" font-size="11" fill="rgba(255,255,255,0.8)" letter-spacing="0.06em">NEXT.JS 16 · TYPESCRIPT</text>
           <text x="24" y="60" font-family="Geist" font-size="20" font-weight="600" fill="#fff">Hagnéré Core</text>
           <text x="24" y="82" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.8)">RBAC · Audit trail · Events · Workflows · Jobs · API REST</text>
         </g>
@@ -78,13 +78,13 @@ export const architectureHtml = `
         <g transform="translate(60 240)">
           <rect width="240" height="96" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">AGENTS IA</text>
-          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Claude · Prism · OCR</text>
+          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Claude · OCR</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Extraction, classif., relances</text>
         </g>
         <g transform="translate(900 240)">
           <rect width="240" height="96" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">JOBS &amp; CRON</text>
-          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Horizon + Redis</text>
+          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Files d'attente Redis</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Relances auto, imports, exports</text>
         </g>
 

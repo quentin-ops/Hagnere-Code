@@ -1075,6 +1075,7 @@ function ObjectivesField({
           <button
             key={objective}
             type="button"
+            aria-pressed={selected.includes(objective)}
             className={`pf-chip ${selected.includes(objective) ? "is-selected" : ""}`}
             onClick={() => onToggle(objective)}
           >
@@ -1275,11 +1276,14 @@ function VoiceTextarea({
   onChange,
   placeholder,
   minRows = 6,
+  id,
 }: {
   value: string;
   onChange: (value: string) => void;
   placeholder: string;
   minRows?: number;
+  /** Associe le <textarea> interne au <label htmlFor> du parent (a11y). */
+  id?: string;
 }) {
   const [recording, setRecording] = useState(false);
   const [processing, setProcessing] = useState(false);
@@ -1518,6 +1522,7 @@ function VoiceTextarea({
   return (
     <div className="pf-voice-field">
       <textarea
+        id={id}
         value={value}
         onChange={(event) => onChange(event.target.value)}
         rows={minRows}
@@ -1930,6 +1935,7 @@ export function ProjectFunnel() {
         </nav>
       </header>
 
+      <main id="main-content">
       <section className="pf-landing">
         <div className="pf-landing-inner">
           <span className="pf-kicker">
@@ -1956,7 +1962,12 @@ export function ProjectFunnel() {
           <div className="pf-landing-badges">
             <span><Check size={13} strokeWidth={3} /> Gratuit, sans engagement</span>
             <span><Check size={13} strokeWidth={3} /> Réponse personnelle sous 24 h ouvrées</span>
-            <span><Check size={13} strokeWidth={3} /> Données privées, conforme RGPD</span>
+            <span>
+              <Check size={13} strokeWidth={3} />{" "}
+              <Link href="/legal/confidentialite" style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}>
+                Données privées, conforme RGPD
+              </Link>
+            </span>
           </div>
           <ol className="pf-landing-steps">
             <li>
@@ -1978,7 +1989,7 @@ export function ProjectFunnel() {
         </div>
       </section>
 
-      <main className="pf-shell" id="brief">
+      <div className="pf-shell" id="brief">
         <aside className="pf-sidebar" aria-label="Progression du cadrage">
           <div className="pf-side-card">
             <div className="pf-side-top">
@@ -2125,8 +2136,9 @@ export function ProjectFunnel() {
             {current.id === "contexte" && (
               <div className="pf-stack">
                 <div className="pf-field">
-                  <label>{contextFields.descriptionLabel}</label>
+                  <label htmlFor="pf-description">{contextFields.descriptionLabel}</label>
                   <VoiceTextarea
+                    id="pf-description"
                     value={state.description}
                     onChange={(value) => patch("description", value)}
                     placeholder={contextFields.descriptionPlaceholder}
@@ -2135,8 +2147,9 @@ export function ProjectFunnel() {
                 </div>
                 <div className="pf-split">
                   <div className="pf-field">
-                    <label>{contextFields.situationLabel}</label>
+                    <label htmlFor="pf-situation">{contextFields.situationLabel}</label>
                     <VoiceTextarea
+                      id="pf-situation"
                       value={state.currentSituation}
                       onChange={(value) => patch("currentSituation", value)}
                       minRows={4}
@@ -2144,8 +2157,9 @@ export function ProjectFunnel() {
                     />
                   </div>
                   <div className="pf-field">
-                    <label>{contextFields.audienceLabel}</label>
+                    <label htmlFor="pf-audience">{contextFields.audienceLabel}</label>
                     <VoiceTextarea
+                      id="pf-audience"
                       value={state.audience}
                       onChange={(value) => patch("audience", value)}
                       minRows={4}
@@ -2165,6 +2179,7 @@ export function ProjectFunnel() {
                       <button
                         key={item}
                         type="button"
+                        aria-pressed={state.mustHaves.includes(item)}
                         className={`pf-chip ${state.mustHaves.includes(item) ? "is-selected" : ""} ${termTitle(item) ? "has-tooltip" : ""}`}
                         onClick={() => patch("mustHaves", toggleArray(state.mustHaves, item))}
                         title={termTitle(item)}
@@ -2182,6 +2197,7 @@ export function ProjectFunnel() {
                         <button
                           key={item}
                           type="button"
+                          aria-pressed={state.integrations.includes(item)}
                           className={`pf-chip ${state.integrations.includes(item) ? "is-selected" : ""} ${termTitle(item) ? "has-tooltip" : ""}`}
                           onClick={() => patch("integrations", toggleArray(state.integrations, item))}
                           title={termTitle(item)}
@@ -2198,6 +2214,7 @@ export function ProjectFunnel() {
                         <button
                           key={item}
                           type="button"
+                          aria-pressed={state.existingAssets.includes(item)}
                           className={`pf-chip ${state.existingAssets.includes(item) ? "is-selected" : ""} ${termTitle(item) ? "has-tooltip" : ""}`}
                           onClick={() => patch("existingAssets", toggleArray(state.existingAssets, item))}
                           title={termTitle(item)}
@@ -2209,8 +2226,9 @@ export function ProjectFunnel() {
                   </div>
                 </div>
                 <div className="pf-field">
-                  <label>{contextFields.scopeLabel}</label>
+                  <label htmlFor="pf-openscope">{contextFields.scopeLabel}</label>
                   <VoiceTextarea
+                    id="pf-openscope"
                     value={state.openScope}
                     onChange={(value) => patch("openScope", value)}
                     placeholder={contextFields.scopePlaceholder}
@@ -2458,7 +2476,7 @@ export function ProjectFunnel() {
             </div>
           )}
         </section>
-      </main>
+      </div>
 
       <section className="pf-landing-faq" aria-label="Questions fréquentes">
         <div className="pf-landing-inner">
@@ -2498,6 +2516,7 @@ export function ProjectFunnel() {
           </dl>
         </div>
       </section>
+      </main>
     </div>
   );
 }
@@ -2515,12 +2534,18 @@ function RadioBlock({
 }) {
   return (
     <div className="pf-field">
-      <label>{title}</label>
-      <div className="pf-radio-list">
+      <span className="pf-field-label" id={`pf-radio-${slugify(title)}`}>{title}</span>
+      <div
+        className="pf-radio-list"
+        role="radiogroup"
+        aria-labelledby={`pf-radio-${slugify(title)}`}
+      >
         {values.map((item) => (
           <button
             key={item}
             type="button"
+            role="radio"
+            aria-checked={value === item}
             className={`pf-radio ${value === item ? "is-selected" : ""}`}
             onClick={() => onChange(item)}
           >
@@ -2531,6 +2556,16 @@ function RadioBlock({
       </div>
     </div>
   );
+}
+
+/** Slug stable pour relier un intitulé de groupe à son radiogroup (a11y). */
+function slugify(s: string): string {
+  return s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 function TextInput({

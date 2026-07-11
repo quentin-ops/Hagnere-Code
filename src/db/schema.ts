@@ -8,28 +8,6 @@ import {
   index,
 } from "drizzle-orm/pg-core";
 
-// Contacts particuliers (Individual contacts)
-export const contactIndividual = pgTable("contact_individual", {
-  id: serial("id").primaryKey(),
-  firstName: text("first_name").notNull(),
-  lastName: text("last_name").notNull(),
-  email: text("email").notNull(),
-  phone: text("phone"),
-  message: text("message").notNull(),
-  createdAt: timestamp("created_at", { mode: "date" }).defaultNow(),
-});
-
-// Contacts entreprises (Company contacts)
-export const contactCompany = pgTable("contact_company", {
-  id: serial("id").primaryKey(),
-  siren: text("siren").notNull(),
-  companyName: text("company_name").notNull(),
-  email: text("email").notNull(),
-  phone: text("phone"),
-  message: text("message").notNull(),
-  createdAt: timestamp("created_at", { mode: "date" }).defaultNow(),
-});
-
 /**
  * project_brief — submissions from the /demarrer-un-projet funnel.
  *
@@ -124,7 +102,7 @@ export const aiCallLog = pgTable("ai_call_log", {
    *  - "validation": payload invalide
    */
   status: text("status").notNull(),
-  /** Sous-raison si blocked (rate_ip_hour, rate_ip_day, rate_global, rate_email, captcha_failed, cost_breaker, secret_misconfigured). */
+  /** Sous-raison si blocked (rate_ip_hour, rate_ip_day, rate_global_day, rate_email_day, captcha_failed, cost_breaker, secret_misconfigured). */
   blockReason: text("block_reason"),
   /**
    * Cost unit générique :

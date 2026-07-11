@@ -59,7 +59,7 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/><path d="M12 22a10 10 0 000-20"/></svg>
         </div>
         <h4>Audit de sortie écrit</h4>
-        <p>À la livraison, un <b>audit technique écrit</b> documente le code, les dépendances, les zones à risque et la roadmap conseillée. Reprise possible par toute autre équipe Laravel sans dépendance à nous.</p>
+        <p>À la livraison, un <b>audit technique écrit</b> documente le code, les dépendances, les zones à risque et la roadmap conseillée. Reprise possible par toute autre équipe React/Next.js sans dépendance à nous.</p>
         <div class="oi-trust-foot">— Livrable PDF inclus au handover</div>
       </div>
 
@@ -77,7 +77,7 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21"/></svg>
         </div>
         <h4>Stack 100 % standard</h4>
-        <p>Laravel 13, React, PostgreSQL, Redis, Docker. <b>Aucun framework propriétaire</b>. Une ESN française peut reprendre en 2-3 semaines. Votre indépendance est écrite dans la stack elle-même.</p>
+        <p>Next.js 16, React, TypeScript, PostgreSQL, Redis, Docker. <b>Aucun framework propriétaire</b>. Une ESN française peut reprendre en 2-3 semaines. Votre indépendance est écrite dans la stack elle-même.</p>
         <div class="oi-trust-foot">— Stack documentée et versionnée</div>
       </div>
 

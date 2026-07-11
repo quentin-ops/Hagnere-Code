@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
 import { SitesVitrines } from "@/components/sites-vitrines/SitesVitrines";
+import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Sites vitrines & landing pages · Hagnéré Code",
+  title: "Création site vitrine · Performance garantie · Hagnéré Code",
   description:
-    "Sites vitrines, landing pages, refontes WordPress → Next.js. SEO technique, Core Web Vitals garantis, CMS éditeur-friendly. Forfait fixe 6–25 k€, livré en 2 à 8 semaines, code 100 % à vous.",
+    "Sites vitrines et landing pages Next.js, 5× plus rapides que WordPress. Lighthouse 95+ garanti par contrat, forfait fixe dès 6 900 €, code à vous.",
   alternates: { canonical: "/services/sites-vitrines" },
   openGraph: {
+    ...OG_BASE,
     title: "Sites vitrines & landing pages — Hagnéré Code",
     description:
       "Next.js statique, Lighthouse 95+, SEO technique, CMS headless. Forfait fixe, livré en 2 à 8 semaines, hébergé en France.",
     url: "/services/sites-vitrines",
-    images: [
-      {
-        url: "/og-image-services.png",
-        width: 1200,
-        height: 630,
-        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
-      },
-    ],
-    type: "website",
+    images: [SERVICES_OG_IMAGE],
   },
+  twitter: { images: [SERVICES_OG_IMAGE.url] },
 };
 
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  name: "Création de sites vitrines et landing pages sur mesure",
+  url: "https://hagnere-code.fr/services/sites-vitrines",
   serviceType:
     "Création de sites vitrines, landing pages et refontes web sur mesure",
   provider: {
@@ -41,6 +38,7 @@ const serviceJsonLd = JSON.stringify({
       streetAddress: "7 rue Ernest Filliard",
       postalCode: "73000",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       addressCountry: "FR",
     },
     email: "quentin@hagnere-patrimoine.fr",

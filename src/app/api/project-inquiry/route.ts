@@ -176,8 +176,16 @@ export async function POST(request: Request) {
   // routes via la table ai_call_log filtrée par service='inquiry').
   // On extrait l'email AVANT validation pour pouvoir compter par email
   // même sur les payloads invalides.
+  // Fail-open sur erreur DB : le rate limit est une protection best-effort,
+  // il ne doit jamais bloquer la capture d'un lead (cohérent avec le reste
+  // de la route où la DB est best-effort).
   const emailFromBody = (body.email || "").trim() || null;
-  const rateCheck = await checkServiceRateLimit(ip, emailFromBody, "inquiry");
+  let rateCheck: Awaited<ReturnType<typeof checkServiceRateLimit>>;
+  try {
+    rateCheck = await checkServiceRateLimit(ip, emailFromBody, "inquiry");
+  } catch {
+    rateCheck = { allowed: true };
+  }
   if (!rateCheck.allowed) {
     await logAiCall({
       service: "inquiry",

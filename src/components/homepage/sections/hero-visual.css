@@ -2,7 +2,7 @@
  * Hero Visual v2 — "Living Product"
  *
  * Composition : carte produit en glass-morphism flottante,
- * 4 pills orbitales (Auth / Stripe / Laravel / Claude Code),
+ * 4 pills orbitales (Auth / Stripe / Next.js / Claude Code),
  * lignes connectées dashed animées, particules drifting,
  * gradients d'ambiance.
  *
@@ -421,7 +421,6 @@
 }
 
 .hv-orbit-ic-stripe { background: rgba(99, 91, 255, 0.12); color: #635BFF; }
-.hv-orbit-ic-laravel { background: rgba(255, 45, 32, 0.10); color: #FF2D20; }
 .hv-orbit-ic-claude { background: rgba(217, 119, 87, 0.12); color: #D97757; }
 
 .hv-orbit-body {

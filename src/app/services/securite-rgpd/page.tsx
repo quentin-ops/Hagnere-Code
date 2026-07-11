@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
 import { SecuriteRgpd } from "@/components/securite-rgpd/SecuriteRgpd";
+import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Sécurité & RGPD · DPO externalisé · Hagnéré Code",
+  title: "DPO externalisé & conformité RGPD, AI Act · Hagnéré Code",
   description:
-    "Studio qui code ET audite. Cartographie de vos sous-traitants (Stripe, Anthropic, OVH...), conformité RGPD + AI Act + DORA + NIS2, remédiation codée par nos devs. Forfait cadrage + DPO mensuel, basé à Chambéry.",
+    "Le studio qui code et audite : cadrage RGPD 4 900 €, DPO externalisé dès 1 900 €/mois, conformité AI Act, DORA, NIS2. Remédiation par nos devs.",
   alternates: { canonical: "/services/securite-rgpd" },
   openGraph: {
+    ...OG_BASE,
     title: "Sécurité & RGPD — Hagnéré Code",
     description:
       "DPO externalisé pour PME tech 2026. Audit + remédiation codée dans la même mission. RGPD · AI Act · DORA · NIS2 · SOC 2 readiness.",
     url: "/services/securite-rgpd",
-    images: [
-      {
-        url: "/og-image-services.png",
-        width: 1200,
-        height: 630,
-        alt: "Services Hagnéré Code — SaaS, applis métier, outils internes, sites vitrines, e-commerce",
-      },
-    ],
-    type: "website",
+    images: [SERVICES_OG_IMAGE],
   },
+  twitter: { images: [SERVICES_OG_IMAGE.url] },
 };
 
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
+  name: "DPO externalisé et conformité RGPD, AI Act",
+  url: "https://hagnere-code.fr/services/securite-rgpd",
   serviceType: "DPO externalisé, audit RGPD et conformité AI Act",
   provider: {
     "@type": "Organization",
@@ -40,6 +37,7 @@ const serviceJsonLd = JSON.stringify({
       streetAddress: "7 rue Ernest Filliard",
       postalCode: "73000",
       addressLocality: "Chambéry",
+      addressRegion: "Savoie",
       addressCountry: "FR",
     },
     email: "quentin@hagnere-patrimoine.fr",

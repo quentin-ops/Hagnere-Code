@@ -17,7 +17,7 @@ Trois types de violation :
 ## 2. Détection — qui peut détecter ?
 
 - Devs internes (alerte Sentry, log anormal, code review).
-- Sous-traitant (Neon, Cloudflare, Resend, Anthropic, Groq) qui notifie HAGNÉRÉ.
+- Sous-traitant (Neon, Cloudflare, Resend, Groq) qui notifie HAGNÉRÉ.
 - Personne concernée elle-même (formulaire contact, droits RGPD).
 - Tiers (chercheur en sécurité, journaliste, autorité).
 
@@ -138,9 +138,9 @@ Réunion interne :
 - **Évaluation** : violation de confidentialité ; gravité dépend des données contenues dans le brief.
 - **Notification** : oui si l'accès non autorisé est confirmé.
 
-### Cas D — Fuite côté sous-traitant (ex: Anthropic)
+### Cas D — Fuite côté sous-traitant (ex: Groq)
 
-- **Action** : Anthropic doit notifier HAGNÉRÉ sous délai contractuel (typiquement 24-72h).
+- **Action** : le sous-traitant doit notifier HAGNÉRÉ sous délai contractuel (typiquement 24-72h).
 - HAGNÉRÉ relaie la notification au CNIL et aux personnes si applicable.
 
 ## 7. Contact CNIL

@@ -1,32 +1,46 @@
 import type { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
 import { mentionsLegalesSections } from "@/components/legal/content/mentions-legales";
+import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 const LAST_UPDATED = "2026-04-23";
 
 export const metadata: Metadata = {
-  title: "Mentions légales — Hagnéré Code",
+  title: "Mentions légales · Hagnéré Code",
   description:
-    "Informations légales obligatoires : éditeur, hébergeur, directeur de la publication, propriété intellectuelle, RGPD et juridiction compétente pour HAGNÉRÉ CODE SAS.",
+    "Éditeur, hébergement, propriété intellectuelle et RGPD : les informations légales de HAGNÉRÉ CODE SAS, studio basé à Chambéry.",
   alternates: { canonical: "/legal/mentions" },
   openGraph: {
-    title: "Mentions légales — Hagnéré Code",
+    ...OG_BASE,
+    type: "article",
+    title: "Mentions légales · Hagnéré Code",
     description:
       "Informations légales officielles de HAGNÉRÉ CODE SAS — siège social à Chambéry.",
     url: "/legal/mentions",
-    type: "article",
+    images: [DEFAULT_OG_IMAGE],
   },
-  robots: { index: true, follow: true },
 };
+
+const breadcrumbJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
+    { "@type": "ListItem", position: 2, name: "Mentions légales", item: "https://hagnere-code.fr/legal/mentions" },
+  ],
+});
 
 export default function Page() {
   return (
-    <LegalPageLayout
-      title={"Mentions\nlégales."}
-      intro="Informations légales obligatoires relatives à l'édition du site hagnere-code.fr et à la société HAGNÉRÉ CODE SAS."
-      lastUpdated={LAST_UPDATED}
-      breadcrumb="Mentions légales"
-      sections={mentionsLegalesSections}
-    />
+    <>
+      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <LegalPageLayout
+        title={"Mentions\nlégales."}
+        intro="Informations légales obligatoires relatives à l'édition du site hagnere-code.fr et à la société HAGNÉRÉ CODE SAS."
+        lastUpdated={LAST_UPDATED}
+        breadcrumb="Mentions légales"
+        sections={mentionsLegalesSections}
+      />
+    </>
   );
 }

@@ -8,7 +8,7 @@ export const mobileAppHtml = `
         <h2>L'app mobile qui vend<br>pendant que vous dormez.</h2>
         <p>
           Vos clients fidèles achètent <b>2× plus</b> depuis une app mobile que depuis le web.
-          On livre une vraie app iOS + Android en <b>React Native</b>, publiée sous vos comptes
+          On livre une vraie <a href="/services/application-mobile">app iOS + Android</a> en <b>React Native</b>, publiée sous vos comptes
           App Store &amp; Play Store, dans le même forfait que la boutique web.
         </p>
         <ul class="ec-mobile-feats">

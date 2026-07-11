@@ -6,7 +6,7 @@ ${navHtml}
   <div class="crumb">
     <a href="/">Accueil</a>
     <span class="sep">/</span>
-    <a href="/#services">Services</a>
+    <a href="/services">Services</a>
     <span class="sep">/</span>
     <span style="color:var(--ink-3)">Sécurité &amp; RGPD</span>
   </div>
@@ -320,7 +320,7 @@ ${navHtml}
   </div>
 </section>
 
-<!-- CTA (sera strippé par stripFinalCta, remplacé par SiteFooter) -->
+<!-- CTA -->
 <section class="scta" id="contact">
   <div class="scta-bg"></div>
   <div class="wrap inner">
@@ -330,7 +330,7 @@ ${navHtml}
   </div>
 </section>
 
-<!-- FOOTER (sera strippé par stripFooter, remplacé par SiteFooter) -->
+<!-- FOOTER -->
 <footer>
   <div class="wrap"></div>
 </footer>

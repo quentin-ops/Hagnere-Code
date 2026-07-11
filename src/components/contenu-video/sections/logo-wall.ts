@@ -8,7 +8,7 @@ export const logoWallHtml = `
     <div class="cv-cw-kicker">— Ils nous ont confié leur contenu</div>
     <div class="cv-cw-grid">
       <div class="cv-cw-logo">
-        <img src="/logos/clients/hagnere-patrimoine.png" alt="Hagnéré Patrimoine" loading="lazy" />
+        <img src="/logos/clients/hagnere-patrimoine.webp" alt="Hagnéré Patrimoine" loading="lazy" />
       </div>
       <div class="cv-cw-sep"></div>
       <div class="cv-cw-logo">

@@ -5,7 +5,7 @@ export const logoWallHtml = `
     <div class="cw-kicker">— Nos produits internes, en production</div>
     <div class="cw-grid">
       <div class="cw-logo cw-logo-img">
-        <img src="/logos/clients/hagnere-patrimoine.png" alt="Hagnéré Patrimoine" width="160" height="48" loading="lazy" decoding="async" />
+        <img src="/logos/clients/hagnere-patrimoine.webp" alt="Hagnéré Patrimoine" width="160" height="48" loading="lazy" decoding="async" />
       </div>
       <div class="cw-sep" aria-hidden="true"></div>
       <div class="cw-logo cw-logo-img">

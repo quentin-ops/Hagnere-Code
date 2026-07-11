@@ -1,32 +1,46 @@
 import type { Metadata } from "next";
 import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
 import { accessibiliteSections } from "@/components/legal/content/accessibilite";
+import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 const LAST_UPDATED = "2026-04-28";
 
 export const metadata: Metadata = {
-  title: "Déclaration d'accessibilité — Hagnéré Code",
+  title: "Déclaration d'accessibilité · Hagnéré Code",
   description:
-    "Engagement RGAA 4.1 / WCAG 2.1 AA, état de conformité, non-conformités connues, alternatives et voies de recours sur hagnere-code.fr.",
+    "Démarche volontaire RGAA 4.1 / WCAG 2.1 AA : état de conformité, non-conformités connues et alternative garantie sous 5 jours ouvrés.",
   alternates: { canonical: "/legal/accessibilite" },
   openGraph: {
-    title: "Déclaration d'accessibilité — Hagnéré Code",
+    ...OG_BASE,
+    type: "article",
+    title: "Déclaration d'accessibilité · Hagnéré Code",
     description:
       "Engagement d'accessibilité du site hagnere-code.fr : RGAA 4.1, WCAG 2.1 AA, plan d'amélioration et voies de recours.",
     url: "/legal/accessibilite",
-    type: "article",
+    images: [DEFAULT_OG_IMAGE],
   },
-  robots: { index: true, follow: true },
 };
+
+const breadcrumbJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
+    { "@type": "ListItem", position: 2, name: "Déclaration d'accessibilité", item: "https://hagnere-code.fr/legal/accessibilite" },
+  ],
+});
 
 export default function Page() {
   return (
-    <LegalPageLayout
-      title={"Déclaration\nd'accessibilité."}
-      intro="Démarche volontaire d'accessibilité numérique RGAA 4.1 / WCAG 2.1 AA. État partiel, non-conformités connues, plan d'amélioration et voies de recours."
-      lastUpdated={LAST_UPDATED}
-      breadcrumb="Accessibilité"
-      sections={accessibiliteSections}
-    />
+    <>
+      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <LegalPageLayout
+        title={"Déclaration\nd'accessibilité."}
+        intro="Démarche volontaire d'accessibilité numérique RGAA 4.1 / WCAG 2.1 AA. État partiel, non-conformités connues, plan d'amélioration et voies de recours."
+        lastUpdated={LAST_UPDATED}
+        breadcrumb="Accessibilité"
+        sections={accessibiliteSections}
+      />
+    </>
   );
 }

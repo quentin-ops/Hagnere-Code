@@ -185,7 +185,6 @@
 .pf-actions,
 .pf-voice-toolbar,
 .pf-side-note,
-.pf-result-meta,
 .pf-success {
   display: flex;
   align-items: center;
@@ -430,19 +429,6 @@
 .pf-stack {
   display: grid;
   gap: 18px;
-}
-
-.pf-option-grid {
-  display: grid;
-  gap: 10px;
-}
-
-.pf-option-grid.two {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.pf-option-grid.funnel-types {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .pf-choice {
@@ -757,51 +743,6 @@
   gap: 14px;
 }
 
-.pf-result-card {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 14px;
-  padding: clamp(16px, 2.2vw, 24px);
-  color: #fff;
-  background:
-    radial-gradient(circle at 82% 16%, rgba(109, 40, 217, 0.52), transparent 36%),
-    linear-gradient(135deg, #0a0a0a, #171717);
-  border-radius: 18px;
-}
-
-.pf-result-card strong {
-  display: block;
-  margin-top: 7px;
-  font-size: clamp(28px, 3.4vw, 44px);
-  line-height: 1;
-  letter-spacing: 0;
-}
-
-.pf-result-card p {
-  max-width: 620px;
-  margin: 9px 0 0;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.pf-result-meta {
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 7px;
-}
-
-.pf-result-meta span {
-  display: inline-flex;
-  min-height: 26px;
-  padding: 0 9px;
-  align-items: center;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 700;
-}
-
 .pf-summary-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1009,12 +950,6 @@
   }
 }
 
-@media (min-width: 1280px) {
-  .pf-option-grid.funnel-types {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 760px) {
   .pf-topbar {
     min-height: 58px;
@@ -1089,22 +1024,14 @@
     padding: 16px;
   }
 
-  .pf-option-grid.two,
-  .pf-option-grid.funnel-types,
   .pf-split,
-  .pf-summary-grid,
-  .pf-result-card {
+  .pf-summary-grid {
     grid-template-columns: 1fr;
   }
 
   .pf-choice {
     min-height: auto;
     padding: 12px;
-  }
-
-  .pf-result-meta {
-    flex-direction: row;
-    align-items: center;
   }
 
   .pf-actions {
@@ -1130,10 +1057,9 @@
 }
 
 /* ==========================================================================
-   Loading view — IA estimate in progress
+   Success / fallback shells
    ========================================================================== */
 
-.pf-shell-loading,
 .pf-shell-success {
   display: flex;
   align-items: center;
@@ -1142,146 +1068,11 @@
   min-height: calc(100vh - 60px);
 }
 
-.pf-loading-card {
-  position: relative;
-  width: 100%;
-  max-width: 720px;
-  padding: clamp(28px, 5vw, 48px);
-  background: var(--pf-paper);
-  border: 1px solid var(--pf-line);
-  border-radius: 22px;
-  box-shadow: var(--pf-shadow);
-  text-align: center;
-}
-
-.pf-loading-orb {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 68px;
-  height: 68px;
-  margin-bottom: 18px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--pf-accent), var(--pf-accent-dark));
-  color: #fff;
-}
-
-.pf-loading-pulse {
-  position: absolute;
-  inset: 0;
-  border-radius: 999px;
-  border: 2px solid var(--pf-accent);
-  opacity: 0.4;
-  animation: pf-pulse 2s ease-out infinite;
-}
-
-@keyframes pf-pulse {
-  0% { transform: scale(1); opacity: 0.5; }
-  100% { transform: scale(1.6); opacity: 0; }
-}
-
-.pf-loading-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0 0 14px;
-  padding: 6px 12px;
-  background: var(--pf-accent-soft);
-  color: var(--pf-accent-dark);
-  border-radius: 999px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-}
-
-.pf-loading-tag .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--pf-accent);
-  animation: pf-blink 1.4s ease-in-out infinite;
-}
-
-@keyframes pf-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-.pf-loading-title {
-  margin: 0 0 12px;
-  font-size: clamp(24px, 4vw, 32px);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
-}
-
 .pf-grad {
   background: linear-gradient(135deg, var(--pf-accent), var(--pf-accent-dark));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-
-.pf-loading-sub {
-  max-width: 540px;
-  margin: 0 auto 26px;
-  color: var(--pf-soft);
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.pf-loading-phases {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  text-align: left;
-  max-width: 480px;
-  margin: 0 auto;
-}
-
-.pf-loading-phase {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 14px;
-  background: var(--pf-bg);
-  border: 1px solid transparent;
-  border-radius: 12px;
-  color: var(--pf-muted);
-  font-size: 13px;
-  transition: all 0.3s ease;
-}
-
-.pf-loading-phase.is-active {
-  background: var(--pf-paper);
-  border-color: var(--pf-accent-soft);
-  color: var(--pf-ink);
-  font-weight: 500;
-}
-
-.pf-loading-phase.is-done {
-  color: var(--pf-soft);
-}
-
-.pf-loading-phase-dot {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background: var(--pf-bg-2);
-  color: var(--pf-accent);
-  flex-shrink: 0;
-}
-
-.pf-loading-phase.is-done .pf-loading-phase-dot {
-  background: var(--pf-green-soft);
-  color: var(--pf-green);
-}
-
-.pf-loading-phase.is-active .pf-loading-phase-dot {
-  background: var(--pf-accent-soft);
 }
 
 /* ==========================================================================
@@ -2068,28 +1859,6 @@
   transform-origin: center;
   transition: transform 80ms linear;
 }
-
-/* ==========================================================================
-   Loading view long-run note
-   ========================================================================== */
-
-.pf-loading-longrun {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 22px;
-  padding: 9px 14px;
-  background: var(--pf-bg);
-  border: 1px dashed var(--pf-line);
-  border-radius: 999px;
-  font-size: 12px;
-  color: var(--pf-soft);
-  max-width: 480px;
-  text-align: left;
-  line-height: 1.4;
-}
-
-.pf-loading-longrun svg { flex-shrink: 0; color: var(--pf-accent); }
 
 /* ==========================================================================
    Chip "Voir plus / Réduire"

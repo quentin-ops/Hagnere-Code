@@ -20,11 +20,11 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Storefront</b> : Next.js 15 App Router (React 19, Server Components, Server Actions) + Tailwind v4.
-          <b>Back</b> : Laravel 13 (PHP 8.4), Cashier Stripe, Horizon queues Redis, Filament 3 admin, Scout + Meilisearch.
+          <b>Storefront</b> : Next.js 16 App Router (React 19, Server Components, Server Actions) + Tailwind v4.
+          <b>Back</b> : Next.js API + TypeScript (Node), Stripe Billing, queues Redis, back-office React sur mesure, Meilisearch.
           <b>Mobile</b> : React Native + Expo, EAS Build + Update.
           <b>DB</b> : PostgreSQL 17 + <b>pgvector</b> pour la recherche sémantique, Redis 7 cache/queues/sessions.
-          <b>IA</b> : Claude Opus 4.7 via Prism, embeddings Voyage ou OpenAI.
+          <b>IA</b> : Claude Opus 4.7, embeddings Voyage ou OpenAI.
           <b>Infra</b> : Scaleway ou OVH, Vercel pour le front, Cloudflare CDN + WAF + sGTM Worker.
         </div>
       </div>
@@ -36,7 +36,7 @@ export const techFaqHtml = `
         </div>
         <div class="faq-a">
           Architecture <b>stateless</b> : le front Next.js est sur edge (Vercel ou Cloudflare Workers),
-          l'API Laravel scale horizontalement (k8s, Vapor, ou Scaleway scale set selon déploiement).
+          l'API Next.js scale horizontalement (k8s, Vercel, ou Scaleway scale set selon déploiement).
           Sur nos derniers benchs : <b>500 à 1 000 commandes/minute soutenues</b> sur une config à 4 pods
           et une DB Postgres db-prod-16. On teste chaque livraison avec <b>k6 à 10× le pic normal</b>
           avant go-live.
@@ -91,7 +91,7 @@ export const techFaqHtml = `
         </div>
         <div class="faq-a">
           <b>Sentry</b> (front + back + mobile) avec context riche (user, commande, release), sourcemaps.
-          <b>Laravel Pulse</b> pour perfs &amp; slow queries. <b>Horizon</b> pour queues.
+          <b>Monitoring applicatif</b> pour perfs &amp; slow queries, dashboards dédiés pour les queues.
           <b>PostHog</b> pour events produit + funnels. Logs structurés JSON → agrégateur (Better Stack ou
           Grafana Loki). Alerts Slack sur : 5xx &gt; seuil, queue backlog, paiement échoué, stock négatif,
           uptime &lt; 99,5 %.
@@ -104,7 +104,7 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          Pyramide classique. Unit tests sur la logique métier (Pest), feature tests sur chaque route
+          Pyramide classique. Unit tests sur la logique métier (Vitest), feature tests sur chaque route
           critique (checkout, paiement, commande, stock, permissions), <b>end-to-end Playwright</b>
           sur les 5 parcours principaux (recherche, fiche, ajout panier, checkout invité, checkout connecté).
           CI GitHub Actions bloque le merge si coverage critique baisse. Tests IA <b>déterministes</b>
@@ -119,7 +119,7 @@ export const techFaqHtml = `
         </div>
         <div class="faq-a">
           <b>SLA TMA</b> : réponse &lt; 4 h ouvrées sur bug bloquant, &lt; 24 h ouvrées sur bug majeur.
-          Déploiement zero-downtime via Laravel Vapor / Envoyer / Kamal (selon infra), typiquement
+          Déploiement zero-downtime via Vercel / GitHub Actions / Kamal (selon infra), typiquement
           <b>3 à 6 minutes</b> de build-deploy. Rollback en 1 commande, &lt; 2 min. Déploiement automatique
           sur staging depuis la branche <code>main</code>, validation manuelle pour prod.
         </div>

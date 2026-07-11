@@ -7,7 +7,7 @@ ${navHtml}
   <div class="crumb">
     <a href="/">Accueil</a>
     <span class="sep">/</span>
-    <a href="/#services">Services</a>
+    <a href="/services">Services</a>
     <span class="sep">/</span>
     <span style="color:var(--ink-3)">Application mobile iOS &amp; Android</span>
   </div>
@@ -606,7 +606,7 @@ ${navHtml}
           </div>
           <div class="sl-row">
             <div class="sl-cat">BACK-END</div>
-            <div class="sl-val">Laravel 13 · Supabase · Hasura · Firebase</div>
+            <div class="sl-val">Next.js API · Supabase · Firebase</div>
             <div class="sl-note">VOTRE STACK</div>
           </div>
           <div class="sl-row">
@@ -648,7 +648,7 @@ ${navHtml}
             <span class="nd" style="background:#FFCA28"></span>Firebase
           </div>
           <div class="orbit-node" style="top:50%;left:-14%;transform:translateY(-50%)">
-            <span class="nd" style="background:#FF2D20"></span>Laravel API
+            <span class="nd" style="background:#0A0A0A"></span>API Next.js
           </div>
           <div class="orbit-node" style="top:50%;right:-14%;transform:translateY(-50%)">
             <span class="nd" style="background:#0A0A0A"></span>EAS Updates
@@ -710,7 +710,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Périmètre étendu, design sur mesure</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Apple Pay + Google Pay + Stripe + IAP</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Push géoloc, biométrie, mode hors-ligne, OTA EAS</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Back-office Filament / Strapi inclus</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Back-office React / Strapi inclus</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tests E2E Maestro · monitoring Sentry</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 14 à 20 semaines</li>
         </ul>
@@ -802,7 +802,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            On fait <b>React Native + Expo par défaut</b> : couvre la grande majorité des besoins PME, mutualise iOS et Android sur une seule codebase, animations fluides à 60 fps via Reanimated, OTA updates via EAS. <b>Flutter</b> est techniquement équivalent — on n'en fait pas car notre stack web est React et la cohérence avec votre back-end Laravel ou Next.js est meilleure. <b>Natif Swift/Kotlin</b> uniquement si la perf est critique (jeu 3D, IoT BLE pointu, finance lourde) — sur option dans le forfait Sur-mesure, pour les modules concernés.
+            On fait <b>React Native + Expo par défaut</b> : couvre la grande majorité des besoins PME, mutualise iOS et Android sur une seule codebase, animations fluides à 60 fps via Reanimated, OTA updates via EAS. <b>Flutter</b> est techniquement équivalent — on n'en fait pas car notre stack web est React et la cohérence avec votre back-end existant, quel qu'il soit, est meilleure. <b>Natif Swift/Kotlin</b> uniquement si la perf est critique (jeu 3D, IoT BLE pointu, finance lourde) — sur option dans le forfait Sur-mesure, pour les modules concernés.
           </div>
         </div>
 
@@ -943,7 +943,7 @@ ${navHtml}
     </div>
     <div class="foot-bot">
       <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
-      <div>BUILT WITH LARAVEL + CLAUDE CODE</div>
+      <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
     </div>
   </div>
 </footer>

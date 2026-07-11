@@ -208,7 +208,7 @@ export function LegalPageLayout({
               </ol>
 
               <div className="lp-toc-foot">
-                <Link href="/#contact" className="btn btn-ghost btn-sm">
+                <Link href="#contact" className="btn btn-ghost btn-sm">
                   <svg
                     width="13"
                     height="13"
@@ -255,7 +255,7 @@ export function LegalPageLayout({
                   <a href="tel:+33374472018">+33 3 74 47 20 18</a>.
                 </p>
               </div>
-              <Link href="/#contact" className="btn btn-primary btn-lg">
+              <Link href="#contact" className="btn btn-primary btn-lg">
                 Nous contacter
                 <svg
                   className="arrow"

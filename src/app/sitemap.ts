@@ -11,6 +11,7 @@ const servicesSlugs = [
   "referencement-google",
   "publicite-en-ligne",
   "contenu-video",
+  "application-mobile",
   "maintenance-evolution",
   "securite-rgpd",
   "audit-technique",
@@ -30,61 +31,64 @@ const legalRoutes = [
   "legal/accessibilite",
 ];
 
+// Pas de lastModified : une date régénérée à chaque build pour toutes les
+// URLs est un signal mensonger que Google apprend à ignorer. On l'omet
+// plutôt que de mentir ; à réintroduire si on maintient de vraies dates
+// de mise à jour par page.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-
   const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: `${baseUrl}/`,
-      lastModified: now,
+      url: baseUrl,
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${baseUrl}/methode`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/tarifs`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/realisations`,
-      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/equipe`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${baseUrl}/rendez-vous`,
-      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${baseUrl}/demarrer-un-projet`,
-      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/guides`,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/guides/combien-coute-un-site-internet`,
       changeFrequency: "monthly",
       priority: 0.75,
     },
@@ -92,28 +96,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const serviceRoutes: MetadataRoute.Sitemap = servicesSlugs.map((slug) => ({
     url: `${baseUrl}/services/${slug}`,
-    lastModified: now,
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
   const caseRoutes: MetadataRoute.Sitemap = CASE_SLUGS.map((slug) => ({
     url: `${baseUrl}/realisations/${slug}`,
-    lastModified: now,
     changeFrequency: "monthly",
     priority: 0.7,
   }));
 
   const toolSitemapRoutes: MetadataRoute.Sitemap = toolRoutes.map((route) => ({
     url: `${baseUrl}/${route}`,
-    lastModified: now,
     changeFrequency: "monthly",
     priority: 0.55,
   }));
 
   const legalSitemapRoutes: MetadataRoute.Sitemap = legalRoutes.map((route) => ({
     url: `${baseUrl}/${route}`,
-    lastModified: now,
     changeFrequency: "yearly",
     priority: 0.3,
   }));

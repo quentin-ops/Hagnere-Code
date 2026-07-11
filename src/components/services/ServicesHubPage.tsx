@@ -170,7 +170,7 @@ const services: Service[] = [
     eyebrow: "Run",
     title: "Reprendre, stabiliser et faire évoluer sans tout refaire.",
     description:
-      "TMA Laravel, dette technique, monitoring, dépendances, incidents, roadmap, documentation et passation propre.",
+      "TMA Next.js / Laravel, dette technique, monitoring, dépendances, incidents, roadmap, documentation et passation propre.",
     proof: "Audit flash puis run mensuel",
     idealFor: "App existante, équipe absente",
     duration: "Audit + mensuel",

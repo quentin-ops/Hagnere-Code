@@ -7,9 +7,9 @@ ${navHtml}
   <div class="crumb">
     <a href="/">Accueil</a>
     <span class="sep">/</span>
-    <a href="/#services">Services</a>
+    <a href="/services">Services</a>
     <span class="sep">/</span>
-    <span style="color:var(--ink-3)">Sites vitrines &amp; landing pages</span>
+    <span style="color:var(--ink-3)">Publicité en ligne</span>
   </div>
 </div>
 
@@ -475,12 +475,12 @@ ${navHtml}
         <div class="stack-list">
           <div class="sl-row">
             <div class="sl-cat">BACKEND</div>
-            <div class="sl-val">Laravel 13 · PHP 8.4</div>
+            <div class="sl-val">Next.js 16 · TypeScript · Node</div>
             <div class="sl-note">TYPED · TESTED</div>
           </div>
           <div class="sl-row">
             <div class="sl-cat">FRONTEND WEB</div>
-            <div class="sl-val">React · Next.js · Livewire · Inertia · Tailwind</div>
+            <div class="sl-val">React 19 · Next.js · Tailwind</div>
             <div class="sl-note">SELON CAS</div>
           </div>
           <div class="sl-row">
@@ -490,7 +490,7 @@ ${navHtml}
           </div>
           <div class="sl-row">
             <div class="sl-cat">UI / BACK-OFFICE</div>
-            <div class="sl-val">Tailwind CSS · Filament · Flux UI</div>
+            <div class="sl-val">Tailwind CSS · Back-office React sur mesure</div>
             <div class="sl-note">DESIGN SYSTEM</div>
           </div>
           <div class="sl-row">
@@ -505,7 +505,7 @@ ${navHtml}
           </div>
           <div class="sl-row">
             <div class="sl-cat">INFRA</div>
-            <div class="sl-val">Laravel Cloud · Scaleway · Vercel · AWS</div>
+            <div class="sl-val">Vercel · Cloudflare · Scaleway · AWS</div>
             <div class="sl-note">DONNÉES EN FRANCE</div>
           </div>
           <div class="sl-row">
@@ -524,7 +524,7 @@ ${navHtml}
             <div class="mark">HC<span class="dot">.</span></div>
           </div>
           <div class="orbit-node" style="top:2%;left:50%;transform:translateX(-50%)">
-            <span class="nd" style="background:#FF2D20"></span>Laravel
+            <span class="nd" style="background:#0a0a0a"></span>Next.js
           </div>
           <div class="orbit-node" style="top:22%;right:-10px">
             <span class="nd" style="background:#61DAFB"></span>React / Next

@@ -48,9 +48,8 @@ function compose(raw: string): string {
   ].join("\n\n");
 
   out = out.replace(
-    "<!-- CTA (sera strippé par stripFinalCta, remplacé par SiteFooter) -->",
-    stack +
-      "\n\n<!-- CTA (sera strippé par stripFinalCta, remplacé par SiteFooter) -->",
+    "<!-- CTA -->",
+    stack + "\n\n<!-- CTA -->",
   );
 
   return out;

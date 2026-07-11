@@ -3,11 +3,19 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, Mail, ShieldCheck, UserRound } from "lucide-react";
 import "@/components/project-funnel/project-funnel.css";
 import { ConversionTracker } from "./ConversionTracker";
+import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Brief envoyé · Hagnéré Code",
   description: "Votre brief a bien été transmis. Nous vous répondons personnellement sous 24 h ouvrées.",
-  robots: { index: false, follow: false },
+  robots: { index: false, follow: true },
+  openGraph: {
+    ...OG_BASE,
+    title: "Brief envoyé · Hagnéré Code",
+    description: "Votre brief a bien été transmis. Nous vous répondons personnellement sous 24 h ouvrées.",
+    url: "/demarrer-un-projet/merci",
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 export default function Page() {
@@ -34,7 +42,7 @@ export default function Page() {
         </nav>
       </header>
 
-      <main className="pf-shell pf-shell-success">
+      <main id="main-content" className="pf-shell pf-shell-success">
         <div className="pf-success-card">
           <div className="pf-success-icon">
             <Check size={28} strokeWidth={2.4} />

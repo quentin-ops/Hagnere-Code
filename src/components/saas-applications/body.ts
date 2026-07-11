@@ -7,7 +7,7 @@ ${navHtml}
   <div class="crumb">
     <a href="/">Accueil</a>
     <span class="sep">/</span>
-    <a href="/#services">Services</a>
+    <a href="/services">Services</a>
     <span class="sep">/</span>
     <span style="color:var(--ink-3)">SaaS &amp; applications métier</span>
   </div>
@@ -108,14 +108,14 @@ ${navHtml}
       <div class="mock-window mw-side">
         <div class="win-chrome" style="background:#0d0d0d;border-color:rgba(255,255,255,0.08)">
           <div class="win-dots"><span></span><span></span><span></span></div>
-          <div class="win-url" style="color:rgba(255,255,255,0.5)">terminal · laravel.local</div>
+          <div class="win-url" style="color:rgba(255,255,255,0.5)">terminal · localhost:3000</div>
         </div>
         <div style="padding:16px 18px;background:#0A0A0A;color:#E5E5E5;font-family:'Geist Mono';font-size:11px;line-height:1.85">
-<span style="color:#6D28D9">$</span> php artisan make:model Invoice <span style="color:#737373">-mfc</span><br>
-<span style="color:#a3e47f">✓ Invoice model, migration, factory, controller</span><br>
-<span style="color:#6D28D9">$</span> php artisan db:seed<br>
+<span style="color:#6D28D9">$</span> npx drizzle-kit generate <span style="color:#737373">--name invoice</span><br>
+<span style="color:#a3e47f">✓ schéma Invoice, migration, types générés</span><br>
+<span style="color:#6D28D9">$</span> npm run db:seed<br>
 <span style="color:#a3e47f">✓ seeded in 1,24s · 420 records</span><br>
-<span style="color:#6D28D9">$</span> php artisan test <span style="color:#737373">--parallel</span><br>
+<span style="color:#6D28D9">$</span> npm test <span style="color:#737373">-- --parallel</span><br>
 <span style="color:#a3e47f">✓ 64 tests OK</span> <span style="color:#737373">(3,1s)</span><br>
 <span style="color:#6D28D9">$</span> <span style="background:rgba(109,40,217,0.15);padding:1px 2px">_</span>
         </div>
@@ -219,7 +219,7 @@ ${navHtml}
       <div class="uc reveal reveal-d-1">
         <div class="uc-num">/ 08</div>
         <h3>Dashboards &amp; front-ends React/Next</h3>
-        <p>Pour les interfaces ultra-interactives qui dépassent ce que Livewire peut faire : apps de trading, éditeurs temps-réel, tableaux de bord collaboratifs, canvases. Next.js sur Vercel, API Laravel derrière.</p>
+        <p>Notre terrain par défaut, poussé à fond sur les interfaces ultra-interactives : apps de trading, éditeurs temps-réel, tableaux de bord collaboratifs, canvases. Next.js sur Vercel, API TypeScript derrière.</p>
         <div class="uc-tags">
           <span class="uc-tag">React 19</span>
           <span class="uc-tag">Next.js 15</span>
@@ -332,7 +332,7 @@ ${navHtml}
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
         <h4>Back-office admin</h4>
-        <p>Filament · impersonation, support utilisateur, stats de santé.</p>
+        <p>Sur mesure en React · impersonation, support utilisateur, stats de santé.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 010-4h12v4M4 6v12a2 2 0 002 2h14v-4"/><circle cx="16" cy="14" r="2"/></svg></div>
@@ -426,20 +426,20 @@ ${navHtml}
         <div class="eyebrow">— Notre stack</div>
         <h2 style="margin-top:14px">Une stack choisie,<br>maîtrisée, opérée.</h2>
         <p style="color:var(--mute);font-size:16px;margin-top:20px;max-width:480px">
-          On a fait Symfony, Rails, Node, Django. On est revenus sur Laravel parce qu'il livre
-          vite, propre, avec moins de bugs — éprouvé en production, sans dette technique.
-          Pour le mobile et les interfaces ultra-réactives, on complète avec React, Next.js et React Native.
+          On a fait Symfony, Rails, Laravel, Django. On construit aujourd'hui sur Next.js/React
+          + TypeScript — livraison rapide, code propre, et l'écosystème le plus repris du marché.
+          Pour le mobile, on complète avec React Native et Expo.
         </p>
 
         <div class="stack-list">
           <div class="sl-row">
             <div class="sl-cat">BACKEND</div>
-            <div class="sl-val">Laravel 13 · PHP 8.4</div>
+            <div class="sl-val">Next.js 16 · TypeScript · Node · PostgreSQL</div>
             <div class="sl-note">TYPED · TESTED</div>
           </div>
           <div class="sl-row">
             <div class="sl-cat">FRONTEND WEB</div>
-            <div class="sl-val">React · Next.js · Livewire · Inertia · Tailwind</div>
+            <div class="sl-val">React 19 · Next.js · Tailwind</div>
             <div class="sl-note">SELON CAS</div>
           </div>
           <div class="sl-row">
@@ -449,7 +449,7 @@ ${navHtml}
           </div>
           <div class="sl-row">
             <div class="sl-cat">UI / BACK-OFFICE</div>
-            <div class="sl-val">Tailwind CSS · Filament · Flux UI</div>
+            <div class="sl-val">React 19 · Tailwind</div>
             <div class="sl-note">DESIGN SYSTEM</div>
           </div>
           <div class="sl-row">
@@ -459,17 +459,17 @@ ${navHtml}
           </div>
           <div class="sl-row">
             <div class="sl-cat">IA / LLM</div>
-            <div class="sl-val">Claude Opus 4.7 · GPT-4o · Embeddings · Prism</div>
+            <div class="sl-val">Claude Opus 4.7 · GPT-4o · Embeddings</div>
             <div class="sl-note">AGENTS TYPÉS</div>
           </div>
           <div class="sl-row">
             <div class="sl-cat">INFRA</div>
-            <div class="sl-val">Laravel Cloud · Scaleway · Vercel · AWS</div>
+            <div class="sl-val">Vercel · Cloudflare · Scaleway · AWS</div>
             <div class="sl-note">DONNÉES EN FRANCE</div>
           </div>
           <div class="sl-row">
             <div class="sl-cat">OBSERVABILITÉ</div>
-            <div class="sl-val">Sentry · Pulse · Horizon</div>
+            <div class="sl-val">Sentry · Monitoring applicatif · Files Redis</div>
             <div class="sl-note">ALERTES 24/7</div>
           </div>
         </div>
@@ -483,7 +483,7 @@ ${navHtml}
             <div class="mark">HC<span class="dot">.</span></div>
           </div>
           <div class="orbit-node" style="top:2%;left:50%;transform:translateX(-50%)">
-            <span class="nd" style="background:#FF2D20"></span>Laravel
+            <span class="nd" style="background:#0A0A0A"></span>Next.js
           </div>
           <div class="orbit-node" style="top:22%;right:-10px">
             <span class="nd" style="background:#61DAFB"></span>React / Next
@@ -526,7 +526,7 @@ ${navHtml}
     </div>
 
     <div class="scase-grid">
-      <a class="scase reveal" href="/realisations">
+      <a class="scase reveal" href="/realisations/lmnp-ai">
         <div class="scase-shot">
           <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#F5F5F5">
             <rect width="600" height="380" fill="#F5F5F5"/>
@@ -548,7 +548,7 @@ ${navHtml}
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>SaaS B2C</span><span class="tag-stack">Laravel · Livewire</span><span>— en production</span></div>
+          <div class="scase-meta"><span>SaaS B2C</span><span class="tag-stack">IA native · Stripe</span><span>— en production</span></div>
           <h3>LMNP.AI</h3>
           <p>Comptabilité fiscale automatisée pour loueurs meublés. Extraction de factures et génération de liasse 2031 par IA.</p>
           <div class="scase-metric">
@@ -558,7 +558,7 @@ ${navHtml}
         </div>
       </a>
 
-      <a class="scase reveal reveal-d-1" href="/realisations">
+      <a class="scase reveal reveal-d-1" href="/realisations/sci-ai">
         <div class="scase-shot">
           <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#0A0A0A">
             <rect width="600" height="380" fill="#0A0A0A"/>
@@ -586,7 +586,7 @@ ${navHtml}
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>SaaS B2B</span><span class="tag-stack">Laravel · Inertia</span><span>— levée en cours</span></div>
+          <div class="scase-meta"><span>SaaS B2B</span><span class="tag-stack">IA native</span><span>— levée en cours</span></div>
           <h3>Comptabilité AI</h3>
           <p>Comptabilité en partie double pour PME avec bilan automatisé par IA. Positionnement Blue Ocean.</p>
           <div class="scase-metric">
@@ -709,7 +709,7 @@ ${navHtml}
           </div>
           <div class="faq-a">
             Un format d'entrée <b>peu engageant</b> pour valider qu'on est la bonne équipe. <b>2 jours</b>,
-            <b>1 500 € TTC</b>. On challenge votre besoin, on défriche les 3 à 5 écrans clés,
+            <b>1 500 € HT</b>. On challenge votre besoin, on défriche les 3 à 5 écrans clés,
             on sort un <b>prototype Figma cliquable</b> et un <b>cadrage technique chiffré</b>. Si on part
             ensemble derrière, les 1 500 € sont <b>déduits du forfait final</b>. Si on ne part pas, vous repartez avec
             un livrable utilisable par une autre équipe.
@@ -734,7 +734,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Non. On écrit du <b>vrai code Laravel</b>, testé, typé, versionné. Le low-code est très bien pour prototyper
+            Non. On écrit du <b>vrai code TypeScript</b>, testé, typé, versionné. Le low-code est très bien pour prototyper
             ou pour des automatisations internes, mais au-delà de 10 utilisateurs payants, ça devient un
             piège technique et économique. On construit des bases qui tiendront 10 ans.
           </div>
@@ -772,7 +772,7 @@ ${navHtml}
           </div>
           <div class="faq-a">
             Par défaut <b>oui</b> — Scaleway Paris ou OVH Roubaix. Pour les clients qui préfèrent un hébergement
-            global (Laravel Cloud, AWS), on peut configurer. Les données sont chiffrées at-rest et in-transit,
+            global (Vercel, Cloudflare, AWS), on peut configurer. Les données sont chiffrées at-rest et in-transit,
             avec sauvegardes toutes les 15 minutes.
           </div>
         </div>
@@ -795,9 +795,10 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Le cas d'usage, pas la mode. <b>Laravel 13 + Livewire</b> pour 80 % des SaaS B2B (on livre 2× plus vite qu'en
-            SPA pure). <b>Next.js / React</b> pour les interfaces temps-réel, éditeurs, apps très interactives ou pages publiques
-            SEO-critiques. <b>React Native</b> pour le mobile. On choisit après le cadrage, pas avant.
+            Le cas d'usage, pas la mode. <b>Next.js + React (TypeScript)</b> pour l'immense majorité des SaaS B2B :
+            interfaces temps-réel, éditeurs, apps très interactives et pages publiques SEO-critiques. <b>React Native</b>
+            pour le mobile. On reprend et on étend aussi les <b>SaaS Laravel existants</b> — audit, maintenance,
+            évolutions. On choisit après le cadrage, pas avant.
           </div>
         </div>
 
@@ -869,7 +870,7 @@ ${navHtml}
     </div>
     <div class="foot-bot">
       <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
-      <div>BUILT WITH LARAVEL + CLAUDE CODE</div>
+      <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
     </div>
   </div>
 </footer>

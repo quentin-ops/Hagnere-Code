@@ -376,7 +376,7 @@ export const confidentialiteSections: LegalSection[] = [
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>—</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Eventuel consentement cookies (lorsque applicable)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Eventuel <a href="/legal/cookies">consentement cookies</a> (lorsque applicable)</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>13 mois maximum (recommandation CNIL)</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>—</td>
               </tr>

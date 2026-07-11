@@ -24,11 +24,11 @@
 | Catégories de personnes | Prospects B2B (dirigeants, CTO, responsables produit) |
 | Catégories de données | Identité (prénom, nom), email, téléphone, fonction, société, SIREN, description projet, contraintes, budget, audio dictée vocale (transitoire) |
 | Destinataires | Équipe HAGNÉRÉ CODE (commercial + tech) |
-| Sous-traitants | Neon (DB UE), Resend (email US — DPF/SCC), Anthropic (estimation IA US — DPF/SCC), Groq (transcription audio US — SCC), Cloudflare (hébergement edge) |
+| Sous-traitants | Neon (DB UE), Resend (email US — DPF/SCC), Groq (transcription audio US — SCC), Cloudflare (hébergement edge) |
 | Transferts hors UE | Oui (US) — encadrés par DPF + SCC |
 | Durée de conservation | 3 ans après dernier contact (prospects), durée contrat + 3 ans (clients), 10 ans (factures) |
 | Mesures techniques | TLS 1.3, AES-256 at-rest, rate-limit, honeypot, slug aléatoire (anti-IDOR) |
-| Profilage / décisions automatisées | Non — IA estimation est un aide au cadrage, validée par un humain |
+| Profilage / décisions automatisées | Non — le brief de projet est lu et traité par un humain (réponse manuelle) |
 
 ### T2 — Formulaire de contact (footer `ContactProjectSection`)
 

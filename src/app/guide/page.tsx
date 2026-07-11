@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Page indisponible — Hagnéré Code",
-  robots: { index: false, follow: false, nocache: true },
-};
-
+// Ancienne page guide → hub /guides
 export default function Page() {
-  notFound();
+  permanentRedirect("/guides");
 }

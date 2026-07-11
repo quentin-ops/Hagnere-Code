@@ -76,7 +76,7 @@ export const techFaqHtml = `
           Chaque action utilisateur loggée : utilisateur, action, ressource, horodatage UTC,
           IP source, user-agent, ancienne valeur, nouvelle valeur. <b>Rétention 3 ans par défaut</b>
           (paramétrable). Exports CSV/JSON pour audits externes ou contrôles (URSSAF, commissaire aux
-          comptes, SAPIN II). Les logs applicatifs sont dans Sentry + Pulse, séparés de l'audit métier.
+          comptes, SAPIN II). Les logs applicatifs sont dans Sentry, séparés de l'audit métier.
         </div>
       </div>
 
@@ -86,7 +86,7 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Oui, c'est le point central du "sur mesure"</b>. Stack 100 % standard (Laravel, React,
+          <b>Oui, c'est le point central du "sur mesure"</b>. Stack 100 % standard (Next.js, React, TypeScript,
           PostgreSQL, Redis), repo Git chez vous, docker-compose livré, README technique,
           documentation d'architecture, runbook d'exploitation, procédure de rollback. Une ESN
           ou votre équipe interne peut prendre le relais en 2-3 semaines de ramp-up. Aucun
@@ -114,9 +114,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>On encourage les pen tests externes</b>. Le code passe SAST (Psalm, Larastan) en CI,
+          <b>On encourage les pen tests externes</b>. Le code passe SAST (Semgrep) + TypeScript strict en CI,
           headers sécurité configurés (CSP, HSTS, X-Frame-Options), rate-limiting sur API publique,
-          protection CSRF native Laravel. On prépare le terrain SOC 2 Type 2 / ISO 27001 mais
+          protection CSRF native du framework. On prépare le terrain SOC 2 Type 2 / ISO 27001 mais
           l'audit officiel est chez un tiers habilité. Budget pen test : 3-8 k€ chez un cabinet
           français, on oriente si besoin.
         </div>

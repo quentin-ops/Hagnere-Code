@@ -1,91 +1,76 @@
 import type { Metadata } from "next";
 import { TarifsPage } from "@/components/tarifs/TarifsPage";
+import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Tarifs — Forfait fixe, jamais de surprise · Hagnéré Code",
+  title: "Tarifs développement web & SaaS au forfait · Hagnéré Code",
   description:
-    "Discovery Sprint à 1 500 €, MVP SaaS dès 15 k€, sites vitrines dès 6,9 k€, partenariat dès 120 k€. Tous nos forfaits, tarifs détaillés par service, maintenance et comparatif. Code chez vous, garantie 30 jours.",
+    "Discovery Sprint 1 500 €, projets de 6 à 60 k€, partenariat dès 8 k€/mois. Forfaits fixes contractuels, garantie 30 jours, code 100 % à vous.",
   alternates: { canonical: "/tarifs" },
   openGraph: {
+    ...OG_BASE,
     title: "Tarifs · Forfait fixe, jamais de surprise · Hagnéré Code",
     description:
       "Discovery Sprint 1 500 €, MVP SaaS dès 15 k€, sites vitrines dès 6,9 k€. Code chez vous, garantie 30 jours.",
     url: "/tarifs",
-    type: "website",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
 const offersJsonLd = JSON.stringify({
   "@context": "https://schema.org",
-  "@type": "OfferCatalog",
-  name: "Tarifs Hagnéré Code",
-  provider: {
-    "@type": "Organization",
-    "@id": "https://hagnere-code.fr/#organization",
-    name: "Hagnéré Code",
-    legalName: "HAGNÉRÉ CODE SAS",
-    url: "https://hagnere-code.fr",
-    vatID: "FR30993672856",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "7 rue Ernest Filliard",
-      postalCode: "73000",
-      addressLocality: "Chambéry",
-      addressRegion: "Savoie",
-      addressCountry: "FR",
-    },
-  },
-  itemListElement: [
-    {
-      "@type": "Offer",
-      name: "Discovery Sprint",
-      price: "1500",
-      priceCurrency: "EUR",
-      description:
-        "2 jours de cadrage, prototype Figma cliquable et devis chiffré forfait fixe. Déduit du devis si lancement.",
-    },
-    {
-      "@type": "Offer",
-      name: "Essentiel — Site vitrine ou MVP court",
-      price: "6000",
-      priceCurrency: "EUR",
-      description: "Site vitrine 5–8 pages OU MVP SaaS 3–5 écrans, livré en 2–4 semaines.",
-    },
-    {
-      "@type": "Offer",
-      name: "Standard — Projet complet",
-      price: "25000",
-      priceCurrency: "EUR",
-      description:
-        "SaaS, outil interne ou marketplace 10–15 écrans avec back-office, intégrations et IA.",
-    },
-    {
-      "@type": "Offer",
-      name: "Partenariat — Équipe dédiée",
-      price: "8000",
-      priceCurrency: "EUR",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
+  "@type": "ProfessionalService",
+  "@id": "https://hagnere-code.fr/#business",
+  name: "Hagnéré Code",
+  url: "https://hagnere-code.fr",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Tarifs Hagnéré Code",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Discovery Sprint",
+        price: "1500",
+        priceCurrency: "EUR",
+        description:
+          "2 jours de cadrage, prototype Figma cliquable et devis chiffré forfait fixe. Déduit du devis si lancement.",
+      },
+      {
+        "@type": "Offer",
+        name: "Essentiel — Site vitrine ou MVP court",
+        price: "6000",
+        priceCurrency: "EUR",
+        description: "Site vitrine 5–10 pages OU MVP SaaS 3–5 écrans, livré en 2–4 semaines.",
+      },
+      {
+        "@type": "Offer",
+        name: "Standard — Projet complet",
+        price: "25000",
+        priceCurrency: "EUR",
+        description:
+          "SaaS, outil interne ou marketplace 10–15 écrans avec back-office, intégrations et IA.",
+      },
+      {
+        "@type": "Offer",
+        name: "Partenariat — Équipe dédiée",
         price: "8000",
         priceCurrency: "EUR",
-        unitCode: "MON",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: "8000",
+          priceCurrency: "EUR",
+          unitCode: "MON",
+        },
+        description: "Forfait mensuel, équipe 2–5 personnes, engagement 6 mois minimum.",
       },
-      description: "Forfait mensuel, équipe 2–5 personnes, engagement 6 mois minimum.",
-    },
-    {
-      "@type": "Offer",
-      name: "Care — Maintenance mensuelle",
-      price: "390",
-      priceCurrency: "EUR",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
-        price: "390",
-        priceCurrency: "EUR",
-        unitCode: "MON",
+      {
+        "@type": "Offer",
+        name: "Care — Maintenance mensuelle",
+        description:
+          "Hébergement, monitoring, sauvegardes, bugfix prioritaires. Trois niveaux, sur devis.",
       },
-      description: "Hébergement, monitoring, sauvegardes, bugfix prioritaires.",
-    },
-  ],
+    ],
+  },
 });
 
 const breadcrumbJsonLd = JSON.stringify({
