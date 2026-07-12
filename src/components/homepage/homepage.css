@@ -59,12 +59,12 @@
   .nav-links a.active{color:var(--ink);font-weight:500}
   .nav-cta{display:flex;gap:8px;align-items:center}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:all 0.15s;white-space:nowrap}
-  .btn-primary{background:var(--ink);color:#fff}
-  .btn-primary:hover{background:var(--ink-2);transform:translateY(-1px)}
-  .btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 14px -4px rgba(109,40,217,0.5)}
-  .btn-accent:hover{background:var(--accent-ink);transform:translateY(-1px)}
-  .btn-ghost{color:var(--ink-3);border-color:var(--line);background:#fff}
-  .btn-ghost:hover{border-color:var(--ink-4);color:var(--ink)}
+  .hc-design .btn-primary{background:var(--ink);color:#fff}
+  .hc-design .btn-primary:hover{background:var(--ink-2);transform:translateY(-1px)}
+  .hc-design .btn-accent{background:var(--accent);color:#fff;box-shadow:0 4px 14px -4px rgba(109,40,217,0.5)}
+  .hc-design .btn-accent:hover{background:var(--accent-ink);transform:translateY(-1px)}
+  .hc-design .btn-ghost{color:var(--ink-3);border-color:var(--line);background:#fff}
+  .hc-design .btn-ghost:hover{border-color:var(--ink-4);color:var(--ink)}
   .btn-lg{padding:14px 22px;font-size:15px;border-radius:10px}
   .btn .arrow{transition:transform 0.2s}
   .btn:hover .arrow{transform:translateX(3px)}

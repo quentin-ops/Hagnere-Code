@@ -327,7 +327,9 @@
   font-size: 12px;
   line-height: 1.45;
 }
-.hc-mega-side-cta-btn {
+/* .hc-design pour battre `.hc-design a{color:inherit}` (0-1-1) : sans ça le
+   bouton hérite du blanc du panneau sombre → blanc sur blanc illisible. */
+.hc-design .hc-mega-side-cta-btn {
   margin-top: 8px;
   display: inline-flex;
   align-items: center;
@@ -342,7 +344,7 @@
   text-decoration: none;
   transition: background 0.15s;
 }
-.hc-mega-side-cta-btn:hover {
+.hc-design .hc-mega-side-cta-btn:hover {
   background: rgba(255, 255, 255, 0.92);
 }
 
