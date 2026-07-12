@@ -35,7 +35,7 @@ ${navHtml}
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
-          Réserver 30 min avec un associé <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          Réserver 30 min avec un expert <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
         <a href="#contact" class="btn btn-ghost btn-lg">Audit processus · 1j sur site · 990 €</a>
       </div>
@@ -61,7 +61,7 @@ ${navHtml}
         </div>
         <div class="shero-proof-stat">
           <div class="shero-proof-num">&lt;24<span class="shero-proof-num-s">h</span></div>
-          <div class="shero-proof-lbl">réponse<br>par un associé</div>
+          <div class="shero-proof-lbl">réponse<br>par un expert</div>
         </div>
       </div>
     </div>

@@ -97,7 +97,7 @@ export const timelineHtml = `
         <div class="oi-tl-week">SEMAINE 6</div>
         <div class="oi-tl-phase">GO LIVE · PRODUCTION</div>
         <div class="oi-tl-body">
-          <p>Mise en production. Monitoring actif 7 jours. Standby associé pour incidents J+1 à J+7. Garantie 30 jours puis forfait maintenance optionnel (290 €/mois).</p>
+          <p>Mise en production. Monitoring actif 7 jours. Standby senior pour incidents J+1 à J+7. Garantie 30 jours puis forfait maintenance optionnel (290 €/mois).</p>
           <ul class="oi-tl-deliv">
             <li>Go live signé</li>
             <li>Monitoring</li>

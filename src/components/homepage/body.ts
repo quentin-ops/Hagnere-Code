@@ -601,10 +601,10 @@ export const bodyHtml = `${navHtml}
       <div>
         <div class="sfoot-tag">PAS SÛR DU BON SERVICE ?</div>
         <div class="sfoot-t">On vous aide à cadrer en 30 minutes.</div>
-        <div class="sfoot-sub">Appel direct avec un associé dev, aucun commercial dans la boucle.</div>
+        <div class="sfoot-sub">Appel direct avec un développeur senior, aucun commercial dans la boucle.</div>
       </div>
       <a href="#contact" class="btn btn-primary btn-lg">
-        Parler à un associé
+        Parler à un expert
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -625,13 +625,13 @@ export const bodyHtml = `${navHtml}
           Discovery Sprint (1 500 € HT, déduit à 100 % du forfait).
         </p>
         <ul class="chks">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Un seul interlocuteur associé pendant toute la discussion</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Un seul interlocuteur senior pendant toute la discussion</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Aucun engagement tant que vous n'avez pas validé le devis</li>
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Franchise totale : si ce n'est pas pour nous, on vous le dit</li>
         </ul>
         <div class="cta-row">
           <a href="#contact" class="btn btn-accent btn-lg">
-            Parler à un associé
+            Parler à un expert
             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
         </div>
@@ -854,7 +854,7 @@ export const bodyHtml = `${navHtml}
           <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
         </div>
         <h4>On écoute vraiment.</h4>
-        <p>Un appel de <b>30 min avec un associé</b>. On comprend ce que vous voulez faire, pour qui et pourquoi. Sans jargon technique.</p>
+        <p>Un appel de <b>30 min avec un expert</b>. On comprend ce que vous voulez faire, pour qui et pourquoi. Sans jargon technique.</p>
         <div class="meth-foot">
           <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>30 min</div>
           <div class="meth-tag free">Gratuit</div>
@@ -1556,7 +1556,7 @@ export const bodyHtml = `${navHtml}
   <div class="wrap inner">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:18px">Parlons de<br>votre projet.<br><span class="accent">30 min, c'est tout.</span></h2>
-    <p>Un call de cadrage gratuit avec un associé. Vous repartez avec un avis franc et, sous 48 h, une fourchette et un plan — sans engagement.</p>
+    <p>Un call de cadrage gratuit avec un expert. Vous repartez avec un avis franc et, sous 48 h, une fourchette et un plan — sans engagement.</p>
     <div class="fcta-cta">
       <a href="https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte" target="_blank" rel="noopener" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly

@@ -262,7 +262,7 @@ ${navHtml}
         <ul class="disc-list">
           <li>
             <div class="disc-li-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Specs fonctionnelles</b><br><span>15 à 25 pages, écrites par un associé qui code</span></div>
+            <div><b>Specs fonctionnelles</b><br><span>15 à 25 pages, écrites par quelqu'un qui code</span></div>
           </li>
           <li>
             <div class="disc-li-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>

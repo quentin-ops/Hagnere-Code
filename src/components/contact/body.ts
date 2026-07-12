@@ -14,7 +14,7 @@ ${navHtml}
       <div class="eyebrow">— Contact</div>
       <h1>Contact Hagnéré Code.<br><span class="accent">Dites-nous bonjour.</span></h1>
       <p class="c-hero-lead">
-        Un associé qui code lit votre message, vous répond <b>sous 24 h ouvrées</b>,
+        Quelqu'un qui code lit votre message, vous répond <b>sous 24 h ouvrées</b>,
         et vous dit franchement si c'est pour nous — ou pas. Pas de commercial,
         pas de filtre, pas de ballet. On va droit au but.
       </p>
@@ -197,7 +197,7 @@ ${navHtml}
           <div class="c-flow-num">02</div>
           <div class="c-flow-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg></div>
         </div>
-        <h4>Un associé vous répond</h4>
+        <h4>Un expert vous répond</h4>
         <p>En pratique 3–6 h, garanti sous 24 h ouvrées. Vrai humain, pas un accusé de réception auto ni un chatbot.</p>
         <div class="c-flow-tag">Nous · sous 24 h</div>
       </div>
@@ -264,7 +264,7 @@ ${navHtml}
           </div>
           <div class="faq-a">
             <b>24 h ouvrées maximum</b>, en pratique 3–6 h la plupart du temps. Le week-end et les jours
-            fériés, on coupe : mieux vaut un associé reposé le lundi qu'un associé rincé le dimanche.
+            fériés, on coupe : mieux vaut une équipe reposée le lundi qu'une équipe rincée le dimanche.
           </div>
         </div>
 

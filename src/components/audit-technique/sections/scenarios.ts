@@ -120,7 +120,7 @@ export const scenariosHtml = `
           </div>
           <dl class="at-scen-meta">
             <div class="at-scen-meta-row"><dt>Durée</dt><dd>15 à 20 jours ouvrés</dd></div>
-            <div class="at-scen-meta-row"><dt>Équipe</dt><dd>2 seniors + architecte + associé-lead</dd></div>
+            <div class="at-scen-meta-row"><dt>Équipe</dt><dd>2 seniors + architecte + lead</dd></div>
             <div class="at-scen-meta-row"><dt>NDA mutuel</dt><dd>Signé avant J0 · opposable au fonds</dd></div>
             <div class="at-scen-meta-row"><dt>Déductible</dt><dd>100 % si TMA &gt; 50 k€ suit</dd></div>
             <div class="at-scen-meta-row"><dt>Timing</dt><dd>Démarrage sous 5 j ouvrés</dd></div>
@@ -167,13 +167,13 @@ export const scenariosHtml = `
           </div>
           <dl class="at-scen-meta">
             <div class="at-scen-meta-row"><dt>Durée</dt><dd>20 à 30 jours ouvrés</dd></div>
-            <div class="at-scen-meta-row"><dt>Équipe</dt><dd>3 seniors + architecte + associé · 4 pers. dédiées</dd></div>
+            <div class="at-scen-meta-row"><dt>Équipe</dt><dd>3 seniors + architecte + lead · 4 pers. dédiées</dd></div>
             <div class="at-scen-meta-row"><dt>NDA renforcé</dt><dd>Conforme cabinet d'avocats M&amp;A</dd></div>
             <div class="at-scen-meta-row"><dt>Clause CoI</dt><dd>Pas de prestation &gt; 50 k€ chez la cible dans les 12 mois</dd></div>
             <div class="at-scen-meta-row"><dt>Timing</dt><dd>Démarrage sous 3 j ouvrés</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg at-scen-cta">
-            Parler à un associé
+            Parler à un expert
             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <div class="at-scen-aside-foot">
@@ -214,7 +214,7 @@ export const scenariosHtml = `
           </div>
           <dl class="at-scen-meta">
             <div class="at-scen-meta-row"><dt>Durée</dt><dd>10 jours ouvrés</dd></div>
-            <div class="at-scen-meta-row"><dt>Équipe</dt><dd>2 seniors + associé-lead</dd></div>
+            <div class="at-scen-meta-row"><dt>Équipe</dt><dd>2 seniors + un lead</dd></div>
             <div class="at-scen-meta-row"><dt>Méthode</dt><dd>Co-construction · no-blame · off-the-record</dd></div>
             <div class="at-scen-meta-row"><dt>Déductible</dt><dd>100 % si TMA &gt; 50 k€ suit</dd></div>
             <div class="at-scen-meta-row"><dt>Timing</dt><dd>Démarrage sous 5 j ouvrés</dd></div>
@@ -261,7 +261,7 @@ export const scenariosHtml = `
           </div>
           <dl class="at-scen-meta">
             <div class="at-scen-meta-row"><dt>Durée</dt><dd>15 à 20 jours ouvrés</dd></div>
-            <div class="at-scen-meta-row"><dt>Équipe</dt><dd>2 seniors + architecte + associé</dd></div>
+            <div class="at-scen-meta-row"><dt>Équipe</dt><dd>2 seniors + architecte + lead</dd></div>
             <div class="at-scen-meta-row"><dt>Indépendance</dt><dd>On ne fait pas la refonte (clause CoI)</dd></div>
             <div class="at-scen-meta-row"><dt>Garantie</dt><dd>Verdict motivé ou remboursement 50 %</dd></div>
             <div class="at-scen-meta-row"><dt>Timing</dt><dd>Démarrage sous 5 j ouvrés</dd></div>

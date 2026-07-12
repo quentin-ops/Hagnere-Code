@@ -83,7 +83,7 @@ export const comparisonHtml = `
         <div class="at-cmp-col at-cmp-col-label">Équipe nommée dans le devis</div>
         <div class="at-cmp-col at-cmp-bad">Non · produit</div>
         <div class="at-cmp-col">Une personne unique</div>
-        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>2 seniors + associé-lead · photos &amp; LinkedIn</b></div>
+        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>2 seniors + un lead · photos &amp; LinkedIn</b></div>
         <div class="at-cmp-col at-cmp-bad">Équipe senior garantie sur devis uniquement</div>
       </div>
 

@@ -48,7 +48,7 @@ export const pricingHtml = `
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>10 j ouvrés · 2 seniors + associé-lead</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>10 j ouvrés · 2 seniors + un lead</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg><b>8 dimensions couvertes · scoring /100</b></li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tech Debt P&amp;L chiffré en euros</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Deck 12-18 slides board-ready</li>
@@ -66,14 +66,14 @@ export const pricingHtml = `
       <div class="plan reveal reveal-d-2">
         <div class="plan-tag">DEEP · REFONTE / LEVÉE</div>
         <h4>Deep</h4>
-        <div class="plan-sub">Pour les décisions &gt; 500 k€&nbsp;: go/no-go refonte, Série B côté vendeur, gros gap SOC2. 15-20 jours · 3 seniors + architecte + associé.</div>
+        <div class="plan-sub">Pour les décisions &gt; 500 k€&nbsp;: go/no-go refonte, Série B côté vendeur, gros gap SOC2. 15-20 jours · 3 seniors + architecte + lead.</div>
         <div class="plan-price">
           <span class="amount">38 000 €</span>
           <span class="per">HT · fixe · one-shot</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>15 à 20 j · 3 seniors + architecte + associé</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>15 à 20 j · 3 seniors + architecte + lead</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout inclus dans Standard &nbsp;·&nbsp; plus&nbsp;:</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Rapport 60-80 p. (vs. 40-70)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>3 scenarios chiffrés sur 3 ans</li>
@@ -89,7 +89,7 @@ export const pricingHtml = `
       <div class="plan reveal reveal-d-3">
         <div class="plan-tag">TECH DD · M&amp;A</div>
         <h4>Tech DD M&amp;A</h4>
-        <div class="plan-sub">Pour les acquéreurs&nbsp;: DD avant rachat scale-up. 20-30 jours · 4 pers. dédiées + associé-lead · coordination avocats.</div>
+        <div class="plan-sub">Pour les acquéreurs&nbsp;: DD avant rachat scale-up. 20-30 jours · 4 pers. dédiées + lead · coordination avocats.</div>
         <div class="plan-price">
           <span class="amount">68 000 €</span>
           <span class="per">HT · fixe · one-shot</span>
@@ -106,7 +106,7 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>NDA renforcé · attorney-client privilege</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Démarrage sous 3 j ouvrés</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parler à un associé</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parler à un expert</a></div>
       </div>
     </div>
 

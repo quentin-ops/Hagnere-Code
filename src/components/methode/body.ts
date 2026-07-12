@@ -1338,7 +1338,7 @@ ${navHtml}
     </h2>
 
     <p class="mfinal-lead">
-      30 minutes en visio avec un associé qui code. On comprend votre besoin, on vous dit honnêtement
+      30 minutes en visio avec quelqu'un qui code. On comprend votre besoin, on vous dit honnêtement
       si on est la bonne équipe. Si oui, on enchaîne sur un Discovery Sprint payé 2 jours plus tard.
       <b>Si non, on vous oriente — gratuitement — vers la bonne équipe.</b>
     </p>
@@ -1388,7 +1388,7 @@ ${navHtml}
     <div class="mfinal-trust">
       <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Réponse sous 24 h ouvrées</span>
       <span class="sep"></span>
-      <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Par un associé · pas un commercial</span>
+      <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Par un expert · pas un commercial</span>
       <span class="sep"></span>
       <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Sans engagement</span>
     </div>

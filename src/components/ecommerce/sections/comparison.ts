@@ -137,7 +137,7 @@ export const comparisonHtml = `
 
     <div class="ec-cmp-disclaimer reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-      Pas sûr d'être dans notre zone ? <a href="#contact">30 min avec un associé</a> — si Shopify est mieux pour vous, on le dit franchement, on vous oriente.
+      Pas sûr d'être dans notre zone ? <a href="#contact">30 min avec un expert</a> — si Shopify est mieux pour vous, on le dit franchement, on vous oriente.
     </div>
   </div>
 </section>

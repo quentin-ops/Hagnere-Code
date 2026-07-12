@@ -6,7 +6,7 @@ export const faqHtml = `
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ</div>
         <h2 style="margin-top:14px">Les 12 questions<br>qu'on nous pose<br>avant de signer.</h2>
-        <p>Filtrez par profil décideur. Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par un associé, sans détour.</p>
+        <p>Filtrez par profil décideur. Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par un expert, sans détour.</p>
 
         <div class="at-faq-filters" role="tablist" aria-label="Filtrer les questions par profil">
           <button type="button" class="at-faq-filter is-active" data-faq-filter="all" role="tab" aria-selected="true">
@@ -101,7 +101,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>2 seniors + le gérant-lead nommés dans le devis</b> (photo, prénom, LinkedIn — <a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir la section Équipe</a>). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. <b>Chaque dimension a un owner dédié</b> qui la signe. Zéro rotation en cours d'audit. Studio 7 personnes&nbsp;: 1 gérant + 3 CDI full-stack + 3 freelances long-terme intégrés à nos rituels.
+            <b>2 seniors + le lead nommés dans le devis</b> (photo, prénom, LinkedIn — <a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir la section Équipe</a>). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. <b>Chaque dimension a un owner dédié</b> qui la signe. Zéro rotation en cours d'audit. Studio 7 personnes&nbsp;: 1 gérant + 3 CDI full-stack + 3 freelances long-terme intégrés à nos rituels.
           </div>
         </div>
 
@@ -137,7 +137,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            10 jours ouvrés de travail par <b>2 seniors + 1 associé-lead</b>&nbsp;: audit code (SAST, coverage, complexité), architecture (C4 AS-IS/TO-BE), performance (p95/p99, N+1), sécurité (OWASP, CVE, secrets, RGPD), infrastructure (IaC, DR), DevEx (DORA), FinOps, équipe (5-8 entretiens). Livrables&nbsp;: rapport 40-70 p. + <b>Tech Debt P&amp;L chiffré</b> + deck 12-18 slides + version board-safe + backlog Notion 20-30 tickets + C4 + Loom + roadmap 6/12/18 mois. <b>Licences enterprise SonarQube / Snyk / Datadog incluses</b>.
+            10 jours ouvrés de travail par <b>2 seniors + 1 lead</b>&nbsp;: audit code (SAST, coverage, complexité), architecture (C4 AS-IS/TO-BE), performance (p95/p99, N+1), sécurité (OWASP, CVE, secrets, RGPD), infrastructure (IaC, DR), DevEx (DORA), FinOps, équipe (5-8 entretiens). Livrables&nbsp;: rapport 40-70 p. + <b>Tech Debt P&amp;L chiffré</b> + deck 12-18 slides + version board-safe + backlog Notion 20-30 tickets + C4 + Loom + roadmap 6/12/18 mois. <b>Licences enterprise SonarQube / Snyk / Datadog incluses</b>.
           </div>
         </div>
       </div>

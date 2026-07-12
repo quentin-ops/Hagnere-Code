@@ -1119,7 +1119,7 @@ ${navHtml}
   <div class="wrap inner">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:14px">Parlons de votre boutique.<br><span class="accent">30 minutes, c'est tout.</span></h2>
-    <p>Un call avec un associé : on regarde votre stack actuelle (ou votre brief), on challenge le périmètre, on sort une fourchette budget + délai le soir même. Si ce n'est pas pour nous, on vous oriente ailleurs.</p>
+    <p>Un call avec un expert : on regarde votre stack actuelle (ou votre brief), on challenge le périmètre, on sort une fourchette budget + délai le soir même. Si ce n'est pas pour nous, on vous oriente ailleurs.</p>
     <div class="scta-cta">
       <a href="#" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly

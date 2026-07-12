@@ -5,7 +5,7 @@ export const ctaFinalHtml = `
   <div class="wrap">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:18px">30 minutes pour cadrer<br>l'audit qui répondra à votre<br>prochaine décision board.</h2>
-    <p>Un associé-lead regarde avec vous votre contexte (levée, M&amp;A, nouveau CTO, refonte, SOC2) et vous recommande le <b>format d'audit adapté</b> — Express, Standard, Deep ou Tech DD M&amp;A. Sans engagement. <b>Sample report anonymisé envoyé par email</b> pour que vous voyiez notre niveau de détail avant de décider.</p>
+    <p>Un lead regarde avec vous votre contexte (levée, M&amp;A, nouveau CTO, refonte, SOC2) et vous recommande le <b>format d'audit adapté</b> — Express, Standard, Deep ou Tech DD M&amp;A. Sans engagement. <b>Sample report anonymisé envoyé par email</b> pour que vous voyiez notre niveau de détail avant de décider.</p>
     <div class="scta-cta">
       <a href="#contact" class="btn btn-accent btn-lg">
         📄 Télécharger un sample de rapport

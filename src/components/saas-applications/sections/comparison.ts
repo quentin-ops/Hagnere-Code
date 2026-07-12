@@ -121,7 +121,7 @@ export const comparisonHtml = `
 
     <div class="sa-cmp-disclaimer reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-      Pas sûr ? <a href="#contact">30 min avec un associé</a> — si ce n'est pas pour nous, on vous oriente franchement.
+      Pas sûr ? <a href="#contact">30 min avec un expert</a> — si ce n'est pas pour nous, on vous oriente franchement.
     </div>
   </div>
 </section>

@@ -3,15 +3,15 @@ import { RendezVousPage } from "@/components/rendez-vous/RendezVousPage";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Rendez-vous 30 min avec un dev associé · Hagnéré Code",
+  title: "Rendez-vous 30 min avec un développeur senior · Hagnéré Code",
   description:
-    "Réservez 30 minutes gratuites en visio avec un associé qui code. Cadrage de votre projet, fourchette de budget et calendrier réaliste. Sans engagement.",
+    "Réservez 30 minutes gratuites en visio avec quelqu'un qui code. Cadrage de votre projet, fourchette de budget et calendrier réaliste. Sans engagement.",
   alternates: { canonical: "/rendez-vous" },
   openGraph: {
     ...OG_BASE,
     title: "Réserver un rendez-vous découverte · Hagnéré Code",
     description:
-      "30 min avec un associé qui code. On écoute, on challenge, on chiffre. Gratuit, sans engagement.",
+      "30 min avec quelqu'un qui code. On écoute, on challenge, on chiffre. Gratuit, sans engagement.",
     url: "/rendez-vous",
     images: [DEFAULT_OG_IMAGE],
   },

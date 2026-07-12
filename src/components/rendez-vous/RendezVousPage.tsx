@@ -37,7 +37,7 @@ export function RendezVousPage() {
                 30 min pour cadrer votre projet web.
               </h1>
               <p className="c-hero-lead">
-                30 minutes en visio ou par téléphone avec <b>un associé qui code</b> —
+                30 minutes en visio ou par téléphone avec <b>quelqu'un qui code</b> —
                 pas un commercial. On écoute, on challenge, on vous dit franchement
                 si c&apos;est pour nous. Si oui, vous repartez avec une <b>fourchette
                 de budget</b> et un calendrier réaliste.

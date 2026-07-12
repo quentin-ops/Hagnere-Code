@@ -8,7 +8,7 @@ export const teamHtml = `
         <h2>Chaque audit est nommé.<br>Photos, LinkedIn, spécialité<br>par dimension.</h2>
       </div>
       <div class="right">
-        Pas de "notre équipe d'experts" anonyme. Votre audit Standard mobilise <b>2 seniors + un associé-lead</b>
+        Pas de "notre équipe d'experts" anonyme. Votre audit Standard mobilise <b>2 seniors + un lead</b>
         nommés dès le devis — dans la liste ci-dessous. Chaque dimension du rapport a un <b>owner dédié</b>
         qui la signe. Engagement contractuel : <b>0 rotation d'équipe</b> en cours d'audit.
       </div>

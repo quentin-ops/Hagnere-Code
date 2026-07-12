@@ -141,12 +141,12 @@ export function ContactProjectSection({
   const intro = contactPageCopy ? (
     <>
       SaaS B2B, application métier, outil interne, reprise Laravel ou site
-      vitrine premium : un associé qui code vous répond sous 24 h ouvrées.
+      vitrine premium : quelqu'un qui code vous répond sous 24 h ouvrées.
       <b> Premier cadrage gratuit, sans engagement.</b>
     </>
   ) : (
     <>
-      Choisissez ce qui vous va : un créneau direct avec un associé, un email
+      Choisissez ce qui vous va : un créneau direct avec un expert, un email
       rapide, ou un formulaire si vous préférez écrire.
       <b> Réponse sous 24 h ouvrées, toujours.</b>
     </>
@@ -175,11 +175,11 @@ export function ContactProjectSection({
                   </div>
                   <div>
                     <div className="sf-card-kind">LE PLUS RAPIDE</div>
-                    <div className="sf-card-title">30 min avec un associé</div>
+                    <div className="sf-card-title">30 min avec un expert</div>
                   </div>
                 </div>
                 <p className="sf-card-body">
-                  Pas un commercial, pas un chef de projet : un associé qui
+                  Pas un commercial, pas un chef de projet : un expert qui
                   code vous écoute, vous donne un avis franc, et repart avec
                   votre brief si ça matche.
                 </p>
@@ -400,7 +400,7 @@ export function ContactProjectSection({
 
               {status.kind === "success" && (
                 <div className="sf-alert sf-alert-ok" role="status">
-                  ✓ Message bien reçu. Un email de confirmation vient de partir ; un associé vous répond sous 24 h ouvrées.
+                  ✓ Message bien reçu. Un email de confirmation vient de partir ; un expert vous répond sous 24 h ouvrées.
                 </div>
               )}
               {status.kind === "error" && (

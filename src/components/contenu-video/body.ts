@@ -235,7 +235,7 @@ ${navHtml}
   <div class="wrap inner">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:14px">Parlons de votre contenu.<br><span class="accent">30 minutes, c'est tout.</span></h2>
-    <p>Un call de cadrage gratuit avec un réal + un associé. On regarde vos besoins, votre audience, votre cadence, on sort une fourchette le soir même.</p>
+    <p>Un call de cadrage gratuit avec un réal + un expert. On regarde vos besoins, votre audience, votre cadence, on sort une fourchette le soir même.</p>
   </div>
 </section>
 

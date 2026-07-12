@@ -70,7 +70,7 @@ export const comparisonHtml = `
       <div class="cmp-row">
         <div class="cmp-col cmp-col-label">Interlocuteur</div>
         <div class="cmp-col">Le freelance lui-même</div>
-        <div class="cmp-col cmp-col-us"><b>Un associé qui code aussi</b></div>
+        <div class="cmp-col cmp-col-us"><b>Quelqu'un qui code aussi</b></div>
         <div class="cmp-col">Commercial → chef de projet → dev</div>
       </div>
 

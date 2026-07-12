@@ -161,7 +161,7 @@ ${navHtml}
         <h2>Quentin Hagnéré.<br>Le brief, le design,<br>l'interlocuteur unique.</h2>
       </div>
       <div class="right">
-        Quentin est l'associé qui prend votre appel, qui rédige les specs,
+        Quentin est l'expert qui prend votre appel, qui rédige les specs,
         qui dessine les écrans et qui reste votre point de contact pendant tout le projet.
         Il vient du <b>terrain métier</b>, pas du conseil — c'est ce qui fait la différence
         sur les premiers cadrages.
@@ -939,7 +939,7 @@ ${navHtml}
             Envoyer ma candidature
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="rec-cta-meta">Réponse sous 5 jours ouvrés · par un associé</div>
+          <div class="rec-cta-meta">Réponse sous 5 jours ouvrés · par un expert</div>
         </div>
 
         <div class="rec-criteria">

@@ -19,7 +19,7 @@ export const roiDashboardHtml = `
     <div class="at-timeline reveal reveal-d-1">
       <div class="at-timeline-head">
         <span class="at-timeline-k">DÉROULÉ DE VOTRE AUDIT STANDARD · 10 J OUVRÉS</span>
-        <span class="at-timeline-meta">2 devs seniors + 1 associé lead</span>
+        <span class="at-timeline-meta">2 devs seniors + 1 lead</span>
       </div>
 
       <div class="at-timeline-rail">
@@ -154,7 +154,7 @@ export const roiDashboardHtml = `
             </div>
           </div>
           <h4>2 devs seniors par audit</h4>
-          <p>Pas de stagiaire, pas de junior "qui apprend". <b>2 devs seniors 10+ ans</b> assignés sur votre mission, plus un associé lead qui valide chaque livrable. Photos &amp; LinkedIn visibles dès le kickoff.</p>
+          <p>Pas de stagiaire, pas de junior "qui apprend". <b>2 devs seniors 10+ ans</b> assignés sur votre mission, plus un lead qui valide chaque livrable. Photos &amp; LinkedIn visibles dès le kickoff.</p>
           <div class="at-roi-step-foot">→ Équipe nommée dans le devis</div>
         </div>
 

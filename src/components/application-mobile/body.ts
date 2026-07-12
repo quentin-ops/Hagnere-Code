@@ -53,7 +53,7 @@ ${navHtml}
       <p class="shero-sub">
         Une vraie app native iOS et Android livrée en <b>React Native + Expo</b>, publiée
         <b>sous vos comptes App Store &amp; Google Play</b>, branchée à votre stack existante (Stripe, <a href="/services/outils-internes-sur-mesure">votre back-office</a>, votre CRM).
-        Vous parlez à un associé qui code — pas à un commercial qui revendra le projet à une équipe que vous ne verrez jamais.
+        Vous parlez à quelqu'un qui code — pas à un commercial qui revendra le projet à une équipe que vous ne verrez jamais.
       </p>
       <div class="shero-cta">
         <a href="/rendez-vous" class="btn btn-accent btn-lg">
@@ -752,7 +752,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ commerciale</div>
         <h2 style="margin-top:14px">Les vraies questions<br>qu'on nous pose<br>avant de signer.</h2>
-        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par un associé qui code, sans détour ni jargon.</p>
+        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par quelqu'un qui code, sans détour ni jargon.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
@@ -885,11 +885,11 @@ ${navHtml}
   <div class="stats-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="eyebrow on-dark">— Prochaine étape</div>
-    <h2 style="margin-top:18px">Votre app sur les stores,<br>cadrée et chiffrée par un associé qui code.</h2>
-    <p>Un call de 30 min avec un associé. Vous repartez avec un avis franc sur votre projet et, sous 48 h, un devis chiffré au forfait — sans engagement.</p>
+    <h2 style="margin-top:18px">Votre app sur les stores,<br>cadrée et chiffrée par quelqu'un qui code.</h2>
+    <p>Un call de 30 min avec un expert. Vous repartez avec un avis franc sur votre projet et, sous 48 h, un devis chiffré au forfait — sans engagement.</p>
     <div class="scta-cta">
       <a href="#contact" class="btn btn-accent btn-lg">
-        📅 &nbsp;Réserver 30 min avec un associé
+        📅 &nbsp;Réserver 30 min avec un expert
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
       <a href="mailto:quentin@hagnere-patrimoine.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">

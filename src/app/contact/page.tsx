@@ -5,13 +5,13 @@ import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Contact agence web Chambéry · Réponse 24 h · Hagnéré Code",
   description:
-    "Parlez à un associé qui code — pas à un commercial. Réponse sous 24 h ouvrées (souvent 3 à 6 h), 30 min de cadrage gratuit. Bureau à Chambéry.",
+    "Parlez à quelqu'un qui code — pas à un commercial. Réponse sous 24 h ouvrées (souvent 3 à 6 h), 30 min de cadrage gratuit. Bureau à Chambéry.",
   alternates: { canonical: "/contact" },
   openGraph: {
     ...OG_BASE,
     title: "Contact projet web sur mesure · Hagnéré Code Chambéry",
     description:
-      "SaaS, applications métier, outils internes, reprise Laravel. Un associé qui code répond sous 24 h ouvrées.",
+      "SaaS, applications métier, outils internes, reprise Laravel. Quelqu'un qui code répond sous 24 h ouvrées.",
     url: "/contact",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -113,7 +113,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "24 h ouvrées maximum, en pratique 3–6 h la plupart du temps. Le week-end et les jours fériés, on coupe : mieux vaut un associé reposé le lundi qu'un associé rincé le dimanche.",
+          "24 h ouvrées maximum, en pratique 3–6 h la plupart du temps. Le week-end et les jours fériés, on coupe : mieux vaut une équipe reposée le lundi qu'une équipe rincée le dimanche.",
       },
     },
     {

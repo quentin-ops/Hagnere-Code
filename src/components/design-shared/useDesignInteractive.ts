@@ -404,7 +404,7 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
           window.open(url, "_blank", "noopener,noreferrer");
         } else {
           alert(
-            "Vidéo fondateur en cours de montage — elle sera publiée très prochainement. En attendant, réservez 30 min avec un associé pour le même message, en direct.",
+            "Vidéo fondateur en cours de montage — elle sera publiée très prochainement. En attendant, réservez 30 min avec un expert pour le même message, en direct.",
           );
         }
       };
@@ -670,8 +670,8 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         ];
         const atTierVerdicts = [
           "Vos réponses indiquent un besoin <b>rapide et ciblé</b>. Format Express 3-5 jours, 1 senior, livrable Notion + Loom. Démarrage sous 3 j ouvrés. <b>Chiffrage sur devis après un échange de 30 min</b>.",
-          "Vos réponses indiquent un besoin <b>complet board-ready</b>. Format Standard 10 jours ouvrés, 2 seniors + associé-lead, 8 dimensions couvertes, Tech Debt P&L chiffré, deck 12-18 slides. <b>Chiffrage sur devis après un échange de 30 min</b>.",
-          "Vos réponses indiquent une <b>décision majeure en jeu</b> (levée, refonte &gt; 500 k€, compliance). Format Deep 15-20 jours, 3 seniors + architecte + associé, rapport 60-80 pages, 3 scenarios chiffrés sur 3 ans. <b>Chiffrage sur devis après un échange de 30 min</b>.",
+          "Vos réponses indiquent un besoin <b>complet board-ready</b>. Format Standard 10 jours ouvrés, 2 seniors + un lead, 8 dimensions couvertes, Tech Debt P&L chiffré, deck 12-18 slides. <b>Chiffrage sur devis après un échange de 30 min</b>.",
+          "Vos réponses indiquent une <b>décision majeure en jeu</b> (levée, refonte &gt; 500 k€, compliance). Format Deep 15-20 jours, 3 seniors + architecte + lead, rapport 60-80 pages, 3 scenarios chiffrés sur 3 ans. <b>Chiffrage sur devis après un échange de 30 min</b>.",
           "Vos réponses indiquent une <b>Tech Due Diligence M&amp;A</b>. Format Tech DD M&A 20-30 jours, 4 personnes dédiées + coordination avocats, rapport 80-120 pages, analyse licences OSS + IP, attorney-client privilege. <b>Chiffrage sur devis après un échange de 30 min</b>.",
         ];
 

@@ -89,7 +89,7 @@ export const refuseHtml = `
         <p>
           <b>Pas d'apps de jeux 3D / AR lourd</b> (pas notre métier). <b>Pas d'apps "TikTok-killer" sans MVP cadré</b>.
           <b>Pas de devis sans Discovery Sprint payant</b>. <b>Pas de régie au TJM</b> (que des forfaits).
-          <b>Pas de sous-traitance offshore cachée</b> — vous parlez à un associé qui code.
+          <b>Pas de sous-traitance offshore cachée</b> — vous parlez à quelqu'un qui code.
         </p>
       </div>
     </div>

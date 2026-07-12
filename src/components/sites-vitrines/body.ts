@@ -717,7 +717,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ</div>
         <h2 style="margin-top:14px">Les vraies questions<br>qu'on nous pose avant<br>de signer.</h2>
-        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par un associé, sans détour.</p>
+        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par un expert, sans détour.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
@@ -841,10 +841,10 @@ ${navHtml}
   <div class="wrap">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:18px">Un site qui convertit,<br>livré en 4 à 7 semaines.</h2>
-    <p>Un call de 30 min avec un associé. Vous repartez avec un avis franc sur votre projet et, sous 48 h, un devis chiffré — sans engagement.</p>
+    <p>Un call de 30 min avec un expert. Vous repartez avec un avis franc sur votre projet et, sous 48 h, un devis chiffré — sans engagement.</p>
     <div class="scta-cta">
       <a href="#contact" class="btn btn-accent btn-lg">
-        📅 &nbsp;Réserver 30 min avec un associé
+        📅 &nbsp;Réserver 30 min avec un expert
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
       <a href="mailto:quentin@hagnere-patrimoine.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">

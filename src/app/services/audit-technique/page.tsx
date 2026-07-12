@@ -62,7 +62,7 @@ const serviceJsonLd = JSON.stringify({
       price: "18000",
       priceCurrency: "EUR",
       description:
-        "Format Standard 10 jours ouvrés, 2 seniors + associé-lead, 8 dimensions couvertes, rapport PDF 40-70 pages, Tech Debt P&L chiffré en euros, deck exécutif 12-18 slides board-ready, version board-safe, backlog Notion 20-30 tickets, diagrammes C4, Loom 20-30 min, roadmap 6/12/18 mois. Pour baseline CTO, pré-levée, préparation SOC2, go/no-go interne. Déduit 100 % si mission remédiation > 50 k€ suit.",
+        "Format Standard 10 jours ouvrés, 2 seniors + un lead, 8 dimensions couvertes, rapport PDF 40-70 pages, Tech Debt P&L chiffré en euros, deck exécutif 12-18 slides board-ready, version board-safe, backlog Notion 20-30 tickets, diagrammes C4, Loom 20-30 min, roadmap 6/12/18 mois. Pour baseline CTO, pré-levée, préparation SOC2, go/no-go interne. Déduit 100 % si mission remédiation > 50 k€ suit.",
     },
     {
       "@type": "Offer",
@@ -70,7 +70,7 @@ const serviceJsonLd = JSON.stringify({
       price: "38000",
       priceCurrency: "EUR",
       description:
-        "Format Deep 15-20 jours ouvrés, 3 seniors + architecte + associé-lead, tout inclus dans Standard + rapport 60-80 pages, 3 scenarios chiffrés sur 3 ans, restitution trilatérale CEO + CTO + CFO, dashboard opex vs capex, version data-room contrôlée. Pour décisions > 500 k€ : go/no-go refonte, Série B côté vendeur, gros gap SOC2. Démarrage sous 5 jours ouvrés.",
+        "Format Deep 15-20 jours ouvrés, 3 seniors + architecte + lead, tout inclus dans Standard + rapport 60-80 pages, 3 scenarios chiffrés sur 3 ans, restitution trilatérale CEO + CTO + CFO, dashboard opex vs capex, version data-room contrôlée. Pour décisions > 500 k€ : go/no-go refonte, Série B côté vendeur, gros gap SOC2. Démarrage sous 5 jours ouvrés.",
     },
     {
       "@type": "Offer",
@@ -147,7 +147,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "2 seniors + un associé-lead nommés dans le devis (photo, prénom, LinkedIn visibles). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. Chaque dimension auditée a un owner dédié qui la signe. Zéro rotation en cours d'audit. Équipe 100 % salariée Chambéry, ancienneté moyenne 4 ans chez Hagnéré.",
+          "2 seniors + un lead nommés dans le devis (photo, prénom, LinkedIn visibles). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. Chaque dimension auditée a un owner dédié qui la signe. Zéro rotation en cours d'audit. Équipe 100 % salariée Chambéry, ancienneté moyenne 4 ans chez Hagnéré.",
       },
     },
     {
@@ -174,7 +174,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "10 jours ouvrés de travail par 2 seniors + 1 associé-lead. 8 dimensions auditées : Code quality (SAST, coverage, complexité), Architecture (C4, couplage), Performance (p95/p99, N+1, CWV), Sécurité (OWASP, CVE, RGPD), Infrastructure (IaC, DR, RPO/RTO), DevEx (DORA metrics), FinOps (cost per feature), Équipe (5-8 entretiens no-blame SPACE framework). Livrables inclus : rapport 40-70 pages, Tech Debt P&L chiffré, deck 12-18 slides board-ready, version board-safe, backlog Notion 20-30 tickets, diagrammes C4, Loom 20-30 min, roadmap 6/12/18 mois. Licences enterprise SonarQube, Snyk, Datadog incluses.",
+          "10 jours ouvrés de travail par 2 seniors + 1 lead. 8 dimensions auditées : Code quality (SAST, coverage, complexité), Architecture (C4, couplage), Performance (p95/p99, N+1, CWV), Sécurité (OWASP, CVE, RGPD), Infrastructure (IaC, DR, RPO/RTO), DevEx (DORA metrics), FinOps (cost per feature), Équipe (5-8 entretiens no-blame SPACE framework). Livrables inclus : rapport 40-70 pages, Tech Debt P&L chiffré, deck 12-18 slides board-ready, version board-safe, backlog Notion 20-30 tickets, diagrammes C4, Loom 20-30 min, roadmap 6/12/18 mois. Licences enterprise SonarQube, Snyk, Datadog incluses.",
       },
     },
   ],
