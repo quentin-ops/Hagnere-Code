@@ -262,7 +262,7 @@
 .ptable-row:last-child{border-bottom:none}
 .ptable-row:hover{background:var(--paper-2)}
 .ptable-row .ptcol{padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:4px;font-size:13.5px;color:var(--ink-3)}
-.ptable-row .ptcol b{font-family:var(--font-geist);font-weight:600;color:var(--ink);font-size:14.5px;letter-spacing:-0.01em}
+.ptable-row .ptcol b{font-family:var(--font-geist);font-weight:600;color:var(--ink);font-size:14.5px;letter-spacing:-0.01em;white-space:nowrap}
 .ptable-row .ptcol span{font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.02em}
 .ptcol-svc{padding:16px 18px !important}
 .ptcol-svc a{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;min-width:0}

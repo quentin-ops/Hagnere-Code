@@ -306,11 +306,11 @@ export async function POST(request: Request) {
 
   const apiKey = process.env.RESEND_API_KEY;
   const toAddr = process.env.CONTACT_TO_EMAIL || "quentin@hagnere-patrimoine.fr";
-  const fromAddr = process.env.CONTACT_FROM_EMAIL || "contact@hagnere-code.fr";
+  const fromAddr = process.env.CONTACT_FROM_EMAIL || "contact@hagnere-code.ai";
 
   const subject = `[Projet] ${company} — ${fullName}`;
   const textBody = [
-    "Nouveau contact projet — hagnere-code.fr",
+    "Nouveau contact projet — hagnere-code.ai",
     "",
     `Nom       : ${fullName}`,
     `Email     : ${email}`,

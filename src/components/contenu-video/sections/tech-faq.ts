@@ -50,7 +50,7 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          Publiée sur <code>hagnere-code.fr/charte-ia</code> et annexée aux CGV. 4 principes : <b>(1)</b> aucun clone vocal / avatar sans consentement écrit signé, <b>(2)</b> aucune génération 100 % IA vendue comme "tournée", <b>(3)</b> aucune imitation de concurrent, <b>(4)</b> métadonnées de synthèse sur tous les inserts génératifs. Auditable par vos équipes legal.
+          Publiée sur <code>hagnere-code.ai/charte-ia</code> et annexée aux CGV. 4 principes : <b>(1)</b> aucun clone vocal / avatar sans consentement écrit signé, <b>(2)</b> aucune génération 100 % IA vendue comme "tournée", <b>(3)</b> aucune imitation de concurrent, <b>(4)</b> métadonnées de synthèse sur tous les inserts génératifs. Auditable par vos équipes legal.
         </div>
       </div>
 

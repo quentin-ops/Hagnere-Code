@@ -63,25 +63,25 @@ const articleJsonLd = JSON.stringify({
   headline: "Combien coûte un site internet professionnel en 2026 ?",
   description:
     "Fourchettes réelles par type de site, postes de coût, coûts cachés, pièges des devis trop bas et méthode pour budgéter juste.",
-  url: "https://hagnere-code.fr/guides/combien-coute-un-site-internet",
+  url: "https://hagnere-code.ai/guides/combien-coute-un-site-internet",
   datePublished: "2026-07-10",
   dateModified: "2026-07-10",
   inLanguage: "fr-FR",
   articleSection: "Créer son site web",
   isPartOf: {
     "@type": "WebPage",
-    "@id": "https://hagnere-code.fr/guides",
+    "@id": "https://hagnere-code.ai/guides",
     name: "Guides web Hagnéré Code",
   },
   author: {
     "@type": "Organization",
     name: "Hagnéré Code",
-    url: "https://hagnere-code.fr",
+    url: "https://hagnere-code.ai",
   },
   publisher: {
     "@type": "Organization",
     name: "Hagnéré Code",
-    url: "https://hagnere-code.fr",
+    url: "https://hagnere-code.ai",
   },
 });
 
@@ -89,13 +89,13 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Guides", item: "https://hagnere-code.fr/guides" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+    { "@type": "ListItem", position: 2, name: "Guides", item: "https://hagnere-code.ai/guides" },
     {
       "@type": "ListItem",
       position: 3,
       name: "Combien coûte un site internet ?",
-      item: "https://hagnere-code.fr/guides/combien-coute-un-site-internet",
+      item: "https://hagnere-code.ai/guides/combien-coute-un-site-internet",
     },
   ],
 });

@@ -28,7 +28,7 @@ export const bodyHtml = `${navHtml}
         </button>
       </div>
       <p class="hero-micro">
-        Vous tomberez sur <b>un associé qui code</b>, pas sur un commercial. 30 min, sans engagement.
+        Vous tomberez sur <b>quelqu'un qui code</b>, pas sur un commercial. 30 min, sans engagement.
       </p>
       <ul class="hero-badges" role="list">
         <li class="hero-badge">
@@ -41,7 +41,7 @@ export const bodyHtml = `${navHtml}
         </li>
         <li class="hero-badge">
           <span class="hero-badge-ic"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>
-          Réponse sous 24h
+          Réponse sous 24 h ouvrées
         </li>
       </ul>
     </div>

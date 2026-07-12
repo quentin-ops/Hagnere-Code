@@ -22,13 +22,13 @@ export default function Page() {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     name: "Démarrer un projet — Hagnéré Code",
-    url: "https://hagnere-code.fr/demarrer-un-projet",
+    url: "https://hagnere-code.ai/demarrer-un-projet",
     description:
       "Parcours guidé pour décrire un projet web, SaaS, application métier, e-commerce ou reprise technique. Réponse personnelle sous 24 h ouvrées.",
     provider: {
       "@type": "Organization",
       name: "Hagnéré Code",
-      url: "https://hagnere-code.fr",
+      url: "https://hagnere-code.ai",
     },
   });
 
@@ -36,12 +36,12 @@ export default function Page() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
       {
         "@type": "ListItem",
         position: 2,
         name: "Démarrer un projet",
-        item: "https://hagnere-code.fr/demarrer-un-projet",
+        item: "https://hagnere-code.ai/demarrer-un-projet",
       },
     ],
   });

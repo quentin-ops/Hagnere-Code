@@ -21,10 +21,10 @@ const rdvJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Rendez-vous découverte — 30 minutes",
-  url: "https://hagnere-code.fr/rendez-vous",
+  url: "https://hagnere-code.ai/rendez-vous",
   description:
     "Rendez-vous découverte de 30 minutes en visio ou téléphone avec Hagnéré Code pour cadrer un projet web sur mesure.",
-  provider: { "@id": "https://hagnere-code.fr/#business" },
+  provider: { "@id": "https://hagnere-code.ai/#business" },
   offers: {
     "@type": "Offer",
     price: "0",
@@ -53,8 +53,8 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Rendez-vous", item: "https://hagnere-code.fr/rendez-vous" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+    { "@type": "ListItem", position: 2, name: "Rendez-vous", item: "https://hagnere-code.ai/rendez-vous" },
   ],
 });
 

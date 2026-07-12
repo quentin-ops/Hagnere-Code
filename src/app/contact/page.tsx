@@ -21,17 +21,17 @@ const contactJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "ContactPage",
   name: "Contact · Hagnéré Code",
-  url: "https://hagnere-code.fr/contact",
+  url: "https://hagnere-code.ai/contact",
   description:
     "Prendre contact avec Hagnéré Code pour un projet web sur mesure : SaaS B2B, application métier, outil interne, reprise Laravel ou site vitrine.",
   mainEntity: {
     "@type": "ProfessionalService",
-    "@id": "https://hagnere-code.fr/#business",
+    "@id": "https://hagnere-code.ai/#business",
     name: "Hagnéré Code",
     legalName: "HAGNÉRÉ CODE SAS",
-    url: "https://hagnere-code.fr",
-    logo: "https://hagnere-code.fr/logos/logo-dark.png",
-    image: "https://hagnere-code.fr/og-image.png",
+    url: "https://hagnere-code.ai",
+    logo: "https://hagnere-code.ai/logos/logo-dark.png",
+    image: "https://hagnere-code.ai/og-image.png",
     priceRange: "€€€",
     email: "quentin@hagnere-patrimoine.fr",
     telephone: "+33374472018",
@@ -80,8 +80,8 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Contact", item: "https://hagnere-code.fr/contact" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+    { "@type": "ListItem", position: 2, name: "Contact", item: "https://hagnere-code.ai/contact" },
   ],
 });
 

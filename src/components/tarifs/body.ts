@@ -475,7 +475,7 @@ ${navHtml}
         </div>
         <div class="ptcol"><b>6,9 k€</b><span>Essentiel — 3–5 pages</span></div>
         <div class="ptcol"><b>14,9 k€</b><span>Performance — 10–20 pages, blog</span></div>
-        <div class="ptcol"><b>22 k€</b><span>Sur-mesure — multi-langue, e-com</span></div>
+        <div class="ptcol"><b>22 k€</b><span>Sur-mesure — multi-langue, e&#8209;com</span></div>
         <div class="ptcol ptcol-time"><b>2–14 sem.</b></div>
       </div>
 
@@ -985,7 +985,7 @@ ${navHtml}
         <div class="ct-mini">
           <div class="ct-mini-bar">
             <div class="ct-mini-dots"><span></span><span></span><span></span></div>
-            <div class="ct-mini-name">votre-brief — hagnere-code.fr</div>
+            <div class="ct-mini-name">votre-brief — hagnere-code.ai</div>
           </div>
           <div class="ct-mini-tabs">
             <div class="ct-mini-tab active">Votre brief</div>

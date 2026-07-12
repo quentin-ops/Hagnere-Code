@@ -28,11 +28,11 @@ export const metadata: Metadata = {
 const orgJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://hagnere-code.fr/#organization",
+  "@id": "https://hagnere-code.ai/#organization",
   name: "Hagnéré Code",
   legalName: "HAGNÉRÉ CODE SAS",
-  url: "https://hagnere-code.fr",
-  logo: "https://hagnere-code.fr/logos/logo-dark.png",
+  url: "https://hagnere-code.ai",
+  logo: "https://hagnere-code.ai/logos/logo-dark.png",
   email: "quentin@hagnere-patrimoine.fr",
   telephone: "+33374472018",
   vatID: "FR30993672856",
@@ -106,8 +106,8 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "L'équipe", item: "https://hagnere-code.fr/equipe" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+    { "@type": "ListItem", position: 2, name: "L'équipe", item: "https://hagnere-code.ai/equipe" },
   ],
 });
 

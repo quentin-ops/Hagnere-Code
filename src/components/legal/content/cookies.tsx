@@ -16,13 +16,13 @@ export const cookiesSections: LegalSection[] = [
   },
   {
     id: "usage",
-    label: "État actuel sur hagnere-code.fr",
-    title: "Cookies déposés sur hagnere-code.fr",
+    label: "État actuel sur hagnere-code.ai",
+    title: "Cookies déposés sur hagnere-code.ai",
     body: (
       <>
         <p>
           <strong>
-            À ce jour, hagnere-code.fr ne dépose lui-même aucun cookie de
+            À ce jour, hagnere-code.ai ne dépose lui-même aucun cookie de
             mesure d&apos;audience ni de publicité.
           </strong>{" "}
           Aucun outil d&apos;analyse d&apos;audience non exempté (Google Analytics, Meta
@@ -61,7 +61,7 @@ export const cookiesSections: LegalSection[] = [
       <>
         <p>
           Conformément aux recommandations CNIL, voici la liste détaillée des
-          stockages côté navigateur utilisés par hagnere-code.fr. Aucun n&apos;est
+          stockages côté navigateur utilisés par hagnere-code.ai. Aucun n&apos;est
           soumis à consentement (article 82 LCEN — finalité strictement
           nécessaire au service demandé).
         </p>
@@ -97,35 +97,35 @@ export const cookiesSections: LegalSection[] = [
               <tr>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>theme</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>localStorage</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.fr</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.ai</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Mémorise le thème (clair/sombre) choisi par l&apos;utilisateur.</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Persistant (jusqu&apos;à effacement)</td>
               </tr>
               <tr>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>pf:draft:v2</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>localStorage</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.fr</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.ai</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Sauvegarde le brouillon du formulaire de description de projet pour éviter sa perte en cas de rafraîchissement.</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Persistant (effacé après envoi)</td>
               </tr>
               <tr>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hc_consent_v1</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>localStorage</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.fr</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.ai</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Mémorise votre choix de consentement exprimé via la bannière cookies.</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Persistant (jusqu&apos;à effacement)</td>
               </tr>
               <tr>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>pf:opened</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>sessionStorage</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.fr</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.ai</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Évite de comptabiliser plusieurs fois l&apos;ouverture du formulaire projet dans la même session (mesure anonyme, sans identifiant).</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Session (effacé à la fermeture de l&apos;onglet)</td>
               </tr>
               <tr>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>pf:converted</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>sessionStorage</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.fr</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.ai</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Évite de comptabiliser deux fois l&apos;envoi d&apos;un même brief dans la même session (mesure anonyme, sans identifiant).</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Session (effacé à la fermeture de l&apos;onglet)</td>
               </tr>
@@ -133,7 +133,7 @@ export const cookiesSections: LegalSection[] = [
           </table>
         </div>
         <p>
-          En dehors des stockages listés ci-dessus, hagnere-code.fr ne dépose
+          En dehors des stockages listés ci-dessus, hagnere-code.ai ne dépose
           lui-même aucun cookie HTTP, aucun pixel de tracking ni aucun outil
           d&apos;analytics tiers. Seul le module Calendly embarqué sur les pages de
           prise de rendez-vous est susceptible de déposer des cookies tiers
@@ -167,7 +167,7 @@ export const cookiesSections: LegalSection[] = [
           .
         </p>
         <p>
-          Ces cookies sont émis par Calendly et non par hagnere-code.fr, et
+          Ces cookies sont émis par Calendly et non par hagnere-code.ai, et
           nous ne les exploitons pas. Si vous ne souhaitez pas charger ce
           module, vous pouvez prendre contact sans passer par ces pages, en
           écrivant directement à{" "}

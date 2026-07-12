@@ -8,14 +8,14 @@ const LAST_UPDATED = "2026-04-26";
 export const metadata: Metadata = {
   title: "Politique cookies · Zéro tracker publicitaire · Hagnéré Code",
   description:
-    "Aucun cookie publicitaire ni analytics tiers sur hagnere-code.fr. La liste complète des stockages navigateur et le cas du widget Calendly.",
+    "Aucun cookie publicitaire ni analytics tiers sur hagnere-code.ai. La liste complète des stockages navigateur et le cas du widget Calendly.",
   alternates: { canonical: "/legal/cookies" },
   openGraph: {
     ...OG_BASE,
     type: "article",
     title: "Politique cookies · Zéro tracker publicitaire · Hagnéré Code",
     description:
-      "Gestion des cookies, services tiers et choix utilisateur sur hagnere-code.fr.",
+      "Gestion des cookies, services tiers et choix utilisateur sur hagnere-code.ai.",
     url: "/legal/cookies",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -25,8 +25,8 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Politique cookies", item: "https://hagnere-code.fr/legal/cookies" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+    { "@type": "ListItem", position: 2, name: "Politique cookies", item: "https://hagnere-code.ai/legal/cookies" },
   ],
 });
 
@@ -36,7 +36,7 @@ export default function Page() {
       <script type="application/ld+json">{breadcrumbJsonLd}</script>
       <LegalPageLayout
         title={"Politique\ncookies."}
-        intro="Informations sur les cookies, services tiers et moyens de gérer vos choix lors de la navigation sur hagnere-code.fr."
+        intro="Informations sur les cookies, services tiers et moyens de gérer vos choix lors de la navigation sur hagnere-code.ai."
         lastUpdated={LAST_UPDATED}
         breadcrumb="Cookies"
         sections={cookiesSections}

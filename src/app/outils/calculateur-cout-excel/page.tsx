@@ -21,7 +21,7 @@ const webAppJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "WebApplication",
   name: "Calculateur : combien vous coûte votre Excel ?",
-  url: "https://hagnere-code.fr/outils/calculateur-cout-excel",
+  url: "https://hagnere-code.ai/outils/calculateur-cout-excel",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web",
   offers: {
@@ -37,12 +37,12 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
     {
       "@type": "ListItem",
       position: 2,
       name: "Calculateur coût Excel",
-      item: "https://hagnere-code.fr/outils/calculateur-cout-excel",
+      item: "https://hagnere-code.ai/outils/calculateur-cout-excel",
     },
   ],
 });

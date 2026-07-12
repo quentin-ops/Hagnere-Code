@@ -20,13 +20,13 @@ export const metadata: Metadata = {
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://hagnere-code.fr/#organization",
+  "@id": "https://hagnere-code.ai/#organization",
   name: "Hagnéré Code",
   alternateName: ["Hagnere Code", "HAGNÉRÉ CODE", "HAGNERE CODE SAS"],
   legalName: "HAGNÉRÉ CODE SAS",
-  url: "https://hagnere-code.fr",
-  logo: "https://hagnere-code.fr/logos/logo-dark.png",
-  image: "https://hagnere-code.fr/og-image.png",
+  url: "https://hagnere-code.ai",
+  logo: "https://hagnere-code.ai/logos/logo-dark.png",
+  image: "https://hagnere-code.ai/og-image.png",
   description:
     "Studio de développement SaaS, applications métier, sites vitrines et outils internes. Next.js, React, TypeScript, IA native, forfait fixe. Basé à Chambéry.",
   foundingDate: "2025-09-30",
@@ -71,11 +71,11 @@ const organizationJsonLd = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://hagnere-code.fr/#website",
+  "@id": "https://hagnere-code.ai/#website",
   name: "Hagnéré Code",
-  url: "https://hagnere-code.fr",
+  url: "https://hagnere-code.ai",
   inLanguage: "fr-FR",
-  publisher: { "@id": "https://hagnere-code.fr/#organization" },
+  publisher: { "@id": "https://hagnere-code.ai/#organization" },
 };
 
 const localBusinessJsonLd = {
@@ -83,10 +83,10 @@ const localBusinessJsonLd = {
   "@type": "ProfessionalService",
   name: "Hagnéré Code",
   legalName: "HAGNÉRÉ CODE SAS",
-  image: "https://hagnere-code.fr/og-image.png",
-  logo: "https://hagnere-code.fr/logos/logo-dark.png",
-  "@id": "https://hagnere-code.fr/#business",
-  url: "https://hagnere-code.fr",
+  image: "https://hagnere-code.ai/og-image.png",
+  logo: "https://hagnere-code.ai/logos/logo-dark.png",
+  "@id": "https://hagnere-code.ai/#business",
+  url: "https://hagnere-code.ai",
   priceRange: "€€€",
   email: "quentin@hagnere-patrimoine.fr",
   telephone: "+33374472018",

@@ -21,9 +21,9 @@ ${navHtml}
     <div>
       <div class="shero-eyebrow">
         <span class="pill"><span class="dot"></span> Service · Maintenance &amp; évolution · TMA long-terme</span>
-        <a href="https://status.hagnere-code.fr" target="_blank" rel="noopener" class="me-status-pill" aria-label="Voir notre Statuspage publique">
+        <a href="https://status.hagnere-code.ai" target="_blank" rel="noopener" class="me-status-pill" aria-label="Voir notre Statuspage publique">
           <span class="me-status-dot"></span>
-          <span class="me-status-txt">status.hagnere-code.fr</span>
+          <span class="me-status-txt">status.hagnere-code.ai</span>
           <span class="me-status-state">● operational</span>
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>

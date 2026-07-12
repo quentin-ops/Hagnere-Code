@@ -25,7 +25,7 @@ export default function Page() {
     name: "Services Hagnéré Code",
     description:
       "Services de développement web, SaaS, applications métier, acquisition, maintenance et sécurité pour PME, ETI et scale-up.",
-    url: "https://hagnere-code.fr/services",
+    url: "https://hagnere-code.ai/services",
     mainEntity: {
       "@type": "ItemList",
       itemListElement: [
@@ -46,12 +46,12 @@ export default function Page() {
         item: {
           "@type": "Service",
           name,
-          url: `https://hagnere-code.fr${url}`,
+          url: `https://hagnere-code.ai${url}`,
           provider: {
             "@type": "Organization",
-            "@id": "https://hagnere-code.fr/#organization",
+            "@id": "https://hagnere-code.ai/#organization",
             name: "Hagnéré Code",
-            url: "https://hagnere-code.fr",
+            url: "https://hagnere-code.ai",
           },
         },
       })),
@@ -62,8 +62,8 @@ export default function Page() {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-      { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/services" },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.ai/services" },
     ],
   });
 

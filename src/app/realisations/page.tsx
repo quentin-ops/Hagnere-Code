@@ -22,8 +22,8 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Réalisations", item: "https://hagnere-code.fr/realisations" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+    { "@type": "ListItem", position: 2, name: "Réalisations", item: "https://hagnere-code.ai/realisations" },
   ],
 });
 
@@ -34,7 +34,7 @@ const itemListJsonLd = JSON.stringify({
   itemListElement: Object.values(CASES).map((c, i) => ({
     "@type": "ListItem",
     position: i + 1,
-    url: `https://hagnere-code.fr/realisations/${c.slug}`,
+    url: `https://hagnere-code.ai/realisations/${c.slug}`,
     name: `${c.brandName} — ${c.category}`,
     description: c.heroIntro,
   })),

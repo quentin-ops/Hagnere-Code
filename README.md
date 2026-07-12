@@ -1,6 +1,6 @@
 # Hagnéré Code — site vitrine
 
-Site de l'agence HAGNÉRÉ CODE SAS ([hagnere-code.fr](https://hagnere-code.fr)) :
+Site de l'agence HAGNÉRÉ CODE SAS ([hagnere-code.ai](https://hagnere-code.ai)) :
 pages services, études de cas, guides, outils, et funnel de démarrage de projet.
 Next.js 16 (App Router) déployé sur Cloudflare Workers via OpenNext.
 

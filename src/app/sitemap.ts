@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { CASE_SLUGS } from "@/components/realisations/cases";
 
-const baseUrl = "https://hagnere-code.fr";
+const baseUrl = "https://hagnere-code.ai";
 
 const servicesSlugs = [
   "saas-applications-metier",

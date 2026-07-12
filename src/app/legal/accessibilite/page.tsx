@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     type: "article",
     title: "Déclaration d'accessibilité · Hagnéré Code",
     description:
-      "Engagement d'accessibilité du site hagnere-code.fr : RGAA 4.1, WCAG 2.1 AA, plan d'amélioration et voies de recours.",
+      "Engagement d'accessibilité du site hagnere-code.ai : RGAA 4.1, WCAG 2.1 AA, plan d'amélioration et voies de recours.",
     url: "/legal/accessibilite",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -25,8 +25,8 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Déclaration d'accessibilité", item: "https://hagnere-code.fr/legal/accessibilite" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+    { "@type": "ListItem", position: 2, name: "Déclaration d'accessibilité", item: "https://hagnere-code.ai/legal/accessibilite" },
   ],
 });
 

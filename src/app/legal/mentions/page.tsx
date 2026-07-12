@@ -25,8 +25,8 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Mentions légales", item: "https://hagnere-code.fr/legal/mentions" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+    { "@type": "ListItem", position: 2, name: "Mentions légales", item: "https://hagnere-code.ai/legal/mentions" },
   ],
 });
 
@@ -36,7 +36,7 @@ export default function Page() {
       <script type="application/ld+json">{breadcrumbJsonLd}</script>
       <LegalPageLayout
         title={"Mentions\nlégales."}
-        intro="Informations légales obligatoires relatives à l'édition du site hagnere-code.fr et à la société HAGNÉRÉ CODE SAS."
+        intro="Informations légales obligatoires relatives à l'édition du site hagnere-code.ai et à la société HAGNÉRÉ CODE SAS."
         lastUpdated={LAST_UPDATED}
         breadcrumb="Mentions légales"
         sections={mentionsLegalesSections}

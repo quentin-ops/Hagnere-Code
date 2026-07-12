@@ -22,16 +22,16 @@ const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
   name: "DPO externalisé et conformité RGPD, AI Act",
-  url: "https://hagnere-code.fr/services/securite-rgpd",
+  url: "https://hagnere-code.ai/services/securite-rgpd",
   serviceType: "DPO externalisé, audit RGPD et conformité AI Act",
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
-    "@id": "https://hagnere-code.fr/#organization",
+    "@id": "https://hagnere-code.ai/#organization",
     legalName: "HAGNÉRÉ CODE SAS",
     vatID: "FR30993672856",
-    url: "https://hagnere-code.fr",
-    logo: "https://hagnere-code.fr/logos/logo-dark.png",
+    url: "https://hagnere-code.ai",
+    logo: "https://hagnere-code.ai/logos/logo-dark.png",
     address: {
       "@type": "PostalAddress",
       streetAddress: "7 rue Ernest Filliard",
@@ -130,13 +130,13 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/services" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.ai/services" },
     {
       "@type": "ListItem",
       position: 3,
       name: "Sécurité & RGPD",
-      item: "https://hagnere-code.fr/services/securite-rgpd",
+      item: "https://hagnere-code.ai/services/securite-rgpd",
     },
   ],
 });

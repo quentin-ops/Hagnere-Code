@@ -22,17 +22,17 @@ const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Audit technique indépendant, dette chiffrée en euros",
-  url: "https://hagnere-code.fr/services/audit-technique",
+  url: "https://hagnere-code.ai/services/audit-technique",
   serviceType:
     "Audit technique indépendant (code, architecture, sécurité, performance, infrastructure, DevEx, FinOps, équipe) avec livrable board-ready Tech Debt P&L",
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
-    "@id": "https://hagnere-code.fr/#organization",
+    "@id": "https://hagnere-code.ai/#organization",
     legalName: "HAGNÉRÉ CODE SAS",
     vatID: "FR30993672856",
-    url: "https://hagnere-code.fr",
-    logo: "https://hagnere-code.fr/logos/logo-dark.png",
+    url: "https://hagnere-code.ai",
+    logo: "https://hagnere-code.ai/logos/logo-dark.png",
     address: {
       "@type": "PostalAddress",
       streetAddress: "7 rue Ernest Filliard",
@@ -184,13 +184,13 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/services" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.ai/services" },
     {
       "@type": "ListItem",
       position: 3,
       name: "Audit technique",
-      item: "https://hagnere-code.fr/services/audit-technique",
+      item: "https://hagnere-code.ai/services/audit-technique",
     },
   ],
 });

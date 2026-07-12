@@ -20,9 +20,9 @@ export const metadata: Metadata = {
 const offersJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "@id": "https://hagnere-code.fr/#business",
+  "@id": "https://hagnere-code.ai/#business",
   name: "Hagnéré Code",
-  url: "https://hagnere-code.fr",
+  url: "https://hagnere-code.ai",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Tarifs Hagnéré Code",
@@ -77,8 +77,8 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Tarifs", item: "https://hagnere-code.fr/tarifs" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+    { "@type": "ListItem", position: 2, name: "Tarifs", item: "https://hagnere-code.ai/tarifs" },
   ],
 });
 

@@ -9,7 +9,7 @@ export const mentionsLegalesSections: LegalSection[] = [
     body: (
       <>
         <p>
-          Le présent site <strong>hagnere-code.fr</strong> (ci-après « le Site »)
+          Le présent site <strong>hagnere-code.ai</strong> (ci-après « le Site »)
           est édité par la société <strong>HAGNÉRÉ CODE</strong>, société par
           actions simplifiée (SAS) au capital social variable, immatriculée au
           Registre du Commerce et des Sociétés de Chambéry.

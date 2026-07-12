@@ -8,7 +8,7 @@ export const accessibiliteSections: LegalSection[] = [
     body: (
       <>
         <p>
-          HAGNÉRÉ CODE SAS s&apos;efforce de rendre le site hagnere-code.fr
+          HAGNÉRÉ CODE SAS s&apos;efforce de rendre le site hagnere-code.ai
           accessible au plus grand nombre, conformément aux principes des
           référentiels <strong>RGAA 4.1</strong> (Référentiel général
           d&apos;amélioration de l&apos;accessibilité) et{" "}
@@ -16,7 +16,7 @@ export const accessibiliteSections: LegalSection[] = [
         </p>
         <p>
           La présente déclaration s&apos;applique au site
-          <strong> hagnere-code.fr </strong>
+          <strong> hagnere-code.ai </strong>
           (toutes les pages publiques listées dans le sitemap).
         </p>
         <p>
@@ -39,7 +39,7 @@ export const accessibiliteSections: LegalSection[] = [
     body: (
       <>
         <p>
-          Le site hagnere-code.fr est en{" "}
+          Le site hagnere-code.ai est en{" "}
           <strong>conformité partielle</strong> avec le RGAA 4.1.{" "}
           <strong>Aucun audit indépendant n&apos;a encore été réalisé</strong>{" "}
           à la date de publication ; un audit externe est planifié dans les

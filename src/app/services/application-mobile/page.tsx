@@ -29,17 +29,17 @@ const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Création d'application mobile iOS & Android sur mesure",
-  url: "https://hagnere-code.fr/services/application-mobile",
+  url: "https://hagnere-code.ai/services/application-mobile",
   serviceType:
     "Création d'applications mobiles natives iOS et Android sur mesure",
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
-    "@id": "https://hagnere-code.fr/#organization",
+    "@id": "https://hagnere-code.ai/#organization",
     legalName: "HAGNÉRÉ CODE SAS",
     vatID: "FR30993672856",
-    url: "https://hagnere-code.fr",
-    logo: "https://hagnere-code.fr/logos/logo-dark.png",
+    url: "https://hagnere-code.ai",
+    logo: "https://hagnere-code.ai/logos/logo-dark.png",
     address: {
       "@type": "PostalAddress",
       streetAddress: "7 rue Ernest Filliard",
@@ -59,7 +59,7 @@ const serviceJsonLd = JSON.stringify({
       "@type": "Offer",
       name: "Lancement · MVP iOS + Android",
       priceCurrency: "EUR",
-      url: "https://hagnere-code.fr/services/application-mobile#tarifs",
+      url: "https://hagnere-code.ai/services/application-mobile#tarifs",
       availability: "https://schema.org/InStock",
       description:
         "App native iOS + Android focalisée sur 1 cas d'usage : fidélité, réservation, click & collect, app interne. Périmètre resserré, login, push, paiement, soumission stores. Livraison 8 à 12 semaines. Forfait fixe sur devis après cadrage.",
@@ -68,7 +68,7 @@ const serviceJsonLd = JSON.stringify({
       "@type": "Offer",
       name: "Performance · App complète",
       priceCurrency: "EUR",
-      url: "https://hagnere-code.fr/services/application-mobile#tarifs",
+      url: "https://hagnere-code.ai/services/application-mobile#tarifs",
       availability: "https://schema.org/InStock",
       description:
         "App complète iOS + Android + Web mobile, design sur mesure, Apple Pay + Google Pay + Stripe + IAP, push géoloc, biométrie, hors-ligne, OTA EAS, back-office Filament/Strapi, tests E2E Maestro. Livraison 14 à 20 semaines. Forfait fixe sur devis après cadrage.",
@@ -77,7 +77,7 @@ const serviceJsonLd = JSON.stringify({
       "@type": "Offer",
       name: "Sur-mesure · Marketplace, IoT, IA embarquée",
       priceCurrency: "EUR",
-      url: "https://hagnere-code.fr/services/application-mobile#tarifs",
+      url: "https://hagnere-code.ai/services/application-mobile#tarifs",
       availability: "https://schema.org/InStock",
       description:
         "Marketplace 2-sided (Stripe Connect, KYC, escrow), IoT/BLE/NFC, modules natifs Swift/Kotlin si perf critique, Watch/Wear OS, multi-langue, intégration ERP. Livraison 5 à 9 mois. Devis personnalisé après cadrage approfondi.",
@@ -168,13 +168,13 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.fr/services" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.ai/services" },
     {
       "@type": "ListItem",
       position: 3,
       name: "Application mobile iOS & Android",
-      item: "https://hagnere-code.fr/services/application-mobile",
+      item: "https://hagnere-code.ai/services/application-mobile",
     },
   ],
 });

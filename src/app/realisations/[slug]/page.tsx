@@ -40,7 +40,7 @@ export async function generateMetadata({
 // caractères HTML problématiques (les `<` éventuels dans des chaînes seraient
 // déjà échappés par JSON.stringify dans ce cas-ci).
 function buildCaseJsonLd(c: CaseStudy): string {
-  const url = `https://hagnere-code.fr/realisations/${c.slug}`;
+  const url = `https://hagnere-code.ai/realisations/${c.slug}`;
   // Nœud Organization inline : le @id "#organization" n'est résolvable que sur
   // la home, les crawlers ne suivent pas les références cross-page.
   const organization = {
@@ -48,7 +48,7 @@ function buildCaseJsonLd(c: CaseStudy): string {
     name: "Hagnéré Code",
     logo: {
       "@type": "ImageObject",
-      url: "https://hagnere-code.fr/logos/logo-dark.png",
+      url: "https://hagnere-code.ai/logos/logo-dark.png",
     },
   };
   const article = {
@@ -58,7 +58,7 @@ function buildCaseJsonLd(c: CaseStudy): string {
     name: `${c.brandName} · Étude de cas Hagnéré Code`,
     description: c.heroIntro,
     url,
-    image: "https://hagnere-code.fr/og-image.png",
+    image: "https://hagnere-code.ai/og-image.png",
     inLanguage: "fr-FR",
     datePublished: `${c.year}-01-01`,
     author: organization,
@@ -77,8 +77,8 @@ function buildCaseJsonLd(c: CaseStudy): string {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.fr/" },
-      { "@type": "ListItem", position: 2, name: "Réalisations", item: "https://hagnere-code.fr/realisations" },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
+      { "@type": "ListItem", position: 2, name: "Réalisations", item: "https://hagnere-code.ai/realisations" },
       { "@type": "ListItem", position: 3, name: c.brandName, item: url },
     ],
   };

@@ -15,7 +15,7 @@
  *   }
  */
 
-export const SITE_URL = "https://hagnere-code.fr";
+export const SITE_URL = "https://hagnere-code.ai";
 
 export const OG_BASE = {
   type: "website" as const,

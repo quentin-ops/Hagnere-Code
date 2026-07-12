@@ -11,7 +11,7 @@ import { join, relative } from "node:path";
 import { describe, it, expect } from "vitest";
 import sitemap from "./sitemap";
 
-const BASE = "https://hagnere-code.fr";
+const BASE = "https://hagnere-code.ai";
 
 /** Routes volontairement absentes du sitemap (redirects 3xx ou noindex). */
 const EXCLUDED_ROUTES = [
@@ -89,7 +89,7 @@ describe("sitemap", () => {
 
   it("toutes les URLs sont absolues HTTPS", () => {
     for (const url of urls) {
-      expect(url).toMatch(/^https:\/\/hagnere-code\.fr/);
+      expect(url).toMatch(/^https:\/\/hagnere-code\.ai/);
     }
   });
 

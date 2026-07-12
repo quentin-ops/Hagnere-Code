@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 const isProd = process.env.NEXT_PUBLIC_ENV === "production";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hagnere-code.fr"),
+  metadataBase: new URL("https://hagnere-code.ai"),
   title: {
     default: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
     template: "%s",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://hagnere-code.fr",
+    url: "https://hagnere-code.ai",
     siteName: "Hagnéré Code",
     title: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
     description:

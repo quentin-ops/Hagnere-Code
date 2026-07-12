@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://hagnere-code.fr";
+  const baseUrl = "https://hagnere-code.ai";
   const isProd = process.env.NEXT_PUBLIC_ENV === "production";
 
   if (!isProd) {
