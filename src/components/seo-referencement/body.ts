@@ -20,7 +20,7 @@ ${navHtml}
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · SEO &amp; référencement Google</span></div>
-      <h1>Le <span class="accent">trafic organique</span><br>qui tombe sans<br>relancer vos Ads.</h1>
+      <h1>Référencement Google :<br>le <span class="accent">trafic organique</span> qui tombe<br>sans relancer vos Ads.</h1>
       <div class="shero-tagline">
         <span>📈 Trafic + 150 % en 9 mois</span>
         <span class="sep"></span>
@@ -149,7 +149,7 @@ ${navHtml}
       <div class="uc reveal reveal-d-1">
         <div class="uc-num">/ 02</div>
         <h3>SEO technique &amp; Core Web Vitals</h3>
-        <p>Correction des erreurs d'indexation, optimisation vitesse, schema.org, sitemap, hreflang, JS rendering. On livre des specs exécutables directement par votre équipe dev.</p>
+        <p>Correction des erreurs d'indexation, <a href="/services/sites-vitrines">optimisation vitesse</a>, schema.org, sitemap, hreflang, JS rendering. On livre des specs exécutables directement par votre équipe dev.</p>
         <div class="uc-tags">
           <span class="uc-tag">Lighthouse 95+</span>
           <span class="uc-tag">CWV verts</span>

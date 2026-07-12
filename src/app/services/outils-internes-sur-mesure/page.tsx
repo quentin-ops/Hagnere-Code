@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     ...OG_BASE,
     title: "Outils internes sur mesure PME & ETI — Hagnéré Code",
     description:
-      "Back-offices, CRM métier, ERP légers. Intégrations Sage, Cegid, Pennylane. Laravel 13 + IA. Forfait fixe, données en France.",
+      "Back-offices, CRM métier, ERP légers. Intégrations Sage, Cegid, Pennylane. Next.js/React + IA. Forfait fixe, données en France.",
     url: "/services/outils-internes-sur-mesure",
     images: [SERVICES_OG_IMAGE],
   },
@@ -46,7 +46,7 @@ const serviceJsonLd = JSON.stringify({
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "Développement d'outils internes sur mesure pour PME et ETI : CRM métier, ERP léger, back-offices, automatisations. Intégrations ERP legacy (Sage, Cegid, EBP, SAP), CRM (Salesforce, HubSpot, Pipedrive), Active Directory / SSO. Stack Laravel 13, React, IA Claude. Hébergé en France.",
+    "Développement d'outils internes sur mesure pour PME et ETI : CRM métier, ERP léger, back-offices, automatisations. Intégrations ERP legacy (Sage, Cegid, EBP, SAP), CRM (Salesforce, HubSpot, Pipedrive), Active Directory / SSO. Stack Next.js, React, IA Claude — reprises d'outils Laravel existants possibles. Hébergé en France.",
   offers: [
     {
       "@type": "Offer",

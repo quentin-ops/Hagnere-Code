@@ -9,7 +9,7 @@ export const bodyHtml = `${navHtml}
     <div>
       <div class="hero-eyebrow"><span class="pill hero-pill"><span class="dot"></span><span class="hero-pill-brand">Hagnéré Code</span><span class="hero-pill-tag">L'expertise humaine boostée à l'intelligence artificielle</span></span></div>
       <h1 data-variant="A">
-        <span id="h1-content">Le studio qui construit<br>les outils numériques<br><span class="accent">dont vous rêvez.</span></span>
+        <span id="h1-content">Le studio qui construit<br>le SaaS, le site ou l'outil métier<br><span class="accent">dont vous rêvez.</span></span>
       </h1>
       <p class="hero-sub" id="hero-sub">
         On imagine, on conçoit, on développe, on lance et on maintient vos
@@ -384,6 +384,7 @@ export const bodyHtml = `${navHtml}
         Vous pouvez venir avec une idée, un process qui bloque, un site qui ne convertit pas
         ou un produit existant à reprendre. On couvre le cadrage, le design, le développement,
         l'acquisition et l'exploitation technique.
+        <a href="/services">Voir les 11 services&nbsp;→</a>
       </p>
     </div>
 
@@ -932,6 +933,7 @@ export const bodyHtml = `${navHtml}
         comptabilité immobilière, et deux sites à forte conversion dans la gestion
         de patrimoine. Ce sont nos preuves principales aujourd'hui : des produits
         réels, en production, avec des chiffres que l'on peut expliquer.
+        <a href="/realisations">Toutes les réalisations&nbsp;→</a>
       </div>
     </div>
 

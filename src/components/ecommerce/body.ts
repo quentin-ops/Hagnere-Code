@@ -19,7 +19,7 @@ ${navHtml}
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Boutiques e-commerce sur mesure</span></div>
-      <h1>Votre boutique,<br><span class="accent">pas celle</span> de Shopify.</h1>
+      <h1>Votre boutique e-commerce,<br><span class="accent">pas celle</span> de Shopify.</h1>
       <div class="shero-tagline">
         <span>Design &amp; charte graphique inclus</span>
         <span class="sep"></span>

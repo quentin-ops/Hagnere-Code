@@ -20,7 +20,7 @@ ${navHtml}
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Sites vitrines &amp; landing pages</span></div>
-      <h1>Le <span class="accent">site qui convertit</span>,<br>pas juste un site<br>qui existe.</h1>
+      <h1>Le <span class="accent">site vitrine qui convertit</span>,<br>pas juste un site<br>qui existe.</h1>
       <div class="shero-tagline">
         <span>⚡ Lighthouse 95+ garanti</span>
         <span class="sep"></span>

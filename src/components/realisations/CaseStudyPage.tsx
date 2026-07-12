@@ -51,7 +51,10 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
           <div className="cs-hero-head">
             <div className="cs-hero-logo">{c.brandLogo}</div>
             <div>
-              <h1>{c.brandName}</h1>
+              <h1>
+                {c.brandName}
+                <span className="cs-h1-cat">{c.category}</span>
+              </h1>
               <a href={c.url} target="_blank" rel="noopener noreferrer" className="cs-hero-url">
                 {c.url.replace(/^https?:\/\//, "")}
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

@@ -20,7 +20,7 @@ ${navHtml}
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Publicité en ligne · SEA + Paid Social</span></div>
-      <h1>1 € de media buy<br><span class="accent">= 4 € de CA</span> attribué<br>dans votre CRM.</h1>
+      <h1>Google Ads &amp; Meta Ads :<br>1 € de media buy <span class="accent">= 4 € de CA</span><br>attribué dans votre CRM.</h1>
       <div class="shero-tagline">
         <span>📊 Tracking server-side inclus</span>
         <span class="sep"></span>

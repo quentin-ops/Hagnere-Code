@@ -21,7 +21,7 @@ ${navHtml}
       <div class="shero-eyebrow">
         <span class="pill"><span class="dot"></span> Service · Sécurité &amp; RGPD · DPO externalisé</span>
       </div>
-      <h1>Votre stack a 47<br>sous-traitants.<br><span class="accent">Votre DPO en connaît 6.</span></h1>
+      <h1>RGPD : votre stack a<br>47 sous-traitants.<br><span class="accent">Votre DPO en connaît 6.</span></h1>
       <div class="shero-tagline">
         <span>Audit + remédiation codée</span>
         <span class="sep"></span>

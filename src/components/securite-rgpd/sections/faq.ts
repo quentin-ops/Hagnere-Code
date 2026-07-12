@@ -16,7 +16,7 @@ export const faqHtml = `
           </div>
           <div class="faq-a">
             <b>Ni l'un ni l'autre.</b> On est un studio dev qui a structuré une équipe DPO + cyber audit en interne.
-            Notre angle : <b>on code la remédiation</b>, là où Lexing pond un PDF et Wavestone livre un rapport.
+            Notre angle : <a href="/services/maintenance-evolution"><b>on code la remédiation</b></a>, là où Lexing pond un PDF et Wavestone livre un rapport.
             Pour une procédure contradictoire CNIL ou un contentieux, on collabore avec un cabinet partenaire.
           </div>
         </div>

@@ -19,7 +19,7 @@ ${navHtml}
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Outils internes pour PME &amp; ETI</span></div>
-      <h1>Sortez votre équipe<br><span class="strike">d'Excel</span> <span class="accent">pour de bon.</span></h1>
+      <h1>L'outil interne sur mesure<br>qui sort votre équipe <span class="strike">d'Excel</span><br><span class="accent">pour de bon.</span></h1>
       <div class="shero-tagline">
         <span>⚡ Automatisé par l'IA</span>
         <span class="sep"></span>

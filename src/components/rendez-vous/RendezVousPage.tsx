@@ -33,8 +33,8 @@ export function RendezVousPage() {
               </div>
               <div className="eyebrow">— Réserver un rendez-vous</div>
               <h1>
-                Choisissez un créneau,<br />
-                on cadre votre projet.
+                Choisissez un créneau :<br />
+                30 min pour cadrer votre projet web.
               </h1>
               <p className="c-hero-lead">
                 30 minutes en visio ou par téléphone avec <b>un associé qui code</b> —

@@ -18,7 +18,7 @@ ${navHtml}
   <div class="wrap thero-inner">
     <div class="thero-copy">
       <div class="thero-eyebrow"><span class="pill"><span class="dot"></span> Tarifs · <b style="color:var(--ink);font-weight:600">Forfait fixe, jamais de TJM</b></span></div>
-      <h1>Des prix au forfait,<br><span class="accent">jamais de surprise.</span></h1>
+      <h1>Tarifs développement web &amp; SaaS :<br>des prix au forfait,<br><span class="accent">jamais de surprise.</span></h1>
       <p class="thero-sub">
         On vend un <b>résultat livré</b>, pas du temps passé. Vous savez exactement ce que vous payez
         et ce que vous recevez <b>avant de signer</b>. Si on dépasse, c'est pour nous —

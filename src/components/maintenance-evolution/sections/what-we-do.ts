@@ -26,7 +26,7 @@ export const whatWeDoHtml = `
           <span class="me-wwd-badge me-wwd-badge-handover">Reprise</span>
         </div>
         <h3>Reprise d'app orpheline</h3>
-        <p>Votre prestataire a disparu, le code est là, mais plus d'équipe. On fait un <b>audit flash en 5 jours</b> (code, infra, sécurité, dette), puis on reprend en main. L'entrée la plus fréquente chez nous — 40 % des nouveaux clients.</p>
+        <p>Votre prestataire a disparu, le code est là, mais plus d'équipe. On fait un <a href="/services/audit-technique"><b>audit flash en 5 jours</b></a> (code, infra, sécurité, dette), puis on reprend en main. L'entrée la plus fréquente chez nous — 40 % des nouveaux clients.</p>
         <div class="me-wwd-tags">
           <span class="me-wwd-tag">Audit flash 5 j</span>
           <span class="me-wwd-tag">Plan de reprise</span>

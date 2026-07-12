@@ -165,6 +165,13 @@
 .cs-hero h1 {
   font-size: 64px; line-height: 1.02; letter-spacing: -0.045em;
 }
+/* Sous-ligne du H1 : la catégorie métier (mots-clés) en style eyebrow discret */
+.cs-hero h1 .cs-h1-cat {
+  display: block;
+  font-size: 15px; line-height: 1.35; letter-spacing: 0.01em;
+  font-weight: 500; color: var(--mute);
+  margin-top: 10px;
+}
 .cs-hero-url {
   display: inline-flex; align-items: center; gap: 6px;
   font-family: var(--font-geist-mono); font-size: 13px;

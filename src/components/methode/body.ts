@@ -27,6 +27,7 @@ ${navHtml}
     </div>
 
     <h1 class="mhero-title">
+      <span class="line mhero-kicker">Développement web au forfait fixe :</span>
       <span class="line">Le prix annoncé</span>
       <span class="line"><em>est</em> le prix payé.</span>
       <span class="line">La date annoncée</span>

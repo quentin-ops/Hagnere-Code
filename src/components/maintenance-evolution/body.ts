@@ -28,7 +28,7 @@ ${navHtml}
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
       </div>
-      <h1>Votre équipe tech<br>dans 3 ans, 5 ans, 10 ans.<br><span class="accent">Pas un prestataire qui disparaît.</span></h1>
+      <h1>Maintenance applicative :<br>votre équipe tech dans 3, 5, 10 ans.<br><span class="accent">Pas un prestataire qui disparaît.</span></h1>
 
       <!-- KPI bar : chiffres concrets juste sous le H1 -->
       <div class="me-hero-kpis">

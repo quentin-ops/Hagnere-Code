@@ -97,6 +97,8 @@
 .mhero-title .line{display:inline-block;color:rgba(255,255,255,0.92)}
 .mhero-title .line em{font-style:normal;color:#fff;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px;text-decoration-thickness:6px;font-weight:700}
 .mhero-title .line.accent{background:linear-gradient(90deg,#A78BFA 0%,var(--accent) 60%);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700;text-shadow:0 4px 30px rgba(109,40,217,0.4)}
+/* Kicker mot-clé au-dessus de la promesse : petit, espacé, discret */
+.mhero-title .line.mhero-kicker{font-size:clamp(14px,1.4vw,18px);font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:10px}
 
 .mhero-bottom{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:end;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08)}
 .mhero-creds{display:grid;grid-template-columns:repeat(2,1fr);gap:0;padding-top:14px}

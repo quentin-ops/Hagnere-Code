@@ -20,7 +20,7 @@ ${navHtml}
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Application mobile iOS &amp; Android</span></div>
-      <h1>Votre app sur les <span class="accent">stores dès 12 semaines</span>,<br>pas dans 2 ans.</h1>
+      <h1>Votre application mobile<br>sur les <span class="accent">stores dès 12 semaines</span>,<br>pas dans 2 ans.</h1>
       <div class="mob-hero-feats">
         <span class="mob-hero-feat">
           <span class="mob-hero-feat-ic">
@@ -52,7 +52,7 @@ ${navHtml}
       </div>
       <p class="shero-sub">
         Une vraie app native iOS et Android livrée en <b>React Native + Expo</b>, publiée
-        <b>sous vos comptes App Store &amp; Google Play</b>, branchée à votre stack existante (Stripe, votre back-office, votre CRM).
+        <b>sous vos comptes App Store &amp; Google Play</b>, branchée à votre stack existante (Stripe, <a href="/services/outils-internes-sur-mesure">votre back-office</a>, votre CRM).
         Vous parlez à un associé qui code — pas à un commercial qui revendra le projet à une équipe que vous ne verrez jamais.
       </p>
       <div class="shero-cta">

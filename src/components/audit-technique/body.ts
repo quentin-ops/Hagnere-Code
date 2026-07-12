@@ -27,7 +27,7 @@ ${navHtml}
           <span class="at-nda-state">● dès J0</span>
         </span>
       </div>
-      <h1>Votre dette technique<br>en <span class="accent">euros</span>. Livrée<br>en 10 jours.</h1>
+      <h1>Audit technique d'application :<br>votre dette en <span class="accent">euros</span>,<br>livrée en 10 jours.</h1>
 
       <!-- KPI bar : chiffres concrets juste sous le H1 -->
       <div class="at-hero-kpis">
@@ -55,7 +55,7 @@ ${navHtml}
       <p class="shero-sub">
         Audit indépendant pour <b>VC en due diligence, acquéreur M&amp;A, CTO entrant, dirigeant avant refonte ou certification SOC2/ISO 27001</b>.
         Rapport board-ready avec <b>scoring /100 par dimension, Tech Debt P&amp;L chiffré en euros, matrice impact × effort, roadmap 6/12/18 mois</b>.
-        Clause de <b>non-conflit d'intérêt publique</b>&nbsp;: 100 % du prix déduit si mission de remédiation &gt; 50 k€ suit.
+        Clause de <b>non-conflit d'intérêt publique</b>&nbsp;: 100 % du prix déduit si <a href="/services/maintenance-evolution">mission de remédiation</a> &gt; 50 k€ suit.
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">

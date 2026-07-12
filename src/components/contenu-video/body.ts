@@ -19,7 +19,7 @@ ${navHtml}
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Studio contenu &amp; vidéo</span></div>
-      <h1>Deux monteurs seniors.<br><span class="accent">Un pipeline IA.</span></h1>
+      <h1>Studio vidéo &amp; contenu :<br>deux monteurs seniors,<br><span class="accent">un pipeline IA.</span></h1>
       <div class="shero-tagline">
         <span>2 monteurs Adobe Premiere Pro</span>
         <span class="sep"></span>
