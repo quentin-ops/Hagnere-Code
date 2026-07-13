@@ -91,7 +91,7 @@ export function ContactPage() {
                 Choisissez votre créneau de 30 minutes.
               </h2>
               <p style={{ color: "#525252", maxWidth: 640, margin: "0 auto", fontSize: 15 }}>
-                Pas un commercial — quelqu'un qui code. Visio ou téléphone, sans engagement.
+                Pas un commercial — quelqu&apos;un qui code. Visio ou téléphone, sans engagement.
               </p>
             </div>
             <CalendlyEmbed height={720} />

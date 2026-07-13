@@ -141,7 +141,7 @@ export function ContactProjectSection({
   const intro = contactPageCopy ? (
     <>
       SaaS B2B, application métier, outil interne, reprise Laravel ou site
-      vitrine premium : quelqu'un qui code vous répond sous 24 h ouvrées.
+      vitrine premium : quelqu&apos;un qui code vous répond sous 24 h ouvrées.
       <b> Premier cadrage gratuit, sans engagement.</b>
     </>
   ) : (
