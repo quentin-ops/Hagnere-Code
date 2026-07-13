@@ -449,6 +449,8 @@ ${navHtml}
       <div class="right">
         Les fourchettes ci-dessous sont calibrées sur <b>nos projets livrés et nos barèmes internes</b>.
         100 % de nos devis tombent <b>au milieu de la fourchette</b> annoncée — d'où notre confiance à les afficher.
+        Pour situer ces prix par rapport au marché, poste par poste, lisez notre guide
+        <a href="/guides/combien-coute-un-site-internet">combien coûte un site internet en 2026</a>.
       </div>
     </div>
 

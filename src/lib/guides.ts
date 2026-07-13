@@ -37,17 +37,17 @@ export interface GuideEntry {
 export const GUIDES: GuideEntry[] = [
   {
     slug: "combien-coute-un-site-internet",
-    title: "Combien coûte un site internet en 2026 ? Prix réels · Hagnéré Code",
+    title: "Combien coûte un site internet en 2026 ? · Hagnéré Code",
     cardTitle: "Combien coûte un site internet en 2026 ?",
     metaDescription:
-      "De 6 900 € à 120 000 € : les prix réels d'un site internet en 2026, poste par poste. Coûts cachés, exemples de devis, aides et méthode pour budgéter juste.",
+      "De 800 € à 120 000 € : les prix réels d'un site internet en 2026 par type et prestataire. Coûts cachés, coût sur 3 ans, aides et méthode pour budgéter.",
     cardDescription:
-      "Fourchettes réelles par type de site et de prestataire, coûts cachés sur 3 ans, décorticage de devis, aides 2026 et méthode pour budgéter juste.",
+      "Fourchettes réelles par type de site et de prestataire, coût total sur 3 ans, devis décortiqué ligne par ligne, aides 2026 et méthode pour budgéter juste.",
     heroTitle: "Combien coûte un site internet professionnel en 2026 ?",
     section: "Budget & prix",
     datePublished: "2026-07-11",
     dateModified: "2026-07-13",
-    readTimeMin: 16,
+    readTimeMin: 22,
     featured: true,
   },
 ];

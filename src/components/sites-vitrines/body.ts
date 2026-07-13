@@ -777,7 +777,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Zéro obligatoire.</b> Un site Next.js statique n'a pas de plugin à mettre à jour ni de base de données exposée&nbsp;: vous pouvez ne rien faire pendant 2 ans sans risque. Si vous voulez un partenaire long terme, forfait évolutions à la carte <b>300 à 800 €/mois</b>, sans engagement de durée.
+            <b>Zéro obligatoire.</b> Un site Next.js statique n'a pas de plugin à mettre à jour ni de base de données exposée&nbsp;: vous pouvez ne rien faire pendant 2 ans sans risque. Si vous voulez un partenaire long terme, forfait évolutions à la carte <b>300 à 800 €/mois</b>, sans engagement de durée. Pour le détail complet des coûts d'un site sur 3 ans, voir notre <a href="/guides/combien-coute-un-site-internet">guide des prix d'un site internet</a>.
           </div>
         </div>
 

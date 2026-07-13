@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { CASE_SLUGS } from "@/components/realisations/cases";
+import { GUIDES } from "@/lib/guides";
 
 const baseUrl = "https://hagnere-code.ai";
 
@@ -87,12 +88,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/guides/combien-coute-un-site-internet`,
-      changeFrequency: "monthly",
-      priority: 0.75,
-    },
   ];
+
+  // Guides : générés depuis le registre central src/lib/guides.ts —
+  // lastModified réel par guide (dateModified maintenue à la main).
+  const guideRoutes: MetadataRoute.Sitemap = GUIDES.map((g) => ({
+    url: `${baseUrl}/guides/${g.slug}`,
+    lastModified: new Date(`${g.dateModified}T12:00:00Z`),
+    changeFrequency: "monthly",
+    priority: 0.9,
+  }));
 
   const serviceRoutes: MetadataRoute.Sitemap = servicesSlugs.map((slug) => ({
     url: `${baseUrl}/services/${slug}`,
@@ -120,6 +125,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticRoutes,
+    ...guideRoutes,
     ...serviceRoutes,
     ...caseRoutes,
     ...toolSitemapRoutes,

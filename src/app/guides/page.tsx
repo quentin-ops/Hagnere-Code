@@ -10,34 +10,26 @@ import {
   TrendingUp,
   Calculator,
   FolderOpen,
+  type LucideIcon,
 } from "lucide-react";
 import { GuideCard, GuideCardFeatured } from "@/components/guides/guide-card";
 import { GuidesShell } from "@/components/guides/GuidesShell";
-import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { OG_BASE, DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/seo";
+import { GUIDES, guidePath, guideUrl } from "@/lib/guides";
 
 export const metadata: Metadata = {
-  title: "Guides web 2026 : site internet, SaaS, SEO et budget | Hagnéré Code",
+  title: "Guides : prix d'un site internet, SaaS et SEO · Hagnéré Code",
   description:
-    "Des guides pratiques et chiffrés pour cadrer votre projet web : coût d'un site internet, SaaS, outils métier, SEO. Rédigés par l'équipe Hagnéré Code, agence Next.js / React.",
-  keywords: [
-    "guide site internet",
-    "combien coûte un site internet",
-    "guide création site web",
-    "guide SaaS",
-    "guide SEO",
-    "agence web Next.js",
-    "agence React",
-    "Hagnéré Code",
-  ],
+    "Des guides chiffrés pour cadrer votre projet web : prix d'un site internet, SaaS, outils métier, SEO. Par l'équipe Hagnéré Code, agence Next.js/React.",
   authors: [{ name: "Hagnéré Code" }],
   creator: "Hagnéré Code",
   publisher: "Hagnéré Code",
   alternates: { canonical: "/guides" },
   openGraph: {
     ...OG_BASE,
-    title: "Guides web 2026 | Hagnéré Code",
+    title: "Guides : prix d'un site internet, SaaS et SEO · Hagnéré Code",
     description:
-      "Des guides pratiques et chiffrés pour cadrer votre projet web : coût d'un site internet, SaaS, outils métier, SEO.",
+      "Des guides chiffrés pour cadrer votre projet web : prix d'un site internet, SaaS, outils métier, SEO.",
     url: "/guides",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -54,37 +46,42 @@ export const metadata: Metadata = {
   },
 };
 
+/** Icône de carte par guide (défaut : Globe). */
+const GUIDE_ICONS: Record<string, LucideIcon> = {
+  "combien-coute-un-site-internet": Calculator,
+};
+
+const featuredGuide = GUIDES.find((g) => g.featured) ?? GUIDES[0];
+
 const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
-    { "@type": "ListItem", position: 2, name: "Guides", item: "https://hagnere-code.ai/guides" },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE_URL}/guides` },
   ],
 });
 
 const collectionJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Guides web 2026 : site internet, SaaS, SEO et budget",
+  name: "Guides : prix d'un site internet, SaaS et SEO",
   description:
     "Des guides pratiques et chiffrés pour cadrer votre projet web, rédigés par l'équipe Hagnéré Code.",
-  url: "https://hagnere-code.ai/guides",
+  url: `${SITE_URL}/guides`,
   author: {
     "@type": "Organization",
     name: "Hagnéré Code",
-    url: "https://hagnere-code.ai",
+    url: SITE_URL,
   },
   mainEntity: {
     "@type": "ItemList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Combien coûte un site internet professionnel en 2026 ?",
-        url: "https://hagnere-code.ai/guides/combien-coute-un-site-internet",
-      },
-    ],
+    itemListElement: GUIDES.map((g, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: g.cardTitle,
+      url: guideUrl(g),
+    })),
   },
 });
 
@@ -123,18 +120,19 @@ export default function GuidesPage() {
                 </nav>
 
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 mb-6">
-                  Tout comprendre sur{" "}
+                  Guides : combien coûte{" "}
                   <br className="hidden lg:block" />
-                  votre projet web
+                  et comment réussir votre projet web
                 </h1>
                 <p className="text-base sm:text-lg text-zinc-500 dark:text-zinc-400 leading-relaxed mb-8 max-w-lg">
-                  Des guides pratiques, clairs et chiffrés pour cadrer chaque
-                  aspect de votre projet : site internet, SaaS, outils métier,
-                  SEO, budget et maintenance.
+                  Prix d&apos;un site internet, budget d&apos;un SaaS, coûts
+                  cachés, SEO, maintenance : des guides pratiques, clairs et
+                  chiffrés, rédigés par l&apos;équipe qui code — pas par un
+                  rédacteur hors-sol.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
-                    href="/guides/combien-coute-un-site-internet"
+                    href={guidePath(featuredGuide)}
                     className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 text-sm font-semibold hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors"
                   >
                     Voir le guide budget
@@ -189,18 +187,19 @@ export default function GuidesPage() {
             {/* Guide principal (carte large) */}
             <div className="mb-16">
               <GuideCardFeatured
-                href="/guides/combien-coute-un-site-internet"
+                href={guidePath(featuredGuide)}
                 badge="Essentiel"
-                readTime="Temps de lecture : 12 min"
-                title="Combien coûte un site internet professionnel en 2026 ?"
-                description="Fourchettes réelles par type de site, postes de coût, pièges des devis trop bas, coûts cachés et méthode pour budgéter juste — avec les tarifs pratiqués par une agence qui code en Next.js / React."
+                readTime={`Temps de lecture : ${featuredGuide.readTimeMin} min`}
+                title={featuredGuide.heroTitle}
+                description={featuredGuide.cardDescription}
               />
             </div>
 
             {/*
-              Pour ajouter un guide : dupliquer un dossier sous src/app/guides/,
-              puis ajouter une GuideCard dans la section correspondante
-              (ou créer une nouvelle section sur ce modèle).
+              Pour ajouter un guide : ajouter son entrée dans src/lib/guides.ts
+              puis créer src/app/guides/<slug>/page.tsx sur le modèle du guide
+              budget. Les cartes ci-dessous, l'ItemList JSON-LD et le sitemap
+              se mettent à jour automatiquement.
             */}
             <div className="mb-10" id="creer-son-site">
               <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-1">
@@ -210,13 +209,16 @@ export default function GuidesPage() {
                 Budget, cahier des charges, choix techniques et bonnes pratiques.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                <GuideCard
-                  href="/guides/combien-coute-un-site-internet"
-                  icon={Calculator}
-                  title="Combien coûte un site internet ?"
-                  description="Fourchettes 2026 par type de site, postes de coût, coûts cachés, et comment comparer des devis qui n'ont rien à voir entre eux."
-                  badge="Nouveau"
-                />
+                {GUIDES.map((g) => (
+                  <GuideCard
+                    key={g.slug}
+                    href={guidePath(g)}
+                    icon={GUIDE_ICONS[g.slug] ?? Globe}
+                    title={g.cardTitle}
+                    description={g.cardDescription}
+                    badge={g.featured ? "Essentiel" : undefined}
+                  />
+                ))}
               </div>
             </div>
 

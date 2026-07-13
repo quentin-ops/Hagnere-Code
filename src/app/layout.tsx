@@ -46,11 +46,11 @@ export const metadata: Metadata = {
       },
     ],
   },
+  // Pas de title/description twitter au niveau layout : ils écraseraient
+  // ceux des pages (merge superficiel Next.js) — chaque page dérive sa carte
+  // de son propre openGraph ; seuls card et l'image par défaut sont globaux.
   twitter: {
     card: "summary_large_image",
-    title: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
-    description:
-      "Studio de développement SaaS et applications métier à Chambéry. Forfait fixe, code livré chez vous, réponse sous 24 h.",
     images: ["/og-image.png"],
   },
   robots: isProd

@@ -1001,6 +1001,7 @@ ${navHtml}
           <div class="faq-a">
             Entre <b>15 k€</b> (Launch, nouvelle boutique simple) et <b>120 k€</b> (Enterprise multi-pays B2B+B2C). Le prix est fixe, contractuel, zéro % sur vos ventes après livraison.
             On break-even vs Shopify Plus en général à partir de <b>500 k€ de GMV annuel</b> et vers 12–18 mois.
+            Pour comparer avec l'ensemble du marché, voir notre <a href="/guides/combien-coute-un-site-internet">guide des prix d'un site internet en 2026</a>.
           </div>
         </div>
 
