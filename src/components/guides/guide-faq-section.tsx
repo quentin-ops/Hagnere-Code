@@ -1,11 +1,4 @@
-"use client";
-
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { ChevronDown } from "lucide-react";
 import type { GuideFAQItem } from "./guide-layout";
 
 interface GuideFAQSectionProps {
@@ -13,6 +6,15 @@ interface GuideFAQSectionProps {
   items: GuideFAQItem[];
 }
 
+/**
+ * FAQ en <details>/<summary> natifs (server component, zéro JS).
+ *
+ * Volontairement PAS d'accordéon Radix ici : Radix démonte le contenu des
+ * items fermés → les réponses n'existent pas dans le HTML servi, Google ne
+ * les indexe pas et le FAQPage JSON-LD décrit un contenu invisible
+ * (violation des guidelines structured data). Avec <details>, tout le texte
+ * est dans le DOM, replié visuellement, et le premier item est ouvert.
+ */
 export function GuideFAQSection({ title, items }: GuideFAQSectionProps) {
   return (
     <section className="py-8 sm:py-12 md:py-20 bg-zinc-50 dark:bg-zinc-900 border-t border-zinc-200/60 dark:border-zinc-800/60">
@@ -26,22 +28,26 @@ export function GuideFAQSection({ title, items }: GuideFAQSectionProps) {
           </h2>
         </div>
 
-        <Accordion type="single" collapsible className="space-y-3">
+        <div className="space-y-3">
           {items.map((item, index) => (
-            <AccordionItem
+            <details
               key={index}
-              value={`faq-${index}`}
-              className="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 px-4 sm:px-6"
+              open={index === 0}
+              className="group rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 px-4 sm:px-6"
             >
-              <AccordionTrigger className="text-zinc-900 dark:text-zinc-100 font-semibold tracking-tight py-3 sm:py-4 text-sm sm:text-base hover:no-underline text-left">
+              <summary className="flex items-center justify-between gap-3 cursor-pointer list-none [&::-webkit-details-marker]:hidden text-zinc-900 dark:text-zinc-100 font-semibold tracking-tight py-3 sm:py-4 text-sm sm:text-base text-left">
                 {item.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm sm:text-base">
+                <ChevronDown
+                  className="size-4 shrink-0 text-zinc-400 transition-transform duration-200 group-open:rotate-180"
+                  aria-hidden="true"
+                />
+              </summary>
+              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm sm:text-base pb-4 sm:pb-5">
                 {item.answer}
-              </AccordionContent>
-            </AccordionItem>
+              </p>
+            </details>
           ))}
-        </Accordion>
+        </div>
       </div>
     </section>
   );

@@ -38,6 +38,10 @@ interface GuideLayoutProps {
   heroDescription: string;
   heroImage?: string;
   heroImageAlt?: string;
+  /** Byline E-E-A-T affichée sous la description du hero. */
+  author?: { name: string; role?: string; href?: string };
+  /** Date de mise à jour lisible, ex. « Mis à jour le 13 juillet 2026 ». */
+  updatedLabel?: string;
   keyPoints: GuideSidebarKeyPoint[];
   relatedLinks: GuideSidebarLink[];
   faqTitle: string;
@@ -70,6 +74,8 @@ export function GuideLayout({
   heroDescription,
   heroImage,
   heroImageAlt,
+  author,
+  updatedLabel,
   keyPoints,
   relatedLinks,
   faqTitle,
@@ -119,9 +125,33 @@ export function GuideLayout({
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3 sm:mb-4 max-w-3xl">
                 {heroTitle}
               </h1>
-              <p className="text-sm sm:text-base md:text-lg text-zinc-400 leading-relaxed max-w-2xl mb-6 sm:mb-8">
+              <p className="text-sm sm:text-base md:text-lg text-zinc-400 leading-relaxed max-w-2xl mb-4 sm:mb-5">
                 {heroDescription}
               </p>
+
+              {/* Byline auteur + date de mise à jour (E-E-A-T + fraîcheur) */}
+              {(author || updatedLabel) && (
+                <p className="text-xs sm:text-sm text-zinc-500 mb-6 sm:mb-8">
+                  {author && (
+                    <>
+                      Écrit par{" "}
+                      {author.href ? (
+                        <Link
+                          href={author.href}
+                          className="text-zinc-300 font-medium hover:text-white transition-colors"
+                        >
+                          {author.name}
+                        </Link>
+                      ) : (
+                        <span className="text-zinc-300 font-medium">{author.name}</span>
+                      )}
+                      {author.role && <>, {author.role}</>}
+                    </>
+                  )}
+                  {author && updatedLabel && <span aria-hidden="true"> · </span>}
+                  {updatedLabel}
+                </p>
+              )}
 
               {/* Key points — glassmorphism badges */}
               {keyPoints.length > 0 && (
