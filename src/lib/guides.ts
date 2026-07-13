@@ -50,6 +50,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 22,
     featured: true,
   },
+  {
+    slug: "combien-coute-une-application-mobile",
+    title: "Combien coûte une application mobile ? · Hagnéré Code",
+    cardTitle: "Combien coûte une application mobile en 2026 ?",
+    metaDescription:
+      "De 5 000 € à 150 000 € : les prix réels d'une application mobile en 2026, commissions des stores, maintenance, coût sur 3 ans et méthode pour budgéter.",
+    cardDescription:
+      "Prix par type d'app et par prestataire, commissions Apple/Google, maintenance obligatoire, coût total sur 3 ans et devis de MVP décortiqué ligne par ligne.",
+    heroTitle: "Combien coûte une application mobile en 2026 ?",
+    section: "Budget & prix",
+    datePublished: "2026-07-13",
+    dateModified: "2026-07-13",
+    readTimeMin: 19,
+  },
 ];
 
 export function guidePath(g: GuideEntry): string {

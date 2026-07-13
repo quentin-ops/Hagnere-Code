@@ -762,7 +762,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Sur devis</b>, après un cadrage qui définit le périmètre exact. Le coût varie fortement selon la complexité : un MVP focalisé sur un seul cas d'usage n'a pas le même prix qu'une marketplace 2-sided ou qu'une app entreprise avec intégrations ERP. <b>On ne chiffre jamais sur un brief de 3 lignes</b> : on commence par un Discovery Sprint, on cadre les écrans clés, et le forfait fixe arrive ensuite — ferme et sans avenant sur le scope validé.
+            <b>Sur devis</b>, après un cadrage qui définit le périmètre exact. Le coût varie fortement selon la complexité : un MVP focalisé sur un seul cas d'usage n'a pas le même prix qu'une marketplace 2-sided ou qu'une app entreprise avec intégrations ERP. Pour situer les fourchettes du marché, lisez notre <a href="/guides/combien-coute-une-application-mobile">guide des prix d'une application mobile</a>. <b>On ne chiffre jamais sur un brief de 3 lignes</b> : on commence par un Discovery Sprint, on cadre les écrans clés, et le forfait fixe arrive ensuite — ferme et sans avenant sur le scope validé.
           </div>
         </div>
 

@@ -209,6 +209,7 @@ export default function Page() {
           { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
         ]}
         relatedLinks={[
+          { href: "/guides/combien-coute-une-application-mobile", label: "Prix d'une application mobile" },
           { href: "/tarifs", label: "Nos tarifs détaillés" },
           { href: "/services/sites-vitrines", label: "Création de site vitrine" },
           { href: "/services/ecommerce", label: "E-commerce sur mesure" },
@@ -329,7 +330,10 @@ export default function Page() {
           SaaS</Link> démarre à 15 000 € pour un MVP production-ready livré en
           3 à 6 semaines — sous la fourchette du marché, parce que notre
           pipeline s&apos;appuie sur l&apos;IA pour accélérer le développement,
-          avec revue humaine systématique de chaque ligne.
+          avec revue humaine systématique de chaque ligne. Et si votre projet
+          vise les stores iOS et Android, consultez notre guide dédié :{" "}
+          <Link href="/guides/combien-coute-une-application-mobile">combien
+          coûte une application mobile</Link>.
         </p>
 
         <h3>L&apos;outil interne : 8 000 € à 80 000 €</h3>
