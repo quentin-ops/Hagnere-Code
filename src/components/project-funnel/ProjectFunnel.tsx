@@ -35,6 +35,7 @@ import "./project-funnel.css";
 import { TurnstileWidget, TURNSTILE_ENABLED } from "./TurnstileWidget";
 import { compileBrief } from "./brief-format";
 import { trackFunnelEvent } from "@/lib/funnel-analytics";
+import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
 
 type StepId = "projet" | "contexte" | "perimetre" | "contraintes" | "contact" | "recap";
 type Status =
@@ -1928,6 +1929,7 @@ export function ProjectFunnel() {
           </div>
         </div>
         <nav className="pf-topnav" aria-label="Navigation secondaire">
+          <ThemeToggle />
           <Link href="/" className="pf-site-return">
             <ArrowLeft size={16} strokeWidth={2} />
             <span>Retour au site vitrine</span>

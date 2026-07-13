@@ -93,7 +93,7 @@
 
 .sap-card {
   position: relative;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 28px 28px 22px;
@@ -136,7 +136,7 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent-soft), #fff);
+  background: linear-gradient(135deg, var(--accent-soft), var(--paper));
   border: 1px solid rgba(109, 40, 217, 0.15);
   display: grid;
   place-items: center;
@@ -220,7 +220,7 @@
 
 /* "Hot" variant — for the urgent scenario card (LP en 2 semaines) */
 .sap-foot-hot .sap-foot-k {
-  background: #fff;
+  background: var(--paper);
   color: #fff;
   background-color: var(--accent);
 }
@@ -240,11 +240,11 @@
 /* ==================== STATS ==================== */
 .sv-stats {
   padding: 120px 0;
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid #0A0A0A;
 }
 .sv-stats-bg {
   position: absolute;
@@ -316,7 +316,7 @@
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
-  background: #fff;
+  background: var(--paper);
 }
 .sv-cmp-head,
 .sv-cmp-row {
@@ -356,7 +356,7 @@
 }
 .sv-cmp-head .sv-cmp-col-us {
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
 }
 .sv-cmp-head .sv-cmp-col-us::before { display: none; }
 .sv-cmp-kind {
@@ -376,7 +376,7 @@
   margin-top: 6px;
 }
 .sv-cmp-head .sv-cmp-col-us .sv-cmp-title {
-  color: #fff;
+  color: var(--paper);
 }
 .sv-cmp-price {
   margin-top: 8px;
@@ -385,7 +385,7 @@
   color: var(--ink-3);
 }
 .sv-cmp-head .sv-cmp-col-us .sv-cmp-price {
-  color: rgba(255,255,255,0.75);
+  color: rgba(var(--paper-rgb),0.75);
 }
 .sv-cmp-row {
   border-top: 1px solid var(--line-2);
@@ -439,7 +439,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 26px;
@@ -521,7 +521,7 @@
   gap: 16px;
 }
 .sv-testi-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 28px;
@@ -604,7 +604,7 @@
   align-items: start;
 }
 .sv-team-founder {
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
   border-radius: 18px;
   overflow: hidden;
@@ -733,7 +733,7 @@
   gap: 14px;
 }
 .sv-team-dev {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 18px;
@@ -746,7 +746,7 @@
   height: 36px;
   border-radius: 8px;
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
   display: grid;
   place-items: center;
   font-family: var(--font-geist-mono);
@@ -787,7 +787,7 @@
   gap: 8px;
   font-size: 13px;
   color: var(--mute);
-  background: #fff;
+  background: var(--paper);
   padding: 10px 16px;
   border-radius: 999px;
   border: 1px solid var(--line);
@@ -830,7 +830,7 @@
   transition: background 0.2s, border-color 0.2s;
 }
 .sv-trust-card:hover {
-  background: #fff;
+  background: var(--paper);
   border-color: #d4d4d4;
 }
 .sv-trust-ic {
@@ -903,9 +903,9 @@
   border-radius: 16px;
   padding: 32px;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--paper);
 }
-.sv-check-in { background: #fff; }
+.sv-check-in { background: var(--paper); }
 .sv-check-out { background: var(--paper-2); }
 .sv-check-head { margin-bottom: 24px; }
 .sv-check-badge {
@@ -963,7 +963,7 @@
 .sv-check-note {
   margin-top: 24px;
   padding: 14px 16px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 10px;
   font-size: 13px;
@@ -978,7 +978,7 @@
 /* ==================== ARCHITECTURE SCHEMATIC ==================== */
 .sv-arch {
   padding: 120px 0;
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -1046,7 +1046,7 @@
   gap: 20px;
 }
 .sv-integ-group {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 26px;
@@ -1102,12 +1102,12 @@
 }
 .sv-integ-chips span:hover {
   border-color: var(--line);
-  background: #fff;
+  background: var(--paper);
 }
 .sv-integ-foot {
   margin-top: 32px;
   padding: 14px 20px;
-  background: #fff;
+  background: var(--paper);
   border: 1px dashed var(--line);
   border-radius: 10px;
   display: inline-flex;
@@ -1130,7 +1130,7 @@
   gap: 20px;
 }
 .sv-derisk-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 32px;
@@ -1196,9 +1196,9 @@
 /* ==================== CE QU'ON REFUSE ==================== */
 .sv-refuse {
   padding: 120px 0;
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid #0A0A0A;
 }
 .sv-refuse-grid {
   display: grid;
@@ -1316,7 +1316,7 @@
   gap: 16px;
   align-items: center;
   padding: 22px 22px 22px 20px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   font-family: var(--font-geist);
@@ -1350,7 +1350,7 @@
   outline-offset: 2px;
 }
 .sv-scen-tab.is-active {
-  background: linear-gradient(180deg, #fff 0%, #faf7ff 100%);
+  background: linear-gradient(180deg, var(--paper) 0%, #faf7ff 100%);
   border-color: var(--accent);
   box-shadow:
     0 24px 44px -24px rgba(76, 29, 149, 0.32),
@@ -1433,7 +1433,7 @@
 
 /* --- Panel --- */
 .sv-scen-panel {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 40px;
@@ -1517,7 +1517,7 @@
 }
 .sv-scen-item:hover {
   border-color: rgba(109, 40, 217, 0.25);
-  background: #fff;
+  background: var(--paper);
   transform: translateX(2px);
 }
 .sv-scen-item-ic {
@@ -1535,7 +1535,7 @@
 
 /* Aside (right) — invoice style */
 .sv-scen-aside {
-  background: linear-gradient(180deg, var(--paper-2), #fff);
+  background: linear-gradient(180deg, var(--paper-2), var(--paper));
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 24px;
@@ -1807,7 +1807,7 @@
 
 .sv-perf {
   padding: 130px 0;
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
   border-bottom: 1px solid var(--line);
   position: relative;
@@ -2008,3 +2008,29 @@
   .sv-perf-how { padding: 28px 22px; border-radius: 16px; }
   .sv-perf-how-grid { grid-template-columns: 1fr; }
 }
+
+/* ==================== Dark mode overrides ==================== */
+html.dark .sv-cw-logo img{filter:grayscale(100%) invert(1) contrast(0.9)}
+html.dark .sv-cmp-col-us{background:rgba(139,92,246,0.07)}
+html.dark .sv-cmp-head .sv-cmp-col-us{background:var(--ink)}
+html.dark .sv-cmp-good{color:#4ADE80}
+html.dark .sv-cmp-bad{color:#F87171}
+html.dark .sv-vt-card:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .sv-vt-tag-live{background:rgba(74,222,128,0.13);color:#4ADE80}
+html.dark .sv-trust-card:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .sv-integ-group:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .sv-derisk-card:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .sv-check-badge-in{background:rgba(74,222,128,0.13);color:#4ADE80}
+html.dark .sv-check-badge-out{background:rgba(239,68,68,0.12);color:#F87171}
+html.dark .sv-check-ic{color:#4ADE80;background:rgba(74,222,128,0.13)}
+html.dark .sv-check-list-out .sv-check-ic{color:#F87171;background:rgba(239,68,68,0.12)}
+html.dark .sv-derisk-fear{background:rgba(239,68,68,0.10);border-color:rgba(239,68,68,0.30);color:#FCA5A5}
+html.dark .sv-derisk-fear svg{color:#F87171}
+html.dark .sv-derisk-proof span{background:rgba(74,222,128,0.13);color:#4ADE80}
+html.dark .sv-scen-tab.is-active{background:linear-gradient(180deg,var(--paper) 0%,rgba(139,92,246,0.10) 100%)}
+html.dark .sv-team-founder{box-shadow:0 0 0 1px rgba(255,255,255,0.10)}
+html.dark .sap-card:hover .sap-ic,
+html.dark .sv-scen-tab:hover .sv-scen-tab-ic,
+html.dark .sv-scen-tab.is-active .sv-scen-tab-ic,
+html.dark .sv-scen-item-ic{background:linear-gradient(135deg,#8B5CF6,#6D28D9)}
+html.dark .sv-scen-cta{background:linear-gradient(135deg,#8B5CF6 0%,#6D28D9 100%) !important}

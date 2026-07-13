@@ -690,42 +690,42 @@ ${navHtml}
     <div class="proc-grid reveal reveal-d-1">
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 01</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg></div>
         <h4>Audit &amp; cadrage</h4>
         <p>Workshop avec décideur + équipe ops. Analyse de l'existant (perfs, SEO, stack). Catalogage des intégrations cibles.</p>
         <div class="proc-dur">1 SEMAINE</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
         <h4>Design &amp; Figma</h4>
         <p>Moodboard, charte graphique, design system. Prototype cliquable validé par vos équipes avant une seule ligne de code.</p>
         <div class="proc-dur">1–2 SEMAINES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
         <h4>Sprint dev</h4>
         <p>Next.js + TypeScript + intégrations FR, par sprints d'1 semaine. Accès Git dès J+1. Démo live chaque vendredi.</p>
         <div class="proc-dur">4–8 SEMAINES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
         <h4>QA &amp; tests de charge</h4>
         <p>Tests E2E Playwright, simulation Black Friday (10× pic normal), audit sécurité paiement PCI-DSS, Core Web Vitals.</p>
         <div class="proc-dur">3–5 JOURS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M4 4h16v16H4zM4 12h16M12 4v16"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M4 4h16v16H4zM4 12h16M12 4v16"/></svg></div>
         <h4>Migration 301</h4>
         <p>Mapping URL → URL exhaustif, imports clients/commandes/produits, validation trafic SEO, bascule zero-downtime.</p>
         <div class="proc-dur">3–7 JOURS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 06</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
         <h4>Go-live + TMA</h4>
         <p>Formation équipe, Loom vidéo, guide PDF. Bascule en prod. Forfait TMA actif dès J+1. On reste votre équipe tech.</p>
         <div class="proc-dur">CONTINU</div>

@@ -9,6 +9,16 @@
   --mute: #737373; --line: #e5e5e5; --line-2: #efefef;
   --paper: #fff; --paper-2: #fafafa; --paper-3: #f5f5f5;
   --accent: #6d28d9; --accent-ink: #4c1d95; --accent-soft: #ede9fe;
+  --ink-rgb: 10,10,10; --paper-rgb: 255,255,255;
+}
+/* Dark tokens — miroir de homepage.css (cette page n'importe pas homepage.css). */
+html.dark {
+  --ink: #FAFAFA; --ink-2: #E7E7EA; --ink-3: #C2C2C9; --ink-4: #9B9BA4;
+  --mute: #8B8B94; --line: #27272C; --line-2: #1F1F24;
+  --paper: #0B0B0D; --paper-2: #121216; --paper-3: #1A1A1F;
+  --accent: #8B5CF6; --accent-ink: #C4B5FD; --accent-soft: #2A1458;
+  --ink-rgb: 250,250,250; --paper-rgb: 11,11,13;
+  color-scheme: dark;
 }
 
 .rl-modern * { box-sizing: border-box; }
@@ -66,7 +76,7 @@
 .rl-modern .btn-ghost {
   color: var(--ink-3);
   border-color: var(--line);
-  background: #fff;
+  background: var(--paper);
 }
 .rl-modern .btn-ghost:hover {
   border-color: var(--ink-4);
@@ -182,7 +192,7 @@
   padding: 6px 14px 6px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: #fff;
+  background: var(--paper);
   font-family: var(--font-geist-mono);
   font-size: 13px;
   color: var(--ink-3);
@@ -249,7 +259,7 @@
   position: relative;
   border-radius: 18px;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--paper);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -376,7 +386,7 @@
   align-items: center;
   gap: 16px;
   padding: 22px 24px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -471,7 +481,7 @@
   font-weight: 700;
   font-size: 16px;
   letter-spacing: -0.03em;
-  border: 2px solid #fff;
+  border: 2px solid var(--paper);
   box-shadow: 0 6px 14px -6px rgb(from var(--brand) r g b / 0.5);
 }
 
@@ -519,7 +529,7 @@
   flex-direction: column;
   border: 1px solid var(--line);
   border-radius: 24px;
-  background: #fff;
+  background: var(--paper);
   text-decoration: none;
   color: inherit;
   overflow: hidden;
@@ -617,7 +627,7 @@
   align-items: center;
   gap: 6px;
   padding: 4px 10px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(var(--paper-rgb), 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(0, 0, 0, 0.06);
@@ -648,7 +658,7 @@
   color: var(--ink);
   font-weight: 600;
   letter-spacing: 0.04em;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(var(--paper-rgb), 0.75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(0, 0, 0, 0.06);
@@ -778,7 +788,7 @@
   border-radius: 4px;
   color: var(--ink-3);
   letter-spacing: 0.02em;
-  background: #fff;
+  background: var(--paper);
   transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
 
@@ -1094,4 +1104,35 @@
   .rlm-case-status-dot,
   .rlm-cta-dot,
   .rlm-float-card { animation: none !important; }
+}
+
+/* ============================================================
+ * Dark mode overrides
+ * ============================================================ */
+/* Voile pastel de marque (--brand-soft est un pastel clair) : en sombre on
+   reconstruit la teinte depuis --brand en translucide. */
+html.dark .rlm-float-card::before {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgb(from var(--brand) r g b / 0.16), transparent 70%);
+}
+html.dark .rlm-case-cover {
+  background:
+    linear-gradient(135deg, rgb(from var(--brand) r g b / 0.16), rgba(255, 255, 255, 0.02));
+}
+html.dark .rlm-case-cover-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+/* Badges "EN PROD" : vert foncé illisible sur carte sombre → vert clair. */
+html.dark .rlm-float-status,
+html.dark .rlm-case-status { color: #4ADE80; }
+html.dark .rlm-case-status,
+html.dark .rlm-case-year { border-color: rgba(255, 255, 255, 0.12); }
+/* Texte couleur de marque sur surface sombre : on l'éclaircit pour le contraste
+   (marques sombres type #0F766E / #6D28D9). */
+html.dark .rlm-case-metric strong,
+html.dark .rlm-case-cta,
+html.dark .rlm-case:hover .rlm-case-stack span {
+  color: color-mix(in srgb, var(--brand) 60%, #fff);
 }

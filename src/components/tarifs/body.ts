@@ -466,7 +466,7 @@ ${navHtml}
       <div class="ptable-row">
         <div class="ptcol ptcol-svc">
           <a href="/services/sites-vitrines">
-            <div class="ptcol-svc-ic" style="background:#EDE9FE;color:#6D28D9">
+            <div class="ptcol-svc-ic" style="background:var(--accent-soft);color:var(--accent)">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg>
             </div>
             <div>

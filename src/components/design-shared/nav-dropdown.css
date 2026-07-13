@@ -10,7 +10,7 @@
   position: sticky;
   top: 0;
   z-index: 60;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(var(--paper-rgb), 0.7);
   backdrop-filter: saturate(140%) blur(14px);
   -webkit-backdrop-filter: saturate(140%) blur(14px);
   border-bottom: 1px solid rgba(15, 15, 15, 0.06);
@@ -38,8 +38,8 @@
   height: 32px;
   display: grid;
   place-items: center;
-  background: #0A0A0A;
-  color: #fff;
+  background: var(--ink);
+  color: var(--paper);
   border-radius: 8px;
   font-family: var(--font-geist-mono), ui-monospace, monospace;
   font-size: 11px;
@@ -66,7 +66,7 @@
   gap: 4px;
   padding: 4px;
   border: 1px solid rgba(15, 15, 15, 0.08);
-  background: #fff;
+  background: var(--paper);
   border-radius: 999px;
   box-shadow: 0 1px 2px rgba(15, 15, 15, 0.04);
   min-width: 0;
@@ -114,11 +114,11 @@
 .hc-nav-pill-trigger-label-mobile { display: none; }
 
 .hc-nav-pill-wrap[data-mega-open="true"] .hc-nav-pill-trigger {
-  background: #0a0a0a;
-  color: #fff;
+  background: var(--ink);
+  color: var(--paper);
 }
 .hc-nav-pill-wrap[data-mega-open="true"] .hc-nav-pill-trigger svg {
-  color: #fff;
+  color: var(--paper);
 }
 .hc-nav-pill-wrap[data-mega-open="true"] .hc-nav-pill-trigger > svg:last-child {
   transform: rotate(180deg);
@@ -163,8 +163,8 @@
 }
 /* Secondary CTA — white pill with calendar icon, opens Calendly */
 .hc-nav .hc-nav-cta-rdv {
-  background: #fff;
-  color: #0a0a0a;
+  background: var(--paper);
+  color: var(--ink);
   border-color: rgba(15, 15, 15, 0.12);
   box-shadow: 0 1px 2px rgba(15, 15, 15, 0.04);
 }
@@ -177,19 +177,19 @@
 }
 /* Primary CTA — dark pill, white text */
 .hc-nav .hc-nav-cta-primary {
-  background: #0a0a0a;
-  color: #fff;
+  background: var(--ink);
+  color: var(--paper);
 }
 .hc-nav .hc-nav-cta-primary > svg {
-  color: #fff;
+  color: var(--paper);
 }
 .hc-nav .hc-nav-cta-primary:hover {
   background: #1f1f1f;
 }
 /* Icon-only CTA — square pill (e.g. backoffice access) */
 .hc-nav .hc-nav-cta-icon {
-  background: #fff;
-  color: #0a0a0a;
+  background: var(--paper);
+  color: var(--ink);
   border-color: rgba(15, 15, 15, 0.12);
   box-shadow: 0 1px 2px rgba(15, 15, 15, 0.04);
   padding: 11px;
@@ -213,7 +213,7 @@
   transform: translateX(-50%) translateY(-8px);
   width: min(960px, calc(100vw - 64px));
   max-height: calc(100vh - 120px);
-  background: #fff;
+  background: var(--paper);
   border: 1px solid rgba(15, 15, 15, 0.08);
   border-radius: 20px;
   box-shadow:
@@ -428,7 +428,7 @@
   height: 40px;
   display: grid;
   place-items: center;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid rgba(15, 15, 15, 0.06);
   border-radius: 10px;
   color: var(--ink, #0a0a0a);
@@ -573,7 +573,7 @@
     padding: 0;
     border-radius: 12px;
     border: 1px solid rgba(15, 15, 15, 0.1);
-    background: #fff;
+    background: var(--paper);
     justify-content: center;
   }
   .hc-nav-pill-trigger-icon-desktop,
@@ -616,4 +616,62 @@
 
   /* Show the mobile-only extra links inside mega menu sidebar */
   .hc-mega-side-mobile { display: flex; }
+}
+
+/* Dark mode overrides */
+/* Les bordures/voiles rgba(15,15,15,…) restent littéraux en light (rendu
+   strictement identique) et sont surchargés ici : sur fond sombre, un voile
+   noir devient invisible → on passe en voile blanc translucide. */
+html.dark .hc-nav {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+html.dark .hc-nav-pill {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+html.dark .hc-nav-pill-trigger:hover,
+html.dark .hc-nav-pill-link:hover,
+html.dark .hc-nav-pill-phone:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+/* Ré-assertion : menu ouvert, le trigger garde son fond inversé même au hover. */
+html.dark .hc-nav-pill-wrap[data-mega-open="true"] .hc-nav-pill-trigger,
+html.dark .hc-nav-pill-wrap[data-mega-open="true"] .hc-nav-pill-trigger:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+html.dark .hc-nav-pill-sep {
+  background: rgba(255, 255, 255, 0.12);
+}
+html.dark .hc-nav .hc-nav-cta-rdv {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+html.dark .hc-nav .hc-nav-cta-rdv:hover {
+  background: var(--paper-3);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+/* Primary CTA inversé (fond var(--ink) → clair en dark) : hover assorti. */
+html.dark .hc-nav .hc-nav-cta-primary:hover {
+  background: var(--ink-2);
+}
+html.dark .hc-nav .hc-nav-cta-icon {
+  border-color: rgba(255, 255, 255, 0.14);
+}
+html.dark .hc-nav .hc-nav-cta-icon:hover {
+  background: var(--paper-3);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+/* Insertion du méga-menu sur page sombre : bordure claire pour le détacher. */
+html.dark .hc-mega {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+html.dark .hc-mega-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+html.dark .hc-mega-card-ic {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+@media (max-width: 720px) {
+  html.dark .hc-nav-pill-trigger {
+    border-color: rgba(255, 255, 255, 0.14);
+  }
 }

@@ -295,7 +295,7 @@ export const bodyHtml = `${navHtml}
               iOS &amp; Android
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="1.6" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><circle cx="12" cy="18" r="0.5" fill="#0A0A0A"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="stroke:var(--ink)" stroke-width="1.6" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><circle cx="12" cy="18" r="0.5" style="fill:var(--ink)"/></svg>
               Push · Offline · Caméra
             </span>
           </div>
@@ -317,7 +317,7 @@ export const bodyHtml = `${navHtml}
               Prism <span class="lb-chip-dim">LLM abstraction</span>
             </span>
             <span class="lb-chip">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="3" fill="#0A0A0A"/><path d="M8 10h8M8 14h5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="3" style="fill:var(--ink)"/><path d="M8 10h8M8 14h5" style="stroke:var(--paper)" stroke-width="1.5" stroke-linecap="round"/></svg>
               RAG <span class="lb-chip-dim">embeddings + citations</span>
             </span>
             <span class="lb-chip">

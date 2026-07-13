@@ -36,7 +36,7 @@
   align-items: center;
   gap: 12px;
   padding: 14px 16px;
-  background: linear-gradient(180deg, #fff 0%, #FAFAFA 100%);
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
   border: 1px solid var(--line);
   border-radius: 14px;
   transition: transform 0.22s cubic-bezier(.2,.7,.2,1),
@@ -320,7 +320,7 @@
   bottom: 40px;
   width: 248px;
   z-index: 4;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 16px;
@@ -536,7 +536,7 @@
   gap: 32px;
   align-items: start;
   padding: 36px 36px 32px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 18px;
   transition: transform 0.3s cubic-bezier(.2,.7,.2,1),
@@ -622,7 +622,7 @@
   background:
     radial-gradient(ellipse 60% 40% at 85% 15%, rgba(109,40,217,0.05), transparent 55%),
     radial-gradient(ellipse 40% 30% at 15% 90%, rgba(212,165,116,0.05), transparent 55%),
-    #fff;
+    var(--paper);
   border-bottom: 1px solid var(--line);
 }
 .cv-produce .section-head { margin-bottom: 64px; }
@@ -647,7 +647,7 @@
 
 .cv-prod-card {
   position: relative;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 32px 32px 0;
@@ -1594,7 +1594,7 @@
 .cv-process-promise {
   margin-top: 32px;
   padding: 16px 24px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   display: flex;
@@ -1650,7 +1650,7 @@
 }
 .cv-stack-card {
   grid-column: span 2;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 28px;
@@ -1727,7 +1727,7 @@
 }
 .cv-stack-chips span.cv-chip-star {
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
   font-weight: 500;
 }
 .cv-stack-chips span:hover {
@@ -1774,7 +1774,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 10px;
@@ -1799,7 +1799,7 @@
 .cv-scen-tab.is-active {
   background: var(--ink);
   border-color: var(--ink);
-  color: #fff;
+  color: var(--paper);
 }
 .cv-scen-tab-k {
   font-family: var(--font-geist-mono);
@@ -1819,10 +1819,10 @@
   font-size: 12px;
   color: var(--mute);
 }
-.cv-scen-tab.is-active .cv-scen-tab-d { color: rgba(255,255,255,0.65); }
+.cv-scen-tab.is-active .cv-scen-tab-d { color: rgba(var(--paper-rgb),0.65); }
 
 .cv-scen-panel {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 40px;
@@ -1983,7 +1983,7 @@
 .cv-check-col {
   border-radius: 18px;
   padding: 32px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
 }
 .cv-check-col-out {
@@ -2065,7 +2065,7 @@
 }
 .cv-price-card {
   position: relative;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 28px 24px;
@@ -2080,9 +2080,9 @@
   box-shadow: 0 20px 40px -24px rgba(109,40,217,0.25);
 }
 .cv-price-card-featured {
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
-  border-color: var(--ink);
+  border-color: #0A0A0A;
 }
 .cv-price-card-featured:hover { border-color: rgba(109,40,217,0.5); }
 .cv-price-badge {
@@ -2192,7 +2192,7 @@
   gap: 16px;
 }
 .cv-testi-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 28px;
@@ -2282,7 +2282,7 @@
   gap: 12px;
   transition: background 0.2s, border-color 0.2s;
 }
-.cv-trust-card:hover { background: #fff; border-color: #d4d4d4; }
+.cv-trust-card:hover { background: var(--paper); border-color: #d4d4d4; }
 .cv-trust-ic {
   width: 40px; height: 40px;
   border-radius: 10px;
@@ -2436,7 +2436,7 @@
 .cv-faq-list .faq-item.open .faq-q .ic {
   background: var(--ink);
   border-color: var(--ink);
-  color: #fff;
+  color: var(--paper);
   transform: rotate(45deg);
 }
 .cv-faq-list .faq-a {
@@ -2569,3 +2569,28 @@
   .cv-cw-grid { grid-template-columns: 1fr 1fr; }
   .cv-cw-sep { display: none; }
 }
+
+/* ================================================================
+   Dark mode overrides
+   ================================================================ */
+/* Pastels verts (checks / réponses / pastilles) */
+html.dark .cv-check-badge-in,
+html.dark .cv-check-ic,
+html.dark .cv-ai-row svg,
+html.dark .cv-pp-item svg,
+html.dark .cv-problem-answer svg { background: rgba(16, 185, 129, 0.14); color: #6EE7B7; }
+/* Pastels rouges (hors scope) */
+html.dark .cv-check-badge-out,
+html.dark .cv-check-col-out .cv-check-ic { background: rgba(239, 68, 68, 0.12); color: #FCA5A5; }
+/* Icônes stack (pastels 4 familles) -> voiles sombres */
+html.dark .cv-stack-ic-prod { background: rgba(245, 158, 11, 0.15); color: #FCD34D; }
+html.dark .cv-stack-ic-post { background: rgba(59, 130, 246, 0.15); color: #93C5FD; }
+html.dark .cv-stack-ic-motion { background: rgba(236, 72, 153, 0.15); color: #F9A8D4; }
+html.dark .cv-stack-ic-dist { background: rgba(34, 197, 94, 0.15); color: #86EFAC; }
+/* Bordures hover gris clair -> gris sombre */
+html.dark .cv-trust-card:hover { border-color: #3F3F46; }
+/* Carte pricing noire posée sur fond sombre : liseré */
+html.dark .cv-price-card-featured { border-color: rgba(255, 255, 255, 0.14); }
+/* Logos clients : inversés pour rester lisibles sur fond sombre */
+html.dark .cv-cw-logo img { filter: grayscale(100%) invert(1) contrast(0.9); }
+html.dark .cv-cw-logo:hover img { filter: grayscale(100%) invert(1); }

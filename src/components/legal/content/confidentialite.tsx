@@ -216,53 +216,53 @@ export const confidentialiteSections: LegalSection[] = [
               width: "100%",
               borderCollapse: "collapse",
               fontSize: 14,
-              border: "1px solid #e5e5e5",
+              border: "1px solid var(--line)",
             }}
           >
             <thead>
-              <tr style={{ background: "#fafafa" }}>
-                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Sous-traitant</th>
-                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Finalité</th>
-                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Localisation</th>
-                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Encadrement transferts</th>
+              <tr style={{ background: "var(--paper-2)" }}>
+                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Sous-traitant</th>
+                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Finalité</th>
+                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Localisation</th>
+                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Encadrement transferts</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Neon (Neon Inc.)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Hébergement de la base PostgreSQL applicative.</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Région UE (Frankfurt)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Aucun transfert hors UE par défaut</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Neon (Neon Inc.)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Hébergement de la base PostgreSQL applicative.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Région UE (Frankfurt)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Aucun transfert hors UE par défaut</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Cloudflare, Inc.</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Hébergement Workers + CDN + protection DDoS.</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Edge mondial (UE prioritaire)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>DPF + clauses contractuelles types (UE → US)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Cloudflare, Inc.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Hébergement Workers + CDN + protection DDoS.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Edge mondial (UE prioritaire)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>DPF + clauses contractuelles types (UE → US)</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Resend (Resend Inc.)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Envoi des emails transactionnels (confirmation, notification).</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>États-Unis</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>DPF + SCC. Conservation 30 j.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Resend (Resend Inc.)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Envoi des emails transactionnels (confirmation, notification).</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>États-Unis</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>DPF + SCC. Conservation 30 j.</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Groq, Inc.</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Transcription audio Whisper large-v3.</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>États-Unis</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>SCC. Audio non conservé, transcription en temps réel.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Groq, Inc.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Transcription audio Whisper large-v3.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>États-Unis</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>SCC. Audio non conservé, transcription en temps réel.</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Calendly, LLC</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Prise de rendez-vous (lien externe ouvert volontairement).</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>États-Unis</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>DPF + SCC. Politique propre Calendly.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Calendly, LLC</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Prise de rendez-vous (lien externe ouvert volontairement).</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>États-Unis</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>DPF + SCC. Politique propre Calendly.</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>API Recherche Entreprises (DINUM)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Vérification SIREN entreprises lors du formulaire.</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>France (service public)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Aucun transfert hors UE.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>API Recherche Entreprises (DINUM)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Vérification SIREN entreprises lors du formulaire.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>France (service public)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Aucun transfert hors UE.</td>
               </tr>
             </tbody>
           </table>
@@ -329,56 +329,56 @@ export const confidentialiteSections: LegalSection[] = [
               width: "100%",
               borderCollapse: "collapse",
               fontSize: 14,
-              border: "1px solid #e5e5e5",
+              border: "1px solid var(--line)",
             }}
           >
             <thead>
-              <tr style={{ background: "#fafafa" }}>
-                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Catégorie</th>
-                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Durée active</th>
-                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Archivage légal</th>
+              <tr style={{ background: "var(--paper-2)" }}>
+                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Catégorie</th>
+                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Durée active</th>
+                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Archivage légal</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Prospects et briefs sans suite</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>3 ans à compter du dernier contact</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>—</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Prospects et briefs sans suite</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>3 ans à compter du dernier contact</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>—</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Clients (relation contractuelle)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Durée de la relation + 3 ans</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>10 ans pour les pièces comptables</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Clients (relation contractuelle)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Durée de la relation + 3 ans</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>10 ans pour les pièces comptables</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Factures et pièces comptables</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>10 ans (Code de commerce art. L123-22)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>—</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Factures et pièces comptables</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>10 ans (Code de commerce art. L123-22)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>—</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Logs serveur et sécurité</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>12 mois maximum</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>—</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Logs serveur et sécurité</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>12 mois maximum</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>—</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Briefs de projet</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>3 ans (alignée sur prospects), suppressible sur demande</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>—</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Briefs de projet</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>3 ans (alignée sur prospects), suppressible sur demande</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>—</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Audio brut (dictée vocale)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Non conservé (transcription en temps réel)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>—</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Audio brut (dictée vocale)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Non conservé (transcription en temps réel)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>—</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Stockages côté navigateur (localStorage)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Persistant côté utilisateur, effaçable à tout moment</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>—</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Stockages côté navigateur (localStorage)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Persistant côté utilisateur, effaçable à tout moment</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>—</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Eventuel <a href="/legal/cookies">consentement cookies</a> (lorsque applicable)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>13 mois maximum (recommandation CNIL)</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>—</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Eventuel <a href="/legal/cookies">consentement cookies</a> (lorsque applicable)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>13 mois maximum (recommandation CNIL)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>—</td>
               </tr>
             </tbody>
           </table>

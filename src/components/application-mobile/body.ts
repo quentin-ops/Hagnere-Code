@@ -528,35 +528,35 @@ ${navHtml}
     <div class="proc-grid reveal reveal-d-1">
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 01</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
         <h4>Discovery Sprint</h4>
         <p>Atelier <b>payant et déductible</b> (déduit du devis si on continue) : on cadre le scope MVP, on défriche les 5-7 écrans clés, on sort un prototype Figma cliquable. Si on arrête là, vous repartez avec un livrable utilisable par n'importe quel autre studio.</p>
         <div class="proc-dur">2 JOURS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
         <h4>Design iOS + Android</h4>
         <p>Maquettes Figma haute fidélité, respect des Human Interface Guidelines (Apple) et Material 3 (Google). Prototype cliquable. <b>2 tours de révisions inclus</b>. Vous validez avant la moindre ligne de code.</p>
         <div class="proc-dur">2–3 SEMAINES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
         <h4>Développement React Native + Expo</h4>
         <p>Sprints de 2 semaines, démo TestFlight + Internal Testing à chaque fin de sprint. Vous installez l'app sur votre iPhone / Android dès la 4ᵉ semaine. <b>Tests E2E</b> (Maestro), monitoring Sentry actif dès le sprint 1.</p>
         <div class="proc-dur">6–14 SEMAINES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
         <h4>Recette &amp; tests sur vrais devices</h4>
         <p>Tests sur <b>iPhone SE (entrée de gamme), Android Pixel 5, tablette</b>. Audit performances (fluidité 60 fps cible), accessibilité, RGPD CNIL, batterie. Beta fermée 50–100 utilisateurs en TestFlight. <b>1 tour de corrections inclus</b>.</p>
         <div class="proc-dur">1–2 SEMAINES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
         <h4>Soumission stores + suivi 30 j</h4>
         <p>On gère App Store Connect + Google Play Console : fiche store, captures, ASO, soumission, <b>1 à 3 itérations de review Apple</b> (24-48 h chacune). 30 j de garantie post-publication. Formation 2 h.</p>
         <div class="proc-dur">5–10 JOURS · J+30</div>
@@ -630,7 +630,7 @@ ${navHtml}
             <div class="mark">RN<span class="dot">.</span></div>
           </div>
           <div class="orbit-node" style="top:2%;left:50%;transform:translateX(-50%)">
-            <span class="nd" style="background:#000"></span>iOS Swift
+            <span class="nd" style="background:var(--ink)"></span>iOS Swift
           </div>
           <div class="orbit-node" style="top:22%;right:-10px">
             <span class="nd" style="background:#3DDC84"></span>Android Kotlin
@@ -648,10 +648,10 @@ ${navHtml}
             <span class="nd" style="background:#FFCA28"></span>Firebase
           </div>
           <div class="orbit-node" style="top:50%;left:-14%;transform:translateY(-50%)">
-            <span class="nd" style="background:#0A0A0A"></span>API Next.js
+            <span class="nd" style="background:var(--ink)"></span>API Next.js
           </div>
           <div class="orbit-node" style="top:50%;right:-14%;transform:translateY(-50%)">
-            <span class="nd" style="background:#0A0A0A"></span>EAS Updates
+            <span class="nd" style="background:var(--ink)"></span>EAS Updates
           </div>
         </div>
       </div>

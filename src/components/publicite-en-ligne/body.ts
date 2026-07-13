@@ -424,35 +424,35 @@ ${navHtml}
     <div class="proc-grid reveal reveal-d-1">
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 01</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
         <h4>Audit &amp; stratégie</h4>
         <p>Audit technique + sémantique + concurrentiel. 500 à 1 500 mots-clés analysés. Restitution 2 h. Livrable&nbsp;: rapport 30-50 pages + roadmap 12 mois.</p>
         <div class="proc-dur">3 SEMAINES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
         <h4>Fondations techniques</h4>
         <p>Corrections critiques livrées en specs au dev interne (ou exécutées par nous). Setup tracking propre : Search Console, GA4, dashboard Looker Studio.</p>
         <div class="proc-dur">1–3 SEMAINES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
         <h4>Production éditoriale</h4>
         <p>Plan éditorial mensuel validé en avance. 8 à 20 contenus/mois rédigés et optimisés par nos soins. Process : brief → rédaction → SEO → validation → publication.</p>
         <div class="proc-dur">MENSUEL</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
         <h4>Netlinking &amp; autorité</h4>
         <p>3 à 10 backlinks/mois sur domaines pertinents. Mix : partenariats, RP, contenu linkable, placements thématiques. Jamais de PBN ni de liens achetés en masse.</p>
         <div class="proc-dur">MENSUEL</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
         <h4>Reporting business</h4>
         <p>Rapport mensuel 15-20 pages. Réunion 1 h avec votre consultant. Dashboard Looker accessible 24/7. <b>On parle CA organique, pas positions moyennes.</b></p>
         <div class="proc-dur">MENSUEL</div>
@@ -524,7 +524,7 @@ ${navHtml}
             <div class="mark">HC<span class="dot">.</span></div>
           </div>
           <div class="orbit-node" style="top:2%;left:50%;transform:translateX(-50%)">
-            <span class="nd" style="background:#0a0a0a"></span>Next.js
+            <span class="nd" style="background:var(--ink)"></span>Next.js
           </div>
           <div class="orbit-node" style="top:22%;right:-10px">
             <span class="nd" style="background:#61DAFB"></span>React / Next
@@ -539,7 +539,7 @@ ${navHtml}
             <span class="nd" style="background:#61DAFB"></span>React Native
           </div>
           <div class="orbit-node" style="top:22%;left:-20px">
-            <span class="nd" style="background:#0A0A0A"></span>Claude · GPT
+            <span class="nd" style="background:var(--ink)"></span>Claude · GPT
           </div>
           <div class="orbit-node" style="top:50%;left:-14%;transform:translateY(-50%)">
             <span class="nd" style="background:#635BFF"></span>Stripe

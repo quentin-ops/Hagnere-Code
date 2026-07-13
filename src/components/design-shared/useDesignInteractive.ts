@@ -104,6 +104,23 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       });
     });
 
+    // Toggle thème clair/sombre (bouton injecté dans nav-html). Écrit la
+    // même clé localStorage que next-themes ("theme") et bascule la classe
+    // .dark sur <html> — les deux systèmes restent synchronisés.
+    root.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((btn) => {
+      const onToggle = () => {
+        const dark = document.documentElement.classList.toggle("dark");
+        document.documentElement.style.colorScheme = dark ? "dark" : "light";
+        try {
+          window.localStorage.setItem("theme", dark ? "dark" : "light");
+        } catch {
+          /* private mode */
+        }
+      };
+      btn.addEventListener("click", onToggle);
+      cleanups.push(() => btn.removeEventListener("click", onToggle));
+    });
+
     const nav = root.querySelector<HTMLElement>(".nav");
     const navCta = root.querySelector<HTMLElement>(".nav-cta");
     const navLinks = root.querySelector<HTMLElement>(".nav-links");

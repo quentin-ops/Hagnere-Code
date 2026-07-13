@@ -93,7 +93,7 @@
 
 .sap-card {
   position: relative;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 28px 28px 22px;
@@ -136,7 +136,7 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent-soft), #fff);
+  background: linear-gradient(135deg, var(--accent-soft), var(--paper));
   border: 1px solid rgba(109, 40, 217, 0.15);
   display: grid;
   place-items: center;
@@ -220,7 +220,7 @@
 
 /* "Hot" variant — for the urgent scenario card (LP en 2 semaines) */
 .sap-foot-hot .sap-foot-k {
-  background: #fff;
+  background: var(--paper);
   color: #fff;
   background-color: var(--accent);
 }
@@ -240,11 +240,11 @@
 /* ==================== STATS ==================== */
 .ads-stats {
   padding: 120px 0;
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid #0A0A0A;
 }
 .ads-stats-bg {
   position: absolute;
@@ -316,7 +316,7 @@
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
-  background: #fff;
+  background: var(--paper);
 }
 .ads-cmp-head,
 .ads-cmp-row {
@@ -356,7 +356,7 @@
 }
 .ads-cmp-head .ads-cmp-col-us {
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
 }
 .ads-cmp-head .ads-cmp-col-us::before { display: none; }
 .ads-cmp-kind {
@@ -376,7 +376,7 @@
   margin-top: 6px;
 }
 .ads-cmp-head .ads-cmp-col-us .ads-cmp-title {
-  color: #fff;
+  color: var(--paper);
 }
 .ads-cmp-price {
   margin-top: 8px;
@@ -385,7 +385,7 @@
   color: var(--ink-3);
 }
 .ads-cmp-head .ads-cmp-col-us .ads-cmp-price {
-  color: rgba(255,255,255,0.75);
+  color: rgba(var(--paper-rgb),0.75);
 }
 .ads-cmp-row {
   border-top: 1px solid var(--line-2);
@@ -439,7 +439,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 26px;
@@ -521,7 +521,7 @@
   gap: 16px;
 }
 .ads-testi-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 28px;
@@ -604,7 +604,7 @@
   align-items: start;
 }
 .ads-team-founder {
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
   border-radius: 18px;
   overflow: hidden;
@@ -733,7 +733,7 @@
   gap: 14px;
 }
 .ads-team-dev {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 18px;
@@ -746,7 +746,7 @@
   height: 36px;
   border-radius: 8px;
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
   display: grid;
   place-items: center;
   font-family: var(--font-geist-mono);
@@ -787,7 +787,7 @@
   gap: 8px;
   font-size: 13px;
   color: var(--mute);
-  background: #fff;
+  background: var(--paper);
   padding: 10px 16px;
   border-radius: 999px;
   border: 1px solid var(--line);
@@ -830,7 +830,7 @@
   transition: background 0.2s, border-color 0.2s;
 }
 .ads-trust-card:hover {
-  background: #fff;
+  background: var(--paper);
   border-color: #d4d4d4;
 }
 .ads-trust-ic {
@@ -903,9 +903,9 @@
   border-radius: 16px;
   padding: 32px;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--paper);
 }
-.ads-check-in { background: #fff; }
+.ads-check-in { background: var(--paper); }
 .ads-check-out { background: var(--paper-2); }
 .ads-check-head { margin-bottom: 24px; }
 .ads-check-badge {
@@ -963,7 +963,7 @@
 .ads-check-note {
   margin-top: 24px;
   padding: 14px 16px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 10px;
   font-size: 13px;
@@ -978,7 +978,7 @@
 /* ==================== ARCHITECTURE SCHEMATIC ==================== */
 .ads-arch {
   padding: 120px 0;
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -1046,7 +1046,7 @@
   gap: 20px;
 }
 .ads-integ-group {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 26px;
@@ -1102,12 +1102,12 @@
 }
 .ads-integ-chips span:hover {
   border-color: var(--line);
-  background: #fff;
+  background: var(--paper);
 }
 .ads-integ-foot {
   margin-top: 32px;
   padding: 14px 20px;
-  background: #fff;
+  background: var(--paper);
   border: 1px dashed var(--line);
   border-radius: 10px;
   display: inline-flex;
@@ -1130,7 +1130,7 @@
   gap: 20px;
 }
 .ads-derisk-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 32px;
@@ -1196,9 +1196,9 @@
 /* ==================== CE QU'ON REFUSE ==================== */
 .ads-refuse {
   padding: 120px 0;
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid #0A0A0A;
 }
 .ads-refuse-grid {
   display: grid;
@@ -1316,7 +1316,7 @@
   gap: 16px;
   align-items: center;
   padding: 22px 22px 22px 20px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   font-family: var(--font-geist);
@@ -1350,7 +1350,7 @@
   outline-offset: 2px;
 }
 .ads-scen-tab.is-active {
-  background: linear-gradient(180deg, #fff 0%, #faf7ff 100%);
+  background: linear-gradient(180deg, var(--paper) 0%, #faf7ff 100%);
   border-color: var(--accent);
   box-shadow:
     0 24px 44px -24px rgba(76, 29, 149, 0.32),
@@ -1433,7 +1433,7 @@
 
 /* --- Panel --- */
 .ads-scen-panel {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 40px;
@@ -1517,7 +1517,7 @@
 }
 .ads-scen-item:hover {
   border-color: rgba(109, 40, 217, 0.25);
-  background: #fff;
+  background: var(--paper);
   transform: translateX(2px);
 }
 .ads-scen-item-ic {
@@ -1535,7 +1535,7 @@
 
 /* Aside (right) — invoice style */
 .ads-scen-aside {
-  background: linear-gradient(180deg, var(--paper-2), #fff);
+  background: linear-gradient(180deg, var(--paper-2), var(--paper));
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 24px;
@@ -1807,7 +1807,7 @@
 
 .ads-perf {
   padding: 130px 0;
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
   border-bottom: 1px solid var(--line);
   position: relative;
@@ -2438,7 +2438,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background: linear-gradient(180deg, #fff, var(--paper-2));
+  background: linear-gradient(180deg, var(--paper), var(--paper-2));
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 22px;
@@ -2493,7 +2493,7 @@
 
 .ads-arsenal-tool {
   position: relative;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 18px 18px 16px;
@@ -2559,7 +2559,7 @@
   margin-top: 40px;
   padding: 20px 24px;
   background: var(--ink);
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(var(--paper-rgb),0.85);
   border-radius: 14px;
   display: flex;
   align-items: flex-start;
@@ -2582,7 +2582,7 @@
   flex-shrink: 0;
   margin-top: 2px;
 }
-.ads-arsenal-foot b { color: #fff; font-weight: 600; }
+.ads-arsenal-foot b { color: var(--paper); font-weight: 600; }
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -2630,7 +2630,7 @@
 /* --- Station --- */
 .ads-eco-station {
   position: relative;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 24px;
   padding: 36px 40px 32px;
@@ -2717,7 +2717,7 @@
   flex-direction: column;
   gap: 10px;
   padding: 18px 16px 16px;
-  background: linear-gradient(180deg, #fff 0%, var(--paper-2) 100%);
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
   border: 1px solid var(--line);
   border-radius: 14px;
   transition:
@@ -2811,7 +2811,7 @@
   margin-top: 40px;
   padding: 18px 22px;
   background: var(--ink);
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(var(--paper-rgb),0.85);
   border-radius: 14px;
   display: flex;
   align-items: flex-start;
@@ -2835,7 +2835,7 @@
   flex-shrink: 0;
   margin-top: 2px;
 }
-.ads-eco-foot b { color: #fff; font-weight: 600; }
+.ads-eco-foot b { color: var(--paper); font-weight: 600; }
 
 /* --- Responsive --- */
 @media (max-width: 1100px) {
@@ -2878,7 +2878,7 @@
 }
 .ads-wwd-card {
   position: relative;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 26px 24px 22px;
@@ -2933,7 +2933,7 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: color-mix(in srgb, var(--wwd-color) 12%, #fff 88%);
+  background: color-mix(in srgb, var(--wwd-color) 12%, var(--paper) 88%);
   color: var(--wwd-color);
   display: grid;
   place-items: center;
@@ -2945,12 +2945,12 @@
   align-items: center;
   padding: 4px 10px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--wwd-color) 10%, #fff 90%);
+  background: color-mix(in srgb, var(--wwd-color) 10%, var(--paper) 90%);
   color: var(--wwd-color);
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  border: 1px solid color-mix(in srgb, var(--wwd-color) 20%, #fff 80%);
+  border: 1px solid color-mix(in srgb, var(--wwd-color) 20%, var(--paper) 80%);
   flex-shrink: 0;
 }
 .ads-wwd-card h3 {
@@ -2987,8 +2987,8 @@
   font-weight: 500;
 }
 .ads-wwd-card-flag {
-  border-color: color-mix(in srgb, var(--wwd-color) 35%, #fff 65%);
-  background: linear-gradient(180deg, #fff 0%, color-mix(in srgb, var(--wwd-color) 5%, #fff 95%) 100%);
+  border-color: color-mix(in srgb, var(--wwd-color) 35%, var(--paper) 65%);
+  background: linear-gradient(180deg, var(--paper) 0%, color-mix(in srgb, var(--wwd-color) 5%, var(--paper) 95%) 100%);
 }
 .ads-wwd-card-flag::before { transform: scaleX(1); }
 .ads-wwd-flag {
@@ -3670,7 +3670,7 @@
    ================================================================ */
 .ads-eco-station-core {
   border: 1px solid rgba(109, 40, 217, 0.22);
-  background: linear-gradient(180deg, #fff 0%, #FBF7FF 100%);
+  background: linear-gradient(180deg, var(--paper) 0%, #FBF7FF 100%);
   box-shadow: 0 30px 60px -30px rgba(109, 40, 217, 0.25);
   position: relative;
 }
@@ -3680,16 +3680,16 @@
   top: 0; left: 0;
   width: 3px;
   height: 100%;
-  background: linear-gradient(180deg, #6D28D9 0%, #C4B5FD 100%);
+  background: linear-gradient(180deg, var(--accent) 0%, #C4B5FD 100%);
   border-radius: 3px 0 0 3px;
 }
 .ads-eco-station-core .ads-eco-num {
-  background: var(--accent, #6D28D9);
+  background: var(--accent, var(--accent));
   color: #fff;
-  border-color: var(--accent, #6D28D9);
+  border-color: var(--accent, var(--accent));
 }
 .ads-eco-station-core .ads-eco-kind span {
-  color: var(--accent, #6D28D9);
+  color: var(--accent, var(--accent));
   font-weight: 600;
   margin-left: 4px;
 }
@@ -3759,7 +3759,7 @@
   font-size: 11px;
   color: var(--ink-3);
   padding: 3px 9px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 999px;
 }
@@ -3773,7 +3773,7 @@
 .ads-proc-grid-1 { grid-template-columns: 1fr; }
 
 .ads-proc-step {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 22px 20px 20px;
@@ -3817,15 +3817,15 @@
   font-weight: 600;
   letter-spacing: 0.06em;
   padding: 3px 9px;
-  background: color-mix(in srgb, var(--phase-color, var(--accent)) 10%, #fff 90%);
-  border: 1px solid color-mix(in srgb, var(--phase-color, var(--accent)) 25%, #fff 75%);
+  background: color-mix(in srgb, var(--phase-color, var(--accent)) 10%, var(--paper) 90%);
+  border: 1px solid color-mix(in srgb, var(--phase-color, var(--accent)) 25%, var(--paper) 75%);
   border-radius: 6px;
 }
 .ads-proc-step-ic {
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: color-mix(in srgb, var(--phase-color, var(--accent)) 10%, #fff 90%);
+  background: color-mix(in srgb, var(--phase-color, var(--accent)) 10%, var(--paper) 90%);
   color: var(--phase-color, var(--accent));
   display: grid;
   place-items: center;
@@ -3973,3 +3973,34 @@
   box-shadow: 0 12px 28px -8px rgba(234, 88, 12, 0.7);
   transform: translateY(-1px);
 }
+
+/* ==================== Dark mode overrides ==================== */
+html.dark .ads-cw-logo img{filter:grayscale(100%) invert(1) contrast(0.9)}
+html.dark .ads-cmp-col-us{background:rgba(139,92,246,0.07)}
+html.dark .ads-cmp-head .ads-cmp-col-us{background:var(--ink)}
+html.dark .ads-cmp-good{color:#4ADE80}
+html.dark .ads-cmp-bad{color:#F87171}
+html.dark .ads-vt-card:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .ads-vt-tag-live{background:rgba(74,222,128,0.13);color:#4ADE80}
+html.dark .ads-trust-card:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .ads-integ-group:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .ads-derisk-card:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .ads-check-badge-in{background:rgba(74,222,128,0.13);color:#4ADE80}
+html.dark .ads-check-badge-out{background:rgba(239,68,68,0.12);color:#F87171}
+html.dark .ads-check-ic{color:#4ADE80;background:rgba(74,222,128,0.13)}
+html.dark .ads-check-list-out .ads-check-ic{color:#F87171;background:rgba(239,68,68,0.12)}
+html.dark .ads-derisk-fear{background:rgba(239,68,68,0.10);border-color:rgba(239,68,68,0.30);color:#FCA5A5}
+html.dark .ads-derisk-fear svg{color:#F87171}
+html.dark .ads-derisk-proof span{background:rgba(74,222,128,0.13);color:#4ADE80}
+html.dark .ads-scen-tab.is-active{background:linear-gradient(180deg,var(--paper) 0%,rgba(139,92,246,0.10) 100%)}
+html.dark .ads-team-founder{box-shadow:0 0 0 1px rgba(255,255,255,0.10)}
+html.dark .sap-card:hover .sap-ic,
+html.dark .ads-scen-tab:hover .ads-scen-tab-ic,
+html.dark .ads-scen-tab.is-active .ads-scen-tab-ic,
+html.dark .ads-scen-item-ic{background:linear-gradient(135deg,#8B5CF6,#6D28D9)}
+html.dark .ads-scen-cta{background:linear-gradient(135deg,#8B5CF6 0%,#6D28D9 100%) !important}
+html.dark .ads-scen-aside-hot{background:linear-gradient(160deg,rgba(249,115,22,0.12) 0%,rgba(234,88,12,0.08) 100%);border-color:rgba(249,115,22,0.35)}
+html.dark .ads-scen-aside-hot .ads-scen-aside-kind{color:#FB923C}
+html.dark .ads-scen-aside-hot .ads-scen-cta{background:linear-gradient(135deg,#F97316 0%,#EA580C 100%) !important}
+html.dark .ads-eco-station-core{background:linear-gradient(180deg,var(--paper) 0%,rgba(139,92,246,0.08) 100%)}
+html.dark .ads-wwd-card[data-family="strategy"]{--wwd-color:#FAFAFA}

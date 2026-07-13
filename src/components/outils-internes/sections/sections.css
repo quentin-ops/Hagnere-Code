@@ -78,9 +78,9 @@
   border-radius: 16px;
   padding: 32px;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--paper);
 }
-.oi-check-in { background: #fff; }
+.oi-check-in { background: var(--paper); }
 .oi-check-out { background: var(--paper-2); }
 .oi-check-head { margin-bottom: 24px; }
 .oi-check-badge {
@@ -138,7 +138,7 @@
 .oi-check-note {
   margin-top: 24px;
   padding: 14px 16px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 10px;
   font-size: 13px;
@@ -162,7 +162,7 @@
   gap: 20px;
 }
 .oi-integ-group {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 26px;
@@ -218,12 +218,12 @@
 }
 .oi-integ-chips span:hover {
   border-color: var(--line);
-  background: #fff;
+  background: var(--paper);
 }
 .oi-integ-foot {
   margin-top: 32px;
   padding: 14px 20px;
-  background: #fff;
+  background: var(--paper);
   border: 1px dashed var(--line);
   border-radius: 10px;
   display: inline-flex;
@@ -237,7 +237,7 @@
 /* ==================== SÉCURITÉ DSI (fond sombre) ==================== */
 .oi-security {
   padding: 120px 0;
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
   position: relative;
 }
@@ -319,7 +319,7 @@
 /* ==================== ARCHITECTURE ==================== */
 .oi-arch {
   padding: 120px 0;
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -387,7 +387,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 10px;
@@ -412,7 +412,7 @@
 .oi-scen-tab.is-active {
   background: var(--ink);
   border-color: var(--ink);
-  color: #fff;
+  color: var(--paper);
 }
 .oi-scen-tab-k {
   font-family: var(--font-geist-mono);
@@ -432,9 +432,9 @@
   font-size: 12px;
   color: var(--mute);
 }
-.oi-scen-tab.is-active .oi-scen-tab-d { color: rgba(255,255,255,0.65); }
+.oi-scen-tab.is-active .oi-scen-tab-d { color: rgba(var(--paper-rgb),0.65); }
 .oi-scen-panel {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 40px;
@@ -553,7 +553,7 @@
   gap: 20px;
 }
 .oi-derisk-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 32px;
@@ -619,9 +619,9 @@
 /* ==================== CE QU'ON REFUSE ==================== */
 .oi-refuse {
   padding: 120px 0;
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
-  border-bottom: 1px solid var(--ink);
+  border-bottom: 1px solid #0A0A0A;
 }
 .oi-refuse-grid {
   display: grid;
@@ -731,7 +731,7 @@
   transition: background 0.2s, border-color 0.2s;
 }
 .oi-trust-card:hover {
-  background: #fff;
+  background: var(--paper);
   border-color: #d4d4d4;
 }
 .oi-trust-ic {
@@ -831,7 +831,7 @@
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
-  background: #fff;
+  background: var(--paper);
   width: 100%;
   max-width: 100%;
 }
@@ -931,7 +931,7 @@
 .oi-compare-foot {
   margin-top: 28px;
   padding: 14px 18px;
-  background: #fff;
+  background: var(--paper);
   border: 1px dashed var(--line);
   border-radius: 10px;
   display: inline-flex;
@@ -991,7 +991,7 @@
   box-shadow: 0 0 0 4px #fff, 0 0 0 5px #16a34a;
 }
 .oi-tl-dot-future {
-  background: #fff;
+  background: var(--paper);
   box-shadow: 0 0 0 4px #fff, 0 0 0 5px var(--line);
 }
 .oi-tl-week {
@@ -1019,7 +1019,7 @@
 .oi-tl-body {
   margin-top: 8px;
   padding: 14px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 10px;
   display: flex;
@@ -1067,7 +1067,7 @@
 .oi-tl-foot {
   margin-top: 40px;
   padding: 20px 24px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 12px;
   display: grid;
@@ -1107,7 +1107,7 @@
   margin-top: 8px;
 }
 .oi-testim-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 28px;
@@ -1155,7 +1155,7 @@
   height: 36px;
   border-radius: 50%;
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
   display: grid;
   place-items: center;
   font-family: var(--font-geist-mono);
@@ -1202,7 +1202,7 @@
 .oi-testim-bar {
   margin-top: 56px;
   padding: 32px 40px;
-  background: var(--ink);
+  background: #0A0A0A;
   color: #fff;
   border-radius: 16px;
   display: grid;
@@ -1262,7 +1262,7 @@
   background: var(--paper-2);
   border-style: dashed;
 }
-.plan.plan-audit:hover { background: #fff; }
+.plan.plan-audit:hover { background: var(--paper); }
 .plan.plan-audit .plan-tag { color: var(--accent-ink); }
 .plan.plan-audit .plan-price .amount { font-size: 36px; }
 
@@ -1334,7 +1334,7 @@
     border: 1px solid var(--line);
     border-radius: 14px;
     overflow: hidden;
-    background: #fff;
+    background: var(--paper);
   }
   .oi-compare-cell {
     display: block;
@@ -1375,3 +1375,21 @@
   .oi-testim-bar { grid-template-columns: 1fr; }
   .price-grid.price-grid-4 { grid-template-columns: 1fr; }
 }
+
+/* ==================== Dark mode overrides ==================== */
+html.dark .oi-check-badge-in{background:rgba(74,222,128,0.13);color:#4ADE80}
+html.dark .oi-check-badge-out{background:rgba(239,68,68,0.12);color:#F87171}
+html.dark .oi-check-ic{color:#4ADE80;background:rgba(74,222,128,0.13)}
+html.dark .oi-check-list-out .oi-check-ic{color:#F87171;background:rgba(239,68,68,0.12)}
+html.dark .oi-integ-group:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .oi-derisk-card:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .oi-derisk-fear{background:rgba(239,68,68,0.10);border-color:rgba(239,68,68,0.30);color:#FCA5A5}
+html.dark .oi-derisk-fear svg{color:#F87171}
+html.dark .oi-derisk-proof span{background:rgba(74,222,128,0.13);color:#4ADE80}
+html.dark .oi-trust-card:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .oi-testim-card:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .oi-compare-head .oi-compare-cell-us{background:rgba(139,92,246,0.09)}
+html.dark .oi-tl-dot{box-shadow:0 0 0 4px var(--paper-2),0 0 0 5px var(--accent)}
+html.dark .oi-tl-dot-ai{box-shadow:0 0 0 4px var(--paper-2),0 0 0 5px var(--accent),0 0 20px rgba(109,40,217,0.6)}
+html.dark .oi-tl-dot-done{box-shadow:0 0 0 4px var(--paper-2),0 0 0 5px #16a34a}
+html.dark .oi-tl-dot-future{background:var(--paper-2);box-shadow:0 0 0 4px var(--paper-2),0 0 0 5px var(--line)}

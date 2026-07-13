@@ -272,7 +272,7 @@ ${navHtml}
         <div class="pil-schema" aria-hidden="true">
           <svg viewBox="0 0 220 60" preserveAspectRatio="xMidYMid meet">
             <!-- Devis (sheet of paper) -->
-            <rect x="40" y="4" width="100" height="52" rx="4" fill="#fff" class="sk-stroke" stroke-width="1.5"/>
+            <rect x="40" y="4" width="100" height="52" rx="4" fill="var(--paper)" class="sk-stroke" stroke-width="1.5"/>
             <text x="50" y="16" class="sk-mono-mute">DEVIS · #2026-118</text>
             <line x1="50" y1="22" x2="130" y2="22" class="sk-mute" stroke-width="1"/>
             <line x1="50" y1="30" x2="120" y2="30" class="sk-mute" stroke-width="0.8"/>

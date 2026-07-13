@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check, Mail, ShieldCheck, UserRound } from "lucide-react";
 import "@/components/project-funnel/project-funnel.css";
 import { ConversionTracker } from "./ConversionTracker";
+import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function Page() {
           </div>
         </div>
         <nav className="pf-topnav" aria-label="Navigation secondaire">
+          <ThemeToggle />
           <Link href="/" className="pf-site-return">
             <ArrowLeft size={16} strokeWidth={2} />
             <span>Retour au site vitrine</span>

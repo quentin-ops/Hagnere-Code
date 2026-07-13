@@ -90,7 +90,7 @@
 
 /* ---------- DIRECT CONTACT CARD (hero right) ---------- */
 .c-dir-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 28px;
@@ -157,7 +157,7 @@
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   display: grid;
   place-items: center;
@@ -170,7 +170,7 @@
   border-color: var(--accent);
 }
 .c-dir-row-static:hover .c-dir-ic {
-  background: #fff;
+  background: var(--paper);
   color: var(--ink-3);
   border-color: var(--line);
 }
@@ -258,7 +258,7 @@
   padding: 22px;
   border: 1px solid var(--line);
   border-radius: 16px;
-  background: #fff;
+  background: var(--paper);
   color: inherit;
   text-decoration: none;
   display: flex;
@@ -301,8 +301,8 @@
   border: 1px solid rgba(109, 40, 217, 0.22);
   border-radius: 16px;
   background:
-    linear-gradient(135deg, rgba(109, 40, 217, 0.08), rgba(255, 255, 255, 0) 42%),
-    #fff;
+    linear-gradient(135deg, rgba(109, 40, 217, 0.08), rgba(var(--paper-rgb), 0) 42%),
+    var(--paper);
   display: grid;
   grid-template-columns: minmax(0, 1fr) 380px;
   gap: 36px;
@@ -363,7 +363,7 @@
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: #fff;
+  background: var(--paper);
   color: inherit;
   text-decoration: none;
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -400,7 +400,7 @@
 /* ---------- FLOW (4 étapes) ---------- */
 .c-flow {
   padding: 120px 0;
-  background: #fff;
+  background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
 .c-flow-grid {
@@ -441,7 +441,7 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   display: grid;
   place-items: center;

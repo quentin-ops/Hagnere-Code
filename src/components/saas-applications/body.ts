@@ -381,35 +381,35 @@ ${navHtml}
     <div class="proc-grid reveal reveal-d-1">
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 01</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
         <h4>Cadrage</h4>
         <p>Workshop de 2 jours avec les décideurs. On définit le périmètre exact du MVP, les user stories, les écrans clés.</p>
         <div class="proc-dur">1 SEMAINE</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
         <h4>Design</h4>
         <p>Maquettes hautes-fidélité sur Figma, prototype cliquable, tests utilisateurs avant une seule ligne de code.</p>
         <div class="proc-dur">1 SEMAINE</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
         <h4>Développement</h4>
         <p>Sprints d'une semaine. Démo live à chaque fin. Accès repo Git dès J+1. Vous voyez le code grandir en direct.</p>
         <div class="proc-dur">3–6 SEMAINES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
         <h4>QA &amp; conformité</h4>
         <p>Tests automatisés, audit sécurité OWASP, revue RGPD, mise en conformité CGV, DPA, registre des traitements.</p>
         <div class="proc-dur">3–5 JOURS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
         <h4>Mise en ligne</h4>
         <p>Déploiement sur notre infra ou la vôtre. Formation de vos équipes. Transfert du code. Support mensuel optionnel.</p>
         <div class="proc-dur">CONTINU</div>
@@ -483,7 +483,7 @@ ${navHtml}
             <div class="mark">HC<span class="dot">.</span></div>
           </div>
           <div class="orbit-node" style="top:2%;left:50%;transform:translateX(-50%)">
-            <span class="nd" style="background:#0A0A0A"></span>Next.js
+            <span class="nd" style="background:var(--ink)"></span>Next.js
           </div>
           <div class="orbit-node" style="top:22%;right:-10px">
             <span class="nd" style="background:#61DAFB"></span>React / Next
@@ -498,7 +498,7 @@ ${navHtml}
             <span class="nd" style="background:#61DAFB"></span>React Native
           </div>
           <div class="orbit-node" style="top:22%;left:-20px">
-            <span class="nd" style="background:#0A0A0A"></span>Claude · GPT
+            <span class="nd" style="background:var(--ink)"></span>Claude · GPT
           </div>
           <div class="orbit-node" style="top:50%;left:-14%;transform:translateY(-50%)">
             <span class="nd" style="background:#635BFF"></span>Stripe

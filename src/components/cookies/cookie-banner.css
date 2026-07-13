@@ -307,3 +307,56 @@
     flex-direction: column-reverse;
   }
 }
+
+/* ====================== Dark mode overrides ===========================
+   La bannière est globale (rendue sur toutes les routes, y compris celles
+   sans tokens --ink/--paper) : valeurs sombres littérales, autonomes. */
+html.dark .hc-cb-toast {
+  background: #131316;
+  border-color: rgba(255, 255, 255, 0.10);
+  color: #FAFAFA;
+  box-shadow:
+    0 24px 60px -16px rgba(0, 0, 0, 0.55),
+    0 6px 16px -8px rgba(0, 0, 0, 0.35);
+}
+html.dark .hc-cb-toast-eyebrow { color: #A78BFA; }
+html.dark .hc-cb-toast-desc { color: #A1A1AA; }
+html.dark .hc-cb-toast-desc a { color: #A78BFA; }
+html.dark .hc-cb-btn-ghost {
+  color: #C2C2C9;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+html.dark .hc-cb-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: #FAFAFA;
+}
+html.dark .hc-cb-btn-primary {
+  background: #FAFAFA;
+  color: #0B0B0D;
+}
+html.dark .hc-cb-btn-primary:hover { background: #E7E7EA; }
+html.dark .hc-cb-backdrop { background: rgba(0, 0, 0, 0.6); }
+html.dark .hc-cb-modal {
+  background: #131316;
+  color: #FAFAFA;
+  box-shadow:
+    0 32px 80px -20px rgba(0, 0, 0, 0.6),
+    0 8px 20px -8px rgba(0, 0, 0, 0.4);
+}
+html.dark .hc-cb-modal-head { border-bottom-color: rgba(255, 255, 255, 0.08); }
+html.dark .hc-cb-close { color: #A1A1AA; }
+html.dark .hc-cb-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FAFAFA;
+}
+html.dark .hc-cb-section + .hc-cb-section { border-top-color: rgba(255, 255, 255, 0.08); }
+html.dark .hc-cb-section p { color: #A1A1AA; }
+html.dark .hc-cb-section p a { color: #A78BFA; }
+html.dark .hc-cb-pill-active {
+  background: rgba(139, 92, 246, 0.18);
+  color: #A78BFA;
+}
+html.dark .hc-cb-toggle-slider { background: rgba(255, 255, 255, 0.20); }
+html.dark .hc-cb-toggle input:checked + .hc-cb-toggle-slider { background: #8B5CF6; }
+html.dark .hc-cb-modal-actions { border-top-color: rgba(255, 255, 255, 0.08); }

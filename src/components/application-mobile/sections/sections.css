@@ -22,7 +22,7 @@
   align-items: center;
   gap: 8px;
   padding: 7px 14px 7px 7px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 13px;
@@ -121,7 +121,7 @@
 .mob-store-card {
   position: absolute;
   width: 220px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 14px 16px;
@@ -308,7 +308,7 @@
   align-items: center;
   gap: 7px;
   padding: 6px 12px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 12px;
@@ -329,7 +329,7 @@
   gap: 16px;
 }
 .mob-problem-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 26px 24px;
@@ -387,7 +387,7 @@
   gap: 20px;
 }
 .mob-store-block {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 32px;
@@ -519,7 +519,7 @@
   gap: 14px;
 }
 .mob-ownership-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 24px;
@@ -593,7 +593,7 @@
   gap: 18px;
 }
 .mob-derisk-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 32px 30px;
@@ -656,7 +656,7 @@
   border-bottom: 1px solid var(--line);
 }
 .mob-compar-table {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
@@ -700,7 +700,7 @@
   color: #fff;
 }
 .mob-compar-head .mob-compar-cell-best .mob-compar-cell-title { color: #fff; }
-.mob-compar-head .mob-compar-cell-best .mob-compar-cell-sub { color: rgba(255, 255, 255, 0.7); }
+.mob-compar-head .mob-compar-cell-best .mob-compar-cell-sub { color: rgba(var(--paper-rgb),0.7); }
 .mob-compar-cell-badge {
   display: inline-block;
   align-self: flex-start;
@@ -843,7 +843,7 @@
   gap: 14px;
 }
 .mob-trust-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 26px 24px;
@@ -900,7 +900,7 @@
   gap: 16px;
 }
 .mob-tech-faq-item {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 26px 28px;
@@ -962,3 +962,20 @@
     padding: 22px 20px;
   }
 }
+
+/* ═══════════ Dark mode overrides ═══════════ */
+html.dark .mob-hero-feat{box-shadow:0 6px 16px -10px rgba(76,29,149,0.18),0 1px 2px rgba(0,0,0,0.04)}
+html.dark .mob-hero-feat:hover{box-shadow:0 10px 22px -10px rgba(76,29,149,0.24),0 1px 2px rgba(0,0,0,0.04)}
+html.dark .mob-store-card{box-shadow:0 18px 36px -18px rgba(76,29,149,0.28),0 6px 18px -6px rgba(0,0,0,0.10)}
+html.dark .mob-trust-strip-chips-note{background:rgba(255,255,255,0.05)}
+html.dark .mob-problem-card:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .mob-ownership-card:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .mob-trust-card:hover{border-color:rgba(255,255,255,0.22)}
+html.dark .mob-stores-bonus{background:linear-gradient(135deg,var(--accent-soft),rgba(139,92,246,0.10))}
+html.dark .mob-compar-cell-mid{background:rgba(255,255,255,0.04)}
+html.dark .mob-compar-cell-best{background:linear-gradient(135deg,rgba(139,92,246,0.14),rgba(139,92,246,0.06))}
+html.dark .mob-compar-cell-yes{color:#4ADE80}
+html.dark .mob-compar-cell-no{color:#F87171}
+html.dark .mob-compar-cell-mid-yes{color:#FBBF24}
+html.dark .mob-ownership-foot{box-shadow:0 0 0 1px rgba(255,255,255,0.10)}
+html.dark .mob-compar-head .mob-compar-cell-best{background:linear-gradient(135deg,#7C3AED,#5B21B6)}

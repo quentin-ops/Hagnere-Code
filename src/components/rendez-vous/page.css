@@ -161,7 +161,7 @@
 }
 
 .rdv-calendly-frame {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line, #ededed);
   border-radius: 18px;
   padding: 12px;
@@ -169,6 +169,16 @@
     0 24px 48px -16px rgba(15, 15, 15, 0.08),
     0 4px 12px -4px rgba(15, 15, 15, 0.04);
   overflow: hidden;
+}
+
+/* --------- Dark mode overrides ------------------------------------------ */
+/* La card sombre (#0a0a0a) se fond dans la page sombre : liseré clair
+   translucide via box-shadow (pas de border → pas de décalage de layout). */
+html.dark .rdv-side-card {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.10),
+    0 24px 48px -16px rgba(15, 15, 15, 0.18),
+    0 4px 12px -4px rgba(15, 15, 15, 0.06);
 }
 
 /* --------- Mobile / tablet ---------------------------------------------- */

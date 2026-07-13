@@ -8,7 +8,19 @@
   --mute: #737373; --line: #e5e5e5; --line-2: #efefef;
   --paper: #fff; --paper-2: #fafafa; --paper-3: #f5f5f5;
   --accent: #6d28d9; --accent-ink: #4c1d95; --accent-soft: #ede9fe;
+  --ink-rgb: 10,10,10; --paper-rgb: 255,255,255;
   --brand: #6d28d9; --brand-soft: #ede9fe;
+}
+/* Dark tokens — miroir de homepage.css (cette page n'importe pas homepage.css).
+   --brand reste la couleur de marque injectée par page ; --brand-soft (pastel
+   clair) est neutralisé par des surcharges dédiées en fin de fichier. */
+html.dark {
+  --ink: #FAFAFA; --ink-2: #E7E7EA; --ink-3: #C2C2C9; --ink-4: #9B9BA4;
+  --mute: #8B8B94; --line: #27272C; --line-2: #1F1F24;
+  --paper: #0B0B0D; --paper-2: #121216; --paper-3: #1A1A1F;
+  --accent: #8B5CF6; --accent-ink: #C4B5FD; --accent-soft: #2A1458;
+  --ink-rgb: 250,250,250; --paper-rgb: 11,11,13;
+  color-scheme: dark;
 }
 
 .cs-root * { box-sizing: border-box; }
@@ -46,7 +58,7 @@
   z-index: 50;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(var(--paper-rgb), 0.75);
   border-bottom: 1px solid var(--line);
 }
 .cs-root .nav-inner {
@@ -59,7 +71,7 @@
 }
 .cs-root .brand-mark {
   width: 28px; height: 28px; border-radius: 6px; background: var(--ink);
-  display: grid; place-items: center; color: #fff;
+  display: grid; place-items: center; color: var(--paper);
   font-family: var(--font-geist-mono); font-weight: 600; font-size: 14px;
   position: relative;
 }
@@ -83,9 +95,9 @@
   cursor: pointer; border: 1px solid transparent;
   transition: all 0.15s; white-space: nowrap;
 }
-.cs-root .btn-primary { background: var(--ink); color: #fff; }
+.cs-root .btn-primary { background: var(--ink); color: var(--paper); }
 .cs-root .btn-primary:hover { background: var(--ink-2); transform: translateY(-1px); }
-.cs-root .btn-ghost { color: var(--ink-3); border-color: var(--line); background: #fff; }
+.cs-root .btn-ghost { color: var(--ink-3); border-color: var(--line); background: var(--paper); }
 .cs-root .btn-ghost:hover { border-color: var(--ink-4); color: var(--ink); }
 .cs-root .btn-lg { padding: 14px 22px; font-size: 15px; border-radius: 10px; }
 .cs-root .btn .arrow { transition: transform 0.2s; }
@@ -129,7 +141,7 @@
   inset: 0;
   background:
     radial-gradient(ellipse 60% 50% at 50% 30%, var(--brand-soft), transparent 75%),
-    linear-gradient(180deg, #fff, var(--paper-2));
+    linear-gradient(180deg, var(--paper), var(--paper-2));
   pointer-events: none;
 }
 .cs-hero-inner { position: relative; max-width: 920px; }
@@ -201,7 +213,7 @@
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
-  background: #fff;
+  background: var(--paper);
 }
 .cs-kpi {
   padding: 24px 28px;
@@ -249,7 +261,7 @@
 .cs-info-stack span,
 .cs-info-stack a {
   font-family: var(--font-geist-mono); font-size: 11px;
-  color: var(--ink-3); background: #fff;
+  color: var(--ink-3); background: var(--paper);
   border: 1px solid var(--line);
   padding: 4px 9px; border-radius: 6px;
   letter-spacing: 0.01em; font-weight: 500;
@@ -263,7 +275,7 @@
   border-bottom: 1px solid var(--line);
 }
 .cs-section-soft { background: var(--paper-2); }
-.cs-section-dark { background: var(--ink); color: #fff; border-bottom: 1px solid #262626; }
+.cs-section-dark { background: #0a0a0a; color: #fff; border-bottom: 1px solid #262626; }
 .cs-section-dark h2 { color: #fff; }
 
 .cs-section-head {
@@ -287,7 +299,7 @@
 .cs-cards:has(> :nth-child(4)) { grid-template-columns: repeat(2, 1fr); }
 
 .cs-card {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 28px;
@@ -327,7 +339,7 @@
 .cs-feat {
   display: flex; align-items: center; gap: 10px;
   padding: 16px 20px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 12px;
   font-size: 14px; color: var(--ink-2); font-weight: 500;
@@ -356,7 +368,7 @@
 }
 .cs-shot-dashboard, .cs-shot-form, .cs-shot-report {
   background: linear-gradient(180deg, #fafafa, #f0f0f0);
-  color: var(--ink);
+  color: #0a0a0a; /* mockup clair : reste identique dans les deux thèmes */
 }
 .cs-shot-editorial {
   background: linear-gradient(135deg, #0a0a0a, #171717);
@@ -480,7 +492,7 @@
   gap: 20px;
 }
 .cs-other {
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 24px;
@@ -565,3 +577,29 @@
   .cs-hero-url { display: flex; white-space: normal; }
   .cs-placeholder-note { align-items: flex-start; }
 }
+
+/* ======================================================================
+   Dark mode overrides
+   ====================================================================== */
+/* --brand-soft est un pastel clair injecté par page : en sombre, on
+   reconstruit un voile depuis --brand en translucide. */
+html.dark .cs-hero-bg {
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 30%, rgb(from var(--brand) r g b / 0.16), transparent 75%),
+    linear-gradient(180deg, var(--paper), var(--paper-2));
+}
+html.dark .cs-chip {
+  background: rgb(from var(--brand) r g b / 0.18);
+  color: color-mix(in srgb, var(--brand) 55%, #fff);
+}
+html.dark .cs-card-num-brand {
+  background: rgb(from var(--brand) r g b / 0.18);
+  color: color-mix(in srgb, var(--brand) 55%, #fff);
+}
+/* Texte couleur de marque sur surface sombre : éclairci pour le contraste. */
+html.dark .cs-kpi-value { color: color-mix(in srgb, var(--brand) 60%, #fff); }
+html.dark .cs-hero-url:hover,
+html.dark .cs-info-stack a:hover,
+html.dark .cs-other:hover .cs-other-foot { color: color-mix(in srgb, var(--brand) 60%, #fff); }
+/* Hover neutre #d4d4d4 illisible sur carte sombre. */
+html.dark .cs-other:hover { border-color: rgba(255, 255, 255, 0.18); }

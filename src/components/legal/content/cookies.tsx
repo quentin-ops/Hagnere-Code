@@ -71,63 +71,63 @@ export const cookiesSections: LegalSection[] = [
               width: "100%",
               borderCollapse: "collapse",
               fontSize: 14,
-              border: "1px solid #e5e5e5",
+              border: "1px solid var(--line)",
             }}
           >
             <thead>
-              <tr style={{ background: "#fafafa" }}>
-                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>
+              <tr style={{ background: "var(--paper-2)" }}>
+                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>
                   Nom
                 </th>
-                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>
+                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>
                   Type
                 </th>
-                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>
+                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>
                   Émetteur
                 </th>
-                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>
+                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>
                   Finalité
                 </th>
-                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>
+                <th style={{ textAlign: "left", padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>
                   Durée
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>theme</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>localStorage</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.ai</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Mémorise le thème (clair/sombre) choisi par l&apos;utilisateur.</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Persistant (jusqu&apos;à effacement)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>theme</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>localStorage</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>hagnere-code.ai</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Mémorise le thème (clair/sombre) choisi par l&apos;utilisateur.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Persistant (jusqu&apos;à effacement)</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>pf:draft:v2</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>localStorage</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.ai</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Sauvegarde le brouillon du formulaire de description de projet pour éviter sa perte en cas de rafraîchissement.</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Persistant (effacé après envoi)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>pf:draft:v2</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>localStorage</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>hagnere-code.ai</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Sauvegarde le brouillon du formulaire de description de projet pour éviter sa perte en cas de rafraîchissement.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Persistant (effacé après envoi)</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hc_consent_v1</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>localStorage</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.ai</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Mémorise votre choix de consentement exprimé via la bannière cookies.</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Persistant (jusqu&apos;à effacement)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>hc_consent_v1</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>localStorage</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>hagnere-code.ai</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Mémorise votre choix de consentement exprimé via la bannière cookies.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Persistant (jusqu&apos;à effacement)</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>pf:opened</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>sessionStorage</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.ai</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Évite de comptabiliser plusieurs fois l&apos;ouverture du formulaire projet dans la même session (mesure anonyme, sans identifiant).</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Session (effacé à la fermeture de l&apos;onglet)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>pf:opened</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>sessionStorage</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>hagnere-code.ai</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Évite de comptabiliser plusieurs fois l&apos;ouverture du formulaire projet dans la même session (mesure anonyme, sans identifiant).</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Session (effacé à la fermeture de l&apos;onglet)</td>
               </tr>
               <tr>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>pf:converted</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>sessionStorage</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>hagnere-code.ai</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Évite de comptabiliser deux fois l&apos;envoi d&apos;un même brief dans la même session (mesure anonyme, sans identifiant).</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid #e5e5e5" }}>Session (effacé à la fermeture de l&apos;onglet)</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>pf:converted</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>sessionStorage</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>hagnere-code.ai</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Évite de comptabiliser deux fois l&apos;envoi d&apos;un même brief dans la même session (mesure anonyme, sans identifiant).</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Session (effacé à la fermeture de l&apos;onglet)</td>
               </tr>
             </tbody>
           </table>

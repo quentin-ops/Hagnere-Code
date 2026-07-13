@@ -60,8 +60,8 @@ export function ContactPage() {
           aria-labelledby="contact-calendly-heading"
           style={{
             padding: "48px 16px 64px",
-            background: "#fafafa",
-            borderTop: "1px solid #ededed",
+            background: "var(--paper-2)",
+            borderTop: "1px solid var(--line-2)",
           }}
         >
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -72,7 +72,7 @@ export function ContactPage() {
                   fontSize: 12,
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
-                  color: "#7c3aed",
+                  color: "var(--accent)",
                   fontWeight: 700,
                   margin: 0,
                 }}
@@ -90,7 +90,7 @@ export function ContactPage() {
               >
                 Choisissez votre créneau de 30 minutes.
               </h2>
-              <p style={{ color: "#525252", maxWidth: 640, margin: "0 auto", fontSize: 15 }}>
+              <p style={{ color: "var(--ink-4)", maxWidth: 640, margin: "0 auto", fontSize: 15 }}>
                 Pas un commercial — quelqu&apos;un qui code. Visio ou téléphone, sans engagement.
               </p>
             </div>

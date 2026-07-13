@@ -29,7 +29,8 @@
 /* Left column: pitch */
 .sf-manifesto-pitch {
   padding: 30px;
-  background: linear-gradient(180deg, var(--ink) 0%, #171717 100%);
+  /* Bloc volontairement sombre : littéraux pinés, identique dans les deux thèmes. */
+  background: linear-gradient(180deg, #0A0A0A 0%, #171717 100%);
   color: #fff;
   border-radius: 20px;
   position: relative;
@@ -135,7 +136,7 @@
 }
 .sf-pillar {
   padding: 20px 20px 18px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 16px;
   display: flex;
@@ -224,3 +225,7 @@
   .sf-proof-strip { grid-template-columns: 1fr; }
   .sf-manifesto-guarantee { flex-direction: column; align-items: flex-start; font-size: 13px; }
 }
+
+/* Dark mode overrides */
+/* Bloc pitch (noir) : anneau pour le détacher du fond sombre. */
+html.dark .sf-manifesto-pitch { box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.10); }

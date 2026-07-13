@@ -256,13 +256,13 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
           <div className="wrap">
             <div
               style={{
-                background: "#fafafa",
-                border: "1px solid #e5e5e5",
+                background: "var(--paper-2)",
+                border: "1px solid var(--line)",
                 borderRadius: 12,
                 padding: "20px 24px",
                 fontSize: 13,
                 lineHeight: 1.55,
-                color: "#525252",
+                color: "var(--ink-4)",
               }}
             >
               <p style={{ margin: 0 }}>

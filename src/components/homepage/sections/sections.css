@@ -24,7 +24,7 @@
 .clients-wall {
   padding: 56px 0 72px;
   border-bottom: 1px solid var(--line);
-  background: #fff;
+  background: var(--paper);
 }
 .cw-kicker {
   font-family: var(--font-geist-mono);
@@ -84,7 +84,7 @@
 .compare {
   padding: 130px 0;
   border-bottom: 1px solid var(--line);
-  background: #fff;
+  background: var(--paper);
 }
 .cmp-table {
   margin-top: 48px;
@@ -92,7 +92,7 @@
   border-radius: 20px;
   overflow: clip;
   overflow-clip-margin: 20px;
-  background: #fff;
+  background: var(--paper);
   box-shadow: 0 30px 60px -30px rgba(15, 15, 15, 0.08);
 }
 .cmp-head {
@@ -213,7 +213,7 @@
   color: var(--accent-ink);
   text-decoration: none;
   border: 1px solid rgba(109, 40, 217, 0.3);
-  background: #fff;
+  background: var(--paper);
   padding: 8px 14px;
   border-radius: 8px;
   white-space: nowrap;
@@ -261,7 +261,7 @@
 }
 .cmp-row-verdict .cmp-col-label {
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
   font-family: var(--font-geist);
   font-size: 14px;
   font-weight: 600;
@@ -273,9 +273,9 @@
 }
 .cmp-row-verdict .cmp-col-us {
   background: var(--ink);
-  color: #fff;
+  color: var(--paper);
 }
-.cmp-row-verdict .cmp-col-us b { color: #fff; }
+.cmp-row-verdict .cmp-col-us b { color: var(--paper); }
 
 .cmp-disclaimer {
   margin-top: 28px;
@@ -338,7 +338,7 @@
   border: 1px solid rgba(109, 40, 217, 0.16);
   border-radius: 18px;
   background:
-    linear-gradient(135deg, rgba(255,255,255,0.94), rgba(255,255,255,0.72)),
+    linear-gradient(135deg, rgba(var(--paper-rgb),0.94), rgba(var(--paper-rgb),0.72)),
     linear-gradient(135deg, rgba(109,40,217,0.1), rgba(5,150,105,0.08));
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -353,8 +353,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(10,10,10,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10,10,10,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(var(--ink-rgb),0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--ink-rgb),0.04) 1px, transparent 1px);
   background-size: 32px 32px;
   mask-image: linear-gradient(90deg, #000, transparent 72%);
   pointer-events: none;
@@ -389,8 +389,8 @@
   gap: 5px;
   padding: 8px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(10,10,10,0.08);
-  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(var(--ink-rgb),0.08);
+  background: rgba(var(--paper-rgb),0.78);
   color: var(--ink-2);
   font-family: var(--font-geist-mono);
   font-size: 11px;
@@ -411,7 +411,7 @@
   --mx: 50%;
   --my: 50%;
 
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 22px;
@@ -557,7 +557,7 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 600;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   padding: 4px 9px;
   border-radius: 999px;
@@ -641,7 +641,7 @@
   border: 1px solid rgb(var(--vt-accent-rgb) / 0.12);
   border-radius: 14px;
   background:
-    linear-gradient(135deg, rgba(255,255,255,0.66), rgba(255,255,255,0.2)),
+    linear-gradient(135deg, rgba(var(--paper-rgb),0.66), rgba(var(--paper-rgb),0.2)),
     rgb(var(--vt-accent-rgb) / 0.04);
   overflow: hidden;
 }
@@ -659,7 +659,7 @@
 }
 .vt-mini-grid span {
   border-radius: 7px;
-  background: rgba(10,10,10,0.05);
+  background: rgba(var(--ink-rgb),0.05);
 }
 .vt-mini-grid span.on { background: rgb(var(--vt-accent-rgb) / 0.32); }
 .vt-mini-window {
@@ -678,12 +678,12 @@
 .vt-mini-window strong {
   grid-column: 1 / -1;
   border-radius: 10px;
-  background: linear-gradient(90deg, rgb(var(--vt-accent-rgb) / 0.32), rgba(255,255,255,0.2));
+  background: linear-gradient(90deg, rgb(var(--vt-accent-rgb) / 0.32), rgba(var(--paper-rgb),0.2));
 }
 .vt-mini-window span {
   grid-column: 1 / -1;
   border-radius: 999px;
-  background: rgba(10,10,10,0.06);
+  background: rgba(var(--ink-rgb),0.06);
 }
 .vt-mini-flow {
   display: flex;
@@ -695,7 +695,7 @@
 .vt-mini-flow span {
   padding: 8px 10px;
   border-radius: 999px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid rgb(var(--vt-accent-rgb) / 0.16);
   color: var(--vt-accent-ink);
   font-size: 11px;
@@ -717,7 +717,7 @@
   height: 18px;
   border-radius: 10px;
   border: 1px solid rgb(var(--vt-accent-rgb) / 0.18);
-  background: rgba(255,255,255,0.75);
+  background: rgba(var(--paper-rgb),0.75);
   box-shadow: 0 10px 24px -18px rgb(var(--vt-accent-rgb) / 0.6);
 }
 .vt-mini-stack span:nth-child(1) { transform: translateY(-18px); }
@@ -733,7 +733,7 @@
   flex: 1;
   min-height: 16px;
   border-radius: 8px 8px 3px 3px;
-  background: rgba(10,10,10,0.08);
+  background: rgba(var(--ink-rgb),0.08);
 }
 .vt-mini-chart span.on { background: rgb(var(--vt-accent-rgb) / 0.55); }
 .vt-mini-health {
@@ -775,7 +775,7 @@
   font-family: var(--font-geist-mono);
   font-size: 10.5px;
   color: var(--ink-3);
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line-2);
   padding: 3px 8px;
   border-radius: 6px;
@@ -849,7 +849,7 @@
 .trust {
   padding: 130px 0;
   border-bottom: 1px solid var(--line);
-  background: #fff;
+  background: var(--paper);
 }
 .tr-grid {
   display: grid;
@@ -864,7 +864,7 @@
   padding: 22px;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: #fff;
+  background: var(--paper);
   transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 .tr-item:hover {
@@ -1004,14 +1004,15 @@
 /* ---------- CALCULATOR TEASER ---------- */
 .ct-section {
   padding: 100px 0;
-  background: #fff;
+  background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
 .ct-card {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
   gap: 0;
-  background: linear-gradient(135deg, var(--ink) 0%, #171737 55%, #0a0a0a 100%);
+  /* Carte volontairement sombre : littéraux pinés, identique dans les deux thèmes. */
+  background: linear-gradient(135deg, #0A0A0A 0%, #171737 55%, #0a0a0a 100%);
   border-radius: 24px;
   overflow: hidden;
   position: relative;
@@ -1389,8 +1390,8 @@
   padding: 14px 22px 14px 18px;
   border: none;
   border-radius: 999px;
-  background: #fff;
-  color: var(--ink);
+  background: #fff; /* pastille blanche volontaire sur carte sombre */
+  color: #0A0A0A;
   font-size: 15px;
   font-weight: 500;
   font-family: inherit;
@@ -1517,3 +1518,49 @@
   .fcta-hero-grid { mask-image: none; -webkit-mask-image: none; opacity: 0.4; }
   .ct-bg-grid { mask-image: none; -webkit-mask-image: none; opacity: 0.4; }
 }
+
+/* ================================================================
+   Dark mode overrides
+   ================================================================ */
+/* Logos produits (<img> sombres) : pastille claire arrondie pour rester lisibles. */
+html.dark .cw-logo {
+  background: #F5F5F5;
+  border-radius: 14px;
+  padding: 8px 14px;
+}
+/* Logos de stack de la rangée partenaires : même traitement pastille. */
+html.dark img.tr-partner-logo {
+  background: #F5F5F5;
+  border-radius: 5px;
+  padding: 2px;
+}
+/* Bandeau pastel lavande : version translucide sombre. */
+html.dark .cmp-context {
+  background: linear-gradient(180deg, var(--accent-soft), rgba(109, 40, 217, 0.08));
+}
+/* Verts/rouges trop foncés pour un fond sombre. */
+html.dark .cmp-good { color: #4ADE80; }
+html.dark .cmp-bad { color: #F87171; }
+/* Carte calculateur (noire) : bord visible sur fond sombre. */
+html.dark .ct-card { border-color: rgba(255, 255, 255, 0.10); }
+/* Mockup calculateur : capture d'interface, reste en rendu clair —
+   on re-pinne les tokens clairs localement. */
+html.dark .ct-mock {
+  --ink: #0A0A0A; --ink-2: #171717; --ink-3: #262626; --ink-4: #404040;
+  --mute: #737373; --line: #E5E5E5; --line-2: #EFEFEF;
+  --paper: #FFFFFF; --paper-2: #FAFAFA; --paper-3: #F5F5F5;
+  --accent: #6D28D9; --accent-ink: #4C1D95; --accent-soft: #EDE9FE;
+  --ink-rgb: 10,10,10; --paper-rgb: 255,255,255;
+}
+/* Encres d'accent des cartes situations : les tons -ink (700/800) sont
+   illisibles sur fond sombre → équivalents clairs (300/400) par accent. */
+html.dark :where(.vt-card) { --vt-accent-ink: #C4B5FD; }
+html.dark .vt-card[data-accent="gold"]    { --vt-accent-ink: #FCD34D; }
+html.dark .vt-card[data-accent="blue"]    { --vt-accent-ink: #93C5FD; }
+html.dark .vt-card[data-accent="emerald"] { --vt-accent-ink: #6EE7B7; }
+html.dark .vt-card[data-accent="pink"]    { --vt-accent-ink: #F9A8D4; }
+html.dark .vt-card[data-accent="indigo"]  { --vt-accent-ink: #A5B4FC; }
+html.dark .vt-card[data-accent="violet"]  { --vt-accent-ink: #C4B5FD; }
+html.dark .vt-card[data-accent="teal"]    { --vt-accent-ink: #5EEAD4; }
+html.dark .vt-card[data-accent="rose"]    { --vt-accent-ink: #FDA4AF; }
+html.dark .vt-card[data-accent="orange"]  { --vt-accent-ink: #FDBA74; }

@@ -335,7 +335,7 @@
   align-items: center;
   gap: 6px;
   padding: 6px 11px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 999px;
   font-size: 11px;
@@ -344,7 +344,7 @@
   color: var(--ink);
   white-space: nowrap;
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 1px 0 rgba(var(--paper-rgb), 0.9) inset,
     0 8px 18px -8px rgba(76, 29, 149, 0.18),
     0 2px 6px -2px rgba(0, 0, 0, 0.06);
   animation: hv-float-orbit 6s ease-in-out infinite;
@@ -381,11 +381,11 @@
   align-items: center;
   gap: 8px;
   padding: 7px 12px 7px 7px;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 999px;
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 1px 0 rgba(var(--paper-rgb), 0.9) inset,
     0 12px 28px -12px rgba(76, 29, 149, 0.25),
     0 4px 12px -4px rgba(0, 0, 0, 0.08);
   animation: hv-float-orbit 6s ease-in-out infinite;
@@ -491,13 +491,13 @@
   .hv-svc {
     padding: 5px 10px;
     font-size: 10.5px;
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(var(--paper-rgb), 0.96);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
   .hv-orbit {
     padding: 6px 11px 6px 6px;
-    background: rgba(255, 255, 255, 0.96);
+    background: rgba(var(--paper-rgb), 0.96);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     box-shadow: 0 8px 22px -8px rgba(15, 15, 15, 0.18), 0 1px 2px rgba(15, 15, 15, 0.06);
@@ -533,3 +533,17 @@
     -webkit-backdrop-filter: blur(8px) saturate(120%);
   }
 }
+
+/* ─── Dark mode overrides ────────────────────────────────────────── */
+/* Carte produit centrale : mockup d'interface en glass clair — reste en
+   rendu clair quel que soit le thème, on re-pinne les tokens localement. */
+html.dark .hv-product {
+  --ink: #0A0A0A; --ink-2: #171717; --ink-3: #262626; --ink-4: #404040;
+  --mute: #737373; --line: #E5E5E5; --line-2: #EFEFEF;
+  --paper: #FFFFFF; --paper-2: #FAFAFA; --paper-3: #F5F5F5;
+  --accent: #6D28D9; --accent-ink: #4C1D95; --accent-soft: #EDE9FE;
+  --ink-rgb: 10,10,10; --paper-rgb: 255,255,255;
+}
+/* Icônes des pills orbitales : les logos <img> sombres (Next.js…) ont
+   besoin d'une pastille claire pour rester lisibles sur pill sombre. */
+html.dark .hv-orbit-ic { background: #F5F5F5; }

@@ -125,7 +125,7 @@ export function TurnstileWidget({
     const id = window.turnstile!.render(containerRef.current, {
       sitekey: SITE_KEY,
       appearance: "interaction-only",
-      theme: "light",
+      theme: "auto",
       size: "normal",
       callback: (token) => onTokenRef.current(token),
       "expired-callback": () => {

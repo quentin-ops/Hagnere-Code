@@ -47,7 +47,7 @@ svg {
   height: 40px;
   border-radius: 10px;
   border: 1px solid var(--line);
-  background: #fff;
+  background: var(--paper);
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -112,7 +112,7 @@ body.nav-menu-lock { overflow: hidden; }
   transform: translateX(-50%) translateY(-6px);
   opacity: 0;
   pointer-events: none;
-  background: #fff;
+  background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 12px;
   box-shadow: 0 18px 38px -20px rgba(0, 0, 0, 0.22), 0 4px 12px -6px rgba(0, 0, 0, 0.08);
@@ -173,7 +173,7 @@ body.nav-menu-lock { overflow: hidden; }
   .nav.nav-open .nav-burger {
     background: var(--ink);
     border-color: var(--ink);
-    color: #fff;
+    color: var(--paper);
   }
 
   .nav.nav-open .nav-links {
@@ -194,7 +194,7 @@ body.nav-menu-lock { overflow: hidden; }
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
-    background-color: #fff;
+    background-color: var(--paper);
     background-image: radial-gradient(circle at 12% 0%, rgba(109, 40, 217, 0.08), transparent 32%);
     border-top: 1px solid var(--line);
     padding: 14px 14px calc(24px + env(safe-area-inset-bottom, 0px));
@@ -281,7 +281,7 @@ body.nav-menu-lock { overflow: hidden; }
     min-height: 48px;
     padding: 0 14px;
     color: var(--ink);
-    background: rgba(255, 255, 255, 0.88);
+    background: rgba(var(--paper-rgb), 0.88);
     border: 1px solid var(--line);
     border-radius: 12px;
     font-size: 14px;
@@ -299,10 +299,10 @@ body.nav-menu-lock { overflow: hidden; }
     grid-column: 1 / -1;
     background: var(--ink);
     border-color: var(--ink);
-    color: #fff;
+    color: var(--paper);
   }
   .nav.nav-open .nav-links > a.active::after {
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(var(--paper-rgb), 0.72);
   }
   .nav.nav-open .nav-item:not(.nav-more) {
     grid-column: 1 / -1;
@@ -310,7 +310,7 @@ body.nav-menu-lock { overflow: hidden; }
     overflow: hidden;
     border: 1px solid rgba(17, 17, 17, 0.08);
     border-radius: 18px;
-    background: #fff;
+    background: var(--paper);
     box-shadow: 0 22px 46px -34px rgba(0, 0, 0, 0.38);
   }
   .nav.nav-open .nav-item:not(.nav-more)::before {
@@ -408,7 +408,7 @@ body.nav-menu-lock { overflow: hidden; }
     min-height: 40px;
     padding: 8px 6px;
     color: var(--ink-2);
-    background: #fff;
+    background: var(--paper);
     border: 1px solid rgba(17, 17, 17, 0.06);
     border-radius: 10px;
     font-size: 12px;
@@ -477,13 +477,13 @@ body.nav-menu-lock { overflow: hidden; }
     border-radius: 12px;
   }
   .nav.nav-open .dd-link:hover {
-    background: #fff;
+    background: var(--paper);
   }
   .nav.nav-open .dd-ic {
     width: 34px;
     height: 34px;
     border-radius: 10px;
-    background: #fff;
+    background: var(--paper);
     color: var(--accent-ink);
   }
   .nav.nav-open .dd-title {
@@ -1217,7 +1217,7 @@ body.nav-menu-lock { overflow: hidden; }
   .nav {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    background: rgba(255, 255, 255, 0.96) !important;
+    background: rgba(var(--paper-rgb), 0.96) !important;
   }
   /* Cartes / panneaux glass-morphism — opaques au lieu de translucides.
      Inclut les boîtes blur(20px) des pages services (at-/me-/ec-/sa-...). */
@@ -1297,5 +1297,21 @@ body.nav-menu-lock { overflow: hidden; }
      en mobile, le contenu passe au-dessus naturellement. */
   .founder-photo-wrap {
     position: static !important;
+  }
+}
+
+/* Dark mode overrides */
+/* Menu mobile : les bordures rgba(17,17,17,…) restent littérales en light
+   (rendu strictement identique) mais deviennent invisibles sur fond sombre
+   → liseré blanc translucide. */
+@media (max-width: 900px) {
+  html.dark .nav.nav-open .nav-item:not(.nav-more) {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  html.dark .nav.nav-open .nav-more-menu a {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  html.dark .nav.nav-open .dd-link {
+    border-color: rgba(255, 255, 255, 0.08);
   }
 }

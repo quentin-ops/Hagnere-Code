@@ -75,7 +75,7 @@ ${navHtml}
               <stop offset="1" stop-color="#EDE9FE"/>
             </linearGradient>
             <linearGradient id="gaccent" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#6D28D9"/>
+              <stop offset="0" stop-style="color:var(--accent)"/>
               <stop offset="1" stop-color="#A78BFA"/>
             </linearGradient>
           </defs>
@@ -411,35 +411,35 @@ ${navHtml}
     <div class="proc-grid reveal reveal-d-1">
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 01</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
         <h4>Cadrage &amp; stratégie</h4>
         <p>Atelier 2 h avec les décideurs. Arborescence, 50 mots-clés ciblés, charte éditoriale, tone of voice. Livrable&nbsp;: brief de 3 pages validé avant tout design.</p>
         <div class="proc-dur">3–5 JOURS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
         <h4>Design Figma</h4>
         <p>Maquettes desktop + mobile, prototype cliquable. <b>2 tours de révisions inclus</b>. Vous validez l'apparence avant la moindre ligne de code — pas de surprise visuelle.</p>
         <div class="proc-dur">1–2 SEMAINES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
         <h4>Intégration Next.js</h4>
         <p>Environnement de preview en continu, lien partagé. Point hebdo 30 min. Commits visibles, branches par feature. Le site prend forme sous vos yeux.</p>
         <div class="proc-dur">2–4 SEMAINES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
         <h4>Recette &amp; performance</h4>
         <p>Checklist 30 points, tests cross-browser, audit Core Web Vitals, intégration contenu final. <b>1 tour de corrections inclus</b>. Rapport Lighthouse avant mise en ligne.</p>
         <div class="proc-dur">3–5 JOURS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
-        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="#6D28D9"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+        <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
         <h4>Mise en ligne + suivi 30 j</h4>
         <p>Déploiement, redirections SEO, monitoring. Formation 2 h (visio + PDF). Support 30 j inclus&nbsp;: hotfix, ajustements, questions. On reste joignable.</p>
         <div class="proc-dur">J+30</div>
@@ -511,7 +511,7 @@ ${navHtml}
             <div class="mark">HC<span class="dot">.</span></div>
           </div>
           <div class="orbit-node" style="top:2%;left:50%;transform:translateX(-50%)">
-            <span class="nd" style="background:#0A0A0A"></span>Next.js
+            <span class="nd" style="background:var(--ink)"></span>Next.js
           </div>
           <div class="orbit-node" style="top:22%;right:-10px">
             <span class="nd" style="background:#61DAFB"></span>React / Next
@@ -526,7 +526,7 @@ ${navHtml}
             <span class="nd" style="background:#61DAFB"></span>React Native
           </div>
           <div class="orbit-node" style="top:22%;left:-20px">
-            <span class="nd" style="background:#0A0A0A"></span>Claude · GPT
+            <span class="nd" style="background:var(--ink)"></span>Claude · GPT
           </div>
           <div class="orbit-node" style="top:50%;left:-14%;transform:translateY(-50%)">
             <span class="nd" style="background:#635BFF"></span>Stripe
