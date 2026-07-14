@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, RefObject } from "react";
+import { applyTheme, toggleThemeWithReveal } from "@/lib/theme-transition";
 
 function makeSvg(paths: Array<{ d: string }>): SVGElement {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -109,13 +110,12 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
     // .dark sur <html> — les deux systèmes restent synchronisés.
     root.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((btn) => {
       const onToggle = () => {
-        const dark = document.documentElement.classList.toggle("dark");
-        document.documentElement.style.colorScheme = dark ? "dark" : "light";
-        try {
-          window.localStorage.setItem("theme", dark ? "dark" : "light");
-        } catch {
-          /* private mode */
-        }
+        const rect = btn.getBoundingClientRect();
+        const dark = !document.documentElement.classList.contains("dark");
+        toggleThemeWithReveal(
+          { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 },
+          () => applyTheme(dark),
+        );
       };
       btn.addEventListener("click", onToggle);
       cleanups.push(() => btn.removeEventListener("click", onToggle));

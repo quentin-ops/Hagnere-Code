@@ -702,12 +702,6 @@
     .dc-status-dot{animation:none}
   }
 
-  /* Toggle thème clair/sombre — neutre, hérite de la couleur du contexte. */
-  .hc-theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border-radius:999px;border:1px solid color-mix(in srgb, currentColor 22%, transparent);background:transparent;color:inherit;cursor:pointer;transition:border-color .15s, background .15s, transform .15s}
-  .hc-theme-toggle:hover{border-color:color-mix(in srgb, currentColor 45%, transparent);background:color-mix(in srgb, currentColor 7%, transparent);transform:translateY(-1px)}
-  .hc-theme-toggle svg{display:block}
-  html.dark .hc-theme-toggle [data-icon-moon]{display:none}
-  html.dark .hc-theme-toggle [data-icon-sun]{display:block !important}
 
   /* ========================================================================
      Dark mode overrides — cas non tokenisables :

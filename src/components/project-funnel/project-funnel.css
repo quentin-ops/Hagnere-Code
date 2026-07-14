@@ -7,7 +7,7 @@
   --pf-ink: #0a0a0a;
   --pf-soft: #525252;
   --pf-muted: #737373;
-  --pf-line: var(--pf-line);
+  --pf-line: #e7e5e4;
   --pf-paper: #ffffff;
   --pf-bg: #f4f4f5;
   --pf-bg-2: #ececef;
@@ -2128,12 +2128,6 @@ html.dark {
   color: var(--pf-ink);
 }
 
-  /* Toggle thème clair/sombre — neutre, hérite de la couleur du contexte. */
-  .hc-theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border-radius:999px;border:1px solid color-mix(in srgb, currentColor 22%, transparent);background:transparent;color:inherit;cursor:pointer;transition:border-color .15s, background .15s, transform .15s}
-  .hc-theme-toggle:hover{border-color:color-mix(in srgb, currentColor 45%, transparent);background:color-mix(in srgb, currentColor 7%, transparent);transform:translateY(-1px)}
-  .hc-theme-toggle svg{display:block}
-  html.dark .hc-theme-toggle [data-icon-moon]{display:none}
-  html.dark .hc-theme-toggle [data-icon-sun]{display:block !important}
 
 /* Dark mode overrides — funnel */
 html.dark .pf-choice.is-selected {
