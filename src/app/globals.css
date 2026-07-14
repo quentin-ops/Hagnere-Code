@@ -405,17 +405,19 @@ html {
 /* ==========================================================================
    Bouton thème clair/sombre — pastille ronde, morphing soleil/lune.
    Unique source de vérité (chargé par le root layout, dispo partout).
+   Icônes en position absolue : superposition garantie quel que soit le
+   contexte (nav vitrine, funnel, guides) et les styles environnants.
    ========================================================================== */
-.hc-theme-toggle {
-  --tgl-size: 38px;
+button.hc-theme-toggle {
+  --tgl-size: 40px;
   position: relative;
-  display: inline-grid;
-  place-items: center;
+  display: inline-block;
+  flex-shrink: 0;
   width: var(--tgl-size);
   height: var(--tgl-size);
   padding: 0;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
   background: color-mix(in srgb, currentColor 4%, transparent);
   color: inherit;
   cursor: pointer;
@@ -423,53 +425,60 @@ html {
   transition: border-color 0.25s, box-shadow 0.35s, transform 0.2s;
 }
 
-/* Halo doré en clair (on va vers le soleil couchant), violet en sombre. */
-.hc-theme-toggle:hover {
+/* Halo doré en clair (on va vers le soleil), violet en sombre. */
+button.hc-theme-toggle:hover {
   transform: translateY(-1px);
-  border-color: color-mix(in srgb, currentColor 40%, transparent);
+  border-color: color-mix(in srgb, currentColor 38%, transparent);
   box-shadow:
-    0 0 0 4px color-mix(in srgb, #f59e0b 12%, transparent),
+    0 0 0 4px color-mix(in srgb, #f59e0b 13%, transparent),
     0 8px 24px -12px rgba(245, 158, 11, 0.55);
 }
-html.dark .hc-theme-toggle:hover {
+html.dark button.hc-theme-toggle:hover {
   box-shadow:
     0 0 0 4px rgba(139, 92, 246, 0.16),
     0 8px 24px -12px rgba(139, 92, 246, 0.65);
 }
-.hc-theme-toggle:active {
+button.hc-theme-toggle:active {
   transform: translateY(0) scale(0.94);
 }
+button.hc-theme-toggle:focus-visible {
+  outline: 2px solid color-mix(in srgb, currentColor 55%, transparent);
+  outline-offset: 2px;
+}
 
-/* Les deux icônes vivent superposées dans la même cellule et se passent
-   le relais par rotation + zoom — pas de display:none, tout s'anime. */
-.hc-theme-toggle svg {
-  grid-area: 1 / 1;
-  display: block;
+/* Les deux icônes superposées au centre se passent le relais par
+   rotation + zoom — pas de display:none, tout s'anime. */
+button.hc-theme-toggle svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  translate: -50% -50%;
   transition:
     transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
     opacity 0.3s ease;
 }
 /* État clair : la lune est proposée (on invite vers le sombre). */
-.hc-theme-toggle [data-icon-moon] {
+button.hc-theme-toggle [data-icon-moon] {
   opacity: 1;
   transform: rotate(0deg) scale(1);
 }
-.hc-theme-toggle [data-icon-sun] {
+button.hc-theme-toggle [data-icon-sun] {
   opacity: 0;
   transform: rotate(90deg) scale(0.3);
 }
 /* État sombre : le soleil prend la place en tournant. */
-html.dark .hc-theme-toggle [data-icon-moon] {
+html.dark button.hc-theme-toggle [data-icon-moon] {
   opacity: 0;
   transform: rotate(-90deg) scale(0.3);
 }
-html.dark .hc-theme-toggle [data-icon-sun] {
+html.dark button.hc-theme-toggle [data-icon-sun] {
   opacity: 1;
   transform: rotate(0deg) scale(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hc-theme-toggle svg {
+  button.hc-theme-toggle svg {
     transition: none;
   }
 }
