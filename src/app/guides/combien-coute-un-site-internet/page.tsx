@@ -209,6 +209,7 @@ export default function Page() {
           { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
         ]}
         relatedLinks={[
+          { href: "/guides/prix-site-vitrine", label: "Prix d'un site vitrine" },
           { href: "/guides/combien-coute-une-application-mobile", label: "Prix d'une application mobile" },
           { href: "/tarifs", label: "Nos tarifs détaillés" },
           { href: "/services/sites-vitrines", label: "Création de site vitrine" },
@@ -304,7 +305,11 @@ export default function Page() {
           démarre à 6 900 € pour 3-5 pages orientées conversion, 14 900 € avec
           blog SEO (10-20 pages), 22 000 € et plus en multilingue — avec une
           particularité rare sur le marché : la performance{" "}
-          <strong>Lighthouse 95+ est garantie par contrat</strong>.
+          <strong>Lighthouse 95+ est garantie par contrat</strong>. Pour le
+          détail gamme par gamme (one-page, artisan, premium) et la grille de
+          ce qui est inclus à chaque prix, voyez notre{" "}
+          <Link href="/guides/prix-site-vitrine">guide dédié au prix
+          d&apos;un site vitrine</Link>.
         </p>
 
         <h3>L&apos;e-commerce : 2 000 € à 120 000 €</h3>

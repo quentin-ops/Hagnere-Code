@@ -174,7 +174,7 @@ ${navHtml}
         <h2>Un site vitrine, ce n'est pas<br>juste une brochure en ligne.</h2>
       </div>
       <div class="right">
-        On construit des sites qui vendent vraiment : <a href="/services/referencement-google">SEO technique</a> de série, CWV verts,
+        On construit des sites qui vendent vraiment (<a href="/guides/prix-site-vitrine">les prix du marché, gamme par gamme</a>) : <a href="/services/referencement-google">SEO technique</a> de série, CWV verts,
         CMS que vous éditez sans nous, formulaires branchés au CRM, tunnel de conversion pensé au pixel.
       </div>
     </div>

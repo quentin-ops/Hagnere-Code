@@ -64,6 +64,20 @@ export const GUIDES: GuideEntry[] = [
     dateModified: "2026-07-13",
     readTimeMin: 19,
   },
+  {
+    slug: "prix-site-vitrine",
+    title: "Prix d'un site vitrine en 2026 : tarifs réels · Hagnéré Code",
+    cardTitle: "Prix d'un site vitrine en 2026",
+    metaDescription:
+      "De 500 € à 22 000 € : les prix réels d'un site vitrine en 2026 par gamme, prestataire et socle. Ce qui est inclus à chaque prix, coût sur 3 ans, méthode.",
+    cardDescription:
+      "Tarifs réels par gamme et par prestataire, grille « inclus / en supplément », coût total sur 3 ans abonnement vs achat, et notre grille publique justifiée.",
+    heroTitle: "Prix d'un site vitrine en 2026 : le guide complet",
+    section: "Budget & prix",
+    datePublished: "2026-07-14",
+    dateModified: "2026-07-14",
+    readTimeMin: 19,
+  },
 ];
 
 export function guidePath(g: GuideEntry): string {
