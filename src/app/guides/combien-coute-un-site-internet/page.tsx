@@ -851,7 +851,9 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
             <strong>Exigez des devis à périmètre égal</strong> — contenus,
             SEO, tracking, garantie, propriété du code : chaque ligne doit
             être explicite dans chaque devis comparé (la grille de la
-            section 6 est faite pour ça).
+            section 6 est faite pour ça). Le meilleur outil pour ça reste un
+            bon <Link href="/guides/cahier-des-charges-site-internet">cahier
+            des charges</Link> envoyé aux prestataires.
           </li>
           <li>
             <strong>Raisonnez en coût total sur 3 ans</strong> — construction

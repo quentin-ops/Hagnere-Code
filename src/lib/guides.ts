@@ -78,6 +78,20 @@ export const GUIDES: GuideEntry[] = [
     dateModified: "2026-07-14",
     readTimeMin: 19,
   },
+  {
+    slug: "cahier-des-charges-site-internet",
+    title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
+    cardTitle: "Cahier des charges de site internet : modèle + exemple",
+    metaDescription:
+      "Le modèle complet de cahier des charges de site internet, commenté par une agence : 10 sections, exemple rempli, erreurs à éviter et exigences 2026.",
+    cardDescription:
+      "Le modèle en 10 sections commenté de l'intérieur par une agence qui en reçoit chaque semaine, avec exemple rempli, erreurs fatales et exigences 2026.",
+    heroTitle: "Cahier des charges de site internet : le modèle complet (+ exemple)",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-15",
+    dateModified: "2026-07-15",
+    readTimeMin: 20,
+  },
 ];
 
 export function guidePath(g: GuideEntry): string {

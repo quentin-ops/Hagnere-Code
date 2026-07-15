@@ -678,7 +678,9 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
           <li>
             <strong>Comparez les devis avec la grille « inclus / exclu »</strong> —
             rédaction, SEO, performance, propriété du code, garantie
-            (section 6).
+            (section 6) — et envoyez le même{" "}
+            <Link href="/guides/cahier-des-charges-site-internet">cahier des
+            charges</Link> à tous les prestataires.
           </li>
           <li>
             <strong>Raisonnez en coût total sur 3 ans</strong> — création +
