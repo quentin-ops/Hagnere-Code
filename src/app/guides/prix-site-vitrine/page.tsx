@@ -432,7 +432,10 @@ export default function Page() {
           les <strong>coûts d&apos;après</strong>. Un WordPress professionnel
           cumule licences de plugins et maintenance de sécurité
           hebdomadaire ; un site statique Next.js n&apos;a structurellement
-          rien à patcher. Sur 3 ans, cet écart pèse plus que la différence de
+          rien à patcher (notre comparatif complet{" "}
+          <Link href="/guides/nextjs-ou-wordpress">Next.js ou
+          WordPress</Link> chiffre cet écart, sources à l&apos;appui). Sur
+          3 ans, cet écart pèse plus que la différence de
           prix initial (section 10).
         </p>
 

@@ -93,6 +93,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 22,
   },
   {
+    slug: "nextjs-ou-wordpress",
+    title: "Next.js ou WordPress en 2026 : le comparatif · Hagnéré Code",
+    cardTitle: "Next.js ou WordPress : que choisir en 2026 ?",
+    metaDescription:
+      "Next.js ou WordPress pour votre site en 2026 ? Comparatif pour dirigeants : coûts sur 3 ans, sécurité et performance chiffrées, verdict clair par profil.",
+    cardDescription:
+      "Le comparatif écrit pour les dirigeants, pas pour les développeurs : coût total sur 3 ans, sécurité et performance sourcées, verdict tranché par profil.",
+    heroTitle: "Next.js ou WordPress : le comparatif honnête pour décider en 2026",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-16",
+    dateModified: "2026-07-16",
+    readTimeMin: 21,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",

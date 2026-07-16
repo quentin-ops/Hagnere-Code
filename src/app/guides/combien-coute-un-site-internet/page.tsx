@@ -662,7 +662,10 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           le SEO et la conversion), surface d&apos;attaque minimale (pas de
           jungle de plugins), hébergement quasi gratuit, et un code standard
           que des milliers de développeurs peuvent reprendre — l&apos;inverse
-          d&apos;un thème propriétaire.
+          d&apos;un thème propriétaire. Pour trancher entre les deux socles,
+          chiffres sourcés à l&apos;appui, lisez notre comparatif{" "}
+          <Link href="/guides/nextjs-ou-wordpress">Next.js ou
+          WordPress</Link>.
         </p>
         <p>
           Un mot sur l&apos;IA, grande absente des guides concurrents : oui,

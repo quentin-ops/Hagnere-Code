@@ -354,8 +354,10 @@ export default function Page() {
           renforcé (25 à 50 €/mois), extensions payantes — environ 400 €/an,
           sachant que WooCommerce Subscriptions coûte à lui seul 248 €/an —
           et maintenance de sécurité indispensable (600 à 1 800 €/an),
-          WordPress restant la cible n° 1 des attaques automatisées. Fort
-          pour mêler contenu et vente ; exigeant à maintenir.
+          WordPress restant la cible n° 1 des attaques automatisées (notre
+          comparatif <Link href="/guides/nextjs-ou-wordpress">Next.js ou
+          WordPress</Link> chiffre ce risque). Fort pour mêler contenu et
+          vente ; exigeant à maintenir.
         </p>
 
         <h3>PrestaShop : le champion français vieillissant</h3>
