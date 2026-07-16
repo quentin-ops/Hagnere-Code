@@ -625,9 +625,10 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
           prise de rendez-vous ou de demande de devis sur un vitrine coûte
           quelques centaines d&apos;euros ; un e-commerce complet démarre à
           2 000 € sur plateforme et 15 000 € en sur-mesure. Pour les
-          fourchettes e-commerce détaillées, voyez notre{" "}
-          <Link href="/guides/combien-coute-un-site-internet">guide général
-          des prix d&apos;un site internet</Link> ou notre offre{" "}
+          fourchettes détaillées — plateformes, coût sur 3 ans,
+          commissions — voyez notre guide du{" "}
+          <Link href="/guides/prix-site-e-commerce">prix d&apos;un site
+          e-commerce</Link> ou notre offre{" "}
           <Link href="/services/ecommerce">e-commerce sur mesure</Link>.
         </p>
 

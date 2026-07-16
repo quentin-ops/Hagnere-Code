@@ -622,8 +622,9 @@ export default function Page() {
           de commande, les moyens de paiement, la gestion des stocks et de la
           livraison, les KPI (panier moyen, taux de conversion) et les
           intégrations logistique/comptabilité. Les repères de prix sont dans
-          notre <Link href="/guides/combien-coute-un-site-internet">guide
-          général</Link> et l&apos;offre{" "}
+          notre guide du{" "}
+          <Link href="/guides/prix-site-e-commerce">prix d&apos;un site
+          e-commerce</Link> et l&apos;offre{" "}
           <Link href="/services/ecommerce">e-commerce sur mesure</Link>.
         </p>
         <h3>Pour une refonte</h3>

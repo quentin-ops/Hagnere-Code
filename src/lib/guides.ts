@@ -79,6 +79,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 19,
   },
   {
+    slug: "prix-site-e-commerce",
+    title: "Prix site e-commerce 2026 : 2 000 à 80 000 € · Hagnéré Code",
+    cardTitle: "Prix d'un site e-commerce en 2026 : le vrai budget",
+    metaDescription:
+      "Le prix réel d'un site e-commerce en 2026 : grilles par plateforme, coût sur 3 ans, commissions, logistique et un devis d'agence décortiqué ligne à ligne.",
+    cardDescription:
+      "Grilles Shopify, WooCommerce, PrestaShop et sur-mesure, coût total sur 3 ans, commissions et logistique enfin chiffrées, devis réel ligne à ligne.",
+    heroTitle: "Prix d'un site e-commerce : le vrai budget en 2026 (+ devis décortiqué)",
+    section: "Budget & prix",
+    datePublished: "2026-07-16",
+    dateModified: "2026-07-16",
+    readTimeMin: 22,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",

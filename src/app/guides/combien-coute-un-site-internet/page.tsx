@@ -323,7 +323,11 @@ export default function Page() {
           plus cher à construire — 15 000 € à 120 000 € chez nous selon le
           périmètre — mais avec 0 % de commission sur les ventes : le point de
           bascule économique se situe généralement autour de 500 000 € de
-          chiffre d&apos;affaires annuel en ligne.
+          chiffre d&apos;affaires annuel en ligne. Toutes les grilles
+          détaillées — plateformes, coût sur 3 ans, commissions,
+          logistique — sont dans notre guide du{" "}
+          <Link href="/guides/prix-site-e-commerce">prix d&apos;un site
+          e-commerce</Link>.
         </p>
 
         <h3>Le SaaS et l&apos;application web : 15 000 € à 120 000 €+</h3>
