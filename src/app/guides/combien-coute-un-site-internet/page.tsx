@@ -784,12 +784,16 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           </li>
           <li>
             <strong>Les subventions régionales</strong>, très hétérogènes et à
-            durée de vie courte : Atouts Numériques en Auvergne-Rhône-Alpes
-            (jusqu&apos;à 16 000 €, orienté conseil et accompagnement — la
-            région de notre studio), Pass Occitanie (50 %, plafond 10 000 €),
-            INAC Hauts-de-France (jusqu&apos;à 12 000 €), Kap Numérik à La
-            Réunion (80 %, plafond 3 200 €, création de site explicitement
-            éligible)…
+            durée de vie courte : PASS Commerce &amp; Artisanat en Bretagne
+            (30 %, plafond 7 500 €), Impulsion Transition en Normandie
+            (50 %, jusqu&apos;à 5 000 €), INAC Hauts-de-France (jusqu&apos;à
+            12 000 €, vitrine simple exclue), Kap Numérik à La Réunion
+            (80 %, plafond 3 200 €) — et en Auvergne-Rhône-Alpes, un
+            accompagnement pris en charge à 100 % (Atouts Numériques). Le
+            panorama complet, vérifié dispositif par dispositif, est dans
+            notre guide des{" "}
+            <Link href="/guides/aides-creation-site-internet">aides à la
+            création de site internet</Link>.
           </li>
           <li>
             <strong>Aucun crédit d&apos;impôt</strong> ne finance un simple

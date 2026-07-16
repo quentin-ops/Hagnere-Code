@@ -666,6 +666,10 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
           d&apos;euros, il suffit de quelques chantiers gagnés par an via
           Google pour amortir la différence — et le bâtiment est justement le
           secteur le moins équipé de France (53 % de sites seulement).
+          Selon votre région, une subvention peut couvrir 30 à 50 % du
+          montant HT : le panorama vérifié est dans notre guide des{" "}
+          <Link href="/guides/aides-creation-site-internet">aides à la
+          création de site internet</Link>.
         </p>
 
         <h2 id="budgeter">16. Méthode : choisir son budget en 4 étapes</h2>

@@ -107,6 +107,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 21,
   },
   {
+    slug: "aides-creation-site-internet",
+    title: "Aide création site internet : les vraies aides 2026 · Hagnéré Code",
+    cardTitle: "Aides à la création de site internet : le vrai panorama 2026",
+    metaDescription:
+      "Chèque France Num ? Mort depuis 2021. Voici les aides réellement actives en 2026 pour financer votre site : région par région, vérifiées à la source.",
+    cardDescription:
+      "Le seul panorama qui vérifie chaque dispositif à la source : aides mortes signalées, aides régionales actives, mode d'emploi de dépôt et arnaques à éviter.",
+    heroTitle: "Aides à la création de site internet : ce qui existe vraiment en 2026",
+    section: "Financer son projet",
+    datePublished: "2026-07-16",
+    dateModified: "2026-07-16",
+    readTimeMin: 21,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",

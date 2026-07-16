@@ -757,7 +757,10 @@ export default function Page() {
             <strong>Budgétez ce qui n&apos;est pas dans le devis</strong> —
             contenus produit, logistique, marketing, conformité 2026. Une
             réserve de 15 à 20 % transforme les découvertes en arbitrages,
-            pas en crises.
+            pas en crises. Et vérifiez les{" "}
+            <Link href="/guides/aides-creation-site-internet">aides de
+            votre région</Link> : plusieurs subventions ciblent
+            explicitement l&apos;e-commerce (30 à 50 % du HT).
           </li>
         </ol>
         <p>
