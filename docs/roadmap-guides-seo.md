@@ -1,5 +1,11 @@
 # Roadmap éditoriale — 30 guides SEO prioritaires
 
+> ⚠️ **AVANT TOUTE RÉDACTION** : lire en intégralité la
+> [charte qualité des guides](charte-qualite-guides.md). Aucun article ne
+> s'écrit sans passer par elle — elle définit le pipeline obligatoire,
+> l'étude des concurrents, les chartes pédagogique et SEO, et la batterie
+> de vérification.
+
 > Construite le 13 juillet 2026 à partir de 4 sweeps d'autocomplete Google
 > (~150 amorces, 73 requêtes qualifiées) + vérifications SERP page par page.
 > Volume = signal autocomplete (position, variantes, flag haute fréquence).
