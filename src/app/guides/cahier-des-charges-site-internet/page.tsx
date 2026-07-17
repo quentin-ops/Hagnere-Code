@@ -905,7 +905,11 @@ export default function Page() {
           votre outil de paie —, le CDC devient un document produit :
           parcours de chaque type d&apos;utilisateur, droits d&apos;accès,
           données à stocker, connexions avec d&apos;autres logiciels,
-          sécurité. C&apos;est un autre exercice — nos guides{" "}
+          sécurité. C&apos;est un autre exercice — notre{" "}
+          <Link href="/guides/cahier-des-charges-application-mobile">modèle
+          de cahier des charges d&apos;application mobile</Link> lui est
+          entièrement dédié (stores, hors-ligne, notifications), nos
+          guides{" "}
           <Link href="/guides/combien-coute-un-saas">combien coûte un
           SaaS</Link> et{" "}
           <Link href="/guides/combien-coute-une-application-mobile">prix

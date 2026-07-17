@@ -247,6 +247,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 25,
   },
   {
+    slug: "cahier-des-charges-application-mobile",
+    title: "Cahier des charges application mobile : modèle 2026 · Hagnéré Code",
+    cardTitle: "Cahier des charges d'application mobile : modèle + exemple",
+    metaDescription:
+      "Le modèle complet de cahier des charges d'application mobile : 10 sections commentées, exemple rempli, règles des stores et erreurs à éviter.",
+    cardDescription:
+      "Le modèle en 10 sections commenté par une agence mobile, l'exemple rempli, les règles Apple/Google chiffrées, la maintenance obligatoire et les erreurs fatales.",
+    heroTitle: "Cahier des charges d'application mobile : le modèle complet (+ exemple)",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-17",
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",

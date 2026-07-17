@@ -215,7 +215,7 @@ export default function Page() {
           { href: "/guides/combien-coute-une-application-mobile", label: "Combien coûte une application mobile ?" },
           { href: "/guides/combien-coute-un-saas", label: "Combien coûte un SaaS ?" },
           { href: "/guides/nextjs-ou-wordpress", label: "Next.js ou WordPress ?" },
-          { href: "/guides/cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
+          { href: "/guides/cahier-des-charges-application-mobile", label: "Cahier des charges d'app mobile" },
           { href: "/services/application-mobile", label: "Application mobile" },
           { href: "/methode", label: "Notre méthode Sprint Fixe™" },
         ]}
@@ -758,7 +758,10 @@ export default function Page() {
             total seul. Notre{" "}
             <Link href="/guides/combien-coute-une-application-mobile">guide
             du prix d&apos;une application mobile</Link> donne toutes
-            les fourchettes de référence.
+            les fourchettes de référence, et notre{" "}
+            <Link href="/guides/cahier-des-charges-application-mobile">modèle
+            de cahier des charges d&apos;application mobile</Link> vous
+            garantit des devis réellement comparables.
           </li>
         </ol>
         <p>

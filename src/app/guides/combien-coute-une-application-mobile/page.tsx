@@ -1057,8 +1057,9 @@ APP MÉTIER À 40 000 € — coût réel sur 3 ans
             <strong>Exigez des devis à périmètre égal</strong> — backend,
             QA, soumission stores, garantie, propriété du code et des comptes :
             chaque ligne explicite (la grille de la section 6 est faite pour
-            ça, et notre <Link href="/guides/cahier-des-charges-site-internet">modèle
-            de cahier des charges</Link> structure le tout).
+            ça, et notre <Link href="/guides/cahier-des-charges-application-mobile">modèle
+            de cahier des charges d&apos;application mobile</Link> structure
+            le tout, exemple rempli compris).
           </li>
           <li>
             <strong>Raisonnez en coût total sur 3 ans</strong> — développement
