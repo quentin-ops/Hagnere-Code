@@ -744,7 +744,9 @@ export default function Page() {
           d&apos;honnêteté : ce budget d&apos;entretien n&apos;est pas
           une option — un site refondu puis abandonné reprend le chemin
           de la vétusté et ramène la prochaine refonte à 3 ans au lieu
-          de 5. Et sur le plan comptable, une refonte peut selon ses
+          de 5 (forfaits réels et contrat décodé dans notre{" "}
+          <Link href="/guides/cout-maintenance-site-internet">guide du
+          coût de la maintenance</Link>). Et sur le plan comptable, une refonte peut selon ses
           caractéristiques passer en charges ou s&apos;immobiliser et
           s&apos;amortir : c&apos;est une vraie question — pour votre
           expert-comptable, pas pour votre agence.

@@ -716,7 +716,10 @@ export default function Page() {
           Trois lignes méritent le surlignage. La maintenance : 30 à
           200 €/mois, c&apos;est 360 à 2 400 € par an — sur 3 ans, ce seul
           poste peut coûter plus cher que la création du site ; obligatoire
-          sur WordPress, quasi nul en statique. Les licences : sur WordPress,
+          sur WordPress, quasi nul en statique (notre{" "}
+          <Link href="/guides/cout-maintenance-site-internet">guide du
+          coût de la maintenance</Link> détaille forfaits réels et
+          contrat). Les licences : sur WordPress,
           les plugins professionnels se paient chaque année — un droit
           d&apos;utilisation, pas un achat. La bannière cookies : l&apos;outil
           qui demande leur accord aux visiteurs, obligatoire au titre du

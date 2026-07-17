@@ -705,7 +705,12 @@ export default function Page() {
           année face à un WordPress professionnel équivalent. Au total, le
           budget <em>annuel</em> : environ 80 à 350 € pour un site statique
           bien construit, 1 000 à 3 000 € pour un WordPress professionnel,
-          2 500 à 6 000 € et plus pour un e-commerce actif.
+          2 500 à 6 000 € et plus pour un e-commerce actif. Le sujet mérite
+          son guide entier — forfaits réels du marché nommés, contrat
+          décodé (SLA, pièges) et coût chiffré de ne rien entretenir :
+          voir notre{" "}
+          <Link href="/guides/cout-maintenance-site-internet">guide du
+          coût de la maintenance d&apos;un site internet</Link>.
         </p>
 
         <h3>L&apos;accessibilité numérique : la nouvelle obligation à budgéter</h3>
