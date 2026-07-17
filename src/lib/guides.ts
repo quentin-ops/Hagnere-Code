@@ -205,6 +205,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 25,
   },
   {
+    slug: "combien-de-temps-pour-creer-un-site",
+    title: "Combien de temps pour créer un site internet ? · Hagnéré Code",
+    cardTitle: "Combien de temps pour créer un site internet ?",
+    metaDescription:
+      "Site vitrine : 4-8 semaines. E-commerce : 2-4 mois. Les délais réels 2026 phase par phase, la part du planning qui dépend de vous et les rétro-plannings.",
+    cardDescription:
+      "Les délais réels par type et par méthode, le planning phase par phase, la moitié du calendrier qui dépend du client et les rétro-plannings Noël, salon, saison.",
+    heroTitle: "Combien de temps pour créer un site internet ? Les délais réels en 2026",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-17",
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",

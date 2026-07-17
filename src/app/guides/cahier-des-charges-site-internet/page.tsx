@@ -624,7 +624,11 @@ export default function Page() {
           réservez 2 à 3 semaines de marge, et écrivez ce planning dans la
           section 10 avec des jalons — une échéance sans jalons
           n&apos;engage personne. Date à moins de 6 semaines ? Dites-le dès
-          le premier contact.
+          le premier contact. Les délais par type de site, les
+          rétro-plannings Noël/salon et la part du calendrier qui dépend
+          de vous sont chiffrés dans notre{" "}
+          <Link href="/guides/combien-de-temps-pour-creer-un-site">guide
+          des délais de création d&apos;un site</Link>.
         </p>
 
         <h3>Et après la mise en ligne ? Domaine, hébergement, maintenance, propriété</h3>

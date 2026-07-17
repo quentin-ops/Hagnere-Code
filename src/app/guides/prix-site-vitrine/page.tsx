@@ -880,9 +880,11 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
         />
         <p>
           La cause n° 1 de retard, toutes gammes confondues, reste le contenu
-          non fourni au démarrage (+2 à 4 semaines) — c&apos;est pourquoi nos
-          forfaits incluent la rédaction, et pourquoi nos dates sont
-          contractuelles avec pénalité de retard ({" "}
+          non fourni au démarrage (+2 à 4 semaines — notre{" "}
+          <Link href="/guides/combien-de-temps-pour-creer-un-site">guide
+          des délais de création</Link> chiffre tout le planning) —
+          c&apos;est pourquoi nos forfaits incluent la rédaction, et pourquoi
+          nos dates sont contractuelles avec pénalité de retard ({" "}
           <Link href="/methode">méthode Sprint Fixe™</Link>).
         </p>
 

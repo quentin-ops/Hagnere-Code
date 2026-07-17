@@ -1008,7 +1008,7 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           headers={["Projet", "Délai marché", "Délai Hagnéré Code"]}
           rows={[
             ["Site vitrine", "3 semaines – 2 mois", "2 – 7 semaines selon le forfait"],
-            ["E-commerce", "2 – 6 mois", "8 – 12 semaines (lancement)"],
+            ["E-commerce", "2 – 6 mois", "6 – 8 semaines (lancement) à 12 – 16 (B2B multi-pays)"],
             ["MVP SaaS", "4 semaines – 3 mois", "3 – 6 semaines"],
             ["SaaS complet / plateforme", "3 – 12 mois", "5 – 10 semaines et plus, au périmètre"],
           ]}
@@ -1019,7 +1019,11 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           si textes et images ne sont pas prêts). D&apos;où nos forfaits avec
           rédaction incluse — et des dates de livraison contractuelles, avec
           pénalités si nous les dépassons (voir{" "}
-          <Link href="/methode">notre méthode Sprint Fixe™</Link>).
+          <Link href="/methode">notre méthode Sprint Fixe™</Link>). Le sujet
+          complet — planning phase par phase, rétro-plannings Noël/salon et
+          le chrono d&apos;après la mise en ligne — est dans notre{" "}
+          <Link href="/guides/combien-de-temps-pour-creer-un-site">guide
+          des délais de création d&apos;un site</Link>.
         </p>
 
         <h2 id="aides">14. Aides et subventions 2026</h2>
