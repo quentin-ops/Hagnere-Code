@@ -58,7 +58,7 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4300,
+  wordCount: 4800,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -126,7 +126,7 @@ const faqItems = [
   {
     question: "Peut-on cumuler plusieurs aides pour un même site ?",
     answer:
-      "Parfois, dans deux limites. Chaque dispositif fixe ses règles (l'INAC des Hauts-de-France plafonne le cumul d'aides publiques à 80 % des dépenses et interdit le cumul avec les autres aides régionales numériques). Et le droit européen plafonne l'ensemble des aides « de minimis » à 300 000 € sur 3 exercices glissants — avec, depuis le 1er janvier 2026, un registre national qui permet aux administrations de vérifier vos aides déjà perçues.",
+      "Parfois, dans deux limites. Chaque dispositif fixe ses règles (l'INAC des Hauts-de-France plafonne le cumul d'aides publiques à 80 % des dépenses et interdit le cumul avec les autres aides régionales numériques). Et le droit européen ajoute la règle dite « de minimis », qui dispense les petites aides d'une autorisation de Bruxelles : toutes vos aides publiques s'additionnent dans une même enveloppe de 300 000 € par entreprise sur 3 exercices glissants. Pour un site internet, vous en êtes très loin — mais chaque dossier vous demandera de déclarer sur l'honneur les aides déjà perçues, et depuis le 1er janvier 2026, un registre national permet aux administrations de vérifier votre déclaration : listez tout, y compris les petites aides locales.",
   },
   {
     question: "Mon site vitrine est-il éligible aux aides régionales ?",
@@ -244,37 +244,94 @@ export default function Page() {
           ]}
         />
 
+        <InfoBox variant="blue" title="Site vitrine, site e-commerce : de quoi parle-t-on ?">
+          Deux mots décident souvent de votre éligibilité. Un{" "}
+          <strong>site vitrine</strong> présente votre entreprise
+          (services, coordonnées, formulaire de contact) : on ne peut
+          rien y acheter. Un <strong>site e-commerce</strong> (ou
+          site marchand) permet de commander et payer en ligne. La
+          distinction n&apos;est pas cosmétique : plusieurs régions
+          financent l&apos;e-commerce mais excluent le « site vitrine
+          simple » (voir §7). Si vous hésitez, notre{" "}
+          <Link href="/guides/combien-coute-un-site-internet" className="underline">
+            guide des prix d&apos;un site internet
+          </Link>{" "}
+          compare les budgets.
+        </InfoBox>
+
         <h2 id="reponse-rapide">1. La réponse rapide : le paysage réel des aides en 2026</h2>
         <p>
           <strong>Il n&apos;existe plus aucune subvention nationale directe
           pour créer un site internet en 2026.</strong> Les aides réelles
-          sont : des subventions <em>régionales</em> très hétérogènes (30 à
-          50 % du montant HT quand elles existent, souvent réservées à
-          l&apos;e-commerce ou aux outils métier), un prêt national sans
-          garantie (Prêt Boost Bpifrance, 5 000 à 75 000 €), un levier
-          fiscal puissant et méconnu (déduction totale possible dès la
-          première année), et des accompagnements pris en charge à 100 %
-          (comme Atouts Numériques en Auvergne-Rhône-Alpes). Règles
-          communes : dossier déposé <em>avant</em> de signer le devis, et
-          versement <em>après</em> le projet, sur factures acquittées.
+          tiennent en quatre familles :
+        </p>
+        <ul>
+          <li>
+            <strong>des subventions régionales</strong>, très variables :
+            30 à 50 % du montant hors taxes (HT) quand elles existent,
+            souvent réservées à l&apos;e-commerce ;
+          </li>
+          <li>
+            <strong>un prêt national sans garantie</strong> : le Prêt
+            Boost de Bpifrance, de 5 000 à 75 000 € ;
+          </li>
+          <li>
+            <strong>un levier fiscal méconnu</strong> : déduire tout le
+            coût du site de votre résultat dès la première année ;
+          </li>
+          <li>
+            <strong>des accompagnements entièrement gratuits</strong>,
+            comme Atouts Numériques en Auvergne-Rhône-Alpes.
+          </li>
+        </ul>
+        <p>
+          Deux règles valent partout : le dossier se dépose{" "}
+          <em>avant</em> de signer le devis, et l&apos;argent arrive{" "}
+          <em>après</em> le projet, une fois les factures payées.
         </p>
         <GuideTable
           headers={["Levier", "Ce que c'est", "Montant type", "Pour qui"]}
           rows={[
             ["Subventions régionales", "30-50 % du HT, remboursées après projet", "1 000 – 15 000 €", "Selon région et secteur (voir §7)"],
             ["Prêt Boost (Bpifrance)", "Prêt sans garantie personnelle", "5 000 – 75 000 €", "2-49 salariés, +3 ans d'existence"],
-            ["Fiscalité (art. 236 I CGI)", "Déduction totale possible dès l'exercice", "≈ 25 % du coût en IS économisé", "Toute entreprise au réel"],
-            ["Accompagnements 100 % pris en charge", "Diagnostic, conseil, cahier des charges", "0 € (financés Région/FEDER)", "TPE-PME (ex. AURA, voir §8)"],
+            ["Déduction fiscale (voir §4)", "Déduire tout le coût du site de vos impôts dès la 1re année", "ex. 2 500 € d'impôt en moins sur un site à 10 000 €", "Toute entreprise imposée au réel"],
+            ["Accompagnements 100 % pris en charge", "Diagnostic, conseil, cahier des charges", "0 € (payés par la Région et le FEDER, un fonds européen)", "TPE-PME (ex. AURA, voir §8)"],
             ["ACRE / ARCE", "Cotisations réduites / chômage en capital", "variable", "Créateurs d'entreprise"],
           ]}
         />
+        <p>
+          Avant de lire la suite, situez-vous — la moitié des
+          dispositifs de ce guide ne concernent pas votre profil.
+        </p>
+        <GuideTable
+          headers={["Votre situation", "Vos leviers réalistes", "À oublier"]}
+          rows={[
+            ["Créateur d'entreprise (moins de 3 ans)", "ACRE, ARCE, prêt d'honneur, microcrédit ADIE (§5)", "Prêt Boost et la plupart des subventions régionales"],
+            ["TPE de +3 ans avec salariés", "Subvention régionale (§7), Prêt Boost (§3), déduction fiscale (§4)", "Le chèque France Num, mort depuis 2021"],
+            ["Micro-entrepreneur installé", "ACRE, ARCE, rares dispositifs incluant le régime micro (§11)", "La récupération de TVA et la plupart des subventions régionales"],
+            ["Association", "Subvention de projet via Le Compte Asso (§11)", "Toutes les aides « entreprises » de ce guide"],
+          ]}
+        />
+        <InfoBox variant="blue" title="Traduction : les 8 mots de l'administration, en clair">
+          <ul className="space-y-1.5">
+            <li><strong>HT / TTC</strong> : hors taxes / toutes taxes comprises. Les aides se calculent toujours sur le HT.</li>
+            <li><strong>Régime réel</strong> : le régime de TVA classique — vous facturez la TVA et récupérez celle qu&apos;on vous facture.</li>
+            <li><strong>Franchise de TVA</strong> : le régime de la plupart des micro-entrepreneurs — pas de TVA facturée, ni récupérée.</li>
+            <li><strong>Facture acquittée</strong> : une facture portant la mention « payée », apposée par le prestataire. C&apos;est elle qui déclenche le versement.</li>
+            <li><strong>Instruction</strong> : la période où l&apos;administration étudie votre dossier (2 à 6 mois).</li>
+            <li><strong>Exercice</strong> : votre année comptable.</li>
+            <li><strong>Subvention</strong> : de l&apos;argent donné, jamais remboursé — mais versé après le projet.</li>
+            <li><strong>Prêt d&apos;honneur</strong> : un prêt à taux zéro, sans garantie, accordé à la personne (pas à l&apos;entreprise).</li>
+          </ul>
+        </InfoBox>
 
         <h2 id="aides-mortes">2. Ces aides n&apos;existent plus (et on vous les vend encore)</h2>
         <p>
           Le premier service à vous rendre est de dater les cadavres. Une
-          bonne partie de la première page de Google — y compris la position
-          n° 1 sur cette requête au moment où nous écrivons — présente
-          encore comme actives des aides fermées depuis des années :
+          bonne partie de la première page de Google — y compris
+          l&apos;article classé n° 1 quand on tape « aides création site
+          internet », au moment où nous écrivons — présente encore comme
+          actives des aides fermées depuis des années :
         </p>
         <GuideTable
           headers={["Dispositif", "Statut vérifié", "Depuis"]}
@@ -308,34 +365,57 @@ export default function Page() {
           lien vers le règlement officiel ni date de vérification ne vous
           apprend rien — elle vous appâte.
         </p>
+        <p>
+          Voilà pour le cimetière. La bonne nouvelle : tout ce qui suit
+          est vivant, vérifié à la source, avec ses conditions réelles.
+        </p>
 
         <h2 id="aides-nationales">3. Les aides nationales encore actives</h2>
         <p>
-          Ce qui existe vraiment au niveau national, vérifié en juillet
-          2026 :
+          Le terrain déblayé, passons à ce qui reste au niveau national.
+          Aucune subvention — mais quatre outils réels, vérifiés en
+          juillet 2026.
         </p>
         <ul>
           <li>
-            <strong>Le Prêt Boost – Transformation Numérique</strong>{" "}
-            (Bpifrance Flash, partenaire France Num) : 5 000 à 75 000 €,
-            sans garantie ni caution personnelle, différé de remboursement
-            de 9 à 12 mois, souscription 100 % en ligne. Il finance
-            explicitement la création ou l&apos;amélioration d&apos;un site
-            vitrine ou e-commerce et le référencement. Conditions : 2 à 49
-            salariés et plus de 3 ans d&apos;existence — les créateurs et
-            les indépendants sans salarié en sont exclus.
+            <strong>Le Prêt Boost – Transformation Numérique</strong>,
+            distribué par Bpifrance (la banque publique qui finance les
+            entreprises) : 5 000 à 75 000 €, sans garantie ni caution
+            personnelle, remboursables sur 3 à 5 ans — premier
+            remboursement au bout de 9 à 12 mois seulement. Demande
+            entièrement en ligne, réponse de principe sous 48 heures. Il
+            finance explicitement
+            la création ou l&apos;amélioration d&apos;un site vitrine ou
+            e-commerce, ainsi que le référencement (le travail qui fait
+            apparaître votre site en bonne position sur Google).
+            Conditions : 2 à 49 salariés et plus de 3 ans
+            d&apos;existence — les créateurs et les indépendants sans
+            salarié en sont exclus. La raison : Bpifrance prête sans
+            garantie, donc uniquement à qui a déjà prouvé sa capacité à
+            rembourser. Si vous démarrez, vos leviers sont à la
+            section 5.
           </li>
           <li>
             <strong>La Garantie développement des PME-TPE</strong>{" "}
-            (Bpifrance) : couvre 40 à 70 % d&apos;un prêt bancaire classique
-            finançant votre projet numérique — c&apos;est votre banque qui
-            monte le dossier.
+            (Bpifrance) : couvre 40 à 70 % d&apos;un prêt bancaire
+            classique. Concrètement, vous ne touchez pas cet argent :
+            Bpifrance se porte garant auprès de votre banque, souvent à
+            la place de votre caution personnelle. La banque prend moins
+            de risque, donc elle dit oui plus facilement — y compris
+            pour un projet immatériel comme un site. C&apos;est votre
+            banquier qui monte le dossier : demandez-le-lui
+            explicitement, il n&apos;y pensera pas toujours seul.
           </li>
           <li>
             <strong>Prêts d&apos;honneur et microcrédit</strong> : prêts à
             taux zéro d&apos;Initiative France, Réseau Entreprendre ou
-            France Active (couplés à un prêt bancaire), et microcrédit ADIE
-            jusqu&apos;à 17 000 € en cas de refus bancaire.
+            France Active (couplés à un prêt bancaire), et le microcrédit
+            de l&apos;ADIE (Association pour le droit à l&apos;initiative
+            économique) : jusqu&apos;à 17 000 €, pensé pour ceux que les
+            banques refusent — créateurs, micro-entrepreneurs, demandeurs
+            d&apos;emploi —, à un taux plus élevé qu&apos;un prêt
+            bancaire mais avec un suivi gratuit. Le vrai plan B quand on
+            n&apos;a ni 3 ans d&apos;ancienneté ni salarié.
           </li>
           <li>
             <strong>France Num</strong> — précision importante : France Num
@@ -349,119 +429,212 @@ export default function Page() {
 
         <p>
           Subvention ou prêt, comment arbitrer ? La subvention est de
-          l&apos;argent gratuit mais lent (2 à 6 mois d&apos;instruction),
-          plafonné (rarement plus de 5 000 € pour un site) et remboursé
-          après coup ; le prêt est immédiat, d&apos;un montant utile
-          (jusqu&apos;à 75 000 €), mais se rembourse. En pratique, pour un
-          projet de site à 8 000-15 000 €, le bon montage combine souvent
-          les trois étages : l&apos;accompagnement gratuit pour cadrer, la
-          subvention régionale si votre profil coche les cases, et la
-          fiscalité pour le reste — le prêt n&apos;ayant de sens que si la
+          l&apos;argent gratuit mais lent (2 à 6 mois
+          d&apos;instruction), plafonné et remboursé après coup ; le
+          prêt est immédiat et d&apos;un montant utile, mais se
+          rembourse. En pratique, le bon montage combine souvent
+          l&apos;accompagnement gratuit pour cadrer, la subvention
+          régionale si votre profil coche les cases, et la fiscalité
+          pour le reste — le prêt n&apos;ayant de sens que si la
           trésorerie est le vrai point de blocage.
         </p>
 
         <h2 id="fiscalite">4. Le levier que tout le monde oublie : la fiscalité</h2>
         <p>
-          La seule « aide » universelle, ouverte à toute entreprise imposée
-          au réel, ne figure dans aucun comparatif : le traitement fiscal du
-          site. Le BOFiP distingue trois phases : la réflexion préalable
-          (cahier des charges, conseil) passe en <strong>charges
-          immédiatement déductibles</strong> ; le développement
-          s&apos;immobilise comme un logiciel… mais{" "}
-          <strong>l&apos;option de l&apos;article 236, I du CGI permet de
-          déduire la totalité des coûts de développement dès la clôture de
-          l&apos;exercice</strong> — pour un site à 10 000 € et une
-          entreprise à l&apos;IS à 25 %, c&apos;est 2 500 €
-          d&apos;impôt économisés dès l&apos;année 1 ; l&apos;hébergement,
-          le nom de domaine et les mises à jour passent en charges au fil
-          de l&apos;eau. Et la TVA de 20 % facturée par l&apos;agence se
-          récupère intégralement au régime réel — mais <em>pas</em> en
-          franchise en base (le cas de la plupart des micro-entrepreneurs),
-          pour qui le site coûte réellement TTC. Parlez-en à votre
-          expert-comptable avant de signer : l&apos;option s&apos;exerce par
-          site, globalement.
+          La seule « aide » universelle ne figure dans aucun comparatif :
+          le traitement fiscal du site. Elle est ouverte à toute
+          entreprise imposée au réel — c&apos;est-à-dire qui déduit ses
+          dépenses réelles de son résultat, contrairement au régime
+          micro. Le BOFiP — le recueil officiel dans lequel
+          l&apos;administration fiscale publie ses règles — découpe la
+          vie d&apos;un site en trois phases :
         </p>
+        <GuideTable
+          headers={["Phase", "Dépenses", "Traitement fiscal"]}
+          rows={[
+            ["1. Avant le projet", "Cahier des charges, étude, conseil", "Déduction immédiate, l'année de la dépense"],
+            ["2. Développement", "Design, développement, mise en ligne", "Étalé sur plusieurs années — ou tout déduit dès l'année 1 sur option (article 236, I du Code général des impôts)"],
+            ["3. Après la mise en ligne", "Hébergement (la location de l'espace informatique où votre site est stocké, accessible 24 h/24), nom de domaine (votre adresse sur internet, du type votre-entreprise.fr), mises à jour", "Déduit au fil de l'eau, comme n'importe quelle facture"],
+          ]}
+        />
+        <p>
+          La phase 2 mérite qu&apos;on s&apos;y arrête. Le développement
+          du site est normalement traité comme un investissement : la
+          dépense se déduit petit bout par petit bout sur plusieurs
+          années (les comptables disent qu&apos;elle est
+          « immobilisée »). Mais l&apos;option de l&apos;article 236, I
+          du Code général des impôts (CGI) permet de{" "}
+          <strong>tout déduire d&apos;un coup, dès la première
+          année</strong>. Pour un site à 10 000 € et une entreprise
+          soumise à l&apos;impôt sur les sociétés (IS) à 25 %,
+          c&apos;est 2 500 € d&apos;impôt en moins dès l&apos;année 1 —
+          sans dossier à monter, l&apos;option se signale dans votre
+          liasse fiscale. Parlez-en à votre expert-comptable{" "}
+          <em>avant</em> de signer : elle se choisit pour
+          l&apos;ensemble des dépenses du site, en une seule fois — pas
+          de tri ligne par ligne après coup — et se prévoit avant la
+          clôture de l&apos;exercice.
+        </p>
+        <p>
+          Reste la TVA de 20 % facturée par l&apos;agence. Au régime
+          réel — vous facturez la TVA à vos clients et déduisez celle
+          que vous payez à vos fournisseurs — elle ne vous coûte rien au
+          final. En franchise de TVA (la plupart des
+          micro-entrepreneurs : pas de TVA facturée, donc pas de TVA
+          déduite), le site vous coûte réellement son prix TTC : un site
+          affiché 10 000 € HT vous revient alors à 12 000 €.
+        </p>
+        <InfoBox variant="blue" title="En clair : pourquoi le fisc ne traite pas toutes les dépenses pareil">
+          Pour le fisc, il existe deux façons de dépenser. La charge,
+          c&apos;est le plein d&apos;essence : consommé tout de suite,
+          déduit tout de suite. L&apos;investissement (une
+          « immobilisation », en langage comptable), c&apos;est
+          l&apos;achat de la voiture : elle sert plusieurs années, sa
+          déduction s&apos;étale sur plusieurs années. Un site est
+          normalement traité comme la voiture ; l&apos;option de
+          l&apos;article 236, I du CGI est une permission officielle de
+          le traiter comme le plein d&apos;essence. L&apos;État ne vous
+          verse rien, mais vous laisse récupérer jusqu&apos;à un quart
+          du coût dès la première année — au moment précis où votre
+          trésorerie vient d&apos;encaisser le coût du site.
+        </InfoBox>
 
         <h2 id="createurs">5. Créateurs d&apos;entreprise : ACRE, ARCE, AGEFIPH</h2>
         <p>
-          Si le site accompagne une création d&apos;entreprise, les vrais
-          leviers sont là. <strong>L&apos;ACRE</strong> réduit vos
-          cotisations sociales la première année (exonération partielle 12
-          mois pour les sociétés et EI classiques ; taux minoré de 25 %
-          pour les micro-entrepreneurs éligibles) — de la trésorerie
-          libérée pour financer le site. <strong>L&apos;ARCE</strong>{" "}
-          (France Travail) convertit 60 % de votre reliquat de droits
-          chômage en capital, versé en deux fois : c&apos;est le mode de
-          financement le plus utilisé pour les investissements de départ,
-          site compris. <strong>L&apos;AGEFIPH</strong> verse jusqu&apos;à
-          3 000 € aux créateurs en situation de handicap (projet ≥ 7 500 €,
-          apport ≥ 1 200 €). Quant au NACRE, il n&apos;existe plus au
-          niveau national : chaque région a son propre dispositif
-          d&apos;accompagnement à la création, à chercher via Bpifrance
-          Création.
+          Si le site accompagne une création d&apos;entreprise, les
+          vrais leviers ne sont pas des subventions « site internet » :
+          ce sont les aides à la création elles-mêmes.
         </p>
-
+        <ul>
+          <li>
+            <strong>L&apos;ACRE</strong> réduit vos cotisations sociales
+            la première année : exonération partielle pendant 12 mois
+            pour les sociétés et entreprises individuelles ; pour les
+            micro-entrepreneurs éligibles, le taux de cotisations est
+            minoré de 25 % — vous payez les trois quarts du taux normal.
+            Moins de cotisations, c&apos;est de la trésorerie pour le
+            site.
+          </li>
+          <li>
+            <strong>L&apos;ARCE</strong> (France Travail) convertit 60 %
+            de vos droits au chômage restants en capital, versé en deux
+            fois. Exemple : s&apos;il vous reste 15 000 € de droits,
+            vous touchez 9 000 € — la moitié au démarrage, la moitié six
+            mois plus tard. De quoi financer le site et le lancement :
+            c&apos;est le mode de financement le plus utilisé. Le
+            revers : vous renoncez à l&apos;allocation mensuelle — plus
+            de filet de sécurité si l&apos;activité démarre lentement ;
+            un arbitrage à faire avec votre conseiller France Travail,
+            pas un bonus automatique.
+          </li>
+          <li>
+            <strong>L&apos;AGEFIPH</strong> verse jusqu&apos;à 3 000 €
+            aux créateurs en situation de handicap, à condition que le
+            projet dépasse 7 500 € et que vous apportiez au moins
+            1 200 € de votre poche.
+          </li>
+          <li>
+            <strong>Le NACRE</strong> n&apos;existe plus au niveau
+            national : chaque région a son propre dispositif, à chercher
+            via Bpifrance Création.
+          </li>
+        </ul>
         <h2 id="formation">6. Se former (CPF, OPCO) : ce que ça finance vraiment</h2>
         <p>
           Clarifions une confusion entretenue par le démarchage :{" "}
           <strong>ces dispositifs financent des formations, jamais la
-          prestation de création du site</strong>. Le CPF (alimenté de
-          500 €/an, salariés comme indépendants) paie une formation
-          certifiante « créer et gérer son site », avec 150 € de reste à
-          charge. Les salariés passent par l&apos;OPCO de branche ; les
-          dirigeants non salariés par leur fonds d&apos;assurance formation
-          — AGEFICE (commerçants), FIFPL (libéraux), FAFCEA (artisans) —
-          sous condition d&apos;être à jour de la contribution formation,
-          avec remboursement après avance des frais. Utile pour devenir
-          autonome sur son site une fois livré ; inutile pour le faire
-          construire.
+          prestation de création du site</strong>. Le CPF (compte
+          personnel de formation : le compteur de droits à la formation
+          que chaque actif cumule, alimenté de 500 €/an, salariés comme
+          indépendants) paie une formation certifiante « créer et gérer
+          son site », avec 150 € de reste à charge. Les salariés passent
+          par l&apos;OPCO de leur branche (l&apos;« opérateur de
+          compétences », qui finance la formation de votre secteur —
+          votre expert-comptable sait lequel est le vôtre) ; les
+          dirigeants non salariés par leur fonds
+          d&apos;assurance formation — AGEFICE (commerçants), FIFPL
+          (libéraux), FAFCEA (artisans) — sous condition d&apos;être à
+          jour de la contribution formation, avec remboursement après
+          avance des frais. Utile pour devenir autonome sur son site une
+          fois livré ; inutile pour le faire construire.
+        </p>
+        <p>
+          Cas particulier : le demandeur d&apos;emploi qui prépare sa
+          création. Si votre solde CPF ne suffit pas, France Travail peut compléter via l&apos;AIF (aide
+          individuelle à la formation), sur validation de votre
+          conseiller. Combinée à l&apos;ARCE (capital) et à l&apos;ACRE
+          (cotisations réduites), c&apos;est le vrai « pack de
+          financement » d&apos;un lancement avec site : trois
+          dispositifs nationaux, cumulables, vivants en 2026.
         </p>
 
         <h2 id="regions">7. Les aides région par région (statut vérifié)</h2>
         <p>
           Voici l&apos;état réel des dispositifs régionaux, vérifié fiche
-          par fiche en juillet 2026 — avec leur statut, ce qui est unique
-          sur cette requête. Les règles changent vite : re-vérifiez le
-          règlement officiel avant tout dossier.
+          par fiche en juillet 2026 — avec leur statut, ce
+          qu&apos;aucun autre article ne fait. Les règles changent
+          vite : re-vérifiez le règlement officiel avant tout dossier.
         </p>
         <GuideTable
-          headers={["Région", "Dispositif", "Montant", "Statut / point clé"]}
+          headers={["Région", "Dispositif", "Montant de l'aide", "Statut / point clé"]}
           rows={[
-            ["Bretagne", "PASS Commerce & Artisanat", "30 %, plafond 7 500 €", "Ouvert — site internet explicitement éligible"],
-            ["Normandie", "Impulsion Transition (numérique)", "50 %, 1 000 – 5 000 €", "Ouvert (fiche 01/2026) — micro-entrepreneurs exclus"],
-            ["Centre-Val de Loire", "CAP TN", "conseil 50 % / invest. 30 %", "Ouvert — sites et boutiques éligibles"],
-            ["Hauts-de-France", "INAC", "40 %, aide 1 200 – 12 000 €", "E-commerce oui, site vitrine simple NON éligible"],
-            ["La Réunion", "Kap Numérik (FEDER)", "80 %, plafond 3 200 €", "La plus généreuse — vitrine ~1 200 €, marchand ~2 000 €"],
-            ["Occitanie", "Pass Occitanie", "50 %, plafond 10 000 €", "À reconfirmer 2026 — au moins 1 salarié requis"],
-            ["Grand Est", "Transformation Digitale", "jusqu'à 6 000 € au total", "À reconfirmer — prestataire Activateur France Num exigé"],
-            ["Île-de-France", "TP'up", "jusqu'à 55 000 €", "Ouvert mais orienté écologie — site web au cas par cas"],
-            ["Pays de la Loire", "PDLIN", "30-40 %, plafond 15 000 €", "Ouvert — mais e-commerce exclu (cible ERP/CRM/data)"],
+            ["Bretagne", "PASS Commerce & Artisanat", "30 % du HT, aide maxi 7 500 €", "Ouvert — site internet explicitement éligible"],
+            ["Normandie", "Impulsion Transition (numérique)", "50 % du HT, aide de 1 000 à 5 000 €", "Ouvert (fiche 01/2026) — micro-entrepreneurs exclus"],
+            ["Centre-Val de Loire", "CAP TN", "conseil 50 % / investissement 30 % du HT", "Ouvert — sites et boutiques éligibles"],
+            ["Hauts-de-France", "INAC", "40 % du HT, aide de 1 200 à 12 000 €", "E-commerce oui, site vitrine simple NON éligible"],
+            ["La Réunion", "Kap Numérik (FEDER)", "80 % du HT, aide maxi 3 200 €", "La plus généreuse — vitrine ~1 200 €, marchand ~2 000 €"],
+            ["Occitanie", "Pass Occitanie", "50 % du HT, aide maxi 10 000 €", "À reconfirmer 2026 — au moins 1 salarié requis"],
+            ["Grand Est", "Transformation Digitale", "jusqu'à 6 000 € d'aide au total", "À reconfirmer — prestataire Activateur France Num exigé"],
+            ["Île-de-France", "TP'up", "aide jusqu'à 55 000 €", "Ouvert mais orienté écologie — site web au cas par cas"],
+            ["Pays de la Loire", "PDLIN", "30-40 % du HT, aide maxi 15 000 €", "Ouvert — mais e-commerce exclu (l'aide vise les logiciels de gestion interne — stocks, fichiers clients, données — pas les sites)"],
             ["Auvergne-Rhône-Alpes", "Atouts Numériques", "accompagnement 100 % pris en charge", "Pas de subvention directe du site (voir §8)"],
-            ["Nouvelle-Aquitaine", "Aide transfo. numérique TPE", "50 %, 5 000 – 50 000 €", "Échue au 31/12/2025 — reconduction à confirmer"],
+            ["Nouvelle-Aquitaine", "Aide transfo. numérique TPE", "50 % du HT, aide de 5 000 à 50 000 €", "Échue au 31/12/2025 — reconduction à confirmer"],
             ["PACA / Corse / BFC", "Move2Digital, CRESCE, —", "variable", "Rien de dédié au site web confirmé en 2026"],
           ]}
         />
         <p>
-          Deux motifs récurrents à retenir. D&apos;abord, plusieurs régions{" "}
-          <strong>excluent le « site vitrine simple »</strong> : les
-          enveloppes poussent vers l&apos;e-commerce et les outils métier.
-          Ensuite, l&apos;échelon le plus vivant est souvent{" "}
-          <strong>local</strong> : des agglomérations maintiennent leurs
-          propres fonds (exemple vérifié : l&apos;agglo de Brive finance
-          30 % d&apos;un site vitrine ou e-commerce jusqu&apos;à 3 000 €
-          d&apos;aide, jusqu&apos;à fin 2026). Le réflexe : interroger le
-          moteur France Num avec votre code postal, puis appeler votre CCI.
+          Les sigles du tableau (INAC, CAP TN, TP&apos;up…) sont les
+          noms officiels des dispositifs — le nom exact à donner à votre
+          CCI ou à taper dans le moteur France Num. PDLIN = Pays de la
+          Loire Investissement numérique ; BFC =
+          Bourgogne-Franche-Comté ; PACA =
+          Provence-Alpes-Côte d&apos;Azur.
         </p>
         <p>
-          Cas à part, l&apos;outre-mer : La Réunion tient avec Kap Numérik
-          l&apos;aide au site web la plus généreuse de France — 80 % des
-          dépenses HT pour les entreprises de moins de 10 salariés, avec
-          des sous-plafonds par prestation (environ 1 200 € pour un site
-          vitrine, 2 000 € pour un site marchand), une demande par an et
-          des factures obligatoirement postérieures au dépôt. Les autres
-          territoires ultramarins n&apos;ont pas de dispositif équivalent
-          confirmé en 2026 : passez par le moteur France Num et votre CCI
-          locale.
+          Deux motifs récurrents à retenir. D&apos;abord, plusieurs régions{" "}
+          <strong>excluent le « site vitrine simple »</strong> : les
+          enveloppes poussent vers l&apos;e-commerce et les outils
+          métier. La logique : les régions financent ce qui transforme
+          l&apos;entreprise — vendre en ligne, automatiser, gagner en
+          productivité. À leurs yeux, un site vitrine simple relève de la
+          communication courante, comme une plaquette ou des cartes de
+          visite. C&apos;est discutable, mais c&apos;est écrit noir sur
+          blanc dans les règlements : inutile de monter un dossier pour
+          un projet explicitement exclu. Ensuite, l&apos;échelon le plus
+          vivant est souvent <strong>local</strong> : des agglomérations
+          maintiennent leurs propres fonds (exemple vérifié :
+          l&apos;agglo de Brive finance 30 % d&apos;un site jusqu&apos;à
+          3 000 € d&apos;aide, jusqu&apos;à fin 2026). Le réflexe :
+          interroger le moteur France Num avec votre
+          code postal, puis appeler votre CCI (votre chambre de commerce
+          et d&apos;industrie).
+        </p>
+        <p>
+          Et si vous avez déjà un site ? La refonte est en général
+          éligible aux mêmes conditions que la création — la plupart des
+          règlements visent « la création ou la refonte ». À condition
+          d&apos;apporter de nouvelles capacités (vente en ligne, prise
+          de rendez-vous), pas un simple rafraîchissement graphique : la
+          maintenance, elle, n&apos;est jamais éligible.
+        </p>
+        <p>
+          Cas à part, l&apos;outre-mer : La Réunion tient avec Kap
+          Numérik l&apos;aide au site web la plus généreuse de France
+          (voir tableau), réservée aux entreprises de moins de 10
+          salariés — une demande par an, factures obligatoirement
+          postérieures au dépôt. Les autres territoires ultramarins
+          n&apos;ont pas de dispositif équivalent confirmé en 2026 :
+          passez par le moteur France Num et votre CCI locale.
         </p>
 
         <h2 id="aura">8. Focus Auvergne-Rhône-Alpes et Savoie</h2>
@@ -472,9 +645,11 @@ export default function Page() {
           ligne » (jusqu&apos;à 1 500 €) était un dispositif Covid, clos
           depuis septembre 2021. Ce qui existe et que nous recommandons
           d&apos;utiliser : <strong>Atouts Numériques</strong>, un
-          accompagnement <em>pris en charge à 100 %</em> (Région + FEDER,
-          opéré par l&apos;ENE avec les CCI et CMA) pour les entreprises de
-          plus de 2 ans et de moins de 50 salariés — au programme :
+          accompagnement <em>pris en charge à 100 %</em> (Région + fonds
+          européen FEDER, opéré par l&apos;ENE, une association
+          régionale spécialisée dans le numérique, avec les CCI et les
+          chambres de métiers et de l&apos;artisanat, CMA) pour les
+          entreprises de plus de 2 ans et de moins de 50 salariés — au programme :
           diagnostic de maturité numérique, 3,5 à 7 h d&apos;accompagnement
           individuel (audit de votre site actuel, stratégie digitale) et de
           l&apos;aide à la rédaction du cahier des charges. Autrement dit :
@@ -518,7 +693,12 @@ export default function Page() {
         <h2 id="mode-emploi">9. Mode d&apos;emploi : déposer sans se faire recaler</h2>
         <p>
           La mécanique brutale que les articles promotionnels
-          n&apos;expliquent jamais :
+          n&apos;expliquent jamais tient en une image : une subvention
+          fonctionne comme une note de frais — autorisation{" "}
+          <em>avant</em> d&apos;engager la dépense,
+          avance de votre poche, remboursement sur justificatifs des
+          mois plus tard, et le moindre justificatif manquant bloque
+          tout. Cinq règles en découlent.
         </p>
         <ol>
           <li>
@@ -527,17 +707,25 @@ export default function Page() {
             verbatim du règlement normand : la demande doit être déposée
             « avant le démarrage du projet (signature de la commande) ».
             Un devis signé ou un acompte versé avant l&apos;accord =
-            aide perdue.
+            aide perdue. La raison ? Une aide publique doit déclencher
+            un projet, pas récompenser une décision déjà prise : signer
+            avant de déposer prouve que le projet se serait fait sans
+            elle — c&apos;est « l&apos;effet incitatif »
+            qu&apos;exigent les règlements.
           </li>
           <li>
             <strong>Les taux s&apos;appliquent au montant HT.</strong> La
             TVA n&apos;est jamais subventionnée ; elle se récupère au
-            régime réel, pas en franchise.
+            régime réel, pas en franchise (voir §4).
           </li>
           <li>
             <strong>C&apos;est un remboursement, pas une avance.</strong>{" "}
-            Vous payez l&apos;agence, puis vous êtes remboursé sur factures
-            acquittées — parfois 4 mois après la fin du projet. Prévoyez la
+            Vous payez l&apos;agence, puis vous êtes remboursé sur
+            factures acquittées — une facture « acquittée » porte la
+            mention « payée », la date et le mode de règlement, apposées
+            par votre prestataire. Ce n&apos;est pas automatique :
+            demandez-la après chaque paiement — le versement, parfois 4
+            mois après la fin du projet, en dépend. Prévoyez la
             trésorerie totale.
           </li>
           <li>
@@ -546,97 +734,185 @@ export default function Page() {
             tôt.
           </li>
           <li>
-            <strong>Le cumul est plafonné</strong> : par les règlements
-            eux-mêmes (souvent 80 % d&apos;aides publiques maximum) et par
-            le plafond européen « de minimis » (300 000 € sur 3 exercices).
-            Depuis le 1er janvier 2026, un registre national permet aux
-            administrations de vérifier toutes les aides que vous avez déjà
-            perçues — déclarez juste.
+            <strong>Le cumul est plafonné, deux fois.</strong>{" "}
+            D&apos;abord par chaque règlement (souvent 80 %
+            d&apos;aides publiques maximum sur un même projet). Ensuite
+            par la règle européenne dite « de minimis » : toutes vos
+            aides publiques, quelle qu&apos;en soit l&apos;origine,
+            s&apos;additionnent dans une même enveloppe de 300 000 € par
+            entreprise sur 3 ans — vous n&apos;en approcherez jamais
+            avec un site. Retenez que tout est compté ensemble et que,
+            depuis le 1er janvier 2026, un registre national permet de
+            vérifier ce que vous avez déjà perçu : déclarez tout,
+            exactement.
           </li>
         </ol>
 
+        <InfoBox variant="emerald" title="Le calcul complet : une TPE de 8 salariés cumule tout">
+          Une entreprise de 8 salariés en Normandie, au régime réel,
+          veut un site à 8 000 € HT
+          (9 600 € TTC). Étape 1 : dossier Impulsion Transition déposé
+          avec le devis non signé, accord, projet réalisé, 9 600 €
+          payés. Étape 2 : la TVA de 1 600 € est récupérée à la
+          déclaration suivante. Étape 3 : la subvention de 50 % du HT
+          rembourse 4 000 €, jusqu&apos;à 4 mois après la fin du projet.
+          Étape 4 : l&apos;option fiscale du §4 déduit le coût restant
+          (4 000 €) dès l&apos;année 1, soit environ 1 000 €
+          d&apos;impôt sur les sociétés en moins. Coût final réel :
+          autour de 3 000 € pour un site facturé 8 000 € HT — à
+          condition d&apos;avoir avancé 9 600 € de trésorerie et
+          respecté l&apos;ordre des étapes. Ordres de grandeur à valider
+          avec votre expert-comptable.
+        </InfoBox>
+        <InfoBox variant="amber" title="À retenir : les 4 règles d'or d'un dossier de subvention">
+          1. Déposez AVANT de signer. 2. Raisonnez en hors taxes :
+          l&apos;aide se calcule sur le HT, jamais sur la TVA. 3.
+          Prévoyez 100 % de la trésorerie : la subvention rembourse
+          après coup, sur factures acquittées. 4. Déposez tôt dans
+          l&apos;année : les enveloppes s&apos;épuisent sans annonce.
+          Une phrase à retenir : une subvention récompense un projet
+          bien monté, elle ne le finance pas.
+        </InfoBox>
+        <h3>Dossier refusé : les trois recours qui fonctionnent</h3>
         <p>
-          Exemple chiffré de bout en bout (règlement normand) : un site à
-          4 000 € HT (4 800 € TTC). Vous déposez le dossier avec devis non
-          signé, l&apos;accord arrive, vous signez et payez 4 800 € à
-          l&apos;agence. Après mise en ligne, vous envoyez les factures
-          acquittées ; l&apos;aide de 50 % du HT — 2 000 € — arrive
-          jusqu&apos;à 4 mois plus tard. Coût réel final : 2 800 € au régime
-          réel (TVA récupérée), 3 800 € en franchise de TVA. La subvention
-          est réelle, mais elle n&apos;a jamais financé votre démarrage :
-          elle a récompensé un dossier bien monté.
+          Un refus n&apos;est presque jamais définitif. Un : demandez
+          les motifs par écrit — l&apos;administration doit motiver sa
+          décision, et la réponse dira si le problème est réparable
+          (pièce manquante, dépense mal catégorisée) ou structurel.
+          Deux : le recours gracieux, un simple courrier au service
+          instructeur — une heure de travail, qui débloque les refus
+          liés à une mauvaise lecture du dossier. Trois, le plus
+          efficace : redéposer au bon moment — beaucoup de refus
+          signifient « enveloppe épuisée », et un dossier redéposé en
+          janvier, quand les budgets se rechargent, passe là où le même
+          échouait en octobre. Et ne signez toujours pas le devis
+          entre-temps : un nouveau dépôt exige un projet non commencé.
         </p>
 
         <h2 id="arnaques">10. Les arnaques au « site gratuit », documentées</h2>
         <p>
           Le vide laissé par les aides disparues est occupé par le
-          démarchage. Le schéma classique, visé par une enquête de la
-          DGCCRF : un commercial promet un site « qui ne coûtera presque
-          rien » (sous-entendu financé ou aidé), fait signer{" "}
-          <strong>le jour même</strong> un contrat de licence
-          d&apos;exploitation… aussitôt cédé à un bailleur financier —
-          engagement irrévocable de 48 mois, environ 150 €/mois, soit{" "}
+          démarchage. Le schéma classique, documenté par une enquête de
+          la DGCCRF (la Répression des fraudes), se déroule en trois
+          temps. Un commercial vous promet un site « qui ne coûtera
+          presque rien », en laissant entendre qu&apos;il est aidé ou
+          financé. Il vous fait signer <strong>le jour même</strong> un
+          contrat de location du site. Ce contrat est aussitôt revendu à
+          une société de financement : vous voilà engagé pour 48 mois,
+          sans possibilité d&apos;annuler, à environ 150 €/mois — soit{" "}
           <strong>~7 200 € pour un site dont vous ne serez jamais
-          propriétaire</strong>. L&apos;enquête de la DGCCRF sur cette
-          « location financière » a débouché sur des injonctions et des
-          procès-verbaux pénaux pour pratiques commerciales trompeuses et
-          agressives. Même famille : les arnaques CPF « site offert contre
-          votre compte formation ». Les réflexes : ne jamais signer le jour
-          du rendez-vous, exiger la propriété du code et du nom de domaine
-          par écrit, et signaler tout démarchage abusif sur
-          signal.conso.gouv.fr.
+          propriétaire</strong>.
         </p>
-        <p>Les cinq signaux qui doivent faire raccrocher :</p>
+        <p>
+          Pour visualiser le piège : c&apos;est le leasing automobile
+          appliqué à un site — sauf qu&apos;à la fin, vous ne pouvez ni
+          acheter la voiture, ni la rendre, ni arrêter de payer. Le
+          contrat ayant été revendu, la société de financement exigera
+          ses 150 € par mois même si le prestataire a disparu :
+          juridiquement, vous ne payez plus un site, vous remboursez un
+          crédit. L&apos;enquête de la DGCCRF a débouché sur des
+          injonctions et des procès-verbaux pénaux pour pratiques
+          commerciales trompeuses et agressives. Même famille : les
+          arnaques CPF « site offert contre votre compte formation ».
+          Les réflexes : ne jamais signer le jour du rendez-vous, exiger
+          la propriété du code et du nom de domaine par écrit, et
+          signaler tout démarchage abusif sur signal.conso.gouv.fr.
+        </p>
+        <p>Les sept signaux qui doivent faire raccrocher :</p>
         <ul>
           <li>on vous démarche par téléphone au sujet d&apos;une « aide de l&apos;État » — aucun organisme public ne démarche ;</li>
           <li>le site est « gratuit » ou « offert », mais il y a un abonnement ou un contrat de location derrière ;</li>
           <li>on vous presse de signer le jour même « avant la fin de l&apos;enveloppe » ;</li>
           <li>le contrat mentionne un bailleur ou une société de financement tierce ;</li>
-          <li>la propriété du site, du code et du nom de domaine n&apos;est écrite nulle part.</li>
+          <li>la propriété du site, du code et du nom de domaine n&apos;est écrite nulle part ;</li>
+          <li>on vous demande des « frais de dossier » ou un « acompte de déblocage » pour toucher une aide — l&apos;instruction d&apos;une aide publique est gratuite, de bout en bout ;</li>
+          <li>on vous annonce que vous avez « obtenu » une aide que vous n&apos;avez jamais demandée — une subvention publique ne s&apos;obtient que sur dossier déposé par vous.</li>
         </ul>
 
         <h2 id="micro">11. Micro-entrepreneurs, associations : la réponse honnête</h2>
         <p>
-          C&apos;est la question n° 1, et la réponse gonflée d&apos;espoir
-          des pages commerciales est fausse. <strong>Beaucoup
-          d&apos;aides régionales excluent explicitement le régime
-          micro</strong> (la Normandie l&apos;écrit noir sur blanc dans son
-          règlement), et la franchise de TVA rend la TVA de 20 % non
-          récupérable. Les leviers réels d&apos;un micro-entrepreneur :
-          l&apos;ACRE la première année, l&apos;ARCE si vous venez du
-          chômage, les rares dispositifs qui incluent expressément les
-          indépendants — et surtout un projet dimensionné juste (voir notre
-          guide du <Link href="/guides/prix-site-vitrine">prix d&apos;un
-          site vitrine</Link>). Pour les associations, les aides
-          « entreprises » de ce guide ne s&apos;appliquent pas : le canal
-          est la subvention de projet auprès de la commune, du département
-          ou de la région, via Le Compte Asso.
+          (Vocabulaire : auto-entrepreneur et micro-entrepreneur
+          désignent exactement le même régime ; « micro-entrepreneur »
+          est le terme officiel depuis 2016.)
+        </p>
+        <p>
+          <strong>Micro-entrepreneurs.</strong> C&apos;est la question
+          n° 1, et la réponse gonflée d&apos;espoir des pages
+          commerciales est fausse. <strong>Beaucoup d&apos;aides
+          régionales excluent explicitement le régime micro</strong> (la
+          Normandie l&apos;écrit noir sur blanc dans son règlement), et
+          la franchise de TVA rend la TVA de 20 % non récupérable. Les
+          leviers réels : l&apos;ACRE la première année, l&apos;ARCE si
+          vous venez du chômage, les rares dispositifs qui incluent
+          expressément les indépendants — et surtout un projet
+          dimensionné juste (voir notre guide du{" "}
+          <Link href="/guides/prix-site-vitrine">prix d&apos;un site
+          vitrine</Link>).
+        </p>
+        <p>
+          <strong>Associations.</strong> Les aides « numérisation des
+          entreprises » de ce guide ne s&apos;appliquent pas aux
+          associations. Leur canal : la subvention de fonctionnement ou
+          de projet auprès de la commune, du département ou de la région
+          (dossier via Le Compte Asso), les fondations privées, les
+          dispositifs d&apos;accompagnement numérique associatif. Le
+          réflexe : interroger sa collectivité et sa fédération
+          d&apos;abord.
         </p>
 
         <h2 id="sans-aide">12. Éligible à rien ? Les vraies alternatives</h2>
         <p>
-          C&apos;est le cas majoritaire en 2026, autant le planifier. Dans
-          l&apos;ordre d&apos;efficacité : <strong>la fiscalité</strong>{" "}
-          (déduction immédiate possible + TVA récupérée au réel : sur un
-          site à 10 000 €, l&apos;effet réel dépasse souvent ce
-          qu&apos;aurait donné une subvention à 30 % introuvable) ;{" "}
-          <strong>le Prêt Boost</strong> si vous avez 3 ans
-          d&apos;existence et un salarié — il étale le coût sans garantie
-          personnelle ; <strong>le phasage</strong> : un site vitrine
-          solide d&apos;abord, l&apos;e-commerce ou les fonctionnalités
-          avancées en V2, quand le site a commencé à produire ;{" "}
-          <strong>l&apos;accompagnement gratuit</strong> (Atouts
-          Numériques, diagnostics CCI/CMA) pour ne pas payer le cadrage.
+          C&apos;est le cas majoritaire en 2026, autant le planifier.
+          Quatre leviers, dans l&apos;ordre d&apos;efficacité :
+        </p>
+        <ul>
+          <li>
+            <strong>La fiscalité</strong> (voir §4) : déduction
+            immédiate possible et TVA récupérée au régime réel. Sur un
+            site à 10 000 €, l&apos;effet réel dépasse souvent ce
+            qu&apos;aurait donné une subvention à 30 % — introuvable.
+          </li>
+          <li>
+            <strong>Le Prêt Boost</strong>, si vous avez 3 ans
+            d&apos;existence et au moins un salarié : il étale le coût
+            sans garantie personnelle (voir §3).
+          </li>
+          <li>
+            <strong>Le phasage</strong> : un site vitrine solide
+            d&apos;abord, l&apos;e-commerce et les fonctionnalités
+            avancées en V2, quand le site a commencé à produire.
+          </li>
+          <li>
+            <strong>L&apos;accompagnement gratuit</strong> (Atouts
+            Numériques, diagnostics CCI/CMA) pour ne pas payer le
+            cadrage.
+          </li>
+        </ul>
+        <p>
+          Deux pistes privées, enfin, que les comparatifs français
+          ignorent. Les <strong>concours pour créateurs</strong> (Prix
+          Moovjee, Talents des Cités, prix des réseaux Initiative France
+          ou Réseau Entreprendre) : l&apos;argent y est libre
+          d&apos;affectation — rien n&apos;interdit de le mettre dans
+          votre site — et la non-rétroactivité ne s&apos;y applique pas.
+          Un pari, pas un droit. Le{" "}
+          <strong>financement participatif</strong>, lui, n&apos;a de
+          sens que pour un lancement e-commerce en prévente : les
+          précommandes (Ulule, KissKissBankBank) financent le stock et
+          la boutique. Il ne finance pas un site, il finance un
+          lancement dont le site fait partie.
+        </p>
+        <p>
           Et le meilleur « financement » reste de ne pas surpayer :
           exigez des devis au même périmètre — nos guides des{" "}
           <Link href="/guides/combien-coute-un-site-internet">prix
           d&apos;un site internet</Link> donnent toutes les grilles du
-          marché. Dernière piste que personne ne mentionne : négociez
-          l&apos;échelonnement directement avec votre prestataire. Un
-          paiement en trois ou quatre fois jalonné sur les livrables est
-          une pratique courante et saine (nous le proposons) — elle lisse
-          la trésorerie exactement comme un prêt, sans dossier, sans
-          intérêts et sans attendre six mois d&apos;instruction.
+          marché. Dernière piste : négociez l&apos;échelonnement avec
+          votre prestataire. Un paiement en trois ou quatre fois, calé
+          sur les étapes du projet (maquette validée, site mis en ligne,
+          formation terminée), est une pratique courante et saine (nous
+          le proposons) — elle lisse la trésorerie comme un prêt, sans
+          dossier, sans intérêts, sans six mois d&apos;instruction.
         </p>
 
         <h2 id="methode">13. Méthode : monter votre dossier en 5 étapes</h2>
@@ -670,10 +946,24 @@ export default function Page() {
           </li>
           <li>
             <strong>Gardez tout</strong> — factures acquittées, preuves de
-            paiement, livrables : le versement en dépend, jusqu&apos;à
-            plusieurs mois après la mise en ligne.
+            paiement, éléments livrés : le versement en dépend,
+            jusqu&apos;à plusieurs mois après la mise en ligne.
           </li>
         </ol>
+        <InfoBox variant="blue" title="Le script d'appel à votre CCI (étape 2) : 4 questions à poser">
+          Appeler sa CCI intimide pour rien : dix minutes, gratuit.
+          Dans cet ordre : 1. « Quelles aides à la numérisation sont
+          mobilisables aujourd&apos;hui pour une entreprise de [votre
+          effectif] salariés, code postal [le vôtre], dans le secteur
+          [le vôtre] ? » 2. « Mon projet — un site [vitrine /
+          e-commerce] d&apos;environ [budget] € — entre-t-il dans les
+          dépenses éligibles ? » 3. « Y a-t-il un diagnostic ou un
+          accompagnement gratuit à faire d&apos;abord ? Est-il
+          obligatoire pour déposer ? » 4. « Où en est l&apos;enveloppe :
+          reste-t-il des fonds, et quel délai d&apos;instruction ? »
+          Notez le nom de votre interlocuteur : un dossier suivi avance
+          plus vite.
+        </InfoBox>
         <p>
           Chez Hagnéré Code, la vérification des aides fait partie du
           cadrage : décrivez votre projet en 3 minutes via{" "}

@@ -103,8 +103,8 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Next.js ou WordPress : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-16",
-    dateModified: "2026-07-16",
-    readTimeMin: 21,
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
   },
   {
     slug: "aides-creation-site-internet",
@@ -117,8 +117,8 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Aides à la création de site internet : ce qui existe vraiment en 2026",
     section: "Financer son projet",
     datePublished: "2026-07-16",
-    dateModified: "2026-07-16",
-    readTimeMin: 21,
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
   },
   {
     slug: "combien-coute-un-saas",
@@ -132,7 +132,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-17",
-    readTimeMin: 22,
+    readTimeMin: 25,
   },
   {
     slug: "cahier-des-charges-site-internet",
