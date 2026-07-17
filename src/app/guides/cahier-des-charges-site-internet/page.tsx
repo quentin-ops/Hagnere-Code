@@ -641,11 +641,12 @@ export default function Page() {
           Le CDC devient un document produit : user stories, rôles et
           permissions, modèle de données, API, sécurité. C&apos;est un autre
           exercice — nos guides{" "}
+          <Link href="/guides/combien-coute-un-saas">combien coûte un
+          SaaS</Link> et{" "}
           <Link href="/guides/combien-coute-une-application-mobile">prix
-          d&apos;une application mobile</Link> et l&apos;offre{" "}
-          <Link href="/services/saas-applications-metier">développement
-          SaaS</Link> en donnent les repères, et c&apos;est précisément ce
-          que le Discovery Sprint produit en 2 jours.
+          d&apos;une application mobile</Link> en donnent les repères, et
+          c&apos;est précisément ce que le Discovery Sprint produit en
+          2 jours.
         </p>
 
         <h2 id="valeur-juridique">10. La valeur juridique de votre CDC</h2>

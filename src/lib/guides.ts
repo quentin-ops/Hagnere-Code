@@ -121,6 +121,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 21,
   },
   {
+    slug: "combien-coute-un-saas",
+    title: "Combien coûte un SaaS en 2026 ? Prix réels · Hagnéré Code",
+    cardTitle: "Combien coûte un SaaS en 2026 ?",
+    metaDescription:
+      "De 5 000 € à 100 000 €+ : le vrai prix d'un SaaS en 2026, coûts d'exploitation chiffrés, impact réel de l'IA et devis de MVP décortiqué ligne à ligne.",
+    cardDescription:
+      "Fourchettes par étape (POC, MVP, V1), coûts d'exploitation poste par poste, ce que l'IA change vraiment, et un devis de MVP réel décortiqué ligne à ligne.",
+    heroTitle: "Combien coûte un SaaS ? Le vrai budget en 2026 (+ devis de MVP décortiqué)",
+    section: "Budget & prix",
+    datePublished: "2026-07-17",
+    dateModified: "2026-07-17",
+    readTimeMin: 22,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",

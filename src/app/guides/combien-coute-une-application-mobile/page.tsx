@@ -303,9 +303,9 @@ export default function Page() {
             rôles et permissions, API, back-office, intégrations (CRM, ERP,
             paiement). C&apos;est le cœur du marché B2B : l&apos;app qui fait
             travailler vos équipes terrain ou vos clients. Si elle
-            s&apos;adosse à une plateforme web, voyez aussi notre guide du{" "}
-            <Link href="/services/saas-applications-metier">développement
-            SaaS</Link> — une app compagnon iOS + Android s&apos;ajoute
+            s&apos;adosse à une plateforme web, voyez aussi notre guide{" "}
+            <Link href="/guides/combien-coute-un-saas">« combien coûte un
+            SaaS »</Link> — une app compagnon iOS + Android s&apos;ajoute
             typiquement pour 10 000 à 20 000 € à un SaaS existant.
           </li>
           <li>

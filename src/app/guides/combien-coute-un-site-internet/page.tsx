@@ -339,8 +339,12 @@ export default function Page() {
           SaaS</Link> démarre à 15 000 € pour un MVP production-ready livré en
           3 à 6 semaines — sous la fourchette du marché, parce que notre
           pipeline s&apos;appuie sur l&apos;IA pour accélérer le développement,
-          avec revue humaine systématique de chaque ligne. Et si votre projet
-          vise les stores iOS et Android, consultez notre guide dédié :{" "}
+          avec revue humaine systématique de chaque ligne. Toutes les
+          fourchettes par étape (POC, MVP, V1), les coûts d&apos;exploitation
+          et un devis décortiqué sont dans notre guide{" "}
+          <Link href="/guides/combien-coute-un-saas">« combien coûte un
+          SaaS »</Link> ; et si votre projet vise les stores iOS et Android,
+          consultez{" "}
           <Link href="/guides/combien-coute-une-application-mobile">combien
           coûte une application mobile</Link>.
         </p>
