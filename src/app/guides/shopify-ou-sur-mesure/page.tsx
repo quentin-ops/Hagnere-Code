@@ -337,6 +337,11 @@ export default function Page() {
           (~47 %), et <strong>PrestaShop domine toujours le chiffre
           d&apos;affaires cumulé</strong> (7,96 milliards d&apos;euros,
           contre 5,76 pour Shopify — baromètre Friends of Presta 2026).
+          Le duel des deux standards a d&apos;ailleurs son guide
+          dédié : notre{" "}
+          <Link href="/guides/woocommerce-ou-shopify">comparatif
+          WooCommerce ou Shopify</Link>, coûts et vitesse mesurés des
+          deux côtés.
         </p>
         <p>
           Traduction pour votre décision : <strong>Shopify a gagné la

@@ -191,6 +191,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 25,
   },
   {
+    slug: "woocommerce-ou-shopify",
+    title: "WooCommerce ou Shopify : le comparatif 2026 · Hagnéré Code",
+    cardTitle: "WooCommerce ou Shopify : que choisir en 2026 ?",
+    metaDescription:
+      "WooCommerce ou Shopify en 2026 ? Coûts réels des deux côtés, vitesse mesurée sur données réelles, migration chiffrée et verdict honnête par profil.",
+    cardDescription:
+      "Le comparatif qui source tout : coûts réels des deux côtés, vitesse mesurée sur données réelles, sécurité et responsabilités, migration chiffrée, verdict par profil.",
+    heroTitle: "WooCommerce ou Shopify : le comparatif honnête pour décider en 2026",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-17",
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",

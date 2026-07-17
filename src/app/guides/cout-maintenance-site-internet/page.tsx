@@ -737,7 +737,10 @@ export default function Page() {
           entretenir quand même</strong> — notre{" "}
           <Link href="/guides/shopify-ou-sur-mesure">comparatif
           Shopify ou sur-mesure</Link> intègre ce poste dans le coût
-          total.
+          total, et notre{" "}
+          <Link href="/guides/woocommerce-ou-shopify">comparatif
+          WooCommerce ou Shopify</Link> met face à face les deux
+          modèles d&apos;entretien.
         </p>
 
         <InfoBox variant="emerald" title="À retenir : les 5 chiffres de ce guide">

@@ -316,7 +316,10 @@ export default function Page() {
           (Shopify ou WooCommerce avec un bon thème, montés par un freelance
           sérieux ou une petite agence), plus 1 000 à 3 000 €/an de récurrent
           (abonnement ou hébergement, quelques applications, maintenance
-          légère). Le piège du profil A : oublier que les photos produit et
+          légère). Pour trancher entre les deux plateformes, notre{" "}
+          <Link href="/guides/woocommerce-ou-shopify">comparatif
+          WooCommerce ou Shopify</Link> chiffre coûts, vitesse et
+          migration. Le piège du profil A : oublier que les photos produit et
           les fiches ne s&apos;écrivent pas toutes seules — comptez le
           contenu dans le budget (section 6).
         </p>
