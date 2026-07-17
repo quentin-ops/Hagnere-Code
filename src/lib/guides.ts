@@ -46,8 +46,8 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Combien coûte un site internet professionnel en 2026 ?",
     section: "Budget & prix",
     datePublished: "2026-07-11",
-    dateModified: "2026-07-13",
-    readTimeMin: 22,
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
     featured: true,
   },
   {
@@ -61,8 +61,8 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Combien coûte une application mobile en 2026 ?",
     section: "Budget & prix",
     datePublished: "2026-07-13",
-    dateModified: "2026-07-13",
-    readTimeMin: 19,
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
   },
   {
     slug: "prix-site-vitrine",
@@ -75,8 +75,8 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Prix d'un site vitrine en 2026 : le guide complet",
     section: "Budget & prix",
     datePublished: "2026-07-14",
-    dateModified: "2026-07-14",
-    readTimeMin: 19,
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
   },
   {
     slug: "prix-site-e-commerce",
@@ -89,8 +89,8 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Prix d'un site e-commerce : le vrai budget en 2026 (+ devis décortiqué)",
     section: "Budget & prix",
     datePublished: "2026-07-16",
-    dateModified: "2026-07-16",
-    readTimeMin: 22,
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
   },
   {
     slug: "nextjs-ou-wordpress",
@@ -145,8 +145,8 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Cahier des charges de site internet : le modèle complet (+ exemple)",
     section: "Cadrer son projet",
     datePublished: "2026-07-15",
-    dateModified: "2026-07-15",
-    readTimeMin: 20,
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
   },
 ];
 

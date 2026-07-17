@@ -59,7 +59,7 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4300,
+  wordCount: 5000,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -117,7 +117,7 @@ const faqItems = [
   {
     question: "Combien coûte un site Shopify par mois ?",
     answer:
-      "Les plans officiels 2026 en France : Basic 25 €/mois en facturation annuelle (36 €/mois en mensuel), Grow 66 €/mois (105 € en mensuel), Advanced 289 €/mois (384 € en mensuel), et Shopify Plus à partir de 2 100 €/mois. Ajoutez le vrai coût récurrent : les applications (30 à 150 €/mois pour une boutique standard, 300 à 600 €/mois pour un stack complet) et les frais de paiement (1,1 à 1,5 % + 0,25 € par transaction avec Shopify Payments).",
+      "Les plans officiels 2026 en France : Basic 25 €/mois en facturation annuelle (36 €/mois en mensuel), Grow 66 €/mois (105 € en mensuel), Advanced 289 €/mois (384 € en mensuel), et Shopify Plus à partir de 2 100 €/mois. Ajoutez le vrai coût récurrent : les applications (30 à 150 €/mois pour une boutique standard, 300 à 600 €/mois quand elles s'empilent) et les frais de paiement (1,1 à 1,5 % + 0,25 € par transaction avec Shopify Payments).",
   },
   {
     question: "Est-ce que Shopify est payant ?",
@@ -127,17 +127,17 @@ const faqItems = [
   {
     question: "Combien coûte un site WooCommerce ?",
     answer:
-      "L'extension WooCommerce est gratuite, le site ne l'est pas : comptez 3 000 à 8 000 € chez un freelance et 8 000 à 20 000 € en agence pour une boutique professionnelle. Côté récurrent : hébergement renforcé (25 à 50 €/mois), extensions payantes (environ 400 €/an — WooCommerce Subscriptions coûte à lui seul 248 €/an), et maintenance de sécurité indispensable (600 à 1 800 €/an), WordPress étant le CMS le plus attaqué.",
+      "L'extension WooCommerce est gratuite, le site ne l'est pas : comptez 3 000 à 8 000 € chez un freelance et 8 000 à 20 000 € en agence pour une boutique professionnelle. Côté récurrent : hébergement renforcé (25 à 50 €/mois), extensions payantes (environ 400 €/an — WooCommerce Subscriptions coûte à lui seul 248 €/an), et maintenance de sécurité indispensable (600 à 1 800 €/an), WordPress étant le CMS (le logiciel tout prêt qui sert à créer et gérer un site) le plus attaqué.",
   },
   {
     question: "Quelle plateforme e-commerce choisir en 2026 ?",
     answer:
-      "Raisonnez business model, pas outil. Catalogue simple et time-to-market : Shopify (rapide, mais loyer + commissions à vie). Contenu et vente mêlés, budget serré : WooCommerce. Catalogue complexe et habitudes françaises : PrestaShop (19 % du marché national). Intégrations ERP/logistique, B2B, exigences de performance : sur-mesure headless (Next.js). Le bon choix dépend de votre catalogue, de votre CA cible à 3 ans et de votre système existant — pas de la mode.",
+      "Raisonnez à partir de votre commerce, pas de l'outil. Vous avez un catalogue simple et besoin de vendre vite : Shopify (rapide à lancer, mais un abonnement et des commissions à vie). Vous mêlez contenus et vente avec un budget serré : WooCommerce. Catalogue complexe et habitudes françaises : PrestaShop (19 % du marché national). Connexions à votre logiciel de gestion (ERP), vente aux professionnels, exigences de rapidité : sur-mesure headless (Next.js). Le bon choix dépend de votre catalogue, de votre CA cible à 3 ans et de votre système existant — pas de la mode.",
   },
   {
     question: "Combien coûte la maintenance d'un site e-commerce ?",
     answer:
-      "La règle sectorielle : 10 à 20 % du coût de création par an. En pratique : 50 à 500 €/mois sur une solution open source (mises à jour, sécurité, sauvegardes, monitoring), 500 à 3 000 €/mois en TMA agence pour un site à fort trafic, plus 500 à 5 000 €/an d'évolutions fonctionnelles. Un e-commerce ne se « termine » jamais : c'est un commerce, il vit, ou il meurt.",
+      "La règle sectorielle : 10 à 20 % du coût de création par an. En pratique : 50 à 500 €/mois sur une solution open source (mises à jour, sécurité, sauvegardes, surveillance), 500 à 3 000 €/mois en contrat de maintenance agence (la « TMA », tierce maintenance applicative) pour un site à fort trafic, plus 500 à 5 000 €/an d'évolutions fonctionnelles. Un e-commerce ne se « termine » jamais : c'est un commerce, il vit, ou il meurt.",
   },
   {
     question: "Quelles commissions bancaires paie-t-on sur un site e-commerce ?",
@@ -152,12 +152,12 @@ const faqItems = [
   {
     question: "Est-ce rentable d'ouvrir une boutique en ligne ?",
     answer:
-      "Le marché est réel — les Français ont dépensé 196,4 milliards d'euros en ligne en 2025 (+7 %, FEVAD) — mais la rentabilité se calcule avant de construire : avec un taux de conversion médian de 1,5 à 3 % et un panier moyen de 62 €, il faut environ 80 000 visites pour faire 100 000 € de chiffre d'affaires. Comptez ensuite la logistique (15 à 25 % du CA), les commissions de paiement (~2 %) et le marketing (souvent 10 à 20 % du CA) : la boutique est rentable quand ce calcul l'est, pas quand le site est joli.",
+      "Le marché est réel — les Français ont dépensé 196,4 milliards d'euros en ligne en 2025 (+7 %, FEVAD) — mais la rentabilité se calcule avant de construire : avec un taux de conversion (la part des visiteurs qui achètent vraiment) de 1,5 à 3 % et un panier moyen de 62 €, il faut environ 80 000 visites pour faire 100 000 € de chiffre d'affaires. Comptez ensuite la logistique (15 à 25 % du CA), les commissions de paiement (~2 %) et le marketing (souvent 10 à 20 % du CA) : la boutique est rentable quand ce calcul l'est, pas quand le site est joli.",
   },
   {
     question: "Combien coûte un site e-commerce clé en main ?",
     answer:
-      "Les offres « clé en main » à moins de 2 000 € livrent en général un thème standard rempli avec vos textes, sans stratégie, sans SEO et souvent en location (vous ne possédez rien). Un vrai clé en main professionnel — design, catalogue structuré, paiement, livraison, conformité, SEO de base — commence plutôt à 5 000 € chez un freelance sérieux et 8 000 € en agence. En dessous, demandez précisément ce qui est inclus, ligne par ligne.",
+      "Les offres « clé en main » à moins de 2 000 € livrent en général un thème standard rempli avec vos textes, sans stratégie, sans référencement et souvent en location (vous ne possédez rien). Un vrai clé en main professionnel — design, catalogue structuré, paiement, livraison, conformité, SEO de base — commence plutôt à 5 000 € chez un freelance sérieux et 8 000 € en agence. En dessous, demandez précisément ce qui est inclus, ligne par ligne.",
   },
   {
     question: "Quel budget pour se lancer en dropshipping ?",
@@ -245,6 +245,22 @@ export default function Page() {
           ]}
         />
 
+        <InfoBox variant="blue" title="Les 8 mots de tous les devis e-commerce, en 30 secondes">
+          <ul className="space-y-1.5">
+            <li><strong>CMS</strong> : le logiciel tout prêt pour créer et administrer une boutique (WordPress, PrestaShop, Shopify).</li>
+            <li><strong>Thème</strong> : une maquette de design toute prête, adaptée à vos couleurs.</li>
+            <li><strong>SEO</strong> (ou référencement) : le travail qui fait apparaître votre boutique dans Google sans payer de publicité.</li>
+            <li><strong>ERP</strong> (ou logiciel de gestion) : l&apos;outil qui centralise stocks, commandes et factures (Sage, EBP, Odoo…).</li>
+            <li><strong>Prestataire de paiement</strong> (le « PSP ») : la société qui encaisse les cartes pour vous, comme le terminal de votre magasin (Stripe, PayPlug…).</li>
+            <li><strong>Taux de conversion</strong> : la part des visiteurs qui achètent — 2 %, c&apos;est 2 acheteurs pour 100 visiteurs.</li>
+            <li><strong>Maintenance</strong> (ou « TMA ») : le contrat d&apos;entretien et de dépannage du site.</li>
+            <li><strong>Headless / sur-mesure</strong> : la vitrine que voient vos clients, séparée du moteur qui gère produits et commandes (section 3).</li>
+          </ul>
+          <p className="mt-2">
+            Huit définitions, et tout le guide se lit sans dictionnaire.
+          </p>
+        </InfoBox>
+
         <h2 id="reponse-rapide">1. La réponse rapide : les fourchettes 2026</h2>
         <p>
           En 2026, un site e-commerce coûte{" "}
@@ -254,25 +270,32 @@ export default function Page() {
           e-commerce complexe, et 45 000 € à plus de 100 000 € pour du
           sur-mesure ou une marketplace</strong>. Le budget médian constaté
           sur des projets réels : environ 15 000 € (baromètre La Fabrique du
-          Net, 402 budgets analysés). À cela s&apos;ajoute un coût récurrent
-          que la plupart des devis taisent : abonnements, commissions de
-          paiement, maintenance et logistique.
+          Net, 402 budgets analysés) — une médiane qui cache un écart de 1
+          à 11 : environ 4 000 € sur WooCommerce, 11 000 € sur PrestaShop,
+          25 000 € sur Shopify, 45 000 € en sur-mesure. Votre plateforme
+          dit déjà la moitié de votre budget. À cela s&apos;ajoute un coût récurrent que la plupart des
+          devis taisent : abonnements, commissions de paiement, maintenance
+          et logistique.
         </p>
         <GuideTable
           headers={["Type de boutique", "Création", "Récurrent / an", "Pour qui"]}
           rows={[
             ["Boutique simple (< 50 produits, thème)", "1 500 – 5 000 €", "1 000 – 3 000 €", "Lancement, test de marché"],
             ["Boutique PME (50 – 500 produits, agence)", "5 000 – 18 000 €", "3 000 – 8 000 €", "Commerce établi qui passe en ligne"],
-            ["E-commerce complexe (catalogue, intégrations)", "15 000 – 50 000 €", "6 000 – 15 000 €", "Gros catalogue, ERP, multicanal"],
-            ["Sur-mesure / headless / marketplace", "45 000 – 120 000 €+", "10 000 – 30 000 €", "Volumétrie, B2B, différenciation produit"],
+            ["E-commerce complexe (catalogue, intégrations)", "15 000 – 50 000 €", "6 000 – 15 000 €", "Gros catalogue, connexion à votre ERP (logiciel de gestion), vente multicanal (site, Amazon, magasin)"],
+            ["Sur-mesure / headless / marketplace", "45 000 – 120 000 €+", "10 000 – 30 000 €", "Gros volumes, vente aux professionnels (B2B), expérience produit unique"],
           ]}
         />
         <p>
-          Ces fourchettes recoupent les grilles publiées par les acteurs de
-          référence du marché français — et elles s&apos;expliquent : le prix
-          d&apos;un e-commerce dépend moins du « site » que de votre
-          catalogue, de vos flux (paiement, livraison, stock) et de ce à quoi
-          il doit se connecter. C&apos;est tout l&apos;objet de ce guide.
+          Deux mots de la dernière ligne : une <strong>marketplace</strong>{" "}
+          est une place de marché où plusieurs vendeurs vendent sur le même
+          site, comme Amazon ; un site <strong>« headless »</strong> sépare
+          la vitrine que voient vos clients du moteur qui gère produits et
+          commandes (expliqué en section 3 avec un restaurant). Ces
+          fourchettes s&apos;expliquent : le prix dépend moins du « site »
+          que de votre catalogue, de vos flux
+          (paiement, livraison, stock) et de ce à quoi il doit se
+          connecter. C&apos;est tout l&apos;objet de ce guide.
         </p>
 
         <h2 id="profils">2. Le prix selon votre projet : 3 scénarios chiffrés</h2>
@@ -287,7 +310,9 @@ export default function Page() {
         <h3>Scénario A — Vous lancez (moins de 50 produits)</h3>
         <p>
           Objectif : vendre vite, valider le marché, sans sur-investir.{" "}
-          <strong>Budget réaliste : 2 500 à 6 000 € de création</strong>{" "}
+          <strong>Budget réaliste : 2 500 à 6 000 € de création</strong> (le
+          plancher de 1 500 € de la section 1 existe, mais c&apos;est un
+          thème paramétré sans reprise de vos contenus){" "}
           (Shopify ou WooCommerce avec un bon thème, montés par un freelance
           sérieux ou une petite agence), plus 1 000 à 3 000 €/an de récurrent
           (abonnement ou hébergement, quelques applications, maintenance
@@ -303,23 +328,33 @@ export default function Page() {
           <strong>Budget réaliste : 8 000 à 25 000 € de création</strong> en
           agence — design propre, catalogue structuré, migration des données,
           première intégration (caisse, comptabilité, transporteur) — plus
-          3 000 à 8 000 €/an de récurrent. C&apos;est le profil où les devis
-          s&apos;écartent le plus (du simple au triple) : la différence se
-          joue presque toujours sur les intégrations et la qualité du
-          catalogue, pas sur le design.
+          3 000 à 8 000 €/an de récurrent. Cette fourchette monte plus haut
+          que celle de la section 1 : les baromètres comptent aussi des
+          boutiques PME sans aucune intégration ; dès qu&apos;une caisse
+          entre en jeu, le haut de fourchette est la norme. Exemple
+          concret : un caviste de 200 références avec caisse en magasin —
+          création, reprise du catalogue, synchronisation des stocks,
+          transporteurs — reçoit un devis type de 12 000 à 18 000 €, plus
+          environ 400 €/mois de récurrent. C&apos;est le profil où les
+          devis s&apos;écartent le plus (du simple au triple) : tout se
+          joue sur les intégrations et le catalogue, pas sur le design.
         </p>
 
-        <h3>Scénario C — Scale : volumétrie, B2B, intégrations lourdes</h3>
+        <h3>Scénario C — Scale : gros volumes, B2B, intégrations lourdes</h3>
         <p>
-          Plus de 1 000 références, un ERP, plusieurs canaux (site,
-          marketplaces, magasins), des règles de prix B2B.{" "}
+          Plus de 1 000 références, un ERP — le logiciel central qui pilote
+          vos stocks, commandes et factures (Sage, Odoo, SAP…) —, plusieurs
+          canaux (site, marketplaces, magasins), des règles de prix B2B
+          (vente aux professionnels).{" "}
           <strong>Budget réaliste : 40 000 à 120 000 € et plus</strong>, en
-          agence spécialisée ou en sur-mesure headless. À ce niveau, la
-          plateforme standard devient souvent le problème (commissions
-          cumulées, limites du modèle de données) et le sur-mesure devient
-          rentable — pas avant. Une PME industrielle qui connecte son ERP se
-          situe typiquement entre 12 000 et 22 000 € ; les projets
-          multi-sites dépassent 80 000 €.
+          agence spécialisée ou en sur-mesure dit « headless » (section 3).
+          À ce niveau, la plateforme standard devient souvent le problème
+          et le sur-mesure devient rentable — pas avant. Ne confondez pas
+          les niveaux : raccorder un logiciel de gestion à une boutique
+          standard vaut 12 000 à 22 000 € — le haut du scénario B. Le scénario C commence quand la
+          boutique est construite <em>autour</em> de vos systèmes (règles
+          B2B, multi-canaux, synchronisations en temps réel) ; les projets
+          multi-sites dépassent couramment 80 000 €.
         </p>
 
         <h2 id="plateformes">3. Prix par plateforme : Shopify, WooCommerce, PrestaShop, sur-mesure</h2>
@@ -330,19 +365,33 @@ export default function Page() {
         </p>
 
         <h3>Shopify : le loyer + les commissions</h3>
+        <p>Plans officiels France 2026 :</p>
+        <ul>
+          <li>
+            <strong>Basic : 25 €/mois</strong> en facturation annuelle
+            (36 €/mois si vous payez au mois).
+          </li>
+          <li>
+            <strong>Grow : 66 €/mois</strong> (105 €/mois en paiement
+            mensuel).
+          </li>
+          <li>
+            <strong>Advanced : 289 €/mois</strong> (384 €/mois en paiement
+            mensuel).
+          </li>
+          <li>
+            <strong>Shopify Plus</strong> : à partir de 2 100 €/mois.
+          </li>
+        </ul>
         <p>
-          Plans officiels France 2026 : <strong>Basic 25 €/mois</strong> en
-          facturation annuelle (36 €/mois en mensuel),{" "}
-          <strong>Grow 66 €/mois</strong> (105 €),{" "}
-          <strong>Advanced 289 €/mois</strong> (384 €), et Shopify Plus à
-          partir de 2 100 €/mois. Ajoutez un thème (gratuit à 400 $ en achat
-          unique) et surtout les applications : 30 à 150 €/mois pour une
-          boutique standard, 300 à 600 €/mois pour un stack de croissance —
-          le fameux « app creep », le poste qui grossit sans bruit. Côté
-          prestation : 2 500 à 12 000 € chez un freelance, 8 000 à 80 000 €
-          en agence Shopify selon la complexité. Attention au double péage :
-          si vous n&apos;utilisez pas Shopify Payments, Shopify prélève des
-          frais supplémentaires de 0,2 à 2 % par vente selon le plan —{" "}
+          Ajoutez un thème — de gratuit à 400 $ (environ 370 €) en achat
+          unique — et surtout les applications : 30 à 150 €/mois pour une
+          boutique standard, 300 à 600 €/mois quand on les empile.
+          C&apos;est le fameux « app creep » : le poste qui grossit sans
+          bruit, application après application. Côté prestation : 2 500 à
+          12 000 € chez un freelance, 8 000 à 80 000 € en agence Shopify.
+          Attention au double péage : sans Shopify Payments, Shopify
+          prélève 0,2 à 2 % de frais supplémentaires par vente —{" "}
           <em>en plus</em> des frais de votre prestataire de paiement.
         </p>
 
@@ -363,13 +412,17 @@ export default function Page() {
         <h3>PrestaShop : le champion français vieillissant</h3>
         <p>
           Toujours <strong>19,2 % du marché français</strong> (23 277
-          boutiques actives en avril 2026) et premier CMS des vendeurs
-          français sur les marketplaces. Fourchettes 2026 : boutique starter
-          1 300 à 3 100 €, standard 4 100 à 12 300 €, avancée 13 100 à
-          45 500 € ; modules 100 à 500 €/an ; maintenance 50 à 400 €/mois
-          selon le niveau. Solide pour les catalogues complexes à la
-          française ; vérifiez la feuille de route de l&apos;éditeur et la
-          disponibilité des développeurs avant de vous engager pour 5 ans.
+          boutiques actives en avril 2026) et premier CMS utilisé par les
+          vendeurs français présents sur les marketplaces. Fourchettes
+          2026 : boutique starter 1 300 à 3 100 €, standard 4 100 à
+          12 300 €, avancée 13 100 à 45 500 € ; modules 100 à 500 €/an ;
+          maintenance 50 à 400 €/mois. Pourquoi « vieillissant » ? Des
+          années d&apos;incertitude stratégique chez l&apos;éditeur, des
+          développeurs expérimentés qui se raréfient (donc se
+          renchérissent), une partie des modules qui n&apos;est plus
+          maintenue. La plateforme reste solide pour les catalogues
+          complexes à la française ; la vraie question est sa trajectoire à
+          5 ans — l&apos;horizon réel de votre investissement.
         </p>
 
         <h3>Wix et Squarespace : l&apos;entrée de gamme sous conditions</h3>
@@ -380,30 +433,56 @@ export default function Page() {
           Elite à 178,80 €. Squarespace : 12 à 69 €/mois selon le plan, avec
           2 % de frais de transaction sur le plan d&apos;entrée (0 % ensuite).
           Corrects pour vendre quelques références ; limités dès que le
-          catalogue, le SEO ou les intégrations deviennent sérieux — et vous
-          ne possédez pas votre boutique.
+          catalogue, le référencement Google (SEO) ou les connexions à vos
+          autres outils deviennent sérieux — et vous ne possédez pas votre
+          boutique.
         </p>
 
         <h3>Le sur-mesure headless : notre terrain de jeu</h3>
         <p>
-          Un front Next.js rapide branché sur un moteur e-commerce headless
-          (Medusa et Saleor sont open source et gratuits en auto-hébergement ;
-          leurs clouds officiels démarrent à 29 $ et 159 $/mois) ou sur
-          Shopify en mode headless. Fourchettes agence France :{" "}
-          <strong>15 000 à 80 000 € et plus</strong>. Chez{" "}
-          <Link href="/services/ecommerce">Hagnéré Code</Link>, une
-          plateforme e-commerce sur mesure va de 15 000 à 120 000 € au
-          forfait fixe contractuel. Ce qu&apos;on achète à ce prix : zéro
-          licence à vie, des performances au niveau des exigences Google, un
-          modèle de données à votre image, et des intégrations (ERP, caisse,
-          logistique) conçues plutôt que bricolées.
+          Le « headless » (littéralement « sans tête ») sépare la vitrine
+          que voient vos clients du moteur qui gère catalogue, commandes et
+          paiements. La partie visible — le « front » — est développée sur
+          mesure avec une technologie moderne (Next.js) et branchée sur un
+          moteur éprouvé : Medusa et Saleor, deux moteurs open source
+          (logiciels libres), gratuits si votre prestataire les installe
+          sur votre serveur — leurs versions hébergées démarrent à 29 $ et
+          159 $/mois (environ 27 € et 150 €) — ou Shopify, utilisé en
+          simple moteur derrière une vitrine sur mesure.
+        </p>
+
+        <InfoBox variant="emerald" title="En clair : le headless, expliqué avec un restaurant">
+          Imaginez un restaurant. Une boutique classique (Shopify,
+          PrestaShop…), c&apos;est une franchise tout-en-un : cuisine et
+          salle livrées ensemble, décoration et menu imposés. Rapide à
+          ouvrir — mais déplacer un mur devient compliqué. Le headless
+          sépare les deux : la cuisine — le moteur qui gère catalogue,
+          stocks, commandes et paiements — reste un logiciel éprouvé ; la
+          salle — le site que voient vos clients — est construite sur
+          mesure et passe commande par un passe-plat numérique (une
+          « API »). Résultat : une vitrine plus rapide, un design sans
+          limite, des connexions pensées pour vos outils. Contrepartie : un
+          budget d&apos;entrée plus élevé, car on construit la salle au
+          lieu de la louer. Tout l&apos;arbitrage de ce guide : louer vite,
+          ou bâtir pour durer.
+        </InfoBox>
+
+        <p>
+          Fourchettes agence France : <strong>15 000 à 80 000 € et
+          plus</strong>. Chez <Link href="/services/ecommerce">Hagnéré
+          Code</Link>, une plateforme e-commerce sur mesure va de 15 000 à
+          120 000 € au forfait fixe contractuel. Ce qu&apos;on achète à ce
+          prix : zéro licence à vie, des performances au niveau des
+          exigences Google, un modèle de données à votre image, et des
+          intégrations (ERP, caisse, logistique) conçues plutôt que
+          bricolées.
         </p>
 
         <InfoBox variant="blue" title="La question qui tranche 80 % des cas">
           Quel est votre chiffre d&apos;affaires en ligne cible à 3 ans ?
           Sous 100 000 €/an, une plateforme standard bien montée gagne
           presque toujours. Au-delà de 500 000 €/an — ou dès qu&apos;un ERP,
-          du B2B ou une vraie volumétrie entrent en jeu — le cumul
+          du B2B ou de vrais volumes entrent en jeu — le cumul
           abonnements + applications + commissions + limites du modèle
           rattrape le coût du sur-mesure. Entre les deux : faites le calcul
           de la section suivante.
@@ -412,7 +491,9 @@ export default function Page() {
         <h2 id="tco">4. Le vrai coût sur 3 ans (celui que les devis ne montrent pas)</h2>
         <p>
           Aucune page de prix ne le publie, alors le voici : le coût total
-          de possession sur 36 mois, pour une même boutique PME.{" "}
+          de possession sur 36 mois — le « TCO » des directions
+          financières : tout ce que la boutique coûtera réellement, pas
+          seulement son prix d&apos;achat — pour une même boutique PME.{" "}
           <strong>Hypothèses communes</strong> : 150 000 € de chiffre
           d&apos;affaires annuel, panier moyen 62 € (la moyenne France 2025,
           FEVAD), soit environ 2 400 commandes/an ; création en agence ;
@@ -424,23 +505,41 @@ export default function Page() {
             ["Création (agence)", "10 000 €", "12 000 €", "11 000 €", "30 000 €"],
             ["Abonnement / hébergement", "2 376 €", "900 €", "1 080 €", "1 800 €"],
             ["Apps / extensions / modules", "3 600 € + thème 300 €", "1 200 €", "900 €", "0 €"],
-            ["Maintenance / TMA", "incluse plateforme*", "3 600 €", "5 400 €", "7 200 €"],
+            ["Maintenance (mises à jour, sécurité — la « TMA » des agences)", "incluse plateforme*", "3 600 €", "5 400 €", "7 200 €"],
             ["Commissions de paiement", "7 665 €", "8 565 €", "8 115 €", "8 565 €"],
             ["Total 36 mois", "≈ 23 900 €", "≈ 26 300 €", "≈ 26 500 €", "≈ 47 600 €"],
           ]}
         />
         <p>
+          Comment lire la ligne « commissions » : 150 000 € encaissés par
+          an pendant 3 ans, c&apos;est 450 000 € et environ 7 200
+          commandes ; à 1,5 % + 0,25 € pièce, cela donne 8 565 € chez
+          Stripe (retenu pour les colonnes WooCommerce et sur-mesure),
+          8 115 € chez PayPlug à 1,4 % (colonne PrestaShop) et 7 665 €
+          chez Shopify Payments. Le raccourci pour votre
+          cas : environ <strong>2 % du chiffre d&apos;affaires encaissé en
+          ligne</strong>. Et l&apos;astérisque : Shopify entretient la
+          plateforme, pas les évolutions de votre boutique.
+        </p>
+        <p>
           Lecture honnête de ce tableau. Un : <strong>le récurrent triple
           quasiment le budget perçu</strong> — la boutique « à 10 000 € »
-          coûte 24 000 € sur 3 ans. Deux : à 150 000 € de CA, les quatre
-          options se tiennent, et le sur-mesure ne se justifie que si les
-          intégrations ou la volumétrie l&apos;exigent — nous le disons alors
-          même que c&apos;est notre métier. Trois : la hiérarchie
-          s&apos;inverse avec la croissance, car les postes plateforme
-          (abonnement supérieur, applications, commissions majorées) montent
-          avec le CA, quand le coût d&apos;un socle sur mesure reste
-          plat. (*Shopify inclut l&apos;infrastructure, pas les évolutions de
-          votre boutique.)
+          coûte 24 000 € sur 3 ans, comme une voiture dont le prix en
+          concession n&apos;est que le début. Deux : à 150 000 € de CA,
+          les quatre options se tiennent, et le sur-mesure ne se justifie
+          que si les intégrations ou les volumes l&apos;exigent — nous le
+          disons alors même que c&apos;est notre métier. Trois : plus vous
+          vendez, plus le classement change — sur une plateforme, presque
+          tout augmente avec vos ventes (palier d&apos;abonnement,
+          applications, commissions), quand une boutique sur mesure coûte
+          à peu près la même chose que vous vendiez 150 000 € ou
+          500 000 € par an ; la bascule se situe entre 300 000 et
+          500 000 € de ventes en ligne. Le réflexe : ne comparez jamais
+          deux devis sur le prix de création, mais sur le total à 36 mois.
+          Un poste mérite maintenant qu&apos;on s&apos;y arrête : les
+          commissions de paiement — près de 8 000 € quelle que soit la
+          colonne, le deuxième budget après la création, et le seul dont
+          aucun devis ne parle.
         </p>
 
         <h2 id="commissions">5. Commissions de paiement : le poste invisible, enfin chiffré</h2>
@@ -461,67 +560,137 @@ export default function Page() {
           ]}
         />
         <p>
-          Les pièges qui gonflent la note : les cartes hors Europe montent à
-          3,25 % + 0,25 € (Stripe), la conversion de devise ajoute 2 %,
-          chaque litige coûte 20 € (remboursé seulement si vous gagnez la
-          contestation), et le prélèvement SEPA coûte 0,35 €. Bonne
-          nouvelle : le 3D Secure imposé par la réglementation européenne
-          (DSP2) est inclus dans les tarifs standard — et les paiements de
+          Concrètement, sur une commande de 62 € (le panier moyen
+          français), Stripe prélève 1,18 € ; PayPal, 2,15 €. Un euro
+          d&apos;écart multiplié par 1 600 commandes, c&apos;est environ
+          1 500 € par an — le prix d&apos;un contrat de maintenance. Dix
+          minutes de comparaison rapportent ici des milliers d&apos;euros.
+        </p>
+        <p>
+          Les pièges qui gonflent la note, à vérifier dans le contrat de
+          votre prestataire :
+        </p>
+        <ul>
+          <li>
+            <strong>Cartes émises hors d&apos;Europe</strong> : jusqu&apos;à
+            3,25 % + 0,25 € (Stripe).
+          </li>
+          <li>
+            <strong>Conversion de devise</strong> : +2 %.
+          </li>
+          <li>
+            <strong>Litige</strong> (le « chargeback » : un client conteste
+            un paiement auprès de sa banque) : 20 € par dossier chez
+            Stripe, remboursés seulement si vous gagnez la contestation.
+          </li>
+          <li>
+            <strong>Prélèvement SEPA</strong> : 0,35 € par opération.
+          </li>
+        </ul>
+        <p>
+          Bonne nouvelle : le 3D Secure — cette étape où votre client
+          confirme son achat dans son application bancaire ou par code SMS,
+          rendue obligatoire en Europe par la directive sur les paiements
+          (DSP2) — est inclus dans les tarifs standard, et les paiements de
           moins de 30 € en sont souvent exemptés. Sur Shopify, rappel du
-          double péage : un prestataire externe déclenche 0,2 à 2 % de frais
-          Shopify additionnels.
+          double péage : un prestataire externe déclenche 0,2 à 2 % de
+          frais Shopify additionnels. Dernier péage à comparer : vendre
+          sur Amazon coûte 39 € HT/mois plus <strong>8 à 15 % de
+          commission par vente</strong> (tarifs officiels sell.amazon.fr,
+          juillet 2026), contre 1,1 à 1,5 % de frais de paiement sur votre
+          propre site — la marketplace vend un trafic immédiat, mais garde
+          la relation client.
         </p>
 
         <h2 id="couts-caches">6. Logistique, contenus, flux : les coûts que personne ne chiffre</h2>
         <p>
-          Nous avons audité les pages concurrentes sur cette requête :{" "}
-          <strong>aucune ne chiffre la logistique ni les contenus
-          produit</strong> — les deux postes qui déterminent pourtant si
-          votre boutique gagne de l&apos;argent.
+          Deux postes décident si votre boutique gagnera de l&apos;argent,
+          et aucun devis — ni aucun guide de prix que nous ayons lu — ne
+          les chiffre : la logistique et les contenus produit. Les voici,
+          en euros.
         </p>
 
         <h3>La logistique : 15 à 25 % de votre chiffre d&apos;affaires</h3>
         <p>
-          Expédier coûte cher, et ça se prévoit au moment du devis (votre
-          site doit calculer les bons frais de port). Les ordres de grandeur
-          France 2026 : un colis d&apos;1 kg à domicile coûte 9,34 € HT en
-          Colissimo grille entreprise (6,84 € pour 250 g, +1,05 € avec
-          signature), environ 3,89 € en point relais Mondial Relay pro. En
-          logistique externalisée (3PL), comptez 3,50 à 7 € par commande
-          traitée hors transport ; en interne, le picking coûte 0,30 à
-          0,70 € par article et le stockage 0,50 à 2 €/m²/mois. Ajoutez le
-          logiciel d&apos;expédition (Sendcloud : gratuit jusqu&apos;à
-          20 colis/mois, puis 28 à 175 €/mois) et la gestion des retours.
-          Au total, la logistique absorbe <strong>15 à 25 % du CA</strong>{" "}
-          d&apos;un e-commerçant français.
+          Expédier coûte cher, et cela se prévoit dès le devis : votre site
+          doit calculer les bons frais de port. Les ordres de grandeur
+          France 2026 :
+        </p>
+        <ul>
+          <li>
+            <strong>Envoi à domicile</strong> : 9,34 € HT le colis
+            d&apos;1 kg en Colissimo grille entreprise (6,84 € pour 250 g ;
+            +1,05 € avec remise contre signature).
+          </li>
+          <li>
+            <strong>Point relais</strong> : environ 3,89 € le colis en
+            Mondial Relay pro — d&apos;où son succès.
+          </li>
+          <li>
+            <strong>Préparation de commande</strong> (le « picking » : aller
+            chercher l&apos;article en rayon et l&apos;emballer) : 0,30 à
+            0,70 € par article en interne, plus 0,50 à 2 €/m²/mois de
+            stockage.
+          </li>
+          <li>
+            <strong>Logistique externalisée</strong> (un « 3PL » : un
+            prestataire qui stocke et expédie vos commandes à votre place) :
+            3,50 à 7 € par commande, hors transport.
+          </li>
+          <li>
+            <strong>Logiciel d&apos;expédition</strong> : Sendcloud, gratuit
+            jusqu&apos;à 20 colis/mois, puis 28 à 175 €/mois.
+          </li>
+        </ul>
+        <p>
+          Ajoutez la gestion des retours, et le total est sans appel : la
+          logistique absorbe <strong>15 à 25 % du chiffre
+          d&apos;affaires</strong> d&apos;un e-commerçant français.
         </p>
 
         <h3>Les contenus produit : 5 000 à 10 000 € pour 100 références</h3>
         <p>
-          Une photo packshot professionnelle coûte 19 à 29 € en studio
-          spécialisé (dégressif dès 10 images), une fiche produit rédigée et
-          optimisée SEO 45 à 80 €. Pour un catalogue de 100 références avec
-          2 photos et une fiche par produit :{" "}
-          <strong>5 000 à 10 000 € rarement budgétés</strong> — et c&apos;est
+          Une photo de produit sur fond neutre (dite « packshot ») coûte 19
+          à 29 € en studio spécialisé (dégressif dès 10 images), une fiche
+          produit rédigée et optimisée pour Google 45 à 80 €. Pour un
+          catalogue de 100 références avec 2 photos et une fiche par
+          produit : <strong>5 000 à 10 000 € rarement budgétés</strong> —
           le premier poste de dérive constaté en agence, loin devant la
-          technique. Les fiches génériques copiées du fournisseur, elles, se
-          paient en référencement nul et en taux de conversion divisé.
+          technique. Les fiches génériques copiées du fournisseur, elles,
+          se paient en référencement nul et en taux de conversion divisé.
+          (Au-delà de quelques milliers de références, on s&apos;équipe
+          d&apos;un PIM — Product Information Management : le logiciel qui
+          centralise les fiches produit pour le site et les marketplaces.)
+          Et budgétez le temps interne : préparer 100 références, c&apos;est
+          2 à 4 semaines de travail pour quelqu&apos;un de votre équipe —
+          désignez un responsable de la boutique dès le devis.
         </p>
 
         <h3>Les flux et le marketing récurrent</h3>
         <p>
-          Le flux Google Merchant Center est gratuit (fiches gratuites), mais
-          si vous faites de la publicité Shopping, passer par un CSS
-          partenaire plutôt que par Google économise environ 20 % de coût
-          par clic — une optimisation méconnue et immédiate.
-          L&apos;emailing e-commerce scale vite : Klaviyo passe de 45 $/mois
-          (1 000 contacts) à 175 $/mois (5 000 contacts), désabonnés
-          comptés si la liste n&apos;est pas nettoyée ; Brevo, facturé à
-          l&apos;e-mail envoyé, démarre autour de 9 $/mois. Ajoutez la
-          bannière cookies conforme (Axeptio dès 29 €/mois au-delà du seuil
-          gratuit) et la maintenance (10 à 20 % du coût de création par an) :
-          le « récurrent invisible » d&apos;une boutique sérieuse dépasse
-          vite 300 €/mois.
+          Envoyer votre catalogue à Google pour apparaître dans
+          l&apos;onglet « Shopping » (via l&apos;outil gratuit Google
+          Merchant Center) ne coûte rien. Si vous payez pour apparaître en
+          tête de cet onglet, sachez qu&apos;il existe des comparateurs de
+          prix agréés par Google — les « CSS » (Comparison Shopping
+          Services), rien à voir avec du code — habilités à diffuser les
+          mêmes annonces Shopping à la place de Google : grâce à une
+          décision européenne sur la concurrence, elles échappent à la
+          marge que Google prélève sur les enchères, soit environ{" "}
+          <strong>20 % de coût par clic en moins</strong>. La bascule prend
+          quelques jours et ne change rien pour vos clients.
+        </p>
+        <p>
+          Autre poste récurrent : les e-mails commerciaux (relances de
+          panier abandonné, promotions, newsletters). Klaviyo, la référence
+          e-commerce, passe de 45 $/mois pour 1 000 contacts à 175 $/mois
+          pour 5 000 (environ 42 € et 160 €) — désabonnés comptés si la
+          liste n&apos;est pas nettoyée ; Brevo, l&apos;alternative
+          française facturée à l&apos;e-mail envoyé, démarre vers 9 €/mois. Ajoutez la bannière de consentement
+          aux cookies (l&apos;outil dit « CMP » : Axeptio dès 29 €/mois
+          au-delà du seuil gratuit) et la maintenance (10 à 20 % du coût de
+          création par an) : le « récurrent invisible » d&apos;une boutique
+          sérieuse dépasse vite 300 €/mois.
         </p>
 
         <GuideInlineCTA
@@ -536,12 +705,14 @@ export default function Page() {
           devis Hagnéré Code accepté pour un profil B typique : PME de
           négoce, environ 300 références, migration depuis une ancienne
           boutique, synchronisation avec le logiciel de gestion, front
-          Next.js sur moteur headless. Taux journalier : 650 € HT.
+          Next.js sur moteur headless. Taux journalier (le « TJM » des
+          devis) : 650 € HT.
         </p>
         <FormulaBox>
           <strong>Devis « boutique PME » — 44 jours, 28 600 € HT</strong>
           <br />
-          Cadrage & Discovery Sprint (2 j) — 1 300 €
+          Cadrage & Discovery Sprint — l&apos;atelier de démarrage :
+          périmètre, priorités, risques (2 j) — 1 300 €
           <br />
           Design system & maquettes boutique (7 j) — 4 550 €
           <br />
@@ -554,21 +725,26 @@ export default function Page() {
           Livraison : transporteurs, frais de port, e-mails transactionnels
           (4 j) — 2 600 €
           <br />
-          Migration données & redirections 301 (3 j) — 1 950 €
+          Migration des données & redirections 301 — un panneau « nous
+          avons déménagé » posé sur chaque ancienne page, pour garder vos
+          positions Google (3 j) — 1 950 €
           <br />
           SEO technique & données structurées produits (2 j) — 1 300 €
           <br />
-          Recette, accessibilité, mise en production (3 j) — 1 950 €
+          Tests finaux (la « recette » : tout vérifier avant
+          l&apos;ouverture), accessibilité, mise en production (3 j) —
+          1 950 €
         </FormulaBox>
         <p>
           Ce que ce devis vous apprend. D&apos;abord,{" "}
           <strong>le « site » visible (design + front) ne pèse que 40 % du
           budget</strong> : le reste, c&apos;est le catalogue, les flux et la
           fiabilité — exactement ce que les devis low-cost escamotent.
-          Ensuite, chaque ligne est en jours-homme : un devis sans détail des
-          postes n&apos;est pas comparable (envoyez le même{" "}
-          <Link href="/guides/cahier-des-charges-site-internet">cahier des
-          charges</Link> à tous les prestataires). Enfin, ce devis ne
+          Ensuite, chaque ligne est exprimée en jours-homme — une journée
+          de travail d&apos;une personne, ici facturée 650 € HT : un devis
+          sans ce détail des postes n&apos;est pas comparable (envoyez le
+          même <Link href="/guides/cahier-des-charges-site-internet">cahier
+          des charges</Link> à tous les prestataires). Enfin, ce devis ne
           contient ni les photos, ni les fiches produit, ni la logistique —
           relisez la section 6 : ils sont dans <em>votre</em> budget, chez
           nous comme ailleurs, autant le savoir avant de signer.
@@ -587,85 +763,158 @@ export default function Page() {
             ["Bouton de rétractation en ligne", "19 juin 2026", "15 000 € (pers. physique) / 75 000 € (société)", "1 – 2 jours de développement"],
             ["Facturation électronique (réception)", "1er septembre 2026 — toutes entreprises", "amendes fiscales", "plateforme agréée : 0 – 99 €/mois"],
             ["Facturation électronique (émission PME)", "1er septembre 2027", "amendes fiscales", "projet de mise en place : 1 000 – 1 500 €"],
-            ["RGPD / cookies (CNIL)", "permanent", "20 M€ ou 4 % du CA mondial", "CMP : ~29 €/mois + mise en conformité"],
+            ["RGPD / cookies (CNIL)", "permanent", "20 M€ ou 4 % du CA mondial", "bannière cookies (CMP, la plateforme de gestion du consentement — ex. Axeptio) : ~29 €/mois + mise en conformité"],
           ]}
         />
+        <p>Dans le détail :</p>
+        <ul>
+          <li>
+            <strong>Accessibilité</strong> : depuis le 28 juin 2025, la
+            réglementation européenne (European Accessibility Act) impose
+            aux sites e-commerce vendant aux particuliers d&apos;être
+            utilisables par les personnes en situation de handicap
+            (référentiel français RGAA). Exemption uniquement si vous
+            remplissez les deux conditions à la fois : moins de 10 salariés{" "}
+            <em>et</em> moins de 2 M€ de CA annuel — une entreprise de 8
+            salariés à 3 M€ de CA est donc concernée. Dans le doute,
+            demandez par écrit à votre prestataire.
+          </li>
+          <li>
+            <strong>Bouton de rétractation</strong> : à partir du 19 juin
+            2026, tout site marchand doit proposer une fonction « renoncer
+            au contrat » accessible en ligne pendant les 14 jours de
+            rétractation (ordonnance n° 2026-2 du 5 janvier 2026).
+            Vérifiez que votre prestataire l&apos;a prévue.
+          </li>
+          <li>
+            <strong>Facturation électronique</strong> : dès le 1er
+            septembre 2026, toute entreprise doit pouvoir recevoir des
+            factures électroniques via une plateforme agréée ; vos ventes
+            aux particuliers (B2C) devront en outre être transmises
+            automatiquement à l&apos;administration fiscale — le
+            « e-reporting ». Concrètement : votre site ou votre caisse
+            devra savoir envoyer ces données, vérifiez-le dans le devis.
+          </li>
+          <li>
+            <strong>RGPD et cookies</strong> : rien de théorique — en 2025,
+            la CNIL a infligé <strong>150 millions d&apos;euros
+            d&apos;amende à Shein</strong> pour des cookies déposés sans
+            consentement.
+          </li>
+        </ul>
         <p>
-          Dans le détail. <strong>Accessibilité</strong> : depuis le 28 juin
-          2025, l&apos;European Accessibility Act s&apos;applique aux sites
-          e-commerce B2C (référentiel RGAA) — les micro-entreprises de moins
-          de 10 salariés et 2 M€ de CA sont exemptées pour leurs services.{" "}
-          <strong>Bouton de rétractation</strong> : à partir du 19 juin 2026,
-          tout site marchand doit proposer une fonction « renoncer au
-          contrat » accessible en ligne pendant les 14 jours de rétractation
-          (ordonnance n° 2026-2 du 5 janvier 2026) — vérifiez que votre
-          prestataire l&apos;a prévue. <strong>Facturation
-          électronique</strong> : dès le 1er septembre 2026, toute entreprise
-          française doit pouvoir recevoir des factures électroniques via une
-          plateforme agréée, et les ventes B2C entrent dans le e-reporting
-          fiscal. Et le RGPD n&apos;est pas théorique pour le e-commerce : en
-          2025, la CNIL a infligé <strong>150 millions d&apos;euros
-          d&apos;amende à Shein</strong> pour des cookies déposés sans
-          consentement. Un devis sérieux intègre ces sujets dès la
-          conception ; un devis qui n&apos;en parle pas les facturera en
-          avenant — ou vous laissera l&apos;ardoise.
+          Un devis sérieux intègre ces sujets dès la conception ; un devis
+          qui n&apos;en parle pas les facturera en avenant — ou vous
+          laissera l&apos;ardoise.
         </p>
 
         <h2 id="rentabilite">9. Combien rapporte un site e-commerce ? Le calcul honnête</h2>
         <p>
-          C&apos;est la question associée la plus tapée dans Google, et la
-          moins bien traitée. Le marché est réel : les Français ont dépensé{" "}
-          <strong>196,4 milliards d&apos;euros en ligne en 2025</strong>{" "}
-          (+7 % sur un an, FEVAD), la France compte 158 200 sites marchands
-          actifs et 42,2 millions de cyberacheteurs, et 69 % des acheteurs
-          commandent depuis leur mobile. Mais la moyenne cache la
-          distribution : le panier moyen est descendu à 62 €, et le taux de
-          conversion médian se situe entre 1,5 et 3 % selon le secteur (avec
-          ~70 % d&apos;abandon de panier).
+          Avant de débattre du prix du site, posez la question qui commande
+          tout le reste : combien peut-il rapporter ? C&apos;est celle que
+          tout porteur de projet se pose — et que presque aucun guide de
+          prix ne traite honnêtement. Le marché est réel : les Français ont
+          dépensé <strong>196,4 milliards d&apos;euros en ligne en
+          2025</strong> (+7 % sur un an, FEVAD), la France compte 158 200
+          sites marchands actifs et 42,2 millions de cyberacheteurs, et
+          69 % des acheteurs commandent depuis leur mobile. Mais la moyenne
+          cache la distribution : le panier moyen est descendu à 62 €, et
+          le taux de conversion — la part des visiteurs qui finissent par
+          acheter : 2 %, c&apos;est 2 acheteurs pour 100 visiteurs — se
+          situe le plus souvent entre 1,5 et 3 % selon le secteur, sachant
+          que près de 70 % des paniers remplis sont abandonnés avant
+          paiement.
         </p>
         <p>
           Faites le calcul avant de construire.{" "}
           <strong>Pour 100 000 € de CA annuel</strong> à 2 % de conversion et
           62 € de panier, il vous faut environ 1 600 commandes, donc{" "}
-          <strong>80 000 visites dans l&apos;année</strong> — qui viendront
-          du SEO (des mois de travail), de la publicité (un budget récurrent,
-          souvent 10 à 20 % du CA) ou de votre notoriété. Retirez ensuite la
-          logistique (15 à 25 % du CA), les commissions de paiement (~2 %) et
-          le coût de la marchandise : voilà votre vraie marge. Ce calcul en
-          amont — pas le choix de la plateforme — est ce qui sépare les
-          boutiques rentables des 158 200 sites qui se partagent les
-          miettes. Un site plus rapide et mieux structuré améliore chaque
-          maillon : c&apos;est là que le budget création redevient un
-          investissement.
+          <strong>80 000 visites dans l&apos;année</strong>. Ces visites
+          viendront de trois sources : le référencement (des mois de
+          travail), votre notoriété, ou la publicité. Repère 2026 pour
+          cette dernière : 0,50 à 1,20 € le clic en e-commerce — 80 000
+          visites entièrement achetées coûteraient donc plus cher que le
+          site lui-même. D&apos;où la règle : prévoyez un budget marketing
+          récurrent de 10 à 20 % du CA. Un site sans plan de trafic est un magasin
+          sans rue : exigez cette conversation en même temps que le devis.
+          Retirez ensuite la logistique (15 à 25 % du CA), les commissions
+          de paiement (~2 %) et le coût de la marchandise : voilà votre
+          vraie marge. Ce calcul en amont — pas le choix de la
+          plateforme — est ce qui sépare les boutiques rentables des
+          158 200 sites qui se partagent les miettes. Un site plus rapide
+          et mieux structuré améliore chaque maillon : c&apos;est là que le
+          budget création redevient un investissement.
         </p>
+
+        <InfoBox variant="blue" title="Exemple concret : où part l'argent d'une commande de 62 € ?">
+          <p>
+            Prenons le panier moyen français. En ordre de grandeur, une
+            fois la commande expédiée :
+          </p>
+          <ul className="mt-2 space-y-1">
+            <li>Achat de la marchandise (avec 60 % de marge brute) : − 25 €</li>
+            <li>Logistique — emballage, préparation, Colissimo : − 9 à 12 €</li>
+            <li>Commission de paiement (Stripe : 1,5 % + 0,25 €) : − 1,20 €</li>
+            <li>Publicité pour obtenir ce client (10 à 20 % du CA) : − 6 à 12 €</li>
+          </ul>
+          <p className="mt-2">
+            Il reste 12 à 20 € pour l&apos;abonnement ou la maintenance du
+            site, votre temps, vos impôts — et votre bénéfice. Une commande
+            isolée ne rembourse jamais une boutique à 10 000 € : c&apos;est
+            le volume qui le fait — d&apos;où le calcul de trafic
+            ci-dessus.
+          </p>
+        </InfoBox>
 
         <h2 id="refonte">10. Prix d&apos;une refonte e-commerce</h2>
         <p>
-          Requête sœur jamais traitée par les pages de prix. Une refonte
-          coûte généralement <strong>60 à 80 % du prix d&apos;une
-          création</strong> équivalente… plus trois postes spécifiques : la
-          migration des données (produits, clients, historiques de
-          commandes — comptez 2 000 à 8 000 € selon le volume et la
-          propreté), le plan de redirections 301 page à page (votre
-          référencement acquis est un actif : le perdre coûte plus cher que
-          la refonte), et la conduite du changement si vos équipes
-          administrent la boutique au quotidien. Une migration PrestaShop ou
-          WooCommerce vers un socle moderne se chiffre couramment entre
-          10 000 et 20 000 € et plus. Avant toute refonte : exigez un audit
-          de l&apos;existant et un inventaire des URLs — c&apos;est la
-          première section d&apos;un bon{" "}
+          Votre boutique existe déjà, mais elle a vieilli ? La refonte
+          obéit à ses propres règles — avec un risque que la création
+          n&apos;a pas : tout ce que vous avez accumulé (produits, clients,
+          référencement) doit survivre au déménagement. Une refonte coûte
+          généralement <strong>60 à 80 % du prix d&apos;une
+          création</strong> équivalente. Pourquoi si cher, alors que « tout
+          existe déjà » ? Parce qu&apos;une refonte est une création{" "}
+          <em>plus</em> un déménagement : reconstruire la boutique et
+          transporter l&apos;existant — produits, clients, historique de
+          commandes (2 000 à 8 000 € de migration selon le volume et la
+          propreté des données) — sans rien casser. Le poste le plus
+          critique est invisible : les redirections 301, le « suivi de
+          courrier » du web — comme à La Poste, chaque ancienne adresse
+          doit renvoyer vers la nouvelle, sans quoi visiteurs et Google
+          frappent à une porte close et votre référencement s&apos;évapore
+          en quelques semaines.
+        </p>
+        <p>
+          Cas réel : un marchand refond sans plan de redirections ; ses
+          anciennes pages affichent « page introuvable », Google les
+          déclasse, et un site à 1 000 visites par jour tombe à 300. À 2 %
+          d&apos;acheteurs et 62 € de panier, c&apos;est environ 26 000 €
+          de ventes perdues sur un an — plus que la refonte elle-même.
+          Ajoutez la conduite du changement si vos équipes administrent la
+          boutique au quotidien. Une migration PrestaShop ou WooCommerce
+          vers une base technique moderne se chiffre couramment entre
+          10 000 et 20 000 € et plus. Avant toute refonte, exigez un audit
+          de l&apos;existant et un inventaire des URLs — la première
+          section d&apos;un bon{" "}
           <Link href="/guides/cahier-des-charges-site-internet">cahier des
           charges de refonte</Link>.
         </p>
 
         <h2 id="prestataires">11. Plateforme seul, freelance ou agence : qui choisir</h2>
+        <p>
+          Reste un dernier arbitrage, celui qui conditionne tous les prix
+          de ce guide : à qui confier le chantier ? Les quatre options se
+          distinguent moins par le budget que par ce qu&apos;elles
+          garantissent — et ce qu&apos;elles laissent à votre charge.
+        </p>
         <GuideTable
           headers={["Option", "Budget création", "Forces", "Limites"]}
           rows={[
-            ["Vous-même sur Shopify/Wix", "0 – 1 500 € + abonnements", "Rapide, réversible, idéal pour tester", "Votre temps, plafond SEO/design, vous ne possédez rien"],
-            ["Freelance", "2 500 – 12 000 €", "Prix, souplesse, contact direct", "Périmètre limité à une personne : dispo, recette, garanties"],
+            ["Vous-même sur Shopify/Wix", "0 – 1 500 € + abonnements", "Rapide, réversible, idéal pour tester", "Votre temps, plafond en référencement et design, vous ne possédez rien"],
+            ["Freelance", "2 500 – 12 000 €", "Prix, souplesse, contact direct", "Tout repose sur une seule personne : disponibilité, sérieux des tests, garanties limitées"],
             ["Agence généraliste", "8 000 – 25 000 €", "Équipe, process, garanties", "Qualité inégale : exigez des références e-commerce"],
-            ["Agence spécialisée / sur-mesure", "15 000 – 120 000 €", "Intégrations, performance, scalabilité", "Budget d'entrée plus élevé — à réserver aux vrais besoins"],
+            ["Agence spécialisée / sur-mesure", "15 000 – 120 000 €", "Connexions à vos outils, rapidité, capacité à grandir sans tout refaire", "Budget d'entrée plus élevé — à réserver aux vrais besoins"],
           ]}
         />
         <p>
@@ -677,14 +926,21 @@ export default function Page() {
           travailler une équipe senior depuis Chambéry n&apos;est pas un
           hasard dans notre modèle. Le critère qui compte plus que le
           statut : <strong>qui a déjà livré une boutique avec VOS
-          contraintes</strong> (votre volumétrie, votre ERP, votre secteur) —
-          demandez à voir ces boutiques en production.
+          contraintes</strong> (votre volume de produits et de commandes,
+          votre ERP, votre secteur) — demandez à voir ces boutiques en
+          production.
         </p>
 
         <h2 id="erreurs">12. Les 6 erreurs qui font exploser la facture</h2>
+        <p>
+          Sur les projets que nous reprenons après un premier échec, les
+          mêmes causes reviennent. Les voici, de la plus fréquente à la
+          plus coûteuse — chacune renvoie à la section qui permet de
+          l&apos;éviter.
+        </p>
         <ol>
           <li>
-            <strong>Choisir la plateforme avant le business model.</strong>{" "}
+            <strong>Choisir la plateforme avant le modèle économique.</strong>{" "}
             La plateforme découle du catalogue, du CA cible et de
             l&apos;existant — pas l&apos;inverse. C&apos;est l&apos;erreur
             n° 1, et elle se paie en refonte à 18 mois.
@@ -707,8 +963,12 @@ export default function Page() {
           </li>
           <li>
             <strong>Acheter « pas cher » deux fois.</strong> La boutique à
-            1 500 € sans SEO, sans conformité et sans structure se refond
-            dans les 2 ans — au prix fort, migration comprise.
+            1 500 € sans référencement, sans conformité et sans structure se
+            refond dans les 2 ans — au prix fort, migration comprise. Cas
+            vécu : une boutique « clé en main » à 3 500 €, 40 visites/jour
+            à 6 mois, des fiches copiées que Google ignore — coût réel à
+            18 mois, refonte comprise : plus de 15 000 €, pour un projet
+            qui en valait 12 000 bien cadré.
           </li>
           <li>
             <strong>Comparer des devis à périmètres différents.</strong> Sans
@@ -719,22 +979,12 @@ export default function Page() {
           </li>
         </ol>
 
-        <InfoBox variant="amber" title="Le cas classique">
-          Une boutique à 3 500 € livrée en 6 semaines, « clé en main ». Six
-          mois plus tard : 40 visites/jour, des fiches produit copiées du
-          fournisseur que Google ignore, des frais de port forfaitaires qui
-          perdent de l&apos;argent sur un colis sur trois, et une mise en
-          conformité cookies à refaire. Coût réel à 18 mois, refonte
-          comprise : plus de 15 000 € — pour un projet qui en valait 12 000
-          bien cadré dès le départ.
-        </InfoBox>
-
         <h2 id="methode">13. Méthode : payer le juste prix en 5 étapes</h2>
         <ol>
           <li>
-            <strong>Posez le business model d&apos;abord</strong> — CA cible
-            à 3 ans, panier moyen, marge, canaux d&apos;acquisition. Le
-            calcul de la section 9 tient sur une page.
+            <strong>Posez le modèle économique d&apos;abord</strong> — CA
+            cible à 3 ans, panier moyen, marge, canaux d&apos;acquisition.
+            Le calcul de la section 9 tient sur une page.
           </li>
           <li>
             <strong>Inventoriez l&apos;existant</strong> — caisse, gestion,
@@ -793,9 +1043,10 @@ export default function Page() {
           <a href="https://www.francenum.gouv.fr/guides-et-conseils/developpement-commercial/site-e-commerce/accessibilite-des-sites-de-e-commerce" target="_blank" rel="noopener noreferrer">France Num, accessibilité des sites e-commerce</a> ;{" "}
           <a href="https://www.cnil.fr/en/cookies-placed-without-consent-shein-fined-150-million-euros-cnil" target="_blank" rel="noopener noreferrer">CNIL, sanction Shein (2025)</a> ;
           baromètre La Fabrique du Net (402 budgets e-commerce) ; ordonnance
-          n° 2026-2 du 5 janvier 2026 (fonction de rétractation en ligne).
-          Prix des plans et commissions relevés sur les pages officielles en
-          juillet 2026 — ils évoluent : vérifiez avant de signer.
+          n° 2026-2 du 5 janvier 2026 (fonction de rétractation en ligne) ;
+          tarifs vendeurs Amazon (sell.amazon.fr). Prix des plans et
+          commissions relevés sur les pages officielles en juillet 2026 —
+          ils évoluent : vérifiez avant de signer.
         </p>
         <p className="text-sm">
           <em>

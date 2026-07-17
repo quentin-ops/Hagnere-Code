@@ -59,7 +59,7 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4100,
+  wordCount: 4840,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -117,7 +117,7 @@ const faqItems = [
   {
     question: "Pourquoi faire un cahier des charges pour son site web ?",
     answer:
-      "Trois raisons concrètes. Sans cadrage, les devis varient du simple au triple pour le même projet — impossible de comparer. Ensuite, le CDC limite les avenants : ce qui est écrit est chiffré, ce qui ne l'est pas se négocie en cours de route. Enfin, il vous protège juridiquement : en 2020, le tribunal de commerce de Paris a refusé tout remboursement à une start-up mécontente de ses applications… précisément parce qu'aucun cahier des charges ne formalisait ses attentes.",
+      "Trois raisons concrètes. Sans cadrage, les devis varient du simple au triple pour le même projet — impossible de comparer. Ensuite, le CDC limite les avenants (ces suppléments au devis signés en cours de projet) : ce qui est écrit est chiffré, ce qui ne l'est pas se négocie en cours de route. Enfin, il vous protège juridiquement : en 2020, le tribunal de commerce de Paris a refusé tout remboursement à une start-up mécontente de ses applications… précisément parce qu'aucun cahier des charges ne formalisait ses attentes.",
   },
   {
     question: "Comment rédiger un cahier des charges pour un site internet ?",
@@ -147,7 +147,7 @@ const faqItems = [
   {
     question: "Existe-t-il un modèle de cahier des charges gratuit (Word, PDF) ?",
     answer:
-      "Oui : le modèle complet de ce guide est libre de copie, sans email demandé — c'est notre parti pris face aux modèles verrouillés derrière des formulaires. France Num, le portail gouvernemental, maintient aussi une sélection de modèles téléchargeables. Méfiez-vous des templates datés : la plupart des PDF en circulation datent de 2017-2021 et ignorent le RGPD opérationnel, l'accessibilité EAA et les Core Web Vitals.",
+      "Oui : le modèle complet de ce guide est libre de copie, sans email demandé — avec un squelette prêt à coller dans Word, Google Docs ou Notion. C'est notre parti pris face aux modèles verrouillés derrière des formulaires. France Num, le portail gouvernemental, maintient aussi une sélection de modèles téléchargeables. Méfiez-vous des templates datés : la plupart des PDF en circulation datent de 2017-2021 et ignorent le RGPD opérationnel, l'accessibilité EAA et les Core Web Vitals.",
   },
   {
     question: "Quelle différence entre un brief, une expression de besoin et un cahier des charges ?",
@@ -157,7 +157,7 @@ const faqItems = [
   {
     question: "Comment faire le cahier des charges d'une refonte de site ?",
     answer:
-      "Ajoutez au modèle classique les sections que les templates génériques oublient toujours : l'audit de l'existant (trafic, pages qui rankent, positions Google), l'inventaire des URLs et le plan de redirections 301, la stratégie de migration SEO et le suivi post-lancement. Une refonte sans plan de redirections peut détruire en une mise en ligne un trafic construit en trois ans — c'est la première chose que nous vérifions dans un CDC de refonte.",
+      "Ajoutez au modèle classique les sections que les templates génériques oublient toujours : l'audit de l'existant (trafic, pages les mieux classées sur Google), l'inventaire des URLs et le plan de redirections 301 — les renvois automatiques des anciennes adresses de pages vers les nouvelles —, la stratégie de migration SEO et le suivi post-lancement. Une refonte sans plan de redirections peut détruire en une mise en ligne un trafic construit en trois ans — c'est la première chose que nous vérifions dans un CDC de refonte.",
   },
   {
     question: "Un cahier des charges a-t-il une valeur juridique ?",
@@ -194,7 +194,7 @@ export default function Page() {
           { label: "Cahier des charges site internet" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Le modèle en 10 sections, commenté de l'intérieur par une agence qui reçoit des cahiers des charges chaque semaine : ce que chaque section doit contenir, l'exemple rempli, les erreurs qui ruinent un devis — et les exigences 2026 (performance, RGPD, accessibilité) que les templates en circulation ignorent."
+        heroDescription="Le modèle en 10 sections, commenté de l'intérieur par une agence qui reçoit des cahiers des charges chaque semaine. Pour chaque section : quoi écrire, l'exemple rempli, les erreurs qui ruinent un devis — et les exigences 2026 (performance, RGPD, accessibilité) que les modèles en circulation ignorent."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -220,8 +220,9 @@ export default function Page() {
       >
         <p className="lead">
           Nous recevons des cahiers des charges toutes les semaines — des
-          excellents, des vagues, et des dangereux. Ce guide est le modèle que
-          nous aurions aimé pouvoir envoyer à chaque prospect :{" "}
+          excellents, des vagues, et des dangereux. Voici le modèle que
+          nous aurions aimé pouvoir envoyer à chaque prospect : un cahier
+          des charges (« CDC » dans la suite de ce guide) en{" "}
           <strong>10 sections commentées de l&apos;intérieur, un exemple
           rempli, et les erreurs qui font qu&apos;un même projet reçoit des
           devis de 8 000 € et de 25 000 €</strong>. Libre de copie, sans
@@ -252,9 +253,13 @@ export default function Page() {
           <strong>10 sections : présentation de l&apos;entreprise, objectifs
           chiffrés, cibles, périmètre fonctionnel priorisé, arborescence et
           contenus, design, exigences techniques, SEO, intégrations avec
-          l&apos;existant, budget et gouvernance</strong>. Comptez 4 à 8 pages
-          pour un site vitrine, 5 à 15 pour un site PME complet — la
-          précision des besoins compte plus que le volume.
+          l&apos;existant, budget et gouvernance</strong>. Deux mots à
+          traduire d&apos;emblée : l&apos;arborescence est la liste
+          organisée des pages du site, comme le sommaire d&apos;un livre ;
+          le SEO est le référencement naturel — apparaître, ou non, dans
+          Google quand un client tape une recherche (une « requête »).
+          Comptez 4 à 8 pages pour une vitrine, 5 à 15 pour un site PME —
+          la précision compte plus que le volume.
         </p>
         <GuideTable
           headers={["Section", "La question à laquelle elle répond", "Erreur fréquente"]}
@@ -271,23 +276,64 @@ export default function Page() {
             ["10. Budget & gouvernance", "Enveloppe, délais, qui valide ?", "Budget caché, validation floue"],
           ]}
         />
+        <InfoBox variant="blue" title="Lexique express : les mots que vous croiserez dans les devis">
+          <strong>CRM</strong> : le logiciel où vivent vos contacts et
+          devis (Sellsy, HubSpot…). <strong>ERP</strong> : le logiciel de
+          gestion — facturation, stocks (Sage, EBP, Odoo…).{" "}
+          <strong>RGPD</strong> : le règlement européen sur les données
+          personnelles. <strong>API</strong> : la « prise » qui permet à
+          deux logiciels d&apos;échanger des données.{" "}
+          <strong>Hébergement</strong> : l&apos;ordinateur distant, loué à
+          l&apos;année, où le site est stocké.{" "}
+          <strong>Nom de domaine</strong> : l&apos;adresse du site
+          (votresociete.fr). <strong>Back-office</strong> : la partie
+          cachée où l&apos;on gère les contenus.{" "}
+          <strong>Avenant</strong> : le supplément au devis signé en cours
+          de projet — presque toujours au prix fort.{" "}
+          <strong>Redirection 301</strong> : le renvoi automatique
+          d&apos;une ancienne adresse de page vers la nouvelle.{" "}
+          <strong>V1 / V2</strong> : la première version mise en ligne / la
+          version enrichie qui suit. <strong>AMOA</strong> (assistance à
+          maîtrise d&apos;ouvrage) : le consultant indépendant qui formule
+          votre besoin face aux prestataires.{" "}
+          <strong>ROI</strong> : le retour sur investissement.{" "}
+          <strong>Prototype cliquable</strong> : une maquette interactive
+          du futur site.
+        </InfoBox>
 
         <h2 id="a-quoi-sert">2. À quoi sert vraiment un cahier des charges</h2>
         <p>
-          Trois choses, très concrètes. <strong>Rendre les devis
-          comparables</strong>, d&apos;abord : sans cadrage écrit, une agence
-          chiffre 10 000 € et une autre 40 000 € pour « le même » projet — et
-          les deux ont raison, car chacune a imaginé un périmètre différent.{" "}
-          <strong>Limiter les avenants</strong>, ensuite : ce qui est écrit
-          est chiffré ; ce qui ne l&apos;est pas se renégocie en cours de
-          projet, au prix fort. <strong>Vous protéger</strong>, enfin — et ce
-          n&apos;est pas théorique : en octobre 2020, le tribunal de commerce
-          de Paris a rejeté la demande de remboursement d&apos;une start-up
-          mécontente de ses applications, au motif que les dysfonctionnements
-          reprochés « ne présentent pas de caractère anormal »…{" "}
-          <em>en l&apos;absence de cahier des charges</em> formalisant ses
-          attentes. Sans document de référence, vous n&apos;avez juridiquement
-          presque rien à opposer.
+          Faire construire un site sans cahier des charges, c&apos;est faire
+          construire une maison sans plan. Décrivez oralement « une belle
+          maison lumineuse » à trois constructeurs : vous recevrez trois
+          devis incomparables — plain-pied, étage, véranda. Chaque détail
+          non prévu se facturera en supplément, au tarif de celui qui tient
+          la bétonnière ; et si le résultat déçoit, rien d&apos;écrit à
+          opposer. Le CDC joue le rôle du plan — trois fonctions très
+          concrètes.
+        </p>
+        <p>
+          <strong>1. Rendre les devis comparables.</strong> Sans cadrage
+          écrit, une agence chiffre 10 000 € et une autre 40 000 € pour « le
+          même » projet — et les deux ont raison, chacune ayant imaginé un
+          périmètre différent. Le CDC force tout le monde à chiffrer le
+          même projet.
+        </p>
+        <p>
+          <strong>2. Limiter les avenants</strong> — ces suppléments au
+          devis signés en cours de projet, toujours au prix fort. Ce qui
+          est écrit est chiffré ; ce qui ne l&apos;est pas se renégociera
+          plus tard, en position de faiblesse.
+        </p>
+        <p>
+          <strong>3. Vous protéger juridiquement</strong> — et ce n&apos;est
+          pas théorique. En octobre 2020, dans l&apos;affaire Oopet, une
+          start-up mécontente de ses applications a réclamé un
+          remboursement au tribunal de commerce de Paris. Elle a tout
+          perdu : aucun cahier des charges ne formalisait ses attentes, et
+          les juges ont estimé que les défauts reprochés « ne présentent
+          pas de caractère anormal ». Sans document de référence, vous
+          n&apos;avez juridiquement presque rien à opposer.
         </p>
 
         <h2 id="brief-ou-cdc">3. Brief, expression de besoin ou CDC : lequel vous faut-il ?</h2>
@@ -302,99 +348,146 @@ export default function Page() {
         <p>
           Notre conseil honnête d&apos;agence : pour un site vitrine standard,{" "}
           <strong>une expression de besoin structurée suffit</strong> — les
-          10 sections de ce guide en version courte. Un CDC de 40 pages
+          10 sections du modèle en version courte. Un CDC de 40 pages
           sur-spécifié peut même desservir le projet : il fige des solutions
-          techniques avant d&apos;avoir entendu les experts, et bride la
-          valeur ajoutée du prestataire. Décrivez le problème à traverser,
-          pas les matériaux du pont.
+          techniques avant d&apos;avoir entendu les experts. Décrivez le
+          problème à traverser, pas les matériaux du pont.
+        </p>
+        <p>
+          Dernière distinction : vous rédigez le CDC{" "}
+          <strong>fonctionnel</strong> — le besoin, le « quoi », exactement
+          le modèle de ce guide (exercice normalisé par l&apos;AFNOR :
+          NF X50-151, intégrée à la norme européenne NF EN 16271) — et le
+          prestataire produit en réponse le volet{" "}
+          <strong>technique</strong>, le « comment » : langages,
+          hébergement, architecture. Le client écrit le problème, le
+          prestataire la solution.
         </p>
         <p>
           « Mais on travaille en agile, on n&apos;a pas besoin de cahier des
-          charges » — objection fréquente, et fausse. La méthode agile change
-          la façon de <em>construire</em> (par itérations), pas le besoin de{" "}
-          <em>cadrer</em> : objectifs, cibles, périmètre initial et budget
-          restent indispensables pour démarrer. Le tribunal qui a jugé
-          l&apos;affaire Oopet en 2020 l&apos;a d&apos;ailleurs rappelé
-          explicitement : l&apos;expression claire des besoins via un cahier
-          des charges s&apos;impose <strong>même en méthode agile</strong>.
-          Ce qui devient plus léger en agile, c&apos;est le niveau de détail
-          des spécifications — pas leur existence.
+          charges » — objection fréquente, et fausse. L&apos;agile change la
+          façon de <em>construire</em> (par petites étapes successives),
+          pas le besoin de <em>cadrer</em> : objectifs, cibles, périmètre
+          et budget restent indispensables. Le tribunal de l&apos;affaire
+          Oopet, évoquée au chapitre 2, l&apos;a d&apos;ailleurs rappelé :
+          le cahier des charges s&apos;impose <strong>même en méthode
+          agile</strong>. Ce qui devient plus léger, c&apos;est le niveau
+          de détail des spécifications — pas leur existence.
         </p>
 
         <h2 id="le-modele">4. Le modèle complet, section par section</h2>
         <p>
-          Voici le modèle. Chaque section indique quoi écrire, avec le
-          commentaire de l&apos;agence qui le lira. Copiez la structure telle
-          quelle — elle est libre de droits, sans email à laisser.
+          Voici le modèle, commenté par l&apos;agence qui le lira. Copiez la
+          structure telle quelle — libre de droits ; le squelette prêt à
+          remplir clôt ce chapitre. Convention anti-confusion :
+          « chapitres » désigne les 13 parties du guide, « sections » les
+          10 rubriques du modèle.
         </p>
 
         <h3>Section 1 — L&apos;entreprise et le contexte</h3>
         <p>
-          En une page : votre activité, votre marché, ce qui vous différencie,
-          et surtout <strong>pourquoi ce projet maintenant</strong> (site
-          vieillissant, lancement d&apos;offre, concurrence qui décolle sur
-          Google…). Le déclencheur en dit plus sur vos vraies priorités que
-          dix pages de présentation.
+          En une page : votre activité, votre marché, ce qui vous
+          différencie, et surtout <strong>pourquoi ce projet
+          maintenant</strong> (site vieillissant, lancement d&apos;offre,
+          concurrence qui décolle sur Google…). Le déclencheur en dit plus
+          que dix pages de présentation.
         </p>
 
         <h3>Section 2 — Les objectifs, chiffrés</h3>
         <p>
           La section la plus importante et la plus bâclée. Bannissez «
           moderniser notre image » ; écrivez des objectifs mesurables, comme
-          le recommande France Num : « passer de 12 à 30 demandes de devis
-          par mois », « générer 50 ventes en ligne mensuelles », « réduire de
-          20 % les appels à faible valeur ». Deux ou trois objectifs
-          maximum — c&apos;est eux qui arbitreront tous les choix du projet.
+          le recommande France Num (le programme gouvernemental d&apos;accompagnement numérique des TPE-PME) : « passer de 12 à 30 demandes de devis
+          par mois », « générer 50 ventes en ligne mensuelles », « réduire
+          de 20 % les appels à faible valeur ». Deux ou trois maximum —
+          c&apos;est eux qui arbitreront tous les choix. Précisez
+          l&apos;outil qui mesurera chaque objectif, installé avant la mise
+          en ligne — sinon vous perdez vos données de référence.
         </p>
 
         <InfoBox variant="blue" title="Ce qu'on voit dans les CDC reçus">
-          Sur dix cahiers des charges qui arrivent dans notre boîte mail, huit
-          n&apos;ont aucun objectif chiffré. Conséquence directe : quand il
-          faut arbitrer en cours de projet (ce bouton, cette page, cette
-          intégration), il n&apos;y a aucun critère de décision — et
-          l&apos;arbitrage se fait au ressenti, ou au rapport de force. Les
-          deux projets les plus fluides de notre histoire avaient un point
-          commun : trois objectifs chiffrés en page 2, auxquels toutes les
-          discussions revenaient.
+          Sur dix cahiers des charges reçus, huit n&apos;ont aucun objectif
+          chiffré. Conséquence : quand il faut arbitrer en cours de projet,
+          aucun critère de décision — l&apos;arbitrage se fait au ressenti,
+          ou au rapport de force. Les deux projets les plus fluides de
+          notre histoire avaient un point commun : trois objectifs chiffrés
+          en page 2, auxquels toutes les discussions revenaient.
         </InfoBox>
 
         <h3>Section 3 — Les cibles</h3>
         <p>
           Qui doit être convaincu ? Deux ou trois profils suffisent
-          (« dirigeant de PME industrielle qui compare trois prestataires »,
+          (« dirigeant de PME qui compare trois prestataires »,
           « particulier qui cherche un artisan en urgence »), avec pour
-          chacun : ce qu&apos;il cherche, ce qui le rassure, sur quel appareil
-          il vous lira. « Tout le monde » n&apos;est pas une cible.
+          chacun : ce qu&apos;il cherche, ce qui le rassure, sur quel
+          appareil il vous lira. « Tout le monde » n&apos;est pas une cible.
         </p>
 
         <h3>Section 4 — Le périmètre fonctionnel, priorisé</h3>
         <p>
           Listez les fonctionnalités en deux colonnes :{" "}
           <strong>indispensable</strong> (le site ne sert à rien sans) et{" "}
-          <strong>souhaitable</strong> (V2 possible). C&apos;est LE mécanisme
-          anti-dépassement : « vouloir tout faire d&apos;emblée » est la
-          première cause de budget explosé. Exemple vitrine : formulaire de
-          contact = indispensable ; chat en direct = souhaitable. Décrivez des
-          comportements, pas des solutions : « le visiteur peut réserver un
-          créneau de 30 minutes en ligne », pas « intégrer Calendly ».
+          <strong>souhaitable</strong> (pourra attendre la V2, une deuxième
+          version enrichie après la mise en ligne de la première — la V1).
+          C&apos;est LE mécanisme anti-dépassement : « vouloir tout faire
+          d&apos;emblée » est la première cause de budget explosé.
+          Décrivez des comportements, pas des solutions : « le visiteur
+          peut réserver un créneau de 30 minutes en ligne », pas « intégrer
+          Calendly ». Le format « user story » aide — « en tant que
+          [profil], je veux [action] afin de [bénéfice] ». Pour trancher
+          entre les colonnes, le test de la valise cabine : vous partez
+          trois jours avec un seul bagage — la brosse à dents est
+          indispensable, le deuxième pull souhaitable. Le site serait-il
+          inutilisable sans cette fonctionnalité, ou simplement moins
+          complet ? Le formulaire de contact échoue au test
+          (indispensable), le chat en direct le réussit (souhaitable, V2).
+          Rien n&apos;est abandonné : le souhaitable attend que la V1 ait
+          prouvé qu&apos;elle atteint ses objectifs.
         </p>
 
         <h3>Section 5 — L&apos;arborescence et les contenus</h3>
         <p>
           La liste des pages envisagées, et pour chacune :{" "}
           <strong>qui fournit le contenu, sous quel délai</strong>. Écrivez
-          noir sur blanc « la rédaction est incluse dans la prestation » ou
-          « nous fournissons les textes avant le [date] » — le contenu dont
-          personne n&apos;est responsable est la première cause de retard de
-          mise en ligne, loin devant la technique.
+          « la rédaction est incluse » ou « nous fournissons les textes
+          avant le [date] » — le contenu dont personne n&apos;est
+          responsable est la première cause de retard de mise en ligne,
+          loin devant la technique. L&apos;arborescence, elle, se comprend
+          mieux dessinée qu&apos;expliquée — voici celle du cabinet
+          comptable de notre exemple (chapitre 5) :
+        </p>
+        <FormulaBox>
+{`Accueil
+├─ Expertises (menu)
+│  ├─ Comptabilité TPE-PME
+│  ├─ Paie et social
+│  ├─ Création d'entreprise
+│  ├─ Fiscalité et audit
+│  └─ Conseil de gestion
+├─ Le cabinet (équipe, valeurs)
+├─ Actualités / FAQ
+├─ Prendre rendez-vous
+└─ Contact
+(+ mentions légales, politique de confidentialité)`}
+        </FormulaBox>
+        <p>
+          Rien d&apos;esthétique ici : une page par expertise (chacune vise
+          une requête distincte), « Prendre rendez-vous » au premier niveau
+          (l&apos;objectif n° 1), une FAQ (l&apos;objectif n° 3 veut réduire les appels).
+          Une arborescence n&apos;est pas un rangement — c&apos;est votre
+          stratégie rendue visible.
         </p>
 
         <h3>Section 6 — Le design et les références</h3>
         <p>
           Trois liens de sites que vous aimez (et pourquoi), un ou deux que
-          vous détestez (et pourquoi), votre charte si elle existe. Ces cinq
-          liens disent plus que « moderne, épuré, professionnel » — les trois
-          adjectifs présents dans tous les CDC que nous recevons.
+          vous détestez (et pourquoi), votre charte si elle existe. Ces
+          cinq liens disent plus que « moderne, épuré, professionnel » —
+          les trois adjectifs de tous les CDC que nous recevons. Ajoutez
+          une demi-page sur vos trois concurrents directs (ce que leur site
+          fait mieux, ce qu&apos;il fait mal, qui sort en première page
+          Google) : un prestataire qui sait contre qui vous jouez conçoit
+          un site positionné, pas un site générique de plus.
         </p>
 
         <h3>Section 7 — Les exigences techniques (version 2026)</h3>
@@ -404,73 +497,204 @@ export default function Page() {
         </p>
         <ul>
           <li>
-            <strong>Performance</strong> — visez les seuils « bons » des Core
-            Web Vitals de Google : LCP &lt; 2,5 s, INP &lt; 200 ms,
-            CLS &lt; 0,1, mesurés sur données réelles. Exiger « un site
-            rapide » ne vous protège pas ; exiger « LCP inférieur à 2,5 s sur
-            mobile au 75e percentile » est opposable.
+            <strong>Performance</strong> — Google chronomètre tous les sites
+            avec trois indicateurs, les Core Web Vitals. Imaginez un
+            inspecteur muni de trois chronomètres : le LCP mesure le temps
+            avant que le visiteur voie votre « vitrine » — le contenu
+            principal (visez moins de 2,5 s sur mobile) ; l&apos;INP, le
+            délai entre son clic et la réaction de la page (moins de
+            200 ms) ; le CLS vérifie que la page ne « saute » pas pendant
+            le chargement. Exigez ces seuils par écrit, tenus pour au moins
+            75 % des visiteurs réels (le « 75e percentile ») — vérifiables
+            en deux minutes à la livraison avec l&apos;outil gratuit
+            PageSpeed Insights. « Un site rapide » ne vous protège pas ;
+            ces seuils chiffrés sont opposables en cas de litige.
           </li>
           <li>
-            <strong>RGPD</strong> — consentement avant tout dépôt de cookies,
-            politique de confidentialité, HTTPS, sauvegardes externalisées.
+            <strong>RGPD</strong> (le règlement européen sur la protection
+            des données personnelles) — « le site devra respecter le RGPD »
+            est la phrase la plus copiée-collée des CDC, et elle
+            n&apos;engage à rien. Exigez du concret, inspiré de la CNIL :
+            accord du visiteur avant tout dépôt de cookies (ces petits
+            fichiers qui suivent la navigation), refus aussi simple que
+            l&apos;acceptation ; politique de confidentialité rédigée —
+            précisez par qui ; formulaires minimisés (un devis n&apos;exige
+            pas de date de naissance) ; cadenas de sécurité HTTPS ; données
+            hébergées de préférence dans l&apos;Union européenne ;
+            sauvegardes stockées ailleurs que sur le site. Et c&apos;est
+            vous, propriétaire du site, qui restez responsable aux yeux de
+            la CNIL.
           </li>
           <li>
-            <strong>Accessibilité</strong> — depuis le 28 juin 2025,
-            l&apos;European Accessibility Act impose l&apos;accessibilité
-            (référentiel RGAA) aux entreprises de plus de 10 salariés et
-            2 M€ de CA qui vendent des services en ligne, avec des sanctions
-            jusqu&apos;à 50 000 € par service. Même hors obligation :
-            contrastes, navigation clavier et balisage sémantique améliorent
-            l&apos;UX et le SEO.
+            <strong>Accessibilité</strong> — depuis le 28 juin 2025, une loi
+            européenne (l&apos;European Accessibility Act) impose que les
+            services vendus en ligne soient utilisables par les personnes
+            handicapées, selon le référentiel officiel français (le RGAA).
+            Elle ne concerne que les entreprises dépassant à la fois
+            10 salariés et 2 M€ de chiffre d&apos;affaires — en dessous,
+            le cas de la plupart des TPE, pas d&apos;obligation légale.
+            Pour les entreprises concernées : jusqu&apos;à 7 500 €
+            d&apos;amende par manquement et des astreintes jusqu&apos;à
+            3 000 € par jour (plafond 300 000 €) ; l&apos;amende de
+            50 000 € renouvelable souvent citée vise, elle, les organismes
+            publics et les très grandes entreprises (article 47 de la loi
+            de 2005). Même hors obligation, textes contrastés et navigation
+            au clavier profitent à tous — et à Google.
           </li>
           <li>
-            <strong>Responsive</strong> — plus de 60 % du trafic web est
-            mobile ; demandez une conception mobile-first, pas une «
-            adaptation ».
+            <strong>Adapté aux mobiles (« responsive »)</strong> — le mobile
+            représente environ 60 % du trafic web mondial (62,7 % début
+            2025 selon StatCounter), un peu moins en Europe où mobile et
+            ordinateur font jeu égal. Demandez un site pensé d&apos;abord
+            pour le téléphone (« mobile-first »), puis enrichi pour
+            l&apos;ordinateur : l&apos;inverse — un site de bureau
+            « adapté » après coup — produit presque toujours des pages
+            mobiles lentes et pénibles.
           </li>
         </ul>
 
         <h3>Section 8 — Le SEO, dès la conception</h3>
         <p>
-          Même sans ambition SEO immédiate, inscrivez le socle : URLs
-          propres, balisage sémantique, hiérarchie de titres, redirections
-          gérables, images optimisées. Si l&apos;acquisition Google est un
-          objectif, listez les requêtes visées — elles déterminent
-          l&apos;arborescence (une page par intention de recherche). Le SEO
-          ajouté après coup se paie en avenant, puis en refonte.
+          Même sans ambition Google immédiate, exigez les fondations du
+          référencement : des adresses de pages lisibles
+          (votresite.fr/expertise-paie plutôt qu&apos;une suite de
+          chiffres), des titres hiérarchisés, des images légères, la
+          possibilité de rediriger une ancienne page sans casser les liens.
+          Rien de tout cela ne se voit à l&apos;œil nu — raison de plus
+          pour l&apos;écrire. Si l&apos;acquisition Google est un objectif,
+          listez les requêtes visées — « expert-comptable Annecy »,
+          « cabinet comptable BTP », « prix bilan comptable » : chaque
+          recherche méritera sa propre page, et cette liste détermine donc
+          l&apos;arborescence. Le SEO ajouté après coup se paie en avenant,
+          puis en refonte : le référencement dépend de la structure même du
+          site, et le rajouter ensuite, c&apos;est déplacer les fondations
+          d&apos;une maison construite. Le socle s&apos;écrit dans le CDC,
+          pas dans un avenant.
         </p>
 
         <h3>Section 9 — Les intégrations et l&apos;existant</h3>
         <p>
           <strong>L&apos;oubli n° 1 dans les CDC que nous recevons.</strong>{" "}
-          Listez vos outils : CRM, ERP, facturation, prise de rendez-vous,
-          emailing, base clients. Le site doit-il s&apos;y connecter ? Une
-          intégration découverte en cours de projet, c&apos;est 2 à 10 jours
-          de développement non chiffrés — et l&apos;agence conçoit sinon une
-          solution qui ne s&apos;emboîte pas dans votre système.
+          Listez vos outils : le CRM où vivent vos contacts et devis,
+          l&apos;ERP qui gère facturation et stocks, l&apos;agenda de
+          rendez-vous, l&apos;outil d&apos;emailing. Le site doit-il
+          communiquer avec eux ? Une intégration découverte en cours de
+          projet, c&apos;est 2 à 10 jours non chiffrés — à 400-800 € la
+          journée, faites la multiplication. Clientèle étrangère ? Tranchez
+          ici le multilingue (quelles langues, quelles pages, qui
+          traduit) : ajouté après coup, il oblige souvent à revoir
+          l&apos;architecture ; écrit dans le CDC, il se chiffre
+          sereinement, éventuellement en V2.
         </p>
 
         <InfoBox variant="amber" title="Le cas classique">
-          Un CDC impeccable arrive : objectifs chiffrés, périmètre priorisé.
-          Au deuxième atelier, on découvre que « le formulaire doit créer la
-          fiche client » — dans un CRM interne dont le CDC ne disait pas un
-          mot, sans API documentée. Résultat : dix jours d&apos;intégration
-          non prévus, à négocier en avenant alors que le projet est lancé.
-          Une ligne dans la section 9 aurait suffi. Écrivez aussi les
-          non-demandes (« aucune intégration en V1 ») : elles évitent le
-          sur-chiffrage.
+          Un CDC impeccable arrive. Au deuxième atelier, on découvre que
+          « le formulaire doit créer la fiche client » — dans un CRM
+          interne dont le CDC ne disait pas un mot, et sans API, cette
+          « prise » qui permet à deux logiciels d&apos;échanger des
+          données. Sans elle, tout se fabrique sur mesure : dix jours non
+          prévus, à négocier en avenant projet lancé. Une ligne dans la
+          section 9 aurait suffi. Écrivez aussi les non-demandes
+          (« aucune intégration en V1 ») : elles évitent le sur-chiffrage.
         </InfoBox>
 
         <h3>Section 10 — Budget, délais et gouvernance</h3>
         <p>
-          Votre fourchette budgétaire (voir section 7 de ce guide), votre
-          échéance et son motif éventuel (salon, saison), et la gouvernance :
-          un interlocuteur unique côté client, un délai maximal de validation
-          par livrable, un nombre de cycles de corrections inclus. France Num
-          recommande aussi une <strong>réserve de 15 à 20 %</strong> pour les
-          besoins découverts en route — les projets qui la prévoient ne
-          dérapent pas, ils arbitrent.
+          Votre fourchette budgétaire (voir plus bas le chapitre 7 :
+          « Faut-il indiquer son budget ? »), votre échéance et son motif
+          (salon, saison), et la gouvernance : un interlocuteur unique côté
+          client, un délai maximal de validation par livrable, un nombre de
+          cycles de corrections inclus. France Num recommande aussi une{" "}
+          <strong>réserve de 15 à 20 %</strong> pour les besoins découverts
+          en route — les projets qui la prévoient ne dérapent pas, ils
+          arbitrent.
         </p>
+
+        <h3>Combien de temps prévoir : les 5 phases et le rétroplanning</h3>
+        <p>
+          Un projet de site suit presque toujours cinq phases : cadrage,
+          maquettes (avec les allers-retours), développement, recette (vos
+          tests et corrections), mise en ligne. Les fourchettes du marché :
+          3 à 8 semaines pour un site vitrine, de 6 semaines à 6 mois pour
+          un e-commerce — à condition d&apos;être réactif : chaque
+          validation qui traîne une semaine décale la mise en ligne
+          d&apos;autant, et la première cause de retard reste les contenus
+          non livrés. D&apos;où le rétroplanning : partez de votre date
+          impérative (salon, saison, période fiscale), remontez le temps,
+          réservez 2 à 3 semaines de marge, et écrivez ce planning dans la
+          section 10 avec des jalons — une échéance sans jalons
+          n&apos;engage personne. Date à moins de 6 semaines ? Dites-le dès
+          le premier contact.
+        </p>
+
+        <h3>Et après la mise en ligne ? Domaine, hébergement, maintenance, propriété</h3>
+        <p>
+          Le principal trou des modèles en circulation — et la première
+          source de litige après la livraison. Quatre points à écrire noir
+          sur blanc. <strong>Le nom de domaine</strong> : enregistré à
+          votre nom, jamais à celui de l&apos;agence.{" "}
+          <strong>L&apos;hébergement</strong> : qui le souscrit, à quel
+          coût annuel (100 à 600 € par an pour un site vitrine), où sont
+          les données. <strong>La maintenance</strong> : qui applique les
+          mises à jour de sécurité, qui corrige un bug, sous quel délai,
+          pour quel tarif annuel — comptez 10 à 20 % du prix du projet par
+          an, formation de votre équipe incluse ou non.{" "}
+          <strong>La propriété et la réversibilité</strong> : le code, les
+          textes et les images produits vous appartiennent, et vous pouvez
+          à tout moment récupérer site, contenus et accès dans un format
+          réutilisable, sans pénalité ni blocage. Un site dont vous ne
+          possédez ni le domaine, ni les accès, ni le code n&apos;est pas
+          votre site — c&apos;est un abonnement.
+        </p>
+
+        <h3>Le modèle à copier-coller</h3>
+        <p>
+          La trame complète, prête à coller dans Word, Google Docs ou
+          Notion. Remplacez les crochets par vos réponses, supprimez ce qui
+          ne vous concerne pas — un CDC utile est un CDC fini, pas un CDC
+          exhaustif.
+        </p>
+        <FormulaBox>
+{`1. QUI NOUS SOMMES
+   [activité, effectif, zone] — pourquoi ce projet
+   maintenant : [déclencheur]
+2. OBJECTIFS
+   O1 [passer de X à Y demandes de devis/mois en 12 mois]
+   O2 [1re page Google sur « métier + ville »]
+   O3 [réduire de X % les appels répétitifs]
+3. CIBLES
+   [profil 1 : ce qu'il cherche, ce qui le rassure,
+   sur quel appareil] ; [profil 2]
+4. FONCTIONNALITÉS
+   Indispensables : […] — Souhaitables (V2) : […]
+5. PAGES & CONTENUS
+   [page — qui écrit — pour quand]
+6. DESIGN
+   3 sites aimés, 1 détesté : [lien + pourquoi]
+7. EXIGENCES TECHNIQUES
+   Contenu principal < 2,5 s sur mobile, RGPD,
+   accessibilité de base
+8. RECHERCHES GOOGLE VISÉES
+   [« métier + ville », …]
+9. OUTILS À CONNECTER
+   [CRM / agenda / facturation] — ou « aucune
+   intégration en V1 »
+10. BUDGET & GOUVERNANCE
+   [fourchette + réserve 15 %] ; [échéance + motif] ;
+   [validation : nom, délai, cycles de corrections] ;
+   propriété du code et réversibilité exigées`}
+        </FormulaBox>
+
+        <InfoBox variant="emerald" title="À retenir : les 5 règles d'or du cahier des charges">
+          1. Décrivez des besoins, jamais des solutions. 2. Chiffrez tout
+          ce qui peut l&apos;être : le mesurable est vérifiable, donc
+          opposable. 3. Priorisez sans pitié : indispensable ou
+          souhaitable. 4. Écrivez l&apos;existant, y compris les
+          non-demandes : l&apos;intégration découverte en route est
+          l&apos;avenant le plus fréquent. 5. Annoncez votre fourchette de
+          budget : elle calibre la solution — et vous vaut des devis enfin
+          comparables.
+        </InfoBox>
 
         <GuideInlineCTA
           title="Un cadrage professionnel plutôt qu'un CDC solitaire ?"
@@ -480,11 +704,11 @@ export default function Page() {
 
         <h2 id="exemple-rempli">5. L&apos;exemple rempli : cabinet comptable, refonte vitrine</h2>
         <p>
-          Aucune page qui ranke sur cette requête ne montre un exemple
-          au-delà de six lignes. Voici les sections clés d&apos;un CDC réel
-          (anonymisé et condensé) tel que nous aimons en recevoir — cabinet
-          d&apos;expertise comptable régional, 12 salariés, refonte de son
-          site vitrine :
+          Un modèle vide ne dit pas tout : rien ne remplace un exemple
+          réellement rempli. Voici les sections clés d&apos;un CDC réel
+          (anonymisé et condensé) : celui d&apos;un cabinet
+          d&apos;expertise comptable régional de 12 salariés qui refondait
+          son site vitrine.
         </p>
         <FormulaBox>
 {`2. OBJECTIFS (extraits)
@@ -523,38 +747,48 @@ export default function Page() {
     par livrable, 2 cycles de corrections inclus`}
         </FormulaBox>
         <p>
-          Notez ce qui rend ce document immédiatement exploitable : chaque
-          objectif est chiffré, le périmètre est hiérarchisé, la non-demande
-          d&apos;intégration est écrite <em>aussi</em> (elle évite un
-          sur-chiffrage), et le budget est annoncé en fourchette. Ce CDC de
-          6 pages a reçu trois devis parfaitement comparables.
+          Lecture : « p75 » signifie que l&apos;exigence doit être tenue
+          pour au moins 75 % des visiteurs réels ; « contrastes AA » est le
+          niveau intermédiaire de la norme d&apos;accessibilité — des
+          textes suffisamment lisibles sur leur fond.
+        </p>
+        <p>
+          Notez ce qui rend ce document exploitable : chaque objectif est
+          chiffré, le périmètre hiérarchisé, la non-demande
+          d&apos;intégration écrite <em>aussi</em>, le budget annoncé en
+          fourchette. Ce CDC de 6 pages a reçu trois devis parfaitement
+          comparables.
         </p>
 
         <h2 id="erreurs">6. Les 7 erreurs qui ruinent un cahier des charges</h2>
         <p>Vues de notre côté du bureau, par fréquence décroissante :</p>
-        <ul>
+        <ol>
           <li>
             <strong>Décrire la solution au lieu du problème</strong> —
-            « intégrer tel plugin », « bouton de 42 px en #3B82F6 ». Vous
-            payez une expertise : exprimez le besoin, laissez le prestataire
-            proposer (et challengez sa proposition).
+            « intégrer tel plugin » (un module tout fait qu&apos;on ajoute
+            à un site), « un bouton de 42 pixels en #3B82F6 » (taille et
+            code couleur imposés au millimètre). Vous payez une expertise :
+            exprimez le besoin, laissez le prestataire proposer.
           </li>
           <li>
             <strong>Les adjectifs à la place des comportements</strong> —
-            « site rapide, moderne, intuitif ». Écrivez « charge en moins de
-            2,5 s sur mobile », « un visiteur trouve le formulaire de devis
-            en 2 clics ».
+            « site rapide, moderne, intuitif ». Écrivez « charge en moins
+            de 2,5 s sur mobile », « le formulaire de devis se trouve en
+            2 clics ».
           </li>
           <li>
             <strong>Aucun objectif mesurable</strong> — sans O1/O2/O3
-            chiffrés, impossible d&apos;arbitrer les choix ni d&apos;évaluer
-            le ROI. C&apos;est aussi ce qui distingue un projet d&apos;une
-            dépense.
+            chiffrés, impossible d&apos;arbitrer ni d&apos;évaluer le
+            retour sur investissement (le ROI : ce que le site rapporte
+            comparé à ce qu&apos;il a coûté). C&apos;est ce qui distingue
+            un projet d&apos;une dépense.
           </li>
           <li>
             <strong>L&apos;existant passé sous silence</strong> — CRM, ERP,
-            agendas, facturation découverts au sprint 2 : chaque intégration
-            surprise coûte 2 à 10 jours non chiffrés.
+            agendas, facturation découverts quelques semaines après le
+            démarrage : chaque intégration surprise coûte 2 à 10 jours non
+            prévus, soit 1 000 à 8 000 € de surcoût au tarif courant du
+            développeur (400 à 800 € la journée).
           </li>
           <li>
             <strong>Des contenus sans responsable</strong> — première cause
@@ -562,67 +796,89 @@ export default function Page() {
             réponses obligatoires.
           </li>
           <li>
-            <strong>Le budget caché</strong> — voir section suivante : vous
-            recevez des devis incomparables et faites perdre 10 heures à
-            chaque agence sérieuse.
+            <strong>Le budget caché</strong> — voir le chapitre suivant :
+            devis incomparables, et 10 heures perdues pour chaque agence
+            sérieuse.
           </li>
           <li>
             <strong>La liste au Père Noël</strong> — 25 fonctionnalités sans
-            priorité. Cas réel documenté : une PME e-commerce qui avait
-            oublié de prioriser (et de mentionner le multi-devises) a pris
-            3 mois de retard et 15 % de budget en plus.
+            priorité. Cas vu en cadrage : une PME e-commerce qui
+            n&apos;avait ni priorisé ni mentionné son besoin de
+            multi-devises a vu son planning glisser de plusieurs mois et
+            son budget s&apos;alourdir en avenants — le multi-devises
+            touchait au catalogue, aux paiements et à la facturation.
           </li>
-        </ul>
+        </ol>
 
         <h2 id="budget">7. Faut-il indiquer son budget ? (oui — voici pourquoi)</h2>
         <p>
-          C&apos;est la question la plus débattue — et côté prestataire, la
-          réponse est unanime : <strong>annoncez au moins une
-          fourchette</strong>. « Je ne préfère pas le dire » ne vous protège
-          de rien : sans repère, l&apos;agence sous-dimensionne (devis
-          inutilisable) ou sur-dimensionne (devis effrayant), et vous
-          comparez des propositions qui ne décrivent pas le même projet.
-          Chiffrer sérieusement un site représente une dizaine d&apos;heures
-          de travail : ce temps se investit pour un projet calibrable, pas
-          pour une devinette. La crainte du « devis gonflé pour consommer
-          l&apos;enveloppe » se neutralise simplement : donnez une fourchette
-          et exigez le détail poste par poste — nos{" "}
+          C&apos;est la question la plus débattue — l&apos;erreur n° 6 de
+          notre liste — et côté prestataire, la réponse est unanime :{" "}
+          <strong>annoncez au moins une fourchette</strong>. « Je préfère
+          ne pas le dire » ne vous protège de rien : sans repère,
+          l&apos;agence devine — sous-dimensionne (devis inutilisable) ou
+          sur-dimensionne (devis effrayant) — et vous comparez des projets
+          différents.
+        </p>
+        <p>
+          Chiffrer sérieusement un site représente une dizaine
+          d&apos;heures de travail côté agence. Ce temps s&apos;investit
+          volontiers dans un projet dont le budget est annoncé — pas dans
+          une devinette.
+        </p>
+        <p>
+          Reste la crainte du « devis gonflé pour consommer
+          l&apos;enveloppe ». Elle se neutralise simplement : donnez une
+          fourchette et exigez le détail poste par poste — nos{" "}
           <Link href="/guides/combien-coute-un-site-internet">guides de
-          prix</Link> vous donnent les repères du marché pour la calibrer. En
-          marchés publics, c&apos;est même tranché juridiquement : le budget
-          doit être communiqué pour être opposable aux candidats.
+          prix</Link> donnent les repères du marché pour la calibrer. En
+          marchés publics, la question est même tranchée : le budget doit
+          être communiqué pour être opposable, c&apos;est-à-dire pour
+          pouvoir écarter légalement les offres qui le dépassent.
         </p>
 
         <h2 id="qui-redige">8. Qui rédige, combien ça coûte</h2>
         <p>
-          Le bon partage des rôles : <strong>vous</strong> exprimez le besoin
-          métier (personne ne peut le faire à votre place) ;{" "}
+          Le bon partage : <strong>vous</strong> exprimez le besoin métier
+          (personne ne peut le faire à votre place) ;{" "}
           <strong>le prestataire</strong> challenge, complète et traduit en
-          spécifications. Trois options pour formaliser :
+          spécifications. Trois options :
         </p>
         <GuideTable
           headers={["Option", "Coût", "Pour qui"]}
           rows={[
             ["Vous-même avec ce modèle", "0 € (2-4 h de travail)", "Vitrine, projet cadré"],
-            ["Consultant AMOA", "350 – 900 €/jour, soit 1 000 – 4 500 € le CDC", "Projet complexe, appel d'offres"],
+            ["Consultant AMOA (chef de projet indépendant qui rédige le CDC avec vous et défend vos intérêts)", "350 – 900 €/jour ; comptez 3 à 5 jours, soit 1 000 – 4 500 € le CDC", "Projet complexe, appel d'offres"],
             ["Discovery Sprint Hagnéré Code", "1 500 € (2 jours), déduit à 100 % si le projet se lance", "Specs + prototype cliquable + devis ferme"],
           ]}
         />
         <p>
-          Quand le rédiger ? <strong>Avant de demander les devis</strong> —
-          c&apos;est tout son intérêt : le même document envoyé à trois
-          prestataires produit trois devis comparables. L&apos;envoyer après,
-          c&apos;est cadrer un projet déjà chiffré à l&apos;aveugle.
+          Repère utile : une journée de développeur ou de consultant web se
+          facture couramment 350 à 900 € HT — quand un devis est exprimé en
+          jours, faites la multiplication. Quand rédiger le CDC ?{" "}
+          <strong>Avant de demander les devis</strong> : le même document
+          envoyé à trois prestataires produit trois devis comparables.
+        </p>
+
+        <p>
+          Et l&apos;IA ? Excellent accélérateur de brouillon, très mauvais
+          auteur final : elle ne peut pas inventer vos objectifs, vos
+          clients, vos outils ni votre budget. Remplissez d&apos;abord
+          vous-même les sections 2, 3, 9 et 10, puis demandez-lui quelles
+          questions un prestataire poserait en lisant votre texte.
+          L&apos;IA remplace la page blanche, pas la réflexion.
         </p>
 
         <h2 id="declinaisons">9. E-commerce, refonte, SaaS : ce qui change</h2>
         <h3>Pour un site e-commerce</h3>
         <p>
-          Ajoutez : le catalogue (volumétrie, variantes, filtres), le tunnel
-          de commande, les moyens de paiement, la gestion des stocks et de la
-          livraison, les KPI (panier moyen, taux de conversion) et les
-          intégrations logistique/comptabilité. Les repères de prix sont dans
-          notre guide du{" "}
+          Ajoutez : votre catalogue (combien de produits ? en combien de
+          tailles ou couleurs ? avec quels filtres ?), le parcours
+          d&apos;achat du panier au paiement, les moyens de paiement, la
+          gestion des stocks et livraisons, vos indicateurs de réussite
+          (panier moyen, pourcentage de visiteurs qui achètent) et les
+          logiciels de logistique et comptabilité à connecter. Les repères
+          de prix sont dans notre guide du{" "}
           <Link href="/guides/prix-site-e-commerce">prix d&apos;un site
           e-commerce</Link> et l&apos;offre{" "}
           <Link href="/services/ecommerce">e-commerce sur mesure</Link>.
@@ -630,17 +886,22 @@ export default function Page() {
         <h3>Pour une refonte</h3>
         <p>
           Les sections que tous les modèles génériques oublient :
-          l&apos;audit de l&apos;existant (trafic, pages qui positionnent),
-          l&apos;inventaire des URLs, le <strong>plan de redirections
-          301</strong> et le suivi SEO post-migration. Une refonte sans plan
-          de redirections peut effacer en un déploiement trois ans de
-          référencement — exigez cette section dans tout devis de refonte.
+          l&apos;audit de l&apos;existant (quelles pages attirent du
+          trafic ?), l&apos;inventaire des adresses de vos pages, et le{" "}
+          <strong>plan de redirections 301</strong> — le mécanisme qui,
+          comme la réexpédition du courrier après un déménagement, renvoie
+          automatiquement Google et vos visiteurs des anciennes adresses
+          vers les nouvelles. Sans lui, une refonte peut effacer en une
+          mise en ligne trois ans de référencement. Exigez cette section
+          dans tout devis de refonte, avec un suivi SEO post-migration.
         </p>
         <h3>Pour un SaaS ou une application</h3>
         <p>
-          Le CDC devient un document produit : user stories, rôles et
-          permissions, modèle de données, API, sécurité. C&apos;est un autre
-          exercice — nos guides{" "}
+          Pour un SaaS — un logiciel vendu en ligne par abonnement, comme
+          votre outil de paie —, le CDC devient un document produit :
+          parcours de chaque type d&apos;utilisateur, droits d&apos;accès,
+          données à stocker, connexions avec d&apos;autres logiciels,
+          sécurité. C&apos;est un autre exercice — nos guides{" "}
           <Link href="/guides/combien-coute-un-saas">combien coûte un
           SaaS</Link> et{" "}
           <Link href="/guides/combien-coute-une-application-mobile">prix
@@ -654,27 +915,35 @@ export default function Page() {
           Un cahier des charges n&apos;a de valeur que{" "}
           <strong>contresigné ou annexé au contrat</strong> — il devient
           alors le référentiel de conformité du projet. Deux vigilances :
-          d&apos;abord, la <strong>clause d&apos;ordre de priorité des
-          documents</strong> — certains prestataires font prévaloir leur
-          proposition commerciale sur votre CDC en cas de contradiction ;
-          lisez cette clause avant de signer. Ensuite, l&apos;enseignement du
-          jugement Oopet c/ Dual (T. com. Paris, 2020) : sans spécifications
-          formalisées, même un projet visiblement décevant ne donne
-          quasiment aucune prise juridique. Chez Hagnéré Code, le périmètre
-          écrit du Discovery Sprint est annexé au devis — c&apos;est lui qui
-          fait foi, dans les deux sens.
+          la <strong>clause d&apos;ordre de priorité des documents</strong>{" "}
+          — certains prestataires font prévaloir leur proposition
+          commerciale sur votre CDC ; lisez-la avant de signer. Et le
+          jugement Oopet c/ Dual (chapitre 2) : sans spécifications
+          formalisées, même un projet décevant ne donne quasiment aucune
+          prise juridique. Chez Hagnéré Code, le périmètre écrit du
+          Discovery Sprint est annexé au devis — c&apos;est lui qui fait
+          foi, dans les deux sens.
         </p>
 
         <h2 id="cas-particuliers">11. Mairies, associations, marchés publics</h2>
         <p>
-          Les structures publiques et associatives ont trois spécificités à
-          écrire dès le CDC : l&apos;<strong>accessibilité RGAA
-          obligatoire</strong> (organismes publics, avec déclaration de
-          conformité publiée), la <strong>communication du budget</strong>{" "}
-          (condition d&apos;opposabilité en commande publique) et les
-          critères de sélection pondérés annoncés aux candidats. Le modèle de
-          ce guide reste valable — ajoutez-y le cadre réglementaire de votre
-          consultation.
+          Dans le secteur public, le « cahier des charges » prend une forme
+          codifiée : le <strong>CCTP</strong> (cahier des clauses techniques
+          particulières) décrit le besoin — l&apos;équivalent direct du
+          modèle de ce guide — et le <strong>CCAP</strong> (cahier des
+          clauses administratives particulières) fixe les règles du
+          contrat. Trois spécificités : l&apos;<strong>accessibilité RGAA
+          obligatoire</strong> (avec déclaration de conformité publiée) ;
+          la <strong>communication du budget</strong> — sans enveloppe
+          annoncée, impossible d&apos;écarter légalement une offre qui la
+          dépasse ; et les critères de choix annoncés à l&apos;avance avec
+          leur poids (prix 40 %, qualité technique 40 %, délais 20 %).
+          Repère : sous 40 000 € HT, le code de la commande publique
+          (article R2122-8) dispense de procédure formalisée — un devis
+          comparatif appuyé sur votre CDC suffit, le cas de la plupart des
+          petites communes et associations. Et prévoyez un volet
+          maintenance : un site public sans maintenance devient un site à
+          l&apos;abandon dès la première faille de sécurité.
         </p>
 
         <h2 id="methode">12. Méthode : rédiger votre CDC en 5 étapes</h2>
@@ -684,8 +953,8 @@ export default function Page() {
             (sections 2-3) — tout le reste en découle.
           </li>
           <li>
-            <strong>Listez les fonctionnalités, puis coupez</strong> — tout ce
-            qui n&apos;est pas indispensable passe en « souhaitable ».
+            <strong>Listez les fonctionnalités, puis coupez</strong> — tout
+            ce qui n&apos;est pas indispensable passe en « souhaitable ».
           </li>
           <li>
             <strong>Faites l&apos;inventaire de l&apos;existant</strong> —
@@ -693,19 +962,24 @@ export default function Page() {
           </li>
           <li>
             <strong>Chiffrez vos exigences</strong> — performance, délais,
-            budget en fourchette (aidez-vous de nos guides de prix).
+            budget en fourchette.
           </li>
           <li>
-            <strong>Faites-le challenger</strong> — par un pair, puis par les
-            prestataires : un bon prestataire pose des questions qui
-            dérangent ; celui qui chiffre sans rien demander est un signal
-            d&apos;alerte.
+            <strong>Faites-le challenger</strong> — par un pair, puis par
+            les prestataires : un bon prestataire pose des questions qui
+            dérangent. Celui qui chiffre sans rien demander devine votre
+            périmètre — et ce qui est deviné aujourd&apos;hui se refacture
+            demain en avenant.
           </li>
         </ol>
 
         <p>
-          Avant d&apos;envoyer, passez la checklist finale — chaque « non »
-          est un avenant en puissance :
+          Avant d&apos;envoyer, passez la checklist — chaque « non » est un
+          avenant en puissance. Ses deux exigences les moins connues sont
+          détaillées au chapitre 4, « Et après la mise en ligne ? » : la
+          propriété du code (le site livré vous appartient) et la
+          réversibilité (récupérer site et données pour changer de
+          prestataire, sans pénalité ni blocage) :
         </p>
         <GuideTable
           headers={["Vérification", "OK ?"]}
@@ -717,7 +991,7 @@ export default function Page() {
             ["Mes exigences de performance sont chiffrées (Core Web Vitals)", "☐"],
             ["RGPD et accessibilité sont mentionnés", "☐"],
             ["Ma fourchette de budget et mon échéance sont écrites", "☐"],
-            ["La propriété du code et la réversibilité sont exigées", "☐"],
+            ["La propriété du code et la réversibilité (récupérer site, contenus et accès en cas de départ) sont exigées", "☐"],
             ["Un interlocuteur unique et des délais de validation sont définis", "☐"],
             ["Le même document part chez tous les prestataires consultés", "☐"],
           ]}
@@ -725,24 +999,36 @@ export default function Page() {
 
         <h2 id="du-cdc-au-devis">13. Du cahier des charges au devis ferme</h2>
         <p>
+          Votre CDC est prêt ? Consultez 3 à 4 prestataires, pas plus :
+          au-delà, vous ne comparez plus, vous compilez. Même document pour
+          tous, date limite identique, 30 minutes d&apos;échange avec
+          chacun : la qualité de ses questions en dit plus que sa
+          plaquette. Comparez périmètre couvert, exclusions, maintenance et
+          références — le prix en dernier. Deux signaux d&apos;alerte : le
+          devis rendu en 48 heures sans une seule question, et le devis
+          très en dessous des autres — relisez ce qu&apos;il exclut
+          (rédaction, SEO, maintenance, formation) : le moins-disant se
+          rattrape presque toujours en avenants.
+        </p>
+        <p>
           Voici comment nous lisons un CDC reçu : objectifs d&apos;abord
-          (sont-ils mesurables ?), périmètre ensuite (est-il priorisé ?),
-          existant enfin (qu&apos;est-ce qui va nous surprendre ?). Puis nous
-          posons les questions qui manquent — et il en manque toujours.
-          C&apos;est le rôle du <strong>Discovery Sprint (1 500 €,
-          2 jours)</strong> : transformer votre expression de besoin en
-          spécifications écrites, prototype cliquable et{" "}
-          <strong>devis au forfait fixe</strong>, déduit à 100 % si le projet
-          se lance. Le périmètre validé est annexé au contrat, les dates sont
-          contractuelles — c&apos;est notre{" "}
+          (mesurables ?), périmètre ensuite (priorisé ?), existant enfin
+          (qu&apos;est-ce qui va nous surprendre ?). Puis nous posons les
+          questions qui manquent — il en manque toujours. C&apos;est le
+          rôle du <strong>Discovery Sprint (1 500 €, 2 jours)</strong> :
+          transformer votre expression de besoin en spécifications écrites,
+          prototype cliquable (maquette interactive) et{" "}
+          <strong>devis au forfait fixe</strong>, déduit à 100 % si le
+          projet se lance. Le périmètre validé est annexé au contrat, les
+          dates sont contractuelles — c&apos;est notre{" "}
           <Link href="/methode">méthode Sprint Fixe™</Link>.
         </p>
         <p>
           Vous avez déjà votre cahier des charges — ou juste une idée
           claire ?{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en
-          3 minutes</Link> : notre équipe vous répond personnellement sous
-          24 h ouvrées, gratuitement et sans engagement.
+          3 minutes</Link> : nous vous répondons personnellement sous 24 h
+          ouvrées, gratuitement et sans engagement.
         </p>
 
         <hr />
@@ -755,10 +1041,18 @@ export default function Page() {
           seuils{" "}
           <a href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener noreferrer">Core Web Vitals (Google Search Central)</a> ;
           European Accessibility Act (directive 2019/882, applicable depuis
-          juin 2025) ; jugement T. com. Paris, 7 octobre 2020 (Oopet c/
-          Dual), relayé par{" "}
-          <a href="https://www.lemondeinformatique.fr/" target="_blank" rel="noopener noreferrer">Le Monde Informatique</a> ;
-          baromètres TJM AMOA (Portageo, Free-Work).
+          juin 2025) et sa transposition française (loi DDADUE du
+          9 mars 2023 — analyses Temesis et EY Société d&apos;Avocats sur le
+          régime de sanctions) ; jugement T. com. Paris, 8e ch.,
+          7 octobre 2020 (Oopet c/ Dual),{" "}
+          <a href="https://www.legalis.net/jurisprudences/tribunal-de-commerce-de-paris-8eme-ch-jugement-du-7-octobre-2020/" target="_blank" rel="noopener noreferrer">texte intégral sur Legalis</a>,
+          analysé par{" "}
+          <a href="https://www.lemondeinformatique.fr/actualites/lire-methode-agile-la-justice-rappelle-l-importance-du-cahier-des-charges-80976.html" target="_blank" rel="noopener noreferrer">Le Monde Informatique</a> ;
+          part du trafic mobile :{" "}
+          <a href="https://gs.statcounter.com/" target="_blank" rel="noopener noreferrer">StatCounter Global Stats</a> ;
+          recommandations{" "}
+          <a href="https://www.cnil.fr/" target="_blank" rel="noopener noreferrer">CNIL</a>{" "}
+          pour les sites web ; baromètres TJM AMOA (Portageo, Free-Work).
         </p>
         <p className="text-sm">
           <em>

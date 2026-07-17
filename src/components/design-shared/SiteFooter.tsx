@@ -22,6 +22,8 @@ const PROJECT_TYPES = [
   "Outil interne / back-office",
   "Reprise ou audit Laravel",
   "Site vitrine / landing",
+  "Site e-commerce / boutique en ligne",
+  "Application mobile",
   "Je ne sais pas",
 ];
 const TIMELINES = [
