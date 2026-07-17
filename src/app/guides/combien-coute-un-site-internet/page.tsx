@@ -425,8 +425,12 @@ export default function Page() {
           <Link href="/services/outils-internes-sur-mesure">outil interne
           sur mesure</Link> va de 8 000 € (un processus ciblé) à 80 000 €
           (plateforme multi-services avec « SSO » : chaque salarié se connecte
-          avec ses identifiants d&apos;entreprise existants). Si vos équipes
-          vivent encore dans Excel, notre{" "}
+          avec ses identifiants d&apos;entreprise existants). Toutes les
+          grilles par type d&apos;outil, la méthode pour vérifier un devis
+          et le match chiffré contre les abonnements sont dans notre guide
+          du <Link href="/guides/prix-logiciel-sur-mesure">prix d&apos;un
+          logiciel sur mesure</Link>. Et si vos équipes vivent encore dans
+          Excel, notre{" "}
           <Link href="/outils/calculateur-cout-excel">calculateur de coût
           Excel</Link> chiffre en 2 minutes ce que la situation actuelle vous
           coûte — souvent l&apos;argument qui débloque le budget.

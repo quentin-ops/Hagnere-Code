@@ -359,7 +359,11 @@ export default function Page() {
             <Link href="/guides/combien-coute-un-saas">« combien coûte un
             SaaS »</Link> : une app compagnon iOS + Android s&apos;y ajoute
             pour 10 000 à 20 000 € — le backend existe déjà, on ne
-            développe que les écrans mobiles.
+            développe que les écrans mobiles. Et si le cœur du besoin est
+            l&apos;outil de gestion lui-même plutôt que l&apos;app, notre
+            guide du{" "}
+            <Link href="/guides/prix-logiciel-sur-mesure">prix d&apos;un
+            logiciel sur mesure</Link> chiffre ce versant.
           </li>
           <li>
             <strong>La marketplace et les apps complexes (40 000 € et

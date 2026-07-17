@@ -359,7 +359,10 @@ export default function Page() {
           presque rien au départ et vaut cher ensuite. Pour ce profil, notre
           offre d&apos;<Link href="/services/outils-internes-sur-mesure">outils
           internes sur mesure</Link> couvre exactement ce périmètre, au
-          forfait fixe.
+          forfait fixe — et notre guide du{" "}
+          <Link href="/guides/prix-logiciel-sur-mesure">prix d&apos;un
+          logiciel sur mesure</Link> en détaille toutes les grilles, ROI
+          compris.
         </p>
         <h3>Scénario C — Scale-up : externaliser un module ou accélérer</h3>
         <p>

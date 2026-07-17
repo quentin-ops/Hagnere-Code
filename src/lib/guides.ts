@@ -135,6 +135,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 25,
   },
   {
+    slug: "prix-logiciel-sur-mesure",
+    title: "Prix logiciel sur mesure 2026 : 5 000 à 250 000 € · Hagnéré Code",
+    cardTitle: "Prix d'un logiciel sur mesure : le vrai budget 2026",
+    metaDescription:
+      "Combien coûte un logiciel sur mesure ? Grille 2026 par type, méthode jours × TJM, match chiffré contre SaaS et Excel, et un devis décortiqué ligne à ligne.",
+    cardDescription:
+      "La grille par type d'outil, la méthode pour vérifier un devis, le match sur 3 ans contre SaaS et Excel, le ROI en heures gagnées et un devis décortiqué.",
+    heroTitle: "Prix d'un logiciel sur mesure : le vrai budget en 2026 (+ devis décortiqué)",
+    section: "Budget & prix",
+    datePublished: "2026-07-17",
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",

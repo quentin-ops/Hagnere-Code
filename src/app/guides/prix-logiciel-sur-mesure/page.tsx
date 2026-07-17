@@ -1,0 +1,845 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { GuideLayout } from "@/components/guides/guide-layout";
+import {
+  GuideToc,
+  InfoBox,
+  GuideTable,
+  GuideInlineCTA,
+  FormulaBox,
+} from "@/components/guides/guide-content-blocks";
+import { GuidesShell } from "@/components/guides/GuidesShell";
+import { OG_BASE, SITE_URL } from "@/lib/seo";
+import { getGuide, guidePath, guideUrl, formatGuideDate } from "@/lib/guides";
+
+const guide = getGuide("prix-logiciel-sur-mesure");
+
+// --- METADATA SEO (title/description/dates depuis src/lib/guides.ts) ---
+export const metadata: Metadata = {
+  title: guide.title,
+  description: guide.metaDescription,
+  authors: [{ name: "Quentin Hagnéré" }],
+  creator: "Hagnéré Code",
+  publisher: "Hagnéré Code",
+  alternates: { canonical: guidePath(guide) },
+  openGraph: {
+    ...OG_BASE,
+    type: "article",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    url: guidePath(guide),
+    publishedTime: `${guide.datePublished}T09:00:00+02:00`,
+    modifiedTime: `${guide.dateModified}T09:00:00+02:00`,
+    authors: [`${SITE_URL}/equipe`],
+    // og:image générée par opengraph-image.tsx (convention Next.js).
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+// --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
+const articleJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: guide.cardTitle,
+  description: guide.metaDescription,
+  url: guideUrl(guide),
+  mainEntityOfPage: { "@type": "WebPage", "@id": guideUrl(guide) },
+  image: [`${guideUrl(guide)}/opengraph-image`],
+  datePublished: guide.datePublished,
+  dateModified: guide.dateModified,
+  inLanguage: "fr-FR",
+  articleSection: guide.section,
+  wordCount: 4800,
+  isPartOf: {
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/guides`,
+    name: "Guides web Hagnéré Code",
+  },
+  author: {
+    "@type": "Person",
+    name: "Quentin Hagnéré",
+    jobTitle: "Fondateur de Hagnéré Code",
+    url: `${SITE_URL}/equipe`,
+    knowsAbout: [
+      "Développement web",
+      "Logiciels métier sur mesure",
+      "Next.js",
+      "React",
+      "Automatisation d'entreprise",
+      "Chiffrage de projets web",
+    ],
+    sameAs: ["https://www.linkedin.com/in/quentin-hagnere"],
+    worksFor: { "@id": `${SITE_URL}/#organization` },
+  },
+  publisher: {
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: "Hagnéré Code",
+    url: SITE_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/logos/logo-dark.png`,
+    },
+  },
+});
+
+const breadcrumbJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE_URL}/guides` },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Prix d'un logiciel sur mesure",
+      item: guideUrl(guide),
+    },
+  ],
+});
+
+const faqItems = [
+  {
+    question: "Quel est le prix d'un logiciel sur mesure ?",
+    answer:
+      "Les fourchettes qui font consensus sur le marché français en 2026 : 5 000 à 15 000 € pour un outil interne simple (un processus digitalisé, quelques écrans), 15 000 à 60 000 € pour un vrai logiciel métier (rôles, circuits de validation, connexions à vos outils), et 60 000 à 250 000 € pour une plateforme complète. La médiane constatée sur des budgets réels tourne autour de 30 000 €. Chez Hagnéré Code, un outil interne sur mesure va de 8 000 à 80 000 € au forfait fixe contractuel.",
+  },
+  {
+    question: "Combien coûte le développement d'un logiciel de gestion ?",
+    answer:
+      "Selon ce qu'il gère : un suivi de stock ou de commandes simple se situe entre 8 000 et 20 000 €, une gestion complète (clients, devis, planning, facturation connectée) entre 20 000 et 60 000 €, un ERP sur mesure au-delà de 80 000 €. Le facteur qui fait le plus varier le prix n'est pas le nombre d'écrans : ce sont les connexions à vos logiciels existants (comptabilité, paie, banque), qui représentent 2 000 à 15 000 € chacune.",
+  },
+  {
+    question: "Comment est calculé le prix d'un logiciel ?",
+    answer:
+      "Presque toujours par la même multiplication : nombre de jours de travail × taux journalier (le « TJM »). En France en 2026, un développeur confirmé facture 450 à 600 € par jour, un senior 600 à 800 €. Un outil simple représente 10 à 30 jours de travail, un logiciel métier 40 à 120 jours. Faites la multiplication sur tout devis reçu : un « logiciel complet à 3 000 € » représente 5 jours de travail — demandez-vous ce qu'on peut réellement construire en une semaine.",
+  },
+  {
+    question: "Logiciel sur mesure ou SaaS : comment choisir ?",
+    answer:
+      "La règle simple : on s'abonne pour ce qui est commun à toutes les entreprises (paie, comptabilité, messagerie), on construit ce qui fait sa différence. Un abonnement est imbattable au démarrage ; mais il se paie par siège, pour toujours, avec une inflation moyenne de 11 % par an sur les prix SaaS. Dès ~10 utilisateurs sur un outil central, le cumul des licences croise souvent le coût d'un développement amorti entre 2 et 4 ans — faites le calcul sur 5 ans avant de décider, il est dans ce guide.",
+  },
+  {
+    question: "Combien coûte la maintenance d'un logiciel sur mesure ?",
+    answer:
+      "La règle sectorielle : 10 à 25 % du coût de développement initial par an — environ 5-10 % pour la maintenance corrective (bugs, mises à jour de sécurité) et 5-15 % pour l'évolutif (améliorations). Un outil qui a coûté 30 000 € appelle donc 3 000 à 7 500 €/an. Ajoutez l'hébergement : 40 à 100 €/mois pour un outil de PME sur une infrastructure moderne, sauvegardes automatiques comprises.",
+  },
+  {
+    question: "Peut-on créer un logiciel de gestion avec Excel ou Access ?",
+    answer:
+      "On peut — c'est même souvent la bonne première étape. Mais connaissez les limites : les recherches académiques (Ray Panko, Université d'Hawaï) montrent que 88 % des feuilles de calcul contiennent au moins une erreur, et un fichier qui fonctionnait pour 50 commandes par mois casse à 500. Les signaux qu'il est temps de passer à un vrai outil : le fichier ne marche que pour son auteur, les versions se contredisent, les macros cassent à chaque mise à jour, et la ressaisie mange des heures chaque semaine.",
+  },
+  {
+    question: "Combien coûte le remplacement d'un vieux logiciel (Access, VB6, WinDev) ?",
+    answer:
+      "Trois niveaux d'intervention : une reprise-stabilisation (2 à 6 semaines, quelques milliers d'euros) pour gagner du temps, une modernisation progressive module par module (1 à 6 mois), ou une refonte complète avec reprise des données historiques — généralement 15 000 à 80 000 € pour une migration vers le web. Règle d'or vérifiée par les statistiques d'échec : jamais de « big bang » qui remplace tout d'un coup ; on migre morceau par morceau, en gardant l'ancien système en vie pendant la transition.",
+  },
+  {
+    question: "Combien de temps faut-il pour développer un logiciel sur mesure ?",
+    answer:
+      "Avec une équipe expérimentée : 3 à 8 semaines pour un outil interne simple, 2 à 6 mois pour un logiciel métier complet, 6 mois et plus pour une plateforme. Le vrai facteur de délai n'est pas le code : c'est la disponibilité de vos équipes pour montrer leurs processus réels, tester les versions intermédiaires et trancher les décisions. Un interlocuteur qui répond en 24 h fait gagner des semaines.",
+  },
+  {
+    question: "L'IA permet-elle de créer un logiciel moins cher ?",
+    answer:
+      "Oui pour le code standard, non pour le reste — et méfiez-vous des promesses de division par dix. Les études sérieuses mesurent des gains réels sur les tâches cadrées (+55 % de vitesse dans l'essai contrôlé GitHub Copilot) mais aussi des ralentissements sur le code complexe (-19 % dans l'essai randomisé METR 2025). Ce que l'IA ne réduit pas : comprendre votre métier, concevoir les bons écrans, connecter vos outils, fiabiliser. Notre position : l'IA industrialisée dans une équipe senior avec revue humaine — c'est ce qui explique nos forfaits sous les prix d'agence classiques, sans code jetable.",
+  },
+  {
+    question: "À qui appartient le code d'un logiciel développé par un prestataire ?",
+    answer:
+      "Au prestataire, par défaut — c'est la surprise juridique n° 1. En droit français (articles L.111-1 et L.131-3 du Code de la propriété intellectuelle), payer les factures ne transfère pas la propriété du code : il faut une cession écrite, précise (droits énumérés, étendue, durée), et la formule vague « tous droits cédés » est jugée inopérante par les tribunaux. Sans cession valide : blocage en cas de levée de fonds ou de revente, et le prestataire peut légalement réutiliser votre code chez un concurrent. Exigez la clause avant de signer.",
+  },
+  {
+    question: "Quel est le retour sur investissement d'un logiciel sur mesure ?",
+    answer:
+      "Il se calcule en heures gagnées : heures économisées par semaine × 47 semaines × coût horaire chargé (43,50 €/h en moyenne en France, Eurostat 2025). Exemple : un outil qui fait gagner 5 h par semaine à 3 salariés économise environ 30 700 €/an — le prix d'un petit outil sur mesure, amorti en un an. Ajoutez les gains invisibles : moins d'erreurs de saisie (la règle du secteur : prévenir coûte 1, corriger coûte 10, subir coûte 100) et des données fiables pour décider.",
+  },
+  {
+    question: "Combien coûte une connexion entre deux logiciels (intégration) ?",
+    answer:
+      "Chaque connexion (« intégration ») entre votre nouvel outil et un logiciel existant représente 1 à 4 semaines de travail : comptez 2 000 à 5 000 € pour un système de paiement, 3 000 à 8 000 € pour un CRM, 5 000 à 15 000 € pour un ERP. Pour des besoins simples, les outils d'automatisation (Make, n8n) font le pont pour 500 à 5 000 € de mise en place plus un petit abonnement — une bonne solution intermédiaire avant le sur-mesure complet.",
+  },
+];
+
+const faqJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+});
+
+export default function Page() {
+  return (
+    <GuidesShell>
+      <script type="application/ld+json">{articleJsonLd}</script>
+      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <script type="application/ld+json">{faqJsonLd}</script>
+
+      <GuideLayout
+        breadcrumbs={[
+          { label: "Guides", href: "/guides" },
+          { label: "Prix d'un logiciel sur mesure" },
+        ]}
+        heroTitle={guide.heroTitle}
+        heroDescription="La grille 2026 par type d'outil, la méthode jours × taux journalier pour vérifier n'importe quel devis, le match chiffré sur 3 ans contre les abonnements SaaS et contre Excel, le retour sur investissement en heures gagnées, un devis réel décortiqué ligne à ligne — et la question juridique que presque personne ne pose : à qui appartient le code ?"
+        author={{
+          name: "Quentin Hagnéré",
+          role: "fondateur de Hagnéré Code",
+          href: "/equipe",
+        }}
+        updatedLabel={`Mis à jour le ${formatGuideDate(guide.dateModified)}`}
+        keyPoints={[
+          { number: "01", title: "Outil simple : 5 000 – 15 000 €", description: "", color: "violet" },
+          { number: "02", title: "Logiciel métier : 15 000 – 60 000 €", description: "", color: "blue" },
+          { number: "03", title: "ROI : en heures gagnées", description: "", color: "emerald" },
+          { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
+        ]}
+        relatedLinks={[
+          { href: "/guides/combien-coute-un-site-internet", label: "Combien coûte un site internet ?" },
+          { href: "/guides/combien-coute-un-saas", label: "Combien coûte un SaaS ?" },
+          { href: "/guides/cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
+          { href: "/services/outils-internes-sur-mesure", label: "Outils internes sur mesure" },
+          { href: "/methode", label: "Notre méthode Sprint Fixe™" },
+          { href: "/tarifs", label: "Nos tarifs détaillés" },
+        ]}
+        faqTitle="Prix d'un logiciel sur mesure : vos questions"
+        faqItems={faqItems}
+      >
+        <p className="lead">
+          Pour le même besoin, une agence vous répond 5 000 € et une autre
+          150 000 €. Les deux sont sérieuses. Ce guide explique cet écart,
+          donne <strong>les vraies fourchettes 2026, la méthode pour
+          vérifier un devis en une multiplication, et le calcul qui compte
+          vraiment : ce que l&apos;absence d&apos;outil vous coûte déjà</strong>.
+        </p>
+
+        <GuideToc
+          items={[
+            { id: "reponse-rapide", label: "1. La réponse rapide : les fourchettes 2026" },
+            { id: "de-quoi-parle-t-on", label: "2. Sur mesure, SaaS, no-code, Excel : de quoi parle-t-on" },
+            { id: "cout-actuel", label: "3. Ce que l'absence d'outil vous coûte déjà" },
+            { id: "prix-par-type", label: "4. Les prix 2026 par type de logiciel" },
+            { id: "ecart-devis", label: "5. Pourquoi les devis vont de 5 000 à 150 000 €" },
+            { id: "methode-tjm", label: "6. La méthode jours × TJM pour vérifier un devis" },
+            { id: "devis", label: "7. Un devis réel, décortiqué ligne à ligne" },
+            { id: "tco", label: "8. Le vrai coût sur 3 ans (maintenance, hébergement, coûts cachés)" },
+            { id: "match", label: "9. Sur mesure, SaaS ou Excel : le match chiffré" },
+            { id: "ia", label: "10. Ce que l'IA change vraiment aux prix (2026)" },
+            { id: "legacy", label: "11. Remplacer un vieux logiciel (Access, Excel, WinDev…)" },
+            { id: "juridique", label: "12. À qui appartient le code ? La question à 100 000 €" },
+            { id: "methode", label: "13. Méthode : payer le juste prix en 5 étapes" },
+          ]}
+        />
+
+        <h2 id="reponse-rapide">1. La réponse rapide : les fourchettes 2026</h2>
+        <p>
+          En 2026, un logiciel sur mesure coûte en France{" "}
+          <strong>5 000 à 15 000 € pour un outil interne simple</strong>{" "}
+          (un processus digitalisé, quelques écrans),{" "}
+          <strong>15 000 à 60 000 € pour un logiciel métier
+          complet</strong> (rôles, planning, connexions à vos outils), et{" "}
+          <strong>60 000 à 250 000 € pour une plateforme</strong> (ERP sur
+          mesure, portail multi-services). La médiane constatée sur des
+          budgets réels : environ 30 000 €. S&apos;y ajoutent la
+          maintenance (10 à 25 % du coût initial par an) et
+          l&apos;hébergement (40 à 100 €/mois). Chez Hagnéré Code, un outil
+          interne va de 8 000 à 80 000 €, au forfait fixe.
+        </p>
+        <GuideTable
+          headers={["Type de logiciel", "Budget 2026", "Délai typique", "Exemples"]}
+          rows={[
+            ["Outil interne simple", "5 000 – 15 000 €", "3 – 8 semaines", "Suivi de commandes, registre, formulaires métier"],
+            ["Logiciel métier complet", "15 000 – 60 000 €", "2 – 6 mois", "Gestion clients + devis + planning + facturation"],
+            ["Portail client / extranet", "18 000 – 70 000 €", "2 – 4 mois", "Espace où vos clients suivent leurs dossiers"],
+            ["Plateforme / ERP sur mesure", "60 000 – 250 000 €", "6 – 18 mois", "Tous les processus de l'entreprise reliés"],
+            ["Automatisation entre outils existants", "500 – 5 000 € par flux", "1 – 4 semaines", "Devis signé → facture créée → client prévenu"],
+          ]}
+        />
+
+        <InfoBox variant="blue" title="Les 10 mots de ce guide, traduits en français courant">
+          <ul className="list-disc pl-4 space-y-1.5">
+            <li><strong>Logiciel sur mesure</strong> : un programme construit pour vos processus à vous, dont vous êtes propriétaire.</li>
+            <li><strong>SaaS</strong> : un logiciel loué par abonnement mensuel, par utilisateur (Salesforce, Pennylane…).</li>
+            <li><strong>No-code</strong> : des outils pour assembler une application sans programmer (Airtable, Notion…) — location, là aussi.</li>
+            <li><strong>TJM</strong> : le taux journalier d&apos;un développeur — son « taux horaire d&apos;artisan », à la journée.</li>
+            <li><strong>Intégration</strong> : la connexion entre deux logiciels pour qu&apos;ils échangent leurs données sans ressaisie.</li>
+            <li><strong>API</strong> : la « prise » standardisée sur laquelle se branche une intégration.</li>
+            <li><strong>MVP</strong> : une première version volontairement réduite à l&apos;essentiel, pour démarrer vite.</li>
+            <li><strong>Maintenance (ou TMA)</strong> : l&apos;entretien du logiciel après sa mise en service — correctifs, sécurité, petites évolutions.</li>
+            <li><strong>Reprise de données</strong> : le transfert de vos données actuelles (Excel, ancien logiciel) vers le nouveau.</li>
+            <li><strong>Cession de code</strong> : la clause écrite qui vous rend propriétaire du programme — elle n&apos;est jamais automatique (section 12).</li>
+          </ul>
+        </InfoBox>
+
+        <h2 id="de-quoi-parle-t-on">2. Sur mesure, SaaS, no-code, Excel : de quoi parle-t-on</h2>
+        <p>
+          Quatre façons d&apos;outiller une entreprise, quatre logiques
+          économiques. <strong>Excel</strong> : gratuit en apparence, il se
+          paie en heures et en erreurs (section 3).{" "}
+          <strong>Le SaaS</strong> — un logiciel loué par abonnement — est
+          une location meublée : on emménage en un jour, mais on paie un
+          loyer par personne, pour toujours, et on ne pousse pas les murs.{" "}
+          <strong>Le no-code</strong> est une location aménageable : plus
+          souple, mais toujours chez un bailleur.{" "}
+          <strong>Le sur-mesure</strong>, c&apos;est construire sa maison :
+          plus cher à l&apos;entrée, dessinée pour vos processus exacts, et
+          à la fin — si le contrat est bien écrit — elle vous appartient.
+        </p>
+        <p>
+          Prenons un fil rouge que nous suivrons tout au long du guide :{" "}
+          <strong>les Transports Bréban, 14 salariés en Savoie</strong>.
+          Leur planning de tournées vit dans un classeur Excel que seule
+          l&apos;assistante de direction sait manipuler, les bons de
+          livraison se ressaisissent dans la facturation, et deux versions
+          du fichier circulent en permanence. Aucun logiciel de transport
+          du marché ne colle à leur activité mixte (messagerie + bennes).
+          C&apos;est le cas d&apos;école du sur-mesure — et nous allons le
+          chiffrer de bout en bout.
+        </p>
+
+        <h2 id="cout-actuel">3. Ce que l&apos;absence d&apos;outil vous coûte déjà</h2>
+        <p>
+          Avant de demander « combien coûte un logiciel ? », posez la
+          question inverse : <strong>combien coûte le fait de ne pas en
+          avoir ?</strong> Les études convergent. Les employés de bureau
+          passent en moyenne 1,8 heure par jour à chercher et rassembler de
+          l&apos;information (McKinsey Global Institute). Plus de 40 % des
+          salariés consacrent au moins un quart de leur semaine à des
+          tâches manuelles répétitives — ressaisie en tête (Smartsheet).
+          Et les recherches académiques de Ray Panko (Université
+          d&apos;Hawaï) l&apos;ont mesuré :{" "}
+          <strong>88 % des feuilles de calcul contiennent au moins une
+          erreur</strong>.
+        </p>
+        <p>
+          Traduisons en euros, avec la seule formule à retenir de cette
+          section :
+        </p>
+        <FormulaBox>
+          <strong>ROI = heures gagnées par semaine × 47 semaines travaillées
+          (l&apos;année, congés et jours fériés déduits) × coût horaire
+          chargé</strong>
+          <br />
+          Le coût horaire moyen de la main-d&apos;œuvre en France :
+          43,50 € (Eurostat, 2025).
+          <br />
+          <br />
+          Chez Bréban : l&apos;assistante passe 6 h/semaine sur le planning
+          et 4 h sur la ressaisie des bons ; deux exploitants perdent
+          chacun 3 h de coordination.
+          <br />
+          (6 + 4 + 3 + 3) h × 47 semaines × 43,50 € ={" "}
+          <strong>≈ 32 700 € par an</strong> — chaque année, sans compter
+          les erreurs.
+        </FormulaBox>
+        <p>
+          Les erreurs, justement : la règle dite « 1-10-100 » du secteur
+          résume trente ans d&apos;études sur la qualité des données —
+          vérifier une donnée à la saisie coûte 1, la corriger après coup
+          coûte 10, la subir (facture fausse, mauvaise décision) coûte
+          100. Un logiciel qui saisit une fois et propage partout
+          s&apos;attaque précisément à ce multiplicateur.
+        </p>
+        <InfoBox variant="amber" title="Quand Excel dérape : trois cas réels">
+          En 2003, l&apos;électricien canadien TransAlta a perdu 24
+          millions de dollars — 10 % de son résultat annuel — à cause
+          d&apos;un simple décalage de lignes dans un copier-coller Excel.
+          En 2012, l&apos;affaire « London Whale » de JPMorgan (plus de 6
+          milliards de dollars de pertes) impliquait une erreur de formule
+          — une somme à la place d&apos;une moyenne — dans un modèle de
+          risque sous Excel. Et en 2020, le service de santé anglais a
+          « perdu » près de 16 000 cas positifs de Covid parce que le
+          fichier de consolidation avait atteint sa limite de lignes.
+          Votre entreprise ne joue pas à cette échelle — mais votre
+          classeur de devis obéit aux mêmes lois.
+        </InfoBox>
+
+        <h2 id="prix-par-type">4. Les prix 2026 par type de logiciel</h2>
+        <p>
+          Voici la grille détaillée par usage — les fourchettes croisent
+          les guides publics du marché français (plusieurs agences
+          concurrentes, pour neutraliser le biais commercial de chacune) et
+          nos propres devis :
+        </p>
+        <GuideTable
+          headers={["Ce que vous voulez", "Budget création", "Récurrent / an", "Le poste qui fait varier"]}
+          rows={[
+            ["Suivi clients / devis (CRM léger)", "8 000 – 25 000 €", "1 500 – 4 000 €", "Connexion à la facturation existante"],
+            ["Gestion de stock / commandes", "8 000 – 30 000 €", "1 500 – 5 000 €", "Codes-barres, multi-dépôts, inventaires"],
+            ["Planning / interventions terrain", "15 000 – 45 000 €", "2 500 – 8 000 €", "Application mobile pour les équipes"],
+            ["Portail client (suivi de dossiers)", "18 000 – 70 000 €", "3 000 – 10 000 €", "Volume d'utilisateurs, documents, paiement"],
+            ["ERP simplifié (tout relié)", "50 000 – 120 000 €", "8 000 – 25 000 €", "Nombre de processus et d'intégrations"],
+            ["Automatisations (Make, n8n)", "500 – 5 000 € par flux", "300 – 1 500 €", "Complexité des règles métier"],
+          ]}
+        />
+        <p>
+          Une lecture honnête de cette grille : le prix suit moins le
+          nombre d&apos;écrans que <strong>trois multiplicateurs</strong> —
+          le nombre de rôles différents (qui voit quoi, qui valide quoi),
+          les connexions à l&apos;existant (chaque intégration : 2 000 à
+          15 000 € selon le logiciel à brancher), et l&apos;exigence de
+          fiabilité (un outil de consultation tolère un bug, un outil qui
+          facture, non). C&apos;est pour cela qu&apos;un « simple outil de
+          planning » peut légitimement coûter 15 000 € : le planning est
+          simple, le brancher sur la paie et l&apos;app mobile des équipes
+          ne l&apos;est pas. Par secteur, les cas les plus fréquents que
+          nous voyons passer : le BTP (suivi multi-chantiers, matériel,
+          pointages), le transport (tournées, bons de livraison), la
+          santé (avec une contrainte en plus : les données de patients
+          imposent un hébergement certifié « HDS », qui renchérit le
+          projet) et l&apos;industrie (ordres de fabrication, traçabilité).
+        </p>
+
+        <h2 id="ecart-devis">5. Pourquoi les devis vont de 5 000 à 150 000 €</h2>
+        <p>
+          C&apos;est la vraie question derrière votre recherche : les pages
+          que vous avez ouvertes annoncent des prix qui vont du simple au
+          décuple. Cet écart a quatre explications rationnelles — les
+          connaître vous permet de classer n&apos;importe quel devis en
+          cinq minutes :
+        </p>
+        <ul>
+          <li>
+            <strong>Le périmètre supposé.</strong> « Un CRM » peut vouloir
+            dire 3 écrans ou 30. Sans cahier des charges commun, chaque
+            agence chiffre le projet qu&apos;elle imagine — et toutes ont
+            raison. C&apos;est l&apos;écart n° 1, de très loin.
+          </li>
+          <li>
+            <strong>Le positionnement du prestataire.</strong> Les agences
+            seniors parisiennes annoncent 80 000 à 400 000 € là où les
+            studios positionnés PME travaillent entre 5 000 et 60 000 €.
+            Les taux journaliers vont de 300 € (junior) à 800 € et plus
+            (senior parisien) — pour des vitesses et des niveaux de
+            fiabilité différents.
+          </li>
+          <li>
+            <strong>Le niveau de finition.</strong> Un outil utilisé par 3
+            personnes formées tolère une interface rugueuse ; un portail
+            ouvert à vos clients exige le soin d&apos;un produit public.
+            Même fonction, budget du simple au double.
+          </li>
+          <li>
+            <strong>L&apos;usage — ou l&apos;affichage — de l&apos;IA.</strong>{" "}
+            Les studios qui ont industrialisé l&apos;IA cassent
+            réellement une partie des prix ; d&apos;autres l&apos;affichent
+            surtout en argument. La section 10 démêle le vrai du marketing.
+          </li>
+        </ul>
+        <InfoBox variant="emerald" title="À retenir">
+          Un devis ne se juge jamais dans l&apos;absolu, mais à périmètre
+          égal. Envoyez le même{" "}
+          <Link href="/guides/cahier-des-charges-site-internet">cahier des
+          charges</Link> à trois prestataires, exigez le détail en jours
+          par poste, et l&apos;écart 1-à-10 se réduit de lui-même à un
+          écart 1-à-2 — qui, lui, s&apos;explique par la séniorité et la
+          finition.
+        </InfoBox>
+
+        <h2 id="methode-tjm">6. La méthode jours × TJM pour vérifier un devis</h2>
+        <p>
+          Tout devis de logiciel se ramène à une multiplication :{" "}
+          <strong>nombre de jours de travail × taux journalier (TJM)</strong>.
+          Les taux France 2026, mesurés par les baromètres du secteur
+          (SILKHOM sur plus de 20 000 freelances, Malt) : développeur
+          junior 300-400 €/jour, confirmé 450-600 €, senior 600-800 €,
+          designer 400-600 €, chef de projet 500-700 €. La médiane
+          nationale tourne autour de 520-535 €/jour.
+        </p>
+        <p>
+          Appliquez la multiplication dans les deux sens. Dans un sens :
+          un outil simple = 10 à 30 jours ≈ 5 000 à 18 000 € ; un logiciel
+          métier = 40 à 120 jours ≈ 20 000 à 70 000 €. Ces produits
+          retombent sur les fourchettes de la section 1, à quelques
+          milliers d&apos;euros près — deux méthodes indépendantes, même
+          ordre de grandeur : bon signe. Dans
+          l&apos;autre sens : un « logiciel de gestion complet à
+          4 900 € », c&apos;est 8 jours de travail d&apos;un profil
+          confirmé. Huit jours pour comprendre votre métier, concevoir,
+          développer, connecter, tester et livrer ? La multiplication est
+          le détecteur d&apos;anomalie le plus simple du marché — dans les
+          deux directions, car un devis à 90 000 € sans détail des jours
+          n&apos;est pas plus sérieux.
+        </p>
+
+        <h2 id="devis">7. Un devis réel, décortiqué ligne à ligne</h2>
+        <p>
+          Personne ne publie ses devis ; nous, oui — c&apos;est la marque
+          de fabrique de tous nos guides. Voici, anonymisé, un devis
+          Hagnéré Code accepté pour le cas de notre fil rouge : la gestion
+          de tournées des Transports Bréban — planning, bons de livraison
+          numériques sur mobile, facturation connectée. Taux journalier :
+          650 € HT.
+        </p>
+        <FormulaBox>
+          <strong>Devis « gestion de tournées » — 50 jours, 32 500 € HT</strong>
+          <br />
+          Cadrage : ateliers sur vos processus réels (2 j) —
+          1 300 €
+          <br />
+          Maquettes des écrans clés, validées par les utilisateurs (5 j) —
+          3 250 €
+          <br />
+          Planning interactif : tournées, affectations, absences (10 j) —
+          6 500 €
+          <br />
+          Application mobile chauffeurs : bons, photos, signatures (12 j)
+          — 7 800 €
+          <br />
+          Connexion facturation existante + exports comptables (7 j) —
+          4 550 €
+          <br />
+          Reprise des données Excel (3 ans d&apos;historique) (4 j) —
+          2 600 €
+          <br />
+          Rôles, droits d&apos;accès, RGPD (3 j) — 1 950 €
+          <br />
+          Tests avec les équipes, corrections, formation (5 j) — 3 250 €
+          <br />
+          Mise en production + transfert de propriété du code (2 j) —
+          1 300 €
+        </FormulaBox>
+        <p>
+          Trois enseignements. D&apos;abord, <strong>le planning visible
+          ne pèse qu&apos;un cinquième du budget</strong> : le gros du
+          devis, c&apos;est le mobile, les connexions et la fiabilité —
+          exactement ce que les devis low-cost escamotent, puis facturent
+          en suppléments. Ensuite, chaque ligne est en jours : vous pouvez
+          contester, prioriser, retirer (« la reprise des 3 ans
+          d&apos;historique, gardons juste l&apos;année en cours :
+          -1 300 € »). Enfin, la dernière ligne — transfert de propriété —
+          coûte 2 jours ici et vaut de l&apos;or à la revente de
+          l&apos;entreprise (section 12).
+        </p>
+
+        <GuideInlineCTA
+          title="Un chiffrage honnête pour votre outil métier ?"
+          description="Décrivez votre processus en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées avec une fourchette argumentée en jours × postes — et notre avis franc si un abonnement du marché suffit."
+          tags={["Réponse sous 24 h ouvrées", "Outils internes 8 000 – 80 000 €", "Forfait fixe contractuel"]}
+        />
+
+        <h2 id="tco">8. Le vrai coût sur 3 ans (maintenance, hébergement, coûts cachés)</h2>
+        <p>
+          Le devis de création n&apos;est pas le coût total. Voici ce qui
+          s&apos;ajoute — et ce que les prestataires sérieux vous disent
+          d&apos;emblée :
+        </p>
+        <GuideTable
+          headers={["Poste", "Ordre de grandeur", "En clair"]}
+          rows={[
+            ["Maintenance corrective", "5 – 10 % du coût initial / an", "Bugs, mises à jour de sécurité — obligatoire"],
+            ["Maintenance évolutive", "5 – 15 % du coût initial / an", "Les améliorations demandées à l'usage"],
+            ["Hébergement + sauvegardes", "40 – 100 €/mois", "Infrastructure moderne, sauvegardes automatiques"],
+            ["Reprise de données", "souvent sous-estimée", "Nettoyer et migrer l'existant — chiffrez-la au devis"],
+            ["Formation & accompagnement", "1 – 3 jours", "Un outil non adopté est un outil perdu"],
+            ["Intégrations découvertes en route", "2 000 – 15 000 € chacune", "L'oubli n° 1 — listez vos outils AVANT (cahier des charges)"],
+          ]}
+        />
+        <p>
+          Pour notre fil rouge Bréban : 32 500 € de création + environ
+          4 900 €/an de maintenance (15 %) + 900 €/an
+          d&apos;hébergement ≈ <strong>50 000 € sur 3 ans</strong>. Face
+          aux ~32 700 €/an que coûtait le statu quo (section 3),
+          l&apos;outil est amorti avant la fin de la deuxième année — et
+          c&apos;est un calcul que nous vous recommandons d&apos;exiger de
+          tout prestataire : pas de devis sans regard sur ce que
+          l&apos;absence d&apos;outil coûte déjà.
+        </p>
+        <p>
+          Un mot sur le risque, honnêtement : les statistiques d&apos;échec
+          des projets informatiques sont réelles (les grands projets
+          dépassent leur budget de 45 % en moyenne selon McKinsey-Oxford).
+          Mais lisez-les bien : elles portent sur de <em>grands</em>{" "}
+          projets. Un outil de PME, cadré serré, livré par étapes avec un
+          critère de succès mesurable à chaque palier, n&apos;a pas ce
+          profil de risque — c&apos;est précisément l&apos;argument des
+          petits périmètres itératifs contre le projet-cathédrale de 18
+          mois.
+        </p>
+
+        <p>
+          Un mot de trésorerie, enfin : un forfait sérieux se règle{" "}
+          <strong>par jalons</strong> — un acompte au démarrage (souvent
+          30 %), puis un paiement à chaque étape livrée et vérifiable,
+          jamais 100 % d&apos;avance. Et avant de signer, jetez un œil aux
+          dispositifs publics de financement de la numérisation : notre{" "}
+          <Link href="/guides/aides-creation-site-internet">guide des
+          aides</Link> recense ceux qui s&apos;appliquent aussi aux
+          logiciels métier — plusieurs régions financent précisément les
+          « outils numériques à forte valeur ajoutée ».
+        </p>
+
+        <h2 id="match">9. Sur mesure, SaaS ou Excel : le match chiffré</h2>
+        <p>
+          La règle de décision tient en une phrase :{" "}
+          <strong>on s&apos;abonne pour ce qui est commun à toutes les
+          entreprises, on construit ce qui fait sa différence.</strong> La
+          paie, la comptabilité, la messagerie : des SaaS excellents
+          existent, n&apos;y touchez pas. Votre façon unique de gérer les
+          tournées, les chantiers ou les dossiers clients : c&apos;est là
+          que le sur-mesure crée un avantage.
+        </p>
+        <p>Le calcul sur 5 ans, pour un outil central à 10 utilisateurs :</p>
+        <GuideTable
+          headers={["Option", "Coût sur 5 ans (10 utilisateurs)", "Ce qu'on oublie"]}
+          rows={[
+            ["Rester sur Excel", "« 0 € »… + heures perdues et erreurs", "~30 000 €/an de temps chez Bréban (section 3)"],
+            ["SaaS type CRM Pro (~100 €/utilisateur/mois)", "≈ 60 000 € + hausses de prix", "Inflation SaaS : ~11 %/an ; ~la moitié des licences payées ne sont pas utilisées"],
+            ["No-code (Airtable Team, ~20 €/utilisateur/mois)", "≈ 12 000 € + votre temps d'assemblage", "Limites structurelles, données chez un tiers"],
+            ["Sur mesure (30 000 € + 15 %/an + hébergement)", "≈ 58 000 €, puis ~5 800 €/an", "Le code vous appartient ; coût stable, pas par siège"],
+          ]}
+        />
+        <p>
+          (Tarifs des éditeurs affichés en dollars, convertis au pair
+          pour simplifier la lecture.) Lecture honnête : à 3 utilisateurs,
+          l&apos;abonnement gagne
+          presque toujours — 3 600 € sur 3 ans chez Odoo, imbattable. Le
+          point de bascule apparaît <strong>vers 10 utilisateurs et un
+          horizon de 2 à 4 ans</strong>, quand le loyer par siège cumulé
+          croise le coût d&apos;un développement amorti — et il arrive
+          d&apos;autant plus vite que les prix SaaS augmentent d&apos;environ
+          11 % par an (indice Vertice 2025), soit quatre fois
+          l&apos;inflation. Le signal d&apos;alerte typique : votre équipe
+          passe de 20 à 80 personnes, la facture SaaS est multipliée par 4,
+          et personne n&apos;utilise mieux l&apos;outil. Si un produit du
+          marché couvre 80 % de votre besoin : prenez-le, et ne construisez
+          que les 20 % qui vous différencient. Si vous hésitez avec un
+          produit à vendre par abonnement, notre guide{" "}
+          <Link href="/guides/combien-coute-un-saas">« combien coûte un
+          SaaS »</Link> traite ce cas.
+        </p>
+
+        <h2 id="ia">10. Ce que l&apos;IA change vraiment aux prix (2026)</h2>
+        <p>
+          Vous croiserez deux discours : « l&apos;IA divise les coûts par
+          dix » et « l&apos;IA ne change rien ». Les études sérieuses
+          racontent une histoire plus utile. Sur des tâches de code
+          standard et bien cadrées, l&apos;essai contrôlé de GitHub a
+          mesuré des développeurs <strong>55 % plus rapides</strong> avec
+          l&apos;assistance IA. Sur du code complexe et mature,
+          l&apos;essai randomisé METR (2025) a mesuré l&apos;inverse :{" "}
+          <strong>19 % plus lents</strong> — tout en se croyant plus
+          rapides. Et le rapport DORA de Google conclut que l&apos;IA est
+          un <em>amplificateur</em> : elle décuple les bonnes équipes
+          comme les mauvaises. Aucune étude sérieuse ne documente une
+          division par dix du coût d&apos;un logiciel métier complet.
+        </p>
+        <p>
+          Traduction pour votre budget : l&apos;IA écrase le coût des
+          écrans et du code standard — une part réelle d&apos;un outil
+          métier — mais ne réduit ni la compréhension de votre métier, ni
+          la conception des bons écrans, ni les connexions à vos
+          logiciels, ni la fiabilité. C&apos;est pourquoi les baisses de
+          prix crédibles sont de l&apos;ordre de 20 à 30 %, pas de 90 %.
+          Notre modèle applique exactement cela : un pipeline IA
+          industrialisé <em>dans</em> une équipe senior, chaque ligne
+          relue par un humain — d&apos;où des forfaits sous les prix
+          d&apos;agence classiques (8 000 € l&apos;entrée au lieu de
+          15 000-20 000 €), sans le code jetable des offres « votre
+          logiciel en une semaine ». Posez une seule question aux
+          prestataires « 100 % IA » : <strong>qui relit chaque ligne, et
+          qui maintient le code dans deux ans ?</strong>
+        </p>
+
+        <h2 id="legacy">11. Remplacer un vieux logiciel (Access, Excel, WinDev…)</h2>
+        <p>
+          Cas extrêmement fréquent en PME : l&apos;entreprise tourne sur un
+          logiciel Access, VB6 ou WinDev écrit il y a quinze ans — souvent
+          par un prestataire aujourd&apos;hui injoignable — ou sur un
+          classeur Excel devenu monstrueux. Les risques s&apos;accumulent
+          en silence : incompatibilités avec les Windows récents,
+          impossibilité d&apos;évoluer, failles de sécurité, aucune
+          conformité RGPD, et une seule personne qui « sait faire ».
+        </p>
+        <p>Trois niveaux d&apos;intervention, du plus léger au plus lourd :</p>
+        <ul>
+          <li>
+            <strong>Stabiliser</strong> (2 à 6 semaines, quelques milliers
+            d&apos;euros) : documenter, sauvegarder, corriger le critique.
+            On achète du temps, on ne modernise pas.
+          </li>
+          <li>
+            <strong>Moderniser progressivement</strong> (1 à 6 mois) :
+            remplacer module par module, en commençant par le plus
+            douloureux, pendant que l&apos;ancien système continue de
+            tourner. C&apos;est la méthode recommandée.
+          </li>
+          <li>
+            <strong>Refondre avec reprise des données</strong> (3 à 12
+            mois, généralement 15 000 à 80 000 € pour une migration vers
+            le web) : le nouveau système reprend l&apos;historique et
+            l&apos;ancien s&apos;éteint.
+          </li>
+        </ul>
+        <InfoBox variant="amber" title="Le piège du « big bang »">
+          Le réflexe naturel — « on refait tout d&apos;un coup, bascule le
+          1er janvier » — est statistiquement le pire : la majorité des
+          refontes d&apos;applications métier qui échouent sont des
+          projets-tunnel au périmètre trop large, sans utilisateurs
+          impliqués. La méthode qui marche porte un nom (la refonte
+          progressive, dite « Strangler Fig » : le nouveau système
+          enveloppe l&apos;ancien et le remplace branche par branche) et
+          une règle simple : une première brique en production en 2 à 4
+          mois, jamais 18 mois de développement dans le noir.
+        </InfoBox>
+
+        <h2 id="juridique">12. À qui appartient le code ? La question à 100 000 €</h2>
+        <p>
+          Voici la surprise juridique que presque aucun guide de prix ne
+          mentionne : <strong>en droit français, le code d&apos;un
+          logiciel appartient par défaut au prestataire qui l&apos;a
+          écrit</strong> — pas à vous, même une fois toutes les factures
+          payées (articles L.111-1 et suivants du Code de la propriété
+          intellectuelle). Pour en devenir propriétaire, il faut une{" "}
+          <strong>cession écrite et précise</strong> (article L.131-3 :
+          droits énumérés un par un, étendue, durée, territoire) — et les
+          tribunaux jugent inopérante la formule vague « tous droits
+          cédés ».
+        </p>
+        <p>
+          Ce n&apos;est pas de la théorie de juriste. Sans cession
+          valide : impossible de faire reprendre le logiciel par un autre
+          prestataire sans renégocier ; blocage lors d&apos;une levée de
+          fonds ou de la vente de l&apos;entreprise (la « due diligence »
+          — l&apos;audit de l&apos;acheteur — vérifie systématiquement la
+          propriété du logiciel) ; et le prestataire peut légalement
+          réutiliser votre code… chez un concurrent. Les quatre clauses à
+          exiger avant de signer :
+        </p>
+        <ul>
+          <li>
+            <strong>Cession de propriété intellectuelle</strong> conforme à
+            l&apos;article L.131-3, effective à la réception des livrables,
+            sans paiement complémentaire ;
+          </li>
+          <li>
+            <strong>Réversibilité</strong> : remise du code source, de la
+            documentation et des accès en fin de contrat, quoi qu&apos;il
+            arrive ;
+          </li>
+          <li>
+            <strong>Vos données vous appartiennent</strong> — avec un
+            export complet possible à tout moment, dans un format standard ;
+          </li>
+          <li>
+            Pour les logiciels critiques : l&apos;<strong>entiercement</strong>
+            (le dépôt du code chez un tiers de confiance comme
+            l&apos;Agence pour la Protection des Programmes), qui vous
+            garantit l&apos;accès au code même si le prestataire disparaît.
+          </li>
+        </ul>
+        <p>
+          Chez Hagnéré Code, la cession complète du code est dans le
+          contrat de base — la ligne « transfert de propriété » du devis
+          de la section 7. Un prestataire qui rechigne sur ce point vous
+          dit quelque chose : écoutez-le.
+        </p>
+
+        <InfoBox variant="emerald" title="À retenir : les 5 chiffres de ce guide">
+          <ul className="list-disc pl-4 space-y-1.5">
+            <li><strong>15 000 – 60 000 €</strong> : le cœur de marché d&apos;un vrai logiciel métier (médiane ~30 000 €).</li>
+            <li><strong>450 – 600 €/jour</strong> : le taux d&apos;un développeur confirmé — multipliez par les jours pour vérifier tout devis.</li>
+            <li><strong>10 – 25 %/an</strong> : la maintenance, à budgéter dès le départ.</li>
+            <li><strong>~10 utilisateurs</strong> : le seuil où le sur-mesure commence à battre l&apos;abonnement, avec un amortissement en 2 à 4 ans.</li>
+            <li><strong>43,50 €/heure</strong> : le coût moyen d&apos;une heure de travail en France — la base de votre calcul de ROI.</li>
+          </ul>
+        </InfoBox>
+
+        <h2 id="methode">13. Méthode : payer le juste prix en 5 étapes</h2>
+        <ol>
+          <li>
+            <strong>Chiffrez d&apos;abord le statu quo</strong> — heures
+            perdues × 47 × 43,50 € (section 3). C&apos;est votre budget de
+            référence : un outil qui coûte moins que deux ans de statu quo
+            est un investissement, pas une dépense.
+          </li>
+          <li>
+            <strong>Vérifiez qu&apos;un produit du marché ne suffit
+            pas</strong> — la règle des 80 % (section 9). Nous vous le
+            dirons franchement si c&apos;est le cas : un client bien
+            orienté revient.
+          </li>
+          <li>
+            <strong>Décrivez vos processus, pas des écrans</strong> — qui
+            fait quoi, avec quels outils existants à connecter. Notre{" "}
+            <Link href="/guides/cahier-des-charges-site-internet">modèle
+            de cahier des charges</Link> s&apos;adapte en version logiciel
+            — et envoyez-le à l&apos;identique à 3 prestataires.
+          </li>
+          <li>
+            <strong>Comparez en jours par poste et en coût sur 3 ans</strong>{" "}
+            — jamais en prix de création seul (sections 6 et 8). Exigez le
+            calcul du ROI dans le devis.
+          </li>
+          <li>
+            <strong>Exigez la propriété du code et un démarrage par
+            étapes</strong> — cession L.131-3, réversibilité, et une
+            première brique en production en quelques semaines plutôt
+            qu&apos;un projet-tunnel.
+          </li>
+        </ol>
+        <p>
+          C&apos;est le déroulé exact de notre méthode : un{" "}
+          <strong>Discovery Sprint (1 500 €, 2 jours, déduit à 100 % si le
+          projet se lance)</strong> qui produit le périmètre écrit, les
+          maquettes des écrans clés et un devis au forfait fixe — puis un
+          outil livré par étapes, dates contractuelles (méthode{" "}
+          <Link href="/methode">Sprint Fixe™</Link>), code cédé.{" "}
+          <Link href="/demarrer-un-projet">Décrivez votre processus en
+          3 minutes</Link> : réponse personnelle sous 24 h ouvrées,
+          gratuite et sans engagement. Et pour situer ce budget dans
+          l&apos;ensemble de votre présence numérique, notre{" "}
+          <Link href="/guides/combien-coute-un-site-internet">panorama
+          des prix d&apos;un site internet</Link> complète ce guide.
+        </p>
+
+        <hr />
+        <p className="text-sm">
+          <strong>Sources</strong> — références citées dans ce guide
+          (consultées en juillet 2026) : baromètres TJM France (
+          <a href="https://www.silkhom.com/barometre-des-tjm-informatique-electronique-digital/" target="_blank" rel="noopener noreferrer">SILKHOM</a>,
+          Malt) ;{" "}
+          <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Hourly_labour_costs" target="_blank" rel="noopener noreferrer">Eurostat, coût horaire de la main-d&apos;œuvre 2025</a> ;{" "}
+          <a href="http://panko.shidler.hawaii.edu/SSR/Mypapers/whatknow.htm" target="_blank" rel="noopener noreferrer">R. Panko (Université d&apos;Hawaï), erreurs des feuilles de calcul</a> ;{" "}
+          <a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-social-economy" target="_blank" rel="noopener noreferrer">McKinsey Global Institute (recherche d&apos;information)</a> ;{" "}
+          <a href="https://arxiv.org/abs/2302.06590" target="_blank" rel="noopener noreferrer">essai contrôlé GitHub Copilot (Peng et al., 2023)</a> ;{" "}
+          <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/" target="_blank" rel="noopener noreferrer">essai randomisé METR (2025)</a> ;{" "}
+          <a href="https://dora.dev/ai/gen-ai-report/" target="_blank" rel="noopener noreferrer">rapport DORA (Google) sur l&apos;IA générative</a> ;{" "}
+          <a href="https://www.vertice.one/blog/mitigating-2025-saas-inflation-stats" target="_blank" rel="noopener noreferrer">Vertice, SaaS Inflation Index 2025</a> ;
+          Zylo, SaaS Management Index 2025 (licences inutilisées) ;{" "}
+          <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/delivering-large-scale-it-projects-on-time-on-budget-and-on-value" target="_blank" rel="noopener noreferrer">McKinsey-Oxford, grands projets IT</a> ;{" "}
+          <a href="https://atiasavocats.com/propriete-code-source-prestataire/" target="_blank" rel="noopener noreferrer">analyse juridique de la propriété du code source (L.111-1 / L.131-3 CPI)</a> ;{" "}
+          <a href="https://www.app.asso.fr/nos-solutions/entiercement-app" target="_blank" rel="noopener noreferrer">APP, entiercement de logiciel</a> ;
+          fourchettes de marché : recoupement de guides français
+          concurrents 2025-2026 (Magram, Akelio, Lonestone, Yield Studio,
+          La Fabrique du Net…) et tarifs officiels des éditeurs cités
+          (Odoo, HubSpot, Airtable, Notion, Salesforce, Make, n8n). Les
+          cas TransAlta, JPMorgan et Public Health England sont des faits
+          publics documentés. Les prix évoluent : vérifiez avant de signer.
+        </p>
+        <p className="text-sm">
+          <em>
+            Les fourchettes de ce guide sont des prix de marché constatés,
+            donnés à titre indicatif : seul un devis établi sur votre
+            périmètre vous engage. Ce guide ne constitue pas un conseil
+            juridique personnalisé — pour une cession de droits ou un
+            contrat, consultez un avocat.
+          </em>
+        </p>
+      </GuideLayout>
+    </GuidesShell>
+  );
+}
