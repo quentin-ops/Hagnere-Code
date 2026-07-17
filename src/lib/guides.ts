@@ -233,6 +233,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 25,
   },
   {
+    slug: "react-native-ou-flutter",
+    title: "React Native ou Flutter : que choisir en 2026 · Hagnéré Code",
+    cardTitle: "React Native ou Flutter : que choisir en 2026 ?",
+    metaDescription:
+      "React Native ou Flutter ? Le comparatif pour dirigeants : coûts réels, recrutement en France, pérennité de chaque camp et verdict par profil.",
+    cardDescription:
+      "Le comparatif écrit pour les dirigeants, pas pour les développeurs : coûts et TJM réels, vivier de recrutement français, gouvernance des deux camps, verdict par profil.",
+    heroTitle: "React Native ou Flutter : le comparatif honnête pour décider en 2026",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-17",
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",

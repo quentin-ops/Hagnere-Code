@@ -395,7 +395,11 @@ export default function Page() {
           facture, non). C&apos;est pour cela qu&apos;un « simple outil de
           planning » peut légitimement coûter 15 000 € : le planning est
           simple, le brancher sur la paie et l&apos;app mobile des équipes
-          ne l&apos;est pas. Par secteur, les cas les plus fréquents que
+          ne l&apos;est pas (le choix de la technologie mobile a son
+          comparatif dédié : notre{" "}
+          <Link href="/guides/react-native-ou-flutter">guide React
+          Native ou Flutter</Link>). Par secteur, les cas les plus
+          fréquents que
           nous voyons passer : le BTP (suivi multi-chantiers, matériel,
           pointages), le transport (tournées, bons de livraison), la
           santé (avec une contrainte en plus : les données de patients

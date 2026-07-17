@@ -965,7 +965,10 @@ export default function Page() {
           <Link href="/guides/combien-coute-un-site-internet">« combien
           coûte un site internet »</Link> et{" "}
           <Link href="/guides/combien-coute-une-application-mobile">« combien
-          coûte une application mobile »</Link> complètent celui-ci.
+          coûte une application mobile »</Link> complètent celui-ci — et
+          si votre SaaS appelle une app mobile compagnon, notre{" "}
+          <Link href="/guides/react-native-ou-flutter">comparatif React
+          Native ou Flutter</Link> éclaire le choix technique.
         </p>
 
         <hr />

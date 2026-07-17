@@ -476,7 +476,10 @@ export default function Page() {
           Nous développons en <strong>React Native + Expo</strong>, un choix
           économique avant d&apos;être technique : une seule équipe écrit un
           seul programme, dont jusqu&apos;à 90 % sert à la fois aux iPhone
-          et aux Android. Les analyses sectorielles convergent : environ
+          et aux Android — le duel React Native ou Flutter a
+          d&apos;ailleurs son comparatif dédié pour dirigeants : notre{" "}
+          <Link href="/guides/react-native-ou-flutter">guide React
+          Native ou Flutter</Link>. Les analyses sectorielles convergent : environ
           40 % d&apos;économie à la construction, jusqu&apos;à 60 % sur la
           maintenance, par rapport à deux développements séparés. Pas un
           pari exotique : Shopify a migré <em>toutes</em> ses apps vers
