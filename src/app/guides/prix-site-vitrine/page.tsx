@@ -505,7 +505,10 @@ export default function Page() {
           logiciel qui permet de modifier soi-même les textes et photos de
           son site — mais qu&apos;il faut mettre à jour presque chaque
           semaine pour boucher les failles de sécurité (« patcher », en
-          jargon). Next.js et React, eux, sont des technologies modernes
+          jargon). Le duel des deux premières lignes a d&apos;ailleurs son
+          guide entier : notre{" "}
+          <Link href="/guides/wix-ou-wordpress">comparatif Wix ou
+          WordPress</Link>, prix TTC réels et clause de sortie compris. Next.js et React, eux, sont des technologies modernes
           (utilisées par Netflix ou Airbnb) qui produisent un site
           « statique ». Cette différence de nature explique l&apos;essentiel
           des coûts d&apos;entretien :

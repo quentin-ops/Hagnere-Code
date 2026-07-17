@@ -219,6 +219,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 25,
   },
   {
+    slug: "wix-ou-wordpress",
+    title: "Wix ou WordPress : le comparatif honnête 2026 · Hagnéré Code",
+    cardTitle: "Wix ou WordPress : que choisir en 2026 ?",
+    metaDescription:
+      "Wix ou WordPress en 2026 ? Les vrais prix TTC, la vitesse mesurée, ce que vous récupérez si vous quittez Wix (sourcé) et le verdict par profil.",
+    cardDescription:
+      "Les vrais prix TTC des deux côtés, la vitesse mesurée sur données réelles, ce qui s'exporte (et ne s'exporte pas) de Wix, le verdict par profil — zéro affiliation.",
+    heroTitle: "Wix ou WordPress : le comparatif honnête pour décider en 2026",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-17",
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",

@@ -535,7 +535,10 @@ export default function Page() {
             pas l&apos;emporter ailleurs — ces outils n&apos;exportent ni le
             design ni les fonctionnalités, au mieux vos textes et images.
             Changer d&apos;outil, c&apos;est tout reconstruire : le modèle
-            économique de ces plateformes.
+            économique de ces plateformes (notre{" "}
+            <Link href="/guides/wix-ou-wordpress">comparatif Wix ou
+            WordPress</Link> documente cette clause de sortie à la
+            source).
           </li>
           <li>
             <strong>La location de site</strong> (150 à 300 €/mois, engagement

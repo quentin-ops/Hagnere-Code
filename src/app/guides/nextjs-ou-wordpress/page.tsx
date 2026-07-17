@@ -712,8 +712,10 @@ export default function Page() {
           n&apos;est d&apos;ailleurs pas WordPress contre Next.js : elle
           oppose les socles dont vous possédez le code (WordPress
           auto-hébergé, sur-mesure livré) aux plateformes fermées (Wix,
-          Squarespace, Webflow) où vous êtes locataire à vie. Exigez cette
-          clause dans tout devis, quel que soit le socle.
+          Squarespace, Webflow) où vous êtes locataire à vie — notre{" "}
+          <Link href="/guides/wix-ou-wordpress">comparatif Wix ou
+          WordPress</Link> chiffre précisément ce verrouillage. Exigez
+          cette clause dans tout devis, quel que soit le socle.
         </p>
 
         <GuideInlineCTA
