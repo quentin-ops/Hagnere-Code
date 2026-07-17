@@ -487,6 +487,15 @@ export default function Page() {
           rattrape le coût du sur-mesure. Entre les deux : faites le calcul
           de la section suivante.
         </InfoBox>
+        <p>
+          Et si votre hésitation se résume au duel le plus fréquent de
+          2026 — rester sur Shopify en montant en gamme, ou construire
+          votre propre plateforme —, nous lui avons consacré un
+          comparatif entier : notre{" "}
+          <Link href="/guides/shopify-ou-sur-mesure">guide Shopify ou
+          e-commerce sur mesure</Link>, avec le match sur 3 ans chiffré
+          et le coût de sortie que personne ne publie.
+        </p>
 
         <h2 id="tco">4. Le vrai coût sur 3 ans (celui que les devis ne montrent pas)</h2>
         <p>

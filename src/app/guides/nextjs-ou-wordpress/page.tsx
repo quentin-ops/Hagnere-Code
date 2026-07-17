@@ -885,7 +885,11 @@ export default function Page() {
           reconstruire côté site public). Pertinent pour un média, un site à
           fort trafic ou une marque multicanale ; surdimensionné pour un
           site vitrine de PME, où un CMS headless léger fait le même travail
-          pour moins cher.
+          pour moins cher. Le même arbitrage existe côté boutiques en
+          ligne — garder le moteur d&apos;une plateforme ou construire le
+          sien : notre{" "}
+          <Link href="/guides/shopify-ou-sur-mesure">comparatif Shopify
+          ou e-commerce sur mesure</Link> le chiffre sur 3 ans.
         </p>
 
         <h2 id="grille-decision">13. La grille de décision finale, profil par profil</h2>

@@ -426,7 +426,12 @@ export default function Page() {
           plutôt que de rafistoler, et le plan de migration SEO est
           inclus, pas en option. Le détail gamme par gamme est dans notre{" "}
           <Link href="/guides/prix-site-vitrine">guide du prix
-          d&apos;un site vitrine</Link>.
+          d&apos;un site vitrine</Link> ; et si votre refonte est celle
+          d&apos;une boutique qui hésite entre rester sur sa plateforme
+          et passer au sur-mesure, notre{" "}
+          <Link href="/guides/shopify-ou-sur-mesure">comparatif Shopify
+          ou e-commerce sur mesure</Link> chiffre précisément cet
+          arbitrage.
         </p>
 
         <h2 id="refonte-vs-creation">6. Le mythe « une refonte coûte moins cher qu&apos;une création »</h2>

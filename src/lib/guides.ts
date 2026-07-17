@@ -163,6 +163,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 25,
   },
   {
+    slug: "shopify-ou-sur-mesure",
+    title: "Shopify ou e-commerce sur mesure : le match 2026 · Hagnéré Code",
+    cardTitle: "Shopify ou e-commerce sur mesure : que choisir en 2026 ?",
+    metaDescription:
+      "Shopify ou e-commerce sur mesure ? Le vrai coût de Shopify commissions comprises, le coût de sortie que personne ne chiffre et le verdict par profil.",
+    cardDescription:
+      "Le coût réel de Shopify commissions et apps comprises, le match sur 3 ans avec point de bascule, le coût de sortie que personne ne chiffre, verdict par profil.",
+    heroTitle: "Shopify ou e-commerce sur mesure : le comparatif honnête pour décider en 2026",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-17",
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",
