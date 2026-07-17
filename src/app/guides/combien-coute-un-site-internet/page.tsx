@@ -987,7 +987,11 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           n&apos;osez plus donner son adresse en rendez-vous client. Deux
           signaux sur trois : la refonte sera rentable. Un seul ou aucun : une
           évolution ciblée suffit probablement — et coûte 5 à 10 fois moins
-          cher.
+          cher. Le sujet mérite son guide entier : grilles par type de
+          refonte, migration SEO chiffrée poste par poste et devis réel
+          décortiqué sont dans notre{" "}
+          <Link href="/guides/prix-refonte-site-internet">guide du prix
+          d&apos;une refonte de site internet</Link>.
         </p>
 
         <h2 id="delais">13. Combien de temps pour créer un site ?</h2>

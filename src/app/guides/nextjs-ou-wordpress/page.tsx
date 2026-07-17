@@ -828,7 +828,12 @@ export default function Page() {
           La condition non négociable dans tous les cas : un contrat de
           maintenance sérieux et peu d&apos;extensions. Le WordPress
           dangereux n&apos;est pas WordPress — c&apos;est le site à 40
-          extensions que plus personne ne met à jour.
+          extensions que plus personne ne met à jour. Et si votre site
+          actuel ne remplit plus son rôle, le budget complet d&apos;un
+          changement de socle — plan de redirections 301 et migration SEO
+          compris — est chiffré dans notre{" "}
+          <Link href="/guides/prix-refonte-site-internet">guide du prix
+          d&apos;une refonte de site internet</Link>.
         </p>
 
         <p>

@@ -720,7 +720,12 @@ export default function Page() {
           les plugins professionnels se paient chaque année — un droit
           d&apos;utilisation, pas un achat. La bannière cookies : l&apos;outil
           qui demande leur accord aux visiteurs, obligatoire au titre du
-          RGPD, le règlement européen sur les données personnelles.
+          RGPD, le règlement européen sur les données personnelles. Et le
+          coût caché ultime : la refonte prématurée — un site low-cost se
+          refait au bout de 2 à 3 ans, à un prix souvent proche du neuf ;
+          notre <Link href="/guides/prix-refonte-site-internet">guide du
+          prix d&apos;une refonte</Link> chiffre ce poste, migration SEO
+          comprise.
         </p>
 
         <h2 id="cout-total-3-ans">10. Abonnement ou achat : le coût total sur 3 ans</h2>

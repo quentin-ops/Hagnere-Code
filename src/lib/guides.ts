@@ -149,6 +149,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 25,
   },
   {
+    slug: "prix-refonte-site-internet",
+    title: "Refonte site internet : prix 2026, 1 500 à 40 000 € · Hagnéré Code",
+    cardTitle: "Refonte de site internet : le vrai prix en 2026",
+    metaDescription:
+      "Combien coûte une refonte de site ? Grille 2026 par type, la migration SEO enfin chiffrée, un devis réel décortiqué — et quand il ne faut pas refondre.",
+    cardDescription:
+      "Les grilles 2026 par type de refonte, le poste migration SEO que tous les devis oublient, un devis réel ligne à ligne et les cas où il ne faut pas refondre.",
+    heroTitle: "Refonte de site internet : le vrai prix en 2026 (+ devis décortiqué)",
+    section: "Budget & prix",
+    datePublished: "2026-07-17",
+    dateModified: "2026-07-17",
+    readTimeMin: 25,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",
