@@ -47,7 +47,20 @@ export interface LocalPageEntry {
  * non écrites : le test structurel du sitemap échouerait, et surtout une URL
  * déclarée sans contenu est exactement le signal qu'on veut éviter.
  */
-export const LOCAL_PAGES: LocalPageEntry[] = [];
+export const LOCAL_PAGES: LocalPageEntry[] = [
+  {
+    path: "",
+    root: "agence",
+    level: "territoire",
+    title: "Agence web à Chambéry (Savoie) · Hagnéré Code",
+    metaDescription:
+      "Agence web installée à Chambéry : sites, e-commerce, applications métier, référencement et Google Ads. Savoie et Haute-Savoie sur place, France à distance.",
+    heroTitle: "Notre agence web à Chambéry : le territoire que nous couvrons",
+    locality: "Chambéry",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+  },
+];
 
 export function localPagePath(p: LocalPageEntry): string {
   return p.path ? `/${p.root}/${p.path}` : `/${p.root}`;
