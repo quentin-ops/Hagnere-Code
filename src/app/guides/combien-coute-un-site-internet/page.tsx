@@ -1282,7 +1282,7 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
 
         <h2 id="notre-approche">18. Comment on chiffre chez Hagnéré Code</h2>
         <p>
-          Nous sommes une agence Next.js / React basée à Chambéry — et
+          Nous sommes une agence Next.js / React basée en Savoie, à Bassens — et
           la démonstration est sous vos yeux : le site que vous lisez
           est développé à 100 % en React/Next.js, guides compris. Sa
           vitesse d&apos;affichage, sa qualité visuelle et cette

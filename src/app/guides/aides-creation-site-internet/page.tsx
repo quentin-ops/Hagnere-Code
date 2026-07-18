@@ -878,9 +878,12 @@ export default function Page() {
             sans garantie personnelle (voir §3).
           </li>
           <li>
-            <strong>Le phasage</strong> : un site vitrine solide
-            d&apos;abord, l&apos;e-commerce et les fonctionnalités
-            avancées en V2, quand le site a commencé à produire.
+            <strong>Le phasage</strong> : un{" "}
+            <Link href="/services/sites-vitrines">site vitrine
+            solide</Link> d&apos;abord,{" "}
+            <Link href="/services/ecommerce">l&apos;e-commerce</Link> et
+            les fonctionnalités avancées en V2, quand le site a commencé
+            à produire.
           </li>
           <li>
             <strong>L&apos;accompagnement gratuit</strong> (Atouts

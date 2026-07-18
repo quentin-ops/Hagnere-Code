@@ -404,7 +404,11 @@ export default function Page() {
           pointages), le transport (tournées, bons de livraison), la
           santé (avec une contrainte en plus : les données de patients
           imposent un hébergement certifié « HDS », qui renchérit le
-          projet) et l&apos;industrie (ordres de fabrication, traçabilité).
+          projet) et l&apos;industrie (ordres de fabrication,
+          traçabilité). Ce sont exactement les périmètres que couvre
+          notre offre
+          d&apos;<Link href="/services/outils-internes-sur-mesure">outils
+          internes sur mesure</Link>, au forfait fixe contractuel.
         </p>
 
         <h2 id="ecart-devis">5. Pourquoi les devis vont de 5 000 à 150 000 €</h2>
@@ -561,7 +565,11 @@ export default function Page() {
           4 900 €/an de maintenance (15 %) + 900 €/an
           d&apos;hébergement ≈ <strong>50 000 € sur 3 ans</strong>. Face
           aux ~32 700 €/an que coûtait le statu quo (section 3),
-          l&apos;outil est amorti avant la fin de la deuxième année — et
+          l&apos;outil est amorti avant la fin de la deuxième année — à
+          condition que la ligne « maintenance » soit tenue par
+          quelqu&apos;un, ce qui est l&apos;objet d&apos;un contrat de{" "}
+          <Link href="/services/maintenance-evolution">maintenance et
+          d&apos;évolution</Link> au périmètre écrit. Et
           c&apos;est un calcul que nous vous recommandons d&apos;exiger de
           tout prestataire : pas de devis sans regard sur ce que
           l&apos;absence d&apos;outil coûte déjà.
@@ -688,7 +696,10 @@ export default function Page() {
           <li>
             <strong>Refondre avec reprise des données</strong> (3 à 12
             mois, généralement 15 000 à 80 000 € pour une migration vers
-            le web) : le nouveau système reprend l&apos;historique et
+            le web — c&apos;est le cœur de notre métier
+            d&apos;<Link href="/agence-react">agence React pour
+            applications métier</Link>) : le nouveau système reprend
+            l&apos;historique et
             l&apos;ancien s&apos;éteint.
           </li>
         </ul>
@@ -743,7 +754,7 @@ export default function Page() {
             export complet possible à tout moment, dans un format standard ;
           </li>
           <li>
-            Pour les logiciels critiques : l&apos;<strong>entiercement</strong>
+            Pour les logiciels critiques : l&apos;<strong>entiercement</strong>{" "}
             (le dépôt du code chez un tiers de confiance comme
             l&apos;Agence pour la Protection des Programmes), qui vous
             garantit l&apos;accès au code même si le prestataire disparaît.

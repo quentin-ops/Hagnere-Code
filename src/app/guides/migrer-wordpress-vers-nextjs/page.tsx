@@ -584,7 +584,9 @@ export default function Page() {
           <li>
             <strong>Traiter l&apos;e-commerce comme un projet à part
             entière</strong>, avec un vrai moteur de commerce sous une
-            façade sur mesure.
+            façade sur mesure — c&apos;est le périmètre de notre offre{" "}
+            <Link href="/services/ecommerce">e-commerce sur
+            mesure</Link>.
           </li>
         </ul>
         <p>
@@ -951,8 +953,9 @@ MIGRER VERS NEXT.JS — 3 ans (architecture C)
             premier sacrifié, et une migration bâclée là-dessus coûte
             beaucoup plus cher que l&apos;économie réalisée. Notre
             propre grille démarre à 6 900 € ; sous ce montant, nous
-            vous orienterons vers l&apos;entretien de votre WordPress
-            existant.
+            vous orienterons vers{" "}
+            <Link href="/services/maintenance-evolution">l&apos;entretien
+            de votre WordPress existant</Link>.
           </li>
           <li>
             <strong>Votre équipe éditoriale est nombreuse et

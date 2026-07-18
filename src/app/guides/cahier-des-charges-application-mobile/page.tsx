@@ -538,7 +538,11 @@ export default function Page() {
           surveillance) et sa gouvernance (qui décide, qui paie, sous
           quel délai). Un prestataire qui ne provisionne pas ce poste
           dans son offre ne vous vend pas une application : il vous
-          vend un compte à rebours. La clause à recopier dans la
+          vend un compte à rebours — c&apos;est la raison pour laquelle
+          notre offre{" "}
+          <Link href="/services/application-mobile">application
+          mobile</Link> chiffre la maintenance annuelle dès le devis
+          initial. La clause à recopier dans la
           section 9 de votre document : « Le devis inclut une offre de
           maintenance annuelle chiffrée séparément, couvrant les mises
           à jour imposées par les cycles Apple et Google, les
@@ -730,7 +734,10 @@ export default function Page() {
           propres : hébergement et localisation des données (France/UE
           — l&apos;argument RGPD), rôles et permissions
           multi-utilisateurs, intégrations tierces (paiement, CRM,
-          facturation) et critères de disponibilité. Les budgets
+          facturation) et critères de disponibilité — le cadre exact de
+          nos projets{" "}
+          <Link href="/services/saas-applications-metier">SaaS et
+          applications métier</Link>. Les budgets
           correspondants sont dans nos guides{" "}
           <Link href="/guides/combien-coute-un-saas">« combien coûte
           un SaaS »</Link> et{" "}

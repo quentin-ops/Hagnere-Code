@@ -726,7 +726,10 @@ export default function Page() {
           mêmes annonces Shopping à la place de Google : grâce à une
           décision européenne sur la concurrence, elles échappent à la
           marge que Google prélève sur les enchères, soit environ{" "}
-          <strong>20 % de coût par clic en moins</strong>. La bascule prend
+          <strong>20 % de coût par clic en moins</strong> — un réglage
+          que nous posons systématiquement dans nos campagnes de{" "}
+          <Link href="/services/publicite-en-ligne">publicité en ligne
+          Google Ads et Shopping</Link>. La bascule prend
           quelques jours et ne change rien pour vos clients.
         </p>
         <p>
@@ -855,7 +858,11 @@ export default function Page() {
           </li>
         </ul>
         <p>
-          Un devis sérieux intègre ces sujets dès la conception ; un devis
+          Un devis sérieux intègre ces sujets dès la conception —
+          accessibilité, RGPD et facturation électronique font partie de
+          notre périmètre{" "}
+          <Link href="/services/securite-rgpd">sécurité et conformité
+          RGPD</Link> ; un devis
           qui n&apos;en parle pas les facturera en avenant — ou vous
           laissera l&apos;ardoise.
         </p>

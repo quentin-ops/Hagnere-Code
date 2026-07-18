@@ -491,7 +491,9 @@ export default function Page() {
         </p>
         <p>
           Et parfois, la bonne réponse est… de ne pas faire d&apos;app : une
-          PWA bien construite couvre une grande partie des cas d&apos;usage
+          PWA ou une{" "}
+          <Link href="/agence-react">application web React</Link> bien
+          construite couvre une grande partie des cas d&apos;usage
           business pour 40 à 60 % de moins, sans review des stores. Si un
           site web suffit, notre guide{" "}
           <Link href="/guides/combien-coute-un-site-internet">combien coûte

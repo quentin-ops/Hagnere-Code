@@ -337,7 +337,10 @@ export default function Page() {
         <h2 id="profils">3. Le budget selon votre profil : 3 scénarios</h2>
         <h3>Scénario A — Fondateur : lancer un produit sur le marché</h3>
         <p>
-          Votre enjeu : valider vite sans brûler la trésorerie.{" "}
+          Votre enjeu : valider vite sans brûler la trésorerie — le
+          périmètre exact de notre offre de{" "}
+          <Link href="/services/saas-applications-metier">développement
+          de SaaS et d&apos;applications métier</Link>.{" "}
           <strong>Trajectoire recommandée : POC ou MVP resserré (15 000 à
           25 000 €)</strong>, 3 à 5 fonctionnalités maximum, un seul parcours
           utilisateur soigné, paiement en ligne dès le premier jour — un MVP
@@ -519,7 +522,10 @@ export default function Page() {
           Ne rien faire pendant un an, ce
           n&apos;est pas économiser : c&apos;est laisser la maison se
           fissurer. Un SaaS à 30 000 € coûte donc 4 500 à 7 500 €/an à
-          faire vivre : budgétez-le dès le business plan.
+          faire vivre : budgétez-le dès le business plan — un{" "}
+          <Link href="/services/maintenance-evolution">contrat de
+          maintenance et d&apos;évolution</Link> transforme cette ligne
+          floue en montant mensuel écrit.
         </p>
         <p>
           Et à la montée en charge ? Les données de marché situent la
@@ -715,6 +721,15 @@ export default function Page() {
             inscrire au business plan dès le premier jour.
           </li>
         </ul>
+        <p>
+          Ces quatre lignes ne sont pas des options : elles se budgètent
+          avec le développement. Le volet technique — chiffrement,
+          journalisation, registre des traitements, sort des données en
+          fin de contrat — est l&apos;objet de notre offre{" "}
+          <Link href="/services/securite-rgpd">sécurité et conformité
+          RGPD</Link> ; le volet contractuel, lui, relève de votre
+          avocat.
+        </p>
 
         <h2 id="business">11. Combien rapporte un SaaS ? Le calcul fondateur</h2>
         <p>

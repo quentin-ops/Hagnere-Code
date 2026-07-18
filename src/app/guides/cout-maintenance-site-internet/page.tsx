@@ -431,7 +431,11 @@ export default function Page() {
           2 M€ de chiffre d&apos;affaires en sont exemptées ; dépasser
           un seul de ces deux seuils suffit à être concerné — avec des
           sanctions pouvant atteindre 50 000 € par service. Maintenir
-          un site en 2026, c&apos;est aussi maintenir sa conformité.
+          un site en 2026, c&apos;est aussi maintenir sa conformité —
+          RGPD, cookies et accessibilité forment un chantier à part
+          entière, que nous traitons dans notre offre{" "}
+          <Link href="/services/securite-rgpd">sécurité et conformité
+          RGPD</Link>.
         </p>
 
         <h2 id="prix-par-type">5. Les prix 2026 par type de site</h2>
@@ -589,7 +593,11 @@ export default function Page() {
           1 000 €/an tout compris) achève de renverser le calcul. Pour
           un site professionnel qui doit convertir et durer, la base
           saine (React/Next.js) est aujourd&apos;hui le choix par
-          défaut ; le verdict détaillé par profil reste dans notre{" "}
+          défaut — c&apos;est le seul socle sur lequel nous construisons,
+          et notre page <Link href="/agence-next-js">agence
+          Next.js</Link> détaille ce qu&apos;il change à
+          l&apos;entretien ; le verdict détaillé par profil reste dans
+          notre{" "}
           <Link href="/guides/nextjs-ou-wordpress">comparatif Next.js
           ou WordPress</Link> — côté budget, c&apos;est un paramètre à
           poser dès le devis de création, pas au premier piratage.

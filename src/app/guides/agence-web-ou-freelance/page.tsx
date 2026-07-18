@@ -146,7 +146,7 @@ const faqItems = [
   {
     question: "Est-ce que les agences web sous-traitent à des freelances ?",
     answer:
-      "Certaines, oui — parfois à l'autre bout du monde, avec une marge de 2 à 3 fois, ce qui invalide tout le comparatif de prix que vous croyez faire. Aucune statistique fiable n'existe sur l'ampleur du phénomène (les pourcentages qui circulent ne sont pas sourcés), mais la parade juridique, elle, est solide et méconnue : la loi du 31 décembre 1975 sur la sous-traitance (article 3) vous donne le droit d'accepter chaque sous-traitant et d'agréer ses conditions de paiement. En pratique, cinq questions en rendez-vous suffisent : qui écrit le code, où, puis-je le rencontrer, qui répond aux demandes après livraison, et la sous-traitance figure-t-elle au contrat ? Un prestataire sérieux répond sans détour — chez nous : l'équipe qui vend est l'équipe qui code, à Chambéry.",
+      "Certaines, oui — parfois à l'autre bout du monde, avec une marge de 2 à 3 fois, ce qui invalide tout le comparatif de prix que vous croyez faire. Aucune statistique fiable n'existe sur l'ampleur du phénomène (les pourcentages qui circulent ne sont pas sourcés), mais la parade juridique, elle, est solide et méconnue : la loi du 31 décembre 1975 sur la sous-traitance (article 3) vous donne le droit d'accepter chaque sous-traitant et d'agréer ses conditions de paiement. En pratique, cinq questions en rendez-vous suffisent : qui écrit le code, où, puis-je le rencontrer, qui répond aux demandes après livraison, et la sous-traitance figure-t-elle au contrat ? Un prestataire sérieux répond sans détour — chez nous : l'équipe qui vend est l'équipe qui code, en Savoie.",
   },
   {
     question: "Comment savoir si mon agence web m'arnaque ?",
@@ -304,7 +304,8 @@ export default function Page() {
           le freelance suffit), soit par une agence (conclusion :
           l&apos;agence est plus sûre). <strong>Ce guide est écrit par
           une agence — une petite structure senior de développement
-          sur mesure, à Chambéry — et cette position colore
+          sur mesure, <Link href="/agence/savoie">en Savoie</Link> — et
+          cette position colore
           forcément notre regard</strong> : jugez-nous sur les sources,
           pas sur la signature. Deuxième réflexe : préciser de QUI on
           parle, car « freelance » recouvre l&apos;étudiant à
@@ -522,7 +523,7 @@ export default function Page() {
           livraison ? la sous-traitance figure-t-elle au
           contrat ?</strong> Les réponses évasives sont une réponse.
           La nôtre, pour être complet : l&apos;équipe qui vend est
-          l&apos;équipe qui code, à Chambéry, et nos contrats le
+          l&apos;équipe qui code, en Savoie, et nos contrats le
           disent.
         </p>
 
@@ -777,7 +778,8 @@ export default function Page() {
         </InfoBox>
         <p>
           Et si vous voulez notre réponse à nous — biais déclaré,
-          engagements écrits : <strong>vitrine sur mesure dès
+          engagements écrits (<Link href="/tarifs">notre grille
+          publique</Link>) : <strong>vitrine sur mesure dès
           6 900 €, e-commerce dès 15 000 €, note Lighthouse 95+
           contractuelle, code cédé, l&apos;équipe qui vend est
           l&apos;équipe qui code</strong> (méthode{" "}

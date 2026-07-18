@@ -580,7 +580,10 @@ export default function Page() {
           puis en refonte : le référencement dépend de la structure même du
           site, et le rajouter ensuite, c&apos;est déplacer les fondations
           d&apos;une maison construite. Le socle s&apos;écrit dans le CDC,
-          pas dans un avenant.
+          pas dans un avenant — c&apos;est la part de notre{" "}
+          <Link href="/services/referencement-google">travail de
+          référencement</Link> qui se joue avant la première ligne de
+          code.
         </p>
 
         <h3>Section 9 — Les intégrations et l&apos;existant</h3>
@@ -653,7 +656,10 @@ export default function Page() {
           les données. <strong>La maintenance</strong> : qui applique les
           mises à jour de sécurité, qui corrige un bug, sous quel délai,
           pour quel tarif annuel — comptez 10 à 20 % du prix du projet par
-          an, formation de votre équipe incluse ou non.{" "}
+          an, formation de votre équipe incluse ou non — notre offre de{" "}
+          <Link href="/services/maintenance-evolution">maintenance et
+          d&apos;évolution</Link> détaille ce que ce pourcentage doit
+          couvrir.{" "}
           <strong>La propriété et la réversibilité</strong> : le code, les
           textes et les images produits vous appartiennent, et vous pouvez
           à tout moment récupérer site, contenus et accès dans un format

@@ -516,7 +516,7 @@ LA RÈGLE DU CINQUIÈME (consultant SALARIÉ d'une ESN)
           avancés. Le travail à distance a comprimé cet écart au point
           qu&apos;une médiane « à distance » ne se situe qu&apos;à
           environ 6 % sous la médiane parisienne. Notre équipe étant
-          basée à Chambéry, nous sommes bien placés pour le
+          basée à Bassens, aux portes de Chambéry, nous sommes bien placés pour le
           confirmer : le tarif suit la compétence, pas le code postal.
         </p>
 
@@ -1000,9 +1000,12 @@ LE CONTRÔLE À FAIRE SUR TOUT DEVIS
           Notre grille publique est consultable — 6 900 €, 14 900 € et
           22 000 € et plus pour un{" "}
           <Link href="/services/sites-vitrines">site vitrine</Link>,
-          15 000 à 120 000 € pour un e-commerce sur mesure, et
-          15 000 € minimum pour une première version de logiciel en
-          ligne (SaaS) — périmètre volontairement plus resserré que la
+          15 000 à 120 000 € pour un{" "}
+          <Link href="/services/ecommerce">e-commerce sur mesure</Link>,
+          et 15 000 € minimum pour une première version de{" "}
+          <Link href="/services/saas-applications-metier">logiciel en
+          ligne (SaaS)</Link> — périmètre volontairement plus resserré
+          que la
           ligne « application métier » du tableau de la section 8, qui
           suppose une reprise de processus existants.
         </p>

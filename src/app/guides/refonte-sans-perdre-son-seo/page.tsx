@@ -656,7 +656,10 @@ export default function Page() {
           logique « une chose à la fois » de Google. C&apos;est le
           chemin exact d&apos;Élodie, notre courtière : son WordPress
           de 2019 reconstruit en Next.js, adresses conservées à la
-          lettre — le résultat se lit en section 9.
+          lettre — le résultat se lit en section 9. Ce scénario est le
+          quotidien de notre{" "}
+          <Link href="/agence-next-js">agence Next.js</Link>, migrations
+          WordPress comprises.
         </p>
 
         <h2 id="urgence">11. Plan d&apos;urgence : « j&apos;ai déjà perdu mon trafic »</h2>
@@ -736,7 +739,10 @@ export default function Page() {
           contrôles post-bascule) se facture{" "}
           <strong>1 500 à 10 000 €</strong> selon le volume de pages —
           c&apos;est le poste que les devis « attractifs » retirent
-          en premier, et le seul qui protège votre actif.{" "}
+          en premier, et le seul qui protège votre actif — chez nous il
+          est intégré à la prestation de{" "}
+          <Link href="/services/referencement-google">référencement
+          Google</Link>, jamais vendu en option.{" "}
           <strong>L&apos;outillage</strong> est marginal : Screaming
           Frog gratuit jusqu&apos;à 500 adresses (245 €/an au-delà),
           Search Console et PageSpeed gratuits. <strong>Chez

@@ -756,7 +756,9 @@ export default function Page() {
             <strong>L&apos;agence gère le contenu pour vous.</strong> Vous
             envoyez vos textes, l&apos;agence les met en ligne sous 24-48 h.
             Adapté quand le site évolue quelques fois par an — c&apos;est
-            inclus dans nos forfaits de maintenance.
+            inclus dans nos{" "}
+            <Link href="/services/maintenance-evolution">forfaits de
+            maintenance et d&apos;évolution</Link>.
           </li>
           <li>
             <strong>Un outil d&apos;édition branché sur le site</strong> (un
@@ -879,7 +881,9 @@ export default function Page() {
           d&apos;alerte) ? De quand date la dernière mise à jour (plus de
           3 mois : site probablement vulnérable) ? Et s&apos;affiche-t-il en
           moins de 3 secondes sur votre propre téléphone, en 4G ? Si les
-          réponses fâchent, faites-le auditer — et comparez le coût
+          réponses fâchent, faites-le{" "}
+          <Link href="/services/audit-technique">auditer
+          techniquement</Link> — et comparez le coût
           d&apos;une remise à niveau à celui d&apos;une refonte (section 9).
         </p>
 

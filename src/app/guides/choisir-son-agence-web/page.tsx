@@ -918,8 +918,10 @@ export default function Page() {
           le recours en cas de conflit. Elle ne garantit ni la qualité
           technique ni la tenue des délais, et certaines agences très
           visibles localement sous-traitent l&apos;essentiel de leur
-          production. Notre position, en tant qu&apos;équipe basée à
-          Chambéry : la proximité est un excellent critère de départage
+          production. Notre position, en tant
+          qu&apos;<Link href="/agence/savoie/chambery">équipe basée à
+          Chambéry</Link> : la proximité est un excellent critère de
+          départage
           entre deux prestataires équivalents, jamais un critère de
           sélection principal.
         </p>
@@ -949,8 +951,10 @@ export default function Page() {
             droit, « Afficher le code source », ou l&apos;extension
             Wappalyzer. Vous n&apos;y trouverez pas de{" "}
             <code>wp-content</code> : nos sites sont développés en
-            Next.js et React, ce que nous annonçons. Ce site en est
-            lui-même la démonstration.
+            Next.js et React, ce que nous annonçons — notre page{" "}
+            <Link href="/agence-next-js">agence Next.js</Link> détaille
+            ce socle et ce qu&apos;il implique pour un client. Ce site en
+            est lui-même la démonstration.
           </li>
           <li>
             <strong>Posez-nous les treize questions de la

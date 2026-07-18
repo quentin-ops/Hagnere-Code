@@ -559,7 +559,8 @@ export default function Page() {
 
         <h2 id="sur-mesure">9. Le sur-mesure : prix réels, devis décortiqué</h2>
         <p>
-          Un e-commerce sur mesure coûte en France en 2026{" "}
+          Un <Link href="/services/ecommerce">e-commerce sur
+          mesure</Link> coûte en France en 2026{" "}
           <strong>15 000 à 40 000 € pour une boutique fonctionnelle</strong>{" "}
           avec intégrations simples, et <strong>40 000 à 120 000 € pour
           une plateforme complète</strong> — stock temps réel,

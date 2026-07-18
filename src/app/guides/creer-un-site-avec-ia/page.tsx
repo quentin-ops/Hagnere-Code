@@ -603,7 +603,8 @@ export default function Page() {
           réduits de 22 à 34 % grâce à l&apos;IA mais des prix
           affichés le plus souvent inchangés, le gain restant en
           marge. Nous faisons le choix inverse : c&apos;est ce qui
-          rend possible notre grille publique — vitrine complète dès
+          rend possible <Link href="/tarifs">notre grille
+          publique</Link> — vitrine complète dès
           6 900 €, e-commerce dès 15 000 €, première version
           d&apos;une application en ligne par abonnement (le « MVP
           SaaS ») dès 15 000 €, au forfait fixe. Et c&apos;est ce qui inverse la conclusion des
@@ -623,7 +624,10 @@ export default function Page() {
         <p>
           Plutôt qu&apos;une promesse, une démonstration en
           production : <strong>hagnere-code.ai est développé à 100 %
-          en React/Next.js, avec Claude Code</strong>. Le design est
+          en React/Next.js, avec Claude Code</strong> — la même chaîne
+          de production que celle décrite sur notre page{" "}
+          <Link href="/agence-next-js">agence Next.js</Link>. Le design
+          est
           propriétaire — aucun template, des animations et des
           micro-interactions qu&apos;aucun générateur ne produit
           (bibliothèques professionnelles type Framer Motion et GSAP,
@@ -710,7 +714,10 @@ export default function Page() {
           avant mesure d&apos;audience, hébergement des données —
           aucun outil ne le configure pour vous, et l&apos;incident
           Lovable de 2025 (170 applications aux données exposées)
-          montre le coût du « ça marchera bien ».{" "}
+          montre le coût du « ça marchera bien » — c&apos;est le
+          périmètre exact de notre prestation{" "}
+          <Link href="/services/securite-rgpd">sécurité et conformité
+          RGPD</Link>.{" "}
           <strong>La maintenance</strong> : un site généré
           n&apos;est maintenu par personne — la plateforme entretient
           SES serveurs, pas VOTRE site ; un code vibe-codé

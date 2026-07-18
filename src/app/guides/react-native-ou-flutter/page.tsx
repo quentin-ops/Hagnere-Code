@@ -778,8 +778,9 @@ export default function Page() {
           </li>
         </ol>
         <p>
-          Notre position, déclarée d&apos;entrée : Hagnéré Code est une
-          agence majoritairement React/Next.js — ce site en est la
+          Notre position, déclarée d&apos;entrée : Hagnéré Code est une{" "}
+          <Link href="/agence-react">agence majoritairement
+          React/Next.js</Link> — ce site en est la
           preuve, développé à 100 % en React/Next.js avec Claude
           Code — et nous développons les applications mobiles en React
           Native précisément pour la cohérence web + mobile décrite

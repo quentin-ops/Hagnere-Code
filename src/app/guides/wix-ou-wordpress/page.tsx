@@ -518,7 +518,9 @@ export default function Page() {
           fait ; construire un blog santé qui rayonne au national
           demande une liberté SEO totale</strong> — WordPress la donne
           en partie, un site sur mesure la donne entièrement :
-          architecture, vitesse, stratégie de guides sans aucune
+          architecture, vitesse,{" "}
+          <Link href="/services/referencement-google">stratégie de
+          contenus pensée pour le référencement</Link> sans aucune
           brique qui bride (section 13). C&apos;est d&apos;ailleurs
           ainsi qu&apos;est construit le site que vous lisez.
         </p>
@@ -733,8 +735,9 @@ export default function Page() {
           la même clause de sortie).
           C&apos;est le territoire du sur-mesure : un site conçu pour
           votre stratégie, généralement{" "}
-          <strong>6 900 à 22 000 €</strong> chez nous (grille
-          publique), rapide par conception — le site que vous lisez
+          <strong>6 900 à 22 000 €</strong> chez nous
+          (<Link href="/tarifs">grille publique</Link>), rapide par
+          conception — le site que vous lisez
           est lui-même développé à 100 % en React/Next.js —, notre{" "}
           <Link href="/guides/nextjs-ou-wordpress">comparatif Next.js
           ou WordPress</Link> traite ce match technologique en détail,
@@ -797,8 +800,9 @@ export default function Page() {
           React/Next.js — et nous recommandons Wix ou WordPress quand
           le projet le justifie vraiment — petit budget, projet
           secondaire, test de marché : un client bien orienté revient. Un{" "}
-          <strong>Discovery Sprint (1 500 €, 2 jours, déduit à 100 %
-          si le projet se lance)</strong> tranche votre cas sur vos
+          <strong><Link href="/methode">Discovery Sprint</Link> (1 500 €,
+          2 jours, déduit à 100 % si le projet se lance)</strong> tranche
+          votre cas sur vos
           chiffres.{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en
           3 minutes</Link> : réponse personnelle sous 24 h ouvrées,

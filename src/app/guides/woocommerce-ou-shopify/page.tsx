@@ -719,8 +719,9 @@ export default function Page() {
           se construit entre 1 500 et 30 000 € selon la plateforme et
           le prestataire (section 7) ; les seuils historiquement
           publiés par les agences pour le sur-mesure convergeaient vers
-          25 000-80 000 € — un plancher qui a cédé : notre propre
-          grille e-commerce sur mesure démarre à 15 000 €, au prix
+          25 000-80 000 € — un plancher qui a cédé : notre propre{" "}
+          <Link href="/services/ecommerce">grille e-commerce sur
+          mesure</Link> démarre à 15 000 €, au prix
           d&apos;une création Shopify en agence. Le sur-mesure se
           justifie par le métier et par l&apos;ambition de convertir et
           durer — pas par la mode. Pour tester une demande à petit
@@ -729,8 +730,6 @@ export default function Page() {
           trajectoire saine ; pour une entreprise dont la boutique est
           l&apos;actif principal, partir directement sur mesure évite
           un projet de migration complet deux ans plus tard — notre{" "}
-          <Link href="/guides/shopify-ou-sur-mesure">comparatif
-          Shopify ou sur-mesure</Link> en chiffre le coût de sortie. Notre{" "}
           <Link href="/guides/shopify-ou-sur-mesure">comparatif
           Shopify ou e-commerce sur mesure</Link> chiffre cette
           bascule — point d&apos;équilibre et coût de sortie compris —
@@ -790,8 +789,9 @@ export default function Page() {
           Claude Code — la vitesse, la qualité visuelle et la
           stratégie de guides que vous lisez en ce moment en sont la
           démonstration. Un{" "}
-          <strong>Discovery Sprint (1 500 €, 2 jours, déduit à 100 %
-          si le projet se lance)</strong> tranche votre cas sur vos
+          <strong><Link href="/methode">Discovery Sprint</Link> (1 500 €,
+          2 jours, déduit à 100 % si le projet se lance)</strong> tranche
+          votre cas sur vos
           chiffres réels — trafic, volumes, équipe — et produit une
           recommandation écrite, quelle qu&apos;elle soit.{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en

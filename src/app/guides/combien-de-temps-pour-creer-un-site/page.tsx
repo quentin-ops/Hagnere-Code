@@ -558,7 +558,9 @@ export default function Page() {
           semaines » pour explorer un nouveau site ; soumettre le plan
           du site (sitemap) dès le premier jour ramène généralement les
           premières pages indexées à 3-7 jours.{" "}
-          <strong>Le référencement naturel</strong> : les premiers
+          <strong>Le{" "}
+          <Link href="/services/referencement-google">référencement
+          naturel</Link></strong> : les premiers
           effets se mesurent en 3 à 6 mois, un flux régulier de
           contacts en 6 à 12 mois. L&apos;étude de référence (Ahrefs,
           2025) est sans appel : <strong>moins de 2 % des pages
@@ -567,7 +569,9 @@ export default function Page() {
           — mais sur des requêtes locales ou de niche, la moitié des
           pages récentes y parviennent en 2 à 4 mois : le choix des
           batailles compte plus que l&apos;ancienneté.{" "}
-          <strong>La publicité en attendant</strong> : Google Ads
+          <strong>La{" "}
+          <Link href="/services/publicite-en-ligne">publicité en
+          attendant</Link></strong> : Google Ads
           lui-même a une période d&apos;apprentissage officielle de 1 à
           2 semaines par campagne, et une stabilisation en 3-4 semaines.
           Moralité, à graver dans le planning :{" "}

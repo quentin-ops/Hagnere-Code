@@ -349,7 +349,10 @@ export default function Page() {
         <p>
           Et les contre-signaux, tout aussi importants : un site lent mais
           bien construit s&apos;accélère pour 1 000 à 3 000 €
-          d&apos;optimisation ciblée ; un référencement décevant se
+          d&apos;optimisation ciblée — c&apos;est précisément ce que
+          tranche un{" "}
+          <Link href="/services/audit-technique">audit technique
+          préalable</Link> ; un référencement décevant se
           travaille sans rien casser ; une page de contact qui convertit
           mal se reteste en quelques jours. Une agence française
           spécialisée avance que <strong>6 refontes commandées sur 10
@@ -652,7 +655,9 @@ export default function Page() {
           WordPress, ou passer sur une technologie moderne comme Next.js
           (le cadre de développement que nous utilisons, où le site est
           généré à l&apos;avance et servi d&apos;un bloc — d&apos;où sa
-          vitesse) ?
+          vitesse) ? C&apos;est le socle que détaille notre page{" "}
+          <Link href="/agence-next-js">agence Next.js</Link>, migrations
+          WordPress comprises.
         </p>
         <GuideTable
           headers={["Option", "Budget refonte", "Ce que ça change au quotidien"]}
