@@ -545,6 +545,10 @@ export default function Page() {
           design, textes, référencement. C&apos;est ce qui nous permet
           d&apos;inclure design sur mesure et rédaction dans un forfait à
           6 900 €, un périmètre facturé bien plus cher il y a trois ans.
+          Le panorama complet des outils — générateurs, vibe coding,
+          assistants de code, avec leurs prix vérifiés — est dans notre{" "}
+          <Link href="/guides/creer-un-site-avec-ia">guide « créer un
+          site avec l&apos;IA »</Link>.
         </p>
         <p>
           Une image pour fixer la différence entre louer et posséder : avec

@@ -690,10 +690,13 @@ export default function Page() {
         <h2 id="troisieme-option">13. Quand aucun des deux : la troisième option</h2>
         <p>
           Un mot d&apos;abord sur les cousins de Wix que vous avez
-          forcément croisés — Squarespace, Webflow, Jimdo, Hostinger :
-          même famille, mêmes forces (tout géré, mise en route rapide)
-          et même clause de sortie limitée ; les critères de ce guide
-          s&apos;y appliquent tels quels. Cela posé : Wix et WordPress
+          forcément croisés — Squarespace, Webflow, Jimdo, Hostinger,
+          et leurs variantes « générateur de site par IA », que notre{" "}
+          <Link href="/guides/creer-un-site-avec-ia">guide « créer un
+          site avec l&apos;IA »</Link> passe au crible : même famille,
+          mêmes forces (tout géré, mise en route rapide) et même clause
+          de sortie limitée ; les critères de ce guide s&apos;y
+          appliquent tels quels. Cela posé : Wix et WordPress
           partagent un présupposé — le site est un assemblage de
           briques standards. Pour la plupart des sites,
           c&apos;est exactement ce qu&apos;il faut. Mais quand le site

@@ -36,6 +36,20 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "creer-un-site-avec-ia",
+    title: "Créer un site avec l'IA : le guide honnête 2026 · Hagnéré Code",
+    cardTitle: "Créer un site avec l'IA : ce qui marche vraiment en 2026",
+    metaDescription:
+      "Générateurs no-code, vibe coding, assistants pro : prix vérifiés, pièges réels, position de Google — et pourquoi l'IA a fait baisser le prix du sur-mesure.",
+    cardDescription:
+      "Les 3 familles d'outils IA passées au crible : prix réels avec renouvellements, pièges documentés, position officielle de Google — et le vrai bouleversement.",
+    heroTitle: "Créer un site avec l'IA : ce qui marche, ce qui déçoit, ce que ça coûte",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    readTimeMin: 24,
+  },
+  {
     slug: "combien-coute-un-site-internet",
     title: "Combien coûte un site internet en 2026 ? · Hagnéré Code",
     cardTitle: "Combien coûte un site internet en 2026 ?",

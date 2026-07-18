@@ -915,7 +915,10 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           répercutons dans nos forfaits : un MVP SaaS à 15 000 € là où le
           marché démarre à 30 000 €. Méfiez-vous en revanche du « site généré
           par IA à 200 € » : sans architecture, sans SEO, sans garantie,
-          c&apos;est un template avec une couche de peinture.
+          c&apos;est un template avec une couche de peinture — notre{" "}
+          <Link href="/guides/creer-un-site-avec-ia">guide « créer un
+          site avec l&apos;IA »</Link> passe tous ces outils au crible,
+          prix de renouvellement compris.
         </p>
         <p>
           Et si vous avez déjà un site qui fonctionne ? Nous savons aussi{" "}
