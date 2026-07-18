@@ -3,11 +3,8 @@ import { Resend } from "resend";
 import { eq } from "drizzle-orm";
 import { randomBytes } from "node:crypto";
 import { getClientIp } from "@/lib/rate-limit";
-import {
-  checkServiceRateLimit,
-  logAiCall,
-  verifyTurnstileToken,
-} from "@/lib/ai-rate-limit";
+import { checkServiceRateLimit, logAiCall } from "@/lib/ai-rate-limit";
+import { isValidMathChallenge } from "@/lib/math-challenge";
 import { getDb } from "@/db";
 import { projectBrief } from "@/db/schema";
 import { log } from "@/lib/logger";
@@ -29,7 +26,7 @@ type Body = {
   message?: string;
   phone?: string;
   honeypot?: string;
-  turnstileToken?: string;
+  mathChallenge?: unknown;
 
   // Funnel-specific fields (added for DB persistence)
   role?: string;
@@ -110,7 +107,7 @@ function renderEmailShell(preheader: string, innerHtml: string): string {
                 ${innerHtml}
                 <tr>
                   <td style="padding:22px 28px;background:#fafafa;border-top:1px solid #ededed;color:#737373;font-size:12px;line-height:1.55">
-                    Hagnéré Code SAS · 7 rue Ernest Filliard, 73000 Chambéry<br>
+                    Hagnéré Code SAS · 82 impasse de Bellevue, 73000 Bassens<br>
                     <a href="mailto:quentin@hagnere-patrimoine.fr" style="color:#4c1d95;text-decoration:none">quentin@hagnere-patrimoine.fr</a> · <a href="tel:+33374472018" style="color:#4c1d95;text-decoration:none">+33 3 74 47 20 18</a>
                   </td>
                 </tr>
@@ -149,24 +146,22 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  // 2. Cloudflare Turnstile : bot check côté serveur. Fail-closed —
-  // si le secret est manquant en prod, verifyTurnstileToken bloquera.
-  const turnstile = await verifyTurnstileToken(body.turnstileToken, ip);
-  if (!turnstile.valid) {
+  // 2. Anti-bot : question de calcul générée côté client, revalidée ici
+  // (bornes + somme). Remplace Cloudflare Turnstile — zéro dépendance
+  // externe. Couplé au honeypot (au-dessus) et au rate limit (en-dessous),
+  // ça bloque les bots génériques qui POSTent sans exécuter le formulaire.
+  if (!isValidMathChallenge(body.mathChallenge)) {
     await logAiCall({
       service: "inquiry",
       ip,
       userAgent,
       status: "blocked",
-      blockReason:
-        turnstile.reason === "secret_misconfigured"
-          ? "secret_misconfigured"
-          : "captcha_failed",
+      blockReason: "captcha_failed",
     });
     return NextResponse.json(
       {
         error:
-          "Vérification anti-bot échouée. Recharge la page puis réessaye, ou contacte quentin@hagnere-patrimoine.fr.",
+          "La réponse au calcul anti-robot est incorrecte. Vérifiez le calcul puis réessayez, ou écrivez à quentin@hagnere-patrimoine.fr.",
       },
       { status: 403 },
     );

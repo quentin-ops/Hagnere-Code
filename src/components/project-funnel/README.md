@@ -29,7 +29,7 @@ brief-format.ts
     "Brief transmis" (étape envoi) et le mail équipe.
 
 Au submit (appel unique) :
-└── POST /api/project-inquiry  (avec turnstileToken — vérifié fail-closed)
+└── POST /api/project-inquiry  (avec mathChallenge — revalidé server-side)
     ├─ INSERT project_brief          ← d'abord la DB, un lead n'est jamais perdu
     ├─ Resend mail équipe + mail de confirmation prospect
     └─ UPDATE mail_sent = true
@@ -42,10 +42,10 @@ Erreur → message inline + retry (l'état du formulaire est conservé).
 
 ## Anti-spam
 
-- **Cloudflare Turnstile** (`TurnstileWidget.tsx`) : monté à l'étape envoi,
-  token transmis dans le payload `/api/project-inquiry` qui le vérifie en
-  **fail-closed** (sans token valide en production → 403). En dev sans
-  `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, bypass complet.
+- **Question de calcul maison** (`MathChallenge.tsx`) : affichée à l'étape
+  envoi, réponse vérifiée côté client puis revalidée par
+  `/api/project-inquiry` (bornes + somme, voir `src/lib/math-challenge.ts`).
+  Zéro dépendance externe, aucune env var.
 - **Honeypot** : champ caché `pf-hp`, rejet silencieux côté route.
 - **Rate limit** : Postgres, service `inquiry` (voir `src/lib/ai-rate-limit.ts`).
 

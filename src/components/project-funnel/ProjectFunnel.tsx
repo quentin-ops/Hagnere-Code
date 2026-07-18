@@ -32,7 +32,12 @@ import {
 import { useEffect, useMemo, useRef, useState, useCallback, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import "./project-funnel.css";
-import { TurnstileWidget, TURNSTILE_ENABLED } from "./TurnstileWidget";
+import {
+  MathChallenge,
+  isMathAnswerCorrect,
+  toMathChallengePayload,
+  type MathChallengeValue,
+} from "./MathChallenge";
 import { compileBrief } from "./brief-format";
 import { trackFunnelEvent } from "@/lib/funnel-analytics";
 import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
@@ -1669,24 +1674,10 @@ export function ProjectFunnel() {
   // match the client" warning on data that lives in localStorage.
   const [state, setState] = useState<FunnelState>(INITIAL_STATE);
   const [hydrated, setHydrated] = useState(false);
-  // Cloudflare Turnstile token — récolté avant submit pour anti-bot,
-  // transmis à /api/project-inquiry qui le vérifie en fail-closed.
-  // Si TURNSTILE_ENABLED est false (NEXT_PUBLIC_TURNSTILE_SITE_KEY absent),
-  // le bouton submit est actif sans token. Attention : le bypass serveur
-  // est keyé sur NEXT_PUBLIC_ENV === "development" (ai-rate-limit.ts), un
-  // autre env var — en production sans site key, la route refuse quand
-  // même (fail-closed).
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  // Incrémenté après un échec d'envoi : le serveur consomme le token
-  // (usage unique) même quand la requête échoue ensuite — il faut donc
-  // un reset du widget pour que le retry parte avec un token frais.
-  const [turnstileResetKey, setTurnstileResetKey] = useState(0);
-  // En dev (NEXT_PUBLIC_ENV='development'), le serveur skip Turnstile :
-  // on autorise la soumission même sans token (utile quand la site key
-  // de prod n'est pas whitelistée sur localhost). Même logique que le
-  // formulaire du footer (SiteFooter.tsx).
-  const turnstileReady =
-    process.env.NEXT_PUBLIC_ENV === "development" || !TURNSTILE_ENABLED || turnstileToken !== null;
+  // Anti-bot maison : question de calcul affichée à l'étape d'envoi,
+  // vérifiée côté client puis revalidée par /api/project-inquiry.
+  const [math, setMath] = useState<MathChallengeValue | null>(null);
+  const [mathError, setMathError] = useState<string | null>(null);
   const [showValidation, setShowValidation] = useState(false);
   const [skippedSteps, setSkippedSteps] = useState<Set<StepId>>(new Set());
   const [status, setStatus] = useState<Status>({ kind: "idle" });
@@ -1827,6 +1818,11 @@ export function ProjectFunnel() {
       setActiveStep(4);
       return;
     }
+    if (!isMathAnswerCorrect(math)) {
+      setMathError("Réponse incorrecte — recomptez.");
+      return;
+    }
+    setMathError(null);
     setStatus({ kind: "submitting" });
     const message = makeLeadMessage(state);
     trackFunnelEvent("pf:submit_start", {
@@ -1853,9 +1849,8 @@ export function ProjectFunnel() {
           budget: state.budget,
           message,
           honeypot: state.honeypot,
-          // Cloudflare Turnstile token (anti-bot). Vérifié server-side en
-          // fail-closed : sans token valide, la route refuse en production.
-          turnstileToken: turnstileToken || undefined,
+          // Anti-bot maison (question de calcul), revalidé server-side.
+          mathChallenge: toMathChallengePayload(math),
           // Full funnel state for DB persistence (project_brief table)
           role: state.role.trim(),
           siren: state.siren,
@@ -1902,10 +1897,6 @@ export function ProjectFunnel() {
     }
 
     trackFunnelEvent("pf:submit_error", { mail_error: mailError });
-    // Le token vient d'être consommé par la vérification server-side —
-    // on le purge et on reset le widget pour que le retry reparte propre.
-    setTurnstileToken(null);
-    setTurnstileResetKey((k) => k + 1);
     setStatus({
       kind: "error",
       message:
@@ -2405,21 +2396,22 @@ export function ProjectFunnel() {
                   </p>
                 </div>
 
-                {TURNSTILE_ENABLED && (
-                  <TurnstileWidget
-                    onToken={setTurnstileToken}
-                    onExpire={() => setTurnstileToken(null)}
-                    resetKey={turnstileResetKey}
-                  />
-                )}
+                {/* Anti-bot maison : question de calcul (remplace Turnstile). */}
+                <MathChallenge
+                  className="pf-field pf-captcha"
+                  onChange={(value) => {
+                    setMath(value);
+                    setMathError(null);
+                  }}
+                  error={mathError}
+                />
 
                 <button
                   type="button"
                   className="pf-submit"
                   onClick={submitBrief}
-                  disabled={status.kind === "submitting" || !turnstileReady}
-                  aria-disabled={status.kind === "submitting" || !turnstileReady}
-                  title={!turnstileReady ? "Vérification anti-bot en cours…" : undefined}
+                  disabled={status.kind === "submitting"}
+                  aria-disabled={status.kind === "submitting"}
                 >
                   {status.kind === "submitting" ? (
                     <Loader2 size={18} className="pf-spin" />

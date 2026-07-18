@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getClientIp } from "@/lib/rate-limit";
-import {
-  checkServiceRateLimit,
-  logAiCall,
-  verifyTurnstileToken,
-} from "@/lib/ai-rate-limit";
+import { checkServiceRateLimit, logAiCall } from "@/lib/ai-rate-limit";
 import { log } from "@/lib/logger";
 
 // 25 MB hard cap on the audio payload. Whisper's input ceiling is 25 MB
@@ -74,34 +70,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Payload invalide." }, { status: 400 });
   }
 
-  // 2. Cloudflare Turnstile : bot check côté serveur. Fail-closed —
-  // si le secret est manquant en prod, verifyTurnstileToken bloquera.
-  const turnstileToken =
-    typeof formData.get("turnstileToken") === "string"
-      ? (formData.get("turnstileToken") as string)
-      : undefined;
-  const turnstile = await verifyTurnstileToken(turnstileToken, ip);
-  if (!turnstile.valid) {
-    await logAiCall({
-      service: "transcribe",
-      ip,
-      userAgent,
-      status: "blocked",
-      blockReason:
-        turnstile.reason === "secret_misconfigured"
-          ? "secret_misconfigured"
-          : "captcha_failed",
-    });
-    return NextResponse.json(
-      {
-        error:
-          "Vérification anti-bot échouée. Recharge la page puis réessaye.",
-      },
-      { status: 403 },
-    );
-  }
-
-  // 3. Rate limit Postgres-backed (multi-tier + cost breaker bytes/jour).
+  // 2. Rate limit Postgres-backed (multi-tier + cost breaker bytes/jour).
+  // C'est la protection principale de cette route depuis le retrait de
+  // Cloudflare Turnstile : un bot qui martèle l'endpoint est coupé par
+  // les paliers IP + le plafond de bytes/jour (coût Groq borné).
   const rateCheck = await checkServiceRateLimit(ip, null, "transcribe");
   if (!rateCheck.allowed) {
     await logAiCall({
@@ -120,7 +92,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // 4. Audio file extraction + checks
+  // 3. Audio file extraction + checks
   const audioFile = formData.get("audio") as File | null;
   if (!audioFile) {
     await logAiCall({

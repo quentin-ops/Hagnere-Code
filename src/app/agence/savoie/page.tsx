@@ -365,7 +365,7 @@ export default function Page() {
 
         <h2 id="notre-place">7. Où nous nous situons</h2>
         <p>
-          Nous sommes installés à Chambéry, au 7 rue Ernest Filliard, et nous
+          Nous sommes installés à Bassens, aux portes de Chambéry, au 82 impasse de Bellevue, et nous
           développons en React et Next.js. Concrètement, cela nous place sur
           les projets où la performance et le sur-mesure comptent :
           sites d&apos;entreprises qui doivent convertir, boutiques en ligne,

@@ -39,8 +39,8 @@ const contactJsonLd = JSON.stringify({
     foundingDate: "2025-09-30",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "7 rue Ernest Filliard",
-      addressLocality: "Chambéry",
+      streetAddress: "82 impasse de Bellevue",
+      addressLocality: "Bassens",
       addressRegion: "Savoie",
       postalCode: "73000",
       addressCountry: "FR",

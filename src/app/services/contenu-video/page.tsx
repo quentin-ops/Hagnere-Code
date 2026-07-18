@@ -34,9 +34,9 @@ const serviceJsonLd = JSON.stringify({
     logo: "https://hagnere-code.ai/logos/logo-dark.png",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "7 rue Ernest Filliard",
+      streetAddress: "82 impasse de Bellevue",
       postalCode: "73000",
-      addressLocality: "Chambéry",
+      addressLocality: "Bassens",
       addressRegion: "Savoie",
       addressCountry: "FR",
     },

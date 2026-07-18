@@ -638,7 +638,9 @@ button.sf-tile {
 }
 
 /* ======================================================================
-   Voice dictation (Groq Whisper-large-v3) — message field
+   Voice dictation — bouton Dicter (port du MicroGroq de Finance AI)
+   idle = capsule dégradé violet + shimmer · recording = capsule rouge
+   pulsante (point + chrono + waveform) · processing = dégradé fluide
    ====================================================================== */
 .sf-field-head {
   display: flex;
@@ -665,51 +667,152 @@ button.sf-tile {
 }
 
 .vdb-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 6px 12px;
+  gap: 8px;
+  padding: 8px 15px;
   font-family: inherit;
   font-size: 12.5px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.005em;
-  background: var(--paper);
-  color: var(--ink);
-  border: 1px solid var(--line);
+  color: #fff;
+  border: 1px solid rgba(139, 92, 246, 0.42);
   border-radius: 999px;
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s, background 0.15s, box-shadow 0.15s, transform 0.15s;
+  background:
+    radial-gradient(circle at 28% 18%, rgba(255, 255, 255, 0.32), transparent 32%),
+    linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #9333ea 100%);
+  box-shadow: 0 6px 18px -8px rgba(124, 58, 237, 0.55);
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
+
+/* Liseré lumineux interne */
+.vdb-btn::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 55%);
+}
+
+/* Balayage shimmer périodique (état idle) */
+.vdb-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 80%
+  );
+  animation: vdb-shimmer 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes vdb-shimmer {
+  0%       { transform: translateX(-100%); }
+  55%, 100% { transform: translateX(100%); }
+}
+
 .vdb-btn:hover:not(:disabled) {
-  border-color: var(--accent);
-  color: var(--accent-ink);
+  border-color: rgba(196, 181, 253, 0.78);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 10px 26px -8px rgba(124, 58, 237, 0.6);
+}
+.vdb-btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+.vdb-btn:focus-visible {
+  outline: 3px solid rgba(167, 139, 250, 0.34);
+  outline-offset: 3px;
 }
 .vdb-btn:disabled {
-  cursor: progress;
-  opacity: 0.7;
+  cursor: default;
 }
 
+/* — Recording : capsule rouge pulsante — */
 .vdb-btn.is-recording {
-  background: #dc2626;
-  border-color: #dc2626;
-  color: #fff;
-  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.18);
-  animation: vdb-pulse 1.2s ease-in-out infinite;
+  border-color: rgba(251, 113, 133, 0.52);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.22), transparent 34%),
+    linear-gradient(135deg, #be123c 0%, #e11d48 48%, #f43f5e 100%);
+  animation: vdb-pulse 1.4s ease-in-out infinite;
 }
-.vdb-btn.is-recording:hover {
-  background: #b91c1c;
-  border-color: #b91c1c;
-  color: #fff;
+.vdb-btn.is-recording::before {
+  animation: none;
+  opacity: 0;
 }
-
-.vdb-btn.is-processing {
-  border-color: var(--accent);
-  color: var(--accent-ink);
+.vdb-btn.is-recording:hover:not(:disabled) {
+  border-color: rgba(254, 205, 211, 0.8);
+  box-shadow: 0 0 0 5px rgba(225, 29, 72, 0.2);
 }
-
 @keyframes vdb-pulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.18); }
-  50%      { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0.05); }
+  0%, 100% { box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.22); }
+  50%      { box-shadow: 0 0 0 10px rgba(225, 29, 72, 0.04); }
+}
+
+.vdb-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #fff;
+  animation: vdb-dot 1.45s ease-in-out infinite;
+}
+@keyframes vdb-dot {
+  0%, 100% { opacity: 0.72; transform: scale(0.8); }
+  50%      { opacity: 1; transform: scale(1.18); }
+}
+
+.vdb-timer {
+  font-variant-numeric: tabular-nums;
+}
+
+.vdb-bars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+.vdb-bar {
+  width: 2px;
+  min-height: 4px;
+  border-radius: 999px;
+  background: currentColor;
+  animation: vdb-voice 0.82s ease-in-out infinite alternate;
+}
+.vdb-bar:nth-child(2) { animation-delay: -0.55s; }
+.vdb-bar:nth-child(3) { animation-delay: -0.25s; }
+.vdb-bar:nth-child(4) { animation-delay: -0.68s; }
+.vdb-bar:nth-child(5) { animation-delay: -0.38s; }
+@keyframes vdb-voice {
+  from { height: 4px;  opacity: 0.65; }
+  to   { height: 13px; opacity: 1; }
+}
+
+/* — Processing : dégradé violet fluide — */
+.vdb-btn.is-processing {
+  background: linear-gradient(
+    105deg,
+    #6d28d9 20%,
+    #8b5cf6 42%,
+    #6366f1 60%,
+    #6d28d9 80%
+  );
+  background-size: 240% 100%;
+  animation: vdb-flow 2.4s linear infinite;
+}
+.vdb-btn.is-processing::before {
+  animation: none;
+  opacity: 0;
+}
+@keyframes vdb-flow {
+  to { background-position: -240% 0; }
 }
 
 .vdb-spin {
@@ -717,14 +820,6 @@ button.sf-tile {
 }
 @keyframes vdb-spin {
   to { transform: rotate(360deg); }
-}
-
-.vdb-hint {
-  font-family: var(--font-geist-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--mute);
 }
 
 .vdb-error {
@@ -735,8 +830,18 @@ button.sf-tile {
   margin-top: 4px;
 }
 
-@media (max-width: 480px) {
-  .vdb-hint { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .vdb-btn::before,
+  .vdb-btn.is-recording,
+  .vdb-btn.is-processing,
+  .vdb-dot,
+  .vdb-bar {
+    animation: none;
+  }
+  .vdb-btn:hover:not(:disabled),
+  .vdb-btn:active:not(:disabled) {
+    transform: none;
+  }
 }
 
 /* Dark mode overrides */

@@ -1899,18 +1899,26 @@ html.dark {
 }
 
 /* ==========================================================================
-   Cloudflare Turnstile widget (anti-bot)
+   Anti-bot maison — question de calcul (MathChallenge)
    ========================================================================== */
 
-.pf-turnstile {
-  display: flex;
-  justify-content: center;
+.pf-captcha {
   margin: 14px 0 0;
 }
 
-.pf-turnstile > div:empty {
-  /* Invisible challenge : Cloudflare ne render rien sauf si risque détecté */
-  min-height: 0;
+.pf-captcha input {
+  max-width: 220px;
+}
+
+.pf-captcha > em {
+  color: #dc2626;
+  font-size: 12.5px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+html.dark .pf-captcha > em {
+  color: #f87171;
 }
 
 .pf-submit:disabled {

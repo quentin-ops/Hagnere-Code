@@ -39,9 +39,9 @@ const orgJsonLd = JSON.stringify({
   foundingDate: "2025-09-30",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "7 rue Ernest Filliard",
+    streetAddress: "82 impasse de Bellevue",
     postalCode: "73000",
-    addressLocality: "Chambéry",
+    addressLocality: "Bassens",
     addressRegion: "Savoie",
     addressCountry: "FR",
   },
@@ -139,7 +139,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Mixte. Le studio physique est à Chambéry (7 rue Ernest Filliard), où l'équipe se retrouve 2 à 3 jours par semaine. Les autres jours, télétravail. Les rituels (daily, planning, démo) sont systématiquement en visio pour garantir la même expérience à tout le monde.",
+          "Mixte. Le studio physique est à Bassens, aux portes de Chambéry (82 impasse de Bellevue), où l'équipe se retrouve 2 à 3 jours par semaine. Les autres jours, télétravail. Les rituels (daily, planning, démo) sont systématiquement en visio pour garantir la même expérience à tout le monde.",
       },
     },
     {

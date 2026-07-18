@@ -78,7 +78,7 @@ export const LOCAL_PAGES: LocalPageEntry[] = [
     level: "ville",
     title: "Agence web à Chambéry : développement sur mesure · Hagnéré Code",
     metaDescription:
-      "Agence installée au 7 rue Ernest Filliard : sites, applications métier, référencement, Google Ads. L'économie chambérienne et ses besoins numériques réels.",
+      "Agence installée au 82 impasse de Bellevue : sites, applications métier, référencement, Google Ads. L'économie chambérienne et ses besoins numériques réels.",
     heroTitle: "Agence web à Chambéry : ce que cette ville achète vraiment",
     locality: "Chambéry",
     datePublished: "2026-07-18",

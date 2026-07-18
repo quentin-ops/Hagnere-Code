@@ -6,9 +6,11 @@ import { useDesignInteractive } from "@/components/design-shared/useDesignIntera
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { MainNav } from "@/components/design-shared/MainNav";
 import {
-  TurnstileWidget,
-  TURNSTILE_ENABLED,
-} from "@/components/project-funnel/TurnstileWidget";
+  MathChallenge,
+  isMathAnswerCorrect,
+  toMathChallengePayload,
+  type MathChallengeValue,
+} from "@/components/project-funnel/MathChallenge";
 import "./excel-calculator.css";
 import "@/components/design-shared/responsive.css";
 import "@/components/design-shared/nav-dropdown.css";
@@ -71,12 +73,9 @@ export function ExcelCalculator() {
 
   // --- Email capture
   const [status, setStatus] = useState<CaptureStatus>({ kind: "idle" });
-  // Anti-bot Cloudflare Turnstile — /api/project-inquiry vérifie le token
-  // en fail-closed : sans lui, chaque envoi serait rejeté 403 en production.
-  // Même logique de bypass dev que le footer (SiteFooter.tsx).
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const isDev = process.env.NEXT_PUBLIC_ENV === "development";
-  const canSubmit = isDev || !TURNSTILE_ENABLED || turnstileToken !== null;
+  // Anti-bot maison : question de calcul, vérifiée côté client avant envoi
+  // puis revalidée server-side par /api/project-inquiry.
+  const [math, setMath] = useState<MathChallengeValue | null>(null);
 
   async function onCapture(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -90,6 +89,14 @@ export function ExcelCalculator() {
       setStatus({
         kind: "error",
         message: "Merci de remplir prénom, email pro et entreprise.",
+      });
+      return;
+    }
+
+    if (!isMathAnswerCorrect(math)) {
+      setStatus({
+        kind: "error",
+        message: "La réponse au calcul anti-robot est incorrecte — recomptez.",
       });
       return;
     }
@@ -126,7 +133,7 @@ export function ExcelCalculator() {
           company,
           budget: result.totalYearCost > 20000 ? "15-30k" : "< 15k",
           message,
-          turnstileToken: turnstileToken || undefined,
+          mathChallenge: toMathChallengePayload(math),
         }),
       });
       if (!res.ok) throw new Error("fail");
@@ -383,18 +390,16 @@ export function ExcelCalculator() {
                 <input name="company" type="text" required autoComplete="organization" />
               </label>
 
-              {TURNSTILE_ENABLED && (
-                <TurnstileWidget
-                  onToken={setTurnstileToken}
-                  onExpire={() => setTurnstileToken(null)}
-                />
-              )}
+              {/* Anti-bot maison : question de calcul (remplace Turnstile). */}
+              <MathChallenge
+                className="calc-capture-field"
+                onChange={setMath}
+              />
 
               <button
                 type="submit"
                 className="btn btn-accent btn-lg calc-capture-submit"
-                disabled={status.kind === "submitting" || !canSubmit}
-                title={!canSubmit ? "Vérification anti-bot en cours…" : undefined}
+                disabled={status.kind === "submitting"}
               >
                 {status.kind === "submitting"
                   ? "Envoi en cours…"

@@ -1,10 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  TurnstileWidget,
-  TURNSTILE_ENABLED,
-} from "@/components/project-funnel/TurnstileWidget";
 
 type Status =
   | { kind: "idle" }
@@ -16,9 +12,12 @@ type Props = {
   onTranscribed: (text: string) => void;
   className?: string;
   label?: string;
-  recordingLabel?: string;
   processingLabel?: string;
+  /** Durée max d'enregistrement (sec) avant arrêt automatique. */
+  maxDurationSec?: number;
 };
+
+const VOICE_BARS = [0, 1, 2, 3, 4] as const;
 
 function getRecorderMimeType(): string {
   if (typeof MediaRecorder === "undefined") return "";
@@ -55,27 +54,52 @@ function microphoneErrorMessage(error: unknown): string {
   return "Impossible d'activer le micro. Écrivez à la main, ça marche aussi.";
 }
 
+function formatTime(sec: number): string {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+/**
+ * Bouton de dictée vocale — port du composant MicroGroq de Finance AI.
+ *
+ * Trois états visuels :
+ *   - idle       : capsule dégradé violet + balayage shimmer
+ *   - recording  : capsule rouge pulsante, point animé, chrono, waveform
+ *   - processing : dégradé violet fluide + spinner "Transcription…"
+ *
+ * Pipeline : click → MediaRecorder → blob → POST /api/transcribe (protégé
+ * par rate limit server-side) → texte → callback `onTranscribed`.
+ */
 export function VoiceDictateButton({
   onTranscribed,
   className = "",
   label = "Dicter",
-  recordingLabel = "Arrêter",
   processingLabel = "Transcription…",
+  maxDurationSec = 120,
 }: Props) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [elapsed, setElapsed] = useState(0);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
+  const tickIntervalRef = useRef<number | null>(null);
+  const autoStopTimeoutRef = useRef<number | null>(null);
 
-  // En dev (NEXT_PUBLIC_ENV='development'), le serveur skip Turnstile :
-  // on autorise toujours pour ne pas bloquer le local quand la site key
-  // de prod n'est pas whitelistée sur localhost. En prod, on attend le token.
-  const isDev = process.env.NEXT_PUBLIC_ENV === "development";
-  const canRecord = isDev || !TURNSTILE_ENABLED || turnstileToken !== null;
+  const clearTimers = useCallback(() => {
+    if (tickIntervalRef.current !== null) {
+      window.clearInterval(tickIntervalRef.current);
+      tickIntervalRef.current = null;
+    }
+    if (autoStopTimeoutRef.current !== null) {
+      window.clearTimeout(autoStopTimeoutRef.current);
+      autoStopTimeoutRef.current = null;
+    }
+  }, []);
 
   useEffect(() => {
     return () => {
+      clearTimers();
       try {
         const recorder = mediaRecorderRef.current;
         if (recorder && recorder.state !== "inactive") recorder.stop();
@@ -84,6 +108,12 @@ export function VoiceDictateButton({
       }
       streamRef.current?.getTracks().forEach((track) => track.stop());
     };
+  }, [clearTimers]);
+
+  const stopRecording = useCallback(() => {
+    const recorder = mediaRecorderRef.current;
+    if (!recorder || recorder.state === "inactive") return;
+    recorder.stop();
   }, []);
 
   const startRecording = useCallback(async () => {
@@ -119,6 +149,7 @@ export function VoiceDictateButton({
         if (event.data.size > 0) chunksRef.current.push(event.data);
       };
       recorder.onstop = async () => {
+        clearTimers();
         setStatus({ kind: "processing" });
         activeStream.getTracks().forEach((track) => track.stop());
         streamRef.current = null;
@@ -126,7 +157,6 @@ export function VoiceDictateButton({
           const audio = new Blob(chunksRef.current, { type: mimeType });
           const formData = new FormData();
           formData.append("audio", audio, getAudioFilename(mimeType));
-          if (turnstileToken) formData.append("turnstileToken", turnstileToken);
           const res = await fetch("/api/transcribe", {
             method: "POST",
             body: formData,
@@ -153,19 +183,20 @@ export function VoiceDictateButton({
       };
 
       recorder.start();
+      setElapsed(0);
       setStatus({ kind: "recording" });
+      tickIntervalRef.current = window.setInterval(() => {
+        setElapsed((s) => s + 1);
+      }, 1000);
+      autoStopTimeoutRef.current = window.setTimeout(() => {
+        stopRecording();
+      }, maxDurationSec * 1000);
     } catch (err) {
       stream?.getTracks().forEach((track) => track.stop());
       streamRef.current = null;
       setStatus({ kind: "error", message: microphoneErrorMessage(err) });
     }
-  }, [onTranscribed, turnstileToken]);
-
-  const stopRecording = useCallback(() => {
-    const recorder = mediaRecorderRef.current;
-    if (!recorder || recorder.state === "inactive") return;
-    recorder.stop();
-  }, []);
+  }, [onTranscribed, maxDurationSec, stopRecording, clearTimers]);
 
   const isRecording = status.kind === "recording";
   const isProcessing = status.kind === "processing";
@@ -173,48 +204,56 @@ export function VoiceDictateButton({
 
   return (
     <div className={`vdb-wrap ${className}`}>
-      {/* Turnstile invisible — fournit le token avant l'enregistrement.
-          En dev sans NEXT_PUBLIC_TURNSTILE_SITE_KEY, le widget retourne null. */}
-      <TurnstileWidget
-        onToken={setTurnstileToken}
-        onExpire={() => setTurnstileToken(null)}
-      />
       <button
         type="button"
         className={`vdb-btn ${isRecording ? "is-recording" : ""} ${isProcessing ? "is-processing" : ""}`}
         onClick={isRecording ? stopRecording : startRecording}
-        disabled={isProcessing || (!isRecording && !canRecord)}
+        disabled={isProcessing}
         aria-label={
-          isRecording ? "Arrêter la dictée" : isProcessing ? "Transcription en cours" : "Dicter votre projet"
+          isRecording
+            ? "Arrêter la dictée"
+            : isProcessing
+              ? "Transcription en cours"
+              : "Dicter votre projet"
         }
+        aria-pressed={isRecording}
       >
         {isProcessing ? (
-          <svg className="vdb-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-            <path d="M21 12a9 9 0 11-6.219-8.56" />
-          </svg>
+          <>
+            <svg className="vdb-spin" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              <path d="M21 12a9 9 0 11-6.219-8.56" />
+            </svg>
+            <span>{processingLabel}</span>
+          </>
         ) : isRecording ? (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <rect x="6" y="6" width="12" height="12" rx="2" />
-          </svg>
+          <>
+            <span className="vdb-dot" aria-hidden="true" />
+            <span className="vdb-timer">{formatTime(elapsed)}</span>
+            <span className="vdb-bars" aria-hidden="true">
+              {VOICE_BARS.map((bar) => (
+                <span key={bar} className="vdb-bar" />
+              ))}
+            </span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <rect x="6" y="6" width="12" height="12" rx="2.5" />
+            </svg>
+          </>
         ) : (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="9" y="3" width="6" height="12" rx="3" />
-            <path d="M5 11a7 7 0 0014 0" />
-            <path d="M12 18v3" />
-          </svg>
+          <>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="9" y="3" width="6" height="12" rx="3" />
+              <path d="M5 11a7 7 0 0014 0" />
+              <path d="M12 18v3" />
+            </svg>
+            <span>{label}</span>
+          </>
         )}
-        <span>
-          {isProcessing ? processingLabel : isRecording ? recordingLabel : label}
-        </span>
       </button>
       {isError && (
         <span className="vdb-error" role="alert">
           {status.message}
         </span>
       )}
-      <span className="vdb-hint" aria-hidden="true">
-        Whisper-large-v3 · Groq
-      </span>
     </div>
   );
 }

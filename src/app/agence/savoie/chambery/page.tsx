@@ -67,7 +67,7 @@ const faqItems = [
   {
     question: "Où êtes-vous à Chambéry et peut-on venir vous voir ?",
     answer:
-      "Nous sommes au 7 rue Ernest Filliard, à Chambéry, et oui, vous pouvez venir — sur rendez-vous, pour que quelqu'un soit là. C'est une adresse de travail, pas une domiciliation destinée à afficher un code postal savoyard. Beaucoup de dirigeants préfèrent rencontrer physiquement la personne à qui ils confient un budget à cinq chiffres avant de signer : c'est légitime, et c'est plus simple quand on est à quelques minutes l'un de l'autre. Si vous préférez la visioconférence, cela nous va aussi.",
+      "Nous sommes au 82 impasse de Bellevue, à Bassens — commune limitrophe de Chambéry, dans la même agglomération —, et oui, vous pouvez venir — sur rendez-vous, pour que quelqu'un soit là. C'est une adresse de travail, pas une domiciliation destinée à afficher un code postal savoyard. Beaucoup de dirigeants préfèrent rencontrer physiquement la personne à qui ils confient un budget à cinq chiffres avant de signer : c'est légitime, et c'est plus simple quand on est à quelques minutes l'un de l'autre. Si vous préférez la visioconférence, cela nous va aussi.",
   },
   {
     question: "Travaillez-vous avec les entreprises des zones de Bissy et des Landiers ?",
@@ -120,7 +120,7 @@ export default function Page() {
           { label: "Chambéry" },
         ]}
         heroTitle={page.heroTitle}
-        heroDescription="Nous travaillons au 7 rue Ernest Filliard. Cette page décrit l'économie chambérienne telle qu'elle est — tertiaire à plus de 80 %, avec une industrie concentrée sur Bissy et les Landiers — et le type de projet numérique qui a réellement du sens pour ces entreprises."
+        heroDescription="Nous travaillons à Bassens, commune limitrophe de Chambéry, à quelques minutes du centre. Cette page décrit l'économie chambérienne telle qu'elle est — tertiaire à plus de 80 %, avec une industrie concentrée sur Bissy et les Landiers — et le type de projet numérique qui a réellement du sens pour ces entreprises."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -128,7 +128,7 @@ export default function Page() {
         }}
         updatedLabel="Mis à jour le 18 juillet 2026"
         keyPoints={[
-          { number: "01", title: "7 rue Ernest Filliard, Chambéry", description: "", color: "violet" },
+          { number: "01", title: "À Bassens, limitrophe de Chambéry", description: "", color: "violet" },
           { number: "02", title: "85 % de l'emploi dans les services", description: "", color: "blue" },
           { number: "03", title: "Grand Chambéry : 38 communes", description: "", color: "emerald" },
           { number: "04", title: "Forfait fixe dès 6 900 €", description: "", color: "amber" },
@@ -146,8 +146,9 @@ export default function Page() {
       >
         <p className="lead">
           Nous ne sommes pas une agence qui « couvre Chambéry » depuis
-          ailleurs : <strong>nous y travaillons, au 7 rue Ernest
-          Filliard</strong>. Cette page décrit l&apos;économie de la ville
+          Paris ou Lyon : <strong>nous sommes à Bassens, commune limitrophe,
+          dans la même agglomération</strong> — à quelques minutes du centre.
+          Cette page décrit l&apos;économie de la ville
           telle que les chiffres la montrent — très largement tertiaire —,
           les zones où se concentrent les entreprises, et ce que ces
           entreprises achètent réellement en matière de numérique.
@@ -335,7 +336,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un projet à Chambéry ?"
-          description="Décrivez-le en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. On peut se voir au 7 rue Ernest Filliard, ou en visioconférence."
+          description="Décrivez-le en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. On peut se voir à Bassens, à quelques minutes du centre de Chambéry, ou en visioconférence."
         />
 
         <h2 id="constat">5. Ce que nous avons mesuré sur les sites du bassin</h2>
@@ -377,11 +378,12 @@ export default function Page() {
 
         <h2 id="bassin">6. Le bassin que nous couvrons au quotidien</h2>
         <p>
-          Depuis le 7 rue Ernest Filliard, nous intervenons sans difficulté
-          sur l&apos;ensemble des communes de Grand Chambéry :{" "}
-          <strong>La Motte-Servolex, La Ravoire, Cognin, Barberaz,
-          Saint-Alban-Leysse, Bassens, Barby, Jacob-Bellecombette,
-          Challes-les-Eaux</strong> et les autres. Nous nous déplaçons
+          Nous sommes à Bassens, l&apos;une des 38 communes de Grand
+          Chambéry, et nous intervenons sans difficulté sur toutes les
+          autres :{" "}
+          <strong>Chambéry, La Motte-Servolex, La Ravoire, Cognin,
+          Barberaz, Saint-Alban-Leysse, Barby, Jacob-Bellecombette,
+          Challes-les-Eaux</strong> et les suivantes. Nous nous déplaçons
           également régulièrement sur Aix-les-Bains, Le Bourget-du-Lac et la
           Combe de Savoie.
         </p>
@@ -514,7 +516,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Parlons de votre projet chambérien"
-          description="Décrivez votre besoin en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Rendez-vous au 7 rue Ernest Filliard ou en visioconférence, comme vous préférez."
+          description="Décrivez votre besoin en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Rendez-vous à Bassens, aux portes de Chambéry, ou en visioconférence, comme vous préférez."
         />
 
         <h2 id="sources">Sources</h2>

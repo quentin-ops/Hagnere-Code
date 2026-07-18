@@ -22,7 +22,7 @@ export const mentionsLegalesSections: LegalSection[] = [
           <dd>Société par actions simplifiée (SAS)</dd>
 
           <dt>Siège social</dt>
-          <dd>7 rue Ernest Filliard, 73000 Chambéry, France</dd>
+          <dd>82 impasse de Bellevue, 73000 Bassens, France</dd>
 
           <dt>SIREN</dt>
           <dd>993 672 856</dd>

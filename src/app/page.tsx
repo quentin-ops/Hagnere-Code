@@ -38,8 +38,8 @@ const organizationJsonLd = {
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "7 rue Ernest Filliard",
-    addressLocality: "Chambéry",
+    streetAddress: "82 impasse de Bellevue",
+    addressLocality: "Bassens",
     addressRegion: "Savoie",
     postalCode: "73000",
     addressCountry: "FR",
@@ -92,8 +92,8 @@ const localBusinessJsonLd = {
   telephone: "+33374472018",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "7 rue Ernest Filliard",
-    addressLocality: "Chambéry",
+    streetAddress: "82 impasse de Bellevue",
+    addressLocality: "Bassens",
     addressRegion: "Savoie",
     postalCode: "73000",
     addressCountry: "FR",

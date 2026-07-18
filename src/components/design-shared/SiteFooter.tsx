@@ -4,9 +4,11 @@ import Link from "next/link";
 import { useCallback, useRef, useState, type FormEvent } from "react";
 import { VoiceDictateButton } from "./VoiceDictateButton";
 import {
-  TurnstileWidget,
-  TURNSTILE_ENABLED,
-} from "@/components/project-funnel/TurnstileWidget";
+  MathChallenge,
+  isMathAnswerCorrect,
+  toMathChallengePayload,
+  type MathChallengeValue,
+} from "@/components/project-funnel/MathChallenge";
 import "./site-footer.css";
 
 type Status =
@@ -50,14 +52,10 @@ export function ContactProjectSection({
 }: ContactProjectSectionProps) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [message, setMessage] = useState("");
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  // Anti-bot maison : question de calcul, vérifiée côté client avant envoi
+  // puis revalidée server-side par /api/project-inquiry.
+  const [math, setMath] = useState<MathChallengeValue | null>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
-
-  // En dev (NEXT_PUBLIC_ENV='development'), le serveur skip Turnstile :
-  // on autorise la soumission même sans token (utile quand la site key
-  // de prod n'est pas whitelistée sur localhost). En prod, on attend le token.
-  const isDev = process.env.NEXT_PUBLIC_ENV === "development";
-  const canSubmit = isDev || !TURNSTILE_ENABLED || turnstileToken !== null;
 
   const handleTranscribed = useCallback((text: string) => {
     setMessage((prev) => {
@@ -80,6 +78,15 @@ export function ContactProjectSection({
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    if (!isMathAnswerCorrect(math)) {
+      setStatus({
+        kind: "error",
+        message: "La réponse au calcul anti-robot est incorrecte.",
+        fields: { mathChallenge: "Réponse incorrecte — recomptez." },
+      });
+      return;
+    }
+
     const payload = {
       firstName: String(data.get("firstName") || "").trim(),
       lastName: String(data.get("lastName") || "").trim(),
@@ -91,7 +98,7 @@ export function ContactProjectSection({
       budget: String(data.get("budget") || "").trim(),
       message: String(data.get("message") || "").trim(),
       honeypot: String(data.get("honeypot") || ""),
-      turnstileToken: turnstileToken || undefined,
+      mathChallenge: toMathChallengePayload(math),
     };
 
     setStatus({ kind: "submitting" });
@@ -224,8 +231,8 @@ export function ContactProjectSection({
                 <div className="sf-direct-row">
                   <div className="sf-direct-k">Adresse</div>
                   <div className="sf-direct-v sf-direct-addr">
-                    7 rue Ernest Filliard<br />
-                    73000 Chambéry
+                    82 impasse de Bellevue<br />
+                    73000 Bassens
                   </div>
                 </div>
               </div>
@@ -375,18 +382,17 @@ export function ContactProjectSection({
                 />
               </label>
 
-              {/* Cloudflare Turnstile — invisible 99 % du temps. Bloque
-                  l'envoi tant qu'un token valide n'est pas reçu (sauf en
-                  dev où le widget n'est pas monté). */}
-              <TurnstileWidget
-                onToken={setTurnstileToken}
-                onExpire={() => setTurnstileToken(null)}
+              {/* Anti-bot maison : question de calcul (remplace Turnstile). */}
+              <MathChallenge
+                className="sf-field sf-field-captcha"
+                onChange={setMath}
+                error={errs.mathChallenge}
               />
 
               <button
                 type="submit"
                 className="btn btn-primary btn-lg sf-submit"
-                disabled={status.kind === "submitting" || !canSubmit}
+                disabled={status.kind === "submitting"}
               >
                 {status.kind === "submitting" ? (
                   "Envoi en cours…"
@@ -694,8 +700,8 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
           <div className="sf-foot-bot">
             <div>
               © {new Date().getFullYear()} HAGNÉRÉ CODE SAS · RCS CHAMBÉRY
-              993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z · 7 rue Ernest Filliard, 73000
-              Chambéry
+              993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000
+              Bassens
             </div>
             <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
           </div>

@@ -52,8 +52,8 @@ const businessJsonLd = JSON.stringify({
   url: localPageUrl(page),
   address: {
     "@type": "PostalAddress",
-    streetAddress: "7 rue Ernest Filliard",
-    addressLocality: "Chambéry",
+    streetAddress: "82 impasse de Bellevue",
+    addressLocality: "Bassens",
     addressRegion: "Savoie",
     postalCode: "73000",
     addressCountry: "FR",
@@ -81,7 +81,7 @@ const faqItems = [
   {
     question: "Où êtes-vous exactement situés ?",
     answer:
-      "Au 7 rue Ernest Filliard, à Chambéry, en Savoie. C'est une adresse réelle, pas une domiciliation : c'est là que le travail se fait. Nous recevons sur rendez-vous, et nous nous déplaçons dans le bassin chambérien, sur Aix-les-Bains et le tour du lac du Bourget, en Combe de Savoie, ainsi qu'en Haute-Savoie pour les projets qui le justifient. Pour les entreprises plus éloignées, l'essentiel du travail se conduit très bien à distance : visioconférence pour le cadrage et les points d'étape, démonstrations en ligne à chaque livraison intermédiaire. Nous accompagnons d'ailleurs des clients hors de la région sans que cela pose de difficulté.",
+      "Au 82 impasse de Bellevue, à Bassens, commune limitrophe de Chambéry, en Savoie. C'est une adresse réelle, pas une domiciliation : c'est là que le travail se fait. Nous recevons sur rendez-vous, et nous nous déplaçons dans le bassin chambérien, sur Aix-les-Bains et le tour du lac du Bourget, en Combe de Savoie, ainsi qu'en Haute-Savoie pour les projets qui le justifient. Pour les entreprises plus éloignées, l'essentiel du travail se conduit très bien à distance : visioconférence pour le cadrage et les points d'étape, démonstrations en ligne à chaque livraison intermédiaire. Nous accompagnons d'ailleurs des clients hors de la région sans que cela pose de difficulté.",
   },
   {
     question: "Travaillez-vous uniquement avec des entreprises savoyardes ?",
@@ -130,7 +130,7 @@ export default function Page() {
       <GuideLayout
         breadcrumbs={[{ label: "Notre agence" }]}
         heroTitle={page.heroTitle}
-        heroDescription="Nous sommes installés au 7 rue Ernest Filliard, à Chambéry. Cette page dit où nous travaillons, ce que nous constatons sur le tissu économique savoyard, et comment nous intervenons — sur place en Savoie et Haute-Savoie, à distance partout ailleurs en France."
+        heroDescription="Nous sommes installés au 82 impasse de Bellevue, à Bassens, aux portes de Chambéry. Cette page dit où nous travaillons, ce que nous constatons sur le tissu économique savoyard, et comment nous intervenons — sur place en Savoie et Haute-Savoie, à distance partout ailleurs en France."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -138,7 +138,7 @@ export default function Page() {
         }}
         updatedLabel="Mis à jour le 18 juillet 2026"
         keyPoints={[
-          { number: "01", title: "Chambéry, 7 rue Ernest Filliard", description: "", color: "violet" },
+          { number: "01", title: "Bassens, aux portes de Chambéry", description: "", color: "violet" },
           { number: "02", title: "Savoie et Haute-Savoie sur place", description: "", color: "blue" },
           { number: "03", title: "Toute la France à distance", description: "", color: "emerald" },
           { number: "04", title: "Forfait fixe, prix publiés", description: "", color: "amber" },
@@ -158,7 +158,7 @@ export default function Page() {
           Beaucoup d&apos;agences web affichent une liste de villes qu&apos;elles
           n&apos;ont jamais visitées. Nous préférons commencer par ce qui est
           vérifiable : <strong>nous sommes une petite équipe installée à
-          Chambéry, au 7 rue Ernest Filliard</strong>, et nous développons des
+          Bassens, aux portes de Chambéry, au 82 impasse de Bellevue</strong>, et nous développons des
           sites, des boutiques en ligne et des applications métier. Cette page
           explique où nous intervenons réellement, et ce que nous observons du
           marché local.
@@ -180,7 +180,7 @@ export default function Page() {
         <h2 id="ou-nous-sommes">1. Où nous sommes, concrètement</h2>
         <p>
           Hagnéré Code est une SAS créée le 30 septembre 2025, dont le siège est
-          au <strong>7 rue Ernest Filliard, 73000 Chambéry</strong>. Ce
+          au <strong>82 impasse de Bellevue, 73000 Bassens</strong>. Ce
           n&apos;est pas une adresse de domiciliation prise pour afficher un
           code postal savoyard : c&apos;est là que nous travaillons, et vous
           pouvez y venir.

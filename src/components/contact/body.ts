@@ -67,7 +67,7 @@ ${navHtml}
           </div>
           <div class="c-dir-body">
             <div class="c-dir-k">Bureau</div>
-            <div class="c-dir-v">7 rue Ernest Filliard · 73000 Chambéry</div>
+            <div class="c-dir-v">82 impasse de Bellevue · 73000 Bassens</div>
           </div>
         </div>
 
@@ -128,7 +128,7 @@ ${navHtml}
         <div class="eyebrow">— Studio basé à Chambéry</div>
         <h2>Savoie, Haute-Savoie, Lyon, Grenoble — et France entière en visio.</h2>
         <p>
-          Notre bureau est au <b>7 rue Ernest Filliard, 73000 Chambéry</b>.
+          Notre bureau est au <b>82 impasse de Bellevue, 73000 Bassens</b>.
           On travaille localement avec les dirigeants et équipes métiers quand
           la proximité aide, et à distance quand le projet demande surtout de la
           méthode, du code propre et des points courts.

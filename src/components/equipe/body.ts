@@ -1003,7 +1003,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Mixte.</b> Le studio physique est à Chambéry (7 rue Ernest Filliard), où l'équipe
+            <b>Mixte.</b> Le studio physique est à Bassens, aux portes de Chambéry (82 impasse de Bellevue), où l'équipe
             se retrouve <b>2 à 3 jours par semaine</b>. Les autres jours, télétravail.
             Les rituels (daily, planning, démo) sont systématiquement en visio pour garantir
             la même expérience à tout le monde, télétravailleur ou pas.

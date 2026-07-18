@@ -9,7 +9,7 @@ export const confidentialiteSections: LegalSection[] = [
       <>
         <p>
           Les données personnelles collectées via le site hagnere-code.ai sont
-          traitées par <strong>HAGNÉRÉ CODE SAS</strong>, 7 rue Ernest Filliard,
+          traitées par <strong>HAGNÉRÉ CODE SAS</strong>, 82 impasse de Bellevue,
           73000 Chambéry, France. Pour toute question, vous pouvez écrire à{" "}
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>.
         </p>
