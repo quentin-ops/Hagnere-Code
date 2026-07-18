@@ -36,6 +36,20 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "pourquoi-mon-site-est-lent",
+    title: "Pourquoi mon site est lent : le diagnostic · Hagnéré Code",
+    metaDescription:
+      "Les vraies causes mesurées, la différence labo/terrain que personne n'explique, les chiffres bidon démontés — et les correctifs par rapport gain/effort.",
+    cardTitle: "Pourquoi mon site est lent : diagnostic et solutions",
+    cardDescription:
+      "Le seul guide qui dit que le vrai maillon faible du mobile n'est pas vos images mais votre serveur — chiffres du Web Almanac à l'appui.",
+    heroTitle: "Pourquoi mon site est lent : le diagnostic complet",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    readTimeMin: 24,
+  },
+  {
     slug: "no-code-ou-sur-mesure",
     title: "No-code ou sur-mesure : le comparatif 2026 · Hagnéré Code",
     cardTitle: "No-code ou développement sur mesure : comment choisir",

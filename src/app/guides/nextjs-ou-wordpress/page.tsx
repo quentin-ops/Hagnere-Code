@@ -402,7 +402,11 @@ export default function Page() {
           Archive / CrUX — les relevés effectués par Google sur les vrais
           navigateurs des visiteurs, pas des tests en laboratoire) :{" "}
           <strong>43 à 46 % des sites WordPress obtiennent la note « bonne
-          expérience » sur mobile — la dernière place des grands CMS.</strong>
+          expérience » sur mobile — la dernière place des grands CMS.</strong>{" "}
+          Si votre site est concerné, notre guide{" "}
+          <Link href="/guides/pourquoi-mon-site-est-lent">pourquoi mon site
+          est lent</Link> pose le diagnostic dans le bon ordre — en
+          commençant par le poste que presque tout le monde oublie.
         </p>
 
         <InfoBox variant="emerald" title="En clair : les Core Web Vitals">

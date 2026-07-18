@@ -546,7 +546,11 @@ export default function Page() {
           <strong>la plateforme fermée est rapide par défaut, la
           plateforme libre est rapide si on sait la tenir</strong> —
           et ce savoir-faire est précisément ce que vous achetez chez
-          un professionnel.
+          un professionnel. Si vous êtes du mauvais côté de cette
+          moyenne, notre guide{" "}
+          <Link href="/guides/pourquoi-mon-site-est-lent">pourquoi mon
+          site est lent</Link> vous fait poser le diagnostic
+          vous-même, gratuitement, en trois minutes.
         </p>
 
         <GuideInlineCTA

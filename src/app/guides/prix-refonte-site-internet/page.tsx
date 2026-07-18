@@ -352,7 +352,10 @@ export default function Page() {
           d&apos;optimisation ciblée — c&apos;est précisément ce que
           tranche un{" "}
           <Link href="/services/audit-technique">audit technique
-          préalable</Link> ; un référencement décevant se
+          préalable</Link>, et notre guide{" "}
+          <Link href="/guides/pourquoi-mon-site-est-lent">pourquoi mon site
+          est lent</Link> détaille les cinq signaux qui font basculer du
+          réglage vers la refonte ; un référencement décevant se
           travaille sans rien casser ; une page de contact qui convertit
           mal se reteste en quelques jours. Une agence française
           spécialisée avance que <strong>6 refontes commandées sur 10
