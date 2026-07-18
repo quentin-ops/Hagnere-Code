@@ -606,7 +606,11 @@ export default function Page() {
           paie, la comptabilité, la messagerie : des SaaS excellents
           existent, n&apos;y touchez pas. Votre façon unique de gérer les
           tournées, les chantiers ou les dossiers clients : c&apos;est là
-          que le sur-mesure crée un avantage.
+          que le sur-mesure crée un avantage. Entre les deux, une troisième
+          voie mérite d&apos;être chiffrée avant de trancher : notre{" "}
+          <Link href="/guides/no-code-ou-sur-mesure">comparatif no-code ou
+          sur-mesure</Link> donne les tarifs réels des plateformes et le
+          point où leur courbe de coût croise celle d&apos;un développement.
         </p>
         <p>Le calcul sur 5 ans, pour un outil central à 10 utilisateurs :</p>
         <GuideTable

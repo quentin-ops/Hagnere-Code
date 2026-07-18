@@ -789,7 +789,12 @@ export default function Page() {
           s&apos;abonner » : si un outil du marché couvre 80 % du besoin,
           abonnez-vous d&apos;abord ; développez quand l&apos;outil
           devient votre avantage concurrentiel ou que les abonnements
-          cumulés dépassent un développement amorti sur 3-4 ans.
+          cumulés dépassent un développement amorti sur 3-4 ans. La
+          variante « construire soi-même sans coder » se chiffre de la même
+          façon : notre{" "}
+          <Link href="/guides/no-code-ou-sur-mesure">comparatif no-code ou
+          sur-mesure</Link> donne les tarifs relevés et les plafonds
+          contractuels des principales plateformes.
         </p>
 
         <h2 id="erreurs">12. Les 5 erreurs qui coulent les budgets</h2>

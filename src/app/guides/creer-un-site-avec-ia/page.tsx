@@ -310,7 +310,9 @@ export default function Page() {
           voiture en kit (à vous, mais à faire assembler par
           quelqu&apos;un qui sait) et un permis de conduire (inutile
           seul, décisif entre les mains d&apos;un professionnel).{" "}
-          <strong>Famille 1, les générateurs no-code</strong> : vous
+          <strong>Famille 1, les{" "}
+          <Link href="/guides/no-code-ou-sur-mesure">générateurs
+          no-code</Link></strong> : vous
           décrivez votre activité, l&apos;outil assemble un site à
           partir de modèles — vous louez le résultat.{" "}
           <strong>Famille 2, le vibe coding</strong> : vous décrivez

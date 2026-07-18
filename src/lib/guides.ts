@@ -36,6 +36,20 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "no-code-ou-sur-mesure",
+    title: "No-code ou sur-mesure : le comparatif 2026 · Hagnéré Code",
+    cardTitle: "No-code ou développement sur mesure : comment choisir",
+    metaDescription:
+      "Tarifs relevés le 18/07/2026, plafonds contractuels réels, 4 chiffres bidon démontés, courbe de coût sur 5 ans — et les cas où le no-code gagne.",
+    cardDescription:
+      "Le seul comparatif avec des tarifs réellement relevés, les plafonds officiels des éditeurs, et les chiffres inventés du secteur démontés un par un.",
+    heroTitle: "No-code ou développement sur mesure : le comparatif chiffré",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    readTimeMin: 25,
+  },
+  {
     slug: "migrer-wordpress-vers-nextjs",
     title: "Migrer WordPress vers Next.js : le guide 2026 · Hagnéré Code",
     cardTitle: "Migrer de WordPress vers Next.js : méthode, prix, risques",
