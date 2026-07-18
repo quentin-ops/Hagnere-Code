@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { CASE_SLUGS } from "@/components/realisations/cases";
 import { GUIDES } from "@/lib/guides";
+import { LOCAL_PAGES, localPagePath } from "@/lib/local-pages";
 
 const baseUrl = "https://hagnere-code.ai";
 
@@ -123,6 +124,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.3,
   }));
 
+  // Pages locales : générées depuis le registre src/lib/local-pages.ts.
+  // Tableau vide tant qu'aucune page n'est publiée — voir le plan
+  // docs/plan-seo-local-savoie.md pour la cadence et la règle d'ouverture.
+  const localRoutes: MetadataRoute.Sitemap = LOCAL_PAGES.map((p) => ({
+    url: `${baseUrl}${localPagePath(p)}`,
+    lastModified: new Date(`${p.dateModified}T12:00:00Z`),
+    changeFrequency: "monthly",
+    priority: p.level === "ville" ? 0.75 : 0.8,
+  }));
+
   return [
     ...staticRoutes,
     ...guideRoutes,
@@ -130,5 +141,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...caseRoutes,
     ...toolSitemapRoutes,
     ...legalSitemapRoutes,
+    ...localRoutes,
   ];
 }
