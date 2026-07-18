@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { CookieBanner } from "@/components/cookies/CookieBanner";
 import { SkipToContent } from "@/components/design-shared/SkipToContent";
@@ -109,8 +110,11 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        {/* Vercel Analytics : mesure sans cookies — pas de consentement requis
+            (le bandeau reste réservé à un éventuel futur outil à cookies). */}
+        <Analytics />
         {/* Pré-installé, désactivé tant que NEXT_PUBLIC_COOKIE_BANNER!=1.
-            Activer dès qu'un outil analytique sera ajouté (Plausible, GA, etc.). */}
+            À activer seulement si un outil à cookies est ajouté (GA, etc.). */}
         <CookieBanner />
       </body>
     </html>
