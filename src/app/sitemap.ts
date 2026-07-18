@@ -89,6 +89,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      // Page service ciblant la requête « agence next js ». Priorité haute :
+      // c'est la requête commerciale la plus accessible identifiée par
+      // l'audit (docs/audit-concurrentiel-2026-07.md).
+      url: `${baseUrl}/agence-next-js`,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
   ];
 
   // Guides : générés depuis le registre central src/lib/guides.ts —

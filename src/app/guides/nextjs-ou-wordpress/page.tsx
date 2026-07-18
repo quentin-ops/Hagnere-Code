@@ -984,7 +984,11 @@ export default function Page() {
           <Link href="/guides/prix-site-e-commerce">prix d&apos;un site
           e-commerce</Link> donnent toutes les grilles — et notre méthode{" "}
           <Link href="/methode">Sprint Fixe™</Link> garantit forfait et
-          dates par contrat.
+          dates par contrat. Si votre choix se porte sur le sur-mesure,
+          notre page{" "}
+          <Link href="/agence-next-js">agence Next.js</Link> détaille ce que
+          nous construisons, ce que nous garantissons par écrit et les cas
+          où nous vous orientons ailleurs.
         </p>
 
         <hr />

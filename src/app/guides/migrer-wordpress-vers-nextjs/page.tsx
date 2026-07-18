@@ -796,7 +796,9 @@ export default function Page() {
           14 900 € ou 22 000 € et plus selon le périmètre — au forfait
           fixe contractuel, plan de redirection, note Lighthouse
           mobile de 95 minimum et garantie 30 jours après la mise en
-          ligne inclus. Notre{" "}
+          ligne inclus. Le détail de ce que nous construisons sur ce
+          socle est sur notre page{" "}
+          <Link href="/agence-next-js">agence Next.js</Link>. Notre{" "}
           <Link href="/guides/prix-refonte-site-internet">guide du prix
           d&apos;une refonte</Link> détaille comment lire et comparer
           deux devis à périmètre égal.
