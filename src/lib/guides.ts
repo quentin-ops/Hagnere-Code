@@ -173,7 +173,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Shopify ou e-commerce sur mesure : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-18",
     readTimeMin: 25,
   },
   {
@@ -201,7 +201,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "WooCommerce ou Shopify : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-18",
     readTimeMin: 25,
   },
   {

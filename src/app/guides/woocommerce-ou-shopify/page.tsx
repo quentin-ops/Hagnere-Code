@@ -58,7 +58,7 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4300,
+  wordCount: 4879,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -112,7 +112,7 @@ const faqItems = [
   {
     question: "WooCommerce est-il meilleur que Shopify ?",
     answer:
-      "Ni l'un ni l'autre n'est « meilleur » dans l'absolu — ils incarnent deux logiques. Shopify est une location tout-en-un : hébergement, sécurité et mises à jour gérés, en échange d'un abonnement (25 à 289 €/mois), de commissions et d'un cadre imposé. WooCommerce est une propriété à entretenir : logiciel gratuit et liberté totale, en échange de la responsabilité complète — hébergement, extensions, sauvegardes, sécurité. Le bon choix dépend de votre profil : équipe, contenu éditorial, budget, besoin de contrôle. La grille de décision complète est en section 12 de ce guide.",
+      "Ni l'un ni l'autre n'est « meilleur » dans l'absolu — ils incarnent deux logiques. Shopify est une location tout-en-un : hébergement, sécurité et mises à jour gérés, en échange d'un abonnement (25 à 289 €/mois), de commissions et d'un cadre imposé. WooCommerce est une propriété à entretenir : logiciel gratuit et liberté totale, en échange de la responsabilité complète — hébergement, extensions, sauvegardes, sécurité. Le bon choix dépend de votre profil : équipe, contenu éditorial, budget, besoin de contrôle. La grille de décision complète est en section 12 de ce guide. Et si l'expérience d'achat est votre avantage concurrentiel, la bonne réponse peut être aucun des deux : le sur-mesure — voir section 13.",
   },
   {
     question: "WooCommerce est-il entièrement gratuit ?",
@@ -137,7 +137,7 @@ const faqItems = [
   {
     question: "WooCommerce ou Shopify pour une petite PME qui démarre ?",
     answer:
-      "La question décisive : avez-vous déjà un site WordPress qui vit ? Si oui — un site avec du contenu, une équipe habituée —, WooCommerce s'ajoute naturellement à l'existant et capitalise sur votre référencement. Si vous partez de zéro sans compétence technique et que la priorité est de vendre vite, Shopify est le chemin le plus court : boutique en ligne en quelques jours, aucune maintenance technique, pics de trafic absorbés. C'est le même verdict que notre comparatif Shopify ou sur-mesure : pour lancer vite un catalogue standard, la location tout-en-un est difficile à battre.",
+      "La question décisive : avez-vous déjà un site WordPress qui vit ? Si oui — un site avec du contenu, une équipe habituée —, WooCommerce s'ajoute naturellement à l'existant et capitalise sur votre référencement. Si vous partez de zéro sans compétence technique et que la priorité est de vendre vite, Shopify est le chemin le plus court : boutique en ligne en quelques jours, aucune maintenance technique, pics de trafic absorbés. C'est le même verdict que notre comparatif Shopify ou sur-mesure : pour lancer vite un catalogue standard, la location tout-en-un est difficile à battre. Et si votre boutique est appelée à devenir le cœur de votre entreprise, chiffrez d'abord la troisième option (section 13) : une migration ultérieure est un projet complet, souvent plus coûteux que l'écart de départ.",
   },
   {
     question: "Quels sont les avantages de WooCommerce pour une PME déjà sous WordPress ?",
@@ -172,7 +172,7 @@ const faqItems = [
   {
     question: "Quand faut-il passer au sur-mesure plutôt que choisir entre les deux ?",
     answer:
-      "Quand votre façon de vendre ne rentre plus dans les cases d'aucune plateforme : logique de vente spécifique (configurateur, tarification dynamique, abonnements complexes, B2B avec grilles par client), très gros volumes, intégrations profondes avec votre système de gestion, ou expérience d'achat qui EST votre avantage concurrentiel. Les seuils publiés par les agences convergent : en dessous de 25 000 € de budget, restez sur une plateforme ; le sur-mesure commence à 25 000-80 000 € et se justifie par le métier, pas par la mode. Notre comparatif Shopify ou e-commerce sur mesure chiffre précisément cette bascule.",
+      "Dès que la boutique est le cœur de votre entreprise, et pas seulement quand votre façon de vendre sort des cases : logique de vente spécifique (configurateur, tarification dynamique, abonnements complexes, B2B avec grilles par client), très gros volumes, intégrations profondes avec votre système de gestion, ou expérience d'achat qui EST votre avantage concurrentiel. Les seuils publiés par les agences convergeaient historiquement vers 25 000-80 000 € ; ils ont nettement baissé — notre grille démarre à 15 000 €. Le sur-mesure se justifie par le métier et par l'ambition, pas par la mode. Notre comparatif Shopify ou e-commerce sur mesure chiffre précisément cette bascule.",
   },
 ];
 
@@ -199,7 +199,7 @@ export default function Page() {
           { label: "WooCommerce ou Shopify" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Les coûts réels des deux côtés — extensions en euros, hébergement, commissions, maintenance —, la vitesse mesurée sur données publiques réelles, la sécurité et ses responsabilités, la migration chiffrée dans les deux sens, et un verdict par profil rendu par une agence qui ne vend ni l'un ni l'autre."
+        heroDescription="Les coûts réels des deux côtés — extensions en euros, hébergement, commissions, maintenance —, la vitesse mesurée sur données publiques réelles, la sécurité et ses responsabilités, la migration chiffrée dans les deux sens, et un verdict par profil, rendu sans affiliation ni commission d'aucune plateforme."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -227,8 +227,9 @@ export default function Page() {
           Dix pages de comparatifs, dix conclusions — chacune alignée
           sur ce que son auteur vend : thèmes WooCommerce, hébergement,
           commissions d&apos;affiliation Shopify. Ce guide est écrit par
-          une agence qui <strong>ne vend ni l&apos;un ni
-          l&apos;autre</strong> : les coûts des deux côtés en euros
+          une agence qui <strong>ne touche aucune commission
+          d&apos;aucune des deux plateformes — zéro affiliation, zéro
+          licence revendue</strong> : les coûts des deux côtés en euros
           vérifiés, la vitesse mesurée sur données publiques, et un
           verdict par profil — y compris quand la bonne réponse
           n&apos;est aucun des deux.
@@ -267,7 +268,14 @@ export default function Page() {
           <strong>100 à 300 €/mois de maintenance sérieuse</strong> pour
           une boutique active. À volume égal, les coûts totaux
           convergent : la vraie différence est ce que vous voulez
-          contrôler, et ce dont vous voulez être déchargé.
+          contrôler, et ce dont vous voulez être déchargé. Troisième
+          option devenue crédible en 2026 : le développement assisté par
+          IA (Claude Code) a fait baisser le coût du sur-mesure — notre
+          grille e-commerce démarre à 15 000 €, dans la fourchette
+          d&apos;une création Shopify en agence (8 000 à 30 000 €). Dès
+          que la boutique est appelée à devenir le cœur de
+          l&apos;entreprise, chiffrez cette option avant de trancher
+          (section 13).
         </p>
         <GuideTable
           headers={["Votre situation", "Notre verdict", "Pourquoi"]}
@@ -276,7 +284,7 @@ export default function Page() {
             ["Site WordPress existant, stratégie de contenu", "WooCommerce", "Le blog qui vous amène du trafic devient vendeur, même domaine"],
             ["Contrôle total : données, hébergement FR, coûts", "WooCommerce", "Open source, zéro commission, prestataires libres"],
             ["Priorité à la vitesse sans effort", "Shopify", "76 % des boutiques passent les seuils de vitesse Google, contre 35 % (mesuré, section 8)"],
-            ["Logique de vente hors standard, gros volumes", "Ni l'un ni l'autre : sur-mesure", "Seuils et budgets en section 13"],
+            ["Boutique cœur d'entreprise (image, conversion, durée) ou logique de vente hors standard", "Sur-mesure (React/Next.js) — à chiffrer en face avant de trancher", "Longtemps hors budget, désormais chiffrable — seuils et budgets en section 13"],
           ]}
         />
 
@@ -326,8 +334,9 @@ export default function Page() {
         <h2 id="marche-francais">3. Le paradoxe français : trois lectures, trois vainqueurs</h2>
         <p>
           Qui « gagne » en France ? Tout dépend de ce qu&apos;on
-          compte — et c&apos;est le paradoxe que les comparatifs ne
-          montrent jamais, faute de croiser les sources :
+          compte — et c&apos;est le paradoxe qu&apos;aucun des
+          comparatifs que nous avons analysés ne montre, faute de
+          croiser les sources :
         </p>
         <GuideTable
           headers={["La question posée", "Le vainqueur", "Le chiffre (source)"]}
@@ -350,8 +359,8 @@ export default function Page() {
           sites, contre 5,3 % pour Shopify — W3Techs, juillet 2026),
           mais la hiérarchie s&apos;inverse sur les gros sites (top
           million : Shopify 14,7 %, WooCommerce 8,7 %). Aucun des deux
-          n&apos;est un choix marginal : vous choisissez entre deux
-          standards.
+          n&apos;est un choix marginal : si vous restez sur une
+          plateforme, vous choisissez entre deux standards.
         </p>
 
         <h2 id="cout-shopify">4. Ce que coûte vraiment Shopify (rappel chiffré)</h2>
@@ -367,7 +376,7 @@ export default function Page() {
           transaction avec Shopify Payments, plus une{" "}
           <strong>pénalité de 0,6 à 2 %</strong> si vous préférez un
           autre prestataire de paiement —, <strong>les
-          applications</strong> (100 à 300 €/mois pour une boutique
+          applications</strong> (100 à 400 €/mois pour une boutique
           équipée) et la création si vous déléguez (1 500 à 5 000 € en
           freelance, 8 000 à 30 000 € en agence). Le coût réel tout
           compris va d&apos;environ <strong>90 €/mois pour un créateur
@@ -483,9 +492,10 @@ export default function Page() {
           quelques applications ≈ 600 €/an. Première année :{" "}
           <strong>≈ 2 900 à 3 900 €</strong>, puis ≈ 900 à 1 200 €/an —
           mais un second site à faire vivre à côté du blog qui leur
-          amène leurs clientes, et des commissions à vie. L&apos;écart
-          financier est faible ; le vrai critère est ailleurs : leur
-          trafic est sur WordPress.
+          amène leurs clientes, et des frais de paiement non
+          négociables : la pénalité de la section 6 verrouille le
+          prestataire à vie. L&apos;écart financier est faible ; le
+          vrai critère est ailleurs : leur trafic est sur WordPress.
         </InfoBox>
         <p>
           La conclusion mérite d&apos;être dite contre les deux camps :{" "}
@@ -493,20 +503,18 @@ export default function Page() {
           convergent</strong>. Ce que Shopify facture en abonnement et
           applications, WooCommerce le facture en hébergement, licences
           et surtout maintenance humaine — le poste que les comparatifs
-          pro-WooCommerce omettent systématiquement pour afficher un
-          « TCO » imbattable. L&apos;écart réel se joue sur trois
-          curseurs : votre temps (Shopify en demande moins), votre
-          volume de paiements (WooCommerce négocie mieux, section 6),
-          et la valeur que vous accordez au contrôle (section 9 et 10).
-          C&apos;est ce que les comparatifs partisans masquent en
-          affichant un « coût total de possession » (le fameux TCO)
-          imbattable d&apos;un côté ou de l&apos;autre : ils omettent
-          simplement les postes qui dérangent.
+          pro-WooCommerce que nous avons lus omettent pour afficher un
+          « coût total de possession » (le fameux TCO) imbattable, en
+          oubliant simplement les postes qui dérangent. L&apos;écart
+          réel se joue sur trois curseurs : votre temps (Shopify en
+          demande moins), votre volume de paiements (WooCommerce
+          négocie mieux, section 6), et la valeur que vous accordez au
+          contrôle (sections 9 et 10).
         </p>
 
         <GuideInlineCTA
-          title="Votre boutique mérite-t-elle WooCommerce, Shopify — ou mieux ?"
-          description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc et argumenté — nous ne vendons ni thèmes, ni apps, ni hébergement, et nos recommandations incluent les deux plateformes quand elles sont le bon choix."
+          title="Votre boutique relève-t-elle de WooCommerce, de Shopify — ou d'aucun des deux ?"
+          description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc et argumenté — nous ne vendons ni thèmes, ni apps, ni hébergement. Nous recommandons encore une plateforme là où elle reste imbattable (micro-budget, test de marché ou side-project, vente en caisse physique, WordPress vivant dont le contenu est l'actif), et le sur-mesure quand la boutique est le cœur de l'entreprise."
           tags={["Réponse sous 24 h ouvrées", "Avis indépendant : aucune plateforme à vendre", "E-commerce 15 000 – 120 000 €"]}
         />
 
@@ -621,7 +629,8 @@ export default function Page() {
 
         <h2 id="migration">11. Changer d&apos;avis : le coût réel d&apos;une migration</h2>
         <p>
-          Personne ne chiffre ce sujet, alors faisons-le. D&apos;abord
+          Aucune page française que nous avons analysée ne chiffre ce
+          sujet, alors faisons-le. D&apos;abord
           le sens du vent, mesuré : sur 90 jours en 2026,{" "}
           <strong>environ 9 000 boutiques dans le monde ont quitté
           WooCommerce pour Shopify, et environ 3 900 ont fait le chemin
@@ -636,7 +645,7 @@ export default function Page() {
             ["Outil automatisé seul (petite boutique)", "70 – 200 €", "Transfert des données brutes — ni design ni réglages"],
             ["Migration accompagnée simple", "3 000 – 12 000 €", "Données + thème refait + redirections de base"],
             ["Boutique < 500 produits, sans connexion métier", "8 000 – 20 000 €", "Migration complète, plan de redirections 301, suivi 30 jours"],
-            ["Projet complexe (gros catalogue, connexion au logiciel de gestion — l'ERP —, vente aux professionnels)", "25 000 – 80 000 €", "Un changement complet de plateforme, comparable à une refonte"],
+            ["Projet complexe (gros catalogue, connexion au logiciel de gestion — l'ERP —, vente aux professionnels)", "25 000 – 80 000 €", "Un changement complet de plateforme, comparable à une refonte — à ce budget, chiffrez aussi le sur-mesure (section 13)"],
           ]}
         />
         <p>
@@ -673,18 +682,20 @@ export default function Page() {
             ["PME attachée au contrôle : données, hébergeur FR, coûts négociés", "WooCommerce + maintenance sérieuse", "Liberté totale — à condition de budgéter l'entretien"],
             ["Marque qui vit de publicité et réseaux sociaux, peu de contenu", "Shopify", "Vitesse par défaut, intégrations natives, cadre sans importance ici"],
             ["Vente aussi en boutique physique ou sur les marchés", "Shopify", "Caisse et stock unifiés en natif (POS) ; côté Woo, extensions tierces à assembler"],
-            ["Boutique qui grossit vers le B2B ou le sur-mesure", "Étape sur plateforme, puis réévaluation", "La bascule se chiffre — section 13"],
-            ["Les Toiles du Lac (notre fil rouge)", "WooCommerce", "Leur WordPress et son trafic sont un actif : on construit dessus"],
+            ["Boutique cœur de l'entreprise", "Sur-mesure (React/Next.js), à chiffrer avant de trancher", "Évite un projet de migration complet deux ans plus tard — budgets en section 13"],
+            ["Boutique qui grossit vers le B2B ou une logique de vente hors standard", "Sur-mesure direct si le besoin métier est déjà là ; s'il reste à valider, testez sur la plateforme en budgétant la bascule dès le départ", "La bascule se planifie et se chiffre — section 13"],
+            ["Les Toiles du Lac (notre fil rouge)", "WooCommerce", "Leur WordPress et son trafic sont un actif : on construit dessus — au volume de lancement, le sur-mesure (15 000 €+) se rechiffrera quand la boutique aura fait ses preuves"],
           ]}
         />
 
-        <InfoBox variant="emerald" title="À retenir : les 5 chiffres de ce guide">
+        <InfoBox variant="emerald" title="À retenir : les 6 chiffres de ce guide">
           <ul className="list-disc pl-4 space-y-1.5">
             <li><strong>47,4 % / 48,8 %</strong> : la part de WooCommerce dans le parc français / la part de Shopify dans les créations 2025 — deux standards, pas un vainqueur.</li>
             <li><strong>76 % vs 35 %</strong> : les boutiques qui passent les seuils de vitesse Google (mesure réelle) — un écart d&apos;hébergement plus que de logiciel.</li>
-            <li><strong>0 %</strong> : la commission de plateforme sur WooCommerce — la liberté de négocier son prestataire de paiement vaut ~1 200 €/an à 300 k€ de CA.</li>
+            <li><strong>0 %</strong> : la commission de plateforme sur WooCommerce — la liberté de négocier son prestataire de paiement vaut jusqu&apos;à ≈ 840 € net/an à 300 k€ de CA (calcul section 6).</li>
             <li><strong>100 – 300 €/mois</strong> : la maintenance sérieuse d&apos;une boutique WooCommerce active — le poste que les comparatifs pro-Woo oublient.</li>
             <li><strong>3 000 – 20 000 €</strong> : une migration accompagnée entre les deux plateformes — changer d&apos;avis se budgète.</li>
+            <li><strong>15 000 €</strong> : le ticket d&apos;entrée du e-commerce sur mesure en 2026 — notre grille publique, détaillée en section 13.</li>
           </ul>
         </InfoBox>
 
@@ -692,21 +703,34 @@ export default function Page() {
         <p>
           Les comparatifs « Woo vs Shopify » entretiennent une
           illusion : que la réponse est forcément l&apos;un des deux.
-          Pour la grande majorité des boutiques, c&apos;est vrai. Mais
-          il existe un profil où les deux plateformes deviennent le
-          problème : <strong>quand votre façon de vendre ne rentre
-          plus dans les cases</strong> — configurateur de produits,
+          C&apos;était vrai tant que le sur-mesure se chiffrait
+          uniquement en dizaines de milliers d&apos;euros. En 2026, le
+          développement assisté par IA (Claude Code) a fait fondre son
+          ticket d&apos;entrée, et la question mérite désormais
+          d&apos;être posée dans deux situations : quand la boutique
+          est le cœur de votre entreprise — image, conversion,
+          durée —, et, comme hier, <strong>quand votre façon de vendre
+          ne rentre plus dans les cases</strong> : configurateur de
+          produits,
           tarification dynamique, abonnements complexes, B2B avec
           grilles par client, intégrations profondes avec votre
           système de gestion, ou volumes qui font de chaque limite un
-          goulot. Les seuils convergent : une boutique sur plateforme
+          goulot. Côté budgets : une boutique sur plateforme
           se construit entre 1 500 et 30 000 € selon la plateforme et
-          le prestataire (section 7) ; le sur-mesure commence à
-          25 000-80 000 € et ne se justifie <em>que</em> par le
-          métier — jamais par la mode. La
-          trajectoire saine est presque toujours : valider la demande
-          sur une plateforme, puis basculer quand les chiffres
-          l&apos;exigent. Notre{" "}
+          le prestataire (section 7) ; les seuils historiquement
+          publiés par les agences pour le sur-mesure convergeaient vers
+          25 000-80 000 € — un plancher qui a cédé : notre propre
+          grille e-commerce sur mesure démarre à 15 000 €, au prix
+          d&apos;une création Shopify en agence. Le sur-mesure se
+          justifie par le métier et par l&apos;ambition de convertir et
+          durer — pas par la mode. Pour tester une demande à petit
+          budget ou un side-project (un projet mené à côté de son
+          activité principale), valider sur une plateforme reste la
+          trajectoire saine ; pour une entreprise dont la boutique est
+          l&apos;actif principal, partir directement sur mesure évite
+          un projet de migration complet deux ans plus tard — notre{" "}
+          <Link href="/guides/shopify-ou-sur-mesure">comparatif
+          Shopify ou sur-mesure</Link> en chiffre le coût de sortie. Notre{" "}
           <Link href="/guides/shopify-ou-sur-mesure">comparatif
           Shopify ou e-commerce sur mesure</Link> chiffre cette
           bascule — point d&apos;équilibre et coût de sortie compris —
@@ -720,8 +744,11 @@ export default function Page() {
             <strong>Partez de l&apos;existant, pas de l&apos;outil.</strong>{" "}
             Un WordPress vivant avec du trafic est un actif : le
             prolonger (WooCommerce) bat presque toujours le
-            recommencement à côté. Pas de site, pas d&apos;équipe :
-            l&apos;avantage passe à Shopify.
+            recommencement à côté. Pas de site, pas d&apos;équipe et un
+            micro-budget : l&apos;avantage passe à Shopify. Une
+            boutique appelée à devenir le cœur de l&apos;entreprise :
+            chiffrez aussi la troisième option avant de trancher
+            (section 13).
           </li>
           <li>
             <strong>Chiffrez votre temps, pas seulement vos
@@ -751,9 +778,18 @@ export default function Page() {
         <p>
           Notre position d&apos;agence, en toute transparence : nous ne
           vendons ni thèmes WooCommerce, ni applications Shopify, ni
-          hébergement — nous construisons du sur-mesure quand il se
-          justifie, et nous recommandons les plateformes quand
-          c&apos;est le bon choix, ce qui est fréquent. Un{" "}
+          hébergement — nous construisons du sur-mesure, devenu notre
+          recommandation par défaut quand la boutique est un actif
+          stratégique, et nous continuons de recommander les
+          plateformes chaque fois qu&apos;elles restent imbattables :
+          micro-budget de lancement, test de marché ou side-project,
+          vente physique unifiée (le POS) — et site WordPress vivant
+          dont le contenu est l&apos;actif, comme Les Toiles du Lac, à
+          qui ce guide recommande WooCommerce sans arrière-pensée. Ce
+          site lui-même est développé à 100 % en React/Next.js avec
+          Claude Code — la vitesse, la qualité visuelle et la
+          stratégie de guides que vous lisez en ce moment en sont la
+          démonstration. Un{" "}
           <strong>Discovery Sprint (1 500 €, 2 jours, déduit à 100 %
           si le projet se lance)</strong> tranche votre cas sur vos
           chiffres réels — trafic, volumes, équipe — et produit une
