@@ -36,6 +36,48 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "migrer-wordpress-vers-nextjs",
+    title: "Migrer WordPress vers Next.js : le guide 2026 · Hagnéré Code",
+    cardTitle: "Migrer de WordPress vers Next.js : méthode, prix, risques",
+    metaDescription:
+      "Prix en euros, protocole SEO sourcé Google, ce qui casse et son remplacement, les 5 cas où il ne faut pas migrer. Le guide complet, sources à l'appui.",
+    cardDescription:
+      "Les 3 architectures cibles, le protocole SEO zéro perte, les vrais prix en euros, le coût total sur 3 ans — et quand rester sur WordPress.",
+    heroTitle: "Migrer de WordPress vers Next.js : méthode, prix et risques réels",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    readTimeMin: 25,
+  },
+  {
+    slug: "tjm-developpeur-web",
+    title: "TJM développeur web 2026 : le guide de l'acheteur · Hagnéré Code",
+    cardTitle: "TJM développeur web : ce que ça coûte vraiment à un client",
+    metaDescription:
+      "Baromètres 2026 comparés, pourquoi ils se contredisent, la conversion TJM → jours → budget, forfait ou régie : le seul guide écrit côté acheteur.",
+    cardDescription:
+      "Toutes les pages sur le TJM parlent au freelance qui fixe son prix. Celle-ci parle à l'entreprise qui paie : grilles sourcées, jours par livrable, lecture de devis.",
+    heroTitle: "TJM développeur web en 2026 : le guide de celui qui paie",
+    section: "Budget & prix",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    readTimeMin: 25,
+  },
+  {
+    slug: "choisir-son-agence-web",
+    title: "Comment choisir son agence web en 2026 · Hagnéré Code",
+    cardTitle: "Choisir son agence web : la méthode de vérification",
+    metaDescription:
+      "18 vérifications gratuites, 13 questions avec le barème des réponses, les signaux d'alerte ancrés en jurisprudence — et comment nous auditer, nous aussi.",
+    cardDescription:
+      "Tout le monde liste des critères. Ce guide donne la méthode de vérification objective, le barème des bonnes réponses et les pièges confirmés en justice.",
+    heroTitle: "Comment choisir son agence web : la méthode de vérification objective",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    readTimeMin: 26,
+  },
+  {
     slug: "agence-web-ou-freelance",
     title: "Agence web ou freelance : qui choisir en 2026 · Hagnéré Code",
     cardTitle: "Agence web ou freelance : la grille de décision honnête",

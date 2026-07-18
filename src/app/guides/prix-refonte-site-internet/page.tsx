@@ -668,7 +668,11 @@ export default function Page() {
           dépendance à des extensions métier bien maintenues. Nous le
           disons sans détour dans notre{" "}
           <Link href="/guides/nextjs-ou-wordpress">comparatif Next.js ou
-          WordPress</Link>, verdict par profil compris. Le changement de
+          WordPress</Link>, verdict par profil compris — et notre{" "}
+          <Link href="/guides/migrer-wordpress-vers-nextjs">guide de la
+          migration WordPress vers Next.js</Link> détaille le processus,
+          le coût total sur 3 ans et les cinq cas où nous refusons la
+          mission. Le changement de
           socle se justifie quand les symptômes de la section 3
           s&apos;accumulent : chaque euro de refonte WordPress sur un site
           à bout de souffle est un euro qui devra être re-dépensé à la

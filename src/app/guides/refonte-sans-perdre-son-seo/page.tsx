@@ -621,7 +621,11 @@ export default function Page() {
           moderne (React/Next.js) — le développement assisté par IA
           en a fait baisser le coût, notre{" "}
           <Link href="/guides/nextjs-ou-wordpress">comparatif
-          Next.js ou WordPress</Link> détaille pourquoi. Côté SEO, la
+          Next.js ou WordPress</Link> détaille pourquoi, et notre{" "}
+          <Link href="/guides/migrer-wordpress-vers-nextjs">guide de
+          la migration WordPress vers Next.js</Link> en donne le
+          processus complet, les prix en euros et les cas où il ne
+          faut pas la lancer. Côté SEO, la
           méthode tient en trois principes. <strong>Conserver les
           slugs</strong> : les adresses de pages peuvent rester
           strictement identiques sur le nouveau socle — scénario 1,

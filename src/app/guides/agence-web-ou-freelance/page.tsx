@@ -362,7 +362,11 @@ export default function Page() {
           consultation : deux devis freelance très éloignés cachent
           souvent deux séniorités très éloignées — demandez toujours
           l&apos;expérience réelle sur la technologie proposée, pas
-          l&apos;expérience totale.
+          l&apos;expérience totale. Notre{" "}
+          <Link href="/guides/tjm-developpeur-web">guide du tarif
+          journalier écrit côté acheteur</Link> pousse l&apos;exercice
+          plus loin : anatomie d&apos;un tarif, nombre de jours par
+          livrable et lecture d&apos;un devis poste par poste.
         </p>
         <InfoBox variant="amber" title="Exemple concret : convertir un TJM en budget de projet">
           <p>
@@ -571,7 +575,13 @@ export default function Page() {
           d&apos;un prestataire sérieux est écrite dans son contrat.
           Un devis anormalement bas se juge à la même aune : ce qui
           n&apos;est pas dans le devis (contenus, référencement,
-          tests, garantie) reviendra en avenant.
+          tests, garantie) reviendra en avenant. Ce montage de
+          location a valu, en janvier 2026, une condamnation pénale
+          confirmée en cassation : notre{" "}
+          <Link href="/guides/choisir-son-agence-web">guide pour
+          choisir son agence web</Link> détaille la décision, les
+          recours ouverts aux professionnels démarchés et la méthode
+          de vérification complète.
         </p>
 
         <h2 id="troisieme-voie">10. Collectifs, portage, studio senior : les troisièmes voies</h2>

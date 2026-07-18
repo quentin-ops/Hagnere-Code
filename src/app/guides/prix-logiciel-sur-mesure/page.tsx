@@ -476,7 +476,11 @@ export default function Page() {
           développer, connecter, tester et livrer ? La multiplication est
           le détecteur d&apos;anomalie le plus simple du marché — dans les
           deux directions, car un devis à 90 000 € sans détail des jours
-          n&apos;est pas plus sérieux.
+          n&apos;est pas plus sérieux. Notre{" "}
+          <Link href="/guides/tjm-developpeur-web">guide du tarif
+          journalier</Link> détaille cette méthode : nombre de jours par
+          livrable, poids relatif de chaque poste et calcul du tarif
+          implicite d&apos;un devis.
         </p>
 
         <h2 id="devis">7. Un devis réel, décortiqué ligne à ligne</h2>

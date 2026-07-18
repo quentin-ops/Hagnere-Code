@@ -1027,7 +1027,12 @@ export default function Page() {
           devis rendu en 48 heures sans une seule question, et le devis
           très en dessous des autres — relisez ce qu&apos;il exclut
           (rédaction, SEO, maintenance, formation) : le moins-disant se
-          rattrape presque toujours en avenants.
+          rattrape presque toujours en avenants. Notre{" "}
+          <Link href="/guides/choisir-son-agence-web">guide pour choisir
+          son agence web</Link> donne la suite : les dix-huit
+          vérifications gratuites à mener avant le premier rendez-vous,
+          et les treize questions avec le barème des réponses
+          acceptables.
         </p>
         <p>
           Voici comment nous lisons un CDC reçu : objectifs d&apos;abord

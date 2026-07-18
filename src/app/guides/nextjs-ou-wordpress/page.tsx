@@ -865,7 +865,12 @@ export default function Page() {
           anti-perte de trafic, sourcée sur la documentation Google,
           dans notre{" "}
           <Link href="/guides/refonte-sans-perdre-son-seo">guide
-          « refondre sans perdre son SEO »</Link>.
+          « refondre sans perdre son SEO »</Link>. Si votre décision
+          est déjà prise, notre{" "}
+          <Link href="/guides/migrer-wordpress-vers-nextjs">guide de la
+          migration WordPress vers Next.js</Link> déroule les trois
+          architectures possibles, ce qui casse au passage et ce qui
+          le remplace.
         </p>
 
         <p>

@@ -496,6 +496,11 @@ export default function Page() {
           l&apos;essentiel des écarts&nbsp;: freelance junior 350 à 450 €/jour,
           confirmé 500 à 600 €/jour, senior expert React/Next.js 700 €/jour et
           plus ; agences 400 à 1 200 €/jour selon taille et positionnement.
+          Notre{" "}
+          <Link href="/guides/tjm-developpeur-web">guide du tarif
+          journalier d&apos;un développeur</Link> explique comment
+          convertir ces taux en budget de projet — et pourquoi les
+          baromètres se contredisent.
         </p>
         <GuideTable
           headers={["Prestataire", "Site vitrine", "Points forts", "Points faibles"]}

@@ -1060,6 +1060,14 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
           est un prestataire que vous pouvez écouter.
         </InfoBox>
         <p>
+          Pour aller plus loin sur le choix du prestataire lui-même —
+          tester ses réalisations, vérifier son entreprise, lire son
+          contrat — notre{" "}
+          <Link href="/guides/choisir-son-agence-web">guide pour choisir
+          son agence web</Link> donne la méthode de vérification
+          complète, gratuite et applicable en une heure.
+        </p>
+        <p>
           La dernière section montre, en toute transparence, comment nous
           avons construit notre propre offre pour échapper à ces six
           pièges — à vous de juger si la promesse est tenue.
