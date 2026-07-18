@@ -716,7 +716,11 @@ export default function Page() {
           moins cher — il transfère simplement le risque sur vous
           (notre <Link href="/guides/prix-refonte-site-internet">guide
           du prix d&apos;une refonte</Link> chiffre ce poste à 1 500 à
-          10 000 € selon la taille du site).
+          10 000 € selon la taille du site). Pour l&apos;accompagnement
+          récurrent qui suit la bascule, notre guide du{" "}
+          <Link href="/guides/prix-referencement-naturel">prix du
+          référencement naturel</Link> convertit chaque forfait mensuel
+          en heures de travail réelles.
         </p>
 
         <InfoBox variant="emerald" title="À retenir : les 5 chiffres de ce guide">

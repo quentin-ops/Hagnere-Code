@@ -259,7 +259,7 @@ export default function Page() {
           <ul className="list-disc pl-4 space-y-1.5">
             <li><strong>Site vitrine</strong> : un site qui présente votre activité, sans vente en ligne.</li>
             <li><strong>E-commerce</strong> : un site qui encaisse des paiements.</li>
-            <li><strong>SEO</strong> (référencement naturel) : ce qui fait remonter votre site dans Google sans payer de publicité.</li>
+            <li><strong>SEO</strong> (référencement naturel) : ce qui fait remonter votre site dans Google sans payer de publicité. Son budget se chiffre à part — voyez notre guide du <Link href="/guides/prix-referencement-naturel">prix du référencement naturel</Link>.</li>
             <li><strong>CMS</strong> : l&apos;outil pour modifier vous-même textes et photos, sans toucher au code (WordPress est le plus connu).</li>
             <li><strong>Template</strong> : une maquette toute prête, réutilisée par des centaines de sites.</li>
             <li><strong>Builder</strong> : un service sur abonnement (Wix, Squarespace) où l&apos;on assemble soi-même son site à partir de modèles.</li>

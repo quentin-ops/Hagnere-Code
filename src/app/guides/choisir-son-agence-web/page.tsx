@@ -401,7 +401,13 @@ export default function Page() {
             <strong>Qui écrit les contenus.</strong> C&apos;est le
             coût caché numéro un des devis bas. Si vous ne l&apos;avez
             pas tranché, chaque agence fera une hypothèse différente et
-            vous comparerez des choux et des carottes.
+            vous comparerez des choux et des carottes. Le même piège
+            existe sur l&apos;accompagnement au référencement : notre
+            guide du{" "}
+            <Link href="/guides/prix-referencement-naturel">prix du
+            référencement naturel</Link> montre comment convertir un
+            forfait mensuel en heures de travail pour comparer à
+            périmètre égal.
           </li>
           <li>
             <strong>Votre autonomie après livraison.</strong> Voulez-vous

@@ -36,6 +36,20 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "prix-referencement-naturel",
+    title: "Prix du référencement naturel 2026 · Hagnéré Code",
+    metaDescription:
+      "Le seul guide qui convertit chaque forfait SEO en heures de consultant, démonte 8 statistiques recopiées partout et cite la jurisprudence française.",
+    cardTitle: "Prix du référencement naturel : ce que vous achetez vraiment",
+    cardDescription:
+      "Un forfait SEO n'est pas un prix, c'est un nombre d'heures. 221 €/mois achètent moins de deux heures de travail — la démonstration, et tout ce qu'elle implique.",
+    heroTitle: "Prix du référencement naturel : le guide 2026",
+    section: "Budget & prix",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    readTimeMin: 29,
+  },
+  {
     slug: "pourquoi-mon-site-est-lent",
     title: "Pourquoi mon site est lent : le diagnostic · Hagnéré Code",
     metaDescription:
