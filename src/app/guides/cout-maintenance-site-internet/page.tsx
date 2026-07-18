@@ -172,7 +172,7 @@ const faqItems = [
   {
     question: "Faut-il un contrat de maintenance pour un site Shopify ou Wix ?",
     answer:
-      "La plateforme est maintenue par l'éditeur — serveurs, sécurité du socle, mises à jour du back-office : c'est inclus dans l'abonnement, et c'est un vrai avantage du modèle. Mais votre boutique, elle, reste à votre charge : le thème et ses personnalisations, les applications tierces (souvent 5 à 15 sur une boutique active, chacune avec ses mises à jour et réglages), les intégrations (emailing, comptabilité, logistique) et le contenu. Sur une boutique sérieuse, ce travail existe bel et bien — les forfaits de maintenance Shopify professionnels se facturent plusieurs centaines d'euros par mois.",
+      "La plateforme est maintenue par l'éditeur — serveurs, sécurité du socle, mises à jour du back-office : c'est inclus dans l'abonnement, et c'est un vrai avantage du modèle — surtout pour un micro-budget ou un test de marché. Mais votre boutique, elle, reste à votre charge : le thème et ses personnalisations, les applications tierces (souvent 5 à 15 sur une boutique active, chacune avec ses mises à jour et réglages), les intégrations (emailing, comptabilité, logistique) et le contenu. Sur une boutique sérieuse, ce travail existe bel et bien — les forfaits de maintenance Shopify professionnels se facturent plusieurs centaines d'euros par mois. Autrement dit, l'entretien « inclus » ne couvre que le socle : une fois ce poste réintégré, le « zéro maintenance » ne justifie plus à lui seul le choix de la plateforme face à un site codé sur une base saine, dont l'entretien se limite à ses dépendances.",
   },
 ];
 
@@ -415,7 +415,7 @@ export default function Page() {
           parlant : un piratage début décembre — nettoyage 800 €,
           écran rouge pendant les 5 jours où elle prend ses commandes
           de fêtes (~1 000 € de plateaux envolés), et la confiance à
-          reconstruire. <strong>Environ 2 000 €, soit près de trois ans
+          reconstruire. <strong>Environ 2 000 €, soit plus de deux ans
           du forfait de maintenance qui l&apos;aurait très
           probablement évité.</strong> C&apos;est le calcul de fond de
           ce guide : la maintenance est une assurance dont le sinistre
@@ -463,11 +463,13 @@ export default function Page() {
           répond. Pour la fromagerie Perrin — 18 pages et un module de
           commande qui encaisse —, le bon niveau est l&apos;entrée du
           régime « avec un humain derrière », dimensionné pour un site
-          qui vend : <strong>autour de 60 à 80 €/mois</strong> (le
-          tableau de la section 6 en montre dès 69 €), soit 720 à
-          960 €/an — la fourchette e-commerce complète (150 – 500 €)
-          vise, elle, les vraies boutiques à catalogue, stocks et
-          tunnel de commande.
+          qui vend : <strong>autour de 70 à 80 €/mois</strong> (le
+          tableau de la section 6 en montre dès 69 €), soit 840 à
+          960 €/an. Le jour de sa refonte, une base saine (section 9)
+          transformera ce poste récurrent en accompagnement léger — un
+          calcul à refaire à chaque échéance de contrat. La fourchette
+          e-commerce complète (150 – 500 €) vise, elle, les vraies
+          boutiques à catalogue, stocks et tunnel de commande.
         </p>
 
         <h2 id="forfaits-reels">6. Les forfaits réels du marché, nommés</h2>
@@ -557,8 +559,9 @@ export default function Page() {
           que vous avez fait bien avant : le socle technique. Un site
           WordPress vit sur un moteur et des extensions à tenir à jour
           en permanence — c&apos;est toute la section 3. Un site
-          statique moderne (généré à l&apos;avance, comme nos sites
-          Next.js) n&apos;a <strong>ni base de données exposée, ni
+          statique moderne (généré à l&apos;avance — le site que vous
+          lisez est lui-même construit à 100 % en React/Next.js)
+          n&apos;a <strong>ni base de données exposée, ni
           extensions à maintenir, ni surface d&apos;attaque
           équivalente</strong> : l&apos;entretien se réduit pour
           l&apos;essentiel à des mises à jour périodiques des briques
@@ -568,23 +571,28 @@ export default function Page() {
         <GuideTable
           headers={["Poste annuel", "WordPress professionnel", "Site statique moderne (Next.js)"]}
           rows={[
-            ["Forfait de maintenance", "360 – 1 200 € (30-100 €/mois)", "Réduit — souvent inclus dans une TMA légère"],
+            ["Forfait de maintenance", "360 – 1 200 € (30-100 €/mois)", "Réduit — quelques dizaines d'euros par mois, souvent absorbées dans un contrat d'accompagnement léger (sans commune mesure avec la TMA d'une application critique, section 1)"],
             ["Licences d'extensions premium", "500 – 1 000 €", "0 €"],
             ["Hébergement adapté", "60 – 960 € (du mutualisé — serveur partagé entre plusieurs sites — à l'infogéré)", "0 – 240 €"],
             ["Risque sécurité structurel", "91 % des failles viennent des extensions", "Surface d'attaque minimale par conception"],
           ]}
         />
         <p>
-          Honnêteté de lecture : ce tableau ne dit pas « WordPress est
-          un mauvais choix » — il dit qu&apos;un WordPress se paie en
-          entretien récurrent, quand un site statique se paie
-          davantage à la construction. Sur 5 ans, l&apos;écart
-          d&apos;entretien (souvent plus de 1 000 €/an tout compris)
-          finance une partie de la différence de prix initial. Le
-          verdict complet par profil est dans notre{" "}
+          Honnêteté de lecture : ce tableau ne dit pas qu&apos;un
+          WordPress bien tenu est indéfendable — il dit qu&apos;un
+          WordPress se paie en entretien récurrent, à vie.
+          L&apos;argument historique en sa faveur (« le sur-mesure
+          coûte trop cher à construire ») a largement vécu : avec le
+          développement assisté par IA (Claude Code), le coût et le
+          délai d&apos;un site sur mesure ont fortement baissé — et
+          sur 5 ans, l&apos;écart d&apos;entretien (souvent plus de
+          1 000 €/an tout compris) achève de renverser le calcul. Pour
+          un site professionnel qui doit convertir et durer, la base
+          saine (React/Next.js) est aujourd&apos;hui le choix par
+          défaut ; le verdict détaillé par profil reste dans notre{" "}
           <Link href="/guides/nextjs-ou-wordpress">comparatif Next.js
-          ou WordPress</Link> ; côté budget, c&apos;est un paramètre à
-          poser dès le devis de création — pas au premier piratage.
+          ou WordPress</Link> — côté budget, c&apos;est un paramètre à
+          poser dès le devis de création, pas au premier piratage.
         </p>
 
         <GuideInlineCTA
@@ -662,8 +670,8 @@ export default function Page() {
           × valeur de votre heure</strong>
           <br />
           Chez Perrin : 3 h/mois × 40 € (l&apos;heure d&apos;un gérant,
-          prudemment) = <strong>120 €/mois</strong> — le double du
-          forfait à 60 €/mois qui ferait le travail avec un
+          prudemment) = <strong>120 €/mois</strong> — bien plus que le
+          forfait à 70-80 €/mois qui ferait le travail avec un
           professionnel derrière.
           <br />
           <br />
@@ -737,7 +745,11 @@ export default function Page() {
           professionnels se facturent plusieurs centaines
           d&apos;euros par mois. La nuance à retenir :{" "}
           <strong>plateforme louée = socle maintenu, boutique à
-          entretenir quand même</strong> — notre{" "}
+          entretenir quand même</strong>. Une fois ce poste réintégré,
+          le « zéro maintenance » ne justifie plus à lui seul de bâtir
+          un site professionnel sur une plateforme ; il reste un vrai
+          argument pour un micro-budget, un side-project ou un test de
+          marché — notre{" "}
           <Link href="/guides/shopify-ou-sur-mesure">comparatif
           Shopify ou sur-mesure</Link> intègre ce poste dans le coût
           total, et notre{" "}
@@ -751,7 +763,7 @@ export default function Page() {
             <li><strong>30 – 100 €/mois</strong> : le forfait d&apos;un site vitrine (e-commerce : 150 – 500 €, TMA sur mesure : 500 €+).</li>
             <li><strong>5 heures</strong> : le délai médian entre publication d&apos;une faille ciblée et son exploitation par des robots — l&apos;argument qui disqualifie la maintenance « de temps en temps ».</li>
             <li><strong>250 – 1 500 € + 3 à 5 jours d&apos;écran rouge</strong> : le coût d&apos;un piratage, avant même les ventes perdues.</li>
-            <li><strong>500 – 1 000 €/an</strong> : les licences d&apos;extensions premium d&apos;un WordPress professionnel — le poste que les devis oublient.</li>
+            <li><strong>500 – 1 000 €/an</strong> : les licences d&apos;extensions premium d&apos;un WordPress professionnel — le poste que les devis oublient, et qui tombe à 0 € sur un site codé sur une base moderne (section 9).</li>
             <li><strong>GTI / GTR</strong> : les deux sigles à exiger chiffrés au contrat — le délai avant intervention, et avant retour en ligne.</li>
           </ul>
         </InfoBox>

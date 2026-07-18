@@ -112,7 +112,7 @@ const faqItems = [
   {
     question: "Quel est le prix moyen d'un site e-commerce en France en 2026 ?",
     answer:
-      "Les fourchettes qui font consensus sur le marché français : 1 500 à 5 000 € pour une boutique simple montée par un freelance sur Shopify ou WooCommerce, 5 000 à 18 000 € pour une boutique de PME en agence, 15 000 à 50 000 € pour un e-commerce complexe (gros catalogue, intégrations), et 45 000 € et bien au-delà pour du sur-mesure. Le budget médian constaté sur des projets réels est d'environ 15 000 € (baromètre La Fabrique du Net, 402 budgets).",
+      "Les fourchettes qui font consensus sur le marché français : 1 500 à 5 000 € pour une boutique simple montée par un freelance sur Shopify ou WooCommerce, 5 000 à 18 000 € pour une boutique de PME en agence, 15 000 à 50 000 € pour un e-commerce complexe (gros catalogue, intégrations), et 45 000 € et bien au-delà pour du sur-mesure à grand périmètre ou une marketplace (le sur-mesure d'entrée de gamme démarre, lui, à 15 000 €). Le budget médian constaté sur des projets réels est d'environ 15 000 € (baromètre La Fabrique du Net, 402 budgets).",
   },
   {
     question: "Combien coûte un site Shopify par mois ?",
@@ -132,7 +132,7 @@ const faqItems = [
   {
     question: "Quelle plateforme e-commerce choisir en 2026 ?",
     answer:
-      "Raisonnez à partir de votre commerce, pas de l'outil. Vous avez un catalogue simple et besoin de vendre vite : Shopify (rapide à lancer, mais un abonnement et des commissions à vie). Vous mêlez contenus et vente avec un budget serré : WooCommerce. Catalogue complexe et habitudes françaises : PrestaShop (19 % du marché national). Connexions à votre logiciel de gestion (ERP), vente aux professionnels, exigences de rapidité : sur-mesure headless (Next.js). Le bon choix dépend de votre catalogue, de votre CA cible à 3 ans et de votre système existant — pas de la mode.",
+      "Raisonnez à partir de votre commerce, pas de l'outil. Test de marché ou side-project à petit budget : Shopify (rapide à lancer, mais un abonnement et des commissions à vie). Contenus et vente à budget serré, en acceptant la maintenance WordPress : WooCommerce. Existant PrestaShop à faire durer : PrestaShop (19 % du marché national). Pour une entreprise établie qui doit convertir et tenir dans le temps : le sur-mesure headless (Next.js) est devenu le choix par défaut — son ticket d'entrée est tombé au niveau d'une boutique PME en agence. Catalogue, CA cible et existant décident du moment de la bascule — pas de son principe.",
   },
   {
     question: "Combien coûte la maintenance d'un site e-commerce ?",
@@ -167,7 +167,7 @@ const faqItems = [
   {
     question: "Combien coûte un site e-commerce sur mesure ?",
     answer:
-      "De 15 000 à plus de 80 000 € selon le périmètre — catalogue, intégrations (ERP, caisse, logistique), B2B, multilingue. Chez Hagnéré Code, une plateforme e-commerce sur mesure (Next.js, front headless) va de 15 000 à 120 000 € au forfait fixe contractuel. Le sur-mesure se justifie quand la plateforme standard devient le problème : commissions cumulées, limites du catalogue, synchronisations impossibles — pas avant.",
+      "De 15 000 à plus de 80 000 € selon le périmètre — catalogue, intégrations (ERP, caisse, logistique), B2B, multilingue. Chez Hagnéré Code, une plateforme e-commerce sur mesure (Next.js, front headless) va de 15 000 à 120 000 € au forfait fixe contractuel. Le sur-mesure s'impose sans débat quand la plateforme standard devient le problème : commissions cumulées, limites du catalogue, synchronisations impossibles. Mais il ne commence plus là : son ticket d'entrée est à 15 000 € (section 3), et c'est le choix par défaut d'une entreprise qui veut posséder sa boutique et durer ; la plateforme reste le bon outil pour tester un marché à petit budget.",
   },
 ];
 
@@ -268,7 +268,9 @@ export default function Page() {
           freelance sur Shopify ou WooCommerce, 5 000 à 18 000 € pour une
           boutique de PME réalisée en agence, 15 000 à 50 000 € pour un
           e-commerce complexe, et 45 000 € à plus de 100 000 € pour du
-          sur-mesure ou une marketplace</strong>. Le budget médian constaté
+          sur-mesure à grand périmètre ou une marketplace</strong> — le
+          sur-mesure d&apos;entrée de gamme, lui, démarre à 15 000 €
+          (section 3). Le budget médian constaté
           sur des projets réels : environ 15 000 € (baromètre La Fabrique du
           Net, 402 budgets analysés) — une médiane qui cache un écart de 1
           à 11 : environ 4 000 € sur WooCommerce, 11 000 € sur PrestaShop,
@@ -283,7 +285,7 @@ export default function Page() {
             ["Boutique simple (< 50 produits, thème)", "1 500 – 5 000 €", "1 000 – 3 000 €", "Lancement, test de marché"],
             ["Boutique PME (50 – 500 produits, agence)", "5 000 – 18 000 €", "3 000 – 8 000 €", "Commerce établi qui passe en ligne"],
             ["E-commerce complexe (catalogue, intégrations)", "15 000 – 50 000 €", "6 000 – 15 000 €", "Gros catalogue, connexion à votre ERP (logiciel de gestion), vente multicanal (site, Amazon, magasin)"],
-            ["Sur-mesure / headless / marketplace", "45 000 – 120 000 €+", "10 000 – 30 000 €", "Gros volumes, vente aux professionnels (B2B), expérience produit unique"],
+            ["Sur-mesure à grand périmètre / marketplace (entrée de gamme sur mesure : dès 15 000 €, section 3)", "45 000 – 120 000 €+", "10 000 – 30 000 €", "Gros volumes, vente aux professionnels (B2B), expérience produit unique"],
           ]}
         />
         <p>
@@ -310,13 +312,18 @@ export default function Page() {
         <h3>Scénario A — Vous lancez (moins de 50 produits)</h3>
         <p>
           Objectif : vendre vite, valider le marché, sans sur-investir.{" "}
-          <strong>Budget réaliste : 2 500 à 6 000 € de création</strong> (le
-          plancher de 1 500 € de la section 1 existe, mais c&apos;est un
-          thème paramétré sans reprise de vos contenus){" "}
-          (Shopify ou WooCommerce avec un bon thème, montés par un freelance
-          sérieux ou une petite agence), plus 1 000 à 3 000 €/an de récurrent
+          <strong>Budget réaliste : 2 500 à 6 000 € de création</strong> —
+          Shopify ou WooCommerce avec un bon thème, montés par un
+          freelance sérieux ou une petite agence (le plancher de
+          1 500 € de la section 1 existe, mais c&apos;est un thème
+          paramétré sans reprise de vos contenus) —, plus
+          1 000 à 3 000 €/an de récurrent
           (abonnement ou hébergement, quelques applications, maintenance
-          légère). Pour trancher entre les deux plateformes, notre{" "}
+          légère). C&apos;est le seul profil où nous recommandons une
+          plateforme sans réserve : un test de marché doit coûter peu
+          et pouvoir se jeter — et si le test réussit, la section 3
+          explique ce qu&apos;on construit ensuite. Pour trancher
+          entre les deux plateformes, notre{" "}
           <Link href="/guides/woocommerce-ou-shopify">comparatif
           WooCommerce ou Shopify</Link> chiffre coûts, vitesse et
           migration. Le piège du profil A : oublier que les photos produit et
@@ -351,8 +358,12 @@ export default function Page() {
           (vente aux professionnels).{" "}
           <strong>Budget réaliste : 40 000 à 120 000 € et plus</strong>, en
           agence spécialisée ou en sur-mesure dit « headless » (section 3).
-          À ce niveau, la plateforme standard devient souvent le problème
-          et le sur-mesure devient rentable — pas avant. Ne confondez pas
+          À ce niveau, la plateforme standard devient le problème et
+          le sur-mesure s&apos;impose sans débat. Mais ne lisez pas ce
+          seuil à l&apos;envers : son ticket d&apos;entrée (15 000 €,
+          section 3) le met désormais à portée du scénario B —
+          c&apos;est l&apos;évidence comptable qui commence ici, pas
+          le sur-mesure. Ne confondez pas
           les niveaux : raccorder un logiciel de gestion à une boutique
           standard vaut 12 000 à 22 000 € — le haut du scénario B. Le scénario C commence quand la
           boutique est construite <em>autour</em> de vos systèmes (règles
@@ -466,8 +477,12 @@ export default function Page() {
           « API »). Résultat : une vitrine plus rapide, un design sans
           limite, des connexions pensées pour vos outils. Contrepartie : un
           budget d&apos;entrée plus élevé, car on construit la salle au
-          lieu de la louer. Tout l&apos;arbitrage de ce guide : louer vite,
-          ou bâtir pour durer.
+          lieu de la louer — un écart que l&apos;IA a fortement
+          réduit : notre entrée de gamme démarre à
+          15 000 €. Le site que vous lisez est construit
+          exactement ainsi : 100 % Next.js/React. Tout
+          l&apos;arbitrage de ce guide : louer vite, ou bâtir pour
+          durer.
         </InfoBox>
 
         <p>
@@ -475,20 +490,34 @@ export default function Page() {
           plus</strong>. Chez <Link href="/services/ecommerce">Hagnéré
           Code</Link>, une plateforme e-commerce sur mesure va de 15 000 à
           120 000 € au forfait fixe contractuel. Ce qu&apos;on achète à ce
-          prix : zéro licence à vie, des performances au niveau des
+          prix : zéro licence à vie, une liberté visuelle totale —
+          animations et interactions produit (bibliothèques type
+          Framer Motion ou GSAP) qu&apos;aucun thème de plateforme ne
+          permet —, des performances au niveau des
           exigences Google, un modèle de données à votre image, et des
           intégrations (ERP, caisse, logistique) conçues plutôt que
           bricolées.
         </p>
 
         <InfoBox variant="blue" title="La question qui tranche 80 % des cas">
-          Quel est votre chiffre d&apos;affaires en ligne cible à 3 ans ?
-          Sous 100 000 €/an, une plateforme standard bien montée gagne
-          presque toujours. Au-delà de 500 000 €/an — ou dès qu&apos;un ERP,
-          du B2B ou de vrais volumes entrent en jeu — le cumul
-          abonnements + applications + commissions + limites du modèle
-          rattrape le coût du sur-mesure. Entre les deux : faites le calcul
-          de la section suivante.
+          Quel est votre chiffre d&apos;affaires en ligne cible à
+          3 ans ? Test de marché, side-project ou budget de quelques
+          milliers d&apos;euros : une plateforme standard bien montée
+          reste le bon outil — rapide à lancer, facile à quitter. Pour
+          une entreprise établie qui veut convertir et durer, le
+          calcul a changé : le développement assisté par IA
+          (Claude Code) a ramené le ticket d&apos;entrée du sur-mesure
+          à 15 000 € — dans la fourchette d&apos;une boutique PME en
+          agence (8 000 à 25 000 €), ce qui était impensable il y a
+          trois ans. Au-delà de 500 000 €/an — ou dès qu&apos;un ERP,
+          du B2B ou de vrais volumes entrent en jeu — il n&apos;y a
+          même plus débat : le cumul abonnements + applications +
+          commissions + limites du modèle rattrape le coût du
+          sur-mesure. Entre le test de marché et le seuil des
+          500 000 €, faites le calcul de la section
+          suivante — en comptant ce qu&apos;aucune colonne de tableau
+          ne montre : la propriété du site, un design et un
+          référencement sans plafond, et zéro refonte à 18 mois.
         </InfoBox>
         <p>
           Et si votre hésitation se résume au duel le plus fréquent de
@@ -534,19 +563,27 @@ export default function Page() {
           plateforme, pas les évolutions de votre boutique.
         </p>
         <p>
-          Lecture honnête de ce tableau. Un : <strong>le récurrent triple
-          quasiment le budget perçu</strong> — la boutique « à 10 000 € »
+          Lecture honnête de ce tableau. Un : <strong>le récurrent
+          fait plus que doubler le budget perçu</strong> — la boutique « à 10 000 € »
           coûte 24 000 € sur 3 ans, comme une voiture dont le prix en
           concession n&apos;est que le début. Deux : à 150 000 € de CA,
-          les quatre options se tiennent, et le sur-mesure ne se justifie
-          que si les intégrations ou les volumes l&apos;exigent — nous le
-          disons alors même que c&apos;est notre métier. Trois : plus vous
+          les trois plateformes se tiennent en coût total, et le
+          sur-mesure coûte 21 000 à 24 000 € de plus sur 36 mois selon
+          la plateforme — nous
+          le disons alors même que c&apos;est notre métier. Ce surcoût
+          achète l&apos;actif : un site qui vous appartient, aucun
+          plafond d&apos;applications ni de design — et un coût qui ne
+          bouge plus quand vos ventes montent, alors que chaque
+          colonne plateforme grimpe avec elles. Trois : plus vous
           vendez, plus le classement change — sur une plateforme, presque
           tout augmente avec vos ventes (palier d&apos;abonnement,
           applications, commissions), quand une boutique sur mesure coûte
           à peu près la même chose que vous vendiez 150 000 € ou
-          500 000 € par an ; la bascule se situe entre 300 000 et
-          500 000 € de ventes en ligne. Le réflexe : ne comparez jamais
+          500 000 € par an ; la bascule purement comptable se situe entre
+          300 000 et 500 000 € de ventes en ligne — la bascule
+          stratégique (posséder sa boutique, design et SEO sans
+          plafond, aucune dépendance à un éditeur) arrive bien avant :
+          c&apos;est l&apos;objet de la section 3. Le réflexe : ne comparez jamais
           deux devis sur le prix de création, mais sur le total à 36 mois.
           Un poste mérite maintenant qu&apos;on s&apos;y arrête : les
           commissions de paiement — près de 8 000 € quelle que soit la
@@ -721,7 +758,10 @@ export default function Page() {
           devis) : 650 € HT.
         </p>
         <FormulaBox>
-          <strong>Devis « boutique PME » — 44 jours, 28 600 € HT</strong>
+          <strong>Devis « boutique PME » — 44 jours, 28 600 € HT</strong>{" "}
+          (au-dessus de la fourchette type du profil B : front
+          headless sur mesure et synchronisation avec le logiciel de
+          gestion inclus — la norme dès qu&apos;une caisse entre en jeu)
           <br />
           Cadrage & Discovery Sprint — l&apos;atelier de démarrage :
           périmètre, priorités, risques (2 j) — 1 300 €
@@ -772,7 +812,7 @@ export default function Page() {
           headers={["Obligation", "Échéance", "Sanction maximale", "Impact budget type"]}
           rows={[
             ["Accessibilité (EAA / RGAA)", "en vigueur depuis le 28 juin 2025", "jusqu'à 50 000 € par service (après mise en demeure)", "audit + corrections : 3 000 – 10 000 €"],
-            ["Bouton de rétractation en ligne", "19 juin 2026", "15 000 € (pers. physique) / 75 000 € (société)", "1 – 2 jours de développement"],
+            ["Bouton de rétractation en ligne", "en vigueur depuis le 19 juin 2026", "15 000 € (pers. physique) / 75 000 € (société)", "1 – 2 jours de développement"],
             ["Facturation électronique (réception)", "1er septembre 2026 — toutes entreprises", "amendes fiscales", "plateforme agréée : 0 – 99 €/mois"],
             ["Facturation électronique (émission PME)", "1er septembre 2027", "amendes fiscales", "projet de mise en place : 1 000 – 1 500 €"],
             ["RGPD / cookies (CNIL)", "permanent", "20 M€ ou 4 % du CA mondial", "bannière cookies (CMP, la plateforme de gestion du consentement — ex. Axeptio) : ~29 €/mois + mise en conformité"],
@@ -792,7 +832,7 @@ export default function Page() {
             demandez par écrit à votre prestataire.
           </li>
           <li>
-            <strong>Bouton de rétractation</strong> : à partir du 19 juin
+            <strong>Bouton de rétractation</strong> : depuis le 19 juin
             2026, tout site marchand doit proposer une fonction « renoncer
             au contrat » accessible en ligne pendant les 14 jours de
             rétractation (ordonnance n° 2026-2 du 5 janvier 2026).
@@ -853,8 +893,10 @@ export default function Page() {
           de paiement (~2 %) et le coût de la marchandise : voilà votre
           vraie marge. Ce calcul en amont — pas le choix de la
           plateforme — est ce qui sépare les boutiques rentables des
-          158 200 sites qui se partagent les miettes. Un site plus rapide
-          et mieux structuré améliore chaque maillon : c&apos;est là que le
+          158 200 sites qui se partagent les miettes — et la base
+          technique en est le multiplicateur : un site plus rapide
+          et mieux structuré améliore chaque maillon (trafic,
+          conversion, panier). C&apos;est là que le
           budget création redevient un investissement.
         </p>
 
@@ -866,7 +908,7 @@ export default function Page() {
           <ul className="mt-2 space-y-1">
             <li>Achat de la marchandise (avec 60 % de marge brute) : − 25 €</li>
             <li>Logistique — emballage, préparation, Colissimo : − 9 à 12 €</li>
-            <li>Commission de paiement (Stripe : 1,5 % + 0,25 €) : − 1,20 €</li>
+            <li>Commission de paiement (Stripe : 1,5 % + 0,25 €) : − 1,18 €</li>
             <li>Publicité pour obtenir ce client (10 à 20 % du CA) : − 6 à 12 €</li>
           </ul>
           <p className="mt-2">
@@ -902,7 +944,8 @@ export default function Page() {
           anciennes pages affichent « page introuvable », Google les
           déclasse, et un site à 1 000 visites par jour tombe à 300. À 2 %
           d&apos;acheteurs et 62 € de panier, c&apos;est environ 26 000 €
-          de ventes perdues sur un an — plus que la refonte elle-même.
+          de ventes perdues par mois — bien plus que la refonte
+          elle-même.
           Ajoutez la conduite du changement si vos équipes administrent la
           boutique au quotidien. Une migration PrestaShop ou WooCommerce
           vers une base technique moderne se chiffre couramment entre

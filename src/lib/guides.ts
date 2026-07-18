@@ -74,7 +74,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Combien coûte un site internet professionnel en 2026 ?",
     section: "Budget & prix",
     datePublished: "2026-07-11",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-18",
     readTimeMin: 25,
     featured: true,
   },
@@ -103,7 +103,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Prix d'un site vitrine en 2026 : le guide complet",
     section: "Budget & prix",
     datePublished: "2026-07-14",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-18",
     readTimeMin: 25,
   },
   {
@@ -117,7 +117,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Prix d'un site e-commerce : le vrai budget en 2026 (+ devis décortiqué)",
     section: "Budget & prix",
     datePublished: "2026-07-16",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-18",
     readTimeMin: 25,
   },
   {
@@ -215,7 +215,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Coût de la maintenance d'un site internet : les vrais prix 2026 (+ contrat décodé)",
     section: "Budget & prix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-18",
     readTimeMin: 25,
   },
   {
@@ -271,7 +271,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "React Native ou Flutter : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-18",
     readTimeMin: 25,
   },
   {

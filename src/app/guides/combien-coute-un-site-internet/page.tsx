@@ -133,7 +133,7 @@ const faqItems = [
   {
     question: "Combien coûte une application web ou un SaaS ?",
     answer:
-      "Le marché situe un MVP SaaS sérieux — la première version d'une application, réduite aux fonctions essentielles — entre 15 000 et 30 000 €, un SaaS PME complet entre 40 000 et 80 000 €, et les plateformes complexes au-delà de 80 000 €. Chez Hagnéré Code, un MVP prêt à accueillir de vrais utilisateurs démarre à 15 000 € et un SaaS complet à 30 000 € — sous la fourchette du marché, grâce à un développement accéléré par l'IA avec revue humaine systématique.",
+      "Le marché situe un MVP SaaS sérieux — la première version d'une application, réduite aux fonctions essentielles — entre 15 000 et 30 000 €, un SaaS PME complet entre 40 000 et 80 000 €, et les plateformes complexes au-delà de 80 000 €. Chez Hagnéré Code, un MVP prêt à accueillir de vrais utilisateurs démarre à 15 000 € et un SaaS complet à 30 000 € — au plancher de la fourchette du marché, grâce à un développement accéléré par l'IA avec revue humaine systématique.",
   },
   {
     question: "Combien coûte une refonte de site internet ?",
@@ -203,7 +203,7 @@ export default function Page() {
         }}
         updatedLabel={`Mis à jour le ${formatGuideDate(guide.dateModified)}`}
         keyPoints={[
-          { number: "01", title: "Vitrine : 800 € – 22 000 €", description: "", color: "violet" },
+          { number: "01", title: "Vitrine : 800 € – 22 000 €+", description: "", color: "violet" },
           { number: "02", title: "E-commerce : 2 000 € – 120 000 €", description: "", color: "blue" },
           { number: "03", title: "SaaS / app : dès 15 000 €", description: "", color: "emerald" },
           { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
@@ -389,10 +389,16 @@ export default function Page() {
           0 % de commission. Le point de bascule : environ{" "}
           <strong>500 000 € de ventes en ligne par an</strong>. Le calcul est
           simple : à ce niveau, 1,5 % de commission représente 7 500 € par an,
-          plus 1 200 à 6 000 € d&apos;abonnement et d&apos;applications — soit
-          9 000 à 13 000 € versés chaque année à la plateforme, de quoi amortir
+          plus 1 200 à 6 000 € d&apos;applications — soit environ
+          8 700 à 13 500 € versés chaque année à la plateforme, de quoi amortir
           une boutique sur mesure en deux à trois ans. En dessous, la
-          plateforme reste la solution la plus économique. Grilles complètes
+          plateforme reste la moins chère sur le papier — mais ce
+          calcul ne compte que les commissions ; il ignore ce que
+          rapporte une vitrine développée sur mesure : conversion,
+          image de marque, SEO. Le headless (vitrine en React, gestion
+          des produits laissée à la plateforme) se justifie bien avant
+          ce seuil dès que la marque est l&apos;argument de vente.
+          Grilles complètes
           dans notre guide du{" "}
           <Link href="/guides/prix-site-e-commerce">prix d&apos;un site
           e-commerce</Link>.
@@ -413,7 +419,7 @@ export default function Page() {
           Notre offre de{" "}
           <Link href="/services/saas-applications-metier">développement
           SaaS</Link> démarre à 15 000 € pour un MVP prêt à accueillir de vrais
-          utilisateurs, livré en 3 à 6 semaines — sous le marché, parce que
+          utilisateurs, livré en 3 à 6 semaines — au plancher du marché, parce que
           l&apos;IA accélère notre développement, avec revue humaine de chaque
           ligne. Les fourchettes par étape — maquette de démonstration (POC),
           première version (MVP), version complète (V1) — sont dans{" "}
@@ -455,9 +461,13 @@ export default function Page() {
           <p className="mb-2">
             <strong>Karim, plombier-chauffagiste</strong>, veut être trouvable
             et crédible : 3 à 5 pages, avis clients, formulaire de contact.
-            Budget juste : 2 000 à 3 500 € chez un bon freelance, ou 6 900 € en
-            agence s&apos;il vise les recherches locales type « chauffagiste
-            Chambéry ».
+            Budget juste : 2 000 à 3 500 € chez un bon freelance, avec
+            ses textes fournis et un design sobre — en exigeant un site
+            statique React/Next.js plutôt qu&apos;un WordPress à thème,
+            pour une maintenance quasi nulle (section 7). À
+            l&apos;ère des outils IA, ce type de site sur mesure
+            n&apos;est plus réservé aux agences. S&apos;il vise les recherches locales type
+            « chauffagiste Chambéry », comptez 6 900 € en agence.
           </p>
           <p className="mb-2">
             <strong>Claire, cabinet de conseil B2B</strong> : ses prospects la
@@ -468,9 +478,11 @@ export default function Page() {
           </p>
           <p>
             <strong>Mehdi, accessoires de sport en ligne</strong> : 350 000 €
-            de ventes sur Shopify, des commissions qui grimpent. Budget juste :
-            rester sur Shopify, et planifier une boutique sur mesure (15 000 à
-            25 000 €) à l&apos;approche des 500 000 € de ventes annuelles.
+            de ventes sur Shopify — soit déjà environ 5 000 € par an
+            de commissions. Budget juste : engager la boutique sur
+            mesure (15 000 à 25 000 €) avant le seuil des 500 000 € de
+            ventes annuelles, pas après — chaque année d&apos;attente
+            se paie en commissions et en conversion perdue.
             Trois rôles du site, trois budgets : toute la logique de ce guide.
           </p>
         </InfoBox>
@@ -488,7 +500,7 @@ export default function Page() {
         <GuideTable
           headers={["Prestataire", "Site vitrine", "Points forts", "Points faibles"]}
           rows={[
-            ["Outil en ligne à faire soi-même (Wix, Squarespace)", "0 – 500 € + 17 – 179 €/mois à vie", "Rapide, aucun code", "Abonnement perpétuel, SEO limité, vous ne possédez rien"],
+            ["Outil en ligne à faire soi-même (Wix, Squarespace)", "0 – 500 € + 17 – 179 €/mois à vie", "Rapide, aucun code", "Abonnement perpétuel, SEO limité, vous ne possédez rien — à réserver au test de marché ou au side-project"],
             ["Freelance junior", "800 – 2 500 €", "Prix d'entrée", "Périmètre réduit, continuité non garantie"],
             ["Freelance senior", "2 000 – 5 000 €", "Bon rapport qualité/prix", "Une seule personne : si elle est malade, débordée ou cesse son activité, votre site n'a plus personne pour s'en occuper"],
             ["Agence établie", "4 000 – 12 000 €", "Équipe, méthode, garanties, SEO", "Ticket d'entrée plus élevé"],
@@ -711,7 +723,7 @@ export default function Page() {
           logiciel tourne en permanence sur le serveur et doit être mis à jour
           chaque semaine. Un site statique est fabriqué une fois pour toutes,
           puis « servi » tel quel : rien à mettre à jour, presque rien à
-          pirater, presque rien à payer — 500 à 1 500 € économisés chaque
+          pirater, presque rien à payer — souvent plus de 1 000 € économisés chaque
           année face à un WordPress professionnel équivalent. Au total, le
           budget <em>annuel</em> : environ 80 à 350 € pour un site statique
           bien construit, 1 000 à 3 000 € pour un WordPress professionnel,
@@ -786,8 +798,9 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
         <InfoBox variant="emerald" title="À retenir : le coût total sur 3 ans">
           Sur 3 ans, un site à 1 500 € revient à 5 800 – 10 100 € ; un site
           sur mesure à 10 000 € revient à 10 300 – 15 500 €. L&apos;écart réel
-          est de 1 à 1,5, pas de 1 à 7 — et il s&apos;inverse dès la quatrième
-          année. Un seul chiffre permet de comparer honnêtement deux devis :
+          est de 1 à 1,5, pas de 1 à 7 — et il s&apos;inverse avant la
+          sixième année, l&apos;horizon de vie d&apos;un site bien
+          construit. Un seul chiffre permet de comparer honnêtement deux devis :
           le coût total sur 3 ans. Jamais le prix d&apos;achat.
         </InfoBox>
 
@@ -888,17 +901,25 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           composants standard — les fameux plugins — à entretenir chaque
           semaine. Le sur-mesure (Next.js), c&apos;est la maison
           d&apos;architecte : plus chère au départ, dessinée pour votre usage,
-          presque rien à entretenir, un actif qui prend de la valeur. Aucune
-          n&apos;est « la bonne » dans l&apos;absolu : tout dépend du rôle que
-          le bâtiment — votre site — doit jouer dans votre activité.
+          presque rien à entretenir, un actif qui prend de la valeur. Une
+          seule de ces trois options a changé de statut en 2026 : la
+          maison d&apos;architecte. Longtemps réservée aux gros budgets,
+          elle est devenue le choix par défaut d&apos;un site
+          professionnel — l&apos;IA a fait chuter son coût de
+          construction (section 8). La location et la maison sur catalogue gardent
+          un usage précis : tester une activité, un budget de quelques
+          milliers d&apos;euros, un projet à durée de vie courte. Pour
+          une entreprise qui veut convertir et durer, la question
+          n&apos;est plus « quelle option ? » mais « quel
+          architecte ? ».
         </InfoBox>
         <GuideTable
           headers={["Socle", "Création", "Coûts récurrents typiques", "Pour qui"]}
           rows={[
             ["Builder (Wix, Squarespace)", "0 – 500 €", "17 – 179 €/mois à vie", "Tester une activité, budget minimal"],
-            ["WordPress + thème", "800 – 5 000 €", "Maintenance 30-120 €/mois + licences 500-1 000 €/an", "Site simple, écosystème connu"],
-            ["WordPress sur mesure", "5 000 – 15 000 €", "Idem : le CMS reste à mettre à jour chaque semaine", "Éditorial lourd, équipe habituée"],
-            ["Next.js / React sur mesure", "6 900 – 25 000 €+", "Hébergement 0-20 €/mois, zéro licence, zéro mise à jour de CMS", "Performance, SEO, actif durable"],
+            ["WordPress + thème", "800 – 5 000 €", "Maintenance 30-120 €/mois + licences 500-1 000 €/an", "Micro-budget, projet à durée de vie courte, validation d'idée"],
+            ["WordPress sur mesure", "5 000 – 15 000 €", "Idem : le CMS reste à mettre à jour chaque semaine", "Cas résiduel : équipe éditoriale déjà formée à WordPress et refusant d'en changer"],
+            ["Next.js / React sur mesure", "6 900 – 25 000 €+ en agence (moins en freelance, sur périmètre réduit)", "Hébergement 0-20 €/mois, zéro licence, zéro mise à jour de CMS", "Performance, SEO, actif durable"],
           ]}
         />
         <p>
@@ -909,7 +930,12 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           mettre à jour chaque semaine : moins de failles, hébergement quasi
           gratuit. Et le code suit un standard répandu : des milliers de
           développeurs peuvent le reprendre — vous n&apos;êtes prisonnier de
-          personne. Pour trancher, lisez notre comparatif{" "}
+          personne. C&apos;est aussi le seul socle qui permette la
+          qualité visuelle des sites primés : animations et
+          interactions dessinées pour votre marque — les bibliothèques
+          qui les produisent (Framer Motion, GSAP) supposent un
+          développement dédié, hors de portée d&apos;un builder ou
+          d&apos;un template utilisé normalement. Pour trancher, lisez notre comparatif{" "}
           <Link href="/guides/nextjs-ou-wordpress">Next.js ou
           WordPress</Link>.
         </p>
@@ -919,8 +945,16 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           publique (Digital Applied, 2026) mesure des délais réduits de 22 à
           34 % grâce à l&apos;IA, mais le plus souvent <em>sans baisse des
           prix affichés</em> — les agences gardent le gain en marge. Nous le
-          répercutons dans nos forfaits : un MVP SaaS à 15 000 € là où le
-          marché démarre à 30 000 €. Méfiez-vous en revanche du « site généré
+          répercutons dans nos forfaits : un MVP SaaS à 15 000 € là où la
+          médiane du marché se situe autour de 30 000 €, et des sites
+          vitrines sur mesure
+          dès 6 900 €, dans la fourchette d&apos;un WordPress sur
+          mesure (5 000 – 15 000 €, tableau ci-dessus). C&apos;est le
+          basculement de 2026 : l&apos;argument historique « le site à
+          template coûte moins cher que le sur-mesure » ne survit pas
+          à un calcul sur la durée de vie réelle d&apos;un site : sur
+          3 ans l&apos;écart fond à environ 1 à 1,5 (section 8), et il
+          s&apos;inverse avant la sixième année. Méfiez-vous en revanche du « site généré
           par IA à 200 € » : sans architecture, sans SEO, sans garantie,
           c&apos;est un template avec une couche de peinture — notre{" "}
           <Link href="/guides/creer-un-site-avec-ia">guide « créer un
@@ -1243,7 +1277,12 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
 
         <h2 id="notre-approche">18. Comment on chiffre chez Hagnéré Code</h2>
         <p>
-          Nous sommes une agence Next.js / React basée à Chambéry. Chaque
+          Nous sommes une agence Next.js / React basée à Chambéry — et
+          la démonstration est sous vos yeux : le site que vous lisez
+          est développé à 100 % en React/Next.js, guides compris. Sa
+          vitesse d&apos;affichage, sa qualité visuelle et cette
+          stratégie de contenus sont exactement ce que nous livrons à
+          nos clients. Chaque
           projet est vendu en <strong>forfait fixe contractuel</strong> — le
           prix annoncé est le prix payé, quel que soit le temps que cela nous
           prend, avec dates de livraison contractuelles et 30 jours de

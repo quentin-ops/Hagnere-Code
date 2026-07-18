@@ -116,17 +116,17 @@ const faqItems = [
   {
     question: "Flutter est-il meilleur que React Native ?",
     answer:
-      "Ni meilleur ni moins bon : différent, et le « vainqueur » dépend de votre situation. Les enquêtes développeurs les placent au coude-à-coude (environ 14,5 % d'utilisation pour React Native contre 13,6 % pour Flutter chez les professionnels — Stack Overflow 2025). Les mesures réelles des stores nuancent : Flutter équipe davantage de nouvelles petites applications, React Native domine le haut du panier (1 350 apps du top 10 000 contre 1 184, et 47 % des téléchargements de ce segment contre 38 % — données Appfigures). Notre grille de décision par profil est en fin de guide — c'est elle qui répond vraiment.",
+      "Aucun n'écrase l'autre techniquement — mais pour la majorité des situations d'entreprise en France (app métier, existant web, exigence de réversibilité), React Native part favori : vivier ~2× plus large, gouvernance multi-sponsors, et domination du haut du panier des stores (1 350 apps du top 10 000 contre 1 184, et 47 % des téléchargements de ce segment contre 38 % — données Appfigures ; les enquêtes développeurs, elles, les placent au coude-à-coude : 14,5 % contre 13,6 % — Stack Overflow 2025). Flutter reste le bon choix pour une UI signature et des animations riches. Notre grille par profil est en fin de guide.",
   },
   {
     question: "Quel est le moins cher : React Native ou Flutter ?",
     answer:
-      "Aucun des deux — et c'est le fait le plus utile de ce guide. Le baromètre TJM de référence (SILKHOM 2025) publie des grilles strictement identiques pour les développeurs React Native, Flutter et natifs : 330 à 720 €/jour à Paris selon la séniorité (comptez environ 15 % de moins en régions). L'économie du multiplateforme ne vient pas du prix du développeur mais du nombre de jours : une seule application au lieu de deux, soit 30 à 40 % d'économie par rapport à deux développements natifs séparés (consensus du secteur, pas d'étude académique). Méfiez-vous des « TJM à 150 € » des plateformes de micro-projets : ce ne sont pas des développements professionnels comparables.",
+      "Aucun des deux — et c'est le fait le plus utile de ce guide. Le baromètre TJM de référence (SILKHOM 2025) publie des grilles strictement identiques pour les développeurs React Native, Flutter et natifs : 330 à 720 €/jour à Paris selon la séniorité (comptez de l'ordre de 10 à 25 % de moins en régions selon le profil). L'économie du multiplateforme ne vient pas du prix du développeur mais du nombre de jours : une seule application au lieu de deux, soit 30 à 40 % d'économie par rapport à deux développements natifs séparés (consensus du secteur, pas d'étude académique). Méfiez-vous des « TJM à 150 € » des plateformes de micro-projets : ce ne sont pas des développements professionnels comparables.",
   },
   {
     question: "Un développeur web peut-il se former rapidement à React Native ?",
     answer:
-      "Oui — c'est l'atout stratégique n°1 de React Native pour une entreprise française. Le framework s'écrit en JavaScript/React, utilisé par environ deux développeurs sur trois dans le monde ; un développeur React web expérimenté devient productif sur React Native en quelques semaines. Flutter s'écrit en Dart, un langage qu'on n'apprend pratiquement que pour Flutter : le recrutement passe par des profils spécialisés, environ deux fois moins nombreux sur les plateformes françaises de freelances. Traduction : avec React Native, votre équipe (ou votre agence) web et mobile peut être la même — c'est le cas de figure qui change le budget.",
+      "Oui — c'est l'atout stratégique n°1 de React Native pour une entreprise française. Le framework s'écrit en JavaScript — pratiqué par environ deux développeurs sur trois dans le monde — avec React, utilisé par près d'un développeur sur deux ; un développeur React web expérimenté devient productif sur React Native en quelques semaines. Flutter s'écrit en Dart, un langage qu'on n'apprend pratiquement que pour Flutter : le recrutement passe par des profils spécialisés, environ deux fois moins nombreux sur les plateformes françaises de freelances. Traduction : avec React Native, votre équipe (ou votre agence) web et mobile peut être la même — c'est le cas de figure qui change le budget.",
   },
   {
     question: "Peut-on vraiment partager le code entre iOS et Android ?",
@@ -255,9 +255,15 @@ export default function Page() {
         <h2 id="reponse-rapide">1. Le verdict en 30 secondes</h2>
         <p>
           En 2026, <strong>React Native et Flutter sont deux choix
-          sérieux, au coude-à-coude, et aucun ne va disparaître</strong>.
+          sérieux et aucun ne va disparaître — mais sur les critères
+          qui comptent pour un dirigeant français (vivier ~2× plus
+          large, gouvernance multi-sponsors, équipe web réutilisable),
+          React Native est notre choix par défaut</strong> ; Flutter
+          garde un vrai terrain de prédilection : les interfaces très
+          personnalisées et les animations riches.
           Le prix du jour-homme est identique (330 à 720 €/jour à
-          Paris selon la séniorité, environ 15 % de moins en régions —
+          Paris selon la séniorité, de l&apos;ordre de 10 à 25 % de
+          moins en régions selon le profil —
           les baromètres publient les mêmes grilles pour les deux) ; l&apos;économie du multiplateforme
           vient d&apos;ailleurs : une seule application au lieu de deux,
           soit <strong>30 à 40 % de moins que deux développements
@@ -267,16 +273,16 @@ export default function Page() {
           <strong>le vivier de recrutement</strong> (environ deux fois
           plus de profils React Native en France), et{" "}
           <strong>la gouvernance</strong> (plusieurs sponsors derrière
-          React Native, un seul — Google — derrière Flutter). Flutter
-          garde un vrai terrain de prédilection : les interfaces très
-          personnalisées et les animations riches.
+          React Native, un seul — Google — derrière Flutter). La
+          grille de la section 13 précise, profil par profil, quand
+          Flutter — ou une autre voie — reprend l&apos;avantage.
         </p>
         <GuideTable
           headers={["Votre situation", "Notre verdict", "Pourquoi"]}
           rows={[
             ["Vous avez déjà un site ou SaaS en React", "React Native (+ Expo)", "Même langage, équipe unique web + mobile, code partagé"],
             ["Interface très personnalisée, animations riches", "Flutter", "Son moteur graphique excelle sur le sur-mesure visuel"],
-            ["Vous partez de zéro, sans équipe technique", "Les deux se défendent", "Arbitrez sur le vivier de votre région et votre prestataire"],
+            ["Vous partez de zéro, sans équipe technique", "React Native légèrement favori", "À qualité égale, le vivier français (~2× plus de profils) tranche — sauf UI signature, où Flutter reprend l'avantage"],
             ["L'app EST le produit, performance extrême exigée", "Natif (Swift/Kotlin) à étudier", "La leçon du cas Airbnb — section 11"],
             ["Équipe Android/Kotlin existante", "Kotlin Multiplatform à regarder", "L'outsider qui monte — section 12"],
           ]}
@@ -454,7 +460,11 @@ export default function Page() {
           personnalisées et les animations complexes, où son moteur
           graphique qui dessine chaque pixel fait la différence — si
           votre application est de celles-là, dites-le à votre
-          prestataire, c&apos;est un vrai critère. Dernière nuance
+          prestataire, c&apos;est un vrai critère. Nuance récente :
+          React Native a réduit cet écart (animations Reanimated,
+          moteur graphique Skia porté par Shopify), mais pour une
+          interface signature dessinée pixel par pixel, Flutter reste
+          le favori honnête de ce comparatif. Dernière nuance
           utile si votre public utilise des téléphones d&apos;entrée
           de gamme (usage terrain, international) : le moteur graphique
           de Flutter, qui dessine tout lui-même, garde une régularité
@@ -532,7 +542,10 @@ export default function Page() {
           parce que le contexte de Batilog rendait le choix
           asymétrique. C&apos;est toute la thèse de ce guide : le bon
           framework est une propriété de votre situation, pas du
-          framework.
+          framework — et la situation la plus fréquente des PME
+          françaises (un existant web en React, une exigence de
+          réversibilité, un vivier local à sécuriser) pointe vers
+          React Native.
         </InfoBox>
 
         <h2 id="gouvernance">8. Qui gouverne quoi : Meta, Google — et le risque fournisseur</h2>
@@ -607,20 +620,20 @@ export default function Page() {
           380 000 $ pour remettre à niveau une application laissée
           quatre ans sans mise à jour). La bonne nouvelle : les deux
           frameworks ont industrialisé ces migrations — c&apos;est un
-          budget, plus un drame : Flutter publie une version stable
-          environ chaque trimestre avec une page officielle des
+          budget, plus un drame. Flutter publie une version stable
+          environ chaque trimestre, avec une page officielle des
           changements et des guides de migration en partie
-          automatisés ; côté React Native, l&apos;outillage
+          automatisés. Côté React Native, l&apos;outillage
           d&apos;Expo (utilisé par 71 % des équipes, enquête 2024)
           industrialise compilation et publication — et permet de
           pousser certains correctifs directement chez
           l&apos;utilisateur, sans repasser par la validation des
           stores (dans les limites fixées par Apple) : pour un produit
           grand public qui corrige et itère chaque semaine, ce sont des
-          jours de délai de validation économisés ; côté Flutter, cette
+          jours de délai de validation économisés. Chez Flutter, cette
           mise à jour à distance passe par un outil tiers plus récent
-          (Shorebird) — la cadence de migration restant, dans les deux
-          cas, largement dictée par le calendrier d&apos;Apple et de
+          (Shorebird) ; dans les deux cas, la cadence de migration
+          reste largement dictée par le calendrier d&apos;Apple et de
           Google.
         </p>
 
@@ -719,7 +732,7 @@ export default function Page() {
 
         <InfoBox variant="emerald" title="À retenir : les 5 chiffres de ce guide">
           <ul className="list-disc pl-4 space-y-1.5">
-            <li><strong>330 – 720 €/jour à Paris</strong> (≈ 15 % de moins en régions) : le TJM des développeurs mobiles — identique pour React Native, Flutter et natif : l&apos;économie vient du nombre de jours, pas du prix du jour.</li>
+            <li><strong>330 – 720 €/jour à Paris</strong> (≈ 10-25 % de moins en régions selon le profil) : le TJM des développeurs mobiles — identique pour React Native, Flutter et natif : l&apos;économie vient du nombre de jours, pas du prix du jour.</li>
             <li><strong>30 – 40 %</strong> : l&apos;économie d&apos;une app multiplateforme face à deux développements natifs (consensus sectoriel).</li>
             <li><strong>~2×</strong> : le rapport du vivier français React Native / Flutter — et le réservoir React web derrière (près d&apos;un développeur sur deux).</li>
             <li><strong>86 %</strong> : le code partagé iPhone/Android mesuré par Shopify après cinq ans de React Native.</li>
@@ -766,9 +779,15 @@ export default function Page() {
         </ol>
         <p>
           Notre position, déclarée d&apos;entrée : Hagnéré Code est une
-          agence majoritairement React/Next.js — nous développons les
-          applications mobiles en React Native précisément pour la
-          cohérence web + mobile décrite dans ce guide, avec un{" "}
+          agence majoritairement React/Next.js — ce site en est la
+          preuve, développé à 100 % en React/Next.js avec Claude
+          Code — et nous développons les applications mobiles en React
+          Native précisément pour la cohérence web + mobile décrite
+          dans ce guide. À l&apos;ère des assistants de code,
+          l&apos;écosystème JavaScript/React, le plus documenté du
+          marché, est aussi celui où cet outillage accélère le plus
+          les équipes : un facteur de coût qui joue dans le même sens
+          que le vivier. Concrètement : un{" "}
           <strong>MVP sur les stores dès 12 semaines</strong>, le code
           cédé et les comptes stores à votre nom. Quand Flutter ou le
           natif est le meilleur choix pour votre cas, nous vous le

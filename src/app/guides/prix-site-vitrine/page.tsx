@@ -127,7 +127,7 @@ const faqItems = [
   {
     question: "Peut-on créer un site vitrine gratuitement avec Wix, Canva ou l'IA ?",
     answer:
-      "Oui pour exister, rarement pour performer. Les builders et générateurs IA produisent un site correct en quelques heures, contre un abonnement à vie (17 à 80 €/mois) et de vraies limites : référencement bridé, performance moyenne, design générique, et surtout un site non exportable — vous ne possédez rien. Pour tester une activité, c'est pertinent ; pour générer des clients, un site professionnel s'amortit vite.",
+      "Oui pour tester une idée ou porter un side-project, non pour un site professionnel. Les builders et générateurs IA produisent un site correct en quelques heures, contre un abonnement à vie (17 à 80 €/mois) et de vraies limites : référencement bridé, performance moyenne, design générique, et surtout un site non exportable — vous ne possédez rien. Pour tester une activité, c'est pertinent ; pour générer des clients, un site professionnel s'amortit vite.",
   },
   {
     question: "Quels sont les coûts cachés d'un site vitrine ?",
@@ -162,7 +162,7 @@ const faqItems = [
   {
     question: "Un site vitrine pas cher est-il rentable ?",
     answer:
-      "Tout dépend du rôle qu'on lui donne. Pour « exister », un site à 1 000 € fait le travail. Pour générer des clients, les études montrent que le design fait le jugement de crédibilité et qu'un taux de conversion médian se situe vers 2,9 % pour les services — à peine 3 visiteurs sur 100 qui vous contactent : un site lent, générique et sans référencement convertit en dessous, et son vrai coût est l'ensemble des clients qu'il ne génère pas. Raisonnez en coût par client acquis, pas en prix d'achat.",
+      "Tout dépend du rôle qu'on lui donne. Pour « exister » au sens strict — tester une idée, side-project, micro-budget —, un site à 1 000 € fait le travail. Pour une entreprise qui veut générer des clients et durer, les études montrent que le design fait le jugement de crédibilité et qu'un taux de conversion médian se situe vers 2,9 % pour les services — à peine 3 visiteurs sur 100 qui vous contactent : un site lent, générique et sans référencement convertit en dessous, et son vrai coût est l'ensemble des clients qu'il ne génère pas. Raisonnez en coût par client acquis, pas en prix d'achat.",
   },
   {
     question: "Comment obtenir un devis précis pour mon site vitrine ?",
@@ -280,7 +280,7 @@ export default function Page() {
 
         <h2 id="reponse-rapide">1. La réponse rapide : les prix 2026 en un tableau</h2>
         <p>
-          En 2026, un site vitrine coûte en France <strong>200 à 1 000 € en
+          En 2026, un site vitrine coûte en France <strong>0 à 1 000 € en
           autonomie sur un « builder », 800 à 3 000 € chez un freelance,
           2 000 à 6 000 € en agence standard et 6 000 à 30 000 € en agence
           pour du sur-mesure</strong>. Le builder, c&apos;est un outil en
@@ -373,7 +373,13 @@ export default function Page() {
           Votre site doit-il <strong>exister</strong> (rassurer quelqu&apos;un
           qui vous cherche déjà) ou <strong>acquérir</strong> (faire venir des
           prospects qui ne vous connaissent pas, via Google) ? Le premier rôle
-          se joue entre 1 000 et 3 000 €. Le second exige un SEO structuré —
+          peut se jouer entre 1 000 et 3 000 € — un palier qui ne se
+          défend plus guère que pour un micro-budget, un side-project,
+          un test d&apos;activité ou l&apos;artisan sans enjeu
+          d&apos;acquisition (section 15). Pour une entreprise qui veut
+          convertir et durer, le calcul sur 3 ans (section 10) ramène au
+          sur-mesure — dont l&apos;IA a précisément fait baisser le
+          prix (section 5). Le second exige un SEO structuré —
           du référencement naturel travaillé page par page —, des contenus
           soignés et de la performance. C&apos;est lui qui justifie les
           budgets à cinq chiffres, et son retour sur investissement se
@@ -494,7 +500,7 @@ export default function Page() {
           headers={["Socle", "Mise en place", "Coûts récurrents typiques", "À retenir"]}
           rows={[
             ["Wix / Squarespace", "0 – 1 000 €", "17 – 80 €/mois à vie", "Vous louez, vous ne possédez pas"],
-            ["WordPress + thème", "800 – 3 000 €", "Licences 500-1 000 €/an + maintenance 30-120 €/mois", "Le standard du marché, mais des mises à jour de sécurité chaque semaine"],
+            ["WordPress + thème", "800 – 3 000 €", "Licences 500-1 000 €/an + maintenance 30-120 €/mois", "Encore majoritaire en parc installé, mais plus le standard du neuf professionnel — et des mises à jour de sécurité chaque semaine"],
             ["WordPress sur mesure", "5 000 – 15 000 €", "Idem WordPress", "Design propre, même entretien obligatoire"],
             ["Webflow", "2 000 – 15 000 €", "Abonnement 15-39 $/mois", "Outil de design sans code, limites e-commerce/multilingue"],
             ["Next.js / React sur mesure", "6 900 – 22 000 €+", "Hébergement 0-20 €/mois, zéro licence", "Performance native, aucun logiciel à maintenir, code à vous"],
@@ -567,7 +573,17 @@ export default function Page() {
           au quotidien de l&apos;autre — notre comparatif complet{" "}
           <Link href="/guides/nextjs-ou-wordpress">Next.js ou
           WordPress</Link> chiffre cet écart, sources à l&apos;appui. Sur
-          3 ans, il pèse plus que la différence de prix initial (section 10).
+          3 ans, il pèse plus que la différence de prix initial
+          (section 10). Notre position, assumée : en 2026, un site
+          vitrine professionnel se construit par défaut en
+          React/Next.js — coût d&apos;entretien quasi nul, code
+          possédé, et une liberté visuelle (animations,
+          micro-interactions type Framer Motion) qu&apos;aucun builder
+          ni thème n&apos;égale. Les plateformes ne gardent de sens
+          que pour un micro-budget, un side-project ou un test de
+          marché. Le site que vous lisez est lui-même développé à
+          100 % en Next.js/React : vitesse, design et stratégie de
+          guides se jugent sur pièces.
         </p>
 
         <h2 id="inclus-ou-pas">6. Ce qui est inclus (ou pas) à chaque niveau de prix</h2>
@@ -713,7 +729,7 @@ export default function Page() {
             ["Hébergement (site statique)", "0 – 20 €/mois", "Quasi gratuit en Next.js bien construit"],
             ["Hébergement (WordPress)", "5 – 40 €/mois", "Serveur partagé (5 €) à serveur réservé, plus rapide (40 €)"],
             ["Maintenance", "30 – 200 €/mois selon le socle", "Mises à jour de sécurité, sauvegardes, dépannage"],
-            ["Licences plugins (WordPress)", "500 – 1 000 €/an", "Constructeur, SEO, sécurité, formulaires"],
+            ["Licences plugins (WordPress)", "300 – 1 000 €/an selon le nombre de plugins", "Constructeur, SEO, sécurité, formulaires"],
             ["Rédaction (si exclue)", "150 – 800 €/page", "Le coût caché n° 1 des devis bas"],
             ["Photos professionnelles", "600 – 2 000 €", "Souvent oubliées au budget"],
             ["Bannière cookies", "0 – 150 €/an", "Obligatoire dès que le site dépose des cookies non essentiels (mesure d'audience, vidéos intégrées…) — le cas de la quasi-totalité des sites professionnels"],
@@ -750,7 +766,7 @@ export default function Page() {
         <FormulaBox>
 {`BUILDER À 40 €/MOIS (Wix Business, « site gratuit ») — 3 ans
   Abonnement 36 × 40 €                       1 440 €
-  Votre temps de construction (~40 h)        non chiffré
+  Votre temps de construction (40 – 80 h)    non chiffré
   Rédaction, photos, logo                    à votre charge
   Site exportable à la fin ?                 NON
   ──────────────────────────────────────────────────
@@ -760,7 +776,7 @@ export default function Page() {
 WORDPRESS FREELANCE À 2 000 € — 3 ans
   Création                                   2 000 €
   Hébergement + domaine (3 ans)          400 – 800 €
-  Licences plugins (3 ans)             900 – 1 800 €
+  Licences plugins (périmètre réduit)  900 – 1 800 €
   Maintenance (3 ans)                1 080 – 4 300 €
   Rédaction souvent en sus             750 – 2 400 €
   ──────────────────────────────────────────────────
@@ -781,7 +797,8 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
           l&apos;équivalent de 2 000 à 4 000 € pris sur la prospection — le
           site « gratuit » coûte alors le prix d&apos;un freelance, pour un
           résultat généralement inférieur. Le fait-soi-même reste rationnel
-          pour tester une idée, ou quand le temps est réellement disponible.
+          pour tester une idée — pas pour le site d&apos;une entreprise qui
+          doit convertir.
         </p>
         <p>
           Conclusion contre-intuitive : <strong>sur 3 ans, le site
@@ -795,7 +812,7 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
           Un builder à 40 €/mois, c&apos;est 1 440 € sur 3 ans — pour un site
           que vous ne posséderez jamais et qu&apos;il faudra refaire en
           partant. Un WordPress à 2 000 € atteint, licences, maintenance et
-          rédaction ajoutées, 5 000 à 11 000 €. Un sur-mesure « tout inclus »
+          rédaction ajoutées, 5 100 à 11 300 €. Un sur-mesure « tout inclus »
           à 6 900 € plafonne autour de 7 400 €. Avant de signer, posez une
           seule question à chaque prestataire : « Combien ce site me
           coûtera-t-il au total sur 3 ans, tout compris ? » Si la réponse est
@@ -891,7 +908,7 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
           <Link href="/guides/combien-de-temps-pour-creer-un-site">guide
           des délais de création</Link> chiffre tout le planning) —
           c&apos;est pourquoi nos forfaits incluent la rédaction, et pourquoi
-          nos dates sont contractuelles avec pénalité de retard ({" "}
+          nos dates sont contractuelles avec pénalité de retard (
           <Link href="/methode">méthode Sprint Fixe™</Link>).
         </p>
 
@@ -899,9 +916,13 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
         <p>
           Le segment artisan est saturé d&apos;offres à 590 – 3 990 € et
           d&apos;abonnements à 19-70 €/mois. Soyons honnêtes : <strong>pour
-          un artisan dont le carnet est plein grâce au bouche-à-oreille, un
-          site simple à 1 000 – 2 000 €, qui rassure et affiche les
-          coordonnées, suffit largement</strong>.
+          un artisan dont le carnet est plein grâce au bouche-à-oreille
+          et qui ne demande rien à son site, un site simple à
+          1 000 – 2 000 € reste défendable</strong>. C&apos;est
+          l&apos;un des rares cas résiduels de ce guide. Dès que le site
+          doit rassurer un donneur d&apos;ordres ou décrocher un seul
+          chantier via Google, la suite de cette section
+          s&apos;applique.
         </p>
         <p>
           Le passage au niveau supérieur (5 000 – 10 000 €) se justifie le
@@ -938,8 +959,10 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
         <h2 id="budgeter">16. Méthode : choisir son budget en 4 étapes</h2>
         <ol>
           <li>
-            <strong>Tranchez le rôle du site</strong> — exister (rassurer) ou
-            acquérir (faire venir) ? C&apos;est la section 2, et c&apos;est
+            <strong>Tranchez le rôle du site</strong> — tester ou
+            exister a minima (les cas résiduels vus en section 2,
+            entre 1 000 et 3 000 €) ou servir une entreprise qui veut
+            convertir et durer (sur-mesure dès 6 000 €) ? C&apos;est
             80 % de la décision budgétaire.
           </li>
           <li>
@@ -1023,10 +1046,10 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
           comparer des périmètres.
         </p>
         <InfoBox variant="blue" title="À retenir : les 4 réflexes avant de signer">
-          1. Décidez du rôle du site : exister (rassurer ceux qui vous
-          cherchent déjà, 1 000 à 3 000 €) ou acquérir (faire venir des
-          clients via Google, 6 000 € et plus) — c&apos;est 80 % de la
-          décision. 2. Exigez la liste écrite de ce qui est inclus —
+          1. Décidez du rôle du site : exister a minima (1 000 à
+          3 000 €, cas résiduels de la section 2) ou convertir et
+          acquérir via Google (sur-mesure dès
+          6 000 €). 2. Exigez la liste écrite de ce qui est inclus —
           rédaction, photos, référencement, propriété du code, garantie — et
           comparez ligne à ligne, jamais sur le prix total. 3. Demandez un
           engagement de performance chiffré (score Lighthouse mobile) inscrit
@@ -1045,15 +1068,17 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
         <h2 id="notre-approche">18. Comment on construit un site vitrine chez Hagnéré Code</h2>
         <p>
           Nous construisons les sites vitrines en <strong>Next.js /
-          React</strong> — génération statique, Core Web Vitals au vert (les
-          indicateurs de vitesse et de confort de navigation que Google
-          mesure sur chaque site), zéro plugin à maintenir — avec un principe
-          simple : tout ce qui conditionne le résultat est inclus (design sur
-          mesure, rédaction SEO, données structurées, mesure de
-          fréquentation, 30 jours de garantie, hébergement première année) et
-          tout est contractuel : le prix (forfait fixe), les dates (pénalités
-          de retard) et la performance (Lighthouse ≥ 95 mobile, corrections
-          gratuites sinon).
+          React</strong> — génération statique, Core Web Vitals au vert
+          (les indicateurs de vitesse et de confort de navigation que
+          Google mesure sur chaque site), zéro plugin à maintenir.
+          Comme expliqué en section 5, ce site en est lui-même la
+          démonstration. Le principe est simple : tout ce qui
+          conditionne le résultat est inclus (design sur mesure,
+          rédaction SEO, données structurées, mesure de fréquentation,
+          30 jours de garantie, hébergement première année), et tout
+          est contractuel : le prix (forfait fixe), les dates
+          (pénalités de retard) et la performance (Lighthouse ≥ 95
+          mobile, corrections gratuites sinon).
         </p>
         <p>
           Vous hésitez encore sur la gamme ?{" "}
