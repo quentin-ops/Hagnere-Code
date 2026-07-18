@@ -835,7 +835,11 @@ export default function Page() {
           changement de socle — plan de redirections 301 et migration SEO
           compris — est chiffré dans notre{" "}
           <Link href="/guides/prix-refonte-site-internet">guide du prix
-          d&apos;une refonte de site internet</Link>.
+          d&apos;une refonte de site internet</Link>, et la méthode
+          anti-perte de trafic, sourcée sur la documentation Google,
+          dans notre{" "}
+          <Link href="/guides/refonte-sans-perdre-son-seo">guide
+          « refondre sans perdre son SEO »</Link>.
         </p>
 
         <p>

@@ -710,7 +710,10 @@ export default function Page() {
             s&apos;arrête que le jour de la refonte — qu&apos;elle
             aura contribué à repousser de plusieurs années (notre{" "}
             <Link href="/guides/prix-refonte-site-internet">guide du
-            prix d&apos;une refonte</Link> chiffre ce lien).
+            prix d&apos;une refonte</Link> chiffre ce lien, et notre{" "}
+            <Link href="/guides/refonte-sans-perdre-son-seo">guide
+            « refondre sans perdre son SEO »</Link> sécurise le
+            moment venu).
           </li>
         </ul>
 

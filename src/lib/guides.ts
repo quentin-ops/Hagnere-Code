@@ -289,6 +289,20 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 25,
   },
   {
+    slug: "refonte-sans-perdre-son-seo",
+    title: "Refonte sans perdre son SEO : la méthode 2026 · Hagnéré Code",
+    cardTitle: "Refonte de site sans perdre son SEO : la méthode complète",
+    metaDescription:
+      "Redirections 301, mythes démontés à la source Google, protocole J+1/M+3, cas WordPress vers Next.js, plan d'urgence : la méthode anti-perte de trafic.",
+    cardDescription:
+      "La méthode sourcée Google Search Central : 3 scénarios de risque, plan de redirection, protocole de surveillance daté, cas WordPress → Next.js et plan d'urgence.",
+    heroTitle: "Refondre son site sans perdre son SEO : la méthode complète, sourcée Google",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    readTimeMin: 24,
+  },
+  {
     slug: "cahier-des-charges-site-internet",
     title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
     cardTitle: "Cahier des charges de site internet : modèle + exemple",

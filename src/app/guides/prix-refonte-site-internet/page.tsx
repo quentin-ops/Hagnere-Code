@@ -393,6 +393,11 @@ export default function Page() {
           soignée</strong> — et budgétée. Une refonte totale sans le poste
           migration SEO de la section 7 n&apos;est pas une refonte moins
           chère : c&apos;est une refonte à laquelle il manque une roue.
+          La méthode complète pour protéger votre trafic — mythes
+          démontés, protocole de surveillance daté, plan
+          d&apos;urgence — fait l&apos;objet de notre{" "}
+          <Link href="/guides/refonte-sans-perdre-son-seo">guide
+          « refondre sans perdre son SEO »</Link>.
         </p>
 
         <h2 id="prix-par-type">5. Les prix 2026 par type de site</h2>
