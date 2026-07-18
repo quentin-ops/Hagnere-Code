@@ -2,16 +2,20 @@ import type { Metadata } from "next";
 import { SaasApplicationsMetier } from "@/components/saas-applications/SaasApplicationsMetier";
 import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
+// Le title porte « agence développement SaaS sur mesure » plutôt que le seul
+// « SaaS sur mesure » : l'audit SERP a montré que cette requête commerciale
+// est servie par des pages service, et cette page est la nôtre. Créer une
+// page /agence-developpement-saas distincte l'aurait cannibalisée.
 export const metadata: Metadata = {
-  title: "SaaS sur mesure · MVP livré en 3-6 semaines · Hagnéré Code",
+  title: "Agence développement SaaS sur mesure · Hagnéré Code",
   description:
-    "Plateformes SaaS et applications métier sur mesure (Next.js, React, IA). Forfait fixe dès 15 k€, MVP en 3 à 6 semaines, code à vous dès J+1.",
+    "Agence de développement SaaS et applications métier sur mesure (Next.js, React, IA). Forfait fixe dès 15 k€, MVP en 3 à 6 semaines, code à vous dès J+1.",
   alternates: { canonical: "/services/saas-applications-metier" },
   openGraph: {
     ...OG_BASE,
-    title: "SaaS sur mesure · MVP livré en 3-6 semaines · Hagnéré Code",
+    title: "Agence développement SaaS sur mesure · Hagnéré Code",
     description:
-      "Plateformes B2B et apps mobiles propulsées par Next.js, React/TypeScript et IA. Forfait fixe, MVP 3-6 semaines.",
+      "Plateformes SaaS B2B et applications métier propulsées par Next.js, React/TypeScript et IA. Forfait fixe, MVP en 3 à 6 semaines.",
     url: "/services/saas-applications-metier",
     images: [SERVICES_OG_IMAGE],
   },
