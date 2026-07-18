@@ -159,8 +159,9 @@ export default function Page() {
             { id: "qui-emploie", label: "3. Qui emploie vraiment en Savoie" },
             { id: "poles", label: "4. Les pôles structurants" },
             { id: "besoins", label: "5. Ce dont ces entreprises ont besoin" },
-            { id: "notre-place", label: "6. Où nous nous situons" },
-            { id: "guides", label: "7. Nos guides pour préparer votre projet" },
+            { id: "saisonnalite", label: "6. La saisonnalité, ce que personne ne chiffre" },
+            { id: "notre-place", label: "7. Où nous nous situons" },
+            { id: "guides", label: "8. Nos guides pour préparer votre projet" },
           ]}
         />
 
@@ -333,7 +334,36 @@ export default function Page() {
           </li>
         </ul>
 
-        <h2 id="notre-place">6. Où nous nous situons</h2>
+        <h2 id="saisonnalite">6. La saisonnalité, ce que personne ne chiffre</h2>
+        <p>
+          C&apos;est la particularité savoyarde qui a le plus de conséquences
+          techniques, et celle dont on parle le moins. Quand 37 % du parc de
+          logements est constitué de résidences secondaires, une part
+          importante de l&apos;économie travaille sur des fenêtres très
+          courtes. Voici ce que cela implique concrètement pour un site.
+        </p>
+        <GuideTable
+          headers={["Contrainte", "Ce qui se passe", "Comment on le traite"]}
+          rows={[
+            ["Pic de trafic concentré", "Le trafic d'une semaine de vacances scolaires peut dépasser celui de deux mois creux", "Site pré-généré qui ne dépend pas d'une base de données à l'affichage : la charge n'a plus d'effet"],
+            ["Réseau mobile dégradé", "Vos visiteurs consultent depuis une station, une remontée, une route de montagne", "Pages légères, images optimisées, affichage utile avant chargement complet"],
+            ["Clientèle internationale", "Britanniques, Néerlandais, Belges, et de plus en plus d'autres marchés", "Multilingue pensé dès la conception, pas ajouté après coup par une extension"],
+            ["Réservation et disponibilités", "Connexion à un logiciel de réservation, calendrier, acomptes", "Intégration au logiciel existant plutôt que remplacement"],
+            ["Contenu qui vit deux fois par an", "Tarifs, dates d'ouverture, forfaits changent à chaque saison", "Interface d'édition simple pour que vous le fassiez vous-même, sans nous rappeler"],
+          ]}
+        />
+        <InfoBox variant="amber" title="Le coût réel d'un site lent en pleine saison">
+          Un site qui met dix secondes à s&apos;afficher perd une partie de
+          ses visiteurs avant même qu&apos;ils aient vu l&apos;offre.
+          Sur une activité étalée sur toute l&apos;année, c&apos;est une perte
+          diffuse. <strong>Sur une activité concentrée sur quatre mois,
+          c&apos;est la saison</strong> — et vous ne pouvez pas rattraper en
+          mai ce que vous avez perdu en février. C&apos;est la raison pour
+          laquelle nous contractualisons un score de performance minimal
+          plutôt que de promettre un site « rapide ».
+        </InfoBox>
+
+        <h2 id="notre-place">7. Où nous nous situons</h2>
         <p>
           Nous sommes installés à Chambéry, au 7 rue Ernest Filliard, et nous
           développons en React et Next.js. Concrètement, cela nous place sur
@@ -353,7 +383,7 @@ export default function Page() {
           <Link href="/agence">agence</Link>.
         </p>
 
-        <h2 id="guides">7. Nos guides pour préparer votre projet</h2>
+        <h2 id="guides">8. Nos guides pour préparer votre projet</h2>
         <p>
           Avant même de nous contacter, vous pouvez vous faire une idée
           précise de ce que coûte un projet et de la façon de comparer des

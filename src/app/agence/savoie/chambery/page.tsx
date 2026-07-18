@@ -161,8 +161,9 @@ export default function Page() {
             { id: "besoins", label: "4. Ce dont les entreprises chambériennes ont besoin" },
             { id: "constat", label: "5. Ce que nous avons mesuré sur les sites du bassin" },
             { id: "bassin", label: "6. Le bassin que nous couvrons au quotidien" },
-            { id: "concurrence", label: "7. Les autres agences du bassin" },
-            { id: "travailler", label: "8. Travailler avec nous" },
+            { id: "ecosysteme", label: "7. L'écosystème numérique local" },
+            { id: "concurrence", label: "8. Les autres agences du bassin" },
+            { id: "travailler", label: "9. Travailler avec nous" },
           ]}
         />
 
@@ -304,6 +305,33 @@ export default function Page() {
             naturel</Link>.
           </li>
         </ul>
+        <p>
+          Pour être plus concret, voici comment ces besoins se traduisent
+          selon le type d&apos;entreprise chambérienne. Ce tableau ne
+          remplace pas un cadrage, mais il donne un ordre d&apos;idée avant
+          même de nous appeler.
+        </p>
+        <GuideTable
+          headers={["Profil d'entreprise", "Le besoin réel", "Ce qu'on construit", "Ordre de budget"]}
+          rows={[
+            ["Cabinet de conseil, avocat, expert-comptable", "Être crédible avant le premier appel, et se différencier de confrères qui disent tous la même chose", "Site vitrine structuré par expertise, pages de contenu qui répondent aux vraies questions des clients", "6 900 – 14 900 €"],
+            ["Artisan, entreprise du bâtiment", "Apparaître quand on cherche un professionnel à proximité, et montrer des chantiers", "Site rapide avec galerie de réalisations, fiche Google travaillée, pages par prestation et par zone", "6 900 € et fiche locale"],
+            ["Commerce indépendant, restauration", "Être trouvé sur mobile, afficher les informations pratiques sans friction", "Site léger orienté mobile, informations pratiques en tête, réservation si utile", "6 900 €"],
+            ["Producteur, domaine viticole, agroalimentaire", "Vendre en direct sans dépendre d'une plateforme qui prend une commission", "Boutique en ligne sur mesure, gestion des stocks, expédition", "15 000 € et plus"],
+            ["PME industrielle ou de négoce", "Donner à ses clients professionnels un espace pour commander et retrouver la documentation", "Portail client, catalogue connecté au logiciel de gestion, espace distributeurs", "15 000 – 40 000 €"],
+            ["Cabinet ou structure qui gère des dossiers", "Sortir des tableurs partagés qui ont atteint leurs limites", "Application métier sur mesure, suivi de dossiers, automatisation", "15 000 € et plus"],
+            ["Startup du technopôle", "Sortir une première version utilisable et la faire tester", "Produit en ligne, première version fonctionnelle, itérations rapides", "15 000 € et plus"],
+          ]}
+        />
+        <p>
+          Une remarque d&apos;honnêteté sur ce tableau : les trois premières
+          lignes représentent l&apos;écrasante majorité des demandes que nous
+          recevons localement, ce qui est logique dans un bassin où près de
+          deux tiers des établissements n&apos;ont aucun salarié. Les lignes
+          suivantes concernent moins d&apos;entreprises, mais ce sont les
+          projets où le sur-mesure change réellement quelque chose — et où
+          une agence de communication généraliste atteint vite ses limites.
+        </p>
 
         <GuideInlineCTA
           title="Un projet à Chambéry ?"
@@ -365,8 +393,73 @@ export default function Page() {
           administratifs, mais ils comptent : ils distinguent une page écrite
           depuis le territoire d&apos;une page écrite depuis un tableur.
         </InfoBox>
+        <p>
+          Concrètement, voici les distances depuis notre bureau. Elles
+          expliquent mieux qu&apos;un discours pourquoi nous nous déplaçons
+          volontiers dans ce périmètre.
+        </p>
+        <GuideTable
+          headers={["Commune", "Intercommunalité", "Distance", "Trajet"]}
+          rows={[
+            ["Barberaz", "Grand Chambéry", "environ 4 km", "7 à 8 min"],
+            ["Cognin", "Grand Chambéry", "environ 4 à 5 km", "7 à 8 min"],
+            ["Saint-Alban-Leysse", "Grand Chambéry", "5,7 km", "9 min"],
+            ["La Motte-Servolex", "Grand Chambéry", "6,1 km", "7 min"],
+            ["La Ravoire", "Grand Chambéry", "7,8 km", "9 min"],
+            ["Challes-les-Eaux", "Grand Chambéry", "9,1 km", "10 min"],
+            ["Le Bourget-du-Lac (Savoie Technolac)", "Grand Lac", "environ 13 km", "10 à 15 min"],
+            ["Montmélian", "Cœur de Savoie", "environ 11 km", "15 min"],
+            ["Aix-les-Bains", "Grand Lac", "15,8 km", "20 min"],
+          ]}
+        />
+        <p>
+          Ce que cela veut dire en pratique : sur tout ce périmètre, un
+          rendez-vous d&apos;une heure ne mobilise pas une demi-journée. Nous
+          venons donc pour le cadrage initial, pour la présentation des
+          maquettes, et à chaque fois qu&apos;un point bloque et se règle
+          mieux autour d&apos;une table. Au-delà — Albertville, Annecy,
+          Annemasse — nous nous déplaçons pour les étapes qui le justifient
+          et conduisons le reste à distance.
+        </p>
 
-        <h2 id="concurrence">7. Les autres agences du bassin</h2>
+        <h2 id="ecosysteme">7. L&apos;écosystème numérique local</h2>
+        <p>
+          Chambéry a une vie numérique organisée, ce que beaucoup
+          d&apos;entrepreneurs du bassin ignorent encore. Trois structures
+          comptent si votre projet est un produit plutôt qu&apos;un site.
+        </p>
+        <ul>
+          <li>
+            <strong>L&apos;Incubateur Savoie Technolac</strong>, sur le
+            technopôle, est le bâtiment totem de La French Tech
+            Alpes-Chambéry. Il propose de l&apos;accompagnement, du coaching
+            et de l&apos;hébergement en pépinière sur environ 800 m²
+            d&apos;espaces de travail, et opère le programme French Tech
+            Tremplin. Si vous lancez un produit numérique, c&apos;est le
+            premier endroit où frapper — avant de payer un développeur.
+          </li>
+          <li>
+            <strong>La French Tech Alpes-Chambéry</strong> fédère les
+            entreprises technologiques du bassin. C&apos;est aussi le réseau
+            par lequel circulent les recommandations de prestataires : dans un
+            écosystème de cette taille, la réputation se construit en réunion
+            autant qu&apos;en ligne.
+          </li>
+          <li>
+            <strong>La pépinière IDÉALPES</strong>, sur le parc Alpespace en
+            Combe de Savoie, accompagne des entreprises sur des filières plus
+            industrielles : microélectronique, agroalimentaire, aménagement de
+            la montagne, métallurgie, environnement.
+          </li>
+        </ul>
+        <p>
+          Nous le mentionnons parce que c&apos;est une information utile même
+          si vous ne travaillez jamais avec nous : beaucoup de porteurs de
+          projet chambériens paient un développement qu&apos;ils auraient pu
+          faire cadrer gratuitement en amont, ou financer autrement.
+        </p>
+
+        <h2 id="concurrence">8. Les autres agences du bassin</h2>
         <p>
           Chambéry compte des agences installées de longue date, dont
           plusieurs existent depuis la fin des années 1990 ou le début des
@@ -398,7 +491,7 @@ export default function Page() {
           applicables à nous aussi.
         </p>
 
-        <h2 id="travailler">8. Travailler avec nous</h2>
+        <h2 id="travailler">9. Travailler avec nous</h2>
         <p>
           Trois engagements, identiques pour tous nos clients.{" "}
           <strong>Un forfait fixe contractuel</strong> : périmètre écrit, prix
