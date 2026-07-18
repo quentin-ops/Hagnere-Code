@@ -122,7 +122,7 @@ const faqItems = [
   {
     question: "Quel est le meilleur pour le SEO : Wix ou WordPress ?",
     answer:
-      "La réponse honnête a changé. Le chiffre-massue qui circule encore (« 1,4 % des sites Wix reçoivent du trafic Google contre 46,1 % des WordPress ») vient d'une étude de 2019 que son auteur, Ahrefs, a lui-même retirée en reconnaissant sa méthodologie défaillante. Depuis, Google a déclaré par la voix de John Mueller que « Wix convient très bien pour le SEO », et les mesures techniques le confirment. WordPress garde des avantages structurels réels pour une stratégie ambitieuse : adresses libres, contrôle technique complet, écosystème éditorial inégalé. Verdict : Wix suffit pour être trouvé ; WordPress reste devant pour conquérir.",
+      "La réponse honnête a changé. Le chiffre-massue qui circule encore (« 1,4 % des sites Wix reçoivent du trafic Google contre 46,1 % des WordPress ») vient d'une étude de 2019 que son auteur, Ahrefs, a lui-même retirée en reconnaissant sa méthodologie défaillante. Depuis, Google a déclaré par la voix de John Mueller que « Wix convient très bien pour le SEO », et les mesures techniques le confirment. WordPress garde des avantages structurels réels pour une stratégie ambitieuse : adresses libres, contrôle technique complet, écosystème éditorial inégalé. Verdict : Wix suffit pour être trouvé ; WordPress reste devant pour conquérir — parmi les plateformes. Une liberté SEO totale (architecture, vitesse, stratégie de guides complète) demande un site sur mesure : c'est le sujet de la section 13 et de notre comparatif Next.js ou WordPress.",
   },
   {
     question: "Wix ou WordPress pour un e-commerce ?",
@@ -142,7 +142,7 @@ const faqItems = [
   {
     question: "Wix est-il fait pour les débutants ?",
     answer:
-      "Oui — et c'est son vrai point fort, confirmé par les avis d'utilisateurs (4,2/5 sur la plateforme d'avis professionnels G2, où les qualités les plus citées sont la facilité d'usage et l'éditeur par glisser-déposer). Un non-technicien construit et modifie son site seul, sans dépendre de personne, avec hébergement, sécurité et mises à jour gérés. C'est exactement le cahier des charges d'un site « qui doit exister » : présenter l'activité, rassurer, être joignable. La question de ce guide est ce qui se passe quand l'ambition grandit — et là, la réponse change.",
+      "Oui — pour un site qui doit simplement exister avec un micro-budget, c'est son vrai point fort, confirmé par les avis d'utilisateurs (4,2/5 sur la plateforme d'avis professionnels G2, où les qualités les plus citées sont la facilité d'usage et l'éditeur par glisser-déposer). Un non-technicien construit et modifie son site seul, sans dépendre de personne, avec hébergement, sécurité et mises à jour gérés. C'est exactement le cahier des charges d'un site « qui doit exister » : présenter l'activité, rassurer, être joignable. La question de ce guide est ce qui se passe quand l'ambition grandit — et là, la réponse change.",
   },
   {
     question: "Peut-on migrer de Wix vers WordPress facilement ?",
@@ -162,12 +162,12 @@ const faqItems = [
   {
     question: "Wix est-il moins cher qu'un site sur mesure ?",
     answer:
-      "À l'entrée, sans comparaison : quelques centaines d'euros par an contre plusieurs milliers en création. La vraie question est ce que chaque euro achète. Wix loue un site standard que vous assemblez ; le sur-mesure construit un actif que vous possédez, conçu pour convertir et être trouvé — c'est un autre métier et un autre objectif. Le point de rencontre est réel : dès qu'un projet Wix « ambitieux » exige un prestataire (2 500 € et plus) plus des années d'abonnements et d'applications, l'écart avec une création professionnelle se resserre. Notre guide du prix d'un site vitrine met tous ces budgets côte à côte.",
+      "À l'entrée, oui : quelques centaines d'euros par an contre plusieurs milliers en création. Mais l'écart a fondu : en 2026, l'IA (Claude Code) a fortement réduit le coût et le délai du sur-mesure. Wix loue un site standard que vous assemblez ; le sur-mesure construit un actif que vous possédez, conçu pour convertir et être trouvé — c'est un autre métier et un autre objectif. Et dès qu'un projet Wix « ambitieux » exige un prestataire (2 500 € et plus) plus des années d'abonnements et d'applications — plus la rançon de sortie (section 9) —, la facture rejoint celle d'un actif que vous possédez. Notre guide du prix d'un site vitrine met tous ces budgets côte à côte.",
   },
   {
     question: "Peut-on résilier un abonnement Wix facilement ?",
     answer:
-      "La résiliation se fait depuis le compte, mais lisez les conditions de renouvellement : les abonnements se reconduisent automatiquement, les notifications de renouvellement peuvent passer inaperçues, et des clients français racontent sur les plateformes d'avis des hausses successives découvertes sur le relevé bancaire (des cas documentés passent du simple au double en deux ans). La loi française encadre la reconduction tacite (information préalable obligatoire — c'est la loi Chatel), mais son application aux services en ligne étrangers est un terrain glissant. Réflexe simple : notez la date d'échéance, désactivez le renouvellement automatique si vous hésitez, et surveillez le premier prélèvement de chaque période.",
+      "La résiliation se fait depuis le compte, mais lisez les conditions de renouvellement : les abonnements se reconduisent automatiquement, les notifications de renouvellement peuvent passer inaperçues, et des clients français racontent sur les plateformes d'avis des hausses successives découvertes sur le relevé bancaire (des cas documentés passent du simple au double en deux ans). La loi Chatel protège les consommateurs contre la reconduction tacite, mais elle ne couvre généralement pas les abonnements souscrits à titre professionnel — d'où l'importance des réflexes qui suivent. Réflexe simple : notez la date d'échéance, désactivez le renouvellement automatique si vous hésitez, et surveillez le premier prélèvement de chaque période.",
   },
   {
     question: "Et le RGPD : où sont hébergées vos données ?",
@@ -226,7 +226,9 @@ export default function Page() {
         <p className="lead">
           Cherchez « Wix ou WordPress » : la première page de Google est
           tenue par Wix lui-même, deux hébergeurs, et des blogs rémunérés
-          à la commission. <strong>Personne n&apos;y est neutre.</strong>{" "}
+          à la commission. <strong>Personne n&apos;y est neutre — nous
+          non plus : nous vendons du sur-mesure, et zéro
+          affiliation.</strong>{" "}
           Ce guide l&apos;est : zéro lien d&apos;affiliation, les prix
           réels TTC des deux côtés, la vitesse mesurée, le verrouillage
           documenté à la source — et l&apos;honnêteté de dire quand Wix
@@ -254,26 +256,29 @@ export default function Page() {
 
         <h2 id="reponse-rapide">1. Le verdict en 30 secondes</h2>
         <p>
-          En 2026, <strong>Wix est le bon choix pour un site qui doit
-          exister sans dépendre de personne</strong> : un non-technicien
-          le construit et le modifie seul, tout est géré, pour{" "}
-          <strong>16,80 à 40,80 € TTC/mois</strong> selon le forfait
-          (l&apos;e-commerce démarre à 30 €).{" "}
-          <strong>WordPress est le bon choix quand le site doit
-          conquérir</strong> — contenu, référencement, boutique sérieuse —
-          au prix d&apos;un entretien réel : hébergement dès 84 € HT/an,
-          et une maintenance à budgéter (39 à 290 €/mois en délégation).
-          Le critère que personne ne met en avant :{" "}
-          <strong>la réversibilité</strong> — un site Wix ne
-          s&apos;exporte pas, un WordPress vous suit partout. Et quand le
-          site est un outil commercial central, la vraie question
-          n&apos;est plus « Wix ou WordPress » (section 13).
+          En 2026, <strong>Wix reste le bon choix dans un cas
+          précis : un site qui doit simplement exister, avec un
+          micro-budget et personne pour s&apos;en occuper</strong> —
+          un non-technicien le construit et le modifie seul, tout est
+          géré, pour <strong>16,80 à 40,80 € TTC/mois</strong> selon
+          le forfait (l&apos;e-commerce démarre à 30 €).{" "}
+          <strong>WordPress garde du sens quand le besoin reste
+          standard et l&apos;entretien accepté</strong> : hébergement
+          dès 84 € HT/an (≈ 101 € TTC), maintenance à budgéter (39 à
+          290 €/mois en délégation). Mais pour une entreprise dont le site doit
+          convertir et durer, <strong>le choix par défaut a
+          changé</strong> : l&apos;IA (Claude Code) a fait fortement
+          baisser le coût et le délai du sur-mesure, et le critère que
+          personne ne met en avant — <strong>la réversibilité</strong> —
+          joue entièrement pour lui : un site Wix ne s&apos;exporte
+          pas, un site que vous possédez vous suit partout
+          (sections 9 et 13).
         </p>
         <GuideTable
           headers={["Votre situation", "Notre verdict", "Pourquoi"]}
           rows={[
             ["Indépendant, site « carte de visite », autonomie totale", "Wix", "Simple, tout géré, modifiable seul — sa vraie force"],
-            ["TPE avec blog et ambition Google réelle", "WordPress", "Adresses libres, écosystème éditorial, contrôle technique"],
+            ["TPE avec blog et ambition Google réelle", "WordPress à petit budget — sur-mesure dès que le site doit convertir", "Adresses libres et écosystème éditorial ; liberté SEO totale en sur-mesure — section 13"],
             ["Boutique en ligne sérieuse", "WordPress (WooCommerce, son module boutique)", "47,4 % du e-commerce français ; Wix coince vers 500-1 000 produits"],
             ["Site stratégique : acquisition, conversion, image", "Ni l'un ni l'autre : sur-mesure", "Le site devient un actif — section 13"],
             ["Vous pensez peut-être partir un jour", "Pas Wix", "Rien ne s'exporte : pages, design et blog restent chez Wix (section 9)"],
@@ -343,7 +348,8 @@ export default function Page() {
         <p>
           Trois coûts cachés complètent la facture réelle.{" "}
           <strong>Le domaine</strong> : offert la première année, puis
-          renouvelé chez Wix autour de 15 €/an — le double d&apos;un .fr
+          renouvelé chez Wix autour de 15 €/an — environ 60 % plus
+          cher qu&apos;un .fr
           pris en direct chez un bureau d&apos;enregistrement de
           domaines français (un « registrar ») : 7,79 € HT/an chez
           OVHcloud.{" "}
@@ -417,7 +423,7 @@ export default function Page() {
           headers={["Profil", "Wix (3 ans)", "WordPress (3 ans)"]}
           rows={[
             ["Vitrine en autonomie complète", "≈ 850 € (Light + domaine an 2-3 + email pro)", "≈ 300 – 750 € (hébergement + licences éventuelles) + votre temps d'entretien"],
-            ["Site pro, entretien délégué", "≈ 1 330 € (Essentiel) + apps éventuelles", "≈ 2 000 – 3 700 € (hébergement + licences + maintenance 39-60 €/mois)"],
+            ["Site pro, entretien délégué", "≈ 1 330 € (Essentiel + domaine an 2-3 + email pro) + apps éventuelles", "≈ 2 000 – 3 700 € (hébergement + licences + maintenance 39-60 €/mois)"],
             ["Boutique en ligne", "≈ 1 330 – 6 680 € (Essentiel à Elite + domaine an 2-3 + email pro) + apps", "≈ 3 000 – 8 000 € (hébergement renforcé + extensions + maintenance e-commerce)"],
             ["Création par prestataire (une fois)", "≈ 2 500 € en moyenne", "800 – 3 000 € (freelance) à 6 000 € (agence)"],
           ]}
@@ -430,7 +436,11 @@ export default function Page() {
           l&apos;abonnement Wix inclut ce que WordPress facture à part.
           Wix n&apos;est donc pas « le piège à pigeons » que décrivent
           les blogs affiliés WordPress ; c&apos;est un tout-en-un
-          honnêtement facturé… tant que le besoin reste standard.
+          honnêtement facturé — tant que le besoin reste celui
+          d&apos;un site qui doit seulement exister : micro-budget,
+          side-project, test de marché. Dès que le site doit
+          convertir, le calcul change d&apos;échelle (sections 9
+          et 13).
           L&apos;écart réel se joue sur trois curseurs : votre
           autonomie (Wix la maximise), votre ambition Google
           (section 7), et votre liberté de partir (section 9) —
@@ -505,8 +515,12 @@ export default function Page() {
           auto-généré non éditable en sont les exemples types. Pour
           Claire, la traduction est simple :{" "}
           <strong>être trouvée sur « naturopathe Annecy », Wix le
-          fait ; construire un blog santé qui rayonne au national,
-          WordPress (ou mieux) devient l&apos;outil du métier</strong>.
+          fait ; construire un blog santé qui rayonne au national
+          demande une liberté SEO totale</strong> — WordPress la donne
+          en partie, un site sur mesure la donne entièrement :
+          architecture, vitesse, stratégie de guides sans aucune
+          brique qui bride (section 13). C&apos;est d&apos;ailleurs
+          ainsi qu&apos;est construit le site que vous lisez.
         </p>
 
         <h2 id="performance">8. La vitesse mesurée : le résultat qui surprend</h2>
@@ -589,7 +603,9 @@ export default function Page() {
 
         <InfoBox variant="blue" title="Les trois chemins de Claire, chiffrés">
           <strong>Rester sur Wix</strong> : passer au forfait Essentiel
-          (30 € TTC/mois) pour outiller le blog — ≈ 1 330 € sur 3 ans,
+          (30 € TTC/mois) pour dépasser les 2 Go de stockage de Light
+          et outiller le blog — ≈ 1 330 € sur 3 ans (forfait + domaine
+          an 2-3 + email pro),
           autonomie intacte, mais plafond structurel sur le
           référencement national et une dette de sortie qui grossit à
           chaque article publié. <strong>Migrer vers WordPress</strong> :
@@ -598,10 +614,13 @@ export default function Page() {
           s&apos;exporte pas), hébergement 84 € HT/an, maintenance
           39-60 €/mois — ≈ 3 500 à 5 000 € sur 3 ans, pour un outil
           qui suivra son ambition. <strong>Investir dans un site
-          d&apos;acquisition sur mesure</strong> : 6 900 € et plus,
-          pertinent seulement si le blog devient le canal principal de
-          son activité. Sa décision rationnelle aujourd&apos;hui : le
-          chemin 2 — et vite, car chaque mois d&apos;écriture sur Wix
+          d&apos;acquisition sur mesure</strong> : 6 900 € et plus —
+          le choix cohérent dès lors que la visibilité doit devenir le
+          premier canal de l&apos;activité… ce qui est précisément le
+          projet de Claire. Sa décision rationnelle
+          aujourd&apos;hui : le chemin 3 si son projet est confirmé,
+          le chemin 2 si le budget l&apos;impose — et dans les deux
+          cas partir vite, car chaque mois d&apos;écriture sur Wix
           alourdit la reprise manuelle.
         </InfoBox>
 
@@ -669,21 +688,22 @@ export default function Page() {
           headers={["Votre profil", "Verdict", "Pourquoi"]}
           rows={[
             ["Indépendant, association, site « carte de visite »", "Wix", "Autonomie réelle, tout géré, budget minimal — sa zone d'excellence"],
-            ["TPE locale : être trouvé dans sa ville, modifier soi-même", "Wix ou WordPress simple", "Les deux font le travail ; Wix gagne en autonomie, WordPress en évolutivité"],
-            ["Stratégie de contenu, ambition Google au-delà du local", "WordPress", "Adresses libres, blog de référence, contrôle technique — l'outil du métier"],
+            ["TPE locale, budget de quelques milliers d'euros maximum", "Wix ou WordPress simple", "À ce budget, les deux font le travail ; au-delà, un site vitrine sur mesure devient accessible (section 13)"],
+            ["Stratégie de contenu, ambition Google au-delà du local", "WordPress ou sur-mesure", "WordPress si le budget est contraint ; liberté SEO totale (architecture, vitesse, stratégie de guides) en sur-mesure — section 13"],
             ["Boutique en ligne en croissance", "WordPress (WooCommerce)", "Wix coince vers 500-1 000 produits ou ~10 000 €/mois de chiffre d'affaires"],
             ["Site stratégique : acquisition, conversion, vitesse garantie", "Sur-mesure", "Le site est un actif commercial — section 13"],
-            ["Claire, notre fil rouge (blog santé ambitieux)", "WordPress aujourd'hui — sur-mesure si le blog devient le métier", "Et partir tôt : chaque mois sur Wix alourdit la reconstruction"],
+            ["Claire, notre fil rouge (blog santé ambitieux)", "Sur-mesure si le projet est confirmé — WordPress si le budget l'impose", "Et partir tôt dans les deux cas : chaque mois sur Wix alourdit la reconstruction"],
           ]}
         />
 
-        <InfoBox variant="emerald" title="À retenir : les 5 chiffres de ce guide">
+        <InfoBox variant="emerald" title="À retenir : les 6 chiffres de ce guide">
           <ul className="list-disc pl-4 space-y-1.5">
             <li><strong>16,80 – 178,80 € TTC/mois</strong> : la vraie grille Wix (affichée hors taxes : +20 % sur votre relevé), e-commerce dès 30 €.</li>
             <li><strong>84 € HT/an</strong> : l&apos;hébergement WordPress sérieux, emails et domaine inclus — mais l&apos;entretien se budgète à part (39-290 €/mois délégué).</li>
             <li><strong>74 % vs 45 %</strong> : les sites qui passent les seuils de vitesse Google (mesure réelle) — Wix devant le WordPress moyen, contre toute réputation.</li>
             <li><strong>0 export</strong> : pages, design et blog d&apos;un site Wix ne s&apos;emportent pas — quitter Wix coûte le prix d&apos;un site neuf.</li>
             <li><strong>3 hausses en 3 ans</strong> : l&apos;historique tarifaire de Wix — le loyer d&apos;une location se surveille.</li>
+            <li><strong>6 900 – 22 000 €</strong> : un site d&apos;acquisition sur mesure (grille publique) — le choix par défaut en 2026 pour un site qui doit rapporter des clients, désormais à portée de budgets de PME.</li>
           </ul>
         </InfoBox>
 
@@ -698,17 +718,24 @@ export default function Page() {
           de sortie limitée ; les critères de ce guide s&apos;y
           appliquent tels quels. Cela posé : Wix et WordPress
           partagent un présupposé — le site est un assemblage de
-          briques standards. Pour la plupart des sites,
-          c&apos;est exactement ce qu&apos;il faut. Mais quand le site
-          devient <strong>l&apos;outil commercial central</strong> —
-          celui qui doit être trouvé sur des requêtes concurrentielles,
-          charger instantanément, convertir des visiteurs chers en
-          demandes réelles —, l&apos;assemblage montre ses limites :
-          vitesse plafonnée par les briques, référencement technique
-          bridé, parcours génériques. C&apos;est le territoire du
-          sur-mesure : un site conçu pour votre stratégie, généralement{" "}
-          <strong>6 900 à 22 000 €</strong> chez nous (grille publique),
-          rapide par conception — notre{" "}
+          briques standards. Pour un side-project, un micro-budget ou
+          un test de marché, c&apos;est exactement ce qu&apos;il faut.
+          Pour un site professionnel qui doit{" "}
+          <strong>convertir et durer</strong>, ce présupposé ne tient
+          plus en 2026 : l&apos;IA (Claude Code) a fait chuter le coût
+          et le délai de la conception sur mesure, et l&apos;assemblage
+          montre ses limites — vitesse plafonnée par les briques,
+          référencement technique bridé, parcours génériques, et une
+          qualité visuelle qu&apos;aucun template n&apos;atteint
+          (animations et interactions de niveau produit, type Framer
+          Motion ou GSAP, hors de portée de Wix et des builders grand
+          public — Webflow, l&apos;exception partielle, reste soumis à
+          la même clause de sortie).
+          C&apos;est le territoire du sur-mesure : un site conçu pour
+          votre stratégie, généralement{" "}
+          <strong>6 900 à 22 000 €</strong> chez nous (grille
+          publique), rapide par conception — le site que vous lisez
+          est lui-même développé à 100 % en React/Next.js —, notre{" "}
           <Link href="/guides/nextjs-ou-wordpress">comparatif Next.js
           ou WordPress</Link> traite ce match technologique en détail,
           et notre <Link href="/guides/prix-site-vitrine">guide du prix
@@ -747,20 +774,29 @@ export default function Page() {
             paierez un prestataire dans les deux cas.
           </li>
           <li>
-            <strong>Si le site est stratégique, sortez du duel.</strong>{" "}
-            Un site d&apos;acquisition se conçoit, ne s&apos;assemble
-            pas — comparez alors sur-mesure et WordPress premium,
-            chiffres en main (section 13).
+            <strong>Si le site doit rapporter des clients, sortez du
+            duel</strong> — c&apos;est le cas de tout site dont
+            l&apos;acquisition est le premier canal (pour vendre en
+            ligne, le match se joue plutôt entre WooCommerce, Shopify
+            et le sur-mesure — section 11). Un site
+            d&apos;acquisition se conçoit, ne s&apos;assemble pas ;
+            en 2026, l&apos;IA a mis le sur-mesure à la portée de
+            budgets qui n&apos;y avaient pas accès (section 13). Le
+            duel Wix/WordPress ne garde son sens qu&apos;en dessous de
+            quelques milliers d&apos;euros.
           </li>
         </ol>
         <p>
           Notre position, en transparence totale : nous ne vendons ni
           Wix, ni WordPress, ni hébergement, et ce guide ne contient{" "}
           <strong>aucun lien d&apos;affiliation</strong> — c&apos;est
-          suffisamment rare sur cette requête pour être dit. Nous
-          construisons des sites sur mesure quand ils se justifient, et
-          nous recommandons Wix ou WordPress quand c&apos;est le bon
-          choix : un client bien orienté revient. Un{" "}
+          suffisamment rare sur cette requête pour être dit. Notre
+          conviction, tout aussi transparente : en 2026, un site
+          professionnel qui doit convertir et durer se construit sur
+          mesure — le site que vous lisez est lui-même 100 %
+          React/Next.js — et nous recommandons Wix ou WordPress quand
+          le projet le justifie vraiment — petit budget, projet
+          secondaire, test de marché : un client bien orienté revient. Un{" "}
           <strong>Discovery Sprint (1 500 €, 2 jours, déduit à 100 %
           si le projet se lance)</strong> tranche votre cas sur vos
           chiffres.{" "}

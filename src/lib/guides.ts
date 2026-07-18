@@ -131,7 +131,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Next.js ou WordPress : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-16",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-18",
     readTimeMin: 25,
   },
   {
@@ -257,7 +257,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Wix ou WordPress : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-18",
     readTimeMin: 25,
   },
   {

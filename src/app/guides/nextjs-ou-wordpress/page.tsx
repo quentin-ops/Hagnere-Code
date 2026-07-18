@@ -116,7 +116,7 @@ const faqItems = [
   {
     question: "WordPress vaut-il encore la peine d'être utilisé en 2026 ?",
     answer:
-      "Oui, dans son terrain : un blog ou un site éditorial intensif géré par une équipe non technique, un budget serré, une mise en ligne rapide. WordPress fait toujours tourner environ 41 % du web et 59 % des sites à CMS. Mais 2025-2026 marque le premier déclin durable de sa part de marché depuis 2011, sur fond de crise de gouvernance et d'une seule version majeure publiée en 2025 — le statu quo « WordPress par défaut » mérite désormais un vrai examen.",
+      "Oui, dans son terrain : un blog ou un site éditorial intensif géré par une équipe non technique, un budget serré, une mise en ligne rapide. WordPress fait toujours tourner environ 41 % du web et 59 % des sites à CMS. Mais 2025-2026 marque le premier déclin durable de sa part de marché depuis 2011, sur fond de crise de gouvernance et d'une seule version majeure publiée en 2025 — le statu quo « WordPress par défaut » n'est plus tenable : en 2026, pour un site professionnel d'acquisition, le défaut s'est inversé au profit du sur-mesure — WordPress est devenu un choix de niche (éditorial intensif, micro-budget), plus un réflexe.",
   },
   {
     question: "Quels sont les inconvénients de WordPress ?",
@@ -202,7 +202,7 @@ export default function Page() {
         updatedLabel={`Mis à jour le ${formatGuideDate(guide.dateModified)}`}
         keyPoints={[
           { number: "01", title: "WordPress : 41 % du web, 1er déclin", description: "", color: "violet" },
-          { number: "02", title: "11 334 failles d'extensions en 2025", description: "", color: "blue" },
+          { number: "02", title: "11 334 failles WordPress en 2025 (91 % via les extensions)", description: "", color: "blue" },
           { number: "03", title: "Coût sur 3 ans : l'ordre s'inverse", description: "", color: "emerald" },
           { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
         ]}
@@ -221,7 +221,8 @@ export default function Page() {
           Nous construisons en Next.js — autant l&apos;annoncer d&apos;entrée.
           Mais ce comparatif joue franc jeu :{" "}
           <strong>chiffres sourcés, coût total sur 3 ans décomposé, et les
-          cas — réels — où WordPress reste le meilleur choix</strong>. Parce
+          cas — réels mais devenus étroits — où WordPress reste le
+          meilleur choix</strong>. Parce
           qu&apos;un dirigeant ne choisit pas une technologie : il choisit un
           coût, un risque et un résultat.
         </p>
@@ -246,17 +247,18 @@ export default function Page() {
 
         <h2 id="reponse-rapide">1. L&apos;essentiel en 60 secondes : le verdict par profil</h2>
         <p>
-          <strong>WordPress si</strong> votre site est avant tout éditorial
-          (blog, actualités publiées chaque semaine par une équipe non
-          technique), que le budget est serré (&lt; 4 000 €) et que vous
-          acceptez une maintenance de sécurité à vie.{" "}
-          <strong>Next.js / sur-mesure si</strong> le site est votre
-          principal apporteur de clients — c&apos;est-à-dire s&apos;il doit
-          être trouvé sur Google (le référencement naturel, ou « SEO ») et
-          transformer les visiteurs en demandes de devis (ce qu&apos;on
-          appelle la « conversion ») —, s&apos;il porte votre image à fort
-          enjeu, ou dès qu&apos;il devient applicatif : espace client, devis
-          en ligne, connexion à vos logiciels de gestion. Entre les deux, il
+          <strong>Next.js / sur-mesure est aujourd&apos;hui le choix
+          par défaut d&apos;un site professionnel</strong> : il doit
+          être trouvé sur Google (le référencement naturel, ou
+          « SEO »), transformer les visiteurs en demandes de devis (ce
+          qu&apos;on appelle la « conversion »), porter votre image —
+          et dès qu&apos;il devient applicatif (espace client, devis
+          en ligne, connexion à vos logiciels de gestion), il
+          n&apos;y a plus débat. <strong>WordPress reste pertinent
+          dans des cas précis et bornés</strong> : site avant tout
+          éditorial (blog, actualités publiées chaque semaine par une
+          équipe non technique) ou budget plafonné sous 4 000 € — à
+          condition d&apos;accepter une maintenance de sécurité à vie. Entre les deux, il
           existe une 3e voie dite « headless » (littéralement « sans
           tête ») : vos équipes continuent d&apos;écrire leurs contenus dans
           WordPress, mais vos visiteurs voient un site construit en
@@ -266,7 +268,7 @@ export default function Page() {
           headers={["Votre profil", "Notre verdict", "Budget repère"]}
           rows={[
             ["Blog / média : contenu quotidien, équipe non technique", "WordPress, bien maintenu", "1 500 – 8 000 € + maintenance"],
-            ["TPE locale : présence simple, budget serré", "WordPress ou outil clé en main (type Wix, Squarespace), sans se sur-équiper", "800 – 4 000 €"],
+            ["TPE locale : présence simple, micro-budget assumé", "WordPress ou outil clé en main (type Wix, Squarespace) comme solution d'attente — à réévaluer dès que le site doit générer des clients", "800 – 4 000 €"],
             ["PME : le site doit générer des clients (référencement, conversion)", "Next.js sur mesure", "4 000 – 22 000 €"],
             ["Corporate à fort enjeu d'image et de performance", "Next.js sur mesure", "10 000 – 40 000 €"],
             ["Boutique en ligne", "Shopify (simple) ou sur-mesure (marque, volumétrie) — voir section 11", "3 000 – 80 000 €"],
@@ -289,19 +291,26 @@ export default function Page() {
           c&apos;est comparer une maison sur catalogue et un architecte : la
           première est debout en trois semaines et ressemble à ses
           voisines ; le second coûte plus cher, dessine pour votre terrain,
-          et le résultat vous appartient jusqu&apos;aux fondations. Aucun
-          des deux n&apos;est « meilleur » dans l&apos;absolu — tout dépend
-          de ce que vous construisez, et pour combien de temps.
+          et le résultat vous appartient jusqu&apos;aux fondations. Les
+          deux ne se valent pas pour autant : pour une entreprise qui
+          veut convertir et durer, le sur-mesure est devenu la
+          recommandation par défaut — le reste de ce guide chiffre
+          pourquoi, et délimite précisément les cas, désormais
+          minoritaires, où le CMS garde l&apos;avantage.
         </p>
         <p>
           La vraie question du dirigeant n&apos;est donc pas technique, elle
           est organisationnelle : <strong>qui publie du contenu, à quelle
           fréquence, et quel est l&apos;enjeu business du site ?</strong> Si
-          la réponse est « notre équipe marketing publie trois articles par
-          semaine », le CMS se justifie. Si c&apos;est « le site doit nous
+          la réponse est « notre équipe marketing publie trois articles
+          par semaine », un outil d&apos;édition se justifie — ce qui,
+          en 2026, ne veut plus dire une façade WordPress :
+          l&apos;édition peut vivre en coulisses et le site public en
+          Next.js (sections 10 et 12). Si c&apos;est « le site doit nous
           amener des clients et incarner notre sérieux », la qualité
           d&apos;exécution prime sur la facilité d&apos;édition — et le
-          sur-mesure entre en jeu. Le reste de ce guide chiffre ce choix.
+          sur-mesure entre en jeu. Les sections 5 à 9 mettent des
+          chiffres sur cet arbitrage.
         </p>
 
         <InfoBox variant="blue" title="Le lexique du dirigeant : 12 mots pour lire ce guide sans effort">
@@ -376,7 +385,7 @@ export default function Page() {
             Pour que la comparaison tienne, disons aussi ce qui fâche.
           </p>
           <ul className="list-disc pl-4 space-y-1.5">
-            <li>Le ticket d&apos;entrée est 2 à 5 fois plus élevé qu&apos;un WordPress à thème.</li>
+            <li>Le ticket d&apos;entrée reste 2 à 5 fois plus élevé qu&apos;un WordPress à thème low-cost — mais l&apos;écart s&apos;est fortement resserré depuis que le développement assisté par IA (Claude Code) a fait baisser le coût du sur-mesure : face à un WordPress professionnel en agence, il ne reste que quelques dizaines de pourcents à la création (5 000 € contre 6 900 €, section 9), effacés dès la première année de maintenance.</li>
             <li>Sans outil d&apos;édition branché, chaque modification de contenu passe par un développeur — la section 10 détaille les solutions.</li>
             <li>Rien d&apos;équivalent aux 61 000 extensions WordPress : formulaire, multilingue ou réservation se développent, ou s&apos;intègrent via des services spécialisés.</li>
             <li>Les développeurs eux-mêmes trouvent l&apos;outil de plus en plus complexe : dans la grande enquête annuelle du secteur (State of JS 2025), environ un développeur sur cinq s&apos;en dit enthousiaste et un sur six critique. Traduction pour vous : un outil puissant, qui demande un prestataire réellement compétent.</li>
@@ -464,8 +473,10 @@ export default function Page() {
           +8,4 % de ventes dans le commerce, +10,1 % de conversions dans le
           voyage. Pour une entreprise qui vit des demandes de devis reçues
           par son site, un site lent, ce sont des appels en moins chaque
-          semaine. C&apos;est là que se joue l&apos;écart entre 46 % et
-          84 % de sites au vert.
+          semaine. C&apos;est là que se joue l&apos;écart entre la
+          dernière place du classement (WordPress, 43-46 % au vert) et
+          sa tête — et ce qu&apos;un site statique maîtrisé permet de
+          garantir par contrat.
         </InfoBox>
 
         <h2 id="seo">6. Le match SEO : ce que Google dit vraiment</h2>
@@ -487,7 +498,15 @@ export default function Page() {
           chaque page à Google et aux assistants IA (votre activité, vos
           prix, cette FAQ, cet auteur) et alimentent les résultats enrichis.
           Des Core Web Vitals au vert. Et aucune limite d&apos;extension.
-          Les guides de ce site — dont celui que vous lisez — sont notre
+          Ce que le sur-mesure permet et qu&apos;aucun thème ne
+          réplique, au passage : un design dessiné pour votre marque
+          et des animations de niveau produit (bibliothèques comme
+          Framer Motion ou GSAP, inaccessibles proprement sur un thème
+          WordPress alourdi de scripts) — la différence entre un site
+          qui informe et un site qui convainc. Ce site —
+          hagnere-code.ai — est lui-même développé à 100 %
+          en Next.js/React : les guides que vous lisez, leur vitesse
+          de chargement, leur design et leurs animations sont notre
           démonstration en production.
         </p>
         <p>
@@ -658,7 +677,7 @@ export default function Page() {
         <ol>
           <li>
             <strong>À l&apos;entrée, WordPress gagne.</strong> Si votre
-            budget plafonne à 3 000 €, un WordPress à thème bien fait bat un
+            budget plafonne sous 4 000 €, un WordPress à thème bien fait bat un
             sur-mesure au rabais.
           </li>
           <li>
@@ -800,8 +819,11 @@ export default function Page() {
         <h2 id="wordpress-bon-choix">11. Les cas où WordPress reste le bon choix</h2>
         <p>
           Une agence Next.js qui prétendrait que WordPress ne sert plus à
-          rien ne mériterait pas votre confiance. Voici où WordPress gagne,
-          clairement :
+          rien ne mériterait pas votre confiance. Mais soyons clairs
+          sur le périmètre : pour une entreprise dont le site doit
+          convertir et durer, notre réponse est le sur-mesure. Voici
+          les situations — bien délimitées — où WordPress reste le meilleur
+          choix :
         </p>
         <ul>
           <li>
@@ -816,9 +838,13 @@ export default function Page() {
             bâclé au même prix.
           </li>
           <li>
-            <strong>L&apos;urgence</strong> — en ligne en 3-4 semaines avec
-            un écosystème de prestataires immense : les devis arrivent vite
-            et la concurrence tire les prix.
+            <strong>L&apos;urgence à micro-budget</strong> — en ligne en 3-4 semaines avec
+            un écosystème de prestataires immense : on obtient
+            plusieurs devis en quelques jours, à des prix tirés par la
+            concurrence. À noter : le développement assisté par IA a
+            aussi raccourci les délais du sur-mesure — notre{" "}
+            <Link href="/guides/combien-de-temps-pour-creer-un-site">guide
+            des délais de création</Link> chiffre les deux scénarios.
           </li>
           <li>
             <strong>L&apos;équipe déjà formée</strong> — si vos équipes
@@ -863,10 +889,15 @@ export default function Page() {
           relance de panier) est une extension de plus à payer, à corriger
           et à faire cohabiter, sur un socle qui cumule déjà les fragilités
           des sections 5 et 7. Pour vendre simplement, une plateforme
-          spécialisée comme Shopify fait mieux. Le sur-mesure ne se justifie
-          qu&apos;au-delà d&apos;un certain volume ou pour des besoins
-          particuliers : configurateur de produits, tarifs négociés par
-          client, connexion à votre gestion de stock. Les chiffres
+          spécialisée comme Shopify reste défendable — avec un petit
+          catalogue et sans exigence de marque ; dès que la marque,
+          l&apos;expérience d&apos;achat ou la volumétrie comptent, le
+          sur-mesure (ou le headless) reprend la main : configurateur
+          de produits, tarifs négociés par client, connexion à votre
+          gestion de stock — notre{" "}
+          <Link href="/guides/shopify-ou-sur-mesure">comparatif
+          Shopify ou e-commerce sur mesure</Link> le chiffre sur
+          3 ans. Les chiffres
           détaillés — abonnements, commissions, budgets — sont dans notre
           guide du{" "}
           <Link href="/guides/prix-site-e-commerce">prix d&apos;un site
@@ -891,11 +922,7 @@ export default function Page() {
           reconstruire côté site public). Pertinent pour un média, un site à
           fort trafic ou une marque multicanale ; surdimensionné pour un
           site vitrine de PME, où un CMS headless léger fait le même travail
-          pour moins cher. Le même arbitrage existe côté boutiques en
-          ligne — garder le moteur d&apos;une plateforme ou construire le
-          sien : notre{" "}
-          <Link href="/guides/shopify-ou-sur-mesure">comparatif Shopify
-          ou e-commerce sur mesure</Link> le chiffre sur 3 ans.
+          pour moins cher.
         </p>
 
         <h2 id="grille-decision">13. La grille de décision finale, profil par profil</h2>
@@ -911,7 +938,7 @@ export default function Page() {
         <GuideTable
           headers={["Profil", "Recommandation", "Pourquoi"]}
           rows={[
-            ["Blog / média actif", "WordPress (ou headless si fort trafic)", "Autonomie éditoriale imbattable"],
+            ["Blog / média actif", "WordPress bien maintenu — passer en headless si le média devient un canal d'acquisition", "Autonomie éditoriale imbattable ; la performance se greffe ensuite sans changer d'outil d'édition"],
             ["TPE locale, budget < 4 000 €", "WordPress à thème, 5 extensions max, maintenu", "Meilleur rapport résultat/prix à ce budget"],
             ["PME dont le site doit vendre", "Next.js sur mesure", "Vitesse jugée bonne par Google, référencement soigné, aucune extension à entretenir"],
             ["Corporate / marque à fort enjeu", "Next.js sur mesure", "Image, performance, sécurité, code possédé"],
