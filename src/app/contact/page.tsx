@@ -45,14 +45,19 @@ const contactJsonLd = JSON.stringify({
       postalCode: "73000",
       addressCountry: "FR",
     },
-    // Zones réellement desservies depuis Chambéry. Lyon et Grenoble ont été
-    // retirées : aucune présence ni client sur place — déclarer une zone sans
-    // ancrage ne produit rien et brouille le signal local (voir
-    // docs/plan-seo-local-savoie.md, §10).
+    // Zones réellement desservies : ancrage physique en Savoie, et travail à
+    // distance sur toute la France (c'est la réalité de l'activité, donc c'est
+    // ce qu'on déclare). Ce champ décrit le périmètre commercial ; il n'est PAS
+    // le levier de positionnement sur les villes hors bassin — celui-ci passe
+    // par les contenus nationaux et les pages technologies (§ « moteur
+    // national » de docs/plan-seo-local-savoie.md).
     areaServed: [
       "Chambéry",
       "Savoie",
       "Haute-Savoie",
+      "Auvergne-Rhône-Alpes",
+      "Lyon",
+      "Grenoble",
       "France",
     ],
     openingHoursSpecification: {
