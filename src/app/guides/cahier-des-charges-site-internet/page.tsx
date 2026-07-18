@@ -303,6 +303,17 @@ export default function Page() {
 
         <h2 id="a-quoi-sert">2. À quoi sert vraiment un cahier des charges</h2>
         <p>
+          Avant d&apos;entrer dans le document lui-même, un mot sur
+          son premier usage : consulter des prestataires. Le même
+          cahier des charges envoyé à un freelance et à deux agences
+          est le seul moyen d&apos;obtenir des devis réellement
+          comparables — et le choix entre ces profils (prix, risques,
+          garanties) fait l&apos;objet de notre{" "}
+          <Link href="/guides/agence-web-ou-freelance">comparatif
+          agence web ou freelance</Link>, pensé pour être utilisé avec
+          ce modèle.
+        </p>
+        <p>
           Faire construire un site sans cahier des charges, c&apos;est faire
           construire une maison sans plan. Décrivez oralement « une belle
           maison lumineuse » à trois constructeurs : vous recevrez trois

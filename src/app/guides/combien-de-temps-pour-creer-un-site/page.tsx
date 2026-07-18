@@ -338,7 +338,11 @@ export default function Page() {
         />
         <p>
           Lecture honnête de ce tableau : les méthodes rapides ne
-          suppriment pas le travail, elles le déplacent. Le builder
+          suppriment pas le travail, elles le déplacent. (Et pour
+          choisir entre les lignes freelance et agence, notre{" "}
+          <Link href="/guides/agence-web-ou-freelance">comparatif
+          agence ou freelance</Link> donne la grille par budget et par
+          risque.) Le builder
           déplace les heures vers vous ; l&apos;IA les déplace vers
           l&apos;après (réécrire le générique) ; le sprint les déplace
           vers l&apos;avant (tout préparer avant le premier jour).

@@ -288,6 +288,13 @@ export default function Page() {
           tire ce chiffre vers le haut.
         </p>
         <p>
+          Le choix du prestataire derrière ces fourchettes — et ses
+          risques réels, du freelance qui disparaît à
+          l&apos;agence-coquille — est décortiqué dans notre{" "}
+          <Link href="/guides/agence-web-ou-freelance">comparatif
+          agence web ou freelance</Link>.
+        </p>
+        <p>
           Une médiane n&apos;est ni un minimum ni une moyenne : la moitié des
           entreprises ont payé moins, l&apos;autre moitié davantage. Très
           concrètement : face à un site « professionnel complet » à 900 €, loin

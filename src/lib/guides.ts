@@ -36,6 +36,20 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "agence-web-ou-freelance",
+    title: "Agence web ou freelance : qui choisir en 2026 · Hagnéré Code",
+    cardTitle: "Agence web ou freelance : la grille de décision honnête",
+    metaDescription:
+      "TJM sourcés, risques quantifiés (INSEE), propriété du code, sous-traitance : la grille de décision par budget qu'aucun comparatif ne donne. Biais déclaré.",
+    cardDescription:
+      "Le comparatif que personne n'ose écrire : TJM sourcés, risque de disparition chiffré, propriété du code, sous-traitance déguisée — et une grille par budget.",
+    heroTitle: "Agence web ou freelance : la grille de décision honnête, par budget et par risque",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+    readTimeMin: 24,
+  },
+  {
     slug: "creer-un-site-avec-ia",
     title: "Créer un site avec l'IA : le guide honnête 2026 · Hagnéré Code",
     cardTitle: "Créer un site avec l'IA : ce qui marche vraiment en 2026",
