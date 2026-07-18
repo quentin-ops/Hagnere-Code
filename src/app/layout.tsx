@@ -23,11 +23,11 @@ const isProd = process.env.NEXT_PUBLIC_ENV === "production";
 export const metadata: Metadata = {
   metadataBase: new URL("https://hagnere-code.ai"),
   title: {
-    default: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
+    default: "Hagnéré Code — Agence web à Chambéry : sites, SaaS, SEO, Ads",
     template: "%s",
   },
   description:
-    "Studio à Chambéry : SaaS, applications métier et sites sur mesure au forfait fixe. Code livré chez vous, garantie 30 jours, réponse sous 24 h.",
+    "Agence web complète à Chambéry : sites, e-commerce, SaaS, applications métier, référencement naturel et Google Ads. Forfait fixe, réponse sous 24 h.",
   applicationName: "Hagnéré Code",
   authors: [{ name: "Hagnéré Code" }],
   openGraph: {
@@ -35,15 +35,15 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://hagnere-code.ai",
     siteName: "Hagnéré Code",
-    title: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
+    title: "Hagnéré Code — Agence web à Chambéry : sites, SaaS, SEO, Ads",
     description:
-      "Studio à Chambéry : SaaS, applications métier, outils internes et sites sur mesure au forfait fixe, IA native.",
+      "Agence web complète à Chambéry : développement sur mesure (sites, e-commerce, SaaS, applications métier), référencement naturel et Google Ads. Forfait fixe.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
+        alt: "Hagnéré Code — Agence web à Chambéry : développement, SEO, Google Ads",
       },
     ],
   },

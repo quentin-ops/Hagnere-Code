@@ -3,15 +3,15 @@ import { HomepageDesign } from "@/components/homepage/HomepageDesign";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
+  title: "Hagnéré Code — Agence web à Chambéry : sites, SaaS, SEO, Ads",
   description:
-    "Studio à Chambéry : SaaS, applications métier et sites sur mesure au forfait fixe. Code livré chez vous, garantie 30 jours, réponse sous 24 h.",
+    "Agence web complète à Chambéry : sites, e-commerce, SaaS, applications métier, référencement naturel et Google Ads. Forfait fixe, réponse sous 24 h.",
   alternates: { canonical: "/" },
   openGraph: {
     ...OG_BASE,
-    title: "Hagnéré Code — Développement SaaS, sites & outils sur mesure",
+    title: "Hagnéré Code — Agence web à Chambéry : sites, SaaS, SEO, Ads",
     description:
-      "Studio à Chambéry : SaaS, applications métier et sites sur mesure au forfait fixe. Code livré chez vous, garantie 30 jours, réponse sous 24 h.",
+      "Agence web complète à Chambéry : sites, e-commerce, SaaS, applications métier, référencement naturel et Google Ads. Forfait fixe, réponse sous 24 h.",
     url: "/",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -28,7 +28,7 @@ const organizationJsonLd = {
   logo: "https://hagnere-code.ai/logos/logo-dark.png",
   image: "https://hagnere-code.ai/og-image.png",
   description:
-    "Studio de développement SaaS, applications métier, sites vitrines et outils internes. Next.js, React, TypeScript, IA native, forfait fixe. Basé à Chambéry.",
+    "Agence web complète basée à Chambéry (Savoie) : développement sur mesure de sites vitrines, e-commerce, SaaS, applications métier et outils internes, référencement naturel et campagnes Google Ads. Next.js, React, TypeScript, forfait fixe.",
   foundingDate: "2025-09-30",
   founder: {
     "@type": "Person",
@@ -98,15 +98,27 @@ const localBusinessJsonLd = {
     postalCode: "73000",
     addressCountry: "FR",
   },
-  areaServed: { "@type": "Country", name: "France" },
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Savoie" },
+    { "@type": "AdministrativeArea", name: "Haute-Savoie" },
+    { "@type": "AdministrativeArea", name: "Isère" },
+    { "@type": "AdministrativeArea", name: "Ain" },
+    { "@type": "AdministrativeArea", name: "Auvergne-Rhône-Alpes" },
+    { "@type": "Country", name: "France" },
+  ],
   vatID: "FR30993672856",
   serviceType: [
+    "Création de site internet",
+    "Développement web sur mesure",
+    "Site e-commerce",
     "Développement SaaS",
     "Applications métier",
-    "Sites vitrines",
     "Outils internes",
-    "SEO",
-    "Publicité en ligne",
+    "Application mobile",
+    "Référencement naturel (SEO)",
+    "Campagnes Google Ads",
+    "Refonte de site internet",
+    "Maintenance et infogérance web",
   ],
   openingHoursSpecification: {
     "@type": "OpeningHoursSpecification",
