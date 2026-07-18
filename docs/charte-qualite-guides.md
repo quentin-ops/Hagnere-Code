@@ -8,7 +8,9 @@
 > pédagogique pour le lecteur ET optimisé pour Google ». Elle a été établie
 > le 17 juillet 2026 après la production et la refonte des 8 premiers guides
 > (validés 9/10+ par panels de lecteurs indépendants, audités 10/10 en
-> production).
+> production), puis complétée le 18 juillet 2026 (revue anti-erreurs §7,
+> ligne éditoriale 2026) après l'alignement éditorial des 20 premiers
+> guides.
 
 Fichiers liés : [roadmap des guides](roadmap-guides-seo.md) ·
 registre `src/lib/guides.ts` · composants `src/components/guides/`.
@@ -55,18 +57,22 @@ Toute production suit ces 10 étapes, dans l'ordre :
    existants à des ancres naturelles (jamais en pied de page), et des liens
    sortants vers les guides frères, la page service concernée, `/methode`
    et `/demarrer-un-projet`.
-7. **Batterie de vérification locale** (§7) + `npx tsc --noEmit` +
+7. **Batterie de vérification locale** (§8) + `npx tsc --noEmit` +
    `npm run test` + `npx eslint` sur le périmètre — **0 erreur, 0 warning**.
 8. **Contrôle visuel réel** — screenshot du rendu (hero, un tableau, un
    encadré) avant toute livraison. Jamais de mise en ligne sans avoir vu
    la page.
-9. **Contre-vérification par panel** — pour tout guide neuf ou refondu :
-   relecture par agents « lecteur néophyte » indépendants ; **seuil :
-   ≥ 8,5/10 en pédagogie ET en complétude**, sinon corrections et nouveau
-   passage. Les corrections signalées se traitent toutes (appliquées ou
-   écartées avec justification écrite).
+9. **Contre-vérification par panel** — précédée de la **revue
+   anti-erreurs (§7)** sur le guide complet. Pour tout guide neuf ou
+   refondu : relecture par agents « lecteur néophyte » indépendants ;
+   **seuil : ≥ 8,5/10 en pédagogie ET en complétude**, sinon corrections
+   et nouveau passage. Les corrections signalées se traitent toutes
+   (appliquées ou écartées avec justification écrite) — et **chaque
+   correction appliquée repasse la revue anti-erreurs sur le paragraphe
+   touché** : la moitié des défauts de round 2-3 étaient des résidus
+   d'édition du round précédent.
 10. **Livraison** — commit scopé (message détaillé), push, attente du
-    déploiement, **audit de production complet** (§7 sur l'URL réelle),
+    déploiement, **audit de production complet** (§8 sur l'URL réelle),
     puis remise du lien avec rapport. Rappeler l'inspection d'URL Search
     Console côté utilisateur.
 
@@ -221,10 +227,88 @@ salariés, aucune culture web**. Chaque règle ci-dessous est bloquante :
 - **Positionnement** : majorité React/Next.js, expertise Laravel
   secondaire ; équipe senior à Chambéry (l'angle territorial Savoie/AURA
   est un différenciateur à exploiter quand le sujet s'y prête).
+- **Ligne éditoriale 2026 (comparatifs, prix, choix techniques)** : en
+  2026, les plateformes (Shopify, Wix, WordPress à thème) ne sont plus
+  recommandables pour le site d'une entreprise qui doit convertir —
+  qualité visuelle plafonnée, maintenance lourde, pas de fonctions ni
+  d'animations sur mesure. Le **sur-mesure full code (React/Next.js) est
+  le choix par défaut** : l'IA (Claude Code, assistants de développement)
+  en a fait chuter le coût de construction. Les nuances obligatoires qui
+  crédibilisent cette ligne : la stack dépend des besoins (vitrine pure
+  vs back-office relié) mais une vitrine se fait en React dans tous les
+  cas ; les **cas résiduels plateforme sont nommés** (micro-budget,
+  side-project, test de marché, caisse/POS, éditorial intensif) ;
+  hagnere-code.ai — 100 % React/Next.js — sert de preuve vivante ; les
+  bibliothèques d'animation (Framer Motion, GSAP) sont citées comme
+  gain de temps donc d'argent. **Le pitch IA : 2 à 3 occurrences maximum
+  par page, chacune formulée différemment** (le panel a compté jusqu'à
+  8 répétitions quasi verbatim avant correction).
 
 ---
 
-## 7. La batterie de vérification (locale PUIS production)
+## 7. La revue anti-erreurs (les 12 pièges détectés par les panels)
+
+Chaque piège ci-dessous a été **réellement détecté** — souvent plusieurs
+fois — par les panels de l'alignement éditorial de juillet 2026. La revue
+se fait sur le guide complet AVANT le panel, puis sur chaque paragraphe
+retouché après toute passe de correction. Chaque point est bloquant :
+
+1. **Chiffre dupliqué divergent** — tout chiffre présent à 2+ endroits
+   (texte, tableau, encadré ASCII `FormulaBox`, récapitulatif « À
+   retenir », FAQ, JSON-LD) doit être strictement identique. Points
+   aveugles récurrents : le récap d'encadré vs le total du tableau
+   au-dessus ; les titres « Les X chiffres » quand on ajoute ou retire
+   une puce ; la FAQ vs son miroir JSON-LD.
+2. **Arithmétique recalculée** — toute somme, ratio ou durée affichée se
+   recalcule à la main avant publication. Exemples réels : 7 500 € +
+   1 200–6 000 € = 8 700–13 500 € (pas « 9 000–13 000 ») ; 2 000 € ÷
+   840–960 €/an ≈ 2,1–2,4 ans (« plus de deux ans », pas « près de
+   trois ans ») ; 83 600 € ÷ 530 €/j ≈ 158 jours (pas « 100-120 »).
+3. **Répétition mécanique** — un même argument apparaît au maximum 2-3
+   fois par page, chaque fois formulé différemment. Une démonstration
+   chiffrée vit à UN endroit canonique ; les autres occurrences y
+   renvoient (« section 8 ») au lieu de la recopier.
+4. **Absolu indéfendable** — « jamais », « aucun », « ne survit pas aux
+   chiffres » doivent être démontrables par les propres chiffres du
+   guide ; sinon resserrer le périmètre (« aucune des pages que nous
+   avons analysées », « sur la durée de vie réelle d'un site ») ou
+   décaler l'horizon (« s'inverse avant la sixième année », pas « dès la
+   quatrième » si les chiffres ne le prouvent pas).
+5. **Échéance périmée** — toute date légale ou événement daté est
+   confronté à la date de publication : ce qui est déjà en vigueur se
+   rédige au présent (« en vigueur depuis le 19 juin 2026 »), jamais au
+   futur. Vérifier tableaux ET paragraphes (ils divergent facilement).
+6. **Renvoi vérifié** — chaque « (section N) » et chaque promesse
+   (« la grille détaille X profil par profil ») est vérifiée contre le
+   contenu réel de la section cible avant publication.
+7. **Périmètre du chiffre** — une statistique reste attachée à son objet
+   exact : JavaScript ≈ 2 développeurs sur 3, React ≈ 1 sur 2 — ne
+   jamais fusionner en « JavaScript/React : 2 sur 3 ». Un montant associé
+   à un personnage du fil rouge (forfait, devis) est recalculé partout où
+   il réapparaît.
+8. **Terminologie réservée** — un terme défini avec une fourchette
+   précise (ex. TMA = 500–3 000 €/mois) ne se réutilise pas hors de ce
+   périmètre : choisir un autre mot (« accompagnement léger »).
+9. **Phrase-fleuve** — pas de phrase > ~35 mots, pas de deux parenthèses
+   dos à dos, pas d'incise cassée (« — … —, ») : scinder. Les phrases
+   retouchées par une correction sont les premières concernées.
+10. **Résidu d'édition** — durcir un verdict impose de supprimer les
+    phrases qui l'adoucissaient ; déplacer une démonstration impose de
+    l'effacer à l'ancien emplacement ; après chaque Edit, relire le
+    paragraphe entier rendu (pas seulement le diff) pour détecter
+    doublons de phrase et transitions cassées.
+11. **Fil rouge cohérent** — le personnage récurrent garde le même
+    scénario, les mêmes chiffres et la même décision d'un bout à l'autre
+    du guide (contre-exemple réel : un personnage « sans refonte prévue »
+    en section 2 qui « planifie sa refonte » en section 9).
+12. **Liste canonique des cas résiduels** — les cas où la plateforme
+    reste défendable forment une liste fermée énoncée UNE fois (section
+    de référence) ; partout ailleurs on y renvoie au lieu de la
+    recopier — les copies divergent toujours au fil des retouches.
+
+---
+
+## 8. La batterie de vérification (locale PUIS production)
 
 Chaque check est bloquant. Script python (urllib) sur la page rendue :
 
@@ -251,7 +335,7 @@ Un guide n'est « livré » qu'avec l'audit prod à 100 %.
 
 ---
 
-## 8. Contraintes techniques du code
+## 9. Contraintes techniques du code
 
 - Un guide = 1 entrée registre + 1 dossier `src/app/guides/<slug>/`
   (`page.tsx` + `opengraph-image.tsx`). Rien d'autre à synchroniser.
@@ -269,7 +353,7 @@ Un guide n'est « livré » qu'avec l'audit prod à 100 %.
   maillage), messages détaillés en français décrivant les angles et les
   vérifications.
 
-## 9. Rappels d'hygiène de production
+## 10. Rappels d'hygiène de production
 
 - Les recherches et critiques se font par **agents parallèles**
   (workflows) ; la vérification finale et la livraison restent sous
