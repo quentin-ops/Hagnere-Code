@@ -209,6 +209,15 @@ export default function Page() {
             ["Reste de la France", "Partout", "Travail entièrement à distance, mêmes engagements contractuels"],
           ]}
         />
+        <p>
+          Deux pages détaillent ce territoire plus finement : notre{" "}
+          <Link href="/agence/savoie">page consacrée à la Savoie</Link>{" "}
+          décrit les six bassins du département et ce qu&apos;ils achètent
+          réellement en matière de numérique, et notre{" "}
+          <Link href="/agence/savoie/chambery">page Chambéry</Link> entre
+          dans le détail de l&apos;économie de la ville, de ses zones
+          d&apos;activité et de ses employeurs.
+        </p>
         <InfoBox variant="blue" title="Une précision de géographie que beaucoup se trompent">
           <strong>Aix-les-Bains et Le Bourget-du-Lac ne font pas partie de
           Grand Chambéry</strong> : ces deux communes relèvent de la

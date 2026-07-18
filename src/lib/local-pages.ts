@@ -60,6 +60,30 @@ export const LOCAL_PAGES: LocalPageEntry[] = [
     datePublished: "2026-07-18",
     dateModified: "2026-07-18",
   },
+  {
+    path: "savoie",
+    root: "agence",
+    level: "departement",
+    title: "Agence web en Savoie (73) · Hagnéré Code",
+    metaDescription:
+      "Six territoires, six économies : bassin chambérien, lac du Bourget, Tarentaise, Maurienne, Combe de Savoie. Ce que chacun achète vraiment en numérique.",
+    heroTitle: "Développement web en Savoie : six territoires, six économies",
+    locality: "Savoie",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+  },
+  {
+    path: "savoie/chambery",
+    root: "agence",
+    level: "ville",
+    title: "Agence web à Chambéry : développement sur mesure · Hagnéré Code",
+    metaDescription:
+      "Agence installée au 7 rue Ernest Filliard : sites, applications métier, référencement, Google Ads. L'économie chambérienne et ses besoins numériques réels.",
+    heroTitle: "Agence web à Chambéry : ce que cette ville achète vraiment",
+    locality: "Chambéry",
+    datePublished: "2026-07-18",
+    dateModified: "2026-07-18",
+  },
 ];
 
 export function localPagePath(p: LocalPageEntry): string {
