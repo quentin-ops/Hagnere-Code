@@ -97,6 +97,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.85,
     },
+    {
+      // Page service « agence react » : angle applicatif (espaces clients,
+      // outils internes), volontairement distinct de /agence-next-js qui
+      // couvre l'angle site public, pour éviter la cannibalisation.
+      url: `${baseUrl}/agence-react`,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
   ];
 
   // Guides : générés depuis le registre central src/lib/guides.ts —

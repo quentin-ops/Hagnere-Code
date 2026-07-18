@@ -149,6 +149,7 @@ export default function Page() {
           { number: "04", title: "Garantie 30 jours après mise en ligne", description: "", color: "amber" },
         ]}
         relatedLinks={[
+          { href: "/agence-react", label: "Agence React" },
           { href: "/services/sites-vitrines", label: "Sites vitrines" },
           { href: "/services/ecommerce", label: "E-commerce sur mesure" },
           { href: "/services/saas-applications-metier", label: "SaaS et applications métier" },
@@ -166,7 +167,10 @@ export default function Page() {
           l&apos;ensemble de nos projets. Cette page explique ce que nous
           construisons avec, ce que nous garantissons par écrit, ce que ça
           coûte — et les cas où nous vous dirons que ce n&apos;est pas la
-          bonne solution.
+          bonne solution. Si votre besoin est une application derrière un
+          identifiant plutôt qu&apos;un site public, notre page{" "}
+          <Link href="/agence-react">agence React</Link> traite précisément
+          ce cas.
         </p>
 
         <GuideToc
