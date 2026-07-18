@@ -6,6 +6,61 @@
 > l'étude des concurrents, les chartes pédagogique et SEO, et la batterie
 > de vérification.
 
+> 🔄 **ORDRE DE PRODUCTION RÉVISÉ LE 18 JUILLET 2026** après un audit
+> concurrentiel des SERP françaises (10 agents, 6 clusters de requêtes,
+> analyse des dominants) : voir
+> [audit-concurrentiel-2026-07.md](audit-concurrentiel-2026-07.md).
+> **Le classement P1/P2/P3 ci-dessous reste valable comme carte du
+> territoire, mais il ne dicte plus l'ordre de production.** L'ordre à
+> suivre est celui de la section « Ordre de production » ci-dessous,
+> trié par *vitesse de positionnement* et non par volume de recherche.
+>
+> Les trois constats qui changent l'ordre :
+> 1. Les 23 guides publiés sont **plus profonds que 100 % de ce qui
+>    ranke** — le déficit n'est pas éditorial, il est d'autorité.
+>    Publier un 24ᵉ guide généraliste ne débloque rien.
+> 2. Le **local savoyard est le seul terrain gagnable en 2-6 mois** par
+>    un domaine neuf, et il est aujourd'hui à zéro (aucune page locale,
+>    pas de fiche Google Business Profile).
+> 3. Sur les requêtes commerciales technos (« agence next js »), la SERP
+>    ne contient **que des pages service, aucun guide** : il faut
+>    produire des pages service, pas des articles.
+
+## Ordre de production (révisé 18/07/2026)
+
+**Priorité absolue — non éditorial, à faire avant tout guide :**
+Search Console (mesurer l'indexation réelle) · `noindex` sur
+`backoffice.hagnere-code.ai` (indexable aujourd'hui) · arbitrage du
+`<title>` de la home (l'entité annoncée est « SaaS » alors que 23/23
+guides parlent de sites web) · fiche Google Business Profile (délai
+postal de 5-14 j = chemin critique) · dossier Activateur France Num.
+
+| # | Sujet | Type | Difficulté SERP | Délai estimé |
+|---|---|---|---|---|
+| 1 | `agence-web-aix-les-bains` | Page locale | Faible | 2-4 mois |
+| 2 | Modèles `.docx`/`.pdf` cahier des charges | Ressource | Moyenne | 2-4 mois |
+| 3 | `agence-web-chambery` | Page locale | Faible-moyenne | 3-6 mois |
+| 4 | `creation-site-internet-savoie` | Guide local | Faible | 3-6 mois |
+| 5 | `agence-next-js` | **Page service** | Faible | 3-6 mois |
+| 6 | `no-code-ou-sur-mesure` | Guide | Faible | 3-6 mois |
+| 7 | Enrichir `prix-logiciel-sur-mesure` | Enrichissement | Faible | 3-6 mois |
+| 8 | Renforcer `shopify-ou-sur-mesure` | Enrichissement | Très faible | 3-6 mois |
+| 9 | Éclater `creer-un-site-avec-ia` en 3 pages | Guides courts | Faible | 3-6 mois |
+| 10 | `transformer-excel-en-application` | Guide | Faible | 4-6 mois |
+| 11 | `agence-developpement-saas-sur-mesure` | Page service | Moyenne | 4-8 mois |
+| 12 | Pages sectorielles Savoie | Pages | Faible | 4-8 mois |
+| 13 | Éclatement des guides prix en sous-pages | Architecture | Faible | 4-8 mois |
+| 14 | `combien-coute-un-crm` | Guide | Moyenne | 6-9 mois |
+| 15 | Baromètre de prix (si N crédible) | Étude | Moyenne | 6-12 mois |
+
+**Dé-priorisés** (utiles, mais après le local et les pages service) :
+`prix-referencement-naturel`, `prix-audit-site-internet`,
+`prix-landing-page`, `combien-coute-une-marketplace`,
+`combien-coute-un-mvp`. **Écartés** : version nationale des aides,
+pages Lyon/Grenoble avant 12 mois, « développeur web Chambéry »
+(intention freelance low-cost), glossaire, annuaire d'agences,
+simulateur de prix (contraire au funnel lead-only).
+
 > Construite le 13 juillet 2026 à partir de 4 sweeps d'autocomplete Google
 > (~150 amorces, 73 requêtes qualifiées) + vérifications SERP page par page.
 > Volume = signal autocomplete (position, variantes, flag haute fréquence).
