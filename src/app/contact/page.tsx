@@ -45,12 +45,14 @@ const contactJsonLd = JSON.stringify({
       postalCode: "73000",
       addressCountry: "FR",
     },
+    // Zones réellement desservies depuis Chambéry. Lyon et Grenoble ont été
+    // retirées : aucune présence ni client sur place — déclarer une zone sans
+    // ancrage ne produit rien et brouille le signal local (voir
+    // docs/plan-seo-local-savoie.md, §10).
     areaServed: [
       "Chambéry",
       "Savoie",
       "Haute-Savoie",
-      "Lyon",
-      "Grenoble",
       "France",
     ],
     openingHoursSpecification: {
