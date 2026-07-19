@@ -36,6 +36,20 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "pourquoi-mon-site-ne-convertit-pas",
+    title: "Pourquoi mon site ne convertit pas · Hagnéré Code",
+    metaDescription:
+      "Avant de refaire votre site, prouvez qu'il est en cause. Le taux affiché est faux dans les deux sens — et les 7 signes chiffrés qui disent de ne PAS refondre.",
+    cardTitle: "Pourquoi mon site ne convertit pas : le diagnostic",
+    cardDescription:
+      "Le seul guide qui commence par démontrer que votre taux de conversion est faux, et dont le fil rouge est un devis de refonte à 14 900 € que nous avons refusé.",
+    heroTitle: "Pourquoi mon site ne convertit pas : l'arbre de diagnostic",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-19",
+    dateModified: "2026-07-19",
+    readTimeMin: 28,
+  },
+  {
     slug: "proprietaire-site-internet-code-source",
     title: "Qui est propriétaire de votre site internet ? · Hagnéré Code",
     metaDescription:

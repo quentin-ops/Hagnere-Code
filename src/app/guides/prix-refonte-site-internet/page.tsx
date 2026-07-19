@@ -342,7 +342,7 @@ export default function Page() {
           <li><strong>Il met plus de 3 secondes à charger</strong> : Google a mesuré que 53 % des visites mobiles abandonnent au-delà de ce seuil.</li>
           <li><strong>Sa technologie n&apos;est plus maintenue</strong> — CMS sans mises à jour de sécurité, prestataire disparu, thème abandonné.</li>
           <li><strong>Votre image a évolué, pas le site</strong> : nouveaux services, nouveau positionnement, et une vitrine qui raconte l&apos;entreprise d&apos;il y a cinq ans.</li>
-          <li><strong>Du trafic, mais pas de demandes</strong> : les visiteurs viennent et repartent sans vous contacter.</li>
+          <li><strong>Du trafic, mais pas de demandes</strong> : les visiteurs viennent et repartent sans vous contacter. Attention, c&apos;est le symptôme le plus souvent mal diagnostiqué — notre guide <Link href="/guides/pourquoi-mon-site-ne-convertit-pas">pourquoi mon site ne convertit pas</Link> montre que le chiffre affiché est faux dans les deux sens.</li>
           <li><strong>Le trafic chute durablement</strong> malgré les optimisations.</li>
           <li><strong>Impossible de modifier le site vous-même</strong> sans facturer un développeur à chaque changement d&apos;horaires.</li>
         </ul>

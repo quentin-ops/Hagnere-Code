@@ -632,6 +632,16 @@ POIDS MÉDIAN PAR SOCLE (mobile)
           ]}
         />
 
+        <p>
+          Un dernier cas, fréquent et coûteux : vous trouvez votre site lent
+          parce qu&apos;il ne vous rapporte pas de demandes. Ce sont deux
+          diagnostics distincts, et la vitesse est rarement le coupable.
+          Notre guide{" "}
+          <Link href="/guides/pourquoi-mon-site-ne-convertit-pas">pourquoi
+          mon site ne convertit pas</Link> donne l&apos;arbre de diagnostic à
+          dérouler avant d&apos;engager le moindre budget.
+        </p>
+
         <h2 id="methode">14. Méthode : diagnostiquer en 5 étapes</h2>
         <ol>
           <li>

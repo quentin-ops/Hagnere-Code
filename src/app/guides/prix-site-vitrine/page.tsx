@@ -798,7 +798,11 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
           site « gratuit » coûte alors le prix d&apos;un freelance, pour un
           résultat généralement inférieur. Le fait-soi-même reste rationnel
           pour tester une idée — pas pour le site d&apos;une entreprise qui
-          doit convertir.
+          doit convertir. Encore faut-il savoir mesurer cette conversion :
+          notre guide{" "}
+          <Link href="/guides/pourquoi-mon-site-ne-convertit-pas">pourquoi
+          mon site ne convertit pas</Link> explique pourquoi le chiffre
+          affiché par vos statistiques est faux, et dans les deux sens.
         </p>
         <p>
           Conclusion contre-intuitive : <strong>sur 3 ans, le site
