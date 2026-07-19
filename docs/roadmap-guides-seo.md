@@ -53,8 +53,25 @@ postal de 5-14 j = chemin critique) · dossier Activateur France Num.
 | 14 | `combien-coute-un-crm` | Guide | Moyenne | 6-9 mois |
 | 15 | Baromètre de prix (si N crédible) | Étude | Moyenne | 6-12 mois |
 
+### État d'avancement au 19/07/2026
+
+| Ligne | Statut |
+|---|---|
+| 5 · `agence-next-js` | ✅ livré, + `agence-react` en bonus |
+| 6 · `no-code-ou-sur-mesure` | ✅ guide n°24, en production |
+| 10 · `transformer-excel-en-application` | 🔄 recherche relancée (digests perdus) |
+| Pages locales (lignes 1, 3, 4) | ✅ `/agence`, `/agence/savoie`, `/agence/savoie/chambery` livrées ; vague 2 (Aix-les-Bains, Le Bourget-du-Lac) volontairement gelée tant que les pages existantes n'ont pas d'impressions |
+| Hors roadmap | ✅ guide n°25 `pourquoi-mon-site-est-lent`, ✅ guide n°26 `prix-referencement-naturel` |
+
+**Note sur `prix-referencement-naturel`** : classé « dé-priorisé » ci-dessous,
+il a finalement été produit en n°26. Raison assumée : la recherche a révélé
+que **100 % du top 10 est édité par des vendeurs de SEO**, qu'aucune page ne
+convertit un forfait en heures de consultant, et qu'aucune ne cite la
+jurisprudence française. Un angle défendable a plus de valeur qu'une place
+dans l'ordre théorique. Le reste de la liste dé-priorisée reste dé-priorisé.
+
 **Dé-priorisés** (utiles, mais après le local et les pages service) :
-`prix-referencement-naturel`, `prix-audit-site-internet`,
+`prix-audit-site-internet`,
 `prix-landing-page`, `combien-coute-une-marketplace`,
 `combien-coute-un-mvp`. **Écartés** : version nationale des aides,
 pages Lyon/Grenoble avant 12 mois, « développeur web Chambéry »
