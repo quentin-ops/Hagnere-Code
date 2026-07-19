@@ -1,4 +1,5 @@
 import { navHtml } from "@/components/design-shared/nav-html";
+import { TEAM_PUBLIC_COMPOSITION, TEAM_TOTAL_COUNT } from "@/lib/team";
 
 export const bodyHtml = `
 ${navHtml}
@@ -17,11 +18,11 @@ ${navHtml}
   <div class="ehero-radial"></div>
   <div class="wrap ehero-inner">
     <div class="ehero-copy">
-      <div class="ehero-eyebrow"><span class="pill hero-pill"><span class="dot"></span><span class="hero-pill-brand">L'équipe</span><span class="hero-pill-tag">Un gérant qui code · sept développeurs</span></span></div>
+      <div class="ehero-eyebrow"><span class="pill hero-pill"><span class="dot"></span><span class="hero-pill-brand">L'équipe</span><span class="hero-pill-tag">${TEAM_TOTAL_COUNT} personnes · toutes nommées</span></span></div>
       <h1>L'équipe Hagnéré Code :<br>les développeurs full-stack qui<br><span class="accent">vont coder votre projet.</span></h1>
       <p class="ehero-sub">
         Pas de pool de freelances anonymes. Pas de sous-traitance offshore. Pas de white-label déguisé.
-        <b>Un gérant associé codeur</b> et <b>sept développeurs</b> intégrés aux mêmes rituels —
+        <b>${TEAM_PUBLIC_COMPOSITION}</b>. Toute l'équipe partage les mêmes rituels —
         c'est cette équipe stable qui prend en charge votre projet du brief à la production,
         et qui reste vos interlocuteurs après.
       </p>
@@ -36,7 +37,7 @@ ${navHtml}
         </a>
       </div>
       <div class="ehero-meta">
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Sept développeurs, tous nommés</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe complète de ${TEAM_TOTAL_COUNT} personnes</span>
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Pas de pool anonyme</span>
         <span class="sep"></span>
@@ -849,7 +850,7 @@ ${navHtml}
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3z"/></svg>
         </div>
         <h4>Pas de sous-traitance anonyme</h4>
-        <p>Aucun pool anonyme, aucun offshore, aucun white-label. Chaque personne qui touche votre code est <b>nommée</b>, intégrée à nos rituels et signe un NDA — un gérant qui code et <b>sept développeurs</b>, point.</p>
+        <p>Aucun pool anonyme, aucun offshore, aucun white-label. Chaque personne qui touche votre code est <b>nommée</b>, intégrée à nos rituels et signe un NDA — <b>${TEAM_PUBLIC_COMPOSITION}</b>, point.</p>
       </div>
 
       <div class="val-card reveal reveal-d-2">
@@ -985,8 +986,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Pas de pool anonyme, jamais.</b> Un gérant associé codeur (Quentin) et
-            <b>sept développeurs</b> — Nicolas au CTO, Frédéric, Killian, Arthur et Ryan en seniors,
+            <b>Pas de pool anonyme, jamais.</b> ${TEAM_PUBLIC_COMPOSITION} — Quentin au pilotage, Nicolas au CTO, Frédéric, Killian, Arthur et Ryan en seniors,
             Peter en dev confirmé — tous intégrés à nos rituels (daily, code review, démo),
             tous sous NDA, tous nommés sur cette page. Pas de sous-traitance offshore, pas de white-label,
             aucune rotation d'inconnus à chaque projet.

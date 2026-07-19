@@ -222,6 +222,7 @@ export default function Page() {
         ]}
         faqTitle="Coût de la maintenance : vos questions"
         faqItems={faqItems}
+        showWhitePaperPromo
       >
         <p className="lead">
           La maintenance est la ligne du devis que tout le monde a envie

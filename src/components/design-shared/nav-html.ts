@@ -1,3 +1,5 @@
+import { TEAM_PUBLIC_COMPOSITION } from "@/lib/team";
+
 /**
  * Single canonical nav HTML — used by every page (body.ts string templates and
  * React layouts via <MainNav />). Inspired by Hagnéré Patrimoine's pill + mega
@@ -230,7 +232,7 @@ const PANE_CABINET = pane({
       "/equipe",
       ICON.equipe,
       "Équipe",
-      "Un gérant qui code et sept développeurs, nommés au cadrage.",
+      `${TEAM_PUBLIC_COMPOSITION}. Équipe nommée au cadrage.`,
     ),
 });
 

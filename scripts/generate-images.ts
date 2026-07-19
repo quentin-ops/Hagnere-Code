@@ -53,7 +53,7 @@ Composition (16:9 wide):
   studio-product-render quality.
 - Background: deep matte black (#0a0a0a) with a soft radial purple glow centered behind the type.
   Faint dotted grid texture. Clean, no clutter.
-- Bottom-right: a tiny tagline in light gray Geist Mono "STUDIO PRODUIT · CHAMBÉRY".
+- Bottom-right: a tiny tagline in light gray Geist Mono "STUDIO PRODUIT · BASSENS".
 
 Mood: confident, sober, sophisticated, French. No emojis, no gimmick, no people, no faces.
 Photorealistic 3D render, 8K quality, sharp focus, octane render style.

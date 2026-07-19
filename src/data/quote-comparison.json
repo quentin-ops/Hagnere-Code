@@ -1,0 +1,73 @@
+{
+  "criteria": [
+    { "category": "Périmètre", "criterion": "Objectifs métier et indicateurs de départ", "weight": 4, "proofHint": "Brief validé + indicateurs datés" },
+    { "category": "Périmètre", "criterion": "Inventaire des pages et gabarits", "weight": 4, "proofHint": "Inventaire chiffré des URL et gabarits" },
+    { "category": "Périmètre", "criterion": "Fonctionnalités et cas limites", "weight": 4, "proofHint": "Liste des parcours et cas d'erreur" },
+    { "category": "Périmètre", "criterion": "Exclusions explicites", "weight": 3, "proofHint": "Annexe des exclusions" },
+    { "category": "Périmètre", "criterion": "Options séparées du socle", "weight": 2, "proofHint": "Prix séparés et conditions d'activation" },
+    { "category": "Périmètre", "criterion": "Critères de recette mesurables", "weight": 3, "proofHint": "Plan de recette signé" },
+    { "category": "Périmètre", "criterion": "Appareils et responsive couverts", "weight": 2, "proofHint": "Matrice des largeurs testées" },
+    { "category": "Périmètre", "criterion": "Navigateurs supportés", "weight": 2, "proofHint": "Liste et versions minimales" },
+    { "category": "Contenus", "criterion": "Responsable de la rédaction", "weight": 2, "proofHint": "RACI des contenus" },
+    { "category": "Contenus", "criterion": "Migration et intégration des contenus", "weight": 2, "proofHint": "Quantités, méthode et recette" },
+    { "category": "Contenus", "criterion": "Images, droits et optimisation", "weight": 1, "proofHint": "Origine, licences et formats" },
+    { "category": "Contenus", "criterion": "Langues et traductions", "weight": 1, "proofHint": "Langues, volumes et responsable" },
+    { "category": "SEO et données", "criterion": "Inventaire des URL existantes", "weight": 4, "proofHint": "Export crawl ou analytics" },
+    { "category": "SEO et données", "criterion": "Plan de redirections", "weight": 3, "proofHint": "Table source → destination + recette" },
+    { "category": "SEO et données", "criterion": "Métadonnées et données structurées", "weight": 2, "proofHint": "Gabarits et exemples validés" },
+    { "category": "SEO et données", "criterion": "Sitemap, robots et indexabilité", "weight": 2, "proofHint": "Contrôles avant mise en ligne" },
+    { "category": "SEO et données", "criterion": "Analytics, consentement et plan de marquage", "weight": 3, "proofHint": "Plan de mesure et recette consentement" },
+    { "category": "Design", "criterion": "Écrans réellement conçus", "weight": 3, "proofHint": "Liste des écrans et maquettes" },
+    { "category": "Design", "criterion": "États vides, erreurs et chargements", "weight": 2, "proofHint": "Maquettes des états secondaires" },
+    { "category": "Design", "criterion": "Objectif d'accessibilité et preuves", "weight": 3, "proofHint": "Référentiel, audit et corrections" },
+    { "category": "Design", "criterion": "Composants et règles réutilisables", "weight": 2, "proofHint": "Bibliothèque ou documentation UI" },
+    { "category": "Technique", "criterion": "Hébergement et environnements", "weight": 3, "proofHint": "Architecture et responsabilités" },
+    { "category": "Technique", "criterion": "Budget de performance et mesure", "weight": 3, "proofHint": "Seuils + protocole de mesure" },
+    { "category": "Technique", "criterion": "Correctifs de sécurité et dépendances", "weight": 3, "proofHint": "Politique et délai de correction" },
+    { "category": "Technique", "criterion": "Sauvegardes et restauration testée", "weight": 2, "proofHint": "Fréquence + preuve de restauration" },
+    { "category": "Technique", "criterion": "Supervision et alertes", "weight": 2, "proofHint": "Périmètre, seuils et destinataires" },
+    { "category": "Gouvernance", "criterion": "Planning, jalons et dépendances client", "weight": 3, "proofHint": "Planning avec responsabilités" },
+    { "category": "Gouvernance", "criterion": "Livrables à chaque jalon", "weight": 2, "proofHint": "Liste et format des livrables" },
+    { "category": "Gouvernance", "criterion": "Procédure de changement et prix", "weight": 2, "proofHint": "Processus d'avenant chiffré" },
+    { "category": "Gouvernance", "criterion": "Rôles, interlocuteurs et sous-traitance", "weight": 2, "proofHint": "Équipe nommée + sous-traitants" },
+    { "category": "Exploitation", "criterion": "Maintenance corrective", "weight": 3, "proofHint": "Couverture et exclusions" },
+    { "category": "Exploitation", "criterion": "Évolutions et taux/jours inclus", "weight": 2, "proofHint": "Crédit de jours et tarif au-delà" },
+    { "category": "Exploitation", "criterion": "Délais de prise en charge et SLA", "weight": 3, "proofHint": "Délais par niveau d'incident" },
+    { "category": "Exploitation", "criterion": "Tous les coûts récurrents", "weight": 2, "proofHint": "Tableau annuel exhaustif" },
+    { "category": "Propriété et sortie", "criterion": "Dépôt du code source", "weight": 3, "proofHint": "Dépôt, accès et fréquence de remise" },
+    { "category": "Propriété et sortie", "criterion": "Comptes et identifiants au nom du client", "weight": 3, "proofHint": "Liste des comptes propriétaires" },
+    { "category": "Propriété et sortie", "criterion": "Licences et droits cédés", "weight": 2, "proofHint": "Clause de cession et licences tierces" },
+    { "category": "Propriété et sortie", "criterion": "Export des données et contenus", "weight": 2, "proofHint": "Format et test d'export" },
+    { "category": "Propriété et sortie", "criterion": "Clause et coût de réversibilité", "weight": 2, "proofHint": "Clause, délai et prix de sortie" },
+    { "category": "Propriété et sortie", "criterion": "Documentation et formation", "weight": 2, "proofHint": "Supports, durée et participants" }
+  ],
+  "offers": [
+    {
+      "id": "a",
+      "name": "Offre A · abonnement",
+      "shortName": "A - abonnement",
+      "costs": { "initial": 8900, "requiredOptions": 3600, "year1": 4680, "year2": 4980, "year3": 5280, "internalHours": 48, "internalHourCost": 55, "exitCost": 2500, "riskReserve": 1800, "credits": 0 },
+      "scores": [1, 2, 2, 1, 2, 2, 2, 1, 2, 2, 1, 1, 1, 0, 1, 1, 1, 2, 1, 1, 2, 2, 2, 2, 1, 1, 2, 2, 1, 1, 2, 1, 1, 2, 0, 0, 1, 0, 0, 2],
+      "eligible": false,
+      "decision": "Écartée : propriété et migration à clarifier"
+    },
+    {
+      "id": "b",
+      "name": "Offre B · forfait",
+      "shortName": "B - forfait",
+      "costs": { "initial": 17900, "requiredOptions": 900, "year1": 2160, "year2": 2280, "year3": 2400, "internalHours": 28, "internalHourCost": 55, "exitCost": 800, "riskReserve": 900, "credits": 0 },
+      "scores": [3, 3, 3, 2, 2, 3, 3, 2, 3, 3, 2, 2, 3, 3, 2, 3, 2, 3, 2, 2, 3, 3, 3, 3, 2, 2, 3, 3, 2, 2, 3, 2, 2, 3, 3, 3, 2, 3, 3, 2],
+      "eligible": true,
+      "decision": "Meilleur rapport coût / couverture"
+    },
+    {
+      "id": "c",
+      "name": "Offre C · premium",
+      "shortName": "C - premium",
+      "costs": { "initial": 24800, "requiredOptions": 0, "year1": 1800, "year2": 1900, "year3": 2000, "internalHours": 20, "internalHourCost": 55, "exitCost": 500, "riskReserve": 600, "credits": 0 },
+      "scores": [3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 2, 1, 3, 3, 2, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 2, 3, 3, 3, 2, 3, 2, 3, 2, 3, 3, 2, 3, 3, 2],
+      "eligible": true,
+      "decision": "Option premium à justifier par les livrables"
+    }
+  ]
+}

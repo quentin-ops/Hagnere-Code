@@ -447,6 +447,17 @@ export function ExcelCalculator() {
                 volontairement, et qu&apos;on préfère discuter honnêtement avant
                 signature.
               </p>
+              <p>
+                Avant de chiffrer une reconstruction, faites aussi le{" "}
+                <Link
+                  href="/guides/transformer-excel-en-application"
+                  style={{ textDecoration: "underline" }}
+                >
+                  diagnostic Excel vers application
+                </Link>{" "}
+                : il peut recommander de fiabiliser le fichier ou d&apos;acheter un
+                logiciel existant plutôt que de développer.
+              </p>
             </div>
             <div className="calc-context-list">
               <div className="calc-context-item">

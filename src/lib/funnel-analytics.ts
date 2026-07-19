@@ -1,29 +1,37 @@
 /**
- * Funnel analytics — vendor-agnostic event hub.
- *
- * This module does not install a collector. It forwards events only to an
- * additional analytics script that the site has already loaded and configured:
- *   - Plausible : window.plausible(name, { props })
- *   - PostHog   : window.posthog.capture(name, props)
- *   - GA4       : window.gtag('event', name, props)
- *   - dataLayer : window.dataLayer.push({ event: name, ...props })
- *
- * Keeping collection separate from event declaration avoids silently changing
- * the site's privacy posture when a new funnel action is instrumented.
+ * Événements de conversion first-party. Le navigateur envoie uniquement le
+ * nom, le chemin (sans query string) et des propriétés primitives à une route
+ * du même domaine. Le Worker les écrit dans Cloudflare Analytics Engine.
  */
 
 type EventProps = Record<string, string | number | boolean | undefined>;
 
-declare global {
-  interface Window {
-    plausible?: (name: string, opts?: { props?: EventProps }) => void;
-    posthog?: { capture: (name: string, props?: EventProps) => void };
-    gtag?: (cmd: "event", name: string, params?: EventProps) => void;
-    dataLayer?: Array<Record<string, unknown>>;
-  }
-}
+export const FUNNEL_EVENT_NAMES = [
+  "excel_diagnostic_result_copy",
+  "guide_cta_click",
+  "pf:funnel_open",
+  "pf:landing_cta_click",
+  "pf:lead_confirmed",
+  "pf:siren_lookup_fail",
+  "pf:siren_lookup_success",
+  "pf:step_complete",
+  "pf:step_skip",
+  "pf:step_validation_block",
+  "pf:submit_error",
+  "pf:submit_start",
+  "pf:submit_success",
+  "pf:voice_record_start",
+  "resource_download_click",
+  "white_paper_checklist_copy",
+  "white_paper_grid_copy",
+] as const;
 
-export function trackFunnelEvent(name: string, props: EventProps = {}): void {
+export type FunnelEventName = (typeof FUNNEL_EVENT_NAMES)[number];
+
+export function trackFunnelEvent(
+  name: FunnelEventName,
+  props: EventProps = {},
+): void {
   if (typeof window === "undefined") return;
 
   // Strip undefined values — most analytics dislike them.
@@ -32,42 +40,41 @@ export function trackFunnelEvent(name: string, props: EventProps = {}): void {
     if (v !== undefined) cleanProps[k] = v;
   }
 
+  const payload = JSON.stringify({
+    name,
+    path: window.location?.pathname || "/",
+    props: cleanProps,
+  });
+
   let dispatched = false;
 
   try {
-    if (typeof window.plausible === "function") {
-      window.plausible(name, { props: cleanProps });
-      dispatched = true;
+    if (typeof window.navigator?.sendBeacon === "function") {
+      dispatched = window.navigator.sendBeacon(
+        "/api/funnel-analytics",
+        new Blob([payload], { type: "application/json" }),
+      );
     }
   } catch {
-    /* swallow vendor-side errors — never break the funnel for analytics */
+    /* La mesure ne doit jamais bloquer l'action demandée par le visiteur. */
   }
 
-  try {
-    if (window.posthog?.capture) {
-      window.posthog.capture(name, cleanProps);
-      dispatched = true;
+  if (!dispatched) {
+    try {
+      if (typeof window.fetch === "function") {
+        void window
+          .fetch("/api/funnel-analytics", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: payload,
+            keepalive: true,
+          })
+          .catch(() => undefined);
+        dispatched = true;
+      }
+    } catch {
+      /* même garantie : une panne de mesure reste invisible pour le funnel */
     }
-  } catch {
-    /* ignore */
-  }
-
-  try {
-    if (typeof window.gtag === "function") {
-      window.gtag("event", name, cleanProps);
-      dispatched = true;
-    }
-  } catch {
-    /* ignore */
-  }
-
-  try {
-    if (typeof window.gtag !== "function" && Array.isArray(window.dataLayer)) {
-      window.dataLayer.push({ event: name, ...cleanProps });
-      dispatched = true;
-    }
-  } catch {
-    /* ignore */
   }
 
   if (!dispatched && process.env.NODE_ENV !== "production") {

@@ -1,3 +1,5 @@
+import { TEAM_PUBLIC_COMPOSITION, TEAM_TOTAL_COUNT } from "@/lib/team";
+
 export const trustBadgesHtml = `
 <!-- TRUST BADGES M&E — 8 engagements contractuels -->
 <section class="me-trust">
@@ -76,8 +78,8 @@ export const trustBadgesHtml = `
         <div class="me-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22V15"/></svg>
         </div>
-        <h4>Sept développeurs · pas de pool tournant</h4>
-        <p>Sept développeurs travaillent pour Hagnéré Code. Votre binôme référent est <b>nommé au contrat</b>, avec recouvrement de 2 semaines s'il doit changer. <b>Pas d'offshore</b>.</p>
+        <h4>${TEAM_TOTAL_COUNT} personnes · pas de pool tournant</h4>
+        <p><b>${TEAM_PUBLIC_COMPOSITION}</b>. Votre binôme référent est <b>nommé au contrat</b>, avec recouvrement de 2 semaines s'il doit changer. <b>Pas d'offshore</b>.</p>
         <div class="me-trust-foot">— Profils vérifiables sur LinkedIn</div>
       </div>
     </div>

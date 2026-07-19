@@ -1,3 +1,5 @@
+import { TEAM_PUBLIC_COMPOSITION } from "@/lib/team";
+
 export const deriskHtml = `
 <!-- DE-RISK M&E : 4 peurs du dirigeant / CTO -->
 <section class="me-derisk">
@@ -56,8 +58,8 @@ export const deriskHtml = `
         <h4>Équipe nommée dans le contrat · 1 remplacement max · overlap 2 sem.</h4>
         <p>Les 2 à 4 personnes qui gèrent votre compte sont <b>nommées dans le contrat</b>, photos + LinkedIn
         inclus. <b>Maximum 1 remplacement sur 12 mois</b> sauf cas de force majeure documenté. En cas de changement,
-        <b>recouvrement obligatoire de 2 semaines</b> entre sortant et remplaçant. Sept développeurs travaillent pour
-        Hagnéré Code&nbsp;: le remplaçant vient de la même équipe, jamais d'un pool externe. Revue trimestrielle avec vous comme garde-fou.</p>
+        <b>recouvrement obligatoire de 2 semaines</b> entre sortant et remplaçant. Hagnéré Code compte
+        <b>${TEAM_PUBLIC_COMPOSITION}</b>&nbsp;: le remplaçant vient de la même équipe, jamais d'un pool externe. Revue trimestrielle avec vous comme garde-fou.</p>
         <div class="me-derisk-proof">
           <span>✓ Nom dans le contrat</span>
           <span>✓ Overlap 2 sem.</span>
@@ -102,7 +104,7 @@ export const deriskHtml = `
           « Vous êtes en Savoie, pas à Paris — <b>vous tiendrez la distance</b> ? »
         </div>
         <h4>Fuseau FR, coûts maîtrisés, binôme nommé au contrat</h4>
-        <p>On est basés à Bassens, aux portes de Chambéry, par choix&nbsp;: <b>fuseau horaire français</b>, coûts de structure plus bas qu'à Paris, <b>sept développeurs</b> qui travaillent au quotidien sur nos propres produits en production. Résultat&nbsp;: vos forfaits sont 20-30 % moins chers à qualité équivalente, et le binôme qui prend votre projet est <b>nommé au contrat</b>, avec recouvrement de 2 semaines s'il doit changer. <b>Pas d'off-shore, pas de near-shore — équipe 100 % France</b>.</p>
+        <p>On est basés à Bassens, aux portes de Chambéry, par choix&nbsp;: <b>fuseau horaire français</b> et coûts de structure plus bas qu'à Paris. Notre équipe rassemble <b>${TEAM_PUBLIC_COMPOSITION}</b>, qui travaillent au quotidien sur nos propres produits en production. Résultat&nbsp;: vos forfaits sont 20-30 % moins chers à qualité équivalente, et le binôme qui prend votre projet est <b>nommé au contrat</b>, avec recouvrement de 2 semaines s'il doit changer. <b>Pas d'off-shore, pas de near-shore — équipe 100 % France</b>.</p>
         <div class="me-derisk-proof">
           <span>✓ Équipe 100 % FR</span>
           <span>✓ Binôme nommé au contrat</span>

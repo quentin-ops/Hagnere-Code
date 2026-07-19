@@ -8,7 +8,7 @@ export const whatWeDoHtml = `
         <h2>Pas 3 canaux à la mode.<br>8 métiers qu'on maîtrise<br>de bout en bout.</h2>
       </div>
       <div class="right">
-        Google Ads, Meta, LinkedIn, TikTok, YouTube — et surtout <b>le tracking et la mesure</b> qui font que ces canaux rapportent vraiment. Tout in-house, zéro sous-traitance.
+        Google Ads, Meta, LinkedIn, TikTok, YouTube — et surtout <b>le tracking et la mesure</b> qui font que ces canaux rapportent vraiment. Équipe nommée, pas de pool anonyme ni de sous-traitance offshore.
       </div>
     </div>
 

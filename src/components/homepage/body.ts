@@ -1,4 +1,9 @@
 import { navHtml } from "@/components/design-shared/nav-html";
+import {
+  TEAM_OTHER_DEVELOPERS_COUNT,
+  TEAM_PUBLIC_COMPOSITION,
+  TEAM_TOTAL_COUNT,
+} from "@/lib/team";
 
 export const bodyHtml = `${navHtml}
 <!-- HERO -->
@@ -1176,12 +1181,12 @@ export const bodyHtml = `${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— L'équipe</div>
-        <h2>Un gérant qui code,<br>un CTO, sept développeurs.</h2>
+        <h2>${TEAM_TOTAL_COUNT} personnes :<br>un gérant, un CTO et ${TEAM_OTHER_DEVELOPERS_COUNT} autres développeurs.</h2>
       </div>
       <div class="right">
         Pas de pool anonyme, pas de sous-traitance offshore, pas de white-label.
-        <b>Sept développeurs</b> travaillent avec le gérant, intégrés aux mêmes rituels et
-        formés à Claude Code. Les personnes affectées à votre projet sont
+        <b>${TEAM_PUBLIC_COMPOSITION}</b>. Toute l'équipe partage les mêmes rituels et utilise Claude Code.
+        Les personnes affectées à votre projet sont
         <b>nommées au cadrage</b> et figurent dans le devis.
       </div>
     </div>

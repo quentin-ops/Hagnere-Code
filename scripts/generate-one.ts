@@ -19,16 +19,6 @@ if (!process.env.OPENAI_API_KEY) {
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-const COMMON = `
-Style: high-end editorial collage — photographic realism mixed with 3D glass UI elements,
-modern French tech magazine aesthetic. Strong cinematic lighting with warm golden particles
-floating in the air, faint starfield background. Background: deep saturated electric purple
-gradient (#7c3aed top → #4c1d95 bottom) with subtle indigo speckled stars. Octane-quality
-3D render fused with photorealistic photography, 8K sharp focus, premium magazine cover feel.
-NO text, NO words, NO letters anywhere in the image — typography will be added in post.
-NO faces, NO people, NO recognizable logos. French sophistication.
-`.trim();
-
 type Job = {
   prompt: string;
   apiSize: "1024x1024" | "1536x1024" | "1792x1024" | "1024x1024";

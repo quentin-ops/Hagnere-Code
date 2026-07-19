@@ -45,7 +45,7 @@ const serviceJsonLd = JSON.stringify({
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "DPO externalisé pour PME tech : cartographie des sous-traitants (RGPD, transferts hors UE, SCC), mise en conformité AI Act EU 2026, NIS2, DORA, SOC 2 readiness. Spécificité Hagnéré Code : audit + remédiation codée par les devs internes (chiffrement, logs, IAM, consent mode, anonymisation) — pas de PDF de 80 pages laissé sans suite.",
+    "DPO externalisé pour PME tech : cartographie des sous-traitants (RGPD, transferts hors UE, SCC), mise en conformité AI Act EU 2026, NIS2, DORA, SOC 2 readiness. Spécificité Hagnéré Code : audit + remédiation codée par les membres nommés de l'équipe (chiffrement, logs, IAM, consent mode, anonymisation) — pas de PDF de 80 pages laissé sans suite.",
   offers: [
     {
       "@type": "Offer",
@@ -93,7 +93,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "On code. Les actions techniques identifiées dans l'audit (chiffrement at-rest, logs d'accès, mise en place du consent mode, anonymisation, durées de conservation automatisées, suppression sur demande de droit à l'effacement) sont chiffrées en sprint et exécutées par nos devs internes — pas de sous-traitance, pas de \"à voir avec votre prestataire\".",
+          "On code. Les actions techniques identifiées dans l'audit (chiffrement at-rest, logs d'accès, mise en place du consent mode, anonymisation, durées de conservation automatisées, suppression sur demande de droit à l'effacement) sont chiffrées en sprint et exécutées par les membres nommés de notre équipe — pas de pool anonyme, pas de sous-traitance offshore, pas de \"à voir avec votre prestataire\".",
       },
     },
     {

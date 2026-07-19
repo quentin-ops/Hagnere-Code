@@ -43,7 +43,7 @@ export const refuseHtml = `
           <div class="ec-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
             <h4>Boutiques &lt; 50 k€ GMV annuel prévu</h4>
-            <p>Honnêtement, Shopify est mieux pour vous. 36 €/mois, vous démarrez en une semaine, vous prouvez votre marché. Revenez nous voir à 500 k€ de GMV, on vous construira la version 2 propre. <b>Pas de deal qui ne vous sert pas.</b></p>
+            <p>Honnêtement, une plateforme standard est souvent plus rationnelle pour tester le marché. Vérifiez son tarif officiel et vos frais réels, puis revenez vers le sur-mesure si les contraintes métier ou le TCO sur 36 mois le justifient. <b>Pas de deal qui ne vous sert pas.</b></p>
           </div>
         </li>
         <li>

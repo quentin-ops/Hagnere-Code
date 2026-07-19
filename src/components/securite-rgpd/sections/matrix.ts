@@ -186,7 +186,7 @@ export const matrixHtml = `
         <circle cx="12" cy="12" r="10"/>
         <path d="M12 8v4M12 16h.01"/>
       </svg>
-      <span><b>Particularité Hagnéré Code :</b> nos devs internes corrigent directement dans votre code (chiffrement, logs, IAM, anonymisation, consent mode). Ni Lexing ni Wavestone ne touchent aux PR. Nous oui.</span>
+      <span><b>Particularité Hagnéré Code :</b> les membres nommés de notre équipe corrigent directement dans votre code (chiffrement, logs, IAM, anonymisation, consent mode). Ni Lexing ni Wavestone ne touchent aux PR. Nous oui.</span>
     </div>
 
     <div class="sr-matrix-cta reveal reveal-d-1">

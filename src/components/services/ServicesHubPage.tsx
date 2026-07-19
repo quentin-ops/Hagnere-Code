@@ -23,6 +23,7 @@ import {
 } from "lucide-react";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
+import { TEAM_TOTAL_COUNT } from "@/lib/team";
 import { MainNav } from "@/components/design-shared/MainNav";
 import "./services-hub.css";
 import "@/components/design-shared/nav-dropdown.css";
@@ -273,7 +274,7 @@ const proofLinks = [
   { href: "/realisations", label: "Réalisations", value: "4 cas documentés" },
   { href: "/demarrer-un-projet", label: "Décrire mon projet", value: "Réponse sous 24 h ouvrées" },
   { href: "/outils/calculateur-cout-excel", label: "Coût Excel", value: "ROI outil interne" },
-  { href: "/equipe", label: "Équipe", value: "1 gérant qui code + 7 développeurs" },
+  { href: "/equipe", label: "Équipe", value: `${TEAM_TOTAL_COUNT} personnes · équipe nommée` },
 ];
 
 function ArrowIcon() {

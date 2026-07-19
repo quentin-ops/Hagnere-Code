@@ -35,8 +35,8 @@ export const QUOTE_COMPARISON_WHITE_PAPER: WhitePaperEntry = {
     href:
       "/ressources/grille-comparaison-devis-web/livre-blanc-comparer-devis-site-internet-3-ans.pdf",
     downloadName: "livre-blanc-comparer-devis-site-internet-3-ans.pdf",
-    sizeBytes: 97343,
-    sizeLabel: "PDF · 95 Ko",
+    sizeBytes: 66516,
+    sizeLabel: "PDF · 65 Ko",
   },
 };
 

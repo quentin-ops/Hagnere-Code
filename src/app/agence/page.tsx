@@ -445,7 +445,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Parlons de votre projet"
-          description="Décrivez votre besoin en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Rendez-vous sur place à Chambéry ou en visioconférence, comme vous préférez."
+          description="Décrivez votre besoin en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Rendez-vous à Bassens, aux portes de Chambéry, ou en visioconférence, comme vous préférez."
         />
 
         <h2 id="sources">Sources</h2>

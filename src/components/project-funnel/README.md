@@ -83,12 +83,11 @@ automatiquement un `?` cliquable (CSS `.pf-chip.has-tooltip`).
 
 ## Analytics / tracking de conversion
 
-`trackFunnelEvent(name, props)` (`src/lib/funnel-analytics.ts`) dispatch
-vers Plausible / PostHog / GA4 / dataLayer si chargés. En leur absence,
-log dans la console en dev. Aucun script à charger pour bénéficier du
-debugging local. Pour activer un outil : ajouter son script tag (les
-hosts GTM / Plausible / PostHog sont déjà whitelistés dans la CSP de
-`next.config.ts`).
+`trackFunnelEvent(name, props)` (`src/lib/funnel-analytics.ts`) envoie un
+payload first-party à `/api/funnel-analytics`. En production, la route écrit
+le point dans le dataset Cloudflare Analytics Engine `hagnere_code_funnel` ;
+en développement elle le journalise sans prétendre le persister. Aucun script
+tiers, cookie, IP, user-agent ou identifiant persistant n'est utilisé.
 
 Events émis :
 

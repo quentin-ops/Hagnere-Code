@@ -222,6 +222,7 @@ export default function Page() {
         ]}
         faqTitle="TJM et budget de projet : vos questions"
         faqItems={faqItems}
+        showWhitePaperPromo
       >
         <p className="lead">
           Un prestataire vous annonce « 550 € par jour » et vous ne

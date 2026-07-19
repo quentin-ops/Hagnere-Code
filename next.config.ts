@@ -9,9 +9,6 @@ const scriptSources = [
   ...(process.env.NODE_ENV !== "production" ? ["'unsafe-eval'"] : []),
   "https://calendly.com",
   "https://*.calendly.com",
-  "https://www.googletagmanager.com",
-  "https://plausible.io",
-  "https://eu.posthog.com",
 ].join(" ");
 
 const securityHeaders = [
@@ -44,8 +41,7 @@ const securityHeaders = [
   },
   {
     // Content-Security-Policy :
-    // - script-src : self + Calendly + GTM/Plausible/PostHog (analytics
-    //   futurs) + 'unsafe-inline' pour les JSON-LD inline.
+    // - script-src : self + Calendly + 'unsafe-inline' pour les JSON-LD.
     //   `'unsafe-eval'` reste limité au serveur de développement, car le
     //   rafraîchissement React en dépend. Il est absent du build public.
     // - frame-src : Calendly inline embed.
@@ -62,7 +58,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline' https://calendly.com https://*.calendly.com",
       "img-src 'self' data: blob: https://*.r2.cloudflarestorage.com https://calendly.com https://*.calendly.com",
       "font-src 'self' data: https://calendly.com https://*.calendly.com",
-      "connect-src 'self' https://recherche-entreprises.api.gouv.fr https://api.groq.com https://calendly.com https://*.calendly.com https://plausible.io https://eu.posthog.com https://*.r2.cloudflarestorage.com",
+      "connect-src 'self' https://recherche-entreprises.api.gouv.fr https://api.groq.com https://calendly.com https://*.calendly.com https://*.r2.cloudflarestorage.com",
       "frame-src 'self' https://calendly.com https://*.calendly.com",
       "media-src 'self' blob:",
       "object-src 'none'",

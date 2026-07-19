@@ -217,6 +217,7 @@ export default function Page() {
         ]}
         faqTitle="Prix d'un site e-commerce : vos questions"
         faqItems={faqItems}
+        showWhitePaperPromo
       >
         <p className="lead">
           Combien coûte <em>vraiment</em> un site e-commerce ? Pas seulement
@@ -985,12 +986,11 @@ export default function Page() {
           plateforme (relevés Codeur.com), une agence Shopify 500 à
           900 €/jour, et les agences parisiennes facturent 30 à 50 % de plus
           que les agences régionales à prestation comparable — faire
-          travailler une équipe senior depuis Chambéry n&apos;est pas un
-          hasard dans notre modèle. Le critère qui compte plus que le
-          statut : <strong>qui a déjà livré une boutique avec VOS
-          contraintes</strong> (votre volume de produits et de commandes,
-          votre ERP, votre secteur) — demandez à voir ces boutiques en
-          production.
+          travailler une équipe senior depuis Bassens, aux portes de Chambéry,
+          n&apos;est pas un hasard dans notre modèle. Le critère qui compte plus
+          que le statut : <strong>qui a déjà livré une boutique avec VOS
+          contraintes</strong> (votre volume de produits et de commandes, votre
+          ERP, votre secteur) — demandez à voir ces boutiques en production.
         </p>
 
         <h2 id="erreurs">12. Les 6 erreurs qui font exploser la facture</h2>

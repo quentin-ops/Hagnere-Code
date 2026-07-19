@@ -16,6 +16,7 @@ import { refuseHtml } from "./sections/refuse";
 import { trustBadgesHtml } from "./sections/trust-badges";
 import { testimonialsHtml } from "./sections/testimonials";
 import { techFaqHtml } from "./sections/tech-faq";
+import { ecommerceFaqSectionHtml } from "./faq-content";
 
 /**
  * Direction A — page centrée sur "créer votre boutique e-commerce", pas sur présenter l'agence.
@@ -40,6 +41,13 @@ import { techFaqHtml } from "./sections/tech-faq";
  */
 function compose(raw: string): string {
   let out = raw;
+
+  // Le contenu visible et le JSON-LD utilisent la même source structurée.
+  // Le bloc historique du template est remplacé avant toute autre insertion.
+  out = out.replace(
+    /<!-- FAQ -->[\s\S]*?(?=<!-- CTA -->)/,
+    ecommerceFaqSectionHtml.trim() + "\n\n",
+  );
 
   // Logo wall + Problems ordering: logo wall goes right after HERO, before PROBLEMS.
   // Problems is already in body.ts. We insert the logo wall before it.

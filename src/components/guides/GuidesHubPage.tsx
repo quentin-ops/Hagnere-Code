@@ -105,6 +105,7 @@ const COLLECTIONS: Collection[] = [
 
 /** Icône de carte par guide (défaut : Globe). */
 const GUIDE_ICONS: Record<string, LucideIcon> = {
+  "transformer-excel-en-application": ClipboardList,
   "combien-coute-un-site-internet": Globe,
   "combien-coute-une-application-mobile": Smartphone,
   "prix-site-vitrine": PanelsTopLeft,

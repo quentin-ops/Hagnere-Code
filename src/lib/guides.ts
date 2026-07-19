@@ -36,6 +36,20 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "transformer-excel-en-application",
+    title: "Transformer Excel en application métier · Hagnéré Code",
+    cardTitle: "Transformer un fichier Excel en application métier",
+    metaDescription:
+      "Quand garder Excel, choisir un logiciel, Power Apps/no-code ou du sur-mesure. Diagnostic gratuit, coût sur 4 ans, migration, RGPD et contrat.",
+    cardDescription:
+      "Un diagnostic transparent pour choisir entre Excel fiabilisé, logiciel existant, Power Apps/no-code et sur-mesure, puis migrer sans perdre l'historique.",
+    heroTitle: "Transformer un fichier Excel en application métier",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-19",
+    dateModified: "2026-07-19",
+    readTimeMin: 16,
+  },
+  {
     slug: "pourquoi-mon-site-ne-convertit-pas",
     title: "Pourquoi mon site ne convertit pas · Hagnéré Code",
     metaDescription:

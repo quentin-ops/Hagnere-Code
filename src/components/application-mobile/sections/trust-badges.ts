@@ -39,8 +39,8 @@ export const trustBadgesHtml = `
 
       <div class="mob-trust-card reveal">
         <div class="mob-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-        <h4>Code éligible CIR</h4>
-        <p>Une partie du dev mobile (modules natifs custom, IA embarquée, intégrations IoT) peut être éligible au <b>Crédit Impôt Recherche</b>. Les prestations CIR-éligibles sont documentées dans le rapport technique livré en fin de projet.</p>
+        <h4>R&amp;D documentée pour le CIR</h4>
+        <p>Sur les projets comportant de véritables opérations de R&amp;D, nous documentons les verrous, essais et résultats. <b>L'éligibilité reste à valider</b> par votre conseil selon les travaux, votre situation et l'agrément du prestataire.</p>
         <div class="mob-trust-foot">— Dossier livré à la réception</div>
       </div>
 

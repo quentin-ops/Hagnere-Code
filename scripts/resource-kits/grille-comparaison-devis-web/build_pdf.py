@@ -9,6 +9,7 @@ assertions before the document is built.
 from __future__ import annotations
 
 import argparse
+import json
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -17,8 +18,16 @@ from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
-from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.pdfbase import pdfmetrics
+from pypdf import PdfReader, PdfWriter
+from pypdf.generic import (
+    ArrayObject,
+    BooleanObject,
+    DecodedStreamObject,
+    DictionaryObject,
+    NameObject,
+    NumberObject,
+    TextStringObject,
+)
 from reportlab.platypus import (
     BaseDocTemplate,
     Frame,
@@ -60,6 +69,7 @@ MARGIN_BOTTOM = 18 * mm
 
 @dataclass(frozen=True)
 class Offer:
+    id: str
     name: str
     initial: int
     options: int
@@ -70,13 +80,10 @@ class Offer:
     internal_hour_cost: int
     exit_cost: int
     risk_reserve: int
-    scope_score: int
-    evidence_score: int
-    seo_score: int
-    ops_score: int
-    ownership_score: int
-    governance_score: int
+    credits: int
+    scores: tuple[int, ...]
     eligible: bool
+    decision: str
 
     @property
     def internal_cost(self) -> int:
@@ -95,153 +102,67 @@ class Offer:
             + self.internal_cost
             + self.exit_cost
             + self.risk_reserve
+            - self.credits
         )
 
     @property
     def weighted_score(self) -> float:
-        return (
-            self.scope_score * 0.25
-            + self.evidence_score * 0.20
-            + self.seo_score * 0.15
-            + self.ops_score * 0.15
-            + self.ownership_score * 0.15
-            + self.governance_score * 0.10
+        return round(
+            sum(
+                score / 3 * criterion[2]
+                for score, criterion in zip(self.scores, CRITERIA, strict=True)
+            ),
+            1,
         )
 
 
-OFFERS = [
-    Offer(
-        "A - abonnement",
-        8900,
-        3600,
-        4680,
-        4980,
-        5280,
-        48,
-        55,
-        2500,
-        1800,
-        55,
-        40,
-        35,
-        50,
-        30,
-        45,
-        False,
-    ),
-    Offer(
-        "B - forfait",
-        17900,
-        900,
-        2160,
-        2280,
-        2400,
-        28,
-        55,
-        800,
-        900,
-        90,
-        85,
-        88,
-        82,
-        95,
-        88,
-        True,
-    ),
-    Offer(
-        "C - premium",
-        24800,
-        0,
-        1800,
-        1900,
-        2000,
-        20,
-        55,
-        500,
-        600,
-        96,
-        92,
-        90,
-        90,
-        96,
-        92,
-        True,
-    ),
-]
-
+REPOSITORY_ROOT = Path(__file__).resolve().parents[3]
+MODEL_PATH = REPOSITORY_ROOT / "src/data/quote-comparison.json"
+MODEL = json.loads(MODEL_PATH.read_text(encoding="utf-8"))
 
 CRITERIA = [
-    ("Périmètre", "Objectifs métier et indicateurs de départ", 4),
-    ("Périmètre", "Inventaire des pages et gabarits", 4),
-    ("Périmètre", "Fonctionnalités et cas limites", 4),
-    ("Périmètre", "Exclusions explicites", 3),
-    ("Périmètre", "Options séparées du socle", 2),
-    ("Périmètre", "Critères de recette mesurables", 3),
-    ("Périmètre", "Appareils et responsive couverts", 2),
-    ("Périmètre", "Navigateurs supportés", 2),
-    ("Contenus", "Responsable de la rédaction", 2),
-    ("Contenus", "Migration et intégration des contenus", 2),
-    ("Contenus", "Images, droits et optimisation", 1),
-    ("Contenus", "Langues et traductions", 1),
-    ("SEO et données", "Inventaire des URL existantes", 4),
-    ("SEO et données", "Plan de redirections", 3),
-    ("SEO et données", "Métadonnées et données structurées", 2),
-    ("SEO et données", "Sitemap, robots et indexabilité", 2),
-    ("SEO et données", "Analytics, consentement et plan de marquage", 3),
-    ("Design", "Écrans réellement conçus", 3),
-    ("Design", "États vides, erreurs et chargements", 2),
-    ("Design", "Objectif d'accessibilité et preuves", 3),
-    ("Design", "Composants et règles réutilisables", 2),
-    ("Technique", "Hébergement et environnements", 3),
-    ("Technique", "Budget de performance et mesure", 3),
-    ("Technique", "Correctifs de sécurité et dépendances", 3),
-    ("Technique", "Sauvegardes et restauration testée", 2),
-    ("Technique", "Supervision et alertes", 2),
-    ("Gouvernance", "Planning, jalons et dépendances client", 3),
-    ("Gouvernance", "Livrables à chaque jalon", 2),
-    ("Gouvernance", "Procédure de changement et prix", 2),
-    ("Gouvernance", "Rôles, interlocuteurs et sous-traitance", 2),
-    ("Exploitation", "Maintenance corrective", 3),
-    ("Exploitation", "Évolutions et taux/jours inclus", 2),
-    ("Exploitation", "Délais de prise en charge et SLA", 3),
-    ("Exploitation", "Tous les coûts récurrents", 2),
-    ("Propriété et sortie", "Dépôt du code source", 3),
-    ("Propriété et sortie", "Comptes et identifiants au nom du client", 3),
-    ("Propriété et sortie", "Licences et droits cédés", 2),
-    ("Propriété et sortie", "Export des données et contenus", 2),
-    ("Propriété et sortie", "Clause et coût de réversibilité", 2),
-    ("Propriété et sortie", "Documentation et formation", 2),
+    (
+        criterion["category"],
+        criterion["criterion"],
+        criterion["weight"],
+        criterion["proofHint"],
+    )
+    for criterion in MODEL["criteria"]
+]
+
+OFFERS = [
+    Offer(
+        id=offer["id"],
+        name=offer["shortName"],
+        initial=offer["costs"]["initial"],
+        options=offer["costs"]["requiredOptions"],
+        year1=offer["costs"]["year1"],
+        year2=offer["costs"]["year2"],
+        year3=offer["costs"]["year3"],
+        internal_hours=offer["costs"]["internalHours"],
+        internal_hour_cost=offer["costs"]["internalHourCost"],
+        exit_cost=offer["costs"]["exitCost"],
+        risk_reserve=offer["costs"]["riskReserve"],
+        credits=offer["costs"]["credits"],
+        scores=tuple(offer["scores"]),
+        eligible=offer["eligible"],
+        decision=offer["decision"],
+    )
+    for offer in MODEL["offers"]
 ]
 
 
 def validate_model() -> None:
     assert len(CRITERIA) == 40
-    assert sum(weight for _, _, weight in CRITERIA) == 100
+    assert sum(weight for _, _, weight, _ in CRITERIA) == 100
+    assert all(len(offer.scores) == len(CRITERIA) for offer in OFFERS)
+    assert all(score in (0, 1, 2, 3) for offer in OFFERS for score in offer.scores)
     assert [offer.tco for offer in OFFERS] == [34380, 28880, 32700]
-    assert abs(OFFERS[1].weighted_score - 88.05) < 0.001
-    assert round(OFFERS[2].weighted_score, 1) == 93.0
+    assert [offer.weighted_score for offer in OFFERS] == [44.0, 88.0, 93.0]
 
 
-def register_fonts() -> tuple[str, str]:
-    candidates = [
-        (
-            Path("/System/Library/Fonts/Supplemental/Arial.ttf"),
-            Path("/System/Library/Fonts/Supplemental/Arial Bold.ttf"),
-        ),
-        (
-            Path("/System/Library/Fonts/Supplemental/Helvetica.ttf"),
-            Path("/System/Library/Fonts/Supplemental/Helvetica Bold.ttf"),
-        ),
-    ]
-    for regular, bold in candidates:
-        if regular.exists() and bold.exists():
-            pdfmetrics.registerFont(TTFont("HCRegular", str(regular)))
-            pdfmetrics.registerFont(TTFont("HCBold", str(bold)))
-            return "HCRegular", "HCBold"
-    return "Helvetica", "Helvetica-Bold"
-
-
-FONT, FONT_BOLD = register_fonts()
+# ReportLab's built-in fonts make line wrapping reproducible on macOS and CI.
+FONT, FONT_BOLD = "Helvetica", "Helvetica-Bold"
 
 
 def euro(value: int) -> str:
@@ -390,6 +311,31 @@ def make_styles() -> dict[str, ParagraphStyle]:
 STYLES = make_styles()
 
 
+class BookmarkedDocTemplate(BaseDocTemplate):
+    """Add navigable PDF outline entries for every rendered section."""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._outline_index = 0
+
+    def afterFlowable(self, flowable) -> None:
+        if not isinstance(flowable, Paragraph):
+            return
+
+        if flowable.style.name == "HCH2":
+            level = 0
+        elif flowable.style.name == "HCH3":
+            level = 1
+        else:
+            return
+
+        title = flowable.getPlainText()
+        key = f"section-{self._outline_index}"
+        self._outline_index += 1
+        self.canv.bookmarkPage(key)
+        self.canv.addOutlineEntry(title, key, level=level, closed=False)
+
+
 def draw_cover(canvas, doc) -> None:
     canvas.saveState()
     canvas.setFillColor(colors.HexColor("#09090B"))
@@ -410,6 +356,13 @@ def draw_cover(canvas, doc) -> None:
     canvas.setFillColor(colors.HexColor("#A1A1AA"))
     canvas.drawString(MARGIN_X, 18 * mm, f"Version {VERSION} - {PUBLICATION_DATE}")
     canvas.drawRightString(PAGE_W - MARGIN_X, 18 * mm, SITE)
+    site_width = canvas.stringWidth(SITE, FONT, 7.5)
+    canvas.linkURL(
+        f"https://{SITE}",
+        (PAGE_W - MARGIN_X - site_width, 16.5 * mm, PAGE_W - MARGIN_X, 20 * mm),
+        relative=0,
+        thickness=0,
+    )
     canvas.restoreState()
 
 
@@ -687,7 +640,7 @@ def build_story():
     )
     story.append(formula)
     story.append(Spacer(1, 6 * mm))
-    story.append(para("Les neuf lignes du calcul", STYLES["h3"]))
+    story.append(para("Les dix lignes du calcul", STYLES["h3"]))
     story.append(
         table(
             [
@@ -698,6 +651,7 @@ def build_story():
                 ["Heures internes", "Contenus, coordination, recette", "Même coût horaire pour tous"],
                 ["Sortie", "Exports, accès, documentation, migration", "Prix ou estimation documentée"],
                 ["Risques", "Probabilité x impact", "Un risque concret par ligne"],
+                ["Crédits certains", "Remise acquise ou avoir documenté", "Soustraire uniquement si certain"],
             ],
             [34 * mm, 72 * mm, 53 * mm],
             row_backgrounds=True,
@@ -728,6 +682,8 @@ def build_story():
             ["Temps interne"] + [euro(offer.internal_cost) for offer in OFFERS],
             ["Sortie"] + [euro(offer.exit_cost) for offer in OFFERS],
             ["Risques identifiés"] + [euro(offer.risk_reserve) for offer in OFFERS],
+            ["Crédits certains"]
+            + ["0 €" if offer.credits == 0 else f"- {euro(offer.credits)}" for offer in OFFERS],
             ["TCO 36 mois"] + [euro(offer.tco) for offer in OFFERS],
             ["Écart vs B"] + [euro(offer.tco - OFFERS[1].tco) for offer in OFFERS],
         ]
@@ -738,9 +694,9 @@ def build_story():
             [48 * mm, 37 * mm, 37 * mm, 37 * mm],
             row_backgrounds=True,
             extra_style=[
-                ("BACKGROUND", (0, 7), (-1, 7), VIOLET_LIGHT),
-                ("TEXTCOLOR", (2, 7), (2, 7), GREEN),
-                ("FONTNAME", (0, 7), (-1, 7), FONT_BOLD),
+                ("BACKGROUND", (0, 8), (-1, 8), VIOLET_LIGHT),
+                ("TEXTCOLOR", (2, 8), (2, 8), GREEN),
+                ("FONTNAME", (0, 8), (-1, 8), FONT_BOLD),
             ],
         )
     )
@@ -757,7 +713,7 @@ def build_story():
         [
             ["Score pondéré"] + [f"{offer.weighted_score:.1f} / 100" for offer in OFFERS],
             ["Éligibilité"] + ["Non" if not offer.eligible else "Oui" for offer in OFFERS],
-            ["Décision"] + ["Écartée", "Rapport coût/couverture", "Option premium à justifier"],
+            ["Décision"] + [offer.decision for offer in OFFERS],
         ]
     )
     story.append(
@@ -824,13 +780,21 @@ def build_story():
     )
     criteria_header = ["Famille", "Critère", "Poids", "A", "B", "C", "Preuve / note"]
     criteria_rows_a = [criteria_header]
-    for category, criterion, weight in CRITERIA[:20]:
-        criteria_rows_a.append([category, criterion, f"{weight} %", "", "", "", ""])
+    for index, (category, criterion, weight, proof_hint) in enumerate(CRITERIA[:20]):
+        criteria_rows_a.append(
+            [
+                category,
+                criterion,
+                f"{weight} %",
+                *[str(offer.scores[index]) for offer in OFFERS],
+                proof_hint,
+            ]
+        )
     story.append(
         table(
             criteria_rows_a,
             [29 * mm, 63 * mm, 14 * mm, 9 * mm, 9 * mm, 9 * mm, 26 * mm],
-            font_size=6.4,
+            font_size=5.8,
             repeat_rows=1,
             row_backgrounds=True,
             extra_style=[
@@ -856,13 +820,23 @@ def build_story():
         "Notez chaque ligne de 0 à 3. Une note sans preuve reste provisoire. Les vingt critères ci-dessous représentent les 48 % restants.",
     )
     criteria_rows_b = [criteria_header]
-    for category, criterion, weight in CRITERIA[20:]:
-        criteria_rows_b.append([category, criterion, f"{weight} %", "", "", "", ""])
+    for index, (category, criterion, weight, proof_hint) in enumerate(
+        CRITERIA[20:], start=20
+    ):
+        criteria_rows_b.append(
+            [
+                category,
+                criterion,
+                f"{weight} %",
+                *[str(offer.scores[index]) for offer in OFFERS],
+                proof_hint,
+            ]
+        )
     story.append(
         table(
             criteria_rows_b,
             [29 * mm, 63 * mm, 14 * mm, 9 * mm, 9 * mm, 9 * mm, 26 * mm],
-            font_size=6.4,
+            font_size=5.8,
             repeat_rows=1,
             row_backgrounds=True,
             extra_style=[
@@ -1041,13 +1015,13 @@ def build_story():
             Spacer(1, 6 * mm),
             callout(
                 "La version interactive",
-                "hagnere-code.ai/livres-blancs/comparer-devis-site-internet - modifiez l'exemple et copiez les formules dans Excel ou Google Sheets.",
+                "<link href='https://hagnere-code.ai/livres-blancs/comparer-devis-site-internet' color='#4C1D95'><u>Ouvrir la grille interactive</u></link> - modifiez l'exemple et copiez les formules dans Excel ou Google Sheets.",
                 "violet",
             ),
             Spacer(1, 6 * mm),
             callout(
                 "Faire relire vos devis",
-                f"Décrivez le projet sur {SITE}/demarrer-un-projet ou écrivez à {EMAIL}. Une lecture contradictoire doit pouvoir conclure qu'une autre offre est meilleure pour votre cas.",
+                f"<link href='https://{SITE}/demarrer-un-projet' color='#047857'><u>Décrire le projet</u></link> ou <link href='mailto:{EMAIL}' color='#047857'><u>écrire à {EMAIL}</u></link>. Une lecture contradictoire doit pouvoir conclure qu'une autre offre est meilleure pour votre cas.",
                 "green",
             ),
             Spacer(1, 16 * mm),
@@ -1063,7 +1037,7 @@ def build_story():
 def build_pdf(output: Path) -> None:
     validate_model()
     output.parent.mkdir(parents=True, exist_ok=True)
-    doc = BaseDocTemplate(
+    doc = BookmarkedDocTemplate(
         str(output),
         pagesize=A4,
         leftMargin=MARGIN_X,
@@ -1104,6 +1078,91 @@ def build_pdf(output: Path) -> None:
         ]
     )
     doc.build(build_story())
+    tag_pdf(output)
+
+
+def tag_pdf(output: Path) -> None:
+    """Add a coarse but valid logical structure tree in reading order.
+
+    ReportLab writes the story in a reliable reading order but does not expose
+    PDF tags. Each page is therefore wrapped in marked content and registered
+    as a section under a document element. Links and outlines created earlier
+    are preserved by cloning the document before replacement.
+    """
+
+    reader = PdfReader(str(output))
+    writer = PdfWriter()
+    writer.clone_document_from_reader(reader)
+
+    struct_root = DictionaryObject(
+        {
+            NameObject("/Type"): NameObject("/StructTreeRoot"),
+        }
+    )
+    struct_root_ref = writer._add_object(struct_root)
+    section_refs = ArrayObject()
+    document_element = DictionaryObject(
+        {
+            NameObject("/Type"): NameObject("/StructElem"),
+            NameObject("/S"): NameObject("/Document"),
+            NameObject("/P"): struct_root_ref,
+            NameObject("/K"): section_refs,
+            NameObject("/T"): TextStringObject(
+                "Comparer trois devis de site internet sur trois ans"
+            ),
+        }
+    )
+    document_ref = writer._add_object(document_element)
+    parent_tree_numbers = ArrayObject()
+
+    for index, page in enumerate(writer.pages):
+        content = page.get_contents()
+        original = content.get_data() if content is not None else b""
+        tagged_stream = DecodedStreamObject()
+        tagged_stream.set_data(b"/Sect <</MCID 0>> BDC\n" + original + b"\nEMC\n")
+        page[NameObject("/Contents")] = writer._add_object(
+            tagged_stream.flate_encode()
+        )
+        page[NameObject("/StructParents")] = NumberObject(index)
+        page[NameObject("/Tabs")] = NameObject("/S")
+
+        section = DictionaryObject(
+            {
+                NameObject("/Type"): NameObject("/StructElem"),
+                NameObject("/S"): NameObject("/Sect"),
+                NameObject("/P"): document_ref,
+                NameObject("/Pg"): page.indirect_reference,
+                NameObject("/K"): NumberObject(0),
+                NameObject("/T"): TextStringObject(f"Page {index + 1}"),
+            }
+        )
+        section_ref = writer._add_object(section)
+        section_refs.append(section_ref)
+        parent_tree_numbers.extend([NumberObject(index), ArrayObject([section_ref])])
+
+    parent_tree = DictionaryObject(
+        {
+            NameObject("/Nums"): parent_tree_numbers,
+        }
+    )
+    parent_tree_ref = writer._add_object(parent_tree)
+    struct_root[NameObject("/K")] = document_ref
+    struct_root[NameObject("/ParentTree")] = parent_tree_ref
+    struct_root[NameObject("/ParentTreeNextKey")] = NumberObject(len(writer.pages))
+
+    writer._root_object[NameObject("/StructTreeRoot")] = struct_root_ref
+    writer._root_object[NameObject("/MarkInfo")] = DictionaryObject(
+        {NameObject("/Marked"): BooleanObject(True)}
+    )
+    writer._root_object[NameObject("/Lang")] = TextStringObject("fr-FR")
+    writer._root_object[NameObject("/ViewerPreferences")] = DictionaryObject(
+        {NameObject("/DisplayDocTitle"): BooleanObject(True)}
+    )
+
+    tagged_output = output.with_suffix(".tagged.pdf")
+    with tagged_output.open("wb") as stream:
+        writer.write(stream)
+    tagged_output.replace(output)
 
 
 def main() -> None:

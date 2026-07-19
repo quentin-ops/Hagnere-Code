@@ -40,9 +40,9 @@ export const trustBadgesHtml = `
         <div class="oi-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg>
         </div>
-        <h4>CIR éligible</h4>
-        <p>Les prestations de R&amp;D (agents IA, intégrations complexes) sont <b>éligibles au Crédit Impôt Recherche</b>. 30 % de votre facture récupérables. Dossier type fourni.</p>
-        <div class="oi-trust-foot">— Dossier CIR livré à la réception</div>
+        <h4>R&amp;D documentée pour votre conseil</h4>
+        <p>Si le projet comporte de véritables opérations de R&amp;D individualisées, nous documentons les verrous, essais et résultats. <b>L'éligibilité au CIR reste à valider</b> selon les travaux, votre situation et l'agrément du prestataire.</p>
+        <div class="oi-trust-foot">— Documentation technique livrée à la réception</div>
       </div>
 
       <div class="oi-trust-card reveal">

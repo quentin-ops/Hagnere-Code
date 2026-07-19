@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AuditTechnique } from "@/components/audit-technique/AuditTechnique";
 import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
+import { TEAM_PUBLIC_COMPOSITION } from "@/lib/team";
 
 export const metadata: Metadata = {
   title: "Audit technique · Dette chiffrée en 10 jours · Hagnéré Code",
@@ -147,7 +148,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "2 seniors + un lead nommés dans le devis (photo, prénom, LinkedIn visibles). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. Chaque dimension auditée a un owner dédié qui la signe. Zéro rotation en cours d'audit : c'est un engagement contractuel. Un gérant qui code et sept développeurs, tous intégrés aux mêmes rituels.",
+          `2 seniors + un lead nommés dans le devis (photo, prénom, LinkedIn visibles). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. Chaque dimension auditée a un owner dédié qui la signe. Zéro rotation en cours d'audit : c'est un engagement contractuel. ${TEAM_PUBLIC_COMPOSITION}. Toute l'équipe partage les mêmes rituels.`,
       },
     },
     {

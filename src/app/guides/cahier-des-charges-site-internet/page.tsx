@@ -261,6 +261,7 @@ export default function Page() {
         ]}
         faqTitle="Cahier des charges : vos questions"
         faqItems={faqItems}
+        showWhitePaperPromo
       >
         <p className="lead">
           Un cahier des charges utile ne cherche pas à prévoir chaque détail :

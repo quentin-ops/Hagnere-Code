@@ -52,13 +52,13 @@ export const LOCAL_PAGES: LocalPageEntry[] = [
     path: "",
     root: "agence",
     level: "territoire",
-    title: "Agence web à Chambéry (Savoie) · Hagnéré Code",
+    title: "Hagnéré Code à Bassens · Agence web en Savoie",
     metaDescription:
-      "Agence web installée à Bassens, aux portes de Chambéry : sites, e-commerce, applications métier, référencement et Google Ads. Savoie et Haute-Savoie sur place, France à distance.",
-    heroTitle: "Notre agence web à Chambéry : le territoire que nous couvrons",
-    locality: "Chambéry",
+      "Agence web à Bassens, près de Chambéry : sites, e-commerce, applications métier, SEO et Google Ads. Savoie sur place, France à distance.",
+    heroTitle: "Hagnéré Code à Bassens : notre agence et notre territoire",
+    locality: "Bassens",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-19",
   },
   {
     path: "savoie",
@@ -70,19 +70,19 @@ export const LOCAL_PAGES: LocalPageEntry[] = [
     heroTitle: "Développement web en Savoie : six territoires, six économies",
     locality: "Savoie",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-19",
   },
   {
     path: "savoie/chambery",
     root: "agence",
     level: "ville",
-    title: "Agence web à Chambéry : développement sur mesure · Hagnéré Code",
+    title: "Agence web à Chambéry · Hagnéré Code",
     metaDescription:
       "Agence installée au 82 impasse de Bellevue à Bassens, commune limitrophe de Chambéry : sites, applications métier, référencement et Google Ads.",
     heroTitle: "Agence web à Chambéry : ce que cette ville achète vraiment",
     locality: "Chambéry",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-19",
   },
 ];
 

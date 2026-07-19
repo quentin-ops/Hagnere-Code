@@ -24,8 +24,9 @@ Il est **interdit** de créer :
   les **quatre produits du groupe Hagnéré** — LMNP.AI, SCI-AI.app,
   Hagnéré Patrimoine, Hagnéré Investissement — conçus, développés **et
   exploités** en interne.
-- **Sept développeurs** travaillent pour Quentin. Ce chiffre est vrai et
-  peut être utilisé.
+- L'équipe Hagnéré Code compte **sept personnes au total** : **un
+  gérant/fondateur, un CTO et cinq autres développeurs**. Cette composition
+  est la source à reprendre dans les contenus publics.
 - La société a été créée le **30 septembre 2025**. C'est vrai, ne le
   contredis jamais — mais ne le mets pas en avant : on ne compense pas un
   historique court en l'inventant, on met en avant ce qui est réel.

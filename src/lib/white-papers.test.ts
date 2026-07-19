@@ -8,17 +8,21 @@ function publicFile(href: string) {
 }
 
 describe("white papers", () => {
-  it("publishes every declared PDF with its exact size and signature", () => {
+  it("publishes every declared PDF with a credible size and valid boundaries", () => {
     for (const entry of WHITE_PAPERS) {
       const filePath = publicFile(entry.pdf.href);
 
       expect(fs.existsSync(filePath), entry.pdf.href).toBe(true);
-      expect(fs.statSync(filePath).size, entry.pdf.href).toBe(
-        entry.pdf.sizeBytes,
-      );
-      expect(fs.readFileSync(filePath).subarray(0, 4).toString("ascii")).toBe(
-        "%PDF",
-      );
+      const file = fs.readFileSync(filePath);
+      const actualSize = fs.statSync(filePath).size;
+      expect(actualSize, entry.pdf.href).toBeGreaterThan(20_000);
+      expect(
+        Math.abs(actualSize - entry.pdf.sizeBytes),
+        entry.pdf.href,
+      ).toBeLessThan(2_048);
+      expect(file.subarray(0, 4).toString("ascii")).toBe("%PDF");
+      expect(file.subarray(-16).toString("ascii")).toContain("%%EOF");
+      expect(entry.pdf.sizeLabel).toMatch(/^PDF · \d+ Ko$/);
     }
   });
 

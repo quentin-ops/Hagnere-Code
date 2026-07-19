@@ -221,6 +221,7 @@ export default function Page() {
         ]}
         faqTitle="Agence ou freelance : vos questions"
         faqItems={faqItems}
+        showWhitePaperPromo
       >
         <p className="lead">
           Cherchez « agence web ou freelance » : vous trouverez des

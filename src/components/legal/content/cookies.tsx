@@ -25,9 +25,9 @@ export const cookiesSections: LegalSection[] = [
             À ce jour, hagnere-code.ai ne dépose lui-même aucun cookie de
             mesure d&apos;audience ni de publicité.
           </strong>{" "}
-          Aucun outil d&apos;analyse d&apos;audience non exempté (Google Analytics, Meta
-          Pixel, etc.) n&apos;est intégré, et aucun pixel publicitaire n&apos;est chargé
-          sur le site.
+          Aucun outil d&apos;analyse d&apos;audience tiers (Google Analytics, Meta Pixel,
+          etc.) n&apos;est intégré, et aucun pixel publicitaire n&apos;est chargé sur le
+          site.
         </p>
         <p>
           Seule exception : les pages <strong>/contact</strong> et{" "}
@@ -42,6 +42,15 @@ export const cookiesSections: LegalSection[] = [
           clair/sombre choisi, le brouillon du formulaire de cadrage). Ces
           éléments ne nécessitent pas de consentement préalable au sens de
           l&apos;article 82 de la loi Informatique et Libertés.
+        </p>
+        <p>
+          Le site transmet à une route du même domaine quelques événements de
+          conversion anonymes (par exemple l&apos;ouverture du formulaire ou la
+          copie d&apos;une grille). Sont conservés uniquement le nom de l&apos;action, le
+          chemin de la page sans paramètres et des propriétés techniques non
+          identifiantes. Aucune adresse IP, aucun user-agent et aucun identifiant
+          persistant ne sont écrits dans ce jeu de données Cloudflare Analytics
+          Engine, conservé trois mois.
         </p>
         <p>
           <em>

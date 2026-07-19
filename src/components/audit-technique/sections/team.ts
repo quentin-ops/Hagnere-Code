@@ -1,3 +1,5 @@
+import { TEAM_PUBLIC_COMPOSITION } from "@/lib/team";
+
 export const teamHtml = `
 <!-- TEAM · 6 auditeurs nommés dans le devis (audit technique) -->
 <section class="at-team-dedi" id="equipe">
@@ -171,7 +173,7 @@ export const teamHtml = `
       <div>
         <b>Votre audit Standard mobilise 2 seniors parmi les 4 (Arthur · Frédéric · Ryan · Killian) + Nicolas sur l'archi + Quentin en lead.</b>
         Composition définie au cadrage selon vos dimensions critiques. <b>Nommés dans le devis</b>, zéro rotation en cours d'audit.
-        Un gérant qui code et <b>sept développeurs</b> — France &amp; Europe, intégrés aux mêmes rituels. Pas d'offshore, pas de pool tournant.
+        <b>${TEAM_PUBLIC_COMPOSITION}</b> — France &amp; Europe. Toute l'équipe partage les mêmes rituels. Pas d'offshore, pas de pool tournant.
       </div>
     </div>
   </div>

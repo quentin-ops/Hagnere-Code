@@ -56,6 +56,9 @@ export interface TeamMember {
   domains?: string;
 }
 
+/** Adresse publique du studio, utilisée dans les cartes et preuves locales. */
+export const STUDIO_LOCATION = "Bassens · Savoie";
+
 export const TEAM = {
   quentin: {
     id: "quentin",
@@ -69,7 +72,7 @@ export const TEAM = {
     specialty: "Brief client, cadrage, design produit, intégration front, suivi client de A à Z.",
     status: "gerant",
     statusLabel: "Associé dirigeant",
-    basedAt: "Chambéry · Savoie",
+    basedAt: STUDIO_LOCATION,
     yearsExp: "10+",
     photo: "/team/quentin.webp",
     photoAvailable: true,
@@ -222,6 +225,11 @@ export const DEVS: TeamMember[] = [
   TEAM.ryan,
   TEAM.peter,
 ];
+
+/** Effectif public : 1 fondateur, 1 CTO et les développeurs ci-dessus. */
+export const TEAM_TOTAL_COUNT = TEAM_LIST.length;
+export const TEAM_OTHER_DEVELOPERS_COUNT = DEVS.length;
+export const TEAM_PUBLIC_COMPOSITION = `${TEAM_TOTAL_COUNT} personnes au total : 1 gérant fondateur, 1 CTO et ${TEAM_OTHER_DEVELOPERS_COUNT} autres développeurs`;
 
 export const CDI_MEMBERS: TeamMember[] = TEAM_LIST.filter((m) => m.status === "CDI");
 export const FREELANCE_MEMBERS: TeamMember[] = TEAM_LIST.filter((m) => m.status === "freelance");

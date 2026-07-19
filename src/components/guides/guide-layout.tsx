@@ -83,7 +83,7 @@ export function GuideLayout({
   relatedLinks,
   faqTitle,
   faqItems,
-  showWhitePaperPromo = true,
+  showWhitePaperPromo = false,
   children,
 }: GuideLayoutProps) {
   return (
@@ -220,9 +220,9 @@ export function GuideLayout({
       <section className="py-10 md:py-16">
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Two-column layout: Article + Sidebar */}
-          <div className="flex flex-col gap-8 sm:gap-10 lg:flex-row lg:gap-16 xl:gap-24">
+          <div className="flex min-w-0 flex-col gap-8 sm:gap-10 lg:flex-row lg:gap-12 xl:gap-20">
             {/* Article */}
-            <article className="flex-1 max-w-3xl">
+            <article className="min-w-0 w-full flex-1 max-w-3xl">
               <div className="prose prose-zinc prose-sm max-w-none dark:prose-invert prose-headings:tracking-tight prose-headings:font-semibold prose-h1:text-2xl prose-h1:mb-6 prose-h2:text-lg prose-h2:mt-10 prose-h2:mb-4 prose-p:text-zinc-600 dark:prose-p:text-zinc-400 prose-p:leading-relaxed prose-li:text-zinc-600 dark:prose-li:text-zinc-400 prose-strong:text-zinc-900 dark:prose-strong:text-zinc-100">
                 {children}
               </div>
@@ -258,7 +258,7 @@ export function GuideLayout({
             </article>
 
             {/* Sidebar — only CTA card, sticky */}
-            <aside className="w-full lg:w-80 xl:w-96 shrink-0">
+            <aside className="min-w-0 w-full shrink-0 lg:w-72 xl:w-80">
               <div className="lg:sticky lg:top-24">
                 <GuideSidebarCTA showWhitePaperPromo={showWhitePaperPromo} />
               </div>

@@ -295,7 +295,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un projet en Savoie ?"
-          description="Décrivez-le en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Rendez-vous à Chambéry ou en visioconférence."
+          description="Décrivez-le en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Rendez-vous à Bassens, aux portes de Chambéry, ou en visioconférence."
         />
 
         <h2 id="besoins">5. Ce dont ces entreprises ont besoin</h2>

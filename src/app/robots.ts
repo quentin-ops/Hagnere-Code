@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
+import { isSearchIndexingEnabled } from "@/lib/search-indexing";
 
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = "https://hagnere-code.ai";
-  const isProd = process.env.NEXT_PUBLIC_ENV === "production";
+  const isProd = isSearchIndexingEnabled();
 
   if (!isProd) {
     return {

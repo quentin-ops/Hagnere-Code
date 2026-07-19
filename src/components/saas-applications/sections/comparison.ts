@@ -1,3 +1,5 @@
+import { TEAM_PUBLIC_COMPOSITION } from "@/lib/team";
+
 export const comparisonHtml = `
 <!-- COMPARISON SAAS -->
 <section class="sa-compare">
@@ -99,7 +101,7 @@ export const comparisonHtml = `
         <div class="sa-cmp-col">N/A (plateforme)</div>
         <div class="sa-cmp-col">N/A (plateforme)</div>
         <div class="sa-cmp-col sa-cmp-bad">Projet à l'arrêt</div>
-        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Équipe 7 seniors CDI, relais assuré</b></div>
+        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>${TEAM_PUBLIC_COMPOSITION}, relais organisé</b></div>
       </div>
 
       <div class="sa-cmp-row sa-cmp-row-verdict">

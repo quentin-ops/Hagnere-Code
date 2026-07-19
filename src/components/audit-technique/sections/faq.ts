@@ -1,3 +1,5 @@
+import { TEAM_PUBLIC_COMPOSITION } from "@/lib/team";
+
 export const faqHtml = `
 <!-- FAQ COMMERCIALE AUDIT · 12 Q · filtres persona CEO/CTO/DAF/VC -->
 <section class="faq" id="faq">
@@ -101,7 +103,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>2 seniors + le lead nommés dans le devis</b> (photo, prénom, LinkedIn — <a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir la section Équipe</a>). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. <b>Chaque dimension a un owner dédié</b> qui la signe. Zéro rotation en cours d'audit. Un gérant qui code et <b>sept développeurs</b>, tous intégrés aux mêmes rituels.
+            <b>2 seniors + le lead nommés dans le devis</b> (photo, prénom, LinkedIn — <a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir la section Équipe</a>). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. <b>Chaque dimension a un owner dédié</b> qui la signe. Zéro rotation en cours d'audit. <b>${TEAM_PUBLIC_COMPOSITION}</b>. Toute l'équipe partage les mêmes rituels.
           </div>
         </div>
 

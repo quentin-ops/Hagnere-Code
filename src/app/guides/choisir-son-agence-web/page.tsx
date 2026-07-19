@@ -222,6 +222,7 @@ export default function Page() {
         ]}
         faqTitle="Choisir son agence web : vos questions"
         faqItems={faqItems}
+        showWhitePaperPromo
       >
         <p className="lead">
           Choisir une agence web, c&apos;est confier plusieurs milliers
@@ -926,8 +927,8 @@ export default function Page() {
           visibles localement sous-traitent l&apos;essentiel de leur
           production. Notre position, en tant
           qu&apos;<Link href="/agence/savoie/chambery">équipe basée à
-          Chambéry</Link> : la proximité est un excellent critère de
-          départage
+          Bassens, aux portes de Chambéry</Link> : la proximité est un excellent
+          critère de départage
           entre deux prestataires équivalents, jamais un critère de
           sélection principal.
         </p>

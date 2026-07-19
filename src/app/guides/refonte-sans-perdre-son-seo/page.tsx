@@ -220,6 +220,7 @@ export default function Page() {
         ]}
         faqTitle="Refonte et SEO : vos questions"
         faqItems={faqItems}
+        showWhitePaperPromo
       >
         <p className="lead">
           « Si je refais mon site, est-ce que je vais disparaître de

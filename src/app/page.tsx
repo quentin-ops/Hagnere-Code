@@ -3,13 +3,13 @@ import { HomepageDesign } from "@/components/homepage/HomepageDesign";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Hagnéré Code — Agence web à Chambéry : sites, SaaS, SEO, Ads",
+  title: "Studio de développement web, SaaS & SEO · Hagnéré Code",
   description:
     "Agence web à Bassens, aux portes de Chambéry : sites, e-commerce, SaaS, applications métier, référencement naturel et Google Ads. Forfait fixe.",
   alternates: { canonical: "/" },
   openGraph: {
     ...OG_BASE,
-    title: "Hagnéré Code — Agence web à Chambéry : sites, SaaS, SEO, Ads",
+    title: "Studio de développement web, SaaS & SEO · Hagnéré Code",
     description:
       "Agence web à Bassens, aux portes de Chambéry : sites, e-commerce, SaaS, applications métier, référencement naturel et Google Ads. Forfait fixe.",
     url: "/",

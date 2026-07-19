@@ -1,3 +1,5 @@
+import { TEAM_TOTAL_COUNT } from "@/lib/team";
+
 export const comparisonHtml = `
 <!-- COMPARISON TABLE -->
 <section class="compare" id="comparaison">
@@ -56,14 +58,14 @@ export const comparisonHtml = `
       <div class="cmp-row">
         <div class="cmp-col cmp-col-label">Équipe dédiée à votre projet</div>
         <div class="cmp-col">1 personne</div>
-        <div class="cmp-col cmp-col-us"><b>Binôme à trinôme de seniors</b> (gérant-lead, dev, designer ou expert IA selon besoin), piochés dans une équipe de 7</div>
+        <div class="cmp-col cmp-col-us"><b>Binôme à trinôme de seniors</b> (gérant-lead, dev, designer ou expert IA selon besoin), piochés dans une équipe de ${TEAM_TOTAL_COUNT}</div>
         <div class="cmp-col">1 senior + 4 à 8 juniors</div>
       </div>
 
       <div class="cmp-row">
         <div class="cmp-col cmp-col-label">Continuité (vacances, maladie)</div>
         <div class="cmp-col cmp-bad">Projet à l'arrêt</div>
-        <div class="cmp-col cmp-col-us cmp-good">Équipe en CDI, relais assuré</div>
+        <div class="cmp-col cmp-col-us cmp-good">Équipe identifiée, relais organisé</div>
         <div class="cmp-col cmp-good">Équipe assurée mais rotation fréquente</div>
       </div>
 

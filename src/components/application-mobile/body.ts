@@ -852,7 +852,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Échéancier <b>30 / 40 / 30</b> : 30 % à la signature du devis, 40 % à la validation du design Figma, 30 % à la mise en ligne stores. Devis + contrat signés électroniquement (Yousign). Facturation SAS française, TVA française applicable. <b>Une partie du projet (R&amp;D mobile, IA embarquée, modules natifs) peut être éligible au Crédit Impôt Recherche</b> — on documente les prestations CIR-éligibles dans le rapport technique de fin de projet.
+            Échéancier <b>30 / 40 / 30</b> : 30 % à la signature du devis, 40 % à la validation du design Figma, 30 % à la mise en ligne stores. Devis + contrat signés électroniquement (Yousign). Facturation SAS française, TVA française applicable. Sur une véritable opération de R&amp;D, <b>nous documentons les verrous, essais et résultats</b> ; votre conseil valide séparément toute éventuelle éligibilité au CIR selon les travaux, votre situation et l'agrément du prestataire.
           </div>
         </div>
 

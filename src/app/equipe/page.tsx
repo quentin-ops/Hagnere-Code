@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { EquipePage } from "@/components/equipe/EquipePage";
 import { OG_BASE } from "@/lib/seo";
+import { TEAM_PUBLIC_COMPOSITION } from "@/lib/team";
 
 const EQUIPE_OG_IMAGE = {
   url: "/illustrations/equipe-atmosphere.png",
   width: 1792,
   height: 1024,
-  alt: "L'équipe Hagnéré Code — un gérant qui code et sept développeurs, zéro pool anonyme, stack maîtrisée",
+  alt: `L'équipe Hagnéré Code — ${TEAM_PUBLIC_COMPOSITION}, zéro pool anonyme, stack maîtrisée`,
 };
 
 export const metadata: Metadata = {
@@ -17,8 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     ...OG_BASE,
     title: "L'équipe Hagnéré Code · Développeurs seniors en Savoie",
-    description:
-      "Un gérant associé codeur et sept développeurs intégrés aux mêmes rituels. Tous seniors ou confirmés, écosystème React/Next.js (et Laravel pour les reprises). Augmentés par Claude Code.",
+    description: `${TEAM_PUBLIC_COMPOSITION}. Toute l'équipe partage les mêmes rituels. Profils seniors ou confirmés, écosystème React/Next.js (et Laravel pour les reprises), augmentés par Claude Code.`,
     url: "/equipe",
     images: [EQUIPE_OG_IMAGE],
   },
@@ -126,8 +126,7 @@ const faqJsonLd = JSON.stringify({
       name: "Travaillez-vous avec un pool externe ou de la sous-traitance ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "Pas de pool anonyme, jamais. Un gérant associé codeur et sept développeurs — Nicolas au CTO, Frédéric, Killian, Arthur et Ryan en seniors, Peter en dev confirmé — tous intégrés aux mêmes rituels : daily, démo, revue de code. Pas de pool anonyme qui change à chaque projet, pas de sous-traitance offshore, pas de white-label déguisé. Ce sont les mêmes personnes d'un projet à l'autre, et leurs noms sont dans le devis.",
+        text: `Pas de pool anonyme, jamais. ${TEAM_PUBLIC_COMPOSITION} — Quentin au pilotage, Nicolas au CTO, Frédéric, Killian, Arthur et Ryan en seniors, Peter en dev confirmé — tous intégrés aux mêmes rituels : daily, démo, revue de code. Pas de pool anonyme qui change à chaque projet, pas de sous-traitance offshore, pas de white-label déguisé. Ce sont les mêmes personnes d'un projet à l'autre, et leurs noms sont dans le devis.`,
       },
     },
     {

@@ -349,10 +349,10 @@ ${navHtml}
     <div class="ecp-grid">
       <div class="ecp-card reveal">
         <div class="ecp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
-        <h3>« Shopify Plus nous coûte 4 000 €/mois »</h3>
+        <h3>« Notre coût Shopify complet augmente »</h3>
         <p>
-          Licence Shopify Plus + Klaviyo + Yotpo + Recharge + Judge.me + Bold + 0.15 % GMV + fees paiement si vous sortez de Stripe…
-          On finit tous par payer le double annoncé — et sans pouvoir modifier le checkout.
+          Licence Shopify Plus, apps marketing, frais variables et paiement selon votre contrat : le total peut
+          s'éloigner du prix d'appel. La comparaison utile part de vos factures, pas d'un pourcentage générique.
         </p>
         <div class="ecp-foot">Ce qu'on construit : <b>la version sur-mesure sans % ni app stack</b>.</div>
       </div>
@@ -391,10 +391,11 @@ ${navHtml}
         <div class="ecp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
         <h3>« Facturation électronique 2026, on gère comment ? »</h3>
         <p>
-          Dès le 1<sup>er</sup> septembre 2026, les ETI doivent émettre en Factur-X. 2027 pour les PME.
-          Votre Shopify ne sait pas faire. Votre Prestashop non plus. Votre compta va vous tuer.
+          Dès le 1<sup>er</sup> septembre 2026, toutes les entreprises concernées doivent pouvoir recevoir des
+          factures électroniques ; les grandes entreprises et ETI doivent aussi émettre et transmettre leurs données.
+          L'émission et l'e-reporting s'appliquent aux PME et microentreprises le 1<sup>er</sup> septembre 2027.
         </p>
-        <div class="ecp-foot">Ce qu'on inclut : <b>Factur-X natif + dépôt Plateforme Agréée (Pennylane, Docaposte)</b>.</div>
+        <div class="ecp-foot">Ce qu'on peut intégrer : <b>Factur-X + connexion à la Plateforme Agréée retenue avec votre comptable</b>.</div>
       </div>
 
       <div class="ecp-card reveal reveal-d-2">
@@ -420,7 +421,7 @@ ${navHtml}
       </div>
       <div class="right">
         Une vraie boutique e-commerce en 2026, c'est six chantiers en même temps. On les traite
-        tous <b>dans le même forfait</b>, avec <b>la même équipe</b>, sans sous-traitance.
+        tous <b>dans le même forfait</b>, avec <b>la même équipe identifiée</b>, sans pool anonyme ni sous-traitance offshore.
       </div>
     </div>
 
@@ -773,7 +774,7 @@ ${navHtml}
         <div class="ec-stack-track-meta">
           <div><span class="k">Sweet spot</span><span class="v">Fashion · beauty · food · DTC</span></div>
           <div><span class="k">Time-to-launch</span><span class="v">6 à 12 semaines</span></div>
-          <div><span class="k">GMV idéal</span><span class="v">500 k€ → 10 M€ / an</span></div>
+          <div><span class="k">Quand l'envisager</span><span class="v">Après un TCO documenté sur 36 mois</span></div>
           <div><span class="k">Contre-indication</span><span class="v">B2B lourd, checkout custom extrême</span></div>
         </div>
       </article>
@@ -983,136 +984,7 @@ ${navHtml}
 </section>
 
 <!-- FAQ -->
-<section class="faq">
-  <div class="wrap">
-    <div class="faq-grid">
-      <div class="faq-intro reveal">
-        <div class="eyebrow">— Questions fréquentes</div>
-        <h2 style="margin-top:14px">Les dix questions<br>qu'on nous pose à chaque call.</h2>
-        <p>Les réponses que vous cherchez probablement. Si votre question n'y est pas, posez-la directement par Calendly ou email, réponse sous 24 h.</p>
-      </div>
-
-      <div class="faq-list reveal reveal-d-1">
-        <div class="faq-item open">
-          <div class="faq-q">
-            Combien ça coûte vraiment, une boutique sur mesure ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
-            Entre <b>15 k€</b> (Launch, nouvelle boutique simple) et <b>120 k€</b> (Enterprise multi-pays B2B+B2C). Le prix est fixe, contractuel, zéro % sur vos ventes après livraison.
-            On break-even vs Shopify Plus en général à partir de <b>500 k€ de GMV annuel</b> et vers 12–18 mois.
-            Pour comparer avec l'ensemble du marché, voir notre <a href="/guides/combien-coute-un-site-internet">guide des prix d'un site internet en 2026</a>.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            Shopify / Prestashop suffirait pas ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
-            Pour une boutique qui démarre, <b>probablement oui</b>. Shopify c'est 36 €/mois, c'est imbattable tant qu'on accepte le checkout standard et 0,5–2 % de fees.
-            Le sur-mesure commence à faire sens quand : (a) vous payez déjà &gt; 1 000 €/mois d'apps Shopify, (b) vous voulez une app mobile native, (c) vous avez des intégrations FR spécifiques (Sage, Chorus Pro), ou (d) vous faites &gt; 500 k€ de GMV et les % deviennent douloureux.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            Qui maintient après la livraison ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
-            Trois options : <b>(1)</b> forfait TMA mensuel chez nous (monitoring + évolutions + hotline, 800 à 2 500 €/mois selon ampleur) ;
-            <b>(2)</b> votre équipe interne reprend (stack 100 % standard Next.js + React + TypeScript, doc livrée) ;
-            <b>(3)</b> une autre ESN française prend le relais (on vous met en relation si besoin). 30 jours de garantie bugs inclus dans tous les cas.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            On a 5 000 produits + 10 000 clients sur Prestashop, comment on migre ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
-            Migration en 4 phases : <b>(1)</b> extraction produits/clients/commandes depuis l'ancien site (API ou dump DB) ;
-            <b>(2)</b> nettoyage et import dans le nouveau ;
-            <b>(3)</b> mapping 301 exhaustif (chaque URL ancienne → URL nouvelle) ;
-            <b>(4)</b> bascule DNS zero-downtime avec monitoring SEO (trafic GSC + positions) en continu sur 30 jours.
-            On n'a jamais perdu de trafic organique sur nos 6 dernières migrations.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            Vous faites aussi le design et la charte graphique ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
-            <b>Oui, inclus dans tous les forfaits.</b> Si vous n'avez pas de charte : moodboard, charte couleurs/typo, logo (déclinaisons), design system Figma complet, maquettes web + mobile + email.
-            Si vous avez déjà une charte : on adapte et on étend (storefront, app, emails transactionnels, print). Aucun forfait "design en option" — un produit sans design, c'est pas un produit.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            Est-ce qu'on est propriétaire du code ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
-            <b>Oui, intégralement.</b> Repo Git sur votre organisation dès J+1. Aucune licence propriétaire Hagnéré, aucun royalties, aucune clé cachée.
-            Si vous voulez repartir avec une autre équipe dans 18 mois, le code, la doc et le runbook permettent la reprise en 2–3 semaines de ramp-up.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            Et la facturation électronique 2026 ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
-            Obligation <b>1<sup>er</sup> septembre 2026</b> pour les grandes entreprises et ETI, <b>1<sup>er</sup> septembre 2027</b> pour les PME/TPE.
-            Votre boutique Hagnéré émet nativement en <b>Factur-X (PDF/A-3 + XML CII)</b>, dépose automatiquement chez une Plateforme Agréée (Pennylane, Docaposte) et fait le e-reporting B2C, sans que vous ayez à lever le petit doigt.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            Et si on a un pic Black Friday, ça tient la charge ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
-            Oui : infra <b>stateless</b>, scale horizontal auto (Vercel, OVH Public Cloud ou Scaleway scale set), CDN Cloudflare devant, queues Redis isolées.
-            Chaque livraison inclut un <b>test de charge à 10× le pic normal</b> avant go-live. Si la boutique ramait chez vous avant, on mesure le before/after en chiffres.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            App mobile iOS + Android, c'est vraiment inclus ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
-            Oui sur les forfaits <b>Scale</b> et <b>Enterprise</b>. Une seule codebase React Native, publiée sur l'App Store et le Play Store sous vos comptes développeur.
-            Push notifications, wallet client, scan code produit, panier synchro cross-device. OTA updates via EAS (bug fix en 10 min, pas 3 jours de review Apple).
-            Sur le forfait Launch, l'app est en option (+15 à 25 k€ selon features).
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q">
-            Marketplaces (Amazon, CDiscount, ManoMano) : vous savez ?
-            <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
-          </div>
-          <div class="faq-a">
-            Oui. On synchronise catalogue (produits, stocks, prix) et commandes via <b>Lengow</b>, <b>ShoppingFeed</b> ou Iziflux, ou en direct via l'API Amazon SP-API / CDiscount Pro / ManoMano Seller selon votre volume.
-            Les commandes marketplaces tombent dans le même back-office que votre boutique : une seule file à traiter, étiquettes générées pareil.
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
+<!-- Source unique injectée depuis faq-content.ts par composed-body.ts. -->
 
 <!-- CTA -->
 <section class="scta" id="contact">

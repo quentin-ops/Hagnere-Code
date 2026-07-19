@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { CookieBanner } from "@/components/cookies/CookieBanner";
 import { SkipToContent } from "@/components/design-shared/SkipToContent";
+import { isSearchIndexingEnabled } from "@/lib/search-indexing";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -18,12 +18,12 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-const isProd = process.env.NEXT_PUBLIC_ENV === "production";
+const isProd = isSearchIndexingEnabled();
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hagnere-code.ai"),
   title: {
-    default: "Hagnéré Code — Agence web à Chambéry : sites, SaaS, SEO, Ads",
+    default: "Studio de développement web, SaaS & SEO · Hagnéré Code",
     template: "%s",
   },
   description:
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://hagnere-code.ai",
     siteName: "Hagnéré Code",
-    title: "Hagnéré Code — Agence web à Chambéry : sites, SaaS, SEO, Ads",
+    title: "Studio de développement web, SaaS & SEO · Hagnéré Code",
     description:
       "Agence web à Bassens, aux portes de Chambéry : développement sur mesure, référencement naturel et Google Ads. Forfait fixe.",
     images: [
@@ -110,9 +110,6 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
-        {/* Vercel Analytics : mesure sans cookies — pas de consentement requis
-            (le bandeau reste réservé à un éventuel futur outil à cookies). */}
-        <Analytics />
         {/* Pré-installé, désactivé tant que NEXT_PUBLIC_COOKIE_BANNER!=1.
             À activer seulement si un outil à cookies est ajouté (GA, etc.). */}
         <CookieBanner />

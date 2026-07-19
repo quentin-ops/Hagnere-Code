@@ -216,6 +216,7 @@ export default function Page() {
         ]}
         faqTitle="Propriété du site : vos questions"
         faqItems={faqItems}
+        showWhitePaperPromo
       >
         <p className="lead">
           <strong>Payer une prestation ne vous transfère aucun droit sur le

@@ -19,12 +19,12 @@ export const comparisonHtml = `
         <div class="ec-cmp-col">
           <div class="ec-cmp-kind">Entrée de gamme</div>
           <div class="ec-cmp-title">Shopify Standard</div>
-          <div class="ec-cmp-price">36–105 €/mois</div>
+          <div class="ec-cmp-price">Tarif selon plan et engagement</div>
         </div>
         <div class="ec-cmp-col">
           <div class="ec-cmp-kind">SaaS premium</div>
           <div class="ec-cmp-title">Shopify Plus</div>
-          <div class="ec-cmp-price">2 300 €/mois + 0,15 % GMV</div>
+          <div class="ec-cmp-price">Tarif et frais selon contrat</div>
         </div>
         <div class="ec-cmp-col">
           <div class="ec-cmp-kind">Open source</div>
@@ -40,8 +40,8 @@ export const comparisonHtml = `
 
       <div class="ec-cmp-row">
         <div class="ec-cmp-col ec-cmp-col-label">% sur vos ventes</div>
-        <div class="ec-cmp-col ec-cmp-bad">0,5–2 % si gateway ≠ Shopify</div>
-        <div class="ec-cmp-col ec-cmp-bad">0,15 % GMV + fees paiement</div>
+        <div class="ec-cmp-col">Selon plan et moyen de paiement</div>
+        <div class="ec-cmp-col">Selon contrat et moyen de paiement</div>
         <div class="ec-cmp-col">0</div>
         <div class="ec-cmp-col ec-cmp-col-us ec-cmp-good"><b>0 %</b></div>
       </div>
@@ -104,21 +104,21 @@ export const comparisonHtml = `
 
       <div class="ec-cmp-row">
         <div class="ec-cmp-col ec-cmp-col-label">Coût total 3 ans (2 M€ GMV)</div>
-        <div class="ec-cmp-col">~25 k€ + fees trx</div>
-        <div class="ec-cmp-col ec-cmp-bad">~120–180 k€</div>
-        <div class="ec-cmp-col">~40–80 k€</div>
-        <div class="ec-cmp-col ec-cmp-col-us ec-cmp-good"><b>25–120 k€ forfait (zéro %)</b></div>
+        <div class="ec-cmp-col">À calculer : licence + apps + frais</div>
+        <div class="ec-cmp-col">À calculer sur le contrat complet</div>
+        <div class="ec-cmp-col">Dev + hébergement + maintenance</div>
+        <div class="ec-cmp-col ec-cmp-col-us"><b>Forfait + TMA selon périmètre</b></div>
       </div>
 
       <div class="ec-cmp-row ec-cmp-row-verdict">
         <div class="ec-cmp-col ec-cmp-col-label">À choisir si…</div>
         <div class="ec-cmp-col">
-          Boutique démarrage,<br>
-          &lt; 500 k€ GMV,<br>
+          Boutique en démarrage,<br>
+          catalogue standard,<br>
           peu d'intégrations FR
         </div>
         <div class="ec-cmp-col">
-          GMV 1-5 M€,<br>
+          écosystème Shopify assumé,<br>
           équipe marketing forte,<br>
           lock-in accepté
         </div>
@@ -128,7 +128,7 @@ export const comparisonHtml = `
           budget modules maîtrisé
         </div>
         <div class="ec-cmp-col ec-cmp-col-us">
-          <b>GMV 500 k€–20 M€,</b><br>
+          <b>TCO documenté sur 36 mois,</b><br>
           intégrations FR lourdes,<br>
           app mobile + 0 %
         </div>
@@ -137,7 +137,7 @@ export const comparisonHtml = `
 
     <div class="ec-cmp-disclaimer reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-      Pas sûr d'être dans notre zone ? <a href="#contact">30 min avec un expert</a> — si Shopify est mieux pour vous, on le dit franchement, on vous oriente.
+      Tarifs Shopify à vérifier sur la <a href="https://www.shopify.com/fr/tarifs" target="_blank" rel="noopener noreferrer">page officielle</a> (consultée le 19 juillet 2026), puis dans votre contrat. Pas sûr d'être dans notre zone ? <a href="#contact">30 min avec un expert</a> — si Shopify est mieux pour vous, on le dit franchement.
     </div>
   </div>
 </section>

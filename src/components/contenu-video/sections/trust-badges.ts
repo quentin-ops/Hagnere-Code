@@ -39,9 +39,9 @@ export const trustBadgesHtml = `
 
       <div class="cv-trust-card reveal">
         <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-        <h4>CIR éligible (pipeline IA)</h4>
-        <p>Les travaux de R&amp;D sur le pipeline IA (prompt engineering Claude, fine-tune voix ElevenLabs, agents de montage) sont <b>éligibles au CIR</b>. 30 % récupérables.</p>
-        <div class="cv-trust-foot">— Dossier CIR livré à la clôture</div>
+        <h4>R&amp;D documentée (pipeline IA)</h4>
+        <p>Si le pipeline comporte de véritables opérations de R&amp;D individualisées, nous documentons les verrous, essais et résultats. <b>L'éligibilité au CIR reste à valider</b> par votre conseil, selon les travaux, votre situation et l'agrément du prestataire.</p>
+        <div class="cv-trust-foot">— Documentation technique livrée à la clôture</div>
       </div>
 
       <div class="cv-trust-card reveal reveal-d-1">

@@ -46,6 +46,12 @@ yarn-error.log*
 # drizzle
 /drizzle
 
+# local pnpm store
+.pnpm-store/
+
+# local QA renders and previews
+/tmp/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

@@ -8,14 +8,17 @@ import {
 } from "lucide-react";
 
 export function GuideSidebarCTA({
-  showWhitePaperPromo = true,
+  showWhitePaperPromo = false,
 }: {
   showWhitePaperPromo?: boolean;
 }) {
   return (
     <div className="space-y-4">
       {showWhitePaperPromo && (
-        <aside className="rounded-2xl border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/30">
+        <section
+          aria-labelledby="guide-white-paper-title"
+          className="rounded-2xl border border-violet-200 bg-violet-50 p-5 dark:border-violet-900/60 dark:bg-violet-950/30"
+        >
           <div className="flex items-start gap-3">
             <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-white text-violet-700 shadow-sm dark:bg-zinc-900 dark:text-violet-300">
               <FileSpreadsheet className="size-4" aria-hidden="true" />
@@ -24,7 +27,10 @@ export function GuideSidebarCTA({
               <p className="text-[10px] font-bold uppercase tracking-widest text-violet-700 dark:text-violet-300">
                 Livre blanc gratuit
               </p>
-              <h3 className="mt-1 text-base font-bold leading-snug text-zinc-950 dark:text-white">
+              <h3
+                id="guide-white-paper-title"
+                className="mt-1 text-base font-bold leading-snug text-zinc-950 dark:text-white"
+              >
                 Vous comparez des devis web ?
               </h3>
             </div>
@@ -40,7 +46,7 @@ export function GuideSidebarCTA({
             Comparer mes devis
             <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
           </Link>
-        </aside>
+        </section>
       )}
 
       <div className="rounded-2xl bg-zinc-950 dark:bg-zinc-900 p-6 md:p-8 relative overflow-hidden">

@@ -17,9 +17,7 @@ await fs.mkdir(outputDir, { recursive: true });
 
 const BLUE = "#1E4F7A";
 const BLUE_LIGHT = "#E8EEF5";
-const VIOLET = "#6D28D9";
 const TEXT = "#1F2937";
-const MUTED = "#5B6472";
 const BORDER = "#CBD5E1";
 const INPUT = "#FFF7E6";
 const GREEN = "#DCFCE7";

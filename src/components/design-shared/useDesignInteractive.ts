@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, RefObject } from "react";
+import { calculateEcommerceCostComparison } from "@/lib/ecommerce-cost-comparison";
 import { applyTheme, toggleThemeWithReveal } from "@/lib/theme-transition";
 
 function makeSvg(paths: Array<{ d: string }>): SVGElement {
@@ -520,12 +521,11 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
     // GMV Calculator — used on /services/ecommerce to compare Shopify 3y TCO vs Hagnéré forfait.
     const calc = root.querySelector<HTMLElement>(".ec-calc");
     if (calc) {
+      const license = calc.querySelector<HTMLInputElement>("#ec-calc-license");
       const gmv = calc.querySelector<HTMLInputElement>("#ec-calc-gmv");
       const apps = calc.querySelector<HTMLInputElement>("#ec-calc-apps");
       const fees = calc.querySelector<HTMLInputElement>("#ec-calc-fees");
-      const planBtns = Array.from(
-        calc.querySelectorAll<HTMLButtonElement>(".ec-calc-seg"),
-      );
+      const licenseVal = calc.querySelector<HTMLElement>("#ec-calc-license-v");
       const gmvVal = calc.querySelector<HTMLElement>("#ec-calc-gmv-v");
       const appsVal = calc.querySelector<HTMLElement>("#ec-calc-apps-v");
       const feesVal = calc.querySelector<HTMLElement>("#ec-calc-fees-v");
@@ -539,56 +539,46 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       const fmt = (n: number) =>
         Math.round(n).toLocaleString("fr-FR").replace(/\s/g, " ");
 
-      let plan: "basic" | "plus" =
-        (planBtns
-          .find((b) => b.classList.contains("is-active"))
-          ?.dataset.shopifyPlan as "basic" | "plus") || "plus";
-
       const recompute = () => {
+        const licenseNum = parseInt(license?.value || "0", 10);
         const gmvNum = parseInt(gmv?.value || "0", 10);
         const appsNum = parseInt(apps?.value || "0", 10);
         const feesNum = parseFloat(fees?.value || "0");
 
+        if (licenseVal) licenseVal.textContent = fmt(licenseNum);
         if (gmvVal) gmvVal.textContent = fmt(gmvNum);
         if (appsVal) appsVal.textContent = fmt(appsNum);
         if (feesVal)
           feesVal.textContent = feesNum.toFixed(1).replace(".", ",");
 
-        // Shopify yearly cost:
-        // licence + apps*12 + fees%*GMV + (plus only: 0.15% GMV fee)
-        const licenceMonthly = plan === "plus" ? 2300 : 60;
-        const gmvFeePlus = plan === "plus" ? gmvNum * 0.0015 : 0;
-        const shopifyYearly =
-          licenceMonthly * 12 +
-          appsNum * 12 +
-          (feesNum / 100) * gmvNum +
-          gmvFeePlus;
-        const shopify3y = shopifyYearly * 3;
+        const comparison = calculateEcommerceCostComparison({
+          annualGmv: gmvNum,
+          shopifyMonthlyLicense: licenseNum,
+          shopifyMonthlyApps: appsNum,
+          shopifyVariableFeePercent: feesNum,
+        });
 
-        // Hagnéré: médiane forfait Scale 45k€ + TMA 1500€/mois × 36 mois
-        const hcForfait = 45000;
-        const hcTma = 1500 * 36;
-        const hcTotal3y = hcForfait + hcTma;
+        if (shopifyTotal)
+          shopifyTotal.textContent = fmt(comparison.shopifyTotal);
+        if (hcTotal) hcTotal.textContent = fmt(comparison.hagnereTotal);
 
-        if (shopifyTotal) shopifyTotal.textContent = fmt(shopify3y);
-        if (hcTotal) hcTotal.textContent = fmt(hcTotal3y);
-
-        const diff = shopify3y - hcTotal3y;
         if (diffAmount) {
-          diffAmount.textContent = fmt(Math.abs(diff));
+          diffAmount.textContent = fmt(Math.abs(comparison.difference));
         }
         if (diffLabel) {
           diffLabel.textContent =
-            diff >= 0
-              ? "Économies sur 3 ans"
-              : "Shopify reste moins cher sur 3 ans";
+            comparison.difference >= 0
+              ? "Écart en faveur du scénario Hagnéré"
+              : "Écart en faveur du scénario Shopify";
         }
 
         if (breakevenLine) {
-          if (diff > 0) {
-            const monthlySavings = (shopifyYearly - hcTma / 3) / 12;
-            const monthsToBe = Math.ceil(hcForfait / monthlySavings);
-            if (months) months.textContent = String(monthsToBe);
+          if (
+            comparison.difference > 0 &&
+            comparison.breakEvenMonths !== null
+          ) {
+            if (months)
+              months.textContent = String(comparison.breakEvenMonths);
             breakevenLine.style.display = "block";
           } else {
             breakevenLine.style.display = "none";
@@ -598,6 +588,10 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
 
       const onInput = () => recompute();
       const listeners: Array<[EventTarget, string, EventListener]> = [];
+      if (license) {
+        license.addEventListener("input", onInput);
+        listeners.push([license, "input", onInput]);
+      }
       if (gmv) {
         gmv.addEventListener("input", onInput);
         listeners.push([gmv, "input", onInput]);
@@ -610,22 +604,6 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         fees.addEventListener("input", onInput);
         listeners.push([fees, "input", onInput]);
       }
-
-      planBtns.forEach((btn) => {
-        const onClick = () => {
-          const p = btn.dataset.shopifyPlan as "basic" | "plus";
-          if (!p) return;
-          plan = p;
-          planBtns.forEach((b) => {
-            const active = b === btn;
-            b.classList.toggle("is-active", active);
-            b.setAttribute("aria-pressed", active ? "true" : "false");
-          });
-          recompute();
-        };
-        btn.addEventListener("click", onClick);
-        listeners.push([btn, "click", onClick]);
-      });
 
       recompute();
       cleanups.push(() => {

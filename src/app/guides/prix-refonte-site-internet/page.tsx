@@ -223,6 +223,7 @@ export default function Page() {
         ]}
         faqTitle="Prix d'une refonte de site : vos questions"
         faqItems={faqItems}
+        showWhitePaperPromo
       >
         <p className="lead">
           Une refonte de site a une particularité qu&apos;aucun autre projet

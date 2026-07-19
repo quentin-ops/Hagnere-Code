@@ -9,6 +9,7 @@ import {
   toMathChallengePayload,
   type MathChallengeValue,
 } from "@/components/project-funnel/MathChallenge";
+import { TEAM_TOTAL_COUNT } from "@/lib/team";
 import "./site-footer.css";
 
 type Status =
@@ -522,7 +523,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
               </p>
               <div className="sf-foot-trust">
                 <span className="sf-foot-chip">
-                  <span className="dot dot-green" /> 7 personnes
+                  <span className="dot dot-green" /> {TEAM_TOTAL_COUNT} personnes
                 </span>
                 <span className="sf-foot-chip">
                   <span className="dot dot-accent" /> Bassens · 100 % France
@@ -844,7 +845,9 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                     <path d="M3 19c0-3 3-5 6-5s6 2 6 5M15 19c0-2 2-3.5 4-3.5" />
                   </svg>
                 </span>
-                <span className="sf-tile-label">Équipe (7 personnes)</span>
+                <span className="sf-tile-label">
+                  Équipe ({TEAM_TOTAL_COUNT} personnes)
+                </span>
               </Link>
               <Link className="sf-tile" href="/tarifs">
                 <span className="sf-tile-ic">

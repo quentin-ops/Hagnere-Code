@@ -12,7 +12,11 @@ import {
 } from "@/components/guides/guide-content-blocks";
 import { TrackedDownloadLink } from "@/components/resources/TrackedDownloadLink";
 import { QuoteComparisonWorkbench } from "@/components/white-papers/QuoteComparisonWorkbench";
-import { QUOTE_CRITERIA } from "@/lib/quote-comparison";
+import {
+  calculateQuoteTco,
+  QUOTE_CRITERIA,
+  QUOTE_EXAMPLE_OFFERS,
+} from "@/lib/quote-comparison";
 import { OG_BASE, SITE_URL } from "@/lib/seo";
 import {
   QUOTE_COMPARISON_WHITE_PAPER as whitePaper,
@@ -35,6 +39,12 @@ export const metadata: Metadata = {
     publishedTime: `${whitePaper.datePublished}T09:00:00+02:00`,
     modifiedTime: `${whitePaper.dateModified}T09:00:00+02:00`,
     authors: [`${SITE_URL}/equipe`],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: whitePaper.cardTitle,
+    description: whitePaper.description,
+    images: [whitePaper.path + "/opengraph-image"],
   },
   robots: {
     index: true,
@@ -63,7 +73,7 @@ const faqItems = [
   {
     question: "Que signifie TCO dans un devis web ?",
     answer:
-      "TCO signifie coût total de possession. Dans cette grille, il additionne la création, les options nécessaires, les coûts récurrents des années 1 à 3, le temps interne valorisé, la réversibilité et une provision calculée pour les risques identifiés. Il ne mesure pas à lui seul la qualité de l'offre.",
+      "TCO signifie coût total de possession. Dans cette grille, il additionne la création, les options nécessaires, les coûts récurrents des années 1 à 3, le temps interne valorisé, la réversibilité et une provision calculée pour les risques identifiés, puis soustrait les remises et crédits certains. Il ne mesure pas à lui seul la qualité de l'offre.",
   },
   {
     question: "Faut-il comparer les prix HT ou TTC ?",
@@ -177,18 +187,90 @@ const faqJsonLd = JSON.stringify({
   })),
 });
 
-const categorySummary = [
-  ["Périmètre", "24 %", "Ce qui sera réellement conçu, livré et testé"],
-  ["Contenus", "6 %", "Qui produit, migre et valide les contenus"],
-  ["SEO et données", "14 %", "URL, redirections, mesure et consentement"],
-  ["Design", "10 %", "Écrans, états, accessibilité et composants"],
-  ["Technique", "13 %", "Hébergement, performance, sécurité et sauvegardes"],
-  ["Gouvernance", "9 %", "Jalons, livrables, rôles et changements"],
-  ["Exploitation", "10 %", "Maintenance, évolutions, SLA et récurrents"],
+const categoryDescriptions: Record<string, string> = {
+  Périmètre: "Ce qui sera réellement conçu, livré et testé",
+  Contenus: "Qui produit, migre et valide les contenus",
+  "SEO et données": "URL, redirections, mesure et consentement",
+  Design: "Écrans, états, accessibilité et composants",
+  Technique: "Hébergement, performance, sécurité et sauvegardes",
+  Gouvernance: "Jalons, livrables, rôles et changements",
+  Exploitation: "Maintenance, évolutions, SLA et récurrents",
+  "Propriété et sortie": "Code, comptes, licences, données et réversibilité",
+};
+
+const categoryWeights = QUOTE_CRITERIA.reduce<Map<string, number>>(
+  (weights, criterion) => {
+    weights.set(
+      criterion.category,
+      (weights.get(criterion.category) ?? 0) + criterion.weight,
+    );
+    return weights;
+  },
+  new Map(),
+);
+
+const categorySummary = Array.from(categoryWeights, ([category, weight]) => [
+  category,
+  `${weight} %`,
+  categoryDescriptions[category],
+]);
+
+const exampleTotals = QUOTE_EXAMPLE_OFFERS.map((offer) =>
+  calculateQuoteTco(offer.costs),
+);
+const exampleBestTotal = Math.min(...exampleTotals);
+
+function euro(value: number): string {
+  return new Intl.NumberFormat("fr-FR", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+const exampleCostRows = [
+  ["Création", ...QUOTE_EXAMPLE_OFFERS.map((offer) => euro(offer.costs.initial))],
   [
-    "Propriété et sortie",
-    "14 %",
-    "Code, comptes, licences, données et réversibilité",
+    "Options nécessaires",
+    ...QUOTE_EXAMPLE_OFFERS.map((offer) => euro(offer.costs.requiredOptions)),
+  ],
+  [
+    "Récurrents cumulés",
+    ...QUOTE_EXAMPLE_OFFERS.map((offer) =>
+      euro(offer.costs.year1 + offer.costs.year2 + offer.costs.year3),
+    ),
+  ],
+  [
+    "Temps interne valorisé",
+    ...QUOTE_EXAMPLE_OFFERS.map((offer) =>
+      euro(offer.costs.internalHours * offer.costs.internalHourCost),
+    ),
+  ],
+  [
+    "Sortie / réversibilité",
+    ...QUOTE_EXAMPLE_OFFERS.map((offer) => euro(offer.costs.exitCost)),
+  ],
+  [
+    "Risques identifiés",
+    ...QUOTE_EXAMPLE_OFFERS.map((offer) => euro(offer.costs.riskReserve)),
+  ],
+  [
+    "Remises et crédits certains",
+    ...QUOTE_EXAMPLE_OFFERS.map((offer) =>
+      offer.costs.credits > 0 ? `− ${euro(offer.costs.credits)}` : euro(0),
+    ),
+  ],
+  [
+    "TCO 36 mois",
+    ...exampleTotals.map((total, index) => ({
+      text: euro(total),
+      className:
+        total === exampleBestTotal
+          ? "font-bold text-emerald-700 dark:text-emerald-300"
+          : index === 0
+            ? "font-bold text-amber-700 dark:text-amber-300"
+            : "font-bold",
+    })),
   ],
 ];
 
@@ -277,7 +359,7 @@ export default function Page() {
       >
         <p className="lead">
           Trois devis peuvent afficher{" "}
-          <strong>8 900 €, 17 900 € et 24 800 €</strong>
+          <strong>8 900 €, 17 900 € et 24 800 €</strong>{" "}
           sans acheter la même chose. Le premier peut exclure la migration SEO,
           facturer l&apos;hébergement chaque année et vous laisser produire tous
           les contenus ; le troisième peut inclure ces postes, les accès, la
@@ -581,33 +663,20 @@ export default function Page() {
             "Offre B · forfait",
             "Offre C · premium",
           ]}
-          rows={[
-            ["Création", "8 900 €", "17 900 €", "24 800 €"],
-            ["Options nécessaires", "3 600 €", "900 €", "0 €"],
-            ["Récurrents cumulés", "14 940 €", "6 840 €", "5 700 €"],
-            ["Temps interne valorisé", "2 640 €", "1 540 €", "1 100 €"],
-            ["Sortie / réversibilité", "2 500 €", "800 €", "500 €"],
-            ["Risques identifiés", "1 800 €", "900 €", "600 €"],
-            [
-              "TCO 36 mois",
-              {
-                text: "34 380 €",
-                className: "font-bold text-amber-700 dark:text-amber-300",
-              },
-              {
-                text: "28 880 €",
-                className: "font-bold text-emerald-700 dark:text-emerald-300",
-              },
-              "32 700 €",
-            ],
-          ]}
+          rows={exampleCostRows}
         />
         <p>
           L&apos;offre A est la moins chère au lancement, mais devient la plus
-          coûteuse :<strong> 5 500 € de plus que B</strong> sur trois ans.
-          L&apos;offre C coûte 3 820 € de plus que B. La bonne question
-          n&apos;est donc pas « C est-elle trop chère ? », mais « les livrables
-          supplémentaires de C valent-ils 3 820 € pour ce projet précis ? ».
+          coûteuse :
+          <strong>
+            {" "}
+            {euro(exampleTotals[0] - exampleTotals[1])} de plus que B
+          </strong>{" "}
+          sur trois ans. L&apos;offre C coûte{" "}
+          {euro(exampleTotals[2] - exampleTotals[1])} de plus que B. La bonne
+          question n&apos;est donc pas « C est-elle trop chère ? », mais « les
+          livrables supplémentaires de C valent-ils{" "}
+          {euro(exampleTotals[2] - exampleTotals[1])} pour ce projet précis ? ».
         </p>
         <InfoBox
           variant="blue"

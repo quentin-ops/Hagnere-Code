@@ -39,6 +39,7 @@ import {
   type MathChallengeValue,
 } from "./MathChallenge";
 import { compileBrief } from "./brief-format";
+import { copyTextToClipboard } from "@/lib/clipboard";
 import { trackFunnelEvent } from "@/lib/funnel-analytics";
 import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
 
@@ -1294,6 +1295,9 @@ function VoiceTextarea({
   const [recording, setRecording] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState<MicError | null>(null);
+  const [diagnosticCopyStatus, setDiagnosticCopyStatus] = useState<
+    "idle" | "copied" | "error"
+  >("idle");
   const [elapsedMs, setElapsedMs] = useState(0);
   const [audioLevel, setAudioLevel] = useState(0);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -1337,6 +1341,7 @@ function VoiceTextarea({
 
   const startRecording = useCallback(async () => {
     setError(null);
+    setDiagnosticCopyStatus("idle");
     // Diagnostic logging — surfaces all the conditions for getUserMedia.
     // Open DevTools → Console to see why a recording attempt fails.
     const diag = {
@@ -1636,16 +1641,30 @@ userAgent         : ${error.diag.userAgent.slice(0, 80)}…`}</pre>
               <button
                 type="button"
                 className="pf-mic-retry"
-                onClick={() => {
+                onClick={async () => {
                   if (error.diag) {
-                    void navigator.clipboard
-                      .writeText(JSON.stringify(error.diag, null, 2))
-                      .catch(() => {});
+                    const copied = await copyTextToClipboard(
+                      JSON.stringify(error.diag, null, 2),
+                    );
+                    setDiagnosticCopyStatus(copied ? "copied" : "error");
                   }
                 }}
               >
                 Copier le diagnostic
               </button>
+              <span
+                className={`pf-mic-copy-status${
+                  diagnosticCopyStatus === "error" ? " is-error" : ""
+                }`}
+                role="status"
+                aria-live="polite"
+              >
+                {diagnosticCopyStatus === "copied"
+                  ? "Diagnostic copié."
+                  : diagnosticCopyStatus === "error"
+                    ? "Copie impossible : sélectionnez le bloc ci-dessus."
+                    : ""}
+              </span>
             </details>
           )}
           <button

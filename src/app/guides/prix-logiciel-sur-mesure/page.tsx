@@ -207,6 +207,7 @@ export default function Page() {
           { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
         ]}
         relatedLinks={[
+          { href: "/guides/transformer-excel-en-application", label: "Transformer Excel en application" },
           { href: "/guides/combien-coute-un-site-internet", label: "Combien coûte un site internet ?" },
           { href: "/guides/combien-coute-un-saas", label: "Combien coûte un SaaS ?" },
           { href: "/ressources/kit-cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },

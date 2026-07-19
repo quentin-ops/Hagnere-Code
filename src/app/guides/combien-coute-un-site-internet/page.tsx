@@ -220,6 +220,7 @@ export default function Page() {
         ]}
         faqTitle="Prix d'un site internet : vos questions"
         faqItems={faqItems}
+        showWhitePaperPromo
       >
         <p className="lead">
           «&nbsp;Combien coûte un site internet&nbsp;?&nbsp;» est la première

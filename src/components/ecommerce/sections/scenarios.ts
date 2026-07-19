@@ -78,9 +78,9 @@ export const scenariosHtml = `
           <div class="ec-scen-kind">POUR QUI</div>
           <h3>Boutique existante qui sature<br>son Shopify ou son Presta.</h3>
           <p>
-            Vous êtes sur Shopify Plus à 4 000 €/mois (licence + apps + fees), ou sur un Prestashop 1.7
+            Votre coût Shopify contractuel (licence, apps et frais variables) devient significatif, ou votre Prestashop 1.7
             qui bugge tous les mois. Vous voulez <b>reprendre le contrôle</b>, garder votre SEO, sortir
-            l'app mobile, et arrêter de reverser 2 % à chaque vente.
+            l'app mobile, et comparer objectivement vos coûts sur 36 mois.
           </p>
           <div class="ec-scen-deliv">
             <h4>Ce qu'on livre</h4>
@@ -88,7 +88,7 @@ export const scenariosHtml = `
               <li>Tout le scénario "Nouvelle boutique"</li>
               <li><b>App iOS + Android incluse</b> (React Native)</li>
               <li>Migration 5 000 produits + 10 000 clients</li>
-              <li>Mapping 301 exhaustif (zéro perte SEO)</li>
+              <li>Mapping 301 exhaustif + suivi SEO post-bascule</li>
               <li>1-2 marketplaces (Amazon, CDiscount…)</li>
               <li>Server-side tracking GA4 + Meta CAPI</li>
               <li>3 agents IA (reco, descriptions, SAV)</li>
@@ -101,13 +101,13 @@ export const scenariosHtml = `
             <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 1 designer + 2 devs + 1 mobile</span></div>
             <div class="ec-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
             <div class="ec-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 3 à 4 semaines</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Break-even vs Shopify</span><span class="v">~12–18 mois</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Écart vs Shopify</span><span class="v">Calculé avec vos coûts réels</span></div>
           </div>
           <a href="#contact" class="btn btn-accent ec-scen-cta">
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="ec-scen-ref">Typique : boutique mode à 2 M€ GMV / an, sort de Shopify Plus, économise ~80 k€/an de frais.</div>
+          <div class="ec-scen-ref">Le simulateur ci-dessus documente le scénario sur 36 mois ; aucun gain ni délai n'est présumé avant saisie des contrats.</div>
         </aside>
       </div>
     </div>

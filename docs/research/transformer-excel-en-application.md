@@ -553,3 +553,162 @@ Huit questions binaires menant à quatre issues : réparer l'existant / no-code 
 - Composants dans `src/components/guides/`.
 - Lancer `npm run test` (inclut le test structurel sitemap ↔ pages).
 - Maillage interne pertinent depuis ce guide : `no-code-ou-sur-mesure`, `prix-logiciel-sur-mesure`, `proprietaire-site-internet-code-source`, `cahier-des-charges-site-internet`, `combien-coute-un-saas`, `cout-maintenance-site-internet`, `choisir-son-agence-web`.
+
+---
+
+## 15. Addendum d'exécution après la charte du 19/07/2026
+
+Cet addendum décrit la page réellement produite. Il prévaut sur les consignes
+préparatoires incompatibles plus haut, notamment le plan figé en seize H2, le
+quota de mots et l'interdiction générale d'un outil interactif. La charte
+actuelle autorise une ressource autonome si sa logique est transparente, si
+elle ne collecte rien par défaut et si elle peut recommander de ne pas acheter.
+
+### 15.1 Brief lecteur et décision
+
+```text
+Slug : transformer-excel-en-application
+Statut actuel : batterie technique validée, prêt pour revue humaine
+Requête principale : transformer un fichier Excel en application métier
+Moment du parcours : explorer puis décider
+Lecteur : dirigeant ou indépendant dont un processus repose déjà sur Excel
+Déclencheur : verrouillage, copies, ressaisie, mobilité, droits ou règle fragile
+Décision principale : choisir entre fiabiliser Excel, acheter, prototyper ou développer
+Action sans contact : diagnostic local copiable + plan d'action sur 30 jours
+CTA : faire vérifier le diagnostic dans /demarrer-un-projet
+Hors périmètre : conseil juridique personnalisé et estimation automatique de devis
+Date de recherche et revalidation : 19 juillet 2026
+```
+
+### 15.2 Cannibalisation
+
+| Page voisine | Intention | Différence du nouveau guide | Arbitrage |
+|---|---|---|---|
+| `prix-logiciel-sur-mesure` | connaître un budget de développement | décider s'il faut quitter Excel et comment migrer | liens croisés ; aucune nouvelle fourchette de marché |
+| `no-code-ou-sur-mesure` | comparer deux modes de construction | comparer quatre sorties depuis un tableur précis | le nouveau guide renvoie au comparatif détaillé |
+| `/outils/calculateur-cout-excel` | estimer un coût du statu quo | diagnostic qualitatif et protocole de migration | liens croisés ; le diagnostic ne calcule aucun prix |
+| `/services/outils-internes-sur-mesure` | acheter une prestation | prendre une décision autonome avant contact | CTA tardif et mauvais fits explicites |
+
+**Porte de sortie :** la nouvelle URL répond à la décision « que faire de mon
+processus Excel ? », absente des pages de prix, de service et du comparatif de
+technologies.
+
+### 15.3 Demande et SERP observées le 19/07/2026
+
+Requêtes observées : « transformer fichier Excel en application métier »,
+« remplacer Excel par une application métier », « passer d'Excel à une
+application Power Apps Airtable » et « Excel en application sans code PME ».
+Les résultats visibles mêlaient pages Microsoft, pages d'agences vendant le
+sur-mesure et générateurs promettant une conversion en quelques minutes.
+
+Questions dominantes : peut-on convertir automatiquement ; comment choisir
+Excel/Power Apps/no-code/sur-mesure ; combien coûte la bascule ; que deviennent
+les formules, l'historique et les données personnelles ; qui possède le code ;
+comment éviter de bloquer l'équipe.
+
+Angle mort conservé comme différenciation : les pages observées répondent
+principalement « comment construire ». La page Hagnéré Code commence par
+« faut-il construire » et fournit une conclusion négative possible.
+
+### 15.4 Sources effectivement revalidées
+
+| Affirmation publiée | Source primaire revalidée le 19/07/2026 | Confiance | Conséquence |
+|---|---|---:|---|
+| Excel : 1 048 576 lignes et 16 384 colonnes | Microsoft Support, `excel-specifications-and-limits` | élevée | limite de format, non critère de migration |
+| Coédition : OneDrive/OneDrive Entreprise/SharePoint Online ; pas SharePoint on-premises | Microsoft Support, `collaborate-on-excel-workbooks...` | élevée | tester l'option zéro avant le projet |
+| Power Apps pour M365 : standard oui, on-premises/premium/personnalisé non | Microsoft Learn, `pricing-billing-skus` | élevée | vérifier les connecteurs avant le calcul |
+| Power Apps Premium : 17,30 € HT/utilisateur/mois annuel ; Dataverse 34,70 € HT/Go/mois | Microsoft France, page tarifs | élevée mais volatile | dater et archiver le tarif du devis |
+| Résidence Airtable UE réservée à Enterprise ; certaines métadonnées restent aux US | Airtable Support, `data-residency-at-airtable` | élevée mais volatile | vérifier le plan réel, pas la promesse générale |
+| Obligations du sous-traitant dans le contrat | CNIL, définition du sous-traitant | élevée | le client reste responsable de traitement |
+| Conservation dix ans / six ans et forme informatique | Légifrance, L123-22 et L102 B | élevée | distinguer migration et archive légale |
+| Cession : droits distincts + étendue, destination, lieu, durée | Légifrance, L131-3 | élevée | propriété, accès et réversibilité doivent se cumuler |
+
+Les tarifs Retool, les taux d'erreurs de tableurs, le rapport CHAOS, les
+prétendus coûts moyens d'incident et la valeur absolue de coût horaire INSEE
+n'ont pas été publiés. Leur preuve ou leur pertinence restait insuffisante pour
+la décision couverte par la page.
+
+### 15.5 Empreinte éditoriale retenue
+
+```text
+Tension : le lecteur pense chercher une application ; il doit d'abord prouver qu'il en a besoin
+Ouverture : verdict conditionnel suivi de l'ordre des options les moins complexes
+Progression : test de l'option zéro -> diagnostic -> comparaison -> traduction -> coût -> migration -> contrat
+Artefact signature : diagnostic local à règles visibles et résultat copiable
+Rythme : prose courte, tableaux de décision, protocole et exemple fictif ponctuel
+CTA : une seule carte après la démonstration et le plan sur 30 jours
+Conclusion : note de décision possible « faire, tester, reporter ou renoncer »
+```
+
+Différences intentionnelles avec les guides voisins : aucun lexique massif en
+ouverture ; aucun chapitre de démolition statistique ; aucun verdict binaire ;
+aucune grille de tarifs multi-éditeurs ; exemple fictif limité à une décision
+et non répété à chaque section ; diagnostic avant toute exposition commerciale.
+
+### 15.6 Ressource et conversion
+
+- ressource : composant `ExcelDecisionDiagnostic`, inclus dans le guide ;
+- résultat autonome : recommandation parmi Excel fiabilisé, logiciel existant,
+  prototype Power Apps/no-code, plateforme encadrée ou cadrage sur mesure ;
+- règle : huit signaux observables, stabilité du processus, couverture d'un
+  logiciel existant et environnement Microsoft 365 ;
+- données : état React local, aucun stockage ni envoi ;
+- sortie : texte copiable avec signaux et trois prochaines actions ;
+- mauvais fit : peu de symptômes, processus instable ou logiciel existant
+  couvrant au moins 80 % ;
+- événements déclarés : copie du résultat et clic CTA, sans installation d'un
+  nouveau collecteur ;
+- maintenance : revalider la logique lors d'un changement de l'offre de service
+  ou après retours de lecteurs ; les tarifs restent dans le guide, pas dans le
+  diagnostic.
+
+### 15.7 Calculs réconciliés
+
+- temps fictif : `4 h × 48 semaines × 45 € = 8 640 € / an` ;
+- horizon fictif : `8 640 € × 4 = 34 560 €` ;
+- Power Apps fictif : `12 × 17,30 € × 48 = 9 964,80 € HT` ;
+- ces montants sont étiquetés comme exemple illustratif, hors mise en œuvre,
+  reprise, administration, hébergement et sortie ;
+- aucun ROI ni prix de développement n'en est déduit.
+
+### 15.8 Scorecard après rendu navigateur local
+
+| Axe | Note | Preuve | Réserve avant publication |
+|---|---:|---|---|
+| Intention | 2 | réponse conditionnelle dès l'ouverture | aucune |
+| Décision | 2 | quatre sorties + diagnostic + plan 30 jours | aucune ; les cinq familles de verdict ont été exercées |
+| Pédagogie | 2 | termes définis à l'usage, tableaux et exemple | revue humaine encore absente |
+| Profondeur | 2 | coût, données, adoption, sortie, contrat et archive | aucune |
+| Preuve | 2 | sources primaires au plus près et section sources | tarifs à revalider après publication |
+| Comparaison | 2 | même périmètre et horizon de quatre ans | aucune |
+| Originalité | 2 | diagnostic transparent, local et copiable | unicité SERP non revendiquée |
+| Style | 2 | architecture distincte et vendeur déconseillé | lecture orale finale à faire |
+| Conversion | 2 | mauvais fits + action autonome + CTA tardif | collecteur d'événements non ajouté |
+| SEO/produit | 2 | registre, metadata, JSON-LD, OG, hub, sitemap, maillage, build et rendu navigateur validés | indexation réelle à contrôler après publication |
+
+**Score local : 20/20. Statut maximal : prêt pour revue humaine ; pas encore
+publié, indexé ni validé par un lecteur non technique.**
+
+### 15.9 Preuves de vérification locale du 19/07/2026
+
+- `npm test` : 15 fichiers, 71 tests réussis ;
+- ESLint ciblé sur les fichiers TypeScript/TSX modifiés : réussi ;
+- `npx tsc --noEmit` : réussi ;
+- `npm run build` : réussi, 82 pages statiques, route du guide générée ;
+- `git diff --check` : réussi ;
+- rendu réel contrôlé à 320, 360, 390, 430, 640, 768, 1024, 1280,
+  1440 et 1600 px : aucun débordement horizontal après chargement complet ;
+- menu ouvert contrôlé à 320 et 1280 px : panneau contenu dans le viewport ;
+- diagnostic contrôlé sur les verdicts Excel fiabilisé, logiciel existant,
+  prototype Power Apps, Power Apps/low-code et cadrage sur mesure ;
+- réinitialisation et confirmation visuelle de la copie du résultat contrôlées ;
+- aucune erreur ni alerte dans la console du navigateur ;
+- canonique, `index, follow`, un seul H1, données structurées `Article`,
+  `BreadcrumbList` et `FAQPage` valides ; les huit questions du schéma FAQ
+  correspondent à la FAQ visible ;
+- carte présente sur `/guides`, URL présente dans `/sitemap.xml`, image Open
+  Graph servie en PNG 1200 × 630 avec un statut HTTP 200.
+
+La capture mobile a été relue en thème sombre, de même que le hero bureau, le
+diagnostic et l'image de partage. La validation éditoriale par un dirigeant ou
+un indépendant reste volontairement distincte de cette QA technique.

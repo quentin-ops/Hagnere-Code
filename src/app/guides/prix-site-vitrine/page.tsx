@@ -222,6 +222,7 @@ export default function Page() {
         ]}
         faqTitle="Prix d'un site vitrine : vos questions"
         faqItems={faqItems}
+        showWhitePaperPromo
       >
         <p className="lead">
           Le prix d&apos;un site vitrine va de <strong>quelques centaines

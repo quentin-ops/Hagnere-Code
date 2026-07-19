@@ -1,3 +1,5 @@
+import { TEAM_PUBLIC_COMPOSITION, TEAM_TOTAL_COUNT } from "@/lib/team";
+
 export const teamHtml = `
 <!-- TEAM · Votre équipe dédiée (proof-point "équipe nommée dans le contrat") -->
 <section class="me-team-dedi" id="equipe">
@@ -9,7 +11,7 @@ export const teamHtml = `
       </div>
       <div class="right">
         Pas de pool tournant, pas de "vous verrez quand on signera". Voici l'équipe
-        qui suivra votre application — prénom, rôle, LinkedIn. <b>Sept développeurs</b> travaillent pour Hagnéré Code.
+        qui suivra votre application — prénom, rôle, LinkedIn. <b>${TEAM_PUBLIC_COMPOSITION}</b>.
         Votre binôme référent est nommé au <b>kickoff</b>, recouvrement de 2 semaines s'il doit changer.
       </div>
     </div>
@@ -191,7 +193,7 @@ export const teamHtml = `
     <div class="me-tm-note reveal reveal-d-2">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
       <div>
-        <b>Sept développeurs</b>. <b>Pas de pool tournant.</b>
+        <b>${TEAM_TOTAL_COUNT} personnes au total.</b> <b>Pas de pool tournant.</b>
         Binôme référent nommé au kickoff, recouvrement de 2 semaines en cas de changement (clause CGV).
       </div>
     </div>

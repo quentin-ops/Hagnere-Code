@@ -1,4 +1,9 @@
 import { navHtml } from "@/components/design-shared/nav-html";
+import {
+  STUDIO_LOCATION,
+  TEAM_OTHER_DEVELOPERS_COUNT,
+  TEAM_TOTAL_COUNT,
+} from "@/lib/team";
 
 export const bodyHtml = `
 ${navHtml}
@@ -67,7 +72,7 @@ ${navHtml}
         </svg>
         <span>QUENTIN HAGNÉRÉ · NICOLAS WALLERAND</span>
       </div>
-      <div class="mhero-sig-meta">CHAMBÉRY · MISE À JOUR LE {{LAST_UPDATE}} · V.4.2</div>
+      <div class="mhero-sig-meta">${STUDIO_LOCATION.toUpperCase()} · MISE À JOUR LE {{LAST_UPDATE}} · V.4.2</div>
     </div>
   </div>
 
@@ -944,7 +949,7 @@ ${navHtml}
           <span>OUTIL</span>
           <span>Claude Code · pas un pilier, un copilote</span>
         </div>
-        <h3>Un gérant qui code,<br>sept développeurs,<br><span class="accent">Claude Code en copilote.</span></h3>
+        <h3>${TEAM_TOTAL_COUNT} personnes :<br>1 gérant, 1 CTO, ${TEAM_OTHER_DEVELOPERS_COUNT} autres devs,<br><span class="accent">Claude Code en copilote.</span></h3>
         <p class="claude-lead">
           Beaucoup d'agences brandissent l'IA comme un argument marketing. Chez nous, c'est un
           outil de productivité opéré par chaque dev senior — recherche de doc, exploration de bibliothèques,

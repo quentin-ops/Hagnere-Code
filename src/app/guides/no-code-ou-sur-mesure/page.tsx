@@ -205,6 +205,7 @@ export default function Page() {
           { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
         ]}
         relatedLinks={[
+          { href: "/guides/transformer-excel-en-application", label: "Transformer Excel en application" },
           { href: "/guides/prix-logiciel-sur-mesure", label: "Prix d'un logiciel sur mesure" },
           { href: "/guides/combien-coute-un-saas", label: "Combien coûte un SaaS ?" },
           { href: "/services/outils-internes-sur-mesure", label: "Outils internes sur mesure" },
