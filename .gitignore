@@ -43,9 +43,6 @@ yarn-error.log*
 .open-next
 .wrangler
 
-# drizzle
-/drizzle
-
 # local pnpm store
 .pnpm-store/
 

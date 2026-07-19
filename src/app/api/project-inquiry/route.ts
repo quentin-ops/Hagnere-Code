@@ -13,6 +13,10 @@ import {
   missingMailProviderOutcome,
   teamMailFailureOutcome,
 } from "@/lib/project-inquiry-delivery";
+import {
+  PayloadTooLargeError,
+  readJsonWithLimit,
+} from "@/lib/read-request-body";
 
 export const runtime = "nodejs";
 
@@ -129,19 +133,16 @@ export async function POST(request: Request) {
   const ip = getClientIp(request);
   const userAgent = request.headers.get("user-agent");
 
-  // 0. Body size cap (cheap pre-read check)
-  const contentLength = request.headers.get("content-length");
-  if (contentLength && parseInt(contentLength, 10) > MAX_BODY_BYTES) {
-    return NextResponse.json(
-      { error: "Payload trop volumineux." },
-      { status: 413 },
-    );
-  }
-
   let body: Body;
   try {
-    body = await request.json();
-  } catch {
+    body = await readJsonWithLimit<Body>(request, MAX_BODY_BYTES);
+  } catch (err) {
+    if (err instanceof PayloadTooLargeError) {
+      return NextResponse.json(
+        { error: "Payload trop volumineux." },
+        { status: 413 },
+      );
+    }
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
 

@@ -233,7 +233,7 @@ export const integrationsHtml = `
 
       <div class="me-eco-foot">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-        Vos outils internes ne sont pas dans la liste ? On s'adapte. <b>En 10 ans de TMA, on a connecté Notion à Jira via Zapier, Linear à ClickUp, Confluence à Slack</b> — on ne rejette jamais votre stack existante.
+        Vos outils internes ne sont pas dans la liste ? Le cadrage vérifie les API, licences, droits d'accès et coûts avant de confirmer les connecteurs réalisables dans le devis.
       </div>
     </article>
   </div>

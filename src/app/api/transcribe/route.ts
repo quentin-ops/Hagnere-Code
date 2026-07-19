@@ -2,11 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 import { getClientIp } from "@/lib/rate-limit";
 import { checkServiceRateLimit, logAiCall } from "@/lib/ai-rate-limit";
 import { log } from "@/lib/logger";
+import {
+  PayloadTooLargeError,
+  readRequestBytesWithLimit,
+} from "@/lib/read-request-body";
 
 // 25 MB hard cap on the audio payload. Whisper's input ceiling is 25 MB
 // already; rejecting earlier protects us from being used as a free
 // transcription proxy via large multi-hour files.
 const MAX_AUDIO_BYTES = 25 * 1024 * 1024;
+// Marge pour l'enveloppe multipart (nom, headers et boundary).
+const MAX_REQUEST_BYTES = MAX_AUDIO_BYTES + 1024 * 1024;
 
 // Allowed MIME prefixes — matches what the funnel's MediaRecorder produces
 // (webm/opus, mp4, mpeg, wav). Anything else is suspicious.
@@ -53,24 +59,17 @@ export async function POST(request: NextRequest) {
   const ip = getClientIp(request);
   const userAgent = request.headers.get("user-agent");
 
-  // 1. Size cap (cheap, before reading body)
+  // 1. Size cap déclarative (optimisation). La taille réelle est contrôlée
+  // plus bas pendant la lecture du flux.
   const contentLength = request.headers.get("content-length");
-  if (contentLength && parseInt(contentLength, 10) > MAX_AUDIO_BYTES) {
+  if (contentLength && parseInt(contentLength, 10) > MAX_REQUEST_BYTES) {
     return NextResponse.json(
       { error: "Fichier audio trop volumineux (max 25 MB)." },
       { status: 413 },
     );
   }
 
-  let formData: FormData;
-  try {
-    formData = await request.formData();
-  } catch (err) {
-    log.error("transcribe_formdata_parse_failed", { err: err as Error, ip });
-    return NextResponse.json({ error: "Payload invalide." }, { status: 400 });
-  }
-
-  // 2. Rate limit Postgres-backed (multi-tier + cost breaker bytes/jour).
+  // 2. Rate limit Postgres-backed AVANT de lire/bufferiser le multipart.
   // C'est la protection principale de cette route depuis le retrait de
   // Cloudflare Turnstile : un bot qui martèle l'endpoint est coupé par
   // les paliers IP + le plafond de bytes/jour (coût Groq borné).
@@ -110,7 +109,31 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // 3. Audio file extraction + checks
+  // 3. Lecture bornée du flux, y compris en chunked, puis parsing multipart.
+  let formData: FormData;
+  try {
+    const bodyBytes = await readRequestBytesWithLimit(request, MAX_REQUEST_BYTES);
+    const boundedRequest = new Request(request.url, {
+      method: "POST",
+      headers: request.headers,
+      // La copie garantit un Uint8Array adossé à un ArrayBuffer standard,
+      // compatible avec BodyInit même lorsque le flux source expose un
+      // ArrayBufferLike plus large dans les types TypeScript.
+      body: new Uint8Array(bodyBytes),
+    });
+    formData = await boundedRequest.formData();
+  } catch (err) {
+    if (err instanceof PayloadTooLargeError) {
+      return NextResponse.json(
+        { error: "Fichier audio trop volumineux (max 25 MB)." },
+        { status: 413 },
+      );
+    }
+    log.error("transcribe_formdata_parse_failed", { err: err as Error, ip });
+    return NextResponse.json({ error: "Payload invalide." }, { status: 400 });
+  }
+
+  // 4. Audio file extraction + checks
   const audioFile = formData.get("audio") as File | null;
   if (!audioFile) {
     await logAiCall({

@@ -1,10 +1,9 @@
 # Pre-launch checklist — Hagnéré Code
 
 Tout ce qui n'a pas pu être fait par l'agent et qui demande une action humaine
-avant le push en production. Le build passe (`next build` ✓ — 43 pages
-générées), TypeScript est clean, les fixes P0/P1/P2 du rapport d'audit ont
-été appliqués au code, et le volet légal est complet (voir `git diff` pour
-le détail complet).
+avant le push en production. Les commandes de build, tests, lint et vérification
+Cloudflare doivent être relancées sur le commit exact à déployer ; ne pas reprendre
+un ancien nombre de pages ou un ancien résultat de contrôle.
 
 ## 🚨 À FAIRE AVANT LE DÉPLOIEMENT
 
@@ -52,15 +51,17 @@ Resend refuse les `from` non-vérifiés. Vérifier que `hagnere-code.ai` est
 bien validé pour l'expéditeur `contact@`. Sinon les
 confirmations `/api/project-inquiry` partiront en erreur 403.
 
-### 4. Assets visuels manquants
-Trois fichiers physiques sont référencés mais absents :
+### 3 bis. Planifier la purge des données
 
-- `/public/og-image.png` (1200 × 630) — utilisé partout dans les `openGraph`.
-- `/public/apple-touch-icon.png` (180 × 180) — référencé dans `layout.tsx`.
-- `/public/logos/logo-dark.png` — déjà présent ✅.
+Lire `docs/procedure-purge-donnees.md`, désigner le responsable de l'exécution
+trimestrielle et consigner chaque contrôle tant qu'une automatisation auditée
+n'est pas en place. Les durées publiques ne doivent pas rester sans procédure.
 
-Tant que les deux PNG manquants ne sont pas produits, les partages réseaux
-sociaux n'auront pas d'image et iOS affichera un favicon dégradé.
+### 4. Assets visuels
+
+- `/public/og-image.png` — présent ; vérifier son rendu dans un aperçu Open Graph.
+- `/public/apple-touch-icon.png` — présent ; vérifier son rendu sur iOS.
+- `/public/logos/logo-dark.png` — présent.
 
 ### 5. Vérifier l'URL Calendly
 `https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte`
@@ -120,8 +121,8 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 - [ ] `/services/maintenance-evolution`
 - [ ] `/services/securite-rgpd` (CTA → /demarrer-un-projet, JSON-LD complet)
 - [ ] `/services/audit-technique`
-- [ ] `/methode` (22/23 projets, équipe de 6, pas de noms de concurrents, MÉTHODE PROPRIÉTAIRE)
-- [ ] `/tarifs` (22/23 projets, Essentiel 6–15 k€)
+- [ ] `/methode` (chiffres et composition d'équipe cohérents avec les sources actuelles)
+- [ ] `/tarifs` (fourchettes présentées comme indicatives et non comme historique client sans preuve)
 - [ ] `/realisations` (méta-discours nettoyé, lien vers /etudes-de-cas)
 - [ ] `/realisations/lmnp-ai` (témoignage signalé "produit interne du groupe")
 - [ ] `/realisations/sci-ai`

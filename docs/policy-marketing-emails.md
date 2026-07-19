@@ -52,8 +52,8 @@ Pour toute audience B2C : **consentement explicite, libre, éclairé, spécifiqu
 
 ```
 HAGNÉRÉ CODE SAS — 82 impasse de Bellevue, 73000 Bassens
-Vous recevez cet email parce que vous nous avez contactés via hagnere-code.fr.
-Politique de confidentialité : https://hagnere-code.fr/legal/confidentialite
+Vous recevez cet email parce que vous nous avez contactés via hagnere-code.ai.
+Politique de confidentialité : https://hagnere-code.ai/legal/confidentialite
 Se désinscrire : {{unsubscribe_link}}
 ```
 
@@ -69,7 +69,7 @@ Candidats privilégiés : **Brevo** (ex-Sendinblue, FR), **Mailerlite** (LT), **
 
 ## 7. Gestion des listes
 
-- Liste **prospects** : emails collectés via `/demarrer-un-projet`, statut « pas client », opt-out actif après 3 ans sans contact.
+- Liste **prospects** : emails collectés via `/demarrer-un-projet`, statut « pas client », suppression après 3 ans sans contact selon `docs/procedure-purge-donnees.md`.
 - Liste **clients** : emails collectés en exécution de contrat, opt-out à tout moment.
 - Liste **newsletter** : opt-in dédié distinct, double opt-in si B2C.
 

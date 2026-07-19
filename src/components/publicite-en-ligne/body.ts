@@ -20,7 +20,7 @@ ${navHtml}
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Publicité en ligne · SEA + Paid Social</span></div>
-      <h1>Google Ads &amp; Meta Ads :<br>1 € de media buy <span class="accent">= 4 € de CA</span><br>attribué dans votre CRM.</h1>
+      <h1>Google Ads &amp; Meta Ads :<br>relier le budget media <span class="accent">aux ventes réelles</span><br>dans votre CRM.</h1>
       <div class="shero-tagline">
         <span>📊 Tracking server-side inclus</span>
         <span class="sep"></span>
@@ -38,14 +38,14 @@ ${navHtml}
         <a href="#contact" class="btn btn-accent btn-lg">
           Cadrer ma stratégie Ads <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="#contact" class="btn btn-ghost btn-lg">Audit ads offert · 30 min</a>
+        <a href="#contact" class="btn btn-ghost btn-lg">Échange de cadrage · 30 min</a>
       </div>
       <div class="shero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Budget media sur votre compte</span>
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> CAPI + GTM SS inclus</span>
         <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> 3 mois, puis mois par mois</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Durée et préavis au devis</span>
       </div>
     </div>
 
@@ -65,7 +65,7 @@ ${navHtml}
           <text x="34" y="25" text-anchor="middle" font-family="Geist" font-weight="800" font-size="10" fill="#fff">L</text>
           <text x="56" y="27" font-family="Geist" font-weight="700" font-size="13" fill="#0A0A0A">Ads · multichannel</text>
           <rect x="430" y="12" width="92" height="20" rx="4" fill="#EDE9FE"/>
-          <text x="476" y="26" text-anchor="middle" font-family="Geist Mono" font-size="9" font-weight="700" fill="#6D28D9">30 J · LIVE</text>
+          <text x="476" y="26" text-anchor="middle" font-family="Geist Mono" font-size="9" font-weight="700" fill="#6D28D9">EXEMPLE FICTIF</text>
 
           <!-- KPIs row -->
           <g transform="translate(24 64)">

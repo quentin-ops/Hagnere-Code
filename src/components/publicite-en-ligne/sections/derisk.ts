@@ -8,8 +8,8 @@ export const deriskHtml = `
         <h2>Ce qui vous empêche de signer<br>— et ce qu'on fait pour.</h2>
       </div>
       <div class="right">
-        Quatre peurs reviennent dans 9 calls sur 10 sur un engagement Ads.
-        Voici comment on les neutralise contractuellement, pas juste en paroles.
+        Quatre risques méritent d'être examinés avant un engagement Ads.
+        Voici les points à préciser dans le devis, selon votre contexte.
       </div>
     </div>
 
@@ -18,8 +18,8 @@ export const deriskHtml = `
         <div class="ads-derisk-fear">
           « Et si mes campagnes <b>ne performent pas</b> dans 3 mois ? »
         </div>
-        <h4>Jalons mensuels contractuels, revue à 3 mois, arrêt possible</h4>
-        <p>Chaque mois = rapport sur 5 métriques business (CAC, ROAS blended CRM, payback, signal quality, velocity creative). Si les jalons ne sont pas atteints à 3 mois, on <b>ajuste la stratégie gratuitement</b>. Si vous n'êtes pas convaincu, arrêt avec 30 j de préavis, vos comptes et données restent intégralement chez vous.</p>
+        <h4>Métriques, revue et sortie écrites</h4>
+        <p>Le devis définit les métriques suivies, la fréquence de revue, la procédure d'ajustement, la durée et le préavis. Les comptes ouverts au nom du client restent sous son contrôle.</p>
         <div class="ads-derisk-proof">
           <span>✓ Jalons contractuels</span>
           <span>✓ Arrêt à 3 mois possible</span>
@@ -44,11 +44,11 @@ export const deriskHtml = `
         <div class="ads-derisk-fear">
           « Si je pars, est-ce que <b>les comptes me restent</b> ? »
         </div>
-        <h4>100 % des assets chez vous. Passation en 2 semaines, documentée.</h4>
-        <p>Règle cœur&nbsp;: <b>comptes Google Ads, Meta BM, LinkedIn, pixels, audiences, conteneur GTM SS, creatives, templates</b> — tout est en propriété client, pas en propriété agence. En cas de départ, passation de 2 semaines incluse&nbsp;: docs techniques, screenshots de chaque paramétrage, Notion partagé transféré, videos de transfert à votre équipe ou au prestataire suivant.</p>
+        <h4>Comptes client et passation inventoriée.</h4>
+        <p>Les comptes publicitaires peuvent être ouverts au nom du client. Le devis liste pixels, audiences, conteneur, créations, documents et droits applicables, ainsi que la durée et le coût éventuel d'une passation.</p>
         <div class="ads-derisk-proof">
-          <span>✓ Tout en propriété client</span>
-          <span>✓ Passation 2 semaines</span>
+          <span>✓ Comptes sous contrôle client</span>
+          <span>✓ Passation au devis</span>
           <span>✓ Docs + vidéos transmises</span>
         </div>
       </div>
@@ -57,12 +57,12 @@ export const deriskHtml = `
         <div class="ads-derisk-fear">
           « Et si le <b>tracking casse</b> en plein milieu de la mission ? »
         </div>
-        <h4>Monitoring automatisé 24/7 + re-déploiement sous 48 h garanti</h4>
-        <p>Tests de santé automatisés toutes les heures sur chaque destination (Meta CAPI, Google Enhanced, LinkedIn Conv API, webhook CRM). Alerte Slack immédiate en cas de perte de signal. En cas de casse identifiée <b>non-liée à un changement de votre équipe</b>, re-déploiement sous 48 h maximum, inclus dans le forfait — pas un avenant surprise.</p>
+        <h4>Monitoring et procédure de correction adaptés</h4>
+        <p>Le devis précise les destinations testées, la fréquence, les alertes, les responsabilités, les exclusions et le délai cible de correction selon la criticité.</p>
         <div class="ads-derisk-proof">
-          <span>✓ Healthchecks 24/7</span>
-          <span>✓ Alerte immédiate</span>
-          <span>✓ Re-deploy 48 h max</span>
+          <span>✓ Healthchecks définis</span>
+          <span>✓ Canal d'alerte choisi</span>
+          <span>✓ Délai cible au devis</span>
         </div>
       </div>
     </div>

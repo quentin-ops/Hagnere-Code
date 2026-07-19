@@ -94,7 +94,7 @@ ${navHtml}
       <li><a class="mtoc-link" href="#preuves" data-section="preuves"><span class="mtoc-num">5.0</span><span class="mtoc-t">Preuves chiffrées</span></a></li>
       <li><a class="mtoc-link" href="#journal" data-section="journal"><span class="mtoc-num">6.0</span><span class="mtoc-t">Le vendredi, en pratique</span></a></li>
       <li><a class="mtoc-link" href="#claude" data-section="claude"><span class="mtoc-num">7.0</span><span class="mtoc-t">Claude Code en copilote</span></a></li>
-      <li><a class="mtoc-link" href="#temoignages" data-section="temoignages"><span class="mtoc-num">8.0</span><span class="mtoc-t">Ce qu'en disent les clients</span></a></li>
+      <li><a class="mtoc-link" href="#temoignages" data-section="temoignages"><span class="mtoc-num">8.0</span><span class="mtoc-t">Terrains internes, sans faux avis</span></a></li>
       <li><a class="mtoc-link" href="#exclusion" data-section="exclusion"><span class="mtoc-num">9.0</span><span class="mtoc-t">Pas pour vous si…</span></a></li>
       <li><a class="mtoc-link" href="#faq" data-section="faq"><span class="mtoc-num">10.0</span><span class="mtoc-t">Contre-objections (FAQ)</span></a></li>
       <li><a class="mtoc-link" href="#contact" data-section="contact"><span class="mtoc-num">11.0</span><span class="mtoc-t">Cadrer votre projet</span></a></li>
@@ -1006,18 +1006,18 @@ ${navHtml}
   </div>
 </section>
 
-<!-- TÉMOIGNAGES CLIENTS (quote wall) -->
+<!-- TERRAINS INTERNES — aucune citation client inventée -->
 <section class="quotes" id="temoignages">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ce qu'en disent les clients</div>
-        <h2>Sprint Fixe™ vu<br>de l'autre côté du contrat.</h2>
+        <div class="eyebrow">— Ce que nous pouvons réellement montrer</div>
+        <h2>Quatre terrains internes,<br>pas quatre faux clients.</h2>
       </div>
       <div class="right">
-        Quatre clients qui ont vécu Sprint Fixe™ en conditions réelles. Pas des extraits choisis :
-        des passages bruts d'emails post-livraison ou de retros. Si vous voulez les contacter pour
-        en discuter, on vous met en relation — avec leur accord.
+        Hagnéré Code ne publie ici aucun témoignage client externe non vérifiable. Les cartes ci-dessous
+        désignent des produits du groupe utilisés comme terrains de conception et d'exploitation.
+        Elles prouvent un contexte de travail, <b>pas un résultat commercial transposable</b>.
       </div>
     </div>
 
@@ -1026,21 +1026,16 @@ ${navHtml}
         <div class="quote-mark">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 2C7 2 5 4 5 6.5v3c0 2.5 2 4.5 4.5 4.5H10v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C13 4 11 2 8.5 2H9.4zM19.4 2C17 2 15 4 15 6.5v3c0 2.5 2 4.5 4.5 4.5H20v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C23 4 21 2 18.5 2h.9z"/></svg>
         </div>
-        <blockquote>
-          On a signé chez vous parce que vous étiez les seuls à mettre une <em>vraie pénalité</em>
-          dans le contrat. À la livraison, on s'est rendu compte que le contrat servait à
-          <em>vous obliger à bien estimer</em>, pas à nous protéger contre vous. C'est exactement
-          la promesse, tenue.
-        </blockquote>
+        <blockquote><em>LMNP.AI</em> sert de terrain interne pour les parcours documentaires, les calculs métier et les interfaces de suivi. Les choix présentés doivent être vérifiés dans l'étude de cas correspondante.</blockquote>
         <figcaption class="quote-meta">
-          <div class="quote-avatar quote-avatar-1">JD</div>
+          <div class="quote-avatar quote-avatar-1">LM</div>
           <div class="quote-meta-body">
-            <div class="quote-meta-name">Julien D.</div>
-            <div class="quote-meta-role">Directeur des opérations · groupe immobilier 90 salariés</div>
+            <div class="quote-meta-name">LMNP.AI</div>
+            <div class="quote-meta-role">Produit interne du groupe</div>
           </div>
           <div class="quote-context">
-            <span class="quote-context-tag">PROJET 38 K€</span>
-            <span class="quote-context-meta">Outil interne · livré sem. 5 sur 5</span>
+            <span class="quote-context-tag">PREUVE INTERNE</span>
+            <span class="quote-context-meta">Aucun témoignage client</span>
           </div>
         </figcaption>
       </figure>
@@ -1049,20 +1044,16 @@ ${navHtml}
         <div class="quote-mark">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 2C7 2 5 4 5 6.5v3c0 2.5 2 4.5 4.5 4.5H10v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C13 4 11 2 8.5 2H9.4zM19.4 2C17 2 15 4 15 6.5v3c0 2.5 2 4.5 4.5 4.5H20v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C23 4 21 2 18.5 2h.9z"/></svg>
         </div>
-        <blockquote>
-          La démo du vendredi, on l'a d'abord trouvée chronophage. Au sprint 4, on s'est rendu
-          compte qu'on avait redirigé 3 fois la roadmap en 3 semaines. Sans démos, on payait un
-          MVP qu'on n'aurait pas voulu.
-        </blockquote>
+        <blockquote><em>SCI-AI.app</em> constitue un second terrain interne pour éprouver le cadrage d'un produit métier. Aucun gain, délai ou satisfaction externe n'est déduit de cette expérience.</blockquote>
         <figcaption class="quote-meta">
-          <div class="quote-avatar quote-avatar-2">SM</div>
+          <div class="quote-avatar quote-avatar-2">SCI</div>
           <div class="quote-meta-body">
-            <div class="quote-meta-name">Sophie M.</div>
-            <div class="quote-meta-role">CEO · SaaS RH 12 salariés</div>
+            <div class="quote-meta-name">SCI-AI.app</div>
+            <div class="quote-meta-role">Produit interne du groupe</div>
           </div>
           <div class="quote-context">
-            <span class="quote-context-tag">PROJET 52 K€</span>
-            <span class="quote-context-meta">SaaS B2B · livré sem. 8 sur 8</span>
+            <span class="quote-context-tag">PREUVE INTERNE</span>
+            <span class="quote-context-meta">Méthode à documenter au devis</span>
           </div>
         </figcaption>
       </figure>
@@ -1071,20 +1062,16 @@ ${navHtml}
         <div class="quote-mark">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 2C7 2 5 4 5 6.5v3c0 2.5 2 4.5 4.5 4.5H10v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C13 4 11 2 8.5 2H9.4zM19.4 2C17 2 15 4 15 6.5v3c0 2.5 2 4.5 4.5 4.5H20v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C23 4 21 2 18.5 2h.9z"/></svg>
         </div>
-        <blockquote>
-          Le truc bizarre : ils nous ont <em>refusé</em> le projet la première fois, parce que notre
-          scope était flou. Ils nous ont fait revenir 6 semaines plus tard avec un cadrage clair.
-          Aucune autre agence n'aurait fait ça.
-        </blockquote>
+        <blockquote><em>Hagnéré Patrimoine</em> permet de travailler des parcours éditoriaux et réglementés sur un produit lié au groupe. Il ne s'agit pas d'une référence client indépendante.</blockquote>
         <figcaption class="quote-meta">
-          <div class="quote-avatar quote-avatar-3">TL</div>
+          <div class="quote-avatar quote-avatar-3">HP</div>
           <div class="quote-meta-body">
-            <div class="quote-meta-name">Thomas L.</div>
-            <div class="quote-meta-role">Fondateur · marketplace B2B agroalimentaire</div>
+            <div class="quote-meta-name">Hagnéré Patrimoine</div>
+            <div class="quote-meta-role">Activité liée au groupe</div>
           </div>
           <div class="quote-context">
-            <span class="quote-context-tag">PROJET 67 K€</span>
-            <span class="quote-context-meta">Marketplace · refusé puis accepté</span>
+            <span class="quote-context-tag">PREUVE INTERNE</span>
+            <span class="quote-context-meta">Contexte explicitement signalé</span>
           </div>
         </figcaption>
       </figure>
@@ -1093,20 +1080,16 @@ ${navHtml}
         <div class="quote-mark">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 2C7 2 5 4 5 6.5v3c0 2.5 2 4.5 4.5 4.5H10v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C13 4 11 2 8.5 2H9.4zM19.4 2C17 2 15 4 15 6.5v3c0 2.5 2 4.5 4.5 4.5H20v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C23 4 21 2 18.5 2h.9z"/></svg>
         </div>
-        <blockquote>
-          La lagniappe annoncée semaine 3 : un export FEC bancaire pour notre expert-comptable.
-          Pas demandée, pas facturée, livrée. Ça a fait gagner 4 h/mois à notre cabinet —
-          plus rentable que la moitié des features qu'on avait spécifiées.
-        </blockquote>
+        <blockquote><em>Hagnéré Investissement</em> complète ces terrains internes. Les éléments publics peuvent illustrer des choix de conception, jamais remplacer une preuve client ou un audit indépendant.</blockquote>
         <figcaption class="quote-meta">
-          <div class="quote-avatar quote-avatar-4">CG</div>
+          <div class="quote-avatar quote-avatar-4">HI</div>
           <div class="quote-meta-body">
-            <div class="quote-meta-name">Camille G.</div>
-            <div class="quote-meta-role">CFO · cabinet patrimoine 25 salariés</div>
+            <div class="quote-meta-name">Hagnéré Investissement</div>
+            <div class="quote-meta-role">Activité liée au groupe</div>
           </div>
           <div class="quote-context">
-            <span class="quote-context-tag">PROJET 24 K€</span>
-            <span class="quote-context-meta">SaaS comptabilité · livré dans le budget</span>
+            <span class="quote-context-tag">PREUVE INTERNE</span>
+            <span class="quote-context-meta">Aucun résultat client revendiqué</span>
           </div>
         </figcaption>
       </figure>
@@ -1114,7 +1097,7 @@ ${navHtml}
 
     <div class="quotes-foot reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-      <span>Témoignages anonymisés (initiales + secteur). <b>Mise en relation possible</b> avec n'importe lequel sur demande, avec leur accord préalable.</span>
+      <span><b>Transparence&nbsp;:</b> ces produits sont liés au groupe. Les futures références externes ne seront publiées qu'avec preuve et autorisation.</span>
     </div>
   </div>
 </section>

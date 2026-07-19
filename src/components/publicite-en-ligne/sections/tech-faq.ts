@@ -92,8 +92,8 @@ export const techFaqHtml = `
           <b>Healthchecks automatisés</b> toutes les heures sur chaque destination (Meta CAPI,
           Google Enhanced, LinkedIn Conv API, webhook CRM). Si un signal chute &gt; 30 % vs moyenne 7 j,
           <b>alerte Slack + email immédiate</b>. Logs conservés 30 jours pour root-cause analysis.
-          En cas de casse non-liée à une release de votre équipe&nbsp;: re-déploiement sous <b>48 h max</b>,
-          inclus dans le forfait.
+          La fréquence des contrôles, le canal d'alerte, les responsabilités et le délai cible de correction
+          sont précisés dans le devis selon les destinations couvertes.
         </div>
       </div>
 
@@ -120,8 +120,8 @@ export const techFaqHtml = `
           <b>Oui, c'est le forfait Audit à 1 500 €</b>&nbsp;: on regarde votre conteneur GTM,
           votre Meta Events Manager, votre Google Ads Conv. settings, votre LinkedIn Insight Tag,
           votre bandeau Consent, votre CRM webhook. Rapport technique détaillé&nbsp;: quoi garder,
-          quoi patcher, quoi refaire. Si vous signez un retainer après, <b>les 1 500 € sont déduits</b>
-          à 100 % du premier mois.
+          quoi corriger et quoi reprendre. Une remise éventuelle sur une mission ultérieure ne s'applique
+          que si elle figure explicitement dans le devis signé.
         </div>
       </div>
     </div>

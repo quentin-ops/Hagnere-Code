@@ -10,8 +10,8 @@
 - **Adresse** : 82 impasse de Bellevue, 73000 Bassens, France
 - **SIREN** : 993 672 856
 - **Représentant légal** : Quentin Hagnéré (président)
-- **Contact RGPD** : hello@hagnere-code.fr
-- **DPO** : non désigné (article 37 RGPD non applicable)
+- **Contact RGPD** : quentin@hagnere-patrimoine.fr
+- **DPO** : non désigné à ce jour ; la nécessité d'une désignation est réévaluée selon l'article 37 RGPD et l'évolution des traitements
 
 ## Traitements opérés
 
@@ -26,7 +26,7 @@
 | Destinataires | Équipe HAGNÉRÉ CODE (commercial + tech) |
 | Sous-traitants | Neon (DB UE), Resend (email US — DPF/SCC), Groq (transcription audio US — SCC), Cloudflare (hébergement edge) |
 | Transferts hors UE | Oui (US) — encadrés par DPF + SCC |
-| Durée de conservation | 3 ans après dernier contact (prospects), durée contrat + 3 ans (clients), 10 ans (factures) |
+| Durée de conservation | 3 ans après dernier contact (prospects), durée contrat + 3 ans (clients), 10 ans (factures) ; purge selon `docs/procedure-purge-donnees.md` |
 | Mesures techniques | TLS 1.3, AES-256 at-rest, rate-limit, honeypot, slug aléatoire (anti-IDOR) |
 | Profilage / décisions automatisées | Non — le brief de projet est lu et traité par un humain (réponse manuelle) |
 
@@ -38,7 +38,7 @@
 | Base légale | Mesures précontractuelles (art. 6.1.b) |
 | Données | Identité, email, téléphone, message |
 | Sous-traitants | Resend, Neon |
-| Durée | 3 ans après dernier contact |
+| Durée | 3 ans après dernier contact ; purge selon `docs/procedure-purge-donnees.md` |
 | Profilage | Non |
 
 ### T3 — Logs d'application et de sécurité
@@ -49,7 +49,7 @@
 | Base légale | Intérêt légitime (art. 6.1.f) |
 | Données | IP, user-agent, statut requête, timestamp |
 | Sous-traitants | Cloudflare, Neon |
-| Durée | 12 mois maximum |
+| Durée | 12 mois maximum ; purge selon `docs/procedure-purge-donnees.md` |
 | Profilage | Non |
 
 ### T4 — Logs IA (`ai_call_log`)
@@ -59,7 +59,7 @@
 | Finalité | Rate-limit persistant, circuit breaker coût, métriques produit |
 | Base légale | Intérêt légitime (art. 6.1.f) |
 | Données | IP, hash email tronqué, statut, tokens, durée |
-| Durée | 12 mois |
+| Durée | 12 mois ; purge selon `docs/procedure-purge-donnees.md` |
 | Profilage | Non |
 
 ### T5 — Données clients sous contrat (sous-traitance pour le compte du client)
@@ -77,12 +77,12 @@
 ## Mesures de sécurité transverses
 
 - Headers HTTP : HSTS preload, X-Content-Type-Options, X-Frame-Options, Permissions-Policy, Content-Security-Policy
-- Authentification GitHub avec MFA obligatoire pour tous les devs
-- Accès production limités au CTO + président
-- Sauvegardes Neon : automatiques, RPO 15 min, RTO < 2 h
-- Rotation des secrets : tous les 90 jours
+- MFA exigée par la politique d'accès et vérifiée avant l'ouverture d'un accès au dépôt
+- Accès production accordés au strict nécessaire, inventoriés et révocables
+- Sauvegardes, rétention, RPO et RTO vérifiés dans la configuration du fournisseur réellement retenu
+- Rotation des secrets selon leur sensibilité, l'exposition et les capacités du fournisseur
 - Pas de secret commit (`.gitignore` couvre `.env.local`)
-- Formation RGPD annuelle des collaborateurs
+- Sensibilisation RGPD documentée lors de l'onboarding et revue périodiquement
 
 ## Évaluations d'impact (AIPD)
 

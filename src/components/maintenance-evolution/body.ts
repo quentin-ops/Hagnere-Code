@@ -24,17 +24,16 @@ ${navHtml}
       </div>
       <h1>Maintenance applicative :<br>votre équipe tech dans 3, 5, 10 ans.<br><span class="accent">Pas un prestataire qui disparaît.</span></h1>
 
-      <!-- KPI bar : engagements contractuels + produits maison.
-           Aucune statistique client ici : pas encore de client externe. -->
+      <!-- KPI bar : modalités possibles + produits maison. -->
       <div class="me-hero-kpis">
         <div class="me-hero-kpi">
-          <div class="me-hero-kpi-v">99,95<span>%</span></div>
-          <div class="me-hero-kpi-k">SLA uptime · engagé au contrat</div>
+          <div class="me-hero-kpi-v">SLA<span>sur mesure</span></div>
+          <div class="me-hero-kpi-k">Objectif et mesure au devis</div>
         </div>
         <div class="me-hero-kpi-sep"></div>
         <div class="me-hero-kpi">
-          <div class="me-hero-kpi-v">&lt; 30<span>min</span></div>
-          <div class="me-hero-kpi-k">MTTR contractuel · incident P1</div>
+          <div class="me-hero-kpi-v">P1<span>cadré</span></div>
+          <div class="me-hero-kpi-k">Prise en charge selon couverture</div>
         </div>
         <div class="me-hero-kpi-sep"></div>
         <div class="me-hero-kpi">
@@ -43,27 +42,27 @@ ${navHtml}
         </div>
         <div class="me-hero-kpi-sep"></div>
         <div class="me-hero-kpi">
-          <div class="me-hero-kpi-v">7<span>devs</span></div>
-          <div class="me-hero-kpi-k">Équipe interne, nommée au contrat</div>
+          <div class="me-hero-kpi-v">7<span>profils</span></div>
+          <div class="me-hero-kpi-k">CDI et freelances présentés</div>
         </div>
       </div>
 
       <p class="shero-sub">
         On reprend votre app — construite chez nous, par un freelance disparu ou une autre agence —
-        et on en devient votre <b>équipe tech long-terme</b>. Monitoring 24/7, patches sécurité,
-        évolutions continues, hébergement &amp; infra ops. <b>Forfait fixe mensuel, équipe nommée dans le contrat,
-        comptes et code chez vous, aucun vendor lock-in.</b>
+        et on organise une <b>équipe tech dans la durée</b>. Supervision, correctifs de sécurité,
+        évolutions et exploitation sont sélectionnés selon la production. <b>Le devis précise l'équipe,
+        les comptes, les droits sur les livrables, la couverture et la réversibilité.</b>
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
           Reprendre mon app en main <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="#contact" class="btn btn-ghost btn-lg">Audit maintenance offert · 20 min</a>
+        <a href="#contact" class="btn btn-ghost btn-lg">Échange de cadrage · 20 min</a>
       </div>
       <div class="shero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Forfait fixe · pas à la ticket</span>
         <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Astreinte 7j/7 · MTTR &lt; 30 min</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Astreinte et objectifs en option</span>
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Code &amp; comptes chez vous</span>
       </div>
@@ -103,12 +102,12 @@ ${navHtml}
           <rect x="448" y="12" width="78" height="20" rx="4" fill="#ECFDF5"/>
           <text x="487" y="26" text-anchor="middle" font-family="Geist Mono" font-size="9" font-weight="700" fill="#047857">● EN LIGNE</text>
 
-          <!-- SLA Gauge : engagement contractuel, pas une mesure observée -->
+          <!-- Exemple de jauge à configurer au contrat, pas une mesure observée -->
           <g transform="translate(24 64)">
             <rect x="0" y="0" width="248" height="108" rx="12" fill="#0A0A0A"/>
-            <text x="20" y="24" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">SLA UPTIME · ENGAGÉ AU CONTRAT</text>
-            <text x="20" y="72" font-family="Geist" font-weight="700" font-size="46" fill="#fff" letter-spacing="-0.03em">99,95<tspan font-size="26" fill="#10B981">%</tspan></text>
-            <text x="20" y="94" font-family="Geist Mono" font-size="9" fill="#10B981" font-weight="600">Disponibilité garantie</text>
+            <text x="20" y="24" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">SLA UPTIME · EXEMPLE À CADRER</text>
+            <text x="20" y="72" font-family="Geist" font-weight="700" font-size="34" fill="#fff" letter-spacing="-0.03em">SUR MESURE</text>
+            <text x="20" y="94" font-family="Geist Mono" font-size="9" fill="#10B981" font-weight="600">Méthode de mesure au contrat</text>
             <!-- seuil contractuel -->
             <path d="M 148 72 L 228 72" stroke="url(#me-sla-grad)" stroke-width="2" fill="none" stroke-linecap="round"/>
             <circle cx="228" cy="72" r="3" fill="#10B981"/>
@@ -117,16 +116,16 @@ ${navHtml}
           <!-- Engagements contractuels (aucune valeur mesurée) -->
           <g transform="translate(284 64)">
             <rect x="0" y="0" width="232" height="32" rx="8" fill="#F5F5F5"/>
-            <text x="14" y="20" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">ASTREINTE · PALIER SCALE</text>
-            <text x="214" y="21" font-family="Geist" font-weight="700" font-size="15" fill="#10B981" text-anchor="end">7j/7</text>
+            <text x="14" y="20" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">ASTREINTE · OPTION</text>
+            <text x="214" y="21" font-family="Geist" font-weight="700" font-size="15" fill="#10B981" text-anchor="end">À CADRER</text>
 
             <rect x="0" y="38" width="232" height="32" rx="8" fill="#EDE9FE"/>
-            <text x="14" y="58" font-family="Geist Mono" font-size="8" fill="#4C1D95" letter-spacing="1">MTTR CONTRACTUEL · P1</text>
-            <text x="214" y="59" font-family="Geist" font-weight="700" font-size="15" fill="#6D28D9" text-anchor="end">&lt; 30 min</text>
+            <text x="14" y="58" font-family="Geist Mono" font-size="8" fill="#4C1D95" letter-spacing="1">PRISE EN CHARGE · P1</text>
+            <text x="214" y="59" font-family="Geist" font-weight="700" font-size="15" fill="#6D28D9" text-anchor="end">AU DEVIS</text>
 
             <rect x="0" y="76" width="114" height="32" rx="8" fill="#F5F5F5"/>
             <text x="14" y="96" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">PERTE DE DONNÉES MAX</text>
-            <text x="100" y="97" font-family="Geist" font-weight="700" font-size="15" fill="#0A0A0A" text-anchor="end">15 min</text>
+            <text x="100" y="97" font-family="Geist" font-weight="700" font-size="15" fill="#0A0A0A" text-anchor="end">CIBLE</text>
 
             <rect x="118" y="76" width="114" height="32" rx="8" fill="#F5F5F5"/>
             <text x="132" y="96" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">INFRASTRUCTURE</text>

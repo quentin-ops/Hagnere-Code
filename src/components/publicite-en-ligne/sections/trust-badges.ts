@@ -22,9 +22,9 @@ export const trustBadgesHtml = `
         <div class="ads-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
         </div>
-        <h4>100 % de propriété client</h4>
-        <p>Comptes Google Ads, Meta BM, LinkedIn, pixels, audiences, GTM SS, creatives, templates : <b>tout est en propriété client dès J+1</b>. Aucun lock-in, passation documentée en 2 semaines si départ.</p>
-        <div class="ads-trust-foot">— Cession écrite dans les CGV</div>
+        <h4>Comptes sous contrôle client</h4>
+        <p>Les comptes Google Ads, Meta et LinkedIn peuvent être ouverts au nom du client. Le devis inventorie pixels, audiences, conteneurs, créations, accès et droits applicables.</p>
+        <div class="ads-trust-foot">— Livrables et passation au devis</div>
       </div>
 
       <div class="ads-trust-card reveal reveal-d-2">
@@ -40,18 +40,18 @@ export const trustBadgesHtml = `
         <div class="ads-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
         </div>
-        <h4>Healthchecks tracking 24/7</h4>
-        <p>Tests de santé automatisés toutes les heures sur Meta CAPI, Google Enhanced, LinkedIn Conv API, webhook CRM. <b>Alerte Slack immédiate</b>, re-déploiement sous 48 h max.</p>
-        <div class="ads-trust-foot">— SLA re-deploy contractuel</div>
+        <h4>Healthchecks tracking configurables</h4>
+        <p>La fréquence des tests, les destinations, alertes et délais cibles de correction sont adaptés à la stack et écrits au devis.</p>
+        <div class="ads-trust-foot">— Couverture et exclusions explicites</div>
       </div>
 
       <div class="ads-trust-card reveal">
         <div class="ads-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         </div>
-        <h4>Point hebdomadaire documenté</h4>
-        <p>30 min chaque lundi, compte-rendu Notion partagé le soir même&nbsp;: décisions prises, pauses, scaling, hypothèses à tester. <b>Vous n'attendez jamais le reporting mensuel</b> pour savoir où on en est.</p>
-        <div class="ads-trust-foot">— Agenda calé au kickoff</div>
+        <h4>Rythme de pilotage documenté</h4>
+        <p>La fréquence, les participants, le support de compte rendu et les métriques suivies sont définis au lancement de la mission.</p>
+        <div class="ads-trust-foot">— Agenda cadré au kickoff</div>
       </div>
 
       <div class="ads-trust-card reveal reveal-d-1">
@@ -60,25 +60,25 @@ export const trustBadgesHtml = `
         </div>
         <h4>Reporting business (pas vanity)</h4>
         <p>Looker Studio connecté à votre CRM et votre ERP. <b>CAC, ROAS blended, payback, margin contribuée</b> par canal — jamais un PDF d'impressions. Accessible à votre board 24/7.</p>
-        <div class="ads-trust-foot">— Dashboard livré à J+30</div>
+        <div class="ads-trust-foot">— Sources et calendrier au devis</div>
       </div>
 
       <div class="ads-trust-card reveal reveal-d-2">
         <div class="ads-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21v-2a4 4 0 00-3-3.87M4 21v-2a4 4 0 013-3.87M17 8a4 4 0 01-2.83 3.83M9.17 11.83A4 4 0 017 8"/></svg>
         </div>
-        <h4>Consultant senior en direct</h4>
-        <p>Un interlocuteur unique, pas un pool qui tourne. Vous l'avez au téléphone, vous le voyez en visio, <b>il connaît votre business nommément</b>. Limite&nbsp;: 8 clients actifs par consultant.</p>
-        <div class="ads-trust-foot">— Présenté nommément au kickoff</div>
+        <h4>Intervenants identifiés</h4>
+        <p>Le devis nomme les personnes mobilisées, leur rôle et leur statut. Les canaux, horaires et modalités de continuité y sont également précisés.</p>
+        <div class="ads-trust-foot">— Équipe propre à la mission</div>
       </div>
 
       <div class="ads-trust-card reveal reveal-d-3">
         <div class="ads-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 11-6.22-8.56"/><path d="M21 4v6h-6"/></svg>
         </div>
-        <h4>Engagement 3 mois puis mensuel</h4>
-        <p>Aucun enfermement long. <b>3 mois pour démontrer le setup et les premiers effets</b>, puis reconductible mois par mois avec 30 j de préavis. Si la trajectoire dérape, on ajuste gratuitement.</p>
-        <div class="ads-trust-foot">— Préavis 30 j clause CGV</div>
+        <h4>Durée et sortie lisibles</h4>
+        <p>La durée initiale, le renouvellement, le préavis et le traitement d'un écart sont ceux du devis ou du contrat signé.</p>
+        <div class="ads-trust-foot">— Aucune durée implicite</div>
       </div>
     </div>
   </div>

@@ -88,8 +88,8 @@ export const processHtml = `
           </div>
         </div>
         <h4>Sprint maintenance + évolutions</h4>
-        <p>Rythme hebdomadaire&nbsp;: standup Slack lundi, ship mid-week, revue vendredi. Bugs critiques en hotfix, features dans les sprints, refactos ciblés en continu. <b>14 deploys/trimestre en moyenne</b>.</p>
-        <div class="me-proc-step-foot">Rythme hebdo · 52 sprints/an</div>
+        <p>Le rythme de revue, de livraison et de maintenance est défini avec votre équipe. Bugs, évolutions et refactorings suivent des files et critères distincts, sans afficher de moyenne client inexistante.</p>
+        <div class="me-proc-step-foot">Rythme et capacité définis au devis</div>
       </article>
 
       <article class="me-proc-step" data-phase="launch">
