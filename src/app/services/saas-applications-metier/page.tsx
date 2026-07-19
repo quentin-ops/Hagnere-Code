@@ -9,13 +9,13 @@ import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Agence développement SaaS sur mesure · Hagnéré Code",
   description:
-    "Agence de développement SaaS et applications métier sur mesure (Next.js, React, IA). Forfait fixe dès 15 k€, MVP en 3 à 6 semaines, code à vous dès J+1.",
+    "Agence de développement SaaS sur mesure : cadrage, UX, web, mobile, IA, mise en production et reprise. Forfait fixe, code et documentation transférés.",
   alternates: { canonical: "/services/saas-applications-metier" },
   openGraph: {
     ...OG_BASE,
     title: "Agence développement SaaS sur mesure · Hagnéré Code",
     description:
-      "Plateformes SaaS B2B et applications métier propulsées par Next.js, React/TypeScript et IA. Forfait fixe, MVP en 3 à 6 semaines.",
+      "Plateformes SaaS B2B et applications métier : cadrage, développement, mise en production et transfert. Forfait fixe et preuves produits vérifiables.",
     url: "/services/saas-applications-metier",
     images: [SERVICES_OG_IMAGE],
   },
@@ -52,28 +52,42 @@ const serviceJsonLd = JSON.stringify({
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "Développement de plateformes B2B, espaces clients, marketplaces, applications métier et apps mobiles iOS/Android. Stack Next.js, React, TypeScript, React Native, IA native (Claude, GPT-4o).",
+    "Développement de plateformes B2B, espaces clients, marketplaces, applications métier et apps mobiles iOS/Android. Stack Next.js, React, TypeScript, React Native et modèles d'IA choisis selon le cas d'usage.",
   offers: [
     {
       "@type": "Offer",
       name: "Essentiel · MVP court",
-      price: "15000",
-      priceCurrency: "EUR",
-      description: "MVP SaaS 3-5 écrans, Auth, facturation, livré en 3-4 semaines",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        minPrice: "15000",
+        maxPrice: "30000",
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+      },
+      description: "MVP SaaS de 3 à 5 écrans clés, authentification, facturation et back-office",
     },
     {
       "@type": "Offer",
       name: "Standard · MVP complet",
-      price: "30000",
-      priceCurrency: "EUR",
-      description: "SaaS 10-15 écrans, API, agents IA, RGPD, livré en 5-6 semaines",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        minPrice: "30000",
+        maxPrice: "60000",
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+      },
+      description: "SaaS de 10 à 15 écrans, API, automatisations ou IA et mesures RGPD cadrées",
     },
     {
       "@type": "Offer",
       name: "Partenariat · Co-build",
-      price: "120000",
-      priceCurrency: "EUR",
-      description: "Équipe dédiée 3-5 personnes sur la durée",
+      priceSpecification: {
+        "@type": "PriceSpecification",
+        minPrice: "120000",
+        priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
+      },
+      description: "Équipe dédiée et feuille de route pluri-lots sur la durée",
     },
   ],
 });
@@ -88,7 +102,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Entre 3 et 6 semaines pour un MVP production-ready, selon la complexité. Pour un périmètre plus large (10-15 écrans, permissions complexes, intégrations multiples), comptez 6 à 10 semaines. Les dates sont fixées au cadrage et contractualisées avec clause de pénalité de retard.",
+          "Le délai dépend du périmètre validé : nombre de parcours, règles métier, reprise de données, intégrations et exigences de sécurité. Un planning et des jalons sont établis après le cadrage puis inscrits au devis.",
       },
     },
     {
@@ -106,7 +120,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Non. Nous écrivons du vrai code TypeScript / React / Next.js, testé, typé, versionné. Le low-code est adapté pour prototyper ou pour des automatisations internes, mais au-delà de 10 utilisateurs payants, cela devient un piège technique et économique.",
+          "Nous développons principalement en TypeScript, React et Next.js. Le no-code reste pertinent pour tester un usage simple ou automatiser un processus interne ; le sur-mesure devient préférable quand les règles métier, les intégrations, la réversibilité ou la maîtrise des coûts l'exigent.",
       },
     },
     {
@@ -124,7 +138,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui, après un audit technique payant (1 500 €, déduits du devis si mission). On regarde le code, la dette technique, la faisabilité de reprise. Dans 70% des cas on reprend, dans 30% on recommande une réécriture.",
+          "Oui, après un audit technique. Nous examinons le code, les dépendances, les données, la sécurité, la couverture de tests et les conditions de déploiement. Le rapport compare ensuite trois options : stabiliser, reprendre progressivement ou réécrire les seules zones qui le justifient.",
       },
     },
     {
@@ -133,7 +147,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Par défaut oui — Scaleway Paris ou OVH Roubaix. Pour les clients qui préfèrent un hébergement global (Vercel, Cloudflare, AWS), on peut configurer. Les données sont chiffrées at-rest et in-transit, avec sauvegardes toutes les 15 minutes.",
+          "Un hébergement en France ou dans l'Union européenne peut être retenu selon les contraintes du projet. Le devis documente les sous-traitants, la localisation, le chiffrement, la fréquence de sauvegarde ainsi que les objectifs de reprise attendus.",
       },
     },
     {

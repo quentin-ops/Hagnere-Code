@@ -55,9 +55,9 @@ type RouteCard = {
 const services: Service[] = [
   {
     href: "/services/saas-applications-metier",
-    label: "SaaS & apps métier",
+    label: "SaaS sur mesure",
     eyebrow: "Produit",
-    title: "Lancer une application qui devient un actif.",
+    title: "Concevoir un SaaS exploitable et réversible.",
     description:
       "MVP SaaS, portail client, app métier, API, auth, facturation, IA et back-office. On part du besoin business et on livre un produit exploitable.",
     proof: "MVP cadré et chiffré au devis",

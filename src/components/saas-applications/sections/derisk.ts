@@ -4,12 +4,12 @@ export const deriskHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Les quatre peurs qui freinent un founder</div>
+        <div class="eyebrow">— Quatre risques à traiter avant de signer</div>
         <h2>On les nomme.<br>On y répond par écrit.</h2>
       </div>
       <div class="right">
-        Chaque founder qui vient nous voir a les mêmes quatre peurs en tête.
-        On les traite frontalement, et chaque réponse est <b>contractuelle</b>, pas marketing.
+        Ces risques reviennent dans de nombreux projets numériques. Nous les traitons
+        frontalement et transformons les réponses utiles en <b>clauses ou livrables</b> vérifiables.
       </div>
     </div>
 
@@ -23,8 +23,9 @@ export const deriskHtml = `
         </div>
         <h3>Forfait fixe contractuel · clause de pénalité.</h3>
         <p>
-          Le périmètre est gelé au cadrage. Prix annoncé = prix final, <b>zéro avenant
-          sur le scope validé</b>. Des pénalités de retard sont écrites dans le contrat,
+          Le périmètre est gelé au cadrage. Prix annoncé = prix final sur le périmètre validé.
+          Une demande nouvelle fait l'objet d'un arbitrage écrit avant tout travail supplémentaire,
+          jamais d'un dépassement imposé. Des pénalités de retard sont écrites dans le contrat,
           au-delà de 14 jours calendaires de retard sur la date de livraison contractuelle.
         </p>
         <div class="sa-derisk-proof">
@@ -63,8 +64,9 @@ export const deriskHtml = `
         </div>
         <h3>Tests + CI/CD + revues systématiques · audit de sortie.</h3>
         <p>
-          Tout code livré passe par <b>tests unitaires + end-to-end</b>, <b>CI/CD GitHub Actions</b>,
-          <b>revue systématique</b> (pair review + assistée Claude Code). Un <b>audit de sortie</b>
+          La stratégie de tests est définie selon les risques : <b>tests unitaires sur la logique métier,
+          intégration sur les frontières critiques et end-to-end sur les parcours essentiels</b>.
+          La CI bloque les régressions identifiées. Un <b>audit de sortie</b>
           écrit formalise la qualité, les dépendances, les zones à risque — utilisable par
           n'importe quelle autre équipe qui reprend.
         </p>

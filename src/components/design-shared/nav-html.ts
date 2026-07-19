@@ -123,8 +123,8 @@ const PANE_BUILD = pane({
     paneCard(
       "/services/saas-applications-metier",
       ICON.saas,
-      "SaaS &amp; applis métier",
-      "Plateformes B2B, espaces clients, IA native.",
+      "Développement SaaS sur mesure",
+      "Plateformes B2B, espaces clients, facturation, IA.",
     ) +
     paneCard(
       "/services/outils-internes-sur-mesure",

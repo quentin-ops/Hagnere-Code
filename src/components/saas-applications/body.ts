@@ -20,16 +20,16 @@ ${navHtml}
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Développement SaaS sur mesure</span></div>
-      <h1>Le <span class="accent">SaaS sur mesure</span><br>qui fait vraiment<br>votre métier.</h1>
+      <h1>Votre <span class="accent">SaaS sur mesure</span><br>conçu autour<br>de votre métier.</h1>
       <div class="shero-tagline">
         <span>⚡ Accéléré par l'IA</span>
         <span class="sep"></span>
-        <span>🧑‍💻 Codé par des seniors</span>
+        <span>🧑‍💻 Conçu par notre équipe</span>
         <span class="sep"></span>
         <span>💶 Livré en forfait fixe</span>
       </div>
       <p class="shero-sub">
-        Vous avez une idée de plateforme, un <b>outil interne</b> qui tourne sur Excel depuis trop longtemps,
+        Vous avez une idée de plateforme, un <a href="/guides/transformer-excel-en-application"><b>outil interne qui tourne sur Excel</b></a> depuis trop longtemps,
         ou un <b>besoin métier</b> qu'aucun logiciel du marché ne couvre vraiment. On construit la solution —
         <b>web, mobile iOS/Android, back-office, IA native</b>. De la première maquette jusqu'au premier client payant,
         <b>code, design, hébergement et support sous un seul toit</b>.
@@ -43,7 +43,7 @@ ${navHtml}
       <div class="shero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> MVP cadré et chiffré au devis</span>
         <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Forfait fixe · zéro avenant</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Périmètre et prix écrits</span>
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Repo Git chez vous J+1</span>
       </div>
@@ -189,7 +189,7 @@ ${navHtml}
         <p>Extraction de données depuis des documents, assistants conversationnels, génération de contenu, analyses prédictives. L'IA au cœur du produit, pas en feature marketing.</p>
         <div class="uc-tags">
           <span class="uc-tag">Claude</span>
-          <span class="uc-tag">GPT-4</span>
+          <span class="uc-tag">LLM adapté au cas</span>
           <span class="uc-tag">OCR / RAG</span>
         </div>
       </div>
@@ -222,7 +222,7 @@ ${navHtml}
         <p>Notre terrain par défaut, poussé à fond sur les interfaces ultra-interactives : apps de trading, éditeurs temps-réel, tableaux de bord collaboratifs, canvases. Next.js sur Vercel, API TypeScript derrière.</p>
         <div class="uc-tags">
           <span class="uc-tag">React 19</span>
-          <span class="uc-tag">Next.js 15</span>
+          <span class="uc-tag">Next.js 16</span>
           <span class="uc-tag">Temps réel</span>
         </div>
       </div>
@@ -230,9 +230,9 @@ ${navHtml}
       <div class="uc reveal reveal-d-2">
         <div class="uc-num">/ 09</div>
         <h3>IA agentique &amp; automatisations</h3>
-        <p>Agents Claude qui lisent vos documents, écrivent vos relances, classent vos emails, enrichissent vos CRM. Pas un chatbot en façade — des workflows IA qui bossent en arrière-plan 24/7.</p>
+        <p>Assistants qui lisent des documents, préparent des relances, classent des emails ou enrichissent un CRM. Pas un chatbot en façade : des workflows avec seuils de confiance et validation humaine quand le risque l'exige.</p>
         <div class="uc-tags">
-          <span class="uc-tag">Claude Agents</span>
+          <span class="uc-tag">Agents avec outils</span>
           <span class="uc-tag">MCP · Tools</span>
           <span class="uc-tag">Human-in-the-loop</span>
         </div>
@@ -249,9 +249,9 @@ ${navHtml}
       <div class="eyebrow on-dark">— Ce qu'on sait faire</div>
       <h2 style="margin-top:14px">20 briques techniques.<br>Combinables à volonté.</h2>
       <p class="caps-sub">
-        Pas de magie : un bon SaaS, c'est l'assemblage de briques qu'on maîtrise
-        individuellement depuis des années. Voici les 20 blocs qu'on ne (re)code plus —
-        on les branche, on les adapte, on livre un produit stable dès la première démo.
+        Pas de magie : un bon SaaS assemble des briques déjà éprouvées sur les produits
+        que nous exploitons, puis les adapte à vos règles métier. Voici les blocs que nous
+        savons cadrer, intégrer, tester et documenter sans transformer votre projet en démonstrateur.
       </p>
     </div>
 
@@ -390,7 +390,7 @@ ${navHtml}
         <div class="proc-num">ÉTAPE 02</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
         <h4>Design</h4>
-        <p>Maquettes hautes-fidélité sur Figma, prototype cliquable, tests utilisateurs avant une seule ligne de code.</p>
+        <p>Maquettes haute fidélité sur Figma, prototype cliquable et validation des parcours avec les décideurs et futurs utilisateurs identifiés.</p>
         <div class="proc-dur">1 SEMAINE</div>
       </div>
       <div class="proc-step">
@@ -459,7 +459,7 @@ ${navHtml}
           </div>
           <div class="sl-row">
             <div class="sl-cat">IA / LLM</div>
-            <div class="sl-val">Claude Opus 4.7 · GPT-4o · Embeddings</div>
+            <div class="sl-val">Anthropic · OpenAI · Mistral · embeddings</div>
             <div class="sl-note">AGENTS TYPÉS</div>
           </div>
           <div class="sl-row">
@@ -470,7 +470,7 @@ ${navHtml}
           <div class="sl-row">
             <div class="sl-cat">OBSERVABILITÉ</div>
             <div class="sl-val">Sentry · Monitoring applicatif · Files Redis</div>
-            <div class="sl-note">ALERTES 24/7</div>
+            <div class="sl-note">SEUILS D'ALERTE DOCUMENTÉS</div>
           </div>
         </div>
       </div>
@@ -517,8 +517,8 @@ ${navHtml}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ils ont choisi ce service</div>
-        <h2>Des SaaS livrés,<br>en production, mesurables.</h2>
+        <div class="eyebrow">— Produits du groupe Hagnéré</div>
+        <h2>La preuve par des produits<br>que nous exploitons nous-mêmes.</h2>
       </div>
       <div class="right">
         <a href="/realisations" class="btn btn-ghost">Toutes les réalisations →</a>
@@ -552,8 +552,8 @@ ${navHtml}
           <h3>LMNP.AI</h3>
           <p>Comptabilité fiscale automatisée pour loueurs meublés. Extraction de factures et génération de liasse 2031 par IA.</p>
           <div class="scase-metric">
-            <div class="scm"><div class="n">6 000<span class="s">+</span></div><div class="l">Clients payants</div></div>
-            <div class="scm"><div class="n">100<span class="s">%</span></div><div class="l">Growth organique</div></div>
+            <div class="scm"><div class="n">IA</div><div class="l">Lecture de pièces et contrôles</div></div>
+            <div class="scm"><div class="n">2031</div><div class="l">Production de la liasse fiscale</div></div>
           </div>
         </div>
       </a>
@@ -562,8 +562,8 @@ ${navHtml}
         <div class="scase-shot">
           <svg width="100%" height="100%" viewBox="0 0 600 380" preserveAspectRatio="xMidYMid slice" style="background:#0A0A0A">
             <rect width="600" height="380" fill="#0A0A0A"/>
-            <text x="40" y="60" font-family="Geist" font-weight="700" font-size="16" fill="#fff">Comptabilité<tspan fill="#6D28D9"> AI</tspan></text>
-            <text x="40" y="80" font-family="Geist Mono" font-size="9" fill="#737373">bilan.2025.xlsx</text>
+            <text x="40" y="60" font-family="Geist" font-weight="700" font-size="16" fill="#fff">SCI<tspan fill="#6D28D9">-AI.app</tspan></text>
+            <text x="40" y="80" font-family="Geist Mono" font-size="9" fill="#737373">comptabilité SCI · IR / IS</text>
             <g font-family="Geist Mono" font-size="10">
               <rect x="40" y="100" width="520" height="22" fill="rgba(255,255,255,0.03)" rx="4"/>
               <text x="52" y="115" fill="#737373">2025-03-14</text>
@@ -586,12 +586,12 @@ ${navHtml}
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>SaaS B2B</span><span class="tag-stack">IA native</span><span>— levée en cours</span></div>
-          <h3>Comptabilité AI</h3>
-          <p>Comptabilité en partie double pour PME avec bilan automatisé par IA. Positionnement Blue Ocean.</p>
+          <div class="scase-meta"><span>SaaS fiscal</span><span class="tag-stack">Moteurs IR · IS</span><span>— en production</span></div>
+          <h3>SCI-AI.app</h3>
+          <p>Comptabilité et déclarations fiscales des SCI, avec deux parcours distincts selon le régime à l'IR ou à l'IS.</p>
           <div class="scase-metric">
-            <div class="scm"><div class="n">0<span class="s">→1</span></div><div class="l">Du MVP à la levée en 5 mois</div></div>
-            <div class="scm"><div class="n">4</div><div class="l">Investisseurs confirmés</div></div>
+            <div class="scm"><div class="n">IR</div><div class="l">Parcours fiscal dédié</div></div>
+            <div class="scm"><div class="n">IS</div><div class="l">Comptabilité en partie double</div></div>
           </div>
         </div>
       </a>
@@ -620,7 +620,7 @@ ${navHtml}
         <div class="plan-sub">Un SaaS fonctionnel avec les 3–5 features qui comptent, prêt à montrer à des premiers clients.</div>
         <div class="plan-price">
           <span class="amount">15–30 k€</span>
-          <span class="per">forfait TTC</span>
+          <span class="per">forfait HT</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -633,13 +633,13 @@ ${navHtml}
       </div>
 
       <div class="plan featured reveal reveal-d-1">
-        <div class="plan-badge">LE PLUS CHOISI</div>
+        <div class="plan-badge">PÉRIMÈTRE ÉTENDU</div>
         <div class="plan-tag">MVP COMPLET</div>
         <h4>Standard</h4>
         <div class="plan-sub">Un SaaS prêt à monter en charge : multi-utilisateurs, permissions, dashboards, intégrations tierces. App mobile en option.</div>
         <div class="plan-price">
           <span class="amount">30–60 k€</span>
-          <span class="per">forfait TTC</span>
+          <span class="per">forfait HT</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -647,7 +647,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design system Figma complet</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>API publique + webhooks</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1–2 agents IA (extraction, RAG)</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Conformité RGPD clé en main</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Mesures RGPD cadrées et documentées</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>App mobile iOS/Android en option (+10–20 k€)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison en 5–6 semaines</li>
         </ul>
@@ -657,10 +657,10 @@ ${navHtml}
       <div class="plan reveal reveal-d-2">
         <div class="plan-tag">CO-BUILD</div>
         <h4>Partenariat</h4>
-        <div class="plan-sub">On construit avec vous dans la durée. Build produit, growth, support. Engagement sur résultats.</div>
+        <div class="plan-sub">On construit avec vous dans la durée : feuille de route produit, lots successifs, exploitation et support.</div>
         <div class="plan-price">
           <span class="amount">Sur-mesure</span>
-          <span class="per">à partir de 120 k€</span>
+          <span class="per">à partir de 120 k€ HT</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -686,9 +686,8 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— Questions fréquentes</div>
         <h2 style="margin-top:14px">Vous avez<br>des questions.</h2>
-        <p>Les plus fréquentes en phase commerciale, traitées directement.</p>
+        <p>Les points à clarifier avant un devis, traités directement.</p>
       </div>
-
       <div class="faq-list reveal reveal-d-1">
         <div class="faq-item open">
           <div class="faq-q">
@@ -696,9 +695,10 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Entre <b>3 et 6 semaines</b> pour un MVP production-ready, selon la complexité. Pour un périmètre plus large
-            (10–15 écrans, permissions complexes, intégrations multiples), comptez 6 à 10 semaines. On fixe les dates
-            avec vous au cadrage et on les tient : tous nos forfaits ont une clause de pénalité de retard.
+            Le délai dépend du périmètre validé : nombre de parcours, règles métier, reprise de données,
+            intégrations et exigences de sécurité. Après le cadrage, le devis fixe les jalons, les critères
+            de recette et la date contractuelle. Les fourchettes affichées plus haut servent à vous situer,
+            pas à promettre une date avant d'avoir étudié le projet.
           </div>
         </div>
 
@@ -734,9 +734,10 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Non. On écrit du <b>vrai code TypeScript</b>, testé, typé, versionné. Le low-code est très bien pour prototyper
-            ou pour des automatisations internes, mais au-delà de 10 utilisateurs payants, ça devient un
-            piège technique et économique. On construit des bases qui tiendront 10 ans.
+            Nous écrivons principalement du <b>code TypeScript</b>, testé, typé et versionné. Le no-code reste pertinent
+            pour valider un usage simple ou automatiser un processus interne. Le sur-mesure prend l'avantage quand
+            les règles métier, les intégrations, la réversibilité ou le coût à plusieurs années deviennent structurants.
+            Notre <a href="/guides/no-code-ou-sur-mesure">comparatif no-code ou sur-mesure</a> détaille ces critères.
           </div>
         </div>
 
@@ -759,9 +760,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Oui, après un <b>audit technique payant</b> (1 500 €, déduits du devis si mission). On regarde le code,
-            la dette technique, la faisabilité de reprise. Dans 70% des cas, on reprend. Dans 30%, on recommande
-            une réécriture parce que le coût de reprise dépasse celui d'un nouveau build.
+            Oui, après un <b>audit technique</b>. On examine le code, les dépendances, les données, la sécurité,
+            la couverture de tests et les conditions de déploiement. Le rapport compare trois scénarios chiffrés :
+            stabiliser l'existant, reprendre progressivement, ou réécrire seulement les zones qui le justifient.
           </div>
         </div>
 
@@ -771,9 +772,10 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Par défaut <b>oui</b> — Scaleway Paris ou OVH Roubaix. Pour les clients qui préfèrent un hébergement
-            global (Vercel, Cloudflare, AWS), on peut configurer. Les données sont chiffrées at-rest et in-transit,
-            avec sauvegardes toutes les 15 minutes.
+            Un hébergement en France ou dans l'Union européenne peut être retenu selon les contraintes du projet.
+            Le devis documente les sous-traitants, la localisation, le chiffrement, la fréquence des sauvegardes
+            et les objectifs de reprise attendus. Ces choix ne sont pas identiques pour une application interne,
+            un SaaS public et un produit qui traite des données sensibles.
           </div>
         </div>
 
@@ -813,7 +815,7 @@ ${navHtml}
   <div class="wrap inner">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:14px">Parlons de votre SaaS.<br><span class="accent">30 minutes suffisent.</span></h2>
-    <p>Un call de cadrage gratuit avec un de nos seniors. On vous dit honnêtement si on est la bonne agence pour vous. Si on ne l'est pas, on vous oriente ailleurs.</p>
+    <p>Un échange de cadrage gratuit avec un membre de l'équipe. On vous dit honnêtement si le projet est assez défini, si notre approche convient et quelle information manque avant un devis.</p>
     <div class="scta-cta">
       <a href="#" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly

@@ -8,8 +8,8 @@ export const techFaqHtml = `
         <h2>Les questions qu'un CTO<br>nous pose en call.</h2>
       </div>
       <div class="right">
-        Les huit questions techniques qu'on entend systématiquement de la part des
-        CTO / lead devs qui évaluent notre travail. Réponses directes, sans jargon.
+        Huit décisions techniques à rendre explicites avant de confier un produit à une équipe.
+        Les réponses ci-dessous décrivent notre méthode ; les choix finaux dépendent du contexte.
       </div>
     </div>
 
@@ -20,11 +20,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Migrations SQL versionnées (Drizzle)</b> + review en pair avant merge. Déploiement
+          <b>Migrations SQL versionnées</b> + revue en pair avant merge. Déploiement
           zero-downtime (expand / migrate / contract) pour les schémas sensibles. Pour les
-          très grosses tables, on utilise <b>pt-online-schema-change</b> ou des colonnes temporaires
-          backfillées en batch via queue, jamais de ALTER bloquant en prod.
-          Rollback toujours testé avant release.
+          grosses tables PostgreSQL, les données sont réécrites par lots avant de retirer l'ancien
+          schéma. Le plan de retour arrière et la sauvegarde préalable font partie de la procédure de release.
         </div>
       </div>
 
@@ -34,10 +33,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Files d'attente (Redis)</b>. Queues séparées par criticité (default, notifications,
-          ai-heavy, exports). <b>Retries exponentiels</b>, dead-letter queue sur échec définitif,
-          alerting Sentry sur backlog &gt; X. Les jobs IA coûteux tournent sur
-          une queue dédiée avec rate-limit + timeout strict pour ne jamais bloquer l'API.
+          Les tâches longues sortent du cycle HTTP : queue managée, workflow durable ou workers,
+          selon l'infrastructure retenue. <b>Retries exponentiels</b>, idempotence, dead-letter queue,
+          limites de débit et seuils d'alerte sont définis par type de tâche. Les traitements IA
+          disposent de budgets, délais maximums et points de validation humaine quand le risque l'exige.
         </div>
       </div>
 
@@ -47,10 +46,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Backups PostgreSQL toutes les 15 minutes</b> (WAL continu), rétention 30 jours
-          + snapshot hebdo conservé 1 an. Stockage chiffré sur un <b>second provider</b>
-          (3-2-1). Procédure de restauration testée tous les trimestres sur environnement
-          isolé. <b>RTO cible : 2 h. RPO cible : 15 min.</b> Documenté dans un runbook.
+          On commence par fixer le <b>RPO</b> (perte de données acceptable) et le <b>RTO</b>
+          (durée maximale d'indisponibilité). Fréquence, rétention, réplication hors fournisseur
+          et exercices de restauration sont ensuite inscrits dans le runbook. Une sauvegarde
+          n'est considérée utile que si sa restauration est testée selon la fréquence contractuelle.
         </div>
       </div>
 
@@ -60,10 +59,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Sentry</b> pour les erreurs (front + back + mobile) avec context riche (user,
-          tenant, release). <b>Monitoring applicatif</b> pour perfs &amp; slow queries. <b>Dashboards
-          dédiés</b> pour les queues. <b>Logs structurés JSON</b> (Monolog → stdout → agrégateur).
-          <b>PostHog</b> pour les events produit. Alerting Slack 24/7 sur signaux critiques.
+          Erreurs front, back et mobile corrélées à une release ; logs structurés sans données
+          sensibles ; métriques sur latence, jobs et base de données ; événements produit définis
+          avec le métier. Les outils — Sentry, OpenTelemetry, PostHog ou équivalents — sont choisis
+          avec l'hébergement. Les seuils et destinataires d'alerte sont documentés au runbook.
         </div>
       </div>
 
@@ -73,11 +72,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          Architecture pensée <b>stateless</b>, scale horizontal via Docker/Coolify ou
-          Vercel / Cloudflare. <b>PostgreSQL avec index ciblés + partitioning sur tables chaudes</b>.
-          Redis pour le cache applicatif, les sessions, le rate-limit. Queries lentes
-          tracées, réécrites, parfois réindexées par IA. On a des SaaS en prod qui tiennent
-          sans effort plusieurs milliers de requêtes / seconde.
+          Le nombre d'inscrits ne suffit pas : on chiffre les utilisateurs simultanés, les pics,
+          les volumes de données et les traitements coûteux. L'architecture reste stateless quand
+          c'est pertinent ; PostgreSQL est indexé à partir des requêtes réelles ; cache et queues
+          ne sont ajoutés que s'ils retirent un goulot mesuré. Des tests de charge valident le seuil cible.
         </div>
       </div>
 
@@ -97,7 +95,7 @@ export const techFaqHtml = `
 
       <div class="faq-item">
         <div class="faq-q">
-          SSO SAML / SCIM pour nos gros clients B2B — vous savez faire ?
+          SSO SAML / SCIM pour un plan entreprise — vous savez faire ?
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
@@ -114,11 +112,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Oui, et encouragés</b>. On a déjà livré du code soumis à pen test externe
-          (OWASP top 10, headers sécu, injections, race conditions). On prépare le terrain
-          SOC2 Type 2 sans faire l'audit nous-mêmes (il est mené par un tiers habilité).
-          Le code passe <b>SAST (Semgrep) + TypeScript strict en CI</b>. Un audit de sécurité annuel est
-          inclus dans les forfaits maintenance.
+          <b>Oui.</b> Le code et l'infrastructure peuvent être audités par un tiers choisi par le client.
+          On prépare les environnements, fournit la documentation nécessaire et traite les écarts
+          dans le périmètre convenu. Les contrôles automatisés (types, dépendances, analyse statique)
+          complètent un pen test ; ils ne le remplacent pas et ne valent pas certification SOC 2.
         </div>
       </div>
     </div>

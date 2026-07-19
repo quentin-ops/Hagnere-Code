@@ -64,6 +64,7 @@ postal de 5-14 j = chemin critique) · dossier Activateur France Num.
 | 5 · `agence-next-js` | ✅ livré, + `agence-react` en bonus |
 | 6 · `no-code-ou-sur-mesure` | ✅ guide n°24, en production |
 | 10 · `transformer-excel-en-application` | ✅ guide n°29 intégré : diagnostic local sans email, comparaison en quatre options, calcul sur quatre ans, protocole de migration et sources primaires |
+| 11 · `agence-developpement-saas-sur-mesure` | 🔧 consolidation lancée sur l'URL canonique existante `/services/saas-applications-metier` ; alias en redirection permanente pour éviter la cannibalisation |
 | Pages locales (lignes 1, 3, 4) | ✅ `/agence`, `/agence/savoie`, `/agence/savoie/chambery` livrées ; vague 2 (Aix-les-Bains, Le Bourget-du-Lac) volontairement gelée tant que les pages existantes n'ont pas d'impressions |
 | Hors roadmap | ✅ guide n°25 `pourquoi-mon-site-est-lent`, ✅ guide n°26 `prix-referencement-naturel` |
 

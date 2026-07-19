@@ -21,7 +21,7 @@ export const comparisonHtml = `
         <div class="sa-cmp-col">
           <div class="sa-cmp-kind">Option A</div>
           <div class="sa-cmp-title">No-code SaaS (Bubble, Softr)</div>
-          <div class="sa-cmp-price">2–10 k€ + 300–800 €/mois</div>
+          <div class="sa-cmp-price">Build initial + abonnement + usages</div>
         </div>
         <div class="sa-cmp-col">
           <div class="sa-cmp-kind">Option B</div>
@@ -31,18 +31,18 @@ export const comparisonHtml = `
         <div class="sa-cmp-col">
           <div class="sa-cmp-kind">Option C</div>
           <div class="sa-cmp-title">Freelance SaaS</div>
-          <div class="sa-cmp-price">15–40 k€ régie</div>
+          <div class="sa-cmp-price">Selon TJM et périmètre</div>
         </div>
         <div class="sa-cmp-col sa-cmp-col-us">
           <div class="sa-cmp-kind">Nous</div>
           <div class="sa-cmp-title">Hagnéré Code</div>
-          <div class="sa-cmp-price">15–120 k€ forfait fixe</div>
+          <div class="sa-cmp-price">Devis forfaitaire par périmètre</div>
         </div>
       </div>
 
       <div class="sa-cmp-row">
         <div class="sa-cmp-col sa-cmp-col-label">Architecture multi-tenant</div>
-        <div class="sa-cmp-col sa-cmp-bad">Plafonne, perfs médiocres</div>
+        <div class="sa-cmp-col">Possible selon la plateforme et le modèle de données</div>
         <div class="sa-cmp-col sa-cmp-bad">N/A (pas prévu pour)</div>
         <div class="sa-cmp-col">Dépend de sa spécialité</div>
         <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Standard dès J+1</b></div>
@@ -50,7 +50,7 @@ export const comparisonHtml = `
 
       <div class="sa-cmp-row">
         <div class="sa-cmp-col sa-cmp-col-label">Facturation SaaS (Stripe, webhooks, proratas)</div>
-        <div class="sa-cmp-col">Plugin Stripe basique</div>
+        <div class="sa-cmp-col">Connecteur ou plugin selon la plateforme</div>
         <div class="sa-cmp-col sa-cmp-bad">À coder soi-même</div>
         <div class="sa-cmp-col">À scoper en option</div>
         <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Cashier + webhooks + essais + relances</b></div>
@@ -58,7 +58,7 @@ export const comparisonHtml = `
 
       <div class="sa-cmp-row">
         <div class="sa-cmp-col sa-cmp-col-label">SSO entreprise (SAML, Google, Microsoft)</div>
-        <div class="sa-cmp-col sa-cmp-bad">Non</div>
+        <div class="sa-cmp-col">Souvent réservé aux offres supérieures</div>
         <div class="sa-cmp-col sa-cmp-good">Oui mais pour l'interne</div>
         <div class="sa-cmp-col">Variable</div>
         <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>SAML + OAuth inclus</b></div>
@@ -66,7 +66,7 @@ export const comparisonHtml = `
 
       <div class="sa-cmp-row">
         <div class="sa-cmp-col sa-cmp-col-label">Propriété du code</div>
-        <div class="sa-cmp-col sa-cmp-bad">Lock-in total</div>
+        <div class="sa-cmp-col sa-cmp-bad">Application rarement exportable comme code autonome</div>
         <div class="sa-cmp-col sa-cmp-bad">Dépendance licence</div>
         <div class="sa-cmp-col">Oui, après négociation</div>
         <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>100 % à vous J+1, repo Git chez vous</b></div>
@@ -74,7 +74,7 @@ export const comparisonHtml = `
 
       <div class="sa-cmp-row">
         <div class="sa-cmp-col sa-cmp-col-label">Passage à l'échelle (10k+ users)</div>
-        <div class="sa-cmp-col sa-cmp-bad">Plafonne ~300 users</div>
+        <div class="sa-cmp-col">À valider par test de charge et limites du plan</div>
         <div class="sa-cmp-col sa-cmp-bad">Pas fait pour public</div>
         <div class="sa-cmp-col">Dépend du dev</div>
         <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Queues, Redis, cache, PostgreSQL tuné</b></div>
@@ -82,15 +82,15 @@ export const comparisonHtml = `
 
       <div class="sa-cmp-row">
         <div class="sa-cmp-col sa-cmp-col-label">IA native (agents, RAG, extraction)</div>
-        <div class="sa-cmp-col sa-cmp-bad">Via Zapier, fragile</div>
+        <div class="sa-cmp-col">Via API, plugins ou automatisations</div>
         <div class="sa-cmp-col">Pas l'objet</div>
         <div class="sa-cmp-col">Si c'est sa spécialité</div>
-        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Claude Opus 4.7 / GPT-4o, agents typés</b></div>
+        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Modèle choisi selon coût, données et niveau de contrôle</b></div>
       </div>
 
       <div class="sa-cmp-row">
         <div class="sa-cmp-col sa-cmp-col-label">App mobile iOS/Android</div>
-        <div class="sa-cmp-col sa-cmp-bad">Wrapper PWA médiocre</div>
+        <div class="sa-cmp-col">PWA, wrapper ou outil mobile dédié</div>
         <div class="sa-cmp-col sa-cmp-bad">Non</div>
         <div class="sa-cmp-col">Un spécialiste à part</div>
         <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>React Native, même équipe, même API</b></div>
@@ -100,30 +100,32 @@ export const comparisonHtml = `
         <div class="sa-cmp-col sa-cmp-col-label">Continuité (congés, arrêt, turnover)</div>
         <div class="sa-cmp-col">N/A (plateforme)</div>
         <div class="sa-cmp-col">N/A (plateforme)</div>
-        <div class="sa-cmp-col sa-cmp-bad">Projet à l'arrêt</div>
+        <div class="sa-cmp-col">Dépend de sa documentation et de son relais</div>
         <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>${TEAM_PUBLIC_COMPOSITION}, relais organisé</b></div>
       </div>
 
       <div class="sa-cmp-row sa-cmp-row-verdict">
         <div class="sa-cmp-col sa-cmp-col-label">À choisir si…</div>
         <div class="sa-cmp-col">
-          Vous validez<br>une idée jetable,<br>&lt; 100 users ciblés
+          Vous validez<br>vite un usage simple<br>et acceptez la dépendance plateforme
         </div>
         <div class="sa-cmp-col">
-          Outil <b>interne</b><br>(10-50 collaborateurs),<br>pas vendu à l'extérieur
+          Outil <b>interne</b><br>adossé à des sources maîtrisées,<br>pas vendu à l'extérieur
         </div>
         <div class="sa-cmp-col">
-          Périmètre &lt; 20 k€,<br>compétence précise,<br>vous pilotez
+          Compétence précise,<br>vous pilotez le produit<br>et sécurisez la continuité
         </div>
         <div class="sa-cmp-col sa-cmp-col-us">
-          <b>SaaS vendable 25-120 k€,</b><br>multi-tenant, billing,<br>IA, mobile — en 3-6 sem.
+          <b>SaaS vendu ou outil critique,</b><br>règles métier fortes,<br>réversibilité et exploitation cadrées
         </div>
       </div>
     </div>
 
     <div class="sa-cmp-disclaimer reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-      Pas sûr ? <a href="#contact">30 min avec un expert</a> — si ce n'est pas pour nous, on vous oriente franchement.
+      Pour décider sans raccourci, lire le <a href="/guides/no-code-ou-sur-mesure">comparatif no-code ou sur-mesure</a>
+      puis le <a href="/guides/combien-coute-un-saas">budget complet d'un SaaS</a>. Vous pouvez ensuite
+      <a href="#contact">faire relire votre périmètre pendant 30 minutes</a>.
     </div>
   </div>
 </section>

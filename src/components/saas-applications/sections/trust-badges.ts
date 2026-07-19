@@ -26,9 +26,9 @@ export const trustBadgesHtml = `
         <div class="sa-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg>
         </div>
-        <h4>Données hébergées en France</h4>
-        <p>Par défaut : <b>Scaleway Paris</b> ou <b>OVH Roubaix</b>. Chiffrement AES-256 at-rest, TLS 1.3 in-transit, sauvegardes toutes les 15 minutes.</p>
-        <div class="sa-trust-foot">— Sous-traitants RGPD documentés</div>
+        <h4>Localisation et reprise documentées</h4>
+        <p>Hébergement France ou Union européenne selon le besoin. Le devis précise <b>la localisation, les sous-traitants, le chiffrement, les sauvegardes, le RPO et le RTO</b>.</p>
+        <div class="sa-trust-foot">— Architecture et runbook remis au client</div>
       </div>
 
       <div class="sa-trust-card reveal reveal-d-2">
@@ -36,7 +36,7 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
         </div>
         <h4>Forfait fixe contractuel</h4>
-        <p>Le prix du devis est le prix final. <b>Aucun avenant</b> sur le périmètre validé au cadrage. Pénalité de 7 % du forfait par semaine, au-delà de 14 jours calendaires de retard sur la date de livraison contractuelle.</p>
+        <p>Le prix du devis est le prix final sur le périmètre validé. <b>Aucun dépassement unilatéral</b> : une demande nouvelle est chiffrée et acceptée avant réalisation. Pénalité de 7 % du forfait par semaine, au-delà de 14 jours calendaires de retard sur la date de livraison contractuelle.</p>
         <div class="sa-trust-foot">— Clause de pénalité dans le contrat</div>
       </div>
 
@@ -46,7 +46,7 @@ export const trustBadgesHtml = `
         </div>
         <h4>Propriété totale du code</h4>
         <p>Repo Git <b>chez vous dès J+1</b>. Aucune licence, aucun royalties, aucune clé de chiffrement côté studio. Vous partez quand vous voulez.</p>
-        <div class="sa-trust-foot">— Cession écrite au CGV</div>
+        <div class="sa-trust-foot">— Clauses de cession écrites au contrat</div>
       </div>
 
       <div class="sa-trust-card reveal">
@@ -71,9 +71,9 @@ export const trustBadgesHtml = `
         <div class="sa-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22V15"/></svg>
         </div>
-        <h4>Partenaire techno vérifié</h4>
-        <p>Stack : <b>Next.js</b>, <b>React</b>, <b>TypeScript</b>, <b>Stripe</b>, <b>Claude</b>. Équipe formée aux dernières versions stables.</p>
-        <div class="sa-trust-foot">— Mise à jour trimestrielle</div>
+        <h4>Stack documentée et réversible</h4>
+        <p><b>Next.js, React, TypeScript, Laravel ou React Native</b> selon le besoin. Les versions, dépendances, services tiers et procédures de déploiement figurent dans le dossier de passation.</p>
+        <div class="sa-trust-foot">— Aucun badge ni partenariat technique revendiqué</div>
       </div>
 
       <div class="sa-trust-card reveal reveal-d-3">

@@ -4,12 +4,12 @@ export const checklistHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ce que "un SaaS Hagnéré" veut dire</div>
-        <h2>Douze briques incluses<br>dans chaque livraison.</h2>
+        <div class="eyebrow">— Ce que le devis doit rendre explicite</div>
+        <h2>Douze postes à cadrer<br>avant chaque livraison.</h2>
       </div>
       <div class="right">
-        "On fait un SaaS" c'est trop vague. Voilà la liste exacte de ce qui rentre dans
-        le forfait — et ce qui n'y rentre pas. Pas d'avenant surprise à J+60.
+        « On fait un SaaS » est trop vague. Chaque ligne ci-dessous doit être marquée
+        incluse, optionnelle ou hors périmètre dans le devis : aucune n'est présumée.
       </div>
     </div>
 
@@ -19,9 +19,9 @@ export const checklistHtml = `
         <div class="sa-check-head">
           <div class="sa-check-badge sa-check-badge-in">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>
-            INCLUS DANS LE FORFAIT
+            CADRÉ DANS LE DEVIS
           </div>
-          <h3>Douze briques, à chaque projet.</h3>
+          <h3>Douze décisions rendues visibles.</h3>
         </div>
         <ul class="sa-check-list">
           <li>
@@ -54,19 +54,19 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="sa-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Conformité RGPD clé en main</b> — DPA, registre, cookies, export &amp; droit à l'oubli, sous-traitants.</div>
+            <div><b>Mesures RGPD</b> — DPA, registre, cookies, export, effacement et sous-traitants selon les traitements ; validation juridique par votre conseil si nécessaire.</div>
           </li>
           <li>
             <div class="sa-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Observabilité</b> — Sentry erreurs, monitoring perfs, queues Redis instrumentées, logs structurés, alertes 24/7.</div>
+            <div><b>Observabilité</b> — erreurs, performances, files de tâches, logs structurés et seuils d'alerte adaptés au niveau de service retenu.</div>
           </li>
           <li>
             <div class="sa-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Infra hébergée en France</b> — Scaleway/OVH, chiffrement AES-256, sauvegardes toutes les 15 min, TLS 1.3.</div>
+            <div><b>Hébergement et reprise</b> — localisation, chiffrement, sauvegardes, rétention, RPO et RTO documentés avant mise en production.</div>
           </li>
           <li>
             <div class="sa-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>CI/CD + tests + Docker</b> — GitHub Actions, tests unitaires &amp; end-to-end, déploiement zéro-downtime, rollback 1 clic.</div>
+            <div><b>CI/CD et stratégie de tests</b> — contrôles automatisés, parcours critiques, procédure de déploiement et plan de retour arrière.</div>
           </li>
           <li>
             <div class="sa-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
@@ -99,7 +99,7 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="sa-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Migrations massives de données tierces</b> — scoping séparé si &gt; 100k enregistrements ou structure exotique.</div>
+            <div><b>Migrations de données tierces</b> — lot séparé quand le volume, la qualité ou la structure nécessite un travail de reprise spécifique.</div>
           </li>
           <li>
             <div class="sa-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>

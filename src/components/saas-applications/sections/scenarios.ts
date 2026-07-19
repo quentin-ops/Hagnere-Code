@@ -8,8 +8,8 @@ export const scenariosHtml = `
         <h2>Trois situations,<br>trois chemins clairs.</h2>
       </div>
       <div class="right">
-        La plupart des projets qu'on prend entrent dans l'un de ces trois scénarios.
-        Cliquez sur le vôtre : l'équipe, la durée, le livrable et le prix indicatif changent.
+        Ces trois archétypes couvrent des décisions différentes. Cliquez sur le vôtre :
+        le point d'entrée, les livrables et les risques à traiter changent.
       </div>
     </div>
 
@@ -17,12 +17,12 @@ export const scenariosHtml = `
       <button type="button" class="sa-scen-tab" data-scenario="mvp" role="tab" aria-selected="true">
         <span class="sa-scen-tab-k">SCÉNARIO 01</span>
         <span class="sa-scen-tab-t">MVP court</span>
-        <span class="sa-scen-tab-d">3–6 sem.</span>
+        <span class="sa-scen-tab-d">Périmètre ciblé</span>
       </button>
       <button type="button" class="sa-scen-tab" data-scenario="scale" role="tab" aria-selected="false">
         <span class="sa-scen-tab-k">SCÉNARIO 02</span>
         <span class="sa-scen-tab-t">MVP + Scale</span>
-        <span class="sa-scen-tab-d">3 mois</span>
+        <span class="sa-scen-tab-d">Lots successifs</span>
       </button>
       <button type="button" class="sa-scen-tab" data-scenario="rebuild" role="tab" aria-selected="false">
         <span class="sa-scen-tab-k">SCÉNARIO 03</span>
@@ -38,10 +38,9 @@ export const scenariosHtml = `
           <div class="sa-scen-kind">POUR QUI</div>
           <h3>Founder early-stage qui doit<br>prouver la traction vite.</h3>
           <p>
-            Vous avez une idée validée (LOI, pré-inscriptions, waiting list), quelques
-            utilisateurs pilotes identifiés, et 15 à 60 k€ de budget. Le but : un SaaS
-            <b>solide, vendable, monétisable</b> en moins de 6 semaines — pas un
-            prototype jetable, pas un monstre de 20 features.
+            Vous avez une idée validée (entretiens, lettres d'intention, pré-inscriptions),
+            des utilisateurs pilotes identifiés et un budget cohérent avec le périmètre.
+            Le but : un SaaS <b>vendable et exploitable</b>, limité aux parcours qui prouvent l'usage.
           </p>
           <div class="sa-scen-deliv">
             <h4>Ce qu'on livre</h4>
@@ -49,7 +48,7 @@ export const scenariosHtml = `
               <li>5 à 15 écrans web + back-office admin</li>
               <li>Auth complète, Stripe billing, multi-tenant</li>
               <li>1 à 2 agents IA ciblés (extraction, RAG)</li>
-              <li>Conformité RGPD clé en main + hébergement FR</li>
+              <li>Mesures RGPD et hébergement documentés selon les données</li>
               <li>Handover filmé + repo Git chez vous</li>
             </ul>
           </div>
@@ -57,16 +56,16 @@ export const scenariosHtml = `
         <aside class="sa-scen-aside">
           <div class="sa-scen-meta">
             <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 1 dev senior + 1 designer</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">Rôles et disponibilité définis au devis</span></div>
             <div class="sa-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 2 semaines</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Démarrage</span><span class="v">Date confirmée après cadrage</span></div>
             <div class="sa-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Discovery Sprint 2j · 1 500 €</span></div>
           </div>
           <a href="#contact" class="btn btn-accent sa-scen-cta">
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="sa-scen-ref">Référence : LMNP.AI — MVP livré en 5 semaines, 6 000+ clients payants aujourd'hui.</div>
+          <div class="sa-scen-ref">Preuve vérifiable : <a href="https://lmnp.ai" target="_blank" rel="noopener">LMNP.AI</a>, produit du groupe conçu, développé et exploité par notre équipe.</div>
         </aside>
       </div>
     </div>
@@ -78,9 +77,9 @@ export const scenariosHtml = `
           <div class="sa-scen-kind">POUR QUI</div>
           <h3>SaaS qui décolle, besoin<br>d'un palier technique.</h3>
           <p>
-            Vous faites 5 à 50 k€ de MRR, la traction est là, mais l'architecture
-            commence à craquer : churn invisible, onboarding artisanal, dashboards
-            qui rament, mobile absent. Il faut <b>consolider + scaler</b> sans casser ce qui marche.
+            Le produit est utilisé, mais l'architecture ou les opérations deviennent un frein :
+            onboarding manuel, incidents, lenteurs, manque de mesure ou absence de parcours mobile.
+            Il faut <b>mesurer, consolider puis faire évoluer</b> sans casser ce qui fonctionne.
           </p>
           <div class="sa-scen-deliv">
             <h4>Ce qu'on livre</h4>
@@ -89,7 +88,7 @@ export const scenariosHtml = `
               <li>Self-serve complet (onboarding, billing, gestion équipe)</li>
               <li>App mobile iOS/Android React Native</li>
               <li>Analytics produit + feature flags + A/B testing</li>
-              <li>Agents IA autonomes 24/7 (support, enrichissement, relances)</li>
+              <li>Automatisations ou assistants IA avec règles de contrôle</li>
               <li>SSO enterprise + audit logs pour deals B2B</li>
             </ul>
           </div>
@@ -97,16 +96,16 @@ export const scenariosHtml = `
         <aside class="sa-scen-aside">
           <div class="sa-scen-meta">
             <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 2 devs + 1 designer + 1 IA</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">Équipe projet définie après audit</span></div>
             <div class="sa-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 3 à 4 semaines</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Démarrage</span><span class="v">Planifié après audit et priorisation</span></div>
             <div class="sa-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit technique 1 jour · 1 500 €</span></div>
           </div>
           <a href="#contact" class="btn btn-accent sa-scen-cta">
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="sa-scen-ref">Typique : SaaS B2B à 20 k€ MRR qui doit sortir son app mobile + passer à 10× users avec la même équipe.</div>
+          <div class="sa-scen-ref">Décision de départ : isoler les goulots mesurés avant d'ajouter une nouvelle architecture ou une application mobile.</div>
         </aside>
       </div>
     </div>
@@ -137,16 +136,16 @@ export const scenariosHtml = `
         <aside class="sa-scen-aside">
           <div class="sa-scen-meta">
             <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">2 à 4 seniors full-stack</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">Compétences dimensionnées après lecture du code</span></div>
             <div class="sa-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis après audit</span></div>
-            <div class="sa-scen-meta-row"><span class="k">Démarrage</span><span class="v">Audit en 2 semaines</span></div>
+            <div class="sa-scen-meta-row"><span class="k">Démarrage</span><span class="v">Créneau confirmé avant commande</span></div>
             <div class="sa-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit technique · 1 500 € (déductibles)</span></div>
           </div>
           <a href="#contact" class="btn btn-accent sa-scen-cta">
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="sa-scen-ref">70 % des audits débouchent sur une reprise — 30 % sur une réécriture ciblée quand le coût de reprise dépasse celui d'un nouveau build.</div>
+          <div class="sa-scen-ref">Le rapport compare trois options : stabilisation, reprise progressive et réécriture ciblée. La recommandation dépend des preuves trouvées dans le code et les données.</div>
         </aside>
       </div>
     </div>

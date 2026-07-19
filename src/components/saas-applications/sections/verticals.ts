@@ -8,7 +8,7 @@ export const verticalsHtml = `
         <h2>Des verticales où on<br>gagne des semaines de cadrage.</h2>
       </div>
       <div class="right">
-        On ne prétend pas tout savoir faire. Voici les secteurs où nous avons déjà livré
+        On ne prétend pas tout savoir faire. Voici les secteurs que nous savons analyser
         plusieurs SaaS en production — vous n'aurez pas à nous expliquer le métier.
       </div>
     </div>

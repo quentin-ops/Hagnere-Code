@@ -578,7 +578,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                     <path d="M8 9h6M8 13h4" />
                   </svg>
                 </span>
-                <span className="sf-tile-label">SaaS &amp; apps métier</span>
+                <span className="sf-tile-label">Développement SaaS sur mesure</span>
               </Link>
               <Link
                 className="sf-tile"

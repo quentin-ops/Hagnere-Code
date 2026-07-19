@@ -102,6 +102,14 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // La page service existante cible déjà cette intention commerciale.
+        // L'alias évite une seconde page concurrente et concentre les signaux
+        // sur l'URL canonique historique.
+        source: "/agence-developpement-saas-sur-mesure",
+        destination: "/services/saas-applications-metier",
+        permanent: true,
+      },
+      {
         // Anciens permaliens de résultat d'estimation envoyés par email
         // avant la suppression du chiffrage IA — on renvoie vers le funnel
         // plutôt qu'un 404.

@@ -5,12 +5,11 @@ export const integrationsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Intégrations SaaS standards</div>
-        <h2>Tous les outils qu'on branche<br>avant même de les demander.</h2>
+        <h2>Les familles d'outils<br>que nous savons intégrer.</h2>
       </div>
       <div class="right">
-        Un SaaS qui compte se branche à 15 à 30 services tiers. Voici ce qu'on sait
-        intégrer <b>proprement et vite</b>, segmenté par usage — le reste, on l'apprend
-        en un sprint si l'API est standard.
+        Une intégration ne se résume pas à afficher un logo. On vérifie l'authentification,
+        les quotas, les webhooks, les erreurs, la réversibilité et le coût avant de l'inscrire au périmètre.
       </div>
     </div>
 
@@ -64,9 +63,9 @@ export const integrationsHtml = `
           </div>
         </div>
         <div class="sa-integ-chips">
-          <span>Claude Opus 4.7</span>
-          <span>Claude Agents + MCP</span>
-          <span>GPT-4o</span>
+          <span>API Anthropic</span>
+          <span>Agents + MCP</span>
+          <span>API OpenAI</span>
           <span>Prism</span>
           <span>Mistral</span>
           <span>OpenAI Embeddings</span>
@@ -143,7 +142,8 @@ export const integrationsHtml = `
 
     <div class="sa-integ-foot reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M12 8V4M4 12h6M14 12h6"/></svg>
-      Votre outil n'est pas listé ? S'il a une API REST ou GraphQL documentée, on le branche en 1 à 3 jours.
+      Votre outil n'est pas listé ? Nous validons d'abord sa documentation API, son mode d'authentification,
+      ses quotas et ses webhooks, puis nous chiffrons l'intégration et sa stratégie de reprise sur erreur.
     </div>
   </div>
 </section>

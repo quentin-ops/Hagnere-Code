@@ -34,7 +34,7 @@ export const architectureHtml = `
         <g transform="translate(60 80)">
           <rect width="260" height="88" rx="10" fill="#171717" stroke="rgba(255,255,255,0.12)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">WEB CLIENT</text>
-          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Next.js 15 + React 19</text>
+          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Next.js 16 + React 19</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Dashboard, marketing, onboarding</text>
         </g>
         <!-- Mobile client -->
@@ -80,7 +80,7 @@ export const architectureHtml = `
         <g transform="translate(60 240)">
           <rect width="240" height="96" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">AGENTS IA</text>
-          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Claude · GPT-4o</text>
+          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Modèle IA choisi au cadrage</text>
           <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">Extraction, RAG, tool-calling</text>
         </g>
         <g transform="translate(900 240)">
