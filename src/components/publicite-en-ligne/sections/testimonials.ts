@@ -1,95 +1,88 @@
-// Témoignages anonymisés sous NDA — références vérifiables sur signature.
-
-//       Les 3 quotes sont axées Ads : tracking récupéré · CAC divisé · sortie d'agence au %.
+// Section PREUVES — remplace les anciens témoignages fabriqués.
+// Hagnéré Code n'a aucun client externe : aucune citation, aucune note, aucun
+// avatar, aucune promesse de mise en relation. La preuve est publique : les
+// quatre produits du groupe sont en ligne et c'est nous qui achetons leur trafic.
+// Classes réutilisées telles quelles depuis sections.css (aucune classe inventée).
 
 export const testimonialsHtml = `
-<!-- TESTIMONIALS ADS -->
+<!-- PREUVES ADS -->
 <section class="ads-testi">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Trois dirigeants · trois comptes Ads repris</div>
-        <h2>Ce qu'ils retiennent,<br>plusieurs mois après.</h2>
+        <div class="eyebrow">— Aucun témoignage · quatre produits en ligne</div>
+        <h2>Pas de client à citer.<br>Des campagnes que nous payons.</h2>
       </div>
       <div class="right">
-        Trois retours à froid sur ce qui change vraiment quand on reprend un compte Ads chez nous&nbsp;:
-        <b>le tracking enfin propre</b>, <b>le CAC qui baisse réellement</b>, et <b>la facture claire sans % du media</b>.
+        Nous n'avons pas encore de client externe, donc aucun témoignage à afficher.
+        En revanche, les quatre produits ci-dessous sont les nôtres&nbsp;:
+        <b>nous les avons construits et c'est nous qui achetons le trafic qui les alimente</b>.
+        Le budget média part de notre trésorerie, pas de celle d'un annonceur.
       </div>
     </div>
 
     <div class="ads-testi-grid">
       <article class="ads-testi-card reveal">
-        <div class="ads-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          TRACKING RÉCUPÉRÉ
-        </div>
-        <div class="ads-testi-stars">★★★★★</div>
-        <blockquote class="ads-testi-quote">
-          « Depuis iOS 14, Meta nous remontait 2 fois plus de conversions que ce qu'on voyait
-          dans HubSpot. Leur GTM Server branché, les doublons ont sauté, les campagnes se sont
-          auto-calibrées en 3 semaines. <b>On a enfin piloté sur des chiffres qui collent</b>
-          au rapport commercial hebdo. »
-        </blockquote>
+        <h3>Nous payons nos propres campagnes</h3>
+        <p class="ads-testi-quote">
+          LMNP.AI est en production et ouvert à tous. Le suivi des conversions, c'est nous
+          qui l'avons posé&nbsp;; la facture média de fin de mois, c'est nous qui la réglons.
+          Quand une campagne dépense sans rien rapporter, <b>aucun intermédiaire ne vient
+          nous l'expliquer</b>&nbsp;: nous le voyons le jour même, et c'est notre argent.
+        </p>
         <div class="ads-testi-meta">
-          <div class="ads-testi-av" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
-          </div>
-          <div class="ads-testi-who">
-            <div class="ads-testi-name">Référence anonymisée</div>
-            <div class="ads-testi-role">Head of Marketing · SaaS B2B 50 salariés · <b>Signaux +38&nbsp;%</b></div>
+          <a class="ads-testi-name" href="https://lmnp.ai" target="_blank" rel="noopener">lmnp.ai</a>
+          <div class="ads-testi-role">
+            Comptabilité fiscale LMNP et LMP · <b>conçu, développé et exploité par nous</b>
           </div>
         </div>
       </article>
 
       <article class="ads-testi-card reveal reveal-d-1">
-        <div class="ads-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg>
-          CAC DIVISÉ
-        </div>
-        <div class="ads-testi-stars">★★★★★</div>
-        <blockquote class="ads-testi-quote">
-          « Notre CAC avait doublé en 18 mois, on ne savait plus si c'était PMax, iOS 14 ou la concurrence.
-          Ils ont fait le diagnostic en 10 jours&nbsp;: les trois combinés. Tracking réparé, PMax restructuré
-          avec signaux d'audience propres, exclusions brand appliquées. <b>CAC divisé par 2,1 en 4 mois</b>,
-          sans avoir touché au budget media. »
-        </blockquote>
+        <h3>Un lancement parti de zéro</h3>
+        <p class="ads-testi-quote">
+          SCI-AI.app a démarré sans audience et sans historique de conversions à donner
+          aux algorithmes. Nous avons donc vécu la phase que redoutent les annonceurs,
+          celle où les plateformes n'ont encore rien à optimiser. <b>Les arbitrages que
+          nous vous proposerons dans ce cas, nous les avons d'abord pris pour nous.</b>
+        </p>
         <div class="ads-testi-meta">
-          <div class="ads-testi-av" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
-          </div>
-          <div class="ads-testi-who">
-            <div class="ads-testi-name">Référence anonymisée</div>
-            <div class="ads-testi-role">CEO · E-commerce DTC · <b>CAC ÷ 2,1 en 4 mois</b></div>
+          <a class="ads-testi-name" href="https://sci-ai.app" target="_blank" rel="noopener">sci-ai.app</a>
+          <div class="ads-testi-role">
+            Comptabilité des SCI à l'IR et à l'IS · <b>mis en ligne et opéré par nous</b>
           </div>
         </div>
       </article>
 
       <article class="ads-testi-card reveal reveal-d-2">
-        <div class="ads-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 14h4"/></svg>
-          SORTIE D'AGENCE AU %
-        </div>
-        <div class="ads-testi-stars">★★★★★</div>
-        <blockquote class="ads-testi-quote">
-          « On payait 12 % de 55 k€/mois, soit 6 600 €/mois à notre agence précédente, qui
-          nous poussait toujours à dépenser plus. Transition en 2 semaines, forfait fixe à
-          4 500 €/mois, comptes récupérés et même des creatives qu'on n'avait jamais vues.
-          <b>Économie immédiate, CAC qui baisse en prime.</b> »
-        </blockquote>
+        <h3>Du clic jusqu'au CRM</h3>
+        <p class="ads-testi-quote">
+          Hagnéré Patrimoine et Hagnéré Investissement transforment des visiteurs en
+          demandes de rendez-vous, traitées dans un CRM que nous avons développé et que
+          nous administrons. Nous ne nous arrêtons donc pas au formulaire envoyé&nbsp;:
+          <b>nous voyons ce qu'une source publicitaire donne une fois les demandes
+          qualifiées par un humain</b>, et pas seulement ce qu'en dit la régie.
+        </p>
         <div class="ads-testi-meta">
-          <div class="ads-testi-av" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
-          </div>
-          <div class="ads-testi-who">
-            <div class="ads-testi-name">Référence anonymisée</div>
-            <div class="ads-testi-role">CMO · ETI services · <b>–2 100 €/mois vs. % agence</b></div>
+          <a class="ads-testi-name" href="https://hagnere-patrimoine.fr" target="_blank" rel="noopener">hagnere-patrimoine.fr</a>
+          <div class="ads-testi-role">
+            Cabinet CIF et plateforme d'investissement immobilier ·
+            <b>site éditorial, formulaires et CRM maison</b>
           </div>
         </div>
       </article>
     </div>
 
     <p class="ads-testi-foot reveal">
-      Références détaillées sur demande — on met en relation directe avec d'anciens clients avant signature.
+      Tout est public&nbsp;: <a href="https://lmnp.ai" target="_blank" rel="noopener">lmnp.ai</a>,
+      <a href="https://sci-ai.app" target="_blank" rel="noopener">sci-ai.app</a>,
+      <a href="https://hagnere-patrimoine.fr" target="_blank" rel="noopener">hagnere-patrimoine.fr</a>,
+      <a href="https://hagnere-investissement.fr" target="_blank" rel="noopener">hagnere-investissement.fr</a>.
+      Rien à demander, rien à signer pour aller les regarder.
+      Une agence livre puis s'en va&nbsp;; nous, nous restons sur nos produits, avec l'astreinte,
+      les factures d'infrastructure et les utilisateurs qui écrivent quand ça casse.
+      Le jour où un client acceptera d'être cité, il le sera nommément — d'ici là, cette section
+      restera vide de témoignages.
     </p>
   </div>
 </section>

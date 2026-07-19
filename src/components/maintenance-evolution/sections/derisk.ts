@@ -8,7 +8,7 @@ export const deriskHtml = `
         <h2>Ce qui vous empêche de signer<br>un contrat TMA — et ce<br>qu'on fait pour.</h2>
       </div>
       <div class="right">
-        Sept peurs reviennent dans 9 calls sur 10 sur un engagement TMA. Voici comment on les neutralise
+        Sept peurs reviennent systématiquement dès qu'on parle d'un engagement TMA. Voici comment on les neutralise
         <b>contractuellement</b>, pas en paroles rassurantes.
       </div>
     </div>
@@ -88,11 +88,11 @@ export const deriskHtml = `
           « On a déjà un <b>CTO / lead dev</b> en interne — à quoi bon vous ? »
         </div>
         <h4>On est votre multiplicateur, pas votre remplaçant</h4>
-        <p>Votre CTO bosse sur le <b>core product</b>. Nous, on prend tout ce qui l'empêche de dormir mais ne scale pas son impact&nbsp;: <b>astreinte 7j/7, monitoring, patches sécurité, dépendances, incidents, reporting board</b>. 90 % de nos clients Scale ont un CTO interne — on sync avec lui en revue hebdo. <b>Il garde le cerveau produit. On prend le cerveau run.</b></p>
+        <p>Votre CTO bosse sur le <b>core product</b>. Nous, on prend tout ce qui l'empêche de dormir mais ne scale pas son impact&nbsp;: <b>astreinte 7j/7, monitoring, patches sécurité, dépendances, incidents, reporting board</b>. Le dispositif est conçu pour cohabiter avec une équipe interne&nbsp;: revue hebdo partagée, mêmes outils, décisions d'architecture co-signées. <b>Il garde le cerveau produit. On prend le cerveau run.</b></p>
         <div class="me-derisk-proof">
           <span>✓ Binôme CTO interne</span>
           <span>✓ Revue hebdo partagée</span>
-          <span>✓ 90 % de nos clients Scale</span>
+          <span>✓ Archi co-signée</span>
         </div>
       </div>
 

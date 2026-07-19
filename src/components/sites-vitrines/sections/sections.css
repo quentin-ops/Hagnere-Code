@@ -530,11 +530,6 @@
   gap: 16px;
   position: relative;
 }
-.sv-testi-stars {
-  color: var(--accent);
-  letter-spacing: 2px;
-  font-size: 14px;
-}
 .sv-testi-quote {
   margin: 0;
   font-size: 16px;
@@ -549,15 +544,6 @@
   align-items: center;
   gap: 12px;
 }
-.sv-testi-av {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: var(--ink);
-  flex-shrink: 0;
-}
-.sv-testi-av svg { display: block; width: 100%; height: 100%; }
 .sv-testi-name {
   font-weight: 600;
   font-size: 14px;

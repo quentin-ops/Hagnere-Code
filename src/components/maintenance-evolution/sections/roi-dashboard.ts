@@ -5,13 +5,13 @@ export const roiDashboardHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ce qu'on signe, mesuré</div>
-        <h2>SLA 99,95 % contractuel.<br>Les 4 métriques DORA qu'on<br>publie chaque trimestre.</h2>
+        <div class="eyebrow">— Ce qu'on signe, noir sur blanc</div>
+        <h2>SLA 99,95 % contractuel.<br>Les 4 métriques DORA qu'on<br>s'engage à publier.</h2>
       </div>
       <div class="right">
-        Pas des engagements marketing vagues. Les chiffres mesurés sur nos 9 plus gros contrats
-        TMA sur les 12 derniers mois, <b>auto-calculés via Better Stack + GitHub Actions</b>.
-        Rapport trimestriel public sur votre Statuspage.
+        Pas des engagements marketing vagues&nbsp;: des seuils écrits dans le contrat, calibrés sur le
+        référentiel DORA et sur ce qu'on applique déjà à nos quatre produits maison.
+        <b>Auto-calculés via Better Stack + GitHub Actions</b>, publiés chaque trimestre sur votre Statuspage.
       </div>
     </div>
 
@@ -22,7 +22,7 @@ export const roiDashboardHtml = `
       <div class="me-roi-dial-card">
         <div class="me-roi-dial-head">
           <span class="me-roi-dial-k">UPTIME SLA</span>
-          <span class="me-roi-dial-meta">Médiane 9 contrats</span>
+          <span class="me-roi-dial-meta">Plancher contractuel</span>
         </div>
 
         <!-- SVG arc gauge -->
@@ -54,13 +54,13 @@ export const roiDashboardHtml = `
 
           <div class="me-roi-dial-value">
             <span class="v">99,95<span style="font-size:0.5em;color:#6EE7B7;margin-left:2px">%</span></span>
-            <span class="k">Uptime 12 mois</span>
+            <span class="k">Uptime mensuel engagé</span>
           </div>
         </div>
 
         <div class="me-roi-dial-foot">
           <span class="me-roi-dial-chip">Better Stack</span>
-          <span class="me-roi-dial-chip">Mesuré</span>
+          <span class="me-roi-dial-chip">Contractuel</span>
           <span class="me-roi-dial-chip">Public</span>
         </div>
       </div>
@@ -68,14 +68,14 @@ export const roiDashboardHtml = `
       <!-- 4 KPIs DORA (droite) -->
       <div class="me-roi-kpis">
         <div class="me-roi-kpi">
-          <div class="me-roi-kpi-delta">23<span>min</span></div>
+          <div class="me-roi-kpi-delta">&lt; 30<span>min</span></div>
           <div class="me-roi-kpi-k">MTTR incidents P1</div>
-          <div class="me-roi-kpi-n">cible &lt; 30 min · norme DORA elite</div>
+          <div class="me-roi-kpi-n">seuil contractuel · norme DORA elite</div>
         </div>
         <div class="me-roi-kpi me-roi-kpi-hot">
-          <div class="me-roi-kpi-delta">14<span>/trim</span></div>
-          <div class="me-roi-kpi-k">Fréquence de déploiement</div>
-          <div class="me-roi-kpi-n">vs. 2-3 en TMA classique · DORA elite</div>
+          <div class="me-roi-kpi-delta">0<span>fenêtre</span></div>
+          <div class="me-roi-kpi-k">Maintenance visible en production</div>
+          <div class="me-roi-kpi-n">deploys blue-green · rollback 1-clic</div>
         </div>
         <div class="me-roi-kpi">
           <div class="me-roi-kpi-delta">&lt; 48h</div>
@@ -83,9 +83,9 @@ export const roiDashboardHtml = `
           <div class="me-roi-kpi-n">CVSS ≥ 7 · hotfix + déploiement ferme</div>
         </div>
         <div class="me-roi-kpi">
-          <div class="me-roi-kpi-delta">8<span>%</span></div>
+          <div class="me-roi-kpi-delta">&lt; 15<span>%</span></div>
           <div class="me-roi-kpi-k">Change failure rate</div>
-          <div class="me-roi-kpi-n">vs. norme DORA elite &lt; 15 %</div>
+          <div class="me-roi-kpi-n">cible contractuelle · norme DORA elite</div>
         </div>
       </div>
 
@@ -94,7 +94,7 @@ export const roiDashboardHtml = `
     <!-- Comment on y arrive : 4 leviers -->
     <div class="me-roi-how reveal reveal-d-2">
       <div class="me-roi-how-head">
-        <span class="me-roi-how-n">/ comment on tient ces chiffres</span>
+        <span class="me-roi-how-n">/ comment on tient ces engagements</span>
         <h3>Pas de magie. 4 pratiques qu'on<br>applique sur <b>chaque</b> contrat.</h3>
       </div>
 
@@ -108,7 +108,7 @@ export const roiDashboardHtml = `
           </div>
           <h4>Monitoring proactif &lt; 5 min</h4>
           <p>Sentry + Better Stack + Grafana branchés dès J+1. <b>On détecte l'incident avant vos clients</b>. Alertes Slack contextualisées, pas du bruit.</p>
-          <div class="me-roi-step-foot">→ MTTD médian&nbsp;: 2-4 min</div>
+          <div class="me-roi-step-foot">→ détection automatique, jamais sur signalement</div>
         </div>
 
         <div class="me-roi-step">
@@ -120,7 +120,7 @@ export const roiDashboardHtml = `
           </div>
           <h4>Patches sécurité automatisés</h4>
           <p>Dependabot + Snyk + GitGuardian en CI. Les mises à jour mineures sont <b>auto-merged</b> sous tests verts. Les majors passent en revue humaine avec tests.</p>
-          <div class="me-roi-step-foot">→ 7 CVE patchés / mois en moyenne</div>
+          <div class="me-roi-step-foot">→ CVSS ≥ 7 patché sous 48 h, sans surcoût</div>
         </div>
 
         <div class="me-roi-step">
@@ -132,7 +132,7 @@ export const roiDashboardHtml = `
           </div>
           <h4>Deploys zero-downtime</h4>
           <p>Blue-green via Forge / Vercel, migrations Laravel en expand/migrate/contract, feature flags, rollback 1-clic. <b>Jamais de fenêtre de maintenance visible</b>.</p>
-          <div class="me-roi-step-foot">→ 14 deploys/trim · 0 rollback en moyenne</div>
+          <div class="me-roi-step-foot">→ aucune fenêtre de maintenance annoncée</div>
         </div>
 
         <div class="me-roi-step">
@@ -144,13 +144,13 @@ export const roiDashboardHtml = `
           </div>
           <h4>Équipe nommée · pas de pool tournant</h4>
           <p>2 à 4 personnes nommément identifiées dans votre contrat. <b>Binôme obligatoire</b> sur chaque projet (pas de bus factor = 1). Overlap 2 semaines si rotation.</p>
-          <div class="me-roi-step-foot">→ équipe stable depuis le lancement</div>
+          <div class="me-roi-step-foot">→ 1 remplacement maximum sur 12 mois</div>
         </div>
       </div>
 
       <div class="me-roi-how-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        Chiffres mesurés sur nos 9 plus gros contrats TMA (Scale &amp; Premium) sur 12 mois glissants. Secteurs&nbsp;: SaaS B2B, e-commerce DTC, cabinets conseil, éditeurs. Apps de 10k à 200k MAU. <b>Méthodologie et accès aux dashboards en call sur demande</b>.
+        Ces valeurs sont des <b>seuils contractuels, pas des moyennes constatées chez des clients</b>&nbsp;: Hagnéré Code n'a pas encore de client externe en TMA. Elles reprennent le référentiel DORA et le dispositif qu'on applique déjà à nos quatre produits maison (LMNP.AI, SCI-AI.app, Hagnéré Patrimoine, Hagnéré Investissement). Le calcul est automatisé dès J+1 et publié sur votre Statuspage. <b>Méthodologie détaillée en call sur demande</b>.
       </div>
     </div>
   </div>

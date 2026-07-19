@@ -1,92 +1,76 @@
-// Témoignages anonymisés sous NDA — références vérifiables sur signature.
-
-
+// Aucun témoignage client : Hagnéré Code n'a pas de client externe à ce jour.
+// À la place, la preuve publique — les produits du groupe Hagnéré que nous avons
+// conçus, développés et que nous exploitons nous-mêmes, en ligne et vérifiables.
 
 export const testimonialsHtml = `
-<!-- TESTIMONIALS -->
+<!-- PREUVES PUBLIQUES -->
 <section class="sv-testi">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Trois clients, trois sites en prod</div>
-        <h2>Ce qu'ils retiennent,<br>plusieurs mois après.</h2>
+        <div class="eyebrow">— Nos preuves sont publiques</div>
+        <h2>Pas de témoignages.<br>Des produits en production.</h2>
       </div>
       <div class="right">
-        Trois retours à froid sur ce qui change vraiment quand on fait construire son site chez nous :
-        <b>la mise en ligne rapide</b>, <b>le forfait fixe tenu</b>, et <b>la performance mesurable</b>.
+        Nous n'affichons aucun témoignage client, pour une raison simple : nous n'avons pas encore
+        de client externe. Ce que nous montrons à la place est vérifiable en un clic —
+        <b>les produits du groupe Hagnéré que nous avons conçus, développés, et que nous exploitons
+        nous-mêmes tous les jours</b>.
       </div>
     </div>
 
     <div class="sv-testi-grid">
       <article class="sv-testi-card reveal">
-        <div class="sv-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          MISE EN LIGNE RAPIDE
-        </div>
-        <div class="sv-testi-stars">★★★★★</div>
-        <blockquote class="sv-testi-quote">
-          « Brief le lundi, première démo le vendredi. Site en ligne à J+35 avec design sur mesure,
-          blog, formulaires branchés au CRM — exactement ce qu'on avait dessiné. Les premiers
-          leads sont arrivés la semaine de la mise en ligne. »
-        </blockquote>
+        <div class="sv-testi-tag">EN LIGNE</div>
+        <h3>Hagnéré Patrimoine</h3>
+        <p class="sv-testi-quote">
+          Le cas le plus proche d'un site vitrine : pages de présentation, blog alimenté chaque
+          semaine, formulaires branchés au CRM du cabinet. Nous écrivons le code, et nous recevons
+          aussi les demandes qui en sortent. Quand une page se charge mal, c'est notre téléphone
+          qui sonne.
+        </p>
         <div class="sv-testi-meta">
-          <div class="sv-testi-av" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
-          </div>
-          <div class="sv-testi-who">
-            <div class="sv-testi-name">Référence anonymisée</div>
-            <div class="sv-testi-role">Dirigeant · site corporate B2B · <b>Site livré en 5 semaines</b></div>
-          </div>
+          <a class="sv-testi-name" href="https://hagnere-patrimoine.fr" target="_blank" rel="noopener">hagnere-patrimoine.fr</a>
+          <span class="sv-testi-role">Site éditorial + CRM</span>
         </div>
       </article>
 
       <article class="sv-testi-card reveal reveal-d-1">
-        <div class="sv-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>
-          FORFAIT FIXE TENU
-        </div>
-        <div class="sv-testi-stars">★★★★★</div>
-        <blockquote class="sv-testi-quote">
-          « J'avais cramé 40 k€ chez une autre agence avant, avec trois avenants. Ici,
-          prix connu, délai connu, périmètre gravé. Zéro avenant. Je sais ce que je peux
-          annoncer à mon board sans mentir. Plus jamais autrement. »
-        </blockquote>
+        <div class="sv-testi-tag">EN LIGNE</div>
+        <h3>Hagnéré Investissement</h3>
+        <p class="sv-testi-quote">
+          Sa partie publique fait exactement le travail d'un site vitrine : présenter des biens,
+          expliquer une méthode, transformer un visiteur en prise de contact. Le référencement, le
+          poids des images et les temps de chargement sont notre problème — pas celui du prestataire
+          suivant.
+        </p>
         <div class="sv-testi-meta">
-          <div class="sv-testi-av" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
-          </div>
-          <div class="sv-testi-who">
-            <div class="sv-testi-name">Référence anonymisée</div>
-            <div class="sv-testi-role">CEO · refonte corporate · <b>Refonte multilingue au forfait</b></div>
-          </div>
+          <a class="sv-testi-name" href="https://hagnere-investissement.fr" target="_blank" rel="noopener">hagnere-investissement.fr</a>
+          <span class="sv-testi-role">Front public</span>
         </div>
       </article>
 
       <article class="sv-testi-card reveal reveal-d-2">
-        <div class="sv-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg>
-          PERFORMANCE &amp; SEO
-        </div>
-        <div class="sv-testi-stars">★★★★★</div>
-        <blockquote class="sv-testi-quote">
-          « On est passés d'un WordPress qui chargeait en 6 secondes à un site statique
-          sous la seconde. 98 % de nos positions Google conservées après la migration,
-          et chaque formulaire remplit enfin le CRM tout seul. Le taux de conversion a suivi. »
-        </blockquote>
+        <div class="sv-testi-tag">EN LIGNE</div>
+        <h3>LMNP.AI et SCI-AI.app</h3>
+        <p class="sv-testi-quote">
+          Deux logiciels de comptabilité en production, chacun avec son site public : pages produit,
+          pages d'aide, inscription. Nous tenons les astreintes, payons les factures d'infrastructure
+          et vivons avec la dette technique que nous créons. Presque aucune agence ne peut en dire
+          autant.
+        </p>
         <div class="sv-testi-meta">
-          <div class="sv-testi-av" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#171717"/><circle cx="24" cy="20" r="7" fill="#404040"/><rect x="14" y="29" width="20" height="18" fill="#404040" rx="10"/></svg>
-          </div>
-          <div class="sv-testi-who">
-            <div class="sv-testi-name">Référence anonymisée</div>
-            <div class="sv-testi-role">Dir. marketing · migration WordPress → Next.js · <b>LCP &lt; 1 s</b></div>
-          </div>
+          <a class="sv-testi-name" href="https://lmnp.ai" target="_blank" rel="noopener">lmnp.ai</a>
+          <a class="sv-testi-name" href="https://sci-ai.app" target="_blank" rel="noopener">sci-ai.app</a>
+          <span class="sv-testi-role">Deux SaaS en production</span>
         </div>
       </article>
     </div>
 
     <p class="sv-testi-foot reveal">
-      Références détaillées sur demande — on met en relation directe avec d'anciens clients avant signature.
+      Ces adresses sont publiques : ouvrez-les, mesurez leur vitesse, inspectez leur code source.
+      Nous n'inventons pas de références et nous ne mettons personne en relation — la seule preuve
+      que nous revendiquons est celle que vous pouvez vérifier vous-même, maintenant.
     </p>
   </div>
 </section>

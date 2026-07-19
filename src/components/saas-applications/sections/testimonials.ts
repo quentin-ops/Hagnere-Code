@@ -1,96 +1,102 @@
-// Trois retours produits internes (LMNP.AI, SCI-AI, Hagnéré Patrimoine) — clients
-// dont les logos figurent déjà dans la logo wall. Quotes signées en interne par les
-// dirigeants des marques sœurs ; toute future intégration cliente externe pourra
-// remplacer ces blocs un à un sans toucher au layout.
+// Section de preuves produits — remplace l'ancien bloc de témoignages.
+// Hagnéré Code n'a aucun client externe à ce jour : pas de citation, pas de note,
+// pas de nom de tiers, pas de mise en relation promise. La seule preuve revendiquée
+// est publique et vérifiable : les produits sont en ligne, à ces adresses.
+// Classes réutilisées telles quelles depuis sections.css — aucune classe inventée.
 
 export const testimonialsHtml = `
-<!-- TESTIMONIALS -->
+<!-- PREUVES PRODUITS -->
 <section class="sa-testi">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Trois SaaS construits, trois retours à froid</div>
-        <h2>Ce qu'ils en retiennent,<br>plusieurs mois après la livraison.</h2>
+        <div class="eyebrow">— La preuve, ce sont les produits, pas les citations</div>
+        <h2>Aucun témoignage à afficher.<br>Des SaaS que nous exploitons nous-mêmes.</h2>
       </div>
       <div class="right">
-        Trois retours sur ce qui change vraiment quand on fait construire son SaaS chez nous :
-        <b>la vitesse du MVP</b>, <b>le forfait fixe tenu</b>, et <b>l'IA vraiment dans le produit</b>.
+        Nous n'avons pas encore de client externe, et nous préférons l'écrire plutôt que
+        de fabriquer des citations invérifiables. En revanche, les produits ci-dessous, nous
+        ne les avons pas seulement livrés : <b>nous les faisons tourner tous les jours</b>.
+        Ils sont en ligne, à ces adresses — ouvrez-les et jugez sur pièce.
       </div>
     </div>
 
     <div class="sa-testi-grid">
       <article class="sa-testi-card reveal">
-        <div class="sa-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          VITESSE DE MVP
+        <div class="sa-vt-head">
+          <span class="sa-integ-kind">Comptabilité LMNP / LMP</span>
+          <span class="sa-vt-tag sa-vt-tag-live">En ligne</span>
         </div>
-        <div class="sa-testi-stars">★★★★★</div>
-        <blockquote class="sa-testi-quote">
-          « Brief le lundi, première démo le vendredi. MVP live à J+35 avec Stripe, Auth, multi-tenant
-          et back-office — exactement ce qu'on avait dessiné. Les premiers clients payants ont signé
-          avant même qu'on ait fini le site marketing. Aujourd'hui on est à plus de 6 000 utilisateurs,
-          100 % en growth organique. »
-        </blockquote>
+        <p class="sa-testi-quote">
+          Un SaaS de comptabilité fiscale complet : saisie des opérations, amortissements par
+          composants, production de la liasse. Nous l'avons cadré, développé et mis en production
+          — et c'est encore nous qui sommes joignables quand la période déclarative met le service
+          sous tension. Chaque raccourci d'architecture que nous nous autorisons, nous le payons
+          nous-mêmes quelques mois plus tard.
+        </p>
         <div class="sa-testi-meta">
           <div class="sa-testi-av" aria-hidden="true">
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#0A0A0A"/><text x="24" y="30" text-anchor="middle" font-family="Geist" font-weight="700" font-size="14" fill="#fff">L<tspan fill="#6D28D9">A</tspan></text></svg>
           </div>
-          <div class="sa-testi-who">
-            <div class="sa-testi-name">Quentin Hagnéré</div>
-            <div class="sa-testi-role">Co-founder · LMNP.AI · <b>MVP livré en 5 semaines</b></div>
+          <div>
+            <div class="sa-testi-name"><a href="https://lmnp.ai" target="_blank" rel="noopener">lmnp.ai</a></div>
+            <div class="sa-testi-role">Produit du groupe Hagnéré · <b>conçu, développé et exploité par nos soins</b></div>
           </div>
         </div>
       </article>
 
       <article class="sa-testi-card reveal reveal-d-1">
-        <div class="sa-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>
-          FORFAIT FIXE TENU
+        <div class="sa-vt-head">
+          <span class="sa-integ-kind">Comptabilité SCI à l'IR et à l'IS</span>
+          <span class="sa-vt-tag sa-vt-tag-live">En ligne</span>
         </div>
-        <div class="sa-testi-stars">★★★★★</div>
-        <blockquote class="sa-testi-quote">
-          « On avait déjà brûlé un budget conséquent chez une autre agence, avec trois avenants
-          successifs. Ici : prix connu, délai connu, périmètre gravé au cadrage. Zéro avenant
-          surprise. On a pu présenter un planning crédible au comité d'investisseurs sans avoir
-          à re-vendre une rallonge tous les mois. »
-        </blockquote>
+        <p class="sa-testi-quote">
+          Deux régimes fiscaux, deux moteurs de calcul, un seul produit à maintenir : exactement
+          le type de complexité métier qu'on ne peut pas simuler dans une démonstration
+          commerciale. Les migrations de base de données, les factures d'hébergement et les
+          demandes d'évolution des utilisateurs nous reviennent directement. C'est la meilleure
+          discipline de conception que nous connaissions.
+        </p>
         <div class="sa-testi-meta">
           <div class="sa-testi-av" aria-hidden="true">
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#0A0A0A"/><text x="24" y="30" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13" fill="#fff">SCI</text></svg>
           </div>
-          <div class="sa-testi-who">
-            <div class="sa-testi-name">Quentin Hagnéré</div>
-            <div class="sa-testi-role">Co-founder · SCI-AI · <b>Forfait fixe tenu sur 4 mois</b></div>
+          <div>
+            <div class="sa-testi-name"><a href="https://sci-ai.app" target="_blank" rel="noopener">sci-ai.app</a></div>
+            <div class="sa-testi-role">Produit du groupe Hagnéré · <b>en production, maintenu par la même équipe</b></div>
           </div>
         </div>
       </article>
 
       <article class="sa-testi-card reveal reveal-d-2">
-        <div class="sa-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg>
-          IA VRAIMENT DANS LE PRODUIT
+        <div class="sa-vt-head">
+          <span class="sa-integ-kind">Application métier et CRM</span>
+          <span class="sa-vt-tag sa-vt-tag-live">En ligne</span>
         </div>
-        <div class="sa-testi-stars">★★★★★</div>
-        <blockquote class="sa-testi-quote">
-          « L'IA est dans le produit, pas sur la landing. Les agents Claude classent les leads la nuit,
-          extraient les pièces fiscales des dossiers clients et préparent les rendez-vous patrimoniaux.
-          Le temps gagné par conseiller équivaut à un temps-plein. Retour sur investissement en
-          quelques mois — et la qualité du conseil a augmenté, pas l'inverse. »
-        </blockquote>
+        <p class="sa-testi-quote">
+          Le site éditorial et l'outil interne d'un cabinet de conseil en investissements
+          financiers : suivi des dossiers, pièces réglementaires, traitement des demandes
+          entrantes. Des personnes travaillent dedans toute la journée et c'est nous qu'elles
+          appellent quand quelque chose coince. Une application métier ne se juge pas le jour de
+          la livraison, mais six mois après.
+        </p>
         <div class="sa-testi-meta">
           <div class="sa-testi-av" aria-hidden="true">
             <svg viewBox="0 0 48 48"><rect width="48" height="48" fill="#0A0A0A"/><text x="24" y="30" text-anchor="middle" font-family="Geist" font-weight="700" font-size="14" fill="#fff">HP</text></svg>
           </div>
-          <div class="sa-testi-who">
-            <div class="sa-testi-name">Quentin Hagnéré</div>
-            <div class="sa-testi-role">Dirigeant · Hagnéré Patrimoine · <b>Agents IA en production</b></div>
+          <div>
+            <div class="sa-testi-name"><a href="https://hagnere-patrimoine.fr" target="_blank" rel="noopener">hagnere-patrimoine.fr</a></div>
+            <div class="sa-testi-role">Produit du groupe Hagnéré · <b>utilisé en interne tous les jours</b></div>
           </div>
         </div>
       </article>
     </div>
 
     <p class="sa-testi-foot reveal">
-      Références détaillées et mise en relation avec d'autres clients sur demande — on les contacte avant signature pour qu'ils vous parlent franchement de l'expérience.
+      Une quatrième plateforme, <a href="https://hagnere-investissement.fr" target="_blank" rel="noopener">hagnere-investissement.fr</a>,
+      fonctionne sur le même principe. Ni logo emprunté, ni référence anonyme, ni note complaisante :
+      construire un SaaS est une chose, l'exploiter en est une autre — nous faisons les deux, et c'est
+      vérifiable en un clic.
     </p>
   </div>
 </section>

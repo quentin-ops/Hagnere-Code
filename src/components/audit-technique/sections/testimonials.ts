@@ -1,99 +1,102 @@
-// Références anonymisées sous NDA — nom complet + mise en relation sur demande.
-// Photos avatars : remplacer par vraies photos dans /public/testimonials/ si autorisation obtenue.
+// Section "preuves" — Hagnéré Code n'a aucun client externe : pas de témoignage,
+// pas de note, pas de référence anonymisée. La preuve, ce sont les quatre produits
+// du groupe que l'agence a construits ET qu'elle exploite en production, à des URL
+// publiques que n'importe qui peut ouvrir.
+// Classes réutilisées telles quelles depuis sections.css (aucune classe inventée).
 
 export const testimonialsHtml = `
-<!-- TESTIMONIALS AUDIT · 3 audits anonymisés avec métrique signature -->
+<!-- PREUVES AUDIT · quatre produits en production, vérifiables publiquement -->
 <section class="at-testi">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Trois dirigeants · trois décisions prises</div>
-        <h2>Ce que l'audit leur a<br>concrètement permis de décider.</h2>
+        <div class="eyebrow">— Preuves publiques · aucun témoignage</div>
+        <h2>Nous n'affichons aucun avis client.<br>Nous affichons quatre produits<br>que nous exploitons.</h2>
       </div>
       <div class="right">
-        Trois retours à froid après l'audit&nbsp;: une <b>DD pré-Série B avec dette chiffrée à 420 k€</b>,
-        une <b>Tech DD M&amp;A où un deal-breaker IP a fait baisser la valo de 1,2 M€</b>, et un <b>CTO entrant
-        qui a convaincu son board de ne pas faire la refonte</b> — économie 600 k€. Mises en relation directes sur demande.
+        Hagnéré Code n'a pas encore de client externe. Publier des témoignages reviendrait donc à les inventer.
+        Ce que nous pouvons montrer est plus rare&nbsp;: <b>quatre produits que nous avons conçus, développés,
+        et que nous faisons tourner nous-mêmes en production</b>. Les adresses sont ci-dessous, ouvertes à tous.
       </div>
     </div>
 
     <div class="at-testi-grid">
-      <!-- TESTI 01 · DD pré-Série B -->
+      <!-- PREUVE 01 · LMNP.AI -->
       <article class="at-testi-card reveal">
-        <div class="at-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-          DD PRÉ-SÉRIE B · SAAS B2B
-        </div>
-        <div class="at-testi-stars">★★★★★</div>
-        <blockquote class="at-testi-quote">
-          « On closait une Série B de 12 M€. Elaia voulait une tech DD externe avant le term sheet final.
-          Hagnéré a livré un rapport 68 pages + Tech Debt P&amp;L chiffré à <b>420 k€ de dette</b>. Elaia a accepté
-          leur rapport comme base de DD, ce qui nous a économisé une <b>DD OCTO à 45 k€</b> — et surtout,
-          on avait pré-rédigé nos réponses aux findings. <b>Term sheet signé avec une valo &amp; un closing accélérés de 3 semaines.</b> »
-        </blockquote>
+        <div class="at-testi-role">SAAS FISCAL LMNP / LMP · EN PRODUCTION</div>
+        <div class="at-testi-name">LMNP.AI</div>
+        <p class="at-testi-quote">
+          Un moteur de calcul fiscal, des liasses générées, des échéances légales qui ne se négocient pas.
+          Nous en assumons l'exploitation quotidienne&nbsp;: les corrections de calcul, les montées de version,
+          les sauvegardes, les périodes de clôture. <b>Auditer une application métier à forte logique de calcul,
+          nous commençons par le faire sur la nôtre.</b>
+        </p>
         <div class="at-testi-meta">
-          <div class="at-testi-av" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><defs><linearGradient id="at-av-1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#6D28D9"/><stop offset="100%" stop-color="#A78BFA"/></linearGradient></defs><rect width="48" height="48" fill="url(#at-av-1)"/><text x="24" y="30" text-anchor="middle" font-family="Geist" font-weight="600" font-size="18" fill="#fff">LP</text></svg>
-          </div>
-          <div class="at-testi-who">
-            <div class="at-testi-name">Louis P. · sous NDA</div>
-            <div class="at-testi-role">CEO · SaaS B2B vertical retail · 45 salariés · Paris · <b>Dette chiffrée 420 k€ · closing +3 sem.</b></div>
+          <div class="at-testi-role">
+            Ce que cela apporte à votre audit&nbsp;: <b>lecture d'un domaine métier complexe, traçabilité des
+            calculs, tests de non-régression sur des règles qui changent chaque année</b>.
           </div>
         </div>
+        <a class="at-testi-casestudy" href="https://lmnp.ai" target="_blank" rel="noopener noreferrer">
+          Ouvrir lmnp.ai
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
       </article>
 
-      <!-- TESTI 02 · Tech DD M&A acheteur -->
+      <!-- PREUVE 02 · SCI-AI.app -->
       <article class="at-testi-card reveal reveal-d-1">
-        <div class="at-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-3M9 12l2 2 4-4M8 3v4h8V3"/></svg>
-          TECH DD M&amp;A · CÔTÉ ACHETEUR
-        </div>
-        <div class="at-testi-stars">★★★★★</div>
-        <blockquote class="at-testi-quote">
-          « Notre groupe rachetait une scale-up edtech à 8 M€. Hagnéré a fait la Tech DD en 25 jours.
-          Ils ont détecté que <b>leur moteur de recommandation utilisait une licence GPL incompatible</b>
-          avec notre modèle de distribution B2B. Seul ce finding aurait justifié d'arrêter le deal&nbsp;;
-          on a obtenu une re-négo du prix de <b>−1,2 M€ + clause de remédiation 6 mois</b> financée côté vendeur. L'audit s'est remboursé 18 fois. »
-        </blockquote>
+        <div class="at-testi-role">SAAS COMPTABLE SCI (IR &amp; IS) · EN PRODUCTION</div>
+        <div class="at-testi-name">SCI-AI.app</div>
+        <p class="at-testi-quote">
+          Deux régimes fiscaux, une base de données multi-comptes, des exports comptables qui doivent tomber
+          juste du premier coup. Nous suivons ses migrations, ses factures d'infrastructure et ses incidents.
+          <b>C'est ce qui fixe nos critères de revue d'architecture&nbsp;: non pas ce qui est élégant sur le
+          papier, mais ce qui tient dans la durée.</b>
+        </p>
         <div class="at-testi-meta">
-          <div class="at-testi-av" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><defs><linearGradient id="at-av-2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#FCD34D"/></linearGradient></defs><rect width="48" height="48" fill="url(#at-av-2)"/><text x="24" y="30" text-anchor="middle" font-family="Geist" font-weight="600" font-size="18" fill="#fff">SV</text></svg>
-          </div>
-          <div class="at-testi-who">
-            <div class="at-testi-name">Sophie V. · sous NDA</div>
-            <div class="at-testi-role">Head of M&amp;A · Corporate FR coté · Lyon · <b>Re-négo −1,2 M€ · ROI audit ×18</b></div>
+          <div class="at-testi-role">
+            Ce que cela apporte à votre audit&nbsp;: <b>revue du schéma de données, coût réel d'exploitation,
+            dette de migration et stratégie de sauvegarde</b>.
           </div>
         </div>
+        <a class="at-testi-casestudy" href="https://sci-ai.app" target="_blank" rel="noopener noreferrer">
+          Ouvrir sci-ai.app
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
       </article>
 
-      <!-- TESTI 03 · Baseline CTO · go/no-go refonte -->
+      <!-- PREUVE 03 · Hagnéré Patrimoine & Hagnéré Investissement -->
       <article class="at-testi-card reveal reveal-d-2">
-        <div class="at-testi-topic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22v-2a8 8 0 0116 0v2"/></svg>
-          BASELINE CTO · GO/NO-GO REFONTE
-        </div>
-        <div class="at-testi-stars">★★★★★</div>
-        <blockquote class="at-testi-quote">
-          « Je venais d'arriver comme CTO d'une scale-up fintech. L'équipe poussait pour une refonte complète
-          à 600 k€. Hagnéré a livré un audit Deep qui montrait que <b>la dette chiffrée à 140 k€ était patchable
-          en 4 mois à 2 devs</b> — pas une refonte. Le board a validé ce scenario, <b>économie directe 460 k€</b>
-          sur l'année. L'équipe a co-signé le plan, ça a complètement désamorcé la tension interne. »
-        </blockquote>
+        <div class="at-testi-role">SITE ÉDITORIAL, CRM &amp; PLATEFORME · EN PRODUCTION</div>
+        <div class="at-testi-name">Hagnéré Patrimoine &amp; Hagnéré Investissement</div>
+        <p class="at-testi-quote">
+          Un site éditorial adossé à un CRM, et une plateforme d'investissement immobilier. Volume de contenu,
+          référencement, formulaires, données personnelles, dépendances tierces&nbsp;: nous vivons avec les
+          conséquences de chaque décision technique prise il y a plusieurs années. <b>Un audit se juge là —
+          sur ce qu'il coûte à celui qui reste.</b>
+        </p>
         <div class="at-testi-meta">
-          <div class="at-testi-av" aria-hidden="true">
-            <svg viewBox="0 0 48 48"><defs><linearGradient id="at-av-3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#10B981"/><stop offset="100%" stop-color="#34D399"/></linearGradient></defs><rect width="48" height="48" fill="url(#at-av-3)"/><text x="24" y="30" text-anchor="middle" font-family="Geist" font-weight="600" font-size="18" fill="#fff">AM</text></svg>
-          </div>
-          <div class="at-testi-who">
-            <div class="at-testi-name">Antoine M. · sous NDA</div>
-            <div class="at-testi-role">CTO · Fintech régulée · 80 salariés · Nantes · <b>Refonte évitée · économie 460 k€</b></div>
+          <div class="at-testi-role">
+            Ce que cela apporte à votre audit&nbsp;: <b>performance et SEO technique, protection des données
+            personnelles, inventaire des dépendances et des points de rupture</b>.
           </div>
         </div>
+        <a class="at-testi-casestudy" href="https://hagnere-patrimoine.fr" target="_blank" rel="noopener noreferrer">
+          Ouvrir hagnere-patrimoine.fr
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+        <a class="at-testi-casestudy" href="https://hagnere-investissement.fr" target="_blank" rel="noopener noreferrer">
+          Ouvrir hagnere-investissement.fr
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
       </article>
     </div>
 
     <p class="at-testi-foot reveal">
-      Références détaillées sur demande — on met en relation directe avec ces 3 dirigeants <b>avant signature</b>.
-      Nos missions couvrent SaaS B2B / E-commerce / Marketplace / Edtech / HealthTech / Fintech · FR &amp; UE.
+      Presque toutes les agences livrent puis s'en vont. <b>Nous, nous restons dessus</b>&nbsp;: la dette technique
+      que nous créons, c'est nous qui la payons. C'est exactement le point de vue depuis lequel nous lisons votre
+      code. Vous n'avez rien à nous croire sur parole&nbsp;— ouvrez les quatre adresses. Le premier échange se fait
+      avec Quentin Hagnéré, qui a écrit et exploite ce code, sous 24&nbsp;h ouvrées.
     </p>
   </div>
 </section>

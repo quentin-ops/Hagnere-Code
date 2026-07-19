@@ -1,9 +1,10 @@
-// Logo-wall : clients du groupe Hagnéré (Patrimoine, Investissement) et produits
-// internes de la maison (LMNP.AI, SCI-AI.app). À enrichir au fil des livraisons e-com.
+// Logo-wall : les quatre produits internes du groupe Hagnéré (Hagnéré Patrimoine,
+// Hagnéré Investissement, LMNP.AI, SCI-AI.app), conçus, développés et opérés par
+// notre studio. Ce ne sont pas des clients.
 
 export const logoWallHtml = `
-<!-- CLIENT LOGO WALL -->
-<section class="ec-clients-wall">
+<!-- PRODUCT LOGO WALL -->
+<section class="ec-clients-wall" aria-label="Nos produits internes">
   <div class="wrap">
     <div class="ec-cw-grid">
       <div class="ec-cw-logo">

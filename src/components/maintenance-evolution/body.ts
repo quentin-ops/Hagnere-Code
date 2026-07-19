@@ -24,26 +24,27 @@ ${navHtml}
       </div>
       <h1>Maintenance applicative :<br>votre équipe tech dans 3, 5, 10 ans.<br><span class="accent">Pas un prestataire qui disparaît.</span></h1>
 
-      <!-- KPI bar : chiffres concrets juste sous le H1 -->
+      <!-- KPI bar : engagements contractuels + produits maison.
+           Aucune statistique client ici : pas encore de client externe. -->
       <div class="me-hero-kpis">
         <div class="me-hero-kpi">
           <div class="me-hero-kpi-v">99,95<span>%</span></div>
-          <div class="me-hero-kpi-k">Uptime 12 mois · mesuré Better Stack</div>
+          <div class="me-hero-kpi-k">SLA uptime · engagé au contrat</div>
         </div>
         <div class="me-hero-kpi-sep"></div>
         <div class="me-hero-kpi">
-          <div class="me-hero-kpi-v">14<span>/trim</span></div>
-          <div class="me-hero-kpi-k">Deploys · DORA elite</div>
+          <div class="me-hero-kpi-v">&lt; 30<span>min</span></div>
+          <div class="me-hero-kpi-k">MTTR contractuel · incident P1</div>
         </div>
         <div class="me-hero-kpi-sep"></div>
         <div class="me-hero-kpi">
-          <div class="me-hero-kpi-v">23<span>min</span></div>
-          <div class="me-hero-kpi-k">MTTR médian · P1 astreinte</div>
+          <div class="me-hero-kpi-v">4<span>produits</span></div>
+          <div class="me-hero-kpi-k">En production, exploités par nous</div>
         </div>
         <div class="me-hero-kpi-sep"></div>
         <div class="me-hero-kpi">
-          <div class="me-hero-kpi-v">4,3<span>ans</span></div>
-          <div class="me-hero-kpi-k">Ancienneté moyenne clients</div>
+          <div class="me-hero-kpi-v">4<span>ans</span></div>
+          <div class="me-hero-kpi-k">Ancienneté moyenne de nos devs</div>
         </div>
       </div>
 

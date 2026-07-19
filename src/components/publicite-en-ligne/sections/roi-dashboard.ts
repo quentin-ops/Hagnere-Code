@@ -1,35 +1,41 @@
+// Section MODÈLE DE CALCUL — remplace l'ancien dashboard de résultats.
+// Hagnéré Code n'a aucun client externe : aucune médiane de missions, aucun
+// budget média moyen, aucun gain constaté. Le bloc expose désormais la formule
+// que nous appliquons et les leviers sur lesquels nous agissons — jamais un
+// historique. Classes réutilisées telles quelles depuis sections.css.
+
 export const roiDashboardHtml = `
-<!-- ROI / ROAS DASHBOARD — dial + KPIs + comment on y arrive -->
+<!-- ROI / ROAS — modèle de calcul : seuil + termes de la formule + leviers -->
 <section class="ads-roi" id="roi">
   <div class="ads-roi-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ce que vous gagnez, mesuré</div>
-        <h2>×4,2 de ROAS blended<br>à 9 mois. Vérifié côté CRM.</h2>
+        <div class="eyebrow">— Le calcul, pas le palmarès</div>
+        <h2>Pas de ROAS moyen à afficher.<br>Le mode de calcul, oui.</h2>
       </div>
       <div class="right">
-        Pas un ROAS auto-reporté par Meta ou Google Ads. Un ROAS <b>blended multi-canaux</b>, dédupé côté serveur, réconcilié avec les deals signés dans votre CRM. Médiane des 9 dernières missions Scale et Premium.
+        Nous n'avons pas encore de client externe&nbsp;: il n'existe donc aucune moyenne de résultats à publier ici, et nous n'en inventerons pas. Ce que nous documentons, c'est le <b>mode de calcul</b> que nous appliquerons chez vous&nbsp;: un ROAS blended multi-canaux, dédupé côté serveur, réconcilié avec les deals signés dans votre CRM — jamais un ROAS auto-reporté par Meta ou Google Ads.
       </div>
     </div>
 
-    <!-- Dashboard principal -->
+    <!-- Le modèle : seuil de recouvrement + termes de la formule -->
     <div class="ads-roi-main reveal reveal-d-1">
 
-      <!-- Dial card (gauche) -->
+      <!-- Dial card (gauche) : le seuil, pas un résultat -->
       <div class="ads-roi-dial-card">
         <div class="ads-roi-dial-head">
           <span class="ads-roi-dial-k">ROAS BLENDED</span>
-          <span class="ads-roi-dial-meta">Médiane 9 missions</span>
+          <span class="ads-roi-dial-meta">modèle de calcul</span>
         </div>
 
-        <!-- SVG arc gauge -->
+        <!-- SVG arc gauge : zone située au-dessus du seuil de recouvrement -->
         <div class="ads-roi-dial">
           <svg viewBox="0 0 220 140" class="ads-roi-dial-svg" aria-hidden="true">
             <!-- background arc -->
             <path d="M 20 120 A 90 90 0 0 1 200 120" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14" stroke-linecap="round"/>
-            <!-- active arc (0 to 4.2x out of 6x = 70%) -->
-            <path d="M 20 120 A 90 90 0 0 1 173 43" fill="none" stroke="url(#roi-grad)" stroke-width="14" stroke-linecap="round"/>
+            <!-- zone au-dessus du seuil : de 1x jusqu'au bout de l'échelle -->
+            <path d="M 32 75 A 90 90 0 0 1 200 120" fill="none" stroke="url(#roi-grad)" stroke-width="14" stroke-linecap="round"/>
             <!-- gradient -->
             <defs>
               <linearGradient id="roi-grad" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -41,58 +47,58 @@ export const roiDashboardHtml = `
             <!-- ticks -->
             <g class="ads-roi-ticks">
               <text x="16" y="135" text-anchor="middle">0</text>
-              <text x="46" y="70" text-anchor="middle">1×</text>
+              <text x="50" y="88" text-anchor="middle">1×</text>
               <text x="110" y="36" text-anchor="middle">3×</text>
               <text x="175" y="70" text-anchor="middle">5×</text>
               <text x="204" y="135" text-anchor="middle">6×</text>
             </g>
-            <!-- needle dot -->
-            <circle cx="173" cy="43" r="7" fill="#fff" stroke="#8B5CF6" stroke-width="3"/>
+            <!-- marqueur du seuil -->
+            <circle cx="32" cy="75" r="7" fill="#fff" stroke="#8B5CF6" stroke-width="3"/>
           </svg>
 
           <div class="ads-roi-dial-value">
-            <span class="v">×4,2</span>
-            <span class="k">ROAS blended</span>
+            <span class="v">×1</span>
+            <span class="k">SEUIL DE RECOUVREMENT</span>
           </div>
         </div>
 
         <div class="ads-roi-dial-foot">
-          <span class="ads-roi-dial-chip">CRM-attribué</span>
-          <span class="ads-roi-dial-chip">Dédupé</span>
-          <span class="ads-roi-dial-chip">Multi-canaux</span>
+          <span class="ads-roi-dial-chip">Blended</span>
+          <span class="ads-roi-dial-chip">Dédupé côté serveur</span>
+          <span class="ads-roi-dial-chip">Attribué au CRM</span>
         </div>
       </div>
 
-      <!-- 4 KPIs (droite) -->
+      <!-- Les 4 termes du calcul (droite) -->
       <div class="ads-roi-kpis">
         <div class="ads-roi-kpi">
-          <div class="ads-roi-kpi-delta">÷ 2,1</div>
-          <div class="ads-roi-kpi-k">Coût d'acquisition client</div>
-          <div class="ads-roi-kpi-n">vs. setup client-side avec agence au %</div>
+          <div class="ads-roi-kpi-delta">CA <span>signé</span></div>
+          <div class="ads-roi-kpi-k">Le numérateur</div>
+          <div class="ads-roi-kpi-n">le chiffre d'affaires réellement signé, relu dans votre CRM — pas les conversions déclarées par la régie</div>
         </div>
         <div class="ads-roi-kpi">
-          <div class="ads-roi-kpi-delta">&lt; 90 j</div>
-          <div class="ads-roi-kpi-k">Payback media buy</div>
-          <div class="ads-roi-kpi-n">vs. 6–12 mois typique sans attribution CRM</div>
+          <div class="ads-roi-kpi-delta">&divide; <span>média</span></div>
+          <div class="ads-roi-kpi-k">Le dénominateur</div>
+          <div class="ads-roi-kpi-n">toutes les dépenses média, tous canaux confondus, sans en écarter aucune pour embellir le ratio</div>
         </div>
         <div class="ads-roi-kpi ads-roi-kpi-hot">
-          <div class="ads-roi-kpi-delta">+ 42<span>%</span></div>
-          <div class="ads-roi-kpi-k">Signaux de conversion</div>
-          <div class="ads-roi-kpi-n">récupérés via GTM SS + CAPI + EC</div>
+          <div class="ads-roi-kpi-delta">1 <span>comptage</span></div>
+          <div class="ads-roi-kpi-k">La règle de déduplication</div>
+          <div class="ads-roi-kpi-n">GTM server-side, CAPI et Enhanced Conversions&nbsp;: une même conversion n'est comptée qu'une fois</div>
         </div>
         <div class="ads-roi-kpi">
-          <div class="ads-roi-kpi-delta">− 25<span>%</span></div>
-          <div class="ads-roi-kpi-k">Spend inutile coupé</div>
-          <div class="ads-roi-kpi-n">search terms pourris, PMax brand, redundant placements</div>
+          <div class="ads-roi-kpi-delta">Mensuel</div>
+          <div class="ads-roi-kpi-k">La fréquence de recalcul</div>
+          <div class="ads-roi-kpi-n">le modèle est rejoué chaque mois sur vos données, jamais figé sur un chiffre de vente</div>
         </div>
       </div>
 
     </div>
 
-    <!-- Comment on y arrive : 4 leviers -->
+    <!-- Sur quoi nous agissons : 4 leviers -->
     <div class="ads-roi-how reveal reveal-d-2">
       <div class="ads-roi-how-head">
-        <span class="ads-roi-how-n">/ comment on y arrive</span>
+        <span class="ads-roi-how-n">/ ce sur quoi nous agissons</span>
         <h3>Pas de miracle, 4 leviers qu'on<br>active dans les 60 premiers jours.</h3>
       </div>
 
@@ -106,7 +112,7 @@ export const roiDashboardHtml = `
           </div>
           <h4>Tracking server-side réparé</h4>
           <p>Les algos Google et Meta reçoivent enfin du signal propre, dédupé. Ils optimisent sur <b>les clients réels</b>, pas sur les form submits bruts.</p>
-          <div class="ads-roi-step-foot">→ Gain typique&nbsp;: +15 à +30 % de ROAS apparent</div>
+          <div class="ads-roi-step-foot">→ Ce que ça corrige&nbsp;: le signal envoyé aux régies</div>
         </div>
 
         <div class="ads-roi-step">
@@ -118,7 +124,7 @@ export const roiDashboardHtml = `
           </div>
           <h4>Boucle CRM en temps réel</h4>
           <p>Les stages MQL → SQL → won remontent dans Ads via webhook. <b>Vous arrêtez d'optimiser sur les clics</b>, vous optimisez sur les deals signés.</p>
-          <div class="ads-roi-step-foot">→ Gain typique&nbsp;: CAC divisé par 1,8 à 2,5</div>
+          <div class="ads-roi-step-foot">→ Ce que ça corrige&nbsp;: l'objectif d'optimisation</div>
         </div>
 
         <div class="ads-roi-step">
@@ -129,8 +135,8 @@ export const roiDashboardHtml = `
             </div>
           </div>
           <h4>Creative cadencé 8–12 / mois</h4>
-          <p>Fini la creative qui tourne 6 mois et fatigue. Nouveau batch chaque mois, tests par hooks / angles / offres. <b>Le ROAS tient dans la durée.</b></p>
-          <div class="ads-roi-step-foot">→ Gain typique&nbsp;: +20 % de durée de vie par ad set</div>
+          <p>Fini la creative qui tourne 6 mois et fatigue. Nouveau batch chaque mois, tests par hooks / angles / offres. <b>L'usure se traite en amont</b>, pas une fois le coût envolé.</p>
+          <div class="ads-roi-step-foot">→ Ce que ça corrige&nbsp;: l'usure de la création</div>
         </div>
 
         <div class="ads-roi-step">
@@ -142,13 +148,13 @@ export const roiDashboardHtml = `
           </div>
           <h4>Budget allocation hebdo</h4>
           <p>Revue chaque lundi&nbsp;: pauses, scaling, bascules entre canaux. Budget suit la perf, pas l'inertie. <b>Documenté dans Notion, pas dans un chat oublié.</b></p>
-          <div class="ads-roi-step-foot">→ Gain typique&nbsp;: –20 à –30 % de spend inutile</div>
+          <div class="ads-roi-step-foot">→ Ce que ça corrige&nbsp;: l'inertie du budget</div>
         </div>
       </div>
 
       <div class="ads-roi-how-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        Chiffres issus de 9 missions Scale &amp; Premium sur 12 mois glissants. Budget media médian&nbsp;: 22 k€/mois. Secteurs&nbsp;: SaaS B2B, e-commerce DTC, formation pro, services. Les chiffres bruts de chaque mission sont partagés en call sous NDA.
+        <b>Rien sur cette page n'est un résultat client.</b> Nous n'avons pas encore de client externe&nbsp;: ni médiane de missions, ni budget média moyen, ni gain constaté à publier. Ce bloc décrit la formule que nous appliquons et les leviers que nous actionnons. Le seuil de ×1 est de l'arithmétique&nbsp;: en dessous, le média n'est pas remboursé&nbsp;; au-dessus, il reste à couvrir votre marge, que nous calons avec vous avant le premier euro dépensé. Les seuls comptes que nous pilotons aujourd'hui sont ceux de nos quatre produits — LMNP.AI, SCI-AI.app, Hagnéré Patrimoine, Hagnéré Investissement — et c'est notre trésorerie qui les finance.
       </div>
     </div>
   </div>

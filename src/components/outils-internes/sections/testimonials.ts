@@ -1,100 +1,71 @@
 export const testimonialsHtml = `
-<!-- TÉMOIGNAGES CLIENTS + STATS -->
+<!-- PREUVES PUBLIQUES + STATS -->
 <section class="oi-testim">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ce que disent les équipes après la livraison</div>
-        <h2>Ils ont arrêté Excel,<br>leur journée a changé.</h2>
+        <div class="eyebrow">— Ce que vous pouvez vérifier vous-même</div>
+        <h2>Aucun témoignage.<br>Quatre produits en production.</h2>
       </div>
       <div class="right">
-        Citations anonymisées par secteur — sur demande, on vous met en contact direct avec le dirigeant
-        ou le DAF après un premier call signé d'un NDA mutuel. Les chiffres viennent de leur
-        reporting interne, pas du nôtre.
+        Nous n’affichons pas d’avis client, pour une raison simple : nous n’avons pas encore de client
+        externe. En revanche, nos quatre produits, nous ne les avons pas seulement livrés — nous les
+        <b>exploitons nous-mêmes tous les jours</b>. Les adresses sont publiques, ouvrez-les.
       </div>
     </div>
 
     <div class="oi-testim-grid">
       <figure class="oi-testim-card reveal">
-        <div class="oi-testim-rating">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-        </div>
         <blockquote>
-          « On avait un Suivi-Clients.xlsx partagé par douze personnes. Relances manuelles, erreurs en chaîne,
-          un commercial qui quittait la boîte = mémoire perdue. L'outil qu'ils ont livré en cinq semaines
-          a remplacé l'Excel <b>et</b> notre vieux HubSpot à 1 800 € / mois. ROI sur huit mois. »
+          <b>Un CRM métier, utilisé pour de vrai.</b> Le cabinet Hagnéré Patrimoine ne pilote pas ses
+          dossiers dans un tableur partagé : il travaille dans un outil que nous avons spécifié,
+          développé et mis en production. Contacts, cycle de vie des dossiers, relances, documents.
+          C’est exactement l’objet de cette page — à ceci près que l’utilisateur, c’est nous. Chaque
+          friction nous revient dessus le jour même, pas six mois après la recette.
         </blockquote>
         <figcaption>
           <div class="oi-testim-who">
-            <div class="oi-testim-av">DG</div>
             <div>
-              <div class="oi-testim-name">Dirigeant · PME services B2B</div>
-              <div class="oi-testim-meta">28 collaborateurs · Chambéry · livré 2025</div>
+              <div class="oi-testim-name">Hagnéré Patrimoine — CRM du cabinet</div>
+              <div class="oi-testim-meta"><a href="https://hagnere-patrimoine.fr">hagnere-patrimoine.fr</a></div>
             </div>
-          </div>
-          <div class="oi-testim-kpi">
-            <span class="oi-testim-kpi-v">-12 h</span>
-            <span class="oi-testim-kpi-k">/ sem. équipe admin</span>
           </div>
         </figcaption>
       </figure>
 
       <figure class="oi-testim-card reveal reveal-d-1">
-        <div class="oi-testim-rating">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-        </div>
         <blockquote>
-          « Mon DSI a bloqué le projet trois fois. Hagnéré a répondu point par point à sa checklist RSSI
-          (SSO Azure AD, audit trail, RGPD, on-premise option). Sage X3 intégré en lecture d'abord,
-          puis écritures. Zéro incident sur l'ERP, zéro discussion sur les données. »
+          <b>Des règles de calcul qui n’ont pas le droit d’être fausses.</b> LMNP.AI et SCI-AI.app
+          produisent de la comptabilité fiscale : amortissements, écritures, documents de fin
+          d’exercice. Un outil interne pose la même exigence — des règles métier écrites noir sur
+          blanc, des données sensibles, et des utilisateurs qui repèrent une anomalie avant vous.
+          Nous tenons ces deux produits ouverts au public, avec les échéances que cela impose.
         </blockquote>
         <figcaption>
           <div class="oi-testim-who">
-            <div class="oi-testim-av">DAF</div>
             <div>
-              <div class="oi-testim-name">DAF · ETI industrielle</div>
-              <div class="oi-testim-meta">140 collaborateurs · Rhône-Alpes · sous NDA</div>
+              <div class="oi-testim-name">LMNP.AI et SCI-AI.app</div>
+              <div class="oi-testim-meta"><a href="https://lmnp.ai">lmnp.ai</a> · <a href="https://sci-ai.app">sci-ai.app</a></div>
             </div>
-          </div>
-          <div class="oi-testim-kpi">
-            <span class="oi-testim-kpi-v">0</span>
-            <span class="oi-testim-kpi-k">incident ERP</span>
           </div>
         </figcaption>
       </figure>
 
       <figure class="oi-testim-card reveal reveal-d-2">
-        <div class="oi-testim-rating">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.8L18 22l-6-3.5L6 22l1.3-7.6L2 9.6 9 9z"/></svg>
-        </div>
         <blockquote>
-          « Ce qui m'a surpris : les sessions Q&amp;A à J+30 et J+90 étaient vraiment gratuites.
-          Mon ancienne agence me les facturait 800 € la journée. Là, ils ont listé 14 irritants
-          avec mes chefs de chantier, en ont réglé 11 dans la semaine. C'est propre. »
+          <b>Nous vivons avec ce que nous construisons.</b> Hagnéré Investissement tourne avec ses
+          parcours, son back-office et ses flux de données. Nous en assurons les correctifs, les
+          montées de version et les factures d’infrastructure. C’est là toute la différence avec un
+          prestataire qui livre puis s’en va : la dette technique que nous créons, c’est nous qui la
+          payons. Un outil interne conçu dans ces conditions est pensé pour durer, pas seulement pour
+          être livré.
         </blockquote>
         <figcaption>
           <div class="oi-testim-who">
-            <div class="oi-testim-av">DG</div>
             <div>
-              <div class="oi-testim-name">Dirigeant · PME BTP</div>
-              <div class="oi-testim-meta">42 collaborateurs · Haute-Savoie · sous NDA</div>
+              <div class="oi-testim-name">Hagnéré Investissement</div>
+              <div class="oi-testim-meta"><a href="https://hagnere-investissement.fr">hagnere-investissement.fr</a></div>
             </div>
-          </div>
-          <div class="oi-testim-kpi">
-            <span class="oi-testim-kpi-v">94 %</span>
-            <span class="oi-testim-kpi-k">adoption à J+90</span>
           </div>
         </figcaption>
       </figure>
@@ -102,28 +73,28 @@ export const testimonialsHtml = `
 
     <div class="oi-testim-bar reveal">
       <div class="oi-testim-bar-stat">
-        <div class="oi-testim-bar-v">+30</div>
-        <div class="oi-testim-bar-k">outils internes<br>livrés à ce jour</div>
-      </div>
-      <div class="oi-testim-bar-sep"></div>
-      <div class="oi-testim-bar-stat">
-        <div class="oi-testim-bar-v">92 %</div>
-        <div class="oi-testim-bar-k">taux d'adoption<br>moyen à 3 mois</div>
-      </div>
-      <div class="oi-testim-bar-sep"></div>
-      <div class="oi-testim-bar-stat">
-        <div class="oi-testim-bar-v">100 %</div>
-        <div class="oi-testim-bar-k">date contractuelle<br>tenue ou pénalité</div>
+        <div class="oi-testim-bar-v">4</div>
+        <div class="oi-testim-bar-k">produits maison<br>en production</div>
       </div>
       <div class="oi-testim-bar-sep"></div>
       <div class="oi-testim-bar-stat">
         <div class="oi-testim-bar-v">0</div>
-        <div class="oi-testim-bar-k">abandon pour<br>cause de désaccord</div>
+        <div class="oi-testim-bar-k">client externe<br>à ce jour, et on l’écrit</div>
       </div>
       <div class="oi-testim-bar-sep"></div>
       <div class="oi-testim-bar-stat">
-        <div class="oi-testim-bar-v">4,9<span class="oi-testim-bar-v-s">/5</span></div>
-        <div class="oi-testim-bar-k">satisfaction dirigeant<br>post-mission</div>
+        <div class="oi-testim-bar-v">0</div>
+        <div class="oi-testim-bar-k">témoignage<br>ou note inventés</div>
+      </div>
+      <div class="oi-testim-bar-sep"></div>
+      <div class="oi-testim-bar-stat">
+        <div class="oi-testim-bar-v">0</div>
+        <div class="oi-testim-bar-k">logo emprunté<br>sur ce site</div>
+      </div>
+      <div class="oi-testim-bar-sep"></div>
+      <div class="oi-testim-bar-stat">
+        <div class="oi-testim-bar-v">24<span class="oi-testim-bar-v-s">h</span></div>
+        <div class="oi-testim-bar-k">pour une réponse écrite<br>de Quentin Hagnéré (jours ouvrés)</div>
       </div>
     </div>
   </div>

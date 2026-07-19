@@ -1122,11 +1122,6 @@
   box-shadow: 0 18px 36px -22px rgba(0,0,0,0.12);
   border-color: #d4d4d4;
 }
-.oi-testim-rating {
-  display: flex;
-  gap: 3px;
-  color: var(--accent);
-}
 .oi-testim-card blockquote {
   margin: 0;
   font-size: 15px;
@@ -1150,20 +1145,6 @@
   gap: 12px;
   min-width: 0;
 }
-.oi-testim-av {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--paper);
-  display: grid;
-  place-items: center;
-  font-family: var(--font-geist-mono);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  flex-shrink: 0;
-}
 .oi-testim-name {
   font-size: 13px;
   font-weight: 600;
@@ -1179,26 +1160,9 @@
   margin-top: 2px;
   line-height: 1.3;
 }
-.oi-testim-kpi {
-  text-align: right;
-  flex-shrink: 0;
-}
-.oi-testim-kpi-v {
-  display: block;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  color: var(--accent-ink);
-  line-height: 1;
-}
-.oi-testim-kpi-k {
-  display: block;
-  font-family: var(--font-geist-mono);
-  font-size: 10px;
-  color: var(--mute);
-  letter-spacing: 0.04em;
-  margin-top: 4px;
-}
+.oi-testim-meta a { text-decoration: none; border-bottom: 1px solid currentColor; }
+.oi-testim-meta a:hover { border-bottom-color: transparent; }
+
 .oi-testim-bar {
   margin-top: 56px;
   padding: 32px 40px;
