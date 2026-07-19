@@ -247,25 +247,17 @@ export const miniAuditHtml = `
         </div>
       </div>
 
-      <!-- Email capture + CTA -->
+      <!-- Result explanation + CTA -->
       <div class="me-audit-result-cta">
-        <form class="me-audit-email-form" data-audit-email-form>
-          <label class="me-audit-email-label">Recevoir le rapport complet par email (optionnel)</label>
-          <div class="me-audit-email-row">
-            <input type="email" placeholder="prenom@entreprise.fr" class="me-audit-email-input" data-audit-email required>
-            <button type="submit" class="btn btn-ghost me-audit-email-btn">
-              📩 Envoyer
-            </button>
-          </div>
-          <div class="me-audit-email-ack" data-audit-email-ack hidden>
-            ✓ Rapport envoyé. Check votre boîte (pensez aux spams).
-          </div>
-        </form>
+        <div class="me-audit-email-form">
+          <div class="me-audit-email-label">Résultat indicatif, calculé uniquement dans votre navigateur</div>
+          <p>Ce mini-audit ne transmet aucune donnée et ne génère pas de rapport par e-mail. Un audit complet nécessite des preuves et un périmètre validé avec vous.</p>
+        </div>
 
-        <div class="me-audit-or">ou</div>
+        <div class="me-audit-or">puis</div>
 
         <a href="#contact" class="btn btn-accent btn-lg me-audit-cta">
-          Cadrer un audit complet 5 jours · 2 000 €
+          Cadrer un audit complet
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </div>

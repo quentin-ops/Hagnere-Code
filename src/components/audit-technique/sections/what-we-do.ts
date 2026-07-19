@@ -80,7 +80,7 @@ export const whatWeDoHtml = `
           <span class="at-wwd-badge at-wwd-badge-security">Sécurité</span>
         </div>
         <h3>Sécurité</h3>
-        <p>OWASP Top 10 complet, CVE sur dépendances (Snyk + GitGuardian), secrets leaks, auth/authz, RGPD, logs sensibles, chiffrement at-rest/in-transit. <b>Pentest externe CERT-FR en option</b> (+8-15 k€). Livrable critique pour SOC2 / ISO 27001.</p>
+        <p>Revue OWASP Top 10, dépendances, secrets, auth/authz, logs sensibles et chiffrement selon le périmètre. Un <b>pentest indépendant</b> peut être confié à un prestataire qualifié PASSI sélectionné par le client lorsque cette qualification est requise.</p>
         <div class="at-wwd-tags">
           <span class="at-wwd-tag">OWASP · CVE</span>
           <span class="at-wwd-tag">SAST · secrets</span>

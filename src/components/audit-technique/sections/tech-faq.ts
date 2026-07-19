@@ -48,7 +48,8 @@ export const techFaqHtml = `
           <b>SAST&nbsp;: complet</b> (SonarQube + Semgrep + PHPStan/Psalm/TS niveau 8) sur 100 % du codebase.
           <b>SCA&nbsp;: complet</b> (Snyk + Dependabot + GitGuardian) sur dépendances + images Docker + historique git.
           <b>DAST&nbsp;: ciblé</b> (OWASP top 10, 10 endpoints critiques via Burp Suite light). Pour un <b>DAST exhaustif + pentest complet</b>,
-          on active l'option Pentest CERT-FR (+8-15 k€) avec notre partenaire agréé — conforme SOC2 / ISO 27001.
+          le devis peut prévoir un pentest indépendant réalisé par un prestataire qualifié PASSI sélectionné
+          et vérifié par le client lorsque cette qualification est réellement requise.
         </div>
       </div>
 
@@ -60,8 +61,7 @@ export const techFaqHtml = `
         <div class="faq-a">
           <b>On demande une restauration test sur un environnement isolé</b> pendant l'audit&nbsp;: votre équipe lance la procédure,
           on chronomètre le RTO réel (temps de restauration effectif), on vérifie le RPO réel (point de restauration atteint vs. promis).
-          <b>Dans 35 % de nos audits, le RTO réel dépasse de 3-8× le RTO déclaré</b>. C'est un finding critique qu'on chiffre systématiquement en €
-          (coût d'indisponibilité prolongée × probabilité).
+          L'écart entre le RTO annoncé et le temps observé est documenté sans présumer son ampleur. Son impact peut ensuite être estimé à partir du coût d'indisponibilité et d'hypothèses explicites.
         </div>
       </div>
 

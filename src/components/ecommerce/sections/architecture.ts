@@ -8,9 +8,9 @@ export const architectureHtml = `
         <h2 style="margin-top:14px">À quoi ressemble<br>une boutique Hagnéré.</h2>
       </div>
       <div class="right">
-        Pas une slide marketing. L'architecture réelle d'une de nos boutiques en production : storefront
-        Next.js + app mobile React Native + cœur TypeScript + intégrations FR natives. Headless, standard,
-        remplaçable. Votre DSI peut reprendre demain si besoin.
+        Ce schéma de référence illustre une architecture possible : storefront Next.js, application React Native,
+        cœur TypeScript et intégrations métier. Le moteur, l'hébergement, les flux et le plan de reprise sont adaptés
+        au besoin puis documentés pour votre équipe.
       </div>
     </div>
 
@@ -28,8 +28,8 @@ export const architectureHtml = `
         <g transform="translate(60 80)">
           <rect width="260" height="88" rx="10" fill="#171717" stroke="rgba(255,255,255,0.12)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">STOREFRONT WEB</text>
-          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Next.js 15 · React 19</text>
-          <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">SSR + ISR · LCP &lt; 1,5s</text>
+          <text x="20" y="52" font-family="Geist" font-size="15" font-weight="600" fill="#fff">Next.js · React</text>
+          <text x="20" y="72" font-family="Geist" font-size="12" fill="rgba(255,255,255,0.55)">SSR + ISR · budget de performance</text>
         </g>
         <g transform="translate(340 80)">
           <rect width="260" height="88" rx="10" fill="#171717" stroke="rgba(255,255,255,0.12)"/>
@@ -86,7 +86,7 @@ export const architectureHtml = `
         </g>
 
         <!-- DATA -->
-        <text x="60" y="388" font-family="Geist Mono" font-size="11" fill="#6D28D9" letter-spacing="0.08em">— VOS DONNÉES (HÉBERGÉES EN FRANCE)</text>
+        <text x="60" y="388" font-family="Geist Mono" font-size="11" fill="#6D28D9" letter-spacing="0.08em">— DONNÉES ET HÉBERGEMENT À CADRER</text>
         <g transform="translate(60 408)">
           <rect width="250" height="80" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">POSTGRESQL 17</text>
@@ -140,7 +140,7 @@ export const architectureHtml = `
           <text x="965" y="584" text-anchor="middle">Chorus Pro</text>
 
           <rect x="1035" y="560" width="105" height="40" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
-          <text x="1087" y="584" text-anchor="middle">+ 40 autres</text>
+          <text x="1087" y="584" text-anchor="middle">AUTRES SUR DEVIS</text>
 
           <rect x="60" y="610" width="120" height="40" rx="8" fill="rgba(163,228,127,0.08)" stroke="rgba(163,228,127,0.25)"/>
           <text x="120" y="634" text-anchor="middle">Brevo / Klaviyo</text>
@@ -173,12 +173,11 @@ export const architectureHtml = `
       <div class="ec-arch-caption-k">
         <span><span class="ec-arch-dot" style="background:#6D28D9"></span> Cœur métier Hagnéré</span>
         <span><span class="ec-arch-dot" style="background:#404040"></span> Composants standards</span>
-        <span><span class="ec-arch-dot" style="background:#a3e47f"></span> Écosystème FR intégré</span>
+        <span><span class="ec-arch-dot" style="background:#a3e47f"></span> Connecteurs possibles</span>
       </div>
       <p>
-        Aucun framework propriétaire, aucune boîte noire, aucun SaaS tiers obligatoire.
-        Votre équipe technique peut reprendre ce code avec n'importe quelle ESN française qui fait du React +
-        Next.js. C'est exactement ça, le "sur mesure".
+        L'objectif est une architecture documentée et réversible. Le devis identifie les composants tiers,
+        licences, comptes, clés, limites d'API et procédures nécessaires pour qu'une autre équipe puisse reprendre le projet.
       </p>
     </div>
   </div>

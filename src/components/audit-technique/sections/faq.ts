@@ -58,7 +58,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Pour aligner nos intérêts. Si on sait qu'on touchera 100 % du prix de l'audit en déduction d'une mission remédiation &gt; 50 k€ derrière, <b>on n'a aucun intérêt économique à noircir le rapport</b>. Plus le diagnostic est honnête, plus vous avez confiance pour signer la mission suivante. C'est la <b>seule structure d'incitation qui rend l'indépendance crédible</b>.
+            Les constats sont séparés des hypothèses de coût et chaque recommandation renvoie à une preuve. Toute remise ou déduction liée à une mission ultérieure doit figurer explicitement dans le devis&nbsp;: elle n'est pas présumée par les CGV publiques.
           </div>
         </div>
 
@@ -67,7 +67,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Garantie contractuelle</b>&nbsp;: si le rapport livre moins de 3 recommandations jugées actionnables par votre CTO ou board, <b>50 % du prix est remboursé</b> sans négociation. C'est écrit dans les CGV. Après livraison, si vous voulez discuter d'un finding, réunion de re-restitution sous 15 j incluse.
+            Les critères d'acceptation, le nombre et le format des recommandations, ainsi que la procédure de correction ou de contestation sont écrits au devis. Aucun remboursement automatique n'est annoncé s'il n'est pas prévu par le contrat signé.
           </div>
         </div>
 
@@ -76,7 +76,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>NDA mutuel J0</b> · <b>clause CoI publique</b> (100 % déduit si mission &gt; 50 k€) · <b>garantie ≥ 3 recos actionnables ou 50 % remboursé</b> · <b>méthodologie ISO 19011</b> documentée · <b>version board-safe</b> anonymisée incluse · <b>propriété client exclusive</b> des livrables. 7 engagements écrits dans les CGV.
+            Le devis liste les livrables, critères d'acceptation, accès, confidentialité, calendrier, réversibilité et droits de propriété. Les CGV s'appliquent ensuite&nbsp;: transfert des livrables spécifiques après paiement complet, avec réserve pour les composants préexistants et licences tierces.
           </div>
         </div>
 
@@ -121,7 +121,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Ça arrive dans <b>~ 30 % des DD VC</b>. Dans ce cas, 2 options&nbsp;: (1) on produit un <b>addendum ciblé</b> sur les points soulevés (3-5 j, chiffré au devis), (2) on participe à une <b>visio avec le cabinet DD externe mandaté par le VC</b> pour clarifier notre méthodologie et nos findings. 100 % des fonds en FR ont accepté notre rapport au moins comme base de leur DD.
+            Le fonds ou son cabinet peut demander des preuves ou analyses supplémentaires. Le devis peut alors prévoir un addendum ciblé ou une réunion de clarification. Le rapport ne remplace pas la due diligence décidée par l'investisseur.
           </div>
         </div>
 
@@ -130,7 +130,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Tous les livrables en propriété exclusive client à J+10</b>&nbsp;: rapport PDF, Tech Debt P&amp;L, deck, backlog Notion, diagrammes C4, Loom, exports bruts SAST/CVE, roadmap 6/12/18 mois. <b>Aucun watermark, aucune clause de republication, aucune mention imposée</b>. Vous les utilisez pour votre board, votre VC, votre acquéreur, sans nous demander. Les accès read-only sur votre infra sont <b>révoqués à J+11</b>.
+            Le devis énumère les livrables remis et la procédure de révocation des accès. Conformément aux CGV, les livrables spécifiques sont transférés après paiement complet, sous réserve des éléments préexistants, outils génériques et licences tierces.
           </div>
         </div>
 

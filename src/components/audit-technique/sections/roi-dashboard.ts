@@ -122,7 +122,7 @@ export const roiDashboardHtml = `
       <div class="at-roi-kpi">
         <div class="at-roi-kpi-delta">ISO<span>19011</span></div>
         <div class="at-roi-kpi-k">Méthodologie d'audit</div>
-        <div class="at-roi-kpi-n">Téléchargeable en PDF avant signature</div>
+        <div class="at-roi-kpi-n">Périmètre et critères communiqués avant signature</div>
       </div>
     </div>
 
@@ -142,7 +142,7 @@ export const roiDashboardHtml = `
             </div>
           </div>
           <h4>Méthodologie documentée</h4>
-          <p>Pas d'improvisation&nbsp;: <b>PDF de 15 pages "comment on audite"</b> téléchargeable avant signature. Vos devs peuvent le lire, le challenger, proposer des ajustements. Conforme <b>ISO 19011</b>.</p>
+          <p>La méthode, les critères, les outils et les limites sont communiqués avant signature. Vos devs peuvent les lire, les challenger et proposer des ajustements. Les principes applicables du référentiel ISO 19011 servent de guide, sans revendiquer une certification.</p>
           <div class="at-roi-step-foot">→ Livrable reproductible</div>
         </div>
 
@@ -153,9 +153,9 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><circle cx="17" cy="11" r="3"/></svg>
             </div>
           </div>
-          <h4>2 devs seniors par audit</h4>
-          <p>Pas de stagiaire, pas de junior "qui apprend". <b>2 devs seniors 10+ ans</b> assignés sur votre mission, plus un lead qui valide chaque livrable. Photos &amp; LinkedIn visibles dès le kickoff.</p>
-          <div class="at-roi-step-foot">→ Équipe nommée dans le devis</div>
+          <h4>Équipe adaptée au périmètre</h4>
+          <p>Les intervenants, leur rôle et leur niveau d'expérience sont nommés dans le devis à partir des compétences réellement nécessaires. Aucun niveau d'ancienneté supérieur aux profils publics n'est présumé.</p>
+          <div class="at-roi-step-foot">→ Composition nommée dans le devis</div>
         </div>
 
         <div class="at-roi-step">

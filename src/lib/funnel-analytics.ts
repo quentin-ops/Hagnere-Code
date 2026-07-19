@@ -18,6 +18,7 @@ export const FUNNEL_EVENT_NAMES = [
   "pf:step_skip",
   "pf:step_validation_block",
   "pf:submit_error",
+  "pf:submit_partial",
   "pf:submit_start",
   "pf:submit_success",
   "pf:voice_record_start",

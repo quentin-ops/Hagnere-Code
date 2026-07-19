@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     ...OG_BASE,
     title: "Audit technique — Hagnéré Code",
     description:
-      "Votre dette technique, chiffrée en euros. Livrée en 10 jours. Rapport board-ready exploitable par VC / acquéreur / board. 100 % déductible si mission de remédiation > 50 k€ suit.",
+      "Audit technique cadré pour une décision de direction : constats, hypothèses de coût, priorités et livrables définis au devis.",
     url: "/services/audit-technique",
     images: [SERVICES_OG_IMAGE],
   },
@@ -47,7 +47,7 @@ const serviceJsonLd = JSON.stringify({
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "Audit technique one-shot pour PME, ETI, scale-up et investisseurs français : 8 dimensions couvertes (Code quality, Architecture, Performance, Sécurité, Infrastructure, DevEx/DORA, FinOps cloud, Équipe & organisation), Tech Debt P&L chiffré en euros, deck exécutif board-ready, backlog priorisé Notion/Linear, version board-safe anonymisée, diagrammes C4 AS-IS/TO-BE, roadmap 6/12/18 mois. Méthodologie ISO 19011, clause de non-conflit d'intérêt publique (100 % déduit si mission de remédiation > 50 k€ suit), garantie ≥ 3 recommandations actionnables ou 50 % remboursé.",
+    "Audit technique pour PME, ETI, équipes produit et investisseurs : code, architecture, performance, sécurité, infrastructure, DevEx, coûts cloud et organisation. Les dimensions, livrables, hypothèses de chiffrage, calendrier et critères d'acceptation sont confirmés au devis.",
   offers: [
     {
       "@type": "Offer",
@@ -63,7 +63,7 @@ const serviceJsonLd = JSON.stringify({
       price: "18000",
       priceCurrency: "EUR",
       description:
-        "Format Standard 10 jours ouvrés, 2 seniors + un lead, 8 dimensions couvertes, rapport PDF 40-70 pages, Tech Debt P&L chiffré en euros, deck exécutif 12-18 slides board-ready, version board-safe, backlog Notion 20-30 tickets, diagrammes C4, Loom 20-30 min, roadmap 6/12/18 mois. Pour baseline CTO, pré-levée, préparation SOC2, go/no-go interne. Déduit 100 % si mission remédiation > 50 k€ suit.",
+        "Base budgétaire pour un format Standard. Dimensions, équipe, calendrier, volume et format des livrables sont confirmés après cadrage dans le devis signé.",
     },
     {
       "@type": "Offer",
@@ -103,7 +103,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui, et publiquement affiché : Express 8 000 €, Standard 18 000 €, Deep 38 000 €, Tech DD M&A 68 000 € HT. Les extras (pentest CERT-FR, retest post-remédiation, shadow CTO, restitution board physique, FinOps deep-dive, couche IA/LLM) sont chiffrés à l'avance dans le devis initial. Zéro avenant surprise en cours d'audit.",
+          "Les budgets de départ sont affichés publiquement. Les options, dont un pentest confié à un prestataire qualifié PASSI lorsque le cahier des charges l'exige, sont identifiées et chiffrées dans le devis avant intervention.",
       },
     },
     {
@@ -112,7 +112,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Pour aligner nos intérêts économiques sur la qualité du diagnostic. Si une mission de remédiation > 50 k€ suit l'audit, 100 % du prix de l'audit est déduit de la première facture. Résultat : nous n'avons aucun intérêt économique à noircir le rapport pour pousser une mission ensuite — l'incitation est inverse.",
+          "L'audit sépare les constats, leurs preuves et les hypothèses de coût. Toute remise ou déduction liée à une mission ultérieure doit être indiquée explicitement dans le devis ; elle n'est pas présumée par les CGV publiques.",
       },
     },
     {
@@ -121,7 +121,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Sept engagements écrits en CGV : NDA mutuel J0 opposable, clause de non-conflit d'intérêt publique (100 % déduit si mission > 50 k€), garantie ≥ 3 recos actionnables ou 50 % remboursé, version board-safe anonymisée incluse, méthodologie ISO 19011 téléchargeable, sample report anonymisé disponible avant signature, propriété client exclusive des livrables sans watermark ni clause de republication.",
+          "Le devis indique les livrables, critères d'acceptation, confidentialité, calendrier, accès, réversibilité et droits de propriété applicables. Les livrables spécifiques sont transférés selon les CGV après paiement complet, sous réserve des composants préexistants et licences tierces.",
       },
     },
     {

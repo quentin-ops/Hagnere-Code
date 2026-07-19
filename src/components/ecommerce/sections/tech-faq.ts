@@ -5,27 +5,25 @@ export const techFaqHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Pour les profils techniques</div>
-        <h2>Les questions qu'un lead tech<br>e-com nous pose à chaque call.</h2>
+        <h2>Les questions à documenter<br>avec votre lead tech.</h2>
       </div>
       <div class="right">
-        Huit questions techniques qu'on entend systématiquement de la part des CTO / lead devs / responsables
-        DSI qui évaluent une agence e-commerce. Réponses directes, sans jargon marketing.
+        Huit sujets à trancher avant signature. Les réponses ci-dessous décrivent notre méthode ;
+        l'architecture, les niveaux de service et les outils retenus figurent dans le dossier du projet.
       </div>
     </div>
 
     <div class="ec-tfaq-list reveal reveal-d-1">
       <div class="faq-item">
         <div class="faq-q">
-          Stack exact — qu'est-ce que vous utilisez vraiment en prod ?
+          Quelle stack préconisez-vous pour ce projet ?
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Storefront</b> : Next.js 16 App Router (React 19, Server Components, Server Actions) + Tailwind v4.
-          <b>Back</b> : Next.js API + TypeScript (Node), Stripe Billing, queues Redis, back-office React sur mesure, Meilisearch.
-          <b>Mobile</b> : React Native + Expo, EAS Build + Update.
-          <b>DB</b> : PostgreSQL 17 + <b>pgvector</b> pour la recherche sémantique, Redis 7 cache/queues/sessions.
-          <b>IA</b> : Claude Opus 4.7, embeddings Voyage ou OpenAI.
-          <b>Infra</b> : Scaleway ou OVH, Vercel pour le front, Cloudflare CDN + WAF + sGTM Worker.
+          Il n'existe pas de stack unique. Next.js et React peuvent porter le storefront ; TypeScript, PostgreSQL,
+          Redis, Meilisearch ou pgvector sont retenus seulement si le besoin les justifie. React Native peut couvrir
+          l'app mobile. Le moteur e-commerce, le fournisseur IA, le cloud et les services tiers sont comparés puis
+          consignés dans une décision d'architecture avec leurs versions, coûts, limites et responsabilités.
         </div>
       </div>
 
@@ -35,11 +33,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          Architecture <b>stateless</b> : le front Next.js est sur edge (Vercel ou Cloudflare Workers),
-          l'API Next.js scale horizontalement (k8s, Vercel, ou Scaleway scale set selon déploiement).
-          Sur nos derniers benchs : <b>500 à 1 000 commandes/minute soutenues</b> sur une config à 4 pods
-          et une DB Postgres db-prod-16. On teste chaque livraison avec <b>k6 à 10× le pic normal</b>
-          avant go-live.
+          Il n'y a pas de capacité générique : panier, promotions, stock, PSP, ERP et base de données n'ont pas les
+          mêmes limites. On part de votre pic attendu, on définit un scénario k6, les jeux de données, seuils et
+          services inclus, puis on livre le rapport. La capacité annoncée ne vaut que pour cette configuration et ce test.
         </div>
       </div>
 
@@ -49,10 +45,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>SAQ-A</b> systématique via <b>Stripe Elements</b>, <b>Mollie</b> ou <b>Adyen Drop-in</b>.
-          Les données carte <b>ne transitent jamais</b> par nos serveurs. Tokens one-shot côté client,
-          webhooks signés côté serveur. 3DS2 frictionless activé par défaut. Aucune information carte
-          en base, y compris dans les logs. Pen test sur l'API de commande encouragé, on fournit les accès.
+          Les composants hébergés ou tokenisés du prestataire de paiement peuvent réduire le périmètre PCI, mais le
+          questionnaire et les obligations exactes dépendent de l'intégration et doivent être validés avec l'acquéreur
+          ou un conseil compétent. Les données carte ne doivent pas être stockées ni journalisées par l'application ;
+          les webhooks sont authentifiés, 3DS2/SCA gérés et le parcours de refus testé.
         </div>
       </div>
 
@@ -64,9 +60,9 @@ export const techFaqHtml = `
         <div class="faq-a">
           <b>Shopify</b> : export via Admin API (produits, collections, commandes, clients, metafields,
           redirections existantes). <b>Prestashop</b> : dump SQL + API webservice pour les attachements.
-          Import dans notre nouvelle stack via jobs idempotents (peut être rejoué). Mapping 301 généré
-          automatiquement à partir des slugs anciens + nouveaux. Jeu de tests : 100 produits représentatifs
-          sélectionnés par vous + comparaison before/after pixel-perfect.
+          L'import est conçu pour être rejouable. Le mapping 301 combine inventaire, règles automatiques et revue
+          humaine : il ne se déduit pas correctement des seuls slugs. Le plan de recette précise les volumes,
+          échantillons, contrôles de données et parcours à comparer avant la bascule.
         </div>
       </div>
 
@@ -76,11 +72,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          Postgres : <b>WAL continu</b>, snapshots toutes les 15 min, rétention 30 jours + snapshots
-          hebdo conservés 1 an. Stockés sur un <b>second provider</b> (règle 3-2-1).
-          <b>RTO cible 2 h, RPO cible 15 min.</b> Procédure de restauration testée tous les trimestres
-          sur un environnement isolé. Runbook fourni au client. Possibilité d'export chiffré vers votre
-          propre bucket S3 si souveraineté critique.
+          Le RPO et le RTO sont fixés selon le coût d'une perte de données et d'une indisponibilité. Le devis décrit
+          les sauvegardes, leur chiffrement, la rétention, l'éventuelle copie chez un second fournisseur et la
+          fréquence des tests de restauration. Un runbook identifie les responsables, accès et critères de succès.
         </div>
       </div>
 
@@ -90,11 +84,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Sentry</b> (front + back + mobile) avec context riche (user, commande, release), sourcemaps.
-          <b>Monitoring applicatif</b> pour perfs &amp; slow queries, dashboards dédiés pour les queues.
-          <b>PostHog</b> pour events produit + funnels. Logs structurés JSON → agrégateur (Better Stack ou
-          Grafana Loki). Alerts Slack sur : 5xx &gt; seuil, queue backlog, paiement échoué, stock négatif,
-          uptime &lt; 99,5 %.
+          Logs, erreurs, métriques et traces sont choisis selon l'architecture. Les données personnelles et secrets
+          sont minimisés ou masqués, les durées de conservation documentées et les accès limités. Le devis fixe les
+          signaux utiles — erreurs 5xx, files, paiements, stock, disponibilité — ainsi que les seuils et canaux d'alerte.
         </div>
       </div>
 
@@ -104,11 +96,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          Pyramide classique. Unit tests sur la logique métier (Vitest), feature tests sur chaque route
-          critique (checkout, paiement, commande, stock, permissions), <b>end-to-end Playwright</b>
-          sur les 5 parcours principaux (recherche, fiche, ajout panier, checkout invité, checkout connecté).
-          CI GitHub Actions bloque le merge si coverage critique baisse. Tests IA <b>déterministes</b>
-          avec mocks de réponses Claude.
+          Le plan de test part des risques : règles métier en unitaire, intégrations en tests de contrat, parcours
+          critiques en E2E et contrôles de migration sur données représentatives. Les seuils de couverture ne remplacent
+          pas les scénarios. Les fonctions IA sont testées avec jeux de référence, mocks et critères d'acceptation explicites.
         </div>
       </div>
 
@@ -118,10 +108,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>SLA TMA</b> : réponse &lt; 4 h ouvrées sur bug bloquant, &lt; 24 h ouvrées sur bug majeur.
-          Déploiement zero-downtime via Vercel / GitHub Actions / Kamal (selon infra), typiquement
-          <b>3 à 6 minutes</b> de build-deploy. Rollback en 1 commande, &lt; 2 min. Déploiement automatique
-          sur staging depuis la branche <code>main</code>, validation manuelle pour prod.
+          Le SLA dépend du forfait de maintenance : plage de service, sévérités, délai de réponse, délai cible de
+          rétablissement et exclusions sont écrits. Le pipeline prévoit staging, contrôles avant production et retour
+          arrière ; ses durées sont mesurées sur l'infrastructure retenue, pas promises avec un chiffre générique.
         </div>
       </div>
     </div>

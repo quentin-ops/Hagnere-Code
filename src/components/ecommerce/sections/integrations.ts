@@ -5,12 +5,11 @@ export const integrationsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Écosystème e-commerce FR</div>
-        <h2>Tout ce qui compte<br>en France, déjà prêt.</h2>
+        <h2>Les intégrations à inventorier<br>avant de chiffrer.</h2>
       </div>
       <div class="right">
-        Un e-commerce FR se branche à 20-40 outils tiers. Les voici segmentés par usage. Tout est
-        <b>prévu dès le cadrage</b> — pas en option, pas en avenant. Si votre outil n'est pas listé
-        mais a une API, on l'intègre en 2-5 jours.
+        Cette liste illustre les familles d'outils rencontrées en France. Une intégration n'est jamais présumée :
+        accès, documentation, volumes, limites, homologation et coût sont vérifiés avant d'entrer au devis.
       </div>
     </div>
 
@@ -86,7 +85,7 @@ export const integrationsHtml = `
           <div class="ec-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
           <div>
             <div class="ec-integ-kind">FACTURATION ÉLECTRONIQUE 2026</div>
-            <h4>Factur-X + Chorus Pro native.</h4>
+            <h4>Factur-X, B2G et Plateformes Agréées.</h4>
           </div>
         </div>
         <div class="ec-integ-chips">
@@ -107,7 +106,7 @@ export const integrationsHtml = `
           <div class="ec-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
           <div>
             <div class="ec-integ-kind">ERP &amp; COMPTA FR</div>
-            <h4>Votre compta, synchro temps réel.</h4>
+            <h4>Des flux comptables à définir et rapprocher.</h4>
           </div>
         </div>
         <div class="ec-integ-chips">
@@ -196,7 +195,8 @@ export const integrationsHtml = `
 
     <div class="ec-integ-foot reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M12 8V4M4 12h6M14 12h6"/></svg>
-      Votre outil n'est pas listé ? Si l'API REST, SOAP ou un flux programmé existent, on le branche en 2 à 5 jours. Sinon, on vous le dit honnêtement au cadrage.
+      Votre outil n'est pas listé ? Nous vérifions la documentation, les accès de test, les quotas, le sens des flux
+      et les contraintes contractuelles avant de donner un délai. Une API disponible ne garantit ni la faisabilité ni une intégration courte.
     </div>
   </div>
 </section>

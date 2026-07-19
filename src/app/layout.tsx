@@ -111,7 +111,8 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         {/* Pré-installé, désactivé tant que NEXT_PUBLIC_COOKIE_BANNER!=1.
-            À activer seulement si un outil à cookies est ajouté (GA, etc.). */}
+            Les intégrations tierces existantes restent bloquées localement
+            jusqu'à une action explicite, indépendamment de cette bannière. */}
         <CookieBanner />
       </body>
     </html>

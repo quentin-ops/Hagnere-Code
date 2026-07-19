@@ -8,8 +8,8 @@ export const deriskHtml = `
         <h2>Ce qui vous empêche de signer<br>un audit — et ce qu'on fait<br>pour le neutraliser contractuellement.</h2>
       </div>
       <div class="right">
-        Six peurs reviennent dans 9 calls sur 10 quand on parle d'audit. Chacune est légitime — et chacune
-        se traite par une <b>clause écrite dans le devis</b>, pas par une parole rassurante. Voici ce qu'on signe.
+        Ces six questions structurent le cadrage. Les réponses applicables sont transformées en livrables,
+        responsabilités et critères écrits dans le devis, sans inventer de fréquence client.
       </div>
     </div>
 
@@ -47,12 +47,12 @@ export const deriskHtml = `
         <div class="at-derisk-fear">
           « Les consultants vont pousser <b>leur propre agenda</b> (nous vendre une refonte). »
         </div>
-        <h4>Clause de non-conflit d'intérêt publique · 100 % déduit si mission suit</h4>
-        <p>Clause écrite dans nos CGV et affichée <b>publiquement sur cette page</b>&nbsp;: si une mission de remédiation &gt; 50 k€ suit l'audit, <b>100 % du prix de l'audit est déduit de la première facture</b>. Résultat&nbsp;: notre intérêt économique est aligné sur la qualité du diagnostic, pas sur le spin. Plus le rapport est rigoureux, plus vous avez confiance pour signer ensuite. C'est <b>la garantie la plus forte du marché FR</b>.</p>
+        <h4>Constats traçables · remédiation séparée</h4>
+        <p>Chaque constat renvoie à une preuve et les hypothèses de coût sont séparées du diagnostic. Une mission de remédiation fait l'objet d'un devis distinct. Toute remise éventuelle doit être écrite dans ce devis&nbsp;: elle n'est pas contenue par défaut dans les CGV publiques.</p>
         <div class="at-derisk-proof">
-          <span>✓ Clause CoI publique</span>
-          <span>✓ 100 % déduit si mission</span>
-          <span>✓ Cabinet refonte partenaire dispo</span>
+          <span>✓ Preuves rattachées</span>
+          <span>✓ Hypothèses explicites</span>
+          <span>✓ Remédiation séparée</span>
         </div>
       </div>
 
@@ -75,10 +75,10 @@ export const deriskHtml = `
         <div class="at-derisk-fear">
           « Le rapport sera <b>générique</b>, on l'aura déjà lu 10 fois. »
         </div>
-        <h4>Rapport d'exemple téléchargeable · grille documentée · recos chiffrées en €</h4>
-        <p>Un <b>rapport d'exemple, réalisé sur l'un de nos propres produits</b>, est téléchargeable avant signature — vous voyez notre méthodologie, notre niveau de détail, notre Tech Debt P&amp;L, sans avoir à nous croire sur parole. Chaque recommandation est <b>chiffrée en jours/homme et en euros</b>, pas une liste générique "améliorer la sécurité". Chaque note renvoie au critère de la grille qui la produit&nbsp;: vous pouvez la contester ligne à ligne.</p>
+        <h4>Exemple interne présenté sur demande · grille documentée</h4>
+        <p>Un exemple construit sur l'un de nos propres produits peut être présenté pendant le cadrage, en étant clairement identifié comme tel. Chaque recommandation du futur audit renvoie au critère et aux hypothèses qui la produisent&nbsp;: vous pouvez la contester ligne à ligne.</p>
         <div class="at-derisk-proof">
-          <span>✓ Exemple téléchargeable</span>
+          <span>✓ Exemple interne identifié</span>
           <span>✓ Recos chiffrées j/h + €</span>
           <span>✓ Grille de scoring ouverte</span>
         </div>

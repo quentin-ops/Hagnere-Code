@@ -295,7 +295,7 @@ export const scenariosHtml = `
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Gap analysis complète · 160 contrôles SOC2 (ou 114 ISO 27001) mappés</div>
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Plan de mise en conformité 6-9 mois · chiffré en j/h + €</div>
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Recommandation outils (Vanta / Drata / Secureframe) + coûts estimés</div>
-            <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span><b>Pentest CERT-FR inclus</b> (partenaire) · +10 k€ dans la formule</div>
+            <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span><b>Pentest indépendant à chiffrer</b> · prestataire qualifié PASSI si requis</div>
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Liste des cabinets d'audit officiels recommandés (tiers habilités)</div>
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Deck commercial pour rassurer votre prospect enterprise · 8 slides</div>
           </div>
@@ -307,7 +307,7 @@ export const scenariosHtml = `
           </div>
           <dl class="at-scen-meta">
             <div class="at-scen-meta-row"><dt>Durée</dt><dd>10 j ouvrés audit + 5 j pentest partenaire</dd></div>
-            <div class="at-scen-meta-row"><dt>Équipe</dt><dd>2 seniors Hagnéré + partenaire CERT-FR</dd></div>
+            <div class="at-scen-meta-row"><dt>Équipe</dt><dd>Composition et éventuel prestataire indépendant au devis</dd></div>
             <div class="at-scen-meta-row"><dt>Framework</dt><dd>SOC2 Type 1/2 · ISO 27001 · HDS si santé</dd></div>
             <div class="at-scen-meta-row"><dt>Suite</dt><dd>On ne fait pas l'audit officiel (tiers habilité)</dd></div>
             <div class="at-scen-meta-row"><dt>Timing</dt><dd>Démarrage sous 7 j ouvrés</dd></div>

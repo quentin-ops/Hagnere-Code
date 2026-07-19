@@ -21,23 +21,23 @@ ${navHtml}
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Boutiques e-commerce sur mesure</span></div>
       <h1>Votre boutique e-commerce,<br><span class="accent">pas celle</span> de Shopify.</h1>
       <div class="shero-tagline">
-        <span>Design &amp; charte graphique inclus</span>
+        <span>Design &amp; charte graphique au devis</span>
         <span class="sep"></span>
-        <span>App mobile iOS &amp; Android native</span>
+        <span>App mobile iOS &amp; Android en option</span>
         <span class="sep"></span>
         <span>Forfait fixe, code à vous</span>
       </div>
       <p class="shero-sub">
         On construit des boutiques e-commerce <b>sur mesure, pensées pour le marché français 2026</b> :
-        Factur-X, Chorus Pro, Alma, Colissimo, Chronopost, Sage, Pennylane — tout est intégré dès le départ.
-        Pas de % sur vos ventes, pas d'app store à rallonge, pas de lock-in.
+        paiement, livraison, ERP et facturation électronique sont cadrés selon vos outils et vos obligations.
+        Pas de commission Hagnéré sur vos ventes, pas de dépendance à un outil propriétaire de l'agence.
         <b>Votre code, votre serveur, votre marge.</b>
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
           Cadrer mon projet e-commerce <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="#simulateur" class="btn btn-ghost btn-lg">Calculer le coût réel de Shopify</a>
+        <a href="#simulateur" class="btn btn-ghost btn-lg">Estimer le TCO Shopify sur 36 mois</a>
       </div>
       <div class="shero-badges">
         <div class="shero-badge">
@@ -63,8 +63,8 @@ ${navHtml}
             </svg>
           </div>
           <div class="shero-badge-body">
-            <div class="shero-badge-key">FX<span class="shero-badge-key-unit">·26</span></div>
-            <div class="shero-badge-label">Factur-X 2026 native</div>
+            <div class="shero-badge-key">FX<span class="shero-badge-key-unit">·PA</span></div>
+            <div class="shero-badge-label">Factur-X et PA selon périmètre</div>
           </div>
         </div>
 
@@ -77,7 +77,7 @@ ${navHtml}
           </div>
           <div class="shero-badge-body">
             <div class="shero-badge-key">FR<span class="shero-badge-pulse"></span></div>
-            <div class="shero-badge-label">Hébergement souverain</div>
+            <div class="shero-badge-label">Hébergement en France disponible</div>
           </div>
         </div>
       </div>
@@ -338,11 +338,11 @@ ${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Là où vous êtes probablement aujourd'hui</div>
-        <h2>Six pièges classiques<br>qu'on voit chaque semaine.</h2>
+        <h2>Six points de vigilance<br>avant une refonte.</h2>
       </div>
       <div class="right">
-        Aucun n'est honteux. Ce sont les mêmes problèmes qui nous arrivent de marques à 50 k€/mois comme de PME qui font 5 M€.
-        Plus on attend, plus le coût de sortie grimpe — en frais, en SEO perdu, en équipe épuisée.
+        Ces situations ne valent pas diagnostic à elles seules. Elles servent à identifier les coûts, dépendances
+        et risques à documenter avant de choisir entre une optimisation de l'existant et une refonte.
       </div>
     </div>
 
@@ -361,8 +361,8 @@ ${navHtml}
         <div class="ecp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
         <h3>« Notre Prestashop 1.7 bugge tous les mois »</h3>
         <p>
-          Modules pas maintenus, thème custom qui casse à chaque mise à jour, perfs médiocres, paiement en ligne fragile.
-          Vous payez un dev freelance 1 500 €/mois pour maintenir un truc qui prend l'eau.
+          Modules non maintenus, thème fragile à chaque mise à jour, performances dégradées ou paiement instable :
+          mesurez le coût correctif réel avant de conclure qu'une refonte complète est nécessaire.
         </p>
         <div class="ecp-foot">Ce qu'on fait : <b>reprise ou refonte propre, migration contrôlée</b>.</div>
       </div>
@@ -371,20 +371,20 @@ ${navHtml}
         <div class="ecp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
         <h3>« On n'a toujours pas d'app mobile »</h3>
         <p>
-          Vos clients fidèles achètent 2× plus depuis une app native — push, wallet, scan produit, compte permanent —
-          mais sortir une app iOS/Android ressemble à un projet séparé à 80 k€.
+          Push, wallet, scan produit et compte permanent peuvent servir la fidélité, mais une app native n'est
+          pertinente que si la fréquence d'achat, l'usage mobile et le coût d'exploitation justifient le projet.
         </p>
-        <div class="ecp-foot">Ce qu'on livre : <b>app React Native native, dans le même forfait que le web</b>.</div>
+        <div class="ecp-foot">Ce qu'on chiffre : <b>app React Native dans les forfaits qui l'incluent ou en option explicite</b>.</div>
       </div>
 
       <div class="ecp-card reveal">
         <div class="ecp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M18 9l-5 5-3-3-4 4"/></svg></div>
         <h3>« Notre SEO dégringole depuis la refonte »</h3>
         <p>
-          Migration mal faite, redirections 301 bricolées, URLs cassées, rich snippets perdus : -40 % de trafic
-          organique en 3 mois et c'est irrécupérable sans mois de rattrapage.
+          Une migration sans inventaire, redirections ni recette peut dégrader le trafic et l'indexation.
+          L'ampleur et la durée d'une variation dépendent du site, du marché et des changements réalisés.
         </p>
-        <div class="ecp-foot">Ce qu'on promet : <b>mapping 301 exhaustif + Core Web Vitals verts garantis</b>.</div>
+        <div class="ecp-foot">Ce qu'on met en place : <b>inventaire, mapping 301, recette et suivi post-bascule</b>.</div>
       </div>
 
       <div class="ecp-card reveal reveal-d-1">
@@ -400,12 +400,12 @@ ${navHtml}
 
       <div class="ecp-card reveal reveal-d-2">
         <div class="ecp-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21"/></svg></div>
-        <h3>« Le back-office fait perdre 15 h/semaine à mon équipe »</h3>
+        <h3>« Le back-office mobilise trop de temps dans mon équipe »</h3>
         <p>
           Édition de BL, impression étiquettes Colissimo, ressaisie dans Sage, relance clients par email, tracking manuel,
           ressaisie marketplace : votre équipe passe plus de temps à administrer qu'à vendre.
         </p>
-        <div class="ecp-foot">Ce qu'on automatise : <b>commandes → étiquettes → Sage → emails → tout seul</b>.</div>
+        <div class="ecp-foot">Ce qu'on automatise : <b>commandes → étiquettes → ERP → emails, avec contrôles et reprise manuelle</b>.</div>
       </div>
     </div>
   </div>
@@ -420,8 +420,8 @@ ${navHtml}
         <h2>Une boutique complète,<br>pas juste un site web.</h2>
       </div>
       <div class="right">
-        Une vraie boutique e-commerce en 2026, c'est six chantiers en même temps. On les traite
-        tous <b>dans le même forfait</b>, avec <b>la même équipe identifiée</b>, sans pool anonyme ni sous-traitance offshore.
+        Une boutique e-commerce mobilise six chantiers liés. Le devis précise ceux qui sont nécessaires,
+        les personnes mobilisées, les livrables attendus et les éventuels partenaires techniques.
       </div>
     </div>
 
@@ -462,8 +462,8 @@ ${navHtml}
           <div class="ec-bento-num">02</div>
           <div class="ec-bento-kind">Storefront</div>
         </div>
-        <h3 class="ec-bento-title">Next.js 15 · LCP &lt; 1,5s.</h3>
-        <p class="ec-bento-desc">SSR + ISR, fiche produit dynamique, recherche sémantique IA, panier persistant cross-device.</p>
+        <h3 class="ec-bento-title">Next.js · objectifs mesurables.</h3>
+        <p class="ec-bento-desc">SSR + ISR, fiche produit dynamique, recherche sémantique et panier persistant. Les seuils de performance sont définis et testés sur les parcours retenus.</p>
 
         <div class="ec-b-store-canvas" aria-hidden="true">
           <div class="ec-b-store-window">
@@ -484,11 +484,11 @@ ${navHtml}
             </div>
           </div>
           <div class="ec-b-store-perf">
-            <span class="ec-b-perf-dot" style="--d:#166534"></span> LCP 1,2 s
+            <span class="ec-b-perf-dot" style="--d:#166534"></span> Objectifs de recette
             <span class="ec-b-perf-sep"></span>
-            <span class="ec-b-perf-dot" style="--d:#166534"></span> CLS 0,02
+            <span class="ec-b-perf-dot" style="--d:#166534"></span> LCP · INP · CLS
             <span class="ec-b-perf-sep"></span>
-            <span class="ec-b-perf-dot" style="--d:#166534"></span> INP 96 ms
+            <span class="ec-b-perf-dot" style="--d:#166534"></span> Mesurés au lancement
           </div>
         </div>
       </article>
@@ -627,27 +627,27 @@ ${navHtml}
           <div class="ec-bento-kind">Maintenance</div>
         </div>
         <h3 class="ec-bento-title">On reste votre équipe tech.</h3>
-        <p class="ec-bento-desc">Forfait TMA mensuel : monitoring 24/7, mises à jour sécurité, évolutions incluses, SLA 99,9 %.</p>
+        <p class="ec-bento-desc">Forfait TMA mensuel : supervision, mises à jour de sécurité et capacité d'évolution. Disponibilité et délais d'intervention sont précisés au devis.</p>
 
         <div class="ec-b-ops-canvas" aria-hidden="true">
           <div class="ec-b-ops-status">
             <div class="ec-b-ops-badge ec-b-ops-live">
               <span class="ec-b-ops-pulse"></span>
-              ALL SYSTEMS OPERATIONAL
+              EXEMPLE DE SUPERVISION
             </div>
-            <small>· depuis 47 j</small>
+            <small>· données de démonstration</small>
           </div>
           <div class="ec-b-ops-grid">
             <div class="ec-b-ops-metric">
-              <small>UPTIME · 30J</small>
-              <strong>99,95<span>%</span></strong>
+              <small>DISPONIBILITÉ</small>
+              <strong>SUIVI<span> 30 j</span></strong>
               <div class="ec-b-ops-bars">
                 <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
               </div>
             </div>
             <div class="ec-b-ops-metric">
-              <small>TTFB MÉDIAN</small>
-              <strong>184<span>ms</span></strong>
+              <small>PERFORMANCE</small>
+              <strong>SEUIL<span> défini</span></strong>
               <div class="ec-b-ops-spark">
                 <svg viewBox="0 0 60 18" preserveAspectRatio="none">
                   <path d="M0 14 L8 10 L16 12 L24 8 L32 11 L40 6 L48 9 L60 4" fill="none" stroke="currentColor" stroke-width="1.2"/>
@@ -656,15 +656,15 @@ ${navHtml}
             </div>
             <div class="ec-b-ops-metric">
               <small>DÉPLOIEMENTS</small>
-              <strong>47<span> en 30j</span></strong>
+              <strong>CI/CD<span> tracée</span></strong>
               <div class="ec-b-ops-dots">
                 <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
               </div>
             </div>
             <div class="ec-b-ops-metric">
               <small>SLA</small>
-              <strong>99,9<span>%</span></strong>
-              <div class="ec-b-ops-sla">Contractualisé</div>
+              <strong>SUR<span> devis</span></strong>
+              <div class="ec-b-ops-sla">Selon le périmètre</div>
             </div>
           </div>
         </div>
@@ -680,11 +680,11 @@ ${navHtml}
     <div class="section-head reveal" style="margin-bottom:0">
       <div class="left">
         <div class="eyebrow">— Notre process</div>
-        <h2>Six étapes,<br>livraison en 6 à 12 semaines.</h2>
+        <h2>Six étapes,<br>un calendrier tenu par le périmètre.</h2>
       </div>
       <div class="right">
-        Kick-off le lundi, démo live chaque vendredi. Vous voyez le produit grandir en temps réel,
-        pas découvrir un gros livrable au bout de 3 mois.
+        Le devis fixe la date de départ, les jalons et la cadence de démonstration. Vous validez progressivement
+        les parcours et livrables au lieu de découvrir l'ensemble uniquement en fin de projet.
       </div>
     </div>
 
@@ -694,42 +694,42 @@ ${navHtml}
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg></div>
         <h4>Audit &amp; cadrage</h4>
         <p>Workshop avec décideur + équipe ops. Analyse de l'existant (perfs, SEO, stack). Catalogage des intégrations cibles.</p>
-        <div class="proc-dur">1 SEMAINE</div>
+        <div class="proc-dur">À PLANIFIER</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
         <h4>Design &amp; Figma</h4>
         <p>Moodboard, charte graphique, design system. Prototype cliquable validé par vos équipes avant une seule ligne de code.</p>
-        <div class="proc-dur">1–2 SEMAINES</div>
+        <div class="proc-dur">À PLANIFIER</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
         <h4>Sprint dev</h4>
-        <p>Next.js + TypeScript + intégrations FR, par sprints d'1 semaine. Accès Git dès J+1. Démo live chaque vendredi.</p>
-        <div class="proc-dur">4–8 SEMAINES</div>
+        <p>Développement par itérations courtes, dépôt et environnements définis au lancement, démonstrations selon la cadence convenue.</p>
+        <div class="proc-dur">SELON PÉRIMÈTRE</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
         <h4>QA &amp; tests de charge</h4>
-        <p>Tests E2E Playwright, simulation Black Friday (10× pic normal), audit sécurité paiement PCI-DSS, Core Web Vitals.</p>
-        <div class="proc-dur">3–5 JOURS</div>
+        <p>Tests unitaires et E2E, scénario de charge dimensionné, revue du parcours de paiement et budget de performance.</p>
+        <div class="proc-dur">AU PLAN DE RECETTE</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M4 4h16v16H4zM4 12h16M12 4v16"/></svg></div>
         <h4>Migration 301</h4>
-        <p>Mapping URL → URL exhaustif, imports clients/commandes/produits, validation trafic SEO, bascule zero-downtime.</p>
-        <div class="proc-dur">3–7 JOURS</div>
+        <p>Inventaire des URL utiles, imports contrôlés, redirections, recette et plan de bascule avec procédure de retour.</p>
+        <div class="proc-dur">SELON VOLUMES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 06</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
         <h4>Go-live + TMA</h4>
-        <p>Formation équipe, Loom vidéo, guide PDF. Bascule en prod. Forfait TMA actif dès J+1. On reste votre équipe tech.</p>
-        <div class="proc-dur">CONTINU</div>
+        <p>Formation et documentation prévues au devis, bascule préparée et accompagnement post-lancement selon l'option retenue.</p>
+        <div class="proc-dur">LIVRABLES CONTRACTUELS</div>
       </div>
     </div>
   </div>
@@ -742,9 +742,9 @@ ${navHtml}
       <div class="eyebrow">— Notre stack e-commerce</div>
       <h2>Il n'y a pas UN bon stack e-commerce.<br>Il y a le bon <em>pour vous</em>.</h2>
       <p>
-        Shopify + Hydrogen domine le DTC. Medusa.js explose dans l'open-source. Sylius reste la référence
-        B2B Symfony. On ne fait pas semblant qu'une seule stack bat tout le monde en e-commerce — <b>on qualifie
-        votre cas avant de proposer un moteur</b>. Trois tracks, un avis tranché sur chacun.
+        Shopify + Hydrogen, Medusa et Sylius répondent à des contraintes différentes. On ne fait pas semblant
+        qu'une seule stack bat tout le monde en e-commerce : <b>on qualifie votre cas avant de proposer un moteur</b>.
+        Trois pistes, avec leurs avantages et leurs contre-indications.
       </p>
     </div>
 
@@ -754,18 +754,18 @@ ${navHtml}
       <article class="ec-stack-track reveal">
         <div class="ec-stack-track-head">
           <div class="ec-stack-track-tag">TRACK A</div>
-          <div class="ec-stack-track-when">Pour les marques DTC &lt; 10 M€ GMV · catalogue standard</div>
+          <div class="ec-stack-track-when">Pour les marques DTC · catalogue et processus plutôt standards</div>
         </div>
         <h3 class="ec-stack-track-title">Shopify Plus + storefront <em>sur mesure</em>.</h3>
         <p class="ec-stack-track-pitch">
-          On exploite <b>l'écosystème qui convertit le mieux</b> (checkout Shopify, Klaviyo, Gorgias,
-          Judge.me). On ajoute un storefront <b>Hydrogen ou Next.js 15</b> quand le SEO, la vitesse
+          On exploite <b>un écosystème largement outillé</b> (checkout Shopify, Klaviyo, Gorgias,
+          Judge.me). On ajoute un storefront <b>Hydrogen ou Next.js</b> quand le SEO, la vitesse
           ou l'identité de marque le justifient. Vous gardez Shopify. On apporte le sur-mesure là où ça compte.
         </p>
         <div class="ec-stack-track-chips">
           <span class="ec-stack-chip ec-stack-chip-main">Shopify Plus</span>
           <span class="ec-stack-chip">Hydrogen</span>
-          <span class="ec-stack-chip">Next.js 15</span>
+          <span class="ec-stack-chip">Next.js</span>
           <span class="ec-stack-chip">Remix / React Router 7</span>
           <span class="ec-stack-chip">Klaviyo</span>
           <span class="ec-stack-chip">Gorgias</span>
@@ -773,7 +773,7 @@ ${navHtml}
         </div>
         <div class="ec-stack-track-meta">
           <div><span class="k">Sweet spot</span><span class="v">Fashion · beauty · food · DTC</span></div>
-          <div><span class="k">Time-to-launch</span><span class="v">6 à 12 semaines</span></div>
+          <div><span class="k">Planning</span><span class="v">Établi après cadrage</span></div>
           <div><span class="k">Quand l'envisager</span><span class="v">Après un TCO documenté sur 36 mois</span></div>
           <div><span class="k">Contre-indication</span><span class="v">B2B lourd, checkout custom extrême</span></div>
         </div>
@@ -781,22 +781,22 @@ ${navHtml}
 
       <!-- Track B : Headless open-source -->
       <article class="ec-stack-track ec-stack-track-featured reveal reveal-d-1">
-        <div class="ec-stack-track-badge">LE PLUS DEMANDÉ</div>
+        <div class="ec-stack-track-badge">PISTE OPEN SOURCE</div>
         <div class="ec-stack-track-head">
           <div class="ec-stack-track-tag">TRACK B</div>
-          <div class="ec-stack-track-when">Pour modèles spécifiques · B2B · marketplace · &gt; 50k SKUs</div>
+          <div class="ec-stack-track-when">Pour modèles spécifiques · B2B · marketplace · catalogue complexe</div>
         </div>
         <h3 class="ec-stack-track-title"><em>Medusa.js v2</em> ou Sylius + Next.js.</h3>
         <p class="ec-stack-track-pitch">
           Moteurs <b>open-source API-first</b> pensés pour le custom. <b>Medusa</b> (Node/TypeScript)
-          pour les équipes JS et les marketplaces (Tekla, VeVe à 10k req/s tournent dessus).
+          pour les équipes JS et certains projets de marketplace.
           <b>Sylius</b> (Symfony) pour le B2B complexe avec workflows d'approbation et pricing multi-niveau.
-          Zéro dépendance à un SaaS — extensible sans limite.
+          Le cœur peut rester open source, avec des dépendances et limites d'exploitation à documenter.
         </p>
         <div class="ec-stack-track-chips">
           <span class="ec-stack-chip ec-stack-chip-main">Medusa.js v2</span>
           <span class="ec-stack-chip ec-stack-chip-main">Sylius</span>
-          <span class="ec-stack-chip">Next.js 15</span>
+          <span class="ec-stack-chip">Next.js</span>
           <span class="ec-stack-chip">TypeScript / NestJS</span>
           <span class="ec-stack-chip">GraphQL</span>
           <span class="ec-stack-chip">PostgreSQL 17</span>
@@ -805,9 +805,9 @@ ${navHtml}
         </div>
         <div class="ec-stack-track-meta">
           <div><span class="k">Sweet spot</span><span class="v">B2B · marketplace · subscriptions</span></div>
-          <div><span class="k">Time-to-launch</span><span class="v">10 à 16 semaines</span></div>
-          <div><span class="k">GMV idéal</span><span class="v">1 M€ → 50 M€ / an</span></div>
-          <div><span class="k">Contre-indication</span><span class="v">Time-to-market serré &lt; 8 semaines</span></div>
+          <div><span class="k">Planning</span><span class="v">Établi après cadrage</span></div>
+          <div><span class="k">Critère clé</span><span class="v">Complexité métier et maîtrise du moteur</span></div>
+          <div><span class="k">Contre-indication</span><span class="v">Besoin standard avec lancement très court</span></div>
         </div>
       </article>
 
@@ -821,7 +821,7 @@ ${navHtml}
         <p class="ec-stack-track-pitch">
           Le track du <b>sur-mesure intégral</b> : SaaS avec paiement complexe, marketplace verticale,
           plateforme B2B propriétaire, back-office métier lourd.
-          Stripe Billing pour les abonnements, back-office React taillé pour vos ops en 2 semaines au lieu de 2 mois.
+          Stripe Billing pour les abonnements et back-office React taillé pour vos opérations, avec un délai chiffré après cadrage.
           Pas pour remplacer Shopify sur une boutique classique — pour <b>les cas où Shopify et Medusa ne sont pas les bons outils</b>.
         </p>
         <div class="ec-stack-track-chips">
@@ -835,8 +835,8 @@ ${navHtml}
         </div>
         <div class="ec-stack-track-meta">
           <div><span class="k">Sweet spot</span><span class="v">SaaS avec commerce · marketplaces verticales</span></div>
-          <div><span class="k">Time-to-launch</span><span class="v">8 à 14 semaines</span></div>
-          <div><span class="k">GMV idéal</span><span class="v">Cas custom, peu importe le GMV</span></div>
+          <div><span class="k">Planning</span><span class="v">Établi après cadrage</span></div>
+          <div><span class="k">Critère clé</span><span class="v">Règles métier qui justifient le sur-mesure</span></div>
           <div><span class="k">Contre-indication</span><span class="v">Pure DTC sans logique métier</span></div>
         </div>
       </article>
@@ -855,7 +855,7 @@ ${navHtml}
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
           </div>
           <h4>App mobile React Native</h4>
-          <p>Même API, deux stores, OTA via EAS. Inclus Scale / Enterprise.</p>
+          <p>Même API, deux stores et mises à jour OTA compatibles avec leurs règles, si l'app figure au devis.</p>
         </div>
         <div class="ec-stack-extra">
           <div class="ec-stack-extra-ic">
@@ -876,7 +876,7 @@ ${navHtml}
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <h4>Infra EU + observabilité</h4>
-          <p>Scaleway / OVH, Vercel Edge + Cloudflare CDN, Sentry + PostHog, alertes 24/7.</p>
+          <p>Fournisseur, localisation, supervision, alertes et astreinte éventuelle sont choisis selon l'architecture.</p>
         </div>
       </div>
     </div>
@@ -905,11 +905,11 @@ ${navHtml}
     <div class="section-head reveal" style="margin-bottom:0">
       <div class="left">
         <div class="eyebrow">— Forfaits</div>
-        <h2>Trois paliers, un prix fixe.<br>Jamais de % sur vos ventes.</h2>
+        <h2>Trois paliers, un prix fixe.<br>Aucune commission Hagnéré sur vos ventes.</h2>
       </div>
       <div class="right">
-        On vend au forfait, pas à l'abonnement. Vous savez exactement ce que vous payez.
-        Après la livraison, <b>0 €</b> qui part en frais de transaction cachés.
+        Le développement est chiffré au forfait. Les coûts tiers, l'hébergement, la maintenance et les éventuels
+        frais de paiement restent identifiés séparément pour rendre le coût total lisible.
       </div>
     </div>
 
@@ -920,38 +920,40 @@ ${navHtml}
         <div class="plan-sub">Pour lancer une boutique e-commerce propre et scalable, sans les contraintes d'un Shopify.</div>
         <div class="plan-price">
           <span class="amount">15–30 k€</span>
-          <span class="per">forfait TTC</span>
+          <span class="per">budget projet indicatif HT</span>
         </div>
         <div class="plan-hr"></div>
+        <div class="plan-sub"><b>Exemples de périmètre à confirmer au devis :</b></div>
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Charte graphique + Figma</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Storefront Next.js jusqu'à ~500 produits</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Stripe + Alma + 2 transporteurs FR</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Back-office complet + 1 ERP au choix</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Factur-X + Chorus Pro 2026-ready</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison en 6–8 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Back-office et flux ERP selon le besoin</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Factur-X + Plateforme Agréée selon périmètre</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning confirmé après cadrage</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
       </div>
 
       <div class="plan featured reveal reveal-d-1">
-        <div class="plan-badge">LE PLUS CHOISI</div>
+        <div class="plan-badge">POUR UNE REFONTE ÉTENDUE</div>
         <div class="plan-tag">SCALE</div>
         <h4>Refonte + App mobile</h4>
-        <div class="plan-sub">Pour refondre une boutique existante et sortir l'app mobile en même temps, sans perdre votre SEO.</div>
+        <div class="plan-sub">Pour refondre une boutique existante et, si l'usage le justifie, sortir l'app mobile dans le même programme.</div>
         <div class="plan-price">
           <span class="amount">30–70 k€</span>
-          <span class="per">forfait TTC</span>
+          <span class="per">budget projet indicatif HT</span>
         </div>
         <div class="plan-hr"></div>
+        <div class="plan-sub"><b>Exemples de périmètre à confirmer au devis :</b></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout le Launch +</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg><b>App iOS + Android incluse</b></li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Migration 5k produits + 10k clients</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Socle Launch adapté au projet</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg><b>App iOS + Android selon le périmètre</b></li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Volumes de migration inventoriés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1–2 marketplaces (Amazon, CDiscount…)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Server-side tracking GA4 + Meta CAPI</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Agents IA (reco, descriptions, SAV)</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison en 8–12 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning confirmé après audit de migration</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
       </div>
@@ -962,23 +964,25 @@ ${navHtml}
         <div class="plan-sub">Pour les marques qui vendent sur plusieurs pays, avec une composante B2B (pros, revendeurs, grossistes).</div>
         <div class="plan-price">
           <span class="amount">70–120 k€</span>
-          <span class="per">forfait TTC</span>
+          <span class="per">budget projet indicatif HT</span>
         </div>
         <div class="plan-hr"></div>
+        <div class="plan-sub"><b>Exemples de périmètre à confirmer au devis :</b></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout le Scale +</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Socle Scale adapté au projet</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Multi-pays, multi-devise, TVA OSS intracom</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>B2B complet (tarifs pro, paiement 30 j, devis)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Multi-entrepôt + ship-from-store</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Programme fidélité + abonnements</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Accompagnement 6 mois inclus</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Accompagnement et durée précisés au devis</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parlons-en</a></div>
       </div>
     </div>
 
     <p style="text-align:center;margin-top:40px;color:var(--mute);font-size:14px">
-      Tous les forfaits incluent : <b style="color:var(--ink)">charte graphique · Figma · code livré sur votre Git · 30 jours de garantie · formation équipe · hébergement 6 mois</b>
+      Les montants sont à confirmer sur devis. Le devis précise la base fiscale, les livrables, les coûts tiers,
+      la garantie corrective, la formation, l'hébergement et les éventuelles prestations récurrentes.
     </p>
   </div>
 </section>

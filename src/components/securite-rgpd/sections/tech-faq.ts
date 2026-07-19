@@ -5,11 +5,11 @@ export const techFaqHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Pour les profils techniques</div>
-        <h2>Les questions qu'un CTO ou<br>un DPO technique nous pose<br>à chaque appel.</h2>
+        <h2>Les questions à trancher<br>avec le CTO, le DPO et le RSSI.</h2>
       </div>
       <div class="right">
-        Huit questions techniques qu'on entend systématiquement de la part des CTO, DPO techniques, RSSI
-        de PME tech qui évaluent une équipe DPO + cyber. Réponses directes, sans jargon marketing.
+        Huit sujets à documenter avant un audit applicatif ou une remédiation. Les responsabilités juridiques,
+        techniques et cyber sont distinguées explicitement.
       </div>
     </div>
 
@@ -21,11 +21,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Cartographie sous-traitants</b> : outil maison Hagnéré (scan DNS + scan code source via GitHub
-          App + scan factures comptables). <b>Pipeline SAST/DAST/SCA</b> : Snyk + Trivy + ZAP intégrés
-          GitHub Actions. <b>Scan IAM cloud</b> : Steampipe + Prowler + ScoutSuite (AWS / GCP / Azure / Scaleway).
-          <b>Test de charge sécurité</b> : k6 + artillery. <b>Cookies / consent</b> : audit manuel + Optanon
-          + Tarte au Citron compliance check.
+          Les outils dépendent des accès autorisés, du cloud, du dépôt et du type de test. L'inventaire peut
+          combiner entretiens, contrats, DNS, code et comptes fournisseurs. SAST, DAST, SCA, revue IAM et tests
+          de consentement sont sélectionnés au plan d'audit ; aucune collecte automatisée n'est lancée hors périmètre.
         </div>
       </div>
 
@@ -35,10 +33,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          Vous nous donnez un accès <b>read-only sur votre repo</b> (GitHub / GitLab / Bitbucket). On fork,
-          on lit, on ouvre des issues prioritisées. Pour la remédiation, on demande un accès <b>collaborator</b>
-          temporaire, on ouvre des PR avec tests. Vous mergez (ou pas) après code review interne.
-          <b>Aucune écriture sans validation</b>. Logs d'accès tracés.
+          Le plan d'accès privilégie le moindre privilège et une durée limitée. L'audit peut rester en lecture seule.
+          La remédiation passe par une branche ou un fork autorisé, des PR, des tests et la revue de votre équipe.
+          Les comptes, journaux, révocations et responsabilités sont définis avant l'ouverture des accès.
         </div>
       </div>
 
@@ -48,12 +45,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          Workspace <b>privé restreint</b> (Notion ou Confluence selon client) avec MFA obligatoire pour
-          la collaboration courante. <b>Rapports d'audit sensibles</b> (findings cyber, schémas archi,
-          credentials test) stockés <b>chiffrés via Cryptomator</b> sur Scaleway Object Storage chiffré au
-          repos. Secrets partagés via <b>1Password</b> avec rotation au départ d'un consultant.
-          <b>Aucune copie sur drive personnel.</b> Suppression sécurisée 12 mois après fin de mission
-          (ou immédiate sur demande). Conforme à nos politiques internes alignées ISO 27001.
+          Le devis ou l'annexe sécurité précise les espaces autorisés, le MFA, le chiffrement, les personnes habilitées,
+          la gestion des secrets, la conservation et la suppression. Les rapports sensibles sont séparés des espaces
+          de collaboration courante et les accès sont révoqués en fin de mission selon la procédure convenue.
         </div>
       </div>
 
@@ -63,10 +57,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Non, on les complète.</b> Drata / Vanta automatisent la <b>collecte de preuves</b>. Nous, on
-          conçoit et on code les <b>contrôles eux-mêmes</b> (IAM, change management, business continuity,
-          monitoring). On installe Drata avec vous, on configure les intégrations (AWS, GitHub, Okta), on
-          comble les contrôles manquants en code. L'audit final reste avec un cabinet CPA accrédité.
+          Ces outils peuvent collecter des preuves ; ils ne remplacent ni les contrôles ni l'auditeur final.
+          Hagnéré Code peut implémenter des mesures techniques retenues au plan d'action. L'intégration de l'outil,
+          la préparation organisationnelle et l'audit indépendant restent des périmètres distincts au devis.
         </div>
       </div>
 
@@ -76,11 +69,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>(1) Logs structurés</b> de chaque inférence IA (input, output, modèle, version, timestamp, user).
-          <b>(2) Mécanismes de supervision humaine</b> (UI de validation pour décisions à haut risque,
-          override loggé). <b>(3) Tests de biais</b> automatisés sur les datasets et les outputs.
-          <b>(4) Documentation technique</b> Article 11 versionnée dans le repo. <b>(5) Procédure de retrait</b>
-          de modèle si un biais est détecté en prod. Tout est <b>code + tests + monitoring</b>, pas un PDF mort.
+          Selon le système et la qualification validée : journalisation minimisée, version du modèle, supervision
+          humaine, tests sur jeux de référence, documentation versionnée et procédure de retrait. Le plan précise
+          aussi les données qu'il ne faut pas journaliser et les durées de conservation.
         </div>
       </div>
 
@@ -90,11 +81,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          Vraiment. <b>(1) Bannière conforme CNIL</b> (refuser aussi visible que accepter, pas de cookie wall).
-          <b>(2) Tag Manager côté serveur</b> (Stape.io ou Cloudflare Worker) qui ne déclenche aucun pixel
-          avant consentement. <b>(3) Consent Mode v2</b> avec signaux ad_personalization / ad_user_data
-          configurés. <b>(4) Audit régulier</b> via Cookie-Script + tests Playwright qui simulent un refus
-          et vérifient qu'aucun cookie tiers ne se pose.
+          Nous inventorions les traceurs, finalités et déclencheurs, puis testons les parcours accepter, refuser
+          et retirer son choix. Le plan de marquage et la CMP doivent respecter la décision validée par votre DPO
+          ou conseil. Le server-side tagging et Consent Mode ne doivent jamais contourner un refus.
         </div>
       </div>
 
@@ -104,11 +93,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>(1) Inventaire</b> de chaque sous-traitant US (Anthropic, OpenAI, Vercel, HubSpot, Intercom,
-          Stripe, etc.) via scan code + DNS + factures. <b>(2) Vérification</b> de l'adhésion EU-US Data
-          Privacy Framework (DPF). Si non-DPF : <b>SCC Module 2/3</b> à signer. <b>(3) Transfer Impact
-          Assessment</b> par sous-traitant si données sensibles. <b>(4) Préférence systématique</b> pour
-          régions EU si disponibles (Anthropic EU, OpenAI EU resi, Stripe EU). Documenté dans le registre.
+          L'inventaire documente le fournisseur, les données, les lieux, les rôles et les garanties invoquées.
+          Votre DPO ou conseil valide le mécanisme applicable et l'éventuelle analyse d'impact du transfert.
+          Nous configurons ensuite la région, la minimisation et les contrôles techniques décidés.
         </div>
       </div>
 
@@ -118,11 +105,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>T+0</b> : confinement (rotation creds, isolation système). <b>T+2 h</b> : qualification (qui,
-          quoi, combien de personnes concernées, données impactées). <b>T+24 h</b> : décision de notification
-          CNIL (obligatoire si risque pour les droits). <b>T+72 h</b> : notification CNIL si nécessaire
-          (déclaration en ligne via votre compte). <b>T+5 j</b> : notification individuelle aux personnes
-          concernées si risque élevé. Runbook complet livré au DPO Scale, exercice annuel inclus.
+          Le runbook identifie détection, confinement, préservation des preuves, qualification, décision et communication.
+          Votre responsable de traitement et son DPO ou conseil décident des notifications et délais applicables ;
+          Hagnéré Code fournit les faits techniques, exécute les mesures autorisées et consigne la chronologie.
         </div>
       </div>
 

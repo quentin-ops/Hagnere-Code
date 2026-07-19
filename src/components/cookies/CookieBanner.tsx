@@ -7,7 +7,7 @@
  * Next.js 16 + Turbopack + React StrictMode (DOM jamais créé, error
  * silencieuse dans show()). Plus simple et plus contrôlable de garder
  * notre propre implémentation, surtout vu le besoin minimal :
- *   - Aucun cookie tiers déposé aujourd'hui
+ *   - Aucun cookie tiers chargé sans action explicite de l'utilisateur
  *   - 2 catégories : strictement nécessaire (toujours OK) + analytics
  *     (désactivé par défaut, prêt pour Plausible/PostHog/GA4 plus tard)
  *
@@ -163,10 +163,10 @@ export function CookieBanner() {
                 </label>
               </header>
               <p>
-                Aucun outil de mesure d&apos;audience n&apos;est actuellement
-                déployé sur ce site. Si nous en ajoutons un à l&apos;avenir
-                (par exemple Plausible ou Google Analytics), votre choix
-                exprimé ici sera systématiquement respecté avant tout dépôt.
+                Le site mesure quelques actions de conversion via une route du
+                même domaine, sans identifiant persistant ni adresse IP stockée.
+                Aucun outil d&apos;analytics tiers n&apos;est chargé. Tout futur outil
+                soumis au consentement respectera le choix exprimé ici.
               </p>
             </section>
 

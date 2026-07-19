@@ -42,8 +42,8 @@ ${navHtml}
         </div>
         <div class="at-hero-kpi-sep"></div>
         <div class="at-hero-kpi">
-          <div class="at-hero-kpi-v">0</div>
-          <div class="at-hero-kpi-k">Conflit d'intérêt · clause publique 100 % déduite</div>
+          <div class="at-hero-kpi-v">ÉCRIT</div>
+          <div class="at-hero-kpi-k">Constats, hypothèses et périmètre au devis</div>
         </div>
         <div class="at-hero-kpi-sep"></div>
         <div class="at-hero-kpi">
@@ -55,11 +55,11 @@ ${navHtml}
       <p class="shero-sub">
         Audit indépendant pour <b>VC en due diligence, acquéreur M&amp;A, CTO entrant, dirigeant avant refonte ou certification SOC2/ISO 27001</b>.
         Rapport board-ready avec <b>scoring /100 par dimension, Tech Debt P&amp;L chiffré en euros, matrice impact × effort, roadmap 6/12/18 mois</b>.
-        Clause de <b>non-conflit d'intérêt publique</b>&nbsp;: 100 % du prix déduit si <a href="/services/maintenance-evolution">mission de remédiation</a> &gt; 50 k€ suit.
+        Chaque constat est relié à une preuve et les hypothèses de coût sont explicites. Toute éventuelle remise liée à une <a href="/services/maintenance-evolution">mission de remédiation</a> figure au devis.
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
-          📄 Télécharger un sample de rapport
+          Demander un exemple de livrable
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
         <a href="#contact" class="btn btn-ghost btn-lg">Call de cadrage · 30 min offert</a>
@@ -67,7 +67,7 @@ ${navHtml}
       <div class="shero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Prix fixe · publié sur cette page</span>
         <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Garantie ≥ 3 recos actionnables ou 50 % remboursé</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Critères d'acceptation définis au devis</span>
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Version board-safe incluse</span>
       </div>

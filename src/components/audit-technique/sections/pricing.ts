@@ -8,9 +8,8 @@ export const pricingHtml = `
         <h2>Quatre formats d'audit,<br>prix fixe publié.<br>Extras chiffrés à l'avance.</h2>
       </div>
       <div class="right">
-        Zéro "nous consulter" sur le prix — ça casse 80 % de la friction commerciale 2026.
-        <b>NDA signé à J0</b>, clause de non-conflit d'intérêt publique, garantie ≥ 3 recos actionnables ou 50 % remboursé.
-        100 % déductible si une mission de remédiation &gt; 50 k€ suit.
+        Ces montants sont des bases HT. Après cadrage, le devis confirme les dimensions, l'équipe, le calendrier,
+        les livrables, les critères d'acceptation et les éventuelles options. Seul le contrat signé fait foi.
       </div>
     </div>
 
@@ -31,7 +30,7 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livrable Notion + Loom 15 min</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tech Debt P&amp;L simplifié</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Démarrage sous 3 j ouvrés</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Déduit 100 % si Standard suit</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Éventuelle remise indiquée au devis</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Cadrer l'Express</a></div>
       </div>
@@ -57,7 +56,7 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>5-8 entretiens équipe no-blame</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Positionnement vs référentiels publics</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Roadmap 6/12/18 mois · 3 scenarios</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Déduit 100 % si mission &gt; 50 k€</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Conditions commerciales au devis</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-accent">Cadrer le Standard</a></div>
       </div>
@@ -125,9 +124,9 @@ export const pricingHtml = `
         <div class="at-pricing-extra">
           <div class="at-pricing-extra-ic">🔐</div>
           <div class="at-pricing-extra-body">
-            <div class="at-pricing-extra-title">Pentest externe CERT-FR</div>
+            <div class="at-pricing-extra-title">Pentest externe indépendant</div>
             <div class="at-pricing-extra-price">+ 8 000 à 15 000 € HT</div>
-            <div class="at-pricing-extra-sub">Partenaire agréé CERT-FR · OWASP top 10 complet · rapport CVSS · obligatoire SOC2/ISO</div>
+            <div class="at-pricing-extra-sub">Prestataire qualifié PASSI à sélectionner si le cahier des charges l'exige · périmètre et prix au devis</div>
           </div>
         </div>
 
@@ -163,7 +162,7 @@ export const pricingHtml = `
           <div class="at-pricing-extra-body">
             <div class="at-pricing-extra-title">FinOps deep-dive cloud</div>
             <div class="at-pricing-extra-price">+ 4 000 à 8 000 € HT</div>
-            <div class="at-pricing-extra-sub">3-5 j supplémentaires sur AWS/GCP/OVH · économies typiques 20-40 % budget cloud</div>
+            <div class="at-pricing-extra-sub">Analyse AWS/GCP/OVH selon périmètre · pistes chiffrées à partir de vos factures et métriques</div>
           </div>
         </div>
 
@@ -179,7 +178,7 @@ export const pricingHtml = `
     </div>
 
     <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
-      <b style="color:var(--ink)">Tous les formats incluent</b> : NDA mutuel J0 · clause de non-conflit d'intérêt publique · version board-safe anonymisée · licences enterprise SonarQube / Snyk / Datadog · garantie ≥ 3 recos actionnables ou 50 % remboursé · <b style="color:var(--ink)">propriété client exclusive des livrables</b>.
+      <b style="color:var(--ink)">Le devis précise</b> : confidentialité, accès, équipe, outils, livrables, critères d'acceptation, délais et options. Le transfert des livrables spécifiques intervient selon les CGV après paiement complet.
     </p>
   </div>
 </section>

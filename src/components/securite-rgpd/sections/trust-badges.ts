@@ -6,7 +6,8 @@ export const trustBadgesHtml = `
     <div class="sr-trust-section-head reveal">
       <div class="eyebrow">— Engagements contractuels</div>
       <h2>Ce qu'on signe<br>avant de démarrer.</h2>
-      <p>On détaille ici <b>comment on travaille</b> — écrit noir sur blanc dans les CGV, pas dans la brochure. NDA mutuel signé J0, DPA contractualisé, sous-traitants UE par défaut, bonnes pratiques alignées ISO 27001.</p>
+      <p>Le devis et le contrat précisent les engagements applicables : confidentialité, DPA si nécessaire,
+      sous-traitants, livrables, délais, validation et réversibilité. Rien n'est présumé avant signature.</p>
     </div>
 
     <div class="sr-trust-section-grid">
@@ -14,8 +15,8 @@ export const trustBadgesHtml = `
       <div class="sr-trust-section-card reveal">
         <div class="sr-trust-section-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></div>
         <h4>Forfait fixe, sans success fee</h4>
-        <p>Le prix du devis est le prix final. <b>Zéro commission</b> sur une sanction évitée, zéro ticket surprise. On vend du travail cadré, pas de la peur.</p>
-        <div class="sr-trust-section-foot">— Pénalités contractuelles si retard</div>
+        <p>Le forfait couvre le périmètre signé, sans commission sur une sanction évitée. Toute évolution est décrite et chiffrée avant exécution.</p>
+        <div class="sr-trust-section-foot">— Prix, exclusions et procédure de changement au devis</div>
       </div>
 
       <div class="sr-trust-section-card reveal reveal-d-1">
@@ -27,30 +28,30 @@ export const trustBadgesHtml = `
 
       <div class="sr-trust-section-card reveal reveal-d-2">
         <div class="sr-trust-section-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-        <h4>CIR : on monte le dossier avec vous</h4>
-        <p>Les sprints de mise en conformité IA (logs, classification, biais, supervision) sont <b>potentiellement éligibles au CIR</b> sur la part R&amp;D. On monte le <b>dossier technique</b>, votre expert-comptable valide l'éligibilité finale.</p>
-        <div class="sr-trust-section-foot">— Dossier technique livré · sous réserve d'éligibilité</div>
+        <h4>R&amp;D : travaux et preuves documentés</h4>
+        <p>Si le projet comporte de véritables travaux de R&amp;D, nous documentons les verrous, essais et résultats. Votre conseil valide séparément l'éligibilité, les dépenses retenues et les conditions liées au prestataire.</p>
+        <div class="sr-trust-section-foot">— Documentation technique, sans promesse fiscale</div>
       </div>
 
       <div class="sr-trust-section-card reveal reveal-d-3">
         <div class="sr-trust-section-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
-        <h4>Formation post-livraison incluse</h4>
-        <p>Ateliers <b>RGPD / AI Act / cybersécurité</b> pour vos équipes (dev, RH, direction), inclus à chaque mission DPO. Documentation pédagogique + Loom vidéo + suivi 30 / 90 jours.</p>
-        <div class="sr-trust-section-foot">— Inclus dans tous les forfaits DPO</div>
+        <h4>Formation et documentation à cadrer</h4>
+        <p>Le devis précise les publics, ateliers, supports, documentation et éventuels rendez-vous de suivi nécessaires à l'autonomie de l'équipe.</p>
+        <div class="sr-trust-section-foot">— Livrables et calendrier écrits</div>
       </div>
 
       <div class="sr-trust-section-card reveal">
         <div class="sr-trust-section-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
-        <h4>Slack dédié · SLA 4 h ouvrées</h4>
-        <p>Canal Slack partagé avec le DPO + le lead dev référent. <b>Réponse sous 4 h ouvrées</b> sur tout incident bloquant (mise en demeure CNIL, fuite, breach). Pas de ticket Jira aveugle.</p>
-        <div class="sr-trust-section-foot">— SLA contractualisé au DPO Scale</div>
+        <h4>Canal et niveaux de service définis</h4>
+        <p>Le contrat précise le canal, la plage de service, les sévérités, le délai de réponse, l'escalade et les exclusions. Hagnéré Code fournit les éléments techniques à votre DPO ou conseil.</p>
+        <div class="sr-trust-section-foot">— SLA selon le contrat signé</div>
       </div>
 
       <div class="sr-trust-section-card reveal reveal-d-1">
         <div class="sr-trust-section-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
         <h4>Transparence sur les sous-traitants</h4>
-        <p>Liste publique des sous-traitants qu'on utilise pour votre mission (hébergement, outils audit, modèles IA). <b>DPA à jour sur chacun.</b> Si on en change, on vous prévient avant.</p>
-        <div class="sr-trust-section-foot">— Registre consultable sur demande</div>
+        <p>Le devis identifie les sous-traitants utilisés pour la mission, leur rôle, localisation et conditions applicables. Les changements suivent la procédure prévue au contrat.</p>
+        <div class="sr-trust-section-foot">— Liste et responsabilités documentées</div>
       </div>
 
     </div>

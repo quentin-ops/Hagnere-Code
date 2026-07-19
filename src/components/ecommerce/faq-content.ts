@@ -82,7 +82,7 @@ export const ECOMMERCE_FAQ_ITEMS: readonly EcommerceFaqItem[] = [
         ),
         part("(3)", { strong: true }),
         part(
-          " une autre ESN prend le relais. Trente jours de garantie corrective sont inclus.",
+          " une autre ESN prend le relais. La durée de garantie corrective et les délais de prise en charge sont précisés au devis.",
         ),
       ],
     ],
@@ -116,7 +116,7 @@ export const ECOMMERCE_FAQ_ITEMS: readonly EcommerceFaqItem[] = [
     question: "Vous faites aussi le design et la charte graphique ?",
     answer: [
       [
-        part("Oui, dans le périmètre de tous les forfaits", { strong: true }),
+        part("Oui, lorsqu'ils figurent dans le périmètre du devis", { strong: true }),
         part(
           ". Sans charte existante : moodboard, couleurs, typographies, logo et déclinaisons, design system Figma, maquettes web, mobile et email. Avec une charte existante, nous l'adaptons et l'étendons aux interfaces prévues au devis.",
         ),
@@ -167,7 +167,7 @@ export const ECOMMERCE_FAQ_ITEMS: readonly EcommerceFaqItem[] = [
     answer: [
       [
         part(
-          "L'architecture cible est stateless lorsque le projet le permet, avec mise à l'échelle horizontale, CDN et files de traitement isolées. Chaque livraison comprend un ",
+          "L'architecture cible est stateless lorsque le projet le permet, avec mise à l'échelle horizontale, CDN et files de traitement isolées. Lorsque le risque de charge le justifie, le devis comprend un ",
         ),
         part("test de charge défini à partir du pic attendu", { strong: true }),
         part(
@@ -180,12 +180,12 @@ export const ECOMMERCE_FAQ_ITEMS: readonly EcommerceFaqItem[] = [
     question: "L'application mobile iOS et Android est-elle incluse ?",
     answer: [
       [
-        part("Elle est incluse dans les forfaits "),
+        part("Elle peut être incluse dans les périmètres "),
         part("Scale", { strong: true }),
         part(" et "),
         part("Enterprise", { strong: true }),
         part(
-          " lorsque le périmètre signé la prévoit. Une codebase React Native est publiée sur l'App Store et le Play Store sous vos comptes développeur. Sur le forfait Launch, l'application reste une option, généralement chiffrée entre 15 et 25 k€ selon les fonctionnalités.",
+          " lorsque le périmètre signé la prévoit. Une codebase React Native est publiée sur l'App Store et le Play Store sous vos comptes développeur. Sur le forfait Launch, l'application reste une option, avec un budget indicatif de 15 à 25 k€ HT à confirmer selon les fonctionnalités.",
         ),
       ],
     ],

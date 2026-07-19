@@ -3,15 +3,15 @@ import { SitesVitrines } from "@/components/sites-vitrines/SitesVitrines";
 import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Création site vitrine · Performance garantie · Hagnéré Code",
+  title: "Création de site vitrine performant · Hagnéré Code",
   description:
-    "Sites vitrines et landing pages Next.js, 5× plus rapides que WordPress. Lighthouse 95+ garanti par contrat, forfait fixe dès 6 900 €, code à vous.",
+    "Sites vitrines et landing pages Next.js : objectifs de performance mesurés, SEO technique, CMS et budget indicatif dès 6 900 € HT, selon périmètre.",
   alternates: { canonical: "/services/sites-vitrines" },
   openGraph: {
     ...OG_BASE,
     title: "Sites vitrines & landing pages — Hagnéré Code",
     description:
-      "Next.js statique, Lighthouse 95+, SEO technique, CMS headless. Forfait fixe, livré en 2 à 8 semaines, hébergé en France.",
+      "Next.js, SEO technique, CMS headless et budget de performance défini selon le contenu, les scripts tiers et le périmètre du projet.",
     url: "/services/sites-vitrines",
     images: [SERVICES_OG_IMAGE],
   },
@@ -46,7 +46,7 @@ const serviceJsonLd = JSON.stringify({
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "Création de sites vitrines, landing pages haute conversion, refontes WordPress vers Next.js, sites multilingues et e-commerce headless. Stack Next.js 15, CMS Sanity ou Strapi, hébergement Vercel ou OVH. Performance contractuelle Lighthouse 95+, LCP < 1,5 s, Core Web Vitals verts.",
+    "Création de sites vitrines, landing pages et refontes web avec Next.js et CMS adapté. Le devis précise le budget, le calendrier, l'hébergement, la migration SEO et les objectifs de performance mesurables.",
   offers: [
     {
       "@type": "Offer",
@@ -85,7 +85,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "2 à 4 semaines pour une landing page ou un mini-site (3–5 pages). 5 à 7 semaines pour un site vitrine corporate de 10–20 pages avec blog et SEO technique. 8 à 14 semaines pour une plateforme multilingue ou un e-commerce. Les délais sont contractualisés au cadrage, avec clause de pénalité si dépassement.",
+          "Le délai dépend du nombre de gabarits, des contenus, des intégrations et de la migration. Le calendrier et toute conséquence d'un retard ne s'appliquent que s'ils figurent dans le devis signé.",
       },
     },
     {
@@ -94,7 +94,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui, à 100 %. Le repo Git est sur votre compte GitHub dès le jour 1, le domaine à votre nom, l'hébergement Vercel ou OVH facturé directement à vous. Vous pouvez partir à tout moment avec le code, la doc et l'historique. Aucun lock-in technique ou contractuel.",
+          "Le devis précise les accès au dépôt, au domaine et à l'hébergement. Les livrables spécifiques sont transférés après paiement complet conformément aux CGV, sous réserve des composants préexistants et licences tierces.",
       },
     },
     {
@@ -112,7 +112,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Non, avec un plan de migration SEO systématique : audit des URLs indexées, redirections 301 page à page, préservation des balises title/meta/h1 qui rankent, monitoring 3 mois des positions post-live. Sur nos migrations WordPress vers Next.js, 98 % des positions sont conservées ou améliorées.",
+          "Une refonte peut faire varier les positions. Le plan de migration inventorie les URLs, prépare les redirections, conserve les signaux utiles et définit un suivi post-mise en ligne, sans garantir le maintien du classement.",
       },
     },
     {
@@ -121,16 +121,16 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Sur 3 ans, Next.js revient moins cher : pas de maintenance plugins (≈1 800 €/an économisés), pas de hack à réparer, pas de refonte à prévoir. Et 5× plus rapide (LCP 1 s vs 4–6 s en WordPress moyen), ce qui représente +7 à +15 % de conversion selon les données Google. Le ROI se fait en 6–12 mois.",
+          "Le coût sur trois ans dépend de l'hébergement, du CMS, des intégrations, de la maintenance et de l'équipe disponible. Nous comparons ces postes dans le devis ; Next.js n'offre ni gain de conversion ni ROI automatique.",
       },
     },
     {
       "@type": "Question",
-      name: "Que garantissez-vous en termes de performance ?",
+      name: "Comment définissez-vous les objectifs de performance ?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Contractuellement : Lighthouse Performance ≥ 95 sur mobile, LCP < 1,5 s, CLS < 0,05, INP < 100 ms. Si les seuils ne sont pas atteints à la livraison, nous corrigeons gratuitement jusqu'à les atteindre. Contrôles Lighthouse CI automatisés à chaque déploiement.",
+          "Le devis peut fixer un budget de performance, les pages et conditions de mesure, ainsi que les responsabilités liées au contenu et aux scripts tiers. Les contrôles automatisés et la procédure de correction sont alors décrits explicitement.",
       },
     },
     {

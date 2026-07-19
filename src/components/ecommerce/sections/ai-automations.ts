@@ -5,11 +5,11 @@ export const aiAutomationsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow on-dark">— Claude intégré nativement</div>
-        <h2 style="margin-top:14px">Six agents IA<br>qui bossent pendant que vous dormez.</h2>
+        <h2 style="margin-top:14px">Six automatisations IA<br>à tester sur vos données.</h2>
       </div>
       <div class="right">
-        Pas un chatbot en façade. Pas un "magic AI button" qui fait semblant. Des <b>agents Claude typés</b>
-        branchés dans le produit, qui gagnent 15 à 30 h/semaine à votre équipe e-com.
+        Pas un chatbot ajouté pour la vitrine. Des workflows typés, reliés aux bonnes données et assortis de
+        contrôles humains. Le temps gagné et la qualité sont mesurés sur un pilote avant toute automatisation.
       </div>
     </div>
 
@@ -20,7 +20,7 @@ export const aiAutomationsHtml = `
         <p>
           Vous importez un CSV de 500 produits depuis votre fournisseur ? Claude génère <b>titre SEO +
           description longue + bullet points + meta description + traductions</b> dans vos 6 langues, en respectant
-          votre ton de marque. 2 heures de rédacteur économisées par produit.
+          votre ton de marque. Le temps de production et de relecture est mesuré sur un échantillon validé.
         </p>
         <div class="ec-ai-tag">Titre · Desc · Meta · 6 langues</div>
       </div>
@@ -31,7 +31,7 @@ export const aiAutomationsHtml = `
         <p>
           <code style="font-family:var(--font-geist-mono);font-size:12px;background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px">"canapé beige pour petit salon"</code>
           → résultats pertinents. Pas de matching de tags, pas de "aucun résultat". Embeddings Voyage
-          ou OpenAI indexés dans pgvector. <b>+15 à 30 %</b> de conversion sur les requêtes longues.
+          ou OpenAI indexés dans pgvector. La pertinence et la conversion sont comparées à la recherche existante.
         </p>
         <div class="ec-ai-tag">pgvector · embeddings · RAG</div>
       </div>
@@ -53,7 +53,7 @@ export const aiAutomationsHtml = `
         <p>
           Ticket client qui arrive : Claude lit la commande, l'historique, les avis, classe le ticket
           (retour / livraison / produit / autre), rédige une <b>réponse brouillon</b> que votre équipe
-          SAV valide en 15 secondes. Volume traité × 3 à coût constant.
+          SAV relit et valide. Le pilote mesure le temps de traitement, le taux de correction et les erreurs.
         </p>
         <div class="ec-ai-tag">Classification · Draft response · Context</div>
       </div>
@@ -64,7 +64,7 @@ export const aiAutomationsHtml = `
         <p>
           Vous recevez 50 PDF factures par semaine de vos fournisseurs ? L'agent lit chaque PDF,
           extrait <b>fournisseur, date, TVA, lignes articles, montants</b>, propose le rapprochement
-          avec votre bon de commande et pousse dans Sage / Pennylane. 0 ressaisie.
+          avec votre bon de commande, puis prépare l'envoi vers Sage ou Pennylane après validation.
         </p>
         <div class="ec-ai-tag">OCR · Validation · Push ERP</div>
       </div>
@@ -75,7 +75,7 @@ export const aiAutomationsHtml = `
         <p>
           Pas "vous avez oublié quelque chose". Claude regarde le <b>parcours du client, ses achats passés,
           le produit abandonné, la saison, le stock restant</b> et rédige une relance email personnalisée.
-          Taux de récupération doublé vs template générique.
+          L'effet est mesuré par test A/B face au scénario de référence, sans promesse de taux générique.
         </p>
         <div class="ec-ai-tag">Context-aware · Brevo / Klaviyo · A/B</div>
       </div>

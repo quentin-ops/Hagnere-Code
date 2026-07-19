@@ -8,8 +8,8 @@ export const scenariosHtml = `
         <h2>Trois situations,<br>trois chemins clairs.</h2>
       </div>
       <div class="right">
-        La quasi-totalité des projets e-commerce qu'on prend entrent dans l'un de ces trois cas.
-        Cliquez sur le vôtre : livrables, équipe, durée et prix s'ajustent.
+        Ces trois points de départ servent à structurer la discussion. Cliquez sur le plus proche du vôtre :
+        les livrables, l'équipe, la durée et le prix restent à confirmer après cadrage.
       </div>
     </div>
 
@@ -17,17 +17,17 @@ export const scenariosHtml = `
       <button type="button" class="ec-scen-tab" data-scenario="new" role="tab" aria-selected="true">
         <span class="ec-scen-tab-k">SCÉNARIO 01</span>
         <span class="ec-scen-tab-t">Nouvelle boutique</span>
-        <span class="ec-scen-tab-d">6–8 semaines</span>
+        <span class="ec-scen-tab-d">Durée sur devis</span>
       </button>
       <button type="button" class="ec-scen-tab" data-scenario="migration" role="tab" aria-selected="false">
         <span class="ec-scen-tab-k">SCÉNARIO 02</span>
         <span class="ec-scen-tab-t">Migration Shopify / Presta</span>
-        <span class="ec-scen-tab-d">8–12 semaines</span>
+        <span class="ec-scen-tab-d">Durée sur devis</span>
       </button>
       <button type="button" class="ec-scen-tab" data-scenario="b2b" role="tab" aria-selected="false">
         <span class="ec-scen-tab-k">SCÉNARIO 03</span>
         <span class="ec-scen-tab-t">Refonte + B2B + multi-pays</span>
-        <span class="ec-scen-tab-d">12–16 semaines</span>
+        <span class="ec-scen-tab-d">Durée sur devis</span>
       </button>
     </div>
 
@@ -39,8 +39,8 @@ export const scenariosHtml = `
           <h3>Marque qui lance sa boutique<br>pour la première fois.</h3>
           <p>
             Vous avez des produits, une marque naissante ou une identité déjà posée, et vous voulez
-            <b>démarrer sur de vraies bases</b> — sans Shopify pour éviter les % à vie, sans Prestashop
-            pour éviter la dette technique.
+            <b>démarrer sur des bases documentées</b>. Le cadrage compare une plateforme standard et le sur-mesure
+            selon le besoin, le délai, les coûts tiers et le TCO sur 36 mois.
           </p>
           <div class="ec-scen-deliv">
             <h4>Ce qu'on livre</h4>
@@ -49,7 +49,7 @@ export const scenariosHtml = `
               <li>Storefront Next.js (jusqu'à ~500 produits)</li>
               <li>Stripe + Alma + 2 transporteurs FR</li>
               <li>Back-office ops + 1 ERP au choix</li>
-              <li>Factur-X + Chorus Pro 2026-ready</li>
+              <li>Factur-X + Plateforme Agréée si le périmètre le requiert</li>
               <li>Mise en ligne + formation équipe</li>
             </ul>
           </div>
@@ -57,16 +57,16 @@ export const scenariosHtml = `
         <aside class="ec-scen-aside">
           <div class="ec-scen-meta">
             <div class="ec-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 1 designer + 1 dev senior</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">Dimensionnée au devis</span></div>
             <div class="ec-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 2 semaines</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Démarrage</span><span class="v">Selon capacité et cadrage</span></div>
             <div class="ec-scen-meta-row"><span class="k">App mobile</span><span class="v">En option · sur devis</span></div>
           </div>
           <a href="#contact" class="btn btn-accent ec-scen-cta">
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="ec-scen-ref">Référence : marque DTC bijouterie — première année 180 k€ de GMV sans budget média.</div>
+          <div class="ec-scen-ref">Décision attendue : plateforme, périmètre MVP, coûts tiers et critères de succès documentés.</div>
         </aside>
       </div>
     </div>
@@ -86,9 +86,9 @@ export const scenariosHtml = `
             <h4>Ce qu'on livre</h4>
             <ul>
               <li>Tout le scénario "Nouvelle boutique"</li>
-              <li><b>App iOS + Android incluse</b> (React Native)</li>
+              <li>App iOS + Android si retenue au devis (React Native)</li>
               <li>Migration 5 000 produits + 10 000 clients</li>
-              <li>Mapping 301 exhaustif + suivi SEO post-bascule</li>
+              <li>Mapping 301 contrôlé + suivi SEO post-bascule</li>
               <li>1-2 marketplaces (Amazon, CDiscount…)</li>
               <li>Server-side tracking GA4 + Meta CAPI</li>
               <li>3 agents IA (reco, descriptions, SAV)</li>
@@ -98,9 +98,9 @@ export const scenariosHtml = `
         <aside class="ec-scen-aside">
           <div class="ec-scen-meta">
             <div class="ec-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 1 designer + 2 devs + 1 mobile</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">Dimensionnée au devis</span></div>
             <div class="ec-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 3 à 4 semaines</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Démarrage</span><span class="v">Selon capacité et cadrage</span></div>
             <div class="ec-scen-meta-row"><span class="k">Écart vs Shopify</span><span class="v">Calculé avec vos coûts réels</span></div>
           </div>
           <a href="#contact" class="btn btn-accent ec-scen-cta">
@@ -119,9 +119,9 @@ export const scenariosHtml = `
           <div class="ec-scen-kind">POUR QUI</div>
           <h3>Marque qui vend pros + particuliers,<br>dans plusieurs pays.</h3>
           <p>
-            Votre marque fait déjà du B2C à 3-10 M€/an, vous voulez ouvrir un canal B2B (revendeurs,
-            pros, grossistes) et vendre dans 3-5 pays UE. Shopify Plus n'a pas les bons outils B2B,
-            et un ERP pur n'a pas l'UX d'un e-commerce moderne.
+            Vous voulez ouvrir un canal B2B (revendeurs, pros, grossistes) et vendre dans plusieurs pays.
+            Les fonctions natives d'une plateforme, ses extensions et un développement dédié sont comparés
+            avant de retenir l'architecture ; aucun moteur n'est écarté par principe.
           </p>
           <div class="ec-scen-deliv">
             <h4>Ce qu'on livre</h4>
@@ -132,23 +132,23 @@ export const scenariosHtml = `
               <li>Multi-entrepôt + ship-from-store</li>
               <li>Programme fidélité + abonnements</li>
               <li>SSO entreprise pour vos revendeurs</li>
-              <li>Accompagnement 6 mois inclus</li>
+              <li>Accompagnement et durée définis au devis</li>
             </ul>
           </div>
         </div>
         <aside class="ec-scen-aside">
           <div class="ec-scen-meta">
             <div class="ec-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 1 designer + 3 devs + 1 mobile + 1 IA</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">Dimensionnée au devis</span></div>
             <div class="ec-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 4 à 6 semaines</span></div>
-            <div class="ec-scen-meta-row"><span class="k">Accompagnement</span><span class="v">6 mois post-lancement inclus</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Démarrage</span><span class="v">Selon capacité et cadrage</span></div>
+            <div class="ec-scen-meta-row"><span class="k">Accompagnement</span><span class="v">Durée définie au devis</span></div>
           </div>
           <a href="#contact" class="btn btn-accent ec-scen-cta">
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="ec-scen-ref">Typique : marque cosmétique 5 M€ B2C + lancement B2B + ouverture DE/IT — GMV x1,8 en 12 mois.</div>
+          <div class="ec-scen-ref">Décision attendue : pays, règles B2B, fiscalité, logistique et indicateurs de succès validés.</div>
         </aside>
       </div>
     </div>

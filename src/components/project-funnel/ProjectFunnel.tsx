@@ -47,6 +47,7 @@ type StepId = "projet" | "contexte" | "perimetre" | "contraintes" | "contact" | 
 type Status =
   | { kind: "idle" }
   | { kind: "submitting" }
+  | { kind: "captured"; message: string }
   | { kind: "error"; message: string };
 
 const DRAFT_STORAGE_KEY = "pf:draft:v2";
@@ -607,7 +608,7 @@ const COMBO_BONUS_OBJECTIVES: Array<{
   {
     kinds: ["maintenance", "security"],
     objectives: [
-      "Run + conformité RGPD continue (DPO mensuel)",
+      "Run + suivi technique du plan RGPD avec votre DPO ou conseil",
       "Gestion des incidents + audits de sécurité réguliers",
     ],
   },
@@ -1890,7 +1891,30 @@ export function ProjectFunnel() {
         ok?: boolean;
         error?: string;
         errors?: Record<string, string>;
+        captured?: boolean;
+        teamNotified?: boolean;
+        confirmationSent?: boolean;
+        message?: string;
       };
+
+      if (mailRes.ok && mailJson.captured && mailJson.teamNotified === false) {
+        trackFunnelEvent("pf:submit_partial", {
+          services: state.projectKinds.length,
+          confirmation_sent: mailJson.confirmationSent === true,
+        });
+        try {
+          window.localStorage.removeItem(DRAFT_STORAGE_KEY);
+        } catch {
+          /* ignore */
+        }
+        setStatus({
+          kind: "captured",
+          message:
+            mailJson.message ||
+            "Votre brief est enregistré, mais l'équipe n'a pas reçu de notification e-mail. Inutile de le renvoyer.",
+        });
+        return;
+      }
       mailOk = mailRes.ok;
       mailError =
         mailJson.error ||
@@ -2338,9 +2362,9 @@ export function ProjectFunnel() {
                     <b>Consentement RGPD</b>
                     <small>
                       J&apos;accepte que Hagnéré Code utilise mes coordonnées pour
-                      analyser ma demande et me recontacter. Mes données ne sont
-                      jamais transmises à un tiers et peuvent être supprimées sur
-                      simple demande à quentin@hagnere-patrimoine.fr.
+                      analyser ma demande et me recontacter. Elles ne sont ni vendues
+                      ni utilisées à des fins commerciales ; seuls les sous-traitants
+                      techniques décrits dans la <a href="/legal/confidentialite" target="_blank" rel="noopener noreferrer">politique de confidentialité</a> y accèdent si nécessaire.
                     </small>
                   </span>
                 </label>
@@ -2429,18 +2453,22 @@ export function ProjectFunnel() {
                   type="button"
                   className="pf-submit"
                   onClick={submitBrief}
-                  disabled={status.kind === "submitting"}
-                  aria-disabled={status.kind === "submitting"}
+                  disabled={status.kind === "submitting" || status.kind === "captured"}
+                  aria-disabled={status.kind === "submitting" || status.kind === "captured"}
                 >
                   {status.kind === "submitting" ? (
                     <Loader2 size={18} className="pf-spin" />
                   ) : (
                     <Send size={18} />
                   )}
-                  {status.kind === "submitting" ? "Envoi en cours…" : "Envoyer mon brief"}
+                  {status.kind === "submitting"
+                    ? "Envoi en cours…"
+                    : status.kind === "captured"
+                      ? "Brief enregistré"
+                      : "Envoyer mon brief"}
                 </button>
 
-                <div className="pf-reassure">
+                {status.kind !== "captured" && <div className="pf-reassure">
                   <div className="pf-reassure-item">
                     <Mail size={14} />
                     <span><b>Réponse personnalisée sous 24 h ouvrées</b> &middot; analyse humaine de votre brief</span>
@@ -2453,9 +2481,16 @@ export function ProjectFunnel() {
                     <ShieldCheck size={14} />
                     <span><b>Vos données restent privées</b> &middot; pas de revente, conforme RGPD</span>
                   </div>
-                </div>
+                </div>}
 
                 {status.kind === "error" && <div className="pf-field-error">{status.message}</div>}
+                {status.kind === "captured" && (
+                  <div className="pf-success" role="status">
+                    ✓ {status.message}{" "}
+                    Pour un traitement immédiat, écrivez à{" "}
+                    <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>.
+                  </div>
+                )}
               </div>
             )}
           </div>

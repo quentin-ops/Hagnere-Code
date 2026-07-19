@@ -6,7 +6,7 @@ export const faqHtml = `
       <div class="sr-faq-intro reveal">
         <div class="eyebrow">— FAQ commerciale</div>
         <h2>Les 10 questions<br>qu'on entend <em>avant</em><br>de signer.</h2>
-        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par un DPO senior, sans détour.</p>
+        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Un interlocuteur senior vous répond sur le périmètre technique et identifie les sujets à valider avec votre DPO ou conseil.</p>
       </div>
 
       <div class="sr-faq-list reveal reveal-d-1">
@@ -15,20 +15,20 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Ni l'un ni l'autre.</b> On est un studio dev qui a structuré une équipe DPO + cyber audit en interne.
-            Notre angle : <a href="/services/maintenance-evolution"><b>on code la remédiation</b></a>, là où Lexing pond un PDF et Wavestone livre un rapport.
-            Pour une procédure contradictoire CNIL ou un contentieux, on collabore avec un cabinet partenaire.
+            <b>Nous sommes un studio de développement.</b> Notre rôle est d'auditer les mesures techniques,
+            documenter les écarts et <a href="/services/maintenance-evolution"><b>coder la remédiation</b></a>.
+            Les avis juridiques, contentieux et missions de DPO désigné restent confiés aux professionnels habilités choisis par le client.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Vous pouvez vraiment être notre DPO officiel ?
+          <div class="faq-q">Vous pouvez être notre DPO officiel ?
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Oui, désignation officielle CNIL.</b> Vous nous nommez via le formulaire CNIL, on apparaît comme
-            point de contact officiel pour vos clients, partenaires et l'autorité. Engagement contractuel
-            sur la disponibilité (réponse 4 h ouvrées) et le traitement des incidents (notification CNIL 72 h).
+            <b>Pas au titre de l'offre actuellement publiée.</b> Hagnéré Code ne revendique ici ni désignation DPO,
+            ni certification personnelle AFNOR/CIPP-E. Nous pouvons mettre en œuvre les mesures techniques et travailler
+            avec le DPO interne ou externe que vous avez valablement désigné.
           </div>
         </div>
 
@@ -37,20 +37,18 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>2 semaines</b> pour un cadrage simple (PME 10-50 salariés, peu de systèmes IA). <b>4 semaines</b>
-            pour un cadrage complet incluant audit applicatif boîte grise + classification AI Act détaillée.
-            Le DPO mensuel démarre dès la signature, pas après le cadrage.
+            Le calendrier dépend du nombre de traitements, d'applications, de fournisseurs et de systèmes IA.
+            Le devis distingue cadrage, audit technique, remédiation et accompagnement récurrent, avec un premier livrable daté.
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-q">Pourquoi 12 mois d'engagement sur le DPO ?
+          <div class="faq-q">Quelle durée pour l'accompagnement récurrent ?
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            La <b>désignation DPO auprès de la CNIL</b> implique une stabilité de mandat — la CNIL n'apprécie
-            pas les changements toutes les 4 semaines. 12 mois est le standard du marché. Au-delà, reconduction
-            tacite avec préavis 60 jours.
+            La durée dépend du plan d'action, de la fréquence des changements et des niveaux de service attendus.
+            Engagement, renouvellement et préavis sont indiqués au devis ; ils ne découlent pas d'une prétendue règle universelle de la CNIL.
           </div>
         </div>
 
@@ -60,8 +58,8 @@ export const faqHtml = `
           </div>
           <div class="faq-a">
             <b>Pas forcément.</b> Garder votre avocat habilité fait sens (contentieux, droit social, droit
-            commercial). On prend le DPO + l'audit + la remédiation codée. La répartition la plus courante&nbsp;:
-            un cabinet comme Lexing ou Haas sur le contentieux, nous sur le pilotage opérationnel.
+            commercial). Nous pouvons prendre l'audit et la remédiation codée, sous la gouvernance de votre DPO
+            ou conseil. Les responsabilités et validations sont écrites avant le démarrage.
           </div>
         </div>
 
@@ -94,8 +92,8 @@ export const faqHtml = `
           </div>
           <div class="faq-a">
             Non, et <b>personne ne l'est</b> — la CNIL ne délivre pas ce statut. Méfiez-vous des cabinets
-            qui revendiquent ça. Ce qui existe : être <b>membre AFCDP</b> (ce qu'on est) et avoir une
-            certification de personne (CIPP/E, AFNOR DPO) — ce qu'on a aussi.
+            qui revendiquent ça. Hagnéré Code ne publie pas non plus de statut de membre AFCDP ni de certification
+            personnelle AFNOR/CIPP-E sans justificatif nominatif vérifiable.
           </div>
         </div>
 
@@ -106,7 +104,7 @@ export const faqHtml = `
           <div class="faq-a">
             <b>Tout</b> : registre, AIPD, plan d'action, scripts d'audit, code de remédiation, configuration
             Tag Manager / Consent Mode, charte interne IA. Tout est livré sur votre Notion / Git / drive.
-            Désignation CNIL retransférée à votre nouveau DPO. Passation 30 jours incluse.
+            Si un DPO distinct intervient, la passation de nos livrables techniques est organisée selon le devis.
           </div>
         </div>
 
@@ -115,9 +113,9 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>5 000 €</b> pour le cadrage initial (déduit à 100 % du DPO mensuel si vous signez sous 60 jours).
-            <b>1 200 € à 3 500 €/mois</b> pour le DPO externalisé (engagement 12 mois). Sprint de remédiation
-            codée à la carte. Prix affichés sur la section <a href="#tarifs" style="color:var(--accent-ink);text-decoration:underline">Forfaits &amp; tarifs</a>.
+            Le cadrage, l'audit, la remédiation et l'accompagnement récurrent sont chiffrés séparément selon le
+            périmètre. Les prix affichés dans la section <a href="#tarifs" style="color:var(--accent-ink);text-decoration:underline">Forfaits &amp; tarifs</a>
+            restent indicatifs jusqu'au devis et n'incluent pas une désignation DPO.
           </div>
         </div>
       </div>

@@ -46,6 +46,33 @@ describe("e-commerce FAQ source", () => {
   it("replaces the legacy template FAQ in the rendered page", () => {
     expect(composedBodyHtml).toContain(ECOMMERCE_FAQ_ITEMS[0].question);
     expect(composedBodyHtml).toContain("calendrier officiel de la DGFiP");
-    expect(composedBodyHtml).not.toMatch(/6 dernières migrations|12[–-]18 mois/);
+    expect(composedBodyHtml).not.toMatch(
+      /6\s+dernières migrations|12[–-]18 mois/i,
+    );
+  });
+
+  it("keeps commercial examples separate from unsupported guarantees", () => {
+    expect(composedBodyHtml).not.toMatch(
+      /zéro trafic perdu|zéro perte SEO|méthode qui élimine ce risque|sans perte mesurable|core web vitals verts garantis/i,
+    );
+    expect(composedBodyHtml).not.toMatch(
+      /clients fidèles achètent\s*2[×x]|conversion x2|taux de récupération doublé|volume traité\s*×\s*3/i,
+    );
+    expect(composedBodyHtml).not.toMatch(
+      /pénalité 7\s*%|sauvegardes toutes les 15 min|99,95\s*%|47\s*en 30j/i,
+    );
+    expect(composedBodyHtml).not.toMatch(
+      /cloud shopify \(canada\/us\)|0 \(tout inclus\)|native, fournie j\+1|on l'intègre en 2[–-]5 jours/i,
+    );
+    expect(composedBodyHtml).not.toMatch(
+      /500 à 1\s*000 commandes\/minute|db-prod-16|rto cible 2 h|rollback en 1 commande/i,
+    );
+    expect(composedBodyHtml).not.toMatch(
+      /le plus demandé|gmv x1[,.]8|bascule zero-downtime|sous-traitance offshore|alertes 24\/7/i,
+    );
+    expect(composedBodyHtml).toContain(
+      "elle ne peut pas garantir des positions ou un trafic immobiles",
+    );
+    expect(composedBodyHtml).toContain("données de démonstration");
   });
 });

@@ -494,6 +494,28 @@
   flex-shrink: 0;
 }
 
+/* --------- Compact desktop (keeps the single-row nav without overflow) -- */
+@media (max-width: 1519px) and (min-width: 1025px) {
+  .hc-nav-inner {
+    padding-inline: 16px;
+    gap: 12px;
+  }
+  .hc-nav-pill-trigger,
+  .hc-nav-pill-link,
+  .hc-nav-pill-phone {
+    padding-inline: 12px;
+  }
+  .hc-nav-actions {
+    gap: 6px;
+  }
+  .hc-nav .hc-nav-cta-rdv {
+    display: none;
+  }
+  .hc-nav .hc-nav-cta {
+    padding-inline: 14px;
+  }
+}
+
 /* --------- Tablet (2-row, pill spans full width) ------------------------ */
 @media (max-width: 1024px) {
   .hc-nav-inner {

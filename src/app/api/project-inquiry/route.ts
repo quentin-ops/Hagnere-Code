@@ -3,11 +3,16 @@ import { Resend } from "resend";
 import { eq } from "drizzle-orm";
 import { randomBytes } from "node:crypto";
 import { getClientIp } from "@/lib/rate-limit";
-import { checkServiceRateLimit, logAiCall } from "@/lib/ai-rate-limit";
+import { checkServiceRateLimit, hashEmail, logAiCall } from "@/lib/ai-rate-limit";
 import { isValidMathChallenge } from "@/lib/math-challenge";
 import { getDb } from "@/db";
 import { projectBrief } from "@/db/schema";
 import { log } from "@/lib/logger";
+import {
+  confirmationMailFailureOutcome,
+  missingMailProviderOutcome,
+  teamMailFailureOutcome,
+} from "@/lib/project-inquiry-delivery";
 
 export const runtime = "nodejs";
 
@@ -289,10 +294,7 @@ export async function POST(request: Request) {
     briefId = inserted[0]?.id ?? null;
     briefSlug = inserted[0]?.publicSlug ?? null;
     // PII : on logge l'id et un email haché pour ne pas écrire l'adresse en clair.
-    const emailHash = email
-      ? Buffer.from(email).toString("base64url").slice(0, 12)
-      : null;
-    log.info("project_brief_inserted", { briefId, emailHash });
+    log.info("project_brief_inserted", { briefId, emailHash: hashEmail(email) });
   } catch (err) {
     // Don't fail the lead capture because of a DB hiccup — log and
     // continue with the email path.
@@ -424,15 +426,21 @@ export async function POST(request: Request) {
     `,
   );
 
-  // Dev fallback if RESEND_API_KEY isn't set — log and succeed so the UI keeps working.
+  // Sans fournisseur mail, un succès fictif n'est acceptable qu'en local.
+  // En production, on distingue une capture DB (202) d'une perte totale (503).
   if (!apiKey) {
     log.warn("project_inquiry_no_resend_key", {
-      firstName,
-      lastName,
-      company,
       briefId,
+      persisted: briefId != null,
     });
-    return NextResponse.json({ ok: true, dev: true, briefId, briefSlug });
+    const outcome = missingMailProviderOutcome(
+      process.env.NODE_ENV === "production",
+      briefId != null,
+    );
+    return NextResponse.json(
+      { ...outcome.payload, briefId, briefSlug },
+      { status: outcome.status },
+    );
   }
 
   // Helper to update mail_sent flag on the brief row (best-effort).
@@ -469,9 +477,10 @@ export async function POST(request: Request) {
         status: "ai_error",
         briefId,
       });
+      const outcome = teamMailFailureOutcome(briefId != null);
       return NextResponse.json(
-        { error: "Email service error", briefId, briefSlug },
-        { status: 502 },
+        { ...outcome.payload, briefId, briefSlug },
+        { status: outcome.status },
       );
     }
 
@@ -492,9 +501,18 @@ export async function POST(request: Request) {
       // Mark mail_sent anyway since the team mail went through — losing
       // the prospect confirmation is annoying but the lead is captured.
       await markMailSent();
+      await logAiCall({
+        service: "inquiry",
+        ip,
+        email,
+        userAgent,
+        status: "ok",
+        briefId,
+      });
+      const outcome = confirmationMailFailureOutcome();
       return NextResponse.json(
-        { error: "Confirmation email service error", briefId, briefSlug },
-        { status: 502 },
+        { ...outcome.payload, briefId, briefSlug },
+        { status: outcome.status },
       );
     }
 
@@ -507,7 +525,14 @@ export async function POST(request: Request) {
       status: "ok",
       briefId,
     });
-    return NextResponse.json({ ok: true, briefId, briefSlug });
+    return NextResponse.json({
+      ok: true,
+      captured: true,
+      teamNotified: true,
+      confirmationSent: true,
+      briefId,
+      briefSlug,
+    });
   } catch (err) {
     log.error("project_inquiry_unexpected_error", { err: err as Error, briefId });
     await logAiCall({
@@ -518,9 +543,10 @@ export async function POST(request: Request) {
       status: "ai_error",
       briefId,
     });
+    const outcome = teamMailFailureOutcome(briefId != null);
     return NextResponse.json(
-      { error: "Internal error", briefId, briefSlug },
-      { status: 500 },
+      { ...outcome.payload, briefId, briefSlug },
+      { status: outcome.status },
     );
   }
 }

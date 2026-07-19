@@ -30,11 +30,11 @@ export const cookiesSections: LegalSection[] = [
           site.
         </p>
         <p>
-          Seule exception : les pages <strong>/contact</strong> et{" "}
-          <strong>/rendez-vous</strong> intègrent le module de prise de
-          rendez-vous <strong>Calendly</strong> directement dans la page.
-          Ce module tiers est susceptible de déposer ses propres cookies —
-          voir la section « Services tiers » ci-dessous.
+          Les pages <strong>/contact</strong> et <strong>/rendez-vous</strong>{" "}
+          proposent le module de prise de rendez-vous <strong>Calendly</strong>.
+          Il reste bloqué par défaut : aucun script, iframe ou appel à Calendly
+          n&apos;est lancé avant un clic explicite sur « Autoriser et afficher le
+          calendrier ». Voir la section « Services tiers » ci-dessous.
         </p>
         <p>
           Seuls des éléments strictement nécessaires au fonctionnement du site
@@ -54,9 +54,8 @@ export const cookiesSections: LegalSection[] = [
         </p>
         <p>
           <em>
-            Lorsqu&apos;un outil de mesure d&apos;audience ou un service tiers déposant
-            des cookies sera ajouté au site, une bannière de consentement sera
-            mise en place et la liste exhaustive ci-dessous sera complétée.
+            Tout futur service tiers non strictement nécessaire devra rester
+            bloqué avant consentement et la présente liste devra être mise à jour.
           </em>
         </p>
       </>
@@ -144,8 +143,8 @@ export const cookiesSections: LegalSection[] = [
         <p>
           En dehors des stockages listés ci-dessus, hagnere-code.ai ne dépose
           lui-même aucun cookie HTTP, aucun pixel de tracking ni aucun outil
-          d&apos;analytics tiers. Seul le module Calendly embarqué sur les pages de
-          prise de rendez-vous est susceptible de déposer des cookies tiers
+          d&apos;analytics tiers. Le module Calendly proposé sur les pages de prise
+          de rendez-vous ne peut être chargé qu&apos;après une action explicite
           (voir la section suivante).
         </p>
       </>
@@ -159,11 +158,11 @@ export const cookiesSections: LegalSection[] = [
       <>
         <p>
           Les pages <strong>/contact</strong> et <strong>/rendez-vous</strong>{" "}
-          intègrent le module de réservation <strong>Calendly</strong>{" "}
-          (Calendly, LLC) directement dans la page, sous forme de widget
-          embarqué (iframe). Lorsque vous consultez l&apos;une de ces pages, votre
-          navigateur charge du contenu depuis les serveurs de Calendly, qui
-          peut à cette occasion déposer ses propres cookies. Ces cookies sont
+          proposent le module de réservation <strong>Calendly</strong>{" "}
+          (Calendly, LLC) sous forme de widget embarqué. Le widget est remplacé
+          par un écran d&apos;information tant que vous ne cliquez pas sur le bouton
+          d&apos;autorisation. Ce clic déclenche alors le chargement depuis les
+          serveurs de Calendly, qui peut déposer ses propres cookies. Ceux-ci sont
           régis par la politique de confidentialité de Calendly, que nous vous
           invitons à consulter :{" "}
           <a
@@ -177,9 +176,9 @@ export const cookiesSections: LegalSection[] = [
         </p>
         <p>
           Ces cookies sont émis par Calendly et non par hagnere-code.ai, et
-          nous ne les exploitons pas. Si vous ne souhaitez pas charger ce
-          module, vous pouvez prendre contact sans passer par ces pages, en
-          écrivant directement à{" "}
+          nous ne les exploitons pas. L&apos;autorisation n&apos;est pas mémorisée : un
+          rechargement de la page rebloque le widget. Vous pouvez réserver dans
+          un nouvel onglet ou prendre contact sans charger le module, en écrivant à{" "}
           <a href="mailto:quentin@hagnere-patrimoine.fr">
             quentin@hagnere-patrimoine.fr
           </a>

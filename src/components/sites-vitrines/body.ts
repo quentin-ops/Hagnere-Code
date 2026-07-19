@@ -22,7 +22,7 @@ ${navHtml}
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Sites vitrines &amp; landing pages</span></div>
       <h1>Le <span class="accent">site vitrine qui convertit</span>,<br>pas juste un site<br>qui existe.</h1>
       <div class="shero-tagline">
-        <span>⚡ Lighthouse 95+ garanti</span>
+        <span>⚡ Budget de performance mesuré</span>
         <span class="sep"></span>
         <span>🎯 Pensé pour convertir</span>
         <span class="sep"></span>
@@ -30,8 +30,8 @@ ${navHtml}
       </div>
       <p class="shero-sub">
         Un site vitrine qui fait <b>signer vos prospects</b>, une landing page qui <b>transforme votre budget Ads en leads qualifiés</b>, un blog SEO qui vous positionne sur les bonnes requêtes.
-        Design sur mesure, développement Next.js, performance garantie, et surtout —
-        <b>un site dont vous êtes 100 % propriétaire</b>, que vous pouvez mettre à jour sans nous.
+        Design sur mesure, développement Next.js, objectifs de performance mesurés et CMS adapté —
+        avec des accès, droits et conditions de réversibilité écrits au devis.
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
@@ -42,7 +42,7 @@ ${navHtml}
       <div class="shero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Livré en 2 à 8 semaines</span>
         <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> LCP &lt; 1,5 s garanti</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Objectifs LCP / CLS / INP au devis</span>
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> CMS que vous éditez</span>
       </div>
@@ -216,7 +216,7 @@ ${navHtml}
       <div class="uc reveal">
         <div class="uc-num">/ 04</div>
         <h3>Refontes WordPress → Next.js</h3>
-        <p>Votre WordPress rame, se fait hacker, coûte 150 €/mois en plugins. On migre vers Next.js statique : <b>5× plus rapide</b>, zéro maintenance, sécurité native.</p>
+        <p>Une refonte WordPress vers Next.js peut réduire certaines dépendances et améliorer les performances, selon le thème, les extensions, les contenus et les services tiers. Le gain est mesuré avant et après, pas présumé.</p>
         <div class="uc-tags">
           <span class="uc-tag">Migration SEO</span>
           <span class="uc-tag">Redirections 301</span>
@@ -727,7 +727,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Le délai dépend du périmètre</b> — landing page, site corporate 10–20 pages avec blog et SEO technique, ou plateforme multilingue. Au cadrage, on chiffre le projet et on contractualise une date de livraison ferme, avec <b>pénalité de 7 % du forfait par semaine, au-delà de 14 jours calendaires de retard sur la date de livraison contractuelle</b>.
+            <b>Le délai dépend du périmètre</b> — gabarits, contenus, intégrations, migration et validations. Le devis fixe les jalons, les dépendances et, si les parties le souhaitent, les conséquences précises d'un retard.
           </div>
         </div>
 
@@ -737,7 +737,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Oui, à 100 %.</b> Le repo Git est sur votre compte GitHub dès le jour 1. Le nom de domaine est à votre nom. L'hébergement Vercel ou OVH est facturé directement à vous, pas via nous. Vous pouvez partir à tout moment avec le code, la doc et l'historique.
+            Le devis précise les accès au dépôt, au domaine et à l'hébergement. Les livrables spécifiques sont transférés après paiement complet conformément aux CGV, sous réserve des composants préexistants et licences tierces.
           </div>
         </div>
 
@@ -757,7 +757,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Non&nbsp;: <b>plan de migration SEO systématique</b>. Audit des URLs indexées, redirections 301 page par page, préservation des balises title/meta/h1 des pages qui rankent. Post-mise en ligne, monitoring 3 mois des positions. Sur nos migrations WordPress→Next.js, 98 % des positions sont conservées ou améliorées.
+            Une refonte peut faire varier les positions. Le plan de migration inventorie les URLs, prépare les redirections, conserve les signaux utiles et définit un suivi post-mise en ligne. Aucun classement n'est garanti.
           </div>
         </div>
 
@@ -767,7 +767,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Sur 3 ans, Next.js revient <b>moins cher</b>&nbsp;: pas de maintenance plugins (≈1 800 €/an économisés), pas de hack à réparer, pas de refonte dans 3 ans parce que Divi a vieilli. Et 5× plus rapide (LCP 1 s vs 4–6 s en WordPress moyen), ce qui fait concrètement +7 à +15 % de conversion selon les études Google. Le <b>ROI se fait en 6–12 mois</b>.
+            Le coût sur trois ans dépend de l'hébergement, du CMS, des intégrations, de la maintenance et de l'équipe disponible. Nous comparons ces postes avec vos chiffres&nbsp;; Next.js n'offre ni gain de conversion ni ROI automatique.
           </div>
         </div>
 
@@ -777,7 +777,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Zéro obligatoire.</b> Un site Next.js statique n'a pas de plugin à mettre à jour ni de base de données exposée&nbsp;: vous pouvez ne rien faire pendant 2 ans sans risque. Si vous voulez un partenaire long terme, forfait évolutions à la carte <b>300 à 800 €/mois</b>, sans engagement de durée. Pour le détail complet des coûts d'un site sur 3 ans, voir notre <a href="/guides/combien-coute-un-site-internet">guide des prix d'un site internet</a>.
+            Même un site statique demande un suivi des dépendances, du domaine, des formulaires, des contenus et des services tiers. Le besoin et le budget de maintenance sont chiffrés selon l'architecture. Pour comparer les coûts sur trois ans, voir notre <a href="/guides/combien-coute-un-site-internet">guide des prix d'un site internet</a>.
           </div>
         </div>
 
@@ -817,7 +817,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Aucune agence sérieuse ne peut <i>garantir</i> un taux de conversion. Mais on <b>garantit</b>&nbsp;: un Lighthouse Performance ≥ 95 mobile, un LCP &lt; 1,5 s, une structure SEO technique validée, un tunnel de conversion pensé avec vous. Le reste (trafic, contenu, offre) dépend de votre marché. On vous dit honnêtement ce que le site peut ou ne peut pas faire.
+            Aucune agence ne peut garantir un taux de conversion. Le devis peut fixer un budget de performance, les pages et conditions de mesure, la structure SEO technique et les étapes de recette. Le trafic, le contenu, l'offre et les scripts tiers restent des variables distinctes.
           </div>
         </div>
 

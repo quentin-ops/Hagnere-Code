@@ -100,11 +100,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Oui.</b> DPA fourni dès le devis, registre de traitements à jour, liste exhaustive des
-          sous-traitants (OVH, Scaleway, Anthropic, OpenAI, Postmark — tous signés). Droits RGPD
-          de série (accès, rectification, portabilité, suppression). DPO interne disponible pour
-          votre DPO ou juriste sous 48 h. Sur demande, on passe un audit CNIL ou un audit RSSI
-          externe sans friction.
+          Le devis précise le DPA si nécessaire, les sous-traitants, les flux, la conservation et les fonctions
+          utiles à l'exercice des droits. Nous fournissons les preuves techniques et travaillons avec votre DPO,
+          juriste ou RSSI ; nous ne revendiquons pas une désignation DPO ni un audit CNIL garanti.
         </div>
       </div>
 

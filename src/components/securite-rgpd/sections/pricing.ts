@@ -1,5 +1,5 @@
 export const pricingHtml = `
-<!-- PRICING · 4 cards : cadrage / DPO mensuel x2 / sprint dev -->
+<!-- PRICING · 4 cards : cadrage / suivi technique x2 / sprint dev -->
 <section class="sr-pricing" id="tarifs">
   <div class="wrap">
     <div class="section-head reveal">
@@ -8,9 +8,9 @@ export const pricingHtml = `
         <h2>Forfait, abonnement<br>ou sprint, <em>prix affiché</em>.</h2>
       </div>
       <div class="right">
-        Quatre options. Le <b>cadrage</b> en forfait fixe pour démarrer. Deux niveaux de <b>DPO mensuel</b>
-        selon votre taille. Et la <b>remédiation codée</b> à la demande quand on doit corriger dans le repo.
-        Pas de "sur devis" déguisé.
+        Quatre bases de discussion : un <b>cadrage</b>, deux niveaux d'<b>accompagnement technique</b>
+        récurrent et un sprint de <b>remédiation codée</b>. Le devis confirme livrables, quantités,
+        responsabilités, durée et niveaux de service.
       </div>
     </div>
 
@@ -29,41 +29,41 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Restitution 90 min visio</li>
         </ul>
         <div class="sr-price-cta"><a href="#contact" class="btn btn-ghost">Démarrer un cadrage</a></div>
-        <div class="sr-price-note">déduit à 100 % du DPO mensuel si signature sous 60 j</div>
+        <div class="sr-price-note">budget indicatif · périmètre confirmé au devis</div>
       </div>
 
       <div class="sr-price-card reveal reveal-d-1">
-        <div class="sr-price-tag">DPO · 01</div>
-        <h4>DPO Starter</h4>
-        <div class="sr-price-sub">Pour PME tech 10-100 salariés, 1-3 systèmes IA, peu de transferts hors UE.</div>
+        <div class="sr-price-tag">SUIVI · 01</div>
+        <h4>Accompagnement Starter</h4>
+        <div class="sr-price-sub">Pour maintenir le plan d'action technique avec votre DPO ou conseil.</div>
         <div class="sr-price-amount">1 200 <span>€ / mois</span></div>
         <ul class="sr-price-feats">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Désignation officielle CNIL</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Coordination avec votre DPO ou conseil</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Revue mensuelle 1 h</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1 AIPD / an</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Assistance technique à une AIPD cadrée</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Veille AI Act / NIS2</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA 8 h ouvrées</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Délai d'intervention au devis</li>
         </ul>
         <div class="sr-price-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
-        <div class="sr-price-note">engagement 12 mois</div>
+        <div class="sr-price-note">budget mensuel indicatif HT · durée au devis</div>
       </div>
 
       <div class="sr-price-card sr-price-card-featured reveal reveal-d-2">
-        <div class="sr-price-badge">LE PLUS CHOISI</div>
-        <div class="sr-price-tag">DPO · 02</div>
-        <h4>DPO Scale</h4>
-        <div class="sr-price-sub">Pour scale-ups 100-500 salariés, plusieurs systèmes IA haut risque, transferts internationaux fréquents.</div>
+        <div class="sr-price-badge">PÉRIMÈTRE ÉTENDU</div>
+        <div class="sr-price-tag">SUIVI · 02</div>
+        <h4>Accompagnement Scale</h4>
+        <div class="sr-price-sub">Pour plusieurs produits, systèmes IA ou flux internationaux à documenter.</div>
         <div class="sr-price-amount">3 500 <span>€ / mois</span></div>
         <ul class="sr-price-feats">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout DPO Starter, +</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout Accompagnement Starter, +</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Revues bi-mensuelles 1 h</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Revues features IA illimitées</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>4 AIPD / an</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Slack dédié, SLA 4 h</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Support contrôle CNIL inclus</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Volume de revues produit défini au devis</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Assistance technique aux AIPD retenues</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Canal et délai d'intervention au devis</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Dossier technique pour votre DPO ou avocat</li>
         </ul>
         <div class="sr-price-cta"><a href="#contact" class="btn btn-accent">Démarrer ce pack</a></div>
-        <div class="sr-price-note">engagement 12 mois · le plus pris en série A/B</div>
+        <div class="sr-price-note">budget mensuel indicatif HT · durée au devis</div>
       </div>
 
       <div class="sr-price-card reveal reveal-d-3">
@@ -76,7 +76,7 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>PR ouvertes sur votre Git</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tests de non-régression</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Pair-prog avec vos devs</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Ré-audit gratuit en fin</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Recette et preuves de correction</li>
         </ul>
         <div class="sr-price-cta"><a href="#contact" class="btn btn-ghost">Cadrer un sprint</a></div>
         <div class="sr-price-note">potentiellement éligible CIR sur la part R&amp;D · à valider avec votre expert-comptable</div>
@@ -85,7 +85,8 @@ export const pricingHtml = `
     </div>
 
     <p class="sr-price-foot">
-      Tous les forfaits incluent : <b>NDA mutuel J0 · DPA contractualisé · sous-traitants UE par défaut (Scaleway / OVH / Cloudflare EU) · bonnes pratiques alignées ISO 27001</b>. TVA en sus. Prix valables 30 jours.
+      Prix HT indicatifs. Le devis précise confidentialité, DPA si nécessaire, sous-traitants, localisation,
+      livrables, exclusions, durée, niveaux de service et conditions de réversibilité.
     </p>
   </div>
 </section>

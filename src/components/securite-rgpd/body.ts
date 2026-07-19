@@ -19,21 +19,21 @@ ${navHtml}
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow">
-        <span class="pill"><span class="dot"></span> Service · Sécurité &amp; RGPD · DPO externalisé</span>
+        <span class="pill"><span class="dot"></span> Service · Audit sécurité &amp; conformité technique</span>
       </div>
-      <h1>RGPD : votre stack a<br>47 sous-traitants.<br><span class="accent">Votre DPO en connaît 6.</span></h1>
+      <h1>RGPD : votre stack évolue.<br><span class="accent">Votre cartographie doit suivre.</span></h1>
       <div class="shero-tagline">
         <span>Audit + remédiation codée</span>
         <span class="sep"></span>
         <span>RGPD · AI Act · DORA · NIS2</span>
         <span class="sep"></span>
-        <span>Forfait + DPO mensuel</span>
+        <span>Forfait + accompagnement technique</span>
       </div>
       <p class="shero-sub">
         On <b>audite votre exposition réelle</b> (sous-traitants IA, transferts hors UE, registres, AI Act, NIS2),
         puis <b>nos devs corrigent dans votre code</b> — chiffrement, logs, consentement, anonymisation, IAM.
-        Pas un cabinet juridique qui pond un PDF de 80 pages. Pas un cabinet cyber qui livre 60 findings sans remédier.
-        <b>Un studio qui code et qui audite.</b>
+        Les qualifications juridiques restent validées par votre DPO ou conseil ; notre rôle est de transformer
+        le plan retenu en mesures techniques vérifiables. <b>Un studio qui audite et qui code.</b>
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
@@ -53,8 +53,8 @@ ${navHtml}
             </svg>
           </div>
           <div class="shero-badge-body">
-            <div class="shero-badge-key">2-4<span class="shero-badge-key-unit"> sem.</span></div>
-            <div class="shero-badge-label">Cadrage + plan d'action priorisé</div>
+            <div class="shero-badge-key">PLAN<span class="shero-badge-key-unit"> · devis</span></div>
+            <div class="shero-badge-label">Calendrier fixé après inventaire</div>
           </div>
         </div>
 
@@ -67,8 +67,8 @@ ${navHtml}
             </svg>
           </div>
           <div class="shero-badge-body">
-            <div class="shero-badge-key">35<span class="shero-badge-key-unit"> M€</span></div>
-            <div class="shero-badge-label">Sanction max AI Act · 7 % CA</div>
+            <div class="shero-badge-key">IA<span class="shero-badge-key-unit"> · risque</span></div>
+            <div class="shero-badge-label">Qualification à valider, mesures à tracer</div>
           </div>
         </div>
 
@@ -80,8 +80,8 @@ ${navHtml}
             </svg>
           </div>
           <div class="shero-badge-body">
-            <div class="shero-badge-key">DPO<span class="shero-badge-key-unit"> + dev</span></div>
-            <div class="shero-badge-label">Une seule équipe, pas trois cabinets</div>
+            <div class="shero-badge-key">DPO client<span class="shero-badge-key-unit"> + tech</span></div>
+            <div class="shero-badge-label">Coordination des rôles, responsabilités écrites</div>
           </div>
         </div>
       </div>
@@ -286,33 +286,33 @@ ${navHtml}
       <!-- Floating risk pill (absolute, top-right) -->
       <div class="sr-risk-pill">
         <div class="sr-risk-pill-head">
-          <span class="sr-risk-pill-label">EXPOSITION TYPIQUE</span>
+          <span class="sr-risk-pill-label">EXPOSITION À QUALIFIER</span>
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17l9-9M9 7h7v7"/></svg>
         </div>
         <div class="sr-risk-pill-amount">
-          0,3 - 2 <span>M€</span>
+          SUR <span>MESURE</span>
         </div>
-        <div class="sr-risk-pill-sub">PME tech 50-300 sal. · à auditer</div>
+        <div class="sr-risk-pill-sub">Impacts, coûts et priorités à documenter</div>
       </div>
 
-      <!-- Floating CNIL ticker (absolute, bottom-left) -->
+      <!-- Floating audit-state ticker (absolute, bottom-left) -->
       <div class="sr-ticker">
         <div class="sr-ticker-head">
           <span class="sr-ticker-dot"></span>
-          <span>CNIL · sanctions récentes</span>
+          <span>EXEMPLE · état de cartographie</span>
         </div>
         <div class="sr-ticker-rows">
           <div class="sr-ticker-row">
-            <span class="sr-ticker-amount">35 M€</span>
-            <span class="sr-ticker-co">Amazon France · 2024</span>
+            <span class="sr-ticker-amount">FLUX</span>
+            <span class="sr-ticker-co">Inventaire à valider</span>
           </div>
           <div class="sr-ticker-row">
-            <span class="sr-ticker-amount">5,2 M€</span>
-            <span class="sr-ticker-co">Cookies · presse · 2025</span>
+            <span class="sr-ticker-amount">DPA</span>
+            <span class="sr-ticker-co">Écarts à prioriser</span>
           </div>
           <div class="sr-ticker-row">
-            <span class="sr-ticker-amount">525 k€</span>
-            <span class="sr-ticker-co">PME tech · transfert US</span>
+            <span class="sr-ticker-amount">IA</span>
+            <span class="sr-ticker-co">Usages à classifier</span>
           </div>
         </div>
       </div>
@@ -325,8 +325,8 @@ ${navHtml}
   <div class="scta-bg"></div>
   <div class="wrap inner">
     <div class="eyebrow on-dark">— Prochaine étape</div>
-    <h2 style="margin-top:14px">Auditons votre exposition.<br><span class="accent">2 semaines, livrable chiffré.</span></h2>
-    <p>Un cadrage avec un DPO + un lead dev. On cartographie vos sous-traitants, vos flux, vos risques RGPD / AI Act / NIS2 — et on chiffre la remédiation à la fin du sprint.</p>
+    <h2 style="margin-top:14px">Auditons votre exposition.<br><span class="accent">Périmètre et livrables chiffrés.</span></h2>
+    <p>Un cadrage avec un référent RGPD et un lead dev. On cartographie vos sous-traitants, vos flux et vos risques techniques, puis on chiffre la remédiation. Votre DPO ou votre conseil valide les choix juridiques quand nécessaire.</p>
   </div>
 </section>
 

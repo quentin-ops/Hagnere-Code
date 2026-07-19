@@ -4,12 +4,12 @@ export const matrixHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Quatre domaines, un seul interlocuteur</div>
-        <h2>Tout ce qu'on couvre,<br>sans <em>jongler</em> entre 3 cabinets.</h2>
+        <div class="eyebrow">— Quatre domaines à coordonner</div>
+        <h2>Un périmètre technique clair,<br>des validations bien attribuées.</h2>
       </div>
       <div class="right">
-        Audit, DPO, AI Act, cyber : on prend les 4 dans la même équipe. Vous n'avez qu'un point de contact, qui parle dev quand il faut, juridique quand il faut.
-        <b>Prix de départ affiché.</b> Périmètre cadré au devis, pas en cours de mission.
+        Hagnéré Code intervient sur l'inventaire, l'audit applicatif, la documentation et la remédiation codée.
+        Votre DPO, conseil et éventuel auditeur indépendant conservent les qualifications et validations qui leur reviennent.
       </div>
     </div>
 
@@ -32,8 +32,8 @@ export const matrixHtml = `
         </div>
         <p class="sr-matrix-sub">
           On reprend (ou on construit) votre registre de traitements, on audite vos DPA sous-traitants,
-          on encadre les transferts hors UE (SCC + DPF), et on industrialise les demandes d'exercice
-          des droits (accès, effacement, portabilité).
+          on documente les transferts et on implémente les fonctions nécessaires à l'exercice des droits.
+          Les clauses, bases juridiques et AIPD sont validées par votre DPO ou conseil.
         </p>
         <ul class="sr-matrix-feats">
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Registre Article 30 (responsable + sous-traitant)</li>
@@ -46,11 +46,11 @@ export const matrixHtml = `
         <div class="sr-matrix-foot">
           <div class="sr-matrix-meta">
             <span class="sr-matrix-meta-k">Délai</span>
-            <span class="sr-matrix-meta-v">2-4 semaines</span>
+            <span class="sr-matrix-meta-v">Sur devis</span>
           </div>
           <div class="sr-matrix-meta">
             <span class="sr-matrix-meta-k">À partir de</span>
-            <span class="sr-matrix-meta-v sr-matrix-meta-price">5 000 €</span>
+            <span class="sr-matrix-meta-v sr-matrix-meta-price">5 000 € HT</span>
           </div>
         </div>
       </article>
@@ -59,7 +59,7 @@ export const matrixHtml = `
       <article class="sr-matrix-card sr-matrix-card-featured reveal reveal-d-1">
         <div class="sr-matrix-flag">
           <span class="sr-matrix-flag-pulse" aria-hidden="true"></span>
-          ÉCHÉANCE J-102 · 2 AOÛT 2026
+          CALENDRIER À VALIDER SELON LE SYSTÈME
         </div>
         <div class="sr-matrix-head">
           <div class="sr-matrix-num">02</div>
@@ -74,26 +74,26 @@ export const matrixHtml = `
           </div>
         </div>
         <p class="sr-matrix-sub">
-          <b>Plus que 102 jours</b> avant l'échéance haut risque du <b>2 août 2026</b> (RH, scoring, biométrie,
-          éducation, scoring crédit). On classe vos systèmes IA, on documente, on prépare la supervision
-          humaine, et on inscrit au registre UE quand requis.
+          Nous inventorions les systèmes, rôles, fournisseurs, finalités, données et mesures techniques.
+          La qualification du risque, le calendrier applicable et les éventuelles obligations de registre
+          sont validés avec votre conseil au regard du texte en vigueur.
         </p>
         <ul class="sr-matrix-feats">
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Classification de chaque système IA (Annexes II-III)</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Inventaire et dossier de qualification pour le conseil</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Documentation technique (Article 11)</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tests de biais &amp; supervision humaine</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Charte interne IA + formation AI literacy équipe</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Logs &amp; traçabilité décisions IA (codé en prod)</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Inscription registre UE pour haut risque</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Assistance technique aux formalités retenues</li>
         </ul>
         <div class="sr-matrix-foot">
           <div class="sr-matrix-meta">
             <span class="sr-matrix-meta-k">Délai</span>
-            <span class="sr-matrix-meta-v">4-6 semaines</span>
+            <span class="sr-matrix-meta-v">Sur devis</span>
           </div>
           <div class="sr-matrix-meta">
             <span class="sr-matrix-meta-k">À partir de</span>
-            <span class="sr-matrix-meta-v sr-matrix-meta-price">15 000 €</span>
+            <span class="sr-matrix-meta-v sr-matrix-meta-price">15 000 € HT</span>
           </div>
         </div>
       </article>
@@ -115,8 +115,8 @@ export const matrixHtml = `
         </div>
         <p class="sr-matrix-sub">
           Audit boîte grise sur votre code applicatif (OWASP Top 10), revue infra cloud (IAM, secrets,
-          policies, network), pipeline SAST/DAST en CI. <b>Pen-test offensif lourd</b> sous-traité à un
-          partenaire qualifié PASSI ANSSI. SOC 2 Type II readiness possible.
+          policies, network) et pipeline SAST/DAST en CI selon le périmètre. Les audits exigeant une
+          qualification, un tiers indépendant ou une certification restent confiés au prestataire retenu par le client.
         </p>
         <ul class="sr-matrix-feats">
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Audit code OWASP Top 10 + revue archi</li>
@@ -124,27 +124,27 @@ export const matrixHtml = `
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Revue cloud (AWS / Scaleway / OVH) + IAM</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Plan de remédiation chiffré et priorisé</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SOC 2 / ISO 27001 readiness (option)</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Pen-test PASSI sous-traité (option)</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Coordination avec un auditeur vérifié (option)</li>
         </ul>
         <div class="sr-matrix-foot">
           <div class="sr-matrix-meta">
             <span class="sr-matrix-meta-k">Délai</span>
-            <span class="sr-matrix-meta-v">3-5 semaines</span>
+            <span class="sr-matrix-meta-v">Sur devis</span>
           </div>
           <div class="sr-matrix-meta">
             <span class="sr-matrix-meta-k">À partir de</span>
-            <span class="sr-matrix-meta-v sr-matrix-meta-price">8 000 €</span>
+            <span class="sr-matrix-meta-v sr-matrix-meta-price">8 000 € HT</span>
           </div>
         </div>
       </article>
 
-      <!-- 04 DPO externalisé -->
+      <!-- 04 Accompagnement RGPD récurrent -->
       <article class="sr-matrix-card reveal reveal-d-3">
         <div class="sr-matrix-head">
           <div class="sr-matrix-num">04</div>
           <div class="sr-matrix-title">
-            <div class="sr-matrix-kind">DPO externalisé</div>
-            <h3>Forfait mensuel, engagement contractuel.</h3>
+            <div class="sr-matrix-kind">Accompagnement RGPD récurrent</div>
+            <h3>Pilotage opérationnel et remédiation technique.</h3>
           </div>
           <div class="sr-matrix-ic sr-matrix-ic-dpo">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
@@ -155,17 +155,17 @@ export const matrixHtml = `
           </div>
         </div>
         <p class="sr-matrix-sub">
-          Vous nommez Hagnéré Code comme <b>DPO externe</b> auprès de la CNIL.
-          Veille AI Act / DORA / NIS2, revue mensuelle des nouveaux traitements et features IA avant mise
-          en prod, AIPD, formation équipes, point de contact CNIL en cas de plainte ou contrôle.
+          Hagnéré Code accompagne l'inventaire, la documentation et la remédiation technique, sans se présenter
+          comme votre DPO désigné ni remplacer un conseil juridique. Si un DPO est requis ou souhaité, il reste
+          identifié séparément et valide la gouvernance, les AIPD et les relations avec l'autorité.
         </p>
         <ul class="sr-matrix-feats">
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>DPO certifié AFNOR + CIPP/E in-house</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Désignation officielle CNIL incluse</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Registre, cartographie et plan d'action maintenus</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Coordination avec votre DPO ou conseil</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Revue mensuelle (1 h visio + livrable)</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1 à 4 AIPD / an selon formule</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Assistance technique aux AIPD selon formule</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Veille AI Act / DORA / NIS2 / CRA</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Slack dédié, SLA 4 h sur incidents</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Canal et délais d'intervention définis au devis</li>
         </ul>
         <div class="sr-matrix-foot">
           <div class="sr-matrix-meta">
@@ -186,13 +186,13 @@ export const matrixHtml = `
         <circle cx="12" cy="12" r="10"/>
         <path d="M12 8v4M12 16h.01"/>
       </svg>
-      <span><b>Particularité Hagnéré Code :</b> les membres nommés de notre équipe corrigent directement dans votre code (chiffrement, logs, IAM, anonymisation, consent mode). Ni Lexing ni Wavestone ne touchent aux PR. Nous oui.</span>
+      <span><b>Positionnement Hagnéré Code :</b> l'accompagnement porte sur les mesures techniques et leur mise en œuvre dans le code (chiffrement, logs, IAM, anonymisation, gestion du consentement), en coordination avec les responsables juridiques du client.</span>
     </div>
 
     <div class="sr-matrix-cta reveal reveal-d-1">
       <div class="sr-matrix-cta-l">
         <div class="sr-matrix-cta-k">Vous êtes au bon endroit si…</div>
-        <div class="sr-matrix-cta-v">vous voulez un DPO certifié <b>et</b> des PR mergées dans le même forfait.</div>
+        <div class="sr-matrix-cta-v">vous voulez transformer un plan RGPD validé en mesures techniques réellement livrées.</div>
       </div>
       <div class="sr-matrix-cta-r">
         <a href="#contact" class="btn btn-accent">

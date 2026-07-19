@@ -5,11 +5,11 @@ export const deriskHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Les quatre peurs qui freinent une refonte</div>
-        <h2>On les nomme.<br>On y répond par contrat.</h2>
+        <h2>On les nomme.<br>On les traite avec des preuves.</h2>
       </div>
       <div class="right">
-        Chaque fois qu'un e-commerçant vient nous voir pour une refonte, les mêmes quatre peurs reviennent.
-        Voici comment on y répond — avec des engagements écrits dans le contrat, pas dans la brochure.
+        Ces quatre risques reviennent souvent dans une refonte. Le devis précise les tests, livrables,
+        responsabilités et seuils applicables au projet ; les objectifs ci-dessous ne sont pas des garanties universelles.
       </div>
     </div>
 
@@ -20,16 +20,16 @@ export const deriskHtml = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           « Le sur-mesure sera plus lent que Shopify. »
         </div>
-        <h3>Core Web Vitals verts garantis.</h3>
+        <h3>Un budget de performance mesuré.</h3>
         <p>
-          LCP &lt; 2,5 s, INP &lt; 200 ms, CLS &lt; 0,1 sur <b>100 % des pages principales</b>, mesurés au
-          lancement et dans le rapport de recette. Next.js 15 + SSR/ISR + CDN Cloudflare +
-          images AVIF/WebP = stack bâtie pour la perf. Si les perfs baissent sous le seuil après la livraison, c'est notre bug à corriger gratuitement.
+          Les objectifs LCP, INP et CLS, les pages testées, l'appareil, le réseau et les outils de mesure sont définis
+          avant la recette. Next.js, rendu serveur, cache, CDN et formats d'image modernes servent ces objectifs ;
+          les écarts sont qualifiés selon qu'ils viennent du code, du contenu ou d'un service tiers.
         </p>
         <div class="ec-derisk-proof">
-          <span>✓ LCP &lt; 1,5 s sur fiche produit</span>
-          <span>✓ PageSpeed &gt; 90</span>
-          <span>✓ Audit livré</span>
+          <span>✓ Seuils écrits</span>
+          <span>✓ Conditions de test fixées</span>
+          <span>✓ Rapport de recette livré</span>
         </div>
       </div>
 
@@ -39,17 +39,16 @@ export const deriskHtml = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           « On va perdre notre SEO à la migration. »
         </div>
-        <h3>Zéro perte SEO · engagement contractuel.</h3>
+        <h3>Les risques SEO contrôlables sont tracés.</h3>
         <p>
-          Méthodologie décrite dans la section "Migration zero-downtime" : mapping 301 exhaustif,
-          préservation de toutes les balises SEO, monitoring GSC quotidien sur 30 jours. <b>Clause écrite</b> :
-          si le trafic organique global baisse de plus de <b>10 %</b> à J+30 à cause de la migration,
-          on corrige gratuitement jusqu'au retour au niveau antérieur.
+          Inventaire, mapping 301, conservation des éléments utiles, recette et suivi Search Console sont définis
+          dans le plan de migration. Les anomalies techniques imputables à la bascule sont corrigées ; le trafic et
+          les positions ne peuvent pas être garantis car ils dépendent aussi du contenu, du marché et de Google.
         </p>
         <div class="ec-derisk-proof">
-          <span>✓ Mapping 301 à vous</span>
-          <span>✓ Monitoring 30 j</span>
-          <span>✓ Clause -10% = correction</span>
+          <span>✓ Mapping remis au client</span>
+          <span>✓ Période de suivi définie</span>
+          <span>✓ Anomalies techniques tracées</span>
         </div>
       </div>
 
@@ -59,17 +58,16 @@ export const deriskHtml = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           « Black Friday et le panier tombe, on est morts. »
         </div>
-        <h3>Test de charge à 10× le pic normal avant go-live.</h3>
+        <h3>Un test de charge dimensionné avant le go-live.</h3>
         <p>
-          Avant la bascule, on lance un <b>test de charge k6</b> à 10× votre pic de commandes attendu.
-          On valide : temps de réponse API sous charge, auto-scaling des workers de queues, tenue de la DB,
-          rollback en 5 min si alerte. Infra <b>stateless</b>, scale horizontal auto, CDN Cloudflare devant.
-          Monitoring Sentry + UptimeRobot 24/7 avec alertes Slack.
+          Le scénario k6 part de votre trafic, du pic attendu et des limites des services tiers. On contrôle les temps
+          de réponse, files, base de données, mise à l'échelle et procédure de retour arrière. Le niveau de supervision
+          et les canaux d'alerte dépendent ensuite de l'infrastructure et du SLA retenus.
         </p>
         <div class="ec-derisk-proof">
-          <span>✓ Load test k6 10×</span>
-          <span>✓ Auto-scaling</span>
-          <span>✓ Rollback 5 min</span>
+          <span>✓ Scénario k6 documenté</span>
+          <span>✓ Capacité cible vérifiée</span>
+          <span>✓ Retour arrière testé</span>
         </div>
       </div>
 
@@ -79,17 +77,16 @@ export const deriskHtml = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           « Et si vous disparaissez dans 3 ans ? »
         </div>
-        <h3>Code à vous dès J+1 · stack standard · zéro lock-in.</h3>
+        <h3>Code, comptes et documentation sous votre contrôle.</h3>
         <p>
-          Repo Git <b>sur votre organisation dès J+1</b>. Stack 100 % standard (Next.js, TypeScript, PostgreSQL),
-          documentation technique, runbook, Docker compose. Une autre ESN française React/Next.js peut
-          reprendre en <b>2-3 semaines de ramp-up</b>. Aucun framework propriétaire, aucune clé cachée,
-          escrow contractuel possible si votre DSI le souhaite.
+          Le devis précise la propriété du dépôt Git, des comptes cloud, des données, des clés et des licences.
+          Une stack documentée (par exemple Next.js, TypeScript et PostgreSQL), un runbook et une procédure de
+          transfert réduisent la dépendance. Le délai de reprise dépendra toutefois de la taille et de l'état du projet.
         </p>
         <div class="ec-derisk-proof">
-          <span>✓ Git chez vous J+1</span>
-          <span>✓ Stack 100 % standard</span>
-          <span>✓ Reprise possible 2-3 sem</span>
+          <span>✓ Dépôt et comptes identifiés</span>
+          <span>✓ Dépendances documentées</span>
+          <span>✓ Procédure de transfert</span>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ import "./site-footer.css";
 type Status =
   | { kind: "idle" }
   | { kind: "submitting" }
-  | { kind: "success" }
+  | { kind: "success"; message?: string }
   | { kind: "error"; message: string; fields?: Record<string, string> };
 
 const BUDGETS = ["< 15k", "15-30k", "30-60k", "60k+", "Je ne sais pas"];
@@ -122,7 +122,7 @@ export function ContactProjectSection({
         });
         return;
       }
-      setStatus({ kind: "success" });
+      setStatus({ kind: "success", message: json.message });
       form.reset();
     } catch {
       setStatus({
@@ -466,8 +466,7 @@ export function ContactProjectSection({
 
             {status.kind === "success" && (
               <div className="sf-alert sf-alert-ok" role="status">
-                ✓ Message bien reçu. Un email de confirmation vient de partir ;
-                un expert vous répond sous 24 h ouvrées.
+                ✓ {status.message || "Message bien reçu. Un email de confirmation vient de partir ; un expert vous répond sous 24 h ouvrées."}
               </div>
             )}
             {status.kind === "error" && (
@@ -478,8 +477,9 @@ export function ContactProjectSection({
 
             <p className="sf-legal-note">
               En envoyant ce formulaire, vous acceptez que vos données soient
-              utilisées pour vous répondre. Pas de newsletter, pas de partage à
-              des tiers.
+              utilisées pour vous répondre. Pas de newsletter ni de vente de
+              données ; seuls les sous-traitants techniques nécessaires interviennent,
+              comme indiqué dans notre <a href="/legal/confidentialite">politique de confidentialité</a>.
             </p>
           </form>
         </div>
@@ -487,9 +487,9 @@ export function ContactProjectSection({
         <div className="sf-trust-row">
           <span>🇫🇷 Équipe 100% en France</span>
           <span className="sep" />
-          <span>Données hébergées en France (OVH / Scaleway)</span>
+          <span>Prestataires et localisations documentés</span>
           <span className="sep" />
-          <span>Conformité RGPD · DPO interne</span>
+          <span>RGPD · contact interne identifié</span>
         </div>
       </div>
     </section>
@@ -1193,7 +1193,13 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
               <button
                 type="button"
                 className="sf-tile"
-                onClick={() => window.openCookiePreferences?.()}
+                onClick={() => {
+                  if (window.openCookiePreferences) {
+                    window.openCookiePreferences();
+                  } else {
+                    window.location.assign("/legal/cookies");
+                  }
+                }}
                 aria-label="Modifier mes préférences cookies"
               >
                 <span className="sf-tile-ic">

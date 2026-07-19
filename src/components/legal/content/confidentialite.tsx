@@ -15,13 +15,11 @@ export const confidentialiteSections: LegalSection[] = [
         </p>
         <p>
           <strong>Délégué à la protection des données (DPO).</strong>{" "}
-          HAGNÉRÉ CODE SAS n&apos;est pas tenue par l&apos;article 37 du RGPD de
-          désigner un DPO (la société compte moins de 250 salariés, ne traite
-          pas de données sensibles à grande échelle et n&apos;effectue pas de
-          suivi régulier et systématique des personnes à grande échelle). Les
-          demandes RGPD et toute question relative à la protection des données
-          sont traitées directement par le président de HAGNÉRÉ CODE SAS,
-          joignable à{" "}
+          HAGNÉRÉ CODE SAS n&apos;a pas désigné de DPO à ce jour. Cette situation
+          est réévaluée si la nature ou l&apos;ampleur de ses traitements entre
+          dans l&apos;un des cas prévus par l&apos;article 37 du RGPD. Les demandes
+          relatives à la protection des données sont actuellement traitées par
+          le président de HAGNÉRÉ CODE SAS, joignable à{" "}
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>.
         </p>
       </>
@@ -254,9 +252,9 @@ export const confidentialiteSections: LegalSection[] = [
               </tr>
               <tr>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Calendly, LLC</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Prise de rendez-vous (lien externe ouvert volontairement).</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Prise de rendez-vous, uniquement après autorisation explicite ou ouverture volontaire du lien externe.</td>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>États-Unis</td>
-                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>DPF + SCC. Politique propre Calendly.</td>
+                <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>Conditions et mécanismes publiés par Calendly ; widget bloqué avant accord sur notre site.</td>
               </tr>
               <tr>
                 <td style={{ padding: "10px 12px", borderBottom: "1px solid var(--line)" }}>API Recherche Entreprises (DINUM)</td>

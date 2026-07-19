@@ -46,9 +46,9 @@ export const trustBadgesHtml = `
 
       <div class="mob-trust-card reveal reveal-d-1">
         <div class="mob-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h4>RGPD + CNIL prêt à l'audit</h4>
-        <p>Politique confidentialité dédiée mobile, gestion permissions (geo, contacts, micro, photos), DPA signé, hébergement back Scaleway Paris ou OVH Roubaix. <b>Conforme contrôles CNIL 2025</b>.</p>
-        <div class="mob-trust-foot">— DPO interne · sanction max évitée</div>
+        <h4>Permissions et flux mobiles documentés</h4>
+        <p>Politique de confidentialité, permissions, sous-traitants, DPA éventuel et localisation sont cadrés selon l'application puis validés avec votre DPO ou conseil.</p>
+        <div class="mob-trust-foot">— Mesures et responsabilités au devis</div>
       </div>
 
       <div class="mob-trust-card reveal reveal-d-2">

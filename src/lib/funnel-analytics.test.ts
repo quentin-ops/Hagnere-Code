@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { trackFunnelEvent } from "./funnel-analytics";
+import { FUNNEL_EVENT_NAMES, trackFunnelEvent } from "./funnel-analytics";
 
 describe("trackFunnelEvent", () => {
   const sendBeacon = vi.fn<Navigator["sendBeacon"]>(() => true);
@@ -17,6 +17,10 @@ describe("trackFunnelEvent", () => {
 
   afterEach(() => {
     vi.unstubAllGlobals();
+  });
+
+  it("autorise l'état de capture partielle du formulaire", () => {
+    expect(FUNNEL_EVENT_NAMES).toContain("pf:submit_partial");
   });
 
   it("sends primitive properties to the first-party endpoint", async () => {

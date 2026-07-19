@@ -1,33 +1,126 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CALENDLY_URL =
-  "https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte?hide_gdpr_banner=1";
+  "https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte";
 
 const CALENDLY_SCRIPT_SRC = "https://assets.calendly.com/assets/external/widget.js";
 
+type CalendlyApi = {
+  initInlineWidget: (options: {
+    url: string;
+    parentElement: HTMLElement;
+  }) => void;
+};
+
+declare global {
+  interface Window {
+    Calendly?: CalendlyApi;
+  }
+}
+
 /**
- * Calendly inline embed — snippet officiel.
- * Le div .calendly-inline-widget existe dans le DOM AVANT que le script
- * ne soit chargé (useEffect run après mount), donc widget.js trouve le
- * div au moment du parse et l'auto-initialise.
+ * Le widget Calendly est un service tiers susceptible de déposer des cookies.
+ * Aucun script, iframe ou appel réseau Calendly n'est déclenché avant le clic
+ * explicite sur le bouton d'autorisation. Le choix n'est pas mémorisé : un
+ * rechargement remet donc le widget dans son état bloqué.
  */
 export function CalendlyEmbed({ height = 700 }: { height?: number }) {
+  const [authorised, setAuthorised] = useState(false);
+  const [loadFailed, setLoadFailed] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    if (document.querySelector(`script[src="${CALENDLY_SCRIPT_SRC}"]`)) return;
+    if (!authorised) return;
+
+    const markFailed = () => setLoadFailed(true);
+
+    const initialise = () => {
+      const parentElement = containerRef.current;
+      if (!parentElement || parentElement.querySelector("iframe")) return;
+      if (!window.Calendly) return;
+      window.Calendly.initInlineWidget({ url: CALENDLY_URL, parentElement });
+    };
+
+    const existing = document.querySelector<HTMLScriptElement>(
+      `script[src="${CALENDLY_SCRIPT_SRC}"]`,
+    );
+
+    if (existing) {
+      if (window.Calendly) initialise();
+      else existing.addEventListener("load", initialise, { once: true });
+      existing.addEventListener("error", markFailed, { once: true });
+      return () => {
+        existing.removeEventListener("load", initialise);
+        existing.removeEventListener("error", markFailed);
+      };
+    }
+
     const script = document.createElement("script");
     script.src = CALENDLY_SCRIPT_SRC;
     script.async = true;
+    script.addEventListener("load", initialise, { once: true });
+    script.addEventListener("error", markFailed, { once: true });
     document.body.appendChild(script);
-  }, []);
+
+    return () => {
+      script.removeEventListener("load", initialise);
+      script.removeEventListener("error", markFailed);
+    };
+  }, [authorised]);
+
+  if (!authorised) {
+    return (
+      <div className="calendly-consent" style={{ minHeight: Math.min(height, 520) }}>
+        <div className="calendly-consent-card">
+          <span className="calendly-consent-kicker">Service externe</span>
+          <h3>Afficher le calendrier Calendly ?</h3>
+          <p>
+            Calendly ne sera contacté qu&apos;après votre accord. Son affichage peut
+            entraîner le dépôt de cookies et le transfert de données techniques
+            vers ce prestataire.
+          </p>
+          <div className="calendly-consent-actions">
+            <button type="button" onClick={() => setAuthorised(true)}>
+              Autoriser et afficher le calendrier
+            </button>
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+              Ouvrir Calendly dans un nouvel onglet
+            </a>
+          </div>
+          <p className="calendly-consent-alt">
+            Sans Calendly : <a href="mailto:quentin@hagnere-patrimoine.fr">envoyer un e-mail</a>
+            {" "}ou appeler le <a href="tel:+33374472018">03 74 47 20 18</a>.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (loadFailed) {
+    return (
+      <div className="calendly-consent" style={{ minHeight: Math.min(height, 420) }} role="alert">
+        <div className="calendly-consent-card">
+          <h3>Le calendrier ne répond pas.</h3>
+          <p>Vous pouvez ouvrir directement la page de réservation ou nous écrire.</p>
+          <div className="calendly-consent-actions">
+            <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer">
+              Ouvrir Calendly
+            </a>
+            <a href="mailto:quentin@hagnere-patrimoine.fr">Envoyer un e-mail</a>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
+      ref={containerRef}
       className="calendly-inline-widget"
-      data-url={CALENDLY_URL}
-      style={{ minWidth: 320, height }}
-      aria-label="Réserver un créneau Discovery avec Hagnéré Code"
+      style={{ minWidth: 0, height }}
+      aria-label="Réserver un créneau de découverte avec Hagnéré Code"
     />
   );
 }

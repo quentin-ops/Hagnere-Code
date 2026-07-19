@@ -1,5 +1,5 @@
 export const processHtml = `
-<!-- PROCESS · trio cadrage / DPO mensuel / remédiation -->
+<!-- PROCESS · trio cadrage / suivi technique / remédiation -->
 <section class="sr-proc" id="audit">
   <div class="wrap">
     <div class="section-head reveal">
@@ -8,8 +8,8 @@ export const processHtml = `
         <h2>Le trio<br><em>conformité &amp; code</em>.</h2>
       </div>
       <div class="right">
-        Trois moments distincts, trois facturations distinctes, zéro confusion. <b>Cadrage</b> en forfait fixe.
-        <b>DPO</b> en abonnement mensuel. <b>Remédiation</b> en sprint dev quand c'est nécessaire.
+        Trois moments distincts, trois facturations distinctes. <b>Cadrage</b> en forfait fixe.
+        <b>Accompagnement technique</b> récurrent si nécessaire. <b>Remédiation</b> en sprint dev.
         Vous voyez où va chaque euro.
       </div>
     </div>
@@ -24,11 +24,11 @@ export const processHtml = `
         </div>
         <div class="sr-proc-body">
           <div class="sr-proc-tag">CADRAGE · FORFAIT FIXE</div>
-          <h3>2-4 semaines pour <em>tout cartographier</em>.</h3>
+          <h3>Un calendrier adapté au <em>périmètre réel</em>.</h3>
           <p>
             On part de votre stack et on remonte jusqu'au registre. Sous-traitants, transferts, traitements,
             systèmes IA, surface d'attaque applicative. À la fin, vous avez <b>un plan d'action priorisé,
-            chiffré, défendable</b> face à la CNIL.
+            chiffré et traçable</b> pour vos responsables et conseils.
           </p>
           <ul class="sr-proc-deliv">
             <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Cartographie sous-traitants + flux de données</li>
@@ -40,36 +40,36 @@ export const processHtml = `
           <div class="sr-proc-cost">
             <div class="sr-proc-cost-k">Forfait à partir de</div>
             <div class="sr-proc-cost-v">5 000 € HT</div>
-            <div class="sr-proc-cost-note">déduit à 100 % du DPO mensuel si signature sous 60 j</div>
+            <div class="sr-proc-cost-note">périmètre et prix confirmés au devis</div>
           </div>
         </div>
       </article>
 
-      <!-- Phase 02 · DPO mensuel -->
+      <!-- Phase 02 · accompagnement récurrent -->
       <article class="sr-proc-card sr-proc-card-recurring reveal reveal-d-1">
         <div class="sr-proc-rail">
           <div class="sr-proc-rail-num">02</div>
           <div class="sr-proc-rail-line" aria-hidden="true"></div>
         </div>
         <div class="sr-proc-body">
-          <div class="sr-proc-tag sr-proc-tag-recurring">DPO MENSUEL · ABONNEMENT</div>
-          <h3>Une équipe DPO + tech<br>sur <em>toute l'année</em>.</h3>
+          <div class="sr-proc-tag sr-proc-tag-recurring">SUIVI TECHNIQUE · ABONNEMENT</div>
+          <h3>Une équipe technique<br>auprès de <em>votre DPO</em>.</h3>
           <p>
-            Vous nous nommez DPO externe auprès de la CNIL. On suit la veille (AI Act, NIS2, sanctions),
-            on relit chaque nouvelle feature avant prod, on mène les AIPD, on est le point de contact en cas
-            de plainte ou contrôle. <b>Pas de TJM aveugle.</b>
+            Nous maintenons la cartographie et le plan d'action, préparons les éléments techniques des AIPD,
+            suivons les changements du produit et coordonnons les remédiations. Votre DPO ou conseil conserve
+            les qualifications juridiques et les relations avec l'autorité.
           </p>
           <ul class="sr-proc-deliv">
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Désignation officielle CNIL</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Coordination avec votre DPO ou conseil</li>
             <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Revue mensuelle 1 h + livrable structuré</li>
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1 à 4 AIPD / an + revues features IA illimitées (Scale)</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Assistance technique aux AIPD et revues produit</li>
             <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Veille AI Act / DORA / NIS2 / CRA</li>
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Slack dédié, SLA 4 h ouvrées sur incidents</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Canal et délai d'intervention définis au devis</li>
           </ul>
           <div class="sr-proc-cost">
             <div class="sr-proc-cost-k">Abonnement</div>
             <div class="sr-proc-cost-v">1 200 - 3 500 € / mois</div>
-            <div class="sr-proc-cost-note">selon nombre de salariés et systèmes IA · engagement 12 mois</div>
+            <div class="sr-proc-cost-note">budget indicatif HT · modalités confirmées au devis</div>
           </div>
         </div>
       </article>
@@ -83,9 +83,9 @@ export const processHtml = `
           <div class="sr-proc-tag sr-proc-tag-build">REMÉDIATION CODÉE · SPRINT DEV</div>
           <h3>Nos devs corrigent<br>dans <em>votre code</em>.</h3>
           <p>
-            Là où Lexing pond un PDF et Wavestone laisse un rapport, nous on rentre dans votre repo.
-            Chiffrement, logs, IAM, gestion des consentements, anonymisation, pipeline SAST/DAST, policies
-            cloud — codés, testés, mergés. <b>Sprint Hagnéré standard, à votre cadence.</b>
+            À partir d'un plan validé, nous intervenons dans votre dépôt pour le chiffrement, les logs, l'IAM,
+            la gestion des consentements, l'anonymisation ou les contrôles CI. Le lot, les tests et la procédure
+            de mise en production sont cadrés avant intervention.
           </p>
 
           <!-- PR MOCK -->
@@ -159,7 +159,7 @@ export const processHtml = `
       </div>
       <div class="sr-proc-rail-bands">
         <span class="sr-proc-rail-band sr-proc-rail-band-1">CADRAGE</span>
-        <span class="sr-proc-rail-band sr-proc-rail-band-2">DPO MENSUEL · CONTINU</span>
+        <span class="sr-proc-rail-band sr-proc-rail-band-2">SUIVI TECHNIQUE · CONTINU</span>
         <span class="sr-proc-rail-band sr-proc-rail-band-3">REMÉDIATION · SPRINTS À LA DEMANDE</span>
       </div>
     </div>

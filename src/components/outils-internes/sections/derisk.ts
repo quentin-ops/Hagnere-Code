@@ -85,17 +85,16 @@ export const deriskHtml = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           « Le RGPD / la conformité, on n'est pas sûr. »
         </div>
-        <h3>RGPD by design · DPA signé · DPO interne.</h3>
+        <h3>RGPD by design · responsabilités documentées.</h3>
         <p>
-          <b>DPA fourni et signé</b> dès le devis. Registre des traitements à jour, sous-traitants
-          documentés (OVH, Scaleway, Anthropic, OpenAI). Gestion des droits (accès, rectification,
-          suppression) de série. Données hébergées <b>en France</b> par défaut, chiffrement AES-256.
-          Notre DPO interne répond aux demandes de votre DPO ou juriste sous 48 h.
+          Le devis précise le DPA si nécessaire, les sous-traitants, la localisation, les durées de conservation
+          et les fonctions nécessaires à l'exercice des droits. Les choix juridiques sont validés avec votre DPO
+          ou conseil ; nous implémentons et documentons les mesures techniques retenues.
         </p>
         <div class="oi-derisk-proof">
-          <span>✓ DPA signé</span>
-          <span>✓ Données France</span>
-          <span>✓ DPO interne dispo</span>
+          <span>✓ DPA selon le rôle</span>
+          <span>✓ Hébergement documenté</span>
+          <span>✓ Contact RGPD identifié</span>
         </div>
       </div>
     </div>

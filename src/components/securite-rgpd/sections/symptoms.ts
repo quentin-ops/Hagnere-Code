@@ -4,13 +4,12 @@ export const symptomsHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Symptômes que vous reconnaissez</div>
-        <h2>Si l'une de ces phrases<br>vous a <em>déjà traversé l'esprit</em>,<br>on a un truc à se dire.</h2>
+        <div class="eyebrow">— Situations à investiguer</div>
+        <h2>Six signaux utiles<br>pour préparer le cadrage.</h2>
       </div>
       <div class="right">
-        Six phrases entendues mot pour mot en call de cadrage avec des CTO, DAF et DPO de PME tech françaises.
-        <b>Si vous en cochez 2, c'est urgent.</b> Si vous en cochez 4, vous êtes déjà exposé à une sanction CNIL ou
-        à un blocage de mise en prod sous AI Act.
+        Ces scénarios illustrent des questions fréquentes, pas des cas clients ni un diagnostic automatique.
+        Ils aident à réunir les contrats, flux, traitements et preuves nécessaires avant l'audit.
       </div>
     </div>
 
@@ -28,13 +27,13 @@ export const symptomsHtml = `
           </div>
           <div>
             <b>Ce qu'on fait :</b> cartographie complète des sous-traitants IA, vérification SCC + résidence
-            données, mise à jour des DPA manquants, registre RGPD propre. Livré en 2 semaines.
+            données, écarts contractuels et éléments du registre. Le périmètre, les validations et le délai sont fixés au devis.
           </div>
         </div>
       </article>
 
       <article class="sr-symp-card reveal reveal-d-1">
-        <div class="sr-symp-tag sr-symp-tag-dpo">DPO interne · ETI 350 salariés</div>
+        <div class="sr-symp-tag sr-symp-tag-dpo">Interlocuteur conformité · ETI 350 salariés</div>
         <blockquote class="sr-symp-quote">
           « Notre <em>registre des traitements</em> date de 2022.
           Personne ne sait où sont les <em>fichiers Excel</em> qui le tenaient à jour. »
@@ -61,8 +60,8 @@ export const symptomsHtml = `
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
           </div>
           <div>
-            <b>Probablement haut risque (Annexe III).</b> Documentation technique, supervision humaine, registre UE,
-            tests de biais à prévoir. <b>Sanction max : 35 M€ ou 7 % CA.</b> On classe + on prépare en 4 semaines.
+            <b>La qualification dépend de l'usage et du rôle de l'entreprise.</b> Nous inventorions le système,
+            ses données, fournisseurs et mesures ; votre conseil valide la catégorie et les obligations applicables.
           </div>
         </div>
       </article>
@@ -78,9 +77,8 @@ export const symptomsHtml = `
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
           </div>
           <div>
-            <b>Ce qu'on fait :</b> audit applicatif (boîte grise) + SAST/DAST en CI + mise en place des contrôles
-            SOC 2 (logs, IAM, change mgmt, business continuity). Pen-test offensif sous-traité PASSI.
-            <b>SOC 2 readiness en 12-16 semaines.</b>
+            <b>Ce qu'on peut cadrer :</b> audit applicatif, contrôles CI, logs, IAM et preuves de changement.
+            Le pen-test indépendant, l'auditeur final et le calendrier de certification sont sélectionnés séparément.
           </div>
         </div>
       </article>
@@ -96,9 +94,8 @@ export const symptomsHtml = `
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           </div>
           <div>
-            <b>Procédure d'urgence :</b> diagnostic sous 48h, réponse argumentée à la CNIL, plan de mise en
-            conformité défendable, escorte juridique avec un cabinet partenaire si demande contradictoire.
-            <b>Délai légal CNIL : généralement 1 mois.</b>
+            <b>Répartition des rôles :</b> votre avocat ou DPO pilote la réponse et les délais. Nous analysons
+            les faits techniques, préservons les preuves et chiffrons les corrections demandées.
           </div>
         </div>
       </article>
@@ -114,9 +111,9 @@ export const symptomsHtml = `
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
           </div>
           <div>
-            <b>Probablement non sans cadrage.</b> Recrutement = traitement à haut risque (RGPD + AI Act 2026).
-            On cadre l'usage : DPIA, formation équipe, contrat ChatGPT Enterprise (zéro entraînement, EU residency),
-            charte interne, validation humaine obligatoire.
+            <b>Impossible de répondre sans connaître l'usage et le contrat.</b> Il faut documenter finalité,
+            données, fournisseur, conservation, accès et supervision humaine, puis faire valider la base juridique
+            et l'éventuelle AIPD par le DPO ou conseil.
           </div>
         </div>
       </article>
@@ -131,8 +128,8 @@ export const symptomsHtml = `
           </svg>
         </div>
         <div class="sr-symp-foot-text">
-          <b>Vous reconnaissez d'autres phrases ?</b> Si la vôtre n'est pas dans la liste, on a probablement déjà
-          traité le cas. <b>30 minutes de cadrage gratuit</b> avec un DPO + un lead dev.
+          <b>Vous reconnaissez une autre situation ?</b> Décrivez les outils, données et décisions concernés.
+          Le premier échange permet d'identifier les pièces à réunir et les expertises nécessaires.
         </div>
       </div>
       <a href="#contact" class="btn btn-accent">

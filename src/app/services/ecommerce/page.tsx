@@ -6,13 +6,13 @@ import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "E-commerce sur mesure · Alternative Shopify · Hagnéré Code",
   description:
-    "Boutique e-commerce sur mesure, 0 % de commission sur vos ventes. Stripe, Alma, Colissimo intégrés, Factur-X 2026 natif, forfait fixe de 15 à 120 k€.",
+    "Boutique e-commerce sur mesure, sans commission Hagnéré sur vos ventes. Paiement, livraison et facturation électronique intégrés selon le périmètre du devis.",
   alternates: { canonical: "/services/ecommerce" },
   openGraph: {
     ...OG_BASE,
     title: "Boutique e-commerce sur mesure — Hagnéré Code",
     description:
-      "Alternative Shopify Plus pour PME/ETI : Next.js + Laravel + app mobile React Native. Forfait fixe de 15 à 120 k€, 0 % sur vos ventes, intégrations FR natives.",
+      "Alternative Shopify pour PME et ETI : architecture choisie selon le besoin, coût sur 36 mois documenté et intégrations françaises cadrées au devis.",
     url: "/services/ecommerce",
     images: [SERVICES_OG_IMAGE],
   },
@@ -47,7 +47,7 @@ const serviceJsonLd = JSON.stringify({
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "Développement de boutiques e-commerce sur mesure : storefront Next.js + back-office Laravel + app mobile React Native + IA Claude native. Intégrations FR natives (Stripe, Alma, Colissimo, Chronopost, Sage, Cegid, Pennylane, Chorus Pro, Factur-X 2026). Hébergement France. Forfait fixe, zéro commission sur les ventes.",
+    "Développement de boutiques e-commerce sur mesure : storefront, back-office, application mobile et automatisations selon le besoin. Intégrations possibles avec Stripe, Alma, Colissimo, Chronopost, Sage, Cegid, Pennylane, une Plateforme Agréée et Factur-X. Hébergement en France disponible, forfait défini au devis et aucune commission Hagnéré sur les ventes.",
   offers: [
     {
       "@type": "Offer",
@@ -57,9 +57,10 @@ const serviceJsonLd = JSON.stringify({
         minPrice: "15000",
         maxPrice: "30000",
         priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
       },
       description:
-        "Nouvelle boutique e-commerce de 15 à 30 k€ jusqu'à 500 produits, Stripe + Alma + 2 transporteurs, Factur-X, livrée en 6-8 semaines",
+        "Budget projet indicatif de 15 à 30 k€ HT. Périmètre, coûts tiers et calendrier confirmés au devis après cadrage.",
     },
     {
       "@type": "Offer",
@@ -69,9 +70,10 @@ const serviceJsonLd = JSON.stringify({
         minPrice: "30000",
         maxPrice: "70000",
         priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
       },
       description:
-        "Refonte complète de 30 à 70 k€ incluant app mobile iOS + Android, migration Shopify/Prestashop, marketplaces, livrée en 8-12 semaines",
+        "Budget projet indicatif de 30 à 70 k€ HT. Application mobile, volumes de migration, marketplaces et calendrier confirmés au devis.",
     },
     {
       "@type": "Offer",
@@ -81,9 +83,10 @@ const serviceJsonLd = JSON.stringify({
         minPrice: "70000",
         maxPrice: "120000",
         priceCurrency: "EUR",
+        valueAddedTaxIncluded: false,
       },
       description:
-        "Boutique B2B + B2C multi-pays de 70 à 120 k€, TVA OSS intracom, multi-entrepôt, programme fidélité, livrée en 12-16 semaines",
+        "Budget projet indicatif de 70 à 120 k€ HT. Pays, fiscalité, règles B2B, logistique et accompagnement confirmés au devis.",
     },
   ],
 });

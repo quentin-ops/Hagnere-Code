@@ -85,9 +85,9 @@ export const trustBadgesHtml = `
         <div class="oi-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>
         </div>
-        <h4>DPA signé · DPO interne</h4>
-        <p>Accord de sous-traitance RGPD signé au devis. DPO Hagnéré disponible pour votre DPO ou juriste. Registre des traitements, sous-traitants documentés. Audit CNIL sans friction.</p>
-        <div class="oi-trust-foot">— Conformité RGPD de série</div>
+        <h4>DPA et sous-traitants documentés</h4>
+        <p>Le rôle de chaque partie, le DPA si nécessaire, les sous-traitants et les mesures techniques sont écrits. Les validations juridiques restent du ressort de votre DPO ou conseil.</p>
+        <div class="oi-trust-foot">— Périmètre RGPD défini au devis</div>
       </div>
     </div>
   </div>

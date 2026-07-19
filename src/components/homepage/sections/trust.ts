@@ -41,8 +41,8 @@ export const trustHtml = `
           <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M3 10h18M7 20h10"/></svg>
         </div>
         <div class="tr-body">
-          <div class="tr-title">Données hébergées en France</div>
-          <div class="tr-sub">OVH &amp; Scaleway. Conformité RGPD native. DPO interne.</div>
+          <div class="tr-title">Hébergement en France disponible</div>
+          <div class="tr-sub">OVHcloud ou Scaleway selon le projet. Traitements et sous-traitants documentés ; contact RGPD identifié.</div>
         </div>
       </div>
 

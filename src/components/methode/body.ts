@@ -401,11 +401,11 @@ ${navHtml}
             </g>
           </svg>
         </div>
-        <h3>Code &amp; données chez vous, J+1</h3>
-        <p>Repo Git sur votre compte GitHub dès le lendemain de la signature. Hébergement à votre nom. Aucun lock-in. Si vous arrêtez demain, vous gardez tout.</p>
+        <h3>Code et accès documentés dès le démarrage</h3>
+        <p>Le dépôt et l'hébergement sont organisés selon le devis. Vous disposez des accès nécessaires pendant le projet ; le transfert des livrables spécifiques suit les conditions de paiement prévues aux CGV.</p>
         <div class="pil-clause">
           <span class="pil-clause-h">CLAUSE CONTRAT</span>
-          <span class="pil-clause-t">« La propriété intellectuelle du code source est cédée au client dès le premier paiement. L'accès au repository est ouvert sous 24 h ouvrées sur l'organisation Git désignée par le client. »</span>
+          <span class="pil-clause-t">« Sauf stipulation contraire, les livrables spécifiques sont transférés après paiement complet. Les éléments préexistants, open source et outils génériques restent soumis à leurs droits respectifs. »</span>
         </div>
       </div>
 

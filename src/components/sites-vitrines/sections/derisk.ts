@@ -31,8 +31,8 @@ export const deriskHtml = `
         <div class="sv-derisk-fear">
           « Et si je <b>perds tout mon SEO</b> en refaisant le site ? »
         </div>
-        <h4>Plan de migration SEO systématique + monitoring 3 mois</h4>
-        <p>Audit des URLs indexées, redirections 301 page à page, préservation des title/meta/h1 qui rankent, conservation des backlinks entrants. Sur nos migrations WordPress→Next.js, <b>98 % des positions sont conservées ou améliorées</b>.</p>
+        <h4>Plan de migration SEO + suivi à cadrer</h4>
+        <p>Inventaire des URLs, redirections 301, conservation des contenus et balises utiles, contrôle des liens entrants et suivi post-mise en ligne. Une migration peut faire varier les positions&nbsp;: aucun taux de conservation n'est garanti sans cohorte vérifiable.</p>
         <div class="sv-derisk-proof">
           <span>✓ Audit SEO initial</span>
           <span>✓ Redirections 301</span>
@@ -57,11 +57,11 @@ export const deriskHtml = `
         <div class="sv-derisk-fear">
           « Et si le <b>projet dérape</b> et dépasse le budget ? »
         </div>
-        <h4>Forfait fixe, pénalités de retard, 2 révisions cadrées</h4>
-        <p>Prix annoncé = prix payé. Jamais d'avenant surprise. Si on dépasse la date de livraison de plus de 14 jours calendaires&nbsp;: <b>pénalité de 7 % du forfait par semaine de retard</b> (chaque semaine vous est remise). Design validé avec 2 tours de révisions inclus — au-delà, option écrite.</p>
+        <h4>Périmètre, révisions et retard cadrés</h4>
+        <p>Le devis fixe le périmètre, les dépendances client, les tours de révision et la procédure de changement. Une pénalité ou remise de retard ne s'applique que si le contrat signé la prévoit.</p>
         <div class="sv-derisk-proof">
           <span>✓ Forfait contractuel</span>
-          <span>✓ Pénalités retard</span>
+          <span>✓ Règles de retard écrites</span>
           <span>✓ 2 révisions cadrées</span>
         </div>
       </div>

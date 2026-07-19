@@ -5,16 +5,17 @@ export const mobileAppHtml = `
     <div class="ec-mobile-grid">
       <div class="ec-mobile-copy reveal">
         <div class="eyebrow">— App mobile native</div>
-        <h2>L'app mobile qui vend<br>pendant que vous dormez.</h2>
+        <h2>Une app mobile utile,<br>si l'usage la justifie.</h2>
         <p>
-          Vos clients fidèles achètent <b>2× plus</b> depuis une app mobile que depuis le web.
-          On livre une vraie <a href="/services/application-mobile">app iOS + Android</a> en <b>React Native</b>, publiée sous vos comptes
-          App Store &amp; Play Store, dans le même forfait que la boutique web.
+          Une application peut simplifier le réachat, la fidélité ou l'usage en magasin, mais son retour sur
+          investissement doit être établi à partir de vos données. On peut livrer une
+          <a href="/services/application-mobile">app iOS + Android</a> en <b>React Native</b>, publiée sous vos comptes
+          App Store &amp; Play Store, lorsqu'elle est incluse au périmètre.
         </p>
         <ul class="ec-mobile-feats">
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 00-4-5.7V5a2 2 0 10-4 0v.3A6 6 0 006 11v3.2c0 .5-.2 1-.6 1.4L4 17h5"/><path d="M9 17a3 3 0 006 0"/></svg>
-            <div><b>Push notifications</b> — promos flash, abandon panier, nouveautés — 6-10× plus de taux d'ouverture qu'un email.</div>
+            <div><b>Push notifications</b> — promos, abandon panier et nouveautés, avec consentement et mesure de l'apport réel.</div>
           </li>
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20M6 14h4"/></svg>
@@ -30,16 +31,16 @@ export const mobileAppHtml = `
           </li>
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg>
-            <div><b>OTA updates via EAS</b> — un bug fix en prod en 10 minutes, pas 3 jours de review Apple. Zéro republication store pour des changements mineurs.</div>
+            <div><b>Mises à jour OTA via EAS</b> — pour les changements compatibles avec les règles des stores ; les versions natives restent soumises à leur processus de revue.</div>
           </li>
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78a5.5 5.5 0 000-7.78z"/></svg>
-            <div><b>Apple Pay + Google Pay + Face ID</b> — checkout 1 tap, conversion x2 vs saisie carte manuelle.</div>
+            <div><b>Apple Pay + Google Pay + biométrie</b> — moins de saisie lorsque le prestataire, l'appareil et le parcours le permettent.</div>
           </li>
         </ul>
         <div class="ec-mobile-note">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-          <span>Incluse dans les forfaits <b>Scale</b> et <b>Enterprise</b>. +15 à 25 k€ en option sur le Launch si votre boutique démarre petit mais que l'app s'impose plus tard.</span>
+          <span>Elle peut entrer dans les périmètres <b>Scale</b> et <b>Enterprise</b> lorsqu'elle est explicitement chiffrée. Sur Launch, elle reste une option à cadrer selon les parcours et intégrations.</span>
         </div>
       </div>
 

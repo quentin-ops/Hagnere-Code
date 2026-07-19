@@ -8,9 +8,8 @@ export const checklistHtml = `
         <h2>Douze livrables inclus,<br>six extras facturables —<br>tarifs publics.</h2>
       </div>
       <div class="right">
-        « Audit » chez Hagnéré ne veut pas dire « un PDF générique de 80 pages ». Voici la liste <b>exhaustive</b>
-        des artefacts livrés dans chaque audit Standard — plus ce qui est en option si votre contexte le demande.
-        <b>Sample anonymisé téléchargeable</b> avant signature.
+        Cette grille présente le contenu envisagé pour le format Standard. Le devis confirme la liste, le volume,
+        les formats, les destinataires et les options adaptés au contexte réel.
       </div>
     </div>
 
@@ -71,7 +70,7 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>NDA mutuel + clause de non-conflit d'intérêt</b> — signés à J0. 100 % de l'audit déduit d'une mission de remédiation &gt; 50 k€ si vous nous la confiez (optionnel, aligne nos intérêts).</div>
+            <div><b>Confidentialité et indépendance</b> — accès, NDA éventuel, séparation des constats et hypothèses de coût, ainsi que toute remise future, sont écrits au devis.</div>
           </li>
         </ul>
       </div>
@@ -88,7 +87,7 @@ export const checklistHtml = `
         <ul class="at-check-list at-check-list-out">
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Pentest externe agréé CERT-FR · +8 à 15 k€</b> — partenaire spécialisé, OWASP top 10 complet, rapport CVSS, obligatoire pour SOC2 / ISO 27001 sérieuses.</div>
+            <div><b>Pentest externe indépendant</b> — prestataire et budget à sélectionner ; qualification PASSI vérifiée si elle est exigée par le cahier des charges.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
@@ -104,7 +103,7 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>FinOps deep-dive cloud · +4 à 8 k€</b> — 3-5 j supplémentaires sur l'optimisation AWS/OVH/Scaleway/GCP. Économies typiques identifiées&nbsp;: 20-40 % du budget cloud annuel.</div>
+            <div><b>FinOps deep-dive cloud · +4 à 8 k€</b> — analyse complémentaire AWS/OVH/Scaleway/GCP et pistes chiffrées à partir des factures et métriques disponibles.</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>

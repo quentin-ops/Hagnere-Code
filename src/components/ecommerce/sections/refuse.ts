@@ -13,7 +13,7 @@ export const refuseHtml = `
         </p>
         <div class="ec-refuse-foot">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-          Dire non à certains projets, c'est la seule manière de garantir la qualité sur celui qu'on prend.
+          Dire non à certains projets permet de préserver l'attention et la qualité de ceux que l'on accepte.
         </div>
       </div>
 

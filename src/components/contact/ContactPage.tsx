@@ -13,6 +13,7 @@ import "@/components/homepage/sections/sections.css";
 import "@/components/design-shared/nav-dropdown.css";
 import "@/components/design-shared/responsive.css";
 import "@/components/design-shared/site-footer.css";
+import "@/components/design-shared/calendly.css";
 import "./page.css";
 
 const CONTACT_HERO = /<!-- CONTACT HERO -->[\s\S]*?<\/section>\s*/m;

@@ -19,7 +19,7 @@ import "@/components/design-shared/site-footer.css";
 type CaptureStatus =
   | { kind: "idle" }
   | { kind: "submitting" }
-  | { kind: "success" }
+  | { kind: "success"; message?: string }
   | { kind: "error"; message: string };
 
 const CUSTOM_TOOL_BASE_COST = 28000; // référence forfait standard
@@ -136,8 +136,9 @@ export function ExcelCalculator() {
           mathChallenge: toMathChallengePayload(math),
         }),
       });
+      const json = (await res.json().catch(() => ({}))) as { message?: string };
       if (!res.ok) throw new Error("fail");
-      setStatus({ kind: "success" });
+      setStatus({ kind: "success", message: json.message });
     } catch {
       setStatus({
         kind: "error",
@@ -411,7 +412,7 @@ export function ExcelCalculator() {
 
               {status.kind === "success" && (
                 <div className="calc-alert calc-alert-ok">
-                  ✓ Demande reçue. Notre équipe vous envoie le rapport sous 24 h ouvrées.
+                  ✓ {status.message || "Demande reçue. Notre équipe vous envoie le rapport sous 24 h ouvrées."}
                 </div>
               )}
               {status.kind === "error" && (

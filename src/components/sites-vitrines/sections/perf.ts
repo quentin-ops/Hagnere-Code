@@ -31,7 +31,7 @@ export const perfHtml = `
         </svg>
         <div class="sv-perf-dial-caption">
           <div class="sv-perf-dial-kind">LIGHTHOUSE PERFORMANCE</div>
-          <div class="sv-perf-dial-sub">Valeur médiane sur nos livraisons récentes — mesurée au crawl, pas en lab.</div>
+          <div class="sv-perf-dial-sub">Exemple illustratif d'un objectif de performance — à mesurer sur vos pages et conditions réelles.</div>
         </div>
       </div>
 

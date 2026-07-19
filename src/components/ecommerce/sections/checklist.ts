@@ -5,11 +5,11 @@ export const checklistHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Ce que "une boutique Hagnéré" veut dire</div>
-        <h2>Vingt livrables inclus<br>dans chaque boutique.</h2>
+        <h2>Vingt livrables à cadrer<br>dans votre devis.</h2>
       </div>
       <div class="right">
-        "Faire un e-commerce" c'est flou. Voilà la liste exacte de ce qui rentre dans le forfait —
-        et ce qu'on ne fait pas. Zéro avenant surprise après le devis.
+        « Faire un e-commerce » est trop flou. Cette checklist sert de base : le devis indique précisément
+        les éléments inclus, exclus, optionnels et les quantités retenues.
       </div>
     </div>
 
@@ -19,9 +19,9 @@ export const checklistHtml = `
         <div class="ec-check-head">
           <div class="ec-check-badge ec-check-badge-in">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>
-            INCLUS DANS LE FORFAIT
+            SOCLE À CONFIRMER AU DEVIS
           </div>
-          <h3>Vingt livrables, à chaque projet.</h3>
+          <h3>Vingt points à sélectionner et quantifier.</h3>
         </div>
         <ul class="ec-check-list">
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Charte graphique + design system Figma</b> — moodboard, typo, couleurs, composants, déclinaisons web/mobile/email/print.</div></li>
@@ -32,18 +32,18 @@ export const checklistHtml = `
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>3 transporteurs FR au choix</b> — Colissimo, Chronopost, Mondial Relay, DPD, Relais Colis ; étiquettes en masse + tracking.</div></li>
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Comptes clients + OAuth</b> — email, Google, Apple, magic link. Historique commandes, wishlist, adresses.</div></li>
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Gestion commandes + retours</b> — workflows, étiquettes retour prépayées, avoirs, RMA complet.</div></li>
-          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Factur-X + Chorus Pro 2026-ready</b> — PDF/A-3 + XML CII, dépôt auto sur Plateforme Agréée (Pennylane, Docaposte).</div></li>
+          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Factur-X + Plateforme Agréée</b> — format, flux et dépôt définis avec votre comptable et la plateforme retenue.</div></li>
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Intégration 1 ERP au choix</b> — Sage 100/X3, Cegid, EBP, Pennylane, Axonaut ou Sellsy. Commandes + clients + produits synchros.</div></li>
-          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Recherche sémantique IA</b> — Claude + pgvector, "canapé beige pour petit salon" = résultats pertinents, pas matching de tags.</div></li>
-          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Fiches produit générées par IA</b> — titre, description SEO, meta, bullets, traductions, déclenché à l'import PIM.</div></li>
+          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Recherche sémantique IA</b> — moteur et corpus choisis après test de pertinence sur vos requêtes réelles.</div></li>
+          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Assistance IA aux fiches produit</b> — titre, description, meta et traductions proposés puis relus avant publication.</div></li>
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>SEO technique complet</b> — sitemap, hreflang, JSON-LD Product/Offer/Breadcrumb, canonical, robots, rich snippets.</div></li>
-          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Core Web Vitals verts garantis</b> — LCP &lt; 2,5s, INP &lt; 200ms, CLS &lt; 0,1, accessibilité WCAG 2.2 AA.</div></li>
+          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Budget de performance et accessibilité</b> — seuils LCP, INP et CLS, parcours testés et niveau d'audit d'accessibilité définis à la recette.</div></li>
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Mesure server-side sous consentement</b> — événements GA4, Meta CAPI ou Google Ads définis selon votre CMP, sans contourner le choix du visiteur.</div></li>
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Email transactionnel + newsletter</b> — Resend/Postmark + Brevo ou Klaviyo, templates responsive brandés, analytics.</div></li>
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Codes promo + bundles + ventes flash</b> — règles complexes (panier min, produits éligibles, cumulable, nominatif).</div></li>
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Back-office admin sur mesure (React) + rôles</b> — permissions granulaires, logs audit, impersonation support, multi-utilisateurs.</div></li>
-          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>RGPD + CMP + consent mode v2</b> — Axeptio ou Didomi, DPA, export/suppression données, registre des traitements.</div></li>
-          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Hébergement 6 mois + code Git chez vous</b> — Scaleway Paris / OVH, sauvegardes 15 min, repo sur votre orga dès J+1.</div></li>
+          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>RGPD + CMP</b> — outils, DPA, droits, conservation et registre définis selon vos traitements puis validés avec votre DPO ou conseil.</div></li>
+          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div><div><b>Hébergement + code Git chez vous</b> — fournisseur, durée incluse, RPO/RTO, fréquence des sauvegardes et calendrier de transfert écrits au devis.</div></li>
         </ul>
       </div>
 
@@ -62,11 +62,11 @@ export const checklistHtml = `
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div><div><b>Gestion quotidienne des pubs Meta / Google Ads</b> — c'est notre <b>autre service</b>, pas dans le forfait dev.</div></li>
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div><div><b>SAV clients finaux</b> — on livre les outils (tickets, emails, dashboards), c'est vous ou votre équipe qui répondez aux clients.</div></li>
           <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div><div><b>Négociation de vos tarifs transporteurs</b> — Colissimo / Chronopost : vous signez le contrat commercial, on branche l'API.</div></li>
-          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div><div><b>Comptes développeur Apple + Google</b> — vous les ouvrez (99$/an + 25$ one-shot), on publie les apps mobiles dessus.</div></li>
+          <li><div class="ec-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div><div><b>Comptes développeur Apple + Google</b> — vous les ouvrez et réglez les frais affichés par les stores ; on publie les apps mobiles dessus.</div></li>
         </ul>
         <div class="ec-check-note">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-          Si un point "hors scope" doit rentrer dans le forfait, on en parle au cadrage et on ajuste le périmètre ensemble — pas par avenant.
+          Si un point hors périmètre devient nécessaire, il est chiffré avant signature ou traité par un changement de périmètre explicite.
         </div>
       </div>
     </div>

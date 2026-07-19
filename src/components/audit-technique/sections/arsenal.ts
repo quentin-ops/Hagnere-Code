@@ -51,8 +51,8 @@ export const arsenalHtml = `
               <div class="at-arsenal-tool-kind">Règles custom · anti-patterns</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Règles custom que SonarQube ne détecte pas. <b>Patterns spécifiques à votre stack</b> (Laravel ActiveRecord leaks, React hooks stale closures, SQL injection complexes). Bibliothèque propriétaire de 200+ règles accumulée sur nos audits.</div>
-          <div class="at-arsenal-tool-chip">Règles propriétaires</div>
+          <div class="at-arsenal-tool-body">Des règles adaptées à la stack peuvent compléter les règles standard, par exemple sur Laravel, React ou les accès SQL. La liste réellement utilisée et ses limites figurent dans la méthode d'audit.</div>
+          <div class="at-arsenal-tool-chip">Règles adaptées au périmètre</div>
         </div>
 
         <div class="at-arsenal-tool">
@@ -110,7 +110,7 @@ export const arsenalHtml = `
               <div class="at-arsenal-tool-kind">Secrets leaks · historique git</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Scan complet de l'historique git à la recherche de <b>secrets commités</b>&nbsp;: API keys, tokens, private keys, JWT secrets. Une majorité des audits que nous faisons révèle au moins 1 secret encore actif dans l'historique.</div>
+          <div class="at-arsenal-tool-body">Scan de l'historique Git selon les accès accordés, à la recherche de <b>secrets commités</b>&nbsp;: clés API, jetons, clés privées ou secrets JWT. Toute détection doit être vérifiée et les identifiants concernés révoqués.</div>
           <div class="at-arsenal-tool-chip">Historique complet scanné</div>
         </div>
 
@@ -123,12 +123,12 @@ export const arsenalHtml = `
               </svg>
             </div>
             <div>
-              <div class="at-arsenal-tool-name">Partenaire pentest CERT-FR</div>
-              <div class="at-arsenal-tool-kind">Option · +8-15 k€</div>
+              <div class="at-arsenal-tool-name">Pentest indépendant en option</div>
+              <div class="at-arsenal-tool-kind">Prestataire et budget au devis</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Pentest externe via partenaire agréé CERT-FR pour les audits qui visent SOC2 / ISO 27001 / clients enterprise exigeants. <b>OWASP top 10 complet, rapport CVSS</b>, dashboard de follow-up, re-test après remédiation. Chiffré à l'avance dans le devis initial.</div>
-          <div class="at-arsenal-tool-chip">Partenaire externe · transparent</div>
+          <div class="at-arsenal-tool-body">Si un audit offensif indépendant ou une qualification particulière est exigé, le client sélectionne un prestataire adapté. Une qualification PASSI est vérifiée dans l'annuaire ANSSI lorsqu'elle fait partie du cahier des charges. <b>Périmètre, rapport et re-test</b> sont contractualisés avec ce prestataire.</div>
+          <div class="at-arsenal-tool-chip">Prestataire vérifié selon le besoin</div>
         </div>
       </div>
 

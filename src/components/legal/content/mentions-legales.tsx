@@ -116,11 +116,11 @@ export const mentionsLegalesSections: LegalSection[] = [
           </dd>
         </dl>
         <p>
-          Les bases de données applicatives et les sauvegardes associées sont
-          hébergées en France, chez des prestataires certifiés{" "}
-          <strong>OVHcloud</strong> (roubaix.fr) et{" "}
-          <strong>Scaleway</strong> (Paris), afin de garantir la localisation
-          européenne des données personnelles traitées par nos soins.
+          Le site utilise plusieurs prestataires techniques selon la fonction :
+          Cloudflare pour la diffusion et la protection, Neon pour la base
+          PostgreSQL en région européenne et Resend pour les e-mails
+          transactionnels. Les localisations et mécanismes de transfert sont
+          détaillés dans la <a href="/legal/confidentialite">politique de confidentialité</a>.
         </p>
       </>
     ),

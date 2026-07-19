@@ -27,10 +27,10 @@ export const bodyHtml = `${navHtml}
           Démarrer un projet
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <button type="button" class="btn btn-ghost btn-lg" data-calendly-open>
+        <a href="/rendez-vous" class="btn btn-ghost btn-lg">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
           Réserver un rendez-vous
-        </button>
+        </a>
       </div>
       <p class="hero-micro">
         Vous tomberez sur <b>quelqu'un qui code</b>, pas sur un commercial. 30 min, sans engagement.
