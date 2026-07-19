@@ -203,6 +203,21 @@ export function RealisationsIndexPage() {
                       ))}
                     </div>
 
+                    {/* Mention légale : les pastilles ci-dessus n'affichent pas
+                        metric.note, or c'est là que vit l'avertissement sur les
+                        performances. Sans ce bloc, le disclaimer présent dans les
+                        données disparaissait au rendu sur les deux cas relevant
+                        d'une activité financière réglementée. */}
+                    {(c.slug === "hagnere-investissement" ||
+                      c.slug === "hagnere-patrimoine") && (
+                      <p className="rlm-case-disclaimer">
+                        Chiffres communiqués par le cabinet, relatifs à son activité
+                        et non à une prestation de Hagnéré Code. Les performances
+                        passées ne préjugent pas des performances futures et le
+                        capital investi n&apos;est pas garanti.
+                      </p>
+                    )}
+
                     {/* Modules clés */}
                     <div className="rlm-case-section">
                       <div className="rlm-case-section-h">Modules clés</div>

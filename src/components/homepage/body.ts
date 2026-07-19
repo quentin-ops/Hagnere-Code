@@ -1097,15 +1097,15 @@ export const bodyHtml = `${navHtml}
             <text x="147" y="258" text-anchor="middle" font-family="Geist" font-weight="600" font-size="13" fill="#0F172A">Prendre RDV →</text>
             <!-- Right: rendement card -->
             <rect x="390" y="40" width="170" height="125" rx="14" fill="#fff" stroke="#E2E8F0"/>
-            <text x="410" y="66" font-family="Geist Mono" font-size="9" fill="#64748B" letter-spacing="1">BRUT MOYEN</text>
-            <text x="410" y="108" font-family="Geist" font-weight="700" font-size="34" fill="#0F172A" letter-spacing="-1">8,6 %</text>
-            <text x="410" y="128" font-family="Geist Mono" font-size="9" fill="#64748B">net d'impôts · garanti</text>
+            <text x="410" y="66" font-family="Geist Mono" font-size="9" fill="#64748B" letter-spacing="1">RENDEMENT BRUT MOYEN</text>
+            <text x="410" y="108" font-family="Geist" font-weight="700" font-size="34" fill="#0F172A" letter-spacing="-1">9,07 %</text>
+            <text x="410" y="128" font-family="Geist Mono" font-size="9" fill="#64748B">sur leurs projets réalisés</text>
             <rect x="410" y="138" width="130" height="4" rx="2" fill="#E2E8F0"/>
             <rect x="410" y="138" width="116" height="4" rx="2" fill="#0F172A"/>
             <!-- Right card 2 -->
             <rect x="390" y="175" width="170" height="125" rx="14" fill="#fff" stroke="#E2E8F0"/>
             <text x="410" y="200" font-family="Geist Mono" font-size="9" fill="#64748B" letter-spacing="1">LOGEMENTS RÉNOVÉS</text>
-            <text x="410" y="242" font-family="Geist" font-weight="700" font-size="34" fill="#0F172A" letter-spacing="-1">149</text>
+            <text x="410" y="242" font-family="Geist" font-weight="700" font-size="34" fill="#0F172A" letter-spacing="-1">144</text>
             <text x="410" y="262" font-family="Geist Mono" font-size="9" fill="#64748B">en 3 ans</text>
             <circle cx="420" cy="282" r="6" fill="#0F172A"/>
             <circle cx="432" cy="282" r="6" fill="#0F172A" opacity="0.7"/>
@@ -1125,8 +1125,8 @@ export const bodyHtml = `${navHtml}
           <div class="real-meta">NEXT.JS <span class="dot"></span> SEO + ADS <span class="dot"></span> Site vitrine</div>
           <p>Site marque du cabinet d'investissement immobilier clé en main. Funnel de qualification de prospects investisseurs, simulateur de rendement, prise de RDV, contenus YouTube intégrés.</p>
           <div class="real-metric">
-            <div class="rm"><div class="n">149</div><div class="l">logements rénovés</div></div>
-            <div class="rm"><div class="n">8,6<span class="s"> %</span></div><div class="l">brut moyen</div></div>
+            <div class="rm"><div class="n">144</div><div class="l">logements rénovés</div></div>
+            <div class="rm"><div class="n">9,07<span class="s"> %</span></div><div class="l">rendement brut moyen</div></div>
             <div class="rm"><div class="n">×2,5</div><div class="l">leads qualifiés</div></div>
           </div>
         </div>

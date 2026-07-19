@@ -456,7 +456,7 @@ export const CASES: Record<string, CaseStudy> = {
     ],
     metrics: [
       { value: "612", label: "clients accompagnés", note: "depuis 2021" },
-      { value: "7,2 %", label: "rendement net moyen", note: "clients 2024 — performances passées non garantes du futur, capital non garanti" },
+      { value: "7,68 %", label: "rendement net/net moyen", note: "sur leurs projets réalisés — performances passées non garantes du futur, capital non garanti" },
       { value: "× 2,5", label: "leads qualifiés", note: "vs ancien site" },
       { value: "< 80 €", label: "CPA segment A", note: "objectif tenu" },
     ],

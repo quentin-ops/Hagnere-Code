@@ -728,6 +728,13 @@ html.dark {
   border: 1px solid var(--line);
   border-radius: 12px;
 }
+.rlm-case-disclaimer {
+  margin-top: 8px;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--mute);
+}
+
 
 .rlm-case-metric {
   flex: 1 1 80px;
