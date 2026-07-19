@@ -59,7 +59,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4800,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -112,12 +111,12 @@ const faqItems = [
   {
     question: "Combien coûte le développement d'un SaaS en 2026 ?",
     answer:
-      "Les fourchettes du marché français : 5 000 à 15 000 € pour un POC (prototype jetable) qui valide l'idée, 15 000 à 40 000 € pour un MVP fonctionnel — la première version vendable (les agences traditionnelles facturent plutôt 40 000 à 80 000 €) —, 40 000 à 100 000 € pour une V1 complète multi-rôles, et 100 000 € et plus pour un SaaS complexe avec IA, temps réel ou intégrations lourdes. Chez Hagnéré Code, un MVP prêt à être mis en ligne (production-ready) démarre à 15 000 €, livré en 3 à 6 semaines au forfait fixe.",
+      "Notre recoupement éditorial 2026 retient 5 000 à 15 000 € pour un POC, 15 000 à 40 000 € pour un MVP fonctionnel, 40 000 à 100 000 € pour une V1 multi-rôles et 100 000 € et plus pour un produit complexe. Ces ordres de grandeur ne constituent ni une médiane ni un échantillon représentatif : comparez les jours, inclusions et exclusions. La grille commerciale Hagnéré Code démarre à 15 000 € pour un MVP, selon périmètre, au forfait fixe.",
   },
   {
     question: "Combien coûte un MVP de SaaS ?",
     answer:
-      "Le marché français observe 8 000 à 35 000 € selon les baromètres, avec un cœur de marché entre 15 000 et 40 000 € pour un produit fonctionnel, bien designé et testable par de vrais utilisateurs. En dessous de 8 000 €, vous achetez généralement un prototype sur template ou no-code — utile pour valider une idée, rarement une base saine pour construire. Le vrai critère n'est pas le prix mais ce qu'il couvre : cadrage, design, code testé, mise en production et transfert de propriété.",
+      "Pour ses scénarios, ce guide retient 15 000 à 40 000 € pour un MVP fonctionnel, designé, testé et mis en production. Ce repère vient d'un recoupement éditorial non représentatif, pas d'un baromètre de marché. Une offre plus basse peut être pertinente si son périmètre est plus réduit : vérifiez surtout le cadrage, le design, les tests, la mise en production, les droits et la réversibilité.",
   },
   {
     question: "Combien de temps faut-il pour développer un SaaS ?",
@@ -127,7 +126,7 @@ const faqItems = [
   {
     question: "Peut-on créer un SaaS avec l'IA (ChatGPT, Claude) ?",
     answer:
-      "Générer une démo, oui — et c'est bluffant. Un produit en production qui encaisse des paiements, protège des données clients et tient la charge, c'est une autre affaire : la recherche 2025 montre que l'IA accélère fortement le code standard (+55 % sur des tâches cadrées, étude contrôlée GitHub) mais peut ralentir les développeurs sur du code complexe (étude METR : -19 %). L'approche qui fonctionne : l'IA industrialisée dans le processus d'une équipe senior, avec revue humaine de chaque ligne — c'est ce qui nous permet un MVP dès 15 000 € sans sacrifier la fiabilité.",
+      "Générer une démo, oui. Pour un produit qui encaisse des paiements et protège des données, les résultats dépendent des tâches : une étude contrôlée a mesuré un gain sur un exercice cadré, tandis que METR a observé un ralentissement sur son échantillon de développeurs expérimentés et de dépôts complexes. Ces études ne prouvent aucune remise universelle. Hagnéré Code utilise des assistants avec revue humaine et tests ; notre tarif d'entrée à 15 000 € relève de notre grille et du périmètre, pas d'une causalité démontrée par ces études.",
   },
   {
     question: "Peut-on créer un SaaS en no-code (Bubble) ?",
@@ -137,12 +136,12 @@ const faqItems = [
   {
     question: "Combien coûte l'hébergement et l'infrastructure d'un SaaS ?",
     answer:
-      "Beaucoup moins qu'on ne le croit au début : un SaaS à ses débuts, construit sur des services modernes (Vercel ~20 $/mois, base de données Neon ou Supabase 0 à 25 $/mois, authentification Clerk gratuite jusqu'à 50 000 utilisateurs, e-mails ~20 $/mois, monitoring ~26 $/mois), tourne pour 100 à 200 €/mois. Les benchmarks du secteur situent l'infrastructure à 8-15 % du chiffre d'affaires d'un SaaS — elle grandit avec vos revenus, pas avant.",
+      "Dans le scénario early-stage de ce guide, les tarifs publics relevés pour hébergement, base de données, authentification, e-mails et suivi produisent un total d'environ 100 à 200 €/mois. Ce n'est pas une moyenne de marché : le coût réel dépend des utilisateurs, du stockage, des traitements et du niveau de service. Les benchmarks cités donnent un point de comparaison, mais votre consommation doit être modélisée poste par poste.",
   },
   {
     question: "Quel est le coût de maintenance d'un SaaS ?",
     answer:
-      "Le standard sectoriel : 15 à 25 % du coût de développement initial par an, en comptant correctifs, mises à jour de sécurité et petites évolutions. Un SaaS n'est jamais « fini » : c'est un produit vivant, qui tourne dans un environnement qui bouge sans lui — navigateurs mis à jour, failles découvertes, services connectés qui changent leurs règles — avec des retours clients à intégrer. Budgétez le run dès le départ — c'est l'oubli n° 1 des business plans que nous recevons.",
+      "Comme hypothèse de planification, ce guide retient 15 à 25 % du coût initial par an pour correctifs, sécurité et petites évolutions. Ce n'est pas un standard statistique : le montant dépend du niveau de service, des dépendances et du rythme produit. Exigez un contrat qui détaille délais d'intervention, versions supportées, inclusions et exclusions, puis remplacez cette hypothèse par le devis réel.",
   },
   {
     question: "Faut-il un développeur pour créer un SaaS ?",
@@ -194,7 +193,7 @@ export default function Page() {
           { label: "Combien coûte un SaaS ?" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Ce que coûte vraiment un logiciel en ligne vendu par abonnement, étape par étape : les prix du marché français pour une première version, les frais mensuels une fois le produit lancé, ce que l'intelligence artificielle change aux budgets, et un vrai devis expliqué ligne à ligne."
+        heroDescription="Ce que coûte un logiciel en ligne vendu par abonnement, de la première version à son exploitation. Ordres de grandeur 2026, frais mensuels, impact de l'intelligence artificielle et exemple de devis expliqué ligne à ligne."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -204,13 +203,13 @@ export default function Page() {
         keyPoints={[
           { number: "01", title: "MVP : 15 000 – 40 000 €", description: "", color: "violet" },
           { number: "02", title: "Exploitation : dès ~150 €/mois", description: "", color: "blue" },
-          { number: "03", title: "Devis réel décortiqué", description: "", color: "emerald" },
+          { number: "03", title: "Exemple de devis décortiqué", description: "", color: "emerald" },
           { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
         ]}
         relatedLinks={[
           { href: "/guides/combien-coute-un-site-internet", label: "Combien coûte un site internet ?" },
           { href: "/guides/combien-coute-une-application-mobile", label: "Prix d'une application mobile" },
-          { href: "/guides/cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
+          { href: "/ressources/kit-cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
           { href: "/services/saas-applications-metier", label: "Développement SaaS" },
           { href: "/methode", label: "Notre méthode Sprint Fixe™" },
           { href: "/tarifs", label: "Nos tarifs détaillés" },
@@ -229,9 +228,9 @@ export default function Page() {
           métier, impossible de savoir qui exagère — personne ne vous a
           jamais montré comment un tel devis se fabrique. Ce guide remet
           de l&apos;ordre :{" "}
-          <strong>fourchettes réelles par étape, coûts d&apos;exploitation
-          chiffrés, impact honnête de l&apos;IA, et un devis de MVP
-          décortiqué ligne à ligne</strong>.
+          <strong>fourchettes indicatives par étape, coûts d&apos;exploitation
+          chiffrés, impact honnête de l&apos;IA, et un exemple illustratif de
+          devis de MVP décortiqué ligne à ligne</strong>.
         </p>
 
         <InfoBox variant="blue" title="Les 10 mots de ce guide, en 30 secondes">
@@ -256,13 +255,13 @@ export default function Page() {
           items={[
             { id: "reponse-rapide", label: "1. La réponse rapide : les fourchettes 2026" },
             { id: "de-quoi-parle-t-on", label: "2. SaaS, application web, outil métier : de quoi parle-t-on" },
-            { id: "profils", label: "3. Le budget selon votre profil : 3 scénarios" },
+            { id: "profils", label: "3. Le budget selon votre profil : 3 scénarios illustratifs" },
             { id: "etapes", label: "4. La trajectoire des coûts : POC → MVP → V1 → montée en charge" },
             { id: "decomposition", label: "5. Ce que vous payez : postes et taux journaliers 2026" },
             { id: "exploitation", label: "6. Le « run » : les coûts d'exploitation, enfin chiffrés" },
             { id: "ia", label: "7. Ce que l'IA change vraiment dans les budgets (2026)" },
             { id: "no-code", label: "8. No-code : le vrai coût de Bubble et consorts" },
-            { id: "devis", label: "9. Un devis de MVP réel, décortiqué ligne à ligne" },
+            { id: "devis", label: "9. Un exemple de devis MVP, décortiqué ligne à ligne" },
             { id: "conformite", label: "10. Éditeur SaaS : le budget conformité 2026" },
             { id: "business", label: "11. Combien rapporte un SaaS ? Le calcul fondateur" },
             { id: "erreurs", label: "12. Les 5 erreurs qui coulent les budgets" },
@@ -272,7 +271,8 @@ export default function Page() {
 
         <h2 id="reponse-rapide">1. La réponse rapide : les fourchettes 2026</h2>
         <p>
-          En 2026, développer un SaaS coûte <strong>5 000 à 15 000 € pour
+          Pour planifier un premier budget en 2026, notre recoupement
+          éditorial retient <strong>5 000 à 15 000 € pour
           un POC</strong> — un prototype volontairement jetable, dont le
           seul but est de prouver que l&apos;idée tient debout face à de
           vrais utilisateurs —, <strong>15 000 à 40 000 € pour un
@@ -282,17 +282,19 @@ export default function Page() {
           produit abouti, avec tous les rôles et tous les écrans —, et{" "}
           <strong>100 000 € et plus pour un produit complexe</strong>{" "}
           (IA, temps réel, intégrations lourdes). Retenez la logique : on
-          prouve (POC), on vend (MVP), on complète (V1). Les agences
-          traditionnelles facturent un MVP 40 000
-          à 80 000 € ; les équipes qui ont industrialisé l&apos;IA dans
-          leur processus livrent le même périmètre à partir de 15 000 €,
-          au forfait fixe — c&apos;est notre cas, et la section 9 en
-          montre un devis réel. À ce budget de construction
-          s&apos;ajoutent l&apos;exploitation (dès ~150 €/mois, section
-          6) et la maintenance (15 à 25 % du coût initial par an).
+          prouve (POC), on vend (MVP), on complète (V1). Ces valeurs ne sont
+          ni une médiane ni un échantillon représentatif. Des
+          agences publient aussi des offres de MVP entre 40 000 et 80 000 €,
+          avec des périmètres variables. Notre grille commerciale démarre à 15 000 € au
+          forfait fixe ; la section 9 montre comment se construit un
+          exemple illustratif, sans le présenter comme un devis client.
+          À ce budget de construction
+          s&apos;ajoutent l&apos;exploitation (dès ~150 €/mois dans notre
+          scénario, section 6) et la maintenance (hypothèse de planification
+          de 15 à 25 % du coût initial par an, à remplacer par un devis).
         </p>
         <GuideTable
-          headers={["Étape", "Budget marché", "Durée", "Ce que vous obtenez"]}
+          headers={["Étape", "Repère éditorial", "Durée indicative", "Ce que vous obtenez"]}
           rows={[
             ["POC / prototype", "5 000 – 15 000 €", "2 – 4 semaines", "Valider l'idée avec de vrais utilisateurs"],
             ["MVP", "15 000 – 40 000 €", "4 – 8 semaines", "Produit vendable : fonctions essentielles, création de compte et connexion sécurisée, paiement en ligne"],
@@ -334,32 +336,36 @@ export default function Page() {
           encaisser et servir des clients sans vous.
         </p>
 
-        <h2 id="profils">3. Le budget selon votre profil : 3 scénarios</h2>
-        <h3>Scénario A — Fondateur : lancer un produit sur le marché</h3>
+        <h2 id="profils">3. Le budget selon votre profil : 3 scénarios illustratifs</h2>
+        <h3>Scénario illustratif A — Fondateur : lancer un produit sur le marché</h3>
         <p>
           Votre enjeu : valider vite sans brûler la trésorerie — le
           périmètre exact de notre offre de{" "}
           <Link href="/services/saas-applications-metier">développement
           de SaaS et d&apos;applications métier</Link>.{" "}
-          <strong>Trajectoire recommandée : POC ou MVP resserré (15 000 à
-          25 000 €)</strong>, 3 à 5 fonctionnalités maximum, un seul parcours
-          utilisateur soigné, paiement en ligne dès le premier jour — un MVP
-          qui n&apos;encaisse pas ne valide rien. Gardez au moins autant de
-          budget pour l&apos;acquisition que pour le développement (section
-          11). L&apos;erreur classique du profil A : sur-spécifier la V1
-          avant d&apos;avoir un seul client payant.
+          <strong>Trajectoire recommandée : MVP resserré (15 000 à
+          25 000 €)</strong>, 3 à 5 fonctionnalités maximum et un seul
+          parcours utilisateur soigné. Pour valider la demande, cherchez
+          un engagement commercial réel : paiement en ligne lorsque le
+          modèle s&apos;y prête, pilote signé ou commande. Si l&apos;incertitude
+          est d&apos;abord technique, commencez par le POC de la section 1.
+          Gardez au moins autant de budget pour l&apos;acquisition que pour le
+          développement (section 11). L&apos;erreur classique du profil A :
+          sur-spécifier la V1 avant d&apos;avoir un seul client payant.
         </p>
-        <h3>Scénario B — PME : digitaliser un processus interne</h3>
+        <h3>Scénario illustratif B — PME : digitaliser un processus interne</h3>
         <p>
           Remplacer les tableurs, connecter l&apos;existant, fiabiliser.{" "}
-          <strong>Budget réaliste : 8 000 à 50 000 €</strong> selon la
-          complexité du processus et les intégrations (le budget médian
-          français d&apos;un logiciel sur mesure est d&apos;environ
-          30 000 €). Le ROI se calcule facilement : heures économisées ×
+          <strong>Budget indicatif : 8 000 à 50 000 €</strong> selon la
+          complexité du processus et les intégrations. Cette fourchette est
+          un repère éditorial, pas une médiane établie à partir d&apos;un
+          corpus de budgets clients. Le ROI se calcule facilement : heures économisées ×
           coût horaire × équipe. Point de vigilance : l&apos;outil interne
-          d&apos;aujourd&apos;hui devient parfois le SaaS de demain —
-          prévoyez cette option dans l&apos;architecture, elle ne coûte
-          presque rien au départ et vaut cher ensuite. Pour ce profil, notre
+          d&apos;aujourd&apos;hui devient parfois le SaaS de demain. Faites
+          documenter cette possibilité dans les choix techniques, sans
+          financer avant l&apos;heure la gestion de plusieurs clients : une
+          architecture trop ambitieuse consommerait le budget que le premier
+          usage doit justement valider. Pour ce profil, notre
           offre d&apos;<Link href="/services/outils-internes-sur-mesure">outils
           internes sur mesure</Link> couvre exactement ce périmètre, au
           forfait fixe — et notre guide du{" "}
@@ -367,7 +373,7 @@ export default function Page() {
           logiciel sur mesure</Link> en détaille toutes les grilles, ROI
           compris.
         </p>
-        <h3>Scénario C — Scale-up : externaliser un module ou accélérer</h3>
+        <h3>Scénario illustratif C — Scale-up : externaliser un module ou accélérer</h3>
         <p>
           Équipe produit en place, besoin d&apos;un module livré vite
           sans désorganiser les développements en cours.{" "}
@@ -381,6 +387,23 @@ export default function Page() {
           l&apos;engagement écrit que le nouveau module ne cassera rien
           de l&apos;existant.
         </p>
+
+        <InfoBox variant="amber" title="Le bon choix peut être de ne pas développer">
+          <p>
+            Abonnez-vous à un outil existant s&apos;il couvre le cœur du
+            besoin sans déformer votre métier. Testez d&apos;abord avec un
+            POC ou du no-code si personne ne s&apos;est encore engagé à
+            acheter. Construisez un MVP sur mesure lorsque le produit porte
+            votre différence et que des utilisateurs acceptent de le tester.
+            Enfin, recrutez en interne si le besoin devient une activité de
+            développement continue plutôt qu&apos;un projet à livrer.
+          </p>
+          <p className="mt-2">
+            Un prestataire crédible doit pouvoir recommander l&apos;une de
+            ces voies, même lorsque cela signifie ne pas lui demander de
+            devis.
+          </p>
+        </InfoBox>
 
         <h2 id="etapes">4. La trajectoire des coûts : POC → MVP → V1 → montée en charge</h2>
         <p>
@@ -434,6 +457,14 @@ export default function Page() {
           ]}
         />
         <p>
+          Ces fourchettes sont des repères d&apos;allocation, pas des lignes
+          à additionner mécaniquement : un produit riche en connexions
+          externes déplacera du budget vers les intégrations ; un parcours
+          public exigeant, vers le design et le front. Demandez au
+          prestataire d&apos;expliquer les écarts de votre devis par rapport à
+          cette grille.
+        </p>
+        <p>
           Les taux journaliers France 2026, pour situer les devis : un
           développeur fullstack senior — il maîtrise les deux faces,
           visible et invisible — facture 450 à 600 €/jour à Paris, 400 à
@@ -460,6 +491,19 @@ export default function Page() {
           75 000 €/an chargés pour un profil senior : rentable quand la
           charge devient continue, rarement pour un premier MVP.
         </p>
+        <p>
+          Le bon modèle de réalisation dépend surtout de ce que vous devez
+          sécuriser :
+        </p>
+        <GuideTable
+          headers={["Mode", "À choisir lorsque", "Arbitrage à vérifier"]}
+          rows={[
+            ["Freelance senior", "Le périmètre est net et une personne peut porter l'essentiel", "Continuité, design, tests et renfort en cas d'absence"],
+            ["Studio ou agence", "Le produit exige plusieurs compétences et un responsable unique", "Composition réelle de l'équipe et sous-traitance éventuelle"],
+            ["Équipe interne", "Le développement devient continu et stratégique", "Temps de recrutement, management technique et charge durable"],
+            ["No-code accompagné", "L'objectif immédiat est de tester une hypothèse", "Dépendance à la plateforme et coût d'une future réécriture"],
+          ]}
+        />
 
         <h2 id="exploitation">6. Le « run » : les coûts d&apos;exploitation, enfin chiffrés</h2>
         <InfoBox variant="blue" title="En clair : le « build » et le « run »">
@@ -474,10 +518,11 @@ export default function Page() {
           de la plupart des business plans de SaaS que nous recevons.
         </InfoBox>
         <p>
-          Aucune page de prix concurrente ne chiffre l&apos;exploitation —
-          voici la facture mensuelle réelle d&apos;un SaaS à ses débuts
-          (« early-stage »), construit sur des services modernes (tarifs
-          officiels relevés en juillet 2026) :
+          Voici un <strong>scénario budgétaire illustratif</strong> pour
+          l&apos;exploitation mensuelle d&apos;un SaaS à ses débuts
+          (« early-stage »), construit à partir des tarifs publics de
+          services modernes relevés en juillet 2026. Il ne s&apos;agit pas
+          d&apos;une facture client :
         </p>
         <GuideTable
           headers={["Poste", "Service (exemple)", "Coût early-stage"]}
@@ -506,9 +551,10 @@ export default function Page() {
         </p>
         <p>
           Trois enseignements. Un : <strong>l&apos;infrastructure moderne
-          coûte presque rien au démarrage</strong> — les paliers gratuits
-          couvrent largement les premiers mois. Deux : elle grandit avec
-          les revenus, pas avant — les benchmarks du secteur la situent à{" "}
+          reste modeste au démarrage face au coût de construction</strong>{" "}
+          — les paliers gratuits couvrent largement les premiers mois.
+          Deux : elle grandit avec les revenus, pas avant — les benchmarks
+          du secteur la situent à{" "}
           <strong>8-15 % du chiffre d&apos;affaires</strong> d&apos;un
           SaaS (une jeune entreprise en phase de lancement dépense
           typiquement 100 à 500 $/mois d&apos;hébergement). Trois : le
@@ -528,18 +574,19 @@ export default function Page() {
           floue en montant mensuel écrit.
         </p>
         <p>
-          Et à la montée en charge ? Les données de marché situent la
-          facture autour de 250 €/mois vers 1 000 utilisateurs actifs et
-          450 €/mois vers 5 000 — une pente douce (benchmarks cloud
-          CloudZero recoupés). Trois facteurs pèsent plus que le nombre
+          Et à la montée en charge ? À titre de repère indicatif, des
+          benchmarks cloud situent le coût mensuel autour de 250 € vers
+          1 000 utilisateurs actifs et 450 € vers 5 000 ; ce ne sont pas
+          des factures clients publiées. Trois facteurs pèsent plus que le nombre
           d&apos;utilisateurs : le volume de données stockées (fichiers,
           images), les traitements lourds (exports, rapports) et les pics
           d&apos;usage simultané. Le vrai saut arrive avec les grands
           comptes : quand un acheteur exige SOC 2 ou ISO 27001 — des
           certifications de sécurité délivrées après audit indépendant —,
           les plans conformité changent d&apos;échelle (Supabase Team :
-          599 $/mois) et un audit s&apos;ajoute. Bonne nouvelle : à ce
-          stade, votre CA le finance.
+          599 $/mois) et un audit s&apos;ajoute. À ce stade, vérifiez que
+          les contrats grands comptes couvrent bien ce nouveau niveau de
+          coût avant de vous engager.
         </p>
 
         <h2 id="ia">7. Ce que l&apos;IA change vraiment dans les budgets (2026)</h2>
@@ -567,8 +614,8 @@ export default function Page() {
           seule la mesure dit la vérité.
         </p>
         <p>
-          Traduction budgétaire honnête : <strong>l&apos;IA écrase le
-          coût du code standard</strong> — les écrans classiques de
+          Traduction budgétaire : l&apos;IA <strong>peut réduire l&apos;effort
+          sur certaines tâches standard et bien cadrées</strong> — les écrans classiques de
           création, consultation et modification de fiches (ce que les
           développeurs appellent le « CRUD »), les formulaires, les
           tests, les connexions à des services bien documentés — soit une
@@ -576,9 +623,9 @@ export default function Page() {
           ni les choix produit, ni l&apos;exigence de fiabilité ; mal
           employée, elle produit vite du code jetable. C&apos;est notre
           modèle : l&apos;IA outillée et encadrée <em>dans</em> une
-          équipe senior, avec revue humaine de chaque ligne — d&apos;où
-          un MVP dès 15 000 € là où les agences traditionnelles facturent
-          40 000 € et plus. La bonne question à poser à un prestataire
+          équipe senior, avec revue humaine et tests. Notre MVP dès 15 000 €
+          relève de notre grille commerciale et de son périmètre ; les études
+          citées ne démontrent pas cette différence de prix. La bonne question à poser à un prestataire
           « boosté à l&apos;IA » : non pas « utilisez-vous l&apos;IA ? »
           — tout le monde l&apos;utilise — mais « qui relit chaque ligne
           avant la mise en production ? ». Sans cette revue, vous paierez
@@ -595,6 +642,7 @@ export default function Page() {
           title="Un chiffrage de SaaS honnête, au forfait fixe ?"
           description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées avec une fourchette argumentée — périmètre MVP, exploitation et trajectoire par étapes compris."
           tags={["Réponse sous 24 h ouvrées", "MVP dès 15 000 €", "Forfait fixe contractuel"]}
+          ctaLabel="Cadrer mon MVP"
         />
 
         <h2 id="no-code">8. No-code : le vrai coût de Bubble et consorts</h2>
@@ -614,20 +662,24 @@ export default function Page() {
           <strong>entre 300 et 1 500 $/mois</strong> ; les agences
           spécialisées facturent d&apos;ailleurs leurs projets Bubble
           10 000 à 40 000 $, des tarifs de développement classique.
-          Ajoutez la dépendance à la plateforme (votre produit ne vous
-          appartient pas, il se loue) et la réécriture fréquente en code
-          au moment de passer à l&apos;échelle : excellente étape de
-          validation, rarement une économie sur 3 ans. Écartons ce
-          raccourci pour un produit durable — et ouvrons ce que personne
-          ne montre : un vrai devis de MVP en code.
+          Ajoutez la dépendance à la plateforme : vous pouvez conserver vos
+          données et vos écrans, mais vous ne maîtrisez ni le moteur
+          d&apos;exécution ni toujours la possibilité d&apos;exporter un
+          code réutilisable ailleurs. Une réécriture peut donc devenir
+          nécessaire au moment de passer à l&apos;échelle. Le no-code reste
+          une excellente étape de validation, rarement une économie sur 3
+          ans pour un produit durable. Ouvrons maintenant un exemple de
+          devis de MVP en code, détaillé poste par poste.
         </p>
 
-        <h2 id="devis">9. Un devis de MVP réel, décortiqué ligne à ligne</h2>
+        <h2 id="devis">9. Un exemple de devis MVP, décortiqué ligne à ligne</h2>
         <p>
-          Personne ne publie ses devis ; nous, oui. Voici, anonymisé, un devis Hagnéré
-          Code accepté pour un MVP SaaS B2B typique du scénario A :
-          gestion d&apos;abonnements, tableau de bord client, un parcours
-          cœur soigné. Taux journalier : 650 € HT.
+          Pour rendre la mécanique vérifiable, voici un{" "}
+          <strong>exemple illustratif</strong> construit poste par poste
+          pour un MVP SaaS B2B typique du scénario illustratif A : gestion
+          d&apos;abonnements, tableau de bord client et un parcours cœur
+          soigné. Ce n&apos;est ni un devis client publié ni une promesse de
+          prix pour tout projet. Taux journalier retenu : 650 € HT.
         </p>
         <FormulaBox>
           <strong>Devis « MVP SaaS B2B » — 35 jours, 22 750 € HT</strong>
@@ -646,6 +698,14 @@ export default function Page() {
           <br />
           Mise en production + transfert de propriété (2 j) — 1 300 €
         </FormulaBox>
+        <p>
+          Cet exemple applique le taux journalier ligne par ligne : son
+          cadrage ressort donc à 1 300 €. Le Discovery Sprint forfaitaire
+          présenté en section 13 est l&apos;offre actuelle à 1 500 €,
+          déduite si le projet se lance. Les deux montants décrivent des
+          cadres commerciaux différents, pas deux prix simultanés pour la
+          même prestation.
+        </p>
         <InfoBox variant="emerald" title="Traduction ligne à ligne, pour non-développeurs">
           <strong>Cadrage &amp; Discovery Sprint</strong> : deux jours
           pour écrire noir sur blanc ce qui sera construit.{" "}
@@ -658,13 +718,16 @@ export default function Page() {
           la surveillance des pannes et le renforcement de la sécurité —
           ces 3 jours « invisibles » font qu&apos;une erreur en
           production vous est signalée avant que vos clients ne la
-          voient. <strong>Transfert de propriété</strong> : le code et
-          les accès deviennent les vôtres.
+          voient. <strong>Transfert de propriété</strong> : le contrat
+          cède les développements créés pour vous et la livraison remet le
+          code, la documentation et les accès. Les bibliothèques et services
+          tiers restent soumis à leurs propres licences.
         </InfoBox>
         <p>
-          Ce que ce devis vous apprend. L&apos;interface — la partie que
-          vous voyez à l&apos;écran — <strong>ne pèse qu&apos;un quart du
-          budget</strong> : tout le reste (moteur de données, paiements,
+          Ce que cet exemple illustratif de devis vous apprend. Le code du front — la partie
+          interactive que vous voyez à l&apos;écran — <strong>ne pèse
+          qu&apos;un peu plus d&apos;un quart du budget</strong> : tout le
+          reste (conception, moteur de données, paiements,
           tests, mise en ligne) est invisible, mais c&apos;est lui qui
           fait qu&apos;un produit encaisse sans bug et se déploie sans
           drame — précisément ce que les offres low-cost escamotent.
@@ -672,9 +735,11 @@ export default function Page() {
           comparables (envoyez le même{" "}
           <Link href="/guides/cahier-des-charges-site-internet">cahier des
           charges</Link> à tous les prestataires). Et la dernière ligne
-          compte double : <strong>transfert de propriété</strong> — code,
-          infrastructure, accès. Un SaaS dont vous ne possédez pas le code
-          n&apos;est pas votre actif, c&apos;est votre loyer.
+          compte double : <strong>transfert de propriété</strong> — code
+          créé pour vous, documentation et accès aux comptes
+          d&apos;infrastructure. Si vous ne pouvez pas faire reprendre le
+          produit par une autre équipe, vous ne maîtrisez pas réellement
+          votre actif.
         </p>
 
         <h2 id="conformite">10. Éditeur SaaS : le budget conformité 2026</h2>
@@ -685,12 +750,16 @@ export default function Page() {
         </p>
         <ul>
           <li>
-            <strong>RGPD (tout le monde).</strong> Vous gardez les
-            données de vos clients pour leur compte : juridiquement, vous
-            devenez leur <em>sous-traitant</em> (article 28 du RGPD). Un
-            contrat type de protection des données — le « DPA » — doit
-            accompagner vos conditions de vente, avec registre, sécurité
-            et sort des données en fin de contrat. C&apos;est un passage
+            <strong>RGPD (tout le monde).</strong> Votre rôle dépend de ce
+            que vous faites des données. Vous êtes généralement
+            <em> sous-traitant</em> pour les données métier traitées sur
+            instruction d&apos;un client ; vous pouvez être responsable du
+            traitement pour vos propres fichiers de comptes, de facturation
+            ou de prospection. Le premier rôle impose le contrat prévu à
+            l&apos;article 28 du RGPD — souvent appelé « DPA » — avec
+            sécurité, sous-traitants ultérieurs et sort des données en fin
+            de contrat. Faites cartographier les rôles au lieu de coller la
+            même étiquette sur tous les traitements. C&apos;est un passage
             obligé des ventes B2B : comptez 1 500 à 5 000 €
             d&apos;accompagnement juridique pour un premier jeu de
             documents propres, à prévoir dès la V1.
@@ -705,13 +774,12 @@ export default function Page() {
           </li>
           <li>
             <strong>AI Act (si votre produit intègre de
-            l&apos;IA).</strong> Des obligations de transparence
-            s&apos;appliquent. Le calendrier des systèmes à haut risque
-            est en cours d&apos;assouplissement au niveau européen
-            (paquet « Digital Omnibus ») : si votre produit touche au
-            recrutement, au crédit ou à la santé, vérifiez l&apos;état du
-            texte au moment de budgéter — les obligations et leurs dates
-            bougent encore.
+            l&apos;IA).</strong> Les obligations dépendent de l&apos;usage
+            exact et de votre rôle dans la chaîne. Le recrutement, le crédit
+            ou la santé peuvent faire entrer le système dans une catégorie
+            à haut risque. Le calendrier européen ayant déjà évolué,
+            vérifiez le texte consolidé au moment de budgéter au lieu
+            d&apos;appliquer une ligne « AI Act » identique à tout produit.
           </li>
           <li>
             <strong>Données de santé (secteur santé).</strong> Si votre
@@ -746,15 +814,17 @@ export default function Page() {
           secteur : ~77 %), mais deux chiffres la conditionnent.{" "}
           <strong>L&apos;acquisition</strong> : le benchmark 2025 mesure
           en médiane <strong>2 $ de dépenses commerciales et marketing
-          pour 1 $ de revenu annuel nouveau</strong>. En clair : un
-          client à 50 €/mois vous rapporte 600 € par an ; à raison de
+          pour 1 $ de revenu annuel nouveau</strong>. En clair, dans un
+          scénario simplifié, un client à 50 €/mois vous rapporte
+          600 € par an ; à raison de
           2 € dépensés pour 1 € de revenu annuel, il faut donc environ
           1 200 € de prospection et de publicité pour gagner ce client.{" "}
           <strong>La rétention</strong> : le churn mensuel courant est de
           3 à 5 % pour un SaaS vendu aux TPE-PME (1,5 à 3 % en
-          mid-market, 1 à 2 % en grands comptes) — à 4 % par mois, vous
-          perdez près de la moitié de vos clients chaque année,
-          qu&apos;il faut remplacer avant même de croître.
+          mid-market, 1 à 2 % en grands comptes) — à 4 % par mois, la
+          composition mensuelle laisse environ 61 % de la base après douze
+          mois (0,96¹² ≈ 0,61) : vous perdez donc environ 39 % des clients
+          sur un an, qu&apos;il faut remplacer avant même de croître.
         </p>
         <FormulaBox>
           <strong>Le calcul de survie, en trois lignes</strong>
@@ -763,11 +833,13 @@ export default function Page() {
           mensuel, il reste en moyenne 25 mois (100 ÷ 4).
           <br />
           2. Combien rapporte-t-il en tout ? 50 €/mois × 25 mois =
-          1 250 € : la « valeur client ».
+          1 250 € de chiffre d&apos;affaires. Avec l&apos;hypothèse de 77 % de
+          marge brute citée plus haut, la valeur contributive est d&apos;environ
+          962,50 €.
           <br />
-          3. Cette valeur doit atteindre au moins 3 fois le coût
-          d&apos;acquisition — sinon, le produit ne finance pas sa propre
-          croissance.
+          3. Comparez cette valeur après marge brute au coût
+          d&apos;acquisition. Le ratio de 3× est un repère de pilotage souvent
+          utilisé, pas une loi universelle.
         </FormulaBox>
         <p>
           Pourquoi 3, et pas simplement 1 ? Parce qu&apos;un client ne
@@ -775,11 +847,14 @@ export default function Page() {
           encore payer les serveurs, le support et les frais fixes de
           l&apos;entreprise. À 3 fois son coût d&apos;acquisition, il
           finance sa part de tout le reste — et laisse de quoi croître.
-          Reprenez l&apos;exemple : 1 250 € de
-          valeur face à 1 200 € d&apos;acquisition, le modèle est à peine
-          à l&apos;équilibre. Ramenez le churn à 2 % (meilleur accueil,
-          support réactif) et le même client reste 50 mois : sa valeur
-          double à 2 500 €, le modèle respire. La
+          Reprenez l&apos;exemple : 962,50 € de valeur après marge brute face
+          à 1 200 € d&apos;acquisition donnent un ratio d&apos;environ 0,80×.
+          Ramenez le churn à 2 % et le même client reste en moyenne 50 mois :
+          son chiffre d&apos;affaires cumulé atteint 2 500 €, soit 1 925 €
+          après l&apos;hypothèse de marge brute — environ 1,60× le CAC de
+          1 200 €. C&apos;est une nette amélioration, mais le ratio reste sous
+          le repère de 3× : la rétention seule ne suffit donc pas encore dans
+          ce scénario. La
           rétention est le levier n° 1, avant le prix du développement.
           Faites ce calcul <em>avant</em> de développer : il coûte zéro
           euro et invalide plus de projets que la technique.
@@ -800,11 +875,10 @@ export default function Page() {
         <h2 id="erreurs">12. Les 5 erreurs qui coulent les budgets</h2>
         <ol>
           <li>
-            <strong>Sur-spécifier la V1.</strong> L&apos;étude de
-            référence (Pendo, 2019, sur des données d&apos;usage réelles)
-            mesure que 80 % des fonctionnalités des logiciels sont
-            rarement ou jamais utilisées — les paliers de la section 4
-            existent précisément pour l&apos;éviter. Un MVP qui embarque
+            <strong>Sur-spécifier la V1.</strong> Le rapport Pendo 2019
+            observe une forte sous-utilisation sur son propre échantillon.
+            Ce résultat ancien illustre le risque sans prédire votre produit ;
+            les paliers de la section 4 servent à le tester. Un MVP qui embarque
             « tout » est une V1 payée au prix fort sans validation.
           </li>
           <li>
@@ -829,7 +903,8 @@ export default function Page() {
             <strong>Ignorer la conformité jusqu&apos;au premier client
             grand compte.</strong> Le DPA, la sécurité et la facturation
             électronique se conçoivent en amont ; rattrapés sous la
-            pression d&apos;une signature, ils coûtent triple.
+            pression d&apos;une signature, ils peuvent retarder la vente et
+            imposer des travaux non budgétés.
           </li>
           <li>
             <strong>Comparer des devis à périmètres différents.</strong>{" "}
@@ -841,15 +916,18 @@ export default function Page() {
           </li>
         </ol>
 
-        <InfoBox variant="amber" title="Le cas classique">
-          Un fondateur arrive avec trois devis : 8 000 € (freelance,
+        <InfoBox variant="amber" title="Scénario illustratif : trois devis incomparables">
+          Dans ce cas fictif, un fondateur compare trois devis illustratifs :
+          8 000 € (freelance,
           « tout compris »), 28 000 € (agence) et 60 000 € (ESN — les
           grandes sociétés de services informatiques, qu&apos;on appelait
-          autrefois SSII). Après cadrage, le premier ne couvrait ni les
+          autrefois SSII). Une fois les périmètres explicités, le premier
+          ne couvre ni les
           tests, ni la mise en production, ni la propriété du code ; le
-          troisième incluait six mois de fonctionnalités sans client pour
-          les valider. Le vrai périmètre MVP tenait en 35 jours.
-          Moralité : aucun de ces trois chiffres n&apos;était « faux » —
+          troisième inclut six mois de fonctionnalités sans client pour
+          les valider. Dans cette simulation, le périmètre MVP tient en
+          35 jours.
+          Moralité : aucun de ces trois chiffres n&apos;est « faux » —
           ils ne parlaient simplement pas du même produit. Le cadrage
           coûte 2 jours ; l&apos;absence de cadrage coûte 20 000 €.
         </InfoBox>
@@ -878,7 +956,7 @@ export default function Page() {
             <li>L&apos;exploitation démarre autour de 150 €/mois et grandit avec vos revenus.</li>
             <li>La maintenance pèse 15 à 25 % du coût de développement chaque année.</li>
             <li>Acquérir un client : 2 $ de marketing pour 1 $ d&apos;abonnement annuel — prévoyez autant pour vendre que pour construire.</li>
-            <li>Un churn de 4 % par mois vide près de la moitié de votre base en un an : la rétention est votre levier n° 1.</li>
+            <li>Un churn de 4 % par mois fait perdre environ 39 % de la base en un an : la rétention est votre levier n° 1.</li>
           </ol>
           <p className="mt-2">
             Une seule chose à faire après cette lecture : posez le calcul
@@ -907,9 +985,12 @@ export default function Page() {
             télécharger ma facture » — une vingtaine suffisent pour un
             MVP), les types d&apos;utilisateurs et leurs droits, les
             logiciels à connecter, les exigences particulières. Notre{" "}
-            <Link href="/guides/cahier-des-charges-site-internet">modèle
+            <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle
             commenté</Link> s&apos;adapte en version SaaS — envoyez-le à
-            l&apos;identique à 3 prestataires.
+            l&apos;identique à 3 prestataires. Pour chaque besoin,
+            ajoutez le résultat observable et la personne qui validera
+            qu&apos;il fonctionne : vous comparerez alors des livrables,
+            pas des promesses.
           </li>
           <li>
             <strong>Comparez en coût année 1 complet</strong> —
@@ -924,21 +1005,24 @@ export default function Page() {
           </li>
         </ol>
 
-        <h3>Le vrai budget de l&apos;année 1, tout compris</h3>
+        <h3>Budget de l&apos;année 1 : un scénario complet illustratif</h3>
         <p>
-          Ce guide affirme que le développement pèse moins de la moitié
-          du coût réel de la première année — la preuve, appliquée au
-          devis de la section 9 :
+          Dans ce scénario budgétaire illustratif, la construction
+          représente environ la moitié du coût total de la première année ;
+          elle passe sous cette moitié
+          dès que l&apos;acquisition et la conformité se situent dans le
+          haut de leurs fourchettes. Voici le calcul appliqué à l&apos;exemple
+          illustratif de devis de la section 9 :
         </p>
         <GuideTable
           headers={["Poste de l'année 1", "Budget"]}
           rows={[
-            ["Construction du MVP (devis de la section 9)", "22 750 €"],
+            ["Construction du MVP (scénario illustratif de la section 9)", "22 750 €"],
             ["Exploitation (hébergement, e-mails, surveillance)", "≈ 150 €/mois, soit 1 800 €"],
             ["Maintenance et petites évolutions (15-25 % du développement)", "3 400 – 5 700 €"],
             ["Conformité (protection des données, conditions de vente)", "1 500 – 5 000 €"],
             ["Acquisition des clients (le poste que tout le monde oublie)", "15 000 – 25 000 €"],
-            ["Total année 1 réaliste", "45 000 – 60 000 €"],
+            ["Total année 1 de ce scénario", "45 000 – 60 000 €"],
           ]}
         />
         <p>
@@ -1005,6 +1089,9 @@ export default function Page() {
           <a href="https://sentry.io/pricing/" target="_blank" rel="noopener noreferrer">Sentry</a>,{" "}
           <a href="https://posthog.com/pricing" target="_blank" rel="noopener noreferrer">PostHog</a>,{" "}
           <a href="https://bubble.io/pricing" target="_blank" rel="noopener noreferrer">Bubble</a> ;{" "}
+          <a href="https://www.cnil.fr/fr/rgpd-comment-bien-identifier-son-role" target="_blank" rel="noopener noreferrer">CNIL, identifier les rôles RGPD</a> ;{" "}
+          <a href="https://www.economie.gouv.fr/tout-savoir-sur-la-facturation-electronique-pour-les-entreprises" target="_blank" rel="noopener noreferrer">ministère de l&apos;Économie, calendrier de la facturation électronique</a> ;{" "}
+          <a href="https://commission.europa.eu/news-and-media/news/ai-act-enters-force-2024-08-01_fr" target="_blank" rel="noopener noreferrer">Commission européenne, règlement sur l&apos;IA</a> ;{" "}
           <a href="https://dora.dev/dora-report-2025/" target="_blank" rel="noopener noreferrer">rapport DORA 2025 (State of AI-assisted Software Development)</a> ;{" "}
           <a href="https://arxiv.org/abs/2302.06590" target="_blank" rel="noopener noreferrer">étude contrôlée GitHub Copilot (Peng et al., 2023)</a> ;{" "}
           <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/" target="_blank" rel="noopener noreferrer">essai randomisé METR (2025)</a> ;
@@ -1020,8 +1107,9 @@ export default function Page() {
         </p>
         <p className="text-sm">
           <em>
-            Les fourchettes de ce guide sont des prix de marché constatés,
-            donnés à titre indicatif : seul un devis établi sur votre
+            Les fourchettes de ce guide sont des repères éditoriaux issus
+            des sources indiquées, donnés à titre indicatif : seul un devis
+            établi sur votre
             périmètre vous engage. Ce guide ne constitue pas un conseil
             juridique, fiscal ou financier personnalisé.
           </em>

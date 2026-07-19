@@ -140,7 +140,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Non. Deux options : (1) vous tournez face cam iPhone chez vous — on vous envoie un kit lumière + micro RØDE Wireless Pro (offert, vous gardez). (2) vous venez tourner à notre studio Chambéry — fond blanc ou scène éditoriale, caméras Sony FX3/A7S III, lumières Aputure. Pas besoin d'investir en matos.",
+          "Non. Deux options : (1) vous tournez face cam iPhone chez vous — on vous envoie un kit lumière + micro RØDE Wireless Pro (offert, vous gardez). (2) vous venez tourner à notre studio de Bassens, aux portes de Chambéry — fond blanc ou scène éditoriale, caméras Sony FX3/A7S III, lumières Aputure. Pas besoin d'investir en matos.",
       },
     },
     {

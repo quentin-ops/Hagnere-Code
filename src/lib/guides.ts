@@ -113,7 +113,8 @@ export const GUIDES: GuideEntry[] = [
       "Prix en euros, protocole SEO sourcé Google, ce qui casse et son remplacement, les 5 cas où il ne faut pas migrer. Le guide complet, sources à l'appui.",
     cardDescription:
       "Les 3 architectures cibles, le protocole SEO zéro perte, les vrais prix en euros, le coût total sur 3 ans — et quand rester sur WordPress.",
-    heroTitle: "Migrer de WordPress vers Next.js : méthode, prix et risques réels",
+    heroTitle:
+      "Migrer de WordPress vers Next.js : méthode, prix et risques réels",
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-18",
@@ -141,7 +142,8 @@ export const GUIDES: GuideEntry[] = [
       "18 vérifications gratuites, 13 questions avec le barème des réponses, les signaux d'alerte ancrés en jurisprudence — et comment nous auditer, nous aussi.",
     cardDescription:
       "Tout le monde liste des critères. Ce guide donne la méthode de vérification objective, le barème des bonnes réponses et les pièges confirmés en justice.",
-    heroTitle: "Comment choisir son agence web : la méthode de vérification objective",
+    heroTitle:
+      "Comment choisir son agence web : la méthode de vérification objective",
     section: "Cadrer son projet",
     datePublished: "2026-07-18",
     dateModified: "2026-07-18",
@@ -155,7 +157,8 @@ export const GUIDES: GuideEntry[] = [
       "TJM sourcés, risques quantifiés (INSEE), propriété du code, sous-traitance : la grille de décision par budget qu'aucun comparatif ne donne. Biais déclaré.",
     cardDescription:
       "Le comparatif que personne n'ose écrire : TJM sourcés, risque de disparition chiffré, propriété du code, sous-traitance déguisée — et une grille par budget.",
-    heroTitle: "Agence web ou freelance : la grille de décision honnête, par budget et par risque",
+    heroTitle:
+      "Agence web ou freelance : la grille de décision honnête, par budget et par risque",
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-18",
@@ -169,7 +172,8 @@ export const GUIDES: GuideEntry[] = [
       "Générateurs no-code, vibe coding, assistants pro : prix vérifiés, pièges réels, position de Google — et pourquoi l'IA a fait baisser le prix du sur-mesure.",
     cardDescription:
       "Les 3 familles d'outils IA passées au crible : prix réels avec renouvellements, pièges documentés, position officielle de Google — et le vrai bouleversement.",
-    heroTitle: "Créer un site avec l'IA : ce qui marche, ce qui déçoit, ce que ça coûte",
+    heroTitle:
+      "Créer un site avec l'IA : ce qui marche, ce qui déçoit, ce que ça coûte",
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-18",
@@ -226,7 +230,8 @@ export const GUIDES: GuideEntry[] = [
       "Le prix réel d'un site e-commerce en 2026 : grilles par plateforme, coût sur 3 ans, commissions, logistique et un devis d'agence décortiqué ligne à ligne.",
     cardDescription:
       "Grilles Shopify, WooCommerce, PrestaShop et sur-mesure, coût total sur 3 ans, commissions et logistique enfin chiffrées, devis réel ligne à ligne.",
-    heroTitle: "Prix d'un site e-commerce : le vrai budget en 2026 (+ devis décortiqué)",
+    heroTitle:
+      "Prix d'un site e-commerce : le vrai budget en 2026 (+ devis décortiqué)",
     section: "Budget & prix",
     datePublished: "2026-07-16",
     dateModified: "2026-07-18",
@@ -240,7 +245,8 @@ export const GUIDES: GuideEntry[] = [
       "Next.js ou WordPress pour votre site en 2026 ? Comparatif pour dirigeants : coûts sur 3 ans, sécurité et performance chiffrées, verdict clair par profil.",
     cardDescription:
       "Le comparatif écrit pour les dirigeants, pas pour les développeurs : coût total sur 3 ans, sécurité et performance sourcées, verdict tranché par profil.",
-    heroTitle: "Next.js ou WordPress : le comparatif honnête pour décider en 2026",
+    heroTitle:
+      "Next.js ou WordPress : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-16",
     dateModified: "2026-07-18",
@@ -254,7 +260,8 @@ export const GUIDES: GuideEntry[] = [
       "Chèque France Num ? Mort depuis 2021. Voici les aides réellement actives en 2026 pour financer votre site : région par région, vérifiées à la source.",
     cardDescription:
       "Le seul panorama qui vérifie chaque dispositif à la source : aides mortes signalées, aides régionales actives, mode d'emploi de dépôt et arnaques à éviter.",
-    heroTitle: "Aides à la création de site internet : ce qui existe vraiment en 2026",
+    heroTitle:
+      "Aides à la création de site internet : ce qui existe vraiment en 2026",
     section: "Financer son projet",
     datePublished: "2026-07-16",
     dateModified: "2026-07-17",
@@ -268,7 +275,8 @@ export const GUIDES: GuideEntry[] = [
       "De 5 000 € à 100 000 €+ : budget complet d'un SaaS en 2026, coûts d'exploitation chiffrés, impact de l'IA et exemple de devis MVP détaillé.",
     cardDescription:
       "Fourchettes par étape (POC, MVP, V1), coûts d'exploitation poste par poste, ce que l'IA change vraiment, et un exemple de devis MVP détaillé ligne à ligne.",
-    heroTitle: "Combien coûte un SaaS ? Le budget complet en 2026 (+ devis de MVP décortiqué)",
+    heroTitle:
+      "Combien coûte un SaaS ? Le budget complet en 2026 (+ devis de MVP décortiqué)",
     section: "Budget & prix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-19",
@@ -282,7 +290,8 @@ export const GUIDES: GuideEntry[] = [
       "Combien coûte un logiciel sur mesure ? Grille 2026 par type, méthode jours × TJM, match chiffré contre SaaS et Excel, et un devis décortiqué ligne à ligne.",
     cardDescription:
       "La grille par type d'outil, la méthode pour vérifier un devis, le match sur 3 ans contre SaaS et Excel, le ROI en heures gagnées et un devis décortiqué.",
-    heroTitle: "Prix d'un logiciel sur mesure : le budget complet en 2026 (+ devis décortiqué)",
+    heroTitle:
+      "Prix d'un logiciel sur mesure : le budget complet en 2026 (+ devis décortiqué)",
     section: "Budget & prix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-19",
@@ -296,7 +305,8 @@ export const GUIDES: GuideEntry[] = [
       "Combien coûte une refonte de site ? Grille 2026 par type, la migration SEO enfin chiffrée, un devis réel décortiqué — et quand il ne faut pas refondre.",
     cardDescription:
       "Les grilles 2026 par type de refonte, le poste migration SEO que tous les devis oublient, un devis réel ligne à ligne et les cas où il ne faut pas refondre.",
-    heroTitle: "Refonte de site internet : le vrai prix en 2026 (+ devis décortiqué)",
+    heroTitle:
+      "Refonte de site internet : le vrai prix en 2026 (+ devis décortiqué)",
     section: "Budget & prix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-17",
@@ -310,7 +320,8 @@ export const GUIDES: GuideEntry[] = [
       "Shopify ou e-commerce sur mesure ? Coût complet de Shopify commissions comprises, coût de sortie souvent oublié et verdict par profil.",
     cardDescription:
       "Le coût complet de Shopify, commissions et apps comprises, le match sur 3 ans avec point de bascule, le coût de sortie et le verdict par profil.",
-    heroTitle: "Shopify ou e-commerce sur mesure : le comparatif honnête pour décider en 2026",
+    heroTitle:
+      "Shopify ou e-commerce sur mesure : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-19",
@@ -324,7 +335,8 @@ export const GUIDES: GuideEntry[] = [
       "Combien coûte la maintenance d'un site ? Prix 2026 par type, forfaits réels nommés, contrat décodé (SLA, pièges) et le coût de ne rien maintenir.",
     cardDescription:
       "Les prix 2026 par type de site, les forfaits réels du marché nommés, le contrat décodé clause par clause et le coût chiffré de ne pas maintenir du tout.",
-    heroTitle: "Coût de la maintenance d'un site internet : les vrais prix 2026 (+ contrat décodé)",
+    heroTitle:
+      "Coût de la maintenance d'un site internet : les vrais prix 2026 (+ contrat décodé)",
     section: "Budget & prix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-18",
@@ -338,7 +350,8 @@ export const GUIDES: GuideEntry[] = [
       "WooCommerce ou Shopify en 2026 ? Coûts réels des deux côtés, vitesse mesurée sur données réelles, migration chiffrée et verdict honnête par profil.",
     cardDescription:
       "Le comparatif qui source tout : coûts réels des deux côtés, vitesse mesurée sur données réelles, sécurité et responsabilités, migration chiffrée, verdict par profil.",
-    heroTitle: "WooCommerce ou Shopify : le comparatif honnête pour décider en 2026",
+    heroTitle:
+      "WooCommerce ou Shopify : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-18",
@@ -352,7 +365,8 @@ export const GUIDES: GuideEntry[] = [
       "Site vitrine : 4-8 semaines. E-commerce : 2-4 mois. Les délais réels 2026 phase par phase, la part du planning qui dépend de vous et les rétro-plannings.",
     cardDescription:
       "Les délais réels par type et par méthode, le planning phase par phase, la moitié du calendrier qui dépend du client et les rétro-plannings Noël, salon, saison.",
-    heroTitle: "Combien de temps pour créer un site internet ? Les délais réels en 2026",
+    heroTitle:
+      "Combien de temps pour créer un site internet ? Les délais réels en 2026",
     section: "Cadrer son projet",
     datePublished: "2026-07-17",
     dateModified: "2026-07-17",
@@ -380,7 +394,8 @@ export const GUIDES: GuideEntry[] = [
       "React Native ou Flutter ? Le comparatif pour dirigeants : coûts comparés, recrutement en France, pérennité de chaque camp et verdict par profil.",
     cardDescription:
       "Le comparatif écrit pour les dirigeants, pas pour les développeurs : coûts et repères de TJM, vivier de recrutement français, gouvernance des deux camps, verdict par profil.",
-    heroTitle: "React Native ou Flutter : le comparatif honnête pour décider en 2026",
+    heroTitle:
+      "React Native ou Flutter : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-19",
@@ -394,7 +409,8 @@ export const GUIDES: GuideEntry[] = [
       "Le modèle complet de cahier des charges d'application mobile : 10 sections commentées, exemple rempli, règles des stores et erreurs à éviter.",
     cardDescription:
       "Le modèle en 10 sections commenté par une agence mobile, l'exemple rempli, les règles Apple/Google chiffrées, la maintenance à prévoir et les erreurs à éviter.",
-    heroTitle: "Cahier des charges d'application mobile : le modèle complet (+ exemple)",
+    heroTitle:
+      "Cahier des charges d'application mobile : le modèle complet (+ exemple)",
     section: "Cadrer son projet",
     datePublished: "2026-07-17",
     dateModified: "2026-07-19",
@@ -408,7 +424,8 @@ export const GUIDES: GuideEntry[] = [
       "Redirections 301, mythes démontés à la source Google, protocole J+1/M+3, cas WordPress vers Next.js, plan d'urgence : la méthode anti-perte de trafic.",
     cardDescription:
       "La méthode sourcée Google Search Central : 3 scénarios de risque, plan de redirection, protocole de surveillance daté, cas WordPress → Next.js et plan d'urgence.",
-    heroTitle: "Refondre son site sans perdre son SEO : la méthode complète, sourcée Google",
+    heroTitle:
+      "Refondre son site sans perdre son SEO : la méthode complète, sourcée Google",
     section: "Cadrer son projet",
     datePublished: "2026-07-18",
     dateModified: "2026-07-19",
@@ -416,16 +433,17 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "cahier-des-charges-site-internet",
-    title: "Cahier des charges site internet : modèle 2026 · Hagnéré Code",
-    cardTitle: "Cahier des charges de site internet : modèle + exemple",
+    title: "Comment rédiger un cahier des charges de site · Guide 2026",
+    cardTitle: "Comment rédiger un cahier des charges de site internet",
     metaDescription:
-      "Le modèle complet de cahier des charges de site internet, commenté par une agence : 10 sections, exemple rempli, erreurs à éviter et exigences 2026.",
+      "Méthode en 13 étapes pour cadrer un site : rubriques, périmètre, budget, responsabilités, recette, erreurs à éviter et passage du besoin au devis.",
     cardDescription:
-      "Le modèle en 10 sections commenté de l'intérieur par une agence qui en reçoit chaque semaine, avec exemple rempli, erreurs fatales et exigences 2026.",
-    heroTitle: "Cahier des charges de site internet : le modèle complet (+ exemple)",
+      "Une méthode détaillée pour transformer un besoin métier en périmètre comparable, critères de recette et consultation exploitable.",
+    heroTitle:
+      "Comment rédiger un cahier des charges de site internet utile",
     section: "Cadrer son projet",
     datePublished: "2026-07-15",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-19",
     readTimeMin: 25,
   },
 ];

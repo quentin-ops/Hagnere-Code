@@ -106,7 +106,7 @@ const faqItems = [
   {
     question: "Travaillez-vous partout en France ?",
     answer:
-      "Oui. Nous sommes basés à Chambéry, en Savoie, et nous accompagnons des clients partout en France. Le développement web se conduit très bien à distance : cadrage et points d'étape en visioconférence, démonstrations en ligne à chaque livraison intermédiaire. Si vous êtes en Savoie ou en Haute-Savoie, nous nous déplaçons volontiers ; ailleurs, le cadre contractuel et les engagements sont strictement identiques. La proximité change le confort du premier rendez-vous, pas la qualité du résultat.",
+      "Oui. Nous sommes basés à Bassens, aux portes de Chambéry, en Savoie, et nous accompagnons des clients partout en France. Le développement web se conduit très bien à distance : cadrage et points d'étape en visioconférence, démonstrations en ligne à chaque livraison intermédiaire. Si vous êtes en Savoie ou en Haute-Savoie, nous nous déplaçons volontiers ; ailleurs, le cadre contractuel et les engagements sont strictement identiques. La proximité change le confort du premier rendez-vous, pas la qualité du résultat.",
   },
   {
     question: "Combien de temps prend un projet Next.js ?",
@@ -135,7 +135,7 @@ export default function Page() {
       <GuideLayout
         breadcrumbs={[{ label: "Agence Next.js" }]}
         heroTitle="Agence Next.js : développement sur mesure, performance garantie"
-        heroDescription="Nous développons en Next.js et React des sites, des boutiques en ligne et des applications métier. Forfait fixe contractuel, score Lighthouse mobile de 95 minimum garanti, code livré sur votre compte. Basés à Chambéry, nous travaillons partout en France."
+        heroDescription="Nous développons en Next.js et React des sites, des boutiques en ligne et des applications métier. Forfait fixe contractuel, score Lighthouse mobile de 95 minimum garanti, code livré sur votre compte. Basés à Bassens, aux portes de Chambéry, nous travaillons partout en France."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -164,7 +164,7 @@ export default function Page() {
           Next.js est aujourd&apos;hui le socle le plus solide pour construire
           un site ou une application web qui doit être <strong>rapide, bien
           référencée et évolutive</strong>. Nous l&apos;utilisons sur
-          l&apos;ensemble de nos projets. Cette page explique ce que nous
+          l&apos;ensemble de nos développements. Cette page explique ce que nous
           construisons avec, ce que nous garantissons par écrit, ce que ça
           coûte — et les cas où nous vous dirons que ce n&apos;est pas la
           bonne solution. Si votre besoin est une application derrière un

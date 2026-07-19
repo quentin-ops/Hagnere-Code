@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Agence web complète à Chambéry : sites, e-commerce, SaaS, applications métier, référencement naturel et Google Ads. Forfait fixe, réponse sous 24 h.",
+    "Agence web à Bassens, aux portes de Chambéry : sites, e-commerce, SaaS, applications métier, référencement naturel et Google Ads. Forfait fixe.",
   applicationName: "Hagnéré Code",
   authors: [{ name: "Hagnéré Code" }],
   openGraph: {
@@ -37,13 +37,13 @@ export const metadata: Metadata = {
     siteName: "Hagnéré Code",
     title: "Hagnéré Code — Agence web à Chambéry : sites, SaaS, SEO, Ads",
     description:
-      "Agence web complète à Chambéry : développement sur mesure (sites, e-commerce, SaaS, applications métier), référencement naturel et Google Ads. Forfait fixe.",
+      "Agence web à Bassens, aux portes de Chambéry : développement sur mesure, référencement naturel et Google Ads. Forfait fixe.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Hagnéré Code — Agence web à Chambéry : développement, SEO, Google Ads",
+        alt: "Hagnéré Code — agence web à Bassens, aux portes de Chambéry",
       },
     ],
   },

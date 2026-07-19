@@ -980,7 +980,7 @@ export default function Page() {
         <p>
           Dernier conseil, le plus important : quel que soit le socle,{" "}
           <strong>faites chiffrer le même périmètre partout</strong> — notre{" "}
-          <Link href="/guides/cahier-des-charges-site-internet">modèle de
+          <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle de
           cahier des charges</Link> est libre de copie — et comparez en coût
           sur 3 ans. Si vous voulez notre avis sur votre cas précis,{" "}
           <Link href="/demarrer-un-projet">décrivez votre projet en

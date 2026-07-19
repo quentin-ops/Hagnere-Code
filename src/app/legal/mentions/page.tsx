@@ -8,14 +8,14 @@ const LAST_UPDATED = "2026-04-23";
 export const metadata: Metadata = {
   title: "Mentions légales · Hagnéré Code",
   description:
-    "Éditeur, hébergement, propriété intellectuelle et RGPD : les informations légales de HAGNÉRÉ CODE SAS, studio basé à Chambéry.",
+    "Éditeur, hébergement, propriété intellectuelle et RGPD : les informations légales de HAGNÉRÉ CODE SAS, studio basé à Bassens.",
   alternates: { canonical: "/legal/mentions" },
   openGraph: {
     ...OG_BASE,
     type: "article",
     title: "Mentions légales · Hagnéré Code",
     description:
-      "Informations légales officielles de HAGNÉRÉ CODE SAS — siège social à Chambéry.",
+      "Informations légales officielles de HAGNÉRÉ CODE SAS — siège social au 82 impasse de Bellevue à Bassens.",
     url: "/legal/mentions",
     images: [DEFAULT_OG_IMAGE],
   },

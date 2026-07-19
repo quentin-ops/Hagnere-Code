@@ -36,6 +36,7 @@ interface GuideLayoutProps {
   breadcrumbs: GuideBreadcrumb[];
   heroTitle: string;
   heroDescription: string;
+  heroAction?: { href: string; label: string };
   heroImage?: string;
   heroImageAlt?: string;
   /** Byline E-E-A-T affichée sous la description du hero. */
@@ -46,6 +47,7 @@ interface GuideLayoutProps {
   relatedLinks: GuideSidebarLink[];
   faqTitle: string;
   faqItems: GuideFAQItem[];
+  showWhitePaperPromo?: boolean;
   children: React.ReactNode;
 }
 
@@ -72,6 +74,7 @@ export function GuideLayout({
   breadcrumbs,
   heroTitle,
   heroDescription,
+  heroAction,
   heroImage,
   heroImageAlt,
   author,
@@ -80,6 +83,7 @@ export function GuideLayout({
   relatedLinks,
   faqTitle,
   faqItems,
+  showWhitePaperPromo = true,
   children,
 }: GuideLayoutProps) {
   return (
@@ -92,11 +96,11 @@ export function GuideLayout({
 
         <div className="container mx-auto px-4 max-w-7xl relative z-10">
           {/* Breadcrumbs */}
-          <nav aria-label="Fil d'Ariane" className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-zinc-500 mb-6 sm:mb-8">
-            <Link
-              href="/"
-              className="hover:text-zinc-300 transition-colors"
-            >
+          <nav
+            aria-label="Fil d'Ariane"
+            className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-zinc-500 mb-6 sm:mb-8"
+          >
+            <Link href="/" className="hover:text-zinc-300 transition-colors">
               Accueil
             </Link>
             {breadcrumbs.map((crumb, index) => (
@@ -119,7 +123,9 @@ export function GuideLayout({
           </nav>
 
           {/* Split layout: Text + Image card */}
-          <div className={`flex flex-col ${heroImage ? 'lg:flex-row lg:items-center lg:gap-12 xl:gap-16' : ''}`}>
+          <div
+            className={`flex flex-col ${heroImage ? "lg:flex-row lg:items-center lg:gap-12 xl:gap-16" : ""}`}
+          >
             {/* Left column: Title + Description + Key Points */}
             <div className="flex-1 min-w-0">
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white mb-3 sm:mb-4 max-w-3xl">
@@ -128,6 +134,16 @@ export function GuideLayout({
               <p className="text-sm sm:text-base md:text-lg text-zinc-400 leading-relaxed max-w-2xl mb-4 sm:mb-5">
                 {heroDescription}
               </p>
+
+              {heroAction && (
+                <a
+                  href={heroAction.href}
+                  className="mb-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-zinc-950 transition-colors hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 sm:mb-6"
+                >
+                  {heroAction.label}
+                  <ArrowRight className="size-4" aria-hidden="true" />
+                </a>
+              )}
 
               {/* Byline auteur + date de mise à jour (E-E-A-T + fraîcheur) */}
               {(author || updatedLabel) && (
@@ -143,12 +159,16 @@ export function GuideLayout({
                           {author.name}
                         </Link>
                       ) : (
-                        <span className="text-zinc-300 font-medium">{author.name}</span>
+                        <span className="text-zinc-300 font-medium">
+                          {author.name}
+                        </span>
                       )}
                       {author.role && <>, {author.role}</>}
                     </>
                   )}
-                  {author && updatedLabel && <span aria-hidden="true"> · </span>}
+                  {author && updatedLabel && (
+                    <span aria-hidden="true"> · </span>
+                  )}
                   {updatedLabel}
                 </p>
               )}
@@ -214,9 +234,9 @@ export function GuideLayout({
                     <div className="flex items-center justify-center size-8 rounded-lg bg-zinc-900 dark:bg-zinc-100">
                       <BookOpen className="size-4 text-white dark:text-zinc-900" />
                     </div>
-                    <h4 className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+                    <h3 className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
                       Guides liés
-                    </h4>
+                    </h3>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {relatedLinks.map((link, index) => (
@@ -226,7 +246,10 @@ export function GuideLayout({
                         className="group flex items-center justify-between gap-3 px-4 py-3.5 rounded-xl text-sm font-medium text-zinc-600 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-100 dark:border-zinc-800/50 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-800/50 hover:text-zinc-900 dark:hover:text-zinc-100 hover:shadow-sm transition-all duration-200"
                       >
                         <span>{link.label}</span>
-                        <ArrowRight className="size-3.5 text-zinc-300 dark:text-zinc-600 group-hover:text-zinc-500 dark:group-hover:text-zinc-400 group-hover:translate-x-0.5 transition-all duration-200 shrink-0" aria-hidden="true" />
+                        <ArrowRight
+                          className="size-3.5 text-zinc-300 dark:text-zinc-600 group-hover:text-zinc-500 dark:group-hover:text-zinc-400 group-hover:translate-x-0.5 transition-all duration-200 shrink-0"
+                          aria-hidden="true"
+                        />
                       </Link>
                     ))}
                   </div>
@@ -237,7 +260,7 @@ export function GuideLayout({
             {/* Sidebar — only CTA card, sticky */}
             <aside className="w-full lg:w-80 xl:w-96 shrink-0">
               <div className="lg:sticky lg:top-24">
-                <GuideSidebarCTA />
+                <GuideSidebarCTA showWhitePaperPromo={showWhitePaperPromo} />
               </div>
             </aside>
           </div>

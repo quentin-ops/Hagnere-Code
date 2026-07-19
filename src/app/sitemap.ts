@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { CASE_SLUGS } from "@/components/realisations/cases";
 import { GUIDES } from "@/lib/guides";
 import { LOCAL_PAGES, localPagePath } from "@/lib/local-pages";
+import { DOWNLOADABLE_RESOURCES } from "@/lib/resources";
+import { WHITE_PAPERS } from "@/lib/white-papers";
 
 const baseUrl = "https://hagnere-code.ai";
 
@@ -90,6 +92,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/livres-blancs`,
+      changeFrequency: "monthly",
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/ressources`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       // Page service ciblant la requête « agence next js ». Priorité haute :
       // c'est la requête commerciale la plus accessible identifiée par
       // l'audit (docs/audit-concurrentiel-2026-07.md).
@@ -116,6 +128,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  const whitePaperRoutes: MetadataRoute.Sitemap = WHITE_PAPERS.map((entry) => ({
+    url: `${baseUrl}${entry.path}`,
+    lastModified: new Date(`${entry.dateModified}T12:00:00Z`),
+    changeFrequency: "monthly",
+    priority: 0.85,
+  }));
+
+  const resourceRoutes: MetadataRoute.Sitemap = DOWNLOADABLE_RESOURCES.map(
+    (entry) => ({
+      url: `${baseUrl}${entry.path}`,
+      lastModified: new Date(`${entry.updatedAt}T12:00:00Z`),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    }),
+  );
+
   const serviceRoutes: MetadataRoute.Sitemap = servicesSlugs.map((slug) => ({
     url: `${baseUrl}/services/${slug}`,
     changeFrequency: "monthly",
@@ -134,11 +162,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.55,
   }));
 
-  const legalSitemapRoutes: MetadataRoute.Sitemap = legalRoutes.map((route) => ({
-    url: `${baseUrl}/${route}`,
-    changeFrequency: "yearly",
-    priority: 0.3,
-  }));
+  const legalSitemapRoutes: MetadataRoute.Sitemap = legalRoutes.map(
+    (route) => ({
+      url: `${baseUrl}/${route}`,
+      changeFrequency: "yearly",
+      priority: 0.3,
+    }),
+  );
 
   // Pages locales : générées depuis le registre src/lib/local-pages.ts.
   // Tableau vide tant qu'aucune page n'est publiée — voir le plan
@@ -153,6 +183,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes,
     ...guideRoutes,
+    ...whitePaperRoutes,
+    ...resourceRoutes,
     ...serviceRoutes,
     ...caseRoutes,
     ...toolSitemapRoutes,

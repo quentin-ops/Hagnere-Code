@@ -95,7 +95,7 @@ const faqItems = [
   {
     question: "Travaillez-vous partout en France ?",
     answer:
-      "Oui. Nous sommes basés à Chambéry, en Savoie, et nous accompagnons des clients dans toute la France. Le développement d'application se conduit très bien à distance : cadrage et points d'étape en visioconférence, démonstrations en ligne à chaque livraison intermédiaire. Sur un projet applicatif, ces démonstrations régulières comptent plus que la proximité géographique — c'est ce qui vous permet de corriger le tir tôt plutôt que de découvrir un malentendu à la fin.",
+      "Oui. Nous sommes basés à Bassens, aux portes de Chambéry, en Savoie, et nous accompagnons des clients dans toute la France. Le développement d'application se conduit très bien à distance : cadrage et points d'étape en visioconférence, démonstrations en ligne à chaque livraison intermédiaire. Sur un projet applicatif, ces démonstrations régulières comptent plus que la proximité géographique — c'est ce qui vous permet de corriger le tir tôt plutôt que de découvrir un malentendu à la fin.",
   },
 ];
 
@@ -119,7 +119,7 @@ export default function Page() {
       <GuideLayout
         breadcrumbs={[{ label: "Agence React" }]}
         heroTitle="Agence React : applications web et interfaces métier sur mesure"
-        heroDescription="Nous développons en React des applications d'entreprise, des espaces clients et des outils internes. Forfait fixe contractuel, code livré sur votre compte, garantie 30 jours. Basés à Chambéry, nous travaillons partout en France."
+        heroDescription="Nous développons en React des applications d'entreprise, des espaces clients et des outils internes. Forfait fixe contractuel, code livré sur votre compte, garantie 30 jours. Basés à Bassens, aux portes de Chambéry, nous travaillons partout en France."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -206,7 +206,7 @@ export default function Page() {
           ]}
         />
         <InfoBox variant="blue" title="Dans les faits, souvent les deux">
-          Beaucoup de nos projets combinent les deux : un site public en
+          Beaucoup de projets combinent les deux : un site public en
           Next.js, bien référencé, et un espace client en React derrière
           l&apos;identification. Les deux partagent le même code de base et la
           même charte, ce qui évite de payer deux fois la même chose.

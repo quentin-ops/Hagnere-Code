@@ -16,7 +16,7 @@ ci-après dénommée le **« Responsable de traitement »**,
 
 **ET**
 
-**HAGNÉRÉ CODE SAS**, société par actions simplifiée à capital variable, dont le siège social est sis 7 rue Ernest Filliard, 73000 Chambéry, immatriculée au RCS de Chambéry sous le numéro 993 672 856, représentée par Quentin Hagnéré, en qualité de président,
+**HAGNÉRÉ CODE SAS**, société par actions simplifiée à capital variable, dont le siège social est sis 82 impasse de Bellevue, 73000 Bassens, immatriculée au RCS de Chambéry sous le numéro 993 672 856, représentée par Quentin Hagnéré, en qualité de président,
 
 ci-après dénommée le **« Sous-traitant »**.
 

@@ -1,8 +1,13 @@
 # Digests de recherche des guides
 
-Documents de travail produits par le pipeline multi-agents de la
-[charte qualité](../charte-qualite-guides.md) : analyse de la SERP →
-collecte de faits sourcés → angle et plan.
+Documents de travail produits par le pipeline de la
+[charte qualité](../charte-qualite-guides.md) : cadrage → demande →
+concurrence → preuves → empreinte éditoriale → plan → revue finale.
+
+Pour un nouveau guide, copier [`_modele-guide.md`](_modele-guide.md) vers
+`<slug>.md` avant de rédiger la page. Les anciens digests peuvent avoir une
+forme différente ou contenir d'anciens objectifs de longueur : la charte et
+le modèle actuel priment toujours.
 
 **Ils sont versionnés ici volontairement.** Deux emplacements ont déjà été
 purgés en cours de session (`/private/tmp/.../scratchpad` et
@@ -27,6 +32,7 @@ le seul stockage qui a survécu.
 
 ## Règle
 
-Un chiffre absent de ces digests ne va pas dans un guide. Si la rédaction
-a besoin d'une donnée qui n'y figure pas, on relance une recherche — on
-n'improvise pas.
+Un chiffre absent du digest du guide ne va pas directement dans la page. Si
+la rédaction a besoin d'une donnée qui n'y figure pas, on relance une
+recherche, on ajoute la source et son périmètre au digest, puis on rédige —
+on n'improvise pas.

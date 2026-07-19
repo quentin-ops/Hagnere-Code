@@ -1,5 +1,12 @@
 Verification complete. I found several audit findings are **stale or wrong** — which materially changes the plan. Here is the deliverable.
 
+> **Complément du 19 juillet 2026 :** la profondeur quantitative constatée
+> ci-dessous ne vaut pas validation éditoriale absolue. L'[audit humain de
+> six guides](audit-qualite-guides-2026-07-19.md) a identifié puis corrigé
+> des lacunes de pédagogie décisionnelle, de provenance, de neutralité et de
+> conversion. Les conclusions d'autorité restent utiles ; les mentions
+> « supérieur en profondeur » ne doivent pas être lues comme « parfait ».
+
 ---
 
 # PLAN D'ACTION SEO — hagnere-code.ai
@@ -39,7 +46,7 @@ L'audit conclut que « le goulot est l'indexation » et que « réparer l'indexa
 4. **Le vrai écart est le ratio actif/URL.** Vous produisez 1 actif → 1 URL. Ils produisent 1 actif → 40 URLs. À effort égal, rendement × 40.
 5. **La donnée des dominants est mauvaise, et c'est votre angle.** Codeur publie un TJM médian à 135 €/j avec 4 420 prestataires à 70 € — un marché offshore/junior présenté comme *le* prix du développement en France. Un dirigeant qui budgète 40 000 € sur cette base se trompe de marché. Personne ne sert cet acheteur-là.
 6. **Le local est le seul terrain où un domaine de 9 mois gagne en 2026.** Un template parisien dupliqué (siège 59 rue de Ponthieu) ranke sur « agence web Chambéry ». ABC3W ranke sans blog, sans page locale, sans avis. WeComeBack, 3 ans d'existence, est top 3 à Annecy avec **une** page.
-7. **Et c'est un angle mort total.** L'adresse Chambéry est sur le site, zéro page locale, zéro fiche Google Business Profile apparente, zéro citation locale.
+7. **Et c'est un angle mort total.** L'adresse de Bassens, commune limitrophe de Chambéry, est sur le site ; au moment de l'audit, aucune fiche Google Business Profile ni citation locale n'était apparente.
 8. **Les requêtes prix « tête » sont perdues pour 2-3 ans.** « Combien coûte un site internet » est tenue par l'État, Hostinger, Wise, le Crédit Agricole, HelloAsso. 7/10 tirent leur autorité d'ailleurs que du métier. Aucun volume de contenu ne comble ça.
 9. **Mais les requêtes prix « queue » sont ouvertes maintenant.** « Prix logiciel sur mesure » : un top-5 tient en 1 200 mots citant Wikipédia et Ooreka. Et c'est votre panier le plus élevé (15 000-120 000 €).
 10. **La SERP la plus faible de tout l'audit est aussi la mieux alignée : « agence next js ».** 10/10 pages service, zéro guide, et **un freelance solo avec 900 mots, zéro référence client et zéro logo tient le top 10**. Vous n'avez pas de page sur cette requête.
@@ -81,7 +88,7 @@ L'audit conclut que « le goulot est l'indexation » et que « réparer l'indexa
 - **Les signaux E-E-A-T sont déjà tenus** : date de mise à jour visible, auteur humain nommé, chiffre dans le title. **6 dominants sur 7 ne les ont pas.** Avantage déjà en banque. **[VÉRIFIÉ]**
 - **Base technique propre** : robots, sitemap complet, rendu serveur, redirections 308 propres. Rien à réparer. **[VÉRIFIÉ]**
 - **Un angle que personne dans ces SERP ne peut prendre** : croiser prix × préservation du SEO × migration WordPress→Next.js. Aucun des 10 résultats sur « prix refonte » ne traite le risque SEO, qui est pourtant l'angoisse n°1 de l'acheteur. Amphibee est enfermé sur WordPress, les studios no-code sont juge et partie.
-- **Ancrage local réel sur un marché faible** : 7 rue Ernest Filliard, équipe 100 % chambérienne, face à des concurrents sans blog et sans avis.
+- **Ancrage local réel sur un marché faible** : 82 impasse de Bellevue à Bassens, commune limitrophe de Chambéry, avec une équipe en France, face à des concurrents sans blog et sans avis.
 - **Un outil gratuit déjà en ligne** (`/outils/calculateur-cout-excel`) — le bon format, sous-exploité.
 - **Panier élevé** : un seul lead SaaS à 15 000 € rentabilise un trimestre entier d'effort SEO.
 
@@ -134,7 +141,7 @@ Le fait le plus révélateur de tout ce plan : **3 des 5 ne sont pas de la produ
 |---|---|---|---|---|---|---|---|
 | 1 | `/agence-web-aix-les-bains` | Page locale | agence web / création site internet Aix-les-Bains | **Faible** | Forte | **2-4 mois** | La SERP est tenue à ~90 % par des pages programmatiques d'acteurs **non locaux** (NOIISE, Viaduc, Digital Unicorn, Blue Strat). Vous êtes à 15 km. Légitimité imbattable, effort minimal |
 | 2 | **Modèles `.docx` + `.pdf` cahier des charges** (site + app), sans mur email | Ressource | cahier des charges site internet exemple / modèle word | Moyenne | Forte | **2-4 mois** | Les 2 guides sont écrits ; c'est le **format** qui manque. Sur cette requête l'intention est « donne-moi le fichier ». **Coût réel : 1 journée.** Réserve : 7 acteurs le servent déjà → nécessaire, pas différenciant |
-| 3 | `/agence-web-chambery` | Page locale | agence web Chambéry | Faible-moyenne | **Très forte** | **3-6 mois** | Ville-siège. Un **template parisien dupliqué** y tient la page 1 : si ça passe, vous passez. 7-8 acteurs réellement locaux sur 13 positions |
+| 3 | `/agence-web-chambery` | Page locale | agence web Chambéry | Faible-moyenne | **Très forte** | **3-6 mois** | Bassens est limitrophe de Chambéry et appartient à la même agglomération. Un **template parisien dupliqué** y tient la page 1 : si ça passe, vous passez. 7-8 acteurs réellement locaux sur 13 positions |
 | 4 | `/creation-site-internet-savoie` | Guide local | création site internet Savoie | **Faible** | Forte | **3-6 mois** | Créative Altitude y ranke **avec un simple guide éditorial** — votre format natif, en mieux. Alimente les pages villes en maillage |
 | 5 | `/agence-next-js` | **Page service** | agence next js | **Faible** | **Très forte** | **3-6 mois** | ⭐ La SERP la plus accessible du corpus : **10/10 pages service, zéro guide**, et un freelance solo à 900 mots sans référence client tient le top 10. Alignement parfait avec le stack. **Vous n'avez pas cette page.** Ne pas écrire un guide : la SERP ne veut que du service |
 | 6 | `no-code-ou-developpement-sur-mesure` | Guide | no code ou développement sur mesure | **Faible** | Forte | **3-6 mois** | **Reclassé P3 → top 6.** Seule requête faible du corpus non couverte. 10/10 acteurs en conflit d'intérêts, meilleur concurrent 1 500 mots sans une donnée. Inclure « les 5 cas où nous refuserions votre projet » : la neutralité est ici un différenciateur mécanique |

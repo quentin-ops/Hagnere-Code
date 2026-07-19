@@ -59,7 +59,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 5366,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -112,17 +111,17 @@ const faqItems = [
   {
     question: "Combien coûte réellement un site Shopify par mois ?",
     answer:
-      "Bien plus que l'abonnement affiché. Aux 25 à 289 €/mois du forfait (tarifs officiels vérifiés en juillet 2026, facturation annuelle) s'ajoutent les commissions sur chaque vente (1,1 à 1,5 % + 0,25 € par commande avec Shopify Payments), les applications (100 à 300 €/mois pour une boutique équipée, davantage à mesure que le volume grandit — jusqu'à 1 000 €/mois au profil marque) et, souvent, un thème premium (100 à 500 $ une fois). Résultat concret : environ 90 à 120 €/mois pour un créateur qui démarre, 570 à 820 €/mois pour une PME à 21 000 € de ventes mensuelles, 3 600 à 4 100 €/mois pour une marque à 2,4 M€ de chiffre d'affaires annuel.",
+      "Aux 25 à 289 €/mois du forfait (tarifs officiels vérifiés en juillet 2026, facturation annuelle) s'ajoutent les commissions sur chaque vente (1,1 à 1,5 % + 0,25 € par commande avec Shopify Payments), les applications et, souvent, un thème premium. Les budgets d'applications et de thème retenus dans ce guide sont des hypothèses éditoriales, pas des moyennes de marché. Avec les trois profils simulés en section 6, le total ressort à environ 90 à 120 €/mois pour un créateur, 570 à 820 €/mois pour une PME à 21 000 € de ventes mensuelles et 3 600 à 4 100 €/mois pour une marque à 2,4 M€ de chiffre d'affaires annuel. Remplacez ces hypothèses par votre facture réelle.",
   },
   {
     question: "Quels sont les coûts cachés d'un site Shopify ?",
     answer:
-      "Cinq postes que les pages tarifs ne mettent pas en avant : les applications qui s'empilent (un marchand en installe 6 en moyenne — avis clients, email, traduction, connecteur comptable… 100 à 300 €/mois) ; la pénalité si vous n'utilisez pas Shopify Payments (0,6 à 2 % de frais supplémentaires sur chaque vente selon le forfait) ; les frais de conversion de devise (2 % pour une boutique française qui encaisse en francs suisses ou en livres) ; l'email professionnel, non inclus ; et la création par un prestataire (1 500 à 5 000 € en freelance, 8 000 à 30 000 € en agence).",
+      "Cinq postes que les pages tarifs ne mettent pas en avant : les applications qui s'empilent (avis clients, email, traduction, connecteur comptable…) ; la pénalité si vous n'utilisez pas Shopify Payments (0,6 à 2 % de frais supplémentaires sur chaque vente selon le forfait) ; les frais de conversion de devise ; l'email professionnel, non inclus ; et la création par un prestataire. Pour sa simulation, le guide retient 100 à 300 €/mois d'applications et des ordres de grandeur de création de 1 500 à 5 000 € en freelance ou 8 000 à 30 000 € en agence. Ces montants viennent d'un recoupement non exhaustif de tarifs publics cités en sources, sans corpus représentatif : demandez des devis sur votre périmètre.",
   },
   {
     question: "Shopify est-il rentable sur le long terme ?",
     answer:
-      "Rentable au sens strict, oui, tant que le besoin reste standard : tout compris, peu d'alternatives coûtent moins cher tant que Shopify « de série » couvre votre besoin — la section 10 le vérifie jusqu'au profil marque. Mais rentable n'est pas optimal : c'est un coût variable prélevé à vie, sur une structure de prix que vous ne contrôlez pas (hausses 2023-2024, section 7). Dès que la boutique est votre canal principal ou qu'un seuil de la section 8 est franchi, comparez avec un sur-mesure — devenu nettement plus abordable (section 9) : notre cas type aboutit à environ 75 000 € contre 170 000 € sur 3 ans au niveau Plus (section 10). Le déclencheur n'est pas le chiffre d'affaires en soi : c'est le moment où votre besoin sort du standard.",
+      "Tant que le besoin reste standard, Shopify conserve des avantages forts : faible investissement initial, vitesse de lancement et exploitation déléguée. La section 10 ne prouve pas une rentabilité de marché ; elle simule un cas B2B avec des hypothèses affichées et aboutit, dans ce seul scénario, à environ 75 000 € en sur-mesure contre 170 000 € sur 3 ans au niveau Plus. Remplacez chaque hypothèse par vos factures et devis. Le déclencheur n'est pas un chiffre d'affaires magique : c'est le moment où votre besoin sort durablement du standard.",
   },
   {
     question: "Quelle formule Shopify choisir pour débuter ?",
@@ -132,7 +131,7 @@ const faqItems = [
   {
     question: "Combien coûte un site e-commerce sur mesure ?",
     answer:
-      "En France en 2026 : 15 000 à 40 000 € pour une boutique sur mesure fonctionnelle avec intégrations simples, 40 000 à 120 000 € pour une plateforme complète (stock temps réel, configurateur, espace B2B, connexions à votre gestion). La médiane constatée du marché tourne autour de 45 000 €. Chez Hagnéré Code, un e-commerce sur mesure va de 15 000 à 120 000 € au forfait fixe contractuel. S'y ajoutent la maintenance (10 à 20 % du coût par an) et l'hébergement — mais ni abonnement par palier, ni commissions de plateforme, ni applications à louer.",
+      "Pour construire ses exemples, ce guide retient comme ordres de grandeur éditoriaux 15 000 à 40 000 € pour une boutique avec intégrations simples et 40 000 à 120 000 € pour une plateforme complète (stock temps réel, configurateur, espace B2B, connexions à votre gestion). Ils proviennent d'un recoupement non exhaustif de fourchettes publiques citées en sources : ce n'est ni un corpus représentatif ni une médiane de marché. Chez Hagnéré Code, la grille commerciale annoncée va de 15 000 à 120 000 € au forfait fixe contractuel. Maintenance et hébergement doivent être chiffrés séparément sur le périmètre réel.",
   },
   {
     question: "Quand faut-il quitter Shopify pour du sur-mesure ?",
@@ -142,12 +141,12 @@ const faqItems = [
   {
     question: "Peut-on migrer facilement de Shopify vers une autre plateforme ?",
     answer:
-      "Partiellement — et c'est le point que trop de marchands découvrent tard. S'exportent nativement : produits, clients et commandes, en fichiers CSV. Ne s'exportent jamais : les mots de passe clients (tous les comptes doivent être recréés, avec un email de réinitialisation), le thème (écrit en Liquid, le langage propre à Shopify), les configurations de vos applications, et le contenu éditorial structuré. Le site lui-même doit être intégralement reconstruit sur la destination. Comptez un vrai projet de migration, pas un déménagement de fichiers — le détail chiffré est dans la section 11.",
+      "Partiellement — et c'est le point que trop de marchands découvrent tard. Produits, clients et commandes s'exportent nativement en CSV. Les mots de passe clients ne s'exportent pas : les comptes doivent être réactivés sur la destination. Un thème Liquid peut être téléchargé comme code, mais il n'est pas portable tel quel vers une autre plateforme ; les réglages d'applications et une partie du contenu structuré demandent aussi une reprise. Comptez un projet de migration, pas un simple déménagement de fichiers — le détail chiffré est dans la section 11.",
   },
   {
     question: "Quel impact sur le SEO lors d'une migration depuis Shopify ?",
     answer:
-      "Le même que pour toute refonte avec changement d'adresses, avec une particularité : Shopify impose sa structure d'URL (/products/, /collections/), donc chaque page devra être redirigée vers sa nouvelle adresse — le plan de redirections 301 est mécaniquement systématique. Bien exécutée (inventaire complet, redirection page à page, surveillance 30 jours), une migration conserve le référencement : les migrations propres documentées récupèrent leur trafic en 19 à 33 jours. Notre guide du prix d'une refonte détaille ce poste, ses prix et ses pièges — il s'applique intégralement à une sortie de Shopify.",
+      "Une sortie de Shopify peut modifier la structure des adresses (/products/, /collections/) : chaque ancienne page doit alors être reliée à son équivalent par une redirection permanente. Inventaire, correspondance page par page et surveillance réduisent le risque, sans garantir le trafic ni un délai de stabilisation. Notre guide de refonte détaille cette méthode et sépare clairement une migration d'URLs d'un changement de domaine.",
   },
   {
     question: "Les grandes marques utilisent-elles Shopify ?",
@@ -157,7 +156,7 @@ const faqItems = [
   {
     question: "Qu'est-ce que Shopify Plus et combien ça coûte ?",
     answer:
-      "La version haut de gamme de Shopify : checkout réellement personnalisable, B2B complet (catalogues tarifaires illimités, paiements partiels), multi-boutiques, limites techniques relevées. Tarif officiel : à partir de 2 100 €/mois — environ 2 500 $/mois en engagement 1 an ou 2 300 $/mois en engagement 3 ans, plus une part variable (environ 0,40 % des ventes en contrat 1 an) au-delà d'un seuil de volume. Ajoutez la mise en place par une agence (25 000 à 100 000 €+) et la maintenance : un Plus sérieux est un budget à six chiffres sur 3 ans.",
+      "La version haut de gamme de Shopify : checkout réellement personnalisable, B2B complet (catalogues tarifaires illimités, paiements partiels), multi-boutiques, limites techniques relevées. Tarif officiel : à partir de 2 100 €/mois — environ 2 500 $/mois en engagement 1 an ou 2 300 $/mois en engagement 3 ans, plus une part variable au-delà d'un seuil de volume. La mise en place et la maintenance dépendent du périmètre : la fourchette de 25 000 à 100 000 € parfois utilisée dans ce guide est un ordre de grandeur éditorial tiré de tarifs publics non représentatifs, pas une donnée de marché. Demandez un devis Plus complet.",
   },
   {
     question: "Qu'est-ce qu'un site e-commerce headless ?",
@@ -199,7 +198,7 @@ export default function Page() {
           { label: "Shopify ou e-commerce sur mesure" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Le coût réel de Shopify — abonnement, commissions et applications dans le même total —, les cas où il est imbattable, les 7 limites et leur seuil de déclenchement, le match sur 3 ans avec point de bascule, et le coût de sortie qu'aucune des pages françaises que nous avons analysées ne chiffre."
+        heroDescription="Le coût complet de Shopify — abonnement, commissions et applications dans le même total —, les cas où il reste pertinent, les 7 limites et leur seuil de déclenchement, une simulation sur 3 ans et le coût de sortie souvent oublié."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -208,7 +207,7 @@ export default function Page() {
         updatedLabel={`Mis à jour le ${formatGuideDate(guide.dateModified)}`}
         keyPoints={[
           { number: "01", title: "Shopify réel : 90 – 4 100 €/mois", description: "", color: "violet" },
-          { number: "02", title: "Sur-mesure : 15 000 – 120 000 €", description: "", color: "blue" },
+          { number: "02", title: "Grille Hagnéré : 15 000 – 120 000 €", description: "", color: "blue" },
           { number: "03", title: "Coût de sortie enfin chiffré", description: "", color: "emerald" },
           { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
         ]}
@@ -216,7 +215,7 @@ export default function Page() {
           { href: "/guides/prix-site-e-commerce", label: "Prix d'un site e-commerce" },
           { href: "/guides/prix-refonte-site-internet", label: "Prix d'une refonte de site" },
           { href: "/guides/nextjs-ou-wordpress", label: "Next.js ou WordPress ?" },
-          { href: "/guides/cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
+          { href: "/ressources/kit-cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
           { href: "/services/ecommerce", label: "E-commerce sur mesure" },
           { href: "/methode", label: "Notre méthode Sprint Fixe™" },
         ]}
@@ -227,27 +226,27 @@ export default function Page() {
           Une agence qui vend du sur-mesure et qui vous dit que{" "}
           <strong>Shopify reste imbattable pour lancer et tester un
           marché</strong>, c&apos;est rare. C&apos;est pourtant ce que
-          disent les chiffres — au lancement. Pour une boutique qui doit
-          convertir et durer, ce guide montre où la conclusion
-          s&apos;inverse : le développement assisté par IA a fait
-          baisser le coût du sur-mesure, et le point de bascule —
-          chiffré section 10 — se rapproche chaque année. Tout est dans
-          le même total — abonnement, commissions, applications,
-          agence —, y compris ce que coûte une sortie de Shopify.
+          montre notre simulation de lancement. Pour une boutique qui
+          doit convertir et durer, ce guide teste le moment où la
+          conclusion pourrait s&apos;inverser. Le point de bascule de la
+          section 10 est une <strong>simulation éditoriale fondée sur des
+          hypothèses explicites</strong>, pas une preuve de marché. Elle
+          réunit abonnement, commissions, applications, agence et coût
+          de sortie dans un même modèle à remplacer par vos chiffres.
         </p>
 
         <GuideToc
           items={[
             { id: "reponse-rapide", label: "1. Le verdict en 30 secondes" },
             { id: "de-quoi-parle-t-on", label: "2. Franchise ou murs à soi : de quoi parle-t-on" },
-            { id: "marche-2026", label: "3. Ce que dit le marché français en 2026" },
+            { id: "marche-2026", label: "3. Ce que montrent les données publiques en 2026" },
             { id: "quand-shopify-gagne", label: "4. Les cas où Shopify est imbattable" },
             { id: "cout-reel-shopify", label: "5. Le vrai coût de Shopify, tout compris" },
-            { id: "trois-profils", label: "6. Trois boutiques, trois factures réelles" },
+            { id: "trois-profils", label: "6. Trois boutiques, trois factures reconstituées" },
             { id: "hausses", label: "7. Le risque fournisseur : ce que l'historique des prix apprend" },
             { id: "limites", label: "8. Les 7 limites réelles — et leur seuil de déclenchement" },
-            { id: "sur-mesure", label: "9. Le sur-mesure : prix réels, devis décortiqué" },
-            { id: "tco", label: "10. Le match sur 3 ans : où est le point de bascule" },
+            { id: "sur-mesure", label: "9. Le sur-mesure : repères éditoriaux et chiffrage illustratif" },
+            { id: "tco", label: "10. La simulation sur 3 ans : tester le point de bascule" },
             { id: "cout-sortie", label: "11. Le coût de sortie de Shopify, enfin chiffré" },
             { id: "headless", label: "12. La 3e voie : le headless, démonté honnêtement" },
             { id: "verdict-par-profil", label: "13. La grille de décision finale, profil par profil" },
@@ -264,28 +263,48 @@ export default function Page() {
           loyer : <strong>570 à 820 €/mois pour une PME</strong>{" "}
           (21 000 € de ventes mensuelles) et{" "}
           <strong>3 600 à 4 100 €/mois pour une marque à 2,4 M€ de
-          chiffre d&apos;affaires</strong> — commissions et applications
-          comprises. <strong>Le sur-mesure (15 000 à 120 000 €)
-          devient le meilleur calcul dès que votre besoin sort du
-          standard</strong> : B2B au-delà de 3 catalogues tarifaires
+          chiffre d&apos;affaires</strong> — dans les profils simulés de la
+          section 6, commissions et applications comprises. Chez
+          Hagnéré Code, la grille sur-mesure annoncée va de 15 000 à
+          120 000 €. <strong>Un contre-chiffrage devient pertinent dès
+          que votre besoin sort du standard</strong> : B2B au-delà de 3 catalogues tarifaires
           (les grilles de prix différentes selon le client), tunnel de
           commande spécifique, intégrations profondes — au plus tard
           quand le devis Shopify Plus (2 100 €/mois minimum) arrive sur
           la table. Et son ticket d&apos;entrée a nettement baissé : le
-          devis décortiqué de la section 9 en témoigne. Sur 3 ans,
-          notre comparaison aboutit à ≈ 75 000 € en sur-mesure contre
-          ≈ 170 000 € en Shopify Plus.
+          chiffrage illustratif de la section 9 en montre la méthode.
+          Sur 3 ans, notre simulation éditoriale aboutit à ≈ 75 000 €
+          en sur-mesure contre ≈ 170 000 € en Shopify Plus ; ce résultat
+          dépend entièrement des hypothèses de la section 10.
         </p>
         <GuideTable
-          headers={["Votre situation", "Notre verdict", "Budget réaliste"]}
+          headers={["Votre situation", "Notre verdict", "Repère à rechiffrer"]}
           rows={[
-            ["Lancement, test de marché, side-project", "Shopify, sans hésiter", "0 – 5 000 € de création + 90 – 120 €/mois"],
+            ["Lancement, test de marché, projet parallèle", "Shopify, sans hésiter", "0 – 5 000 € de création + 90 – 120 €/mois"],
             ["PME B2C établie, besoin standard", "Shopify (Grow/Advanced) tant qu'aucun seuil de la section 8 n'est franchi — en restant réversible", "8 000 – 30 000 € de création + 570 – 4 100 €/mois selon volume"],
-            ["B2B réel : tarifs par client, commandes récurrentes", "Sur-mesure (ou Shopify Plus, comparez)", "≈ 75 000 € en sur-mesure vs ≈ 170 000 € en Plus sur 3 ans (section 10)"],
+            ["B2B réel : tarifs par client, commandes récurrentes", "Sur-mesure (ou Shopify Plus, comparez)", "Simulation : ≈ 75 000 € en sur-mesure vs ≈ 170 000 € en Plus sur 3 ans (section 10)"],
             ["Logique métier unique : configurateur, devis, abonnements complexes", "Sur-mesure", "15 000 – 120 000 € au forfait"],
             ["Marque en croissance qui vise Plus", "Comparer les deux, chiffres en main", "Le point de bascule est en section 10"],
           ]}
         />
+        <p>
+          Ne lisez pas ce tableau comme une échelle où le sur-mesure serait
+          « supérieur ». <strong>Shopify achète de la vitesse, de la
+          simplicité opérationnelle et préserve la trésorerie</strong>. Le
+          sur-mesure achète du contrôle et la capacité à intégrer une logique
+          métier qui vous distingue. La contrainte dominante tranche : si le
+          marché reste incertain, gardez l&apos;option la moins engageante ; si
+          un processus déjà validé est bloqué chaque semaine par la plateforme,
+          chiffrez la propriété en face.
+        </p>
+        <p>
+          Une belle vitrine ne garantit jamais, à elle seule, davantage de
+          ventes. Un devis sur mesure crédible doit rattacher chaque fonction
+          à un problème observé : travail manuel évité, commande aujourd&apos;hui
+          impossible, intégration fragile ou dépendance devenue coûteuse.
+          Sans bénéfice concret à mesurer, rester sur Shopify est souvent la
+          décision la plus professionnelle.
+        </p>
 
         <InfoBox variant="blue" title="Les 12 mots de ce guide, traduits en français courant">
           <ul className="list-disc pl-4 space-y-1.5">
@@ -314,14 +333,17 @@ export default function Page() {
           agencement qu&apos;on ne modifie que dans les limites du
           contrat. <strong>Le sur-mesure, c&apos;est construire son
           propre magasin</strong> : plus long et plus cher à
-          l&apos;entrée, mais les murs sont à vous, la caisse fait
-          exactement ce que votre métier exige, et personne ne peut
-          augmenter votre loyer.
+          l&apos;entrée, mais les murs sont à vous et la caisse fait
+          exactement ce que votre métier exige. Aucun éditeur ne peut alors
+          augmenter un abonnement lié à la plateforme ; l&apos;hébergement,
+          le paiement et la maintenance restent néanmoins des coûts variables.
         </p>
         <p>
-          Fil rouge de ce guide : <strong>Granita, marque de sirops
-          artisanaux à Annecy</strong>. Lancée en 2021 sur Shopify Basic —
-          le bon choix, nous le verrons —, elle réalise aujourd&apos;hui
+          Exemple illustratif suivi dans ce guide : <strong>Granita, marque
+          fictive de sirops artisanaux à Annecy</strong>. Ce n&apos;est pas un
+          client et les calculs qui suivent ne reproduisent pas une facture.
+          Lancée en 2021 sur Shopify Basic — le bon choix, nous le verrons —,
+          elle réalise aujourd&apos;hui
           2,4 M€ de chiffre d&apos;affaires annuel en ligne
           (2 500 commandes/mois, panier moyen 80 €), et son activité
           B2B — cafés, hôtels, restaurants — décolle : tarifs négociés
@@ -337,13 +359,12 @@ export default function Page() {
           <strong>196,4 milliards d&apos;euros en 2025</strong> (+7 %,
           chiffres Fevad), portés par plus de 158 000 sites marchands
           actifs. Sur les nouvelles boutiques créées en France en 2025,{" "}
-          <strong>Shopify en a capté 48,8 %</strong> — près d&apos;une
-          sur deux — contre 5,4 % pour PrestaShop, l&apos;ancien champion
-          français (étude ShopRank). Mais le parc installé raconte une
-          autre histoire : WooCommerce reste premier en nombre de sites
-          (~47 %), et <strong>PrestaShop domine toujours le chiffre
-          d&apos;affaires cumulé</strong> (7,96 milliards d&apos;euros,
-          contre 5,76 pour Shopify — baromètre Friends of Presta 2026).
+          Les études de plateformes citées en sources donnent des parts
+          différentes selon qu&apos;elles comptent les créations, le parc
+          installé ou le chiffre d&apos;affaires. Leurs méthodologies et
+          intérêts commerciaux ne permettent pas d&apos;en tirer un verdict
+          universel ; elles montrent seulement que Shopify, WooCommerce et
+          PrestaShop restent des options largement utilisées en France.
           Le duel des deux standards a d&apos;ailleurs son guide
           dédié : notre{" "}
           <Link href="/guides/woocommerce-ou-shopify">comparatif
@@ -352,14 +373,14 @@ export default function Page() {
         </p>
         <p>
           Traduction pour votre décision : <strong>Shopify a gagné la
-          bataille du démarrage, pas celle de la valeur</strong>. Les
-          boutiques qui pèsent lourd tournent majoritairement sur des
-          plateformes qu&apos;elles contrôlent davantage. La vraie
-          question de 2026 n&apos;est donc plus « Shopify ou
-          PrestaShop ? » — pour un nouveau projet, ce débat est tranché —
-          mais bien : <strong>que faire quand on grandit ?</strong> Rester
-          dans la franchise en montant en gamme, ou construire ses murs.
-          C&apos;est l&apos;objet du reste de ce guide.
+          bataille du démarrage, mais ces données ne tranchent pas la suite</strong>.
+          Elles comparent des parcs d&apos;âge et de composition différents :
+          on ne peut pas en déduire qu&apos;une plateforme crée, à elle seule,
+          davantage de valeur. Elles montrent surtout que le bon choix pour
+          lancer n&apos;est pas automatiquement le bon choix pour grandir. La
+          question de 2026 pour le reste de ce guide est donc : <strong>quand votre modèle
+          validé justifie-t-il de continuer à louer, ou de construire vos
+          murs ?</strong>
         </p>
 
         <h2 id="quand-shopify-gagne">4. Les cas où Shopify est imbattable</h2>
@@ -394,12 +415,13 @@ export default function Page() {
             sur-mesure devrait financer.
           </li>
           <li>
-            <strong>Le catalogue standard vendu en direct — tant que
-            vous testez.</strong> Des produits, des variantes simples,
-            du paiement carte : le besoin est couvert nativement. Le
-            jour où la boutique devient votre canal principal, ce même
-            standard — URLs imposées, tunnel de commande verrouillé,
-            applications louées — devient la limite (sections 8 et 10).
+            <strong>Le catalogue standard vendu en direct.</strong> Des
+            produits, des variantes simples, du paiement carte : le besoin
+            est couvert nativement. Après le test, Shopify peut rester le bon
+            choix tant qu&apos;aucun de ces seuils ne gêne réellement
+            l&apos;activité. Si la boutique devient votre canal principal,
+            réévaluez ces seuils et le coût total (sections 8 et 10) ; ce
+            changement de statut n&apos;impose pas, à lui seul, une migration.
           </li>
           <li>
             <strong>Pas d&apos;équipe technique, et pas envie d&apos;en
@@ -412,7 +434,7 @@ export default function Page() {
           C&apos;est le premier verdict de ce guide, et il est massif :{" "}
           <strong>pour un lancement au besoin standard, prenez Shopify</strong>.
           Près d&apos;une nouvelle boutique française sur deux fait ce
-          choix, et c&apos;est rationnel. Granita, en 2021, a eu raison :
+          choix, et c&apos;est rationnel. Dans notre exemple, Granita, en 2021, a eu raison :
           15 jours entre l&apos;idée et la première vente, 3 000 € tout
           compris la première année. La suite du guide s&apos;adresse au
           dirigeant qu&apos;elle est devenue depuis.
@@ -441,13 +463,15 @@ export default function Page() {
           Basic : 1,75 € par commande, prélevés à vie, et une{" "}
           <strong>pénalité de 0,6 à 2 % supplémentaire si vous
           n&apos;utilisez pas Shopify Payments</strong> (le système de
-          paiement maison) ; <strong>les applications</strong> — un
-          marchand en installe 6 en moyenne, et une boutique équipée
-          (avis clients, email, traduction, connecteur comptable) paie
-          100 à 300 €/mois ; <strong>le thème</strong> (100 à 500 $ une
-          fois) ; l&apos;email professionnel, non inclus ; et{" "}
-          <strong>la création</strong> si vous déléguez : 1 500 à
-          5 000 € en freelance, 8 000 à 30 000 € en agence. Deux pièges
+          paiement maison) ; <strong>les applications</strong> — leur
+          nombre et leur prix dépendent de la boutique ; <strong>le
+          thème</strong> ; l&apos;email professionnel, non
+          inclus ; et <strong>la création</strong> si vous déléguez. Pour
+          ses calculs, ce guide retient 100 à 300 €/mois
+          d&apos;applications, 100 à 500 $ de thème, puis 1 500 à 5 000 €
+          de création en freelance ou 8 000 à 30 000 € en agence. Ce
+          sont des hypothèses éditoriales issues d&apos;un recoupement non
+          exhaustif de tarifs publics, pas des moyennes de marché. Deux pièges
           français méritent une ligne : les frais de conversion de devise
           (2 % si vous encaissez hors euro) et l&apos;outre-mer, où
           Shopify Payments n&apos;est pas disponible — la pénalité
@@ -466,13 +490,15 @@ export default function Page() {
           la page officielle avant de signer quoi que ce soit.
         </InfoBox>
 
-        <h2 id="trois-profils">6. Trois boutiques, trois factures réelles</h2>
+        <h2 id="trois-profils">6. Trois boutiques, trois factures reconstituées</h2>
         <p>
           Aucune des pages françaises que nous avons analysées ne
           cumule abonnement, commissions et
           applications dans un même total. Faisons-le, avec des
           hypothèses affichées (facturation annuelle, Shopify Payments
-          activé) :
+          activé). <strong>Ces profils sont des simulations éditoriales,
+          pas des factures observées ni des statistiques de marché</strong> :
+          remplacez commandes, panier et applications par vos données.
         </p>
         <GuideTable
           headers={["Profil", "Abonnement", "Commissions/mois", "Apps/mois", "Total mensuel"]}
@@ -488,9 +514,9 @@ export default function Page() {
           PME, les commissions pèsent plus de cinq fois
           l&apos;abonnement (348 € contre 66 €) ; au profil marque,
           elles représentent 70 à 80 % de la facture.
-          Pour Granita, la facture Shopify réelle atteint{" "}
+          Pour Granita, la facture Shopify reconstituée atteint{" "}
           <strong>43 000 à 49 000 € par an</strong> — un chiffre que son
-          tableau de bord n&apos;affiche nulle part en un seul endroit.
+          tableau de bord fictif n&apos;afficherait nulle part en un seul endroit.
           Précision d&apos;honnêteté, car c&apos;est le point que
           presque tous les comparatifs traitent mal : une partie de ces
           commissions (les frais de carte) se paierait aussi ailleurs —
@@ -535,7 +561,7 @@ export default function Page() {
           headers={["Limite", "Concrètement", "Le seuil qui déclenche"]}
           rows={[
             ["Checkout verrouillé", "La « caisse » n'est personnalisable en profondeur que sur Plus", "Tunnel de commande spécifique (devis, acomptes, logique métier)"],
-            ["B2B plafonné", "3 catalogues tarifaires maximum hors Plus", "Plus de 3 grilles de prix clients — le cas Granita"],
+            ["B2B plafonné", "3 catalogues tarifaires maximum hors Plus", "Plus de 3 grilles de prix clients — l'exemple Granita"],
             ["Multi-boutique", "Réservé à Plus, avec apps à racheter par boutique", "Deuxième marque ou deuxième pays sérieux"],
             ["URLs imposées", "/products/, /collections/ — structure non modifiable", "Stratégie de référencement Google (SEO) appuyée sur le contenu"],
             ["Apps qui s'empilent", "Chaque manque natif = une app louée au mois", "Quand le total apps dépasse 300 €/mois, faites les comptes"],
@@ -557,52 +583,56 @@ export default function Page() {
           jamais. Nous le faisons en section 10.
         </p>
 
-        <h2 id="sur-mesure">9. Le sur-mesure : prix réels, devis décortiqué</h2>
+        <h2 id="sur-mesure">9. Le sur-mesure : repères éditoriaux et chiffrage illustratif</h2>
         <p>
-          Un <Link href="/services/ecommerce">e-commerce sur
-          mesure</Link> coûte en France en 2026{" "}
-          <strong>15 000 à 40 000 € pour une boutique fonctionnelle</strong>{" "}
-          avec intégrations simples, et <strong>40 000 à 120 000 € pour
-          une plateforme complète</strong> — stock temps réel,
-          configurateur, espace B2B, connexions à la gestion. La médiane
-          du marché tourne autour de 45 000 €. Précision 2026, et elle
-          est de première main : sur nos propres devis, le
-          développement assisté par IA (Claude Code) a réduit le
-          nombre de jours facturés à périmètre égal — c&apos;est ce
-          qui nous permet d&apos;afficher une grille qui démarre à
-          15 000 €, là où les tickets d&apos;entrée publiés par les
-          agences convergeaient encore vers 25 000 à 80 000 € il y a
-          trois ans. Constat d&apos;agence, pas statistique de marché :
-          jugez sur pièce, le devis décortiqué ci-dessous détaille les
-          jours poste par poste.
+          Pour construire les exemples de ce guide, nous retenons{" "}
+          <strong>15 000 à 40 000 € pour une boutique avec intégrations
+          simples</strong> et <strong>40 000 à 120 000 € pour une
+          plateforme complète</strong> — stock temps réel,
+          configurateur, espace B2B, connexions à la gestion. Ces ordres
+          de grandeur viennent d&apos;un recoupement non exhaustif de
+          fourchettes publiques d&apos;agences citées en sources. Il ne
+          s&apos;agit pas d&apos;un corpus représentatif : aucune médiane de
+          marché ne peut en être déduite. Chez Hagnéré Code, notre{" "}
+          <Link href="/services/ecommerce">grille commerciale
+          e-commerce sur mesure</Link> démarre à 15 000 €. Le
+          développement assisté par IA fait partie de notre méthode,
+          mais nous ne publions pas de panel avant/après permettant de
+          lui attribuer une baisse de prix. Le chiffrage illustratif
+          ci-dessous est donc la pièce vérifiable : il détaille les jours
+          poste par poste.
         </p>
         <p>
           Ce que vous achetez à ce
           prix : la propriété du code et des données, zéro abonnement de
-          plateforme, zéro application à louer, une caisse qui applique
-          exactement vos règles — et l&apos;obligation assumée
-          d&apos;un budget de maintenance (10 à 20 % par an).
+          plateforme, aucune application louée uniquement pour contourner une
+          limite, une caisse qui applique exactement vos règles — et
+          un budget de maintenance à chiffrer séparément. La simulation
+          de la section 10 retient 15 % par an : c&apos;est une hypothèse
+          éditoriale, pas une moyenne de marché.
         </p>
         <p>
           Soyons
           aussi exigeants avec le sur-mesure qu&apos;avec Shopify : la
           sécurité, les mises à jour et la conformité (paiement confié à
           un PSP certifié type Stripe, RGPD) passent sous votre
-          responsabilité — c&apos;est précisément ce que couvre ce budget
-          de maintenance — et vous dépendez de l&apos;équipe qui a écrit
-          le code. Exigez contractuellement la propriété du code, une
+          responsabilité. La maintenance couvre le volet technique ; elle ne
+          remplace ni vos procédures internes ni un conseil juridique adapté.
+          Vous dépendez aussi de l&apos;équipe qui a écrit le code. Exigez
+          contractuellement la propriété du code, une
           documentation à jour et la réversibilité (un autre développeur
           doit pouvoir reprendre le projet) : les mêmes garanties que
           celles que ce guide vous conseille de réclamer à Shopify. Les
           fourchettes détaillées par plateforme sont dans notre{" "}
           <Link href="/guides/prix-site-e-commerce">guide du prix
           d&apos;un site e-commerce</Link> ; ici, tenons notre marque de
-          fabrique — le devis réel. Celui de Granita : boutique en ligne
-          + espace B2B pour les cafés-hôtels-restaurants, connectée à sa
-          gestion. Taux journalier : 650 € HT.
+          fabrique — le devis illustratif. Celui de Granita reconstitue une
+          boutique en ligne + un espace B2B pour les
+          cafés-hôtels-restaurants, connectés à sa gestion. Taux journalier :
+          650 € HT.
         </p>
         <FormulaBox>
-          <strong>Devis « e-commerce + portail B2B » — 75 jours,
+          <strong>Devis illustratif « e-commerce + portail B2B » — 75 jours,
           48 750 € HT</strong>
           <br />
           Cadrage : ateliers sur les processus réels de vente (3 j) —
@@ -651,67 +681,70 @@ export default function Page() {
           title="Votre boutique approche des limites de Shopify ?"
           description="Décrivez votre activité en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc — rester sur Shopify, viser Plus ou passer au sur-mesure — et une fourchette argumentée en jours par poste."
           tags={["Réponse sous 24 h ouvrées", "Avis franc, même si c'est « restez sur Shopify »", "E-commerce 15 000 – 120 000 €"]}
+          ctaLabel="Faire trancher mon cas"
         />
 
-        <h2 id="tco">10. Le match sur 3 ans : où est le point de bascule</h2>
+        <h2 id="tco">10. La simulation sur 3 ans : tester le point de bascule</h2>
         <p>
-          Posons d&apos;abord la règle d&apos;équité qui manque à tous
-          les comparatifs : <strong>les frais de carte se paient des
-          deux côtés</strong> — un site sur mesure rémunère aussi son
-          prestataire de paiement, à des taux voisins à volume égal. On
-          les sort donc du match. Ce qui se compare vraiment :
-          abonnements, applications, création, maintenance. Pour une
-          boutique au besoin standard, le calcul est vite plié —
-          Shopify gagne : même au profil marque de la section 6, la part
-          proprement Shopify (abonnement Advanced + applications, frais
-          de carte exclus) pèse environ 9 500 à 15 500 €/an, plus
-          15 000 à 30 000 € de création agence — contre un sur-mesure
-          qui démarre à 40 000 € pour ce niveau, maintenance en sus.
-          Deux réserves, cependant, propres à 2026. Ce calcul ne compte
-          que les euros visibles : URLs imposées, tunnel de commande
-          verrouillé et pages alourdies d&apos;applications se paient
-          aussi, en référencement et en conversion (section 8). Et
-          l&apos;écart de création se resserre d&apos;année en année :
-          le devis de la section 9, déjà établi sur cette base, en
-          donne la mesure. Le match devient franchement intéressant
-          quand le besoin exige Plus. Cas Granita, sur 3 ans :
+          <strong>Le TCO ci-dessous est une simulation éditoriale fondée
+          sur des hypothèses, pas une observation ni une preuve de
+          marché.</strong> L&apos;abonnement Shopify Plus vient du tarif
+          officiel relevé en juillet 2026. Mise en place, applications,
+          maintenance et hébergement sont des entrées choisies pour ce
+          cas fictif ; elles ne sont ni des médianes ni des promesses de
+          prix. Remplacez-les par vos factures et deux devis établis sur
+          le même périmètre avant toute décision.
+        </p>
+        <p>
+          La règle d&apos;équité reste la suivante : <strong>les frais de
+          carte se paient des deux côtés</strong> — un site sur mesure
+          rémunère aussi son prestataire de paiement. Nous les
+          neutralisons donc et comparons abonnement, applications,
+          création et maintenance. Pour un besoin standard, notre
+          premier scénario retient 9 500 à 15 500 €/an de coûts propres
+          à Shopify, plus 15 000 à 30 000 € de création, face à une
+          hypothèse sur-mesure à partir de 40 000 €. Ces montants sont
+          des paramètres éditoriaux, pas des fourchettes représentatives.
+          Le tableau suivant teste ensuite le cas fictif Granita lorsque
+          le besoin impose Shopify Plus :
         </p>
         <GuideTable
-          headers={["Poste", "Shopify Plus", "Sur-mesure"]}
+          headers={["Poste", "Shopify Plus — hypothèses", "Sur-mesure — hypothèses"]}
           rows={[
-            ["Mise en place", "50 000 € (agence Plus, fourchette 25 000 – 100 000 €)", "48 750 € (devis section 9)"],
+            ["Mise en place", "50 000 € (hypothèse éditoriale ; repère public non représentatif : 25 000 – 100 000 €)", "48 750 € (chiffrage illustratif de la section 9)"],
             ["Abonnement plateforme", "75 600 € (2 100 €/mois × 36)", "0 €"],
-            ["Applications propres à la plateforme", "25 200 € (≈ 700 €/mois — outils marketing communs exclus, payés des deux côtés)", "0 € (fonctions intégrées au développement)"],
-            ["Maintenance (« TMA » : le contrat d'entretien confié à un prestataire)", "18 000 € (500 €/mois, bas de fourchette)", "26 400 € (≈ 15 %/an + hébergement)"],
-            ["Total 3 ans (hors frais de carte et outils communs)", "≈ 170 000 €", "≈ 75 000 €"],
+            ["Applications propres à la plateforme", "25 200 € (hypothèse : ≈ 700 €/mois ; outils communs exclus)", "0 € dans ce scénario (fonctions intégrées au développement)"],
+            ["Maintenance (« TMA » : le contrat d'entretien confié à un prestataire)", "18 000 € (hypothèse : 500 €/mois)", "26 400 € (hypothèse : ≈ 15 %/an + hébergement)"],
+            ["Résultat de la simulation sur 3 ans (hors frais de carte et outils communs)", "≈ 170 000 €", "≈ 75 000 €"],
           ]}
         />
         <p>
-          Lecture honnête de ce tableau, hypothèses discutables
-          comprises : nous avons pris le bas des fourchettes Shopify
-          (une mise en place Plus dépasse souvent 50 000 €, un contrat
-          de maintenance à 500 €/mois est optimiste) et le devis réel de
-          la section 9
-          côté sur-mesure — un projet plus lourd coûterait davantage.
-          Même avec ces réglages prudents,{" "}
-          <strong>l&apos;écart est d&apos;environ 95 000 € sur
-          3 ans</strong>, et il se creuse ensuite : les 75 600 €
-          d&apos;abonnement Plus reviennent chaque période de 3 ans, le
-          développement sur mesure, lui, est amorti. D&apos;où le
-          principe à retenir — <strong>le point de bascule n&apos;est
-          pas un chiffre d&apos;affaires magique : il a deux
-          déclencheurs</strong>. Le premier : le jour où votre besoin
-          sort du standard et où le devis Plus arrive sur la table,
-          chiffrez le sur-mesure en face, ligne à ligne. Le second,
-          même à besoin standard : le jour où la boutique devient le
-          cœur de votre entreprise — image, conversion, durée. Les
-          euros visibles favorisent alors encore Shopify, nous venons
-          de le montrer ; mais le référencement, la conversion et la
-          réversibilité pèsent assez lourd pour justifier un
-          contre-chiffrage sans attendre — c&apos;est la position que
-          nous tenons aussi dans notre{" "}
+          Sous ces seules hypothèses, l&apos;arithmétique produit un{" "}
+          <strong>écart d&apos;environ 95 000 € sur 3 ans</strong>. Ce
+          résultat ne démontre pas un avantage général du sur-mesure :
+          une mise en place, un volume d&apos;applications ou une
+          maintenance différents réduisent, annulent ou inversent
+          l&apos;écart. Le modèle sert à tester deux déclencheurs, pas à
+          annoncer un point de bascule universel. Premier déclencheur :
+          quand un devis Shopify Plus arrive, chiffrez le même périmètre
+          en sur-mesure. Second déclencheur : quand la boutique devient
+          centrale pour l&apos;entreprise, ajoutez au calcul les coûts
+          réellement mesurés de ses limites, sans présumer un gain de
+          référencement ou de conversion. C&apos;est la logique que nous
+          appliquons aussi dans notre{" "}
           <Link href="/guides/woocommerce-ou-shopify">comparatif
           WooCommerce ou Shopify</Link>.
+        </p>
+        <p>
+          Le coût total ne suffit toutefois pas à décider. Shopify étale la
+          dépense et permet de renoncer vite ; le sur-mesure concentre un
+          investissement au départ. Si la demande reste incertaine ou si la
+          trésorerie est la contrainte principale, cette souplesse peut valoir
+          davantage qu&apos;une économie projetée. À l&apos;inverse, ajoutez au
+          calcul les contournements réellement observés : ressaisies,
+          opérations manuelles, ventes bloquées et temps passé à maintenir des
+          connexions fragiles. N&apos;ajoutez pas un gain de référencement ou
+          de conversion hypothétique : mesurez-le avant de le promettre.
         </p>
 
         <h2 id="cout-sortie">11. Le coût de sortie de Shopify, enfin chiffré</h2>
@@ -727,25 +760,26 @@ export default function Page() {
           rows={[
             ["Produits, clients, commandes", "Export natif en fichiers CSV (tableur lisible dans Excel)", "Récupérables — comptez ≈ 1 h d'export par 100 000 commandes"],
             ["Mots de passe clients", "JAMAIS exportables", "Tous les comptes sont à recréer (email de réinitialisation, perte d'une partie des clients connectés)"],
-            ["Thème et personnalisations", "Non transférables (langage Liquid propriétaire)", "La vitrine se redéveloppe intégralement"],
-            ["Applications et leurs réglages", "Non transférables", "Chaque fonction se recrée ou se remplace"],
+            ["Thème et personnalisations", "Code téléchargeable, mais non portable tel quel hors Shopify (Liquid)", "La vitrine doit être adaptée ou redéveloppée sur la destination"],
+            ["Applications et leurs réglages", "Portabilité variable selon chaque éditeur", "Chaque fonction doit être auditée, reconfigurée ou remplacée"],
             ["Pages, blog, contenus structurés", "Pas d'export natif complet", "Passage par des outils tiers + reprise manuelle"],
             ["Adresses des pages (URLs)", "Structure imposée par Shopify", "Plan de redirections 301 (le renvoi automatique de chaque ancienne adresse vers la nouvelle), page par page"],
           ]}
         />
         <p>
-          En euros, pour une boutique établie type Granita : export,
+          En euros, dans l&apos;exemple de boutique établie Granita : export,
           nettoyage et réimport des données (2 à 5 jours, 1 300 à
           3 250 €), plan de redirections et migration SEO (1 000 à
           5 000 € — le poste est identique à celui d&apos;une refonte,
           notre <Link href="/guides/prix-refonte-site-internet">guide du
           prix d&apos;une refonte</Link> le détaille), recréation des
           comptes clients et communication associée, et surtout la
-          reconstruction complète de la vitrine — le vrai coût, qui
-          rejoint les budgets de la section 9. Les études sectorielles
-          sur les changements de plateforme invitent à la prudence
-          budgétaire : <strong>64 % dépassent leur budget (de 30 % en
-          moyenne)</strong>. Deux conclusions : anticipez la sortie dès
+          reconstruction ou adaptation de la vitrine — le poste principal, qui
+          rejoint les budgets de la section 9. Un rapport commercial cité en
+          sources observe des dépassements sur son propre échantillon, sans
+          méthode assez détaillée ici pour en faire un taux de marché. La
+          conclusion utile reste de prévoir une réserve et de tester la reprise.
+          Anticipez la sortie dès
           l&apos;entrée (exports réguliers, domaine et contenus à votre
           nom) — et méfiez-vous du raisonnement inverse : rester sur une
           plateforme uniquement parce qu&apos;en sortir coûte cher porte
@@ -802,9 +836,9 @@ export default function Page() {
         <GuideTable
           headers={["Votre profil", "Verdict", "Pourquoi"]}
           rows={[
-            ["Créateur, lancement, test de marché", "Shopify Basic, point", "Rien ne bat 90-120 €/mois tout compris pour valider un marché — rechiffrez dès que le marché est validé"],
+            ["Créateur, lancement, test de marché", "Shopify Basic, point", "Notre simulation retient 90-120 €/mois tout compris pour tester — remplacez les hypothèses par votre panier d'applications"],
             ["PME B2C, besoin standard", "Shopify Grow/Advanced, en restant réversible", "Compétitif tant qu'aucun seuil de la section 8 n'est franchi. Si la boutique est le cœur de l'entreprise — image, conversion, durée —, chiffrez un sur-mesure en face sans attendre (devis type en section 9) : c'est précisément le profil pour lequel notre comparatif WooCommerce ou Shopify recommande directement le sur-mesure"],
-            ["B2B structurel (tarifs clients, récurrence, 30 jours)", "Sur-mesure — comparez avec Plus, chiffres en main", "≈ 75 000 € vs ≈ 170 000 € sur 3 ans dans notre cas type (section 10)"],
+            ["B2B structurel (tarifs clients, récurrence, 30 jours)", "Sur-mesure — comparez avec Plus, chiffres en main", "Simulation éditoriale : ≈ 75 000 € vs ≈ 170 000 € sur 3 ans sous les hypothèses de la section 10"],
             ["Logique métier unique (configurateur, devis, abonnements complexes)", "Sur-mesure", "La caisse doit appliquer VOS règles — c'est le produit, pas un site"],
             ["Marque de contenu + boutique (média, communauté)", "Headless — si le besoin est démontré", "Le seul profil où l'hybride se justifie vraiment (section 12)"],
             ["Boutique qui approche du devis Plus", "Étude comparative avant signature", "L'engagement Plus (1-3 ans) mérite un contre-chiffrage sur-mesure"],
@@ -813,21 +847,24 @@ export default function Page() {
 
         <InfoBox variant="emerald" title="À retenir : les 5 chiffres de ce guide">
           <ul className="list-disc pl-4 space-y-1.5">
-            <li><strong>90 – 4 100 €/mois</strong> : le coût réel de Shopify tout compris selon le volume — un coût variable, pas un forfait (70-80 % de commissions au sommet).</li>
-            <li><strong>48,8 %</strong> : la part des nouvelles boutiques françaises créées sur Shopify en 2025 — pour lancer, le débat est tranché.</li>
-            <li><strong>2 100 €/mois</strong> : le ticket d&apos;entrée Shopify Plus, là où les limites se lèvent — et là où le sur-mesure redevient compétitif.</li>
-            <li><strong>≈ 75 000 € vs ≈ 170 000 €</strong> : sur-mesure contre Shopify Plus sur 3 ans, dans notre cas type B2B (hypothèses affichées, frais de carte neutralisés).</li>
-            <li><strong>0 €</strong> : ce que valent vos thème, apps et mots de passe clients le jour où vous partez — exportez vos données, toujours.</li>
+            <li><strong>90 – 4 100 €/mois</strong> : le résultat des trois profils Shopify simulés selon le volume et les hypothèses d&apos;applications — un coût variable, pas une moyenne de marché.</li>
+            <li><strong>0 part de marché décisive</strong> : les études comptent des populations différentes ; votre besoin et votre TCO tranchent.</li>
+            <li><strong>2 100 €/mois</strong> : le ticket d&apos;entrée officiel Shopify Plus — le signal pour demander un contre-chiffrage, pas la preuve que le sur-mesure sera moins cher.</li>
+            <li><strong>≈ 75 000 € vs ≈ 170 000 €</strong> : le résultat de notre simulation éditoriale sur 3 ans, sous les hypothèses affichées et avec les frais de carte neutralisés.</li>
+            <li><strong>Portabilité partielle</strong> : données exportables, mots de passe non exportés, thème Liquid téléchargeable mais non portable tel quel.</li>
           </ul>
         </InfoBox>
 
         <h2 id="methode">14. Méthode : trancher en 5 étapes</h2>
         <ol>
           <li>
-            <strong>Reconstituez votre facture Shopify réelle</strong> —
-            abonnement + commissions + apps + prestataires, sur 12 mois
-            (section 6). C&apos;est le chiffre de référence, et il
-            n&apos;apparaît nulle part en un seul endroit dans votre
+            <strong>Fixez votre point de départ.</strong> Vous avez déjà une
+            boutique : reconstituez la facture Shopify réelle — abonnement +
+            commissions + apps + prestataires, sur 12 mois (section 6). Vous
+            lancez un projet : notez d&apos;abord ce qui reste incertain
+            (demande, catalogue, processus), car cette incertitude favorise la
+            solution la plus réversible. Dans le premier cas, le chiffre de
+            référence n&apos;apparaît nulle part en un seul endroit dans votre
             tableau de bord.
           </li>
           <li>
@@ -842,7 +879,7 @@ export default function Page() {
             (mise en place + abonnement + apps + contrat de maintenance)
             et sur-mesure, sur
             le même périmètre écrit. Notre{" "}
-            <Link href="/guides/cahier-des-charges-site-internet">modèle
+            <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle
             de cahier des charges</Link> s&apos;adapte au e-commerce.
           </li>
           <li>
@@ -894,18 +931,24 @@ export default function Page() {
           La Presse) et Shopify Plus 2024 (Liquify) ; Elogic,
           Replatforming Cost Index 2026 (dépassements budget/délais) ;
           Trustpilot (notes et motifs récurrents, à lire avec les
-          réserves d&apos;usage) ; fourchettes de marché françaises :
-          recoupement Huggii, Gradiweb, Artich.io, jbdevweb, La Fabrique
-          du Net, Yield Studio, Novaria (2026). Les prix évoluent :
+          réserves d&apos;usage) ; sources publiques consultées pour les
+          ordres de grandeur éditoriaux : Huggii, Gradiweb, Artich.io,
+          jbdevweb, La Fabrique du Net, Yield Studio, Novaria (2026).
+          Cette sélection non exhaustive n&apos;est pas un corpus
+          représentatif. Les prix évoluent :
           vérifiez à la source avant de signer.
         </p>
         <p className="text-sm">
           <em>
-            Les fourchettes de ce guide sont des prix de marché
-            constatés, donnés à titre indicatif : seul un devis établi
-            sur votre périmètre vous engage. Shopify, Shopify Plus et
-            Hydrogen sont des marques de Shopify Inc. ; ce guide est
-            indépendant et n&apos;est affilié à aucune plateforme.
+            Hors tarifs officiels Shopify datés, les fourchettes sont des
+            ordres de grandeur éditoriaux issus de pages publiques
+            sélectionnées sans méthode d&apos;échantillonnage. Elles ne
+            prouvent ni un prix médian ni un coût de marché. Le TCO est
+            une simulation fondée sur les hypothèses affichées : seuls
+            vos factures et devis permettent de décider. Shopify,
+            Shopify Plus et Hydrogen sont des marques de Shopify Inc. ;
+            ce guide est indépendant et n&apos;est affilié à aucune
+            plateforme.
           </em>
         </p>
       </GuideLayout>

@@ -495,7 +495,7 @@ export default function Page() {
 
         <h2 id="travailler">9. Travailler avec nous</h2>
         <p>
-          Trois engagements, identiques pour tous nos clients.{" "}
+          Trois engagements, identiques dans tous nos contrats.{" "}
           <strong>Un forfait fixe contractuel</strong> : périmètre écrit, prix
           arrêté avant de commencer, aucun dépassement surprise.{" "}
           <strong>Une performance garantie</strong> : score Lighthouse mobile

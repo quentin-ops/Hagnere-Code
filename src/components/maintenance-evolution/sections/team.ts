@@ -30,7 +30,7 @@ export const teamHtml = `
           <p class="me-tm-role">Front-end · Design · Brief client</p>
           <p class="me-tm-bio">Interlocuteur principal du cadrage à la livraison. Garde le lien business avec vos équipes sur toute la durée du contrat.</p>
           <div class="me-tm-meta">
-            <span class="me-tm-chip">📍 Chambéry</span>
+            <span class="me-tm-chip">📍 Bassens</span>
             <span class="me-tm-chip">👤 Fondateur</span>
           </div>
           <a href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener" class="me-tm-li">
@@ -55,7 +55,7 @@ export const teamHtml = `
           <p class="me-tm-role">CTO · direction technique transverse</p>
           <p class="me-tm-bio">Architecture, choix de stack, jalons techniques, compliance SOC2 / ISO. Revue hebdo avec votre CTO interne si vous en avez un.</p>
           <div class="me-tm-meta">
-            <span class="me-tm-chip">📍 Chambéry</span>
+            <span class="me-tm-chip">📍 Bassens</span>
             <span class="me-tm-chip">🏆 CTO managérial</span>
           </div>
           <a href="https://www.linkedin.com/in/nicolas-wallerand-86b0a079/" target="_blank" rel="noopener" class="me-tm-li">

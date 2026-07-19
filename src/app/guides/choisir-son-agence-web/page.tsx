@@ -214,7 +214,7 @@ export default function Page() {
         ]}
         relatedLinks={[
           { href: "/guides/agence-web-ou-freelance", label: "Agence web ou freelance ?" },
-          { href: "/guides/cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
+          { href: "/ressources/kit-cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
           { href: "/guides/combien-coute-un-site-internet", label: "Combien coûte un site internet ?" },
           { href: "/guides/tjm-developpeur-web", label: "TJM développeur web" },
           { href: "/methode", label: "Notre méthode Sprint Fixe™" },
@@ -418,7 +418,7 @@ export default function Page() {
         </ul>
         <p>
           Ces quatre réponses tiennent sur une page. Notre{" "}
-          <Link href="/guides/cahier-des-charges-site-internet">modèle
+          <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle
           de cahier des charges</Link> vous donne la trame complète, et
           notre{" "}
           <Link href="/guides/combien-coute-un-site-internet">guide du

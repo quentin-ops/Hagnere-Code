@@ -1,19 +1,15 @@
 /**
  * Funnel analytics — vendor-agnostic event hub.
  *
- * Forwards events to whatever script the page already has loaded:
+ * This module does not install a collector. It forwards events only to an
+ * additional analytics script that the site has already loaded and configured:
  *   - Plausible : window.plausible(name, { props })
  *   - PostHog   : window.posthog.capture(name, props)
  *   - GA4       : window.gtag('event', name, props)
  *   - dataLayer : window.dataLayer.push({ event: name, ...props })
  *
- * If none are present (current state of the site), events go to
- * console.debug — so we keep a trail in dev and only need to add the
- * vendor script tag later to start collecting.
- *
- * Why not pick one vendor now: the team hasn't chosen yet (PostHog vs
- * Plausible). This indirection means changing vendor later doesn't
- * require touching every call site.
+ * Keeping collection separate from event declaration avoids silently changing
+ * the site's privacy posture when a new funnel action is instrumented.
  */
 
 type EventProps = Record<string, string | number | boolean | undefined>;
@@ -66,7 +62,7 @@ export function trackFunnelEvent(name: string, props: EventProps = {}): void {
   }
 
   try {
-    if (Array.isArray(window.dataLayer)) {
+    if (typeof window.gtag !== "function" && Array.isArray(window.dataLayer)) {
       window.dataLayer.push({ event: name, ...cleanProps });
       dispatched = true;
     }

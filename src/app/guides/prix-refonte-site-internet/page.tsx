@@ -217,7 +217,7 @@ export default function Page() {
           { href: "/guides/combien-coute-un-site-internet", label: "Combien coûte un site internet ?" },
           { href: "/guides/prix-site-vitrine", label: "Prix d'un site vitrine" },
           { href: "/guides/nextjs-ou-wordpress", label: "Next.js ou WordPress ?" },
-          { href: "/guides/cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
+          { href: "/ressources/kit-cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
           { href: "/services/sites-vitrines", label: "Sites vitrines sur mesure" },
           { href: "/methode", label: "Notre méthode Sprint Fixe™" },
         ]}
@@ -838,7 +838,7 @@ export default function Page() {
           corriger), et le sort de chaque page : conserver, améliorer,
           fusionner, supprimer — avec le plan de redirections qui en
           découle. Notre{" "}
-          <Link href="/guides/cahier-des-charges-site-internet">modèle de
+          <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle de
           cahier des charges</Link> s&apos;adapte en version refonte en y
           ajoutant cet inventaire ; envoyé à l&apos;identique à trois
           prestataires, il transforme des devis incomparables en devis

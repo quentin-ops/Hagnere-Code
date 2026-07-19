@@ -7,7 +7,7 @@
 ## Identité du responsable de traitement
 
 - **Raison sociale** : HAGNÉRÉ CODE SAS
-- **Adresse** : 7 rue Ernest Filliard, 73000 Chambéry, France
+- **Adresse** : 82 impasse de Bellevue, 73000 Bassens, France
 - **SIREN** : 993 672 856
 - **Représentant légal** : Quentin Hagnéré (président)
 - **Contact RGPD** : hello@hagnere-code.fr

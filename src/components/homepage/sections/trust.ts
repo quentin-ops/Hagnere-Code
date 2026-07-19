@@ -32,7 +32,7 @@ export const trustHtml = `
         </div>
         <div class="tr-body">
           <div class="tr-title">100% équipe France</div>
-          <div class="tr-sub">Aucune sous-traitance offshore. Chambéry + télétravail hexagone.</div>
+          <div class="tr-sub">Aucune sous-traitance offshore. Bassens + télétravail hexagone.</div>
         </div>
       </div>
 

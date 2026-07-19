@@ -5,13 +5,13 @@ import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Hagnéré Code — Agence web à Chambéry : sites, SaaS, SEO, Ads",
   description:
-    "Agence web complète à Chambéry : sites, e-commerce, SaaS, applications métier, référencement naturel et Google Ads. Forfait fixe, réponse sous 24 h.",
+    "Agence web à Bassens, aux portes de Chambéry : sites, e-commerce, SaaS, applications métier, référencement naturel et Google Ads. Forfait fixe.",
   alternates: { canonical: "/" },
   openGraph: {
     ...OG_BASE,
     title: "Hagnéré Code — Agence web à Chambéry : sites, SaaS, SEO, Ads",
     description:
-      "Agence web complète à Chambéry : sites, e-commerce, SaaS, applications métier, référencement naturel et Google Ads. Forfait fixe, réponse sous 24 h.",
+      "Agence web à Bassens, aux portes de Chambéry : sites, e-commerce, SaaS, applications métier, référencement naturel et Google Ads. Forfait fixe.",
     url: "/",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -28,7 +28,7 @@ const organizationJsonLd = {
   logo: "https://hagnere-code.ai/logos/logo-dark.png",
   image: "https://hagnere-code.ai/og-image.png",
   description:
-    "Agence web complète basée à Chambéry (Savoie) : développement sur mesure de sites vitrines, e-commerce, SaaS, applications métier et outils internes, référencement naturel et campagnes Google Ads. Next.js, React, TypeScript, forfait fixe.",
+    "Agence web complète basée à Bassens, aux portes de Chambéry (Savoie) : développement sur mesure de sites vitrines, e-commerce, SaaS, applications métier, outils internes, SEO et Google Ads.",
   foundingDate: "2025-09-30",
   founder: {
     "@type": "Person",

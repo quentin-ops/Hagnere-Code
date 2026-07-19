@@ -13,7 +13,7 @@
 
 Nous partons d'une situation précise : un domaine mis en ligne il y a quelques semaines,
 zéro backlink, zéro trafic organique, 23 guides nationaux longs et sourcés, 11 pages
-services, une adresse réelle au 7 rue Ernest Filliard à Chambéry, et **aucune référence
+services, une adresse réelle au 82 impasse de Bellevue à Bassens, aux portes de Chambéry, et **aucune référence
 client extérieure au groupe Hagnéré** — les quatre études de cas publiées
 (`src/components/realisations/cases.ts`) sont LMNP.AI, SCI.AI, Hagnéré Patrimoine et
 Hagnéré Investissement.
@@ -141,7 +141,7 @@ anciennes avec portfolio).
 
 | Commune | Pop. | Tissu économique dominant | Diff. SERP observée | Qui défend | Intérêt commercial |
 |---|---|---|---|---|---|
-| **Chambéry** (73) | ~60 000 | Préfecture, tertiaire, santé, université USMB, CCI Savoie | **5** sur « agence web » / **3** sur Google Ads | Cappuccino (20 ans), Here We Com (2010), Kiwi Interactive (1998), Nouvel Œil (2001), Matixweb | **Fort** — siège de l'agence, seul ancrage réel |
+| **Chambéry** (73) | ~60 000 | Préfecture, tertiaire, santé, université USMB, CCI Savoie | **5** sur « agence web » / **3** sur Google Ads | Cappuccino (20 ans), Here We Com (2010), Kiwi Interactive (1998), Nouvel Œil (2001), Matixweb | **Fort** — Bassens est limitrophe de Chambéry, même agglomération et ancrage réel |
 | **Le Bourget-du-Lac** (73) | ~5 200 | **Savoie Technolac** : 230+ entreprises, cleantech, INES, incubateur | **1-2** | Kinic (adresse réelle sur place), CyberCité (2004, ~20 salariés) + pages programmatiques | **Très fort** — audience startups/PME tech à 15 min du siège, cible SaaS |
 | **Aix-les-Bains** (73) | 32 406 | **Thermalisme** (Chevalley, Marlioz) + **industrie** (Combaruches : AIXAM, ABB, MHM) + tourisme d'affaires | **3** | Aucune agence réellement aixoise en force. Top occupé par du hors-zone (Noiise, Viaduc, Digital Unicorn, Boondooa) | **Fort** — 15 min du siège, seule ville du 73 avec des données INSEE que nous avons vérifiées |
 | **Albertville** (73) | ~20 000 | Porte de la Tarentaise, BTP, logistique des stations, agroalimentaire, siège de l'agglo Arlysère | **2-3** | Champ low-cost fragmenté (AA Création 500 € HT, Labo Web, Altitude-Dev, Dieup'Art) | **Moyen-fort** — aucune offre premium positionnée |
@@ -226,7 +226,7 @@ Sans slash final, pour rester aligné sur `/guides/{slug}` et `/services/{slug}`
 des gagnants comme des doorways dans presque chaque famille : le patron ne discrimine rien
 en lui-même. Le choix se justifie par la **discipline qu'il impose**, en cinq points.
 
-1. **`/agence` au singulier est vrai.** Il y a une agence, au 7 rue Ernest Filliard.
+1. **`/agence` au singulier est vrai.** Il y a une agence, au 82 impasse de Bellevue à Bassens.
    `/agences/` (NOIISE, 7 bureaux réels) ou `/implantations/` (Zaplo Studio, un studio
    parisien et 101 départements) mentiraient — et une URL qui ment oblige ensuite le
    contenu à mentir pour rester cohérent.
@@ -291,7 +291,7 @@ mince du domaine, et ça se verrait.
 | 3 | **Zones d'activité nommées** | oui | 100–150 | Parcs, ZA, technopôles, avec leurs noms exacts et leur vocation |
 | 4 | **Une donnée chiffrée, datée, sourcée** | oui | 100–150 | Une seule, solide, avec sa source et son millésime. Mieux vaut un chiffre vérifié que cinq approximatifs |
 | 5 | **Le cas d'usage web/logiciel propre à cette économie** | oui | 200–300 | Le bloc qui vaut le plus : ce dont *ces* entreprises-là ont besoin. Un décolleteur et un hôtelier n'achètent pas la même chose |
-| 6 | **Réalité opérationnelle** | oui | 100–150 | Temps de trajet réel depuis le 7 rue Ernest Filliard, modalité de rendez-vous, communes du bassin réellement couvertes |
+| 6 | **Réalité opérationnelle** | oui | 100–150 | Temps de trajet réel depuis le 82 impasse de Bellevue à Bassens, modalité de rendez-vous, communes du bassin réellement couvertes |
 | 7 | **Constat sur le marché local** | oui | 150–250 | Ce que font — ou ne font pas — les entreprises du bassin en ligne. Honnête, chiffrable si possible |
 | 8 | **Références locales** | oui | 0–200 | **Rien si rien.** Une section absente vaut infiniment mieux qu'un témoignage anonymisé |
 | 9 | **FAQ locale** | oui | 250–400 | 4 à 6 questions, dont **au moins 3 impossibles à poser sur une autre ville** |
@@ -327,8 +327,8 @@ listées juste après.
 
 > # Agence web à Aix-les-Bains : sites et outils sur mesure pour le thermalisme, l'industrie et les services
 >
-> Aix-les-Bains est à une quinzaine de kilomètres de notre bureau du 7 rue Ernest Filliard, à
-> Chambéry. Une vingtaine de minutes par la voie rapide, moins par le train. C'est l'une des
+> Aix-les-Bains est à une quinzaine de kilomètres de notre bureau du 82 impasse de Bellevue, à
+> Bassens. Une vingtaine de minutes par la voie rapide. C'est l'une des
 > rares villes de notre zone où nous nous déplaçons systématiquement pour le premier
 > rendez-vous, sans condition de budget — non par posture commerciale, mais parce qu'à cette
 > distance un aller-retour ne coûte pas une demi-journée. Au-delà, nous le disons franchement
@@ -527,8 +527,8 @@ jamais dans une liste de fin de page. Exemples d'ancres réelles :
   `/services/saas-applications-metier`, jamais « développement SaaS à Chambéry ». Sinon on
   pousse une page nationale vers une requête locale qu'elle ne gagnera pas, et on brouille
   les deux cibles.
-- Variantes vers `/agence/savoie/chambery` : « notre agence de Chambéry » · « au 7 rue Ernest
-  Filliard » · « les entreprises du bassin chambérien » · « à quinze minutes de Savoie
+- Variantes vers `/agence/savoie/chambery` : « notre agence près de Chambéry » · « au 82 impasse de
+  Bellevue à Bassens » · « les entreprises du bassin chambérien » · « à quinze minutes de Savoie
   Technolac » · « agence web à Chambéry » (une seule fois, la version exact-match).
 - Variantes vers `/agence` : « notre zone d'intervention » · « où nous sommes réellement
   implantés » · « agence web en Savoie et Haute-Savoie ».
@@ -717,7 +717,7 @@ porter exactement le même triplet nom / adresse / téléphone / e-mail.
         "@type": "Question",
         "name": "Vous déplacez-vous à Aix-les-Bains pour le premier rendez-vous ?",
         "acceptedAnswer": { "@type": "Answer",
-          "text": "Oui, systématiquement et sans condition de budget : nos bureaux sont au 7 rue Ernest Filliard à Chambéry, soit une vingtaine de minutes. Nous nous déplaçons aussi sur les parcs des Combaruches et des Sources, et à Savoie Hexapôle." } }
+          "text": "Oui, systématiquement et sans condition de budget : nos bureaux sont au 82 impasse de Bellevue à Bassens, soit une vingtaine de minutes. Nous nous déplaçons aussi sur les parcs des Combaruches et des Sources, et à Savoie Hexapôle." } }
     ]
   }
 ]
@@ -752,12 +752,12 @@ tout le volet citations et presse ci-dessous.
 
 | Paramètre | Décision | Justification |
 |---|---|---|
-| Type de fiche | **Établissement hybride** : adresse 7 rue Ernest Filliard visible **+** zones de service déclarées | Masquer l'adresse ferait perdre le seul ancrage géographique fort de l'agence. Elle est déjà publique dans le JSON-LD |
+| Type de fiche | **Établissement hybride** : adresse 82 impasse de Bellevue, 73000 Bassens visible **+** zones de service déclarées | Masquer l'adresse ferait perdre le seul ancrage géographique fort de l'agence. Elle est déjà publique dans le JSON-LD |
 | Catégorie principale | **Concepteur de sites Web** | Capte le volume de requêtes commerciales le plus large. C'est le facteur de pertinence le plus puissant de la fiche |
 | Secondaire 1 | **Développeur de logiciels** | Couvre SaaS, applications métier, outils internes — la partie la plus rentable de l'offre |
 | Secondaire 2 | **Service de référencement (SEO)** ou **Consultant en marketing Internet** | Couvre SEO et Ads sans diluer |
 | Secondaire 3 | **Agence de publicité** — optionnelle | À n'ajouter que si Google Ads devient une ligne de revenu affichée. Google sanctionne le *category stuffing* : deux à trois secondaires, pas neuf |
-| Zones de service | Chambéry, Aix-les-Bains, Le Bourget-du-Lac, La Motte-Servolex, La Ravoire, Albertville, Annecy, Annemasse, Cluses, Thonon-les-Bains, + Savoie et Haute-Savoie | Limite officielle : 20 zones, et l'ensemble ne doit pas dépasser environ 2 h de trajet depuis le siège. Depuis Chambéry, les deux départements sont largement dans les clous |
+| Zones de service | Bassens, Chambéry, Aix-les-Bains, Le Bourget-du-Lac, La Motte-Servolex, La Ravoire, Albertville, Annecy, Annemasse, Cluses, Thonon-les-Bains, + Savoie et Haute-Savoie | Limite officielle : 20 zones, et l'ensemble ne doit pas dépasser environ 2 h de trajet depuis le siège. Depuis Bassens, les deux départements sont largement dans les clous |
 
 **[À VÉRIFIER]** Les libellés exacts des catégories varient dans l'index français et
 évoluent. À contrôler dans l'interface GBP au moment de la création, en tapant les termes.
@@ -1085,7 +1085,7 @@ preuves accumulées, jamais en rang.
    entreprises ou institutions réelles, zones d'activité nommées, cas d'usage web ou logiciel
    propre à cette économie.
 3. **Un seul `LocalBusiness` / `ProfessionalService` sur tout le domaine**, celui de
-   Chambéry, déclaré une seule fois, référencé partout ailleurs par `@id`. Jamais d'adresse
+   Bassens, déclaré une seule fois, référencé partout ailleurs par `@id`. Jamais d'adresse
    par ville, jamais de numéro de téléphone par ville.
 4. **NAP strictement identique partout** : site, JSON-LD, fiche GBP, annuaires, presse, pied
    de page, signature e-mail. Au caractère près.

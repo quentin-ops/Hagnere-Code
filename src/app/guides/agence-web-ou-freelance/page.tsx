@@ -549,7 +549,7 @@ export default function Page() {
           l&apos;hébergement à votre nom, et une documentation de
           reprise</strong>. La clause type, prête à recopier, est dans
           notre{" "}
-          <Link href="/guides/cahier-des-charges-site-internet">modèle
+          <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle
           de cahier des charges</Link> — c&apos;est elle qui transforme
           la question « agence ou freelance » en une question qui a
           une réponse : « quel contrat ».
@@ -734,7 +734,7 @@ export default function Page() {
           <li>
             <strong>Cadrez avant de consulter.</strong> Un périmètre
             écrit (notre{" "}
-            <Link href="/guides/cahier-des-charges-site-internet">modèle
+            <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle
             de cahier des charges</Link> est fait pour ça) rend les
             devis comparables — sans lui, vous comparez des projets
             différents, pas des prestataires.

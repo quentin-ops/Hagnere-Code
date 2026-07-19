@@ -58,7 +58,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 5005,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -111,7 +110,7 @@ const faqItems = [
   {
     question: "Faut-il un cahier des charges même pour un petit projet d'application ?",
     answer:
-      "Oui — c'est justement le petit projet qui en a le plus besoin, car chaque euro compte. La bonne nouvelle : la taille du document suit celle du projet. Pour un MVP simple, 3 à 5 pages bien structurées suffisent (contexte, cibles, fonctionnalités priorisées, contraintes, budget) ; un projet complexe monte à 15-20 pages. La règle des professionnels : deux pages bien rédigées valent mieux que cinquante pages mal structurées. Sans document du tout, vous recevrez des devis incomparables — l'écart documenté va de 3 000 à 80 000 € pour la même fonctionnalité décrite oralement.",
+      "Oui — c'est justement le petit projet qui en a le plus besoin, car chaque euro compte. La bonne nouvelle : la taille du document suit celle du projet. Pour un MVP simple, 3 à 5 pages bien structurées suffisent (contexte, cibles, fonctionnalités priorisées, contraintes, budget) ; un projet complexe monte à 15-20 pages. La règle des professionnels : deux pages bien rédigées valent mieux que cinquante pages mal structurées. Sans document, vous recevrez des devis incomparables : notre exemple pédagogique fait varier un même besoin formulé oralement de 3 000 à 80 000 € selon le périmètre imaginé. Cet écart illustre le risque ; ce n'est pas une statistique de marché.",
   },
   {
     question: "Doit-on indiquer un budget dans le cahier des charges ?",
@@ -131,12 +130,12 @@ const faqItems = [
   {
     question: "Combien de temps faut-il pour rédiger un cahier des charges ?",
     answer:
-      "Comptez 2 à 4 semaines de calendrier pour un porteur de projet qui avance par touches — 10 à 15 jours de travail réel pour un projet simple, 25 à 35 jours pour une application complexe avec intégrations. Un bon modèle fait gagner 1 à 2 semaines (c'est l'objet de ce guide). Ce temps n'est pas du retard : chaque arbitrage tranché à l'écrit évite des allers-retours de devis, des malentendus de développement et des dépassements — les dérives de 30 à 50 % du budget viennent presque toujours d'un périmètre resté flou au départ.",
+      "Comptez 2 à 4 semaines de calendrier pour un porteur de projet qui avance par touches — 10 à 15 jours de travail réel pour un projet simple, 25 à 35 jours pour une application complexe avec intégrations. Un bon modèle fait gagner 1 à 2 semaines (c'est l'objet de ce guide). Ce temps n'est pas du retard : chaque arbitrage tranché à l'écrit évite des allers-retours de devis, des malentendus de développement et des dépassements liés à un périmètre resté flou au départ.",
   },
   {
     question: "Comment protéger mon idée d'application avant d'en parler ?",
     answer:
-      "D'abord, une réalité juridique : une idée en soi n'est ni protégeable ni brevetable — ce qui se protège, c'est sa réalisation (le code, l'interface, la marque). Trois outils concrets : le NDA (accord de confidentialité), que les agences françaises sérieuses signent couramment — il n'empêche pas de penser, il engage juridiquement à ne pas divulguer ni s'approprier votre concept ; l'enveloppe e-Soleau de l'INPI (quelques dizaines d'euros), qui date officiellement vos maquettes et documents ; et le dépôt de marque si le nom compte. Le vrai secret des projets qui réussissent n'est d'ailleurs pas la confidentialité : c'est la vitesse d'exécution.",
+      "Une idée seule n'est pas protégée par le droit d'auteur ; ce sont ses expressions concrètes (code, maquettes, textes) qui peuvent l'être. Un brevet n'est envisageable que dans des cas techniques précis : faites vérifier ce point par l'INPI ou un conseil spécialisé. Trois outils restent utiles : un accord de confidentialité adapté, l'enveloppe e-Soleau de l'INPI pour dater des documents et le dépôt de marque si le nom compte. Ce cadre protège des éléments identifiables ; il ne remplace ni l'exécution ni un conseil juridique appliqué à votre projet.",
   },
   {
     question: "Faut-il lancer sur iOS et Android dès le départ ?",
@@ -151,17 +150,17 @@ const faqItems = [
   {
     question: "À qui appartiennent le code et les comptes développeur ?",
     answer:
-      "Par défaut… au prestataire, pour le code : en droit français, payer le développement ne transfère pas la propriété — il faut une clause de cession écrite et précise (droits énumérés, étendue, durée — article L131-3 du Code de la propriété intellectuelle), à exiger dès le cahier des charges. Pour les comptes développeur Apple (99 $/an) et Google Play (25 $ une fois) : ils doivent être ouverts au nom de votre entreprise, jamais à celui de l'agence — c'est votre identité sur les stores, avec l'historique et les avis attachés. Ces deux clauses transforment une dépendance en partenariat : écrivez-les noir sur blanc.",
+      "Payer le développement ne transfère pas, à lui seul, tous les droits patrimoniaux. Le contrat doit identifier les titulaires, les éléments créés pour le projet, les licences tierces et la cession ou licence adaptée à votre usage ; faites valider la clause juridiquement. Pour préserver la réversibilité, ouvrez de préférence les comptes développeur Apple et Google Play au nom de votre entreprise, avec des accès administrateurs documentés pour le prestataire. Écrivez ces choix dès le cahier des charges.",
   },
   {
     question: "Combien coûte une application mobile ?",
     answer:
-      "Les fourchettes françaises 2026 qui font consensus : 5 000 à 15 000 € pour un MVP simple, 15 000 à 45 000 € pour une application métier complète, 40 000 à 150 000 € et plus pour un projet complexe (marketplace, temps réel, intégrations lourdes) — la médiane constatée tourne autour de 30 000 €. Ajoutez les frais récurrents : comptes développeur (99 $/an Apple, 25 $ une fois Google), et surtout la maintenance (15 à 20 % du coût initial par an), imposée par les cycles annuels d'Apple et Google. Notre guide du prix d'une application mobile décortique tout, devis réel compris.",
+      "Comme ordres de grandeur éditoriaux pour 2026, ce guide retient 5 000 à 15 000 € pour un MVP simple, 15 000 à 45 000 € pour une application métier complète, 40 000 à 150 000 € et plus pour un projet complexe (marketplace, temps réel, intégrations lourdes). Ces repères viennent d'un recoupement non exhaustif de fourchettes publiques citées en sources : ils ne constituent ni un échantillon représentatif ni une médiane de marché. Ajoutez les frais récurrents : comptes développeur (99 $/an Apple, 25 $ une fois Google), et surtout la maintenance à chiffrer selon le périmètre. Notre guide du prix d'une application mobile détaille les postes avec un exemple de devis ligne par ligne.",
   },
   {
     question: "Qu'est-ce qu'un MVP et pourquoi commencer par là ?",
     answer:
-      "Le MVP (produit minimum viable) est la première version de votre application, volontairement réduite aux fonctionnalités qui prouvent la valeur — assez pour être utilisée par de vrais utilisateurs, assez peu pour sortir vite et à budget contenu. Les chiffres plaident massivement pour cette approche : 80 % des fonctionnalités d'un logiciel moyen sont rarement ou jamais utilisées (étude Pendo), 46 % des applications sont désinstallées dans les 30 jours, et l'absence de besoin marché est la première cause d'échec des startups. Construire petit, mesurer, puis élargir sur des preuves : c'est la méthode MoSCoW de la section 4 — et chez nous, un MVP est sur les stores dès 12 semaines.",
+      "Le MVP (produit minimum viable) est la première version de votre application, volontairement réduite aux fonctionnalités qui prouvent la valeur — assez pour être utilisée, assez peu pour sortir vite et à budget contenu. Les rapports Pendo et AppsFlyer cités dans ce guide observent, sur leurs propres échantillons, de la sous-utilisation et des désinstallations précoces ; ils illustrent un risque de sur-périmètre sans prédire votre application. Construire petit, mesurer, puis élargir sur des preuves reste donc une méthode prudente. Chez nous, un MVP peut viser les stores dès 12 semaines lorsque le périmètre le permet.",
   },
   {
     question: "Word ou PDF : sous quel format rédiger et envoyer le cahier des charges ?",
@@ -198,7 +197,7 @@ export default function Page() {
           { label: "Cahier des charges d'application mobile" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Le modèle en 10 sections commenté de l'intérieur par une agence mobile, l'exemple rempli de bout en bout, les règles Apple et Google chiffrées et traduites en clauses à écrire, la maintenance que les modèles concurrents oublient — et les 7 erreurs qui ajoutent 30 à 50 % à la facture finale."
+        heroDescription="Le modèle en 10 sections commenté de l'intérieur par une agence mobile, l'exemple rempli de bout en bout, les règles Apple et Google traduites en points à cadrer, la maintenance que les modèles concurrents oublient — et les 7 erreurs qui peuvent alourdir la facture finale."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -206,7 +205,7 @@ export default function Page() {
         }}
         updatedLabel={`Mis à jour le ${formatGuideDate(guide.dateModified)}`}
         keyPoints={[
-          { number: "01", title: "Même app : devis de 3 000 à 80 000 €", description: "", color: "violet" },
+          { number: "01", title: "Exemple : 3 000 à 80 000 €", description: "", color: "violet" },
           { number: "02", title: "10 sections + exemple rempli", description: "", color: "blue" },
           { number: "03", title: "Stores : les règles chiffrées", description: "", color: "emerald" },
           { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
@@ -223,13 +222,13 @@ export default function Page() {
         faqItems={faqItems}
       >
         <p className="lead">
-          Une agence française documente le cas sans le moindre
-          embarras : <strong>pour la même fonctionnalité, un devis à
-          3 000 € et un autre à 80 000 €</strong>. La différence
-          n&apos;est pas la malhonnêteté — c&apos;est
-          l&apos;interprétation d&apos;un besoin resté flou. Ce guide
-          donne le modèle en 10 sections, l&apos;exemple rempli, et les
-          règles des stores que 90 % des cahiers des charges ignorent.
+          Notre exemple pédagogique part d&apos;une même fonctionnalité
+          décrite oralement et montre comment deux périmètres imaginés
+          peuvent conduire à <strong>3 000 € ou 80 000 €</strong>. Ce
+          n&apos;est pas un écart de marché mesuré : il matérialise
+          l&apos;effet d&apos;un besoin resté flou. Ce guide donne le
+          modèle en 10 sections, l&apos;exemple rempli et les règles des
+          stores souvent oubliées dans un cahier des charges.
         </p>
 
         <GuideToc
@@ -256,14 +255,14 @@ export default function Page() {
           Un cahier des charges d&apos;application mobile est le
           document qui décrit ce que votre application doit faire, pour
           qui, avec quelles contraintes et quel budget. Sa fonction
-          économique tient en un chiffre : sans lui, les devis pour un
-          même projet varient <strong>du simple au triple, et jusqu&apos;à
-          l&apos;extrême documenté de 3 000 à 80 000 €</strong> pour la
-          même fonctionnalité — chaque prestataire chiffrant le projet
-          qu&apos;il imagine. Avec lui, les offres deviennent
-          comparables ligne à ligne, les dérives de périmètre (30 à
-          50 % de dépassement sur les projets flous) se préviennent au
-          lieu de se subir, et le document devient la base
+          économique tient dans la comparabilité : sans lui, chaque
+          prestataire chiffre le projet qu&apos;il imagine. Dans notre{" "}
+          <strong>scénario éditorial, un besoin oral conduit ainsi à des
+          hypothèses de 3 000 à 80 000 €</strong> ; cet ordre de grandeur
+          illustre l&apos;écart de périmètre, pas une distribution de devis
+          observée. Avec le document, les offres deviennent comparables
+          ligne à ligne, les dérives de périmètre se préviennent au lieu
+          de se subir, et le document devient la base
           contractuelle du projet. <strong>Dix pages bien structurées
           suffisent</strong> — ce guide vous les donne, section par
           section, avec un exemple rempli.
@@ -275,7 +274,7 @@ export default function Page() {
             <li><strong>MVP</strong> : la première version de l&apos;app, réduite à l&apos;essentiel pour sortir vite et apprendre.</li>
             <li><strong>MoSCoW</strong> : la méthode de priorisation — indispensable / important / souhaitable / exclu (pour l&apos;instant).</li>
             <li><strong>Stores</strong> : l&apos;App Store (Apple) et Google Play — les deux magasins, avec leurs règles et leurs commissions.</li>
-            <li><strong>Review</strong> : l&apos;examen de votre app par Apple ou Google avant publication — avec de vrais motifs de rejet.</li>
+            <li><strong>Examen (review)</strong> : le contrôle de votre application par Apple ou Google avant publication — avec de vrais motifs de rejet.</li>
             <li><strong>Wireframe (maquette fil de fer)</strong> : le plan schématique des écrans, avant le design — il va dans le CDC.</li>
             <li><strong>Notification push</strong> : le message envoyé sur l&apos;écran du téléphone — soumis à la permission de l&apos;utilisateur.</li>
             <li><strong>Mode hors-ligne</strong> : ce que l&apos;app sait faire sans réseau (chantier, parking souterrain, avion) — et comment elle se synchronise ensuite.</li>
@@ -289,7 +288,7 @@ export default function Page() {
         <h2 id="de-quoi-parle-t-on">2. Ce qui change par rapport à un site web</h2>
         <p>
           Si vous avez déjà utilisé notre{" "}
-          <Link href="/guides/cahier-des-charges-site-internet">modèle
+          <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle
           de cahier des charges de site internet</Link>, la structure
           vous sera familière — mais une application mobile ajoute
           cinq réalités qu&apos;aucun projet web ne connaît :{" "}
@@ -340,7 +339,7 @@ export default function Page() {
             ["5. Plateformes et versions", "iOS/Android, versions minimales supportées, justifiées", "Le « compatible avec tout » impossible à chiffrer"],
             ["6. Exigences mobiles", "Hors-ligne, notifications, permissions, liens directs", "Les découvertes en cours de route facturées en avenants"],
             ["7. Données et conformité", "RGPD, consentement (CNIL), sécurité, accessibilité", "La mise en conformité d'urgence après un refus ou un contrôle"],
-            ["8. Publication et stores", "Comptes (à VOTRE nom), review, commissions anticipées", "Le rejet de dernière minute et les comptes chez l'agence"],
+            ["8. Publication et stores", "Comptes (à VOTRE nom), examen, commissions anticipées", "Le rejet de dernière minute et les comptes chez l'agence"],
             ["9. Prestations, planning, maintenance", "Qui fait quoi, jalons, garantie, maintenance 15-20 %/an", "L'app abandonnée qui disparaît des stores"],
             ["10. Budget et critères d'acceptation", "Fourchette assumée, conditions mesurables de recette", "Les devis incomparables et les litiges de fin de projet"],
           ]}
@@ -363,6 +362,24 @@ export default function Page() {
           <li><strong>Budget</strong> : quelle fourchette assumez-vous, et quels critères mesurables déclencheront la recette ?</li>
         </ol>
 
+        <p>
+          Le document devient vraiment pilotable quand chacun sait ce
+          qu&apos;il doit apporter, proposer et valider. La répartition
+          ci-dessous évite deux impasses : un client sommé de choisir
+          une technologie qu&apos;il ne maîtrise pas, ou un prestataire
+          chargé de décider seul des priorités métier.
+        </p>
+        <GuideTable
+          headers={["Sujet", "Le client apporte et décide", "Le prestataire propose et livre", "La preuve de validation"]}
+          rows={[
+            ["Problème et utilisateurs", "Les situations réelles, les irritants et le résultat attendu", "La reformulation en parcours compréhensibles", "Objectifs et parcours relus par les personnes concernées"],
+            ["Périmètre", "Les priorités et ce qui restera hors de la première version", "Les impacts de chaque arbitrage sur le coût et le délai", "Liste MoSCoW figée et exclusions écrites"],
+            ["Solution technique", "Les contraintes existantes, le budget et les risques acceptables", "Une technologie justifiée par les besoins, avec ses limites", "Choix argumenté dans l'offre, pas imposé dans le cahier des charges"],
+            ["Acceptation", "Les scénarios à tester et l'autorisation finale de livrer", "Une version testable et la correction des écarts convenus", "Critères observables, compte rendu de recette et réserves nommées"],
+            ["Exploitation", "La propriété des comptes, les responsables internes et le niveau de service attendu", "La publication, la documentation et une offre de maintenance séparée", "Accès remis, code cédé selon le contrat et maintenance chiffrée"],
+          ]}
+        />
+
         <h2 id="remplir">4. Sections 1 à 5 : cadrer le besoin (MoSCoW et MVP)</h2>
         <p>
           Le cœur du document est la <strong>section 4, la
@@ -379,11 +396,11 @@ export default function Page() {
           version, écrit noir sur blanc</strong>. C&apos;est la clause
           anti-dérive : chaque « tant qu&apos;on y est » des mois
           suivants se confronte à cette liste plutôt qu&apos;au budget.
-          Les chiffres justifient la sévérité : 80 % des
-          fonctionnalités d&apos;un logiciel moyen sont rarement ou
-          jamais utilisées (étude Pendo sur 615 logiciels), et
-          l&apos;absence de besoin marché est la première cause
-          d&apos;échec des projets. Pour la section 5 (plateformes),
+          Le rapport Pendo cité en sources observe une forte
+          sous-utilisation sur son échantillon de 615 logiciels. Ce
+          résultat ancien illustre le risque de sur-périmètre sans
+          prédire votre produit ; la liste « Won&apos;t have » reste utile
+          parce qu&apos;elle rend chaque ajout arbitrable. Pour la section 5 (plateformes),
           appuyez-vous sur le parc réel plutôt que sur
           l&apos;intuition : supporter les deux dernières versions
           majeures d&apos;iOS couvre l&apos;essentiel des iPhone
@@ -452,7 +469,8 @@ export default function Page() {
           <strong>L&apos;accessibilité</strong> : depuis le 28 juin
           2025, la réglementation européenne s&apos;applique aux
           applications des services couverts (e-commerce, banque,
-          transport…) — critères WCAG 2.1 niveau AA. Reste la
+          transport…) — critères WCAG 2.1 niveau AA, le référentiel
+          international d&apos;accessibilité numérique. Reste la
           sécurité, quatrième sujet de la ligne 7 du modèle, expédié
           en une ligne de CDC : données chiffrées en transit et au
           repos, authentification proportionnée à la sensibilité des
@@ -465,22 +483,24 @@ export default function Page() {
 
         <h2 id="stores">7. La section stores : les règles Apple et Google, chiffrées</h2>
         <p>
-          Le sujet que 90 % des cahiers des charges ignorent — et le
-          tableau que vous ne trouverez nulle part ailleurs : chaque
-          règle des stores, traduite en clause à écrire dans votre
-          document.
+          Un sujet souvent absent des cahiers des charges : les règles
+          des stores et leur traduction concrète dans le document. Les
+          formulations proposées ci-dessous sont des <strong>exemples
+          indicatifs à adapter au périmètre</strong>, pas des clauses
+          prêtes à signer. Si elles sont reprises dans un contrat,
+          faites-les valider par un professionnel du droit.
         </p>
         <GuideTable
-          headers={["La règle du store", "Le chiffre", "La clause à écrire dans le CDC"]}
+          headers={["La règle du store", "Le chiffre", "Exemple indicatif à adapter et faire valider"]}
           rows={[
             ["Comptes développeur", "Apple : 99 $/an · Google : 25 $ une fois", "« Comptes ouverts au nom de [votre entreprise], l'agence intervenant comme membre invité »"],
             ["Examen avant publication", "90 % des soumissions Apple examinées en moins de 24 h ; 1,93 million de rejets en 2024", "« Le prestataire gère les soumissions et corrige les motifs de rejet jusqu'à publication »"],
-            ["Complétude exigée (guideline 2.1)", "Plus de 40 % des blocages en review : app incomplète, crashs, contenus factices", "« La V1 livrée est complète et testée — pas de version démo soumise »"],
-            ["Valeur d'app exigée (guideline 4.2)", "Les sites web encapsulés sont refusés", "« L'app offre une expérience native : navigation, notifications, hors-ligne »"],
+            ["Complétude exigée (règle 2.1)", "Plus de 40 % des blocages à l'examen : application incomplète, plantages, contenus factices", "« La V1 livrée est complète et testée — pas de version démo soumise »"],
+            ["Valeur d'app exigée (règle 4.2)", "Les sites web encapsulés sont refusés", "« L'app offre une expérience native : navigation, notifications, hors-ligne »"],
             ["Test fermé Google Play (comptes personnels créés depuis le 13 nov. 2023)", "12 testeurs pendant 14 jours avant production", "« Compte d'organisation utilisé » (non soumis à cette règle — un vrai argument pro-structure)"],
             ["Commissions sur ventes numériques", "15 % jusqu'à 1 M$/an, 30 % au-delà (Apple : sur inscription au Small Business Program ; Google : nouvelle grille annoncée en 2026)", "« Le modèle économique intègre la commission dans les prix » (biens physiques : non concernés)"],
-            ["Suppression de compte obligatoire", "Exigée par Apple (guideline 5.1.1) et Google Play dès que l'app permet d'en créer un", "« L'app permet la suppression du compte et des données depuis l'app elle-même » — une fonctionnalité à chiffrer"],
-            ["Connexion tierce (Google, Facebook…)", "Apple exige alors une option de connexion respectueuse de la vie privée (guideline 4.8)", "« Si une connexion sociale est proposée, Sign in with Apple est intégré » — motif de rejet classique"],
+            ["Suppression de compte obligatoire", "Exigée par Apple (règle 5.1.1) et Google Play dès que l'app permet d'en créer un", "« L'app permet la suppression du compte et des données depuis l'app elle-même » — une fonctionnalité à chiffrer"],
+            ["Connexion tierce (Google, Facebook…)", "Apple exige alors une option de connexion respectueuse de la vie privée (règle 4.8)", "« Si une connexion sociale est proposée, Sign in with Apple est intégré » — motif de rejet classique"],
           ]}
         />
         <p>
@@ -500,11 +520,13 @@ export default function Page() {
           externes), les pistes de test internes et fermées chez
           Google Play — qui mettent la version candidate entre les
           mains de vrais utilisateurs, sur leurs vrais téléphones,
-          avant le grand public. La clause à écrire : « la recette se
-          déroule sur les circuits de test officiels des stores, avec
-          un accès pour les testeurs désignés par le client » — et non
-          sur des fichiers d&apos;installation échangés par email,
-          pratique fragile et non conforme aux conditions des stores.
+          avant le grand public. Exemple de formulation indicative à
+          adapter au projet — et à faire valider juridiquement si elle
+          entre au contrat : « la recette se déroule sur les circuits
+          de test officiels des stores, avec un accès pour les testeurs
+          désignés par le client ». Cela évite les fichiers
+          d&apos;installation échangés par email, pratique fragile et non
+          conforme aux conditions des stores.
           C&apos;est aussi le meilleur moment pour dérouler vos
           critères d&apos;acceptation de la section 10, écran par
           écran.
@@ -514,6 +536,7 @@ export default function Page() {
           title="Un cahier des charges à faire relire — ou à construire en atelier ?"
           description="Envoyez-nous votre projet ou votre brouillon en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc sur le périmètre, une fourchette argumentée — et notre Discovery Sprint transforme le tout en CDC complet, maquettes et devis au forfait fixe en 2 jours."
           tags={["Réponse sous 24 h ouvrées", "MVP sur les stores dès 12 semaines", "Comptes stores à votre nom, code cédé"]}
+          ctaLabel="Faire relire mon périmètre"
         />
 
         <h2 id="maintenance">8. La maintenance : la section que tous les modèles oublient</h2>
@@ -534,7 +557,7 @@ export default function Page() {
           « abandonnées » encombraient encore les stores en sursis. Le
           budget qui découle : <strong>15 à 20 % du coût de
           développement par an</strong>, à écrire dans la section 9 du
-          modèle avec son contenu (mises à jour OS, correctifs,
+          modèle avec son contenu (mises à jour des systèmes iOS et Android, correctifs,
           surveillance) et sa gouvernance (qui décide, qui paie, sous
           quel délai). Un prestataire qui ne provisionne pas ce poste
           dans son offre ne vous vend pas une application : il vous
@@ -542,8 +565,9 @@ export default function Page() {
           notre offre{" "}
           <Link href="/services/application-mobile">application
           mobile</Link> chiffre la maintenance annuelle dès le devis
-          initial. La clause à recopier dans la
-          section 9 de votre document : « Le devis inclut une offre de
+          initial. Exemple indicatif pour la section 9, à adapter à vos
+          responsabilités et à faire valider juridiquement avant toute
+          reprise contractuelle : « Le devis inclut une offre de
           maintenance annuelle chiffrée séparément, couvrant les mises
           à jour imposées par les cycles Apple et Google, les
           correctifs et la surveillance, avec un délai
@@ -563,14 +587,14 @@ export default function Page() {
           headers={["Section", "Fleurs d'Aix — condensé"]}
           rows={[
             ["1. Contexte, objectifs", "3 boutiques, 40 % d'appels pour commander. Objectifs : 30 % des commandes via l'app en 12 mois, -50 % d'appels, panier moyen +10 %"],
-            ["2. Cibles", "Clients fidèles 30-65 ans (persona « Sophie, 42 ans, commande pour les anniversaires ») ; entreprises locales (bouquets hebdo)"],
+            ["2. Cibles", "Clients fidèles 30-65 ans (profil type « Sophie, 42 ans, commande pour les anniversaires ») ; entreprises locales (bouquets hebdo)"],
             ["3. Parcours clés", "Commander un bouquet (catalogue → personnalisation → boutique → paiement) ; suivre « prêt à retirer » (notification) ; commande récurrente pro"],
             ["4. MoSCoW", "MUST : catalogue, commande, paiement, notifications, back-office simple (l'écran de gestion des commandes côté boutique). SHOULD : comptes fidélité. COULD : abonnement hebdo pro. WON'T (V1) : livraison à domicile, chat, parrainage"],
             ["5. Plateformes", "iOS (2 dernières versions majeures) + Android (version minimale justifiée par le parc clients) — multiplateforme accepté, technologie proposée par le prestataire"],
             ["6. Exigences mobiles", "Hors-ligne : consultation du catalogue uniquement. Push : permission demandée à la 1re commande, pas à l'ouverture. Deep links : promotions saisonnières"],
             ["7. Données", "Compte client minimal (email, tél), CMP pour la mesure d'audience, données hébergées UE, politique de confidentialité fournie par nous"],
             ["8. Stores", "Comptes Apple/Google au nom de Fleurs d'Aix SARL. Biens physiques : pas de commission stores sur les ventes. Fiche store rédigée par le prestataire"],
-            ["9. Prestations, maintenance", "Design + dev + recette + publication. Garantie corrective exigée au devis (30 à 90 jours constatés selon les prestataires). Maintenance : forfait annuel chiffré au devis (cible : ~15 %/an), mises à jour OS comprises"],
+            ["9. Prestations, maintenance", "Design + dev + recette + publication. Garantie corrective exigée au devis (30 à 90 jours constatés selon les prestataires). Maintenance : forfait annuel chiffré au devis (cible : ~15 %/an), mises à jour iOS et Android comprises"],
             ["10. Budget, acceptation", "Fourchette annoncée : 20 000 – 28 000 €. Acceptation : parcours de commande complet en boutique réelle, chargement < 2 s sur mobile milieu de gamme, 0 bug bloquant"],
           ]}
         />
@@ -587,17 +611,19 @@ export default function Page() {
           transforme la recette de « discussion » en « constat ».
         </p>
         <p>
-          Épilogue du fil rouge — et démonstration finale de
-          l&apos;utilité du document : Fleurs d&apos;Aix envoie ce PDF
+          Suite illustrative du fil rouge : ce scénario reste une
+          simulation pédagogique, pas un retour client. Fleurs
+          d&apos;Aix envoie ce PDF
           de neuf pages à trois prestataires, avec la même fourchette.
           Les trois devis reviennent entre 19 500 et 26 800 €,
           comparables ligne à ligne, jours par poste, maintenance
           chiffrée — et se départagent sur les critères
           d&apos;acceptation, pas sur le prix seul. Sans le document,
-          rappelez-vous le point de départ de ce guide : pour un même
-          besoin décrit oralement, l&apos;écart constaté va de 3 000 à
-          80 000 €. Le cahier des charges n&apos;a pas seulement cadré
-          le projet — il a rendu la concurrence possible.
+          rappelez-vous le point de départ de ce guide : notre scénario
+          éditorial fait varier un même besoin oral de 3 000 à 80 000 €
+          selon le périmètre imaginé. Ce n&apos;est pas une statistique de
+          marché. Le cahier des charges n&apos;a pas seulement cadré le
+          projet — il a rendu la concurrence possible.
         </p>
 
         <h2 id="budget">10. La section budget : pourquoi (et comment) annoncer sa fourchette</h2>
@@ -606,36 +632,38 @@ export default function Page() {
           logique du marché. Ne pas annoncer de budget ne le protège
           pas : cela garantit des devis incomparables, chaque
           prestataire imaginant un projet différent (relire
-          l&apos;écart 3 000 – 80 000 €). Annoncer une fourchette
+          l&apos;exemple pédagogique à 3 000 – 80 000 €). Annoncer une fourchette
           honnête <em>filtre</em> : à 10 000 €, un prestataire sérieux
           propose un MVP resserré ; à 40 000 €, une application
           complète — et celui qui promet la totale à 8 000 € se
           disqualifie de lui-même. Pour calibrer votre fourchette,
-          les repères français 2026 : <strong>5 000 à 15 000 € pour
+          voici des ordres de grandeur éditoriaux 2026 : <strong>5 000 à 15 000 € pour
           un MVP simple, 15 000 à 45 000 € pour une application
           métier complète, 40 000 à 150 000 € et plus pour un projet
-          complexe</strong> — médiane constatée autour de 30 000 €,
-          maintenance (15-20 %/an) et budget de lancement marketing en
-          sus. Le détail poste par poste, devis réel décortiqué
-          compris, est dans notre{" "}
+          complexe</strong>. Ils viennent d&apos;un recoupement non
+          exhaustif des fourchettes publiques citées en sources, sans
+          échantillon représentatif ni médiane de marché. Maintenance et
+          budget de lancement marketing sont à chiffrer en sus. Notre{" "}
           <Link href="/guides/combien-coute-une-application-mobile">guide
-          du prix d&apos;une application mobile</Link> — les deux
+          du prix d&apos;une application mobile</Link> détaille les
+          postes et montre un devis ligne à ligne. Les deux
           documents sont faits pour être utilisés ensemble. Dernier
           réflexe de calibrage : raisonnez en <strong>coût total sur
-          trois ans</strong> — comptez 1,5 à 1,8 fois le budget de
-          développement une fois ajoutés la maintenance,
-          l&apos;hébergement du back-end et les comptes développeur —
-          et écrivez ce chiffre dans le document : c&apos;est lui, pas
-          le devis initial, que votre trésorerie rencontrera.
+          trois ans</strong>. Additionnez séparément développement,
+          maintenance chiffrée au devis, hébergement du back-end, comptes
+          développeur, support et évolutions. Il n&apos;existe pas de
+          multiplicateur universel : écrivez vos hypothèses dans le document,
+          car c&apos;est ce total — pas le devis initial — que votre trésorerie
+          rencontrera.
         </p>
 
         <h2 id="erreurs">11. Les 7 erreurs qui coûtent cher</h2>
         <ul>
           <li>
             <strong>Le périmètre-cathédrale.</strong> 80 fonctionnalités
-            « toutes indispensables » : impossible à chiffrer, voué à
-            l&apos;abandon — 80 % des fonctionnalités d&apos;un
-            logiciel ne servent presque jamais. Le MoSCoW est votre
+            « toutes indispensables » rendent le chiffrage et la validation
+            difficiles. Le rapport Pendo cité illustre le risque de
+            sous-utilisation sur son échantillon ; le MoSCoW est votre
             garde-fou.
           </li>
           <li>
@@ -647,10 +675,10 @@ export default function Page() {
           </li>
           <li>
             <strong>Oublier le marketing.</strong> Une app ne se
-            découvre pas toute seule : l&apos;acquisition coûte 2 à
-            4 $ par installation en Europe, et un lancement sérieux se
-            budgète à part — le poste absent de 100 % des modèles
-            concurrents, et de la plupart des business plans.
+            découvre pas toute seule. Acquisition, contenus, support et
+            animation du lancement se budgètent à part ; vérifiez que ce
+            poste existe dans votre plan, même s&apos;il ne relève pas du devis
+            de développement.
           </li>
           <li>
             <strong>Cacher le budget.</strong> Voir section 10 — la
@@ -658,17 +686,21 @@ export default function Page() {
             l&apos;inverse : des offres incomparables.
           </li>
           <li>
-            <strong>Zapper la maintenance.</strong> 15-20 %/an imposés
-            par les cycles Apple/Google — sans cette ligne, votre app
-            a une date de péremption (section 8).
+            <strong>Zapper la maintenance.</strong> Notre simulation retient
+            15-20 %/an comme hypothèse de départ, à remplacer par le chiffrage
+            du prestataire. Les cycles Apple/Google rendent une ligne de
+            maintenance nécessaire, pas ce pourcentage universel (section 8).
           </li>
           <li>
-            <strong>Négliger la propriété.</strong> Code sans clause de
-            cession écrite = code du prestataire (article L131-3 du
-            Code de la propriété intellectuelle) ; comptes stores au
-            nom de l&apos;agence = identité captive. Deux lignes de
-            CDC les évitent — les voici, à recopier : « Le prestataire
-            cède au client, au fur et à mesure des paiements,
+            <strong>Négliger les droits et les accès.</strong> Le paiement ne
+            transfère pas seul les droits patrimoniaux. Faites inventorier
+            titulaires et licences, prévoir la cession ou licence adaptée,
+            puis valider la clause juridiquement. Ouvrez de préférence les
+            comptes stores au nom de votre entreprise. Les formulations qui
+            suivent sont des exemples indicatifs, à adapter et à faire
+            valider par un professionnel du droit avant de les intégrer
+            à un contrat : « Le prestataire cède au client, au fur et à
+            mesure des paiements,
             l&apos;ensemble des droits patrimoniaux (reproduction,
             représentation, adaptation) sur les développements
             réalisés, pour toute la durée légale des droits et pour
@@ -686,6 +718,22 @@ export default function Page() {
             y répond en détail).
           </li>
         </ul>
+
+        <InfoBox variant="amber" title="Les signaux d&apos;alerte dans une réponse de prestataire">
+          <ul className="list-disc pl-4 space-y-1.5">
+            <li>la technologie est annoncée avant toute question sur vos utilisateurs et vos parcours ;</li>
+            <li>l&apos;offre promet « tout le cahier des charges » sans reformuler les exclusions ni les hypothèses ;</li>
+            <li>le devis regroupe conception, développement, publication et maintenance dans une ligne impossible à comparer ;</li>
+            <li>la recette se résume à « l&apos;application fonctionne », sans scénarios ni critères observables ;</li>
+            <li>la propriété du code, des comptes stores ou des accès n&apos;est pas écrite ;</li>
+            <li>la maintenance et la prise en charge d&apos;un rejet par les stores restent hors périmètre.</li>
+          </ul>
+          <p>
+            Ces signaux ne condamnent pas automatiquement une offre.
+            Ils indiquent les questions à faire trancher par écrit
+            avant de comparer les montants.
+          </p>
+        </InfoBox>
 
         <h2 id="process">12. Qui rédige, en combien de temps, pour combien</h2>
         <p>
@@ -714,6 +762,15 @@ export default function Page() {
           pas le secret.
         </p>
 
+        <GuideTable
+          headers={["Mode de rédaction", "Pertinent si…", "Ce que vous devez garder en main", "Point de vigilance"]}
+          rows={[
+            ["Seul avec un modèle", "Le périmètre est lisible et les décideurs peu nombreux", "Les arbitrages, les exclusions et la version modifiable", "Faire relire les contraintes mobiles avant consultation"],
+            ["Avec un consultant indépendant", "Les intégrations ou les parties prenantes rendent le cadrage complexe", "La décision finale sur les priorités et le budget", "Vérifier que le document reste compréhensible sans son auteur"],
+            ["En atelier avec l'agence", "Vous voulez relier cadrage, maquettes et chiffrage", "Le document, les maquettes, les hypothèses et les exclusions", "Ne pas confondre atelier utile et engagement automatique sur la construction"],
+          ]}
+        />
+
         <h2 id="declinaisons">13. App web, PWA, SaaS : ce qui change au cahier des charges</h2>
         <p>
           Votre projet est peut-être une application <em>web</em> —
@@ -721,7 +778,7 @@ export default function Page() {
           ligne, facturé par abonnement) plutôt qu&apos;une app des
           stores. Le modèle reste valable à 80 % ;
           voici les sections à permuter. <strong>Exit la section
-          stores</strong> (pas de comptes développeur, pas de review,
+          stores</strong> (pas de comptes développeur, pas d&apos;examen,
           pas de commission — l&apos;économie et la liberté sont
           réelles) ; à la place, une section{" "}
           <strong>navigateurs et écrans</strong> : quels navigateurs
@@ -733,7 +790,8 @@ export default function Page() {
           installées). <strong>Le SaaS</strong> ajoute ses sections
           propres : hébergement et localisation des données (France/UE
           — l&apos;argument RGPD), rôles et permissions
-          multi-utilisateurs, intégrations tierces (paiement, CRM,
+          multi-utilisateurs, intégrations tierces (paiement, CRM —
+          l&apos;outil de gestion commerciale —,
           facturation) et critères de disponibilité — le cadre exact de
           nos projets{" "}
           <Link href="/services/saas-applications-metier">SaaS et
@@ -746,13 +804,27 @@ export default function Page() {
           guide s&apos;applique à l&apos;identique.
         </p>
 
+        <p>
+          Si vous hésitez encore sur la forme du produit, ne forcez pas
+          la réponse dans le titre du document. Comparez d&apos;abord le
+          mode d&apos;accès dont les utilisateurs ont réellement besoin :
+        </p>
+        <GuideTable
+          headers={["Option", "Accès pour l'utilisateur", "Ce que le cahier des charges doit surtout cadrer", "Vigilance"]}
+          rows={[
+            ["Application mobile distribuée par les stores", "Installation depuis l'App Store ou Google Play", "Permissions, hors-ligne, publication, comptes et maintenance", "Examen des stores et cycles de mise à jour"],
+            ["PWA, le site installable", "Navigateur, puis ajout possible sur l'écran d'accueil", "Navigateurs, installation, comportement hors-ligne et notifications", "Limites sur iPhone décrites dans le document"],
+            ["Application web ou SaaS", "Navigateur, sans passage par les stores", "Tailles d'écran, rôles, données, intégrations et disponibilité", "Ne pas recopier des exigences de stores qui ne s'appliquent pas"],
+          ]}
+        />
+
         <InfoBox variant="emerald" title="À retenir : les 5 chiffres de ce guide">
           <ul className="list-disc pl-4 space-y-1.5">
-            <li><strong>3 000 → 80 000 €</strong> : l&apos;écart de devis documenté pour une même fonctionnalité mal décrite — la raison d&apos;être du cahier des charges.</li>
+            <li><strong>3 000 → 80 000 €</strong> : l&apos;ordre de grandeur de notre scénario pédagogique pour une même fonctionnalité mal décrite — une illustration, pas une donnée de marché.</li>
             <li><strong>10 sections, ~10 pages</strong> : le format qui suffit — 60 % du volume sur les fonctionnalités et parcours.</li>
-            <li><strong>99 $/an + 25 $</strong> : les comptes développeur Apple et Google — à ouvrir au nom de VOTRE entreprise, jamais de l&apos;agence.</li>
-            <li><strong>15 – 20 %/an</strong> : la maintenance imposée par les cycles des stores — la section que tous les modèles concurrents oublient.</li>
-            <li><strong>80 %</strong> : la part des fonctionnalités rarement ou jamais utilisées d&apos;un logiciel moyen — l&apos;argument définitif du MVP et du « WON&apos;T » écrit.</li>
+            <li><strong>99 $/an + 25 $</strong> : les comptes développeur Apple et Google — à ouvrir de préférence au nom de votre entreprise pour préserver la réversibilité.</li>
+            <li><strong>15 – 20 %/an</strong> : l&apos;hypothèse de maintenance de notre simulation, à remplacer par un forfait adapté au périmètre.</li>
+            <li><strong>80 %</strong> : le résultat du rapport Pendo sur son échantillon — un signal de sur-périmètre, pas une prédiction pour votre application.</li>
           </ul>
         </InfoBox>
 
@@ -767,10 +839,12 @@ export default function Page() {
           <li>
             <strong>Passez les sections 5 à 8 de votre document avec
             ce guide ouvert</strong> — plateformes, exigences mobiles,
-            conformité, stores : les clauses entre guillemets du
-            tableau des stores (partie 7 de ce guide) se recopient
-            telles quelles, exigences mobiles et conformité
-            (parties 5 et 6) se traduisent en une ligne chacune.
+            conformité, stores : les formulations entre guillemets du
+            tableau des stores (partie 7) servent de base indicative.
+            Adaptez-les au projet et faites valider juridiquement tout
+            texte repris dans le contrat ; exigences mobiles et
+            conformité (parties 5 et 6) se traduisent en une ligne
+            chacune.
           </li>
           <li>
             <strong>Assumez la section budget</strong> — fourchette
@@ -789,6 +863,24 @@ export default function Page() {
             engagement mesurable est la plus chère des trois.
           </li>
         </ol>
+
+        <InfoBox variant="blue" title="Votre dossier est prêt à partir si…">
+          <ul className="list-disc pl-4 space-y-1.5">
+            <li>le problème, les utilisateurs et les parcours peuvent être compris sans explication orale ;</li>
+            <li>chaque fonctionnalité est priorisée et les exclusions de la première version sont écrites ;</li>
+            <li>les croquis des écrans clés montrent aussi les erreurs, les refus de permission et l&apos;absence de réseau ;</li>
+            <li>les responsabilités du client et du prestataire sont séparées ;</li>
+            <li>le budget distingue construction, publication, exploitation et maintenance ;</li>
+            <li>la propriété du code, des comptes et des accès est explicite ;</li>
+            <li>la recette repose sur des scénarios et des résultats observables ;</li>
+            <li>le PDF envoyé est daté, tandis que sa version modifiable reste votre document de travail.</li>
+          </ul>
+          <p>
+            Si un point manque, ajoutez-le avant l&apos;envoi. Vous
+            recevrez moins d&apos;hypothèses cachées et des réponses
+            plus faciles à comparer.
+          </p>
+        </InfoBox>
         <p>
           Et si vous préférez construire le document à deux : notre{" "}
           <strong>Discovery Sprint (1 500 €, 2 jours, déduit à 100 %
@@ -824,7 +916,8 @@ export default function Page() {
           81 %/51 % — médianes) ; benchmarks d&apos;adoption iOS
           (chiffres officiels Apple relayés par TechCrunch) ;
           Légifrance (art. L111-1 et L131-3 CPI) ; méthode MoSCoW (Dai
-          Clegg, 1994) ; écarts de devis et fourchettes 2026 :
+          Clegg, 1994) ; ordres de grandeur éditoriaux sur les devis et
+          budgets 2026, issus d&apos;un recoupement non exhaustif :
           FirstApp, WebTech, La Fabrique du Net, MaxApp, TikupMedia,
           Aquilapp (recoupements) ; European Accessibility Act
           (directive 2019/882, EN 301 549). Les règles des stores
@@ -832,11 +925,13 @@ export default function Page() {
         </p>
         <p className="text-sm">
           <em>
-            Ce modèle et ces fourchettes sont fournis à titre
-            indicatif : seul un devis établi sur votre périmètre vous
-            engage. Le volet juridique (cession de droits, NDA,
-            clauses) ne constitue pas un conseil juridique
-            personnalisé — pour un contrat, consultez un avocat. App
+            Ce modèle, ses scénarios et ses fourchettes sont fournis à
+            titre indicatif : seul un devis établi sur votre périmètre
+            vous engage. Les formulations contractuelles entre
+            guillemets sont des exemples à adapter, pas des clauses à
+            recopier. Le volet juridique (cession de droits, NDA,
+            clauses) ne constitue pas un conseil juridique personnalisé
+            — avant intégration à un contrat, consultez un avocat. App
             Store et TestFlight sont des marques d&apos;Apple ; Google
             Play est une marque de Google.
           </em>

@@ -2,7 +2,9 @@
 
 Site de l'agence HAGNÉRÉ CODE SAS ([hagnere-code.ai](https://hagnere-code.ai)) :
 pages services, études de cas, guides, outils, et funnel de démarrage de projet.
-Next.js 16 (App Router) déployé sur Cloudflare Workers via OpenNext.
+Next.js 16 (App Router) déployé sur Vercel (projet `hagnere-code`, région
+`cdg1`). Une chaîne Cloudflare Workers / OpenNext reste outillée dans le dépôt
+comme porte de sortie, mais elle n'est pas la cible de production actuelle.
 
 ## Stack
 
@@ -10,8 +12,17 @@ Next.js 16 (App Router) déployé sur Cloudflare Workers via OpenNext.
 - **Base de données** : PostgreSQL (Neon) via Drizzle ORM
 - **Emails** : Resend (formulaire contact + funnel projet)
 - **Dictée vocale** : Groq Whisper (`/api/transcribe`)
-- **Anti-bot** : Cloudflare Turnstile + honeypot + rate-limit Postgres-backed
-- **Hébergement** : Cloudflare Workers (`@opennextjs/cloudflare` + Wrangler)
+- **Anti-bot** : question de calcul maison (`MathChallenge`) + honeypot + rate-limit Postgres-backed
+- **Hébergement** : Vercel (production). Alternative outillée mais non active :
+  Cloudflare Workers (`@opennextjs/cloudflare` + Wrangler, scripts `cf:*`)
+- **Mesure d'audience** : Vercel Analytics (`@vercel/analytics`, sans cookies).
+  Dépend de l'hébergement Vercel : le script et le endpoint de collecte sont
+  servis en same-origin sous un chemin anti-adblock généré par la plateforme
+  (`/<hash>/script.js` et `/<hash>/view`), ce qui les fait passer sous les
+  directives `script-src 'self'` / `connect-src 'self'` de la CSP. **Un
+  basculement vers Cloudflare Workers casserait la mesure** : ces endpoints
+  n'existeraient plus, et le repli `va.vercel-scripts.com` n'est pas autorisé
+  dans la CSP. Dans ce cas, remplacer par Plausible (déjà pré-autorisé)
 
 ## Commandes
 
@@ -40,12 +51,12 @@ npm run cf:deploy        # déploiement Cloudflare
 | `CONTACT_TO_EMAIL` | Destinataire interne des formulaires |
 | `CONTACT_FROM_EMAIL` | Expéditeur Resend (domaine DKIM-validé) |
 | `GROQ_API_KEY` | Transcription audio Whisper (`/api/transcribe`) |
-| `TURNSTILE_SECRET_KEY` | Vérification Turnstile côté serveur (fail-closed en prod) |
-| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Widget Turnstile côté client |
 | `NEXT_PUBLIC_ENV` | `production` active l'indexation (sinon `noindex`) |
 
-En local : `.env.local` (jamais commité). En prod : `wrangler secret put` ou l'UI
-Cloudflare (`NEXT_PUBLIC_ENV` est déclaré dans `wrangler.jsonc`).
+En local : `.env.local` (jamais commité). En prod : variables d'environnement du
+projet Vercel (Settings → Environment Variables). `NEXT_PUBLIC_ENV` doit y être
+défini à `production` — il est aussi déclaré dans `wrangler.jsonc`, mais ce
+fichier ne sert que la chaîne Cloudflare non active.
 
 ## Architecture
 

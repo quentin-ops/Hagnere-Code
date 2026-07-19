@@ -51,7 +51,7 @@ Pour toute audience B2C : **consentement explicite, libre, éclairé, spécifiqu
 ### Template minimum (footer email)
 
 ```
-HAGNÉRÉ CODE SAS — 7 rue Ernest Filliard, 73000 Chambéry
+HAGNÉRÉ CODE SAS — 82 impasse de Bellevue, 73000 Bassens
 Vous recevez cet email parce que vous nous avez contactés via hagnere-code.fr.
 Politique de confidentialité : https://hagnere-code.fr/legal/confidentialite
 Se désinscrire : {{unsubscribe_link}}

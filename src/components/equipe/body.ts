@@ -40,7 +40,7 @@ ${navHtml}
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Pas de pool anonyme</span>
         <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Studio à Chambéry</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Studio à Bassens</span>
       </div>
     </div>
 
@@ -49,7 +49,7 @@ ${navHtml}
       <div class="emos-frame">
         <div class="emos-header">
           <div class="emos-header-l"><span class="dot"></span> L'équipe complète</div>
-          <div class="emos-header-r">ÉQUIPE NOMMÉE · CHAMBÉRY</div>
+          <div class="emos-header-r">ÉQUIPE NOMMÉE · BASSENS</div>
         </div>
         <div class="emos">
           <a class="emos-card emos-founder" href="#fondateur" aria-label="Voir Quentin Hagnéré">
@@ -914,7 +914,7 @@ ${navHtml}
               POSTE OUVERT · PROCHAIN CYCLE
             </div>
             <div class="rec-job-name">Designer produit / UX senior</div>
-            <div class="rec-job-meta">CDI · Chambéry · 5+ ans · Figma + design system</div>
+            <div class="rec-job-meta">CDI · Bassens · 5+ ans · Figma + design system</div>
           </div>
           <div class="rec-job">
             <div class="rec-job-status soon">
@@ -922,7 +922,7 @@ ${navHtml}
               PIPELINE · PROCHAINEMENT
             </div>
             <div class="rec-job-name">Senior Dev — Front-end React/Next</div>
-            <div class="rec-job-meta">CDI · Chambéry · 5+ ans · React + TypeScript + Next.js</div>
+            <div class="rec-job-meta">CDI · Bassens · 5+ ans · React + TypeScript + Next.js</div>
           </div>
         </div>
       </div>
@@ -931,7 +931,7 @@ ${navHtml}
         <div class="rec-cta-card">
           <div class="rec-cta-tag">CANDIDATURES SPONTANÉES</div>
           <h4>Vous ne trouvez pas votre poste ?</h4>
-          <p>Si vous êtes <b>5+ ans d'expérience</b>, basé(e) ou prêt(e) à venir à Chambéry, et aligné(e) avec nos valeurs, on étudie votre CV.</p>
+          <p>Si vous êtes <b>5+ ans d'expérience</b>, basé(e) ou prêt(e) à venir à Bassens, et aligné(e) avec nos valeurs, on étudie votre CV.</p>
           <a href="mailto:quentin@hagnere-patrimoine.fr?subject=Candidature%20spontan%C3%A9e" class="btn btn-accent">
             Envoyer ma candidature
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -946,7 +946,7 @@ ${navHtml}
             <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Goût pour le craft &amp; les bons outils</li>
             <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Capacité à communiquer avec des non-techs</li>
             <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Envie de bosser en équipe restreinte</li>
-            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Basé / prêt à venir à Chambéry</li>
+            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Basé / prêt à venir à Bassens</li>
           </ul>
         </div>
       </div>
@@ -1058,7 +1058,7 @@ ${navHtml}
             <b>Toujours</b> pour des profils alignés. Le prochain recrutement prévu
             est un <b>Designer produit / UX senior</b>. Les candidatures spontanées sont étudiées
             sous 5 jours ouvrés à <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a> —
-            uniquement profils 5+ ans d'expérience, basés ou prêts à venir à Chambéry.
+            uniquement profils 5+ ans d'expérience, basés ou prêts à venir à Bassens.
             On répond systématiquement, même si c'est négatif.
           </div>
         </div>

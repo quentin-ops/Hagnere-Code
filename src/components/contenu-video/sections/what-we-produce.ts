@@ -199,7 +199,7 @@ export const whatWeProduceHtml = `
           <div class="cv-prod-kind">Product video e-commerce</div>
         </div>
         <h3 class="cv-prod-title">Packshot + <em>story vidéo</em>.</h3>
-        <p class="cv-prod-desc">Studio Chambéry, fond blanc ou scène éditoriale, vidéo 15s optimisée Amazon/Shopify. Formats natifs pour chaque canal, déclinaison PDP + square + vertical.</p>
+        <p class="cv-prod-desc">Studio de Bassens, fond blanc ou scène éditoriale, vidéo 15s optimisée Amazon/Shopify. Formats natifs pour chaque canal, déclinaison PDP + square + vertical.</p>
 
         <div class="cv-prod-ecom-canvas" aria-hidden="true">
           <div class="cv-prod-ecom-grid">

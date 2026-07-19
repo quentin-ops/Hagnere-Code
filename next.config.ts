@@ -1,5 +1,18 @@
 import type { NextConfig } from "next";
 import path from "node:path";
+import { DOWNLOADABLE_RESOURCES } from "./src/lib/resources";
+import { WHITE_PAPERS } from "./src/lib/white-papers";
+
+const scriptSources = [
+  "'self'",
+  "'unsafe-inline'",
+  ...(process.env.NODE_ENV !== "production" ? ["'unsafe-eval'"] : []),
+  "https://calendly.com",
+  "https://*.calendly.com",
+  "https://www.googletagmanager.com",
+  "https://plausible.io",
+  "https://eu.posthog.com",
+].join(" ");
 
 const securityHeaders = [
   {
@@ -33,8 +46,8 @@ const securityHeaders = [
     // Content-Security-Policy :
     // - script-src : self + Calendly + GTM/Plausible/PostHog (analytics
     //   futurs) + 'unsafe-inline' pour les JSON-LD inline.
-    //   `'unsafe-eval'` retiré (aucune lib ne l'utilise dans le bundle
-    //   actuel) → bloque eval() / new Function() en cas d'XSS.
+    //   `'unsafe-eval'` reste limité au serveur de développement, car le
+    //   rafraîchissement React en dépend. Il est absent du build public.
     // - frame-src : Calendly inline embed.
     // - connect-src : self + APIs externes que la page appelle.
     //   Ajoute Calendly et Cloudflare R2.
@@ -45,12 +58,12 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://calendly.com https://*.calendly.com https://www.googletagmanager.com https://plausible.io https://eu.posthog.com https://challenges.cloudflare.com",
+      `script-src ${scriptSources}`,
       "style-src 'self' 'unsafe-inline' https://calendly.com https://*.calendly.com",
       "img-src 'self' data: blob: https://*.r2.cloudflarestorage.com https://calendly.com https://*.calendly.com",
       "font-src 'self' data: https://calendly.com https://*.calendly.com",
-      "connect-src 'self' https://recherche-entreprises.api.gouv.fr https://api.groq.com https://calendly.com https://*.calendly.com https://plausible.io https://eu.posthog.com https://*.r2.cloudflarestorage.com https://challenges.cloudflare.com",
-      "frame-src 'self' https://calendly.com https://*.calendly.com https://challenges.cloudflare.com",
+      "connect-src 'self' https://recherche-entreprises.api.gouv.fr https://api.groq.com https://calendly.com https://*.calendly.com https://plausible.io https://eu.posthog.com https://*.r2.cloudflarestorage.com",
+      "frame-src 'self' https://calendly.com https://*.calendly.com",
       "media-src 'self' blob:",
       "object-src 'none'",
       "base-uri 'self'",
@@ -59,6 +72,14 @@ const securityHeaders = [
       "upgrade-insecure-requests",
     ].join("; "),
   },
+];
+
+const noIndexDownloadPaths = [
+  ...DOWNLOADABLE_RESOURCES.flatMap((resource) => [
+    resource.primary.href,
+    ...resource.files.map((file) => file.href),
+  ]),
+  ...WHITE_PAPERS.map((entry) => entry.pdf.href),
 ];
 
 const nextConfig: NextConfig = {
@@ -76,6 +97,10 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         headers: securityHeaders,
       },
+      ...noIndexDownloadPaths.map((source) => ({
+        source,
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      })),
     ];
   },
   async redirects() {

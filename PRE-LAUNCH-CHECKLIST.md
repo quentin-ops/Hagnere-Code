@@ -35,13 +35,18 @@ métriques IA ne seront pas persistées.
 | `CONTACT_FROM_EMAIL` | `contact@hagnere-code.fr` | Expéditeur Resend (doit être DKIM-validé). |
 | `NEXT_PUBLIC_CALENDLY_URL` | URL Calendly réelle | Optionnel — fallback `https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte`. |
 | `NEXT_PUBLIC_COOKIE_BANNER` | `0` (par défaut désactivé) | Mettre `1` le jour où un outil analytique est ajouté (Plausible, GA, etc.). |
-| `TURNSTILE_SECRET_KEY` | Secret Cloudflare Turnstile | Anti-bot sur `/api/project-inquiry` et `/api/transcribe`. Requis en prod (fail-closed) ; l'absence n'est tolérée qu'en dev (`NEXT_PUBLIC_ENV=development`). |
 
 Les autres secrets doivent être posés via `wrangler secret put` ou l'UI Cloudflare.
 
 > Nettoyage post-suppression de l'estimateur IA : `ANTHROPIC_API_KEY` et
 > `SITE_ORIGIN` ne sont plus utilisés par le code — ils peuvent être retirés
 > des secrets du worker Cloudflare après le prochain déploiement.
+
+> Nettoyage post-suppression de Cloudflare Turnstile (remplacé par la
+> question de calcul maison `MathChallenge`) : `TURNSTILE_SECRET_KEY` et
+> `NEXT_PUBLIC_TURNSTILE_SITE_KEY` ne sont plus utilisés — ils peuvent être
+> retirés des secrets/variables du déploiement, et le widget peut être
+> supprimé du dashboard Cloudflare.
 
 ### 3. Vérifier les domaines DKIM Resend
 Resend refuse les `from` non-vérifiés. Vérifier que `hagnere-code.fr` est
@@ -81,7 +86,7 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 
 ### Sécurité technique
 - ✅ Slug aléatoire (`public_slug`) sur `project_brief` (anti-IDOR, réservé backoffice)
-- ✅ Rate-limit Postgres-backed + Turnstile (lib `ai-rate-limit`)
+- ✅ Rate-limit Postgres-backed (lib `ai-rate-limit`) + question de calcul maison (`MathChallenge`, revalidée server-side)
 - ✅ Honeypot inline + `pf-hp` CSS (double anti-bot)
 - ✅ Headers : HSTS preload, CSP, X-Frame, X-Content-Type, Permissions-Policy
 - ✅ Validation phone serveur

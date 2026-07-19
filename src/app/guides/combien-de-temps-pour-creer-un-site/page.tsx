@@ -214,7 +214,7 @@ export default function Page() {
         ]}
         relatedLinks={[
           { href: "/guides/combien-coute-un-site-internet", label: "Combien coûte un site internet ?" },
-          { href: "/guides/cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
+          { href: "/ressources/kit-cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
           { href: "/guides/prix-site-vitrine", label: "Prix d'un site vitrine" },
           { href: "/guides/prix-refonte-site-internet", label: "Prix d'une refonte de site" },
           { href: "/methode", label: "Notre méthode Sprint Fixe™" },
@@ -723,7 +723,7 @@ export default function Page() {
           chaque case cochée avant le premier rendez-vous se paie en
           semaines gagnées — et un prestataire sérieux vous la
           demandera de toute façon. Notre{" "}
-          <Link href="/guides/cahier-des-charges-site-internet">modèle
+          <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle
           de cahier des charges</Link> la transforme en document
           complet, prêt à envoyer à trois prestataires.
         </p>

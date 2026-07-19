@@ -117,11 +117,11 @@ export const techFaqHtml = `
 
       <div class="faq-item">
         <div class="faq-q">
-          Tournage en dehors de Chambéry — comment ça se passe ?
+          Tournage en dehors de Bassens — comment ça se passe ?
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Studio Chambéry</b> par défaut (fixe, fond blanc, scène éditoriale, lumières, son pro).
+          <b>Studio Bassens</b> par défaut (fixe, fond blanc, scène éditoriale, lumières, son pro).
           Tournage <b>Paris / Lyon / Genève</b> inclus dans le retainer motion ou content (1 à 2 jours/mois).
           <b>Hors de cette zone</b> : refacturation des frais réels (train + hôtel + location matos si besoin),
           pas de surcoût prestation. Pour les campagnes hero multi-jours, équipe 2-4 personnes, budget

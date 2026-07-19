@@ -5,7 +5,7 @@ import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Contact agence web Chambéry · Réponse 24 h · Hagnéré Code",
   description:
-    "Parlez à quelqu'un qui code — pas à un commercial. Réponse sous 24 h ouvrées (souvent 3 à 6 h), 30 min de cadrage gratuit. Bureau à Chambéry.",
+    "Parlez à quelqu'un qui code — pas à un commercial. Réponse sous 24 h ouvrées (souvent 3 à 6 h), 30 min de cadrage gratuit. Bureau à Bassens, aux portes de Chambéry.",
   alternates: { canonical: "/contact" },
   openGraph: {
     ...OG_BASE,

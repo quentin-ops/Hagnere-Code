@@ -6,19 +6,19 @@ const EQUIPE_OG_IMAGE = {
   url: "/illustrations/equipe-atmosphere.png",
   width: 1792,
   height: 1024,
-  alt: "L'équipe Hagnéré Code — 3 CDI + 3 freelances long-terme, zéro pool anonyme, stack maîtrisée",
+  alt: "L'équipe Hagnéré Code — un gérant qui code et sept développeurs, zéro pool anonyme, stack maîtrisée",
 };
 
 export const metadata: Metadata = {
-  title: "L'équipe · Développeurs full-stack à Chambéry · Hagnéré Code",
+  title: "L'équipe · Développeurs full-stack en Savoie · Hagnéré Code",
   description:
-    "1 gérant qui code, 1 CTO et 5 développeurs full-stack seniors — 3 CDI à Chambéry, zéro offshore. Les noms de votre équipe figurent dans le devis.",
+    "Un gérant qui code, un CTO et des développeurs full-stack seniors rattachés à notre studio de Bassens, en Savoie. Les noms de votre équipe figurent dans le devis.",
   alternates: { canonical: "/equipe" },
   openGraph: {
     ...OG_BASE,
-    title: "L'équipe Hagnéré Code · 7 personnes seniors · 3 CDI à Chambéry",
+    title: "L'équipe Hagnéré Code · Développeurs seniors en Savoie",
     description:
-      "1 gérant associé codeur + 3 CDI (CTO + 2 devs) + 3 freelances long-terme intégrés. Tous seniors ou confirmés, écosystème React/Next.js (et Laravel pour les reprises). Augmentés par Claude Code.",
+      "Un gérant associé codeur et sept développeurs intégrés aux mêmes rituels. Tous seniors ou confirmés, écosystème React/Next.js (et Laravel pour les reprises). Augmentés par Claude Code.",
     url: "/equipe",
     images: [EQUIPE_OG_IMAGE],
   },
@@ -45,16 +45,15 @@ const orgJsonLd = JSON.stringify({
     addressRegion: "Savoie",
     addressCountry: "FR",
   },
-  // 4 personnes au sens schema.org "employee" (CDI, fondateur inclus).
-  // L'équipe complète (7 pers.) est listée via employee + contractor.
-  numberOfEmployees: { "@type": "QuantitativeValue", value: 4 },
+  // Les personnes sont listées via "member" : on ne publie pas leur statut
+  // contractuel, seulement leur rôle réel dans l'organisation.
   founder: {
     "@type": "Person",
     name: "Quentin Hagnéré",
     jobTitle: "Gérant associé codeur",
     sameAs: ["https://www.linkedin.com/in/quentin-hagnere"],
   },
-  employee: [
+  member: [
     {
       "@type": "Person",
       name: "Quentin Hagnéré",
@@ -64,39 +63,37 @@ const orgJsonLd = JSON.stringify({
     {
       "@type": "Person",
       name: "Nicolas Wallerand",
-      jobTitle: "CTO — Direction technique (CDI)",
+      jobTitle: "CTO — Direction technique",
       sameAs: ["https://www.linkedin.com/in/nicolas-wallerand-86b0a079/"],
     },
     {
       "@type": "Person",
       name: "Frédéric Curinckx",
-      jobTitle: "Développeur full-stack senior (CDI)",
+      jobTitle: "Développeur full-stack senior",
       sameAs: ["https://www.linkedin.com/in/frederic-curinckx/"],
     },
     {
       "@type": "Person",
       name: "Killian Hoarau",
-      jobTitle: "Développeur back-end senior + DevOps (CDI)",
+      jobTitle: "Développeur back-end senior + DevOps",
       sameAs: ["https://www.linkedin.com/in/killian-hoarau-960927138/"],
     },
-  ],
-  contractor: [
     {
       "@type": "Person",
       name: "Arthur Monney",
-      jobTitle: "Développeur back-end senior — Paiements (Freelance long-terme)",
+      jobTitle: "Développeur back-end senior — Paiements",
       sameAs: ["https://www.linkedin.com/in/arthurmonney/"],
     },
     {
       "@type": "Person",
       name: "Ryan Mazzitelli",
-      jobTitle: "Développeur back-end senior — IA / Agents (Freelance long-terme)",
+      jobTitle: "Développeur back-end senior — IA / Agents",
       sameAs: ["https://www.linkedin.com/in/ryan-mazzitelli-907716262/"],
     },
     {
       "@type": "Person",
       name: "Peter Sum Sie Kung",
-      jobTitle: "Développeur full-stack confirmé (Freelance long-terme)",
+      jobTitle: "Développeur full-stack confirmé",
       sameAs: ["https://www.codeur.com/-peterssk"],
     },
   ],
@@ -121,16 +118,16 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Quentin (gérant associé codeur) reste votre interlocuteur principal du brief à la livraison, pour tout ce qui touche au produit, au cadrage et au design. Nicolas (CTO) intervient sur les questions d'architecture et de jalons techniques. Le dev référent du projet — qu'il soit en CDI ou freelance long-terme — est nommé au cadrage et reste le même jusqu'à la livraison. Pas de tournante.",
+          "Quentin (gérant associé codeur) reste votre interlocuteur principal du brief à la livraison, pour tout ce qui touche au produit, au cadrage et au design. Nicolas (CTO) intervient sur les questions d'architecture et de jalons techniques. Le dev référent du projet est nommé au cadrage et reste le même jusqu'à la livraison. Pas de tournante.",
       },
     },
     {
       "@type": "Question",
-      name: "Travaillez-vous avec des freelances ou de la sous-traitance ?",
+      name: "Travaillez-vous avec un pool externe ou de la sous-traitance ?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui, mais pas n'importe lesquels. L'équipe est composée de 3 CDI à Chambéry (CTO + 2 devs seniors) et de 3 freelances long-terme nommés (Arthur, Ryan, Peter) intégrés à nos rituels — daily, démo hebdo, revue de code. Pas de pool anonyme qui change à chaque projet, pas de sous-traitance offshore, pas de white-label déguisé. Ce sont les mêmes personnes d'un projet à l'autre, et leurs noms sont dans le devis.",
+          "Pas de pool anonyme, jamais. Un gérant associé codeur et sept développeurs — Nicolas au CTO, Frédéric, Killian, Arthur et Ryan en seniors, Peter en dev confirmé — tous intégrés aux mêmes rituels : daily, démo, revue de code. Pas de pool anonyme qui change à chaque projet, pas de sous-traitance offshore, pas de white-label déguisé. Ce sont les mêmes personnes d'un projet à l'autre, et leurs noms sont dans le devis.",
       },
     },
     {
@@ -157,7 +154,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "5 ans et plus pour tous les seniors (CTO inclus, CDI comme freelances long-terme). Notre freelance long-terme Peter est dev confirmé (3+ ans XP) et opère systématiquement sous code review du CTO et d'un senior. Personne en stage, personne en alternance, personne en première année. Cela coûte plus cher, mais cela garantit qu'aucun client ne sert de terrain d'apprentissage.",
+          "5 ans et plus pour tous les seniors, CTO inclus. Peter est dev confirmé (3+ ans XP) et opère systématiquement sous code review du CTO et d'un senior. Personne en stage, personne en alternance, personne en première année. Cela coûte plus cher, mais cela garantit que personne n'apprend le métier en solo sur un projet.",
       },
     },
     {
@@ -175,7 +172,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Toujours pour des profils alignés. Le prochain recrutement prévu est un Designer produit / UX senior. Les candidatures spontanées sont étudiées sous 5 jours ouvrés à quentin@hagnere-patrimoine.fr — uniquement profils 5+ ans d'expérience, basés ou prêts à venir à Chambéry.",
+          "Toujours pour des profils alignés. Le prochain recrutement prévu est un Designer produit / UX senior. Les candidatures spontanées sont étudiées sous 5 jours ouvrés à quentin@hagnere-patrimoine.fr — uniquement profils 5+ ans d'expérience, basés ou prêts à venir à Bassens.",
       },
     },
   ],

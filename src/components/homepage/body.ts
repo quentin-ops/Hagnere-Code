@@ -1220,7 +1220,7 @@ export const bodyHtml = `${navHtml}
             </div>
             <div class="eq-fm">
               <span class="k">Basé à</span>
-              <span class="v">Chambéry · Savoie</span>
+              <span class="v">Bassens · Savoie</span>
             </div>
           </div>
         </div>
@@ -1579,7 +1579,7 @@ export const bodyHtml = `${navHtml}
           <div class="brand-mark">HC</div>
           <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
         </a>
-        <p>Studio produit basé à Chambéry. SaaS, applications métier, sites vitrines et outils internes au forfait fixe.</p>
+        <p>Studio produit basé à Bassens, aux portes de Chambéry. SaaS, applications métier, sites vitrines et outils internes au forfait fixe.</p>
       </div>
       <div class="foot-cols">
         <div class="foot-col">

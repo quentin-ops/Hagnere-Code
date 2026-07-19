@@ -976,12 +976,23 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       const panes = Array.from(megaRoot.querySelectorAll<HTMLElement>(".hc-mega-pane[data-pane]"));
 
       const setOpen = (open: boolean) => {
+        if (!open && panel.contains(document.activeElement)) trigger.focus();
         megaRoot.dataset.megaOpen = open ? "true" : "false";
         trigger.setAttribute("aria-expanded", open ? "true" : "false");
+        panel.setAttribute("aria-hidden", open ? "false" : "true");
+        panel.toggleAttribute("inert", !open);
       };
       const setActive = (cat: string) => {
-        cats.forEach((c) => c.classList.toggle("is-active", c.dataset.cat === cat));
-        panes.forEach((p) => p.classList.toggle("is-active", p.dataset.pane === cat));
+        cats.forEach((c) => {
+          const active = c.dataset.cat === cat;
+          c.classList.toggle("is-active", active);
+          c.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+        panes.forEach((p) => {
+          const active = p.dataset.pane === cat;
+          p.classList.toggle("is-active", active);
+          p.setAttribute("aria-hidden", active ? "false" : "true");
+        });
       };
 
       // Default: first category active
@@ -1034,6 +1045,15 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         const onClick = (e: MouseEvent) => {
           e.preventDefault();
           cl();
+          if (window.matchMedia("(max-width: 720px)").matches) {
+            const content = panel.querySelector<HTMLElement>(".hc-mega-content");
+            if (content) {
+              panel.scrollTo({
+                top: content.offsetTop,
+                behavior: "smooth",
+              });
+            }
+          }
         };
         cat.addEventListener("mouseenter", cl);
         cat.addEventListener("focus", cl);

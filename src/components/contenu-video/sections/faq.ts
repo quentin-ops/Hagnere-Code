@@ -60,7 +60,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Non. Deux options&nbsp;: <b>(1) vous tournez face cam iPhone chez vous</b> — on vous envoie un kit lumière + micro RØDE Wireless Pro (offert, vous gardez). <b>(2) vous venez tourner à notre studio Chambéry</b> — fond blanc ou scène éditoriale, caméras Sony FX3/A7S III, lumières Aputure. Pas besoin d'investir en matos.
+            Non. Deux options&nbsp;: <b>(1) vous tournez face cam iPhone chez vous</b> — on vous envoie un kit lumière + micro RØDE Wireless Pro (offert, vous gardez). <b>(2) vous venez tourner à notre studio de Bassens, aux portes de Chambéry</b> — fond blanc ou scène éditoriale, caméras Sony FX3/A7S III, lumières Aputure. Pas besoin d'investir en matos.
           </div>
         </div>
 

@@ -209,7 +209,7 @@ export default function Page() {
         relatedLinks={[
           { href: "/guides/combien-coute-un-site-internet", label: "Combien coûte un site internet ?" },
           { href: "/guides/prix-site-vitrine", label: "Prix d'un site vitrine" },
-          { href: "/guides/cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
+          { href: "/ressources/kit-cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
           { href: "/services/sites-vitrines", label: "Création de site sur mesure" },
           { href: "/methode", label: "Notre méthode Sprint Fixe™" },
           { href: "/tarifs", label: "Nos tarifs détaillés" },
@@ -656,7 +656,7 @@ export default function Page() {
           la Région ne paie pas votre site, mais elle peut financer à 100 %
           son cadrage — un cahier des charges solide fait ensuite baisser
           les devis (notre{" "}
-          <Link href="/guides/cahier-des-charges-site-internet">modèle
+          <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle
           commenté</Link> vous y aidera aussi, gratuitement).
         </p>
         <p>
@@ -935,7 +935,7 @@ export default function Page() {
             <strong>Faites établir un devis détaillé — sans le
             signer</strong> — le dossier exige un devis, la signature le
             tue. Notre{" "}
-            <Link href="/guides/cahier-des-charges-site-internet">modèle
+            <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle
             de cahier des charges</Link> rend le devis solide et
             comparable.
           </li>

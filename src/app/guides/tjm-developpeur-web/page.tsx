@@ -947,7 +947,7 @@ LE CONTRÔLE À FAIRE SUR TOUT DEVIS
             <strong>Écrivez ce que vous voulez, pas comment le
             faire.</strong> Les objectifs, les fonctionnalités
             indispensables et celles qui peuvent attendre. Notre{" "}
-            <Link href="/guides/cahier-des-charges-site-internet">modèle
+            <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle
             de cahier des charges</Link> vous donne la trame — un
             périmètre écrit est ce qui rend deux devis comparables.
           </li>

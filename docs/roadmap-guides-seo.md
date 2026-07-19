@@ -16,9 +16,13 @@
 > trié par *vitesse de positionnement* et non par volume de recherche.
 >
 > Les trois constats qui changent l'ordre :
-> 1. Les 23 guides publiés sont **plus profonds que 100 % de ce qui
->    ranke** — le déficit n'est pas éditorial, il est d'autorité.
->    Publier un 24ᵉ guide généraliste ne débloque rien.
+> 1. Les 23 guides publiés sont généralement plus longs et plus structurés
+>    que les résultats observés, mais profondeur brute et qualité
+>    décisionnelle ne se confondent pas. L'[audit éditorial du
+>    19/07](audit-qualite-guides-2026-07-19.md) a corrigé des lacunes
+>    éditoriales réelles sur six pages. L'autorité reste néanmoins le
+>    principal déficit hors page ; publier un guide généraliste de plus ne
+>    la débloque pas.
 > 2. Le **local savoyard est le seul terrain gagnable en 2-6 mois** par
 >    un domaine neuf, et il est aujourd'hui à zéro (aucune page locale,
 >    pas de fiche Google Business Profile).
@@ -84,13 +88,16 @@ simulateur de prix (contraire au funnel lead-only).
 > Conversion = proximité avec les offres Hagnéré Code.
 > Priorité : P1 = à publier dans les 4-6 prochaines semaines, puis P2, P3.
 >
-> **Process de production** (industrialisé, voir guide n°1) : 1 entrée dans
-> `src/lib/guides.ts` + 1 dossier copié depuis
-> `src/app/guides/combien-coute-un-site-internet/` → hub, sitemap, JSON-LD
-> et métadonnées se remplissent seuls. Chaque guide : recherche sourcée
-> (workflow 5 agents), ~4 000+ mots, FAQ 12 questions issues des vraies
-> requêtes, auteur Person, image OG générée, 2-3 liens entrants posés depuis
-> les pages à autorité.
+> **Process de production** : créer la route selon les conventions techniques
+> de `src/app/guides/`, puis ajouter l'entrée dans `src/lib/guides.ts` ; le
+> hub, le sitemap et une partie des métadonnées en découlent. Copier un
+> ancien dossier peut accélérer l'intégration technique, mais son plan, son
+> ouverture, son fil rouge, ses encadrés et son CTA doivent être supprimés
+> avant rédaction. Chaque guide suit la
+> [charte people-first](charte-qualite-guides.md) : recherche sourcée,
+> structure dictée par l'intention, FAQ seulement si utile, auteur visible,
+> image OG et maillage contextuel. Aucun quota de mots, de FAQ ou de liens
+> ne remplace les portes de sortie éditoriales.
 
 ## Pilier A — Budget & prix (cocon « combien ça coûte »)
 
@@ -148,14 +155,20 @@ simulateur de prix (contraire au funnel lead-only).
 
 ## Règles de production
 
-1. **Rythme conseillé** : 2 guides/semaine (P1 d'abord) → les 30 publiés en ~3 mois.
+1. **Cadence** : aucune cadence ne justifie de franchir une porte de sortie
+   en échec. Produire dans l'ordre priorisé, selon la capacité de recherche,
+   de relecture et de vérification réelle.
 2. **Cannibalisation** : les guides « prix par type » (3, 4, 5, 6) doivent
    viser leur requête propre et LIER le pilier n°1 (et réciproquement, ajouter
    les liens dans le pilier à chaque publication).
-3. **Maillage systématique** : chaque guide reçoit ≥ 2 liens entrants
-   contextuels depuis les pages service/à autorité, et lie 3-5 pages
-   service + le pilier de son cluster.
-4. **Fraîcheur** : `dateModified` mise à jour à chaque retouche réelle ;
-   re-passage trimestriel sur les chiffres (prix, aides régionales).
+3. **Maillage utile** : chaque guide doit être atteignable depuis au moins
+   une page pertinente et proposer les suites réellement utiles au parcours.
+   Le nombre de liens découle des relations éditoriales, jamais d'un quota.
+4. **Fraîcheur** : `dateModified` change après une modification
+   substantielle effectivement publiée. Tarifs, aides, lois et versions sont
+   revalidés à l'événement de fraîcheur consigné dans la fiche de preuves.
 5. **Mesure** : après indexation, suivre dans Search Console les requêtes
    réelles par guide et ajuster titles/FAQ en conséquence.
+6. **Dossier de décision** : tout nouveau guide conserve son brief, ses
+   preuves, son empreinte éditoriale et sa revue finale dans
+   `docs/research/<slug>.md`, selon le modèle de la charte.

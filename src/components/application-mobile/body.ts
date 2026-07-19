@@ -909,7 +909,7 @@ ${navHtml}
           <div class="brand-mark">HC</div>
           <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
         </a>
-        <p>Studio de développement SaaS, applications métier, e-commerce, sites vitrines et apps mobiles. Basé à Chambéry. Forfait fixe.</p>
+        <p>Studio de développement SaaS, applications métier, e-commerce, sites vitrines et apps mobiles. Basé à Bassens, aux portes de Chambéry. Forfait fixe.</p>
       </div>
       <div class="foot-cols">
         <div class="foot-col">

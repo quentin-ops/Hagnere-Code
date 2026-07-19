@@ -125,7 +125,7 @@ ${navHtml}
 
     <div class="c-local reveal">
       <div class="c-local-main">
-        <div class="eyebrow">— Studio basé à Chambéry</div>
+        <div class="eyebrow">— Studio basé à Bassens, aux portes de Chambéry</div>
         <h2>Savoie, Haute-Savoie, Lyon, Grenoble — et France entière en visio.</h2>
         <p>
           Notre bureau est au <b>82 impasse de Bellevue, 73000 Bassens</b>.

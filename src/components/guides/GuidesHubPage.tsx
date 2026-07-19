@@ -32,7 +32,12 @@ import {
 import { MainNav } from "@/components/design-shared/MainNav";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
-import { GUIDES, guidePath, formatGuideDate, type GuideEntry } from "@/lib/guides";
+import {
+  GUIDES,
+  guidePath,
+  formatGuideDate,
+  type GuideEntry,
+} from "@/lib/guides";
 import "@/components/homepage/homepage.css";
 import "@/components/design-shared/nav-dropdown.css";
 import "@/components/design-shared/responsive.css";
@@ -130,6 +135,18 @@ const PRICE_RANGES = [
 
 const RESOURCES = [
   {
+    href: "/ressources/kit-cahier-des-charges-site-internet",
+    label: "Kit cahier des charges de site",
+    value:
+      "Modèle Word, exemple rempli, grille Excel de 56 tests et mode d'emploi — sans email.",
+  },
+  {
+    href: "/livres-blancs/comparer-devis-site-internet",
+    label: "Grille de comparaison de devis",
+    value:
+      "TCO sur 36 mois, 40 critères et exemple rempli à copier dans Excel ou Sheets.",
+  },
+  {
     href: "/outils/calculateur-cout-excel",
     label: "Calculateur coût Excel",
     value: "Ce que la gestion manuelle vous coûte, en heures et en euros.",
@@ -205,7 +222,8 @@ export function GuidesHubPage() {
               </nav>
 
               <div className="ghub-kicker">
-                <span aria-hidden="true" /> Bibliothèque · {GUIDES.length} guides chiffrés
+                <span aria-hidden="true" /> Bibliothèque · {GUIDES.length}{" "}
+                guides chiffrés
               </div>
 
               <h1>
@@ -214,17 +232,21 @@ export function GuidesHubPage() {
               </h1>
               <p className="ghub-hero-sub">
                 Prix d&apos;un site internet, budget d&apos;un SaaS, coûts
-                cachés, comparatifs, cahiers des charges : des guides
-                pratiques, clairs et chiffrés, rédigés par l&apos;équipe qui
-                code — pas par un rédacteur hors-sol.
+                cachés, comparatifs, cahiers des charges : des guides pratiques,
+                clairs et chiffrés, rédigés par l&apos;équipe qui code — pas par
+                un rédacteur hors-sol.
               </p>
 
               <div className="ghub-hero-actions">
-                <Link href={guidePath(featuredGuide)} className="btn btn-accent btn-lg">
+                <Link
+                  href={guidePath(featuredGuide)}
+                  className="btn btn-accent btn-lg"
+                >
                   Voir le guide budget <ArrowIcon />
                 </Link>
                 <a href="#collections" className="btn btn-ghost btn-lg">
-                  Parcourir les collections <ArrowDown size={14} aria-hidden="true" />
+                  Parcourir les collections{" "}
+                  <ArrowDown size={14} aria-hidden="true" />
                 </a>
               </div>
 
@@ -252,7 +274,12 @@ export function GuidesHubPage() {
               </div>
               <div className="ghub-lanes">
                 {collections.map((c) => (
-                  <a key={c.anchor} href={`#${c.anchor}`} className="ghub-lane" data-accent={c.accent}>
+                  <a
+                    key={c.anchor}
+                    href={`#${c.anchor}`}
+                    className="ghub-lane"
+                    data-accent={c.accent}
+                  >
                     <span className="ghub-lane-count">
                       {String(c.guides.length).padStart(2, "0")}
                     </span>
@@ -267,7 +294,11 @@ export function GuidesHubPage() {
                   <Timer size={13} aria-hidden="true" /> ~25 min par guide
                 </span>
                 <span>
-                  <Check size={13} aria-hidden="true" /> Mis à jour {formatGuideDate(featuredGuide.dateModified).split(" ").slice(1).join(" ")}
+                  <Check size={13} aria-hidden="true" /> Mis à jour{" "}
+                  {formatGuideDate(featuredGuide.dateModified)
+                    .split(" ")
+                    .slice(1)
+                    .join(" ")}
                 </span>
               </div>
             </div>
@@ -277,7 +308,10 @@ export function GuidesHubPage() {
         {/* ============ GUIDE ESSENTIEL ============ */}
         <section className="ghub-featured">
           <div className="wrap">
-            <Link href={guidePath(featuredGuide)} className="ghub-featured-card">
+            <Link
+              href={guidePath(featuredGuide)}
+              className="ghub-featured-card"
+            >
               <div className="ghub-featured-copy">
                 <div className="ghub-featured-tags">
                   <span className="ghub-chip-essential">Essentiel</span>
@@ -303,7 +337,9 @@ export function GuidesHubPage() {
                     <span />
                     <span />
                     <span />
-                    <div className="ghub-ranges-url">hagnere-code.ai/guides</div>
+                    <div className="ghub-ranges-url">
+                      hagnere-code.ai/guides
+                    </div>
                   </div>
                   <div className="ghub-ranges-body">
                     <div className="ghub-ranges-title">
@@ -357,7 +393,12 @@ export function GuidesHubPage() {
             {collections.map((c, idx) => {
               const ColIcon = c.icon;
               return (
-                <div key={c.anchor} className="ghub-collection" id={c.anchor} data-accent={c.accent}>
+                <div
+                  key={c.anchor}
+                  className="ghub-collection"
+                  id={c.anchor}
+                  data-accent={c.accent}
+                >
                   <div className="ghub-col-head">
                     <div>
                       <div className="ghub-col-kicker">
@@ -370,7 +411,8 @@ export function GuidesHubPage() {
                       <p>{c.text}</p>
                     </div>
                     <span className="ghub-col-count">
-                      {c.guides.length} {c.guides.length > 1 ? "guides" : "guide"}
+                      {c.guides.length}{" "}
+                      {c.guides.length > 1 ? "guides" : "guide"}
                     </span>
                   </div>
 
@@ -378,7 +420,11 @@ export function GuidesHubPage() {
                     {c.guides.map((g) => {
                       const Icon = GUIDE_ICONS[g.slug] ?? Globe;
                       return (
-                        <Link key={g.slug} href={guidePath(g)} className="ghub-card">
+                        <Link
+                          key={g.slug}
+                          href={guidePath(g)}
+                          className="ghub-card"
+                        >
                           <div className="ghub-card-top">
                             <span className="ghub-card-ic">
                               <Icon size={17} />
@@ -386,7 +432,9 @@ export function GuidesHubPage() {
                             {g.featured ? (
                               <span className="ghub-card-badge">Essentiel</span>
                             ) : (
-                              <span className="ghub-card-read">{g.readTimeMin} min</span>
+                              <span className="ghub-card-read">
+                                {g.readTimeMin} min
+                              </span>
                             )}
                           </div>
                           <h3>{g.cardTitle}</h3>
@@ -414,11 +462,13 @@ export function GuidesHubPage() {
           <div className="wrap ghub-resources-inner">
             <div className="ghub-resources-copy">
               <div className="eyebrow">Aller plus loin</div>
-              <h2>Avant de nous écrire, vous pouvez déjà vérifier le niveau.</h2>
+              <h2>
+                Avant de nous écrire, vous pouvez déjà vérifier le niveau.
+              </h2>
               <p>
-                Les guides donnent les ordres de grandeur. Les outils et les
-                réalisations montrent comment on les applique sur de vrais
-                projets.
+                Les guides donnent les ordres de grandeur. Les livres blancs,
+                outils et réalisations permettent de les appliquer à votre
+                propre décision.
               </p>
             </div>
             <div className="ghub-resources-grid">
@@ -438,15 +488,20 @@ export function GuidesHubPage() {
           <div className="wrap ghub-final-inner">
             <div>
               <div className="eyebrow">Prochaine étape</div>
-              <h2>Vous avez les ordres de grandeur. Passons à votre chiffre.</h2>
+              <h2>
+                Vous avez les ordres de grandeur. Passons à votre chiffre.
+              </h2>
               <p>
-                Décrivez votre projet en quelques phrases : un développeur —
-                pas un commercial — vous répond sous 24 h ouvrées avec un
-                premier avis honnête.
+                Décrivez votre projet en quelques phrases : un développeur — pas
+                un commercial — vous répond sous 24 h ouvrées avec un premier
+                avis honnête.
               </p>
             </div>
             <div className="ghub-final-actions">
-              <Link href="/demarrer-un-projet" className="btn btn-accent btn-lg">
+              <Link
+                href="/demarrer-un-projet"
+                className="btn btn-accent btn-lg"
+              >
                 Décrire mon projet <ArrowIcon />
               </Link>
               <Link href="/rendez-vous" className="btn btn-ghost btn-lg">

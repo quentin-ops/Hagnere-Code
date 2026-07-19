@@ -896,7 +896,7 @@ ${navHtml}
           <div class="brand-mark">HC</div>
           <div class="brand-name"><b>Hagnéré</b> <span>Code</span></div>
         </a>
-        <p>Agence de développement SaaS AI-native basée à Chambéry. Dev, design, SEO, ads, vidéo intégrée.</p>
+        <p>Agence de développement SaaS AI-native basée à Bassens, aux portes de Chambéry. Dev, design, SEO, ads, vidéo intégrée.</p>
       </div>
       <div class="foot-cols">
         <div class="foot-col">

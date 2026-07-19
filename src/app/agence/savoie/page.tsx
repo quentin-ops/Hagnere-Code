@@ -129,7 +129,7 @@ export default function Page() {
           { number: "01", title: "448 226 habitants, 205 398 emplois", description: "", color: "violet" },
           { number: "02", title: "60 971 établissements actifs", description: "", color: "blue" },
           { number: "03", title: "6 territoires, 6 économies", description: "", color: "emerald" },
-          { number: "04", title: "Agence basée à Chambéry", description: "", color: "amber" },
+          { number: "04", title: "Agence basée à Bassens", description: "", color: "amber" },
         ]}
         relatedLinks={[
           { href: "/agence", label: "Notre agence" },

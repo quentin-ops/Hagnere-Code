@@ -96,13 +96,13 @@ export const deriskHtml = `
         </div>
       </div>
 
-      <!-- PEUR 06 : Localisation Chambéry -->
+      <!-- PEUR 06 : Localisation Savoie -->
       <div class="me-derisk-card reveal reveal-d-1">
         <div class="me-derisk-fear">
-          « Vous êtes à Chambéry, pas à Paris — <b>vous tiendrez la distance</b> ? »
+          « Vous êtes en Savoie, pas à Paris — <b>vous tiendrez la distance</b> ? »
         </div>
         <h4>Fuseau FR, coûts maîtrisés, binôme nommé au contrat</h4>
-        <p>On est basés à Chambéry (Savoie), par choix&nbsp;: <b>fuseau horaire français</b>, coûts de structure plus bas qu'à Paris, <b>sept développeurs</b> qui travaillent au quotidien sur nos propres produits en production. Résultat&nbsp;: vos forfaits sont 20-30 % moins chers à qualité équivalente, et le binôme qui prend votre projet est <b>nommé au contrat</b>, avec recouvrement de 2 semaines s'il doit changer. <b>Pas d'off-shore, pas de near-shore — équipe 100 % France</b>.</p>
+        <p>On est basés à Bassens, aux portes de Chambéry, par choix&nbsp;: <b>fuseau horaire français</b>, coûts de structure plus bas qu'à Paris, <b>sept développeurs</b> qui travaillent au quotidien sur nos propres produits en production. Résultat&nbsp;: vos forfaits sont 20-30 % moins chers à qualité équivalente, et le binôme qui prend votre projet est <b>nommé au contrat</b>, avec recouvrement de 2 semaines s'il doit changer. <b>Pas d'off-shore, pas de near-shore — équipe 100 % France</b>.</p>
         <div class="me-derisk-proof">
           <span>✓ Équipe 100 % FR</span>
           <span>✓ Binôme nommé au contrat</span>

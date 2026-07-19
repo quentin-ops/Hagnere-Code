@@ -210,7 +210,7 @@ export default function Page() {
         relatedLinks={[
           { href: "/guides/combien-coute-un-site-internet", label: "Combien coûte un site internet ?" },
           { href: "/guides/prix-site-vitrine", label: "Prix d'un site vitrine" },
-          { href: "/guides/cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
+          { href: "/ressources/kit-cahier-des-charges-site-internet", label: "Modèle de cahier des charges" },
           { href: "/services/ecommerce", label: "E-commerce sur mesure" },
           { href: "/methode", label: "Notre méthode Sprint Fixe™" },
           { href: "/tarifs", label: "Nos tarifs détaillés" },
@@ -1036,7 +1036,7 @@ export default function Page() {
             <strong>Comparer des devis à périmètres différents.</strong> Sans
             cahier des charges commun, l&apos;écart de prix mesure
             l&apos;écart de compréhension, pas la compétitivité. Notre{" "}
-            <Link href="/guides/cahier-des-charges-site-internet">modèle de
+            <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle de
             cahier des charges</Link> est libre de copie.
           </li>
         </ol>
@@ -1056,7 +1056,7 @@ export default function Page() {
           <li>
             <strong>Rédigez un cahier des charges commun</strong> — 10
             sections suffisent, notre{" "}
-            <Link href="/guides/cahier-des-charges-site-internet">modèle
+            <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle
             commenté</Link> est libre de copie — et envoyez-le à
             l&apos;identique à 3 prestataires.
           </li>

@@ -73,6 +73,20 @@ describe("sitemap", () => {
     expect(urls).toContain(`${BASE}/guides/combien-coute-un-site-internet`);
   });
 
+  it("inclut le hub et les livres blancs publiés", () => {
+    expect(urls).toContain(`${BASE}/livres-blancs`);
+    expect(urls).toContain(
+      `${BASE}/livres-blancs/comparer-devis-site-internet`,
+    );
+  });
+
+  it("inclut le hub de ressources et les kits publiés", () => {
+    expect(urls).toContain(`${BASE}/ressources`);
+    expect(urls).toContain(
+      `${BASE}/ressources/kit-cahier-des-charges-site-internet`,
+    );
+  });
+
   it("exclut les routes redirigées (estimer-mon-projet, blog, outils, guide)", () => {
     for (const route of EXCLUDED_ROUTES) {
       expect(urls).not.toContain(`${BASE}${route}`);

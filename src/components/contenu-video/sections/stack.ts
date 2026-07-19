@@ -66,7 +66,7 @@ export const stackHtml = `
           </div>
           <div class="cv-stack-meta">
             <div class="cv-stack-kind">Tournage</div>
-            <h3>Studio Chambéry + mobile.</h3>
+            <h3>Studio Bassens + mobile.</h3>
           </div>
         </div>
         <p>Studio fixe ou tournage sur site. Caméras pro, lumières, fond blanc ou scène éditoriale, son pro.</p>

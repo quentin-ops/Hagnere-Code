@@ -710,7 +710,7 @@ export default function Page() {
           mais encore faut-il savoir qu&apos;en faire ; en sur-mesure,
           exigez la cession écrite des droits — article L131-3 du Code
           de la propriété intellectuelle, la clause type est dans
-          notre <Link href="/guides/cahier-des-charges-site-internet">modèle
+          notre <Link href="/ressources/kit-cahier-des-charges-site-internet">modèle
           de cahier des charges</Link>. <strong>Le RGPD</strong> :
           mentions légales, politique de confidentialité, consentement
           avant mesure d&apos;audience, hébergement des données —
