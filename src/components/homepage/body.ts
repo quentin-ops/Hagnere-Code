@@ -973,7 +973,7 @@ export const bodyHtml = `${navHtml}
           <div class="real-metric">
             <div class="rm"><div class="n">6<span class="s"> k+</span></div><div class="l">inscrits</div></div>
             <div class="rm"><div class="n">156<span class="s"> k</span></div><div class="l">clics SEO · 12 mois</div></div>
-            <div class="rm"><div class="n">3,8<span class="s"> M€</span></div><div class="l">valo · &lt;3 ans</div></div>
+            <div class="rm"><div class="n">3,8<span class="s"> M€</span></div><div class="l">valo société · 2 SaaS</div></div>
           </div>
         </div>
       </a>
@@ -1029,7 +1029,7 @@ export const bodyHtml = `${navHtml}
           <p>Logiciel de comptabilité SCI (IR et IS). Liasses 2033, 2065, 2072 générées et télétransmises. Gestion des associés, parts, comptes courants, démembrement et amortissements par composants.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">2</div><div class="l">régimes (IR/IS)</div></div>
-            <div class="rm"><div class="n">3,8<span class="s"> M€</span></div><div class="l">valo · &lt;3 ans</div></div>
+            <div class="rm"><div class="n">3,8<span class="s"> M€</span></div><div class="l">valo société · 2 SaaS</div></div>
             <div class="rm"><div class="n">229<span class="s"> €</span></div><div class="l">/an autonomie</div></div>
           </div>
         </div>
