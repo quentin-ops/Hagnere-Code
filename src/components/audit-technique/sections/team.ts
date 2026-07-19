@@ -171,7 +171,7 @@ export const teamHtml = `
       <div>
         <b>Votre audit Standard mobilise 2 seniors parmi les 4 (Arthur · Frédéric · Ryan · Killian) + Nicolas sur l'archi + Quentin en lead.</b>
         Composition définie au cadrage selon vos dimensions critiques. <b>Nommés dans le devis</b>, zéro rotation en cours d'audit.
-        Studio 7 personnes&nbsp;: 1 gérant + 3 CDI full-stack + 3 freelances long-terme — France &amp; Europe, intégrés à nos rituels. Pas d'offshore, pas de pool tournant.
+        Un gérant qui code et <b>sept développeurs</b> — France &amp; Europe, intégrés aux mêmes rituels. Pas d'offshore, pas de pool tournant.
       </div>
     </div>
   </div>

@@ -273,7 +273,7 @@ const proofLinks = [
   { href: "/realisations", label: "Réalisations", value: "4 cas documentés" },
   { href: "/demarrer-un-projet", label: "Décrire mon projet", value: "Réponse sous 24 h ouvrées" },
   { href: "/outils/calculateur-cout-excel", label: "Coût Excel", value: "ROI outil interne" },
-  { href: "/equipe", label: "Équipe", value: "1 gérant + 3 CDI + 3 freelances" },
+  { href: "/equipe", label: "Équipe", value: "1 gérant qui code + 7 développeurs" },
 ];
 
 function ArrowIcon() {

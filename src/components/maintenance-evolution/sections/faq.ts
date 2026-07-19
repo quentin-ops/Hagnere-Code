@@ -115,7 +115,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Binôme obligatoire dès J+1</b> — vous n'avez jamais un seul dev qui connaît votre projet. Si un dev part&nbsp;: overlap 2 semaines avec le remplaçant (clause CGV), documentation déjà à jour, Loom d'onboarding. Vous ne perdez <b>0 jour de productivité</b>. Notre turnover interne est &lt; 10 %, ancienneté moyenne 4 ans.
+            <b>Binôme obligatoire dès J+1</b> — vous n'avez jamais un seul dev qui connaît votre projet. Si un dev part&nbsp;: overlap 2 semaines avec le remplaçant (clause CGV), documentation déjà à jour, Loom d'onboarding. Vous ne perdez <b>0 jour de productivité</b>. Le binôme et le recouvrement de deux semaines sont des clauses contractuelles, pas des intentions.
           </div>
         </div>
 

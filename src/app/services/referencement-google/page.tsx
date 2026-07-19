@@ -101,7 +101,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui. Le trafic organique a augmenté sur nos clients bien structurés en 2025. Les AI Overviews citent des sources — notre job est de faire que votre site soit l'une de ces sources. On optimise pour l'ère post-IA : E-E-A-T, contenu original, données propriétaires, structure claire.",
+          "Oui. Un site bien structuré peut même y gagner du trafic organique. Les AI Overviews citent des sources — notre job est de faire que votre site soit l'une de ces sources. On optimise pour l'ère post-IA : E-E-A-T, contenu original, données propriétaires, structure claire.",
       },
     },
     {

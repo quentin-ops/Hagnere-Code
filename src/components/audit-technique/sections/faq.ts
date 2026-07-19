@@ -65,7 +65,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Garantie contractuelle</b>&nbsp;: si le rapport livre moins de 3 recommandations jugées actionnables par votre CTO ou board, <b>50 % du prix est remboursé</b> sans négociation. Jamais activée sur nos audits. Après livraison, si vous voulez discuter d'un finding, réunion de re-restitution sous 15 j incluse.
+            <b>Garantie contractuelle</b>&nbsp;: si le rapport livre moins de 3 recommandations jugées actionnables par votre CTO ou board, <b>50 % du prix est remboursé</b> sans négociation. C'est écrit dans les CGV. Après livraison, si vous voulez discuter d'un finding, réunion de re-restitution sous 15 j incluse.
           </div>
         </div>
 
@@ -101,7 +101,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>2 seniors + le lead nommés dans le devis</b> (photo, prénom, LinkedIn — <a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir la section Équipe</a>). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. <b>Chaque dimension a un owner dédié</b> qui la signe. Zéro rotation en cours d'audit. Studio 7 personnes&nbsp;: 1 gérant + 3 CDI full-stack + 3 freelances long-terme intégrés à nos rituels.
+            <b>2 seniors + le lead nommés dans le devis</b> (photo, prénom, LinkedIn — <a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir la section Équipe</a>). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. <b>Chaque dimension a un owner dédié</b> qui la signe. Zéro rotation en cours d'audit. Un gérant qui code et <b>sept développeurs</b>, tous intégrés aux mêmes rituels.
           </div>
         </div>
 
@@ -110,7 +110,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            En dessous de <b>1 000 utilisateurs actifs mensuels</b> et sans enjeu board / VC / compliance, un audit Express (8 k€) suffit souvent. Au-dessus, Standard (18 k€) est le sweet spot pour 90 % de nos clients. <b>Règle empirique&nbsp;: si votre prochaine décision tech vaut plus de 80 k€, un audit Standard se rembourse en économies de mauvaises décisions</b>. Le mini-audit ci-dessus vous aide à choisir.
+            En dessous de <b>1 000 utilisateurs actifs mensuels</b> et sans enjeu board / VC / compliance, un audit Express (8 k€) suffit souvent. Au-dessus, Standard (18 k€) couvre l'immense majorité des situations. <b>Règle empirique&nbsp;: si votre prochaine décision tech vaut plus de 80 k€, un audit Standard se rembourse en économies de mauvaises décisions</b>. Le mini-audit ci-dessus vous aide à choisir.
           </div>
         </div>
 

@@ -10,7 +10,7 @@ export const processHtml = `
       <div class="right">
         Pas d'improvisation. Pas de "on va voir". Chaque étape a ses <b>entrants, ses livrables intermédiaires
         et son timing</b>. Vous savez à tout moment où on en est et ce qui arrive le lendemain —
-        c'est la raison pour laquelle 92 % de nos recos sont implémentées sous 6 mois.
+        chaque recommandation arrive avec sa charge estimée et son rang de priorité, pour que vous puissiez l'exécuter sans nous.
       </div>
     </div>
 
@@ -159,7 +159,7 @@ export const processHtml = `
           </div>
         </div>
         <h4>Scoring, Tech Debt P&amp;L &amp; rédaction</h4>
-        <p>Consolidation&nbsp;: score /100 par dimension pondéré, benchmark percentile vs. base benchmark, <b>Tech Debt P&amp;L chiffré en euros</b>, matrice impact × effort, roadmap 6/12/18 mois. Rédaction du PDF 40-70 p. + deck 12-18 slides board-ready + version board-safe anonymisée. Revue interne par le lead.</p>
+        <p>Consolidation&nbsp;: score /100 par dimension pondéré, positionnement vs référentiels publics (DORA, OWASP ASVS, Web Almanac), <b>Tech Debt P&amp;L chiffré en euros</b>, matrice impact × effort, roadmap 6/12/18 mois. Rédaction du PDF 40-70 p. + deck 12-18 slides board-ready + version board-safe anonymisée. Revue interne par le lead.</p>
         <div class="at-proc-step-foot">J8 → J9 · 2 devs + lead</div>
       </article>
 

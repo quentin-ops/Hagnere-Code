@@ -30,7 +30,7 @@ export const proofStripHtml = `
     </div>
     <div class="at-proof-strip-note reveal reveal-d-1">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      Méthodologie ISO 19011 documentée. Sample report anonymisé disponible <b>avant signature</b>. Mise en relation avec d'anciens clients sous NDA possible avant engagement.
+      Méthodologie ISO 19011 documentée. Exemple de rapport disponible <b>avant signature</b>, établi sur l'un de nos propres produits.
     </div>
   </div>
 </section>

@@ -44,15 +44,16 @@ function devAvatar(member: TeamMember, prefix: string): string {
 
 /** Carte dev compacte (utilisée dans les pages services). */
 function renderServiceDevCard(member: TeamMember, prefix: string): string {
-  const statusLabel = member.status === "freelance"
-    ? "Freelance long-terme"
-    : member.id === "nicolas" ? "CTO · CDI" : "CDI";
+  // On affiche le domaine d'intervention, jamais le statut contractuel.
+  const mainDomain = member.id === "nicolas"
+    ? "Direction technique"
+    : member.roleDetail.split(" · ")[0];
 
   return `
           <div class="${prefix}-team-dev">
             ${devAvatar(member, prefix)}
             <div class="${prefix}-team-dev-name">${member.fullName}</div>
-            <div class="${prefix}-team-dev-role">${member.role} · ${statusLabel}</div>
+            <div class="${prefix}-team-dev-role">${member.role} · ${mainDomain}</div>
             <div class="${prefix}-team-dev-tags">${member.stack.slice(0, 3).map((s) => `<span>${s}</span>`).join("")}</div>
           </div>`;
 }
@@ -127,7 +128,7 @@ export function buildServiceTeamHtml(config: ServiceTeamConfig): string {
 
         <div class="${prefix}-team-note">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          Aucune mission n'est déléguée à un pool anonyme ou à un offshore. Mêmes personnes (CDI ou freelances long-terme intégrés) du brief à la livraison.
+          Aucune mission n'est déléguée à un pool anonyme ou à un offshore. Les mêmes personnes, nommées au cadrage, du brief à la livraison.
         </div>
       </div>
     </div>

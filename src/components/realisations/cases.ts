@@ -367,10 +367,10 @@ export const CASES: Record<string, CaseStudy> = {
     ],
     testimonial: {
       quote:
-        "Le site nous a repositionné en haut de gamme et a débloqué un flux de prospects qualifiés qu'on n'avait jamais eu en 8 ans d'activité.",
-      author: "Direction",
-      role: "Cabinet Hagnéré Patrimoine (cabinet du groupe Hagnéré)",
-      initials: "HP",
+        "Refondre le site du cabinet, c'était refondre notre positionnement. On voulait un outil qui qualifie les prospects avant le rendez-vous plutôt qu'une plaquette en ligne.",
+      author: "Quentin Hagnéré",
+      role: "Fondateur · Hagnéré Patrimoine (mot du fondateur — cabinet du groupe Hagnéré)",
+      initials: "QH",
     },
   },
 
@@ -479,10 +479,10 @@ export const CASES: Record<string, CaseStudy> = {
     ],
     testimonial: {
       quote:
-        "Le simulateur à lui seul a doublé le volume de leads qualifiés. Les commerciaux passent enfin leur temps avec des prospects sérieux.",
-      author: "Direction",
-      role: "Hagnéré Investissement (cabinet du groupe Hagnéré)",
-      initials: "HI",
+        "L'objectif du simulateur était simple : que le prospect arrive au rendez-vous avec son projet déjà chiffré. C'est ce qui change la nature de la conversation commerciale.",
+      author: "Quentin Hagnéré",
+      role: "Fondateur · Hagnéré Investissement (mot du fondateur — cabinet du groupe Hagnéré)",
+      initials: "QH",
     },
   },
 };

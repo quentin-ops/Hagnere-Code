@@ -181,12 +181,12 @@ export const arsenalHtml = `
               </svg>
             </div>
             <div>
-              <div class="at-arsenal-tool-name">Méthodologie propriétaire</div>
-              <div class="at-arsenal-tool-kind">benchmark percentile ·</div>
+              <div class="at-arsenal-tool-name">Grille de scoring documentée</div>
+              <div class="at-arsenal-tool-kind">référentiels publics ·</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Votre score n'est pas absolu, il est <b>comparé à notre base d.audits</b> SaaS B2B / e-commerce / edtech français comparables. « Vous êtes au 42e percentile sur la sécurité » est plus utile que « Votre score est 54 / 100 ». Base propriétaire qui grossit à chaque audit.</div>
-          <div class="at-arsenal-tool-chip">Benchmark percentile</div>
+          <div class="at-arsenal-tool-body">Votre score n'est pas un chiffre sorti d'un chapeau&nbsp;: chaque dimension est notée contre des <b>référentiels externes vérifiables</b> — DORA pour la livraison, OWASP ASVS pour la sécurité, Core Web Vitals et Web Almanac pour la performance. Vous pouvez refaire le calcul, critère par critère.</div>
+          <div class="at-arsenal-tool-chip">Grille remise avec le devis</div>
         </div>
       </div>
     </div>

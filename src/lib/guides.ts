@@ -262,30 +262,30 @@ export const GUIDES: GuideEntry[] = [
   },
   {
     slug: "combien-coute-un-saas",
-    title: "Combien coûte un SaaS en 2026 ? Prix réels · Hagnéré Code",
+    title: "Combien coûte un SaaS en 2026 ? Budget complet · Hagnéré Code",
     cardTitle: "Combien coûte un SaaS en 2026 ?",
     metaDescription:
-      "De 5 000 € à 100 000 €+ : le vrai prix d'un SaaS en 2026, coûts d'exploitation chiffrés, impact réel de l'IA et devis de MVP décortiqué ligne à ligne.",
+      "De 5 000 € à 100 000 €+ : budget complet d'un SaaS en 2026, coûts d'exploitation chiffrés, impact de l'IA et exemple de devis MVP détaillé.",
     cardDescription:
-      "Fourchettes par étape (POC, MVP, V1), coûts d'exploitation poste par poste, ce que l'IA change vraiment, et un devis de MVP réel décortiqué ligne à ligne.",
-    heroTitle: "Combien coûte un SaaS ? Le vrai budget en 2026 (+ devis de MVP décortiqué)",
+      "Fourchettes par étape (POC, MVP, V1), coûts d'exploitation poste par poste, ce que l'IA change vraiment, et un exemple de devis MVP détaillé ligne à ligne.",
+    heroTitle: "Combien coûte un SaaS ? Le budget complet en 2026 (+ devis de MVP décortiqué)",
     section: "Budget & prix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-19",
     readTimeMin: 25,
   },
   {
     slug: "prix-logiciel-sur-mesure",
     title: "Prix logiciel sur mesure 2026 : 5 000 à 250 000 € · Hagnéré Code",
-    cardTitle: "Prix d'un logiciel sur mesure : le vrai budget 2026",
+    cardTitle: "Prix d'un logiciel sur mesure : le budget complet 2026",
     metaDescription:
       "Combien coûte un logiciel sur mesure ? Grille 2026 par type, méthode jours × TJM, match chiffré contre SaaS et Excel, et un devis décortiqué ligne à ligne.",
     cardDescription:
       "La grille par type d'outil, la méthode pour vérifier un devis, le match sur 3 ans contre SaaS et Excel, le ROI en heures gagnées et un devis décortiqué.",
-    heroTitle: "Prix d'un logiciel sur mesure : le vrai budget en 2026 (+ devis décortiqué)",
+    heroTitle: "Prix d'un logiciel sur mesure : le budget complet en 2026 (+ devis décortiqué)",
     section: "Budget & prix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-19",
     readTimeMin: 25,
   },
   {
@@ -307,13 +307,13 @@ export const GUIDES: GuideEntry[] = [
     title: "Shopify ou e-commerce sur mesure : le match 2026 · Hagnéré Code",
     cardTitle: "Shopify ou e-commerce sur mesure : que choisir en 2026 ?",
     metaDescription:
-      "Shopify ou e-commerce sur mesure ? Le vrai coût de Shopify commissions comprises, le coût de sortie que personne ne chiffre et le verdict par profil.",
+      "Shopify ou e-commerce sur mesure ? Coût complet de Shopify commissions comprises, coût de sortie souvent oublié et verdict par profil.",
     cardDescription:
-      "Le coût réel de Shopify commissions et apps comprises, le match sur 3 ans avec point de bascule, le coût de sortie que personne ne chiffre, verdict par profil.",
+      "Le coût complet de Shopify, commissions et apps comprises, le match sur 3 ans avec point de bascule, le coût de sortie et le verdict par profil.",
     heroTitle: "Shopify ou e-commerce sur mesure : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-19",
     readTimeMin: 25,
   },
   {
@@ -377,13 +377,13 @@ export const GUIDES: GuideEntry[] = [
     title: "React Native ou Flutter : que choisir en 2026 · Hagnéré Code",
     cardTitle: "React Native ou Flutter : que choisir en 2026 ?",
     metaDescription:
-      "React Native ou Flutter ? Le comparatif pour dirigeants : coûts réels, recrutement en France, pérennité de chaque camp et verdict par profil.",
+      "React Native ou Flutter ? Le comparatif pour dirigeants : coûts comparés, recrutement en France, pérennité de chaque camp et verdict par profil.",
     cardDescription:
-      "Le comparatif écrit pour les dirigeants, pas pour les développeurs : coûts et TJM réels, vivier de recrutement français, gouvernance des deux camps, verdict par profil.",
+      "Le comparatif écrit pour les dirigeants, pas pour les développeurs : coûts et repères de TJM, vivier de recrutement français, gouvernance des deux camps, verdict par profil.",
     heroTitle: "React Native ou Flutter : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-19",
     readTimeMin: 25,
   },
   {
@@ -393,11 +393,11 @@ export const GUIDES: GuideEntry[] = [
     metaDescription:
       "Le modèle complet de cahier des charges d'application mobile : 10 sections commentées, exemple rempli, règles des stores et erreurs à éviter.",
     cardDescription:
-      "Le modèle en 10 sections commenté par une agence mobile, l'exemple rempli, les règles Apple/Google chiffrées, la maintenance obligatoire et les erreurs fatales.",
+      "Le modèle en 10 sections commenté par une agence mobile, l'exemple rempli, les règles Apple/Google chiffrées, la maintenance à prévoir et les erreurs à éviter.",
     heroTitle: "Cahier des charges d'application mobile : le modèle complet (+ exemple)",
     section: "Cadrer son projet",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-19",
     readTimeMin: 25,
   },
   {
@@ -411,7 +411,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Refondre son site sans perdre son SEO : la méthode complète, sourcée Google",
     section: "Cadrer son projet",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-19",
     readTimeMin: 24,
   },
   {

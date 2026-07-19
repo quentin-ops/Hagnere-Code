@@ -130,8 +130,8 @@ export const timelineHtml = `
       </div>
       <div class="oi-tl-foot-v">
         Au cadrage, on fixe la date de livraison dans le contrat — avec <b>pénalité de 7 % du forfait
-        par semaine de retard</b> au-delà de J+14. On tient nos dates sur la quasi-totalité de nos projets,
-        et on le paie quand on ne tient pas.
+        par semaine de retard</b> au-delà de J+14. La date n'est pas une intention : c'est une clause,
+        et on la paie si on ne la tient pas.
       </div>
     </div>
   </div>

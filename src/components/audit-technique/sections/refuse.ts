@@ -57,7 +57,7 @@ export const refuseHtml = `
           <div class="at-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
             <h4>Audits sans signature du NDA mutuel avant le premier call technique</h4>
-            <p>Le NDA mutuel est signé avant le premier call technique, <b>pas après</b>. Si un prospect refuse de signer avant de voir "ce qu'on va trouver", c'est un red flag qui a toujours mal fini dans nos missions. On protège nos méthodes autant que vos données.</p>
+            <p>Le NDA mutuel est signé avant le premier call technique, <b>pas après</b>. Si un prospect refuse de signer avant de voir "ce qu'on va trouver", c'est un signal qu'on ne néglige pas. On protège nos méthodes autant que vos données.</p>
           </div>
         </li>
       </ul>

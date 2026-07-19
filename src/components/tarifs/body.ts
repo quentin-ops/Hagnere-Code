@@ -160,7 +160,7 @@ ${navHtml}
       </div>
       <div class="kpi reveal reveal-d-1">
         <div class="kpi-n">100<span class="kpi-s">%</span></div>
-        <div class="kpi-l">Forfait initial tenu<br>sur les projets livrés.</div>
+        <div class="kpi-l">Du forfait signé<br>engagé au contrat.</div>
       </div>
       <div class="kpi reveal reveal-d-2">
         <div class="kpi-n">30<span class="kpi-s">j</span></div>
@@ -447,8 +447,9 @@ ${navHtml}
         <h2>Combien ça coûte<br>vraiment, par type<br>de projet ?</h2>
       </div>
       <div class="right">
-        Les fourchettes ci-dessous sont calibrées sur <b>nos projets livrés et nos barèmes internes</b>.
-        100 % de nos devis tombent <b>au milieu de la fourchette</b> annoncée — d'où notre confiance à les afficher.
+        Les fourchettes ci-dessous sont calibrées sur <b>nos barèmes internes</b> — charge de travail,
+        profils mobilisés, périmètre fonctionnel. Nous nous engageons à ce que nos devis tombent
+        <b>dans la fourchette annoncée</b> : c'est ce qui nous permet de l'afficher publiquement.
         Pour situer ces prix par rapport au marché, poste par poste, lisez notre guide
         <a href="/guides/combien-coute-un-site-internet">combien coûte un site internet en 2026</a>.
       </div>

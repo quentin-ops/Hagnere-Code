@@ -21,7 +21,7 @@ export const serpAnatomyHtml = `
         <div class="ads-serp-chrome">
           <div class="ads-serp-url">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
-            google.com/search?q=logiciel+gestion+pme
+            google.com/search?q=logiciel+gestion+pme · exemple
           </div>
         </div>
 

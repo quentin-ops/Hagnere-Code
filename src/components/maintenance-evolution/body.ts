@@ -43,8 +43,8 @@ ${navHtml}
         </div>
         <div class="me-hero-kpi-sep"></div>
         <div class="me-hero-kpi">
-          <div class="me-hero-kpi-v">4<span>ans</span></div>
-          <div class="me-hero-kpi-k">Ancienneté moyenne de nos devs</div>
+          <div class="me-hero-kpi-v">7<span>devs</span></div>
+          <div class="me-hero-kpi-k">Équipe interne, nommée au contrat</div>
         </div>
       </div>
 
@@ -74,7 +74,7 @@ ${navHtml}
       <div class="mock-window mw-main">
         <div class="win-chrome">
           <div class="win-dots"><span></span><span></span><span></span></div>
-          <div class="win-url">hagnere-code · production · health</div>
+          <div class="win-url">exemple d'interface · supervision &amp; engagements</div>
         </div>
         <svg width="100%" viewBox="0 0 540 360" style="display:block">
           <defs>
@@ -94,52 +94,54 @@ ${navHtml}
           <rect x="0" y="43" width="540" height="1" fill="#f0f0f0"/>
           <rect x="20" y="14" width="28" height="16" rx="4" fill="#0A0A0A"/>
           <text x="34" y="25" text-anchor="middle" font-family="Geist Mono" font-weight="700" font-size="9" fill="#fff">HC</text>
-          <text x="56" y="27" font-family="Geist" font-weight="700" font-size="13" fill="#0A0A0A">production · health</text>
+          <text x="56" y="27" font-family="Geist" font-weight="700" font-size="13" fill="#0A0A0A">Supervision applicative</text>
+          <rect x="224" y="13" width="72" height="18" rx="4" fill="#F5F5F5"/>
+          <text x="260" y="25" text-anchor="middle" font-family="Geist Mono" font-size="8" font-weight="700" fill="#737373" letter-spacing="1">EXEMPLE</text>
           <circle cx="438" cy="22" r="4" fill="#10B981">
             <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
           </circle>
           <rect x="448" y="12" width="78" height="20" rx="4" fill="#ECFDF5"/>
-          <text x="487" y="26" text-anchor="middle" font-family="Geist Mono" font-size="9" font-weight="700" fill="#047857">● OPERATIONAL</text>
+          <text x="487" y="26" text-anchor="middle" font-family="Geist Mono" font-size="9" font-weight="700" fill="#047857">● EN LIGNE</text>
 
-          <!-- SLA Gauge (hero stat) -->
+          <!-- SLA Gauge : engagement contractuel, pas une mesure observée -->
           <g transform="translate(24 64)">
             <rect x="0" y="0" width="248" height="108" rx="12" fill="#0A0A0A"/>
-            <text x="20" y="24" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">UPTIME · 30 DERNIERS JOURS</text>
+            <text x="20" y="24" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">SLA UPTIME · ENGAGÉ AU CONTRAT</text>
             <text x="20" y="72" font-family="Geist" font-weight="700" font-size="46" fill="#fff" letter-spacing="-0.03em">99,95<tspan font-size="26" fill="#10B981">%</tspan></text>
-            <text x="20" y="94" font-family="Geist Mono" font-size="9" fill="#10B981" font-weight="600">▲ 8 min downtime · bien sous SLA 99,9%</text>
-            <!-- tiny sparkline -->
-            <path d="M 148 72 L 158 72 L 168 72 L 178 60 L 188 72 L 198 72 L 208 72 L 218 72 L 228 72" stroke="url(#me-sla-grad)" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <text x="20" y="94" font-family="Geist Mono" font-size="9" fill="#10B981" font-weight="600">Disponibilité garantie</text>
+            <!-- seuil contractuel -->
+            <path d="M 148 72 L 228 72" stroke="url(#me-sla-grad)" stroke-width="2" fill="none" stroke-linecap="round"/>
             <circle cx="228" cy="72" r="3" fill="#10B981"/>
           </g>
 
-          <!-- 3 KPI stacked right -->
+          <!-- Engagements contractuels (aucune valeur mesurée) -->
           <g transform="translate(284 64)">
             <rect x="0" y="0" width="232" height="32" rx="8" fill="#F5F5F5"/>
-            <text x="14" y="20" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">INCIDENTS · 30J</text>
-            <text x="214" y="21" font-family="Geist" font-weight="700" font-size="15" fill="#10B981" text-anchor="end">0</text>
+            <text x="14" y="20" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">ASTREINTE · PALIER SCALE</text>
+            <text x="214" y="21" font-family="Geist" font-weight="700" font-size="15" fill="#10B981" text-anchor="end">7j/7</text>
 
             <rect x="0" y="38" width="232" height="32" rx="8" fill="#EDE9FE"/>
-            <text x="14" y="58" font-family="Geist Mono" font-size="8" fill="#4C1D95" letter-spacing="1">DEPLOYS · TRIMESTRE</text>
-            <text x="214" y="59" font-family="Geist" font-weight="700" font-size="15" fill="#6D28D9" text-anchor="end">14</text>
+            <text x="14" y="58" font-family="Geist Mono" font-size="8" fill="#4C1D95" letter-spacing="1">MTTR CONTRACTUEL · P1</text>
+            <text x="214" y="59" font-family="Geist" font-weight="700" font-size="15" fill="#6D28D9" text-anchor="end">&lt; 30 min</text>
 
             <rect x="0" y="76" width="114" height="32" rx="8" fill="#F5F5F5"/>
-            <text x="14" y="96" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">CVE PATCHÉS</text>
-            <text x="100" y="97" font-family="Geist" font-weight="700" font-size="15" fill="#0A0A0A" text-anchor="end">7</text>
+            <text x="14" y="96" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">PERTE DE DONNÉES MAX</text>
+            <text x="100" y="97" font-family="Geist" font-weight="700" font-size="15" fill="#0A0A0A" text-anchor="end">15 min</text>
 
             <rect x="118" y="76" width="114" height="32" rx="8" fill="#F5F5F5"/>
-            <text x="132" y="96" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">MTTR · P1</text>
-            <text x="218" y="97" font-family="Geist" font-weight="700" font-size="15" fill="#0A0A0A" text-anchor="end">23 min</text>
+            <text x="132" y="96" font-family="Geist Mono" font-size="8" fill="#737373" letter-spacing="1">INFRASTRUCTURE</text>
+            <text x="218" y="97" font-family="Geist" font-weight="700" font-size="15" fill="#0A0A0A" text-anchor="end">Chez vous</text>
           </g>
 
           <!-- Services grid -->
           <rect x="24" y="190" width="492" height="148" rx="12" fill="#fff" stroke="#E5E5E5"/>
-          <text x="40" y="212" font-family="Geist Mono" font-size="9" fill="#737373" letter-spacing="1">SERVICES · STATUS LIVE</text>
+          <text x="40" y="212" font-family="Geist Mono" font-size="9" fill="#737373" letter-spacing="1">SERVICES SUPERVISÉS · EXEMPLE</text>
 
           <!-- Service row 1 -->
           <g transform="translate(40 226)">
             <circle cx="6" cy="6" r="4" fill="#10B981"/>
             <text x="20" y="10" font-family="Geist" font-weight="500" font-size="11" fill="#0A0A0A">API Laravel</text>
-            <text x="160" y="10" font-family="Geist Mono" font-size="9" fill="#737373">healthy</text>
+            <text x="160" y="10" font-family="Geist Mono" font-size="9" fill="#737373">opérationnel</text>
             <text x="470" y="10" font-family="Geist Mono" font-size="9" fill="#0A0A0A" font-weight="600" text-anchor="end">p95 230 ms</text>
           </g>
           <line x1="40" y1="238" x2="500" y2="238" stroke="#F5F5F5"/>
@@ -147,7 +149,7 @@ ${navHtml}
           <g transform="translate(40 252)">
             <circle cx="6" cy="6" r="4" fill="#10B981"/>
             <text x="20" y="10" font-family="Geist" font-weight="500" font-size="11" fill="#0A0A0A">PostgreSQL 16</text>
-            <text x="160" y="10" font-family="Geist Mono" font-size="9" fill="#737373">healthy</text>
+            <text x="160" y="10" font-family="Geist Mono" font-size="9" fill="#737373">opérationnel</text>
             <text x="470" y="10" font-family="Geist Mono" font-size="9" fill="#0A0A0A" font-weight="600" text-anchor="end">p95 45 ms</text>
           </g>
           <line x1="40" y1="264" x2="500" y2="264" stroke="#F5F5F5"/>
@@ -155,7 +157,7 @@ ${navHtml}
           <g transform="translate(40 278)">
             <circle cx="6" cy="6" r="4" fill="#10B981"/>
             <text x="20" y="10" font-family="Geist" font-weight="500" font-size="11" fill="#0A0A0A">Redis · queues</text>
-            <text x="160" y="10" font-family="Geist Mono" font-size="9" fill="#737373">healthy · 12 j/s</text>
+            <text x="160" y="10" font-family="Geist Mono" font-size="9" fill="#737373">opérationnel · 12 j/s</text>
             <text x="470" y="10" font-family="Geist Mono" font-size="9" fill="#0A0A0A" font-weight="600" text-anchor="end">p95 2 ms</text>
           </g>
           <line x1="40" y1="290" x2="500" y2="290" stroke="#F5F5F5"/>
@@ -163,38 +165,38 @@ ${navHtml}
           <g transform="translate(40 304)">
             <circle cx="6" cy="6" r="4" fill="#10B981"/>
             <text x="20" y="10" font-family="Geist" font-weight="500" font-size="11" fill="#0A0A0A">Frontend Next.js</text>
-            <text x="160" y="10" font-family="Geist Mono" font-size="9" fill="#737373">healthy · CWV 95</text>
+            <text x="160" y="10" font-family="Geist Mono" font-size="9" fill="#737373">opérationnel · CWV 95</text>
             <text x="470" y="10" font-family="Geist Mono" font-size="9" fill="#0A0A0A" font-weight="600" text-anchor="end">LCP 1,4 s</text>
           </g>
           <line x1="40" y1="316" x2="500" y2="316" stroke="#F5F5F5"/>
 
           <!-- Footer line -->
-          <text x="40" y="332" font-family="Geist Mono" font-size="8" fill="#a3a3a3">Better Stack · Sentry · PagerDuty</text>
-          <text x="500" y="332" text-anchor="end" font-family="Geist Mono" font-size="8" fill="#10B981" font-weight="600">● synced · il y a 12 s</text>
+          <text x="40" y="332" font-family="Geist Mono" font-size="8" fill="#a3a3a3">Sentry · Pulse · Horizon</text>
+          <text x="500" y="332" text-anchor="end" font-family="Geist Mono" font-size="8" fill="#a3a3a3" font-weight="600">valeurs illustratives</text>
         </svg>
       </div>
 
       <div class="mock-window mw-side">
         <div class="win-chrome" style="background:#0d0d0d;border-color:rgba(255,255,255,0.08)">
           <div class="win-dots"><span></span><span></span><span></span></div>
-          <div class="win-url" style="color:rgba(255,255,255,0.5)">changelog · dernières releases</div>
+          <div class="win-url" style="color:rgba(255,255,255,0.5)">exemple · changelog mensuel livré</div>
         </div>
         <div style="padding:18px 20px 16px;background:#0A0A0A;color:#E5E5E5;font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:12px;line-height:1.4">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px">
             <div>
-              <div style="font-family:'Geist Mono';font-size:9px;color:#737373;letter-spacing:0.12em">DEPLOYS · 30 DERNIERS JOURS</div>
-              <div style="font-size:20px;font-weight:700;color:#fff;margin-top:4px">14 releases · <span style="color:#10B981">0 rollback</span></div>
+              <div style="font-family:'Geist Mono';font-size:9px;color:#737373;letter-spacing:0.12em">CHANGELOG MENSUEL · EXEMPLE</div>
+              <div style="font-size:20px;font-weight:700;color:#fff;margin-top:4px">Chaque livraison <span style="color:#10B981">tracée</span></div>
             </div>
-            <div style="font-family:'Geist Mono';font-size:10px;color:#10B981;font-weight:700">● MERGED TO MAIN</div>
+            <div style="font-family:'Geist Mono';font-size:10px;color:#737373;font-weight:700">● EXEMPLE</div>
           </div>
           <div style="display:flex;flex-direction:column;gap:11px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08)">
             <div style="display:flex;justify-content:space-between;align-items:flex-start;font-size:11px;gap:10px">
               <div style="min-width:0;flex:1">
                 <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
                   <span style="font-family:'Geist Mono';font-size:10px;color:#A78BFA;font-weight:700">v2.3.1</span>
-                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· il y a 2 j</span>
+                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· interface</span>
                 </div>
-                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">✨ Tunnel paiement Stripe · refonte UX</div>
+                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">✨ Refonte d'un parcours utilisateur</div>
               </div>
               <span style="font-family:'Geist Mono';color:#10B981;font-weight:700;font-size:10px;flex-shrink:0">feat</span>
             </div>
@@ -202,9 +204,9 @@ ${navHtml}
               <div style="min-width:0;flex:1">
                 <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
                   <span style="font-family:'Geist Mono';font-size:10px;color:#A78BFA;font-weight:700">v2.2.9</span>
-                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· il y a 3 j</span>
+                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· dépendances</span>
                 </div>
-                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">🔐 Patch CVE · Laravel 13.4.2 auto-merged</div>
+                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">🔐 Montée de version · correctifs amont</div>
               </div>
               <span style="font-family:'Geist Mono';color:#F59E0B;font-weight:700;font-size:10px;flex-shrink:0">sec</span>
             </div>
@@ -212,9 +214,9 @@ ${navHtml}
               <div style="min-width:0;flex:1">
                 <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
                   <span style="font-family:'Geist Mono';font-size:10px;color:#A78BFA;font-weight:700">v2.2.8</span>
-                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· il y a 5 j</span>
+                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· traitement</span>
                 </div>
-                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">⚡ Optim queue Redis · −40 % latence jobs</div>
+                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">⚡ Optimisation des files d'attente</div>
               </div>
               <span style="font-family:'Geist Mono';color:#60A5FA;font-weight:700;font-size:10px;flex-shrink:0">perf</span>
             </div>
@@ -222,9 +224,9 @@ ${navHtml}
               <div style="min-width:0;flex:1">
                 <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
                   <span style="font-family:'Geist Mono';font-size:10px;color:#A78BFA;font-weight:700">v2.2.7</span>
-                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· il y a 7 j</span>
+                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· données</span>
                 </div>
-                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">📊 Export CSV multi-tenant · 10k lignes/s</div>
+                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">📊 Export de gros volumes de données</div>
               </div>
               <span style="font-family:'Geist Mono';color:#10B981;font-weight:700;font-size:10px;flex-shrink:0">feat</span>
             </div>
@@ -232,9 +234,9 @@ ${navHtml}
               <div style="min-width:0;flex:1">
                 <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
                   <span style="font-family:'Geist Mono';font-size:10px;color:#A78BFA;font-weight:700">v2.2.6</span>
-                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· il y a 9 j</span>
+                  <span style="font-family:'Geist Mono';font-size:9px;color:#525252">· authentification</span>
                 </div>
-                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">🐛 Race condition SSO Azure · fix</div>
+                <div style="color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">🐛 Correction d'un accès concurrent</div>
               </div>
               <span style="font-family:'Geist Mono';color:#EF4444;font-weight:700;font-size:10px;flex-shrink:0">fix</span>
             </div>
@@ -834,7 +836,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Oui, et le trafic organique a même <b>augmenté</b> sur nos clients bien structurés en 2025. Les AI Overviews citent des sources&nbsp;: notre job est de faire que votre site soit <b>l'une de ces sources</b>. On optimise pour l'ère post-IA (E-E-A-T, contenu original, données propriétaires, structure claire).
+            Oui, et un site bien structuré peut même y gagner du trafic organique. Les AI Overviews citent des sources&nbsp;: notre job est de faire que votre site soit <b>l'une de ces sources</b>. On optimise pour l'ère post-IA (E-E-A-T, contenu original, données propriétaires, structure claire).
           </div>
         </div>
 
@@ -897,7 +899,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>SEA</b>&nbsp;: vous louez le trafic (0 clic quand vous arrêtez). <b>SEO</b>&nbsp;: vous possédez le trafic (il continue même sans dépense). Les deux sont complémentaires. Notre approche&nbsp;: construire l'organique pour <b>réduire votre dépendance au payant</b> d'ici 12–18 mois. Nos clients économisent en moyenne 8-25 k€/mois en Ads basculés vers l'organique.
+            <b>SEA</b>&nbsp;: vous louez le trafic (0 clic quand vous arrêtez). <b>SEO</b>&nbsp;: vous possédez le trafic (il continue même sans dépense). Les deux sont complémentaires. Notre approche&nbsp;: construire l'organique pour <b>réduire votre dépendance au payant</b> d'ici 12–18 mois. Chaque euro de budget media que l'organique rend inutile est un euro qui reste chez vous.
           </div>
         </div>
 

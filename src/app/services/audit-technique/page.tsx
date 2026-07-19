@@ -147,7 +147,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "2 seniors + un lead nommés dans le devis (photo, prénom, LinkedIn visibles). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. Chaque dimension auditée a un owner dédié qui la signe. Zéro rotation en cours d'audit. Équipe 100 % salariée Chambéry, ancienneté moyenne 4 ans chez Hagnéré.",
+          "2 seniors + un lead nommés dans le devis (photo, prénom, LinkedIn visibles). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. Chaque dimension auditée a un owner dédié qui la signe. Zéro rotation en cours d'audit : c'est un engagement contractuel. Un gérant qui code et sept développeurs, tous intégrés aux mêmes rituels.",
       },
     },
     {
@@ -156,7 +156,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "En dessous de 1 000 utilisateurs actifs mensuels sans enjeu board / VC / compliance, un audit Express (8 000 €) suffit souvent. Au-dessus, Standard (18 000 €) est le sweet spot pour 90 % de nos clients. Règle empirique : si votre prochaine décision tech vaut plus de 80 k€ (refonte, levée, M&A, certification), un audit se rembourse en économies de mauvaises décisions.",
+          "En dessous de 1 000 utilisateurs actifs mensuels sans enjeu board / VC / compliance, un audit Express (8 000 €) suffit souvent. Au-dessus, Standard (18 000 €) couvre l'immense majorité des situations. Règle empirique : si votre prochaine décision tech vaut plus de 80 k€ (refonte, levée, M&A, certification), un audit se rembourse en économies de mauvaises décisions.",
       },
     },
     {

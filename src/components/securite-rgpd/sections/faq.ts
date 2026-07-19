@@ -60,8 +60,8 @@ export const faqHtml = `
           </div>
           <div class="faq-a">
             <b>Pas forcément.</b> Garder votre avocat habilité fait sens (contentieux, droit social, droit
-            commercial). On prend le DPO + l'audit + la remédiation codée. Beaucoup de nos clients gardent
-            Lexing ou Haas pour les parties contentieuses, et nous pour le pilotage opérationnel.
+            commercial). On prend le DPO + l'audit + la remédiation codée. La répartition la plus courante&nbsp;:
+            un cabinet comme Lexing ou Haas sur le contentieux, nous sur le pilotage opérationnel.
           </div>
         </div>
 

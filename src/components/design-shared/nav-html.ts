@@ -132,8 +132,8 @@ const PANE_CABINET = pane({
   groupLabel: "NOTRE STUDIO",
   cards:
     paneCard("/methode", ICON.methode, "Méthode", "Sprint Fixe™ : prix tenu, dates contractuelles.") +
-    paneCard("/realisations", ICON.realisations, "Réalisations", "4 études détaillées · 22 projets livrés sur 23.") +
-    paneCard("/equipe", ICON.equipe, "Équipe", "1 gérant + 3 CDI full-stack + 3 freelances long-terme."),
+    paneCard("/realisations", ICON.realisations, "Réalisations", "4 produits en production, conçus et exploités par nous.") +
+    paneCard("/equipe", ICON.equipe, "Équipe", "Un gérant qui code et sept développeurs, nommés au cadrage."),
 });
 
 const PANE_OUTILS = pane({

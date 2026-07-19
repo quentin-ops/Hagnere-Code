@@ -156,7 +156,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Binôme obligatoire dès J+1, vous n'avez jamais un seul dev qui connaît votre projet. Si un dev part : overlap 2 semaines avec le remplaçant (clause CGV), documentation à jour, Loom d'onboarding. 0 jour de productivité perdu. Turnover interne < 10 %.",
+          "Binôme obligatoire dès J+1, vous n'avez jamais un seul dev qui connaît votre projet. Si un dev part : overlap 2 semaines avec le remplaçant (clause CGV), documentation à jour, Loom d'onboarding. Le binôme référent est nommé au contrat.",
       },
     },
     {

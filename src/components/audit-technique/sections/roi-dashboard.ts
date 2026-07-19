@@ -70,7 +70,7 @@ export const roiDashboardHtml = `
           <div class="at-timeline-label">
             <span class="at-timeline-day">J8</span>
             <span class="at-timeline-title">Synthèse &amp; scoring</span>
-            <span class="at-timeline-body">Matrice impact/effort, scoring /100 par dimension, <b>Tech Debt P&amp;L chiffré</b>, benchmark percentile</span>
+            <span class="at-timeline-body">Matrice impact/effort, scoring /100 par dimension, <b>Tech Debt P&amp;L chiffré</b>, positionnement vs référentiels publics</span>
           </div>
         </div>
 

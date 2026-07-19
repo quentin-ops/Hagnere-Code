@@ -255,9 +255,9 @@ export function RealisationsIndexPage() {
                   <span className="rlm-cta-accent">un utilisateur réel ?</span>
                 </h2>
                 <p>
-                  Avant signature, on organise volontiers une visio avec un utilisateur
-                  ou opérateur d&apos;un de nos produits. Captures, métriques avant/après,
-                  retours d&apos;expérience honnêtes — partagés sous NDA.
+                  Avant signature, on organise volontiers une visio avec l&apos;équipe qui
+                  exploite l&apos;un de nos quatre produits, au quotidien. Captures, choix
+                  techniques, arbitrages assumés — sans filtre commercial.
                 </p>
                 <div className="rlm-cta-actions">
                   <Link href="/contact" className="btn btn-accent btn-lg">

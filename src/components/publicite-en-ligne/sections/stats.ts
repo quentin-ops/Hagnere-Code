@@ -5,20 +5,20 @@ export const statsHtml = `
   <div class="wrap inner">
     <div class="ads-stats-head reveal">
       <div class="eyebrow on-dark">— En chiffres</div>
-      <h2 style="margin-top:14px">Un studio jeune,<br>des résultats mesurables.</h2>
-      <p>Des chiffres pas maquillés, tirés de nos accompagnements récents. Screenshots Search Console disponibles en call sur demande.</p>
+      <h2 style="margin-top:14px">Des engagements chiffrés,<br>écrits noir sur blanc.</h2>
+      <p>Pas de moyenne inventée ni de bilan gonflé. Les chiffres ci-dessous sont les engagements que nous signons au contrat — et que vous pouvez nous opposer.</p>
     </div>
 
     <div class="ads-stats-grid">
       <div class="ads-stat reveal">
         <div class="k">FORFAIT FIXE</div>
         <div class="n">100<span class="s">%</span></div>
-        <div class="l">Forfait initial tenu sur les projets livrés.</div>
+        <div class="l">Du montant engagé au devis. Le prix signé est le prix payé.</div>
       </div>
       <div class="ads-stat reveal reveal-d-1">
-        <div class="k">SATISFACTION</div>
-        <div class="n">4,9<span class="s">/5</span></div>
-        <div class="l">Note moyenne post-projet.</div>
+        <div class="k">PERFORMANCE</div>
+        <div class="n">95<span class="s">+</span></div>
+        <div class="l">Score Lighthouse garanti au contrat sur les pages livrées.</div>
       </div>
     </div>
   </div>

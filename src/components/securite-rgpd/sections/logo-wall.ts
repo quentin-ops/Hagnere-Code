@@ -8,7 +8,7 @@ export const logoWallHtml = `
     <div class="sr-logos-inner reveal">
       <div class="sr-logos-label">
         <span>Comment on travaille la conformité</span>
-        <span class="sr-logos-disclaimer">Références nominatives sur demande sous NDA — on met en relation avec d'anciens clients avant signature.</span>
+        <span class="sr-logos-disclaimer">Nos quatre produits sont en ligne : vous pouvez auditer vous-même ce que nous avons construit.</span>
       </div>
 
       <!-- Trust strip : preuves dures, écritures discrètes -->

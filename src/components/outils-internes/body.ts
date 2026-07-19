@@ -48,16 +48,16 @@ ${navHtml}
       </div>
       <div class="shero-proof">
         <div class="shero-proof-stat">
-          <div class="shero-proof-num">+30</div>
-          <div class="shero-proof-lbl">outils internes<br>livrés</div>
+          <div class="shero-proof-num">4</div>
+          <div class="shero-proof-lbl">produits qu'on<br>exploite nous-mêmes</div>
         </div>
         <div class="shero-proof-stat">
-          <div class="shero-proof-num">92<span class="shero-proof-num-s">%</span></div>
-          <div class="shero-proof-lbl">adoption à<br>3 mois</div>
+          <div class="shero-proof-num">100<span class="shero-proof-num-s">%</span></div>
+          <div class="shero-proof-lbl">forfait fixe<br>engagé au contrat</div>
         </div>
         <div class="shero-proof-stat">
-          <div class="shero-proof-num">4,9<span class="shero-proof-num-s">/5</span></div>
-          <div class="shero-proof-lbl">satisfaction<br>post-mission</div>
+          <div class="shero-proof-num">30<span class="shero-proof-num-s">j</span></div>
+          <div class="shero-proof-lbl">de garantie<br>après livraison</div>
         </div>
         <div class="shero-proof-stat">
           <div class="shero-proof-num">&lt;24<span class="shero-proof-num-s">h</span></div>
@@ -575,10 +575,10 @@ ${navHtml}
   <div class="wrap inner">
     <div class="reveal">
       <div class="eyebrow on-dark">— L'IA dans votre back-office</div>
-      <h2 style="margin-top:14px">Le flux type qu'on<br>déploie chez nos clients.</h2>
+      <h2 style="margin-top:14px">Le flux type qu'on<br>déploie sur un back-office.</h2>
       <p class="autom-sub">
         L'IA n'est pas un gadget. Elle remplace littéralement le copier-coller humain entre
-        vos documents entrants et vos outils métier. Voici le flux qu'on met en place chez la plupart de nos clients PME.
+        vos documents entrants et vos outils métier. Voici le flux type qu'on met en place dans une PME.
       </p>
     </div>
 
@@ -857,7 +857,7 @@ ${navHtml}
         <h2>Combien ça vous coûte<br>de rien faire ?</h2>
       </div>
       <div class="right">
-        Règle du pouce qu'on applique chez nos clients. Ajustez les curseurs à votre situation.
+        Règle du pouce qu'on applique au cadrage. Ajustez les curseurs à votre situation.
       </div>
     </div>
 
@@ -865,8 +865,8 @@ ${navHtml}
       <div class="roi-copy reveal">
         <p>
           Un outil interne est rentable à partir du moment où il économise <b>plus que son coût
-          annualisé</b>. Chez nos clients PME, la bascule se fait en moyenne entre <b>6 et 18 mois</b>.
-          Au-delà, c'est du profit net chaque année.
+          annualisé</b>. Sur les périmètres que nous cadrons, la bascule se situe généralement entre
+          <b>6 et 18 mois</b>. Au-delà, c'est du profit net chaque année.
         </p>
         <ul class="chks">
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Calcul basé sur le coût horaire chargé (salaire × 1,45)</li>
@@ -993,7 +993,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>C'est même recommandé</b>. La plupart de nos clients démarrent avec le forfait
+            <b>C'est même recommandé</b>. L'approche que nous conseillons : démarrer avec le forfait
             <i>Starter</i> sur un processus bien précis (les relances impayés, par exemple). Une fois
             l'outil en production et adopté, on étend avec d'autres modules. Cette approche limite
             le risque et permet à l'équipe de s'habituer progressivement.

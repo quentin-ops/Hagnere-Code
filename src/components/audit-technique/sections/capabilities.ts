@@ -173,12 +173,12 @@ export const capabilitiesHtml = `
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
         <h4>Cost per feature / per customer</h4>
-        <p>Breakdown facture AWS / OVH / Scaleway par tag + service, imputation aux features et tenants. Ratio coût infra / ARR, identification des clients à margin négative.</p>
+        <p>Breakdown facture AWS / OVH / Scaleway par tag + service, imputation aux features et tenants. Ratio coût infra / ARR, identification de vos comptes à marge négative.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
         <h4>Over-provisioning + ressources zombie</h4>
-        <p>EC2 / RDS sur-dimensionnées (utilisation &lt; 20 %), snapshots orphelins, EBS non attachés, NAT Gateway idle. <b>Économies typiques identifiées&nbsp;: 20 à 40 %</b> sans perte de perf.</p>
+        <p>EC2 / RDS sur-dimensionnées (utilisation &lt; 20 %), snapshots orphelins, EBS non attachés, NAT Gateway idle. <b>Chaque poste est chiffré en euros par mois</b>, avec le risque associé à la coupe.</p>
       </div>
     </div>
 
@@ -198,13 +198,13 @@ export const capabilitiesHtml = `
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg></div>
-        <h4>Turnover &amp; séniorité benchmarked</h4>
-        <p>Turnover 12 / 24 mois vs. benchmark industrie (25 % moyen FR). Pyramide de séniorité (junior / mid / senior / staff), compétences manquantes flaggées.</p>
+        <h4>Turnover &amp; séniorité de vos équipes</h4>
+        <p>Votre turnover sur 12 et 24 mois, replacé face aux repères publics du secteur. Pyramide de séniorité (junior / mid / senior / staff), compétences manquantes identifiées.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></div>
         <h4>Vélocité mesurée vs. déclarée</h4>
-        <p>Story points shippés / trimestre extraits de Linear/Jira, vs. planning déclaré. Ratio "planification vs. réalité" souvent à 0,4-0,6 — cible saine &gt; 0,8.</p>
+        <p>Story points livrés par trimestre, extraits de Linear ou Jira, comparés au planning annoncé. Sous 0,8 de ratio «&nbsp;planification vs. réalité&nbsp;», l'écart est documenté point par point.</p>
       </div>
     </div>
   </div>

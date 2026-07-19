@@ -8,9 +8,9 @@ export const teamHtml = `
         <h2>On promet "équipe nommée<br>dans le contrat". On la montre<br>avant la signature.</h2>
       </div>
       <div class="right">
-        Pas de pool tournant, pas de "vous verrez quand on signera". Voici les <b>7 personnes</b>
-        qui gèrent vos apps en TMA — prénom, rôle, LinkedIn. <b>1 gérant + 3 CDI + 3 freelances long-terme</b>.
-        Votre binôme référent est nommé au <b>kickoff</b>, overlap 2 semaines si rotation.
+        Pas de pool tournant, pas de "vous verrez quand on signera". Voici l'équipe
+        qui suivra votre application — prénom, rôle, LinkedIn. <b>Sept développeurs</b> travaillent pour Hagnéré Code.
+        Votre binôme référent est nommé au <b>kickoff</b>, recouvrement de 2 semaines s'il doit changer.
       </div>
     </div>
 
@@ -78,7 +78,7 @@ export const teamHtml = `
         <div class="me-tm-body">
           <h4>Arthur Monney</h4>
           <p class="me-tm-role">Senior Dev · Back-end Laravel</p>
-          <p class="me-tm-bio">Spécialiste architecture Laravel, API REST, performances DB. Lead dev référent sur apps SaaS B2B avec forte logique métier.</p>
+          <p class="me-tm-bio">Spécialiste architecture Laravel, API REST, performances DB. Référent sur nos SaaS à forte logique métier.</p>
           <div class="me-tm-meta">
             <span class="me-tm-chip">⚙️ Laravel / PHP</span>
             <span class="me-tm-chip">🗄️ PostgreSQL</span>
@@ -103,7 +103,7 @@ export const teamHtml = `
         <div class="me-tm-body">
           <h4>Frédéric Curinckx</h4>
           <p class="me-tm-role">Senior Dev · Back-end Laravel</p>
-          <p class="me-tm-bio">Expert architecture multi-tenant, billing Stripe, intégrations complexes. Ref sur les apps où les flux métier sont critiques.</p>
+          <p class="me-tm-bio">Expert architecture multi-tenant, billing Stripe, intégrations complexes. Référent sur nos produits où les flux métier sont critiques.</p>
           <div class="me-tm-meta">
             <span class="me-tm-chip">💳 Stripe</span>
             <span class="me-tm-chip">🏢 Multi-tenant</span>
@@ -153,7 +153,7 @@ export const teamHtml = `
         <div class="me-tm-body">
           <h4>Killian Hoarau</h4>
           <p class="me-tm-role">Senior Dev · Back-end Laravel + DevOps</p>
-          <p class="me-tm-bio">Infrastructure, CI/CD, Terraform, monitoring, astreinte. Ref sur la mise en place observability et incident response pour tous nos contrats TMA.</p>
+          <p class="me-tm-bio">Infrastructure, CI/CD, Terraform, monitoring, astreinte. Référent sur la supervision et la gestion d'incident de nos produits en production.</p>
           <div class="me-tm-meta">
             <span class="me-tm-chip">☁️ DevOps / Terraform</span>
             <span class="me-tm-chip">🚨 PagerDuty</span>
@@ -173,12 +173,12 @@ export const teamHtml = `
             <rect width="80" height="80" rx="16" fill="url(#me-tm-ps)"/>
             <text x="40" y="50" text-anchor="middle" font-family="Geist" font-weight="600" font-size="28" fill="#fff">PS</text>
           </svg>
-          <span class="me-tm-badge">Freelance long-terme</span>
+          <span class="me-tm-badge">Confirmé</span>
         </div>
         <div class="me-tm-body">
           <h4>Peter Sum Sie Kung</h4>
           <p class="me-tm-role">Dev confirmé · Laravel + front</p>
-          <p class="me-tm-bio">Renfort produit en TMA récurrente. Intégrations CMS, debugging applicatif, support utilisateur niveau 2. Bus factor maîtrisé sur les apps les plus chargées.</p>
+          <p class="me-tm-bio">Renfort produit sur le suivi applicatif. Intégrations CMS, debugging applicatif, support utilisateur niveau 2. Bus factor maîtrisé sur les apps les plus chargées.</p>
           <div class="me-tm-meta">
             <span class="me-tm-chip">🛠️ TMA Laravel</span>
             <span class="me-tm-chip">📦 Intégrations CMS</span>
@@ -191,8 +191,8 @@ export const teamHtml = `
     <div class="me-tm-note reveal reveal-d-2">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
       <div>
-        <b>1 gérant + 3 CDI full-stack + 3 freelances long-terme</b>, France &amp; Europe. <b>Pas de pool tournant, pas d'offshore</b>.
-        Turnover interne &lt; 10 % (vs industrie à 25 %). Binôme référent nommé au kickoff, overlap 2 semaines en cas de rotation (clause CGV).
+        <b>Sept développeurs</b>. <b>Pas de pool tournant.</b>
+        Binôme référent nommé au kickoff, recouvrement de 2 semaines en cas de changement (clause CGV).
       </div>
     </div>
   </div>

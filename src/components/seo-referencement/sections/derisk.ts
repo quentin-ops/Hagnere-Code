@@ -32,11 +32,11 @@ export const deriskHtml = `
           « Et si Google <b>change son algorithme</b> et je perds tout ? »
         </div>
         <h4>Méthode durable post-HCU + diagnostic update inclus</h4>
-        <p>Notre approche repose sur des fondamentaux <b>durables</b>&nbsp;: E-E-A-T, contenu utile, profil de liens naturel. Nos clients ont traversé HCU 2023, les core updates 2024-2025 sans chute. En cas d'update touchant votre site, <b>diagnostic + plan d'ajustement gratuits</b>, inclus dans le forfait.</p>
+        <p>Notre approche repose sur des fondamentaux <b>durables</b>&nbsp;: E-E-A-T, contenu utile, profil de liens naturel — exactement ce que les <i>core updates</i> successives ont récompensé depuis HCU 2023. En cas d'update touchant votre site, <b>diagnostic + plan d'ajustement gratuits</b>, inclus dans le forfait.</p>
         <div class="seo-derisk-proof">
           <span>✓ Méthode E-E-A-T</span>
           <span>✓ Diagnostic inclus</span>
-          <span>✓ 0 chute sur updates 2024-25</span>
+          <span>✓ Diagnostic garanti en cas d'update</span>
         </div>
       </div>
 

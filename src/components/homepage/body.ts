@@ -1141,7 +1141,7 @@ export const bodyHtml = `${navHtml}
   <div class="wrap inner">
     <div class="stats-head reveal">
       <div class="eyebrow on-dark">— En chiffres</div>
-      <h2 style="margin-top:14px">Un studio jeune,<br>des résultats mesurables.</h2>
+      <h2 style="margin-top:14px">Nos propres produits,<br>nos propres chiffres.</h2>
       <p>On ne gonfle pas les chiffres. Tous ceux ci-dessous sont issus directement des 4 réalisations présentées plus haut — Google Search Console à l'appui, vérifiables en un clic.</p>
     </div>
 
@@ -1176,13 +1176,13 @@ export const bodyHtml = `${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— L'équipe</div>
-        <h2>Un gérant, un CTO, deux devs CDI<br>+ trois freelances long-terme.</h2>
+        <h2>Un gérant qui code,<br>un CTO, sept développeurs.</h2>
       </div>
       <div class="right">
-        Pas de pool de freelances anonyme, pas de sous-traitance offshore.
-        Studio 7 personnes&nbsp;: <b>1 gérant + 3 CDI développeurs full-stack</b> à Chambéry +
-        <b>3 freelances long-terme</b> intégrés à nos rituels, formés à Claude Code,
-        rapides <em>et</em> autonomes sur vos projets.
+        Pas de pool anonyme, pas de sous-traitance offshore, pas de white-label.
+        <b>Sept développeurs</b> travaillent avec le gérant, intégrés aux mêmes rituels et
+        formés à Claude Code. Les personnes affectées à votre projet sont
+        <b>nommées au cadrage</b> et figurent dans le devis.
       </div>
     </div>
 
@@ -1229,10 +1229,10 @@ export const bodyHtml = `${navHtml}
       <!-- EQUIPE TECH -->
       <div class="eq-team">
         <div class="eq-team-intro reveal">
-          <h3>Un CTO, deux seniors CDI<br>et trois freelances long-terme,<br>augmentés par <em>Claude Code</em>.</h3>
+          <h3>Un CTO et des développeurs<br>seniors nommés,<br>augmentés par <em>Claude Code</em>.</h3>
           <p>
-            <b>3 CDI</b> (Nicolas, Killian, Frédéric) et <b>3 freelances long-terme intégrés à nos rituels</b>
-            (Arthur, Ryan, Peter). Tous seniors ou confirmés, spécialisés React/Next.js et TypeScript,
+            Nicolas au CTO, puis Killian, Frédéric, Arthur, Ryan et Peter sur l'exécution.
+            Tous seniors ou confirmés, spécialisés React/Next.js et TypeScript,
             avec une expertise Laravel pour les reprises d'existant.
             Le CTO apporte la vision transverse et le management tech, les devs la profondeur d'exécution.
             Et tous utilisent <b>Claude Code</b> comme assistant de développement : recherches, cadrage,
@@ -1258,8 +1258,8 @@ export const bodyHtml = `${navHtml}
             <div class="eq-dev-head">
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v2">AM</div><a class="eq-li-link" href="https://www.linkedin.com/in/arthurmonney/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Arthur Monney" title="LinkedIn Arthur Monney"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
               <div class="eq-dev-meta">
-                <div class="eq-dev-name">Arthur Monney<span class="eq-dev-tag">FREELANCE</span></div>
-                <div class="eq-dev-years">Senior Dev · Back-end · Freelance long-terme</div>
+                <div class="eq-dev-name">Arthur Monney</div>
+                <div class="eq-dev-years">Senior Dev · Back-end</div>
               </div>
             </div>
             <div class="eq-dev-spec">Architecture back-end, systèmes complexes, paiements et facturation. Reprises Laravel.</div>
@@ -1271,7 +1271,7 @@ export const bodyHtml = `${navHtml}
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v3">FC</div><a class="eq-li-link" href="https://www.linkedin.com/in/frederic-curinckx/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Frédéric Curinckx" title="LinkedIn Frédéric Curinckx"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
               <div class="eq-dev-meta">
                 <div class="eq-dev-name">Frédéric Curinckx</div>
-                <div class="eq-dev-years">Senior Dev · Full-stack · CDI</div>
+                <div class="eq-dev-years">Senior Dev · Full-stack</div>
               </div>
             </div>
             <div class="eq-dev-spec">Formulaires métier, interfaces temps-réel et queues — React Server Components, reprises Laravel/Livewire.</div>
@@ -1282,8 +1282,8 @@ export const bodyHtml = `${navHtml}
             <div class="eq-dev-head">
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v4">RM</div><a class="eq-li-link" href="https://www.linkedin.com/in/ryan-mazzitelli-907716262/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Ryan Mazzitelli" title="LinkedIn Ryan Mazzitelli"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
               <div class="eq-dev-meta">
-                <div class="eq-dev-name">Ryan Mazzitelli<span class="eq-dev-tag">FREELANCE</span></div>
-                <div class="eq-dev-years">Senior Dev · Back-end & IA · Freelance long-terme</div>
+                <div class="eq-dev-name">Ryan Mazzitelli</div>
+                <div class="eq-dev-years">Senior Dev · Back-end & IA</div>
               </div>
             </div>
             <div class="eq-dev-spec">Intégrations IA, agents Claude, webhooks et APIs tierces. Reprises Laravel.</div>
@@ -1295,7 +1295,7 @@ export const bodyHtml = `${navHtml}
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v5">KH</div><a class="eq-li-link" href="https://www.linkedin.com/in/killian-hoarau-960927138/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Killian Hoarau" title="LinkedIn Killian Hoarau"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></div>
               <div class="eq-dev-meta">
                 <div class="eq-dev-name">Killian Hoarau</div>
-                <div class="eq-dev-years">Senior Dev · Back-end & DevOps · CDI</div>
+                <div class="eq-dev-years">Senior Dev · Back-end & DevOps</div>
               </div>
             </div>
             <div class="eq-dev-spec">DevOps, sécurité, scalabilité, CI/CD et tests automatisés.</div>
@@ -1306,8 +1306,8 @@ export const bodyHtml = `${navHtml}
             <div class="eq-dev-head">
               <div class="eq-dev-avatar-wrap"><div class="eq-dev-avatar v6">PS</div><a class="eq-li-link" href="https://www.codeur.com/-peterssk" target="_blank" rel="noopener noreferrer" aria-label="Profil Codeur Peter Sum Sie Kung" title="Profil Codeur Peter Sum Sie Kung"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6"/><path d="M10 14L21 3"/></svg></a></div>
               <div class="eq-dev-meta">
-                <div class="eq-dev-name">Peter Sum Sie Kung<span class="eq-dev-tag">FREELANCE</span></div>
-                <div class="eq-dev-years">Dev confirmé · Full-stack · Freelance long-terme</div>
+                <div class="eq-dev-name">Peter Sum Sie Kung</div>
+                <div class="eq-dev-years">Dev confirmé · Full-stack</div>
               </div>
             </div>
             <div class="eq-dev-spec">Full-stack React/Vue + PHP (Laravel, Symfony). Renforts API, modélisation BDD et intégrations.</div>
@@ -1330,20 +1330,20 @@ export const bodyHtml = `${navHtml}
         <!-- Stats -->
         <div class="eq-stats reveal reveal-d-3">
           <div class="eqs">
-            <div class="n">3<span class="s"> + 3</span></div>
-            <div class="l">3 CDI (CTO + 2 devs) + 3 freelances long-terme</div>
+            <div class="n">7</div>
+            <div class="l">développeurs travaillent avec le gérant</div>
           </div>
           <div class="eqs">
             <div class="n">Senior</div>
             <div class="l">niveau moyen de l'équipe tech</div>
           </div>
           <div class="eqs">
-            <div class="n">100<span class="s"> %</span></div>
-            <div class="l">basés à Chambéry</div>
+            <div class="n">0</div>
+            <div class="l">offshore, white-label, pool anonyme</div>
           </div>
           <div class="eqs">
-            <div class="n">×2<span class="s">–×3</span></div>
-            <div class="l">vélocité mesurée sur nos derniers sprints</div>
+            <div class="n">100<span class="s"> %</span></div>
+            <div class="l">de l'équipe outillée avec Claude Code</div>
           </div>
         </div>
       </div>

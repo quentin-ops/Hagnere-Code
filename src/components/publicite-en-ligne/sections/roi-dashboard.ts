@@ -15,7 +15,7 @@ export const roiDashboardHtml = `
         <h2>Pas de ROAS moyen à afficher.<br>Le mode de calcul, oui.</h2>
       </div>
       <div class="right">
-        Nous n'avons pas encore de client externe&nbsp;: il n'existe donc aucune moyenne de résultats à publier ici, et nous n'en inventerons pas. Ce que nous documentons, c'est le <b>mode de calcul</b> que nous appliquerons chez vous&nbsp;: un ROAS blended multi-canaux, dédupé côté serveur, réconcilié avec les deals signés dans votre CRM — jamais un ROAS auto-reporté par Meta ou Google Ads.
+        Un ROAS moyen d'agence ne dit rien de votre compte&nbsp;: tout dépend du secteur, du panier et de la maturité du tracking. Ce que nous documentons ici, c'est le <b>mode de calcul</b> que nous appliquerons chez vous&nbsp;: un ROAS blended multi-canaux, dédupé côté serveur, réconcilié avec les deals signés dans votre CRM — jamais un ROAS auto-reporté par Meta ou Google Ads.
       </div>
     </div>
 

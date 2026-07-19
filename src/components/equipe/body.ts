@@ -17,11 +17,11 @@ ${navHtml}
   <div class="ehero-radial"></div>
   <div class="wrap ehero-inner">
     <div class="ehero-copy">
-      <div class="ehero-eyebrow"><span class="pill hero-pill"><span class="dot"></span><span class="hero-pill-brand">L'équipe</span><span class="hero-pill-tag">7 personnes · 3 CDI + 3 freelances long-terme</span></span></div>
+      <div class="ehero-eyebrow"><span class="pill hero-pill"><span class="dot"></span><span class="hero-pill-brand">L'équipe</span><span class="hero-pill-tag">Un gérant qui code · sept développeurs</span></span></div>
       <h1>L'équipe Hagnéré Code :<br>les développeurs full-stack qui<br><span class="accent">vont coder votre projet.</span></h1>
       <p class="ehero-sub">
         Pas de pool de freelances anonymes. Pas de sous-traitance offshore. Pas de white-label déguisé.
-        <b>1 gérant associé codeur, 3 salariés en CDI</b> et <b>3 freelances long-terme intégrés</b> à nos rituels —
+        <b>Un gérant associé codeur</b> et <b>sept développeurs</b> intégrés aux mêmes rituels —
         c'est cette équipe stable qui prend en charge votre projet du brief à la production,
         et qui reste vos interlocuteurs après.
       </p>
@@ -36,7 +36,7 @@ ${navHtml}
         </a>
       </div>
       <div class="ehero-meta">
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>3 CDI · 3 freelances intégrés</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Sept développeurs, tous nommés</span>
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Pas de pool anonyme</span>
         <span class="sep"></span>
@@ -49,7 +49,7 @@ ${navHtml}
       <div class="emos-frame">
         <div class="emos-header">
           <div class="emos-header-l"><span class="dot"></span> L'équipe complète</div>
-          <div class="emos-header-r">7 PERSONNES · CHAMBÉRY</div>
+          <div class="emos-header-r">ÉQUIPE NOMMÉE · CHAMBÉRY</div>
         </div>
         <div class="emos">
           <a class="emos-card emos-founder" href="#fondateur" aria-label="Voir Quentin Hagnéré">
@@ -76,7 +76,6 @@ ${navHtml}
               <div class="emos-name">Arthur Monney</div>
               <div class="emos-role">Senior · Paiements</div>
             </div>
-            <div class="emos-tag emos-tag-freelance">FREELANCE</div>
             <span class="emos-card-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </a>
 
@@ -95,7 +94,6 @@ ${navHtml}
               <div class="emos-name">Ryan Mazzitelli</div>
               <div class="emos-role">Senior · IA</div>
             </div>
-            <div class="emos-tag emos-tag-freelance">FREELANCE</div>
             <span class="emos-card-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </a>
 
@@ -114,14 +112,13 @@ ${navHtml}
               <div class="emos-name">Peter Sum Sie Kung</div>
               <div class="emos-role">Full-stack · PHP/JS</div>
             </div>
-            <div class="emos-tag emos-tag-freelance">FREELANCE</div>
             <span class="emos-card-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </a>
         </div>
 
         <div class="emos-legend">
           <span class="emos-legend-dot" aria-hidden="true"></span>
-          <span class="emos-legend-text">Cliquez sur une carte pour ouvrir le profil détaillé de la personne — <b>LinkedIn</b> pour les CDI et freelances déclarés, <b>Codeur.com</b> pour Peter.</span>
+          <span class="emos-legend-text">Cliquez sur une carte pour ouvrir le profil détaillé de la personne — <b>LinkedIn</b> pour la plupart, <b>Codeur.com</b> pour Peter.</span>
         </div>
       </div>
     </div>
@@ -133,8 +130,8 @@ ${navHtml}
   <div class="wrap">
     <div class="kpi-grid">
       <div class="kpi reveal">
-        <div class="kpi-n">3<span class="kpi-s">+3</span></div>
-        <div class="kpi-l">CDI à Chambéry +<br>3 freelances long-terme.</div>
+        <div class="kpi-n">7<span class="kpi-s"></span></div>
+        <div class="kpi-l">Développeurs travaillent<br>avec le gérant.</div>
       </div>
       <div class="kpi reveal reveal-d-1">
         <div class="kpi-n">5<span class="kpi-s">+</span></div>
@@ -142,11 +139,11 @@ ${navHtml}
       </div>
       <div class="kpi reveal reveal-d-2">
         <div class="kpi-n">0<span class="kpi-s">%</span></div>
-        <div class="kpi-l">Offshore, white-label,<br>pool freelance anonyme.</div>
+        <div class="kpi-l">Offshore, white-label,<br>pool anonyme.</div>
       </div>
       <div class="kpi reveal reveal-d-3">
-        <div class="kpi-n">×3<span class="kpi-s"></span></div>
-        <div class="kpi-l">Productivité moyenne<br>grâce à Claude Code.</div>
+        <div class="kpi-n">100<span class="kpi-s">%</span></div>
+        <div class="kpi-l">De l'équipe outillée<br>avec Claude Code.</div>
       </div>
     </div>
   </div>
@@ -354,13 +351,13 @@ ${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— L'équipe tech</div>
-        <h2>Deux seniors CDI<br>+ trois freelances long-terme.</h2>
+        <h2>Cinq développeurs seniors<br>aux compétences complémentaires.</h2>
       </div>
       <div class="right">
-        Cinq développeurs sur des compétences <b>complémentaires</b> — paiements, temps-réel, IA, DevOps,
-        renforts full-stack. <b>Frédéric</b> et <b>Killian</b> en CDI à Chambéry, plus <b>Arthur</b>,
-        <b>Ryan</b> et <b>Peter</b> en freelance long-terme intégrés à nos rituels (daily, démo,
-        revue de code). Une équipe stable qui couvre 95 % des projets sans pool externe.
+        Paiements, temps-réel, IA, DevOps, renforts full-stack. <b>Frédéric</b>, <b>Killian</b>,
+        <b>Arthur</b>, <b>Ryan</b> et <b>Peter</b> sont intégrés aux mêmes rituels (daily, démo,
+        revue de code) et travaillent tous sous la direction technique du CTO.
+        Une équipe stable, sans pool externe.
       </div>
     </div>
 
@@ -394,7 +391,7 @@ ${navHtml}
           <span>PENNYLANE</span>
         </div>
         <div class="dev-foot">
-          <span class="dev-foot-meta">5+ ans XP · Freelance long-terme</span>
+          <span class="dev-foot-meta">5+ ans XP · Intégré à nos rituels</span>
         </div>
       </div>
 
@@ -428,7 +425,7 @@ ${navHtml}
           <span>ALPINE.JS</span>
         </div>
         <div class="dev-foot">
-          <span class="dev-foot-meta">5+ ans XP · CDI</span>
+          <span class="dev-foot-meta">5+ ans XP · Intégré à nos rituels</span>
         </div>
       </div>
 
@@ -462,7 +459,7 @@ ${navHtml}
           <span>PGVECTOR</span>
         </div>
         <div class="dev-foot">
-          <span class="dev-foot-meta">5+ ans XP · Freelance long-terme</span>
+          <span class="dev-foot-meta">5+ ans XP · Intégré à nos rituels</span>
         </div>
       </div>
 
@@ -496,7 +493,7 @@ ${navHtml}
           <span>FORGE</span>
         </div>
         <div class="dev-foot">
-          <span class="dev-foot-meta">5+ ans XP · CDI</span>
+          <span class="dev-foot-meta">5+ ans XP · Intégré à nos rituels</span>
         </div>
       </div>
 
@@ -509,7 +506,7 @@ ${navHtml}
           </a>
         </div>
         <h3 class="dev-name">Peter Sum Sie Kung</h3>
-        <div class="dev-role">Dev confirmé — Full-stack PHP / Laravel / Symfony · Freelance</div>
+        <div class="dev-role">Dev confirmé — Full-stack PHP / Laravel / Symfony</div>
         <p class="dev-spec">
           Le couteau suisse back + front. Quand il faut produire vite et propre — endpoints API,
           intégrations, refactor — Peter livre. Bilingue PHP (Laravel, Symfony) et JS
@@ -533,14 +530,14 @@ ${navHtml}
           <span>MYSQL</span>
         </div>
         <div class="dev-foot">
-          <span class="dev-foot-meta">3+ ans XP · Freelance long-terme</span>
+          <span class="dev-foot-meta">3+ ans XP · Intégré à nos rituels</span>
         </div>
       </div>
     </div>
 
     <p class="tech-note reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      <span>Chaque carte ouvre le profil de la personne (LinkedIn pour les CDI, Codeur pour les freelances long-terme).</span>
+      <span>Chaque carte ouvre le profil de la personne (LinkedIn pour la plupart, Codeur pour Peter).</span>
     </p>
   </div>
 </section>
@@ -852,7 +849,7 @@ ${navHtml}
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3z"/></svg>
         </div>
         <h4>Pas de sous-traitance anonyme</h4>
-        <p>Aucun pool de freelances anonyme, aucun offshore, aucun white-label. Chaque personne qui touche votre code est <b>nommée</b>, intégrée à nos rituels et signe un NDA — 1 gérant + 3 CDI full-stack à Chambéry + 3 freelances long-terme (Arthur, Ryan, Peter), point.</p>
+        <p>Aucun pool anonyme, aucun offshore, aucun white-label. Chaque personne qui touche votre code est <b>nommée</b>, intégrée à nos rituels et signe un NDA — un gérant qui code et <b>sept développeurs</b>, point.</p>
       </div>
 
       <div class="val-card reveal reveal-d-2">
@@ -860,7 +857,7 @@ ${navHtml}
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
         <h4>Niveau senior &amp; encadrement</h4>
-        <p>5+ ans d'expérience pour tous les CDI et freelances seniors (Arthur, Ryan), CTO inclus. Notre dev confirmé Peter (3+ ans XP, full-stack PHP/JS) opère <b>toujours sous code review</b> du CTO et d'un senior. Aucun client ne sert de terrain d'apprentissage en solo.</p>
+        <p>5+ ans d'expérience pour tous les seniors (Arthur, Ryan, Frédéric, Killian), CTO inclus. Notre dev confirmé Peter (3+ ans XP, full-stack PHP/JS) opère <b>toujours sous code review</b> du CTO et d'un senior. Personne n'apprend le métier en solo sur un projet.</p>
       </div>
 
       <div class="val-card reveal reveal-d-3">
@@ -905,7 +902,7 @@ ${navHtml}
         <h3>On recrute<br><span class="accent">les bons profils.</span></h3>
         <p class="rec-lead">
           On ne grossit pas pour grossir. On recrute <b>une à deux personnes par an</b>,
-          uniquement quand on identifie une compétence manquante qui freine nos clients.
+          uniquement quand on identifie une compétence manquante qui freine la production.
           Si vous reconnaissez votre profil ci-dessous, écrivez-nous — on étudie chaque candidature
           sous 5 jours ouvrés.
         </p>
@@ -984,15 +981,14 @@ ${navHtml}
 
         <div class="faq-item">
           <div class="faq-q">
-            Travaillez-vous avec des freelances ou de la sous-traitance ?
+            Travaillez-vous avec un pool externe ou de la sous-traitance ?
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Pas de pool de freelances anonymes, jamais.</b> Studio 7 personnes&nbsp;:
-            <b>1 gérant + 3 CDI full-stack à Chambéry</b> (Quentin, Nicolas CTO, Frédéric, Killian)
-            + <b>3 freelances long-terme nommément identifiés</b> (Arthur Monney et Ryan Mazzitelli en seniors,
-            Peter Sum Sie Kung en dev confirmé), tous intégrés à nos rituels (daily, code review, démo client),
-            tous sous NDA, tous présents sur cette page. Pas de sous-traitance offshore, pas de white-label,
+            <b>Pas de pool anonyme, jamais.</b> Un gérant associé codeur (Quentin) et
+            <b>sept développeurs</b> — Nicolas au CTO, Frédéric, Killian, Arthur et Ryan en seniors,
+            Peter en dev confirmé — tous intégrés à nos rituels (daily, code review, démo),
+            tous sous NDA, tous nommés sur cette page. Pas de sous-traitance offshore, pas de white-label,
             aucune rotation d'inconnus à chaque projet.
           </div>
         </div>
@@ -1030,8 +1026,8 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>5 ans et plus</b> pour tous les CDI (fondateur, CTO, quatre seniors full-stack).
-            Notre freelance long-terme Peter est <b>dev confirmé</b> (3+ ans XP) et travaille
+            <b>5 ans et plus</b> pour le fondateur, le CTO et les quatre seniors full-stack.
+            Peter est <b>dev confirmé</b> (3+ ans XP) et travaille
             <b>toujours sous revue de code</b> du CTO et d'un senior — il n'est jamais seul
             décisionnaire sur un projet. Personne en stage, personne en alternance, personne en
             première année.

@@ -43,7 +43,7 @@ export const comparisonHtml = `
         <div class="at-cmp-col at-cmp-col-label">Dimensions couvertes</div>
         <div class="at-cmp-col at-cmp-bad">1-2 · code quality uniquement</div>
         <div class="at-cmp-col">3-4 · selon spécialité du freelance</div>
-        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>8 dimensions · benchmark percentile</b></div>
+        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>8 dimensions · grille documentée</b></div>
         <div class="at-cmp-col at-cmp-good">8-9 · méthodologie propriétaire</div>
       </div>
 

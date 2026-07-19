@@ -5,11 +5,11 @@ export const verticalsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Pour qui on audite le mieux</div>
-        <h2>Six verticales où notre méthode<br>est éprouvée.</h2>
+        <h2>Six verticales où notre méthode<br>est la plus affûtée.</h2>
       </div>
       <div class="right">
-        Pas parce qu'on refuse les autres, mais parce qu'on a <b>développé des benchmarks propriétaires</b>
-        sur ces 6 profils&nbsp;: on connaît leurs architectures typiques, leurs dimensions critiques,
+        Pas parce qu'on refuse les autres, mais parce qu'on a <b>outillé notre grille pour ces 6 profils</b>&nbsp;:
+        on connaît leurs architectures typiques, leurs dimensions critiques,
         et le vocabulaire pour parler à leurs VC / acquéreurs / clients enterprise.
       </div>
     </div>

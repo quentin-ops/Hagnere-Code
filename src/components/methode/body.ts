@@ -39,11 +39,11 @@ ${navHtml}
       <div class="mhero-creds">
         <div class="mhero-cred">
           <div class="mhero-cred-n">100<span class="mhero-cred-s">%</span></div>
-          <div class="mhero-cred-l">Forfait initial<br>tenu sur les projets livrés.</div>
+          <div class="mhero-cred-l">Du forfait signé<br>engagé au contrat.</div>
         </div>
         <div class="mhero-cred">
-          <div class="mhero-cred-n">0<span class="mhero-cred-s"> €</span></div>
-          <div class="mhero-cred-l">Pénalités de retard<br>versées à ce jour.</div>
+          <div class="mhero-cred-n">30<span class="mhero-cred-s"> j</span></div>
+          <div class="mhero-cred-l">De garantie incluse<br>après la livraison.</div>
         </div>
       </div>
 
@@ -87,7 +87,7 @@ ${navHtml}
       <li><a class="mtoc-link" href="#timeline" data-section="timeline"><span class="mtoc-num">3.0</span><span class="mtoc-t">Timeline d'un Sprint Fixe™</span></a></li>
       <li><a class="mtoc-link" href="#lagniappe" data-section="lagniappe"><span class="mtoc-num">4.0</span><span class="mtoc-t">La lagniappe</span></a></li>
       <li><a class="mtoc-link" href="#preuves" data-section="preuves"><span class="mtoc-num">5.0</span><span class="mtoc-t">Preuves chiffrées</span></a></li>
-      <li><a class="mtoc-link" href="#journal" data-section="journal"><span class="mtoc-num">6.0</span><span class="mtoc-t">Journal du vendredi</span></a></li>
+      <li><a class="mtoc-link" href="#journal" data-section="journal"><span class="mtoc-num">6.0</span><span class="mtoc-t">Le vendredi, en pratique</span></a></li>
       <li><a class="mtoc-link" href="#claude" data-section="claude"><span class="mtoc-num">7.0</span><span class="mtoc-t">Claude Code en copilote</span></a></li>
       <li><a class="mtoc-link" href="#temoignages" data-section="temoignages"><span class="mtoc-num">8.0</span><span class="mtoc-t">Ce qu'en disent les clients</span></a></li>
       <li><a class="mtoc-link" href="#exclusion" data-section="exclusion"><span class="mtoc-num">9.0</span><span class="mtoc-t">Pas pour vous si…</span></a></li>
@@ -105,13 +105,13 @@ ${navHtml}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ce qu'on a essayé puis abandonné</div>
-        <h2>Quatre pratiques courantes<br>qui nous ont fait perdre<br>des projets — <span class="strike-bad">avant Sprint Fixe™</span>.</h2>
+        <div class="eyebrow">— Quatre pratiques qu'on refuse</div>
+        <h2>Quatre pratiques courantes<br>qui font dérailler<br>des projets — <span class="strike-bad">et qu'on exclut</span>.</h2>
       </div>
       <div class="right">
-        On ne juge pas les agences qui les pratiquent (on en a fait partie).
-        Mais à force de livrer des projets au forfait fixe, on a la conviction que ces quatre pratiques
-        détruisent la confiance plus qu'elles ne servent le client. Voici nos conclusions.
+        On ne juge pas les agences qui les pratiquent — ce sont des usages installés du métier.
+        Mais elles reposent toutes sur la même mécanique&nbsp;: reporter le risque sur le client.
+        Sprint Fixe™ est construit pour l'exclure. Voici ce qu'on fait à la place.
       </div>
     </div>
 
@@ -119,19 +119,19 @@ ${navHtml}
       <div class="anti-card reveal">
         <div class="anti-broken">
           <span class="anti-x">×</span>
-          <span class="anti-broken-label">CE QU'ON FAISAIT AVANT</span>
+          <span class="anti-broken-label">LA PRATIQUE COURANTE</span>
         </div>
         <h3 class="anti-bad">Régie au TJM extensible</h3>
         <p class="anti-bad-p">
-          « 600 €/jour, on verra combien de jours ça prend. » Sur nos premiers projets,
-          la dérive moyenne tournait à +35 %. C'est <em>nous</em> qui avions mal cadré, le client payait.
+          « 600 €/jour, on verra combien de jours ça prend. » Dans ce modèle, chaque imprécision
+          de cadrage se transforme en jours facturés. C'est l'agence qui cadre mal, et le client qui paie.
         </p>
         <div class="anti-divider"></div>
         <div class="anti-good">
           <span class="anti-check">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>
           </span>
-          <span class="anti-good-label">CE QU'ON FAIT MAINTENANT</span>
+          <span class="anti-good-label">CE QU'ON FAIT À LA PLACE</span>
         </div>
         <h4 class="anti-good-h">Forfait fixe contractuel</h4>
         <p class="anti-good-p">
@@ -143,20 +143,20 @@ ${navHtml}
       <div class="anti-card reveal reveal-d-1">
         <div class="anti-broken">
           <span class="anti-x">×</span>
-          <span class="anti-broken-label">CE QU'ON FAISAIT AVANT</span>
+          <span class="anti-broken-label">LA PRATIQUE COURANTE</span>
         </div>
         <h3 class="anti-bad">Démo en fin de projet</h3>
         <p class="anti-bad-p">
-          On disparaissait 3 mois et on revenait avec un livrable. Sur 4 projets,
-          on a dû refaire 25-30 % du périmètre parce que le client découvrait trop tard
-          que ce n'était pas ce qu'il avait imaginé.
+          L'agence disparaît trois mois et revient avec un livrable. Le client découvre l'écart
+          entre ce qu'il imaginait et ce qui a été construit une fois le budget consommé —
+          et c'est presque toujours lui qui paie la reprise.
         </p>
         <div class="anti-divider"></div>
         <div class="anti-good">
           <span class="anti-check">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>
           </span>
-          <span class="anti-good-label">CE QU'ON FAIT MAINTENANT</span>
+          <span class="anti-good-label">CE QU'ON FAIT À LA PLACE</span>
         </div>
         <h4 class="anti-good-h">Démo chaque vendredi · 16 h</h4>
         <p class="anti-good-p">
@@ -168,19 +168,19 @@ ${navHtml}
       <div class="anti-card reveal reveal-d-2">
         <div class="anti-broken">
           <span class="anti-x">×</span>
-          <span class="anti-broken-label">CE QU'ON FAISAIT AVANT</span>
+          <span class="anti-broken-label">LA PRATIQUE COURANTE</span>
         </div>
         <h3 class="anti-bad">Repo + hébergement chez nous</h3>
         <p class="anti-bad-p">
-          On gardait la main « pour faciliter ». En réalité, ça créait un lock-in déguisé.
-          Un client a mis 2 mois à récupérer son code chez un confrère. On s'est dit : plus jamais.
+          L'agence garde la main « pour faciliter ». En réalité, c'est un lock-in déguisé&nbsp;:
+          récupérer son code et son hébergement peut prendre des semaines de négociation.
         </p>
         <div class="anti-divider"></div>
         <div class="anti-good">
           <span class="anti-check">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>
           </span>
-          <span class="anti-good-label">CE QU'ON FAIT MAINTENANT</span>
+          <span class="anti-good-label">CE QU'ON FAIT À LA PLACE</span>
         </div>
         <h4 class="anti-good-h">Code &amp; data chez vous · J+1</h4>
         <p class="anti-good-p">
@@ -192,20 +192,20 @@ ${navHtml}
       <div class="anti-card reveal reveal-d-3">
         <div class="anti-broken">
           <span class="anti-x">×</span>
-          <span class="anti-broken-label">CE QU'ON FAISAIT AVANT</span>
+          <span class="anti-broken-label">LA PRATIQUE COURANTE</span>
         </div>
         <h3 class="anti-bad">Discovery « gratuit »</h3>
         <p class="anti-bad-p">
-          On offrait un cadrage de 2-3 jours en avant-vente. Résultat : on sous-investissait
-          sur les zones grises pour rester rentable. Les zones grises explosaient ensuite,
-          en cours de projet.
+          Un cadrage de 2-3 jours offert en avant-vente n'est jamais gratuit&nbsp;: pour rester
+          rentable, on sous-investit sur les zones grises. Ce sont exactement celles qui
+          explosent ensuite, en cours de projet.
         </p>
         <div class="anti-divider"></div>
         <div class="anti-good">
           <span class="anti-check">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>
           </span>
-          <span class="anti-good-label">CE QU'ON FAIT MAINTENANT</span>
+          <span class="anti-good-label">CE QU'ON FAIT À LA PLACE</span>
         </div>
         <h4 class="anti-good-h">Discovery payé · déduit</h4>
         <p class="anti-good-p">
@@ -662,8 +662,8 @@ ${navHtml}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
             </div>
             <div>
-              <b>Livrée sur la quasi-totalité de nos projets</b><br>
-              <span>Seuls les projets très courts (&lt; 3 sem.) n'ont pas eu de lagniappe.</span>
+              <b>Prévue dès le cadrage</b><br>
+              <span>Sauf sur les formats très courts (&lt; 3 sem.), où le périmètre ne le permet pas.</span>
             </div>
           </div>
           <div class="choc-bullet">
@@ -740,7 +740,7 @@ ${navHtml}
       <div class="proof-card reveal">
         <div class="proof-meta">PROMESSE · BUDGET</div>
         <div class="proof-n">100<span class="proof-s">%</span></div>
-        <div class="proof-l">Forfait initial <b>tenu sur les projets livrés</b>.</div>
+        <div class="proof-l">Du forfait signé, <b>engagé au contrat</b>.</div>
         <div class="proof-bar">
           <div class="proof-bar-fill" style="width:100%"></div>
         </div>
@@ -750,21 +750,21 @@ ${navHtml}
       <div class="proof-card proof-zero reveal reveal-d-1">
         <div class="proof-meta">PROMESSE · RETARD</div>
         <div class="proof-n">0<span class="proof-s"> €</span></div>
-        <div class="proof-l"><b>Pénalités de retard versées</b> depuis le lancement.</div>
+        <div class="proof-l"><b>Surcoût facturé</b> si le retard vient de nous.</div>
         <div class="proof-bar">
           <div class="proof-bar-fill proof-bar-fill-zero" style="width:0%"></div>
         </div>
-        <div class="proof-since">Clause active sur tous nos contrats</div>
+        <div class="proof-since">Le dépassement est absorbé à notre charge — clause active sur tous nos contrats.</div>
       </div>
 
       <div class="proof-card reveal reveal-d-2">
         <div class="proof-meta">PROMESSE · DÉMOS</div>
-        <div class="proof-n">51<span class="proof-s">/52</span></div>
-        <div class="proof-l">Démos hebdo <b>tenues comme prévu</b> en 2025.</div>
+        <div class="proof-n">1<span class="proof-s">/sem.</span></div>
+        <div class="proof-l">Démo hebdomadaire <b>inscrite au contrat</b>, chaque vendredi à 16 h.</div>
         <div class="proof-bar">
-          <div class="proof-bar-fill" style="width:98%"></div>
+          <div class="proof-bar-fill" style="width:100%"></div>
         </div>
-        <div class="proof-since">1 reportée (mariage d'un dev) · rattrapée le lundi</div>
+        <div class="proof-since">Deux démos manquées d'affilée : avoir de 5 % du forfait, sans discussion.</div>
       </div>
 
       <div class="proof-card reveal reveal-d-3">
@@ -783,7 +783,7 @@ ${navHtml}
       <div class="proof-foot-ic">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
       </div>
-      <span>Compteur mis à jour <b>après chaque livraison</b>. Quand on ratera une promesse, ce sera affiché ici — pas un trophée, un journal de bord. Pour vérifier une métrique, <a href="mailto:quentin@hagnere-patrimoine.fr?subject=Demande%20historique%20m%C3%A9triques">demandez-nous l'historique brut</a>.</span>
+      <span>Ce ne sont pas des moyennes observées, ce sont des <b>engagements contractuels</b> : chaque ligne ci-dessus figure noir sur blanc dans nos contrats. Pour la vérifier avant de signer, <a href="mailto:quentin@hagnere-patrimoine.fr?subject=Demande%20du%20mod%C3%A8le%20de%20contrat">demandez-nous le modèle de contrat</a>.</span>
     </div>
   </div>
 </section>
@@ -793,126 +793,125 @@ ${navHtml}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Le journal du vendredi</div>
-        <h2>Cinq démos récentes.<br>Anonymisées.<br><span class="grad-accent">Mais réelles.</span></h2>
+        <div class="eyebrow">— Exemple de journal de suivi</div>
+        <h2>À quoi ressemble<br>le vendredi<br><span class="grad-accent">sur votre projet.</span></h2>
       </div>
       <div class="right">
-        Chaque vendredi à 16 h, on fait une démo en visio à chaque client actif.
-        Voici, anonymisées, cinq démos issues de notre journal de bord (extrait sur
-        une période récente). Si vous voulez creuser un cas précis, on vous met en
-        relation avec le client concerné (avec son accord). Pour le journal complet
-        à jour, <a href="mailto:quentin@hagnere-patrimoine.fr?subject=Journal%20du%20vendredi%20-%20demande%20d%27acc%C3%A8s">demandez-nous l'accès</a>.
+        Chaque vendredi à 16 h, une démo en visio, puis une ligne au journal de suivi.
+        Ci-dessous, <b>un exemple illustratif</b> — pas le compte rendu de missions réelles :
+        il montre le format exact de ce que vous recevrez, semaine après semaine, sur votre
+        propre projet. Le journal de votre projet, lui, vous appartient et reste dans votre repo.
       </div>
     </div>
 
     <div class="fri-list reveal">
       <div class="fri-row">
         <div class="fri-date">
-          <div class="fri-date-d">18</div>
-          <div class="fri-date-m">AVR</div>
+          <div class="fri-date-d">1</div>
+          <div class="fri-date-m">SEM.</div>
         </div>
         <div class="fri-body">
           <div class="fri-meta">
-            <span class="fri-tag fri-tag-saas">SAAS B2B</span>
+            <span class="fri-tag fri-tag-saas">EXEMPLE · MVP SAAS</span>
+            <span class="fri-meta-sep">·</span>
+            <span class="fri-meta-week">SEMAINE 1 / 6</span>
+            <span class="fri-meta-sep">·</span>
+            <span class="fri-meta-dur">DÉMO DE CADRAGE</span>
+          </div>
+          <h4>Les premiers écrans deviennent cliquables</h4>
+          <p>Ce que vous voyez ce vendredi-là : le repo ouvert sur votre organisation, la stack en place, et les maquettes transformées en composants réels. <b>Ce que vous décidez :</b> valider la direction visuelle pendant qu'elle coûte encore zéro à changer.</p>
+        </div>
+        <div class="fri-status">
+          <span class="fri-status-dot"></span>
+          FORMAT TYPE
+        </div>
+      </div>
+
+      <div class="fri-row">
+        <div class="fri-date">
+          <div class="fri-date-d">3</div>
+          <div class="fri-date-m">SEM.</div>
+        </div>
+        <div class="fri-body">
+          <div class="fri-meta">
+            <span class="fri-tag fri-tag-saas">EXEMPLE · MVP SAAS</span>
+            <span class="fri-meta-sep">·</span>
+            <span class="fri-meta-week">SEMAINE 3 / 6</span>
+            <span class="fri-meta-sep">·</span>
+            <span class="fri-meta-dur">DÉMO MI-PARCOURS</span>
+          </div>
+          <h4>Le cœur métier tourne, la lagniappe s'annonce</h4>
+          <p>Les écrans qui portent la valeur du produit passent en démo. C'est le rendez-vous où l'équipe a assez de contexte pour proposer la feature bonus. <b>Ce que vous décidez :</b> l'accepter, la refuser, ou en demander une autre.</p>
+        </div>
+        <div class="fri-status">
+          <span class="fri-status-dot"></span>
+          FORMAT TYPE
+        </div>
+      </div>
+
+      <div class="fri-row">
+        <div class="fri-date">
+          <div class="fri-date-d">4</div>
+          <div class="fri-date-m">SEM.</div>
+        </div>
+        <div class="fri-body">
+          <div class="fri-meta">
+            <span class="fri-tag fri-tag-ecom">EXEMPLE · ARBITRAGE</span>
             <span class="fri-meta-sep">·</span>
             <span class="fri-meta-week">SEMAINE 4 / 6</span>
             <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-dur">28 min de démo</span>
+            <span class="fri-meta-dur">DÉMO D'INTÉGRATIONS</span>
           </div>
-          <h4>Plateforme de gestion d'événements RH</h4>
-          <p>Live demo des notifications email + Slack temps-réel sur changement de statut. Validation client OK, on passe en QA semaine 5. <b>Lagniappe annoncée :</b> dashboard mobile responsive optimisé tablette.</p>
-        </div>
-        <div class="fri-status">
-          <span class="fri-status-dot"></span>
-          ON TRACK
-        </div>
-      </div>
-
-      <div class="fri-row">
-        <div class="fri-date">
-          <div class="fri-date-d">11</div>
-          <div class="fri-date-m">AVR</div>
-        </div>
-        <div class="fri-body">
-          <div class="fri-meta">
-            <span class="fri-tag fri-tag-internal">OUTIL INTERNE</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-week">SEMAINE 6 / 6 · LIVRAISON</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-dur">52 min de démo</span>
-          </div>
-          <h4>Back-office logistique multi-sites (livraison)</h4>
-          <p>Démo de mise en production. Formation des 14 utilisateurs en parallèle. Garantie 30 j enclenchée. Care+ activé pour 12 mois.</p>
-        </div>
-        <div class="fri-status fri-status-done">
-          <span class="fri-status-dot"></span>
-          LIVRÉ
-        </div>
-      </div>
-
-      <div class="fri-row">
-        <div class="fri-date">
-          <div class="fri-date-d">04</div>
-          <div class="fri-date-m">AVR</div>
-        </div>
-        <div class="fri-body">
-          <div class="fri-meta">
-            <span class="fri-tag fri-tag-vitrine">SITE VITRINE</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-week">SEMAINE 2 / 3</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-dur">18 min de démo</span>
-          </div>
-          <h4>Refonte d'un site cabinet patrimoine</h4>
-          <p>Présentation des 12 pages développées, animations fluides, images optimisées (Lighthouse 99/96). <b>Lagniappe :</b> simulateur de fiscalité ajouté gratuitement.</p>
-        </div>
-        <div class="fri-status">
-          <span class="fri-status-dot"></span>
-          ON TRACK
-        </div>
-      </div>
-
-      <div class="fri-row">
-        <div class="fri-date">
-          <div class="fri-date-d">28</div>
-          <div class="fri-date-m">MAR</div>
-        </div>
-        <div class="fri-body">
-          <div class="fri-meta">
-            <span class="fri-tag fri-tag-saas">SAAS B2C</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-week">SEMAINE 8 / 10</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-dur">40 min de démo</span>
-          </div>
-          <h4>App de comptabilité immobilière (LMNP)</h4>
-          <p>Intégration de l'EDI à la DGFiP validée — c'est le gros morceau. Pré-prod accessible aux 50 beta-testeurs. Bug Stripe découvert en démo, corrigé sous 2 h.</p>
-        </div>
-        <div class="fri-status">
-          <span class="fri-status-dot"></span>
-          ON TRACK
-        </div>
-      </div>
-
-      <div class="fri-row">
-        <div class="fri-date">
-          <div class="fri-date-d">21</div>
-          <div class="fri-date-m">MAR</div>
-        </div>
-        <div class="fri-body">
-          <div class="fri-meta">
-            <span class="fri-tag fri-tag-ecom">E-COMMERCE</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-week">SEMAINE 5 / 8</span>
-            <span class="fri-meta-sep">·</span>
-            <span class="fri-meta-dur">35 min de démo</span>
-          </div>
-          <h4>Boutique Shopify Plus marque outdoor</h4>
-          <p>Tunnel de paiement custom validé, intégration ERP en cours. Décision client en démo : on retire la fonctionnalité « bundle » trop complexe. <b>Économie 6 j de dev</b>, scope ajusté.</p>
+          <h4>Une démo sert aussi à retirer du périmètre</h4>
+          <p>Paiements, webhooks, automatisations : les briques risquées passent devant vous dès qu'elles fonctionnent, jamais à la fin. Si une fonctionnalité s'avère trop coûteuse pour ce qu'elle apporte, on la sort — et l'arbitrage est acté par avenant, pas subi.</p>
         </div>
         <div class="fri-status fri-status-warn">
           <span class="fri-status-dot"></span>
-          ARBITRAGE
+          FORMAT TYPE
+        </div>
+      </div>
+
+      <div class="fri-row">
+        <div class="fri-date">
+          <div class="fri-date-d">5</div>
+          <div class="fri-date-m">SEM.</div>
+        </div>
+        <div class="fri-body">
+          <div class="fri-meta">
+            <span class="fri-tag fri-tag-vitrine">EXEMPLE · QUALITÉ</span>
+            <span class="fri-meta-sep">·</span>
+            <span class="fri-meta-week">SEMAINE 5 / 6</span>
+            <span class="fri-meta-sep">·</span>
+            <span class="fri-meta-dur">DÉMO DE PRÉ-RECETTE</span>
+          </div>
+          <h4>Les scores se mesurent devant vous</h4>
+          <p>Audit sécurité, conformité RGPD, tests de bout en bout. Le score Lighthouse est lancé en direct pendant la séance : <b>95 et plus est un engagement contractuel</b>, pas un objectif affiché après coup.</p>
+        </div>
+        <div class="fri-status">
+          <span class="fri-status-dot"></span>
+          FORMAT TYPE
+        </div>
+      </div>
+
+      <div class="fri-row">
+        <div class="fri-date">
+          <div class="fri-date-d">6</div>
+          <div class="fri-date-m">SEM.</div>
+        </div>
+        <div class="fri-body">
+          <div class="fri-meta">
+            <span class="fri-tag fri-tag-internal">EXEMPLE · LIVRAISON</span>
+            <span class="fri-meta-sep">·</span>
+            <span class="fri-meta-week">SEMAINE 6 / 6 · LIVRAISON</span>
+            <span class="fri-meta-sep">·</span>
+            <span class="fri-meta-dur">DÉMO DE MISE EN PROD</span>
+          </div>
+          <h4>Le dernier vendredi est celui de la production</h4>
+          <p>Déploiement sur votre infrastructure, formation de vos équipes, remise de la documentation et du runbook. <b>La garantie 30 jours démarre à cette date</b> — et le forfait Care mensuel reste optionnel, jamais imposé.</p>
+        </div>
+        <div class="fri-status fri-status-done">
+          <span class="fri-status-dot"></span>
+          FORMAT TYPE
         </div>
       </div>
     </div>
@@ -922,11 +921,11 @@ ${navHtml}
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
       </div>
       <div class="fri-cta-body">
-        <b>Vous voulez voir une démo en direct ?</b>
-        <span>On vous invite gratuitement à une démo client réelle (avec leur accord) pour que vous voyiez la méthode en action avant de signer.</span>
+        <b>Vous voulez voir la méthode en action ?</b>
+        <span>On vous fait la démo de nos propres produits — LMNP.AI, SCI-AI, Hagnéré Patrimoine, Hagnéré Investissement — dans le format exact du vendredi. Ce sont les logiciels qu'on conçoit et qu'on exploite nous-mêmes.</span>
       </div>
       <a href="#contact" class="btn btn-ghost">
-        Assister à une démo
+        Voir une démo du vendredi
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -945,7 +944,7 @@ ${navHtml}
           <span>OUTIL</span>
           <span>Claude Code · pas un pilier, un copilote</span>
         </div>
-        <h3>Un gérant qui code, 3 CDI full-stack<br>+ 3 freelances long-terme,<br><span class="accent">Claude Code en copilote.</span></h3>
+        <h3>Un gérant qui code,<br>sept développeurs,<br><span class="accent">Claude Code en copilote.</span></h3>
         <p class="claude-lead">
           Beaucoup d'agences brandissent l'IA comme un argument marketing. Chez nous, c'est un
           outil de productivité opéré par chaque dev senior — recherche de doc, exploration de bibliothèques,
@@ -1124,7 +1123,7 @@ ${navHtml}
         <h2>Sprint Fixe™ <span class="strike-bad">n'est pas</span><br>la bonne réponse pour vous<br>dans ces 4 cas.</h2>
       </div>
       <div class="right">
-        On a refusé 6 projets sur 29 demandes en 2025. Pas par confort — par honnêteté.
+        Nous refusons les projets que nous ne saurions pas livrer dans les conditions promises.
         Si vous reconnaissez votre situation ci-dessous, on vous oriente <b>gratuitement</b>
         vers une équipe mieux adaptée. C'est plus utile pour vous, et ça nous évite un projet
         qu'on n'aurait pas livré dans les conditions promises.
@@ -1175,7 +1174,7 @@ ${navHtml}
 
     <div class="nfy-foot reveal">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      <span>On a refusé <b>6 projets sur 29 demandes</b> en 2025. Préférer dire non que mal livrer.</span>
+      <span>Nous préférons <b>dire non</b> plutôt que mal livrer. C'est une règle, pas une posture.</span>
     </div>
   </div>
 </section>

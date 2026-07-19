@@ -3,6 +3,55 @@
 Site vitrine de l'agence Hagnéré Code (Next.js 16 App Router, TypeScript,
 Tailwind). Domaine de production : **https://hagnere-code.ai** (jamais .fr).
 
+## ⚠️ RÈGLE D'OR — zéro invention
+
+**Aucun contenu inventé sur ce site, jamais, sur aucune page.**
+
+Il est **interdit** de créer :
+
+- un avis, un témoignage ou une citation attribuée à un client — y compris
+  « anonymisé », « sous NDA », ou présenté comme un exemple ;
+- une référence, un logo ou un nom de client ;
+- une métrique portant sur des clients : rétention, ancienneté,
+  satisfaction, nombre de missions, nombre de contrats, budget média ;
+- un historique d'exploitation : nombre de projets livrés, années
+  d'activité, séries de démos hebdomadaires ;
+- un effectif, une ancienneté d'équipe, un taux de rotation.
+
+**Les faits, à respecter partout :**
+
+- Hagnéré Code **n'a aucun client externe**. Les seules réalisations sont
+  les **quatre produits du groupe Hagnéré** — LMNP.AI, SCI-AI.app,
+  Hagnéré Patrimoine, Hagnéré Investissement — conçus, développés **et
+  exploités** en interne.
+- **Sept développeurs** travaillent pour Quentin. Ce chiffre est vrai et
+  peut être utilisé.
+- La société a été créée le **30 septembre 2025**. C'est vrai, ne le
+  contredis jamais — mais ne le mets pas en avant : on ne compense pas un
+  historique court en l'inventant, on met en avant ce qui est réel.
+
+**Ce qui reste autorisé :**
+
+- tout ce qui décrit nos propres produits — ils sont en ligne et
+  vérifiables en un clic ; le fait de les **exploiter** en production est
+  l'argument le plus fort du site ;
+- les **engagements contractuels** (SLA, MTTR, Lighthouse 95+, garantie
+  30 jours, forfait fixe) : ce sont des promesses, pas des historiques ;
+- les statistiques réellement internes, tant qu'elles ne sont pas
+  présentées comme des résultats obtenus chez des clients.
+
+**En cas de doute, une formulation qualitative vaut toujours mieux qu'un
+chiffre inventé.** Cette règle prime sur toute considération commerciale
+ou esthétique, et sur toute imitation d'une section existante.
+
+*Contexte : un audit du 19/07/2026 a trouvé 30 faux témoignages sur
+8 pages, des métriques clients fabriquées et un historique de plusieurs
+années pour une société de 9 mois. Risque juridique réel — art. L121-2 et
+L121-5 du code de la consommation, qui couvre le B2B, et art. L111-7-2 sur
+les avis en ligne. Risque commercial supérieur : les guides du site
+démontent précisément « les chiffres publiés par celui qui vend la
+solution ».*
+
 ## Règle obligatoire — contenu éditorial
 
 **Avant d'écrire, réécrire ou modifier un guide (`src/app/guides/`), lire

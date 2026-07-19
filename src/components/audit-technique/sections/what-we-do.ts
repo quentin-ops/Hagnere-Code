@@ -62,7 +62,7 @@ export const whatWeDoHtml = `
           <span class="at-wwd-badge at-wwd-badge-observability">Perf</span>
         </div>
         <h3>Performance</h3>
-        <p>Latence p95/p99 API, requêtes DB (N+1, index manquants, full scans), Core Web Vitals front, bundle size, stratégie de cache, Redis eviction. <b>Benchmark vs. votre percentile secteur</b>&nbsp;: vous êtes dans le top 20 % ou pas&nbsp;?</p>
+        <p>Latence p95/p99 API, requêtes DB (N+1, index manquants, full scans), Core Web Vitals front, bundle size, stratégie de cache, Redis eviction. <b>Comparaison aux seuils publics de référence</b>, pas à une moyenne maison invérifiable.</p>
         <div class="at-wwd-tags">
           <span class="at-wwd-tag">p95 / p99</span>
           <span class="at-wwd-tag">N+1 &amp; index</span>
@@ -135,11 +135,11 @@ export const whatWeDoHtml = `
           <span class="at-wwd-badge at-wwd-badge-performance">FinOps</span>
         </div>
         <h3>FinOps cloud</h3>
-        <p>Coût cloud <b>par feature et par client</b>, over-provisioning, reserved instances, egress data transfer, ressources zombie. Potentiel d'économie typique <b>20-40 %</b> sur AWS / OVH / Scaleway chez les clients sans FinOps actif.</p>
+        <p>Coût cloud <b>par feature et par client</b>, over-provisioning, reserved instances, egress data transfer, ressources zombie. Chaque gisement d'économie est <b>chiffré en euros par mois</b> sur AWS / OVH / Scaleway, avec le risque associé à chaque coupe.</p>
         <div class="at-wwd-tags">
           <span class="at-wwd-tag">Cost per feature</span>
           <span class="at-wwd-tag">Over-provisioning</span>
-          <span class="at-wwd-tag">Économies 20-40 %</span>
+          <span class="at-wwd-tag">Économies chiffrées en €</span>
         </div>
       </article>
 
@@ -153,7 +153,7 @@ export const whatWeDoHtml = `
           <span class="at-wwd-badge at-wwd-badge-incident">Équipe</span>
         </div>
         <h3>Équipe &amp; organisation</h3>
-        <p>Séniorité équipe, turnover 12 mois, compétences manquantes, vélocité mesurée, maturité agile, documentation tribale. <b>5 à 8 entretiens no-blame avec vos devs</b> pour identifier les blocages vécus vs. déclarés.</p>
+        <p>Séniorité de votre équipe, turnover sur 12 mois, compétences manquantes, vélocité mesurée, maturité agile, documentation tribale. <b>5 à 8 entretiens no-blame avec vos devs</b> pour identifier les blocages vécus vs. déclarés.</p>
         <div class="at-wwd-tags">
           <span class="at-wwd-tag">5-8 entretiens</span>
           <span class="at-wwd-tag">Turnover · vélocité</span>

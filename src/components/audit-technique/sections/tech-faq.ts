@@ -22,7 +22,7 @@ export const techFaqHtml = `
         <div class="faq-a">
           <b>IAM read-only uniquement</b> sur votre cloud (rôles restreints), accès GitHub avec <b>membre "external" sans droits d'écriture</b>,
           Sentry / Datadog avec rôles "viewer". <b>Tout est journalisé côté vous</b>&nbsp;: vous pouvez auditer nos actions via CloudTrail
-          ou équivalent. Les accès sont <b>révoqués à J+11 automatiquement</b> (script partagé dans le devis). Nos audits&nbsp;: 0 incident de modification.
+          ou équivalent. Les accès sont <b>révoqués à J+11 automatiquement</b> (script partagé dans le devis). Aucun de nos accès n'ouvre de droit d'écriture&nbsp;: la modification est impossible par construction, pas seulement interdite.
         </div>
       </div>
 
@@ -93,14 +93,14 @@ export const techFaqHtml = `
 
       <div class="faq-item">
         <div class="faq-q">
-          Benchmark percentile vs. audits · méthodologie ?
+          Comment situez-vous nos scores · méthodologie ?
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Base propriétaire anonymisée</b> de audits livrés depuis le lancement. Chaque audit score /100 par dimension (code, archi, perf, sécu, infra, DevEx, FinOps, équipe).
-          On extrait <b>votre percentile sectoriel</b>&nbsp;: "vous êtes au 42e percentile sur la sécurité vs. vos pairs SaaS B2B FR 30-100 salariés".
-          Plus utile qu'un "vous avez 54/100". On <b>catégorise</b> par vertical (SaaS B2B, E-commerce, Marketplace, Edtech, HealthTech, Fintech) et par taille (MAU et headcount).
-          Base enrichie à chaque nouvel audit.
+          <b>Grille documentée et publique</b>, pas une boîte noire. Chaque audit score /100 par dimension (code, archi, perf, sécu, infra, DevEx, FinOps, équipe),
+          selon une grille de critères remise avec le devis et adossée à des <b>référentiels externes vérifiables</b>&nbsp;:
+          DORA pour la livraison, OWASP ASVS pour la sécurité applicative, Core Web Vitals et le Web Almanac pour la performance, ISO 19011 pour la conduite d'audit.
+          Chaque note renvoie au critère qui la produit&nbsp;: vous pouvez contester ligne à ligne, et refaire le calcul vous-même après nos remédiations.
         </div>
       </div>
 

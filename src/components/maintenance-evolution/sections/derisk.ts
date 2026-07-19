@@ -56,8 +56,8 @@ export const deriskHtml = `
         <h4>Équipe nommée dans le contrat · 1 remplacement max · overlap 2 sem.</h4>
         <p>Les 2 à 4 personnes qui gèrent votre compte sont <b>nommées dans le contrat</b>, photos + LinkedIn
         inclus. <b>Maximum 1 remplacement sur 12 mois</b> sauf cas de force majeure documenté. En cas de changement,
-        <b>overlap obligatoire de 2 semaines</b> entre sortant et remplaçant. Notre turnover interne est &lt; 10 %
-        (vs industrie à 25 %), ancienneté moyenne des devs&nbsp;: 4 ans. Revue trimestrielle avec vous comme garde-fou.</p>
+        <b>recouvrement obligatoire de 2 semaines</b> entre sortant et remplaçant. Sept développeurs travaillent pour
+        Hagnéré Code&nbsp;: le remplaçant vient de la même équipe, jamais d'un pool externe. Revue trimestrielle avec vous comme garde-fou.</p>
         <div class="me-derisk-proof">
           <span>✓ Nom dans le contrat</span>
           <span>✓ Overlap 2 sem.</span>
@@ -101,11 +101,11 @@ export const deriskHtml = `
         <div class="me-derisk-fear">
           « Vous êtes à Chambéry, pas à Paris — <b>vous tiendrez la distance</b> ? »
         </div>
-        <h4>Fuseau FR, coûts maîtrisés, zéro turnover parisien</h4>
-        <p>On est basés à Chambéry (Savoie), par choix&nbsp;: <b>fuseau horaire français</b>, loyers 3× plus bas, <b>turnover tech divisé par 3 vs. Paris</b> (nos devs restent en moyenne 4 ans vs 18 mois sur le marché parisien). Résultat&nbsp;: vos forfaits sont 20-30 % moins chers à qualité équivalente, et la personne qui commence votre projet sera encore là dans 3 ans. <b>Pas d'off-shore, pas de near-shore — équipe 100 % France</b>.</p>
+        <h4>Fuseau FR, coûts maîtrisés, binôme nommé au contrat</h4>
+        <p>On est basés à Chambéry (Savoie), par choix&nbsp;: <b>fuseau horaire français</b>, coûts de structure plus bas qu'à Paris, <b>sept développeurs</b> qui travaillent au quotidien sur nos propres produits en production. Résultat&nbsp;: vos forfaits sont 20-30 % moins chers à qualité équivalente, et le binôme qui prend votre projet est <b>nommé au contrat</b>, avec recouvrement de 2 semaines s'il doit changer. <b>Pas d'off-shore, pas de near-shore — équipe 100 % France</b>.</p>
         <div class="me-derisk-proof">
           <span>✓ Équipe 100 % FR</span>
-          <span>✓ Turnover ÷ 3 vs Paris</span>
+          <span>✓ Binôme nommé au contrat</span>
           <span>✓ Visio + 1 déplacement/trim. inclus</span>
         </div>
       </div>
@@ -115,8 +115,8 @@ export const deriskHtml = `
         <div class="me-derisk-fear">
           « Et si vous <b>faites faillite</b> ou vous faites <b>racheter</b> ? »
         </div>
-        <h4>Clause d'escrow · partenaire secondaire nommé · comptabilité publique</h4>
-        <p>Trois parades contractuelles&nbsp;: (1) <b>clause d'escrow du code + documentation</b> déposée chez un tiers de confiance (Codex Escrow ou équivalent) — si on disparaît, vous récupérez tout sous 7 j. (2) <b>Partenaire secondaire nommé dans le contrat</b> (une agence partenaire avec qui on a un accord de reprise réciproque). (3) Hagnéré Code SAS est <b>rentable, sans dette, sans dépendance investisseur</b> — comptabilité publique consultable sur societe.com.</p>
+        <h4>Clause d'escrow · partenaire secondaire nommé · indépendance financière</h4>
+        <p>Trois parades contractuelles&nbsp;: (1) <b>clause d'escrow du code + documentation</b> déposée chez un tiers de confiance (Codex Escrow ou équivalent) — si on disparaît, vous récupérez tout sous 7 j. (2) <b>Partenaire secondaire nommé dans le contrat</b> (une agence partenaire avec qui on a un accord de reprise réciproque). (3) <b>Aucune dépendance investisseur</b> : l'agence est financée par son activité, sans levée de fonds ni échéance imposée de l'extérieur.</p>
         <div class="me-derisk-proof">
           <span>✓ Escrow code + docs</span>
           <span>✓ Partenaire secondaire</span>

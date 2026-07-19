@@ -33,18 +33,17 @@ function devProfileLink(member: TeamMember): string {
   return "";
 }
 
-/** Tag à droite du nom : CTO / FREELANCE (rien pour CDI). */
+/** Tag à droite du nom : CTO uniquement (aucun statut contractuel affiché). */
 function devNameTag(member: TeamMember): string {
   if (member.id === "nicolas") return `<span class="eq-dev-tag">CTO</span>`;
-  if (member.status === "freelance") return `<span class="eq-dev-tag">FREELANCE</span>`;
   return "";
 }
 
-/** Sous-titre rôle + statut. */
+/** Sous-titre : rôle + domaine principal. */
 function devYears(member: TeamMember): string {
   if (member.id === "nicolas") return "CTO · Direction technique";
-  const statusSuffix = member.status === "freelance" ? "Freelance long-terme" : "CDI";
-  return `${member.role} · ${statusSuffix}`;
+  const mainDomain = member.roleDetail.split(" · ")[0];
+  return `${member.role} · ${mainDomain}`;
 }
 
 function renderDevCard(member: TeamMember, variantClass: string): string {
@@ -97,7 +96,7 @@ const DEV_VARIANT_BY_ID: Record<string, string> = {
   peter: "v6",
 };
 
-// Ordre d'affichage : CTO en premier, puis CDI, puis freelances par "ancienneté" projet.
+// Ordre d'affichage : CTO en premier, puis les développeurs par domaine.
 const DISPLAY_ORDER = ["nicolas", "killian", "frederic", "arthur", "ryan", "peter"] as const;
 
 const devCardsHtml = DISPLAY_ORDER
@@ -118,13 +117,13 @@ export const equipeHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— L'équipe</div>
-        <h2>Un gérant, un CTO, deux devs CDI<br>+ trois freelances long-terme.</h2>
+        <h2>Un gérant qui code,<br>un CTO, sept développeurs.</h2>
       </div>
       <div class="right">
-        Pas de pool de freelances anonyme, pas de sous-traitance offshore.
-        Studio 7 personnes&nbsp;: <b>1 gérant + 3 CDI développeurs full-stack</b> à Chambéry +
-        <b>3 freelances long-terme</b> intégrés à nos rituels, formés à Claude Code,
-        rapides <em>et</em> autonomes sur vos projets.
+        Pas de pool anonyme, pas de sous-traitance offshore, pas de white-label.
+        <b>Sept développeurs</b> travaillent avec le gérant, intégrés aux mêmes rituels et
+        formés à Claude Code. Les personnes affectées à votre projet sont
+        <b>nommées au cadrage</b> et figurent dans le devis.
       </div>
     </div>
 
@@ -171,10 +170,10 @@ export const equipeHtml = `
       <!-- EQUIPE TECH -->
       <div class="eq-team">
         <div class="eq-team-intro reveal">
-          <h3>Un CTO, deux seniors CDI<br>et trois freelances long-terme,<br>augmentés par <em>Claude Code</em>.</h3>
+          <h3>Un CTO et des développeurs<br>seniors nommés,<br>augmentés par <em>Claude Code</em>.</h3>
           <p>
-            <b>3 CDI</b> (Nicolas, Killian, Frédéric) et <b>3 freelances long-terme intégrés à nos rituels</b>
-            (Arthur, Ryan, Peter). Tous seniors ou confirmés, spécialisés React/Next.js et TypeScript,
+            Nicolas au CTO, puis Killian, Frédéric, Arthur, Ryan et Peter sur l'exécution —
+            tous seniors ou confirmés, spécialisés React/Next.js et TypeScript,
             avec une expertise Laravel pour les reprises d'existant.
             Le CTO apporte la vision transverse et le management tech, les devs la profondeur d'exécution.
             Et tous utilisent <b>Claude Code</b> comme assistant de développement : recherches, cadrage,
@@ -201,20 +200,20 @@ export const equipeHtml = `
         <!-- Stats -->
         <div class="eq-stats reveal reveal-d-3">
           <div class="eqs">
-            <div class="n">3<span class="s"> + 3</span></div>
-            <div class="l">3 CDI (CTO + 2 devs) + 3 freelances long-terme</div>
+            <div class="n">7</div>
+            <div class="l">développeurs travaillent avec le gérant</div>
           </div>
           <div class="eqs">
             <div class="n">Senior</div>
             <div class="l">niveau moyen de l'équipe tech</div>
           </div>
           <div class="eqs">
-            <div class="n">100<span class="s"> %</span></div>
-            <div class="l">basés à Chambéry</div>
+            <div class="n">0</div>
+            <div class="l">offshore, white-label, pool anonyme</div>
           </div>
           <div class="eqs">
-            <div class="n">×2<span class="s">–×3</span></div>
-            <div class="l">vélocité mesurée sur nos derniers sprints</div>
+            <div class="n">100<span class="s"> %</span></div>
+            <div class="l">de l'équipe outillée avec Claude Code</div>
           </div>
         </div>
       </div>

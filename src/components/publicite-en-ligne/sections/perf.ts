@@ -25,12 +25,12 @@ export const perfHtml = `
           </defs>
           <circle cx="120" cy="120" r="96" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="14"/>
           <circle cx="120" cy="120" r="96" fill="none" stroke="url(#adsPerfGrad)" stroke-width="14" stroke-linecap="round" stroke-dasharray="540 604" transform="rotate(-90 120 120)"/>
-          <text x="120" y="126" text-anchor="middle" font-family="Geist" font-weight="700" font-size="54" fill="#fff">+ 187</text>
-          <text x="120" y="156" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#A78BFA" letter-spacing="2">% TRAFIC ORGANIQUE</text>
+          <text x="120" y="126" text-anchor="middle" font-family="Geist" font-weight="700" font-size="54" fill="#fff">12</text>
+          <text x="120" y="156" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#A78BFA" letter-spacing="2">MOIS D'HORIZON</text>
         </svg>
         <div class="ads-perf-dial-caption">
-          <div class="ads-perf-dial-kind">CROISSANCE TYPIQUE</div>
-          <div class="ads-perf-dial-sub">Clics organiques sur 9 à 12 mois d'accompagnement — médiane observée sur nos projets récents.</div>
+          <div class="ads-perf-dial-kind">HORIZON DE TRAVAIL</div>
+          <div class="ads-perf-dial-sub">Le SEO se joue sur 9 à 12 mois. Vos objectifs de clics organiques sont fixés avec vous au cadrage, puis suivis chaque mois dans le reporting.</div>
         </div>
       </div>
 

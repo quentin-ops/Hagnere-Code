@@ -51,7 +51,7 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Score /100 par dimension</b> — 8 scores + score global pondéré. Méthodologie ISO 19011 documentée, benchmark percentile vs. base benchmark interne.</div>
+            <div><b>Score /100 par dimension</b> — 8 scores + score global pondéré. Méthodologie ISO 19011 documentée, positionnement vs référentiels publics (DORA, OWASP ASVS, Web Almanac).</div>
           </li>
           <li>
             <div class="at-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>

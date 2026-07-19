@@ -75,12 +75,12 @@ export const deriskHtml = `
         <div class="at-derisk-fear">
           « Le rapport sera <b>générique</b>, on l'aura déjà lu 10 fois. »
         </div>
-        <h4>Sample report téléchargeable · benchmark percentile · recos chiffrées en €</h4>
-        <p>Sample anonymisé d'un audit réel <b>téléchargeable avant signature</b> — vous voyez notre méthodologie, notre niveau de détail, notre Tech Debt P&amp;L. Chaque recommandation est <b>chiffrée en jours/homme et en euros</b>, pas une liste générique "améliorer la sécurité". Votre score est comparé à notre <b>base propriétaire d.audits</b> SaaS B2B français comparables — pas à un benchmark public marketing.</p>
+        <h4>Rapport d'exemple téléchargeable · grille documentée · recos chiffrées en €</h4>
+        <p>Un <b>rapport d'exemple, réalisé sur l'un de nos propres produits</b>, est téléchargeable avant signature — vous voyez notre méthodologie, notre niveau de détail, notre Tech Debt P&amp;L, sans avoir à nous croire sur parole. Chaque recommandation est <b>chiffrée en jours/homme et en euros</b>, pas une liste générique "améliorer la sécurité". Chaque note renvoie au critère de la grille qui la produit&nbsp;: vous pouvez la contester ligne à ligne.</p>
         <div class="at-derisk-proof">
-          <span>✓ Sample téléchargeable</span>
+          <span>✓ Exemple téléchargeable</span>
           <span>✓ Recos chiffrées j/h + €</span>
-          <span>✓ Benchmark percentile audits</span>
+          <span>✓ Grille de scoring ouverte</span>
         </div>
       </div>
 

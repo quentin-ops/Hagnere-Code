@@ -912,7 +912,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Oui, et le trafic organique a même <b>augmenté</b> sur nos clients bien structurés en 2025. Les AI Overviews citent des sources&nbsp;: notre job est de faire que votre site soit <b>l'une de ces sources</b>. On optimise pour l'ère post-IA (E-E-A-T, contenu original, données propriétaires, structure claire).
+            Oui, et un site bien structuré peut même y gagner du trafic organique. Les AI Overviews citent des sources&nbsp;: notre job est de faire que votre site soit <b>l'une de ces sources</b>. On optimise pour l'ère post-IA (E-E-A-T, contenu original, données propriétaires, structure claire).
           </div>
         </div>
 
@@ -975,7 +975,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>SEA</b>&nbsp;: vous louez le trafic (0 clic quand vous arrêtez). <b>SEO</b>&nbsp;: vous possédez le trafic (il continue même sans dépense). Les deux sont complémentaires. Notre approche&nbsp;: construire l'organique pour <b>réduire votre dépendance au payant</b> d'ici 12–18 mois. Nos clients économisent en moyenne 8-25 k€/mois en Ads basculés vers l'organique.
+            <b>SEA</b>&nbsp;: vous louez le trafic (0 clic quand vous arrêtez). <b>SEO</b>&nbsp;: vous possédez le trafic (il continue même sans dépense). Les deux sont complémentaires. Notre approche&nbsp;: construire l'organique pour <b>réduire votre dépendance au payant</b> d'ici 12–18 mois. Chaque euro de budget media que l'organique rend inutile est un euro qui reste chez vous.
           </div>
         </div>
 
