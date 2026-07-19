@@ -171,7 +171,7 @@ export const processHtml = `
           </div>
         </div>
         <h4>Restitution Loom + livraison</h4>
-        <p>Visio 90 min avec votre direction + CTO (option&nbsp;: board physique en +). <b>Loom de restitution 20-30 min</b> archivable, partageable à vos VC / acquéreur / CA. Tous les livrables remis sur un espace Notion dédié en propriété client. Projet clos à J+10.</p>
+        <p>Restitution avec les interlocuteurs prévus au cadrage, accompagnée des supports listés au devis. Les livrables spécifiques sont remis puis transférés selon les CGV après paiement complet. La date de clôture dépend du format et des prérequis convenus.</p>
         <div class="at-proc-step-foot">J10 · visio + Loom + Notion livrés</div>
       </article>
     </div>

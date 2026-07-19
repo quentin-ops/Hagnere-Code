@@ -5,11 +5,11 @@ export const checklistHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Ce que "TMA Hagnéré" veut dire</div>
-        <h2>Douze briques incluses<br>dans chaque forfait mensuel.</h2>
+        <h2>Douze briques à cadrer<br>dans votre forfait mensuel.</h2>
       </div>
       <div class="right">
-        "On fait de la maintenance" c'est trop vague. Voilà la liste exacte de ce qui rentre
-        dans le forfait — et ce qui n'y rentre pas. <b>Pas d'avenant surprise à J+60.</b>
+        "On fait de la maintenance" est trop vague. Cette liste sert à composer le périmètre&nbsp;:
+        <b>seules les briques retenues et chiffrées dans le devis sont incluses</b>.
       </div>
     </div>
 
@@ -19,18 +19,18 @@ export const checklistHtml = `
         <div class="me-check-head">
           <div class="me-check-badge me-check-badge-in">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>
-            INCLUS DANS LE FORFAIT
+            À DÉFINIR AU DEVIS
           </div>
-          <h3>Douze briques, tous les mois.</h3>
+          <h3>Douze briques possibles.</h3>
         </div>
         <ul class="me-check-list">
           <li>
             <div class="me-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Équipe nommée dans le contrat</b> — photo, prénom, rôle des 2 à 4 personnes qui gèrent votre compte. Remplacement garanti sous préavis, overlap 2 semaines.</div>
+            <div><b>Équipe et continuité</b> — personnes mobilisées, rôles, statut et modalités de remplacement précisés au devis.</div>
           </li>
           <li>
             <div class="me-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Monitoring 24/7</b> — Sentry (erreurs), Better Stack (uptime + statuspage), Grafana (métriques), Axiom (logs). Alerte Slack &lt; 5 min sur incident P1.</div>
+            <div><b>Supervision</b> — erreurs, disponibilité, métriques, logs, alertes et plages de couverture sélectionnés selon l'architecture.</div>
           </li>
           <li>
             <div class="me-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
@@ -38,23 +38,23 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="me-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>CVE critiques patchés sous 48 h</b> — CVSS ≥ 7, on patche en priorité absolue. Hotfix + déploiement + communication client documentée.</div>
+            <div><b>Traitement des vulnérabilités</b> — seuils, priorité, délai cible, validation et communication définis au contrat.</div>
           </li>
           <li>
             <div class="me-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Déploiements zero-downtime</b> — blue-green deploy, migrations Laravel en expand/migrate/contract, rollback 1-clic. Jamais de maintenance planifiée visible.</div>
+            <div><b>Stratégie de déploiement</b> — blue-green, migrations progressives ou fenêtre de maintenance selon les capacités réelles de la stack.</div>
           </li>
           <li>
             <div class="me-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Backups continus &amp; DR testée</b> — PostgreSQL WAL continu, rétention 30 jours + snapshot hebdo 1 an. <b>RPO 15 min · RTO 1 h</b>. Restauration testée tous les trimestres.</div>
+            <div><b>Sauvegarde et reprise</b> — fréquence, rétention, RPO/RTO cibles et tests de restauration définis selon le fournisseur et le budget.</div>
           </li>
           <li>
             <div class="me-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Support prioritaire Slack Connect</b> — canal partagé avec votre équipe. Réponse &lt; 2 h en heures ouvrées, &lt; 30 min pour les urgences.</div>
+            <div><b>Support</b> — canal, horaires, catégories d'urgence et délais cibles écrits au devis.</div>
           </li>
           <li>
             <div class="me-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Astreinte contractuelle</b> — PagerDuty, MTTR cible &lt; 30 min P1. Pénalités SLA chiffrées et auto-appliquées en avoir si SLA manqué.</div>
+            <div><b>Astreinte optionnelle</b> — plage, outil d'escalade, temps de prise en charge et éventuelles pénalités explicitement contractualisés.</div>
           </li>
           <li>
             <div class="me-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
@@ -62,7 +62,7 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="me-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Post-mortem sous 72 h</b> — pour chaque incident P1/P2, rapport documenté sans blame, action items trackés dans le backlog. Culture d'apprentissage.</div>
+            <div><b>Retour d'incident</b> — délai, format, destinataires et suivi des actions adaptés à la criticité convenue.</div>
           </li>
           <li>
             <div class="me-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
@@ -70,7 +70,7 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="me-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Passation de fin de contrat</b> — si vous partez, 5 jours offerts pour former votre équipe suivante, docs exhaustives, Loom d'onboarding. <b>Pas de rétention par l'ignorance</b>.</div>
+            <div><b>Passation de fin de contrat</b> — éléments remis selon les CGV ; durée, participants et éventuel coût de la passation précisés au devis.</div>
           </li>
         </ul>
       </div>

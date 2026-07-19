@@ -89,8 +89,8 @@ export const integrationsHtml = `
         <div class="at-eco-head-text">
           <div class="at-eco-kind">TOOLKIT D'ANALYSE · <span>notre stack</span></div>
           <h3>7 outils pro qu'on opère<br>pendant les 10 jours.</h3>
-          <p>Licences enterprise <b>incluses dans le prix fixe</b>. On ne vous facture pas 4 k€ de licences SaaS "en extra".
-             Analyses réalisées sur <b>nos comptes</b>, pas sur les vôtres — vos données n'entrent jamais dans des outils dont vous ne maîtrisez pas le cycle de vie.</p>
+          <p>Les outils et licences réellement nécessaires sont <b>identifiés dans le devis</b>, avec leur coût éventuel et leur mode d'exécution.
+             L'environnement utilisé, les transferts, la conservation et la suppression des données sont validés avant toute analyse.</p>
         </div>
       </div>
 
@@ -165,8 +165,8 @@ export const integrationsHtml = `
         <div class="at-eco-head-text">
           <div class="at-eco-kind">OUTPUTS · VOS LIVRABLES</div>
           <h3>Ce qu'on vous remet<br>à J+10.</h3>
-          <p>6 artefacts <b>en propriété exclusive client</b>. Formats éditables (PDF, Keynote, Notion, Loom, SVG) — vous pouvez
-             les republier, les présenter, les archiver sans autorisation supplémentaire. <b>Accords de confidentialité mutuels</b> couvrent nos deux côtés.</p>
+          <p>Les artefacts et formats réellement livrés sont listés au devis. Les droits d'utilisation et le transfert des livrables
+             spécifiques suivent les CGV après paiement complet, sous réserve des éléments préexistants et licences tierces. Un NDA peut être signé avant les accès sensibles.</p>
         </div>
       </div>
 
@@ -230,7 +230,7 @@ export const integrationsHtml = `
 
       <div class="at-eco-foot">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-        Propriété client exclusive sur les 6 livrables dès J+10. <b>Aucune clause de republication côté Hagnéré Code</b>, aucun watermark, aucune mention imposée. Vous les utilisez pour votre board, votre VC, votre acquéreur — sans nous demander.
+        Le devis précise les livrables, formats et droits de diffusion. <b>Le transfert des livrables spécifiques intervient après paiement complet</b>, conformément aux CGV et sous réserve des composants préexistants et licences tierces.
       </div>
     </article>
   </div>

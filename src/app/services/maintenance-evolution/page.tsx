@@ -3,15 +3,15 @@ import { MaintenanceEvolution } from "@/components/maintenance-evolution/Mainten
 import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Maintenance applicative & TMA · SLA 99,95 % · Hagnéré Code",
+  title: "Maintenance applicative & TMA sur mesure · Hagnéré Code",
   description:
-    "TMA au forfait fixe dès 2 500 €/mois : monitoring 24/7, patchs CVE sous 48 h, équipe nommée au contrat, SLA jusqu'à 99,95 % avec pénalités.",
+    "Maintenance, supervision et évolution d'applications : périmètre, équipe, niveaux de service et réversibilité définis dans un devis adapté à votre production.",
   alternates: { canonical: "/services/maintenance-evolution" },
   openGraph: {
     ...OG_BASE,
     title: "Maintenance & évolution — Hagnéré Code",
     description:
-      "SLA 99,5–99,95 % avec pénalités. Deploys hebdo, CVE patchés sous 48 h, forfait fixe mensuel. Reprise d'apps orphelines en 5 jours.",
+      "Maintenance, supervision, correctifs et évolutions avec responsabilités, niveaux de service et réversibilité cadrés au contrat.",
     url: "/services/maintenance-evolution",
     images: [SERVICES_OG_IMAGE],
   },
@@ -24,7 +24,7 @@ const serviceJsonLd = JSON.stringify({
   name: "Maintenance applicative (TMA) et évolution continue",
   url: "https://hagnere-code.ai/services/maintenance-evolution",
   serviceType:
-    "Tierce maintenance applicative (TMA) et évolution de logiciels SaaS avec SLA contractuel",
+    "Tierce maintenance applicative (TMA), supervision et évolution de logiciels",
   provider: {
     "@type": "Organization",
     name: "Hagnéré Code",
@@ -46,7 +46,7 @@ const serviceJsonLd = JSON.stringify({
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "Maintenance applicative long-terme pour PME, ETI et scale-up françaises : reprise d'apps orphelines, monitoring 24/7 (Sentry, Better Stack, Grafana), patches sécurité (Snyk, Dependabot), astreinte PagerDuty avec MTTR < 30 min, évolutions continues, hébergement & infra ops (Laravel Forge, Vercel, Fly.io), reporting mensuel business-ready. Équipe nommée dans le contrat, forfait fixe mensuel, SLA 99,5 à 99,95 % avec pénalités auto-appliquées, propriété 100 % client du code et de l'infra.",
+    "Maintenance applicative pour PME, ETI et scale-up : reprise, supervision, correctifs de sécurité, évolutions, exploitation d'infrastructure et reporting. Le devis précise l'équipe, les outils, les horaires de couverture, les objectifs de service, les accès et la réversibilité.",
   offers: [
     {
       "@type": "Offer",
@@ -54,7 +54,7 @@ const serviceJsonLd = JSON.stringify({
       price: "2000",
       priceCurrency: "EUR",
       description:
-        "Audit 5 jours code + infra + sécurité + dette technique. Rapport 15-25 pages + plan de remédiation 12 mois chiffré. Déduit à 100 % du 1er mois si TMA signée dans les 60 jours.",
+        "Diagnostic initial dont le périmètre, les jours mobilisés et les livrables sont précisés dans le devis.",
     },
     {
       "@type": "Offer",
@@ -62,7 +62,7 @@ const serviceJsonLd = JSON.stringify({
       price: "2500",
       priceCurrency: "EUR",
       description:
-        "1-2 j/mois d'intervention, monitoring Sentry + Better Stack 24/7, patches sécurité + CVE < 48 h, support Slack HO, SLA 99,5 %, rapport mensuel, rollover 30 %. Pour PME 10-30 salariés avec app stable.",
+        "Base indicative pour une application stable. Volume, supervision, support, délais de traitement et reporting sont confirmés au devis.",
     },
     {
       "@type": "Offer",
@@ -70,7 +70,7 @@ const serviceJsonLd = JSON.stringify({
       price: "6500",
       priceCurrency: "EUR",
       description:
-        "4-6 j/mois, 2 devs nommés, stack observability complète + Grafana Cloud, astreinte 7j/7 PagerDuty MTTR < 30 min, SLA 99,9 %, roadmap trimestrielle + comité mensuel. Pour scale-up 30-150 salariés.",
+        "Base indicative pour maintenance et évolutions régulières. Équipe, volume, outils, couverture et rituels sont définis au devis.",
     },
     {
       "@type": "Offer",
@@ -78,7 +78,7 @@ const serviceJsonLd = JSON.stringify({
       price: "14000",
       priceCurrency: "EUR",
       description:
-        "12-16 j/mois, équipe 3-4 pers. + PO, astreinte 24/7 MTTR < 1 h, SLA 99,95 % + pénalités, pentest annuel + audit trimestriel, RPO 15 min / RTO 1 h, SOC2-ready + DPA + ISO27001-ready. Pour ETI et scale-up série B+.",
+        "Base indicative pour un dispositif renforcé. Astreinte, objectifs de reprise, audits tiers et engagements de service sont optionnels et contractualisés selon l'architecture.",
     },
   ],
 });
@@ -93,7 +93,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Monitoring live à J+14, premier deploy utile à J+21, SLA uptime stable à M+2. Jalons documentés au kickoff et publiés dans le rapport mensuel pour juger la trajectoire avant la fin du 1er trimestre.",
+          "Après un diagnostic initial, le devis fixe les accès, priorités, outils, jalons et critères observables. Les délais varient selon l'état de la documentation et de la production.",
       },
     },
     {
@@ -116,11 +116,11 @@ const faqJsonLd = JSON.stringify({
     },
     {
       "@type": "Question",
-      name: "Vous garantissez vraiment 99,9 % d'uptime ?",
+      name: "Quels niveaux de service sont possibles ?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui, avec pénalités auto-appliquées. 99,5 % en Essentiel, 99,9 % en Scale, 99,95 % en Premium. Mesuré par Better Stack, affiché sur Statuspage publique, rapport trimestriel. Si manqué : avoir chiffré en CGV, sans discussion.",
+          "Les horaires de couverture, objectifs de disponibilité, temps de prise en charge, méthode de mesure et éventuelles pénalités n'existent que s'ils sont définis dans le devis ou le contrat signé.",
       },
     },
     {
@@ -129,7 +129,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "4 semaines en standard : audit flash (S1), prise de contrôle accès (S1-S2), branchement observability Sentry + Better Stack + Grafana (S2-S3), backlog + roadmap (S3-S4). À J+30 votre app est sous monitoring complet et on commence à shipper.",
+          "La durée dépend des accès, de la documentation, des incidents ouverts et des environnements disponibles. Le plan d'onboarding et ses jalons sont validés au cadrage.",
       },
     },
     {
@@ -138,7 +138,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "2 à 4 personnes nommées dans votre contrat (photo, prénom, LinkedIn). Pas de rotation, pas de chargé de compte intermédiaire. Binôme obligatoire — jamais un seul dev sur votre projet. Réponse < 2 h HO en Slack. Maximum 8 clients actifs par consultant.",
+          "Le devis nomme les intervenants et leurs rôles selon le périmètre. Il précise également le canal de support, les horaires, les délais cibles et les modalités de continuité en cas d'indisponibilité.",
       },
     },
     {
@@ -147,7 +147,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "En dessous de 1 000 utilisateurs actifs mensuels sans enjeu sécurité/SLA, un freelance à la tâche suffit. Au-delà, le forfait fixe s'auto-justifie. Règle empirique : app en prod depuis 1+ an, 1 000+ MAU ou enjeu de sécurité client.",
+          "La pertinence dépend surtout de la criticité, de la fréquence des changements, de la dette existante et du niveau de support attendu. Le diagnostic initial sert à dimensionner le dispositif.",
       },
     },
     {
@@ -156,7 +156,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Binôme obligatoire dès J+1, vous n'avez jamais un seul dev qui connaît votre projet. Si un dev part : overlap 2 semaines avec le remplaçant (clause CGV), documentation à jour, Loom d'onboarding. Le binôme référent est nommé au contrat.",
+          "Le devis précise l'équipe référente, la documentation attendue et les modalités de remplacement ou de recouvrement adaptées au service retenu.",
       },
     },
     {
@@ -165,7 +165,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Tout : repo GitHub, comptes cloud, DNS, Stripe, Sentry, Better Stack, Linear, Notion. Runbooks à jour, post-mortems archivés, Loom onboarding, docs architecture + ADR. Passation 5 jours offerte à votre prestataire suivant : 1 call + docs + vidéos de transfert.",
+          "Les accès et comptes placés au nom du client restent sous son contrôle. En fin de contrat, les éléments de reprise prévus par les CGV sont remis ; la durée et le contenu d'une passation éventuelle sont précisés au devis.",
       },
     },
     {
@@ -174,7 +174,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "5 jours de travail par 2 devs seniors : audit code (dette, patterns, dépendances, CVE), audit infra (backups, DR, scaling), audit sécurité (SAST, secrets, RGPD), dépendances obsolètes. Rapport 15-25 pages + plan de remédiation 12 mois chiffré. Restitution 1h30 en visio. Déduits à 100 % du 1er mois si TMA signée dans les 60 jours.",
+          "Le diagnostic initial est cadré au devis : intervenants, jours mobilisés, code et infrastructure couverts, livrables et restitution. Aucune déduction automatique n'est prévue par les CGV publiques.",
       },
     },
   ],

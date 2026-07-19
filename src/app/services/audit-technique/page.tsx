@@ -148,7 +148,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          `2 seniors + un lead nommés dans le devis (photo, prénom, LinkedIn visibles). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. Chaque dimension auditée a un owner dédié qui la signe. Zéro rotation en cours d'audit : c'est un engagement contractuel. ${TEAM_PUBLIC_COMPOSITION}. Toute l'équipe partage les mêmes rituels.`,
+          `Les intervenants, leurs rôles et leur statut sont nommés dans le devis selon le périmètre. ${TEAM_PUBLIC_COMPOSITION}. Le devis précise également les responsabilités de revue, les éventuels remplacements et les modalités de continuité.`,
       },
     },
     {
@@ -157,7 +157,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "En dessous de 1 000 utilisateurs actifs mensuels sans enjeu board / VC / compliance, un audit Express (8 000 €) suffit souvent. Au-dessus, Standard (18 000 €) couvre l'immense majorité des situations. Règle empirique : si votre prochaine décision tech vaut plus de 80 k€ (refonte, levée, M&A, certification), un audit se rembourse en économies de mauvaises décisions.",
+          "Le bon format dépend moins du nombre d'utilisateurs que du périmètre technique, des accès disponibles et de la décision à sécuriser. Le cadrage permet de distinguer un diagnostic ciblé d'un audit plus large, sans promettre un retour financier automatique.",
       },
     },
     {
@@ -166,7 +166,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Tous les livrables en propriété exclusive client à J+10 : rapport PDF, Tech Debt P&L, deck exécutif, version board-safe, backlog Notion, diagrammes C4 SVG, Loom restitution, exports bruts SAST/CVE, roadmap 6/12/18 mois. Aucun watermark, aucune clause de republication, aucune mention imposée. Les accès read-only sur votre infra sont révoqués à J+11 automatiquement.",
+          "Le devis énumère les livrables remis, les formats, les droits d'utilisation et la procédure de révocation des accès. Conformément aux CGV, les livrables spécifiques sont transférés après paiement complet, sous réserve des éléments préexistants, outils génériques et licences tierces.",
       },
     },
     {
@@ -175,7 +175,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "10 jours ouvrés de travail par 2 seniors + 1 lead. 8 dimensions auditées : Code quality (SAST, coverage, complexité), Architecture (C4, couplage), Performance (p95/p99, N+1, CWV), Sécurité (OWASP, CVE, RGPD), Infrastructure (IaC, DR, RPO/RTO), DevEx (DORA metrics), FinOps (cost per feature), Équipe (5-8 entretiens no-blame SPACE framework). Livrables inclus : rapport 40-70 pages, Tech Debt P&L chiffré, deck 12-18 slides board-ready, version board-safe, backlog Notion 20-30 tickets, diagrammes C4, Loom 20-30 min, roadmap 6/12/18 mois. Licences enterprise SonarQube, Snyk, Datadog incluses.",
+          "Le format Standard est cadré au devis : jours mobilisés, intervenants, dimensions effectivement auditées, outils autorisés, livrables, calendrier et critères d'acceptation. Les éventuelles licences ou analyses tierces ne sont incluses que lorsqu'elles figurent explicitement dans ce devis.",
       },
     },
   ],

@@ -112,7 +112,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            En dessous de <b>1 000 utilisateurs actifs mensuels</b> et sans enjeu board / VC / compliance, un audit Express (8 k€) suffit souvent. Au-dessus, Standard (18 k€) couvre l'immense majorité des situations. <b>Règle empirique&nbsp;: si votre prochaine décision tech vaut plus de 80 k€, un audit Standard se rembourse en économies de mauvaises décisions</b>. Le mini-audit ci-dessus vous aide à choisir.
+            Le bon format dépend du périmètre technique, des accès disponibles, du niveau de preuve attendu et de la décision à sécuriser. Le mini-diagnostic ci-dessus aide à préparer le cadrage&nbsp;; il ne promet ni format automatique ni retour financier garanti.
           </div>
         </div>
 
@@ -139,7 +139,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            10 jours ouvrés de travail par <b>2 seniors + 1 lead</b>&nbsp;: audit code (SAST, coverage, complexité), architecture (C4 AS-IS/TO-BE), performance (p95/p99, N+1), sécurité (OWASP, CVE, secrets, RGPD), infrastructure (IaC, DR), DevEx (DORA), FinOps, équipe (5-8 entretiens). Livrables&nbsp;: rapport 40-70 p. + <b>Tech Debt P&amp;L chiffré</b> + deck 12-18 slides + version board-safe + backlog Notion 20-30 tickets + C4 + Loom + roadmap 6/12/18 mois. <b>Licences enterprise SonarQube / Snyk / Datadog incluses</b>.
+            Le devis Standard précise les jours mobilisés, les intervenants, les dimensions réellement auditées, les outils autorisés, les livrables, le calendrier et les critères d'acceptation. Une licence ou analyse tierce n'est incluse que lorsqu'elle est explicitement chiffrée.
           </div>
         </div>
       </div>

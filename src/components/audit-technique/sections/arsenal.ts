@@ -8,8 +8,8 @@ export const arsenalHtml = `
         <h2>Neuf outils pros qu'on opère,<br>pas un mur de logos.</h2>
       </div>
       <div class="right">
-        Trois familles d'outils, trois missions. Chacun documente, accélère ou vérifie une étape précise des 10 jours.
-        <b>Licences enterprise incluses dans le prix fixe · 0 rebilling.</b> Vos données n'entrent jamais dans des outils dont vous ne maîtrisez pas le cycle de vie.
+        Trois familles d'outils, trois missions. Chacun documente, accélère ou vérifie une étape précise de l'audit.
+        <b>Outils, licences, mode d'exécution et éventuels transferts sont précisés au devis.</b> Aucun service tiers n'est présumé avant validation du périmètre.
       </div>
     </div>
 
@@ -34,8 +34,8 @@ export const arsenalHtml = `
               <div class="at-arsenal-tool-kind">SAST · coverage · complexité</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Branché sur votre repo pendant 10 jours. <b>Bugs, smells, vulnérabilités, security hotspots</b> priorisés CVSS. Analyse de complexité cyclomatique, détection de god-classes, ratio de duplication. Licence enterprise incluse, révoquée à J+11.</div>
-          <div class="at-arsenal-tool-chip">Licence pro · incluse</div>
+          <div class="at-arsenal-tool-body">Selon le périmètre, une analyse SAST peut relever <b>bugs, smells, vulnérabilités et security hotspots</b>, puis les rapprocher d'une revue manuelle. L'outil, la couverture et la durée de conservation sont définis avant accès.</div>
+          <div class="at-arsenal-tool-chip">Outil et licence au devis</div>
         </div>
 
         <div class="at-arsenal-tool">
@@ -94,7 +94,7 @@ export const arsenalHtml = `
             </div>
           </div>
           <div class="at-arsenal-tool-body">Scan complet composer / npm / Docker. <b>Priorisation CVSS</b>, exploit maturity, fix disponible. Rapport détaillé par dépendance avec chemin d'attaque possible. Critique pour la partie SOC2 / ISO 27001 si visée.</div>
-          <div class="at-arsenal-tool-chip">Licence enterprise · incluse</div>
+          <div class="at-arsenal-tool-chip">Couverture définie au devis</div>
         </div>
 
         <div class="at-arsenal-tool">

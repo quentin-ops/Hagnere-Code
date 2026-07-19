@@ -262,8 +262,8 @@ export const scenariosHtml = `
           <dl class="at-scen-meta">
             <div class="at-scen-meta-row"><dt>Durée</dt><dd>15 à 20 jours ouvrés</dd></div>
             <div class="at-scen-meta-row"><dt>Équipe</dt><dd>2 seniors + architecte + lead</dd></div>
-            <div class="at-scen-meta-row"><dt>Indépendance</dt><dd>On ne fait pas la refonte (clause CoI)</dd></div>
-            <div class="at-scen-meta-row"><dt>Garantie</dt><dd>Verdict motivé ou remboursement 50 %</dd></div>
+            <div class="at-scen-meta-row"><dt>Indépendance</dt><dd>Constats et hypothèses de coût séparés</dd></div>
+            <div class="at-scen-meta-row"><dt>Acceptation</dt><dd>Critères et procédure écrits au devis</dd></div>
             <div class="at-scen-meta-row"><dt>Timing</dt><dd>Démarrage sous 5 j ouvrés</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg at-scen-cta">

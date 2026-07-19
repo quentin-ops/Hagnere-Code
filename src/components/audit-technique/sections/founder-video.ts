@@ -53,11 +53,10 @@ export const founderVideoHtml = `
       <div class="at-fv-body">
         <div class="eyebrow">— Message du fondateur</div>
         <h2>Vérifiez notre posture<br>avant de lancer<br>un audit technique.</h2>
-        <p>Un échange court avec Quentin Hagnéré pour répondre à <b>la question qu'on entend le plus en call</b>&nbsp;:
-        pourquoi une agence qui fait du développement SaaS accepte de livrer des audits où
-        <b>100 % du prix est déduit si vous nous confiez la remédiation</b>. Ce qui nous motive à
-        ne pas noircir le rapport pour vendre une mission derrière — et pourquoi cette clause
-        est publique sur notre landing.</p>
+        <p>Un échange court avec Quentin Hagnéré pour examiner un point essentiel&nbsp;:
+        comment une agence qui réalise aussi du développement évite de transformer l'audit
+        en prétexte commercial. Les constats, leurs preuves et les hypothèses de coût sont séparés&nbsp;;
+        toute remédiation éventuelle fait l'objet d'un périmètre et d'un devis distincts.</p>
 
         <div class="at-fv-meta">
           <div class="at-fv-meta-item">
@@ -66,7 +65,7 @@ export const founderVideoHtml = `
           </div>
           <div class="at-fv-meta-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-            <span>Clause CoI publique dans nos CGV</span>
+            <span>Conditions et critères écrits au devis</span>
           </div>
           <div class="at-fv-meta-item">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>

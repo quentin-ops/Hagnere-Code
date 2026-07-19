@@ -10,8 +10,8 @@ export const deriskHtml = `
         <h2>Ce qui vous empêche de signer<br>un contrat TMA — et ce<br>qu'on fait pour.</h2>
       </div>
       <div class="right">
-        Sept peurs reviennent systématiquement dès qu'on parle d'un engagement TMA. Voici comment on les neutralise
-        <b>contractuellement</b>, pas en paroles rassurantes.
+        Sept risques méritent d'être cadrés avant une TMA. Voici les points à écrire
+        <b>dans votre devis et votre contrat</b> selon le niveau de service retenu.
       </div>
     </div>
 
@@ -21,15 +21,13 @@ export const deriskHtml = `
         <div class="me-derisk-fear">
           « Et si je paye le forfait et que je <b>n'ai rien à faire faire</b> certains mois ? »
         </div>
-        <h4>Rollover 30 % + timesheet transparent + downgrade trimestriel</h4>
-        <p>Jours non consommés sur un mois&nbsp;? <b>Reportés jusqu'à 30 % sur les 3 mois suivants</b>.
-        Vous voyez le timesheet Linear/Notion en temps réel, on documente chaque jour. Si votre usage réel
-        est sous le forfait pendant 2 trimestres consécutifs, <b>on propose un downgrade</b> sans discussion —
-        parce qu'on veut que vous restiez 5 ans, pas qu'on vous facture pour rien.</p>
+        <h4>Consommation visible et règles de report explicites</h4>
+        <p>Le devis définit l'unité de consommation, le suivi partagé et le sort des jours non utilisés.
+        Un report, une baisse de forfait ou un ajustement n'est applicable que s'il est écrit dans le contrat signé.</p>
         <div class="me-derisk-proof">
-          <span>✓ Rollover 30 %</span>
-          <span>✓ Timesheet live</span>
-          <span>✓ Downgrade proposé</span>
+          <span>✓ Règle de consommation</span>
+          <span>✓ Suivi partagé</span>
+          <span>✓ Révision cadrée</span>
         </div>
       </div>
 
@@ -38,15 +36,13 @@ export const deriskHtml = `
         <div class="me-derisk-fear">
           « Je vais être <b>enfermé avec vous</b> sans pouvoir partir. »
         </div>
-        <h4>Réversibilité contractuelle · passation 5 j offerte · 0 lock-in</h4>
-        <p>Clause CGV&nbsp;: <b>préavis 60 j</b>, documentation exhaustive livrée en continu (pas rétroactivement),
-        <b>5 jours de passation offerts</b> à votre prestataire suivant. Repo GitHub, comptes cloud, pixels,
-        comptes SaaS tiers&nbsp;: <b>tout est sur votre organisation depuis J+1</b>. Rien chez nous. Vous partez
-        quand vous voulez, sans rachat d'heures, sans "bonus" planqué, sans retention par l'ignorance.</p>
+        <h4>Comptes client et réversibilité décrite avant signature</h4>
+        <p>Les comptes d'hébergement et outils tiers peuvent être ouverts au nom du client. Les CGV prévoient la remise
+        des éléments nécessaires à la reprise&nbsp;; le préavis, la durée de passation et son coût éventuel sont précisés au devis.</p>
         <div class="me-derisk-proof">
-          <span>✓ Préavis 60 j</span>
-          <span>✓ Passation 5 j offerte</span>
-          <span>✓ Tout en propriété client</span>
+          <span>✓ Comptes identifiés</span>
+          <span>✓ Passation chiffrée</span>
+          <span>✓ Livrables inventoriés</span>
         </div>
       </div>
 
@@ -55,15 +51,13 @@ export const deriskHtml = `
         <div class="me-derisk-fear">
           « L'équipe va <b>tourner</b> et la qualité va baisser au bout de 6 mois. »
         </div>
-        <h4>Équipe nommée dans le contrat · 1 remplacement max · overlap 2 sem.</h4>
-        <p>Les 2 à 4 personnes qui gèrent votre compte sont <b>nommées dans le contrat</b>, photos + LinkedIn
-        inclus. <b>Maximum 1 remplacement sur 12 mois</b> sauf cas de force majeure documenté. En cas de changement,
-        <b>recouvrement obligatoire de 2 semaines</b> entre sortant et remplaçant. Hagnéré Code compte
-        <b>${TEAM_PUBLIC_COMPOSITION}</b>&nbsp;: le remplaçant vient de la même équipe, jamais d'un pool externe. Revue trimestrielle avec vous comme garde-fou.</p>
+        <h4>Intervenants et continuité définis au devis</h4>
+        <p>Les personnes effectivement mobilisées et leur statut sont nommés au devis. Hagnéré Code présente publiquement
+        <b>${TEAM_PUBLIC_COMPOSITION}</b>. Le contrat peut fixer un recouvrement, un délai d'information et les modalités de remplacement selon le service retenu.</p>
         <div class="me-derisk-proof">
-          <span>✓ Nom dans le contrat</span>
-          <span>✓ Overlap 2 sem.</span>
-          <span>✓ Revue trimestrielle</span>
+          <span>✓ Rôles nommés</span>
+          <span>✓ Continuité cadrée</span>
+          <span>✓ Statuts transparents</span>
         </div>
       </div>
 
@@ -72,15 +66,13 @@ export const deriskHtml = `
         <div class="me-derisk-fear">
           « Un incident la nuit / le week-end — <b>personne ne va répondre</b>. »
         </div>
-        <h4>Astreinte contractuelle + Statuspage + post-mortem 72 h · pénalités auto</h4>
-        <p>Tier Scale &amp; Premium&nbsp;: <b>astreinte 7j/7</b> via PagerDuty, rotation documentée, escalation
-        auto (Slack → SMS → téléphone). <b>MTTR contractuel &lt; 30 min P1</b>. Si on dépasse&nbsp;:
-        <b>pénalités SLA auto-appliquées en avoir</b>, sans discussion. Statuspage publique, post-mortem sans
-        blame sous 72 h, action items trackés. <b>Vous n'apprenez jamais un incident par un client mécontent</b>.</p>
+        <h4>Couverture, escalade et objectifs mesurables</h4>
+        <p>Une astreinte, un outil d'escalade, un temps de prise en charge, un post-mortem ou une pénalité
+        ne s'appliquent que s'ils figurent au contrat. Le devis indique aussi les exclusions, dépendances tierces et méthode de mesure.</p>
         <div class="me-derisk-proof">
-          <span>✓ Astreinte 7j/7</span>
-          <span>✓ MTTR &lt; 30 min</span>
-          <span>✓ Pénalités auto</span>
+          <span>✓ Plage de couverture</span>
+          <span>✓ Escalade définie</span>
+          <span>✓ Mesure opposable</span>
         </div>
       </div>
 
@@ -104,11 +96,11 @@ export const deriskHtml = `
           « Vous êtes en Savoie, pas à Paris — <b>vous tiendrez la distance</b> ? »
         </div>
         <h4>Fuseau FR, coûts maîtrisés, binôme nommé au contrat</h4>
-        <p>On est basés à Bassens, aux portes de Chambéry, par choix&nbsp;: <b>fuseau horaire français</b> et coûts de structure plus bas qu'à Paris. Notre équipe rassemble <b>${TEAM_PUBLIC_COMPOSITION}</b>, qui travaillent au quotidien sur nos propres produits en production. Résultat&nbsp;: vos forfaits sont 20-30 % moins chers à qualité équivalente, et le binôme qui prend votre projet est <b>nommé au contrat</b>, avec recouvrement de 2 semaines s'il doit changer. <b>Pas d'off-shore, pas de near-shore — équipe 100 % France</b>.</p>
+        <p>Le studio est basé à Bassens, aux portes de Chambéry, et travaille sur le fuseau horaire français. Notre collectif rassemble <b>${TEAM_PUBLIC_COMPOSITION}</b>. Les intervenants, leur statut, les horaires de collaboration et les éventuels déplacements sont précisés au devis.</p>
         <div class="me-derisk-proof">
-          <span>✓ Équipe 100 % FR</span>
-          <span>✓ Binôme nommé au contrat</span>
-          <span>✓ Visio + 1 déplacement/trim. inclus</span>
+          <span>✓ Studio à Bassens</span>
+          <span>✓ Composition publique</span>
+          <span>✓ Organisation au devis</span>
         </div>
       </div>
 
@@ -117,12 +109,13 @@ export const deriskHtml = `
         <div class="me-derisk-fear">
           « Et si vous <b>faites faillite</b> ou vous faites <b>racheter</b> ? »
         </div>
-        <h4>Clause d'escrow · partenaire secondaire nommé · indépendance financière</h4>
-        <p>Trois parades contractuelles&nbsp;: (1) <b>clause d'escrow du code + documentation</b> déposée chez un tiers de confiance (Codex Escrow ou équivalent) — si on disparaît, vous récupérez tout sous 7 j. (2) <b>Partenaire secondaire nommé dans le contrat</b> (une agence partenaire avec qui on a un accord de reprise réciproque). (3) <b>Aucune dépendance investisseur</b> : l'agence est financée par son activité, sans levée de fonds ni échéance imposée de l'extérieur.</p>
+        <h4>Plan de continuité proportionné au risque</h4>
+        <p>Les dépôts, comptes et sauvegardes sont inventoriés avec le client. Pour une application critique, le devis peut prévoir
+        une copie de documentation, une procédure de reprise, un tiers séquestre ou un prestataire secondaire réellement identifié. Rien n'est présenté comme acquis sans contrat correspondant.</p>
         <div class="me-derisk-proof">
-          <span>✓ Escrow code + docs</span>
-          <span>✓ Partenaire secondaire</span>
-          <span>✓ Bilan public · 0 dette</span>
+          <span>✓ Dépendances inventoriées</span>
+          <span>✓ Procédure de reprise</span>
+          <span>✓ Options contractualisées</span>
         </div>
       </div>
     </div>

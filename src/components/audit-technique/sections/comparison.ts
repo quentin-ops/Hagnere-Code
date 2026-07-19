@@ -51,7 +51,7 @@ export const comparisonHtml = `
         <div class="at-cmp-col at-cmp-col-label">Conflit d'intérêt traité</div>
         <div class="at-cmp-col">Non applicable · produit SaaS</div>
         <div class="at-cmp-col at-cmp-bad">Aucune clause · freelance cherche mission</div>
-        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>Clause publique · 100 % déduit si mission &gt; 50 k€</b></div>
+        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>Constats et hypothèses de coût séparés · remédiation sur devis distinct</b></div>
         <div class="at-cmp-col at-cmp-bad">Ambigu · cabinet pousse delivery</div>
       </div>
 
@@ -67,7 +67,7 @@ export const comparisonHtml = `
         <div class="at-cmp-col at-cmp-col-label">NDA mutuel &amp; confidentialité</div>
         <div class="at-cmp-col">CGU SaaS standard · données sur leur infra</div>
         <div class="at-cmp-col">NDA optionnel · clauses incertaines</div>
-        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>NDA mutuel J0 · 0 republication · propriété client exclusive</b></div>
+        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>NDA disponible avant les accès · confidentialité et droits précisés au devis</b></div>
         <div class="at-cmp-col at-cmp-good">NDA renforcé · assurances solides</div>
       </div>
 
@@ -75,7 +75,7 @@ export const comparisonHtml = `
         <div class="at-cmp-col at-cmp-col-label">Délai de livraison</div>
         <div class="at-cmp-col at-cmp-good">Instant · scan continu</div>
         <div class="at-cmp-col">5-15 j · selon planning freelance</div>
-        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>10 j ouvrés · démarrage sous 5 j</b></div>
+        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>Calendrier et prérequis fixés dans le devis</b></div>
         <div class="at-cmp-col at-cmp-bad">4-12 semaines · process lourd</div>
       </div>
 
@@ -83,7 +83,7 @@ export const comparisonHtml = `
         <div class="at-cmp-col at-cmp-col-label">Équipe nommée dans le devis</div>
         <div class="at-cmp-col at-cmp-bad">Non · produit</div>
         <div class="at-cmp-col">Une personne unique</div>
-        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>2 seniors + un lead · photos &amp; LinkedIn</b></div>
+        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>Intervenants et rôles nommés dans le devis selon le périmètre</b></div>
         <div class="at-cmp-col at-cmp-bad">Équipe senior garantie sur devis uniquement</div>
       </div>
 
@@ -91,7 +91,7 @@ export const comparisonHtml = `
         <div class="at-cmp-col at-cmp-col-label">Méthodologie documentée</div>
         <div class="at-cmp-col">Documentation éditeur · règles génériques</div>
         <div class="at-cmp-col at-cmp-bad">Inexistante ou orale</div>
-        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>PDF 15 p. ISO 19011 · téléchargeable avant signature</b></div>
+        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>Grille, référentiels et exemple de livrable présentés au cadrage</b></div>
         <div class="at-cmp-col at-cmp-good">Book of knowledge interne propriétaire</div>
       </div>
 
@@ -99,7 +99,7 @@ export const comparisonHtml = `
         <div class="at-cmp-col at-cmp-col-label">Garantie qualité</div>
         <div class="at-cmp-col">SLA uptime du SaaS</div>
         <div class="at-cmp-col at-cmp-bad">Aucune · "si pas satisfait, on s'arrange"</div>
-        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>≥ 3 recos actionnables ou 50 % remboursé</b></div>
+        <div class="at-cmp-col at-cmp-col-us at-cmp-good"><b>Livrables et critères d'acceptation écrits au devis</b></div>
         <div class="at-cmp-col">Retake partiel possible · négocié</div>
       </div>
 

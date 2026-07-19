@@ -10,9 +10,9 @@ export const teamHtml = `
         <h2>Chaque audit est nommé.<br>Photos, LinkedIn, spécialité<br>par dimension.</h2>
       </div>
       <div class="right">
-        Pas de "notre équipe d'experts" anonyme. Votre audit Standard mobilise <b>2 seniors + un lead</b>
-        nommés dès le devis — dans la liste ci-dessous. Chaque dimension du rapport a un <b>owner dédié</b>
-        qui la signe. Engagement contractuel : <b>0 rotation d'équipe</b> en cours d'audit.
+        Pas de "notre équipe d'experts" anonyme. Les intervenants effectivement mobilisés, leur statut et leurs rôles
+        sont nommés dans le devis selon le périmètre. Le devis précise aussi la responsabilité de revue
+        et les modalités de continuité en cas d'indisponibilité.
       </div>
     </div>
 
@@ -30,7 +30,7 @@ export const teamHtml = `
         <div class="at-tm-body">
           <h4>Quentin Hagnéré</h4>
           <p class="at-tm-role">Fondateur · Lead auditor · Restitution client</p>
-          <p class="at-tm-bio">Responsable du cadrage initial, de la synthèse finale et de la restitution board. Présent sur l'intégralité des audits Standard et plus. Signe la clause de non-conflit d'intérêt publique.</p>
+          <p class="at-tm-bio">Peut intervenir sur le cadrage, la synthèse et la restitution selon l'équipe nommée au devis. Les règles de prévention des conflits d'intérêts sont précisées pour la mission.</p>
           <div class="at-tm-meta">
             <span class="at-tm-chip">🎯 Cadrage · restitution</span>
             <span class="at-tm-chip">⚖️ Signataire CoI</span>
@@ -105,7 +105,7 @@ export const teamHtml = `
         <div class="at-tm-body">
           <h4>Frédéric Curinckx</h4>
           <p class="at-tm-role">Senior auditor · Infrastructure + FinOps</p>
-          <p class="at-tm-bio">Owner des dimensions E (Infrastructure) et G (FinOps cloud). Spécialiste multi-tenant, billing, DR plan, backups testés. Économies typiques identifiées en FinOps : 20-40 % du budget cloud.</p>
+          <p class="at-tm-bio">Peut intervenir sur les dimensions Infrastructure et FinOps cloud selon le périmètre. Les économies potentielles sont calculées à partir des factures et hypothèses du client, sans pourcentage promis.</p>
           <div class="at-tm-meta">
             <span class="at-tm-chip">☁️ AWS · OVH · GCP</span>
             <span class="at-tm-chip">💰 FinOps · TCO</span>
