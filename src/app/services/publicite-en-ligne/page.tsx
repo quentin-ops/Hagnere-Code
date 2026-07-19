@@ -54,7 +54,7 @@ const serviceJsonLd = JSON.stringify({
       price: "1500",
       priceCurrency: "EUR",
       description:
-        "Audit comptes Google Ads, Meta, LinkedIn + tracking + structuration + budget. Rapport 25-40 pages + roadmap 90 jours. Déduit à 100 % du 1er mois si mission signée sous 60 j.",
+        "Audit des comptes et du tracking avec périmètre, livrables et restitution précisés au devis. Toute remise éventuelle doit être écrite dans le devis signé.",
     },
     {
       "@type": "Offer",
@@ -93,7 +93,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Setup tracking + restructuration live à J+21. Premier effet visible sur le CAC à 4-8 semaines (quand les algos se recalibrent sur les signaux propres). ROAS blended CRM stabilisé à 3-4 mois. Jalons mensuels posés pour juger la trajectoire.",
+          "Le devis fixe les jalons techniques et la méthode de mesure. Le délai d'un effet sur le CAC ou le ROAS dépend de l'offre, du volume, de la saisonnalité et des plateformes ; aucun résultat chiffré n'est garanti.",
       },
     },
     {
@@ -120,7 +120,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Non, et personne de sérieux ne garantit un chiffre précis sur Ads : trop de variables (offre, landing, saisonnalité, concurrence). Nous garantissons la méthode, la qualité des livrables, et des jalons mensuels documentés. Si à 3-4 mois la trajectoire n'est pas la bonne, on adapte sans facturer.",
+          "Non. L'offre, la landing page, la saisonnalité, la concurrence et les plateformes influencent les résultats. Le devis peut en revanche fixer les livrables, les jalons techniques, les métriques suivies et les modalités de révision.",
       },
     },
     {
@@ -129,7 +129,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "3 semaines en moyenne pour la stack complète : GTM Server déployé (Stape.io), Meta CAPI, Google Enhanced Conversions, LinkedIn Conv API, Consent Mode v2, webhook CRM, Looker Studio premier jet. Vos devs n'ont besoin d'ajouter qu'un seul snippet.",
+          "Le délai dépend des plateformes, du CMS, du consentement, du CRM, du DNS et des validations disponibles. Le cadrage liste les intégrations, responsabilités et tests de recette nécessaires.",
       },
     },
     {
@@ -138,7 +138,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Un consultant senior dédié + un media buyer + un creative selon le forfait. Pas de rotation, pas de chargé de compte intermédiaire. Réponse sous 4 h ouvrées en semaine. Nous limitons à 8 clients actifs par consultant pour garantir du temps par compte.",
+          "Le devis nomme les intervenants, leurs rôles et leur statut selon le forfait. Il précise également les canaux, horaires, délais cibles et modalités de continuité.",
       },
     },
     {
@@ -156,7 +156,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Tout : comptes Ads (déjà chez vous), pixels, audiences 1P, conteneur GTM Server, templates Looker Studio, fichiers Figma / motion, Notion de pilotage, creatives validés. Passation 2 semaines incluse : docs techniques + vidéos de transfert.",
+          "Les comptes publicitaires ouverts au nom du client restent sous son contrôle. Le devis inventorie les autres livrables et droits ; la durée et le contenu d'une passation éventuelle sont contractualisés.",
       },
     },
     {
@@ -165,7 +165,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "2 semaines de travail : audit comptes Google + Meta + LinkedIn, diagnostic tracking (signaux perdus, dedupe, Consent), décompte 12 mois du spend gaspillé, identification des 10 leviers à activer, roadmap 90 jours priorisée. Rapport 25-40 pages + restitution 90 min en visio. Déduits à 100 % du 1er mois si signature dans les 60 jours.",
+          "Le devis d'audit précise les plateformes, la période analysée, le tracking, les livrables et la restitution. Aucune déduction automatique n'est prévue par les CGV publiques.",
       },
     },
   ],

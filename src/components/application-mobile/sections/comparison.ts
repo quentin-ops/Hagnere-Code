@@ -43,7 +43,7 @@ export const comparisonHtml = `
         <div class="mob-compar-cell mob-compar-cell-label">Présence sur écran d'accueil</div>
         <div class="mob-compar-cell mob-compar-cell-no">— Inexistante</div>
         <div class="mob-compar-cell mob-compar-cell-mid mob-compar-cell-mid-yes">~ Optionnelle (rare)</div>
-        <div class="mob-compar-cell mob-compar-cell-best mob-compar-cell-yes">✓ Garantie sur 2 stores</div>
+        <div class="mob-compar-cell mob-compar-cell-best mob-compar-cell-yes">✓ Soumission aux 2 stores si prévue au devis</div>
       </div>
 
       <div class="mob-compar-row">

@@ -4,13 +4,13 @@ export const ownershipHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ce que vous récupérez · J+1</div>
-        <h2>9 actifs à votre nom,<br>écrits dans le contrat.</h2>
+        <div class="eyebrow">— Accès et livrables</div>
+        <h2>9 actifs à inventorier<br>dans votre contrat.</h2>
       </div>
       <div class="right">
         La peur n°1 d'un dirigeant non-tech : être prisonnier de l'agence.
-        Voici la <b>checklist exhaustive</b> de ce que vous possédez en propre,
-        dès le premier jour, sans condition. Si on disparaît demain, n'importe quelle ESN React Native peut reprendre sans friction.
+        Voici la <b>checklist à cadrer</b> pour éviter la dépendance. Les comptes peuvent être ouverts au nom du client&nbsp;;
+        les droits sur les livrables spécifiques sont transférés après paiement complet, conformément aux CGV.
       </div>
     </div>
 
@@ -21,7 +21,7 @@ export const ownershipHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
         </div>
         <h4>Repo Git GitHub</h4>
-        <p>Sous <b>votre organisation GitHub</b> dès J+1. Branches, historique, secrets via GitHub Actions. Accès admin pour vous, contributeur pour nous.</p>
+        <p>Le dépôt peut être placé sous <b>votre organisation GitHub</b>. Le devis précise les rôles, l'historique remis, la gestion des secrets et la révocation des accès.</p>
       </div>
 
       <div class="mob-ownership-card reveal reveal-d-1">
@@ -100,8 +100,8 @@ export const ownershipHtml = `
     <div class="mob-ownership-foot reveal reveal-d-1">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
       <span>
-        <b>Cession exclusive et totale</b> écrite dans nos CGV (en France, l'agence reste propriétaire par défaut sauf cession écrite — beaucoup l'oublient).
-        Vous partez quand vous voulez, on vous dit bonne continuation.
+        Les <b>livrables spécifiques</b> sont transférés après paiement complet selon les CGV,
+        sous réserve des composants préexistants, outils génériques et licences tierces. Le devis détaille les éléments concernés.
       </span>
     </div>
   </div>

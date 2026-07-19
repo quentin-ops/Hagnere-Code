@@ -12,7 +12,7 @@ const MOBILE_OG_IMAGE = {
 export const metadata: Metadata = {
   title: "Création d'application mobile iOS & Android · Hagnéré Code",
   description:
-    "Votre app iOS + Android sur les stores dès 12 semaines (React Native). Forfait fixe, code et comptes 100 % à vous, 30 jours de garantie.",
+    "Conception d'applications iOS et Android avec React Native : cadrage, comptes stores au nom du client, livraison, droits et maintenance précisés sur devis.",
   alternates: { canonical: "/services/application-mobile" },
   openGraph: {
     ...OG_BASE,
@@ -53,7 +53,7 @@ const serviceJsonLd = JSON.stringify({
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "Développement d'applications mobiles natives iOS et Android via React Native + Expo. Soumission App Store et Google Play incluse, comptes développeur à votre nom, code source 100 % à vous, OTA updates via EAS, monitoring Sentry. Forfait fixe contractuel, pénalité de retard, 30 jours de garantie post-publication.",
+    "Développement d'applications mobiles iOS et Android via React Native et Expo. Le devis précise le périmètre de soumission aux stores, les comptes client, le calendrier, les livrables, les droits transférés après paiement complet et la maintenance éventuelle.",
   offers: [
     {
       "@type": "Offer",
@@ -104,7 +104,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Compter 8 à 12 semaines pour un MVP, 14 à 20 semaines pour une application complète, 5 à 9 mois pour une marketplace ou app entreprise. La soumission Apple prend 24-48 h par cycle, avec en moyenne 1 à 3 itérations de revue. La soumission Google Play est plus rapide (1 à 3 jours typique). Délais contractualisés au cadrage avec pénalité de retard de 7 % du forfait par semaine au-delà de J+14.",
+          "Le planning dépend du périmètre, des validations client, des intégrations et des revues des stores. Les jalons, dépendances et éventuelles conséquences d'un retard ne s'appliquent que s'ils figurent dans le devis ou le contrat signé.",
       },
     },
     {
@@ -113,7 +113,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Le client à 100 %, dès le premier jour. Repo Git sur l'organisation GitHub du client. Comptes Apple Developer et Google Play Console créés au nom du client et facturés directement par Apple et Google. Certificats iOS, clés API, fichiers Figma, icônes : tout est sous le contrôle du client. La cession exclusive et totale est écrite dans les CGV. Aucun lock-in technique ou contractuel.",
+          "Les comptes Apple Developer, Google Play et les services tiers peuvent être créés au nom du client. Le devis inventorie les accès et livrables ; conformément aux CGV, les livrables spécifiques sont transférés après paiement complet, sous réserve des composants préexistants et licences tierces.",
       },
     },
     {

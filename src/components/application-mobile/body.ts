@@ -47,7 +47,7 @@ ${navHtml}
               <path d="M8 11V7a4 4 0 018 0"/>
             </svg>
           </span>
-          <span class="mob-hero-feat-label">Code &amp; comptes stores à vous J+1</span>
+          <span class="mob-hero-feat-label">Comptes stores client · droits cadrés</span>
         </span>
       </div>
       <p class="shero-sub">
@@ -504,8 +504,8 @@ ${navHtml}
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h4>30 jours de garantie post-stores</h4>
-        <p>À la mise en ligne sur App Store + Play Store, 30 j de garantie : bugs corrigés gratuitement. Après, forfait maintenance optionnel à la carte, chiffré sur devis selon le scope retenu.</p>
+        <h4>Recette et suivi post-publication</h4>
+        <p>Le devis précise la recette, la période éventuelle de correction des anomalies, les niveaux de sévérité et la maintenance après publication.</p>
       </div>
     </div>
   </div>
@@ -558,7 +558,7 @@ ${navHtml}
         <div class="proc-num">ÉTAPE 05</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
         <h4>Soumission stores + suivi 30 j</h4>
-        <p>On gère App Store Connect + Google Play Console : fiche store, captures, ASO, soumission, <b>1 à 3 itérations de review Apple</b> (24-48 h chacune). 30 j de garantie post-publication. Formation 2 h.</p>
+        <p>Le devis peut couvrir App Store Connect et Google Play Console&nbsp;: fiche store, captures, soumission, retours des équipes de revue et formation. Le nombre d'itérations et les délais des stores ne sont pas garantis par l'agence.</p>
         <div class="proc-dur">5–10 JOURS · J+30</div>
       </div>
     </div>
@@ -739,7 +739,7 @@ ${navHtml}
     </div>
 
     <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
-      <b style="color:var(--ink)">Tous les forfaits incluent</b> : code source 100 % à vous · repo Git J+1 · comptes App Store + Google Play à votre nom · soumission stores · 30 j de garantie post-publication · paiement échelonné.
+      <b style="color:var(--ink)">Chaque devis précise</b> : dépôt et accès, comptes stores, soumission, recette, période de correction, paiement et transfert des livrables spécifiques après paiement complet selon les CGV.
       &nbsp;&nbsp;<i>Frais Apple Developer + Google Play facturés directement à votre nom.</i>
     </p>
   </div>
@@ -772,7 +772,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>8-12 semaines</b> pour un MVP, <b>14-20 semaines</b> pour une app complète, <b>5-9 mois</b> pour une marketplace ou app entreprise. Soumission Apple = 24-48 h par cycle, 1 à 3 itérations en moyenne. On planifie avec marge. Délais contractualisés au cadrage, avec <b>clause de pénalité de retard</b> écrite dans le contrat au-delà de la date livrée.
+            Le planning dépend du périmètre, des validations client, des intégrations et des revues Apple et Google. Le devis fixe les jalons, les dépendances et, le cas échéant, les conséquences contractuelles d'un retard.
           </div>
         </div>
 
@@ -782,7 +782,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Vous, à 100 %, dès J+1.</b> Repo Git sur votre organisation GitHub. Compte Apple Developer + Google Play Console créés <b>à votre nom</b>, et facturés directement à vous par Apple et Google. Certificats iOS, clés API, fichiers Figma, icônes : tout est sous votre contrôle. Si on disparaît demain, n'importe quelle ESN React Native peut reprendre. <b>Aucun lock-in technique ou contractuel.</b>
+            Les comptes Apple Developer, Google Play et les services tiers peuvent être créés <b>à votre nom</b>. Le devis inventorie le dépôt, les accès et les livrables. Les livrables spécifiques sont transférés après paiement complet selon les CGV, sous réserve des composants préexistants et licences tierces.
           </div>
         </div>
 
@@ -832,7 +832,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Aucune agence sérieuse ne peut le garantir</b> : 42 % des startups d'apps échouent par manque de besoin réel, pas de tech. C'est pour ça qu'on fait un Discovery Sprint <b>avant</b> le forfait, pour challenger l'idée. On insiste aussi pour un <b>budget marketing 20-25 %</b> du projet (ASO, push, paid social) — sans ça, la meilleure app reste invisible. On vous le dira franchement avant que vous signiez.
+            Aucune agence ne peut garantir l'adoption d'une application. Le cadrage sert à tester le besoin, prioriser le MVP, identifier le plan de lancement et séparer clairement les hypothèses produit des engagements techniques du devis.
           </div>
         </div>
 
@@ -872,7 +872,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            La CNIL contrôle les apps depuis <b>printemps 2025</b>, sanction max <b>4 % du CA / 20 M€</b>. On livre <b>politique de confidentialité dédiée mobile</b>, gestion permissions (geo, contacts, micro, photos) conforme, DPA signé, hébergement Scaleway Paris ou OVH Roubaix. Pour <b>données santé</b> : hébergement HDS, consentement renforcé, DPO obligatoire. Pour <b>mineurs</b> : double consentement parental.
+            Les permissions, finalités, bases légales, sous-traitants et durées sont cadrés avec votre DPO ou conseil. Des données de santé peuvent imposer des mesures renforcées et, selon l'activité et l'échelle du traitement, un hébergement certifié HDS ou la désignation d'un DPO. Pour les moins de 15 ans en France, l'accord conjoint du mineur et d'un titulaire de l'autorité parentale concerne certains services en ligne lorsque le traitement repose sur le consentement. Ces obligations se valident au cas par cas.
           </div>
         </div>
       </div>

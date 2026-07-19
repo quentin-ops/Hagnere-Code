@@ -15,7 +15,7 @@ import { techFaqHtml } from "./sections/tech-faq";
  *   NAV → Breadcrumb → HERO →
  *   TRUST STRIP (chiffres + logos stack) → PROBLEMS (6 situations) →
  *   WHAT WE BUILD (9 verticals) → CAPABILITIES (20 features natives) →
- *   STORES (App Store + Play Store) → OWNERSHIP (9 actifs J+1) →
+ *   STORES (App Store + Play Store) → OWNERSHIP (9 actifs à inventorier) →
  *   PROCESS (5 étapes) → STACK (RN + Expo + EAS) → RELATED CASES →
  *   DE-RISK (4 peurs) → COMPARISON (vs site/PWA) → REFUSE (red flags) →
  *   PRICING (3 forfaits) → TRUST BADGES (9 engagements) →

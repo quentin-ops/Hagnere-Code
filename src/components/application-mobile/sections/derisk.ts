@@ -9,7 +9,7 @@ export const deriskHtml = `
       </div>
       <div class="right">
         Chaque dirigeant qui vient nous voir pour une app a les mêmes quatre peurs.
-        On les traite frontalement, et chaque réponse est <b>contractuelle</b>, pas marketing.
+        On les traite frontalement&nbsp;: le devis signé précise ce qui devient <b>contractuel</b> pour votre projet.
       </div>
     </div>
 
@@ -20,15 +20,14 @@ export const deriskHtml = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           « Mon devis va exploser en cours de route. »
         </div>
-        <h3>Forfait fixe contractuel · pénalité écrite.</h3>
+        <h3>Forfait, dépendances et changement cadrés.</h3>
         <p>
-          Le périmètre est gelé au cadrage. Prix annoncé = prix final, <b>aucun avenant
-          sur le scope validé</b>. Une <b>clause de pénalité de retard</b> est écrite dans le contrat
-          au-delà de la date livrée. Échéancier 30 / 40 / 30, pas 100 % à la signature.
+          Le devis décrit le périmètre, les hypothèses, les validations attendues et la procédure de changement.
+          L'échéancier et une éventuelle clause liée au retard ne s'appliquent que s'ils sont écrits dans le contrat signé.
         </p>
         <div class="mob-derisk-proof">
           <span>✓ Devis au forfait</span>
-          <span>✓ Pénalité contractuelle</span>
+          <span>✓ Conséquences au devis</span>
           <span>✓ Périmètre gelé</span>
         </div>
       </div>
@@ -77,16 +76,16 @@ export const deriskHtml = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           « Je vais dépendre de l'agence à vie pour le moindre changement. »
         </div>
-        <h3>Repo Git J+1 · stores à votre nom · zéro lock-in.</h3>
+        <h3>Comptes à votre nom · réversibilité cadrée.</h3>
         <p>
-          Repo GitHub <b>sur votre organisation dès J+1</b>. Compte App Store + Google Play <b>à votre nom</b>,
-          payés par vous. Pas de licence propriétaire, pas de framework maison, stack 100 % standard
-          (React Native + Expo). À la livraison, <b>journée de passation filmée</b> avec votre équipe.
+          Le dépôt peut être hébergé sur votre organisation et les comptes App Store et Google Play sont créés
+          à votre nom lorsque vous en êtes l'éditeur. Le devis inventorie les licences, livrables et modalités de passation&nbsp;;
+          les droits sur les livrables spécifiques sont transférés après paiement complet selon les CGV.
         </p>
         <div class="mob-derisk-proof">
-          <span>✓ Repo chez vous J+1</span>
+          <span>✓ Dépôt et accès inventoriés</span>
           <span>✓ Stores à votre nom</span>
-          <span>✓ Passation filmée</span>
+          <span>✓ Passation au devis</span>
         </div>
       </div>
     </div>
