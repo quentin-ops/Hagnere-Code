@@ -193,8 +193,8 @@ export const teamHtml = `
     <div class="me-tm-note reveal reveal-d-2">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
       <div>
-        <b>${TEAM_TOTAL_COUNT} personnes au total.</b> <b>Pas de pool tournant.</b>
-        Binôme référent nommé au kickoff, recouvrement de 2 semaines en cas de changement (clause CGV).
+        <b>${TEAM_TOTAL_COUNT} profils présentés au total.</b> ${TEAM_PUBLIC_COMPOSITION}.
+        Les personnes réellement mobilisées, leur statut et les modalités de continuité figurent au devis.
       </div>
     </div>
   </div>

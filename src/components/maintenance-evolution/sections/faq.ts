@@ -34,7 +34,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Monitoring live à J+14</b> (Sentry, Better Stack, Statuspage publique). <b>Premier deploy à J+21</b> (un fix utile). <b>SLA uptime stable à M+2</b>. Jalons documentés au kickoff, publiés dans le rapport mensuel pour que vous puissiez juger la trajectoire avant la fin du 1er trimestre.
+            Après le diagnostic initial, le devis fixe les accès, priorités, outils, jalons et critères observables. Les délais dépendent de la documentation, des environnements disponibles et des incidents ouverts.
           </div>
         </div>
 
@@ -61,16 +61,16 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Revue de pilotage à 3 mois. Si les jalons ne sont pas atteints, on <b>ajuste sans frais supplémentaire</b>. L'engagement contractuel est limité à 3-6 mois (selon tier), puis reconductible mensuellement avec préavis de 60 jours. <b>Comptes, code, docs — tout reste chez vous</b>.
+            Les conditions de révision, la durée d'engagement, le préavis et le traitement d'un écart de service sont ceux du devis ou du contrat signé. Les comptes placés au nom du client restent sous son contrôle et les livrables sont remis selon les CGV.
           </div>
         </div>
 
         <div class="faq-item" data-persona="ceo cto">
-          <div class="faq-q">Vous garantissez vraiment 99,9 % d'uptime ?
+          <div class="faq-q">Quels niveaux de service pouvez-vous contractualiser ?
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Oui, et <b>avec pénalités auto-appliquées</b>. 99,5 % en Essentiel, 99,9 % en Scale, 99,95 % en Premium. Mesuré par Better Stack, affiché sur Statuspage publique, rapport trimestriel. Si on manque&nbsp;: avoir chiffré en CGV, sans discussion. <b>On assume contractuellement, pas en slogan</b>.
+            Disponibilité, temps de prise en charge, plage d'astreinte, outil de mesure et éventuelles pénalités sont adaptés à l'architecture. Ils ne sont opposables que lorsqu'ils figurent explicitement dans le contrat signé.
           </div>
         </div>
 
@@ -79,7 +79,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>4 semaines</b> en standard&nbsp;: audit flash (S1), prise de contrôle accès (S1-S2), branchement observability (S2-S3), backlog + roadmap (S3-S4). À J+30 votre app est sous monitoring complet et on commence à shipper. Pour les apps simples, on peut compresser à 2-3 semaines.
+            La durée dépend des accès, de la documentation, de l'infrastructure et des incidents déjà ouverts. Le plan d'onboarding, ses responsables et ses jalons sont validés au cadrage.
           </div>
         </div>
 
@@ -88,7 +88,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Transition douce, pas de clash</b>. On propose un overlap de 4 à 8 semaines avec votre prestataire actuel (payé par vous), on reprend progressivement, on documente tout. Votre freelance part serein, vous gagnez un binôme. 80 % de nos transitions se passent en bons termes avec le sortant.
+            Nous proposons un inventaire des accès, une reprise progressive, des points avec le prestataire sortant et une documentation partagée. La durée et le coût de ce recouvrement sont définis au devis avec les parties concernées.
           </div>
         </div>
 
@@ -97,7 +97,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>2 à 4 personnes nommées dans votre contrat</b> (photo, prénom, LinkedIn — <a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir la section Équipe</a>). Pas de rotation, pas de chargé de compte intermédiaire. Binôme obligatoire — jamais un seul dev sur votre projet. Réponse &lt; 2 h HO en Slack. <b>Maximum 8 clients actifs par consultant</b> pour garantir du temps par compte.
+            Les intervenants, leurs rôles et leur statut sont nommés dans le devis — <a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir la composition publique</a>. Le canal, les horaires, les délais cibles et les modalités de continuité sont également précisés.
           </div>
         </div>
 
@@ -106,7 +106,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            En dessous de <b>1 000 utilisateurs actifs mensuels</b> et si vous n'avez pas d'enjeu sécurité/SLA, un freelance à la tâche suffit probablement. Au-delà, le forfait fixe s'auto-justifie. Règle empirique&nbsp;: si vous avez une app en prod depuis 1+ an, 1 000+ MAU ou un enjeu de sécurité client, on parle. En dessous, on vous oriente vers un indépendant senior.
+            La taille d'audience ne suffit pas à décider. La criticité, la fréquence des changements, la dette existante, les obligations de sécurité et le niveau de support attendu déterminent le dispositif utile.
           </div>
         </div>
 
@@ -115,7 +115,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Binôme obligatoire dès J+1</b> — vous n'avez jamais un seul dev qui connaît votre projet. Si un dev part&nbsp;: overlap 2 semaines avec le remplaçant (clause CGV), documentation déjà à jour, Loom d'onboarding. Vous ne perdez <b>0 jour de productivité</b>. Le binôme et le recouvrement de deux semaines sont des clauses contractuelles, pas des intentions.
+            Le devis précise l'équipe référente, la documentation attendue et les modalités de remplacement ou de recouvrement. Aucun délai de transition ni absence totale d'impact n'est promis hors contrat.
           </div>
         </div>
 
@@ -124,7 +124,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Tout</b>&nbsp;: repo GitHub (déjà chez vous), comptes cloud, DNS, Stripe, Sentry, Better Stack, Linear, Notion. Runbooks à jour, post-mortems archivés, Loom onboarding, docs architecture + ADR. <b>Passation de 5 jours offerte</b> à votre prestataire suivant&nbsp;: 1 call + docs + vidéos de transfert. Pas de rétention par l'ignorance.
+            Les comptes placés au nom du client restent sous son contrôle. Les éléments nécessaires à la reprise sont remis conformément aux CGV&nbsp;; le contenu, la durée et l'éventuel coût d'une passation sont précisés au devis.
           </div>
         </div>
 
@@ -133,7 +133,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            5 jours de travail par 2 devs seniors&nbsp;: audit code (dette technique, patterns, dépendances, CVE), audit infra (backups, DR, scaling), audit sécurité (SAST, secrets, RGPD), audit dépendances obsolètes. <b>Rapport 15-25 pages + plan de remédiation 12 mois chiffré par priorité</b>. Restitution 1h30 en visio. <b>Déduits à 100 % du 1er mois</b> si vous signez un retainer dans les 60 jours.
+            Le diagnostic initial est cadré au devis&nbsp;: intervenants, jours mobilisés, code et infrastructure couverts, livrables et restitution. Aucune déduction automatique n'est prévue par les CGV publiques.
           </div>
         </div>
       </div>

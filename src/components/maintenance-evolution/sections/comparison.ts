@@ -9,8 +9,8 @@ export const comparisonHtml = `
       </div>
       <div class="right">
         On ne prétend pas être la meilleure option partout.
-        Voici la comparaison honnête — <b>si vous êtes dans une colonne qui
-        n'est pas la nôtre, on vous le dira en 30 min</b>.
+        Cette grille sert à préparer vos questions. Les prix et modalités d'un tiers varient&nbsp;:
+        <b>vérifiez-les dans son devis plutôt que de les tenir pour acquis</b>.
       </div>
     </div>
 
@@ -51,7 +51,7 @@ export const comparisonHtml = `
         <div class="me-cmp-col me-cmp-col-label">CVE patchés sous 48 h</div>
         <div class="me-cmp-col me-cmp-bad">Dépend de la dispo</div>
         <div class="me-cmp-col">Selon contrat SLA</div>
-        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Contractuel · automatisé</b></div>
+        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Délai défini au devis selon criticité</b></div>
         <div class="me-cmp-col me-cmp-bad">Non garanti · sur demande</div>
       </div>
 
@@ -59,7 +59,7 @@ export const comparisonHtml = `
         <div class="me-cmp-col me-cmp-col-label">Astreinte 7j/7 avec MTTR contractuel</div>
         <div class="me-cmp-col me-cmp-bad">Aucune · best effort</div>
         <div class="me-cmp-col">Tier premium uniquement</div>
-        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Tier Scale &amp; Premium · pénalités auto</b></div>
+        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Option chiffrée selon la couverture</b></div>
         <div class="me-cmp-col me-cmp-bad">Non inclus</div>
       </div>
 
@@ -67,7 +67,7 @@ export const comparisonHtml = `
         <div class="me-cmp-col me-cmp-col-label">SLA avec pénalités chiffrées</div>
         <div class="me-cmp-col me-cmp-bad">Aucun</div>
         <div class="me-cmp-col me-cmp-bad">Discussion au cas par cas</div>
-        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Avoir automatique si manqué</b></div>
+        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Mesure et conséquence au contrat</b></div>
         <div class="me-cmp-col me-cmp-bad">Hors sujet · régie</div>
       </div>
 
@@ -75,7 +75,7 @@ export const comparisonHtml = `
         <div class="me-cmp-col me-cmp-col-label">Propriété code + infra</div>
         <div class="me-cmp-col me-cmp-good">Chez vous par défaut</div>
         <div class="me-cmp-col me-cmp-bad">Code chez vous · infra parfois mixte</div>
-        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>100 % chez vous depuis J+1</b></div>
+        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Comptes client · droits selon CGV</b></div>
         <div class="me-cmp-col me-cmp-good">Chez vous</div>
       </div>
 
@@ -91,7 +91,7 @@ export const comparisonHtml = `
         <div class="me-cmp-col me-cmp-col-label">Flexibilité contractuelle</div>
         <div class="me-cmp-col me-cmp-good">Aucun engagement · mais fragile</div>
         <div class="me-cmp-col me-cmp-bad">12-24 mois engagement strict</div>
-        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>3-6 mois puis mois par mois</b></div>
+        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Durée et préavis écrits au devis</b></div>
         <div class="me-cmp-col">Mensuel · mais dépendance</div>
       </div>
 
