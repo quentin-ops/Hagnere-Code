@@ -865,8 +865,56 @@ référencement, mais à ne pas repousser : sans client local, tout le calendrie
 
 ## 8. Calendrier de production sur 12 mois
 
-Cadence plafond : **une page locale toutes les deux semaines**. Frein dur : **aucune nouvelle
-page locale tant qu'une page locale existante est à zéro impression après 90 jours.**
+> ⚠️ **CORRECTION DU 19 JUILLET 2026 — le frein d'origine était faux.**
+>
+> Ce plan conditionnait initialement la publication de nouvelles pages locales
+> à l'obtention d'avis Google et d'impressions sur les pages existantes.
+> **Vérification faite en sources primaires Google, ce prérequis n'existe pas
+> et reposait sur une confusion de ma part entre deux systèmes de classement
+> distincts :**
+>
+> - le **pack local / Maps** classe des **fiches d'établissement** — Google y
+>   documente les avis comme facteur de « proéminence »
+>   ([support.google.com/business/answer/7091](https://support.google.com/business/answer/7091)) ;
+> - les **résultats organiques** classent des **pages** — aucun système de
+>   classement web documenté par Google n'utilise les avis d'une fiche
+>   ([guide des systèmes de classement](https://developers.google.com/search/docs/appearance/ranking-systems-guide)).
+>
+> Une page de ville se positionne en organique **sans aucun avis**. Les deux
+> chantiers — fiche d'établissement et pages locales — se mènent donc **en
+> parallèle, sans dépendance**.
+>
+> **Le vrai critère de cadence n'est pas le temps ni les avis : c'est la
+> matière disponible par ville.** Les politiques anti-spam de Google visent
+> deux comportements nommés, et aucun n'est une question de délai — les pages
+> ville qui ne sont qu'un sas « renvoyant les utilisateurs vers une seule
+> page » (*doorway abuse*), et la production en masse de quasi-doublons
+> (*scaled content abuse*).
+> Voir [spam-policies](https://developers.google.com/search/docs/essentials/spam-policies).
+>
+> Calibrage utile : les cas de sanction documentés se situent entre 100 et
+> 1 300 pages. À une dizaine de pages écrites à la main, le risque est
+> négligeable — la prudence initiale de ce plan était disproportionnée.
+
+Cadence plafond : **une page locale toutes les deux semaines** — non par
+précaution algorithmique, mais parce que c'est le rythme auquel on peut
+réunir une matière locale réelle par page.
+
+**Les deux tests à passer avant chaque publication** (ils remplacent
+l'ancien frein) :
+
+1. **Test de destination.** L'offre, les preuves et le formulaire sont *sur*
+   la page. Si elle se contente d'introduire puis renvoie vers `/services`
+   ou `/contact`, c'est littéralement l'exemple cité par Google — ne pas
+   publier.
+2. **Test de substitution.** Remplacer le nom de la ville par celui d'une
+   autre. Si le texte reste valable mot pour mot, la page n'a pas de raison
+   d'exister. Minimum non substituable exigé : 2 à 3 réalisations ou clients
+   nommés de la zone, une donnée de marché locale, le mode d'intervention
+   concret.
+
+Les impressions restent l'indicateur de **pilotage** (section 10) — elles ne
+sont plus une **condition** de publication.
 
 ### Vague 0 — Fondations (août 2026) · 0 page publiée
 
@@ -1010,7 +1058,8 @@ Plafond dur à ne jamais franchir : **25 URL locales**.
 
 | Seuil franchi | Correction |
 |---|---|
-| **Une page locale à 0 impression après 90 jours** | **Gel immédiat de toute nouvelle page locale.** Audit de la page : est-elle maillée depuis le pilier et le département ? Est-elle dans le sitemap ? Est-elle indexée ? Le contenu unique atteint-il vraiment 900 mots ? |
+| **Une page locale à 0 impression après 90 jours** | **Auditer cette page — sans geler les suivantes** (voir la correction du 19/07/2026, section 8). Est-elle maillée depuis le pilier et le département ? Dans le sitemap ? Indexée ? Passe-t-elle le test de substitution ? Une page muette est un problème de cette page, pas un signal sur le domaine |
+| **Plusieurs pages locales désindexées** | Là, en revanche, arrêter la production. C'est le signal précoce d'une dévaluation algorithmique pour contenu dupliqué — bien avant toute action manuelle. Vérifier aussi Search Console → Actions manuelles, libellé « Contenu de faible qualité, avec peu ou pas de valeur ajoutée » |
 | **Une page locale indexée mais position moyenne > 30 à 6 mois** | Réécrire les blocs 2, 5 et 9, ou fusionner la page dans son pilier départemental. Une page qui ne prend pas au bout de six mois ne prendra pas en douze |
 | **Deux pages locales captant les mêmes requêtes** | Cannibalisation. Désoptimiser la moins pertinente, ou fusionner |
 | **Une page ville captant des impressions sur une autre ville** | Le contenu unique est insuffisant : le moteur ne distingue pas les deux pages. Réécrire |
