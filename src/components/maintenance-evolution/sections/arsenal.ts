@@ -153,8 +153,8 @@ export const arsenalHtml = `
               <div class="me-arsenal-tool-kind">Astreinte 7j/7 · escalation</div>
             </div>
           </div>
-          <div class="me-arsenal-tool-body">Rotation on-call documentée, escalation auto (Slack → SMS → téléphone → manager), runbooks versionnés par type d'incident. <b>MTTR contractuel avec pénalités auto-appliquées</b>.</div>
-          <div class="me-arsenal-tool-chip">7j/7 tier Scale &amp; Premium</div>
+          <div class="me-arsenal-tool-body">Rotation, escalade et runbooks peuvent être configurés par type d'incident. La couverture, les temps cibles et les éventuelles pénalités doivent figurer au contrat.</div>
+          <div class="me-arsenal-tool-chip">Option selon couverture retenue</div>
         </div>
 
         <div class="me-arsenal-tool">

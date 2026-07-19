@@ -5,12 +5,12 @@ export const capabilitiesHtml = `
   <div class="wrap">
     <div class="section-head reveal" style="margin-bottom:56px">
       <div class="left">
-        <div class="eyebrow on-dark">— Ce qu'on met par défaut</div>
-        <h2 style="color:#fff">21 briques ops,<br>dans chaque forfait.<br>Pas à la carte.</h2>
+        <div class="eyebrow on-dark">— Bibliothèque opérationnelle</div>
+        <h2 style="color:#fff">21 briques ops<br>à sélectionner selon<br>votre production.</h2>
       </div>
       <div class="right" style="color:rgba(255,255,255,0.7)">
-        Monitoring, sécurité, qualité code, infra, pilotage. Tout ce qu'une équipe tech sérieuse
-        doit avoir de série en 2026 — <b style="color:#fff">vous n'avez pas à demander, c'est dedans</b>.
+        Monitoring, sécurité, qualité code, infrastructure et pilotage. Le diagnostic permet de retenir
+        <b style="color:#fff">les briques utiles, compatibles et chiffrées dans votre devis</b>.
       </div>
     </div>
 
@@ -46,7 +46,7 @@ export const capabilitiesHtml = `
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
         <h4>PagerDuty · astreinte 7j/7</h4>
-        <p>Rotation on-call documentée, escalation auto, runbooks versionnés. Pénalité SLA auto-appliquée si MTTR dépassé. Post-mortem sous 72 h.</p>
+        <p>Rotation, escalade, runbooks, temps de prise en charge et post-mortem configurés selon la couverture contractuelle retenue.</p>
       </div>
     </div>
 
@@ -62,7 +62,7 @@ export const capabilitiesHtml = `
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h4>Snyk · SCA dépendances</h4>
-        <p>Scan continu des vulnérabilités composer/npm/docker. Priorisation CVSS + exploit actif. <b>CVE critiques patchés sous 48 h</b>, majeures sous 7 j.</p>
+        <p>Scan des vulnérabilités composer/npm/docker et priorisation selon sévérité, exploitabilité et contexte. Les délais cibles sont définis au contrat.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg></div>

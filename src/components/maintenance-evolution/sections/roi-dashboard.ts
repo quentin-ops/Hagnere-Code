@@ -95,7 +95,7 @@ export const roiDashboardHtml = `
     <div class="me-roi-how reveal reveal-d-2">
       <div class="me-roi-how-head">
         <span class="me-roi-how-n">/ comment on tient ces engagements</span>
-        <h3>Pas de magie. 4 pratiques qu'on<br>applique sur <b>chaque</b> contrat.</h3>
+        <h3>Pas de magie. 4 pratiques à<br>adapter à <b>chaque</b> contrat.</h3>
       </div>
 
       <div class="me-roi-how-grid">
@@ -106,9 +106,9 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l3 3 4-8 4 12 3-5h4"/></svg>
             </div>
           </div>
-          <h4>Monitoring proactif &lt; 5 min</h4>
-          <p>Sentry + Better Stack + Grafana branchés dès J+1. <b>On détecte l'incident avant vos clients</b>. Alertes Slack contextualisées, pas du bruit.</p>
-          <div class="me-roi-step-foot">→ détection automatique, jamais sur signalement</div>
+          <h4>Monitoring proactif</h4>
+          <p>Les outils et seuils compatibles avec votre stack sont branchés selon un planning convenu. L'objectif est de réduire le temps de détection, sans promettre qu'aucun client ne verra jamais un incident.</p>
+          <div class="me-roi-step-foot">→ sources, seuils et canaux documentés</div>
         </div>
 
         <div class="me-roi-step">
@@ -120,7 +120,7 @@ export const roiDashboardHtml = `
           </div>
           <h4>Patches sécurité automatisés</h4>
           <p>Dependabot + Snyk + GitGuardian en CI. Les mises à jour mineures sont <b>auto-merged</b> sous tests verts. Les majors passent en revue humaine avec tests.</p>
-          <div class="me-roi-step-foot">→ CVSS ≥ 7 patché sous 48 h, sans surcoût</div>
+          <div class="me-roi-step-foot">→ délai cible défini selon criticité et dépendances</div>
         </div>
 
         <div class="me-roi-step">
@@ -130,9 +130,9 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
             </div>
           </div>
-          <h4>Deploys zero-downtime</h4>
-          <p>Blue-green via Forge / Vercel, migrations Laravel en expand/migrate/contract, feature flags, rollback 1-clic. <b>Jamais de fenêtre de maintenance visible</b>.</p>
-          <div class="me-roi-step-foot">→ aucune fenêtre de maintenance annoncée</div>
+          <h4>Déploiements maîtrisés</h4>
+          <p>Blue-green, migrations progressives, feature flags ou fenêtres planifiées sont choisis selon l'architecture et le risque de chaque livraison.</p>
+          <div class="me-roi-step-foot">→ stratégie et rollback préparés</div>
         </div>
 
         <div class="me-roi-step">
@@ -142,15 +142,15 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22v-2a8 8 0 0116 0v2"/></svg>
             </div>
           </div>
-          <h4>Équipe nommée · pas de pool tournant</h4>
-          <p>2 à 4 personnes nommément identifiées dans votre contrat. <b>Binôme obligatoire</b> sur chaque projet (pas de bus factor = 1). Overlap 2 semaines si rotation.</p>
-          <div class="me-roi-step-foot">→ 1 remplacement maximum sur 12 mois</div>
+          <h4>Équipe et continuité explicites</h4>
+          <p>Les intervenants, leur statut, leurs responsabilités et les modalités de remplacement sont identifiés dans le devis selon le dispositif.</p>
+          <div class="me-roi-step-foot">→ continuité proportionnée au périmètre</div>
         </div>
       </div>
 
       <div class="me-roi-how-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        Ces valeurs sont des <b>seuils contractuels, pas des moyennes constatées chez des clients</b>&nbsp;: Hagnéré Code n'a pas encore de client externe en TMA. Elles reprennent le référentiel DORA et le dispositif qu'on applique déjà à nos quatre produits maison (LMNP.AI, SCI-AI.app, Hagnéré Patrimoine, Hagnéré Investissement). Le calcul est automatisé dès J+1 et publié sur votre Statuspage. <b>Méthodologie détaillée en call sur demande</b>.
+        Les objectifs affichés dans une proposition ne sont <b>ni des moyennes clients ni des garanties universelles</b>. Ils doivent être adaptés à la stack, mesurés par des outils identifiés et repris dans le contrat pour devenir opposables.
       </div>
     </div>
   </div>

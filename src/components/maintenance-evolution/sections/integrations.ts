@@ -97,7 +97,7 @@ export const integrationsHtml = `
         <div class="me-eco-num">02</div>
         <div class="me-eco-head-text">
           <div class="me-eco-kind">OBSERVABILITY &amp; SECURITY · <span>notre stack</span></div>
-          <h3>6 outils qu'on branche dès J+1<br>— et qu'on opère pour vous.</h3>
+          <h3>6 familles d'outils à connecter<br>selon votre environnement.</h3>
           <p>Sentry, Better Stack, Grafana, Axiom, Snyk, PagerDuty. <b>Comptes à votre nom, sur votre facturation si vous préférez</b>.
              Mais c'est nous qui les installons, paramétrons, calibrons et gardons calmes.
              Zéro bruit, alertes utiles.</p>

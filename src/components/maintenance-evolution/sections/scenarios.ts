@@ -84,8 +84,8 @@ export const scenariosHtml = `
           <h3>« L'agence a livré la 1.0 puis a disparu. On a une app en prod et plus personne. »</h3>
           <p class="me-scen-lead">
             Code reçu, accès partiel, pas de docs, ex-lead dev injoignable, dépendances obsolètes, monitoring absent.
-            On arrive en mode <b>audit flash 5 jours</b>, on cartographie, on reprend les accès, on branche le monitoring,
-            on stabilise. À J+30, votre app est entre des mains adultes — avec un plan de remédiation chiffré.
+            On commence par un diagnostic cadré, on cartographie les accès, on priorise les risques et on définit la reprise.
+            Les délais de branchement du monitoring et de stabilisation dépendent de l'état réel de la stack.
           </p>
           <div class="me-scen-items-title">CE QU'ON LIVRE</div>
           <div class="me-scen-items">
@@ -104,10 +104,10 @@ export const scenariosHtml = `
           </div>
           <dl class="me-scen-meta">
             <div class="me-scen-meta-row"><dt>Tier recommandé</dt><dd>Scale (reprise + run)</dd></div>
-            <div class="me-scen-meta-row"><dt>Onboarding</dt><dd>4 semaines · équipe 2 devs</dd></div>
-            <div class="me-scen-meta-row"><dt>Premier effet</dt><dd>Monitoring live à J+14</dd></div>
-            <div class="me-scen-meta-row"><dt>Engagement</dt><dd>6 mois puis mensuel</dd></div>
-            <div class="me-scen-meta-row"><dt>Démarrage</dt><dd>Audit flash 2 500 € (déductible)</dd></div>
+            <div class="me-scen-meta-row"><dt>Onboarding</dt><dd>Planning défini après inventaire</dd></div>
+            <div class="me-scen-meta-row"><dt>Premier effet</dt><dd>Jalon observable inscrit au devis</dd></div>
+            <div class="me-scen-meta-row"><dt>Engagement</dt><dd>Durée et préavis au devis</dd></div>
+            <div class="me-scen-meta-row"><dt>Démarrage</dt><dd>Diagnostic initial sur devis</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg me-scen-cta">
             Cadrer la reprise
@@ -115,7 +115,7 @@ export const scenariosHtml = `
           </a>
           <div class="me-scen-aside-foot">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
-            Audit flash 5 j offert sur engagement 6 mois
+            Périmètre, prix et calendrier confirmés avant signature
           </div>
         </aside>
       </div>

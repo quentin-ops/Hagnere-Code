@@ -74,7 +74,25 @@ export async function POST(request: NextRequest) {
   // C'est la protection principale de cette route depuis le retrait de
   // Cloudflare Turnstile : un bot qui martèle l'endpoint est coupé par
   // les paliers IP + le plafond de bytes/jour (coût Groq borné).
-  const rateCheck = await checkServiceRateLimit(ip, null, "transcribe");
+  let rateCheck;
+  try {
+    rateCheck = await checkServiceRateLimit(ip, null, "transcribe");
+  } catch (err) {
+    // La dictée déclenche un appel externe facturé. Si la protection
+    // persistante est indisponible, on refuse temporairement l'appel au lieu
+    // de contourner silencieusement le rate-limit.
+    log.error("transcribe_rate_limit_unavailable", {
+      err: err as Error,
+      ip,
+    });
+    return NextResponse.json(
+      {
+        error:
+          "La dictée est temporairement indisponible. Vous pouvez continuer en saisissant votre texte.",
+      },
+      { status: 503, headers: { "Retry-After": "60" } },
+    );
+  }
   if (!rateCheck.allowed) {
     await logAiCall({
       service: "transcribe",

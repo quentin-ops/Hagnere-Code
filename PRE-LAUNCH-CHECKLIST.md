@@ -9,18 +9,17 @@ le détail complet).
 ## 🚨 À FAIRE AVANT LE DÉPLOIEMENT
 
 ### 1. Migrations base de données
-Deux migrations à appliquer dans l'ordre sur la base Neon de production :
+Les migrations versionnées du dossier `drizzle/` sont à appliquer dans l'ordre sur la base Neon de production :
 
 ```bash
 npx drizzle-kit migrate
 ```
 
-- `drizzle/0002_brief_public_slug.sql` — colonne `public_slug` sur `project_brief` (anti-IDOR).
-- `drizzle/0003_jazzy_pepper_potts.sql` — table `ai_call_log` (rate-limit Postgres-backed + observabilité IA).
+- `drizzle/0000_initial.sql` — création idempotente de `project_brief`, ajout de `public_slug`, création de `ai_call_log` et de ses index.
 
-Sans la première, `/api/project-inquiry` plantera. Sans la seconde, le
-rate-limit sera dégradé (in-memory uniquement, perte au cold start) et les
-métriques IA ne seront pas persistées.
+Sans cette migration, `/api/project-inquiry` ne peut pas garantir la persistance
+des demandes et `/api/transcribe` renvoie volontairement `503` afin de ne pas
+contourner son rate-limit sur un appel externe facturé.
 
 ### 2. Variables d'environnement Cloudflare
 À configurer sur le worker en production :
@@ -31,8 +30,8 @@ métriques IA ne seront pas persistées.
 | `DATABASE_URL` | URL Neon prod | Persistance des briefs, ai_call_log. |
 | `RESEND_API_KEY` | Clé Resend prod | Envoi emails formulaire. |
 | `GROQ_API_KEY` | Clé Groq prod | Transcription audio `/api/transcribe`. |
-| `CONTACT_TO_EMAIL` | `hello@hagnere-code.fr` | Destinataire interne formulaire. |
-| `CONTACT_FROM_EMAIL` | `contact@hagnere-code.fr` | Expéditeur Resend (doit être DKIM-validé). |
+| `CONTACT_TO_EMAIL` | `quentin@hagnere-patrimoine.fr` ou boîte suivie | Destinataire interne formulaire. |
+| `CONTACT_FROM_EMAIL` | `contact@hagnere-code.ai` | Expéditeur Resend (doit être DKIM-validé). |
 | `NEXT_PUBLIC_CALENDLY_URL` | URL Calendly réelle | Optionnel — fallback `https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte`. |
 | `NEXT_PUBLIC_COOKIE_BANNER` | `0` (par défaut désactivé) | Mettre `1` le jour où un outil analytique est ajouté (Plausible, GA, etc.). |
 
@@ -49,8 +48,8 @@ Les autres secrets doivent être posés via `wrangler secret put` ou l'UI Cloudf
 > supprimé du dashboard Cloudflare.
 
 ### 3. Vérifier les domaines DKIM Resend
-Resend refuse les `from` non-vérifiés. Vérifier que `hagnere-code.fr` est
-bien validé pour les expéditeurs `contact@` et `hello@`. Sinon les
+Resend refuse les `from` non-vérifiés. Vérifier que `hagnere-code.ai` est
+bien validé pour l'expéditeur `contact@`. Sinon les
 confirmations `/api/project-inquiry` partiront en erreur 403.
 
 ### 4. Assets visuels manquants
@@ -151,13 +150,13 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 - [ ] Vérifier qu'une ligne `ai_call_log` est créée à chaque appel `/api/project-inquiry`
 
 ### SEO / sitemap
-- [ ] Vérifier `https://hagnere-code.fr/sitemap.xml` (doit inclure /etudes-de-cas et /legal/accessibilite)
-- [ ] Vérifier `https://hagnere-code.fr/robots.txt` (`Allow: /` en prod)
+- [ ] Vérifier `https://hagnere-code.ai/sitemap.xml` (doit inclure /etudes-de-cas et /legal/accessibilite)
+- [ ] Vérifier `https://hagnere-code.ai/robots.txt` (`Allow: /` en prod)
 - [ ] Tester un partage Open Graph via le Facebook Sharing Debugger
 - [ ] Tester un partage via le Twitter Card Validator
 
 ### Sécurité
-- [ ] `curl -I https://hagnere-code.fr` (HSTS, CSP, X-Frame, X-Content-Type)
+- [ ] `curl -I https://hagnere-code.ai` (HSTS, CSP, X-Frame, X-Content-Type)
 - [ ] Tester rate-limit `/api/project-inquiry` (5 requêtes / IP / heure)
 - [ ] Tester rate-limit `/api/sirene` (60 req / IP / heure)
 
@@ -173,7 +172,7 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 - **P0 (16/16)** : harmonisations chiffrées, IDOR slug, /template supprimé, équipe portfolio, footer liens, CTA Calendly, etc.
 - **P1 (23/23)** : not-found / error pages, dead code supprimé, JSON-LD complétés, anglicismes retirés, CGV art. 28 ajouté, etc.
 - **P2 (10/12)** : rate-limit Sirene, phone validation, honeypot, logs PII, dates Journal, env vars, ai_call_log Postgres-backed.
-- **Maillage interne** : /etudes-de-cas linké depuis /realisations + footer + sitemap, breadcrumbs corrigés, .ai → .fr partout.
+- **Maillage interne** : /etudes-de-cas linké depuis /realisations + footer + sitemap, breadcrumbs corrigés et domaine canonique `.ai` conservé partout.
 - **Légal complet** : DPO, durées détaillées, IA (AI Act), transferts UE, sous-traitants tableau, art. 22, page accessibilité, AMF investissement/patrimoine, registre des traitements (interne), procédure incident, policy marketing emails, DPA template, bannière cookies pré-installée.
 
 **Build final** : ✓ 43 pages, TypeScript clean, lint avec 9 erreurs résiduelles non-bloquantes (composants legacy unused).
