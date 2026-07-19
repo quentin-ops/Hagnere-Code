@@ -291,7 +291,7 @@ export default function Page() {
             <li><strong>Cession de droits</strong> : la clause écrite qui vous transfère la propriété du code — sans elle, payer ne rend pas propriétaire.</li>
             <li><strong>Dépôt Git</strong> : le « coffre-fort » en ligne où vit le code source — il doit être à votre nom, ou accessible à votre nom.</li>
             <li><strong>TMA (maintenance)</strong> : le contrat d&apos;entretien du site après livraison — mises à jour, correctifs, surveillance.</li>
-            <li><strong>Réversibilité</strong> : votre capacité à changer de prestataire sans repartir de zéro — elle se négocie au contrat, pas au divorce.</li>
+            <li><strong>Réversibilité</strong> : votre capacité à changer de prestataire sans repartir de zéro — elle se négocie au contrat, pas au divorce. Notre guide sur la <Link href="/guides/proprietaire-site-internet-code-source">propriété du site et du code source</Link> en donne la checklist complète.</li>
             <li><strong>Coût total de possession (TCO)</strong> : le coût sur plusieurs années — création, maintenance, évolutions, et reprise éventuelle.</li>
           </ul>
         </InfoBox>

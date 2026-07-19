@@ -36,6 +36,20 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "proprietaire-site-internet-code-source",
+    title: "Qui est propriétaire de votre site internet ? · Hagnéré Code",
+    metaDescription:
+      "Payer ne transfère aucun droit : la loi, les briques que personne ne peut vous céder, les 14 accès à réclamer et la marche à suivre quand le conflit est là.",
+    cardTitle: "Propriété d'un site internet et du code source",
+    cardDescription:
+      "Ce qui décide de votre liberté n'est pas la titularité des droits mais le triptyque titularité + accès + technologie standard. Sources primaires Légifrance.",
+    heroTitle: "Qui est propriétaire de votre site et de son code source ?",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-19",
+    dateModified: "2026-07-19",
+    readTimeMin: 30,
+  },
+  {
     slug: "prix-referencement-naturel",
     title: "Prix du référencement naturel 2026 · Hagnéré Code",
     metaDescription:

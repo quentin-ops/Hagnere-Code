@@ -730,7 +730,11 @@ export default function Page() {
           <strong>cession écrite et précise</strong> (article L.131-3 :
           droits énumérés un par un, étendue, durée, territoire) — et les
           tribunaux jugent inopérante la formule vague « tous droits
-          cédés ».
+          cédés ». Notre guide{" "}
+          <Link href="/guides/proprietaire-site-internet-code-source">qui est
+          propriétaire de votre site et de son code source</Link> fournit le
+          modèle de clause conforme, l&apos;annexe des briques que personne ne
+          peut vous céder, et les 14 accès à réclamer.
         </p>
         <p>
           Ce n&apos;est pas de la théorie de juriste. Sans cession

@@ -1004,7 +1004,10 @@ export default function Page() {
           détaillées au chapitre 4, « Et après la mise en ligne ? » : la
           propriété du code (le site livré vous appartient) et la
           réversibilité (récupérer site et données pour changer de
-          prestataire, sans pénalité ni blocage) :
+          prestataire, sans pénalité ni blocage). Notre guide{" "}
+          <Link href="/guides/proprietaire-site-internet-code-source">sur la
+          propriété du site et du code source</Link> donne le texte de clause
+          à insérer et la liste des accès à exiger à la livraison :
         </p>
         <GuideTable
           headers={["Vérification", "OK ?"]}
