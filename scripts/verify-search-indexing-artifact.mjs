@@ -14,13 +14,14 @@ const ORGANIZATION_SIREN = "993672856";
 const OBSOLETE_SIRET = /993\s*672\s*856\s*00016|99367285600016/;
 const GUIDE_WORDS_PER_MINUTE = 200;
 const GUIDE_READ_TIME_TOLERANCE_MIN = 1;
-// Même politique que src/lib/search-indexing.ts : l'override explicite gagne,
-// sinon le build Vercel de production est la seule détection automatique
-// autorisée. NODE_ENV=production ne suffit volontairement pas.
+// Même politique que src/lib/search-indexing.ts : VERCEL_ENV est autoritaire
+// sur Vercel, sinon NEXT_PUBLIC_ENV pilote explicitement la CI et Cloudflare.
+// NODE_ENV=production ne suffit volontairement pas.
 const explicitIndexingEnv = process.env.NEXT_PUBLIC_ENV?.trim();
-const indexingEnabled = explicitIndexingEnv
-  ? explicitIndexingEnv === "production"
-  : process.env.VERCEL_ENV?.trim() === "production";
+const platformIndexingEnv = process.env.VERCEL_ENV?.trim();
+const indexingEnabled = platformIndexingEnv
+  ? platformIndexingEnv === "production"
+  : explicitIndexingEnv === "production";
 let failureCount = 0;
 const allowedSocialImageOrigins = new Set([SITE_ORIGIN]);
 

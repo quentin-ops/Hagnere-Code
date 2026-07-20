@@ -53,19 +53,20 @@ npm run cf:deploy        # déploiement Cloudflare
 | `CONTACT_FROM_EMAIL` | Expéditeur Resend (domaine DKIM-validé) |
 | `GROQ_API_KEY` | Transcription audio Whisper (`/api/transcribe`) |
 | `MATH_CHALLENGE_SECRET` | Signature HMAC serveur du contrôle anti-robot ; secret distinct par environnement |
-| `NEXT_PUBLIC_ENV` | `production` active l'indexation (sinon `noindex`) |
+| `NEXT_PUBLIC_ENV` | Hors Vercel : `production` active l'indexation (sinon `noindex`) |
 | `NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED` | Drapeau public (`true`/`1`) à définir uniquement lorsqu'un collecteur first-party compatible est réellement déployé ; absent ou `false` sur Vercel actuellement |
 | `NEXT_PUBLIC_CALENDLY_URL` | URL HTTPS `calendly.com` optionnelle ; tous les liens utilisent `src/lib/calendly.ts` et son fallback unique |
 | `TRUST_CF_CONNECTING_IP` | À laisser absent sur Vercel ; `1` uniquement derrière un proxy Cloudflare attesté |
 | `TRUST_X_FORWARDED_FOR` | Absent sur Vercel et sur un serveur directement exposé ; `1` uniquement derrière un proxy explicitement administré qui réécrit cet en-tête |
 
 En local : `.env.local` (jamais commité). En prod : variables d'environnement du
-projet Vercel (Settings → Environment Variables). `NEXT_PUBLIC_ENV` doit être
-défini séparément : `production` pour l'environnement Production et `preview`
-pour l'environnement Preview. Le script `build` ne force volontairement aucune
-valeur afin qu'une preview ne puisse jamais hériter d'un artefact indexable. La
-valeur est aussi déclarée dans `wrangler.jsonc`, mais ce fichier ne sert que la
-chaîne Cloudflare non active.
+projet Vercel (Settings → Environment Variables). Sur Vercel, la variable
+système `VERCEL_ENV` est autoritaire : seule sa valeur `production` ouvre
+l'indexation et une preview reste fermée même si `NEXT_PUBLIC_ENV` est mal
+configurée. Hors Vercel, `NEXT_PUBLIC_ENV=production` est requis pour produire
+un artefact public indexable ; toute autre valeur reste en `noindex`. La valeur
+est aussi déclarée dans `wrangler.jsonc`, mais ce fichier ne sert que la chaîne
+Cloudflare non active.
 
 Ne jamais préfixer `MATH_CHALLENGE_SECRET` par `NEXT_PUBLIC_`, ni réutiliser sa
 valeur entre preview et production. Le workflow GitHub

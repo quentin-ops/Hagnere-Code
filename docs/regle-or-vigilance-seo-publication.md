@@ -197,9 +197,11 @@ pouvoir rendre la page. Ne pas ajouter une règle spéciale pour un robot sans
 comprendre que certains parseurs utilisent alors le groupe le plus spécifique
 et n'héritent pas nécessairement du groupe générique.
 
-En développement et en preview, le blocage global est volontaire. La
-production n'est indexable que lorsque `NEXT_PUBLIC_ENV=production` est fourni
-au build.
+En développement et en preview, le blocage global est volontaire. Sur Vercel,
+seul `VERCEL_ENV=production` ouvre l'indexation ; cette variable système est
+autoritaire afin qu'une preview mal configurée ne devienne jamais indexable.
+Hors Vercel, la CI et la chaîne Cloudflare doivent fournir
+`NEXT_PUBLIC_ENV=production` pour l'artefact public.
 
 Référence officielle : [présentation de robots.txt par Google](https://developers.google.com/search/docs/crawling-indexing/robots/intro?hl=fr).
 
@@ -686,9 +688,9 @@ une barrière distincte du workflow CI et ne doit jamais être omise :
    sous-ensemble éditorial et d'indexation ;
 2. `prebuild` → tests des registres, du sitemap, de `llms.txt`, des ressources
    et de la politique d'indexation ;
-3. `next build` avec la valeur `NEXT_PUBLIC_ENV` fournie par l'environnement :
-   `production` pour l'artefact public, toute autre valeur pour une preview
-   `noindex,nofollow` ;
+3. `next build` avec `VERCEL_ENV` autoritaire sur Vercel (`production` pour
+   l'artefact public, `preview` pour un artefact `noindex,nofollow`) ; hors
+   Vercel, `NEXT_PUBLIC_ENV=production` ouvre explicitement l'indexation ;
 4. `postbuild` → contrôle de l'artefact : `robots.txt`, sitemap complet,
    `llms.txt`, présence des HTML, indexabilité, canonical, title, descriptions,
    `lang=fr`, exactement un title et un H1, OpenGraph, Twitter, signature et

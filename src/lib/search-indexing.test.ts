@@ -12,15 +12,17 @@ function pageSources(dir: string): string[] {
 }
 
 describe("search indexing environment", () => {
-  it("honors the explicit environment before any platform fallback", () => {
+  it("uses the explicit environment outside a deployment platform", () => {
     expect(isSearchIndexingEnabled("production")).toBe(true);
-    expect(isSearchIndexingEnabled("development", "production")).toBe(false);
-    expect(isSearchIndexingEnabled("preview", "production")).toBe(false);
+    expect(isSearchIndexingEnabled("production\n")).toBe(true);
+    expect(isSearchIndexingEnabled("development")).toBe(false);
+    expect(isSearchIndexingEnabled("preview")).toBe(false);
   });
 
-  it("uses Vercel production only when the explicit environment is absent", () => {
+  it("makes the Vercel environment authoritative when it is available", () => {
     expect(isSearchIndexingEnabled(undefined, "production")).toBe(true);
-    expect(isSearchIndexingEnabled("", "production")).toBe(true);
+    expect(isSearchIndexingEnabled("preview", "production")).toBe(true);
+    expect(isSearchIndexingEnabled("production", "preview")).toBe(false);
     expect(isSearchIndexingEnabled(undefined, "preview")).toBe(false);
     expect(isSearchIndexingEnabled(undefined, "development")).toBe(false);
     expect(isSearchIndexingEnabled(undefined, undefined)).toBe(false);

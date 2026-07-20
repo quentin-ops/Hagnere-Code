@@ -7,6 +7,7 @@ describe("robots.txt", () => {
   });
 
   it("autorise tous les robots sur le contenu public du build production", () => {
+    vi.stubEnv("VERCEL_ENV", "");
     vi.stubEnv("NEXT_PUBLIC_ENV", "production");
 
     expect(robots()).toEqual({
@@ -22,7 +23,7 @@ describe("robots.txt", () => {
   });
 
   it("reconnaît le déploiement Vercel production sans override public", () => {
-    vi.stubEnv("NEXT_PUBLIC_ENV", "");
+    vi.stubEnv("NEXT_PUBLIC_ENV", "preview");
     vi.stubEnv("VERCEL_ENV", "production");
 
     expect(robots()).toEqual({
@@ -38,8 +39,8 @@ describe("robots.txt", () => {
   });
 
   it("bloque tout crawl sur un build local ou de preview", () => {
-    vi.stubEnv("NEXT_PUBLIC_ENV", "preview");
-    vi.stubEnv("VERCEL_ENV", "production");
+    vi.stubEnv("NEXT_PUBLIC_ENV", "production");
+    vi.stubEnv("VERCEL_ENV", "preview");
 
     expect(robots()).toEqual({
       rules: [{ userAgent: "*", disallow: "/" }],

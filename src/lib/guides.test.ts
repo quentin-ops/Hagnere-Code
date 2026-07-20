@@ -116,6 +116,9 @@ describe("guide registry", () => {
   it("sets index/follow only for approved guides in production", () => {
     const published = PUBLISHED_GUIDES[0];
     expect(published).toBeDefined();
+    // Isole l'override hors plateforme, même lorsque la suite tourne dans le
+    // build Vercel et hérite donc de VERCEL_ENV.
+    vi.stubEnv("VERCEL_ENV", "");
 
     vi.stubEnv("NEXT_PUBLIC_ENV", "preview");
     expect(guideRobots(published)).toEqual({ index: false, follow: false });
