@@ -982,6 +982,17 @@ export default function Page() {
           un plan.
         </p>
 
+        <p>
+          Après la mise en production, cette responsabilité devient un flux
+          récurrent. Le guide du{" "}
+          <Link href="/guides/contrat-tma-application">
+            contrat TMA d’une application
+          </Link>{" "}
+          montre comment relier incident, priorité, niveau de service, capacité,
+          recette et réversibilité sans transformer le RACI du projet en
+          promesse vague de support.
+        </p>
+
         <h3>Migration et retour arrière</h3>
 
         <p>

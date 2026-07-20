@@ -206,6 +206,10 @@ export default function Page() {
             label: "Cadrer les évolutions après la reprise",
           },
           {
+            href: "/guides/contrat-tma-application",
+            label: "Structurer le contrat TMA après la reprise",
+          },
+          {
             href: "/guides/calculer-roi-application-metier",
             label: "Calculer le ROI d’une migration",
           },

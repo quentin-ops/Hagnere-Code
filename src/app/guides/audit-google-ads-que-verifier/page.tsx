@@ -304,6 +304,10 @@ export default function Page() {
             href: "/guides/prix-referencement-naturel",
             label: "Comparer avec une stratégie SEO",
           },
+          {
+            href: "/guides/seo-ou-google-ads",
+            label: "Décider entre SEO, Google Ads, hybride ou report",
+          },
         ]}
         faqTitle="Audit Google Ads : les questions qui restent"
         faqItems={faqItems}

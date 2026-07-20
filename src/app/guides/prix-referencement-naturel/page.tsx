@@ -155,7 +155,7 @@ const faqItems = [
   {
     question: "SEO ou Google Ads : par quoi commencer ?",
     answer:
-      "Commencez par le canal dont l’hypothèse peut être mesurée avec votre offre, votre marge et votre capacité commerciale. Google Ads peut acheter de la visibilité dès qu’une campagne est éligible, sans garantir clic, prospect ni vente ; le SEO dépend de l’exploration, de l’indexation, de la concurrence, du contenu et de l’autorité, sans calendrier certain. Une campagne limitée peut tester une demande pendant que le socle organique est travaillé, mais l’ordre et la rentabilité doivent être décidés à partir de vos données, pas d’une règle de durée universelle.",
+      "Commencez par la preuve la plus urgente : tester une demande identifiable avec Ads, construire une réponse organique à une demande récurrente, combiner deux rôles distincts ou corriger d’abord l’offre, la page ou la mesure. Le guide dédié « SEO ou Google Ads » fournit la matrice complète ; aucune répartition ni durée universelle ne remplace vos données.",
   },
   {
     question: "Freelance ou agence : quelle différence de prix ?",
@@ -240,6 +240,10 @@ export default function Page() {
           {
             href: "/guides/prix-gestion-google-ads",
             label: "Prix de gestion Google Ads",
+          },
+          {
+            href: "/guides/seo-ou-google-ads",
+            label: "Arbitrer entre SEO, Google Ads, hybride ou report",
           },
           { href: "/tarifs", label: "Nos tarifs" },
         ]}

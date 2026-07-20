@@ -271,11 +271,11 @@ export default function Page() {
             <li><strong>Sauvegarde externalisée</strong> : une copie du site stockée ailleurs que sur son propre serveur — la seule qui compte le jour du sinistre.</li>
             <li><strong>Hébergement</strong> : la location du serveur qui fait tourner le site (5 à 80 €/mois) — distinct de la maintenance.</li>
             <li><strong>Infogérance</strong> : la gestion complète du serveur par un prestataire, maintenance incluse — l&apos;inverse n&apos;est pas vrai.</li>
-            <li><strong>SLA</strong> : le niveau de service garanti par contrat — noir sur blanc, avec des délais chiffrés.</li>
-            <li><strong>GTI / GTR</strong> : le délai garanti avant le début d&apos;intervention / avant le retour en ligne (ex. : GTI 1 h, GTR 4 h).</li>
+            <li><strong>SLA</strong> : un engagement de niveau de service mesurable, défini par le contrat avec sa méthode de calcul.</li>
+            <li><strong>GTI / GTR</strong> : des sigles employés pour différents délais d&apos;intervention ou de rétablissement ; leur début, leur fin et leur preuve doivent être écrits en français dans le contrat.</li>
             <li><strong>Banque d&apos;heures</strong> : un crédit d&apos;heures prépayées pour les corrections et petites évolutions.</li>
-            <li><strong>TMA</strong> : la tierce maintenance applicative — le contrat d&apos;entretien complet d&apos;un site ou logiciel sur mesure.</li>
-            <li><strong>Réversibilité</strong> : la garantie de récupérer accès, fichiers et sauvegardes si vous changez de prestataire.</li>
+            <li><strong>TMA</strong> : la tierce maintenance applicative — une organisation confiée à un tiers pour maintenir et faire évoluer une application selon un périmètre écrit.</li>
+            <li><strong>Réversibilité</strong> : la capacité organisée à récupérer les actifs, accès, données et connaissances nécessaires pour changer de prestataire.</li>
           </ul>
         </InfoBox>
 
@@ -571,53 +571,52 @@ export default function Page() {
 
         <h2 id="contrat">10. Le contrat décodé : SLA, GTI, GTR — et les pièges</h2>
         <p>
-          Un contrat de maintenance sérieux tient en huit blocs :
-          le périmètre (corrective / préventive / évolutive,
-          distinguées noir sur blanc), les mises à jour, les
-          sauvegardes (fréquence, externalisation, tests), le support
-          et ses délais, les exclusions explicites, le prix et la
-          résiliation — y compris la clause de révision annuelle
-          (nombre de contrats s&apos;indexent automatiquement, souvent
-          sur l&apos;indice Syntec : exigez un plafond
-          d&apos;augmentation chiffré) et le plafond de responsabilité
-          du prestataire, souvent limité à quelques mois de forfait,
-          à confronter à ce que vous coûte réellement une semaine de
-          panne —, la réversibilité, et le volet données
-          personnelles (le prestataire accède à vos données : il est
-          sous-traitant au sens du RGPD). Le vocabulaire des délais,
-          traduit une fois pour toutes : le <strong>SLA</strong> est
-          l&apos;engagement de service global ; la <strong>GTI</strong>{" "}
-          (garantie de temps d&apos;intervention) est le délai maximal
-          avant qu&apos;on <em>commence</em> à s&apos;occuper de votre
-          panne ; la <strong>GTR</strong> (garantie de temps de
-          rétablissement) est le délai maximal avant que le site{" "}
-          <em>refonctionne</em>. « GTI 1 h / GTR 4 h » se lit : on
-          intervient dans l&apos;heure, vous êtes en ligne dans les
-          4 heures. Les standards du marché : incident critique traité
-          sous 4 h ouvrées, incident important sous 24 h, anomalie
-          mineure sous 48-72 h — et un juriste spécialisé recommande
-          d&apos;y adosser des pénalités (par exemple 5 % de remise
-          mensuelle par heure de dépassement).
+          Pour une application métier ou un logiciel sur mesure, utilisez le
+          guide dédié au{" "}
+          <Link href="/guides/contrat-tma-application">
+            contrat de tierce maintenance applicative
+          </Link>
+          . Il sépare réception, prise en charge, diagnostic, contournement,
+          rétablissement et correction, puis teste la capacité, les
+          responsabilités et la sortie.
+        </p>
+        <p>
+          Un contrat de maintenance doit au minimum rendre lisibles le
+          périmètre — correctif, préventif, évolutif et exploitation —,
+          les mises à jour, les sauvegardes et leurs tests, le support,
+          les exclusions, le prix et sa révision, la résiliation, la
+          responsabilité, les données et la réversibilité. Si le
+          prestataire traite des données personnelles pour le compte de
+          l&apos;entreprise, qualifiez les rôles et encadrez la
+          sous-traitance selon les opérations réelles ; un simple accès
+          technique ne dispense pas de cette analyse. Les sigles de délai
+          ne possèdent pas un sens assez précis pour remplacer le contrat :
+          définissez en français réception, prise en charge, diagnostic,
+          contournement, rétablissement, correction et clôture. Pour chaque
+          engagement, écrivez les horaires, le point de départ, les pauses,
+          la preuve, les exclusions et la conséquence d&apos;un dépassement.
+          Il n&apos;existe pas de délai ou de pénalité type à recopier sans
+          tenir compte de l&apos;impact métier, de la couverture achetée et
+          de la capacité réellement mobilisée.
         </p>
         <p>
           Même vigilance sur la disponibilité promise par
-          l&apos;hébergement : les pourcentages se ressemblent, les
-          réalités non. Un engagement de disponibilité de 99,9 % — le
-          standard de l&apos;hébergement mutualisé — autorise environ{" "}
-          <strong>8 h 45 d&apos;indisponibilité par an</strong> ; un
-          99,99 % (infrastructure redondée) en autorise{" "}
-          <strong>52 minutes</strong>. L&apos;écart affiché est de
-          0,09 point ; l&apos;écart réel est un facteur dix. Pour un
-          site qui encaisse, cette ligne du contrat
-          d&apos;hébergement se lit avec la même attention que la GTR
-          du contrat de maintenance.
+          l&apos;hébergement : le pourcentage ne se lit qu&apos;avec sa
+          période, sa méthode de mesure, ses exclusions et ses
+          conséquences. À titre de conversion arithmétique, 99,9 % sur une
+          année complète représente environ <strong>8 h 46</strong> de
+          temps hors disponibilité, contre environ <strong>53 minutes</strong>
+          pour 99,99 %. Ce calcul ne dit pas que ces niveaux sont des
+          standards, ni que chaque interruption sera indemnisée. Pour un site
+          critique, confrontez l&apos;engagement de l&apos;hébergeur à celui
+          du mainteneur et aux besoins réels de l&apos;entreprise.
         </p>
-        <InfoBox variant="amber" title="Les 4 pièges contractuels documentés">
+        <InfoBox variant="amber" title="Quatre ambiguïtés à supprimer du contrat">
           <ul className="list-disc pl-4 space-y-1.5">
-            <li><strong>Les heures qui s&apos;évaporent.</strong> Les heures mensuelles non consommées ne sont généralement pas reportées — sauf banque d&apos;heures annuelle : demandez-la.</li>
-            <li><strong>L&apos;engagement 12 mois sans période d&apos;essai.</strong> Courant ; négociez 1 à 3 mois d&apos;essai ou du sans-engagement (ça existe, section 6).</li>
-            <li><strong>Le périmètre flou.</strong> « Maintenance du site » sans distinguer correctif / préventif / évolutif : c&apos;est la première source de litiges — chaque mot doit être défini.</li>
-            <li><strong>La réversibilité absente.</strong> Sans clause de restitution (accès, fichiers, sauvegardes — idéalement remis tous les 3-6 mois), changer de prestataire peut coûter très cher : un cabinet d&apos;avocats documente une migration passée de 15 000 € budgétés à 40 000 € faute de réversibilité.</li>
+            <li><strong>La capacité muette.</strong> Écrivez le sort des heures non consommées, le report éventuel, les arrondis, les urgences et les dépassements.</li>
+            <li><strong>La sortie imprécise.</strong> Durée, renouvellement, préavis, assistance et coûts doivent pouvoir être relus avant la signature.</li>
+            <li><strong>Le périmètre flou.</strong> Distinguez correctif, préventif, évolutif, support et exploitation, avec un exemple et une exclusion pour chaque famille.</li>
+            <li><strong>La réversibilité abstraite.</strong> Listez accès, fichiers, sauvegardes, licences, données, documentation, formats, test de restauration et critère d&apos;acceptation.</li>
           </ul>
         </InfoBox>
 

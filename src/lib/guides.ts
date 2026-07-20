@@ -40,6 +40,49 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "template-ou-site-sur-mesure",
+    title: "Template ou site sur mesure : comment choisir · Hagnéré Code",
+    cardTitle: "Template, personnalisé ou sur mesure : que choisir ?",
+    metaDescription:
+      "Template, personnalisation, approche hybride ou sur mesure : choisissez selon vos écarts réels, le coût comparable, la recette et la réversibilité.",
+    cardDescription:
+      "Un test de la page la moins standard et un budget des différences pour acheter le bon niveau de conception sans payer une étiquette.",
+    heroTitle:
+      "Template, site personnalisé ou sur mesure : quel niveau choisir ?",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 20,
+  },
+  {
+    slug: "seo-ou-google-ads",
+    title: "SEO ou Google Ads : comment choisir · Hagnéré Code",
+    cardTitle: "SEO ou Google Ads : où investir en premier ?",
+    metaDescription:
+      "SEO, Google Ads, stratégie hybride ou report : arbitrez selon l’urgence, la demande, la marge, la mesure et votre capacité commerciale.",
+    cardDescription:
+      "Une matrice de décision et un calendrier de preuves pour choisir le prochain investissement d’acquisition, sans ratio ni délai universel.",
+    heroTitle: "SEO ou Google Ads : où investir en premier ?",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 20,
+  },
+  {
+    slug: "contrat-tma-application",
+    title: "Contrat TMA application : clauses à vérifier · Hagnéré Code",
+    cardTitle: "Contrat TMA : le tester avant le premier incident",
+    metaDescription:
+      "Périmètre, SLA, tickets, RACI, sécurité, forfait et réversibilité : testez votre contrat TMA sur une panne avant de signer.",
+    cardDescription:
+      "Une simulation d’incident pour vérifier les horloges, responsabilités, preuves, coûts et conditions de sortie d’une maintenance applicative.",
+    heroTitle: "Contrat TMA : que faut-il écrire avant le premier incident ?",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 20,
+  },
+  {
     slug: "audit-seo-que-contient-il",
     title: "Audit SEO : que doit-il contenir ? · Hagnéré Code",
     cardTitle: "Audit SEO : ce que le rapport doit permettre de décider",

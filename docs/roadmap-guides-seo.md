@@ -345,8 +345,21 @@ elles alimentent désormais le hub, le sitemap et `llms.txt`, et héritent de la
 politique `index,follow` dans l'artefact de production. Cette ouverture ne vaut
 ni preuve de crawl, ni preuve d'indexation effective, ni promesse de position.
 
-Le prochain lot logique de la roadmap est :
+Le lot suivant a ensuite été produit et validé le 20 juillet 2026 :
 
 1. `seo-ou-google-ads` ;
 2. `contrat-tma-application` ;
 3. `template-ou-site-sur-mesure`.
+
+Les trois guides disposent chacun d’un dossier de recherche, d’un
+contre-audit indépendant, d’un maillage entrant et sortant, d’une image sociale
+dédiée et d’un contrôle navigateur aux dix largeurs. Ils alimentent le hub, le
+sitemap et `llms.txt` avec la politique `index,follow`. Cette ouverture signifie
+que les pages sont indexables ; elle ne prouve ni leur crawl, ni leur indexation
+effective, ni leur position future.
+
+Le prochain lot logique de la roadmap devient :
+
+1. `signes-besoin-logiciel-metier` ;
+2. `reprendre-mvp-vibe-code` ;
+3. `pourquoi-google-ads-ne-convertit-pas`.

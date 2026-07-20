@@ -331,14 +331,15 @@ export default function Page() {
         <h3>Le site vitrine : 800 € à 22 000 €</h3>
         <p>
           C&apos;est le projet le plus courant — et celui où les écarts sont
-          les plus trompeurs. Un site vitrine à 1 000 € — construit sur un
-          template, cette maquette toute prête utilisée par des centaines
-          d&apos;autres sites, textes à écrire vous-même, aucun
-          référencement — et un site vitrine à 15 000 € portent le même nom,
-          mais ne rendent pas le même service. Le second comprend un design
-          dessiné pour vous, des textes rédigés, un vrai travail de SEO et le
-          tracking : la mesure de ce que font vos visiteurs — d&apos;où ils
-          viennent, ce qu&apos;ils lisent, s&apos;ils vous contactent.
+          les plus trompeurs. Deux offres peuvent porter le même nom sans
+          inclure les mêmes contenus, design, intégration, référencement,
+          mesure, tests, maintenance ou droits. Un template n&apos;exclut pas un
+          travail SEO ou éditorial, et un design spécifique ne les inclut pas
+          automatiquement. Comparez les lignes du devis, puis choisissez entre{" "}
+          <Link href="/guides/template-ou-site-sur-mesure">
+            template, personnalisation et site sur mesure
+          </Link>{" "}
+          selon les différences que votre besoin exige réellement.
         </p>
         <p>
           Notre offre de{" "}

@@ -539,33 +539,30 @@ export default function Page() {
           site avec l&apos;IA »</Link>.
         </p>
         <p>
-          Une image pour fixer la différence entre louer et posséder : avec
-          un builder, vous êtes locataire d&apos;un meublé. Tant que vous
-          payez l&apos;abonnement, tout va bien ; le jour où vous partez,
-          vous ne partez pas avec les murs — le site est construit dans
-          l&apos;outil du bailleur, il n&apos;existe pas en dehors, et tout
-          est à reconstruire ailleurs. Avec un site sur mesure dont le code
-          vous est remis, vous êtes propriétaire : vous pouvez changer
-          d&apos;hébergeur, de prestataire ou d&apos;avis, le site vous suit.
+          L&apos;image de la location et de la propriété aide, mais elle ne
+          suffit pas. Certaines plateformes hébergées imposent leur
+          infrastructure ; certains CMS exportent les contenus sans produire
+          une copie immédiatement exécutable ; un développement spécifique
+          peut lui aussi dépendre de licences et de services tiers. Vérifiez
+          séparément domaine, comptes, contenus, médias, données, code,
+          configuration, licences, documentation et restauration. La remise
+          d&apos;un dépôt ne prouve pas à elle seule la portabilité du site ni
+          le transfert de tous les droits.
         </p>
         <p>
           Le point que les comparatifs oublient : le socle détermine surtout
-          les <strong>coûts d&apos;après</strong>. Licences et maintenance
-          hebdomadaire d&apos;un côté ; rien à mettre à jour ni à sécuriser
-          au quotidien de l&apos;autre — notre comparatif complet{" "}
+          les <strong>coûts d&apos;après</strong>. Licences, services tiers,
+          mises à jour, chaîne de déploiement, sauvegardes, sécurité et
+          évolutions existent sous des formes différentes selon le socle ;
+          aucune architecture sérieuse n&apos;est sans exploitation. Notre
+          comparatif complet{" "}
           <Link href="/guides/nextjs-ou-wordpress">Next.js ou
-          WordPress</Link> chiffre cet écart, sources à l&apos;appui. Sur
-          3 ans, il pèse plus que la différence de prix initial
-          (section 10). Notre position, assumée : en 2026, un site
-          vitrine professionnel se construit par défaut en
-          React/Next.js — coût d&apos;entretien quasi nul, code
-          possédé, et une liberté visuelle (animations,
-          micro-interactions type Framer Motion) qu&apos;aucun builder
-          ni thème n&apos;égale. Les plateformes ne gardent de sens
-          que pour un micro-budget, un side-project ou un test de
-          marché. Le site que vous lisez est lui-même développé à
-          100 % en Next.js/React : vitesse, design et stratégie de
-          guides se jugent sur pièces.
+          WordPress</Link> aide à choisir l&apos;architecture. Le site que
+          vous lisez est développé en Next.js/React ; cela décrit notre
+          réalisation, pas une supériorité automatique. Un template peut être
+          la décision professionnelle pour un besoin standard, tandis qu&apos;un
+          parcours, un système éditorial ou des intégrations propres peuvent
+          justifier une conception spécifique.
         </p>
 
         <h2 id="inclus-ou-pas">6. Ce qui est inclus (ou pas) à chaque niveau de prix</h2>
@@ -574,7 +571,12 @@ export default function Page() {
           quadruple pour une raison invisible en première page : ce
           qu&apos;ils incluent réellement. Voici, ligne par ligne, ce que
           recouvre chaque niveau de prix — une grille utile pour expliquer
-          l&apos;essentiel des écarts entre devis :
+          l&apos;essentiel des écarts entre devis. Pour décider ce qui doit
+          rester standard ou devenir spécifique, utilisez aussi notre guide{" "}
+          <Link href="/guides/template-ou-site-sur-mesure">
+            template, personnalisation ou site sur mesure
+          </Link>
+          :
         </p>
         <GuideTable
           headers={["Prestation", "Vitrine à 1 500 €", "Vitrine à 4 000 €", "Sur-mesure 6 900 €+"]}
@@ -590,13 +592,13 @@ export default function Page() {
           ]}
         />
         <p>
-          Trois précisions. Un template (ou thème) est une maquette toute
-          faite, achetée quelques dizaines d&apos;euros, que le prestataire
-          remplit avec vos contenus — d&apos;où ces sites qui se ressemblent
-          tous. Les données structurées sont un balisage invisible qui décrit
-          votre activité à Google dans son propre langage : c&apos;est lui
-          qui affiche vos étoiles d&apos;avis ou vos horaires directement
-          dans les résultats. Pour le code, distinguez les livrables spécifiques
+          Trois précisions. Un template (ou thème) fournit une structure
+          graphique et parfois fonctionnelle préexistante. Il peut rester
+          reconnaissable, mais les contenus, les preuves, les médias et une
+          personnalisation maîtrisée peuvent aussi produire un site distinct.
+          Les données structurées sont un balisage invisible qui aide les
+          moteurs à comprendre certains éléments ; elles ne garantissent pas
+          l&apos;affichage d&apos;un résultat enrichi. Pour le code, distinguez les livrables spécifiques
           cédés, les composants préexistants, l&apos;open source et les services tiers.
           Le dépôt Git et les accès techniques sont indispensables à la réversibilité,
           mais ne remplacent pas une clause de cession précise.
