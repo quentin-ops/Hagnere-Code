@@ -4,6 +4,8 @@
  * du même domaine. Le Worker les écrit dans Cloudflare Analytics Engine.
  */
 
+import { isAnalyticsAllowed } from "@/lib/cookie-consent";
+
 type EventProps = Record<string, string | number | boolean | undefined>;
 
 export const FUNNEL_EVENT_NAMES = [
@@ -29,11 +31,24 @@ export const FUNNEL_EVENT_NAMES = [
 
 export type FunnelEventName = (typeof FUNNEL_EVENT_NAMES)[number];
 
+/**
+ * La production Vercel ne dispose pas du binding Analytics Engine utilisé par
+ * le collecteur Cloudflare. La mesure reste donc explicitement inactive tant
+ * qu'un collecteur compatible n'a pas été déployé et validé. Ce drapeau ne
+ * contient aucun secret : il empêche surtout le navigateur d'émettre des
+ * requêtes vouées à échouer.
+ */
+export function isFunnelAnalyticsCollectionEnabled(): boolean {
+  const value = process.env.NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED;
+  return value === "1" || value === "true";
+}
+
 export function trackFunnelEvent(
   name: FunnelEventName,
   props: EventProps = {},
 ): void {
   if (typeof window === "undefined") return;
+  if (!isFunnelAnalyticsCollectionEnabled()) return;
   if (!isAnalyticsAllowed()) return;
 
   // Strip undefined values — most analytics dislike them.
@@ -83,4 +98,3 @@ export function trackFunnelEvent(
     console.debug(`[analytics] ${name}`, cleanProps);
   }
 }
-import { isAnalyticsAllowed } from "@/lib/cookie-consent";

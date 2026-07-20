@@ -31,8 +31,8 @@ ${navHtml}
       <p class="shero-sub">
         Vous avez une idée de plateforme, un <a href="/guides/transformer-excel-en-application"><b>outil interne qui tourne sur Excel</b></a> depuis trop longtemps,
         ou un <b>besoin métier</b> qu'aucun logiciel du marché ne couvre vraiment. On construit la solution —
-        <b>web, mobile iOS/Android, back-office, IA native</b>. De la première maquette jusqu'au premier client payant,
-        <b>code, design, hébergement et support sous un seul toit</b>.
+        <b>web, mobile iOS/Android, back-office, IA native</b>. Le devis précise jusqu'où va la mission&nbsp;:
+        conception, code, tests, mise en ligne, hébergement et support selon le périmètre retenu.
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
@@ -133,8 +133,8 @@ ${navHtml}
         <h2>Un SaaS, ce n'est pas<br>juste une page web avec un login.</h2>
       </div>
       <div class="right">
-        On construit des plateformes métier qui tournent en production. Accès, permissions, facturation,
-        emails et administration sont inclus lorsque le parcours, les données ou le contrat les exigent.
+        Une plateforme métier demande plus qu'une interface. Accès, permissions, facturation,
+        emails et administration sont inclus uniquement lorsque le parcours et le devis les prévoient.
       </div>
     </div>
 
@@ -249,9 +249,9 @@ ${navHtml}
       <div class="eyebrow on-dark">— Ce qu'on sait faire</div>
       <h2 style="margin-top:14px">20 briques techniques.<br>Combinables à volonté.</h2>
       <p class="caps-sub">
-        Pas de magie : un bon SaaS assemble des briques déjà éprouvées sur les produits
-        que nous exploitons, puis les adapte à vos règles métier. Voici les blocs que nous
-        savons cadrer, intégrer, tester et documenter sans transformer votre projet en démonstrateur.
+        Pas de magie : un bon SaaS assemble des briques connues, puis les adapte à vos règles métier.
+        Voici les blocs que nous pouvons cadrer, intégrer, tester et documenter selon le devis,
+        sans transformer une page publique en preuve d'exploitation.
       </p>
     </div>
 
@@ -373,8 +373,8 @@ ${navHtml}
         <h2>De l'idée au premier<br>utilisateur en 5 étapes.</h2>
       </div>
       <div class="right">
-        On ne disparaît pas trois mois pour revenir avec un gros livrable. Vous voyez le produit
-        grandir chaque semaine, avec un livrable démontrable à chaque sprint.
+        Le devis fixe les étapes, les jalons de démonstration, les personnes qui valident
+        et le calendrier. Les durées varient selon le périmètre, les intégrations et les retours.
       </div>
     </div>
 
@@ -384,28 +384,28 @@ ${navHtml}
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
         <h3>Cadrage</h3>
         <p>Workshop de 2 jours avec les décideurs. On définit le périmètre exact du MVP, les user stories, les écrans clés.</p>
-        <div class="proc-dur">1 SEMAINE</div>
+        <div class="proc-dur">JALON AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
         <h3>Design</h3>
         <p>Maquettes haute fidélité sur Figma, prototype cliquable et validation des parcours avec les décideurs et futurs utilisateurs identifiés.</p>
-        <div class="proc-dur">1 SEMAINE</div>
+        <div class="proc-dur">JALON AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
         <h3>Développement</h3>
         <p>Le devis fixe la durée des sprints, les démonstrations, le dépôt Git et les accès accordés pendant la réalisation.</p>
-        <div class="proc-dur">3–6 SEMAINES</div>
+        <div class="proc-dur">PLANNING AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
         <h3>QA &amp; conformité</h3>
         <p>Tests automatisés, revue de sécurité applicative et contrôle des flux. Les éléments techniques utiles aux DPA et registres sont préparés pour validation par le client, son DPO ou son conseil ; les CGV ne relèvent pas de notre validation juridique.</p>
-        <div class="proc-dur">3–5 JOURS</div>
+        <div class="proc-dur">RECETTE AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
@@ -517,8 +517,8 @@ ${navHtml}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Produits du groupe Hagnéré</div>
-        <h2>La preuve par des produits<br>que nous exploitons nous-mêmes.</h2>
+        <div class="eyebrow">— Pages produit publiques</div>
+        <h2>Des fonctions à consulter,<br>sans preuve d'exploitation implicite.</h2>
       </div>
       <div class="right">
         <a href="/realisations" class="btn btn-ghost">Toutes les réalisations →</a>
@@ -548,9 +548,9 @@ ${navHtml}
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>SaaS B2C</span><span class="tag-stack">IA native · Stripe</span><span>— en production</span></div>
+          <div class="scase-meta"><span>Comptabilité LMNP</span><span class="tag-stack">Fonctions présentées</span><span>— page publique</span></div>
           <h3>LMNP.AI</h3>
-          <p>Comptabilité fiscale automatisée pour loueurs meublés. Extraction de factures et génération de liasse 2031 par IA.</p>
+          <p>La page présente une offre de comptabilité pour loueurs meublés et ses fonctions visibles. Le lien ne prouve ni exploitation, ni exactitude, ni résultat.</p>
           <div class="scase-metric">
             <div class="scm"><div class="n">IA</div><div class="l">Lecture de pièces et contrôles</div></div>
             <div class="scm"><div class="n">2031</div><div class="l">Production de la liasse fiscale</div></div>
@@ -586,9 +586,9 @@ ${navHtml}
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>SaaS fiscal</span><span class="tag-stack">Moteurs IR · IS</span><span>— en production</span></div>
+          <div class="scase-meta"><span>Comptabilité SCI</span><span class="tag-stack">IR · IS présentés</span><span>— page publique</span></div>
           <h3>SCI-AI.app</h3>
-          <p>Comptabilité et déclarations fiscales des SCI, avec deux parcours distincts selon le régime à l'IR ou à l'IS.</p>
+          <p>La page présente une offre de comptabilité pour SCI et les régimes couverts. Le lien ne prouve ni moteur interne, ni exploitation, ni résultat.</p>
           <div class="scase-metric">
             <div class="scm"><div class="n">IR</div><div class="l">Parcours fiscal dédié</div></div>
             <div class="scm"><div class="n">IS</div><div class="l">Comptabilité en partie double</div></div>
@@ -605,11 +605,11 @@ ${navHtml}
     <div class="section-head reveal" style="margin-bottom:0">
       <div class="left">
         <div class="eyebrow">— Forfaits</div>
-        <h2>Trois formats, un prix fixe.<br>Jamais de surprise.</h2>
+        <h2>Trois formats,<br>des budgets de cadrage.</h2>
       </div>
       <div class="right">
-        On vend au forfait, pas au temps passé. Vous savez exactement ce que vous payez
-        et ce que vous recevez avant de signer.
+        Les fourchettes sont indicatives. Le devis fixe le périmètre, le prix,
+        les livrables, les coûts tiers et le planning avant engagement.
       </div>
     </div>
 
@@ -626,8 +626,8 @@ ${navHtml}
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Parcours client et exploitation nécessaires</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Accès, isolation, paiement et emails selon le besoin</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 6 mois inclus</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison en 3–4 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement et coûts tiers précisés au devis</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning confirmé après cadrage</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
       </div>
@@ -665,7 +665,7 @@ ${navHtml}
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intervenants et rôles précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Product + design + dev + growth</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO + ads + contenus inclus</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO, publicité et contenus selon feuille de route et devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intéressement possible (equity)</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parlons-en</a></div>
@@ -816,7 +816,7 @@ ${navHtml}
     <h2 style="margin-top:14px">Parlons de votre SaaS.<br><span class="accent">30 minutes suffisent.</span></h2>
     <p>Un échange de cadrage gratuit avec un membre de l'équipe. On vous dit honnêtement si le projet est assez défini, si notre approche convient et quelle information manque avant un devis.</p>
     <div class="scta-cta">
-      <a href="#" class="btn btn-accent btn-lg">
+      <a href="/rendez-vous" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -858,14 +858,13 @@ ${navHtml}
         <div class="foot-col">
           <h3>CONTACT</h3>
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">YouTube</a>
+          <a href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
         <div class="foot-col">
           <h3>LÉGAL</h3>
-          <a href="#">CGV</a>
-          <a href="#">Mentions légales</a>
-          <a href="#">Confidentialité</a>
+          <a href="/legal/cgv">CGV</a>
+          <a href="/legal/mentions">Mentions légales</a>
+          <a href="/legal/confidentialite">Confidentialité</a>
         </div>
       </div>
     </div>

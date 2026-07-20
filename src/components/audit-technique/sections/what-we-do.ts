@@ -8,9 +8,9 @@ export const whatWeDoHtml = `
         <h2>Huit dimensions couvertes,<br>chacune scorée /100,<br>chiffrée en euros de dette.</h2>
       </div>
       <div class="right">
-        Un audit tech sérieux en 2026 ne se limite pas au code. On couvre <b>les 8 dimensions
-        qui font qu'une app tient 5 ans en production</b> sans exploser les coûts ou la sécurité.
-        Chaque dimension = score /100 + liste de recos priorisées + estimation € de la dette.
+        Un audit technique ne se limite pas au code. Le périmètre peut couvrir <b>8 dimensions
+        qui influencent la maintenabilité, les coûts et la sécurité</b>.
+        Le devis précise les dimensions analysées, la méthode de score, les recommandations et le chiffrage éventuel.
       </div>
     </div>
 

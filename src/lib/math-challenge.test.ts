@@ -14,6 +14,10 @@ afterEach(() => {
 });
 
 describe("signed math challenge", () => {
+  it("limite la fenêtre de rejeu à quinze minutes", () => {
+    expect(MATH_CHALLENGE_TTL_MS).toBe(15 * 60 * 1000);
+  });
+
   it("requires a dedicated secret and never falls back to AUTH_SECRET", () => {
     vi.stubEnv("MATH_CHALLENGE_SECRET", "");
     vi.stubEnv("AUTH_SECRET", SECRET);

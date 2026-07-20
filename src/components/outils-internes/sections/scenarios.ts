@@ -13,26 +13,26 @@ export const scenariosHtml = `
       </div>
     </div>
 
-    <div class="oi-scen-tabs reveal" role="tablist">
-      <button type="button" class="oi-scen-tab" data-scenario="excel" role="tab" aria-selected="true">
+    <div class="oi-scen-tabs reveal" role="tablist" aria-label="Choisir un scénario">
+      <button type="button" class="oi-scen-tab" data-scenario="excel" role="tab" aria-selected="true" id="oi-scenario-tab-excel" aria-controls="oi-scenario-panel-excel" tabindex="0">
         <span class="oi-scen-tab-k">SCÉNARIO 01</span>
         <span class="oi-scen-tab-t">Sortir d'Excel</span>
-        <span class="oi-scen-tab-d">2–5 semaines</span>
+        <span class="oi-scen-tab-d">Planning sur devis</span>
       </button>
-      <button type="button" class="oi-scen-tab" data-scenario="saas" role="tab" aria-selected="false">
+      <button type="button" class="oi-scen-tab" data-scenario="saas" role="tab" aria-selected="false" id="oi-scenario-tab-saas" aria-controls="oi-scenario-panel-saas" tabindex="-1">
         <span class="oi-scen-tab-k">SCÉNARIO 02</span>
         <span class="oi-scen-tab-t">Remplacer un SaaS</span>
-        <span class="oi-scen-tab-d">4–8 semaines</span>
+        <span class="oi-scen-tab-d">Planning sur devis</span>
       </button>
-      <button type="button" class="oi-scen-tab" data-scenario="paper" role="tab" aria-selected="false">
+      <button type="button" class="oi-scen-tab" data-scenario="paper" role="tab" aria-selected="false" id="oi-scenario-tab-paper" aria-controls="oi-scenario-panel-paper" tabindex="-1">
         <span class="oi-scen-tab-k">SCÉNARIO 03</span>
         <span class="oi-scen-tab-t">Digitaliser papier / email</span>
-        <span class="oi-scen-tab-d">5–10 semaines</span>
+        <span class="oi-scen-tab-d">Planning sur devis</span>
       </button>
     </div>
 
     <!-- PANEL EXCEL -->
-    <div class="oi-scen-panel" data-panel="excel" role="tabpanel" aria-hidden="false">
+    <div class="oi-scen-panel" data-panel="excel" role="tabpanel" tabindex="0" aria-hidden="false" id="oi-scenario-panel-excel" aria-labelledby="oi-scenario-tab-excel">
       <div class="oi-scen-cols">
         <div class="oi-scen-col-main">
           <div class="oi-scen-kind">POUR QUI</div>
@@ -54,7 +54,7 @@ export const scenariosHtml = `
             </ul>
           </div>
         </div>
-        <aside class="oi-scen-aside">
+        <div class="oi-scen-aside">
           <div class="oi-scen-meta">
             <div class="oi-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
             <div class="oi-scen-meta-row"><span class="k">Intervenants</span><span class="v">Définis au devis</span></div>
@@ -67,12 +67,12 @@ export const scenariosHtml = `
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <div class="oi-scen-ref">À mesurer : temps de ressaisie, erreurs, délais de relance et adoption avant / après pilote.</div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL SAAS -->
-    <div class="oi-scen-panel" data-panel="saas" role="tabpanel" aria-hidden="true" hidden>
+    <div class="oi-scen-panel" data-panel="saas" role="tabpanel" tabindex="0" aria-hidden="true" id="oi-scenario-panel-saas" aria-labelledby="oi-scenario-tab-saas" hidden>
       <div class="oi-scen-cols">
         <div class="oi-scen-col-main">
           <div class="oi-scen-kind">POUR QUI</div>
@@ -80,7 +80,8 @@ export const scenariosHtml = `
           <p>
             Vous avez Salesforce, HubSpot, Monday ou un SaaS vertical qui coûte <b>800 à 3 000 €/mois</b>
             mais qui force vos équipes à entrer des données qu'elles ne comprennent pas, ou qui ne
-            sait pas parler à votre Sage. Vous gagneriez plus à construire ce qui <b>vous</b> correspond.
+            sait pas parler à votre Sage. Comparez alors le coût total du maintien, du paramétrage,
+            du remplacement et de la sortie avant de choisir du sur-mesure.
           </p>
           <div class="oi-scen-deliv">
             <h3>Ce qu'on livre</h3>
@@ -94,7 +95,7 @@ export const scenariosHtml = `
             </ul>
           </div>
         </div>
-        <aside class="oi-scen-aside">
+        <div class="oi-scen-aside">
           <div class="oi-scen-meta">
             <div class="oi-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
             <div class="oi-scen-meta-row"><span class="k">Intervenants</span><span class="v">Définis au devis</span></div>
@@ -107,12 +108,12 @@ export const scenariosHtml = `
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <div class="oi-scen-ref">À comparer : licences, migration, maintenance, formation, réversibilité et coût total sur trois ans.</div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL PAPER -->
-    <div class="oi-scen-panel" data-panel="paper" role="tabpanel" aria-hidden="true" hidden>
+    <div class="oi-scen-panel" data-panel="paper" role="tabpanel" tabindex="0" aria-hidden="true" id="oi-scenario-panel-paper" aria-labelledby="oi-scenario-tab-paper" hidden>
       <div class="oi-scen-cols">
         <div class="oi-scen-col-main">
           <div class="oi-scen-kind">POUR QUI</div>
@@ -135,7 +136,7 @@ export const scenariosHtml = `
             </ul>
           </div>
         </div>
-        <aside class="oi-scen-aside">
+        <div class="oi-scen-aside">
           <div class="oi-scen-meta">
             <div class="oi-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
             <div class="oi-scen-meta-row"><span class="k">Intervenants</span><span class="v">Définis au devis</span></div>
@@ -148,7 +149,7 @@ export const scenariosHtml = `
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <div class="oi-scen-ref">À tester : saisie hors ligne, qualité d'extraction, reprise sur erreur et usage réel sur le terrain.</div>
-        </aside>
+        </div>
       </div>
     </div>
   </div>

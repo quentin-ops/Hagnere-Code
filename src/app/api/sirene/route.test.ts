@@ -4,7 +4,14 @@
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { NextRequest } from "next/server";
+import { checkServiceRateLimit } from "@/lib/ai-rate-limit";
 import { GET } from "./route";
+
+vi.mock("@/lib/ai-rate-limit", () => ({
+  checkServiceRateLimit: vi.fn(),
+}));
+
+const mockedCheckServiceRateLimit = vi.mocked(checkServiceRateLimit);
 
 const SAMPLE_SUCCESS = {
   results: [
@@ -25,6 +32,11 @@ function buildReq(query = "", headers: Record<string, string> = {}): NextRequest
 
 describe("GET /api/sirene", () => {
   beforeEach(() => {
+    vi.stubEnv("VERCEL", "1");
+    mockedCheckServiceRateLimit.mockResolvedValue({
+      allowed: true,
+      reservationId: 1,
+    });
     vi.spyOn(global, "fetch").mockImplementation(async () =>
       new Response(JSON.stringify(SAMPLE_SUCCESS), {
         status: 200,
@@ -35,6 +47,7 @@ describe("GET /api/sirene", () => {
 
   afterEach(() => {
     vi.restoreAllMocks();
+    vi.unstubAllEnvs();
   });
 
   it("400 si pas de paramètre siren", async () => {
@@ -57,6 +70,12 @@ describe("GET /api/sirene", () => {
     const body = await res.json();
     expect(body.siren).toBe("993672856");
     expect(body.companyName).toBe("HAGNÉRÉ CODE");
+    expect(mockedCheckServiceRateLimit).toHaveBeenCalledWith(
+      "10.0.0.3",
+      null,
+      "sirene",
+      null,
+    );
   });
 
   it("404 si l'API gouv ne renvoie aucun résultat", async () => {
@@ -75,14 +94,26 @@ describe("GET /api/sirene", () => {
     expect(res.status).toBe(500);
   });
 
-  it("rate-limite après 60 requêtes/heure depuis la même IP", async () => {
-    // 60 OK puis le 61ème → 429
-    for (let i = 0; i < 60; i++) {
-      const r = await GET(buildReq("siren=993672856", { "x-real-ip": "10.0.0.99" }));
-      expect(r.status).not.toBe(429);
-    }
+  it("retourne 429 lorsque le limiteur persistant refuse la requête", async () => {
+    mockedCheckServiceRateLimit.mockResolvedValueOnce({
+      allowed: false,
+      reason: "rate_ip_hour",
+      message: "Trop de recherches.",
+      retryAfterSec: 3600,
+    });
+
     const blocked = await GET(buildReq("siren=993672856", { "x-real-ip": "10.0.0.99" }));
     expect(blocked.status).toBe(429);
-    expect(blocked.headers.get("Retry-After")).toBeTruthy();
+    expect(blocked.headers.get("Retry-After")).toBe("3600");
+    expect(global.fetch).not.toHaveBeenCalled();
+  });
+
+  it("échoue fermé si le stockage du limiteur est indisponible", async () => {
+    mockedCheckServiceRateLimit.mockRejectedValueOnce(new Error("database unavailable"));
+
+    const res = await GET(buildReq("siren=993672856", { "x-real-ip": "10.0.0.100" }));
+    expect(res.status).toBe(503);
+    expect(res.headers.get("Retry-After")).toBe("60");
+    expect(global.fetch).not.toHaveBeenCalled();
   });
 });

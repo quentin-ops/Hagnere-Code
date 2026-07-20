@@ -5,7 +5,7 @@ export const arsenalHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Notre arsenal</div>
-        <h2>Les outils qu'on opère<br>vraiment, pas un mur de logos.</h2>
+        <h2>Des outils mobilisables,<br>selon le périmètre retenu.</h2>
       </div>
       <div class="right">
         Neuf outils, trois missions. Aucun ne fait le travail à notre place —

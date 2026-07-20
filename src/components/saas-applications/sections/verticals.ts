@@ -19,7 +19,7 @@ export const verticalsHtml = `
           <div class="sa-vt-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg>
           </div>
-          <span class="sa-vt-tag sa-vt-tag-live">● 3 plateformes en prod</span>
+          <span class="sa-vt-tag sa-vt-tag-live">● Cas publics à consulter</span>
         </div>
         <h3>Gestion de patrimoine &amp; CGP</h3>
         <p>
@@ -38,7 +38,7 @@ export const verticalsHtml = `
           <div class="sa-vt-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v13a1 1 0 01-1 1h-5v-7H10v7H5a1 1 0 01-1-1V9z"/></svg>
           </div>
-          <span class="sa-vt-tag sa-vt-tag-live">● 2 SaaS B2C actifs</span>
+          <span class="sa-vt-tag sa-vt-tag-live">● 2 pages publiques</span>
         </div>
         <h3>Investissement immobilier &amp; SCI</h3>
         <p>

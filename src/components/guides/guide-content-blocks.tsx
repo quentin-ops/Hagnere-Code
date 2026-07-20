@@ -84,9 +84,17 @@ export function InfoBox({ variant, title, children }: InfoBoxProps) {
 interface GuideTableProps {
   headers: string[];
   rows: (string | { text: string; className?: string; colSpan?: number })[][];
+  /** Intitulé accessible explicite. Un intitulé descriptif est sinon dérivé des données. */
+  caption?: string;
 }
 
-export function GuideTable({ headers, rows }: GuideTableProps) {
+function getCellText(
+  cell: string | { text: string; className?: string; colSpan?: number } | undefined,
+): string {
+  return typeof cell === "string" ? cell : cell?.text || "";
+}
+
+export function GuideTable({ headers, rows, caption }: GuideTableProps) {
   const isWide = headers.length >= 4;
   const minWidthClass =
     headers.length >= 5
@@ -94,17 +102,26 @@ export function GuideTable({ headers, rows }: GuideTableProps) {
       : headers.length === 4
         ? "min-w-[560px]"
         : "";
+  const rowLabels = rows
+    .slice(0, 3)
+    .map((row) => getCellText(row[0]))
+    .filter(Boolean)
+    .join(", ");
+  const tableCaption =
+    caption ||
+    `Comparaison ${headers.join(", ")}${rowLabels ? ` — ${rowLabels}` : ""}`;
 
   return (
     <div
       className="not-prose overflow-x-auto my-6 -mx-4 px-4 sm:mx-0 sm:px-0"
       tabIndex={isWide ? 0 : undefined}
       role={isWide ? "region" : undefined}
-      aria-label={isWide ? "Tableau défilable horizontalement" : undefined}
+      aria-label={isWide ? `Tableau défilable : ${tableCaption}` : undefined}
     >
       <table
         className={`w-full ${minWidthClass} text-xs sm:text-sm border-collapse`}
       >
+        <caption className="sr-only">{tableCaption}</caption>
         <thead>
           <tr className="bg-zinc-50 dark:bg-zinc-900">
             {headers.map((header, i) => (

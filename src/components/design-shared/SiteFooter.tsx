@@ -10,6 +10,11 @@ import {
   type MathChallengeValue,
 } from "@/components/project-funnel/MathChallenge";
 import { TEAM_TOTAL_COUNT } from "@/lib/team";
+import { CALENDLY_URL } from "@/lib/calendly";
+import {
+  clearProjectInquiryClientKey,
+  getProjectInquiryClientKey,
+} from "@/lib/project-inquiry-client-key";
 import "./site-footer.css";
 
 type Status =
@@ -36,10 +41,6 @@ const TIMELINES = [
   "Pas encore défini",
 ];
 
-const CALENDLY_URL =
-  process.env.NEXT_PUBLIC_CALENDLY_URL ||
-  "https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte";
-
 type ContactProjectSectionProps = {
   headingLevel?: "h1" | "h2";
   className?: string;
@@ -58,6 +59,7 @@ export function ContactProjectSection({
   // puis revalidée server-side par /api/project-inquiry.
   const [math, setMath] = useState<MathChallengeValue | null>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
+  const submissionKeyRef = useRef<string | null>(null);
 
   const handleTranscribed = useCallback((text: string) => {
     setMessage((prev) => {
@@ -117,9 +119,15 @@ export function ContactProjectSection({
     setStatus({ kind: "submitting" });
 
     try {
+      const submissionKey =
+        submissionKeyRef.current ?? getProjectInquiryClientKey();
+      submissionKeyRef.current = submissionKey;
       const res = await fetch("/api/project-inquiry", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Idempotency-Key": submissionKey,
+        },
         body: JSON.stringify(payload),
       });
       const json = await res.json().catch(() => ({}));
@@ -135,6 +143,8 @@ export function ContactProjectSection({
         return;
       }
       setStatus({ kind: "success", message: json.message });
+      submissionKeyRef.current = null;
+      clearProjectInquiryClientKey();
       form.reset();
       setMessage("");
       setMath(null);
@@ -179,12 +189,16 @@ export function ContactProjectSection({
   );
 
   return (
-    <section className={classNames} id="contact">
+    <section
+      className={classNames}
+      id="contact"
+      aria-labelledby="contact-project-title"
+    >
       <div className="sf-bg-grid" aria-hidden="true" />
       <div className="wrap sf-contact-inner">
         <div className="sf-contact-head">
           <div className="eyebrow on-dark">— Prochaine étape</div>
-          <Heading>{heading}</Heading>
+          <Heading id="contact-project-title">{heading}</Heading>
           <p>{intro}</p>
         </div>
 

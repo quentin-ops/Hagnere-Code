@@ -252,8 +252,9 @@ Statut maximal : publiable après autorisation éditoriale déléguée du comman
 - [x] CTA disponible vers `/demarrer-un-projet` et aucune ressource fantôme ;
 - [x] metadata, données structurées, registre, maillage et ancres cohérents ;
       FAQ visible, sans schéma JSON-LD `FAQPage` ;
-- [x] Prettier, ESLint ciblé et TypeScript passés ; le contrôle final exécute
-      86 tests SEO, génère 98 pages, puis valide le postbuild SEO global ;
+- [x] Prettier, ESLint, TypeScript, batterie SEO, build et postbuild du snapshot
+      d'intégration passés ; les nombres courants sont consignés après gel dans
+      `PRE-LAUNCH-CHECKLIST.md` ;
 - [x] métriques responsive contrôlées à 320, 360, 390, 430, 640, 768, 1024,
       1280, 1440 et 1600 px : H1 et CTA contenus, tableaux défilables, sans perte de
       contenu ; une capture visuelle finale n'a pas pu être obtenue après le blocage

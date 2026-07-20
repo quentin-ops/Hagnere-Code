@@ -33,6 +33,12 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -48,7 +54,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 5210,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -161,7 +166,7 @@ const faqItems = [
   {
     question: "À quel salaire correspond un TJM de 500 € par jour ?",
     answer:
-      "Beaucoup moins qu'on ne l'imagine. Un indépendant facturant 500 € par jour sur 170 jours réellement travaillés dégage 85 000 € de chiffre d'affaires, dont il reste environ 3 600 à 4 500 € net mensuels avant impôt sur le revenu, une fois les cotisations sociales et les frais professionnels déduits. Le calcul que l'on voit circuler — tarif journalier multiplié par 218 jours — suppose un taux de remplissage de 100 % que personne n'atteint, et surestime le revenu de 30 à 50 %. Côté salarié, un développeur à 60 000 € bruts annuels coûte à son employeur environ 85 000 € charges comprises, soit près de 390 € par jour effectivement travaillé : l'écart avec un tarif de prestation est bien plus faible qu'il n'y paraît.",
+      "Beaucoup moins qu'on ne l'imagine. Un indépendant facturant 500 € par jour sur 170 jours réellement travaillés dégage 85 000 € de chiffre d'affaires, dont il reste environ 3 600 à 4 500 € net mensuels avant impôt sur le revenu, une fois les cotisations sociales et les frais professionnels déduits. Le calcul que l'on voit circuler — tarif journalier multiplié par 218 jours — suppose un taux de remplissage de 100 %, irréaliste pour une activité indépendante, et surestime le revenu de 30 à 50 %. Côté salarié, un développeur à 60 000 € bruts annuels coûte à son employeur environ 85 000 € charges comprises, soit près de 390 € par jour effectivement travaillé : l'écart avec un tarif de prestation est bien plus faible qu'il n'y paraît.",
   },
 ];
 
@@ -316,7 +321,7 @@ export default function Page() {
             ["Agrégateur de tarifs (2026)", "20 638 observations tous métiers sur 12 mois, dont plus de 4 600 sur les développeurs, avec médiane et fourchettes", "Médiane développeur 530 € (la moitié centrale du marché entre 480 et 600 €) ; React — l'un des outils de développement web les plus répandus, voir section 5 — 540 €", "Moyenne — méthode composite, mais la seule à publier des médianes"],
           ]}
         />
-        <InfoBox variant="blue" title="L'écart que personne n'exploite : affiché contre signé">
+        <InfoBox variant="blue" title="L'écart utile : tarif affiché contre tarif signé">
           Sur le même profil de développeur fullstack expérimenté, les
           tarifs <strong>affichés</strong> sur une grande plateforme
           tournent autour de <strong>558 €</strong> par jour, quand les
@@ -326,8 +331,8 @@ export default function Page() {
           entre le prix demandé et le prix pratiqué</strong>. Ce que
           cela vous dit, en tant qu&apos;acheteur : les grilles
           publiques que l&apos;on vous opposera sont plutôt des bornes
-          hautes. Ce que cela ne vous dit pas : que tout le monde
-          négocie de 25 % — les missions courtes, urgentes ou très
+          hautes. Cela ne démontre pas une remise générale de 25 % : les
+          missions courtes, urgentes ou très
           spécialisées se paient au prix affiché, et parfois davantage.
         </InfoBox>
 
@@ -526,7 +531,7 @@ LA RÈGLE DU CINQUIÈME (consultant SALARIÉ d'une ESN)
 
         <GuideInlineCTA
           title="Vous voulez savoir combien de jours coûte VOTRE projet ?"
-          description="Décrivez-le en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti avec une estimation en jours, la ventilation par poste et le budget réaliste correspondant — gratuitement et sans engagement."
+          description="Décrivez-le en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec une estimation en jours, la ventilation par poste et le budget réaliste correspondant — gratuitement et sans engagement."
         />
 
         <h2 id="offshore">7. L&apos;offshore à 150 €/jour, calculé honnêtement</h2>
@@ -566,8 +571,8 @@ LA RÈGLE DU CINQUIÈME (consultant SALARIÉ d'une ESN)
 
         <h2 id="jours-par-livrable">8. Combien de jours coûte votre projet</h2>
         <p>
-          Voici le tableau que personne ne publie et qui est pourtant
-          le cœur du sujet. Ce sont des fourchettes de place recoupées
+          Voici le tableau central de cette comparaison. Ce sont des
+          fourchettes de place recoupées
           entre grilles d&apos;agences, devis publiés et baromètres —
           des ordres de grandeur pour mettre un devis à l&apos;épreuve, pas un
           barème.
@@ -817,18 +822,12 @@ LE CONTRÔLE À FAIRE SUR TOUT DEVIS
           France.
         </p>
         <p>
-          Notre lecture, en tant qu&apos;agence qui développe avec ces
-          outils au quotidien : <strong>l&apos;IA n&apos;a pas fait
-          baisser le tarif journalier, elle a fait baisser le nombre de
-          jours nécessaires</strong> sur certains postes — construction
-          d&apos;interfaces, tests, contenus techniques. C&apos;est
-          pour cette raison qu&apos;un site sur mesure de qualité
-          professionnelle est aujourd&apos;hui accessible à des budgets
-          qui, il y a trois ans, n&apos;ouvraient qu&apos;un thème
-          paramétré. Le corollaire honnête est que la revue humaine de
-          chaque ligne reste indispensable : c&apos;est elle qui
-          distingue un site sur mesure d&apos;un code généré que
-          personne ne saura reprendre.
+          Notre lecture opérationnelle est plus limitée : l&apos;IA peut réduire,
+          maintenir ou augmenter le temps selon la tâche, le développeur et le
+          dépôt. Une étude de tâche ne permet donc pas de prédire le nombre de
+          jours ni le tarif d&apos;un projet complet. Demandez au prestataire de
+          détailler ses hypothèses, ses contrôles humains, la protection des
+          données et ses critères de recette, puis comparez le devis à périmètre égal.
         </p>
 
         <h2 id="cadre-legal">14. Devis, acompte, délais de paiement : le cadre légal</h2>
@@ -891,10 +890,11 @@ LE CONTRÔLE À FAIRE SUR TOUT DEVIS
         <h2 id="negocier">15. Négocier sans casser la relation</h2>
         <p>
           La négociation d&apos;un tarif journalier obéit à une règle
-          simple : <strong>ne demandez jamais une baisse sans offrir
-          une contrepartie</strong>. L&apos;usage de place plafonne la
-          remise à 5 à 10 %, généralement contre un engagement de
-          trois à six mois ou une réduction de périmètre.
+          simple : <strong>reliez toute baisse à un changement
+          explicite</strong>. Il n&apos;existe pas de plafond universel de remise :
+          la durée, le volume, le risque, le paiement et le périmètre varient
+          selon chaque mission. Demandez que la nouvelle hypothèse apparaisse
+          dans le devis au lieu de supposer un pourcentage d&apos;usage.
         </p>
         <p>
           Les trois leviers qui fonctionnent réellement, par ordre

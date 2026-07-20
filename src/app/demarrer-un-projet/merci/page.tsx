@@ -6,6 +6,7 @@ import { ConversionTracker } from "./ConversionTracker";
 import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { LegalLinksFooter } from "@/components/legal/LegalLinksFooter";
+import { CALENDLY_URL } from "@/lib/calendly";
 
 export const metadata: Metadata = {
   title: "Brief envoyé · Hagnéré Code",
@@ -72,7 +73,7 @@ export default function Page() {
           </p>
           <div className="pf-success-actions">
             <a
-              href="https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte"
+              href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="pf-primary"

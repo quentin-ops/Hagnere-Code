@@ -9,6 +9,7 @@ describe("trackFunnelEvent", () => {
   beforeEach(() => {
     vi.unstubAllEnvs();
     vi.stubEnv("NEXT_PUBLIC_COOKIE_BANNER", "1");
+    vi.stubEnv("NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED", "true");
     sendBeacon.mockReset();
     sendBeacon.mockReturnValue(true);
     fetch.mockReset();
@@ -105,6 +106,15 @@ describe("trackFunnelEvent", () => {
 
   it("does not send analytics when the banner is disabled", () => {
     vi.stubEnv("NEXT_PUBLIC_COOKIE_BANNER", "0");
+
+    trackFunnelEvent("guide_cta_click");
+
+    expect(sendBeacon).not.toHaveBeenCalled();
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("does not emit anything when no compatible collector is enabled", () => {
+    vi.stubEnv("NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED", "false");
 
     trackFunnelEvent("guide_cta_click");
 

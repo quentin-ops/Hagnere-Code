@@ -70,8 +70,12 @@ describe("e-commerce FAQ source", () => {
   });
 
   it("limits product proof to publicly observable pages and functions", () => {
-    expect(composedBodyHtml).not.toMatch(/nous les exploitons|utilisateurs réels|paiements refusés[^<.]{0,80}chez nous|en production/i);
-    expect(composedBodyHtml).toContain("Ils ne prouvent pas l'exploitation interne");
+    expect(composedBodyHtml).not.toMatch(
+      /nous les exploitons|utilisateurs réels|paiements refusés[^<.]{0,80}chez nous|en production/i,
+    );
+    expect(composedBodyHtml).toContain(
+      "Ils ne prouvent pas l'exploitation interne",
+    );
     expect(composedBodyHtml).toContain("page publique à consulter");
   });
 });

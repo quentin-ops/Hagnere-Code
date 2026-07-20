@@ -161,12 +161,12 @@ const RESOURCES = [
   {
     href: "/realisations",
     label: "Nos réalisations",
-    value: "4 produits documentés : contexte, stack, chiffres mesurés.",
+    value: "4 études déclaratives : contexte, périmètre public et limites de preuve.",
   },
   {
     href: "/methode",
     label: "Notre méthode",
-    value: "Sprint Fixe : périmètre écrit, budget plafonné, démos hebdo.",
+    value: "Sprint Fixe : périmètre écrit, budget plafonné, cadence de démo convenue.",
   },
   {
     href: "/tarifs",

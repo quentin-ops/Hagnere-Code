@@ -47,6 +47,7 @@ const serviceJsonLd = JSON.stringify({
       "@type": "PriceSpecification",
       minPrice: "6900",
       priceCurrency: "EUR",
+      valueAddedTaxIncluded: false,
     },
     availability: "https://schema.org/InStock",
   },
@@ -100,7 +101,7 @@ const faqItems = [
   {
     question: "Combien de temps prend un projet Next.js ?",
     answer:
-      "Comptez 2 à 4 semaines pour un site vitrine, 6 à 10 semaines pour un site à contenu avec du référencement travaillé, 3 à 6 mois pour une boutique sur mesure ou une première version d'application métier. Une précision qui évite les malentendus : ces délais sont calendaires, pas des jours de travail. L'écart s'explique par vos validations et la fourniture de vos contenus — c'est d'ailleurs le premier facteur de retard sur les projets web. Nous jalonnons donc le planning avec des dates de validation convenues à l'avance.",
+      "Il n'existe pas de délai Next.js standard : le nombre de gabarits, les contenus, les intégrations, la migration, la recette et les disponibilités de validation changent le calendrier. Après le cadrage, le devis distingue charge de réalisation, dépendances côté client, jalons de validation et marge de risque. Le délai annoncé n'est engageant que s'il est écrit au contrat avec ses hypothèses.",
   },
 ];
 
@@ -155,7 +156,7 @@ export default function Page() {
           items={[
             { id: "ce-que-nous-construisons", label: "1. Ce que nous construisons en Next.js" },
             { id: "pourquoi", label: "2. Pourquoi Next.js, en termes concrets" },
-            { id: "preuves", label: "3. Nos réalisations Next.js, chiffres à l'appui" },
+            { id: "preuves", label: "3. Études de cas et limites de preuve" },
             { id: "garanties", label: "4. Ce que le devis doit préciser" },
             { id: "prix", label: "5. Nos prix, publics et fermes" },
             { id: "quand-non", label: "6. Quand Next.js n'est pas la bonne réponse" },
@@ -172,10 +173,10 @@ export default function Page() {
         <GuideTable
           headers={["Type de projet", "Ce que ça couvre", "Budget d'entrée", "Délai"]}
           rows={[
-            ["Site vitrine et landing pages", "Site d'entreprise orienté conversion, blog, pages de référencement", "6 900 €", "2 à 4 semaines"],
-            ["Site à contenu et référencement", "Blog structuré, guides, multilingue, CMS pour votre équipe", "14 900 €", "6 à 10 semaines"],
-            ["Boutique en ligne sur mesure", "Catalogue, tunnel de commande, paiement, connexion à votre gestion", "15 000 €", "3 à 6 mois"],
-            ["Application métier et logiciel en ligne", "Espace client, outil interne, automatisation de processus", "15 000 €", "3 à 6 mois"],
+            ["Site vitrine et landing pages", "Site d'entreprise orienté conversion, blog, pages de référencement", "6 900 €", "Planning confirmé au devis"],
+            ["Site à contenu et référencement", "Blog structuré, guides, multilingue, CMS pour votre équipe", "14 900 €", "Planning confirmé au devis"],
+            ["Boutique en ligne sur mesure", "Catalogue, tunnel de commande, paiement, connexion à votre gestion", "15 000 €", "Planning confirmé au devis"],
+            ["Application métier et logiciel en ligne", "Espace client, outil interne, automatisation de processus", "15 000 €", "Planning confirmé au devis"],
           ]}
         />
         <p>
@@ -231,10 +232,11 @@ export default function Page() {
           </li>
         </ul>
 
-        <h2 id="preuves">3. Nos réalisations Next.js, vérifiables en ligne</h2>
+        <h2 id="preuves">3. Études de cas et éléments publics vérifiables</h2>
         <p>
-          Deux projets en production, construits en Next.js 15, React 19 et
-          TypeScript.
+          Deux études de cas renvoient vers des pages publiques. Elles permettent
+          de vérifier leur disponibilité, leurs contenus et leurs fonctions visibles ;
+          la stack indiquée reste une information déclarée par Hagnéré Code.
         </p>
         <GuideTable
           headers={["Projet", "Nature", "Éléments publics vérifiables"]}
@@ -247,8 +249,9 @@ export default function Page() {
           <strong>Ces deux produits appartiennent au même groupe que
           nous&nbsp;: ce ne sont pas des clients externes.</strong> Nous préférons l&apos;écrire noir sur blanc plutôt que
           de laisser croire à des références décrochées en concurrence. Ce que
-          cela ne change pas : les sites sont en production, les technologies
-          et les choix de conception peuvent être examinés sur les sites publics.
+          cela ne change pas : les pages sont accessibles et leurs contenus et
+          fonctions visibles peuvent être examinés. Cela ne suffit pas à documenter
+          leur architecture interne ou leurs résultats.
           Aucune métrique d&apos;acquisition n&apos;est publiée ici sans dossier de preuve
           daté. Ce que cela change : vous êtes en droit de
           leur accorder moins de poids qu&apos;à une référence externe, et
@@ -263,14 +266,14 @@ export default function Page() {
           Le détail de ces projets — problème, solution, décisions techniques —
           est sur notre page{" "}
           <Link href="/realisations">réalisations</Link>. Nous développons
-          également deux logiciels de comptabilité fiscale en production, bâtis
-          sur une autre technologie (Laravel) : nous ne les présentons pas ici,
-          puisque cette page porte sur Next.js.
+          également deux études de cas consacrées à des offres de comptabilité
+          fiscale. Leurs pages publiques sont consultables ; la technologie Laravel
+          mentionnée dans ces études reste une information déclarée.
         </p>
 
         <GuideInlineCTA
           title="Un projet Next.js en tête ?"
-          description="Décrivez-le en 3 minutes. Objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement — y compris si notre réponse est qu'une solution plus simple suffirait."
+          description="Décrivez-le en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti. Cette première réponse est gratuite et sans engagement — y compris si elle consiste à recommander une solution plus simple."
         />
 
         <h2 id="garanties">4. Ce que le devis doit préciser</h2>
@@ -305,7 +308,7 @@ export default function Page() {
             ["Site vitrine — Performance", "10 à 20 pages, blog structuré pour le référencement, interface d'édition sans toucher au code", "14 900 €"],
             ["Site vitrine — Premium", "Multilingue, e-commerce léger, intégrations avancées", "22 000 € et plus"],
             ["E-commerce sur mesure", "Catalogue, tunnel de commande, connexion au logiciel de gestion", "15 000 à 120 000 €"],
-            ["Application métier / logiciel en ligne", "Première version réellement utilisable, livrée en 3 à 6 semaines", "Dès 15 000 €"],
+            ["Application métier / logiciel en ligne", "Première version réellement utilisable ; planning défini après cadrage", "Dès 15 000 €"],
             ["Discovery Sprint", "2 jours de cadrage : périmètre écrit, maquette, devis ferme", "1 500 €, déduits à 100 % si le projet se lance"],
           ]}
         />
@@ -385,8 +388,9 @@ export default function Page() {
 
         <h2 id="stack">8. Notre stack technique</h2>
         <p>
-          Pour les lecteurs techniques, voici ce que nous utilisons réellement
-          en production.
+          Pour les lecteurs techniques, voici une stack de référence. Les versions,
+          services et responsabilités réellement retenus sont confirmés dans le devis
+          et la documentation du projet.
         </p>
         <GuideTable
           headers={["Couche", "Technologies", "Pourquoi"]}
@@ -400,9 +404,10 @@ export default function Page() {
           ]}
         />
         <p>
-          Le site que vous lisez est lui-même construit avec cette stack :
-          vous pouvez le tester sur PageSpeed Insights, ouvrir son code source,
-          et vérifier que nous appliquons ce que nous vendons.
+          Vous pouvez tester cette page sur PageSpeed Insights et examiner le HTML
+          livré au navigateur. Ces vérifications objectivent le rendu public ; elles
+          ne prouvent pas à elles seules toute la stack interne ni un niveau de
+          performance garanti pour un autre projet.
         </p>
 
         <GuideInlineCTA

@@ -1,9 +1,14 @@
 import { NextResponse } from "next/server";
+import { CALENDLY_URL } from "@/lib/calendly";
 import { Resend } from "resend";
 import { eq } from "drizzle-orm";
-import { randomBytes } from "node:crypto";
 import { getClientIp } from "@/lib/rate-limit";
-import { checkServiceRateLimit, hashEmail, logAiCall } from "@/lib/ai-rate-limit";
+import {
+  bindReservationEmail,
+  checkServiceRateLimit,
+  hashEmail,
+  logAiCall,
+} from "@/lib/ai-rate-limit";
 import {
   getMathChallengeSecret,
   isValidMathChallenge,
@@ -13,9 +18,15 @@ import { projectBrief } from "@/db/schema";
 import { log } from "@/lib/logger";
 import {
   confirmationMailFailureOutcome,
+  deliverInquiryEmails,
   missingMailProviderOutcome,
   teamMailFailureOutcome,
 } from "@/lib/project-inquiry-delivery";
+import { sendResendEmail } from "@/lib/resend-email";
+import {
+  createInquirySlug,
+  isValidInquiryIdempotencyKey,
+} from "@/lib/inquiry-idempotency";
 import {
   PayloadTooLargeError,
   readJsonWithLimit,
@@ -65,8 +76,6 @@ function asStringArray(v: unknown): string[] {
 function asText(value: unknown): string {
   return typeof value === "string" ? value : "";
 }
-
-const CALENDLY_URL = "https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte";
 
 /**
  * projectType / timeline / budget arrivent de deux formulaires aux options
@@ -141,6 +150,7 @@ function renderEmailShell(preheader: string, innerHtml: string): string {
 export async function POST(request: Request) {
   const ip = getClientIp(request);
   const userAgent = request.headers.get("user-agent");
+  const idempotencyKey = request.headers.get("idempotency-key")?.trim() || null;
 
   let body: Body;
   try {
@@ -161,9 +171,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  // 2. Anti-bot : l'équation a été émise et signée côté serveur. Le POST ne
-  // peut pas choisir ses propres opérandes. Sans secret valide, on échoue de
-  // façon conservatrice et on laisse l'email/téléphone comme solution de repli.
   const mathChallengeSecret = getMathChallengeSecret();
   if (!mathChallengeSecret) {
     return NextResponse.json(
@@ -174,35 +181,16 @@ export async function POST(request: Request) {
       { status: 503 },
     );
   }
-  if (!isValidMathChallenge(body.mathChallenge, mathChallengeSecret)) {
-    await logAiCall({
-      service: "inquiry",
-      ip,
-      userAgent,
-      status: "blocked",
-      blockReason: "captcha_failed",
-    });
-    return NextResponse.json(
-      {
-        error:
-          "La réponse au calcul anti-robot est incorrecte. Vérifiez le calcul puis réessayez, ou écrivez à quentin@hagnere-patrimoine.fr.",
-      },
-      { status: 403 },
-    );
-  }
 
-  // 3. Rate limit Postgres-backed (multi-tier, partagé avec les autres
-  // routes via la table ai_call_log filtrée par service='inquiry').
-  // On extrait l'email AVANT validation pour pouvoir compter par email
-  // même sur les payloads invalides.
-  // Le rate limit protège une ressource externe (email). Une panne de son
-  // stockage ne doit pas transformer la route en relais de spam : fail closed.
-  const emailFromBody = asText(body.email).trim().slice(0, 200) || null;
+  // 2. Le rate-limit est réservé AVANT la validation du calcul. Ainsi, même
+  // les réponses fausses et les relectures d'un token signé restent bornées
+  // par IP et volume global. Le quota email n'est lié qu'après validation.
+  // Une panne du stockage échoue fermée.
   let rateCheck: Awaited<ReturnType<typeof checkServiceRateLimit>>;
   try {
     rateCheck = await checkServiceRateLimit(
       ip,
-      emailFromBody,
+      null,
       "inquiry",
       userAgent,
     );
@@ -217,20 +205,33 @@ export async function POST(request: Request) {
     );
   }
   if (!rateCheck.allowed) {
-    await logAiCall({
-      service: "inquiry",
-      ip,
-      email: emailFromBody,
-      userAgent,
-      status: "blocked",
-      blockReason: rateCheck.reason,
-    });
     return NextResponse.json(
-      { error: rateCheck.message || "Trop de demandes. Réessaye plus tard." },
+      { error: rateCheck.message },
       {
         status: 429,
-        headers: { "Retry-After": String(rateCheck.retryAfterSec || 3600) },
+        headers: { "Retry-After": String(rateCheck.retryAfterSec) },
       },
+    );
+  }
+
+  // 3. L'équation a été émise et signée côté serveur. C'est une friction
+  // anti-automatisation, complétée par le rate-limit ; ce n'est pas une preuve
+  // autonome qu'un humain est à l'origine de la requête.
+  if (!isValidMathChallenge(body.mathChallenge, mathChallengeSecret)) {
+    await logAiCall({
+      reservationId: rateCheck.reservationId,
+      service: "inquiry",
+      ip,
+      userAgent,
+      status: "blocked",
+      blockReason: "captcha_failed",
+    });
+    return NextResponse.json(
+      {
+        error:
+          "La réponse au calcul anti-robot est incorrecte. Vérifiez le calcul puis réessayez, ou écrivez à quentin@hagnere-patrimoine.fr.",
+      },
+      { status: 403 },
     );
   }
 
@@ -261,6 +262,9 @@ export async function POST(request: Request) {
   if (!isPlausibleLabel(budget)) errors.budget = "Budget invalide";
   if (!isPlausibleLabel(projectType)) errors.projectType = "Type de projet invalide";
   if (!isPlausibleLabel(timeline)) errors.timeline = "Échéance invalide";
+  if (!isValidInquiryIdempotencyKey(idempotencyKey)) {
+    errors.submission = "Identifiant de soumission invalide";
+  }
   // Phone : si fourni, doit ressembler à un numéro plausible.
   if (phone) {
     const phoneDigits = phone.replace(/[^\d]/g, "");
@@ -275,13 +279,54 @@ export async function POST(request: Request) {
 
   if (Object.keys(errors).length > 0) {
     await logAiCall({
+      reservationId: rateCheck.reservationId,
       service: "inquiry",
       ip,
-      email: emailFromBody,
+      email,
       userAgent,
       status: "validation",
     });
     return NextResponse.json({ errors }, { status: 400 });
+  }
+
+  // Le quota lié à l'adresse n'est attaché qu'après captcha et validation.
+  // Une requête invalide ne peut donc pas épuiser le quota d'un tiers.
+  let emailRateCheck: Awaited<ReturnType<typeof bindReservationEmail>>;
+  try {
+    emailRateCheck = await bindReservationEmail(
+      rateCheck.reservationId,
+      "inquiry",
+      email,
+    );
+  } catch (err) {
+    log.error("project_inquiry_email_rate_limit_unavailable", {
+      err: err as Error,
+    });
+    return NextResponse.json(
+      {
+        error:
+          "Le formulaire est temporairement indisponible. Écrivez à quentin@hagnere-patrimoine.fr ou réessayez plus tard.",
+      },
+      { status: 503 },
+    );
+  }
+  if (!emailRateCheck.allowed) {
+    await logAiCall({
+      reservationId: rateCheck.reservationId,
+      service: "inquiry",
+      ip,
+      email,
+      userAgent,
+      status: "blocked",
+      blockReason: emailRateCheck.reason,
+    });
+    return NextResponse.json(
+      { error: emailRateCheck.message },
+      {
+        status: 429,
+        headers: { "Retry-After": String(emailRateCheck.retryAfterSec) },
+      },
+    );
   }
 
   // ── DB persistence ────────────────────────────────────────────────
@@ -290,16 +335,42 @@ export async function POST(request: Request) {
   // itself is best-effort — if DATABASE_URL is missing we log and continue
   // so the funnel never blocks on a misconfigured env.
   let briefId: number | null = null;
-  let briefSlug: string | null = null;
+  const canonicalPayload = JSON.stringify([
+    firstName,
+    lastName,
+    email.toLowerCase(),
+    company,
+    phone,
+    projectType,
+    timeline,
+    budget,
+    message,
+    asText(body.role).trim(),
+    asText(body.siren).replace(/\s/g, ""),
+    asStringArray(body.projectKinds),
+    asStringArray(body.objectives),
+    asText(body.description),
+    asText(body.currentSituation),
+    asText(body.audience),
+    asStringArray(body.mustHaves),
+    asStringArray(body.integrations),
+    asStringArray(body.existingAssets),
+    asText(body.openScope),
+    asText(body.decisionStage),
+  ]);
+  // Identifiant interne non énumérable et racine stable des clés Resend.
+  // Il n'est jamais exposé dans la réponse publique.
+  const briefSlug = createInquirySlug({
+    secret: mathChallengeSecret,
+    clientKey: idempotencyKey,
+    canonicalPayload,
+  });
   try {
-    // 16 bytes → 22 chars base64url (≈128 bits d'entropie). Identifiant
-    // public non-énumérable du brief, conservé pour un futur backoffice.
-    // Pas de dépendance externe — randomBytes est natif Node (crypto-strong).
-    const generatedSlug = randomBytes(16).toString("base64url");
-    const inserted = await getDb()
+    const db = getDb();
+    const inserted = await db
       .insert(projectBrief)
       .values({
-        publicSlug: generatedSlug,
+        publicSlug: briefSlug,
         firstName,
         lastName,
         email,
@@ -323,9 +394,17 @@ export async function POST(request: Request) {
         privacyNoticeVersion: PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION,
         mailSent: false,
       })
-      .returning({ id: projectBrief.id, publicSlug: projectBrief.publicSlug });
+      .onConflictDoNothing({ target: projectBrief.publicSlug })
+      .returning({ id: projectBrief.id });
     briefId = inserted[0]?.id ?? null;
-    briefSlug = inserted[0]?.publicSlug ?? null;
+    if (briefId == null) {
+      const existing = await db
+        .select({ id: projectBrief.id })
+        .from(projectBrief)
+        .where(eq(projectBrief.publicSlug, briefSlug))
+        .limit(1);
+      briefId = existing[0]?.id ?? null;
+    }
     // PII : on logge l'id et un email haché pour ne pas écrire l'adresse en clair.
     log.info("project_brief_inserted", { briefId, emailHash: hashEmail(email) });
   } catch (err) {
@@ -474,10 +553,7 @@ export async function POST(request: Request) {
       process.env.NODE_ENV === "production",
       briefId != null,
     );
-    return NextResponse.json(
-      { ...outcome.payload, briefId, briefSlug },
-      { status: outcome.status },
-    );
+    return NextResponse.json(outcome.payload, { status: outcome.status });
   }
 
   // Helper to update mail_sent flag on the brief row (best-effort).
@@ -493,89 +569,51 @@ export async function POST(request: Request) {
     }
   }
 
-  try {
-    const resend = new Resend(apiKey);
-    const result = await resend.emails.send({
-      from: `Hagnéré Code <${fromAddr}>`,
-      to: [toAddr],
-      replyTo: email,
-      subject,
-      text: textBody,
-      html: htmlBody,
-    });
-
-    if (result.error) {
-      log.error("project_inquiry_resend_team_failed", {
-        providerErrorName: result.error.name,
-        briefId,
-      });
-      await logAiCall({
-        service: "inquiry",
-        ip,
-        email,
-        userAgent,
-        status: "ai_error",
-        briefId,
-      });
-      const outcome = teamMailFailureOutcome(briefId != null);
-      return NextResponse.json(
-        { ...outcome.payload, briefId, briefSlug },
-        { status: outcome.status },
+  const resend = new Resend(apiKey);
+  const delivery = await deliverInquiryEmails(
+    async () => {
+      const result = await sendResendEmail(
+        resend,
+        {
+          from: `Hagnéré Code <${fromAddr}>`,
+          to: [toAddr],
+          replyTo: email,
+          subject,
+          text: textBody,
+          html: htmlBody,
+        },
+        `inquiry-${briefSlug}-team`,
       );
-    }
-
-    const confirmation = await resend.emails.send({
-      from: `Hagnéré Code <${fromAddr}>`,
-      to: [email],
-      replyTo: toAddr,
-      subject: confirmationSubject,
-      text: confirmationText,
-      html: confirmationHtml,
-    });
-
-    if (confirmation.error) {
-      log.error("project_inquiry_resend_confirmation_failed", {
-        providerErrorName: confirmation.error.name,
-        briefId,
-      });
-      // Mark mail_sent anyway since the team mail went through — losing
-      // the prospect confirmation is annoying but the lead is captured.
-      await markMailSent();
-      await logAiCall({
-        service: "inquiry",
-        ip,
-        email,
-        userAgent,
-        status: "ok",
-        briefId,
-      });
-      const outcome = confirmationMailFailureOutcome();
-      return NextResponse.json(
-        { ...outcome.payload, briefId, briefSlug },
-        { status: outcome.status },
+      return result.error
+        ? { ok: false, errorName: result.error.name }
+        : { ok: true };
+    },
+    async () => {
+      const result = await sendResendEmail(
+        resend,
+        {
+          from: `Hagnéré Code <${fromAddr}>`,
+          to: [email],
+          replyTo: toAddr,
+          subject: confirmationSubject,
+          text: confirmationText,
+          html: confirmationHtml,
+        },
+        `inquiry-${briefSlug}-confirmation`,
       );
-    }
+      return result.error
+        ? { ok: false, errorName: result.error.name }
+        : { ok: true };
+    },
+  );
 
-    await markMailSent();
-    await logAiCall({
-      service: "inquiry",
-      ip,
-      email,
-      userAgent,
-      status: "ok",
+  if (delivery.kind === "team_failed") {
+    log.error("project_inquiry_resend_team_failed", {
+      providerErrorName: delivery.errorName,
       briefId,
     });
-    return NextResponse.json({
-      ok: true,
-      captured: true,
-      teamNotified: true,
-      confirmationSent: true,
-      briefId,
-      briefSlug,
-    });
-  } catch (err) {
-    log.error("project_inquiry_unexpected_error", { err: err as Error, briefId });
     await logAiCall({
+      reservationId: rateCheck.reservationId,
       service: "inquiry",
       ip,
       email,
@@ -584,9 +622,33 @@ export async function POST(request: Request) {
       briefId,
     });
     const outcome = teamMailFailureOutcome(briefId != null);
-    return NextResponse.json(
-      { ...outcome.payload, briefId, briefSlug },
-      { status: outcome.status },
-    );
+    return NextResponse.json(outcome.payload, { status: outcome.status });
   }
+
+  await markMailSent();
+  await logAiCall({
+    reservationId: rateCheck.reservationId,
+    service: "inquiry",
+    ip,
+    email,
+    userAgent,
+    status: "ok",
+    briefId,
+  });
+
+  if (delivery.kind === "confirmation_failed") {
+    log.error("project_inquiry_resend_confirmation_failed", {
+      providerErrorName: delivery.errorName,
+      briefId,
+    });
+    const outcome = confirmationMailFailureOutcome();
+    return NextResponse.json(outcome.payload, { status: outcome.status });
+  }
+
+  return NextResponse.json({
+    ok: true,
+    captured: true,
+    teamNotified: true,
+    confirmationSent: true,
+  });
 }

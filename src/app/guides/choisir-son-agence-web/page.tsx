@@ -33,6 +33,12 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -48,7 +54,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 5290,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -156,7 +161,7 @@ const faqItems = [
   {
     question: "Combien coûte la maintenance d'un site et que doit-elle couvrir ?",
     answer:
-      "Comptez 30 à 200 € par mois pour un site professionnel courant, davantage pour une boutique. Le périmètre doit être écrit noir sur blanc : mises à jour de sécurité, sauvegardes avec leur fréquence et leur durée de conservation, corrections de dysfonctionnements, délai maximal d'intervention en cas de panne, et le volume de petites modifications inclus chaque mois. Sans ce détail, vous payez une assurance dont personne ne connaît les garanties. Notez que le coût dépend surtout du socle technique : un site construit sur un CMS chargé d'extensions demande une vigilance hebdomadaire, là où un site statique moderne se limite à ses dépendances. Notre guide dédié chiffre les deux régimes.",
+      "Comptez 30 à 200 € par mois pour un site professionnel courant, davantage pour une boutique. Le périmètre doit être écrit noir sur blanc : mises à jour de sécurité, sauvegardes avec leur fréquence et leur durée de conservation, corrections de dysfonctionnements, délai maximal d'intervention en cas de panne, et le volume de petites modifications inclus chaque mois. Sans ce détail, vous payez une assurance aux garanties indéterminées. Notez que le coût dépend surtout du socle technique : un site construit sur un CMS chargé d'extensions demande une vigilance hebdomadaire, là où un site statique moderne se limite à ses dépendances. Notre guide dédié chiffre les deux régimes.",
   },
   {
     question: "Que faire si mon agence ne livre pas ou retient mon site ?",
@@ -177,7 +182,7 @@ export default function Page() {
           { label: "Choisir son agence web" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Tout le monde publie des listes de critères. Ce guide donne autre chose : dix-huit vérifications que vous pouvez mener vous-même gratuitement en une heure, treize questions avec le barème des bonnes et des mauvaises réponses, les pièges confirmés par la Cour de cassation — et la méthode pour nous auditer, nous aussi."
+        heroDescription="Les listes de critères sont nombreuses. Ce guide ajoute dix-huit vérifications que vous pouvez mener vous-même gratuitement en une heure, treize questions avec le barème des bonnes et des mauvaises réponses, les pièges confirmés par la Cour de cassation — et la méthode pour nous auditer, nous aussi."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -319,8 +324,8 @@ export default function Page() {
         <h2 id="marche">2. Le marché : pourquoi la vérification vous incombe</h2>
         <p>
           Premier constat, et il est méthodologique :{" "}
-          <strong>personne ne sait combien il y a d&apos;agences web en
-          France</strong>. Ni l&apos;INSEE ni aucun syndicat ne publie
+          <strong>le nombre exact d&apos;agences web en France n&apos;est pas
+          publié</strong>. Ni l&apos;INSEE ni aucun syndicat ne publie
           ce chiffre, parce que ces entreprises se répartissent entre
           plusieurs codes d&apos;activité — programmation, conseil,
           publicité, portails internet. Les chiffres de 12 000, 20 000
@@ -334,11 +339,10 @@ export default function Page() {
           <strong>86 044 entreprises pour environ 351 000 emplois en
           équivalent temps plein</strong> selon les dernières données
           consolidées de l&apos;INSEE (portant sur 2019), soit une
-          moyenne d&apos;un peu plus de quatre personnes par
-          entreprise. Autrement dit :{" "}
-          <strong>l&apos;écrasante majorité des « agences » sont des
-          très petites entreprises</strong>, ce qui n&apos;est ni bien
-          ni mal en soi, mais change la lecture du risque.
+          moyenne arithmétique d&apos;un peu plus de quatre emplois par
+          entreprise. Cette moyenne ne donne pas la distribution des tailles et
+          ne permet pas d&apos;affirmer quelle part des agences est très petite.
+          Demandez plutôt l&apos;équipe réellement affectée et les relais prévus.
         </p>
         <p>
           Car le risque de disparition est réel et chiffré. La France a
@@ -409,9 +413,8 @@ export default function Page() {
 
         <h2 id="tester-realisations">4. Tester 3 réalisations en 10 minutes</h2>
         <p>
-          C&apos;est la vérification la plus rentable, et presque
-          personne ne la fait. Un portfolio se regarde généralement
-          avec les yeux ; il se <strong>mesure</strong> en dix minutes.
+          Cette vérification est particulièrement utile. Un portfolio se regarde
+          généralement avec les yeux ; il se <strong>mesure</strong> en dix minutes.
         </p>
         <ol>
           <li>
@@ -617,9 +620,8 @@ export default function Page() {
 
         <h2 id="questions-rdv">9. Les 13 questions du rendez-vous, avec le barème</h2>
         <p>
-          Tout le monde publie des listes de questions. Personne ne
-          publie le barème. Voici les treize questions qui comptent, et
-          ce que valent les réponses.
+          Les listes de questions sont nombreuses. Voici les treize questions
+          retenues ici, accompagnées d&apos;un barème pour évaluer les réponses.
         </p>
         <GuideTable
           headers={["Question", "Bonne réponse", "Mauvaise réponse"]}
@@ -629,7 +631,7 @@ export default function Page() {
             ["Quel score Lighthouse mobile à la livraison ?", "Un chiffre précis, inscrit au contrat", "« Ça dépend de beaucoup de choses », ou aucune mesure prévue"],
             ["Puis-je appeler deux de vos clients ?", "Coordonnées fournies sous 48 heures", "Refus, invocation vague de la confidentialité"],
             ["Que se passe-t-il si je pars dans deux ans ?", "Réversibilité écrite : export, accès, documentation, sans pénalité", "Flou, frais de sortie, hébergement dont on ne peut pas partir"],
-            ["Pourquoi cette technologie pour MON besoin ?", "Une justification liée à votre cas — et l'aveu quand un socle plus simple suffirait", "La même solution vendue à tout le monde, du jargon en guise d'écran"],
+            ["Pourquoi cette technologie pour MON besoin ?", "Une justification liée à votre cas — et l'aveu quand un socle plus simple suffirait", "La même solution vendue sans distinction, du jargon en guise d'écran"],
             ["Que comprend la maintenance, à quel prix ?", "Périmètre écrit, délai d'intervention, tarif", "« On verra ça plus tard », rien d'écrit"],
             ["Combien de cycles de retours sont inclus ?", "Un nombre défini, plus le prix d'un avenant", "« Retours illimités » — commercialement séduisant, contractuellement faux"],
             ["Comment gérez-vous le référencement lors de la mise en ligne ?", "Redirections page à page et surveillance après la bascule", "« Google s'en occupe tout seul »"],
@@ -839,7 +841,7 @@ export default function Page() {
             ["Design", "Thème adapté", "Maquettes sur mesure", "Combien d'autres sites utilisent ce thème ?"],
             ["Référencement technique", "Non mentionné", "Balises de titre, plan du site, données structurées (le code invisible qui aide Google à comprendre chaque page)", "Qui écrit les balises, et sont-elles vérifiables ?"],
             ["Recette et tests", "Absente du devis", "3 jours", "Qui teste, sur quels appareils, et qui corrige ?"],
-            ["Engagement de performance", "Aucun", "Score mobile 95 minimum au contrat", "Acceptez-vous un chiffre écrit ?"],
+            ["Engagement de performance", "Aucun", "Cible, pages et protocole écrits", "Quel indicateur, dans quelles conditions, et avec quelle tolérance ?"],
             ["Propriété du code", "Non mentionnée", "Cession au solde", "Puis-je partir avec mon site ?"],
             ["Maintenance", "Non chiffrée", "90 €/mois, périmètre écrit", "Quel est le coût sur 12 mois, tout compris ?"],
             ["Hébergement et nom de domaine", "Non précisé", "Hébergement inclus 12 mois, domaine à votre nom", "Qui paie l'hébergement en année 2, et à quel tarif ?"],
@@ -933,14 +935,13 @@ export default function Page() {
             dirigeant, absence de procédure. Dix minutes.
           </li>
           <li>
-            <strong>Ouvrez le code de nos réalisations.</strong> Clic
-            droit, « Afficher le code source », ou l&apos;extension
-            Wappalyzer. Vous n&apos;y trouverez pas de{" "}
-            <code>wp-content</code> : nos sites sont développés en
-            Next.js et React, ce que nous annonçons — notre page{" "}
+            <strong>Examinez les pages publiques.</strong> Le code source
+            livré au navigateur et des outils comme Wappalyzer donnent des
+            indices sur certaines technologies, sans prouver l&apos;architecture
+            interne, l&apos;auteur du code ou la qualité du projet. Notre page{" "}
             <Link href="/agence-next-js">agence Next.js</Link> détaille
-            ce socle et ce qu&apos;il implique pour un client. Ce site en
-            est lui-même la démonstration.
+            la stack proposée ; sa composition effective doit être confirmée
+            dans le devis et la documentation.
           </li>
           <li>
             <strong>Posez-nous les treize questions de la

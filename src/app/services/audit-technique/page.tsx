@@ -47,40 +47,6 @@ const serviceJsonLd = JSON.stringify({
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Audit technique pour PME, ETI, équipes produit et investisseurs : code, architecture, performance, sécurité, infrastructure, DevEx, coûts cloud et organisation. Les dimensions, livrables, hypothèses de chiffrage, calendrier et critères d'acceptation sont confirmés au devis.",
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Audit Express · urgence",
-      price: "8000",
-      priceCurrency: "EUR",
-      description:
-        "Base budgétaire pour un diagnostic ciblé. Dimensions, intervenants, délai, accès, livrables et critères d'acceptation sont confirmés au devis.",
-    },
-    {
-      "@type": "Offer",
-      name: "Audit Standard",
-      price: "18000",
-      priceCurrency: "EUR",
-      description:
-        "Base budgétaire pour un format Standard. Dimensions, équipe, calendrier, volume et format des livrables sont confirmés après cadrage dans le devis signé.",
-    },
-    {
-      "@type": "Offer",
-      name: "Audit Deep · refonte ou levée",
-      price: "38000",
-      priceCurrency: "EUR",
-      description:
-        "Base budgétaire pour une décision complexe. Dimensions, compétences, scénarios, délai, livrables et restitution sont confirmés au devis.",
-    },
-    {
-      "@type": "Offer",
-      name: "Tech Due Diligence M&A · acquisition",
-      price: "68000",
-      priceCurrency: "EUR",
-      description:
-        "Base budgétaire pour une due diligence technique. Périmètre, intervenants, coordination avec les conseils, confidentialité, délais et livrables sont confirmés au devis.",
-    },
-  ],
 });
 
 

@@ -28,33 +28,39 @@ function sourceFiles(directory: string): string[] {
   });
 }
 
+let cachedPublicSources: string | undefined;
+
+function publicSources(): string {
+  cachedPublicSources ??= ["src/app", "src/components", "src/lib"]
+    .flatMap((directory) => sourceFiles(path.join(projectRoot, directory)))
+    .map((file) => fs.readFileSync(file, "utf8"))
+    .join("\n");
+  return cachedPublicSources;
+}
+
 describe("public structured data safeguards", () => {
   it("publishes no FAQPage markup after Google removed support in May 2026", () => {
-    const publicSources = ["src/app", "src/components", "src/lib"]
-      .flatMap((directory) => sourceFiles(path.join(projectRoot, directory)))
-      .map((file) => fs.readFileSync(file, "utf8"))
-      .join("\n");
+    const sources = publicSources();
 
-    expect(publicSources).not.toContain('"@type": "FAQPage"');
-    expect(publicSources).not.toContain("faqJsonLd");
-    expect(publicSources).not.toContain('"@type": "HowTo"');
-    expect(publicSources).not.toContain('"@type": "HowToStep"');
-    expect(publicSources).not.toMatch(/Tout validé Search Console/i);
-  });
+    expect(sources).not.toContain('"@type": "FAQPage"');
+    expect(sources).not.toContain("faqJsonLd");
+    expect(sources).not.toContain('"@type": "HowTo"');
+    expect(sources).not.toContain('"@type": "HowToStep"');
+    expect(sources).not.toMatch(/\bwordCount\s*:/);
+    expect(sources).not.toMatch(/Tout validé Search Console/i);
+  }, 30_000);
 
   it("never turns an imprecise case-study year into a fake January date", () => {
-    const publicSources = ["src/app", "src/components", "src/lib"]
-      .flatMap((directory) => sourceFiles(path.join(projectRoot, directory)))
-      .map((file) => fs.readFileSync(file, "utf8"))
-      .join("\n");
+    const sources = publicSources();
 
-    expect(publicSources).not.toMatch(/datePublished\s*:\s*`\$\{[^}]*\.year\}-01-01`/);
+    expect(sources).not.toMatch(/datePublished\s*:\s*`\$\{[^}]*\.year\}-01-01`/);
 
     for (const caseStudy of Object.values(CASES)) {
       const [article] = buildCaseStudyStructuredData(caseStudy);
       expect(article, caseStudy.slug).not.toHaveProperty("datePublished");
       expect(article, caseStudy.slug).not.toHaveProperty("dateModified");
-      expect(article.author.url, caseStudy.slug).toBe(SITE_URL);
+      expect(article.author, caseStudy.slug).toEqual({ "@id": ORGANIZATION_ID });
+      expect(article.publisher.url, caseStudy.slug).toBe(SITE_URL);
       expect(article.image, caseStudy.slug).toBe(
         `${SITE_URL}/realisations/${caseStudy.slug}/opengraph-image`,
       );
@@ -66,6 +72,11 @@ describe("public structured data safeguards", () => {
         name: caseStudy.brandName,
         url: caseStudy.url,
       });
+      expect(article.citation, caseStudy.slug).toBe(caseStudy.url);
+      expect(article, caseStudy.slug).not.toHaveProperty("keywords");
+      expect(JSON.stringify(article), caseStudy.slug).not.toMatch(
+        /Drizzle|PostgreSQL|Tailwind|Meta Ads|multi[-‑ ]touch/i,
+      );
     }
 
     expect(
@@ -86,23 +97,20 @@ describe("public structured data safeguards", () => {
       expect(response.headers.get("content-type"), slug).toBe("image/png");
       expect(image.byteLength, slug).toBeGreaterThan(10_000);
     }
-  });
+  }, 30_000);
 
   it("uses one organization identity, the Bassens address and no obsolete SIRET", () => {
-    const publicSources = ["src/app", "src/components", "src/lib"]
-      .flatMap((directory) => sourceFiles(path.join(projectRoot, directory)))
-      .map((file) => fs.readFileSync(file, "utf8"))
-      .join("\n");
+    const sources = publicSources();
     const organization = JSON.stringify(PUBLIC_ORGANIZATION_JSON_LD);
 
     expect(ORGANIZATION_ID).toBe(`${SITE_URL}/#organization`);
-    expect(publicSources).not.toContain(`${SITE_URL}/#business`);
+    expect(sources).not.toContain(`${SITE_URL}/#business`);
     expect(organization).toContain("82 impasse de Bellevue");
     expect(organization).toContain("73000");
     expect(organization).toContain("Bassens");
     expect(organization).not.toContain("openingHoursSpecification");
     expect(organization).not.toMatch(/993\s?672\s?856\s?00016/);
-    expect(publicSources).not.toMatch(/993\s?672\s?856\s?00016/);
+    expect(sources).not.toMatch(/993\s?672\s?856\s?00016/);
     expect(organization).not.toContain("https://lmnp.ai");
     expect(organization).not.toContain("https://sci-ai.app");
     expect(organization).not.toContain("https://hagnere-patrimoine.fr");

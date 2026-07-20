@@ -106,7 +106,7 @@ export function buildServiceTeamHtml(config: ServiceTeamConfig): string {
           <div class="${prefix}-team-founder-meta">
             <div><span class="k">Domaines</span><span class="v">${founderDomains}</span></div>
             <div><span class="k">Rôle projet</span><span class="v">${founderRoleProject}</span></div>
-            <div><span class="k">Entreprises fondées</span><span class="v">3 · dont 2 cabinets actifs</span></div>
+            <div><span class="k">Rôle</span><span class="v">Président fondateur · cadrage</span></div>
             <div><span class="k">Studio</span><span class="v">${STUDIO_LOCATION}</span></div>
           </div>
           <a class="${prefix}-team-founder-li" href="${FOUNDER.linkedin}" target="_blank" rel="noopener noreferrer">
@@ -128,7 +128,7 @@ export function buildServiceTeamHtml(config: ServiceTeamConfig): string {
 
         <div class="${prefix}-team-note">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          Aucune mission n'est déléguée à un pool anonyme ou à un offshore. Les mêmes personnes, nommées au cadrage, du brief à la livraison.
+          L'équipe proposée, ses rôles et les éventuels renforts sont identifiés au cadrage puis confirmés au devis. Toute sous-traitance ou modification d'intervenant suit les modalités d'information prévues au contrat.
         </div>
       </div>
     </div>

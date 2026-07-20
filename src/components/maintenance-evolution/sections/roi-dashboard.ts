@@ -74,7 +74,7 @@ export const roiDashboardHtml = `
         </div>
         <div class="me-roi-kpi me-roi-kpi-hot">
           <div class="me-roi-kpi-delta">0<span>fenêtre</span></div>
-          <div class="me-roi-kpi-k">Maintenance visible en production</div>
+          <div class="me-roi-kpi-k">Fenêtre de maintenance visible</div>
           <div class="me-roi-kpi-n">exemple de stratégie · selon architecture</div>
         </div>
         <div class="me-roi-kpi">

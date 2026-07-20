@@ -30,7 +30,7 @@ export const teamHtml = `
         <div class="me-tm-body">
           <h3>Quentin Hagnéré</h3>
           <p class="me-tm-role">Front-end · Design · Brief client</p>
-          <p class="me-tm-bio">Interlocuteur principal du cadrage à la livraison. Garde le lien business avec vos équipes sur toute la durée du contrat.</p>
+          <p class="me-tm-bio">Peut assurer le cadrage et le lien avec vos équipes lorsque le devis le nomme comme interlocuteur et en précise la durée.</p>
           <div class="me-tm-meta">
             <span class="me-tm-chip">📍 Bassens</span>
             <span class="me-tm-chip">👤 Fondateur</span>
@@ -55,7 +55,7 @@ export const teamHtml = `
         <div class="me-tm-body">
           <h3>Nicolas Wallerand</h3>
           <p class="me-tm-role">CTO · direction technique transverse</p>
-          <p class="me-tm-bio">Architecture, choix de stack, jalons techniques, compliance SOC2 / ISO. Revue hebdo avec votre CTO interne si vous en avez un.</p>
+          <p class="me-tm-bio">Architecture, choix de stack et jalons techniques selon le rôle confirmé au devis. Toute revue avec votre CTO et tout référentiel SOC 2 ou ISO sont cadrés séparément.</p>
           <div class="me-tm-meta">
             <span class="me-tm-chip">📍 Bassens</span>
             <span class="me-tm-chip">🏆 CTO managérial</span>
@@ -80,7 +80,7 @@ export const teamHtml = `
         <div class="me-tm-body">
           <h3>Arthur Monney</h3>
           <p class="me-tm-role">Senior Dev · Back-end Laravel</p>
-          <p class="me-tm-bio">Spécialiste architecture Laravel, API REST, performances DB. Référent sur nos SaaS à forte logique métier.</p>
+          <p class="me-tm-bio">Compétences déclarées en Laravel, API REST et bases de données. L'intervention, le rôle de référent et les responsabilités sont confirmés par projet.</p>
           <div class="me-tm-meta">
             <span class="me-tm-chip">⚙️ Laravel / PHP</span>
             <span class="me-tm-chip">🗄️ PostgreSQL</span>
@@ -105,7 +105,7 @@ export const teamHtml = `
         <div class="me-tm-body">
           <h3>Frédéric Curinckx</h3>
           <p class="me-tm-role">Senior Dev · Back-end Laravel</p>
-          <p class="me-tm-bio">Expert architecture multi-tenant, billing Stripe, intégrations complexes. Référent sur nos produits où les flux métier sont critiques.</p>
+          <p class="me-tm-bio">Compétences déclarées en architecture multi-tenant, facturation Stripe et intégrations. L'intervention et le rôle de référent sont confirmés par projet.</p>
           <div class="me-tm-meta">
             <span class="me-tm-chip">💳 Stripe</span>
             <span class="me-tm-chip">🏢 Multi-tenant</span>
@@ -130,7 +130,7 @@ export const teamHtml = `
         <div class="me-tm-body">
           <h3>Ryan Mazzitelli</h3>
           <p class="me-tm-role">Senior Dev · Back-end Laravel + IA</p>
-          <p class="me-tm-bio">Intégration IA native dans les apps (agents Claude, fonctions métier), refactos complexes, patterns event-driven. Ref sur apps avec features IA.</p>
+          <p class="me-tm-bio">Compétences déclarées en intégration IA, fonctions métier, refactorisation et architectures événementielles. Le rôle exact est confirmé par projet.</p>
           <div class="me-tm-meta">
             <span class="me-tm-chip">🤖 IA / agents Claude</span>
             <span class="me-tm-chip">⚡ Event-driven</span>
@@ -155,7 +155,7 @@ export const teamHtml = `
         <div class="me-tm-body">
           <h3>Killian Hoarau</h3>
           <p class="me-tm-role">Senior Dev · Back-end Laravel + DevOps</p>
-          <p class="me-tm-bio">Infrastructure, CI/CD, Terraform, monitoring, astreinte. Référent sur la supervision et la gestion d'incident de nos produits en production.</p>
+          <p class="me-tm-bio">Infrastructure, CI/CD, Terraform et supervision selon le périmètre. Les responsabilités d'astreinte, de gestion d'incident et les objectifs de service sont définis au contrat.</p>
           <div class="me-tm-meta">
             <span class="me-tm-chip">☁️ DevOps / Terraform</span>
             <span class="me-tm-chip">🚨 PagerDuty</span>
@@ -180,7 +180,7 @@ export const teamHtml = `
         <div class="me-tm-body">
           <h3>Peter Sum Sie Kung</h3>
           <p class="me-tm-role">Dev confirmé · Laravel + front</p>
-          <p class="me-tm-bio">Renfort produit sur le suivi applicatif. Intégrations CMS, debugging applicatif, support utilisateur niveau 2. Bus factor maîtrisé sur les apps les plus chargées.</p>
+          <p class="me-tm-bio">Intervient sur le suivi applicatif, les intégrations CMS, le diagnostic et le support selon le périmètre. La continuité et les relais sont définis par projet.</p>
           <div class="me-tm-meta">
             <span class="me-tm-chip">🛠️ TMA Laravel</span>
             <span class="me-tm-chip">📦 Intégrations CMS</span>

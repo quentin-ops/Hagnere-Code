@@ -9,13 +9,13 @@ import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Agence développement SaaS sur mesure · Hagnéré Code",
   description:
-    "Agence de développement SaaS sur mesure : cadrage, UX, web, mobile, IA, mise en production et reprise. Forfait fixe, code et documentation transférés.",
+    "Agence de développement SaaS sur mesure : cadrage, UX, web, mobile, IA, mise en production et reprise. Prix, droits et documentation précisés au devis.",
   alternates: { canonical: "/services/saas-applications-metier" },
   openGraph: {
     ...OG_BASE,
     title: "Agence développement SaaS sur mesure · Hagnéré Code",
     description:
-      "Plateformes SaaS B2B et applications métier : cadrage, développement, mise en production et transfert. Forfait fixe et preuves produits vérifiables.",
+      "Plateformes SaaS B2B et applications métier : cadrage, développement, mise en production et transfert selon le devis et les CGV.",
     url: "/services/saas-applications-metier",
     images: [SERVICES_OG_IMAGE],
   },

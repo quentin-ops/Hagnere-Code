@@ -307,8 +307,9 @@ Statut maximal actuel : publiable après autorisation éditoriale déléguée, s
 - [x] cas fictif identifié, aucun cas réel inventé ;
 - [x] aucune ressource téléchargeable promise ;
 - [x] metadata, JSON-LD, registre, maillage et ancres cohérents ;
-- [x] TypeScript, ESLint, 86 tests SEO, build de production de 98 pages et
-      postbuild SEO global passés après corrections ;
+- [x] TypeScript, ESLint, batterie SEO, build et postbuild du snapshot
+      d'intégration passés après corrections ; résultats courants à lire dans
+      `PRE-LAUNCH-CHECKLIST.md` ;
 - [x] rendu observé aux dix largeurs requises ;
 - [x] ré-audit indépendant passé après corrections ;
 - [x] contrôles techniques et build repassés après les deux dernières corrections ;

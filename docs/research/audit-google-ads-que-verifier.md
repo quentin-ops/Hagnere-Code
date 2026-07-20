@@ -217,8 +217,8 @@ n'est revendiqué.
 - [x] exemple toujours étiqueté fictif ;
 - [x] FAQ visible, sans schéma `FAQPage` obsolète ;
 - [x] metadata, registre, image sociale, maillage et ancres cohérents ;
-- [x] Prettier, ESLint ciblé et TypeScript passés ; les 86 tests SEO et le build
-      de production global passent après intégration ;
+- [x] Prettier, ESLint, TypeScript, batterie SEO et build du snapshot
+      d'intégration passés ; toute nouvelle modification invalide cette preuve ;
 - [x] rendu contrôlé aux dix largeurs de 320 à 1 600 px, CTA, H1, registre,
       tableaux et image Open Graph inspectés ;
 - [x] route incluse dans le hub, le sitemap et `llms.txt`, avec `index,follow`

@@ -32,6 +32,12 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -47,7 +53,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4685,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -100,17 +105,17 @@ const faqItems = [
   {
     question: "Agence web ou freelance : que choisir pour créer son site internet ?",
     answer:
-      "La bonne réponse dépend de trois curseurs, pas d'un camp : le budget, la criticité du site et l'horizon. En dessous de 3 000 € : un freelance sur un périmètre court et standard, en acceptant les risques de continuité. Entre 3 000 et 8 000 € : freelance senior ou entrée d'agence, selon que le site est vital ou non pour votre activité. Entre 8 000 et 15 000 € : zone de convergence — les prix se rejoignent, le choix se fait sur la continuité, la pluridisciplinarité et les garanties contractuelles. Au-delà de 15 000 € (e-commerce sur mesure, application) : une équipe structurée devient quasi obligatoire. Et dans TOUS les cas : cession de droits écrite, accès au code, réversibilité — la grille complète est dans ce guide.",
+      "La bonne réponse dépend du périmètre, des compétences requises, de la disponibilité, de la continuité et du contrat. Le montant du projet ne rend pas à lui seul une équipe obligatoire : un freelance peut coordonner des spécialistes et une agence peut mobiliser une seule personne. Comparez les intervenants réellement nommés, leurs rôles, les livrables, les droits, les accès, la maintenance et la réversibilité.",
   },
   {
     question: "Pourquoi un freelance est-il moins cher qu'une agence web ?",
     answer:
-      "Trois raisons structurelles, toutes vérifiables. Ses charges : pas de locaux, pas de fonction commerciale ni administrative dédiée — le taux journalier ne porte que lui. Son régime fiscal : sous 37 500 € de chiffre d'affaires annuel (seuil 2026), un micro-entrepreneur facture sans TVA — un « rabais » de 20 % réel pour un client non assujetti, mais neutre pour une entreprise qui récupère la TVA, nuance que les comparatifs oublient. Son périmètre : les petits prix freelance (800-2 500 € un site vitrine) correspondent à des projets courts, souvent sur thème WordPress. À périmètre et séniorité égaux, l'écart fond : un freelance confirmé au TJM médian (~530 €/jour) facture 8 000 à 13 000 € un site professionnel de 15 à 25 jours — le prix d'entrée d'une agence sur mesure.",
+      "Un indépendant peut avoir une structure de coûts plus légère qu'une agence, mais ce n'est pas automatique : ses assurances, outils, partenaires, prospection et temps non facturable entrent aussi dans son prix. S'il bénéficie de la franchise en base de TVA, il ne facture pas la TVA ; ce régime est distinct du régime micro-fiscal et reste soumis à ses propres seuils, exclusions et options. L'écart TTC ne compte que pour un client qui ne récupère pas la TVA. Enfin, les offres les moins chères correspondent généralement à un périmètre plus court ou plus standardisé : comparez toujours les mêmes livrables, droits, services récurrents et conditions de sortie.",
   },
   {
     question: "Une agence web est-elle vraiment plus chère qu'un freelance ?",
     answer:
-      "Le « 30 à 50 % plus cher » qui circule partout ne repose sur aucune étude comparant des devis à périmètre identique — nous l'avons cherchée. Ce qui est vrai : à petit périmètre standard, le freelance gagne presque toujours sur le prix affiché. Ce qui l'est aussi : l'écart se resserre à mesure que le projet grossit, et le prix de création n'est pas le coût total — ajoutez la maintenance, les évolutions, et le coût d'une reprise si le prestataire disparaît (recréation partielle, rétro-ingénierie d'un code non documenté). La vraie comparaison se fait sur 3 ans, garanties comprises — c'est l'objet de la section coût total de ce guide.",
+      "Le « 30 à 50 % plus cher » souvent repris ne repose pas ici sur une étude de devis à périmètre identique. Une structure plus légère peut réduire certains coûts, tandis qu'une agence peut inclure coordination, continuité ou spécialités supplémentaires. La comparaison utile porte sur le même périmètre et le coût total : création, maintenance, évolutions et reprise éventuelle.",
   },
   {
     question: "Quel est le TJM d'un développeur web freelance ?",
@@ -120,22 +125,22 @@ const faqItems = [
   {
     question: "Est-ce risqué de confier son site à un freelance ?",
     answer:
-      "Pas intrinsèquement — mais le risque se mesure et se contractualise. Le chiffre officiel que personne ne cite : sur les micro-entrepreneurs immatriculés en 2018 ayant réellement démarré, 39 % seulement étaient encore actifs 5 ans après, et environ 27 % dans l'information-communication (INSEE, 2025). Nuance honnête : cette statistique couvre tout le régime micro, débutants inclus — un freelance senior installé, avec des clients récurrents, n'a pas ce profil de risque. La vraie protection n'est pas de fuir les freelances : c'est le contrat (cession de droits, code documenté et remis, accès à l'hébergement à votre nom) qui rend n'importe quel prestataire remplaçable. Un site bien contractualisé survit à son développeur.",
+      "Pas intrinsèquement — mais le risque se mesure et se contractualise. Un chiffre officiel aide à le cadrer : sur les micro-entrepreneurs immatriculés en 2018 ayant réellement démarré, 39 % seulement étaient encore actifs 5 ans après, et environ 27 % dans l'information-communication (INSEE, 2025). Nuance honnête : cette statistique couvre tout le régime micro, débutants inclus — un freelance senior installé, avec des clients récurrents, n'a pas ce profil de risque. La vraie protection n'est pas de fuir les freelances : c'est le contrat (cession de droits, code documenté et remis, accès à l'hébergement à votre nom) qui rend n'importe quel prestataire remplaçable. Un site bien contractualisé survit à son développeur.",
   },
   {
     question: "Que se passe-t-il si mon freelance disparaît ou arrête son activité ?",
     answer:
-      "Tout dépend de ce que vous possédez au moment où il disparaît. Scénario noir — le plus fréquent dans les litiges : domaine enregistré au nom du prestataire, hébergement sur son compte, code jamais remis ni documenté — vous repartez de zéro, ou presque. Scénario maîtrisé : domaine et hébergement à VOTRE nom, code remis sur un dépôt Git vous appartenant, cession de droits signée, documentation à jour — n'importe quel autre développeur reprend le projet en quelques jours. La différence entre les deux ne coûte rien au moment de signer : c'est une liste de clauses, détaillée dans la section propriété de ce guide. Exigez-la d'un freelance COMME d'une agence — les agences aussi ferment.",
+      "Tout dépend des accès et livrables disponibles : titulaire du domaine, compte d'hébergement, dépôt de code, données, secrets, documentation, droits et assistance de sortie. Ces éléments facilitent une reprise sans en garantir le délai ni le coût. Exigez-les d'un freelance comme d'une agence et testez périodiquement la procédure de réversibilité.",
   },
   {
     question: "À qui appartient le code source de mon site ?",
     answer:
-      "Par défaut : à celui qui l'a écrit — pas à celui qui l'a payé. Le Code de la propriété intellectuelle est sans ambiguïté : l'auteur détient les droits du seul fait de la création (article L111-1), et payer une prestation n'y change rien. Subtilité méconnue : pour les salariés d'une agence, les droits sur le logiciel remontent automatiquement à l'employeur (article L113-9) — l'agence peut donc les céder proprement ; un freelance, lui, reste personnellement titulaire. Dans les deux cas, une seule protection : la clause de cession écrite, énumérant chaque droit cédé avec son étendue et sa durée (article L131-3). Sans elle, vous ne possédez pas le site que vous avez payé — que le prestataire soit freelance ou agence.",
+      "Le paiement ne suffit pas, à lui seul, à décrire tous les droits transmis. La qualification de chaque élément, le statut de son auteur, les composants préexistants et les licences tierces comptent. Faites inventorier dans le contrat le code spécifique, les contenus, les créations, les droits cédés ou concédés, leur étendue, les livrables et les exclusions ; un conseil juridique peut valider la clause pour votre cas.",
   },
   {
     question: "Est-ce que les agences web sous-traitent à des freelances ?",
     answer:
-      "Certaines, oui — parfois à l'autre bout du monde, avec une marge de 2 à 3 fois, ce qui invalide tout le comparatif de prix que vous croyez faire. Aucune statistique fiable n'existe sur l'ampleur du phénomène (les pourcentages qui circulent ne sont pas sourcés), mais la parade juridique, elle, est solide et méconnue : la loi du 31 décembre 1975 sur la sous-traitance (article 3) vous donne le droit d'accepter chaque sous-traitant et d'agréer ses conditions de paiement. En pratique, cinq questions en rendez-vous suffisent : qui écrit le code, où, puis-je le rencontrer, qui répond aux demandes après livraison, et la sous-traitance figure-t-elle au contrat ? Un prestataire sérieux répond sans détour — chez nous : l'équipe qui vend est l'équipe qui code, en Savoie.",
+      "Certaines sous-traitent, en France ou ailleurs. Aucune marge générale ni fréquence fiable n'est établie ici. Demandez qui réalise chaque lot, son statut, le lieu de traitement des données, les responsabilités, les droits, la sécurité et l'interlocuteur après livraison. Les règles de la loi de 1975 et leur application dépendent du montage contractuel : faites valider le contrat si l'enjeu le justifie.",
   },
   {
     question: "Comment savoir si mon agence web m'arnaque ?",
@@ -145,7 +150,7 @@ const faqItems = [
   {
     question: "Un freelance facture-t-il la TVA ?",
     answer:
-      "Pas nécessairement — et c'est un vrai facteur de prix, mal compris. Un micro-entrepreneur sous 37 500 € de chiffre d'affaires annuel (seuil de la franchise en base, confirmé pour 2026) facture sans TVA : son devis « 3 000 € » est un net, là où le devis agence « 3 000 € HT » vous coûte 3 600 € TTC. Mais la nuance change tout selon votre statut : si votre entreprise récupère la TVA, l'avantage disparaît complètement — vous comparez alors du hors-taxes à du hors-taxes. Si vous êtes non assujetti (auto-entrepreneur, certaines professions), le freelance en franchise a un avantage réel de 20 %. Vérifiez aussi le plafond global : au-delà de 83 600 € de chiffre d'affaires services (2026), le régime micro cède — signe, au passage, qu'un freelance solo a une capacité de production structurellement bornée.",
+      "Pas nécessairement. Un indépendant — micro-entrepreneur ou non — qui remplit les conditions de la franchise en base de TVA ne facture pas la TVA et ne la déduit pas sur ses achats ; il peut aussi opter pour l'assujettissement. Le seuil de franchise applicable aux autres prestations de services est distinct du plafond du régime micro-fiscal et les règles de dépassement doivent être vérifiées à la date du devis. Pour un client qui récupère intégralement la TVA, cet écart n'est normalement pas un avantage de coût : comparez les prix hors taxes. Pour un client qui ne la récupère pas, comparez les montants TTC. Source : fiches officielles Entreprendre Service Public et economie.gouv.fr, consultées en juillet 2026.",
   },
   {
     question: "Quelles garanties demander pour la création d'un site internet ?",
@@ -160,7 +165,7 @@ const faqItems = [
   {
     question: "L'IA a-t-elle fait baisser le prix des sites internet ?",
     answer:
-      "Elle a fait baisser le coût de PRODUCTION — les prix affichés, c'est une autre histoire. L'étude contrôlée de GitHub mesure une tâche de développement standard réalisée 55 % plus vite avec assistance IA ; ce gain bénéficie aux freelances comme aux agences, et il a resserré l'écart entre le site sur thème (modèle prêt à l'emploi) et le sur-mesure. Mais la seule étude de prix publique (Digital Applied, 2026) montre que la plupart des prestataires gardent le gain en marge plutôt que de baisser leurs tarifs. Notre choix est inverse et public : vitrine sur mesure dès 6 900 €, e-commerce dès 15 000 € — des périmètres facturés bien plus cher il y a trois ans. La bonne question à poser à tout prestataire en 2026 : « utilisez-vous l'IA, et où va le gain ? »",
+      "Les outils d'IA peuvent accélérer certaines tâches de développement dans des protocoles précis ; cela ne prouve ni un gain identique sur un projet complet, ni une baisse générale des prix, ni une qualité constante. Le prix final dépend toujours du cadrage, du design, des intégrations, des tests, de la sécurité, de la conduite du projet et du risque accepté. Demandez au prestataire quels usages il autorise, comment il contrôle les sorties, protège les données et répercute — ou non — les gains mesurés dans son propre processus.",
   },
 ];
 
@@ -218,7 +223,7 @@ export default function Page() {
             { id: "arithmetique", label: "4. L'arithmétique qui resserre l'écart de prix" },
             { id: "capacite", label: "5. Ce qu'un solo peut absorber : les plafonds, noir sur blanc" },
             { id: "continuite", label: "6. « Et s'il disparaît ? » : le risque enfin chiffré" },
-            { id: "sous-traitance", label: "7. L'agence-coquille et la sous-traitance déguisée" },
+            { id: "sous-traitance", label: "7. Sous-traitance : obtenir la transparence" },
             { id: "propriete", label: "8. À qui appartient le code : le trio Légifrance" },
             { id: "arnaques", label: "9. Reconnaître un prestataire sérieux (les signaux d'alarme)" },
             { id: "troisieme-voie", label: "10. Collectifs, portage, studio senior : les troisièmes voies" },
@@ -261,8 +266,8 @@ export default function Page() {
         <InfoBox variant="blue" title="Les 12 mots de ce guide, traduits en français courant">
           <ul className="list-disc pl-4 space-y-1.5">
             <li><strong>TJM</strong> : le taux journalier d&apos;un indépendant — son « prix de journée », hors taxes.</li>
-            <li><strong>Micro-entreprise</strong> : le régime simplifié de la plupart des freelances — plafonné à 83 600 € de chiffre d&apos;affaires services en 2026.</li>
-            <li><strong>Franchise de TVA</strong> : sous 37 500 € de chiffre d&apos;affaires, le freelance facture sans TVA — un devis « net » face à un devis « HT ».</li>
+            <li><strong>Micro-entreprise</strong> : un régime fiscal et social simplifié accessible sous conditions ; il ne décrit pas tous les freelances et ses seuils évoluent.</li>
+            <li><strong>Franchise en base de TVA</strong> : un régime distinct du micro-fiscal. Sous ses conditions et sauf option pour la TVA, l&apos;entreprise ne facture pas la TVA et ne la déduit pas sur ses achats.</li>
             <li><strong>RC pro</strong> : l&apos;assurance responsabilité civile professionnelle — non obligatoire pour un développeur, donc pas toujours souscrite.</li>
             <li><strong>Portage salarial</strong> : le freelance devient salarié d&apos;une société de portage — cadre légal complet, garanties financières.</li>
             <li><strong>Collectif de freelances</strong> : plusieurs indépendants qui s&apos;associent sur un projet — sans personne morale unique responsable, le plus souvent.</li>
@@ -320,8 +325,7 @@ export default function Page() {
           Philips</strong> : 700 à 800 € pour un confirmé —
           l&apos;écart n&apos;est pas une erreur : ce baromètre mesure
           des missions grands comptes placées par cabinet, pas le
-          marché des TPE-PME. C&apos;est LA précaution de lecture
-          qu&apos;aucun comparatif ne donne :{" "}
+          marché des TPE-PME. La précaution de lecture est essentielle :{" "}
           <strong>un TJM sans sa méthodologie ne veut rien
           dire</strong>. Pour convertir en budget : TJM × jours
           estimés. Le devis freelance de Karim (4 200 €) correspond à
@@ -382,12 +386,12 @@ export default function Page() {
           d&apos;entrée d&apos;une agence sur mesure (6 900 à
           14 900 € chez nous). <strong>L&apos;écart de prix est réel
           en bas de gamme ; il s&apos;évapore à qualité égale.</strong>{" "}
-          L&apos;IA accélère ce resserrement : l&apos;étude contrôlée
-          de GitHub mesure une tâche standard réalisée 55 % plus vite
-          avec assistance IA — un gain qui bénéficie aux deux camps et
-          tire tout le sur-mesure vers le bas (notre{" "}
+          Les outils d&apos;IA peuvent modifier certaines tâches : l&apos;étude
+          contrôlée de GitHub mesure une tâche standard réalisée 55 % plus vite,
+          mais ce résultat ne prouve ni le délai ni le prix d&apos;un projet complet
+          (notre{" "}
           <Link href="/guides/creer-un-site-avec-ia">guide « créer un
-          site avec l&apos;IA »</Link> chiffre ce bouleversement).
+          site avec l&apos;IA »</Link> explique les limites de ces mesures).
           Reste alors la vraie question, celle des sections
           suivantes : à prix voisin, qu&apos;est-ce qui diffère
           VRAIMENT ? Réponse : la capacité, la continuité, les
@@ -396,19 +400,15 @@ export default function Page() {
 
         <h2 id="capacite">5. Ce qu&apos;un solo peut absorber : les plafonds, noir sur blanc</h2>
         <p>
-          Un fait structurel qu&apos;aucun comparatif n&apos;utilise,
-          et qui objective le débat sans dénigrer personne : la
+          Un fait structurel objective le débat sans dénigrer personne : la
           capacité d&apos;un solo est doublement bornée. Par la
           réglementation : le régime micro-entrepreneur est plafonné
           à <strong>83 600 € de chiffre d&apos;affaires services en
-          2026</strong> (Service-Public) — soit un maximum
-          d&apos;environ 160 jours facturés au TJM médian confirmé.
-          Et par le calendrier : une fois déduits prospection,
-          administratif et formation, un indépendant facture{" "}
-          <strong>environ 100 à 120 jours par an</strong>, tous
-          clients confondus. Traduction concrète :
-          un freelance solo qui vous consacre 60 jours a engagé la
-          moitié de son année sur votre seul projet. Pour un site
+          2026</strong> (Service-Public), lorsque ce régime s&apos;applique.
+          Et par le calendrier : un indépendant doit aussi consacrer du temps
+          à la prospection, à l&apos;administration et à la formation ; son nombre
+          de jours disponibles dépend de son organisation et ne se déduit pas
+          de son régime fiscal. Pour un site
           vitrine, aucun problème. Pour un e-commerce sur mesure ou
           une application (30 à 80 jours-homme, plusieurs métiers —
           design, développement, tests, sécurité), ce n&apos;est plus
@@ -425,12 +425,12 @@ export default function Page() {
           prestations de services passent de 24,6 à{" "}
           <strong>25,6 % du chiffre d&apos;affaires</strong> au
           1er janvier 2026 (URSSAF) : l&apos;écart de coût structurel
-          avec une société se resserre mécaniquement. Et la franchise
-          de TVA reste à <strong>37 500 €</strong> pour les services —
-          la réforme du seuil unique à 25 000 €, très contestée, a été
-          abandonnée fin 2025. Concrètement : un freelance qui dépasse
-          ce seuil facture la TVA comme une agence, et son « avantage
-          prix » fond d&apos;autant pour les clients non assujettis.
+          avec une société peut évoluer. La franchise en base de TVA obéit
+          à des seuils normal et majoré, à des règles de dépassement, à des
+          exclusions et à une option possible pour la TVA. Elle ne doit pas
+          être confondue avec le plafond micro-fiscal. Vérifiez le statut au
+          moment du devis : un client qui déduit intégralement la TVA compare
+          normalement les montants HT ; les autres comparent le TTC.
         </p>
 
         <h2 id="continuite">6. « Et s&apos;il disparaît ? » : le risque enfin chiffré</h2>
@@ -480,23 +480,15 @@ export default function Page() {
           tags={["Objectif : prochain jour ouvré", "Intervenants nommés au devis", "Droits, dépôt et comptes inventoriés"]}
         />
 
-        <h2 id="sous-traitance">7. L&apos;agence-coquille et la sous-traitance déguisée</h2>
+        <h2 id="sous-traitance">7. Sous-traitance : obtenir la transparence</h2>
         <p>
-          Le risque symétrique, côté agence : payer un tarif
-          d&apos;agence pour un travail réalisé par des freelances
-          sous-traités — parfois offshore, c&apos;est-à-dire à
-          l&apos;étranger à bas coût, avec une marge de 2 à 3 fois. Aucune statistique fiable ne mesure le phénomène
-          (les pourcentages qui circulent ne sont pas sourcés — nous
-          le disons plutôt que d&apos;en inventer), mais ses
-          conséquences remplissent les forums : interlocuteur
-          commercial qui ne comprend pas les questions techniques,
-          délais qui enflent, code de qualité imprévisible. La parade
-          juridique est solide et presque inconnue :{" "}
-          <strong>la loi du 31 décembre 1975 sur la sous-traitance
-          (article 3) vous donne le droit d&apos;accepter chaque
-          sous-traitant et d&apos;agréer ses conditions de
-          paiement</strong> — une
-          agence qui sous-traite sans vous le dire est en tort. En
+          Une agence peut confier certains lots à des sous-traitants, en France
+          ou à l&apos;étranger. Cela ne permet pas d&apos;inférer une marge, une qualité
+          ou un risque sans examiner l&apos;organisation réelle. Le contrat doit
+          préciser les intervenants, responsabilités, lieux de traitement,
+          droits et sécurité. La loi du 31 décembre 1975 encadre certains
+          rapports de sous-traitance, mais son application dépend du montage :
+          faites valider les clauses si nécessaire. En
           pratique, cinq questions posées en rendez-vous font le
           tri : <strong>qui écrit le code ? où ? puis-je rencontrer
           le développeur ? qui répondra aux demandes après
@@ -512,7 +504,7 @@ export default function Page() {
           La question la plus lourde de conséquences — et la seule de
           ce comparatif où freelance et agence sont exactement logés à
           la même enseigne. Trois articles du Code de la propriété
-          intellectuelle, que personne ne cite sur cette requête.{" "}
+          intellectuelle à vérifier avant de signer.{" "}
           <strong>Article L111-1</strong> : l&apos;auteur détient les
           droits du seul fait de la création — payer le développement
           ne vous rend PAS propriétaire du code.{" "}
@@ -596,8 +588,8 @@ export default function Page() {
           Le critère le plus discriminant n&apos;est ni le statut ni
           le prix : c&apos;est <strong>ce que le prestataire accepte
           de garantir par écrit, chiffres à l&apos;appui</strong> —
-          et sur cette requête, aucun comparatif n&apos;en parle. La
-          liste, à soumettre à un freelance comme à une agence : une{" "}
+          et doit être traité explicitement. La liste, à soumettre à un
+          freelance comme à une agence : une{" "}
           <strong>performance mesurable</strong> — un devis peut fixer un objectif Lighthouse avec son protocole (la note
           de qualité sur 100 de l&apos;outil de test de Google,
           vérifiable par n&apos;importe qui sur PageSpeed Insights) ;
@@ -703,7 +695,7 @@ export default function Page() {
             <li><strong>39 % à 5 ans</strong> : la part des micro-entrepreneurs (ayant démarré) encore actifs cinq ans après (INSEE) — le risque de continuité se contractualise, il ne se devine pas.</li>
             <li><strong>83 600 €</strong> : le plafond de chiffre d&apos;affaires services du régime micro en 2026 — auquel s&apos;ajoute la borne du calendrier : ~100-120 jours réellement facturables par an. La capacité d&apos;un solo est doublement bornée.</li>
             <li><strong>L131-3</strong> : l&apos;article du Code de la propriété intellectuelle sans lequel vous ne possédez pas le code que vous avez payé — freelance OU agence.</li>
-            <li><strong>1975</strong> : l&apos;année de la loi qui vous donne le droit d&apos;accepter chaque sous-traitant — l&apos;arme anti agence-coquille que personne n&apos;utilise.</li>
+            <li><strong>1975</strong> : l&apos;année de la loi qui vous donne le droit d&apos;accepter chaque sous-traitant — un levier contractuel contre les agences-coquilles.</li>
           </ul>
         </InfoBox>
 
@@ -775,17 +767,17 @@ export default function Page() {
           <a href="https://tjmetre.fr/barometre" target="_blank" rel="noopener noreferrer">TJMètre, baromètre agrégé des TJM freelances (2025-2026)</a> ;{" "}
           <a href="https://www.blogdumoderateur.com/freelances-taux-journaliers-moyens-it-france-2025/" target="_blank" rel="noopener noreferrer">Morgan Philips Freelance 2025/2026 (via BDM)</a> ;{" "}
           <a href="https://www.insee.fr/fr/statistiques/8634000" target="_blank" rel="noopener noreferrer">INSEE Première n°2069, pérennité des micro-entrepreneurs (2025)</a> ;{" "}
-          <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F32353" target="_blank" rel="noopener noreferrer">Service-Public, plafonds micro-entreprise 2026</a> ;{" "}
+          <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23267" target="_blank" rel="noopener noreferrer">Entreprendre Service Public, régime micro-fiscal (vérifié le 13 mai 2026)</a> ;{" "}
+          <a href="https://www.economie.gouv.fr/entreprises/gerer-sa-fiscalite-et-ses-impots/autres-impots-et-taxes/tva-quels-sont-les-differents-regimes-dimposition" target="_blank" rel="noopener noreferrer">economie.gouv.fr, régimes de TVA et franchise en base (27 mai 2026)</a> ;{" "}
           <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958" target="_blank" rel="noopener noreferrer">Légifrance, CPI art. L131-3 (cession de droits)</a> ;{" "}
           <a href="https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006467140" target="_blank" rel="noopener noreferrer">Légifrance, loi du 31 décembre 1975 art. 3 (sous-traitance)</a> ;{" "}
           <a href="https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/" target="_blank" rel="noopener noreferrer">GitHub, étude contrôlée sur la productivité IA (55 % plus rapide)</a> ;{" "}
           <a href="https://developers.google.com/search/docs/appearance/core-web-vitals" target="_blank" rel="noopener noreferrer">Google Search Central, Core Web Vitals</a> ;
           CPI art. L111-1 et L113-9 (Légifrance) ; URSSAF (cotisations
-          micro 25,6 % en 2026, franchise TVA 37 500 €) ; Code du
+          micro 25,6 % en 2026) ; Code du
           travail art. L1254-2 et L1254-26 (portage salarial) ;
           Collective.work x Shine (collectifs de freelances) ;
-          Free-Work et Malt (TJM déclaratifs, ordres de grandeur) ;
-          Digital Applied (étude de prix IA 2026). Les chiffres «
+          Free-Work et Malt (TJM déclaratifs, ordres de grandeur). Les chiffres «
           qui circulent » sans source primaire (écart 30-50 %, taux de
           sous-traitance offshore) sont signalés comme tels dans le
           corps du guide.

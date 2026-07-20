@@ -2,20 +2,17 @@ export type CaseStudy = {
   slug: string;
   /** Title/description SEO dédiés (fallback : template brandName · category). */
   seo?: { title: string; description: string };
-  /** Services Hagnéré Code mobilisés sur le cas (maillage interne). */
-  services?: { label: string; href: string }[];
   brandName: string;
   brandLogo: string;
   brandColor: string;
   brandSoft: string;
   category: string;
   url: string;
+  sourceCheckedAt: string;
   tagline: string;
   heroIntro: string;
   status: string;
   engagement: string;
-  team: string[];
-  stack: string[];
   context: string;
   problem: { title: string; body: string }[];
   solution: { title: string; body: string }[];
@@ -34,115 +31,101 @@ export type CaseStudy = {
   };
 };
 
+const PUBLIC_SOURCE_CHECKED_AT = "20 juillet 2026";
+
 export const CASES: Record<string, CaseStudy> = {
   "lmnp-ai": {
     slug: "lmnp-ai",
     seo: {
-      title: "Étude de cas LMNP.AI · SaaS de comptabilité · Hagnéré Code",
+      title: "Analyse publique externe : LMNP.AI · Hagnéré Code",
       description:
-        "Conception de LMNP.AI : parcours de comptabilité fiscale guidé, amortissements, liasses et télétransmission EDI. Architecture et modules livrés.",
+        "Analyse éditoriale d'une source publique externe : fonctions et offres visibles sur LMNP.AI, sans attribution de sa conception à Hagnéré Code.",
     },
-    services: [
-      { label: "Développement SaaS", href: "/services/saas-applications-metier" },
-    ],
     brandName: "LMNP.AI",
     brandLogo: "L",
     brandColor: "#6D28D9",
     brandSoft: "#EDE9FE",
-    category: "SaaS B2C · Comptabilité fiscale",
+    category: "Logiciel en ligne · Comptabilité LMNP/LMP",
     url: "https://lmnp.ai",
-    tagline: "Le SaaS de compta LMNP/LMP qui rend la liasse fiscale intelligible.",
+    sourceCheckedAt: PUBLIC_SOURCE_CHECKED_AT,
+    tagline: "Une page publique consacrée à la comptabilité LMNP/LMP au régime réel.",
     heroIntro:
-      "Plateforme de comptabilité LMNP/LMP au régime réel, avec parcours guidé, assistance contextuelle et télétransmission EDI à la DGFiP.",
-    status: "En production",
-    engagement: "Produit interne · évolutions continues",
-    team: ["Nicolas (CTO)", "Frédéric (Livewire)", "Ryan (IA)", "Arthur (paiements)", "Quentin (produit / UX)"],
-    stack: [
-      "Laravel 12",
-      "Livewire 3",
-      "Flux UI",
-      "Tailwind v4",
-      "Assistant IA",
-      "Prism",
-      "PostgreSQL",
-      "Stripe",
-      "EDI DGFiP",
-    ],
+      "Cette analyse porte sur une source publique externe à Hagnéré Code. Elle recense uniquement les fonctions et offres affichées sur LMNP.AI et ne prouve ni l'auteur du code, ni l'équipe, ni la technologie utilisée, ni un résultat obtenu.",
+    status: "Analyse publique externe",
+    engagement: `Source externe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
     context:
-      "Au régime réel, l'utilisateur doit réunir des informations comptables, comprendre les amortissements et préparer une liasse fiscale. Le produit a été conçu pour organiser ces étapes dans un parcours explicite, avec des contrôles et des explications en contexte.",
+      "La page publique présente un logiciel de comptabilité pour les loueurs en meublé LMNP ou LMP. Elle organise son offre autour de la tenue comptable, des amortissements, des documents fiscaux, de la transmission EDI, de deux niveaux d'accompagnement et de ressources éditoriales.",
     problem: [
       {
-        title: "La fiscalité LMNP demande un parcours pédagogique",
-        body: "Amortissements par composants, régime réel et suivi des déficits mobilisent plusieurs notions techniques. Une succession de formulaires sans explication ne suffit pas à guider l'utilisateur ni à lui permettre de contrôler les informations saisies.",
+        title: "Rendre l'offre lisible",
+        body: "Le site distingue publiquement une formule Autonomie et une formule avec expert-comptable, avec un périmètre affiché pour chacune.",
       },
       {
-        title: "L'EDI DGFiP impose une chaîne technique stricte",
-        body: "La transmission des liasses 2031 et 2033 utilise le format EDI-TDFC, un certificat et des contrôles de cohérence. Le produit doit suivre chaque étape, du fichier généré jusqu'au retour de la télétransmission.",
+        title: "Regrouper les fonctions comptables annoncées",
+        body: "La navigation publique cite notamment la gestion multi-biens, l'amortissement automatique, le fichier FEC et l'aide à la déclaration de revenus.",
       },
       {
-        title: "Les formulaires ont besoin de contexte",
-        body: "Le parcours devait rapprocher chaque question des informations du bien et de la situation déclarée, tout en laissant les données et la validation finale visibles par l'utilisateur.",
+        title: "Documenter le parcours déclaratif",
+        body: "Le site décrit la génération des formulaires 2031 et des tableaux 2033 ainsi que leur transmission EDI par l'intermédiaire d'un partenaire.",
       },
     ],
     solution: [
       {
-        title: "IA contextualisée à chaque étape",
-        body: "À chaque formulaire, l'assistant répond aux questions à partir du contexte fiscal renseigné (régime, situation, biens). Il fournit des explications ; les données utilisées et la validation finale restent du ressort de l'utilisateur.",
+        title: "Gestion LMNP/LMP présentée en ligne",
+        body: "La page des fonctionnalités rassemble la gestion de plusieurs biens, les amortissements et les contrôles de cohérence annoncés par l'éditeur.",
       },
       {
-        title: "Moteur d'amortissements par composants automatique",
-        body: "Le moteur prépare les amortissements par composants à partir de la fiche du bien et rend les hypothèses consultables avant validation.",
+        title: "Documents fiscaux et EDI affichés",
+        body: "Les formulaires 2031 et tableaux 2033, le fichier FEC et la télétransmission EDI figurent dans le périmètre public de l'offre.",
       },
       {
-        title: "Télétransmission EDI intégrée",
-        body: "Les liasses 2031 et 2033 peuvent être générées, transmises via le certificat du partenaire EDI et suivies jusqu'au retour de traitement de la DGFiP.",
+        title: "Deux niveaux d'accompagnement visibles",
+        body: "Le site permet de comparer une utilisation autonome et une offre incluant la vérification et la signature par un expert-comptable partenaire.",
       },
       {
-        title: "Double offre : autonomie ou validation expert",
-        body: "Le même parcours prend en charge une utilisation autonome ou une formule incluant l'intervention d'un expert-comptable partenaire. Le contenu précis des offres est présenté sur le site du produit.",
+        title: "Ressources accessibles",
+        body: "Des guides et simulateurs publics complètent la présentation du logiciel et de la fiscalité LMNP/LMP.",
       },
     ],
     features: [
-      "Inscription guidée",
+      "Comptabilité LMNP/LMP",
       "Gestion multi-biens",
-      "Amortissements composants",
-      "Déficit reportable",
-      "Liasse 2031 / 2033 auto",
-      "Télétransmission EDI DGFiP",
-      "Assistance IA contextuelle",
-      "Bibliothèque de guides fiscaux",
-      "Option validation expert",
+      "Plan d'amortissement suggéré",
+      "Formulaire 2031 et tableaux 2033",
+      "Fichier FEC",
+      "Transmission EDI",
+      "Aide à la déclaration de revenus",
+      "Offres Autonomie et Expert-comptable",
+      "Guides et simulateurs publics",
     ],
     highlights: [
-      { value: "2031 + 2033", label: "liasses prises en charge" },
-      { value: "EDI", label: "télétransmission DGFiP" },
-      { value: "Multi-biens", label: "parcours de gestion" },
-      { value: "Guides", label: "aide fiscale en contexte" },
+      { value: "LMNP/LMP", label: "régimes présentés" },
+      { value: "Multi-biens", label: "gestion annoncée" },
+      { value: "2031/2033", label: "documents cités" },
+      { value: "EDI", label: "transmission affichée" },
     ],
     screenshots: [
       {
-        title: "Résultat fiscal personnalisé",
-        caption:
-          "Hypothèses calculées à partir des données saisies, avec progression de la liasse et étapes de validation.",
+        title: "Fonctionnalités publiques",
+        caption: "Représentation schématique de l'inventaire affiché sur la page du logiciel.",
         kind: "dashboard",
       },
       {
-        title: "Assistant IA en contexte",
-        caption:
-          "L'utilisateur pose ses questions à l'assistant, qui répond avec le contexte du bien en cours.",
+        title: "Offres publiques",
+        caption: "Représentation schématique des formules Autonomie et Expert-comptable présentées en ligne.",
         kind: "form",
       },
       {
-        title: "Télétransmission EDI",
-        caption: "Génération de la liasse, signature, envoi DGFiP, accusé de réception.",
+        title: "Documents et EDI",
+        caption: "Représentation schématique des documents fiscaux et de la transmission annoncés par l'éditeur.",
         kind: "report",
       },
     ],
     testimonial: {
       quote:
-        "Nous avons cadré ce produit autour d'un principe : expliquer chaque étape et laisser à l'utilisateur la visibilité sur les données transmises.",
+        "Cette fiche se limite volontairement à ce qu'un visiteur peut vérifier sur la page publique liée.",
       author: "Quentin Hagnéré",
-      role: "Fondateur · LMNP.AI (mot du fondateur — produit interne du groupe Hagnéré)",
+      role: "Note éditoriale de l'auteur · pas un avis client",
       initials: "QH",
     },
   },
@@ -150,112 +133,94 @@ export const CASES: Record<string, CaseStudy> = {
   "sci-ai": {
     slug: "sci-ai",
     seo: {
-      title: "Étude de cas SCI-AI · SaaS compta SCI IR/IS · Hagnéré Code",
+      title: "Analyse publique externe : SCI-AI.app · Hagnéré Code",
       description:
-        "Conception de SCI-AI.app : parcours distincts pour SCI à l'IR et à l'IS, déclarations 2072 et 2065, liasse 2033 selon le régime applicable.",
+        "Analyse éditoriale d'une source publique externe : fonctions visibles sur SCI-AI.app, sans attribution de sa conception à Hagnéré Code.",
     },
-    services: [
-      { label: "Développement SaaS", href: "/services/saas-applications-metier" },
-    ],
     brandName: "SCI-AI.app",
     brandLogo: "S",
     brandColor: "#0066FF",
     brandSoft: "#E0ECFF",
-    category: "SaaS B2C · Comptabilité fiscale",
+    category: "Logiciel en ligne · Comptabilité SCI",
     url: "https://sci-ai.app",
-    tagline: "Comptabilité SCI à l'IR comme à l'IS, avec les déclarations adaptées à chaque régime.",
+    sourceCheckedAt: PUBLIC_SOURCE_CHECKED_AT,
+    tagline: "Une page publique consacrée à la comptabilité des SCI à l'IR et à l'IS.",
     heroIntro:
-      "Un parcours unifié pour gérer une SCI à l'IR ou à l'IS, préparer les déclarations correspondantes et suivre leur télétransmission.",
-    status: "En production",
-    engagement: "Produit interne · évolutions continues",
-    team: ["Nicolas (CTO)", "Frédéric (Livewire)", "Ryan (IA)", "Killian (DevOps)", "Quentin (UX / front)"],
-    stack: [
-      "Laravel 12",
-      "Livewire 3",
-      "Tailwind v4",
-      "PostgreSQL",
-      "Redis",
-      "Assistant IA",
-      "EDI DGFiP (TDFC)",
-      "Stripe",
-    ],
+      "Cette analyse porte sur une source publique externe à Hagnéré Code. Elle recense uniquement les fonctions et offres affichées sur SCI-AI.app et ne prouve ni l'auteur du code, ni l'équipe, ni la technologie utilisée, ni un résultat obtenu.",
+    status: "Analyse publique externe",
+    engagement: `Source externe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
     context:
-      "Les obligations déclaratives d'une SCI diffèrent selon son régime fiscal. Une SCI non soumise à l'IS déclare ses revenus fonciers avec une 2072 ; une SCI à l'IS dépose une 2065 accompagnée de la liasse applicable. Le produit devait rendre cette distinction explicite tout en centralisant la gestion des associés.",
+      "La page publique présente un logiciel de comptabilité pour les SCI à l'IR et à l'IS. Elle expose les déclarations associées à chaque régime, la gestion des associés et des parts, des documents comptables et la transmission EDI.",
     problem: [
       {
-        title: "La SCI cumule deux régimes fiscaux complexes",
-        body: "Une SCI non soumise à l'IS dépose une déclaration 2072 et le résultat est réparti entre les associés. Une SCI à l'IS dépose une déclaration 2065 accompagnée des tableaux de sa liasse fiscale.",
+        title: "Distinguer les régimes fiscaux",
+        body: "Le site sépare publiquement le formulaire 2072 pour les SCI non soumises à l'IS et la déclaration 2065 accompagnée des tableaux 2033 pour les SCI au réel simplifié à l'IS.",
       },
       {
-        title: "Gestion des associés et parts",
-        body: "Entrées et sorties d'associés, cessions de parts, démembrement et comptes courants exigent des données cohérentes entre le registre, la comptabilité et les déclarations.",
+        title: "Présenter la gestion des associés",
+        body: "La navigation publique cite les comptes courants, les mouvements de capital, les cessions, donations et démembrements de parts.",
       },
       {
-        title: "Amortissements par composants en IS",
-        body: "Passage à l'IS = basculement vers une compta d'engagement avec amortissements par composants. Moment charnière où les erreurs coûtent cher.",
+        title: "Rendre les documents accessibles",
+        body: "Le site annonce la génération de documents comptables, un fichier FEC et la transmission EDI des déclarations concernées.",
       },
     ],
     solution: [
       {
-        title: "Interface unifiée IR / IS",
-        body: "Un seul parcours adapte les écrans et les contrôles au régime de la SCI. Lors d'une transition vers l'IS, les écritures d'ouverture et les hypothèses sont préparées pour être contrôlées avant validation.",
+        title: "Parcours IR et IS présentés",
+        body: "Les écrans et textes publics adaptent les déclarations citées au régime fiscal sélectionné par l'utilisateur.",
       },
       {
-        title: "Module associés complet",
-        body: "Registre des associés, gestion des parts, comptes courants et démembrement sont regroupés dans le même module. Les informations utiles à la répartition du résultat et à la déclaration 2072 restent consultables.",
+        title: "Associés et parts sociales affichés",
+        body: "Le site décrit des fonctions liées aux associés, aux comptes courants et aux principaux mouvements de parts sociales.",
       },
       {
-        title: "Déclarations adaptées au régime fiscal",
-        body: "Pour une SCI non soumise à l'IS, le parcours prépare la déclaration 2072-C ou 2072-S. Pour une SCI à l'IS, il prépare la déclaration 2065 et, au régime réel simplifié, les tableaux 2033-A à 2033-G. La liasse 2033 n'est pas une déclaration de SCI à l'IR.",
+        title: "Documents fiscaux annoncés",
+        body: "Les formulaires 2072-C ou 2072-S, la déclaration 2065 et les tableaux 2033-A à 2033-G sont explicitement mentionnés sur la page publique.",
       },
       {
-        title: "Assistant IA fiscal",
-        body: "L'assistant formule des réponses en contexte à partir de documents administratifs de référence et affiche les sources utilisées pour permettre leur contrôle.",
+        title: "Transmission EDI visible",
+        body: "La transmission EDI et le suivi du traitement figurent dans le périmètre commercial publié par l'éditeur.",
       },
     ],
     features: [
-      "Gestion IR & IS unifiée",
-      "Registre associés complet",
-      "Comptes courants associés",
-      "Démembrement (NP / US)",
-      "Amortissements par composants",
-      "Déclaration 2072 pour les SCI non soumises à l'IS",
-      "Déclaration 2065 pour les SCI à l'IS",
-      "Tableaux 2033 au réel simplifié IS",
-      "Télétransmission EDI DGFiP",
-      "Assistant IA fiscal",
-      "Bilan et compte de résultat",
+      "Régimes SCI à l'IR et à l'IS",
+      "Formulaires 2072-C et 2072-S",
+      "Déclaration 2065 et tableaux 2033-A à 2033-G",
+      "Comptes courants d'associés",
+      "Capital et parts sociales",
+      "Fichier FEC",
+      "Transmission EDI",
+      "Offres Autonomie et Expert-comptable",
     ],
     highlights: [
-      { value: "IR", label: "déclaration 2072" },
-      { value: "IS", label: "déclaration 2065" },
-      { value: "2033", label: "tableaux au réel simplifié IS" },
-      { value: "Sources", label: "références administratives visibles" },
+      { value: "IR", label: "formulaires 2072 cités" },
+      { value: "IS", label: "déclaration 2065 citée" },
+      { value: "2033", label: "tableaux cités pour l'IS" },
+      { value: "EDI", label: "transmission affichée" },
     ],
     screenshots: [
       {
-        title: "Dashboard SCI",
-        caption:
-          "Bénéfice net, amortissement annuel, détail associés et parts, statut liasses.",
+        title: "Régimes IR et IS",
+        caption: "Représentation schématique de la distinction publiée entre les deux régimes.",
         kind: "dashboard",
       },
       {
-        title: "Bascule IR → IS guidée",
-        caption:
-          "Écritures d'ouverture et hypothèses préparées dans un parcours de contrôle avant validation.",
+        title: "Associés et parts",
+        caption: "Représentation schématique des fonctions d'associés et de parts citées sur le site.",
         kind: "form",
       },
       {
-        title: "Suivi de la déclaration 2065",
-        caption: "Statut de télétransmission et retour de traitement regroupés dans le dossier.",
+        title: "Documents et EDI",
+        caption: "Représentation schématique des déclarations et du suivi EDI annoncés par l'éditeur.",
         kind: "report",
       },
     ],
     testimonial: {
       quote:
-        "Le cadrage a commencé par séparer clairement les obligations d'une SCI non soumise à l'IS de celles d'une SCI à l'IS, avant de concevoir les écrans.",
+        "Cette fiche sépare les éléments directement lisibles sur le site des informations techniques qui ne sont pas publiées.",
       author: "Quentin Hagnéré",
-      role: "Co-fondateur · SCI-AI.app (mot du fondateur — produit interne du groupe Hagnéré)",
+      role: "Note éditoriale de l'auteur · pas un avis client",
       initials: "QH",
     },
   },
@@ -263,115 +228,94 @@ export const CASES: Record<string, CaseStudy> = {
   "hagnere-patrimoine": {
     slug: "hagnere-patrimoine",
     seo: {
-      title: "Refonte site et CRM patrimoine · Hagnéré Code",
+      title: "Analyse publique externe : Hagnéré Patrimoine",
       description:
-        "Étude de cas Hagnéré Patrimoine : site éditorial, CRM interne, simulateurs, parcours de qualification et prise de rendez-vous.",
+        "Analyse éditoriale d'une source publique externe : contenus visibles sur Hagnéré Patrimoine, sans attribution de sa conception à Hagnéré Code.",
     },
-    services: [
-      { label: "Sites vitrines", href: "/services/sites-vitrines" },
-      { label: "SEO & référencement", href: "/services/referencement-google" },
-    ],
     brandName: "Hagnéré Patrimoine",
     brandLogo: "HP",
     brandColor: "#C9A96E",
     brandSoft: "#FAF3E3",
-    category: "Site éditorial + CRM interne · Cabinet CIF",
+    category: "Site éditorial · Conseil patrimonial",
     url: "https://hagnere-patrimoine.fr",
-    tagline: "Site éditorial et CRM interne pour structurer les contenus, les programmes et les rendez-vous.",
+    sourceCheckedAt: PUBLIC_SOURCE_CHECKED_AT,
+    tagline: "Un site public qui organise expertises, simulateurs, guides et prise de contact.",
     heroIntro:
-      "Refonte du site d'un cabinet de conseil en gestion de patrimoine, avec CRM interne, simulateurs, contenus éditoriaux et parcours de qualification.",
-    status: "En production",
-    engagement: "Produit interne · évolutions continues",
-    team: ["Quentin (UX / front / SEO)", "Killian (DevOps / hosting)", "Frédéric (back-end / CRM)"],
-    stack: [
-      "Next.js 15",
-      "React 19",
-      "TypeScript",
-      "Tailwind v4",
-      "Drizzle ORM",
-      "PostgreSQL",
-      "Calendly",
-      "Plausible",
-    ],
+      "Cette analyse porte sur une source publique externe à Hagnéré Code. Elle recense uniquement les contenus et parcours visibles sur Hagnéré Patrimoine et ne prouve ni l'auteur du code, ni un outil interne, ni l'équipe, ni la technologie utilisée, ni une performance commerciale.",
+    status: "Analyse publique externe",
+    engagement: `Source externe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
     context:
-      "Le cabinet disposait d'un site à refondre et de plusieurs flux de travail séparés pour les contenus, les programmes immobiliers et le suivi des demandes. Le projet a consisté à réunir la vitrine publique, les outils de simulation, la prise de rendez-vous et le back-office dans un ensemble cohérent.",
+      "La page publique présente un cabinet de gestion de patrimoine et de fortune, ses informations réglementaires, un catalogue d'expertises, des simulateurs, des guides et plusieurs portes d'entrée vers un rendez-vous ou un bilan patrimonial.",
     problem: [
       {
-        title: "Une architecture éditoriale à reconstruire",
-        body: "Le site existant ne structurait pas clairement les différentes intentions patrimoniales ni les liens entre contenus, outils et prise de rendez-vous.",
+        title: "Structurer un catalogue étendu",
+        body: "La page regroupe publiquement les expertises et solutions par familles afin d'aider le visiteur à repérer le sujet qui correspond à sa recherche.",
       },
       {
-        title: "Un parcours de contact trop générique",
-        body: "Le formulaire ne permettait pas de préciser suffisamment le besoin avant le rendez-vous. Le nouveau parcours devait recueillir le contexte utile sans transformer le site en questionnaire interminable.",
+        title: "Donner accès à des outils publics",
+        body: "Une rubrique Simulateurs rassemble plusieurs outils de calcul et de comparaison accessibles depuis le site.",
       },
       {
-        title: "Positionnement flou",
-        body: "Le site parlait de gestion de patrimoine sans expliciter les besoins traités ni le parcours proposé à chaque profil de visiteur.",
+        title: "Relier information et prise de contact",
+        body: "Les contenus publics conduisent vers un contact, un bilan patrimonial ou une demande de rendez-vous selon la page consultée.",
       },
     ],
     solution: [
       {
-        title: "Design éditorial premium",
-        body: "Palette noir / or, typographies Geist, photographies professionnelles, ton ferme et direct. Positionnement 'cabinet de conseil patrimonial haut de gamme' assumé — quitte à exclure les prospects hors cible.",
+        title: "Présentation publique des expertises",
+        body: "La page d'accueil expose les activités, les habilitations affichées par le cabinet et un lien vers le registre public de l'ORIAS.",
       },
       {
-        title: "CRM interne · catalogue programmes neufs",
-        body: "Le back-office regroupe les fiches de programmes immobiliers neufs, les documents, les disponibilités et le suivi commercial dans une interface unique.",
+        title: "Catalogue de simulateurs",
+        body: "Les outils publics couvrent notamment l'impôt sur le revenu, l'IFI, le crédit et plusieurs sujets d'investissement.",
       },
       {
-        title: "Simulateurs et convertisseurs fiscaux",
-        body: "Des outils thématiques sont intégrés aux contenus afin d'aider le visiteur à préparer sa réflexion et, s'il le souhaite, transmettre son contexte avant un rendez-vous.",
+        title: "Guides patrimoniaux",
+        body: "Une rubrique de ressources propose des guides publics consacrés à la gestion de patrimoine, à l'IFI et au family office.",
       },
       {
-        title: "Stratégie SEO longue traîne",
-        body: "Les contenus sont organisés autour d'intentions patrimoniales distinctes, avec des pages piliers, des guides, des liens internes et des métadonnées propres à chaque sujet.",
-      },
-      {
-        title: "Tunnel de qualification + Google Ads",
-        body: "Le formulaire progressif, la prise de rendez-vous et le suivi des événements sont reliés. Les éventuelles campagnes d'acquisition utilisent les mêmes points de mesure, sans promesse de coût ni de volume.",
+        title: "Parcours de contact",
+        body: "Des appels à l'action visibles permettent de demander un bilan, de contacter le cabinet ou de solliciter une rencontre.",
       },
     ],
     features: [
-      "Site éditorial premium",
-      "CRM interne programmes neufs",
-      "Simulateurs fiscaux (IFI, PER, LMNP, déficit foncier)",
-      "Convertisseurs (TMI, rendement net, capacité d'emprunt)",
-      "Entonnoirs de conversion défiscalisation",
-      "Tunnel de qualification 4 étapes",
-      "Prise de RDV Calendly",
-      "Pages piliers et guides SEO",
-      "Google Ads Search + Performance Max",
-      "Tracking Plausible + GA4",
-      "Bonnes pratiques d'accessibilité",
+      "Présentation des expertises",
+      "Informations réglementaires affichées",
+      "Lien public vers l'ORIAS",
+      "Catalogue de solutions patrimoniales",
+      "Simulateurs publics",
+      "Guides patrimoniaux",
+      "Prise de contact",
+      "Demande de bilan patrimonial",
     ],
     highlights: [
-      { value: "Site", label: "architecture éditoriale" },
-      { value: "CRM", label: "back-office interne" },
-      { value: "SEO", label: "pages et maillage thématique" },
-      { value: "RDV", label: "parcours de qualification" },
+      { value: "Expertises", label: "catalogue public" },
+      { value: "ORIAS", label: "lien de vérification affiché" },
+      { value: "Simulateurs", label: "outils accessibles" },
+      { value: "Guides", label: "ressources publiques" },
     ],
     screenshots: [
       {
-        title: "Page d'accueil éditoriale",
-        caption: "Ton assumé, preuve sociale institutionnelle (CIF / ORIAS), offre claire.",
+        title: "Page d'accueil",
+        caption: "Représentation schématique de la présentation publique du cabinet et de ses expertises.",
         kind: "editorial",
       },
       {
-        title: "Tunnel de qualification",
-        caption: "4 étapes pour filtrer les prospects qualifiés avant le RDV.",
+        title: "Catalogue de simulateurs",
+        caption: "Représentation schématique de la rubrique d'outils accessible depuis la navigation.",
         kind: "form",
       },
       {
-        title: "CRM interne · programmes neufs",
-        caption: "Fiches structurées, documents, disponibilités et suivi commercial regroupés dans le back-office.",
+        title: "Guides et rendez-vous",
+        caption: "Représentation schématique des ressources et appels à l'action visibles sur le site.",
         kind: "dashboard",
       },
     ],
     testimonial: {
       quote:
-        "Refondre le site du cabinet, c'était refondre notre positionnement. On voulait un outil qui qualifie les prospects avant le rendez-vous plutôt qu'une plaquette en ligne.",
+        "Cette fiche n'attribue pas à Hagnéré Code les éléments internes que la page publique ne permet pas de vérifier.",
       author: "Quentin Hagnéré",
-      role: "Fondateur · Hagnéré Patrimoine (mot du fondateur — cabinet du groupe Hagnéré)",
+      role: "Note éditoriale de l'auteur · pas un avis client",
       initials: "QH",
     },
   },
@@ -379,111 +323,94 @@ export const CASES: Record<string, CaseStudy> = {
   "hagnere-investissement": {
     slug: "hagnere-investissement",
     seo: {
-      title: "Étude de cas Hagnéré Investissement · Hagnéré Code",
+      title: "Analyse publique externe : Hagnéré Investissement",
       description:
-        "Conception d'un site pour un cabinet d'investissement immobilier : simulateur, parcours de qualification, prise de rendez-vous et contenus vidéo.",
+        "Analyse éditoriale d'une source publique externe : contenus visibles sur Hagnéré Investissement, sans attribution de sa conception à Hagnéré Code.",
     },
-    services: [
-      { label: "Sites vitrines", href: "/services/sites-vitrines" },
-      { label: "Publicité en ligne", href: "/services/publicite-en-ligne" },
-    ],
     brandName: "Hagnéré Investissement",
     brandLogo: "HI",
     brandColor: "#0F766E",
     brandSoft: "#D1FAE5",
-    category: "Site vitrine conversion · Investissement clé en main",
+    category: "Site vitrine · Investissement locatif",
     url: "https://hagnere-investissement.fr",
-    tagline: "Un site qui relie contenus, simulation et qualification des demandes.",
+    sourceCheckedAt: PUBLIC_SOURCE_CHECKED_AT,
+    tagline: "Un site public qui présente un service, un mini-simulateur et une prise de rendez-vous.",
     heroIntro:
-      "Plateforme marketing d'un cabinet d'investissement immobilier clé en main, avec simulateur de rendement, funnel de qualification et intégration YouTube.",
-    status: "En production",
-    engagement: "Produit interne · évolutions continues",
-    team: ["Quentin (UX / front / SEO)", "Killian (DevOps)", "Frédéric (back-end CMS)", "Ryan (intégrations YouTube)"],
-    stack: [
-      "Next.js 15",
-      "React 19",
-      "TypeScript",
-      "Tailwind v4",
-      "Drizzle ORM",
-      "PostgreSQL",
-      "Calendly",
-      "YouTube API",
-      "Google Ads",
-      "Meta Ads",
-      "Plausible",
-    ],
+      "Cette analyse porte sur une source publique externe à Hagnéré Code. Elle recense uniquement les contenus et parcours visibles sur Hagnéré Investissement et ne prouve ni l'auteur du code, ni l'équipe, ni la technologie, ni les canaux d'acquisition, ni les résultats commerciaux.",
+    status: "Analyse publique externe",
+    engagement: `Source externe consultée le ${PUBLIC_SOURCE_CHECKED_AT}`,
     context:
-      "Le cabinet accompagne des projets d'investissement immobilier clé en main, de la recherche du bien à sa mise en location. Le site devait relier les contenus vidéo, une première simulation, la qualification du projet et la prise de rendez-vous.",
+      "La page publique présente un accompagnement en investissement locatif clé en main. Elle expose le service et sa tarification, un mini-simulateur indicatif, des pages d'information, des partenaires et plusieurs liens de prise de rendez-vous.",
     problem: [
       {
-        title: "Leads principalement venus de YouTube sans captage structuré",
-        body: "Les vidéos renvoyaient vers un site générique, sans continuité claire entre le sujet consulté, les informations demandées et le rendez-vous.",
+        title: "Expliquer le périmètre du service",
+        body: "Le site décrit publiquement les étapes de l'accompagnement, affiche une tarification et propose un tableau comparatif.",
       },
       {
-        title: "Simulateur inexistant — frein commercial",
-        body: "Les prospects demandaient systématiquement 'à partir de combien' et 'quel rendement' avant d'accepter un RDV. Répondre à chaque email était chronophage.",
+        title: "Proposer un premier calcul indicatif",
+        body: "Le mini-simulateur visible demande un budget, un objectif et un horizon avant d'afficher une estimation accompagnée d'hypothèses et de réserves.",
       },
       {
-        title: "Pas de segmentation par profil investisseur",
-        body: "Des profils aux budgets et objectifs différents suivaient le même parcours, ce qui limitait la précision des informations recueillies avant le rendez-vous.",
+        title: "Orienter vers des informations ou un rendez-vous",
+        body: "La navigation publique relie les pages de stratégie, de fiscalité, d'étapes et de zone d'investissement aux appels à la prise de rendez-vous.",
       },
     ],
     solution: [
       {
-        title: "Simulateur de rendement interactif",
-        body: "Calculateur en 3 étapes (budget, ville cible, profil fiscal) qui affiche un rendement net estimé, un cash-flow mensuel et une projection 10 ans. Émail capturé à la fin avec téléchargement du rapport PDF.",
+        title: "Présentation du service et des tarifs",
+        body: "La page publique décrit l'accompagnement clé en main, ses principaux jalons et les honoraires affichés par le cabinet.",
       },
       {
-        title: "Funnel segmenté par budget",
-        body: "3 parcours distincts selon le budget (< 100 k€ / 100-300 k€ / > 300 k€). Chaque segment débouche sur un RDV avec le bon conseiller, avec un script adapté.",
+        title: "Mini-simulateur visible",
+        body: "L'outil public utilise trois entrées — budget, objectif et horizon — puis affiche une estimation explicitement présentée comme indicative.",
       },
       {
-        title: "Intégration YouTube continue",
-        body: "Les nouvelles vidéos peuvent être rattachées automatiquement aux pages pertinentes, par exemple une vidéo sur Lyon à la page consacrée à cette ville.",
+        title: "Ressources de cadrage",
+        body: "Des pages publiques expliquent la stratégie d'investissement, la stratégie fiscale, les étapes du projet, la zone couverte et le choix entre appartement et immeuble.",
       },
       {
-        title: "Campagnes Meta + Google synchronisées",
-        body: "Les événements du site alimentent une mesure commune aux canaux Google et Meta. Les budgets, audiences et objectifs sont définis par campagne, sans coût d'acquisition garanti.",
+        title: "Prise de rendez-vous et partenaires",
+        body: "Le site affiche des liens de rendez-vous et une liste de partenaires par domaine d'intervention.",
       },
     ],
     features: [
-      "Simulateur de rendement",
-      "Funnel 3 segments budget",
-      "Pages villes (SEO local)",
-      "Intégration YouTube live",
-      "Prise de RDV Calendly segmentée",
-      "Génération rapport PDF",
-      "Google Ads + Meta Ads",
-      "Tracking multi-touch attribution",
+      "Présentation du service clé en main",
+      "Tableau comparatif public",
+      "Tarification affichée",
+      "Mini-simulateur budget, objectif et horizon",
+      "Estimation accompagnée d'hypothèses indicatives",
+      "Prise de rendez-vous",
+      "Pages de stratégie, fiscalité, étapes et zone",
+      "Présentation des partenaires",
     ],
     highlights: [
-      { value: "Simulateur", label: "première estimation" },
-      { value: "Funnel", label: "qualification du projet" },
-      { value: "Vidéo", label: "contenus reliés aux pages" },
-      { value: "RDV", label: "orientation vers un conseiller" },
+      { value: "Service", label: "périmètre présenté" },
+      { value: "Simulateur", label: "outil public indicatif" },
+      { value: "Ressources", label: "pages explicatives" },
+      { value: "RDV", label: "liens visibles" },
     ],
     screenshots: [
       {
-        title: "Simulateur de rendement",
-        caption: "3 étapes, rendement net affiché en temps réel, rapport PDF en sortie.",
-        kind: "form",
-      },
-      {
-        title: "Page ville (SEO local)",
-        caption: "Chaque ville ciblée a sa propre page avec vidéos YouTube et indicateurs marché.",
+        title: "Présentation du service",
+        caption: "Représentation schématique du périmètre et de la tarification affichés publiquement.",
         kind: "editorial",
       },
       {
-        title: "Dashboard d'acquisition",
-        caption: "Attribution multi-touch, coût par segment, qualité de lead.",
+        title: "Mini-simulateur",
+        caption: "Représentation schématique des trois entrées et des réserves visibles sur l'estimation.",
+        kind: "form",
+      },
+      {
+        title: "Ressources et rendez-vous",
+        caption: "Représentation schématique des pages explicatives et appels à l'action publics.",
         kind: "dashboard",
       },
     ],
     testimonial: {
       quote:
-        "L'objectif du simulateur était simple : permettre au prospect de préparer des hypothèses avant le rendez-vous et donner au conseiller un contexte exploitable.",
+        "Cette fiche exclut les technologies, canaux d'acquisition et mesures internes que le site public ne documente pas.",
       author: "Quentin Hagnéré",
-      role: "Fondateur · Hagnéré Investissement (mot du fondateur — cabinet du groupe Hagnéré)",
+      role: "Note éditoriale de l'auteur · pas un avis client",
       initials: "QH",
     },
   },

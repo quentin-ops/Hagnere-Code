@@ -160,11 +160,12 @@ ${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Le fondateur</div>
-        <h2>Quentin Hagnéré.<br>Le brief, le design,<br>l'interlocuteur unique.</h2>
+        <h2>Quentin Hagnéré.<br>Le cadrage, le design,<br>l'interlocuteur principal.</h2>
       </div>
       <div class="right">
-        Quentin est l'expert qui prend votre appel, qui rédige les specs,
-        qui dessine les écrans et qui reste votre point de contact pendant tout le projet.
+        Quentin pilote le premier échange et peut intervenir sur les spécifications,
+        le design et le suivi. Son rôle, sa disponibilité et les autres interlocuteurs
+        sont nommés dans le devis pour chaque projet.
         Il vient du <b>terrain métier</b>, pas du conseil — c'est ce qui fait la différence
         sur les premiers cadrages.
       </div>
@@ -182,16 +183,16 @@ ${navHtml}
 
         <div class="founder-cards">
           <div class="founder-mini">
-            <span class="founder-mini-k">3</span>
-            <span class="founder-mini-l">entreprises fondées<br>(2 cabinets actifs)</span>
+            <span class="founder-mini-k">QH</span>
+            <span class="founder-mini-l">président fondateur<br>et interlocuteur de cadrage</span>
           </div>
           <div class="founder-mini">
             <span class="founder-mini-k">10+</span>
             <span class="founder-mini-l">ans à coder<br>en environnement métier</span>
           </div>
           <div class="founder-mini">
-            <span class="founder-mini-k">100%</span>
-            <span class="founder-mini-l">de vos appels<br>passent par lui</span>
+            <span class="founder-mini-k">DIRECT</span>
+            <span class="founder-mini-l">rôle et disponibilité<br>confirmés au devis</span>
           </div>
         </div>
       </div>
@@ -217,11 +218,10 @@ ${navHtml}
         <div class="founder-section">
           <div class="founder-section-h">PARCOURS</div>
           <p>
-            Quentin a fondé <b>3 entreprises</b> dans le patrimoine et le conseil, dont 2 cabinets
-            toujours actifs aujourd'hui. Il code en parallèle depuis plus de 10 ans : front-end,
-            design, intégration, back-offices React/Next.js. Le déclic Hagnéré Code est venu
-            quand il s'est rendu compte qu'<b>aucune agence ne savait construire un outil métier
-            sans le réduire à un cahier des charges</b>. D'où le studio.
+            Quentin développe des activités dans le patrimoine, le conseil et le logiciel métier.
+            Il code depuis plus de 10 ans : front-end, design, intégration et back-offices
+            React/Next.js. Hagnéré Code est né de la volonté de relier le besoin métier, les décisions
+            de conception et les critères de recette, sans réduire le projet à une simple liste de fonctions.
           </p>
         </div>
 
@@ -231,7 +231,7 @@ ${navHtml}
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> <b>Discovery &amp; cadrage métier</b> — c'est lui qui pose les bonnes questions.</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> <b>Design produit (Figma)</b> — wireframes, parcours, design system.</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> <b>Intégration front-end</b> — Tailwind, React, animations.</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> <b>Interlocuteur unique</b> — du brief à la livraison, et après.</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> <b>Interlocuteur principal</b> — rôle et disponibilité confirmés au devis.</li>
           </ul>
         </div>
 
@@ -266,8 +266,8 @@ ${navHtml}
       </div>
       <div class="right">
         Quand Quentin attaque un brief, Nicolas attaque l'architecture.
-        Sa mission : <b>garantir que ce qu'on livre tiendra 5 ans</b>, pas 3 mois.
-        Code review systématique, choix techniques tranchés, vision long terme.
+        Sa mission : <b>concevoir une architecture maintenable et documenter ses compromis</b>.
+        Revue de code, choix techniques et critères de pérennité sont adaptés à la mission.
       </div>
     </div>
 
@@ -322,7 +322,7 @@ ${navHtml}
             <ul class="cto-block-list">
               <li>Architecture Laravel 13 (Domain-Driven, Service Pattern)</li>
               <li>Cadrage technique de projets &gt; 60 k€</li>
-              <li>Revue de code systématique (chaque PR)</li>
+              <li>Revue de code selon le protocole et les risques du projet</li>
               <li>Mentorat &amp; montée en compétence des devs</li>
             </ul>
           </div>
@@ -666,12 +666,12 @@ ${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Comment on travaille</div>
-        <h2>Quatre rituels<br>qui font qu'on tient<br>nos délais.</h2>
+        <h2>Quatre rituels<br>pour piloter<br>les délais.</h2>
       </div>
       <div class="right">
-        Notre productivité ne vient pas de la pression ou des heures sup'.
-        Elle vient de quatre rituels simples, tenus religieusement chaque semaine.
-        Si on ne les respecte pas, on dérive — donc on les respecte.
+        La cadence des points, démonstrations, revues et décisions est adaptée
+        au projet. Elle aide à suivre les risques et les délais, sans constituer
+        une garantie universelle de calendrier.
       </div>
     </div>
 
@@ -681,10 +681,10 @@ ${navHtml}
         <div class="rit-ic">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 7v5l3 2"/></svg>
         </div>
-        <h3>Daily 10 min · 9 h 30</h3>
-        <p>Tous les jours, en visio. Chacun dit ce qu'il fait, ce qui le bloque. 10 minutes max — au-delà, on prend un call dédié. Pas de réunion qui dérape.</p>
+        <h3>Point court · cadence convenue</h3>
+        <p>La cadence, les participants et la durée des points d'équipe sont adaptés au projet et inscrits dans le dispositif de pilotage.</p>
         <div class="rit-foot">
-          <span class="rit-tag">CHAQUE JOUR</span>
+          <span class="rit-tag">AU LANCEMENT</span>
         </div>
       </div>
 
@@ -693,10 +693,10 @@ ${navHtml}
         <div class="rit-ic">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
         </div>
-        <h3>Demo client · vendredi 16 h</h3>
-        <p>Chaque vendredi, on partage l'écran et on montre ce qui a avancé cette semaine. Vous voyez le produit prendre forme, vous redonnez du feedback, on avance dans la bonne direction.</p>
+        <h3>Démonstration · cadence convenue</h3>
+        <p>Le devis fixe quand les versions sont présentées, qui les valide et comment les retours modifient le planning ou le périmètre.</p>
         <div class="rit-foot">
-          <span class="rit-tag">CHAQUE SEMAINE</span>
+          <span class="rit-tag">AU DEVIS</span>
         </div>
       </div>
 
@@ -705,10 +705,10 @@ ${navHtml}
         <div class="rit-ic">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg>
         </div>
-        <h3>Code review · chaque PR</h3>
-        <p>Aucun code ne part en production sans avoir été lu par au moins un autre dev senior. Le CTO valide les choix architecturaux. Ça nous coûte du temps, ça nous évite des bugs.</p>
+        <h3>Revue de code · règles écrites</h3>
+        <p>Le niveau de revue, les branches protégées, les validateurs et les exceptions sont définis selon le risque et vérifiables dans le dépôt lorsque cet accès est prévu.</p>
         <div class="rit-foot">
-          <span class="rit-tag">CHAQUE PR</span>
+          <span class="rit-tag">SELON PROJET</span>
         </div>
       </div>
 
@@ -717,10 +717,10 @@ ${navHtml}
         <div class="rit-ic">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <h3>Retro mensuelle · 1 h</h3>
-        <p>Une fois par mois, on regarde ce qui a marché, ce qui a dérapé, ce qu'on change. Pas de blâme, pas de posture. C'est ce rituel qui fait qu'on s'améliore mois après mois.</p>
+        <h3>Rétrospective · cadence convenue</h3>
+        <p>Lorsque le projet le justifie, une rétrospective consigne les écarts, les décisions et les améliorations à appliquer au cycle suivant.</p>
         <div class="rit-foot">
-          <span class="rit-tag">CHAQUE MOIS</span>
+          <span class="rit-tag">SELON PROJET</span>
         </div>
       </div>
     </div>
@@ -737,8 +737,8 @@ ${navHtml}
       </div>
       <div class="right">
         Chaque dev de l'équipe pilote Claude Code (l'agent de développement d'Anthropic)
-        au quotidien. Pas pour <i>remplacer</i> le code, pour <b>aller plus vite sur les phases d'exploration,
-        de cadrage et de recherche</b>. Le résultat : 3× plus productifs sur les tâches non-créatives.
+        comme outil d'assistance. Il peut accélérer certaines phases d'exploration, de cadrage et de
+        recherche, mais nous ne publions aucun multiplicateur de productivité sans protocole de mesure.
       </div>
     </div>
 
@@ -753,10 +753,9 @@ ${navHtml}
         </div>
         <h3>Vous décrivez le besoin.<br><span class="accent">On gère le reste.</span></h3>
         <p class="claude-lead">
-          Pas de « 36 000 questions au client » : nos devs s'appuient sur Claude Code pour
-          <b>faire la recherche eux-mêmes</b>. Cadrage juridique, exploration technique,
-          plans d'implémentation, audit du code existant — Claude défriche, nos seniors valident.
-          Vous n'avez qu'à valider le résultat.
+          Nos développeurs peuvent s'appuyer sur Claude Code pour préparer une recherche,
+          explorer une option technique ou proposer un plan d'implémentation. Une personne identifiée
+          vérifie les sources, arbitre les choix, exécute les tests et reste responsable du résultat.
         </p>
 
         <div class="claude-bullets">
@@ -766,7 +765,7 @@ ${navHtml}
             </div>
             <div>
               <b>Recherche &amp; veille</b><br>
-              <span>Claude lit la doc, les SDK, les normes RGPD à votre place.</span>
+              <span>Documentation et SDK peuvent être explorés plus vite ; les sources utiles restent vérifiées par l'équipe.</span>
             </div>
           </div>
           <div class="claude-bullet">
@@ -784,7 +783,7 @@ ${navHtml}
             </div>
             <div>
               <b>Code review augmentée</b><br>
-              <span>Bug spotter, refacto suggestions, tests générés automatiquement.</span>
+              <span>Suggestions de défauts, de refactorisation et de tests, ensuite relues et exécutées.</span>
             </div>
           </div>
           <div class="claude-bullet">
@@ -793,7 +792,7 @@ ${navHtml}
             </div>
             <div>
               <b>Documentation automatique</b><br>
-              <span>Specs, README, runbooks — toujours à jour, sans effort manuel.</span>
+              <span>Specs, README et runbooks peuvent être préparés avec assistance, puis relus et maintenus dans le périmètre convenu.</span>
             </div>
           </div>
         </div>
@@ -804,22 +803,22 @@ ${navHtml}
           <div class="claude-stat-ic">
             <svg viewBox="0 0 512 512" fill="#D97757" aria-hidden="true" width="40" height="40"><path d="M301.86 65h70.94l129.4 382h-70.93l-26.48-81.3H269.2l-26.48 81.3h-70.94L301.86 65zm-11.96 240h94.86l-47.43-145.7L289.9 305z"/></svg>
           </div>
-          <div class="claude-stat-n">×3</div>
-          <div class="claude-stat-l">Productivité moyenne sur les tâches non-créatives.</div>
+          <div class="claude-stat-n">ASSISTÉE</div>
+          <div class="claude-stat-l">Recherche et exploration, sans gain moyen revendiqué.</div>
         </div>
         <div class="claude-stat">
           <div class="claude-stat-ic">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           </div>
-          <div class="claude-stat-n">−40%</div>
-          <div class="claude-stat-l">Sur le temps de cadrage technique d'un projet moyen.</div>
+          <div class="claude-stat-n">TRACÉE</div>
+          <div class="claude-stat-l">Hypothèses, décisions et validations conservées dans les outils du projet.</div>
         </div>
         <div class="claude-stat">
           <div class="claude-stat-ic">
             <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <div class="claude-stat-n">100%</div>
-          <div class="claude-stat-l">Code reviewé par un humain avant mise en prod.</div>
+          <div class="claude-stat-n">HUMAINE</div>
+          <div class="claude-stat-l">Responsabilité de la revue et de la validation attribuée à une personne.</div>
         </div>
       </div>
     </div>
@@ -832,11 +831,11 @@ ${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Nos engagements</div>
-        <h2>Ce qu'on vous garantit<br>en tant qu'équipe.</h2>
+        <h2>Ce que l'équipe<br>cadre avec vous.</h2>
       </div>
       <div class="right">
-        Six engagements écrits noir sur blanc dans nos contrats.
-        Si on les enfreint, on rembourse — c'est notre contrat moral avec chaque client.
+        Six principes de travail. Seuls le devis et le contrat signés définissent les obligations,
+        niveaux de service et conséquences applicables à votre mission.
       </div>
     </div>
 
@@ -845,16 +844,16 @@ ${navHtml}
         <div class="val-ic">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
-        <h4>Interlocuteur unique</h4>
-        <p>Quentin reste votre point de contact du brief à la livraison, et après. Pas de tournante de chefs de projet, pas de relance à 6 personnes différentes.</p>
+        <h4>Point de contact défini</h4>
+        <p>Quentin assure le premier cadrage. Le devis nomme ensuite le point de contact, les responsables et les relais prévus pour la mission.</p>
       </div>
 
       <div class="val-card reveal reveal-d-1">
         <div class="val-ic">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3z"/></svg>
         </div>
-        <h4>Pas de sous-traitance anonyme</h4>
-        <p>Aucun pool anonyme, aucun offshore, aucun white-label. Chaque personne qui touche votre code est <b>nommée</b>, intégrée à nos rituels et signe un NDA — <b>${TEAM_PUBLIC_COMPOSITION}</b>, point.</p>
+        <h4>Intervenants identifiés</h4>
+        <p>Les personnes affectées à la mission, leur statut et leur rôle sont précisés avant intervention. Les obligations de confidentialité et les accès dépendent du contrat — <b>${TEAM_PUBLIC_COMPOSITION}</b> est présenté publiquement.</p>
       </div>
 
       <div class="val-card reveal reveal-d-2">
@@ -862,7 +861,7 @@ ${navHtml}
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
         <h4>Niveau senior &amp; encadrement</h4>
-        <p>5+ ans d'expérience pour tous les seniors (Arthur, Ryan, Frédéric, Killian), CTO inclus. Notre dev confirmé Peter (3+ ans XP, full-stack PHP/JS) opère <b>toujours sous code review</b> du CTO et d'un senior. Personne n'apprend le métier en solo sur un projet.</p>
+        <p>Les expériences publiques figurent sur les profils. Le devis précise les rôles, et le dispositif de revue est adapté aux composants et aux risques de la mission.</p>
       </div>
 
       <div class="val-card reveal reveal-d-3">
@@ -902,32 +901,31 @@ ${navHtml}
       <div class="rec-left">
         <div class="rec-tag">
           <span>RECRUTEMENT</span>
-          <span>On grandit, lentement.</span>
+          <span>Candidatures spontanées</span>
         </div>
-        <h3>On recrute<br><span class="accent">les bons profils.</span></h3>
+        <h3>Vous pouvez<br><span class="accent">nous écrire.</span></h3>
         <p class="rec-lead">
-          On ne grossit pas pour grossir. On recrute <b>une à deux personnes par an</b>,
-          uniquement quand on identifie une compétence manquante qui freine la production.
-          Si vous reconnaissez votre profil ci-dessous, écrivez-nous — on étudie chaque candidature
-          sous 5 jours ouvrés.
+          Nous ouvrons un recrutement uniquement lorsqu'un besoin, un statut et un budget sont validés.
+          Cette page n'est pas une offre d'emploi. Vous pouvez néanmoins envoyer une candidature spontanée&nbsp;:
+          nous visons un premier retour sous cinq jours ouvrés, sans délai garanti.
         </p>
 
         <div class="rec-jobs">
           <div class="rec-job">
             <div class="rec-job-status open">
               <span class="dot"></span>
-              POSTE OUVERT · PROCHAIN CYCLE
+              DOMAINE POSSIBLE · BESOIN À CONFIRMER
             </div>
-            <div class="rec-job-name">Designer produit / UX senior</div>
-            <div class="rec-job-meta">CDI · Bassens · 5+ ans · Figma + design system</div>
+            <div class="rec-job-name">Design produit / UX</div>
+            <div class="rec-job-meta">Statut, lieu et niveau précisés uniquement dans une offre publiée</div>
           </div>
           <div class="rec-job">
             <div class="rec-job-status soon">
               <span class="dot"></span>
-              PIPELINE · PROCHAINEMENT
+              DOMAINE POSSIBLE · BESOIN À CONFIRMER
             </div>
-            <div class="rec-job-name">Senior Dev — Front-end React/Next</div>
-            <div class="rec-job-meta">CDI · Bassens · 5+ ans · React + TypeScript + Next.js</div>
+            <div class="rec-job-name">Développement React / Next.js</div>
+            <div class="rec-job-meta">Statut, lieu et niveau précisés uniquement dans une offre publiée</div>
           </div>
         </div>
       </div>
@@ -936,18 +934,18 @@ ${navHtml}
         <div class="rec-cta-card">
           <div class="rec-cta-tag">CANDIDATURES SPONTANÉES</div>
           <h4>Vous ne trouvez pas votre poste ?</h4>
-          <p>Si vous êtes <b>5+ ans d'expérience</b>, basé(e) ou prêt(e) à venir à Bassens, et aligné(e) avec nos valeurs, on étudie votre CV.</p>
+          <p>Si votre expérience correspond à nos métiers et à notre manière de travailler, vous pouvez nous envoyer votre CV et quelques réalisations.</p>
           <a href="mailto:quentin@hagnere-patrimoine.fr?subject=Candidature%20spontan%C3%A9e" class="btn btn-accent">
             Envoyer ma candidature
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="rec-cta-meta">Réponse sous 5 jours ouvrés · par un expert</div>
+          <div class="rec-cta-meta">Objectif de retour sous cinq jours ouvrés · sans délai garanti</div>
         </div>
 
         <div class="rec-criteria">
           <div class="rec-cri-h">CE QU'ON CHERCHE</div>
           <ul>
-            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> 5+ ans d'expérience pro</li>
+            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Expérience et réalisations vérifiables</li>
             <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Goût pour le craft &amp; les bons outils</li>
             <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Capacité à communiquer avec des non-techs</li>
             <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Envie de bosser en équipe restreinte</li>
@@ -976,11 +974,11 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Quentin</b> (le fondateur) reste votre interlocuteur principal du brief à la livraison,
-            pour tout ce qui touche au produit, au cadrage et au design. <b>Nicolas</b> (CTO)
-            intervient sur les questions d'architecture et de jalons techniques.
-            Le <b>dev référent</b> du projet est nommé au cadrage et reste le même jusqu'à la livraison —
-            pas de tournante, pas de chef de projet intermédiaire.
+            Les interlocuteurs sont désignés au devis. <b>Quentin</b> (le fondateur)
+            peut piloter le produit, le cadrage et le design ; <b>Nicolas</b> (CTO)
+            peut intervenir sur l'architecture et les jalons techniques. Le
+            <b>développeur référent</b>, les relais et tout changement d'affectation
+            sont nommés ou communiqués selon le dispositif convenu.
           </div>
         </div>
 
@@ -990,10 +988,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Pas de pool anonyme, jamais.</b> ${TEAM_PUBLIC_COMPOSITION} — Quentin au pilotage, Nicolas au CTO, Frédéric, Killian, Arthur et Ryan en seniors,
-            Peter en dev confirmé — tous intégrés à nos rituels (daily, code review, démo),
-            tous sous NDA, tous nommés sur cette page. Pas de sous-traitance offshore, pas de white-label,
-            aucune rotation d'inconnus à chaque projet.
+            ${TEAM_PUBLIC_COMPOSITION} est présenté publiquement avec les statuts déclarés. Le devis nomme
+            les personnes réellement affectées, leur rôle, les éventuels intervenants extérieurs et les
+            obligations de confidentialité applicables. Cette page ne vaut pas affectation de toute l'équipe.
           </div>
         </div>
 
@@ -1003,10 +1000,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Mixte.</b> Le studio physique est à Bassens, aux portes de Chambéry (82 impasse de Bellevue), où l'équipe
-            se retrouve <b>2 à 3 jours par semaine</b>. Les autres jours, télétravail.
-            Les rituels (daily, planning, démo) sont systématiquement en visio pour garantir
-            la même expérience à tout le monde, télétravailleur ou pas.
+            <b>Mixte.</b> Le studio est à Bassens, aux portes de Chambéry (82 impasse de Bellevue).
+            La présence sur site, le télétravail et les rituels d'équipe varient selon les personnes
+            et les projets. Le devis précise les réunions et interlocuteurs utiles à votre mission.
           </div>
         </div>
 
@@ -1016,11 +1012,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Tout passe par notre repo Git, notre Linear et notre documentation interne.
-            Le <b>bus factor est de 2 minimum</b> sur chaque projet : un dev référent
-            + un binôme qui peut prendre le relais immédiatement, sans rien perdre du contexte.
-            Aucune information critique ne reste dans la tête d'une seule personne. Si Quentin
-            est indisponible &gt; 48 h, c'est Nicolas qui prend le relais commercial.
+            Le dépôt, le suivi et la documentation servent à limiter la dépendance à une personne.
+            Le référent, le binôme éventuel, les accès et la procédure d'indisponibilité sont définis
+            selon le projet. Aucun relais immédiat ni délai universel n'est promis sur cette page.
           </div>
         </div>
 
@@ -1030,11 +1024,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>5 ans et plus</b> pour le fondateur, le CTO et les quatre seniors full-stack.
-            Peter est <b>dev confirmé</b> (3+ ans XP) et travaille
-            <b>toujours sous revue de code</b> du CTO et d'un senior — il n'est jamais seul
-            décisionnaire sur un projet. Personne en stage, personne en alternance, personne en
-            première année.
+            Les profils indiquent une ancienneté déclarée de 10+ ans pour le fondateur et le CTO,
+            5+ ans pour les profils seniors et 3+ ans pour le développeur confirmé. L'affectation,
+            les responsabilités de décision et le niveau de revue sont précisés par mission.
           </div>
         </div>
 
@@ -1057,11 +1049,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Toujours</b> pour des profils alignés. Le prochain recrutement prévu
-            est un <b>Designer produit / UX senior</b>. Les candidatures spontanées sont étudiées
-            sous 5 jours ouvrés à <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a> —
-            uniquement profils 5+ ans d'expérience, basés ou prêts à venir à Bassens.
-            On répond systématiquement, même si c'est négatif.
+            Les candidatures spontanées sont bienvenues, sans qu'elles correspondent à un poste actuellement ouvert. Nous visons un premier retour
+            sous cinq jours ouvrés, sans délai garanti, à <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>.
+            Nous cherchons à répondre à chaque candidature, y compris lorsque la réponse est négative.
           </div>
         </div>
 
@@ -1071,11 +1061,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            On a un cercle restreint de <b>partenaires de confiance</b> (motion designer,
-            spécialiste légal RGPD, expert SEO senior) sur des compétences ponctuelles
-            qu'on ne maintient pas en interne. C'est <b>toujours mentionné transparentement</b>
-            dans le devis, et c'est nous qui restons votre interlocuteur unique — vous n'avez
-            jamais à gérer ces partenaires directement.
+            Une compétence ponctuelle peut nécessiter un intervenant extérieur. Son identité ou son statut,
+            son rôle, ses accès et les obligations de confidentialité sont alors précisés dans le devis ou le
+            contrat avant intervention. Le client sait qui intervient et qui reste responsable du pilotage.
           </div>
         </div>
       </div>

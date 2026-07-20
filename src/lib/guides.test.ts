@@ -58,6 +58,47 @@ describe("guide registry", () => {
     }
   });
 
+  it("keeps registry copy free of unverifiable exclusivity claims", () => {
+    const registryCopy = GUIDES.flatMap((guide) => [
+      guide.title,
+      guide.cardTitle,
+      guide.metaDescription,
+      guide.cardDescription,
+      guide.heroTitle,
+    ]).join("\n");
+
+    expect(registryCopy).not.toMatch(
+      /\b(?:le|la) seul(?:e)?\b|personne n['’]|que personne|aucun comparatif|toutes les pages|tout le monde|zéro perte/i,
+    );
+  });
+
+  it("keeps guide hooks and social images free of inflated exclusivity claims", () => {
+    const inflatedHookPatterns = [
+      /\b(?:que|qu['’]) (?:presque )?personne (?:ne |n['’])?(?:fait|publie|cite|explique|compare|traite|source|annonce|mentionne|utilise|exploite|lit|audite|anticipe|raconte|chiffre)\b/i,
+      /\bTout le monde (?:fait|publie|cite|explique|compare|traite|source|annonce|mentionne|utilise|exploite|lit|audite|anticipe|raconte|chiffre|oublie|confond)\b/,
+      /\bPersonne (?:ne |n['’])(?:fait|publie|cite|explique|compare|traite|source|annonce|mentionne|utilise|exploite|lit|audite|anticipe|raconte|chiffre)\b/,
+      /\b(?:aucun|presque aucun) (?:autre )?(?:guide|comparatif|tableau)(?: concurrent| français| de prix)?\b/i,
+      /\b(?:le|la) seul(?:e)? (?:guide|tableau|comparatif|grille|ressource)\b/i,
+      /\bzéro perte\b/i,
+    ] as const;
+
+    for (const guide of GUIDES) {
+      for (const fileName of ["page.tsx", "opengraph-image.tsx"] as const) {
+        const filePath = path.join(guidesRoot, guide.slug, fileName);
+        const source = fs.readFileSync(filePath, "utf8").replaceAll(
+          "&apos;",
+          "'",
+        );
+
+        for (const pattern of inflatedHookPatterns) {
+          expect(source, `${guide.slug}/${fileName}: ${pattern}`).not.toMatch(
+            pattern,
+          );
+        }
+      }
+    }
+  });
+
   it("keeps guides with an uncleared editorial gate out of public discovery", () => {
     const pending = GUIDES.filter((guide) => guide.editorialStatus);
     expect(PUBLISHED_GUIDES).toHaveLength(GUIDES.length - pending.length);

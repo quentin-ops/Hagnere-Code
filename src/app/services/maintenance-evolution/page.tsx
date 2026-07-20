@@ -47,40 +47,6 @@ const serviceJsonLd = JSON.stringify({
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Maintenance applicative pour PME, ETI et scale-up : reprise, supervision, correctifs de sécurité, évolutions, exploitation d'infrastructure et reporting. Le devis précise l'équipe, les outils, les horaires de couverture, les objectifs de service, les accès et la réversibilité.",
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Audit flash",
-      price: "2000",
-      priceCurrency: "EUR",
-      description:
-        "Diagnostic initial dont le périmètre, les jours mobilisés et les livrables sont précisés dans le devis.",
-    },
-    {
-      "@type": "Offer",
-      name: "Essentiel · Run",
-      price: "2500",
-      priceCurrency: "EUR",
-      description:
-        "Base indicative pour une application stable. Volume, supervision, support, délais de traitement et reporting sont confirmés au devis.",
-    },
-    {
-      "@type": "Offer",
-      name: "Scale · Évolution",
-      price: "6500",
-      priceCurrency: "EUR",
-      description:
-        "Base indicative pour maintenance et évolutions régulières. Équipe, volume, outils, couverture et rituels sont définis au devis.",
-    },
-    {
-      "@type": "Offer",
-      name: "Premium · Partner",
-      price: "14000",
-      priceCurrency: "EUR",
-      description:
-        "Base indicative pour un dispositif renforcé. Astreinte, objectifs de reprise, audits tiers et engagements de service sont optionnels et contractualisés selon l'architecture.",
-    },
-  ],
 });
 
 

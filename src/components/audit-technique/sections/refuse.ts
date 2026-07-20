@@ -9,7 +9,7 @@ export const refuseHtml = `
         <p>
           On ne filtre pas sur le secteur — on filtre sur <b>l'intention de l'audit et les conditions d'exécution</b>.
           Si votre demande coche une de ces cases, on déclinera honnêtement — quel que soit le budget annoncé.
-          C'est la seule manière de tenir notre promesse d'indépendance.
+          Ces exclusions servent à rendre notre indépendance vérifiable et à signaler les conflits potentiels avant la mission.
         </p>
         <div class="at-refuse-foot">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>

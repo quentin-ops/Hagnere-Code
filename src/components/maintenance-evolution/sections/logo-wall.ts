@@ -2,7 +2,7 @@ export const logoWallHtml = `
 <!-- PRODUCT LOGO WALL -->
 <section class="me-clients-wall" aria-label="Nos produits internes">
   <div class="wrap">
-    <div class="me-cw-kicker">— Nos produits internes, que nous maintenons en production</div>
+    <div class="me-cw-kicker">— Pages produit publiques à consulter</div>
     <div class="me-cw-grid">
       <div class="me-cw-logo">
         <img src="/logos/clients/lmnp-ai.webp" alt="LMNP.AI" width="160" height="57" loading="lazy" decoding="async" />

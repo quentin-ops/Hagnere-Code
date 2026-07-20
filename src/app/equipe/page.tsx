@@ -1,25 +1,24 @@
 import type { Metadata } from "next";
 import { EquipePage } from "@/components/equipe/EquipePage";
 import { OG_BASE } from "@/lib/seo";
-import { TEAM_PUBLIC_COMPOSITION } from "@/lib/team";
+import { TEAM_PUBLIC_COMPOSITION, TEAM_TOTAL_COUNT } from "@/lib/team";
 import { PUBLIC_ORGANIZATION_JSON_LD } from "@/lib/organization-structured-data";
 
 const EQUIPE_OG_IMAGE = {
-  url: "/illustrations/equipe-atmosphere.png",
-  width: 1792,
-  height: 1024,
-  alt: `L'équipe Hagnéré Code — ${TEAM_PUBLIC_COMPOSITION}, zéro pool anonyme, stack maîtrisée`,
+  url: "/og-image.png",
+  width: 1200,
+  height: 630,
+  alt: "Hagnéré Code — studio de développement à Bassens",
 };
 
 export const metadata: Metadata = {
-  title: "L'équipe · Développeurs full-stack en Savoie · Hagnéré Code",
-  description:
-    "Un président fondateur qui code, un CTO et des développeurs full-stack seniors rattachés à notre studio de Bassens, en Savoie. Les noms de votre équipe figurent dans le devis.",
+  title: "L'équipe Hagnéré Code · Développement web à Bassens",
+  description: `Découvrez les ${TEAM_TOTAL_COUNT} profils Hagnéré Code : fondateur, CTO et développeurs, avec leur rôle, statut et spécialité. Studio à Bassens, en Savoie.`,
   alternates: { canonical: "/equipe" },
   openGraph: {
     ...OG_BASE,
-    title: "L'équipe Hagnéré Code · Développeurs seniors en Savoie",
-    description: `${TEAM_PUBLIC_COMPOSITION}. Toute l'équipe partage les mêmes rituels. Profils seniors ou confirmés, écosystème React/Next.js (et Laravel pour les reprises), augmentés par Claude Code.`,
+    title: `L'équipe Hagnéré Code · ${TEAM_TOTAL_COUNT} profils présentés`,
+    description: `${TEAM_PUBLIC_COMPOSITION}. Rôles, statuts et spécialités sont présentés ; les intervenants affectés à une mission sont précisés dans le devis.`,
     url: "/equipe",
     images: [EQUIPE_OG_IMAGE],
   },

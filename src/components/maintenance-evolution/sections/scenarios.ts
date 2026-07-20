@@ -14,8 +14,8 @@ export const scenariosHtml = `
       </div>
     </div>
 
-    <div class="me-scen-tabs reveal" role="tablist">
-      <button type="button" class="me-scen-tab is-active" data-scenario="orphaned" role="tab" aria-selected="true">
+    <div class="me-scen-tabs reveal" role="tablist" aria-label="Choisir un scénario">
+      <button type="button" class="me-scen-tab is-active" data-scenario="orphaned" role="tab" aria-selected="true" id="me-scenario-tab-orphaned" aria-controls="me-scenario-panel-orphaned" tabindex="0">
         <div class="me-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </div>
@@ -30,7 +30,7 @@ export const scenariosHtml = `
         <div class="me-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
       </button>
 
-      <button type="button" class="me-scen-tab" data-scenario="freelance" role="tab" aria-selected="false">
+      <button type="button" class="me-scen-tab" data-scenario="freelance" role="tab" aria-selected="false" id="me-scenario-tab-freelance" aria-controls="me-scenario-panel-freelance" tabindex="-1">
         <div class="me-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22v-2a8 8 0 0116 0v2"/></svg>
         </div>
@@ -45,7 +45,7 @@ export const scenariosHtml = `
         <div class="me-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
       </button>
 
-      <button type="button" class="me-scen-tab" data-scenario="scaleup" role="tab" aria-selected="false">
+      <button type="button" class="me-scen-tab" data-scenario="scaleup" role="tab" aria-selected="false" id="me-scenario-tab-scaleup" aria-controls="me-scenario-panel-scaleup" tabindex="-1">
         <div class="me-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
         </div>
@@ -60,7 +60,7 @@ export const scenariosHtml = `
         <div class="me-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
       </button>
 
-      <button type="button" class="me-scen-tab" data-scenario="legacy" role="tab" aria-selected="false">
+      <button type="button" class="me-scen-tab" data-scenario="legacy" role="tab" aria-selected="false" id="me-scenario-tab-legacy" aria-controls="me-scenario-panel-legacy" tabindex="-1">
         <div class="me-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         </div>
@@ -77,7 +77,7 @@ export const scenariosHtml = `
     </div>
 
     <!-- PANEL orphaned -->
-    <div class="me-scen-panel is-active" data-panel="orphaned">
+    <div class="me-scen-panel is-active" data-panel="orphaned" role="tabpanel" tabindex="0" aria-hidden="false" id="me-scenario-panel-orphaned" aria-labelledby="me-scenario-tab-orphaned">
       <div class="me-scen-cols">
         <div class="me-scen-main">
           <div class="me-scen-kind">Reprise · App orpheline sans prestataire actif</div>
@@ -97,7 +97,7 @@ export const scenariosHtml = `
             <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Documentation repartant de zéro (Notion + Loom)</div>
           </div>
         </div>
-        <aside class="me-scen-aside">
+        <div class="me-scen-aside">
           <div class="me-scen-aside-head">
             <span class="me-scen-aside-kind">Forfait mensuel</span>
             <div class="me-scen-aside-price">3 500 <span>€ HT / mois</span></div>
@@ -117,12 +117,12 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             Périmètre, prix et calendrier confirmés avant signature
           </div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL freelance -->
-    <div class="me-scen-panel" data-panel="freelance" hidden>
+    <div class="me-scen-panel" data-panel="freelance" role="tabpanel" tabindex="0" aria-hidden="true" id="me-scenario-panel-freelance" aria-labelledby="me-scenario-tab-freelance" hidden>
       <div class="me-scen-cols">
         <div class="me-scen-main">
           <div class="me-scen-kind">Transition · Freelance vers équipe agence</div>
@@ -142,7 +142,7 @@ export const scenariosHtml = `
             <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Rituel mensuel + roadmap trimestrielle</div>
           </div>
         </div>
-        <aside class="me-scen-aside">
+        <div class="me-scen-aside">
           <div class="me-scen-aside-head">
             <span class="me-scen-aside-kind">Forfait mensuel</span>
             <div class="me-scen-aside-price">2 500 <span>€ HT / mois</span></div>
@@ -162,12 +162,12 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             Protocole de transition validé avec les parties
           </div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL scaleup -->
-    <div class="me-scen-panel" data-panel="scaleup" hidden>
+    <div class="me-scen-panel" data-panel="scaleup" role="tabpanel" tabindex="0" aria-hidden="true" id="me-scenario-panel-scaleup" aria-labelledby="me-scenario-tab-scaleup" hidden>
       <div class="me-scen-cols">
         <div class="me-scen-main">
           <div class="me-scen-kind">Partenariat · Scale-up post-levée</div>
@@ -187,7 +187,7 @@ export const scenariosHtml = `
             <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Modalités de documentation et de passation prévues au devis</div>
           </div>
         </div>
-        <aside class="me-scen-aside me-scen-aside-hot">
+        <div class="me-scen-aside me-scen-aside-hot">
           <div class="me-scen-aside-head">
             <span class="me-scen-aside-kind">Tier Premium</span>
             <div class="me-scen-aside-price">14 000 <span>€ HT / mois</span></div>
@@ -207,12 +207,12 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             Capacité réelle confirmée avant signature
           </div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL legacy -->
-    <div class="me-scen-panel" data-panel="legacy" hidden>
+    <div class="me-scen-panel" data-panel="legacy" role="tabpanel" tabindex="0" aria-hidden="true" id="me-scenario-panel-legacy" aria-labelledby="me-scenario-tab-legacy" hidden>
       <div class="me-scen-cols">
         <div class="me-scen-main">
           <div class="me-scen-kind">Modernisation · Legacy à faire vivre avant refonte</div>
@@ -233,7 +233,7 @@ export const scenariosHtml = `
             <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Transition vers refonte si / quand vous le voulez</div>
           </div>
         </div>
-        <aside class="me-scen-aside">
+        <div class="me-scen-aside">
           <div class="me-scen-aside-head">
             <span class="me-scen-aside-kind">Forfait mensuel</span>
             <div class="me-scen-aside-price">2 500 <span>€ HT / mois</span></div>
@@ -253,7 +253,7 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             Refonte possible en option plus tard
           </div>
-        </aside>
+        </div>
       </div>
     </div>
   </div>

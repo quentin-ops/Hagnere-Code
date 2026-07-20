@@ -45,6 +45,10 @@ import { trackFunnelEvent } from "@/lib/funnel-analytics";
 import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
 import { LegalLinksFooter } from "@/components/legal/LegalLinksFooter";
 import {
+  clearProjectInquiryClientKey,
+  getProjectInquiryClientKey,
+} from "@/lib/project-inquiry-client-key";
+import {
   PROJECT_DRAFT_STORAGE_KEY,
   getProjectDraftRemainingMs,
   purgeLegacyProjectDrafts,
@@ -1330,6 +1334,8 @@ function getRecorderMimeType(): string {
   ].find((type) => MediaRecorder.isTypeSupported(type)) || "";
 }
 
+const MAX_VOICE_RECORDING_MS = 120_000;
+
 function getAudioFilename(mimeType: string): string {
   if (mimeType.includes("mp4")) return "brief.m4a";
   if (mimeType.includes("mpeg")) return "brief.mp3";
@@ -1412,6 +1418,7 @@ function VoiceTextarea({
   /** Associe le <textarea> interne au <label htmlFor> du parent (a11y). */
   id?: string;
 }) {
+  const [requesting, setRequesting] = useState(false);
   const [recording, setRecording] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState<MicError | null>(null);
@@ -1427,6 +1434,11 @@ function VoiceTextarea({
   const rafRef = useRef<number | null>(null);
   const startTimeRef = useRef<number>(0);
   const streamRef = useRef<MediaStream | null>(null);
+  const autoStopTimeoutRef = useRef<number | null>(null);
+  const mountedRef = useRef(false);
+  const startPendingRef = useRef(false);
+  const discardOnStopRef = useRef(false);
+  const transcriptionAbortRef = useRef<AbortController | null>(null);
   // Toujours la dernière valeur du textarea — recorder.onstop est assigné
   // une seule fois au démarrage de l'enregistrement et capturerait sinon
   // une `value` périmée, écrasant ce que l'utilisateur tape pendant la
@@ -1436,30 +1448,70 @@ function VoiceTextarea({
     valueRef.current = value;
   }, [value]);
 
+  const stopVisualisation = useCallback((resetDisplay = true) => {
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
+    audioContextRef.current?.close().catch(() => {});
+    audioContextRef.current = null;
+    analyserRef.current = null;
+    if (resetDisplay) {
+      setAudioLevel(0);
+      setElapsedMs(0);
+    }
+  }, []);
+
   // Cleanup on unmount : rAF + AudioContext, mais aussi le MediaRecorder
   // et les pistes micro — sinon, naviguer vers une autre étape en cours
   // de dictée laisse le micro ouvert (indicateur rouge du navigateur)
   // jusqu'à la fermeture de l'onglet.
   useEffect(() => {
+    mountedRef.current = true;
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      audioContextRef.current?.close().catch(() => {});
+      mountedRef.current = false;
+      startPendingRef.current = false;
+      discardOnStopRef.current = true;
+      transcriptionAbortRef.current?.abort();
+      transcriptionAbortRef.current = null;
+      if (autoStopTimeoutRef.current !== null) {
+        window.clearTimeout(autoStopTimeoutRef.current);
+        autoStopTimeoutRef.current = null;
+      }
+      stopVisualisation(false);
       const recorder = mediaRecorderRef.current;
-      if (recorder && recorder.state !== "inactive") {
-        // Pas de transcription à l'unmount : on neutralise onstop avant
-        // d'arrêter pour éviter un setState sur composant démonté.
+      if (recorder) {
+        // Pas de transcription à l'unmount : on neutralise tous les callbacks
+        // avant d'arrêter, sinon `stop()` déclencherait un upload involontaire.
+        recorder.ondataavailable = null;
         recorder.onstop = null;
-        try {
-          recorder.stop();
-        } catch {
-          /* already stopped */
+        recorder.onerror = null;
+        if (recorder.state !== "inactive") {
+          try {
+            recorder.stop();
+          } catch {
+            /* already stopped */
+          }
         }
       }
       streamRef.current?.getTracks().forEach((track) => track.stop());
+      mediaRecorderRef.current = null;
+      streamRef.current = null;
+      chunksRef.current = [];
     };
-  }, []);
+  }, [stopVisualisation]);
 
   const startRecording = useCallback(async () => {
+    if (
+      startPendingRef.current ||
+      (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive")
+    ) {
+      return;
+    }
+
+    startPendingRef.current = true;
+    discardOnStopRef.current = false;
+    setRequesting(true);
     setError(null);
     setDiagnosticCopyStatus("idle");
     // Diagnostic logging — surfaces all the conditions for getUserMedia.
@@ -1476,6 +1528,8 @@ function VoiceTextarea({
     console.log("[VoiceTextarea] startRecording diagnostics:", diag);
 
     if (!navigator.mediaDevices?.getUserMedia) {
+      startPendingRef.current = false;
+      setRequesting(false);
       setError({
         kind: "unsupported",
         message: `La dictée vocale n'est pas disponible (mediaDevices=${diag.hasMediaDevices}, isSecureContext=${diag.isSecureContext}).`,
@@ -1483,6 +1537,8 @@ function VoiceTextarea({
       return;
     }
     if (typeof MediaRecorder === "undefined") {
+      startPendingRef.current = false;
+      setRequesting(false);
       setError({
         kind: "unsupported",
         message:
@@ -1506,6 +1562,11 @@ function VoiceTextarea({
       }
     }
 
+    if (!mountedRef.current) {
+      startPendingRef.current = false;
+      return;
+    }
+
     let stream: MediaStream | null = null;
     try {
       console.log("[VoiceTextarea] calling getUserMedia…");
@@ -1517,6 +1578,12 @@ function VoiceTextarea({
         },
       });
       console.log("[VoiceTextarea] getUserMedia OK — tracks:", stream.getTracks().length);
+      if (!mountedRef.current) {
+        stream.getTracks().forEach((track) => track.stop());
+        startPendingRef.current = false;
+        return;
+      }
+
       const preferredMimeType = getRecorderMimeType();
       const recorder = preferredMimeType
         ? new MediaRecorder(stream, { mimeType: preferredMimeType })
@@ -1531,14 +1598,41 @@ function VoiceTextarea({
         if (event.data.size > 0) chunksRef.current.push(event.data);
       };
       recorder.onstop = async () => {
-        setProcessing(true);
+        if (autoStopTimeoutRef.current !== null) {
+          window.clearTimeout(autoStopTimeoutRef.current);
+          autoStopTimeoutRef.current = null;
+        }
+        stopVisualisation();
+        mediaRecorderRef.current = null;
         activeStream.getTracks().forEach((track) => track.stop());
+        streamRef.current = null;
+        const recordedChunks = chunksRef.current;
+        chunksRef.current = [];
+
+        if (discardOnStopRef.current || !mountedRef.current) return;
+
+        setRecording(false);
+        setProcessing(true);
         try {
-          const audio = new Blob(chunksRef.current, { type: mimeType });
+          const audio = new Blob(recordedChunks, { type: mimeType });
+          if (audio.size === 0) {
+            setError({
+              kind: "other",
+              message: "Aucun son n'a été enregistré. Vérifiez le micro puis réessayez.",
+            });
+            return;
+          }
           const formData = new FormData();
           formData.append("audio", audio, getAudioFilename(mimeType));
-          const res = await fetch("/api/transcribe", { method: "POST", body: formData });
+          const controller = new AbortController();
+          transcriptionAbortRef.current = controller;
+          const res = await fetch("/api/transcribe", {
+            method: "POST",
+            body: formData,
+            signal: controller.signal,
+          });
           const json = (await res.json().catch(() => ({}))) as { text?: string; error?: string };
+          if (!mountedRef.current) return;
           if (!res.ok) {
             setError({ kind: "other", message: json.error || "Transcription impossible pour le moment." });
             return;
@@ -1548,18 +1642,61 @@ function VoiceTextarea({
             const next = latest.trim() ? `${latest.trim()}\n\n${json.text.trim()}` : json.text.trim();
             onChange(next);
           }
-        } catch {
+        } catch (transcriptionError) {
+          if (
+            !mountedRef.current ||
+            (transcriptionError instanceof DOMException &&
+              transcriptionError.name === "AbortError")
+          ) {
+            return;
+          }
           setError({
             kind: "other",
             message: "La transcription a échoué. Vous pouvez écrire le brief à la main.",
           });
         } finally {
+          transcriptionAbortRef.current = null;
+          if (mountedRef.current) setProcessing(false);
+        }
+      };
+      recorder.onerror = () => {
+        discardOnStopRef.current = true;
+        recorder.onstop = null;
+        if (autoStopTimeoutRef.current !== null) {
+          window.clearTimeout(autoStopTimeoutRef.current);
+          autoStopTimeoutRef.current = null;
+        }
+        stopVisualisation();
+        try {
+          if (recorder.state !== "inactive") recorder.stop();
+        } catch {
+          /* Le navigateur a déjà interrompu l'enregistreur. */
+        }
+        activeStream.getTracks().forEach((track) => track.stop());
+        mediaRecorderRef.current = null;
+        streamRef.current = null;
+        chunksRef.current = [];
+        if (mountedRef.current) {
+          setRequesting(false);
+          setRecording(false);
           setProcessing(false);
+          setError({
+            kind: "other",
+            message: "L'enregistrement audio s'est interrompu. Réessayez ou écrivez à la main.",
+          });
         }
       };
 
       recorder.start();
+      startPendingRef.current = false;
+      setRequesting(false);
       setRecording(true);
+      autoStopTimeoutRef.current = window.setTimeout(() => {
+        const activeRecorder = mediaRecorderRef.current;
+        if (activeRecorder && activeRecorder.state !== "inactive") {
+          activeRecorder.stop();
+        }
+      }, MAX_VOICE_RECORDING_MS);
       trackFunnelEvent("pf:voice_record_start", {});
       // Lance la viz audio (analyser FFT) et le timer.
       try {
@@ -1576,6 +1713,7 @@ function VoiceTextarea({
         startTimeRef.current = Date.now();
         const buf = new Uint8Array(analyser.frequencyBinCount);
         const tick = () => {
+          if (!mountedRef.current) return;
           analyser.getByteFrequencyData(buf);
           // RMS sur les 128 bins basses (voix humaine = 80-3000 Hz)
           let sum = 0;
@@ -1590,7 +1728,18 @@ function VoiceTextarea({
         /* viz audio optionnelle — pas bloquante si AudioContext fail */
       }
     } catch (err) {
+      startPendingRef.current = false;
       stream?.getTracks().forEach((track) => track.stop());
+      const recorder = mediaRecorderRef.current;
+      if (recorder) {
+        recorder.ondataavailable = null;
+        recorder.onstop = null;
+        recorder.onerror = null;
+      }
+      mediaRecorderRef.current = null;
+      streamRef.current = null;
+      chunksRef.current = [];
+      stopVisualisation();
       const errName = err instanceof DOMException ? err.name : (err instanceof Error ? err.name : typeof err);
       const errMessage = err instanceof Error ? err.message : String(err);
       // Use console.log to avoid Next.js dev overlay treating this as an
@@ -1631,24 +1780,19 @@ function VoiceTextarea({
         }
         return { ...base, diag: fullDiag };
       })();
-      setError(enriched);
+      if (mountedRef.current) {
+        setRequesting(false);
+        setRecording(false);
+        setError(enriched);
+      }
     }
-  }, [onChange]);
+  }, [onChange, stopVisualisation]);
 
   const stopRecording = useCallback(() => {
-    if (!mediaRecorderRef.current || !recording) return;
-    mediaRecorderRef.current.stop();
-    setRecording(false);
-    if (rafRef.current) {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
-    audioContextRef.current?.close().catch(() => {});
-    audioContextRef.current = null;
-    analyserRef.current = null;
-    setAudioLevel(0);
-    setElapsedMs(0);
-  }, [recording]);
+    const recorder = mediaRecorderRef.current;
+    if (!recorder || recorder.state === "inactive") return;
+    recorder.stop();
+  }, []);
 
   return (
     <div className="pf-voice-field">
@@ -1679,27 +1823,43 @@ function VoiceTextarea({
             </span>
           </div>
         ) : (
-          <span>{processing ? "Transcription en cours..." : "Vous pouvez écrire ou dicter votre réponse."}</span>
+          <span>
+            {requesting
+              ? "Activation du micro..."
+              : processing
+                ? "Transcription en cours..."
+                : "Vous pouvez écrire ou dicter votre réponse."}
+          </span>
         )}
         <button
           type="button"
           className={`pf-mic ${recording ? "is-recording" : ""}`}
           onClick={recording ? stopRecording : startRecording}
-          disabled={processing}
+          disabled={processing || requesting}
+          aria-label={
+            recording
+              ? "Arrêter la dictée"
+              : requesting
+                ? "Activation du micro en cours"
+                : processing
+                  ? "Transcription en cours"
+                  : "Dicter votre réponse"
+          }
         >
-          {processing ? (
+          {processing || requesting ? (
             <Loader2 size={16} className="pf-spin" />
           ) : recording ? (
             <Pause size={16} />
           ) : (
             <Mic size={16} />
           )}
-          {recording ? "Arrêter" : "Dicter"}
+          {recording ? "Arrêter" : requesting ? "Activation…" : "Dicter"}
         </button>
       </div>
       <p className="pf-voice-privacy">
         En activant « Dicter », vous consentez à transmettre votre audio à Groq pour cette transcription facultative.
-        Vous pouvez saisir le même texte sans utiliser ce service.{" "}
+        L&apos;enregistrement s&apos;arrête automatiquement après 2 minutes. Vous pouvez
+        saisir le même texte sans utiliser ce service.{" "}
         <a href="/legal/confidentialite#dictee" target="_blank" rel="noopener noreferrer">
           En savoir plus
         </a>
@@ -1830,6 +1990,7 @@ export function ProjectFunnel() {
   const [showValidation, setShowValidation] = useState(false);
   const [skippedSteps, setSkippedSteps] = useState<Set<StepId>>(new Set());
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const submissionKeyRef = useRef<string | null>(null);
 
   const disableDraftStorage = useCallback(() => {
     try {
@@ -2060,9 +2221,15 @@ export function ProjectFunnel() {
     let mailOk = false;
     let mailError = "";
     try {
+      const submissionKey =
+        submissionKeyRef.current ?? getProjectInquiryClientKey();
+      submissionKeyRef.current = submissionKey;
       const mailRes = await fetch("/api/project-inquiry", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Idempotency-Key": submissionKey,
+        },
         body: JSON.stringify({
           // Legacy fields used by the existing email template
           firstName: state.firstName.trim(),
@@ -2108,6 +2275,8 @@ export function ProjectFunnel() {
           services: state.projectKinds.length,
           confirmation_sent: mailJson.confirmationSent === true,
         });
+        submissionKeyRef.current = null;
+        clearProjectInquiryClientKey();
         disableDraftStorage();
         setStatus({
           kind: "captured",
@@ -2131,6 +2300,8 @@ export function ProjectFunnel() {
         services: state.projectKinds.length,
       });
       disableDraftStorage();
+      submissionKeyRef.current = null;
+      clearProjectInquiryClientKey();
       // Page de confirmation dédiée — URL stable pour brancher les pixels
       // de conversion (GA4, Meta, LinkedIn) sur une vue de page.
       router.push("/demarrer-un-projet/merci");
@@ -2183,7 +2354,7 @@ export function ProjectFunnel() {
           <p className="pf-landing-sub">
             Un parcours guidé pour transmettre votre besoin — au clavier ou à la voix.
             Pas de devis automatique, pas de robot : chaque brief est lu par notre
-            équipe. Nous visons le prochain jour ouvré, sans engagement contractuel de délai.
+            équipe. Nous visons une réponse le prochain jour ouvré, sans délai garanti.
           </p>
           <a
             href="#brief"

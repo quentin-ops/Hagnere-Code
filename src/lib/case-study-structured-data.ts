@@ -39,17 +39,19 @@ export function buildCaseStudyStructuredData(c: CaseStudy) {
   const article = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: `${c.brandName} · ${c.category}`,
-    name: `${c.brandName} · Étude de cas Hagnéré Code`,
+    headline: `Analyse publique externe : ${c.brandName}`,
+    name: `${c.brandName} · Analyse éditoriale d'une page publique externe`,
     description: c.heroIntro,
     url,
     image: `${url}/opengraph-image`,
     inLanguage: "fr-FR",
-    author: organization,
+    author: { "@id": ORGANIZATION_ID },
     publisher: organization,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     about: mainEntity,
-    keywords: c.stack.join(", "),
+    citation: c.url,
+    isBasedOn: c.url,
+    articleSection: "Analyse de page publique externe",
   };
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -59,7 +61,7 @@ export function buildCaseStudyStructuredData(c: CaseStudy) {
       {
         "@type": "ListItem",
         position: 2,
-        name: "Réalisations",
+        name: "Analyses publiques",
         item: `${SITE_URL}/realisations`,
       },
       { "@type": "ListItem", position: 3, name: c.brandName, item: url },

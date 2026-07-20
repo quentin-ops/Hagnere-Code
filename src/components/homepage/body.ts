@@ -1,4 +1,5 @@
 import { navHtml } from "@/components/design-shared/nav-html";
+import { CALENDLY_URL } from "@/lib/calendly";
 import {
   TEAM_OTHER_DEVELOPERS_COUNT,
   TEAM_PUBLIC_COMPOSITION,
@@ -117,7 +118,7 @@ export const bodyHtml = `${navHtml}
           <span class="hv-tl"></span>
           <span class="hv-tl"></span>
           <span class="hv-tl"></span>
-          <div class="hv-product-url">app.votre-projet.fr</div>
+          <div class="hv-product-url">exemple.votre-projet.fr</div>
         </div>
         <div class="hv-product-body">
           <div class="hv-product-eyebrow">
@@ -126,12 +127,12 @@ export const bodyHtml = `${navHtml}
           </div>
           <div class="hv-product-stats">
             <div class="hv-stat">
-              <div class="hv-stat-v">2&thinsp;480</div>
-              <div class="hv-stat-k">utilisateurs actifs</div>
+              <div class="hv-stat-v">—</div>
+              <div class="hv-stat-k">donnée à connecter</div>
             </div>
             <div class="hv-stat hv-stat-accent">
-              <div class="hv-stat-v">+47<span class="pct">%</span></div>
-              <div class="hv-stat-k">vs mois dernier</div>
+              <div class="hv-stat-v">—</div>
+              <div class="hv-stat-k">objectif à définir</div>
             </div>
           </div>
           <div class="hv-product-chart">
@@ -148,8 +149,8 @@ export const bodyHtml = `${navHtml}
           </div>
         </div>
         <div class="hv-product-footer">
-          <span class="hv-product-status"><span class="hv-status-dot"></span> EN PRODUCTION</span>
-          <span class="hv-product-version">v1.4.2</span>
+          <span class="hv-product-status"><span class="hv-status-dot"></span> EXEMPLE D'INTERFACE</span>
+          <span class="hv-product-version">DONNÉES FICTIVES</span>
         </div>
       </div>
 
@@ -443,6 +444,7 @@ export const bodyHtml = `${navHtml}
           <div class="svc-mock-chrome">
             <span></span><span></span><span></span>
             <div class="svc-mock-url">app.clientname.fr/pipeline</div>
+            <div class="svc-mock-disclaimer">MAQUETTE · DONNÉES FICTIVES</div>
           </div>
           <div class="svc-mock-body">
             <div class="svc-mock-side">
@@ -628,7 +630,8 @@ export const bodyHtml = `${navHtml}
           votre contexte, votre urgence, vos contraintes. Nous visons une réponse argumentée le
           <b>prochain jour ouvré</b>, sans délai garanti ; le calendrier de cadrage est annoncé après
           l'échange — le devis ferme est établi après le
-          Discovery Sprint (1 500 € HT, déduit à 100 % du forfait).
+          Discovery Sprint (1 500 € HT ; l&apos;offre signée précise la déduction
+          éventuelle sur la phase suivante et son délai).
         </p>
         <ul class="chks">
           <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Un seul interlocuteur senior pendant toute la discussion</li>
@@ -714,7 +717,7 @@ export const bodyHtml = `${navHtml}
               <div class="dc-plan-card">
                 <span class="dc-plan-num">03</span>
                 <b>Engagement</b>
-                <p>5 semaines, équipe dédiée, budget verrouillé au Discovery Sprint, avant la première ligne de code.</p>
+                <p>Planning, intervenants et budget arrêtés au devis après cadrage, avant la première ligne de code.</p>
               </div>
             </div>
 
@@ -807,20 +810,19 @@ export const bodyHtml = `${navHtml}
 
         <div class="sf-pillar">
           <div class="sf-pillar-n">02</div>
-          <div class="sf-pillar-title">Démo chaque vendredi</div>
+          <div class="sf-pillar-title">Démos au rythme convenu</div>
           <div class="sf-pillar-body">
-            Vous voyez votre produit grandir en direct. Vous corrigez la trajectoire
-            avant que ce soit coûteux. Pas de « grande révélation » en fin de projet.
+            Le devis fixe la cadence, les participants et le mode de validation.
+            Les retours et leurs effets sur le périmètre restent tracés.
           </div>
         </div>
 
         <div class="sf-pillar">
           <div class="sf-pillar-n">03</div>
-          <div class="sf-pillar-title">Claude Code dès J1</div>
+          <div class="sf-pillar-title">IA outillée, revue humaine</div>
           <div class="sf-pillar-body">
-            IA comme augmentation de l'équipe, pas comme vitrine marketing.
-            Recherche, cadrage, tests, revues de code, doc — tout passe par
-            Claude, ce qui compresse les délais sans rogner sur la qualité.
+            Les outils d'IA utilisables, les données autorisées et les contrôles humains
+            sont définis selon le projet. Leur usage ne promet ni délai ni qualité sans recette.
           </div>
         </div>
 
@@ -873,7 +875,7 @@ export const bodyHtml = `${navHtml}
           <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
         </div>
         <h4>On vous renvoie un chiffrage clair.</h4>
-        <p>Nous visons une réponse argumentée le <b>prochain jour ouvré</b>, sans délai garanti. Le calendrier de cadrage est annoncé après l'échange ; devis ferme après le Discovery Sprint (1 500 € HT, déduit à 100 %).</p>
+        <p>Nous visons une réponse argumentée le <b>prochain jour ouvré</b>, sans délai garanti. Le calendrier de cadrage est annoncé après l'échange ; devis ferme après le Discovery Sprint (1 500 € HT, avec conditions de déduction précisées dans l'offre signée).</p>
         <div class="meth-foot">
           <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Après échange</div>
           <div class="meth-tag">Forfait fixe</div>
@@ -886,10 +888,10 @@ export const bodyHtml = `${navHtml}
           <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
         </div>
         <h4>On construit, vous suivez.</h4>
-        <p>Démo <b>tous les vendredis</b>. Vous voyez votre produit grandir semaine après semaine. Vous ajustez la trajectoire en temps réel.</p>
+        <p>Démonstrations à la cadence convenue au devis. Vous voyez des versions testables aux jalons prévus et arbitrez la trajectoire sur des éléments concrets.</p>
         <div class="meth-foot">
           <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>4 à 12 sem.</div>
-          <div class="meth-tag">Démos hebdo</div>
+          <div class="meth-tag">Cadence convenue</div>
         </div>
       </div>
 
@@ -931,15 +933,15 @@ export const bodyHtml = `${navHtml}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Nos produits internes</div>
-        <h2>Ce qu'on a construit<br>pour le groupe Hagnéré.</h2>
+        <div class="eyebrow">— Pages publiques</div>
+        <h2>Quatre cas à examiner<br>avec le bon niveau de preuve.</h2>
       </div>
       <div class="right">
-        Quatre produits du groupe, conçus et opérés par le studio : deux SaaS IA de
-        comptabilité immobilière, et deux sites métier dans la gestion
-        de patrimoine. Ce sont nos preuves principales aujourd'hui : des produits
-        réels, en production, dont on peut détailler les modules et les choix techniques.
-        <a href="/realisations">Toutes les réalisations&nbsp;→</a>
+        Hagnéré Code analyse quatre pages publiques externes&nbsp;: deux offres de
+        comptabilité immobilière et deux sites de services patrimoniaux. Ces inventaires
+        datés ne revendiquent ni leur conception, ni leur livraison, ni leur technologie,
+        ni leur acquisition, ni leurs résultats.
+        <a href="/realisations">Toutes les analyses&nbsp;→</a>
       </div>
     </div>
 
@@ -952,10 +954,10 @@ export const bodyHtml = `${navHtml}
             <!-- Subtle grid bg -->
             <defs><pattern id="gridLmnp" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a1a" stroke-width="0.5"/></pattern></defs>
             <rect width="600" height="340" fill="url(#gridLmnp)"/>
-            <!-- Floating card: résultat simulateur -->
+            <!-- Floating card: représentation schématique d'un simulateur public -->
             <rect x="110" y="56" width="380" height="228" rx="14" fill="#121212" stroke="#262626"/>
             <circle cx="132" cy="82" r="4" fill="#ffffff"/>
-            <text x="146" y="86" font-family="Geist Mono" font-size="11" fill="#D4D4D4" letter-spacing="1">LMNP.AI · RÉSULTAT</text>
+            <text x="146" y="86" font-family="Geist Mono" font-size="11" fill="#D4D4D4" letter-spacing="1">LMNP.AI · SIMULATION</text>
             <text x="132" y="130" font-family="Geist" font-weight="700" font-size="15" fill="#737373">Exemple de simulation</text>
             <text x="132" y="180" font-family="Geist" font-weight="700" font-size="52" fill="#fff" letter-spacing="-2">—<tspan font-size="30" fill="#A3A3A3"> €</tspan></text>
             <rect x="132" y="200" width="336" height="1" fill="#262626"/>
@@ -974,8 +976,8 @@ export const bodyHtml = `${navHtml}
           <span class="real-chip">SaaS B2C</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">LARAVEL 12 <span class="dot"></span> SaaS B2C</div>
-          <p>Logiciel de comptabilité LMNP/LMP en ligne. Le parcours réunit la saisie, les amortissements, les liasses fiscales, la transmission EDI et une bibliothèque de guides.</p>
+          <div class="real-meta">PAGE PUBLIQUE EXTERNE <span class="dot"></span> INVENTAIRE DATÉ</div>
+          <p>La page publique présente une offre de comptabilité LMNP/LMP, des fonctions de saisie, d'amortissement, de documents fiscaux, de transmission EDI et des guides.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">EDI</div><div class="l">télétransmission DGFiP</div></div>
             <div class="rm"><div class="n">IA</div><div class="l">assistance en contexte</div></div>
@@ -1031,8 +1033,8 @@ export const bodyHtml = `${navHtml}
           <span class="real-chip">SaaS B2C</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">LARAVEL 12 <span class="dot"></span> EDI DGFiP <span class="dot"></span> LIVRÉ AVRIL 2026</div>
-          <p>Logiciel de comptabilité SCI (IR et IS). Déclaration 2072 pour les SCI non soumises à l'IS ; déclaration 2065 et tableaux 2033 au réel simplifié pour les SCI à l'IS. Gestion des associés, parts, comptes courants et amortissements.</p>
+          <div class="real-meta">PAGE PUBLIQUE EXTERNE <span class="dot"></span> INVENTAIRE DATÉ</div>
+          <p>La page publique présente une offre de comptabilité SCI à l'IR et à l'IS, les déclarations citées, la gestion des associés et la transmission EDI.</p>
           <div class="real-metric">
             <div class="rm"><div class="n">IR</div><div class="l">déclaration 2072</div></div>
             <div class="rm"><div class="n">IS</div><div class="l">déclaration 2065</div></div>
@@ -1056,7 +1058,7 @@ export const bodyHtml = `${navHtml}
             <text x="60" y="256" font-family="Geist Mono" font-size="10" fill="#9e9e9e" letter-spacing="1">CABINET DE GESTION · CHAMBÉRY</text>
             <!-- Right side: stable capabilities, not commercial metrics -->
             <rect x="420" y="60" width="140" height="220" rx="2" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.3"/>
-            <text x="490" y="110" text-anchor="middle" font-family="Geist Mono" font-size="9" fill="#C9A96E" letter-spacing="1.5">SITE + CRM</text>
+            <text x="490" y="110" text-anchor="middle" font-family="Geist Mono" font-size="9" fill="#C9A96E" letter-spacing="1.5">PAGE PUBLIQUE</text>
             <text x="490" y="170" text-anchor="middle" font-family="Geist" font-weight="300" font-size="30" fill="#fff" letter-spacing="-1">Sur mesure</text>
             <line x1="450" y1="190" x2="530" y2="190" stroke="#C9A96E" opacity="0.5"/>
             <text x="490" y="216" text-anchor="middle" font-family="Geist Mono" font-size="9" fill="#9e9e9e" letter-spacing="1">CONTENUS</text>
@@ -1072,12 +1074,12 @@ export const bodyHtml = `${navHtml}
           <span class="real-chip">Site vitrine</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">NEXT.JS <span class="dot"></span> SEO + ADS <span class="dot"></span> Site vitrine</div>
-          <p>Refonte complète du cabinet de gestion de patrimoine : site vitrine premium, prise de RDV, tunnel de qualification, stratégie SEO longue traîne et campagnes Google Ads sur les requêtes patrimoniales.</p>
+          <div class="real-meta">PAGE PUBLIQUE EXTERNE <span class="dot"></span> INVENTAIRE DATÉ</div>
+          <p>La page publique présente le cabinet, ses expertises, ses informations réglementaires, des simulateurs, des guides et plusieurs portes d'entrée vers une prise de contact.</p>
           <div class="real-metric">
-            <div class="rm"><div class="n">Site</div><div class="l">architecture éditoriale</div></div>
-            <div class="rm"><div class="n">CRM</div><div class="l">back-office interne</div></div>
-            <div class="rm"><div class="n">RDV</div><div class="l">parcours qualifié</div></div>
+            <div class="rm"><div class="n">Expertises</div><div class="l">catalogue public</div></div>
+            <div class="rm"><div class="n">Outils</div><div class="l">simulateurs visibles</div></div>
+            <div class="rm"><div class="n">RDV</div><div class="l">liens de contact</div></div>
           </div>
         </div>
       </a>
@@ -1111,7 +1113,7 @@ export const bodyHtml = `${navHtml}
             <!-- Right card 2 -->
             <rect x="390" y="175" width="170" height="125" rx="14" fill="#fff" stroke="#E2E8F0"/>
             <text x="410" y="200" font-family="Geist Mono" font-size="9" fill="#64748B" letter-spacing="1">PARCOURS</text>
-            <text x="410" y="242" font-family="Geist" font-weight="700" font-size="25" fill="#0F172A" letter-spacing="-1">Qualification</text>
+            <text x="410" y="242" font-family="Geist" font-weight="700" font-size="25" fill="#0F172A" letter-spacing="-1">Rendez-vous</text>
             <text x="410" y="262" font-family="Geist Mono" font-size="9" fill="#64748B">données de démonstration</text>
             <circle cx="420" cy="282" r="6" fill="#0F172A"/>
             <circle cx="432" cy="282" r="6" fill="#0F172A" opacity="0.7"/>
@@ -1128,12 +1130,12 @@ export const bodyHtml = `${navHtml}
           <span class="real-chip">Site vitrine</span>
         </div>
         <div class="real-body">
-          <div class="real-meta">NEXT.JS <span class="dot"></span> SEO + ADS <span class="dot"></span> Site vitrine</div>
-          <p>Site marque du cabinet d'investissement immobilier clé en main. Funnel de qualification de prospects investisseurs, simulateur de rendement, prise de RDV, contenus YouTube intégrés.</p>
+          <div class="real-meta">PAGE PUBLIQUE EXTERNE <span class="dot"></span> INVENTAIRE DATÉ</div>
+          <p>La page publique présente un service d'investissement locatif, sa tarification, un mini-simulateur indicatif, des ressources, des partenaires et des liens de rendez-vous.</p>
           <div class="real-metric">
-            <div class="rm"><div class="n">Simu</div><div class="l">hypothèses projet</div></div>
-            <div class="rm"><div class="n">Funnel</div><div class="l">qualification</div></div>
-            <div class="rm"><div class="n">Vidéo</div><div class="l">contenus reliés</div></div>
+            <div class="rm"><div class="n">Service</div><div class="l">périmètre affiché</div></div>
+            <div class="rm"><div class="n">Simu</div><div class="l">outil indicatif</div></div>
+            <div class="rm"><div class="n">RDV</div><div class="l">liens visibles</div></div>
           </div>
         </div>
       </a>
@@ -1147,15 +1149,15 @@ export const bodyHtml = `${navHtml}
   <div class="wrap inner">
     <div class="stats-head reveal">
       <div class="eyebrow on-dark">— Périmètre documenté</div>
-      <h2 style="margin-top:14px">Quatre produits,<br>quatre études détaillées.</h2>
-      <p>Nous publions les modules, parcours et choix techniques observables. Un résultat commercial n'est affiché que s'il est accompagné d'un périmètre, d'une période et d'une source contrôlable.</p>
+      <h2 style="margin-top:14px">Quatre pages externes,<br>quatre analyses datées.</h2>
+      <p>Chaque fiche se limite aux éléments visibles sur la source liée. Aucune intervention, technologie, campagne ou performance de Hagnéré Code n'est attribuée à ces sites.</p>
     </div>
 
     <div class="stats-grid">
       <div class="stat reveal">
-        <div class="k">PROJETS EN PROD</div>
+        <div class="k">PAGES PUBLIQUES</div>
         <div class="n">4</div>
-        <div class="l">Deux SaaS fiscaux et deux sites métier présentés dans les études de cas.</div>
+        <div class="l">Deux logiciels présentés et deux sites de services observés sur leurs pages publiques.</div>
       </div>
       <div class="stat reveal reveal-d-1">
         <div class="k">SAAS FISCAUX</div>
@@ -1186,8 +1188,8 @@ export const bodyHtml = `${navHtml}
       </div>
       <div class="right">
         Pas de pool anonyme, pas de sous-traitance offshore, pas de white-label.
-        <b>${TEAM_PUBLIC_COMPOSITION}</b>. Toute l'équipe partage les mêmes rituels et utilise Claude Code.
-        Les personnes affectées à votre projet sont
+        <b>${TEAM_PUBLIC_COMPOSITION}</b>. Les rituels, outils et accès réellement retenus sont
+        définis pour chaque mission. Les personnes affectées à votre projet sont
         <b>nommées au cadrage</b> et figurent dans le devis.
       </div>
     </div>
@@ -1221,8 +1223,8 @@ export const bodyHtml = `${navHtml}
               <span class="v">Brief · cadrage · design · intégration front</span>
             </div>
             <div class="eq-fm">
-              <span class="k">Entreprises fondées</span>
-              <span class="v">3 · dont 2 cabinets actifs</span>
+              <span class="k">Responsabilité</span>
+              <span class="v">Cadrage et pilotage selon le devis</span>
             </div>
             <div class="eq-fm">
               <span class="k">Basé à</span>
@@ -1235,15 +1237,13 @@ export const bodyHtml = `${navHtml}
       <!-- EQUIPE TECH -->
       <div class="eq-team">
         <div class="eq-team-intro reveal">
-          <h3>Un CTO et des développeurs<br>seniors nommés,<br>augmentés par <em>Claude Code</em>.</h3>
+          <h3>Des profils publics,<br>une équipe projet<br>nommée au devis.</h3>
           <p>
-            Nicolas au CTO, puis Killian, Frédéric, Arthur, Ryan et Peter sur l'exécution.
-            Tous seniors ou confirmés, spécialisés React/Next.js et TypeScript,
-            avec une expertise Laravel pour les reprises d'existant.
-            Le CTO apporte la vision transverse et le management tech, les devs la profondeur d'exécution.
-            Et tous utilisent <b>Claude Code</b> comme assistant de développement : recherches, cadrage,
-            architecture, plans d'implémentation. Résultat : <b>on pose moins de questions, on avance
-            plus vite, on livre plus proprement</b>.
+            Les profils de Nicolas, Killian, Frédéric, Arthur, Ryan et Peter sont présentés
+            avec leur statut et leur lien public lorsqu'il existe. Cela ne signifie pas qu'ils
+            interviennent tous sur chaque mission. Le devis nomme l'équipe, les rôles et les relais.
+            Claude Code peut être utilisé comme assistant de développement lorsque les données,
+            les accès et la revue humaine applicables ont été cadrés, sans promesse automatique de délai.
           </p>
         </div>
 
@@ -1328,8 +1328,8 @@ export const bodyHtml = `${navHtml}
           </div>
           <div class="eq-claude-body">
             <span class="tag">Méthode · Claude Code</span>
-            <h4>Vous décrivez le besoin. On gère le reste.</h4>
-            <p>Pas de « 36 000 questions » : nos devs s'appuient sur Claude Code pour <b>faire la recherche de leur côté</b> — cadrage juridique, exploration technique, plans d'implémentation. Vous validez, on livre.</p>
+            <h4>Un assistant, jamais une validation.</h4>
+            <p>Claude Code peut aider à explorer la documentation, le code et les options d'implémentation. Les décisions métier, juridiques et de sécurité restent attribuées aux personnes compétentes, puis validées selon le projet.</p>
           </div>
         </div>
 
@@ -1443,7 +1443,7 @@ export const bodyHtml = `${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intégrations tierces (Pennylane, Stripe…)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Extraction IA selon besoin</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Formation des équipes</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Délai variable selon scope · démos hebdo</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning et cadence de démonstration définis au devis</li>
         </ul>
         <div class="plan-cta"><a href="/demarrer-un-projet" class="btn btn-accent">Décrire mon projet</a></div>
       </div>
@@ -1524,9 +1524,9 @@ export const bodyHtml = `${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Site vitrine : <b>2 à 4 semaines</b>. Outil interne ou SaaS simple : <b>5 à 8 semaines</b>.
-            Plateforme complexe : <b>3 à 6 mois</b>. On s'engage sur un délai fixe dans le devis,
-            puis on vous montre l'avancement chaque semaine. Quand un risque apparaît, on le dit tôt,
+            Le délai dépend des écrans, contenus, intégrations, migrations, validations et tests.
+            Le devis fixe un calendrier et ses hypothèses,
+            puis les démonstrations suivent la cadence convenue. Quand un risque apparaît, on le dit tôt,
             pas à la veille de la livraison.
           </div>
         </div>
@@ -1563,9 +1563,9 @@ export const bodyHtml = `${navHtml}
   <div class="wrap inner">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:18px">Parlons de<br>votre projet.<br><span class="accent">30 min, c'est tout.</span></h2>
-    <p>Un call de cadrage gratuit avec un expert. Vous repartez avec un avis franc et, sous 48 h, une fourchette et un plan — sans engagement.</p>
+    <p>Un échange de cadrage gratuit avec un expert. Vous repartez avec un avis franc ; la fourchette, le plan et leur délai sont précisés selon le périmètre — sans engagement.</p>
     <div class="fcta-cta">
-      <a href="https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte" target="_blank" rel="noopener" class="btn btn-accent btn-lg">
+      <a href="${CALENDLY_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>

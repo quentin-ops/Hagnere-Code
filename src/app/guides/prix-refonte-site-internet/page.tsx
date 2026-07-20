@@ -33,6 +33,12 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -48,7 +54,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 5400,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -117,7 +122,7 @@ const faqItems = [
   {
     question: "Est-ce qu'une refonte fait perdre son référencement sur Google ?",
     answer:
-      "Pas si elle est bien menée — et c'est documenté. Google confirme qu'une redirection permanente transfère les signaux d'une ancienne page vers la nouvelle, sans perte. Les catastrophes (jusqu'à -80 % de visibilité chez Topshop, -90 % chez WooCommerce) viennent d'erreurs d'exécution : redirections manquantes, tout renvoyé vers l'accueil, contenus supprimés. La plus grande étude sur le sujet (892 migrations analysées) montre que les migrations propres récupèrent en 19 à 33 jours — et que 17 % des sites, mal migrés, ne retrouvent jamais leur trafic.",
+      "Une refonte peut faire varier le trafic et les positions ; aucune méthode ne permet d'en garantir le maintien. Google recommande notamment de faire correspondre les anciennes et nouvelles adresses, d'utiliser des redirections permanentes pertinentes et de les conserver généralement au moins un an. Inventoriez les pages et leurs performances avant la bascule, testez chaque redirection et surveillez l'indexation après publication.",
   },
   {
     question: "Combien de temps dure une refonte de site web ?",
@@ -132,7 +137,7 @@ const faqItems = [
   {
     question: "À quelle fréquence faut-il refaire son site internet ?",
     answer:
-      "Le consensus du secteur situe la durée de vie d'un site professionnel entre 3 et 5 ans — à condition qu'il soit maintenu régulièrement. Au-delà, les technologies vieillissent, les attentes des visiteurs évoluent et les standards de Google aussi. Ce n'est pas une règle mécanique : un site bien construit, maintenu et enrichi peut durer plus longtemps ; un site posé en ligne puis jamais touché montre ses limites dès la troisième année. Les signaux qui comptent sont dans la section 3 de ce guide.",
+      "Il n'existe pas de durée de vie universelle. Décidez à partir de signaux observables : objectifs non servis, technologie non maintenue, risques de sécurité, accessibilité, performance, difficultés éditoriales ou architecture devenue inadaptée. Un audit peut conclure à une correction ciblée plutôt qu'à une refonte, quel que soit l'âge du site.",
   },
   {
     question: "Quelle est la différence entre migration de site et refonte ?",
@@ -152,17 +157,17 @@ const faqItems = [
   {
     question: "Peut-on refaire son site web sans le mettre hors ligne ?",
     answer:
-      "Oui — c'est même la seule façon sérieuse de procéder. Le nouveau site se construit sur un environnement de préproduction : une copie de travail, invisible du public, pendant que votre site actuel continue de tourner normalement. Vos visiteurs ne voient rien du chantier. La bascule se fait en quelques heures, une fois le nouveau site testé et le plan de redirections en place — idéalement en période creuse d'activité. Un prestataire qui propose de « fermer le site pendant les travaux » vous dit quelque chose sur ses méthodes.",
+      "Généralement, oui : le nouveau site se construit sur un environnement de préproduction pendant que l'ancien reste accessible. La bascule intervient après les tests et la préparation des redirections. Une interruption peut néanmoins être nécessaire pour certaines migrations de données ou opérations DNS ; le devis doit préciser la fenêtre, le plan de retour arrière et la communication prévue.",
   },
   {
     question: "Faut-il prévoir un budget de maintenance après la refonte ?",
     answer:
-      "Oui, et dès le devis : comptez 10 à 20 % du coût de la refonte par an pour la maintenance (mises à jour de sécurité, correctifs, petites évolutions), plus l'hébergement. Prévoyez aussi une enveloppe pour les 6 premiers mois : ajustements d'après les premières données de fréquentation, corrections remontées par les utilisateurs — de l'ordre de 15 à 20 % du budget initial. Un site refondu puis laissé sans entretien reprend le chemin de la vétusté : c'est précisément ce qui ramène une refonte tous les 3 ans au lieu de 5.",
+      "Oui : le devis doit préciser l'hébergement, la surveillance, les mises à jour, les sauvegardes, le support, les délais d'intervention et les évolutions incluses ou exclues. Le montant ne se déduit pas d'un pourcentage universel du prix de création ; il dépend du socle, des services tiers, du niveau de service et du rythme d'évolution attendu.",
   },
   {
     question: "Une refonte de site est-elle éligible aux aides publiques ?",
     answer:
-      "Oui : les dispositifs d'aide à la numérisation des TPE/PME couvrent l'amélioration d'un site existant au même titre que la création. Attention aux pages qui promettent encore le « chèque France Num » national : il n'existe plus depuis 2021. Les aides actives en 2026 sont régionales, avec des montants et conditions variables, et sont généralement versées après réalisation, sur justificatifs — il faut donc avancer la trésorerie. Notre guide des aides à la création de site internet recense les dispositifs réellement actifs, vérifiés à la source, région par région.",
+      "Cela dépend du dispositif : certains financent une refonte ou des fonctions numériques précises, d'autres excluent les sites vitrines ou les dépenses déjà engagées. Vérifiez la fiche officielle, l'état du guichet, les dépenses éligibles, la date autorisée de commencement et le calendrier de versement, puis demandez une confirmation écrite à l'organisme instructeur.",
   },
 ];
 
@@ -188,7 +193,7 @@ export default function Page() {
         keyPoints={[
           { number: "01", title: "Vitrine : 1 500 – 15 000 €", description: "", color: "violet" },
           { number: "02", title: "Migration SEO : 1 500 – 10 000 €", description: "", color: "blue" },
-          { number: "03", title: "Migration propre : 19-33 jours", description: "", color: "emerald" },
+          { number: "03", title: "Redirections : 1 an minimum", description: "", color: "emerald" },
           { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
         ]}
         relatedLinks={[
@@ -314,12 +319,11 @@ export default function Page() {
           Commençons par la question que les pages « prix d&apos;une
           refonte » évitent soigneusement, puisqu&apos;elles vendent des
           refontes : <strong>la vôtre est-elle justifiée ?</strong> Les
-          sept signaux qui reviennent dans toutes les analyses sérieuses
-          du secteur :
+          sept signaux utiles à vérifier dans un audit :
         </p>
         <ul>
           <li><strong>Votre site n&apos;est pas pensé pour le mobile</strong> — or 6 à 7 visites sur 10 se font désormais sur téléphone.</li>
-          <li><strong>Il met plus de 3 secondes à charger</strong> : Google a mesuré que 53 % des visites mobiles abandonnent au-delà de ce seuil.</li>
+          <li><strong>Ses performances sont insuffisantes pour vos visiteurs</strong> : examinez les Core Web Vitals de terrain, les appareils et vos conversions, sans transformer un seuil de laboratoire en perte de clients certaine.</li>
           <li><strong>Sa technologie n&apos;est plus maintenue</strong> — CMS sans mises à jour de sécurité, prestataire disparu, thème abandonné.</li>
           <li><strong>Votre image a évolué, pas le site</strong> : nouveaux services, nouveau positionnement, et une vitrine qui raconte l&apos;entreprise d&apos;il y a cinq ans.</li>
           <li><strong>Du trafic, mais pas de demandes</strong> : les visiteurs viennent et repartent sans vous contacter. Attention, c&apos;est le symptôme le plus souvent mal diagnostiqué — notre guide <Link href="/guides/pourquoi-mon-site-ne-convertit-pas">pourquoi mon site ne convertit pas</Link> montre que le chiffre affiché est faux dans les deux sens.</li>
@@ -341,15 +345,13 @@ export default function Page() {
           permet de décider&nbsp;: l&apos;audit doit comparer le coût, le risque
           et la durée d&apos;une correction ciblée avec ceux d&apos;une refonte.
         </p>
-        <InfoBox variant="emerald" title="Le test des 3 symptômes">
+        <InfoBox variant="emerald" title="Un scénario de diagnostic, pas une règle automatique">
           Un symptôme isolé se soigne : la vitesse s&apos;optimise, une
-          page se réécrit, un formulaire se répare. Trois symptômes
-          combinés — par exemple : pas de version mobile digne de ce nom,
-          technologie à l&apos;abandon et image dépassée — signalent un
-          problème de fond : c&apos;est la refonte. L&apos;Hôtel du Lac
-          coche quatre cases (lenteur, mobile médiocre, WordPress plus
-          mis à jour depuis 2023, nouvelle identité après rénovation des
-          chambres) : sa refonte est justifiée.
+          page se réécrit, un formulaire se répare. Plusieurs symptômes
+          combinés peuvent justifier de chiffrer une refonte, mais l&apos;audit
+          doit encore la comparer à des corrections ciblées. Dans le scénario
+          fictif de l&apos;Hôtel du Lac, les constats servent uniquement à montrer
+          cette méthode ; ils ne constituent pas un seuil universel.
         </InfoBox>
 
         <h2 id="partielle-ou-totale">4. Refonte partielle, totale ou progressive : l&apos;écart de prix</h2>
@@ -461,21 +463,13 @@ export default function Page() {
 
         <h2 id="migration-seo">7. Migration SEO : le poste invisible des devis, enfin chiffré</h2>
         <p>
-          Voici le cœur de ce guide — et le poste qu&apos;aucune des
-          pages concurrentes que nous avons analysées ne chiffre en
-          euros. Votre référencement est un actif : des années de
+          Voici le cœur de ce guide. Votre référencement repose notamment sur des années de
           contenus, de liens et de positions qui vous apportent des
-          clients chaque mois sans publicité. Une refonte déplace cet
-          actif. Bien exécutée, elle le préserve ; bâclée, elle le brûle.
-          La plus grande étude publiée sur le sujet —{" "}
-          <a href="https://www.abondance.com/20250110-795661-migration-seo-delai-recuperation-trafic.html" target="_blank" rel="noopener noreferrer">892
-          migrations analysées, relayée en français par Abondance</a> —
-          mesure l&apos;enjeu : <strong>en moyenne 523 jours pour
-          retrouver son trafic d&apos;avant migration, et 17 % des sites
-          qui ne le retrouvent jamais</strong>. Mais la même étude montre
-          que les migrations propres récupèrent en <strong>19 à 33
-          jours</strong>. L&apos;écart entre trois semaines et dix-sept
-          mois, c&apos;est l&apos;exécution — pas la chance.
+          visites. Une refonte modifie parfois les adresses, le contenu, le
+          maillage et le rendu. Son effet varie selon le site et aucune étude
+          tierce ne permet de promettre un délai de récupération. Le plan doit
+          donc partir de vos propres données, suivre les recommandations de
+          Google et prévoir une surveillance après la bascule.
         </p>
         <p>
           Ce travail d&apos;exécution a un nom, la migration SEO, et des
@@ -670,42 +664,29 @@ export default function Page() {
 
         <h2 id="cout-inaction">11. Le coût de ne rien faire</h2>
         <p>
-          Le statu quo a aussi un prix — il est juste moins visible,
-          parce qu&apos;il se paie en clients qui ne vous trouvent pas.
-          Trois données pour le rendre tangible : plus de 6 visites sur
-          10 se font sur mobile ; Google a mesuré que{" "}
-          <strong>53 % des visites mobiles abandonnent au-delà de 3
-          secondes de chargement</strong> ; et la durée de vie d&apos;un
-          site professionnel fait consensus entre 3 et 5 ans. Un site de
-          2019 à 5,8 secondes en 2026 n&apos;est pas « encore correct » :
-          il filtre silencieusement la moitié de vos prospects à la
-          porte.
+          Le statu quo peut avoir un coût, mais il ne se calcule pas avec un
+          taux d&apos;abandon générique. Mesurez sur votre propre site les visites,
+          les appareils, les Core Web Vitals, les erreurs, les conversions et
+          leur valeur. Comparez ensuite une optimisation ciblée, une refonte et
+          l&apos;absence d&apos;action avec les mêmes hypothèses.
         </p>
         <FormulaBox>
-          <strong>Le compteur du statu quo, pour l&apos;Hôtel du Lac :</strong>
+          <strong>Scénario de décision à compléter :</strong>
           <br />
-          ~2 000 visites mobiles/mois × 53 % qui abandonnent (site à
-          5,8 s) ≈ 1 060 visiteurs perdus chaque mois
+          Conversions observées avant correction : ______ / mois
           <br />
-          À 2 % de réservation et 260 € de panier moyen (2 nuits) :
-          ~21 réservations, soit <strong>≈ 5 500 € de manque à gagner
-          par mois</strong>
+          Valeur ou marge moyenne documentée : ______ €
           <br />
+          Effet mesuré d&apos;une correction testée : ______ %
           <br />
-          Ce calcul majore volontairement — tous les abandons ne sont pas
-          des clients perdus. Divisez-le par trois : il reste ~22 000 €
-          par an, plus que le devis complet de la section 9.
+          Gain annualisé estimé : conversions × valeur × effet = ______ €
         </FormulaBox>
         <p>
-          Faites le même calcul avec vos chiffres réels — vos visites
-          mobiles sont dans votre outil de mesure d&apos;audience, votre
-          temps de chargement se teste gratuitement (PageSpeed
-          Insights). Si le résultat est inférieur au prix d&apos;une
-          refonte, vous venez d&apos;économiser une refonte : optimisez.
-          S&apos;il le dépasse largement, chaque mois d&apos;attente
-          coûte plus cher que le chantier — et c&apos;est le bon
-          argument à opposer, chiffres en main, à un associé qui trouve
-          que « le site marche encore très bien ».
+          Utilisez une mesure avant/après ou un test contrôlé lorsque c&apos;est
+          possible. Une corrélation entre lenteur et abandon ne prouve pas que
+          chaque visite au-delà d&apos;un seuil aurait acheté. Si les données ne
+          permettent pas de chiffrer un gain, présentez-le comme inconnu plutôt
+          que comme un manque à gagner certain.
         </p>
 
         <h2 id="tco">12. Le vrai coût sur 3 ans</h2>
@@ -838,8 +819,8 @@ export default function Page() {
             <li><strong>1 500 – 15 000 €</strong> : le cœur de marché d&apos;une refonte vitrine/PME (e-commerce : 5 000 – 40 000 €).</li>
             <li><strong>1 500 – 10 000 €</strong> : la migration SEO, le poste que les devis oublient — 15 à 30 % du budget, et la meilleure assurance du projet.</li>
             <li><strong>1 an minimum</strong> : la durée de conservation des redirections 301, recommandée par Google — à écrire au contrat.</li>
-            <li><strong>19-33 jours vs 523 jours</strong> : la récupération du trafic après une migration propre vs la moyenne, toutes migrations confondues (étude sur 892 cas).</li>
-            <li><strong>3 symptômes</strong> : le seuil qui justifie une refonte — en dessous, une optimisation à 1 000 – 3 000 € suffit souvent.</li>
+            <li><strong>Mesure avant/après</strong> : la seule base fiable pour attribuer un effet à votre refonte.</li>
+            <li><strong>Aucun seuil automatique</strong> : l&apos;audit doit comparer correction ciblée et reconstruction.</li>
           </ul>
         </InfoBox>
 
@@ -853,11 +834,10 @@ export default function Page() {
             budget.
           </li>
           <li>
-            <strong>Chiffrez le statu quo.</strong> Visites mobiles ×
-            53 % × votre taux de conversion (la part de visiteurs qui
-            deviennent clients — 2 % dans notre exemple) × votre panier
-            moyen (section 11). C&apos;est votre budget de référence — et
-            votre argument interne.
+            <strong>Chiffrez le statu quo.</strong> Utilisez vos conversions,
+            votre marge et l&apos;effet réellement observé d&apos;une correction.
+            Si cet effet n&apos;est pas mesuré, conservez une fourchette et
+            rendez l&apos;incertitude visible (section 11).
           </li>
           <li>
             <strong>Écrivez le cahier des charges version refonte</strong>{" "}

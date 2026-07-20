@@ -70,7 +70,7 @@ export default function OgImage() {
             TJM développeur web
           </div>
           <div style={{ display: "flex", fontSize: 30, color: "#a1a1aa" }}>
-            Le seul guide écrit pour celui qui paie
+            Un guide écrit pour celui qui paie
           </div>
         </div>
 

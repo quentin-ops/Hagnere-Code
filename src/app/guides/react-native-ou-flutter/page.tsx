@@ -32,6 +32,12 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -124,7 +130,7 @@ const faqItems = [
   {
     question: "Quel framework permet de livrer un MVP plus vite ?",
     answer:
-      "Les deux livrent un MVP (première version volontairement réduite à l'essentiel) dans des délais comparables — les comparatifs qui tranchent ce point se contredisent d'ailleurs entre eux. Le vrai facteur de vitesse n'est pas le framework mais votre point de départ : une équipe qui maîtrise déjà React (parce que votre site ou votre SaaS est en React) livre plus vite en React Native ; une équipe Flutter expérimentée livre aussi vite en Flutter. Chez Hagnéré Code, un MVP mobile est sur les stores dès 12 semaines — notre guide du prix d'une application mobile détaille budgets et délais complets.",
+      "Les comparatifs qui tranchent ce point se contredisent. Le vrai facteur de vitesse est le point de départ : périmètre, design, backend, intégrations, comptes stores, jeu de test et maîtrise du framework par l'équipe. Chez Hagnéré Code, le calendrier est établi après ce cadrage et confirmé dans le devis ; le framework seul ne produit pas un délai.",
   },
   {
     question: "Quel framework est le plus pérenne à long terme ?",
@@ -372,9 +378,8 @@ export default function Page() {
 
         <h2 id="couts">4. Les coûts : le TJM est identique, l&apos;économie est ailleurs</h2>
         <p>
-          Le fait le plus utile de ce comparatif, et aucun guide
-          concurrent ne l&apos;exploite : le baromètre TJM de référence
-          (SILKHOM 2025) publie des grilles{" "}
+          Un point utile de ce comparatif vient du baromètre TJM SILKHOM 2025,
+          qui publie des grilles{" "}
           <strong>strictement identiques</strong> pour les développeurs
           React Native, Flutter et natifs iOS/Android :
         </p>
@@ -554,7 +559,7 @@ export default function Page() {
         <GuideInlineCTA
           title="Deux devis contradictoires sur la table ?"
           description="Décrivez votre projet d'application en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis franc et argumenté — y compris quand Flutter ou le natif est le meilleur choix pour votre cas. Notre biais React est déclaré : jugez-nous sur les arguments."
-          tags={["Objectif : prochain jour ouvré", "MVP sur les stores dès 12 semaines", "Biais déclaré, arguments sourcés"]}
+          tags={["Objectif : prochain jour ouvré", "Planning confirmé au devis", "Biais déclaré, arguments sourcés"]}
           ctaLabel="Comparer mes options"
         />
 
@@ -569,8 +574,8 @@ export default function Page() {
           mobile — impossible en Dart sans recruter. La
           réversibilité : une dizaine de prestataires React Native
           accessibles en région Auvergne-Rhône-Alpes, contre trois en
-          Flutter identifiés. Verdict : React Native + Expo, MVP visé
-          en 12 semaines — non parce que Flutter est inférieur, mais
+          Flutter identifiés dans ce scénario. Verdict fictif : React Native
+          + Expo, avec une cible illustrative de 12 semaines — non parce que Flutter est inférieur, mais
           parce que le contexte de Batilog rendait le choix
           asymétrique. C&apos;est toute la thèse de ce guide : le bon
           framework est une propriété de votre situation, pas du
@@ -584,8 +589,7 @@ export default function Page() {
 
         <h2 id="gouvernance">8. Qui gouverne quoi : Meta, Google — et le risque fournisseur</h2>
         <p>
-          La question qu&apos;aucun comparatif français ne pose, et
-          c&apos;est pourtant celle d&apos;un dirigeant :{" "}
+          Une question de gouvernance concerne directement le dirigeant :{" "}
           <strong>qui paie les ingénieurs du framework, et
           pourquoi ?</strong> Côté React Native : Meta l&apos;utilise
           dans ses propres applications à milliards
@@ -638,20 +642,15 @@ export default function Page() {
         <h2 id="maintenance">10. La maintenance qu&apos;on ne vous dit jamais</h2>
         <p>
           Le coût caché ne vient pas seulement du code : il est aussi imposé
-          par les règles des magasins. <strong>Apple et Google imposent un cycle de
-          mise à jour annuel</strong>, quel que soit le framework.
-          Depuis le 24 avril 2025, toute soumission à l&apos;App Store
-          doit être refabriquée avec les derniers outils d&apos;Apple
-          (« Xcode 16 » et le « SDK iOS 18 » — les noms importent
-          peu : retenez que l&apos;exigence est renouvelée chaque
-          année). Google Play
-          impose de cibler la dernière version d&apos;Android (niveau API 35,
-          c&apos;est-à-dire la version que l&apos;application déclare viser,
-          depuis le 31 août 2025 pour les nouvelles applications, le
-          31 août 2026 pour toutes) — sous peine de devenir{" "}
-          <strong>invisible</strong> pour les utilisateurs des
-          téléphones récents. Une application « finie » qu&apos;on ne
-          touche plus n&apos;existe donc pas. Pour sa simulation, ce guide
+          par les règles des magasins. Apple et Google actualisent leurs
+          exigences de soumission et de disponibilité, quel que soit le
+          framework. Depuis le 28 avril 2026, Apple demande Xcode 26 et un SDK
+          iOS 26 pour les nouvelles soumissions. Google Play exige une API cible
+          récente et passera, le 31 août 2026, à Android 16 (API 36) pour la
+          plupart des nouvelles apps et mises à jour, avec des exceptions
+          publiées par type d&apos;appareil. Une application qui n&apos;est plus suivie
+          peut donc perdre sa capacité de mise à jour ou sa disponibilité pour
+          certains nouveaux utilisateurs. Pour sa simulation, ce guide
           provisionne <strong>10 à 20 % du coût initial par an</strong> ;
           remplacez cette hypothèse par un contrat adapté au périmètre.
           Et ne repoussez pas : un cas publié chiffre à 380 000 $ la remise
@@ -705,10 +704,9 @@ export default function Page() {
           entreprise, documentation à jour, et un framework au vivier
           assez large pour qu&apos;une autre équipe reprenne</strong> —
           quatre clauses qui transforment un mariage en partenariat.
-          Un mot d&apos;insistance sur les comptes développeur, le
-          piège le plus fréquent que nous rencontrons en reprise de
-          projet : le compte Apple (99 $/an) et le compte Google Play
-          (25 $ une fois) sont votre identité officielle sur les
+          Un mot d&apos;insistance sur les comptes développeur, un
+          risque contractuel à éviter lors d&apos;une reprise de
+          projet : les comptes Apple et Google Play sont votre identité officielle sur les
           stores — les avis, l&apos;historique et le nom public de
           l&apos;application y sont attachés. Ouverts au nom de
           l&apos;agence « pour aller plus vite », ils deviennent un
@@ -851,9 +849,9 @@ export default function Page() {
           dans ce guide. Nous utilisons les assistants de code pour accélérer
           les tâches répétitives, avec revue humaine et tests ; ce gain dépend
           de l&apos;équipe et ne suffit pas, à lui seul, à choisir un framework.
-          Concrètement : un{" "}
-          <strong>MVP sur les stores dès 12 semaines</strong>, le code
-          cédé et les comptes stores à votre nom. Quand Flutter ou le
+          Concrètement : un planning, un périmètre, un protocole de recette,
+          les droits sur le code et les comptes stores sont précisés au devis.
+          Quand Flutter ou le
           natif est le meilleur choix pour votre cas, nous vous le
           disons avant le devis. Un{" "}
           <strong>Discovery Sprint (1 500 €, 2 jours, déduit à 100 %

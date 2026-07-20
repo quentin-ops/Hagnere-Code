@@ -4,7 +4,7 @@
 
 ```text
 Slug : erp-ou-logiciel-sur-mesure
-Statut actuel : contre-audit corrigé, prêt pour intégration et revue humaine
+Statut au 20 juillet 2026 : publié dans le registre éditorial, parmi les 40 `PUBLISHED_GUIDES` ; le hub, le sitemap et `llms.txt` sont alimentés automatiquement lors du build ; aucun test lecteur humain, déploiement actif ou état d'indexation Google n'est déduit de ce statut
 Requête principale : ERP ou logiciel sur mesure
 Moment du parcours : décider
 Lecteur précis : dirigeant de TPE/PME ou responsable d’exploitation qui doit remplacer plusieurs fichiers et outils disjoints, ou choisir un nouveau socle de gestion
@@ -259,11 +259,12 @@ CTA principal et résultat après clic : « Demander un second regard » vers `/
 | Originalité |        2 | Note de décision + TCO et ROI entièrement reproductibles                        | —                                                                   |
 | Style       |        1 | Pas de faux client ni de superlatif ; exemple arithmétique clairement fictif    | Relecture par un dirigeant réel encore nécessaire                   |
 | Conversion  |        2 | Mauvais fit explicite et CTA adouci, après l’action autonome                    | —                                                                   |
-| SEO/produit |        1 | Metadata, Article/Breadcrumb, FAQ visible, OG, registre et maillage sortant présents | Build, navigateur et maillage entrant à finaliser par l’intégrateur |
+| SEO/produit |        1 | Metadata, Article/Breadcrumb, FAQ visible, OG, registre et maillage sortant présents | Guide publié parmi les 40 entrées du registre ; déploiement actif, rendu final et indexation à contrôler séparément |
 
 Total auto-évalué après correction : **18/20**. Le contre-audit est indépendant
-de la rédaction, mais ce score ne remplace ni une lecture humaine ni les
-contrôles techniques globaux.
+de la rédaction, mais ce score et la publication dans le registre ne remplacent
+ni une lecture humaine, ni la batterie du snapshot final, ni le contrôle du
+déploiement actif.
 
 ### Test lecteur non technique
 
@@ -288,7 +289,7 @@ Réserves sur les sources et calculs : formule TCO susceptible de chevaucher les
 Réserves sur la clarté et le plan : seulement trois colonnes de stratégies dans le tableau de coûts ; définitions API, recette et on-premise absentes ; délai, charge interne et responsabilité réglementaire non traités comme critères
 Réserves sur la conversion : CTA trop fort ; mauvais fit insuffisamment visible ; biais commercial déclaré mais comparaison spécifique moins probatoire
 Corrections ou justification : formule non chevauchante, exemple fictif complet et recalculé, quatre stratégies distinctes, protocole de preuve identique, dix critères, portée CNIL explicitée, lexique complété, maillage CDC/CRM et CTA adouci
-Statut maximal réellement atteint : prêt pour intégration et revue humaine ; ni publication ni indexation revendiquée
+Statut atteint au 20 juillet 2026 : publication dans le registre éditorial après contre-audit délégué ; aucune validation par un lecteur humain, conversion, position ou indexation n'est revendiquée
 ```
 
 ### Vérifications
@@ -299,8 +300,8 @@ Statut maximal réellement atteint : prêt pour intégration et revue humaine ; 
 - [x] aucune ressource téléchargeable promise ;
 - [x] metadata et données structurées présentes dans la page ;
 - [x] entrée de registre et maillage sortant vers les guides connexes présents ;
+- [x] guide compté parmi les 40 entrées publiées du registre au 20 juillet 2026 ;
 - [ ] maillage entrant depuis le corpus, hors périmètre de cet agent ;
-- [x] TypeScript global (`npx tsc --noEmit`) et ESLint ciblé validés le 20 juillet 2026 ;
-- [ ] tests et build globaux, à lancer par l’intégrateur ;
+- [ ] batterie du dépôt relancée sur le snapshot final après toute modification ; aucun ancien résultat de test ou de build n'est conservé comme preuve courante ;
 - [ ] rendu navigateur aux dix largeurs de la charte ;
-- [ ] publication et indexation, non revendiquées.
+- [ ] présence revérifiée sur le déploiement actif et indexation contrôlée séparément dans Search Console.

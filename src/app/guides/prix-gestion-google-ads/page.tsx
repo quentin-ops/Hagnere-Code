@@ -956,7 +956,7 @@ CPL média maximal à l'équilibre =
           tags={[
             "Budget et périmètre séparés",
             "Cas adaptés et inadaptés explicités",
-            "Objectif : prochain jour ouvré",
+            "Objectif : prochain jour ouvré · délai non garanti",
           ]}
           ctaLabel="Cadrer mon budget Ads"
           ctaHref="/demarrer-un-projet"

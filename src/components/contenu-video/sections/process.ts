@@ -86,7 +86,7 @@ export const processHtml = `
         <div class="cv-rm-playhead-line"></div>
         <div class="cv-rm-playhead-badge">
           <span class="cv-rm-playhead-dot"></span>
-          EN PROD
+          MISE EN LIGNE
         </div>
       </div>
     </div>

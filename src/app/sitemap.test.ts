@@ -10,6 +10,7 @@ import { readdirSync } from "node:fs";
 import { join, relative } from "node:path";
 import { describe, it, expect } from "vitest";
 import { GUIDES, PUBLISHED_GUIDES } from "@/lib/guides";
+import { LOCAL_PAGES, localPagePath } from "@/lib/local-pages";
 import { DOWNLOADABLE_RESOURCES } from "@/lib/resources";
 import { SITE_URL } from "@/lib/seo";
 import { WHITE_PAPERS } from "@/lib/white-papers";
@@ -124,6 +125,20 @@ describe("sitemap", () => {
       expect(entry, resource.id).toBeDefined();
       expect(entry?.lastModified, resource.id).toEqual(
         new Date(`${resource.updatedAt}T12:00:00Z`),
+      );
+    }
+  });
+
+  it("inclut chaque page locale avec la date de modification du registre", () => {
+    for (const page of LOCAL_PAGES) {
+      const route = localPagePath(page);
+      const entry = map.find(
+        (candidate) => candidate.url === `${BASE}${route}`,
+      );
+
+      expect(entry, route).toBeDefined();
+      expect(entry?.lastModified, route).toEqual(
+        new Date(`${page.dateModified}T12:00:00Z`),
       );
     }
   });

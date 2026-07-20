@@ -70,7 +70,7 @@ export const LOCAL_PAGES: LocalPageEntry[] = [
     heroTitle: "Développement web en Savoie : six territoires, six économies",
     locality: "Savoie",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-19",
+    dateModified: "2026-07-20",
   },
   {
     path: "savoie/chambery",
@@ -82,7 +82,7 @@ export const LOCAL_PAGES: LocalPageEntry[] = [
     heroTitle: "Agence web à Chambéry : ce que cette ville achète vraiment",
     locality: "Chambéry",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-19",
+    dateModified: "2026-07-20",
   },
 ];
 
@@ -92,6 +92,15 @@ export function localPagePath(p: LocalPageEntry): string {
 
 export function localPageUrl(p: LocalPageEntry): string {
   return `https://hagnere-code.ai${localPagePath(p)}`;
+}
+
+export function formatLocalPageDate(isoDate: string): string {
+  return new Intl.DateTimeFormat("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${isoDate}T12:00:00Z`));
 }
 
 export function getLocalPage(root: LocalPageEntry["root"], path: string): LocalPageEntry {

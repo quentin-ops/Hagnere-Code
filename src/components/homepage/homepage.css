@@ -199,6 +199,7 @@
   .svc-mock-chrome span:nth-child(2){background:#333}
   .svc-mock-chrome span:nth-child(3){background:#333}
   .svc-mock-url{position:absolute;left:50%;transform:translateX(-50%);font-family:var(--font-geist-mono);font-size:11px;color:#737373;background:#1C1C1C;padding:3px 14px;border-radius:6px}
+  .svc-mock-disclaimer{margin-left:auto;font-family:var(--font-geist-mono);font-size:8px;line-height:1.2;letter-spacing:.08em;color:#c4b5fd;border:1px solid rgba(196,181,253,.34);background:rgba(109,40,217,.12);padding:4px 6px;border-radius:5px;white-space:nowrap}
   .svc-mock-body{display:grid;grid-template-columns:160px 1fr;height:300px}
   .svc-mock-side{background:#0F0F0F;border-right:1px solid #262626;padding:16px 12px;display:flex;flex-direction:column;gap:14px}
   .svc-mock-logo{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:#fff;padding:4px 6px}

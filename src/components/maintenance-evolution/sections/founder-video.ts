@@ -5,7 +5,7 @@ export const founderVideoHtml = `
     <div class="me-fv-grid reveal">
       <!-- Video thumbnail -->
       <div class="me-fv-player">
-        <a class="me-fv-play hero-video" href="#contact" aria-label="Réserver un échange de 20 min avec le fondateur">
+        <a class="me-fv-play hero-video" href="#contact" aria-label="Demander un échange avec le fondateur">
           <div class="me-fv-thumb">
             <svg viewBox="0 0 400 240" class="me-fv-thumb-svg" aria-hidden="true">
               <defs>
@@ -76,7 +76,7 @@ export const founderVideoHtml = `
         </div>
 
         <a href="#contact" class="btn btn-ghost btn-lg me-fv-cta">
-          Pas le temps de regarder&nbsp;? Réservez 20 min direct
+          Demander un échange direct avec Quentin
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </div>

@@ -758,7 +758,7 @@ ${navHtml}
         </div>
         <h3 class="ec-stack-track-title">Shopify Plus + storefront <em>sur mesure</em>.</h3>
         <p class="ec-stack-track-pitch">
-          On exploite <b>un écosystème largement outillé</b> (checkout Shopify, Klaviyo, Gorgias,
+          On s'appuie sur <b>un écosystème largement outillé</b> (checkout Shopify, Klaviyo, Gorgias,
           Judge.me). On ajoute un storefront <b>Hydrogen ou Next.js</b> quand le SEO, la vitesse
           ou l'identité de marque le justifient. Vous gardez Shopify. On apporte le sur-mesure là où ça compte.
         </p>
@@ -996,9 +996,9 @@ ${navHtml}
   <div class="wrap inner">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:14px">Parlons de votre boutique.<br><span class="accent">30 minutes, c'est tout.</span></h2>
-    <p>Un call avec un expert : on regarde votre stack actuelle (ou votre brief), on challenge le périmètre, on sort une fourchette budget + délai le soir même. Si ce n'est pas pour nous, on vous oriente ailleurs.</p>
+    <p>Un échange avec un expert : nous examinons votre stack actuelle ou votre brief, puis nous précisons le périmètre, les prochaines étapes et le délai de chiffrage. Si une autre solution paraît plus adaptée, nous vous le disons.</p>
     <div class="scta-cta">
-      <a href="#" class="btn btn-accent btn-lg">
+      <a href="/rendez-vous" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>

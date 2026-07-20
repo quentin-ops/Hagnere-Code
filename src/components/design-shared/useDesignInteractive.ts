@@ -439,11 +439,28 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
         scenarios.querySelectorAll<HTMLElement>(`.${prefix}-scen-panel`),
       );
 
+      const tabList = scenarios.querySelector<HTMLElement>("[role='tablist']");
+      if (tabList && !tabList.hasAttribute("aria-label")) {
+        tabList.setAttribute("aria-label", "Choisir un scénario");
+      }
+      tabs.forEach((tab) => {
+        const key = tab.dataset.scenario;
+        const panel = panels.find((item) => item.dataset.panel === key);
+        if (!key || !panel) return;
+        const tabId = `${prefix}-scenario-tab-${key}`;
+        const panelId = `${prefix}-scenario-panel-${key}`;
+        tab.id = tabId;
+        tab.setAttribute("aria-controls", panelId);
+        panel.id = panelId;
+        panel.setAttribute("aria-labelledby", tabId);
+      });
+
       const activate = (key: string) => {
         scenarios.dataset.active = key;
         tabs.forEach((t) => {
           const active = t.dataset.scenario === key;
           t.setAttribute("aria-selected", active ? "true" : "false");
+          t.tabIndex = active ? 0 : -1;
           t.classList.toggle("is-active", active);
         });
         panels.forEach((p) => {
@@ -462,11 +479,20 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
           if (key) activate(key);
         };
         const onKey = (e: KeyboardEvent) => {
-          if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+          if (
+            e.key === "ArrowRight" ||
+            e.key === "ArrowLeft" ||
+            e.key === "Home" ||
+            e.key === "End"
+          ) {
             e.preventDefault();
             const idx = tabs.indexOf(t);
             const next =
-              e.key === "ArrowRight"
+              e.key === "Home"
+                ? tabs[0]
+                : e.key === "End"
+                  ? tabs[tabs.length - 1]
+                  : e.key === "ArrowRight"
                 ? tabs[(idx + 1) % tabs.length]
                 : tabs[(idx - 1 + tabs.length) % tabs.length];
             next.focus();
@@ -852,7 +878,7 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
           buttons.forEach((b) => {
             const active = b === btn;
             b.classList.toggle("is-active", active);
-            b.setAttribute("aria-selected", active ? "true" : "false");
+            b.setAttribute("aria-pressed", active ? "true" : "false");
           });
         };
         btn.addEventListener("click", onClick);

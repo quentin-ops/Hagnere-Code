@@ -251,7 +251,7 @@ const bundles = [
   {
     name: "Sprint de livraison",
     price: "Forfait fixe",
-    text: "Périmètre écrit, budget plafonné, démos chaque semaine, arbitrages visibles.",
+    text: "Périmètre écrit, budget plafonné, démonstrations à cadence convenue et arbitrages visibles.",
     links: [
       { href: "/methode", label: "Sprint Fixe" },
       { href: "/tarifs", label: "Tarifs" },
@@ -269,9 +269,9 @@ const bundles = [
 ];
 
 const proofLinks = [
-  { href: "/realisations", label: "Réalisations", value: "4 cas documentés" },
+  { href: "/realisations", label: "Réalisations", value: "4 études publiques déclaratives" },
   { href: "/demarrer-un-projet", label: "Décrire mon projet", value: "Objectif : prochain jour ouvré" },
-  { href: "/outils/calculateur-cout-excel", label: "Coût Excel", value: "ROI outil interne" },
+  { href: "/outils/calculateur-cout-excel", label: "Coût Excel", value: "Comparaison brute sur 3 ans" },
   { href: "/equipe", label: "Équipe", value: `${TEAM_TOTAL_COUNT} personnes · équipe nommée` },
 ];
 

@@ -241,8 +241,9 @@ autorisé l'arbitrage de publication ; aucun test lecteur humain n'est revendiqu
 - [x] FAQ visible, sans balisage `FAQPage` selon la règle projet actuelle ;
 - [x] metadata, registre, image sociale, maillage et ancres cohérents ;
 - [x] image sociale rendue en PNG 1 200 × 630 et contrôlée visuellement ;
-- [x] TypeScript, ESLint ciblé et les 86 tests SEO passés ;
-- [x] build de production passé : 98 pages générées et postbuild SEO vert ;
+- [x] TypeScript, ESLint et batterie SEO du snapshot d'intégration passés ;
+- [x] build et postbuild du snapshot d'intégration validés ; le nombre courant
+      d'URL est consigné dans `PRE-LAUNCH-CHECKLIST.md` après chaque gel ;
 - [x] rendu contrôlé à 320, 360, 390, 430, 640, 768, 1024, 1280, 1440 et
       1600 px sans débordement global ; tableaux localement défilables sur les
       petites largeurs, CTA, ancre, FAQ, focus et OG vérifiés ;

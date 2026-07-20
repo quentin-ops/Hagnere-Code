@@ -25,7 +25,7 @@ export const problemsHtml = `
         <p>Design daté, photos pixelisées, polices 2019. Vos prospects vous comparent à vos concurrents et <b>vous ne faites plus le poids</b>.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Refonte design + technique · 5–7 sem.</span>
+          <span class="sap-foot-v">Refonte ou correction · périmètre au devis</span>
         </div>
       </article>
 
@@ -67,10 +67,10 @@ export const problemsHtml = `
           <span class="sap-n">04</span>
         </div>
         <h3>« On a du trafic mais zéro lead »</h3>
-        <p>Le site <i>informe</i> mais ne <i>convertit</i> pas. Hiérarchie floue, CTAs absents, formulaires à 12 champs, pas de preuve sociale. <b>Trafic = 0 €</b> si personne ne remplit le form.</p>
+        <p>Le site informe mais les demandes mesurées sont insuffisantes. Hiérarchie, appels à l&apos;action, formulaires, qualité du trafic et mesure doivent être audités avant d&apos;attribuer une cause.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Audit CRO + refonte conversion · 3–5 sem.</span>
+          <span class="sap-foot-v">Audit parcours + tests · calendrier au devis</span>
         </div>
       </article>
 
@@ -96,11 +96,11 @@ export const problemsHtml = `
           </div>
           <span class="sap-n">06</span>
         </div>
-        <h3>« Je lance un produit, j'ai besoin d'une LP en 2 semaines »</h3>
-        <p>Campagne Ads qui démarre dans 15 jours, page corporate inutilisable pour convertir, pas le temps de refaire tout le site. <b>Besoin</b>&nbsp;: une landing page dédiée, tracking complet, A/B ready.</p>
+        <h3>« Je lance un produit à une date déjà annoncée »</h3>
+        <p>Une campagne a une échéance et la page actuelle n&apos;est pas adaptée. Le cadrage doit vérifier si une page dédiée, la mesure et les tests sont réalisables avant cette date.</p>
         <div class="sap-foot sap-foot-hot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Landing Page Essentiel · 2–4 sem. · 6 900 €</span>
+          <span class="sap-foot-v">Landing page · faisabilité, délai et prix au devis</span>
         </div>
       </article>
     </div>

@@ -269,8 +269,8 @@ n'est revendiqué.
 - [x] aucun chiffre ou cas réel présenté comme tel ;
 - [x] CTA disponible et aucune ressource fantôme ;
 - [x] metadata, données structurées, registre, maillage et ancres réconciliés ;
-- [x] Prettier, ESLint ciblé et TypeScript passés ; les 86 tests SEO et le build
-      de production global passent après intégration ;
+- [x] Prettier, ESLint, TypeScript, batterie SEO et build du snapshot
+      d'intégration passés ; toute nouvelle modification invalide cette preuve ;
 - [x] rendu contrôlé aux dix largeurs de 320 à 1 600 px, CTA, H1, figure,
       tableaux, FAQ et image Open Graph inspectés ;
 - [x] route incluse dans le hub, le sitemap et `llms.txt`, avec `index,follow`

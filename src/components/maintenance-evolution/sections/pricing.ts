@@ -32,7 +32,7 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Restitution selon le format convenu</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Remise éventuelle uniquement si écrite au devis</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Réserver l'audit</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander l'audit</a></div>
       </div>
 
       <!-- ESSENTIEL -->

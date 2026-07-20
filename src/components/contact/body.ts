@@ -1,4 +1,5 @@
 import { navHtml } from "@/components/design-shared/nav-html";
+import { CALENDLY_URL } from "@/lib/calendly";
 
 export const bodyHtml = `
 ${navHtml}
@@ -24,7 +25,7 @@ ${navHtml}
           Formulaire projet
           <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Réserver 30 min →</a>
+        <a href="${CALENDLY_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Réserver 30 min →</a>
       </div>
       <div class="c-hero-meta">
         <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Objectif : prochain jour ouvré</span>
@@ -147,7 +148,7 @@ ${navHtml}
       <a href="/realisations/lmnp-ai" class="c-proof-item">
         <span>SaaS comptable</span>
         <b>LMNP.AI</b>
-        <em>Produit en production, clients payants, automatisations métier.</em>
+        <em>Offre et fonctions de comptabilité présentées sur une page publique.</em>
       </a>
       <a href="/realisations/sci-ai" class="c-proof-item">
         <span>Application métier</span>
@@ -157,12 +158,12 @@ ${navHtml}
       <a href="/realisations/hagnere-patrimoine" class="c-proof-item">
         <span>Acquisition B2B</span>
         <b>Hagnéré Patrimoine</b>
-        <em>SEO, qualification commerciale, site premium orienté leads.</em>
+        <em>Contenus, offres et formulaires visibles sur le site public.</em>
       </a>
       <a href="/realisations/hagnere-investissement" class="c-proof-item">
         <span>Génération de leads</span>
         <b>Hagnéré Investissement</b>
-        <em>Site vitrine, simulateur de rendement, funnel 3 segments.</em>
+        <em>Offres immobilières et parcours de contact présentés publiquement.</em>
       </a>
     </div>
   </div>
@@ -199,7 +200,7 @@ ${navHtml}
           <div class="c-flow-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg></div>
         </div>
         <h4>Un expert vous répond</h4>
-        <p>Votre demande est lue par une personne de l'équipe. Nous visons le prochain jour ouvré, sans garantir un délai contractuel à ce stade.</p>
+        <p>Votre demande est lue par une personne de l'équipe. Nous visons une réponse le prochain jour ouvré, sans délai garanti.</p>
         <div class="c-flow-tag">Objectif · prochain jour ouvré</div>
       </div>
 

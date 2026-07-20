@@ -4,15 +4,15 @@ import { CASES } from "@/components/realisations/cases";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Réalisations : 4 produits en production · Hagnéré Code",
+  title: "Analyses de 4 pages publiques externes · Hagnéré Code",
   description:
-    "4 études de cas documentées : contexte, parcours, modules livrés et stack technique de deux SaaS et deux sites métier.",
+    "Analyse éditoriale de quatre pages publiques externes : éléments visibles, source datée et limites de preuve, sans intervention Hagnéré Code revendiquée.",
   alternates: { canonical: "/realisations" },
   openGraph: {
     ...OG_BASE,
-    title: "Réalisations · Hagnéré Code",
+    title: "Analyses de pages publiques externes · Hagnéré Code",
     description:
-      "Quatre projets documentés : contexte, fonctionnement, stack et modules livrés.",
+      "Quatre analyses éditoriales externes : source consultable, éléments visibles et absence d'attribution de conception ou de performance.",
     url: "/realisations",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -23,14 +23,14 @@ const breadcrumbJsonLd = JSON.stringify({
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
-    { "@type": "ListItem", position: 2, name: "Réalisations", item: "https://hagnere-code.ai/realisations" },
+    { "@type": "ListItem", position: 2, name: "Analyses publiques", item: "https://hagnere-code.ai/realisations" },
   ],
 });
 
 const itemListJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Réalisations Hagnéré Code",
+  name: "Analyses de pages publiques externes par Hagnéré Code",
   itemListElement: Object.values(CASES).map((c, i) => ({
     "@type": "ListItem",
     position: i + 1,

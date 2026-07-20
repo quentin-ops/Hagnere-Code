@@ -1,9 +1,11 @@
 /**
  * Rate limiter Postgres-backed multi-services.
  *
- * Sert 2 routes coûteuses :
+ * Sert les routes publiques qui doivent garder une limite cohérente entre
+ * plusieurs instances :
  *   - 'transcribe' → Groq Whisper (cost = bytes audio uploadés)
  *   - 'inquiry'    → Resend mail (pas de cost unit, juste compteur)
+ *   - 'sirene'     → API Recherche d'entreprises (compteur uniquement)
  *
  * 4 protections empilées par service :
  *   1. Per-IP / heure   → anti-burst d'un même prospect
@@ -24,14 +26,13 @@
 
 import { sql } from "drizzle-orm";
 import { getDb } from "@/db";
-import { aiCallLog } from "@/db/schema";
 import { createHash } from "node:crypto";
 import { log } from "@/lib/logger";
 
 // ── Service identifiers ──────────────────────────────────────────────
 // NB : la table ai_call_log contient encore des rows historiques avec
 // service='estimate' (ancien estimateur IA supprimé) — ne pas purger.
-export type ServiceId = "transcribe" | "inquiry";
+export type ServiceId = "transcribe" | "inquiry" | "sirene";
 
 // ── Limites par service (defaults conservateurs) ─────────────────────
 //
@@ -72,6 +73,13 @@ const SERVICE_LIMITS: Record<ServiceId, ServiceLimits> = {
     globalDay: parseInt(process.env.INQUIRY_RATE_GLOBAL_DAY || "100", 10),
     costBreaker: null, // pas de coût marginal mesurable côté serveur
   },
+  sirene: {
+    perIpHour: parseInt(process.env.SIRENE_RATE_PER_IP_HOUR || "60", 10),
+    perIpDay: parseInt(process.env.SIRENE_RATE_PER_IP_DAY || "200", 10),
+    perEmailDay: null,
+    globalDay: parseInt(process.env.SIRENE_RATE_GLOBAL_DAY || "5000", 10),
+    costBreaker: null,
+  },
 };
 
 export type BlockReason =
@@ -85,16 +93,20 @@ export type BlockReason =
   | "ai_error"
   | "secret_misconfigured";
 
-export interface RateLimitDecision {
-  allowed: boolean;
-  /** Ligne réservée atomiquement avant tout appel externe. */
-  reservationId?: number;
-  reason?: BlockReason;
-  /** Message FR retourné au client (ne révèle pas la raison exacte aux bots). */
-  message?: string;
-  /** Secondes avant la prochaine fenêtre de réessai possible. */
-  retryAfterSec?: number;
-}
+export type RateLimitDecision =
+  | {
+      allowed: true;
+      /** Ligne réservée atomiquement avant tout appel externe. */
+      reservationId: number;
+    }
+  | {
+      allowed: false;
+      reason: BlockReason;
+      /** Message FR retourné au client (ne révèle pas la raison exacte aux bots). */
+      message: string;
+      /** Secondes avant la prochaine fenêtre de réessai possible. */
+      retryAfterSec: number;
+    };
 
 /**
  * Hash email pour dédup sans stocker en clair (évite PII dans les logs).
@@ -136,34 +148,21 @@ export async function checkServiceRateLimit(
     counters AS (
       SELECT
         COUNT(*) FILTER (
-          WHERE service = ${service}
-            AND ip = ${ip}
+          WHERE ip = ${ip}
             AND created_at >= ${oneHourAgo}
-            AND status = 'reserved'
         )::int AS ip_hour,
         COUNT(*) FILTER (
-          WHERE service = ${service}
-            AND ip = ${ip}
-            AND created_at >= ${oneDayAgo}
-            AND status = 'reserved'
+          WHERE ip = ${ip}
         )::int AS ip_day,
         COUNT(*) FILTER (
-          WHERE service = ${service}
-            AND email_hash = ${emailHash}
-            AND created_at >= ${oneDayAgo}
-            AND status = 'reserved'
+          WHERE email_hash = ${emailHash}
         )::int AS email_day,
-        COUNT(*) FILTER (
-          WHERE service = ${service}
-            AND created_at >= ${oneDayAgo}
-            AND status = 'reserved'
-        )::int AS global_day,
-        COALESCE(SUM(tokens_used) FILTER (
-          WHERE service = ${service}
-            AND created_at >= ${oneDayAgo}
-            AND status = 'reserved'
-        ), 0)::bigint AS cost_day
+        COUNT(*)::int AS global_day,
+        COALESCE(SUM(tokens_used), 0)::bigint AS cost_day
       FROM ai_call_log, rate_lock
+      WHERE service = ${service}
+        AND created_at >= ${oneDayAgo}
+        AND status = 'reserved'
     ),
     reservation AS (
       INSERT INTO ai_call_log (
@@ -267,6 +266,75 @@ export async function checkServiceRateLimit(
 }
 
 /**
+ * Attache l'adresse hachée à une réservation après captcha et validation.
+ * Cela empêche un tiers de consommer le quota d'une victime en soumettant son
+ * adresse avec un calcul faux. Le verrou conserve un plafond email atomique.
+ */
+export async function bindReservationEmail(
+  reservationId: number,
+  service: ServiceId,
+  email: string,
+): Promise<RateLimitDecision> {
+  const limits = SERVICE_LIMITS[service];
+  const emailLimit = limits.perEmailDay;
+  const emailHash = hashEmail(email);
+  if (!emailHash || emailLimit === null) {
+    return { allowed: true, reservationId };
+  }
+  if (!Number.isInteger(reservationId) || reservationId <= 0) {
+    throw new Error("Email binding requires a valid rate-limit reservation");
+  }
+
+  const oneDayAgo = new Date(Date.now() - DAY_MS);
+  const result = await getDb().execute(sql`
+    WITH rate_lock AS (
+      SELECT pg_advisory_xact_lock(hashtext(${"hagnere-code-rate:" + service})) AS locked
+    ),
+    email_total AS (
+      SELECT COUNT(*)::int AS value
+      FROM ai_call_log, rate_lock
+      WHERE service = ${service}
+        AND email_hash = ${emailHash}
+        AND status = 'reserved'
+        AND created_at >= ${oneDayAgo}
+        AND id <> ${reservationId}
+    ),
+    updated AS (
+      UPDATE ai_call_log
+      SET email_hash = ${emailHash}
+      FROM email_total
+      WHERE ai_call_log.id = ${reservationId}
+        AND ai_call_log.service = ${service}
+        AND ai_call_log.status = 'reserved'
+        AND email_total.value < ${emailLimit}
+      RETURNING ai_call_log.id
+    )
+    SELECT email_total.value AS email_day, updated.id AS reservation_id
+    FROM email_total
+    LEFT JOIN updated ON TRUE
+  `);
+
+  const row = (result as unknown as {
+    rows: Array<Record<string, number | string | null>>;
+  }).rows?.[0];
+  if (!row) throw new Error("Email rate-limit binding returned no row");
+  const updatedId = Number(row.reservation_id) || 0;
+  if (updatedId > 0) return { allowed: true, reservationId: updatedId };
+
+  if ((Number(row.email_day) || 0) >= emailLimit) {
+    return {
+      allowed: false,
+      reason: "rate_email_day",
+      message:
+        "Cette adresse a déjà soumis plusieurs demandes aujourd'hui. Réessayez demain ou écrivez-nous directement.",
+      retryAfterSec: DAY_MS / 1000,
+    };
+  }
+
+  throw new Error("Email binding failed without a matching limit");
+}
+
+/**
  * Réserve atomiquement le coût réel une fois le fichier validé, mais avant
  * l'appel Groq. Les réservations concurrentes sont sérialisées par le même
  * verrou que le compteur principal.
@@ -326,11 +394,13 @@ export async function reserveServiceCost(
 }
 
 /**
- * Logge une tentative d'appel. Le service et le cost unit (tokens, bytes)
- * dépendent du caller. Les erreurs DB sont loggées mais ne propagent pas —
- * un échec d'INSERT ne doit jamais casser la réponse au prospect.
+ * Journalise l'issue d'une tentative déjà réservée. L'INSERT est conditionné
+ * à l'existence de la réservation correspondante : un refus avant réservation
+ * (limite déjà atteinte, payload trop gros, etc.) ne peut donc pas faire
+ * grossir la table sans borne.
  */
 export async function logAiCall(args: {
+  reservationId: number;
   service: ServiceId;
   ip: string;
   email?: string | null;
@@ -342,19 +412,25 @@ export async function logAiCall(args: {
   userAgent?: string | null;
 }): Promise<void> {
   try {
-    await getDb()
-      .insert(aiCallLog)
-      .values({
-        service: args.service,
-        ip: args.ip,
-        emailHash: hashEmail(args.email),
-        status: args.status,
-        blockReason: args.blockReason || null,
-        tokensUsed: args.tokensUsed || 0,
-        durationMs: args.durationMs || null,
-        briefId: args.briefId ?? null,
-        userAgent: args.userAgent?.slice(0, 500) || null,
-      });
+    if (!Number.isInteger(args.reservationId) || args.reservationId <= 0) {
+      throw new Error("Outcome log requires a valid rate-limit reservation");
+    }
+    await getDb().execute(sql`
+      INSERT INTO ai_call_log (
+        service, ip, email_hash, status, block_reason, tokens_used,
+        duration_ms, brief_id, user_agent
+      )
+      SELECT
+        ${args.service}, ${args.ip}, ${hashEmail(args.email)}, ${args.status},
+        ${args.blockReason || null}, ${args.tokensUsed || 0},
+        ${args.durationMs || null}, ${args.briefId ?? null},
+        ${args.userAgent?.slice(0, 500) || null}
+      FROM ai_call_log AS reservation
+      WHERE reservation.id = ${args.reservationId}
+        AND reservation.service = ${args.service}
+        AND reservation.status = 'reserved'
+      LIMIT 1
+    `);
   } catch (err) {
     // Loggé pour observabilité — sans propager pour ne pas casser la
     // réponse. Si la DB tombe, le cost breaker est neutralisé silencieusement

@@ -116,10 +116,12 @@ describe("downloadable resources", () => {
       expect(Object.keys(archive).sort(), resource.id).toEqual(expectedNames);
 
       for (const file of resource.files) {
+        const archiveBytes = Buffer.from(archive[file.downloadName]);
+        const standaloneBytes = fs.readFileSync(publicFile(file.href));
         expect(
-          Buffer.from(archive[file.downloadName]),
+          archiveBytes.equals(standaloneBytes),
           `${resource.id}:${file.downloadName}`,
-        ).toEqual(fs.readFileSync(publicFile(file.href)));
+        ).toBe(true);
       }
     }
   }, 15_000);

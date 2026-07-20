@@ -5,20 +5,32 @@ avant le push en production. Les commandes de build, tests, lint et vérificatio
 Vercel doivent être relancées sur le commit exact à déployer ; ne pas reprendre
 un ancien nombre de pages ou un ancien résultat de contrôle.
 
-## 🚨 À FAIRE AVANT LE DÉPLOIEMENT
+## 🚨 ÉTAT À CONTRÔLER AVANT LE DÉPLOIEMENT
 
-### 1. Migrations base de données
-Les migrations versionnées du dossier `drizzle/` sont à appliquer dans l'ordre sur la base Neon de production :
+### 1. Migrations base de données — appliquées et relues le 20 juillet 2026
+Les migrations versionnées du dossier `drizzle/` ont été appliquées dans
+l'ordre sur la base Neon utilisée par la production :
 
 ```bash
 npx drizzle-kit migrate
 ```
 
-- `drizzle/0000_initial.sql` — création idempotente de `project_brief`, ajout de `public_slug`, création de `ai_call_log` et de ses index.
+- `drizzle/0000_initial.sql` — création idempotente de `project_brief`, ajout de
+  `public_slug`, création de `ai_call_log` et de ses index ;
+- `drizzle/0001_petite_timeslip.sql` — ajout idempotent de
+  `privacy_notice_version` ;
+- `drizzle/0002_boring_miss_america.sql` — index partiel
+  `ai_call_log_service_created_at_reserved_idx` sur les réservations prises en
+  compte par les limites glissantes.
 
-Sans cette migration, `/api/project-inquiry` ne peut pas garantir la persistance
-des demandes et `/api/transcribe` renvoie volontairement `503` afin de ne pas
-contourner son rate-limit sur un appel externe facturé.
+Contrôle en lecture seule après migration : `public_slug` et
+`privacy_notice_version` sont présents sur `project_brief`, `service` est
+présent sur `ai_call_log`, et l'index partiel de la troisième migration est
+présent. Le journal Drizzle contient les trois versions locales. Le planificateur
+peut légitimement préférer un parcours séquentiel tant que la table est minuscule ;
+la présence de l'index a donc été contrôlée directement dans `pg_indexes`.
+Refaire ce contrôle après toute nouvelle migration ; ne jamais déduire l'état de
+la base du seul contenu du dossier.
 
 ### 2. Variables d'environnement Vercel
 À configurer sur le projet Vercel actuellement utilisé en production :
@@ -33,7 +45,10 @@ contourner son rate-limit sur un appel externe facturé.
 | `CONTACT_TO_EMAIL` | `quentin@hagnere-patrimoine.fr` ou boîte suivie | Destinataire interne formulaire. |
 | `CONTACT_FROM_EMAIL` | `contact@hagnere-code.ai` | Expéditeur Resend (doit être DKIM-validé). |
 | `NEXT_PUBLIC_CALENDLY_URL` | URL Calendly réelle | Optionnel — fallback `https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte`. |
-| `NEXT_PUBLIC_COOKIE_BANNER` | `0` ou absent | Tant que la bannière est désactivée, les événements analytics first-party restent eux aussi désactivés. |
+| `NEXT_PUBLIC_COOKIE_BANNER` | `0` ou absent | Active l'interface de consentement uniquement après audit des traceurs. |
+| `NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED` | `false` ou absent | Garde le collecteur first-party désactivé tant qu'aucun stockage compatible et audité n'est déployé. |
+| `TRUST_CF_CONNECTING_IP` | absent sur Vercel | À mettre à `1` uniquement sur un runtime réellement placé derrière Cloudflare ; sinon un client pourrait choisir son bucket IP. |
+| `TRUST_X_FORWARDED_FOR` | absent sur Vercel | À mettre à `1` uniquement derrière un proxy administré qui réécrit l'en-tête ; absent sur un serveur directement exposé. |
 
 Les autres secrets doivent être posés dans l'interface Vercel et limités aux
 environnements qui en ont besoin. La configuration Wrangler ne concerne que la
@@ -95,9 +110,10 @@ Avant de présenter l'ensemble comme opérationnellement conforme :
 
 ### 5. Vérifier l'URL Calendly
 `https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte`
-est codée en dur dans le footer React et utilisée comme fallback. Vérifier que
-ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
-`NEXT_PUBLIC_CALENDLY_URL`.
+est le fallback unique de `src/lib/calendly.ts`. Footer, widget, page de rendez-vous
+et e-mails consomment tous cette source. Vérifier que ce slug existe sur le
+compte Calendly ; sinon définir `NEXT_PUBLIC_CALENDLY_URL` avec une URL HTTPS
+du domaine `calendly.com`.
 
 ## ⚖️ VOLET LÉGAL — état à vérifier avant publication
 
@@ -119,7 +135,7 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 
 ### Sécurité technique
 - ✅ Slug aléatoire (`public_slug`) sur `project_brief` (anti-IDOR, réservé backoffice)
-- ⚠️ Rate-limit Postgres-backed (lib `ai-rate-limit`) + question de calcul maison (`MathChallenge`, revalidée server-side) : code validé localement, production bloquée tant que `MATH_CHALLENGE_SECRET` n'est pas configuré puis retesté
+- ✅ Rate-limit Postgres-backed (`inquiry`, `transcribe`, `sirene`) + question de calcul maison (`MathChallenge`, revalidée server-side) : secret configuré séparément en Preview et Production ; le redéploiement puis le smoke test `200` restent obligatoires
 - ✅ Honeypot inline + `pf-hp` CSS (double anti-bot)
 - ✅ Headers : HSTS preload, CSP, X-Frame, X-Content-Type, Permissions-Policy
 - ✅ Validation phone serveur
@@ -183,10 +199,13 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 
 ### Flow de conversion critique
 - [ ] Vérifier que `GET /api/math-challenge` répond `200` en Preview et Production après configuration du secret
-- [ ] Soumettre le funnel `/demarrer-un-projet` → email reçu côté admin et côté prospect
+- [ ] Sur Preview ou lors d'un test humain contrôlé, soumettre le funnel `/demarrer-un-projet` → email reçu côté admin et côté prospect
 - [ ] Vérifier qu'une ligne `project_brief` est créée en base (avec `public_slug` rempli)
-- [ ] Soumettre `/contact` (formulaire footer) → email reçu
-- [ ] Vérifier qu'une ligne `ai_call_log` est créée à chaque appel `/api/project-inquiry`
+- [ ] Rejouer la même soumission avec la même clé d'idempotence : aucune seconde ligne métier ne doit être créée et les clés Resend doivent rester stables
+- [ ] Simuler un échec Resend sur Preview : la réponse doit distinguer `captured: true` (brief conservé) de `captured: false`, sans exposer d'identifiant interne
+- [ ] Sur Preview ou lors d'un test humain contrôlé, soumettre `/contact` → email reçu
+- [ ] Vérifier qu'une réservation `ai_call_log` borne chaque appel accepté ; une issue n'est journalisée qu'en référence à cette réservation et un refus de quota n'ajoute aucune ligne d'issue
+- [ ] Contrôler manuellement les anciens briefs éventuellement persistés sans notification ; aucun worker de réexpédition durable n'est encore déployé et aucun ancien email ne doit être renvoyé automatiquement sans revue
 
 ### SEO / sitemap
 - [ ] Vérifier `https://hagnere-code.ai/sitemap.xml` (doit inclure toutes les pages légales, dont `/legal/reclamations`)
@@ -197,8 +216,8 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 
 ### Sécurité
 - [ ] `curl -I https://hagnere-code.ai` (HSTS, CSP, X-Frame, X-Content-Type)
-- [ ] Tester rate-limit `/api/project-inquiry` (5 requêtes / IP / heure)
-- [ ] Tester rate-limit `/api/sirene` (60 req / IP / heure)
+- [ ] Tester les limites avec des doubles/mocks ou sur Preview dédiée ; ne pas envoyer une rafale de formulaires valides ni d'e-mails en production
+- [ ] Vérifier le rate-limit persistant `/api/sirene` (60 requêtes / IP / heure) sans saturer l'API publique en production
 
 ### Légal
 - [ ] Lire `/legal/confidentialite` en intégralité — vérifier que rien n'est faux factuel
@@ -211,7 +230,7 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 
 - **P0 (16/16)** : harmonisations chiffrées, IDOR slug, /template supprimé, équipe portfolio, footer liens, CTA Calendly, etc.
 - **P1 (23/23)** : not-found / error pages, dead code supprimé, JSON-LD complétés, anglicismes retirés, CGV art. 28 ajouté, etc.
-- **P2 (10/12)** : rate-limit Sirene, phone validation, honeypot, logs PII, dates Journal, env vars, ai_call_log Postgres-backed.
+- **Sécurité secondaire soldée dans le code** : rate-limits Postgres multi-instance, IP validée et en-têtes de proxy bornés, honeypot, défi signé, journaux liés à une réservation, délais Groq/Resend, idempotence des e-mails et absence d'identifiant numérique interne dans la réponse publique. Les limites architecturales restantes sont documentées dans la règle d'or et ne valent pas certification de sécurité.
 - **Maillage interne** : les quatre études de cas sont reliées depuis `/realisations`, le footer et le sitemap ; breadcrumbs et domaine canonique `.ai` sont conservés partout.
 - **Juridique documenté** : pages publiques alignées sur les traitements observés, statut d'accessibilité non évalué, registre interne, procédure incident/purge et modèle DPA à compléter. Cela ne remplace ni l'exécution des procédures ni la revue d'un conseil pour un contrat à enjeu.
 

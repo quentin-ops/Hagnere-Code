@@ -8,8 +8,9 @@ export const architectureHtml = `
         <h2 style="margin-top:14px">À quoi ressemble<br>un outil interne qu'on livre.</h2>
       </div>
       <div class="right">
-        Une architecture de référence inspirée de nos produits internes : utilisateurs via SSO,
-        cœur métier, traitements automatisés et <b>connecteurs à votre SI existant</b>. Les composants,
+        Une architecture de référence à adapter : utilisateurs via SSO, cœur métier,
+        traitements automatisés et <b>connecteurs à votre SI existant</b>. Ce schéma n'est pas une
+        architecture client vérifiable. Les composants,
         fournisseurs, flux et exigences de réversibilité sont choisis et documentés au devis.
       </div>
     </div>

@@ -220,19 +220,19 @@ const PANE_CABINET = pane({
       "/methode",
       ICON.methode,
       "Méthode",
-      "Sprint Fixe™ : prix tenu, dates contractuelles.",
+      "Sprint Fixe™ : périmètre, prix et jalons écrits au devis.",
     ) +
     paneCard(
       "/realisations",
       ICON.realisations,
       "Réalisations",
-      "4 produits en production, conçus et exploités par nous.",
+      "4 pages produit publiques : disponibilité et fonctions visibles.",
     ) +
     paneCard(
       "/equipe",
       ICON.equipe,
       "Équipe",
-      `${TEAM_PUBLIC_COMPOSITION}. Équipe nommée au cadrage.`,
+      `${TEAM_PUBLIC_COMPOSITION}. Intervenants confirmés au devis.`,
     ),
 });
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { RendezVousPage } from "@/components/rendez-vous/RendezVousPage";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { CALENDLY_URL } from "@/lib/calendly";
 
 export const metadata: Metadata = {
   title: "Rendez-vous 30 min avec un développeur senior · Hagnéré Code",
@@ -34,8 +35,7 @@ const rdvJsonLd = JSON.stringify({
     "@type": "ReserveAction",
     target: {
       "@type": "EntryPoint",
-      urlTemplate:
-        "https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte",
+      urlTemplate: CALENDLY_URL,
       inLanguage: "fr-FR",
       actionPlatform: [
         "http://schema.org/DesktopWebPlatform",

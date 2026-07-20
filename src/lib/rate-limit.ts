@@ -1,5 +1,9 @@
+import { isIP } from "node:net";
+
 /**
- * Per-IP, in-memory rate limit.
+ * Petit rate-limit mémoire conservé pour les tests et les usages locaux qui
+ * n'appellent aucun fournisseur. Les routes publiques de production utilisent
+ * le limiteur Postgres de `ai-rate-limit.ts` afin de résister au scale-out.
  *
  * PER-INSTANCE caveat: Next.js can scale horizontally (Vercel/Cloudflare
  * Workers spawn new instances per cold start), so the effective limit is
@@ -67,25 +71,49 @@ export function gcRateLimitStore(store: RateLimitStore): void {
 /**
  * Extracts a client IP from a Request.
  *
- * Order:
- *   1. `cf-connecting-ip` — réécrit par Cloudflare, **impossible à spoofer**
- *      côté client (Cloudflare strip toute valeur fournie en amont). Source
- *      de vérité quand on est derrière Cloudflare Workers / CDN.
- *   2. `x-forwarded-for[0]` — réécrit par Vercel et la plupart des reverse
- *      proxies, mais peut être chained par un client malveillant si on est
- *      derrière un proxy qui ne strip pas. Acceptable en fallback.
- *   3. `x-real-ip` — fallback pour les setups custom.
- *   4. "unknown" — dernier recours, le rate-limit groupera tous les requêteurs
- *      sans IP identifiable dans le même bucket.
+ * En production Vercel, `x-vercel-forwarded-for` est prioritaire : Vercel le
+ * réécrit avec l'IP publique et documente `x-forwarded-for` comme anti-spoof
+ * sur un déploiement direct. Un header Cloudflare fourni par le client ne doit
+ * donc jamais pouvoir choisir son bucket sur Vercel.
+ *
+ * `cf-connecting-ip` n'est fiable que lorsque le runtime Cloudflare est
+ * explicitement attesté par l'environnement. Hors plateforme attestée, les
+ * en-têtes de proxy ne sont lus que si l'opérateur active explicitement
+ * `TRUST_X_FORWARDED_FOR=1` ; un serveur directement exposé retourne sinon
+ * `unknown`, pour qu'un client ne puisse pas choisir son bucket.
  */
-export function getClientIp(request: Request): string {
-  const cfIp = request.headers.get("cf-connecting-ip");
-  if (cfIp && /^[0-9a-fA-F:.]+$/.test(cfIp.trim())) return cfIp.trim();
+function firstValidIp(value: string | null): string | null {
+  if (!value) return null;
+  const first = value.split(",")[0]?.trim() ?? "";
+  return isIP(first) > 0 ? first : null;
+}
 
-  const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) {
-    const first = forwarded.split(",")[0]?.trim() ?? "";
-    if (/^[0-9a-fA-F:.]+$/.test(first)) return first;
+export function getClientIp(request: Request): string {
+  if (process.env.VERCEL === "1") {
+    return (
+      firstValidIp(request.headers.get("x-vercel-forwarded-for")) ||
+      firstValidIp(request.headers.get("x-forwarded-for")) ||
+      firstValidIp(request.headers.get("x-real-ip")) ||
+      "unknown"
+    );
   }
-  return request.headers.get("x-real-ip") || "unknown";
+
+  const cloudflareRuntime =
+    process.env.CF_PAGES === "1" ||
+    process.env.TRUST_CF_CONNECTING_IP === "1";
+  if (cloudflareRuntime) {
+    const cfIp = firstValidIp(request.headers.get("cf-connecting-ip"));
+    if (cfIp) return cfIp;
+    return "unknown";
+  }
+
+  if (process.env.TRUST_X_FORWARDED_FOR === "1") {
+    return (
+      firstValidIp(request.headers.get("x-forwarded-for")) ||
+      firstValidIp(request.headers.get("x-real-ip")) ||
+      "unknown"
+    );
+  }
+
+  return "unknown";
 }

@@ -2,8 +2,9 @@
  * Registre central des guides — SOURCE DE VÉRITÉ UNIQUE.
  *
  * Chaque guide déclaré ici alimente sa route, ses métadonnées et son JSON-LD.
- * Le hub, le sitemap et llms.txt utilisent PUBLISHED_GUIDES : un guide encore
- * en attente de revue humaine reste accessible par URL mais noindex.
+ * Le hub, le sitemap et llms.txt utilisent PUBLISHED_GUIDES : un guide qui n'a
+ * pas franchi la validation éditoriale documentée reste accessible par URL,
+ * mais noindex.
  *
  * Pour ajouter un guide, suivre intégralement
  * docs/regle-or-vigilance-seo-publication.md et docs/charte-qualite-guides.md :
@@ -33,7 +34,7 @@ export interface GuideEntry {
   dateModified: string; // ISO YYYY-MM-DD
   readTimeMin: number;
   featured?: boolean;
-  /** Tant que la revue humaine manque, la route reste accessible mais noindex. */
+  /** Tant que la validation éditoriale manque, la route reste accessible mais noindex. */
   editorialStatus?: "ready-for-human-review";
 }
 
@@ -50,7 +51,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Référencement naturel",
     datePublished: "2026-07-20",
     dateModified: "2026-07-20",
-    readTimeMin: 18,
+    readTimeMin: 16,
   },
   {
     slug: "audit-google-ads-que-verifier",
@@ -165,7 +166,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Cadrer son projet",
     datePublished: "2026-07-19",
     dateModified: "2026-07-19",
-    readTimeMin: 16,
+    readTimeMin: 19,
   },
   {
     slug: "cahier-des-charges-application-metier",
@@ -222,13 +223,13 @@ export const GUIDES: GuideEntry[] = [
     section: "Cadrer son projet",
     datePublished: "2026-07-19",
     dateModified: "2026-07-20",
-    readTimeMin: 28,
+    readTimeMin: 23,
   },
   {
     slug: "proprietaire-site-internet-code-source",
     title: "Qui est propriétaire de votre site internet ? · Hagnéré Code",
     metaDescription:
-      "Payer ne transfère aucun droit : la loi, les briques que personne ne peut vous céder, les 14 accès à réclamer et la marche à suivre quand le conflit est là.",
+      "Payer n'emporte pas automatiquement tous les droits : cadre légal, licences des composants, 14 accès à réclamer et marche à suivre en cas de conflit.",
     cardTitle: "Propriété d'un site internet et du code source",
     cardDescription:
       "Ce qui décide de votre liberté n'est pas la titularité des droits mais le triptyque titularité + accès + technologie standard. Sources primaires Légifrance.",
@@ -236,13 +237,13 @@ export const GUIDES: GuideEntry[] = [
     section: "Cadrer son projet",
     datePublished: "2026-07-19",
     dateModified: "2026-07-20",
-    readTimeMin: 30,
+    readTimeMin: 28,
   },
   {
     slug: "prix-referencement-naturel",
     title: "Prix du référencement naturel 2026 · Hagnéré Code",
     metaDescription:
-      "Le seul guide qui convertit chaque forfait SEO en heures de consultant, démonte 8 statistiques recopiées partout et cite la jurisprudence française.",
+      "Convertissez chaque forfait SEO en heures de consultant, vérifiez 8 statistiques souvent recopiées et consultez les références juridiques citées.",
     cardTitle: "Prix du référencement naturel : ce que vous achetez vraiment",
     cardDescription:
       "Un forfait SEO n'est pas un prix, c'est un nombre d'heures. 221 €/mois achètent moins de deux heures de travail — la démonstration, et tout ce qu'elle implique.",
@@ -256,29 +257,29 @@ export const GUIDES: GuideEntry[] = [
     slug: "pourquoi-mon-site-est-lent",
     title: "Pourquoi mon site est lent : le diagnostic · Hagnéré Code",
     metaDescription:
-      "Les vraies causes mesurées, la différence labo/terrain que personne n'explique, les chiffres bidon démontés — et les correctifs par rapport gain/effort.",
+      "Mesures labo et terrain, causes possibles, statistiques à vérifier et correctifs classés par rapport gain/effort pour diagnostiquer un site lent.",
     cardTitle: "Pourquoi mon site est lent : diagnostic et solutions",
     cardDescription:
-      "Le seul guide qui dit que le vrai maillon faible du mobile n'est pas vos images mais votre serveur — chiffres du Web Almanac à l'appui.",
+      "Une méthode pour mesurer images, serveur et JavaScript sur mobile, puis confronter le diagnostic aux données du Web Almanac.",
     heroTitle: "Pourquoi mon site est lent : le diagnostic complet",
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-20",
-    readTimeMin: 24,
+    readTimeMin: 17,
   },
   {
     slug: "no-code-ou-sur-mesure",
     title: "No-code ou sur-mesure : le comparatif 2026 · Hagnéré Code",
     cardTitle: "No-code ou développement sur mesure : comment choisir",
     metaDescription:
-      "Tarifs relevés le 18/07/2026, plafonds contractuels réels, 4 chiffres bidon démontés, courbe de coût sur 5 ans — et les cas où le no-code gagne.",
+      "Tarifs relevés le 18/07/2026, plafonds publiés, quatre chiffres sans source fiable examinés, coût sur cinq ans et cas où le no-code convient.",
     cardDescription:
-      "Le seul comparatif avec des tarifs réellement relevés, les plafonds officiels des éditeurs, et les chiffres inventés du secteur démontés un par un.",
+      "Tarifs relevés et datés, plafonds publiés par les éditeurs, hypothèses de coût explicites et comparaison sur cinq ans.",
     heroTitle: "No-code ou développement sur mesure : le comparatif chiffré",
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-20",
-    readTimeMin: 25,
+    readTimeMin: 22,
   },
   {
     slug: "migrer-wordpress-vers-nextjs",
@@ -287,27 +288,27 @@ export const GUIDES: GuideEntry[] = [
     metaDescription:
       "Prix en euros, protocole SEO sourcé Google, ce qui casse et son remplacement, les 5 cas où il ne faut pas migrer. Le guide complet, sources à l'appui.",
     cardDescription:
-      "Les 3 architectures cibles, le protocole SEO zéro perte, les vrais prix en euros, le coût total sur 3 ans — et quand rester sur WordPress.",
+      "Trois architectures cibles, un protocole de migration SEO sans garantie de positions, des prix en euros et le coût total sur trois ans.",
     heroTitle:
       "Migrer de WordPress vers Next.js : méthode, prix et risques réels",
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-18",
-    readTimeMin: 25,
+    dateModified: "2026-07-20",
+    readTimeMin: 32,
   },
   {
     slug: "tjm-developpeur-web",
     title: "TJM développeur web 2026 : le guide de l'acheteur · Hagnéré Code",
     cardTitle: "TJM développeur web : ce que ça coûte vraiment à un client",
     metaDescription:
-      "Baromètres 2026 comparés, pourquoi ils se contredisent, la conversion TJM → jours → budget, forfait ou régie : le seul guide écrit côté acheteur.",
+      "Baromètres 2026 comparés, écarts expliqués et conversion TJM → jours → budget pour lire une proposition en forfait ou en régie côté acheteur.",
     cardDescription:
-      "Toutes les pages sur le TJM parlent au freelance qui fixe son prix. Celle-ci parle à l'entreprise qui paie : grilles sourcées, jours par livrable, lecture de devis.",
+      "Une lecture côté entreprise : grilles sourcées, conversion en jours par livrable et méthode pour comparer les devis.",
     heroTitle: "TJM développeur web en 2026 : le guide de celui qui paie",
     section: "Budget & prix",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-18",
-    readTimeMin: 25,
+    dateModified: "2026-07-20",
+    readTimeMin: 28,
   },
   {
     slug: "choisir-son-agence-web",
@@ -316,43 +317,43 @@ export const GUIDES: GuideEntry[] = [
     metaDescription:
       "18 vérifications gratuites, 13 questions avec le barème des réponses, les signaux d'alerte ancrés en jurisprudence — et comment nous auditer, nous aussi.",
     cardDescription:
-      "Tout le monde liste des critères. Ce guide donne la méthode de vérification objective, le barème des bonnes réponses et les pièges confirmés en justice.",
+      "Une méthode de vérification, un barème de réponses et des points de vigilance reliés aux sources juridiques citées.",
     heroTitle:
       "Comment choisir son agence web : la méthode de vérification objective",
     section: "Cadrer son projet",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-18",
-    readTimeMin: 26,
+    dateModified: "2026-07-20",
+    readTimeMin: 29,
   },
   {
     slug: "agence-web-ou-freelance",
     title: "Agence web ou freelance : qui choisir en 2026 · Hagnéré Code",
     cardTitle: "Agence web ou freelance : la grille de décision honnête",
     metaDescription:
-      "TJM sourcés, risques quantifiés (INSEE), propriété du code, sous-traitance : la grille de décision par budget qu'aucun comparatif ne donne. Biais déclaré.",
+      "TJM sourcés, données INSEE contextualisées, propriété du code et sous-traitance : une grille de décision par budget avec biais déclaré.",
     cardDescription:
-      "Le comparatif que personne n'ose écrire : TJM sourcés, risque de disparition chiffré, propriété du code, sous-traitance déguisée — et une grille par budget.",
+      "TJM sourcés, données de continuité contextualisées, propriété du code, sous-traitance et grille de décision par budget.",
     heroTitle:
       "Agence web ou freelance : la grille de décision honnête, par budget et par risque",
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-20",
-    readTimeMin: 24,
+    readTimeMin: 22,
   },
   {
     slug: "creer-un-site-avec-ia",
     title: "Créer un site avec l'IA : le guide honnête 2026 · Hagnéré Code",
     cardTitle: "Créer un site avec l'IA : ce qui marche vraiment en 2026",
     metaDescription:
-      "Générateurs no-code, vibe coding, assistants pro : prix vérifiés, pièges réels, position de Google — et pourquoi l'IA a fait baisser le prix du sur-mesure.",
+      "Générateurs no-code, vibe coding, assistants pro : coûts, propriété, sécurité, limites des études de productivité et position officielle de Google.",
     cardDescription:
-      "Les 3 familles d'outils IA passées au crible : prix réels avec renouvellements, pièges documentés, position officielle de Google — et le vrai bouleversement.",
+      "Trois familles d'outils IA comparées : prix datés, renouvellements, propriété, sécurité, position de Google et limites des études disponibles.",
     heroTitle:
       "Créer un site avec l'IA : ce qui marche, ce qui déçoit, ce que ça coûte",
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-20",
-    readTimeMin: 24,
+    readTimeMin: 22,
   },
   {
     slug: "combien-coute-un-site-internet",
@@ -365,8 +366,8 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Combien coûte un site internet professionnel en 2026 ?",
     section: "Budget & prix",
     datePublished: "2026-07-11",
-    dateModified: "2026-07-18",
-    readTimeMin: 25,
+    dateModified: "2026-07-20",
+    readTimeMin: 37,
     featured: true,
   },
   {
@@ -374,28 +375,28 @@ export const GUIDES: GuideEntry[] = [
     title: "Combien coûte une application mobile ? · Hagnéré Code",
     cardTitle: "Combien coûte une application mobile en 2026 ?",
     metaDescription:
-      "De 5 000 € à 150 000 € : les prix réels d'une application mobile en 2026, commissions des stores, maintenance, coût sur 3 ans et méthode pour budgéter.",
+      "Repères de prix pour une application mobile en 2026, frais des stores, maintenance, coût sur trois ans et méthode pour construire votre budget.",
     cardDescription:
-      "Prix par type d'app et par prestataire, commissions Apple/Google, maintenance obligatoire, coût total sur 3 ans et devis de MVP décortiqué ligne par ligne.",
+      "Repères par type d'app et prestataire, frais Apple/Google, maintenance à modéliser, coût sur trois ans et simulation détaillée d'un MVP.",
     heroTitle: "Combien coûte une application mobile en 2026 ?",
     section: "Budget & prix",
     datePublished: "2026-07-13",
-    dateModified: "2026-07-17",
-    readTimeMin: 25,
+    dateModified: "2026-07-20",
+    readTimeMin: 29,
   },
   {
     slug: "prix-site-vitrine",
     title: "Prix d'un site vitrine en 2026 : tarifs réels · Hagnéré Code",
     cardTitle: "Prix d'un site vitrine en 2026",
     metaDescription:
-      "De 500 € à 22 000 € : les prix réels d'un site vitrine en 2026 par gamme, prestataire et socle. Ce qui est inclus à chaque prix, coût sur 3 ans, méthode.",
+      "Repères de prix d'un site vitrine en 2026 par gamme, prestataire et socle. Comparez les inclusions, les coûts sur trois ans et les hypothèses.",
     cardDescription:
-      "Tarifs réels par gamme et par prestataire, grille « inclus / en supplément », coût total sur 3 ans abonnement vs achat, et notre grille publique justifiée.",
+      "Fourchettes publiques par gamme et prestataire, grille « inclus / en supplément », coût total sur trois ans et grille commerciale Hagnéré Code.",
     heroTitle: "Prix d'un site vitrine en 2026 : le guide complet",
     section: "Budget & prix",
     datePublished: "2026-07-14",
-    dateModified: "2026-07-18",
-    readTimeMin: 25,
+    dateModified: "2026-07-20",
+    readTimeMin: 30,
   },
   {
     slug: "prix-site-e-commerce",
@@ -404,13 +405,13 @@ export const GUIDES: GuideEntry[] = [
     metaDescription:
       "Le prix réel d'un site e-commerce en 2026 : grilles par plateforme, coût sur 3 ans, commissions, logistique et un devis d'agence décortiqué ligne à ligne.",
     cardDescription:
-      "Grilles Shopify, WooCommerce, PrestaShop et sur-mesure, coût total sur 3 ans, commissions et logistique enfin chiffrées, devis réel ligne à ligne.",
+      "Grilles Shopify, WooCommerce, PrestaShop et sur-mesure, coût total sur trois ans, commissions, logistique et simulation ligne à ligne.",
     heroTitle:
       "Prix d'un site e-commerce : le vrai budget en 2026 (+ devis décortiqué)",
     section: "Budget & prix",
     datePublished: "2026-07-16",
-    dateModified: "2026-07-18",
-    readTimeMin: 25,
+    dateModified: "2026-07-20",
+    readTimeMin: 30,
   },
   {
     slug: "nextjs-ou-wordpress",
@@ -424,8 +425,8 @@ export const GUIDES: GuideEntry[] = [
       "Next.js ou WordPress : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-16",
-    dateModified: "2026-07-18",
-    readTimeMin: 25,
+    dateModified: "2026-07-20",
+    readTimeMin: 28,
   },
   {
     slug: "aides-creation-site-internet",
@@ -434,12 +435,12 @@ export const GUIDES: GuideEntry[] = [
     metaDescription:
       "Chèque France Num ? Mort depuis 2021. Voici les aides réellement actives en 2026 pour financer votre site : région par région, vérifiées à la source.",
     cardDescription:
-      "Le seul panorama qui vérifie chaque dispositif à la source : aides mortes signalées, aides régionales actives, mode d'emploi de dépôt et arnaques à éviter.",
+      "Chaque dispositif est relié à sa source et à sa date de vérification : aides closes signalées, dispositifs régionaux, dépôt et points de vigilance.",
     heroTitle:
       "Aides à la création de site internet : ce qui existe vraiment en 2026",
     section: "Financer son projet",
     datePublished: "2026-07-16",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-20",
     readTimeMin: 25,
   },
   {
@@ -447,15 +448,15 @@ export const GUIDES: GuideEntry[] = [
     title: "Combien coûte un SaaS en 2026 ? Budget complet · Hagnéré Code",
     cardTitle: "Combien coûte un SaaS en 2026 ?",
     metaDescription:
-      "De 5 000 € à 100 000 €+ : budget complet d'un SaaS en 2026, coûts d'exploitation chiffrés, impact de l'IA et exemple de devis MVP détaillé.",
+      "Repères de budget d'un SaaS en 2026, coûts d'exploitation, usages possibles de l'IA et simulation détaillée d'un devis de MVP.",
     cardDescription:
-      "Fourchettes par étape (POC, MVP, V1), coûts d'exploitation poste par poste, ce que l'IA change vraiment, et un exemple de devis MVP détaillé ligne à ligne.",
+      "Fourchettes éditoriales par étape, coûts d'exploitation poste par poste, limites des gains IA et simulation de devis MVP ligne à ligne.",
     heroTitle:
       "Combien coûte un SaaS ? Le budget complet en 2026 (+ devis de MVP décortiqué)",
     section: "Budget & prix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-19",
-    readTimeMin: 25,
+    dateModified: "2026-07-20",
+    readTimeMin: 31,
   },
   {
     slug: "prix-logiciel-sur-mesure",
@@ -470,7 +471,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-20",
-    readTimeMin: 25,
+    readTimeMin: 28,
   },
   {
     slug: "prix-refonte-site-internet",
@@ -499,8 +500,8 @@ export const GUIDES: GuideEntry[] = [
       "Shopify ou e-commerce sur mesure : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-19",
-    readTimeMin: 25,
+    dateModified: "2026-07-20",
+    readTimeMin: 27,
   },
   {
     slug: "cout-maintenance-site-internet",
@@ -515,7 +516,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-20",
-    readTimeMin: 25,
+    readTimeMin: 21,
   },
   {
     slug: "woocommerce-ou-shopify",
@@ -530,22 +531,22 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-20",
-    readTimeMin: 25,
+    readTimeMin: 23,
   },
   {
     slug: "combien-de-temps-pour-creer-un-site",
     title: "Combien de temps pour créer un site internet ? · Hagnéré Code",
     cardTitle: "Combien de temps pour créer un site internet ?",
     metaDescription:
-      "Site vitrine : 4-8 semaines. E-commerce : 2-4 mois. Les délais réels 2026 phase par phase, la part du planning qui dépend de vous et les rétro-plannings.",
+      "Construisez le délai d'un site phase par phase : périmètre, contenus, validations, dépendances, recette et rétroplanning, sans promesse universelle.",
     cardDescription:
-      "Les délais réels par type et par méthode, le planning phase par phase, la moitié du calendrier qui dépend du client et les rétro-plannings Noël, salon, saison.",
+      "Des scénarios de planification par type de site, les dépendances côté client et prestataire, et des rétroplannings à adapter à votre échéance.",
     heroTitle:
-      "Combien de temps pour créer un site internet ? Les délais réels en 2026",
+      "Combien de temps pour créer un site internet ? La méthode de planification 2026",
     section: "Cadrer son projet",
     datePublished: "2026-07-17",
     dateModified: "2026-07-20",
-    readTimeMin: 25,
+    readTimeMin: 21,
   },
   {
     slug: "wix-ou-wordpress",
@@ -559,7 +560,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-20",
-    readTimeMin: 25,
+    readTimeMin: 23,
   },
   {
     slug: "react-native-ou-flutter",
@@ -573,7 +574,7 @@ export const GUIDES: GuideEntry[] = [
       "React Native ou Flutter : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-19",
+    dateModified: "2026-07-20",
     readTimeMin: 25,
   },
   {
@@ -589,7 +590,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Cadrer son projet",
     datePublished: "2026-07-17",
     dateModified: "2026-07-20",
-    readTimeMin: 25,
+    readTimeMin: 28,
   },
   {
     slug: "refonte-sans-perdre-son-seo",
@@ -604,7 +605,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Cadrer son projet",
     datePublished: "2026-07-18",
     dateModified: "2026-07-19",
-    readTimeMin: 24,
+    readTimeMin: 27,
   },
   {
     slug: "cahier-des-charges-site-internet",

@@ -31,6 +31,12 @@ export const metadata: Metadata = {
     modifiedTime: `${guide.dateModified}T09:00:00+02:00`,
     authors: [`${SITE_URL}/equipe`],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 const articleJsonLd = JSON.stringify({
@@ -45,7 +51,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 5240,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -129,7 +134,7 @@ const faqItems = [
   {
     question: "Que valent les statistiques qu'on lit sur le no-code ?",
     answer:
-      "Beaucoup sont inventées, y compris par des agences de développement sur mesure — c'est-à-dire par notre propre camp. L'affirmation la plus citée, selon laquelle « 68 % des applications Bubble plantent sous 10 000 utilisateurs », n'a aucune source : nous avons cherché sur le forum officiel de l'éditeur et ailleurs, elle n'existe nulle part. Le fameux « 70 % des applications utiliseront du low-code d'ici 2025 » de Gartner existe, lui, mais c'est une prévision de 2021 que personne n'a jamais vérifiée après coup. Notre position : les vrais plafonds publiés par les éditeurs sont bien plus parlants que ces chiffres, et ils sont vérifiables en trois clics.",
+      "Beaucoup sont inventées, y compris par des agences de développement sur mesure — c'est-à-dire par notre propre camp. L'affirmation la plus citée, selon laquelle « 68 % des applications Bubble plantent sous 10 000 utilisateurs », n'a aucune source : nous avons cherché sur le forum officiel de l'éditeur et ailleurs, elle n'existe nulle part. Le fameux « 70 % des applications utiliseront du low-code d'ici 2025 » de Gartner existe, lui, mais c'est une prévision de 2021 pour laquelle nous n'avons retrouvé aucune évaluation après coup. Notre position : les plafonds publiés par les éditeurs sont plus parlants que ces chiffres, et ils sont vérifiables en trois clics.",
   },
   {
     question: "Le no-code convient-il pour un site vitrine ?",
@@ -139,7 +144,7 @@ const faqItems = [
   {
     question: "Peut-on migrer d'un outil no-code vers du sur-mesure ?",
     answer:
-      "Oui, et c'est même le scénario que nous rencontrons le plus souvent : l'outil a permis de valider l'idée, puis il a atteint un plafond. La bonne nouvelle, c'est que la migration se fait rarement à l'aveugle — après un ou deux ans d'usage réel, vous savez exactement ce dont vous avez besoin, ce qui réduit fortement le risque de développer la mauvaise chose. La moins bonne : la logique métier se reconstruit intégralement. Comptez le budget d'un développement neuf, moins l'économie de cadrage, plus la reprise des données existantes.",
+      "Oui. Un scénario possible est que l'outil ait permis de valider l'idée avant d'atteindre un plafond. L'usage réel aide alors à préciser le besoin, sans supprimer le risque de développer la mauvaise chose. Les données peuvent souvent être exportées selon les capacités de la plateforme ; la logique métier, les automatisations et les droits doivent généralement être reconstruits et testés. Le budget dépend donc du nouveau périmètre, de la qualité des exports et de la reprise.",
   },
   {
     question: "n8n est-il open source ?",
@@ -154,7 +159,7 @@ const faqItems = [
   {
     question: "Le no-code peut-il gérer beaucoup d'utilisateurs externes ?",
     answer:
-      "C'est précisément là que le modèle devient coûteux. Airtable facture l'accès d'utilisateurs externes via un module complémentaire à partir d'environ 120 dollars pour quinze invités par mois, soit 8 à 10 dollars par personne et par mois. Pour cent partenaires ou clients, vous êtes à plusieurs centaines de dollars mensuels, indéfiniment. Sur un développement sur mesure, le nombre d'utilisateurs n'a aucun effet sur la facture : c'est une ligne de base de données de plus. Dès que vous ouvrez un outil à l'extérieur, faites le calcul sur cinq ans avant de choisir.",
+      "C'est précisément là qu'il faut comparer les modèles. Certaines plateformes facturent les utilisateurs externes, les sièges, les automatisations ou les volumes ; relevez leur grille datée. Un développement sur mesure n'ajoute pas nécessairement une licence par utilisateur, mais le volume peut augmenter infrastructure, support, sécurité, supervision et maintenance. Calculez les deux coûts totaux avec les mêmes utilisateurs et usages sur cinq ans, sans traiter la montée en charge comme gratuite.",
   },
   {
     question: "Quand le no-code est-il clairement le bon choix ?",
@@ -191,7 +196,7 @@ export default function Page() {
           { label: "No-code ou sur-mesure" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Les tarifs réellement relevés le 18 juillet 2026 sur les pages officielles, les plafonds contractuels que les éditeurs publient et que personne ne lit, quatre chiffres du secteur démontés à la source — dont un fabriqué par des agences sur mesure —, et la courbe de coût sur cinq ans."
+        heroDescription="Les tarifs relevés le 18 juillet 2026 sur les pages officielles, les plafonds contractuels publiés par les éditeurs, quatre chiffres du secteur vérifiés à la source — dont un sans source retrouvée —, et la courbe de coût sur cinq ans."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -565,7 +570,7 @@ export default function Page() {
             ],
             [
               "« Gartner : 70 % des applications utiliseront du low-code d'ici 2025 »",
-              "La prévision existe, mais elle date de 2021, elle est régulièrement mal attribuée, et personne ne l'a vérifiée après coup. Nous sommes en 2026 : aucune évaluation publiée",
+              "La prévision existe, mais elle date de 2021 et elle est régulièrement mal attribuée. Nous n'avons retrouvé aucune évaluation publiée après coup en 2026",
             ],
             [
               "« Le no-code, c'est 10 fois plus rapide et 80 % moins cher »",
@@ -591,19 +596,20 @@ export default function Page() {
           </strong>{" "}
           : leur intérêt est de faire croire que tout est faisable sans code,
           d&apos;où les « dix fois plus rapide, 80 % moins cher » et les
-          prévisions Gartner ressorties chaque année sans jamais être vérifiées.{" "}
+          prévisions Gartner régulièrement reprises sans évaluation postérieure
+          retrouvée dans notre recherche.{" "}
           <strong>
             De l&apos;autre, les agences de développement sur mesure — nous
           </strong>{" "}
           : notre intérêt est de faire peur sur les plafonds et le verrouillage,
-          d&apos;où des chiffres d&apos;échec spectaculaires que personne
-          n&apos;a jamais mesurés.
+          d&apos;où des chiffres d&apos;échec spectaculaires sans mesure publiée
+          retrouvée dans notre recherche.
           <br />
           <br />
           Le fait que nous ayons trouvé le chiffre fabriqué dans <em>
             notre
           </em>{" "}
-          camp en dit long sur l&apos;état du débat. La seule sortie honnête
+          camp en dit long sur l&apos;état du débat. Une comparaison honnête
           consiste à ne citer que ce qui est vérifiable en trois clics : les
           pages tarifaires et la documentation des éditeurs. C&apos;est ce que
           fait ce guide, et c&apos;est pour cela que chaque chiffre y porte sa
@@ -655,7 +661,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Vous hésitez entre les deux ?"
-          description="Décrivez votre besoin en 3 minutes. Objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement — y compris quand notre réponse est qu'un outil no-code suffira largement."
+          description="Décrivez votre besoin en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti. Cette première réponse est gratuite et sans engagement — y compris si elle consiste à recommander un outil no-code."
         />
 
         <h2 id="changements">
@@ -700,8 +706,7 @@ export default function Page() {
           7. La courbe sur 5 ans : trois scénarios chiffrés
         </h2>
         <p>
-          Voici le calcul que personne ne fait, et qui tranche le débat mieux
-          que n&apos;importe quel argument. Les hypothèses sont indiquées pour
+          Voici le calcul utilisé pour comparer les deux options. Les hypothèses sont indiquées pour
           que vous puissiez les remplacer par les vôtres.
         </p>
         <FormulaBox>
@@ -990,8 +995,8 @@ SCÉNARIO C — Prototype pour valider une idée
 
         <h2 id="migration">12. Passer du no-code au sur-mesure</h2>
         <p>
-          C&apos;est le scénario que nous rencontrons le plus souvent, et il a
-          un avantage considérable qu&apos;on oublie de mentionner :{" "}
+          C&apos;est un parcours possible après une phase de validation, avec un
+          avantage utile mais non automatique :{" "}
           <strong>
             après un ou deux ans d&apos;usage réel, vous savez exactement ce
             dont vous avez besoin
@@ -1119,7 +1124,7 @@ SCÉNARIO C — Prototype pour valider une idée
 
         <GuideInlineCTA
           title="Un outil à construire, un no-code qui sature ?"
-          description="Décrivez votre situation en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Si le no-code suffit, nous vous le dirons — c'est déjà arrivé."
+          description="Décrivez votre situation en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Le cadrage peut recommander de conserver le no-code lorsque le sur-mesure n'est pas justifié."
         />
 
         <InfoBox

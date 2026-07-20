@@ -5,13 +5,13 @@ import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Démarrer un projet web · Hagnéré Code",
   description:
-    "Décrivez votre projet (SaaS, site, outil métier) en 3 minutes, au clavier ou à la voix. Objectif de réponse personnelle le prochain jour ouvré, sans délai garanti.",
+    "Décrivez votre projet (SaaS, site, outil métier) en 3 minutes, au clavier ou à la voix. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti.",
   alternates: { canonical: "/demarrer-un-projet" },
   openGraph: {
     ...OG_BASE,
     title: "Démarrer un projet web · Hagnéré Code",
     description:
-      "Un parcours guidé de 3 minutes pour transmettre votre besoin — texte ou dictée vocale. Objectif de réponse personnelle le prochain jour ouvré.",
+      "Un parcours guidé de 3 minutes pour transmettre votre besoin — texte ou dictée vocale. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti.",
     url: "/demarrer-un-projet",
     images: [DEFAULT_OG_IMAGE],
   },

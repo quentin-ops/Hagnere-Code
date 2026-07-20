@@ -33,6 +33,12 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -248,9 +254,9 @@ export default function Page() {
           navigateur en payant un abonnement mensuel — exactement comme vous
           payez déjà votre logiciel de comptabilité en ligne. Les devis pour en
           construire un vont de 5 000 € à 150 000 € pour des projets qui, sur le
-          papier, se ressemblent. Si vous n&apos;êtes pas du métier, impossible
-          de savoir qui exagère — personne ne vous a jamais montré comment un
-          tel devis se fabrique. Ce guide remet de l&apos;ordre :{" "}
+          papier, se ressemblent. Si vous n&apos;êtes pas du métier, il est difficile
+          de savoir qui exagère, car peu de devis expliquent comment le prix se
+          construit. Ce guide remet de l&apos;ordre :{" "}
           <strong>
             fourchettes indicatives par étape, coûts d&apos;exploitation
             chiffrés, impact honnête de l&apos;IA, et un exemple illustratif de
@@ -552,9 +558,9 @@ export default function Page() {
           étapes, chacune validant la suivante. Pensez restauration : le POC,
           c&apos;est le stand du marché (on goûte) ; le MVP, le food-truck (on
           paie) ; la V1, le restaurant (on revient) ; la montée en charge (le «
-          scale »), le deuxième établissement. Personne n&apos;ouvre trois
-          restaurants avant d&apos;avoir vendu une seule assiette — c&apos;est
-          pourtant ce que fait un fondateur qui finance une V1 complète sans
+          scale »), le deuxième établissement. Ouvrir trois restaurants avant
+          d&apos;avoir vendu une seule assiette illustre le risque pris par un
+          fondateur qui finance une V1 complète sans
           passer par le MVP. Le budget cumulé se pilote palier par palier :
         </p>
         <GuideTable
@@ -717,10 +723,8 @@ export default function Page() {
           tourner ensuite — hébergement, services, correctifs : payé chaque
           mois, tant que le produit existe. Comme une voiture : prix
           d&apos;achat d&apos;un côté ; carburant, assurance et révisions de
-          l&apos;autre. Personne n&apos;achète une voiture en pensant
-          qu&apos;elle roulera gratuitement — c&apos;est pourtant
-          l&apos;hypothèse implicite de la plupart des business plans de SaaS
-          que nous recevons.
+          l&apos;autre. Un business plan doit donc budgéter l&apos;exploitation
+          et rendre explicites les hypothèses de coût retenues.
         </InfoBox>
         <p>
           Voici un <strong>scénario budgétaire illustratif</strong> pour
@@ -816,7 +820,7 @@ export default function Page() {
           rapport DORA 2025 (90 % d&apos;adoption chez les développeurs) conclut
           que l&apos;IA est un <em>amplificateur</em> : elle décuple les bonnes
           équipes… et les mauvaises. De l&apos;autre, l&apos;essai randomisé
-          METR (2025) a surpris tout le monde : sur du code complexe et mature,
+          METR (2025) a produit un résultat contre-intuitif : sur du code complexe et mature,
           les développeurs expérimentés étaient <strong>19 % plus lents</strong>{" "}
           avec les outils IA — tout en se croyant plus rapides.
         </p>
@@ -857,7 +861,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un chiffrage de SaaS honnête, au forfait fixe ?"
-          description="Décrivez votre projet en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti avec une fourchette argumentée — périmètre MVP, exploitation et trajectoire par étapes compris."
+          description="Décrivez votre projet en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec une fourchette argumentée — périmètre MVP, exploitation et trajectoire par étapes compris."
           tags={[
             "Objectif : prochain jour ouvré",
             "MVP dès 15 000 €",
@@ -970,7 +974,7 @@ export default function Page() {
         </p>
         <ul>
           <li>
-            <strong>RGPD (tout le monde).</strong> Votre rôle dépend de ce que
+            <strong>RGPD (données personnelles).</strong> Votre rôle dépend de ce que
             vous faites des données. Vous êtes généralement
             <em> sous-traitant</em> pour les données métier traitées sur
             instruction d&apos;un client ; vous pouvez être responsable du
@@ -984,7 +988,7 @@ export default function Page() {
             un premier jeu de documents propres, à prévoir dès la V1.
           </li>
           <li>
-            <strong>Facturation électronique (tout le monde).</strong> Vous
+            <strong>Facturation électronique (SaaS B2B en France).</strong> Vous
             devez pouvoir recevoir des factures électroniques au 1er septembre
             2026, et vos propres factures d&apos;abonnement B2B basculeront dans
             le système (émission PME : septembre 2027). Coût quasi nul si votre
@@ -1301,7 +1305,7 @@ export default function Page() {
               "1 500 – 5 000 €",
             ],
             [
-              "Acquisition des clients (le poste que tout le monde oublie)",
+              "Acquisition des clients (à budgéter séparément)",
               "15 000 – 25 000 €",
             ],
             ["Total année 1 de ce scénario", "45 000 – 60 000 €"],
@@ -1342,9 +1346,9 @@ export default function Page() {
             lance)
           </strong>{" "}
           qui produit périmètre écrit, prototype cliquable et devis au forfait
-          fixe — puis un MVP prêt pour la mise en ligne, utilisable par de vrais
-          clients payants (« production-ready »), dès 15 000 €, livré en 3 à 6
-          semaines, dates contractuelles (méthode{" "}
+          fixe — puis, si le projet continue, une première version au périmètre
+          resserré dès 15 000 €. Le devis définit ce qui rend la version exploitable,
+          le plan de recette, les dépendances, la date et les jalons (méthode{" "}
           <Link href="/methode">Sprint Fixe™</Link>).{" "}
           <Link href="/demarrer-un-projet">
             Décrivez votre projet en 3 minutes

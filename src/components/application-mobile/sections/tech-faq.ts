@@ -76,8 +76,8 @@ export const techFaqHtml = `
         <h3>Tests : quel niveau de couverture, quels outils ?</h3>
         <p>
           <b>Jest</b> pour les tests unitaires de logique métier et <b>React Native Testing Library</b> pour les composants. Le niveau de couverture cible est défini selon les risques du produit.
-          <b>Maestro</b> pour les flows end-to-end critiques (login, achat, push, paiement). <b>Detox</b> en complément si modules natifs custom.
-          Lancés en CI sur GitHub Actions à chaque PR. Snapshots visuels via Jest + screenshots Maestro sur les écrans clés.
+          <b>Maestro</b> peut couvrir les parcours end-to-end critiques (login, achat, push, paiement), avec <b>Detox</b> en complément si des modules natifs spécifiques le justifient.
+          Les outils, la fréquence CI, les appareils et les preuves visuelles sont définis dans le plan de test annexé au devis selon les risques du produit.
         </p>
       </div>
 

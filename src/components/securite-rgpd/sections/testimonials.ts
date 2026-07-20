@@ -10,7 +10,7 @@ export const testimonialsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Preuves vérifiables</div>
-        <h2>Aucun témoignage sur<br>cette page. <em>Nos produits<br>sont en ligne, ouvrez-les.</em></h2>
+        <h2>Aucun témoignage sur<br>cette page. <em>Quatre pages<br>publiques à consulter.</em></h2>
       </div>
       <div class="right">
         Nous n'affichons ni citation, ni note, ni logo emprunté : à ce jour, Hagnéré Code n'a pas de client

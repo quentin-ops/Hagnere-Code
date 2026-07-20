@@ -57,7 +57,7 @@ export const migrationHtml = `
       <div class="ec-mig-step reveal reveal-d-3">
         <div class="ec-mig-num">04</div>
         <div class="ec-mig-body">
-          <h3>Bascule + redirections en production</h3>
+          <h3>Bascule + redirections vers le site public</h3>
           <p>
             La fenêtre de bascule, le gel des données et le retour arrière sont préparés à l'avance. Les redirections
             301 validées partent avec la nouvelle version ; le sitemap et les données structurées sont contrôlés puis

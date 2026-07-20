@@ -7,6 +7,7 @@ import {
   boolean,
   index,
 } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
 
 /**
  * project_brief — submissions from the /demarrer-un-projet funnel.
@@ -139,4 +140,9 @@ export const aiCallLog = pgTable("ai_call_log", {
   // (service, email_hash, created_at) — sert le compteur per-email-per-day
   // (utilisé seulement par 'estimate' et 'inquiry' aujourd'hui).
   index("ai_call_log_service_email_created_at_idx").on(t.service, t.emailHash, t.createdAt),
+  // Compteurs globaux et coût par service sur la fenêtre de 24 h. Le filtre
+  // partiel évite d'indexer les lignes d'issue qui ne comptent pas au quota.
+  index("ai_call_log_service_created_at_reserved_idx")
+    .on(t.service, t.createdAt)
+    .where(sql`${t.status} = 'reserved'`),
 ]);

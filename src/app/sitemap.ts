@@ -4,23 +4,10 @@ import { PUBLISHED_GUIDES } from "@/lib/guides";
 import { LOCAL_PAGES, localPagePath } from "@/lib/local-pages";
 import { DOWNLOADABLE_RESOURCES } from "@/lib/resources";
 import { SITE_URL } from "@/lib/seo";
+import { SERVICE_LINKS } from "@/lib/services";
 import { WHITE_PAPERS } from "@/lib/white-papers";
 
 const baseUrl = SITE_URL;
-
-const servicesSlugs = [
-  "saas-applications-metier",
-  "outils-internes-sur-mesure",
-  "sites-vitrines",
-  "ecommerce",
-  "referencement-google",
-  "publicite-en-ligne",
-  "contenu-video",
-  "application-mobile",
-  "maintenance-evolution",
-  "securite-rgpd",
-  "audit-technique",
-];
 
 const toolRoutes = [
   // /outils et /outils/estimer-mon-projet (ancien estimateur, supprimé)
@@ -86,8 +73,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  const serviceRoutes: MetadataRoute.Sitemap = servicesSlugs.map((slug) => ({
-    url: `${baseUrl}/services/${slug}`,
+  const serviceRoutes: MetadataRoute.Sitemap = SERVICE_LINKS.map((service) => ({
+    url: `${baseUrl}${service.path}`,
   }));
 
   const caseRoutes: MetadataRoute.Sitemap = CASE_SLUGS.map((slug) => ({

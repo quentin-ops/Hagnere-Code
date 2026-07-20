@@ -29,42 +29,14 @@ const offersJsonLd = JSON.stringify({
         name: "Discovery Sprint",
         price: "1500",
         priceCurrency: "EUR",
-        description:
-          "2 jours de cadrage, prototype Figma cliquable et devis chiffré forfait fixe. Déduit du devis si lancement.",
-      },
-      {
-        "@type": "Offer",
-        name: "Essentiel — Site vitrine ou MVP court",
-        price: "6000",
-        priceCurrency: "EUR",
-        description: "Site vitrine 5–10 pages OU MVP SaaS 3–5 écrans, livré en 2–4 semaines.",
-      },
-      {
-        "@type": "Offer",
-        name: "Standard — Projet complet",
-        price: "25000",
-        priceCurrency: "EUR",
-        description:
-          "SaaS, outil interne ou marketplace 10–15 écrans avec back-office, intégrations et IA.",
-      },
-      {
-        "@type": "Offer",
-        name: "Partenariat — Capacité mensuelle",
-        price: "8000",
-        priceCurrency: "EUR",
         priceSpecification: {
-          "@type": "UnitPriceSpecification",
-          price: "8000",
+          "@type": "PriceSpecification",
+          price: "1500",
           priceCurrency: "EUR",
-          unitCode: "MON",
+          valueAddedTaxIncluded: false,
         },
-        description: "Forfait mensuel dont la capacité, les intervenants, la durée et les modalités de sortie sont définis au devis.",
-      },
-      {
-        "@type": "Offer",
-        name: "Care — Maintenance mensuelle",
         description:
-          "Hébergement, monitoring, sauvegardes, bugfix prioritaires. Trois niveaux, sur devis.",
+          "Prix de 1 500 euros hors taxes. Deux jours de cadrage, prototype Figma cliquable et devis chiffré au forfait fixe. Déduit du devis si lancement.",
       },
     ],
   },

@@ -28,17 +28,18 @@ export function RealisationsIndexPage() {
             <div className="rlm-copy reveal">
               <div className="rlm-eyebrow-pill">
                 <span className="rlm-eyebrow-dot" />
-                <span><b>4 produits</b> · documentés · en production</span>
+                <span><b>4 analyses externes</b> · pages publiques · source datée</span>
               </div>
               <h1>
-                Réalisations Hagnéré Code.<br />
-                4 produits réels{" "}
-                <span className="rlm-accent">en production</span>.
+                Analyses de pages publiques.<br />
+                4 sources externes à lire{" "}
+                <span className="rlm-accent">avec leur niveau de preuve</span>.
               </h1>
               <p>
-                Chaque cas est documenté en détail&nbsp;: contexte, ce qui a été construit,
-                fonctionnement, modules livrés et stack technique. Les résultats commerciaux
-                non accompagnés d&apos;un dossier de preuve ne sont pas publiés.
+                Hagnéré Code analyse ici quatre pages publiques externes. Chaque fiche
+                inventorie uniquement ce qui est visible à la date indiquée. Elle ne revendique
+                ni la conception, ni la livraison, ni la technologie, ni l&apos;acquisition,
+                ni les résultats de ces sites.
               </p>
               <div className="rlm-actions">
                 <Link href="#cas" className="btn btn-accent btn-lg">
@@ -69,7 +70,7 @@ export function RealisationsIndexPage() {
                     <span className="rlm-float-cat">{c.category.split(" · ")[0]}</span>
                   </div>
                   <span className="rlm-float-status">
-                    <span className="rlm-float-dot" /> EN PROD
+                    <span className="rlm-float-dot" /> PAGE PUBLIQUE
                   </span>
                 </div>
               ))}
@@ -87,7 +88,7 @@ export function RealisationsIndexPage() {
                 </div>
                 <div className="rlm-stat-body">
                   <div className="rlm-stat-v">4</div>
-                  <div className="rlm-stat-k">produits opérés en production</div>
+                  <div className="rlm-stat-k">sources publiques externes</div>
                 </div>
               </div>
 
@@ -97,7 +98,7 @@ export function RealisationsIndexPage() {
                 </div>
                 <div className="rlm-stat-body">
                   <div className="rlm-stat-v">2 + 2</div>
-                  <div className="rlm-stat-k">2 SaaS fiscaux · 2 sites acquisition</div>
+                  <div className="rlm-stat-k">2 logiciels présentés · 2 sites de services</div>
                 </div>
               </div>
 
@@ -106,8 +107,8 @@ export function RealisationsIndexPage() {
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3-3M22 11l-3 3M19 8h6"/></svg>
                 </div>
                 <div className="rlm-stat-body">
-                  <div className="rlm-stat-v">Détaillé</div>
-                  <div className="rlm-stat-k">modules, architecture et parcours expliqués</div>
+                  <div className="rlm-stat-v">Daté</div>
+                  <div className="rlm-stat-k">éléments visibles lors de la consultation</div>
                 </div>
               </div>
 
@@ -116,8 +117,8 @@ export function RealisationsIndexPage() {
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M3 12a9 9 0 1118 0 9 9 0 01-18 0z"/><path d="M9 12l2 2 4-4"/></svg>
                 </div>
                 <div className="rlm-stat-body">
-                  <div className="rlm-stat-v">Au devis</div>
-                  <div className="rlm-stat-k">droits, dépôts, accès et données précisés</div>
+                  <div className="rlm-stat-v">Externe</div>
+                  <div className="rlm-stat-k">aucune intervention Hagnéré Code revendiquée</div>
                 </div>
               </div>
             </div>
@@ -129,28 +130,14 @@ export function RealisationsIndexPage() {
           <div className="wrap">
             <div className="section-head reveal">
               <div className="left">
-                <div className="eyebrow">— Les cas</div>
-                <h2>4 produits internes,<br />4 mécaniques différentes.</h2>
+                <div className="eyebrow">— Les analyses</div>
+                <h2>4 pages externes,<br />4 inventaires datés.</h2>
               </div>
               <div className="right">
-                Chaque carte renvoie vers une étude détaillée&nbsp;: contexte,
-                problème, solution, modules livrés et stack.
-                <b> Aucun client externe à exposer ici</b> — on assume nos produits maison
-                comme preuve principale.
-              </div>
-            </div>
-
-            <div className="rlm-group-note reveal" role="note">
-              <div className="rlm-group-note-badges" aria-hidden="true">
-                <span className="rlm-group-note-badge" style={{ "--brand": "#6D28D9" } as CSSProperties}>L</span>
-                <span className="rlm-group-note-badge" style={{ "--brand": "#0066FF" } as CSSProperties}>S</span>
-              </div>
-              <div className="rlm-group-note-body">
-                <span className="rlm-group-note-eyebrow">Même groupe</span>
-                <p>
-                  <b>LMNP.AI</b> et <b>SCI-AI.app</b> appartiennent au même écosystème
-                  produit interne et partagent plusieurs fondations techniques.
-                </p>
+                Chaque carte renvoie vers l&apos;inventaire d&apos;une page publique
+                externe, avec son lien source et sa date de consultation. Ces analyses
+                ne sont ni des références client, ni des preuves d&apos;intervention de
+                Hagnéré Code.
               </div>
             </div>
 
@@ -172,7 +159,7 @@ export function RealisationsIndexPage() {
                     <div className="rlm-case-cover-grid" aria-hidden="true" />
                     <div className="rlm-case-logo">{c.brandLogo}</div>
                     <span className="rlm-case-status">
-                      <span className="rlm-case-status-dot" /> EN PRODUCTION
+                      <span className="rlm-case-status-dot" /> PAGE PUBLIQUE
                     </span>
                   </div>
 
@@ -196,9 +183,9 @@ export function RealisationsIndexPage() {
                       ))}
                     </div>
 
-                    {/* Modules clés */}
+                    {/* Publicly observable elements only. */}
                     <div className="rlm-case-section">
-                      <div className="rlm-case-section-h">Modules clés</div>
+                      <div className="rlm-case-section-h">Éléments visibles</div>
                       <div className="rlm-case-features">
                         {c.features.slice(0, 5).map((feat) => (
                           <span key={feat}>{feat}</span>
@@ -206,19 +193,9 @@ export function RealisationsIndexPage() {
                       </div>
                     </div>
 
-                    {/* Stack */}
-                    <div className="rlm-case-section">
-                      <div className="rlm-case-section-h">Stack</div>
-                      <div className="rlm-case-stack">
-                        {c.stack.slice(0, 5).map((s) => (
-                          <span key={s}>{s}</span>
-                        ))}
-                      </div>
-                    </div>
-
                     <div className="rlm-case-foot">
                       <span className="rlm-case-cta">
-                        Lire l&apos;étude détaillée
+                        Lire l&apos;analyse externe
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                       </span>
                     </div>
@@ -229,7 +206,7 @@ export function RealisationsIndexPage() {
           </div>
         </section>
 
-        {/* ─── CTA "Mise en relation" ──────────────────────────────── */}
+        {/* ─── CTA niveau de preuve ─────────────────────────────────── */}
         <section className="rlm-cta">
           <div className="wrap">
             <div className="rlm-cta-card reveal">
@@ -241,20 +218,20 @@ export function RealisationsIndexPage() {
 
               <div className="rlm-cta-body">
                 <div className="rlm-cta-eyebrow">
-                  <span className="rlm-cta-dot" /> MISE EN RELATION
+                  <span className="rlm-cta-dot" /> NIVEAU DE PREUVE
                 </div>
                 <h2>
-                  Vous voulez parler à<br />
-                  <span className="rlm-cta-accent">un utilisateur réel ?</span>
+                  Vous voulez vérifier<br />
+                  <span className="rlm-cta-accent">ce qui compte pour votre projet ?</span>
                 </h2>
                 <p>
-                  Avant signature, on organise volontiers une visio avec l&apos;équipe qui
-                  exploite l&apos;un de nos quatre produits, au quotidien. Captures, choix
-                  techniques, arbitrages assumés — sans filtre commercial.
+                  Consultez les pages externes liées et vérifiez les informations
+                  auprès de leur éditeur. Ces analyses éditoriales ne remplacent ni une
+                  référence client, ni une preuve de livraison, ni un audit technique.
                 </p>
                 <div className="rlm-cta-actions">
                   <Link href="/contact" className="btn btn-accent btn-lg">
-                    Demander une mise en relation
+                    Discuter du niveau de preuve
                     <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                   </Link>
                   <Link href="/methode" className="btn btn-ghost-light btn-lg">
@@ -266,7 +243,7 @@ export function RealisationsIndexPage() {
               <div className="rlm-cta-side" aria-hidden="true">
                 <div className="rlm-cta-tile">
                   <div className="rlm-cta-tile-k">4</div>
-                  <div className="rlm-cta-tile-l">produits<br />en production</div>
+                  <div className="rlm-cta-tile-l">pages<br />publiques</div>
                 </div>
                 <div className="rlm-cta-tile rlm-cta-tile-accent">
                   <div className="rlm-cta-tile-k">2</div>
@@ -277,8 +254,8 @@ export function RealisationsIndexPage() {
                   <div className="rlm-cta-tile-l">sites<br />métier</div>
                 </div>
                 <div className="rlm-cta-tile rlm-cta-tile-accent">
-                  <div className="rlm-cta-tile-k">Sur devis</div>
-                  <div className="rlm-cta-tile-l">périmètre<br />contractuel</div>
+                  <div className="rlm-cta-tile-k">Source</div>
+                  <div className="rlm-cta-tile-l">externe<br />consultable</div>
                 </div>
               </div>
             </div>

@@ -33,6 +33,12 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -789,8 +795,9 @@ export default function Page() {
           partie — et elles mesurent l&apos;exécution médiane du
           marché, pas le
           plafond de la technologie. Bien exécutée, une vitrine Next.js
-          tient les Core Web Vitals au vert — ce site, développé à
-          100 % en Next.js, en est la démonstration en production — et
+          peut viser les Core Web Vitals — ce site fournit un exemple public
+          que vous pouvez tester, sans garantir le score d&apos;un autre projet ni
+          prouver à lui seul toute sa stack interne — et
           offre ce qu&apos;aucun thème Liquid ne permet : animations sur
           mesure (Framer Motion, GSAP), direction artistique libre,
           architecture de contenu illimitée pour le référencement.

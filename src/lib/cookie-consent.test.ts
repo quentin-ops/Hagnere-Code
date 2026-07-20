@@ -9,6 +9,7 @@ import {
 
 describe("cookie consent storage", () => {
   afterEach(() => {
+    vi.restoreAllMocks();
     vi.unstubAllGlobals();
     vi.unstubAllEnvs();
   });
@@ -58,5 +59,28 @@ describe("cookie consent storage", () => {
 
     expect(isAnalyticsAllowed()).toBe(false);
     expect(removeItem).toHaveBeenCalledWith(COOKIE_CONSENT_STORAGE_KEY);
+  });
+
+  it("évalue l’âge du choix après sa lecture", () => {
+    const now = vi
+      .spyOn(Date, "now")
+      .mockReturnValueOnce(1_000)
+      .mockReturnValueOnce(1_001);
+    vi.stubGlobal("window", {
+      localStorage: {
+        getItem: vi.fn(() =>
+          JSON.stringify({
+            version: 2,
+            necessary: true,
+            analytics: true,
+            categories: { necessary: true, analytics: true },
+            ts: Date.now(),
+          }),
+        ),
+      },
+    });
+
+    expect(readCookieConsent()).toMatchObject({ analytics: true });
+    expect(now).toHaveBeenCalledTimes(2);
   });
 });

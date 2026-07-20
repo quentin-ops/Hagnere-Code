@@ -1,8 +1,11 @@
 # Dossier de recherche — combien-coute-un-crm
 
 > Dernière vérification des faits volatils : 20 juillet 2026.
-> Statut éditorial : **Contre-audit intégré ; prêt pour contrôles techniques et revue humaine**.
-> Ce statut ne vaut ni validation humaine, ni preuve de publication, ni preuve d’indexation.
+> Statut au 20 juillet 2026 : **publié dans le registre éditorial, parmi les
+> 40 `PUBLISHED_GUIDES`**. Cette publication alimente automatiquement le hub,
+> le sitemap et `llms.txt` lors du build. Elle ne vaut ni validation
+> par un lecteur humain, ni preuve que le déploiement actif contient ce
+> snapshot, ni preuve d’indexation Google.
 
 ## 1. Brief de la page
 
@@ -213,7 +216,9 @@ Le CTA unique propose de faire relire le TCO et les écarts fonctionnels avant d
 
 ## 12. Scorecard après contre-audit
 
-Cette évaluation intègre le contre-audit éditorial. Elle reste plafonnée par l’absence de test avec un lecteur humain et par les contrôles techniques encore ouverts.
+Cette évaluation intègre le contre-audit éditorial. Elle reste plafonnée par
+l’absence de test avec un lecteur humain et ne doit pas être transformée en
+preuve de conversion, de classement ou d’indexation.
 
 | Axe                          |      Note | Preuve après contre-audit                                                                                                          |
 | ---------------------------- | --------: | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -226,8 +231,8 @@ Cette évaluation intègre le contre-audit éditorial. Elle reste plafonnée par
 | Originalité                  |       2/2 | Les socles reproductibles, la matrice de preuves et la lecture opérationnelle du Data Act forment l’artefact signature             |
 | Style                        |       2/2 | Pas de faux récit, de taux spectaculaire, de répétition commerciale ou de conclusion automatique                                   |
 | Conversion                   |       1/2 | Un seul CTA et les cas de renoncement sont explicites, mais aucune lecture humaine ni donnée de conversion n’est encore disponible |
-| SEO/produit                  |       1/2 | Metadata et JSON-LD sont prévus ; registre, build et rendu navigateur relèvent de l’intégration finale                             |
-| **Total après contre-audit** | **18/20** | Seuil éditorial atteint ; validation technique, humaine et production encore requises                                              |
+| SEO/produit                  |       1/2 | Metadata, JSON-LD et registre sont intégrés ; le guide est l’une des 40 entrées publiées, tandis que le déploiement actif et l’indexation restent à vérifier séparément |
+| **Total après contre-audit** | **18/20** | Seuil éditorial atteint et publication de registre acquise ; aucune validation humaine, conversion ou indexation n’est déduite     |
 
 ## 13. Contrôles et état de livraison
 
@@ -239,14 +244,12 @@ Cette évaluation intègre le contre-audit éditorial. Elle reste plafonnée par
 - [x] Arithmétique des trois socles refaite ligne par ligne ; onboarding HubSpot conservé comme inconnue.
 - [x] Aucun faux devis, faux client ou taux d’échec universel.
 - [x] FAQ limitée à six questions visibles, sans schéma `FAQPage`.
-- [x] `git diff --check` passé sur les trois fichiers du périmètre après corrections.
-- [x] ESLint ciblé passé sur le nouveau guide CRM et le passage connexe du guide prix.
 - [x] Contre-audit indépendant intégré : TCO incomplets renommés, conflit HubSpot traité, sources rapprochées et seuil universel supprimé du guide voisin.
-- [ ] Entrée présente dans `src/lib/guides.ts`, mais les libellés « trois TCO » doivent être réconciliés avec les « trois socles ».
-- [ ] Typecheck, tests et build du dépôt complet.
+- [x] Entrée présente dans `src/lib/guides.ts` et libellés réconciliés autour des « trois socles » ; guide compté parmi les 40 entrées publiées au 20 juillet 2026.
+- [ ] Batterie du dépôt relancée sur le snapshot final après toute modification ; ne pas conserver ici de nombre de tests ou de pages issu d’un ancien build.
 - [ ] Rendu réel vérifié à toutes les largeurs prévues par la charte.
 - [ ] Test par un lecteur humain non technique.
-- [ ] URL, canonical, image OG, sitemap et données structurées vérifiés en production.
+- [ ] URL, canonical, image OG, sitemap et données structurées revérifiés sur le déploiement actif ; indexation contrôlée séparément dans Search Console.
 
 ## 14. Maintenance
 

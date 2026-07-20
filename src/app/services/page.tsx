@@ -48,10 +48,7 @@ export default function Page() {
           name,
           url: `https://hagnere-code.ai${url}`,
           provider: {
-            "@type": "Organization",
             "@id": "https://hagnere-code.ai/#organization",
-            name: "Hagnéré Code",
-            url: "https://hagnere-code.ai",
           },
         },
       })),

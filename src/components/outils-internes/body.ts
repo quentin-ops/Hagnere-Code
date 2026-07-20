@@ -35,7 +35,7 @@ ${navHtml}
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
-          Réserver 30 min avec un expert <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          Demander un échange avec un expert <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
         <a href="#contact" class="btn btn-ghost btn-lg">Audit processus · 1j sur site · 990 €</a>
       </div>
@@ -759,8 +759,8 @@ ${navHtml}
         <h2>De l'audit à l'ERP léger.<br>Un prix fixe à chaque marche.</h2>
       </div>
       <div class="right">
-        On vend au forfait, pas au temps passé. Vous savez exactement ce que vous payez
-        et ce que vous obtenez <b>avant</b> de signer — et combien de temps ça prend.
+        Les fourchettes servent au premier cadrage. Le devis fixe le périmètre,
+        le prix, les livrables, les coûts tiers et le planning avant engagement.
       </div>
     </div>
 
@@ -780,7 +780,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Cartographie 3–5 processus</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Roadmap 3 scénarios chiffrés</li>
         </ul>
-        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Réserver l'audit</a></div>
+        <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander l'audit</a></div>
       </div>
 
       <div class="plan reveal reveal-d-1">
@@ -789,14 +789,14 @@ ${navHtml}
         <div class="plan-sub">Un seul processus douloureux, automatisé proprement. Idéal pour tester.</div>
         <div class="plan-price">
           <span class="amount">8–15 k€</span>
-          <span class="per">forfait TTC</span>
+          <span class="per">HT · fourchette indicative</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1 workflow automatisé</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intégration à vos outils actuels</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 6 mois inclus</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 2–3 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement et coûts tiers précisés au devis</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning confirmé après audit du processus</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
       </div>
@@ -808,7 +808,7 @@ ${navHtml}
         <div class="plan-sub">Un back-office complet qui remplace vos fichiers Excel et vos process manuels.</div>
         <div class="plan-price">
           <span class="amount">25–50 k€</span>
-          <span class="per">forfait TTC</span>
+          <span class="per">HT · fourchette indicative</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
@@ -817,7 +817,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Extraction IA (factures, documents)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Migration de vos données Excel</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Formation des équipes</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 5–7 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning confirmé après cadrage</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
       </div>
@@ -1008,7 +1008,7 @@ ${navHtml}
     <h2 style="margin-top:14px">Parlons de vos process.<br><span class="accent">30 minutes, c'est tout.</span></h2>
     <p>Un call de cadrage gratuit avec un de nos seniors. On regarde ensemble vos 2 ou 3 processus les plus douloureux et on vous dit franchement si un outil sur mesure se justifie.</p>
     <div class="scta-cta">
-      <a href="#" class="btn btn-accent btn-lg">
+      <a href="/rendez-vous" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -1036,9 +1036,9 @@ ${navHtml}
           <h3>SERVICES</h3>
           <a href="/services/saas-applications-metier">SaaS &amp; applications métier</a>
           <a href="/services/outils-internes-sur-mesure">Outils internes</a>
-          <a href="#">Sites vitrines</a>
-          <a href="#">SEO</a>
-          <a href="#">Publicité</a>
+          <a href="/services/sites-vitrines">Sites vitrines</a>
+          <a href="/services/referencement-google">SEO</a>
+          <a href="/services/publicite-en-ligne">Publicité</a>
         </div>
         <div class="foot-col">
           <h3>STUDIO</h3>
@@ -1050,14 +1050,13 @@ ${navHtml}
         <div class="foot-col">
           <h3>CONTACT</h3>
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">YouTube</a>
+          <a href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
         <div class="foot-col">
           <h3>LÉGAL</h3>
-          <a href="#">CGV</a>
-          <a href="#">Mentions légales</a>
-          <a href="#">Confidentialité</a>
+          <a href="/legal/cgv">CGV</a>
+          <a href="/legal/mentions">Mentions légales</a>
+          <a href="/legal/confidentialite">Confidentialité</a>
         </div>
       </div>
     </div>

@@ -338,8 +338,9 @@ de recherche, contre-audit, maillage et contrôle technique propres :
 4. `audit-google-ads-que-verifier` ;
 5. `audit-seo-que-contient-il`.
 
-Le build de prépublication exécute 86 tests SEO, génère 98 pages et valide le
-postbuild. Les huit routes ont franchi la porte éditoriale le 20 juillet 2026 :
+La batterie de prépublication exécute les tests SEO puis valide le build et le
+postbuild du snapshot gelé ; ses nombres courants sont consignés dans la
+checklist de lancement. Les huit routes ont franchi la porte éditoriale le 20 juillet 2026 :
 elles alimentent désormais le hub, le sitemap et `llms.txt`, et héritent de la
 politique `index,follow` dans l'artefact de production. Cette ouverture ne vaut
 ni preuve de crawl, ni preuve d'indexation effective, ni promesse de position.

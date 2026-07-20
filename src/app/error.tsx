@@ -12,7 +12,6 @@ export default function GlobalError({
 }) {
   useEffect(() => {
     if (typeof window !== "undefined" && process.env.NODE_ENV !== "production") {
-       
       console.error("App error boundary:", error);
     }
   }, [error]);
@@ -102,8 +101,8 @@ export default function GlobalError({
           lineHeight: 1.55,
         }}
       >
-        L&apos;équipe a été notifiée. Vous pouvez réessayer dans un instant
-        ou revenir à l&apos;accueil.
+        Vous pouvez réessayer dans un instant ou revenir à l&apos;accueil. Si le
+        problème persiste, contactez-nous et indiquez la référence si elle apparaît.
       </p>
 
       {error.digest && (

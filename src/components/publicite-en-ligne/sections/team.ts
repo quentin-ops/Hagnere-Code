@@ -7,7 +7,7 @@ export const teamHtml = buildServiceTeamHtml({
   description: `
     Pas de commercial entre vous et le produit, pas de sous-traitance offshore, pas de junior
     qui découvre SEO sur votre projet. <b>${TEAM_PUBLIC_COMPOSITION}</b>. Toute l'équipe partage les
-    mêmes rituels — toujours les mêmes personnes, nommées au cadrage.`,
+    mêmes exigences de travail. Les personnes affectées, leurs rôles et les relais sont nommés au cadrage.`,
   devsIntroTitle: "Des devs seniors,<br>augmentés par <em>Claude Code</em>.",
   devsIntroBody: `
     Tous formés à utiliser Claude Code comme copilote senior : recherches, architecture,

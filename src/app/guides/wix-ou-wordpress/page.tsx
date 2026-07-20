@@ -32,6 +32,12 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -47,7 +53,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4300,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -116,7 +121,7 @@ const faqItems = [
   {
     question: "Wix ou WordPress pour un e-commerce ?",
     answer:
-      "Pour tester une activité ou vendre un petit catalogue simple, Wix fait le travail (forfait Essentiel à 30 € TTC/mois minimum). Au-delà, les limites arrivent vite : les praticiens situent le seuil vers 500 à 1 000 produits ou environ 10 000 € de chiffre d'affaires mensuel — personnalisation, automatisations et performance commencent à coincer. WordPress avec WooCommerce équipe 47,4 % des boutiques en ligne françaises, loin devant tout le monde ; c'est l'écosystème de référence, avec la responsabilité d'entretien qui va avec. Pour ce duel spécifique, notre comparatif WooCommerce ou Shopify complète la réflexion.",
+      "Pour tester une activité ou vendre un petit catalogue simple, Wix fait le travail (forfait Essentiel à 30 € TTC/mois minimum). Au-delà, les limites arrivent vite : les praticiens situent le seuil vers 500 à 1 000 produits ou environ 10 000 € de chiffre d'affaires mensuel — personnalisation, automatisations et performance commencent à coincer. WordPress avec WooCommerce équipe 47,4 % des boutiques en ligne françaises ; c'est l'écosystème de référence, avec la responsabilité d'entretien qui va avec. Pour ce duel spécifique, notre comparatif WooCommerce ou Shopify complète la réflexion.",
   },
   {
     question: "Est-ce que Wix prend une commission sur les ventes ?",
@@ -151,7 +156,7 @@ const faqItems = [
   {
     question: "Wix est-il moins cher qu'un site sur mesure ?",
     answer:
-      "À l'entrée, oui : quelques centaines d'euros par an contre plusieurs milliers en création. Mais l'écart a fondu : en 2026, l'IA (Claude Code) a fortement réduit le coût et le délai du sur-mesure. Wix loue un site standard que vous assemblez ; le sur-mesure construit un actif que vous possédez, conçu pour convertir et être trouvé — c'est un autre métier et un autre objectif. Et dès qu'un projet Wix « ambitieux » exige un prestataire (2 500 € et plus) plus des années d'abonnements et d'applications — plus la rançon de sortie (section 9) —, la facture rejoint celle d'un actif que vous possédez. Notre guide du prix d'un site vitrine met tous ces budgets côte à côte.",
+      "À périmètre simple, Wix demande généralement moins d'investissement initial qu'un développement sur mesure. La comparaison change dès que l'on ajoute le travail d'un prestataire, les applications, les abonnements, la maintenance et une éventuelle reconstruction pour sortir de la plateforme. L'usage d'assistants IA par une équipe de développement ne prouve ni une baisse générale de prix ni un délai universel : comparez les devis à périmètre égal et calculez le coût total sur la durée prévue. Notre guide du prix d'un site vitrine fournit cette méthode.",
   },
   {
     question: "Peut-on résilier un abonnement Wix facilement ?",
@@ -204,8 +209,8 @@ export default function Page() {
         <p className="lead">
           Cherchez « Wix ou WordPress » : la première page de Google est
           tenue par Wix lui-même, deux hébergeurs, et des blogs rémunérés
-          à la commission. <strong>Personne n&apos;y est neutre — nous
-          non plus : nous vendons du sur-mesure, et zéro
+          à la commission. <strong>Ces contenus ont chacun leurs intérêts — nous
+          aussi : nous vendons du sur-mesure, avec zéro
           affiliation.</strong>{" "}
           Ce guide l&apos;est : zéro lien d&apos;affiliation, les prix
           réels TTC des deux côtés, la vitesse mesurée, le verrouillage
@@ -244,10 +249,10 @@ export default function Page() {
           standard et l&apos;entretien accepté</strong> : hébergement
           dès 84 € HT/an (≈ 101 € TTC), maintenance à budgéter (39 à
           290 €/mois en délégation). Mais pour une entreprise dont le site doit
-          convertir et durer, <strong>le choix par défaut a
-          changé</strong> : l&apos;IA (Claude Code) a fait fortement
-          baisser le coût et le délai du sur-mesure, et le critère que
-          personne ne met en avant — <strong>la réversibilité</strong> —
+          convertir et durer, <strong>le choix doit se faire sur le
+          périmètre et le coût total</strong>. L&apos;usage d&apos;assistants IA ne
+          démontre pas à lui seul une baisse de prix ou de délai ; un critère décisif —
+          <strong>la réversibilité</strong> —
           joue entièrement pour lui : un site Wix ne s&apos;exporte
           pas, un site que vous possédez vous suit partout
           (sections 9 et 13).
@@ -515,8 +520,7 @@ export default function Page() {
           « lent » de la réputation n&apos;est pas celui qu&apos;on
           croit. L&apos;explication est structurelle, pas magique :
           Wix contrôle l&apos;hébergement, les thèmes et le code de
-          tous ses sites — la moyenne est bonne parce que personne ne
-          peut mal faire. WordPress hérite de millions
+          ses sites — ce cadre limite les mauvaises configurations. WordPress hérite de millions
           d&apos;installations libres — thèmes lourds, hébergements
           d&apos;entrée de gamme, extensions empilées — qui plombent
           la moyenne… alors qu&apos;un WordPress bien construit et
@@ -706,17 +710,12 @@ export default function Page() {
           briques standards. Pour un side-project, un micro-budget ou
           un test de marché, c&apos;est exactement ce qu&apos;il faut.
           Pour un site professionnel qui doit{" "}
-          <strong>convertir et durer</strong>, ce présupposé ne tient
-          plus en 2026 : l&apos;IA (Claude Code) a fait chuter le coût
-          et le délai de la conception sur mesure, et l&apos;assemblage
-          montre ses limites — vitesse plafonnée par les briques,
-          référencement technique bridé, parcours génériques, et une
-          qualité visuelle qu&apos;aucun template n&apos;atteint
-          (animations et interactions de niveau produit, type Framer
-          Motion ou GSAP, hors de portée de Wix et des builders grand
-          public — Webflow, l&apos;exception partielle, reste soumis à
-          la même clause de sortie).
-          C&apos;est le territoire du sur-mesure : un site conçu pour
+          <strong>convertir et durer</strong>, il faut comparer leurs limites
+          concrètes au besoin : contrôle de l&apos;architecture, export, intégrations,
+          performance mesurée page par page, liberté de parcours et identité.
+          Aucun builder n&apos;est uniformément lent ou incapable d&apos;un bon design,
+          et l&apos;IA ne prouve pas une baisse générale du coût du sur-mesure.
+          Ce dernier reste une option : un site conçu pour
           votre stratégie, généralement{" "}
           <strong>6 900 à 22 000 €</strong> chez nous
           (<Link href="/tarifs">grille publique</Link>), rapide par

@@ -13,18 +13,18 @@ export const scenariosHtml = `
       </div>
     </div>
 
-    <div class="ec-scen-tabs reveal" role="tablist">
-      <button type="button" class="ec-scen-tab" data-scenario="new" role="tab" aria-selected="true">
+    <div class="ec-scen-tabs reveal" role="tablist" aria-label="Choisir un scénario">
+      <button type="button" class="ec-scen-tab" data-scenario="new" role="tab" aria-selected="true" id="ec-scenario-tab-new" aria-controls="ec-scenario-panel-new" tabindex="0">
         <span class="ec-scen-tab-k">SCÉNARIO 01</span>
         <span class="ec-scen-tab-t">Nouvelle boutique</span>
         <span class="ec-scen-tab-d">Durée sur devis</span>
       </button>
-      <button type="button" class="ec-scen-tab" data-scenario="migration" role="tab" aria-selected="false">
+      <button type="button" class="ec-scen-tab" data-scenario="migration" role="tab" aria-selected="false" id="ec-scenario-tab-migration" aria-controls="ec-scenario-panel-migration" tabindex="-1">
         <span class="ec-scen-tab-k">SCÉNARIO 02</span>
         <span class="ec-scen-tab-t">Migration Shopify / Presta</span>
         <span class="ec-scen-tab-d">Durée sur devis</span>
       </button>
-      <button type="button" class="ec-scen-tab" data-scenario="b2b" role="tab" aria-selected="false">
+      <button type="button" class="ec-scen-tab" data-scenario="b2b" role="tab" aria-selected="false" id="ec-scenario-tab-b2b" aria-controls="ec-scenario-panel-b2b" tabindex="-1">
         <span class="ec-scen-tab-k">SCÉNARIO 03</span>
         <span class="ec-scen-tab-t">Refonte + B2B + multi-pays</span>
         <span class="ec-scen-tab-d">Durée sur devis</span>
@@ -32,7 +32,7 @@ export const scenariosHtml = `
     </div>
 
     <!-- PANEL NEW -->
-    <div class="ec-scen-panel" data-panel="new" role="tabpanel" aria-hidden="false">
+    <div class="ec-scen-panel" data-panel="new" role="tabpanel" tabindex="0" aria-hidden="false" id="ec-scenario-panel-new" aria-labelledby="ec-scenario-tab-new">
       <div class="ec-scen-cols">
         <div class="ec-scen-col-main">
           <div class="ec-scen-kind">POUR QUI</div>
@@ -54,7 +54,7 @@ export const scenariosHtml = `
             </ul>
           </div>
         </div>
-        <aside class="ec-scen-aside">
+        <div class="ec-scen-aside">
           <div class="ec-scen-meta">
             <div class="ec-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
             <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">Dimensionnée au devis</span></div>
@@ -67,12 +67,12 @@ export const scenariosHtml = `
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <div class="ec-scen-ref">Décision attendue : plateforme, périmètre MVP, coûts tiers et critères de succès documentés.</div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL MIGRATION -->
-    <div class="ec-scen-panel" data-panel="migration" role="tabpanel" aria-hidden="true" hidden>
+    <div class="ec-scen-panel" data-panel="migration" role="tabpanel" tabindex="0" aria-hidden="true" id="ec-scenario-panel-migration" aria-labelledby="ec-scenario-tab-migration" hidden>
       <div class="ec-scen-cols">
         <div class="ec-scen-col-main">
           <div class="ec-scen-kind">POUR QUI</div>
@@ -95,7 +95,7 @@ export const scenariosHtml = `
             </ul>
           </div>
         </div>
-        <aside class="ec-scen-aside">
+        <div class="ec-scen-aside">
           <div class="ec-scen-meta">
             <div class="ec-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
             <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">Dimensionnée au devis</span></div>
@@ -108,12 +108,12 @@ export const scenariosHtml = `
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <div class="ec-scen-ref">Le simulateur ci-dessus documente le scénario sur 36 mois ; aucun gain ni délai n'est présumé avant saisie des contrats.</div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL B2B -->
-    <div class="ec-scen-panel" data-panel="b2b" role="tabpanel" aria-hidden="true" hidden>
+    <div class="ec-scen-panel" data-panel="b2b" role="tabpanel" tabindex="0" aria-hidden="true" id="ec-scenario-panel-b2b" aria-labelledby="ec-scenario-tab-b2b" hidden>
       <div class="ec-scen-cols">
         <div class="ec-scen-col-main">
           <div class="ec-scen-kind">POUR QUI</div>
@@ -136,7 +136,7 @@ export const scenariosHtml = `
             </ul>
           </div>
         </div>
-        <aside class="ec-scen-aside">
+        <div class="ec-scen-aside">
           <div class="ec-scen-meta">
             <div class="ec-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
             <div class="ec-scen-meta-row"><span class="k">Équipe</span><span class="v">Dimensionnée au devis</span></div>
@@ -149,7 +149,7 @@ export const scenariosHtml = `
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <div class="ec-scen-ref">Décision attendue : pays, règles B2B, fiscalité, logistique et indicateurs de succès validés.</div>
-        </aside>
+        </div>
       </div>
     </div>
   </div>

@@ -96,11 +96,11 @@ export const problemsHtml = `
           </div>
           <span class="sap-n">06</span>
         </div>
-        <h3>« Je lance un produit, ma campagne doit tourner dans 15 jours »</h3>
-        <p>Deadline produit ou levée, vous avez besoin d'un setup complet — <b>tracking, comptes, creatives, landing, budgets</b> — opérationnel en 2 semaines. Pas en 2 trimestres.</p>
+        <h3>« Je lance un produit, ma campagne a une date impérative »</h3>
+        <p>Deadline produit ou levée : il faut inventorier <b>tracking, comptes, créations, landing et budgets</b>, puis confirmer la capacité et le jalon technique avant signature.</p>
         <div class="sap-foot sap-foot-hot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Sprint lancement · 15 jours clé en main</span>
+          <span class="sap-foot-v">Sprint lancement · date et périmètre sur devis</span>
         </div>
       </article>
     </div>

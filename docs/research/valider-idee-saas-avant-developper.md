@@ -281,7 +281,8 @@ Statut maximal réellement atteint : publiable après autorisation éditoriale d
 - [x] aucun cas réel inventé et cas fictif étiqueté ;
 - [x] CTA disponible ; aucune ressource externe promise ;
 - [x] entrée registre, metadata, données structurées et maillage réconciliés par l'intégrateur ;
-- [x] TypeScript, 154 tests et build global passés après intégration ;
+- [x] TypeScript, tests et build du snapshot d'intégration passés ; toute
+      modification ultérieure impose une nouvelle validation ;
 - [x] rendu observé aux dix largeurs après intégration ;
 - [x] porte éditoriale levée ; l'URL publique et l'indexation effective restent
       deux états distincts à vérifier après déploiement.

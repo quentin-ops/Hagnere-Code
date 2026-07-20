@@ -10,6 +10,7 @@ import {
   PayloadTooLargeError,
   readRequestBytesWithLimit,
 } from "@/lib/read-request-body";
+import { isProviderTimeoutError } from "@/lib/provider-timeout";
 
 // 25 MB hard cap on the audio payload. Whisper's input ceiling is 25 MB
 // already; rejecting earlier protects us from being used as a free
@@ -17,6 +18,9 @@ import {
 const MAX_AUDIO_BYTES = 25 * 1024 * 1024;
 // Marge pour l'enveloppe multipart (nom, headers et boundary).
 const MAX_REQUEST_BYTES = MAX_AUDIO_BYTES + 1024 * 1024;
+// Laisse à la fonction le temps de construire une réponse explicite avant le
+// timeout de plateforme et évite de retenir une exécution sur un fetch suspendu.
+const GROQ_TIMEOUT_MS = 45_000;
 
 // Allowed MIME prefixes — matches what the funnel's MediaRecorder produces
 // (webm/opus, mp4, mpeg, wav). Anything else is suspicious.
@@ -96,18 +100,11 @@ export async function POST(request: NextRequest) {
     );
   }
   if (!rateCheck.allowed) {
-    await logAiCall({
-      service: "transcribe",
-      ip,
-      userAgent,
-      status: "blocked",
-      blockReason: rateCheck.reason,
-    });
     return NextResponse.json(
-      { error: rateCheck.message || "Trop de transcriptions. Réessaye plus tard." },
+      { error: rateCheck.message },
       {
         status: 429,
-        headers: { "Retry-After": String(rateCheck.retryAfterSec || 3600) },
+        headers: { "Retry-After": String(rateCheck.retryAfterSec) },
       },
     );
   }
@@ -140,6 +137,7 @@ export async function POST(request: NextRequest) {
   const audioFile = formData.get("audio") as File | null;
   if (!audioFile) {
     await logAiCall({
+      reservationId: rateCheck.reservationId,
       service: "transcribe",
       ip,
       userAgent,
@@ -226,6 +224,7 @@ export async function POST(request: NextRequest) {
   }
   if (!costReservation.allowed) {
     await logAiCall({
+      reservationId: rateCheck.reservationId,
       service: "transcribe",
       ip,
       userAgent,
@@ -260,6 +259,7 @@ export async function POST(request: NextRequest) {
           Authorization: `Bearer ${apiKey}`,
         },
         body: groqFormData,
+        signal: AbortSignal.timeout(GROQ_TIMEOUT_MS),
       },
     );
 
@@ -272,6 +272,7 @@ export async function POST(request: NextRequest) {
           undefined,
       });
       await logAiCall({
+        reservationId: rateCheck.reservationId,
         service: "transcribe",
         ip,
         userAgent,
@@ -289,6 +290,7 @@ export async function POST(request: NextRequest) {
     // Le coût a déjà été réservé atomiquement avant l'appel. Cette ligne
     // enregistre uniquement l'issue et la latence afin de ne pas le doubler.
     await logAiCall({
+      reservationId: rateCheck.reservationId,
       service: "transcribe",
       ip,
       userAgent,
@@ -301,8 +303,12 @@ export async function POST(request: NextRequest) {
       text: data.text || "",
     });
   } catch (err) {
-    log.error("transcribe_unexpected_error", { err: err as Error });
+    const timedOut = isProviderTimeoutError(err);
+    log.error(timedOut ? "transcribe_provider_timeout" : "transcribe_unexpected_error", {
+      err: err as Error,
+    });
     await logAiCall({
+      reservationId: rateCheck.reservationId,
       service: "transcribe",
       ip,
       userAgent,
@@ -310,8 +316,12 @@ export async function POST(request: NextRequest) {
       durationMs: Date.now() - startedAt,
     });
     return NextResponse.json(
-      { error: "Erreur lors de la transcription. Veuillez réessayer." },
-      { status: 500 },
+      {
+        error: timedOut
+          ? "La transcription prend trop de temps. Réessayez avec un extrait plus court ou saisissez votre texte."
+          : "Erreur lors de la transcription. Veuillez réessayer.",
+      },
+      { status: timedOut ? 504 : 500 },
     );
   }
 }

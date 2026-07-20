@@ -1,0 +1,1 @@
+CREATE INDEX "ai_call_log_service_created_at_reserved_idx" ON "ai_call_log" USING btree ("service","created_at") WHERE "ai_call_log"."status" = 'reserved';

@@ -47,32 +47,6 @@ const serviceJsonLd = JSON.stringify({
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Création de sites vitrines, landing pages et refontes web avec Next.js et CMS adapté. Le devis précise le budget, le calendrier, l'hébergement, la migration SEO et les objectifs de performance mesurables.",
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Essentiel · Landing Page Performance",
-      price: "6900",
-      priceCurrency: "EUR",
-      description:
-        "Landing page longue ou mini-site 3–5 pages, Next.js statique, CMS, formulaires, CWV optimisés. Livraison 2–4 semaines.",
-    },
-    {
-      "@type": "Offer",
-      name: "Performance · Site Vitrine Complet",
-      price: "14900",
-      priceCurrency: "EUR",
-      description:
-        "10–20 pages + blog architecturé SEO, design sur mesure, SEO technique, intégration CRM, formation. Livraison 5–7 semaines.",
-    },
-    {
-      "@type": "Offer",
-      name: "Sur-mesure · Plateforme corporate ou e-commerce",
-      price: "22000",
-      priceCurrency: "EUR",
-      description:
-        "Site multilingue, e-commerce headless, espace client, intégrations métier. Devis personnalisé. Livraison 8–14 semaines.",
-    },
-  ],
 });
 
 

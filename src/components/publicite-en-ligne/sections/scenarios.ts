@@ -14,8 +14,8 @@ export const scenariosHtml = `
       </div>
     </div>
 
-    <div class="ads-scen-tabs reveal" role="tablist">
-      <button type="button" class="ads-scen-tab is-active" data-scenario="cleanup" role="tab" aria-selected="true">
+    <div class="ads-scen-tabs reveal" role="tablist" aria-label="Choisir un scénario">
+      <button type="button" class="ads-scen-tab is-active" data-scenario="cleanup" role="tab" aria-selected="true" id="ads-scenario-tab-cleanup" aria-controls="ads-scenario-panel-cleanup" tabindex="0">
         <div class="ads-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg>
         </div>
@@ -30,7 +30,7 @@ export const scenariosHtml = `
         <div class="ads-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
       </button>
 
-      <button type="button" class="ads-scen-tab" data-scenario="agency" role="tab" aria-selected="false">
+      <button type="button" class="ads-scen-tab" data-scenario="agency" role="tab" aria-selected="false" id="ads-scenario-tab-agency" aria-controls="ads-scenario-panel-agency" tabindex="-1">
         <div class="ads-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
         </div>
@@ -45,7 +45,7 @@ export const scenariosHtml = `
         <div class="ads-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
       </button>
 
-      <button type="button" class="ads-scen-tab" data-scenario="launch" role="tab" aria-selected="false">
+      <button type="button" class="ads-scen-tab" data-scenario="launch" role="tab" aria-selected="false" id="ads-scenario-tab-launch" aria-controls="ads-scenario-panel-launch" tabindex="-1">
         <div class="ads-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
         </div>
@@ -60,7 +60,7 @@ export const scenariosHtml = `
         <div class="ads-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
       </button>
 
-      <button type="button" class="ads-scen-tab" data-scenario="multichannel" role="tab" aria-selected="false">
+      <button type="button" class="ads-scen-tab" data-scenario="multichannel" role="tab" aria-selected="false" id="ads-scenario-tab-multichannel" aria-controls="ads-scenario-panel-multichannel" tabindex="-1">
         <div class="ads-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M9 6h6M9 18h6M6 9v6M18 9v6"/></svg>
         </div>
@@ -77,7 +77,7 @@ export const scenariosHtml = `
     </div>
 
     <!-- PANEL cleanup -->
-    <div class="ads-scen-panel is-active" data-panel="cleanup">
+    <div class="ads-scen-panel is-active" data-panel="cleanup" role="tabpanel" tabindex="0" aria-hidden="false" id="ads-scenario-panel-cleanup" aria-labelledby="ads-scenario-tab-cleanup">
       <div class="ads-scen-cols">
         <div class="ads-scen-main">
           <div class="ads-scen-kind">Restructuration · Compte mature qui dérive</div>
@@ -98,7 +98,7 @@ export const scenariosHtml = `
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Pilotage hebdo + reporting mensuel business</div>
           </div>
         </div>
-        <aside class="ads-scen-aside">
+        <div class="ads-scen-aside">
           <div class="ads-scen-aside-head">
             <span class="ads-scen-aside-kind">Forfait mensuel</span>
             <div class="ads-scen-aside-price">Sur devis</div>
@@ -118,12 +118,12 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             Comptes et assets restent chez vous
           </div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL agency -->
-    <div class="ads-scen-panel" data-panel="agency" hidden>
+    <div class="ads-scen-panel" data-panel="agency" role="tabpanel" tabindex="0" aria-hidden="true" id="ads-scenario-panel-agency" aria-labelledby="ads-scenario-tab-agency" hidden>
       <div class="ads-scen-cols">
         <div class="ads-scen-main">
           <div class="ads-scen-kind">Transition · Sortie d'agence au %</div>
@@ -145,7 +145,7 @@ export const scenariosHtml = `
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Plan de bascule et procédure de retour arrière</div>
           </div>
         </div>
-        <aside class="ads-scen-aside">
+        <div class="ads-scen-aside">
           <div class="ads-scen-aside-head">
             <span class="ads-scen-aside-kind">Forfait fixe</span>
             <div class="ads-scen-aside-price">Sur devis</div>
@@ -154,7 +154,7 @@ export const scenariosHtml = `
             <div class="ads-scen-meta-row"><dt>Budget media client</dt><dd>20–80 k€ / mois</dd></div>
             <div class="ads-scen-meta-row"><dt>Transition</dt><dd>Calendrier après audit des accès</dd></div>
             <div class="ads-scen-meta-row"><dt>Économie</dt><dd>À calculer sur vos factures réelles</dd></div>
-            <div class="ads-scen-meta-row"><dt>Engagement</dt><dd>3 mois puis mois par mois</dd></div>
+            <div class="ads-scen-meta-row"><dt>Engagement</dt><dd>Durée et préavis au devis</dd></div>
             <div class="ads-scen-meta-row"><dt>Démarrage</dt><dd>Audit sur devis</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg ads-scen-cta">
@@ -165,12 +165,12 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             NDA + confidentialité totale vis-à-vis de l'ancienne agence
           </div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL launch -->
-    <div class="ads-scen-panel" data-panel="launch" hidden>
+    <div class="ads-scen-panel" data-panel="launch" role="tabpanel" tabindex="0" aria-hidden="true" id="ads-scenario-panel-launch" aria-labelledby="ads-scenario-tab-launch" hidden>
       <div class="ads-scen-cols">
         <div class="ads-scen-main">
           <div class="ads-scen-kind">Sprint · Lancement produit ou levée de fonds</div>
@@ -191,7 +191,7 @@ export const scenariosHtml = `
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Point quotidien pendant le sprint + daily report</div>
           </div>
         </div>
-        <aside class="ads-scen-aside ads-scen-aside-hot">
+        <div class="ads-scen-aside ads-scen-aside-hot">
           <div class="ads-scen-aside-head">
             <span class="ads-scen-aside-kind">Sprint 15 jours</span>
             <div class="ads-scen-aside-price">Sur devis</div>
@@ -211,12 +211,12 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             Capacité et date de démarrage confirmées avant signature
           </div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL multichannel -->
-    <div class="ads-scen-panel" data-panel="multichannel" hidden>
+    <div class="ads-scen-panel" data-panel="multichannel" role="tabpanel" tabindex="0" aria-hidden="true" id="ads-scenario-panel-multichannel" aria-labelledby="ads-scenario-tab-multichannel" hidden>
       <div class="ads-scen-cols">
         <div class="ads-scen-main">
           <div class="ads-scen-kind">Expansion · Nouveaux canaux d'acquisition</div>
@@ -231,13 +231,13 @@ export const scenariosHtml = `
           <div class="ads-scen-items">
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Priorisation canaux selon ICP &amp; funnel</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Budget test calibré (pas 500 € saupoudrés)</div>
-            <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Ouverture 1 canal / 6-8 semaines, go/no-go clair</div>
+            <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Un canal à la fois, période de test et critères go/no-go écrits au devis</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Creatives adaptées (TikTok ≠ LinkedIn ≠ Meta)</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Attribution multi-touch via Looker Studio</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Scaling progressif des canaux validés</div>
           </div>
         </div>
-        <aside class="ads-scen-aside">
+        <div class="ads-scen-aside">
           <div class="ads-scen-aside-head">
             <span class="ads-scen-aside-kind">Forfait mensuel</span>
             <div class="ads-scen-aside-price">Sur devis</div>
@@ -247,7 +247,7 @@ export const scenariosHtml = `
             <div class="ads-scen-meta-row"><dt>Durée</dt><dd>6 à 9 mois</dd></div>
             <div class="ads-scen-meta-row"><dt>Équipe</dt><dd>Rôles et statuts précisés au devis</dd></div>
             <div class="ads-scen-meta-row"><dt>Méthode</dt><dd>Test → validation → scale, un canal à la fois</dd></div>
-            <div class="ads-scen-meta-row"><dt>Engagement</dt><dd>3 mois puis mois par mois</dd></div>
+            <div class="ads-scen-meta-row"><dt>Engagement</dt><dd>Durée et préavis au devis</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg ads-scen-cta">
             Parler au fondateur
@@ -257,7 +257,7 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             Scaling pragmatique · on coupe ce qui ne rapporte pas
           </div>
-        </aside>
+        </div>
       </div>
     </div>
   </div>

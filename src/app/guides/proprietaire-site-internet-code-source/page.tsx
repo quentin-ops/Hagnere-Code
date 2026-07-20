@@ -31,6 +31,12 @@ export const metadata: Metadata = {
     modifiedTime: `${guide.dateModified}T09:00:00+02:00`,
     authors: [`${SITE_URL}/equipe`],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 const articleJsonLd = JSON.stringify({
@@ -45,7 +51,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 5400,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -119,7 +124,7 @@ const faqItems = [
     question:
       "Dans mon devis il n'y a rien d'écrit sur les droits. Je fais quoi maintenant ?",
     answer:
-      "Trois choses, dans cet ordre, et aucune ne nécessite un avocat pour commencer. D'abord, sécurisez ce qui est sécurisable immédiatement : vérifiez qui est le titulaire déclaré de votre nom de domaine, et demandez par écrit tous les accès listés en section 10. Ensuite, demandez la restitution de vos données personnelles — l'article 28 du RGPD vous en donne le droit indépendamment de toute question de propriété intellectuelle, c'est un levier que presque personne n'utilise. Enfin seulement, ouvrez la négociation sur les droits. L'ordre compte : une fois les accès obtenus, votre position de négociation change complètement.",
+      "Trois choses, dans cet ordre, et aucune ne nécessite un avocat pour commencer. D'abord, sécurisez ce qui est sécurisable immédiatement : vérifiez qui est le titulaire déclaré de votre nom de domaine, et demandez par écrit tous les accès listés en section 10. Ensuite, demandez la restitution de vos données personnelles — l'article 28 du RGPD vous en donne le droit indépendamment de toute question de propriété intellectuelle, ce qui constitue un levier distinct. Enfin seulement, ouvrez la négociation sur les droits. L'ordre compte : une fois les accès obtenus, votre position de négociation change complètement.",
   },
   {
     question:
@@ -141,7 +146,7 @@ const faqItems = [
   {
     question: "Mes textes, mes photos et mon logo m'appartiennent quand même ?",
     answer:
-      "Oui, et c'est un levier de négociation que presque personne n'utilise. Vos apports restent votre propriété même en l'absence de toute cession sur le code : les textes que vous avez fournis, vos photographies, votre logo si vous en détenez les droits, vos maquettes, et bien sûr vos données clients. S'y ajoute une obligation qui pèse sur votre prestataire dès qu'il traite des données personnelles pour votre compte : l'article 28.3 g) du RGPD impose qu'au terme de la prestation il supprime ou vous renvoie toutes les données, selon votre choix, et détruise les copies. Attention à un point : les délais souvent cités — trente jours pour restituer, soixante pour certifier — ne figurent nulle part dans le RGPD. Ils viennent de modèles de contrats commerciaux. À négocier, donc, pas à invoquer comme légaux.",
+      "Oui, et c'est un levier de négociation distinct. Vos apports restent votre propriété même en l'absence de toute cession sur le code : les textes que vous avez fournis, vos photographies, votre logo si vous en détenez les droits, vos maquettes, et bien sûr vos données clients. S'y ajoute une obligation qui pèse sur votre prestataire dès qu'il traite des données personnelles pour votre compte : l'article 28.3 g) du RGPD impose qu'au terme de la prestation il supprime ou vous renvoie toutes les données, selon votre choix, et détruise les copies. Attention à un point : les délais souvent cités — trente jours pour restituer, soixante pour certifier — ne figurent nulle part dans le RGPD. Ils viennent de modèles de contrats commerciaux. À négocier, donc, pas à invoquer comme légaux.",
   },
   {
     question: "Si mon agence dépose le bilan, je perds mon site ?",
@@ -175,7 +180,7 @@ const faqItems = [
     question:
       "Mon prestataire a fait appel à un freelance : la cession qu'il me propose tient ?",
     answer:
-      "C'est exactement la bonne question, et personne ne la pose. Le principe est simple : une agence ne peut vous céder que ce qu'elle détient réellement. Elle détient les droits sur le code écrit par ses salariés, par l'effet de la dévolution automatique. Elle ne les détient pas sur le code de ses freelances, de ses sous-traitants offshore ou de ses prestataires occasionnels, sauf à avoir elle-même signé avec eux une cession conforme. Exigez donc dans le contrat une garantie de titularité couvrant toute la chaîne de sous-traitance, avec obligation de vous communiquer les actes de cession en amont sur simple demande. Une agence sérieuse acceptera : elle a normalement ces documents.",
+      "C'est une question importante. Le principe est simple : une agence ne peut vous céder que ce qu'elle détient réellement. Elle détient les droits sur le code écrit par ses salariés, par l'effet de la dévolution automatique. Elle ne les détient pas sur le code de ses freelances, de ses sous-traitants offshore ou de ses prestataires occasionnels, sauf à avoir elle-même signé avec eux une cession conforme. Exigez donc dans le contrat une garantie de titularité couvrant toute la chaîne de sous-traitance, avec obligation de vous communiquer les actes de cession en amont sur simple demande. Une agence sérieuse acceptera : elle a normalement ces documents.",
   },
 ];
 
@@ -557,8 +562,8 @@ export default function Page() {
           4. Ce qui vous appartient déjà sans aucune clause
         </h2>
         <p>
-          Cette section change le rapport de force, et presque personne ne
-          l&apos;exploite.
+          Cette section peut changer le rapport de force lorsqu&apos;elle est utilisée
+          avant la négociation sur les droits.
         </p>
         <ul>
           <li>
@@ -599,7 +604,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un doute sur ce que dit votre devis ?"
-          description="Envoyez-nous votre situation en 3 minutes. Objectif de réponse personnelle le prochain jour ouvré, gratuite — y compris quand la réponse est « ne négociez pas la cession, réclamez les accès »."
+          description="Envoyez-nous votre situation en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti. Cette première réponse est gratuite — y compris si elle consiste à recommander de réclamer d'abord les accès."
         />
 
         <h2 id="saas">

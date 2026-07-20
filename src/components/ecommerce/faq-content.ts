@@ -171,7 +171,7 @@ export const ECOMMERCE_FAQ_ITEMS: readonly EcommerceFaqItem[] = [
         ),
         part("test de charge défini à partir du pic attendu", { strong: true }),
         part(
-          " avant la mise en production ; le protocole, le volume et les seuils acceptés sont consignés dans le plan de recette.",
+          " avant le déploiement public ; le protocole, le volume et les seuils acceptés sont consignés dans le plan de recette.",
         ),
       ],
     ],

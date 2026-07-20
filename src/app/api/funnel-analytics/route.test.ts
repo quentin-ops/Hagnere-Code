@@ -24,6 +24,7 @@ describe("POST /api/funnel-analytics", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.stubEnv("NEXT_PUBLIC_ENV", "production");
+    vi.stubEnv("NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED", "true");
   });
 
   afterEach(() => {
@@ -68,6 +69,25 @@ describe("POST /api/funnel-analytics", () => {
     );
 
     expect(response.status).toBe(403);
+    expect(writeDataPoint).not.toHaveBeenCalled();
+  });
+
+  it("stays explicitly unavailable until a compatible collector is enabled", async () => {
+    vi.stubEnv("NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED", "false");
+
+    const response = await POST(
+      analyticsRequest({
+        name: "pf:funnel_open",
+        path: "/demarrer-un-projet",
+        props: {},
+      }),
+    );
+
+    expect(response.status).toBe(503);
+    await expect(response.json()).resolves.toEqual({
+      error: "Mesure de parcours désactivée.",
+    });
+    expect(getCloudflareContext).not.toHaveBeenCalled();
     expect(writeDataPoint).not.toHaveBeenCalled();
   });
 });

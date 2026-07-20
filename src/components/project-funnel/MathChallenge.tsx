@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import type {
   IssuedMathChallenge,
   MathChallengePayload,
@@ -43,6 +43,9 @@ type Props = {
  * côté serveur ; le navigateur ne peut donc pas choisir sa propre équation.
  */
 export function MathChallenge({ onChange, error, className = "" }: Props) {
+  const inputId = useId();
+  const questionId = `${inputId}-question`;
+  const errorId = `${inputId}-error`;
   const [challenge, setChallenge] = useState<IssuedMathChallenge | null>(null);
   const [answer, setAnswer] = useState("");
   const [loadError, setLoadError] = useState(false);
@@ -107,15 +110,19 @@ export function MathChallenge({ onChange, error, className = "" }: Props) {
     });
   }, [challenge, answer]);
 
-  // Pas de htmlFor/id : le label enveloppe l'input, l'association est
-  // implicite — et useId créerait un risque de mismatch d'hydration.
   return (
-    <label className={className}>
-      <span>
+    <label
+      className={className}
+      htmlFor={inputId}
+      aria-busy={!challenge && !loadError}
+    >
+      <span id={questionId} aria-live="polite" aria-atomic="true">
         Anti-robot : combien font {challenge ? `${challenge.a} + ${challenge.b}` : "… + …"}
         &nbsp;?
       </span>
       <input
+        id={inputId}
+        name="mathChallengeAnswer"
         type="text"
         inputMode="numeric"
         autoComplete="off"
@@ -123,11 +130,12 @@ export function MathChallenge({ onChange, error, className = "" }: Props) {
         value={answer}
         onChange={(event) => setAnswer(event.target.value)}
         required
-        aria-invalid={!!error}
+        aria-invalid={Boolean(error || loadError)}
+        aria-describedby={error || loadError ? `${questionId} ${errorId}` : questionId}
         disabled={!challenge}
       />
       {(error || loadError) && (
-        <em role="alert">
+        <em id={errorId} role="alert">
           {error || "Contrôle indisponible. Rechargez la page ou écrivez-nous par email."}
         </em>
       )}

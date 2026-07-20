@@ -33,6 +33,12 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -48,7 +54,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4750,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -116,7 +121,7 @@ const faqItems = [
   {
     question: "Peut-on créer un site vitrine gratuitement avec Wix, Canva ou l'IA ?",
     answer:
-      "Oui pour tester une idée ou porter un side-project, non pour un site professionnel. Les builders et générateurs IA produisent un site correct en quelques heures, contre un abonnement à vie (17 à 80 €/mois) et de vraies limites : référencement bridé, performance moyenne, design générique, et surtout un site non exportable — vous ne possédez rien. Pour tester une activité, c'est pertinent ; pour générer des clients, un site professionnel s'amortit vite.",
+      "Un outil gratuit ou peu coûteux peut suffire pour tester une idée ou publier une présence provisoire. Avant de l'utiliser pour une activité professionnelle, vérifiez le domaine, l'export, les droits, les abonnements, les intégrations, l'accessibilité, la performance et les réglages SEO réellement disponibles. La plateforme ne rend pas automatiquement le référencement mauvais, et un développement sur mesure ne garantit ni trafic ni amortissement : comparez le besoin et le coût total.",
   },
   {
     question: "Quels sont les coûts cachés d'un site vitrine ?",
@@ -126,7 +131,7 @@ const faqItems = [
   {
     question: "Combien coûte la maintenance annuelle d'un site vitrine ?",
     answer:
-      "Le marché facture 30 à 200 €/mois selon le socle technique et le niveau de service, soit 360 à 2 400 €/an. La règle sectorielle est de 10 à 20 % du coût de création par an. Nuance importante : cette maintenance est surtout nécessaire sur les CMS dynamiques (WordPress : mises à jour hebdomadaires du cœur et des plugins). Un site statique Next.js n'a structurellement rien à mettre à jour — seules les évolutions se facturent.",
+      "Les fourchettes relevées dans les offres publiques vont de quelques dizaines à plusieurs centaines d'euros par mois selon le socle et le niveau de service ; ce n'est pas une médiane de marché. Demandez le détail : mises à jour, sauvegardes, supervision, corrections, contenus, délais et exclusions. Un site statique réduit certaines mises à jour applicatives, mais ses dépendances, son hébergement, sa sécurité, ses contenus et ses intégrations doivent toujours être suivis.",
   },
   {
     question: "Combien de pages pour un site vitrine ?",
@@ -151,7 +156,7 @@ const faqItems = [
   {
     question: "Un site vitrine pas cher est-il rentable ?",
     answer:
-      "Tout dépend du rôle qu'on lui donne. Pour « exister » au sens strict — tester une idée, side-project, micro-budget —, un site à 1 000 € fait le travail. Pour une entreprise qui veut générer des clients et durer, les études montrent que le design fait le jugement de crédibilité et qu'un taux de conversion médian se situe vers 2,9 % pour les services — à peine 3 visiteurs sur 100 qui vous contactent : un site lent, générique et sans référencement convertit en dessous, et son vrai coût est l'ensemble des clients qu'il ne génère pas. Raisonnez en coût par client acquis, pas en prix d'achat.",
+      "Le prix seul ne permet pas de répondre. Définissez le rôle du site, mesurez les visites réellement qualifiées et les demandes attribuables, puis ajoutez au prix initial les abonnements, la maintenance, le temps interne et une éventuelle reconstruction. Un benchmark de conversion ne prédit pas votre activité, et aucun niveau de design ou de référencement ne garantit des clients. Raisonnez sur vos données et vos hypothèses explicites.",
   },
   {
     question: "Comment obtenir un devis précis pour mon site vitrine ?",
@@ -356,9 +361,9 @@ export default function Page() {
           défend plus guère que pour un micro-budget, un side-project,
           un test d&apos;activité ou l&apos;artisan sans enjeu
           d&apos;acquisition (section 15). Pour une entreprise qui veut
-          convertir et durer, le calcul sur 3 ans (section 10) ramène au
-          sur-mesure — dont l&apos;IA a précisément fait baisser le
-          prix (section 5). Le second exige un SEO structuré —
+          convertir et durer, comparez le calcul sur 3 ans (section 10) du
+          sur-mesure, d&apos;un CMS et d&apos;une plateforme sur le même
+          périmètre. Le second exige un SEO structuré —
           du référencement naturel travaillé page par page —, des contenus
           soignés et de la performance. C&apos;est lui qui justifie les
           budgets à cinq chiffres, et son retour sur investissement se
@@ -508,10 +513,10 @@ export default function Page() {
           maintenance facturée 30 à 120 €/mois : pas une option de confort,
           l&apos;entretien obligatoire de la machine, comme la révision
           d&apos;une voiture. Un site statique (Next.js), lui, ressemble à un
-          document déjà imprimé : les pages sont fabriquées une fois pour
-          toutes, puis simplement distribuées aux visiteurs. Pas de machine
-          qui tourne : rien à mettre à jour, presque rien à pirater, un
-          hébergement quasi gratuit. C&apos;est cette différence — machine
+          document déjà imprimé : les pages peuvent être pré-générées puis
+          distribuées aux visiteurs. La surface d&apos;exécution publique peut
+          être plus réduite, mais dépendances, chaîne de build, formulaires,
+          comptes et hébergement restent à maintenir et à sécuriser. C&apos;est cette différence — machine
           contre document — qui explique l&apos;écart de coût sur 3 ans
           calculé à la section 10.
         </InfoBox>
@@ -522,14 +527,12 @@ export default function Page() {
           l&apos;IA tous les jours : ces outils produisent en quelques
           minutes un site de démonstration honnête — et générique. Ils ne
           font ni votre positionnement, ni vos contenus, ni votre
-          référencement local, et le résultat vit sur l&apos;abonnement
-          d&apos;un tiers. Là où l&apos;IA change vraiment les prix,
-          c&apos;est quand une équipe expérimentée l&apos;utilise comme outil
-          de production : les développeurs vont plus vite sur les tâches
-          répétitives, et ce temps gagné est réinvesti dans ce qui compte —
-          design, textes, référencement. C&apos;est ce qui nous permet
-          d&apos;inclure design sur mesure et rédaction dans un forfait à
-          6 900 €, un périmètre facturé bien plus cher il y a trois ans.
+          référencement local, et l&apos;export dépend du contrat du tiers.
+          Les assistants peuvent accélérer certaines tâches pour certaines
+          équipes, mais les études disponibles ne prouvent pas une baisse de
+          prix universelle. Notre forfait d&apos;entrée à 6 900 € inclut le
+          périmètre visible sur notre grille ; ce montant relève de notre
+          politique commerciale et doit être comparé à livrables égaux.
           Le panorama complet des outils — générateurs, vibe coding,
           assistants de code, avec leurs prix vérifiés — est dans notre{" "}
           <Link href="/guides/creer-un-site-avec-ia">guide « créer un
@@ -570,9 +573,8 @@ export default function Page() {
           Deux devis « site vitrine 5 pages » peuvent aller du simple au
           quadruple pour une raison invisible en première page : ce
           qu&apos;ils incluent réellement. Voici, ligne par ligne, ce que
-          recouvre chaque niveau de prix — une grille que nous n&apos;avons
-          trouvée dans aucun autre guide, et qui explique l&apos;essentiel
-          des écarts entre devis :
+          recouvre chaque niveau de prix — une grille utile pour expliquer
+          l&apos;essentiel des écarts entre devis :
         </p>
         <GuideTable
           headers={["Prestation", "Vitrine à 1 500 €", "Vitrine à 4 000 €", "Sur-mesure 6 900 €+"]}
@@ -607,7 +609,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre site vitrine, cadré en 3 minutes"
-          description="Décrivez votre projet en quelques étapes guidées — notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti avec une recommandation de gamme argumentée."
+          description="Décrivez votre projet en quelques étapes guidées — notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti, avec une recommandation de gamme argumentée."
         />
 
         <h2 id="postes-devis">7. Les postes d&apos;un devis vitrine, décomposés</h2>
@@ -668,15 +670,15 @@ export default function Page() {
         <p>
           Voici notre grille vitrine, publiée et justifiée — celle que vous
           retrouverez sur notre <Link href="/tarifs">page tarifs</Link>, au
-          forfait fixe contractuel, rédaction et hébergement première année
-          inclus. Jugez sur pièces :
+          forfait fixe contractuel. Le devis confirme rédaction, hébergement,
+          licences, planning et exclusions. Jugez sur pièces :
         </p>
         <GuideTable
           headers={["Forfait", "Périmètre", "Délai", "Prix"]}
           rows={[
-            ["Essentiel", "3-5 pages orientées conversion, design sur mesure, SEO technique, rédaction incluse", "2-4 semaines", "6 900 €"],
-            ["Performance", "10-20 pages + blog SEO, optimisation Google avancée, mesure de fréquentation, interface simple pour modifier vos contenus sans toucher au code (CMS « headless »)", "5-7 semaines", "14 900 €"],
-            ["Premium", "Multilingue, e-commerce léger, intégrations avancées", "8-14 semaines", "22 000 €+"],
+            ["Essentiel", "3-5 pages orientées conversion, design sur mesure, SEO technique ; contenus précisés au devis", "Planning au devis", "6 900 €"],
+            ["Performance", "10-20 pages + blog SEO, mesure de fréquentation et CMS selon besoin", "Planning au devis", "14 900 €"],
+            ["Premium", "Multilingue, e-commerce léger, intégrations avancées", "Planning au devis", "22 000 €+"],
           ]}
         />
         <p>
@@ -688,9 +690,9 @@ export default function Page() {
           lequel Google note la qualité technique d&apos;un site sur 100
           (vitesse, affichage mobile, bases du référencement) : un contrôle
           technique du web que n&apos;importe qui peut vérifier en quelques
-          clics — la plupart des sites WordPress de TPE se situent entre 40
-          et 70. Nos <Link href="/realisations">réalisations</Link> — dont
-          deux sites d&apos;acquisition documentés chiffres à l&apos;appui —
+          clics. Un score observé sur une page ne prédit pas toutes les autres
+          et ne garantit pas le classement. Nos <Link href="/realisations">réalisations</Link> — dont
+          deux sites liés au même groupe, explicitement présentés comme tels —
           servent de preuve.
         </p>
 
@@ -738,120 +740,83 @@ export default function Page() {
           à l&apos;achat peut devenir le plus cher à l&apos;usage. Le seul
           calcul honnête additionne tout ce que vous paierez sur 3 ans —
           création, abonnements, licences, maintenance, rédaction.
-          C&apos;est le calcul le plus utile de ce guide, et pourtant le
-          moins fait. Le voici pour trois scénarios types :
+          Voici une grille commune à remplir pour chaque scénario :
         </p>
         <FormulaBox>
-{`BUILDER À 40 €/MOIS (Wix Business, « site gratuit ») — 3 ans
-  Abonnement 36 × 40 €                       1 440 €
-  Votre temps de construction (40 – 80 h)    non chiffré
-  Rédaction, photos, logo                    à votre charge
-  Site exportable à la fin ?                 NON
+{`OPTION À COMPARER __________________________
+  Création et reprise des contenus             ______ €
+  Temps interne valorisé                       ______ €
+  Abonnement ou hébergement (36 mois)          ______ €
+  Domaine, emails et services tiers            ______ €
+  Licences et renouvellements                  ______ €
+  Maintenance, sécurité et sauvegardes         ______ €
+  Support et évolutions prévues                ______ €
+  Migration ou coût de sortie                  ______ €
   ──────────────────────────────────────────────────
-  TOTAL 3 ANS                          1 440 € + votre temps
-  → et tout est à refaire si vous partez
+  TOTAL DOCUMENTÉ SUR 3 ANS                    ______ €
 
-WORDPRESS FREELANCE À 2 000 € — 3 ans
-  Création                                   2 000 €
-  Hébergement + domaine (3 ans)          400 – 800 €
-  Licences plugins (périmètre réduit)  900 – 1 800 €
-  Maintenance (3 ans)                1 080 – 4 300 €
-  Rédaction souvent en sus             750 – 2 400 €
-  ──────────────────────────────────────────────────
-  TOTAL 3 ANS                        5 100 – 11 300 €
-
-SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
-  Création (rédaction et SEO inclus)         6 900 €
-  Hébergement 1re année incluse, puis    0 – 480 €
-  Licences                                       0 €
-  Maintenance obligatoire                    ≈ 0 €
-  ──────────────────────────────────────────────────
-  TOTAL 3 ANS                         6 900 – 7 400 €`}
+  Export des contenus et du code ?             OUI / NON / PARTIEL
+  Engagement et renouvellement ?               __________________
+  Hypothèses encore inconnues ?                __________________`}
         </FormulaBox>
         <p>
-          La ligne « votre temps de construction » se chiffre, d&apos;ailleurs :
-          comptez 40 à 80 heures pour un premier site correct. Pour un
-          dirigeant qui valorise son heure à 50 €, c&apos;est
-          l&apos;équivalent de 2 000 à 4 000 € pris sur la prospection — le
-          site « gratuit » coûte alors le prix d&apos;un freelance, pour un
-          résultat généralement inférieur. Le fait-soi-même reste rationnel
-          pour tester une idée — pas pour le site d&apos;une entreprise qui
-          doit convertir. Encore faut-il savoir mesurer cette conversion :
-          notre guide{" "}
+          Valorisez aussi le temps réellement consacré aux contenus, à la
+          configuration et aux corrections. Le faire soi-même peut être
+          rationnel selon le besoin et les compétences disponibles ; un
+          prestataire peut l&apos;être dans d&apos;autres cas. Le résultat ne se
+          déduit ni de l&apos;outil ni du prix : il se mesure. Notre guide{" "}
           <Link href="/guides/pourquoi-mon-site-ne-convertit-pas">pourquoi
           mon site ne convertit pas</Link> explique pourquoi le chiffre
           affiché par vos statistiques est faux, et dans les deux sens.
         </p>
         <p>
-          Conclusion contre-intuitive : <strong>sur 3 ans, le site
-          sur-mesure « cher » coûte souvent moins qu&apos;un WordPress
-          d&apos;entrée de gamme complété au fil de l&apos;eau</strong> — et
-          il travaille mieux pendant tout ce temps. C&apos;est l&apos;effet
-          mécanique du « tout inclus » et de l&apos;absence de licences et de
-          maintenance forcée.
+          Une solution sur mesure peut être moins ou plus chère sur trois ans.
+          La réponse dépend du périmètre, des licences, de la maintenance, des
+          évolutions et de la réversibilité réellement contractées.
         </p>
         <InfoBox variant="emerald" title="À retenir : comparez toujours sur 3 ans">
-          Un builder à 40 €/mois, c&apos;est 1 440 € sur 3 ans — pour un site
-          que vous ne posséderez jamais et qu&apos;il faudra refaire en
-          partant. Un WordPress à 2 000 € atteint, licences, maintenance et
-          rédaction ajoutées, 5 100 à 11 300 €. Un sur-mesure « tout inclus »
-          à 6 900 € plafonne autour de 7 400 €. Avant de signer, posez une
-          seule question à chaque prestataire : « Combien ce site me
-          coûtera-t-il au total sur 3 ans, tout compris ? » Si la réponse est
-          floue, la facture le sera aussi.
+          Demandez à chaque prestataire le coût total documenté sur une même
+          période, les exclusions et les conditions de sortie. Lorsque le prix
+          futur dépend de l&apos;usage, exigez la formule de calcul et testez au
+          moins un scénario bas, central et haut.
         </InfoBox>
 
         <h2 id="performance">11. Prix et performance : le critère que les devis oublient</h2>
         <p>
           Peu de devis parlent de la vitesse du site. C&apos;est pourtant un
           critère mesurable — et chiffrable en euros. Le mécanisme est
-          simple : sur mobile, chaque dixième de seconde d&apos;attente fait
-          décrocher une partie des visiteurs avant même qu&apos;ils aient vu
-          votre offre, et un site lent renvoie inconsciemment une image de
-          négligence. Les mesures le confirment : l&apos;étude
-          Google/Deloitte « Milliseconds Make Millions » chiffre qu&apos;un
-          gain de 0,1 seconde de vitesse mobile augmente les conversions de
-          +8,4 % sur les sites marchands étudiés — et elle constate le même
-          mécanisme sur les parcours de génération de contacts. Passer de 1 à
-          3 secondes de chargement augmente par ailleurs de 32 % le
-          « rebond » (Google) : le visiteur qui referme la page avant même de
-          l&apos;avoir lue.
+          simple : une page lente peut gêner l&apos;utilisateur, mais l&apos;effet
+          commercial dépend du contexte. Des études publiées ont observé des
+          associations entre vitesse et conversion sur leurs échantillons ;
+          elles ne prédisent pas le gain de votre site vitrine.
         </p>
         <p>
-          Concrètement : si 300 personnes visitent votre site chaque mois et
-          que 9 vous contactent, un site nettement plus rapide peut porter ce
-          chiffre à 10 ou 11 — soit une quinzaine de demandes de devis
-          supplémentaires par an, sans dépenser un euro de publicité en plus.
-          Un site vitrine lent paie donc une taxe invisible sur chaque visiteur —
-          souvent supérieure, sur un an, à l&apos;écart de prix entre deux
-          devis.
+          Mesurez les Core Web Vitals de terrain, les erreurs et les conversions
+          avant puis après une correction. Sans mesure propre, ne transformez
+          pas une amélioration technique en nombre de demandes de devis.
         </p>
         <p>
-          Le réflexe à adopter : demandez à chaque prestataire{" "}
-          <strong>quel score Lighthouse mobile il s&apos;engage à
-          livrer</strong>, et si cet engagement figure au contrat. C&apos;est
-          un excellent révélateur de sérieux — et la base d&apos;un bon{" "}
+          Demandez à chaque prestataire des critères de recette mesurables :
+          pages, appareil, réseau, outil, scripts tiers et tolérance. Un score
+          Lighthouse de laboratoire ne garantit ni les Core Web Vitals de
+          terrain, ni un classement, ni une conversion. La performance reste
+          toutefois utile aux visiteurs et fait partie de l&apos;expérience de page
+          considérée par Google avec de nombreux autres signaux ; voir notre{" "}
           <Link href="/services/referencement-google">référencement
           Google</Link>, car la vitesse est un critère de classement.
         </p>
 
         <h2 id="combien-de-pages">12. Combien de pages pour un site vitrine ?</h2>
         <p>
-          La bonne réponse ne vient pas du design mais de Google. Le moteur
-          ne classe pas des sites : il classe des <em>pages</em>, une par
-          une, chacune sur la recherche qu&apos;elle traite le mieux.
-          Imaginez un annuaire géant : chaque page de votre site est une
-          entrée de cet annuaire, et une entrée ne peut figurer sérieusement
-          qu&apos;à une seule rubrique. D&apos;où la règle : <strong>une
-          page = une intention de recherche</strong>. « Plombier chauffagiste
-          Chambéry » et « dépannage fuite d&apos;eau » sont deux recherches
-          différentes : elles méritent chacune leur page — sinon Google
-          n&apos;en classera correctement aucune des deux. L&apos;essentiel
-          tient en 5 pages (accueil, offre, à-propos, preuves, contact).
-          Ajoutez une page par service si vous visez plusieurs recherches, et
-          un blog si vous jouez l&apos;acquisition longue durée. C&apos;est
-          exactement la logique qui sépare notre forfait Essentiel
-          (3-5 pages) du forfait Performance (10-20 pages + blog).
+          La bonne réponse part des besoins des visiteurs et des sujets à
+          traiter. Google évalue des pages tout en utilisant aussi certains
+          signaux à l&apos;échelle du site. Chaque page doit avoir un rôle clair,
+          sans multiplier artificiellement des variantes quasi identiques.
+          « Plombier chauffagiste Chambéry » et « dépannage fuite d&apos;eau »
+          peuvent justifier des pages distinctes si chacune apporte un contenu
+          propre et substantiel. Un petit site peut couvrir l&apos;essentiel avec
+          accueil, offre, à-propos, preuves et contact ; ajoutez des pages quand
+          le besoin éditorial et commercial le justifie, pas pour atteindre un quota.
         </p>
 
         <h2 id="vitrine-ou-ecommerce">13. Vitrine ou e-commerce : ne payez pas trop grand</h2>
@@ -870,34 +835,36 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
           <Link href="/services/ecommerce">e-commerce sur mesure</Link>.
         </p>
 
-        <h2 id="delais">14. Délais : de 2 à 14 semaines selon la gamme</h2>
+        <h2 id="delais">14. Délais : comparez les hypothèses, pas une promesse</h2>
         <p>
-          Le budget n&apos;est pas la seule variable : comptez de 2 semaines
-          pour un site simple à 14 semaines pour un projet multilingue. Voici
-          les délais constatés sur le marché, comparés aux nôtres :
+          Le budget n&apos;est pas la seule variable. Les plages ci-dessous sont
+          des scénarios éditoriaux pour comparer les devis, pas des délais
+          observés sur un échantillon représentatif ni un engagement Hagnéré
+          Code. Seul le devis daté fixe le calendrier :
         </p>
         <GuideTable
-          headers={["Gamme", "Délai marché", "Délai Hagnéré Code"]}
+          headers={["Gamme", "Scénario à vérifier", "Engagement Hagnéré Code"]}
           rows={[
-            ["One-page / vitrine simple", "2 – 4 semaines", "2 – 4 semaines"],
-            ["Vitrine professionnel + blog", "4 – 8 semaines", "5 – 7 semaines"],
-            ["Premium / multilingue", "8 – 14 semaines", "8 – 14 semaines"],
+            ["One-page / vitrine simple", "Quelques semaines selon contenus et validation", "Dates écrites au devis"],
+            ["Vitrine professionnelle + blog", "Plusieurs semaines selon le nombre de pages", "Dates écrites au devis"],
+            ["Premium / multilingue", "À chiffrer selon langues, droits et intégrations", "Dates écrites au devis"],
           ]}
         />
         <p>
-          La cause n° 1 de retard, toutes gammes confondues, reste le contenu
-          non fourni au démarrage (+2 à 4 semaines — notre{" "}
+          Les contenus non fournis peuvent retarder le projet, comme les accès,
+          intégrations et validations. Notre{" "}
           <Link href="/guides/combien-de-temps-pour-creer-un-site">guide
-          des délais de création</Link> chiffre tout le planning) —
-          c&apos;est pourquoi nos forfaits incluent la rédaction, et pourquoi
-          nos devis précisent les jalons, dépendances, causes de report et conséquences éventuelles (
+          des délais de création</Link> aide à bâtir un rétroplanning.
+          Nos devis précisent les jalons, dépendances, causes de report et
+          conséquences éventuelles ; la rédaction n&apos;est incluse que si le
+          périmètre signé le prévoit (voir notre{" "}
           <Link href="/methode">méthode Sprint Fixe™</Link>).
         </p>
 
         <h2 id="artisans-tpe">15. Artisans et TPE locales : le bon niveau d&apos;investissement</h2>
         <p>
-          Le segment artisan est saturé d&apos;offres à 590 – 3 990 € et
-          d&apos;abonnements à 19-70 €/mois. Soyons honnêtes : <strong>pour
+          Les offres publiques destinées aux artisans couvrent des prix et des
+          périmètres très différents. Soyons honnêtes : <strong>pour
           un artisan dont le carnet est plein grâce au bouche-à-oreille
           et qui ne demande rien à son site, un site simple à
           1 000 – 2 000 € reste défendable</strong>. C&apos;est
@@ -908,15 +875,13 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
         </p>
         <p>
           Le passage au niveau supérieur (5 000 – 10 000 €) se justifie le
-          jour où le site doit <em>générer</em> du travail : prise de
+          jour où le site doit soutenir l&apos;acquisition : prise de
           rendez-vous en ligne, une page par prestation pour être trouvé sur
           Google près de chez vous (le « SEO local »), avis clients intégrés,
-          photos de chantiers. Le calcul est vite fait : dans un métier où le
-          panier moyen se chiffre en milliers d&apos;euros, quelques
-          chantiers gagnés par an via Google amortissent la différence. Et le
-          bâtiment est justement le secteur le moins présent en ligne de
-          France (53 % d&apos;entreprises équipées d&apos;un site
-          seulement) : la place est à prendre.
+          photos de chantiers. Construisez alors un scénario avec votre marge,
+          vos demandes mesurées et votre taux de transformation réel. Une page
+          locale ou un investissement supérieur ne garantit ni position Google,
+          ni chantier, ni amortissement.
         </p>
         <p>
           Avant de signer une offre tout-en-un « spécial artisans », lisez

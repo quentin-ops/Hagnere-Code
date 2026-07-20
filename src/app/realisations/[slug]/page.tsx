@@ -16,13 +16,13 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const c = CASES[slug];
-  if (!c) return { title: "Réalisation · Hagnéré Code" };
+  if (!c) return { title: "Analyse publique externe · Hagnéré Code" };
   const url = `/realisations/${slug}`;
   const socialImage = {
     url: `${url}/opengraph-image`,
     width: 1200,
     height: 630,
-    alt: `${c.brandName} · ${c.category} — étude de cas Hagnéré Code`,
+    alt: `${c.brandName} · analyse éditoriale d'une page publique externe`,
   };
   const title = c.seo?.title ?? `${c.brandName} · ${c.category} · Hagnéré Code`;
   const description = c.seo?.description ?? c.heroIntro;
@@ -33,7 +33,7 @@ export async function generateMetadata({
     openGraph: {
       ...OG_BASE,
       type: "article",
-      title: `${c.brandName} · Étude de cas`,
+      title: `${c.brandName} · Analyse publique externe`,
       description,
       url,
       images: [socialImage],

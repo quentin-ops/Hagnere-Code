@@ -808,8 +808,10 @@ Faire ensuite relire le guide final par au moins un lecteur humain non
 technique qui n'a pas participé à la rédaction. Lui demander ce qu'il a
 compris, la décision qu'il prendrait, le passage où il a commencé à survoler,
 ce qui lui semble flou ou commercial et l'action qu'il ferait ensuite. Si
-aucun humain n'est disponible, le statut maximal est « prêt pour revue
-humaine » : l'agent le signale au lieu d'inventer un panel ou une validation.
+aucun lecteur humain n'est disponible et que le commanditaire n'a pas
+explicitement délégué la décision de publication, le statut maximal est « prêt
+pour revue humaine » : l'agent le signale au lieu d'inventer un panel ou une
+validation.
 
 ### Statuts autorisés
 
@@ -840,7 +842,8 @@ aucun blocage factuel, éditorial, commercial ou technique ne peut subsister.
 - dates, titre, descriptions, H1, canonical et image OG cohérents ;
 - données structurées parsables et identiques au contenu visible ;
 - FAQ visible dans le DOM si elle existe ;
-- liens internes et externes valides ;
+- liens internes et externes vérifiés sur le rendu final : destination, statut
+  HTTP et libellé descriptif ;
 - sitemap et hub à jour ;
 - si la FAQ est absente : tableau vide et aucune section vide ; dans tous les
   cas, aucun JSON-LD `FAQPage` ;

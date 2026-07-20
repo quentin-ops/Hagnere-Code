@@ -59,12 +59,12 @@ const faqItems = [
   {
     question: "Combien coûte une application React sur mesure ?",
     answer:
-      "Une première version réellement utilisable démarre à 15 000 €, livrée en 3 à 6 semaines. Les projets plus larges — plusieurs rôles utilisateurs, connexions à vos logiciels existants, volumétrie importante — se situent entre 25 000 et 80 000 €. Nous travaillons au forfait fixe contractuel : le prix est arrêté après le cadrage et ne bouge pas, tout ajout passant par un avenant chiffré. Les projets démarrent par un Discovery Sprint de deux jours à 1 500 €, intégralement déduits si le projet se lance.",
+      "Une première version réellement utilisable démarre à 15 000 €. Les projets plus larges — plusieurs rôles utilisateurs, connexions à vos logiciels existants, volumétrie importante — se situent entre 25 000 et 80 000 €. Le planning dépend du périmètre, des intégrations et des validations ; il est arrêté après cadrage dans le devis. Nous travaillons au forfait fixe contractuel : tout ajout passe par un avenant chiffré. Les projets démarrent par un Discovery Sprint de deux jours à 1 500 €, intégralement déduit si le projet se lance.",
   },
   {
     question: "Pouvez-vous reprendre une application React existante ?",
     answer:
-      "Oui, et c'est une demande fréquente : l'agence d'origine a disparu, le développeur est parti, ou le code est devenu difficile à faire évoluer. Nous commençons alors par un audit du code existant, facturé séparément, qui répond à trois questions : que vaut réellement ce code, que coûte sa reprise, et vaut-il mieux le reprendre ou le reconstruire ? Cet audit se conclut parfois par « reconstruisez » et parfois par « votre code est sain, voici les trois choses à corriger ». Nous vous donnons la réponse honnête, même quand elle réduit notre facture.",
+      "Oui. C'est un cas typique lorsque l'agence d'origine a disparu, que le développeur est parti ou que le code est devenu difficile à faire évoluer. Un audit du code existant, facturé séparément, permet alors de répondre à trois questions : que vaut réellement ce code, que coûte sa reprise, et vaut-il mieux le reprendre ou le reconstruire ? Selon les preuves observées, la recommandation peut être de reconstruire ou, au contraire, de conserver le socle et de corriger quelques points ciblés.",
   },
   {
     question: "React est-il adapté à une application interne d'entreprise ?",
@@ -106,7 +106,7 @@ export default function Page() {
         updatedLabel="Mis à jour le 18 juillet 2026"
         keyPoints={[
           { number: "01", title: "Applications sur mesure dès 15 000 €", description: "", color: "violet" },
-          { number: "02", title: "Première version en 3 à 6 semaines", description: "", color: "blue" },
+          { number: "02", title: "Planning défini après cadrage", description: "", color: "blue" },
           { number: "03", title: "Code et documentation à votre nom", description: "", color: "emerald" },
           { number: "04", title: "Reprise d'existant possible après audit", description: "", color: "amber" },
         ]}
@@ -153,8 +153,8 @@ export default function Page() {
         <GuideTable
           headers={["Type de projet", "Ce que ça remplace", "Budget d'entrée", "Délai"]}
           rows={[
-            ["Application métier", "Des tableurs partagés qui ont atteint leurs limites", "15 000 €", "3 à 6 semaines pour une première version"],
-            ["Espace client ou portail", "Des échanges par e-mail et des documents éparpillés", "15 000 €", "1 à 3 mois"],
+            ["Application métier", "Des tableurs partagés qui ont atteint leurs limites", "15 000 €", "Planning confirmé au devis"],
+            ["Espace client ou portail", "Des échanges par e-mail et des documents éparpillés", "15 000 €", "Planning confirmé au devis"],
             ["Outil interne, automatisation", "Des tâches répétitives faites à la main", "Sur devis", "Selon périmètre"],
             ["Tableau de bord et pilotage", "Des exports manuels consolidés chaque mois", "Sur devis", "Selon sources de données"],
           ]}
@@ -228,17 +228,17 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un projet applicatif en tête ?"
-          description="Décrivez-le en 3 minutes. Objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement — y compris si notre réponse est qu'un outil du marché ferait l'affaire."
+          description="Décrivez-le en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti. Cette première réponse est gratuite et sans engagement — y compris si elle consiste à recommander un outil du marché."
         />
 
         <h2 id="reprise">4. Reprendre une application existante</h2>
         <p>
-          C&apos;est une demande fréquente, et souvent une situation
+          C&apos;est un cas de reprise classique, et souvent une situation
           inconfortable : l&apos;agence d&apos;origine a disparu, le
           développeur est parti, ou plus personne n&apos;ose toucher au code.
         </p>
         <p>
-          Nous commençons alors par un{" "}
+          Le premier lot recommandé est alors un{" "}
           <Link href="/services/audit-technique">audit technique</Link>,
           facturé séparément et volontairement court. Il répond à trois
           questions : que vaut réellement ce code, que coûterait sa reprise,
@@ -246,10 +246,9 @@ export default function Page() {
           les deux scénarios plutôt que d&apos;en imposer un.
         </p>
         <InfoBox variant="amber" title="La réponse qui nous coûte de l'argent">
-          Cet audit se conclut parfois par « votre code est sain, voici les
-          trois choses à corriger, ça vous coûtera quelques jours ». Nous le
-          disons quand c&apos;est le cas, même si une reconstruction complète
-          serait beaucoup plus rentable pour nous. La raison est simple :{" "}
+          Cet audit peut conclure « votre code est sain, voici les trois
+          choses à corriger » lorsque les preuves ne justifient pas une
+          reconstruction complète. La raison est simple :{" "}
           <strong>vendre une refonte inutile détruit la confiance</strong>.
           La recommandation doit donc partir des preuves observées dans le code.
         </InfoBox>
@@ -268,8 +267,8 @@ export default function Page() {
           Ce dernier point compte particulièrement sur un projet applicatif.
           L&apos;échec le plus courant n&apos;est pas technique : c&apos;est
           un malentendu sur le fonctionnement attendu, découvert trop tard. Des
-          démonstrations toutes les deux semaines coûtent quelques heures et
-          évitent des semaines de reprise.
+          démonstrations dont la cadence est convenue au devis permettent de
+          détecter plus tôt un écart entre l&apos;usage attendu et le produit.
         </p>
 
         <h2 id="prix">6. Budgets et délais</h2>
@@ -277,9 +276,9 @@ export default function Page() {
           headers={["Périmètre", "Prix", "Délai"]}
           rows={[
             ["Discovery Sprint : cadrage, maquette, devis ferme", "1 500 €, déduits à 100 % si le projet se lance", "2 jours"],
-            ["Première version utilisable (un rôle, périmètre resserré)", "Dès 15 000 €", "3 à 6 semaines"],
-            ["Application complète (plusieurs rôles, connexions à vos outils)", "25 000 à 80 000 €", "2 à 5 mois"],
-            ["Audit d'une application existante", "Sur devis, volontairement court", "3 à 10 jours"],
+            ["Première version utilisable (un rôle, périmètre resserré)", "Dès 15 000 €", "Planning confirmé au devis"],
+            ["Application complète (plusieurs rôles, connexions à vos outils)", "25 000 à 80 000 €", "Planning confirmé au devis"],
+            ["Audit d'une application existante", "Sur devis", "Durée définie après accès au périmètre"],
           ]}
         />
         <p>
@@ -337,10 +336,10 @@ export default function Page() {
           ]}
         />
         <p>
-          Nous développons également en Laravel lorsque le projet s&apos;y
-          prête : deux de nos logiciels en production sont bâtis sur cette
-          technologie. Le choix se fait au cadrage, selon votre besoin — pas
-          selon nos préférences.
+          Laravel peut également être étudié lorsque le projet s&apos;y prête.
+          Deux études de cas déclarent cette technologie et renvoient vers des
+          pages publiques ; celles-ci ne prouvent pas à elles seules la stack interne.
+          Le choix se fait au cadrage et figure dans le devis.
         </p>
 
         <GuideInlineCTA

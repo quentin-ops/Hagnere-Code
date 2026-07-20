@@ -33,6 +33,12 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -707,7 +713,7 @@ export default function Page() {
           <Link href="/guides/react-native-ou-flutter">
             guide React Native ou Flutter
           </Link>
-          ). Par secteur, les cas les plus fréquents que nous voyons passer : le
+          ). Par secteur, les cas d&apos;usage courants comprennent le
           BTP (suivi multi-chantiers, matériel, pointages), le transport
           (tournées, bons de livraison), la santé et l&apos;industrie (ordres de
           fabrication, traçabilité). Pour la santé, le régime HDS ne
@@ -927,7 +933,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un chiffrage honnête pour votre outil métier ?"
-          description="Décrivez votre processus en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti avec une fourchette argumentée en jours × postes — et notre avis franc si un abonnement du marché suffit."
+          description="Décrivez votre processus en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec une fourchette argumentée en jours × postes — et notre avis franc si un abonnement du marché suffit."
           tags={[
             "Objectif : prochain jour ouvré",
             "Outils internes 8 000 – 80 000 €",

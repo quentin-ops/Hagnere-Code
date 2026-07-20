@@ -28,13 +28,13 @@ export function isCookieBannerEnabled(): boolean {
   );
 }
 
-export function readCookieConsent(now = Date.now()): CookieConsent | null {
+export function readCookieConsent(now?: number): CookieConsent | null {
   if (typeof window === "undefined") return null;
   try {
     const raw = window.localStorage?.getItem(COOKIE_CONSENT_STORAGE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Partial<CookieConsent>;
-    const ageMs = now - (parsed.ts || 0);
+    const ageMs = (now ?? Date.now()) - (parsed.ts || 0);
     if (
       parsed.version !== COOKIE_CONSENT_VERSION ||
       parsed.necessary !== true ||

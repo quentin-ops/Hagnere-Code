@@ -1,5 +1,7 @@
-import { getCloudflareContext } from "@opennextjs/cloudflare";
-import { FUNNEL_EVENT_NAMES } from "@/lib/funnel-analytics";
+import {
+  FUNNEL_EVENT_NAMES,
+  isFunnelAnalyticsCollectionEnabled,
+} from "@/lib/funnel-analytics";
 import {
   PayloadTooLargeError,
   readRequestBytesWithLimit,
@@ -60,6 +62,10 @@ function parsePayload(rawBody: string): AnalyticsPayload | null {
 }
 
 export async function POST(request: Request): Promise<Response> {
+  if (!isFunnelAnalyticsCollectionEnabled()) {
+    return Response.json({ error: "Mesure de parcours désactivée." }, { status: 503 });
+  }
+
   const contentLength = Number(request.headers.get("content-length") || 0);
   if (contentLength > MAX_BODY_BYTES) {
     return Response.json({ error: "Payload trop volumineux." }, { status: 413 });
@@ -95,6 +101,9 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   try {
+    // Import tardif : la cible Vercel n'embarque ce chemin que si la collecte
+    // Cloudflare a été explicitement activée.
+    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
     const { env } = await getCloudflareContext({ async: true });
     if (!env.FUNNEL_ANALYTICS) {
       console.error("[funnel-analytics] Binding FUNNEL_ANALYTICS absent.");

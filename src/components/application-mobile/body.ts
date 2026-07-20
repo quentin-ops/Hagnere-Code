@@ -520,7 +520,7 @@ ${navHtml}
         <h2>Du brief à la première<br>review Apple, en 5 étapes.</h2>
       </div>
       <div class="right">
-        Démos hebdomadaires sur TestFlight (iOS) et Internal Testing (Android), <b>vous voyez l'app grandir chaque semaine</b> sur votre propre téléphone.
+        Démonstrations sur TestFlight (iOS) et Internal Testing (Android) à la cadence convenue, <b>avec des versions testables aux jalons prévus</b> sur votre propre téléphone.
         Pas d'effet tunnel, pas de surprise à la livraison.
       </div>
     </div>
@@ -537,29 +537,29 @@ ${navHtml}
         <div class="proc-num">ÉTAPE 02</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
         <h3>Design iOS + Android</h3>
-        <p>Maquettes Figma haute fidélité, respect des Human Interface Guidelines (Apple) et Material 3 (Google). Prototype cliquable. <b>2 tours de révisions inclus</b>. Vous validez avant la moindre ligne de code.</p>
-        <div class="proc-dur">2–3 SEMAINES</div>
+        <p>Maquettes Figma haute fidélité, prise en compte des recommandations Apple et Material 3, prototype cliquable. Le nombre de parcours, de validations et de révisions est précisé au devis.</p>
+        <div class="proc-dur">PLANNING AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
         <h3>Développement React Native + Expo</h3>
         <p>La cadence des sprints, des démonstrations TestFlight / Internal Testing et de l'accès aux versions intermédiaires est définie au devis. Les tests E2E et le monitoring sont activés selon le plan de recette retenu.</p>
-        <div class="proc-dur">6–14 SEMAINES</div>
+        <div class="proc-dur">PLANNING AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
         <h3>Recette &amp; tests sur vrais devices</h3>
-        <p>Tests sur <b>iPhone SE (entrée de gamme), Android Pixel 5, tablette</b>. Audit performances (fluidité 60 fps cible), accessibilité, RGPD CNIL, batterie. Beta fermée 50–100 utilisateurs en TestFlight. <b>1 tour de corrections inclus</b>.</p>
-        <div class="proc-dur">1–2 SEMAINES</div>
+        <p>Le plan de recette nomme les versions iOS et Android, appareils ou émulateurs, parcours, accessibilité, performance, consommation et bêta éventuelle. La couverture, les seuils et les corrections incluses sont définis au devis.</p>
+        <div class="proc-dur">RECETTE AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
-        <h3>Soumission stores + suivi 30 j</h3>
+        <h3>Soumission stores et suivi défini au devis</h3>
         <p>Le devis peut couvrir App Store Connect et Google Play Console&nbsp;: fiche store, captures, soumission, retours des équipes de revue et formation. Le nombre d'itérations et les délais des stores ne sont pas garantis par l'agence.</p>
-        <div class="proc-dur">5–10 JOURS · J+30</div>
+        <div class="proc-dur">DÉLAIS TIERS NON GARANTIS</div>
       </div>
     </div>
   </div>
@@ -696,7 +696,7 @@ ${navHtml}
       </div>
 
       <div class="plan featured reveal reveal-d-1">
-        <div class="plan-badge">LE PLUS DEMANDÉ</div>
+        <div class="plan-badge">PÉRIMÈTRE ÉTENDU</div>
         <div class="plan-tag">APP COMPLÈTE</div>
         <h3>Performance</h3>
         <div class="plan-sub">Une app complète pour le commerce, la fidélité, la communauté, le paiement, les notifications et le back-office. Les objectifs d'usage et de rentabilité sont définis puis mesurés avec vous.</div>
@@ -888,7 +888,7 @@ ${navHtml}
     <h2 style="margin-top:18px">Votre app sur les stores,<br>cadrée et chiffrée par quelqu'un qui code.</h2>
     <p>Un échange de cadrage avec un expert. Le délai et les informations nécessaires à l'établissement d'un éventuel devis sont annoncés après l'analyse du projet, sans engagement.</p>
     <div class="scta-cta">
-      <a href="#contact" class="btn btn-accent btn-lg">
+      <a href="/rendez-vous" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min avec un expert
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -930,14 +930,13 @@ ${navHtml}
         <div class="foot-col">
           <h3>CONTACT</h3>
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">YouTube</a>
+          <a href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
         <div class="foot-col">
           <h3>LÉGAL</h3>
-          <a href="#">CGV</a>
-          <a href="#">Mentions légales</a>
-          <a href="#">Confidentialité</a>
+          <a href="/legal/cgv">CGV</a>
+          <a href="/legal/mentions">Mentions légales</a>
+          <a href="/legal/confidentialite">Confidentialité</a>
         </div>
       </div>
     </div>

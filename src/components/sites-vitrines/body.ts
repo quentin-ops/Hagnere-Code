@@ -414,8 +414,8 @@ ${navHtml}
         <div class="proc-num">ÉTAPE 01</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
         <h3>Cadrage &amp; stratégie</h3>
-        <p>Atelier 2 h avec les décideurs. Arborescence, 50 mots-clés ciblés, charte éditoriale, tone of voice. Livrable&nbsp;: brief de 3 pages validé avant tout design.</p>
-        <div class="proc-dur">3–5 JOURS</div>
+        <p>Atelier avec les décideurs. Arborescence, recherche de requêtes, ligne éditoriale et livrables de cadrage sont dimensionnés au devis puis validés avant le design.</p>
+        <div class="proc-dur">PLANNING AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
@@ -845,7 +845,7 @@ ${navHtml}
     <p>Un échange de 30 min pour cadrer le projet. La fourchette est établie après ce cadrage&nbsp;; notre objectif est de répondre le prochain jour ouvré, sans délai garanti.</p>
     <div class="scta-cta">
       <a href="#contact" class="btn btn-accent btn-lg">
-        📅 &nbsp;Réserver 30 min avec un expert
+        📅 &nbsp;Demander un échange avec un expert
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
       <a href="mailto:quentin@hagnere-patrimoine.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
@@ -886,14 +886,13 @@ ${navHtml}
         <div class="foot-col">
           <h3>CONTACT</h3>
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">YouTube</a>
+          <a href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
         <div class="foot-col">
           <h3>LÉGAL</h3>
-          <a href="#">CGV</a>
-          <a href="#">Mentions légales</a>
-          <a href="#">Confidentialité</a>
+          <a href="/legal/cgv">CGV</a>
+          <a href="/legal/mentions">Mentions légales</a>
+          <a href="/legal/confidentialite">Confidentialité</a>
         </div>
       </div>
     </div>

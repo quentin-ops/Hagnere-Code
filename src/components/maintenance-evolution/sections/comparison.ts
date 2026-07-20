@@ -19,7 +19,7 @@ export const comparisonHtml = `
         <div class="me-cmp-col me-cmp-col-label"></div>
         <div class="me-cmp-col"><div class="me-cmp-kind">Option A</div><div class="me-cmp-title">Freelance</div><div class="me-cmp-price">Tarif et capacité à vérifier</div></div>
         <div class="me-cmp-col"><div class="me-cmp-kind">Option B</div><div class="me-cmp-title">ESN / agence</div><div class="me-cmp-price">Tarif et capacité à vérifier</div></div>
-        <div class="me-cmp-col me-cmp-col-us"><div class="me-cmp-kind">Nous</div><div class="me-cmp-title">Hagnéré Code</div><div class="me-cmp-price">2 500–14 000 € / mois forfait</div></div>
+        <div class="me-cmp-col me-cmp-col-us"><div class="me-cmp-kind">Nous</div><div class="me-cmp-title">Hagnéré Code</div><div class="me-cmp-price">Sur devis selon capacité et couverture</div></div>
         <div class="me-cmp-col"><div class="me-cmp-kind">Option D</div><div class="me-cmp-title">Régie / renfort</div><div class="me-cmp-price">TJM et capacité à vérifier</div></div>
       </div>
 

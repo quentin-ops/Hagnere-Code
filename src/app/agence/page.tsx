@@ -9,8 +9,14 @@ import {
 } from "@/components/guides/guide-content-blocks";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import { OG_BASE, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
-import { getLocalPage, localPagePath, localPageUrl } from "@/lib/local-pages";
+import {
+  formatLocalPageDate,
+  getLocalPage,
+  localPagePath,
+  localPageUrl,
+} from "@/lib/local-pages";
 import { PUBLIC_ORGANIZATION_JSON_LD } from "@/lib/organization-structured-data";
+import { PUBLISHED_GUIDES } from "@/lib/guides";
 
 const page = getLocalPage("agence", "");
 
@@ -59,12 +65,12 @@ const faqItems = [
   {
     question: "Quelle est la différence avec les agences de communication du bassin ?",
     answer:
-      "La plupart des agences installées en Savoie sont des agences de communication généralistes, ce qui est un métier différent du nôtre : elles couvrent l'identité visuelle, l'impression, les réseaux sociaux, la vidéo, et le site web en fait partie. Nous faisons du développement : notre cœur, c'est le code. Concrètement, cela se voit sur ce que nous pouvons construire — une application métier, un espace client, une connexion à votre logiciel de gestion — et sur les performances techniques du résultat. Cela ne veut pas dire que nous sommes toujours le bon choix : pour une refonte de plaquette avec un budget de communication global, une agence généraliste locale sera plus adaptée.",
+      "Les prestataires du bassin ont des périmètres différents : certains réunissent communication, identité, impression, réseaux sociaux et web ; d'autres se spécialisent dans le développement ou l'acquisition. Notre cœur est le développement d'interfaces, d'applications et d'intégrations. Cela ne signifie pas que nous sommes toujours le bon choix : comparez les livrables, les compétences réellement affectées, la recette, les droits et la réversibilité au devis.",
   },
   {
     question: "Combien coûte un site chez vous, et pourquoi affichez-vous vos prix ?",
     answer:
-      "Un site vitrine sur mesure démarre à 6 900 €, avec deux paliers supérieurs à 14 900 € et 22 000 € et plus selon l'ambition. Une boutique en ligne sur mesure va de 15 000 à 120 000 €, une première version de logiciel en ligne démarre à 15 000 €. Nous affichons ces montants parce que nous travaillons au forfait fixe contractuel : le prix est arrêté avant de commencer et ne bouge pas. C'est une pratique rare dans le secteur — aucune des agences savoyardes dont nous avons consulté le site en juillet 2026 ne publie ses tarifs. Le détail poste par poste est sur notre page tarifs, et nos guides sur les prix expliquent ce qui fait varier un devis.",
+      "Un site vitrine sur mesure démarre à 6 900 €, avec deux périmètres publics à 14 900 € et 22 000 € et plus. Une boutique en ligne sur mesure va de 15 000 à 120 000 €, une première version de logiciel en ligne démarre à 15 000 €. Nous publions ces repères pour permettre un premier filtre ; seul le devis signé fixe le périmètre, le prix, le planning et les conditions d'avenant. Le détail est sur notre page tarifs.",
   },
   {
     question: "Que se passe-t-il après la mise en ligne ?",
@@ -93,7 +99,7 @@ export default function Page() {
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel="Mis à jour le 18 juillet 2026"
+        updatedLabel={`Mis à jour le ${formatLocalPageDate(page.dateModified)}`}
         keyPoints={[
           { number: "01", title: "Bassens, aux portes de Chambéry", description: "", color: "violet" },
           { number: "02", title: "Savoie et Haute-Savoie sur place", description: "", color: "blue" },
@@ -238,8 +244,8 @@ export default function Page() {
         </InfoBox>
         <p>
           Pourquoi cela compte pour vous : la vitesse d&apos;affichage sur mobile
-          est un critère utilisé par Google dans son classement, et elle influence
-          directement le nombre de visiteurs qui restent. Notre{" "}
+          fait partie des signaux d&apos;expérience de page documentés par Google et
+          peut affecter l&apos;usage, sans garantir classement ni conversion. Notre{" "}
           <Link href="/guides/combien-coute-un-site-internet">guide sur le prix
           d&apos;un site internet</Link> détaille ce mécanisme, chiffres à
           l&apos;appui. C&apos;est aussi la raison pour laquelle nous
@@ -247,47 +253,38 @@ export default function Page() {
           responsabilités et seuils de recette explicites.
         </p>
 
-        <h2 id="paysage">5. Le paysage des agences locales, sans détour</h2>
+        <h2 id="paysage">5. Comparer les prestataires locaux sur des critères vérifiables</h2>
         <p>
-          La Savoie compte des agences installées de longue date, et sérieuses :
-          plusieurs existent depuis la fin des années 1990 ou le début des
-          années 2000, avec des références clients nommées et vérifiables. Nous
-          n&apos;allons pas prétendre le contraire pour nous vendre.
+          La proximité ou l&apos;ancienneté ne suffisent pas à choisir un prestataire.
+          Demandez à chacun de nommer le périmètre, l&apos;équipe affectée, les
+          technologies retenues, les coûts tiers, les tests et les conditions de sortie.
         </p>
         <p>
-          Deux constats factuels, issus de la lecture de leurs sites en juillet
-          2026, expliquent néanmoins pourquoi nous existons.
+          Les sites publics ne montrent pas toujours la stack, les tarifs ou les
+          modalités contractuelles ; leur absence en ligne ne prouve donc pas leur
+          absence dans une proposition. Utilisez plutôt cette grille :
         </p>
         <ul>
           <li>
-            <strong>Ce sont majoritairement des agences de communication
-            généralistes</strong>, qui couvrent l&apos;identité visuelle, le
-            print, les réseaux sociaux, la vidéo — et le site web parmi le reste.
-            C&apos;est un métier différent du développement. Une exception
-            notable dans le bassin : une agence chambérienne positionnée
-            sérieusement sur les applications métier et l&apos;automatisation.
+            <strong>Compétences et responsabilités.</strong> Qui cadre, conçoit,
+            développe, teste, rédige et répond après livraison ? Les personnes et
+            leurs relais doivent être identifiables dans le devis.
           </li>
           <li>
-            <strong>Aucune n&apos;affiche de stack React, Next.js ou
-            TypeScript.</strong> Le socle explicitement mis en avant, quand il
-            l&apos;est, est WordPress. Ce n&apos;est pas un défaut en soi —
-            WordPress fait tourner une grande partie du web et convient à
-            beaucoup de projets. Mais cela borne ce qu&apos;on peut construire,
-            et cela pèse sur la performance et sur l&apos;entretien. Notre{" "}
+            <strong>Socle et réversibilité.</strong> Demandez pourquoi la solution
+            convient au besoin, qui possède le domaine, le dépôt et les comptes,
+            quelles dépendances sont utilisées et comment un tiers peut reprendre.
+            Notre{" "}
             <Link href="/guides/nextjs-ou-wordpress">comparatif Next.js ou
             WordPress</Link> traite la question honnêtement, y compris les cas
             où WordPress reste le bon choix.
           </li>
         </ul>
         <p>
-          Troisième observation, sur les prix : <strong>aucune des agences
-          savoyardes dont nous avons consulté le site ne publie ses
-          tarifs</strong>. Nous publions les nôtres sur notre{" "}
-          <Link href="/tarifs">page tarifs</Link>, et nous travaillons au
-          forfait fixe contractuel. Ce n&apos;est pas une supériorité morale,
-          c&apos;est un choix commercial : cela filtre les projets hors budget
-          avant le premier rendez-vous, ce qui fait gagner du temps à tout le
-          monde.
+          Sur les prix, comparez le coût total et les mêmes livrables. Nous publions
+          nos repères sur la <Link href="/tarifs">page tarifs</Link>, mais ils
+          ne permettent pas de conclure sur le tarif d&apos;un autre prestataire :
+          demandez HT/TTC, abonnements, maintenance, licences, hébergement et sortie.
         </p>
 
         <GuideInlineCTA
@@ -376,7 +373,7 @@ export default function Page() {
         <p>
           Une dernière chose, sur le référencement : si vous cherchez à
           comprendre ce que coûte un site, comment lire un devis ou comment
-          choisir un prestataire, nous avons publié une vingtaine de guides
+          choisir un prestataire, nous avons publié {PUBLISHED_GUIDES.length} guides
           longs et sourcés sur ces sujets. Ils sont gratuits, sans formulaire, et
           ils vous serviront même si vous travaillez avec quelqu&apos;un
           d&apos;autre — c&apos;est le principe. Le sommaire est sur notre{" "}

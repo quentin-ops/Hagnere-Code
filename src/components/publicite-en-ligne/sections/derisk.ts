@@ -22,7 +22,7 @@ export const deriskHtml = `
         <p>Le devis définit les métriques suivies, la fréquence de revue, la procédure d'ajustement, la durée et le préavis. Les comptes ouverts au nom du client restent sous son contrôle.</p>
         <div class="ads-derisk-proof">
           <span>✓ Jalons contractuels</span>
-          <span>✓ Arrêt à 3 mois possible</span>
+          <span>✓ Conditions de sortie écrites</span>
           <span>✓ Assets restent chez vous</span>
         </div>
       </div>

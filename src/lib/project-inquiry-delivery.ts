@@ -13,6 +13,50 @@ export type InquiryDeliveryOutcome = {
   payload: InquiryDeliveryPayload;
 };
 
+type MailAttempt =
+  | { ok: true }
+  | { ok: false; errorName: string };
+
+export type InquiryMailDelivery =
+  | { kind: "complete" }
+  | { kind: "team_failed"; errorName: string }
+  | { kind: "confirmation_failed"; errorName: string };
+
+function thrownErrorName(error: unknown): string {
+  if (error instanceof Error && error.name) return error.name;
+  return "unknown_error";
+}
+
+/** Sépare les deux envois afin qu'une panne de confirmation ne masque jamais
+ * la notification équipe déjà réussie. */
+export async function deliverInquiryEmails(
+  sendTeam: () => Promise<MailAttempt>,
+  sendConfirmation: () => Promise<MailAttempt>,
+): Promise<InquiryMailDelivery> {
+  let team: MailAttempt;
+  try {
+    team = await sendTeam();
+  } catch (error) {
+    return { kind: "team_failed", errorName: thrownErrorName(error) };
+  }
+  if (!team.ok) return { kind: "team_failed", errorName: team.errorName };
+
+  let confirmation: MailAttempt;
+  try {
+    confirmation = await sendConfirmation();
+  } catch (error) {
+    return { kind: "confirmation_failed", errorName: thrownErrorName(error) };
+  }
+  if (!confirmation.ok) {
+    return {
+      kind: "confirmation_failed",
+      errorName: confirmation.errorName,
+    };
+  }
+
+  return { kind: "complete" };
+}
+
 export function missingMailProviderOutcome(
   isProduction: boolean,
   persisted: boolean,
@@ -33,14 +77,13 @@ export function missingMailProviderOutcome(
 
   if (persisted) {
     return {
-      status: 202,
+      status: 503,
       payload: {
-        ok: true,
+        error:
+          "Votre demande est enregistrée mais aucune notification n'a pu partir. Réessayez ou écrivez à quentin@hagnere-patrimoine.fr ; un retry identique ne dupliquera pas le brief.",
         captured: true,
         teamNotified: false,
         confirmationSent: false,
-        message:
-          "Votre demande est enregistrée, mais aucun e-mail de confirmation n'a pu être envoyé. Inutile de renvoyer le formulaire.",
       },
     };
   }
@@ -60,14 +103,13 @@ export function missingMailProviderOutcome(
 export function teamMailFailureOutcome(persisted: boolean): InquiryDeliveryOutcome {
   if (persisted) {
     return {
-      status: 202,
+      status: 502,
       payload: {
-        ok: true,
+        error:
+          "Votre demande est enregistrée mais la notification e-mail a échoué. Réessayez ou écrivez à quentin@hagnere-patrimoine.fr ; un retry identique ne dupliquera pas le brief.",
         captured: true,
         teamNotified: false,
         confirmationSent: false,
-        message:
-          "Votre demande est enregistrée, mais la notification e-mail est retardée. Inutile de renvoyer le formulaire.",
       },
     };
   }

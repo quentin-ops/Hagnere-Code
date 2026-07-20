@@ -32,6 +32,12 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -47,7 +53,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4879,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -247,11 +252,11 @@ export default function Page() {
           une boutique active. À volume égal, les coûts totaux
           convergent : la vraie différence est ce que vous voulez
           contrôler, et ce dont vous voulez être déchargé. Troisième
-          option devenue crédible en 2026 : le développement assisté par
-          IA (Claude Code) a fait baisser le coût du sur-mesure — notre
-          grille e-commerce démarre à 15 000 €, dans la fourchette
+          option à chiffrer : le sur-mesure. Notre grille e-commerce
+          démarre à 15 000 €, dans la fourchette
           d&apos;une création Shopify en agence (8 000 à 30 000 €). Dès
-          que la boutique est appelée à devenir le cœur de
+          Ce prix propre à Hagnéré Code ne découle pas d&apos;une preuve de baisse
+          générale liée à l&apos;IA. Dès que la boutique est appelée à devenir le cœur de
           l&apos;entreprise, chiffrez cette option avant de trancher
           (section 13).
         </p>
@@ -533,8 +538,8 @@ export default function Page() {
         <h2 id="securite">9. Sécurité : qui est responsable de quoi</h2>
         <p>
           Le sujet est traité par slogans partout (« WordPress se fait
-          pirater », « Shopify est sûr ») — voici les faits, et
-          surtout la question que personne ne pose : <strong>qui
+          pirater », « Shopify est sûr ») — voici les faits, puis la question
+          opérationnelle essentielle : <strong>qui
           porte la responsabilité ?</strong> Côté WooCommerce :
           11 334 vulnérabilités recensées dans l&apos;écosystème
           WordPress en 2025 (+42 %), dont 91 % dans les extensions —
@@ -571,8 +576,8 @@ export default function Page() {
           conformité incombe au marchand</strong> — en pratique, elle
           se règle en utilisant une passerelle sérieuse (Stripe,
           PayPlug) qui héberge la saisie de carte, mais c&apos;est à
-          vous (ou votre prestataire) de le vérifier, personne ne le
-          fera à votre place. C&apos;est le vrai résumé du chapitre
+          vous (ou votre prestataire) de le vérifier : cette responsabilité
+          ne se délègue pas implicitement. C&apos;est le résumé du chapitre
           sécurité :{" "}
           <strong>chez Shopify, vous déléguez la responsabilité (et la
           maîtrise) ; chez WooCommerce, vous la portez (et la
@@ -682,11 +687,9 @@ export default function Page() {
         <p>
           Les comparatifs « Woo vs Shopify » entretiennent une
           illusion : que la réponse est forcément l&apos;un des deux.
-          C&apos;était vrai tant que le sur-mesure se chiffrait
-          uniquement en dizaines de milliers d&apos;euros. En 2026, le
-          développement assisté par IA (Claude Code) a fait fondre son
-          ticket d&apos;entrée, et la question mérite désormais
-          d&apos;être posée dans deux situations : quand la boutique
+          Les plateformes restent souvent les solutions les plus économiques
+          pour lancer un besoin standard. Le sur-mesure mérite néanmoins
+          d&apos;être chiffré dans deux situations : quand la boutique
           est le cœur de votre entreprise — image, conversion,
           durée —, et, comme hier, <strong>quand votre façon de vendre
           ne rentre plus dans les cases</strong> : configurateur de
@@ -764,10 +767,9 @@ export default function Page() {
           vente physique unifiée (le POS) — et site WordPress vivant
           dont le contenu est l&apos;actif. Dans le scénario Les Toiles du
           Lac, l&apos;analyse conduirait ainsi à recommander WooCommerce. Ce
-          site lui-même est développé à 100 % en React/Next.js avec
-          Claude Code — la vitesse, la qualité visuelle et la
-          stratégie de guides que vous lisez en ce moment en sont la
-          démonstration. Un{" "}
+          site lui-même utilise React/Next.js et des assistants de développement ;
+          cela illustre un choix de stack, pas une preuve comparative de vitesse,
+          de qualité ou de coût. Ces résultats se mesurent séparément. Un{" "}
           <strong><Link href="/methode">Discovery Sprint</Link> (1 500 €,
           2 jours, déduit à 100 % si le projet se lance)</strong> tranche
           votre cas sur vos

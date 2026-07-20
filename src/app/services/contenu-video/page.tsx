@@ -46,41 +46,6 @@ const serviceJsonLd = JSON.stringify({
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Cadrage et coordination de contenus vidéo, démonstrations produit, motion design et formats de campagne. Les outils, intervenants, droits et livrables applicables sont précisés dans le devis.",
-  // Offres alignées sur les 4 cartes visibles de la section Forfaits & tarifs
-  // (consigne Google : le balisage doit refléter le contenu affiché).
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Vidéo ponctuelle",
-      price: "2500",
-      priceCurrency: "EUR",
-      description:
-        "Exemple d'offre ponctuelle : brief, script, une version longue et déclinaisons. Le monteur, les outils et le délai sont confirmés dans le devis.",
-    },
-    {
-      "@type": "Offer",
-      name: "YouTube Founder — retainer mensuel",
-      price: "3500",
-      priceCurrency: "EUR",
-      description:
-        "Chaîne YouTube clé en main pour CEO / expert : 1 h de tournage par semaine, 4 vidéos longues + 16 shorts par mois, scripts + thumbnails A/B, publication & VidIQ. Engagement 6 mois.",
-    },
-    {
-      "@type": "Offer",
-      name: "Content Retainer — pipeline mensuel",
-      price: "6900",
-      priceCurrency: "EUR",
-      description:
-        "Pipeline industriel pour marques DTC / SaaS : ~25 livrables par mois (12 ads, 8 UGC, 4 motion + 2 vidéos e-com), localisation FR/EN/DE, dashboard ROAS mensuel. Engagement 6 mois.",
-    },
-    {
-      "@type": "Offer",
-      name: "Studio dédié — sur-mesure",
-      priceCurrency: "EUR",
-      description:
-        "Brand film, campagne multi-canaux ou volume hors cadre : composition d'équipe et moyens de tournage définis sur devis, sans présumer de ressources internes.",
-    },
-  ],
 });
 
 

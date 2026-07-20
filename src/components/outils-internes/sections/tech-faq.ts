@@ -5,11 +5,11 @@ export const techFaqHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Pour les DSI / RSSI / lead techs</div>
-        <h2>Les questions qu'un DSI<br>nous pose systématiquement.</h2>
+        <h2>Les questions qu'un DSI<br>doit pouvoir instruire.</h2>
       </div>
       <div class="right">
         Si votre DSI ou votre RSSI est déjà en train de nous auditer en lisant cette page,
-        voici les réponses directes aux huit questions qu'on entend sur chaque deal ETI.
+        voici huit points techniques à cadrer avant de comparer les solutions.
       </div>
     </div>
 

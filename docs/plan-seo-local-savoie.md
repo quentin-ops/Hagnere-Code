@@ -101,7 +101,7 @@ semaines**, jamais plus.
 | **Pas de témoignage anonymisé par secteur** (« Gérant d'un commerce de proximité chambérien ») | Signature la plus lisible d'une localisation générée. Digital Unicorn le fait, Matixweb aussi (« Sophie M. », « Thomas R. »). C'est précisément le terrain sur lequel on veut gagner |
 | **Pas de domaine à correspondance exacte** (`agence-web-chambery.fr`) | Nommé explicitement dans la politique anti-spam de Google : *multiple domain names… targeted at specific regions or cities* |
 | **Pas de grille « nos autres villes » en pied de page** | 40 liens croisés = liens créés pour les moteurs. Les liens entre villes sœurs sont dans la prose, justifiés, et plafonnés à deux |
-| **Pas de simulateur de prix ni de tarification temps réel** | Contrainte funnel : lead-only, réponse manuelle sous 24 h ouvrées. Aucune page locale n'y déroge |
+| **Pas de simulateur de prix ni de tarification temps réel** | Contrainte funnel : lead-only, objectif de réponse humaine le prochain jour ouvré, sans délai garanti. Aucune page locale n'y déroge |
 | **Aucune promesse de position** | Ni sur le site, ni dans ce document, ni en rendez-vous. Google écrit explicitement qu'aucun moyen d'obtenir une meilleure place dans le classement local sur demande ou contre rémunération n'existe |
 
 ### Les hypothèses qui restent à vérifier
@@ -296,9 +296,9 @@ mince du domaine, et ça se verrait.
 | 8 | **Références locales** | oui | 0–200 | **Rien si rien.** Une section absente vaut infiniment mieux qu'un témoignage anonymisé |
 | 9 | **FAQ locale** | oui | 250–400 | 4 à 6 questions, dont **au moins 3 impossibles à poser sur une autre ville** |
 | 10 | Services adaptés | mutualisé | — | 3 à 5 liens `/services/*`, chacun avec une phrase de contextualisation locale |
-| 11 | Méthode, stack, Lighthouse 95+, forfait fixe | mutualisé | — | Identique partout. NOIISE mutualise tout ça et est #1 |
+| 11 | Méthode, stack, critères de performance, cadre de prix | mutualisé | — | Les objectifs mesurables et les engagements applicables sont définis au devis ; aucun score Lighthouse générique n'est garanti |
 | 12 | Tarifs | mutualisé | — | Renvoi `/tarifs`. **Jamais de prix calculé en direct** |
-| 13 | CTA | mutualisé | — | `/demarrer-un-projet` + `/rendez-vous`. Réponse manuelle sous 24 h ouvrées |
+| 13 | CTA | mutualisé | — | `/demarrer-un-projet` + `/rendez-vous`. Objectif de réponse humaine le prochain jour ouvré, sans délai garanti |
 
 ### 4.3 Les huit variables qui doivent changer d'une ville à l'autre
 
@@ -313,9 +313,10 @@ Une page qui n'en fait varier que trois est un gabarit, quel que soit son nombre
 7. **La FAQ** — au moins 3 questions non transposables
 8. **Les références locales quand elles existent** — et le silence quand elles n'existent pas
 
-Ce qui peut rester commun sans aucun risque : méthode et process, stack technique, garantie
-Lighthouse 95+, forfait fixe contractuel, propriété du code, grille tarifaire et renvoi vers
-`/tarifs`, bloc « nos services », formulaire, fil d'Ariane.
+Ce qui peut rester commun : méthode et process, stack technique, critères de performance,
+cadre de prix, propriété du code, grille tarifaire et renvoi vers `/tarifs`, bloc « nos
+services », formulaire, fil d'Ariane. Les scores, garanties et niveaux de service ne deviennent
+des engagements que s'ils sont définis et mesurables dans le devis ou le contrat signé.
 
 ### 4.4 Exemple rédigé — `/agence/savoie/aix-les-bains`
 
@@ -622,7 +623,7 @@ porter exactement le même triplet nom / adresse / téléphone / e-mail.
     "@id": "https://hagnere-code.ai/agence/savoie/aix-les-bains#webpage",
     "url": "https://hagnere-code.ai/agence/savoie/aix-les-bains",
     "name": "Agence web à Aix-les-Bains : sites et outils sur mesure",
-    "description": "Sites, e-commerce et applications métier pour les entreprises d'Aix-les-Bains : thermalisme, industrie des Combaruches, services. Forfait fixe, Lighthouse 95+.",
+    "description": "Sites, e-commerce et applications métier pour les entreprises d'Aix-les-Bains : thermalisme, industrie des Combaruches et services.",
     "inLanguage": "fr-FR",
     "isPartOf":   { "@id": "https://hagnere-code.ai/#website" },
     "breadcrumb": { "@id": "https://hagnere-code.ai/agence/savoie/aix-les-bains#breadcrumb" },
@@ -1069,7 +1070,7 @@ preuves accumulées, jamais en rang.
    à `EXCLUDED_ROUTES`.
 9. **Funnel lead-only.** Aucune page locale ne porte de simulateur, d'estimation en direct,
    de tarification calculée ni de balisage de prix. Renvoi vers `/tarifs`, formulaire,
-   réponse manuelle sous 24 h ouvrées.
+   objectif de réponse humaine le prochain jour ouvré, sans délai garanti.
 10. **Aucune promesse de position**, nulle part.
 11. **Un lien capitalistique se déclare.** Citer Hagnéré Patrimoine comme référence
     chambérienne est légitime — le présenter comme un client extérieur ne l'est pas.

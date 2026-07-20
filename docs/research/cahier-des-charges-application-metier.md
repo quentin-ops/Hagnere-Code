@@ -9,7 +9,12 @@
 - **Stade du parcours** : problème reconnu, projet plausible, avant consultation ou avant validation d'un devis.
 - **Promesse** : repartir avec un modèle copiable fondé sur 7 livrables, 5 à 8 scénarios métier et des critères de recette observables.
 - **Date de collecte et de vérification** : 20 juillet 2026.
-- **Statut** : contre-audit éditorial corrigé, registre et kit intégrés. Rendu documentaire et audit d'accessibilité réalisés ; build, contrôle navigateur et revue humaine indépendante restent à terminer.
+- **Statut au 20 juillet 2026** : publié dans le registre éditorial ; ce guide
+  fait partie des **40 `PUBLISHED_GUIDES`**. Cette mention atteste la sortie du
+  gate éditorial et son alimentation automatique du hub, du sitemap et de
+  `llms.txt` lors du build ; elle ne prouve ni l'état du déploiement
+  au moment de la lecture, ni une indexation Google. Aucun test lecteur humain
+  indépendant n'est revendiqué.
 
 ## 2. Frontière sémantique et cannibalisation
 
@@ -241,7 +246,7 @@ Contenu livré :
 - **Mauvais fit explicite** : recherche d'une simple mise en page, d'un prix instantané ou d'un logiciel standard déjà adapté.
 - **Position** : tardive, une seule occurrence, après toute la méthode.
 
-## 9. Contrôle qualité avant intégration
+## 9. Relevé qualité après intégration éditoriale
 
 | Critère de la charte | Score provisoire / 2 | Justification                                                                                                                                |
 | -------------------- | -------------------: | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -254,11 +259,14 @@ Contenu livré :
 | Originalité          |                    2 | Scénario + preuve de recette comme unité, non une suite de rubriques génériques.                                                             |
 | Style                |                    2 | Phrases directes, jargon traduit, aucune statistique décorative ni faux client.                                                              |
 | Conversion           |                    2 | Valeur autonome puis CTA qualifié, sans captation préalable.                                                                                 |
-| SEO/produit          |                    1 | Métadonnées, JSON-LD, maillage, OG, registre et ressource sont intégrés ; build, navigateur, sitemap publié et production restent à valider. |
+| SEO/produit          |                    1 | Métadonnées, JSON-LD, maillage, OG, registre et ressource sont intégrés ; le guide est publié parmi les 40 entrées du registre, tandis que l'artefact déployé et l'indexation restent à contrôler séparément. |
 
-**Total provisoire : 19/20.** Ce score est une auto-évaluation documentaire après contre-audit, pas un test humain. Le statut maximal reste « prêt pour revue humaine » jusqu'à une lecture indépendante par la cible.
+**Total documentaire : 19/20.** Ce score reste une auto-évaluation après
+contre-audit, pas un test humain. La publication dans le registre a été acquise
+par la délégation éditoriale documentée ; elle ne transforme pas ce score en
+validation par un lecteur de la cible.
 
-### Vérifications restantes avant publication
+### Contrôles permanents après sortie du gate éditorial
 
 1. ESLint ciblé sur la page et l'image OG.
 2. Build complet sans erreur de résolution de guide.
@@ -266,7 +274,7 @@ Contenu livré :
 4. Rendu réel de l'image OG en 1200 × 630.
 5. FAQ visible et utile, sans schéma `FAQPage` retiré par Google.
 6. Validation des liens internes et externes.
-7. Contrôle du canonique absolu, de l'indexation, du fil d'Ariane et du schéma `Article`.
-8. Vérification du sitemap après publication ; découverte ou demande d'indexation ne vaut pas preuve d'indexation.
+7. Contrôle du canonique absolu, de la directive `index,follow`, du fil d'Ariane et du schéma `Article`.
+8. Vérification du sitemap dans l'artefact puis sur l'URL publique ; découverte ou demande d'indexation ne vaut pas preuve d'indexation.
 9. Contre-lecture humaine par un dirigeant ou responsable métier n'ayant pas participé à la rédaction.
 10. Relevé de contrôle du kit : `docs/qa/kit-cahier-des-charges-application-metier.md`.

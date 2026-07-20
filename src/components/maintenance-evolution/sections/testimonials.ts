@@ -1,22 +1,22 @@
 // Section "preuves" et non "témoignages" : Hagnéré Code n'a aucun client externe
 // à ce jour. On n'invente donc ni citation, ni note, ni mise en relation. La preuve
-// affichée est vérifiable par n'importe qui : quatre produits en ligne, construits
-// ET exploités en production par l'agence elle-même.
+// affichée se limite à quatre pages publiques et à leurs fonctions visibles.
+// Elle ne prouve ni construction, ni exploitation, ni maintenance.
 // Aucune classe CSS nouvelle : uniquement celles déjà définies dans sections.css.
 
 export const testimonialsHtml = `
-<!-- PREUVES M&E — produits maison exploités en production -->
+<!-- PREUVES M&E — pages publiques consultables -->
 <section class="me-testi">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Aucun témoignage · quatre produits en ligne</div>
-        <h2>Nous n'affichons pas de témoignages.<br>Nous affichons ce que nous exploitons.</h2>
+        <div class="eyebrow">— Aucun témoignage · quatre liens publics</div>
+        <h2>Nous n'affichons pas de témoignages.<br>Nous affichons ce qui est vérifiable.</h2>
       </div>
       <div class="right">
         Hagnéré Code n'a pas encore de client externe : publier des avis reviendrait à les inventer.
-        Ce que nous pouvons montrer est plus rare — quatre produits que nous avons construits et que
-        nous <b>maintenons nous-mêmes en production</b>. Les adresses sont publiques, ouvrez-les.
+        Les quatre adresses permettent de vérifier <b>la disponibilité des pages et les fonctions
+        qu'elles présentent</b>. Elles ne prouvent ni exploitation, ni maintenance, ni niveau de service.
       </div>
     </div>
 
@@ -24,14 +24,14 @@ export const testimonialsHtml = `
       <article class="me-testi-card reveal">
         <div class="me-testi-name">LMNP.AI — comptabilité fiscale LMNP et LMP</div>
         <p class="me-testi-quote">
-          Une application qui produit de vraies liasses fiscales, pour de vrais utilisateurs.
-          Montées de version, supervision, sauvegardes et reprise après incident font partie de notre propre expérience d'exploitation.
-          <b>Les plages de surveillance, d'astreinte et d'intervention restent toutefois à définir pour chaque contrat client.</b>
+          La page présente une offre de comptabilité LMNP / LMP et certaines fonctions.
+          Elle ne permet pas de vérifier les calculs, utilisateurs, montées de version, supervision,
+          sauvegardes ou reprise après incident. <b>Ces preuves sont à définir au contrat.</b>
         </p>
         <div class="me-testi-meta">
           <div>
             <div class="me-testi-role">
-              Conçu, développé et <b>exploité par Hagnéré Code</b> · en production
+              Offre et fonctions <b>présentées sur une page publique</b>
             </div>
           </div>
         </div>
@@ -44,15 +44,14 @@ export const testimonialsHtml = `
       <article class="me-testi-card reveal reveal-d-1">
         <div class="me-testi-name">SCI-AI.app — comptabilité des SCI à l'IR et à l'IS</div>
         <p class="me-testi-quote">
-          Deux régimes fiscaux, des règles qui bougent chaque année, une base comptable qu'on ne
-          migre pas à l'aveugle. Nous vivons avec les choix techniques que nous avons faits il y a
-          deux ans. <b>La dette technique que nous créons, nous la remboursons nous-mêmes</b> — ça
-          discipline une équipe mieux que n'importe quelle clause de contrat.
+          La page présente une offre de comptabilité SCI et les régimes IR / IS couverts.
+          Elle ne permet pas de vérifier la base, les migrations, la dette technique, la maintenance
+          ou l'historique du service. <b>Ces éléments demandent des preuves distinctes.</b>
         </p>
         <div class="me-testi-meta">
           <div>
             <div class="me-testi-role">
-              Conçu, développé et <b>exploité par Hagnéré Code</b> · en production
+              Offre et fonctions <b>présentées sur une page publique</b>
             </div>
           </div>
         </div>
@@ -65,15 +64,14 @@ export const testimonialsHtml = `
       <article class="me-testi-card reveal reveal-d-2">
         <div class="me-testi-name">Hagnéré Patrimoine &amp; Hagnéré Investissement</div>
         <p class="me-testi-quote">
-          Un site éditorial adossé au CRM d'un cabinet, et une plateforme d'investissement
-          immobilier. Deux plateformes vivantes : contenus publiés, dépendances mises à jour,
-          factures d'infrastructure payées et évolutions livrées selon des protocoles de déploiement adaptés.
-          <b>Nous ne vendons pas de la maintenance : nous en faisons d'abord pour nous.</b>
+          Les sites présentent des contenus, des offres immobilières et des parcours de contact.
+          Ces pages ne prouvent pas le CRM, les dépendances, l'infrastructure, les mises à jour,
+          les protocoles de déploiement ou la maintenance. <b>Le contrat doit attribuer ces responsabilités.</b>
         </p>
         <div class="me-testi-meta">
           <div>
             <div class="me-testi-role">
-              Produits du groupe Hagnéré · <b>maintenus en continu par Hagnéré Code</b>
+              Contenus et offres <b>présentés sur des pages publiques</b>
             </div>
           </div>
         </div>
@@ -89,9 +87,8 @@ export const testimonialsHtml = `
     </div>
 
     <p class="me-testi-foot reveal">
-      Aucun de ces produits n'est une démonstration : ce sont des applications ouvertes, que vous
-      pouvez inspecter avant même de nous parler. Le jour où un client externe acceptera d'être cité,
-      son nom apparaîtra ici — pas avant.
+      Ces liens permettent d'inspecter les pages visibles avant de nous parler. Ils ne constituent
+      ni témoignage, ni preuve de maintenance, de sécurité, d'exploitation ou de résultat.
     </p>
   </div>
 </section>

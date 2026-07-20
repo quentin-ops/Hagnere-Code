@@ -287,6 +287,8 @@ Statut maximal réellement atteint : publiable après autorisation éditoriale d
 - [x] contre-audit indépendant ;
 - [ ] test humain non technique ;
 - [x] ESLint ciblé, TypeScript global et git diff --check passés ;
-- [x] 154 tests, build et rendu aux dix largeurs passés après intégration ;
+- [x] validation technique du snapshot d'intégration consignée dans
+      `PRE-LAUNCH-CHECKLIST.md` ; toute modification ultérieure impose de
+      relancer tests, build et contrôle responsive ;
 - [x] porte éditoriale levée ; l'URL publique et l'indexation effective restent
       deux états distincts à vérifier après déploiement.

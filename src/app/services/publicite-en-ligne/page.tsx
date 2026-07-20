@@ -47,40 +47,6 @@ const serviceJsonLd = JSON.stringify({
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Cadrage et pilotage de campagnes publicitaires, du tracking et du reporting. Les plateformes, créations, intervenants, droits, outils et responsabilités réellement inclus sont détaillés dans le devis.",
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Audit Ads",
-      price: "1500",
-      priceCurrency: "EUR",
-      description:
-        "Audit des comptes et du tracking avec périmètre, livrables et restitution précisés au devis. Toute remise éventuelle doit être écrite dans le devis signé.",
-    },
-    {
-      "@type": "Offer",
-      name: "Starter · Démarrage Ads",
-      price: "1800",
-      priceCurrency: "EUR",
-      description:
-        "Scénario indicatif pour 1 à 2 canaux : tracking, créations et reporting à confirmer selon les accès, le consentement et l'intervenant nommé au devis.",
-    },
-    {
-      "@type": "Offer",
-      name: "Scale · Performance multi-canaux",
-      price: "3500",
-      priceCurrency: "EUR",
-      description:
-        "Scénario multi-canaux indicatif : plateformes, tracking, créations, reporting, alertes et budget média sont dimensionnés dans le devis.",
-    },
-    {
-      "@type": "Offer",
-      name: "Premium · Performance avancée",
-      price: "4500",
-      priceCurrency: "EUR",
-      description:
-        "Scénario multi-canaux sur devis : attribution, créations et tests dimensionnés selon le budget, les données et les intervenants réellement mobilisés.",
-    },
-  ],
 });
 
 

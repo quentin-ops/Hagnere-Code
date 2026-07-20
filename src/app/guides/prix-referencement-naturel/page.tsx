@@ -31,6 +31,12 @@ export const metadata: Metadata = {
     modifiedTime: `${guide.dateModified}T09:00:00+02:00`,
     authors: [`${SITE_URL}/equipe`],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
+  },
 };
 
 const articleJsonLd = JSON.stringify({
@@ -45,7 +51,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 5600,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -130,7 +135,7 @@ const faqItems = [
   {
     question: "Une promesse de position engage-t-elle juridiquement l'agence ?",
     answer:
-      "Oui, et c'est le point que personne n'explique. Par défaut, un contrat de référencement fait peser sur le prestataire une obligation dite « de moyens » : il doit travailler sérieusement, pas obtenir un rang — c'est ce qu'a jugé la cour d'appel de Lyon le 29 juin 2006. Mais dès que le contrat fixe un positionnement précis et objectivement vérifiable, l'obligation devient une obligation de résultat : la cour d'appel de Montpellier l'a jugé le 1er juillet 2008, et le tribunal de commerce de Paris a condamné un prestataire sur ce fondement le 28 octobre 2014. Autrement dit, une agence qui garantit une position par écrit peut être condamnée sur simple constat de non-atteinte, même si l'échec vient d'une mise à jour d'algorithme.",
+      "La portée juridique dépend des termes exacts du contrat, des preuves et du droit applicable. Des décisions françaises ont distingué obligation de moyens et engagement de résultat dans des contextes particuliers, sans créer une règle automatique pour tout contrat SEO. Évitez une garantie de position que personne ne contrôle et faites relire toute clause sensible par un professionnel du droit.",
   },
   {
     question: "Acheter des backlinks est-il risqué ?",
@@ -145,7 +150,7 @@ const faqItems = [
   {
     question: "Ce que les AI Overviews changent-ils au calcul ?",
     answer:
-      "Beaucoup, et c'est le trou noir de tous les comparatifs de prix. Le Pew Research Center, institut sans intérêt commercial dans le sujet, a suivi 900 adultes américains et près de 69 000 recherches en mars 2025 : quand un résumé rédigé par l'IA apparaît, 8 % des visites donnent lieu à un clic sur un résultat classique, contre 15 % sans résumé — près de deux fois moins. Google a publiquement contesté cette étude, ce qu'il faut mentionner. Conséquence budgétaire directe : gagner des positions ne garantit plus de gagner des clics, donc toute projection de rentabilité bâtie sur des taux de clic d'avant 2024 est fausse.",
+      "Une étude du Pew Research Center sur un échantillon américain en mars 2025 a observé moins de clics vers les résultats classiques lorsque certains résumés IA apparaissaient ; Google a contesté l'interprétation générale de ces résultats. Une projection fondée sur d'anciens taux de clic doit donc être revalidée pour vos requêtes, appareils et types de résultats. Elle n'est pas automatiquement fausse, mais elle ne peut plus être transposée sans contrôle.",
   },
   {
     question: "SEO ou Google Ads : par quoi commencer ?",
@@ -185,7 +190,7 @@ export default function Page() {
           { label: "Prix du référencement naturel" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Les fourchettes réelles relevées sur les grilles publiques, la conversion de chaque forfait en heures de consultant que personne ne fait, huit statistiques recopiées partout et démontées à la source, la jurisprudence française sur les promesses de position — et les huit situations où nous refusons la mission."
+        heroDescription="Les fourchettes relevées sur les grilles publiques, la conversion de chaque forfait en heures de consultant, huit statistiques vérifiées à la source, la jurisprudence française sur les promesses de position — et les huit situations où nous refusons la mission."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -373,7 +378,7 @@ export default function Page() {
             },
             {
               id: "statistiques",
-              label: "10. Huit statistiques que personne ne vérifie",
+              label: "10. Huit statistiques à vérifier",
             },
             {
               id: "arnaques",
@@ -545,25 +550,25 @@ export default function Page() {
             [
               "Régie / TJM",
               "Vous achetez des jours de consultant",
-              "De la transparence : c'est le seul modèle où vous savez ce que vous payez",
+              "Une lecture du temps facturé, si activités et temps sont réellement tracés",
             ],
           ]}
         />
         <p>
           Deux modèles supplémentaires méritent une alerte. La{" "}
-          <strong>facturation au mot</strong> pousse mécaniquement à produire du
-          volume, pas de la pertinence. La{" "}
-          <strong>facturation à la position garantie</strong> pose un problème
-          de fond, développé en section 12 : elle transforme le contrat en
-          obligation de résultat et se retourne juridiquement contre celui qui
-          la propose.
+          <strong>facturation au mot</strong> peut inciter au volume si aucun
+          critère de qualité ou de résultat n&apos;est prévu. La{" "}
+          <strong>facturation à la position garantie</strong> concentre un risque
+          contractuel et commercial puisque le prestataire ne contrôle pas les
+          résultats de Google ; sa portée juridique dépend du contrat.
         </p>
 
-        <h2 id="tjm">4. Le TJM, seule unité de compte qui ne ment pas</h2>
+        <h2 id="tjm">4. Le TJM, un contrôle de cohérence parmi d&apos;autres</h2>
         <p>
-          Voici la section pour laquelle ce guide existe. Aucune page
-          concurrente ne fait cette division, et elle règle la question en une
-          ligne de calcul.
+          Convertir un budget en jours fournit un ordre de grandeur si le TJM
+          correspond réellement aux personnes mobilisées. Cela ne décrit pas à
+          lui seul les outils, actifs réutilisés, coûts tiers, temps non facturé
+          ni le résultat.
         </p>
         <FormulaBox>
           {`CONVERSION D'UN FORFAIT EN TEMPS DE TRAVAIL
@@ -581,16 +586,15 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
   temps acheté (jours) = budget mensuel ÷ TJM`}
         </FormulaBox>
         <p>
-          Maintenant relisez ce que promet une offre à 221 € par mois : audit
+          Relisez ensuite ce que promet une offre à 221 € par mois : audit
           complet, optimisation de la vitesse, correction des balises, stratégie
           de mots-clés, <strong>deux articles rédigés par mois</strong>,
           netlinking, communiqués de presse et un interlocuteur dédié. Tout cela
-          en deux heures.{" "}
-          <strong>
-            Ces deux affirmations ne peuvent pas être vraies en même temps.
-          </strong>{" "}
-          Ce n&apos;est pas un jugement sur l&apos;agence, c&apos;est une
-          division.
+          pour un équivalent théorique de deux heures au TJM retenu. Demandez
+          alors quelle part est automatisée ou réutilisée, qui intervient, quels
+          coûts tiers sont inclus et quelles tâches sont réellement prévues. La
+          division signale une question à poser ; elle ne prouve pas à elle seule
+          que l&apos;offre est impossible ou trompeuse.
         </p>
         <InfoBox
           variant="blue"
@@ -619,7 +623,7 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
 
         <GuideInlineCTA
           title="Vous avez trois devis SEO et vous ne savez pas les comparer ?"
-          description="Envoyez-nous votre situation en 3 minutes. Objectif de réponse personnelle le prochain jour ouvré, gratuite — y compris quand la réponse est « aucun des trois, commencez par Google Ads »."
+          description="Envoyez-nous votre situation en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti. Cette première réponse est gratuite — y compris si elle consiste à recommander un autre canal."
         />
 
         <h2 id="contenu-prestation">
@@ -805,7 +809,7 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           8. Combien de temps avant des résultats : les données
         </h2>
         <p>
-          Tout le monde répète « 3 à 6 mois ». En remontant, on ne trouve{" "}
+          La formule « 3 à 6 mois » est largement reprise. En remontant, on ne trouve{" "}
           <strong>aucune source</strong> à ce chiffre — aucune des pages qui se
           classent sur cette question ne le sourcent. Voici, à la place, ce que
           mesurent les données publiées.
@@ -956,7 +960,7 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           en conséquence.
         </InfoBox>
 
-        <h2 id="statistiques">10. Huit statistiques que personne ne vérifie</h2>
+        <h2 id="statistiques">10. Huit statistiques à vérifier</h2>
         <GuideTable
           headers={[
             "La statistique",
@@ -1059,13 +1063,12 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           variant="blue"
           title="La garantie de position qui est tenue… et qui ne sert à rien"
         >
-          Le point le plus fin relevé dans toute notre revue de la concurrence,
-          et que personne ne développe : les offres à{" "}
+          Un point peu traité dans notre revue des offres concerne les promesses à{" "}
           <strong>« première position garantie »</strong> portent en pratique
           sur des mots-clés{" "}
           <strong>sans concurrence et sans valeur commerciale</strong>. La
           garantie est techniquement honorée — vous êtes bien premier — sur une
-          requête que personne ne tape.
+          requête sans demande mesurable.
           <br />
           <br />
           La parade tient en une question, à poser avant de signer :{" "}

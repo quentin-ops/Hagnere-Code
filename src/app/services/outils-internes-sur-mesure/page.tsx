@@ -47,40 +47,6 @@ const serviceJsonLd = JSON.stringify({
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Développement d'outils internes sur mesure pour PME et ETI : CRM métier, ERP léger, back-offices et automatisations. Les intégrations, technologies, intervenants, délais, hébergement, accès et conditions de reprise sont vérifiés puis écrits au devis.",
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Audit processus 1 jour",
-      price: "990",
-      priceCurrency: "EUR",
-      description:
-        "Audit sur site d'1 journée, observation des équipes, roadmap de digitalisation priorisée, déductible du forfait.",
-    },
-    {
-      "@type": "Offer",
-      name: "Starter · Process ciblé",
-      price: "8000",
-      priceCurrency: "EUR",
-      description:
-        "Base budgétaire indicative pour un processus ciblé ; périmètre et calendrier confirmés au devis.",
-    },
-    {
-      "@type": "Offer",
-      name: "Pro · Outil métier complet",
-      price: "25000",
-      priceCurrency: "EUR",
-      description:
-        "Base budgétaire indicative pour un outil métier ; écrans, intégrations, équipe et calendrier confirmés au devis.",
-    },
-    {
-      "@type": "Offer",
-      name: "Enterprise · Plateforme interne",
-      price: "80000",
-      priceCurrency: "EUR",
-      description:
-        "Outil interne multi-départements, SSO enterprise, intégrations lourdes",
-    },
-  ],
 });
 
 
