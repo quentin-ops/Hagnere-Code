@@ -18,20 +18,20 @@ ${navHtml}
   <div class="shero-radial"></div>
   <div class="wrap shero-inner">
     <div>
-      <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Studio contenu &amp; vidéo</span></div>
-      <h1>Studio vidéo &amp; contenu :<br>deux monteurs seniors,<br><span class="accent">un pipeline IA.</span></h1>
+      <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Contenu &amp; vidéo sur mesure</span></div>
+      <h1>Contenu vidéo :<br>un pilotage produit,<br><span class="accent">des intervenants identifiés.</span></h1>
       <div class="shero-tagline">
-        <span>2 monteurs Adobe Premiere Pro</span>
+        <span>Équipe nommée au devis</span>
         <span class="sep"></span>
         <span>IA en accélérateur, pas en remplacement</span>
         <span class="sep"></span>
         <span>Forfait mensuel affiché</span>
       </div>
       <p class="shero-sub">
-        <b>Deux monteurs Adobe Premiere Pro seniors</b>, augmentés par un pipeline IA audité. On livre vos
-        <b>ads payantes Meta &amp; Google</b>, vos <b>vidéos YouTube</b>, votre <b>motion produit</b> et vos <b>contenus marketing</b>.
-        Soit vous tournez (on monte + on amplifie), soit on s'occupe de tout — scripts Claude,
-        voix au choix (la vôtre enregistrée, clone ElevenLabs, ou un comédien humain). <b>L'humain reste aux manettes.</b>
+        Hagnéré Code cadre le besoin, les formats, les droits et la diffusion. Si le projet requiert du
+        montage, du motion ou un tournage spécialisé, <b>chaque intervenant est nommé dans la proposition</b>
+        avec son statut interne ou externe. Les outils IA éventuels restent assistés, déclarés et soumis
+        aux consentements nécessaires&nbsp;: <b>aucune équipe vidéo permanente ni studio équipé n'est inventé ici.</b>
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
@@ -49,8 +49,8 @@ ${navHtml}
             </svg>
           </div>
           <div class="shero-badge-body">
-            <div class="shero-badge-key">2<span class="shero-badge-key-unit">·senior</span></div>
-            <div class="shero-badge-label">Monteurs Adobe Premiere Pro</div>
+            <div class="shero-badge-key">NOM<span class="shero-badge-key-unit">·mé</span></div>
+            <div class="shero-badge-label">Intervenants identifiés au devis</div>
           </div>
         </div>
 
@@ -61,8 +61,8 @@ ${navHtml}
             </svg>
           </div>
           <div class="shero-badge-body">
-            <div class="shero-badge-key">3<span class="shero-badge-key-unit">×</span></div>
-            <div class="shero-badge-label">Plus vite grâce à l'IA assistée</div>
+            <div class="shero-badge-key">IA<span class="shero-badge-key-unit">·assistée</span></div>
+            <div class="shero-badge-label">Aucun gain chiffré sans mesure</div>
           </div>
         </div>
 

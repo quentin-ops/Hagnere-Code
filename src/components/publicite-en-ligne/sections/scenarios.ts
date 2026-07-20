@@ -86,7 +86,7 @@ export const scenariosHtml = `
             Compte Google Ads / Meta historique, tracking client-side cassé depuis iOS 14,
             PMax qui cannibalise la brand, trop de campagnes empilées par plusieurs prestataires successifs.
             On remet à plat&nbsp;: tracking server-side, structuration propre, exclusions, bid strategies calibrées.
-            <b>Le CAC baisse pendant qu'on reprend le contrôle.</b>
+            <b>L'objectif est d'isoler les causes avant d'attribuer une évolution du CAC.</b>
           </p>
           <div class="ads-scen-items-title">CE QU'ON LIVRE</div>
           <div class="ads-scen-items">
@@ -106,9 +106,9 @@ export const scenariosHtml = `
           <dl class="ads-scen-meta">
             <div class="ads-scen-meta-row"><dt>Budget media client</dt><dd>15–40 k€ / mois</dd></div>
             <div class="ads-scen-meta-row"><dt>Durée recommandée</dt><dd>3 à 6 mois, puis maintenance</dd></div>
-            <div class="ads-scen-meta-row"><dt>Équipe</dt><dd>Consultant senior + tracking lead</dd></div>
-            <div class="ads-scen-meta-row"><dt>Premier effet</dt><dd>CAC en baisse à 4–8 semaines</dd></div>
-            <div class="ads-scen-meta-row"><dt>Démarrage</dt><dd>Audit 1 500 € (déductible)</dd></div>
+            <div class="ads-scen-meta-row"><dt>Équipe</dt><dd>Intervenants nommés au devis</dd></div>
+            <div class="ads-scen-meta-row"><dt>Premier jalon</dt><dd>Diagnostic et plan de mesure</dd></div>
+            <div class="ads-scen-meta-row"><dt>Démarrage</dt><dd>Audit sur devis</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg ads-scen-cta">
             Cadrer l'audit
@@ -133,7 +133,7 @@ export const scenariosHtml = `
             a <b>intérêt à ce que vous dépensiez plus</b>, pas à ce que votre CAC baisse.
             On prend la suite en forfait fixe mensuel, on audite les 12 derniers mois,
             on récupère les comptes, les pixels, les audiences, les creatives.
-            Transition sans coupure.
+            La bascule est séquencée pour réduire le risque de coupure, sans promettre qu'il est nul.
           </p>
           <div class="ads-scen-items-title">CE QU'ON LIVRE</div>
           <div class="ads-scen-items">
@@ -142,7 +142,7 @@ export const scenariosHtml = `
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Récupération creatives, audiences, pixels, data</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Passage forfait fixe (aligné sur votre CAC)</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Tracking server-side + Looker Studio transparent</div>
-            <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Transition sans coupure de campagne</div>
+            <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Plan de bascule et procédure de retour arrière</div>
           </div>
         </div>
         <aside class="ads-scen-aside">
@@ -152,10 +152,10 @@ export const scenariosHtml = `
           </div>
           <dl class="ads-scen-meta">
             <div class="ads-scen-meta-row"><dt>Budget media client</dt><dd>20–80 k€ / mois</dd></div>
-            <div class="ads-scen-meta-row"><dt>Transition</dt><dd>2 semaines · sans coupure</dd></div>
-            <div class="ads-scen-meta-row"><dt>Économie typique</dt><dd>5 à 15 k€ / mois vs ancienne facture %</dd></div>
+            <div class="ads-scen-meta-row"><dt>Transition</dt><dd>Calendrier après audit des accès</dd></div>
+            <div class="ads-scen-meta-row"><dt>Économie</dt><dd>À calculer sur vos factures réelles</dd></div>
             <div class="ads-scen-meta-row"><dt>Engagement</dt><dd>3 mois puis mois par mois</dd></div>
-            <div class="ads-scen-meta-row"><dt>Démarrage</dt><dd>Audit 1 500 € (déductible)</dd></div>
+            <div class="ads-scen-meta-row"><dt>Démarrage</dt><dd>Audit sur devis</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg ads-scen-cta">
             Organiser la transition
@@ -177,9 +177,9 @@ export const scenariosHtml = `
           <h3>« Deadline dans 2 semaines, tout est à faire&nbsp;: comptes, tracking, creatives, landing. »</h3>
           <p class="ads-scen-lead">
             Levée, salon, lancement produit, saisonnalité forte. Vous avez besoin d'un
-            <b>setup complet opérationnel en 15 jours</b>&nbsp;: pas 2 trimestres d'alignement.
-            Sprint clé en main, ressources dédiées full-time, livraison jalonnée J+7 / J+15.
-            On vise la traction démontrable à la deadline.
+            <b>un premier périmètre priorisé rapidement</b>. La faisabilité des comptes, du tracking,
+            des créations et de la landing dépend des accès et validations des plateformes. Le devis
+            peut fixer des jalons techniques, jamais une traction commerciale garantie.
           </p>
           <div class="ads-scen-items-title">CE QU'ON LIVRE</div>
           <div class="ads-scen-items">
@@ -187,7 +187,7 @@ export const scenariosHtml = `
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Tracking server-side minimal fonctionnel</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Landing pages dédiées (Webflow / Framer)</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>4–6 creatives brand + 6 creatives performance</div>
-            <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Campagnes brand + performance lancées J+15</div>
+            <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Jalon de lancement selon validations des plateformes</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Point quotidien pendant le sprint + daily report</div>
           </div>
         </div>
@@ -198,9 +198,9 @@ export const scenariosHtml = `
           </div>
           <dl class="ads-scen-meta">
             <div class="ads-scen-meta-row"><dt>Budget media client</dt><dd>10–50 k€ sur la période</dd></div>
-            <div class="ads-scen-meta-row"><dt>Durée</dt><dd>15 jours ouvrés · full-time</dd></div>
-            <div class="ads-scen-meta-row"><dt>Équipe</dt><dd>3 pers. full-time + tracking lead</dd></div>
-            <div class="ads-scen-meta-row"><dt>Résultat</dt><dd>Traction démontrable à J+15</dd></div>
+            <div class="ads-scen-meta-row"><dt>Durée</dt><dd>À confirmer après audit des accès</dd></div>
+            <div class="ads-scen-meta-row"><dt>Équipe</dt><dd>Intervenants nommés au devis</dd></div>
+            <div class="ads-scen-meta-row"><dt>Résultat</dt><dd>Jalons techniques, sans garantie de traction</dd></div>
             <div class="ads-scen-meta-row"><dt>Suite</dt><dd>Forfait mensuel si continuité</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg ads-scen-cta">
@@ -209,7 +209,7 @@ export const scenariosHtml = `
           </a>
           <div class="ads-scen-aside-foot">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
-            1 slot par mois · réservation 3 semaines à l'avance
+            Capacité et date de démarrage confirmées avant signature
           </div>
         </aside>
       </div>
@@ -245,7 +245,7 @@ export const scenariosHtml = `
           <dl class="ads-scen-meta">
             <div class="ads-scen-meta-row"><dt>Budget media client</dt><dd>30–120 k€ / mois</dd></div>
             <div class="ads-scen-meta-row"><dt>Durée</dt><dd>6 à 9 mois</dd></div>
-            <div class="ads-scen-meta-row"><dt>Équipe</dt><dd>Consultant senior + 1 media buyer + creative</dd></div>
+            <div class="ads-scen-meta-row"><dt>Équipe</dt><dd>Rôles et statuts précisés au devis</dd></div>
             <div class="ads-scen-meta-row"><dt>Méthode</dt><dd>Test → validation → scale, un canal à la fois</dd></div>
             <div class="ads-scen-meta-row"><dt>Engagement</dt><dd>3 mois puis mois par mois</dd></div>
           </dl>

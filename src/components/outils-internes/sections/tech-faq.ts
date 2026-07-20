@@ -20,10 +20,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>SAML 2.0</b> (Azure AD, Okta, ADFS, JumpCloud) et <b>OIDC</b>. Provisioning / deprovisioning
-          automatique via <b>SCIM 2.0</b> (création/désactivation des comptes quand un collaborateur
-          arrive/part dans l'annuaire). Rôles mappés depuis les groupes AD. MFA obligatoire si votre
-          IdP l'exige.
+          SAML, OIDC et SCIM peuvent être étudiés selon votre fournisseur d'identité, ses licences et
+          ses capacités. Le devis précise le protocole, le mapping des rôles, le MFA, le provisioning,
+          le traitement des erreurs et les tests de départ d'un collaborateur.
         </div>
       </div>
 
@@ -33,10 +32,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          Trois options : <b>(1) Cloud mutualisé Hagnéré</b> sur Scaleway Paris ou OVH Roubaix —
-          données 100 % France ; <b>(2) Cloud client dédié</b> (votre compte AWS, Azure, OVH ou GCP,
-          on déploie via Terraform) ; <b>(3) On-premise</b> sur vos serveurs, image Docker Compose
-          livrée. Tous chiffrés at-rest AES-256, TLS 1.3 in-transit.
+          Environnement opéré, compte cloud du client ou infrastructure sur site peuvent être étudiés.
+          Le devis et le schéma de flux précisent fournisseur, région, accès, responsabilités,
+          chiffrement, sauvegardes, sous-traitants et conditions de réversibilité.
         </div>
       </div>
 
@@ -46,11 +44,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Sprint 1 : read-only</b> via un compte technique dédié, cartographie des données,
-          validation avec votre DAF. <b>Sprint 2 : écritures</b> via API officielle ou fichier
-          d'échange (EDI, CSV, XML selon l'ERP). Jamais d'écriture directe sur la base de prod.
-          Tout est tracé, rollback possible. Pour les ERP sans API publique (AS400, Divalto ancien),
-          on passe par fichiers programmés ou middleware.
+          Nous commençons par vérifier version, documentation, licence, accès et environnement de test.
+          Pour les flux sensibles, lecture seule et validation de la cartographie précèdent les écritures.
+          L'API, les fichiers d'échange, la traçabilité et la procédure de reprise dépendent des capacités
+          réellement disponibles et sont validés avec l'exploitant de l'ERP.
         </div>
       </div>
 
@@ -60,9 +57,8 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Backups PostgreSQL toutes les 15 min</b> (WAL continu), rétention 30 jours + snapshots
-          hebdo conservés 1 an, stockés sur un <b>second provider</b> (règle 3-2-1). Restauration
-          testée tous les trimestres sur environnement isolé. <b>RTO 2 h, RPO 15 min</b>, documentés
+          La fréquence, la rétention, le chiffrement et l'éventuel second fournisseur sont définis selon la criticité.
+          La restauration est testée selon une cadence convenue. <b>Les RTO et RPO cibles</b> sont documentés
           dans un runbook. Sur déploiement on-premise client, c'est votre équipe qui opère les backups.
         </div>
       </div>
@@ -73,10 +69,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          Chaque action utilisateur loggée : utilisateur, action, ressource, horodatage UTC,
-          IP source, user-agent, ancienne valeur, nouvelle valeur. <b>Rétention 3 ans par défaut</b>
-          (paramétrable). Exports CSV/JSON pour audits externes ou contrôles (URSSAF, commissaire aux
-          comptes, SAPIN II). Les logs applicatifs sont dans Sentry, séparés de l'audit métier.
+          Les événements à tracer sont définis selon le risque&nbsp;: utilisateur, action, ressource,
+          horodatage, source et éventuelles valeurs avant/après. <b>La rétention dépend de la finalité
+          et des obligations applicables</b>. Les formats d'export et la séparation entre logs
+          applicatifs et piste d'audit métier sont précisés dans l'architecture.
         </div>
       </div>
 
@@ -86,11 +82,11 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Oui, c'est le point central du "sur mesure"</b>. Stack 100 % standard (Next.js, React, TypeScript,
-          PostgreSQL, Redis), repo Git chez vous, docker-compose livré, README technique,
-          documentation d'architecture, runbook d'exploitation, procédure de rollback. Une ESN
-          ou votre équipe interne peut prendre le relais en 2-3 semaines de ramp-up. Aucun
-          royalties, aucun outil propriétaire Hagnéré.
+          <b>Oui, si la réversibilité est cadrée dès le devis</b>. Stack, dépôt Git, accès,
+          documentation d'architecture, runbook et procédure de reprise sont inventoriés.
+          Le délai de prise en main dépend du périmètre et de l'état de la documentation. Les droits
+          sur les livrables spécifiques, les composants préexistants et les licences tierces suivent
+          le devis et les CGV.
         </div>
       </div>
 
@@ -112,11 +108,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>On encourage les pen tests externes</b>. Le code passe SAST (Semgrep) + TypeScript strict en CI,
-          headers sécurité configurés (CSP, HSTS, X-Frame-Options), rate-limiting sur API publique,
-          protection CSRF native du framework. On prépare le terrain SOC 2 Type 2 / ISO 27001 mais
-          l'audit officiel est chez un tiers habilité. Budget pen test : 3-8 k€ chez un cabinet
-          français, on oriente si besoin.
+          <b>Nous encourageons une évaluation indépendante adaptée au risque.</b> Les contrôles de code,
+          d'en-têtes, d'API et de CI sont définis pour le projet puis vérifiés par des preuves. Une
+          certification ou un test d'intrusion officiel relève d'un tiers compétent&nbsp;; son périmètre,
+          son budget et le traitement des constats sont cadrés séparément.
         </div>
       </div>
     </div>

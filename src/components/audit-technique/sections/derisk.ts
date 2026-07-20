@@ -19,12 +19,12 @@ export const deriskHtml = `
         <div class="at-derisk-fear">
           « On va <b>trouver des cadavres</b> qu'on préfère ne pas voir. »
         </div>
-        <h4>NDA mutuel · version board-safe · méthodologie no-blame</h4>
-        <p>Le rapport est <b>strictement confidentiel</b>, propriété 100 % client, NDA mutuel signé à J0 (opposable aux deux parties). Version <b>board-safe anonymisée</b> livrée en plus du rapport complet&nbsp;: pas de noms de devs, pas de blame personnel, focus sur les systèmes. <b>Vos équipes co-signent le plan de remédiation</b> — le rapport devient un outil d'alignement, pas d'accusation.</p>
+        <h4>Confidentialité, destinataires et droits écrits</h4>
+        <p>Le devis ou le NDA précise la confidentialité, les destinataires et la durée. Les droits sur les livrables suivent le devis et les CGV. Une version anonymisée et la participation de l'équipe ne sont incluses que si elles sont prévues dans le périmètre.</p>
         <div class="at-derisk-proof">
-          <span>✓ NDA mutuel J0</span>
-          <span>✓ Version board-safe</span>
-          <span>✓ Co-signature équipe</span>
+          <span>✓ Confidentialité écrite</span>
+          <span>✓ Destinataires définis</span>
+          <span>✓ Droits inventoriés</span>
         </div>
       </div>
 
@@ -61,12 +61,12 @@ export const deriskHtml = `
         <div class="at-derisk-fear">
           « <b>10 jours c'est trop long</b>, on a besoin du rapport pour dans 2 semaines. »
         </div>
-        <h4>Format Express 3-5 j · démarrage sous 5 j ouvrés · premiers insights J+5</h4>
-        <p>Trois leviers&nbsp;: <b>format Express 3-5 jours</b> pour les urgences (8 000 € HT fixe, livrable Notion + Loom 15 min, sans deck), <b>démarrage sous 5 j ouvrés</b> après signature (3 j pour une urgence justifiée), et <b>premiers insights transmis à J+5</b> sur le format Standard — vous n'attendez jamais 10 jours pour savoir où on en est. Si le scope doit pivoter à J+5, vous ne perdez pas le reste de l'audit.</p>
+        <h4>Jalons et restitution intermédiaire au devis</h4>
+        <p>Pour une urgence, le cadrage réduit le périmètre et fixe les preuves prioritaires. La date de démarrage, les restitutions intermédiaires et la procédure de pivot dépendent des disponibilités, des accès et du contrat signé.</p>
         <div class="at-derisk-proof">
-          <span>✓ Express 3-5 j</span>
-          <span>✓ Démarrage 5 j ouvrés</span>
-          <span>✓ Insights J+5</span>
+          <span>✓ Périmètre priorisé</span>
+          <span>✓ Jalons écrits</span>
+          <span>✓ Pivot contractualisé</span>
         </div>
       </div>
 
@@ -90,7 +90,7 @@ export const deriskHtml = `
           « <b>Mes devs vont le prendre mal</b>, je vais les perdre. »
         </div>
         <h4>Méthodologie no-blame · équipe co-auteure · entretiens off-the-record</h4>
-        <p>5 à 8 interviews 45 min <b>off-the-record</b> avec vos devs (CTO, lead devs, staff). Leurs retours intègrent le rapport sans citation nominative. <b>Focus sur les systèmes, pas les personnes</b>&nbsp;: une dette tech n'est pas la faute d'un dev, c'est souvent un symptôme de pression temporelle ou de contraintes organisationnelles. Le <b>plan de remédiation est co-écrit avec votre équipe</b> — ils en deviennent co-auteurs.</p>
+        <p>Le devis précise qui est interrogé, la durée, les règles de citation et la façon de valider les constats. Le focus porte sur les systèmes et les contraintes&nbsp;; aucune absence de citation nominative ou co-écriture n'est présumée si elle n'est pas convenue.</p>
         <div class="at-derisk-proof">
           <span>✓ Off-the-record</span>
           <span>✓ Co-auteurs du plan</span>

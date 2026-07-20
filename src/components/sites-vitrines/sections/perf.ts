@@ -4,13 +4,12 @@ export const perfHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Performance, pas option</div>
-        <h2>Lighthouse 95+,<br>contractuellement.</h2>
+        <div class="eyebrow">— Performance mesurable</div>
+        <h2>Des objectifs testés,<br>dans des conditions écrites.</h2>
       </div>
       <div class="right">
-        Chaque seconde de latence = <b>-7 % de conversion</b> (source&nbsp;: Google). On ne vous demande pas
-        de nous croire sur parole&nbsp;: <b>on l'inscrit dans le devis</b>. Si on ne livre pas les scores
-        promis, on corrige gratuitement jusqu'à les atteindre.
+        Un score de laboratoire n'est ni une vitesse réelle universelle ni une garantie de conversion.
+        Le devis peut fixer les pages, appareils, réseau, scripts tiers, outil de mesure et seuils de recette.
       </div>
     </div>
 
@@ -37,7 +36,7 @@ export const perfHtml = `
 
       <!-- Right : Core Web Vitals details -->
       <div class="sv-perf-cwv reveal reveal-d-1">
-        <div class="sv-perf-cwv-kicker">Core Web Vitals — engagements contractuels</div>
+        <div class="sv-perf-cwv-kicker">Core Web Vitals — exemple de cibles à cadrer</div>
 
         <div class="sv-perf-cwv-row">
           <div class="sv-perf-cwv-label">
@@ -89,7 +88,7 @@ export const perfHtml = `
 
         <div class="sv-perf-cwv-note">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/><path d="M9 12l2 2 4-4"/></svg>
-          Contrôles automatisés sur <b>chaque déploiement</b> via Lighthouse CI. Si un de ces seuils passe au rouge, le déploiement est bloqué.
+          Lighthouse CI peut contrôler les pages convenues au déploiement. Les seuils bloquants et les exceptions liées aux scripts tiers sont définis dans le projet.
         </div>
       </div>
     </div>
@@ -106,7 +105,7 @@ export const perfHtml = `
         <div class="sv-perf-how-item">
           <div class="sv-perf-how-n">02</div>
           <h4>Images AVIF + lazy native</h4>
-          <p>Conversion automatique AVIF/WebP, srcset responsive, placeholder blur, lazy loading natif. Jamais d'image &gt; 150 Ko.</p>
+          <p>Formats modernes, tailles responsives et chargement différé selon le rôle visuel. Le poids cible dépend de la qualité et des dimensions requises.</p>
         </div>
         <div class="sv-perf-how-item">
           <div class="sv-perf-how-n">03</div>
@@ -115,18 +114,18 @@ export const perfHtml = `
         </div>
         <div class="sv-perf-how-item">
           <div class="sv-perf-how-n">04</div>
-          <h4>JS critique &lt; 30 Ko</h4>
-          <p>Zéro library superflue, pas de jQuery, pas de bundle de 300 Ko de Material UI. Que du code qu'on a écrit, que vous pouvez lire.</p>
+          <h4>JavaScript budgété</h4>
+          <p>Le bundle est mesuré par route et les dépendances inutiles sont évitées. Le budget dépend des fonctionnalités et intégrations retenues.</p>
         </div>
         <div class="sv-perf-how-item">
           <div class="sv-perf-how-n">05</div>
           <h4>CDN edge global</h4>
-          <p>Vercel ou Cloudflare selon votre cible géographique. Contenu servi depuis le POP le plus proche du visiteur, latence &lt; 40 ms mondial.</p>
+          <p>Vercel ou Cloudflare selon l'architecture et la cible géographique. La latence réelle varie selon l'utilisateur, le réseau et les services tiers.</p>
         </div>
         <div class="sv-perf-how-item">
           <div class="sv-perf-how-n">06</div>
           <h4>Monitoring RUM temps réel</h4>
-          <p>Vercel Analytics ou Sentry pour mesurer les CWV réels de vos vrais visiteurs, pas juste un lab Lighthouse. Dashboard partagé inclus.</p>
+          <p>Vercel Analytics, Sentry ou un autre outil peuvent mesurer le terrain si la collecte, le consentement, le budget et la durée sont prévus au devis.</p>
         </div>
       </div>
     </div>

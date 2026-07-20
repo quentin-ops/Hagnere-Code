@@ -107,7 +107,7 @@ export const comparisonHtml = `
       <div class="cmp-row">
         <div class="cmp-col cmp-col-label">Propriété du code &amp; données</div>
         <div class="cmp-col">À négocier au cas par cas</div>
-        <div class="cmp-col cmp-col-us cmp-good"><b>100% à vous dès J1</b> (Git, hébergement FR)</div>
+        <div class="cmp-col cmp-col-us cmp-good"><b>Droits, dépôt et hébergement au devis</b></div>
         <div class="cmp-col">À vous, après validation juridique</div>
       </div>
 

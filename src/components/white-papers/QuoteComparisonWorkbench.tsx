@@ -388,7 +388,7 @@ export function QuoteComparisonWorkbench() {
       </div>
 
       <div className="p-4 sm:p-7">
-        <div className="min-w-0 max-w-full overflow-x-auto pb-2">
+        <div className="min-w-0 max-w-full overflow-x-auto pb-2 [contain:paint]">
           <table className="min-w-[680px] w-full border-separate border-spacing-px overflow-hidden rounded-xl bg-zinc-200 dark:bg-zinc-800">
             <thead>
               <tr>

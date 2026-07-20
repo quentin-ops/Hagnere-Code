@@ -187,9 +187,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -535,7 +535,7 @@ export default function Page() {
         <GuideInlineCTA
           title="Un cahier des charges à faire relire — ou à construire en atelier ?"
           description="Envoyez-nous votre projet ou votre brouillon en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc sur le périmètre, une fourchette argumentée — et notre Discovery Sprint transforme le tout en CDC complet, maquettes et devis au forfait fixe en 2 jours."
-          tags={["Réponse sous 24 h ouvrées", "MVP sur les stores dès 12 semaines", "Comptes stores à votre nom, code cédé"]}
+          tags={["Réponse sous 24 h ouvrées", "Planning confirmé au devis", "Comptes, dépôt et droits inventoriés"]}
           ctaLabel="Faire relire mon périmètre"
         />
 

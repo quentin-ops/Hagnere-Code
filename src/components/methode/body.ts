@@ -33,22 +33,21 @@ ${navHtml}
 
     <h1 class="mhero-title">
       <span class="line mhero-kicker">Développement web au forfait fixe :</span>
-      <span class="line">Le prix annoncé</span>
-      <span class="line"><em>est</em> le prix payé.</span>
-      <span class="line">La date annoncée</span>
-      <span class="line"><em>est</em> la date livrée.</span>
-      <span class="line accent">Ou chaque semaine de retard<br>vous est offerte.</span>
+      <span class="line">Le périmètre, le prix</span>
+      <span class="line"><em>et</em> les jalons sont écrits.</span>
+      <span class="line">Les validations aussi.</span>
+      <span class="line accent">Le devis signé reste<br>la seule promesse.</span>
     </h1>
 
     <div class="mhero-bottom">
       <div class="mhero-creds">
         <div class="mhero-cred">
-          <div class="mhero-cred-n">100<span class="mhero-cred-s">%</span></div>
-          <div class="mhero-cred-l">Du forfait signé<br>engagé au contrat.</div>
+          <div class="mhero-cred-n">PRIX</div>
+          <div class="mhero-cred-l">Périmètre et avenants<br>cadrés par écrit.</div>
         </div>
         <div class="mhero-cred">
-          <div class="mhero-cred-n">30<span class="mhero-cred-s"> j</span></div>
-          <div class="mhero-cred-l">De garantie incluse<br>après la livraison.</div>
+          <div class="mhero-cred-n">RECETTE</div>
+          <div class="mhero-cred-l">Critères et corrections<br>définis au devis.</div>
         </div>
       </div>
 
@@ -88,10 +87,10 @@ ${navHtml}
     <div class="mtoc-h">SOMMAIRE</div>
     <ol class="mtoc-list">
       <li><a class="mtoc-link" href="#anti-pattern" data-section="anti-pattern"><span class="mtoc-num">1.0</span><span class="mtoc-t">Ce qu'on a abandonné</span></a></li>
-      <li><a class="mtoc-link" href="#piliers" data-section="piliers"><span class="mtoc-num">2.0</span><span class="mtoc-t">Les 5 piliers contractuels</span></a></li>
+      <li><a class="mtoc-link" href="#piliers" data-section="piliers"><span class="mtoc-num">2.0</span><span class="mtoc-t">Les 5 points à cadrer</span></a></li>
       <li><a class="mtoc-link" href="#timeline" data-section="timeline"><span class="mtoc-num">3.0</span><span class="mtoc-t">Timeline d'un Sprint Fixe™</span></a></li>
       <li><a class="mtoc-link" href="#lagniappe" data-section="lagniappe"><span class="mtoc-num">4.0</span><span class="mtoc-t">La lagniappe</span></a></li>
-      <li><a class="mtoc-link" href="#preuves" data-section="preuves"><span class="mtoc-num">5.0</span><span class="mtoc-t">Preuves chiffrées</span></a></li>
+      <li><a class="mtoc-link" href="#preuves" data-section="preuves"><span class="mtoc-num">5.0</span><span class="mtoc-t">Points de contrôle</span></a></li>
       <li><a class="mtoc-link" href="#journal" data-section="journal"><span class="mtoc-num">6.0</span><span class="mtoc-t">Le vendredi, en pratique</span></a></li>
       <li><a class="mtoc-link" href="#claude" data-section="claude"><span class="mtoc-num">7.0</span><span class="mtoc-t">Claude Code en copilote</span></a></li>
       <li><a class="mtoc-link" href="#temoignages" data-section="temoignages"><span class="mtoc-num">8.0</span><span class="mtoc-t">Terrains internes, sans faux avis</span></a></li>
@@ -187,10 +186,10 @@ ${navHtml}
           </span>
           <span class="anti-good-label">CE QU'ON FAIT À LA PLACE</span>
         </div>
-        <h4 class="anti-good-h">Code &amp; data chez vous · J+1</h4>
+        <h4 class="anti-good-h">Code, accès et réversibilité documentés</h4>
         <p class="anti-good-p">
-          Repo Git sur votre organisation GitHub dès le lendemain de la signature. Hébergement
-          à votre nom. Documentation à jour. Si vous arrêtez demain, vous gardez tout.
+          Le devis précise où se trouvent le dépôt et l'hébergement, qui détient les accès et
+          comment s'organise la reprise. La cession des livrables spécifiques intervient après paiement complet.
         </p>
       </div>
 
@@ -212,10 +211,10 @@ ${navHtml}
           </span>
           <span class="anti-good-label">CE QU'ON FAIT À LA PLACE</span>
         </div>
-        <h4 class="anti-good-h">Discovery payé · déduit</h4>
+        <h4 class="anti-good-h">Discovery payé · livrables identifiés</h4>
         <p class="anti-good-p">
           1 500 € pour 2 jours de cadrage sérieux. Vrais livrables (proto Figma, specs, devis ferme).
-          Déduits à 100 % si phase 2. Si vous ne partez pas avec nous, vous gardez tout.
+          Toute remise sur une phase suivante et les droits sur ces livrables sont écrits dans la proposition signée.
         </p>
       </div>
     </div>
@@ -228,12 +227,12 @@ ${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Les 5 piliers</div>
-        <h2>Sprint Fixe™ tient<br>sur cinq piliers.<br><span class="grad-accent">Tous contractuels.</span></h2>
+        <h2>Sprint Fixe™ tient<br>sur cinq points.<br><span class="grad-accent">À écrire au devis.</span></h2>
       </div>
       <div class="right">
-        Pas de baratin marketing. Chacun de ces piliers est une <b>clause précise</b> de notre contrat type,
-        que vous pouvez télécharger ci-dessous. Si un pilier saute, vous êtes en droit de
-        rompre le contrat sans pénalité — et de récupérer tout le code livré jusqu'alors.
+        Cette page décrit notre méthode de travail, pas un contrat universel. Le périmètre, le rythme,
+        les conséquences d'un écart et les conditions de réversibilité n'engagent les parties que s'ils
+        figurent dans le devis ou le contrat signé.
       </div>
     </div>
 
@@ -261,11 +260,11 @@ ${navHtml}
             <text x="176" y="50" text-anchor="middle" class="sk-mono-accent">−1 500 €</text>
           </svg>
         </div>
-        <h3>Discovery payé, déduit</h3>
-        <p>2 jours payés (1 500 €) pour transformer une idée floue en plan exécutable. Proto Figma + specs + devis ferme. Déduits à 100 % si phase 2.</p>
+        <h3>Discovery payé, cadré</h3>
+        <p>Un format de 2 jours à 1 500 € HT peut transformer une idée floue en plan exécutable. Contenu, livrables et remise éventuelle sont précisés avant commande.</p>
         <div class="pil-clause">
-          <span class="pil-clause-h">CLAUSE CONTRAT</span>
-          <span class="pil-clause-t">« Le montant du Discovery Sprint (1 500 € HT) sera intégralement déduit du forfait de la phase 2 si celle-ci est engagée dans les 90 jours. »</span>
+          <span class="pil-clause-h">POINT À ÉCRIRE</span>
+          <span class="pil-clause-t">Le livrable attendu, son prix, son calendrier et les conditions d'une éventuelle remise sur la phase suivante.</span>
         </div>
       </div>
 
@@ -298,8 +297,8 @@ ${navHtml}
         <h3>Forfait fixe, prix verrouillé</h3>
         <p>Le devis vaut engagement total. Tout ajout de scope passe par un avenant chiffré, signé avant développement. Aucun dépassement caché possible.</p>
         <div class="pil-clause">
-          <span class="pil-clause-h">CLAUSE CONTRAT</span>
-          <span class="pil-clause-t">« Le prix du forfait est ferme et définitif. Toute évolution de périmètre fera l'objet d'un avenant écrit, chiffré et signé préalablement à sa réalisation. »</span>
+          <span class="pil-clause-h">POINT À ÉCRIRE</span>
+          <span class="pil-clause-t">Le prix et le périmètre signés, puis un avenant écrit avant toute évolution qui modifie le coût ou le calendrier.</span>
         </div>
       </div>
 
@@ -330,11 +329,11 @@ ${navHtml}
             <text x="206" y="58" text-anchor="end" class="sk-mono-mute">LIVRAISON</text>
           </svg>
         </div>
-        <h3>Démo client chaque vendredi</h3>
-        <p>Toutes les semaines à 16 h, en visio, vous voyez votre produit prendre forme. Pas de longue absence. Vous redirigez la trajectoire avant que ce soit coûteux.</p>
+        <h3>Démonstrations à cadence convenue</h3>
+        <p>Une cadence régulière, souvent hebdomadaire, permet de voir le produit prendre forme et de corriger la trajectoire tôt. Le jour et le rythme dépendent du projet.</p>
         <div class="pil-clause">
-          <span class="pil-clause-h">CLAUSE CONTRAT</span>
-          <span class="pil-clause-t">« Une démonstration hebdomadaire de l'avancement sera organisée chaque vendredi à 16 h. L'absence de démo deux semaines consécutives entraîne un avoir de 5 % du forfait. »</span>
+          <span class="pil-clause-h">POINT À ÉCRIRE</span>
+          <span class="pil-clause-t">Le rythme des démonstrations, les personnes attendues et le mode de validation des décisions prises.</span>
         </div>
       </div>
 
@@ -350,24 +349,24 @@ ${navHtml}
             <!-- Date promise -->
             <line x1="100" y1="20" x2="100" y2="40" stroke-width="2" stroke="#16A34A"/>
             <text x="100" y="14" text-anchor="middle" class="sk-mono" fill="#16A34A">DATE J</text>
-            <!-- Tolerance zone (2 weeks free) -->
+            <!-- Zone de suivi du planning -->
             <rect x="100" y="26" width="34" height="8" rx="1" fill="#16A34A" opacity="0.15"/>
-            <text x="117" y="32.5" text-anchor="middle" font-family="Geist Mono" font-size="6.5" font-weight="600" fill="#16A34A">+14 j tolérés</text>
-            <!-- Penalty zone (after) -->
+            <text x="117" y="32.5" text-anchor="middle" font-family="Geist Mono" font-size="6.5" font-weight="600" fill="#16A34A">SUIVI</text>
+            <!-- Zone de décision -->
             <rect x="134" y="26" width="68" height="8" rx="1" fill="#9A3412" opacity="0.18"/>
-            <text x="168" y="32.5" text-anchor="middle" font-family="Geist Mono" font-size="6.5" font-weight="700" fill="#9A3412">−7 % / sem.</text>
+            <text x="168" y="32.5" text-anchor="middle" font-family="Geist Mono" font-size="6.5" font-weight="700" fill="#9A3412">ALERTE · DÉCISION</text>
             <!-- End mark -->
             <circle cx="202" cy="30" r="3" fill="#9A3412"/>
-            <text x="202" y="46" text-anchor="middle" class="sk-mono-mute">SOLDE</text>
+            <text x="202" y="46" text-anchor="middle" class="sk-mono-mute">AVENANT</text>
             <!-- Bottom note -->
-            <text x="110" y="56" text-anchor="middle" class="sk-mono-mute">DÉPASSEMENT DÉDUIT DU SOLDE RESTANT</text>
+            <text x="110" y="56" text-anchor="middle" class="sk-mono-mute">PROCÉDURE DÉFINIE DANS LE DEVIS</text>
           </svg>
         </div>
-        <h3>Pénalité de retard contractuelle</h3>
-        <p>Au-delà de 2 semaines de retard, chaque semaine supplémentaire est facturée 0 € et déduite du solde restant. Pas du marketing : <b>une vraie clause</b>.</p>
+        <h3>Procédure de retard explicite</h3>
+        <p>Les dépendances, alertes, reports de jalon et conséquences éventuelles d'un retard doivent être définis avant le démarrage. <b>Aucune pénalité automatique n'est promise ici.</b></p>
         <div class="pil-clause">
-          <span class="pil-clause-h">CLAUSE CONTRAT</span>
-          <span class="pil-clause-t">« Au-delà de 14 jours calendaires de retard sur la date de livraison contractuelle, le client bénéficie d'un avoir hebdomadaire équivalent à 7 % du forfait, déductible du solde dû. »</span>
+          <span class="pil-clause-h">POINT À ÉCRIRE</span>
+          <span class="pil-clause-t">Les causes de suspension, les validations attendues, la procédure d'alerte et les remèdes réellement acceptés par les deux parties.</span>
         </div>
       </div>
 
@@ -414,14 +413,14 @@ ${navHtml}
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg>
         </div>
         <div class="pil-dl-body">
-          <div class="pil-dl-tag">CONTRAT TYPE · CGV</div>
+          <div class="pil-dl-tag">CONDITIONS PUBLIQUES · DEVIS NOMINATIF</div>
           <h4>Lisez nos conditions avant de signer.</h4>
-          <p>Notre contrat type Sprint Fixe™ (8 pages, juridiquement validé) est public.
-          Téléchargez-le, faites-le relire par votre juriste, posez-nous toutes les questions
-          avant de vous engager.</p>
-          <a href="#contact" class="btn btn-ghost btn-dl">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-            Demander le contrat type (PDF)
+          <p>Nos CGV publiques posent le cadre général. Le devis nominatif décrit ensuite les
+          livrables, jalons, responsabilités et conditions particulières de votre mission. Faites-le
+          relire avant de signer si votre contexte l'exige.</p>
+          <a href="/legal/cgv" class="btn btn-ghost btn-dl">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+            Lire les CGV publiques
           </a>
         </div>
       </div>
@@ -438,9 +437,9 @@ ${navHtml}
         <h2>À quoi ressemble<br>un Sprint Fixe™ semaine<br>par semaine ?</h2>
       </div>
       <div class="right">
-        Exemple concret pour un MVP SaaS de 30 k€ livré en <b>6 semaines</b>.
-        Toutes les dates et durées sont fixées au cadrage et inscrites au contrat.
-        Vous savez exactement où vous en êtes à chaque jour J.
+        Exemple illustratif d'un MVP organisé sur <b>6 semaines</b>. Ce n'est ni un devis ni une
+        promesse de délai&nbsp;: votre séquence dépend du périmètre, des intégrations, des validations
+        et des ressources précisées lors du cadrage.
       </div>
     </div>
 
@@ -482,9 +481,9 @@ ${navHtml}
             <span class="tl-dur">J+1 → J+5</span>
           </div>
           <h4>Setup &amp; design system</h4>
-          <p>Repo Git créé sur votre organisation. Setup Next.js + base de données + design system Tailwind. Les premiers écrans Figma deviennent des composants codés.</p>
+          <p>Le dépôt et les accès sont organisés comme prévu au devis. La stack, la base et le design system sont initialisés ; les premiers écrans deviennent des composants testables.</p>
           <div class="tl-deliv">
-            <span class="tl-deliv-item">🔐 Repo Git ouvert J+1</span>
+            <span class="tl-deliv-item">🔐 Dépôt et accès organisés</span>
             <span class="tl-deliv-item">⚙️ Stack opérationnelle</span>
             <span class="tl-deliv-item">🎨 Design system codé</span>
           </div>
@@ -528,11 +527,11 @@ ${navHtml}
             <span class="tl-dur">J+15 → J+19</span>
           </div>
           <h4>Features métier · cœur du produit</h4>
-          <p>Les écrans qui font la valeur du produit. Workflows métier, formulaires complexes, dashboards. <b>C'est là qu'on annonce la lagniappe</b> : la feature bonus identifiée par l'équipe à mi-parcours.</p>
+          <p>Les écrans qui font la valeur du produit. Workflows métier, formulaires complexes, dashboards. Une amélioration hors périmètre peut être proposée uniquement si une marge a été explicitement conservée.</p>
           <div class="tl-deliv">
             <span class="tl-deliv-item">⚡ Features cœur</span>
             <span class="tl-deliv-item">📊 Dashboards</span>
-            <span class="tl-deliv-item">🎁 Lagniappe annoncée</span>
+            <span class="tl-deliv-item">💡 Arbitrage d'amélioration éventuelle</span>
           </div>
           <div class="tl-friday">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -579,10 +578,10 @@ ${navHtml}
             <span class="tl-dur">J+29 → J+33</span>
           </div>
           <h4>QA, sécurité, RGPD</h4>
-          <p>Audit OWASP, conformité RGPD, CGV/CGU, registre des traitements, DPA. Tests E2E automatisés. Pré-recette interne, dernier passage code review CTO.</p>
+          <p>Revue de sécurité adaptée au périmètre, points techniques liés aux données personnelles, tests et pré-recette. Les documents juridiques et la conformité restent à valider par les responsables compétents du client.</p>
           <div class="tl-deliv">
             <span class="tl-deliv-item">🛡️ Audit sécurité</span>
-            <span class="tl-deliv-item">📜 RGPD complet</span>
+            <span class="tl-deliv-item">📜 Points techniques RGPD</span>
             <span class="tl-deliv-item">✅ Tests E2E verts</span>
           </div>
           <div class="tl-friday">
@@ -602,16 +601,16 @@ ${navHtml}
             <span class="tl-dur">J+36 → J+40</span>
           </div>
           <h4>Mise en production &amp; formation</h4>
-          <p>Déploiement zero-downtime sur votre infrastructure. Formation de vos équipes (4 h incluses). Documentation, runbook ops, schéma archi remis. <b>Garantie 30 j déclenche.</b></p>
+          <p>Déploiement, formation et documentation selon le périmètre signé. La recette et la période de correction applicable commencent selon les conditions prévues au devis.</p>
           <div class="tl-deliv">
             <span class="tl-deliv-item">🚀 Mise en prod</span>
             <span class="tl-deliv-item">🎓 Formation équipe</span>
             <span class="tl-deliv-item">📚 Docs &amp; runbook</span>
-            <span class="tl-deliv-item">🛡️ Garantie 30 j ON</span>
+            <span class="tl-deliv-item">🛡️ Recette et corrections cadrées</span>
           </div>
           <div class="tl-friday tl-friday-final">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
-            LIVRAISON CONTRACTUELLE · ACOMPTE 40 % · GARANTIE ENGAGÉE
+            JALON DE LIVRAISON · RECETTE · SOLDE SELON LE DEVIS
           </div>
         </div>
       </div>
@@ -619,11 +618,11 @@ ${navHtml}
       <div class="tl-after">
         <div class="tl-after-grid">
           <div class="tl-after-card">
-            <div class="tl-after-h">J+30 · FIN GARANTIE</div>
-            <div class="tl-after-t">Tout bug critique corrigé gratuit. Bilan post-launch.</div>
+            <div class="tl-after-h">APRÈS LIVRAISON · RECETTE</div>
+            <div class="tl-after-t">Anomalies qualifiées et corrigées selon le document signé.</div>
           </div>
           <div class="tl-after-card">
-            <div class="tl-after-h">J+30 → ∞ · CARE</div>
+            <div class="tl-after-h">ENSUITE · MAINTENANCE</div>
             <div class="tl-after-t">Forfait Care mensuel optionnel ou autonomie complète.</div>
           </div>
         </div>
@@ -642,14 +641,13 @@ ${navHtml}
       <div class="choc-left">
         <div class="choc-tag">
           <span>SIGNATURE</span>
-          <span>« La Lagniappe » · le petit cadeau en plus</span>
+          <span>« La Lagniappe » · une marge éventuelle, jamais due</span>
         </div>
-        <h2>À mi-parcours,<br>on vous offre une feature<br><span class="choc-accent">qu'on a vu manquer.</span></h2>
+        <h2>À mi-parcours,<br>une amélioration peut émerger<br><span class="choc-accent">si le projet le permet.</span></h2>
         <p class="choc-lead">
-          <em>Lagniappe</em> (n.f., du cajun-créole) : <b>un petit cadeau ajouté à un achat,
-          sans que le client le demande</b>. Notre rituel : à mi-parcours, l'équipe identifie une feature
-          qui rendrait votre produit meilleur — hors périmètre signé — et la livre en bonus.
-          Pas un placeholder. Une vraie feature pensée et exécutée. Sans la facturer.
+          <em>Lagniappe</em> désigne ici une idée utile repérée pendant le travail. Elle n'est pas incluse
+          par défaut et ne doit jamais masquer une fonctionnalité promise. Si le budget, le planning et
+          la qualité le permettent, nous la proposons et l'intégrons seulement après accord écrit.
         </p>
 
         <div class="choc-bullets">
@@ -658,8 +656,8 @@ ${navHtml}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
             </div>
             <div>
-              <b>Annoncée en démo de la semaine 3</b><br>
-              <span>Quand on a assez de contexte pour proposer du juste.</span>
+              <b>Proposée au bon moment</b><br>
+              <span>Quand l'équipe a assez de contexte pour expliquer sa valeur et son coût.</span>
             </div>
           </div>
           <div class="choc-bullet">
@@ -667,8 +665,8 @@ ${navHtml}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
             </div>
             <div>
-              <b>Prévue dès le cadrage</b><br>
-              <span>Sauf sur les formats très courts (&lt; 3 sem.), où le périmètre ne le permet pas.</span>
+              <b>Jamais promise par défaut</b><br>
+              <span>Le périmètre signé et la qualité des livrables prioritaires passent d'abord.</span>
             </div>
           </div>
           <div class="choc-bullet">
@@ -676,49 +674,49 @@ ${navHtml}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
             </div>
             <div>
-              <b>+2 à 5 jours de boulot</b><br>
-              <span>Jamais facturés. C'est notre cadeau de fin de parcours.</span>
+              <b>Décision documentée</b><br>
+              <span>Impact, calendrier et prix éventuel sont validés avant réalisation.</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="choc-right">
-        <div class="choc-examples-h">DERNIÈRES « LAGNIAPPES » LIVRÉES</div>
+        <div class="choc-examples-h">EXEMPLES D'IDÉES À ÉVALUER — ILLUSTRATIFS</div>
 
         <div class="choc-example">
           <div class="choc-example-icon">🤖</div>
           <div class="choc-example-body">
-            <div class="choc-example-project">SaaS comptabilité immobilière</div>
-            <div class="choc-example-feat">Agent IA d'export CSV vers FEC EDI bancaire</div>
-            <div class="choc-example-impact">+2 jours · économie 4 h/mois pour l'expert-comptable</div>
+            <div class="choc-example-project">Produit de gestion</div>
+            <div class="choc-example-feat">Export comptable adapté au workflow réel</div>
+            <div class="choc-example-impact">À chiffrer après validation des formats et des usages</div>
           </div>
         </div>
 
         <div class="choc-example">
           <div class="choc-example-icon">⚡</div>
           <div class="choc-example-body">
-            <div class="choc-example-project">Plateforme RH</div>
-            <div class="choc-example-feat">Mode dark + raccourcis clavier (cmd+K palette)</div>
-            <div class="choc-example-impact">+3 jours · adoption RH +40 % la première semaine</div>
+            <div class="choc-example-project">Outil métier</div>
+            <div class="choc-example-feat">Raccourcis clavier pour les actions répétitives</div>
+            <div class="choc-example-impact">À prioriser après observation des utilisateurs</div>
           </div>
         </div>
 
         <div class="choc-example">
           <div class="choc-example-icon">📊</div>
           <div class="choc-example-body">
-            <div class="choc-example-project">Marketplace B2B</div>
-            <div class="choc-example-feat">Dashboard d'export Excel multi-feuilles avec graphs</div>
-            <div class="choc-example-impact">+4 jours · feature reportée en V2 → livrée en V1</div>
+            <div class="choc-example-project">Plateforme B2B</div>
+            <div class="choc-example-feat">Export Excel multi-feuilles contrôlable</div>
+            <div class="choc-example-impact">À arbitrer face aux fonctions prioritaires</div>
           </div>
         </div>
 
         <div class="choc-example">
           <div class="choc-example-icon">🔔</div>
           <div class="choc-example-body">
-            <div class="choc-example-project">Outil interne logistique</div>
-            <div class="choc-example-feat">Notifications Slack en temps réel sur stocks bas</div>
-            <div class="choc-example-impact">+2 jours · −80 % de ruptures de stock le mois suivant</div>
+            <div class="choc-example-project">Outil interne</div>
+            <div class="choc-example-feat">Alerte sur un seuil métier important</div>
+            <div class="choc-example-impact">À valider avec le canal et les règles d'escalade</div>
           </div>
         </div>
       </div>
@@ -726,60 +724,59 @@ ${navHtml}
   </div>
 </section>
 
-<!-- COMPTEUR PUBLIC (preuves chiffrées) -->
+<!-- POINTS DE CONTRÔLE AVANT SIGNATURE -->
 <section class="proof" id="preuves">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— La preuve par les chiffres</div>
-        <h2>Sprint Fixe™ tient<br>ses promesses.<br><span class="grad-accent">Vérifiable.</span></h2>
+        <div class="eyebrow">— La preuve utile</div>
+        <h2>Quatre points à vérifier<br>avant de signer.<br><span class="grad-accent">Noir sur blanc.</span></h2>
       </div>
       <div class="right">
-        Métriques publiques, mises à jour à chaque livraison de projet. Si demain on rate
-        une promesse, le compteur le montrera — pas de communication contrôlée. Notre
-        crédibilité tient à cette transparence.
+        Nous ne publions pas de taux de réussite ou de compteur client sans jeu de données auditable.
+        La preuve opposable reste votre devis signé&nbsp;: vérifiez-y ces quatre éléments avant de commander.
       </div>
     </div>
 
     <div class="proof-grid">
       <div class="proof-card reveal">
-        <div class="proof-meta">PROMESSE · BUDGET</div>
-        <div class="proof-n">100<span class="proof-s">%</span></div>
-        <div class="proof-l">Du forfait signé, <b>engagé au contrat</b>.</div>
+        <div class="proof-meta">À VÉRIFIER · BUDGET</div>
+        <div class="proof-n">01</div>
+        <div class="proof-l"><b>Périmètre, prix et exclusions</b> sont identifiables.</div>
         <div class="proof-bar">
           <div class="proof-bar-fill" style="width:100%"></div>
         </div>
-        <div class="proof-since">Quand le scope dérape côté client, l'écart est absorbé à notre charge — pas facturé.</div>
+        <div class="proof-since">Toute évolution qui modifie le coût ou le délai passe par un avenant accepté.</div>
       </div>
 
-      <div class="proof-card proof-zero reveal reveal-d-1">
-        <div class="proof-meta">PROMESSE · RETARD</div>
-        <div class="proof-n">0<span class="proof-s"> €</span></div>
-        <div class="proof-l"><b>Surcoût facturé</b> si le retard vient de nous.</div>
+      <div class="proof-card reveal reveal-d-1">
+        <div class="proof-meta">À VÉRIFIER · PLANNING</div>
+        <div class="proof-n">02</div>
+        <div class="proof-l"><b>Jalons, dépendances et validations</b> sont datés.</div>
         <div class="proof-bar">
-          <div class="proof-bar-fill proof-bar-fill-zero" style="width:0%"></div>
+          <div class="proof-bar-fill" style="width:100%"></div>
         </div>
-        <div class="proof-since">Le dépassement est absorbé à notre charge — clause active sur tous nos contrats.</div>
+        <div class="proof-since">La procédure d'alerte et les conséquences d'un décalage sont explicites.</div>
       </div>
 
       <div class="proof-card reveal reveal-d-2">
-        <div class="proof-meta">PROMESSE · DÉMOS</div>
-        <div class="proof-n">1<span class="proof-s">/sem.</span></div>
-        <div class="proof-l">Démo hebdomadaire <b>inscrite au contrat</b>, chaque vendredi à 16 h.</div>
+        <div class="proof-meta">À VÉRIFIER · SUIVI</div>
+        <div class="proof-n">03</div>
+        <div class="proof-l"><b>Cadence des démonstrations</b> et décideurs sont nommés.</div>
         <div class="proof-bar">
           <div class="proof-bar-fill" style="width:100%"></div>
         </div>
-        <div class="proof-since">Deux démos manquées d'affilée : avoir de 5 % du forfait, sans discussion.</div>
+        <div class="proof-since">Chaque arbitrage important laisse une trace partageable.</div>
       </div>
 
       <div class="proof-card reveal reveal-d-3">
-        <div class="proof-meta">PROMESSE · J+1</div>
-        <div class="proof-n">100<span class="proof-s">%</span></div>
-        <div class="proof-l">Repo Git <b>ouvert chez vous dès J+1</b>.</div>
+        <div class="proof-meta">À VÉRIFIER · SORTIE</div>
+        <div class="proof-n">04</div>
+        <div class="proof-l"><b>Accès, cession et réversibilité</b> sont distingués.</div>
         <div class="proof-bar">
           <div class="proof-bar-fill" style="width:100%"></div>
         </div>
-        <div class="proof-since">Aucune licence, aucun lock-in, aucun avenant gratté.</div>
+        <div class="proof-since">Les composants tiers et préexistants restent soumis à leurs licences.</div>
       </div>
 
     </div>
@@ -788,7 +785,7 @@ ${navHtml}
       <div class="proof-foot-ic">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
       </div>
-      <span>Ce ne sont pas des moyennes observées, ce sont des <b>engagements contractuels</b> : chaque ligne ci-dessus figure noir sur blanc dans nos contrats. Pour la vérifier avant de signer, <a href="mailto:quentin@hagnere-patrimoine.fr?subject=Demande%20du%20mod%C3%A8le%20de%20contrat">demandez-nous le modèle de contrat</a>.</span>
+      <span>Cette grille est pédagogique. Les seuls engagements applicables sont ceux des <a href="/legal/cgv">CGV publiques</a> et du document nominatif signé pour votre projet.</span>
     </div>
   </div>
 </section>
@@ -890,7 +887,7 @@ ${navHtml}
             <span class="fri-meta-dur">DÉMO DE PRÉ-RECETTE</span>
           </div>
           <h4>Les scores se mesurent devant vous</h4>
-          <p>Audit sécurité, conformité RGPD, tests de bout en bout. Le score Lighthouse est lancé en direct pendant la séance : <b>95 et plus est un engagement contractuel</b>, pas un objectif affiché après coup.</p>
+          <p>Revue de sécurité, points techniques liés aux données personnelles et tests de bout en bout. Un score Lighthouse peut être mesuré en direct, avec son URL, son appareil et ses conditions&nbsp;; un seuil ne devient contractuel que s'il figure au devis.</p>
         </div>
         <div class="fri-status">
           <span class="fri-status-dot"></span>
@@ -912,7 +909,7 @@ ${navHtml}
             <span class="fri-meta-dur">DÉMO DE MISE EN PROD</span>
           </div>
           <h4>Le dernier vendredi est celui de la production</h4>
-          <p>Déploiement sur votre infrastructure, formation de vos équipes, remise de la documentation et du runbook. <b>La garantie 30 jours démarre à cette date</b> — et le forfait Care mensuel reste optionnel, jamais imposé.</p>
+          <p>Déploiement, formation et remise de la documentation prévue. La recette, les corrections et une maintenance éventuelle suivent les modalités du devis&nbsp;; le forfait Care reste optionnel.</p>
         </div>
         <div class="fri-status fri-status-done">
           <span class="fri-status-dot"></span>
@@ -953,8 +950,8 @@ ${navHtml}
         <p class="claude-lead">
           Beaucoup d'agences brandissent l'IA comme un argument marketing. Chez nous, c'est un
           outil de productivité opéré par chaque dev senior — recherche de doc, exploration de bibliothèques,
-          plans d'implémentation, génération de tests, doc technique. <b>Moins de boilerplate,
-          plus de réflexion produit.</b> Et le code commit reste 100 % revu par un humain.
+          plans d'implémentation, génération de tests, doc technique. <b>Le gain dépend de la tâche
+          et n'est pas présenté comme une réduction chiffrée universelle.</b> Un humain reste responsable du code intégré.
         </p>
 
         <div class="claude-rules">
@@ -966,12 +963,12 @@ ${navHtml}
           <div class="claude-rule">
             <div class="claude-rule-num">RÈGLE 02</div>
             <h4>Code review humaine systématique</h4>
-            <p>Chaque PR (générée par Claude ou non) est reviewée par un dev senior. Le CTO valide les choix architecturaux.</p>
+            <p>Les changements passent par une revue humaine adaptée au risque. Les choix structurants sont validés par le responsable technique.</p>
           </div>
           <div class="claude-rule">
             <div class="claude-rule-num">RÈGLE 03</div>
-            <h4>Vous ne payez pas l'IA, vous bénéficiez du gain</h4>
-            <p>Notre marge sur les outils IA est nulle pour vous. Le gain de productivité = délais courts à coût équivalent.</p>
+            <h4>Les outils restent un moyen, pas une ligne magique</h4>
+            <p>Le devis porte sur des livrables et un périmètre. L'outil utilisé ne remplace ni les tests, ni l'explication des choix.</p>
           </div>
         </div>
       </div>
@@ -980,26 +977,26 @@ ${navHtml}
         <div class="claude-stat">
           <div class="claude-stat-row">
             <svg viewBox="0 0 512 512" fill="#D97757" aria-hidden="true" width="32" height="32"><path d="M301.86 65h70.94l129.4 382h-70.93l-26.48-81.3H269.2l-26.48 81.3h-70.94L301.86 65zm-11.96 240h94.86l-47.43-145.7L289.9 305z"/></svg>
-            <span class="claude-stat-cred">NOTRE CONSTAT INTERNE</span>
+            <span class="claude-stat-cred">PRODUCTIVITÉ</span>
           </div>
-          <div class="claude-stat-n">−1<span> sem.</span></div>
-          <div class="claude-stat-l">Gain moyen mesuré sur un MVP de 6 semaines (vs cycle pré-Claude).</div>
+          <div class="claude-stat-n">AIDE</div>
+          <div class="claude-stat-l">Accélération possible sur la recherche, les tests et la documentation, sans moyenne publique revendiquée.</div>
         </div>
         <div class="claude-stat">
           <div class="claude-stat-row">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <span class="claude-stat-cred">DISCOVERY SPRINT</span>
+            <span class="claude-stat-cred">TRAÇABILITÉ</span>
           </div>
-          <div class="claude-stat-n">−4<span> h</span></div>
-          <div class="claude-stat-l">Temps gagné en moyenne sur les phases de recherche.</div>
+          <div class="claude-stat-n">TRACE</div>
+          <div class="claude-stat-l">Les hypothèses et décisions importantes doivent rester lisibles dans les tickets, commits et revues.</div>
         </div>
         <div class="claude-stat">
           <div class="claude-stat-row">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span class="claude-stat-cred">CODE REVIEW HUMAINE</span>
+            <span class="claude-stat-cred">RESPONSABILITÉ</span>
           </div>
-          <div class="claude-stat-n">100<span>%</span></div>
-          <div class="claude-stat-l">Lignes commit reviewées par un dev senior.</div>
+          <div class="claude-stat-n">HUMAIN</div>
+          <div class="claude-stat-l">Un membre identifié de l'équipe reste responsable de la validation et de l'intégration.</div>
         </div>
       </div>
     </div>
@@ -1132,7 +1129,7 @@ ${navHtml}
       <div class="nfy-card reveal reveal-d-1">
         <div class="nfy-num">CAS 02</div>
         <h3>Votre projet fait moins de 8 k€.</h3>
-        <p>Notre coût d'opération minimal sur un projet (cadrage, démos, garantie 30 j, doc, formation)
+        <p>Notre coût d'opération minimal sur un projet (cadrage, suivi, recette, documentation, formation)
         rend non-rentable un forfait inférieur à 8 k€. <b>Ce n'est pas que ça ne nous intéresse pas —
         c'est qu'on perdrait votre confiance en bâclant.</b> On vous oriente vers une plateforme
         de freelances seniors avec laquelle ça marchera mieux pour ce périmètre.</p>
@@ -1186,7 +1183,7 @@ ${navHtml}
           <div class="faq-a">
             Tout ajout passe par un <b>avenant chiffré au forfait fixe</b>, signé avant que la moindre
             ligne de code ne soit écrite. Vous décidez si l'ajout vaut le coup. Le périmètre initial
-            reste figé, le total reste contrôlé. <b>On n'a jamais facturé d'avenant non-signé.</b>
+            reste figé et le total contrôlable. Rien de nouveau ne doit être facturé sans acceptation écrite.
           </div>
         </div>
 
@@ -1196,12 +1193,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            On a un <b>bus factor de 2 minimum</b> sur chaque projet : un dev référent + un binôme qui
-            connaît le contexte et peut prendre le relais en 24 h. Tout passe par notre repo Git, notre
-            Linear et notre runbook documenté — aucune info critique ne reste dans la tête d'une seule
-            personne. Si un dev est indisponible &gt; 1 semaine, on prévient, on bascule, et la date de
-            livraison reste celle du contrat. La clause de pénalité de retard s'applique à <b>nous</b>,
-            pas à vos imprévus de RH.
+            Le référent, les personnes mobilisées et le dispositif de continuité sont précisés au lancement.
+            Les décisions et accès utiles sont documentés pour limiter la dépendance à une personne.
+            En cas d'indisponibilité, nous informons le client et appliquons la procédure convenue au devis.
           </div>
         </div>
 
@@ -1211,11 +1205,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            On limite volontairement à <b>3 projets actifs en parallèle</b> sur l'équipe tech (1 par binôme).
-            C'est ce qui nous permet de tenir les démos vendredi sans contexte switching destructeur.
-            Si on est en flux tendu, on vous le dit en cadrage et on vous propose une date de démarrage
-            décalée — jamais on ne signe un projet qu'on ne peut pas honorer dans les délais. <b>2 créneaux
-            ouverts pour le prochain trimestre.</b>
+            La capacité disponible et la date réaliste de démarrage sont confirmées avant signature.
+            Elles varient avec les missions en cours&nbsp;: nous ne publions donc ni quota permanent ni
+            faux nombre de créneaux. Le devis nomme le référent et le rythme de suivi prévu.
           </div>
         </div>
 
@@ -1236,15 +1228,13 @@ ${navHtml}
 
         <div class="faq-item">
           <div class="faq-q">
-            Et si MOI je suis en retard sur mes validations ? Ça décale la pénalité ?
+            Et si je suis en retard sur mes validations ?
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Oui, et c'est cadré dans le contrat. <b>Toute attente de validation client &gt; 5 jours
-            ouvrés décale d'autant la date de livraison contractuelle</b> (clause type "delay of game").
-            On vous prévient par email à J+3 sans réponse. Si vous êtes silencieux 2 semaines, le projet
-            est mis en pause facturée (50 €/jour) jusqu'à reprise. Honnête : on ne peut pas tenir
-            un délai sur lequel on n'a pas la main.
+            Un retard de validation ou un élément manquant peut décaler le planning. Le délai de réponse,
+            la procédure d'alerte, la suspension éventuelle et ses conséquences doivent être écrits dans
+            le devis signé. Cette page n'ajoute ni pénalité ni frais automatiques.
           </div>
         </div>
 
@@ -1256,9 +1246,9 @@ ${navHtml}
           <div class="faq-a">
             <b>Tout est sur devis</b>. Chaque projet (site vitrine, outil interne, MVP SaaS, refonte
             e-commerce) est cadré et chiffré individuellement — la durée et le prix dépendent du
-            périmètre, des intégrations, des ressources de votre côté. Le <b>Discovery Sprint à
-            1 500 €</b> est obligatoire pour tout projet engagé : il transforme votre besoin en
-            devis ferme à un chiffre unique. <a href="/tarifs">Détails complets sur la page tarifs</a>.
+            périmètre, des intégrations et des ressources de votre côté. Un <b>Discovery Sprint à
+            1 500 € HT</b> peut être proposé lorsque le besoin exige un cadrage distinct avant le
+            devis de réalisation. <a href="/tarifs">Détails complets sur la page tarifs</a>.
           </div>
         </div>
 
@@ -1284,10 +1274,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Le code généré ou suggéré par Claude est revu à <b>100 % par un dev humain senior</b>
-            avant le commit, puis re-revu en code review systématique avant le merge.
-            Claude est un assistant qui défriche, pas un dev qui commit. Si un bug en prod
-            est imputable à Claude, il est imputable à nous, point.
+            Claude Code est un outil d'assistance. Un développeur reste responsable des choix,
+            des tests et de la validation des changements avant leur intégration. L'outil ne réduit
+            ni nos obligations contractuelles ni la nécessité d'une revue adaptée au risque.
           </div>
         </div>
 
@@ -1297,10 +1286,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Vous gardez tout :</b> repo Git sur votre compte dès J+1, hébergement à votre nom,
-            documentation à jour, runbook ops complet. N'importe quelle équipe React/Next.js
-            peut reprendre votre projet en moins de 5 jours. Pas de lock-in technique,
-            pas de royalties, pas de dépendance. C'est pour ça qu'on impose le pilier #5.
+            La réversibilité prévue aux CGV organise la remise du code, des accès et de la documentation
+            nécessaires à une reprise. Les livrables spécifiques sont transférés après paiement complet,
+            sous réserve des composants tiers et préexistants. Le détail dépend du périmètre signé.
           </div>
         </div>
       </div>
@@ -1325,9 +1313,9 @@ ${navHtml}
     </h2>
 
     <p class="mfinal-lead">
-      30 minutes en visio avec quelqu'un qui code. On comprend votre besoin, on vous dit honnêtement
-      si on est la bonne équipe. Si oui, on enchaîne sur un Discovery Sprint payé 2 jours plus tard.
-      <b>Si non, on vous oriente — gratuitement — vers la bonne équipe.</b>
+      30 minutes en visio pour comprendre votre besoin et vérifier si notre équipe est adaptée.
+      Si un cadrage payant est utile, son contenu, son calendrier et son prix sont proposés séparément.
+      Aucune commande n'est créée par la simple prise de rendez-vous.
     </p>
 
     <div class="mfinal-cta">
@@ -1339,9 +1327,9 @@ ${navHtml}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 7h6M9 12h6M9 17h3"/></svg>
         Voir les fourchettes de prix
       </a>
-      <a href="mailto:quentin@hagnere-patrimoine.fr?subject=Demande%20du%20contrat%20type%20Sprint%20Fixe" class="mfinal-btn-ghost">
+      <a href="/legal/cgv" class="mfinal-btn-ghost">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg>
-        Demander le contrat type
+        Lire les CGV publiques
       </a>
     </div>
 
@@ -1359,7 +1347,7 @@ ${navHtml}
           <div class="mfinal-fourchette-meta">5 semaines</div>
         </div>
         <div class="mfinal-fourchette mfinal-fourchette-hot">
-          <div class="mfinal-fourchette-tag">LE PLUS CHOISI</div>
+          <div class="mfinal-fourchette-tag">PROJET STANDARD</div>
           <div class="mfinal-fourchette-name">MVP SaaS B2B</div>
           <div class="mfinal-fourchette-price">25–50 k€</div>
           <div class="mfinal-fourchette-meta">6 semaines</div>

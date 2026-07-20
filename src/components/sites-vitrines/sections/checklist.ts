@@ -5,11 +5,11 @@ export const checklistHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Ce que "un site Hagnéré" veut dire</div>
-        <h2>Douze briques incluses<br>dans chaque livraison.</h2>
+        <h2>Douze briques possibles,<br>à retenir dans le devis.</h2>
       </div>
       <div class="right">
-        "On fait un site vitrine" c'est trop vague. Voilà la liste exacte de ce qui rentre dans
-        le forfait — et ce qui n'y rentre pas. Pas d'avenant surprise à J+60.
+        "On fait un site vitrine" est trop vague. Le devis sélectionne les briques utiles,
+        leurs limites et leurs dépendances. Toute demande hors périmètre est approuvée avant réalisation.
       </div>
     </div>
 
@@ -19,9 +19,9 @@ export const checklistHtml = `
         <div class="sv-check-head">
           <div class="sv-check-badge sv-check-badge-in">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>
-            INCLUS DANS LE FORFAIT
+            CATALOGUE À CADRER
           </div>
-          <h3>Douze briques, à chaque projet.</h3>
+          <h3>Le bon périmètre pour ce projet.</h3>
         </div>
         <ul class="sv-check-list">
           <li>
@@ -54,23 +54,23 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Performance mesurée</b> — Next.js statique, Lighthouse ≥ 95 mobile, LCP &lt; 1,5 s, images optimisées, CDN.</div>
+            <div><b>Performance mesurée</b> — pages, appareil, réseau, scripts tiers, outil et seuils de recette précisés au devis.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Accessibilité RGAA / WCAG 2.1 AA</b> — contrastes, navigation clavier, aria, alternatives textuelles, audit Lighthouse + axe.</div>
+            <div><b>Accessibilité</b> — référentiel, périmètre, tests manuels ou automatisés et niveau visé sont écrits. Un audit complet reste une mission distincte s'il n'est pas chiffré.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Conformité RGPD clé en main</b> — bannière cookies conforme, politique de confidentialité, registre, sous-traitants documentés.</div>
+            <div><b>Socle de confidentialité</b> — composants techniques et inventaire des sous-traitants selon le périmètre. La validation juridique reste à la charge du responsable de traitement et de son conseil.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Hébergement 12 mois + monitoring</b> — Vercel ou OVH à votre nom, TLS, uptime monitoring, sauvegardes du CMS.</div>
+            <div><b>Hébergement et monitoring</b> — fournisseur, compte, durée, sauvegardes, alertes et coûts tiers détaillés au devis.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Documentation + garantie 30 jours</b> — README technique, formation, repo Git chez vous, bugs bloquants pris en charge sous 4 h ouvrées.</div>
+            <div><b>Documentation, dépôt et garantie</b> — livrables, accès, période de correction et délais cibles définis dans le devis.</div>
           </li>
         </ul>
       </div>

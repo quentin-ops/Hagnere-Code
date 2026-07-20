@@ -134,6 +134,7 @@ export function ExcelCalculator() {
           budget: result.totalYearCost > 20000 ? "15-30k" : "< 15k",
           message,
           mathChallenge: toMathChallengePayload(math),
+          consent: data.get("consent") === "on",
         }),
       });
       const json = (await res.json().catch(() => ({}))) as { message?: string };
@@ -370,11 +371,12 @@ export function ExcelCalculator() {
             {/* Capture form */}
             <form className="calc-capture" onSubmit={onCapture}>
               <div className="calc-capture-head">
-                <div className="calc-card-kind">RECEVOIR LE RAPPORT</div>
-                <div className="calc-card-title">PDF + créneau 30 min offert</div>
+                <div className="calc-card-kind">PARTAGER LE DIAGNOSTIC</div>
+                <div className="calc-card-title">Envoyer vos hypothèses à l&apos;équipe</div>
                 <p>
-                  Vos hypothèses + nos 3 recommandations personnalisées,
-                  envoyées sous 24 h ouvrées. Sans engagement.
+                  Le résultat reste visible sur cette page. Ce formulaire transmet
+                  vos hypothèses pour permettre une réponse humaine, sans promettre
+                  un rapport automatique ni un délai non contractualisé.
                 </p>
               </div>
 
@@ -397,6 +399,15 @@ export function ExcelCalculator() {
                 onChange={setMath}
               />
 
+              <label className="calc-capture-consent">
+                <input type="checkbox" name="consent" required />
+                <span>
+                  J&apos;accepte que ces informations soient utilisées uniquement
+                  pour traiter et répondre à ma demande.{" "}
+                  <Link href="/legal/confidentialite">Politique de confidentialité</Link>
+                </span>
+              </label>
+
               <button
                 type="submit"
                 className="btn btn-accent btn-lg calc-capture-submit"
@@ -404,7 +415,7 @@ export function ExcelCalculator() {
               >
                 {status.kind === "submitting"
                   ? "Envoi en cours…"
-                  : "Recevoir le rapport"}
+                  : "Envoyer mon diagnostic"}
                 <svg className="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M13 5l7 7-7 7" />
                 </svg>
@@ -412,7 +423,7 @@ export function ExcelCalculator() {
 
               {status.kind === "success" && (
                 <div className="calc-alert calc-alert-ok">
-                  ✓ {status.message || "Demande reçue. Notre équipe vous envoie le rapport sous 24 h ouvrées."}
+                  ✓ {status.message || "Demande reçue. Votre diagnostic a été transmis à l'équipe."}
                 </div>
               )}
               {status.kind === "error" && (
@@ -420,8 +431,8 @@ export function ExcelCalculator() {
               )}
 
               <p className="calc-capture-legal">
-                Aucune newsletter automatique. Email uniquement pour le rapport
-                et un éventuel suivi humain.
+                Aucune newsletter automatique. Votre email sert uniquement à
+                répondre à cette demande.
               </p>
             </form>
           </aside>

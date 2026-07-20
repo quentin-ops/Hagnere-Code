@@ -22,9 +22,8 @@ export const metadata: Metadata = {
   twitter: { images: [SERVICES_OG_IMAGE.url] },
 };
 
-// JSON-LD structured data — static, author-controlled content.
-// We pass it as a child of <script type="application/ld+json"> which React
-// emits verbatim without parsing, avoiding dangerouslySetInnerHTML.
+// JSON-LD structured data — static, author-controlled content. The rendered
+// string is injected in the script element after escaping '<' characters.
 const serviceJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Service",
@@ -111,7 +110,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui, intégralement. Le repo Git est chez vous dès J+1. Vous pouvez à tout moment le récupérer et le faire travailler par une autre équipe. Pas de lock-in technique, pas de royalties.",
+          "Les livrables spécifiques sont transférés après paiement complet selon les CGV. Le devis précise le dépôt Git, les accès, la documentation et la réversibilité ; les composants préexistants, open source et licences tierces restent soumis à leurs droits propres.",
       },
     },
     {
@@ -129,7 +128,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Trois options : (1) vous reprenez le code et votre équipe technique prend le relais, (2) vous prenez un forfait de maintenance mensuel chez nous, (3) on continue à construire avec vous en mode co-build long terme. 30 jours de garantie sur les bugs critiques inclus.",
+          "Le devis définit la recette, la période de correction et la passation. Ensuite, trois options sont possibles : reprise par votre équipe, maintenance ponctuelle ou mensuelle, ou nouveaux lots de développement. Aucune durée de garantie n'est présumée par la page publique.",
       },
     },
     {
@@ -189,9 +188,9 @@ const breadcrumbJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{serviceJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <SaasApplicationsMetier />
     </>
   );

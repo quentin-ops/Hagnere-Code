@@ -188,9 +188,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -903,7 +903,7 @@ export default function Page() {
           sur Shopify » — et produit périmètre, maquettes et devis au
           forfait fixe ; puis un développement livré par étapes à dates
           contractuelles (méthode <Link href="/methode">Sprint
-          Fixe™</Link>), code cédé.{" "}
+          Fixe™</Link>), avec droits, dépôt, accès et exclusions détaillés au devis.{" "}
           <Link href="/demarrer-un-projet">Décrivez votre boutique en
           3 minutes</Link> : réponse personnelle sous 24 h ouvrées,
           gratuite et sans engagement. Et pour situer ces budgets dans

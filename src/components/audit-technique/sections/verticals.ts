@@ -82,9 +82,9 @@ export const verticalsHtml = `
           <span class="at-vt-tag at-vt-tag-hot">● Régulé</span>
         </div>
         <h3>HealthTech régulée</h3>
-        <p>Données de santé, MedTech, télémédecine. Dimensions critiques auditées&nbsp;: <b>hébergement HDS obligatoire, chiffrement renforcé at-rest/in-transit, pseudonymisation, journalisation des accès, registre RGPD renforcé</b>. Audit préparatoire indispensable pour certification HDS.</p>
+        <p>Données de santé, MedTech, télémédecine. Le cadrage peut couvrir <b>l'applicabilité de l'hébergement HDS, le chiffrement, la pseudonymisation, la journalisation des accès et les exigences RGPD</b>. Leur applicabilité doit être validée avec vos responsables juridiques, votre DPO et, lorsqu'une certification est visée, les organismes compétents&nbsp;: cette prestation ne délivre pas de certification HDS.</p>
         <div class="at-vt-feats">
-          <span>HDS obligatoire</span>
+          <span>HDS à vérifier</span>
           <span>Pseudonymisation</span>
           <span>Audit logs renforcés</span>
         </div>

@@ -61,9 +61,10 @@ export const confidentialiteSections: LegalSection[] = [
           </li>
         </ul>
         <p>
-          Aucune donnée sensible au sens de l&apos;article 9 du RGPD (santé,
-          opinions politiques, religion, orientation sexuelle, biométrie,
-          etc.) n&apos;est collectée par le site.
+          Nous ne demandons pas de données relevant des catégories particulières
+          de l&apos;article 9 du RGPD. N&apos;en transmettez pas dans les champs libres
+          ou dans une dictée vocale. Si un projet exige d&apos;en parler, convenons
+          d&apos;abord d&apos;un canal et de mesures de sécurité adaptés.
         </p>
       </>
     ),

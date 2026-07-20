@@ -262,7 +262,7 @@ ${navHtml}
       <div class="uc reveal">
         <div class="uc-num">/ 07</div>
         <h3>Récupération post-update Google</h3>
-        <p>Votre site a perdu 30-80 % de trafic suite à HCU, Core Update ou Spam Update&nbsp;? Audit E-E-A-T, suppression du contenu low-value, signaux d'expertise, netlinking. <b>70 % des cas sont récupérables</b>.</p>
+        <p>Votre site a perdu du trafic après une mise à jour Google&nbsp;? Un diagnostic doit distinguer contenu, technique, intention de recherche, concurrence et liens. <b>Aucun taux de récupération sérieux ne peut être annoncé avant l'analyse</b>.</p>
         <div class="uc-tags">
           <span class="uc-tag">Audit E-E-A-T</span>
           <span class="uc-tag">Content pruning</span>
@@ -649,7 +649,7 @@ ${navHtml}
         <h2>Un audit pour commencer,<br>trois rythmes pour accélérer.</h2>
       </div>
       <div class="right">
-        Tout est inclus dans le forfait&nbsp;: outils Ahrefs, contenus rédigés, netlinking, reporting, réunions.
+        Le devis précise les outils, contenus, actions de netlinking, rapports et réunions réellement compris dans le forfait.
         <b>Aucun rebilling caché.</b> Engagement 3 mois, puis reconductible mois par mois.
       </div>
     </div>
@@ -689,14 +689,14 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>3 backlinks qualitatifs/mois</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Corrections techniques continues</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Reporting mensuel + réunion 1 h</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Consultant senior dédié</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Interlocuteur et rôle précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 3 mois min.</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Cadrer mon démarrage</a></div>
       </div>
 
       <div class="plan featured reveal reveal-d-2">
-        <div class="plan-badge">LE PLUS CHOISI</div>
+        <div class="plan-badge">FORMULE INTERMÉDIAIRE</div>
         <div class="plan-tag">SCALE</div>
         <h4>Croissance</h4>
         <div class="plan-sub">Pour PME 5 000-30 000 visiteurs/mois qui veulent accélérer. Pack idéal sur 6-12 mois pour générer leads qualifiés.</div>
@@ -710,7 +710,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>6 backlinks qualitatifs DR 40+</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Optimisation continue on-page</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Dashboard Looker business</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Consultant + rédacteur dédiés</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intervenants et statuts précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tests CTR / snippet trimestriels</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 3 mois min.</li>
         </ul>
@@ -731,7 +731,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>10 backlinks top-tier + RP</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Stratégie SEO + E-E-A-T + AI Overviews</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Réunion bimensuelle + hotline</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée 3 pers. (consultant + rédacteur + linker)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intervenants et rôles précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 6 mois min.</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parler à un expert</a></div>
@@ -739,7 +739,7 @@ ${navHtml}
     </div>
 
     <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
-      <b style="color:var(--ink)">Tous les forfaits incluent</b> : outils Ahrefs / Search Console / Looker Studio · rédaction humaine · netlinking white-hat · reporting mensuel 15-20 pages · réunion avec consultant senior · <b style="color:var(--ink)">veille algorithmique et ajustements sans frais</b>.
+      Chaque devis liste les outils, canaux, créations, rapports, réunions et ajustements réellement inclus.
     </p>
   </div>
 </section>
@@ -823,7 +823,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Un consultant senior dédié + un rédacteur dédié</b>. Pas de rotation, pas de chargé de compte entre vous et les exécutants. Vous avez leur ligne directe, réponse sous 4 h ouvrées en semaine. Nous limitons à <b>15 clients actifs simultanément</b> pour garantir du temps par compte.
+            Le devis nomme les intervenants, leur statut, leurs responsabilités, le canal de contact et les délais cibles. La capacité disponible est confirmée avant signature.
           </div>
         </div>
 
@@ -841,7 +841,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>70 % des cas oui</b>, 30 % nécessitent de changer fondamentalement d'approche. On commence par un audit de récupération (inclus dans les forfaits Croissance / Premium) pour identifier la cause&nbsp;: contenu low-value, problèmes E-E-A-T, sur-optimisation, backlinks toxiques. Récupération partielle à 3-4 mois, stabilisation à 6-9 mois.
+            Aucun pourcentage ni délai de récupération ne peut être promis sans diagnostic. L'analyse cherche les causes techniques, éditoriales, concurrentielles et liées aux liens, puis propose des actions mesurables sans garantir le retour à une position passée.
           </div>
         </div>
 

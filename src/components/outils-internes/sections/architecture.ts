@@ -8,9 +8,9 @@ export const architectureHtml = `
         <h2 style="margin-top:14px">À quoi ressemble<br>un outil interne qu'on livre.</h2>
       </div>
       <div class="right">
-        Pas une slide marketing. L'architecture réelle d'un outil métier qu'on a livré,
-        simplifiée : utilisateurs internes via SSO, cœur métier Next.js, agents IA, <b>connecteurs
-        à votre SI existant</b> (Sage, Cegid, Active Directory). Tout est standard, auditable, remplaçable.
+        Une architecture de référence inspirée de nos produits internes : utilisateurs via SSO,
+        cœur métier, traitements automatisés et <b>connecteurs à votre SI existant</b>. Les composants,
+        fournisseurs, flux et exigences de réversibilité sont choisis et documentés au devis.
       </div>
     </div>
 
@@ -95,12 +95,12 @@ export const architectureHtml = `
         </g>
 
         <!-- DATA -->
-        <text x="60" y="388" font-family="Geist Mono" font-size="11" fill="#6D28D9" letter-spacing="0.08em">— VOS DONNÉES (HÉBERGÉES EN FRANCE)</text>
+        <text x="60" y="388" font-family="Geist Mono" font-size="11" fill="#6D28D9" letter-spacing="0.08em">— VOS DONNÉES (LOCALISATION AU DEVIS)</text>
         <g transform="translate(60 408)">
           <rect width="250" height="80" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">POSTGRESQL</text>
           <text x="20" y="50" font-family="Geist" font-size="14" font-weight="600" fill="#fff">Base métier principale</text>
-          <text x="20" y="68" font-family="Geist" font-size="11" fill="rgba(255,255,255,0.55)">Scaleway Paris / on-premise</text>
+          <text x="20" y="68" font-family="Geist" font-size="11" fill="rgba(255,255,255,0.55)">Fournisseur et région au devis</text>
         </g>
         <g transform="translate(330 408)">
           <rect width="250" height="80" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
@@ -112,13 +112,13 @@ export const architectureHtml = `
           <rect width="250" height="80" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">AUDIT LOG</text>
           <text x="20" y="50" font-family="Geist" font-size="14" font-weight="600" fill="#fff">Traçabilité horodatée</text>
-          <text x="20" y="68" font-family="Geist" font-size="11" fill="rgba(255,255,255,0.55)">Rétention 3 ans · exports CSV</text>
+          <text x="20" y="68" font-family="Geist" font-size="11" fill="rgba(255,255,255,0.55)">Rétention cadrée · exports CSV</text>
         </g>
         <g transform="translate(870 408)">
           <rect width="270" height="80" rx="10" fill="#171717" stroke="rgba(255,255,255,0.1)"/>
           <text x="20" y="28" font-family="Geist Mono" font-size="10" fill="#6D28D9" letter-spacing="0.06em">OBJECT STORE CHIFFRÉ</text>
           <text x="20" y="50" font-family="Geist" font-size="14" font-weight="600" fill="#fff">Documents + backups</text>
-          <text x="20" y="68" font-family="Geist" font-size="11" fill="rgba(255,255,255,0.55)">Scaleway Object · AES-256</text>
+          <text x="20" y="68" font-family="Geist" font-size="11" fill="rgba(255,255,255,0.55)">Stockage et chiffrement au devis</text>
         </g>
 
         <!-- LEGACY INTEGRATIONS -->
@@ -164,9 +164,8 @@ export const architectureHtml = `
         <span><span class="oi-arch-dot" style="background:#a3e47f"></span> Votre SI existant</span>
       </div>
       <p>
-        Le cœur métier est <b>chez vous</b> (on-premise possible), les données restent en France,
-        les connecteurs à votre SI sont explicites et auditables. Aucune boîte noire, aucun SaaS
-        tiers obligatoire. Votre DSI peut reprendre à tout moment.
+        Le schéma final précise l'hébergement, les flux, les sous-traitants, les accès et les conditions
+        de reprise. L'option on-premise et le niveau de réversibilité dépendent du périmètre convenu.
       </p>
     </div>
   </div>

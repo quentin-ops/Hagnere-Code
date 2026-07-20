@@ -100,6 +100,7 @@ export function ContactProjectSection({
       message: String(data.get("message") || "").trim(),
       honeypot: String(data.get("honeypot") || ""),
       mathChallenge: toMathChallengePayload(math),
+      consent: data.get("consent") === "on",
     };
 
     setStatus({ kind: "submitting" });
@@ -439,6 +440,16 @@ export function ContactProjectSection({
               error={errs.mathChallenge}
             />
 
+            <label className="sf-consent">
+              <input type="checkbox" name="consent" required />
+              <span>
+                J&apos;accepte que Hagnéré Code utilise ces informations uniquement
+                pour traiter et répondre à ma demande.{" "}
+                <a href="/legal/confidentialite">Politique de confidentialité</a>
+              </span>
+            </label>
+            {errs.consent && <em className="sf-consent-error">{errs.consent}</em>}
+
             <button
               type="submit"
               className="btn btn-primary btn-lg sf-submit"
@@ -476,10 +487,8 @@ export function ContactProjectSection({
             )}
 
             <p className="sf-legal-note">
-              En envoyant ce formulaire, vous acceptez que vos données soient
-              utilisées pour vous répondre. Pas de newsletter ni de vente de
-              données ; seuls les sous-traitants techniques nécessaires interviennent,
-              comme indiqué dans notre <a href="/legal/confidentialite">politique de confidentialité</a>.
+              Pas de newsletter ni de vente de données. Les sous-traitants
+              techniques nécessaires sont documentés dans notre politique.
             </p>
           </form>
         </div>
@@ -1244,7 +1253,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
 
           <div className="sf-foot-bot">
             <div>
-              © {new Date().getFullYear()} HAGNÉRÉ CODE SAS · RCS CHAMBÉRY 993
+              © {new Date().getUTCFullYear()} HAGNÉRÉ CODE SAS · RCS CHAMBÉRY 993
               672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF
               62.01Z · 82 impasse de Bellevue, 73000 Bassens
             </div>

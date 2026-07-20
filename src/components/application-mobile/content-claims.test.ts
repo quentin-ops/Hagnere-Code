@@ -12,6 +12,12 @@ describe("application mobile public claims", () => {
     expect(composedBodyHtml).not.toMatch(/garantie sur 2 stores/i);
   });
 
+  it("ne transforme pas des chiffres viraux en statistiques Apple ou produit", () => {
+    expect(composedBodyHtml).not.toMatch(/Apple[^<.]{0,100}(?:refuse|rejette)[^<.]{0,40}40\s*%/i);
+    expect(composedBodyHtml).not.toMatch(/désinstallée?[^<.]{0,60}(?:6|six) mois/i);
+    expect(composedBodyHtml).not.toMatch(/SLA\s*4\s*h/i);
+  });
+
   it("présente DPO et consentement des mineurs de façon conditionnelle", () => {
     expect(composedBodyHtml).not.toMatch(/données santé[^<.]{0,100}DPO obligatoire/i);
     expect(composedBodyHtml).not.toMatch(/mineurs[^<.]{0,100}double consentement parental/i);

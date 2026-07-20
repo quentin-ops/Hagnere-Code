@@ -733,7 +733,7 @@ export const bodyHtml = `${navHtml}
                     <span class="sep"></span>
                     <span><b>40 %</b> livraison</span>
                   </div>
-                  <div class="dc-q-footline">Hébergement 1 an · formation · 30 j de garantie · code sur votre Git</div>
+                  <div class="dc-q-footline">Hébergement, formation, correction et dépôt précisés au devis</div>
                 </div>
                 <div class="dc-q-tright">
                   <div class="dc-q-tcurrency">MONTANT TOTAL</div>
@@ -827,9 +827,9 @@ export const bodyHtml = `${navHtml}
           <div class="sf-pillar-n">04</div>
           <div class="sf-pillar-title">Code &amp; données à vous</div>
           <div class="sf-pillar-body">
-            Repo Git sur votre organisation, hébergement à votre nom,
-            documentation à jour en continu. Si vous arrêtez demain, vous
-            gardez tout — et toute autre agence peut reprendre la main.
+            Le devis inventorie le dépôt, l'hébergement, les accès, la documentation
+            et la passation. Les livrables spécifiques sont transférés après paiement
+            complet selon les CGV, avec les exclusions et licences applicables.
           </div>
         </div>
       </div>
@@ -898,10 +898,10 @@ export const bodyHtml = `${navHtml}
           <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg></div>
         </div>
         <h4>On livre et on reste.</h4>
-        <p>Formation des équipes, mise en ligne, <b>30 jours de garantie</b>. Puis forfait maintenance mensuel si vous voulez qu'on s'occupe du reste.</p>
+        <p>Formation, mise en ligne, recette et période de correction sont définies dans le devis. La maintenance ultérieure reste optionnelle.</p>
         <div class="meth-foot">
-          <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>J+30</div>
-          <div class="meth-tag guarantee">Garantie</div>
+          <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Au devis</div>
+          <div class="meth-tag guarantee">Recette</div>
         </div>
       </div>
     </div>
@@ -1335,20 +1335,20 @@ export const bodyHtml = `${navHtml}
         <!-- Stats -->
         <div class="eq-stats reveal reveal-d-3">
           <div class="eqs">
-            <div class="n">7</div>
-            <div class="l">développeurs travaillent avec le gérant</div>
+            <div class="n">${TEAM_TOTAL_COUNT}</div>
+            <div class="l">personnes au total, gérant et CTO compris</div>
           </div>
           <div class="eqs">
-            <div class="n">Senior</div>
-            <div class="l">niveau moyen de l'équipe tech</div>
+            <div class="n">${TEAM_OTHER_DEVELOPERS_COUNT}</div>
+            <div class="l">développeurs en plus du gérant et du CTO</div>
           </div>
           <div class="eqs">
             <div class="n">0</div>
             <div class="l">offshore, white-label, pool anonyme</div>
           </div>
           <div class="eqs">
-            <div class="n">100<span class="s"> %</span></div>
-            <div class="l">de l'équipe outillée avec Claude Code</div>
+            <div class="n">1</div>
+            <div class="l">source canonique pour l'effectif public</div>
           </div>
         </div>
       </div>
@@ -1427,7 +1427,7 @@ export const bodyHtml = `${navHtml}
       </div>
 
       <div class="plan featured reveal reveal-d-1">
-        <div class="plan-badge">LE PLUS CHOISI</div>
+        <div class="plan-badge">FORMULE INTERMÉDIAIRE</div>
         <div class="plan-tag">PROJET COMPLET</div>
         <h4>Standard</h4>
         <div class="plan-sub">Un SaaS, un outil interne ou une marketplace. Le sweet spot des PME ambitieuses.</div>
@@ -1467,7 +1467,7 @@ export const bodyHtml = `${navHtml}
     </div>
 
     <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
-      Tous les forfaits incluent : <b style="color:var(--ink)">propriété complète du code · repo Git chez vous · formation équipe · 30 jours de garantie post-livraison</b>
+      Chaque devis précise : <b style="color:var(--ink)">livrables et droits · dépôt et accès · formation · recette et éventuelle garantie</b>
     </p>
   </div>
 </section>
@@ -1499,8 +1499,9 @@ export const bodyHtml = `${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Vous, entièrement.</b> Le code est sur votre repo Git dès le jour 1. Les données sont hébergées
-            en France (Scaleway ou OVH) sous votre nom. Si vous arrêtez de travailler avec nous, vous gardez tout.
+            Les livrables spécifiques sont transférés après paiement complet selon les CGV. Le devis précise
+            le dépôt Git, les accès, l'hébergement, la région, les données et la réversibilité, avec les exclusions
+            liées aux composants préexistants, open source et services tiers.
           </div>
         </div>
 
@@ -1534,9 +1535,9 @@ export const bodyHtml = `${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            30 jours de garantie systématique. Après, deux options : soit on signe un <b>forfait maintenance
-            mensuel</b> (hébergement, bugs, petites évolutions), soit vous reprenez la main avec votre équipe tech.
-            Aucune option n'est obligatoire.
+            Le devis précise les critères de recette, la période de correction, les anomalies couvertes et les délais cibles.
+            Ensuite, vous pouvez choisir un <b>forfait de maintenance</b>, une intervention ponctuelle ou une reprise par votre équipe.
+            Aucune option n'est automatique.
           </div>
         </div>
 

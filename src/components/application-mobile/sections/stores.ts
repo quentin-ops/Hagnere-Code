@@ -8,8 +8,8 @@ export const storesHtml = `
         <h2>On gère la soumission<br>de A à Z, sous votre nom.</h2>
       </div>
       <div class="right">
-        Apple refuse 40 % des apps au 1ᵉʳ envoi (critère 2.1). On <b>prévoit 1 à 3 itérations dans le forfait</b>,
-        on connaît les pièges, on parle aux reviewers. Vos comptes développeur restent à votre nom — vous gardez le contrôle.
+        Apple et Google décident de l'acceptation et du délai de review. Le devis précise <b>les tests,
+        la préparation de la fiche et le nombre d'itérations incluses</b>. Les comptes développeur peuvent être créés à votre nom.
       </div>
     </div>
 
@@ -31,15 +31,15 @@ export const storesHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Génération certificats, profils provisioning, push APNs</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Fiche store : nom, description, mots-clés, captures iPhone + iPad</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Build EAS Submit · upload TestFlight beta</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Soumission App Review · 1 à 3 itérations gérées</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Réponse aux questions reviewer (en anglais, sous 12 h)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Soumission App Review · itérations définies au devis</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Réponse aux questions du reviewer selon le délai convenu</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>ASO (App Store Optimization) : titre, sous-titre, 100 mots-clés</li>
         </ul>
 
         <div class="mob-store-block-foot">
-          <span class="mob-store-block-pill">★ 24-48 h par cycle</span>
-          <span class="mob-store-block-pill">15 % commission &lt; 1M$ CA</span>
-          <span class="mob-store-block-pill">0 % sur biens physiques</span>
+          <span class="mob-store-block-pill">Délai décidé par Apple</span>
+          <span class="mob-store-block-pill">Règles vérifiées au cadrage</span>
+          <span class="mob-store-block-pill">Compte au nom du client</span>
         </div>
       </div>
 
@@ -66,9 +66,9 @@ export const storesHtml = `
         </ul>
 
         <div class="mob-store-block-foot">
-          <span class="mob-store-block-pill">★ 1-3 jours typique</span>
-          <span class="mob-store-block-pill">15 % commission &lt; 1M$ CA</span>
-          <span class="mob-store-block-pill">Wear OS &amp; Auto compatible</span>
+          <span class="mob-store-block-pill">Délai décidé par Google</span>
+          <span class="mob-store-block-pill">Règles vérifiées au cadrage</span>
+          <span class="mob-store-block-pill">Extensions selon périmètre</span>
         </div>
       </div>
     </div>
@@ -78,10 +78,10 @@ export const storesHtml = `
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3l18 18M21 3l-9 9-9-9M3 21l9-9 9 9"/></svg>
       </div>
       <div>
-        <div class="mob-stores-bonus-title">Bonus inclus : <b>OTA updates via EAS</b> dès le premier release</div>
+        <div class="mob-stores-bonus-title">Option à cadrer : <b>mises à jour OTA via EAS</b></div>
         <div class="mob-stores-bonus-sub">
-          Bug fix, changement de copy, correctif visuel : déployé en <b>10 minutes</b> sans repasser par Apple ou Google. Rollback en 1 clic.
-          Vous gardez la main même quand on n'est pas là.
+          Certaines mises à jour compatibles peuvent être diffusées sans nouvelle review. Les règles des stores,
+          la configuration EAS, la recette et la procédure de retour arrière sont documentées dans le devis.
         </div>
       </div>
     </div>

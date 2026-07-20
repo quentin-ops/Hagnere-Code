@@ -13,7 +13,7 @@ import { OG_BASE, SITE_URL, SERVICES_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Agence React : applications et interfaces · Hagnéré Code",
   description:
-    "Agence React : applications web, interfaces métier et espaces clients sur mesure. Forfait fixe dès 15 000 €, code livré chez vous, performance garantie.",
+    "Agence React à Bassens : applications web, interfaces métier et espaces clients. Périmètre, performance, livrables, accès et droits sont cadrés au devis.",
   authors: [{ name: "Quentin Hagnéré" }],
   creator: "Hagnéré Code",
   publisher: "Hagnéré Code",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "Agence React — Hagnéré Code",
     description:
-      "Développement React sur mesure : applications web, interfaces métier, espaces clients. Forfait fixe, code à vous, performance garantie par contrat.",
+      "Développement React sur mesure : applications web, interfaces métier et espaces clients. Prix, recette, livrables, accès et droits sont détaillés au devis.",
     url: "/agence-react",
     images: [SERVICES_OG_IMAGE],
   },
@@ -85,7 +85,7 @@ const faqItems = [
   {
     question: "Qui pourra reprendre le code après vous ?",
     answer:
-      "N'importe quel développeur React, et c'est un argument important. React est la bibliothèque la plus répandue de l'écosystème web : environ un développeur sur deux la pratique dans le monde. Vous n'êtes donc pas enfermé dans une technologie rare ou propriétaire. Nous y ajoutons trois garanties contractuelles : cession des droits conforme à l'article L131-3 du Code de la propriété intellectuelle, dépôt du code sur un compte à votre nom dès le premier jour, et documentation livrée. Notre guide pour choisir son agence web explique comment vérifier ces points chez n'importe quel prestataire, nous compris.",
+      "React s'appuie sur un écosystème largement diffusé, mais la reprise dépend surtout de la qualité du code, des versions, de la documentation et des accès. Le devis inventorie le dépôt, la documentation, la réversibilité, les droits transférés après paiement selon les CGV et les licences tierces. Notre guide pour choisir son agence web explique comment vérifier ces points.",
   },
   {
     question: "Faites-vous aussi le back-end, ou seulement l'interface ?",
@@ -95,7 +95,7 @@ const faqItems = [
   {
     question: "Travaillez-vous partout en France ?",
     answer:
-      "Oui. Nous sommes basés à Bassens, aux portes de Chambéry, en Savoie, et nous accompagnons des clients dans toute la France. Le développement d'application se conduit très bien à distance : cadrage et points d'étape en visioconférence, démonstrations en ligne à chaque livraison intermédiaire. Sur un projet applicatif, ces démonstrations régulières comptent plus que la proximité géographique — c'est ce qui vous permet de corriger le tir tôt plutôt que de découvrir un malentendu à la fin.",
+      "Oui. Nous sommes basés à Bassens, aux portes de Chambéry, en Savoie. Cadrage, points d'étape et démonstrations peuvent être conduits à distance partout en France, avec les mêmes critères de décision inscrits au devis.",
   },
 ];
 
@@ -112,14 +112,14 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{serviceJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[{ label: "Agence React" }]}
         heroTitle="Agence React : applications web et interfaces métier sur mesure"
-        heroDescription="Nous développons en React des applications d'entreprise, des espaces clients et des outils internes. Forfait fixe contractuel, code livré sur votre compte, garantie 30 jours. Basés à Bassens, aux portes de Chambéry, nous travaillons partout en France."
+        heroDescription="Nous développons en React des applications d'entreprise, des espaces clients et des outils internes. Le devis fixe prix, livrables, dépôt, droits, recette et période de correction. Basés à Bassens, aux portes de Chambéry, nous travaillons partout en France."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -159,7 +159,7 @@ export default function Page() {
             { id: "react-ou-nextjs", label: "2. React ou Next.js : lequel pour votre projet" },
             { id: "pourquoi", label: "3. Pourquoi React, en termes concrets" },
             { id: "reprise", label: "4. Reprendre une application existante" },
-            { id: "garanties", label: "5. Ce que nous garantissons par contrat" },
+            { id: "garanties", label: "5. Ce que le devis doit préciser" },
             { id: "prix", label: "6. Budgets et délais" },
             { id: "quand-non", label: "7. Quand React n'est pas la bonne réponse" },
             { id: "stack", label: "8. Notre stack technique" },
@@ -272,18 +272,17 @@ export default function Page() {
           trois choses à corriger, ça vous coûtera quelques jours ». Nous le
           disons quand c&apos;est le cas, même si une reconstruction complète
           serait beaucoup plus rentable pour nous. La raison est simple :{" "}
-          <strong>un client à qui on a vendu une refonte inutile ne
-          revient jamais</strong>, et il le raconte. C&apos;est un calcul de
-          long terme, pas de la générosité.
+          <strong>vendre une refonte inutile détruit la confiance</strong>.
+          La recommandation doit donc partir des preuves observées dans le code.
         </InfoBox>
 
-        <h2 id="garanties">5. Ce que nous garantissons par contrat</h2>
+        <h2 id="garanties">5. Ce que le devis doit préciser</h2>
         <GuideTable
           headers={["Engagement", "Ce que ça signifie"]}
           rows={[
             ["Forfait fixe contractuel", "Périmètre écrit, prix arrêté après cadrage, aucun dépassement surprise. Tout ajout passe par un avenant chiffré"],
-            ["Propriété du code", "Cession des droits écrite (article L131-3 CPI), dépôt sur un compte à votre nom dès le premier jour, documentation livrée"],
-            ["Garantie 30 jours", "Toute anomalie constatée dans le mois suivant la mise en production est corrigée sans supplément"],
+            ["Livrables et droits", "Transfert des livrables spécifiques après paiement selon les CGV ; dépôt, accès, documentation, exclusions et licences listés"],
+            ["Recette et correction", "Durée, sévérités couvertes, procédure de signalement et délais cibles écrits"],
             ["Démonstrations régulières", "Vous voyez l'application avancer à chaque étape plutôt que de découvrir le résultat à la fin"],
           ]}
         />

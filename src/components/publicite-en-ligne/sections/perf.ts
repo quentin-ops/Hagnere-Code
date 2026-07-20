@@ -4,12 +4,12 @@ export const perfHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— ROI mesuré, pas vanity</div>
-        <h2>Le SEO qu'on fait<br>se mesure en euros.</h2>
+        <div class="eyebrow">— Mesure utile, pas vanity</div>
+        <h2>Relier le SEO<br>aux résultats métier.</h2>
       </div>
       <div class="right">
-        Vous n'achetez pas des positions Google. Vous achetez du <b>trafic qualifié, des leads, du CA</b>.
-        Notre reporting le prouve chaque mois — pas dans 12 mois.
+        Le reporting rapproche les clics, les conversions et les données commerciales lorsque le consentement,
+        l'instrumentation et le CRM le permettent. Il distingue corrélation, attribution et revenu réellement constaté.
       </div>
     </div>
 
@@ -44,8 +44,8 @@ export const perfHtml = `
             <span class="ads-perf-cwv-full">Clics organiques (Search Console)</span>
           </div>
           <div class="ads-perf-cwv-val">
-            <b>+ 80 à + 300 %</b>
-            <span>en 9–12 mois</span>
+            <b>Baseline → évolution</b>
+            <span>clics qualifiés observés</span>
           </div>
           <div class="ads-perf-cwv-bar"><i style="width:88%"></i></div>
         </div>
@@ -56,8 +56,8 @@ export const perfHtml = `
             <span class="ads-perf-cwv-full">Mots-clés en top 10 Google</span>
           </div>
           <div class="ads-perf-cwv-val">
-            <b>120 à 400</b>
-            <span>nouveaux MC sur 9 mois</span>
+            <b>Intentions utiles</b>
+            <span>requêtes segmentées</span>
           </div>
           <div class="ads-perf-cwv-bar"><i style="width:82%"></i></div>
         </div>
@@ -68,8 +68,8 @@ export const perfHtml = `
             <span class="ads-perf-cwv-full">Domain Rating (Ahrefs)</span>
           </div>
           <div class="ads-perf-cwv-val">
-            <b>DR + 15 à + 25</b>
-            <span>en 10–12 mois</span>
+            <b>Sources vérifiables</b>
+            <span>liens et mentions suivis</span>
           </div>
           <div class="ads-perf-cwv-bar"><i style="width:72%"></i></div>
         </div>
@@ -80,15 +80,16 @@ export const perfHtml = `
             <span class="ads-perf-cwv-full">Revenu organique attribuable</span>
           </div>
           <div class="ads-perf-cwv-val">
-            <b>ROI × 3 à × 6</b>
-            <span>vs SEA équivalent</span>
+            <b>Revenu attribuable</b>
+            <span>modèle documenté</span>
           </div>
           <div class="ads-perf-cwv-bar"><i style="width:90%"></i></div>
         </div>
 
         <div class="ads-perf-cwv-note">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/><path d="M9 12l2 2 4-4"/></svg>
-          <b>Ces plages sont documentées sur des cas clients récents</b>, screenshots Search Console vérifiables en call. Aucune promesse de position spécifique — Google l'interdit, on ne joue pas à ce jeu-là.
+          <b>Tableau de démonstration, sans données client ni promesse de résultat.</b> Les objectifs,
+          sources et règles d'attribution sont définis au cadrage puis rapprochés des données observées.
         </div>
       </div>
     </div>

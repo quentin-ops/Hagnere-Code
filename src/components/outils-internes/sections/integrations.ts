@@ -5,12 +5,12 @@ export const integrationsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— On parle à votre SI existant</div>
-        <h2>Sage, Cegid, Active Directory :<br>on sait les brancher.</h2>
+        <h2>Sage, Cegid, Active Directory :<br>on vérifie comment les relier.</h2>
       </div>
       <div class="right">
-        Un outil interne sans intégration, c'est un nouveau silo. On commence toujours par
-        lister votre stack existante et on prévoit les connecteurs <b>dès la v1</b>, pas en option.
-        Voilà ce qu'on sait intégrer — le reste, si l'API existe, on l'apprend.
+        Un outil interne sans intégration peut devenir un nouveau silo. On commence par lister les systèmes,
+        versions, contrats, API, droits et propriétaires. Les noms ci-dessous sont des <b>candidats à étudier</b>,
+        pas une liste de connecteurs déjà certifiés ni une promesse de compatibilité universelle.
       </div>
     </div>
 
@@ -143,7 +143,8 @@ export const integrationsHtml = `
 
     <div class="oi-integ-foot reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M12 8V4M4 12h6M14 12h6"/></svg>
-      Votre outil n'est pas listé ? S'il a une API REST / SOAP, un flux FTP programmé ou un export CSV, on le branche. Si vraiment rien n'existe, on propose un connecteur à bâtir.
+      Votre outil n'est pas listé ? Une étude vérifie la documentation, les droits, les quotas, les formats,
+      la sécurité et la reprise sur erreur avant de chiffrer le connecteur.
     </div>
   </div>
 </section>

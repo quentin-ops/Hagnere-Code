@@ -5,11 +5,11 @@ export const timelineHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Ce qui se passe, semaine par semaine</div>
-        <h2>De la signature à la mise en prod,<br>en 6 semaines types.</h2>
+        <h2>De la signature à la mise en prod,<br>un déroulé illustratif.</h2>
       </div>
       <div class="right">
-        Un projet Pro typique. On contractualise les dates au kickoff, avec pénalité de retard
-        écrite dès <b>J+7</b> après la date annoncée. Les jalons ci-dessous sont des points
+        Exemple de séquencement, sans engagement de délai. Le devis contractualise les dates, les dépendances, les causes de report
+        et les éventuelles conséquences d'un retard. Les jalons ci-dessous sont des points
         vérifiables par votre chef de projet — pas des slogans.
       </div>
     </div>
@@ -37,12 +37,12 @@ export const timelineHtml = `
         <div class="oi-tl-week">SEMAINE 1</div>
         <div class="oi-tl-phase">SOCLE TECHNIQUE + SSO</div>
         <div class="oi-tl-body">
-          <p>Repo Git chez vous. SSO Azure AD / Active Directory en place. Modèle de données validé avec votre DAF. Environnement de staging accessible à vos référents.</p>
+          <p>Dépôt et accès selon le devis. Le SSO, le modèle de données et l'environnement de staging sont mis en place lorsqu'ils figurent dans le périmètre.</p>
           <ul class="oi-tl-deliv">
-            <li>Repo Git livré</li>
-            <li>SSO fonctionnel</li>
-            <li>Staging URL</li>
-            <li>1er demo call</li>
+            <li>Dépôt configuré</li>
+            <li>SSO si prévu</li>
+            <li>Staging si prévu</li>
+            <li>Revue planifiée</li>
           </ul>
         </div>
       </div>
@@ -97,12 +97,12 @@ export const timelineHtml = `
         <div class="oi-tl-week">SEMAINE 6</div>
         <div class="oi-tl-phase">GO LIVE · PRODUCTION</div>
         <div class="oi-tl-body">
-          <p>Mise en production. Monitoring actif 7 jours. Standby senior pour incidents J+1 à J+7. Garantie 30 jours puis forfait maintenance optionnel (290 €/mois).</p>
+          <p>Mise en production, surveillance, support de lancement et période de correction selon la couverture et les délais inscrits au devis.</p>
           <ul class="oi-tl-deliv">
             <li>Go live signé</li>
             <li>Monitoring</li>
             <li>Runbook remis</li>
-            <li>Garantie 30j</li>
+            <li>Correction au devis</li>
           </ul>
         </div>
       </div>
@@ -110,14 +110,14 @@ export const timelineHtml = `
       <div class="oi-tl-step oi-tl-step-future reveal reveal-d-2">
         <div class="oi-tl-dot oi-tl-dot-future"></div>
         <div class="oi-tl-week">J+30 &amp; J+90</div>
-        <div class="oi-tl-phase">Q&amp;A ADOPTION — INCLUS AU FORFAIT</div>
+        <div class="oi-tl-phase">Q&amp;A ADOPTION — SI PRÉVU AU DEVIS</div>
         <div class="oi-tl-body">
-          <p>Sessions retour d'expérience avec vos équipes. Mesure du temps réellement gagné. Ajustements gratuits sur les irritants restants. Pas un support payant.</p>
+          <p>Sessions de retour d'expérience, mesure des usages et traitement des irritants selon la couverture prévue au devis.</p>
           <ul class="oi-tl-deliv">
             <li>Session J+30</li>
             <li>Session J+90</li>
             <li>KPIs adoption</li>
-            <li>Ajustements inclus</li>
+            <li>Couverture au devis</li>
           </ul>
         </div>
       </div>
@@ -126,12 +126,11 @@ export const timelineHtml = `
     <div class="oi-tl-foot reveal">
       <div class="oi-tl-foot-k">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        Chaque date est contractualisée
+        Les dates du projet sont contractualisées
       </div>
       <div class="oi-tl-foot-v">
-        Au cadrage, on fixe la date de livraison dans le contrat — avec <b>pénalité de 7 % du forfait
-        par semaine de retard</b> au-delà de J+14. La date n'est pas une intention : c'est une clause,
-        et on la paie si on ne la tient pas.
+        Le contrat fixe le calendrier, les dépendances client et le traitement d'un retard.
+        Une pénalité ou remise ne s'applique que si elle figure dans le document signé.
       </div>
     </div>
   </div>

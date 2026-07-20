@@ -60,7 +60,7 @@ export const whatWeDoHtml = `
           <span class="ads-wwd-badge ads-wwd-badge-meta">Meta</span>
         </div>
         <h3>Meta Ads · Prospection &amp; DPA retargeting</h3>
-        <p>Advantage+ Shopping Campaigns, audiences custom 1P, lookalikes propres, DPA produit catalogue, Reels-first creative strategy. <b>CAPI + Enhanced Match en série</b>, sinon vous pilotez aveugle.</p>
+        <p>Advantage+ Shopping Campaigns, audiences first-party, lookalikes, catalogue produit et créations adaptées peuvent être combinés. <b>CAPI et correspondance avancée ne sont activés que si le besoin, le consentement et la plateforme le permettent</b>.</p>
         <div class="ads-wwd-tags">
           <span class="ads-wwd-tag">Advantage+</span>
           <span class="ads-wwd-tag">DPA retargeting</span>
@@ -78,7 +78,7 @@ export const whatWeDoHtml = `
           <span class="ads-wwd-badge ads-wwd-badge-linkedin">LinkedIn</span>
         </div>
         <h3>LinkedIn Ads B2B · ABM &amp; Lead Gen</h3>
-        <p>Matched Audiences sur vos listes de comptes cibles, Lead Gen Forms pré-remplis, Thought Leadership Ads aux posts des dirigeants. <b>CPL 60-180 €</b> sur ICP précis, pas 600 € sur du bruit.</p>
+        <p>Matched Audiences sur des listes autorisées, Lead Gen Forms et Thought Leadership Ads peuvent servir un ciblage B2B. <b>Le CPL cible est calculé à partir de votre marge, de votre taux de transformation et des données du compte</b>, pas d'une fourchette universelle.</p>
         <div class="ads-wwd-tags">
           <span class="ads-wwd-tag">ABM</span>
           <span class="ads-wwd-tag">Lead Gen Forms</span>
@@ -114,7 +114,7 @@ export const whatWeDoHtml = `
           <span class="ads-wwd-badge ads-wwd-badge-tracking">Mesure</span>
         </div>
         <h3>Tracking server-side · GTM SS + CAPI</h3>
-        <p>Conteneur GTM Server déployé chez vous, Meta CAPI + Google Enhanced + LinkedIn Insight, Consent Mode v2, first-party cookies. <b>Ce qui récupère 30 à 50 % de signaux perdus</b> post-iOS 14.</p>
+        <p>Conteneur GTM Server, Meta CAPI, Google Enhanced Conversions, LinkedIn Insight ou Consent Mode v2 selon le plan de mesure. <b>Aucun volume de signal récupéré n'est promis</b>.</p>
         <div class="ads-wwd-tags">
           <span class="ads-wwd-tag">GTM Server</span>
           <span class="ads-wwd-tag">CAPI / Enhanced</span>
@@ -132,8 +132,8 @@ export const whatWeDoHtml = `
           </div>
           <span class="ads-wwd-badge ads-wwd-badge-creative">Creative</span>
         </div>
-        <h3>Creative Studio · motion, UGC, copy</h3>
-        <p>Pipeline de 8 à 12 variantes/mois&nbsp;: motion design, UGC sourcé et briefé, copywriting angulaire (pain / dream / proof). Tests par hooks, par offres, par formats. <b>Fini les ads qui tournent 6 mois et fatiguent.</b></p>
+        <h3>Production créative · motion, UGC, copy</h3>
+        <p>Formats, volume, créateurs, droits UGC et rythme de renouvellement sont définis dans la proposition. Les intervenants internes ou externes sont nommés avant engagement.</p>
         <div class="ads-wwd-tags">
           <span class="ads-wwd-tag">Motion</span>
           <span class="ads-wwd-tag">UGC</span>
@@ -151,7 +151,7 @@ export const whatWeDoHtml = `
           <span class="ads-wwd-badge ads-wwd-badge-reporting">Reporting</span>
         </div>
         <h3>Reporting business · CRM × Ads × margin</h3>
-        <p>Looker Studio live connecté à Ads + CRM + ERP. Vue par canal, par campagne, par produit — <b>CAC, LTV, payback, margin contribuée</b>. Point hebdo 30 min + alertes anomalies Slack. Fini les PDF d'impressions.</p>
+        <p>Looker Studio relié aux sources prévues au devis. Les indicateurs calculables, la fréquence d'actualisation, la revue et les alertes dépendent des accès et connecteurs disponibles.</p>
         <div class="ads-wwd-tags">
           <span class="ads-wwd-tag">Looker Studio</span>
           <span class="ads-wwd-tag">CAC / LTV</span>

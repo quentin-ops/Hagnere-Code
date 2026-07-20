@@ -6,7 +6,7 @@ export const faqHtml = `
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ</div>
         <h2 style="margin-top:14px">Les 12 questions<br>qu'on nous pose<br>avant de signer.</h2>
-        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par un consultant senior, sans détour.</p>
+        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Nous vous répondons avec le périmètre, les hypothèses et l'interlocuteur pressenti.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
@@ -33,7 +33,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Refus de principe&nbsp;: <b>conflit d'intérêt structurel</b>. Une agence rémunérée au pourcentage a intérêt à pousser votre budget, pas à faire baisser votre CAC. Le forfait fixe aligne nos objectifs sur les vôtres&nbsp;: efficacité, pas gonflette du spend.
+            Nous préférons un forfait lisible, car une commission augmente avec le budget média. Cela ne rend pas automatiquement un modèle au pourcentage mauvais&nbsp;: comparez le périmètre, les incitations et le coût total.
           </div>
         </div>
 
@@ -87,7 +87,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            En dessous de <b>8 k€/mois de budget media</b>, notre forfait n'a pas un ROI évident — un freelance à la tâche suffit. Entre 8 et 20 k€ : forfait Starter pertinent. Entre 20 et 60 k€ : Scale. Au-delà de 60 k€ : Premium. C'est une règle empirique, pas une interdiction — on en discute en call.
+            Il n'existe pas de seuil universel. Le bon niveau dépend de votre marge, de la valeur d'une conversion, du volume nécessaire pour apprendre et du coût de la prestation. Le cadrage calcule un seuil de rentabilité avec vos données avant de recommander un format.
           </div>
         </div>
 
@@ -96,7 +96,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Tout <b>in-house</b>&nbsp;: motion design (After Effects), statics (Figma + AdKit), UGC (briefé par nous à des créateurs français vérifiés). Vous voyez les créateurs, vous validez les briefs, vous approuvez les livraisons avant mise en production. Pas de plateforme UGC low-cost qui livre de la bouillie.
+            La proposition nomme la personne qui conçoit chaque format et indique son statut interne ou externe. Hagnéré Code ne revendique pas un studio créatif permanent absent de l'équipe publique. Les créateurs, droits et étapes de validation sont approuvés avant diffusion.
           </div>
         </div>
 

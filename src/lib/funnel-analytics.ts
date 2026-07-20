@@ -34,6 +34,7 @@ export function trackFunnelEvent(
   props: EventProps = {},
 ): void {
   if (typeof window === "undefined") return;
+  if (!isAnalyticsAllowed()) return;
 
   // Strip undefined values — most analytics dislike them.
   const cleanProps: EventProps = {};
@@ -82,3 +83,4 @@ export function trackFunnelEvent(
     console.debug(`[analytics] ${name}`, cleanProps);
   }
 }
+import { isAnalyticsAllowed } from "@/lib/cookie-consent";

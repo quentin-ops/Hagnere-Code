@@ -4,7 +4,10 @@ import { eq } from "drizzle-orm";
 import { randomBytes } from "node:crypto";
 import { getClientIp } from "@/lib/rate-limit";
 import { checkServiceRateLimit, hashEmail, logAiCall } from "@/lib/ai-rate-limit";
-import { isValidMathChallenge } from "@/lib/math-challenge";
+import {
+  getMathChallengeSecret,
+  isValidMathChallenge,
+} from "@/lib/math-challenge";
 import { getDb } from "@/db";
 import { projectBrief } from "@/db/schema";
 import { log } from "@/lib/logger";
@@ -56,6 +59,10 @@ type Body = {
 function asStringArray(v: unknown): string[] {
   if (!Array.isArray(v)) return [];
   return v.filter((x): x is string => typeof x === "string").slice(0, 64);
+}
+
+function asText(value: unknown): string {
+  return typeof value === "string" ? value : "";
 }
 
 const CALENDLY_URL = "https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte";
@@ -148,15 +155,24 @@ export async function POST(request: Request) {
 
   // 1. Anti-bot honeypot: bots fill every field, humans never see it.
   // Feign success silently so the bot doesn't retry.
-  if (body.honeypot) {
+  if (asText(body.honeypot)) {
     return NextResponse.json({ ok: true });
   }
 
-  // 2. Anti-bot : question de calcul générée côté client, revalidée ici
-  // (bornes + somme). Remplace Cloudflare Turnstile — zéro dépendance
-  // externe. Couplé au honeypot (au-dessus) et au rate limit (en-dessous),
-  // ça bloque les bots génériques qui POSTent sans exécuter le formulaire.
-  if (!isValidMathChallenge(body.mathChallenge)) {
+  // 2. Anti-bot : l'équation a été émise et signée côté serveur. Le POST ne
+  // peut pas choisir ses propres opérandes. Sans secret valide, on échoue de
+  // façon conservatrice et on laisse l'email/téléphone comme solution de repli.
+  const mathChallengeSecret = getMathChallengeSecret();
+  if (!mathChallengeSecret) {
+    return NextResponse.json(
+      {
+        error:
+          "Le contrôle anti-robot est temporairement indisponible. Écrivez à quentin@hagnere-patrimoine.fr ou réessayez plus tard.",
+      },
+      { status: 503 },
+    );
+  }
+  if (!isValidMathChallenge(body.mathChallenge, mathChallengeSecret)) {
     await logAiCall({
       service: "inquiry",
       ip,
@@ -177,15 +193,26 @@ export async function POST(request: Request) {
   // routes via la table ai_call_log filtrée par service='inquiry').
   // On extrait l'email AVANT validation pour pouvoir compter par email
   // même sur les payloads invalides.
-  // Fail-open sur erreur DB : le rate limit est une protection best-effort,
-  // il ne doit jamais bloquer la capture d'un lead (cohérent avec le reste
-  // de la route où la DB est best-effort).
-  const emailFromBody = (body.email || "").trim() || null;
+  // Le rate limit protège une ressource externe (email). Une panne de son
+  // stockage ne doit pas transformer la route en relais de spam : fail closed.
+  const emailFromBody = asText(body.email).trim().slice(0, 200) || null;
   let rateCheck: Awaited<ReturnType<typeof checkServiceRateLimit>>;
   try {
-    rateCheck = await checkServiceRateLimit(ip, emailFromBody, "inquiry");
-  } catch {
-    rateCheck = { allowed: true };
+    rateCheck = await checkServiceRateLimit(
+      ip,
+      emailFromBody,
+      "inquiry",
+      userAgent,
+    );
+  } catch (err) {
+    log.error("project_inquiry_rate_limit_unavailable", { err: err as Error });
+    return NextResponse.json(
+      {
+        error:
+          "Le formulaire est temporairement indisponible. Écrivez à quentin@hagnere-patrimoine.fr ou réessayez plus tard.",
+      },
+      { status: 503 },
+    );
   }
   if (!rateCheck.allowed) {
     await logAiCall({
@@ -205,18 +232,18 @@ export async function POST(request: Request) {
     );
   }
 
-  const firstName = (body.firstName || "").trim().slice(0, 80);
-  const lastName = (body.lastName || "").trim().slice(0, 80);
-  const email = (body.email || "").trim().slice(0, 200);
-  const company = (body.company || "").trim().slice(0, 120);
-  const projectType = (body.projectType || "").trim().slice(0, 120);
-  const timeline = (body.timeline || "").trim().slice(0, 80);
-  const budget = (body.budget || "").trim().slice(0, 40);
+  const firstName = asText(body.firstName).trim().slice(0, 80);
+  const lastName = asText(body.lastName).trim().slice(0, 80);
+  const email = asText(body.email).trim().slice(0, 200);
+  const company = asText(body.company).trim().slice(0, 120);
+  const projectType = asText(body.projectType).trim().slice(0, 120);
+  const timeline = asText(body.timeline).trim().slice(0, 80);
+  const budget = asText(body.budget).trim().slice(0, 40);
   // 9000 : le message du funnel est un brief structuré complet — le
   // client compile jusqu'à 8000 caractères (brief-format.ts) plus un
   // en-tête ; la marge évite de tronquer les dernières lignes du brief.
-  const message = (body.message || "").trim().slice(0, 9000);
-  const phone = (body.phone || "").trim().slice(0, 40);
+  const message = asText(body.message).trim().slice(0, 9000);
+  const phone = asText(body.phone).trim().slice(0, 40);
   const fullName = `${firstName} ${lastName}`.trim();
 
   const errors: Record<string, string> = {};
@@ -225,6 +252,7 @@ export async function POST(request: Request) {
   if (!email || !isValidEmail(email)) errors.email = "Email invalide";
   if (!company) errors.company = "Entreprise requise";
   if (!message || message.length < 10) errors.message = "Décrivez votre projet en 1-2 phrases";
+  if (body.consent !== true) errors.consent = "Votre accord est requis pour traiter cette demande";
   if (!isPlausibleLabel(budget)) errors.budget = "Budget invalide";
   if (!isPlausibleLabel(projectType)) errors.projectType = "Type de projet invalide";
   if (!isPlausibleLabel(timeline)) errors.timeline = "Échéance invalide";
@@ -272,20 +300,20 @@ export async function POST(request: Request) {
         email,
         phone: phone || null,
         company,
-        role: body.role?.trim().slice(0, 80) || null,
-        siren: body.siren?.replace(/\s/g, "").slice(0, 20) || null,
+        role: asText(body.role).trim().slice(0, 80) || null,
+        siren: asText(body.siren).replace(/\s/g, "").slice(0, 20) || null,
         projectKinds: asStringArray(body.projectKinds),
         objectives: asStringArray(body.objectives),
-        description: body.description?.slice(0, 4000) || null,
-        currentSituation: body.currentSituation?.slice(0, 2000) || null,
-        audience: body.audience?.slice(0, 1000) || null,
+        description: asText(body.description).slice(0, 4000) || null,
+        currentSituation: asText(body.currentSituation).slice(0, 2000) || null,
+        audience: asText(body.audience).slice(0, 1000) || null,
         mustHaves: asStringArray(body.mustHaves),
         integrations: asStringArray(body.integrations),
         existingAssets: asStringArray(body.existingAssets),
-        openScope: body.openScope?.slice(0, 2000) || null,
+        openScope: asText(body.openScope).slice(0, 2000) || null,
         timeline: timeline || null,
         budget: budget || null,
-        decisionStage: body.decisionStage?.slice(0, 200) || null,
+        decisionStage: asText(body.decisionStage).slice(0, 200) || null,
         consent: body.consent === true,
         ip: getClientIp(request),
         userAgent: request.headers.get("user-agent")?.slice(0, 500) || null,

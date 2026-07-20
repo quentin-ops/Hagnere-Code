@@ -73,11 +73,11 @@ export default function GuidesPage() {
           page. */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd }}
+        dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: collectionJsonLd }}
+        dangerouslySetInnerHTML={{ __html: collectionJsonLd.replace(/</g, "\\u003c") }}
       />
       <GuidesHubPage />
     </>

@@ -61,8 +61,8 @@ const breadcrumbJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{rdvJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: rdvJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <RendezVousPage />
     </>
   );

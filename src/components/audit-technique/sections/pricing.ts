@@ -18,18 +18,18 @@ export const pricingHtml = `
       <div class="plan reveal">
         <div class="plan-tag">EXPRESS · URGENCE</div>
         <h4>Express</h4>
-        <div class="plan-sub">Post-incident, pré-décision urgente, 2e avis rapide. 3-5 jours · 1 senior · livrable Notion + Loom 15 min. Sans deck board-ready.</div>
+        <div class="plan-sub">Post-incident, pré-décision urgente ou second avis ciblé. Durée, intervenants et livrable confirmés après cadrage.</div>
         <div class="plan-price">
           <span class="amount">8 000 €</span>
           <span class="per">HT · fixe · one-shot</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>3 à 5 j · 1 senior dédié</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Durée et intervenants au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>4 à 5 dimensions couvertes</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livrable Notion + Loom 15 min</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tech Debt P&amp;L simplifié</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Démarrage sous 3 j ouvrés</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Démarrage selon disponibilités et accès</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Éventuelle remise indiquée au devis</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Cadrer l'Express</a></div>
@@ -37,7 +37,7 @@ export const pricingHtml = `
 
       <!-- STANDARD (featured) -->
       <div class="plan featured reveal reveal-d-1">
-        <div class="plan-badge">LE PLUS CHOISI</div>
+        <div class="plan-badge">FORMULE INTERMÉDIAIRE</div>
         <div class="plan-tag">STANDARD · 10 J</div>
         <h4>Standard</h4>
         <div class="plan-sub">Le format complet&nbsp;: 8 dimensions couvertes, rapport board-ready, Tech Debt P&amp;L, deck 12-18 slides. Baseline CTO, pré-levée, SOC2-gap, go/no-go.</div>
@@ -47,7 +47,7 @@ export const pricingHtml = `
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>10 j ouvrés · 2 seniors + un lead</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Calendrier et intervenants nommés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg><b>8 dimensions couvertes · scoring /100</b></li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tech Debt P&amp;L chiffré en euros</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Deck 12-18 slides board-ready</li>
@@ -65,21 +65,21 @@ export const pricingHtml = `
       <div class="plan reveal reveal-d-2">
         <div class="plan-tag">DEEP · REFONTE / LEVÉE</div>
         <h4>Deep</h4>
-        <div class="plan-sub">Pour les décisions &gt; 500 k€&nbsp;: go/no-go refonte, Série B côté vendeur, gros gap SOC2. 15-20 jours · 3 seniors + architecte + lead.</div>
+        <div class="plan-sub">Pour une décision complexe&nbsp;: go/no-go refonte, levée côté vendeur ou écart de contrôle important. Dispositif confirmé au devis.</div>
         <div class="plan-price">
           <span class="amount">38 000 €</span>
           <span class="per">HT · fixe · one-shot</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>15 à 20 j · 3 seniors + architecte + lead</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Calendrier et compétences au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout inclus dans Standard &nbsp;·&nbsp; plus&nbsp;:</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Rapport 60-80 p. (vs. 40-70)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>3 scenarios chiffrés sur 3 ans</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Restitution trilatérale CEO + CTO + CFO</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Dashboard comparatif opex vs capex</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Version data-room contrôlée (levée)</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Démarrage sous 5 j ouvrés</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Démarrage selon disponibilités et accès</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Cadrer le Deep</a></div>
       </div>
@@ -88,22 +88,22 @@ export const pricingHtml = `
       <div class="plan reveal reveal-d-3">
         <div class="plan-tag">TECH DD · M&amp;A</div>
         <h4>Tech DD M&amp;A</h4>
-        <div class="plan-sub">Pour les acquéreurs&nbsp;: DD avant rachat scale-up. 20-30 jours · 4 pers. dédiées + lead · coordination avocats.</div>
+        <div class="plan-sub">Pour les acquéreurs&nbsp;: due diligence avant opération, avec coordination des conseils et intervenants définie au cas par cas.</div>
         <div class="plan-price">
           <span class="amount">68 000 €</span>
           <span class="per">HT · fixe · one-shot</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>20 à 30 j · 4 pers. dédiées</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Calendrier et intervenants au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout inclus dans Deep &nbsp;·&nbsp; plus&nbsp;:</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Rapport format M&amp;A 80-120 p.</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Analyse licences OSS · IP · copyright</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Liste deal-breakers flaggés go/no-go</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Coordination avocats M&amp;A · clauses garantie</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Restitution comité investissement</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>NDA renforcé · attorney-client privilege</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Démarrage sous 3 j ouvrés</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Confidentialité coordonnée avec vos conseils</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Démarrage selon disponibilités et accès</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parler à un expert</a></div>
       </div>

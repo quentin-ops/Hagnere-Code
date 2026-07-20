@@ -82,11 +82,11 @@ export const verticalsHtml = `
           <span class="me-vt-tag">● Courant</span>
         </div>
         <h3>Secteurs réglementés</h3>
-        <p>Banque, assurance, santé, juridique, data sensible. <b>RGPD renforcé, SOC2-ready, ISO27001-ready, DPO, DPA avec sous-traitants documentés</b>. Logs chiffrés, accès traçés, revue sécurité trimestrielle.</p>
+        <p>Banque, assurance, santé, juridique ou données sensibles. <b>Le référentiel, les rôles RGPD, le DPA, les sous-traitants et les preuves attendues doivent être cadrés avec votre conseil ou votre DPO</b>.</p>
         <div class="me-vt-feats">
-          <span>SOC2-ready</span>
+          <span>Référentiel cadré</span>
           <span>Audit logs</span>
-          <span>DPA complet</span>
+          <span>DPA au périmètre</span>
         </div>
       </div>
 

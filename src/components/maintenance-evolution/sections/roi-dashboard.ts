@@ -5,13 +5,13 @@ export const roiDashboardHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ce qu'on signe, noir sur blanc</div>
-        <h2>SLA 99,95 % contractuel.<br>Les 4 métriques DORA qu'on<br>s'engage à publier.</h2>
+        <div class="eyebrow">— Exemple de tableau de service</div>
+        <h2>Un SLA utile doit être<br>mesurable, attribuable<br>et adapté à la stack.</h2>
       </div>
       <div class="right">
-        Pas des engagements marketing vagues&nbsp;: des seuils écrits dans le contrat, calibrés sur le
-        référentiel DORA et sur ce qu'on applique déjà à nos quatre produits maison.
-        <b>Auto-calculés via Better Stack + GitHub Actions</b>, publiés chaque trimestre sur votre Statuspage.
+        Les valeurs ci-dessous illustrent un niveau exigeant&nbsp;: elles ne constituent ni une moyenne client,
+        ni une offre automatique. Le devis retient les indicateurs, sources, fenêtres de mesure, exclusions
+        et conséquences compatibles avec votre architecture et votre budget.
       </div>
     </div>
 
@@ -22,7 +22,7 @@ export const roiDashboardHtml = `
       <div class="me-roi-dial-card">
         <div class="me-roi-dial-head">
           <span class="me-roi-dial-k">UPTIME SLA</span>
-          <span class="me-roi-dial-meta">Plancher contractuel</span>
+          <span class="me-roi-dial-meta">Exemple à négocier</span>
         </div>
 
         <!-- SVG arc gauge -->
@@ -54,14 +54,14 @@ export const roiDashboardHtml = `
 
           <div class="me-roi-dial-value">
             <span class="v">99,95<span style="font-size:0.5em;color:#6EE7B7;margin-left:2px">%</span></span>
-            <span class="k">Uptime mensuel engagé</span>
+            <span class="k">Cible mensuelle illustrative</span>
           </div>
         </div>
 
         <div class="me-roi-dial-foot">
-          <span class="me-roi-dial-chip">Better Stack</span>
-          <span class="me-roi-dial-chip">Contractuel</span>
-          <span class="me-roi-dial-chip">Public</span>
+          <span class="me-roi-dial-chip">Source à définir</span>
+          <span class="me-roi-dial-chip">Exemple</span>
+          <span class="me-roi-dial-chip">Au devis</span>
         </div>
       </div>
 
@@ -70,22 +70,22 @@ export const roiDashboardHtml = `
         <div class="me-roi-kpi">
           <div class="me-roi-kpi-delta">&lt; 30<span>min</span></div>
           <div class="me-roi-kpi-k">MTTR incidents P1</div>
-          <div class="me-roi-kpi-n">seuil contractuel · norme DORA elite</div>
+          <div class="me-roi-kpi-n">exemple de seuil · à dimensionner</div>
         </div>
         <div class="me-roi-kpi me-roi-kpi-hot">
           <div class="me-roi-kpi-delta">0<span>fenêtre</span></div>
           <div class="me-roi-kpi-k">Maintenance visible en production</div>
-          <div class="me-roi-kpi-n">deploys blue-green · rollback 1-clic</div>
+          <div class="me-roi-kpi-n">exemple de stratégie · selon architecture</div>
         </div>
         <div class="me-roi-kpi">
           <div class="me-roi-kpi-delta">&lt; 48h</div>
           <div class="me-roi-kpi-k">Patch CVE critique</div>
-          <div class="me-roi-kpi-n">CVSS ≥ 7 · hotfix + déploiement ferme</div>
+          <div class="me-roi-kpi-n">exemple de délai · selon exposition</div>
         </div>
         <div class="me-roi-kpi">
           <div class="me-roi-kpi-delta">&lt; 15<span>%</span></div>
           <div class="me-roi-kpi-k">Change failure rate</div>
-          <div class="me-roi-kpi-n">cible contractuelle · norme DORA elite</div>
+          <div class="me-roi-kpi-n">indicateur DORA · cible à définir</div>
         </div>
       </div>
 
@@ -94,7 +94,7 @@ export const roiDashboardHtml = `
     <!-- Comment on y arrive : 4 leviers -->
     <div class="me-roi-how reveal reveal-d-2">
       <div class="me-roi-how-head">
-        <span class="me-roi-how-n">/ comment on tient ces engagements</span>
+        <span class="me-roi-how-n">/ comment rendre ces objectifs crédibles</span>
         <h3>Pas de magie. 4 pratiques à<br>adapter à <b>chaque</b> contrat.</h3>
       </div>
 

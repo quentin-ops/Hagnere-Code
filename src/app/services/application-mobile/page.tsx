@@ -122,7 +122,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Apple refuse 40 % des apps au premier envoi (motif principal : critère 2.1 application incomplète ou buggée). Hagnéré Code prévoit 1 à 3 itérations de review dans le forfait, gère la communication avec les reviewers Apple, et connaît les points sensibles (permissions tracking ATT, IAP vs Stripe, contenu généré par utilisateurs, abonnements clairement affichés). Aucun surcoût si Apple demande 2 à 3 retouches.",
+          "La décision et le délai de review appartiennent à Apple. La guideline 2.1 est un motif fréquent de problème encore non résolu, mais ce n'est pas un taux de refus au premier envoi. Le devis précise les tests, la préparation de la fiche, les itérations incluses et le traitement d'une demande supplémentaire.",
       },
     },
     {
@@ -131,7 +131,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "React Native + Expo couvre 90 % des besoins d'une PME, divise le coût par 2 par rapport au natif séparé, atteint 60 fps, et permet les OTA updates via EAS. Flutter est techniquement équivalent. Le natif Swift/Kotlin est réservé aux cas où la performance est critique (jeu 3D, IoT BLE pointu, finance lourde). Hagnéré Code utilise React Native + Expo par défaut, et peut développer des modules natifs spécifiques quand le cas d'usage le justifie.",
+          "React Native + Expo permet de mutualiser une partie du code iOS et Android. Flutter ou du natif Swift/Kotlin peuvent être préférables selon les contraintes matérielles, de performance, d'équipe ou de store. Le choix est justifié au cadrage, sans promettre un ratio universel de coût ou de performance.",
       },
     },
     {
@@ -149,7 +149,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Forfait maintenance optionnel sur devis selon le volume et la criticité, sans engagement de durée. Inclut selon le scope retenu : compatibilité iOS et Android annuelle, correctifs de sécurité, monitoring 24/7, hot-fixes via OTA, releases régulières. Une app non maintenue est désinstallée par les utilisateurs en moins de six mois — la trajectoire de maintenance est donc cadrée dès le devis initial.",
+          "Forfait maintenance optionnel sur devis selon le volume et la criticité. Compatibilité iOS et Android, correctifs de sécurité, surveillance, correctifs OTA et rythme de publication ne sont inclus que s'ils figurent au périmètre. Une application non maintenue s'expose progressivement aux incompatibilités, aux vulnérabilités et aux régressions : la trajectoire est donc cadrée dès le devis initial.",
       },
     },
     {
@@ -182,9 +182,9 @@ const breadcrumbJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{serviceJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <MobileApplication />
     </>
   );

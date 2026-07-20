@@ -5,11 +5,11 @@ export const problemsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Vous êtes probablement ici</div>
-        <h2>Six situations qu'on voit<br>chaque semaine en call.</h2>
+        <h2>Six situations fréquentes<br>à diagnostiquer.</h2>
       </div>
       <div class="right">
-        Aucune n'est honteuse. Toutes se règlent. Mais chaque semaine qui passe,
-        <b>vos concurrents rachètent vos mots-clés et vos audiences Meta</b> — et le CPC ne baissera pas tout seul.
+        Ce sont des exemples de départ, pas des constats sur votre compte. L'audit doit distinguer
+        un problème de mesure, de ciblage, de création, d'offre ou de page d'atterrissage.
       </div>
     </div>
 
@@ -67,7 +67,7 @@ export const problemsHtml = `
           <span class="sap-n">04</span>
         </div>
         <h3>« Je paye 15 % du media à une agence qui pousse toujours plus de budget »</h3>
-        <p>Votre agence est rémunérée au pourcentage — donc <b>son intérêt, c'est que vous dépensiez plus</b>, pas que votre CAC baisse. Les reportings le prouvent : spend +40 %, ROAS stable.</p>
+        <p>Une rémunération au pourcentage augmente mécaniquement avec le budget média. Cela ne prouve pas un mauvais pilotage, mais mérite de comparer les incitations, le périmètre et le coût total.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
           <span class="sap-foot-v">Forfait fixe mensuel · aligné sur votre CAC</span>
@@ -82,7 +82,7 @@ export const problemsHtml = `
           <span class="sap-n">05</span>
         </div>
         <h3>« Mon reporting c'est un PDF de stats, aucune décision business possible »</h3>
-        <p>Impressions, clics, CTR, CPM… vous voulez savoir <b>combien de CA pipé</b> et <b>quel canal ramène les comptes qui ferment</b>. Personne ne branche jamais le CRM aux Ads.</p>
+        <p>Impressions, clics, CTR, CPM… vous voulez surtout savoir <b>combien de chiffre d'affaires attribuable</b> et <b>quel canal contribue aux ventes</b>. Cela suppose des identifiants et un CRM exploitables.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
           <span class="sap-foot-v">Looker Studio · CRM + Ads + margin · live</span>

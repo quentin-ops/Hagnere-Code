@@ -69,7 +69,7 @@ export const comparisonHtml = `
         <div class="sa-cmp-col sa-cmp-bad">Application rarement exportable comme code autonome</div>
         <div class="sa-cmp-col sa-cmp-bad">Dépendance licence</div>
         <div class="sa-cmp-col">Oui, après négociation</div>
-        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>100 % à vous J+1, repo Git chez vous</b></div>
+        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Droits, dépôt et réversibilité au devis</b></div>
       </div>
 
       <div class="sa-cmp-row">

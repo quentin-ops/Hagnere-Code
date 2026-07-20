@@ -183,9 +183,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -729,9 +729,9 @@ export default function Page() {
           d&apos;Elementor ou de Divi n&apos;est pas portable, et changer de
           thème ou de prestataire impose souvent de tout remonter. Côté
           sur-mesure, tout dépend d&apos;une ligne de contrat : la{" "}
-          <strong>cession du code source</strong>. Chez Hagnéré Code, le
-          code livré vous appartient intégralement — n&apos;importe quelle
-          équipe React peut le reprendre. La vraie fracture de réversibilité
+          <strong>cession du code source</strong>. Chez Hagnéré Code, les
+          livrables spécifiques sont transférés après paiement selon les CGV&nbsp;;
+          dépôt, accès, documentation et licences sont détaillés au devis. La vraie fracture de réversibilité
           n&apos;est d&apos;ailleurs pas WordPress contre Next.js : elle
           oppose les socles dont vous possédez le code (WordPress
           auto-hébergé, sur-mesure livré) aux plateformes fermées (Wix,

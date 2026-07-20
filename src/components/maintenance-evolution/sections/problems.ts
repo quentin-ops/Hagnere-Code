@@ -58,7 +58,7 @@ export const problemsHtml = `
         <p>Composer / npm sans mises à jour depuis 18-24 mois. Laravel 9, Node 16, PHP 7.4. <b>Pas de Dependabot, pas de Snyk, pas de scan SAST</b>. Votre prochain audit SOC2 ou pentest client va hurler.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Plan de remédiation 6-12 mois · CVE patchés sous 48h</span>
+          <span class="sap-foot-v">Plan de remédiation priorisé · délais par criticité</span>
         </div>
       </article>
 
@@ -90,7 +90,7 @@ export const problemsHtml = `
         <p>Pas de Sentry, pas de Better Stack, pas de Statuspage. Vos users voient l'erreur 500 <b>avant vous</b>. Support débordé, confiance qui s'effrite, post-mortems absents. Le CTO passe le lundi matin à gérer la crise de vendredi soir.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Stack monitoring complète · alerte &lt; 5 min · MTTR 30 min</span>
+          <span class="sap-foot-v">Surveillance, seuils, canaux et délai cible cadrés</span>
         </div>
       </article>
 

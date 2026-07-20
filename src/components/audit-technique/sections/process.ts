@@ -8,9 +8,8 @@ export const processHtml = `
         <h2>Du kickoff au rapport<br>board-ready, en 7 étapes<br>documentées.</h2>
       </div>
       <div class="right">
-        Pas d'improvisation. Pas de "on va voir". Chaque étape a ses <b>entrants, ses livrables intermédiaires
-        et son timing</b>. Vous savez à tout moment où on en est et ce qui arrive le lendemain —
-        chaque recommandation arrive avec sa charge estimée et son rang de priorité, pour que vous puissiez l'exécuter sans nous.
+        Ce déroulé est un exemple. Le devis retient les <b>entrants, livrables intermédiaires,
+        outils et jalons</b> utiles à la décision. Les estimations restent des hypothèses à valider, pas des coûts certains.
       </div>
     </div>
 
@@ -31,8 +30,8 @@ export const processHtml = `
           </div>
         </div>
         <div class="at-proc-step-wide-body">
-          <h4>Cadrage &amp; NDA mutuel</h4>
-          <p>Brief technique 90 min en visio avec votre CTO (ou équivalent). Validation du scope, identification des 10 endpoints critiques à profiler, liste des personnes à interviewer. <b>NDA mutuel + clause de non-conflit d'intérêt</b> signés. Accès read-only configurés (GitHub, cloud, Sentry, Linear, Notion).</p>
+          <h4>Cadrage, confidentialité &amp; accès</h4>
+          <p>Le cadrage confirme la décision à sécuriser, les zones critiques, les personnes à interviewer et la charge attendue côté client. <b>Les documents contractuels, l'éventuel NDA et les conflits potentiels</b> sont traités avant tout accès sensible. Les rôles en lecture seule et outils autorisés sont ensuite configurés selon le devis.</p>
           <div class="at-proc-step-wide-grid">
             <div class="at-proc-step-wide-item">
               <span class="at-proc-step-wide-k">Entrants</span>
@@ -40,7 +39,7 @@ export const processHtml = `
             </div>
             <div class="at-proc-step-wide-item">
               <span class="at-proc-step-wide-k">Livrables</span>
-              <span class="at-proc-step-wide-v">NDA + CGV + CoI signés</span>
+              <span class="at-proc-step-wide-v">Contrat · NDA éventuel · règles d'indépendance</span>
             </div>
             <div class="at-proc-step-wide-item">
               <span class="at-proc-step-wide-k">Timing</span>
@@ -73,7 +72,7 @@ export const processHtml = `
         </div>
         <h4>Snapshot &amp; code review</h4>
         <p>Clone du repo, branchement SonarQube Enterprise + Semgrep + Snyk. Revue manuelle des 5 modules métier critiques (billing, auth, core, integrations, data).</p>
-        <div class="at-proc-step-foot">J1 → J2 · 2 devs seniors</div>
+        <div class="at-proc-step-foot">Jalon illustratif · intervenants au devis</div>
       </article>
 
       <article class="at-proc-step" data-phase="launch">
@@ -160,7 +159,7 @@ export const processHtml = `
         </div>
         <h4>Scoring, Tech Debt P&amp;L &amp; rédaction</h4>
         <p>Consolidation&nbsp;: score /100 par dimension pondéré, positionnement vs référentiels publics (DORA, OWASP ASVS, Web Almanac), <b>Tech Debt P&amp;L chiffré en euros</b>, matrice impact × effort, roadmap 6/12/18 mois. Rédaction du PDF 40-70 p. + deck 12-18 slides board-ready + version board-safe anonymisée. Revue interne par le lead.</p>
-        <div class="at-proc-step-foot">J8 → J9 · 2 devs + lead</div>
+        <div class="at-proc-step-foot">Jalon illustratif · revue au devis</div>
       </article>
 
       <article class="at-proc-step" data-phase="pilot">

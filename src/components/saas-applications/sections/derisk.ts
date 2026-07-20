@@ -21,16 +21,16 @@ export const deriskHtml = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           « Mon budget va exploser en cours de route. »
         </div>
-        <h3>Forfait fixe contractuel · clause de pénalité.</h3>
+        <h3>Forfait fixe · dépendances et conséquences écrites.</h3>
         <p>
           Le périmètre est gelé au cadrage. Prix annoncé = prix final sur le périmètre validé.
           Une demande nouvelle fait l'objet d'un arbitrage écrit avant tout travail supplémentaire,
-          jamais d'un dépassement imposé. Des pénalités de retard sont écrites dans le contrat,
-          au-delà de 14 jours calendaires de retard sur la date de livraison contractuelle.
+          jamais d'un dépassement imposé. Les dépendances, causes de report, procédures d'alerte
+          et éventuelles conséquences financières ne s'appliquent que si le devis les prévoit.
         </p>
         <div class="sa-derisk-proof">
           <span>✓ Devis au forfait</span>
-          <span>✓ Pénalité de retard</span>
+          <span>✓ Conséquences au devis</span>
           <span>✓ Périmètre gelé</span>
         </div>
       </div>
@@ -84,17 +84,16 @@ export const deriskHtml = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           « Je vais dépendre de vous pour toujours. »
         </div>
-        <h3>Repo Git chez vous J+1 · handover filmé · zéro lock-in.</h3>
+        <h3>Dépôt, documentation et réversibilité écrits.</h3>
         <p>
-          Le repo Git est <b>sur votre organisation dès J+1</b>. Pas de clé
-          de chiffrement cachée, pas de licence propriétaire. À la livraison, on tourne
-          une <b>journée de passation filmée</b> avec votre équipe (ou le futur CTO).
-          Vous partez quand vous voulez, on vous dit bonne continuation.
+          Le devis nomme le propriétaire du dépôt, les accès ouverts pendant le projet,
+          la documentation livrée et les modalités de passation. Les droits sur les livrables
+          spécifiques sont transférés après paiement complet selon les CGV, avec les exclusions listées.
         </p>
         <div class="sa-derisk-proof">
-          <span>✓ Repo chez vous J+1</span>
-          <span>✓ Passation filmée</span>
-          <span>✓ Aucun royalties</span>
+          <span>✓ Dépôt inventorié</span>
+          <span>✓ Passation cadrée</span>
+          <span>✓ Licences listées</span>
         </div>
       </div>
     </div>

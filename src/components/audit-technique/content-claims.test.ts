@@ -19,4 +19,29 @@ describe("audit technique public claims", () => {
     expect(composedBodyHtml).not.toMatch(/PDF[^<.]{0,80}téléchargeable avant signature/i);
     expect(composedBodyHtml).not.toMatch(/licences? enterprise[^<.]{0,80}inclus/i);
   });
+
+  it("identifie clairement le rapport du hero comme une démonstration", () => {
+    expect(composedBodyHtml).toContain(
+      "EXEMPLE INTERNE ILLUSTRATIF — PAS UN RAPPORT CLIENT NI UNE MESURE RÉELLE",
+    );
+    expect(composedBodyHtml).toContain("EXEMPLE · FICTIF");
+  });
+
+  it("ne publie pas de preuve client, d'équipe ou de délai inventés", () => {
+    expect(composedBodyHtml).not.toMatch(/attorney-client privilege/i);
+    expect(composedBodyHtml).not.toMatch(/ouvrés médian|méthodologie mesurée sur audits livrés/i);
+    expect(composedBodyHtml).not.toMatch(/équipe dédiée\s*\d|\d+\s*seniors?\s*\+\s*lead/i);
+    expect(composedBodyHtml).not.toMatch(/Express démarre en 3\s*j|Audit livré\s*&amp;\s*facturé/i);
+  });
+
+  it("ne transforme pas la mission en certification officielle", () => {
+    expect(composedBodyHtml).not.toMatch(/HDS obligatoire|audit préparatoire indispensable/i);
+    expect(composedBodyHtml).not.toMatch(/3[–-]6 mois[^<.]{0,100}certif/i);
+    expect(composedBodyHtml).toContain("cette prestation ne délivre pas de certification HDS");
+  });
+
+  it("ne présente pas le NDA comme universel", () => {
+    expect(composedBodyHtml).not.toMatch(/NDA mutuel signé|NDA mutuel \+ clause|signature du NDA/i);
+    expect(composedBodyHtml).toContain("NDA éventuel");
+  });
 });

@@ -45,10 +45,10 @@ export const whatWeDoHtml = `
           <span class="me-wwd-badge me-wwd-badge-maintenance">Maintenance</span>
         </div>
         <h3>Maintenance corrective &amp; évolutive</h3>
-        <p>Bugs, régressions, feature requests métier, refactos ciblés. <b>Tous les jours, pas au trimestre</b>. Vous remontez dans Linear, on shippe dans la semaine. Backlog priorisé ensemble au comité mensuel, pas imposé.</p>
+        <p>Bugs, régressions, demandes métier et refactorisations ciblées. Le canal, la cadence de traitement et le rythme de priorisation sont convenus selon la capacité réservée.</p>
         <div class="me-wwd-tags">
-          <span class="me-wwd-tag">Bug fixes &lt; 48h</span>
-          <span class="me-wwd-tag">Features hebdo</span>
+          <span class="me-wwd-tag">Délais par sévérité</span>
+          <span class="me-wwd-tag">Cadence convenue</span>
           <span class="me-wwd-tag">Refactos ciblés</span>
         </div>
       </article>
@@ -63,7 +63,7 @@ export const whatWeDoHtml = `
           <span class="me-wwd-badge me-wwd-badge-observability">Observabilité</span>
         </div>
         <h3>Monitoring &amp; observabilité 24/7</h3>
-        <p>Sentry (erreurs), Better Stack (uptime &amp; statuspage), Grafana (métriques), Axiom (logs). <b>Alerte &lt; 5 min</b> sur incident P1, détection proactive. Vous découvrez l'incident par Slack — pas par vos clients.</p>
+        <p>Sentry, Better Stack, Grafana, Axiom ou des équivalents peuvent couvrir erreurs, disponibilité, métriques et logs. <b>Seuils, canaux et horaires de surveillance</b> sont définis au devis.</p>
         <div class="me-wwd-tags">
           <span class="me-wwd-tag">Sentry</span>
           <span class="me-wwd-tag">Better Stack</span>
@@ -81,11 +81,11 @@ export const whatWeDoHtml = `
           <span class="me-wwd-badge me-wwd-badge-security">Sécurité</span>
         </div>
         <h3>Sécurité continue &amp; CVE patchés</h3>
-        <p>Dependabot + Snyk + GitGuardian + SAST (PHPStan / Psalm / ESLint). <b>CVE critiques patchés sous 48 h</b>. Pentest annuel optionnel (tier Premium). Prêt pour votre prochain audit SOC2 / ISO27001 client.</p>
+        <p>Dependabot, Snyk, GitGuardian et analyses statiques peuvent alimenter le suivi. <b>Le délai cible dépend de la criticité, de l'exposition et des tests requis</b>. Un pentest ou un accompagnement d'audit n'est inclus que s'il figure au devis.</p>
         <div class="me-wwd-tags">
           <span class="me-wwd-tag">Snyk · Dependabot</span>
-          <span class="me-wwd-tag">CVE &lt; 48h</span>
-          <span class="me-wwd-tag">SOC2-ready</span>
+          <span class="me-wwd-tag">Priorités CVE</span>
+          <span class="me-wwd-tag">Preuves au périmètre</span>
         </div>
       </article>
 
@@ -99,11 +99,11 @@ export const whatWeDoHtml = `
           <span class="me-wwd-badge me-wwd-badge-infra">Infra</span>
         </div>
         <h3>Hébergement &amp; infra ops</h3>
-        <p>Laravel Forge / Ploi / Vapor / Vercel / Fly.io selon votre stack. <b>Infra sur votre compte cloud</b> (AWS, OVH, Scaleway) — pas de rebilling, pas de lock-in. Backups testés mensuellement, RPO 15 min, RTO 1 h.</p>
+        <p>Laravel Forge, Ploi, Vapor, Vercel, Fly.io ou une autre plateforme sont retenus selon la stack. Le devis précise le titulaire des comptes, la facturation, la sauvegarde, les tests de restauration et les objectifs RPO/RTO.</p>
         <div class="me-wwd-tags">
           <span class="me-wwd-tag">Forge · Vercel · Fly</span>
-          <span class="me-wwd-tag">Compte cloud client</span>
-          <span class="me-wwd-tag">RPO 15 min</span>
+          <span class="me-wwd-tag">Titulaire explicite</span>
+          <span class="me-wwd-tag">RPO / RTO cadrés</span>
         </div>
       </article>
 
@@ -135,7 +135,7 @@ export const whatWeDoHtml = `
           <span class="me-wwd-badge me-wwd-badge-performance">Performance</span>
         </div>
         <h3>Performance, scaling &amp; FinOps</h3>
-        <p>Profiling Laravel Pulse / Chrome DevTools, caching Redis / CDN, DB indexes, query tuning. <b>FinOps cloud</b>&nbsp;: on surveille vos factures AWS / OVH, on coupe le gras. Lighthouse 95+ maintenu, CWV dans le vert.</p>
+        <p>Profiling Laravel Pulse / Chrome DevTools, cache, index et requêtes selon la stack. <b>FinOps cloud</b>&nbsp;: les coûts et indicateurs de performance suivis sont ceux définis au devis, sans score universel garanti.</p>
         <div class="me-wwd-tags">
           <span class="me-wwd-tag">Laravel Pulse</span>
           <span class="me-wwd-tag">CDN &amp; cache</span>
@@ -153,11 +153,11 @@ export const whatWeDoHtml = `
           <span class="me-wwd-badge me-wwd-badge-incident">Astreinte</span>
         </div>
         <h3>Incident response &amp; astreinte</h3>
-        <p>PagerDuty / incident.io, processus IR documenté, <b>post-mortem sous 72 h</b> sans blame. Astreinte 7j/7 (tier Scale &amp; Premium), MTTR cible &lt; 30 min P1. Statuspage publique, communication client assumée — pas cachée.</p>
+        <p>PagerDuty, incident.io ou un dispositif équivalent peut soutenir un processus d'incident documenté. Astreinte, horaires, délai cible, post-mortem, page de statut et communication sont chiffrés selon la criticité.</p>
         <div class="me-wwd-tags">
-          <span class="me-wwd-tag">PagerDuty 7j/7</span>
-          <span class="me-wwd-tag">MTTR &lt; 30 min</span>
-          <span class="me-wwd-tag">Post-mortem 72 h</span>
+          <span class="me-wwd-tag">Couverture au devis</span>
+          <span class="me-wwd-tag">MTTR cible</span>
+          <span class="me-wwd-tag">Post-mortem cadré</span>
         </div>
       </article>
 

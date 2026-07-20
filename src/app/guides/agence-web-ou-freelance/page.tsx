@@ -161,7 +161,7 @@ const faqItems = [
   {
     question: "Quelles garanties demander pour la création d'un site internet ?",
     answer:
-      "Six clauses, valables pour un freelance comme pour une agence : la cession de droits conforme à l'article L131-3 (chaque droit énuméré, étendue, durée) ; la remise du code sur un dépôt à votre nom ; le domaine et l'hébergement enregistrés à VOTRE nom ; une garantie corrective après livraison (30 à 90 jours constatés selon les prestataires — 30 jours chez nous) ; un engagement de performance mesurable (nous contractualisons une note Google Lighthouse de 95+, un engagement qu'aucun comparatif de cette requête ne mentionne) ; et un délai d'intervention en cas d'incident bloquant si vous prenez une maintenance. Un prestataire qui refuse l'une de ces clauses vous renseigne mieux que toutes ses références.",
+      "Six clauses à comparer chez un freelance comme une agence : droits cédés et exclusions ; remise du dépôt et des accès ; domaine et hébergement ; recette et période corrective ; objectifs de performance avec protocole ; délai d'intervention si une maintenance est prévue. Chez Hagnéré Code, ces éléments ne valent que s'ils figurent dans le devis signé.",
   },
   {
     question: "Un freelance peut-il gérer un site e-commerce complet ?",
@@ -188,9 +188,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -498,7 +498,7 @@ export default function Page() {
         <GuideInlineCTA
           title="Deux devis incomparables sur la table ?"
           description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc — y compris quand un bon freelance est la meilleure option pour votre budget. Et si le périmètre mérite d'être cadré avant d'engager qui que ce soit, le Discovery Sprint (1 500 €, 2 jours, déduit à 100 %) produit cahier des charges, maquettes et devis comparables."
-          tags={["Réponse sous 24 h ouvrées", "L'équipe qui vend est l'équipe qui code", "Code cédé, comptes à votre nom"]}
+          tags={["Réponse sous 24 h ouvrées", "Intervenants nommés au devis", "Droits, dépôt et comptes inventoriés"]}
         />
 
         <h2 id="sous-traitance">7. L&apos;agence-coquille et la sous-traitance déguisée</h2>
@@ -619,15 +619,13 @@ export default function Page() {
           de garantir par écrit, chiffres à l&apos;appui</strong> —
           et sur cette requête, aucun comparatif n&apos;en parle. La
           liste, à soumettre à un freelance comme à une agence : une{" "}
-          <strong>performance mesurable</strong> — nous
-          contractualisons une note Google Lighthouse de 95+ (la note
+          <strong>performance mesurable</strong> — un devis peut fixer un objectif Lighthouse avec son protocole (la note
           de qualité sur 100 de l&apos;outil de test de Google,
           vérifiable par n&apos;importe qui sur PageSpeed Insights) ;
           les <strong>Core Web Vitals au vert</strong> (les mesures de
           vitesse que Google utilise dans son classement — documenté
           par Google lui-même) ; une <strong>garantie
-          corrective</strong> après livraison (30 à 90 jours constatés
-          sur le marché ; 30 jours chez nous) ; un{" "}
+          corrective</strong> après livraison, avec durée, couverture et exclusions&nbsp;; un{" "}
           <strong>délai d&apos;intervention</strong> contractuel pour
           les incidents bloquants si vous prenez une maintenance (le
           détail des forfaits est dans notre{" "}
@@ -781,9 +779,8 @@ export default function Page() {
           Et si vous voulez notre réponse à nous — biais déclaré,
           engagements écrits (<Link href="/tarifs">notre grille
           publique</Link>) : <strong>vitrine sur mesure dès
-          6 900 €, e-commerce dès 15 000 €, note Lighthouse 95+
-          contractuelle, code cédé, l&apos;équipe qui vend est
-          l&apos;équipe qui code</strong> (méthode{" "}
+          6 900 € et e-commerce sur devis. Performance, droits, dépôt,
+          recette, équipe et période de correction sont écrits avant engagement</strong> (méthode{" "}
           <Link href="/methode">Sprint Fixe™</Link>).{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en
           3 minutes</Link> : réponse personnelle sous 24 h ouvrées,

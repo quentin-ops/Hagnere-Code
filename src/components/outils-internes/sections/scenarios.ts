@@ -8,8 +8,8 @@ export const scenariosHtml = `
         <h2>Trois cas de départ,<br>trois chemins clairs.</h2>
       </div>
       <div class="right">
-        80 % des projets outils internes qu'on prend entrent dans l'une de ces trois situations.
-        Cliquez sur la vôtre : les livrables, l'équipe, la durée et le prix indicatif s'ajustent.
+        Ces trois situations couvrent des points de départ fréquents.
+        Cliquez sur la vôtre : les livrables possibles et les éléments à cadrer s'ajustent.
       </div>
     </div>
 
@@ -57,16 +57,16 @@ export const scenariosHtml = `
         <aside class="oi-scen-aside">
           <div class="oi-scen-meta">
             <div class="oi-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
-            <div class="oi-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 1 dev senior</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Intervenants</span><span class="v">Définis au devis</span></div>
             <div class="oi-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
-            <div class="oi-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 10 jours</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Démarrage</span><span class="v">Selon disponibilité</span></div>
             <div class="oi-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit processus 1j · 990 €</span></div>
           </div>
           <a href="#contact" class="btn btn-accent oi-scen-cta">
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="oi-scen-ref">Référence : suivi-clients + relances auto pour un cabinet comptable — 12 h/sem. économisées dès la semaine 3.</div>
+          <div class="oi-scen-ref">À mesurer : temps de ressaisie, erreurs, délais de relance et adoption avant / après pilote.</div>
         </aside>
       </div>
     </div>
@@ -97,16 +97,16 @@ export const scenariosHtml = `
         <aside class="oi-scen-aside">
           <div class="oi-scen-meta">
             <div class="oi-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
-            <div class="oi-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 2 devs + 1 designer</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Intervenants</span><span class="v">Définis au devis</span></div>
             <div class="oi-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
-            <div class="oi-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 3 semaines</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Démarrage</span><span class="v">Selon disponibilité</span></div>
             <div class="oi-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit processus 1j · 990 €</span></div>
           </div>
           <a href="#contact" class="btn btn-accent oi-scen-cta">
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="oi-scen-ref">Typique : 2 200 €/mois de licences SaaS remplacées par un outil sur-mesure ROI 9 mois.</div>
+          <div class="oi-scen-ref">À comparer : licences, migration, maintenance, formation, réversibilité et coût total sur trois ans.</div>
         </aside>
       </div>
     </div>
@@ -138,16 +138,16 @@ export const scenariosHtml = `
         <aside class="oi-scen-aside">
           <div class="oi-scen-meta">
             <div class="oi-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
-            <div class="oi-scen-meta-row"><span class="k">Équipe</span><span class="v">1 gérant + 2 devs + 1 mobile + 1 IA</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Intervenants</span><span class="v">Définis au devis</span></div>
             <div class="oi-scen-meta-row"><span class="k">Prix</span><span class="v">Sur devis</span></div>
-            <div class="oi-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 3 à 4 semaines</span></div>
+            <div class="oi-scen-meta-row"><span class="k">Démarrage</span><span class="v">Selon disponibilité</span></div>
             <div class="oi-scen-meta-row"><span class="k">Point d'entrée</span><span class="v">Audit processus 1j sur site · 990 €</span></div>
           </div>
           <a href="#contact" class="btn btn-accent oi-scen-cta">
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="oi-scen-ref">Typique : PME BTP 40 pers. — app terrain + extraction factures IA, ROI 11 mois.</div>
+          <div class="oi-scen-ref">À tester : saisie hors ligne, qualité d'extraction, reprise sur erreur et usage réel sur le terrain.</div>
         </aside>
       </div>
     </div>

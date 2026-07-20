@@ -189,9 +189,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -993,11 +993,9 @@ LE CONTRÔLE À FAIRE SUR TOUT DEVIS
           Chez Hagnéré Code, nous ne facturons pas au tarif
           journalier. Nos projets sont au{" "}
           <Link href="/methode">forfait fixe contractuel</Link>, avec
-          un périmètre écrit. Nous garantissons par contrat une note
-          de performance d&apos;au moins 95 sur 100 sur mobile —
-          mesurée par Lighthouse, l&apos;outil gratuit de Google qui
-          alimente PageSpeed Insights — et 30 jours de garantie après
-          la mise en ligne.
+          un périmètre écrit. Les objectifs de performance, leur protocole,
+          la recette et la période de correction sont adaptés au projet et
+          ne valent que s&apos;ils figurent dans le devis signé.
           Notre grille publique est consultable — 6 900 €, 14 900 € et
           22 000 € et plus pour un{" "}
           <Link href="/services/sites-vitrines">site vitrine</Link>,

@@ -9,8 +9,8 @@ export const comparisonHtml = `
       </div>
       <div class="right">
         On ne prétend pas être la meilleure option dans tous les cas.
-        Voici la comparaison honnête — <b>si vous êtes dans une colonne qui
-        n'est pas la nôtre, on vous le dira</b>.
+        Cette grille donne des questions à poser, pas des moyennes universelles.
+        Prix, performances, export et maintenance varient selon la formule et l'implémentation.
       </div>
     </div>
 
@@ -27,7 +27,7 @@ export const comparisonHtml = `
         <div class="sv-cmp-col sv-cmp-col-label">Performance (Lighthouse)</div>
         <div class="sv-cmp-col sv-cmp-bad">55–75 / 100</div>
         <div class="sv-cmp-col sv-cmp-bad">40–70 / 100</div>
-        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>95+ / 100 garanti</b></div>
+        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Objectif et conditions au devis</b></div>
         <div class="sv-cmp-col">80–90 / 100</div>
       </div>
 
@@ -35,7 +35,7 @@ export const comparisonHtml = `
         <div class="sv-cmp-col sv-cmp-col-label">Temps de chargement</div>
         <div class="sv-cmp-col">3–5 s</div>
         <div class="sv-cmp-col sv-cmp-bad">4–8 s</div>
-        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>&lt; 1,5 s</b></div>
+        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Mesuré page par page</b></div>
         <div class="sv-cmp-col">1,5–3 s</div>
       </div>
 
@@ -43,7 +43,7 @@ export const comparisonHtml = `
         <div class="sv-cmp-col sv-cmp-col-label">SEO technique</div>
         <div class="sv-cmp-col sv-cmp-bad">Bloqué par la plateforme</div>
         <div class="sv-cmp-col">Dépend du dev + plugins</div>
-        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Schema + cocons + 50 mots-clés</b></div>
+        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Livrables SEO inventoriés</b></div>
         <div class="sv-cmp-col">Correct mais limité</div>
       </div>
 
@@ -51,7 +51,7 @@ export const comparisonHtml = `
         <div class="sv-cmp-col sv-cmp-col-label">Propriété du code</div>
         <div class="sv-cmp-col sv-cmp-bad">Non, captif plateforme</div>
         <div class="sv-cmp-col">Oui, mais dette technique</div>
-        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Oui, Git chez vous dès J1</b></div>
+        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Droits et dépôt au devis</b></div>
         <div class="sv-cmp-col sv-cmp-bad">Non, export limité</div>
       </div>
 
@@ -59,7 +59,7 @@ export const comparisonHtml = `
         <div class="sv-cmp-col sv-cmp-col-label">Design sur mesure</div>
         <div class="sv-cmp-col sv-cmp-bad">Templates limités</div>
         <div class="sv-cmp-col">Possible, rarement original</div>
-        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Figma dédié, 3 révisions</b></div>
+        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Maquettes et révisions chiffrées</b></div>
         <div class="sv-cmp-col sv-cmp-good">Très flexible</div>
       </div>
 
@@ -67,7 +67,7 @@ export const comparisonHtml = `
         <div class="sv-cmp-col sv-cmp-col-label">Maintenance &amp; sécurité</div>
         <div class="sv-cmp-col">Gérée par la plateforme</div>
         <div class="sv-cmp-col sv-cmp-bad">Plugins à patcher, hacks fréquents</div>
-        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Zéro maintenance (statique)</b></div>
+        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Maintenance adaptée à la stack</b></div>
         <div class="sv-cmp-col">Gérée par Webflow</div>
       </div>
 
@@ -75,7 +75,7 @@ export const comparisonHtml = `
         <div class="sv-cmp-col sv-cmp-col-label">Coût total sur 3 ans</div>
         <div class="sv-cmp-col">≈ 1 500 €</div>
         <div class="sv-cmp-col">≈ 12 k€ (dont hacks)</div>
-        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>≈ 16 k€ (avec refonte)</b></div>
+        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Chiffré sur trois ans</b></div>
         <div class="sv-cmp-col">≈ 15 k€ (abo inclus)</div>
       </div>
 
@@ -83,7 +83,7 @@ export const comparisonHtml = `
         <div class="sv-cmp-col sv-cmp-col-label">Évolutivité</div>
         <div class="sv-cmp-col sv-cmp-bad">Plafond fonctionnel rapide</div>
         <div class="sv-cmp-col">Limitée aux plugins dispo</div>
-        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Sans limite (code custom)</b></div>
+        <div class="sv-cmp-col sv-cmp-col-us sv-cmp-good"><b>Selon architecture et budget</b></div>
         <div class="sv-cmp-col">OK en SaaS, contraint hors-cadre</div>
       </div>
 
@@ -98,7 +98,7 @@ export const comparisonHtml = `
 
     <div class="sv-cmp-disclaimer reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-      Pas sûr d'être dans notre zone ? <a href="#contact">Parlons-en 30 minutes</a> — si c'est Wix qu'il vous faut, on vous le dira sans détour.
+      Comparez toujours la formule exacte, les limites d'export, les coûts tiers et le coût humain sur trois ans. <a href="#contact">Nous pouvons relire votre besoin</a> sans présumer la solution.
     </div>
   </div>
 </section>

@@ -4,7 +4,7 @@ export const scenariosHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Trois packs, un seul studio</div>
+        <div class="eyebrow">— Trois scénarios à cadrer</div>
         <h2>Choisissez votre terrain.<br>On <em>s'occupe du reste</em>.</h2>
       </div>
       <div class="right">

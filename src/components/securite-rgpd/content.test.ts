@@ -24,4 +24,10 @@ describe("security and GDPR service credibility", () => {
     expect(composedBodyHtml).not.toContain("LEVIER · OBSERVÉ CHEZ CLIENTS");
     expect(composedBodyHtml).toContain("EXEMPLE · état de cartographie");
   });
+
+  it("does not claim universal NDA, processor clauses or EU-only vendors", () => {
+    expect(composedBodyHtml).not.toMatch(/NDA mutuel J0|article 28 RGPD intégrés à chaque mission/i);
+    expect(composedBodyHtml).not.toMatch(/Sous-traitants UE[^<]{0,100}Cloudflare EU/i);
+    expect(composedBodyHtml).toContain("sans certification revendiquée");
+  });
 });

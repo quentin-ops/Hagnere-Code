@@ -13,7 +13,7 @@ import { OG_BASE, SITE_URL, SERVICES_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Agence Next.js : développement sur mesure · Hagnéré Code",
   description:
-    "Agence Next.js et React : sites, e-commerce et applications métier sur mesure. Lighthouse 95+ garanti par contrat, forfait fixe dès 6 900 €, code livré chez vous.",
+    "Agence Next.js et React à Bassens : sites, e-commerce et applications métier. Performance, périmètre, livrables, accès et droits sont cadrés au devis.",
   authors: [{ name: "Quentin Hagnéré" }],
   creator: "Hagnéré Code",
   publisher: "Hagnéré Code",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "Agence Next.js — Hagnéré Code",
     description:
-      "Développement Next.js et React sur mesure : sites, e-commerce, SaaS et applications métier. Performance garantie par contrat, forfait fixe, code à vous.",
+      "Développement Next.js et React sur mesure : sites, e-commerce, SaaS et applications métier. Objectifs de performance, prix, livrables et droits au devis.",
     url: "/agence-next-js",
     images: [SERVICES_OG_IMAGE],
   },
@@ -76,7 +76,7 @@ const faqItems = [
   {
     question: "Pourquoi choisir Next.js plutôt que WordPress pour mon site ?",
     answer:
-      "Pour trois raisons concrètes, et une seule mauvaise. Les bonnes : la vitesse, parce qu'un site Next.js est pré-généré et n'interroge aucune base de données au moment de la visite ; la sécurité, parce qu'il n'y a ni PHP ni base exposée côté visiteurs, là où 91 % des failles WordPress viennent des extensions ; et la liberté de conception, parce que vous n'êtes plus limité par ce que le thème a prévu. La mauvaise raison, c'est la mode : si votre WordPress est récent, rapide et que votre équipe le maîtrise, changer ne vous apportera rien. Notre comparatif Next.js ou WordPress traite la question honnêtement, y compris les cas où WordPress reste le meilleur choix.",
+      "Pour trois raisons possibles, selon le projet : des pages pré-générées rapides, une surface technique différente de celle d'un WordPress enrichi de nombreuses extensions, et une plus grande liberté de conception. Mais Next.js n'est pas automatiquement plus sûr ni plus performant : l'architecture, les dépendances, l'hébergement et la maintenance restent déterminants. Si votre WordPress est récent, rapide et bien maintenu par une équipe qui le maîtrise, changer peut ne rien vous apporter. Notre comparatif Next.js ou WordPress détaille aussi les cas où WordPress reste le meilleur choix.",
   },
   {
     question: "Combien coûte un projet Next.js chez vous ?",
@@ -101,12 +101,12 @@ const faqItems = [
   {
     question: "Serai-je dépendant de vous après la livraison ?",
     answer:
-      "Non, et c'est écrit au contrat. Le code vous appartient : cession des droits conforme à l'article L131-3 du Code de la propriété intellectuelle, dépôt sur un compte à votre nom dès le premier jour, nom de domaine enregistré au vôtre. C'est important parce qu'en droit français, payer une prestation ne rend pas automatiquement propriétaire du code. Techniquement, React et Next.js forment l'écosystème le plus répandu du développement web : n'importe quel développeur React reprend un projet propre, ce qui est souvent moins vrai d'un WordPress chargé d'extensions premium et d'un thème modifié à la main.",
+      "La réversibilité est écrite : les livrables spécifiques sont transférés après paiement complet selon les CGV. Le devis inventorie le dépôt, les accès, le domaine, la documentation, les composants préexistants et les licences tierces. Payer une prestation ne transfère pas automatiquement tous les droits ; il faut lire la clause applicable au projet.",
   },
   {
     question: "Travaillez-vous partout en France ?",
     answer:
-      "Oui. Nous sommes basés à Bassens, aux portes de Chambéry, en Savoie, et nous accompagnons des clients partout en France. Le développement web se conduit très bien à distance : cadrage et points d'étape en visioconférence, démonstrations en ligne à chaque livraison intermédiaire. Si vous êtes en Savoie ou en Haute-Savoie, nous nous déplaçons volontiers ; ailleurs, le cadre contractuel et les engagements sont strictement identiques. La proximité change le confort du premier rendez-vous, pas la qualité du résultat.",
+      "Oui. Nous sommes basés à Bassens, aux portes de Chambéry, en Savoie. Cadrage, points d'étape et démonstrations peuvent être conduits à distance partout en France ; les déplacements en Savoie et Haute-Savoie sont organisés selon le projet.",
   },
   {
     question: "Combien de temps prend un projet Next.js ?",
@@ -128,14 +128,14 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{serviceJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[{ label: "Agence Next.js" }]}
-        heroTitle="Agence Next.js : développement sur mesure, performance garantie"
-        heroDescription="Nous développons en Next.js et React des sites, des boutiques en ligne et des applications métier. Forfait fixe contractuel, score Lighthouse mobile de 95 minimum garanti, code livré sur votre compte. Basés à Bassens, aux portes de Chambéry, nous travaillons partout en France."
+        heroTitle="Agence Next.js : développement sur mesure et performance mesurée"
+        heroDescription="Nous développons en Next.js et React des sites, des boutiques en ligne et des applications métier. Le devis fixe prix, performance, livrables, accès et droits. Basés à Bassens, aux portes de Chambéry, nous travaillons partout en France."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -143,10 +143,10 @@ export default function Page() {
         }}
         updatedLabel="Mis à jour le 18 juillet 2026"
         keyPoints={[
-          { number: "01", title: "Lighthouse 95+ garanti par contrat", description: "", color: "violet" },
+          { number: "01", title: "Budget de performance au devis", description: "", color: "violet" },
           { number: "02", title: "Forfait fixe dès 6 900 €", description: "", color: "blue" },
-          { number: "03", title: "Code et domaine à votre nom", description: "", color: "emerald" },
-          { number: "04", title: "Garantie 30 jours après mise en ligne", description: "", color: "amber" },
+          { number: "03", title: "Dépôt, domaine et droits cadrés", description: "", color: "emerald" },
+          { number: "04", title: "Recette et correction au devis", description: "", color: "amber" },
         ]}
         relatedLinks={[
           { href: "/agence-react", label: "Agence React" },
@@ -165,7 +165,7 @@ export default function Page() {
           un site ou une application web qui doit être <strong>rapide, bien
           référencée et évolutive</strong>. Nous l&apos;utilisons sur
           l&apos;ensemble de nos développements. Cette page explique ce que nous
-          construisons avec, ce que nous garantissons par écrit, ce que ça
+          construisons avec, ce que nous pouvons contractualiser, ce que ça
           coûte — et les cas où nous vous dirons que ce n&apos;est pas la
           bonne solution. Si votre besoin est une application derrière un
           identifiant plutôt qu&apos;un site public, notre page{" "}
@@ -178,7 +178,7 @@ export default function Page() {
             { id: "ce-que-nous-construisons", label: "1. Ce que nous construisons en Next.js" },
             { id: "pourquoi", label: "2. Pourquoi Next.js, en termes concrets" },
             { id: "preuves", label: "3. Nos réalisations Next.js, chiffres à l'appui" },
-            { id: "garanties", label: "4. Ce que nous garantissons par contrat" },
+            { id: "garanties", label: "4. Ce que le devis doit préciser" },
             { id: "prix", label: "5. Nos prix, publics et fermes" },
             { id: "quand-non", label: "6. Quand Next.js n'est pas la bonne réponse" },
             { id: "methode", label: "7. Comment se déroule un projet" },
@@ -266,8 +266,8 @@ export default function Page() {
           ]}
         />
         <InfoBox variant="amber" title="Une transparence qui nous dessert, mais qui est due">
-          <strong>Ces deux clients appartiennent au même groupe que
-          nous.</strong> Nous préférons l&apos;écrire noir sur blanc plutôt que
+          <strong>Ces deux produits appartiennent au même groupe que
+          nous&nbsp;: ce ne sont pas des clients externes.</strong> Nous préférons l&apos;écrire noir sur blanc plutôt que
           de laisser croire à des références décrochées en concurrence. Ce que
           cela ne change pas : les sites sont en production, les technologies
           sont vérifiables en ouvrant le code source, et les chiffres sont
@@ -294,25 +294,23 @@ export default function Page() {
           description="Décrivez-le en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement — y compris si notre réponse est qu'une solution plus simple suffirait."
         />
 
-        <h2 id="garanties">4. Ce que nous garantissons par contrat</h2>
+        <h2 id="garanties">4. Ce que le devis doit préciser</h2>
         <p>
-          Trois engagements écrits, les mêmes pour tous les projets.
+          Les engagements sont adaptés au périmètre et ne naissent que du document signé.
         </p>
         <GuideTable
           headers={["Engagement", "Ce que ça signifie", "Comment vous le vérifiez"]}
           rows={[
-            ["Score Lighthouse mobile de 95 minimum", "Performance mesurée à la livraison, corrections gratuites si le seuil n'est pas tenu", "Vous ouvrez PageSpeed Insights et vous regardez. Trente secondes, gratuit"],
+            ["Budget de performance", "Pages, appareil, réseau, scripts tiers, outil et seuils de recette", "Le protocole et les résultats sont conservés"],
             ["Forfait fixe contractuel", "Périmètre écrit, prix arrêté avant de commencer, aucun dépassement surprise", "Le devis signé fait foi ; tout ajout passe par un avenant chiffré"],
-            ["Propriété du code et du domaine", "Cession des droits écrite (article L131-3 CPI), dépôt sur votre compte, domaine à votre nom", "Vous accédez au dépôt dès le premier jour du projet"],
-            ["Garantie 30 jours", "Toute anomalie constatée dans le mois suivant la mise en ligne est corrigée sans supplément", "Aucune démarche : vous signalez, nous corrigeons"],
+            ["Livrables et droits", "Transfert des livrables spécifiques après paiement selon les CGV, exclusions et licences listées", "Le devis et l'inventaire de passation font foi"],
+            ["Recette et correction", "Durée, sévérités, couverture, procédure et délais cibles", "Les tickets sont rapprochés des critères signés"],
           ]}
         />
         <p>
-          L&apos;engagement de performance mérite un mot. C&apos;est le plus
-          rare du marché, et c&apos;est aussi le plus facile à vérifier :
-          n&apos;importe qui peut tester n&apos;importe quel site en trente
-          secondes. Un prestataire qui vend de la performance mais refuse
-          d&apos;inscrire un chiffre au contrat vous dit quelque chose.
+          Un score Lighthouse isolé varie avec la page, l&apos;appareil, le réseau
+          et les scripts tiers. Une cible utile doit donc être associée à un
+          protocole et ne vaut ni classement Google ni taux de conversion garanti.
         </p>
 
         <h2 id="prix">5. Nos prix, publics et fermes</h2>

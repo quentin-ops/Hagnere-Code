@@ -5,13 +5,13 @@ import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Tarifs développement web & SaaS au forfait · Hagnéré Code",
   description:
-    "Discovery Sprint 1 500 €, projets de 6 à 60 k€, partenariat dès 8 k€/mois. Forfaits fixes contractuels, garantie 30 jours, code 100 % à vous.",
+    "Discovery Sprint et projets web sur devis. Prix, périmètre, délais, livrables, droits, accès, recette et éventuelle garantie sont détaillés avant engagement.",
   alternates: { canonical: "/tarifs" },
   openGraph: {
     ...OG_BASE,
     title: "Tarifs · Forfait fixe, jamais de surprise · Hagnéré Code",
     description:
-      "Discovery Sprint 1 500 €, MVP SaaS dès 15 k€, sites vitrines dès 6,9 k€. Code chez vous, garantie 30 jours.",
+      "Ordres de grandeur indicatifs pour cadrage, SaaS et sites vitrines. Le devis fixe le périmètre, les livrables, les accès, les droits et la recette.",
     url: "/tarifs",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -52,7 +52,7 @@ const offersJsonLd = JSON.stringify({
       },
       {
         "@type": "Offer",
-        name: "Partenariat — Équipe dédiée",
+        name: "Partenariat — Capacité mensuelle",
         price: "8000",
         priceCurrency: "EUR",
         priceSpecification: {
@@ -61,7 +61,7 @@ const offersJsonLd = JSON.stringify({
           priceCurrency: "EUR",
           unitCode: "MON",
         },
-        description: "Forfait mensuel, équipe 2–5 personnes, engagement 6 mois minimum.",
+        description: "Forfait mensuel dont la capacité, les intervenants, la durée et les modalités de sortie sont définis au devis.",
       },
       {
         "@type": "Offer",
@@ -101,7 +101,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Le périmètre est figé au cadrage et signé. Si vous voulez ajouter des choses en cours de route, on chiffre l'ajout en avenant clair (toujours forfait fixe). On n'a jamais facturé de dépassement caché.",
+          "Le périmètre est cadré puis signé. Une demande supplémentaire est expliquée et chiffrée avant réalisation dans un avenant ou un nouveau lot ; aucun dépassement ne peut être ajouté unilatéralement.",
       },
     },
     {
@@ -110,7 +110,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui, à 100 %. Si vous lancez la phase 2 avec nous (sous 90 jours), les 1 500 € sont retirés du devis final. Si vous ne partez pas avec nous, vous gardez le prototype Figma et les specs — utilisables par n'importe quelle autre équipe.",
+          "La déduction, son délai et les droits de réutilisation des livrables sont indiqués dans l'offre de Discovery signée. La page publique présente le format courant, mais seul le devis nominatif engage les parties.",
       },
     },
     {
@@ -119,7 +119,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Parce que tant qu'on n'a pas fait le Discovery, le périmètre n'est pas figé. Les fourchettes affichées ici sont le résultat statistique de nos 23 derniers projets. À l'issue du Discovery, vous recevez un devis ferme à un prix unique.",
+          "Parce que le périmètre n'est pas figé avant le cadrage. Les fourchettes affichées sont des ordres de grandeur éditoriaux, pas une statistique de 23 missions externes. Seul le devis nominatif signé engage les parties.",
       },
     },
     {
@@ -128,7 +128,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "30 % à la signature, 30 % à mi-parcours, 40 % à la livraison. Pour les projets > 50 k€, on peut découper en jalons mensuels. Paiement par virement, factures conformes Pennylane, TVA française récupérable.",
+          "L'acompte, les jalons, le solde et le délai de paiement sont précisés dans le devis ou le contrat. Le paiement s'effectue par les moyens indiqués sur la facture.",
       },
     },
     {
@@ -137,7 +137,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "L'hébergement est inclus 6 à 12 mois selon le forfait, puis facturé à coût réel sans marge (40-200 €/mois selon trafic). Les outils tiers (Stripe, Loops, OpenAI…) sont sur vos comptes, vous les payez directement à l'éditeur.",
+          "Le devis distingue l'hébergement, les outils tiers, leurs titulaires de compte, la durée éventuellement incluse et leur mode de facturation. Aucun coût tiers n'est réputé compris s'il n'est pas listé.",
       },
     },
     {
@@ -146,7 +146,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "30 jours après la mise en production, on corrige gratuitement tout bug critique (bloquant, sécurité, data). Au-delà, c'est facturé en TJM ou couvert par un forfait Care mensuel. Les évolutions fonctionnelles sont hors garantie dans tous les cas.",
+          "La recette, la période de correction, les niveaux de sévérité, les exclusions et les délais cibles sont définis dans le devis. Une évolution fonctionnelle se distingue d'une non-conformité au périmètre signé.",
       },
     },
     {
@@ -155,7 +155,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Uniquement en mode Partenariat long terme avec un projet à fort potentiel — et toujours en complément d'un cash floor. On ne fait pas de « 100 % equity ». Ce serait malhonnête vis-à-vis de nos équipes salariées.",
+          "Une composante en capital peut être étudiée au cas par cas, uniquement en complément d'une rémunération en numéraire couvrant le travail prévu. Elle n'est jamais présumée ni annoncée comme financement du projet.",
       },
     },
   ],
@@ -164,9 +164,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{offersJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: offersJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
       <TarifsPage />
     </>
   );

@@ -167,7 +167,7 @@ const faqItems = [
   {
     question: "Comment obtenir un devis précis pour mon site vitrine ?",
     answer:
-      "Décrivez votre projet via notre parcours guidé (3 minutes) : notre équipe vous répond personnellement sous 24 h ouvrées, gratuitement et sans engagement, avec une recommandation de gamme argumentée. Nos tarifs vitrines sont publics : 6 900 €, 14 900 € et 22 000 € et plus selon le périmètre — au forfait fixe contractuel, performance Lighthouse 95+ garantie.",
+      "Décrivez votre projet via notre parcours guidé. Nos scénarios tarifaires servent à se situer ; le devis précise pages, contenus, intégrations, droits, coûts tiers, objectifs de performance et période de correction.",
   },
   {
     question: "Refaire un site existant coûte-t-il moins cher qu'en créer un ?",
@@ -189,9 +189,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -602,11 +602,11 @@ export default function Page() {
             ["Design", "Modèle prêt à l'emploi (« template »)", "Modèle du commerce adapté à vos couleurs", "Créé entièrement pour vous, charte graphique réutilisable"],
             ["Rédaction des contenus", "À votre charge", "Partielle (150-800 €/page sinon)", "Incluse, optimisée pour Google"],
             ["SEO technique", "Basique ou absent", "Réglages de base pour Google", "Optimisation complète, données structurées incluses"],
-            ["Performance garantie", "Non", "Non", "Contractuelle (Lighthouse 95+)"],
+            ["Performance mesurée", "Selon formule", "Selon prestation", "Protocole et objectif au devis"],
             ["Photos / visuels", "Banque d'images", "Mixte", "Direction artistique"],
             ["Affichage sur téléphone (« responsive »)", "Automatique (thème)", "Vérifié", "Conçu d'abord pour le mobile (majorité des visites)"],
-            ["Propriété du code", "Souvent floue", "Variable", "Totale : le code source vous est remis"],
-            ["Garantie post-lancement", "Rare", "15-30 jours", "30 jours incluse"],
+            ["Droits sur le code", "À vérifier", "Variable", "Cession, dépôt, accès et exclusions au devis"],
+            ["Correction post-lancement", "À vérifier", "À vérifier", "Durée, sévérités et exclusions au devis"],
           ]}
         />
         <p>
@@ -616,10 +616,10 @@ export default function Page() {
           tous. Les données structurées sont un balisage invisible qui décrit
           votre activité à Google dans son propre langage : c&apos;est lui
           qui affiche vos étoiles d&apos;avis ou vos horaires directement
-          dans les résultats. La propriété totale du code, enfin, signifie
-          que l&apos;intégralité des fichiers vous est livrée (le « dépôt
-          Git », l&apos;équivalent des plans d&apos;une maison) : vous pouvez
-          changer de prestataire sans rien perdre.
+          dans les résultats. Pour le code, distinguez les livrables spécifiques
+          cédés, les composants préexistants, l&apos;open source et les services tiers.
+          Le dépôt Git et les accès techniques sont indispensables à la réversibilité,
+          mais ne remplacent pas une clause de cession précise.
         </p>
         <p>
           Utilisez cette grille comme check-list de lecture de devis : chaque
@@ -703,11 +703,10 @@ export default function Page() {
         />
         <p>
           Pourquoi ces prix sont au-dessus d&apos;un freelance et en dessous
-          des agences premium : tout est inclus (grille de la section 6,
-          colonne de droite), le code vous appartient dès le premier jour, et
-          la performance est <strong>garantie par contrat</strong> — score
-          Lighthouse d&apos;au moins 95 sur 100 sur mobile, corrections
-          gratuites sinon. Lighthouse, c&apos;est l&apos;outil gratuit avec
+          des agences premium : le périmètre est détaillé dans la grille de la section 6,
+          colonne de droite. Le devis précise les livrables, le dépôt, les droits,
+          les licences, le protocole de performance et la période de correction.
+          Lighthouse, c&apos;est un outil gratuit avec
           lequel Google note la qualité technique d&apos;un site sur 100
           (vitesse, affichage mobile, bases du référencement) : un contrôle
           technique du web que n&apos;importe qui peut vérifier en quelques
@@ -913,7 +912,7 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
           <Link href="/guides/combien-de-temps-pour-creer-un-site">guide
           des délais de création</Link> chiffre tout le planning) —
           c&apos;est pourquoi nos forfaits incluent la rédaction, et pourquoi
-          nos dates sont contractuelles avec pénalité de retard (
+          nos devis précisent les jalons, dépendances, causes de report et conséquences éventuelles (
           <Link href="/methode">méthode Sprint Fixe™</Link>).
         </p>
 
@@ -1086,12 +1085,10 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
           Google mesure sur chaque site), zéro plugin à maintenir.
           Comme expliqué en section 5, ce site en est lui-même la
           démonstration. Le principe est simple : tout ce qui
-          conditionne le résultat est inclus (design sur mesure,
-          rédaction SEO, données structurées, mesure de fréquentation,
-          30 jours de garantie, hébergement première année), et tout
-          est contractuel : le prix (forfait fixe), les dates
-          (pénalités de retard) et la performance (Lighthouse ≥ 95
-          mobile, corrections gratuites sinon).
+          conditionne le résultat doit être inventorié&nbsp;: design, contenus,
+          données structurées, mesure d&apos;audience, hébergement, scripts tiers,
+          recette et période de correction. Seuls le prix, les dates, les
+          livrables et les objectifs repris dans le devis sont contractuels.
         </p>
         <p>
           Vous hésitez encore sur la gamme ?{" "}

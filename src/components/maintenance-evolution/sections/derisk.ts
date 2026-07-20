@@ -82,7 +82,7 @@ export const deriskHtml = `
           « On a déjà un <b>CTO / lead dev</b> en interne — à quoi bon vous ? »
         </div>
         <h4>On est votre multiplicateur, pas votre remplaçant</h4>
-        <p>Votre CTO bosse sur le <b>core product</b>. Nous, on prend tout ce qui l'empêche de dormir mais ne scale pas son impact&nbsp;: <b>astreinte 7j/7, monitoring, patches sécurité, dépendances, incidents, reporting board</b>. Le dispositif est conçu pour cohabiter avec une équipe interne&nbsp;: revue hebdo partagée, mêmes outils, décisions d'architecture co-signées. <b>Il garde le cerveau produit. On prend le cerveau run.</b></p>
+        <p>Votre CTO se concentre sur le <b>core product</b>. Le devis peut confier au dispositif de run la surveillance, les correctifs de sécurité, les dépendances, les incidents et le reporting. Couverture, rituels, outils et décisions partagées sont définis avec l'équipe interne.</p>
         <div class="me-derisk-proof">
           <span>✓ Binôme CTO interne</span>
           <span>✓ Revue hebdo partagée</span>

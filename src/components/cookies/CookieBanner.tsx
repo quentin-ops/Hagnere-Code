@@ -19,47 +19,16 @@
  */
 
 import { useEffect, useState, useCallback } from "react";
+import {
+  isCookieBannerEnabled,
+  readCookieConsent,
+  writeCookieConsent,
+} from "@/lib/cookie-consent";
 import "./cookie-banner.css";
-
-const COOKIE_BANNER_ENABLED =
-  process.env.NEXT_PUBLIC_COOKIE_BANNER === "1" ||
-  process.env.NEXT_PUBLIC_COOKIE_BANNER === "true";
-
-const STORAGE_KEY = "hc_consent_v1";
-const EXPIRY_DAYS = 395; // 13 mois (recommandation CNIL)
-
-type Consent = {
-  necessary: true; // toujours
-  analytics: boolean;
-  ts: number; // timestamp ms
-};
 
 declare global {
   interface Window {
     openCookiePreferences?: () => void;
-  }
-}
-
-function readConsent(): Consent | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as Consent;
-    // Expiré ?
-    const ageMs = Date.now() - (parsed.ts || 0);
-    if (ageMs > EXPIRY_DAYS * 86400 * 1000) return null;
-    return parsed;
-  } catch {
-    return null;
-  }
-}
-
-function writeConsent(c: Omit<Consent, "ts">): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...c, ts: Date.now() }));
-  } catch {
-    /* localStorage unavailable */
   }
 }
 
@@ -71,9 +40,9 @@ export function CookieBanner() {
   // Premier mount : afficher si pas de consent valide
   // (setTimeout : évite un setState synchrone dans l'effet — react-hooks/set-state-in-effect)
   useEffect(() => {
-    if (!COOKIE_BANNER_ENABLED) return;
+    if (!isCookieBannerEnabled()) return;
     const id = window.setTimeout(() => {
-      const existing = readConsent();
+      const existing = readCookieConsent();
       if (!existing) {
         setOpen(true);
       } else {
@@ -85,9 +54,9 @@ export function CookieBanner() {
 
   // Expose API globale pour le bouton du footer
   useEffect(() => {
-    if (!COOKIE_BANNER_ENABLED) return;
+    if (!isCookieBannerEnabled()) return;
     window.openCookiePreferences = () => {
-      const existing = readConsent();
+      const existing = readCookieConsent();
       if (existing) setAnalyticsChoice(existing.analytics);
       setShowDetail(true);
       setOpen(true);
@@ -98,24 +67,24 @@ export function CookieBanner() {
   }, []);
 
   const acceptAll = useCallback(() => {
-    writeConsent({ necessary: true, analytics: true });
+    writeCookieConsent({ necessary: true, analytics: true });
     setOpen(false);
     setShowDetail(false);
   }, []);
 
   const refuseAll = useCallback(() => {
-    writeConsent({ necessary: true, analytics: false });
+    writeCookieConsent({ necessary: true, analytics: false });
     setOpen(false);
     setShowDetail(false);
   }, []);
 
   const savePreferences = useCallback(() => {
-    writeConsent({ necessary: true, analytics: analyticsChoice });
+    writeCookieConsent({ necessary: true, analytics: analyticsChoice });
     setOpen(false);
     setShowDetail(false);
   }, [analyticsChoice]);
 
-  if (!COOKIE_BANNER_ENABLED) return null;
+  if (!isCookieBannerEnabled()) return null;
   if (!open) return null;
 
   if (showDetail) {

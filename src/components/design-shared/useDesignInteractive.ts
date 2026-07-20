@@ -448,6 +448,40 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       });
     });
 
+    // Outil interne — coût annuel du temps déclaré. Il s'agit d'une baseline
+    // arithmétique, pas d'une promesse d'économies : 47 semaines travaillées/an.
+    const roiCalc = root.querySelector<HTMLElement>(".roi-calc");
+    if (roiCalc) {
+      const people = roiCalc.querySelector<HTMLInputElement>("#roi-people");
+      const hours = roiCalc.querySelector<HTMLInputElement>("#roi-hours");
+      const cost = roiCalc.querySelector<HTMLInputElement>("#roi-cost");
+      const peopleVal = roiCalc.querySelector<HTMLElement>("#roi-people-v");
+      const hoursVal = roiCalc.querySelector<HTMLElement>("#roi-hours-v");
+      const costVal = roiCalc.querySelector<HTMLElement>("#roi-cost-v");
+      const total = roiCalc.querySelector<HTMLElement>("#roi-total");
+      const monthly = roiCalc.querySelector<HTMLElement>("#roi-monthly");
+      const fmt = (value: number) => Math.round(value).toLocaleString("fr-FR");
+      const recompute = () => {
+        const peopleNum = Number(people?.value || 0);
+        const hoursNum = Number(hours?.value || 0);
+        const costNum = Number(cost?.value || 0);
+        const annualCost = peopleNum * hoursNum * costNum * 47;
+        if (peopleVal) peopleVal.textContent = String(peopleNum);
+        if (hoursVal) hoursVal.textContent = String(hoursNum);
+        if (costVal) costVal.textContent = String(costNum);
+        if (total) total.textContent = fmt(annualCost);
+        if (monthly) monthly.textContent = fmt(annualCost / 12);
+      };
+      const inputs = [people, hours, cost].filter(
+        (input): input is HTMLInputElement => Boolean(input),
+      );
+      inputs.forEach((input) => input.addEventListener("input", recompute));
+      recompute();
+      cleanups.push(() => {
+        inputs.forEach((input) => input.removeEventListener("input", recompute));
+      });
+    }
+
     // GMV Calculator — used on /services/ecommerce to compare Shopify 3y TCO vs Hagnéré forfait.
     const calc = root.querySelector<HTMLElement>(".ec-calc");
     if (calc) {
@@ -572,11 +606,11 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
           "Bus factor",
         ];
         const meRemediations = [
-          "<b>Brancher Sentry + Better Stack + Grafana</b> dans les 14 premiers jours. Alertes Slack contextualisées, pas du bruit. MTTD médian cible : 2-4 min.",
-          "<b>Activer Dependabot + Snyk + auto-merge mineurs</b> sous CI verte. CVE critiques patchés sous 48 h, majors en revue humaine.",
-          "<b>Tester les backups en restauration chaque trimestre</b> sur environnement isolé. Runbook DR versionné. RPO 15 min · RTO 1 h.",
-          "<b>Écrire runbooks par type d'incident</b> + astreinte PagerDuty + post-mortem sous 72 h sans blame. MTTR divisé par 3.",
-          "<b>Binôme obligatoire dès J+1</b> + documentation vivante (Notion + Loom) + onboarding reproductible. Bus factor ≥ 2.",
+          "<b>Revoir la détection et l'alerte</b> selon les incidents redoutés, puis définir des objectifs mesurables adaptés à la criticité.",
+          "<b>Documenter la politique de correctifs</b> : sources de veille, qualification, tests, délais cibles et procédure d'exception.",
+          "<b>Tester une restauration</b> sur un environnement isolé et consigner le résultat avant de promettre un RPO ou un RTO.",
+          "<b>Écrire les premiers runbooks</b> à partir des incidents réellement rencontrés, avec rôles, escalade et retour d'expérience.",
+          "<b>Réduire la dépendance à une personne</b> par revue croisée, documentation et exercice de reprise par un autre intervenant.",
         ];
 
         // --- Config audit-technique : recommandation tier sur /160 ---
@@ -594,10 +628,10 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
           "Format Tech DD M&A recommandé",
         ];
         const atTierVerdicts = [
-          "Vos réponses indiquent un besoin <b>rapide et ciblé</b>. Format Express 3-5 jours, 1 senior, livrable Notion + Loom. Démarrage sous 3 j ouvrés. <b>Chiffrage sur devis après un échange de 30 min</b>.",
-          "Vos réponses indiquent un besoin <b>complet board-ready</b>. Format Standard 10 jours ouvrés, 2 seniors + un lead, 8 dimensions couvertes, Tech Debt P&L chiffré, deck 12-18 slides. <b>Chiffrage sur devis après un échange de 30 min</b>.",
-          "Vos réponses indiquent une <b>décision majeure en jeu</b> (levée, refonte &gt; 500 k€, compliance). Format Deep 15-20 jours, 3 seniors + architecte + lead, rapport 60-80 pages, 3 scenarios chiffrés sur 3 ans. <b>Chiffrage sur devis après un échange de 30 min</b>.",
-          "Vos réponses indiquent une <b>Tech Due Diligence M&amp;A</b>. Format Tech DD M&A 20-30 jours, 4 personnes dédiées + coordination avocats, rapport 80-120 pages, analyse licences OSS + IP, attorney-client privilege. <b>Chiffrage sur devis après un échange de 30 min</b>.",
+          "Vos réponses orientent vers un besoin <b>ciblé</b>. Le périmètre, les preuves, les intervenants, le calendrier et les livrables restent à confirmer avant devis.",
+          "Vos réponses orientent vers un audit <b>standard</b>. Les dimensions couvertes et le format de restitution sont définis après examen du contexte et des accès disponibles.",
+          "Vos réponses orientent vers un audit <b>approfondi</b>. Les compétences, scénarios et travaux nécessaires sont précisés au devis selon la décision à sécuriser.",
+          "Vos réponses évoquent une <b>due diligence technique</b>. Le périmètre, les conseils juridiques, la confidentialité et les intervenants habilités doivent être cadrés au cas par cas.",
         ];
 
         const questionTopics = isAuditTech ? atTopics : meTopics;
@@ -632,7 +666,7 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
 
           let level = "healthy";
           let label = "Healthy";
-          let verdictText = "Votre app est globalement en bonne santé. Quelques points à consolider pour passer de « bon » à « excellent ».";
+          let verdictText = "Vos réponses ne signalent pas de faiblesse évidente dans ce questionnaire. Ce résultat ne remplace pas un audit ni une vérification des preuves.";
 
           if (isAuditTech) {
             // Scoring audit-technique (max 160) → recommande un tier
@@ -655,11 +689,11 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
           } else if (total < 40) {
             level = "critical";
             label = "Remédiation urgente";
-            verdictText = "Votre app est en fragilité critique sur plusieurs axes. Un audit complet + plan de remédiation sur 6-12 mois est vivement recommandé.";
+            verdictText = "Vos réponses font ressortir plusieurs sujets à vérifier rapidement. Le questionnaire ne permet pas, seul, de conclure sur la criticité réelle.";
           } else if (total < 70) {
             level = "attention";
             label = "Needs attention";
-            verdictText = "Votre app tient, mais plusieurs zones méritent une reprise en main. Les 3 priorités ci-dessous feront la différence en 3 mois.";
+            verdictText = "Vos réponses font ressortir plusieurs zones à examiner. Les priorités ci-dessous servent de point de départ et doivent être validées sur pièces.";
           }
           if (badge) {
             badge.textContent = label;
@@ -708,7 +742,7 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
               const top3 = scored.slice(0, 3).filter((s) => s.v < 20);
               prioritiesList.innerHTML = top3.length
                 ? top3.map((s) => `<li><div><b>${s.topic}</b><br>${s.rem}</div></li>`).join("")
-                : `<li><div><b>Tout est vert</b><br>Félicitations — votre setup M&E est au niveau des meilleures pratiques 2026. Gardez le cap.</div></li>`;
+                : `<li><div><b>Aucun signal faible dans ces cinq réponses</b><br>Vérifiez néanmoins les preuves, les tests de restauration et les incidents réels avant de conclure.</div></li>`;
             }
           }
 

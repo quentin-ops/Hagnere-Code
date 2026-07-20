@@ -5,11 +5,11 @@ export const processHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Du brief au live</div>
-        <h2>Six étapes. <br>Timeline annoncée, <em>tenue</em>.</h2>
+        <h2>Six étapes. <br>Une séquence à <em>adapter</em>.</h2>
       </div>
       <div class="right">
-        Vous avez un slot Google Calendar pour chaque jalon. Kickoff le lundi, script le jeudi,
-        première V1 en 7 jours. Si on glisse, vous le voyez en direct — on ne découvre pas la dérive à J+20.
+        Le schéma ci-dessous est illustratif. Le devis remplace ces repères par les vrais jalons,
+        dépendances et délais de validation de votre production.
       </div>
     </div>
 
@@ -56,7 +56,7 @@ export const processHtml = `
           <div class="cv-roadmap-block cv-rm-block-d" style="left:60%;width:20%">
             <span class="cv-rm-num">04</span>
             <h4>Montage Premiere Pro</h4>
-            <p>Un des deux monteurs senior assemble. J-cut, rythme, respiration — pas d'auto-cut algorithmique.</p>
+            <p>Le monteur nommé au devis assemble et reste responsable du rythme, du son et des choix de coupe.</p>
             <div class="cv-rm-tag">J+7 · V1 MONTAGE</div>
           </div>
         </div>
@@ -100,12 +100,12 @@ export const processHtml = `
       <div class="cv-pp-sep"></div>
       <div class="cv-pp-item">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        <span><b>Délais contractualisés</b> · pénalité 7 %/sem au-delà de J+14</span>
+        <span><b>Délais au devis</b> · les conséquences d'un écart ne sont jamais automatiques</span>
       </div>
       <div class="cv-pp-sep"></div>
       <div class="cv-pp-item">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
-        <span><b>Rushs à vous</b> · tous les fichiers sources livrés à la fin</span>
+        <span><b>Fichiers remis</b> · liste et droits définis au devis, transfert après paiement complet</span>
       </div>
     </div>
   </div>

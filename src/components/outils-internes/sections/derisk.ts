@@ -24,15 +24,14 @@ export const deriskHtml = `
         </div>
         <h3>Adoption pilotée dès la semaine 1.</h3>
         <p>
-          On identifie <b>3 à 4 utilisateurs finaux référents</b> au kickoff. On les interviewe,
-          on co-design avec eux, on teste chaque sprint avec eux. À la livraison : formation sur site,
-          vidéo Loom, guide PDF, super-users formés. Sessions Q&amp;A <b>incluses à J+30 et J+90</b>
-          pour mesurer l'adoption réelle et ajuster.
+          Le plan d'adoption précise les utilisateurs référents, les moments de test, les supports et
+          les indicateurs d'usage. Formation, suivi après lancement et ajustements ne sont inclus que
+          selon les modalités écrites au devis.
         </p>
         <div class="oi-derisk-proof">
-          <span>✓ Référents au kickoff</span>
-          <span>✓ Formation sur site</span>
-          <span>✓ J+30 &amp; J+90 inclus</span>
+          <span>✓ Référents identifiés</span>
+          <span>✓ Formation cadrée</span>
+          <span>✓ Usage mesuré</span>
         </div>
       </div>
 
@@ -43,17 +42,16 @@ export const deriskHtml = `
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
           « On va dépendre de vous à vie. »
         </div>
-        <h3>Code chez vous J+1 · stack standard · zéro lock-in.</h3>
+        <h3>Dépôt, documentation et réversibilité écrits.</h3>
         <p>
-          Repo Git sur <b>votre organisation dès J+1</b>. Stack 100 % standard (Next.js, React, TypeScript,
-          PostgreSQL), documentation technique, runbook d'exploitation, Docker compose livré.
-          Votre DSI interne ou n'importe quelle autre ESN française peut reprendre le code
-          demain — aucun royalties, aucune licence propriétaire, aucune clé cachée.
+          Le devis précise le compte du dépôt, les accès, la stack, la documentation, le runbook,
+          les services tiers et les modalités de passation. Les livrables spécifiques sont transférés
+          après paiement complet selon les CGV, sous réserve des composants préexistants et licences tierces.
         </p>
         <div class="oi-derisk-proof">
-          <span>✓ Git chez vous J+1</span>
+          <span>✓ Dépôt au devis</span>
           <span>✓ Stack standard</span>
-          <span>✓ Reprise possible</span>
+          <span>✓ Passation cadrée</span>
         </div>
       </div>
 
@@ -66,15 +64,14 @@ export const deriskHtml = `
         </div>
         <h3>On se branche en lecture seule d'abord.</h3>
         <p>
-          Premier sprint : <b>API en lecture seule</b> sur votre Sage / Cegid / EBP, avec les
-          identifiants d'un compte technique dédié et isolé. On valide la cartographie des
-          données <b>avant</b> toute écriture. Les écritures se font via webhook ou fichier
-          d'échange, jamais en direct sur la base de production. Rollback en un clic.
+          Pour un flux sensible, nous privilégions la lecture seule et un environnement de test avant
+          d'autoriser des écritures. Comptes, cartographie, validation, idempotence, journalisation et
+          procédure de retour arrière sont adaptés aux capacités de l'ERP et vérifiés avec son exploitant.
         </p>
         <div class="oi-derisk-proof">
           <span>✓ Read-only d'abord</span>
           <span>✓ Compte technique isolé</span>
-          <span>✓ Rollback 1 clic</span>
+          <span>✓ Reprise documentée</span>
         </div>
       </div>
 

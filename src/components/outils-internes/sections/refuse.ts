@@ -13,7 +13,7 @@ export const refuseHtml = `
         </p>
         <div class="oi-refuse-foot">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-          Dire non à certains projets, c'est la seule manière de garantir la qualité sur celui qu'on prend.
+          Dire non à certains projets permet de concentrer l'équipe sur un périmètre qu'elle peut réellement tenir.
         </div>
       </div>
 
@@ -29,7 +29,7 @@ export const refuseHtml = `
           <div class="oi-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
             <h4>Projets sans sponsor interne identifié</h4>
-            <p>Un outil interne sans un décideur ou un chef de projet côté client = échec garanti. Si le projet est "poussé par la DG contre l'équipe", on oriente vers un accompagnement change management en amont.</p>
+            <p>Sans décideur, responsable opérationnel et disponibilité côté client, le risque d'échec augmente fortement. Le projet est reporté ou orienté vers un accompagnement adapté.</p>
           </div>
         </li>
         <li>
@@ -43,7 +43,7 @@ export const refuseHtml = `
           <div class="oi-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
             <h4>Reprise d'un outil moribond sans audit préalable</h4>
-            <p>"Notre outil interne existe mais il bugge depuis 3 ans" — on fait d'abord un audit payant pour voir si la reprise est rentable. Dans 40 % des cas, on recommande une réécriture ciblée, pas du rafistolage.</p>
+            <p>"Notre outil interne existe mais il bugge depuis 3 ans" — on commence par un audit pour comparer correction ciblée, reprise progressive et réécriture. La recommandation dépend des preuves recueillies, pas d'un pourcentage maison.</p>
           </div>
         </li>
         <li>

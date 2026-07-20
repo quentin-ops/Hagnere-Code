@@ -17,90 +17,90 @@ export const comparisonHtml = `
     <div class="me-cmp-table reveal">
       <div class="me-cmp-head">
         <div class="me-cmp-col me-cmp-col-label"></div>
-        <div class="me-cmp-col"><div class="me-cmp-kind">Option A</div><div class="me-cmp-title">Freelance senior solo</div><div class="me-cmp-price">TJM 550–900 € · 5-10 j/mois</div></div>
-        <div class="me-cmp-col"><div class="me-cmp-kind">Option B</div><div class="me-cmp-title">Grande ESN / agence craft</div><div class="me-cmp-price">10 000–30 000 € / mois</div></div>
+        <div class="me-cmp-col"><div class="me-cmp-kind">Option A</div><div class="me-cmp-title">Freelance</div><div class="me-cmp-price">Tarif et capacité à vérifier</div></div>
+        <div class="me-cmp-col"><div class="me-cmp-kind">Option B</div><div class="me-cmp-title">ESN / agence</div><div class="me-cmp-price">Tarif et capacité à vérifier</div></div>
         <div class="me-cmp-col me-cmp-col-us"><div class="me-cmp-kind">Nous</div><div class="me-cmp-title">Hagnéré Code</div><div class="me-cmp-price">2 500–14 000 € / mois forfait</div></div>
-        <div class="me-cmp-col"><div class="me-cmp-kind">Option D</div><div class="me-cmp-title">Régie / staff aug</div><div class="me-cmp-price">TJM 700–950 € · 15-20 j/mois</div></div>
+        <div class="me-cmp-col"><div class="me-cmp-kind">Option D</div><div class="me-cmp-title">Régie / renfort</div><div class="me-cmp-price">TJM et capacité à vérifier</div></div>
       </div>
 
       <div class="me-cmp-row">
         <div class="me-cmp-col me-cmp-col-label">Modèle de facturation</div>
-        <div class="me-cmp-col">TJM à l'unité · variable</div>
-        <div class="me-cmp-col me-cmp-bad">Régie + avenants</div>
-        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Forfait mensuel tout inclus</b></div>
-        <div class="me-cmp-col me-cmp-bad">TJM régie · variable</div>
+        <div class="me-cmp-col">Forfait ou TJM à vérifier</div>
+        <div class="me-cmp-col">Forfait ou régie à vérifier</div>
+        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Forfait et inclusions au devis</b></div>
+        <div class="me-cmp-col">TJM et plafond à vérifier</div>
       </div>
 
       <div class="me-cmp-row">
         <div class="me-cmp-col me-cmp-col-label">Équipe sur votre compte</div>
-        <div class="me-cmp-col me-cmp-bad">1 personne · bus factor = 1</div>
-        <div class="me-cmp-col">Pool tournant · account manager</div>
-        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>2 à 4 pers. nommées · binôme</b></div>
-        <div class="me-cmp-col">Devs staffés · rotation fréquente</div>
+        <div class="me-cmp-col">Nom, disponibilité et relais à vérifier</div>
+        <div class="me-cmp-col">Noms, statuts et rotation à vérifier</div>
+        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Intervenants et relais au devis</b></div>
+        <div class="me-cmp-col">Noms, capacité et rotation à vérifier</div>
       </div>
 
       <div class="me-cmp-row">
         <div class="me-cmp-col me-cmp-col-label">Monitoring &amp; observability</div>
-        <div class="me-cmp-col me-cmp-bad">À la demande · souvent absent</div>
-        <div class="me-cmp-col">Au forfait + rebilling outils</div>
-        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Sentry + Better Stack + Grafana inclus</b></div>
-        <div class="me-cmp-col me-cmp-bad">Non inclus · à votre charge</div>
+        <div class="me-cmp-col">Outils, alertes et coût à vérifier</div>
+        <div class="me-cmp-col">Outils, alertes et coût à vérifier</div>
+        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Outils et alertes au devis</b></div>
+        <div class="me-cmp-col">Responsabilité et coût à vérifier</div>
       </div>
 
       <div class="me-cmp-row">
-        <div class="me-cmp-col me-cmp-col-label">CVE patchés sous 48 h</div>
-        <div class="me-cmp-col me-cmp-bad">Dépend de la dispo</div>
-        <div class="me-cmp-col">Selon contrat SLA</div>
+        <div class="me-cmp-col me-cmp-col-label">Délai de traitement des CVE</div>
+        <div class="me-cmp-col">Délai par criticité à vérifier</div>
+        <div class="me-cmp-col">Délai par criticité à vérifier</div>
         <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Délai défini au devis selon criticité</b></div>
-        <div class="me-cmp-col me-cmp-bad">Non garanti · sur demande</div>
+        <div class="me-cmp-col">Délai par criticité à vérifier</div>
       </div>
 
       <div class="me-cmp-row">
-        <div class="me-cmp-col me-cmp-col-label">Astreinte 7j/7 avec MTTR contractuel</div>
-        <div class="me-cmp-col me-cmp-bad">Aucune · best effort</div>
-        <div class="me-cmp-col">Tier premium uniquement</div>
+        <div class="me-cmp-col me-cmp-col-label">Astreinte et MTTR cible</div>
+        <div class="me-cmp-col">Couverture et relais à vérifier</div>
+        <div class="me-cmp-col">Couverture et tarif à vérifier</div>
         <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Option chiffrée selon la couverture</b></div>
-        <div class="me-cmp-col me-cmp-bad">Non inclus</div>
+        <div class="me-cmp-col">Couverture et tarif à vérifier</div>
       </div>
 
       <div class="me-cmp-row">
-        <div class="me-cmp-col me-cmp-col-label">SLA avec pénalités chiffrées</div>
-        <div class="me-cmp-col me-cmp-bad">Aucun</div>
-        <div class="me-cmp-col me-cmp-bad">Discussion au cas par cas</div>
+        <div class="me-cmp-col me-cmp-col-label">Mesure et conséquence d'un SLA</div>
+        <div class="me-cmp-col">Mesure et conséquence à vérifier</div>
+        <div class="me-cmp-col">Mesure et conséquence à vérifier</div>
         <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Mesure et conséquence au contrat</b></div>
-        <div class="me-cmp-col me-cmp-bad">Hors sujet · régie</div>
+        <div class="me-cmp-col">Mesure et responsabilité à vérifier</div>
       </div>
 
       <div class="me-cmp-row">
         <div class="me-cmp-col me-cmp-col-label">Propriété code + infra</div>
-        <div class="me-cmp-col me-cmp-good">Chez vous par défaut</div>
-        <div class="me-cmp-col me-cmp-bad">Code chez vous · infra parfois mixte</div>
+        <div class="me-cmp-col">Droits, dépôt et comptes à vérifier</div>
+        <div class="me-cmp-col">Droits, dépôt et comptes à vérifier</div>
         <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Comptes client · droits selon CGV</b></div>
-        <div class="me-cmp-col me-cmp-good">Chez vous</div>
+        <div class="me-cmp-col">Droits, dépôt et comptes à vérifier</div>
       </div>
 
       <div class="me-cmp-row">
         <div class="me-cmp-col me-cmp-col-label">Rituels &amp; reporting mensuel</div>
-        <div class="me-cmp-col me-cmp-bad">Informel · pas de rapport</div>
-        <div class="me-cmp-col">Standard · qualité variable</div>
-        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Comité 1h/mois + rapport 15-20 p.</b></div>
-        <div class="me-cmp-col me-cmp-bad">Dépend du PO interne</div>
+        <div class="me-cmp-col">Rythme et format à vérifier</div>
+        <div class="me-cmp-col">Rythme et format à vérifier</div>
+        <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Rythme et format définis au devis</b></div>
+        <div class="me-cmp-col">Responsable et format à vérifier</div>
       </div>
 
       <div class="me-cmp-row">
         <div class="me-cmp-col me-cmp-col-label">Flexibilité contractuelle</div>
-        <div class="me-cmp-col me-cmp-good">Aucun engagement · mais fragile</div>
-        <div class="me-cmp-col me-cmp-bad">12-24 mois engagement strict</div>
+        <div class="me-cmp-col">Durée et préavis à vérifier</div>
+        <div class="me-cmp-col">Durée et préavis à vérifier</div>
         <div class="me-cmp-col me-cmp-col-us me-cmp-good"><b>Durée et préavis écrits au devis</b></div>
-        <div class="me-cmp-col">Mensuel · mais dépendance</div>
+        <div class="me-cmp-col">Durée, sortie et relais à vérifier</div>
       </div>
 
       <div class="me-cmp-row me-cmp-row-verdict">
         <div class="me-cmp-col me-cmp-col-label">À choisir si…</div>
-        <div class="me-cmp-col">App simple, usage &lt; 5 j/mois, tolérance au bus factor = 1</div>
-        <div class="me-cmp-col">Grand compte, besoin de marque rassurante, budget &gt; 15 k€/mois</div>
-        <div class="me-cmp-col me-cmp-col-us"><b>PME / ETI / scale-up 10-500 salariés, app en prod, budget 2,5-14 k€/mois, cherche relation long-terme avec équipe qui reste</b></div>
-        <div class="me-cmp-col">CTO interne solide + besoin de capacité dev en plus · 15+ j/mois</div>
+        <div class="me-cmp-col">Besoin compatible avec une personne et un plan de relais clair</div>
+        <div class="me-cmp-col">Besoin compatible avec sa gouvernance et son organisation</div>
+        <div class="me-cmp-col me-cmp-col-us"><b>Besoin de maintenance cadrée, capacité réservée et interlocuteurs nommés</b></div>
+        <div class="me-cmp-col">Équipe interne capable de piloter un renfort en régie</div>
       </div>
     </div>
 

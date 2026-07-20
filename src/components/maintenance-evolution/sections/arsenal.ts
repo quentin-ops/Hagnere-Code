@@ -94,8 +94,8 @@ export const arsenalHtml = `
               <div class="me-arsenal-tool-kind">SCA dépendances + containers</div>
             </div>
           </div>
-          <div class="me-arsenal-tool-body">Scan continu composer, npm, Docker, IaC. Priorisation CVSS + exploit actif connu. <b>CVE critiques patchés sous 48 h, majors sous 7 j</b>. Rapport trimestriel exportable.</div>
-          <div class="me-arsenal-tool-chip">Licence enterprise incluse</div>
+          <div class="me-arsenal-tool-body">Scan de composer, npm, Docker ou IaC selon le périmètre. Priorisation par sévérité, exposition et exploit connu. <b>Délai cible défini au devis</b>.</div>
+          <div class="me-arsenal-tool-chip">Licence selon devis</div>
         </div>
 
         <div class="me-arsenal-tool">
@@ -150,7 +150,7 @@ export const arsenalHtml = `
             </div>
             <div>
               <div class="me-arsenal-tool-name">PagerDuty</div>
-              <div class="me-arsenal-tool-kind">Astreinte 7j/7 · escalation</div>
+              <div class="me-arsenal-tool-kind">Astreinte et escalade au contrat</div>
             </div>
           </div>
           <div class="me-arsenal-tool-body">Rotation, escalade et runbooks peuvent être configurés par type d'incident. La couverture, les temps cibles et les éventuelles pénalités doivent figurer au contrat.</div>
@@ -193,8 +193,8 @@ export const arsenalHtml = `
               <div class="me-arsenal-tool-kind">Canal dédié · pas d'email tunnel</div>
             </div>
           </div>
-          <div class="me-arsenal-tool-body">Canal Slack partagé entre votre équipe et la nôtre. Threads par sujet, ping non-intrusifs. <b>Réponse &lt; 2 h en heures ouvrées, &lt; 30 min sur urgence P1</b>.</div>
-          <div class="me-arsenal-tool-chip">Réponse &lt; 2h HO</div>
+          <div class="me-arsenal-tool-body">Un canal partagé peut être retenu pour les sujets de production. <b>Horaires, personnes habilitées et délais cibles</b> sont définis au devis.</div>
+          <div class="me-arsenal-tool-chip">Délai au contrat</div>
         </div>
       </div>
     </div>

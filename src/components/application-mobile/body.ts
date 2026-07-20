@@ -402,7 +402,7 @@ ${navHtml}
       </div>
       <div class="right" style="color:rgba(255,255,255,0.7)">
         Push, biométrie, Apple Pay / Google Pay, mode hors-ligne, paiement in-app, géoloc, scan QR, OTA updates, deep links, App Clip…
-        Pas une option "à débloquer" : <b>tout est inclus dans le forfait</b>, parce qu'une app sans ça n'est pas une app.
+        Le devis retient uniquement les briques utiles au produit et précise leur coût, leurs dépendances et leurs conditions de publication.
       </div>
     </div>
 
@@ -500,7 +500,7 @@ ${navHtml}
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
         <h4>Crash reporting &amp; monitoring</h4>
-        <p>Sentry mobile + Firebase Crashlytics inclus. Stack trace symbolisée, bread­crumbs, session replay. <b>SLA 4 h ouvrées sur crashs bloquants</b> dans le forfait maintenance.</p>
+        <p>Sentry mobile, Firebase Crashlytics ou un outil équivalent peuvent être retenus. Stack trace, contexte de crash et éventuel replay sont configurés selon le besoin. <b>Le délai cible sur un blocage est écrit dans le forfait de maintenance</b>.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg></div>
@@ -612,7 +612,7 @@ ${navHtml}
           <div class="sl-row">
             <div class="sl-cat">QA &amp; MONITORING</div>
             <div class="sl-val">Maestro (E2E) · Detox · Sentry · Crashlytics</div>
-            <div class="sl-note">SLA 4H BLOQUANT</div>
+            <div class="sl-note">DÉLAI CIBLE AU DEVIS</div>
           </div>
           <div class="sl-row">
             <div class="sl-cat">NATIF SI BESOIN</div>
@@ -792,7 +792,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            On gère la soumission de A à Z. Apple refuse 40 % des apps au 1ᵉʳ envoi (critère 2.1 : app incomplète ou buggée), nous on prévoit 1 à 3 itérations dans le forfait. Connaissance des points sensibles : permissions tracking ATT, IAP vs Stripe, contenu généré par utilisateurs (modération obligatoire), abos clairement affichés. <b>Pas de surcoût si Apple demande 2-3 retouches.</b>
+            La décision et le délai de review appartiennent à Apple. La guideline 2.1 fait partie des motifs fréquemment signalés, mais elle ne permet pas d'affirmer que 40&nbsp;% des apps sont refusées au premier envoi. Le devis précise la préparation de la fiche, les tests, le nombre d'itérations incluses et le traitement d'une demande supplémentaire.
           </div>
         </div>
 
@@ -812,7 +812,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Non, <b>uniquement sur les biens digitaux et abonnements in-app</b>. <b>Petites entreprises (&lt; 1 M$ CA / an) : 15 %</b> via Apple Small Business Program. <b>Biens physiques, livraisons, click &amp; collect, services réservés via l'app</b> : <b>0 % de commission</b>, vous passez par Stripe / PayPlug en webview. On vous conseille la bonne stratégie au cadrage selon votre business model.
+            Les règles et commissions dépendent du type de bien ou service, du programme applicable, du pays et des modalités de paiement autorisées au moment de la soumission. Le cadrage vérifie les règles Apple et Google à jour avant de retenir IAP, paiement externe ou un autre parcours.
           </div>
         </div>
 
@@ -822,7 +822,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Forfait maintenance <b>optionnel, sur devis selon volume et criticité</b>, sans engagement de durée. Inclus selon le scope retenu : compatibilité iOS / Android annuelle (iOS 18 → 19), correctifs sécurité, monitoring 24/7, hot-fixes via OTA, releases régulières. Une app non maintenue est désinstallée à 6 mois — donc même si vous repoussez la maintenance, on en parle au cadrage pour planifier la trajectoire.
+            Forfait maintenance <b>optionnel, sur devis selon volume et criticité</b>. Compatibilité iOS / Android, correctifs de sécurité, surveillance, hot-fixes OTA et rythme de publication ne sont inclus que s'ils figurent au périmètre. Une app non maintenue s'expose progressivement aux incompatibilités, aux vulnérabilités et aux régressions&nbsp;: la trajectoire est donc cadrée dès le devis initial.
           </div>
         </div>
 

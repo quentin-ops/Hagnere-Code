@@ -100,6 +100,7 @@ export const aiCallLog = pgTable("ai_call_log", {
    *  - "ai_error"  : provider a renvoyé une erreur (Anthropic, Groq, Resend)
    *  - "blocked"   : refusé en amont (rate limit, captcha, breaker)
    *  - "validation": payload invalide
+   *  - "reserved"  : créneau atomiquement réservé avant l'appel externe
    */
   status: text("status").notNull(),
   /** Sous-raison si blocked (rate_ip_hour, rate_ip_day, rate_global_day, rate_email_day, captcha_failed, cost_breaker, secret_misconfigured). */

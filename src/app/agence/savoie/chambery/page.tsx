@@ -77,17 +77,17 @@ const faqItems = [
   {
     question: "Chambéry est une ville de services et d'administration. Cela change quoi pour un site ?",
     answer:
-      "Beaucoup. D'après le recensement 2023 de l'INSEE, 46,3 % de l'emploi chambérien relève du commerce, des transports et des services divers, et 38,9 % de l'administration, l'enseignement, la santé et l'action sociale — soit plus de huit emplois sur dix dans les services. Concrètement, la majorité de nos interlocuteurs chambériens vendent une prestation, pas un produit. Leur site n'a donc pas à gérer un catalogue : il doit établir la crédibilité, expliquer une méthode, et déclencher une prise de contact. C'est un travail de structure et de rédaction bien plus que de fonctionnalités.",
+      "D'après le recensement 2023 de l'INSEE, 46,3 % de l'emploi chambérien relève du commerce, des transports et des services divers, et 38,9 % de l'administration, l'enseignement, la santé et l'action sociale. Pour une entreprise de services, un site doit souvent établir la crédibilité, expliquer une méthode et faciliter la prise de contact ; ce n'est toutefois pas une conclusion valable pour toutes les entreprises locales.",
   },
   {
     question: "Faites-vous des applications métier pour les entreprises chambériennes ?",
     answer:
-      "C'est une part importante de notre activité, et c'est ce qui nous distingue le plus des agences de communication du bassin. Une application métier, c'est un outil qui remplace des tableurs, automatise un processus ou donne un espace à vos clients. Les besoins typiques que nous rencontrons localement : suivi de dossiers pour les cabinets de conseil et professions libérales, gestion de commandes pour les acteurs de l'agroalimentaire, portails de suivi pour les entreprises de services. Le budget démarre à 15 000 € pour une première version réellement utilisable, et le détail est sur notre page dédiée.",
+      "Oui. Une application métier peut remplacer des tableurs, automatiser un processus ou proposer un espace client. Pour le bassin chambérien, les cas pertinents peuvent inclure le suivi de dossiers, la gestion de commandes ou un portail de services. Le périmètre et le budget sont établis après cadrage, puis inscrits au devis.",
   },
   {
     question: "Quel est le niveau technique des sites d'entreprises chambériennes ?",
     answer:
-      "Nous l'avons mesuré plutôt que de l'affirmer. En juillet 2026, nous avons passé neuf sites d'entreprises et commerces indépendants de Chambéry, Aix-les-Bains et du bassin d'Albertville dans Lighthouse, l'outil de mesure de Google, en configuration mobile. Aucun n'atteignait 90 sur 100 en performance, et la médiane se situait autour de 55 à 60. Précision d'honnêteté : neuf sites, c'est un sondage et non un échantillon représentatif, et ces mesures varient fortement d'un passage à l'autre — nous ne publions donc ni les noms ni les scores individuels. Ce qui reste solide, c'est l'ordre de grandeur.",
+      "Il n'existe pas de score fiable pour l'ensemble des entreprises chambériennes. Un diagnostic utile mesure votre propre site sur plusieurs pages, distingue données de terrain et test de laboratoire, puis documente appareil, réseau et scripts tiers. Lighthouse seul ne prouve ni classement Google ni conversion.",
   },
   {
     question: "Combien coûte un site à Chambéry, et pourquoi affichez-vous vos prix ?",
@@ -109,9 +109,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{serviceJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -271,13 +271,13 @@ export default function Page() {
 
         <h2 id="besoins">4. Ce dont les entreprises chambériennes ont besoin</h2>
         <p>
-          De ce que nous observons localement, trois demandes reviennent, par
-          ordre de fréquence.
+          Trois familles de besoins sont particulièrement pertinentes au regard
+          du tissu économique local, sans prétendre à un classement issu de clients.
         </p>
         <ul>
           <li>
             <strong>Un site qui inspire confiance et fait venir des
-            clients.</strong> C&apos;est le besoin dominant dans une ville de
+            clients.</strong> C&apos;est un besoin fréquent pour une ville de
             services : cabinets, conseil, professions libérales, artisans du
             bâtiment. Le sujet n&apos;est pas technique, il est éditorial et
             structurel — quelles pages, pour quelles recherches, avec quelle
@@ -339,41 +339,27 @@ export default function Page() {
           description="Décrivez-le en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. On peut se voir à Bassens, à quelques minutes du centre de Chambéry, ou en visioconférence."
         />
 
-        <h2 id="constat">5. Ce que nous avons mesuré sur les sites du bassin</h2>
+        <h2 id="constat">5. Comment mesurer votre site sans généraliser</h2>
         <p>
-          Plutôt que d&apos;affirmer que les entreprises locales ont « besoin
-          de se digitaliser », nous avons mesuré. En juillet 2026, nous avons
-          passé <strong>neuf sites d&apos;entreprises et de commerces
-          indépendants</strong> de Chambéry, Aix-les-Bains et du bassin
-          d&apos;Albertville dans Lighthouse, l&apos;outil de mesure de
-          Google, en configuration mobile.
+          Une moyenne locale non reproductible ne permet pas de décider d&apos;une
+          refonte. Il faut mesurer votre propre site sur les pages importantes,
+          avec le même protocole avant et après une modification.
         </p>
         <p>
-          Résultat : <strong>aucun des neuf n&apos;atteignait 90 sur 100 en
-          performance</strong>, et la médiane se situait autour de 55 à 60.
-          Sur plusieurs d&apos;entre eux, l&apos;affichage du contenu
-          principal dépassait dix secondes en réseau mobile dégradé, avec des
-          pages pesant plus de deux méga-octets.
+          Le contrôle doit distinguer les Core Web Vitals de terrain, le test
+          Lighthouse de laboratoire, l&apos;indexation, les formulaires et les
+          conversions effectivement reçues.
         </p>
-        <InfoBox variant="amber" title="Ce que vaut — et ne vaut pas — cette mesure">
-          Neuf sites, c&apos;est un sondage, pas un échantillon représentatif
-          du bassin. Nous avons retenu des entreprises indépendantes (hôtels,
-          artisans, commerces) et écarté les chaînes nationales, dont les
-          sites sont pilotés par un siège. Nous avons aussi constaté que{" "}
-          <strong>ces mesures varient fortement d&apos;un passage à
-          l&apos;autre</strong> : sur trois sites retestés, l&apos;écart
-          atteignait dix-huit points. C&apos;est pourquoi nous ne publions ni
-          les noms, ni les scores individuels — ce serait instable et déloyal
-          envers des entreprises voisines. Ce qui reste solide, c&apos;est
-          l&apos;ordre de grandeur.
+        <InfoBox variant="amber" title="Ce qu&apos;un score ne prouve pas">
+          Un résultat Lighthouse varie avec la page, l&apos;appareil, le réseau,
+          la charge et les scripts tiers. Il ne démontre ni une position dans
+          Google, ni un taux de conversion, ni la qualité éditoriale du site.
         </InfoBox>
         <p>
-          Vous pouvez faire ce test vous-même, gratuitement et en trente
-          secondes, sur PageSpeed Insights : tapez l&apos;adresse de votre
-          site et regardez l&apos;onglet mobile. C&apos;est aussi la raison
-          pour laquelle nous inscrivons un score d&apos;au moins 95 sur 100
-          dans nos contrats : c&apos;est un engagement que vous pouvez
-          vérifier sans nous croire sur parole.
+          Vous pouvez lancer PageSpeed Insights gratuitement, puis comparer
+          les résultats avec les données de terrain. Si un objectif de performance
+          est contractualisé, le devis doit préciser pages, conditions, seuils,
+          responsabilités et procédure de correction.
         </p>
 
         <h2 id="bassin">6. Le bassin que nous couvrons au quotidien</h2>
@@ -495,23 +481,22 @@ export default function Page() {
 
         <h2 id="travailler">9. Travailler avec nous</h2>
         <p>
-          Trois engagements, identiques dans tous nos contrats.{" "}
+          Trois points à préciser dans le devis.{" "}
           <strong>Un forfait fixe contractuel</strong> : périmètre écrit, prix
           arrêté avant de commencer, aucun dépassement surprise.{" "}
-          <strong>Une performance garantie</strong> : score Lighthouse mobile
-          d&apos;au moins 95 à la livraison, corrections gratuites sinon.{" "}
-          <strong>Le code vous appartient</strong> : cession des droits
-          écrite, dépôt sur un compte à votre nom, domaine enregistré au
-          vôtre.
+          <strong>Une performance mesurable</strong> : protocole et seuils adaptés
+          aux pages et aux scripts tiers.{" "}
+          <strong>Des droits et une réversibilité explicites</strong> : transfert
+          des livrables spécifiques après paiement selon les CGV, dépôt, accès,
+          domaine, exclusions et licences inventoriés.
         </p>
         <p>
-          Les projets démarrent généralement par un Discovery Sprint de deux
-          jours à 1 500 €, intégralement déduits si le projet se lance. Notre{" "}
+          Le format de cadrage, son prix, ses livrables et toute remise éventuelle
+          sont précisés avant engagement. Notre{" "}
           <Link href="/methode">page méthode</Link> détaille le déroulé, et
           nos <Link href="/tarifs">tarifs</Link> sont publics. Il arrive que
           ce cadrage se conclue par « votre site actuel suffit, voici les
-          trois choses à corriger » — c&apos;est déjà arrivé, et c&apos;est
-          très bien ainsi.
+          trois choses à corriger » lorsque les preuves ne justifient pas une refonte.
         </p>
 
         <GuideInlineCTA

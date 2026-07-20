@@ -14,7 +14,7 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg>
         </div>
         <h4>Forfait fixe · aucun % du media</h4>
-        <p>Prix mensuel connu au devis. <b>Pas de rebilling, pas de commission sur le spend</b>. Notre intérêt est aligné sur votre CAC, pas sur votre dépense.</p>
+        <p>Prix de prestation connu au devis. <b>Pas de commission sur le budget média</b>. Les licences et services tiers éventuels sont listés séparément.</p>
         <div class="ads-trust-foot">— Clause contractuelle explicite</div>
       </div>
 
@@ -31,9 +31,9 @@ export const trustBadgesHtml = `
         <div class="ads-trust-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <h4>Tracking RGPD · Consent Mode v2</h4>
-        <p>Déploiement conforme CNIL&nbsp;: consent banner, ad_storage signals, <b>modeled conversions Google</b> pour les visiteurs qui refusent. DPA RGPD, sous-traitants documentés, hébergement Stape UE.</p>
-        <div class="ads-trust-foot">— DPA fourni à la signature</div>
+        <h4>Tracking documenté</h4>
+        <p>Plan de données, consentement, sous-traitants, transferts et conservation sont cadrés avec le responsable de traitement. La validation juridique reste distincte de l'implémentation technique.</p>
+        <div class="ads-trust-foot">— Responsabilités précisées au devis</div>
       </div>
 
       <div class="ads-trust-card reveal reveal-d-3">
@@ -59,7 +59,7 @@ export const trustBadgesHtml = `
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg>
         </div>
         <h4>Reporting business (pas vanity)</h4>
-        <p>Looker Studio connecté à votre CRM et votre ERP. <b>CAC, ROAS blended, payback, margin contribuée</b> par canal — jamais un PDF d'impressions. Accessible à votre board 24/7.</p>
+        <p>Le tableau de bord affiche les indicateurs calculables à partir des sources prévues au devis, avec leurs définitions, leur fréquence et leurs limites d'attribution.</p>
         <div class="ads-trust-foot">— Sources et calendrier au devis</div>
       </div>
 

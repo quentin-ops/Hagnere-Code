@@ -5,11 +5,11 @@ export const checklistHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Ce que "un outil interne Hagnéré" veut dire</div>
-        <h2>Douze livrables inclus<br>dans chaque mission.</h2>
+        <h2>Douze points à écrire<br>dans chaque devis.</h2>
       </div>
       <div class="right">
-        "Faire un outil interne" c'est trop flou. Voilà ce qui rentre dans le forfait — et ce qui n'y rentre pas.
-        Pas d'avenant surprise à J+60, pas de rallonge "formation" à ajouter au dernier moment.
+        "Faire un outil interne" est trop flou. Cette grille sert à décider ce qui entre dans le forfait,
+        ce qui reste hors périmètre et comment une demande nouvelle sera chiffrée et acceptée.
       </div>
     </div>
 
@@ -19,30 +19,30 @@ export const checklistHtml = `
         <div class="oi-check-head">
           <div class="oi-check-badge oi-check-badge-in">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>
-            INCLUS DANS LE FORFAIT
+            À PRÉCISER DANS LE FORFAIT
           </div>
-          <h3>Douze livrables, à chaque projet.</h3>
+          <h3>Douze décisions à ne pas laisser implicites.</h3>
         </div>
         <ul class="oi-check-list">
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Audit terrain des processus actuels</b> — interviews avec 3 à 5 utilisateurs finaux, observation de leur quotidien, cartographie Figma du workflow à digitaliser.</div>
+            <div><b>Analyse des processus actuels</b> — personnes consultées, observations, preuves et format de cartographie définis selon le projet.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>SSO / Active Directory / Azure AD</b> — connexion automatique depuis le SI existant, pas de nouveau mot de passe pour vos équipes.</div>
+            <div><b>Identité et SSO</b> — annuaire, protocole, MFA, cycle de vie des comptes et licences à vérifier avant engagement.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Permissions RBAC granulaires</b> — rôles fins (DAF, compta, commercial, opérateur), visibilité par entité/site, impersonation support.</div>
+            <div><b>Permissions</b> — rôles, ressources, séparation des tâches et éventuel accès support décrits puis testés.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Audit trail complet</b> — chaque action horodatée (qui, quoi, quand, ancienne valeur, nouvelle valeur). Exigence DAF + conformité interne.</div>
+            <div><b>Piste d'audit</b> — événements, contenu, rétention, accès et export définis d'après les risques et obligations.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Intégrations à votre SI existant</b> — 2 à 4 connecteurs (Sage, Cegid, Pennylane, Salesforce, Active Directory) pensés dès la v1, pas en option.</div>
+            <div><b>Intégrations au SI existant</b> — systèmes, sens des flux, API, droits, quotas et reprise sur erreur inventoriés au devis.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
@@ -50,27 +50,27 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Agents IA ciblés</b> — 1 à 2 automatisations intelligentes (extraction de factures, relances auto, classification de tickets) qui remplacent 5 à 15 h/semaine de tâches manuelles.</div>
+            <div><b>Automatisations assistées par IA</b> — cas d'usage, échantillon de test, seuils, validation humaine, coûts et solution de repli documentés.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Formation équipe &amp; onboarding</b> — 1 journée sur site (ou visio), vidéo Loom de 10 min, guide PDF imprimable, super-users formés pour prendre le relais.</div>
+            <div><b>Formation et onboarding</b> — publics, durée, supports, environnement et critères d'autonomie précisés au devis.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Sessions Q&amp;A à J+30 et J+90</b> — retour sur l'adoption réelle, ajustements gratuits inclus, mesure du temps gagné en chair et en os.</div>
+            <div><b>Suivi d'adoption</b> — dates, indicateurs, participants et éventuels ajustements inclus sont écrits avant signature.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Conformité RGPD clé en main</b> — DPA, registre des traitements, droits d'accès/suppression, sous-traitants documentés.</div>
+            <div><b>Socle de confidentialité</b> — mesures techniques et inventaire des sous-traitants selon le périmètre. La validation juridique reste celle du responsable de traitement et de son conseil.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Hébergement France + backups 15 min</b> — Scaleway / OVH par défaut, option cloud client (AWS/Azure) ou on-premise si votre DSI l'exige.</div>
+            <div><b>Hébergement et sauvegardes</b> — fournisseur, compte, région, fréquence, rétention et tests de restauration détaillés au devis.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Code source + doc + runbook chez vous</b> — repo Git J+1, documentation technique, runbook d'exploitation. Reprise possible par votre DSI interne ou une autre ESN, quand vous voulez.</div>
+            <div><b>Code source, documentation et runbook</b> — contenu du dépôt, accès, droits et éléments de passation inventoriés dans le devis et les CGV.</div>
           </li>
         </ul>
       </div>
@@ -91,7 +91,7 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Reprise de compta historique complète</b> — sur 5 ans de données Sage, c'est un projet dédié. On reprend l'historique utile (12-24 mois) par défaut.</div>
+            <div><b>Reprise historique étendue</b> — volume, période, qualité, rapprochement et responsabilité de validation font l'objet d'un lot dédié.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
@@ -99,11 +99,11 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Conduite du changement lourde</b> — si votre équipe résiste au projet avant même qu'il commence, nos 3 sessions ne suffiront pas. On oriente vers un cabinet RH spécialisé en amont.</div>
+            <div><b>Conduite du changement étendue</b> — si le risque d'adoption dépasse la formation produit, le besoin est cadré séparément ou confié à un spécialiste.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Certifications enterprise lourdes</b> — SOC 2, ISO 27001, HDS : on prépare le terrain et la conformité technique, l'audit officiel est chez un tiers habilité, pas nous.</div>
+            <div><b>Certification ou attestation réglementée</b> — nous fournissons les éléments techniques prévus, mais l'évaluation et la certification relèvent d'un tiers compétent.</div>
           </li>
           <li>
             <div class="oi-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>

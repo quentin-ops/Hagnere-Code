@@ -162,7 +162,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Non. Claude Code est un assistant de développement (recherche, exploration, plans d'implémentation) que chaque dev pilote. Le code commit est revu par un humain à 100 %. Cela nous permet d'aller environ 3 fois plus vite sur les phases d'exploration et de cadrage, et de poser moins de questions au client (« j'ai déjà demandé à Claude »).",
+          "Non. Claude Code est un assistant de développement pour la recherche, l'exploration et la préparation. Une personne nommée reste responsable des choix, des tests et de la validation avant intégration. Nous ne publions pas de multiplicateur de productivité non mesuré.",
       },
     },
     {
@@ -180,9 +180,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{orgJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: orgJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
       <EquipePage />
     </>
   );

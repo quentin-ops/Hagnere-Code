@@ -1,21 +1,49 @@
-/**
- * Anti-bot « question de calcul » — remplace Cloudflare Turnstile.
- *
- * Le client tire deux petits nombres (MATH_CHALLENGE_MIN..MAX), l'humain
- * tape la somme, et le serveur revalide la cohérence (bornes + somme).
- * Zéro script tiers, zéro compte externe, zéro env var à gérer. Couplé au
- * honeypot et au rate limit Postgres, ça élimine les bots génériques qui
- * POSTent les formulaires sans exécuter la page.
- */
+import {
+  createHmac,
+  randomBytes,
+  randomInt,
+  timingSafeEqual,
+} from "node:crypto";
 
+/**
+ * Question de calcul signée par le serveur.
+ *
+ * Les opérandes restent visibles, mais le client ne peut plus inventer sa
+ * propre équation : le token lie les termes, une échéance et un nonce au
+ * moyen d'un HMAC serveur.
+ */
 export const MATH_CHALLENGE_MIN = 2;
 export const MATH_CHALLENGE_MAX = 9;
+export const MATH_CHALLENGE_TTL_MS = 2 * 60 * 60 * 1000;
 
-export type MathChallengePayload = {
+type SignedChallenge = {
   a: number;
   b: number;
+  exp: number;
+  nonce: string;
+};
+
+export type IssuedMathChallenge = {
+  a: number;
+  b: number;
+  token: string;
+  expiresAt: number;
+};
+
+export type MathChallengePayload = {
+  token: string;
   answer: number;
 };
+
+function encode(value: string): string {
+  return Buffer.from(value, "utf8").toString("base64url");
+}
+
+function sign(encodedPayload: string, secret: string): string {
+  return createHmac("sha256", secret)
+    .update(encodedPayload)
+    .digest("base64url");
+}
 
 function isTermInRange(n: unknown): n is number {
   return (
@@ -26,13 +54,74 @@ function isTermInRange(n: unknown): n is number {
   );
 }
 
+export function getMathChallengeSecret(): string | null {
+  const secret =
+    process.env.MATH_CHALLENGE_SECRET?.trim() ||
+    process.env.AUTH_SECRET?.trim();
+  return secret && secret.length >= 32 ? secret : null;
+}
+
+export function issueMathChallenge(
+  secret: string,
+  now = Date.now(),
+): IssuedMathChallenge {
+  const payload: SignedChallenge = {
+    a: randomInt(MATH_CHALLENGE_MIN, MATH_CHALLENGE_MAX + 1),
+    b: randomInt(MATH_CHALLENGE_MIN, MATH_CHALLENGE_MAX + 1),
+    exp: now + MATH_CHALLENGE_TTL_MS,
+    nonce: randomBytes(16).toString("base64url"),
+  };
+  const encodedPayload = encode(JSON.stringify(payload));
+  return {
+    a: payload.a,
+    b: payload.b,
+    token: `${encodedPayload}.${sign(encodedPayload, secret)}`,
+    expiresAt: payload.exp,
+  };
+}
+
 export function isValidMathChallenge(
   value: unknown,
+  secret: string,
+  now = Date.now(),
 ): value is MathChallengePayload {
   if (!value || typeof value !== "object") return false;
-  const { a, b, answer } = value as Record<string, unknown>;
-  if (!isTermInRange(a) || !isTermInRange(b)) return false;
-  return (
-    typeof answer === "number" && Number.isInteger(answer) && answer === a + b
-  );
+  const { token, answer } = value as Record<string, unknown>;
+  if (
+    typeof token !== "string" ||
+    token.length > 1024 ||
+    typeof answer !== "number" ||
+    !Number.isInteger(answer)
+  ) {
+    return false;
+  }
+
+  const [encodedPayload, receivedSignature, extra] = token.split(".");
+  if (!encodedPayload || !receivedSignature || extra) return false;
+
+  const expectedSignature = sign(encodedPayload, secret);
+  const received = Buffer.from(receivedSignature, "utf8");
+  const expected = Buffer.from(expectedSignature, "utf8");
+  if (received.length !== expected.length || !timingSafeEqual(received, expected)) {
+    return false;
+  }
+
+  try {
+    const payload = JSON.parse(
+      Buffer.from(encodedPayload, "base64url").toString("utf8"),
+    ) as Partial<SignedChallenge>;
+    return (
+      isTermInRange(payload.a) &&
+      isTermInRange(payload.b) &&
+      typeof payload.exp === "number" &&
+      Number.isInteger(payload.exp) &&
+      payload.exp >= now &&
+      payload.exp <= now + MATH_CHALLENGE_TTL_MS &&
+      typeof payload.nonce === "string" &&
+      payload.nonce.length >= 16 &&
+      answer === payload.a + payload.b
+    );
+  } catch {
+    return false;
+  }
 }

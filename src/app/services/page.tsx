@@ -5,7 +5,7 @@ import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "11 services web, SaaS & outils métier · Hagnéré Code",
   description:
-    "Du SaaS au SEO : 11 services au forfait fixe pour construire, lancer et faire tourner votre produit. Délais contractuels, code 100 % à vous.",
+    "Du SaaS au SEO : 11 services pour construire, lancer et faire évoluer votre produit. Périmètre, délais, livrables, accès et droits sont écrits au devis.",
   alternates: { canonical: "/services" },
   openGraph: {
     ...OG_BASE,
@@ -69,8 +69,8 @@ export default function Page() {
 
   return (
     <>
-      <script type="application/ld+json">{jsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <ServicesHubPage />
     </>
   );

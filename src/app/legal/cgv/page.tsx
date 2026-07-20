@@ -33,7 +33,7 @@ const breadcrumbJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <LegalPageLayout
         title={"Conditions\ngénérales."}
         intro="Cadre général applicable aux prestations réalisées par HAGNÉRÉ CODE SAS, sauf conditions particulières prévues au devis ou au contrat."

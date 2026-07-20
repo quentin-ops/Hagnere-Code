@@ -22,7 +22,7 @@ export const pricingHtml = `
         <div class="cv-price-amount">2 500 <span>€ / vidéo</span></div>
         <ul class="cv-price-feats">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1 brief &amp; 1 script</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Montage Premiere Pro senior</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Monteur et outil précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1 version longue + 3 shorts</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison en 10-14 jours</li>
         </ul>
@@ -44,7 +44,7 @@ export const pricingHtml = `
       </div>
 
       <div class="cv-price-card cv-price-card-featured reveal reveal-d-2">
-        <div class="cv-price-badge">LE PLUS CHOISI</div>
+        <div class="cv-price-badge">OFFRE RECOMMANDÉE</div>
         <div class="cv-price-tag">RETAINER · 03</div>
         <h4>Content Retainer</h4>
         <div class="cv-price-sub">Pipeline industriel pour marques DTC / SaaS en scale. ~25 livrables par mois, ads + motion + UGC + product.</div>
@@ -65,7 +65,7 @@ export const pricingHtml = `
         <div class="cv-price-sub">Besoin complexe, brand film hero, campagne multi-canaux, volumes hors cadre. On cadre, on chiffre au forfait.</div>
         <div class="cv-price-amount">Sur devis<span>&nbsp;</span></div>
         <ul class="cv-price-feats">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée 2-4 personnes</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dimensionnée et nommée au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tournage multi-jours</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Motion custom + 3D 2.5D</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>À partir de 15 k€</li>
@@ -76,7 +76,7 @@ export const pricingHtml = `
     </div>
 
     <p class="cv-price-foot">
-      Les retainers incluent : <b>banque musicale licenciée · 2 révisions / vidéo · rushs livrés · dashboard mensuel · support Slack dédié</b>. TVA en sus. Engagement 6 mois.
+      Ces cartes sont des exemples d'offre. <b>Intervenants, volume, révisions, licences, rushs, suivi et durée d'engagement</b> doivent être repris dans le devis nominatif. TVA en sus.
     </p>
   </div>
 </section>

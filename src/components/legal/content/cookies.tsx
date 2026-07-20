@@ -70,7 +70,7 @@ export const cookiesSections: LegalSection[] = [
         <p>
           Conformément aux recommandations CNIL, voici la liste détaillée des
           stockages côté navigateur utilisés par hagnere-code.ai. Aucun n&apos;est
-          soumis à consentement (article 82 LCEN — finalité strictement
+          soumis à consentement (article 82 de la loi Informatique et Libertés — finalité strictement
           nécessaire au service demandé).
         </p>
         <div style={{ overflowX: "auto", margin: "16px 0" }}>

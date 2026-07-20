@@ -287,6 +287,24 @@ a.sf-direct-v:hover { color: var(--accent); }
   line-height: 1.5;
 }
 
+.sf-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--ink-3);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.sf-consent input {
+  width: 16px;
+  height: 16px;
+  margin: 1px 0 0;
+  flex: 0 0 auto;
+  accent-color: var(--accent);
+}
+.sf-consent a { color: inherit; text-decoration: underline; }
+.sf-consent-error { color: #b91c1c; font-size: 11px; }
+
 /* Trust row */
 .sf-trust-row {
   margin-top: 56px;

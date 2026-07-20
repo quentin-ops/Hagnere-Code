@@ -100,8 +100,8 @@ export const processHtml = `
           </div>
         </div>
         <h4>Rituels mensuels &amp; reporting</h4>
-        <p>Comité produit/tech 1 h le 5 de chaque mois avec votre équipe. Rapport mensuel business-ready (PDF board-ready). Incidents post-mortem sous 72 h, sans blame. <b>Vous ne découvrez jamais une dérive en fin de trimestre</b>.</p>
-        <div class="me-proc-step-foot">Le 5 du mois · 1 h · rapport 15-20 p.</div>
+        <p>Le devis fixe le rythme de comité, le format du rapport, les destinataires et le délai d'un éventuel post-mortem. Les alertes et décisions restent traçables entre deux revues.</p>
+        <div class="me-proc-step-foot">Rythme · format · destinataires au devis</div>
       </article>
     </div>
 

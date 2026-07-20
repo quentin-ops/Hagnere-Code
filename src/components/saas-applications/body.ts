@@ -45,7 +45,7 @@ ${navHtml}
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Périmètre et prix écrits</span>
         <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Repo Git chez vous J+1</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Dépôt, accès et droits au devis</span>
       </div>
     </div>
 
@@ -397,7 +397,7 @@ ${navHtml}
         <div class="proc-num">ÉTAPE 03</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
         <h4>Développement</h4>
-        <p>Sprints d'une semaine. Démo live à chaque fin. Accès repo Git dès J+1. Vous voyez le code grandir en direct.</p>
+        <p>Le devis fixe la durée des sprints, les démonstrations, le dépôt Git et les accès accordés pendant la réalisation.</p>
         <div class="proc-dur">3–6 SEMAINES</div>
       </div>
       <div class="proc-step">
@@ -664,7 +664,7 @@ ${navHtml}
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée 3–5 personnes</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intervenants et rôles précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Product + design + dev + growth</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO + ads + contenus inclus</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intéressement possible (equity)</li>
@@ -674,7 +674,7 @@ ${navHtml}
     </div>
 
     <p style="text-align:center;margin-top:40px;color:var(--mute);font-size:14px">
-      Tous les forfaits incluent : <b style="color:var(--ink)">propriété complète du code · repo Git chez vous · formation de vos équipes · 30 jours de garantie après livraison</b>
+      Chaque devis précise : <b style="color:var(--ink)">livrables et droits · dépôt et accès · documentation et formation · recette et éventuelle garantie</b>
     </p>
   </div>
 </section>
@@ -722,9 +722,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Oui, intégralement</b>. Le repo Git est chez vous dès J+1. Vous pouvez à tout moment le récupérer
-            et le faire travailler par une autre équipe. On ne fait pas de lock-in technique, on ne vous facture pas
-            de royalties. Vous nous payez pour construire un actif qui vous appartient.
+            Les livrables spécifiques sont transférés après paiement complet selon les CGV. Le devis précise le dépôt,
+            les accès, la documentation et la réversibilité. Les composants préexistants, open source et licences tierces
+            restent soumis à leurs droits propres.
           </div>
         </div>
 
@@ -749,8 +749,8 @@ ${navHtml}
           <div class="faq-a">
             Trois options, au choix. <b>(1)</b> Vous reprenez le code et votre équipe technique prend le relais.
             <b>(2)</b> Vous prenez un forfait de maintenance mensuel chez nous (bug fixes, petites évos, support).
-            <b>(3)</b> On continue à construire avec vous en mode co-build long terme. Dans tous les cas, 30 jours
-            de garantie sur les bugs critiques sont inclus.
+            <b>(3)</b> On continue à construire avec vous en mode co-build long terme. La recette,
+            la période de correction, les sévérités couvertes et les délais cibles sont précisés au devis.
           </div>
         </div>
 

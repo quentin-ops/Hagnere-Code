@@ -3,15 +3,15 @@ import { ContenuVideo } from "@/components/contenu-video/ContenuVideo";
 import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Studio contenu & vidéo · YouTube, motion, IA · Hagnéré Code",
+  title: "Production de contenu & vidéo sur mesure · Hagnéré Code",
   description:
-    "Vidéos YouTube, motion design et UGC produits 3× plus vite grâce à notre pipeline IA. Dès 2 500 €/vidéo, masters et rushes 100 % à vous.",
+    "Cadrage de vidéos YouTube, motion design et contenus de campagne, avec intervenants, droits, livrables et délais identifiés dans le devis.",
   alternates: { canonical: "/services/contenu-video" },
   openGraph: {
     ...OG_BASE,
-    title: "Studio contenu & vidéo — Hagnéré Code",
+    title: "Production de contenu & vidéo — Hagnéré Code",
     description:
-      "Studio FR qui code et filme. Pipeline IA audité (Claude, Runway, ElevenLabs, HeyGen), motion natif web, forfait mensuel transparent.",
+      "Formats, diffusion, droits et éventuels outils IA cadrés ; chaque spécialiste mobilisé est identifié avant signature.",
     url: "/services/contenu-video",
     images: [SERVICES_OG_IMAGE],
   },
@@ -45,7 +45,7 @@ const serviceJsonLd = JSON.stringify({
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "Studio hybride tech + contenu + IA : production de vidéos YouTube, motion design, UGC, product demos, interviews founder. Pipeline IA avec Claude (scripts), Runway Gen-4 (b-roll), ElevenLabs v3 (voix multilingues), HeyGen (avatars), Descript (post-production). Forfait mensuel transparent.",
+    "Cadrage et coordination de contenus vidéo, démonstrations produit, motion design et formats de campagne. Les outils, intervenants, droits et livrables applicables sont précisés dans le devis.",
   // Offres alignées sur les 4 cartes visibles de la section Forfaits & tarifs
   // (consigne Google : le balisage doit refléter le contenu affiché).
   offers: [
@@ -55,7 +55,7 @@ const serviceJsonLd = JSON.stringify({
       price: "2500",
       priceCurrency: "EUR",
       description:
-        "1 vidéo unique, sans engagement mensuel : 1 brief & 1 script, montage Premiere Pro senior, 1 version longue + 3 shorts, livraison en 10-14 jours.",
+        "Exemple d'offre ponctuelle : brief, script, une version longue et déclinaisons. Le monteur, les outils et le délai sont confirmés dans le devis.",
     },
     {
       "@type": "Offer",
@@ -78,7 +78,7 @@ const serviceJsonLd = JSON.stringify({
       name: "Studio dédié — sur-mesure",
       priceCurrency: "EUR",
       description:
-        "Brand film hero, campagne multi-canaux, volumes hors cadre : équipe dédiée 2-4 personnes, tournage multi-jours, motion custom. Sur devis, à partir de 15 k€.",
+        "Brand film, campagne multi-canaux ou volume hors cadre : composition d'équipe et moyens de tournage définis sur devis, sans présumer de ressources internes.",
     },
   ],
 });
@@ -95,7 +95,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Un monteur senior humain sur Premiere Pro, toujours. On a deux monteurs seniors en interne (10+ ans chacun), jamais d'auto-cut algorithmique livré brut. L'IA (Descript, Opus Clip, Claude) sert d'accélérateur sur les sous-titres, les rushs secs, les scripts — pas de remplacement du montage.",
+          "Le devis nomme la personne responsable du montage, précise son statut interne ou externe et distingue les tâches éventuellement assistées par IA. La validation finale reste humaine.",
       },
     },
     {
@@ -104,7 +104,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Première vidéo livrée à J+14 après signature (cadrage + 1 tournage + 1 cycle de montage). La cadence pleine du retainer démarre au mois 2. Pour une vidéo ponctuelle (2 500 €), 10 à 14 jours entre brief validé et livraison.",
+          "Le délai dépend du format, du tournage, des droits, des validations et de la disponibilité des intervenants. Un jalon indicatif ne devient un engagement qu'une fois inscrit au devis signé.",
       },
     },
     {
@@ -113,7 +113,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Parce que la vidéo est un jeu de consistance, pas un coup unique. Les premiers résultats (CTR stabilisé, rétention YouTube, ROAS Meta) se voient à 3-4 mois minimum. 6 mois nous permet aussi de bloquer les créneaux monteurs et d'investir dans votre charte visuelle. Pas de retainer < 6 mois — sinon, prenez la vidéo ponctuelle à 2 500 €.",
+          "Une cadence régulière permet d'observer plusieurs publications et d'ajuster. La durée, le préavis et les conditions de sortie sont toutefois ceux de l'offre signée, sans délai universel de résultat.",
       },
     },
     {
@@ -122,7 +122,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Revue de pilotage à 3 mois avec KPIs chiffrés. Si les jalons ne sont pas atteints, on ajuste la stratégie sans frais. Si vous voulez sortir, on arrête à 6 mois comme prévu — rushs, projets Premiere, licences musique, tout vous est livré. Pas de lock-in, pas de royalties.",
+          "Le devis précise la fréquence des revues, le nombre de corrections, les conditions de sortie et les fichiers remis. Aucun ajustement gratuit ni passation fixe n'est ajouté par cette FAQ.",
       },
     },
     {
@@ -131,7 +131,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Non, et personne de sérieux ne garantit un chiffre précis sur la vidéo. Trop de variables : votre sujet, votre niche, la saisonnalité, les algos YouTube / Meta. On garantit la cadence, la qualité éditoriale, les délais contractuels et le reporting mensuel. Si la trajectoire dérape, on adapte sans refacturer.",
+          "Non. Les vues, le CTR et le ROAS dépendent notamment du sujet, de l'audience, du budget et des plateformes. Les seuls engagements portent sur les livrables et modalités réellement inscrits au devis.",
       },
     },
     {
@@ -140,7 +140,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Non. Deux options : (1) vous tournez face cam iPhone chez vous — on vous envoie un kit lumière + micro RØDE Wireless Pro (offert, vous gardez). (2) vous venez tourner à notre studio de Bassens, aux portes de Chambéry — fond blanc ou scène éditoriale, caméras Sony FX3/A7S III, lumières Aputure. Pas besoin d'investir en matos.",
+          "Vous pouvez fournir vos rushs ou prévoir un tournage sur site ou dans un lieu loué. Le matériel, le lieu, les déplacements et le prestataire sont confirmés avant signature ; Hagnéré Code ne revendique pas ici un studio Sony/Aputure permanent à Bassens.",
       },
     },
     {
@@ -149,7 +149,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui. Audit des rushs / webinars / vieux contenus inclus dans le cadrage. On repackage ce qui est exploitable en shorts, clips LinkedIn, extraits ads. Un vieux webinar d'1 h peut sortir 20+ shorts. On utilise Descript + Opus Clip pour le premier tri, humain pour la validation.",
+          "Oui, si vous détenez les droits nécessaires. Le cadrage identifie les passages réellement exploitables et les formats à produire ; aucun nombre de shorts n'est garanti avant visionnage.",
       },
     },
     {
@@ -158,7 +158,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Looker Studio connecté à YouTube Studio, Meta Ads Manager, TikTok Ads, GA4, VidIQ. Accès 24/7, URL partagée à votre équipe, pas de PDF qui prend la poussière. On y pose aussi les objectifs et la trajectoire pour que vous puissiez juger à froid. Revue commentée 1 fois par mois en visio avec le DA et le media buyer.",
+          "Un tableau de suivi peut être inclus et connecté aux sources autorisées. Les indicateurs, accès, fréquence de revue, responsable et statut de chaque intervenant sont précisés au devis.",
       },
     },
     {
@@ -167,7 +167,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Tout : rushs originaux (vidéo + son), projets Premiere Pro & After Effects, assets motion, templates thumbnails Figma, scripts validés, prompts Claude, clone de voix ElevenLabs si vous l'avez activé, fichiers VidIQ. Passation de 2 semaines incluse avec transfert docs + 1 call avec le prestataire suivant si besoin.",
+          "La liste des rushs, masters, fichiers sources, licences et documents remis est annexée au devis. Les livrables spécifiques sont transférés après paiement complet ; les éléments tiers et préexistants gardent leurs propres droits.",
       },
     },
     {
@@ -200,9 +200,9 @@ const breadcrumbJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{serviceJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
       <ContenuVideo />
     </>
   );

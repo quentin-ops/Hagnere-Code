@@ -123,7 +123,7 @@ const faqItems = [
   {
     question: "Combien coûte un site vitrine ?",
     answer:
-      "Le consensus du marché français 2026 : 800 à 3 000 € chez un freelance, 3 000 à 8 000 € en agence avec SEO intégré, jusqu'à 15 000 € et plus en agence premium. Chez Hagnéré Code : 6 900 € pour un site 3-5 pages orienté conversion, 14 900 € pour un site 10-20 pages avec blog SEO, 22 000 € et plus pour du multilingue ou de l'e-commerce léger — avec une performance garantie par contrat : au moins 95/100 sur Lighthouse, l'outil de Google qui note la qualité technique d'un site.",
+      "Les fourchettes varient selon le prestataire et surtout le périmètre. Chez Hagnéré Code, les scénarios publics servent à se situer ; le devis fixe pages, contenus, intégrations, droits, coûts tiers et, le cas échéant, un objectif Lighthouse avec des conditions de mesure explicites.",
   },
   {
     question: "Combien coûte un site e-commerce ?",
@@ -185,9 +185,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -362,12 +362,10 @@ export default function Page() {
           <Link href="/services/sites-vitrines">création de site vitrine</Link>{" "}
           démarre à 6 900 € (3-5 pages orientées conversion), 14 900 € avec
           blog SEO (10-20 pages), 22 000 € et plus en multilingue — avec une
-          particularité rare : un score <strong>Lighthouse d&apos;au moins 95,
-          garanti par contrat</strong>. Lighthouse est l&apos;outil gratuit de
-          Google qui note la qualité technique d&apos;un site sur 100 — le
-          contrôle technique du web, que n&apos;importe qui peut faire passer à
-          n&apos;importe quel site. À 95 et plus, vous êtes dans le haut du
-          panier ; la majorité des sites français en sont loin. Détail gamme
+          protocole explicite : le devis peut fixer un <strong>objectif Lighthouse,
+          avec les pages, appareils, réseau et scripts tiers retenus</strong>. Lighthouse est l&apos;outil gratuit de
+          Google qui aide à contrôler plusieurs dimensions techniques d&apos;une page.
+          Le score varie selon les conditions et ne garantit ni classement, ni trafic, ni conversion. Détail gamme
           par gamme dans notre{" "}
           <Link href="/guides/prix-site-vitrine">guide du prix d&apos;un
           site vitrine</Link>.
@@ -599,9 +597,8 @@ export default function Page() {
           Vérifiez toujours <strong>qui possède le code et les contenus</strong>.
           Certaines offres « site à 99 €/mois » vous louent votre propre
           site : si vous partez, vous repartez de zéro. Chez Hagnéré Code, le
-          code vous appartient — le dépôt Git, le coffre-fort informatique qui
-          contient tout le code et l&apos;historique des modifications, vous
-          est transféré avec sa documentation.
+          devis inventorie le dépôt, les accès, les livrables spécifiques, les composants préexistants
+          et les licences tierces. Les droits prévus par les CGV sont transférés après paiement complet.
         </InfoBox>
 
         <h2 id="postes-de-cout">5. Ce qui fait varier le prix : les postes d&apos;un devis</h2>
@@ -649,7 +646,7 @@ export default function Page() {
             <strong>Vérification finale et mise en ligne (5-10 %)</strong> —
             ce que le métier appelle la « recette » : tests sur ordinateur,
             tablette et téléphone, mesure d&apos;audience, redirections, puis
-            publication. Chez nous, 30 jours de garantie inclus.
+            publication. La période de correction doit être écrite au devis.
           </li>
         </ul>
 
@@ -692,7 +689,7 @@ export default function Page() {
             ["Développement Next.js", "Intégration, animations, formulaires, outil d'édition des contenus (CMS headless : l'interface où vous modifiez vous-même textes et photos, séparée du site lui-même)", "≈ 5 200 € (35 %)"],
             ["Contenus & SEO éditorial", "Rédaction des pages clés, balisage et données structurées (les informations que lit Google)", "≈ 2 200 € (15 %)"],
             ["Performance & SEO technique", "Core Web Vitals, plan du site pour Google, redirections, mesure d'audience", "≈ 1 500 € (10 %)"],
-            ["Vérification finale, mise en ligne, garantie 30 j", "Tests sur tous les écrans, formation de 2 h à l'outil d'édition, hébergement 1re année", "≈ 900 € (6 %)"],
+            ["Vérification finale, mise en ligne, période de correction", "Tests, formation, hébergement et période de correction selon le devis", "≈ 900 € (6 %)"],
           ]}
         />
         <p>
@@ -829,7 +826,7 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
             {
               title: "Devis à 6 900 € (professionnel)",
               description:
-                "Design sur mesure, SEO technique, contenus travaillés, performance mesurée, code livré et documenté, 30 j de garantie. Un actif qui vous appartient.",
+                "Design sur mesure, SEO technique, contenus travaillés, performance mesurée, livrables, droits et période de correction précisés au devis.",
               variant: "green",
             },
           ]}
@@ -1070,8 +1067,8 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           La cause n° 1 de retard n&apos;est pas technique : c&apos;est{" "}
           <strong>le contenu non fourni par le client</strong> (+2 à 4 semaines
           si textes et images ne sont pas prêts). D&apos;où nos forfaits avec
-          rédaction incluse — et des dates de livraison contractuelles, avec
-          pénalités si nous les dépassons (voir{" "}
+          rédaction prévue selon le forfait — et des jalons, dépendances et
+          conditions de retard écrits au devis (voir{" "}
           <Link href="/methode">notre méthode Sprint Fixe™</Link>). Le sujet
           complet — planning phase par phase, rétro-plannings Noël/salon et
           le chrono d&apos;après la mise en ligne — est dans notre{" "}
@@ -1152,8 +1149,9 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           votre nom de domaine à votre site), de l&apos;hébergement et des
           certificats de sécurité. Cette liste est, mot pour mot, ce
           qu&apos;il faut exiger dans le contrat. Chez Hagnéré Code, les deux
-          figurent dans les CGV — le dépôt Git est même chez vous dès le
-          premier jour.
+          sont traitées dans les CGV. Le devis doit encore inventorier le dépôt,
+          les accès, les livrables spécifiques, les composants préexistants et
+          les licences tierces propres au projet.
         </p>
         <h3>TVA et comptabilité</h3>
         <p>
@@ -1287,12 +1285,10 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           la démonstration est sous vos yeux : le site que vous lisez
           est développé à 100 % en React/Next.js, guides compris. Sa
           vitesse d&apos;affichage, sa qualité visuelle et cette
-          stratégie de contenus sont exactement ce que nous livrons à
-          nos clients. Chaque
-          projet est vendu en <strong>forfait fixe contractuel</strong> — le
-          prix annoncé est le prix payé, quel que soit le temps que cela nous
-          prend, avec dates de livraison contractuelles et 30 jours de
-          garantie. Les fourchettes par service sont publiques sur notre{" "}
+          stratégie de contenus illustrent l&apos;approche que nous proposons.
+          Chaque devis précise le périmètre, le prix, les dépendances, les dates,
+          les livrables, les droits, la recette et l&apos;éventuelle période de correction.
+          Les fourchettes par service sont publiques sur notre{" "}
           <Link href="/tarifs">page tarifs</Link>, et nos{" "}
           <Link href="/realisations">réalisations</Link> sont visitables en
           ligne, chiffres à l&apos;appui.

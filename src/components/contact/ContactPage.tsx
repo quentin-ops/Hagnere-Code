@@ -8,6 +8,7 @@ import {
   SiteFooter,
 } from "@/components/design-shared/SiteFooter";
 import { CalendlyEmbed } from "@/components/design-shared/CalendlyEmbed";
+import { splitContactPageHtml } from "./contact-html";
 import "@/components/homepage/homepage.css";
 import "@/components/homepage/sections/sections.css";
 import "@/components/design-shared/nav-dropdown.css";
@@ -15,26 +16,6 @@ import "@/components/design-shared/responsive.css";
 import "@/components/design-shared/site-footer.css";
 import "@/components/design-shared/calendly.css";
 import "./page.css";
-
-const CONTACT_HERO = /<!-- CONTACT HERO -->[\s\S]*?<\/section>\s*/m;
-const NAV_END = "</nav>";
-
-function splitContactPageHtml(html: string) {
-  const navEnd = html.indexOf(NAV_END);
-
-  if (navEnd === -1) {
-    return {
-      navHtml: "",
-      contentHtml: html.replace(CONTACT_HERO, ""),
-    };
-  }
-
-  const splitAt = navEnd + NAV_END.length;
-  return {
-    navHtml: html.slice(0, splitAt),
-    contentHtml: html.slice(splitAt).replace(CONTACT_HERO, ""),
-  };
-}
 
 export function ContactPage() {
   const rootRef = useRef<HTMLDivElement>(null);

@@ -28,8 +28,8 @@ export const refuseHtml = `
         <h4>L'agence garde le code "tant que vous payez la maintenance"</h4>
         <p>
           C'est un classique : on vous fait signer un contrat où le code reste propriété de l'agence.
-          Vous êtes prisonnier — chaque évolution se négocie. <b>Exigez clause de cession exclusive et totale</b>
-          dans le devis (en France, sans cession écrite, l'agence reste propriétaire).
+          La réversibilité devient alors difficile. <b>Exigez une clause écrite qui précise chaque droit cédé,
+          son étendue, sa destination, son territoire et sa durée</b>, ainsi que le dépôt, les accès et les exclusions.
         </p>
       </div>
 
@@ -67,7 +67,7 @@ export const refuseHtml = `
         <div class="mob-refuse-flag">⚠ SIGNAL</div>
         <h4>Aucun mot sur la maintenance dans le devis</h4>
         <p>
-          Une app non maintenue est désinstallée à 6 mois (compatibilité iOS, sécurité, crashs).
+          Une app non maintenue s'expose aux incompatibilités, vulnérabilités et régressions. La trajectoire d'exploitation doit être cadrée avant publication.
           Si l'agence ne propose <b>aucun forfait maintenance dimensionné</b>, soit elle vous le sortira
           en avenant après livraison (cher), soit l'app va mourir.
         </p>

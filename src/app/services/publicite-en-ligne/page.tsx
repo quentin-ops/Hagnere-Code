@@ -5,13 +5,13 @@ import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Agence Google Ads & Meta Ads · Forfait fixe · Hagnéré Code",
   description:
-    "Pilotage Google Ads, Meta et LinkedIn au forfait fixe, 0 % de commission sur votre budget. Tracking server-side inclus, CAC suivi dans votre CRM.",
+    "Pilotage Google Ads, Meta et LinkedIn au forfait. Périmètre, tracking, reporting, intervenants et droits sont détaillés avant engagement.",
   alternates: { canonical: "/services/publicite-en-ligne" },
   openGraph: {
     ...OG_BASE,
     title: "Publicité en ligne — Hagnéré Code",
     description:
-      "SEA + Paid Social piloté par le CAC, pas le ROAS vanity. Tracking server-side inclus, forfait fixe mensuel, budget media sur vos comptes.",
+      "SEA et Paid Social avec périmètre, mesure, budget média, responsabilités et livrables détaillés dans le devis.",
     url: "/services/publicite-en-ligne",
     images: [SERVICES_OG_IMAGE],
   },
@@ -46,7 +46,7 @@ const serviceJsonLd = JSON.stringify({
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "Gestion Ads complète pour PME, ETI et scale-up : Google Ads (Search, PMax, Shopping), Meta (Advantage+, DPA), LinkedIn (ABM, Lead Gen), TikTok, YouTube, Pinterest. Tracking server-side GTM Server + Meta CAPI + Google Enhanced Conversions + LinkedIn Conv API, Consent Mode v2 RGPD, attribution CRM (HubSpot, Salesforce, Pipedrive), reporting Looker Studio CRM × Ads × margin. Consultant senior dédié, forfait fixe mensuel aligné sur votre CAC.",
+    "Cadrage et pilotage de campagnes publicitaires, du tracking et du reporting. Les plateformes, créations, intervenants, droits, outils et responsabilités réellement inclus sont détaillés dans le devis.",
   offers: [
     {
       "@type": "Offer",
@@ -62,7 +62,7 @@ const serviceJsonLd = JSON.stringify({
       price: "1800",
       priceCurrency: "EUR",
       description:
-        "2 canaux pilotés, tracking server-side GTM SS + CAPI, 4 variantes creatives/mois, point hebdo + reporting mensuel, consultant senior dédié. Budget media client : 8-20 k€/mois.",
+        "Scénario indicatif pour 1 à 2 canaux : tracking, créations et reporting à confirmer selon les accès, le consentement et l'intervenant nommé au devis.",
     },
     {
       "@type": "Offer",
@@ -70,7 +70,7 @@ const serviceJsonLd = JSON.stringify({
       price: "3500",
       priceCurrency: "EUR",
       description:
-        "3 canaux pilotés + 1 en test, stack tracking complète, 8-12 creatives/mois, Looker Studio CRM × Ads × margin, alertes Slack temps réel. Budget media client : 20-60 k€/mois.",
+        "Scénario multi-canaux indicatif : plateformes, tracking, créations, reporting, alertes et budget média sont dimensionnés dans le devis.",
     },
     {
       "@type": "Offer",
@@ -78,7 +78,7 @@ const serviceJsonLd = JSON.stringify({
       price: "4500",
       priceCurrency: "EUR",
       description:
-        "4-6 canaux, attribution multi-touch BigQuery data-driven, 12+ creatives/mois, landing A/B illimité, équipe dédiée 3 pers. Budget media client : 60-150 k€/mois.",
+        "Scénario multi-canaux sur devis : attribution, créations et tests dimensionnés selon le budget, les données et les intervenants réellement mobilisés.",
     },
   ],
 });
@@ -102,7 +102,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui, toujours. Le budget reste sur votre compte Google Ads / Meta / LinkedIn, facturé directement par les plateformes. Notre forfait = prestation, pas de commission sur le spend, pas de rebilling media.",
+          "Les comptes publicitaires sont ouverts ou conservés au nom du client et les plateformes lui facturent le budget média. Les éventuelles licences ou prestations annexes sont séparées dans le devis.",
       },
     },
     {
@@ -111,7 +111,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Refus de principe : conflit d'intérêt structurel. Une agence rémunérée au pourcentage a intérêt à pousser votre budget, pas à faire baisser votre CAC. Le forfait fixe aligne nos objectifs sur les vôtres.",
+          "Nous préférons un forfait lisible, car une commission augmente avec le budget média. Cela ne rend pas automatiquement le modèle au pourcentage mauvais : il faut comparer le périmètre, les incitations et le coût total.",
       },
     },
     {
@@ -147,7 +147,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "En dessous de 8 k€/mois de budget media, notre forfait n'a pas un ROI évident. Entre 8 et 20 k€/mois : forfait Starter. Entre 20 et 60 k€/mois : Scale. Au-delà de 60 k€/mois : Premium. Règle empirique, pas une interdiction.",
+          "Il n'existe pas de seuil universel. Le cadrage part de la marge, de la valeur d'une conversion, du volume nécessaire à l'apprentissage et du coût de la prestation pour estimer un seuil de rentabilité.",
       },
     },
     {
@@ -189,9 +189,9 @@ const breadcrumbJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{serviceJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <PubliciteEnLigne />
     </>
   );

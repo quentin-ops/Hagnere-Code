@@ -139,7 +139,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Site statique sur Vercel (edge CDN mondial) ou OVH (serveur français) selon votre préférence. CMS et base de données sur Scaleway Paris ou OVH Roubaix pour la conformité RGPD. Hébergement 12 mois inclus dans le forfait, puis facturé directement par l'hébergeur à vous — pas de marge cachée.",
+          "Le devis précise le fournisseur, le compte propriétaire, la région d'hébergement, le CMS, la base de données, les sauvegardes, le monitoring, la durée couverte et les coûts tiers. Une localisation en France ou dans l'Union européenne ne suffit pas, à elle seule, à garantir la conformité RGPD.",
       },
     },
     {
@@ -172,9 +172,9 @@ const breadcrumbJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{serviceJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <SitesVitrines />
     </>
   );

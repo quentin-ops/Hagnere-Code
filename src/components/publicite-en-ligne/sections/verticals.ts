@@ -21,7 +21,7 @@ export const verticalsHtml = `
           <span class="ads-vt-tag ads-vt-tag-live">● Cœur de cible</span>
         </div>
         <h3>SaaS &amp; éditeurs B2B</h3>
-        <p>Cycle long, décideur technique. <b>LinkedIn ABM</b> sur comptes cibles, Google Search alternative-à, Meta retargeting tiède, webinar funnels. CAC MQL visé&nbsp;: 60-180 €.</p>
+        <p>Cycle long, décideur technique. LinkedIn ABM, Google Search, retargeting et webinaires sont évalués selon le marché, les données autorisées et l'économie unitaire. <b>Le coût cible d'un lead qualifié se calcule sur vos marges et votre conversion</b>.</p>
         <div class="ads-vt-feats">
           <span>LinkedIn ABM</span>
           <span>Search "alt à"</span>
@@ -96,11 +96,11 @@ export const verticalsHtml = `
           <span class="ads-vt-tag ads-vt-tag-hot">● Sprint</span>
         </div>
         <h3>Lancement produit / levée de fonds</h3>
-        <p>Deadline stricte, besoin d'un setup complet en 15 jours. <b>Sprint clé en main</b>&nbsp;: tracking + comptes + creatives + landing + campagne brand + performance. On vise la traction démontrable à la deadline.</p>
+        <p>Deadline stricte&nbsp;: il faut prioriser tracking, comptes, créations et landing selon les accès réellement disponibles. Le jalon peut porter sur un lancement technique, pas sur une traction commerciale garantie.</p>
         <div class="ads-vt-feats">
           <span>Sprint 15 j</span>
           <span>Brand + perf</span>
-          <span>Traction démontrable</span>
+          <span>Jalon technique mesurable</span>
         </div>
       </div>
     </div>

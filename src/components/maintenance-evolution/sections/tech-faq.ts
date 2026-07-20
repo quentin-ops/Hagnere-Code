@@ -48,10 +48,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Backups PostgreSQL toutes les 15 minutes</b> (WAL continu), rétention 30 jours
-          + snapshot hebdo conservé 1 an. Stockage chiffré sur un <b>second provider</b>
-          (règle 3-2-1). Procédure de restauration <b>testée tous les trimestres</b> sur environnement
-          isolé. <b>RTO cible : 1 h · RPO cible : 15 min</b>. Runbook DR versionné dans Notion.
+          WAL continu, snapshots et second fournisseur sont des options à dimensionner selon la criticité.
+          Le devis précise la fréquence, la rétention, le chiffrement, la responsabilité et la cadence des tests.
+          <b>RTO et RPO cibles</b> sont documentés dans le runbook lorsque le périmètre l'exige.
         </div>
       </div>
 

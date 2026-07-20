@@ -192,10 +192,10 @@ export const scenariosHtml = `
           </div>
           <dl class="sv-scen-meta">
             <div class="sv-scen-meta-row"><dt>Délai</dt><dd>Sur devis</dd></div>
-            <div class="sv-scen-meta-row"><dt>Équipe</dt><dd>1 designer · 1 dev senior</dd></div>
+            <div class="sv-scen-meta-row"><dt>Équipe</dt><dd>Intervenants nommés au devis</dd></div>
             <div class="sv-scen-meta-row"><dt>Livrables</dt><dd>LP live · rapport A/B setup</dd></div>
-            <div class="sv-scen-meta-row"><dt>Paiement</dt><dd>50 % / 50 %</dd></div>
-            <div class="sv-scen-meta-row"><dt>Garantie</dt><dd>30 jours post-livraison</dd></div>
+            <div class="sv-scen-meta-row"><dt>Paiement</dt><dd>Échéancier au devis</dd></div>
+            <div class="sv-scen-meta-row"><dt>Correction</dt><dd>Durée et couverture au devis</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg sv-scen-cta">
             Cadrer ma LP
@@ -255,10 +255,10 @@ export const scenariosHtml = `
           </div>
           <dl class="sv-scen-meta">
             <div class="sv-scen-meta-row"><dt>Délai</dt><dd>Sur devis</dd></div>
-            <div class="sv-scen-meta-row"><dt>Équipe</dt><dd>1 SEO · 1 designer · 1 dev senior</dd></div>
+            <div class="sv-scen-meta-row"><dt>Équipe</dt><dd>Intervenants nommés au devis</dd></div>
             <div class="sv-scen-meta-row"><dt>Livrables</dt><dd>Site + blog + stratégie + monitoring</dd></div>
-            <div class="sv-scen-meta-row"><dt>Paiement</dt><dd>30 % / 40 % / 30 %</dd></div>
-            <div class="sv-scen-meta-row"><dt>Garantie</dt><dd>30 jours post-livraison</dd></div>
+            <div class="sv-scen-meta-row"><dt>Paiement</dt><dd>Échéancier au devis</dd></div>
+            <div class="sv-scen-meta-row"><dt>Correction</dt><dd>Durée et couverture au devis</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg sv-scen-cta">
             Cadrer ma stratégie SEO

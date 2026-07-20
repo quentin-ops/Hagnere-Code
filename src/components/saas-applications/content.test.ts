@@ -26,6 +26,7 @@ describe("SaaS service page credibility", () => {
     expect(publishedContent).not.toMatch(/sauvegardes toutes les 15 minutes/i);
     expect(publishedContent).not.toMatch(/au-delà de 10 utilisateurs payants/i);
     expect(publishedContent).not.toMatch(/le plus choisi/i);
+    expect(publishedContent).not.toMatch(/30 jours[^<.]{0,60}garantie|garantie[^<.]{0,60}30 jours/i);
   });
 
   it("connects the service decision to the three relevant guides", () => {

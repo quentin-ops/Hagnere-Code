@@ -550,6 +550,23 @@
   line-height: 1.5;
 }
 
+.calc-capture-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--ink-3);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.calc-capture-consent input {
+  width: 16px;
+  height: 16px;
+  margin: 1px 0 0;
+  flex: 0 0 auto;
+  accent-color: var(--accent);
+}
+.calc-capture-consent a { color: inherit; text-decoration: underline; }
+
 /* ============================ CONTEXT ================================ */
 .calc-context {
   padding: 96px 0 116px;

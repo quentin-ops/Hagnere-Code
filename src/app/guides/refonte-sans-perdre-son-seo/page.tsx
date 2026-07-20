@@ -170,7 +170,7 @@ const faqItems = [
   {
     question: "Combien coûte une refonte de site internet ?",
     answer:
-      "Les fourchettes complètes sont dans notre guide dédié au prix d'une refonte : 1 500 à 8 000 € pour un site vitrine de TPE, 3 000 à 15 000 € pour un site PME, davantage en e-commerce — et surtout, le poste que les devis oublient : la migration SEO (inventaire des adresses, plan de redirection, contrôles post-bascule), facturée 1 500 à 10 000 € selon la taille du site. Chez Hagnéré Code, la refonte vers un socle moderne suit notre grille publique — 6 900 €, 14 900 € ou 22 000 € et plus — avec le plan de migration SEO inclus et un score technique Lighthouse de 95+ contractualisé dans des conditions de mesure définies. Ce score de laboratoire ne garantit ni positions, ni trafic, ni conversions.",
+      "Les fourchettes complètes sont dans notre guide du prix d'une refonte. La migration SEO doit être chiffrée séparément ou explicitement incluse : inventaire des adresses, redirections et contrôles post-bascule. Chez Hagnéré Code, le devis précise ces livrables et peut fixer un objectif Lighthouse avec ses conditions de mesure ; ce score ne garantit ni positions, ni trafic, ni conversions.",
   },
 ];
 
@@ -187,9 +187,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -197,7 +197,7 @@ export default function Page() {
           { label: "Refonte sans perdre son SEO" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Les règles officielles de Google citées au mot près, les mythes qui circulent démontés à la source, le plan de redirection expliqué, un protocole de surveillance daté avec des repères d'alerte internes, le cas WordPress → Next.js chiffré — et le plan d'urgence si le trafic a déjà chuté. Le guide que nous aurions voulu que nos clients lisent avant leur première refonte."
+        heroDescription="Les règles officielles de Google citées à la source, les mythes démontés, le plan de redirection expliqué, un protocole de surveillance daté et un plan d'urgence si le trafic a déjà chuté. Le guide à lire avant de lancer une refonte."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -511,8 +511,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Une refonte en vue, et un trafic Google à protéger ?"
-          description="Décrivez votre site en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc sur le niveau de risque de VOTRE scénario. Le Discovery Sprint (1 500 €, 2 jours, déduit à 100 % si le projet se lance) inclut l'audit pré-refonte : export Search Console, crawl de référence et stratégie de migration."
-          tags={["Réponse sous 24 h ouvrées", "Plan de redirection livré au contrat", "Score technique Lighthouse ≥ 95/100, au contrat"]}
+          description="Décrivez votre site et les contraintes de migration. La proposition précise le délai de réponse, le cadrage, les données nécessaires et les livrables d'audit pré-refonte."
+          tags={["Réponse personnelle", "Plan de redirection au devis", "Objectif de performance mesuré"]}
           ctaLabel="Sécuriser ma refonte"
         />
 
@@ -700,10 +700,9 @@ export default function Page() {
           seconde du LCP</strong>, et Deloitte × Google rapporte
           +8,4 % après un gain de 0,1 seconde sur un échantillon retail.
           Ces résultats ne prédisent pas le gain d&apos;un autre site.
-          Notre engagement Lighthouse 95+ porte uniquement sur une
-          mesure technique en laboratoire, dans des conditions
-          définies ; il ne garantit ni classement, ni trafic, ni
-          conversion. Dernier
+          Un objectif Lighthouse peut porter sur une mesure technique en
+          laboratoire, dans des conditions définies&nbsp;; il ne garantit ni
+          classement, ni trafic, ni conversion. Dernier
           conseil de méthode pour les gros sites : la migration peut
           être <strong>incrémentale</strong> — le nouveau socle prend
           le relais page par page, sans bascule générale, exactement la
@@ -838,14 +837,9 @@ export default function Page() {
           Search Console et PageSpeed gratuits. <strong>Chez
           nous</strong> : la refonte vers un socle moderne suit la
           grille publique — 6 900 €, 14 900 € ou 22 000 € et plus
-          selon l&apos;ambition — <strong>plan de migration SEO
-          inclus</strong>, score technique Lighthouse 95+
-          contractualisé sans garantie de classement, et le{" "}
-          <strong>Discovery Sprint (1 500 €, 2 jours, déduit à
-          100 %)</strong> comme porte d&apos;entrée : il produit
-          l&apos;audit pré-refonte de la section 5 — export Search
-          Console, crawl de référence, stratégie de migration — avant
-          tout engagement. Le calcul à poser face à un devis
+          selon l&apos;ambition. Le devis précise le plan de migration,
+          l&apos;objectif technique, le cadrage, son prix, ses livrables
+          et toute remise éventuelle. Le calcul à poser face à un devis
           sans volet SEO : combien vaut un mois de votre trafic
           Google ?
         </p>
@@ -883,15 +877,12 @@ export default function Page() {
         </ol>
         <p>
           Et si vous préférez confier la manœuvre à une équipe qui la
-          contractualise : <strong>refonte sur socle moderne dès
-          6 900 €, plan de migration SEO inclus, score technique
-          Lighthouse 95+ contractualisé sans garantie de classement</strong>{" "}
+          contractualise : <strong>refonte sur socle moderne sur devis,
+          avec plan de migration, protocole de performance et suivi explicitement chiffrés</strong>{" "}
           (méthode{" "}
           <Link href="/methode">Sprint Fixe™</Link>).{" "}
-          <Link href="/demarrer-un-projet">Décrivez votre site en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées,
-          gratuite et sans engagement — avec un avis franc sur le
-          niveau de risque réel de votre scénario.
+          <Link href="/demarrer-un-projet">Décrivez votre site</Link> pour
+          recevoir une réponse personnelle et un périmètre adapté au risque réel du scénario.
         </p>
 
         <hr />

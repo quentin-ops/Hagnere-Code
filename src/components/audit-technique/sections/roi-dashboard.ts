@@ -5,13 +5,12 @@ export const roiDashboardHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— La méthode sur 10 jours ouvrés</div>
-        <h2>Chaque audit suit les mêmes<br>7 jalons. Documentés, livrables<br>cumulatifs, <b>pas de big-bang J10</b>.</h2>
+        <div class="eyebrow">— Exemple de déroulé Standard</div>
+        <h2>Sept jalons possibles,<br>à adapter au périmètre<br>et aux accès disponibles.</h2>
       </div>
       <div class="right">
-        Pas un "rapport qui arrive par surprise le dernier jour". Vous recevez <b>des livrables cumulatifs chaque jour</b>&nbsp;:
-        premiers insights à J+5, matrice impact/effort à J+7, rapport &amp; deck à J+10. Aucun effet tunnel,
-        aucune mauvaise surprise — et vous pouvez arrêter en cours si le scope évolue.
+        Cette frise est illustrative, pas un calendrier universel. Le devis fixe les jalons,
+        les restitutions intermédiaires, le rapport final et la procédure à suivre si le périmètre évolue.
       </div>
     </div>
 
@@ -19,7 +18,7 @@ export const roiDashboardHtml = `
     <div class="at-timeline reveal reveal-d-1">
       <div class="at-timeline-head">
         <span class="at-timeline-k">DÉROULÉ DE VOTRE AUDIT STANDARD · 10 J OUVRÉS</span>
-        <span class="at-timeline-meta">2 devs seniors + 1 lead</span>
+        <span class="at-timeline-meta">Intervenants nommés au devis</span>
       </div>
 
       <div class="at-timeline-rail">
@@ -32,8 +31,8 @@ export const roiDashboardHtml = `
           <div class="at-timeline-dot"></div>
           <div class="at-timeline-label">
             <span class="at-timeline-day">J−5 → J0</span>
-            <span class="at-timeline-title">Cadrage &amp; NDA</span>
-            <span class="at-timeline-body">Brief 90 min · NDA mutuel signé · accès code &amp; infra &amp; CRM donnés</span>
+            <span class="at-timeline-title">Cadrage &amp; confidentialité</span>
+            <span class="at-timeline-body">Périmètre, contrat, NDA éventuel et accès autorisés définis avant l'analyse</span>
           </div>
         </div>
 
@@ -51,7 +50,7 @@ export const roiDashboardHtml = `
           <div class="at-timeline-label">
             <span class="at-timeline-day">J3 → J5</span>
             <span class="at-timeline-title">8 dimensions techniques</span>
-            <span class="at-timeline-body">Perf · sécu · infra · archi · FinOps · DevEx explorées en parallèle par 2 devs, exports bruts produits</span>
+            <span class="at-timeline-body">Dimensions et échantillons analysés par les intervenants nommés au devis</span>
           </div>
         </div>
 
@@ -89,7 +88,7 @@ export const roiDashboardHtml = `
             <span class="at-timeline-day">J10</span>
             <span class="at-timeline-title">Restitution Loom + livrables</span>
             <span class="at-timeline-body">Visio 90 min · Loom 20-30 min archivable · tous livrables remis sur Notion client</span>
-            <span class="at-timeline-milestone">✅ Audit livré &amp; facturé</span>
+            <span class="at-timeline-milestone">Jalon illustratif · livraison finale</span>
           </div>
         </div>
       </div>
@@ -106,8 +105,8 @@ export const roiDashboardHtml = `
     <div class="at-roi-kpis reveal reveal-d-2" style="margin-top:48px;grid-template-columns:repeat(4,1fr)">
       <div class="at-roi-kpi">
         <div class="at-roi-kpi-delta">J0</div>
-        <div class="at-roi-kpi-k">NDA mutuel signé</div>
-        <div class="at-roi-kpi-n">Avant tout partage de code, de doc, d'accès</div>
+        <div class="at-roi-kpi-k">Confidentialité cadrée</div>
+        <div class="at-roi-kpi-n">NDA éventuel avant les accès sensibles</div>
       </div>
       <div class="at-roi-kpi at-roi-kpi-hot">
         <div class="at-roi-kpi-delta">J+5</div>
@@ -130,7 +129,7 @@ export const roiDashboardHtml = `
     <div class="at-roi-how reveal reveal-d-2">
       <div class="at-roi-how-head">
         <span class="at-roi-how-n">/ les 4 piliers qui tiennent la méthode</span>
-        <h3>Pourquoi 10 jours suffisent<br>pour un rapport défendable<br>en board et en levée.</h3>
+        <h3>Comment cadrer un audit<br>pour obtenir des constats<br>traçables et exploitables.</h3>
       </div>
 
       <div class="at-roi-how-grid">
@@ -166,7 +165,7 @@ export const roiDashboardHtml = `
             </div>
           </div>
           <h4>Livrables cumulatifs</h4>
-          <p>Vous ne découvrez pas votre rapport le matin de J+10. <b>Premiers insights à J+5, matrice à J+7, deck draft à J+9</b>. Vous pouvez arrêter ou pivoter sans avoir perdu 10 jours.</p>
+          <p>Les restitutions intermédiaires et la procédure de pivot sont inscrites au devis. Leur fréquence dépend de la durée et du périmètre de la mission.</p>
           <div class="at-roi-step-foot">→ Zéro effet tunnel</div>
         </div>
 
@@ -178,14 +177,14 @@ export const roiDashboardHtml = `
             </div>
           </div>
           <h4>No-blame &amp; board-safe</h4>
-          <p>Entretiens équipe <b>off-the-record</b>, pas de noms de devs dans le rapport. Version board-safe <b>anonymisée</b> pour éviter que le rapport se retourne en négo salariale ou en M&amp;A.</p>
+          <p>Les règles de citation, les destinataires et l'éventuelle version anonymisée sont convenus avant les entretiens. Aucune confidentialité particulière n'est présumée hors document signé.</p>
           <div class="at-roi-step-foot">→ Protection de vos équipes</div>
         </div>
       </div>
 
       <div class="at-roi-how-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-        Méthodologie mesurée sur audits livrés. Adaptable au format Express (3-5 j) ou Deep (15-20 j). Pour les Tech DD M&amp;A à 20-30 j, <b>ajout d'une phase d'analyse légale / IP</b> en coordination avec vos avocats.
+        Exemple de méthode à confirmer au devis. Une analyse juridique ou de propriété intellectuelle relève de vos avocats ou d'un conseil compétent&nbsp;; nous ne fournissons que les éléments techniques convenus.
       </div>
     </div>
   </div>

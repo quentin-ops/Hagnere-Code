@@ -13,7 +13,7 @@ export const refuseHtml = `
         </p>
         <div class="at-refuse-foot">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-          Refuser les mauvaises missions, c'est notre seule garantie qualité sur celles qu'on prend.
+          Refuser une mission mal cadrée est un moyen concret de protéger la qualité de celles qu'on accepte.
         </div>
       </div>
 
@@ -50,14 +50,14 @@ export const refuseHtml = `
           <div class="at-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
             <h4>White-label pour d'autres cabinets de conseil ou ESN</h4>
-            <p>On travaille en direct avec le client final, toujours nominatif sur les interfaces de rendu. <b>Pas de missions "sous la marque" d'une autre agence</b>. C'est incompatible avec notre positionnement d'expertise indépendante et avec la NDA mutuelle qu'on signe à J0.</p>
+            <p>On travaille en direct avec le client final et les intervenants sont identifiés dans le devis. <b>Pas de mission présentée comme indépendante sous la marque d'un tiers</b> sans transparence sur les responsabilités, les accès et la confidentialité.</p>
           </div>
         </li>
         <li>
           <div class="at-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Audits sans signature du NDA mutuel avant le premier call technique</h4>
-            <p>Le NDA mutuel est signé avant le premier call technique, <b>pas après</b>. Si un prospect refuse de signer avant de voir "ce qu'on va trouver", c'est un signal qu'on ne néglige pas. On protège nos méthodes autant que vos données.</p>
+            <h4>Missions sans cadre de confidentialité avant les accès sensibles</h4>
+            <p>Les règles de confidentialité figurent au contrat et un NDA spécifique peut être signé avant le partage de code ou de documents sensibles. <b>Aucun accès sensible n'est demandé tant que ce cadre n'est pas accepté.</b></p>
           </div>
         </li>
       </ul>

@@ -5,13 +5,13 @@ import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Outils internes sur mesure · Sortir d'Excel · Hagnéré Code",
   description:
-    "CRM, ERP léger, back-office : remplacez Excel par un outil métier sur mesure. Forfait fixe de 8 à 80 k€, livré en 2 à 10 semaines, hébergé en France.",
+    "CRM, ERP léger et back-office sur mesure : périmètre, budget, calendrier, hébergement, accès et réversibilité sont précisés au devis.",
   alternates: { canonical: "/services/outils-internes-sur-mesure" },
   openGraph: {
     ...OG_BASE,
     title: "Outils internes sur mesure PME & ETI — Hagnéré Code",
     description:
-      "Back-offices, CRM métier, ERP légers. Intégrations Sage, Cegid, Pennylane. Next.js/React + IA. Forfait fixe, données en France.",
+      "Back-offices, CRM métier et ERP légers avec intégrations étudiées selon votre SI. Périmètre, données, délais et droits au devis.",
     url: "/services/outils-internes-sur-mesure",
     images: [SERVICES_OG_IMAGE],
   },
@@ -46,7 +46,7 @@ const serviceJsonLd = JSON.stringify({
   },
   areaServed: { "@type": "Country", name: "France" },
   description:
-    "Développement d'outils internes sur mesure pour PME et ETI : CRM métier, ERP léger, back-offices, automatisations. Intégrations ERP legacy (Sage, Cegid, EBP, SAP), CRM (Salesforce, HubSpot, Pipedrive), Active Directory / SSO. Stack Next.js, React, IA Claude — reprises d'outils Laravel existants possibles. Hébergé en France.",
+    "Développement d'outils internes sur mesure pour PME et ETI : CRM métier, ERP léger, back-offices et automatisations. Les intégrations, technologies, intervenants, délais, hébergement, accès et conditions de reprise sont vérifiés puis écrits au devis.",
   offers: [
     {
       "@type": "Offer",
@@ -60,14 +60,14 @@ const serviceJsonLd = JSON.stringify({
       name: "Starter · Process ciblé",
       price: "8000",
       priceCurrency: "EUR",
-      description: "Un outil interne ciblé sur un processus précis, livré en 2–3 semaines",
+      description: "Base budgétaire indicative pour un processus ciblé ; périmètre et calendrier confirmés au devis.",
     },
     {
       "@type": "Offer",
       name: "Pro · Outil métier complet",
       price: "25000",
       priceCurrency: "EUR",
-      description: "CRM métier ou ERP léger avec intégrations, multi-utilisateurs, livré en 5–8 semaines",
+      description: "Base budgétaire indicative pour un outil métier ; écrans, intégrations, équipe et calendrier confirmés au devis.",
     },
     {
       "@type": "Offer",
@@ -89,7 +89,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Entre 2 et 10 semaines selon l'ampleur. Un outil ciblé (un seul processus, 3–5 écrans) se livre en 2–3 semaines. Un CRM métier complet ou un ERP léger en 5–8 semaines. Les dates sont contractualisées au cadrage avec clause de pénalité.",
+          "Le calendrier dépend du périmètre, des accès, des intégrations, de la migration et des validations. Le devis fixe les jalons, les dépendances, la recette et le traitement d'un éventuel retard.",
       },
     },
     {
@@ -98,7 +98,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Le no-code (Airtable, Notion, Softr) plafonne à 20–30 utilisateurs et vous verrouille. Le SaaS standard (Salesforce, HubSpot) impose sa logique — pas la vôtre. Un outil sur mesure parle exactement votre métier, s'intègre à votre stack (Sage, Cegid, Active Directory), et vous possédez le code.",
+          "Il faut comparer l'adéquation fonctionnelle, les limites, l'intégration, la sécurité, la portabilité et le coût total sur trois ans. Pour le sur-mesure, les droits, le dépôt, les composants préexistants et les licences sont ceux définis au devis et dans les CGV.",
       },
     },
     {
@@ -107,7 +107,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui. On a intégré Sage 100, Sage X3, Cegid Loop, EBP, Pennylane, Axonaut, Sellsy, Chorus Pro, Salesforce, HubSpot, Pipedrive, Active Directory, Azure AD, SharePoint, Google Workspace. Si votre SI expose une API REST, SOAP ou un import CSV programmé, on s'y branche.",
+          "Chaque intégration fait l'objet d'une étude de version, API, licence, droits, quotas, formats, sécurité et reprise sur erreur. Le devis ne promet un connecteur qu'après cette vérification.",
       },
     },
     {
@@ -116,7 +116,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "On pilote le projet avec 3–4 utilisateurs finaux identifiés dès la semaine 1. On les interviewe, on co-design avec eux, on teste. À la livraison : formation sur site (1 journée), vidéo Loom de 10 min, guide PDF, super-users identifiés, session Q&A à J+30 et J+90. L'adoption fait partie du livrable, pas une option.",
+          "Le plan d'adoption précise les utilisateurs référents, les tests, la formation, les supports et les indicateurs d'usage. Les sessions après lancement et les ajustements ne sont inclus que s'ils figurent au devis ; aucun taux d'adoption n'est garanti.",
       },
     },
     {
@@ -125,7 +125,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Trois options : (1) hébergement mutualisé Scaleway Paris / OVH Roubaix, le plus rapide ; (2) cloud client (AWS, Azure, OVH privé) ; (3) on-premise sur vos serveurs. Les trois sont compatibles avec SSO entreprise, chiffrement at-rest, sauvegardes 15 min.",
+          "L'environnement opéré, le compte cloud client ou le déploiement sur site peuvent être étudiés. Le devis précise fournisseur, région, accès, responsabilités, chiffrement, sauvegardes, sous-traitants et réversibilité.",
       },
     },
     {
@@ -134,7 +134,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui, intégralement. Repo Git chez vous dès J+1. Aucune licence, aucun royalties, aucune clé cachée. Si vous voulez reprendre avec votre équipe interne ou une autre ESN dans 2 ans, le code, la doc et le runbook le permettent. C'est le sens du 'sur mesure'.",
+          "Les livrables spécifiques sont transférés après paiement complet selon les CGV. Le devis inventorie le dépôt Git, les accès, la documentation, le runbook et la réversibilité, sous réserve des composants préexistants, open source et licences tierces.",
       },
     },
     {
@@ -152,7 +152,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Possible. Architecture multi-entités native (une app, N sociétés, cloisonnement des données), SSO groupe, consolidation reporting. Plutôt sur nos forfaits Pro ou Enterprise, après cadrage approfondi.",
+          "Possible après cadrage. Le modèle d'entités, le cloisonnement, le SSO, les flux et la consolidation doivent être conçus et testés pour votre organisation avant engagement.",
       },
     },
   ],
@@ -176,9 +176,9 @@ const breadcrumbJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{serviceJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <OutilsInternes />
     </>
   );

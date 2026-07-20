@@ -6,19 +6,19 @@ const METHODE_OG_IMAGE = {
   url: "/og-image.png",
   width: 1200,
   height: 630,
-  alt: "Sprint Fixe™ — méthode propriétaire Hagnéré Code (forfait fixe, démos vendredi, code J+1)",
+  alt: "Sprint Fixe™ — méthode de cadrage et de suivi de projet Hagnéré Code",
 };
 
 export const metadata: Metadata = {
   title: "Notre méthode au forfait fixe : Sprint Fixe™ · Hagnéré Code",
   description:
-    "Prix annoncé = prix payé, sinon chaque semaine de retard est offerte. Démos tous les vendredis, code chez vous dès J+1, garantie 30 jours.",
+    "Périmètre, prix, jalons, validations et réversibilité : découvrez les points que Hagnéré Code propose de cadrer par écrit avant chaque projet.",
   alternates: { canonical: "/methode" },
   openGraph: {
     ...OG_BASE,
     title: "Sprint Fixe™ — La méthode Hagnéré Code",
     description:
-      "Forfait fixe contractuel, démos hebdo, code chez vous J+1. La méthode qui livre dans le budget annoncé.",
+      "Une méthode lisible pour cadrer le périmètre, le prix, les démonstrations, la recette et la remise des livrables.",
     url: "/methode",
     images: [METHODE_OG_IMAGE],
   },
@@ -30,32 +30,32 @@ const howToJsonLd = JSON.stringify({
   "@type": "HowTo",
   name: "Sprint Fixe™ — Méthode Hagnéré Code",
   description:
-    "Cinq étapes contractuelles pour livrer un produit numérique au forfait fixe, sans dépassement, avec démos hebdomadaires et code/data du client dès J+1.",
+    "Cinq étapes proposées pour cadrer et suivre un projet numérique. Les engagements applicables sont ceux du devis ou du contrat signé.",
   totalTime: "P12W",
   step: [
     {
       "@type": "HowToStep",
       position: 1,
       name: "Discovery Sprint payé (1 500 € · 2 jours)",
-      text: "Cadrage métier, prototype Figma cliquable, architecture technique, devis ferme. Déduit à 100 % si phase 2.",
+      text: "Cadrage métier et technique, livrables et prix précisés dans la proposition commerciale. Toute remise éventuelle est écrite dans le devis.",
     },
     {
       "@type": "HowToStep",
       position: 2,
       name: "Devis ferme + signature",
-      text: "Forfait fixe contractuel avec date de livraison et clause de pénalité de retard. Aucune zone grise.",
+      text: "Le devis fixe le périmètre, le prix, les dépendances, les responsabilités et les jalons applicables au projet.",
     },
     {
       "@type": "HowToStep",
       position: 3,
       name: "Sprints de 2 semaines + démo chaque vendredi",
-      text: "Le code part sur votre repo Git dès J+1. Vous voyez votre produit grandir chaque semaine, vous corrigez la trajectoire en temps réel.",
+      text: "Le rythme des démonstrations, les accès au dépôt et les validations sont organisés au démarrage selon le devis.",
     },
     {
       "@type": "HowToStep",
       position: 4,
       name: "Mise en production + formation équipe",
-      text: "Déploiement sur votre infrastructure ou la nôtre. Formation de vos équipes incluse. 30 jours de garantie systématique.",
+      text: "La recette, le déploiement, la formation et la période de correction sont définis selon le périmètre signé.",
     },
     {
       "@type": "HowToStep",
@@ -94,7 +94,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "On a un bus factor de 2 minimum sur chaque projet : un dev référent + un binôme qui peut prendre le relais en 24 h. Tout passe par notre repo Git, notre Linear et notre runbook documenté. Si un dev est indisponible plus d'une semaine, on prévient, on bascule, et la date de livraison reste celle du contrat.",
+          "Le référent, les personnes mobilisées et le dispositif de continuité sont précisés au lancement. En cas d'indisponibilité, nous informons le client et appliquons la procédure convenue dans le document signé.",
       },
     },
     {
@@ -103,7 +103,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "On limite volontairement à 3 projets actifs en parallèle sur l'équipe tech (1 par binôme). C'est ce qui nous permet de tenir les démos vendredi sans context switching destructeur. Si on est en flux tendu, on vous le dit en cadrage et on vous propose une date de démarrage décalée.",
+          "La capacité disponible et la date réaliste de démarrage sont confirmées avant signature. Nous ne publions pas de quota permanent qui pourrait devenir faux selon les projets en cours.",
       },
     },
     {
@@ -112,16 +112,16 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Sprint Fixe™ marche bien sur des projets à périmètre cadrable (MVP SaaS, refonte vitrine, outil interne défini). Pour un projet vraiment évolutif (R&D, recherche utilisateur en continu, pivot fréquent), on bascule sur un format Care+ avec capacité dédiée mensuelle — un développeur senior à temps partiel, engagement 6 mois, livrables par sprints de 2 semaines.",
+          "Sprint Fixe™ convient aux projets dont le périmètre peut être cadré. Pour une activité évolutive ou de R&D, nous proposons un fonctionnement mensuel sur devis, avec capacité et règles de sortie écrites avant signature.",
       },
     },
     {
       "@type": "Question",
-      name: "Et si je suis en retard sur mes validations ? Ça décale la pénalité ?",
+      name: "Et si je suis en retard sur mes validations ?",
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Oui, et c'est cadré dans le contrat. Toute attente de validation client supérieure à 5 jours ouvrés décale d'autant la date de livraison contractuelle (clause delay of game). Si vous êtes silencieux 2 semaines, le projet est mis en pause facturée (50 €/jour) jusqu'à reprise.",
+          "Un retard de validation ou un élément manquant peut décaler le planning. Le délai de réponse attendu, la procédure d'alerte et les éventuelles conséquences financières doivent figurer dans le devis signé ; aucune pénalité automatique n'est annoncée sur cette page.",
       },
     },
     {
@@ -148,7 +148,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Le code généré ou suggéré par Claude est revu à 100 % par un dev humain senior avant le commit, puis re-revu en code review systématique avant le merge. Claude est un assistant qui défriche, pas un dev qui commit.",
+          "Claude Code est un outil d'assistance. Un développeur reste responsable des choix, des tests et de la validation des changements avant leur intégration.",
       },
     },
     {
@@ -157,7 +157,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Vous gardez tout : repo Git sur votre compte dès J+1, hébergement à votre nom, documentation à jour, runbook ops. N'importe quelle équipe React/Next.js peut reprendre le code en moins de 5 jours. Pas de lock-in technique, pas de royalties, pas de dépendance.",
+          "La réversibilité est prévue dans les CGV : code, accès et documentation nécessaires à la reprise sont remis selon le périmètre signé. Les livrables spécifiques sont transférés après paiement complet, sous réserve des composants tiers et préexistants.",
       },
     },
   ],
@@ -166,9 +166,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{howToJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: howToJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
       <MethodePage />
     </>
   );

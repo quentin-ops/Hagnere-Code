@@ -28,10 +28,10 @@ ${navHtml}
         <span>💶 Livré en forfait fixe</span>
       </div>
       <p class="shero-sub">
-        Vos équipes passent <b>15 heures par semaine</b> à recopier des données entre trois logiciels,
+        Vos équipes passent parfois <b>des heures chaque semaine</b> à recopier des données entre plusieurs logiciels,
         relancer manuellement, extraire des chiffres de PDF et maintenir des fichiers Excel que personne
         n'ose modifier. On construit l'<b>outil interne sur mesure</b> qui fait tout ça à leur place —
-        <b>branché à votre Sage, Cegid ou Active Directory</b>, en production dès la semaine 4.
+        avec les connecteurs utiles à votre SI quand leurs API et vos droits d'accès le permettent.
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
@@ -42,7 +42,7 @@ ${navHtml}
       <div class="shero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Forfait fixe, pas de régie</span>
         <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Livré en 4 à 10 semaines</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Planning défini après cadrage</span>
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Code &amp; données chez vous</span>
       </div>
@@ -56,12 +56,12 @@ ${navHtml}
           <div class="shero-proof-lbl">forfait fixe<br>engagé au contrat</div>
         </div>
         <div class="shero-proof-stat">
-          <div class="shero-proof-num">30<span class="shero-proof-num-s">j</span></div>
-          <div class="shero-proof-lbl">de garantie<br>après livraison</div>
+          <div class="shero-proof-num">Écrit</div>
+          <div class="shero-proof-lbl">recette et correction<br>définies au devis</div>
         </div>
         <div class="shero-proof-stat">
-          <div class="shero-proof-num">&lt;24<span class="shero-proof-num-s">h</span></div>
-          <div class="shero-proof-lbl">réponse<br>par un expert</div>
+          <div class="shero-proof-num">Clair</div>
+          <div class="shero-proof-lbl">délai de réponse<br>défini au contrat</div>
         </div>
       </div>
     </div>
@@ -97,7 +97,7 @@ ${navHtml}
 
       <div class="ba-arrow">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        EN 4 SEMAINES
+        APRÈS CADRAGE
       </div>
 
       <div class="ba-frame ba-after">
@@ -180,11 +180,11 @@ ${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Vous le reconnaissez ?</div>
-        <h2>Les 8 fuites silencieuses<br>qui coûtent 50 k€/an à une PME.</h2>
+        <h2>Les 8 fuites silencieuses<br>à chiffrer dans votre PME.</h2>
       </div>
       <div class="right">
-        Chaque point ci-dessous, <a href="/outils/calculateur-cout-excel">on l'a chiffré</a> chez au moins trois clients.
-        Pris individuellement, ça passe. Cumulés, c'est un salaire annuel qui part en fumée.
+        Utilisez le <a href="/outils/calculateur-cout-excel">calculateur</a> pour poser votre propre
+        baseline&nbsp;: fréquence, durée, coût chargé et risque. Les exemples ci-dessous ne sont pas des moyennes clients.
       </div>
     </div>
 
@@ -193,32 +193,32 @@ ${navHtml}
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
         <h4>Recopiage entre logiciels</h4>
         <p>Un commercial signe un deal dans Pipedrive. Puis le recopie dans Pennylane. Puis dans un Excel. Puis dans un Slack.</p>
-        <div class="prob-cost">≈ 8H / SEMAINE / PERSONNE</div>
+        <div class="prob-cost">TEMPS À MESURER</div>
       </div>
       <div class="prob reveal reveal-d-1">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div>
         <h4>Relances manuelles</h4>
         <p>Relancer un impayé, une pièce manquante, un rendez-vous : votre équipe le fait à la main, à chaque fois.</p>
-        <div class="prob-cost">≈ 4H / SEMAINE</div>
+        <div class="prob-cost">FRÉQUENCE À MESURER</div>
       </div>
       <div class="prob reveal reveal-d-2">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
         <h4>PDF à dépouiller à la main</h4>
         <p>Factures fournisseurs, contrats, CV, devis : quelqu'un les ouvre, lit, recopie les chiffres.</p>
-        <div class="prob-cost">≈ 30 MIN / DOCUMENT</div>
+        <div class="prob-cost">DURÉE / DOCUMENT À MESURER</div>
       </div>
       <div class="prob reveal reveal-d-3">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
         <h4>Reporting du vendredi</h4>
-        <p>Chaque semaine, vous passez 2h à rassembler des chiffres pour faire un reporting. Qui sera périmé lundi.</p>
-        <div class="prob-cost">≈ 100H / AN DE DIRIGEANT</div>
+        <p>À chaque reporting, des personnes peuvent devoir rassembler manuellement des chiffres qui vieillissent vite.</p>
+        <div class="prob-cost">DURÉE / RAPPORT À MESURER</div>
       </div>
 
       <div class="prob reveal">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg></div>
         <h4>Onboarding nouveaux salariés</h4>
-        <p>Créer ses accès dans 12 outils, lui expliquer 8 processus non-documentés, il sera opérationnel dans 3 mois.</p>
-        <div class="prob-cost">≈ 2 SEMAINES / EMBAUCHE</div>
+        <p>Créer les accès et expliquer des processus non documentés retarde la prise en main des nouveaux arrivants.</p>
+        <div class="prob-cost">DÉLAI D'AUTONOMIE À MESURER</div>
       </div>
       <div class="prob reveal reveal-d-1">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4l3 3M20 4L4 20M12 2a10 10 0 1010 10"/></svg></div>
@@ -230,13 +230,13 @@ ${navHtml}
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg></div>
         <h4>Erreurs humaines coûteuses</h4>
         <p>Un chiffre mal recopié dans un devis. Une TVA à 20% au lieu de 10%. Un mail envoyé au mauvais client.</p>
-        <div class="prob-cost">1 À 3 INCIDENTS / MOIS</div>
+        <div class="prob-cost">INCIDENTS À RECENSER</div>
       </div>
       <div class="prob reveal reveal-d-3">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82zM7 7h.01"/></svg></div>
         <h4>SaaS du marché inadaptés</h4>
-        <p>Vous payez 200€/mois pour un CRM dont vous utilisez 20%. Et les 80% restants ne font pas ce dont vous avez besoin.</p>
-        <div class="prob-cost">500 À 2000€ / MOIS</div>
+        <p>Vous pouvez payer des fonctions peu utilisées tout en conservant des contournements manuels pour votre vrai besoin.</p>
+        <div class="prob-cost">COÛT COMPLET À CALCULER</div>
       </div>
     </div>
   </div>
@@ -613,21 +613,21 @@ ${navHtml}
         </div>
       </div>
 
-      <div class="flow-stats">
+      <div class="flow-stats" aria-label="Variables à mesurer pendant le cadrage">
         <div class="fs">
-          <div class="fs-label">PAR DOCUMENT</div>
-          <div class="fs-num">3<span class="s"> s</span></div>
-          <div class="fs-note">au lieu de 5 à 15 minutes en manuel</div>
+          <div class="fs-label">TEMPS PAR DOCUMENT</div>
+          <div class="fs-num">À mesurer</div>
+          <div class="fs-note">avant / après sur votre propre échantillon</div>
         </div>
         <div class="fs">
-          <div class="fs-label">FIABILITÉ CONSTATÉE</div>
-          <div class="fs-num">98,4<span class="s"> %</span></div>
-          <div class="fs-note">mesurée sur un échantillon de 40 000 factures fournisseurs</div>
+          <div class="fs-label">TAUX DE VALIDATION</div>
+          <div class="fs-num">À tester</div>
+          <div class="fs-note">avec seuil de confiance et contrôle humain</div>
         </div>
         <div class="fs">
-          <div class="fs-label">COÛT IA MOYEN</div>
-          <div class="fs-num">0,004<span class="s"> €</span></div>
-          <div class="fs-note">par document traité — incl. extraction + validation</div>
+          <div class="fs-label">COÛT PAR TRAITEMENT</div>
+          <div class="fs-num">À chiffrer</div>
+          <div class="fs-note">modèles, infrastructure et validation inclus</div>
         </div>
       </div>
     </div>
@@ -640,11 +640,11 @@ ${navHtml}
     <div class="section-head reveal" style="margin-bottom:0">
       <div class="left">
         <div class="eyebrow">— Briques assemblables</div>
-        <h2>16 modules prêts à l'emploi.<br>On assemble ceux qui vous servent.</h2>
+        <h2>16 modules courants.<br>On assemble ceux qui vous servent.</h2>
       </div>
       <div class="right">
-        On ne redéveloppe jamais depuis zéro ce qui existe déjà chez nous. La moitié d'un outil
-        interne type est un assemblage de briques qu'on a déjà en stock.
+        Nous réutilisons les composants éprouvés lorsqu'ils correspondent au besoin. Le cadrage
+        distingue les briques adaptables de ce qui doit être développé pour votre métier.
       </div>
     </div>
 
@@ -661,7 +661,7 @@ ${navHtml}
 
       <div class="bq reveal"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div><h5>Emails transactionnels</h5><p>Templates, suivi d'ouverture.</p></div>
       <div class="bq reveal reveal-d-1"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h5>Géolocalisation</h5><p>Tournées, cartes, trajets optimisés.</p></div>
-      <div class="bq reveal reveal-d-2"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h5>RGPD clé en main</h5><p>Registre, consentements, exports.</p></div>
+      <div class="bq reveal reveal-d-2"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h5>Fonctions RGPD</h5><p>Consentements, exports et conservation selon le rôle et le périmètre.</p></div>
       <div class="bq reveal reveal-d-3"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><h5>Signature électronique</h5><p>Yousign, DocuSign, intégré aux workflows.</p></div>
 
       <div class="bq reveal"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div><h5>Intégrations tierces</h5><p>Pennylane, Axonaut, Pipedrive, Slack.</p></div>
@@ -677,73 +677,72 @@ ${navHtml}
   <div class="wrap">
     <div class="caseh-inner">
       <div class="caseh-copy reveal">
-        <div class="eyebrow">— Notre propre outil interne (transparence totale)</div>
+        <div class="eyebrow">— Démonstration sur un produit interne</div>
         <h2>L'outil qu'on a construit<br>pour <em>notre</em> cabinet.</h2>
         <p>
-          <b>Full disclosure</b> : Hagnéré Patrimoine, c'est notre cabinet de gestion de patrimoine,
-          pas un client. On opère nous-mêmes cet outil au quotidien : pipeline commercial, gestion RH,
-          facturation automatisée, rapports clients générés par IA, newsletter actionnaires, suivi des litiges.
-          On le montre parce que <b>c'est le plus complet qu'on puisse prouver avec des vrais chiffres</b> —
-          et parce qu'on l'utilise en production, pas juste en démo.
+          <b>Transparence</b> : Hagnéré Patrimoine est notre propre cabinet, pas un client externe.
+          Nous nous appuyons sur ce produit interne pour illustrer les familles de fonctions qu'un outil métier
+          peut réunir. L'interface ci-contre est une reconstruction pédagogique : <b>ses noms, montants et
+          indicateurs sont fictifs</b> et ne constituent ni des résultats clients ni une promesse de performance.
         </p>
         <div class="caseh-metrics">
           <div class="chm">
-            <div class="chm-num">14<span class="s"> h</span></div>
-            <div class="chm-lbl">/ semaine économisées sur l'admin</div>
+            <div class="chm-num">Avant</div>
+            <div class="chm-lbl">Temps administratif à mesurer</div>
           </div>
           <div class="chm">
-            <div class="chm-num">0<span class="s"></span></div>
-            <div class="chm-lbl">Recopiage manuel entre outils</div>
+            <div class="chm-num">Après</div>
+            <div class="chm-lbl">Recopiages restants à contrôler</div>
           </div>
           <div class="chm">
-            <div class="chm-num">4</div>
-            <div class="chm-lbl">SaaS externes remplacés</div>
+            <div class="chm-num">Coûts</div>
+            <div class="chm-lbl">Licences et maintenance comparées</div>
           </div>
           <div class="chm">
-            <div class="chm-num">6<span class="s"> mois</span></div>
-            <div class="chm-lbl">ROI atteint, équipe 8 personnes</div>
+            <div class="chm-num">ROI</div>
+            <div class="chm-lbl">Calculé avec hypothèses explicites</div>
           </div>
         </div>
       </div>
       <div class="caseh-visual reveal reveal-d-2">
         <svg width="100%" height="100%" viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice">
           <rect width="600" height="450" fill="#0A0A0A"/>
-          <text x="40" y="50" font-family="Geist" font-weight="700" font-size="14" fill="#fff">hagnere-patrimoine.internal</text>
-          <text x="40" y="68" font-family="Geist Mono" font-size="9" fill="#737373">14 avril 2026 · 09:12</text>
+          <text x="40" y="50" font-family="Geist" font-weight="700" font-size="14" fill="#fff">produit-interne.demo</text>
+          <text x="40" y="68" font-family="Geist Mono" font-size="9" fill="#737373">EXEMPLE ILLUSTRATIF · DONNÉES FICTIVES</text>
 
           <!-- Summary cards -->
           <g transform="translate(40 90)">
             <rect x="0" y="0" width="160" height="90" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
-            <text x="14" y="22" font-family="Geist Mono" font-size="9" fill="#737373">CLIENTS ACTIFS</text>
-            <text x="14" y="56" font-family="Geist" font-weight="700" font-size="26" fill="#fff">284</text>
-            <text x="14" y="74" font-family="Geist Mono" font-size="9" fill="#a3e47f">+12 ce mois</text>
+            <text x="14" y="22" font-family="Geist Mono" font-size="9" fill="#737373">DOSSIERS SUIVIS</text>
+            <text x="14" y="56" font-family="Geist" font-weight="700" font-size="26" fill="#fff">—</text>
+            <text x="14" y="74" font-family="Geist Mono" font-size="9" fill="#a3e47f">à configurer</text>
 
             <rect x="170" y="0" width="160" height="90" rx="8" fill="rgba(109,40,217,0.08)" stroke="rgba(109,40,217,0.3)"/>
-            <text x="184" y="22" font-family="Geist Mono" font-size="9" fill="#6D28D9">CA ENCOURS</text>
-            <text x="184" y="56" font-family="Geist" font-weight="700" font-size="26" fill="#fff">1,84M€</text>
-            <text x="184" y="74" font-family="Geist Mono" font-size="9" fill="#6D28D9">42 dossiers en cours</text>
+            <text x="184" y="22" font-family="Geist Mono" font-size="9" fill="#6D28D9">INDICATEUR MÉTIER</text>
+            <text x="184" y="56" font-family="Geist" font-weight="700" font-size="26" fill="#fff">—</text>
+            <text x="184" y="74" font-family="Geist Mono" font-size="9" fill="#6D28D9">défini au cadrage</text>
 
             <rect x="340" y="0" width="180" height="90" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)"/>
-            <text x="354" y="22" font-family="Geist Mono" font-size="9" fill="#737373">AUTO / MANUEL</text>
-            <text x="354" y="56" font-family="Geist" font-weight="700" font-size="26" fill="#fff">96 <tspan font-size="14" fill="#737373">/ 4</tspan></text>
-            <text x="354" y="74" font-family="Geist Mono" font-size="9" fill="#a3e47f">tâches / jour</text>
+            <text x="354" y="22" font-family="Geist Mono" font-size="9" fill="#737373">AUTO / CONTRÔLE</text>
+            <text x="354" y="56" font-family="Geist" font-weight="700" font-size="26" fill="#fff">— <tspan font-size="14" fill="#737373">/ —</tspan></text>
+            <text x="354" y="74" font-family="Geist Mono" font-size="9" fill="#a3e47f">seuils à régler</text>
           </g>
 
           <!-- Activity feed -->
           <g transform="translate(40 200)">
-            <text x="0" y="0" font-family="Geist Mono" font-size="9" fill="#737373">ACTIVITÉ AUTOMATIQUE · DERNIÈRE HEURE</text>
+            <text x="0" y="0" font-family="Geist Mono" font-size="9" fill="#737373">EXEMPLE DE JOURNAL D'ACTIVITÉ</text>
             <rect x="0" y="12" width="520" height="30" rx="5" fill="rgba(255,255,255,0.03)"/>
-            <text x="14" y="32" font-family="Geist Mono" font-size="10" fill="#a3e47f">✓ 09:08 · Rapport trim. généré pour M. DUPONT (IA) · envoyé</text>
+            <text x="14" y="32" font-family="Geist Mono" font-size="10" fill="#a3e47f">✓ Rapport brouillon généré · validation humaine requise</text>
             <rect x="0" y="46" width="520" height="30" rx="5" fill="rgba(255,255,255,0.03)"/>
-            <text x="14" y="66" font-family="Geist Mono" font-size="10" fill="#a3e47f">✓ 09:04 · 18 factures générées · montant total 42 140 €</text>
+            <text x="14" y="66" font-family="Geist Mono" font-size="10" fill="#a3e47f">✓ Documents préparés · lot de démonstration</text>
             <rect x="0" y="80" width="520" height="30" rx="5" fill="rgba(255,255,255,0.03)"/>
-            <text x="14" y="100" font-family="Geist Mono" font-size="10" fill="#a3e47f">✓ 09:02 · Newsletter actionnaires envoyée à 142 destinataires</text>
+            <text x="14" y="100" font-family="Geist Mono" font-size="10" fill="#a3e47f">✓ Notification test envoyée · destinataires fictifs</text>
             <rect x="0" y="114" width="520" height="30" rx="5" fill="rgba(109,40,217,0.08)"/>
-            <text x="14" y="134" font-family="Geist Mono" font-size="10" fill="#6D28D9">! 08:58 · Litige client #L-0042 · assigné à Quentin</text>
+            <text x="14" y="134" font-family="Geist Mono" font-size="10" fill="#6D28D9">! Exception métier · assignée pour traitement</text>
             <rect x="0" y="148" width="520" height="30" rx="5" fill="rgba(255,255,255,0.03)"/>
-            <text x="14" y="168" font-family="Geist Mono" font-size="10" fill="#a3e47f">✓ 08:30 · 4 nouveaux prospects importés depuis formulaire site</text>
+            <text x="14" y="168" font-family="Geist Mono" font-size="10" fill="#a3e47f">✓ Données test importées depuis le formulaire</text>
             <rect x="0" y="182" width="520" height="30" rx="5" fill="rgba(255,255,255,0.03)"/>
-            <text x="14" y="202" font-family="Geist Mono" font-size="10" fill="#fff">→ 08:15 · Sophie a validé 12 NDF · 846,20 € · export pennylane</text>
+            <text x="14" y="202" font-family="Geist Mono" font-size="10" fill="#fff">→ Contrôle manuel terminé · export de démonstration</text>
           </g>
         </svg>
       </div>
@@ -803,7 +802,7 @@ ${navHtml}
       </div>
 
       <div class="plan featured reveal reveal-d-2">
-        <div class="plan-badge">LE PLUS CHOISI</div>
+        <div class="plan-badge">FORMULE INTERMÉDIAIRE</div>
         <div class="plan-tag">OUTIL COMPLET</div>
         <h4>Pro</h4>
         <div class="plan-sub">Un back-office complet qui remplace vos fichiers Excel et vos process manuels.</div>
@@ -835,7 +834,7 @@ ${navHtml}
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Périmètre multi-services</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SSO entreprise · SAML</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA 99,9% · support 24/5</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Niveau de service et horaires définis au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Conduite du changement incluse</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parlons-en</a></div>
@@ -843,7 +842,7 @@ ${navHtml}
     </div>
 
     <p style="text-align:center;margin-top:40px;color:var(--mute);font-size:14px">
-      Tous les forfaits incluent : <b style="color:var(--ink)">propriété complète du code · repo Git chez vous · formation des équipes · 30 jours de garantie après livraison</b>
+      Chaque devis précise : <b style="color:var(--ink)">livrables et droits · dépôt et accès · formation · recette et éventuelle garantie</b>
     </p>
   </div>
 </section>
@@ -864,20 +863,20 @@ ${navHtml}
     <div class="roi-grid">
       <div class="roi-copy reveal">
         <p>
-          Un outil interne est rentable à partir du moment où il économise <b>plus que son coût
-          annualisé</b>. Sur les périmètres que nous cadrons, la bascule se situe généralement entre
-          <b>6 et 18 mois</b>. Au-delà, c'est du profit net chaque année.
+          Un outil interne devient rentable si les économies et gains réellement mesurés dépassent son
+          coût total. Le calcul ci-contre est une <b>simulation non contractuelle</b> : remplacez chaque
+          hypothèse par vos données et ajoutez maintenance, formation, infrastructure et conduite du changement.
         </p>
         <ul class="chks">
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Calcul basé sur le coût horaire chargé (salaire × 1,45)</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hypothèse conservative : 70% du temps manuel économisé</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Amortissement de l'outil sur 5 ans</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Coût horaire chargé à remplacer par votre donnée RH</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Temps réellement évitable à valider pendant le pilote</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Horizon d'analyse à choisir avec votre direction financière</li>
         </ul>
         <div style="margin-top:32px;padding:20px;background:#fff;border:1px dashed var(--line);border-radius:10px">
           <div style="font-family:'Geist Mono';font-size:11px;color:var(--mute);letter-spacing:0.04em">À RETENIR</div>
           <div style="font-size:15px;margin-top:6px;color:var(--ink-3);line-height:1.5">
-            Chaque mois que vous attendez, c'est de l'argent jeté par la fenêtre sur du temps
-            de travail non créatif. Un outil bien pensé est <b>un investissement, pas une dépense</b>.
+            La décision dépend du coût complet, du risque opérationnel et du taux d'adoption.
+            Un pilote instrumenté permet de décider sur des données plutôt que sur une promesse.
           </div>
         </div>
       </div>
@@ -908,9 +907,9 @@ ${navHtml}
         </div>
 
         <div class="roi-result">
-          <div class="label">ÉCONOMIES ANNUELLES POTENTIELLES</div>
-          <div class="big"><span id="roi-total">58&nbsp;968</span><span class="s"> €</span></div>
-          <div class="sub">soit <span id="roi-monthly">4&nbsp;914</span>&nbsp;€ par mois — plus qu'un salaire de cadre, sans embauche</div>
+          <div class="label">COÛT ANNUEL DU TEMPS DÉCLARÉ</div>
+          <div class="big"><span id="roi-total">101&nbsp;520</span><span class="s"> €</span></div>
+          <div class="sub">soit <span id="roi-monthly">8&nbsp;460</span>&nbsp;€ par mois, avec la convention de 47 semaines travaillées par an. Ce montant n'est pas une économie garantie.</div>
         </div>
       </div>
     </div>
@@ -933,10 +932,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            C'est <b>la question n°1</b>, et la plus importante. La réponse courte : oui, si l'outil est construit
-            <b>avec</b> les utilisateurs, pas <b>pour</b> eux. On démarre chaque projet par des interviews
-            terrain (pas avec les managers). On co-conçoit les écrans avec les personnes qui vont les utiliser
-            tous les jours. Résultat : taux d'adoption moyen de <b>92%</b> trois mois après livraison.
+            C'est une question centrale. Associer des utilisateurs finaux au cadrage, aux tests et à la formation
+            réduit le risque, sans garantir l'adoption. Le devis précise les personnes consultées et les actions
+            d'accompagnement&nbsp;; l'usage réel se mesure ensuite dans les journaux et par entretien.
           </div>
         </div>
 
@@ -945,10 +943,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Oui, presque toujours</b>. Notre outil interne s'interface avec vos SaaS existants via leurs API.
-            Votre équipe commerciale continue d'utiliser Pipedrive, mais les données remontent automatiquement
-            chez vous. Votre compta reste sur Pennylane, mais les écritures sont poussées automatiquement.
-            On ne remplace que ce qui pose problème.
+            C'est souvent possible, après vérification des API, licences, droits et limites de chaque éditeur.
+            Le cadrage décide ce qui reste source de vérité, ce qui est synchronisé et ce qui doit être remplacé.
+            Les écritures sensibles prévoient validation, traçabilité et reprise sur erreur selon le risque.
           </div>
         </div>
 
@@ -957,10 +954,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            L'outil est <b>vôtre</b>. Vous pouvez le faire évoluer avec nous (on propose un forfait de
-            maintenance + évolutions mensuel), avec votre équipe technique, ou avec une autre agence.
-            Le code est standard Next.js/TypeScript, propre, documenté, testé : n'importe quel développeur
-            expérimenté peut reprendre la main.
+            Les livrables spécifiques et les droits transférés sont définis au devis puis cédés après
+            paiement complet selon les CGV. Dépôt, accès, documentation, composants préexistants et
+            licences tierces sont inventoriés pour permettre une reprise par votre équipe ou un autre prestataire.
           </div>
         </div>
 
@@ -969,10 +965,10 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Oui, par conception</b>. Hébergement en France (Scaleway Paris ou OVH Roubaix),
-            chiffrement at-rest et in-transit, sauvegardes toutes les 15 minutes gardées 30 jours,
-            audit log de toutes les actions sensibles, permissions granulaires par utilisateur.
-            Conformité RGPD incluse avec registre des traitements et DPA fournis.
+            La protection dépend de la nature des données et du risque. Localisation de l'hébergement,
+            chiffrement, sauvegardes, piste d'audit et permissions sont cadrés dans le devis.
+            Le registre, le DPA et les autres documents ne sont fournis que lorsqu'ils appartiennent au périmètre&nbsp;;
+            les qualifications juridiques restent à valider par votre conseil ou votre DPO.
           </div>
         </div>
 
@@ -981,10 +977,10 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Entre 30 minutes et 2 heures</b> selon la complexité. Notre priorité en design est
-            qu'un nouveau salarié soit opérationnel dès le premier jour, sans formation spécifique —
-            le logiciel doit s'expliquer tout seul. Pour le lancement, on prévoit 2 sessions de
-            formation : une avec les utilisateurs quotidiens, une avec les administrateurs.
+            La durée dépend des rôles et de la complexité. Notre priorité en design est
+            de réduire le besoin de formation et de documenter les gestes qui ne sont pas évidents —
+            le logiciel doit autant que possible s'expliquer seul. Le devis précise les publics,
+            les supports et le nombre de sessions de formation retenus pour le lancement.
           </div>
         </div>
 

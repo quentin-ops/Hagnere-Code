@@ -5,11 +5,11 @@ export const problemsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Vous êtes probablement ici</div>
-        <h2>Six situations qu'on voit<br>chaque semaine en call.</h2>
+        <h2>Six situations possibles<br>à diagnostiquer.</h2>
       </div>
       <div class="right">
-        Aucune n'est honteuse. Toutes se règlent. Mais plus vous attendez,
-        plus votre site <b>vous fait perdre de leads</b> à chaque jour qui passe.
+        Ces scénarios servent à orienter l'audit. Ils ne présument ni votre problème,
+        ni le nombre de leads perdus, ni la solution avant d'avoir mesuré.
       </div>
     </div>
 
@@ -37,10 +37,10 @@ export const problemsHtml = `
           <span class="sap-n">02</span>
         </div>
         <h3>« Il charge en 6 secondes »</h3>
-        <p>WordPress + Divi + 24 plugins = désastre de performance. Google pénalise, le taux de rebond explose, les campagnes Ads coûtent <b>2× plus cher</b> pour un CPC équivalent.</p>
+        <p>Un thème lourd, des extensions et des scripts tiers peuvent dégrader le chargement. Il faut mesurer les pages et isoler les causes avant de choisir une refonte.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Next.js statique · LCP &lt; 1,5 s garanti</span>
+          <span class="sap-foot-v">Budget de performance · conditions au devis</span>
         </div>
       </article>
 
@@ -52,10 +52,10 @@ export const problemsHtml = `
           <span class="sap-n">03</span>
         </div>
         <h3>« Je suis invisible sur Google »</h3>
-        <p>Pas de SEO technique, pas de schema.org, pas d'architecture en cocons, pas de blog. Vos concurrents trustent les pages 1 pendant que <b>vous payez du SEA pour compenser</b>.</p>
+        <p>Indexation, intentions, contenu, maillage, popularité et concurrence doivent être examinés ensemble. Une balise schema.org ne garantit pas un classement.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Refonte SEO-first + 50 mots-clés ciblés</span>
+          <span class="sap-foot-v">Diagnostic SEO + plan de pages priorisé</span>
         </div>
       </article>
 

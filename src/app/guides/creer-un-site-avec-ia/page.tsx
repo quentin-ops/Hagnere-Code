@@ -126,7 +126,7 @@ const faqItems = [
   {
     question: "Combien coûte un site créé avec l'IA ?",
     answer:
-      "Trois ordres de grandeur selon la famille d'outils. Générateur no-code : 0 € en apparence, mais 11 à 50 €/mois pour un usage professionnel réel — soit 400 à 1 700 € sur 3 ans, pour un site que vous ne possédez pas. Vibe coding : 25 à 100 $/mois d'abonnement et de crédits, plus la finition par un développeur quand le prototype doit devenir un vrai produit. Sur-mesure assisté par IA : chez nous, un site vitrine complet démarre à 6 900 € (forfait fixe, code cédé, Lighthouse 95+ contractuel) — un prix que le développement assisté par IA a rendu possible, et qui se compare honnêtement au coût cumulé d'une plateforme sur 3 à 5 ans. Le détail est dans la section coût réel de ce guide.",
+      "Trois familles de coûts sont à comparer sur trois ans : abonnement no-code et options, crédits de génération plus finition humaine, ou développement sur mesure avec hébergement et maintenance. Chez Hagnéré Code, les prix affichés sont des ordres de grandeur ; le devis fixe le périmètre, les droits, la performance, les coûts tiers et la période de correction.",
   },
   {
     question: "Google pénalise-t-il les sites créés par une IA ?",
@@ -151,7 +151,7 @@ const faqItems = [
   {
     question: "À qui appartient un site créé avec l'IA ?",
     answer:
-      "Tout dépend de la famille d'outils — c'est LA question que les comparatifs esquivent. Sur un générateur no-code type Wix, vous ne possédez pas le site : l'architecture est propriétaire et le site est inexportable (documenté par Wix lui-même) — vous êtes locataire à vie. Sur les outils de vibe coding, c'est l'inverse : Lovable écrit noir sur blanc « You own your code », le code React généré vous appartient et s'exporte vers GitHub. En sur-mesure, la propriété dépend du contrat : exigez une clause de cession écrite (article L131-3 du Code de la propriété intellectuelle) — chez nous, le code est cédé au client, systématiquement. Avant de choisir un outil, posez cette seule question : « si je pars, qu'est-ce que j'emporte ? »",
+      "Tout dépend de l'outil et du contrat. Certaines plateformes n'exportent pas leur architecture ; d'autres permettent d'exporter du code vers GitHub, avec des limites à lire dans leurs conditions. En sur-mesure, exigez une clause écrite de cession et un inventaire des composants tiers. Chez Hagnéré Code, les livrables spécifiques sont transférés après paiement complet selon les CGV, avec dépôt, accès et exclusions détaillés au devis.",
   },
   {
     question: "Un site généré par IA est-il conforme au RGPD ?",
@@ -161,7 +161,7 @@ const faqItems = [
   {
     question: "Qui s'occupe de la maintenance d'un site créé avec l'IA ?",
     answer:
-      "Personne — sauf si vous l'organisez. Sur un générateur no-code, la plateforme maintient son infrastructure (c'est son vrai service), mais personne ne maintient VOTRE site : contenus, référencement, évolutions. Sur un site vibe-codé, c'est pire : le code existe, mais aucun développeur ne le connaît — le jour où un formulaire casse ou une faille est publiée, vous cherchez quelqu'un pour reprendre un code écrit par une machine. C'est une des raisons pour lesquelles nous livrons du code standard, documenté et cédé, avec 30 jours de garantie post-lancement et une maintenance optionnelle : un site professionnel est un actif qui s'entretient, pas un objet jetable.",
+      "Personne, sauf si vous l'organisez. La plateforme maintient son infrastructure, mais votre contenu, vos intégrations, votre référencement et vos évolutions restent à piloter. Pour un site généré ou sur mesure, le devis doit définir documentation, dépôt, recette, période de correction et maintenance éventuelle. Un site professionnel est un actif qui s'entretient.",
   },
   {
     question: "Créer son site avec l'IA ou passer par une agence web ?",
@@ -188,9 +188,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -268,7 +268,7 @@ export default function Page() {
           seuls : ils démultiplient un développeur — et c&apos;est eux
           qui ont fait <strong>baisser le prix du sur-mesure
           professionnel</strong> (site vitrine complet dès 6 900 € chez
-          nous, code cédé). Google, lui, ne pénalise pas l&apos;IA : il
+          nous, droits, dépôt et exclusions détaillés au devis). Google, lui, ne pénalise pas l&apos;IA : il
           pénalise le contenu générique sans valeur — position
           officielle décryptée section 6.
         </p>
@@ -277,7 +277,7 @@ export default function Page() {
           rows={[
             ["Tester une idée, projet mené à côté de votre activité (« side-project »), budget < 1 000 €", "Générateur no-code (Wix AI, Durable…)", "0 – 50 €/mois — assumé comme provisoire"],
             ["Prototype d'application à montrer (investisseurs, associés)", "Vibe coding (Lovable, Bolt, v0)", "25 – 100 $/mois + finition par un développeur"],
-            ["Site professionnel qui doit convertir et durer", "Sur-mesure assisté par IA (React/Next.js)", "Dès 6 900 € — forfait fixe, code cédé"],
+            ["Site professionnel qui doit convertir et durer", "Sur-mesure assisté par IA (React/Next.js)", "Dès 6 900 € — forfait fixe, droits et dépôt au devis"],
             ["Boutique en ligne", "Shopify (test) ou sur-mesure (canal principal)", "25 €/mois vs dès 15 000 € — comparatif dédié"],
           ]}
         />
@@ -545,7 +545,7 @@ export default function Page() {
         <GuideInlineCTA
           title="Envie de savoir ce que l'IA change pour VOTRE projet ?"
           description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc — y compris quand un outil IA à 20 €/mois est la bonne réponse à votre stade. Et si le projet mérite du sur-mesure, le Discovery Sprint (1 500 €, 2 jours, déduit à 100 %) produit maquettes, cahier des charges et devis au forfait fixe."
-          tags={["Réponse sous 24 h ouvrées", "Note Google Lighthouse 95+ contractuelle", "Code cédé, propriété totale"]}
+          tags={["Réponse personnelle", "Objectifs de performance au devis", "Droits et dépôt inventoriés"]}
         />
 
         <h2 id="cout-reel">8. Le coût réel sur 3 ans, toutes familles confondues</h2>
@@ -560,7 +560,7 @@ export default function Page() {
             ["Générateur no-code « gratuit »", "400 – 700 € (forfait mini + domaine) + votre temps", "Rien — site inexportable, sous-domaine ou design générique"],
             ["Générateur no-code, forfait business", "1 100 – 1 700 € (25 – 40 €/mois + domaine + options)", "Rien — vous êtes locataire, le site reste sur la plateforme"],
             ["Vibe coding (Lovable, Bolt, v0)", "900 – 3 600 € (abonnements + crédits) + finition dev", "Le code du prototype — à sécuriser et maintenir vous-même"],
-            ["Sur-mesure assisté par IA (notre grille)", "6 900 € une fois + maintenance optionnelle", "Tout : code cédé, design propriétaire, Lighthouse 95+ contractuel"],
+            ["Sur-mesure assisté par IA (notre grille)", "À partir de 6 900 € selon périmètre", "Droits, dépôt, performance, coûts tiers et maintenance au devis"],
           ]}
         />
         <p>
@@ -638,8 +638,8 @@ export default function Page() {
           qui : ouvrez PageSpeed Insights, l&apos;outil de test
           gratuit de Google, et testez cette page — Lighthouse est la
           note de qualité sur 100 qu&apos;il attribue, et le{" "}
-          <strong>95+ que nous garantissons par contrat</strong> à nos
-          clients, ce site se l&apos;applique.
+          <strong>objectif de performance défini dans un devis</strong> doit
+          préciser ses conditions de mesure&nbsp;; ce site ne constitue pas une preuve client.
           Et la stratégie de contenu que vous lisez — des guides
           longs, sourcés et reliés entre eux par des liens
           internes — est exactement ce qu&apos;une
@@ -738,7 +738,7 @@ export default function Page() {
             <li><strong>×3 à ×4</strong> : le renouvellement réel des prix d&apos;appel des générateurs (2,99 €/mois → environ 9 à 12 €/mois) — la colonne que les comparatifs cachent.</li>
             <li><strong>2,5 %</strong> : la part des nouvelles pages web en « pur IA » sans édition humaine (Ahrefs) — le mix humain + IA est la norme de ce qui se classe sur Google.</li>
             <li><strong>45 %</strong> : la part du code généré par IA contenant une vulnérabilité OWASP (Veracode 2025) — le vibe coding sans audit est un pari.</li>
-            <li><strong>6 900 €</strong> : le sur-mesure vitrine au forfait fixe — le prix que l&apos;IA entre les mains de développeurs a rendu possible, code cédé et Lighthouse 95+ contractuel.</li>
+            <li><strong>À partir de 6 900 €</strong> : le sur-mesure vitrine, avec périmètre, droits, dépôt, protocole de performance et coûts tiers détaillés au devis.</li>
           </ul>
         </InfoBox>
 
@@ -748,7 +748,7 @@ export default function Page() {
           rows={[
             ["Porteur d'idée, marché à valider", "Générateur no-code, assumé provisoire", "0-40 €/mois pour apprendre vite — l'argent va au test, pas au site"],
             ["Créateur d'app, prototype à montrer", "Vibe coding (Lovable, v0)", "Du vrai code possédé, bluffant en démo — un dev pour passer en production"],
-            ["TPE/PME dont le site doit générer des clients", "Sur-mesure assisté par IA (React/Next.js)", "Design différenciant, SEO architecturé, code cédé — dès 6 900 €"],
+            ["TPE/PME dont le site doit générer des clients", "Sur-mesure assisté par IA (React/Next.js)", "Design différenciant, SEO architecturé, droits et dépôt au devis — dès 6 900 €"],
             ["Entreprise avec un site plateforme qui plafonne", "Migration vers le sur-mesure", "L'IA a fait baisser le coût de la bascule — audit d'abord"],
             ["E-commerce", "Shopify pour tester, sur-mesure pour durer", "Notre comparatif Shopify ou sur-mesure chiffre la bascule"],
             ["Side-project, présence minimale", "Générateur no-code, sans culpabilité", "Le cas résiduel légitime — gardez juste votre domaine en propre"],

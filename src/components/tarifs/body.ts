@@ -37,7 +37,7 @@ ${navHtml}
       <div class="thero-meta">
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Code &amp; data chez vous</span>
         <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>30 j de garantie</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Recette et correction au devis</span>
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>0 dépassement caché</span>
       </div>
@@ -110,7 +110,7 @@ ${navHtml}
               <div class="qmock-row-num">04</div>
               <div>
                 <div class="qmock-row-t">Hébergement &amp; care 12 mois</div>
-                <div class="qmock-row-s">Scaleway Paris · backups · SLA 99,9</div>
+                <div class="qmock-row-s">Hébergement, sauvegardes et niveau de service cadrés</div>
               </div>
             </div>
             <div class="qmock-row-r"><b>inclus</b></div>
@@ -135,7 +135,7 @@ ${navHtml}
         <div class="qmock-foot">
           <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Cadrage validé</span>
           <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Périmètre signé</span>
-          <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Garantie 30 j</span>
+          <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Correction cadrée au devis</span>
         </div>
       </div>
 
@@ -274,7 +274,7 @@ ${navHtml}
           </li>
           <li>
             <div class="disc-li-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Devis phase 2 chiffré</b><br><span>Forfait ferme avec délai contractuel et clause de pénalité</span></div>
+            <div><b>Devis phase 2 chiffré</b><br><span>Forfait, délai, dépendances et conséquences éventuelles écrits</span></div>
           </li>
         </ul>
 
@@ -385,14 +385,14 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Site 5–10 pages OU MVP 3–5 écrans</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design sur mesure</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO technique de série</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 1 an inclus</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement et durée précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 2–4 semaines</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
       </div>
 
       <div class="plan featured reveal reveal-d-2">
-        <div class="plan-badge">LE PLUS CHOISI</div>
+        <div class="plan-badge">FORMULE INTERMÉDIAIRE</div>
         <div class="plan-tag">PROJET COMPLET</div>
         <h4>Standard</h4>
         <div class="plan-sub">Un SaaS, un outil interne ou une marketplace. Le sweet spot des PME ambitieuses.</div>
@@ -406,7 +406,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Workflows métier complexes</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intégrations tierces (Stripe, Pennylane…)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Agents IA selon besoin</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Conformité RGPD clé en main</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Mesures techniques et documents RGPD au périmètre</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 5–10 semaines</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
@@ -422,10 +422,10 @@ ${navHtml}
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée 2 à 5 personnes</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intervenants et rôles précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Roadmap co-construite</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA 99,9 % · astreinte Lun–Ven 8 h–20 h</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 6 mois minimum</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Niveau de service et éventuelle astreinte au devis</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Durée et modalités de sortie négociées</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Equity en complément possible</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parlons-en</a></div>
@@ -433,7 +433,7 @@ ${navHtml}
     </div>
 
     <p class="pricing-note reveal">
-      Tous les forfaits incluent : <b>propriété complète du code</b> · <b>repo Git chez vous</b> · <b>formation équipe</b> · <b>30 jours de garantie post-livraison</b>
+      Chaque devis précise : <b>livrables et droits</b> · <b>dépôt et accès</b> · <b>formation</b> · <b>recette et éventuelle garantie</b>
     </p>
   </div>
 </section>
@@ -598,7 +598,7 @@ ${navHtml}
             </div>
             <div>
               <div class="ptcol-svc-t">Contenu &amp; vidéo</div>
-              <div class="ptcol-svc-s">Studio interne, motion, YouTube</div>
+              <div class="ptcol-svc-s">Production vidéo, motion, YouTube</div>
             </div>
           </a>
         </div>
@@ -643,60 +643,60 @@ ${navHtml}
   </div>
 </section>
 
-<!-- INCLUS PARTOUT -->
+<!-- POINTS CADRÉS DANS CHAQUE DEVIS -->
 <section class="included">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Inclus dans tous les forfaits</div>
-        <h2>Tout ça, dans le prix.<br><span class="grad-accent">Sans option cachée.</span></h2>
+        <div class="eyebrow">— Lisible avant de signer</div>
+        <h2>Chaque poste est cadré.<br><span class="grad-accent">Aucune inclusion implicite.</span></h2>
       </div>
       <div class="right">
-        Les agences classiques facturent en option ce qui devrait être la base.
-        Chez nous, c'est inclus systématiquement et écrit noir sur blanc dans le devis.
+        Le devis distingue ce qui est livré, ce qui reste en option et ce qui sera payé directement à un tiers.
+        Vous pouvez ainsi comparer les offres sur un périmètre réellement équivalent.
       </div>
     </div>
 
     <div class="incl-grid">
       <div class="incl reveal">
         <div class="incl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
-        <h4>Code 100 % à vous</h4>
-        <p>Repo Git chez vous dès J+1. Aucun lock-in, aucune royalty, jamais.</p>
+        <h4>Livrables et droits explicites</h4>
+        <p>Les livrables spécifiques sont transférés après paiement complet selon les CGV. Dépôt, accès, composants préexistants et licences tierces sont inventoriés.</p>
       </div>
       <div class="incl reveal reveal-d-1">
         <div class="incl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3z"/></svg></div>
-        <h4>Hébergement FR</h4>
-        <p>Scaleway Paris ou OVH Roubaix, inclus 6 à 12 mois selon forfait.</p>
+        <h4>Hébergement</h4>
+        <p>Fournisseur, région, titulaire du compte, coût et durée éventuellement incluse sont précisés.</p>
       </div>
       <div class="incl reveal reveal-d-2">
         <div class="incl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h4>Garantie 30 jours</h4>
-        <p>Tout bug critique post-livraison est corrigé gratuitement, sans débat.</p>
+        <h4>Recette et garantie au devis</h4>
+        <p>Période de correction, sévérités couvertes, exclusions et délais cibles sont fixés avant engagement.</p>
       </div>
       <div class="incl reveal reveal-d-3">
         <div class="incl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
         <h4>Formation des équipes</h4>
-        <p>Vos équipes savent utiliser le produit avant la mise en production.</p>
+        <p>Publics, supports, sessions et critères d'autonomie sont définis lorsque la formation est nécessaire.</p>
       </div>
       <div class="incl reveal">
         <div class="incl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
-        <h4>Documentation à jour</h4>
-        <p>Specs, architecture, runbook ops, README. Auto-générés &amp; versionnés.</p>
+        <h4>Documentation</h4>
+        <p>Spécifications, architecture, README et éventuel runbook sont listés comme de vrais livrables.</p>
       </div>
       <div class="incl reveal reveal-d-1">
         <div class="incl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <h4>Délai contractuel</h4>
-        <p>Date de livraison fixée et contractualisée. Clause de pénalité de retard.</p>
+        <h4>Délai et dépendances</h4>
+        <p>Jalons, validations attendues, causes de report et conséquences éventuelles sont écrits avant le démarrage.</p>
       </div>
       <div class="incl reveal reveal-d-2">
         <div class="incl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h4>RGPD &amp; sécurité</h4>
-        <p>Conformité dès la conception. Chiffrement at-rest, in-transit, audit logs.</p>
+        <p>Les mesures techniques et documents attendus sont adaptés aux données et au rôle de chaque partie.</p>
       </div>
       <div class="incl reveal reveal-d-3">
         <div class="incl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
-        <h4>Sauvegardes automatiques</h4>
-        <p>Toutes les 15 minutes, retention 30 jours, restauration testée chaque semaine.</p>
+        <h4>Sauvegarde et reprise</h4>
+        <p>Fréquence, rétention, responsabilité, RPO/RTO cibles et tests de restauration sont dimensionnés.</p>
       </div>
     </div>
   </div>
@@ -712,8 +712,7 @@ ${navHtml}
       </div>
       <div class="right">
         <a href="/services/maintenance-evolution" style="color:var(--accent-ink);text-decoration:underline">Hébergement, monitoring, sauvegardes, bug fixes, petites évolutions</a>.
-        <b>Trois niveaux</b>, sans engagement de durée. Vous arrêtez quand vous voulez,
-        avec préavis d'un mois.
+        <b>Trois niveaux indicatifs</b>. La durée, le préavis et les modalités de sortie figurent dans le contrat.
       </div>
     </div>
 
@@ -728,11 +727,11 @@ ${navHtml}
         </div>
         <div class="care-hr"></div>
         <ul class="care-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement Scaleway Paris</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Sauvegardes auto 15 min</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement retenu au devis</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Sauvegardes selon criticité</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Mises à jour sécurité</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Support email · 48h ouvrées</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>2 h de petites évos / mois</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Canal et délai cible précisés</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Capacité d'évolution au devis</li>
         </ul>
         <div class="care-cta"><a href="#contact" class="btn btn-ghost">Activer Care</a></div>
       </div>
@@ -749,11 +748,11 @@ ${navHtml}
         <div class="care-hr"></div>
         <ul class="care-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout Care, plus :</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Monitoring 24/7 + alerting</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA 99,5 % (downtime &lt; 3h45/mois)</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Support Slack · 4h ouvrées</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>8 h évos / mois (cumulables)</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Audit perf trimestriel</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Surveillance et alertes dimensionnées</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Objectif de disponibilité au contrat</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Canal et délai cible de support</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Capacité mensuelle définie</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Cadence de revue convenue</li>
         </ul>
         <div class="care-cta"><a href="#contact" class="btn btn-accent">Activer Care+</a></div>
       </div>
@@ -769,19 +768,19 @@ ${navHtml}
         <div class="care-hr"></div>
         <ul class="care-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tout Care+, plus :</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Astreinte 24/7 (1 h MTTR)</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA 99,9 % avec pénalités</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>20 h évos / mois</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>DRP testé 2× / an</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Comité produit mensuel</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Astreinte et horaires en option</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA et conséquences contractuelles sur mesure</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Capacité d'évolution adaptée</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Plan de reprise et tests cadrés</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Rythme de pilotage défini</li>
         </ul>
         <div class="care-cta"><a href="#contact" class="btn btn-ghost">Parler au gérant</a></div>
       </div>
     </div>
 
     <p class="care-note reveal">
-      Pas d'engagement de durée, préavis d'un mois.
-      <b>Coût d'hébergement réel facturé sans marge</b> au-delà des seuils inclus (40–200 €/mois selon trafic).
+      Durée, préavis, capacité et coûts tiers sont détaillés avant signature.
+      <b>Le devis indique qui paie chaque fournisseur</b> et si une marge ou des frais de gestion s'appliquent.
     </p>
   </div>
 </section>
@@ -791,12 +790,12 @@ ${navHtml}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— On se compare au marché</div>
-        <h2>Pourquoi nos prix<br>tiennent la route ?</h2>
+        <div class="eyebrow">— Comparer sans se tromper</div>
+        <h2>La même grille<br>pour chaque devis.</h2>
       </div>
       <div class="right">
-        On a sondé une cinquantaine d'agences et freelances francophones sur les <b>mêmes briefs</b> que les nôtres.
-        Voici ce qu'on a trouvé.
+        Il n'existe pas ici d'étude représentative des agences et freelances. Cette grille indique
+        <b>les points à demander à chaque candidat</b> et les engagements que notre propre devis doit expliciter.
       </div>
     </div>
 
@@ -804,64 +803,64 @@ ${navHtml}
       <div class="vsm-head">
         <div class="vsm-cell">CRITÈRE</div>
         <div class="vsm-cell vsm-cell-us">Hagnéré Code</div>
-        <div class="vsm-cell">Agence classique</div>
-        <div class="vsm-cell">Freelance</div>
+        <div class="vsm-cell">Agence candidate</div>
+        <div class="vsm-cell">Freelance candidat</div>
       </div>
 
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">Modèle de facturation</div>
         <div class="vsm-cell vsm-cell-us"><b>Forfait fixe</b><span>Total signé, pas de surprise</span></div>
-        <div class="vsm-cell"><span class="x">TJM + régie</span><span>Dérive de 30 à 80 %</span></div>
-        <div class="vsm-cell"><span class="x">TJM</span><span>Aucune garantie de fin</span></div>
+        <div class="vsm-cell"><span>Forfait ou régie</span><span>Demander total, hypothèses et avenants</span></div>
+        <div class="vsm-cell"><span>Forfait ou TJM</span><span>Demander plafond et critères de fin</span></div>
       </div>
 
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">MVP SaaS B2B (10 écrans)</div>
         <div class="vsm-cell vsm-cell-us"><b>30–60 k€</b><span>5–6 sem., devis ferme</span></div>
-        <div class="vsm-cell"><span>80–150 k€</span><span>3–6 mois, sous-traitance</span></div>
-        <div class="vsm-cell"><span>25–80 k€</span><span>Délai imprévisible</span></div>
+        <div class="vsm-cell"><span>À comparer</span><span>Périmètre, équipe et délai écrits</span></div>
+        <div class="vsm-cell"><span>À comparer</span><span>Disponibilité et relais documentés</span></div>
       </div>
 
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">Site vitrine 10 pages</div>
         <div class="vsm-cell vsm-cell-us"><b>8–15 k€</b><span>2–4 sem., LCP &lt; 1,5 s</span></div>
-        <div class="vsm-cell"><span>15–35 k€</span><span>Template WordPress</span></div>
-        <div class="vsm-cell"><span>4–10 k€</span><span>Qualité variable</span></div>
+        <div class="vsm-cell"><span>À comparer</span><span>Design, CMS, contenu et mesure inclus ?</span></div>
+        <div class="vsm-cell"><span>À comparer</span><span>Mêmes livrables et mêmes conditions ?</span></div>
       </div>
 
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">Discovery / cadrage</div>
         <div class="vsm-cell vsm-cell-us"><b>1 500 €</b><span>Déduit à 100 % phase 2</span></div>
-        <div class="vsm-cell"><span class="x">Gratuit (= argument commercial)</span><span>Pour vendre, pas cadrer</span></div>
-        <div class="vsm-cell"><span>500–2 000 €</span><span>Selon le freelance</span></div>
+        <div class="vsm-cell"><span>Gratuit ou payant</span><span>Vérifier les livrables réutilisables</span></div>
+        <div class="vsm-cell"><span>Gratuit ou payant</span><span>Vérifier les livrables réutilisables</span></div>
       </div>
 
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">Propriété du code</div>
-        <div class="vsm-cell vsm-cell-us"><b>Vous, dès J+1</b><span>Repo Git chez vous</span></div>
-        <div class="vsm-cell"><span class="x">À la livraison</span><span>Parfois royalties</span></div>
+        <div class="vsm-cell vsm-cell-us"><b>Écrit au devis</b><span>Cession, dépôt, accès et exclusions</span></div>
+        <div class="vsm-cell"><span>Variable</span><span>Lire cession, licences et accès</span></div>
         <div class="vsm-cell"><span>Variable</span><span>Lire le contrat</span></div>
       </div>
 
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">Garantie après livraison</div>
-        <div class="vsm-cell vsm-cell-us"><b>30 jours</b><span>Bug critique = corrigé gratuit</span></div>
-        <div class="vsm-cell"><span>10 j max</span><span>Souvent contesté</span></div>
-        <div class="vsm-cell"><span class="x">Aucune</span><span>Ou en option payante</span></div>
+        <div class="vsm-cell vsm-cell-us"><b>Écrite au devis</b><span>Recette, durée, sévérités et exclusions</span></div>
+        <div class="vsm-cell"><span>À vérifier</span><span>Durée et définition d'un bug</span></div>
+        <div class="vsm-cell"><span>À vérifier</span><span>Disponibilité après livraison</span></div>
       </div>
 
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">Maintenance mensuelle</div>
         <div class="vsm-cell vsm-cell-us"><b>Sur devis</b><span>3 niveaux Care</span></div>
-        <div class="vsm-cell"><span>800 € à 5 000 €</span><span>Souvent obligatoire</span></div>
-        <div class="vsm-cell"><span class="x">À la demande</span><span>Délais aléatoires</span></div>
+        <div class="vsm-cell"><span>À comparer</span><span>Capacité, SLA, outils et préavis</span></div>
+        <div class="vsm-cell"><span>À comparer</span><span>Capacité, relais et préavis</span></div>
       </div>
 
       <div class="vsm-row vsm-verdict">
         <div class="vsm-cell vsm-cell-label">Verdict</div>
-        <div class="vsm-cell vsm-cell-us"><b>Prix moyen, garanties premium</b></div>
-        <div class="vsm-cell">Cher, sans contre-partie</div>
-        <div class="vsm-cell">Pas cher, mais risqué</div>
+        <div class="vsm-cell vsm-cell-us"><b>À juger sur le devis signé</b></div>
+        <div class="vsm-cell">À juger sur le même périmètre</div>
+        <div class="vsm-cell">À juger sur le même périmètre</div>
       </div>
     </div>
 
@@ -870,8 +869,8 @@ ${navHtml}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
       </div>
       <span>
-        Comparatif fondé sur 47 devis publics ou anonymisés (juin 2025 à mars 2026), pour des projets équivalents.
-        Sources disponibles sur demande, on n'a rien à cacher.
+        Grille de lecture éditoriale, pas étude de marché. Pour comparer utilement, imposez à tous les candidats
+        les mêmes livrables, hypothèses, coûts tiers, droits, délais et conditions de maintenance.
       </span>
     </div>
   </div>
@@ -917,7 +916,7 @@ ${navHtml}
         </div>
         <h4>Low-code (Bubble, Webflow logic)</h4>
         <p>Bien pour prototyper, piège technique au-delà de 10 utilisateurs payants. On préfère un code Next.js/TypeScript propre et durable.</p>
-        <div class="ref-because">→ partenaires Bubble certifiés disponibles sur demande.</div>
+        <div class="ref-because">→ comparez avec un spécialiste low-code dont les références et certifications sont vérifiables.</div>
       </div>
 
       <div class="ref-card reveal reveal-d-3">
@@ -1046,10 +1045,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Le périmètre est <b>figé au cadrage</b> et signé. Si vous voulez ajouter des choses en cours de route,
-            on chiffre l'ajout en <b>avenant clair</b> (toujours forfait fixe). Vous décidez si ça vaut le coup ou pas.
-            On n'a jamais facturé de dépassement caché — toutes les évolutions sont chiffrées
-            et acceptées avant de commencer.
+            Le périmètre est <b>cadré puis signé</b>. Une demande supplémentaire est expliquée et chiffrée
+            avant réalisation dans un avenant ou un nouveau lot. Vous décidez si elle vaut le coût&nbsp;:
+            aucun dépassement ne peut être ajouté unilatéralement.
           </div>
         </div>
 
@@ -1059,10 +1057,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Oui, à 100 %.</b> Si vous lancez la phase 2 avec nous (sous 90 jours), les 1 500 € sont
-            <b>retirés du devis final</b>. Si vous ne partez pas avec nous, vous gardez le prototype Figma
-            et les specs — utilisables par n'importe quelle autre équipe. C'est un format peu engageant
-            qui sert à <b>valider qu'on est la bonne agence</b> pour vous, et inversement.
+            La déduction, son délai et les droits de réutilisation sont indiqués dans l'offre de Discovery signée.
+            Le format public courant prévoit une déduction lorsque la phase 2 est lancée avec nous, mais seul le devis
+            nominatif fixe les conditions et les livrables que vous pourrez remettre à une autre équipe.
           </div>
         </div>
 
@@ -1073,9 +1070,9 @@ ${navHtml}
           </div>
           <div class="faq-a">
             Parce que tant qu'on n'a pas fait le Discovery, le périmètre n'est pas figé.
-            Les fourchettes affichées ici sont le <b>résultat statistique de nos 23 derniers projets</b>
-            par catégorie. À l'issue du Discovery Sprint, vous recevez un <b>devis ferme à un prix unique</b>,
-            pas une fourchette — et c'est ce prix-là qui est contractuel.
+            Les fourchettes affichées sont des <b>ordres de grandeur éditoriaux</b>, pas une statistique
+            issue de 23 missions externes. Après cadrage, vous recevez un devis nominatif&nbsp;: seul son
+            périmètre et son prix engagent les parties.
           </div>
         </div>
 
@@ -1085,10 +1082,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>30 % à la signature, 30 % à mi-parcours, 40 % à la livraison.</b> Pour les projets &gt; 50 k€,
-            on peut découper en jalons mensuels avec acceptation de livrable à chaque étape.
-            Paiement par <b>virement</b>, factures conformes Pennylane, TVA française récupérable.
-            On accepte aussi les BPI / aides régionales — on vous aide à monter le dossier.
+            L'acompte, les jalons, le solde et le délai de paiement sont précisés dans le devis ou le contrat.
+            Le paiement s'effectue par les moyens indiqués sur la facture. Si un financement ou une aide impose
+            un calendrier particulier, sa compatibilité est vérifiée avant signature.
           </div>
         </div>
 
@@ -1098,23 +1094,20 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>L'hébergement est inclus 6 à 12 mois</b> selon le forfait, puis facturé
-            <b>à coût réel sans marge</b> au-delà (40 à 200 €/mois selon le trafic).
-            Les outils tiers (Stripe, Loops, OpenAI, Claude, Twilio…) sont sur <b>vos comptes à vous</b>,
-            vous les payez directement à l'éditeur. On ne fait jamais de revente avec marge — c'est un piège.
+            Le devis distingue l'hébergement et chaque outil tiers&nbsp;: titulaire du compte, région,
+            durée éventuellement incluse, prix et mode de facturation. Aucun coût tiers n'est réputé compris
+            s'il n'est pas listé, et toute marge ou frais de gestion doit être visible avant signature.
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-q">
-            La garantie 30 jours, ça veut dire quoi exactement ?
+            Comment est cadrée la période de correction ?
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>30 jours après la mise en production</b>, on corrige <b>gratuitement tout bug critique</b>
-            (bloquant, sécurité, perte de data). Au-delà, c'est facturé en TJM ou couvert par un forfait
-            <b>Care mensuel</b>. Les évolutions fonctionnelles (« on aimerait ajouter telle feature »)
-            sont hors garantie dans tous les cas — c'est un nouveau périmètre, donc un nouveau devis.
+            Le devis précise la durée, les niveaux de sévérité, les anomalies couvertes, la procédure de signalement
+            et les délais cibles. Une évolution fonctionnelle reste un nouveau périmètre et fait l'objet d'un chiffrage séparé.
           </div>
         </div>
 
@@ -1124,10 +1117,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Uniquement en mode Partenariat long terme</b> avec un projet à fort potentiel — et <b>toujours en complément
-            d'un cash floor</b> couvrant nos coûts directs. On ne fait pas de « 100 % equity ».
-            Ce serait malhonnête vis-à-vis de nos équipes salariées, et ça ne sert pas votre projet
-            non plus (le besoin de cash réel est rarement compatible avec un BFR à zéro).
+            Une composante en capital peut être étudiée au cas par cas, uniquement en complément
+            d'une rémunération en numéraire couvrant le travail prévu. Elle n'est jamais présumée
+            ni présentée comme un moyen de financer intégralement le projet.
           </div>
         </div>
 
@@ -1139,8 +1131,7 @@ ${navHtml}
           <div class="faq-a">
             <b>Le périmètre est négociable, le prix non.</b> On peut sortir des features pour baisser le total,
             étaler le paiement, démarrer plus tard, mais on ne fait pas de remise sur la même prestation.
-            C'est une question de respect — vis-à-vis du client précédent qui a payé plein pot, et vis-à-vis
-            de notre équipe qu'on doit payer correctement.
+            L'objectif est de garder un lien explicite entre le périmètre, la charge, le risque et le prix.
           </div>
         </div>
 

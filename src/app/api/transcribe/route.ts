@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getClientIp } from "@/lib/rate-limit";
-import { checkServiceRateLimit, logAiCall } from "@/lib/ai-rate-limit";
+import {
+  checkServiceRateLimit,
+  logAiCall,
+  reserveServiceCost,
+} from "@/lib/ai-rate-limit";
 import { log } from "@/lib/logger";
 import {
   PayloadTooLargeError,
@@ -75,7 +79,7 @@ export async function POST(request: NextRequest) {
   // les paliers IP + le plafond de bytes/jour (coût Groq borné).
   let rateCheck;
   try {
-    rateCheck = await checkServiceRateLimit(ip, null, "transcribe");
+    rateCheck = await checkServiceRateLimit(ip, null, "transcribe", userAgent);
   } catch (err) {
     // La dictée déclenche un appel externe facturé. Si la protection
     // persistante est indisponible, on refuse temporairement l'appel au lieu
@@ -192,6 +196,56 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  if (!rateCheck.reservationId) {
+    log.error("transcribe_rate_limit_reservation_missing", { ip });
+    return NextResponse.json(
+      {
+        error:
+          "La dictée est temporairement indisponible. Vous pouvez continuer en saisissant votre texte.",
+      },
+      { status: 503, headers: { "Retry-After": "60" } },
+    );
+  }
+
+  let costReservation;
+  try {
+    costReservation = await reserveServiceCost(
+      rateCheck.reservationId,
+      "transcribe",
+      audioFile.size,
+    );
+  } catch (err) {
+    log.error("transcribe_cost_reservation_unavailable", {
+      err: err as Error,
+      ip,
+    });
+    return NextResponse.json(
+      {
+        error:
+          "La dictée est temporairement indisponible. Vous pouvez continuer en saisissant votre texte.",
+      },
+      { status: 503, headers: { "Retry-After": "60" } },
+    );
+  }
+  if (!costReservation.allowed) {
+    await logAiCall({
+      service: "transcribe",
+      ip,
+      userAgent,
+      status: "blocked",
+      blockReason: costReservation.reason,
+    });
+    return NextResponse.json(
+      { error: costReservation.message },
+      {
+        status: 429,
+        headers: {
+          "Retry-After": String(costReservation.retryAfterSec || 3600),
+        },
+      },
+    );
+  }
+
   const startedAt = Date.now();
   try {
     // Create form data for Groq API
@@ -234,14 +288,14 @@ export async function POST(request: NextRequest) {
 
     const data = await response.json();
 
-    // Log success — tokensUsed = bytes audio uploadés (proxy de durée audio
-    // pour le cost breaker).
+    // Le coût a déjà été réservé atomiquement avant l'appel. Cette ligne
+    // enregistre uniquement l'issue et la latence afin de ne pas le doubler.
     await logAiCall({
       service: "transcribe",
       ip,
       userAgent,
       status: "ok",
-      tokensUsed: audioFile.size,
+      tokensUsed: 0,
       durationMs: Date.now() - startedAt,
     });
 

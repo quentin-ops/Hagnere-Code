@@ -115,7 +115,7 @@ const services: Service[] = [
     eyebrow: "Mobile",
     title: "Une vraie app iOS + Android, publiée sous vos comptes stores.",
     description:
-      "App native React Native + Expo, paiement Apple Pay/Google Pay, push, mode hors-ligne, soumission App Store + Google Play. Comptes stores et code 100 % à vous.",
+      "App React Native + Expo, paiement, push, mode hors-ligne et soumission aux stores selon le périmètre. Comptes, accès, livrables et droits sont écrits au devis.",
     proof: "MVP cadré et chiffré au devis",
     idealFor: "Fidélité, RDV, e-com, terrain B2B",
     duration: "Sur devis",

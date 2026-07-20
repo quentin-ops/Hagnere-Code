@@ -18,11 +18,11 @@ export const deriskHtml = `
         <div class="sv-derisk-fear">
           « Et si je me retrouve <b>prisonnier</b> de vous comme avec l'ancien presta ? »
         </div>
-        <h4>Réversibilité contractuelle, code chez vous dès J1</h4>
-        <p>Repo Git sur votre organisation GitHub, hébergement Vercel ou OVH <b>sur votre compte</b> (pas le nôtre), nom de domaine à votre nom, doc de handover fournie. Vous pouvez partir demain avec tout.</p>
+        <h4>Réversibilité, accès et droits contractualisés</h4>
+        <p>Le devis inventorie le dépôt Git, l'hébergement, le domaine, la documentation et les éléments de passation. Les livrables spécifiques sont transférés après paiement complet selon les CGV.</p>
         <div class="sv-derisk-proof">
           <span>✓ Clause dans le devis</span>
-          <span>✓ Accès GitHub dès J+1</span>
+          <span>✓ Accès GitHub au devis</span>
           <span>✓ Doc de handover livrée</span>
         </div>
       </div>
@@ -36,7 +36,7 @@ export const deriskHtml = `
         <div class="sv-derisk-proof">
           <span>✓ Audit SEO initial</span>
           <span>✓ Redirections 301</span>
-          <span>✓ Monitoring 3 mois inclus</span>
+          <span>✓ Durée de suivi au devis</span>
         </div>
       </div>
 
@@ -62,7 +62,7 @@ export const deriskHtml = `
         <div class="sv-derisk-proof">
           <span>✓ Forfait contractuel</span>
           <span>✓ Règles de retard écrites</span>
-          <span>✓ 2 révisions cadrées</span>
+          <span>✓ Révisions cadrées</span>
         </div>
       </div>
     </div>

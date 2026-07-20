@@ -40,7 +40,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Premiers insights transmis à J+5</b> par note de synthèse 3-4 pages (format Standard). <b>Rapport complet livré à J+10</b> (Standard), J+5 (Express), J+20 (Deep), J+30 (Tech DD M&amp;A). Vous pouvez arrêter l'audit à tout moment si le scope doit pivoter — vous payez <b>au prorata des jours consommés</b>.
+            Le devis fixe les jalons, les restitutions intermédiaires, le rapport final et la procédure à suivre si le périmètre évolue. Aucun paiement au prorata ni droit d'arrêt particulier n'est présumé s'il n'est pas écrit au contrat.
           </div>
         </div>
 
@@ -85,7 +85,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Démarrage sous 5 j ouvrés</b> après signature (3 j pour une urgence justifiée). J-5 à J0&nbsp;: brief technique 90 min, NDA signé, accès read-only configurés (GitHub, cloud, Sentry, Linear, Notion). J+1&nbsp;: snapshot du code + branchement SonarQube + Semgrep + Snyk. Tout est automatisé côté notre infra — votre équipe a <b>2 h de travail total</b> pour la partie setup.
+            La date de démarrage dépend des disponibilités, de la confidentialité, des accès en lecture seule et des personnes à interviewer. Le devis précise les outils autorisés, le plan de mobilisation et la charge attendue côté client.
           </div>
         </div>
 
@@ -94,7 +94,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Ces outils <b>trouvent des bugs, pas des problèmes de business</b>. Aucun SaaS ne chiffre votre dette tech en €, ne priorise par impact board, ne vous dit quoi dire à votre CA. Un audit, ce n'est pas un scan, c'est une <b>traduction technique → business</b>. On agrège vos outils + les nôtres + entretiens équipe pour produire un verdict défendable en board / VC / M&amp;A.
+            Les scanners apportent des signaux utiles mais ne remplacent pas l'examen du contexte, de l'architecture, de l'exploitation et de la décision à sécuriser. Le devis précise quelles preuves automatiques et humaines seront utilisées ainsi que les limites de l'analyse.
           </div>
         </div>
 
@@ -103,7 +103,9 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>2 seniors + le lead nommés dans le devis</b> (photo, prénom, LinkedIn — <a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir la section Équipe</a>). Pas de stagiaire, pas de junior, pas de sous-traitance offshore. <b>Chaque dimension a un owner dédié</b> qui la signe. Zéro rotation en cours d'audit. <b>${TEAM_PUBLIC_COMPOSITION}</b>. Toute l'équipe partage les mêmes rituels.
+            Le devis nomme les personnes réellement mobilisées, leur statut, leurs dimensions de revue et le responsable de synthèse
+            (<a href="#equipe" style="color:var(--accent-ink);text-decoration:underline">voir les profils mobilisables</a>).
+            Il précise aussi les modalités de remplacement et de validation. <b>${TEAM_PUBLIC_COMPOSITION}</b>.
           </div>
         </div>
 

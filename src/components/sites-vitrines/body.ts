@@ -440,9 +440,9 @@ ${navHtml}
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
-        <h4>Mise en ligne + suivi 30 j</h4>
-        <p>Déploiement, redirections SEO, monitoring. Formation 2 h (visio + PDF). Support 30 j inclus&nbsp;: hotfix, ajustements, questions. On reste joignable.</p>
-        <div class="proc-dur">J+30</div>
+        <h4>Mise en ligne + suivi</h4>
+        <p>Déploiement, redirections, monitoring, formation et période de correction selon le périmètre et les délais inscrits au devis.</p>
+        <div class="proc-dur">AU DEVIS</div>
       </div>
     </div>
   </div>
@@ -456,7 +456,7 @@ ${navHtml}
         <div class="eyebrow">— Notre stack</div>
         <h2 style="margin-top:14px">Une stack pensée<br>pour la vitesse.</h2>
         <p style="color:var(--mute);font-size:16px;margin-top:20px;max-width:480px">
-          Pour les sites vitrines et landing pages, on choisit <b>Next.js en pré-rendu statique (SSG)</b> : HTML livré en une requête, LCP sous 1 s, sécurité native, coût d'hébergement proche de zéro. La même stack monte en gamme si vous avez besoin d'un back-office, d'un espace client ou d'intégrations métier lourdes.
+          Pour un site vitrine ou une landing page, <b>Next.js en pré-rendu statique</b> peut limiter le travail serveur. La performance, la sécurité et le coût dépendent toutefois du contenu, des scripts tiers, de l'hébergement et de l'exploitation&nbsp;: ils sont mesurés et chiffrés, jamais présumés.
         </p>
 
         <div class="stack-list">
@@ -483,7 +483,7 @@ ${navHtml}
           <div class="sl-row">
             <div class="sl-cat">DATABASE</div>
             <div class="sl-val">PostgreSQL · MySQL · Redis</div>
-            <div class="sl-note">SAUVEGARDES 15&nbsp;MIN</div>
+            <div class="sl-note">POLITIQUE AU DEVIS</div>
           </div>
           <div class="sl-row">
             <div class="sl-cat">IA / LLM</div>
@@ -493,12 +493,12 @@ ${navHtml}
           <div class="sl-row">
             <div class="sl-cat">INFRA</div>
             <div class="sl-val">Vercel · Cloudflare · Scaleway · AWS</div>
-            <div class="sl-note">DONNÉES EN FRANCE</div>
+            <div class="sl-note">RÉGION AU DEVIS</div>
           </div>
           <div class="sl-row">
             <div class="sl-cat">OBSERVABILITÉ</div>
             <div class="sl-val">Sentry · Monitoring applicatif · Files Redis</div>
-            <div class="sl-note">ALERTES 24/7</div>
+            <div class="sl-note">COUVERTURE AU DEVIS</div>
           </div>
         </div>
       </div>
@@ -545,8 +545,8 @@ ${navHtml}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Ils ont choisi ce service</div>
-        <h2>Des sites en production,<br>mesurables, rentables.</h2>
+        <div class="eyebrow">— Produits internes</div>
+        <h2>Des produits en production,<br>présentés sans faux client.</h2>
       </div>
       <div class="right">
         <a href="/realisations" class="btn btn-ghost">Toutes les réalisations →</a>
@@ -580,8 +580,8 @@ ${navHtml}
           <h3>LMNP.AI</h3>
           <p>Comptabilité fiscale automatisée pour loueurs meublés. Extraction de factures et génération de liasse 2031 par IA.</p>
           <div class="scase-metric">
-            <div class="scm"><div class="n">6 000<span class="s">+</span></div><div class="l">Clients payants</div></div>
-            <div class="scm"><div class="n">100<span class="s">%</span></div><div class="l">Growth organique</div></div>
+            <div class="scm"><div class="n">INTERNE</div><div class="l">Produit du groupe</div></div>
+            <div class="scm"><div class="n">PUBLIC</div><div class="l">Étude de cas consultable</div></div>
           </div>
         </div>
       </a>
@@ -618,8 +618,8 @@ ${navHtml}
           <h3>Comptabilité AI</h3>
           <p>Comptabilité en partie double pour PME avec bilan automatisé par IA. Positionnement Blue Ocean.</p>
           <div class="scase-metric">
-            <div class="scm"><div class="n">0<span class="s">→1</span></div><div class="l">Du MVP à la levée en 5 mois</div></div>
-            <div class="scm"><div class="n">4</div><div class="l">Investisseurs confirmés</div></div>
+            <div class="scm"><div class="n">INTERNE</div><div class="l">Produit du groupe</div></div>
+            <div class="scm"><div class="n">PUBLIC</div><div class="l">Étude de cas consultable</div></div>
           </div>
         </div>
       </a>
@@ -653,7 +653,7 @@ ${navHtml}
         <div class="plan-hr"></div>
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design sur mesure + 2 révisions</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Next.js statique, Lighthouse 95+</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Budget de performance défini au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>CMS Sanity ou Strapi inclus</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO technique, tracking GA4 &amp; Meta</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 1 an + formation 2 h</li>
@@ -663,7 +663,7 @@ ${navHtml}
       </div>
 
       <div class="plan featured reveal reveal-d-1">
-        <div class="plan-badge">LE PLUS CHOISI</div>
+        <div class="plan-badge">FORMULE INTERMÉDIAIRE</div>
         <div class="plan-tag">SITE COMPLET</div>
         <h4>Performance</h4>
         <div class="plan-sub">Le site vitrine corporate qui convertit sur la durée&nbsp;: 10–20 pages, blog éditorial, SEO technique et stratégique, intégration CRM complète.</div>
@@ -705,7 +705,7 @@ ${navHtml}
     </div>
 
     <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
-      <b style="color:var(--ink)">Tous les forfaits incluent</b> : propriété complète du code · repo Git sur votre compte · hébergement 12 mois inclus · formation · 30 jours de garantie post-livraison · <b style="color:var(--ink)">paiement 30 / 30 / 40</b>.
+      <b style="color:var(--ink)">Chaque devis précise</b> : livrables et droits · dépôt et accès · hébergement et coûts tiers · formation · recette et garantie éventuelle · échéancier de paiement.
     </p>
   </div>
 </section>

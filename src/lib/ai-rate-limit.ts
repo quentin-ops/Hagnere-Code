@@ -87,6 +87,8 @@ export type BlockReason =
 
 export interface RateLimitDecision {
   allowed: boolean;
+  /** Ligne réservée atomiquement avant tout appel externe. */
+  reservationId?: number;
   reason?: BlockReason;
   /** Message FR retourné au client (ne révèle pas la raison exacte aux bots). */
   message?: string;
@@ -116,6 +118,7 @@ export async function checkServiceRateLimit(
   ip: string,
   email: string | undefined | null,
   service: ServiceId,
+  userAgent?: string | null,
 ): Promise<RateLimitDecision> {
   const limits = SERVICE_LIMITS[service];
   const emailHash = hashEmail(email);
@@ -123,52 +126,87 @@ export async function checkServiceRateLimit(
   const oneHourAgo = new Date(now.getTime() - HOUR_MS);
   const oneDayAgo = new Date(now.getTime() - DAY_MS);
 
-  // Une seule round-trip : on agrège les 5 compteurs en parallèle via
-  // FILTER (WHERE …) sur la même table, scopés par service.
+  // Une seule requête prend un verrou transactionnel par service, lit les
+  // compteurs puis insère la réservation. Deux appels concurrents ne peuvent
+  // plus tous observer le même compteur avant leur INSERT.
   const result = await getDb().execute(sql`
+    WITH rate_lock AS (
+      SELECT pg_advisory_xact_lock(hashtext(${"hagnere-code-rate:" + service})) AS locked
+    ),
+    counters AS (
+      SELECT
+        COUNT(*) FILTER (
+          WHERE service = ${service}
+            AND ip = ${ip}
+            AND created_at >= ${oneHourAgo}
+            AND status = 'reserved'
+        )::int AS ip_hour,
+        COUNT(*) FILTER (
+          WHERE service = ${service}
+            AND ip = ${ip}
+            AND created_at >= ${oneDayAgo}
+            AND status = 'reserved'
+        )::int AS ip_day,
+        COUNT(*) FILTER (
+          WHERE service = ${service}
+            AND email_hash = ${emailHash}
+            AND created_at >= ${oneDayAgo}
+            AND status = 'reserved'
+        )::int AS email_day,
+        COUNT(*) FILTER (
+          WHERE service = ${service}
+            AND created_at >= ${oneDayAgo}
+            AND status = 'reserved'
+        )::int AS global_day,
+        COALESCE(SUM(tokens_used) FILTER (
+          WHERE service = ${service}
+            AND created_at >= ${oneDayAgo}
+            AND status = 'reserved'
+        ), 0)::bigint AS cost_day
+      FROM ai_call_log, rate_lock
+    ),
+    reservation AS (
+      INSERT INTO ai_call_log (
+        service, ip, email_hash, status, block_reason, tokens_used,
+        duration_ms, brief_id, user_agent
+      )
+      SELECT
+        ${service}, ${ip}, ${emailHash}, 'reserved', NULL, 0,
+        NULL, NULL, ${userAgent?.slice(0, 500) || null}
+      FROM counters
+      WHERE ip_hour < ${limits.perIpHour}
+        AND ip_day < ${limits.perIpDay}
+        AND global_day < ${limits.globalDay}
+        AND (
+          ${limits.perEmailDay === null || !emailHash}
+          OR email_day < ${limits.perEmailDay ?? 0}
+        )
+        AND (
+          ${limits.costBreaker === null}
+          OR cost_day < ${limits.costBreaker ?? 0}
+        )
+      RETURNING id
+    )
     SELECT
-      COUNT(*) FILTER (
-        WHERE service = ${service}
-          AND ip = ${ip}
-          AND created_at >= ${oneHourAgo}
-          AND status IN ('ok', 'ai_error')
-      )::int AS ip_hour,
-      COUNT(*) FILTER (
-        WHERE service = ${service}
-          AND ip = ${ip}
-          AND created_at >= ${oneDayAgo}
-          AND status IN ('ok', 'ai_error')
-      )::int AS ip_day,
-      COUNT(*) FILTER (
-        WHERE service = ${service}
-          AND email_hash = ${emailHash}
-          AND created_at >= ${oneDayAgo}
-          AND status IN ('ok', 'ai_error')
-      )::int AS email_day,
-      COUNT(*) FILTER (
-        WHERE service = ${service}
-          AND created_at >= ${oneDayAgo}
-          AND status IN ('ok', 'ai_error')
-      )::int AS global_day,
-      COALESCE(SUM(tokens_used) FILTER (
-        WHERE service = ${service}
-          AND created_at >= ${oneDayAgo}
-      ), 0)::bigint AS cost_day
-    FROM ai_call_log
+      counters.*,
+      reservation.id AS reservation_id
+    FROM counters
+    LEFT JOIN reservation ON TRUE
   `);
 
   const row = (result as unknown as { rows: Array<Record<string, number | string>> }).rows?.[0];
-  if (!row) {
-    // Cas impossible (la query renvoie toujours 1 row), mais fail-open
-    // pour ne pas bloquer un legit user si Postgres répond bizarrement.
-    return { allowed: true };
-  }
+  if (!row) throw new Error("Rate-limit reservation returned no row");
 
   const ipHour = Number(row.ip_hour) || 0;
   const ipDay = Number(row.ip_day) || 0;
   const emailDay = Number(row.email_day) || 0;
   const globalDay = Number(row.global_day) || 0;
   const costDay = Number(row.cost_day) || 0;
+  const reservationId = Number(row.reservation_id) || 0;
+
+  if (reservationId > 0) {
+    return { allowed: true, reservationId };
+  }
 
   // Circuit breaker coût en premier — protection ultime
   if (limits.costBreaker !== null && costDay >= limits.costBreaker) {
@@ -225,7 +263,66 @@ export async function checkServiceRateLimit(
     };
   }
 
-  return { allowed: true };
+  throw new Error("Rate-limit reservation failed without a matching limit");
+}
+
+/**
+ * Réserve atomiquement le coût réel une fois le fichier validé, mais avant
+ * l'appel Groq. Les réservations concurrentes sont sérialisées par le même
+ * verrou que le compteur principal.
+ */
+export async function reserveServiceCost(
+  reservationId: number,
+  service: ServiceId,
+  tokensUsed: number,
+): Promise<RateLimitDecision> {
+  const limits = SERVICE_LIMITS[service];
+  if (limits.costBreaker === null) {
+    return { allowed: true, reservationId };
+  }
+
+  const oneDayAgo = new Date(Date.now() - DAY_MS);
+  const safeTokens = Math.max(0, Math.trunc(tokensUsed));
+  const result = await getDb().execute(sql`
+    WITH rate_lock AS (
+      SELECT pg_advisory_xact_lock(hashtext(${"hagnere-code-rate:" + service})) AS locked
+    ),
+    totals AS (
+      SELECT COALESCE(SUM(tokens_used), 0)::bigint AS cost_day
+      FROM ai_call_log, rate_lock
+      WHERE service = ${service}
+        AND status = 'reserved'
+        AND created_at >= ${oneDayAgo}
+        AND id <> ${reservationId}
+    ),
+    updated AS (
+      UPDATE ai_call_log
+      SET tokens_used = ${safeTokens}
+      FROM totals
+      WHERE ai_call_log.id = ${reservationId}
+        AND ai_call_log.service = ${service}
+        AND ai_call_log.status = 'reserved'
+        AND totals.cost_day + ${safeTokens} <= ${limits.costBreaker}
+      RETURNING ai_call_log.id
+    )
+    SELECT totals.cost_day, updated.id AS reservation_id
+    FROM totals
+    LEFT JOIN updated ON TRUE
+  `);
+  const row = (result as unknown as {
+    rows: Array<Record<string, number | string | null>>;
+  }).rows?.[0];
+  if (!row) throw new Error("Cost reservation returned no row");
+  const updatedId = Number(row.reservation_id) || 0;
+  if (updatedId > 0) return { allowed: true, reservationId: updatedId };
+
+  return {
+    allowed: false,
+    reason: "cost_breaker",
+    message:
+      "Service temporairement indisponible (volume exceptionnel). Réessaye demain ou saisis ton texte.",
+    retryAfterSec: 3600,
+  };
 }
 
 /**

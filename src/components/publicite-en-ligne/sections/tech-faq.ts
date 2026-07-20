@@ -8,8 +8,8 @@ export const techFaqHtml = `
         <h2>Les questions qu'un CTO<br>ou un DPO nous pose en call.</h2>
       </div>
       <div class="right">
-        Huit questions techniques qu'on entend systématiquement de la part des CTO, lead devs
-        ou DPO qui évaluent notre setup tracking. Réponses directes, sans jargon.
+        Huit points à trancher avec les profils techniques et juridiques avant d'implémenter
+        une mesure publicitaire. Les réponses finales dépendent de votre architecture et du devis.
       </div>
     </div>
 
@@ -20,10 +20,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Chez vous</b>, sur votre sous-domaine (ex. <code>metrics.votresite.com</code>), via
-          <b>Stape.io EU</b> (Frankfurt / Amsterdam). Alternative possible&nbsp;: self-hosté sur votre GCP
-          / AWS si vous avez déjà une équipe ops. Dans tous les cas,
-          <b>le conteneur est en propriété client</b>&nbsp;: vous gardez les clés, les workspaces, les versions.
+          Le devis précise le compte propriétaire, le sous-domaine, l'hébergeur, la région,
+          les accès et la réversibilité. Stape, GCP ou AWS ne sont que des options&nbsp;:
+          aucune architecture ni localisation n'est présumée avant le cadrage.
         </div>
       </div>
 
@@ -35,9 +34,8 @@ export const techFaqHtml = `
         <div class="faq-a">
           <b>event_id</b> unique généré côté serveur (UUID v4), propagé au pixel client
           ET à CAPI sur le même event. Meta dédupe sur event_name + event_id + event_time
-          dans une fenêtre de 48 h. On vise un <b>Event Match Quality ≥ 8</b> avec email / phone
-          / external_id hashés SHA-256. Tests de dedupe visibles dans
-          Events Manager → Overlap.
+          selon les règles de la plateforme. Les tests de déduplication et les diagnostics
+          sont consignés dans la recette&nbsp;; aucun score de correspondance n'est garanti.
         </div>
       </div>
 
@@ -47,11 +45,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          On paramètre <b>Consent Mode v2 "Advanced"</b>&nbsp;: si l'utilisateur refuse,
-          on envoie quand même des pings sans cookies (ad_storage=denied, analytics_storage=denied).
-          Google fait du modeling statistique pour estimer les conversions non-consentantes
-          (typiquement <b>15-25 % de conversions modélisées récupérées</b>). Conforme CNIL,
-          validé avec votre bandeau cookies (Didomi, Axeptio, OneTrust compatibles).
+          Le mode Basic ou Advanced est choisi avec le responsable de traitement et son conseil.
+          Un refus est respecté&nbsp;: aucun identifiant publicitaire n'est envoyé comme si le consentement
+          avait été donné. La modélisation éventuelle relève de Google et ne garantit aucun volume récupéré.
         </div>
       </div>
 
@@ -61,11 +57,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>PII hashées uniquement</b>&nbsp;: email SHA-256, phone SHA-256, external_id, event_id.
-          Jamais de PII en clair. <b>Rétention</b>&nbsp;: 30 jours sur Stape, puis purge automatique.
-          <b>Sous-traitants documentés</b>&nbsp;: Stape.io (EU), Google (via CAPI), Meta (via CAPI).
-          DPA fourni à la signature, registre RGPD mis à jour, base légale = intérêt légitime
-          + consentement pour les cookies.
+          Le plan de données inventorie chaque champ, finalité, destinataire, durée et mesure de sécurité.
+          Un hachage SHA-256 ne rend pas automatiquement une donnée anonyme. Le responsable de traitement
+          valide la base légale, le consentement, les sous-traitants, les transferts et la durée de conservation.
         </div>
       </div>
 
@@ -75,11 +69,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Webhook sortant</b> du CRM vers notre endpoint GTM Server. À chaque changement
-          de stage (MQL → SQL → won → lost), on reçoit un POST signé. On dédupe avec event_id
-          et on renvoie les signaux qualifiés vers Meta, Google, LinkedIn. <b>HubSpot, Salesforce,
-          Pipedrive, Zoho nativement</b>. Les CRM custom&nbsp;: REST API, Zapier, Make ou Workato
-          en secours. On n'a jamais eu de CRM qu'on n'a pas su brancher.
+          Nous vérifions d'abord les API, webhooks, identifiants de rapprochement, limites et droits disponibles.
+          HubSpot, Salesforce, Pipedrive, Zoho ou un CRM sur mesure peuvent nécessiter un connecteur,
+          du développement ou rester partiellement incompatibles&nbsp;: le diagnostic le dit avant le devis.
         </div>
       </div>
 
@@ -89,11 +81,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Healthchecks automatisés</b> toutes les heures sur chaque destination (Meta CAPI,
-          Google Enhanced, LinkedIn Conv API, webhook CRM). Si un signal chute &gt; 30 % vs moyenne 7 j,
-          <b>alerte Slack + email immédiate</b>. Logs conservés 30 jours pour root-cause analysis.
-          La fréquence des contrôles, le canal d'alerte, les responsabilités et le délai cible de correction
-          sont précisés dans le devis selon les destinations couvertes.
+          La fréquence des contrôles, les destinations, le seuil d'alerte, le canal, la conservation des logs,
+          les responsabilités et le délai cible de correction sont précisés dans le devis.
+          Sans cet engagement écrit, aucune surveillance continue ni intervention immédiate n'est promise.
         </div>
       </div>
 
@@ -103,11 +93,9 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          Meta croise les PII hashées reçues via CAPI avec son graphe d'utilisateurs pour
-          <b>ré-attribuer l'event à une personne</b>. Plus vous envoyez de paramètres (email,
-          phone, firstname, city, zip, external_id, IP, user-agent), plus le match est fort.
-          Score <b>8/10+</b> = excellent signal pour l'algo. Nos setups visent 8-9/10 de base,
-          avec webhook CRM ça monte souvent à 9,5/10.
+          Meta utilise les paramètres autorisés reçus via CAPI pour tenter de rapprocher un événement.
+          Nous minimisons les champs et n'envoyons que ceux validés dans le plan de données.
+          Le score dépend de la qualité des données, du consentement et de la plateforme&nbsp;: il n'est pas garanti.
         </div>
       </div>
 

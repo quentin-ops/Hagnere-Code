@@ -1,18 +1,18 @@
 import { TEAM_PUBLIC_COMPOSITION, TEAM_TOTAL_COUNT } from "@/lib/team";
 
 export const teamHtml = `
-<!-- TEAM · Votre équipe dédiée (proof-point "équipe nommée dans le contrat") -->
+<!-- TEAM · Profils mobilisables et équipe nommée dans le contrat -->
 <section class="me-team-dedi" id="equipe">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Votre équipe dédiée</div>
-        <h2>On promet "équipe nommée<br>dans le contrat". On la montre<br>avant la signature.</h2>
+        <div class="eyebrow">— Profils mobilisables</div>
+        <h2>Les personnes réellement<br>affectées sont nommées<br>avant la signature.</h2>
       </div>
       <div class="right">
-        Pas de pool tournant, pas de "vous verrez quand on signera". Voici l'équipe
-        qui suivra votre application — prénom, rôle, LinkedIn. <b>${TEAM_PUBLIC_COMPOSITION}</b>.
-        Votre binôme référent est nommé au <b>kickoff</b>, recouvrement de 2 semaines s'il doit changer.
+        Voici les profils publics susceptibles d'intervenir — prénom, rôle, statut et lien public lorsqu'il existe.
+        <b>${TEAM_PUBLIC_COMPOSITION}</b>. Le devis nomme les intervenants réellement mobilisés,
+        leurs responsabilités et les modalités de remplacement ou de recouvrement.
       </div>
     </div>
 

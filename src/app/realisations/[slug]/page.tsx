@@ -96,7 +96,7 @@ export default async function Page({
   const jsonLd = buildCaseJsonLd(c);
   return (
     <>
-      <script type="application/ld+json">{jsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd.replace(/</g, "\\u003c") }} />
       <CaseStudyPage caseStudy={c} />
     </>
   );

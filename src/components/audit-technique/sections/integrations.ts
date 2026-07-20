@@ -10,7 +10,7 @@ export const integrationsHtml = `
       <div class="right">
         Un audit n'est pas un jugement subjectif. C'est une <b>transformation documentée</b> de vos artefacts
         (code, infra, entretiens) en livrables board-ready (rapport, deck, Tech Debt P&amp;L) via <b>un toolkit d'analyse outillé</b>
-        conforme ISO 19011. Aucune étape cachée.
+        inspiré des principes utiles d'ISO 19011, sans constituer une certification. Les étapes et limites sont écrites au devis.
       </div>
     </div>
 
@@ -20,9 +20,9 @@ export const integrationsHtml = `
         <div class="at-eco-num">01</div>
         <div class="at-eco-head-text">
           <div class="at-eco-kind">INPUTS · CE QU'ON INGÈRE</div>
-          <h3>Ce qu'on vous demande<br>dès la signature du NDA.</h3>
-          <p>Read-only access sur 6 artefacts. <b>Aucune modification, aucun commit, aucun déploiement</b> de notre part pendant l'audit.
-             Les accès sont révoqués à J+11. Tout est journalisé.</p>
+          <h3>Ce qu'on vous demande<br>au cadrage, avant les accès.</h3>
+          <p>Les artefacts, niveaux d'accès, actions autorisées, journaux et date de révocation sont définis avant l'audit.
+             Un accès en lecture seule est privilégié et toute écriture éventuelle doit être expressément autorisée.</p>
         </div>
       </div>
 
@@ -48,7 +48,7 @@ export const integrationsHtml = `
             <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2L2 20h7l3-5 3 5h7L12 2z"/><circle cx="12" cy="15" r="1.5" fill="#362D59"/></svg>
           </div>
           <div class="at-eco-tile-name">Sentry / Datadog</div>
-          <div class="at-eco-tile-sub">Observability snapshot 30 j</div>
+          <div class="at-eco-tile-sub">Période disponible et autorisée au devis</div>
         </div>
 
         <div class="at-eco-tile" data-brand="#000000">
@@ -88,7 +88,7 @@ export const integrationsHtml = `
         <div class="at-eco-num">02</div>
         <div class="at-eco-head-text">
           <div class="at-eco-kind">TOOLKIT D'ANALYSE · <span>notre stack</span></div>
-          <h3>7 outils pro qu'on opère<br>pendant les 10 jours.</h3>
+          <h3>Exemples d'outils<br>à sélectionner au devis.</h3>
           <p>Les outils et licences réellement nécessaires sont <b>identifiés dans le devis</b>, avec leur coût éventuel et leur mode d'exécution.
              L'environnement utilisé, les transferts, la conservation et la suppression des données sont validés avant toute analyse.</p>
         </div>
@@ -164,7 +164,7 @@ export const integrationsHtml = `
         <div class="at-eco-num">03</div>
         <div class="at-eco-head-text">
           <div class="at-eco-kind">OUTPUTS · VOS LIVRABLES</div>
-          <h3>Ce qu'on vous remet<br>à J+10.</h3>
+          <h3>Exemples de livrables<br>à sélectionner au devis.</h3>
           <p>Les artefacts et formats réellement livrés sont listés au devis. Les droits d'utilisation et le transfert des livrables
              spécifiques suivent les CGV après paiement complet, sous réserve des éléments préexistants et licences tierces. Un NDA peut être signé avant les accès sensibles.</p>
         </div>
@@ -216,7 +216,7 @@ export const integrationsHtml = `
             <svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M10 8v8l6-4z"/></svg>
           </div>
           <div class="at-eco-tile-name">Loom restitution 20-30 min</div>
-          <div class="at-eco-tile-sub">Asynchrone · archive à vie</div>
+          <div class="at-eco-tile-sub">Asynchrone · conservation au devis</div>
         </div>
 
         <div class="at-eco-tile" data-brand="#10B981">

@@ -138,7 +138,7 @@ const faqItems = [
   {
     question: "Faut-il refaire son site ou simplement l'optimiser ?",
     answer:
-      "La règle simple : un symptôme isolé se corrige, trois symptômes combinés justifient une refonte. Un site lent mais bien construit s'optimise pour 1 000 à 3 000 € ; un référencement décevant se travaille sans tout casser. En revanche, un site non adapté au mobile, une technologie abandonnée ou une image dépassée ne se rattrapent pas par petites touches. Une agence spécialisée estime que 6 refontes commandées sur 10 auraient pu être évitées par une optimisation ciblée — chiffre maison invérifiable, mais l'ordre de grandeur correspond à ce que nous constatons en audit.",
+      "Un symptôme isolé peut souvent se corriger sans refonte. Lorsque plusieurs problèmes structurels se cumulent — mobile, technologie non maintenue, architecture ou contenu — comparez explicitement une correction ciblée et une reconstruction. La décision doit venir d'un audit du site, pas d'un pourcentage maison invérifiable.",
   },
   {
     question: "À quelle fréquence faut-il refaire son site internet ?",
@@ -190,9 +190,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -358,14 +358,9 @@ export default function Page() {
           est lent</Link> détaille les cinq signaux qui font basculer du
           réglage vers la refonte ; un référencement décevant se
           travaille sans rien casser ; une page de contact qui convertit
-          mal se reteste en quelques jours. Une agence française
-          spécialisée avance que <strong>6 refontes commandées sur 10
-          auraient pu être évitées</strong> par une optimisation — le
-          chiffre est maison et invérifiable, mais l&apos;ordre de
-          grandeur correspond à ce que nous constatons en audit : une
-          partie des sites qu&apos;on nous demande de refondre ont surtout
-          besoin d&apos;un bon réglage. Quand c&apos;est le cas, nous le
-          disons — un client bien orienté revient.
+          mal se reteste en quelques jours. Aucun pourcentage universel ne
+          permet de décider&nbsp;: l&apos;audit doit comparer le coût, le risque
+          et la durée d&apos;une correction ciblée avec ceux d&apos;une refonte.
         </p>
         <InfoBox variant="emerald" title="Le test des 3 symptômes">
           Un symptôme isolé se soigne : la vitesse s&apos;optimise, une

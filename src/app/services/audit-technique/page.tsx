@@ -4,9 +4,9 @@ import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 import { TEAM_PUBLIC_COMPOSITION } from "@/lib/team";
 
 export const metadata: Metadata = {
-  title: "Audit technique · Dette chiffrée en 10 jours · Hagnéré Code",
+  title: "Audit technique · Décision documentée · Hagnéré Code",
   description:
-    "Audit technique indépendant pour dirigeants, VC et M&A : dette chiffrée en euros, rapport board-ready en 10 jours. 4 formats de 8 à 68 k€.",
+    "Audit technique pour dirigeants, investisseurs et équipes produit : constats sourcés, hypothèses de coût, priorités, calendrier et livrables cadrés au devis.",
   alternates: { canonical: "/services/audit-technique" },
   openGraph: {
     ...OG_BASE,
@@ -55,11 +55,11 @@ const serviceJsonLd = JSON.stringify({
       price: "8000",
       priceCurrency: "EUR",
       description:
-        "Format Express 3-5 jours ouvrés, 1 senior dédié, 4-5 dimensions couvertes, livrable Notion + Loom 15 min, Tech Debt P&L simplifié. Pour post-incident, pré-décision urgente, 2e avis rapide. Démarrage sous 3 jours ouvrés.",
+        "Base budgétaire pour un diagnostic ciblé. Dimensions, intervenants, délai, accès, livrables et critères d'acceptation sont confirmés au devis.",
     },
     {
       "@type": "Offer",
-      name: "Audit Standard · 10 jours",
+      name: "Audit Standard",
       price: "18000",
       priceCurrency: "EUR",
       description:
@@ -71,7 +71,7 @@ const serviceJsonLd = JSON.stringify({
       price: "38000",
       priceCurrency: "EUR",
       description:
-        "Format Deep 15-20 jours ouvrés, 3 seniors + architecte + lead, tout inclus dans Standard + rapport 60-80 pages, 3 scenarios chiffrés sur 3 ans, restitution trilatérale CEO + CTO + CFO, dashboard opex vs capex, version data-room contrôlée. Pour décisions > 500 k€ : go/no-go refonte, Série B côté vendeur, gros gap SOC2. Démarrage sous 5 jours ouvrés.",
+        "Base budgétaire pour une décision complexe. Dimensions, compétences, scénarios, délai, livrables et restitution sont confirmés au devis.",
     },
     {
       "@type": "Offer",
@@ -79,7 +79,7 @@ const serviceJsonLd = JSON.stringify({
       price: "68000",
       priceCurrency: "EUR",
       description:
-        "Format Tech DD M&A 20-30 jours ouvrés, 4 personnes dédiées + coordination avocats M&A, rapport format acquisition 80-120 pages, analyse licences open source + IP + propriété code, liste deal-breakers flaggés go/no-go/re-négo, roadmap remédiation post-deal chiffrée 12/24 mois, NDA renforcé attorney-client privilege. Pour acquéreurs en rachat de scale-up. Démarrage sous 3 jours ouvrés.",
+        "Base budgétaire pour une due diligence technique. Périmètre, intervenants, coordination avec les conseils, confidentialité, délais et livrables sont confirmés au devis.",
     },
   ],
 });
@@ -94,7 +94,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Premiers insights transmis à J+5 par note de synthèse 3-4 pages (format Standard). Rapport complet livré à J+10 Standard, J+5 Express, J+20 Deep, J+30 Tech DD M&A. Vous pouvez arrêter l'audit à tout moment si le scope doit pivoter — paiement au prorata des jours consommés.",
+          "Le devis fixe les jalons, les restitutions intermédiaires, le rapport final et la procédure à suivre si le périmètre doit évoluer. Aucun paiement au prorata ni droit d'arrêt particulier n'est présumé s'il n'est pas écrit au contrat.",
       },
     },
     {
@@ -130,7 +130,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Démarrage sous 5 jours ouvrés après signature (3 jours pour une urgence justifiée, Tech DD M&A ou Express). Phase J-5 à J0 : brief technique 90 min, NDA mutuel signé, accès read-only configurés (GitHub, cloud, Sentry, Linear, Notion). Votre équipe a environ 2 heures de travail total pour la partie setup.",
+          "La date de démarrage dépend des disponibilités, de la confidentialité, des accès en lecture seule et des personnes à interviewer. Le plan de mobilisation et la charge attendue côté client sont précisés au devis.",
       },
     },
     {
@@ -139,7 +139,7 @@ const faqJsonLd = JSON.stringify({
       acceptedAnswer: {
         "@type": "Answer",
         text:
-          "Ces outils trouvent des bugs techniques, pas des problèmes de business. Aucun SaaS ne chiffre votre dette tech en euros, ne priorise par impact board, ne produit un rapport défendable en DD VC ou M&A. Un audit Hagnéré, ce n'est pas un scan, c'est une traduction technique vers business — on agrège vos outils + les nôtres + entretiens équipe pour produire un verdict exploitable par votre CA.",
+          "Les scanners apportent des signaux utiles mais ne remplacent pas l'examen du contexte, de l'architecture, de l'exploitation et de la décision à sécuriser. Le devis précise quelles preuves automatiques et humaines seront utilisées et les limites de l'analyse.",
       },
     },
     {
@@ -199,9 +199,9 @@ const breadcrumbJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{serviceJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <AuditTechnique />
     </>
   );

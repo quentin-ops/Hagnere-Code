@@ -8,8 +8,8 @@ export const pricingHtml = `
         <h2>Un audit pour commencer,<br>trois rythmes pour piloter.</h2>
       </div>
       <div class="right">
-        Tout est inclus dans le forfait&nbsp;: tracking server-side, creatives, reporting Looker, alertes Slack, outils pro.
-        <b>Aucun rebilling.</b> Le budget media reste sur vos comptes. Engagement 3 mois, puis reconductible mois par mois.
+        Chaque carte décrit un scénario indicatif. Le devis précise tracking, créations, reporting, outils,
+        intervenants et engagement réellement inclus. Le budget média doit rester sur les comptes du client.
       </div>
     </div>
 
@@ -50,7 +50,7 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tracking server-side GTM SS + CAPI</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>4 variantes creatives / mois</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Point hebdo 30 min + reporting mensuel</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Consultant senior dédié</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Responsable et statut précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 3 mois min.</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Cadrer mon démarrage</a></div>
@@ -58,7 +58,7 @@ export const pricingHtml = `
 
       <!-- SCALE (featured) -->
       <div class="plan featured reveal reveal-d-2">
-        <div class="plan-badge">LE PLUS CHOISI</div>
+        <div class="plan-badge">OFFRE RECOMMANDÉE</div>
         <div class="plan-tag">SCALE</div>
         <h4>Scale</h4>
         <div class="plan-sub">PME / scale-up avec budget media 20 à 60 k€/mois, 3 canaux actifs, besoin de pilotage CRM complet.</div>
@@ -94,7 +94,7 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Attribution multi-touch BigQuery + data-driven</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>12+ creatives / mois (motion + UGC + statics)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Landing A/B testing illimité</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée 3 pers. (consultant + media buyer + creative)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intervenants dimensionnés, nommés et qualifiés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Bi-hebdo + reporting mensuel board-ready</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 6 mois min.</li>
         </ul>
@@ -103,7 +103,7 @@ export const pricingHtml = `
     </div>
 
     <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
-      <b style="color:var(--ink)">Tous les forfaits incluent</b> : conteneur GTM Server Stape.io · licences Hotjar / Looker Studio · creatives motion + UGC · alertes Slack · <b style="color:var(--ink)">monitoring tracking 24/7 et re-déploiement sous 48 h</b> en cas de casse.
+      <b style="color:var(--ink)">À vérifier dans chaque devis</b> : hébergement du conteneur, licences, volume de créations, alertes, horaires de surveillance et délai cible d'intervention. Rien n'est ajouté automatiquement par cette page.
     </p>
   </div>
 </section>

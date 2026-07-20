@@ -279,15 +279,15 @@ export default function Page() {
     <GuidesShell>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: articleJsonLd }}
+        dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd }}
+        dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqJsonLd }}
+        dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }}
       />
 
       <GuideLayout

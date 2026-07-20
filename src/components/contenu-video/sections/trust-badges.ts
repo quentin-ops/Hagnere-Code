@@ -1,76 +1,19 @@
 export const trustBadgesHtml = `
-<!-- TRUST BADGES CONTENU VIDÉO -->
+<!-- POINTS À CONTRACTUALISER — CONTENU VIDÉO -->
 <section class="cv-trust">
   <div class="wrap">
     <div class="cv-trust-head reveal">
-      <div class="eyebrow">— Engagements contractuels</div>
-      <h2>Ce qu'on signe<br>avant le premier tournage.</h2>
-      <p>Écrits au devis, pas dans la brochure. Si l'un n'est pas tenu, vous le voyez dans votre calendrier de livraison — et vous nous le reprochez.</p>
+      <div class="eyebrow">— Avant le premier tournage</div>
+      <h2>Six points à obtenir<br>par écrit.</h2>
+      <p>Cette grille aide à relire un devis. Elle ne crée ni SLA, ni garantie, ni cession plus large que les documents signés.</p>
     </div>
-
     <div class="cv-trust-grid">
-      <div class="cv-trust-card reveal">
-        <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></div>
-        <h4>Forfait mensuel fixe · affiché</h4>
-        <p>Le prix du retainer est public et figé sur les 6 mois d'engagement. <b>Aucun dépassement</b> sur le périmètre validé. Pas de facturation à la journée surprise.</p>
-        <div class="cv-trust-foot">— Prix affichés, pas de "sur devis" déguisé</div>
-      </div>
-
-      <div class="cv-trust-card reveal reveal-d-1">
-        <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-        <h4>2 monteurs Premiere Pro seniors</h4>
-        <p>Chaque vidéo est montée par <b>un humain senior</b>, jamais par Opus Clip ou Descript seul. Charte éthique IA publiée — <b>l'IA accélère, ne remplace pas</b>.</p>
-        <div class="cv-trust-foot">— Charte IA publiée &amp; auditée</div>
-      </div>
-
-      <div class="cv-trust-card reveal reveal-d-2">
-        <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-        <h4>Rushs livrés à la fin du retainer</h4>
-        <p>Tous vos rushs, projets Premiere / AE, assets motion vous appartiennent. Repo Frame.io ou Google Drive sur <b>votre organisation</b>. Aucun verrouillage de fichiers sources.</p>
-        <div class="cv-trust-foot">— Cession écrite dans les CGV</div>
-      </div>
-
-      <div class="cv-trust-card reveal reveal-d-3">
-        <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg></div>
-        <h4>Cadence contractuelle garantie</h4>
-        <p>Si un mois on livre moins que le forfait prévoit, <b>le retard se reporte gratuitement</b> sur le mois suivant. Pas d'excuse sur "un monteur malade".</p>
-        <div class="cv-trust-foot">— Reporting cadence mensuel</div>
-      </div>
-
-      <div class="cv-trust-card reveal">
-        <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-        <h4>R&amp;D documentée (pipeline IA)</h4>
-        <p>Si le pipeline comporte de véritables opérations de R&amp;D individualisées, nous documentons les verrous, essais et résultats. <b>L'éligibilité au CIR reste à valider</b> par votre conseil, selon les travaux, votre situation et l'agrément du prestataire.</p>
-        <div class="cv-trust-foot">— Documentation technique livrée à la clôture</div>
-      </div>
-
-      <div class="cv-trust-card reveal reveal-d-1">
-        <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
-        <h4>Formation post-livraison incluse</h4>
-        <p>Atelier équipe post-livraison (montage, brief, direction artistique) inclus à chaque mission. Loom + guide PDF + suivi à 30 j et 90 j.</p>
-        <div class="cv-trust-foot">— Inclus dans tous les forfaits</div>
-      </div>
-
-      <div class="cv-trust-card reveal reveal-d-2">
-        <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h4>Droits d'auteur tracés</h4>
-        <p>Musiques sous licence Artlist / Epidemic Sound, droit à l'image signé par les intervenants, licences d'archives documentées. <b>Chaque actif est traçable</b> et fourni avec sa licence à la livraison.</p>
-        <div class="cv-trust-foot">— Tableau des licences fourni</div>
-      </div>
-
-      <div class="cv-trust-card reveal reveal-d-3">
-        <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
-        <h4>Support Slack dédié · SLA 4 h</h4>
-        <p>Canal Slack partagé avec les monteurs et le DA. Réponse <b>sous 4 h ouvrées</b> sur tout bloquant (bad cut, timing, export cassé). Pas de ticket Jira aveugle.</p>
-        <div class="cv-trust-foot">— SLA 4 h ouvrées contractualisé</div>
-      </div>
-
-      <div class="cv-trust-card reveal">
-        <div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
-        <h4>Licences musique & archives traquées</h4>
-        <p>Artgrid, Epidemic Sound, Motion Array — toutes les licences sont <b>à votre nom</b> ou transférables. Rien qui puisse vous exposer à un claim YouTube 6 mois plus tard.</p>
-        <div class="cv-trust-foot">— Fiche licence par livrable</div>
-      </div>
+      <div class="cv-trust-card reveal"><div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></div><h4>Périmètre et prix</h4><p>Nombre de formats, durée, déclinaisons, révisions, exclusions et frais sont détaillés. Toute évolution est acceptée avant réalisation.</p><div class="cv-trust-foot">— À vérifier dans le devis nominatif</div></div>
+      <div class="cv-trust-card reveal reveal-d-1"><div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h4>Intervenants identifiés</h4><p>Le responsable, le monteur, le motion designer ou le cadreur sont nommés si mobilisés, avec leur statut interne ou externe.</p><div class="cv-trust-foot">— Aucune équipe permanente inventée</div></div>
+      <div class="cv-trust-card reveal reveal-d-2"><div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h4>Livrables et droits</h4><p>Rushs, masters, sources et licences sont listés. Les livrables spécifiques sont transférés après paiement complet, sous réserve des droits tiers.</p><div class="cv-trust-foot">— CGV + annexe de livrables</div></div>
+      <div class="cv-trust-card reveal reveal-d-3"><div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg></div><h4>Planning et validations</h4><p>Jalons, délais de retour, nombre de corrections et procédure d'écart sont écrits. Aucun report gratuit automatique n'est présumé.</p><div class="cv-trust-foot">— Les dépendances client sont visibles</div></div>
+      <div class="cv-trust-card reveal"><div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/><path d="M9 12l2 2 4-4"/></svg></div><h4>Consentements et transparence IA</h4><p>Voix, image, avatars et inserts synthétiques font l'objet d'autorisations et d'une information adaptées au projet.</p><div class="cv-trust-foot">— Principes repris au contrat si nécessaire</div></div>
+      <div class="cv-trust-card reveal reveal-d-1"><div class="cv-trust-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div><h4>Traçabilité des licences</h4><p>La musique, les archives, les polices et les images sont accompagnées de leur origine et de leurs limites d'usage réelles.</p><div class="cv-trust-foot">— Pas de promesse de transférabilité universelle</div></div>
     </div>
   </div>
 </section>

@@ -8,8 +8,8 @@ export const comparisonHtml = `
         <h2>On décline l'excuse la plus courante<br>point par point.</h2>
       </div>
       <div class="right">
-        Chaque alternative a sa place. Aucune ne fait ce qu'un outil sur mesure bien calibré
-        apporte à une PME ou ETI qui a un vrai process métier. Lecture à froid, sans sophisme.
+        Chaque alternative peut être la bonne. Cette grille liste les questions à vérifier dans
+        les offres et contrats&nbsp;; elle ne décrit pas tous les éditeurs, outils no-code ou ESN.
       </div>
     </div>
 
@@ -36,58 +36,58 @@ export const comparisonHtml = `
 
       <div class="oi-compare-row">
         <div class="oi-compare-cell oi-compare-cell-k">Adapté à votre vrai process</div>
-        <div class="oi-compare-cell oi-compare-cell-us"><span class="oi-compare-dot ok"></span>Modélisé après 3–5 interviews terrain</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Souple mais plafonne vite (20-30 users)</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot ko"></span>Votre métier tordu pour rentrer dans leur modèle</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Dépend fortement du chef de projet que vous avez</div>
+        <div class="oi-compare-cell oi-compare-cell-us"><span class="oi-compare-dot ok"></span>Périmètre et utilisateurs consultés au devis</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Tester limites, gouvernance et montée en charge</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Réaliser un fit-gap sur les processus clés</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Vérifier méthode, équipe nommée et gouvernance</div>
       </div>
 
       <div class="oi-compare-row">
         <div class="oi-compare-cell oi-compare-cell-k">Intègre Sage, Cegid, AD, ERP legacy</div>
-        <div class="oi-compare-cell oi-compare-cell-us"><span class="oi-compare-dot ok"></span>Connecteurs dès la v1, pas en option</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot ko"></span>Zapier entre deux, rarement robuste</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Seulement ce que le SaaS veut bien exposer</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot ok"></span>Techniquement oui, mais cher en TJM</div>
+        <div class="oi-compare-cell oi-compare-cell-us"><span class="oi-compare-dot ok"></span>Flux, droits et reprise sur erreur au devis</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Vérifier connecteurs, quotas et supervision</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Vérifier API, plan tarifaire et limitations</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Vérifier expérience et coût de chaque interface</div>
       </div>
 
       <div class="oi-compare-row">
         <div class="oi-compare-cell oi-compare-cell-k">Propriété du code &amp; portabilité</div>
-        <div class="oi-compare-cell oi-compare-cell-us"><span class="oi-compare-dot ok"></span>Repo Git chez vous dès J+1, stack standard</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot ko"></span>Lock-in total, export limité</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot ko"></span>Abonnement à vie, pas de sortie propre</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Oui, mais tech maison souvent exotique</div>
+        <div class="oi-compare-cell oi-compare-cell-us"><span class="oi-compare-dot ok"></span>Droits, dépôt et passation écrits au devis</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Tester export, formats et dépendances plateforme</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Lire clauses de sortie et récupération des données</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Vérifier droits, dépôt, documentation et licences</div>
       </div>
 
       <div class="oi-compare-row">
-        <div class="oi-compare-cell oi-compare-cell-k">Coût sur 5 ans (équipe 15 pers.)</div>
-        <div class="oi-compare-cell oi-compare-cell-us"><span class="oi-compare-dot ok"></span>25–50 k€ one-shot · ≈ 8 k€/an maintenance</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>≈ 18 k€/an licences, +20 %/an au fil des users</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot ko"></span>≈ 36 k€/an, incompressible, +prix chaque année</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot ko"></span>150–300 k€ sur devis ouvert, budget glissant</div>
+        <div class="oi-compare-cell oi-compare-cell-k">Coût total sur 3 ans</div>
+        <div class="oi-compare-cell oi-compare-cell-us"><span class="oi-compare-dot ok"></span>Devis + hébergement + maintenance + évolution</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Licences + réalisation + exploitation</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Licences + options + intégration + sortie</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Forfait/régie + pilotage + exploitation</div>
       </div>
 
       <div class="oi-compare-row">
         <div class="oi-compare-cell oi-compare-cell-k">Délai de livraison</div>
-        <div class="oi-compare-cell oi-compare-cell-us"><span class="oi-compare-dot ok"></span>2 à 10 semaines, date contractualisée</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot ok"></span>Rapide (1–3 sem.) mais usure après 6 mois</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Onboarding 3–6 mois chez l'éditeur</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot ko"></span>6 à 18 mois, dates qui glissent</div>
+        <div class="oi-compare-cell oi-compare-cell-us"><span class="oi-compare-dot ok"></span>Jalons, dépendances et recette au devis</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Dépend du périmètre et des intégrations</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Dépend de la configuration et de la migration</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Dépend du dispositif et de la gouvernance</div>
       </div>
 
       <div class="oi-compare-row">
         <div class="oi-compare-cell oi-compare-cell-k">Risque DSI / RSSI</div>
-        <div class="oi-compare-cell oi-compare-cell-us"><span class="oi-compare-dot ok"></span>SSO · RBAC · audit trail · hébergement FR</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot ko"></span>Données souvent aux États-Unis, SSO premium</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>SOC 2 oui, mais vous ne maîtrisez rien</div>
-        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Dépend entièrement de l'ESN</div>
+        <div class="oi-compare-cell oi-compare-cell-us"><span class="oi-compare-dot ok"></span>Contrôles et preuves propres au projet</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Vérifier données, accès, logs et sous-traitants</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Vérifier certifications, options et responsabilité</div>
+        <div class="oi-compare-cell"><span class="oi-compare-dot warn"></span>Vérifier preuves, accès et responsabilité partagée</div>
       </div>
 
       <div class="oi-compare-row">
         <div class="oi-compare-cell oi-compare-cell-k">Verdict honnête</div>
-        <div class="oi-compare-cell oi-compare-cell-us oi-compare-verdict"><b>Pour PME/ETI 10–250 pers.</b> qui ont un vrai process métier différenciant.</div>
-        <div class="oi-compare-cell oi-compare-verdict">Parfait pour <b>prototyper</b> une idée. Mauvais pour tenir en production.</div>
-        <div class="oi-compare-cell oi-compare-verdict">Bien si votre métier <b>colle</b> déjà à l'outil. Piège si vous êtes atypique.</div>
-        <div class="oi-compare-cell oi-compare-verdict">Utile pour <b>gros projets groupe</b>, pas pour un outil interne PME.</div>
+        <div class="oi-compare-cell oi-compare-cell-us oi-compare-verdict">À retenir si le <b>besoin différenciant</b> justifie le coût de possession.</div>
+        <div class="oi-compare-cell oi-compare-verdict">À retenir si la plateforme couvre durablement le risque et la gouvernance.</div>
+        <div class="oi-compare-cell oi-compare-verdict">À retenir si le produit couvre le besoin sans adaptations disproportionnées.</div>
+        <div class="oi-compare-cell oi-compare-verdict">À retenir si l'organisation et les compétences correspondent à la mission.</div>
       </div>
     </div>
 

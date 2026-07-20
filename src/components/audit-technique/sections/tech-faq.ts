@@ -107,11 +107,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Non, et on le dit clairement</b>. L'audit officiel SOC2 / ISO 27001 / HDS / ACPR est mené par un <b>tiers habilité</b>
-          (cabinet d'audit certifié, ex. BDO, Mazars, KPMG, ou des spécialistes comme Vanta-partner pour SOC2). On <b>prépare le terrain</b>&nbsp;:
-          gap analysis des 160 contrôles SOC2 ou 114 contrôles ISO 27001, plan de mise en conformité chiffré sur 6-9 mois,
-          recommandation des outils (Vanta, Drata, Secureframe) et des cabinets d'audit officiels. Notre rapport vous fait gagner
-          <b>3-6 mois</b> sur le process de certification officiel.
+          <b>Non.</b> L'évaluation officielle et la certification relèvent des organismes, auditeurs ou autorités compétents.
+          Nous pouvons fournir les éléments techniques prévus au devis et contribuer à une analyse d'écart sous leur cadrage.
+          Le référentiel, les contrôles applicables, le calendrier et les preuves attendues doivent être confirmés avec eux&nbsp;;
+          aucun gain de délai ni obtention de certification n'est garanti.
         </div>
       </div>
     </div>

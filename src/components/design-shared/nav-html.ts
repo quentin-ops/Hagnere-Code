@@ -176,7 +176,7 @@ const PANE_GROW = pane({
       "/services/contenu-video",
       ICON.video,
       "Contenu &amp; vidéo",
-      "Studio interne, motion design, YouTube.",
+      "Production vidéo, motion design, YouTube.",
     ),
 });
 

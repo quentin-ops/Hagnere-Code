@@ -5,11 +5,11 @@ export const checklistHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Ce que "gestion de campagne" veut dire chez nous</div>
-        <h2>Douze briques incluses<br>dans chaque forfait Ads.</h2>
+        <h2>Douze briques possibles,<br>à choisir dans le devis.</h2>
       </div>
       <div class="right">
-        "On gère vos campagnes" c'est trop vague. Voilà la liste exacte de ce qui rentre
-        dans le forfait — et ce qui n'y rentre pas. <b>Pas d'avenant surprise à J+60.</b>
+        "On gère vos campagnes" est trop vague. La proposition retient les briques utiles,
+        leurs limites et leurs dépendances. Une demande hors périmètre fait l'objet d'un accord préalable.
       </div>
     </div>
 
@@ -19,14 +19,14 @@ export const checklistHtml = `
         <div class="ads-check-head">
           <div class="ads-check-badge ads-check-badge-in">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>
-            INCLUS DANS LE FORFAIT
+            CATALOGUE À CADRER
           </div>
-          <h3>Douze briques, tous les mois.</h3>
+          <h3>Le bon périmètre, pas une liste automatique.</h3>
         </div>
         <ul class="ads-check-list">
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Tracking server-side complet</b> — GTM Server, Meta CAPI, Google Enhanced Conversions, LinkedIn Insight, Consent Mode v2. Déployé dans les 3 premières semaines.</div>
+            <div><b>Tracking server-side</b> — GTM Server, Meta CAPI, Google Enhanced Conversions, LinkedIn Insight ou Consent Mode v2 selon les plateformes, les accès et le besoin.</div>
           </li>
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
@@ -34,11 +34,11 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Consultant senior dédié</b> — un interlocuteur, pas un pool tournant. Vous l'avez au téléphone, vous le voyez en visio, il connaît votre business.</div>
+            <div><b>Interlocuteur identifié</b> — la proposition nomme les personnes mobilisées, leur rôle et leur statut interne ou externe.</div>
           </li>
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Production creative 8 à 12 variantes/mois</b> — motion, UGC sourcé, statics, copywriting angulaire. Cadencé pour tuer la creative fatigue avant qu'elle tue vos ROAS.</div>
+            <div><b>Production créative</b> — formats, volumes, sources UGC, droits et rythme de renouvellement sont chiffrés dans le devis.</div>
           </li>
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
@@ -50,15 +50,15 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>A/B testing continu landing + ads</b> — minimum 2 variants/campagne active, test statistiquement significatif, pas un split de 200 clics décidé au doigt mouillé.</div>
+            <div><b>Tests landing + annonces</b> — hypothèse, métrique et seuil de décision définis selon le volume réellement disponible.</div>
           </li>
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Reporting Looker Studio live</b> — CRM × Ads × margin, actualisé toutes les 4 h. Vous l'ouvrez vous-même, on le commente en point hebdo 30 min.</div>
+            <div><b>Reporting partagé</b> — sources, fréquence d'actualisation et rythme de revue précisés selon les connecteurs disponibles.</div>
           </li>
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Alertes anomalies Slack / email</b> — spend × 2, CPA × 1,5, ROAS qui chute, conversion tracking cassé. Vous êtes prévenus avant d'ouvrir le dashboard.</div>
+            <div><b>Alertes anomalies Slack / email</b> — seuils, horaires de surveillance, destinataires et délai cible d'intervention définis au devis.</div>
           </li>
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
@@ -70,7 +70,7 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Passation complète si fin de mission</b> — comptes, pixels, audiences, conteneur GTM SS, docs, creatives : <b>tout reste chez vous</b>. On part proprement en 2 semaines.</div>
+            <div><b>Passation de fin de mission</b> — comptes, pixels, audiences, conteneur, documents, créations et droits sont inventoriés au devis avec le délai applicable.</div>
           </li>
         </ul>
       </div>
@@ -107,7 +107,7 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
-            <div><b>Garanties de ROAS chiffré</b> — personne de sérieux ne le fait. On garantit la méthode, les jalons, la transparence. Pas un ROAS 5x dans un contrat.</div>
+            <div><b>Garantie de ROAS chiffré</b> — les résultats dépendent aussi de l'offre, du marché et des plateformes. Le devis peut engager des livrables et des jalons, pas un revenu publicitaire.</div>
           </li>
         </ul>
 

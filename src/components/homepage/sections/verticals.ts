@@ -216,7 +216,7 @@ export const verticalsHtml = `
         <p>
           App native iOS + Android (React Native + Expo), publiée sous vos comptes
           App Store + Google Play, paiement Apple Pay, push géolocalisée, fidélité,
-          mode hors-ligne. Code et stores 100 % à vous.
+          mode hors-ligne. Comptes stores, livrables, accès et droits sont précisés au devis.
         </p>
         <div class="vt-mini vt-mini-stack" aria-hidden="true">
           <span></span><span></span><span></span>

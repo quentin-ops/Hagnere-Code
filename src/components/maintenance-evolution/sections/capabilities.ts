@@ -41,11 +41,11 @@ export const capabilitiesHtml = `
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h12M4 18h8"/></svg></div>
         <h4>Axiom · logs centralisés</h4>
-        <p>Logs structurés JSON, search full-text, corrélation trace ID. Rétention 30 jours, export S3 pour compliance. Root cause analysis &lt; 10 min.</p>
+        <p>Logs structurés, recherche, corrélation par trace et export éventuel. Rétention, accès et délai d'analyse dépendent du besoin et des outils retenus.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <h4>PagerDuty · astreinte 7j/7</h4>
+        <h4>Astreinte &amp; escalade</h4>
         <p>Rotation, escalade, runbooks, temps de prise en charge et post-mortem configurés selon la couverture contractuelle retenue.</p>
       </div>
     </div>
@@ -98,7 +98,7 @@ export const capabilitiesHtml = `
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 10l3 3 5-5"/></svg></div>
         <h4>Pest / PHPUnit</h4>
-        <p>Unit tests sur la logique métier, feature tests sur chaque route critique (billing, auth, permissions). Couverture &gt; 70 % sur modules critiques.</p>
+        <p>Tests unitaires et fonctionnels sur les parcours critiques. Le niveau de couverture attendu et les exclusions sont définis selon le risque, pas par un pourcentage universel.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
@@ -134,17 +134,17 @@ export const capabilitiesHtml = `
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l4-4 4 4 8-8"/><path d="M16 4h4v4"/></svg></div>
         <h4>Terraform · IaC</h4>
-        <p>Infrastructure as code versionnée dans votre repo. Provisioning DNS, CDN, DB, storage reproductible. <b>Disaster recovery en 1 h</b>, même région différente.</p>
+        <p>Infrastructure as code versionnée dans le dépôt convenu. DNS, CDN, base et stockage peuvent être reproductibles&nbsp;; le scénario et le délai de reprise sont testés selon le contrat.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12c0 5-4 9-9 9-5 0-9-4-9-9m18 0c0-5-4-9-9-9-5 0-9 4-9 9"/><path d="M12 3v18M3 12h18"/></svg></div>
         <h4>Backups + DR trimestrielle</h4>
-        <p>PostgreSQL WAL continu, stockage chiffré <b>second provider</b> (3-2-1). Restauration testée chaque trimestre sur env isolé. <b>RTO 1 h · RPO 15 min</b>.</p>
+        <p>WAL continu, second fournisseur et règle 3-2-1 sont des options d'architecture. Fréquence, rétention, test de restauration et <b>RTO/RPO cibles</b> sont dimensionnés au devis.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></div>
         <h4>Deploys zero-downtime</h4>
-        <p>Blue-green ou canary, migrations expand/migrate/contract, feature flags Laravel Pennant. Rollback 1-clic testé. <b>0 rollback/trimestre en moyenne</b>.</p>
+        <p>Blue-green, canary, migrations progressives et feature flags sont retenus lorsque la stack le justifie. La stratégie de retour arrière est documentée et testée.</p>
       </div>
     </div>
 
@@ -165,7 +165,7 @@ export const capabilitiesHtml = `
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9 8.5 8.5 0 018.5 8.5z"/></svg></div>
         <h4>Slack Connect · canal dédié</h4>
-        <p>Canal partagé avec votre équipe (pas un email tunnel), threads par sujet, ping non-intrusifs. <b>Réponse &lt; 2 h HO · &lt; 30 min urgence</b>.</p>
+        <p>Un canal partagé peut être mis en place. Horaires, personnes habilitées et délais cibles de réponse normale ou urgente sont écrits au devis.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>

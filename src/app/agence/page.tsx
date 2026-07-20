@@ -81,7 +81,7 @@ const faqItems = [
   {
     question: "Où êtes-vous exactement situés ?",
     answer:
-      "Au 82 impasse de Bellevue, à Bassens, commune limitrophe de Chambéry, en Savoie. C'est une adresse réelle, pas une domiciliation : c'est là que le travail se fait. Nous recevons sur rendez-vous, et nous nous déplaçons dans le bassin chambérien, sur Aix-les-Bains et le tour du lac du Bourget, en Combe de Savoie, ainsi qu'en Haute-Savoie pour les projets qui le justifient. Pour les entreprises plus éloignées, l'essentiel du travail se conduit très bien à distance : visioconférence pour le cadrage et les points d'étape, démonstrations en ligne à chaque livraison intermédiaire. Nous accompagnons d'ailleurs des clients hors de la région sans que cela pose de difficulté.",
+      "Au 82 impasse de Bellevue, à Bassens, commune limitrophe de Chambéry, en Savoie. Nous recevons sur rendez-vous et pouvons nous déplacer dans le bassin chambérien, autour d'Aix-les-Bains, en Combe de Savoie et en Haute-Savoie selon le projet. Pour les entreprises plus éloignées, cadrage, points d'étape et démonstrations peuvent être conduits à distance.",
   },
   {
     question: "Travaillez-vous uniquement avec des entreprises savoyardes ?",
@@ -101,7 +101,7 @@ const faqItems = [
   {
     question: "Que se passe-t-il après la mise en ligne ?",
     answer:
-      "Vous partez avec une garantie de trente jours : toute anomalie constatée pendant ce mois est corrigée sans supplément. Le code vous appartient, déposé sur un compte à votre nom, avec une clause de cession écrite — en droit français, payer ne rend pas automatiquement propriétaire, et beaucoup de contrats l'oublient. Le nom de domaine est enregistré au vôtre. Ensuite, vous choisissez : un contrat de maintenance, une intervention ponctuelle quand vous en avez besoin, ou rien du tout si votre équipe reprend la main. Un site construit sur une base saine ne demande pas de vigilance hebdomadaire, contrairement à un site bâti sur un empilement d'extensions.",
+      "Le devis précise la recette, la période de correction, le dépôt, les accès, le domaine, la documentation et la réversibilité. Les livrables spécifiques sont transférés après paiement complet selon les CGV, sous réserve des composants préexistants et licences tierces. Ensuite, vous pouvez choisir une maintenance, une intervention ponctuelle ou une reprise par votre équipe.",
   },
   {
     question: "Faites-vous aussi le référencement et la publicité en ligne ?",
@@ -123,14 +123,14 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{businessJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: businessJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[{ label: "Notre agence" }]}
         heroTitle={page.heroTitle}
-        heroDescription="Nous sommes installés au 82 impasse de Bellevue, à Bassens, aux portes de Chambéry. Cette page dit où nous travaillons, ce que nous constatons sur le tissu économique savoyard, et comment nous intervenons — sur place en Savoie et Haute-Savoie, à distance partout ailleurs en France."
+        heroDescription="Nous sommes installés au 82 impasse de Bellevue, à Bassens, aux portes de Chambéry. Cette page indique où nous travaillons, les besoins que nous savons traiter et comment nous intervenons — sur place en Savoie et Haute-Savoie, à distance ailleurs en France."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -160,8 +160,8 @@ export default function Page() {
           vérifiable : <strong>nous sommes une petite équipe installée à
           Bassens, aux portes de Chambéry, au 82 impasse de Bellevue</strong>, et nous développons des
           sites, des boutiques en ligne et des applications métier. Cette page
-          explique où nous intervenons réellement, et ce que nous observons du
-          marché local.
+          explique où nous intervenons et comment évaluer un besoin web local
+          sans inventer d&apos;historique client.
         </p>
 
         <GuideToc
@@ -169,7 +169,7 @@ export default function Page() {
             { id: "ou-nous-sommes", label: "1. Où nous sommes, concrètement" },
             { id: "territoire", label: "2. Le territoire que nous couvrons" },
             { id: "economie-locale", label: "3. Le tissu économique savoyard" },
-            { id: "constat", label: "4. Ce que nous constatons sur les sites du bassin" },
+            { id: "constat", label: "4. Ce qu'il faut vérifier sur un site local" },
             { id: "paysage", label: "5. Le paysage des agences locales, sans détour" },
             { id: "ce-que-nous-faisons", label: "6. Ce que nous faisons" },
             { id: "comment-on-travaille", label: "7. Comment nous travaillons" },
@@ -262,33 +262,22 @@ export default function Page() {
           écosystème d&apos;entreprises autour de lui.
         </p>
 
-        <h2 id="constat">4. Ce que nous constatons sur les sites du bassin</h2>
+        <h2 id="constat">4. Ce qu&apos;il faut vérifier sur un site local</h2>
         <p>
-          Plutôt que d&apos;affirmer que « les entreprises locales ont besoin de
-          se digitaliser », nous avons mesuré. En juillet 2026, nous avons passé{" "}
-          <strong>neuf sites d&apos;entreprises et de commerces indépendants</strong>{" "}
-          de Chambéry, Aix-les-Bains et du bassin d&apos;Albertville dans
-          Lighthouse, l&apos;outil de mesure de Google, en configuration mobile.
+          Une comparaison utile ne part pas d&apos;une moyenne locale invérifiable.
+          Elle teste votre propre site, sur ses pages importantes, avec les mêmes
+          conditions et les mêmes outils avant et après une intervention.
         </p>
         <p>
-          Le résultat : <strong>aucun des neuf n&apos;atteignait 90 sur 100 en
-          performance</strong>, et la médiane se situait autour de 55 à 60. Sur
-          plusieurs d&apos;entre eux, l&apos;affichage du contenu principal
-          dépassait dix secondes en conditions de réseau mobile dégradé, et le
-          poids des pages dépassait fréquemment deux méga-octets.
+          Les vérifications prioritaires sont le rendu mobile, les Core Web Vitals
+          de terrain, l&apos;indexation, les formulaires, les conversions réellement
+          reçues, les mentions locales cohérentes et la propriété des comptes.
         </p>
-        <InfoBox variant="amber" title="Ce que vaut — et ne vaut pas — cette mesure">
-          Neuf sites, ce n&apos;est pas un échantillon représentatif du
-          département : c&apos;est un sondage. Nous avons choisi des entreprises
-          indépendantes (hôtels, artisans, commerces) et écarté volontairement
-          les chaînes nationales, dont les sites sont gérés par un siège.
-          Nous avons aussi constaté que <strong>ces mesures varient fortement
-          d&apos;un passage à l&apos;autre</strong> : sur trois sites re-testés,
-          l&apos;écart atteignait dix-huit points. C&apos;est pourquoi nous ne
-          publions ni le nom des sites testés, ni leur score individuel — ce
-          serait à la fois instable et déloyal. Ce qui reste solide, c&apos;est
-          l&apos;ordre de grandeur : le niveau technique moyen est bas, et il y a
-          de la place pour faire mieux.
+        <InfoBox variant="amber" title="Ce qu&apos;un score ne prouve pas">
+          Lighthouse est un outil de laboratoire utile, mais un passage isolé
+          ne démontre ni le comportement de tous les visiteurs, ni le référencement,
+          ni la conversion. Le protocole de mesure, les pages et les scripts tiers
+          doivent être documentés pour rendre la comparaison honnête.
         </InfoBox>
         <p>
           Pourquoi cela compte pour vous : la vitesse d&apos;affichage sur mobile
@@ -297,9 +286,8 @@ export default function Page() {
           <Link href="/guides/combien-coute-un-site-internet">guide sur le prix
           d&apos;un site internet</Link> détaille ce mécanisme, chiffres à
           l&apos;appui. C&apos;est aussi la raison pour laquelle nous
-          contractualisons un score Lighthouse mobile d&apos;au moins 95 sur nos
-          livraisons : c&apos;est vérifiable par vous, gratuitement, en trente
-          secondes.
+          pouvons inscrire au devis un budget de performance avec pages, conditions,
+          responsabilités et seuils de recette explicites.
         </p>
 
         <h2 id="paysage">5. Le paysage des agences locales, sans détour</h2>
@@ -393,18 +381,14 @@ export default function Page() {
             surprise à la fin.
           </li>
           <li>
-            <strong>Performance garantie par contrat.</strong> Un score
-            Lighthouse mobile d&apos;au moins 95 sur 100 à la livraison,
-            corrections gratuites si le seuil n&apos;est pas tenu. C&apos;est
-            l&apos;engagement le plus facile à vérifier de tout notre contrat :
-            vous ouvrez PageSpeed Insights et vous regardez.
+            <strong>Performance cadrée.</strong> Si le projet le justifie, le devis
+            fixe les pages, appareils, réseau, scripts tiers, outil et seuils de recette.
           </li>
           <li>
-            <strong>Le code est à vous.</strong> Cession des droits écrite,
-            dépôt du code sur un compte à votre nom, nom de domaine enregistré
-            au vôtre. En droit français, payer une prestation ne rend pas
-            automatiquement propriétaire du code — c&apos;est un point que
-            beaucoup de contrats laissent volontairement flou, et notre{" "}
+            <strong>Livrables et réversibilité explicites.</strong> Les livrables
+            spécifiques sont transférés après paiement complet selon les CGV.
+            Le devis inventorie le dépôt, les accès, le domaine, les exclusions
+            et les composants tiers. Notre{" "}
             <Link href="/guides/choisir-son-agence-web">guide pour choisir son
             agence web</Link> explique comment le vérifier chez n&apos;importe
             quel prestataire, nous compris.
@@ -413,8 +397,8 @@ export default function Page() {
         <p>
           Le déroulé complet, du cadrage à la mise en ligne, est décrit sur notre{" "}
           <Link href="/methode">page méthode</Link>. Les projets démarrent
-          généralement par un Discovery Sprint de deux jours à 1 500 €, déduits
-          intégralement du projet s&apos;il se lance.
+          par un cadrage dont le format, le prix, les livrables et toute remise
+          éventuelle sont inscrits dans le devis.
         </p>
 
         <h2 id="au-dela">8. Au-delà de la Savoie</h2>
@@ -422,16 +406,15 @@ export default function Page() {
           Notre ancrage est savoyard, mais notre travail ne l&apos;est pas. Le
           développement web se conduit très bien à distance : nous livrons du
           code, des maquettes et des démonstrations en ligne, pas des chantiers
-          qui exigent une présence physique. Nous accompagnons des clients hors
-          de la région, et le cadre contractuel est identique.
+          qui exigent une présence physique. Le même fonctionnement peut être
+          proposé à une entreprise située ailleurs en France.
         </p>
         <p>
           Ce que la proximité change vraiment, c&apos;est le premier
           rendez-vous : rencontrer quelqu&apos;un avant de lui confier un budget
           à cinq chiffres rassure, et c&apos;est normal. Si vous êtes en Savoie
           ou en Haute-Savoie, on se voit. Si vous êtes ailleurs, on commence en
-          visioconférence, et cela n&apos;a jamais empêché un projet
-          d&apos;aboutir.
+          visioconférence, avec des jalons et critères de décision explicites.
         </p>
         <p>
           Une dernière chose, sur le référencement : si vous cherchez à

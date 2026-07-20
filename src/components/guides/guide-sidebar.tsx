@@ -75,7 +75,7 @@ export function GuideSidebarCTA({
               "Réponse sous 24 h ouvrées",
               "Forfait fixe contractuel",
               "Une équipe qui code",
-              "30 j de garantie post-lancement",
+              "Recette et correction cadrées au devis",
             ].map((benefit) => (
               <div key={benefit} className="flex items-center gap-2.5">
                 <CheckCircle2 className="size-4 text-emerald-400 shrink-0" />

@@ -5,11 +5,11 @@ export const capabilitiesHtml = `
   <div class="wrap">
     <div class="section-head reveal" style="margin-bottom:56px">
       <div class="left">
-        <div class="eyebrow on-dark">— Ce qu'on met par défaut</div>
-        <h2 style="color:#fff">21 briques Ads,<br>dans chaque forfait.<br>Sans avenant.</h2>
+        <div class="eyebrow on-dark">— Catalogue technique</div>
+        <h2 style="color:#fff">21 briques Ads,<br>sélectionnées selon<br>votre besoin.</h2>
       </div>
       <div class="right" style="color:rgba(255,255,255,0.7)">
-        Setup tracking, structuration comptes, audiences propriétaires, creative, landing, pilotage, reporting. Tout ce qu'une agence Ads sérieuse doit couvrir — <b style="color:#fff">vous n'avez pas à demander, c'est dedans</b>.
+        Tracking, comptes, audiences, créations, landing, pilotage et reporting&nbsp;: le devis indique les briques retenues, leurs dépendances et ce qui reste hors périmètre.
       </div>
     </div>
 
@@ -30,12 +30,12 @@ export const capabilitiesHtml = `
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg></div>
         <h4>Meta CAPI + Enhanced Match</h4>
-        <p>Events envoyés côté serveur avec email/phone hashés SHA-256. Event Match Quality 8/10 minimum visé.</p>
+        <p>Événements envoyés côté serveur avec les champs autorisés et hachés lorsque la plateforme l'exige. La qualité de correspondance dépend des données licitement disponibles.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
         <h4>Google Enhanced Conversions</h4>
-        <p>User-provided data (email, phone, nom) remontée au niveau campagne. Récupère 15-25 % de conversions manquantes.</p>
+        <p>Données fournies par l'utilisateur transmises selon les réglages, le consentement et les exigences de Google. Aucun gain de conversion n'est présumé.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
@@ -45,7 +45,7 @@ export const capabilitiesHtml = `
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 4 9 8 10 4-1 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h4>Consent Mode v2 + RGPD</h4>
-        <p>Signal denied / granted, modeled conversions, CNIL-compliant. Conforme + on garde de la donnée même sans cookie accepté.</p>
+        <p>Signaux denied / granted et modélisation éventuelle selon les outils. La configuration technique ne remplace ni l'analyse juridique ni le recueil valide du consentement.</p>
       </div>
     </div>
 
@@ -138,7 +138,7 @@ export const capabilitiesHtml = `
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4m0 6v4a2 2 0 01-2 2h-4m-6 0H5a2 2 0 01-2-2v-4"/><path d="M12 8v8M8 12h8"/></svg></div>
         <h4>A/B testing landing + ads</h4>
-        <p>Minimum 2 variants par campagne, test statistiquement significatif (Bayes 95 %). Pas de split 200 clics décidé au doigt mouillé.</p>
+        <p>Variantes et règle de décision adaptées au trafic disponible. Un faible volume peut imposer un test plus long ou empêcher toute conclusion robuste.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20l9-16H3z"/><path d="M12 14v6M8 20h8"/></svg></div>

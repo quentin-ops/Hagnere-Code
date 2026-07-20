@@ -33,7 +33,7 @@ const breadcrumbJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <LegalPageLayout
         title={"Mentions\nlégales."}
         intro="Informations légales obligatoires relatives à l'édition du site hagnere-code.ai et à la société HAGNÉRÉ CODE SAS."

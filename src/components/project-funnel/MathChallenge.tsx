@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {
-  MATH_CHALLENGE_MAX,
-  MATH_CHALLENGE_MIN,
-  type MathChallengePayload,
+import type {
+  IssuedMathChallenge,
+  MathChallengePayload,
 } from "@/lib/math-challenge";
 
 export type MathChallengeValue = {
   a: number;
   b: number;
+  token: string;
   answer: string;
 };
 
@@ -25,14 +25,7 @@ export function toMathChallengePayload(
   value: MathChallengeValue | null,
 ): MathChallengePayload | undefined {
   if (!value) return undefined;
-  return { a: value.a, b: value.b, answer: Number(value.answer.trim()) };
-}
-
-function randomTerm(): number {
-  return (
-    MATH_CHALLENGE_MIN +
-    Math.floor(Math.random() * (MATH_CHALLENGE_MAX - MATH_CHALLENGE_MIN + 1))
-  );
+  return { token: value.token, answer: Number(value.answer.trim()) };
 }
 
 type Props = {
@@ -46,12 +39,14 @@ type Props = {
 /**
  * Anti-bot maison : question de calcul simple (« Combien font 4 + 7 ? »).
  * Remplace Cloudflare Turnstile — aucun script tiers, rien à configurer,
- * maintenable en interne. Les termes sont tirés après le mount (SSR-safe :
- * le serveur rend un placeholder stable, le client tire au hasard).
+ * maintenable en interne. Les termes et le token associé sont émis et signés
+ * côté serveur ; le navigateur ne peut donc pas choisir sa propre équation.
  */
 export function MathChallenge({ onChange, error, className = "" }: Props) {
-  const [terms, setTerms] = useState<{ a: number; b: number } | null>(null);
+  const [challenge, setChallenge] = useState<IssuedMathChallenge | null>(null);
   const [answer, setAnswer] = useState("");
+  const [loadError, setLoadError] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   // onChange vit dans une ref : son identité peut changer à chaque render
   // du parent, la mettre en dep re-déclencherait l'effet inutilement.
@@ -60,31 +55,64 @@ export function MathChallenge({ onChange, error, className = "" }: Props) {
     onChangeRef.current = onChange;
   });
 
-  // Tirage aléatoire post-mount uniquement : Math.random() pendant le
-  // render SSR produirait un mismatch d'hydration (serveur ≠ client).
-  // C'est le pattern « synchronisation avec un système extérieur » (ici
-  // la source d'aléa client) que la règle autorise à désactiver localement,
-  // comme pour l'hydration localStorage du funnel (ProjectFunnel.tsx).
-  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
-    setTerms({ a: randomTerm(), b: randomTerm() });
-  }, []);
-  /* eslint-enable react-hooks/set-state-in-effect */
+    const controller = new AbortController();
+    void fetch("/api/math-challenge", {
+      cache: "no-store",
+      signal: controller.signal,
+    })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("challenge unavailable");
+        return (await response.json()) as IssuedMathChallenge;
+      })
+      .then((issued) => {
+        setChallenge(issued);
+        setAnswer("");
+        setLoadError(false);
+      })
+      .catch((fetchError: unknown) => {
+        if (fetchError instanceof DOMException && fetchError.name === "AbortError") {
+          return;
+        }
+        setLoadError(true);
+        onChangeRef.current(null);
+      });
+    return () => controller.abort();
+  }, [refreshKey]);
 
-  // Le parent démarre à null : on ne le notifie qu'une fois les termes
-  // tirés (post-mount) — pousser null pendant le commit initial déclenche
+  // Renouvelle l'équation cinq minutes avant son expiration. Le formulaire
+  // peut ainsi rester ouvert pendant une longue lecture sans finir en 403.
+  useEffect(() => {
+    if (!challenge) return;
+    const refreshIn = Math.max(
+      1_000,
+      challenge.expiresAt - Date.now() - 5 * 60 * 1_000,
+    );
+    const id = window.setTimeout(() => {
+      setRefreshKey((current) => current + 1);
+    }, refreshIn);
+    return () => window.clearTimeout(id);
+  }, [challenge]);
+
+  // Le parent démarre à null : on ne le notifie qu'une fois le challenge
+  // reçu — pousser null pendant le commit initial déclenche
   // un setState sur un arbre pas encore monté (warning React 19).
   useEffect(() => {
-    if (!terms) return;
-    onChangeRef.current({ ...terms, answer });
-  }, [terms, answer]);
+    if (!challenge) return;
+    onChangeRef.current({
+      a: challenge.a,
+      b: challenge.b,
+      token: challenge.token,
+      answer,
+    });
+  }, [challenge, answer]);
 
   // Pas de htmlFor/id : le label enveloppe l'input, l'association est
   // implicite — et useId créerait un risque de mismatch d'hydration.
   return (
     <label className={className}>
       <span>
-        Anti-robot : combien font {terms ? `${terms.a} + ${terms.b}` : "… + …"}
+        Anti-robot : combien font {challenge ? `${challenge.a} + ${challenge.b}` : "… + …"}
         &nbsp;?
       </span>
       <input
@@ -96,9 +124,21 @@ export function MathChallenge({ onChange, error, className = "" }: Props) {
         onChange={(event) => setAnswer(event.target.value)}
         required
         aria-invalid={!!error}
-        disabled={!terms}
+        disabled={!challenge}
       />
-      {error && <em role="alert">{error}</em>}
+      {(error || loadError) && (
+        <em role="alert">
+          {error || "Contrôle indisponible. Rechargez la page ou écrivez-nous par email."}
+        </em>
+      )}
+      {loadError && (
+        <button
+          type="button"
+          onClick={() => setRefreshKey((current) => current + 1)}
+        >
+          Réessayer le contrôle
+        </button>
+      )}
     </label>
   );
 }

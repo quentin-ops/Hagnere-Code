@@ -8,9 +8,8 @@ export const integrationsHtml = `
         <h2>Les régies, le tracking, le CRM.<br>Trois mondes. Une seule<br>boucle d'optimisation.</h2>
       </div>
       <div class="right">
-        La publicité payante ne se joue pas juste sur Google Ads Manager. On connecte
-        <b>les régies, notre stack de mesure et votre CRM</b> — pour que chaque euro dépensé
-        devienne un deal signé attribué, pas une impression orpheline.
+        La publicité payante ne se joue pas seulement dans l'interface d'une régie. Selon les accès,
+        on peut relier <b>les plateformes, la mesure et votre CRM</b>, en documentant les limites d'attribution.
       </div>
     </div>
 
@@ -20,7 +19,7 @@ export const integrationsHtml = `
         <div class="ads-eco-num">01</div>
         <div class="ads-eco-head-text">
           <div class="ads-eco-kind">RÉGIES PUBLICITAIRES</div>
-          <h3>On pilote les canaux qui ramènent<br>vraiment des clients.</h3>
+          <h3>On sélectionne les canaux adaptés<br>à votre audience et votre économie.</h3>
           <p>Google, Meta, LinkedIn, TikTok, YouTube, Pinterest, Microsoft Ads.
              Pas tous en même temps — on choisit selon votre ICP, votre budget et votre funnel.
              <b>Moins de canaux, mieux pilotés.</b></p>
@@ -98,8 +97,8 @@ export const integrationsHtml = `
         <div class="ads-eco-head-text">
           <div class="ads-eco-kind">TRACKING &amp; MESURE · <span>notre stack</span></div>
           <h3>Le pont entre clics publicitaires<br>et clients réels.</h3>
-          <p>Un seul event source, 6 destinations propres. GTM Server, Conversion APIs,
-             Consent Mode v2. <b>Zéro pixel cassé, 100 % des signaux envoyés</b> — même sous iOS 14, Safari ITP ou ad blocker.</p>
+          <p>GTM Server, Conversion APIs et Consent Mode v2 peuvent faire partie de l'architecture.
+             Les restrictions du navigateur, le consentement et les bloqueurs restent applicables&nbsp;: aucun taux de collecte n'est garanti.</p>
         </div>
       </div>
 
@@ -109,7 +108,7 @@ export const integrationsHtml = `
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
           <div class="ads-eco-tile-name">GTM Server</div>
-          <div class="ads-eco-tile-sub">Notre conteneur, votre sous-domaine</div>
+          <div class="ads-eco-tile-sub">Compte, domaine et accès au devis</div>
         </div>
 
         <div class="ads-eco-tile" data-brand="#1877F2">
@@ -117,7 +116,7 @@ export const integrationsHtml = `
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
           </div>
           <div class="ads-eco-tile-name">Meta CAPI</div>
-          <div class="ads-eco-tile-sub">Enhanced Match 8/10+</div>
+          <div class="ads-eco-tile-sub">Score mesuré, jamais garanti</div>
         </div>
 
         <div class="ads-eco-tile" data-brand="#4285F4">
@@ -125,7 +124,7 @@ export const integrationsHtml = `
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg>
           </div>
           <div class="ads-eco-tile-name">Google Enhanced</div>
-          <div class="ads-eco-tile-sub">User data hashed · coverage 90 %</div>
+          <div class="ads-eco-tile-sub">Champs autorisés et documentés</div>
         </div>
 
         <div class="ads-eco-tile" data-brand="#0A66C2">
@@ -141,7 +140,7 @@ export const integrationsHtml = `
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 16V10M12 16V7M16 16v-4"/></svg>
           </div>
           <div class="ads-eco-tile-name">GA4 + BigQuery</div>
-          <div class="ads-eco-tile-sub">Raw events · 14 mois de data</div>
+          <div class="ads-eco-tile-sub">Rétention selon configuration</div>
         </div>
 
         <div class="ads-eco-tile" data-brand="#6D28D9">
@@ -149,7 +148,7 @@ export const integrationsHtml = `
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 2L4 6v6c0 5 4 9 8 10 4-1 8-5 8-10V6l-8-4z"/><path d="M9 12l2 2 4-4"/></svg>
           </div>
           <div class="ads-eco-tile-name">Consent Mode v2</div>
-          <div class="ads-eco-tile-sub">RGPD · modeled conv. · CNIL OK</div>
+          <div class="ads-eco-tile-sub">Choix utilisateur et validation juridique</div>
         </div>
       </div>
     </article>
@@ -166,9 +165,8 @@ export const integrationsHtml = `
         <div class="ads-eco-head-text">
           <div class="ads-eco-kind">CRM &amp; CONVERSION</div>
           <h3>Là où "lead" devient "deal signé"<br>— et où on optimise vraiment.</h3>
-          <p>Webhook vers votre CRM, stages remontés dans Ads (MQL, SQL, won, lost),
-             Looker Studio pour la vue business. <b>Fini d'optimiser sur les form submits</b>&nbsp;:
-             l'algo apprend sur les euros encaissés.</p>
+          <p>Un webhook peut rapprocher les étapes CRM des campagnes lorsque les identifiants,
+             droits et volumes le permettent. La restitution distingue mesure observée et attribution estimée.</p>
         </div>
       </div>
 
@@ -218,7 +216,7 @@ export const integrationsHtml = `
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="12" r="3"/><circle cx="16" cy="7" r="2"/><circle cx="16" cy="17" r="2"/><path d="M10.5 11l3.5-3M10.5 13l3.5 3"/></svg>
           </div>
           <div class="ads-eco-tile-name">Webhook custom</div>
-          <div class="ads-eco-tile-sub">N'importe quel CRM · API REST</div>
+          <div class="ads-eco-tile-sub">Sous réserve d'une API exploitable</div>
         </div>
 
         <div class="ads-eco-tile" data-brand="#669DF6">
@@ -232,7 +230,8 @@ export const integrationsHtml = `
 
       <div class="ads-eco-foot">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-        Votre CRM n'est pas dans la liste ? Envoyez-nous le nom. <b>En 10 ans d'Ads, on n'a jamais eu un CRM qu'on n'a pas su brancher</b> — REST, webhook sortant, ou connecteur Zapier / Make en secours.
+        Votre CRM n'est pas dans la liste&nbsp;? Envoyez-nous sa documentation. Nous vérifions l'API,
+        les webhooks, les permissions et les limites avant de confirmer l'intégration.
       </div>
     </article>
   </div>

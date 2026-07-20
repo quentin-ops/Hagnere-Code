@@ -175,16 +175,16 @@ export const scenariosHtml = `
           <p class="me-scen-lead">
             Votre série A/B est closée, le CTO arrive (ou est là depuis 3 mois), vos devs internes bossent sur le <b>core
             product</b>. Nous, on prend le <b>long tail</b>&nbsp;: maintenance, back-office, intégrations CRM, évolutions
-            périphériques, sécurité, infra. <b>Contrat 12-18 mois pour vous laisser le temps de scale l'équipe interne.</b>
+            périphériques, sécurité, infra. <b>La durée et la capacité sont définies avec votre CTO selon la feuille de route.</b>
           </p>
           <div class="me-scen-items-title">CE QU'ON LIVRE</div>
           <div class="me-scen-items">
-            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Équipe dédiée 3 pers. · consultant + 2 devs</div>
+            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Intervenants, rôles et capacité nommés dans le devis</div>
             <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Périmètre défini avec votre CTO&nbsp;: core vs. long tail</div>
-            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>SLA 99,95 % · MTTR &lt; 1 h P1 (astreinte Premium)</div>
-            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Compliance SOC2-ready pour vos clients grands comptes</div>
-            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Revue hebdo avec votre CTO · sync OKRs tech</div>
-            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Passation progressive si scaling équipe interne</div>
+            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Niveaux de service et horaires de support écrits au contrat</div>
+            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Exigences de sécurité et preuves attendues cadrées avec vos clients</div>
+            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Rythme de revue convenu avec votre CTO</div>
+            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Modalités de documentation et de passation prévues au devis</div>
           </div>
         </div>
         <aside class="me-scen-aside me-scen-aside-hot">
@@ -193,11 +193,11 @@ export const scenariosHtml = `
             <div class="me-scen-aside-price">14 000 <span>€ HT / mois</span></div>
           </div>
           <dl class="me-scen-meta">
-            <div class="me-scen-meta-row"><dt>Tier recommandé</dt><dd>Premium · équipe 3 pers.</dd></div>
-            <div class="me-scen-meta-row"><dt>Durée</dt><dd>12 à 18 mois · contrat-cadre</dd></div>
-            <div class="me-scen-meta-row"><dt>SLA</dt><dd>99,95 % · MTTR &lt; 1 h</dd></div>
-            <div class="me-scen-meta-row"><dt>Engagement</dt><dd>6 mois min · puis trim.</dd></div>
-            <div class="me-scen-meta-row"><dt>Places</dt><dd>2 clients Premium en parallèle max.</dd></div>
+            <div class="me-scen-meta-row"><dt>Formule</dt><dd>Dimensionnée sur devis</dd></div>
+            <div class="me-scen-meta-row"><dt>Durée</dt><dd>Selon feuille de route</dd></div>
+            <div class="me-scen-meta-row"><dt>Service</dt><dd>Objectifs mesurables au contrat</dd></div>
+            <div class="me-scen-meta-row"><dt>Engagement</dt><dd>Durée et sortie négociées</dd></div>
+            <div class="me-scen-meta-row"><dt>Capacité</dt><dd>Confirmée avant signature</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg me-scen-cta">
             Parler à un expert

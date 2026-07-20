@@ -128,7 +128,7 @@ export const miniAuditHtml = `
         <div class="at-audit-q" data-audit-q="2">
           <div class="at-audit-q-num">03 · Timeline</div>
           <h3>Dans quels délais vous faut-il le rapport ?</h3>
-          <p>Express démarre en 3 j, Standard/Deep en 5 j, Tech DD M&amp;A en 3 j pour les deals urgents.</p>
+          <p>La date de démarrage dépend des disponibilités, des accès et du périmètre&nbsp;; elle est confirmée au devis.</p>
           <div class="at-audit-options">
             <label class="at-audit-opt">
               <input type="radio" name="audit-q2" value="10" data-audit-answer>
@@ -265,7 +265,7 @@ export const miniAuditHtml = `
       <div class="at-audit-result-head">
         <div class="at-audit-result-badge" data-audit-badge>Format Standard recommandé</div>
         <h3>Votre score&nbsp;: <span data-audit-score>0</span> / 160</h3>
-        <p data-audit-verdict>Selon votre profil, le format Standard (10 jours ouvrés) couvre votre besoin. Chiffrage sur devis après échange. Détails ci-dessous.</p>
+        <p data-audit-verdict>Cette orientation prépare le cadrage&nbsp;; le format, le calendrier et le chiffrage sont confirmés sur devis après échange.</p>
       </div>
 
       <!-- KPI cards -->

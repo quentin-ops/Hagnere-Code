@@ -19,7 +19,7 @@ export const problemsHtml = `
           </blockquote>
           <div class="cv-problem-answer">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Un seul studio, deux monteurs senior, une direction artistique qui traverse tous vos formats.</span>
+            <span>Un responsable de production et des spécialistes nommés au devis pour garder une direction cohérente.</span>
           </div>
         </div>
       </article>
@@ -75,7 +75,7 @@ export const problemsHtml = `
           </blockquote>
           <div class="cv-problem-answer">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
-            <span>L'IA chez nous n'est jamais visible côté client. Scripts, b-roll, voix : accélérateur invisible, validation humaine 100%.</span>
+            <span>Tout recours à l'IA est expliqué, autorisé lorsque nécessaire et validé par la personne responsable du livrable.</span>
           </div>
         </div>
       </article>

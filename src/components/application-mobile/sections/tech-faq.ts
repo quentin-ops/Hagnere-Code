@@ -69,7 +69,7 @@ export const techFaqHtml = `
         <p>
           <b>Sentry</b> pour le crash reporting cross-platform avec source maps + stack traces symbolisées (iOS dSYMs auto-uploadés).
           <b>Firebase Crashlytics</b> en backup natif. <b>PostHog</b> ou <b>Amplitude</b> pour les funnels. <b>UptimeRobot</b> sur l'API back-end.
-          Alertes Slack / email sur seuils crashs, ANR Android, latence API. SLA 4 h ouvrées sur bloquants.
+          Alertes Slack / email sur seuils de crashs, ANR Android et latence API. Le délai cible sur les blocages dépend du forfait de maintenance signé.
         </p>
       </div>
 

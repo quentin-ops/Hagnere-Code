@@ -65,13 +65,13 @@ export const miniAuditHtml = `
         <div class="me-audit-q" data-audit-q="1">
           <div class="me-audit-q-num">02 · Sécurité &amp; CVE</div>
           <h3>Vos dépendances (composer, npm) sont-elles mises à jour régulièrement ?</h3>
-          <p>Une dépendance avec une CVE critique non patchée pendant 6 mois, c'est une porte ouverte. 95 % des intrusions app exploitent des CVE connues depuis &gt; 3 mois.</p>
+          <p>Une vulnérabilité critique connue et exploitable doit être priorisée selon son exposition, ses compensations et les tests nécessaires au correctif.</p>
           <div class="me-audit-options">
             <label class="me-audit-opt">
               <input type="radio" name="audit-q1" value="20" data-audit-answer>
               <span class="me-audit-opt-body">
                 <span class="me-audit-opt-title">Oui, Dependabot + Snyk actifs, auto-merge mineurs</span>
-                <span class="me-audit-opt-sub">CVE patchés sous 48 h</span>
+                <span class="me-audit-opt-sub">Délais définis par criticité</span>
               </span>
               <span class="me-audit-opt-check"></span>
             </label>
@@ -97,13 +97,13 @@ export const miniAuditHtml = `
         <div class="me-audit-q" data-audit-q="2">
           <div class="me-audit-q-num">03 · Backups &amp; DR</div>
           <h3>Vos backups sont-ils testés en restauration ?</h3>
-          <p>Avoir des backups ne sert à rien si vous ne les avez jamais restaurés. 70 % des équipes découvrent qu'un backup est corrompu <b>le jour où ils en ont besoin</b>.</p>
+          <p>Une sauvegarde n'est une preuve de reprise que si sa restauration, son intégrité et sa procédure ont été testées.</p>
           <div class="me-audit-options">
             <label class="me-audit-opt">
               <input type="radio" name="audit-q2" value="20" data-audit-answer>
               <span class="me-audit-opt-body">
                 <span class="me-audit-opt-title">Oui, restauration testée chaque trimestre</span>
-                <span class="me-audit-opt-sub">RPO 15 min · RTO &lt; 2 h mesuré</span>
+                <span class="me-audit-opt-sub">RPO / RTO mesurés selon le besoin</span>
               </span>
               <span class="me-audit-opt-check"></span>
             </label>
@@ -129,13 +129,13 @@ export const miniAuditHtml = `
         <div class="me-audit-q" data-audit-q="3">
           <div class="me-audit-q-num">04 · Incident response</div>
           <h3>Avez-vous une procédure d'incident documentée (runbook) ?</h3>
-          <p>Quand un incident P1 arrive, vous ne voulez pas improviser. Un runbook par type d'incident = MTTR divisé par 3.</p>
+          <p>Quand un incident P1 arrive, un runbook testé réduit l'improvisation et permet de mesurer le temps réel de reprise.</p>
           <div class="me-audit-options">
             <label class="me-audit-opt">
               <input type="radio" name="audit-q3" value="20" data-audit-answer>
               <span class="me-audit-opt-body">
                 <span class="me-audit-opt-title">Oui, runbooks versionnés + astreinte PagerDuty</span>
-                <span class="me-audit-opt-sub">Post-mortem sous 72 h sans blame</span>
+                <span class="me-audit-opt-sub">Délai de post-mortem convenu</span>
               </span>
               <span class="me-audit-opt-check"></span>
             </label>

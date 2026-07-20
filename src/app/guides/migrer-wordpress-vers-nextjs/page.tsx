@@ -189,9 +189,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -796,9 +796,9 @@ export default function Page() {
           Chez <Link href="/services/sites-vitrines">Hagnéré Code</Link>,
           une migration entre dans notre grille publique — 6 900 €,
           14 900 € ou 22 000 € et plus selon le périmètre — au forfait
-          fixe contractuel, plan de redirection, note Lighthouse
-          mobile de 95 minimum et garantie 30 jours après la mise en
-          ligne inclus. Le détail de ce que nous construisons sur ce
+          fixe après cadrage. Le plan de redirection, les objectifs de
+          performance, la recette et la période de correction dépendent
+          du périmètre écrit. Le détail de ce que nous construisons sur ce
           socle est sur notre page{" "}
           <Link href="/agence-next-js">agence Next.js</Link>. Notre{" "}
           <Link href="/guides/prix-refonte-site-internet">guide du prix

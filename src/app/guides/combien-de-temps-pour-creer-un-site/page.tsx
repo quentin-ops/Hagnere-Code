@@ -142,7 +142,7 @@ const faqItems = [
   {
     question: "Pourquoi les agences web mettent-elles autant de temps ?",
     answer:
-      "Parce que l'essentiel du calendrier n'est pas du développement. Sur 6 à 14 semaines de projet type, la technique pèse 2 à 8 semaines ; le reste, c'est le cadrage (comprendre votre métier et vos clients), les maquettes et leurs allers-retours de validation (2 à 3 tours en standard), vos contenus, la recette. Ajoutez la réalité des plannings : une agence sérieuse mène plusieurs projets et la vôtre s'insère dans un carnet de commandes. C'est aussi pour cela que les dates contractuelles avec pénalités de retard — rares sur le marché — valent de l'or.",
+      "Parce que l'essentiel du calendrier n'est pas du développement. Sur 6 à 14 semaines de projet type, la technique pèse 2 à 8 semaines ; le reste, c'est le cadrage (comprendre votre métier et vos clients), les maquettes et leurs allers-retours de validation (2 à 3 tours en standard), vos contenus, la recette. Ajoutez la réalité des plannings : une agence sérieuse mène plusieurs projets et la vôtre s'insère dans un carnet de commandes. D'où l'intérêt de faire écrire au contrat les jalons, les dépendances côté client et le traitement d'un éventuel retard.",
   },
   {
     question: "Puis-je utiliser l'IA pour créer un site web rapidement ?",
@@ -189,9 +189,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -544,8 +544,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre échéance est déjà fixée ?"
-          description="Décrivez votre projet et sa date butoir en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un rétro-planning réaliste — et des dates de livraison contractuelles, avec pénalités si nous les dépassons."
-          tags={["Réponse sous 24 h ouvrées", "Dates contractuelles (Sprint Fixe™)", "Rédaction incluse dans nos forfaits"]}
+          description="Décrivez votre projet et sa date butoir en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées avec un rétro-planning réaliste. Le devis fixe les jalons, les dépendances et le traitement d'un éventuel retard."
+          tags={["Réponse sous 24 h ouvrées", "Jalons écrits au devis", "Rédaction selon forfait"]}
         />
 
         <h2 id="apres-mise-en-ligne">10. Après la mise en ligne : le chrono que personne ne raconte</h2>
@@ -776,9 +776,9 @@ export default function Page() {
           si le projet se lance)</strong> qui compresse le cadrage en
           atelier et produit périmètre, maquettes clés et planning
           engageant — puis une production à{" "}
-          <strong>dates contractuelles avec pénalités de retard</strong>{" "}
+          <strong>jalons, dépendances et conditions écrits au devis</strong>{" "}
           (méthode <Link href="/methode">Sprint Fixe™</Link>),
-          rédaction incluse dans les forfaits pour neutraliser la
+          rédaction prévue selon le forfait pour réduire la
           cause n°1 de dérapage.{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet et
           votre échéance en 3 minutes</Link> : réponse personnelle

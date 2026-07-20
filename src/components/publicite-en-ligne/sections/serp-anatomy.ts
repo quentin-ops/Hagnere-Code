@@ -184,7 +184,7 @@ export const serpAnatomyHtml = `
           <span class="ads-serp-zone-k">Local Pack</span>
         </div>
         <h4>Les 3 cartes sur fond Maps</h4>
-        <p>GBP optimisé, citations locales (Pages Jaunes, Yelp, PJ), workflow avis, schema LocalBusiness. Pour artisans, cabinets, multi-sites&nbsp;: <b>visibilité garantie sur le bassin</b>.</p>
+        <p>Fiche établissement, citations locales, workflow d'avis et schema LocalBusiness peuvent améliorer la lisibilité locale. Aucune position ni visibilité n'est garantie.</p>
       </div>
 
       <div class="ads-serp-zone-card">

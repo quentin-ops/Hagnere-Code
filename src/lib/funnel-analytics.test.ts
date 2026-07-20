@@ -7,7 +7,11 @@ describe("trackFunnelEvent", () => {
   const fetch = vi.fn(() => Promise.resolve(new Response(null, { status: 204 })));
 
   beforeEach(() => {
-    vi.clearAllMocks();
+    vi.unstubAllEnvs();
+    sendBeacon.mockReset();
+    sendBeacon.mockReturnValue(true);
+    fetch.mockReset();
+    fetch.mockResolvedValue(new Response(null, { status: 204 }));
     vi.stubGlobal("window", {
       location: { pathname: "/livres-blancs/comparer-devis-site-internet" },
       navigator: { sendBeacon },
@@ -17,6 +21,7 @@ describe("trackFunnelEvent", () => {
 
   afterEach(() => {
     vi.unstubAllGlobals();
+    vi.unstubAllEnvs();
   });
 
   it("autorise l'état de capture partielle du formulaire", () => {
@@ -63,5 +68,36 @@ describe("trackFunnelEvent", () => {
     });
 
     expect(() => trackFunnelEvent("white_paper_grid_copy")).not.toThrow();
+  });
+
+  it("does not send analytics when the enabled banner was refused", () => {
+    vi.stubEnv("NEXT_PUBLIC_COOKIE_BANNER", "1");
+    Object.assign(window, {
+      localStorage: {
+        getItem: vi.fn(() =>
+          JSON.stringify({ necessary: true, analytics: false, ts: Date.now() }),
+        ),
+      },
+    });
+
+    trackFunnelEvent("guide_cta_click");
+
+    expect(sendBeacon).not.toHaveBeenCalled();
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("sends analytics after an explicit positive choice", () => {
+    vi.stubEnv("NEXT_PUBLIC_COOKIE_BANNER", "true");
+    Object.assign(window, {
+      localStorage: {
+        getItem: vi.fn(() =>
+          JSON.stringify({ necessary: true, analytics: true, ts: Date.now() }),
+        ),
+      },
+    });
+
+    trackFunnelEvent("guide_cta_click");
+
+    expect(sendBeacon).toHaveBeenCalledOnce();
   });
 });

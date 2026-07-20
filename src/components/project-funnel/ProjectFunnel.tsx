@@ -292,7 +292,7 @@ const TERM_DEFINITIONS: Record<string, string> = {
   "Tracking conversions": "Compter qui clique, qui achète, qui s'inscrit, pour piloter le marketing.",
   "Tracking server-side": "Tracking côté serveur — plus fiable, contourne les bloqueurs de pub.",
   "Schema.org": "Balises invisibles qui aident Google à mieux comprendre les pages.",
-  "GTM Server": "Google Tag Manager côté serveur — pour un tracking propre et conforme RGPD.",
+  "GTM Server": "Google Tag Manager côté serveur — pour mieux maîtriser les flux de mesure ; le paramétrage et les bases légales restent à valider.",
   "Attribution multi-touch": "Mesurer quelles pubs/canaux contribuent à une vente.",
   // Dev / archi
   "API publique + webhooks": "Permettre à d'autres logiciels de communiquer automatiquement avec le vôtre.",
@@ -301,16 +301,16 @@ const TERM_DEFINITIONS: Record<string, string> = {
   "Multi-tenant": "Une appli, plusieurs clients isolés.",
   "PWA": "Application web installable comme une app, fonctionne hors-ligne.",
   // Compliance
-  "DPA / sous-traitants": "Contrats RGPD obligatoires avec les outils tiers (Stripe, hébergeur, etc.).",
+  "DPA / sous-traitants": "Clauses à vérifier avec les prestataires qui traitent des données pour votre compte.",
   "DPA existants": "Contrats RGPD déjà signés avec vos sous-traitants.",
   "AI Act": "Règlement européen sur l'IA — applicable depuis 2024.",
   "RGPD": "Règlement européen sur la protection des données personnelles.",
-  "Consent Mode": "Système de gestion des cookies conforme RGPD.",
+  "Consent Mode": "Paramétrage du tracking selon le choix de l'utilisateur ; il ne remplace ni la CMP ni l'analyse juridique.",
   // E-commerce
   "Stripe": "Plateforme de paiement en ligne (cartes, abonnements).",
   "Alma": "Solution de paiement en plusieurs fois (3x, 4x).",
   "Pennylane": "Logiciel de comptabilité pour PME françaises.",
-  "Chorus Pro / Factur-X": "Norme française obligatoire pour la facturation électronique.",
+  "Chorus Pro / Factur-X": "Portail et format de facture électronique à sélectionner selon votre calendrier et votre cas d'usage.",
   // Tracking outils
   "Sentry": "Outil pour détecter les bugs en production avant les clients.",
   "Better Stack / Grafana": "Outils de monitoring : voir si le service fonctionne en temps réel.",
@@ -541,7 +541,7 @@ const COMBO_BONUS_OBJECTIVES: Array<{
     kinds: ["ecommerce", "content"],
     objectives: [
       "Pipeline DTC : produit + contenu + UGC mensuel",
-      "Production de creatives Ads en interne (pas de prestataire externe)",
+      "Production de creatives avec intervenants identifiés au devis",
     ],
   },
   {
@@ -563,14 +563,14 @@ const COMBO_BONUS_OBJECTIVES: Array<{
     kinds: ["saas", "maintenance"],
     objectives: [
       "Lancer puis maintenir le SaaS sans dette",
-      "Garantir uptime 99,9 %+ dès le lancement",
+      "Définir un objectif de disponibilité et ses conditions de mesure",
     ],
   },
   {
     kinds: ["ecommerce", "maintenance"],
     objectives: [
       "Boutique + run sécurisé (SLA, monitoring, patches)",
-      "Garantir disponibilité pendant les pics de vente",
+      "Préparer les pics de vente avec tests, alertes et capacité adaptée",
     ],
   },
   {
@@ -601,8 +601,8 @@ const COMBO_BONUS_OBJECTIVES: Array<{
   {
     kinds: ["saas", "security"],
     objectives: [
-      "SaaS B2B prêt pour les grands comptes (DPA, SOC2)",
-      "Compliance dès la construction (privacy by design)",
+      "Cadrer les preuves demandées par les grands comptes (DPA, sécurité, certifications éventuelles)",
+      "Intégrer la protection des données dès la conception",
     ],
   },
   {
@@ -618,7 +618,7 @@ const COMBO_BONUS_OBJECTIVES: Array<{
     kinds: ["outil", "maintenance"],
     objectives: [
       "Outil interne + run mensuel (évolutions, patches, support)",
-      "Internalisation progressive : outil + équipe dédiée à l'évolution",
+      "Préparer l'internalisation et le dispositif d'évolution au devis",
     ],
   },
   {
@@ -661,8 +661,8 @@ const COMBO_BONUS_OBJECTIVES: Array<{
   {
     kinds: ["outil", "security"],
     objectives: [
-      "Outil métier conforme RGPD (logs, droits, sous-traitants documentés)",
-      "Compliance dès la conception pour éviter les audits CNIL",
+      "Intégrer logs, droits et documentation des sous-traitants au périmètre",
+      "Documenter les choix de protection des données dès la conception",
     ],
   },
 
@@ -716,7 +716,7 @@ const COMBO_BONUS_OBJECTIVES: Array<{
   {
     kinds: ["content", "ads"],
     objectives: [
-      "Production interne de creatives Ads (zero externe = vitesse + ROAS)",
+      "Organiser la production de créations Ads et mesurer leur contribution",
     ],
   },
 ];
@@ -859,7 +859,7 @@ function getContextFields(state: FunnelState) {
     return {
       descriptionLabel: "Décrivez le contexte sécurité / RGPD",
       descriptionPlaceholder:
-        "Ex : un grand compte demande un DPA, on collecte des données sensibles, on doit clarifier les sous-traitants, logs, durées de conservation et transferts...",
+        "Ex : un grand compte demande un DPA et nous devons clarifier les catégories de données, sous-traitants, logs, durées de conservation et transferts. N'indiquez aucune donnée personnelle réelle ici.",
       situationLabel: "Données et sous-traitants",
       situationPlaceholder: "Types de données, hébergement, outils tiers, pays, contrats, consentement, politique actuelle...",
       audienceLabel: "Qui doit être rassuré ?",
@@ -2001,7 +2001,7 @@ export function ProjectFunnel() {
             <span>
               <Check size={13} strokeWidth={3} />{" "}
               <Link href="/legal/confidentialite" style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}>
-                Données privées, conforme RGPD
+                Utilisation des données expliquée
               </Link>
             </span>
           </div>
@@ -2157,13 +2157,13 @@ export function ProjectFunnel() {
                   </div>
                   <div className="pf-social-proof-divider" aria-hidden="true" />
                   <div className="pf-social-proof-item">
-                    <b>100 %</b>
-                    <span>livrés à l&apos;heure</span>
+                    <b>Jalons</b>
+                    <span>écrits au devis</span>
                   </div>
                   <div className="pf-social-proof-divider" aria-hidden="true" />
                   <div className="pf-social-proof-item">
-                    <b>30 j</b>
-                    <span>de garantie post-lancement</span>
+                    <b>Recette</b>
+                    <span>et correction au devis</span>
                   </div>
                 </div>
               </div>
@@ -2479,7 +2479,7 @@ export function ProjectFunnel() {
                   </div>
                   <div className="pf-reassure-item">
                     <ShieldCheck size={14} />
-                    <span><b>Vos données restent privées</b> &middot; pas de revente, conforme RGPD</span>
+                    <span><b>Vos données servent à vous répondre</b> &middot; pas de revente, modalités dans la politique de confidentialité</span>
                   </div>
                 </div>}
 
@@ -2550,8 +2550,8 @@ export function ProjectFunnel() {
               <dt>Que deviennent mes informations ?</dt>
               <dd>
                 Elles servent uniquement à qualifier votre demande et à vous répondre.
-                Pas de revente, pas de newsletter forcée — suppression sur simple demande,
-                conformément au RGPD.
+                Pas de revente ni de newsletter forcée. Les droits, durées de conservation
+                et modalités de demande sont détaillés dans notre politique de confidentialité.
               </dd>
             </div>
             <div className="pf-faq-item">

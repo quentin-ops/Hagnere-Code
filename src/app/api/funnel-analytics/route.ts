@@ -1,5 +1,9 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { FUNNEL_EVENT_NAMES } from "@/lib/funnel-analytics";
+import {
+  PayloadTooLargeError,
+  readRequestBytesWithLimit,
+} from "@/lib/read-request-body";
 
 export const runtime = "nodejs";
 
@@ -67,9 +71,15 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ error: "Origine refusée." }, { status: 403 });
   }
 
-  const rawBody = await request.text();
-  if (new TextEncoder().encode(rawBody).byteLength > MAX_BODY_BYTES) {
-    return Response.json({ error: "Payload trop volumineux." }, { status: 413 });
+  let rawBody: string;
+  try {
+    const bytes = await readRequestBytesWithLimit(request, MAX_BODY_BYTES);
+    rawBody = new TextDecoder().decode(bytes);
+  } catch (error) {
+    if (error instanceof PayloadTooLargeError) {
+      return Response.json({ error: "Payload trop volumineux." }, { status: 413 });
+    }
+    return Response.json({ error: "Payload invalide." }, { status: 400 });
   }
 
   const payload = parsePayload(rawBody);

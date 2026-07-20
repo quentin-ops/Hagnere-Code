@@ -141,7 +141,7 @@ export default function Home() {
           application/ld+json parsable par les crawlers. */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLd }}
+        dangerouslySetInnerHTML={{ __html: jsonLd.replace(/</g, "\\u003c") }}
       />
       <HomepageDesign />
     </>

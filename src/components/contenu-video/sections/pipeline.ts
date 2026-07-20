@@ -3,10 +3,10 @@ export const pipelineHtml = `
 <section class="cv-pipeline">
   <div class="wrap">
     <div class="cv-pipeline-head reveal">
-      <div class="eyebrow on-dark">— Deux voies, une seule équipe</div>
+      <div class="eyebrow on-dark">— Deux voies, des responsables identifiés</div>
       <h2 style="margin-top:14px">Vous tournez. <em>Ou on s'occupe de tout.</em></h2>
       <p>
-        On travaille avec <b>deux monteurs Adobe Premiere Pro seniors</b>. L'IA n'est jamais visible côté client
+        Le devis nomme le responsable du montage et les éventuels spécialistes. L'IA n'est jamais seule à valider
         — elle accélère notre post-production invisible (scripts, b-roll, transcription, traduction, shorts).
         Vous avez le <b>choix complet</b> sur le degré d'implication de votre équipe.
       </p>
@@ -46,7 +46,7 @@ export const pipelineHtml = `
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             </div>
             <div class="cv-step-body">
-              <strong>Montage Premiere Pro senior</strong>
+              <strong>Montage par l'intervenant identifié</strong>
               <span>Rythme, J-cut / L-cut, respiration. Un vrai monteur, pas un auto-cut IA.</span>
             </div>
             <span class="cv-step-tag cv-step-tag-human">HUMAIN</span>
@@ -135,7 +135,7 @@ export const pipelineHtml = `
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             </div>
             <div class="cv-step-body">
-              <strong>Montage Premiere Pro senior</strong>
+              <strong>Montage par l'intervenant identifié</strong>
               <span>Un vrai monteur assemble. Jamais d'auto-cut seul — le rythme décide, pas l'algo.</span>
             </div>
             <span class="cv-step-tag cv-step-tag-human">HUMAIN</span>
@@ -164,7 +164,7 @@ export const pipelineHtml = `
 
         <div class="cv-track-foot">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          <span>Délai typique · <b>10 à 14 jours</b> de brief à livraison</span>
+          <span>Calendrier indicatif · <b>confirmé après brief</b> selon tournage, droits et validations</span>
         </div>
       </article>
     </div>

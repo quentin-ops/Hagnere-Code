@@ -148,11 +148,11 @@ export const arsenalHtml = `
             </div>
             <div>
               <div class="at-arsenal-tool-name">Datadog APM snapshot</div>
-              <div class="at-arsenal-tool-kind">Traces 30 jours · p95/p99</div>
+              <div class="at-arsenal-tool-kind">Traces et percentiles · si autorisés</div>
             </div>
           </div>
-          <div class="at-arsenal-tool-body">Branchement APM temporaire (trial enterprise) pour capturer <b>30 jours de traces, p95/p99 latence, DB slow queries, erreurs en cascade</b>. Vue exhaustive du comportement réel de votre app en production, sans se baser sur du déclaratif.</div>
-          <div class="at-arsenal-tool-chip">30 j traces live · révoqué J+11</div>
+          <div class="at-arsenal-tool-body">Une connexion APM temporaire peut être proposée pour examiner <b>les percentiles de latence, requêtes lentes et erreurs disponibles</b>. L'outil, la durée, l'échantillon, les droits d'accès et la révocation sont définis au devis avec votre équipe.</div>
+          <div class="at-arsenal-tool-chip">Périmètre et révocation au devis</div>
         </div>
 
         <div class="at-arsenal-tool">

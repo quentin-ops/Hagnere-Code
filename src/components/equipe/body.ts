@@ -1,5 +1,9 @@
 import { navHtml } from "@/components/design-shared/nav-html";
-import { TEAM_PUBLIC_COMPOSITION, TEAM_TOTAL_COUNT } from "@/lib/team";
+import {
+  TEAM_OTHER_DEVELOPERS_COUNT,
+  TEAM_PUBLIC_COMPOSITION,
+  TEAM_TOTAL_COUNT,
+} from "@/lib/team";
 
 export const bodyHtml = `
 ${navHtml}
@@ -131,20 +135,20 @@ ${navHtml}
   <div class="wrap">
     <div class="kpi-grid">
       <div class="kpi reveal">
-        <div class="kpi-n">7<span class="kpi-s"></span></div>
-        <div class="kpi-l">Développeurs travaillent<br>avec le gérant.</div>
+        <div class="kpi-n">${TEAM_TOTAL_COUNT}<span class="kpi-s"></span></div>
+        <div class="kpi-l">Personnes au total,<br>gérant et CTO compris.</div>
       </div>
       <div class="kpi reveal reveal-d-1">
-        <div class="kpi-n">5<span class="kpi-s">+</span></div>
-        <div class="kpi-l">Années d'expérience<br>moyenne par personne.</div>
+        <div class="kpi-n">${TEAM_OTHER_DEVELOPERS_COUNT}<span class="kpi-s"></span></div>
+        <div class="kpi-l">Développeurs en plus<br>du gérant et du CTO.</div>
       </div>
       <div class="kpi reveal reveal-d-2">
         <div class="kpi-n">0<span class="kpi-s">%</span></div>
         <div class="kpi-l">Offshore, white-label,<br>pool anonyme.</div>
       </div>
       <div class="kpi reveal reveal-d-3">
-        <div class="kpi-n">100<span class="kpi-s">%</span></div>
-        <div class="kpi-l">De l'équipe outillée<br>avec Claude Code.</div>
+        <div class="kpi-n">1<span class="kpi-s"></span></div>
+        <div class="kpi-l">Source d'effectif<br>commune à tout le site.</div>
       </div>
     </div>
   </div>
@@ -352,7 +356,7 @@ ${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— L'équipe tech</div>
-        <h2>Cinq développeurs seniors<br>aux compétences complémentaires.</h2>
+        <h2>Quatre seniors et un développeur confirmé,<br>aux compétences complémentaires.</h2>
       </div>
       <div class="right">
         Paiements, temps-réel, IA, DevOps, renforts full-stack. <b>Frédéric</b>, <b>Killian</b>,
@@ -866,7 +870,7 @@ ${navHtml}
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
         </div>
         <h4>Code &amp; data chez vous</h4>
-        <p>Repo Git sur votre compte dès J+1. Données hébergées en France sous votre nom. Vous pouvez à tout moment tout récupérer et le faire travailler par une autre équipe.</p>
+        <p>Les accès au dépôt et à l'hébergement sont organisés selon le devis. La réversibilité et le transfert des livrables spécifiques suivent les CGV et interviennent après paiement complet.</p>
       </div>
 
       <div class="val-card reveal">
@@ -874,7 +878,7 @@ ${navHtml}
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
         </div>
         <h4>Honnêteté dans le diagnostic</h4>
-        <p>Si on n'est pas la bonne équipe pour vous, on vous le dit dès le call de cadrage et on vous oriente ailleurs. Gratuitement. C'est arrivé 8 fois en 2 ans.</p>
+        <p>Si nous ne sommes pas la bonne équipe, nous le disons pendant le cadrage et pouvons suggérer un profil plus adapté, sans inventer de statistique historique.</p>
       </div>
 
       <div class="val-card reveal reveal-d-1">
@@ -882,7 +886,7 @@ ${navHtml}
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
         </div>
         <h4>Délais tenus</h4>
-        <p>Date de livraison fixée et <b>contractualisée au cadrage</b>. Pénalité de retard prévue dans chaque devis. Si on dérape, c'est nous qui payons — pas vous.</p>
+        <p>Le devis fixe les jalons, les dépendances et la procédure applicable en cas d'écart. Une pénalité n'existe que si elle est expressément acceptée dans le document signé.</p>
       </div>
     </div>
   </div>
@@ -1040,12 +1044,10 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Non.</b> Claude Code est un assistant de développement (recherche, exploration,
-            plans d'implémentation) que <b>chaque dev pilote activement</b>. Le code commit
-            est revu par un humain à 100 %. Cela nous permet d'aller environ 3 fois plus vite
-            sur les phases d'exploration et de cadrage, et de poser <b>moins de questions</b>
-            au client (« j'ai déjà demandé à Claude pour ce point, voilà ce que ça donne, valide-tu ? »).
-            Vous bénéficiez de la productivité, vous ne payez pas le surcoût d'une équipe IA.
+            <b>Non.</b> Claude Code peut assister la recherche, l'exploration et la préparation
+            d'un changement. Une personne nommée reste responsable du besoin, des choix, des tests et de la
+            validation avant intégration. L'usage éventuel de l'IA ne remplace ni la revue ni les preuves,
+            et nous ne publions pas de multiplicateur de productivité non mesuré.
           </div>
         </div>
 

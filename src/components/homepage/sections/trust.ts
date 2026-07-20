@@ -9,8 +9,8 @@ export const trustHtml = `
       </div>
       <div class="right">
         Pas d'awards obscurs, pas de faux avis, pas de logos inventés. Voici les
-        engagements que l'on peut réellement tenir aujourd'hui : propriété du code,
-        forfait clair, équipe identifiée et produits déjà opérés en production.
+        points que nous cadrons avant de commencer&nbsp;: droits sur les livrables,
+        prix, équipe identifiée et éléments de réversibilité.
       </div>
     </div>
 
@@ -21,8 +21,8 @@ export const trustHtml = `
           <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
         <div class="tr-body">
-          <div class="tr-title">Code &amp; données à vous dès J1</div>
-          <div class="tr-sub">Repo Git sur votre organisation, hébergement à votre nom, aucun lock-in.</div>
+          <div class="tr-title">Livrables, accès et droits écrits</div>
+          <div class="tr-sub">Transfert après paiement selon les CGV, dépôt et réversibilité détaillés au devis.</div>
         </div>
       </div>
 
@@ -61,8 +61,8 @@ export const trustHtml = `
           <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
         </div>
         <div class="tr-body">
-          <div class="tr-title">30 jours de garantie</div>
-          <div class="tr-sub">Bugs bloquants post-livraison pris en charge sous 4 h ouvrées, corrigés gratuitement sous 48 h ouvrées.</div>
+          <div class="tr-title">Recette et correction cadrées</div>
+          <div class="tr-sub">Période, sévérités, couverture et délais cibles sont ceux du devis signé.</div>
         </div>
       </div>
     </div>

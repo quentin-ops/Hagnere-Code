@@ -6,35 +6,35 @@ export const trackingSchemaHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow on-dark">— La mesure en 2026</div>
-        <h2 style="color:#fff">Google et Meta voient la moitié<br>de vos conversions. On récupère<br>l'autre moitié.</h2>
+        <h2 style="color:#fff">Relier les événements publicitaires<br>aux données réellement exploitables.</h2>
       </div>
       <div class="right" style="color:rgba(255,255,255,0.65)">
-        iOS 14, Consent Mode v2, ITP Safari, ad blockers : le tracking client-side perd
-        <b style="color:#fff">30 à 50 % du signal</b>. Notre stack server-side reconnecte vos Ads à la réalité CRM.
+        Les restrictions des navigateurs, le consentement et les bloqueurs réduisent la mesure disponible.
+        Une architecture server-side peut améliorer la fiabilité technique, sans contourner le choix de l'utilisateur ni garantir un volume récupéré.
       </div>
     </div>
 
     <!-- STATS : signal recovery -->
     <div class="ads-track-stats reveal">
       <div class="ads-track-stat">
-        <div class="ads-track-stat-v">+42<span>%</span></div>
-        <div class="ads-track-stat-k">Signaux de conversion récupérés</div>
-        <div class="ads-track-stat-n">vs. setup client-side classique</div>
+        <div class="ads-track-stat-v">PLAN</div>
+        <div class="ads-track-stat-k">Événements et finalités inventoriés</div>
+        <div class="ads-track-stat-n">avant toute implémentation</div>
       </div>
       <div class="ads-track-stat ads-track-stat-hot">
-        <div class="ads-track-stat-v">×2,3</div>
-        <div class="ads-track-stat-k">ROAS affiché plus proche du réel</div>
-        <div class="ads-track-stat-n">matching CRM vs. plateformes</div>
+        <div class="ads-track-stat-v">TEST</div>
+        <div class="ads-track-stat-k">Déduplication et recettes documentées</div>
+        <div class="ads-track-stat-n">sur les destinations retenues</div>
       </div>
       <div class="ads-track-stat">
-        <div class="ads-track-stat-v">100<span>%</span></div>
-        <div class="ads-track-stat-k">Conforme RGPD &amp; Consent Mode v2</div>
-        <div class="ads-track-stat-n">modeled conversions incluses</div>
+        <div class="ads-track-stat-v">DROITS</div>
+        <div class="ads-track-stat-k">Consentement et minimisation cadrés</div>
+        <div class="ads-track-stat-n">avec validation juridique côté client</div>
       </div>
       <div class="ads-track-stat">
-        <div class="ads-track-stat-v">3<span>sem.</span></div>
-        <div class="ads-track-stat-k">Pour déployer toute la stack</div>
-        <div class="ads-track-stat-n">GTM SS + CAPI + EC + CRM webhook</div>
+        <div class="ads-track-stat-v">DEVIS</div>
+        <div class="ads-track-stat-k">Délai adapté aux accès</div>
+        <div class="ads-track-stat-n">CMS, DNS, CMP, plateformes et CRM</div>
       </div>
     </div>
 
@@ -50,7 +50,7 @@ export const trackingSchemaHtml = `
           </div>
         </div>
         <h4>Browser &amp; App</h4>
-        <p>Visite, scroll, clic, formulaire, achat. First-party domain, cookies modernes, zéro pixel tiers qui casse sous ITP.</p>
+        <p>Visite, clic, formulaire ou achat selon le plan de marquage autorisé. Le domaine first-party ne neutralise ni ITP, ni le consentement, ni les bloqueurs.</p>
         <div class="ads-track-node-tags">
           <span>user.id</span>
           <span>event.id</span>
@@ -70,7 +70,7 @@ export const trackingSchemaHtml = `
           </div>
         </div>
         <h4>GTM Client minimal</h4>
-        <p>Un seul script léger, pas une forêt de tags. Déclenche l'envoi vers notre conteneur serveur, jamais directement vers Meta ou Google.</p>
+        <p>Un plan de tags limité et documenté. Le routage direct ou server-side est choisi selon la plateforme et la configuration validée.</p>
         <div class="ads-track-node-tags">
           <span>dataLayer</span>
           <span>first-party</span>
@@ -90,7 +90,7 @@ export const trackingSchemaHtml = `
           </div>
         </div>
         <h4>GTM Server Container</h4>
-        <p>Notre zone. Dedupe, enrichit (hash SHA-256 email/phone), filtre bots, applique Consent Mode, prépare les payloads par destination.</p>
+        <p>Déduplique, filtre et prépare les données autorisées par destination. Le hachage n'anonymise pas automatiquement une donnée personnelle.</p>
         <div class="ads-track-node-tags">
           <span>dedupe</span>
           <span>enrich</span>
@@ -130,7 +130,7 @@ export const trackingSchemaHtml = `
           <span class="ads-track-zone-k">First-party data</span>
         </div>
         <h4>Vos données, collectées sur votre domaine</h4>
-        <p>Pas de cookies tiers bloqués par Safari / ITP / Firefox. Pas de pixels coupés par uBlock. <b>Chaque event part de votre sous-domaine</b> (ex. <code>metrics.votresite.com</code>).</p>
+        <p>Un sous-domaine first-party peut être prévu (ex. <code>metrics.votresite.com</code>). Il ne doit pas servir à contourner un refus de consentement ou les protections du navigateur.</p>
       </div>
 
       <div class="ads-track-zone-card">
@@ -139,7 +139,7 @@ export const trackingSchemaHtml = `
           <span class="ads-track-zone-k">Dedupe &amp; filtering</span>
         </div>
         <h4>1 conversion = 1 ligne propre</h4>
-        <p>Un achat envoyé à Meta ET Google ET GA4 ET votre CRM, dedupé par <code>event_id</code>. <b>Fini les "Meta remonte 47 conv, le CRM en voit 19"</b>. Tout le monde voit la même vérité.</p>
+        <p>Un identifiant <code>event_id</code> permet de tester la déduplication entre destinations. Les écarts d'attribution peuvent subsister car les plateformes n'emploient pas toutes le même modèle.</p>
       </div>
 
       <div class="ads-track-zone-card">
@@ -148,7 +148,7 @@ export const trackingSchemaHtml = `
           <span class="ads-track-zone-k">Conversion APIs</span>
         </div>
         <h4>Les algos reçoivent enfin du signal propre</h4>
-        <p>Meta CAPI, Google Enhanced Conv., LinkedIn Conv API envoyés côté serveur avec email/phone hashés. <b>Enhanced Match 70-90 %</b> au lieu de 15-30 % en client-side.</p>
+        <p>Meta CAPI, Google Enhanced Conversions ou LinkedIn Conversion API peuvent recevoir certains champs hachés lorsque la base légale, le consentement et les règles de la plateforme le permettent.</p>
       </div>
 
       <div class="ads-track-zone-card">
@@ -157,7 +157,7 @@ export const trackingSchemaHtml = `
           <span class="ads-track-zone-k">CRM attribution</span>
         </div>
         <h4>Le lead devient client qualifié → won</h4>
-        <p>Webhook vers HubSpot / Salesforce / Pipedrive / Zoho. Chaque stage (MQL, SQL, won, lost) remonte dans Ads et Looker. <b>Vous optimisez sur les deals signés, pas sur les form submits.</b></p>
+        <p>Un webhook CRM peut rapprocher les étapes MQL, SQL, won ou lost des campagnes lorsque les identifiants sont disponibles et que ce traitement est documenté.</p>
       </div>
 
       <div class="ads-track-zone-card">
@@ -165,8 +165,8 @@ export const trackingSchemaHtml = `
           <span class="ads-track-zone-n">05</span>
           <span class="ads-track-zone-k">Consent Mode v2</span>
         </div>
-        <h4>RGPD sans perdre la mesure</h4>
-        <p>Si le visiteur refuse les cookies, on envoie des signaux "ad_storage=denied" + modeled conversions Google. <b>Conforme CNIL, toujours un peu de donnée</b>. Pas de trou noir 40 %.</p>
+        <h4>Respecter le choix avant de mesurer</h4>
+        <p>Les signaux <code>denied</code> et la modélisation éventuelle sont configurés selon la CMP et la validation juridique du client. Un refus ne donne pas droit à une collecte équivalente.</p>
       </div>
 
       <div class="ads-track-zone-card">
@@ -175,7 +175,7 @@ export const trackingSchemaHtml = `
           <span class="ads-track-zone-k">Looker Studio</span>
         </div>
         <h4>Ads × CRM × margin, une seule vue</h4>
-        <p>Dashboard live connecté au server-side. Vous voyez <b>CAC, LTV, payback</b>, margin contribuée par canal et par campagne. Le PDF d'impressions, c'est fini.</p>
+        <p>Le tableau de bord expose les indicateurs calculables à partir des sources effectivement reliées, avec définitions et limites d'attribution.</p>
       </div>
     </div>
   </div>

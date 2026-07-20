@@ -10,7 +10,7 @@ export const arsenalHtml = `
       <div class="right">
         Neuf outils, trois phases. Aucun ne fait le travail à notre place —
         chacun documente, accélère ou vérifie une étape précise de la méthode.
-        <b>Tous inclus dans votre forfait, zéro rebilling.</b>
+        <b>Le devis indique lesquels sont nécessaires, qui porte les licences et leur coût.</b>
       </div>
     </div>
 
@@ -94,7 +94,7 @@ export const arsenalHtml = `
               <div class="ads-arsenal-tool-kind">Production variantes statiques</div>
             </div>
           </div>
-          <div class="ads-arsenal-tool-body">Templates Meta / Google / LinkedIn / TikTok. <b>8 à 12 variantes par batch mensuel</b> produites depuis un système de design homogène.</div>
+          <div class="ads-arsenal-tool-body">Templates Meta, Google, LinkedIn ou TikTok. <b>Le volume de variantes et la personne qui les produit</b> sont précisés au devis.</div>
           <div class="ads-arsenal-tool-chip">Templates réutilisables</div>
         </div>
 
@@ -129,8 +129,8 @@ export const arsenalHtml = `
               <div class="ads-arsenal-tool-kind">Landing A/B rapides</div>
             </div>
           </div>
-          <div class="ads-arsenal-tool-body">Landing pages indépendantes du site principal, mises en ligne en 1 h, A/B natif. <b>On teste hero, offre, social proof</b> sans passer par votre équipe dev.</div>
-          <div class="ads-arsenal-tool-chip">Déploiement 1 h</div>
+          <div class="ads-arsenal-tool-body">Landing pages indépendantes du site principal lorsque l'accès et la gouvernance le permettent. <b>La publication et les tests suivent une recette définie</b>.</div>
+          <div class="ads-arsenal-tool-chip">Délai au devis</div>
         </div>
       </div>
 
@@ -170,7 +170,7 @@ export const arsenalHtml = `
               <div class="ads-arsenal-tool-kind">Dashboard business</div>
             </div>
           </div>
-          <div class="ads-arsenal-tool-body">Ads × CRM × margin, refresh 4 h. <b>CAC, LTV, payback, margin contribuée</b> par canal et par campagne. Accessible à votre direction 24/7.</div>
+          <div class="ads-arsenal-tool-body">Ads × CRM × marge selon les sources disponibles. <b>Indicateurs et fréquence d'actualisation</b> sont définis avec leur méthode de calcul.</div>
           <div class="ads-arsenal-tool-chip">Licence Google · gratuite</div>
         </div>
 
@@ -190,7 +190,7 @@ export const arsenalHtml = `
               <div class="ads-arsenal-tool-kind">Heatmaps &amp; session recordings</div>
             </div>
           </div>
-          <div class="ads-arsenal-tool-body">Pour comprendre pourquoi vos landings ne convertissent pas. <b>Recordings anonymisés + heatmaps + rage clicks</b>. Les hypothèses A/B partent de là.</div>
+          <div class="ads-arsenal-tool-body">Heatmaps ou enregistrements de session peuvent nourrir des hypothèses si le paramétrage, le masquage et le consentement requis sont validés.</div>
           <div class="ads-arsenal-tool-chip">Revue mensuelle</div>
         </div>
       </div>

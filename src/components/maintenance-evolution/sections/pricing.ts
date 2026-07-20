@@ -28,7 +28,7 @@ export const pricingHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Audit code + dépendances + CVE</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Audit infra + backups + DR</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Plan de remédiation 12 mois chiffré</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Check-list sécurité SOC2-ready</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Check-list sécurité adaptée au référentiel visé</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Restitution 1h30 en visio</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Remise éventuelle uniquement si écrite au devis</li>
         </ul>
@@ -62,14 +62,14 @@ export const pricingHtml = `
         <div class="plan-badge">ÉVOLUTIONS RÉGULIÈRES</div>
         <div class="plan-tag">SCALE · ÉVOLUTION</div>
         <h4>Scale</h4>
-        <div class="plan-sub">Scale-up 30-150 salariés, SaaS en croissance. Équipe dédiée 2 pers., sprint mensuel d'évolutions, astreinte 7j/7.</div>
+        <div class="plan-sub">Scale-up ou SaaS en croissance. Capacité, rythme d'évolution et éventuelle astreinte sont dimensionnés dans le devis.</div>
         <div class="plan-price">
           <span class="amount">Sur devis</span>
           <span class="per">forfait mensuel</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>4-6 j/mois · 2 devs nommés</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Capacité mensuelle et intervenants précisés</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Stack obs complète + Grafana Cloud</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Astreinte optionnelle et chiffrée</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Support prioritaire selon horaires convenus</li>

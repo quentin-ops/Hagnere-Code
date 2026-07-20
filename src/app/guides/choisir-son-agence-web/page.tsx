@@ -189,9 +189,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -943,9 +943,10 @@ export default function Page() {
         <ul>
           <li>
             <strong>Testez ce site.</strong> Passez hagnere-code.ai
-            dans PageSpeed Insights en mode mobile. Nous garantissons
-            un score de 95 minimum par contrat à nos clients : il
-            serait malvenu que notre propre site n&apos;y soit pas.
+            dans PageSpeed Insights en mode mobile, puis regardez aussi
+            les données de terrain et les scripts tiers. Pour un projet,
+            un objectif de performance ne vaut que si les pages, conditions
+            et seuils sont écrits dans le devis.
           </li>
           <li>
             <strong>Vérifiez notre entreprise.</strong> Cherchez

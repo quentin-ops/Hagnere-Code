@@ -183,9 +183,9 @@ const faqJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json">{articleJsonLd}</script>
-      <script type="application/ld+json">{breadcrumbJsonLd}</script>
-      <script type="application/ld+json">{faqJsonLd}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
 
       <GuideLayout
         breadcrumbs={[
@@ -1016,8 +1016,9 @@ APP MÉTIER À 40 000 € — coût réel sur 3 ans
           écrite et précise, le prestataire reste propriétaire du code —
           même intégralement payé. Exigez la cession des droits et la remise
           du dépôt Git (l&apos;archive complète du code source). Chez
-          Hagnéré Code, le dépôt est sur le compte GitHub du client dès le
-          premier jour, et la cession est dans les CGV.
+          Hagnéré Code, les livrables spécifiques sont transférés après
+          paiement complet selon les CGV&nbsp;; le devis précise le dépôt,
+          les accès, les exclusions et les licences tierces.
         </p>
         <h3>RGPD, ATT et accessibilité</h3>
         <p>
@@ -1122,19 +1123,16 @@ APP MÉTIER À 40 000 € — coût réel sur 3 ans
         <p>
           Nous développons les applications en <strong>React Native +
           Expo</strong> — une seule base de code pour iOS et Android,
-          publiée sous vos comptes stores, avec un code qui vous appartient
-          dès le premier jour. Chaque projet est vendu en <strong>forfait
-          fixe contractuel</strong> établi après cadrage : le prix annoncé
-          est le prix payé, les dates sont contractuelles avec pénalité de
-          retard, la soumission aux stores est incluse (1 à 3 itérations de
-          review Apple), et 30 jours de garantie couvrent le
-          post-lancement. Les correctifs urgents partent en mise à jour à
-          distance (OTA) via EAS, sans attendre la review.
+          publiée sous les comptes prévus au devis. Le contrat inventorie le
+          dépôt, les accès, les droits transférés après paiement, les licences,
+          les étapes de soumission, les itérations incluses, la recette et la
+          période de correction. Les mises à jour OTA ne sont possibles que
+          pour les changements compatibles avec les règles des stores et la configuration retenue.
         </p>
         <p>
           Tout commence par un <strong>Discovery Sprint à 1 500 €</strong>{" "}
-          (2 jours) : périmètre écrit, prototype cliquable, devis ferme —
-          déduit à 100 % si le projet se lance. Nos{" "}
+          : durée, périmètre, prototype éventuel, livrables, prix et toute remise
+          sont ceux du devis signé. Nos{" "}
           <Link href="/realisations">réalisations</Link> et nos{" "}
           <Link href="/tarifs">tarifs</Link> sont publics.
         </p>

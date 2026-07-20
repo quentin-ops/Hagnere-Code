@@ -5,13 +5,13 @@ export const securityHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow on-dark">— Pensé pour passer le filtre DSI / RSSI</div>
-        <h2 style="margin-top:14px">Sécurité &amp; conformité,<br>de série.</h2>
+        <h2 style="margin-top:14px">Sécurité &amp; conformité,<br>cadrées avant de construire.</h2>
       </div>
       <div class="right">
         Un outil interne touche vos données sensibles (RH, commercial, finance, opérationnel).
-        On applique <b>par défaut</b> les exigences qu'un RSSI ETI demande : SSO entreprise,
-        permissions fines, audit trail, hébergement France, RGPD by design. Vous n'avez pas
-        à négocier ces cases en avenant.
+        Nous partons des risques, des obligations et de votre checklist DSI/RSSI. Le devis précise
+        les contrôles retenus, leur périmètre, les preuves attendues et qui les opère&nbsp;: aucune
+        certification ni conformité globale n'est déduite d'une simple liste de fonctions.
       </div>
     </div>
 
@@ -22,9 +22,9 @@ export const securityHtml = `
         </div>
         <h3>SSO Active Directory / Azure AD / Okta</h3>
         <p>
-          Connexion automatique depuis votre annuaire d'entreprise via <b>SAML 2.0 ou OIDC</b>.
-          Vos équipes n'ont aucun mot de passe nouveau à retenir. Provisioning / deprovisioning
-          automatique via SCIM pour les arrivées / départs.
+          SAML, OIDC et SCIM font partie des options étudiées lorsque l'annuaire, le fournisseur
+          d'identité et les licences le permettent. Les rôles, le MFA et le cycle de vie des comptes
+          sont testés sur votre configuration avant mise en production.
         </p>
         <div class="oi-sec-tags">
           <span>SAML 2.0</span><span>OIDC</span><span>SCIM</span><span>Azure AD</span><span>Okta</span><span>LDAP</span>
@@ -52,9 +52,9 @@ export const securityHtml = `
         </div>
         <h3>Audit trail &amp; traçabilité</h3>
         <p>
-          Chaque action utilisateur est <b>horodatée</b> : qui, quoi, quand, ancienne valeur, nouvelle
-          valeur. Exigence DAF pour les litiges et les contrôles internes (SAPIN II, SOX si groupe coté).
-          Exports CSV/JSON pour les audits externes.
+          Les événements sensibles à tracer sont définis avec vous&nbsp;: acteur, action, ressource,
+          horodatage et, si pertinent, valeurs avant/après. La rétention, l'intégrité et les exports
+          dépendent de la finalité et des obligations applicables.
         </p>
         <div class="oi-sec-tags">
           <span>Logs horodatés</span><span>Exports audit</span><span>Non-répudiation</span><span>SAPIN II</span>
@@ -67,9 +67,9 @@ export const securityHtml = `
         </div>
         <h3>RGPD by design</h3>
         <p>
-          DPA signé, registre des traitements à jour, gestion des droits (accès, rectification,
-          suppression), sous-traitants documentés, consentements et finalités tracés.
-          Données <b>hébergées en France</b> (Scaleway Paris / OVH Roubaix) par défaut.
+          Nous documentons les flux, sous-traitants et mesures techniques appartenant au périmètre.
+          Le DPA, le registre, les fonctions d'exercice des droits, les durées et la localisation sont
+          cadrés selon le rôle de chaque partie, avec votre DPO ou conseil pour la validation juridique.
         </p>
         <div class="oi-sec-tags">
           <span>DPA fourni</span><span>Registre traitements</span><span>Droit à l'oubli</span><span>Scaleway / OVH</span>
@@ -82,9 +82,9 @@ export const securityHtml = `
         </div>
         <h3>3 options de déploiement</h3>
         <p>
-          Selon votre exigence souveraineté : <b>(1) Cloud mutualisé Hagnéré</b> (Scaleway FR, le
-          plus rapide) ; <b>(2) Cloud client dédié</b> (AWS, Azure, OVH privé, sur votre compte) ;
-          <b>(3) On-premise</b> dans votre datacenter, image Docker livrée.
+          Plusieurs modèles peuvent être étudiés : environnement opéré, compte cloud du client ou
+          déploiement sur son infrastructure. La faisabilité, la responsabilité d'exploitation,
+          la localisation et la réversibilité sont écrites dans l'architecture et le devis.
         </p>
         <div class="oi-sec-tags">
           <span>Cloud mutualisé</span><span>Cloud client</span><span>On-premise</span><span>Hybrid</span>
@@ -97,12 +97,12 @@ export const securityHtml = `
         </div>
         <h3>Chiffrement &amp; sauvegardes</h3>
         <p>
-          <b>AES-256 at-rest</b>, <b>TLS 1.3 in-transit</b>, secrets dans un coffre chiffré (Vault / AWS KMS).
-          Sauvegardes PostgreSQL toutes les 15 min + snapshots hebdo conservés 1 an, stockés
-          sur un <b>second provider</b> (règle 3-2-1). RTO 2 h, RPO 15 min documentés.
+          Les mécanismes de chiffrement au repos et en transit, la gestion des secrets, les sauvegardes
+          et les accès sont choisis selon l'architecture retenue. Les objectifs de reprise ne sont annoncés
+          qu'après documentation des dépendances et tests de restauration.
         </p>
         <div class="oi-sec-tags">
-          <span>AES-256</span><span>TLS 1.3</span><span>Backups 15 min</span><span>RTO 2h</span>
+          <span>Chiffrement</span><span>Transport sécurisé</span><span>Rétention cadrée</span><span>Reprise testée</span>
         </div>
       </div>
     </div>
