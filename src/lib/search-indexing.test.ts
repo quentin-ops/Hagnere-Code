@@ -12,11 +12,20 @@ function pageSources(dir: string): string[] {
 }
 
 describe("search indexing environment", () => {
-  it("enables indexing only for an explicit production build", () => {
+  it("uses the explicit environment outside a deployment platform", () => {
     expect(isSearchIndexingEnabled("production")).toBe(true);
+    expect(isSearchIndexingEnabled("production\n")).toBe(true);
     expect(isSearchIndexingEnabled("development")).toBe(false);
     expect(isSearchIndexingEnabled("preview")).toBe(false);
-    expect(isSearchIndexingEnabled(undefined)).toBe(false);
+  });
+
+  it("makes the Vercel environment authoritative when it is available", () => {
+    expect(isSearchIndexingEnabled(undefined, "production")).toBe(true);
+    expect(isSearchIndexingEnabled("preview", "production")).toBe(true);
+    expect(isSearchIndexingEnabled("production", "preview")).toBe(false);
+    expect(isSearchIndexingEnabled(undefined, "preview")).toBe(false);
+    expect(isSearchIndexingEnabled(undefined, "development")).toBe(false);
+    expect(isSearchIndexingEnabled(undefined, undefined)).toBe(false);
   });
 
   it("keeps positive robots directives centralized in the root layout", () => {
