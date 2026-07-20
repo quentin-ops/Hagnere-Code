@@ -21,7 +21,10 @@ const geistMono = Geist_Mono({
   display: "optional",
 });
 
-const isProd = isSearchIndexingEnabled(process.env.NEXT_PUBLIC_ENV);
+const isProd = isSearchIndexingEnabled(
+  process.env.NEXT_PUBLIC_ENV,
+  process.env.VERCEL_ENV,
+);
 const isCookieBannerEnabled =
   process.env.NEXT_PUBLIC_COOKIE_BANNER === "1" ||
   process.env.NEXT_PUBLIC_COOKIE_BANNER === "true";

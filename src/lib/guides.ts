@@ -635,7 +635,10 @@ export const PUBLISHED_GUIDES = GUIDES.filter(
 export function guideRobots(guide: GuideEntry) {
   const canBeIndexed =
     guide.editorialStatus !== "ready-for-human-review" &&
-    isSearchIndexingEnabled(process.env.NEXT_PUBLIC_ENV);
+    isSearchIndexingEnabled(
+      process.env.NEXT_PUBLIC_ENV,
+      process.env.VERCEL_ENV,
+    );
 
   return canBeIndexed
     ? ({ index: true, follow: true } as const)

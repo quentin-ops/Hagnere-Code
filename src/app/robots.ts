@@ -3,7 +3,10 @@ import { isSearchIndexingEnabled } from "@/lib/search-indexing";
 import { SITE_URL } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
-  const isProd = isSearchIndexingEnabled(process.env.NEXT_PUBLIC_ENV);
+  const isProd = isSearchIndexingEnabled(
+    process.env.NEXT_PUBLIC_ENV,
+    process.env.VERCEL_ENV,
+  );
 
   if (!isProd) {
     return {
