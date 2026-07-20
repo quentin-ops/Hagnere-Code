@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { trackFunnelEvent } from "@/lib/funnel-analytics";
+import { isAnalyticsAllowed } from "@/lib/cookie-consent";
 
 /**
  * Émet l'événement de conversion à l'affichage de la page /merci.
@@ -10,6 +11,7 @@ import { trackFunnelEvent } from "@/lib/funnel-analytics";
  */
 export function ConversionTracker() {
   useEffect(() => {
+    if (!isAnalyticsAllowed()) return;
     // Un seul événement par session — un refresh de /merci ne doit pas
     // compter deux conversions.
     const key = "pf:converted";

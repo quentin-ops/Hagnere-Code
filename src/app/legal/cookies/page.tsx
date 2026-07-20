@@ -3,17 +3,17 @@ import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
 import { cookiesSections } from "@/components/legal/content/cookies";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
-const LAST_UPDATED = "2026-04-26";
+const LAST_UPDATED = "2026-07-20";
 
 export const metadata: Metadata = {
-  title: "Politique cookies · Zéro tracker publicitaire · Hagnéré Code",
+  title: "Politique cookies et stockages · Hagnéré Code",
   description:
     "Aucun cookie publicitaire ni analytics tiers sur hagnere-code.ai. La liste complète des stockages navigateur et le cas du widget Calendly.",
   alternates: { canonical: "/legal/cookies" },
   openGraph: {
     ...OG_BASE,
     type: "article",
-    title: "Politique cookies · Zéro tracker publicitaire · Hagnéré Code",
+    title: "Politique cookies et stockages · Hagnéré Code",
     description:
       "Gestion des cookies, services tiers et choix utilisateur sur hagnere-code.ai.",
     url: "/legal/cookies",

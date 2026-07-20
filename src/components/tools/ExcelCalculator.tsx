@@ -402,8 +402,9 @@ export function ExcelCalculator() {
               <label className="calc-capture-consent">
                 <input type="checkbox" name="consent" required />
                 <span>
-                  J&apos;accepte que ces informations soient utilisées uniquement
-                  pour traiter et répondre à ma demande.{" "}
+                  J&apos;ai pris connaissance de la politique de confidentialité et
+                  je demande à Hagnéré Code de traiter ces informations pour me
+                  répondre (mesures précontractuelles).{" "}
                   <Link href="/legal/confidentialite">Politique de confidentialité</Link>
                 </span>
               </label>

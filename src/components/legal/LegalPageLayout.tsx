@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
@@ -34,8 +35,18 @@ type Props = {
   sections: LegalSection[];
 };
 
+const LEGAL_PAGES = [
+  { href: "/legal/mentions", label: "Mentions légales" },
+  { href: "/legal/confidentialite", label: "Confidentialité" },
+  { href: "/legal/cookies", label: "Cookies" },
+  { href: "/legal/cgv", label: "Conditions générales de vente" },
+  { href: "/legal/reclamations", label: "Réclamations" },
+  { href: "/legal/accessibilite", label: "Accessibilité" },
+] as const;
+
 function formatDate(iso: string): string {
-  const d = new Date(iso);
+  // Noon in local time keeps a date-only value stable across time zones.
+  const d = new Date(`${iso}T12:00:00`);
   return d.toLocaleDateString("fr-FR", {
     year: "numeric",
     month: "long",
@@ -51,6 +62,8 @@ export function LegalPageLayout({
   sections,
 }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+  const titleLines = title.split("\n");
   useDesignInteractive(rootRef);
 
   // ----- ScrollSpy : highlight the ToC item matching the section in view.
@@ -115,68 +128,49 @@ export function LegalPageLayout({
       <MainNav />
 
       {/* Hero */}
-      <section className="lp-hero">
+      <header className="lp-hero">
         <div className="lp-hero-bg-grid" aria-hidden="true" />
         <div className="lp-hero-radial" aria-hidden="true" />
         <div className="wrap lp-hero-inner">
-          <div className="crumb">
-            <Link href="/">Accueil</Link>
-            <span className="sep">/</span>
-            <Link href="/legal/mentions">Légal</Link>
-            <span className="sep">/</span>
-            <span>{breadcrumb}</span>
-          </div>
+          <nav className="lp-breadcrumb" aria-label="Fil d’Ariane">
+            <ol>
+              <li>
+                <Link href="/">Accueil</Link>
+              </li>
+              <li>
+                <Link href="/legal/mentions">Légal</Link>
+              </li>
+              <li aria-current="page">
+                <span>{breadcrumb}</span>
+              </li>
+            </ol>
+          </nav>
 
           <div className="lp-hero-head">
-            <div className="lp-hero-eyebrow">
-              <span className="pill">
-                <span className="dot" /> Document légal · opposable
-              </span>
-            </div>
+            <p className="lp-hero-eyebrow">Informations juridiques</p>
             <h1>
-              {title.split("\n").map((line, i) => (
+              {titleLines.map((line, i) => (
                 <span key={i}>
                   {line}
-                  {i < title.split("\n").length - 1 && <br />}
+                  {i < titleLines.length - 1 && <br />}
                 </span>
               ))}
             </h1>
             <p className="lp-hero-intro">{intro}</p>
 
             <div className="lp-hero-meta">
-              <span>
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <rect x="3" y="4" width="18" height="18" rx="2" />
-                  <path d="M16 2v4M8 2v4M3 10h18" />
-                </svg>
-                Dernière mise à jour : <b>{formatDate(lastUpdated)}</b>
+              <span className="lp-date-badge">
+                <span className="lp-date-dot" aria-hidden="true" />
+                Dernière mise à jour :{" "}
+                <time dateTime={lastUpdated}>{formatDate(lastUpdated)}</time>
               </span>
-              <span className="sep" />
-              <span>
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-                  <path d="M14 2v6h6" />
-                </svg>
-                {sections.length} sections · lecture ~8 min
+              <span className="lp-reading-meta">
+                {sections.length} sections · consultation libre
               </span>
             </div>
           </div>
         </div>
-      </section>
+      </header>
 
       {/* Two-column layout : sticky ToC + article */}
       <section className="lp-main">
@@ -219,7 +213,7 @@ export function LegalPageLayout({
                   >
                     <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
                   </svg>
-                  Question ? Écrivez-nous
+                  Voir les coordonnées
                 </Link>
               </div>
             </div>
@@ -239,37 +233,92 @@ export function LegalPageLayout({
               </section>
             ))}
 
-            <div className="lp-article-foot">
+            <section
+              className="lp-article-foot"
+              aria-labelledby="lp-contact-title"
+            >
               <div>
-                <div className="lp-foot-kicker">Besoin d&apos;une précision ?</div>
-                <div className="lp-foot-title">
-                  Notre équipe répond à toute demande sous 5 jours ouvrés.
-                </div>
+                <div className="lp-foot-kicker">Contact</div>
+                <h2 className="lp-foot-title" id="lp-contact-title">
+                  Coordonnées pour ce document
+                </h2>
                 <p>
-                  Pour toute question relative à ce document, à vos droits,
-                  ou à un incident, écrivez à{" "}
-                  <a href="mailto:quentin@hagnere-patrimoine.fr">
-                    quentin@hagnere-patrimoine.fr
-                  </a>{" "}
-                  ou appelez-nous au{" "}
-                  <a href="tel:+33374472018">+33 3 74 47 20 18</a>.
+                  Pour une question relative au contenu de cette page, à vos
+                  droits ou à un incident, vous pouvez utiliser l&apos;un des
+                  canaux ci-contre.
                 </p>
               </div>
-              <Link href="#contact" className="btn btn-primary btn-lg">
-                Nous contacter
-                <svg
-                  className="arrow"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M5 12h14M13 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
+              <div className="lp-contact-details">
+                <a href="mailto:quentin@hagnere-patrimoine.fr">
+                  <span>Adresse e-mail</span>
+                  <strong>quentin@hagnere-patrimoine.fr</strong>
+                </a>
+                <a href="tel:+33374472018">
+                  <span>Téléphone</span>
+                  <strong>+33 3 74 47 20 18</strong>
+                </a>
+              </div>
+            </section>
+
+            <footer className="lp-document-footer">
+              <div className="lp-version-card">
+                <div className="lp-version-mark" aria-hidden="true">
+                  V
+                </div>
+                <div>
+                  <div className="lp-version-kicker">Version actuelle</div>
+                  <p>
+                    Mise à jour du{" "}
+                    <time dateTime={lastUpdated}>
+                      {formatDate(lastUpdated)}
+                    </time>
+                  </p>
+                  <small>
+                    Cette date identifie la version affichée de ce document.
+                  </small>
+                </div>
+              </div>
+
+              <nav
+                className="lp-related"
+                aria-label="Autres documents légaux"
+              >
+                <div className="lp-related-head">
+                  <span className="lp-related-kicker">À consulter aussi</span>
+                  <h2>Documents légaux</h2>
+                </div>
+                <ul>
+                  {LEGAL_PAGES.map((page) => {
+                    const isCurrent = pathname === page.href;
+
+                    return (
+                      <li key={page.href}>
+                        <Link
+                          href={page.href}
+                          className={isCurrent ? "is-current" : undefined}
+                          aria-current={isCurrent ? "page" : undefined}
+                        >
+                          <span>{page.label}</span>
+                          <svg
+                            width="15"
+                            height="15"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.8"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 12h14M13 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
+            </footer>
           </article>
         </div>
       </section>

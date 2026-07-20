@@ -443,9 +443,10 @@ export function ContactProjectSection({
             <label className="sf-consent">
               <input type="checkbox" name="consent" required />
               <span>
-                J&apos;accepte que Hagnéré Code utilise ces informations uniquement
-                pour traiter et répondre à ma demande.{" "}
-                <a href="/legal/confidentialite">Politique de confidentialité</a>
+                J&apos;ai pris connaissance de la{" "}
+                <a href="/legal/confidentialite">politique de confidentialité</a>{" "}
+                et je demande à Hagnéré Code de traiter mes informations afin de
+                répondre à ma demande, dans le cadre de mesures précontractuelles.
               </span>
             </label>
             {errs.consent && <em className="sf-consent-error">{errs.consent}</em>}
@@ -1229,6 +1230,25 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                 </span>
                 <span className="sf-tile-label">Gérer mes cookies</span>
               </button>
+              <Link className="sf-tile" href="/legal/reclamations">
+                <span className="sf-tile-ic">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
+                    <path d="M8 9h8M8 13h5" />
+                  </svg>
+                </span>
+                <span className="sf-tile-label">Réclamations &amp; médiation</span>
+              </Link>
               <Link className="sf-tile" href="/legal/accessibilite">
                 <span className="sf-tile-ic">
                   <svg
@@ -1253,9 +1273,11 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
 
           <div className="sf-foot-bot">
             <div>
-              © {new Date().getUTCFullYear()} HAGNÉRÉ CODE SAS · RCS CHAMBÉRY 993
-              672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF
-              62.01Z · 82 impasse de Bellevue, 73000 Bassens
+              © {new Date().getUTCFullYear()} HAGNERE CODE · SASU au capital de
+              10 € · RCS CHAMBÉRY 993 672 856 · TVA FR30 993 672 856 · Adresse
+              d&apos;activité : 82 impasse de Bellevue, 73000 Bassens · Siège
+              inscrit au RNE : 7 rue Ernest Filliard, 73000 Chambéry (transfert
+              en cours)
             </div>
             <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
           </div>

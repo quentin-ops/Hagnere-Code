@@ -252,7 +252,10 @@ export async function POST(request: Request) {
   if (!email || !isValidEmail(email)) errors.email = "Email invalide";
   if (!company) errors.company = "Entreprise requise";
   if (!message || message.length < 10) errors.message = "Décrivez votre projet en 1-2 phrases";
-  if (body.consent !== true) errors.consent = "Votre accord est requis pour traiter cette demande";
+  if (body.consent !== true) {
+    errors.consent =
+      "Confirmez avoir pris connaissance de la politique de confidentialité et demander le traitement de votre demande dans le cadre de mesures précontractuelles.";
+  }
   if (!isPlausibleLabel(budget)) errors.budget = "Budget invalide";
   if (!isPlausibleLabel(projectType)) errors.projectType = "Type de projet invalide";
   if (!isPlausibleLabel(timeline)) errors.timeline = "Échéance invalide";

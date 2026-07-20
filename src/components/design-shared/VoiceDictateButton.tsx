@@ -254,6 +254,10 @@ export function VoiceDictateButton({
           {status.message}
         </span>
       )}
+      <span className="vdb-privacy">
+        Dictée facultative : l&apos;audio est transmis à Groq pour transcription.{" "}
+        <a href="/legal/confidentialite#dictee">En savoir plus</a>
+      </span>
     </div>
   );
 }

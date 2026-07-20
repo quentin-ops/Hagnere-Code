@@ -1,8 +1,8 @@
-# Politique d'envoi d'emails marketing — HAGNÉRÉ CODE SAS
+# Politique d'envoi d'emails marketing — HAGNERE CODE
 
 > **Document interne — règles avant tout envoi marketing.**
 > Couvre LCEN art. L.34-5, RGPD, code de la consommation.
-> Dernière mise à jour : 2026-04-28.
+> Dernière mise à jour : 2026-07-20.
 
 ## 1. État actuel
 
@@ -43,7 +43,7 @@ Pour toute audience B2C : **consentement explicite, libre, éclairé, spécifiqu
 
 ## 5. Mentions obligatoires dans CHAQUE email marketing
 
-1. **Identité de l'expéditeur** (HAGNÉRÉ CODE SAS, adresse complète).
+1. **Identité de l'expéditeur** (HAGNERE CODE, adresse complète).
 2. **Lien de désinscription** fonctionnel (`unsubscribe`).
 3. **Lien vers la politique de confidentialité** (`/legal/confidentialite`).
 4. **Mention de l'origine** des données (« vous recevez cet email parce que vous avez rempli le formulaire X le date Y »).
@@ -51,7 +51,8 @@ Pour toute audience B2C : **consentement explicite, libre, éclairé, spécifiqu
 ### Template minimum (footer email)
 
 ```
-HAGNÉRÉ CODE SAS — 82 impasse de Bellevue, 73000 Bassens
+HAGNERE CODE — adresse d'activité : 82 impasse de Bellevue, 73000 Bassens
+Siège inscrit au RNE : 7 rue Ernest Filliard, 73000 Chambéry (transfert en cours)
 Vous recevez cet email parce que vous nous avez contactés via hagnere-code.ai.
 Politique de confidentialité : https://hagnere-code.ai/legal/confidentialite
 Se désinscrire : {{unsubscribe_link}}

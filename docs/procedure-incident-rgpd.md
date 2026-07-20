@@ -1,8 +1,8 @@
-# Procédure d'incident RGPD — HAGNÉRÉ CODE SAS
+# Procédure d'incident RGPD — HAGNERE CODE
 
 > **Document interne — articles 33 et 34 du RGPD.**
 > Notification CNIL sous 72 heures, communication aux personnes si risque élevé.
-> Dernière mise à jour : 2026-04-28.
+> Dernière mise à jour : 2026-07-20.
 
 ## 1. Définitions
 
@@ -17,7 +17,7 @@ Trois types de violation :
 ## 2. Détection — qui peut détecter ?
 
 - Devs internes (alerte Sentry, log anormal, code review).
-- Sous-traitant (Neon, Cloudflare, Resend, Groq) qui notifie HAGNÉRÉ.
+- Prestataire (notamment Vercel, Neon, Resend, Google Workspace ou Groq) qui notifie HAGNERE CODE.
 - Personne concernée elle-même (formulaire contact, droits RGPD).
 - Tiers (chercheur en sécurité, journaliste, autorité).
 

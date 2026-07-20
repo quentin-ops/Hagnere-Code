@@ -55,7 +55,8 @@ Table `project_brief` : contact (first_name, last_name, email, phone,
 company, role, siren), projet (project_kinds[], objectives[]), contexte
 (description, current_situation, audience), périmètre (must_haves[],
 integrations[], existing_assets[], open_scope), contraintes (timeline,
-budget, decision_stage), méta (consent, ip, user_agent, mail_sent,
+budget, decision_stage), méta (`consent`, nom de colonne historique pour la
+confirmation de lecture RGPD, ip, user_agent, mail_sent,
 public_slug, created_at, updated_at).
 
 `public_slug` est conservé pour un futur back-office de consultation des
@@ -83,11 +84,13 @@ automatiquement un `?` cliquable (CSS `.pf-chip.has-tooltip`).
 
 ## Analytics / tracking de conversion
 
-`trackFunnelEvent(name, props)` (`src/lib/funnel-analytics.ts`) envoie un
-payload first-party à `/api/funnel-analytics`. En production, la route écrit
-le point dans le dataset Cloudflare Analytics Engine `hagnere_code_funnel` ;
-en développement elle le journalise sans prétendre le persister. Aucun script
-tiers, cookie, IP, user-agent ou identifiant persistant n'est utilisé.
+`trackFunnelEvent(name, props)` (`src/lib/funnel-analytics.ts`) peut envoyer un
+payload first-party à `/api/funnel-analytics`, uniquement si la bannière est
+activée et que l'utilisateur a accepté l'analytics. Sans bannière, la mesure
+reste désactivée. La route sait écrire dans le dataset Cloudflare Analytics
+Engine `hagnere_code_funnel`, mais ce binding n'est pas disponible sur la
+production Vercel actuelle : ne pas considérer les événements comme persistés
+tant qu'un collecteur compatible n'a pas été déployé et documenté.
 
 Events émis :
 

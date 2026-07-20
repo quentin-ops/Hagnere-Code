@@ -1,5 +1,5 @@
 export const COOKIE_CONSENT_STORAGE_KEY = "hc_consent_v1";
-export const COOKIE_CONSENT_EXPIRY_DAYS = 395;
+export const COOKIE_CONSENT_EXPIRY_DAYS = 183;
 
 export type CookieConsent = {
   necessary: true;
@@ -50,11 +50,10 @@ export function writeCookieConsent(
 }
 
 /**
- * Sans bannière, la mesure first-party sans identifiant persistant conserve
- * son fonctionnement actuel. Dès que la bannière est activée, aucun événement
- * ne part avant un choix analytics positif et non expiré.
+ * Sans bannière, la mesure reste désactivée. Lorsqu'elle est activée, aucun
+ * événement ne part avant un choix analytics positif et non expiré.
  */
 export function isAnalyticsAllowed(): boolean {
-  if (!isCookieBannerEnabled()) return true;
+  if (!isCookieBannerEnabled()) return false;
   return readCookieConsent()?.analytics === true;
 }

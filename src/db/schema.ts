@@ -61,6 +61,11 @@ export const projectBrief = pgTable("project_brief", {
   decisionStage: text("decision_stage"),
 
   // ── Méta ──
+  /**
+   * Nom de colonne historique : enregistre désormais la confirmation de lecture
+   * de l'information RGPD et la demande de traitement précontractuel, pas un
+   * consentement utilisé comme base légale du formulaire.
+   */
   consent: boolean("consent").notNull().default(false),
   ip: text("ip"),
   userAgent: text("user_agent"),

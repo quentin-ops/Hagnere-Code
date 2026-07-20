@@ -15,4 +15,10 @@ describe("project funnel public claims", () => {
     expect(source).not.toMatch(/Système de gestion des cookies conforme RGPD/i);
     expect(source).not.toMatch(/Outil métier conforme RGPD|éviter les audits CNIL/i);
   });
+
+  it("qualifie la case obligatoire comme une demande précontractuelle", () => {
+    expect(source).not.toContain("<b>Consentement RGPD</b>");
+    expect(source).toContain("Accusé de lecture et demande de traitement");
+    expect(source).toContain("dans le cadre de mesures précontractuelles");
+  });
 });

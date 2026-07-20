@@ -3,19 +3,19 @@ import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
 import { accessibiliteSections } from "@/components/legal/content/accessibilite";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
-const LAST_UPDATED = "2026-04-28";
+const LAST_UPDATED = "2026-07-20";
 
 export const metadata: Metadata = {
   title: "Déclaration d'accessibilité · Hagnéré Code",
   description:
-    "Démarche volontaire RGAA 4.1 / WCAG 2.1 AA : état de conformité, non-conformités connues et alternative garantie sous 5 jours ouvrés.",
+    "Démarche d'accessibilité de hagnere-code.ai, état de conformité non évalué, mesures intégrées, limites à vérifier et contact.",
   alternates: { canonical: "/legal/accessibilite" },
   openGraph: {
     ...OG_BASE,
     type: "article",
     title: "Déclaration d'accessibilité · Hagnéré Code",
     description:
-      "Engagement d'accessibilité du site hagnere-code.ai : RGAA 4.1, WCAG 2.1 AA, plan d'amélioration et voies de recours.",
+      "État d'accessibilité du site hagnere-code.ai, points restant à auditer, assistance et voies de signalement.",
     url: "/legal/accessibilite",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -36,7 +36,7 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <LegalPageLayout
         title={"Déclaration\nd'accessibilité."}
-        intro="Démarche volontaire d'accessibilité numérique RGAA 4.1 / WCAG 2.1 AA. État partiel, non-conformités connues, plan d'amélioration et voies de recours."
+        intro="Démarche d'accessibilité numérique fondée sur le RGAA et les WCAG. Le niveau de conformité n'est pas encore évalué par un audit complet."
         lastUpdated={LAST_UPDATED}
         breadcrumb="Accessibilité"
         sections={accessibiliteSections}

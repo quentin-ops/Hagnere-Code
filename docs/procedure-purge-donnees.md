@@ -9,7 +9,7 @@
   remonte à plus de 3 ans, après exclusion documentée des clients et obligations
   de conservation associées.
 - `ai_call_log` : supprimer les lignes âgées de plus de 12 mois.
-- Journaux Cloudflare, Neon et Resend : vérifier séparément les politiques et
+- Journaux Vercel, Neon, Resend, Google Workspace et Groq : vérifier séparément les politiques et
   réglages de rétention de chaque fournisseur ; ils ne sont pas purgés par les
   requêtes ci-dessous.
 

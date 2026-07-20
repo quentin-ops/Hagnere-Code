@@ -1,8 +1,10 @@
-# Template d'accord de sous-traitance (DPA) — HAGNÉRÉ CODE SAS
+# Modèle d'accord de sous-traitance (DPA) — HAGNERE CODE
 
-> **Document interne — à annexer à chaque contrat client impliquant un traitement de données personnelles pour le compte du client.**
-> Conforme à l'article 28 du RGPD.
-> Dernière mise à jour : 2026-04-28.
+> **Document de travail interne.** À compléter pour la mission réelle avant
+> signature ; les champs, mesures, délais et sous-traitants ne doivent jamais
+> rester génériques. Une revue juridique est recommandée pour les traitements
+> sensibles ou à risque élevé.
+> Dernière mise à jour : 2026-07-20.
 
 ---
 
@@ -16,7 +18,11 @@ ci-après dénommée le **« Responsable de traitement »**,
 
 **ET**
 
-**HAGNÉRÉ CODE SAS**, société par actions simplifiée à capital variable, dont le siège social est sis 82 impasse de Bellevue, 73000 Bassens, immatriculée au RCS de Chambéry sous le numéro 993 672 856, représentée par Quentin Hagnéré, en qualité de président,
+**HAGNERE CODE**, société par actions simplifiée unipersonnelle au capital de
+10 €, dont le siège actuellement inscrit au RNE est 7 rue Ernest Filliard,
+73000 Chambéry (adresse d'activité et de correspondance : 82 impasse de
+Bellevue, 73000 Bassens ; transfert de siège en cours), immatriculée au RCS de
+Chambéry sous le numéro 993 672 856, représentée par Quentin Hagnéré, président,
 
 ci-après dénommée le **« Sous-traitant »**.
 
@@ -32,7 +38,7 @@ Le présent accord a pour objet de définir les conditions dans lesquelles le So
 |---|---|
 | Nature des opérations | [collecte, stockage, modification, consultation, suppression, hébergement applicatif, etc.] |
 | Finalité | [exécution de la prestation décrite dans le Contrat principal] |
-| Durée | [durée du Contrat principal + 30 jours pour restitution / suppression] |
+| Durée | [durée exacte du traitement, délai de réversibilité et sort de chaque copie] |
 | Catégories de personnes | [utilisateurs finaux, salariés, prospects, clients, etc.] |
 | Catégories de données | [identification, contact, données métier, données techniques, etc.] |
 
@@ -42,15 +48,19 @@ Le Sous-traitant s'engage à :
 
 1. **Traiter les données uniquement sur instructions documentées** du Responsable de traitement, y compris pour les transferts hors Union européenne, sauf obligation légale contraire qu'il signale alors immédiatement.
 2. **Garantir la confidentialité** des données. Toute personne autorisée à les traiter est soumise à un engagement de confidentialité.
-3. **Mettre en œuvre les mesures techniques et organisationnelles appropriées** pour assurer un niveau de sécurité adapté au risque, et notamment :
-   - chiffrement des données en transit (TLS 1.3 minimum) et au repos (AES-256) ;
-   - contrôle d'accès basé sur les rôles (RBAC) ;
-   - journalisation des accès aux données ;
-   - sauvegardes régulières testées en restauration ;
-   - tests de résilience et de continuité du service.
-4. **Notifier sans délai** le Responsable de traitement de toute violation de données à caractère personnel, dans un délai maximum de **24 heures** après en avoir pris connaissance.
+3. **Mettre en œuvre les mesures techniques et organisationnelles appropriées**
+   décrites dans l'annexe sécurité complétée pour le projet, compte tenu de
+   l'état de l'art, des coûts, du contexte et des risques. L'annexe répartit au
+   minimum les accès, secrets, sauvegardes, journaux, mises à jour, continuité,
+   tests et responsabilités d'hébergement.
+4. **Notifier sans délai indu** le Responsable de traitement de toute violation
+   de données après en avoir pris connaissance et lui fournir progressivement
+   les informations disponibles, afin de lui permettre de respecter ses propres
+   délais réglementaires. Un délai opérationnel plus précis ne doit être ajouté
+   que s'il peut réellement être tenu.
 5. **Aider le Responsable de traitement** à respecter ses obligations, notamment :
-   - répondre aux demandes d'exercice de droits des personnes concernées (accès, rectification, effacement, opposition, portabilité, limitation) sous 5 jours ouvrés ;
+   - répondre aux demandes d'assistance relatives aux droits dans le délai
+     opérationnel défini au contrat, compatible avec les échéances du Responsable ;
    - réaliser une analyse d'impact relative à la protection des données (AIPD) si requise ;
    - notifier les violations à l'autorité de contrôle.
 6. **À la fin de la prestation**, et selon le choix exprimé par le Responsable de traitement :
@@ -62,24 +72,23 @@ Le Sous-traitant s'engage à :
 
 Le Sous-traitant ne peut faire appel à un sous-traitant ultérieur sans **autorisation écrite préalable, spécifique ou générale**, du Responsable de traitement.
 
-Les sous-traitants ultérieurs actuels sont :
+Les sous-traitants ultérieurs autorisés pour **cette mission** sont :
 
 | Sous-traitant | Finalité | Localisation | Encadrement |
 |---|---|---|---|
-| Neon, Inc. | Hébergement base de données PostgreSQL | UE (Frankfurt) | Aucun transfert hors UE |
-| Cloudflare, Inc. | Hébergement Workers + CDN | Edge mondial | DPF + SCC |
-| Resend, Inc. | Envoi d'emails transactionnels | États-Unis | DPF + SCC |
-| Groq, Inc. | Transcription audio Whisper | États-Unis | SCC + audio non conservé |
+| [raison sociale exacte] | [service réellement utilisé] | [pays/région et accès distants] | [adéquation, DPF, CCT et mesures complémentaires] |
 
 Le Sous-traitant impose à chaque sous-traitant ultérieur les mêmes obligations de protection des données par contrat. En cas de défaillance, il demeure pleinement responsable devant le Responsable de traitement.
 
 ### ARTICLE 5 — TRANSFERTS HORS UE
 
-Les transferts vers les États-Unis listés ci-dessus sont encadrés par :
-- l'adhésion du sous-traitant au EU-US Data Privacy Framework (DPF) lorsque celle-ci est en vigueur, OU
-- les clauses contractuelles types adoptées par la décision (UE) 2021/914.
+Tout transfert hors EEE doit être identifié dans l'annexe et reposer sur un
+mécanisme valable : décision d'adéquation applicable, certification DPF valide
+pour l'entité et les données concernées, clauses contractuelles types adoptées
+par la décision (UE) 2021/914 et, lorsque nécessaire, mesures complémentaires.
 
-Une copie de ces garanties est tenue à disposition du Responsable de traitement.
+Les garanties effectivement applicables sont archivées et rendues accessibles
+au Responsable de traitement dans les limites de la confidentialité contractuelle.
 
 ### ARTICLE 6 — DROITS DES PERSONNES CONCERNÉES
 
@@ -109,6 +118,6 @@ Le présent accord est soumis au droit français. Tout litige relève des juridi
 
 | Responsable de traitement | Sous-traitant |
 |---|---|
-| [CLIENT] | HAGNÉRÉ CODE SAS |
+| [CLIENT] | HAGNERE CODE |
 | [Représentant], [qualité] | Quentin Hagnéré, président |
 | Signature : | Signature : |

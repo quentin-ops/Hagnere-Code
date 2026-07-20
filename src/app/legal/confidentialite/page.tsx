@@ -3,19 +3,19 @@ import { LegalPageLayout } from "@/components/legal/LegalPageLayout";
 import { confidentialiteSections } from "@/components/legal/content/confidentialite";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
-const LAST_UPDATED = "2026-04-26";
+const LAST_UPDATED = "2026-07-20";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité · Hagnéré Code",
   description:
-    "Vos données : collecte minimale, hébergement en UE, aucun traitement IA de votre brief, droits RGPD. Transparence complète de HAGNÉRÉ CODE SAS.",
+    "Données, finalités, bases légales, prestataires, transferts, durées et droits RGPD applicables au site et aux demandes Hagnéré Code.",
   alternates: { canonical: "/legal/confidentialite" },
   openGraph: {
     ...OG_BASE,
     type: "article",
     title: "Politique de confidentialité · Hagnéré Code",
     description:
-      "Informations RGPD sur le traitement des données personnelles par HAGNÉRÉ CODE SAS.",
+      "Informations RGPD sur le traitement des données personnelles par HAGNERE CODE.",
     url: "/legal/confidentialite",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -36,7 +36,7 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <LegalPageLayout
         title={"Politique de\nconfidentialité."}
-        intro="Informations sur les données personnelles traitées par HAGNÉRÉ CODE SAS dans le cadre du site, des demandes de contact et des prestations."
+        intro="Informations sur les données personnelles traitées par HAGNERE CODE dans le cadre du site, des demandes de contact et des prestations."
         lastUpdated={LAST_UPDATED}
         breadcrumb="Confidentialité"
         sections={confidentialiteSections}

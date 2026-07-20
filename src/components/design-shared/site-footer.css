@@ -869,6 +869,20 @@ button.sf-tile {
   margin-top: 4px;
 }
 
+.vdb-privacy {
+  flex-basis: 100%;
+  max-width: 360px;
+  color: var(--mute);
+  font-size: 10.5px;
+  line-height: 1.45;
+  text-align: right;
+}
+.vdb-privacy a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .vdb-btn::before,
   .vdb-btn.is-recording,

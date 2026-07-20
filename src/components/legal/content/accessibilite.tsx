@@ -1,33 +1,24 @@
+/* eslint-disable react/no-unescaped-entities */
 import type { LegalSection } from "../LegalPageLayout";
 
 export const accessibiliteSections: LegalSection[] = [
   {
-    id: "engagement",
-    label: "Engagement",
-    title: "Engagement d'accessibilité",
+    id: "demarche",
+    label: "Démarche",
+    title: "Une démarche d'amélioration continue",
     body: (
       <>
         <p>
-          HAGNÉRÉ CODE SAS s&apos;efforce de rendre le site hagnere-code.ai
-          accessible au plus grand nombre, conformément aux principes des
-          référentiels <strong>RGAA 4.1</strong> (Référentiel général
-          d&apos;amélioration de l&apos;accessibilité) et{" "}
-          <strong>WCAG 2.1 AA</strong>.
+          HAGNERE CODE souhaite rendre <strong>hagnere-code.ai</strong>
+          utilisable par le plus grand nombre, quels que soient le matériel, le
+          logiciel, la connexion ou les capacités de la personne. Le RGAA et les
+          WCAG servent de référentiel de travail pour la conception et les
+          corrections.
         </p>
         <p>
-          La présente déclaration s&apos;applique au site
-          <strong> hagnere-code.ai </strong>
-          (toutes les pages publiques listées dans le sitemap).
-        </p>
-        <p>
-          <em>
-            Note : HAGNÉRÉ CODE SAS n&apos;est pas légalement tenue de
-            publier une déclaration d&apos;accessibilité (la société ne
-            relève pas du périmètre de l&apos;article 47 de la loi n°2005-102
-            ni du décret n°2019-768). Cette déclaration est volontaire et
-            traduit une démarche de qualité plutôt qu&apos;une obligation
-            réglementaire.
-          </em>
+          Cette page décrit honnêtement l'état connu du site. Elle ne vaut pas
+          attestation de conformité et n'affirme pas qu'un audit réglementaire a
+          été réalisé.
         </p>
       </>
     ),
@@ -35,157 +26,121 @@ export const accessibiliteSections: LegalSection[] = [
   {
     id: "etat",
     label: "État de conformité",
-    title: "État de conformité",
+    title: "État de conformité : non évalué",
+    body: (
+      <div className="lp-note is-warning">
+        <strong>Le niveau de conformité n'est pas encore évalué.</strong> Aucun
+        audit RGAA complet, réalisé sur un échantillon représentatif selon la
+        méthodologie officielle, n'a été achevé à la date de mise à jour. Il serait
+        donc inexact de déclarer le site conforme, partiellement conforme ou de
+        publier un pourcentage.
+      </div>
+    ),
+  },
+  {
+    id: "mesures",
+    label: "Mesures intégrées",
+    title: "Mesures déjà intégrées à la conception",
     body: (
       <>
-        <p>
-          Le site hagnere-code.ai est en{" "}
-          <strong>conformité partielle</strong> avec le RGAA 4.1.{" "}
-          <strong>Aucun audit indépendant n&apos;a encore été réalisé</strong>{" "}
-          à la date de publication ; un audit externe est planifié dans les
-          12 mois suivant la mise en ligne, et les résultats seront publiés
-          sur cette page.
-        </p>
-        <p>
-          Dans l&apos;intervalle, les bonnes pratiques suivantes ont été
-          appliquées en interne :
-        </p>
+        <p>Le site met notamment en œuvre :</p>
         <ul>
-          <li>
-            structure HTML sémantique (un seul <code>&lt;h1&gt;</code> par
-            page, hiérarchie de titres respectée) ;
-          </li>
-          <li>
-            attribut <code>lang=&quot;fr&quot;</code> sur l&apos;ensemble du
-            site ;
-          </li>
-          <li>
-            lien d&apos;évitement &quot;Aller au contenu principal&quot; en
-            début de page ;
-          </li>
-          <li>
-            contrastes de couleurs vérifiés sur les composants principaux ;
-          </li>
-          <li>
-            attributs <code>alt</code> sur les images informatives,{" "}
-            <code>aria-hidden</code> sur les icônes décoratives ;
-          </li>
-          <li>
-            navigation clavier fonctionnelle sur les éléments interactifs ;
-          </li>
-          <li>
-            formulaires avec labels associés et messages d&apos;erreur
-            descriptifs.
-          </li>
+          <li>une structure HTML sémantique et des titres hiérarchisés ;</li>
+          <li>des liens et contrôles utilisables au clavier sur les parcours principaux ;</li>
+          <li>des styles de focus visibles et la restitution du focus après la fermeture des menus ;</li>
+          <li>des libellés de formulaire, messages d'erreur et zones de statut ;</li>
+          <li>une mise en page responsive testée sur plusieurs largeurs ;</li>
+          <li>la prise en compte de la préférence de réduction des animations pour plusieurs effets ;</li>
+          <li>des textes alternatifs ou un marquage décoratif sur les images et icônes lorsque cela est prévu par leur usage.</li>
         </ul>
+        <p>
+          Ces mesures améliorent l'usage mais ne remplacent pas un audit sur les
+          106 critères du RGAA ni des tests avec technologies d'assistance.
+        </p>
       </>
     ),
   },
   {
-    id: "non-conformites",
-    label: "Non-conformités connues",
-    title: "Non-conformités et limitations connues",
+    id: "limites",
+    label: "Limites connues",
+    title: "Points restant à vérifier",
     body: (
       <>
-        <p>
-          Sans audit externe, certaines limitations sont connues et seront
-          traitées en priorité :
-        </p>
+        <p>Faute d'audit complet, des difficultés peuvent subsister, notamment :</p>
         <ul>
-          <li>
-            certains composants animés (carrousels, sections révélées au
-            scroll) n&apos;offrent pas encore de pause ou de désactivation
-            via <code>prefers-reduced-motion</code> ;
-          </li>
-          <li>
-            quelques visuels SVG décoratifs n&apos;ont pas été retestés au
-            lecteur d&apos;écran ;
-          </li>
-          <li>
-            la dictée vocale du formulaire <em>/demarrer-un-projet</em> ne
-            propose pas encore d&apos;équivalent saisie clavier explicite
-            (la saisie clavier reste disponible mais l&apos;équivalence
-            n&apos;est pas annoncée aux technologies d&apos;assistance) ;
-          </li>
-          <li>
-            le tableau de tarifs (<em>/tarifs</em>) est dense et son
-            comportement responsive sur mobile mériterait une refonte
-            accessibilité.
-          </li>
+          <li>dans les tableaux très larges, calculateurs et formulaires à plusieurs étapes ;</li>
+          <li>dans certains documents PDF ou fichiers bureautiques téléchargeables ;</li>
+          <li>dans le rendu de contenus riches avec un lecteur d'écran ou un fort agrandissement ;</li>
+          <li>après le chargement volontaire de services externes, notamment Calendly, dont l'interface dépend de son éditeur.</li>
         </ul>
+        <p>
+          Cette liste décrit des zones de vigilance et non un inventaire exhaustif
+          de non-conformités. Tout problème reproductible signalé permet de la
+          préciser et de prioriser une correction.
+        </p>
       </>
     ),
   },
   {
-    id: "alternatives",
-    label: "Alternatives",
-    title: "Alternatives en cas de difficulté d'accès",
+    id: "assistance",
+    label: "Assistance",
+    title: "Demander une information dans un format accessible",
+    body: (
+      <>
+        <p>
+          Si un contenu, un formulaire ou un document vous est inaccessible,
+          contactez Quentin Hagnéré en indiquant l'URL, l'action souhaitée, votre
+          matériel ou technologie d'assistance si vous acceptez de le préciser,
+          et le format qui vous conviendrait.
+        </p>
+        <dl className="lp-facts">
+          <dt>Courriel</dt>
+          <dd><a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a></dd>
+          <dt>Téléphone</dt>
+          <dd><a href="tel:+33374472018">+33 3 74 47 20 18</a></dd>
+          <dt>Courrier</dt>
+          <dd>82 impasse de Bellevue, 73000 Bassens, France</dd>
+        </dl>
+        <p>
+          La demande est examinée au regard de son urgence et de sa complexité.
+          HAGNERE CODE recherchera une alternative raisonnable sans promettre un
+          délai uniforme qui ne pourrait pas être garanti pour tous les formats.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "signalement",
+    label: "Signaler un problème",
+    title: "Retour d'information et recours",
+    body: (
+      <>
+        <p>
+          Un signalement doit idéalement préciser la page, le contrôle ou le
+          document concerné, le navigateur, la technologie d'assistance et le
+          résultat attendu. Aucune information de santé n'est nécessaire pour
+          demander une correction.
+        </p>
+        <p>
+          En l'absence de solution satisfaisante, vous pouvez vous rapprocher du
+          <a href="https://www.defenseurdesdroits.fr" target="_blank" rel="noopener noreferrer"> Défenseur des droits</a>
+          pour les situations relevant de ses compétences. Cette voie ne vous
+          prive d'aucun autre recours prévu par la loi.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "evolution",
+    label: "Évolution",
+    title: "Mise à jour de cette déclaration",
     body: (
       <p>
-        Si une fonctionnalité du site vous est inaccessible, vous pouvez à
-        tout moment nous contacter directement par email à{" "}
-        <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a> ou
-        par téléphone au{" "}
-        <a href="tel:+33374472018">+33 3 74 47 20 18</a>. Nous nous
-        engageons à fournir une alternative équivalente (PDF accessible,
-        échange en visio, transcription textuelle d&apos;une vidéo, etc.)
-        sous 5 jours ouvrés.
+        La déclaration est révisée après une évolution substantielle, un audit ou
+        l'identification d'un nouveau problème. Une future déclaration de
+        conformité indiquera la méthode, l'échantillon, la date et le résultat de
+        l'audit plutôt qu'un engagement anticipé non vérifiable.
       </p>
-    ),
-  },
-  {
-    id: "amelioration",
-    label: "Amélioration",
-    title: "Démarche d'amélioration continue",
-    body: (
-      <>
-        <p>Notre plan d&apos;action sur 12 mois :</p>
-        <ul>
-          <li>audit RGAA externe par un prestataire spécialisé ;</li>
-          <li>
-            corrections priorisées par sévérité (bloquante &gt; majeure &gt;
-            mineure) ;
-          </li>
-          <li>
-            intégration de tests d&apos;accessibilité automatisés
-            (Lighthouse + axe-core) dans la chaîne CI ;
-          </li>
-          <li>
-            formation interne des développeurs aux critères RGAA / WCAG ;
-          </li>
-          <li>
-            re-publication de cette déclaration avec le rapport d&apos;audit
-            et le taux de conformité.
-          </li>
-        </ul>
-      </>
-    ),
-  },
-  {
-    id: "voies-recours",
-    label: "Voies de recours",
-    title: "Défenseur des droits — voies de recours",
-    body: (
-      <>
-        <p>
-          Si vous constatez un défaut d&apos;accessibilité vous empêchant
-          d&apos;accéder à un contenu ou une fonctionnalité du site, et si
-          vous estimez ne pas avoir obtenu de réponse satisfaisante, vous
-          pouvez saisir le Défenseur des droits :
-        </p>
-        <ul>
-          <li>
-            formulaire en ligne :{" "}
-            <a href="https://formulaire.defenseurdesdroits.fr/" target="_blank" rel="noopener noreferrer">
-              formulaire.defenseurdesdroits.fr
-            </a>
-          </li>
-          <li>
-            par courrier : Défenseur des droits — Libre réponse 71120 — 75342
-            Paris CEDEX 07.
-          </li>
-        </ul>
-      </>
     ),
   },
 ];

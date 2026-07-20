@@ -8,6 +8,7 @@ describe("trackFunnelEvent", () => {
 
   beforeEach(() => {
     vi.unstubAllEnvs();
+    vi.stubEnv("NEXT_PUBLIC_COOKIE_BANNER", "1");
     sendBeacon.mockReset();
     sendBeacon.mockReturnValue(true);
     fetch.mockReset();
@@ -16,6 +17,11 @@ describe("trackFunnelEvent", () => {
       location: { pathname: "/livres-blancs/comparer-devis-site-internet" },
       navigator: { sendBeacon },
       fetch,
+      localStorage: {
+        getItem: vi.fn(() =>
+          JSON.stringify({ necessary: true, analytics: true, ts: Date.now() }),
+        ),
+      },
     });
   });
 
@@ -71,11 +77,38 @@ describe("trackFunnelEvent", () => {
   });
 
   it("does not send analytics when the enabled banner was refused", () => {
-    vi.stubEnv("NEXT_PUBLIC_COOKIE_BANNER", "1");
     Object.assign(window, {
       localStorage: {
         getItem: vi.fn(() =>
           JSON.stringify({ necessary: true, analytics: false, ts: Date.now() }),
+        ),
+      },
+    });
+
+    trackFunnelEvent("guide_cta_click");
+
+    expect(sendBeacon).not.toHaveBeenCalled();
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("does not send analytics when the banner is disabled", () => {
+    vi.stubEnv("NEXT_PUBLIC_COOKIE_BANNER", "0");
+
+    trackFunnelEvent("guide_cta_click");
+
+    expect(sendBeacon).not.toHaveBeenCalled();
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
+  it("does not send analytics after the 183-day choice has expired", () => {
+    Object.assign(window, {
+      localStorage: {
+        getItem: vi.fn(() =>
+          JSON.stringify({
+            necessary: true,
+            analytics: true,
+            ts: Date.now() - 184 * 86_400_000,
+          }),
         ),
       },
     });

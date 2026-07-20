@@ -1,23 +1,29 @@
+/* eslint-disable react/no-unescaped-entities */
 import type { LegalSection } from "../LegalPageLayout";
 
 export const cgvSections: LegalSection[] = [
   {
-    id: "application",
+    id: "champ",
     label: "Champ d'application",
-    title: "Champ d'application",
+    title: "Objet et clients concernés",
     body: (
       <>
         <p>
-          Les présentes conditions générales encadrent les prestations de
-          conseil, conception, développement, audit, maintenance et évolution
-          réalisées par <strong>HAGNÉRÉ CODE SAS</strong> pour ses clients
-          professionnels.
+          Les présentes conditions générales de vente (CGV) encadrent les
+          prestations informatiques fournies par <strong>HAGNERE CODE</strong>,
+          SASU au capital de 10 €, SIREN 993 672 856, à des clients agissant pour
+          les besoins de leur activité professionnelle.
         </p>
         <p>
-          Elles s&apos;appliquent sauf conditions particulières contraires prévues
-          dans un devis, une proposition commerciale, un bon de commande ou un
-          contrat signé. En cas de contradiction, le document contractuel signé
-          entre les parties prévaut.
+          Elles couvrent notamment le conseil, le cadrage, la conception, le
+          développement, l'intégration, l'audit, la maintenance, l'hébergement
+          géré, la création de contenus et l'accompagnement numérique. Elles ne
+          créent aucune obligation de fournir un service non décrit dans le devis.
+        </p>
+        <p>
+          Le devis, le bon de commande, le contrat ou les conditions particulières
+          acceptés prévalent sur ces CGV. Les éventuelles conditions d'achat du
+          client ne s'appliquent qu'après acceptation écrite de HAGNERE CODE.
         </p>
       </>
     ),
@@ -25,170 +31,168 @@ export const cgvSections: LegalSection[] = [
   {
     id: "commande",
     label: "Commande",
-    title: "Devis, commande et cadrage",
+    title: "Devis, commande et démarrage",
     body: (
       <>
         <p>
-          Toute prestation fait l&apos;objet d&apos;un cadrage préalable permettant de
-          préciser le périmètre, les livrables, les délais, les responsabilités
-          respectives et les conditions financières.
+          Une proposition précise le périmètre, les livrables, les hypothèses,
+          le calendrier estimatif, le prix, les échéances de paiement et sa durée
+          de validité. La commande devient ferme à la réception de l'acceptation
+          non équivoque du client et, lorsqu'il est prévu, du premier acompte.
         </p>
         <p>
-          La commande devient ferme après acceptation écrite du devis ou de la
-          proposition commerciale par le client, selon les modalités indiquées
-          dans le document transmis.
+          Le démarrage opérationnel suppose également la remise des informations,
+          accès, contenus et validations nécessaires. Une demande formulée pendant
+          l'exécution qui modifie le périmètre, une hypothèse ou un livrable fait
+          l'objet d'un chiffrage, d'un arbitrage ou d'un avenant avant réalisation.
+        </p>
+        <p>
+          HAGNERE CODE peut refuser une demande illicite, techniquement
+          irréalisable, contraire aux droits d'un tiers ou incompatible avec ses
+          obligations de sécurité et de protection des données.
         </p>
       </>
     ),
   },
   {
-    id: "prix-paiement",
+    id: "collaboration",
+    label: "Collaboration",
+    title: "Obligations des parties",
+    body: (
+      <>
+        <h3>HAGNERE CODE</h3>
+        <p>
+          HAGNERE CODE est tenu d'une obligation de moyens : mobiliser les
+          compétences et diligences raisonnablement nécessaires pour réaliser le
+          périmètre convenu, informer le client d'un blocage significatif et
+          respecter les règles professionnelles applicables.
+        </p>
+        <h3>Le client</h3>
+        <p>Le client s'engage notamment à :</p>
+        <ul>
+          <li>désigner un interlocuteur capable de valider les décisions ;</li>
+          <li>fournir en temps utile des informations exactes, accès fonctionnels, contenus et retours consolidés ;</li>
+          <li>vérifier qu'il dispose des droits sur les données, marques, textes, images, logiciels et comptes remis ;</li>
+          <li>tester les livrables dans son contexte et signaler précisément les écarts au périmètre accepté ;</li>
+          <li>maintenir ses propres sauvegardes et règles d'accès lorsque l'infrastructure relève de lui.</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    id: "prix",
     label: "Prix et paiement",
-    title: "Prix, facturation et paiement",
+    title: "Prix, facturation et retard",
     body: (
       <>
         <p>
-          Les prix sont exprimés hors taxes, sauf mention contraire. Les taxes
-          applicables sont ajoutées conformément à la réglementation en vigueur
-          à la date de facturation.
+          Les prix sont indiqués en euros hors taxes ; la TVA et les taxes
+          applicables sont ajoutées sur la facture. Sauf mention contraire, les
+          frais de déplacement, licences, achats médias, services tiers et
+          consommations d'infrastructure ne sont pas inclus.
         </p>
         <p>
-          Les échéances de paiement sont précisées dans le devis ou le contrat.
-          À défaut de précision, les factures sont payables à réception. Tout
-          retard de paiement peut entraîner l&apos;application des pénalités légales
-          et de l&apos;indemnité forfaitaire pour frais de recouvrement.
+          Les échéances prévues au devis s'appliquent. À défaut de délai convenu,
+          le paiement intervient dans les 30 jours suivant l'exécution de la
+          prestation ou la réception des marchandises, conformément aux règles
+          entre professionnels. Aucun escompte pour paiement anticipé n'est accordé
+          sauf indication écrite contraire.
+        </p>
+        <div className="lp-note is-warning">
+          Tout retard entraîne, dès le lendemain de l'échéance et sans rappel,
+          des pénalités calculées au taux de refinancement le plus récent de la
+          Banque centrale européenne majoré de 10 points, sans pouvoir être
+          inférieur à trois fois le taux d'intérêt légal, ainsi qu'une indemnité
+          forfaitaire de 40 € par facture pour frais de recouvrement. Une
+          indemnisation complémentaire peut être demandée sur justificatifs si
+          les frais exposés dépassent 40 €.
+        </div>
+        <p>
+          En cas de non-paiement, HAGNERE CODE peut, après information du client,
+          suspendre la prestation et les accès qu'elle administre, sans supprimer
+          les données ni compromettre une obligation impérative de sécurité.
         </p>
       </>
     ),
   },
   {
-    id: "execution",
-    label: "Exécution",
-    title: "Exécution des prestations",
+    id: "delais",
+    label: "Délais",
+    title: "Calendrier et dépendances",
     body: (
       <>
         <p>
-          HAGNÉRÉ CODE SAS s&apos;engage à exécuter les prestations avec diligence,
-          selon les règles de l&apos;art et dans le respect du périmètre validé.
+          Les délais sont ceux du devis et commencent lorsque les prérequis de
+          démarrage sont réunis. Sauf engagement qualifié expressément de ferme,
+          un planning constitue une estimation établie à partir des informations
+          disponibles.
         </p>
         <p>
-          Le client s&apos;engage à fournir les accès, contenus, validations et
-          informations nécessaires au bon déroulement du projet. Tout retard de
-          validation ou élément manquant peut entraîner un décalage du planning.
+          Un retard de validation, un accès manquant, une modification de périmètre,
+          une indisponibilité d'un service tiers ou un événement hors du contrôle
+          raisonnable de HAGNERE CODE peut décaler le calendrier. L'impact est
+          signalé et les parties recherchent un nouvel ordre de priorité ou un
+          calendrier adapté.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "recette",
+    label: "Recette et corrections",
+    title: "Livraison, vérification et corrections",
+    body: (
+      <>
+        <p>
+          Le mode de livraison et la procédure de recette figurent dans le devis.
+          Le client vérifie les livrables dans un délai raisonnable et décrit les
+          non-conformités de façon reproductible, avec l'environnement et les
+          étapes qui permettent de les constater.
+        </p>
+        <p>
+          HAGNERE CODE corrige les écarts démontrés entre le livrable et le
+          périmètre accepté. Une évolution, un changement d'avis, une incompatibilité
+          apparue après modification par un tiers ou un dysfonctionnement d'un
+          service externe n'est pas une non-conformité et peut faire l'objet d'une
+          prestation distincte.
+        </p>
+        <p>
+          Les garanties légales impératives restent applicables. Aucune promesse
+          générale d'absence absolue d'erreur, de disponibilité continue ou de
+          compatibilité avec une évolution future non connue n'est consentie.
         </p>
       </>
     ),
   },
   {
     id: "propriete",
-    label: "Propriété",
-    title: "Propriété intellectuelle et livrables",
+    label: "Propriété intellectuelle",
+    title: "Droits sur les livrables et composants",
     body: (
       <>
         <p>
-          Sauf stipulation contraire, les livrables spécifiques développés pour
-          le client sont transférés après paiement complet des sommes dues.
+          Sous réserve du paiement intégral, HAGNERE CODE cède au client, pour les
+          seuls éléments originaux développés spécifiquement et identifiés comme
+          livrables, les droits patrimoniaux nécessaires à l'usage convenu :
+          reproduction, représentation, adaptation, correction, traduction,
+          intégration, maintenance et évolution. La cession vaut pour les
+          destinations définies au devis, pour le monde entier et pendant la durée
+          légale de protection.
         </p>
         <p>
-          Les éléments préexistants, bibliothèques open source, outils internes,
-          composants génériques, méthodes, savoir-faire et environnements de
-          développement restent la propriété de leurs titulaires respectifs ou
-          de HAGNÉRÉ CODE SAS lorsqu&apos;ils lui appartiennent.
-        </p>
-      </>
-    ),
-  },
-  {
-    id: "responsabilite",
-    label: "Responsabilité",
-    title: "Responsabilité",
-    body: (
-      <>
-        <p>
-          HAGNÉRÉ CODE SAS ne peut être tenue responsable des dommages indirects,
-          pertes d&apos;exploitation, pertes de chiffre d&apos;affaires, pertes de données
-          non imputables à une faute directe, ou conséquences liées à une
-          mauvaise utilisation des livrables par le client.
+          Restent exclus de la cession : savoir-faire, méthodes, modèles génériques,
+          bibliothèques et briques préexistantes de HAGNERE CODE, éléments de tiers,
+          logiciels open source, polices, médias et services soumis à leur propre
+          licence. Le client reçoit sur ces éléments les droits prévus par la
+          licence ou, pour une brique HAGNERE CODE incorporée, un droit d'usage
+          suffisant pour exploiter le livrable dans sa destination contractuelle.
         </p>
         <p>
-          La responsabilité totale de HAGNÉRÉ CODE SAS, toutes causes confondues,
-          est limitée aux montants effectivement payés par le client au titre de
-          la prestation concernée, sauf disposition impérative contraire.
-        </p>
-      </>
-    ),
-  },
-  {
-    id: "sous-traitance-rgpd",
-    label: "Sous-traitance RGPD",
-    title: "Sous-traitance de données personnelles (article 28 RGPD)",
-    body: (
-      <>
-        <p>
-          Lorsque l&apos;exécution d&apos;une prestation conduit HAGNÉRÉ CODE SAS à
-          traiter des données à caractère personnel pour le compte du client,
-          le client agit en qualité de <strong>responsable de traitement</strong>{" "}
-          et HAGNÉRÉ CODE SAS en qualité de <strong>sous-traitant</strong> au
-          sens de l&apos;article 4.8 du RGPD.
-        </p>
-        <p>
-          <strong>Objet, durée, nature et finalité du traitement.</strong>{" "}
-          Le traitement consiste en la conception, le développement, la
-          maintenance ou l&apos;hébergement applicatif des solutions livrées au
-          client. Sa durée correspond à la durée d&apos;exécution de la prestation
-          telle que définie au devis ou au contrat. La nature et les finalités
-          sont précisées dans la documentation de la prestation (registre de
-          traitement, schéma de flux de données ou clause spécifique annexée).
-        </p>
-        <p>
-          <strong>Catégories de données et de personnes concernées.</strong>{" "}
-          HAGNÉRÉ CODE SAS traite uniquement les catégories de données et
-          personnes nécessaires à la prestation (typiquement : données
-          d&apos;identification professionnelle, données techniques de
-          connexion, contenus utilisateurs, données métier strictement
-          requises). Aucune donnée sensible au sens de l&apos;article 9 du RGPD
-          n&apos;est traitée sans accord exprès et instructions documentées du
-          client.
-        </p>
-        <p>
-          <strong>Obligations du sous-traitant.</strong> HAGNÉRÉ CODE SAS
-          s&apos;engage à :
-        </p>
-        <ul>
-          <li>
-            ne traiter les données que sur instructions documentées du client,
-            y compris pour les transferts hors Union européenne ;
-          </li>
-          <li>
-            mettre en œuvre les mesures techniques et organisationnelles
-            appropriées (chiffrement at-rest et in-transit, contrôle d&apos;accès,
-            journalisation, sauvegardes testées) ;
-          </li>
-          <li>
-            garantir que les personnes autorisées à traiter les données sont
-            soumises à un engagement de confidentialité ;
-          </li>
-          <li>
-            assister le client dans le respect de ses obligations (réponse aux
-            demandes d&apos;exercice de droits, AIPD, notification de violations
-            sous 24 h ouvrées) ;
-          </li>
-          <li>
-            tenir un registre des traitements et des sous-traitants ultérieurs
-            mis à disposition sur demande ;
-          </li>
-          <li>
-            à la fin de la prestation, restituer ou supprimer les données
-            personnelles selon le choix du client.
-          </li>
-        </ul>
-        <p>
-          <strong>Sous-traitants ultérieurs.</strong> Les sous-traitants
-          actuels (notamment les prestataires d&apos;hébergement, d&apos;envoi d&apos;email
-          transactionnel et d&apos;intelligence artificielle) sont listés dans la
-          page <a href="/legal/mentions">Mentions légales</a>. Le client est
-          informé préalablement de tout changement et peut s&apos;y opposer pour
-          motifs légitimes.
+          Les droits moraux des auteurs restent régis par la loi. Les fichiers
+          sources, dépôts, données, accès, documentation et modalités de
+          réversibilité remis au client sont ceux expressément prévus au devis.
+          HAGNERE CODE ne publie pas un projet confidentiel comme référence sans
+          autorisation.
         </p>
       </>
     ),
@@ -196,66 +200,177 @@ export const cgvSections: LegalSection[] = [
   {
     id: "confidentialite",
     label: "Confidentialité",
-    title: "Confidentialité",
+    title: "Confidentialité et contenus du client",
     body: (
       <>
         <p>
-          Chaque partie s&apos;engage à conserver confidentielles les informations
-          de l&apos;autre partie portées à sa connaissance dans le cadre de la
-          mission, et à ne les utiliser qu&apos;aux fins d&apos;exécution du contrat.
-          Cette obligation reste applicable pendant trois ans après la fin de
-          la mission.
+          Chaque partie protège les informations non publiques reçues de l'autre,
+          ne les utilise que pour le contrat et ne les communique qu'aux personnes
+          qui doivent en connaître. Cette obligation ne couvre pas une information
+          déjà publique sans faute, légitimement détenue, reçue d'un tiers autorisé
+          ou dont la communication est imposée par la loi.
         </p>
         <p>
-          Un accord de confidentialité (NDA) spécifique peut être signé à la
-          demande du client avant échange de tout document sensible.
+          Le client garantit qu'il peut confier les contenus et données nécessaires
+          à la mission. Il reste responsable de leur licéité, de l'information des
+          personnes et des décisions métier prises à partir du livrable. HAGNERE
+          CODE informe le client lorsqu'un contenu manifestement illicite ou risqué
+          est détecté et peut suspendre son traitement.
         </p>
       </>
     ),
   },
   {
-    id: "force-majeure",
-    label: "Force majeure",
-    title: "Force majeure",
+    id: "donnees",
+    label: "Données personnelles",
+    title: "Protection des données et sécurité",
+    body: (
+      <>
+        <p>
+          Chaque partie respecte les obligations qui lui incombent au titre du
+          RGPD. Lorsque HAGNERE CODE traite des données personnelles exclusivement
+          sur instruction du client, un accord conforme à l'article 28 précise
+          l'objet, la durée, les catégories de données, les mesures, les
+          sous-traitants, l'assistance et la restitution ou suppression. Les
+          présentes CGV ne remplacent pas cet accord lorsqu'il est requis.
+        </p>
+        <p>
+          Les mesures de sécurité sont adaptées au risque, au périmètre et à
+          l'architecture retenue. Les responsabilités relatives aux comptes, aux
+          sauvegardes, aux secrets, aux mises à jour et à la réponse aux incidents
+          sont réparties dans le devis ou l'annexe de sécurité ; aucune technologie
+          précise n'est garantie si elle n'y figure pas.
+        </p>
+        <p>
+          Pour les données collectées directement par le site, consultez la
+          <a href="/legal/confidentialite"> politique de confidentialité</a>.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "sous-traitance",
+    label: "Sous-traitance",
+    title: "Prestataires et sous-traitance",
     body: (
       <p>
-        Aucune des parties n&apos;est responsable de l&apos;inexécution d&apos;une
-        obligation due à un cas de force majeure au sens de l&apos;article 1218
-        du Code civil. La partie concernée informe l&apos;autre partie sans délai
-        et les obligations contractuelles sont suspendues le temps de
-        l&apos;événement.
+        HAGNERE CODE peut recourir à des collaborateurs et prestataires qualifiés
+        pour une partie de la mission tout en restant responsable de sa bonne
+        exécution vis-à-vis du client. Lorsque des données personnelles sont
+        concernées, l'information, l'autorisation générale ou spécifique et le
+        droit d'opposition légitime suivent l'accord de sous-traitance applicable.
       </p>
     ),
   },
   {
-    id: "reversibilite",
-    label: "Réversibilité",
-    title: "Réversibilité et fin de contrat",
+    id: "responsabilite",
+    label: "Responsabilité",
+    title: "Responsabilité et assurance du risque",
     body: (
-      <p>
-        En fin de contrat, HAGNÉRÉ CODE SAS remet au client les éléments
-        nécessaires à la reprise des prestations par un tiers : code source
-        documenté, accès aux dépôts Git, comptes d&apos;hébergement, runbooks et
-        documentation d&apos;exploitation. Une période de passation peut être
-        contractualisée selon le périmètre.
-      </p>
+      <>
+        <p>
+          Chaque partie répond des dommages directs, prévisibles et prouvés causés
+          par son manquement. Dans la mesure permise entre professionnels, HAGNERE
+          CODE ne répond pas des pertes indirectes telles que perte d'opportunité,
+          de marge, d'image ou de données dont le client devait assurer la sauvegarde.
+        </p>
+        <p>
+          Sauf disposition impérative ou faute lourde/dolosive, le montant cumulé
+          de la responsabilité de HAGNERE CODE au titre d'une mission est limité
+          aux sommes hors taxes effectivement payées pour la prestation à l'origine
+          du dommage au cours des douze mois précédant le fait générateur. Cette
+          limite ne s'applique pas aux dommages corporels, à une atteinte frauduleuse
+          aux droits d'un tiers ou aux cas dans lesquels la loi interdit une limitation.
+        </p>
+        <p>
+          Le client apprécie l'adéquation du livrable à son activité, teste avant
+          mise en production et maintient un plan de continuité proportionné à ses
+          risques. HAGNERE CODE n'est pas responsable d'une modification non
+          autorisée, d'un accès client compromis ou d'un service tiers choisi par
+          le client hors de son contrôle raisonnable.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "fin",
+    label: "Fin du contrat",
+    title: "Suspension, résiliation et force majeure",
+    body: (
+      <>
+        <p>
+          En cas de manquement sérieux, l'autre partie peut demander sa correction
+          par écrit. Si le manquement persiste quinze jours calendaires après une
+          mise en demeure suffisamment précise, elle peut résilier la prestation,
+          sans préjudice des droits déjà acquis. Une urgence de sécurité, une
+          illicéité ou un impayé peut justifier une suspension immédiate et
+          proportionnée après information lorsque celle-ci est possible.
+        </p>
+        <p>
+          À la fin du contrat, le client règle les prestations réalisées, frais
+          engagés et éléments spécifiquement commandés. HAGNERE CODE remet les
+          éléments de réversibilité prévus et payés. Une assistance supplémentaire
+          de migration est facturée si elle n'était pas incluse.
+        </p>
+        <p>
+          Aucune partie n'est responsable d'un empêchement répondant aux conditions
+          de la force majeure de l'article 1218 du Code civil. Elle informe l'autre
+          partie et limite les conséquences. Si l'empêchement durable prive le
+          contrat de son utilité, les règles légales de suspension ou résolution
+          s'appliquent.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "retractation",
+    label: "Petites entreprises",
+    title: "Cas particulier du droit de rétractation",
+    body: (
+      <>
+        <p>
+          Ces CGV sont B2B. Toutefois, l'article L. 221-3 du Code de la
+          consommation peut étendre certaines protections à un professionnel
+          lorsqu'un contrat est conclu hors établissement, que son objet n'entre
+          pas dans son activité principale et qu'il emploie au plus cinq salariés.
+          Si ces trois conditions sont réunies, le client peut notamment bénéficier
+          d'un délai de rétractation de quatorze jours.
+        </p>
+        <p>
+          Le professionnel concerné peut notifier sans ambiguïté sa décision à
+          HAGNERE CODE aux coordonnées des <a href="/legal/mentions">mentions légales</a>.
+          Une exécution avant la fin du délai n'est engagée que sur demande expresse
+          dans les conditions légales ; les conséquences financières de la
+          rétractation sont alors celles prévues par la loi.
+        </p>
+      </>
     ),
   },
   {
     id: "litiges",
     label: "Litiges",
-    title: "Droit applicable et litiges",
+    title: "Réclamations, droit applicable et juridiction",
     body: (
       <>
         <p>
-          Les présentes conditions sont soumises au droit français. En cas de
-          difficulté, les parties s&apos;efforcent de rechercher une solution amiable
-          avant toute action contentieuse.
+          Le contrat est régi par le droit français. Avant toute procédure, les
+          parties s'efforcent de résoudre le différend à partir d'une réclamation
+          écrite et documentée. Elles peuvent solliciter le
+          <a href="https://www.economie.gouv.fr/mediateur-des-entreprises" target="_blank" rel="noopener noreferrer"> Médiateur des entreprises</a>.
+          Les modalités figurent sur la page <a href="/legal/reclamations">Réclamations et médiation</a>.
         </p>
         <p>
-          À défaut d&apos;accord amiable, les juridictions compétentes sont celles
-          du ressort du siège social de HAGNÉRÉ CODE SAS, sous réserve des
-          règles impératives applicables.
+          <strong>
+            ENTRE PARTIES AYANT TOUTES LA QUALITÉ DE COMMERÇANT, TOUT LITIGE NON
+            RÉSOLU À L'AMIABLE RELÈVE DE LA COMPÉTENCE DU TRIBUNAL DE COMMERCE DE
+            CHAMBÉRY, Y COMPRIS EN CAS DE PLURALITÉ DE DÉFENDEURS, SOUS RÉSERVE
+            D'UNE RÈGLE IMPÉRATIVE CONTRAIRE.
+          </strong>
+        </p>
+        <p>
+          Si l'une des parties n'a pas la qualité de commerçant ou si la clause
+          attributive n'est pas opposable, les règles légales de compétence
+          territoriale et matérielle s'appliquent.
         </p>
       </>
     ),

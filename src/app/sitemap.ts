@@ -32,6 +32,7 @@ const legalRoutes = [
   "legal/cgv",
   "legal/confidentialite",
   "legal/cookies",
+  "legal/reclamations",
   "legal/accessibilite",
 ];
 

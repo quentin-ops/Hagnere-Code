@@ -40,6 +40,7 @@ import {
 } from "./MathChallenge";
 import { compileBrief } from "./brief-format";
 import { copyTextToClipboard } from "@/lib/clipboard";
+import { isAnalyticsAllowed } from "@/lib/cookie-consent";
 import { trackFunnelEvent } from "@/lib/funnel-analytics";
 import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
 
@@ -51,6 +52,8 @@ type Status =
   | { kind: "error"; message: string };
 
 const DRAFT_STORAGE_KEY = "pf:draft:v2";
+const DRAFT_STORAGE_VERSION = 2;
+const DRAFT_EXPIRY_MS = 30 * 86_400_000;
 // Clés de l'ancien funnel avec estimation IA — purgées au premier chargement.
 const LEGACY_STORAGE_KEYS = ["pf:draft:v1", "pf:briefSlug:v1", "pf:result:v1"];
 
@@ -124,6 +127,118 @@ const INITIAL_STATE: FunnelState = {
   honeypot: "",
 };
 
+type DraftStorageEnvelope = {
+  version: typeof DRAFT_STORAGE_VERSION;
+  savedAt: number;
+  state: FunnelState;
+};
+
+const STRING_ARRAY_STATE_KEYS = [
+  "projectKinds",
+  "objectives",
+  "mustHaves",
+  "integrations",
+  "existingAssets",
+] as const;
+
+const STRING_STATE_KEYS = [
+  "description",
+  "currentSituation",
+  "audience",
+  "openScope",
+  "timeline",
+  "budget",
+  "decisionStage",
+  "firstName",
+  "lastName",
+  "email",
+  "phone",
+  "siren",
+  "company",
+  "role",
+  "honeypot",
+] as const;
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function parseStoredFunnelState(value: unknown): FunnelState | null {
+  if (!isRecord(value)) return null;
+
+  const parsed: FunnelState = { ...INITIAL_STATE };
+  let hasKnownField = false;
+
+  for (const key of STRING_ARRAY_STATE_KEYS) {
+    const storedValue = value[key];
+    if (storedValue === undefined) continue;
+    if (
+      !Array.isArray(storedValue) ||
+      !storedValue.every((item) => typeof item === "string")
+    ) {
+      return null;
+    }
+    hasKnownField = true;
+    if (key === "projectKinds") {
+      parsed.projectKinds = storedValue as ProjectKindId[];
+    } else {
+      parsed[key] = storedValue;
+    }
+  }
+
+  for (const key of STRING_STATE_KEYS) {
+    const storedValue = value[key];
+    if (storedValue === undefined) continue;
+    if (typeof storedValue !== "string") return null;
+    hasKnownField = true;
+    parsed[key] = storedValue;
+  }
+
+  if (value.consent !== undefined) {
+    if (typeof value.consent !== "boolean") return null;
+    hasKnownField = true;
+    parsed.consent = value.consent;
+  }
+
+  return hasKnownField ? parsed : null;
+}
+
+function readStoredDraft(
+  value: unknown,
+  now: number,
+): { state: FunnelState; shouldMigrate: boolean } | null {
+  if (!isRecord(value)) return null;
+
+  if ("version" in value || "savedAt" in value || "state" in value) {
+    if (
+      value.version !== DRAFT_STORAGE_VERSION ||
+      typeof value.savedAt !== "number" ||
+      !Number.isFinite(value.savedAt) ||
+      value.savedAt > now ||
+      now - value.savedAt > DRAFT_EXPIRY_MS
+    ) {
+      return null;
+    }
+
+    const state = parseStoredFunnelState(value.state);
+    return state ? { state, shouldMigrate: false } : null;
+  }
+
+  // Ancien format de pf:draft:v2 : état brut sans date. Il est migré une
+  // seule fois avec une date de sauvegarde, puis suit la même expiration.
+  const legacyState = parseStoredFunnelState(value);
+  return legacyState ? { state: legacyState, shouldMigrate: true } : null;
+}
+
+function serializeDraft(state: FunnelState, savedAt = Date.now()): string {
+  const envelope: DraftStorageEnvelope = {
+    version: DRAFT_STORAGE_VERSION,
+    savedAt,
+    state,
+  };
+  return JSON.stringify(envelope);
+}
+
 const steps: Array<{
   id: StepId;
   label: string;
@@ -164,7 +279,7 @@ const steps: Array<{
     label: "Coordonnées",
     title: "Où vous envoyer le retour ?",
     help: "On demande uniquement ce qu'il faut pour répondre proprement au brief.",
-    substeps: ["Identité", "Entreprise", "Consentement"],
+    substeps: ["Identité", "Entreprise", "Information RGPD"],
   },
   {
     id: "recap",
@@ -1040,7 +1155,9 @@ function validationText(id: StepId): string {
   if (id === "contexte") return "Ajoutez au moins quelques phrases sur le besoin ou dictez-les au micro.";
   if (id === "perimetre") return "Cochez au moins une fonctionnalité ou décrivez le contenu librement.";
   if (id === "contraintes") return "Renseignez le délai, le budget et le niveau de décision (ou cochez « Préfère en discuter »).";
-  if (id === "contact") return "Prénom, nom, email, entreprise et consentement sont requis pour envoyer le brief.";
+  if (id === "contact") {
+    return "Prénom, nom, email et entreprise sont requis. Confirmez aussi avoir pris connaissance de la politique de confidentialité et demander le traitement de votre demande dans le cadre de mesures précontractuelles.";
+  }
   return "";
 }
 
@@ -1578,6 +1695,13 @@ function VoiceTextarea({
           {recording ? "Arrêter" : "Dicter"}
         </button>
       </div>
+      <p className="pf-voice-privacy">
+        Dictée facultative : votre audio est transmis à Groq pour transcription.
+        Vous pouvez saisir le même texte sans utiliser ce service.{" "}
+        <a href="/legal/confidentialite#dictee" target="_blank" rel="noopener noreferrer">
+          En savoir plus
+        </a>
+      </p>
       {error && (
         <div className="pf-mic-error" role="alert">
           <div className="pf-mic-error-head">
@@ -1694,6 +1818,7 @@ export function ProjectFunnel() {
   // match the client" warning on data that lives in localStorage.
   const [state, setState] = useState<FunnelState>(INITIAL_STATE);
   const [hydrated, setHydrated] = useState(false);
+  const skipInitialPersistRef = useRef(true);
   // Anti-bot maison : question de calcul affichée à l'étape d'envoi,
   // vérifiée côté client puis revalidée par /api/project-inquiry.
   const [math, setMath] = useState<MathChallengeValue | null>(null);
@@ -1717,13 +1842,30 @@ export function ProjectFunnel() {
       }
       const raw = window.localStorage.getItem(DRAFT_STORAGE_KEY);
       if (raw) {
-        const parsed = JSON.parse(raw) as Partial<FunnelState>;
-        // Toujours arriver sur la page avec aucun service coché — l'utilisateur
-        // doit re-sélectionner explicitement, même s'il avait sauvegardé un brouillon.
-        setState((prev) => ({ ...prev, ...parsed, projectKinds: [] }));
+        const draft = readStoredDraft(JSON.parse(raw), Date.now());
+        if (!draft) {
+          window.localStorage.removeItem(DRAFT_STORAGE_KEY);
+        } else {
+          const restoredState = { ...draft.state, projectKinds: [] };
+          // Toujours arriver sur la page avec aucun service coché — l'utilisateur
+          // doit re-sélectionner explicitement, même s'il avait sauvegardé un brouillon.
+          setState(restoredState);
+          if (draft.shouldMigrate) {
+            window.localStorage.setItem(
+              DRAFT_STORAGE_KEY,
+              serializeDraft(restoredState),
+            );
+          }
+        }
       }
     } catch {
-      /* corrupt JSON / private mode — ignore */
+      // JSON invalide : on tente de purger la valeur. En navigation privée,
+      // localStorage peut lui-même être indisponible, auquel cas on ignore.
+      try {
+        window.localStorage.removeItem(DRAFT_STORAGE_KEY);
+      } catch {
+        /* private mode — ignore */
+      }
     }
     setHydrated(true);
   }, []);
@@ -1734,8 +1876,12 @@ export function ProjectFunnel() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (!hydrated) return;
+    if (skipInitialPersistRef.current) {
+      skipInitialPersistRef.current = false;
+      return;
+    }
     try {
-      window.localStorage.setItem(DRAFT_STORAGE_KEY, JSON.stringify(state));
+      window.localStorage.setItem(DRAFT_STORAGE_KEY, serializeDraft(state));
     } catch {
       /* quota / private mode — ignore */
     }
@@ -1745,6 +1891,7 @@ export function ProjectFunnel() {
   // double-firing on Strict Mode double-mounts in dev.
   useEffect(() => {
     if (typeof window === "undefined") return;
+    if (!isAnalyticsAllowed()) return;
     const key = "pf:opened";
     if (window.sessionStorage.getItem(key)) return;
     window.sessionStorage.setItem(key, "1");
@@ -2359,12 +2506,9 @@ export function ProjectFunnel() {
                     {state.consent && <Check size={12} strokeWidth={3} />}
                   </span>
                   <span className="pf-consent-text">
-                    <b>Consentement RGPD</b>
+                    <b>Accusé de lecture et demande de traitement</b>
                     <small>
-                      J&apos;accepte que Hagnéré Code utilise mes coordonnées pour
-                      analyser ma demande et me recontacter. Elles ne sont ni vendues
-                      ni utilisées à des fins commerciales ; seuls les sous-traitants
-                      techniques décrits dans la <a href="/legal/confidentialite" target="_blank" rel="noopener noreferrer">politique de confidentialité</a> y accèdent si nécessaire.
+                      J&apos;ai pris connaissance de la <a href="/legal/confidentialite" target="_blank" rel="noopener noreferrer">politique de confidentialité</a> et je demande à Hagnéré Code de traiter mes informations afin de répondre à ma demande, dans le cadre de mesures précontractuelles.
                     </small>
                   </span>
                 </label>

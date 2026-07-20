@@ -629,6 +629,18 @@ html.dark {
   font-size: 11.5px;
 }
 
+.pf-voice-privacy {
+  margin: 0;
+  color: var(--pf-muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.pf-voice-privacy a {
+  color: var(--pf-accent-dark);
+  text-underline-offset: 2px;
+}
+
 .pf-mic {
   display: inline-flex;
   align-items: center;
@@ -1751,7 +1763,7 @@ html.dark {
 }
 
 /* ==========================================================================
-   Consent RGPD visible
+   Confirmation de lecture RGPD visible
    ========================================================================== */
 
 .pf-consent {
