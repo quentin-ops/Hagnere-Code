@@ -15,6 +15,26 @@ const OBSOLETE_SIRET = /993\s*672\s*856\s*00016|99367285600016/;
 const GUIDE_WORDS_PER_MINUTE = 200;
 const GUIDE_READ_TIME_TOLERANCE_MIN = 1;
 const indexingEnabled = process.env.NEXT_PUBLIC_ENV === "production";
+let failureCount = 0;
+const allowedSocialImageOrigins = new Set([SITE_ORIGIN]);
+
+if (!indexingEnabled) {
+  for (const envName of [
+    "VERCEL_URL",
+    "VERCEL_BRANCH_URL",
+    "VERCEL_PROJECT_PRODUCTION_URL",
+  ]) {
+    const value = process.env[envName]?.trim();
+    if (!value) continue;
+    try {
+      allowedSocialImageOrigins.add(
+        new URL(value.includes("://") ? value : `https://${value}`).origin,
+      );
+    } catch {
+      fail(`origine Vercel invalide dans ${envName} : ${value}`);
+    }
+  }
+}
 const buildInputRoots = [resolve("src"), resolve("public")];
 const buildInputFiles = [
   "next.config.ts",
@@ -26,7 +46,6 @@ const buildInputFiles = [
   "wrangler.jsonc",
 ].map((path) => resolve(path));
 
-let failureCount = 0;
 let checkedGuideReadTimeCount = 0;
 
 function fail(message) {
@@ -128,8 +147,8 @@ function checkSocialImage(imageUrl, pathname, appPaths) {
     return;
   }
 
-  if (parsed.origin !== SITE_ORIGIN) {
-    fail(`og:image externe ou non canonique pour ${pathname} : ${imageUrl}`);
+  if (!allowedSocialImageOrigins.has(parsed.origin)) {
+    fail(`og:image externe ou non autorisée pour ${pathname} : ${imageUrl}`);
     return;
   }
 
