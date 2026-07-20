@@ -12,7 +12,7 @@ import {
   Sheet,
 } from "lucide-react";
 import { GuidesShell } from "@/components/guides/GuidesShell";
-import { SITE_CDC_KIT, resourceKitUrl } from "@/lib/resources";
+import { APP_CDC_KIT, SITE_CDC_KIT, resourceKitUrl } from "@/lib/resources";
 import { DEFAULT_OG_IMAGE, OG_BASE, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -31,12 +31,27 @@ export const metadata: Metadata = {
     url: "/ressources",
     images: [DEFAULT_OG_IMAGE],
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 const resources = [
   {
     name: SITE_CDC_KIT.cardTitle,
     url: resourceKitUrl(SITE_CDC_KIT),
+  },
+  {
+    name: APP_CDC_KIT.cardTitle,
+    url: resourceKitUrl(APP_CDC_KIT),
   },
   {
     name: "Livres blancs Hagnéré Code",
@@ -46,6 +61,38 @@ const resources = [
   {
     name: "Calculateur du coût réel d'Excel",
     url: `${SITE_URL}/outils/calculateur-cout-excel`,
+  },
+];
+
+const featuredKits = [
+  {
+    resource: SITE_CDC_KIT,
+    format: "Word + PDF + Excel",
+    description:
+      "Un modèle Word en 18 rubriques, un exemple fictif entièrement rempli, une grille Excel de 56 tests et un mode d'emploi court.",
+    modelImage:
+      "/images/ressources/kit-cahier-des-charges/apercu-modele-word.webp",
+    modelAlt: "Aperçu du modèle Word du cahier des charges de site internet",
+    exampleImage:
+      "/images/ressources/kit-cahier-des-charges/apercu-exemple-rempli.webp",
+    exampleAlt:
+      "Aperçu de l'exemple fictif de cahier des charges de site rempli",
+    imageHeight: 1018,
+  },
+  {
+    resource: APP_CDC_KIT,
+    format: "Word + PDF",
+    description:
+      "Un modèle Word en 14 rubriques, un exemple fictif rempli et un mode d'emploi sourcé pour comparer logiciel existant, ERP et sur mesure.",
+    modelImage:
+      "/images/ressources/kit-cahier-des-charges-application-metier/apercu-modele-cahier-des-charges-application-metier.webp",
+    modelAlt:
+      "Aperçu du modèle Word du cahier des charges d'une application métier",
+    exampleImage:
+      "/images/ressources/kit-cahier-des-charges-application-metier/apercu-exemple-rempli-cahier-des-charges-application-metier.webp",
+    exampleAlt:
+      "Aperçu de l'exemple fictif de cahier des charges d'une application métier",
+    imageHeight: 1018,
   },
 ];
 
@@ -119,8 +166,18 @@ const secondaryResources = [
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: collectionJsonLd.replace(/</g, "\\u003c") }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd.replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: collectionJsonLd.replace(/</g, "\\u003c"),
+        }}
+      />
 
       <section className="relative overflow-hidden bg-zinc-950 py-14 sm:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(109,40,217,0.2),transparent_58%)]" />
@@ -171,80 +228,85 @@ export default function Page() {
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-7">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-violet-700 dark:text-violet-300">
-              Kit pratique à la une
+              Kits pratiques
             </p>
             <h2 className="mt-2 max-w-3xl text-2xl font-bold tracking-tight text-zinc-950 sm:text-3xl dark:text-white">
-              Partez d&apos;un cahier des charges déjà structuré — puis
-              adaptez-le à votre entreprise.
+              Partez d&apos;un cahier des charges déjà structuré, selon le
+              projet à cadrer.
             </h2>
           </div>
 
-          <article className="group grid overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-50 shadow-sm lg:grid-cols-[0.9fr_1.1fr] dark:border-zinc-800 dark:bg-zinc-900/50">
-            <div className="relative min-h-[300px] overflow-hidden bg-gradient-to-br from-violet-100 via-white to-blue-100 p-6 sm:p-10 dark:from-violet-950/60 dark:via-zinc-900 dark:to-blue-950/40">
-              <div className="absolute -right-16 -top-16 size-64 rounded-full bg-violet-300/30 blur-3xl dark:bg-violet-700/20" />
-              <div className="relative mx-auto grid max-w-lg grid-cols-2 items-end gap-4">
-                <div className="rotate-[-2deg] overflow-hidden rounded-xl border border-white/80 bg-white shadow-2xl">
-                  <Image
-                    src="/images/ressources/kit-cahier-des-charges/apercu-modele-word.webp"
-                    alt="Aperçu du modèle Word du cahier des charges"
-                    width={720}
-                    height={1018}
-                    sizes="(min-width: 1024px) 18vw, 42vw"
-                    className="h-auto w-full"
-                  />
-                </div>
-                <div className="translate-y-5 rotate-[2deg] overflow-hidden rounded-xl border border-white/80 bg-white shadow-2xl">
-                  <Image
-                    src="/images/ressources/kit-cahier-des-charges/apercu-exemple-rempli.webp"
-                    alt="Aperçu de l'exemple fictif de cahier des charges rempli"
-                    width={720}
-                    height={1018}
-                    sizes="(min-width: 1024px) 18vw, 42vw"
-                    className="h-auto w-full"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col justify-center p-6 sm:p-10">
-              <div className="flex flex-wrap gap-2">
-                <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
-                  Gratuit · sans email
-                </span>
-                <span className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-zinc-600 ring-1 ring-zinc-200 dark:bg-zinc-950 dark:text-zinc-300 dark:ring-zinc-700">
-                  Word + PDF + Excel
-                </span>
-              </div>
-              <div className="mt-6 flex size-11 items-center justify-center rounded-xl bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">
-                <PackageOpen className="size-5" aria-hidden="true" />
-              </div>
-              <h2 className="mt-5 text-2xl font-bold tracking-tight text-zinc-950 dark:text-white">
-                {SITE_CDC_KIT.cardTitle}
-              </h2>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
-                Un modèle Word en 18 rubriques, un exemple fictif entièrement
-                rempli, une grille Excel de 56 tests et un mode d&apos;emploi
-                court. Vous pouvez examiner chaque fichier avant de le
-                télécharger.
-              </p>
-              <p className="mt-4 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
-                <strong className="text-zinc-700 dark:text-zinc-300">
-                  Pour :
-                </strong>{" "}
-                {SITE_CDC_KIT.audience}
-              </p>
-              <Link
-                href={SITE_CDC_KIT.path}
-                className="mt-6 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-violet-700 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-violet-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 sm:w-fit dark:bg-violet-600 dark:hover:bg-violet-500"
+          <div className="space-y-8">
+            {featuredKits.map((kit) => (
+              <article
+                key={kit.resource.id}
+                className="group grid overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-50 shadow-sm lg:grid-cols-[0.9fr_1.1fr] dark:border-zinc-800 dark:bg-zinc-900/50"
               >
-                Découvrir le kit et les fichiers
-                <ArrowRight
-                  className="size-4 transition-transform group-hover:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </Link>
-            </div>
-          </article>
+                <div className="relative min-h-[300px] overflow-hidden bg-gradient-to-br from-violet-100 via-white to-blue-100 p-6 sm:p-10 dark:from-violet-950/60 dark:via-zinc-900 dark:to-blue-950/40">
+                  <div className="absolute -right-16 -top-16 size-64 rounded-full bg-violet-300/30 blur-3xl dark:bg-violet-700/20" />
+                  <div className="relative mx-auto grid max-w-lg grid-cols-2 items-end gap-4">
+                    <div className="rotate-[-2deg] overflow-hidden rounded-xl border border-white/80 bg-white shadow-2xl">
+                      <Image
+                        src={kit.modelImage}
+                        alt={kit.modelAlt}
+                        width={720}
+                        height={kit.imageHeight}
+                        sizes="(min-width: 1024px) 18vw, 42vw"
+                        className="h-auto w-full"
+                      />
+                    </div>
+                    <div className="translate-y-5 rotate-[2deg] overflow-hidden rounded-xl border border-white/80 bg-white shadow-2xl">
+                      <Image
+                        src={kit.exampleImage}
+                        alt={kit.exampleAlt}
+                        width={720}
+                        height={kit.imageHeight}
+                        sizes="(min-width: 1024px) 18vw, 42vw"
+                        className="h-auto w-full"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col justify-center p-6 sm:p-10">
+                  <div className="flex flex-wrap gap-2">
+                    <span className="rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-semibold text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                      Gratuit · sans email
+                    </span>
+                    <span className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-zinc-600 ring-1 ring-zinc-200 dark:bg-zinc-950 dark:text-zinc-300 dark:ring-zinc-700">
+                      {kit.format}
+                    </span>
+                  </div>
+                  <div className="mt-6 flex size-11 items-center justify-center rounded-xl bg-zinc-950 text-white dark:bg-white dark:text-zinc-950">
+                    <PackageOpen className="size-5" aria-hidden="true" />
+                  </div>
+                  <h2 className="mt-5 text-2xl font-bold tracking-tight text-zinc-950 dark:text-white">
+                    {kit.resource.cardTitle}
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
+                    {kit.description} Vous pouvez examiner chaque fichier avant
+                    de le télécharger.
+                  </p>
+                  <p className="mt-4 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+                    <strong className="text-zinc-700 dark:text-zinc-300">
+                      Pour :
+                    </strong>{" "}
+                    {kit.resource.audience}
+                  </p>
+                  <Link
+                    href={kit.resource.path}
+                    className="mt-6 inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-violet-700 px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-violet-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 sm:w-fit dark:bg-violet-600 dark:hover:bg-violet-500"
+                  >
+                    Découvrir le kit et les fichiers
+                    <ArrowRight
+                      className="size-4 transition-transform group-hover:translate-x-0.5"
+                      aria-hidden="true"
+                    />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 

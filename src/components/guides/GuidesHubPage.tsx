@@ -106,6 +106,9 @@ const COLLECTIONS: Collection[] = [
 /** Icône de carte par guide (défaut : Globe). */
 const GUIDE_ICONS: Record<string, LucideIcon> = {
   "transformer-excel-en-application": ClipboardList,
+  "cahier-des-charges-application-metier": FileText,
+  "combien-coute-un-crm": Euro,
+  "erp-ou-logiciel-sur-mesure": Scale,
   "combien-coute-un-site-internet": Globe,
   "combien-coute-une-application-mobile": Smartphone,
   "prix-site-vitrine": PanelsTopLeft,
@@ -135,6 +138,11 @@ const PRICE_RANGES = [
 ];
 
 const RESOURCES = [
+  {
+    href: "/ressources/kit-cahier-des-charges-application-metier",
+    label: "Kit cahier des charges d'application métier",
+    value: "Modèle Word, exemple rempli et mode d'emploi sourcé — sans email.",
+  },
   {
     href: "/ressources/kit-cahier-des-charges-site-internet",
     label: "Kit cahier des charges de site",

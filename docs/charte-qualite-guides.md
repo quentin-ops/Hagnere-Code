@@ -5,7 +5,7 @@
 > charte est la source de vérité éditoriale. Un ancien guide sert
 > d'exemple technique, jamais de modèle de fond à recopier.
 
-Version : **19 juillet 2026** · Propriétaire : Hagnéré Code
+Version : **20 juillet 2026** · Propriétaire : Hagnéré Code
 
 Fichiers liés : [roadmap éditoriale](roadmap-guides-seo.md) · registre
 `src/lib/guides.ts` · composants `src/components/guides/`.
@@ -101,12 +101,12 @@ désigner clairement l'une comme secondaire.
 
 Identifier le moment dominant ; il détermine la structure et le CTA :
 
-| Moment | Question du lecteur | Ce que le guide doit produire |
-|---|---|---|
-| Comprendre | « Qu'est-ce que c'est ? » | définition, exemples, limites |
-| Explorer | « Quelles solutions existent ? » | options, critères, cas d'usage |
-| Décider | « Laquelle choisir et à quel prix ? » | arbitrage, budget, risques, verdict par profil |
-| Sécuriser | « Comment éviter une erreur ? » | méthode, responsabilités, contrôles, critères de réception |
+| Moment     | Question du lecteur                   | Ce que le guide doit produire                              |
+| ---------- | ------------------------------------- | ---------------------------------------------------------- |
+| Comprendre | « Qu'est-ce que c'est ? »             | définition, exemples, limites                              |
+| Explorer   | « Quelles solutions existent ? »      | options, critères, cas d'usage                             |
+| Décider    | « Laquelle choisir et à quel prix ? » | arbitrage, budget, risques, verdict par profil             |
+| Sécuriser  | « Comment éviter une erreur ? »       | méthode, responsabilités, contrôles, critères de réception |
 
 ---
 
@@ -155,21 +155,21 @@ synthétisés dans ce fichier versionné.
 
 ### 3.3 Pipeline, livrable et porte de sortie
 
-| Étape | Travail à effectuer | Trace obligatoire | Porte de sortie |
-|---|---|---|---|
-| 1. Cadrer | Définir lecteur, déclencheur, intention, décision, objections et hors-périmètre | Brief rempli | Une seule décision principale est formulée en une phrase |
-| 2. Dédupliquer | Inspecter roadmap, registre, guides et pages service proches | Tableau « page voisine / différence d'intention » | Aucun doublon d'intention non résolu |
-| 3. Observer | Croiser Search Console disponible, questions visibles, suggestions et SERP actuelle | Liste de questions et vocabulaire du lecteur, datée | Les besoins réels sont connus sans inventer de volume |
-| 4. Comparer | Étudier assez de résultats représentatifs pour comprendre réponses, formats, preuves et angles morts | Carte concurrentielle synthétique | L'angle n'est pas seulement « plus long » |
-| 5. Prouver | Vérifier les sources primaires, tarifs, règles, calculs et limites | Fiche de preuves du §4 | Aucun fait décisif ne repose sur une source absente ou déformée |
-| 6. Différencier | Comparer l'empreinte des guides voisins, choisir la progression et l'artefact signature | Fiche de variation du §9 | Le plan découle de la décision du lecteur et non d'un ancien guide |
-| 7. Planifier | Associer chaque question utile à une section, une preuve et une conséquence | Plan annoté | Chaque section a une fonction ; les doublons sont retirés |
-| 8. Rédiger | Écrire réponse, démonstration, exemples, limites, alternatives et verdict | Brouillon complet | Un non-technicien peut agir sans seconde recherche essentielle |
-| 9. Convertir | Choisir action autonome, bon fit, mauvais fit, CTA et éventuelle ressource | Parcours de sortie décrit | Le CTA prolonge le raisonnement et ne force pas la conclusion |
-| 10. Intégrer | Ajouter page, registre, metadata, données structurées, image et maillage pertinent | Diff de code cohérent | Les promesses visibles existent réellement |
-| 11. Contre-auditer | Refaire calculs, sources, cohérence, style, scorecard et test lecteur | Preuve par axe et liste des corrections | Seuil du §13 atteint, aucun point bloquant |
-| 12. Vérifier | Lancer contrôles techniques et observer le rendu réel | Commandes, URLs et tailles contrôlées | Les critères du §14 passent |
-| 13. Livrer | Distinguer créé, testé localement, publié et indexé | Rapport de livraison factuel | Aucun état externe n'est déclaré sans preuve |
+| Étape              | Travail à effectuer                                                                                  | Trace obligatoire                                   | Porte de sortie                                                    |
+| ------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------ |
+| 1. Cadrer          | Définir lecteur, déclencheur, intention, décision, objections et hors-périmètre                      | Brief rempli                                        | Une seule décision principale est formulée en une phrase           |
+| 2. Dédupliquer     | Inspecter roadmap, registre, guides et pages service proches                                         | Tableau « page voisine / différence d'intention »   | Aucun doublon d'intention non résolu                               |
+| 3. Observer        | Croiser Search Console disponible, questions visibles, suggestions et SERP actuelle                  | Liste de questions et vocabulaire du lecteur, datée | Les besoins réels sont connus sans inventer de volume              |
+| 4. Comparer        | Étudier assez de résultats représentatifs pour comprendre réponses, formats, preuves et angles morts | Carte concurrentielle synthétique                   | L'angle n'est pas seulement « plus long »                          |
+| 5. Prouver         | Vérifier les sources primaires, tarifs, règles, calculs et limites                                   | Fiche de preuves du §4                              | Aucun fait décisif ne repose sur une source absente ou déformée    |
+| 6. Différencier    | Comparer l'empreinte des guides voisins, choisir la progression et l'artefact signature              | Fiche de variation du §9                            | Le plan découle de la décision du lecteur et non d'un ancien guide |
+| 7. Planifier       | Associer chaque question utile à une section, une preuve et une conséquence                          | Plan annoté                                         | Chaque section a une fonction ; les doublons sont retirés          |
+| 8. Rédiger         | Écrire réponse, démonstration, exemples, limites, alternatives et verdict                            | Brouillon complet                                   | Un non-technicien peut agir sans seconde recherche essentielle     |
+| 9. Convertir       | Choisir action autonome, bon fit, mauvais fit, CTA et éventuelle ressource                           | Parcours de sortie décrit                           | Le CTA prolonge le raisonnement et ne force pas la conclusion      |
+| 10. Intégrer       | Ajouter page, registre, metadata, données structurées, image et maillage pertinent                   | Diff de code cohérent                               | Les promesses visibles existent réellement                         |
+| 11. Contre-auditer | Refaire calculs, sources, cohérence, style, scorecard et test lecteur                                | Preuve par axe et liste des corrections             | Seuil du §13 atteint, aucun point bloquant                         |
+| 12. Vérifier       | Lancer contrôles techniques et observer le rendu réel                                                | Commandes, URLs et tailles contrôlées               | Les critères du §14 passent                                        |
+| 13. Livrer         | Distinguer créé, testé localement, publié et indexé                                                  | Rapport de livraison factuel                        | Aucun état externe n'est déclaré sans preuve                       |
 
 Les étapes sont obligatoires ; le nombre d'agents et d'outils dépend de la
 complexité. Une recherche multi-agents est recommandée pour les sujets
@@ -202,16 +202,16 @@ utile. Il ne peut pas transformer une incertitude en certitude pour terminer.
 
 Conserver pour chaque fait important :
 
-| Champ | Contenu attendu |
-|---|---|
-| Affirmation | formulation exacte que l'article pourra soutenir |
-| Source | titre, organisme et URL |
-| Nature | officielle, étude primaire, tarif officiel, benchmark, estimation |
-| Périmètre | pays, population, produit, offre, HT/TTC, période |
-| Date | publication et date de consultation |
-| Confiance | élevée, moyenne ou faible, avec raison |
-| Traduction lecteur | conséquence concrète pour son budget ou sa décision |
-| Fraîcheur | date ou événement qui impose une nouvelle vérification |
+| Champ              | Contenu attendu                                                   |
+| ------------------ | ----------------------------------------------------------------- |
+| Affirmation        | formulation exacte que l'article pourra soutenir                  |
+| Source             | titre, organisme et URL                                           |
+| Nature             | officielle, étude primaire, tarif officiel, benchmark, estimation |
+| Périmètre          | pays, population, produit, offre, HT/TTC, période                 |
+| Date               | publication et date de consultation                               |
+| Confiance          | élevée, moyenne ou faible, avec raison                            |
+| Traduction lecteur | conséquence concrète pour son budget ou sa décision               |
+| Fraîcheur          | date ou événement qui impose une nouvelle vérification            |
 
 Le [registre post-audit de six guides](research/audit-six-guides-2026-07-19.md)
 montre le niveau minimal attendu quand une page mêle tarifs officiels, études
@@ -401,6 +401,22 @@ conseil juridique, fiscal ou financier personnalisé.
     phrases longues ou chargées de parenthèses. Éviter les anglicismes
     quand un mot français précis existe.
 
+Pour les calculs économiques, appliquer en plus ces invariants :
+
+- Un scénario partiel est nommé **socle chiffré**, estimation initiale ou
+  budget connu, jamais « coût total », si l'administration, les options, la
+  fiscalité, la sortie ou d'autres postes restent inconnus. Une inconnue est
+  marquée « à confirmer » ; elle n'est jamais remplacée silencieusement par
+  zéro.
+- Un TCO additionne chaque poste une seule fois sur un horizon explicite. Il
+  sépare acquisition, intégration, exploitation, évolution et sortie, même
+  lorsqu'une solution hybride cumule abonnement et développement.
+- Le gain net est exprimé en euros. Le ROI est calculé séparément :
+  `(bénéfices cumulés attribuables - TCO) / TCO × 100`. Le délai de retour
+  indique quand les gains cumulés couvrent le coût. Le temps économisé ne
+  devient un bénéfice monétaire que si l'hypothèse de réaffectation ou de coût
+  évité est expliquée.
+
 ---
 
 ## 7. Lexique et champ lexical utile
@@ -409,14 +425,14 @@ Le champ lexical sert la compréhension, pas la densité de mots-clés.
 Avant rédaction, établir une petite carte des mots que le lecteur emploie
 réellement :
 
-| Famille | Exemples à adapter au sujet |
-|---|---|
-| Problème métier | ressaisie, erreur, délai, dépendance, perte de vente, tâche manuelle |
-| Décision | choisir, comparer, arbitrer, prioriser, renoncer, tester |
-| Économie | budget, coût total, abonnement, maintenance, retour sur investissement |
-| Livraison | périmètre, jalon, livrable, recette, responsabilité, garantie |
-| Risque | sécurité, conformité, réversibilité, disponibilité, dette, dépendance fournisseur |
-| Résultat | temps gagné, conversion, fiabilité, autonomie, adoption, croissance |
+| Famille         | Exemples à adapter au sujet                                                       |
+| --------------- | --------------------------------------------------------------------------------- |
+| Problème métier | ressaisie, erreur, délai, dépendance, perte de vente, tâche manuelle              |
+| Décision        | choisir, comparer, arbitrer, prioriser, renoncer, tester                          |
+| Économie        | budget, coût total, abonnement, maintenance, retour sur investissement            |
+| Livraison       | périmètre, jalon, livrable, recette, responsabilité, garantie                     |
+| Risque          | sécurité, conformité, réversibilité, disponibilité, dette, dépendance fournisseur |
+| Résultat        | temps gagné, conversion, fiabilité, autonomie, adoption, croissance               |
 
 Ajouter synonymes, entités et questions uniquement lorsqu'ils apportent
 une nuance ou permettent au lecteur de reconnaître sa situation. Bannir
@@ -474,14 +490,14 @@ Mécanismes des guides voisins volontairement non repris :
 Les choix possibles servent à penser ; ils ne forment pas une rotation
 automatique :
 
-| Dimension | Possibilités à adapter au besoin |
-|---|---|
-| Angle | arbitrage économique, coût de l'inaction, risque, résultat métier, décision par profil, contrainte dominante, parcours de projet, diagnostic |
-| Ouverture | verdict conditionnel, situation déclenchante, dilemme, mini-diagnostic, calcul révélateur, erreur fréquente corrigée |
+| Dimension   | Possibilités à adapter au besoin                                                                                                                             |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Angle       | arbitrage économique, coût de l'inaction, risque, résultat métier, décision par profil, contrainte dominante, parcours de projet, diagnostic                 |
+| Ouverture   | verdict conditionnel, situation déclenchante, dilemme, mini-diagnostic, calcul révélateur, erreur fréquente corrigée                                         |
 | Progression | arbre de décision, chronologie, scénarios, audit par risques, comparaison par critères, récit de projet commenté, minimum vers robuste, résultat vers moyens |
-| Exemples | fil rouge discret, microprofils, contre-exemple, avant/après, budget commenté, décision ratée puis corrigée |
-| Artefact | calcul, matrice, modèle rempli, checklist, plan d'action, grille, protocole de recette |
-| Sortie | interpréter un résultat, produire un livrable, sécuriser une décision, comparer deux scénarios, cadrer un risque |
+| Exemples    | fil rouge discret, microprofils, contre-exemple, avant/après, budget commenté, décision ratée puis corrigée                                                  |
+| Artefact    | calcul, matrice, modèle rempli, checklist, plan d'action, grille, protocole de recette                                                                       |
+| Sortie      | interpréter un résultat, produire un livrable, sécuriser une décision, comparer deux scénarios, cadrer un risque                                             |
 
 Ne jamais reprendre **simultanément** l'ouverture, la progression et le
 dispositif d'exemple du guide le plus proche. Le nouveau dossier doit nommer
@@ -628,6 +644,15 @@ Chaque ressource doit avoir :
 8. un test du fichier, des formules, des liens, de l'impression et de
    l'usage mobile ou bureautique pertinent.
 
+Chaque promesse publique doit correspondre à un élément réellement utilisable
+du fichier : rubrique, champ, formule, ligne, colonne ou matrice. Les quantités
+annoncées sont comptées dans l'artefact livré, pas déduites de son titre. Pour
+une ressource générée, conserver un processus reproductible et un journal de
+QA précisant au minimum version, formats, nombre de pages, contrôle visuel,
+accessibilité, liens, compatibilité testée et limites connues. Une validation
+technique ne doit pas être présentée comme une relecture humaine si celle-ci
+n'a pas eu lieu.
+
 L'accès à la valeur principale ne requiert pas d'email par défaut. Une
 sauvegarde, l'envoi d'une copie ou une relecture peuvent être proposés après
 usage, avec finalité et traitement des données clairement expliqués. Les
@@ -759,18 +784,18 @@ Noter chaque axe de 0 à 2 :
 - `1` : présent mais incomplet, générique ou difficile à appliquer ;
 - `2` : précis, prouvé et directement utilisable.
 
-| Axe | Question de contrôle |
-|---|---|
-| Intention | La page répond-elle immédiatement à la vraie question ? |
-| Décision | Le lecteur sait-il choisir, renoncer ou agir ? |
-| Pédagogie | Un non-technicien comprend-il sans seconde recherche ? |
-| Profondeur | Les conséquences, alternatives et coûts cachés sont-ils couverts ? |
-| Preuve | Les affirmations importantes sont-elles traçables et bien qualifiées ? |
-| Comparaison | Les options sont-elles jugées à conditions égales ? |
-| Originalité | Existe-t-il un artefact, calcul ou cadre difficile à remplacer ? |
-| Style | Le texte est-il naturel, précis, sans voix industrielle ni survente ? |
-| Conversion | Le bon lecteur comprend-il le prochain pas et le mauvais fit ? |
-| SEO/produit | Structure, liens, metadata, accessibilité et rendu sont-ils propres ? |
+| Axe         | Question de contrôle                                                   |
+| ----------- | ---------------------------------------------------------------------- |
+| Intention   | La page répond-elle immédiatement à la vraie question ?                |
+| Décision    | Le lecteur sait-il choisir, renoncer ou agir ?                         |
+| Pédagogie   | Un non-technicien comprend-il sans seconde recherche ?                 |
+| Profondeur  | Les conséquences, alternatives et coûts cachés sont-ils couverts ?     |
+| Preuve      | Les affirmations importantes sont-elles traçables et bien qualifiées ? |
+| Comparaison | Les options sont-elles jugées à conditions égales ?                    |
+| Originalité | Existe-t-il un artefact, calcul ou cadre difficile à remplacer ?       |
+| Style       | Le texte est-il naturel, précis, sans voix industrielle ni survente ?  |
+| Conversion  | Le bon lecteur comprend-il le prochain pas et le mauvais fit ?         |
+| SEO/produit | Structure, liens, metadata, accessibilité et rendu sont-ils propres ?  |
 
 **Seuil de publication : 17/20**, aucune note à 0, et `Intention`,
 `Pédagogie`, `Preuve` et `Décision` obligatoirement à 2.
@@ -789,16 +814,16 @@ humaine » : l'agent le signale au lieu d'inventer un panel ou une validation.
 
 ### Statuts autorisés
 
-| Statut | Signification exacte |
-|---|---|
-| Brouillon | Recherche ou rédaction incomplète |
-| Faits vérifiés | Fiche de preuves réconciliée, rédaction encore révisable |
-| Prêt pour contre-audit | Brouillon complet soumis à une revue indépendante |
-| Prêt techniquement | Score et batterie locale passés, hors validation humaine |
-| Prêt pour revue humaine | Aucun blocage connu, agrément humain restant |
-| Publiable | Seuil, contre-audit, test humain et contrôles locaux passés |
-| Publié | URL de production vérifiée ; cela ne signifie pas indexée |
-| Indexé | État confirmé pour l'URL, distinct du sitemap et de la demande d'indexation |
+| Statut                  | Signification exacte                                                        |
+| ----------------------- | --------------------------------------------------------------------------- |
+| Brouillon               | Recherche ou rédaction incomplète                                           |
+| Faits vérifiés          | Fiche de preuves réconciliée, rédaction encore révisable                    |
+| Prêt pour contre-audit  | Brouillon complet soumis à une revue indépendante                           |
+| Prêt techniquement      | Score et batterie locale passés, hors validation humaine                    |
+| Prêt pour revue humaine | Aucun blocage connu, agrément humain restant                                |
+| Publiable               | Seuil, contre-audit, test humain et contrôles locaux passés                 |
+| Publié                  | URL de production vérifiée ; cela ne signifie pas indexée                   |
+| Indexé                  | État confirmé pour l'URL, distinct du sitemap et de la demande d'indexation |
 
 ---
 
@@ -820,7 +845,7 @@ humaine » : l'agent le signale au lieu d'inventer un panel ou une validation.
   listes, tableaux et FAQ divisés par 200, arrondis à la minute la plus proche ;
   exclure code, metadata et JSON-LD ;
 - prix français sous la forme `15 000 € HT`, fourchette `15 000 à 20 000 €
-  HT`, et date lisible `19 juillet 2026` ;
+HT`, et date lisible `19 juillet 2026` ;
 - `datePublished` correspond à la première publication réelle ; pour un guide
   neuf, fixer la date de mise en ligne prévue puis la réconcilier au
   déploiement ; `dateModified` ne change que pour une évolution substantielle

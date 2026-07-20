@@ -16,6 +16,17 @@ export const metadata: Metadata = {
     images: [SERVICES_OG_IMAGE],
   },
   twitter: { images: [SERVICES_OG_IMAGE.url] },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 // JSON-LD structured data
@@ -53,28 +64,32 @@ const serviceJsonLd = JSON.stringify({
       name: "Audit processus 1 jour",
       price: "990",
       priceCurrency: "EUR",
-      description: "Audit sur site d'1 journée, observation des équipes, roadmap de digitalisation priorisée, déductible du forfait.",
+      description:
+        "Audit sur site d'1 journée, observation des équipes, roadmap de digitalisation priorisée, déductible du forfait.",
     },
     {
       "@type": "Offer",
       name: "Starter · Process ciblé",
       price: "8000",
       priceCurrency: "EUR",
-      description: "Base budgétaire indicative pour un processus ciblé ; périmètre et calendrier confirmés au devis.",
+      description:
+        "Base budgétaire indicative pour un processus ciblé ; périmètre et calendrier confirmés au devis.",
     },
     {
       "@type": "Offer",
       name: "Pro · Outil métier complet",
       price: "25000",
       priceCurrency: "EUR",
-      description: "Base budgétaire indicative pour un outil métier ; écrans, intégrations, équipe et calendrier confirmés au devis.",
+      description:
+        "Base budgétaire indicative pour un outil métier ; écrans, intégrations, équipe et calendrier confirmés au devis.",
     },
     {
       "@type": "Offer",
       name: "Enterprise · Plateforme interne",
       price: "80000",
       priceCurrency: "EUR",
-      description: "Outil interne multi-départements, SSO enterprise, intégrations lourdes",
+      description:
+        "Outil interne multi-départements, SSO enterprise, intégrations lourdes",
     },
   ],
 });
@@ -88,8 +103,7 @@ const faqJsonLd = JSON.stringify({
       name: "Combien de temps pour livrer un outil interne ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "Le calendrier dépend du périmètre, des accès, des intégrations, de la migration et des validations. Le devis fixe les jalons, les dépendances, la recette et le traitement d'un éventuel retard.",
+        text: "Le calendrier dépend du périmètre, des accès, des intégrations, de la migration et des validations. Le devis fixe les jalons, les dépendances, la recette et le traitement d'un éventuel retard.",
       },
     },
     {
@@ -97,8 +111,7 @@ const faqJsonLd = JSON.stringify({
       name: "Quelle différence avec du no-code ou un SaaS standard ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "Il faut comparer l'adéquation fonctionnelle, les limites, l'intégration, la sécurité, la portabilité et le coût total sur trois ans. Pour le sur-mesure, les droits, le dépôt, les composants préexistants et les licences sont ceux définis au devis et dans les CGV.",
+        text: "Il faut comparer l'adéquation fonctionnelle, les limites, l'intégration, la sécurité, la portabilité et le coût total sur trois ans. Pour le sur-mesure, les droits, le dépôt, les composants préexistants et les licences sont ceux définis au devis et dans les CGV.",
       },
     },
     {
@@ -106,8 +119,7 @@ const faqJsonLd = JSON.stringify({
       name: "Vous intégrez Sage, Cegid, EBP, SAP ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "Chaque intégration fait l'objet d'une étude de version, API, licence, droits, quotas, formats, sécurité et reprise sur erreur. Le devis ne promet un connecteur qu'après cette vérification.",
+        text: "Chaque intégration fait l'objet d'une étude de version, API, licence, droits, quotas, formats, sécurité et reprise sur erreur. Le devis ne promet un connecteur qu'après cette vérification.",
       },
     },
     {
@@ -115,8 +127,7 @@ const faqJsonLd = JSON.stringify({
       name: "Et si nos équipes ne l'utilisent pas ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "Le plan d'adoption précise les utilisateurs référents, les tests, la formation, les supports et les indicateurs d'usage. Les sessions après lancement et les ajustements ne sont inclus que s'ils figurent au devis ; aucun taux d'adoption n'est garanti.",
+        text: "Le plan d'adoption précise les utilisateurs référents, les tests, la formation, les supports et les indicateurs d'usage. Les sessions après lancement et les ajustements ne sont inclus que s'ils figurent au devis ; aucun taux d'adoption n'est garanti.",
       },
     },
     {
@@ -124,8 +135,7 @@ const faqJsonLd = JSON.stringify({
       name: "Les données restent-elles chez nous ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "L'environnement opéré, le compte cloud client ou le déploiement sur site peuvent être étudiés. Le devis précise fournisseur, région, accès, responsabilités, chiffrement, sauvegardes, sous-traitants et réversibilité.",
+        text: "L'environnement opéré, le compte cloud client ou le déploiement sur site peuvent être étudiés. Le devis précise fournisseur, région, accès, responsabilités, chiffrement, sauvegardes, sous-traitants et réversibilité.",
       },
     },
     {
@@ -133,8 +143,7 @@ const faqJsonLd = JSON.stringify({
       name: "On est propriétaire du code à la fin ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "Les livrables spécifiques sont transférés après paiement complet selon les CGV. Le devis inventorie le dépôt Git, les accès, la documentation, le runbook et la réversibilité, sous réserve des composants préexistants, open source et licences tierces.",
+        text: "Les livrables spécifiques sont transférés après paiement complet selon les CGV. Le devis inventorie le dépôt Git, les accès, la documentation, le runbook et la réversibilité, sous réserve des composants préexistants, open source et licences tierces.",
       },
     },
     {
@@ -142,8 +151,7 @@ const faqJsonLd = JSON.stringify({
       name: "C'est quoi l'Audit processus à 990 € ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "Un format d'entrée peu engageant. 1 journée sur site (ou en visio), on observe 2–3 équipes dans leur quotidien, on cartographie 3–5 processus les plus douloureux, on sort un document de roadmap digitalisation priorisée avec 3 scénarios (coût / délai / ROI). 990 € HT, déductibles du devis si mission derrière.",
+        text: "Un format d'entrée peu engageant. 1 journée sur site (ou en visio), on observe 2–3 équipes dans leur quotidien, on cartographie 3–5 processus les plus douloureux, on sort un document de roadmap digitalisation priorisée avec 3 scénarios (coût / délai / ROI). 990 € HT, déductibles du devis si mission derrière.",
       },
     },
     {
@@ -151,8 +159,7 @@ const faqJsonLd = JSON.stringify({
       name: "Et pour un groupe multi-sites / multi-filiales ?",
       acceptedAnswer: {
         "@type": "Answer",
-        text:
-          "Possible après cadrage. Le modèle d'entités, le cloisonnement, le SSO, les flux et la consolidation doivent être conçus et testés pour votre organisation avant engagement.",
+        text: "Possible après cadrage. Le modèle d'entités, le cloisonnement, le SSO, les flux et la consolidation doivent être conçus et testés pour votre organisation avant engagement.",
       },
     },
   ],
@@ -162,8 +169,18 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://hagnere-code.ai/" },
-    { "@type": "ListItem", position: 2, name: "Services", item: "https://hagnere-code.ai/services" },
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Accueil",
+      item: "https://hagnere-code.ai/",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Services",
+      item: "https://hagnere-code.ai/services",
+    },
     {
       "@type": "ListItem",
       position: 3,
@@ -176,9 +193,22 @@ const breadcrumbJsonLd = JSON.stringify({
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serviceJsonLd.replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd.replace(/</g, "\\u003c"),
+        }}
+      />
       <OutilsInternes />
     </>
   );

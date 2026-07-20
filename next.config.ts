@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 import path from "node:path";
-import { DOWNLOADABLE_RESOURCES } from "./src/lib/resources";
+import { resourceDownloadPaths } from "./src/lib/resources";
 import { WHITE_PAPERS } from "./src/lib/white-papers";
 
 const scriptSources = [
@@ -71,10 +71,7 @@ const securityHeaders = [
 ];
 
 const noIndexDownloadPaths = [
-  ...DOWNLOADABLE_RESOURCES.flatMap((resource) => [
-    resource.primary.href,
-    ...resource.files.map((file) => file.href),
-  ]),
+  ...resourceDownloadPaths,
   ...WHITE_PAPERS.map((entry) => entry.pdf.href),
 ];
 

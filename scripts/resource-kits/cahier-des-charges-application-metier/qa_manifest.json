@@ -1,0 +1,363 @@
+{
+  "documents": {
+    "example": {
+      "a11yReport": {
+        "counts": {
+          "high": 0,
+          "low": 0,
+          "medium": 0
+        },
+        "path": "exemple-rempli-cahier-des-charges-application-metier-source.docx.a11y.json",
+        "sha256": "395928963a834ae772fd4853e2c92c9ae1737b028a627aaca50b350ec5367e5f"
+      },
+      "pagePngs": [
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-1.png",
+          "sha256": "2be8218e73a5783170b97a3379c32ead414c10f225aebf8c9b8a18731da8308d"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-2.png",
+          "sha256": "c70e176dc0ee0ac1fce83c1b545a7fe4c01b4ff36bba95fe0c01026ea8acaf84"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-3.png",
+          "sha256": "28c6ef6904643e8b98d1f6c44ac45212d01cd9aa988e1a13c07637a03c8c193f"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-4.png",
+          "sha256": "70887e486c9e4d7015f978d11044c1349ad2aed12d18c2c9eabca6395610874d"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-5.png",
+          "sha256": "f4483f3a9e731c8bf7c6fc08a5cf076687a84628ab0eb277256d87f7b1cd05a3"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-6.png",
+          "sha256": "44a040d389ab70cbdbc761da1ed7be87e50e2a009286e192c0fa195d601a6a6a"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-7.png",
+          "sha256": "1bef86c34b72d6d222191ea143bce6573b15ffbf6912ddfcc983bdd820054306"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-8.png",
+          "sha256": "e988190c1b8f16bae19f99d682da14bf1f2beeba792b402badffe72f81fd988f"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-9.png",
+          "sha256": "80fbb104f269ae8de7a97e85f4cd3e23cb77a43bab23d1e807bc126770b473ea"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-10.png",
+          "sha256": "4c4ab509e4df7cca96177cfdd92674906726594f9fbef7041b4524236eaa8101"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-11.png",
+          "sha256": "49450dc377cdfabb61af84449fd852c0a05377e7d9dba591de803c73d7c39ce5"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-12.png",
+          "sha256": "5a94449839b4b7bcd5cb390029bf2047d58195c4d1313f9ea9e0a5e32f7b5b42"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-13.png",
+          "sha256": "a0c1e9a1f8a5151b7df7d467bc78912e77c339356c7edbddb0b253fc0a8ad2ed"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-14.png",
+          "sha256": "3b7cabfe55fe2a340b2509fb9661e76b01ebcc550296a62b359f8b6497d17c85"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-15.png",
+          "sha256": "e6c6befaca8a939b29f75d8120e61c26aa0acb57f8bfab83289c6f6de91fdc94"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-16.png",
+          "sha256": "c5cd2bb3902899970a8c4bee7a60dfa38c00c26d283a597d317a436e7731d944"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-17.png",
+          "sha256": "608c7c0edc9ebbb8dd29c47b8583c5225904b75390fd8401a9daa50327edcc25"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-18.png",
+          "sha256": "15423a717d378df40edc7cb9dd28cb64f8d09e0643da548d845f8026ee194669"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-19.png",
+          "sha256": "bb56d4a9448cd5be62cd5f579cf8c6e1a0338433f599c19f68fdd62f85aac69a"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-20.png",
+          "sha256": "8454d2d223212d96c1df508666872158ada4ced979ca060d89db3b6a56809489"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-21.png",
+          "sha256": "c9cd98d2a1d492375f4dd1b7c33279a614a4006feeae7aae85cc905eea3fe32c"
+        },
+        {
+          "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/page-22.png",
+          "sha256": "570eb951992e5f6c35f779a7700b820e97b665fd46ec03e414d1ff54042e98da"
+        }
+      ],
+      "renderedPdf": {
+        "a4": true,
+        "landscapePages": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "pages": 22,
+        "path": "render4-exemple-rempli-cahier-des-charges-application-metier-source/exemple-rempli-cahier-des-charges-application-metier-source.pdf",
+        "sha256": "cd681b25a0c88a5bdf8de75cc16e65d1a53f1cc8d24201bcd82185ef5cc27ab6"
+      },
+      "sourceDocx": {
+        "path": "exemple-rempli-cahier-des-charges-application-metier-source.docx",
+        "sha256": "cfed8b600f127afdc6c825d4bcf18d7f8c370dfbb04f7097606b3576a265e601"
+      },
+      "visualReview": {
+        "confirmed": true,
+        "originalResolutionPages": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "reviewedPages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ]
+      }
+    },
+    "model": {
+      "a11yReport": {
+        "counts": {
+          "high": 0,
+          "low": 0,
+          "medium": 0
+        },
+        "path": "modele-cahier-des-charges-application-metier.docx.a11y.json",
+        "sha256": "0c88d724a8c749b913fc040e0bca65b5959fd479f936e77d88162ed29e7796fa"
+      },
+      "pagePngs": [
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-1.png",
+          "sha256": "8bd23f3500eedb266422c9d615f1ac96cdad51f31c4f2d594ea01f58ce7ad251"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-2.png",
+          "sha256": "7b6f15618706ecc788fe0b28331072c4446fbb1c8cbbbe68cba1bdb1082b78c6"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-3.png",
+          "sha256": "d4f5a3c42c8fa013ab4d742f99673c59d96e1da3cf769ae1936f23df6cd591ff"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-4.png",
+          "sha256": "d02fbe61a1514df4a451be0ec516055efcb139cc18563bd9d50e7ee4d5c5d665"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-5.png",
+          "sha256": "fd3236b2d165cea9b0f2222a60e5e52bd2ee19b5fd0d736350f98951b46d8841"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-6.png",
+          "sha256": "aa18abd644d25d96d65216922bcd7bff2d775bd97ca3b5ad0a69c543ac1dd6d2"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-7.png",
+          "sha256": "70e84bf889a4b5404f93e7fafaddb921fcd57687abade7589f9fd7595140fdf8"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-8.png",
+          "sha256": "9899aa894f97c4053fdef2444d1b4178a2c3c94acfdad00be37823ca452a1963"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-9.png",
+          "sha256": "f9573d555a0f231a81545066a929b57369aba00cd79284c4302cff85fef8ddbf"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-10.png",
+          "sha256": "61d5af2c285c0b1e86c4855e739ba27ce1578bc2229914327a5edf8c09a8d244"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-11.png",
+          "sha256": "131538d74d36c696e8308ee2120114eab7fde27518ad5f921c815f7ecc4cb657"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-12.png",
+          "sha256": "3969ae90ee716434a5cc03c2d3989719e14f14a3480875dc281ea8ba62849cb0"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-13.png",
+          "sha256": "9529b954e7e8a7cf0f5f14428c738a2283daa83d18ce8b6f53229e065d4517d2"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-14.png",
+          "sha256": "f1f4b6949d218674b31c68266b78fcc4bba385f250f8ea47a06d14357424f354"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-15.png",
+          "sha256": "09a655cf80f37ca3c823cf1adcaaeb89dd13a4c5e93e292a6b6c1109efa63d09"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-16.png",
+          "sha256": "5fc9c48d9d7bd9e434be1a0f2b6b0046bb83e0ab4b33003b37d4c853f4b8ce84"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-17.png",
+          "sha256": "eb76542639a5dd9e91e46051902db78225625938950f5b564d16608cf4d45b6a"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-18.png",
+          "sha256": "b135481d3650e3d0ae435eeba12b8826216d005fa470f7c263c003980ab85ad1"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-19.png",
+          "sha256": "56e267a7f152df8272f85f1402a5b397ac69deb7990315edc8145546bf21213b"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-20.png",
+          "sha256": "bc349596a1248f38d61a2baf19120054ebde0a069d1d7a09ae08f70bcd23fb90"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-21.png",
+          "sha256": "d8cf0fb15e801e5421b8da1f5f41f66d89676361b5aa2704e87e704b67f976a0"
+        },
+        {
+          "path": "render4-modele-cahier-des-charges-application-metier/page-22.png",
+          "sha256": "e0b1a6e7a71a432a335b8c2a88d3402760401334a4d0cdd97c856e7bc1f7d76f"
+        }
+      ],
+      "renderedPdf": {
+        "a4": true,
+        "landscapePages": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "pages": 22,
+        "path": "render4-modele-cahier-des-charges-application-metier/modele-cahier-des-charges-application-metier.pdf",
+        "sha256": "c8e2531cced6d276b140cc0c60546c4c092d224399c57ce3cba19d8876db06be"
+      },
+      "sourceDocx": {
+        "path": "modele-cahier-des-charges-application-metier.docx",
+        "sha256": "5dde5e6eed2a391db67ce3e8712ba0599dd632530ced27a36b5d8e1d5ac9b598"
+      },
+      "visualReview": {
+        "confirmed": true,
+        "originalResolutionPages": [
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "reviewedPages": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ]
+      }
+    },
+    "readme": {
+      "a11yReport": {
+        "counts": {
+          "high": 0,
+          "low": 0,
+          "medium": 0
+        },
+        "path": "mode-emploi-cahier-des-charges-application-metier-source.docx.a11y.json",
+        "sha256": "077f63efd425a14ffe522d68713cc3abe74e60fe39de681ddeb064c983e1dcc8"
+      },
+      "pagePngs": [
+        {
+          "path": "render4-mode-emploi-cahier-des-charges-application-metier-source/page-1.png",
+          "sha256": "882ae29dd489a926d90aa9b03239ba0fe584c837a5206e0d86c994bc902f8969"
+        },
+        {
+          "path": "render4-mode-emploi-cahier-des-charges-application-metier-source/page-2.png",
+          "sha256": "226edef02256a7be1d22e76a6991164aa01cbfbfdfc69492213d6e291b220b77"
+        },
+        {
+          "path": "render4-mode-emploi-cahier-des-charges-application-metier-source/page-3.png",
+          "sha256": "3ebcff9f19ef60d8488cc59db057a37c7880a0789924a5d868360686cebe60bf"
+        }
+      ],
+      "renderedPdf": {
+        "a4": true,
+        "landscapePages": [],
+        "pages": 3,
+        "path": "render4-mode-emploi-cahier-des-charges-application-metier-source/mode-emploi-cahier-des-charges-application-metier-source.pdf",
+        "sha256": "bff0866d2d94ab0ce059a2ee5e2059e12f744a5fef959e9732bafdec30c67822"
+      },
+      "sourceDocx": {
+        "path": "mode-emploi-cahier-des-charges-application-metier-source.docx",
+        "sha256": "f7aca395ac555f9fe31343303834718b94d8f36d7a7c6cad2e7e7dea60a7c20a"
+      },
+      "visualReview": {
+        "confirmed": true,
+        "originalResolutionPages": [],
+        "reviewedPages": [
+          1,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  "kitVersion": "1.0",
+  "publicationDate": "2026-07-20",
+  "reviewMethod": "Rendu LibreOffice, rasterisation PNG et inspection page par page",
+  "reviewedAt": "2026-07-20T04:04:47+00:00",
+  "reviewedBy": "Codex - audit assisté",
+  "schemaVersion": 1
+}

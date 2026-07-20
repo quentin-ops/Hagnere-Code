@@ -1,4 +1,4 @@
-# Roadmap éditoriale — 30 guides SEO prioritaires
+# Roadmap éditoriale et état du corpus SEO
 
 > ⚠️ **AVANT TOUTE RÉDACTION** : lire en intégralité la
 > [charte qualité des guides](charte-qualite-guides.md). Aucun article ne
@@ -13,9 +13,10 @@
 > **Le classement P1/P2/P3 ci-dessous reste valable comme carte du
 > territoire, mais il ne dicte plus l'ordre de production.** L'ordre à
 > suivre est celui de la section « Ordre de production » ci-dessous,
-> trié par *vitesse de positionnement* et non par volume de recherche.
+> trié par _vitesse de positionnement_ et non par volume de recherche.
 >
 > Les trois constats qui changent l'ordre :
+>
 > 1. Les 23 guides publiés sont généralement plus longs et plus structurés
 >    que les résultats observés, mais profondeur brute et qualité
 >    décisionnelle ne se confondent pas. L'[audit éditorial du
@@ -39,34 +40,41 @@ Search Console (mesurer l'indexation réelle) · `noindex` sur
 guides parlent de sites web) · fiche Google Business Profile (délai
 postal de 5-14 j = chemin critique) · dossier Activateur France Num.
 
-| # | Sujet | Type | Difficulté SERP | Délai estimé |
-|---|---|---|---|---|
-| 1 | `agence-web-aix-les-bains` | Page locale | Faible | 2-4 mois |
-| 2 | Modèles `.docx`/`.pdf` cahier des charges | Ressource | Moyenne | 2-4 mois |
-| 3 | `agence-web-chambery` | Page locale | Faible-moyenne | 3-6 mois |
-| 4 | `creation-site-internet-savoie` | Guide local | Faible | 3-6 mois |
-| 5 | `agence-next-js` | **Page service** | Faible | 3-6 mois |
-| 6 | `no-code-ou-sur-mesure` | Guide | Faible | 3-6 mois |
-| 7 | Enrichir `prix-logiciel-sur-mesure` | Enrichissement | Faible | 3-6 mois |
-| 8 | Renforcer `shopify-ou-sur-mesure` | Enrichissement | Très faible | 3-6 mois |
-| 9 | Éclater `creer-un-site-avec-ia` en 3 pages | Guides courts | Faible | 3-6 mois |
-| 10 | `transformer-excel-en-application` | Guide | Faible | 4-6 mois |
-| 11 | `agence-developpement-saas-sur-mesure` | Page service | Moyenne | 4-8 mois |
-| 12 | Pages sectorielles Savoie | Pages | Faible | 4-8 mois |
-| 13 | Éclatement des guides prix en sous-pages | Architecture | Faible | 4-8 mois |
-| 14 | `combien-coute-un-crm` | Guide | Moyenne | 6-9 mois |
-| 15 | Baromètre de prix (si N crédible) | Étude | Moyenne | 6-12 mois |
+| #   | Sujet                                      | Type             | Difficulté SERP | Délai estimé |
+| --- | ------------------------------------------ | ---------------- | --------------- | ------------ |
+| 1   | `agence-web-aix-les-bains`                 | Page locale      | Faible          | 2-4 mois     |
+| 2   | Modèles `.docx`/`.pdf` cahier des charges  | Ressource        | Moyenne         | 2-4 mois     |
+| 3   | `agence-web-chambery`                      | Page locale      | Faible-moyenne  | 3-6 mois     |
+| 4   | `creation-site-internet-savoie`            | Guide local      | Faible          | 3-6 mois     |
+| 5   | `agence-next-js`                           | **Page service** | Faible          | 3-6 mois     |
+| 6   | `no-code-ou-sur-mesure`                    | Guide            | Faible          | 3-6 mois     |
+| 7   | Enrichir `prix-logiciel-sur-mesure`        | Enrichissement   | Faible          | 3-6 mois     |
+| 8   | Renforcer `shopify-ou-sur-mesure`          | Enrichissement   | Très faible     | 3-6 mois     |
+| 9   | Éclater `creer-un-site-avec-ia` en 3 pages | Guides courts    | Faible          | 3-6 mois     |
+| 10  | `transformer-excel-en-application`         | Guide            | Faible          | 4-6 mois     |
+| 11  | `agence-developpement-saas-sur-mesure`     | Page service     | Moyenne         | 4-8 mois     |
+| 12  | Pages sectorielles Savoie                  | Pages            | Faible          | 4-8 mois     |
+| 13  | Éclatement des guides prix en sous-pages   | Architecture     | Faible          | 4-8 mois     |
+| 14  | `combien-coute-un-crm`                     | Guide            | Moyenne         | 6-9 mois     |
+| 15  | Baromètre de prix (si N crédible)          | Étude            | Moyenne         | 6-12 mois    |
 
-### État d'avancement au 19/07/2026
+### État d'avancement au 20/07/2026
 
-| Ligne | Statut |
-|---|---|
-| 5 · `agence-next-js` | ✅ livré, + `agence-react` en bonus |
-| 6 · `no-code-ou-sur-mesure` | ✅ guide n°24, en production |
-| 10 · `transformer-excel-en-application` | ✅ guide n°29 intégré : diagnostic local sans email, comparaison en quatre options, calcul sur quatre ans, protocole de migration et sources primaires |
-| 11 · `agence-developpement-saas-sur-mesure` | 🔧 consolidation lancée sur l'URL canonique existante `/services/saas-applications-metier` ; alias en redirection permanente pour éviter la cannibalisation |
-| Pages locales (lignes 1, 3, 4) | ✅ `/agence`, `/agence/savoie`, `/agence/savoie/chambery` livrées ; vague 2 (Aix-les-Bains, Le Bourget-du-Lac) volontairement gelée tant que les pages existantes n'ont pas d'impressions |
-| Hors roadmap | ✅ guide n°25 `pourquoi-mon-site-est-lent`, ✅ guide n°26 `prix-referencement-naturel` |
+Le registre contient désormais **32 guides**. « Livré » signifie présent dans
+le site, maillé et techniquement publiable ; cela ne prouve ni l'indexation ni
+le positionnement Google, qui restent à suivre URL par URL dans Search Console.
+
+| Ligne                                       | Statut                                                                                                                                                                                    |
+| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2 · modèles de cahier des charges           | ✅ kit application métier : modèle Word éditable, exemple et mode d'emploi PDF, 6 matrices, page vitrine et journal de QA ; téléchargement libre sans email                               |
+| 5 · `agence-next-js`                        | ✅ livré, + `agence-react` en bonus                                                                                                                                                       |
+| 6 · `no-code-ou-sur-mesure`                 | ✅ guide n°24, en production                                                                                                                                                              |
+| 7 · enrichir `prix-logiciel-sur-mesure`     | ✅ coûts et périmètres remis en cohérence avec les nouveaux comparatifs CRM et ERP                                                                                                        |
+| 10 · `transformer-excel-en-application`     | ✅ guide n°29 intégré : diagnostic local sans email, comparaison en quatre options, calcul sur quatre ans, protocole de migration et sources primaires                                    |
+| 11 · `agence-developpement-saas-sur-mesure` | 🔧 consolidation lancée sur l'URL canonique existante `/services/saas-applications-metier` ; alias en redirection permanente pour éviter la cannibalisation                               |
+| 14 · `combien-coute-un-crm`                 | ✅ guide n°31 : trois socles chiffrés sur 36 mois, inconnues visibles et méthode de TCO reproductible                                                                                     |
+| Pages locales (lignes 1, 3, 4)              | ✅ `/agence`, `/agence/savoie`, `/agence/savoie/chambery` livrées ; vague 2 (Aix-les-Bains, Le Bourget-du-Lac) volontairement gelée tant que les pages existantes n'ont pas d'impressions |
+| Hors roadmap                                | ✅ guide n°25 `pourquoi-mon-site-est-lent`, ✅ guide n°26 `prix-referencement-naturel`, ✅ guide n°30 `cahier-des-charges-application-metier`, ✅ guide n°32 `erp-ou-logiciel-sur-mesure` |
 
 **Note sur `prix-referencement-naturel`** : classé « dé-priorisé » ci-dessous,
 il a finalement été produit en n°26. Raison assumée : la recherche a révélé
@@ -102,48 +110,48 @@ simulateur de prix (contraire au funnel lead-only).
 
 ## Pilier A — Budget & prix (cocon « combien ça coûte »)
 
-| # | Guide (slug proposé) | Requête cible | Vol. | Conv. | Priorité | Alimente |
-|---|---|---|---|---|---|---|
-| 1 | ✅ `combien-coute-un-site-internet` | combien coûte un site internet | fort | fort | **Publié 13/07** | tous |
-| 2 | 🔧 `combien-coute-une-application-mobile` | combien coûte une application mobile | fort | fort | **En cours** | app mobile |
-| 3 | `prix-site-vitrine` | prix site vitrine | fort | fort | P1 | sites vitrines |
-| 4 | `prix-site-e-commerce` | prix site e-commerce | fort | fort | P1 | e-commerce |
-| 5 | `combien-coute-un-saas` | combien coûte un saas / application web | faible* | fort | P1 (*SERP quasi vide, leads ultra qualifiés) | SaaS |
-| 6 | `prix-logiciel-sur-mesure` | prix logiciel sur mesure | moyen | fort | P1 | outils internes |
-| 7 | `prix-refonte-site-internet` | refonte site internet prix | fort | fort | P1 | vitrines + maintenance |
-| 8 | `cout-maintenance-site-internet` | coût maintenance site internet | moyen | fort | P2 | maintenance/TMA |
-| 9 | `prix-referencement-naturel` | prix référencement naturel | fort | moyen | P2 | SEO |
-| 10 | `prix-audit-site-internet` | prix audit seo / audit site internet prix | moyen | fort | P2 | audit technique |
-| 11 | `prix-landing-page` | prix landing page | fort | moyen | P2 | sites vitrines |
-| 12 | `tjm-developpeur-web` | tjm développeur web | fort | moyen | P2 (angle client : convertir un TJM en budget) | tous |
-| 13 | `combien-coute-un-crm` | combien coûte un logiciel crm | moyen | fort | P2 (angle sur-mesure vs licences, unique) | outils internes |
-| 14 | `combien-coute-une-marketplace` | prix création marketplace | faible* | fort | P3 (*niche, très forte valeur/lead) | SaaS/e-com |
-| 15 | `combien-coute-un-mvp` | combien coûte un mvp | faible | fort | P3 | SaaS |
+| #   | Guide (slug proposé)                      | Requête cible                             | Vol.    | Conv. | Priorité                                       | Alimente               |
+| --- | ----------------------------------------- | ----------------------------------------- | ------- | ----- | ---------------------------------------------- | ---------------------- |
+| 1   | ✅ `combien-coute-un-site-internet`       | combien coûte un site internet            | fort    | fort  | **Publié 13/07**                               | tous                   |
+| 2   | 🔧 `combien-coute-une-application-mobile` | combien coûte une application mobile      | fort    | fort  | **En cours**                                   | app mobile             |
+| 3   | `prix-site-vitrine`                       | prix site vitrine                         | fort    | fort  | P1                                             | sites vitrines         |
+| 4   | `prix-site-e-commerce`                    | prix site e-commerce                      | fort    | fort  | P1                                             | e-commerce             |
+| 5   | `combien-coute-un-saas`                   | combien coûte un saas / application web   | faible* | fort  | P1 (*SERP quasi vide, leads ultra qualifiés)   | SaaS                   |
+| 6   | `prix-logiciel-sur-mesure`                | prix logiciel sur mesure                  | moyen   | fort  | P1                                             | outils internes        |
+| 7   | `prix-refonte-site-internet`              | refonte site internet prix                | fort    | fort  | P1                                             | vitrines + maintenance |
+| 8   | `cout-maintenance-site-internet`          | coût maintenance site internet            | moyen   | fort  | P2                                             | maintenance/TMA        |
+| 9   | `prix-referencement-naturel`              | prix référencement naturel                | fort    | moyen | P2                                             | SEO                    |
+| 10  | `prix-audit-site-internet`                | prix audit seo / audit site internet prix | moyen   | fort  | P2                                             | audit technique        |
+| 11  | `prix-landing-page`                       | prix landing page                         | fort    | moyen | P2                                             | sites vitrines         |
+| 12  | `tjm-developpeur-web`                     | tjm développeur web                       | fort    | moyen | P2 (angle client : convertir un TJM en budget) | tous                   |
+| 13  | `combien-coute-un-crm`                    | combien coûte un logiciel crm             | moyen   | fort  | P2 (angle sur-mesure vs licences, unique)      | outils internes        |
+| 14  | `combien-coute-une-marketplace`           | prix création marketplace                 | faible* | fort  | P3 (*niche, très forte valeur/lead)            | SaaS/e-com             |
+| 15  | `combien-coute-un-mvp`                    | combien coûte un mvp                      | faible  | fort  | P3                                             | SaaS                   |
 
 ## Pilier B — Comparatifs & choix (capte la phase de décision)
 
-| # | Guide | Requête cible | Vol. | Conv. | Priorité | Alimente |
-|---|---|---|---|---|---|---|
-| 16 | `nextjs-ou-wordpress` | next js ou wordpress | moyen | fort | **P1 — comparatif signature** (SERP jeune, alignement parfait) | tous |
-| 17 | `wix-ou-wordpress` | wix ou wordpress | fort | fort | P2 (+ la 3e option sur mesure) | vitrines |
-| 18 | `shopify-ou-sur-mesure` | shopify ou site e-commerce sur mesure | faible* | fort | P1 (*zéro concurrence, bas de funnel 15-120 k€) | e-commerce |
-| 19 | `woocommerce-ou-shopify` | woocommerce ou shopify | fort | fort | P2 | e-commerce |
-| 20 | `react-native-ou-flutter` | react native ou flutter | fort | fort | P2 (angle dirigeant, pas développeur) | app mobile |
-| 21 | `agence-web-ou-freelance` | agence web ou freelance | moyen | fort | P2 (grille honnête chiffrée) | tous |
-| 22 | `choisir-son-agence-web` | comment choisir son agence web | moyen | fort | P2 (red flags + questions à poser) | tous |
-| 23 | `creer-un-site-avec-ia` | créer un site avec ia | fort | moyen | P2 (test réel des outils, limites) | vitrines |
-| 24 | `no-code-ou-sur-mesure` | no code ou développement sur mesure | faible | fort | P3 | outils internes |
+| #   | Guide                     | Requête cible                         | Vol.    | Conv. | Priorité                                                       | Alimente        |
+| --- | ------------------------- | ------------------------------------- | ------- | ----- | -------------------------------------------------------------- | --------------- |
+| 16  | `nextjs-ou-wordpress`     | next js ou wordpress                  | moyen   | fort  | **P1 — comparatif signature** (SERP jeune, alignement parfait) | tous            |
+| 17  | `wix-ou-wordpress`        | wix ou wordpress                      | fort    | fort  | P2 (+ la 3e option sur mesure)                                 | vitrines        |
+| 18  | `shopify-ou-sur-mesure`   | shopify ou site e-commerce sur mesure | faible* | fort  | P1 (*zéro concurrence, bas de funnel 15-120 k€)                | e-commerce      |
+| 19  | `woocommerce-ou-shopify`  | woocommerce ou shopify                | fort    | fort  | P2                                                             | e-commerce      |
+| 20  | `react-native-ou-flutter` | react native ou flutter               | fort    | fort  | P2 (angle dirigeant, pas développeur)                          | app mobile      |
+| 21  | `agence-web-ou-freelance` | agence web ou freelance               | moyen   | fort  | P2 (grille honnête chiffrée)                                   | tous            |
+| 22  | `choisir-son-agence-web`  | comment choisir son agence web        | moyen   | fort  | P2 (red flags + questions à poser)                             | tous            |
+| 23  | `creer-un-site-avec-ia`   | créer un site avec ia                 | fort    | moyen | P2 (test réel des outils, limites)                             | vitrines        |
+| 24  | `no-code-ou-sur-mesure`   | no code ou développement sur mesure   | faible  | fort  | P3                                                             | outils internes |
 
 ## Pilier C — Projet & process (capte l'amont, énorme gisement CDC)
 
-| # | Guide | Requête cible | Vol. | Conv. | Priorité | Alimente |
-|---|---|---|---|---|---|---|
-| 25 | `cahier-des-charges-site-internet` | cahier des charges site internet exemple | fort | fort | **P1 — gisement n°1** (+ modèle téléchargeable) | tous |
-| 26 | `cahier-des-charges-application-mobile` | cahier des charges application mobile | fort | fort | P2 (déclinaisons app web/SaaS quasi vierges) | app mobile |
-| 27 | `combien-de-temps-pour-creer-un-site` | combien de temps pour créer un site internet | fort | fort | P2 | tous |
-| 28 | `refonte-sans-perdre-son-seo` | refonte site internet sans perdre seo | moyen | fort | P2 (cas WordPress → Next.js chiffré) | maintenance |
-| 29 | `aides-creation-site-internet` | aide création site internet / subvention | fort | fort | P1 (panorama 2026 vérifié à la source, focus AURA) | tous |
-| 30 | `proprietaire-site-internet-code-source` | qui est propriétaire d'un site internet | moyen | moyen | P3 (cluster juridique : cession L131-3, réversibilité, contrat) | tous |
+| #   | Guide                                    | Requête cible                                | Vol.  | Conv. | Priorité                                                        | Alimente    |
+| --- | ---------------------------------------- | -------------------------------------------- | ----- | ----- | --------------------------------------------------------------- | ----------- |
+| 25  | `cahier-des-charges-site-internet`       | cahier des charges site internet exemple     | fort  | fort  | **P1 — gisement n°1** (+ modèle téléchargeable)                 | tous        |
+| 26  | `cahier-des-charges-application-mobile`  | cahier des charges application mobile        | fort  | fort  | P2 (déclinaisons app web/SaaS quasi vierges)                    | app mobile  |
+| 27  | `combien-de-temps-pour-creer-un-site`    | combien de temps pour créer un site internet | fort  | fort  | P2                                                              | tous        |
+| 28  | `refonte-sans-perdre-son-seo`            | refonte site internet sans perdre seo        | moyen | fort  | P2 (cas WordPress → Next.js chiffré)                            | maintenance |
+| 29  | `aides-creation-site-internet`           | aide création site internet / subvention     | fort  | fort  | P1 (panorama 2026 vérifié à la source, focus AURA)              | tous        |
+| 30  | `proprietaire-site-internet-code-source` | qui est propriétaire d'un site internet      | moyen | moyen | P3 (cluster juridique : cession L131-3, réversibilité, contrat) | tous        |
 
 ## Réserve — Douleurs & croissance (au-delà des 30, très bons candidats)
 

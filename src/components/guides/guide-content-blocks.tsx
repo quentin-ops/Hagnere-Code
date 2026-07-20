@@ -117,7 +117,11 @@ export function GuideTable({ headers, rows }: GuideTableProps) {
                           ? "text-zinc-900 dark:text-zinc-100 font-semibold"
                           : "text-zinc-600 dark:text-zinc-400"
                     }`}
-                    colSpan={isObj && "colSpan" in cell ? (cell as { colSpan: number }).colSpan : undefined}
+                    colSpan={
+                      isObj && "colSpan" in cell
+                        ? (cell as { colSpan: number }).colSpan
+                        : undefined
+                    }
                   >
                     {isObj ? cell.text : cell}
                   </td>
@@ -251,9 +255,9 @@ export function ComparisonGrid({ items }: { items: ComparisonItem[] }) {
             key={index}
             className={`p-4 sm:p-5 rounded-2xl ${styles.bg} border ${styles.border}`}
           >
-            <h4 className={`mt-0 text-sm font-semibold ${styles.title} mb-2`}>
+            <h3 className={`mt-0 text-sm font-semibold ${styles.title} mb-2`}>
               {item.title}
-            </h4>
+            </h3>
             <p className={`text-sm ${styles.text}`}>{item.description}</p>
           </div>
         );

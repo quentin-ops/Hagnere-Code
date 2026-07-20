@@ -27,8 +27,8 @@ Responsable de la synthèse :
 ## 2. Cannibalisation
 
 | Page existante | Intention de cette page | Différence du nouveau guide | Lien ou arbitrage nécessaire |
-|---|---|---|---|
-| | | | |
+| -------------- | ----------------------- | --------------------------- | ---------------------------- |
+|                |                         |                             |                              |
 
 **Porte de sortie :** expliquer en une phrase pourquoi ce guide mérite une URL
 distincte.
@@ -44,8 +44,8 @@ distincte.
 ## 4. Carte concurrentielle
 
 | Page | Réponse et angle | Preuves/artefacts | Bon point | Manque décisionnel | Conflit d'intérêt éventuel |
-|---|---|---|---|---|---|
-| | | | | | |
+| ---- | ---------------- | ----------------- | --------- | ------------------ | -------------------------- |
+|      |                  |                   |           |                    |                            |
 
 **Angle mort commun :**
 
@@ -54,8 +54,8 @@ distincte.
 ## 5. Fiche de preuves
 
 | Affirmation utilisable | Source primaire, URL et passage utile | Nature | Périmètre | Date/consultation | Confiance | Conséquence lecteur | Fraîcheur |
-|---|---|---|---|---|---|---|---|
-| | | | | | | | |
+| ---------------------- | ------------------------------------- | ------ | --------- | ----------------- | --------- | ------------------- | --------- |
+|                        |                                       |        |           |                   |           |                     |           |
 
 ### Contradictions et données à ne pas publier
 
@@ -66,13 +66,20 @@ distincte.
 Pour chaque calcul : formule, unités, hypothèses, résultat, contrôle inverse et
 arrondis.
 
+- Nature du résultat : socle chiffré / estimation / TCO / gain net / ROI / délai de retour
+- Horizon et périodicité :
+- Postes inclus une seule fois :
+- Postes exclus ou inconnus, explicitement « à confirmer » :
+- Si ROI : `(bénéfices cumulés attribuables - TCO) / TCO × 100`
+- Si temps valorisé : hypothèse de réaffectation ou coût réellement évité :
+
 ## 6. Empreinte éditoriale à ne pas reproduire
 
 Observer les trois à cinq guides les plus proches :
 
 | Guide | Type d'ouverture | Progression | Dispositif récurrent | Exemple/fil rouge | Place du CTA | Type de conclusion |
-|---|---|---|---|---|---|---|
-| | | | | | | |
+| ----- | ---------------- | ----------- | -------------------- | ----------------- | ------------ | ------------------ |
+|       |                  |             |                      |                   |              |                    |
 
 Choix du nouveau guide :
 
@@ -90,8 +97,8 @@ Au moins trois différences avec les guides voisins :
 ## 7. Plan annoté
 
 | Section provisoire | Question résolue | Preuve ou exemple | Conséquence/décision | Format choisi |
-|---|---|---|---|---|
-| | | | | |
+| ------------------ | ---------------- | ----------------- | -------------------- | ------------- |
+|                    |                  |                   |                      |               |
 
 Retirer toute section qui n'apporte ni réponse, ni preuve, ni décision.
 
@@ -102,9 +109,14 @@ Une ressource est-elle naturellement nécessaire ? oui / non
 Problème qu'elle résout après la lecture :
 Résultat autonome produit :
 Format éditable et format de consultation :
+Rubriques, champs ou matrices réellement livrés :
 Exemple rempli :
+Conclusion « ne pas investir » possible :
 Sources, hypothèses et limites visibles :
 Données saisies et destination de ces données :
+Processus de génération reproductible :
+Journal de QA (formats, pages, visuel, accessibilité, liens, compatibilité) :
+Limites connues et niveau de revue humaine :
 Mode de maintenance :
 Test du fichier ou outil :
 Bon fit Hagnéré Code :
@@ -117,18 +129,18 @@ CTA principal et résultat après clic :
 
 ### Scorecard justifiée
 
-| Axe | Note 0-2 | Preuve dans la page | Correction éventuelle |
-|---|---:|---|---|
-| Intention | | | |
-| Décision | | | |
-| Pédagogie | | | |
-| Profondeur | | | |
-| Preuve | | | |
-| Comparaison | | | |
-| Originalité | | | |
-| Style | | | |
-| Conversion | | | |
-| SEO/produit | | | |
+| Axe         | Note 0-2 | Preuve dans la page | Correction éventuelle |
+| ----------- | -------: | ------------------- | --------------------- |
+| Intention   |          |                     |                       |
+| Décision    |          |                     |                       |
+| Pédagogie   |          |                     |                       |
+| Profondeur  |          |                     |                       |
+| Preuve      |          |                     |                       |
+| Comparaison |          |                     |                       |
+| Originalité |          |                     |                       |
+| Style       |          |                     |                       |
+| Conversion  |          |                     |                       |
+| SEO/produit |          |                     |                       |
 
 ### Test lecteur non technique
 

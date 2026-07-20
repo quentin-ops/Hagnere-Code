@@ -79,7 +79,7 @@ export function ResourceDownloadCard({
           className="mt-5 flex flex-col gap-2 text-xs text-zinc-600 sm:flex-row sm:flex-wrap sm:gap-x-5 dark:text-zinc-400"
         >
           {[
-            "4 fichiers, téléchargeables séparément",
+            `${resource.files.length} fichiers, téléchargeables séparément`,
             "Aucune donnée à renseigner pour télécharger",
             `Mis à jour le ${resource.updatedLabel}`,
           ].map((item) => (

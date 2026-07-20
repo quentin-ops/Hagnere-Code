@@ -50,6 +50,49 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 16,
   },
   {
+    slug: "cahier-des-charges-application-metier",
+    title: "Comment rédiger le cahier des charges d'une application métier",
+    cardTitle: "Rédiger le cahier des charges d'une application métier",
+    metaDescription:
+      "Méthode, modèle et exemple pour cadrer une application métier : scénarios, données, droits, recette, migration et comparaison des offres.",
+    cardDescription:
+      "Une méthode fondée sur les scénarios et les preuves de recette, avec un kit Word et PDF réellement téléchargeable sans email.",
+    heroTitle:
+      "Cahier des charges d'une application métier : la méthode complète",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 23,
+  },
+  {
+    slug: "combien-coute-un-crm",
+    title: "Combien coûte un CRM en 2026 ? · Hagnéré Code",
+    cardTitle: "Combien coûte un CRM ? Trois socles sur 36 mois",
+    metaDescription:
+      "Prix d'un CRM en 2026 : trois socles chiffrés sur 36 mois, puis la méthode TCO pour intégrer licences, temps interne, contrat et sortie.",
+    cardDescription:
+      "Trois socles CRM recalculables, les tarifs publics datés et une grille pour construire un coût total sans traiter les inconnues comme nulles.",
+    heroTitle: "Combien coûte un CRM en 2026 ?",
+    section: "Budget & prix",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 19,
+  },
+  {
+    slug: "erp-ou-logiciel-sur-mesure",
+    title: "ERP ou logiciel sur mesure : comment choisir · Hagnéré Code",
+    cardTitle: "ERP, logiciel standard ou sur mesure : comment choisir",
+    metaDescription:
+      "Comparez ERP standard, configurable, hybride et sur mesure : critères, coût total, adoption, intégrations, sécurité et réversibilité.",
+    cardDescription:
+      "Une méthode de décision pour tester les processus critiques, comparer le coût sur quatre ans et exiger adoption, intégrations et réversibilité.",
+    heroTitle: "ERP, logiciel standard ou sur mesure : comment choisir ?",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 26,
+  },
+  {
     slug: "pourquoi-mon-site-ne-convertit-pas",
     title: "Pourquoi mon site ne convertit pas · Hagnéré Code",
     metaDescription:
@@ -303,12 +346,12 @@ export const GUIDES: GuideEntry[] = [
     metaDescription:
       "Combien coûte un logiciel sur mesure ? Grille 2026 par type, méthode jours × TJM, match chiffré contre SaaS et Excel, et un devis décortiqué ligne à ligne.",
     cardDescription:
-      "La grille par type d'outil, la méthode pour vérifier un devis, le match sur 3 ans contre SaaS et Excel, le ROI en heures gagnées et un devis décortiqué.",
+      "La grille par type d'outil, la méthode pour vérifier un devis, un TCO sur 3 ans, des scénarios sur 5 ans, un ROI correctement calculé et un devis décortiqué.",
     heroTitle:
       "Prix d'un logiciel sur mesure : le budget complet en 2026 (+ devis décortiqué)",
     section: "Budget & prix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-19",
+    dateModified: "2026-07-20",
     readTimeMin: 25,
   },
   {
@@ -453,8 +496,7 @@ export const GUIDES: GuideEntry[] = [
       "Méthode en 13 étapes pour cadrer un site : rubriques, périmètre, budget, responsabilités, recette, erreurs à éviter et passage du besoin au devis.",
     cardDescription:
       "Une méthode détaillée pour transformer un besoin métier en périmètre comparable, critères de recette et consultation exploitable.",
-    heroTitle:
-      "Comment rédiger un cahier des charges de site internet utile",
+    heroTitle: "Comment rédiger un cahier des charges de site internet utile",
     section: "Cadrer son projet",
     datePublished: "2026-07-15",
     dateModified: "2026-07-19",
