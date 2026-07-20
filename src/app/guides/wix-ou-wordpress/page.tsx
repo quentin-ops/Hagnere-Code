@@ -725,10 +725,13 @@ export default function Page() {
           ou WordPress</Link> traite ce match technologique en détail,
           et notre <Link href="/guides/prix-site-vitrine">guide du prix
           d&apos;un site vitrine</Link> met tous les budgets côte à
-          côte, de 500 à 22 000 €. Le bon réflexe pour savoir si vous
-          êtes concerné : si votre réponse à « que doit rapporter ce
-          site ? » se chiffre en clients par mois, la question du socle
-          mérite mieux qu&apos;un abonnement.
+          côte, de 500 à 22 000 €. Pour séparer ce choix de plateforme du
+          niveau de conception, utilisez aussi le guide{" "}
+          <Link href="/guides/template-ou-site-sur-mesure">
+            template, personnalisation ou site sur mesure
+          </Link>
+          . Il peut conclure à une base standard, à une approche hybride ou à
+          une conception complète selon les écarts réellement nécessaires.
         </p>
 
         <h2 id="methode">14. Méthode : choisir en 5 étapes</h2>

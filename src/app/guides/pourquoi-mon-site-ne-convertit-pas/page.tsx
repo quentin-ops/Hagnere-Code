@@ -713,6 +713,12 @@ Base 2 %, détecter +50 % relatif  →  3 077 par version   (6 154 au total)
           justifie réellement. Et si vous refondez malgré tout, lisez{" "}
           <Link href="/guides/refonte-sans-perdre-son-seo">refonte sans
           perdre son référencement</Link> avant de lancer quoi que ce soit.
+          Une fois la reconstruction justifiée, le guide{" "}
+          <Link href="/guides/template-ou-site-sur-mesure">
+            template, personnalisation ou site sur mesure
+          </Link>{" "}
+          aide à acheter le niveau de conception nécessaire sans déduire la
+          solution du budget ou de l&apos;étiquette technique.
         </p>
 
         <h2 id="prix-correctifs">14. Le prix réel de chaque correctif</h2>

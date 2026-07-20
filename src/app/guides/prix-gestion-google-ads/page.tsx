@@ -220,6 +220,10 @@ export default function Page() {
             label: "Prix du référencement naturel",
           },
           {
+            href: "/guides/seo-ou-google-ads",
+            label: "Choisir où investir entre SEO et Google Ads",
+          },
+          {
             href: "/guides/pourquoi-mon-site-ne-convertit-pas",
             label: "Pourquoi mon site ne convertit pas",
           },
@@ -691,6 +695,16 @@ CPL média maximal à l'équilibre =
           </Link>{" "}
           pour rapprocher conversions de plateforme, prospects qualifiés et
           ventes.
+        </p>
+
+        <p>
+          Si la question porte d’abord sur l’ordre d’investissement, utilisez la{" "}
+          <Link href="/guides/seo-ou-google-ads">
+            matrice SEO ou Google Ads
+          </Link>{" "}
+          avant de chiffrer la campagne. Elle peut conclure à Ads, au SEO, à une
+          combinaison aux rôles séparés ou au report tant que l’offre, la page
+          ou la mesure n’est pas prête.
         </p>
 
         <h2 id="mesure">

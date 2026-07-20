@@ -269,6 +269,16 @@ export default function Page() {
           propose une matrice de décision, pas un verdict automatique.
         </p>
         <p>
+          Le niveau de conception est encore un autre axe : WordPress peut
+          recevoir un thème créé spécifiquement, tandis qu&apos;un site Next.js
+          peut réutiliser un kit graphique. Le guide{" "}
+          <Link href="/guides/template-ou-site-sur-mesure">
+            template, site personnalisé ou sur mesure
+          </Link>{" "}
+          permet de décider ce qui doit être conçu pour le projet avant de
+          choisir la technologie qui l&apos;exécutera.
+        </p>
+        <p>
           La vraie question du dirigeant n&apos;est donc pas technique, elle
           est organisationnelle : <strong>qui publie du contenu, à quelle
           fréquence, et quel est l&apos;enjeu business du site ?</strong> Si

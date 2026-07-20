@@ -1004,9 +1004,14 @@ export default function Page() {
           <Link href="/services/maintenance-evolution">
             maintenance et d&apos;évolution
           </Link>{" "}
-          au périmètre écrit. Et c&apos;est un calcul que nous vous recommandons
-          d&apos;exiger de tout prestataire : pas de devis sans regard sur ce
-          que l&apos;absence d&apos;outil coûte déjà.
+          au périmètre écrit. Le guide du{" "}
+          <Link href="/guides/contrat-tma-application">
+            contrat TMA d’une application
+          </Link>{" "}
+          permet de vérifier tickets, niveaux de service, capacité, preuves et
+          sortie. Et c&apos;est un calcul que nous vous recommandons d&apos;exiger
+          de tout prestataire : pas de devis sans regard sur ce que
+          l&apos;absence d&apos;outil coûte déjà.
         </p>
         <p>
           Un mot sur le risque, honnêtement : les statistiques d&apos;échec des
