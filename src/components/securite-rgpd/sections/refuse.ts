@@ -13,7 +13,7 @@ export const refuseHtml = `
         </p>
         <div class="sr-refuse-foot">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-          Dire non à certains dossiers, c'est la seule manière de garantir une vraie conformité sur ceux qu'on prend.
+          Dire non à certains dossiers permet de concentrer le travail sur des mesures vérifiables et défendables.
         </div>
       </div>
 
@@ -29,7 +29,7 @@ export const refuseHtml = `
           <div class="sr-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
             <h4>Systèmes IA "à risque inacceptable" (Article 5 AI Act)</h4>
-            <p>Notation sociale généralisée, manipulation cognitive, identification biométrique en temps réel dans l'espace public. Pas de contournement possible — c'est interdit en UE depuis février 2025. Mauvaise idée même hors UE.</p>
+            <p>Notation sociale, techniques manipulatoires ou usages biométriques susceptibles de relever des interdictions de l'article 5. Le champ exact dépend du système et de ses exceptions : le client le fait qualifier par son conseil, et nous refusons tout contournement.</p>
           </div>
         </li>
         <li>
@@ -43,14 +43,14 @@ export const refuseHtml = `
           <div class="sr-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
             <h4>Mise en demeure CNIL à J-2 du délai</h4>
-            <p>Si vous nous contactez à 48 h du délai légal, on ne peut pas livrer une réponse défendable. <b>Dès 5 jours ouvrés restants, on peut engager la procédure d'urgence</b> (symptôme n°5). En deçà, on oriente vers un avocat habilité pour demander un délai officiel à la CNIL, puis on travaille sérieusement.</p>
+            <p>Si vous nous contactez à l'approche d'une échéance, nous pouvons rassembler les faits et preuves techniques, sans promettre un délai de réponse ou une prorogation. Le client mandate immédiatement son avocat ou son conseil pour piloter la procédure ; toute demande de délai reste soumise au cadre applicable et à la décision de la CNIL.</p>
           </div>
         </li>
         <li>
           <div class="sr-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
             <h4>"On veut juste un PDF, pas de remédiation"</h4>
-            <p>C'est le job d'un cabinet juridique pur (Lexing, Haas) ou d'un cabinet cyber pur (Wavestone, Synacktiv) — ils sont meilleurs que nous sur ce livrable. Notre valeur c'est <b>le code corrigé</b> derrière le rapport.</p>
+            <p>Un avis de droit isolé relève d'un cabinet juridique mandaté par le client ; un audit de sécurité spécialisé peut relever d'un prestataire cyber qualifié. Notre périmètre porte sur <b>l'audit technique et le code de remédiation</b>, selon le devis.</p>
           </div>
         </li>
         <li>

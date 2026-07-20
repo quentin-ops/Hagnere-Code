@@ -445,8 +445,14 @@ export function ContactProjectSection({
               <span>
                 J&apos;ai pris connaissance de la{" "}
                 <a href="/legal/confidentialite">politique de confidentialité</a>{" "}
-                et je demande à Hagnéré Code de traiter mes informations afin de
-                répondre à ma demande, dans le cadre de mesures précontractuelles.
+                et je demande à HAGNERE CODE de traiter mes informations afin de
+                répondre à ma demande. Selon que j&apos;agis en mon nom ou pour mon
+                organisation, ce traitement repose sur des mesures précontractuelles
+                ou sur l&apos;intérêt légitime à traiter une demande professionnelle.
+                Les données sont accessibles à HAGNERE CODE et aux prestataires
+                nécessaires, puis conservées au maximum trois ans après le dernier
+                échange utile en l&apos;absence de contrat. La politique détaille les
+                destinataires et vos droits.
               </span>
             </label>
             {errs.consent && <em className="sf-consent-error">{errs.consent}</em>}
@@ -1275,9 +1281,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
             <div>
               © {new Date().getUTCFullYear()} HAGNERE CODE · SASU au capital de
               10 € · RCS CHAMBÉRY 993 672 856 · TVA FR30 993 672 856 · Adresse
-              d&apos;activité : 82 impasse de Bellevue, 73000 Bassens · Siège
-              inscrit au RNE : 7 rue Ernest Filliard, 73000 Chambéry (transfert
-              en cours)
+              du siège social : 82 impasse de Bellevue, 73000 Bassens
             </div>
             <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
           </div>

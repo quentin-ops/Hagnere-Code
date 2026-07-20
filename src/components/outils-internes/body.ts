@@ -356,8 +356,8 @@ ${navHtml}
           <div class="eyebrow">CAS N°02 · ADMINISTRATIF</div>
           <h3>Facturation, relances, paiements.<br>Sans intervention humaine.</h3>
           <p>
-            Fin de mois : le client reçoit sa facture automatiquement, avec les bons libellés, la bonne TVA,
-            les bons mentions légales. S'il ne paye pas, il reçoit trois relances espacées de 7 jours
+            Fin de mois : le client reçoit sa facture automatiquement, avec les libellés, règles de TVA et
+            mentions paramétrés à partir des informations validées par votre entreprise ou votre comptable. S'il ne paye pas, il reçoit trois relances espacées de 7 jours
             avec des tons progressifs. S'il paye, le logiciel appelle Pennylane pour créer l'écriture.
             <b>Vous n'avez touché à rien.</b>
           </p>
@@ -365,7 +365,7 @@ ${navHtml}
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Factures PDF automatiques</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Relances configurables</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Export Pennylane / Sage</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>E-facturation conforme 2026</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>E-facturation cadrée selon le calendrier applicable</li>
           </ul>
         </div>
         <div class="uc-visual">
@@ -1062,7 +1062,7 @@ ${navHtml}
       </div>
     </div>
     <div class="foot-bot">
-      <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
+      <div>© 2026 HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000 Bassens</div>
       <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
     </div>
   </div>

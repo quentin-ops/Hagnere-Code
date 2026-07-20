@@ -403,8 +403,13 @@ export function ExcelCalculator() {
                 <input type="checkbox" name="consent" required />
                 <span>
                   J&apos;ai pris connaissance de la politique de confidentialité et
-                  je demande à Hagnéré Code de traiter ces informations pour me
-                  répondre (mesures précontractuelles).{" "}
+                  je demande à HAGNERE CODE de traiter ces informations pour me
+                  répondre. Selon que j&apos;agis en mon nom ou pour mon organisation,
+                  la base est précontractuelle ou relève de l&apos;intérêt légitime à
+                  traiter une demande professionnelle. Les données sont accessibles
+                  à HAGNERE CODE et aux prestataires nécessaires, puis conservées au
+                  maximum trois ans après le dernier échange utile en l&apos;absence de
+                  contrat. La politique détaille les destinataires et vos droits.{" "}
                   <Link href="/legal/confidentialite">Politique de confidentialité</Link>
                 </span>
               </label>

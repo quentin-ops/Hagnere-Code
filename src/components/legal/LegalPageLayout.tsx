@@ -117,6 +117,7 @@ export function LegalPageLayout({
     if (!target) return;
     e.preventDefault();
     setActiveId(id);
+    target.focus({ preventScroll: true });
     // Offset so the section title isn't hidden behind the sticky nav.
     const top = target.getBoundingClientRect().top + window.scrollY - 88;
     window.scrollTo({ top, behavior: "smooth" });
@@ -202,7 +203,7 @@ export function LegalPageLayout({
               </ol>
 
               <div className="lp-toc-foot">
-                <Link href="#contact" className="btn btn-ghost btn-sm">
+                <Link href="#legal-contact" className="btn btn-ghost btn-sm">
                   <svg
                     width="13"
                     height="13"
@@ -222,7 +223,12 @@ export function LegalPageLayout({
           {/* Right : article content */}
           <article className="lp-article">
             {sections.map((s, i) => (
-              <section key={s.id} id={s.id} className="lp-section">
+              <section
+                key={s.id}
+                id={s.id}
+                className="lp-section"
+                tabIndex={-1}
+              >
                 <div className="lp-section-head">
                   <div className="lp-section-n">
                     {String(i + 1).padStart(2, "0")}
@@ -234,6 +240,7 @@ export function LegalPageLayout({
             ))}
 
             <section
+              id="legal-contact"
               className="lp-article-foot"
               aria-labelledby="lp-contact-title"
             >

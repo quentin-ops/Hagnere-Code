@@ -70,8 +70,8 @@ export const faqHtml = `
           <div class="faq-a">
             Non. <b>Personne de sérieux ne garantit ça.</b> La CNIL peut sanctionner sur des sujets qu'on
             n'a pas encore audités, sur de nouveaux usages déployés en interne sans nous prévenir, ou sur
-            l'interprétation jurisprudentielle d'un texte. On garantit la <b>méthode, les jalons, les délais
-            contractuels</b>, et un suivi continu pour minimiser le risque.
+            l'interprétation jurisprudentielle d'un texte. Le devis et le contrat fixent la <b>méthode, les jalons,
+            les délais et les limites de la mission</b> ; aucun accompagnement ne supprime tout risque.
           </div>
         </div>
 
@@ -91,9 +91,9 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Non, et <b>personne ne l'est</b> — la CNIL ne délivre pas ce statut. Méfiez-vous des cabinets
-            qui revendiquent ça. Hagnéré Code ne publie pas non plus de statut de membre AFCDP ni de certification
-            personnelle AFNOR/CIPP-E sans justificatif nominatif vérifiable.
+            Non. Hagnéré Code ne revendique aucun mandat, agrément ou partenariat de la CNIL. Le studio ne publie
+            pas non plus de statut de membre AFCDP ni de certification personnelle AFNOR/CIPP-E sans justificatif
+            nominatif vérifiable.
           </div>
         </div>
 
@@ -102,8 +102,9 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Tout</b> : registre, AIPD, plan d'action, scripts d'audit, code de remédiation, configuration
-            Tag Manager / Consent Mode, charte interne IA. Tout est livré sur votre Notion / Git / drive.
+            <b>Les éléments expressément prévus au devis</b> : par exemple support de registre, dossier de preuves
+            pour l'AIPD, plan d'action technique, scripts d'audit, code de remédiation ou configuration de gestion du consentement. Les formats,
+            comptes et modalités de remise sont définis avant le démarrage.
             Si un DPO distinct intervient, la passation de nos livrables techniques est organisée selon le devis.
           </div>
         </div>

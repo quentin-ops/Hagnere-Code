@@ -123,7 +123,7 @@ ${navHtml}
 
         <!-- Map canvas (SVG node-edge graph) -->
         <div class="sr-map-canvas">
-          <svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:100%" role="img" aria-label="Exemple illustratif de cartographie des sous-traitants d'une PME tech : 31 conformes (verts), 11 DPA à mettre à jour (orange), 5 transferts hors UE non encadrés (rouges).">
+          <svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" style="display:block;width:100%;height:100%" role="img" aria-label="Exemple fictif de cartographie de sous-traitants : flux documentés, documents à revoir et transferts à qualifier.">
             <defs>
               <linearGradient id="srMapBg" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stop-color="#0F0F12"/>
@@ -258,7 +258,7 @@ ${navHtml}
               <circle cx="-46" cy="-1" r="3" fill="#A78BFA">
                 <animate attributeName="opacity" values="1;0.3;1" dur="1.2s" repeatCount="indefinite"/>
               </circle>
-              <text x="-38" y="2.5" font-family="Geist Mono" font-size="8" fill="rgba(255,255,255,0.7)" letter-spacing="0.14em">EXEMPLE · 47 NODES DÉTECTÉS</text>
+              <text x="-38" y="2.5" font-family="Geist Mono" font-size="8" fill="rgba(255,255,255,0.7)" letter-spacing="0.14em">EXEMPLE FICTIF · 47 FLUX</text>
             </g>
           </svg>
         </div>
@@ -268,7 +268,7 @@ ${navHtml}
           <div class="sr-map-foot-cell">
             <span class="sr-dot sr-dot-green"></span>
             <span class="sr-map-foot-k">31</span>
-            <span class="sr-map-foot-l">conformes</span>
+            <span class="sr-map-foot-l">flux documentés</span>
           </div>
           <div class="sr-map-foot-cell">
             <span class="sr-dot sr-dot-orange"></span>

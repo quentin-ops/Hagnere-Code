@@ -24,6 +24,7 @@ import {
 export const runtime = "nodejs";
 
 const MAX_BODY_BYTES = 50_000;
+const PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION = "2026-07-20";
 
 // Extended payload — the funnel sends the FULL state so we can persist
 // every field in the DB (the email message stays the human-readable summary).
@@ -123,7 +124,8 @@ function renderEmailShell(preheader: string, innerHtml: string): string {
                 ${innerHtml}
                 <tr>
                   <td style="padding:22px 28px;background:#fafafa;border-top:1px solid #ededed;color:#737373;font-size:12px;line-height:1.55">
-                    Hagnéré Code SAS · 82 impasse de Bellevue, 73000 Bassens<br>
+                    HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856<br>
+                    82 impasse de Bellevue, 73000 Bassens<br>
                     <a href="mailto:quentin@hagnere-patrimoine.fr" style="color:#4c1d95;text-decoration:none">quentin@hagnere-patrimoine.fr</a> · <a href="tel:+33374472018" style="color:#4c1d95;text-decoration:none">+33 3 74 47 20 18</a>
                   </td>
                 </tr>
@@ -254,7 +256,7 @@ export async function POST(request: Request) {
   if (!message || message.length < 10) errors.message = "Décrivez votre projet en 1-2 phrases";
   if (body.consent !== true) {
     errors.consent =
-      "Confirmez avoir pris connaissance de la politique de confidentialité et demander le traitement de votre demande dans le cadre de mesures précontractuelles.";
+      "Confirmez avoir pris connaissance de la politique de confidentialité et demander le traitement de votre demande professionnelle.";
   }
   if (!isPlausibleLabel(budget)) errors.budget = "Budget invalide";
   if (!isPlausibleLabel(projectType)) errors.projectType = "Type de projet invalide";
@@ -318,8 +320,7 @@ export async function POST(request: Request) {
         budget: budget || null,
         decisionStage: asText(body.decisionStage).slice(0, 200) || null,
         consent: body.consent === true,
-        ip: getClientIp(request),
-        userAgent: request.headers.get("user-agent")?.slice(0, 500) || null,
+        privacyNoticeVersion: PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION,
         mailSent: false,
       })
       .returning({ id: projectBrief.id, publicSlug: projectBrief.publicSlug });
@@ -348,6 +349,7 @@ export async function POST(request: Request) {
     `Projet    : ${projectType || "non précisé"}`,
     `Budget    : ${budget || "non précisé"}`,
     `Échéance  : ${timeline || "non précisée"}`,
+    `Notice vie privée lue : version ${PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION}`,
     "",
     "Message :",
     message,
@@ -374,6 +376,7 @@ export async function POST(request: Request) {
             <tr><td style="width:130px;color:#737373;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Projet</td><td style="font-size:15px">${escapeHtml(projectType || "non précisé")}</td></tr>
             <tr><td style="width:130px;color:#737373;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Budget</td><td style="font-size:15px">${escapeHtml(budget || "non précisé")}</td></tr>
             <tr><td style="width:130px;color:#737373;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Échéance</td><td style="font-size:15px">${escapeHtml(timeline || "non précisée")}</td></tr>
+            <tr><td style="width:130px;color:#737373;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Notice vie privée</td><td style="font-size:15px">Version ${PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION} — prise de connaissance confirmée</td></tr>
           </table>
         </td>
       </tr>
@@ -402,6 +405,7 @@ export async function POST(request: Request) {
     `Projet     : ${projectType || "non précisé"}`,
     `Budget     : ${budget || "non précisé"}`,
     `Échéance   : ${timeline || "non précisée"}`,
+    `Notice vie privée lue : version ${PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION}`,
     "",
     "Votre message :",
     message,
@@ -445,6 +449,7 @@ export async function POST(request: Request) {
             <div style="padding:13px 16px;border-bottom:1px solid #ededed"><b>Projet</b><br><span style="color:#525252">${escapeHtml(projectType || "non précisé")}</span></div>
             <div style="padding:13px 16px;border-bottom:1px solid #ededed"><b>Budget</b><br><span style="color:#525252">${escapeHtml(budget || "non précisé")}</span></div>
             <div style="padding:13px 16px;border-bottom:1px solid #ededed"><b>Échéance</b><br><span style="color:#525252">${escapeHtml(timeline || "non précisée")}</span></div>
+            <div style="padding:13px 16px;border-bottom:1px solid #ededed"><b>Information vie privée</b><br><span style="color:#525252">Version ${PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION} — prise de connaissance confirmée</span></div>
             <div style="padding:13px 16px"><b>Message</b><br><span style="color:#525252;white-space:pre-wrap">${escapedMessage}</span></div>
           </div>
         </td>
@@ -500,7 +505,10 @@ export async function POST(request: Request) {
     });
 
     if (result.error) {
-      log.error("project_inquiry_resend_team_failed", { err: result.error, briefId });
+      log.error("project_inquiry_resend_team_failed", {
+        providerErrorName: result.error.name,
+        briefId,
+      });
       await logAiCall({
         service: "inquiry",
         ip,
@@ -527,7 +535,7 @@ export async function POST(request: Request) {
 
     if (confirmation.error) {
       log.error("project_inquiry_resend_confirmation_failed", {
-        err: confirmation.error,
+        providerErrorName: confirmation.error.name,
         briefId,
       });
       // Mark mail_sent anyway since the team mail went through — losing

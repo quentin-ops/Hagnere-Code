@@ -22,7 +22,7 @@ export const trustBadgesHtml = `
       <div class="sr-trust-section-card reveal reveal-d-1">
         <div class="sr-trust-section-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
         <h4>Tous vos livrables, tout de suite</h4>
-        <p>Registre, AIPD, plan d'action, scripts d'audit, <b>code de remédiation</b> : vous y accédez dès qu'ils existent, sur votre Notion et votre Git. Aucun outil propriétaire Hagnéré obligatoire.</p>
+        <p>Support de registre, dossier de preuves pour l'AIPD, plan d'action technique, scripts d'audit et <b>code de remédiation</b> : vous y accédez dès qu'ils existent, sur votre Notion et votre Git. Aucun outil propriétaire Hagnéré obligatoire.</p>
         <div class="sr-trust-section-foot">— Cession écrite dans les CGV</div>
       </div>
 

@@ -28,7 +28,7 @@ const serviceJsonLd = JSON.stringify({
     "@type": "Organization",
     name: "Hagnéré Code",
     "@id": "https://hagnere-code.ai/#organization",
-    legalName: "HAGNÉRÉ CODE SAS",
+    legalName: "HAGNERE CODE",
     vatID: "FR30993672856",
     url: "https://hagnere-code.ai",
     logo: "https://hagnere-code.ai/logos/logo-dark.png",

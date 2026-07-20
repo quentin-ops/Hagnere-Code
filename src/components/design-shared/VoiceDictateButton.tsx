@@ -255,7 +255,7 @@ export function VoiceDictateButton({
         </span>
       )}
       <span className="vdb-privacy">
-        Dictée facultative : l&apos;audio est transmis à Groq pour transcription.{" "}
+        En activant « Dicter », vous consentez à transmettre l&apos;audio à Groq pour cette transcription facultative. La saisie clavier reste disponible.{" "}
         <a href="/legal/confidentialite#dictee">En savoir plus</a>
       </span>
     </div>

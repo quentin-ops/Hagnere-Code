@@ -133,10 +133,10 @@ export const accessibiliteSections: LegalSection[] = [
   {
     id: "evolution",
     label: "Évolution",
-    title: "Mise à jour de cette déclaration",
+    title: "Mise à jour de cette démarche",
     body: (
       <p>
-        La déclaration est révisée après une évolution substantielle, un audit ou
+        Cette démarche est révisée après une évolution substantielle, un audit ou
         l'identification d'un nouveau problème. Une future déclaration de
         conformité indiquera la méthode, l'échantillon, la date et le résultat de
         l'audit plutôt qu'un engagement anticipé non vérifiable.

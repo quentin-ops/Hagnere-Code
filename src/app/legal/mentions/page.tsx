@@ -8,14 +8,14 @@ const LAST_UPDATED = "2026-07-20";
 export const metadata: Metadata = {
   title: "Mentions légales · Hagnéré Code",
   description:
-    "Éditeur, direction de publication, hébergeur et informations juridiques de HAGNERE CODE, studio à Bassens dont le transfert de siège est en cours.",
+    "Éditeur, direction de publication, siège social, hébergeur et informations juridiques de HAGNERE CODE à Bassens.",
   alternates: { canonical: "/legal/mentions" },
   openGraph: {
     ...OG_BASE,
     type: "article",
     title: "Mentions légales · Hagnéré Code",
     description:
-      "Informations légales de HAGNERE CODE : identité, adresse d'activité à Bassens, siège inscrit à Chambéry et hébergement Vercel.",
+      "Informations légales de HAGNERE CODE : identité, siège social à Bassens, direction de publication et hébergement Vercel.",
     url: "/legal/mentions",
     images: [DEFAULT_OG_IMAGE],
   },

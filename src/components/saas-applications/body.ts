@@ -404,7 +404,7 @@ ${navHtml}
         <div class="proc-num">ÉTAPE 04</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
         <h4>QA &amp; conformité</h4>
-        <p>Tests automatisés, audit sécurité OWASP, revue RGPD, mise en conformité CGV, DPA, registre des traitements.</p>
+        <p>Tests automatisés, revue de sécurité applicative et contrôle des flux. Les éléments techniques utiles aux DPA et registres sont préparés pour validation par le client, son DPO ou son conseil ; les CGV ne relèvent pas de notre validation juridique.</p>
         <div class="proc-dur">3–5 JOURS</div>
       </div>
       <div class="proc-step">
@@ -871,7 +871,7 @@ ${navHtml}
       </div>
     </div>
     <div class="foot-bot">
-      <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
+      <div>© 2026 HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000 Bassens</div>
       <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
     </div>
   </div>

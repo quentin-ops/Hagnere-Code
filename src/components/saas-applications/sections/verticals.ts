@@ -8,8 +8,8 @@ export const verticalsHtml = `
         <h2>Des verticales où on<br>gagne des semaines de cadrage.</h2>
       </div>
       <div class="right">
-        On ne prétend pas tout savoir faire. Voici les secteurs que nous savons analyser
-        plusieurs SaaS en production — vous n'aurez pas à nous expliquer le métier.
+        On ne prétend pas tout savoir faire. Voici les secteurs déjà étudiés à travers nos produits internes
+        ou des travaux de cadrage. Vos équipes restent la source de vérité métier et réglementaire.
       </div>
     </div>
 
@@ -42,8 +42,9 @@ export const verticalsHtml = `
         </div>
         <h3>Investissement immobilier &amp; SCI</h3>
         <p>
-          Comptabilité LMNP et SCI (IR / IS), liasses 2031 / 2033 / 2065 / 2072
-          auto-générées et télétransmises via EDI DGFiP. Amortissements par composants, gestion parts associés.
+          Comptabilité LMNP et SCI (IR / IS), préparation des liasses 2031 / 2033 / 2065 / 2072,
+          amortissements par composants et gestion des parts. Les règles et déclarations sont validées par
+          le client ou son professionnel du chiffre ; la télétransmission dépend du service EDI effectivement retenu.
         </p>
         <div class="sa-vt-feats">
           <span>EDI DGFiP</span>
@@ -99,8 +100,9 @@ export const verticalsHtml = `
         </div>
         <h3>Legaltech &amp; professions réglementées</h3>
         <p>
-          Signature électronique qualifiée, génération de documents conformes, espaces clients avocats/notaires,
-          workflows de conformité. RGPD, eIDAS, SecNumCloud — on connaît les contraintes.
+          Intégration d'un service de signature adapté, génération depuis des modèles validés, espaces clients
+          et workflows documentés. Les exigences RGPD, eIDAS, d'hébergement ou de qualification sont cadrées
+          avec le client et les professionnels compétents avant toute promesse technique.
         </p>
         <div class="sa-vt-feats">
           <span>Signature eIDAS</span>
@@ -123,7 +125,7 @@ export const verticalsHtml = `
         </p>
         <div class="sa-vt-feats">
           <span>Cadrage 2 jours</span>
-          <span>Honnêteté garantie</span>
+          <span>Périmètre explicite</span>
         </div>
       </a>
     </div>

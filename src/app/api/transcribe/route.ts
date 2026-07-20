@@ -86,7 +86,6 @@ export async function POST(request: NextRequest) {
     // de contourner silencieusement le rate-limit.
     log.error("transcribe_rate_limit_unavailable", {
       err: err as Error,
-      ip,
     });
     return NextResponse.json(
       {
@@ -133,7 +132,7 @@ export async function POST(request: NextRequest) {
         { status: 413 },
       );
     }
-    log.error("transcribe_formdata_parse_failed", { err: err as Error, ip });
+    log.error("transcribe_formdata_parse_failed", { err: err as Error });
     return NextResponse.json({ error: "Payload invalide." }, { status: 400 });
   }
 
@@ -177,7 +176,6 @@ export async function POST(request: NextRequest) {
   const head = new Uint8Array(await audioFile.slice(0, 16).arrayBuffer());
   if (!isAudioMagic(head)) {
     log.warn("transcribe_magic_bytes_mismatch", {
-      ip,
       mime,
       headHex: Array.from(head).map((b) => b.toString(16).padStart(2, "0")).join(""),
     });
@@ -189,7 +187,7 @@ export async function POST(request: NextRequest) {
 
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
-    log.error("transcribe_groq_key_missing", { ip });
+    log.error("transcribe_groq_key_missing");
     return NextResponse.json(
       { error: "Configuration serveur manquante" },
       { status: 500 },
@@ -197,7 +195,7 @@ export async function POST(request: NextRequest) {
   }
 
   if (!rateCheck.reservationId) {
-    log.error("transcribe_rate_limit_reservation_missing", { ip });
+    log.error("transcribe_rate_limit_reservation_missing");
     return NextResponse.json(
       {
         error:
@@ -217,7 +215,6 @@ export async function POST(request: NextRequest) {
   } catch (err) {
     log.error("transcribe_cost_reservation_unavailable", {
       err: err as Error,
-      ip,
     });
     return NextResponse.json(
       {
@@ -267,11 +264,12 @@ export async function POST(request: NextRequest) {
     );
 
     if (!response.ok) {
-      const errorText = await response.text();
       log.error("transcribe_groq_api_error", {
-        ip,
         status: response.status,
-        bodyPreview: errorText.slice(0, 500),
+        providerRequestId:
+          response.headers.get("x-request-id") ||
+          response.headers.get("request-id") ||
+          undefined,
       });
       await logAiCall({
         service: "transcribe",
@@ -303,7 +301,7 @@ export async function POST(request: NextRequest) {
       text: data.text || "",
     });
   } catch (err) {
-    log.error("transcribe_unexpected_error", { err: err as Error, ip });
+    log.error("transcribe_unexpected_error", { err: err as Error });
     await logAiCall({
       service: "transcribe",
       ip,

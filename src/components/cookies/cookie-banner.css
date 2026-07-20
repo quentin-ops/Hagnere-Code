@@ -114,6 +114,23 @@
   background: #1f1f1f;
 }
 
+.hc-cb-btn-choice {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #ffffff;
+}
+.hc-cb-btn-choice:hover {
+  background: #1f1f1f;
+  border-color: #1f1f1f;
+}
+
+.hc-cb-btn:focus-visible,
+.hc-cb-close:focus-visible,
+.hc-cb-toggle input:focus-visible + .hc-cb-toggle-slider {
+  outline: 3px solid rgba(109, 40, 217, 0.34);
+  outline-offset: 3px;
+}
+
 /* Modal préférences */
 .hc-cb-backdrop {
   position: fixed;
@@ -336,6 +353,15 @@ html.dark .hc-cb-btn-primary {
   color: #0B0B0D;
 }
 html.dark .hc-cb-btn-primary:hover { background: #E7E7EA; }
+html.dark .hc-cb-btn-choice {
+  background: #FAFAFA;
+  border-color: #FAFAFA;
+  color: #0B0B0D;
+}
+html.dark .hc-cb-btn-choice:hover {
+  background: #E7E7EA;
+  border-color: #E7E7EA;
+}
 html.dark .hc-cb-backdrop { background: rgba(0, 0, 0, 0.6); }
 html.dark .hc-cb-modal {
   background: #131316;

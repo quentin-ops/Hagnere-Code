@@ -86,10 +86,10 @@ export const verticalsHtml = `
           <span class="sv-vt-tag">Expertise forte</span>
         </div>
         <h3>Professions réglementées</h3>
-        <p>Notaires, experts-comptables, CGP, avocats, courtiers. Sites premium conformes RGPD, ORIAS, ACPR, Bâtonnier, avec mentions obligatoires auto-intégrées.</p>
+        <p>Notaires, experts-comptables, CGP, avocats, courtiers. Nous préparons les parcours, mentions et preuves techniques au regard des règles identifiées ; le professionnel et son conseil valident les obligations propres à son statut avant publication.</p>
         <div class="sv-vt-feats">
-          <span>Conformité RGPD</span>
-          <span>Mentions auto</span>
+          <span>Dossier RGPD</span>
+          <span>Mentions à valider</span>
           <span>RDV sécurisé</span>
         </div>
       </div>

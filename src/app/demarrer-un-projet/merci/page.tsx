@@ -5,6 +5,7 @@ import "@/components/project-funnel/project-funnel.css";
 import { ConversionTracker } from "./ConversionTracker";
 import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { LegalLinksFooter } from "@/components/legal/LegalLinksFooter";
 
 export const metadata: Metadata = {
   title: "Brief envoyé · Hagnéré Code",
@@ -85,6 +86,7 @@ export default function Page() {
           </div>
         </div>
       </main>
+      <LegalLinksFooter />
     </div>
   );
 }

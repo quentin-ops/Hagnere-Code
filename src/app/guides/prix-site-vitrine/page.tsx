@@ -732,7 +732,7 @@ export default function Page() {
             ["Licences plugins (WordPress)", "300 – 1 000 €/an selon le nombre de plugins", "Constructeur, SEO, sécurité, formulaires"],
             ["Rédaction (si exclue)", "150 – 800 €/page", "Le coût caché n° 1 des devis bas"],
             ["Photos professionnelles", "600 – 2 000 €", "Souvent oubliées au budget"],
-            ["Bannière cookies", "0 – 150 €/an", "Obligatoire dès que le site dépose des cookies non essentiels (mesure d'audience, vidéos intégrées…) — le cas de la quasi-totalité des sites professionnels"],
+            ["Bannière cookies", "0 – 150 €/an", "À prévoir lorsque le site dépose des traceurs soumis au consentement (certaines mesures d'audience, vidéos ou services intégrés). Un site sans ces traceurs peut ne pas en avoir besoin."],
           ]}
         />
         <p>

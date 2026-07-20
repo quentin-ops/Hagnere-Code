@@ -108,7 +108,7 @@ export async function GET(request: NextRequest) {
       companyName: company.nom_complet || company.nom_raison_sociale || "Nom non disponible",
     });
   } catch (err) {
-    log.error("sirene_api_error", { err: err as Error, siren: sirenClean });
+    log.error("sirene_api_error", { err: err as Error, sirenProvided: true });
     return NextResponse.json(
       { error: "Erreur lors de la recherche. Veuillez réessayer." },
       { status: 500 }

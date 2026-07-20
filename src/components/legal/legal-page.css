@@ -450,6 +450,10 @@
   border-bottom: 1px solid var(--line-2);
   scroll-margin-top: 88px;
 }
+.lp-section:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.28);
+  outline-offset: 8px;
+}
 .lp-section:first-child { padding-top: 0; }
 .lp-section:last-of-type { border-bottom: none; }
 

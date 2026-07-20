@@ -278,7 +278,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
                 tout placement présente un risque de perte. Les mentions
                 réglementaires (immatriculation ORIAS, statut CGP, agrément
                 AMF le cas échéant) sont disponibles sur le site du cabinet
-                concerné. HAGNÉRÉ CODE SAS intervient ici en qualité de
+                concerné. HAGNERE CODE intervient ici en qualité de
                 prestataire technique et marketing — sans démarchage ni
                 conseil financier au visiteur.
               </p>

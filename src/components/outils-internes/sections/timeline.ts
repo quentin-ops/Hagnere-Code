@@ -27,7 +27,7 @@ export const timelineHtml = `
             <li>Roadmap datée</li>
             <li>Maquettes clés</li>
             <li>Liste intégrations</li>
-            <li>Contrat + DPA signés</li>
+            <li>Contrat signé + DPA complété si requis</li>
           </ul>
         </div>
       </div>

@@ -21,7 +21,7 @@ page.tsx (metadata + JSON-LD ContactPage)
     │   adaptés au dominantKind
     ├── dictée vocale (Groq Whisper via /api/transcribe)
     ├── SIRENE auto-fill (recherche-entreprises.api.gouv.fr via /api/sirene)
-    ├── localStorage draft persistence (clé pf:draft:v2)
+    ├── sessionStorage opt-in, 24 h max, sans coordonnées (clé pf:draft:v3)
     └── analytics events vendor-agnostic (pf:funnel_open, pf:step_complete, …)
 
 brief-format.ts

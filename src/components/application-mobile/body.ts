@@ -410,7 +410,7 @@ ${navHtml}
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 00-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5"/><path d="M9 17a3 3 0 006 0"/></svg></div>
         <h4>Push notifications natives</h4>
-        <p>iOS APNs + Android FCM via Firebase ou Batch. Segmentation, scheduling, géofencing. <b>Taux d'ouverture nettement supérieur à l'email</b>, opt-in contextuel RGPD-friendly.</p>
+        <p>iOS APNs + Android FCM via Firebase ou Batch. Segmentation, planification et géofencing selon le besoin, avec un opt-in contextuel et des finalités documentées.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg></div>
@@ -430,7 +430,7 @@ ${navHtml}
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="11" r="3"/><path d="M21 11c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/></svg></div>
         <h4>Géolocalisation &amp; géofencing</h4>
-        <p>Push à 50 m d'une boutique, store locator, déclencheurs zones. Permission Apple/Google conforme : on demande la géoloc <b>uniquement quand c'est utile</b>.</p>
+        <p>Push à proximité d'une boutique, store locator, déclencheurs par zone. La demande de géolocalisation est contextuelle, limitée au besoin décrit et recettée au regard des règles Apple, Google et de la finalité retenue.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h4v4H3zM17 3h4v4h-4zM3 17h4v4H3zM17 17h4v4h-4zM9 10h6v4H9z"/></svg></div>
@@ -450,7 +450,7 @@ ${navHtml}
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
         <h4>Biométrie Face ID / empreinte</h4>
-        <p>Connexion 1-tap, validation paiement, accès zone sensible. Stockage sécurisé via Keychain iOS / Keystore Android. Conforme banques &amp; santé.</p>
+        <p>Connexion rapide et accès à une zone sensible avec Keychain iOS ou Keystore Android. Les exigences sectorielles comme PCI DSS ou l'hébergement de données de santé nécessitent un périmètre, des prestataires et des audits spécifiques ; elles ne sont pas incluses ni certifiées par défaut.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20M6 14h4"/></svg></div>
@@ -464,13 +464,13 @@ ${navHtml}
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 6 8 10 8 10s8-4 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h4>RGPD &amp; CNIL prêt à l'audit</h4>
-        <p>La CNIL contrôle les apps depuis 2025. On livre <b>politique de confidentialité dédiée, gestion permissions (geo, contacts, micro), DPA signé</b>. Sanction max évitée : 4 % CA.</p>
+        <h4>Dossier vie privée préparé pour revue</h4>
+        <p>Selon le périmètre, nous préparons l'inventaire des permissions, les flux, les sous-traitants, les éléments de politique de confidentialité et un DPA à compléter si nécessaire. Les qualifications juridiques et la validation finale relèvent de votre DPO ou conseil ; aucune absence de contrôle ou de sanction n'est garantie.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
         <h4>Background tasks &amp; sync</h4>
-        <p>Sync silencieuse en arrière-plan, refresh contenu, géofencing, badge non-lus. L'app reste vivante même fermée. Conforme limites Apple/Google batterie.</p>
+        <p>Synchronisation, rafraîchissement de contenu, géofencing et badges sont configurés selon les API et contraintes d'énergie prévues par Apple et Google, puis testés sur les versions d'OS inscrites au plan de recette.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M5 5l14 14M19 5L5 19M1 12h22"/></svg></div>
@@ -480,7 +480,7 @@ ${navHtml}
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
         <h4>Tracking attribution opt-in</h4>
-        <p>Conforme ATT iOS 14.5+ : tracking n'est activé que si l'utilisateur consent. AppsFlyer / Adjust / Branch en option pour <b>mesurer Ads ROI</b>.</p>
+        <p>Le tracking d'attribution reste désactivé avant l'autorisation ATT lorsqu'elle est requise. AppsFlyer, Adjust ou Branch sont optionnels ; leur configuration et les autres obligations de consentement sont documentées et recettées selon les finalités retenues.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
@@ -942,7 +942,7 @@ ${navHtml}
       </div>
     </div>
     <div class="foot-bot">
-      <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
+      <div>© 2026 HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000 Bassens</div>
       <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
     </div>
   </div>

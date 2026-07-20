@@ -63,10 +63,18 @@ export const projectBrief = pgTable("project_brief", {
   // ── Méta ──
   /**
    * Nom de colonne historique : enregistre désormais la confirmation de lecture
-   * de l'information RGPD et la demande de traitement précontractuel, pas un
-   * consentement utilisé comme base légale du formulaire.
+   * de l'information RGPD et la demande de traitement de la demande, pas un
+   * consentement utilisé comme base légale du formulaire. Selon l'interlocuteur,
+   * le traitement repose sur l'article 6.1.b ou 6.1.f du RGPD.
    */
   consent: boolean("consent").notNull().default(false),
+  /** Version de la notice courte rattachée à la soumission. */
+  privacyNoticeVersion: text("privacy_notice_version"),
+  /**
+   * Colonnes historiques : elles ne sont plus alimentées pour les nouveaux
+   * briefs. Les métadonnées anti-abus restent limitées à `ai_call_log`, avec
+   * une durée de conservation distincte et plus courte.
+   */
   ip: text("ip"),
   userAgent: text("user_agent"),
   mailSent: boolean("mail_sent").notNull().default(false),

@@ -309,7 +309,7 @@ ${navHtml}
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
         <h4>Analytics privacy-first</h4>
-        <p>Plausible ou Fathom en plus de GA4, sans bannière cookies tueuse de conversion. Dashboard agrégé fourni.</p>
+        <p>Plausible, Fathom ou GA4 selon le besoin. Une exemption de consentement n'est retenue que si tous les critères CNIL sont réunis ; sinon, la mesure reste bloquée jusqu'au choix positif. Dashboard agrégé fourni.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
@@ -324,7 +324,7 @@ ${navHtml}
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h4>RGPD &amp; confidentialité</h4>
-        <p>Bannière minimaliste conforme CNIL, mentions légales, politique cookies, consent management si besoin d'Ads tracking.</p>
+        <p>Bannière avec accepter, refuser et gérer les choix au même niveau, inventaire des traceurs et politique cookies. La configuration est recettée selon les traitements réels ; la validation juridique reste à votre DPO ou conseil.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
@@ -677,7 +677,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design sur mesure + 3 révisions</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>50 mots-clés ciblés, schema.org, cocons sémantiques</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Formulaires HubSpot / Brevo / Salesforce</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Calendly intégré, RGPD conforme</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Calendly bloqué avant action, flux documenté</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 1 an + formation 2 h</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 5 à 7 semaines</li>
         </ul>
@@ -807,7 +807,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Site statique&nbsp;: sur Vercel (edge CDN mondial) ou OVH (serveur français selon votre préférence). CMS et base de données&nbsp;: <b>Scaleway Paris</b> ou OVH Roubaix pour la conformité RGPD. Sauvegardes chiffrées quotidiennes. Compte d'hébergement <b>à votre nom</b>, pas au nôtre.
+            Le devis précise l'hébergeur, la région, les sous-traitants, les sauvegardes et le propriétaire du compte. Vercel, OVH ou Scaleway peuvent être étudiés selon le projet. Une localisation en France ou dans l'Union européenne ne suffit pas, à elle seule, à établir la conformité RGPD ; les garanties contractuelles et les accès doivent aussi être vérifiés.
           </div>
         </div>
 
@@ -897,7 +897,7 @@ ${navHtml}
       </div>
     </div>
     <div class="foot-bot">
-      <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
+      <div>© 2026 HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000 Bassens</div>
       <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
     </div>
   </div>

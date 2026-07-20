@@ -43,7 +43,7 @@ export const confidentialiteSections: LegalSection[] = [
         <ul>
           <li><strong>identité et coordonnées</strong> : prénom, nom, adresse électronique, téléphone ;</li>
           <li><strong>informations professionnelles</strong> : entreprise, rôle, SIREN et informations publiques associées ;</li>
-          <li><strong>informations de projet</strong> : besoins, périmètre, budget, échéance, outils existants, messages et pièces volontairement communiquées ;</li>
+          <li><strong>informations de projet</strong> : besoins, périmètre, budget, échéance, outils existants et messages saisis dans les champs prévus ;</li>
           <li><strong>données de relation</strong> : échanges, rendez-vous, devis, contrats, livrables et factures ;</li>
           <li><strong>données techniques et de sécurité</strong> : adresse IP, user-agent, date, route appelée, résultat d'un contrôle anti-abus et journaux nécessaires au diagnostic ;</li>
           <li><strong>dictée facultative</strong> : flux audio transmis pour transcription et texte obtenu.</li>
@@ -67,10 +67,11 @@ export const confidentialiteSections: LegalSection[] = [
         <table className="lp-table">
           <thead><tr><th>Finalité</th><th>Base légale</th></tr></thead>
           <tbody>
-            <tr><td>Répondre à une demande, qualifier un projet, organiser un rendez-vous et préparer un devis</td><td>Mesures précontractuelles prises à votre demande (art. 6.1.b RGPD)</td></tr>
-            <tr><td>Exécuter une prestation, assurer le suivi, la facturation et la réversibilité</td><td>Exécution du contrat (art. 6.1.b)</td></tr>
+            <tr><td>Répondre à une demande, qualifier un projet, organiser un rendez-vous et préparer un devis</td><td>Mesures précontractuelles lorsque vous êtes personnellement partie au futur contrat (art. 6.1.b) ; sinon, intérêt légitime à répondre à une demande professionnelle et préparer un contrat avec votre organisation (art. 6.1.f)</td></tr>
+            <tr><td>Exécuter une prestation, assurer le suivi, la facturation et la réversibilité</td><td>Exécution du contrat pour le cocontractant personne physique (art. 6.1.b) ; intérêt légitime au suivi des interlocuteurs représentant une personne morale (art. 6.1.f)</td></tr>
             <tr><td>Tenir la comptabilité, répondre aux autorités et conserver les pièces obligatoires</td><td>Obligation légale (art. 6.1.c)</td></tr>
             <tr><td>Prévenir les abus, sécuriser le site, diagnostiquer les erreurs et défendre nos droits</td><td>Intérêt légitime à protéger le service et établir la preuve (art. 6.1.f)</td></tr>
+            <tr><td>Transcrire une dictée vocale facultative via Groq</td><td>Consentement exprimé par l'activation volontaire du bouton « Dicter » après l'information affichée à proximité (art. 6.1.a) ; la saisie clavier reste disponible</td></tr>
             <tr><td>Activer une mesure d'audience facultative ou un service tiers non nécessaire lorsqu'un choix est proposé</td><td>Consentement préalable (art. 6.1.a et art. 82 de la loi Informatique et Libertés)</td></tr>
           </tbody>
         </table>
@@ -93,9 +94,11 @@ export const confidentialiteSections: LegalSection[] = [
         <p>
           La case figurant au formulaire confirme que vous avez pris connaissance
           de cette information et demandez le traitement de votre demande. Elle
-          ne transforme pas la base précontractuelle en consentement et n'autorise
-          ni newsletter, ni prospection sans rapport avec votre demande, ni vente
-          de données.
+          ne constitue pas un consentement et ne modifie pas la base applicable :
+          mesures précontractuelles lorsque vous êtes partie au futur contrat,
+          ou intérêt légitime lorsque vous intervenez pour une organisation. Elle
+          n'autorise ni newsletter, ni prospection sans rapport avec votre demande,
+          ni vente de données.
         </p>
       </>
     ),
@@ -118,7 +121,7 @@ export const confidentialiteSections: LegalSection[] = [
             <thead><tr><th>Service</th><th>Rôle concret</th><th>Données concernées</th></tr></thead>
             <tbody>
               <tr><td>Vercel Inc.</td><td>Hébergement et acheminement de la version publique du site</td><td>Requêtes, IP, données techniques et données transmises aux routes serveur</td></tr>
-              <tr><td>Neon, Inc.</td><td>Base PostgreSQL applicative, région de projet sélectionnée en Europe (Francfort)</td><td>Brief envoyé, coordonnées, métadonnées de sécurité et journaux applicatifs</td></tr>
+              <tr><td>Neon, LLC (société affiliée à Databricks, Inc.)</td><td>Base PostgreSQL applicative ; région, entité contractuelle et garanties applicables selon la configuration réelle du compte</td><td>Brief envoyé, coordonnées, métadonnées de sécurité et journaux applicatifs</td></tr>
               <tr><td>Plus Five Five, Inc. (Resend)</td><td>Envoi des confirmations et notifications transactionnelles</td><td>Adresse électronique, identité et contenu nécessaire du message</td></tr>
               <tr><td>Google Workspace</td><td>Réception et gestion de la messagerie professionnelle</td><td>Adresses, en-têtes, contenu et pièces des courriels</td></tr>
               <tr><td>Groq, Inc.</td><td>Transcription vocale facultative</td><td>Audio envoyé et texte transcrit</td></tr>
@@ -159,8 +162,12 @@ export const confidentialiteSections: LegalSection[] = [
           selon le service et les données.
         </p>
         <p>
-          Vous pouvez demander les informations pertinentes sur ces garanties au
-          contact vie privée, sous réserve de la confidentialité contractuelle.
+          Le mécanisme pertinent doit être vérifié fournisseur par fournisseur,
+          pour le compte et la configuration réellement utilisés. Vous pouvez
+          demander les informations disponibles sur ces garanties au contact vie
+          privée, sous réserve de la confidentialité contractuelle. Lorsqu'une
+          garantie requise ne peut pas être établie, le traitement concerné ne
+          doit pas être activé dans cette configuration.
         </p>
       </>
     ),
@@ -172,13 +179,18 @@ export const confidentialiteSections: LegalSection[] = [
     body: (
       <>
         <p>
-          La dictée est <strong>facultative</strong>. Lorsque vous l'activez,
+          La dictée est <strong>facultative</strong>. En activant « Dicter » après
+          l'information affichée à proximité du bouton, vous consentez au transfert
+          de l'audio à Groq pour cette transcription. Vous pouvez abandonner la dictée
+          et utiliser le clavier ; ce retrait n'affecte pas un traitement déjà effectué
+          à votre demande. Lorsque vous utilisez la fonction,
           l'audio est transmis à Groq pour produire une transcription. HAGNERE
           CODE ne l'enregistre pas volontairement dans sa base applicative. Selon
-          la documentation publique de Groq, les entrées peuvent toutefois être
-          journalisées temporairement, jusqu'à 30 jours dans la configuration par
-          défaut, notamment pour la fiabilité et la prévention des abus, sauf
-          option contractuelle de non-conservation effectivement activée.
+          la documentation publique de Groq, les requêtes d'inférence ne sont pas
+          conservées par défaut. Les entrées et sorties peuvent néanmoins être
+          journalisées temporairement, jusqu'à 30 jours, lorsqu'elles sont
+          nécessaires au diagnostic d'une défaillance ou à l'examen d'un abus
+          suspecté, sauf option de non-conservation effectivement activée.
         </p>
         <p>
           Vous pouvez saisir le même texte au clavier et éviter ce transfert. Le
@@ -208,9 +220,9 @@ export const confidentialiteSections: LegalSection[] = [
               <tr><td>Dossier client et échanges contractuels</td><td>Pendant la relation puis durée nécessaire à la preuve, en principe 5 ans</td></tr>
               <tr><td>Factures et pièces comptables</td><td>10 ans à compter de la clôture de l'exercice concerné</td></tr>
               <tr><td>Journaux applicatifs de sécurité et de limitation d'abus</td><td>12 mois maximum dans la base HAGNERE CODE</td></tr>
-              <tr><td>Brouillon du formulaire dans votre navigateur</td><td>30 jours après la dernière sauvegarde, ou avant si vous l'effacez ou envoyez le formulaire</td></tr>
+              <tr><td>Brouillon du formulaire dans votre navigateur, uniquement après activation volontaire</td><td>24 heures au plus après la dernière sauvegarde, sans dépasser la session de l'onglet ; les coordonnées et identifiants de contact ne sont pas enregistrés dans ce brouillon</td></tr>
               <tr><td>Préférence relative aux traceurs</td><td>6 mois, puis le choix est redemandé si la bannière est active</td></tr>
-              <tr><td>Audio de dictée</td><td>Non stocké volontairement par HAGNERE CODE ; conservation temporaire possible chez Groq, jusqu'à 30 jours selon sa configuration par défaut</td></tr>
+              <tr><td>Audio de dictée</td><td>Non stocké volontairement par HAGNERE CODE ; Groq annonce ne pas conserver les requêtes d'inférence par défaut, sous réserve de journaux temporaires pouvant aller jusqu'à 30 jours pour diagnostiquer une défaillance ou examiner un abus suspecté</td></tr>
             </tbody>
           </table>
         </div>

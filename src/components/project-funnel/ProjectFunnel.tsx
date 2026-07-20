@@ -43,6 +43,13 @@ import { copyTextToClipboard } from "@/lib/clipboard";
 import { isAnalyticsAllowed } from "@/lib/cookie-consent";
 import { trackFunnelEvent } from "@/lib/funnel-analytics";
 import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
+import { LegalLinksFooter } from "@/components/legal/LegalLinksFooter";
+import {
+  PROJECT_DRAFT_STORAGE_KEY,
+  getProjectDraftRemainingMs,
+  purgeLegacyProjectDrafts,
+  sanitizeProjectDraftState,
+} from "@/lib/project-draft";
 
 type StepId = "projet" | "contexte" | "perimetre" | "contraintes" | "contact" | "recap";
 type Status =
@@ -51,11 +58,8 @@ type Status =
   | { kind: "captured"; message: string }
   | { kind: "error"; message: string };
 
-const DRAFT_STORAGE_KEY = "pf:draft:v2";
-const DRAFT_STORAGE_VERSION = 2;
-const DRAFT_EXPIRY_MS = 30 * 86_400_000;
-// Clés de l'ancien funnel avec estimation IA — purgées au premier chargement.
-const LEGACY_STORAGE_KEYS = ["pf:draft:v1", "pf:briefSlug:v1", "pf:result:v1"];
+const DRAFT_STORAGE_KEY = PROJECT_DRAFT_STORAGE_KEY;
+const DRAFT_STORAGE_VERSION = 3;
 
 type ProjectKindId =
   | "site"
@@ -206,35 +210,33 @@ function parseStoredFunnelState(value: unknown): FunnelState | null {
 function readStoredDraft(
   value: unknown,
   now: number,
-): { state: FunnelState; shouldMigrate: boolean } | null {
+): { state: FunnelState; savedAt: number } | null {
   if (!isRecord(value)) return null;
 
-  if ("version" in value || "savedAt" in value || "state" in value) {
-    if (
-      value.version !== DRAFT_STORAGE_VERSION ||
-      typeof value.savedAt !== "number" ||
-      !Number.isFinite(value.savedAt) ||
-      value.savedAt > now ||
-      now - value.savedAt > DRAFT_EXPIRY_MS
-    ) {
-      return null;
-    }
-
-    const state = parseStoredFunnelState(value.state);
-    return state ? { state, shouldMigrate: false } : null;
+  if (
+    value.version !== DRAFT_STORAGE_VERSION ||
+    typeof value.savedAt !== "number" ||
+    !Number.isFinite(value.savedAt) ||
+    getProjectDraftRemainingMs(value.savedAt, now) === 0
+  ) {
+    return null;
   }
 
-  // Ancien format de pf:draft:v2 : état brut sans date. Il est migré une
-  // seule fois avec une date de sauvegarde, puis suit la même expiration.
-  const legacyState = parseStoredFunnelState(value);
-  return legacyState ? { state: legacyState, shouldMigrate: true } : null;
+  const state = parseStoredFunnelState(value.state);
+  return state
+    ? { state: sanitizeDraftState(state), savedAt: value.savedAt }
+    : null;
+}
+
+function sanitizeDraftState(state: FunnelState): FunnelState {
+  return sanitizeProjectDraftState(state);
 }
 
 function serializeDraft(state: FunnelState, savedAt = Date.now()): string {
   const envelope: DraftStorageEnvelope = {
     version: DRAFT_STORAGE_VERSION,
     savedAt,
-    state,
+    state: sanitizeDraftState(state),
   };
   return JSON.stringify(envelope);
 }
@@ -1156,7 +1158,7 @@ function validationText(id: StepId): string {
   if (id === "perimetre") return "Cochez au moins une fonctionnalité ou décrivez le contenu librement.";
   if (id === "contraintes") return "Renseignez le délai, le budget et le niveau de décision (ou cochez « Préfère en discuter »).";
   if (id === "contact") {
-    return "Prénom, nom, email et entreprise sont requis. Confirmez aussi avoir pris connaissance de la politique de confidentialité et demander le traitement de votre demande dans le cadre de mesures précontractuelles.";
+    return "Prénom, nom, email et entreprise sont requis. Confirmez aussi avoir pris connaissance de la politique de confidentialité et demander le traitement de votre demande professionnelle.";
   }
   return "";
 }
@@ -1696,7 +1698,7 @@ function VoiceTextarea({
         </button>
       </div>
       <p className="pf-voice-privacy">
-        Dictée facultative : votre audio est transmis à Groq pour transcription.
+        En activant « Dicter », vous consentez à transmettre votre audio à Groq pour cette transcription facultative.
         Vous pouvez saisir le même texte sans utiliser ce service.{" "}
         <a href="/legal/confidentialite#dictee" target="_blank" rel="noopener noreferrer">
           En savoir plus
@@ -1815,10 +1817,12 @@ export function ProjectFunnel() {
   // render produce identical markup. Hydration of any saved draft happens
   // in a post-mount useEffect below — this is the canonical pattern to
   // avoid the "Hydration failed because the server rendered text didn't
-  // match the client" warning on data that lives in localStorage.
+  // match the client" warning on data that lives in sessionStorage.
   const [state, setState] = useState<FunnelState>(INITIAL_STATE);
   const [hydrated, setHydrated] = useState(false);
-  const skipInitialPersistRef = useRef(true);
+  const [draftStorageEnabled, setDraftStorageEnabled] = useState(false);
+  const skipInitialPersistRef = useRef(false);
+  const draftExpiryTimerRef = useRef<number | null>(null);
   // Anti-bot maison : question de calcul affichée à l'étape d'envoi,
   // vérifiée côté client puis revalidée par /api/project-inquiry.
   const [math, setMath] = useState<MathChallengeValue | null>(null);
@@ -1827,9 +1831,35 @@ export function ProjectFunnel() {
   const [skippedSteps, setSkippedSteps] = useState<Set<StepId>>(new Set());
   const [status, setStatus] = useState<Status>({ kind: "idle" });
 
+  const disableDraftStorage = useCallback(() => {
+    try {
+      window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
+    } catch {
+      /* ignore */
+    }
+    if (draftExpiryTimerRef.current !== null) {
+      window.clearTimeout(draftExpiryTimerRef.current);
+      draftExpiryTimerRef.current = null;
+    }
+    setDraftStorageEnabled(false);
+  }, []);
+
+  const scheduleDraftExpiry = useCallback(
+    (savedAt: number) => {
+      if (draftExpiryTimerRef.current !== null) {
+        window.clearTimeout(draftExpiryTimerRef.current);
+      }
+      const remainingMs = getProjectDraftRemainingMs(savedAt);
+      draftExpiryTimerRef.current = window.setTimeout(() => {
+        disableDraftStorage();
+      }, remainingMs);
+    },
+    [disableDraftStorage],
+  );
+
   // Hydrate the saved draft after mount. Client-only (useEffect doesn't
   // run on the server), so SSR markup matches the first client render.
-  // Hydration depuis localStorage : pattern canonical SSR-safe pour
+  // Hydration depuis sessionStorage : pattern canonical SSR-safe pour
   // synchroniser React avec un système externe (le storage navigateur).
   // La règle react-hooks/set-state-in-effect est volontairement désactivée
   // pour ce cas légitime — le setState dépend uniquement de la lecture
@@ -1837,55 +1867,84 @@ export function ProjectFunnel() {
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     try {
-      for (const key of LEGACY_STORAGE_KEYS) {
-        window.localStorage.removeItem(key);
-      }
-      const raw = window.localStorage.getItem(DRAFT_STORAGE_KEY);
+      // La v2 pouvait contenir des coordonnées. On la supprime, ainsi que toute
+      // v3 écrite par erreur dans le stockage durable lors d'un déploiement
+      // intermédiaire.
+      purgeLegacyProjectDrafts(window.localStorage);
+
+      const raw = window.sessionStorage.getItem(DRAFT_STORAGE_KEY);
       if (raw) {
         const draft = readStoredDraft(JSON.parse(raw), Date.now());
         if (!draft) {
-          window.localStorage.removeItem(DRAFT_STORAGE_KEY);
+          window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
         } else {
           const restoredState = { ...draft.state, projectKinds: [] };
           // Toujours arriver sur la page avec aucun service coché — l'utilisateur
           // doit re-sélectionner explicitement, même s'il avait sauvegardé un brouillon.
+          skipInitialPersistRef.current = true;
           setState(restoredState);
-          if (draft.shouldMigrate) {
-            window.localStorage.setItem(
-              DRAFT_STORAGE_KEY,
-              serializeDraft(restoredState),
-            );
-          }
+          setDraftStorageEnabled(true);
+          scheduleDraftExpiry(draft.savedAt);
         }
       }
     } catch {
       // JSON invalide : on tente de purger la valeur. En navigation privée,
-      // localStorage peut lui-même être indisponible, auquel cas on ignore.
+      // le storage peut lui-même être indisponible, auquel cas on ignore.
       try {
-        window.localStorage.removeItem(DRAFT_STORAGE_KEY);
+        window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
       } catch {
         /* private mode — ignore */
       }
     }
     setHydrated(true);
-  }, []);
+  }, [scheduleDraftExpiry]);
   /* eslint-enable react-hooks/set-state-in-effect */
 
-  // Persist on every state change once hydrated. We delay until hydration
-  // finishes so the empty INITIAL_STATE doesn't overwrite a real draft.
+  // Une persistance n'est créée qu'après la demande explicite de l'utilisateur.
+  // Le premier rendu restauré conserve son horodatage initial au lieu de
+  // renouveler artificiellement le délai à chaque rechargement.
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (!hydrated) return;
+    if (!hydrated || !draftStorageEnabled) return;
     if (skipInitialPersistRef.current) {
       skipInitialPersistRef.current = false;
       return;
     }
     try {
-      window.localStorage.setItem(DRAFT_STORAGE_KEY, serializeDraft(state));
+      const savedAt = Date.now();
+      window.sessionStorage.setItem(
+        DRAFT_STORAGE_KEY,
+        serializeDraft(state, savedAt),
+      );
+      scheduleDraftExpiry(savedAt);
     } catch {
       /* quota / private mode — ignore */
     }
-  }, [state, hydrated]);
+  }, [state, hydrated, draftStorageEnabled, scheduleDraftExpiry]);
+
+  useEffect(
+    () => () => {
+      if (draftExpiryTimerRef.current !== null) {
+        window.clearTimeout(draftExpiryTimerRef.current);
+      }
+    },
+    [],
+  );
+
+  const enableDraftStorage = useCallback(() => {
+    try {
+      const savedAt = Date.now();
+      window.sessionStorage.setItem(
+        DRAFT_STORAGE_KEY,
+        serializeDraft(state, savedAt),
+      );
+      skipInitialPersistRef.current = true;
+      setDraftStorageEnabled(true);
+      scheduleDraftExpiry(savedAt);
+    } catch {
+      /* Le formulaire reste utilisable sans stockage. */
+    }
+  }, [state, scheduleDraftExpiry]);
 
   // Fire one open event per session — we use sessionStorage to avoid
   // double-firing on Strict Mode double-mounts in dev.
@@ -2049,11 +2108,7 @@ export function ProjectFunnel() {
           services: state.projectKinds.length,
           confirmation_sent: mailJson.confirmationSent === true,
         });
-        try {
-          window.localStorage.removeItem(DRAFT_STORAGE_KEY);
-        } catch {
-          /* ignore */
-        }
+        disableDraftStorage();
         setStatus({
           kind: "captured",
           message:
@@ -2075,11 +2130,7 @@ export function ProjectFunnel() {
       trackFunnelEvent("pf:submit_success", {
         services: state.projectKinds.length,
       });
-      try {
-        window.localStorage.removeItem(DRAFT_STORAGE_KEY);
-      } catch {
-        /* ignore */
-      }
+      disableDraftStorage();
       // Page de confirmation dédiée — URL stable pour brancher les pixels
       // de conversion (GA4, Meta, LinkedIn) sur une vue de page.
       router.push("/demarrer-un-projet/merci");
@@ -2240,9 +2291,30 @@ export function ProjectFunnel() {
               <span>Pré-cadrage gratuit. Les données servent uniquement à qualifier votre demande.</span>
             </div>
             {hydrated && (
-              <div className="pf-saved-badge" aria-live="polite">
-                <Check size={11} strokeWidth={3} />
-                <span>Sauvegardé localement — vous pouvez fermer et revenir.</span>
+              <div
+                className={`pf-saved-badge${draftStorageEnabled ? "" : " is-optin"}`}
+                aria-live="polite"
+              >
+                {draftStorageEnabled ? (
+                  <>
+                    <Check size={11} strokeWidth={3} />
+                    <span>
+                      Brouillon gardé 24 h au plus dans cet onglet — coordonnées exclues.
+                    </span>
+                    <button type="button" onClick={disableDraftStorage}>
+                      Effacer
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    className="pf-draft-optin"
+                    onClick={enableDraftStorage}
+                  >
+                    <FileText size={12} />
+                    Conserver le brouillon dans cet onglet (sans coordonnées)
+                  </button>
+                )}
               </div>
             )}
           </div>
@@ -2508,7 +2580,7 @@ export function ProjectFunnel() {
                   <span className="pf-consent-text">
                     <b>Accusé de lecture et demande de traitement</b>
                     <small>
-                      J&apos;ai pris connaissance de la <a href="/legal/confidentialite" target="_blank" rel="noopener noreferrer">politique de confidentialité</a> et je demande à Hagnéré Code de traiter mes informations afin de répondre à ma demande, dans le cadre de mesures précontractuelles.
+                      J&apos;ai pris connaissance de la <a href="/legal/confidentialite" target="_blank" rel="noopener noreferrer">politique de confidentialité</a> et je demande à HAGNERE CODE de traiter mes informations afin de répondre à ma demande. Selon que j&apos;agis en mon nom ou pour mon organisation, ce traitement repose sur des mesures précontractuelles ou sur l&apos;intérêt légitime à traiter une demande professionnelle. Les données sont accessibles à HAGNERE CODE et aux prestataires nécessaires, puis conservées au maximum trois ans après le dernier échange utile en l&apos;absence de contrat. La politique détaille les destinataires et vos droits.
                     </small>
                   </span>
                 </label>
@@ -2709,6 +2781,7 @@ export function ProjectFunnel() {
         </div>
       </section>
       </main>
+      <LegalLinksFooter />
     </div>
   );
 }

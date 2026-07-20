@@ -21,30 +21,19 @@ export const mentionsLegalesSections: LegalSection[] = [
           <dd>SASU au capital social de 10 €</dd>
           <dt>SIREN</dt>
           <dd>993 672 856</dd>
-          <dt>SIRET actuellement inscrit</dt>
-          <dd>993 672 856 00016</dd>
           <dt>RCS</dt>
           <dd>RCS Chambéry 993 672 856</dd>
           <dt>TVA intracommunautaire</dt>
           <dd>FR30 993 672 856</dd>
           <dt>Code APE</dt>
           <dd>62.01Z — Programmation informatique</dd>
-          <dt>Siège actuellement inscrit au RNE</dt>
-          <dd>7 rue Ernest Filliard, 73000 Chambéry, France</dd>
-          <dt>Adresse d'activité et de correspondance</dt>
+          <dt>Siège social et adresse de correspondance</dt>
           <dd>82 impasse de Bellevue, 73000 Bassens, France</dd>
           <dt>Téléphone</dt>
           <dd><a href="tel:+33374472018">+33 3 74 47 20 18</a></dd>
           <dt>Courriel</dt>
           <dd><a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a></dd>
         </dl>
-        <div className="lp-note is-info">
-          <strong>Transfert de siège en cours.</strong> L'adresse de Bassens est
-          utilisée pour l'activité et la correspondance. Jusqu'à publication
-          de la modification au registre, l'adresse de Chambéry et le SIRET
-          ci-dessus restent les données officielles opposables. Cette page sera
-          actualisée dès la délivrance du nouvel extrait d'immatriculation.
-        </div>
       </>
     ),
   },
@@ -135,8 +124,9 @@ export const mentionsLegalesSections: LegalSection[] = [
           propriété de leurs auteurs respectifs et soumis à leurs licences.
         </p>
         <p>
-          La consultation et l'usage strictement privé des contenus sont
-          autorisés. Toute reproduction, adaptation, extraction substantielle,
+          La consultation pour les besoins propres du visiteur, sans
+          exploitation commerciale autonome, est autorisée. Toute reproduction,
+          adaptation, extraction substantielle,
           exploitation commerciale ou republication nécessite une autorisation
           écrite préalable, sauf exception légale ou licence expressément
           affichée sur la ressource concernée.

@@ -1619,7 +1619,7 @@ export const bodyHtml = `${navHtml}
       </div>
     </div>
     <div class="foot-bot">
-      <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
+      <div>© 2026 HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000 Bassens</div>
       <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
     </div>
   </div>

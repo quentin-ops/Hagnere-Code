@@ -28,7 +28,7 @@ const contactJsonLd = JSON.stringify({
     "@type": "ProfessionalService",
     "@id": "https://hagnere-code.ai/#business",
     name: "Hagnéré Code",
-    legalName: "HAGNÉRÉ CODE SAS",
+    legalName: "HAGNERE CODE",
     url: "https://hagnere-code.ai",
     logo: "https://hagnere-code.ai/logos/logo-dark.png",
     image: "https://hagnere-code.ai/og-image.png",

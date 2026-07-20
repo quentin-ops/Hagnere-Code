@@ -19,7 +19,13 @@ describe("trackFunnelEvent", () => {
       fetch,
       localStorage: {
         getItem: vi.fn(() =>
-          JSON.stringify({ necessary: true, analytics: true, ts: Date.now() }),
+          JSON.stringify({
+            version: 2,
+            necessary: true,
+            analytics: true,
+            categories: { necessary: true, analytics: true },
+            ts: Date.now(),
+          }),
         ),
       },
     });
@@ -80,7 +86,13 @@ describe("trackFunnelEvent", () => {
     Object.assign(window, {
       localStorage: {
         getItem: vi.fn(() =>
-          JSON.stringify({ necessary: true, analytics: false, ts: Date.now() }),
+          JSON.stringify({
+            version: 2,
+            necessary: true,
+            analytics: false,
+            categories: { necessary: true, analytics: false },
+            ts: Date.now(),
+          }),
         ),
       },
     });
@@ -105,8 +117,10 @@ describe("trackFunnelEvent", () => {
       localStorage: {
         getItem: vi.fn(() =>
           JSON.stringify({
+            version: 2,
             necessary: true,
             analytics: true,
+            categories: { necessary: true, analytics: true },
             ts: Date.now() - 184 * 86_400_000,
           }),
         ),
@@ -124,7 +138,13 @@ describe("trackFunnelEvent", () => {
     Object.assign(window, {
       localStorage: {
         getItem: vi.fn(() =>
-          JSON.stringify({ necessary: true, analytics: true, ts: Date.now() }),
+          JSON.stringify({
+            version: 2,
+            necessary: true,
+            analytics: true,
+            categories: { necessary: true, analytics: true },
+            ts: Date.now(),
+          }),
         ),
       },
     });

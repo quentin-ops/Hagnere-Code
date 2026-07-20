@@ -29,6 +29,7 @@ contourner son rate-limit sur un appel externe facturé.
 | `DATABASE_URL` | URL Neon prod | Persistance des briefs, ai_call_log. |
 | `RESEND_API_KEY` | Clé Resend prod | Envoi emails formulaire. |
 | `GROQ_API_KEY` | Clé Groq prod | Transcription audio `/api/transcribe`. |
+| `MATH_CHALLENGE_SECRET` | Secret aléatoire d'au moins 32 caractères | Signe les contrôles anti-robot des formulaires. À définir séparément dans Preview et Production, sans jamais le committer. |
 | `CONTACT_TO_EMAIL` | `quentin@hagnere-patrimoine.fr` ou boîte suivie | Destinataire interne formulaire. |
 | `CONTACT_FROM_EMAIL` | `contact@hagnere-code.ai` | Expéditeur Resend (doit être DKIM-validé). |
 | `NEXT_PUBLIC_CALENDLY_URL` | URL Calendly réelle | Optionnel — fallback `https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte`. |
@@ -37,6 +38,14 @@ contourner son rate-limit sur un appel externe facturé.
 Les autres secrets doivent être posés dans l'interface Vercel et limités aux
 environnements qui en ont besoin. La configuration Wrangler ne concerne que la
 chaîne Cloudflare alternative, non active en production.
+
+> **Blocage production constaté le 20 juillet 2026** :
+> `https://hagnere-code.ai/api/math-challenge` répond `503` tant que
+> `MATH_CHALLENGE_SECRET` (ou le fallback `AUTH_SECRET`) n'est pas défini. Les
+> formulaires qui dépendent de ce contrôle ne sont donc pas opérationnels. Poser
+> un secret aléatoire d'au moins 32 caractères dans Preview et Production,
+> redéployer, puis vérifier un `GET /api/math-challenge` et une soumission valide.
+> Ne pas conserver la valeur du secret dans ce dépôt.
 
 > Nettoyage post-suppression de l'estimateur IA : `ANTHROPIC_API_KEY` et
 > `SITE_ORIGIN` ne sont plus utilisés par le code — ils peuvent être retirés
@@ -58,6 +67,27 @@ Lire `docs/procedure-purge-donnees.md`, désigner le responsable de l'exécution
 trimestrielle et consigner chaque contrôle tant qu'une automatisation auditée
 n'est pas en place. Les durées publiques ne doivent pas rester sans procédure.
 
+Lire aussi `docs/procedure-exercice-droits-rgpd.md`, créer le registre d'exercice
+des droits à accès restreint et tester une demande fictive couvrant la base,
+la messagerie et les prestataires avant de considérer la procédure opérationnelle.
+
+### 3 ter. Constituer les preuves juridiques de production
+
+Avant de présenter l'ensemble comme opérationnellement conforme :
+
+- archiver l'acte ou la décision fixant le siège au 82 impasse de Bellevue, sa
+  date d'effet, la formalité en cours puis le Kbis/RNE et le nouveau SIRET dès
+  qu'ils sont disponibles ; ne jamais réutiliser l'ancien SIRET ;
+- compléter la fiche de chaque fournisseur réellement utilisé (entité du compte,
+  plan, DPA accepté, région, sous-traitants, rétention, DPF ou CCT et version) ;
+- refléter dans la politique publique le mécanisme de transfert effectivement
+  applicable à chaque flux, puis conserver le moyen d'en obtenir copie ;
+- tester les contacts d'incident client et fournisseur ainsi que la procédure
+  d'exercice des droits ;
+- joindre la version acceptée des CGV et, si nécessaire, le DPA et ses annexes
+  complétées à chaque devis. Une publication web ou un modèle générique ne
+  constitue pas cette preuve.
+
 ### 4. Assets visuels
 
 - `/public/og-image.png` — présent ; vérifier son rendu dans un aperçu Open Graph.
@@ -73,7 +103,7 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 ## ⚖️ VOLET LÉGAL — état à vérifier avant publication
 
 ### Pages publiques (toutes en ligne et linkées)
-- ✅ `/legal/mentions` — identité, double adresse transitoire, hébergeur Vercel, publication, responsabilité et réclamations
+- ✅ `/legal/mentions` — identité, siège au 82 impasse de Bellevue à Bassens, hébergeur Vercel, publication, responsabilité et réclamations
 - ✅ `/legal/cgv` — cadre B2B, paiement, recette, propriété intellectuelle, données, responsabilité et litiges
 - ✅ `/legal/confidentialite` — rôles, bases légales, prestataires, transferts, durées, dictée, droits et sécurité
 - ✅ `/legal/cookies` — inventaire des stockages, opt-in analytics et Calendly bloqué avant action
@@ -85,10 +115,12 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 - ✅ `/docs/procedure-incident-rgpd.md` — articles 33/34 RGPD (notification 72h, 4 cas concrets)
 - ✅ `/docs/policy-marketing-emails.md` — règles LCEN B2B / RGPD pour future newsletter
 - ✅ `/docs/dpa-template.md` — modèle à compléter par mission ; ne jamais signer avec des champs génériques
+- ✅ `/docs/procedure-purge-donnees.md` — contrôles, fournisseurs et preuves de purge à exécuter
+- ✅ `/docs/procedure-exercice-droits-rgpd.md` — traitement multicanal des demandes d'accès, opposition, effacement et autres droits
 
 ### Sécurité technique
 - ✅ Slug aléatoire (`public_slug`) sur `project_brief` (anti-IDOR, réservé backoffice)
-- ✅ Rate-limit Postgres-backed (lib `ai-rate-limit`) + question de calcul maison (`MathChallenge`, revalidée server-side)
+- ⚠️ Rate-limit Postgres-backed (lib `ai-rate-limit`) + question de calcul maison (`MathChallenge`, revalidée server-side) : code validé localement, production bloquée tant que `MATH_CHALLENGE_SECRET` n'est pas configuré puis retesté
 - ✅ Honeypot inline + `pf-hp` CSS (double anti-bot)
 - ✅ Headers : HSTS preload, CSP, X-Frame, X-Content-Type, Permissions-Policy
 - ✅ Validation phone serveur
@@ -105,6 +137,11 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 3. **Contrats fournisseurs** : vérifier et archiver les DPA, entités, régions, rétentions, certifications DPF et/ou CCT réellement applicables pour Vercel, Neon, Resend, Google Workspace, Groq et Calendly.
 4. **Accessibilité** : réaliser un audit RGAA représentatif avant de publier un statut ou un pourcentage de conformité.
 5. **Trademark Sprint Fixe™** : l'audit a remplacé "MARQUE DÉPOSÉE 2024" par "MÉTHODE PROPRIÉTAIRE DEPUIS 2024". Si vous voulez réintroduire le ™ avec dépôt INPI réel, déposer la marque (~250 € auprès de l'INPI).
+6. **CGV opposables** : joindre au devis un exemplaire durable de la version du 20 juillet 2026 et faire accepter expressément cette version ; la page web seule ne suffit pas.
+7. **Paramètres commerciaux à confirmer** : moyens de paiement, acompte et échéancier habituels, contrats récurrents et éventuelle assurance RC Pro/cyber. Les documents actuels renvoient au devis et n'inventent aucune garantie.
+8. **Propriété intellectuelle** : obtenir et archiver les cessions écrites nécessaires de chaque indépendant avant d'inclure sa création dans une cession client.
+9. **Périmètre client** : confirmer que les ventes restent exclusivement professionnelles. Avant toute offre à un consommateur, mettre en place les documents B2C et adhérer réellement à un médiateur de la consommation.
+10. **Identifiant d'établissement** : ajouter le SIRET actualisé lorsqu'il est officiellement disponible ; ne pas réutiliser l'ancien numéro d'établissement.
 
 ## ✅ SMOKE TEST avant push
 
@@ -148,6 +185,7 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 - [ ] `/page-inexistante` (page 404 brandée)
 
 ### Flow de conversion critique
+- [ ] Vérifier que `GET /api/math-challenge` répond `200` en Preview et Production après configuration du secret
 - [ ] Soumettre le funnel `/demarrer-un-projet` → email reçu côté admin et côté prospect
 - [ ] Vérifier qu'une ligne `project_brief` est créée en base (avec `public_slug` rempli)
 - [ ] Soumettre `/contact` (formulaire footer) → email reçu

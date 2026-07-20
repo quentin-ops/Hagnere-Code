@@ -22,8 +22,8 @@ const organizationJsonLd = {
   "@type": "Organization",
   "@id": "https://hagnere-code.ai/#organization",
   name: "Hagnéré Code",
-  alternateName: ["Hagnere Code", "HAGNÉRÉ CODE", "HAGNERE CODE SAS"],
-  legalName: "HAGNÉRÉ CODE SAS",
+  alternateName: ["Hagnere Code", "HAGNÉRÉ CODE"],
+  legalName: "HAGNERE CODE",
   url: "https://hagnere-code.ai",
   logo: "https://hagnere-code.ai/logos/logo-dark.png",
   image: "https://hagnere-code.ai/og-image.png",
@@ -33,7 +33,7 @@ const organizationJsonLd = {
   founder: {
     "@type": "Person",
     name: "Quentin Hagnéré",
-    jobTitle: "Gérant associé codeur",
+    jobTitle: "Président",
     sameAs: ["https://www.linkedin.com/in/quentin-hagnere"],
   },
   address: {
@@ -52,12 +52,12 @@ const organizationJsonLd = {
     availableLanguage: ["French"],
     areaServed: "FR",
   },
-  // Identifiants légaux FR (SIREN/SIRET/TVA + NAF/APE)
+  // Identifiants légaux FR. Le SIRET sera ajouté lorsque l'identifiant courant
+  // de l'établissement sera officiellement disponible.
   taxID: "FR30993672856",
   vatID: "FR30993672856",
   identifier: [
     { "@type": "PropertyValue", propertyID: "SIREN", value: "993672856" },
-    { "@type": "PropertyValue", propertyID: "SIRET", value: "99367285600016" },
     { "@type": "PropertyValue", propertyID: "NAF", value: "62.01Z" },
   ],
   sameAs: [
@@ -82,7 +82,7 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Hagnéré Code",
-  legalName: "HAGNÉRÉ CODE SAS",
+  legalName: "HAGNERE CODE",
   image: "https://hagnere-code.ai/og-image.png",
   logo: "https://hagnere-code.ai/logos/logo-dark.png",
   "@id": "https://hagnere-code.ai/#business",

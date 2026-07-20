@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { CookieBanner } from "@/components/cookies/CookieBanner";
 import { SkipToContent } from "@/components/design-shared/SkipToContent";
 import { isSearchIndexingEnabled } from "@/lib/search-indexing";
+import { LegacyProjectDraftCleanup } from "@/components/privacy/LegacyProjectDraftCleanup";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -101,6 +102,7 @@ export default function RootLayout({
       className={`${geist.variable} ${geistMono.variable}`}
     >
       <body className="antialiased">
+        <LegacyProjectDraftCleanup />
         <SkipToContent />
         <ThemeProvider
           attribute="class"

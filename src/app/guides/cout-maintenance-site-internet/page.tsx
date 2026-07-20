@@ -396,7 +396,7 @@ export default function Page() {
           rows={[
             ["Piratage (site vitrine)", "250 – 600 € de nettoyage", "Vos visiteurs voient l'écran rouge « site trompeur »"],
             ["Piratage (boutique / base touchée)", "600 – 1 500 € de nettoyage", "Retrait de la liste noire Google : 3 à 5 jours ouvrés, incompressibles"],
-            ["Bandeau cookies non conforme (jamais vérifié)", "Jusqu'à 20 000 € pour une TPE/PME (procédure simplifiée CNIL)", "Plus de 60 % des sanctions CNIL 2025 ont visé des TPE/PME"],
+            ["Bandeau cookies non conforme (jamais vérifié)", "Une procédure simplifiée de la CNIL peut conduire à une amende allant jusqu'à 20 000 €", "Le bilan CNIL 2025 recense 67 sanctions prononcées en procédure simplifiée, sans publier de proportion TPE/PME"],
             ["Perte de données sans sauvegarde externe", "Reconstruction partielle ou totale du site", "Des années de contenus et de référencement, définitivement perdus"],
           ]}
         />

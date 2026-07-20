@@ -30,7 +30,7 @@ const orgJsonLd = JSON.stringify({
   "@type": "Organization",
   "@id": "https://hagnere-code.ai/#organization",
   name: "Hagnéré Code",
-  legalName: "HAGNÉRÉ CODE SAS",
+  legalName: "HAGNERE CODE",
   url: "https://hagnere-code.ai",
   logo: "https://hagnere-code.ai/logos/logo-dark.png",
   email: "quentin@hagnere-patrimoine.fr",

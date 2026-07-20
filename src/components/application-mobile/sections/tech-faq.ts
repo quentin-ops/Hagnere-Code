@@ -38,7 +38,7 @@ export const techFaqHtml = `
         <h4>Comment vous gérez ATT / IDFA / tracking iOS 14.5+ ?</h4>
         <p>
           Par défaut, <b>aucun tracking activé</b>. Si vous avez un budget Ads à mesurer, on ajoute AppsFlyer ou Adjust avec
-          un opt-in ATT contextuel (jamais au cold start), conforme aux guidelines Apple. Pour le tracking
+          un opt-in ATT contextuel (jamais au cold start), configuré et recetté au regard des règles Apple. Pour le tracking
           analytics produit (DAU, rétention), on utilise des SDK first-party (Amplitude, PostHog, Firebase Analytics)
           qui ne déclenchent pas l'ATT.
         </p>

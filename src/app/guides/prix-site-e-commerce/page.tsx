@@ -819,7 +819,7 @@ export default function Page() {
             ["Bouton de rétractation en ligne", "en vigueur depuis le 19 juin 2026", "15 000 € (pers. physique) / 75 000 € (société)", "1 – 2 jours de développement"],
             ["Facturation électronique (réception)", "1er septembre 2026 — toutes entreprises", "amendes fiscales", "plateforme agréée : 0 – 99 €/mois"],
             ["Facturation électronique (émission PME)", "1er septembre 2027", "amendes fiscales", "projet de mise en place : 1 000 – 1 500 €"],
-            ["RGPD / cookies (CNIL)", "permanent", "20 M€ ou 4 % du CA mondial", "bannière cookies (CMP, la plateforme de gestion du consentement — ex. Axeptio) : ~29 €/mois + mise en conformité"],
+            ["Données personnelles et traceurs (CNIL)", "permanent", "Selon le texte et le manquement : le plafond RGPD de 20 M€ ou 4 % du CA mondial ne s'applique pas automatiquement à toute irrégularité de cookies", "analyse des traceurs réellement utilisés, puis CMP si un consentement est requis : ~29 €/mois + paramétrage"],
           ]}
         />
         <p>Dans le détail :</p>
