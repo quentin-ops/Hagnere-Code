@@ -43,6 +43,17 @@ import { copyTextToClipboard } from "@/lib/clipboard";
 import { isAnalyticsAllowed } from "@/lib/cookie-consent";
 import { trackFunnelEvent } from "@/lib/funnel-analytics";
 import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
+import { LegalLinksFooter } from "@/components/legal/LegalLinksFooter";
+import {
+  clearProjectInquiryClientKey,
+  getProjectInquiryClientKey,
+} from "@/lib/project-inquiry-client-key";
+import {
+  PROJECT_DRAFT_STORAGE_KEY,
+  getProjectDraftRemainingMs,
+  purgeLegacyProjectDrafts,
+  sanitizeProjectDraftState,
+} from "@/lib/project-draft";
 
 type StepId = "projet" | "contexte" | "perimetre" | "contraintes" | "contact" | "recap";
 type Status =
@@ -51,11 +62,8 @@ type Status =
   | { kind: "captured"; message: string }
   | { kind: "error"; message: string };
 
-const DRAFT_STORAGE_KEY = "pf:draft:v2";
-const DRAFT_STORAGE_VERSION = 2;
-const DRAFT_EXPIRY_MS = 30 * 86_400_000;
-// Clés de l'ancien funnel avec estimation IA — purgées au premier chargement.
-const LEGACY_STORAGE_KEYS = ["pf:draft:v1", "pf:briefSlug:v1", "pf:result:v1"];
+const DRAFT_STORAGE_KEY = PROJECT_DRAFT_STORAGE_KEY;
+const DRAFT_STORAGE_VERSION = 3;
 
 type ProjectKindId =
   | "site"
@@ -206,35 +214,33 @@ function parseStoredFunnelState(value: unknown): FunnelState | null {
 function readStoredDraft(
   value: unknown,
   now: number,
-): { state: FunnelState; shouldMigrate: boolean } | null {
+): { state: FunnelState; savedAt: number } | null {
   if (!isRecord(value)) return null;
 
-  if ("version" in value || "savedAt" in value || "state" in value) {
-    if (
-      value.version !== DRAFT_STORAGE_VERSION ||
-      typeof value.savedAt !== "number" ||
-      !Number.isFinite(value.savedAt) ||
-      value.savedAt > now ||
-      now - value.savedAt > DRAFT_EXPIRY_MS
-    ) {
-      return null;
-    }
-
-    const state = parseStoredFunnelState(value.state);
-    return state ? { state, shouldMigrate: false } : null;
+  if (
+    value.version !== DRAFT_STORAGE_VERSION ||
+    typeof value.savedAt !== "number" ||
+    !Number.isFinite(value.savedAt) ||
+    getProjectDraftRemainingMs(value.savedAt, now) === 0
+  ) {
+    return null;
   }
 
-  // Ancien format de pf:draft:v2 : état brut sans date. Il est migré une
-  // seule fois avec une date de sauvegarde, puis suit la même expiration.
-  const legacyState = parseStoredFunnelState(value);
-  return legacyState ? { state: legacyState, shouldMigrate: true } : null;
+  const state = parseStoredFunnelState(value.state);
+  return state
+    ? { state: sanitizeDraftState(state), savedAt: value.savedAt }
+    : null;
+}
+
+function sanitizeDraftState(state: FunnelState): FunnelState {
+  return sanitizeProjectDraftState(state);
 }
 
 function serializeDraft(state: FunnelState, savedAt = Date.now()): string {
   const envelope: DraftStorageEnvelope = {
     version: DRAFT_STORAGE_VERSION,
     savedAt,
-    state,
+    state: sanitizeDraftState(state),
   };
   return JSON.stringify(envelope);
 }
@@ -285,7 +291,7 @@ const steps: Array<{
     id: "recap",
     label: "Envoi",
     title: "Votre brief est prêt à partir.",
-    help: "Relisez la synthèse, puis envoyez — réponse personnalisée sous 24 h ouvrées.",
+    help: "Relisez la synthèse, puis envoyez — objectif de réponse personnalisée le prochain jour ouvré, sans délai garanti.",
     substeps: ["Synthèse", "Envoi"],
   },
 ];
@@ -1156,7 +1162,7 @@ function validationText(id: StepId): string {
   if (id === "perimetre") return "Cochez au moins une fonctionnalité ou décrivez le contenu librement.";
   if (id === "contraintes") return "Renseignez le délai, le budget et le niveau de décision (ou cochez « Préfère en discuter »).";
   if (id === "contact") {
-    return "Prénom, nom, email et entreprise sont requis. Confirmez aussi avoir pris connaissance de la politique de confidentialité et demander le traitement de votre demande dans le cadre de mesures précontractuelles.";
+    return "Prénom, nom, email et entreprise sont requis. Confirmez aussi avoir pris connaissance de la politique de confidentialité et demander le traitement de votre demande professionnelle.";
   }
   return "";
 }
@@ -1328,6 +1334,8 @@ function getRecorderMimeType(): string {
   ].find((type) => MediaRecorder.isTypeSupported(type)) || "";
 }
 
+const MAX_VOICE_RECORDING_MS = 120_000;
+
 function getAudioFilename(mimeType: string): string {
   if (mimeType.includes("mp4")) return "brief.m4a";
   if (mimeType.includes("mpeg")) return "brief.mp3";
@@ -1410,6 +1418,7 @@ function VoiceTextarea({
   /** Associe le <textarea> interne au <label htmlFor> du parent (a11y). */
   id?: string;
 }) {
+  const [requesting, setRequesting] = useState(false);
   const [recording, setRecording] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState<MicError | null>(null);
@@ -1425,6 +1434,11 @@ function VoiceTextarea({
   const rafRef = useRef<number | null>(null);
   const startTimeRef = useRef<number>(0);
   const streamRef = useRef<MediaStream | null>(null);
+  const autoStopTimeoutRef = useRef<number | null>(null);
+  const mountedRef = useRef(false);
+  const startPendingRef = useRef(false);
+  const discardOnStopRef = useRef(false);
+  const transcriptionAbortRef = useRef<AbortController | null>(null);
   // Toujours la dernière valeur du textarea — recorder.onstop est assigné
   // une seule fois au démarrage de l'enregistrement et capturerait sinon
   // une `value` périmée, écrasant ce que l'utilisateur tape pendant la
@@ -1434,30 +1448,70 @@ function VoiceTextarea({
     valueRef.current = value;
   }, [value]);
 
+  const stopVisualisation = useCallback((resetDisplay = true) => {
+    if (rafRef.current !== null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
+    audioContextRef.current?.close().catch(() => {});
+    audioContextRef.current = null;
+    analyserRef.current = null;
+    if (resetDisplay) {
+      setAudioLevel(0);
+      setElapsedMs(0);
+    }
+  }, []);
+
   // Cleanup on unmount : rAF + AudioContext, mais aussi le MediaRecorder
   // et les pistes micro — sinon, naviguer vers une autre étape en cours
   // de dictée laisse le micro ouvert (indicateur rouge du navigateur)
   // jusqu'à la fermeture de l'onglet.
   useEffect(() => {
+    mountedRef.current = true;
     return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      audioContextRef.current?.close().catch(() => {});
+      mountedRef.current = false;
+      startPendingRef.current = false;
+      discardOnStopRef.current = true;
+      transcriptionAbortRef.current?.abort();
+      transcriptionAbortRef.current = null;
+      if (autoStopTimeoutRef.current !== null) {
+        window.clearTimeout(autoStopTimeoutRef.current);
+        autoStopTimeoutRef.current = null;
+      }
+      stopVisualisation(false);
       const recorder = mediaRecorderRef.current;
-      if (recorder && recorder.state !== "inactive") {
-        // Pas de transcription à l'unmount : on neutralise onstop avant
-        // d'arrêter pour éviter un setState sur composant démonté.
+      if (recorder) {
+        // Pas de transcription à l'unmount : on neutralise tous les callbacks
+        // avant d'arrêter, sinon `stop()` déclencherait un upload involontaire.
+        recorder.ondataavailable = null;
         recorder.onstop = null;
-        try {
-          recorder.stop();
-        } catch {
-          /* already stopped */
+        recorder.onerror = null;
+        if (recorder.state !== "inactive") {
+          try {
+            recorder.stop();
+          } catch {
+            /* already stopped */
+          }
         }
       }
       streamRef.current?.getTracks().forEach((track) => track.stop());
+      mediaRecorderRef.current = null;
+      streamRef.current = null;
+      chunksRef.current = [];
     };
-  }, []);
+  }, [stopVisualisation]);
 
   const startRecording = useCallback(async () => {
+    if (
+      startPendingRef.current ||
+      (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive")
+    ) {
+      return;
+    }
+
+    startPendingRef.current = true;
+    discardOnStopRef.current = false;
+    setRequesting(true);
     setError(null);
     setDiagnosticCopyStatus("idle");
     // Diagnostic logging — surfaces all the conditions for getUserMedia.
@@ -1474,6 +1528,8 @@ function VoiceTextarea({
     console.log("[VoiceTextarea] startRecording diagnostics:", diag);
 
     if (!navigator.mediaDevices?.getUserMedia) {
+      startPendingRef.current = false;
+      setRequesting(false);
       setError({
         kind: "unsupported",
         message: `La dictée vocale n'est pas disponible (mediaDevices=${diag.hasMediaDevices}, isSecureContext=${diag.isSecureContext}).`,
@@ -1481,6 +1537,8 @@ function VoiceTextarea({
       return;
     }
     if (typeof MediaRecorder === "undefined") {
+      startPendingRef.current = false;
+      setRequesting(false);
       setError({
         kind: "unsupported",
         message:
@@ -1504,6 +1562,11 @@ function VoiceTextarea({
       }
     }
 
+    if (!mountedRef.current) {
+      startPendingRef.current = false;
+      return;
+    }
+
     let stream: MediaStream | null = null;
     try {
       console.log("[VoiceTextarea] calling getUserMedia…");
@@ -1515,6 +1578,12 @@ function VoiceTextarea({
         },
       });
       console.log("[VoiceTextarea] getUserMedia OK — tracks:", stream.getTracks().length);
+      if (!mountedRef.current) {
+        stream.getTracks().forEach((track) => track.stop());
+        startPendingRef.current = false;
+        return;
+      }
+
       const preferredMimeType = getRecorderMimeType();
       const recorder = preferredMimeType
         ? new MediaRecorder(stream, { mimeType: preferredMimeType })
@@ -1529,14 +1598,41 @@ function VoiceTextarea({
         if (event.data.size > 0) chunksRef.current.push(event.data);
       };
       recorder.onstop = async () => {
-        setProcessing(true);
+        if (autoStopTimeoutRef.current !== null) {
+          window.clearTimeout(autoStopTimeoutRef.current);
+          autoStopTimeoutRef.current = null;
+        }
+        stopVisualisation();
+        mediaRecorderRef.current = null;
         activeStream.getTracks().forEach((track) => track.stop());
+        streamRef.current = null;
+        const recordedChunks = chunksRef.current;
+        chunksRef.current = [];
+
+        if (discardOnStopRef.current || !mountedRef.current) return;
+
+        setRecording(false);
+        setProcessing(true);
         try {
-          const audio = new Blob(chunksRef.current, { type: mimeType });
+          const audio = new Blob(recordedChunks, { type: mimeType });
+          if (audio.size === 0) {
+            setError({
+              kind: "other",
+              message: "Aucun son n'a été enregistré. Vérifiez le micro puis réessayez.",
+            });
+            return;
+          }
           const formData = new FormData();
           formData.append("audio", audio, getAudioFilename(mimeType));
-          const res = await fetch("/api/transcribe", { method: "POST", body: formData });
+          const controller = new AbortController();
+          transcriptionAbortRef.current = controller;
+          const res = await fetch("/api/transcribe", {
+            method: "POST",
+            body: formData,
+            signal: controller.signal,
+          });
           const json = (await res.json().catch(() => ({}))) as { text?: string; error?: string };
+          if (!mountedRef.current) return;
           if (!res.ok) {
             setError({ kind: "other", message: json.error || "Transcription impossible pour le moment." });
             return;
@@ -1546,18 +1642,61 @@ function VoiceTextarea({
             const next = latest.trim() ? `${latest.trim()}\n\n${json.text.trim()}` : json.text.trim();
             onChange(next);
           }
-        } catch {
+        } catch (transcriptionError) {
+          if (
+            !mountedRef.current ||
+            (transcriptionError instanceof DOMException &&
+              transcriptionError.name === "AbortError")
+          ) {
+            return;
+          }
           setError({
             kind: "other",
             message: "La transcription a échoué. Vous pouvez écrire le brief à la main.",
           });
         } finally {
+          transcriptionAbortRef.current = null;
+          if (mountedRef.current) setProcessing(false);
+        }
+      };
+      recorder.onerror = () => {
+        discardOnStopRef.current = true;
+        recorder.onstop = null;
+        if (autoStopTimeoutRef.current !== null) {
+          window.clearTimeout(autoStopTimeoutRef.current);
+          autoStopTimeoutRef.current = null;
+        }
+        stopVisualisation();
+        try {
+          if (recorder.state !== "inactive") recorder.stop();
+        } catch {
+          /* Le navigateur a déjà interrompu l'enregistreur. */
+        }
+        activeStream.getTracks().forEach((track) => track.stop());
+        mediaRecorderRef.current = null;
+        streamRef.current = null;
+        chunksRef.current = [];
+        if (mountedRef.current) {
+          setRequesting(false);
+          setRecording(false);
           setProcessing(false);
+          setError({
+            kind: "other",
+            message: "L'enregistrement audio s'est interrompu. Réessayez ou écrivez à la main.",
+          });
         }
       };
 
       recorder.start();
+      startPendingRef.current = false;
+      setRequesting(false);
       setRecording(true);
+      autoStopTimeoutRef.current = window.setTimeout(() => {
+        const activeRecorder = mediaRecorderRef.current;
+        if (activeRecorder && activeRecorder.state !== "inactive") {
+          activeRecorder.stop();
+        }
+      }, MAX_VOICE_RECORDING_MS);
       trackFunnelEvent("pf:voice_record_start", {});
       // Lance la viz audio (analyser FFT) et le timer.
       try {
@@ -1574,6 +1713,7 @@ function VoiceTextarea({
         startTimeRef.current = Date.now();
         const buf = new Uint8Array(analyser.frequencyBinCount);
         const tick = () => {
+          if (!mountedRef.current) return;
           analyser.getByteFrequencyData(buf);
           // RMS sur les 128 bins basses (voix humaine = 80-3000 Hz)
           let sum = 0;
@@ -1588,7 +1728,18 @@ function VoiceTextarea({
         /* viz audio optionnelle — pas bloquante si AudioContext fail */
       }
     } catch (err) {
+      startPendingRef.current = false;
       stream?.getTracks().forEach((track) => track.stop());
+      const recorder = mediaRecorderRef.current;
+      if (recorder) {
+        recorder.ondataavailable = null;
+        recorder.onstop = null;
+        recorder.onerror = null;
+      }
+      mediaRecorderRef.current = null;
+      streamRef.current = null;
+      chunksRef.current = [];
+      stopVisualisation();
       const errName = err instanceof DOMException ? err.name : (err instanceof Error ? err.name : typeof err);
       const errMessage = err instanceof Error ? err.message : String(err);
       // Use console.log to avoid Next.js dev overlay treating this as an
@@ -1629,24 +1780,19 @@ function VoiceTextarea({
         }
         return { ...base, diag: fullDiag };
       })();
-      setError(enriched);
+      if (mountedRef.current) {
+        setRequesting(false);
+        setRecording(false);
+        setError(enriched);
+      }
     }
-  }, [onChange]);
+  }, [onChange, stopVisualisation]);
 
   const stopRecording = useCallback(() => {
-    if (!mediaRecorderRef.current || !recording) return;
-    mediaRecorderRef.current.stop();
-    setRecording(false);
-    if (rafRef.current) {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
-    audioContextRef.current?.close().catch(() => {});
-    audioContextRef.current = null;
-    analyserRef.current = null;
-    setAudioLevel(0);
-    setElapsedMs(0);
-  }, [recording]);
+    const recorder = mediaRecorderRef.current;
+    if (!recorder || recorder.state === "inactive") return;
+    recorder.stop();
+  }, []);
 
   return (
     <div className="pf-voice-field">
@@ -1677,27 +1823,43 @@ function VoiceTextarea({
             </span>
           </div>
         ) : (
-          <span>{processing ? "Transcription en cours..." : "Vous pouvez écrire ou dicter votre réponse."}</span>
+          <span>
+            {requesting
+              ? "Activation du micro..."
+              : processing
+                ? "Transcription en cours..."
+                : "Vous pouvez écrire ou dicter votre réponse."}
+          </span>
         )}
         <button
           type="button"
           className={`pf-mic ${recording ? "is-recording" : ""}`}
           onClick={recording ? stopRecording : startRecording}
-          disabled={processing}
+          disabled={processing || requesting}
+          aria-label={
+            recording
+              ? "Arrêter la dictée"
+              : requesting
+                ? "Activation du micro en cours"
+                : processing
+                  ? "Transcription en cours"
+                  : "Dicter votre réponse"
+          }
         >
-          {processing ? (
+          {processing || requesting ? (
             <Loader2 size={16} className="pf-spin" />
           ) : recording ? (
             <Pause size={16} />
           ) : (
             <Mic size={16} />
           )}
-          {recording ? "Arrêter" : "Dicter"}
+          {recording ? "Arrêter" : requesting ? "Activation…" : "Dicter"}
         </button>
       </div>
       <p className="pf-voice-privacy">
-        Dictée facultative : votre audio est transmis à Groq pour transcription.
-        Vous pouvez saisir le même texte sans utiliser ce service.{" "}
+        En activant « Dicter », vous consentez à transmettre votre audio à Groq pour cette transcription facultative.
+        L&apos;enregistrement s&apos;arrête automatiquement après 2 minutes. Vous pouvez
+        saisir le même texte sans utiliser ce service.{" "}
         <a href="/legal/confidentialite#dictee" target="_blank" rel="noopener noreferrer">
           En savoir plus
         </a>
@@ -1815,10 +1977,12 @@ export function ProjectFunnel() {
   // render produce identical markup. Hydration of any saved draft happens
   // in a post-mount useEffect below — this is the canonical pattern to
   // avoid the "Hydration failed because the server rendered text didn't
-  // match the client" warning on data that lives in localStorage.
+  // match the client" warning on data that lives in sessionStorage.
   const [state, setState] = useState<FunnelState>(INITIAL_STATE);
   const [hydrated, setHydrated] = useState(false);
-  const skipInitialPersistRef = useRef(true);
+  const [draftStorageEnabled, setDraftStorageEnabled] = useState(false);
+  const skipInitialPersistRef = useRef(false);
+  const draftExpiryTimerRef = useRef<number | null>(null);
   // Anti-bot maison : question de calcul affichée à l'étape d'envoi,
   // vérifiée côté client puis revalidée par /api/project-inquiry.
   const [math, setMath] = useState<MathChallengeValue | null>(null);
@@ -1826,10 +1990,37 @@ export function ProjectFunnel() {
   const [showValidation, setShowValidation] = useState(false);
   const [skippedSteps, setSkippedSteps] = useState<Set<StepId>>(new Set());
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const submissionKeyRef = useRef<string | null>(null);
+
+  const disableDraftStorage = useCallback(() => {
+    try {
+      window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
+    } catch {
+      /* ignore */
+    }
+    if (draftExpiryTimerRef.current !== null) {
+      window.clearTimeout(draftExpiryTimerRef.current);
+      draftExpiryTimerRef.current = null;
+    }
+    setDraftStorageEnabled(false);
+  }, []);
+
+  const scheduleDraftExpiry = useCallback(
+    (savedAt: number) => {
+      if (draftExpiryTimerRef.current !== null) {
+        window.clearTimeout(draftExpiryTimerRef.current);
+      }
+      const remainingMs = getProjectDraftRemainingMs(savedAt);
+      draftExpiryTimerRef.current = window.setTimeout(() => {
+        disableDraftStorage();
+      }, remainingMs);
+    },
+    [disableDraftStorage],
+  );
 
   // Hydrate the saved draft after mount. Client-only (useEffect doesn't
   // run on the server), so SSR markup matches the first client render.
-  // Hydration depuis localStorage : pattern canonical SSR-safe pour
+  // Hydration depuis sessionStorage : pattern canonical SSR-safe pour
   // synchroniser React avec un système externe (le storage navigateur).
   // La règle react-hooks/set-state-in-effect est volontairement désactivée
   // pour ce cas légitime — le setState dépend uniquement de la lecture
@@ -1837,55 +2028,84 @@ export function ProjectFunnel() {
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     try {
-      for (const key of LEGACY_STORAGE_KEYS) {
-        window.localStorage.removeItem(key);
-      }
-      const raw = window.localStorage.getItem(DRAFT_STORAGE_KEY);
+      // La v2 pouvait contenir des coordonnées. On la supprime, ainsi que toute
+      // v3 écrite par erreur dans le stockage durable lors d'un déploiement
+      // intermédiaire.
+      purgeLegacyProjectDrafts(window.localStorage);
+
+      const raw = window.sessionStorage.getItem(DRAFT_STORAGE_KEY);
       if (raw) {
         const draft = readStoredDraft(JSON.parse(raw), Date.now());
         if (!draft) {
-          window.localStorage.removeItem(DRAFT_STORAGE_KEY);
+          window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
         } else {
           const restoredState = { ...draft.state, projectKinds: [] };
           // Toujours arriver sur la page avec aucun service coché — l'utilisateur
           // doit re-sélectionner explicitement, même s'il avait sauvegardé un brouillon.
+          skipInitialPersistRef.current = true;
           setState(restoredState);
-          if (draft.shouldMigrate) {
-            window.localStorage.setItem(
-              DRAFT_STORAGE_KEY,
-              serializeDraft(restoredState),
-            );
-          }
+          setDraftStorageEnabled(true);
+          scheduleDraftExpiry(draft.savedAt);
         }
       }
     } catch {
       // JSON invalide : on tente de purger la valeur. En navigation privée,
-      // localStorage peut lui-même être indisponible, auquel cas on ignore.
+      // le storage peut lui-même être indisponible, auquel cas on ignore.
       try {
-        window.localStorage.removeItem(DRAFT_STORAGE_KEY);
+        window.sessionStorage.removeItem(DRAFT_STORAGE_KEY);
       } catch {
         /* private mode — ignore */
       }
     }
     setHydrated(true);
-  }, []);
+  }, [scheduleDraftExpiry]);
   /* eslint-enable react-hooks/set-state-in-effect */
 
-  // Persist on every state change once hydrated. We delay until hydration
-  // finishes so the empty INITIAL_STATE doesn't overwrite a real draft.
+  // Une persistance n'est créée qu'après la demande explicite de l'utilisateur.
+  // Le premier rendu restauré conserve son horodatage initial au lieu de
+  // renouveler artificiellement le délai à chaque rechargement.
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (!hydrated) return;
+    if (!hydrated || !draftStorageEnabled) return;
     if (skipInitialPersistRef.current) {
       skipInitialPersistRef.current = false;
       return;
     }
     try {
-      window.localStorage.setItem(DRAFT_STORAGE_KEY, serializeDraft(state));
+      const savedAt = Date.now();
+      window.sessionStorage.setItem(
+        DRAFT_STORAGE_KEY,
+        serializeDraft(state, savedAt),
+      );
+      scheduleDraftExpiry(savedAt);
     } catch {
       /* quota / private mode — ignore */
     }
-  }, [state, hydrated]);
+  }, [state, hydrated, draftStorageEnabled, scheduleDraftExpiry]);
+
+  useEffect(
+    () => () => {
+      if (draftExpiryTimerRef.current !== null) {
+        window.clearTimeout(draftExpiryTimerRef.current);
+      }
+    },
+    [],
+  );
+
+  const enableDraftStorage = useCallback(() => {
+    try {
+      const savedAt = Date.now();
+      window.sessionStorage.setItem(
+        DRAFT_STORAGE_KEY,
+        serializeDraft(state, savedAt),
+      );
+      skipInitialPersistRef.current = true;
+      setDraftStorageEnabled(true);
+      scheduleDraftExpiry(savedAt);
+    } catch {
+      /* Le formulaire reste utilisable sans stockage. */
+    }
+  }, [state, scheduleDraftExpiry]);
 
   // Fire one open event per session — we use sessionStorage to avoid
   // double-firing on Strict Mode double-mounts in dev.
@@ -2001,9 +2221,15 @@ export function ProjectFunnel() {
     let mailOk = false;
     let mailError = "";
     try {
+      const submissionKey =
+        submissionKeyRef.current ?? getProjectInquiryClientKey();
+      submissionKeyRef.current = submissionKey;
       const mailRes = await fetch("/api/project-inquiry", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Idempotency-Key": submissionKey,
+        },
         body: JSON.stringify({
           // Legacy fields used by the existing email template
           firstName: state.firstName.trim(),
@@ -2049,11 +2275,9 @@ export function ProjectFunnel() {
           services: state.projectKinds.length,
           confirmation_sent: mailJson.confirmationSent === true,
         });
-        try {
-          window.localStorage.removeItem(DRAFT_STORAGE_KEY);
-        } catch {
-          /* ignore */
-        }
+        submissionKeyRef.current = null;
+        clearProjectInquiryClientKey();
+        disableDraftStorage();
         setStatus({
           kind: "captured",
           message:
@@ -2075,11 +2299,9 @@ export function ProjectFunnel() {
       trackFunnelEvent("pf:submit_success", {
         services: state.projectKinds.length,
       });
-      try {
-        window.localStorage.removeItem(DRAFT_STORAGE_KEY);
-      } catch {
-        /* ignore */
-      }
+      disableDraftStorage();
+      submissionKeyRef.current = null;
+      clearProjectInquiryClientKey();
       // Page de confirmation dédiée — URL stable pour brancher les pixels
       // de conversion (GA4, Meta, LinkedIn) sur une vue de page.
       router.push("/demarrer-un-projet/merci");
@@ -2099,7 +2321,7 @@ export function ProjectFunnel() {
     <div className="pf-root">
       <header className="pf-topbar">
         <div className="pf-top-left">
-          <Link href="/" className="pf-brand" aria-label="Retour à l'accueil Hagnéré Code">
+          <Link href="/" className="pf-brand">
             <span className="pf-brand-mark">HC</span>
             <span><b>Hagnéré</b> Code</span>
           </Link>
@@ -2118,7 +2340,7 @@ export function ProjectFunnel() {
         </nav>
       </header>
 
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
       <section className="pf-landing">
         <div className="pf-landing-inner">
           <span className="pf-kicker">
@@ -2132,7 +2354,7 @@ export function ProjectFunnel() {
           <p className="pf-landing-sub">
             Un parcours guidé pour transmettre votre besoin — au clavier ou à la voix.
             Pas de devis automatique, pas de robot : chaque brief est lu par notre
-            équipe, qui vous répond personnellement sous 24 h ouvrées.
+            équipe. Nous visons une réponse le prochain jour ouvré, sans délai garanti.
           </p>
           <a
             href="#brief"
@@ -2144,7 +2366,7 @@ export function ProjectFunnel() {
           </a>
           <div className="pf-landing-badges">
             <span><Check size={13} strokeWidth={3} /> Gratuit, sans engagement</span>
-            <span><Check size={13} strokeWidth={3} /> Réponse personnelle sous 24 h ouvrées</span>
+            <span><Check size={13} strokeWidth={3} /> Objectif : prochain jour ouvré</span>
             <span>
               <Check size={13} strokeWidth={3} />{" "}
               <Link href="/legal/confidentialite" style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}>
@@ -2166,7 +2388,7 @@ export function ProjectFunnel() {
             <li>
               <span className="pf-landing-step-num">3</span>
               <b>Réponse argumentée</b>
-              <small>Sous 24 h ouvrées : premières recommandations et, si pertinent, un créneau d&apos;échange.</small>
+              <small>Objectif : le prochain jour ouvré, premières recommandations et, si pertinent, un créneau d&apos;échange.</small>
             </li>
           </ol>
         </div>
@@ -2182,14 +2404,22 @@ export function ProjectFunnel() {
             <h2 className="pf-side-title">Un brief complet, sans réunion interminable.</h2>
             <p>
               On récupère les informations utiles, on clarifie le périmètre, et on
-              vous répond personnellement sous 24 h ouvrées.
+              vise une réponse personnelle le prochain jour ouvré, sans délai garanti.
             </p>
             <div className="pf-progress-block">
               <div className="pf-progress-meta">
                 <span>Étape {activeStep + 1} sur {steps.length}</span>
                 <b>{completedStepCount} étape{completedStepCount > 1 ? "s" : ""} validée{completedStepCount > 1 ? "s" : ""}</b>
               </div>
-              <div className="pf-progress-segments" aria-label={`Progression : étape ${activeStep + 1} sur ${steps.length}`}>
+              <div
+                className="pf-progress-segments"
+                role="progressbar"
+                aria-label="Progression du cadrage"
+                aria-valuemin={1}
+                aria-valuemax={steps.length}
+                aria-valuenow={activeStep + 1}
+                aria-valuetext={`Étape ${activeStep + 1} sur ${steps.length}`}
+              >
                 {steps.map((step, index) => {
                   const complete = step.id !== "recap" && stepIsComplete(step.id, state);
                   return (
@@ -2240,9 +2470,30 @@ export function ProjectFunnel() {
               <span>Pré-cadrage gratuit. Les données servent uniquement à qualifier votre demande.</span>
             </div>
             {hydrated && (
-              <div className="pf-saved-badge" aria-live="polite">
-                <Check size={11} strokeWidth={3} />
-                <span>Sauvegardé localement — vous pouvez fermer et revenir.</span>
+              <div
+                className={`pf-saved-badge${draftStorageEnabled ? "" : " is-optin"}`}
+                aria-live="polite"
+              >
+                {draftStorageEnabled ? (
+                  <>
+                    <Check size={11} strokeWidth={3} />
+                    <span>
+                      Brouillon gardé 24 h au plus dans cet onglet — coordonnées exclues.
+                    </span>
+                    <button type="button" onClick={disableDraftStorage}>
+                      Effacer
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    className="pf-draft-optin"
+                    onClick={enableDraftStorage}
+                  >
+                    <FileText size={12} />
+                    Conserver le brouillon dans cet onglet (sans coordonnées)
+                  </button>
+                )}
               </div>
             )}
           </div>
@@ -2508,7 +2759,7 @@ export function ProjectFunnel() {
                   <span className="pf-consent-text">
                     <b>Accusé de lecture et demande de traitement</b>
                     <small>
-                      J&apos;ai pris connaissance de la <a href="/legal/confidentialite" target="_blank" rel="noopener noreferrer">politique de confidentialité</a> et je demande à Hagnéré Code de traiter mes informations afin de répondre à ma demande, dans le cadre de mesures précontractuelles.
+                      J&apos;ai pris connaissance de la <a href="/legal/confidentialite" target="_blank" rel="noopener noreferrer">politique de confidentialité</a> et je demande à HAGNERE CODE de traiter mes informations afin de répondre à ma demande. Selon que j&apos;agis en mon nom ou pour mon organisation, ce traitement repose sur des mesures précontractuelles ou sur l&apos;intérêt légitime à traiter une demande professionnelle. Les données sont accessibles à HAGNERE CODE et aux prestataires nécessaires, puis conservées au maximum trois ans après le dernier échange utile en l&apos;absence de contrat. La politique détaille les destinataires et vos droits.
                     </small>
                   </span>
                 </label>
@@ -2615,7 +2866,7 @@ export function ProjectFunnel() {
                 {status.kind !== "captured" && <div className="pf-reassure">
                   <div className="pf-reassure-item">
                     <Mail size={14} />
-                    <span><b>Réponse personnalisée sous 24 h ouvrées</b> &middot; analyse humaine de votre brief</span>
+                    <span><b>Objectif : prochain jour ouvré</b> &middot; analyse humaine de votre brief, sans délai garanti</span>
                   </div>
                   <div className="pf-reassure-item">
                     <Sparkles size={14} />
@@ -2678,8 +2929,8 @@ export function ProjectFunnel() {
               <dt>Vais-je recevoir un prix immédiatement ?</dt>
               <dd>
                 Non — et c&apos;est volontaire. Un chiffrage sérieux demande une lecture
-                attentive de votre contexte. Vous recevez sous 24 h ouvrées une réponse
-                argumentée, puis un devis ferme après échange.
+                attentive de votre contexte. Nous visons une réponse argumentée le prochain
+                jour ouvré, sans délai garanti, puis un devis ferme après échange.
               </dd>
             </div>
             <div className="pf-faq-item">
@@ -2709,6 +2960,7 @@ export function ProjectFunnel() {
         </div>
       </section>
       </main>
+      <LegalLinksFooter />
     </div>
   );
 }

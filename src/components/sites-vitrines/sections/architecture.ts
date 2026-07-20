@@ -8,9 +8,9 @@ export const architectureHtml = `
         <h2 style="margin-top:14px">Voici à quoi ressemble<br>un site qu'on livre.</h2>
       </div>
       <div class="right">
-        Pas une slide marketing. L'architecture réelle d'un de nos sites vitrines en production,
-        simplifiée : site statique Next.js, formulaires, CMS headless, services externes,
-        infra. Chaque brique est un standard industriel.
+        Schéma de référence à adapter au projet : site statique Next.js, formulaires,
+        CMS headless, services externes et infrastructure. Il ne décrit pas une architecture
+        client vérifiable ; le devis liste les briques, dépendances et responsabilités retenues.
       </div>
     </div>
 

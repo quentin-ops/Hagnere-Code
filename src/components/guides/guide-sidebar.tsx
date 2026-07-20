@@ -64,15 +64,15 @@ export function GuideSidebarCTA({
               Gratuit &amp; sans engagement
             </h3>
             <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
-              Décrivez votre projet en 3 minutes — notre équipe vous répond
-              personnellement sous 24 h ouvrées.
+              Décrivez votre projet en 3 minutes — notre équipe lit votre
+              demande et vise le prochain jour ouvré, sans délai garanti.
             </p>
           </div>
 
           {/* Benefits */}
           <div className="space-y-2.5 mb-6">
             {[
-              "Réponse sous 24 h ouvrées",
+              "Objectif : prochain jour ouvré",
               "Forfait fixe contractuel",
               "Une équipe qui code",
               "Recette et correction cadrées au devis",

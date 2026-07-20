@@ -1,11 +1,8 @@
-"use client";
-
-import { useRef } from "react";
 import Link from "next/link";
 import { MainNav } from "@/components/design-shared/MainNav";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { CalendlyEmbed } from "@/components/design-shared/CalendlyEmbed";
-import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
+import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import "@/components/homepage/homepage.css";
 import "@/components/homepage/sections/sections.css";
 import "@/components/design-shared/nav-dropdown.css";
@@ -16,13 +13,10 @@ import "@/components/design-shared/calendly.css";
 import "./page.css";
 
 export function RendezVousPage() {
-  const rootRef = useRef<HTMLDivElement>(null);
-  useDesignInteractive(rootRef);
-
   return (
-    <div ref={rootRef} className="hc-design">
+    <InteractiveDesignRoot className="hc-design">
       <MainNav />
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <section className="c-hero rdv-hero">
           <div className="wrap c-hero-inner">
             <div className="c-hero-left">
@@ -112,8 +106,9 @@ export function RendezVousPage() {
                 Réservez directement ci-dessous.
               </h2>
               <p className="rdv-calendly-sub">
-                Sélectionnez la date et l&apos;heure qui vous conviennent. Vous recevrez
-                une confirmation par e-mail avec le lien de visio et un rappel 24 h avant.
+                Sélectionnez la date et l&apos;heure qui vous conviennent. Calendly
+                affiche au moment de la réservation les modalités de confirmation,
+                le lien de visio et les éventuels rappels configurés.
               </p>
             </div>
             <div className="rdv-calendly-frame">
@@ -123,6 +118,6 @@ export function RendezVousPage() {
         </section>
       </main>
       <SiteFooter showContact={false} />
-    </div>
+    </InteractiveDesignRoot>
   );
 }

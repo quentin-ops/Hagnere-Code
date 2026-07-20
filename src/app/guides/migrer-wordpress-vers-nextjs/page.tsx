@@ -33,16 +33,11 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -59,7 +54,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 5120,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -112,7 +106,7 @@ const faqItems = [
   {
     question: "Combien coûte une migration de WordPress vers Next.js ?",
     answer:
-      "Pour le marché français en 2026 : 4 000 à 9 000 € pour un site vitrine de 10 à 30 pages, 9 000 à 20 000 € pour un site à contenu (blog de 100 à 500 articles, plusieurs types de pages), 20 000 à 50 000 € et au-delà dès qu'une boutique ou des connexions à vos logiciels entrent en jeu. Ces fourchettes sont reconstituées à partir de notre historique de missions et des devis concurrents que nous voyons passer : ce sont des ordres de grandeur, pas un relevé statistique. Deux postes font systématiquement déraper les devis : le contenu enfermé dans un constructeur de pages (Elementor, Divi), qui ne s'exporte pas proprement, et les champs personnalisés non documentés. Exigez que les deux soient audités avant la signature, pas découverts en cours de route.",
+      "Pour le marché français en 2026, ce guide retient comme hypothèses de cadrage : 4 000 à 9 000 € pour un site vitrine de 10 à 30 pages, 9 000 à 20 000 € pour un site à contenu (blog de 100 à 500 articles, plusieurs types de pages), 20 000 à 50 000 € et au-delà dès qu'une boutique ou des connexions à vos logiciels entrent en jeu. Ces fourchettes sont des scénarios éditoriaux construits à partir des périmètres décrits, pas un relevé statistique de devis : seul l'audit de votre site permet un chiffrage. Deux postes doivent être audités avant la signature : le contenu enfermé dans un constructeur de pages (Elementor, Divi), qui ne s'exporte pas proprement, et les champs personnalisés non documentés.",
   },
   {
     question: "Combien de temps prend la migration ?",
@@ -122,7 +116,7 @@ const faqItems = [
   {
     question: "Vais-je perdre mon référencement Google en migrant ?",
     answer:
-      "Non, si les adresses de vos pages sont conservées — et c'est précisément ce que permet Next.js, qui reproduit n'importe quelle structure d'adresses. Google documente le cas : une refonte technique sans changement d'adresses ne demande aucune déclaration et n'entraîne pas de perte attendue. Si des adresses changent, chaque ancienne page doit être redirigée vers son équivalent exact, jamais toutes vers l'accueil (Google requalifie ces redirections en erreurs). Les catastrophes documentées viennent presque toutes de là : un cas publié montre une carte de redirections complète à 87 % qui a coûté 60 % du trafic organique en huit semaines. Notre guide de la refonte sans perte de SEO détaille le protocole complet.",
+      "Aucune absence de baisse ne peut être garantie. Conserver les adresses réduit un risque contrôlable, sans le supprimer. Si des adresses changent, chaque ancienne page doit être redirigée vers son équivalent exact, jamais toutes vers l'accueil. Google documente les changements d'adresse et le retraitement des pages ; une migration sérieuse prévoit donc un inventaire, des redirections testées, une préproduction bloquée aux moteurs et une surveillance Search Console après la bascule. Notre guide de la refonte sans perdre son SEO détaille le protocole complet.",
   },
   {
     question: "Est-ce que je peux garder mes URLs actuelles ?",
@@ -162,7 +156,7 @@ const faqItems = [
   {
     question: "Quand est-ce une mauvaise idée de migrer ?",
     answer:
-      "Cinq situations, que nous refusons régulièrement. Un WordPress récent et rapide (Core Web Vitals au vert) : réparez plutôt que reconstruire. Un budget sous 4 000 € : la migration serait bâclée là où elle demande de la rigueur. Une équipe éditoriale nombreuse qui publie tous les jours avec prévisualisation instantanée et constructeur visuel : le confort perdu peut coûter plus que la vitesse gagnée. Une boutique WooCommerce imbriquée avec des extensions métier sans équivalent. Enfin, une refonte purement esthétique : changer de design ne nécessite pas de changer de socle. Le référent grand public de WordPress lui-même écrit que la majorité des petites entreprises n'ont pas besoin du mode découplé — nous le confirmons.",
+      "Cinq situations devraient conduire à refuser ou reporter la migration. Un WordPress récent et rapide (Core Web Vitals au vert) : réparez plutôt que reconstruire. Un budget sous 4 000 € : le niveau de contrôle requis paraît difficile à tenir. Une équipe éditoriale nombreuse qui publie tous les jours avec prévisualisation instantanée et constructeur visuel : le confort perdu peut coûter plus que la vitesse gagnée. Une boutique WooCommerce imbriquée avec des extensions métier sans équivalent. Enfin, une refonte purement esthétique : changer de design ne nécessite pas de changer de socle.",
   },
   {
     question: "Serai-je dépendant de l'agence après la migration ?",
@@ -172,34 +166,23 @@ const faqItems = [
   {
     question: "Peut-on revenir en arrière si ça ne convient pas ?",
     answer:
-      "Oui, et le plan de retour arrière doit figurer au contrat. Pendant toute la transition, l'ancien site reste en place sur son hébergement : la bascule se fait par un changement de configuration réversible en quelques heures. Le retour est encore plus simple si WordPress a été conservé en coulisses, puisque vos contenus n'ont jamais quitté leur base. Nous gardons systématiquement l'ancien environnement actif pendant au moins un mois après la bascule, avec les redirections en place. Un prestataire qui ne prévoit ni plan de retour arrière ni conservation de l'ancien site vous fait prendre un risque inutile — c'est une question à poser avant de signer.",
+      "Un retour arrière peut être prévu, mais ses conditions dépendent de l'architecture et doivent figurer au contrat. L'ancien site peut rester disponible sur son hébergement pendant une durée écrite, avec sauvegardes, responsabilités, coûts et procédure de bascule documentés. Si WordPress est conservé comme gestionnaire de contenu, certaines données restent dans sa base, mais cela ne rend pas toute la bascule automatiquement réversible. Demandez le plan, la durée de conservation et le test de restauration avant de signer.",
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
           { label: "Migrer WordPress vers Next.js" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Les prix en euros, le protocole SEO adossé à la documentation de Google, le tableau de ce qui casse et de son remplacement, le coût total sur 3 ans — et les cinq situations où nous refusons la mission. Le guide complet, sources à l'appui."
+        heroDescription="Les prix en euros, le protocole SEO adossé à la documentation de Google, le tableau de ce qui casse et de son remplacement, le coût total sur 3 ans — et les cinq situations où une migration devrait être refusée ou reportée. Le guide complet, sources à l'appui."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -274,7 +257,7 @@ export default function Page() {
             { id: "trois-architectures", label: "4. Les 3 architectures cibles, arbitrées" },
             { id: "ce-qui-casse", label: "5. Ce qui casse, et ce qui le remplace" },
             { id: "woocommerce", label: "6. WooCommerce : le cas qu'il faut traiter à part" },
-            { id: "seo", label: "7. Le protocole SEO zéro perte, sourcé Google" },
+            { id: "seo", label: "7. Le protocole SEO pour limiter le risque, sourcé Google" },
             { id: "etapes", label: "8. Les étapes réelles, de J-30 à J+60" },
             { id: "prix", label: "9. Combien ça coûte vraiment, en euros" },
             { id: "tco", label: "10. Le coût total sur 3 ans : le calcul qui décide" },
@@ -392,11 +375,10 @@ export default function Page() {
           venir des clients que vous ne connaissiez pas) ? Dans le
           premier cas, un WordPress correctement entretenu suffit et
           la migration serait une dépense de confort. Dans le second,
-          chaque dixième de seconde et chaque point de référencement
-          se traduit en euros — et le calcul sur 3 ans de la section 10
-          penche presque toujours du côté du sur-mesure, dont
-          l&apos;assistance par IA a fait baisser le coût de
-          construction.
+          les effets attendus sur l&apos;usage et l&apos;acquisition doivent être
+          chiffrés avec vos propres données. Le calcul sur trois ans de la
+          section 10 est un scénario éditorial, pas une conclusion universelle,
+          et les études sur l&apos;IA ne prouvent pas le coût de votre migration.
         </InfoBox>
 
         <h2 id="securite">3. Sécurité : ce que 11 334 vulnérabilités disent vraiment</h2>
@@ -451,8 +433,8 @@ export default function Page() {
         <p>
           « Migrer vers Next.js » recouvre trois projets très
           différents, dont le coût et les conséquences pour votre
-          équipe n&apos;ont rien à voir. Personne ne les arbitre
-          clairement pour un dirigeant : voici notre grille.
+          équipe n&apos;ont rien à voir. Voici une grille pour les arbitrer
+          du point de vue d&apos;un dirigeant.
         </p>
         <GuideTable
           headers={["Architecture", "Principe", "Pour qui", "Coût récurrent type"]}
@@ -600,10 +582,10 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Vous hésitez sur l'architecture à viser ?"
-          description="Décrivez votre site actuel en 3 minutes — nombre de pages, extensions critiques, équipe éditoriale. Nous vous répondons personnellement sous 24 h ouvrées avec un avis argumenté, y compris s'il consiste à vous dire de rester sur WordPress."
+          description="Décrivez votre site actuel en 3 minutes — nombre de pages, extensions critiques, équipe éditoriale. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis argumenté, y compris s'il consiste à vous dire de rester sur WordPress."
         />
 
-        <h2 id="seo">7. Le protocole SEO zéro perte, sourcé Google</h2>
+        <h2 id="seo">7. Le protocole SEO pour limiter le risque, sourcé Google</h2>
         <p>
           C&apos;est la peur numéro un, et c&apos;est celle qui se
           traite le mieux — parce que Google publie la marche à
@@ -764,10 +746,10 @@ export default function Page() {
           guides anglophones chiffrent en livres ou en dollars, et la
           seule page française qui donnait des euros était hors ligne
           au moment de notre relevé du 18 juillet 2026. Les
-          fourchettes ci-dessous sont donc reconstituées à partir de
-          notre propre historique de missions et des devis concurrents
-          que nous voyons passer : des ordres de grandeur, pas un
-          relevé statistique.
+          fourchettes ci-dessous sont donc des scénarios éditoriaux construits
+          à partir des périmètres décrits et des sources citées : des ordres de
+          grandeur à remplacer par un audit et des devis comparables, pas un
+          relevé statistique du marché.
         </p>
         <GuideTable
           headers={["Périmètre", "Fourchette France 2026", "Délai", "Ce qui fait varier"]}
@@ -878,7 +860,7 @@ MIGRER VERS NEXT.JS — 3 ans (architecture C)
         <GuideTable
           headers={["Cas", "Architecture", "Résultats publiés", "À savoir"]}
           rows={[
-            ["Kit (ex-ConvertKit), 1 000+ pages", "WordPress conservé en coulisses", "Lighthouse mobile 20-40 → 65-75 ; chargement 3-4 s → 1,5 s ; déploiement 27-30 min → 2-4 min", "Blog d'ingénierie indépendant — le plus crédible. Effort réel assumé : 14 mois, 1 développeur et 2 designers. Architecture A : garder WordPress en coulisses plafonne le score, car l'administration et ses extensions restent dans la boucle — nos 95+ contractuels s'entendent en architecture B ou C"],
+            ["Kit (ex-ConvertKit), 1 000+ pages", "WordPress conservé en coulisses", "Lighthouse mobile 20-40 → 65-75 ; chargement 3-4 s → 1,5 s ; déploiement 27-30 min → 2-4 min", "Chiffres publiés par l'équipe concernée. Effort déclaré : 14 mois, 1 développeur et 2 designers. Ces résultats ne prédisent ni l'architecture ni le score d'un autre projet ; toute cible Hagnéré Code doit être définie au devis avec son protocole"],
             ["Personio (éditeur de logiciel RH en forte croissance)", "CMS moderne (Contentful)", "Part des pages au vert sur les Core Web Vitals presque doublée (surtout la stabilité visuelle : plus de contenu qui saute pendant le chargement) ; vitesse mobile +29 %", "Chiffres publiés par Vercel, éditeur de la plateforme d'arrivée : juge et partie, et périmètre de mesure non détaillé"],
             ["Migration française, 345 articles", "Contenu dans le code", "Lighthouse mobile < 50 → 98 ; TTFB > 800 ms → < 50 ms ; 37 extensions → 3 ; base 1 348 Mo → 215 Mo", "Réalisée par un expert WordPress avec assistance IA : borne basse experte, pas une norme"],
             ["Boutique Panda Patches", "CMS moderne + moteur de commerce", "Lighthouse mobile 42 → 90+ ; outils 250 $ → 25 $/mois ; aucune chute déclarée dans la Search Console", "Auto-déclaré par l'entreprise, non audité"],
@@ -935,7 +917,7 @@ MIGRER VERS NEXT.JS — 3 ans (architecture C)
           comprimé le temps de construction, pas la qualité du
           résultat. Cela ne veut pas
           dire que la migration est toujours la bonne opération. Voici
-          les cas où nous refusons la mission.
+          les cas où elle devrait être refusée ou reportée.
         </p>
         <ol>
           <li>
@@ -1097,19 +1079,18 @@ MIGRER VERS NEXT.JS — 3 ans (architecture C)
           </li>
         </ol>
         <p>
-          Chez Hagnéré Code, une migration commence toujours par un{" "}
-          <Link href="/methode">Discovery Sprint</Link> de deux jours à
-          1 500 €, déduits à 100 % si le projet se lance : inventaire
-          des adresses, comptage des gabarits, audit des extensions
-          critiques, architecture recommandée et devis ferme. Il arrive
-          qu&apos;il se conclue par « restez sur WordPress, voici les
-          trois choses à corriger » — c&apos;est arrivé, et c&apos;est
-          très bien ainsi.
+          Notre format de cadrage peut prendre la forme d&apos;un{" "}
+          <Link href="/methode">Discovery Sprint</Link> dont le prix, la durée,
+          les livrables et toute déduction éventuelle sont confirmés avant
+          engagement : inventaire des adresses, comptage des gabarits, audit
+          des extensions critiques, architecture recommandée et chiffrage.
+          Il peut conclure « restez sur WordPress, voici les corrections
+          prioritaires » lorsque la migration n&apos;est pas justifiée.
         </p>
 
         <GuideInlineCTA
           title="Votre WordPress mérite-t-il une migration ?"
-          description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, gratuitement et sans engagement, avec un avis argumenté sur l'architecture adaptée — et le budget réaliste correspondant."
+          description="Décrivez votre projet en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, gratuitement et sans engagement, avec un avis argumenté sur l'architecture adaptée — et le budget réaliste correspondant."
         />
 
         <InfoBox variant="emerald" title="À retenir : les 6 chiffres de ce guide">

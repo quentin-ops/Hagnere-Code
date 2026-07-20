@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     ...OG_BASE,
     title: "Application mobile iOS & Android — Hagnéré Code",
     description:
-      "React Native + Expo, soumission App Store + Play Store incluse, comptes stores à votre nom, OTA updates en 10 min. Forfait fixe sur devis, livraison 8 à 20 semaines.",
+      "React Native + Expo, préparation des stores et mises à jour encadrées. Périmètre, comptes, droits, calendrier indicatif et maintenance sont confirmés au devis.",
     url: "/services/application-mobile",
     images: [MOBILE_OG_IMAGE],
   },
@@ -36,7 +36,7 @@ const serviceJsonLd = JSON.stringify({
     "@type": "Organization",
     name: "Hagnéré Code",
     "@id": "https://hagnere-code.ai/#organization",
-    legalName: "HAGNÉRÉ CODE SAS",
+    legalName: "HAGNERE CODE",
     vatID: "FR30993672856",
     url: "https://hagnere-code.ai",
     logo: "https://hagnere-code.ai/logos/logo-dark.png",
@@ -62,7 +62,7 @@ const serviceJsonLd = JSON.stringify({
       url: "https://hagnere-code.ai/services/application-mobile#tarifs",
       availability: "https://schema.org/InStock",
       description:
-        "App native iOS + Android focalisée sur 1 cas d'usage : fidélité, réservation, click & collect, app interne. Périmètre resserré, login, push, paiement, soumission stores. Livraison 8 à 12 semaines. Forfait fixe sur devis après cadrage.",
+        "App native iOS + Android focalisée sur un cas d'usage : fidélité, réservation, click & collect ou app interne. Périmètre, soumissions, planning indicatif et forfait sont confirmés au devis après cadrage.",
     },
     {
       "@type": "Offer",
@@ -71,7 +71,7 @@ const serviceJsonLd = JSON.stringify({
       url: "https://hagnere-code.ai/services/application-mobile#tarifs",
       availability: "https://schema.org/InStock",
       description:
-        "App complète iOS + Android + Web mobile, design sur mesure, Apple Pay + Google Pay + Stripe + IAP, push géoloc, biométrie, hors-ligne, OTA EAS, back-office Filament/Strapi, tests E2E Maestro. Livraison 14 à 20 semaines. Forfait fixe sur devis après cadrage.",
+        "App complète iOS + Android + Web mobile avec fonctionnalités et intégrations sélectionnées au cadrage. Planning indicatif, tests, soumissions et forfait sont confirmés au devis.",
     },
     {
       "@type": "Offer",
@@ -80,89 +80,11 @@ const serviceJsonLd = JSON.stringify({
       url: "https://hagnere-code.ai/services/application-mobile#tarifs",
       availability: "https://schema.org/InStock",
       description:
-        "Marketplace 2-sided (Stripe Connect, KYC, escrow), IoT/BLE/NFC, modules natifs Swift/Kotlin si perf critique, Watch/Wear OS, multi-langue, intégration ERP. Livraison 5 à 9 mois. Devis personnalisé après cadrage approfondi.",
+        "Marketplace, IoT, modules natifs, extensions Watch ou Wear OS, multilingue et intégrations métier selon faisabilité. Le périmètre, les licences, le planning indicatif et le prix sont définis après cadrage approfondi.",
     },
   ],
 });
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Combien coûte une application mobile native iOS et Android chez Hagnéré Code ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Sur devis, après un cadrage qui définit le périmètre exact. Le coût varie fortement selon la complexité : un MVP focalisé sur un seul cas d'usage n'a pas le même prix qu'une marketplace 2-sided ou qu'une app entreprise avec intégrations ERP. Hagnéré Code ne chiffre jamais sur un brief de quelques lignes : un Discovery Sprint payant et déductible cadre les écrans clés et le périmètre, puis le forfait fixe arrive ferme et sans avenant sur le scope validé.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Combien de temps avant que mon application soit publiée sur l'App Store et Google Play ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Le planning dépend du périmètre, des validations client, des intégrations et des revues des stores. Les jalons, dépendances et éventuelles conséquences d'un retard ne s'appliquent que s'ils figurent dans le devis ou le contrat signé.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Qui possède le code source et les comptes App Store / Google Play ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Les comptes Apple Developer, Google Play et les services tiers peuvent être créés au nom du client. Le devis inventorie les accès et livrables ; conformément aux CGV, les livrables spécifiques sont transférés après paiement complet, sous réserve des composants préexistants et licences tierces.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Que se passe-t-il si Apple refuse mon application lors de la review ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "La décision et le délai de review appartiennent à Apple. La guideline 2.1 est un motif fréquent de problème encore non résolu, mais ce n'est pas un taux de refus au premier envoi. Le devis précise les tests, la préparation de la fiche, les itérations incluses et le traitement d'une demande supplémentaire.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "React Native, Flutter ou natif Swift/Kotlin : quel est le bon choix ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "React Native + Expo permet de mutualiser une partie du code iOS et Android. Flutter ou du natif Swift/Kotlin peuvent être préférables selon les contraintes matérielles, de performance, d'équipe ou de store. Le choix est justifié au cadrage, sans promettre un ratio universel de coût ou de performance.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Apple et Google prennent-ils 30 % de commission sur tous les revenus ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Non. La commission de 30 % s'applique uniquement aux biens digitaux et abonnements consommés in-app via Apple IAP. Pour les petites entreprises (moins de 1 M$ de chiffre d'affaires annuel), la commission est de 15 % via Apple Small Business Program. Pour les biens physiques, livraisons, click & collect, services réservés via l'app, le paiement passe par Stripe ou PayPlug en webview avec 0 % de commission Apple/Google. Hagnéré Code conseille la bonne stratégie au cadrage selon le business model.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "La maintenance après le lancement, comment c'est facturé ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Forfait maintenance optionnel sur devis selon le volume et la criticité. Compatibilité iOS et Android, correctifs de sécurité, surveillance, correctifs OTA et rythme de publication ne sont inclus que s'ils figurent au périmètre. Une application non maintenue s'expose progressivement aux incompatibilités, aux vulnérabilités et aux régressions : la trajectoire est donc cadrée dès le devis initial.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Et si je veux ajouter des fonctionnalités après le lancement ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Évolutions mineures (un écran, une intégration) chiffrées au ticket sur la base d'un cadrage rapide. Modules complets (paiement supplémentaire, vertical secondaire, app Watch) sur devis. Releases mensuelles en standard. Pour un partenariat long terme, forfait évolutions mensuel cadré ensemble selon le rythme de l'équipe — sans friction de devis pour chaque ajustement.",
-      },
-    },
-  ],
-});
 
 const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
@@ -183,7 +105,6 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <MobileApplication />
     </>

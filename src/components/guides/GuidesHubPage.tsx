@@ -1,7 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { useRef, type ComponentType } from "react";
+import { type ComponentType } from "react";
 import {
   ArrowDown,
   ArrowRight,
@@ -31,9 +29,9 @@ import {
 } from "lucide-react";
 import { MainNav } from "@/components/design-shared/MainNav";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
-import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
+import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import {
-  GUIDES,
+  PUBLISHED_GUIDES,
   guidePath,
   formatGuideDate,
   type GuideEntry,
@@ -163,12 +161,12 @@ const RESOURCES = [
   {
     href: "/realisations",
     label: "Nos réalisations",
-    value: "4 produits documentés : contexte, stack, chiffres mesurés.",
+    value: "4 études déclaratives : contexte, périmètre public et limites de preuve.",
   },
   {
     href: "/methode",
     label: "Notre méthode",
-    value: "Sprint Fixe : périmètre écrit, budget plafonné, démos hebdo.",
+    value: "Sprint Fixe : périmètre écrit, budget plafonné, cadence de démo convenue.",
   },
   {
     href: "/tarifs",
@@ -177,15 +175,16 @@ const RESOURCES = [
   },
 ];
 
-const featuredGuide = GUIDES.find((g) => g.featured) ?? GUIDES[0];
+const featuredGuide =
+  PUBLISHED_GUIDES.find((g) => g.featured) ?? PUBLISHED_GUIDES[0];
 
 function collectionsWithGuides(): Array<Collection & { guides: GuideEntry[] }> {
   const known = COLLECTIONS.map((c) => ({
     ...c,
-    guides: GUIDES.filter((g) => g.section === c.section),
+    guides: PUBLISHED_GUIDES.filter((g) => g.section === c.section),
   })).filter((c) => c.guides.length > 0);
 
-  const leftover = GUIDES.filter(
+  const leftover = PUBLISHED_GUIDES.filter(
     (g) => !COLLECTIONS.some((c) => c.section === g.section),
   );
   if (leftover.length > 0) {
@@ -208,16 +207,13 @@ function ArrowIcon() {
 }
 
 export function GuidesHubPage() {
-  const rootRef = useRef<HTMLDivElement>(null);
-  useDesignInteractive(rootRef);
-
   const collections = collectionsWithGuides();
 
   return (
-    <div ref={rootRef} className="hc-design guides-hub">
+    <InteractiveDesignRoot className="hc-design guides-hub">
       <MainNav />
 
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         {/* ============ HÉROS ============ */}
         <section className="ghub-hero">
           <div className="ghub-hero-grid" aria-hidden="true" />
@@ -231,7 +227,7 @@ export function GuidesHubPage() {
               </nav>
 
               <div className="ghub-kicker">
-                <span aria-hidden="true" /> Bibliothèque · {GUIDES.length}{" "}
+                <span aria-hidden="true" /> Bibliothèque · {PUBLISHED_GUIDES.length}{" "}
                 guides chiffrés
               </div>
 
@@ -502,8 +498,8 @@ export function GuidesHubPage() {
               </h2>
               <p>
                 Décrivez votre projet en quelques phrases : un développeur — pas
-                un commercial — vous répond sous 24 h ouvrées avec un premier
-                avis honnête.
+                un commercial — lit votre demande et vise une réponse le
+                prochain jour ouvré, sans délai garanti.
               </p>
             </div>
             <div className="ghub-final-actions">
@@ -522,6 +518,6 @@ export function GuidesHubPage() {
       </main>
 
       <SiteFooter />
-    </div>
+    </InteractiveDesignRoot>
   );
 }

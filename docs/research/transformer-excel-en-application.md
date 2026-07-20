@@ -164,7 +164,7 @@ Détail des trous les plus structurants :
 
 - **Retool propose une option d'auto-hébergement sur ses plans Free et Startup, permettant un déploiement dans l'infrastructure du client, derrière son VPN et dans son propre VPC.**
   - Source : Retool, blog officiel, « Introducing a self-hosted option for our Free and Startup plans » — https://retool.com/blog/self-hosted-retool-plans — consulté le 19/07/2026.
-  - Fiabilité : **moyenne** — article non daté dans le résultat obtenu, non recoupé avec la page tarifs qui n'affiche pas l'option lisiblement. À revérifier avant publication.
+  - Fiabilité : **moyenne** — article non daté dans le résultat obtenu, non recoupé avec la page tarifs qui n'affiche pas l'option lisiblement. À revérifier avant toute reprise de cette affirmation dans le guide.
 
 ### 4.9 Power Apps — le chapitre le plus différenciant
 
@@ -525,24 +525,24 @@ Huit questions binaires menant à quatre issues : réparer l'existant / no-code 
 
 ---
 
-## 13. Vérifications bloquantes avant publication
+## 13. Registre des points écartés ou à revalider avant réutilisation
 
 | # | Point | Action requise |
 | --- | --- | --- |
 | 1 | HTTP 404 sur la page canonique des limites SharePoint (`learn.microsoft.com/.../software-boundaries-and-limits-for-sharepoint`) | Les limites retenues (30 M d'éléments, seuil 5 000) viennent de deux autres pages Microsoft concordantes. Revérifier la page de référence. |
 | 2 | FAQ de licences Power Apps | Ouvrir et lire intégralement https://learn.microsoft.com/en-us/power-platform/admin/powerapps-licensing-faq (sans tiret) pour confirmer la règle « un connecteur premium = tous les utilisateurs à licencier ». URL avec tiret et `.../office/troubleshoot/excel/best-practices-open-save-excel` renvoient 404. |
 | 3 | PDF du Baromètre France Num 2025 non exploité (retour vide) | Confirmer les chiffres (11 021 entreprises, 88 %, 69 %, 75 %) sur le PDF primaire avec numéros de page. **Et compléter** : le baromètre contient probablement des données sur les freins (coût, temps, compétences) et sur le budget numérique moyen des TPE/PME, très utiles au guide et non récupérées. |
-| 4 | Contradiction sur les tarifs Retool | Page officielle : 46 €/builder/mois (Business). Sources tierces : 65 $ mensuel, 50 $ annuel. Périodicité non établie. **Ne rien publier sans nouveau relevé, capture d'écran à l'appui, en basculant explicitement le sélecteur « Pay annually » puis « Pay monthly ».** |
+| 4 | Contradiction sur les tarifs Retool | Page officielle : 46 €/builder/mois (Business). Sources tierces : 65 $ mensuel, 50 $ annuel. Périodicité non établie. **Ne pas réintroduire ces montants dans le guide sans nouveau relevé, capture d'écran à l'appui, en basculant explicitement le sélecteur « Pay annually » puis « Pay monthly ».** |
 | 5 | Limite de co-édition simultanée (99 co-auteurs, recommandation de 10) | Non confirmée en source primaire ; la page Microsoft consultée ne mentionne aucun nombre maximal. Vérifier sur https://support.microsoft.com/en-us/sharepoint/get-started-with-sharepoint/document-collaboration-and-co-authoring — sinon ne pas citer. |
 | 6 | Tarifs Airtable mensuels sans engagement | Non affichés sur la page publique (seuls 20 $ et 45 $ annuels le sont). Ne pas publier 24 $ / 54 $ en l'état. |
-| 7 | Statut fiscal des tarifs en dollars inconnu | Airtable, Grist, Baserow, Glide et Retool n'affichent aucune mention HT/TTC. Pour une PME française, la TVA s'applique via autoliquidation. **Signaler l'asymétrie plutôt que la présumer** : seul Microsoft France affiche « La T.V.A. n'est pas comprise dans le prix ». |
+| 7 | Statut fiscal des tarifs en dollars inconnu | Airtable, Grist, Baserow, Glide et Retool n'affichent aucune mention HT/TTC. Le traitement de TVA dépend notamment du fournisseur, de sa localisation, du client et de son statut. **Ne pas présumer l'autoliquidation ni la récupération** : vérifier la facture, la situation et les sources officielles en vigueur ; seul Microsoft France affiche ici « La T.V.A. n'est pas comprise dans le prix ». |
 | 8 | Étude 2024 sur les erreurs de tableur (Prof. Pak-Lok Poon, via phys.org) | Chiffre de 94 % identique à celui de Panko (< 2004). Forte suspicion de circularité. **Ne pas citer** tant que la publication académique originale n'a pas été identifiée, lue et datée. |
 | 9 | Rapport CHAOS du Standish Group inaccessible (payant) | Chiffres 31 / 50 / 19 issus uniquement de synthèses tierces. Aucune édition depuis 2020. Si cité : année, absence de méthodologie publiée, critiques académiques — obligatoires. |
 | 10 | Article du Financial Times sur le fonds souverain norvégien non lu (paywall) | Rechercher le communiqué ou le rapport primaire NBIM (nbim.no) avant de qualifier l'incident d'« erreur Excel ». |
 | 11 | Aucune source publique fiable sur le prix moyen d'un développement sur mesure en France | Ni INSEE, ni France Num, ni Bpifrance, ni Syntec Numérique. **Ne pas publier de fourchette présentée comme une donnée de marché.** Publier une méthode de calcul. |
 | 12 | Aucune statistique sourçable sur le taux d'abandon des applications no-code en PME ni sur le shadow IT no-code | Traiter qualitativement, en assumant l'absence de chiffre. Écrire « aucune statistique publique ne mesure ce phénomène ». |
 | 13 | Aucune source institutionnelle proposant un arbre de décision neutre tableur / no-code / sur-mesure | Recherche complémentaire ciblée à mener sur bpifrance.fr et les publications de CCI France avant rédaction. Le Baromètre France Num reste la seule source institutionnelle exploitable. |
-| 14 | Option d'auto-hébergement Retool (plans Free et Startup) | Article de blog officiel non daté, non recoupé avec la page tarifs. Revérifier avant publication. |
+| 14 | Option d'auto-hébergement Retool (plans Free et Startup) | Article de blog officiel non daté, non recoupé avec la page tarifs. Revérifier avant toute reprise de l'affirmation. |
 
 ---
 
@@ -568,7 +568,7 @@ elle ne collecte rien par défaut et si elle peut recommander de ne pas acheter.
 
 ```text
 Slug : transformer-excel-en-application
-Statut actuel : batterie technique validée, prêt pour revue humaine
+Statut au 20 juillet 2026 : publié dans le registre éditorial, parmi les 40 `PUBLISHED_GUIDES` ; le hub, le sitemap et `llms.txt` sont alimentés automatiquement lors du build ; aucun test lecteur humain, déploiement actif ou état d'indexation Google n'est déduit de ce statut
 Requête principale : transformer un fichier Excel en application métier
 Moment du parcours : explorer puis décider
 Lecteur : dirigeant ou indépendant dont un processus repose déjà sur Excel
@@ -673,42 +673,39 @@ et non répété à chaque section ; diagnostic avant toute exposition commercia
 
 ### 15.8 Scorecard après rendu navigateur local
 
-| Axe | Note | Preuve | Réserve avant publication |
+| Axe | Note | Preuve | Réserve de maintenance |
 |---|---:|---|---|
 | Intention | 2 | réponse conditionnelle dès l'ouverture | aucune |
 | Décision | 2 | quatre sorties + diagnostic + plan 30 jours | aucune ; les cinq familles de verdict ont été exercées |
 | Pédagogie | 2 | termes définis à l'usage, tableaux et exemple | revue humaine encore absente |
 | Profondeur | 2 | coût, données, adoption, sortie, contrat et archive | aucune |
-| Preuve | 2 | sources primaires au plus près et section sources | tarifs à revalider après publication |
+| Preuve | 2 | sources primaires au plus près et section sources | tarifs à revalider avant chaque modification substantielle |
 | Comparaison | 2 | même périmètre et horizon de quatre ans | aucune |
 | Originalité | 2 | diagnostic transparent, local et copiable | unicité SERP non revendiquée |
 | Style | 2 | architecture distincte et vendeur déconseillé | lecture orale finale à faire |
 | Conversion | 2 | mauvais fits + action autonome + CTA tardif | collecteur d'événements non ajouté |
 | SEO/produit | 2 | registre, metadata, JSON-LD, OG, hub, sitemap, maillage, build et rendu navigateur validés | indexation réelle à contrôler après publication |
 
-**Score local : 20/20. Statut maximal : prêt pour revue humaine ; pas encore
-publié, indexé ni validé par un lecteur non technique.**
+**Score local : 20/20. Statut au 20 juillet 2026 : publié dans le registre
+éditorial parmi les 40 `PUBLISHED_GUIDES`, sans validation par un lecteur non
+technique et sans preuve d'indexation.**
 
-### 15.9 Preuves de vérification locale du 19/07/2026
+### 15.9 Discipline de preuve après publication
 
-- `npm test` : 15 fichiers, 71 tests réussis ;
-- ESLint ciblé sur les fichiers TypeScript/TSX modifiés : réussi ;
-- `npx tsc --noEmit` : réussi ;
-- `npm run build` : réussi, 82 pages statiques, route du guide générée ;
-- `git diff --check` : réussi ;
-- rendu réel contrôlé à 320, 360, 390, 430, 640, 768, 1024, 1280,
-  1440 et 1600 px : aucun débordement horizontal après chargement complet ;
-- menu ouvert contrôlé à 320 et 1280 px : panneau contenu dans le viewport ;
-- diagnostic contrôlé sur les verdicts Excel fiabilisé, logiciel existant,
-  prototype Power Apps, Power Apps/low-code et cadrage sur mesure ;
-- réinitialisation et confirmation visuelle de la copie du résultat contrôlées ;
-- aucune erreur ni alerte dans la console du navigateur ;
-- canonique, `index, follow`, un seul H1, données structurées `Article`,
-  `BreadcrumbList` et `FAQPage` valides ; les huit questions du schéma FAQ
-  correspondent à la FAQ visible ;
-- carte présente sur `/guides`, URL présente dans `/sitemap.xml`, image Open
-  Graph servie en PNG 1200 × 630 avec un statut HTTP 200.
+Les anciens décomptes de tests et de pages de la build du 19 juillet ont été
+retirés : ils ne prouvent rien sur un snapshot modifié. Pour chaque livraison,
+il faut désormais rattacher les éléments suivants au commit et à l'artefact
+exacts :
 
-La capture mobile a été relue en thème sombre, de même que le hero bureau, le
-diagnostic et l'image de partage. La validation éditoriale par un dirigeant ou
-un indépendant reste volontairement distincte de cette QA technique.
+- batterie complète décrite au §11 de la règle d'or de vigilance ;
+- rendu réel aux largeurs prévues par la charte, menu ouvert compris ;
+- cinq familles de verdict du diagnostic, réinitialisation et copie du
+  résultat ;
+- absence de débordement horizontal et d'erreur console ;
+- canonical, directive `index,follow`, H1, `Article`, `BreadcrumbList`, carte
+  du hub, entrée sitemap et image Open Graph 1200 × 630 ;
+- présence sur le déploiement actif après livraison.
+
+Ces contrôles techniques ne remplacent pas une lecture humaine. La présence
+dans le hub ou le sitemap ne prouve ni découverte, ni exploration, ni
+indexation, ni classement.

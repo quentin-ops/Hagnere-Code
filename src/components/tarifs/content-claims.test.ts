@@ -25,4 +25,21 @@ describe("tarifs public claims", () => {
     expect(publishedContent).not.toMatch(/Conformité RGPD clé en main/i);
     expect(publishedContent).toContain("Aucune inclusion implicite");
   });
+
+  it("ne promet aucun quota SEO public d'articles ou de liens", () => {
+    const publishedContent = `${bodyHtml}\n${pageSource}`;
+
+    expect(publishedContent).not.toMatch(
+      /(?:8|14|20\+?)\s*(?:articles?|contenus?)/i,
+    );
+    expect(publishedContent).not.toMatch(
+      /(?:3|6)\s*(?:BL|backlinks?|liens? entrants?)/i,
+    );
+    expect(publishedContent).toContain(
+      "Qualité, formats, validation et acquisition définis au devis",
+    );
+    expect(publishedContent).toContain(
+      "production et acquisition cadrées au devis",
+    );
+  });
 });

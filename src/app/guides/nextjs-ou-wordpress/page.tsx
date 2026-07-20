@@ -32,16 +32,11 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -58,7 +53,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4800,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -111,32 +105,32 @@ const faqItems = [
   {
     question: "Next.js est-il meilleur que WordPress pour le référencement naturel ?",
     answer:
-      "Google est formel : aucun CMS ni framework n'est favorisé en soi — John Mueller (Google Search) l'a répété, seul compte le résultat final (HTML, vitesse, contenu). L'avantage réel de Next.js est indirect mais mesurable : un HTML complet servi immédiatement à Googlebot et des Core Web Vitals plus faciles à tenir (les sites WordPress sont derniers des grands CMS avec ~46 % au vert, sous la moyenne mondiale du web). Un WordPress bien optimisé peut très bien ranker ; il part juste avec un handicap technique à compenser.",
+      "Google ne recommande pas un CMS ou un framework pour obtenir un classement. Le rendu accessible aux moteurs, le contenu, l'architecture, les liens, l'expérience et de nombreux autres signaux comptent. Next.js comme WordPress peuvent produire un site explorabile et performant ; la qualité dépend de l'implémentation, des extensions, de l'hébergement et de la maintenance.",
   },
   {
     question: "WordPress vaut-il encore la peine d'être utilisé en 2026 ?",
     answer:
-      "Oui, dans son terrain : un blog ou un site éditorial intensif géré par une équipe non technique, un budget serré, une mise en ligne rapide. WordPress fait toujours tourner environ 41 % du web et 59 % des sites à CMS. Mais 2025-2026 marque le premier déclin durable de sa part de marché depuis 2011, sur fond de crise de gouvernance et d'une seule version majeure publiée en 2025 — le statu quo « WordPress par défaut » n'est plus tenable : en 2026, pour un site professionnel d'acquisition, le défaut s'est inversé au profit du sur-mesure — WordPress est devenu un choix de niche (éditorial intensif, micro-budget), plus un réflexe.",
+      "Oui. WordPress reste pertinent lorsque son interface éditoriale, son écosystème ou les compétences disponibles répondent au besoin. Next.js peut être préférable pour une application ou une architecture sur mesure. La part de marché ou les préférences de l'agence ne suffisent pas à décider : comparez fonctions, édition, sécurité, performance, portabilité, compétences et coût total.",
   },
   {
     question: "Quels sont les inconvénients de WordPress ?",
     answer:
-      "Quatre, chiffrables. La sécurité de l'écosystème : 11 334 vulnérabilités recensées en 2025 (+42 %), dont 91 % dans les extensions (les « plugins ») — d'où une maintenance obligatoire (500 à 2 000 €/an). La performance : dernier des grands CMS aux Core Web Vitals (~46 % de sites au vert contre 75 % pour Shopify). Le coût récurrent : licences premium (120 à 450 $/an) + maintenance à vie. Et la dépendance aux constructeurs de pages, dont la mise en page n'est pas portable si vous voulez partir.",
+      "Les points à contrôler sont le nombre et la qualité des extensions, leur suivi de sécurité, les mises à jour, la performance du thème, les licences et la portabilité des contenus et mises en page. Leur coût dépend de la configuration et du niveau de service ; un WordPress simple et bien maintenu n'a pas le même profil qu'un assemblage de nombreuses extensions.",
   },
   {
     question: "Quelle est la meilleure alternative à WordPress ?",
     answer:
-      "Cela dépend du besoin. Pour un site vitrine ou corporate orienté acquisition : un site sur mesure Next.js (statique, rapide, sans extensions à patcher). Pour vendre en ligne : Shopify (simple) ou du sur-mesure (volumétrie). Pour garder une édition de contenu confortable sans la dette WordPress : Next.js + un CMS headless (Sanity et Payload ont des plans gratuits suffisants pour un site vitrine). Webflow est une option intermédiaire, mais vous restez locataire d'un service par abonnement (un « SaaS ») : si l'éditeur augmente ses prix ou ferme, vous ne pouvez pas partir avec votre site.",
+      "Il n'existe pas de meilleure alternative universelle. Next.js, un autre générateur de site, un CMS headless, Webflow, Shopify ou une solution sur mesure répondent à des besoins différents. Comparez l'édition, les intégrations, le paiement, l'export réel du contenu et du code, l'hébergement, les dépendances, les coûts et le plan de sortie avant de choisir.",
   },
   {
     question: "Quand ne pas utiliser WordPress ?",
     answer:
-      "Le consensus est unanime sur un cas : dès que le site devient applicatif — espace client, tableau de bord, devis en ligne, connexion à vos logiciels de gestion (ERP/CRM : facturation, stock, fichier clients), temps réel — WordPress est un CMS, pas un framework d'application. Il est aussi déconseillé quand le site est votre canal d'acquisition principal et que chaque dixième de seconde compte, ou quand personne en interne ne veut assumer les mises à jour hebdomadaires de sécurité.",
+      "Évaluez une autre architecture lorsque le projet comporte des règles métier complexes, du temps réel, des contraintes fortes d'intégration ou une équipe qui ne souhaite pas exploiter WordPress. WordPress peut être étendu, mais l'écart entre un CMS enrichi et une application dédiée doit être comparé en risque, compétences et coût total, sans règle automatique.",
   },
   {
     question: "WordPress est-il gratuit ?",
     answer:
-      "Le logiciel, oui. Le site professionnel, non : création 1 500 à 15 000 € en France, hébergement managé 25 à 40 €/mois, licences premium courantes (constructeur de pages, cache, champs personnalisés : 120 à 450 $/an), et surtout maintenance de sécurité 500 à 2 000 €/an — rendue de facto obligatoire par le rythme des failles d'extensions. « Gratuit » décrit la licence, pas le coût de possession.",
+      "Le logiciel est distribué sous licence libre, mais l'exploitation peut inclure conception, hébergement, domaine, extensions payantes, sauvegardes, sécurité, support et évolutions. Chiffrez ces postes sur une durée commune ; aucun forfait annuel universel ne se déduit du choix de WordPress seul.",
   },
   {
     question: "Peut-on combiner WordPress et Next.js ?",
@@ -151,42 +145,31 @@ const faqItems = [
   {
     question: "Combien coûte un site Next.js par rapport à un site WordPress ?",
     answer:
-      "À l'entrée, WordPress gagne : 800 à 5 000 € avec un thème contre 4 000 à 8 000 € et plus pour du Next.js sur mesure en agence (6 900 € chez Hagnéré Code, design et rédaction inclus). Sur 3 ans, l'écart fond : le WordPress professionnel cumule maintenance (500-2 000 €/an) et licences (120-450 $/an) là où un site statique Next.js coûte ~0-20 €/mois d'hébergement et n'a structurellement rien à patcher en urgence. Faites le calcul en coût total, pas en devis initial.",
+      "Un WordPress à thème peut coûter moins cher à créer qu'un Next.js sur mesure, mais aucune technologie ne fixe à elle seule le coût total. Comparez sur une même durée la conception, l'hébergement, les licences, les mises à jour, la sécurité, le support et les évolutions. Un site Next.js statique réduit certaines surfaces liées au CMS et aux extensions, tout en conservant des dépendances et une plateforme à surveiller et mettre à jour.",
   },
   {
     question: "Pourquoi mon site WordPress est-il lent ?",
     answer:
-      "Structurellement : chaque page est fabriquée à la demande (code PHP + base de données) à chaque visite — seuls ~32 % des sites WordPress ont un bon temps de réponse serveur — et les thèmes/constructeurs de pages chargent des mégaoctets de scripts. Résultat mesuré : ~46 % des sites WordPress passent les Core Web Vitals, dernière place des grands CMS. Cache, CDN et optimisation d'images compensent en partie — c'est un travail (et un coût) récurrent qu'un site statique n'a pas.",
+      "Les causes possibles incluent l'hébergement, le thème, les extensions, les images, les scripts tiers, les requêtes de base de données et le cache. WordPress peut servir des pages mises en cache et un site Next.js peut lui aussi être lent ou dynamique. Mesurez d'abord les pages et les données de terrain, puis corrigez la cause observée.",
   },
   {
     question: "WordPress est-il sûr ?",
     answer:
-      "Le cœur de WordPress, oui : 6 vulnérabilités seulement en 2025, toutes mineures. Le danger est l'écosystème : 91 % des 11 334 failles de 2025 viennent des extensions, la moitié des failles critiques sont exploitées dans les 24 h, et les défenses des hébergeurs ne bloquent qu'une minorité des attaques ciblées. Un WordPress à 5 extensions maintenu chaque semaine est raisonnablement sûr ; un WordPress à 40 extensions sans contrat de maintenance est une cible.",
+      "Il peut être exploité de façon sûre avec une configuration, des extensions, des accès, des sauvegardes et des mises à jour maîtrisés. Le risque dépend de la surface exposée et de la réactivité, pas d'un nombre magique d'extensions. Next.js conserve aussi des dépendances, secrets, comptes d'hébergement et mises à jour à gérer.",
   },
   {
     question: "Quel budget pour quitter WordPress sans perdre son référencement ?",
     answer:
-      "Une migration vers un site sur mesure se chiffre comme une refonte : 60 à 80 % du prix d'une création équivalente, plus la migration des contenus et surtout le plan de redirections 301 page à page (chaque ancienne adresse renvoie automatiquement visiteurs et Google vers la nouvelle) — c'est lui qui préserve vos positions Google. Pour un site vitrine : 6 900 à 22 000 € selon l'ampleur chez Hagnéré Code, redirections et suivi SEO post-migration inclus. Exigez ce plan dans tout devis : votre trafic acquis vaut plus que le site.",
+      "Une migration vers un site sur mesure se chiffre comme une refonte : 60 à 80 % du prix d'une création équivalente, plus la migration des contenus et surtout le plan de redirections 301 page à page (chaque ancienne adresse renvoie automatiquement visiteurs et moteurs vers la nouvelle). Ce plan réduit les risques techniques de migration, sans garantir le maintien des positions. Pour un site vitrine : 6 900 à 22 000 € selon l'ampleur chez Hagnéré Code, redirections et suivi SEO post-migration inclus. Exigez ce plan dans tout devis : votre trafic acquis mérite une migration contrôlée.",
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -235,7 +218,7 @@ export default function Page() {
             { id: "qui-utilise", label: "4. Qui utilise Next.js (vérifié dans le code source)" },
             { id: "performance", label: "5. Performance mesurée : les Core Web Vitals réels" },
             { id: "seo", label: "6. Le match SEO : ce que Google dit vraiment" },
-            { id: "securite", label: "7. Sécurité : les chiffres que personne ne source" },
+            { id: "securite", label: "7. Sécurité : vérifier les chiffres avancés" },
             { id: "gouvernance", label: "8. La crise WordPress 2024-2026, expliquée aux dirigeants" },
             { id: "couts", label: "9. Le vrai coût sur 3 ans, décomposé" },
             { id: "contenu", label: "10. « Et pour publier mon contenu ? » — l'autonomie honnête" },
@@ -247,33 +230,24 @@ export default function Page() {
 
         <h2 id="reponse-rapide">1. L&apos;essentiel en 60 secondes : le verdict par profil</h2>
         <p>
-          <strong>Next.js / sur-mesure est aujourd&apos;hui le choix
-          par défaut d&apos;un site professionnel</strong> : il doit
-          être trouvé sur Google (le référencement naturel, ou
-          « SEO »), transformer les visiteurs en demandes de devis (ce
-          qu&apos;on appelle la « conversion »), porter votre image —
-          et dès qu&apos;il devient applicatif (espace client, devis
-          en ligne, connexion à vos logiciels de gestion), il
-          n&apos;y a plus débat. <strong>WordPress reste pertinent
-          dans des cas précis et bornés</strong> : site avant tout
-          éditorial (blog, actualités publiées chaque semaine par une
-          équipe non technique) ou budget plafonné sous 4 000 € — à
-          condition d&apos;accepter une maintenance de sécurité à vie. Entre les deux, il
-          existe une 3e voie dite « headless » (littéralement « sans
-          tête ») : vos équipes continuent d&apos;écrire leurs contenus dans
-          WordPress, mais vos visiteurs voient un site construit en
-          Next.js — plus rapide et plus sûr (section 12).
+          Il n&apos;existe pas de choix par défaut valable pour tous les sites.
+          WordPress apporte un CMS intégré et un vaste écosystème ; Next.js
+          fournit un framework pour composer une architecture sur mesure,
+          statique ou dynamique. Une troisième voie « headless » peut associer
+          une interface éditoriale à un front séparé. Décidez à partir des
+          fonctions, de l&apos;édition, des compétences, des risques, de la
+          portabilité et du coût total, puis vérifiez le résultat produit.
         </p>
         <GuideTable
           headers={["Votre profil", "Notre verdict", "Budget repère"]}
           rows={[
             ["Blog / média : contenu quotidien, équipe non technique", "WordPress, bien maintenu", "1 500 – 8 000 € + maintenance"],
             ["TPE locale : présence simple, micro-budget assumé", "WordPress ou outil clé en main (type Wix, Squarespace) comme solution d'attente — à réévaluer dès que le site doit générer des clients", "800 – 4 000 €"],
-            ["PME : le site doit générer des clients (référencement, conversion)", "Next.js sur mesure", "4 000 – 22 000 €"],
-            ["Corporate à fort enjeu d'image et de performance", "Next.js sur mesure", "10 000 – 40 000 €"],
+            ["PME : le site doit soutenir l'acquisition", "Comparer CMS bien exploité et architecture sur mesure", "Périmètre à chiffrer"],
+            ["Corporate à fort enjeu d'image et de performance", "Comparer édition, intégrations, performance et exploitation", "Périmètre à chiffrer"],
             ["Boutique en ligne", "Shopify (simple) ou sur-mesure (marque, volumétrie) — voir section 11", "3 000 – 80 000 €"],
             ["Éditorial fort trafic / multicanal", "WordPress headless + Next.js", "8 000 – 25 000 €"],
-            ["Application web, espace client, logiciels de gestion (ERP/CRM : facturation, stock, clients)", "Sur-mesure, unanime", "15 000 – 120 000 €"],
+            ["Application web, espace client, logiciels de gestion (ERP/CRM : facturation, stock, clients)", "Architecture applicative à cadrer ; WordPress peut rester CMS", "Périmètre à chiffrer"],
           ]}
         />
 
@@ -288,15 +262,11 @@ export default function Page() {
           disent « plugins », nous dirons « extensions ». Next.js est un
           framework — une fondation avec laquelle un développeur construit
           un site ou une application sur mesure. Comparer les deux,
-          c&apos;est comparer une maison sur catalogue et un architecte : la
-          première est debout en trois semaines et ressemble à ses
-          voisines ; le second coûte plus cher, dessine pour votre terrain,
-          et le résultat vous appartient jusqu&apos;aux fondations. Les
-          deux ne se valent pas pour autant : pour une entreprise qui
-          veut convertir et durer, le sur-mesure est devenu la
-          recommandation par défaut — le reste de ce guide chiffre
-          pourquoi, et délimite précisément les cas, désormais
-          minoritaires, où le CMS garde l&apos;avantage.
+          c&apos;est comparer un produit doté de son atelier éditorial à une
+          boîte à outils de développement. Le résultat, sa propriété et sa
+          portabilité dépendent dans les deux cas du contrat, du code, des
+          contenus, des extensions et des services tiers. Le reste du guide
+          propose une matrice de décision, pas un verdict automatique.
         </p>
         <p>
           La vraie question du dirigeant n&apos;est donc pas technique, elle
@@ -319,7 +289,7 @@ export default function Page() {
             <li><strong>Framework</strong> : boîte à outils avec laquelle un développeur construit un site sur mesure (Next.js en est un).</li>
             <li><strong>Extension</strong> (ou « plugin ») : module ajouté à WordPress pour une fonction précise — formulaire, boutique, SEO.</li>
             <li><strong>Thème</strong> : maquette prête à l&apos;emploi qui donne son apparence à un site WordPress.</li>
-            <li><strong>Site statique</strong> : pages fabriquées à l&apos;avance, une fois pour toutes — très rapide, presque impossible à pirater.</li>
+            <li><strong>Site statique</strong> : pages pouvant être fabriquées à l&apos;avance ; la surface serveur peut être réduite, sans supprimer les risques liés au code, à la chaîne de build, au domaine, à l&apos;hébergement ou aux comptes.</li>
             <li><strong>CDN</strong> : réseau de serveurs qui gardent chacun une copie de votre site près de vos visiteurs — des entrepôts régionaux plutôt qu&apos;un entrepôt unique.</li>
             <li><strong>SEO</strong> (référencement naturel) : le fait d&apos;apparaître dans les résultats Google.</li>
             <li><strong>Core Web Vitals</strong> : les trois notes de confort (vitesse, réactivité, stabilité) que Google attribue à chaque site.</li>
@@ -346,7 +316,7 @@ export default function Page() {
         <p>
           Soyons honnêtes sur la mesure : selon la période observée, certains
           observateurs y voient une stagnation plutôt qu&apos;une baisse.
-          Mais plus personne ne mesure de croissance. Pour un outil qui en
+          Mais les mesures citées ici n&apos;établissent pas de croissance. Pour un outil qui en
           gagnait chaque année depuis quinze ans, c&apos;est déjà une
           information.
         </p>
@@ -374,8 +344,8 @@ export default function Page() {
           nike.com ou notion.com. Ce ne sont pas des paris technologiques :
           ce sont des groupes pour qui la performance, l&apos;image et la
           sécurité du site sont des enjeux de direction générale. À
-          l&apos;autre bout du spectre, nous livrons les mêmes fondations à
-          des PME de Savoie — c&apos;est l&apos;avantage d&apos;un standard
+          l&apos;autre bout du spectre, les mêmes fondations techniques sont
+          accessibles à des PME de Savoie — c&apos;est l&apos;avantage d&apos;un standard
           ouvert : le socle de TF1 est accessible à une entreprise de 10
           personnes.
         </p>
@@ -385,11 +355,11 @@ export default function Page() {
             Pour que la comparaison tienne, disons aussi ce qui fâche.
           </p>
           <ul className="list-disc pl-4 space-y-1.5">
-            <li>Le ticket d&apos;entrée reste 2 à 5 fois plus élevé qu&apos;un WordPress à thème low-cost — mais l&apos;écart s&apos;est fortement resserré depuis que le développement assisté par IA (Claude Code) a fait baisser le coût du sur-mesure : face à un WordPress professionnel en agence, il ne reste que quelques dizaines de pourcents à la création (5 000 € contre 6 900 €, section 9), effacés dès la première année de maintenance.</li>
+            <li>Le ticket d&apos;entrée de notre périmètre sur mesure reste supérieur à de nombreuses offres WordPress sur thème. L&apos;écart exact dépend des contenus, du design, des intégrations, des droits, de la maintenance et des coûts tiers ; il faut le calculer sur le même périmètre et la même durée. Les études sur l&apos;IA ne permettent pas d&apos;en déduire une remise ou un délai universel.</li>
             <li>Sans outil d&apos;édition branché, chaque modification de contenu passe par un développeur — la section 10 détaille les solutions.</li>
             <li>Rien d&apos;équivalent aux 61 000 extensions WordPress : formulaire, multilingue ou réservation se développent, ou s&apos;intègrent via des services spécialisés.</li>
             <li>Les développeurs eux-mêmes trouvent l&apos;outil de plus en plus complexe : dans la grande enquête annuelle du secteur (State of JS 2025), environ un développeur sur cinq s&apos;en dit enthousiaste et un sur six critique. Traduction pour vous : un outil puissant, qui demande un prestataire réellement compétent.</li>
-            <li>Next.js est édité par une société privée, Vercel, qui vend aussi de l&apos;hébergement. On a longtemps reproché aux sites Next.js d&apos;être difficiles à héberger ailleurs que chez elle ; ce n&apos;est plus vrai — l&apos;hébergeur de votre choix fait l&apos;affaire, et pour un site vitrine statique la question ne se pose même pas (section 8).</li>
+            <li>Next.js est porté par Vercel, qui vend aussi de l&apos;hébergement. D&apos;autres déploiements sont possibles, mais leur compatibilité dépend des fonctions utilisées, de l&apos;adaptateur, du cache et de l&apos;exploitation. Le plan de sortie doit être testé, pas supposé.</li>
           </ul>
         </InfoBox>
 
@@ -406,7 +376,7 @@ export default function Page() {
           Si votre site est concerné, notre guide{" "}
           <Link href="/guides/pourquoi-mon-site-est-lent">pourquoi mon site
           est lent</Link> pose le diagnostic dans le bon ordre — en
-          commençant par le poste que presque tout le monde oublie.
+          commençant par le poids du JavaScript exécuté.
         </p>
 
         <InfoBox variant="emerald" title="En clair : les Core Web Vitals">
@@ -456,16 +426,15 @@ export default function Page() {
           Report d&apos;HTTP Archive (cwvtech.report) l&apos;estime autour
           de 68 % de sites au vert : un framework moderne mal utilisé
           produit aussi des sites lents. L&apos;argument exact est
-          celui-ci : <strong>un site statique sur mesure contrôle 100 % de
-          sa performance</strong>. Ses pages sont fabriquées une seule fois,
-          à l&apos;avance, puis copiées sur des serveurs répartis dans le
-          monde entier (un « CDN »), au plus près de vos visiteurs : au
-          moment de la visite, il n&apos;y a plus rien à calculer — la page
-          part immédiatement. Un WordPress doit compenser sa mécanique par
-          des couches d&apos;accélération (le « cache ») : un travail, et un
-          coût, récurrents. C&apos;est pourquoi nous garantissons
-          contractuellement des Core Web Vitals au vert : sur ce socle,
-          c&apos;est une exigence tenable, pas une promesse.
+          celui-ci : <strong>un site statique sur mesure réduit certains
+          traitements au moment de la visite</strong>. Ses pages peuvent être
+          fabriquées à l&apos;avance, puis copiées sur des serveurs répartis dans le
+          monde entier (un « CDN »), au plus près de vos visiteurs. Des
+          fonctions dynamiques, scripts tiers et appels réseau peuvent
+          néanmoins rester nécessaires. WordPress peut aussi utiliser du cache
+          et un CDN. Une cible utile reste à définir page par page,
+          avec un protocole de mesure écrit ; aucun framework ne garantit à
+          lui seul des Core Web Vitals de terrain au vert.
         </p>
 
         <InfoBox variant="amber" title="Ce que ça change pour vous : la vitesse, traduite en euros">
@@ -479,8 +448,8 @@ export default function Page() {
           par son site, un site lent, ce sont des appels en moins chaque
           semaine. C&apos;est là que se joue l&apos;écart entre la
           dernière place du classement (WordPress, 43-46 % au vert) et
-          sa tête — et ce qu&apos;un site statique maîtrisé permet de
-          garantir par contrat.
+          sa tête. Ces résultats agrégés et cette étude ne permettent pas de
+          prédire la performance ou le chiffre d&apos;affaires d&apos;un autre site.
         </InfoBox>
 
         <h2 id="seo">6. Le match SEO : ce que Google dit vraiment</h2>
@@ -493,39 +462,36 @@ export default function Page() {
           contenu. Ce que WordPress a réellement pour lui : des extensions
           SEO matures qui balisent le terrain pour les non-techniciens. Ce
           que le sur-mesure a pour lui : le résultat, justement. Des pages
-          que le robot de Google (le programme qui parcourt le web pour le
-          classer) lit d&apos;un coup : il reçoit une page finie — un
-          dossier imprimé et relié — au lieu d&apos;un assemblage de scripts
-          à exécuter lui-même ; moins Google travaille pour lire une page,
-          plus il en lit, et mieux il la comprend. Des données structurées
+          dont le contenu principal est présent dans le HTML initial. Google
+          sait aussi rendre du JavaScript : ce choix facilite certains contrôles
+          techniques, sans garantir exploration, compréhension ou classement.
+          Des données structurées
           taillées sur mesure — les étiquettes invisibles qui décrivent
           chaque page à Google et aux assistants IA (votre activité, vos
-          prix, cette FAQ, cet auteur) et alimentent les résultats enrichis.
-          Des Core Web Vitals au vert. Et aucune limite d&apos;extension.
+          prix lorsque l&apos;offre visible les justifie, cet auteur). Leur
+          présence peut rendre une page éligible à certaines présentations,
+          sans assurer résultat enrichi, classement ou citation. Les objectifs
+          Core Web Vitals restent à mesurer. Et aucune limite d&apos;extension.
           Ce que le sur-mesure permet et qu&apos;aucun thème ne
           réplique, au passage : un design dessiné pour votre marque
           et des animations de niveau produit (bibliothèques comme
           Framer Motion ou GSAP, inaccessibles proprement sur un thème
           WordPress alourdi de scripts) — la différence entre un site
           qui informe et un site qui convainc. Ce site —
-          hagnere-code.ai — est lui-même développé à 100 %
-          en Next.js/React : les guides que vous lisez, leur vitesse
-          de chargement, leur design et leurs animations sont notre
-          démonstration en production.
+          hagnere-code.ai — constitue un exemple public dont vous pouvez
+          examiner le rendu, la vitesse et les interactions. Cela ne vaut pas
+          garantie de performance pour un autre projet et ne prouve pas à lui
+          seul chaque composant de la stack interne.
         </p>
         <p>
-          Nouveau facteur 2026 : une part croissante des recherches obtient
-          sa réponse dans les moteurs et assistants IA, qui lisent le code
-          final des pages et s&apos;appuient fortement sur ces données
-          structurées. Là encore, aucun outil n&apos;est favorisé en soi —
-          mais un site au code propre et au contenu immédiatement lisible
-          part avec l&apos;avantage, quand un WordPress à constructeur de
-          pages produit un code alourdi et brouillon, que les moteurs
-          déchiffrent moins bien et qu&apos;il faudra nettoyer extension par
-          extension.
+          Certains moteurs et assistants peuvent exploiter le contenu public et
+          certains balisages, selon leurs propres systèmes. Aucun CMS, fichier
+          `llms.txt` ou schéma ne garantit d&apos;être cité. Le bénéfice vérifiable
+          reste plus simple : un contenu clair, accessible et correctement
+          structuré est plus facile à contrôler et à maintenir.
         </p>
 
-        <h2 id="securite">7. Sécurité : les chiffres que personne ne source</h2>
+        <h2 id="securite">7. Sécurité : vérifier les chiffres avancés</h2>
         <p>
           Les pages concurrentes recopient des chiffres invérifiables
           (« 30 000 sites piratés par jour ») sans jamais citer de source.
@@ -543,8 +509,8 @@ export default function Page() {
             <strong>exploitées par des pirates dans les 24 heures</strong>{" "}
             suivant leur publication — le plus souvent en moins de 5 heures,
             bien avant que la plupart des sites aient installé le correctif.
-            Et personne ne « choisit » votre site : des robots testent tous
-            les sites du monde en continu.
+            Votre site n&apos;est pas sélectionné manuellement : des robots testent
+            en continu les sites exposés.
           </li>
           <li>
             Les défenses standard des hébergeurs ne bloquent que{" "}
@@ -558,28 +524,20 @@ export default function Page() {
         </ul>
 
         <InfoBox variant="amber" title="À quoi ressemble un piratage pour une TPE ?">
-          Un matin, votre site affiche des publicités douteuses ou redirige
-          vos visiteurs ailleurs. Google le repère, affiche « site
-          dangereux » et le retire de ses résultats. Il faut payer un
-          prestataire en urgence (souvent 500 à 2 000 €) pour nettoyer, puis
-          attendre des semaines que Google refasse confiance au site.
-          Pendant ce temps, vos clients qui vous cherchent ne vous trouvent
-          plus.
+          Exemple de risque, sans fréquence ni coût présumés : un compte, une
+          extension ou un serveur compromis peut modifier le site ou déclencher
+          un avertissement de sécurité. La réponse dépend des sauvegardes, des
+          journaux, de l&apos;hébergeur et de l&apos;incident ; le plan doit préciser
+          qui intervient, dans quel délai et avec quelle procédure de reprise.
         </InfoBox>
 
         <p>
-          Conséquence budgétaire directe : un WordPress professionnel sans
-          contrat de maintenance hebdomadaire est une cible, pas un site. Ce
-          contrat coûte 500 à 2 000 €/an — c&apos;est le poste qui change
-          tout le calcul économique (section 9). Un site statique Next.js,
-          lui, n&apos;expose <strong>ni interface d&apos;administration, ni
-          extensions, ni base de données</strong> : rien à forcer — pas de
-          porte de connexion, pas de mot de passe à deviner, pas de module
-          tiers vulnérable. Chaque extension WordPress est une porte de plus
-          percée dans le bâtiment ; un site statique est une vitrine
-          scellée : on peut la regarder, pas y entrer. D&apos;où la ligne de
-          maintenance quasi nulle du tableau de la section 9 : on ne répare
-          pas une porte qui n&apos;existe pas.
+          Un WordPress et un site Next.js nécessitent tous deux une exploitation
+          adaptée à leur architecture. Un export statique peut réduire la surface
+          publique en l&apos;absence de CMS exposé ou de base de données accessible,
+          mais il conserve des dépendances, une chaîne de déploiement, un domaine,
+          des comptes et parfois des API. Le budget doit couvrir les risques et le
+          niveau de service réellement retenus, sans attribuer zéro par défaut.
         </p>
         <p>
           La sécurité mesure le risque technique. Reste un risque
@@ -619,26 +577,21 @@ export default function Page() {
         <p>
           Next.js est un logiciel open source — code public, gratuit — créé
           et maintenu par Vercel, une entreprise américaine dont le métier
-          est l&apos;hébergement, et bâti sur React, soutenu par Meta et des
-          milliers d&apos;entreprises. Trois garde-fous protègent votre
-          investissement : le code de votre site vous appartient et
-          continuerait de tourner tel quel si Vercel disparaissait demain ;
-          l&apos;hébergement est portable (l&apos;hébergeur de votre
-          choix) ; et des millions de développeurs React dans le monde
-          savent reprendre un projet Next.js. Le risque Vercel existe — un
-          acteur commercial oriente le produit, comme Automattic pour
-          WordPress — mais il ne crée pas de dépendance de survie :
-          c&apos;est la différence entre dépendre d&apos;un fournisseur et
-          dépendre d&apos;un standard.
+          est l&apos;hébergement, et bâti sur React. La licence open source ne
+          garantit ni la propriété de tous les livrables ni une migration
+          instantanée. Le contrat doit préciser le dépôt, les droits, les
+          variables, les données et les services tiers ; un test de déploiement
+          alternatif permet d&apos;évaluer la portabilité réelle. Certaines
+          fonctions peuvent dépendre d&apos;adaptateurs ou de services Vercel.
         </p>
 
         <InfoBox variant="emerald" title="À retenir avant de parler argent">
           <ol className="list-decimal pl-4 space-y-1.5">
             <li>WordPress domine encore (41 % du web) mais recule pour la première fois depuis 2011.</li>
-            <li>Sa lenteur est une mécanique, pas une fatalité : chaque page est fabriquée à la demande, un site statique est prêt à servir.</li>
-            <li>Google ne préfère aucun outil — il préfère les sites rapides au code propre.</li>
-            <li>Le risque de sécurité vient des extensions (91 % des 11 334 failles de 2025) : c&apos;est ce qui rend la maintenance payante obligatoire.</li>
-            <li>La gouvernance : crise réelle côté WordPress, dépendance limitée côté Next.js.</li>
+            <li>La performance dépend de l&apos;implémentation ; WordPress peut être mis en cache et Next.js peut être dynamique.</li>
+            <li>Google ne recommande aucun outil particulier pour le classement.</li>
+            <li>La surface de risque dépend des extensions, dépendances, accès, services et pratiques d&apos;exploitation.</li>
+            <li>La gouvernance et la dépendance fournisseur doivent être évaluées des deux côtés.</li>
           </ol>
           <p className="mt-2">
             Chacun de ces points a un prix — c&apos;est l&apos;objet de la
@@ -648,73 +601,53 @@ export default function Page() {
 
         <h2 id="couts">9. Le vrai coût sur 3 ans, décomposé</h2>
         <p>
-          Passons au seul chiffre qui compte pour un dirigeant : le{" "}
-          <strong>coût total de possession</strong> — création, hébergement,
-          licences et maintenance additionnés sur la durée (le « TCO » des
-          directeurs financiers). Voici notre calcul, hypothèses affichées :{" "}
-          <strong>site vitrine PME de 10-15 pages, orienté acquisition,
-          réalisé en agence</strong>, tarifs France 2026.
+          Comparez le <strong>coût total de possession</strong> sur une durée
+          commune. Les montants ne peuvent pas être déduits du framework ou du
+          CMS seul : demandez-les pour votre périmètre et marquez les inconnues.
         </p>
         <GuideTable
-          headers={["Poste sur 3 ans", "WordPress pro (agence)", "Next.js sur mesure"]}
+          headers={["Poste sur 3 ans", "Option WordPress", "Option Next.js"]}
           rows={[
-            ["Création", "5 000 €", "6 900 €"],
-            ["Hébergement", "1 080 € (managé ~30 €/mois)", "0 – 700 € (site statique, diffusion mondiale incluse)"],
-            ["Licences d'outils payants (mise en page, accélération, formulaires…)", "600 € (~200 €/an)", "0 €"],
-            ["Maintenance sécurité", "3 600 € (~100 €/mois, obligatoire)", "0 – 400 € (revue 1 à 2 fois par an, jamais urgente)"],
-            ["Évolutions ponctuelles", "sur devis", "sur devis"],
-            ["Total 36 mois", "≈ 10 300 €", "≈ 7 600 €"],
+            ["Création, contenus et migration", "Montant du devis", "Montant du devis"],
+            ["Hébergement, domaine et services", "Formule et usage", "Formule et usage"],
+            ["Licences et renouvellements", "Inventaire complet", "Inventaire complet"],
+            ["Mises à jour, sécurité et sauvegardes", "Niveau de service", "Niveau de service"],
+            ["Support et évolutions", "Inclus / exclu / tarif", "Inclus / exclu / tarif"],
+            ["Sortie et réversibilité", "Livrables et coût", "Livrables et coût"],
+            ["Total 36 mois", "À calculer", "À calculer"],
           ]}
         />
 
         <InfoBox variant="blue" title="La même PME, deux devis, 36 mois plus tard">
-          Au moment de signer, le sur-mesure coûte 1 900 € de plus — et
-          c&apos;est cet écart qui fait hésiter. Mais ensuite : hébergement
-          quasi gratuit, zéro licence, rien d&apos;urgent à entretenir, là
-          où le WordPress cumule ses mensualités. Au bout de 3 ans, le
-          surcoût initial s&apos;est transformé en économie de 2 700 € — et
-          l&apos;écart se creuse chaque année suivante. Tout l&apos;objet de
-          ce guide est là : comparer des coûts de possession, pas des devis.
+          Répliquez la grille avec les deux propositions. Une valeur zéro doit
+          être justifiée par le contrat ; une dépendance facturée à l&apos;usage
+          doit être testée avec plusieurs scénarios. La solution la moins chère
+          ne peut être connue avant ce calcul.
         </InfoBox>
 
-        <h3>Trois lectures de ce tableau</h3>
+        <h3>Trois contrôles à faire</h3>
         <ol>
           <li>
-            <strong>À l&apos;entrée, WordPress gagne.</strong> Si votre
-            budget plafonne sous 4 000 €, un WordPress à thème bien fait bat un
-            sur-mesure au rabais.
+            <strong>Même périmètre.</strong> Contenus, intégrations, mesure,
+            tests, droits et migration doivent être inclus des deux côtés.
           </li>
           <li>
-            <strong>Sur 3 ans, la hiérarchie s&apos;inverse.</strong> La
-            maintenance obligatoire et les licences récurrentes rattrapent
-            puis dépassent l&apos;écart de création : ≈ 10 300 € contre
-            ≈ 7 600 €.
+            <strong>Mêmes hypothèses d&apos;usage.</strong> Trafic, stockage,
+            éditeurs, support et rythme d&apos;évolution modifient les coûts.
           </li>
           <li>
-            <strong>Les prestataires WordPress sont environ dix fois plus
-            nombreux en France</strong> selon les annuaires de freelances —
-            les devis arrivent vite et la concurrence tire les prix. Mais
-            les tarifs à la journée sont proches (300-400 €/j pour un
-            spécialiste WordPress, 420-550 €/j pour un Next.js confirmé), et
-            un site sans dette de maintenance consomme moins de journées de
-            prestation après la livraison.
+            <strong>Même exigence de sortie.</strong> Vérifiez la remise du
+            contenu, du code lorsqu&apos;il est compris, des données, des accès,
+            de la documentation et la capacité d&apos;un tiers à reprendre.
           </li>
         </ol>
         <p>
           Soyons aussi exigeants avec notre propre solution : un site
           Next.js n&apos;est pas « sans maintenance ». Le framework publie
-          une version majeure environ une fois par an, et les briques
-          logicielles méritent une revue une à deux fois par an — une
-          demi-journée à une journée de développeur pour un site vitrine
-          statique. La différence n&apos;est donc pas « maintenance contre
-          zéro maintenance », elle est dans la nature de
-          l&apos;obligation : rien n&apos;expose de base de données ni
-          d&apos;extensions, donc rien n&apos;oblige à corriger en urgence
-          sous 24 heures quand une faille est publiée. L&apos;un subit un
-          rythme imposé par les attaquants ; l&apos;autre choisit son
-          calendrier — maintenance subie contre maintenance planifiée.
-          C&apos;est cela qui explique l&apos;écart du tableau, pas une
-          prétendue absence totale d&apos;entretien. Le détail des grilles
+          des mises à jour et les briques logicielles doivent être surveillées.
+          Un site statique peut avoir moins de services exposés qu&apos;un CMS
+          dynamique, sans exclure les correctifs urgents. Le calendrier dépend
+          des avis de sécurité, des dépendances et de l&apos;architecture. Le détail des grilles
           est dans notre guide du{" "}
           <Link href="/guides/prix-site-vitrine">prix d&apos;un site
           vitrine</Link>.
@@ -722,8 +655,8 @@ export default function Page() {
 
         <h3>Le coût de sortie : qui possède quoi</h3>
         <p>
-          Un poste que personne ne compare : le jour où vous voudrez
-          partir. WordPress exporte nativement son contenu (articles, pages,
+          Un poste doit aussi être comparé : le coût du départ. WordPress exporte
+          nativement son contenu (articles, pages,
           catégories) dans un format standard — bon point. Mais la mise en
           page appartient au constructeur de pages : le code
           d&apos;Elementor ou de Divi n&apos;est pas portable, et changer de
@@ -743,15 +676,15 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Vous hésitez pour votre propre site ?"
-          description="Décrivez votre projet en 3 minutes : nous vous disons honnêtement si WordPress suffit — ou ce que du sur-mesure changerait, chiffres à l'appui. Réponse personnelle sous 24 h ouvrées."
-          tags={["Réponse sous 24 h ouvrées", "Conseil honnête", "Sans engagement"]}
+          description="Décrivez votre projet en 3 minutes : nous vous disons honnêtement si WordPress suffit — ou ce que du sur-mesure changerait, chiffres à l'appui. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti."
+          tags={["Objectif : prochain jour ouvré", "Conseil honnête", "Sans engagement"]}
         />
 
         <h2 id="contenu">10. « Et pour publier mon contenu ? » — l&apos;autonomie honnête</h2>
         <p>
           C&apos;est LA force de WordPress, reconnaissons-la pleinement : une
           équipe marketing y publie en autonomie totale, dans une interface
-          que tout le monde connaît, avec 61 000 extensions à portée de clic.
+          largement diffusée, avec 61 000 extensions à portée de clic.
           Aucun site sur mesure ne réplique cela gratuitement. Côté
           sur-mesure, trois réponses existent, par ordre de coût :
         </p>
@@ -847,8 +780,10 @@ export default function Page() {
             <strong>L&apos;urgence à micro-budget</strong> — en ligne en 3-4 semaines avec
             un écosystème de prestataires immense : on obtient
             plusieurs devis en quelques jours, à des prix tirés par la
-            concurrence. À noter : le développement assisté par IA a
-            aussi raccourci les délais du sur-mesure — notre{" "}
+            concurrence. Le calendrier d&apos;un développement sur mesure dépend
+            du contenu, du design, des intégrations et des critères de recette ;
+            l&apos;usage d&apos;assistants IA ne permet pas d&apos;annoncer un raccourcissement
+            universel. Notre{" "}
             <Link href="/guides/combien-de-temps-pour-creer-un-site">guide
             des délais de création</Link> chiffre les deux scénarios.
           </li>
@@ -862,7 +797,7 @@ export default function Page() {
           La condition non négociable dans tous les cas : un contrat de
           maintenance sérieux et peu d&apos;extensions. Le WordPress
           dangereux n&apos;est pas WordPress — c&apos;est le site à 40
-          extensions que plus personne ne met à jour. Et si votre site
+          extensions sans maintenance active. Et si votre site
           actuel ne remplit plus son rôle, le budget complet d&apos;un
           changement de socle — plan de redirections 301 et migration SEO
           compris — est chiffré dans notre{" "}
@@ -952,12 +887,12 @@ export default function Page() {
           headers={["Profil", "Recommandation", "Pourquoi"]}
           rows={[
             ["Blog / média actif", "WordPress bien maintenu — passer en headless si le média devient un canal d'acquisition", "Autonomie éditoriale imbattable ; la performance se greffe ensuite sans changer d'outil d'édition"],
-            ["TPE locale, budget < 4 000 €", "WordPress à thème, 5 extensions max, maintenu", "Meilleur rapport résultat/prix à ce budget"],
-            ["PME dont le site doit vendre", "Next.js sur mesure", "Vitesse jugée bonne par Google, référencement soigné, aucune extension à entretenir"],
-            ["Corporate / marque à fort enjeu", "Next.js sur mesure", "Image, performance, sécurité, code possédé"],
+            ["TPE locale, budget contraint", "Comparer CMS, outil hébergé et site statique", "Le périmètre et l'autonomie priment sur une limite d'extensions arbitraire"],
+            ["PME dont le site soutient l'acquisition", "Comparer deux prototypes ou références comparables", "Mesurer performance, édition, SEO technique, coûts et exploitation"],
+            ["Corporate / marque à fort enjeu", "Architecture à cadrer", "Image, performance, sécurité, gouvernance et droits au contrat"],
             ["Boutique en ligne", "Shopify (simple) ou sur-mesure (marque, volumétrie)", "Voir le verdict e-commerce, section 11"],
             ["Éditorial fort trafic multicanal", "WordPress headless + Next.js", "Back-office connu + site public performant"],
-            ["Application, espace client, logiciels de gestion (ERP/CRM)", "Sur-mesure — unanime", "WordPress est un CMS, pas un framework applicatif"],
+            ["Application, espace client, logiciels de gestion (ERP/CRM)", "Architecture applicative à cadrer", "WordPress peut rester CMS ; les règles métier demandent une analyse dédiée"],
           ]}
         />
         <InfoBox variant="amber" title="Le coût de se tromper">
@@ -984,7 +919,7 @@ export default function Page() {
           cahier des charges</Link> est libre de copie — et comparez en coût
           sur 3 ans. Si vous voulez notre avis sur votre cas précis,{" "}
           <Link href="/demarrer-un-projet">décrivez votre projet en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées, gratuite,
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré, gratuite,
           et nous vous dirons si WordPress suffit. Pour chiffrer les deux
           scénarios, nos guides du{" "}
           <Link href="/guides/combien-coute-un-site-internet">prix

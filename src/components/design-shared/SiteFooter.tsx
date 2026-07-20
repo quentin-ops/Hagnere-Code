@@ -10,6 +10,11 @@ import {
   type MathChallengeValue,
 } from "@/components/project-funnel/MathChallenge";
 import { TEAM_TOTAL_COUNT } from "@/lib/team";
+import { CALENDLY_URL } from "@/lib/calendly";
+import {
+  clearProjectInquiryClientKey,
+  getProjectInquiryClientKey,
+} from "@/lib/project-inquiry-client-key";
 import "./site-footer.css";
 
 type Status =
@@ -36,10 +41,6 @@ const TIMELINES = [
   "Pas encore défini",
 ];
 
-const CALENDLY_URL =
-  process.env.NEXT_PUBLIC_CALENDLY_URL ||
-  "https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte";
-
 type ContactProjectSectionProps = {
   headingLevel?: "h1" | "h2";
   className?: string;
@@ -53,10 +54,12 @@ export function ContactProjectSection({
 }: ContactProjectSectionProps) {
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [message, setMessage] = useState("");
+  const [challengeEnabled, setChallengeEnabled] = useState(false);
   // Anti-bot maison : question de calcul, vérifiée côté client avant envoi
   // puis revalidée server-side par /api/project-inquiry.
   const [math, setMath] = useState<MathChallengeValue | null>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
+  const submissionKeyRef = useRef<string | null>(null);
 
   const handleTranscribed = useCallback((text: string) => {
     setMessage((prev) => {
@@ -78,6 +81,16 @@ export function ContactProjectSection({
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
+
+    if (!challengeEnabled) {
+      setChallengeEnabled(true);
+      setStatus({
+        kind: "error",
+        message: "Complétez le contrôle anti-robot qui vient de s’afficher.",
+        fields: { mathChallenge: "Répondez au calcul avant l’envoi." },
+      });
+      return;
+    }
 
     if (!isMathAnswerCorrect(math)) {
       setStatus({
@@ -106,9 +119,15 @@ export function ContactProjectSection({
     setStatus({ kind: "submitting" });
 
     try {
+      const submissionKey =
+        submissionKeyRef.current ?? getProjectInquiryClientKey();
+      submissionKeyRef.current = submissionKey;
       const res = await fetch("/api/project-inquiry", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Idempotency-Key": submissionKey,
+        },
         body: JSON.stringify(payload),
       });
       const json = await res.json().catch(() => ({}));
@@ -124,7 +143,12 @@ export function ContactProjectSection({
         return;
       }
       setStatus({ kind: "success", message: json.message });
+      submissionKeyRef.current = null;
+      clearProjectInquiryClientKey();
       form.reset();
+      setMessage("");
+      setMath(null);
+      setChallengeEnabled(false);
     } catch {
       setStatus({
         kind: "error",
@@ -153,24 +177,28 @@ export function ContactProjectSection({
   const intro = contactPageCopy ? (
     <>
       SaaS B2B, application métier, outil interne, reprise Laravel ou site
-      vitrine premium : quelqu&apos;un qui code vous répond sous 24 h ouvrées.
+      vitrine premium : quelqu&apos;un qui code lit votre demande.
       <b> Premier cadrage gratuit, sans engagement.</b>
     </>
   ) : (
     <>
       Choisissez ce qui vous va : un créneau direct avec un expert, un email
       rapide, ou un formulaire si vous préférez écrire.
-      <b> Réponse sous 24 h ouvrées, toujours.</b>
+      <b> Objectif de réponse le prochain jour ouvré, sans délai garanti.</b>
     </>
   );
 
   return (
-    <section className={classNames} id="contact">
+    <section
+      className={classNames}
+      id="contact"
+      aria-labelledby="contact-project-title"
+    >
       <div className="sf-bg-grid" aria-hidden="true" />
       <div className="wrap sf-contact-inner">
         <div className="sf-contact-head">
           <div className="eyebrow on-dark">— Prochaine étape</div>
-          <Heading>{heading}</Heading>
+          <Heading id="contact-project-title">{heading}</Heading>
           <p>{intro}</p>
         </div>
 
@@ -276,7 +304,12 @@ export function ContactProjectSection({
           </div>
 
           {/* Colonne droite — formulaire */}
-          <form className="sf-form" onSubmit={onSubmit} noValidate>
+          <form
+            className="sf-form"
+            onSubmit={onSubmit}
+            onFocusCapture={() => setChallengeEnabled(true)}
+            noValidate
+          >
             <div className="sf-form-head">
               <div className="sf-card-kind">OU ÉCRIVEZ-NOUS</div>
               <div className="sf-card-title">Formulaire projet</div>
@@ -434,19 +467,35 @@ export function ContactProjectSection({
             </label>
 
             {/* Anti-bot maison : question de calcul (remplace Turnstile). */}
-            <MathChallenge
-              className="sf-field sf-field-captcha"
-              onChange={setMath}
-              error={errs.mathChallenge}
-            />
+            {challengeEnabled ? (
+              <MathChallenge
+                className="sf-field sf-field-captcha"
+                onChange={setMath}
+                error={errs.mathChallenge}
+              />
+            ) : (
+              <div className="sf-field sf-field-captcha sf-captcha-pending">
+                <span>Contrôle anti-robot</span>
+                <small>
+                  Le calcul est chargé uniquement lorsque vous commencez ce
+                  formulaire.
+                </small>
+              </div>
+            )}
 
             <label className="sf-consent">
               <input type="checkbox" name="consent" required />
               <span>
                 J&apos;ai pris connaissance de la{" "}
                 <a href="/legal/confidentialite">politique de confidentialité</a>{" "}
-                et je demande à Hagnéré Code de traiter mes informations afin de
-                répondre à ma demande, dans le cadre de mesures précontractuelles.
+                et je demande à HAGNERE CODE de traiter mes informations afin de
+                répondre à ma demande. Selon que j&apos;agis en mon nom ou pour mon
+                organisation, ce traitement repose sur des mesures précontractuelles
+                ou sur l&apos;intérêt légitime à traiter une demande professionnelle.
+                Les données sont accessibles à HAGNERE CODE et aux prestataires
+                nécessaires, puis conservées au maximum trois ans après le dernier
+                échange utile en l&apos;absence de contrat. La politique détaille les
+                destinataires et vos droits.
               </span>
             </label>
             {errs.consent && <em className="sf-consent-error">{errs.consent}</em>}
@@ -478,7 +527,7 @@ export function ContactProjectSection({
 
             {status.kind === "success" && (
               <div className="sf-alert sf-alert-ok" role="status">
-                ✓ {status.message || "Message bien reçu. Un email de confirmation vient de partir ; un expert vous répond sous 24 h ouvrées."}
+                ✓ {status.message || "Message bien reçu. Nous visons une réponse le prochain jour ouvré, sans délai garanti."}
               </div>
             )}
             {status.kind === "error" && (
@@ -1210,7 +1259,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                     window.location.assign("/legal/cookies");
                   }
                 }}
-                aria-label="Modifier mes préférences cookies"
+                aria-label="Gérer mes cookies"
               >
                 <span className="sf-tile-ic">
                   <svg
@@ -1275,9 +1324,7 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
             <div>
               © {new Date().getUTCFullYear()} HAGNERE CODE · SASU au capital de
               10 € · RCS CHAMBÉRY 993 672 856 · TVA FR30 993 672 856 · Adresse
-              d&apos;activité : 82 impasse de Bellevue, 73000 Bassens · Siège
-              inscrit au RNE : 7 rue Ernest Filliard, 73000 Chambéry (transfert
-              en cours)
+              du siège social : 82 impasse de Bellevue, 73000 Bassens
             </div>
             <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
           </div>

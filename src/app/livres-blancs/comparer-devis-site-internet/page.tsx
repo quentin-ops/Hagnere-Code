@@ -46,17 +46,6 @@ export const metadata: Metadata = {
     description: whitePaper.description,
     images: [whitePaper.path + "/opengraph-image"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 const faqItems = [
@@ -177,15 +166,6 @@ const breadcrumbJsonLd = JSON.stringify({
   ],
 });
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 const categoryDescriptions: Record<string, string> = {
   Périmètre: "Ce qui sera réellement conçu, livré et testé",
@@ -285,11 +265,6 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }}
-      />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Ressources", href: "/ressources" },

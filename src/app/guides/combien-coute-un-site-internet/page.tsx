@@ -35,16 +35,11 @@ export const metadata: Metadata = {
     // Pas d'images ici : l'og:image dédiée est générée par
     // opengraph-image.tsx (convention de fichier Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -61,7 +56,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 5400,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -118,7 +112,7 @@ const faqItems = [
   {
     question: "Combien coûte un site internet par mois ?",
     answer:
-      "Deux modèles coexistent. Les abonnements (Wix 17 à 179 €/mois, Shopify 27 à 289 €/mois, location de site 150 à 300 €/mois) lissent la dépense mais durent toute la vie du site — et en location, le site ne vous appartient jamais. En achat, les coûts mensuels réels après livraison se limitent à l'hébergement (0 à 20 €/mois pour un site Next.js bien construit) et à la maintenance éventuelle. Sur 4 ans, une location à 250 €/mois coûte 12 000 € : plus cher qu'un site professionnel acheté, sans l'actif au bilan.",
+      "Deux modèles coexistent : abonnement ou investissement initial, auxquels s'ajoutent selon le cas domaine, applications, paiement, hébergement, maintenance, contenus, support et sortie. Une offre de location ne transfère pas nécessairement le site ; une offre d'achat ne supprime pas les coûts récurrents. Construisez le coût total sur la durée prévue avec les tarifs contractuels et les droits réellement cédés.",
   },
   {
     question: "Combien coûte un site vitrine ?",
@@ -133,17 +127,17 @@ const faqItems = [
   {
     question: "Combien coûte une application web ou un SaaS ?",
     answer:
-      "Le marché situe un MVP SaaS sérieux — la première version d'une application, réduite aux fonctions essentielles — entre 15 000 et 30 000 €, un SaaS PME complet entre 40 000 et 80 000 €, et les plateformes complexes au-delà de 80 000 €. Chez Hagnéré Code, un MVP prêt à accueillir de vrais utilisateurs démarre à 15 000 € et un SaaS complet à 30 000 € — au plancher de la fourchette du marché, grâce à un développement accéléré par l'IA avec revue humaine systématique.",
+      "Les fourchettes éditoriales citées dans ce guide situent un MVP SaaS — la première version d'une application, réduite aux fonctions essentielles — entre 15 000 et 30 000 €, un SaaS PME complet entre 40 000 et 80 000 €, et les plateformes complexes au-delà de 80 000 €. Chez Hagnéré Code, une première version au périmètre resserré démarre à 15 000 € et un SaaS plus complet à 30 000 €. Ces prix relèvent de notre propre grille, pas d'une démonstration selon laquelle l'IA ferait baisser tous les projets ; le devis confirme périmètre, contrôles humains et planning.",
   },
   {
     question: "Combien coûte une refonte de site internet ?",
     answer:
-      "De 1 500 à 10 000 € pour un site vitrine (2 000 à 4 500 € pour 5-10 pages, 4 500 à 8 000 € en premium) et de 5 000 à plus de 30 000 € pour un e-commerce. Le poste le plus souvent oublié des devis de refonte : la migration SEO (redirections 301 page à page, conservation des positions), qui peut représenter 10 à 20 % du budget mais évite de perdre le trafic acquis.",
+      "De 1 500 à 10 000 € pour un site vitrine (2 000 à 4 500 € pour 5-10 pages, 4 500 à 8 000 € en premium) et de 5 000 à plus de 30 000 € pour un e-commerce. Le poste souvent oublié des devis de refonte est le plan de migration SEO : inventaire des URL et performances utiles, correspondance des anciennes pages vers les nouvelles, redirections 301, contrôle avant bascule et suivi après mise en ligne. Ce travail réduit les risques contrôlables ; il ne garantit pas que les positions ou le trafic seront maintenus.",
   },
   {
     question: "Combien coûte la maintenance d'un site internet ?",
     answer:
-      "La règle sectorielle : 10 à 20 % du coût de création par an. En France : 30 à 120 € HT/mois pour un site vitrine WordPress (mises à jour hebdomadaires du cœur, des plugins — les modules ajoutés à WordPress — et du thème), 200 à 500 €/mois pour un e-commerce actif. Un site statique Next.js n'a ni plugins ni CMS à mettre à jour : la maintenance technique obligatoire est quasi nulle, seules les évolutions se facturent.",
+      "Il n'existe pas de pourcentage sectoriel universel. Les offres publiques de ce guide donnent des repères, mais le prix dépend du socle et du niveau de service : mises à jour, sauvegardes, supervision, corrections, contenus, délais et astreinte. Un site statique réduit certaines mises à jour de CMS, sans supprimer le suivi des dépendances, de l'hébergement, de la sécurité et des intégrations.",
   },
   {
     question: "Pourquoi les devis varient-ils autant d'un prestataire à l'autre ?",
@@ -153,12 +147,12 @@ const faqItems = [
   {
     question: "Un site internet pas cher est-il fiable ?",
     answer:
-      "Rarement pour durer. Les études le mesurent : la durée de vie moyenne d'un site est de 2 ans et 7 mois, mais les sites bien construits tiennent 6 ans et 4 mois (Orbit Media). Un site à 1 500 € qui doit être refait au bout de 2 ans coûte en réalité plus cher qu'un site à 7 000 € amorti sur 6 ans — sans compter les clients perdus entre-temps par un site lent ou mal référencé.",
+      "Le prix seul ne mesure pas la fiabilité. Vérifiez les livrables, accès, droits, dépendances, tests, sauvegardes, maintenance et conditions de sortie. La durée de vie dépend surtout du besoin et de l'entretien ; aucun benchmark ne permet d'affirmer qu'un prix donné durera deux ou six ans, ni de chiffrer des clients perdus sans données propres au site.",
   },
   {
     question: "Existe-t-il des aides pour financer la création d'un site internet ?",
     answer:
-      "Oui, mais elles sont désormais régionales et changent vite : le portail France Num recense environ 200 financements. Le Prêt Boost de Bpifrance (5 000 à 75 000 €, sans garantie, réponse en 48 h) finance la transformation numérique au niveau national. En Auvergne-Rhône-Alpes, Atouts Numériques subventionne jusqu'à 16 000 € d'accompagnement. Règle d'or : déposez la demande avant de signer le devis.",
+      "Il existe des prêts, accompagnements et aides territoriales soumis à conditions, mais leur disponibilité et leurs règles changent. Consultez France Num et la fiche de l'organisme instructeur au moment du projet. Avant de signer ou de verser un acompte, vérifiez par écrit la date à laquelle une dépense devient engagée, l'assiette éligible, le calendrier de décision et les modalités de versement.",
   },
   {
     question: "Suis-je propriétaire de mon site une fois payé ?",
@@ -168,27 +162,16 @@ const faqItems = [
   {
     question: "Comment obtenir un chiffrage précis pour mon projet ?",
     answer:
-      "Décrivez votre projet via notre parcours guidé (3 minutes) : notre équipe vous répond personnellement sous 24 h ouvrées avec une première réponse argumentée, gratuite et sans engagement. Pour un chiffrage ferme, le Discovery Sprint (1 500 €, 2 jours) livre les spécifications, un prototype cliquable et un devis au forfait fixe — déduit à 100 % si le projet se lance.",
+      "Décrivez votre projet via notre parcours guidé (3 minutes) : notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti, avec une première réponse argumentée, gratuite et sans engagement. Pour un chiffrage ferme, le Discovery Sprint (1 500 €, 2 jours) livre les spécifications, un prototype cliquable et un devis au forfait fixe — déduit à 100 % si le projet se lance.",
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -418,9 +401,10 @@ export default function Page() {
           Notre offre de{" "}
           <Link href="/services/saas-applications-metier">développement
           SaaS</Link> démarre à 15 000 € pour un MVP prêt à accueillir de vrais
-          utilisateurs, livré en 3 à 6 semaines — au plancher du marché, parce que
-          l&apos;IA accélère notre développement, avec revue humaine de chaque
-          ligne. Les fourchettes par étape — maquette de démonstration (POC),
+          utilisateurs. Le planning, les usages éventuels de l&apos;IA et leurs
+          contrôles humains sont définis après cadrage ; aucune réduction de prix
+          ou de délai universelle ne peut être déduite d&apos;une étude de tâche.
+          Les fourchettes par étape — maquette de démonstration (POC),
           première version (MVP), version complète (V1) — sont dans{" "}
           <Link href="/guides/combien-coute-un-saas">« combien coûte un
           SaaS »</Link> ; pour iOS et Android, voyez{" "}
@@ -462,10 +446,9 @@ export default function Page() {
             et crédible : 3 à 5 pages, avis clients, formulaire de contact.
             Budget juste : 2 000 à 3 500 € chez un bon freelance, avec
             ses textes fournis et un design sobre — en exigeant un site
-            statique React/Next.js plutôt qu&apos;un WordPress à thème,
-            pour une maintenance quasi nulle (section 7). À
-            l&apos;ère des outils IA, ce type de site sur mesure
-            n&apos;est plus réservé aux agences. S&apos;il vise les recherches locales type
+            statique ou un CMS adapté, en faisant chiffrer l&apos;hébergement,
+            les mises à jour, le support et les évolutions (section 7).
+            S&apos;il vise les recherches locales type
             « chauffagiste Chambéry », comptez 6 900 € en agence.
           </p>
           <p className="mb-2">
@@ -757,54 +740,42 @@ export default function Page() {
 
         <h2 id="cout-total-3-ans">8. Le vrai comparatif : coût total sur 3 ans</h2>
         <p>
-          C&apos;est LE calcul que presque personne ne fait — et
-          qu&apos;aucun autre guide ne vous montre. Pensez à une imprimante à
-          40 € : le prix d&apos;achat est dérisoire, mais les cartouches
-          coûtent 300 € par an — c&apos;est là que le fabricant gagne sa vie.
-          Un site web fonctionne pareil : le prix affiché d&apos;un site
-          low-cost ne représente que 20 à 40 % de ce qu&apos;il coûtera
-          vraiment. Ses « cartouches » : maintenance, licences, hébergement,
-          refonte anticipée. Poste par poste :
+          C&apos;est le calcul à faire pour comparer les options : le prix de
+          création ne suffit pas lorsque l&apos;hébergement, les licences, la
+          maintenance, le support ou la sortie diffèrent. Remplissez chaque
+          ligne avec un montant contractuel ou une hypothèse clairement
+          signalée ; une ligne inconnue ne vaut pas zéro.
         </p>
         <FormulaBox>
-{`SITE LOW-COST À 1 500 € (WordPress template) — coût réel sur 3 ans
-  Création                                   1 500 €
-  Hébergement mutualisé (3 ans)          180 – 360 €
-  Domaine + emails pro (3 ans)               ≈ 260 €
-  Licences plugins (3 ans)               300 – 900 €
-  Maintenance (3 ans)                1 080 – 2 160 €
-  CMP cookies RGPD (3 ans)                   ≈ 450 €
-  Refonte probable à 2,5-3 ans       2 000 – 4 500 €
-  ─────────────────────────────────────────────────
-  TOTAL 3 ANS                        5 800 – 10 100 €
+{`GRILLE DE COÛT TOTAL SUR 3 ANS — À REMPLIR AVEC LES DEVIS
+  Conception et contenus                         ______ €
+  Hébergement, domaine et emails (36 mois)       ______ €
+  Licences, outils et services tiers             ______ €
+  Maintenance corrective et sécurité             ______ €
+  Support et délai d'intervention                 ______ €
+  Évolutions déjà prévisibles                     ______ €
+  Migration, réversibilité ou sortie              ______ €
+  Provision pour risques explicités               ______ €
+  ─────────────────────────────────────────────────────
+  TOTAL CONTRACTUEL OU DOCUMENTÉ                  ______ €
 
-SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
-  Création                                  10 000 €
-  Hébergement Vercel/Netlify (3 ans)     0 – 720 €
-  Domaine + emails pro (3 ans)               ≈ 260 €
-  Licences plugins                               0 €
-  Maintenance technique obligatoire          ≈ 0 €
-  Évolutions choisies (optionnel)    500 – 1 500 €/an
-  Refonte                       aucune avant 5-6 ans
-  ─────────────────────────────────────────────────
-  TOTAL 3 ANS                       10 300 – 15 500 €`}
+À NOTER À CÔTÉ DU TOTAL
+  Hypothèses de trafic et d'usage                  ______
+  Éléments exclus du prix                          ______
+  Renouvellements automatiques                     ______
+  Durée d'engagement et conditions de sortie       ______`}
         </FormulaBox>
         <p>
-          L&apos;écart réel sur 3 ans n&apos;est donc pas de 1 à 7 comme le
-          suggèrent les prix affichés, mais de 1 à 1,5 — et il s&apos;inverse
-          sur 6 ans, l&apos;horizon de vie d&apos;un site bien construit
-          (6 ans et 4 mois mesurés par Orbit Media, contre 2 ans et 7 mois en
-          moyenne). Surtout, l&apos;un des deux sites aura généré des clients
-          pendant tout ce temps ; l&apos;autre en aura coûté, par sa lenteur
-          et son absence de SEO.
+          Cette grille ne présume pas qu&apos;une technologie coûte toujours
+          moins cher qu&apos;une autre. Elle rend visibles les lignes absentes
+          d&apos;un prix d&apos;appel et les hypothèses que le prestataire doit
+          confirmer. Comparez le même périmètre, sur la même durée, sans
+          attribuer à l&apos;avance un gain commercial ou une durée de vie au site.
         </p>
         <InfoBox variant="emerald" title="À retenir : le coût total sur 3 ans">
-          Sur 3 ans, un site à 1 500 € revient à 5 800 – 10 100 € ; un site
-          sur mesure à 10 000 € revient à 10 300 – 15 500 €. L&apos;écart réel
-          est de 1 à 1,5, pas de 1 à 7 — et il s&apos;inverse avant la
-          sixième année, l&apos;horizon de vie d&apos;un site bien
-          construit. Un seul chiffre permet de comparer honnêtement deux devis :
-          le coût total sur 3 ans. Jamais le prix d&apos;achat.
+          Additionnez les coûts contractuels et les hypothèses documentées sur
+          une durée commune. Le prix d&apos;achat reste utile, mais il ne suffit
+          pas à comparer deux solutions dont l&apos;exploitation diffère.
         </InfoBox>
 
         <h2 id="devis-trop-bas">9. Devis trop bas et arnaques : les signaux d&apos;alerte</h2>
@@ -904,17 +875,12 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           composants standard — les fameux plugins — à entretenir chaque
           semaine. Le sur-mesure (Next.js), c&apos;est la maison
           d&apos;architecte : plus chère au départ, dessinée pour votre usage,
-          presque rien à entretenir, un actif qui prend de la valeur. Une
-          seule de ces trois options a changé de statut en 2026 : la
-          maison d&apos;architecte. Longtemps réservée aux gros budgets,
-          elle est devenue le choix par défaut d&apos;un site
-          professionnel — l&apos;IA a fait chuter son coût de
-          construction (section 8). La location et la maison sur catalogue gardent
-          un usage précis : tester une activité, un budget de quelques
-          milliers d&apos;euros, un projet à durée de vie courte. Pour
-          une entreprise qui veut convertir et durer, la question
-          n&apos;est plus « quelle option ? » mais « quel
-          architecte ? ».
+          un socle dont les composants restent à maintenir. Cette analogie ne
+          désigne pas un choix universel : plateforme, CMS et sur-mesure répondent
+          à des contraintes différentes de budget, d&apos;édition, d&apos;export,
+          d&apos;intégration et de durée. Les assistants d&apos;IA peuvent accélérer
+          certaines tâches, sans démontrer une baisse générale du coût final.
+          Comparez les options sur le périmètre et le coût total réellement visés.
         </InfoBox>
         <GuideTable
           headers={["Socle", "Création", "Coûts récurrents typiques", "Pour qui"]}
@@ -928,38 +894,27 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
         <p>
           Nous construisons avec <strong>Next.js</strong> (associé à React et
           TypeScript), une technologie utilisée par les grandes équipes web.
-          En clair, pour vous : votre site s&apos;affiche très vite, donc
-          Google le classe mieux et vos visiteurs restent. Aucun module à
-          mettre à jour chaque semaine : moins de failles, hébergement quasi
-          gratuit. Et le code suit un standard répandu : des milliers de
-          développeurs peuvent le reprendre — vous n&apos;êtes prisonnier de
-          personne. C&apos;est aussi le seul socle qui permette la
-          qualité visuelle des sites primés : animations et
-          interactions dessinées pour votre marque — les bibliothèques
-          qui les produisent (Framer Motion, GSAP) supposent un
-          développement dédié, hors de portée d&apos;un builder ou
-          d&apos;un template utilisé normalement. Pour trancher, lisez notre comparatif{" "}
+          En clair, ce socle permet de servir rapidement un HTML complet et de
+          travailler finement l&apos;interface. La performance reste dépendante de
+          chaque page, des médias, des scripts tiers et de l&apos;hébergement ; elle
+          ne garantit ni classement ni conversion. Next.js n&apos;utilise pas les
+          extensions WordPress, mais ses dépendances, son infrastructure et sa
+          sécurité doivent toujours être maintenues. Sa diffusion facilite la
+          recherche d&apos;un repreneur sans rendre la reprise automatique : dépôt,
+          versions, documentation, accès et droits doivent être remis. Pour trancher, lisez notre comparatif{" "}
           <Link href="/guides/nextjs-ou-wordpress">Next.js ou
           WordPress</Link>.
         </p>
         <p>
-          Un mot sur l&apos;IA, grande absente des guides concurrents : elle
-          change les coûts en 2026, avec une nuance. La seule étude de prix
-          publique (Digital Applied, 2026) mesure des délais réduits de 22 à
-          34 % grâce à l&apos;IA, mais le plus souvent <em>sans baisse des
-          prix affichés</em> — les agences gardent le gain en marge. Nous le
-          répercutons dans nos forfaits : un MVP SaaS à 15 000 € là où la
-          médiane du marché se situe autour de 30 000 €, et des sites
-          vitrines sur mesure
-          dès 6 900 €, dans la fourchette d&apos;un WordPress sur
-          mesure (5 000 – 15 000 €, tableau ci-dessus). C&apos;est le
-          basculement de 2026 : l&apos;argument historique « le site à
-          template coûte moins cher que le sur-mesure » ne survit pas
-          à un calcul sur la durée de vie réelle d&apos;un site : sur
-          3 ans l&apos;écart fond à environ 1 à 1,5 (section 8), et il
-          s&apos;inverse avant la sixième année. Méfiez-vous en revanche du « site généré
-          par IA à 200 € » : sans architecture, sans SEO, sans garantie,
-          c&apos;est un template avec une couche de peinture — notre{" "}
+          Un mot sur l&apos;IA : des études contrôlées mesurent des gains sur
+          certaines tâches, dans des conditions données. Elles ne démontrent ni
+          une baisse générale des prix, ni un délai identique sur un projet complet,
+          ni une qualité automatique. Notre grille publique — notamment 6 900 €
+          pour le périmètre vitrine d&apos;entrée et 15 000 € pour une première
+          version applicative — est un choix commercial propre à Hagnéré Code.
+          Comparez-la à périmètre égal, sur trois ans, en incluant droits, contenus,
+          outils tiers, maintenance et sortie. Un générateur autonome peut convenir
+          à un test ou à un micro-budget ; notre{" "}
           <Link href="/guides/creer-un-site-avec-ia">guide « créer un
           site avec l&apos;IA »</Link> passe tous ces outils au crible,
           prix de renouvellement compris.
@@ -973,40 +928,36 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
 
         <h2 id="performance">11. La performance, un coût caché (ou un levier) chiffré</h2>
         <p>
-          La vitesse de votre site n&apos;est pas un détail technique :
-          c&apos;est un poste économique, mesuré par deux études de référence.
+          La vitesse de votre site n&apos;est pas un détail technique : elle
+          influence l&apos;expérience, mais son effet économique doit être mesuré
+          sur votre propre parcours.
         </p>
         <ul>
           <li>
             <strong>Google/Deloitte « Milliseconds Make Millions »</strong>{" "}
-            (37 marques, 30 millions de sessions) : améliorer la vitesse
-            mobile de seulement <strong>0,1 seconde</strong> augmente les
-            conversions retail de <strong>+8,4 %</strong> et le panier moyen
-            de +9,2 %.
+            a observé, sur son échantillon de sites marchands, une association
+            entre amélioration de la vitesse mobile et indicateurs commerciaux.
+            Ce résultat n&apos;est pas un multiplicateur applicable à tout site.
           </li>
           <li>
-            <strong>Google/SOASTA</strong> (900 000 pages mobiles) : passer de
-            1 à 3 secondes de chargement augmente la probabilité de rebond de{" "}
-            <strong>+32 %</strong> ; de 1 à 5 secondes : +90 %.
+            <strong>Google/SOASTA</strong> a publié une analyse historique de
+            pages mobiles reliant temps de chargement et probabilité de rebond.
+            Elle fournit un signal de risque, pas le taux d&apos;abandon de votre site.
           </li>
         </ul>
         <p>
-          Le « rebond », c&apos;est un visiteur qui repart aussitôt, sans rien
-          lire. À votre échelle : avec 20 demandes de devis par mois et une
-          signature sur quatre, 8 % de demandes en plus font environ
-          5 contrats supplémentaires par an. Pour un artisan dont le chantier
-          moyen vaut 15 000 €, la vitesse est un poste de chiffre
-          d&apos;affaires.
+          Le « rebond » décrit une session sans interaction selon la définition
+          de l&apos;outil utilisé ; ce n&apos;est pas automatiquement un client perdu.
+          Mesurez les Core Web Vitals de terrain et les conversions avant/après
+          pour estimer un effet propre à votre activité.
         </p>
         <p>
-          C&apos;est pourquoi nos contrats incluent des seuils chiffrés : note
-          Lighthouse d&apos;au moins 95 sur mobile, et affichage du contenu
-          principal en moins de 1,5 seconde — l&apos;indicateur que Google
-          appelle LCP ; sous ce seuil, votre visiteur ne voit jamais
-          d&apos;écran blanc. Exigez la même chose de tout prestataire :
-          demandez par écrit le score Lighthouse visé à la livraison. Un refus
-          de s&apos;engager sur un chiffre vous apprend quelque chose
-          d&apos;important — avant d&apos;avoir payé. Pour aller plus loin,
+          Un devis peut fixer des objectifs techniques chiffrés à condition de
+          nommer les pages, l&apos;appareil, le réseau, les scripts tiers, l&apos;outil,
+          la date et les tolérances de recette. Lighthouse est une mesure de
+          laboratoire ; les Core Web Vitals reposent sur des données terrain au
+          75e centile lorsqu&apos;elles sont disponibles. Aucun score ne garantit un
+          classement ou une conversion. Pour aller plus loin,
           notre offre de{" "}
           <Link href="/services/referencement-google">référencement
           Google</Link> s&apos;appuie exactement sur ce levier.
@@ -1022,27 +973,26 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           <li>
             <strong>La migration SEO</strong> — les redirections 301 page à
             page (le « suivi de courrier » du web : chaque ancienne adresse
-            renvoie vers la nouvelle, réputation Google comprise) et la
-            conservation des positions. Poste le plus souvent absent des devis
-            de refonte, et le plus coûteux quand il manque : un trafic
-            construit en 3 ans peut disparaître en une mise en ligne.
+            renvoie vers la nouvelle), l&apos;inventaire des signaux utiles et
+            les contrôles avant et après bascule. Ce plan limite les erreurs de
+            migration, mais une refonte peut faire varier l&apos;exploration,
+            l&apos;indexation, les positions et le trafic&nbsp;: aucun taux de
+            conservation ne peut être promis.
           </li>
           <li>
-            <strong>La refonte prématurée, coût caché du low-cost</strong> —
-            49 % des PME interrogées par Databox avaient entièrement refondu
-            leur site dans les 2 dernières années. Un site bien construit
-            s&apos;amortit sur 5-6 ans ; un site d&apos;entrée de gamme
-            « consomme » une refonte tous les 2-3 ans.
+            <strong>La refonte prématurée</strong> — la date d&apos;une précédente
+            refonte ne prouve pas qu&apos;une nouvelle est nécessaire. Comparez
+            plutôt le besoin actuel, la maintenabilité, la mesure et le coût
+            d&apos;une évolution ciblée.
           </li>
         </ul>
         <p>
-          Quand refondre ? Trois signaux qui ne trompent pas : votre site met
-          plus de 3 secondes à s&apos;afficher sur téléphone ; il
-          n&apos;apparaît pas sur Google pour vos mots-clés métier ; vous
-          n&apos;osez plus donner son adresse en rendez-vous client. Deux
-          signaux sur trois : la refonte sera rentable. Un seul ou aucun : une
-          évolution ciblée suffit probablement — et coûte 5 à 10 fois moins
-          cher. Le sujet mérite son guide entier : grilles par type de
+          Quand refondre ? Une lenteur mesurée, une architecture non maintenue,
+          un contenu inadapté ou des parcours inutilisables sont des signaux à
+          diagnostiquer, pas une formule de rentabilité. Comparez une
+          optimisation ciblée, une évolution progressive et une refonte sur le
+          même périmètre ; aucune règle « deux signaux sur trois » ne prédit le
+          retour financier. Le sujet mérite son guide entier : grilles par type de
           refonte, migration SEO chiffrée poste par poste et devis réel
           décortiqué sont dans notre{" "}
           <Link href="/guides/prix-refonte-site-internet">guide du prix
@@ -1057,17 +1007,16 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
         <GuideTable
           headers={["Projet", "Délai marché", "Délai Hagnéré Code"]}
           rows={[
-            ["Site vitrine", "3 semaines – 2 mois", "2 – 7 semaines selon le forfait"],
-            ["E-commerce", "2 – 6 mois", "6 – 8 semaines (lancement) à 12 – 16 (B2B multi-pays)"],
-            ["MVP SaaS", "4 semaines – 3 mois", "3 – 6 semaines"],
-            ["SaaS complet / plateforme", "3 – 12 mois", "5 – 10 semaines et plus, au périmètre"],
+            ["Site vitrine", "Scénario à comparer", "Planning confirmé au devis"],
+            ["E-commerce", "Scénario à comparer", "Planning confirmé au devis"],
+            ["MVP SaaS", "Scénario à comparer", "Planning confirmé au devis"],
+            ["SaaS complet / plateforme", "Scénario à comparer", "Planning confirmé au devis"],
           ]}
         />
         <p>
-          La cause n° 1 de retard n&apos;est pas technique : c&apos;est{" "}
-          <strong>le contenu non fourni par le client</strong> (+2 à 4 semaines
-          si textes et images ne sont pas prêts). D&apos;où nos forfaits avec
-          rédaction prévue selon le forfait — et des jalons, dépendances et
+          Les contenus non fournis peuvent retarder le projet, comme les accès,
+          intégrations ou validations. Leur effet n&apos;est pas un forfait de deux
+          à quatre semaines : il dépend du chemin critique. D&apos;où des jalons, dépendances et
           conditions de retard écrits au devis (voir{" "}
           <Link href="/methode">notre méthode Sprint Fixe™</Link>). Le sujet
           complet — planning phase par phase, rétro-plannings Noël/salon et
@@ -1085,35 +1034,30 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
         </p>
         <ul>
           <li>
-            <strong>Le Prêt Boost Transformation Numérique</strong> (Bpifrance
-            Flash, partenaire France Num) : 5 000 à 75 000 €, sans garantie
-            personnelle, pour les TPE/PME de plus de 3 ans — réponse en 48 h,
-            remboursement 3-5 ans avec différé. Il finance explicitement la
-            création de site. Annoncé disponible jusqu&apos;à fin 2026.
+            <strong>Les prêts de transformation numérique</strong> proposés
+            par Bpifrance ou ses partenaires : montant, garantie, ancienneté,
+            dépenses finançables, délai de réponse et disponibilité doivent
+            être contrôlés sur la fiche officielle au jour de la demande.
           </li>
           <li>
-            <strong>Les subventions régionales</strong>, hétérogènes et à
-            durée de vie courte : PASS Commerce &amp; Artisanat en Bretagne
-            (30 %, plafond 7 500 €), Impulsion Transition en Normandie
-            (50 %, jusqu&apos;à 5 000 €), INAC Hauts-de-France (jusqu&apos;à
-            12 000 €, vitrine simple exclue), Kap Numérik à La Réunion
-            (80 %, plafond 3 200 €) — et en Auvergne-Rhône-Alpes, un
-            accompagnement pris en charge à 100 % (Atouts Numériques).
-            Panorama complet dans notre guide des{" "}
+            <strong>Les aides et accompagnements territoriaux</strong>, dont
+            l&apos;assiette, le taux, le plafond et l&apos;état du guichet peuvent
+            changer. Le panorama et la méthode de vérification figurent dans
+            notre guide des{" "}
             <Link href="/guides/aides-creation-site-internet">aides à la
             création de site internet</Link>.
           </li>
           <li>
-            <strong>Aucun crédit d&apos;impôt</strong> ne finance un simple
-            site ; le Crédit d&apos;Impôt Innovation (20 % depuis 2025,
-            prorogé jusqu&apos;à fin 2027) peut concerner un SaaS réellement
-            innovant.
+            <strong>Le traitement fiscal n&apos;est pas une aide automatique.</strong>{" "}
+            Il dépend de la nature des dépenses, de l&apos;entreprise et du
+            dispositif envisagé. Faites valider toute économie annoncée par
+            l&apos;expert-comptable et, si nécessaire, l&apos;administration.
           </li>
         </ul>
         <InfoBox variant="emerald" title="Les deux règles d'or des aides">
-          1) Déposez la demande <strong>avant</strong> de signer le devis — la
-          plupart des dispositifs refusent les projets déjà engagés.
-          2) Vérifiez la disponibilité du dispositif sur{" "}
+          1) Identifiez dans le règlement ce qui constitue le début du projet
+          et obtenez une confirmation avant de signer ou payer. 2) Vérifiez la
+          disponibilité et les conditions du dispositif sur{" "}
           <a href="https://www.francenum.gouv.fr/aides-financieres" target="_blank" rel="noopener noreferrer">
             francenum.gouv.fr
           </a>{" "}
@@ -1123,8 +1067,8 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
 
         <h2 id="propriete-fiscalite">15. Propriété du code, TVA et amortissement</h2>
         <p>
-          Trois sujets que presque aucun guide de prix ne traite — et qui
-          pèsent lourd dans le coût réel.
+          Trois sujets pèsent dans le coût réel : la propriété du code, la TVA
+          et l&apos;amortissement.
         </p>
         <h3>La propriété du code : le piège juridique n° 1</h3>
         <p>
@@ -1155,14 +1099,14 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
         </p>
         <h3>TVA et comptabilité</h3>
         <p>
-          La création porte une TVA à 20 %, déductible pour une entreprise
-          assujettie. Comptablement, un site « actif » (e-commerce, génération
-          mesurable de contacts commerciaux) peut être <strong>immobilisé au
-          compte 205 — inscrit à l&apos;actif du bilan — et amorti sur 3 à
-          5 ans</strong> ; un site purement « vitrine » passe en charges,
-          option souvent plus avantageuse en TPE (déduction immédiate). La
-          maintenance et les évolutions sont toujours des charges. Votre
-          expert-comptable tranchera.
+          Le taux de TVA, son éventuelle déduction et le traitement comptable
+          dépendent de l&apos;entreprise, du lieu de l&apos;opération et de la nature
+          précise des dépenses. Selon les circonstances, des coûts de création,
+          d&apos;acquisition ou d&apos;évolution peuvent relever d&apos;une charge ou
+          d&apos;une immobilisation ; la maintenance ne se qualifie pas par son
+          seul intitulé. Le devis doit ventiler les postes, puis votre
+          expert-comptable doit valider l&apos;écriture, la durée éventuelle
+          d&apos;amortissement et le droit à déduction.
         </p>
 
         <h2 id="budgeter">16. Méthode : budgéter juste en 4 étapes</h2>
@@ -1249,12 +1193,13 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
             réversibilité : votre site ne vous appartient pas (section 15).
           </li>
           <li>
-            <strong>Oublier les contenus</strong> — premier poste exclu des
-            devis bas et première cause de retard.
+            <strong>Oublier les contenus</strong> — un poste souvent exclu des
+            devis bas et susceptible de retarder le planning.
           </li>
           <li>
-            <strong>Négliger la performance</strong> — 0,1 s = 8,4 % de
-            conversions : exigez des seuils chiffrés au contrat.
+            <strong>Négliger la performance</strong> — exigez des seuils
+            mesurables au contrat et reliez-les à vos propres données, sans
+            transposer un chiffre de conversion observé dans un autre contexte.
           </li>
           <li>
             <strong>Louer son site sur 48 mois</strong> : le total dépasse 2 à
@@ -1269,13 +1214,13 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
             sans grille commune, le moins-disant gagne toujours… sur le papier.
           </li>
         </ul>
-        <InfoBox variant="emerald" title="À retenir : les 5 chiffres de ce guide">
+        <InfoBox variant="emerald" title="À retenir : les 5 repères de ce guide">
           <ul className="list-disc pl-4 space-y-1.5">
-            <li><strong>5 200 €</strong> : la médiane réelle d&apos;un projet de création de site en France (1 312 budgets analysés).</li>
-            <li><strong>10 à 20 % du prix de création</strong> : la maintenance annuelle d&apos;un site à CMS — quasi nulle pour un site statique bien construit.</li>
-            <li><strong>20 à 40 %</strong> : la part du coût réel sur 3 ans que représente le prix d&apos;achat d&apos;un site low-cost.</li>
-            <li><strong>0,1 seconde gagnée = +8,4 % de conversions</strong> (Google/Deloitte) : la performance est un poste économique.</li>
-            <li><strong>0 €</strong> : ce que vaut juridiquement votre site sans clause écrite de cession des droits.</li>
+            <li><strong>Un périmètre commun</strong> : condition nécessaire pour comparer deux prix.</li>
+            <li><strong>36 mois</strong> : une durée pratique pour additionner création et exploitation, sans prédire la durée de vie du site.</li>
+            <li><strong>Une ligne « inconnue »</strong> : plus honnête qu&apos;un zéro lorsque maintenance, hébergement ou sortie ne sont pas chiffrés.</li>
+            <li><strong>Des seuils mesurables</strong> : performance, disponibilité et délai de correction doivent être définis dans le contrat.</li>
+            <li><strong>Une cession écrite détaillée</strong> : elle précise les droits transmis, les livrables et les composants tiers.</li>
           </ul>
         </InfoBox>
 
@@ -1305,7 +1250,7 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           Vous voulez un chiffre pour <em>votre</em> projet, pas une fourchette
           générique ?{" "}
           <Link href="/demarrer-un-projet">Décrivez-le en 3 minutes</Link> —
-          notre équipe vous répond personnellement sous 24 h ouvrées avec une
+          notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti, avec une
           réponse argumentée, gratuite et sans engagement.
         </p>
 
@@ -1327,8 +1272,7 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           <a href="https://web.dev/case-studies/milliseconds-make-millions" target="_blank" rel="noopener noreferrer">Google/Deloitte « Milliseconds Make Millions »</a> ;
           étude de durée de vie des sites{" "}
           <a href="https://www.orbitmedia.com/blog/website-lifespan-and-you/" target="_blank" rel="noopener noreferrer">Orbit Media</a> ;
-          étude de refonte « Website Redesign » de Databox ; étude de prix
-          Digital Applied « Website Development Cost 2026 » ;{" "}
+          étude de refonte « Website Redesign » de Databox ;{" "}
           <a href="https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006069414/LEGISCTA000006133323/" target="_blank" rel="noopener noreferrer">Code de la propriété intellectuelle</a>{" "}
           (art. L111-1 et L131-3) ; directive européenne sur
           l&apos;accessibilité (UE) 2019/882 ; bilan des sanctions 2025 de la{" "}

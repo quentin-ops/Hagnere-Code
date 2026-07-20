@@ -1,14 +1,14 @@
 import { TEAM_PUBLIC_COMPOSITION, TEAM_TOTAL_COUNT } from "@/lib/team";
 
 export const proofStripHtml = `
-<!-- PROOF STRIP · produits exploités, profils publics, engagements à cadrer
+<!-- PROOF STRIP · pages publiques, profils publics, engagements à cadrer
      Aucune statistique client ici : Hagnéré Code n'a pas encore de client externe. -->
 <section class="me-proof-strip">
   <div class="wrap">
     <div class="me-proof-strip-inner reveal">
       <div class="me-proof-item">
-        <div class="me-proof-n">4<span>produits</span></div>
-        <div class="me-proof-k">En production, conçus<br>et exploités par nous</div>
+        <div class="me-proof-n">4<span>pages</span></div>
+        <div class="me-proof-k">Disponibilité et fonctions<br>visibles publiquement</div>
       </div>
       <div class="me-proof-sep"></div>
       <div class="me-proof-item">
@@ -28,7 +28,7 @@ export const proofStripHtml = `
     </div>
     <div class="me-proof-strip-note reveal reveal-d-1">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-      Les quatre produits sont internes. ${TEAM_PUBLIC_COMPOSITION}. Les personnes mobilisées et les objectifs de service sont confirmés dans le devis.
+      Ces pages publiques ne prouvent ni leur conception, ni leur exploitation, ni leurs résultats. ${TEAM_PUBLIC_COMPOSITION}. Les personnes mobilisées et les objectifs de service sont confirmés dans le devis.
     </div>
   </div>
 </section>

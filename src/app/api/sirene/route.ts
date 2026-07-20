@@ -1,17 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  checkRateLimit,
-  createRateLimitStore,
-  gcRateLimitStore,
-  getClientIp,
-} from "@/lib/rate-limit";
+import { getClientIp } from "@/lib/rate-limit";
+import { checkServiceRateLimit } from "@/lib/ai-rate-limit";
 import { log } from "@/lib/logger";
 
 export const runtime = "nodejs";
-
-const sireneRateStore = createRateLimitStore();
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
-const RATE_LIMIT_MAX = 60; // 60 lookups / IP / hour
 
 interface SearchResult {
   siren: string;
@@ -28,23 +20,34 @@ interface SearchResponse {
 }
 
 export async function GET(request: NextRequest) {
-  // 0. Rate limit (la route fait du fan-out vers une API gouv : on protège l'IP).
-  gcRateLimitStore(sireneRateStore);
+  // 0. Rate limit persistant avant l'appel externe. Il reste cohérent lorsque
+  // Vercel répartit les requêtes entre plusieurs instances.
   const ip = getClientIp(request);
-  const rate = checkRateLimit(sireneRateStore, ip, {
-    windowMs: RATE_LIMIT_WINDOW_MS,
-    max: RATE_LIMIT_MAX,
-  });
-  if (!rate.ok) {
+  let rate;
+  try {
+    rate = await checkServiceRateLimit(
+      ip,
+      null,
+      "sirene",
+      request.headers.get("user-agent"),
+    );
+  } catch (err) {
+    log.error("sirene_rate_limit_unavailable", { err: err as Error });
+    return NextResponse.json(
+      { error: "La recherche d'entreprise est temporairement indisponible." },
+      { status: 503, headers: { "Retry-After": "60" } },
+    );
+  }
+  if (!rate.allowed) {
     return NextResponse.json(
       {
         error: `Trop de recherches SIREN. Réessayez dans ${Math.ceil(
-          (rate.retryAfterSec || 3600) / 60,
+          rate.retryAfterSec / 60,
         )} minutes.`,
       },
       {
         status: 429,
-        headers: { "Retry-After": String(rate.retryAfterSec || 3600) },
+        headers: { "Retry-After": String(rate.retryAfterSec) },
       },
     );
   }
@@ -108,7 +111,7 @@ export async function GET(request: NextRequest) {
       companyName: company.nom_complet || company.nom_raison_sociale || "Nom non disponible",
     });
   } catch (err) {
-    log.error("sirene_api_error", { err: err as Error, siren: sirenClean });
+    log.error("sirene_api_error", { err: err as Error, sirenProvided: true });
     return NextResponse.json(
       { error: "Erreur lors de la recherche. Veuillez réessayer." },
       { status: 500 }

@@ -37,7 +37,8 @@ export const cookiesSections: LegalSection[] = [
         </div>
         <p>
           Le site utilise quelques stockages locaux pour conserver votre thème,
-          éviter la perte d'un brouillon et, si une bannière de choix est active,
+          et, uniquement si vous activez le bouton prévu dans le formulaire,
+          éviter la perte d'un brouillon de projet dans l'onglet courant. Si une bannière de choix est active, il peut aussi
           mémoriser votre décision. Les événements de mesure internes ne sont pas
           envoyés lorsque la bannière est désactivée et nécessitent un choix
           « analytics » positif lorsqu'elle est affichée.
@@ -63,8 +64,8 @@ export const cookiesSections: LegalSection[] = [
           </thead>
           <tbody>
             <tr><td><code>theme</code></td><td>localStorage</td><td>Mémoriser le thème clair ou sombre demandé</td><td>Jusqu'à modification ou suppression par l'utilisateur</td><td>Fonctionnel</td></tr>
-            <tr><td><code>pf:draft:v2</code></td><td>localStorage</td><td>Sauvegarder localement le brouillon du formulaire projet pour éviter sa perte</td><td>30 jours après la dernière sauvegarde ; effacé après envoi ou remise à zéro</td><td>Fonction demandée par l'utilisateur</td></tr>
-            <tr><td><code>hc_consent_v1</code></td><td>localStorage</td><td>Mémoriser le choix nécessaire/analytics lorsque la bannière est activée</td><td>183 jours</td><td>Preuve du choix</td></tr>
+            <tr><td><code>pf:draft:v3</code></td><td>sessionStorage</td><td>Après activation volontaire du bouton, conserver dans l'onglet le brouillon des seules informations de projet ; nom, courriel, téléphone, SIREN, société, rôle et validation juridique en sont exclus</td><td>24 heures au plus après la dernière sauvegarde, sans dépasser la session de l'onglet ; effacé après envoi, retrait du choix ou remise à zéro</td><td>Fonction expressément demandée par l'utilisateur</td></tr>
+            <tr><td><code>hc_consent_v1</code></td><td>localStorage</td><td>Mémoriser la version de la politique et le choix nécessaire/analytics lorsque la bannière est activée</td><td>183 jours</td><td>Preuve du choix</td></tr>
             <tr><td><code>pf:opened</code></td><td>sessionStorage</td><td>Éviter de compter deux fois l'ouverture du formulaire dans un même onglet</td><td>Session</td><td>Analytics facultatif, après choix positif</td></tr>
             <tr><td><code>pf:converted</code></td><td>sessionStorage</td><td>Éviter de compter deux fois une confirmation dans un même onglet</td><td>Session</td><td>Analytics facultatif, après choix positif</td></tr>
           </tbody>
@@ -133,7 +134,7 @@ export const cookiesSections: LegalSection[] = [
         </p>
         <p>
           Vous pouvez aussi supprimer les données de site depuis les réglages de
-          votre navigateur. Cela efface le choix, le thème et tout brouillon local.
+          votre navigateur. Cela efface le choix, le thème et tout brouillon de l'onglet.
           Le site reste consultable, mais certaines commodités sont perdues. La
           suppression de données déjà envoyées à HAGNERE CODE relève de la
           <a href="/legal/confidentialite"> politique de confidentialité</a>.
@@ -142,7 +143,7 @@ export const cookiesSections: LegalSection[] = [
     ),
   },
   {
-    id: "contact",
+    id: "mise-a-jour",
     label: "Contact",
     title: "Question ou mise à jour",
     body: (

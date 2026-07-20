@@ -3,9 +3,9 @@ export const problemsHtml = `
 <section class="cv-problems">
   <div class="wrap">
     <div class="cv-problems-head reveal">
-      <div class="eyebrow">— Ça vous parle ?</div>
-      <h2>Six phrases qu'on entend<br>chaque lundi en call.</h2>
-      <p>Pas de cas inventé. Voici ce qu'on entend <b>vraiment</b> des CMO, des founders, des heads of growth qui viennent nous voir. Si l'une de ces phrases résonne, on peut probablement vous aider.</p>
+      <div class="eyebrow">— Situations fréquentes</div>
+      <h2>Six scénarios pour cadrer<br>un besoin vidéo.</h2>
+      <p><b>Scénarios d'illustration fictifs : ni clients, ni témoignages réels.</b> Ils servent à reconnaître un besoin possible avant de définir le périmètre, les livrables et la cadence au devis.</p>
     </div>
 
     <div class="cv-problems-list">
@@ -13,10 +13,10 @@ export const problemsHtml = `
       <article class="cv-problem reveal">
         <div class="cv-problem-num">01</div>
         <div class="cv-problem-main">
-          <div class="cv-problem-label">CMO · SaaS B2B · série A</div>
-          <blockquote class="cv-problem-quote">
-            « On jongle avec <em>trois</em> prestataires différents — un motion designer, un UGC, un monteur YouTube — et aucun ne parle au même. Chaque vidéo a l'air <em>faite par quelqu'un d'autre</em>. »
-          </blockquote>
+          <div class="cv-problem-label">Scénario fictif — ni client ni témoignage réel · Coordination</div>
+          <p class="cv-problem-quote">
+            Plusieurs intervenants produisent les vidéos, mais personne ne garantit une <em>direction commune</em>. D'un format à l'autre, la marque paraît différente.
+          </p>
           <div class="cv-problem-answer">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
             <span>Un responsable de production et des spécialistes nommés au devis pour garder une direction cohérente.</span>
@@ -27,13 +27,13 @@ export const problemsHtml = `
       <article class="cv-problem cv-problem-alt reveal reveal-d-1">
         <div class="cv-problem-num">02</div>
         <div class="cv-problem-main">
-          <div class="cv-problem-label">Founder · DTC · 6 M€ GMV</div>
-          <blockquote class="cv-problem-quote">
-            « Chaque vidéo nous coûte <em>8 000 €</em>. On en sort <em>deux par trimestre</em>. Au final on n'a rien à poster, jamais, et le calendrier Meta Ads est vide. »
-          </blockquote>
+          <div class="cv-problem-label">Scénario fictif — ni client ni témoignage réel · Cadence et budget</div>
+          <p class="cv-problem-quote">
+            Les productions ponctuelles mobilisent trop de budget et de temps pour alimenter régulièrement les canaux. Le <em>calendrier éditorial</em> reste souvent vide.
+          </p>
           <div class="cv-problem-answer">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Forfait mensuel, cadence prévisible : 4 à 12 vidéos/mois selon le pack. Le calendrier est rempli.</span>
+            <span>Une cadence et des livrables définis au devis, selon le budget et les canaux réellement prioritaires.</span>
           </div>
         </div>
       </article>
@@ -41,13 +41,13 @@ export const problemsHtml = `
       <article class="cv-problem reveal reveal-d-2">
         <div class="cv-problem-num">03</div>
         <div class="cv-problem-main">
-          <div class="cv-problem-label">CEO · PME tech · chaîne YouTube stagnante</div>
-          <blockquote class="cv-problem-quote">
-            « Ma chaîne YouTube est bloquée à <em>800 abonnés</em> depuis un an. Je sais que je devrais y passer du temps, mais <em>écrire + tourner + monter</em>, je n'y arriverai jamais seul. »
-          </blockquote>
+          <div class="cv-problem-label">Scénario fictif — ni client ni témoignage réel · Production YouTube</div>
+          <p class="cv-problem-quote">
+            La publication sur YouTube est envisagée, mais personne ne peut assurer seul <em>l'écriture, le tournage et le montage</em> avec une cadence régulière.
+          </p>
           <div class="cv-problem-answer">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Pack YouTube Founder : on écrit, vous tournez 1h/semaine, on livre 4 vidéos longues + 16 shorts par mois.</span>
+            <span>Un processus répartit clairement l'écriture, la préparation, le tournage et le montage avant validation des livrables.</span>
           </div>
         </div>
       </article>
@@ -55,13 +55,13 @@ export const problemsHtml = `
       <article class="cv-problem cv-problem-alt reveal">
         <div class="cv-problem-num">04</div>
         <div class="cv-problem-main">
-          <div class="cv-problem-label">Head of Growth · e-commerce fashion</div>
-          <blockquote class="cv-problem-quote">
-            « Nos ads Meta sont tournées <em>au téléphone par l'équipe interne</em>. Ça fait amateur, le CTR est en berne, et personne n'a le temps de sortir un vrai hook par semaine. »
-          </blockquote>
+          <div class="cv-problem-label">Scénario fictif — ni client ni témoignage réel · Publicité sociale</div>
+          <p class="cv-problem-quote">
+            L'équipe filme en interne, mais manque de temps pour renouveler les angles, préparer les accroches et adapter les créations à chaque canal.
+          </p>
           <div class="cv-problem-answer">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Hooks scroll-stopper montés Premiere Pro, testés en A/B. 8 variantes par concept, itérées chaque semaine.</span>
+            <span>Des variantes préparées pour les tests comparatifs, avec une cadence et des critères de décision convenus en amont.</span>
           </div>
         </div>
       </article>
@@ -69,10 +69,10 @@ export const problemsHtml = `
       <article class="cv-problem reveal reveal-d-1">
         <div class="cv-problem-num">05</div>
         <div class="cv-problem-main">
-          <div class="cv-problem-label">CMO · marque premium · 40 pers.</div>
-          <blockquote class="cv-problem-quote">
-            « On voit des <em>avatars IA, voix clonées, vidéos Sora</em> partout. On ne sait plus ce qui est éthique, ce que Google pénalise, ce qui nous fera ringard dans six mois. »
-          </blockquote>
+          <div class="cv-problem-label">Scénario fictif — ni client ni témoignage réel · Usage de l'IA</div>
+          <p class="cv-problem-quote">
+            L'équipe envisage des <em>avatars IA, des voix clonées ou de la vidéo générée</em>, mais veut d'abord cadrer le consentement, la transparence et la validation humaine.
+          </p>
           <div class="cv-problem-answer">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
             <span>Tout recours à l'IA est expliqué, autorisé lorsque nécessaire et validé par la personne responsable du livrable.</span>
@@ -83,13 +83,13 @@ export const problemsHtml = `
       <article class="cv-problem cv-problem-alt reveal reveal-d-2">
         <div class="cv-problem-num">06</div>
         <div class="cv-problem-main">
-          <div class="cv-problem-label">DG · scale-up SaaS · 30 M€ ARR</div>
-          <blockquote class="cv-problem-quote">
-            « On a trois vidéos corporate filmées il y a deux ans. Quand un client ou un VC demande <em>"vous avez un teaser produit ?"</em>, on n'a rien à envoyer. »
-          </blockquote>
+          <div class="cv-problem-label">Scénario fictif — ni client ni témoignage réel · Vidéo produit</div>
+          <p class="cv-problem-quote">
+            Les seules vidéos corporate sont anciennes et l'équipe ne dispose pas d'un <em>teaser produit à jour</em> pour ses échanges commerciaux.
+          </p>
           <div class="cv-problem-answer">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
-            <span>Pack Motion produit : 1 teaser 60s + 3 explainers 30s + assets d'intégration site, livrés en 4 semaines.</span>
+            <span>Un ensemble de formats produit défini au devis pour les usages commerciaux, le site et les présentations.</span>
           </div>
         </div>
       </article>

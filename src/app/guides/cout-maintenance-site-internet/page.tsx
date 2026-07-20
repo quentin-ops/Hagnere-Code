@@ -33,16 +33,11 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -59,7 +54,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4400,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -112,37 +106,37 @@ const faqItems = [
   {
     question: "Quel est le prix moyen d'une maintenance de site internet ?",
     answer:
-      "Les fourchettes qui font consensus sur le marché français en 2026 : 30 à 100 €/mois pour un site vitrine (les forfaits basiques démarrent à 29 €, les complets montent vers 100 €), 80 à 250 €/mois pour un site de PME plus riche, 150 à 500 €/mois pour un e-commerce, et 500 €/mois et plus pour un site sur mesure sous contrat de tierce maintenance applicative (TMA) avec engagements de délais. Les interventions ponctuelles hors contrat se facturent 70 à 150 € de l'heure — et souvent le double en urgence.",
+      "Il n'existe pas de moyenne représentative applicable à tous les sites. Les offres publiées varient avec le socle, la fréquence des contrôles, les sauvegardes, le support, l'astreinte, les délais contractuels et les évolutions. Comparez des devis qui détaillent ces lignes, les exclusions, l'unité des dépassements et les conditions d'urgence.",
   },
   {
     question: "Combien coûte réellement la maintenance annuelle d'un site web ?",
     answer:
-      "Pour un site vitrine de TPE : 360 à 1 200 €/an de forfait, plus les licences d'extensions premium si le site est sous WordPress (500 à 1 000 €/an pour un site professionnel équipé), l'hébergement (60 à 960 €/an selon la formule) et le nom de domaine — votre adresse en .fr ou .com (10 à 50 €/an). Pour un e-commerce : 1 800 à 6 000 €/an de maintenance, davantage avec des évolutions régulières. Le total annuel réaliste d'un site professionnel se situe donc entre 900 € et plusieurs milliers d'euros — à comparer au coût d'un seul sinistre, chiffré dans ce guide.",
+      "Additionnez le forfait ou le temps d'intervention, les licences, l'hébergement, le domaine, les sauvegardes, la surveillance, le support et les évolutions. Le total dépend de votre architecture et du niveau de service ; demandez un scénario annuel bas, central et haut plutôt qu'un pourcentage du prix de création.",
   },
   {
     question: "La maintenance d'un site internet inclut-elle l'hébergement ?",
     answer:
-      "Non, dans la plupart des cas : ce sont deux lignes budgétaires distinctes. L'hébergement (5 à 80 €/mois selon la formule) paie le serveur qui fait tourner le site ; la maintenance paie l'entretien du site lui-même — mises à jour, sauvegardes, sécurité, correctifs. Certains prestataires regroupent les deux dans un forfait unique, d'autres les facturent séparément : exigez le détail écrit. Retenez la règle simple : l'infogérance (gestion complète du serveur) inclut la maintenance, mais la maintenance n'inclut presque jamais l'hébergement.",
+      "Cela dépend du contrat. Hébergement, infogérance applicative, mises à jour, sauvegardes et support peuvent être regroupés ou facturés séparément. Exigez le fournisseur de chaque service, son prix, ses limites, les responsabilités et la procédure de sortie.",
   },
   {
     question: "La maintenance est-elle obligatoire pour un site WordPress ?",
     answer:
-      "Légalement non, techniquement oui. WordPress vit sur un écosystème d'extensions : 11 334 vulnérabilités y ont été recensées en 2025 (+42 % en un an), dont 91 % dans les extensions — et pour les failles les plus ciblées, le délai médian entre la publication d'une faille et son exploitation par des robots n'est que de 5 heures. Un site WordPress sans mises à jour régulières n'est pas un site « qui prend un petit risque » : c'est un site dont le piratage est une question de temps. Les statistiques le confirment : environ la moitié des sites piratés n'étaient pas à jour.",
+      "Aucune loi générale n'impose un contrat de maintenance WordPress, mais l'exploitant doit gérer les mises à jour, accès, sauvegardes et incidents adaptés au risque. L'absence de suivi augmente l'exposition sans rendre un piratage certain. Fréquence, tests et délai de traitement doivent venir de votre architecture et des avis de sécurité.",
   },
   {
     question: "Peut-on faire la maintenance de son site soi-même ?",
     answer:
-      "Oui pour un site vitrine simple, à condition d'y consacrer réellement 2 à 4 heures par mois : mises à jour testées, sauvegardes vérifiées, surveillance. Des outils comme ManageWP (gratuit, options à 1-2 $ par site et par mois) ou MainWP (gratuit, version Pro à 199 $/an) industrialisent une partie du travail. Le calcul honnête : valorisez votre temps. À 2-4 h/mois, un dirigeant « paie » souvent plus cher en temps que le forfait basique à 30-50 €/mois — et dès que le site génère des contacts ou des ventes, l'enjeu dépasse le bricolage.",
+      "Oui si vous disposez des compétences, accès, procédures et temps nécessaires. Listez les tâches, mesurez le temps réel, testez les sauvegardes et définissez une escalade en cas d'incident. Les outils automatisent une partie du travail sans remplacer la vérification ni fixer un nombre d'heures universel.",
   },
   {
     question: "Que se passe-t-il si mon site est piraté ?",
     answer:
-      "Le nettoyage d'un site WordPress piraté coûte en France 250 à 600 € pour une infection limitée, 600 à 1 500 € si la base de données est touchée, si Google a blacklisté le site ou s'il y a une boutique en ligne. S'y ajoute le vrai coût : l'écran rouge « site trompeur » de Google fait fuir la quasi-totalité des visiteurs, et son retrait prend 3 à 5 jours ouvrés après nettoyage — incompressibles. Sans contrat, l'intervention d'urgence se paie 100 €/h minimum, souvent le double du tarif normal.",
+      "Isolez le système, préservez les éléments utiles à l'analyse, identifiez le périmètre, restaurez une version saine, corrigez la cause et examinez les obligations de notification avec les personnes compétentes. Le coût et le délai dépendent de l'incident, des sauvegardes, des données et des fournisseurs ; demandez une procédure et un tarif d'urgence écrits avant qu'il ne survienne.",
   },
   {
     question: "Quelle est la différence entre maintenance et TMA ?",
     answer:
-      "La maintenance « au forfait » (30 à 300 €/mois) couvre un périmètre standard : mises à jour, sauvegardes, sécurité, petit support. La TMA — tierce maintenance applicative — est le contrat d'entretien d'un site ou d'une application sur mesure : un engagement contractuel avec des délais garantis d'intervention et de rétablissement, une banque d'heures pour les corrections et évolutions, et un interlocuteur qui connaît votre code. Elle se facture 500 à 3 000 €/mois et plus selon la criticité — c'est le régime des sites dont dépend le chiffre d'affaires.",
+      "La TMA désigne la maintenance d'une application confiée à un tiers. Elle peut inclure corrective, préventive, évolutive, support, astreinte ou objectifs de service, mais rien n'est automatique : seuls le contrat, ses indicateurs, horaires, exclusions et responsabilités créent ces engagements.",
   },
   {
     question: "Quelle différence entre maintenance corrective et évolutive ?",
@@ -152,22 +146,22 @@ const faqItems = [
   {
     question: "Les sauvegardes sont-elles incluses dans un contrat de maintenance ?",
     answer:
-      "Dans tout contrat sérieux, oui — mais vérifiez trois choses que les forfaits bas de gamme escamotent : la fréquence (quotidienne pour un site actif, pas mensuelle), l'externalisation (une sauvegarde stockée sur le même serveur que le site brûle avec lui — l'incendie du datacenter OVH de 2021 l'a tragiquement prouvé, jusqu'à une condamnation du prestataire dont la sauvegarde vendue était dans le même bâtiment), et les tests de restauration (une sauvegarde jamais testée est un espoir, pas une garantie).",
+      "Pas nécessairement. Vérifiez la fréquence, la rétention, le chiffrement, la séparation du système principal, la responsabilité du fournisseur et surtout les tests de restauration. Les objectifs de perte de données et de reprise doivent être adaptés au site et écrits.",
   },
   {
     question: "Combien de temps dure la maintenance d'un site internet ?",
     answer:
-      "La question a trois réponses. La durée d'une opération : une mise à jour de CMS prend 1 à 3 heures, un lot de mises à jour d'extensions 2 à 4 heures par mois, une restauration après piratage 4 à 8 heures. Le temps récurrent : comptez 2 à 4 heures par mois minimum pour entretenir correctement un site vitrine simple. La durée d'engagement : les contrats types courent sur 12 mois, souvent en tacite reconduction — vérifiez les conditions de sortie avant de signer.",
+      "Une mise à jour, une restauration et le suivi récurrent n'ont pas de durée standard : volume, tests, dépendances et incident changent l'effort. Le contrat doit préciser la période d'engagement, le renouvellement, le préavis et la sortie ; la charge opérationnelle se mesure puis s'ajuste.",
   },
   {
     question: "Quelle différence entre maintenance et refonte ?",
     answer:
-      "La maintenance entretient le site existant ; la refonte le reconstruit. Le lien entre les deux est budgétaire : un site bien maintenu vit 5 à 6 ans avant refonte, un site abandonné devient techniquement irrécupérable en 3 à 4 ans — versions PHP obsolètes, extensions mortes, sécurité compromise — et impose une refonte prématurée. Négliger 50 €/mois de maintenance peut donc avancer de deux ans une dépense de 5 000 à 15 000 € : le calcul est vite fait, et notre guide du prix d'une refonte le détaille.",
+      "La maintenance entretient l'existant ; la refonte modifie plus largement le design, le contenu, l'architecture ou le socle. Aucune durée de vie fixe ne sépare les deux. Un audit doit comparer correction ciblée et reconstruction à partir de l'état réel, des risques et des objectifs.",
   },
   {
     question: "Peut-on arrêter un contrat de maintenance à tout moment ?",
     answer:
-      "Cela dépend des clauses : le marché pratique majoritairement l'engagement de 12 mois, parfois en tacite reconduction, et certains prestataires proposent du sans-engagement. Trois points à vérifier avant de signer : les conditions de résiliation (préavis, pénalités), la réversibilité — la restitution de vos accès, fichiers et sauvegardes en fin de contrat, idéalement avec une remise des fichiers tous les 3 à 6 mois —, et le sort des heures non consommées de votre banque d'heures, rarement remboursées.",
+      "Cela dépend du contrat. Vérifiez durée, renouvellement, préavis, frais, réversibilité, remise des accès et sauvegardes, assistance de sortie et sort des heures ou crédits non consommés. Ne supposez ni remboursement ni conservation sans clause écrite.",
   },
   {
     question: "Faut-il un contrat de maintenance pour un site Shopify ou Wix ?",
@@ -176,23 +170,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -225,12 +208,11 @@ export default function Page() {
         showWhitePaperPromo
       >
         <p className="lead">
-          La maintenance est la ligne du devis que tout le monde a envie
-          de rayer — jusqu&apos;au jour où le site affiche l&apos;écran
+          La maintenance est une ligne du devis facile à sous-estimer — jusqu&apos;au
+          jour où le site affiche l&apos;écran
           rouge « site trompeur » de Google. Ce guide donne{" "}
           <strong>les vrais prix 2026, les forfaits réels du marché
-          nommés, le contrat décodé clause par clause</strong> — et le
-          chiffre que personne ne met en avant : ce que coûte un site
+          nommés, le contrat décodé clause par clause</strong> — et le coût d&apos;un site
           qu&apos;on n&apos;entretient pas.
         </p>
 
@@ -299,7 +281,7 @@ export default function Page() {
 
         <h2 id="de-quoi-parle-t-on">2. Maintenance, hébergement, infogérance : de quoi parle-t-on</h2>
         <p>
-          Trois lignes de facture que tout le monde confond.{" "}
+          Trois lignes de facture doivent être distinguées.{" "}
           <strong>L&apos;hébergement</strong>, c&apos;est le local : le
           serveur qui fait tourner le site, 5 à 80 €/mois selon la
           gamme. <strong>La maintenance</strong>, c&apos;est
@@ -315,12 +297,12 @@ export default function Page() {
           ligne par ligne ? »
         </p>
         <p>
-          L&apos;analogie la plus juste est celle de la chaudière :
-          personne ne conteste son contrat d&apos;entretien annuel —
-          on sait qu&apos;une chaudière négligée finit par lâcher un
+          L&apos;analogie de la chaudière est utile : son contrat d&apos;entretien
+          annuel couvre un risque connu — une chaudière négligée peut lâcher un
           soir de janvier. Un site professionnel est la chaudière de
           votre acquisition de clients ; il obéit à la même loi.
-          Fil rouge de ce guide : <strong>la fromagerie Perrin, à
+          Fil rouge de ce guide : <strong>scénario fictif composite —
+          ni client ni témoignage réel — avec la fromagerie Perrin, à
           Chambéry</strong> — un WordPress de 2023, 18 pages, un module
           de commande de plateaux apéritif qui encaisse environ
           2 000 €/mois (le triple en décembre), et aucune maintenance
@@ -333,8 +315,8 @@ export default function Page() {
           Le premier réflexe d&apos;un dirigeant est de penser :
           « qui viendrait pirater le site d&apos;une fromagerie ? »
           C&apos;est la bonne question, et la réponse change tout :{" "}
-          <strong>personne ne le choisit — des robots l&apos;essaient,
-          comme tous les autres</strong>. Les chiffres 2025-2026 de
+          <strong>les attaques automatisées ne choisissent pas une marque : des
+          robots testent les sites exposés</strong>. Les chiffres 2025-2026 de
           l&apos;écosystème WordPress (43 % du web, et la
           grande majorité des sites de PME françaises) donnent la mesure
           d&apos;une menace industrielle :
@@ -351,16 +333,15 @@ export default function Page() {
           <li>
             <strong>5 heures</strong> : le délai médian entre la
             publication d&apos;une faille très ciblée et son
-            exploitation active par des robots. Un site
-            « vérifié de temps en temps » n&apos;a mécaniquement aucune
-            chance.
+            exploitation active observée sur l&apos;échantillon cité. Ce délai ne
+            s&apos;applique pas à toutes les failles, mais justifie une veille et une
+            procédure de traitement proportionnées au risque.
           </li>
           <li>
-            <strong>46 % des failles ne reçoivent jamais de
-            correctif</strong> de leur développeur : mettre à jour ne
-            suffit pas, il faut un humain qui repère et remplace les
-            extensions abandonnées — 1,6 million de sites utilisent des
-            extensions « zombies », mortes mais toujours installées.
+            Le rapport cité signale aussi des extensions sans correctif ou
+            abandonnées. Avant de conserver ou remplacer une extension, vérifiez
+            la vulnérabilité, sa version, son exposition, les mesures compensatoires
+            et l&apos;activité du mainteneur.
           </li>
           <li>
             Le lien avec l&apos;entretien est documenté année après
@@ -370,20 +351,12 @@ export default function Page() {
           </li>
         </ul>
         <InfoBox variant="amber" title="« J'ai activé les mises à jour automatiques, je suis tranquille »">
-          C&apos;est mieux que rien, et c&apos;est insuffisant — pour
-          trois raisons sourcées. Une mise à jour peut casser le site
-          (incompatibilité entre extensions) : sans humain qui teste et
-          sait restaurer, l&apos;automatisme devient le sinistre. Une
-          faille sur deux n&apos;est jamais corrigée par son
-          développeur : aucune mise à jour ne protégera une extension
-          abandonnée, il faut la remplacer. Et la sauvegarde
-          automatique de l&apos;hébergeur vit souvent sur la même
-          infrastructure que le site : l&apos;incendie du datacenter
-          OVH en 2021 a détruit des sites ET leurs sauvegardes — le
-          tribunal a condamné l&apos;hébergeur à verser plus de
-          100 000 € à un client dont la sauvegarde souscrite était
-          stockée… dans le même bâtiment. Une sauvegarde n&apos;existe
-          que si elle est ailleurs, et testée.
+          C&apos;est utile, mais l&apos;automatisation ne couvre pas tout. Testez les
+          mises à jour et le retour arrière, surveillez les extensions abandonnées,
+          séparez les sauvegardes du système principal et vérifiez régulièrement
+          une restauration. Le contrat d&apos;hébergement doit préciser la portée
+          exacte de la sauvegarde ; l&apos;existence d&apos;une copie ne garantit pas
+          sa restauration.
         </InfoBox>
 
         <h2 id="cout-sinistre">4. Le coût d&apos;un sinistre, chiffré poste par poste</h2>
@@ -394,10 +367,10 @@ export default function Page() {
         <GuideTable
           headers={["Sinistre", "Coût direct", "Le coût qu'on oublie"]}
           rows={[
-            ["Piratage (site vitrine)", "250 – 600 € de nettoyage", "Vos visiteurs voient l'écran rouge « site trompeur »"],
-            ["Piratage (boutique / base touchée)", "600 – 1 500 € de nettoyage", "Retrait de la liste noire Google : 3 à 5 jours ouvrés, incompressibles"],
-            ["Bandeau cookies non conforme (jamais vérifié)", "Jusqu'à 20 000 € pour une TPE/PME (procédure simplifiée CNIL)", "Plus de 60 % des sanctions CNIL 2025 ont visé des TPE/PME"],
-            ["Perte de données sans sauvegarde externe", "Reconstruction partielle ou totale du site", "Des années de contenus et de référencement, définitivement perdus"],
+            ["Piratage (site vitrine)", "À chiffrer après qualification", "Indisponibilité ou avertissement possibles selon l'incident"],
+            ["Piratage (boutique / base touchée)", "Forensique, restauration et notification selon le périmètre", "Délai de réexamen non garanti"],
+            ["Bandeau cookies non conforme (jamais vérifié)", "Une procédure simplifiée de la CNIL peut conduire à une amende allant jusqu'à 20 000 €", "Le bilan CNIL 2025 recense 67 sanctions prononcées en procédure simplifiée, sans publier de proportion TPE/PME"],
+            ["Perte de données sans sauvegarde restaurable", "Reconstruction selon les copies disponibles", "Contenus et historique potentiellement perdus"],
           ]}
         />
         <p>
@@ -412,39 +385,33 @@ export default function Page() {
           moyen d&apos;une cyberattaque réussie en France à{" "}
           <strong>25 600 €</strong> — sur 347 000 attaques réussies
           recensées en 2022, 330 000 ont touché des PME. Pour la
-          fromagerie Perrin, le scénario noir est plus modeste mais
+          ce scénario composite, le risque simulé pour la fromagerie
+          Perrin est plus modeste mais
           parlant : un piratage début décembre — nettoyage 800 €,
           écran rouge pendant les 5 jours où elle prend ses commandes
           de fêtes (~1 000 € de plateaux envolés), et la confiance à
           reconstruire. <strong>Environ 2 000 €, soit plus de deux ans
-          du forfait de maintenance qui l&apos;aurait très
-          probablement évité.</strong> C&apos;est le calcul de fond de
-          ce guide : la maintenance est une assurance dont le sinistre
-          est quasi certain à moyen terme.
+          du forfait de maintenance qui aurait peut-être réduit ce risque.</strong>{" "}
+          Ce scénario n&apos;est ni un dossier client ni une prédiction : la
+          maintenance réduit certains risques sans garantir qu&apos;un incident
+          ne surviendra pas.
         </p>
         <p>
-          Un mot enfin sur l&apos;échéance que beaucoup de PME
-          découvrent tard : depuis le 28 juin 2025,
-          l&apos;accessibilité numérique est obligatoire pour les
-          services en ligne destinés aux particuliers (« B2C », dont
-          l&apos;e-commerce) de toutes les entreprises — seules les
-          micro-entreprises cumulant moins de 10 salariés ET moins de
-          2 M€ de chiffre d&apos;affaires en sont exemptées ; dépasser
-          un seul de ces deux seuils suffit à être concerné — avec des
-          sanctions pouvant atteindre 50 000 € par service. Maintenir
-          un site en 2026, c&apos;est aussi maintenir sa conformité —
-          RGPD, cookies et accessibilité forment un chantier à part
-          entière, que nous traitons dans notre offre{" "}
+          L&apos;accessibilité, la protection des données et les cookies peuvent
+          créer des obligations différentes selon l&apos;activité, le service,
+          la taille de l&apos;entreprise et les textes applicables. Une page de
+          guide ne suffit pas à qualifier votre situation : faites vérifier le
+          périmètre juridique, puis inscrivez les contrôles techniques et
+          éditoriaux nécessaires dans la maintenance ; voir notre offre{" "}
           <Link href="/services/securite-rgpd">sécurité et conformité
           RGPD</Link>.
         </p>
 
         <h2 id="prix-par-type">5. Les prix 2026 par type de site</h2>
         <p>
-          Le marché français est remarquablement standardisé — les
-          fourchettes ci-dessous croisent huit guides tarifaires et
-          pages de prix concurrents, pour neutraliser le biais de
-          chacun :
+          Les fourchettes ci-dessous sont un relevé de prix publics, pas une
+          moyenne représentative. Datez-les, vérifiez-les et comparez surtout
+          le contenu contractuel de chaque offre :
         </p>
         <GuideTable
           headers={["Niveau", "Prix/mois", "Contenu type"]}
@@ -461,11 +428,11 @@ export default function Page() {
           <strong>« maintenance-robot » contre « maintenance avec un
           humain derrière »</strong>. Sous 50 €/mois, vous achetez
           essentiellement des automatismes (mises à jour lancées,
-          sauvegardes programmées) — utiles, mais personne ne teste,
-          n&apos;audite les extensions abandonnées ni ne répond au
+          sauvegardes programmées) — utiles, mais qui n&apos;incluent généralement
+          ni test humain, ni audit des extensions abandonnées, ni réponse au
           téléphone le jour du problème. Le passage à 70-170 €/mois
           paie précisément cela : un humain qui vérifie, corrige et
-          répond. Pour la fromagerie Perrin — 18 pages et un module de
+          répond. Dans l&apos;hypothèse de la fromagerie Perrin — 18 pages et un module de
           commande qui encaisse —, le bon niveau est l&apos;entrée du
           régime « avec un humain derrière », dimensionné pour un site
           qui vend : <strong>autour de 70 à 80 €/mois</strong> (le
@@ -479,8 +446,7 @@ export default function Page() {
 
         <h2 id="forfaits-reels">6. Les forfaits réels du marché, nommés</h2>
         <p>
-          Aucun guide concurrent ne le fait, alors le voici : un
-          échantillon de forfaits réellement affichés sur les pages
+          Voici un échantillon de forfaits affichés sur les pages
           tarifs de prestataires français, relevés en juillet 2026 —
           non pas pour les recommander (nous n&apos;avons testé aucun
           d&apos;eux), mais pour ancrer les fourchettes dans le réel :
@@ -497,16 +463,11 @@ export default function Page() {
           ]}
         />
         <p>
-          Trois leçons de ce tableau. D&apos;abord, les prix
-          d&apos;appel à 29-49 € existent vraiment — en régime
-          « robot + un peu d&apos;humain », et c&apos;est honnête pour
-          un site vitrine simple. Ensuite, l&apos;écart entre 49 € et
-          499 € ne paie pas cinq fois plus de mises à jour : il paie
-          des <strong>engagements</strong> — des délais de
-          rétablissement garantis, une astreinte, des heures incluses.
-          Enfin, un seul de ces prestataires affiche ses délais
-          garantis : c&apos;est précisément la question à poser à tous
-          les autres, et l&apos;objet de la section 10.
+          Ce relevé montre surtout qu&apos;un prix ne décrit pas le service. Pour
+          chaque offre, vérifiez la date, l&apos;automatisation, le temps humain,
+          les horaires, les exclusions, les heures incluses et les éventuels
+          objectifs de service. N&apos;attribuez pas un engagement au prestataire
+          s&apos;il n&apos;est pas écrit dans son contrat.
         </p>
 
         <h2 id="postes">7. Ce que contient (vraiment) un forfait</h2>
@@ -586,15 +547,13 @@ export default function Page() {
           Honnêteté de lecture : ce tableau ne dit pas qu&apos;un
           WordPress bien tenu est indéfendable — il dit qu&apos;un
           WordPress se paie en entretien récurrent, à vie.
-          L&apos;argument historique en sa faveur (« le sur-mesure
-          coûte trop cher à construire ») a largement vécu : avec le
-          développement assisté par IA (Claude Code), le coût et le
-          délai d&apos;un site sur mesure ont fortement baissé — et
-          sur 5 ans, l&apos;écart d&apos;entretien (souvent plus de
-          1 000 €/an tout compris) achève de renverser le calcul. Pour
-          un site professionnel qui doit convertir et durer, la base
-          saine (React/Next.js) est aujourd&apos;hui le choix par
-          défaut — c&apos;est le seul socle sur lequel nous construisons,
+          Le coût initial ne suffit donc pas à départager les solutions.
+          L&apos;usage d&apos;assistants IA dans le développement ne prouve ni une
+          baisse générale de prix ni un délai universel. Sur cinq ans, comparez
+          les mêmes postes : construction, hébergement, licences, maintenance,
+          évolutions, temps interne et sortie. Pour un site professionnel, une
+          base statique React/Next.js peut limiter certains besoins de mise à
+          jour applicative ; c&apos;est le socle que nous proposons,
           et notre page <Link href="/agence-next-js">agence
           Next.js</Link> détaille ce qu&apos;il change à
           l&apos;entretien ; le verdict détaillé par profil reste dans
@@ -606,8 +565,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre site est-il entretenu — ou juste en ligne ?"
-          description="Décrivez votre site en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un diagnostic franc de son état (mises à jour, sauvegardes, sécurité, conformité) et une proposition de maintenance au forfait fixe, engagements écrits."
-          tags={["Réponse sous 24 h ouvrées", "SLA contractuel", "Réversibilité garantie"]}
+          description="Décrivez votre site en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un diagnostic franc de son état (mises à jour, sauvegardes, sécurité, conformité) et une proposition de maintenance au forfait fixe, engagements écrits."
+          tags={["Objectif : prochain jour ouvré", "SLA contractuel", "Réversibilité garantie"]}
         />
 
         <h2 id="contrat">10. Le contrat décodé : SLA, GTI, GTR — et les pièges</h2>
@@ -678,24 +637,22 @@ export default function Page() {
           <strong>Coût réel du « je m&apos;en occupe » = heures passées
           × valeur de votre heure</strong>
           <br />
-          Chez Perrin : 3 h/mois × 40 € (l&apos;heure d&apos;un gérant,
-          prudemment) = <strong>120 €/mois</strong> — bien plus que le
-          forfait à 70-80 €/mois qui ferait le travail avec un
-          professionnel derrière.
+          Hypothèse purement illustrative : temps réellement mesuré × valeur
+          interne choisie = coût d&apos;opportunité. Remplacez ces deux variables
+          par les vôtres et ajoutez le coût des outils et de l&apos;escalade.
           <br />
           <br />
           Et le vrai risque n&apos;est pas là : il est dans la
-          régularité. La maintenance faite « quand on a le temps »
-          finit toujours par ne plus être faite — or une faille très
-          ciblée s&apos;exploite en 5 heures, pas en 5 semaines.
+          régularité. Une tâche sans responsable, cadence ni preuve de contrôle
+          risque d&apos;être oubliée ; définissez ces éléments explicitement.
         </FormulaBox>
         <p>
           Notre position : le DIY est défendable pour un site sans
           enjeu commercial. Dès que le site génère des contacts ou des
-          ventes — le cas Perrin —, la question n&apos;est plus
+          ventes — comme dans le scénario Perrin —, la question n&apos;est plus
           « puis-je le faire ? » mais « est-ce le meilleur usage de mes
-          heures, avec ce niveau de risque ? ». La réponse se calcule,
-          et elle penche rarement du côté du bricolage.
+          heures, avec ce niveau de risque ? ». La réponse dépend des compétences,
+          de l&apos;enjeu du site et d&apos;une solution d&apos;escalade disponible.
         </p>
 
         <h2 id="duree">12. « Combien de temps dure la maintenance » : la triple réponse</h2>
@@ -739,9 +696,9 @@ export default function Page() {
           Les plateformes louées (Shopify, Wix, Squarespace) ont un
           vrai argument : <strong>l&apos;éditeur maintient le
           socle</strong> — serveurs, sécurité de la plateforme, mises à
-          jour du back-office, disponibilité. C&apos;est inclus dans
-          l&apos;abonnement, et c&apos;est un travail que vous ne
-          paierez jamais en plus. Mais l&apos;étage au-dessus reste à
+          jour du back-office et disponibilité selon ses conditions. Une partie
+          est incluse dans l&apos;abonnement, dont le prix et les limites peuvent
+          évoluer. Mais l&apos;étage au-dessus reste à
           votre charge : le thème et ses personnalisations, les
           applications tierces — souvent 5 à 15 sur une boutique
           active, chacune avec ses réglages, ses mises à jour et ses
@@ -749,10 +706,8 @@ export default function Page() {
           comptabilité, logistique) et la conformité de votre propre
           contenu (bandeau cookies compris : l&apos;amende Condé Nast
           de la section 4 concernait un site parfaitement hébergé). Sur
-          une boutique sérieuse, ce travail se compte en heures
-          mensuelles réelles, et les forfaits de maintenance Shopify
-          professionnels se facturent plusieurs centaines
-          d&apos;euros par mois. La nuance à retenir :{" "}
+          une boutique active, ce travail peut nécessiter du temps interne ou
+          un prestataire ; il doit être chiffré selon les intégrations. La nuance à retenir :{" "}
           <strong>plateforme louée = socle maintenu, boutique à
           entretenir quand même</strong>. Une fois ce poste réintégré,
           le « zéro maintenance » ne justifie plus à lui seul de bâtir
@@ -820,7 +775,7 @@ export default function Page() {
           sites critiques, la réversibilité garantie — et un avis franc
           quand le socle ne mérite plus d&apos;être maintenu.{" "}
           <Link href="/demarrer-un-projet">Décrivez votre site en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées,
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré,
           gratuite et sans engagement. Pour situer ce budget dans le
           coût complet d&apos;un site, notre{" "}
           <Link href="/guides/combien-coute-un-site-internet">panorama

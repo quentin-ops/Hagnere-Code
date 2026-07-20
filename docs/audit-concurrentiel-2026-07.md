@@ -84,7 +84,7 @@ L'audit conclut que « le goulot est l'indexation » et que « réparer l'indexa
 
 ### Forces réelles
 
-- **23 guides supérieurs en profondeur à tout ce qui ranke** — jusqu'à 9 000 mots, sourcés, FAQ 12 questions, JSON-LD Article/Breadcrumb/FAQPage, OG dédiées, maillage dense. **[VÉRIFIÉ]**
+- **23 guides approfondis** — jusqu'à 9 000 mots, sourcés, FAQ visibles, JSON-LD Article/Breadcrumb, OG dédiées et maillage dense. Le schéma `FAQPage`, présent lors de l'audit initial, a été retiré après l'arrêt de cette fonctionnalité par Google en mai 2026. **[VÉRIFIÉ ET MIS À JOUR]**
 - **Les signaux E-E-A-T sont déjà tenus** : date de mise à jour visible, auteur humain nommé, chiffre dans le title. **6 dominants sur 7 ne les ont pas.** Avantage déjà en banque. **[VÉRIFIÉ]**
 - **Base technique propre** : robots, sitemap complet, rendu serveur, redirections 308 propres. Rien à réparer. **[VÉRIFIÉ]**
 - **Un angle que personne dans ces SERP ne peut prendre** : croiser prix × préservation du SEO × migration WordPress→Next.js. Aucun des 10 résultats sur « prix refonte » ne traite le risque SEO, qui est pourtant l'angoisse n°1 de l'acheteur. Amphibee est enfermé sur WordPress, les studios no-code sont juge et partie.
@@ -232,7 +232,7 @@ Le fait le plus révélateur de tout ce plan : **3 des 5 ne sont pas de la produ
 
 ### Quinzaine 2 · S3-4 — Le local (1-14 août)
 
-- Publication `/agence-web-aix-les-bains` (1 800-2 500 mots, FAQ 8-10, JSON-LD `LocalBusiness` + `FAQPage`, 2-3 références locales, maillage vers les guides)
+- Publication `/agence-web-aix-les-bains` (1 800-2 500 mots, FAQ visible si utile, JSON-LD d'entité locale sans `FAQPage`, 2-3 références locales, maillage vers les guides)
 - Publication `/agence-web-chambery`
 - Citations : CCI Savoie, AURA Digital, PagesJaunes, Sortlist — **NAP rigoureusement identique**
 - Démarrage des posts GBP hebdomadaires pointant vers les guides existants

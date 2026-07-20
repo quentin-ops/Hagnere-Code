@@ -13,18 +13,18 @@ export const scenariosHtml = `
       </div>
     </div>
 
-    <div class="cv-scen-tabs reveal" role="tablist">
-      <button type="button" class="cv-scen-tab" data-scenario="yt" role="tab" aria-selected="true">
+    <div class="cv-scen-tabs reveal" role="tablist" aria-label="Choisir un scénario">
+      <button type="button" class="cv-scen-tab" data-scenario="yt" role="tab" aria-selected="true" id="cv-scenario-tab-yt" aria-controls="cv-scenario-panel-yt" tabindex="0">
         <span class="cv-scen-tab-k">PACK 01</span>
         <span class="cv-scen-tab-t">YouTube Founder</span>
         <span class="cv-scen-tab-d">3 500 €/mois</span>
       </button>
-      <button type="button" class="cv-scen-tab" data-scenario="motion" role="tab" aria-selected="false">
+      <button type="button" class="cv-scen-tab" data-scenario="motion" role="tab" aria-selected="false" id="cv-scenario-tab-motion" aria-controls="cv-scenario-panel-motion" tabindex="-1">
         <span class="cv-scen-tab-k">PACK 02</span>
         <span class="cv-scen-tab-t">Motion &amp; brand</span>
         <span class="cv-scen-tab-d">4 500 €/mois</span>
       </button>
-      <button type="button" class="cv-scen-tab" data-scenario="retainer" role="tab" aria-selected="false">
+      <button type="button" class="cv-scen-tab" data-scenario="retainer" role="tab" aria-selected="false" id="cv-scenario-tab-retainer" aria-controls="cv-scenario-panel-retainer" tabindex="-1">
         <span class="cv-scen-tab-k">PACK 03</span>
         <span class="cv-scen-tab-t">Content retainer</span>
         <span class="cv-scen-tab-d">6 900 €/mois</span>
@@ -32,7 +32,7 @@ export const scenariosHtml = `
     </div>
 
     <!-- PANEL YT -->
-    <div class="cv-scen-panel" data-panel="yt" role="tabpanel" aria-hidden="false">
+    <div class="cv-scen-panel" data-panel="yt" role="tabpanel" tabindex="0" aria-hidden="false" id="cv-scenario-panel-yt" aria-labelledby="cv-scenario-tab-yt">
       <div class="cv-scen-cols">
         <div class="cv-scen-col-main">
           <div class="cv-scen-kind">POUR QUI</div>
@@ -41,7 +41,7 @@ export const scenariosHtml = `
             Vous avez de vraies choses à dire mais <b>pas le temps d'écrire, de tourner et de monter</b>. On écrit les scripts à partir de 30 min d'interview, vous tournez 1 h par semaine face cam (iPhone suffit), on livre le reste.
           </p>
           <div class="cv-scen-deliv">
-            <h4>Ce qu'on livre chaque mois</h4>
+            <h3>Ce qu'on livre chaque mois</h3>
             <ul>
               <li><b>4 vidéos longues</b> (10-18 min) montées Premiere Pro</li>
               <li><b>16 shorts / reels / TikToks</b> dérivés</li>
@@ -52,7 +52,7 @@ export const scenariosHtml = `
             </ul>
           </div>
         </div>
-        <aside class="cv-scen-aside">
+        <div class="cv-scen-aside">
           <div class="cv-scen-price">
             <div class="cv-scen-price-amount">3 500 <span>€ / mois</span></div>
             <span class="cv-scen-price-note">HT · ENGAGEMENT 6 MOIS</span>
@@ -60,19 +60,19 @@ export const scenariosHtml = `
           <div class="cv-scen-meta">
             <div class="cv-scen-meta-row"><span class="k">Cadence</span><span class="v">1 longue + 4 shorts / semaine</span></div>
             <div class="cv-scen-meta-row"><span class="k">Votre temps</span><span class="v">1 h de tournage / semaine</span></div>
-            <div class="cv-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 2 semaines</span></div>
+            <div class="cv-scen-meta-row"><span class="k">Démarrage</span><span class="v">Date confirmée au devis</span></div>
             <div class="cv-scen-meta-row"><span class="k">Option voix IA</span><span class="v">+600 € / mois (clone vôtre)</span></div>
           </div>
           <a href="#contact" class="btn btn-accent cv-scen-cta">
             Discuter de ce pack
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL MOTION -->
-    <div class="cv-scen-panel" data-panel="motion" role="tabpanel" aria-hidden="true" hidden>
+    <div class="cv-scen-panel" data-panel="motion" role="tabpanel" tabindex="0" aria-hidden="true" id="cv-scenario-panel-motion" aria-labelledby="cv-scenario-tab-motion" hidden>
       <div class="cv-scen-cols">
         <div class="cv-scen-col-main">
           <div class="cv-scen-kind">POUR QUI</div>
@@ -81,7 +81,7 @@ export const scenariosHtml = `
             Explainer produit, teaser de lancement, motion de fiche, intégrations natives web (Rive, Lottie). On construit un <b>design system vidéo</b> qui traverse site, ads, pitch deck, emails.
           </p>
           <div class="cv-scen-deliv">
-            <h4>Ce qu'on livre chaque mois</h4>
+            <h3>Ce qu'on livre chaque mois</h3>
             <ul>
               <li><b>1 vidéo brand hero</b> (30-60s) par mois</li>
               <li><b>3 motion courts</b> (15s) pour site / ads</li>
@@ -92,7 +92,7 @@ export const scenariosHtml = `
             </ul>
           </div>
         </div>
-        <aside class="cv-scen-aside">
+        <div class="cv-scen-aside">
           <div class="cv-scen-price">
             <div class="cv-scen-price-amount">4 500 <span>€ / mois</span></div>
             <span class="cv-scen-price-note">HT · ENGAGEMENT 6 MOIS</span>
@@ -100,19 +100,19 @@ export const scenariosHtml = `
           <div class="cv-scen-meta">
             <div class="cv-scen-meta-row"><span class="k">Cadence</span><span class="v">1 hero + 3 courts + 5 natives / mois</span></div>
             <div class="cv-scen-meta-row"><span class="k">Votre temps</span><span class="v">1 validation / semaine</span></div>
-            <div class="cv-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 2 à 3 semaines</span></div>
-            <div class="cv-scen-meta-row"><span class="k">Design system</span><span class="v">Livré à J+30, évolue ensuite</span></div>
+            <div class="cv-scen-meta-row"><span class="k">Démarrage</span><span class="v">Date confirmée au devis</span></div>
+            <div class="cv-scen-meta-row"><span class="k">Design system</span><span class="v">Jalon défini au devis</span></div>
           </div>
           <a href="#contact" class="btn btn-accent cv-scen-cta">
             Discuter de ce pack
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL RETAINER -->
-    <div class="cv-scen-panel" data-panel="retainer" role="tabpanel" aria-hidden="true" hidden>
+    <div class="cv-scen-panel" data-panel="retainer" role="tabpanel" tabindex="0" aria-hidden="true" id="cv-scenario-panel-retainer" aria-labelledby="cv-scenario-tab-retainer" hidden>
       <div class="cv-scen-cols">
         <div class="cv-scen-col-main">
           <div class="cv-scen-kind">POUR QUI</div>
@@ -121,7 +121,7 @@ export const scenariosHtml = `
             Vous êtes <b>une marque DTC ou un SaaS en scale</b> et vous avez besoin de contenu chaque semaine pour nourrir Meta Ads, Reels, TikTok, LinkedIn, la newsletter, le site. On monte un pipeline industriel, sans jamais sacrifier la DA.
           </p>
           <div class="cv-scen-deliv">
-            <h4>Ce qu'on livre chaque mois</h4>
+            <h3>Ce qu'on livre chaque mois</h3>
             <ul>
               <li><b>12 ads payantes</b> (Meta / TikTok / Google) scroll-stopper</li>
               <li><b>8 UGC</b> briefés et montés</li>
@@ -132,7 +132,7 @@ export const scenariosHtml = `
             </ul>
           </div>
         </div>
-        <aside class="cv-scen-aside">
+        <div class="cv-scen-aside">
           <div class="cv-scen-price">
             <div class="cv-scen-price-amount">6 900 <span>€ / mois</span></div>
             <span class="cv-scen-price-note">HT · ENGAGEMENT 6 MOIS</span>
@@ -140,14 +140,14 @@ export const scenariosHtml = `
           <div class="cv-scen-meta">
             <div class="cv-scen-meta-row"><span class="k">Cadence</span><span class="v">~25 livrables / mois</span></div>
             <div class="cv-scen-meta-row"><span class="k">Votre temps</span><span class="v">Brief mensuel 1 h</span></div>
-            <div class="cv-scen-meta-row"><span class="k">Démarrage</span><span class="v">Sous 3 à 4 semaines</span></div>
+            <div class="cv-scen-meta-row"><span class="k">Démarrage</span><span class="v">Date confirmée au devis</span></div>
             <div class="cv-scen-meta-row"><span class="k">Localisation</span><span class="v">FR / EN / DE incluses</span></div>
           </div>
           <a href="#contact" class="btn btn-accent cv-scen-cta">
             Discuter de ce pack
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-        </aside>
+        </div>
       </div>
     </div>
 

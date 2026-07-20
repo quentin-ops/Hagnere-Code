@@ -33,16 +33,11 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -175,23 +170,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -679,8 +663,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre boutique approche des limites de Shopify ?"
-          description="Décrivez votre activité en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc — rester sur Shopify, viser Plus ou passer au sur-mesure — et une fourchette argumentée en jours par poste."
-          tags={["Réponse sous 24 h ouvrées", "Avis franc, même si c'est « restez sur Shopify »", "E-commerce 15 000 – 120 000 €"]}
+          description="Décrivez votre activité en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis franc — rester sur Shopify, viser Plus ou passer au sur-mesure — et une fourchette argumentée en jours par poste."
+          tags={["Objectif : prochain jour ouvré", "Avis franc, même si c'est « restez sur Shopify »", "E-commerce 15 000 – 120 000 €"]}
           ctaLabel="Faire trancher mon cas"
         />
 
@@ -811,8 +795,9 @@ export default function Page() {
           partie — et elles mesurent l&apos;exécution médiane du
           marché, pas le
           plafond de la technologie. Bien exécutée, une vitrine Next.js
-          tient les Core Web Vitals au vert — ce site, développé à
-          100 % en Next.js, en est la démonstration en production — et
+          peut viser les Core Web Vitals — ce site fournit un exemple public
+          que vous pouvez tester, sans garantir le score d&apos;un autre projet ni
+          prouver à lui seul toute sa stack interne — et
           offre ce qu&apos;aucun thème Liquid ne permet : animations sur
           mesure (Framer Motion, GSAP), direction artistique libre,
           architecture de contenu illimitée pour le référencement.
@@ -905,7 +890,7 @@ export default function Page() {
           contractuelles (méthode <Link href="/methode">Sprint
           Fixe™</Link>), avec droits, dépôt, accès et exclusions détaillés au devis.{" "}
           <Link href="/demarrer-un-projet">Décrivez votre boutique en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées,
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré,
           gratuite et sans engagement. Et pour situer ces budgets dans
           l&apos;ensemble du marché, notre{" "}
           <Link href="/guides/prix-site-e-commerce">guide des prix

@@ -33,16 +33,11 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -59,7 +54,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4500,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -112,47 +106,47 @@ const faqItems = [
   {
     question: "Combien de temps faut-il, en moyenne, pour créer un site web ?",
     answer:
-      "Les fourchettes qui font consensus sur le marché français en 2026 : quelques jours pour une page unique réalisée par un professionnel, 4 à 8 semaines pour un site vitrine professionnel, 2 à 4 mois pour un e-commerce (jusqu'à 6 mois et plus pour un gros catalogue), et 3 à 6 mois et plus pour une plateforme sur mesure. En autonomie sur un outil de création, comptez 1 à 4 semaines de calendrier… pour 15 à 40 heures de travail effectif. Ces délais couvrent la création — la visibilité sur Google, elle, se compte en mois (la réponse complète est dans ce guide).",
+      "Les sources et offres citées donnent des ordres de grandeur très dispersés : de quelques jours pour une page unique déjà préparée à plusieurs mois pour un e-commerce ou une plateforme. Elles ne forment pas une moyenne représentative du marché français. Le calendrier dépend surtout du périmètre, des contenus, des intégrations, de la recette, des validations et de la capacité disponible ; seul un planning établi après cadrage peut engager.",
   },
   {
     question: "Combien de temps pour créer un site vitrine ?",
     answer:
-      "Un site vitrine de 3 à 8 pages prend 2 à 6 semaines chez un professionnel ; un site vitrine complet avec blog, 4 à 8 semaines ; un site plus ambitieux (nombreuses pages, multilingue, réservation), 2 à 4 mois. Les agences à méthode « sprint » livrent en 7 à 10 jours ouvrés, mais sous conditions strictes : contenus fournis avant le démarrage, périmètre figé, un décideur unique. Chez Hagnéré Code : 2 à 7 semaines pour un site vitrine classique (jusqu'à 14 semaines en gamme Premium multilingue), avec des dates contractuelles — le détail par gamme est dans notre guide du prix d'un site vitrine.",
+      "Un site de quelques pages sans migration peut demander quelques semaines ; un ensemble éditorial, multilingue ou connecté demande davantage. Ces repères de marché ne valent pas planning. Chez Hagnéré Code, le devis fixe le calendrier après inventaire des gabarits, contenus, intégrations, validations, recette et dépendances côté client.",
   },
   {
     question: "Quel est le délai moyen pour un site e-commerce ?",
     answer:
-      "Comptez 2 à 4 mois pour une boutique standard — et 4 à 8 semaines seulement pour un petit catalogue de moins de 50 produits sur une plateforme type Shopify ou WooCommerce. Les projets à gros catalogue, connexions à un logiciel de gestion ou vente aux professionnels passent à 6-12 mois. Ce qui allonge spécifiquement l'e-commerce : les fiches produits (photos, textes — souvent des semaines de travail côté client), les moyens de paiement et livraison à paramétrer et tester, et la recette complète du tunnel de commande. Chez Hagnéré Code : 6 à 8 semaines pour lancer une nouvelle boutique, 8 à 16 semaines pour une refonte complète ou un projet B2B multi-pays.",
+      "Une petite boutique sur une plateforme existante et un commerce B2B connecté à un logiciel de gestion n'ont pas le même calendrier. Catalogue, import, variantes, moyens de paiement et de livraison, fiscalité, migration, comptes clients et recette du tunnel doivent être inventoriés. Chez Hagnéré Code, le planning n'est annoncé qu'après ce cadrage et reste soumis aux hypothèses écrites au devis.",
   },
   {
     question: "Combien de temps faut-il pour créer un site WordPress ?",
     answer:
-      "Par un freelance sérieux : 3 à 8 semaines au total — recherche du prestataire comprise (3 à 7 jours), brief et échanges (1 à 2 semaines), production (1 à 3 semaines), puis 2 à 3 tours de révisions. En agence : comptez au moins 2 mois. En autonomie : le calendrier s'étale sur 1 à 4 semaines, pour 15 à 40 heures de travail réel — dont 2 à 5 jours rien que pour apprivoiser l'outil. Le facteur qui domine tout : vos contenus. S'ils sont prêts au premier jour, le délai fond de 30 à 50 %.",
+      "Un WordPress sur thème avec contenus prêts et une refonte éditoriale sur mesure n'ont pas le même calendrier. Demandez au prestataire de séparer disponibilité, cadrage, design, production, migration, retours et recette. Des contenus prêts réduisent les attentes qui en dépendent, mais aucun pourcentage universel ne s'applique ; le planning doit nommer les éléments bloquants et les conséquences d'un retard.",
   },
   {
     question: "Peut-on vraiment créer un site internet en 24 h ?",
     answer:
-      "Techniquement oui — les générateurs à intelligence artificielle produisent une structure de site avec textes et images en quelques minutes, et des offres « site en 24 h » existent autour de 1 500 €. Lisez ce que vous achetez : un modèle de page imposé (souvent non modifiable ensuite), des textes génériques à réécrire, votre logo posé sur une trame standard. C'est un point de départ honnête pour exister en ligne rapidement ; ce n'est ni un site pensé pour convertir, ni un site conçu pour être trouvé sur Google. La règle : on peut aller vite sur l'exécution, pas sur la stratégie.",
+      "Techniquement oui pour publier un périmètre court avec un générateur ou un modèle déjà prêt. Lisez ce que vous achetez : export, propriété, contenus, personnalisation, accessibilité, mesure, référencement, recette et maintenance. Un délai de 24 heures ne prouve ni la qualité ni l'absence de qualité ; il implique surtout que la préparation, les exclusions et les validations doivent être explicites.",
   },
   {
     question: "Puis-je créer un site web en une semaine ?",
     answer:
-      "Oui, dans un cas précis : le sprint d'agence, qui livre un site vitrine de 5 à 10 pages en 7 à 10 jours ouvrés. Ses conditions sont toujours les mêmes — et elles sont instructives : tous les contenus (textes, images, logo) fournis avant le premier jour, un périmètre figé qu'on ne retouche pas en route, deux créneaux de validation d'une heure maximum, et un seul décideur. Autrement dit : une semaine de production suppose des semaines de préparation côté client. Sans ces conditions, le même site prend 4 à 8 semaines — la moyenne du marché.",
+      "C'est techniquement possible sur un périmètre très court et déjà préparé, si le prestataire a la capacité et si contenus, accès, décideur et critères de recette sont disponibles. Ce n'est pas un délai générique : demandez ce qui est exclu, le nombre de validations, la date de départ, les dépendances et ce qui se passe si un élément manque.",
   },
   {
     question: "Pourquoi les agences web mettent-elles autant de temps ?",
     answer:
-      "Parce que l'essentiel du calendrier n'est pas du développement. Sur 6 à 14 semaines de projet type, la technique pèse 2 à 8 semaines ; le reste, c'est le cadrage (comprendre votre métier et vos clients), les maquettes et leurs allers-retours de validation (2 à 3 tours en standard), vos contenus, la recette. Ajoutez la réalité des plannings : une agence sérieuse mène plusieurs projets et la vôtre s'insère dans un carnet de commandes. D'où l'intérêt de faire écrire au contrat les jalons, les dépendances côté client et le traitement d'un éventuel retard.",
+      "Le calendrier ne se limite pas au développement : cadrage, maquettes, contenus, intégrations, validations et recette peuvent être sur le chemin critique. La capacité du prestataire et la disponibilité du client comptent aussi. Faites écrire au contrat les jalons, responsables, dépendances et conséquences d'un éventuel retard.",
   },
   {
     question: "Puis-je utiliser l'IA pour créer un site web rapidement ?",
     answer:
-      "Oui, avec les yeux ouverts. Les générateurs des grandes plateformes créent réellement un site en quelques minutes : structure, textes, images. Leurs limites sont documentées par les éditeurs eux-mêmes : impossible de changer de modèle après génération chez certains, mises en page verrouillées chez d'autres, et un contenu générique par construction — le même que celui de milliers d'autres sites du même métier. L'IA accélère l'exécution standard ; elle ne remplace ni votre stratégie, ni des contenus qui parlent vraiment de votre entreprise — précisément ce qui fait qu'un site convertit.",
+      "Oui, pour préparer une structure, une première version de texte, du code ou un prototype. Les capacités d'export et de personnalisation varient selon l'outil. Vérifiez les conditions, les données envoyées, les droits, la sécurité et le résultat rendu ; l'IA ne décide pas à votre place du positionnement, des preuves, des priorités ni des critères de recette.",
   },
   {
     question: "Le délai change-t-il si je tarde à fournir mes contenus ?",
     answer:
-      "C'est LE facteur n°1, unanimement constaté : les contenus non prêts ajoutent 2 à 4 semaines à un projet type, et une enquête sectorielle mesure une médiane de 3 semaines d'attente pour que le client livre textes et photos. À l'inverse, des contenus prêts au premier jour réduisent le délai total de 30 à 50 % — un site vitrine passe par exemple de 6 à 3 semaines. Chaque semaine de retard sur une validation de maquette décale d'autant la mise en ligne : dans un projet web, la moitié du calendrier appartient au client.",
+      "Oui. Les maquettes, l'intégration et la recette dépendent des textes, images, mentions et validations attendus. Le planning doit donc lister qui fournit quoi, à quelle date, quels éléments bloquent une étape et comment un retard décale les jalons. Aucun pourcentage universel ne prédit cet effet pour un projet donné.",
   },
   {
     question: "Faut-il rédiger le contenu avant ou pendant la création du site ?",
@@ -162,12 +156,12 @@ const faqItems = [
   {
     question: "Comment accélérer la création de mon site internet ?",
     answer:
-      "Quatre leviers prouvés, par ordre d'impact : préparez vos contenus avant le premier jour (−30 à −50 % de délai) ; désignez un décideur unique avec un créneau hebdomadaire réservé pour valider (les allers-retours de validation sont le deuxième poste de retard) ; figez le périmètre par écrit — plus de la moitié des projets subissent une dérive du périmètre en cours de route ; et choisissez un prestataire à méthode structurée (ateliers de cadrage, bibliothèque de composants éprouvés, dates contractuelles). Ce qui ne marche pas : mettre la pression sur la technique, qui n'est presque jamais le goulot.",
+      "Quatre leviers sont directement contrôlables : préparer les contenus et accès attendus ; nommer les personnes habilitées à valider ; figer le périmètre de la première version ; écrire jalons, dépendances et procédure de changement. Leur effet dépend du projet et ne se résume pas à un pourcentage universel.",
   },
   {
     question: "Que se passe-t-il une fois le site mis en ligne ?",
     answer:
-      "Le chrono continue — et c'est la partie que personne ne raconte. L'indexation d'abord : Google annonce officiellement « de quelques jours à quelques semaines » pour explorer un nouveau site (soumettez le sitemap dès le premier jour). Le référencement ensuite : les premiers effets arrivent en 3 à 6 mois, un flux régulier de contacts en 6 à 12 mois — moins de 2 % des pages nouvelles atteignent le top 10 de Google en moins d'un an sur des requêtes concurrentielles. En attendant, la publicité en ligne prend le relais… avec ses propres délais : 1 à 2 semaines d'apprentissage des campagnes.",
+      "Le travail continue, sans calendrier garanti. Google indique que l'exploration peut prendre de quelques jours à quelques semaines, mais exploration et indexation sont deux étapes distinctes : soumettre un sitemap signale les URL, sans garantir leur exploration ni leur indexation. La visibilité et les contacts organiques dépendent ensuite du marché, de la qualité et de la pertinence des contenus, de l'autorité du site, des liens et du socle technique. Dans le corpus observationnel cité par Ahrefs, moins de 2 % des pages nouvelles ont atteint le top 10 en moins d'un an sur les requêtes étudiées ; ce constat ne prédit ni le délai ni le résultat d'un site donné. Une campagne publicitaire peut aussi connaître une phase d'apprentissage, sans garantir des contacts.",
   },
   {
     question: "Sur combien d'années un site internet s'amortit-il ?",
@@ -176,30 +170,19 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
           { label: "Combien de temps pour créer un site" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Les délais réels par type de site et par méthode, le planning phase par phase, la moitié du calendrier qui dépend de vous (chiffrée), les dépendances que personne n'anticipe, les rétro-plannings Noël / salon / saison — et le chrono d'après la mise en ligne, celui que les agences ne racontent jamais."
+        heroDescription="Les délais par type de site et par méthode, le planning phase par phase, la part du calendrier qui dépend de vous, les dépendances externes, les rétro-plannings Noël / salon / saison — et le suivi après la mise en ligne."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -244,7 +227,7 @@ export default function Page() {
             { id: "derapages", label: "7. Pourquoi les projets dérapent : les chiffres" },
             { id: "dependances", label: "8. Les dépendances externes qui ne se négocient pas" },
             { id: "avant-j0", label: "9. La chronologie cachée avant le premier jour" },
-            { id: "apres-mise-en-ligne", label: "10. Après la mise en ligne : le chrono que personne ne raconte" },
+            { id: "apres-mise-en-ligne", label: "10. Après la mise en ligne : le calendrier à prévoir" },
             { id: "retro-planning", label: "11. Le rétro-planning business : Noël, salon, saison" },
             { id: "compresser", label: "12. Ce qui compresse vraiment les délais" },
             { id: "checklist", label: "13. Êtes-vous prêt à démarrer ? La checklist" },
@@ -254,7 +237,7 @@ export default function Page() {
 
         <h2 id="reponse-rapide">1. La réponse rapide : les délais réels 2026</h2>
         <p>
-          En 2026, créer un site internet prend en France{" "}
+          Les fourchettes éditoriales citées dans ce guide vont de{" "}
           <strong>quelques jours pour une page unique</strong> réalisée
           par un professionnel, <strong>2 à 6 semaines pour un site
           vitrine simple</strong> (3-8 pages), <strong>4 à 8 semaines
@@ -263,9 +246,10 @@ export default function Page() {
           plus à gros catalogue) et <strong>3 à 6 mois et plus pour
           une plateforme sur mesure</strong>. En autonomie sur un
           outil de création : 1 à 4 semaines de calendrier, pour 15 à
-          40 heures de travail réel. Et le facteur qui domine tout :{" "}
-          <strong>des contenus prêts au premier jour réduisent le
-          délai de 30 à 50 %</strong>.
+          40 heures de travail réel dans certains scénarios publiés. Elles ne
+          constituent pas une moyenne représentative. Des contenus prêts réduisent
+          les attentes qui en dépendent ; l&apos;effet exact doit être calculé dans
+          le planning du projet.
         </p>
         <GuideTable
           headers={["Type de site", "Vous-même (builder)", "Freelance", "Agence"]}
@@ -285,7 +269,7 @@ export default function Page() {
             <li><strong>Maquette</strong> : le dessin fidèle des écrans, à valider avant le développement.</li>
             <li><strong>Recette</strong> : la phase de tests avant mise en ligne — formulaires, mobile, vitesse.</li>
             <li><strong>Périmètre</strong> : la liste écrite de ce qui est inclus dans le projet — sa dérive en cours de route est la plaie des plannings.</li>
-            <li><strong>Contenus</strong> : vos textes, photos, logo, vidéos — le carburant du projet, et la cause n°1 des retards.</li>
+            <li><strong>Contenus</strong> : textes, photos, logo, vidéos et validations ; ils peuvent bloquer les étapes qui en dépendent.</li>
             <li><strong>Indexation</strong> : l&apos;enregistrement de vos pages par Google — condition pour apparaître dans les résultats.</li>
             <li><strong>SEO</strong> : le référencement naturel — tout ce qui fait que Google vous affiche, gratuitement, au fil des mois.</li>
             <li><strong>DNS</strong> : l&apos;annuaire qui relie votre nom de domaine à votre site — ses changements mettent jusqu&apos;à 48 h à se propager.</li>
@@ -304,17 +288,18 @@ export default function Page() {
           s&apos;écoulent entre le premier jour et la mise en ligne —
           toujours plus long, car il inclut les allers-retours, vos
           validations, les plannings de chacun.{" "}
-          <strong>Le temps de visibilité</strong> : les mois avant que
-          Google vous envoie des clients — le chrono que presque aucun
-          guide ne compte, et qui commence seulement à la mise en ligne
-          (section 10). Quand une IA promet « un site en 2 minutes »,
+          <strong>Le temps de visibilité</strong> : le travail mené après
+          la mise en ligne pour être découvert, compris et choisi, sans
+          garantie d&apos;indexation, de position ni de client (section 10).
+          Quand une IA promet « un site en 2 minutes »,
           elle parle du premier chrono, sur un périmètre minimal ;
           quand votre entourage dit « trois mois », il parle du
-          deuxième ; quand votre site « ne rapporte rien » au bout de
-          six semaines, c&apos;est le troisième qui travaille.
+          deuxième ; après la mise en ligne, le troisième se pilote dans
+          la durée à partir des données réellement observées.
         </p>
         <p>
-          Fil rouge de ce guide : <strong>Mécanic&apos;Alpes,
+          Fil rouge de ce guide : <strong>scénario fictif composite —
+          ni client ni témoignage réel — avec Mécanic&apos;Alpes,
           sous-traitant d&apos;usinage à Annecy</strong>, 22 salariés.
           Son échéance est concrète : un salon industriel majeur
           mi-mars, où son site vieillissant fait tache face aux
@@ -418,28 +403,14 @@ export default function Page() {
 
         <h2 id="facteur-client">6. La moitié du calendrier vous appartient</h2>
         <p>
-          Toutes les sources convergent, et nous le constatons sur
-          chaque projet : <strong>la cause n°1 des retards
-          n&apos;est pas technique — ce sont les contenus et les
-          validations côté client</strong>. Les chiffres existent :
-          une enquête sectorielle mesure une <strong>médiane de
-          3 semaines</strong> pour qu&apos;un client livre textes et
-          photos (chiffre d&apos;un éditeur d&apos;outil de collecte —
-          biais possible, mais le consensus des agences est massif) ;
-          les contenus non prêts ajoutent <strong>2 à 4 semaines</strong>{" "}
-          à un projet type ; à l&apos;inverse, des contenus prêts au
-          premier jour réduisent le délai total de{" "}
-          <strong>30 à 50 %</strong> — un site vitrine passe de 6 à
-          3 semaines. Côté validations : le standard du secteur est de
-          2 à 3 tours de révisions de maquettes ; 78 % des projets
-          créatifs bien organisés sont approuvés en une semaine ou
-          moins… et les équipes mal organisées montent à plus de
-          10 tours étalés sur des semaines. Le coût de ce désordre est
-          mesuré de l&apos;autre côté aussi : près d&apos;un
-          professionnel de la création sur quatre déclare passer plus
-          de 10 heures par semaine à courir après informations,
-          retours et validations — des heures que, sur un devis au
-          forfait, quelqu&apos;un finit toujours par payer.
+          Les contenus, accès et validations peuvent bloquer la séquence de
+          travail même lorsque le développement est prêt. Le bon contrôle
+          n&apos;est pas une moyenne sectorielle : c&apos;est une matrice de
+          dépendances propre au projet, avec responsable, date attendue,
+          critère d&apos;acceptation et conséquence sur le jalon suivant.
+          Cette transparence permet de distinguer charge de production et
+          attente calendaire sans attribuer automatiquement le retard à une
+          seule partie.
         </p>
         <FormulaBox>
           <strong>La règle des deux calendriers :</strong>
@@ -448,8 +419,8 @@ export default function Page() {
           + temps de décision et de contenus (vous)
           <br />
           <br />
-          Chez Mécanic&apos;Alpes : 5 semaines de production annoncées…
-          et un délai réel de 9 semaines au premier devis — 4 semaines
+          Dans le scénario Mécanic&apos;Alpes : 5 semaines de production
+          annoncées… et un délai simulé de 9 semaines au premier devis — 4 semaines
           de différence entièrement logées côté client : textes
           techniques à écrire, photos d&apos;atelier à faire, deux
           comités de validation espacés. C&apos;est le poste sur lequel
@@ -516,8 +487,8 @@ export default function Page() {
 
         <h2 id="avant-j0">9. La chronologie cachée avant le premier jour</h2>
         <p>
-          Le compteur que personne n&apos;inclut dans « le temps pour
-          créer un site » : tout ce qui précède le premier jour de
+          Un délai doit être ajouté au « temps pour créer un site » : tout ce
+          qui précède le premier jour de
           production. La décision d&apos;abord — comparer les
           prestataires, obtenir les devis, arbitrer en interne : les
           enquêtes sur les cycles d&apos;achat B2B (les achats entre
@@ -535,69 +506,63 @@ export default function Page() {
           d&apos;attente du prestataire — un carnet de commandes de
           quelques semaines est le signe d&apos;une structure saine,
           pas un défaut. Comptez, en réaliste,{" "}
-          <strong>2 à 6 semaines entre « on signe » et « on
-          commence »</strong>. Pour Mécanic&apos;Alpes, cette
-          chronologie cachée a pesé autant que la production :
-          6 semaines de décision interne + 3 semaines
-          d&apos;embarquement avant la première maquette.
+          une date de disponibilité confirmée par écrit. Le scénario pédagogique
+          Mécanic&apos;Alpes illustre l&apos;addition possible des temps de décision,
+          d&apos;accès et de production ; ses durées fictives ne prédisent pas un projet réel.
         </p>
 
         <GuideInlineCTA
           title="Votre échéance est déjà fixée ?"
-          description="Décrivez votre projet et sa date butoir en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées avec un rétro-planning réaliste. Le devis fixe les jalons, les dépendances et le traitement d'un éventuel retard."
-          tags={["Réponse sous 24 h ouvrées", "Jalons écrits au devis", "Rédaction selon forfait"]}
+          description="Décrivez votre projet et sa date butoir en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un rétro-planning réaliste. Le devis fixe les jalons, les dépendances et le traitement d'un éventuel retard."
+          tags={["Objectif : prochain jour ouvré", "Jalons écrits au devis", "Rédaction selon forfait"]}
         />
 
-        <h2 id="apres-mise-en-ligne">10. Après la mise en ligne : le chrono que personne ne raconte</h2>
+        <h2 id="apres-mise-en-ligne">10. Après la mise en ligne : le calendrier à prévoir</h2>
         <p>
           Votre site est en ligne. Combien de temps avant qu&apos;il
-          rapporte ? C&apos;est la question que les guides de délais
-          esquivent tous — voici les chiffres, des rares sources non
-          commerciales du sujet. <strong>L&apos;indexation</strong> :
-          Google annonce officiellement « de quelques jours à quelques
-          semaines » pour explorer un nouveau site ; soumettre le plan
-          du site (sitemap) dès le premier jour ramène généralement les
-          premières pages indexées à 3-7 jours.{" "}
+          rapporte ? Il n&apos;existe pas de délai universel, et aucune
+          soumission technique ne permet d&apos;en promettre un.
+          <strong> L&apos;exploration et l&apos;indexation sont deux étapes
+          distinctes</strong> : Google indique que l&apos;exploration peut
+          prendre de quelques jours à quelques semaines, mais une page
+          explorée peut ne pas être indexée. Soumettre le plan du site
+          (sitemap) signale les URL et leurs évolutions à Google ; ce
+          fichier ne garantit ni leur exploration, ni leur indexation.{" "}
           <strong>Le{" "}
           <Link href="/services/referencement-google">référencement
-          naturel</Link></strong> : les premiers
-          effets se mesurent en 3 à 6 mois, un flux régulier de
-          contacts en 6 à 12 mois. L&apos;étude de référence (Ahrefs,
-          2025) est sans appel : <strong>moins de 2 % des pages
-          nouvellement publiées atteignent le top 10 de Google en
-          moins d&apos;un an</strong> sur des requêtes concurrentielles
-          — mais sur des requêtes locales ou de niche, la moitié des
-          pages récentes y parviennent en 2 à 4 mois : le choix des
-          batailles compte plus que l&apos;ancienneté.{" "}
+          naturel</Link></strong> : le délai et le résultat dépendent du
+          marché, de la qualité et de la pertinence des contenus, de
+          l&apos;autorité du site, des liens obtenus et du socle technique.
+          Dans le corpus observationnel présenté par Ahrefs dans l&apos;étude
+          citée, <strong>moins de 2 % des pages nouvellement publiées ont
+          atteint le top 10 en moins d&apos;un an</strong> sur les requêtes
+          étudiées. Ce résultat décrit ce corpus ; il ne prédit ni un
+          délai, ni une position, ni des contacts pour votre site.{" "}
           <strong>La{" "}
           <Link href="/services/publicite-en-ligne">publicité en
           attendant</Link></strong> : Google Ads
-          lui-même a une période d&apos;apprentissage officielle de 1 à
-          2 semaines par campagne, et une stabilisation en 3-4 semaines.
-          Moralité, à graver dans le planning :{" "}
-          <strong>un site « livré en 6 semaines » est un site
-          « productif en 6 à 12 mois »</strong> — et c&apos;est
-          précisément pour cela que la date de mise en ligne se
-          calcule à rebours de vos échéances business, pas de vos
-          disponibilités.
+          lui-même décrit une phase d&apos;apprentissage pour certaines
+          campagnes. Elle ne garantit ni stabilisation à une date donnée,
+          ni rentabilité. Moralité pour le planning :{" "}
+          <strong>un site mis en ligne n&apos;est pas une visibilité
+          acquise</strong>. Prévoyez après la livraison le travail de
+          contenu, d&apos;autorité, de mesure et d&apos;amélioration, sans
+          inscrire une date de « premier client Google » au contrat.
         </p>
-        <InfoBox variant="blue" title="La frise complète de Mécanic'Alpes, de la décision au premier client">
+        <InfoBox variant="blue" title="La frise de planification de Mécanic'Alpes, sans délai SEO garanti">
           Décision interne et choix du prestataire : 6 semaines.
           Embarquement (accès, contenus, planification) : 3 semaines.
           Production : 9 semaines. Mise en ligne : 2 jours, DNS
-          compris. Indexation des pages : 1 à 3 semaines, sitemap
-          soumis le premier jour. Premières positions sur les requêtes
-          locales du métier (« usinage précision Annecy ») : 2 à
-          4 mois. Flux régulier de demandes entrantes : 6 à 12 mois
-          après la mise en ligne. <strong>Du « on y va » (prestataire
-          choisi et signé) au premier client venu de Google : 9 à
-          15 mois — et 10 à 16 en comptant depuis le tout premier
-          « il nous faut un nouveau site ».</strong> C&apos;est la
-          frise que ce guide voulait montrer : chaque maillon est
-          court, c&apos;est la chaîne qui est longue — et c&apos;est
-          précisément pourquoi un site ne se lance pas « quand on aura
-          le temps », mais à rebours du jour où l&apos;on veut
-          qu&apos;il rapporte.
+          compris. Le sitemap serait soumis dès la mise en ligne pour
+          signaler les URL. Ensuite, aucune date fiable ne peut être
+          inscrite : Google peut explorer puis indexer les pages à des
+          moments différents, ou choisir de ne pas les indexer. Les
+          positions et demandes entrantes dépendraient de la concurrence,
+          des contenus, de l&apos;autorité, des liens et de la qualité
+          technique. <strong>La frise ferme donc le calendrier de
+          production, pas celui du premier client venu de Google.</strong>
+          La visibilité se pilote après la mise en ligne avec des mesures
+          réelles ; elle ne se déduit pas du sitemap.
         </InfoBox>
 
         <h2 id="retro-planning">11. Le rétro-planning business : Noël, salon, saison</h2>
@@ -616,18 +581,18 @@ export default function Page() {
           ]}
         />
         <p>
-          Le cas Mécanic&apos;Alpes, résolu : salon mi-mars, site en
+          Dans le scénario Mécanic&apos;Alpes : salon mi-mars, site en
           ligne visé fin février (15 jours de marge), durée réaliste
           de 9 semaines — production plus contenus et validations
           (section 6) —, embarquement 3 semaines —
-          <strong> le projet devait se lancer début décembre</strong>.
-          Le dirigeant nous a contactés en janvier : nous avons tenu
-          fin février en appliquant les compresseurs de la section
-          suivante — contenus d&apos;abord, décideur unique, périmètre
-          figé — mais le confort avait disparu. La règle générale :{" "}
-          <strong>ajoutez toujours une marge de 2 à 3 semaines à votre
-          rétro-planning</strong> ; personne ne s&apos;est jamais
-          plaint d&apos;un site prêt en avance.
+          <strong> le projet devrait se lancer début décembre</strong>.
+          S&apos;il ne démarrait qu&apos;en janvier, tenir fin février
+          imposerait les compresseurs de la section suivante — contenus
+          d&apos;abord, décideur unique, périmètre figé — sans garantie et
+          avec une marge presque nulle. La règle générale :{" "}
+          <strong>prévoyez une marge de 2 à 3 semaines dans votre
+          rétro-planning</strong> ; elle absorbe les aléas et réduit le risque
+          de rater l&apos;échéance métier.
         </p>
         <p>
           Et si vous êtes déjà en retard ? Vous lisez peut-être ceci
@@ -666,44 +631,42 @@ export default function Page() {
 
         <h2 id="compresser">12. Ce qui compresse vraiment les délais</h2>
         <p>
-          Face aux promesses marketing, voici les leviers dont
-          l&apos;effet est mesuré par des études :
+          Face aux promesses marketing, voici des leviers de planification à
+          tester sur votre projet. Leur effet dépend du périmètre, de l&apos;équipe
+          et de la disponibilité des décideurs : aucun pourcentage universel ne
+          peut être déduit d&apos;une étude de tâche isolée.
         </p>
         <ul>
           <li>
             <strong>Les contenus d&apos;abord</strong> (méthode
             « content-first ») : concevoir sur les vrais textes évite
-            les boucles de révisions sans fin — c&apos;est le levier
-            des −30 à −50 % (section 6), et la raison pour laquelle
-            nos forfaits incluent la rédaction.
+            certaines boucles de révision. Mesurez l&apos;effet sur vos jalons au
+            lieu d&apos;appliquer une réduction forfaitaire de délai.
           </li>
           <li>
             <strong>Une bibliothèque de composants éprouvés</strong>{" "}
-            (design system) : +34 % de vitesse mesurée côté design
-            (étude Figma), +47 % côté développement (étude Sparkbox —
-            2,2 h au lieu de 4,2 h sur un même écran). C&apos;est
-            l&apos;industrialisation sans la standardisation du
-            résultat.
+            (design system) : elle évite de redécider les mêmes composants et
+            facilite leur recette. Des études de tâches peuvent illustrer cet
+            effet, sans prédire la durée d&apos;un site complet.
           </li>
           <li>
             <strong>Le cadrage compressé en atelier</strong> : la
-            méthode du « design sprint » (Google Ventures) règle en
-            5 jours ce que des réunions espacées étalent sur des
-            semaines — comprendre, décider, prototyper, tester.
+            méthode du « design sprint » regroupe comprendre, décider,
+            prototyper et tester. Son format historique tient sur cinq jours,
+            mais la décision obtenue et le calendrier du projet restent à
+            vérifier.
           </li>
           <li>
             <strong>La collecte structurée des contenus</strong> : un
-            simple outil de collecte avec liste, formats et relances
-            divise par deux le délai de remise des contenus clients
-            (médiane de 3 semaines → 1,5) et réduit de 67 % les
-            projets bloqués, selon l&apos;enquête d&apos;un éditeur du
-            secteur.
+            simple outil de collecte avec liste, formats, responsables et
+            relances rend les dépendances visibles. Suivez la date demandée et
+            la date reçue pour mesurer le résultat chez vous.
           </li>
           <li>
             <strong>Un décideur unique, un créneau hebdomadaire</strong> :
-            l&apos;antidote aux 10 tours de validation — et la
-            condition n°1 que posent toutes les offres rapides
-            sérieuses.
+            un moyen concret de réduire les files d&apos;attente. Le devis doit
+            préciser qui valide quoi, sous quel délai et avec quel effet sur le
+            calendrier en cas de report.
           </li>
         </ul>
 
@@ -734,7 +697,7 @@ export default function Page() {
             <li><strong>−30 à −50 %</strong> : l&apos;effet de contenus prêts au premier jour — le levier le plus puissant, et il est chez vous.</li>
             <li><strong>3 semaines</strong> : la médiane d&apos;attente des contenus client — la moitié du calendrier vous appartient.</li>
             <li><strong>60 jours</strong> : le verrou incontournable sur un nom de domaine récemment transféré ou modifié — vérifiez vos accès aujourd&apos;hui.</li>
-            <li><strong>6 à 12 mois</strong> : le délai avant qu&apos;un site nouvellement lancé génère un flux régulier de contacts par Google — le chrono d&apos;après la mise en ligne.</li>
+            <li><strong>Moins de 2 %</strong> : dans le corpus Ahrefs cité, la part des pages nouvelles ayant atteint le top 10 en moins d&apos;un an sur les requêtes étudiées — une observation, jamais un délai promis pour votre site.</li>
           </ul>
         </InfoBox>
 
@@ -764,10 +727,10 @@ export default function Page() {
             le périmètre, pas par la technique.
           </li>
           <li>
-            <strong>Comptez jusqu&apos;au premier client, pas
-            jusqu&apos;à la mise en ligne.</strong> Indexation, SEO,
-            campagnes (section 10) : la visibilité se planifie comme le
-            site lui-même.
+            <strong>Planifiez aussi l&apos;après-lancement.</strong>
+            Exploration, indexation, SEO et campagnes (section 10) se
+            suivent avec des données réelles ; aucun calendrier de projet
+            ne peut garantir la date du premier client.
           </li>
         </ol>
         <p>
@@ -778,11 +741,11 @@ export default function Page() {
           engageant — puis une production à{" "}
           <strong>jalons, dépendances et conditions écrits au devis</strong>{" "}
           (méthode <Link href="/methode">Sprint Fixe™</Link>),
-          rédaction prévue selon le forfait pour réduire la
-          cause n°1 de dérapage.{" "}
+          rédaction prévue selon le forfait pour réduire une dépendance possible.{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet et
-          votre échéance en 3 minutes</Link> : réponse personnelle
-          sous 24 h ouvrées, gratuite et sans engagement. Et pour le
+          votre échéance en 3 minutes</Link> : objectif de réponse personnelle
+          le prochain jour ouvré, sans délai garanti, gratuitement et sans
+          engagement. Et pour le
           budget qui va avec ces délais, notre{" "}
           <Link href="/guides/combien-coute-un-site-internet">panorama
           des prix d&apos;un site internet</Link> complète ce guide.

@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
 import { isSearchIndexingEnabled } from "@/lib/search-indexing";
+import { SITE_URL } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://hagnere-code.ai";
-  const isProd = isSearchIndexingEnabled();
+  const isProd = isSearchIndexingEnabled(process.env.NEXT_PUBLIC_ENV);
 
   if (!isProd) {
     return {
@@ -21,6 +21,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

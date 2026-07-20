@@ -171,7 +171,7 @@ export const ECOMMERCE_FAQ_ITEMS: readonly EcommerceFaqItem[] = [
         ),
         part("test de charge défini à partir du pic attendu", { strong: true }),
         part(
-          " avant la mise en production ; le protocole, le volume et les seuils acceptés sont consignés dans le plan de recette.",
+          " avant le déploiement public ; le protocole, le volume et les seuils acceptés sont consignés dans le plan de recette.",
         ),
       ],
     ],
@@ -251,21 +251,6 @@ export function renderEcommerceFaqItemsHtml(
         </div>`,
     )
     .join("\n");
-}
-
-export function buildEcommerceFaqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: ECOMMERCE_FAQ_ITEMS.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: ecommerceFaqAnswerText(item),
-      },
-    })),
-  };
 }
 
 export const ecommerceFaqItemsHtml = renderEcommerceFaqItemsHtml();

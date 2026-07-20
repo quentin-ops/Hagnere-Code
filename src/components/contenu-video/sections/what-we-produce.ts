@@ -5,11 +5,11 @@ export const whatWeProduceHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Ce qu'on produit</div>
-        <h2>Six formats qu'on maîtrise,<br>pas soixante qu'on survole.</h2>
+        <h2>Six formats structurés<br>autour de besoins précis.</h2>
       </div>
       <div class="right">
-        On ne dit pas "on fait de tout". On fait six formats, bien, avec un pipeline industrialisé
-        autour de chacun. Si votre besoin sort de là, on vous oriente franchement vers quelqu'un d'autre.
+        Notre offre est organisée autour de six formats. Si votre besoin sort de ce périmètre, nous le signalons
+        et pouvons recommander une compétence plus adaptée. Les aperçus ci-dessous sont des <b>illustrations fictives : ni clients, ni témoignages, ni résultats réels</b>.
       </div>
     </div>
 
@@ -21,8 +21,8 @@ export const whatWeProduceHtml = `
           <div class="cv-prod-num">01</div>
           <div class="cv-prod-kind">Ads payantes</div>
         </div>
-        <h3 class="cv-prod-title">Des hooks qui <em>arrêtent le scroll</em>.</h3>
-        <p class="cv-prod-desc">Meta, TikTok, Google. Scripts hook-driven, montage Premiere Pro nerveux, 8 variantes par concept pour tester en A/B. On itère selon le CTR réel — pas selon l'ego créa.</p>
+        <h3 class="cv-prod-title">Des accroches pensées pour <em>le premier écran</em>.</h3>
+        <p class="cv-prod-desc">Meta, TikTok, Google. Scripts orientés accroche, montage adapté au canal et variantes préparées pour des tests comparatifs. Les décisions s'appuient sur les indicateurs convenus avec le client.</p>
 
         <div class="cv-prod-ads-canvas" aria-hidden="true">
           <div class="cv-prod-ads-feed">
@@ -32,7 +32,7 @@ export const whatWeProduceHtml = `
               </div>
               <div class="cv-prod-ads-meta">
                 <span class="cv-prod-ads-hook">"POV : ton parfum coûte trop cher"</span>
-                <span class="cv-prod-ads-stat"><em>CTR 4.8%</em> · CPM 3,20 €</span>
+                <span class="cv-prod-ads-stat"><em>VARIANTE A</em> · TEST À PLANIFIER</span>
               </div>
             </div>
             <div class="cv-prod-ads-post">
@@ -41,7 +41,7 @@ export const whatWeProduceHtml = `
               </div>
               <div class="cv-prod-ads-meta">
                 <span class="cv-prod-ads-hook">"Le vrai prix d'un extrait 30ml"</span>
-                <span class="cv-prod-ads-stat">CTR 3.2% · CPM 4,10 €</span>
+                <span class="cv-prod-ads-stat">VARIANTE B · TEST À PLANIFIER</span>
               </div>
             </div>
             <div class="cv-prod-ads-post">
@@ -50,7 +50,7 @@ export const whatWeProduceHtml = `
               </div>
               <div class="cv-prod-ads-meta">
                 <span class="cv-prod-ads-hook">"Avant : 280 €. Après : …"</span>
-                <span class="cv-prod-ads-stat">CTR 2.1% · CPM 5,40 €</span>
+                <span class="cv-prod-ads-stat">VARIANTE C · TEST À PLANIFIER</span>
               </div>
             </div>
             <div class="cv-prod-ads-post">
@@ -59,7 +59,7 @@ export const whatWeProduceHtml = `
               </div>
               <div class="cv-prod-ads-meta">
                 <span class="cv-prod-ads-hook">"3 ingrédients de parfumerie"</span>
-                <span class="cv-prod-ads-stat">CTR 2.8% · CPM 3,80 €</span>
+                <span class="cv-prod-ads-stat">VARIANTE D · TEST À PLANIFIER</span>
               </div>
             </div>
           </div>
@@ -72,8 +72,8 @@ export const whatWeProduceHtml = `
           <div class="cv-prod-num">02</div>
           <div class="cv-prod-kind">YouTube long-format</div>
         </div>
-        <h3 class="cv-prod-title">Chaîne founder, <em>clé en main</em>.</h3>
-        <p class="cv-prod-desc">10-25 min, mono-caméra face cam ou multi-caméra studio. Scripts, montage cinématique, B-roll enrichi, thumbnails AB-testés, optimisation VidIQ.</p>
+        <h3 class="cv-prod-title">Une production YouTube <em>cadrée de bout en bout</em>.</h3>
+        <p class="cv-prod-desc">Format court ou long, face caméra ou multi-caméra selon le besoin. Préparation éditoriale, montage, enrichissement visuel, miniature et métadonnées sont définis dans le périmètre du projet.</p>
 
         <div class="cv-prod-yt-canvas" aria-hidden="true">
           <div class="cv-prod-yt-player">
@@ -85,10 +85,10 @@ export const whatWeProduceHtml = `
             </div>
             <div class="cv-prod-yt-duration">18:42</div>
           </div>
-          <div class="cv-prod-yt-title">Comment on a bâti une PME à 7M€ en 3 ans — sans levée.</div>
+          <div class="cv-prod-yt-title">Comment structurer une vidéo produit claire et utile.</div>
           <div class="cv-prod-yt-meta">
-            <span>HAGNÉRÉ · 48K vues · il y a 3 j</span>
-            <span class="cv-prod-yt-stats"><span>👁 48K</span><span>👍 2,1K</span><span>💬 184</span></span>
+            <span>APERÇU DE MAQUETTE · AUCUNE DONNÉE RÉELLE</span>
+            <span class="cv-prod-yt-stats"><span>TITRE</span><span>MINIATURE</span><span>CHAPITRES</span></span>
           </div>
         </div>
       </article>
@@ -140,26 +140,26 @@ export const whatWeProduceHtml = `
           <div class="cv-prod-num">04</div>
           <div class="cv-prod-kind">UGC &amp; short vertical</div>
         </div>
-        <h3 class="cv-prod-title">Reels, TikTok, Shorts — <em>en volume</em>.</h3>
-        <p class="cv-prod-desc">Un long format YouTube = 20 shorts dérivés via Opus Clip + retouche humaine. Pour l'UGC brut : on écrit les briefs, vous filmez (iPhone suffit) ou on commande à des créateurs.</p>
+        <h3 class="cv-prod-title">Reels, TikTok, Shorts — <em>formats déclinables</em>.</h3>
+        <p class="cv-prod-desc">Un format long peut être décliné en plusieurs formats courts, avec une reprise humaine de chaque extrait. Pour l'UGC brut : nous préparons les briefs, puis le tournage est réalisé par votre équipe ou par des créateurs identifiés.</p>
 
         <div class="cv-prod-ugc-canvas" aria-hidden="true">
           <div class="cv-prod-ugc-phone">
             <div class="cv-prod-ugc-screen cv-prod-ugc-screen-1">
               <div class="cv-prod-ugc-subtitle">Ce soir, -30%</div>
-              <div class="cv-prod-ugc-views">1.2M ★</div>
+              <div class="cv-prod-ugc-views">FORMAT 9:16</div>
             </div>
           </div>
           <div class="cv-prod-ugc-phone cv-prod-ugc-phone-2">
             <div class="cv-prod-ugc-screen cv-prod-ugc-screen-2">
               <div class="cv-prod-ugc-subtitle">POV : ton parfum</div>
-              <div class="cv-prod-ugc-views">487K ★</div>
+              <div class="cv-prod-ugc-views">VARIANTE B</div>
             </div>
           </div>
           <div class="cv-prod-ugc-phone cv-prod-ugc-phone-3">
             <div class="cv-prod-ugc-screen cv-prod-ugc-screen-3">
               <div class="cv-prod-ugc-subtitle">Extrait 30ml</div>
-              <div class="cv-prod-ugc-views">842K ★</div>
+              <div class="cv-prod-ugc-views">SOUS-TITRES</div>
             </div>
           </div>
         </div>
@@ -171,18 +171,18 @@ export const whatWeProduceHtml = `
           <div class="cv-prod-num">05</div>
           <div class="cv-prod-kind">Interview / customer story</div>
         </div>
-        <h3 class="cv-prod-title">Trust + SEO. <em>Imbattable.</em></h3>
-        <p class="cv-prod-desc">Interview founder, témoignage client, podcast vidéo. Multi-caméra, transcription Descript, chapitrage automatique. Toujours deux sorties : version longue + clips courts.</p>
+        <h3 class="cv-prod-title">Une parole incarnée, <em>déclinable en plusieurs formats</em>.</h3>
+        <p class="cv-prod-desc">Interview, témoignage client ou podcast vidéo. Multi-caméra, transcription et chapitrage selon le besoin. Les livrables peuvent associer une version longue et des clips courts.</p>
 
         <div class="cv-prod-interview-canvas" aria-hidden="true">
           <div class="cv-prod-interview-split">
             <div class="cv-prod-interview-cam">
-              <div class="cv-prod-interview-avatar">SM</div>
-              <span class="cv-prod-interview-label">CAM 01 · founder</span>
+              <div class="cv-prod-interview-avatar">01</div>
+              <span class="cv-prod-interview-label">CAM 01 · INTERVENANT</span>
             </div>
             <div class="cv-prod-interview-cam cv-prod-interview-cam-b">
-              <div class="cv-prod-interview-avatar cv-prod-interview-avatar-b">JD</div>
-              <span class="cv-prod-interview-label">CAM 02 · host</span>
+              <div class="cv-prod-interview-avatar cv-prod-interview-avatar-b">02</div>
+              <span class="cv-prod-interview-label">CAM 02 · INTERVIEWEUR</span>
             </div>
           </div>
           <div class="cv-prod-interview-subs">

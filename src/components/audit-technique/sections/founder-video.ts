@@ -5,7 +5,7 @@ export const founderVideoHtml = `
     <div class="at-fv-grid reveal">
       <!-- Video thumbnail -->
       <div class="at-fv-player">
-        <a class="at-fv-play hero-video" href="#contact" aria-label="Demander un échange sur l'audit technique">
+        <a class="at-fv-play hero-video" href="#contact" aria-label="Demander un échange de 20 min sur l'audit technique">
           <div class="at-fv-thumb">
             <svg viewBox="0 0 400 240" class="at-fv-thumb-svg" aria-hidden="true">
               <defs>

@@ -194,11 +194,11 @@ export default function OgImage() {
                     borderRadius: 999,
                     background: "#22c55e",
                     color: "#052e16",
-                    fontSize: 18,
+                    fontSize: 11,
                     fontWeight: 800,
                   }}
                 >
-                  ✓
+                  OK
                 </div>
               )}
             </div>

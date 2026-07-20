@@ -648,7 +648,7 @@
   place-items: center;
   margin-bottom: 14px;
 }
-.ec-stack-extra h4 {
+.ec-stack-extra h3 {
   color: #fff;
   font-size: 15px;
   font-weight: 600;
@@ -682,7 +682,7 @@
   display: grid;
   place-items: center;
 }
-.ec-stack-honest-body h4 {
+.ec-stack-honest-body h3 {
   font-size: 14px;
   color: var(--ink);
   margin-bottom: 6px;
@@ -1264,7 +1264,7 @@
 .ec-b-admin-stats small {
   font-family: var(--font-geist-mono);
   font-size: 8px;
-  color: var(--mute);
+  color: #666;
   letter-spacing: 0.08em;
 }
 .ec-b-admin-stats strong {
@@ -1757,7 +1757,7 @@
   color: var(--accent-ink); letter-spacing: 0.06em;
   text-transform: uppercase; margin-bottom: 4px;
 }
-.ec-integ-head h4 { font-size: 17px; letter-spacing: -0.015em; }
+.ec-integ-head h3 { font-size: 17px; letter-spacing: -0.015em; }
 .ec-integ-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .ec-integ-chips span {
   font-family: var(--font-geist-mono); font-size: 11px;
@@ -1997,7 +1997,7 @@
   font-family: var(--font-geist-mono); font-size: 10px;
   letter-spacing: 0.08em; color: var(--mute);
 }
-.ec-scen-tab.is-active .ec-scen-tab-k { color: var(--accent); }
+.ec-scen-tab.is-active .ec-scen-tab-k { color: #A78BFA; }
 .ec-scen-tab-t {
   font-size: 18px; font-weight: 600;
   letter-spacing: -0.015em; margin-top: 4px;
@@ -2031,7 +2031,7 @@
 }
 .ec-scen-col-main > p b { color: var(--ink); }
 .ec-scen-deliv { margin-top: 28px; }
-.ec-scen-deliv h4 {
+.ec-scen-deliv h3 {
   font-size: 13px; color: var(--ink); margin-bottom: 12px;
   font-family: var(--font-geist-mono); letter-spacing: 0.04em; text-transform: uppercase;
 }
@@ -2100,7 +2100,7 @@
 .ec-mig-num {
   font-family: var(--font-geist-mono);
   font-size: 48px; font-weight: 700;
-  color: var(--accent-soft);
+  color: #946BC2;
   letter-spacing: -0.04em;
   line-height: 1;
 }
@@ -2130,7 +2130,7 @@
   color: #a3e47f;
   display: grid; place-items: center;
 }
-.ec-mig-promise-right h4 { color: #fff; font-size: 17px; margin-bottom: 6px; }
+.ec-mig-promise-right h3 { color: #fff; font-size: 17px; margin-bottom: 6px; }
 .ec-mig-promise-right p {
   margin: 0; color: rgba(255,255,255,0.75);
   font-size: 14px; line-height: 1.6;
@@ -2313,7 +2313,7 @@
 .ec-truth-n {
   font-family: var(--font-geist-mono);
   font-size: 28px; font-weight: 700;
-  color: rgba(255,255,255,0.15);
+  color: #8C8C8C;
   letter-spacing: -0.02em;
 }
 .ec-truth-body h3 {
@@ -2378,7 +2378,7 @@
   font-family: var(--font-geist-mono); font-size: 11px;
   color: var(--mute); text-transform: uppercase; letter-spacing: 0.06em;
 }
-.ec-cmp-head .ec-cmp-col-us .ec-cmp-kind { color: var(--accent); }
+.ec-cmp-head .ec-cmp-col-us .ec-cmp-kind { color: #A78BFA; }
 .ec-cmp-title { font-weight: 600; font-size: 16px; color: var(--ink); margin-top: 6px; }
 .ec-cmp-head .ec-cmp-col-us .ec-cmp-title { color: var(--paper); }
 .ec-cmp-price {
@@ -2513,7 +2513,7 @@
   gap: 60px; align-items: start;
 }
 .ec-refuse-intro h2 { color: #fff; margin-top: 14px; }
-.ec-refuse-intro .eyebrow { color: var(--accent); }
+.ec-refuse-intro .eyebrow { color: #A78BFA; }
 .ec-refuse-intro p {
   color: rgba(255,255,255,0.65);
   font-size: 16px; line-height: 1.55; margin-top: 18px;
@@ -2545,7 +2545,7 @@
   background: rgba(239,68,68,0.12);
   color: #f87171; flex-shrink: 0; margin-top: 2px;
 }
-.ec-refuse-list h4 {
+.ec-refuse-list h3 {
   color: #fff; font-size: 15px;
   margin-bottom: 4px; letter-spacing: -0.01em;
 }
@@ -2586,7 +2586,7 @@
   background: var(--accent-soft); color: var(--accent);
   display: grid; place-items: center;
 }
-.ec-trust-card h4 { font-size: 16px; letter-spacing: -0.015em; }
+.ec-trust-card h3 { font-size: 16px; letter-spacing: -0.015em; }
 .ec-trust-card p {
   margin: 0; color: var(--mute);
   font-size: 13px; line-height: 1.55;

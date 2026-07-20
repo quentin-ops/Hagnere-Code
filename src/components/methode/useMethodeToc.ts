@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, RefObject } from "react";
+import { useEffect, type RefObject } from "react";
 
 /**
  * Scroll-spy for the floating TOC on /methode.

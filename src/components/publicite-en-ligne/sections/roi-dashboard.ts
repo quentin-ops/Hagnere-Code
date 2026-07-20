@@ -110,7 +110,7 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
             </div>
           </div>
-          <h4>Tracking server-side réparé</h4>
+          <h3>Tracking server-side réparé</h3>
           <p>Les algos Google et Meta reçoivent enfin du signal propre, dédupé. Ils optimisent sur <b>les clients réels</b>, pas sur les form submits bruts.</p>
           <div class="ads-roi-step-foot">→ Ce que ça corrige&nbsp;: le signal envoyé aux régies</div>
         </div>
@@ -122,7 +122,7 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
             </div>
           </div>
-          <h4>Boucle CRM en temps réel</h4>
+          <h3>Boucle CRM en temps réel</h3>
           <p>Les stages MQL → SQL → won remontent dans Ads via webhook. <b>Vous arrêtez d'optimiser sur les clics</b>, vous optimisez sur les deals signés.</p>
           <div class="ads-roi-step-foot">→ Ce que ça corrige&nbsp;: l'objectif d'optimisation</div>
         </div>
@@ -134,7 +134,7 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20M7 15h3"/></svg>
             </div>
           </div>
-          <h4>Creative cadencé 8–12 / mois</h4>
+          <h3>Creative cadencé 8–12 / mois</h3>
           <p>Fini la creative qui tourne 6 mois et fatigue. Nouveau batch chaque mois, tests par hooks / angles / offres. <b>L'usure se traite en amont</b>, pas une fois le coût envolé.</p>
           <div class="ads-roi-step-foot">→ Ce que ça corrige&nbsp;: l'usure de la création</div>
         </div>
@@ -146,7 +146,7 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg>
             </div>
           </div>
-          <h4>Budget allocation hebdo</h4>
+          <h3>Budget allocation hebdo</h3>
           <p>Revue chaque lundi&nbsp;: pauses, scaling, bascules entre canaux. Budget suit la perf, pas l'inertie. <b>Documenté dans Notion, pas dans un chat oublié.</b></p>
           <div class="ads-roi-step-foot">→ Ce que ça corrige&nbsp;: l'inertie du budget</div>
         </div>

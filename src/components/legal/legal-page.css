@@ -414,7 +414,7 @@
 .lp-toc-n {
   font-family: var(--font-geist-mono);
   font-size: 10.5px;
-  color: #908c84;
+  color: var(--ink-4);
   letter-spacing: 0.02em;
   font-weight: 600;
   flex-shrink: 0;
@@ -449,6 +449,10 @@
   padding: clamp(48px, 6vw, 64px) 0;
   border-bottom: 1px solid var(--line-2);
   scroll-margin-top: 88px;
+}
+.lp-section:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.28);
+  outline-offset: 8px;
 }
 .lp-section:first-child { padding-top: 0; }
 .lp-section:last-of-type { border-bottom: none; }
@@ -966,6 +970,8 @@
   }
   .lp-toc-item a {
     height: 100%;
+    min-height: 44px;
+    padding: 12px 10px;
     border-color: var(--line-2);
     background: var(--paper);
   }

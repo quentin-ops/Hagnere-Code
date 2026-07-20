@@ -28,7 +28,7 @@ const serviceJsonLd = JSON.stringify({
     "@type": "Organization",
     name: "Hagnéré Code",
     "@id": "https://hagnere-code.ai/#organization",
-    legalName: "HAGNÉRÉ CODE SAS",
+    legalName: "HAGNERE CODE",
     vatID: "FR30993672856",
     url: "https://hagnere-code.ai",
     logo: "https://hagnere-code.ai/logos/logo-dark.png",
@@ -46,45 +46,6 @@ const serviceJsonLd = JSON.stringify({
   areaServed: { "@type": "Country", name: "France" },
   description:
     "Audit technique pour PME et équipes produit : cartographie des sous-traitants et flux, analyse des mesures de sécurité, documentation des écarts et remédiation codée. Les qualifications juridiques et missions de DPO restent validées par le professionnel désigné par le client.",
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Diagnostic technique AI Act",
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        price: "1500",
-        priceCurrency: "EUR",
-        valueAddedTaxIncluded: false,
-      },
-      description:
-        "Budget indicatif HT pour inventorier les systèmes IA, fournisseurs, finalités, données et mesures techniques. Qualification juridique à valider avec le conseil du client.",
-    },
-    {
-      "@type": "Offer",
-      name: "Cadrage RGPD",
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        price: "5000",
-        priceCurrency: "EUR",
-        valueAddedTaxIncluded: false,
-      },
-      description:
-        "Budget indicatif HT pour la cartographie, l'audit technique, la documentation des écarts et un plan d'action chiffré. Périmètre confirmé au devis.",
-    },
-    {
-      "@type": "Offer",
-      name: "Accompagnement RGPD technique récurrent",
-      priceSpecification: {
-        "@type": "PriceSpecification",
-        minPrice: "1200",
-        maxPrice: "3500",
-        priceCurrency: "EUR",
-        valueAddedTaxIncluded: false,
-      },
-      description:
-        "Budget mensuel indicatif HT pour maintenir la documentation, suivre le plan d'action et coordonner la remédiation technique avec le DPO ou conseil du client. Modalités confirmées au devis.",
-    },
-  ],
 });
 
 const breadcrumbJsonLd = JSON.stringify({

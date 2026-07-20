@@ -20,7 +20,7 @@
   .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
   a{color:inherit}
 
-  h1,h2,h3,h4{font-family:var(--font-geist);letter-spacing:-0.035em;font-weight:600;margin:0}
+  h1,h2,h3{font-family:var(--font-geist);letter-spacing:-0.035em;font-weight:600;margin:0}
   h1{font-size:72px;line-height:1;letter-spacing:-0.045em}
   h2{font-size:44px;line-height:1.08;letter-spacing:-0.035em}
   h3{font-size:22px;letter-spacing:-0.02em;font-weight:600;line-height:1.25}
@@ -50,7 +50,7 @@
   .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--ink-3);background:var(--paper);font-family:var(--font-geist-mono);font-weight:500}
   .pill .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(109,40,217,0.18)}
   .eyebrow{font-family:var(--font-geist-mono);font-size:12px;font-weight:500;color:var(--accent-ink);text-transform:uppercase;letter-spacing:0.08em}
-  .eyebrow.on-dark{color:var(--accent)}
+  .eyebrow.on-dark{color:#A78BFA}
 
   .crumb{padding:20px 0;font-family:var(--font-geist-mono);font-size:12px;color:var(--mute);border-bottom:1px solid var(--line-2)}
   .crumb a{color:inherit;text-decoration:none}
@@ -110,7 +110,7 @@
   .prob{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px;transition:all 0.2s;cursor:default}
   .prob:hover{border-color:#d4d4d4;transform:translateY(-2px);box-shadow:0 18px 30px -20px rgba(0,0,0,0.1)}
   .prob-icon{width:44px;height:44px;border-radius:10px;background:var(--accent-soft);display:grid;place-items:center;color:var(--accent-ink);margin-bottom:18px}
-  .prob h4{font-size:16px;margin-bottom:8px;line-height:1.3}
+  .prob h3{font-size:16px;margin-bottom:8px;line-height:1.3}
   .prob p{margin:0;color:var(--mute);font-size:13.5px;line-height:1.5}
   .prob-cost{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--font-geist-mono);font-size:11px;color:var(--accent-ink);letter-spacing:0.04em}
 
@@ -143,7 +143,7 @@
   .flow-node.ai{background:rgba(109,40,217,0.08);border-color:rgba(109,40,217,0.3)}
   .flow-node .fn-icon{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.06);display:grid;place-items:center;color:rgba(255,255,255,0.8);margin-bottom:14px}
   .flow-node.ai .fn-icon{background:rgba(109,40,217,0.18);color:var(--accent)}
-  .flow-node h5{font-size:14px;margin:0 0 4px;color:#fff;font-weight:600}
+  .flow-node h3{font-size:14px;margin:0 0 4px;color:#fff;font-weight:600}
   .flow-node p{margin:0;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.45}
   .flow-node .tag{margin-top:10px;display:inline-block;font-family:var(--font-geist-mono);font-size:10px;padding:2px 7px;border-radius:4px;background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.6)}
   .flow-node.ai .tag{background:rgba(109,40,217,0.15);color:var(--accent)}
@@ -161,7 +161,7 @@
   .bq{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px;transition:all 0.2s}
   .bq:hover{border-color:#d4d4d4;background:var(--paper-2)}
   .bq-icon{width:36px;height:36px;border-radius:8px;background:var(--paper-3);display:grid;place-items:center;color:var(--ink-3);margin-bottom:14px}
-  .bq h5{font-size:14px;margin:0 0 4px;font-weight:600;letter-spacing:-0.01em}
+  .bq h3{font-size:14px;margin:0 0 4px;font-weight:600;letter-spacing:-0.01em}
   .bq p{margin:0;font-size:12.5px;color:var(--mute);line-height:1.45}
 
   /* ============ CASE HIGHLIGHT ============ */
@@ -183,10 +183,10 @@
   .plan{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:32px;display:flex;flex-direction:column;position:relative}
   .plan.featured{background:#0A0A0A;color:#fff;border-color:#0A0A0A}
   .plan-tag{font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.06em;text-transform:uppercase}
-  .plan.featured .plan-tag{color:var(--accent)}
+  .plan.featured .plan-tag{color:#A78BFA}
   .plan-badge{position:absolute;top:-10px;right:24px;background:var(--accent);color:#fff;font-family:var(--font-geist-mono);font-size:10px;padding:4px 10px;border-radius:999px;letter-spacing:0.04em}
-  .plan h4{font-size:20px;margin-top:10px;margin-bottom:8px}
-  .plan.featured h4{color:#fff}
+  .plan h3{font-size:20px;margin-top:10px;margin-bottom:8px}
+  .plan.featured h3{color:#fff}
   .plan-sub{font-size:14px;color:var(--mute);min-height:42px}
   .plan.featured .plan-sub{color:rgba(255,255,255,0.6)}
   .plan-price{margin-top:28px;display:flex;align-items:baseline;gap:8px}
@@ -215,7 +215,7 @@
   .roi-input input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--paper)}
   .roi-val{min-width:100px;text-align:right;font-family:var(--font-geist-mono);font-size:14px;font-weight:600;color:var(--ink)}
   .roi-result{margin-top:28px;padding:24px;background:var(--ink);color:var(--paper);border-radius:12px}
-  .roi-result .label{font-family:var(--font-geist-mono);font-size:11px;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase}
+  .roi-result .label{font-family:var(--font-geist-mono);font-size:11px;color:#A78BFA;letter-spacing:0.06em;text-transform:uppercase}
   .roi-result .big{font-size:56px;font-weight:600;letter-spacing:-0.04em;margin-top:8px;line-height:1}
   .roi-result .big .s{color:var(--accent)}
   .roi-result .sub{color:rgba(var(--paper-rgb),0.6);font-size:13px;margin-top:8px}
@@ -257,7 +257,7 @@
   .foot-brand{max-width:320px}
   .foot-brand p{color:var(--mute);font-size:14px;margin-top:12px}
   .foot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:60px}
-  .foot-col h5{font-family:var(--font-geist-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--mute);margin:0 0 16px}
+  .foot-col h3{font-family:var(--font-geist-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--mute);margin:0 0 16px}
   .foot-col a{display:block;color:var(--ink-3);text-decoration:none;font-size:14px;padding:4px 0;transition:color 0.15s}
   .foot-col a:hover{color:var(--ink)}
   .foot-bot{padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:13px;color:var(--mute);font-family:var(--font-geist-mono)}

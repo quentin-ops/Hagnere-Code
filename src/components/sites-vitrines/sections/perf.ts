@@ -99,32 +99,32 @@ export const perfHtml = `
       <div class="sv-perf-how-grid">
         <div class="sv-perf-how-item">
           <div class="sv-perf-how-n">01</div>
-          <h4>Next.js en pré-rendu statique</h4>
+          <h3>Next.js en pré-rendu statique</h3>
           <p>HTML généré au build, servi en edge CDN. Pas de base de données à interroger à chaque requête, pas de PHP à exécuter.</p>
         </div>
         <div class="sv-perf-how-item">
           <div class="sv-perf-how-n">02</div>
-          <h4>Images AVIF + lazy native</h4>
+          <h3>Images AVIF + lazy native</h3>
           <p>Formats modernes, tailles responsives et chargement différé selon le rôle visuel. Le poids cible dépend de la qualité et des dimensions requises.</p>
         </div>
         <div class="sv-perf-how-item">
           <div class="sv-perf-how-n">03</div>
-          <h4>Fonts self-hosted avec preload</h4>
+          <h3>Fonts self-hosted avec preload</h3>
           <p>Geist / Inter / autres fonts auto-hébergées via next/font, subsetting latin-ext, preload du fichier critique, FOIT éliminé.</p>
         </div>
         <div class="sv-perf-how-item">
           <div class="sv-perf-how-n">04</div>
-          <h4>JavaScript budgété</h4>
+          <h3>JavaScript budgété</h3>
           <p>Le bundle est mesuré par route et les dépendances inutiles sont évitées. Le budget dépend des fonctionnalités et intégrations retenues.</p>
         </div>
         <div class="sv-perf-how-item">
           <div class="sv-perf-how-n">05</div>
-          <h4>CDN edge global</h4>
+          <h3>CDN edge global</h3>
           <p>Vercel ou Cloudflare selon l'architecture et la cible géographique. La latence réelle varie selon l'utilisateur, le réseau et les services tiers.</p>
         </div>
         <div class="sv-perf-how-item">
           <div class="sv-perf-how-n">06</div>
-          <h4>Monitoring RUM temps réel</h4>
+          <h3>Monitoring RUM temps réel</h3>
           <p>Vercel Analytics, Sentry ou un autre outil peuvent mesurer le terrain si la collecte, le consentement, le budget et la durée sont prévus au devis.</p>
         </div>
       </div>

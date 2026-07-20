@@ -74,7 +74,7 @@ export const roiDashboardHtml = `
         </div>
         <div class="me-roi-kpi me-roi-kpi-hot">
           <div class="me-roi-kpi-delta">0<span>fenêtre</span></div>
-          <div class="me-roi-kpi-k">Maintenance visible en production</div>
+          <div class="me-roi-kpi-k">Fenêtre de maintenance visible</div>
           <div class="me-roi-kpi-n">exemple de stratégie · selon architecture</div>
         </div>
         <div class="me-roi-kpi">
@@ -106,7 +106,7 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l3 3 4-8 4 12 3-5h4"/></svg>
             </div>
           </div>
-          <h4>Monitoring proactif</h4>
+          <h3>Monitoring proactif</h3>
           <p>Les outils et seuils compatibles avec votre stack sont branchés selon un planning convenu. L'objectif est de réduire le temps de détection, sans promettre qu'aucun client ne verra jamais un incident.</p>
           <div class="me-roi-step-foot">→ sources, seuils et canaux documentés</div>
         </div>
@@ -118,7 +118,7 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
             </div>
           </div>
-          <h4>Patches sécurité automatisés</h4>
+          <h3>Patches sécurité automatisés</h3>
           <p>Dependabot + Snyk + GitGuardian en CI. Les mises à jour mineures sont <b>auto-merged</b> sous tests verts. Les majors passent en revue humaine avec tests.</p>
           <div class="me-roi-step-foot">→ délai cible défini selon criticité et dépendances</div>
         </div>
@@ -130,7 +130,7 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
             </div>
           </div>
-          <h4>Déploiements maîtrisés</h4>
+          <h3>Déploiements maîtrisés</h3>
           <p>Blue-green, migrations progressives, feature flags ou fenêtres planifiées sont choisis selon l'architecture et le risque de chaque livraison.</p>
           <div class="me-roi-step-foot">→ stratégie et rollback préparés</div>
         </div>
@@ -142,7 +142,7 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22v-2a8 8 0 0116 0v2"/></svg>
             </div>
           </div>
-          <h4>Équipe et continuité explicites</h4>
+          <h3>Équipe et continuité explicites</h3>
           <p>Les intervenants, leur statut, leurs responsabilités et les modalités de remplacement sont identifiés dans le devis selon le dispositif.</p>
           <div class="me-roi-step-foot">→ continuité proportionnée au périmètre</div>
         </div>

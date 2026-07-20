@@ -53,17 +53,6 @@ export const metadata: Metadata = {
       "Trois fichiers gratuits pour cadrer un outil interne et comparer les solutions.",
     images: [resource.socialImage.href],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 const faqItems = [
@@ -181,15 +170,6 @@ const breadcrumbJsonLd = JSON.stringify({
   ],
 });
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 const workflow = [
   {
@@ -231,11 +211,6 @@ export default function Page() {
           __html: breadcrumbJsonLd.replace(/</g, "\\u003c"),
         }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }}
-      />
-
       <section className="relative overflow-hidden bg-zinc-950 py-12 sm:py-16 lg:py-20">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(109,40,217,0.24),transparent_58%)]" />
         <div className="absolute -bottom-36 -left-20 size-96 rounded-full bg-blue-600/10 blur-3xl" />

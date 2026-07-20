@@ -147,7 +147,7 @@ export const serpAnatomyHtml = `
           <span class="ads-serp-zone-n">01</span>
           <span class="ads-serp-zone-k">AI Overview</span>
         </div>
-        <h4>Être cité par l'IA de Google</h4>
+        <h3>Être cité par l'IA de Google</h3>
         <p>Google cite 4 sources en tête de SERP depuis SGE/Gemini. <b>L'objectif</b>&nbsp;: devenir l'une de ces 4. Ça passe par E-E-A-T fort, données propriétaires, réponses structurées, schema Author.</p>
       </div>
 
@@ -156,7 +156,7 @@ export const serpAnatomyHtml = `
           <span class="ads-serp-zone-n">02</span>
           <span class="ads-serp-zone-k">Featured Snippet</span>
         </div>
-        <h4>La position zéro</h4>
+        <h3>La position zéro</h3>
         <p>Snippet volé à la position #1 par structure sémantique précise&nbsp;: H2 en question, réponse 40-60 mots juste dessous, liste à puces bien formatée. <b>20-35 % de CTR</b> en moyenne.</p>
       </div>
 
@@ -165,7 +165,7 @@ export const serpAnatomyHtml = `
           <span class="ads-serp-zone-n">03</span>
           <span class="ads-serp-zone-k">People Also Ask</span>
         </div>
-        <h4>Les questions associées</h4>
+        <h3>Les questions associées</h3>
         <p>Chaque clic ouvre votre réponse&nbsp;: <b>+1 exposition par requête</b>. On structure chaque article avec FAQ schema + questions réellement posées par votre audience (extraites de Quora, Reddit, SearchConsole).</p>
       </div>
 
@@ -174,7 +174,7 @@ export const serpAnatomyHtml = `
           <span class="ads-serp-zone-n">04</span>
           <span class="ads-serp-zone-k">Top 3 organique</span>
         </div>
-        <h4>Là où 60 % des clics tombent encore</h4>
+        <h3>Là où 60 % des clics tombent encore</h3>
         <p>Cocons sémantiques denses + autorité topicale (backlinks qualitatifs + contenu pilier) + on-page impeccable. <b>Le cœur du métier</b>, ce qui fait la différence sur la durée.</p>
       </div>
 
@@ -183,7 +183,7 @@ export const serpAnatomyHtml = `
           <span class="ads-serp-zone-n">05</span>
           <span class="ads-serp-zone-k">Local Pack</span>
         </div>
-        <h4>Les 3 cartes sur fond Maps</h4>
+        <h3>Les 3 cartes sur fond Maps</h3>
         <p>Fiche établissement, citations locales, workflow d'avis et schema LocalBusiness peuvent améliorer la lisibilité locale. Aucune position ni visibilité n'est garantie.</p>
       </div>
 
@@ -192,7 +192,7 @@ export const serpAnatomyHtml = `
           <span class="ads-serp-zone-n">06</span>
           <span class="ads-serp-zone-k">Related searches</span>
         </div>
-        <h4>La longue traîne associée</h4>
+        <h3>La longue traîne associée</h3>
         <p>Ces suggestions en bas de SERP sont des <b>requêtes dérivées</b> à fort potentiel. Couverture sémantique large = ranking sur 3-5× plus de mots-clés pour la même page pilier.</p>
       </div>
     </div>

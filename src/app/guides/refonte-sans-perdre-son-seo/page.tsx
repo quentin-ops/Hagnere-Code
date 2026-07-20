@@ -32,16 +32,11 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -174,23 +169,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -659,7 +643,7 @@ export default function Page() {
             <li><strong>Les redirections</strong> : prenez 10 anciennes adresses importantes (vos pages services, vos meilleurs articles) et tapez-les dans le navigateur — chacune doit atterrir sur sa nouvelle équivalente, pas sur l&apos;accueil ni sur une erreur.</li>
             <li><strong>Le verrou d&apos;indexation</strong> : ouvrez votresite.fr/robots.txt (pas de « Disallow: / » global) et vérifiez plusieurs pages clés — clic droit → « Afficher le code source de la page », puis Ctrl + F (Cmd + F sur Mac) et tapez « noindex ». Son absence réduit ce risque ; la Search Console permet de compléter le contrôle.</li>
             <li><strong>La courbe Search Console</strong> : menu « Performances », clics et impressions comparés semaine par semaine à votre export de référence — c&apos;est votre tableau de bord, et il doit rester sur VOTRE compte.</li>
-            <li><strong>La vitesse</strong> : testez plusieurs pages sur PageSpeed Insights. L&apos;outil distingue les données de visites réelles, lorsqu&apos;elles existent, et l&apos;audit Lighthouse simulé. Pour les Core Web Vitals, les seuils « bons » sont : LCP sous 2,5 s, INP sous 200 ms et CLS sous 0,1. Notre score Lighthouse contractualisé est un engagement technique mesuré dans des conditions définies ; ce n&apos;est ni le score utilisé directement pour classer une page, ni une garantie SEO.</li>
+            <li><strong>La vitesse</strong> : testez plusieurs pages sur PageSpeed Insights. L&apos;outil distingue les données de visites réelles, lorsqu&apos;elles existent, et l&apos;audit Lighthouse simulé. Pour les Core Web Vitals, les seuils « bons » sont : LCP inférieur ou égal à 2,5 s, INP inférieur ou égal à 200 ms et CLS inférieur ou égal à 0,1, évalués au 75e centile. Une éventuelle cible Lighthouse doit être écrite avec ses conditions de mesure ; elle ne constitue ni un score directement utilisé pour classer une page, ni une garantie SEO.</li>
           </ul>
         </InfoBox>
 
@@ -751,17 +735,15 @@ export default function Page() {
           livrable nommé</strong> : le tableau de correspondance
           d&apos;URLs figure au devis, vous en recevez copie.{" "}
           <strong>La fenêtre de correction post-lancement</strong> :
-          4 à 8 semaines incluses, pendant lesquelles les anomalies
-          détectées par le protocole de la section 9 sont corrigées
-          sans supplément. <strong>La propriété de vos accès</strong> :
+          sa durée, les anomalies couvertes, la procédure et les exclusions
+          sont précisées au devis. <strong>La propriété de vos accès</strong> :
           la Search Console reste sur VOTRE compte Google (le
           prestataire y est invité), comme le domaine et
           l&apos;hébergement — le jour où vous changez de
           prestataire, vos données de référence partent avec vous.{" "}
-          <strong>Un engagement technique mesurable</strong> : nous
-          contractualisons un score minimal de 95 sur 100 à Lighthouse,
-          l&apos;outil open source de Google qui audite une page dans des
-          conditions simulées précisées au contrat. Ce score mesure une
+          <strong>Un engagement technique mesurable</strong> : le devis peut
+          fixer une cible Lighthouse, les pages et les conditions simulées
+          utilisées pour la recette. Ce score mesure une
           qualité technique ; il n&apos;est pas utilisé directement comme
           score de classement et ne constitue pas une garantie SEO. Une
           vigilance de bon sens : un devis de refonte{" "}

@@ -42,7 +42,7 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Analytics &amp; tracking propres</b> — GA4 ou Plausible, events de conversion, consentement conforme, tableau de bord lisible.</div>
+            <div><b>Analytics &amp; tracking documentés</b> — GA4 ou Plausible, événements de conversion, choix préalable lorsque requis et recette du comportement accepter/refuser.</div>
           </li>
           <li>
             <div class="sv-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>

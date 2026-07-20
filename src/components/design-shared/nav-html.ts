@@ -220,19 +220,19 @@ const PANE_CABINET = pane({
       "/methode",
       ICON.methode,
       "Méthode",
-      "Sprint Fixe™ : prix tenu, dates contractuelles.",
+      "Sprint Fixe™ : périmètre, prix et jalons écrits au devis.",
     ) +
     paneCard(
       "/realisations",
       ICON.realisations,
       "Réalisations",
-      "4 produits en production, conçus et exploités par nous.",
+      "4 pages produit publiques : disponibilité et fonctions visibles.",
     ) +
     paneCard(
       "/equipe",
       ICON.equipe,
       "Équipe",
-      `${TEAM_PUBLIC_COMPOSITION}. Équipe nommée au cadrage.`,
+      `${TEAM_PUBLIC_COMPOSITION}. Intervenants confirmés au devis.`,
     ),
 });
 
@@ -278,12 +278,12 @@ const PANE_OUTILS = pane({
       "/demarrer-un-projet",
       ICON.estim,
       "Décrire mon projet",
-      "3 minutes — réponse personnelle sous 24 h ouvrées.",
+      "3 minutes — demande relue par l'équipe, objectif le prochain jour ouvré.",
     ),
 });
 
 export const navHtml = `<!-- NAV -->
-<nav class="hc-nav">
+<nav class="hc-nav" aria-label="Navigation principale">
   <div class="hc-nav-inner">
     <a href="/" class="hc-nav-brand">
       <div class="hc-nav-brand-mark">HC</div>
@@ -292,7 +292,7 @@ export const navHtml = `<!-- NAV -->
 
     <div class="hc-nav-pill-wrap" data-mega-root>
       <div class="hc-nav-pill">
-        <button type="button" class="hc-nav-pill-trigger" data-mega-trigger aria-expanded="false" aria-label="Ouvrir le menu et les services">
+        <button type="button" class="hc-nav-pill-trigger" data-mega-trigger aria-expanded="false" aria-label="Nos services">
           <span class="hc-nav-pill-trigger-icon-desktop" aria-hidden="true">${ICON.services}</span>
           <span class="hc-nav-pill-trigger-icon-mobile" aria-hidden="true">${ICON.menu}</span>
           <span class="hc-nav-pill-trigger-label">Nos services</span>
@@ -308,7 +308,7 @@ export const navHtml = `<!-- NAV -->
       <div class="hc-mega" data-mega-panel role="region" aria-label="Nos services" aria-hidden="true" inert>
         <aside class="hc-mega-side">
           <div class="hc-mega-side-eyebrow">EXPLORER PAR CATÉGORIE</div>
-          <nav class="hc-mega-side-list">
+          <div class="hc-mega-side-list">
             <button type="button" class="hc-mega-cat is-active" data-cat="build">
               ${ICON.build}<span class="hc-mega-cat-label">Construire</span>${ICON.arrowRight}
             </button>
@@ -324,7 +324,7 @@ export const navHtml = `<!-- NAV -->
             <button type="button" class="hc-mega-cat" data-cat="outils">
               ${ICON.outils}<span class="hc-mega-cat-label">Outils &amp; ressources</span>${ICON.arrowRight}
             </button>
-          </nav>
+          </div>
           <nav class="hc-mega-side-mobile" aria-label="Liens rapides">
             <a href="/tarifs" class="hc-mega-side-mobile-link">Tarifs</a>
             <a href="/contact" class="hc-mega-side-mobile-link">Contact</a>
@@ -333,7 +333,7 @@ export const navHtml = `<!-- NAV -->
           </nav>
           <div class="hc-mega-side-cta">
             <div class="hc-mega-side-cta-title">Pas sûr de votre besoin ?</div>
-            <div class="hc-mega-side-cta-sub">30 min en visio avec le gérant pour cadrer.</div>
+            <div class="hc-mega-side-cta-sub">30 min en visio avec le fondateur pour cadrer.</div>
             <a href="/rendez-vous" class="hc-mega-side-cta-btn">${ICON.calendar}<span>Réserver un appel</span></a>
           </div>
         </aside>
@@ -357,7 +357,7 @@ export const navHtml = `<!-- NAV -->
       <a href="/rendez-vous" class="hc-nav-cta hc-nav-cta-rdv">
         ${ICON.calendarCheck}<span>Rendez-vous</span>
       </a>
-      <a href="/demarrer-un-projet" class="hc-nav-cta hc-nav-cta-primary">
+      <a href="/demarrer-un-projet" class="hc-nav-cta hc-nav-cta-primary" aria-label="Démarrer un projet">
         ${ICON.rocket}<span>Démarrer un projet</span>
       </a>
     </div>

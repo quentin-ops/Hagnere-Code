@@ -19,7 +19,7 @@ export const integrationsHtml = `
           <div class="sa-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
           <div>
             <div class="sa-integ-kind">PAIEMENTS &amp; FACTURATION</div>
-            <h4>Vendre votre SaaS sans galère.</h4>
+            <h3>Vendre votre SaaS sans galère.</h3>
           </div>
         </div>
         <div class="sa-integ-chips">
@@ -38,7 +38,7 @@ export const integrationsHtml = `
           <div class="sa-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div>
             <div class="sa-integ-kind">AUTH &amp; IDENTITÉ</div>
-            <h4>Du login perso au SSO entreprise.</h4>
+            <h3>Du login perso au SSO entreprise.</h3>
           </div>
         </div>
         <div class="sa-integ-chips">
@@ -59,7 +59,7 @@ export const integrationsHtml = `
           <div class="sa-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
           <div>
             <div class="sa-integ-kind">IA &amp; AGENTS</div>
-            <h4>Du LLM dans le produit, pas sur la landing.</h4>
+            <h3>Du LLM dans le produit, pas sur la landing.</h3>
           </div>
         </div>
         <div class="sa-integ-chips">
@@ -79,7 +79,7 @@ export const integrationsHtml = `
           <div class="sa-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div>
           <div>
             <div class="sa-integ-kind">EMAIL &amp; COMMUNICATION</div>
-            <h4>Délivrer l'email qui arrive en inbox.</h4>
+            <h3>Délivrer l'email qui arrive en inbox.</h3>
           </div>
         </div>
         <div class="sa-integ-chips">
@@ -98,7 +98,7 @@ export const integrationsHtml = `
           <div class="sa-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
           <div>
             <div class="sa-integ-kind">INFRA, OBSERVABILITÉ, DEVOPS</div>
-            <h4>Tenir la charge, voir ce qui casse.</h4>
+            <h3>Tenir la charge, voir ce qui casse.</h3>
           </div>
         </div>
         <div class="sa-integ-chips">
@@ -120,7 +120,7 @@ export const integrationsHtml = `
           <div class="sa-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
           <div>
             <div class="sa-integ-kind">OUTILS MÉTIER &amp; CRM</div>
-            <h4>Se brancher au reste de votre stack.</h4>
+            <h3>Se brancher au reste de votre stack.</h3>
           </div>
         </div>
         <div class="sa-integ-chips">

@@ -11,7 +11,7 @@ Ne pas créer une seconde page indexable. La route existante possède déjà :
 - un title centré sur « agence développement SaaS sur mesure » ;
 - un contenu de service complet ;
 - des liens depuis la navigation, le hub services et le pied de page ;
-- des données structurées `Service`, `FAQPage` et `BreadcrumbList` ;
+- des données structurées `Service` et `BreadcrumbList`, sans `FAQPage` retiré par Google ;
 - un historique d'URL à conserver.
 
 Une nouvelle page sur l'alias aurait eu la même intention, les mêmes preuves et le
@@ -83,7 +83,7 @@ vérifiables : LMNP.AI, SCI-AI.app, Hagnéré Patrimoine et Hagnéré Investisse
 - [x] Aucun taux historique sans source interne vérifiable.
 - [x] Les quatre produits cités sont les produits autorisés du groupe.
 - [x] Les fourchettes sont présentées comme indicatives avant cadrage et en euros HT.
-- [x] Le texte visible et le JSON-LD FAQ ne se contredisent pas.
+- [x] La FAQ est visible et aucun JSON-LD `FAQPage` n'est publié.
 - [x] L'alias répond par redirection permanente vers l'URL canonique.
 - [x] La page canonique reste indexable et présente dans le sitemap.
 - [x] Les liens vers les trois guides décisionnels sont présents.

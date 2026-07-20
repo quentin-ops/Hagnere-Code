@@ -5,12 +5,12 @@ export const problemsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Six situations qui déclenchent un audit</div>
-        <h2>Six déclencheurs business<br>qu'on voit chaque mois<br>en première prise de contact.</h2>
+        <h2>Six situations typiques<br>à traiter comme des scénarios<br>illustratifs.</h2>
       </div>
       <div class="right">
-        Aucun n'est honteux. Tous se chiffrent. Mais chaque semaine qui passe sans auditer,
-        c'est <b>une décision stratégique prise à l'aveugle</b>&nbsp;: levée à un prix trop bas,
-        M&amp;A mal dérisqué, refonte décidée sur les mauvaises bases.
+        Ces exemples ne décrivent pas des dossiers clients Hagnéré Code. Le délai,
+        le prix, les risques et les livrables dépendent des accès, du périmètre et
+        des critères d&apos;acceptation confirmés au devis.
       </div>
     </div>
 
@@ -24,10 +24,10 @@ export const problemsHtml = `
           <span class="sap-n">01</span>
         </div>
         <h3>« Notre VC demande une tech DD avant de signer le term sheet »</h3>
-        <p>Vous closez une Série A / B. Le fonds mandate une tech DD. <b>Vous avez 2 à 4 semaines pour produire un rapport défendable</b>, sinon le prix baisse ou le term sheet saute. Mieux vaut auditer vous-même d'abord — côté vendeur.</p>
+        <p>Un investisseur demande une due diligence technique. Il faut définir les questions, les accès autorisés, les personnes mobilisées et la date de décision. L&apos;effet éventuel sur l&apos;opération ne peut pas être prédit par l&apos;auditeur.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Audit Deep côté vendeur · 15-20 j · 38 k€</span>
+          <span class="sap-foot-v">Périmètre vendeur · calendrier et prix au devis</span>
         </div>
       </article>
 
@@ -40,10 +40,10 @@ export const problemsHtml = `
           <span class="sap-n">02</span>
         </div>
         <h3>« On rachète une boîte, il faut auditer le code avant le deal »</h3>
-        <p>Acquisition industrielle ou build-up. Vous devez <b>chiffrer le coût de remédiation post-deal</b>, détecter les deal-breakers (licences open source non conformes, propriété IP floue, CVE critiques cachées). Le verdict change la valo de plusieurs centaines de milliers d'euros.</p>
+        <p>Une acquisition nécessite d&apos;examiner, dans le périmètre autorisé, les licences, la propriété intellectuelle, les vulnérabilités connues et les hypothèses de remédiation. La décision et la valorisation restent celles des parties et de leurs conseils.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Tech DD M&amp;A · 20-30 j · 68 k€</span>
+          <span class="sap-foot-v">Tech DD M&amp;A · périmètre et prix au devis</span>
         </div>
       </article>
 
@@ -56,10 +56,10 @@ export const problemsHtml = `
           <span class="sap-n">03</span>
         </div>
         <h3>« Notre nouveau CTO arrive, on veut une baseline indépendante »</h3>
-        <p>Le CTO doit présenter son <b>plan 100 jours au board</b>. Il a besoin d'un état des lieux neutre, chiffré, <b>qu'il puisse défendre sans se mettre à dos l'équipe héritée</b>. Une agence externe "no blame" est le pont parfait entre son diagnostic et l'acceptation interne.</p>
+        <p>Un nouveau responsable technique peut demander un état des lieux indépendant pour préparer ses priorités. La méthode, les entretiens, la confidentialité et la forme de restitution sont arrêtés avec l&apos;équipe concernée.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Audit Standard · 10 j · 18 k€</span>
+          <span class="sap-foot-v">Baseline technique · calendrier et prix au devis</span>
         </div>
       </article>
 
@@ -72,10 +72,10 @@ export const problemsHtml = `
           <span class="sap-n">04</span>
         </div>
         <h3>« Un client enterprise exige SOC2 ou ISO 27001 avant de signer »</h3>
-        <p>Votre pipeline commercial est bloqué par un gros client qui demande une certification que vous n'avez pas. <b>Un audit préparatoire</b> fait la <b>gap analysis</b> complète, priorise les actions sur 6 mois pour atteindre le niveau requis. Sans ça, vous partez à l'aveugle pendant 12 mois avec Vanta/Drata.</p>
+        <p>Un client demande des éléments de sécurité ou une certification. Une analyse d&apos;écart peut aider à prioriser les travaux, sans constituer une certification ni garantir son obtention. Le référentiel et le recours à un organisme qualifié doivent être définis au devis.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Audit Standard + gap compliance · 10 j · 18 k€</span>
+          <span class="sap-foot-v">Analyse d&apos;écart · référentiel et prix au devis</span>
         </div>
       </article>
 
@@ -88,10 +88,10 @@ export const problemsHtml = `
           <span class="sap-n">05</span>
         </div>
         <h3>« On a eu un incident majeur, besoin d'un post-mortem indépendant »</h3>
-        <p>Downtime critique, fuite de données, attaque ciblée, démission surprise du CTO. Vous ne pouvez pas laisser votre équipe interne écrire son propre post-mortem — <b>il vous faut un tiers neutre</b> qui chiffre la cause racine, la dette qui l'a rendue possible, et les 10 actions à mener dans les 90 jours.</p>
+        <p>Après un incident, un tiers peut faciliter la collecte des faits et l&apos;analyse des causes dans le cadre autorisé. Le nombre d&apos;actions, le calendrier et l&apos;éventuelle intervention d&apos;experts forensiques ou juridiques sont définis selon le dossier.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Audit Express post-incident · 3-5 j · 8 k€</span>
+          <span class="sap-foot-v">Post-incident · urgence, accès et prix au devis</span>
         </div>
       </article>
 
@@ -104,10 +104,10 @@ export const problemsHtml = `
           <span class="sap-n">06</span>
         </div>
         <h3>« On hésite entre patcher l'existant ou refaire à zéro »</h3>
-        <p>Votre CTO veut refondre. Votre CFO refuse un capex de 600 k€. <b>Vous avez besoin d'un verdict chiffré "coût refonte vs coût maintien sur 3 ans"</b>, avec scenarios A/B/C. On ne fera pas la refonte (CoI), donc on est honnête sur le diagnostic.</p>
+        <p>Des décideurs hésitent entre maintenir, corriger ou reconstruire. L&apos;audit peut comparer plusieurs scénarios avec hypothèses et incertitudes explicites. Une éventuelle mission de mise en œuvre est distincte et les conflits d&apos;intérêts sont déclarés.</p>
         <div class="sap-foot sap-foot-hot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Audit Deep · go/no-go chiffré · 15-20 j · 38 k€</span>
+          <span class="sap-foot-v">Go/no-go documenté · calendrier et prix au devis</span>
         </div>
       </article>
     </div>

@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   createRateLimitStore,
   checkRateLimit,
@@ -77,23 +77,49 @@ describe("getClientIp", () => {
     return new Request("https://example.com", { headers });
   }
 
-  it("priorise cf-connecting-ip", () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
+  it("sur Vercel, priorise x-vercel-forwarded-for et ignore un header Cloudflare client", () => {
+    vi.stubEnv("VERCEL", "1");
+    const req = makeReq({
+      "cf-connecting-ip": "1.1.1.1",
+      "x-vercel-forwarded-for": "2.2.2.2",
+      "x-forwarded-for": "9.9.9.9",
+      "x-real-ip": "8.8.8.8",
+    });
+    expect(getClientIp(req)).toBe("2.2.2.2");
+  });
+
+  it("sur Vercel, fallback sur x-forwarded-for réécrit par la plateforme", () => {
+    vi.stubEnv("VERCEL", "1");
     const req = makeReq({
       "cf-connecting-ip": "1.1.1.1",
       "x-forwarded-for": "9.9.9.9",
-      "x-real-ip": "8.8.8.8",
+    });
+    expect(getClientIp(req)).toBe("9.9.9.9");
+  });
+
+  it("ne fait confiance à cf-connecting-ip que sur un runtime Cloudflare explicite", () => {
+    vi.stubEnv("TRUST_CF_CONNECTING_IP", "1");
+    const req = makeReq({
+      "cf-connecting-ip": "1.1.1.1",
+      "x-forwarded-for": "9.9.9.9",
     });
     expect(getClientIp(req)).toBe("1.1.1.1");
   });
 
-  it("fallback sur x-forwarded-for (premier de la liste)", () => {
+  it("utilise x-forwarded-for seulement derrière un proxy explicitement approuvé", () => {
+    vi.stubEnv("TRUST_X_FORWARDED_FOR", "1");
     const req = makeReq({
       "x-forwarded-for": "1.2.3.4, 5.6.7.8",
     });
     expect(getClientIp(req)).toBe("1.2.3.4");
   });
 
-  it("fallback sur x-real-ip", () => {
+  it("utilise x-real-ip seulement derrière un proxy explicitement approuvé", () => {
+    vi.stubEnv("TRUST_X_FORWARDED_FOR", "1");
     const req = makeReq({
       "x-real-ip": "9.9.9.9",
     });
@@ -105,18 +131,42 @@ describe("getClientIp", () => {
     expect(getClientIp(req)).toBe("unknown");
   });
 
-  it("rejette les valeurs spoofées non-IP dans cf-connecting-ip", () => {
+  it("ignore cf-connecting-ip hors runtime Cloudflare", () => {
     const req = makeReq({
-      "cf-connecting-ip": "<script>alert(1)</script>",
+      "cf-connecting-ip": "1.1.1.1",
       "x-real-ip": "8.8.8.8",
     });
-    expect(getClientIp(req)).toBe("8.8.8.8");
+    expect(getClientIp(req)).toBe("unknown");
+  });
+
+  it("ignore les en-têtes de proxy hors environnement de confiance", () => {
+    const req = makeReq({
+      "x-forwarded-for": "1.2.3.4",
+      "x-real-ip": "8.8.8.8",
+    });
+    expect(getClientIp(req)).toBe("unknown");
+  });
+
+  it("échoue sur unknown si le header Cloudflare attesté est absent", () => {
+    vi.stubEnv("TRUST_CF_CONNECTING_IP", "1");
+    const req = makeReq({ "x-forwarded-for": "9.9.9.9" });
+    expect(getClientIp(req)).toBe("unknown");
   });
 
   it("supporte IPv6", () => {
+    vi.stubEnv("TRUST_CF_CONNECTING_IP", "1");
     const req = makeReq({
       "cf-connecting-ip": "2001:db8::1",
     });
     expect(getClientIp(req)).toBe("2001:db8::1");
+  });
+
+  it("rejette les chaînes qui ressemblent à une IP sans en être une", () => {
+    vi.stubEnv("TRUST_X_FORWARDED_FOR", "1");
+    const req = makeReq({
+      "x-forwarded-for": "999.999.999.999",
+      "x-real-ip": "2001:::1",
+    });
+    expect(getClientIp(req)).toBe("unknown");
   });
 });

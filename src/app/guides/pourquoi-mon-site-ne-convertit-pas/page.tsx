@@ -31,16 +31,11 @@ export const metadata: Metadata = {
     modifiedTime: `${guide.dateModified}T09:00:00+02:00`,
     authors: [`${SITE_URL}/equipe`],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -56,7 +51,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 5300,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -101,15 +95,15 @@ const faqItems = [
   {
     question: "J'ai des visiteurs mais le téléphone ne sonne pas : c'est normal ?",
     answer:
-      "Peut-être, et c'est la première chose à vérifier avant de dépenser un euro. Le téléphone qui ne sonne pas et le site qui ne convertit pas sont deux constats différents, parce que la majorité des contacts d'une entreprise artisanale ou de services ne passe pas par le formulaire. Comptez pendant trente jours : affichez sur le site un numéro de téléphone utilisé nulle part ailleurs, et demandez systématiquement à la personne qui décroche comment le client vous a trouvé. C'est gratuit, cela ne demande aucun outil, et dans notre expérience le nombre de contacts réels dépasse largement le nombre de formulaires. Tant que ce comptage n'est pas fait, vous ne savez pas si votre site convertit.",
+      "Peut-être, et c'est la première chose à vérifier avant de dépenser un euro. Le téléphone qui ne sonne pas et le site qui ne convertit pas sont deux constats différents : une partie des contacts d'une entreprise artisanale ou de services peut passer par le téléphone, l'email direct ou une visite, et non par le formulaire. Comptez pendant trente jours : affichez sur le site un numéro de téléphone utilisé nulle part ailleurs, et demandez systématiquement à la personne qui décroche comment le client vous a trouvé. Sans ce comptage, vous ne connaissez pas le nombre réel de contacts attribuables au site.",
   },
   {
     question: "Avec 500 visites par mois, je devrais recevoir combien de demandes ?",
     answer:
-      "Personne ne peut vous le dire honnêtement, et méfiez-vous de qui vous répond par un chiffre. Les tableaux de « taux de conversion moyen par secteur » qui circulent en France n'ont aucune source primaire : la FEVAD, seule fédération professionnelle française à publier des données de référence sur le commerce en ligne, publie des volumes, des paniers moyens et des nombres de transactions — mais pas de taux de conversion sectoriel. Surtout, ces tableaux ne déclarent jamais leur dénominateur : un même site affiche un taux qui varie du simple au double selon qu'on divise les contacts par les sessions, par les utilisateurs ou par les visiteurs uniques. Sans dénominateur déclaré, une comparaison sectorielle n'est pas contestable, elle est dénuée de sens.",
+      "Ce volume seul ne permet pas de donner un chiffre honnête. Les tableaux de « taux de conversion moyen par secteur » qui circulent en France n'ont aucune source primaire : la FEVAD, seule fédération professionnelle française à publier des données de référence sur le commerce en ligne, publie des volumes, des paniers moyens et des nombres de transactions — mais pas de taux de conversion sectoriel. Surtout, ces tableaux ne déclarent jamais leur dénominateur : un même site affiche un taux qui varie du simple au double selon qu'on divise les contacts par les sessions, par les utilisateurs ou par les visiteurs uniques. Sans dénominateur déclaré, une comparaison sectorielle n'est pas contestable, elle est dénuée de sens.",
   },
   {
-    question: "Est-ce mon site le problème, ou personne ne cherche ce que je vends ?",
+    question: "Est-ce mon site le problème, ou la demande est-elle absente ?",
     answer:
       "C'est la deuxième branche de l'arbre de diagnostic, et elle est souvent la bonne. Un site peut très bien convertir excellemment des visites qui n'ont aucune intention d'achat. Le test : ouvrez votre Search Console et regardez les requêtes qui vous amènent des visiteurs. Si ce sont des questions générales — « comment poser un parquet », « prix moyen d'une véranda » — vous captez des curieux, pas des acheteurs. Si ce sont des requêtes avec une intention nette — votre métier plus votre ville, « devis », « près de chez moi » — alors le trafic est bon et le problème est ailleurs. Un site qui reçoit les mauvaises visites n'a pas besoin d'être refait : il a besoin d'être trouvé sur d'autres requêtes.",
   },
@@ -124,7 +118,7 @@ const faqItems = [
       "Deux méthodes, l'une gratuite et l'autre à quelques centaines d'euros par an. La gratuite : demandez à chaque personne qui décroche de poser la question « comment nous avez-vous trouvés ? » et de noter la réponse dans un tableur. C'est imparfait mais cela donne un ordre de grandeur en un mois. La payante : affichez sur le site un numéro de téléphone dédié, utilisé nulle part ailleurs — ni sur vos devis, ni sur votre camionnette, ni sur votre fiche Google. Tout appel sur ce numéro vient donc du site. Précision utile : compter un appel n'est pas ficher quelqu'un, vous ne traitez aucune donnée personnelle en incrémentant un compteur.",
   },
   {
-    question: "Mon site est beau, tout le monde me le dit. Pourquoi ça ne rapporte rien ?",
+    question: "Mon site est beau, mes proches me le disent. Pourquoi ça ne rapporte rien ?",
     answer:
       "Parce que beau et convaincant sont deux choses différentes, et parce que le chiffre qu'on vous a probablement cité pour vendre le design est faux. On lit partout que « 75 % des jugements de crédibilité reposent sur le design », attribué à Stanford. Aucune étude de Stanford ne contient ce chiffre. L'étude réelle, menée en 2002 sur 2 684 participants, établit que 46,1 % des participants citent l'attrait visuel parmi les critères ayant nourri leur jugement — soit 46 %, pas 75 %, et « citent parmi les critères », pas « repose sur ». Elle date d'avant le mobile, les réseaux sociaux et les avis Google. Un beau site qui ne dit ni ce que vous faites, ni pour qui, ni combien, ne convertit pas mieux qu'un site laid qui le dit.",
   },
@@ -170,23 +164,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -203,7 +186,7 @@ export default function Page() {
         keyPoints={[
           { number: "01", title: "Votre taux est faux dans les deux sens", description: "", color: "violet" },
           { number: "02", title: "7 signes qui disent de NE PAS refondre", description: "", color: "blue" },
-          { number: "03", title: "Un devis de 14 900 € que nous avons refusé", description: "", color: "emerald" },
+          { number: "03", title: "Une simulation à 14 900 € que le diagnostic remet en cause", description: "", color: "emerald" },
           { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
         ]}
         relatedLinks={[
@@ -220,7 +203,7 @@ export default function Page() {
         <p className="lead">
           Avant de dépenser un euro,{" "}
           <strong>il faut prouver que votre site est en cause</strong> — et
-          dans une bonne partie des cas que nous voyons, il ne l&apos;est pas.
+          dans certains cas, il ne l&apos;est pas.
           Le chiffre affiché par vos statistiques est faux, et il l&apos;est{" "}
           <strong>dans les deux sens à la fois</strong> : trop bas parce que
           vos appels ne sont comptés nulle part, trop haut parce
@@ -232,9 +215,10 @@ export default function Page() {
           donc intérêt à ce que vous concluiez que votre site est le problème.
           <br />
           <br />
-          Le fil rouge de ce guide est pourtant{" "}
-          <strong>un devis de refonte à 14 900 € que nous avons
-          nous-mêmes déconseillé de signer</strong>, et la section 13 donne
+          Le fil rouge de ce guide est pourtant <strong>un scénario fictif
+          composite — ni client ni témoignage réel — autour d&apos;un devis
+          de refonte à 14 900 € que la méthode conduirait à déconseiller</strong>,
+          et la section 13 donne
           les sept signes chiffrés qui disent de ne pas refondre. Si aucune
           section de ce guide ne vous dissuade d&apos;acheter chez nous, nous
           l&apos;aurons raté.
@@ -243,7 +227,7 @@ export default function Page() {
         <GuideToc
           items={[
             { id: "reponse-rapide", label: "1. La réponse en 30 secondes" },
-            { id: "definition", label: "2. « Taux de conversion » : la définition que personne ne donne" },
+            { id: "definition", label: "2. « Taux de conversion » : choisir la bonne définition" },
             { id: "chiffre-faux", label: "3. Pourquoi le chiffre affiché est faux — dans les deux sens" },
             { id: "compter", label: "4. Compter ce qui n'est compté nulle part" },
             { id: "volume", label: "5. Combien de visites, et sur combien de temps ?" },
@@ -260,7 +244,7 @@ export default function Page() {
           ]}
         />
 
-        <InfoBox variant="amber" title="Le fil rouge : Sylvain, menuiserie-agencement à Faverges">
+        <InfoBox variant="amber" title="Le scénario fictif composite : Sylvain, menuiserie-agencement à Faverges">
           Onze salariés, 1,6 M€ de chiffre d&apos;affaires. Moitié
           particuliers — escaliers, dressings sur mesure — moitié marchés de
           second œuvre pour des promoteurs annéciens. Son site, refait en
@@ -269,11 +253,10 @@ export default function Page() {
           <strong>1,15 %</strong>.
           <br />
           <br />
-          Il en a conclu que son site ne convertit pas et nous a demandé un
-          devis de refonte. Nous l&apos;avons chiffré à{" "}
-          <strong>14 900 €</strong> — puis nous lui avons dit de ne pas le
-          signer avant d&apos;avoir compté pendant trente jours. La suite
-          traverse tout ce guide.
+          Dans l&apos;hypothèse, il conclurait que son site ne convertit pas
+          et demanderait un devis de refonte estimé à <strong>14 900 €</strong>.
+          Le diagnostic conduirait à ne pas le signer avant d&apos;avoir compté
+          pendant trente jours. La suite du scénario traverse tout ce guide.
         </InfoBox>
 
         <h2 id="reponse-rapide">1. La réponse en 30 secondes</h2>
@@ -300,7 +283,7 @@ export default function Page() {
           maillon séparément avant d&apos;attribuer toute la baisse à l&apos;interface.
         </p>
 
-        <h2 id="definition">2. « Taux de conversion » : la définition que personne ne donne</h2>
+        <h2 id="definition">2. « Taux de conversion » : choisir la bonne définition</h2>
         <p>
           Un même site affiche un taux qui{" "}
           <strong>varie du simple au double</strong> selon ce qu&apos;on met
@@ -345,7 +328,7 @@ export default function Page() {
             ["Un client sur téléphone puis sur ordinateur", "Compté comme deux personnes distinctes", "Votre taux paraît TROP BAS"],
           ]}
         />
-        <InfoBox variant="blue" title="Le seuil que Google documente lui-même, et que presque personne ne cite">
+        <InfoBox variant="blue" title="Le seuil documenté par Google">
           Google propose une <strong>modélisation</strong> censée estimer les
           visites qu&apos;il n&apos;a pas eu le droit de mesurer. Sa
           documentation officielle en donne les conditions
@@ -407,7 +390,7 @@ export default function Page() {
             de votre adresse générale.
           </li>
         </ol>
-        <InfoBox variant="emerald" title="Ce que Sylvain a trouvé en trente jours">
+        <InfoBox variant="emerald" title="Ce que le comptage montrerait dans le scénario Sylvain">
           Aux <strong>7 formulaires</strong> se sont ajoutés{" "}
           <strong>11 appels</strong> et <strong>3 courriels directs</strong>{" "}
           venus du site. Soit <strong>21 contacts pour 610 sessions</strong>{" "}
@@ -424,7 +407,7 @@ export default function Page() {
           <br />
           Une fourchette, jamais une décimale. Mais entre 1,15 % et « entre
           2,4 et 3,4 % », le diagnostic n&apos;est plus du tout le même — et
-          la refonte à 14 900 € vient de perdre son principal argument.
+          la refonte à 14 900 € perdrait son principal argument.
         </InfoBox>
         <p>
           Une précision, parce que la question revient :{" "}
@@ -436,7 +419,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Faites compter avant de faire refaire"
-          description="Décrivez votre situation en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Comme pour Sylvain, la réponse peut très bien être « ne refaites pas votre site »."
+          description="Décrivez votre situation en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Le diagnostic peut très bien conclure : « ne refaites pas votre site »."
         />
 
         <h2 id="volume">5. Combien de visites, et sur combien de temps ?</h2>
@@ -642,8 +625,8 @@ Base 2 %, détecter +50 % relatif  →  3 077 par version   (6 154 au total)
 
         <h2 id="apres-formulaire">11. Après le formulaire : le maillon humain</h2>
         <p>
-          C&apos;est le maillon que personne n&apos;audite, parce
-          qu&apos;aucun prestataire ne vend de solution pour le réparer.
+          Le formulaire ne suffit pas : la suite dépend aussi du traitement humain
+          de chaque demande.
         </p>
         <p>
           L&apos;étude universitaire de référence, publiée en 2011 sur un
@@ -664,7 +647,7 @@ Base 2 %, détecter +50 % relatif  →  3 077 par version   (6 154 au total)
           spectaculaires du chiffre — « multipliez par 100 » — que la section 6
           démonte. Le fond, lui, reste solide et utile.
         </p>
-        <InfoBox variant="amber" title="Le vrai problème de Sylvain">
+        <InfoBox variant="amber" title="Le problème révélé par le scénario Sylvain">
           D&apos;avril à septembre, en pleine saison de pose, son délai moyen
           de rappel est de <strong>2,6 jours ouvrés</strong>. Et sur les{" "}
           <strong>13 devis</strong> émis au dernier trimestre,{" "}
@@ -672,8 +655,8 @@ Base 2 %, détecter +50 % relatif  →  3 077 par version   (6 154 au total)
           <strong>4 signatures</strong>.
           <br />
           <br />
-          Son site n&apos;y est pour rien. Il a fait son travail : il a
-          produit 21 contacts en un mois. Ce qui se perd, se perd après.
+          Dans cette hypothèse, le site n&apos;y serait pour rien : il
+          aurait produit 21 contacts en un mois. La perte se situerait après.
         </InfoBox>
         <p>
           Le correctif coûte <strong>zéro euro</strong> : un engagement de
@@ -693,7 +676,7 @@ Base 2 %, détecter +50 % relatif  →  3 077 par version   (6 154 au total)
           rows={[
             ["Beaucoup de demandes, aucune ne signe", "Prix hors marché, ou positionnement flou"],
             ["Les prospects disparaissent après le devis", "Délai d'envoi, absence de relance, devis illisible"],
-            ["Personne ne cherche votre offre", "La demande n'existe pas sous cette forme sur votre zone"],
+            ["Demande locale absente", "La demande n'existe pas sous cette forme sur votre zone"],
             ["Vos concurrents signent ce que vous perdez", "Différence de délai, de réactivité ou de preuve — rarement de site"],
             ["Beaucoup de curieux, peu d'acheteurs", "Vous êtes visible sur des requêtes informatives (section 8)"],
           ]}
@@ -746,8 +729,8 @@ Base 2 %, détecter +50 % relatif  →  3 077 par version   (6 154 au total)
             ["Refonte complète", "à partir de 6 900 €", "Seulement si trois signes structurels sont réunis"],
           ]}
         />
-        <InfoBox variant="emerald" title="Ce que Sylvain a décidé — et ce que ça a donné">
-          <strong>Refonte à 14 900 € reportée.</strong> À la place :{" "}
+        <InfoBox variant="emerald" title="Décision et résultat simulés pour Sylvain">
+          <strong>La refonte à 14 900 € serait reportée.</strong> À la place :{" "}
           <strong>0 €</strong> pour le protocole de rappel sous quatre heures
           ouvrées et la relance à sept jours,{" "}
           <strong>350 €</strong> pour douze mois de numéro dédié, et{" "}
@@ -755,16 +738,16 @@ Base 2 %, détecter +50 % relatif  →  3 077 par version   (6 154 au total)
           fourchettes de prix indicatives. Total : 2 250 €.
           <br />
           <br />
-          Au trimestre suivant, il est passé de{" "}
+          Au trimestre suivant simulé, il passerait de{" "}
           <strong>4 signatures sur 13 devis à 7 sur 14</strong>, sans
           qu&apos;une seule ligne de son site n&apos;ait été refaite.
           <br />
           <br />
           <strong>Une réserve d&apos;honnêteté, et elle est importante :</strong>{" "}
-          13 puis 14 devis, c&apos;est un échantillon minuscule sur un seul
-          trimestre. On ne peut rien en généraliser, et une bonne saison
-          suffirait à produire le même écart. Nous le racontons pour illustrer
-          une méthode, pas pour promettre un résultat.
+          13 puis 14 devis formeraient un échantillon minuscule sur un seul
+          trimestre. On ne pourrait rien en généraliser, et une bonne saison
+          suffirait à produire le même écart. Ce scénario illustre une méthode ;
+          il ne rapporte pas un résultat observé et n&apos;en promet aucun.
         </InfoBox>
 
         <h2 id="methode">15. Méthode : votre diagnostic en 5 étapes</h2>
@@ -795,18 +778,18 @@ Base 2 %, détecter +50 % relatif  →  3 077 par version   (6 154 au total)
           </li>
         </ol>
         <p>
-          Chez Hagnéré Code, nous commençons systématiquement par cette
-          mesure — c&apos;est l&apos;objet de notre{" "}
-          <Link href="/services/audit-technique">audit technique</Link>, et
-          c&apos;est aussi la raison pour laquelle nous refusons régulièrement
-          des refontes. Nos{" "}
-          <Link href="/tarifs">tarifs sont publics</Link>, et notre réponse
-          reste gratuite même quand elle nous fait perdre la mission.
+          Cette mesure doit précéder la décision de refondre — elle fait partie
+          du cadrage de notre{" "}
+          <Link href="/services/audit-technique">audit technique</Link>. Le
+          diagnostic peut recommander des corrections ciblées ou conclure que
+          le site n&apos;est pas la cause du problème. Nos{" "}
+          <Link href="/tarifs">tarifs sont publics</Link> et la première réponse
+          reste gratuite, sans engagement.
         </p>
 
         <GuideInlineCTA
           title="Faites poser le diagnostic avant d'engager un budget"
-          description="Décrivez votre situation en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Nous vous dirons franchement si votre site est en cause — ou s'il ne l'est pas."
+          description="Décrivez votre situation en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Nous vous dirons franchement si votre site est en cause — ou s'il ne l'est pas."
         />
 
         <InfoBox variant="emerald" title="À retenir : les 7 points de ce guide">
@@ -850,9 +833,9 @@ Base 2 %, détecter +50 % relatif  →  3 077 par version   (6 154 au total)
           notre connaissance, de mesure française publique et récente du taux
           de refus des bandeaux de consentement ni du taux d&apos;utilisation
           des bloqueurs : nous ne publions donc aucun pourcentage sur ces deux
-          points. Les chiffres du fil rouge portent sur une seule entreprise
-          et deux trimestres — ils illustrent une méthode et ne permettent
-          aucune généralisation. Ce guide est une information générale et ne
+          points. Les chiffres du fil rouge sont des hypothèses du scénario
+          fictif composite — ni données client ni résultat observé. Ils
+          illustrent une méthode et ne permettent aucune généralisation. Ce guide est une information générale et ne
           constitue pas un conseil juridique.
         </p>
       </GuideLayout>

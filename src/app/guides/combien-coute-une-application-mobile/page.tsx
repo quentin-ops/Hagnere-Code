@@ -33,16 +33,11 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -59,7 +54,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4800,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -116,22 +110,22 @@ const faqItems = [
   {
     question: "Quel budget prévoir pour créer une application mobile ?",
     answer:
-      "Raisonnez en coût total, pas en coût de développement : au budget de construction, ajoutez les comptes stores (99 $/an Apple, 25 $ Google), l'infrastructure backend (0 à 200 €/mois en phase de démarrage), la maintenance (15 à 20 % du coût initial par an, rendue obligatoire par les exigences des stores) et, si l'app vend en ligne, les commissions Apple/Google de 15 à 30 %. Pour un MVP à 20 000 €, prévoyez environ 30 000 à 36 000 € sur 3 ans.",
+      "Raisonnez en coût total : construction, comptes stores, infrastructure mesurée à l'usage, maintenance, support, observabilité et évolutions. Les commissions dépendent du type de bien numérique, du pays, du programme et du mode de paiement ; elles ne s'appliquent pas uniformément à toute vente réalisée depuis une app. Les 15 à 20 % de maintenance utilisés dans ce guide sont une hypothèse de scénario, pas une règle sectorielle : remplacez chaque ligne par un prix contractuel.",
   },
   {
     question: "Est-ce payant de publier une application sur l'App Store et le Play Store ?",
     answer:
-      "Oui, mais peu : le compte Apple Developer coûte 99 $ par an et le compte Google Play 25 $ une seule fois. Le vrai coût est ailleurs : Apple et Google prélèvent une commission de 15 à 30 % sur les ventes réalisées dans l'app (achats in-app, abonnements). Sous 1 million de dollars de revenus annuels, le Small Business Program d'Apple ramène la commission à 15 %.",
+      "Pour une diffusion publique, Apple affiche 99 $ par année d'adhésion et Google 25 $ à l'inscription au plan de diffusion complète, sous réserve des exemptions et options prévues par chaque programme. Des frais peuvent s'ajouter pour certains achats numériques ou abonnements ; il n'existe pas un taux unique applicable à toutes les apps. Vérifiez les grilles officielles dans le pays de distribution au moment du devis.",
   },
   {
     question: "Quelles commissions Apple et Google prélèvent-ils sur les revenus ?",
     answer:
-      "Apple : 30 % en standard, 15 % via le Small Business Program (moins de 1 M$ de produits nets annuels). Google : historiquement 15 % jusqu'à 1 M$ puis 30 %, avec une nouvelle grille annoncée en mars 2026 (10 % sur les abonnements, 15-20 % sur les achats in-app, plus 5 % de frais de facturation Google Play). En Europe, le DMA a ouvert les liens d'achat externes depuis juin 2025 — un vrai levier pour les apps à abonnement.",
+      "Il n'existe plus de réponse fiable en un seul pourcentage. Apple publie notamment un taux standard et plusieurs programmes réduits ; Google distingue pays, nouvelle ou ancienne installation, abonnement, type de transaction, programme et facturation. Les règles européennes et les liens externes ajoutent d'autres conditions. Relevez la grille officielle applicable à votre catégorie, votre territoire et votre date, puis simulez plusieurs scénarios.",
   },
   {
     question: "Combien coûte la maintenance d'une application mobile ?",
     answer:
-      "Le standard sectoriel est de 15 à 20 % du coût de développement initial par an — et ce n'est pas optionnel : depuis avril 2025, Apple exige une compilation avec le SDK iOS 18 minimum, et Google impose l'API Android 34/35 sous peine d'invisibilité sur le Play Store. Le Play Store a d'ailleurs perdu 47 % de ses apps entre 2024 et 2025, principalement des applications non maintenues.",
+      "Ce guide utilise 15 à 20 % du coût initial par an comme hypothèse de planification, pas comme standard. Le contrat réel dépend des dépendances, appareils, incidents, backend, niveau de service et rythme produit. Les stores rendent néanmoins les mises à niveau nécessaires : depuis le 28 avril 2026, Apple exige Xcode 26 et un SDK iOS 26 pour les nouvelles soumissions ; Google demande actuellement une API cible récente et passera, le 31 août 2026, à l'API 36 pour la plupart des nouvelles apps et mises à jour. Vérifiez toujours les pages officielles au moment de publier.",
   },
   {
     question: "Combien coûtent l'hébergement et le serveur d'une application ?",
@@ -141,22 +135,22 @@ const faqItems = [
   {
     question: "Combien de temps faut-il pour développer une application mobile ?",
     answer:
-      "Avec une équipe expérimentée en React Native : 6 à 12 semaines pour un MVP (chez Hagnéré Code : sur les stores dès 12 semaines, délais contractuels), 14 à 20 semaines pour une application complète, 5 à 9 mois pour une marketplace. Ajoutez 1 à 2 semaines pour la validation des stores, et 2 à 10 jours par intégration tierce (paiement, signature, IA).",
+      "Il n'existe pas de délai standard : périmètre, design, backend, hors-ligne, intégrations, données, sécurité, appareils et comptes stores changent le calendrier. Les fourchettes de marché de ce guide servent à comparer les hypothèses, pas à promettre une date. Chez Hagnéré Code, le planning est confirmé seulement après cadrage dans le devis.",
   },
   {
     question: "React Native ou Flutter : lequel choisir en 2026 ?",
     answer:
-      "Les deux frameworks cross-platform sont matures et réduisent le coût de 30 à 40 % par rapport à deux développements natifs séparés. React Native a pour lui l'écosystème JavaScript/React (le plus grand vivier de développeurs, un code proche de votre site web) et des références majeures : Shopify a migré 100 % de ses apps dessus en 2025, Discord partage 98 % de son code entre iOS et Android. Flutter est légèrement devant en parts de marché mais impose Dart, un langage plus rare.",
+      "Les deux frameworks permettent de partager une partie du code entre iPhone et Android, mais aucun pourcentage d'économie universel ne peut être promis : modules natifs, appareils, accessibilité, tests et compétences de l'équipe changent le résultat. React Native s'appuie sur JavaScript/React ; Flutter sur Dart et son propre moteur de rendu. Comparez surtout le besoin, les bibliothèques critiques, le vivier réellement disponible et le plan de reprise.",
   },
   {
     question: "Une PWA est-elle moins chère qu'une application native ?",
     answer:
-      "Oui : une PWA (application web installable) coûte 40 à 60 % de moins et sort 50 à 70 % plus vite, sans review des stores. Elle suffit pour une majorité de cas d'usage business : portail client, réservation, contenu, outils internes. L'app installée depuis les stores reste nécessaire pour les notifications push fiables sur iOS, l'accès matériel poussé (Bluetooth, NFC), la performance graphique et la présence sur l'App Store comme canal d'acquisition.",
+      "Elle peut coûter moins cher lorsqu'un même site installable couvre le besoin, mais aucune remise ni accélération universelle ne se déduit de la technologie. Comparez hors-ligne, notifications, accès matériel, distribution, authentification, performances, règles des stores et appareils supportés. Une PWA convient à certains portails ou outils ; une app distribuée reste pertinente lorsque les fonctions natives ou la présence en store sont indispensables.",
   },
   {
     question: "Peut-on créer une application gratuitement avec l'IA ou le no-code ?",
     answer:
-      "On peut prototyper, pas industrialiser. Les outils no-code (0 à 100 €/mois) et les générateurs IA produisent des apps de démonstration utiles pour valider une idée, mais montrent leurs limites dès qu'il faut des intégrations métier, de la performance, la conformité RGPD/CNIL et une publication pérenne sur les stores. L'IA a en revanche un vrai impact via les équipes qui l'industrialisent : c'est ce qui nous permet de mettre un MVP sur les stores dès 12 semaines, au forfait fixe.",
+      "Ces outils peuvent aider à prototyper. Pour une mise en production, il faut encore cadrer les intégrations, la sécurité, les données, les droits, les tests, la maintenance et les exigences des stores. L'usage d'assistants IA ne justifie donc ni un délai universel, ni une remise automatique ; le périmètre et le planning restent écrits au devis.",
   },
   {
     question: "Est-ce rentable de créer une application mobile ?",
@@ -166,34 +160,23 @@ const faqItems = [
   {
     question: "Comment obtenir un chiffrage précis pour mon application ?",
     answer:
-      "Décrivez votre projet via notre parcours guidé (3 minutes) : notre équipe vous répond personnellement sous 24 h ouvrées, gratuitement et sans engagement. Pour un chiffrage ferme, le Discovery Sprint (1 500 €, 2 jours) livre le périmètre écrit, un prototype cliquable et un devis au forfait fixe — déduit à 100 % si le projet se lance.",
+      "Décrivez votre projet via notre parcours guidé (3 minutes) : notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti, gratuitement et sans engagement. Pour un chiffrage ferme, le Discovery Sprint (1 500 €, 2 jours) livre le périmètre écrit, un prototype cliquable et un devis au forfait fixe — déduit à 100 % si le projet se lance.",
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
           { label: "Combien coûte une application mobile ?" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Les prix réels du marché français par type d'app et de prestataire, les commissions des stores que personne ne mentionne, la maintenance obligatoire, le coût total sur 3 ans — et la méthode pour comparer des devis à périmètre égal."
+        heroDescription="Les prix relevés sur le marché français par type d'app et de prestataire, les commissions des stores, la maintenance, le coût total sur 3 ans — et la méthode pour comparer des devis à périmètre égal."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -242,7 +225,7 @@ export default function Page() {
             { id: "technologie", label: "4. Natif, React Native ou PWA : la techno qui change la facture" },
             { id: "postes-de-cout", label: "5. Ce qui fait varier le prix : les postes d'un devis" },
             { id: "devis-decortique", label: "6. Un devis de MVP décortiqué ligne par ligne" },
-            { id: "frais-stores", label: "7. Les frais des stores que personne ne vous annonce" },
+            { id: "frais-stores", label: "7. Les frais des stores à intégrer au budget" },
             { id: "couts-recurrents", label: "8. Backend, push, monitoring : les coûts récurrents" },
             { id: "maintenance", label: "9. La maintenance : obligatoire, pas optionnelle" },
             { id: "cout-total-3-ans", label: "10. Le vrai comparatif : coût total sur 3 ans" },
@@ -345,10 +328,10 @@ export default function Page() {
             <strong>Le MVP (5 000 – 15 000 €)</strong> — une fonctionnalité
             cœur, une création de compte. Son rôle : valider l&apos;usage
             réel avant d&apos;investir.
-            C&apos;est le format que nous recommandons : notre offre de{" "}
+            C&apos;est un format à évaluer : notre offre de{" "}
             <Link href="/services/application-mobile">création
-            d&apos;application mobile</Link> met un MVP sur les stores dès
-            12 semaines, à forfait fixe.
+            d&apos;application mobile</Link> fixe périmètre, budget et planning
+            après cadrage, dans le devis.
           </li>
           <li>
             <strong>L&apos;application métier (15 000 – 45 000 €)</strong> —
@@ -602,7 +585,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre projet d'app, cadré en 3 minutes"
-          description="Décrivez votre application en quelques étapes guidées — notre équipe vous répond personnellement sous 24 h ouvrées avec une réponse argumentée."
+          description="Décrivez votre application en quelques étapes guidées — notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti, avec une réponse argumentée."
         />
 
         <h2 id="devis-decortique">6. Un devis de MVP décortiqué ligne par ligne</h2>
@@ -655,7 +638,7 @@ Exemple sur ce MVP à 25 000 € :
           accompagnée, corrections de la review, garantie.
         </p>
 
-        <h2 id="frais-stores">7. Les frais des stores que personne ne vous annonce</h2>
+        <h2 id="frais-stores">7. Les frais des stores à intégrer au budget</h2>
         <p>
           Votre application sera distribuée par deux boutiques en
           quasi-monopole : l&apos;App Store et le Play Store. Comme un
@@ -735,39 +718,40 @@ Exemple sur ce MVP à 25 000 € :
           d&apos;infrastructure</strong> la première année.
         </p>
 
-        <h2 id="maintenance">9. La maintenance : obligatoire, pas optionnelle</h2>
+        <h2 id="maintenance">9. La maintenance : un budget à planifier</h2>
         <p>
-          Le standard sectoriel est constant : <strong>15 à 20 % du coût de
-          développement initial par an</strong>. Mais contrairement à un
-          site web, cette maintenance n&apos;est pas un choix :
+          Pour ses scénarios, ce guide provisionne <strong>15 à 20 % du coût de
+          développement initial par an</strong>. Ce n&apos;est ni une moyenne
+          représentative ni un tarif imposé : remplacez-la par le périmètre et
+          le prix du contrat réel. Des mises à niveau restent nécessaires pour
+          soumettre des versions compatibles :
         </p>
         <ul>
           <li>
-            Depuis avril 2025, Apple exige que toute mise à jour utilise la
-            dernière version de ses outils techniques (pour les initiés :
-            Xcode 16 / SDK iOS 18 minimum) : une app jamais remise à niveau
-            ne peut plus être corrigée.
+            Depuis le 28 avril 2026, Apple demande Xcode 26 et un SDK iOS 26
+            pour les nouvelles soumissions. Cette exigence évolue : consultez
+            la page officielle « Upcoming Requirements » avant chaque release.
           </li>
           <li>
-            Depuis août 2025, Google impose de viser les versions récentes
-            d&apos;Android (API 34/35) : une app non conforme devient
-            invisible sur le Play Store pour les téléphones récents.
+            Google impose une API cible récente. À compter du 31 août 2026,
+            la plupart des nouvelles apps et mises à jour devront cibler
+            Android 16 (API 36) ; les règles, exceptions et extensions sont
+            publiées dans l&apos;aide Play Console.
           </li>
           <li>
-            Résultat mesuré : le Play Store est passé de 3,4 à 1,8 million
-            d&apos;apps entre début 2024 et avril 2025
-            (<strong>-47 %</strong>) — une purge des applications
-            abandonnées.
+            Pour une app existante trop ancienne, les conséquences diffèrent
+            de celles d&apos;une nouvelle soumission : restriction auprès de
+            nouveaux utilisateurs, impossibilité de soumettre une mise à jour
+            ou incompatibilités. Vérifiez le cas exact au lieu de déduire une
+            disparition automatique.
           </li>
         </ul>
         <InfoBox variant="blue" title="En clair : le contrôle technique de votre app">
-          Pensez au contrôle technique automobile : ce n&apos;est pas vous
-          qui décidez, c&apos;est la réglementation. Apple et Google jouent
-          ce rôle : chaque année, ils relèvent leurs exigences ; une app qui
-          ne suit pas perd le droit d&apos;être mise à jour, devient
-          invisible, puis disparaît des stores. Les 15 à 20 % de maintenance
-          annuelle ne sont pas un confort : c&apos;est le ticket pour rester
-          sur la route.
+          Apple et Google font évoluer leurs conditions de soumission et de
+          disponibilité. Le budget doit couvrir la veille, les mises à niveau,
+          les tests sur appareils et la publication. La règle du store justifie
+          ce travail, mais ne fixe ni un pourcentage annuel ni le contenu de
+          votre contrat de maintenance.
         </InfoBox>
         <p>
           Budgétez-la dès le devis initial — et vérifiez ce qu&apos;elle
@@ -855,15 +839,15 @@ APP MÉTIER À 40 000 € — coût réel sur 3 ans
         <h2 id="delais">12. Combien de temps pour développer une app ?</h2>
         <p>
           Dernière variable avant la rentabilité : le temps, qui dépend des
-          mêmes facteurs que le prix. Les repères du marché, comparés à nos
-          engagements contractuels :
+          mêmes facteurs que le prix. Les repères du marché doivent être
+          confrontés aux hypothèses écrites dans chaque devis :
         </p>
         <GuideTable
-          headers={["Projet", "Délai marché", "Délai Hagnéré Code"]}
+          headers={["Projet", "Repère de marché", "Engagement Hagnéré Code"]}
           rows={[
-            ["MVP", "6 – 12 semaines (React Native)", "Sur les stores dès 12 semaines"],
-            ["App complète", "4 – 8 mois", "14 – 20 semaines"],
-            ["Marketplace / IoT / IA", "8 – 14 mois", "5 – 9 mois"],
+            ["MVP", "À comparer selon le périmètre", "Planning confirmé au devis"],
+            ["App complète", "À comparer selon les intégrations", "Planning confirmé au devis"],
+            ["Marketplace / IoT / IA", "À comparer selon risques et recette", "Planning confirmé au devis"],
           ]}
         />
         <p>
@@ -1140,7 +1124,7 @@ APP MÉTIER À 40 000 € — coût réel sur 3 ans
           Vous voulez un chiffre pour <em>votre</em> application, pas une
           fourchette générique ?{" "}
           <Link href="/demarrer-un-projet">Décrivez-la en 3 minutes</Link> —
-          notre équipe vous répond personnellement sous 24 h ouvrées,
+          notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti,
           gratuitement et sans engagement.
         </p>
 

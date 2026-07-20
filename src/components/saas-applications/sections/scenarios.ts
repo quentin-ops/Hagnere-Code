@@ -13,18 +13,18 @@ export const scenariosHtml = `
       </div>
     </div>
 
-    <div class="sa-scen-tabs reveal" role="tablist">
-      <button type="button" class="sa-scen-tab" data-scenario="mvp" role="tab" aria-selected="true">
+    <div class="sa-scen-tabs reveal" role="tablist" aria-label="Choisir un scénario">
+      <button type="button" class="sa-scen-tab" data-scenario="mvp" role="tab" aria-selected="true" id="sa-scenario-tab-mvp" aria-controls="sa-scenario-panel-mvp" tabindex="0">
         <span class="sa-scen-tab-k">SCÉNARIO 01</span>
         <span class="sa-scen-tab-t">MVP court</span>
         <span class="sa-scen-tab-d">Périmètre ciblé</span>
       </button>
-      <button type="button" class="sa-scen-tab" data-scenario="scale" role="tab" aria-selected="false">
+      <button type="button" class="sa-scen-tab" data-scenario="scale" role="tab" aria-selected="false" id="sa-scenario-tab-scale" aria-controls="sa-scenario-panel-scale" tabindex="-1">
         <span class="sa-scen-tab-k">SCÉNARIO 02</span>
         <span class="sa-scen-tab-t">MVP + Scale</span>
         <span class="sa-scen-tab-d">Lots successifs</span>
       </button>
-      <button type="button" class="sa-scen-tab" data-scenario="rebuild" role="tab" aria-selected="false">
+      <button type="button" class="sa-scen-tab" data-scenario="rebuild" role="tab" aria-selected="false" id="sa-scenario-tab-rebuild" aria-controls="sa-scenario-panel-rebuild" tabindex="-1">
         <span class="sa-scen-tab-k">SCÉNARIO 03</span>
         <span class="sa-scen-tab-t">Rebuild legacy</span>
         <span class="sa-scen-tab-d">Sur devis</span>
@@ -32,7 +32,7 @@ export const scenariosHtml = `
     </div>
 
     <!-- PANEL MVP -->
-    <div class="sa-scen-panel" data-panel="mvp" role="tabpanel" aria-hidden="false">
+    <div class="sa-scen-panel" data-panel="mvp" role="tabpanel" tabindex="0" aria-hidden="false" id="sa-scenario-panel-mvp" aria-labelledby="sa-scenario-tab-mvp">
       <div class="sa-scen-cols">
         <div class="sa-scen-col-main">
           <div class="sa-scen-kind">POUR QUI</div>
@@ -43,17 +43,17 @@ export const scenariosHtml = `
             Le but : un SaaS <b>vendable et exploitable</b>, limité aux parcours qui prouvent l'usage.
           </p>
           <div class="sa-scen-deliv">
-            <h4>Ce qu'on livre</h4>
+            <h3>Ce qu'on livre</h3>
             <ul>
-              <li>5 à 15 écrans web + back-office admin</li>
-              <li>Auth complète, Stripe billing, multi-tenant</li>
-              <li>1 à 2 agents IA ciblés (extraction, RAG)</li>
+              <li>Un parcours critique web complet et ses opérations nécessaires</li>
+              <li>Accès, isolation et administration adaptés aux données</li>
+              <li>Paiement, intégrations ou IA seulement si le test ou le contrat les exige</li>
               <li>Mesures RGPD et hébergement documentés selon les données</li>
               <li>Handover filmé + repo Git chez vous</li>
             </ul>
           </div>
         </div>
-        <aside class="sa-scen-aside">
+        <div class="sa-scen-aside">
           <div class="sa-scen-meta">
             <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
             <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">Rôles et disponibilité définis au devis</span></div>
@@ -65,13 +65,13 @@ export const scenariosHtml = `
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="sa-scen-ref">Preuve vérifiable : <a href="https://lmnp.ai" target="_blank" rel="noopener">LMNP.AI</a>, produit du groupe conçu, développé et exploité par notre équipe.</div>
-        </aside>
+          <div class="sa-scen-ref">Élément vérifiable : <a href="https://lmnp.ai" target="_blank" rel="noopener">LMNP.AI</a> présente publiquement une offre et des fonctions. Ce lien ne prouve ni conception, ni exploitation, ni résultat.</div>
+        </div>
       </div>
     </div>
 
     <!-- PANEL SCALE -->
-    <div class="sa-scen-panel" data-panel="scale" role="tabpanel" aria-hidden="true" hidden>
+    <div class="sa-scen-panel" data-panel="scale" role="tabpanel" tabindex="0" aria-hidden="true" id="sa-scenario-panel-scale" aria-labelledby="sa-scenario-tab-scale" hidden>
       <div class="sa-scen-cols">
         <div class="sa-scen-col-main">
           <div class="sa-scen-kind">POUR QUI</div>
@@ -82,7 +82,7 @@ export const scenariosHtml = `
             Il faut <b>mesurer, consolider puis faire évoluer</b> sans casser ce qui fonctionne.
           </p>
           <div class="sa-scen-deliv">
-            <h4>Ce qu'on livre</h4>
+            <h3>Ce qu'on livre</h3>
             <ul>
               <li>Refonte des goulets d'étranglement (perf, queues, cache)</li>
               <li>Self-serve complet (onboarding, billing, gestion équipe)</li>
@@ -93,7 +93,7 @@ export const scenariosHtml = `
             </ul>
           </div>
         </div>
-        <aside class="sa-scen-aside">
+        <div class="sa-scen-aside">
           <div class="sa-scen-meta">
             <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
             <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">Équipe projet définie après audit</span></div>
@@ -106,12 +106,12 @@ export const scenariosHtml = `
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <div class="sa-scen-ref">Décision de départ : isoler les goulots mesurés avant d'ajouter une nouvelle architecture ou une application mobile.</div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL REBUILD -->
-    <div class="sa-scen-panel" data-panel="rebuild" role="tabpanel" aria-hidden="true" hidden>
+    <div class="sa-scen-panel" data-panel="rebuild" role="tabpanel" tabindex="0" aria-hidden="true" id="sa-scenario-panel-rebuild" aria-labelledby="sa-scenario-tab-rebuild" hidden>
       <div class="sa-scen-cols">
         <div class="sa-scen-col-main">
           <div class="sa-scen-kind">POUR QUI</div>
@@ -122,7 +122,7 @@ export const scenariosHtml = `
             on modernise — <b>sans tout casser et sans perdre vos utilisateurs</b>.
           </p>
           <div class="sa-scen-deliv">
-            <h4>Ce qu'on livre</h4>
+            <h3>Ce qu'on livre</h3>
             <ul>
               <li>Audit technique écrit (dette, sécurité, perf) avec priorisation</li>
               <li>Reprise du code ou réécriture partielle selon ROI</li>
@@ -133,7 +133,7 @@ export const scenariosHtml = `
             </ul>
           </div>
         </div>
-        <aside class="sa-scen-aside">
+        <div class="sa-scen-aside">
           <div class="sa-scen-meta">
             <div class="sa-scen-meta-row"><span class="k">Durée</span><span class="v">Sur devis</span></div>
             <div class="sa-scen-meta-row"><span class="k">Équipe</span><span class="v">Compétences dimensionnées après lecture du code</span></div>
@@ -146,7 +146,7 @@ export const scenariosHtml = `
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <div class="sa-scen-ref">Le rapport compare trois options : stabilisation, reprise progressive et réécriture ciblée. La recommandation dépend des preuves trouvées dans le code et les données.</div>
-        </aside>
+        </div>
       </div>
     </div>
   </div>

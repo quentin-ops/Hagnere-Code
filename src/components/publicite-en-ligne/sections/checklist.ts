@@ -30,7 +30,7 @@ export const checklistHtml = `
           </li>
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>
-            <div><b>Restructuration ou setup comptes</b> — audit MCC, nommage normalisé, hiérarchie campagnes, conversion primaire unique, exclusions, scripts anti-gaspillage.</div>
+            <div><b>Restructuration ou cadrage des comptes</b> — audit du compte administrateur, nomenclature, hiérarchie des campagnes, objectifs et actions de conversion documentés par campagne, exclusions et règles de surveillance.</div>
           </li>
           <li>
             <div class="ads-check-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></div>

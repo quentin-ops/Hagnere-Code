@@ -14,7 +14,9 @@ import {
  */
 export const MATH_CHALLENGE_MIN = 2;
 export const MATH_CHALLENGE_MAX = 9;
-export const MATH_CHALLENGE_TTL_MS = 2 * 60 * 60 * 1000;
+// Fenêtre courte : le token reste rejouable dans cette période, mais chaque
+// tentative est désormais comptée par le rate-limit persistant avant contrôle.
+export const MATH_CHALLENGE_TTL_MS = 15 * 60 * 1000;
 
 type SignedChallenge = {
   a: number;
@@ -55,9 +57,7 @@ function isTermInRange(n: unknown): n is number {
 }
 
 export function getMathChallengeSecret(): string | null {
-  const secret =
-    process.env.MATH_CHALLENGE_SECRET?.trim() ||
-    process.env.AUTH_SECRET?.trim();
+  const secret = process.env.MATH_CHALLENGE_SECRET?.trim();
   return secret && secret.length >= 32 ? secret : null;
 }
 

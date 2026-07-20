@@ -31,8 +31,8 @@ ${navHtml}
       <p class="shero-sub">
         Vous avez une idée de plateforme, un <a href="/guides/transformer-excel-en-application"><b>outil interne qui tourne sur Excel</b></a> depuis trop longtemps,
         ou un <b>besoin métier</b> qu'aucun logiciel du marché ne couvre vraiment. On construit la solution —
-        <b>web, mobile iOS/Android, back-office, IA native</b>. De la première maquette jusqu'au premier client payant,
-        <b>code, design, hébergement et support sous un seul toit</b>.
+        <b>web, mobile iOS/Android, back-office, IA native</b>. Le devis précise jusqu'où va la mission&nbsp;:
+        conception, code, tests, mise en ligne, hébergement et support selon le périmètre retenu.
       </p>
       <div class="shero-cta">
         <a href="#contact" class="btn btn-accent btn-lg">
@@ -133,8 +133,8 @@ ${navHtml}
         <h2>Un SaaS, ce n'est pas<br>juste une page web avec un login.</h2>
       </div>
       <div class="right">
-        On construit des plateformes métier qui tournent en production, avec utilisateurs, facturation,
-        permissions, emails transactionnels et tout ce qui fait qu'un logiciel existe vraiment.
+        Une plateforme métier demande plus qu'une interface. Accès, permissions, facturation,
+        emails et administration sont inclus uniquement lorsque le parcours et le devis les prévoient.
       </div>
     </div>
 
@@ -142,7 +142,7 @@ ${navHtml}
       <div class="uc reveal">
         <div class="uc-num">/ 01</div>
         <h3>Plateformes B2B</h3>
-        <p>Votre logiciel vendu en abonnement à d'autres entreprises. Multi-utilisateurs, plans tarifaires, facturation Stripe, onboarding guidé, gestion des droits.</p>
+        <p>Votre logiciel vendu à d'autres entreprises. Mode d'accès, isolation, droits, onboarding et facturation sont cadrés selon la vente et les données.</p>
         <div class="uc-tags">
           <span class="uc-tag">Multi-tenant</span>
           <span class="uc-tag">Stripe / GoCardless</span>
@@ -249,115 +249,115 @@ ${navHtml}
       <div class="eyebrow on-dark">— Ce qu'on sait faire</div>
       <h2 style="margin-top:14px">20 briques techniques.<br>Combinables à volonté.</h2>
       <p class="caps-sub">
-        Pas de magie : un bon SaaS assemble des briques déjà éprouvées sur les produits
-        que nous exploitons, puis les adapte à vos règles métier. Voici les blocs que nous
-        savons cadrer, intégrer, tester et documenter sans transformer votre projet en démonstrateur.
+        Pas de magie : un bon SaaS assemble des briques connues, puis les adapte à vos règles métier.
+        Voici les blocs que nous pouvons cadrer, intégrer, tester et documenter selon le devis,
+        sans transformer une page publique en preuve d'exploitation.
       </p>
     </div>
 
     <div class="caps-grid">
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21"/></svg></div>
-        <h4>Authentification &amp; SSO</h4>
+        <h3>Authentification &amp; SSO</h3>
         <p>Email/password, Google, Microsoft, SSO SAML entreprise, 2FA.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
-        <h4>Facturation abonnements</h4>
+        <h3>Facturation abonnements</h3>
         <p>Plans mensuels/annuels, essai gratuit, up/downgrade proraté, Stripe.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-        <h4>Permissions granulaires</h4>
+        <h3>Permissions granulaires</h3>
         <p>Équipes, rôles, droits par ressource, audit log.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div>
-        <h4>Emails transactionnels</h4>
+        <h3>Emails transactionnels</h3>
         <p>Postmark / Resend, templates versionnés, analytics d'ouverture.</p>
       </div>
 
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
-        <h4>Gestion documentaire</h4>
+        <h3>Gestion documentaire</h3>
         <p>Upload, versioning, stockage S3, prévisualisation, signature.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-        <h4>Agents IA</h4>
+        <h3>Agents IA</h3>
         <p>Extraction structurée, classification, résumés, RAG avec citations.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <h4>Messagerie interne</h4>
+        <h3>Messagerie interne</h3>
         <p>Chat temps réel, commentaires contextuels, notifications push.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
-        <h4>Dashboards &amp; reporting</h4>
+        <h3>Dashboards &amp; reporting</h3>
         <p>KPI temps réel, exports CSV/Excel, rapports PDF automatiques.</p>
       </div>
 
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg></div>
-        <h4>API publique</h4>
+        <h3>API publique</h3>
         <p>REST, OpenAPI, clés d'API, rate-limiting, webhooks.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6 1.65 1.65 0 0010 3.09V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82v0a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div>
-        <h4>Intégrations tierces</h4>
+        <h3>Intégrations tierces</h3>
         <p>Pennylane, Axonaut, HubSpot, Pipedrive, Slack, Teams, Zapier.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h4>Sécurité &amp; RGPD</h4>
+        <h3>Sécurité &amp; RGPD</h3>
         <p>Chiffrement at-rest, RGPD by-design, registre traitements, DPA.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <h4>Tâches planifiées</h4>
+        <h3>Tâches planifiées</h3>
         <p>Cron, rappels email, génération de rapports périodiques.</p>
       </div>
 
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
-        <h4>Recherche avancée</h4>
+        <h3>Recherche avancée</h3>
         <p>Full-text Meilisearch, filtres facettés, pertinence tunée.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-6 0v4M5 9h14l-1 12H6z"/></svg></div>
-        <h4>Multi-boutiques</h4>
+        <h3>Multi-boutiques</h3>
         <p>White-label, sous-domaines, thèmes par client, branding dynamique.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <h4>Back-office admin</h4>
+        <h3>Back-office admin</h3>
         <p>Sur mesure en React · impersonation, support utilisateur, stats de santé.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 010-4h12v4M4 6v12a2 2 0 002 2h14v-4"/><circle cx="16" cy="14" r="2"/></svg></div>
-        <h4>Paiements &amp; abonnements</h4>
+        <h3>Paiements &amp; abonnements</h3>
         <p>Stripe, GoCardless, CB + SEPA, gestion des relances automatique.</p>
       </div>
 
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
-        <h4>Apps mobiles iOS &amp; Android</h4>
+        <h3>Apps mobiles iOS &amp; Android</h3>
         <p>React Native / Expo, push, caméra, offline-first, publication App Store &amp; Play Store.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/><circle cx="12" cy="12" r="3"/></svg></div>
-        <h4>Front-ends React / Next</h4>
+        <h3>Front-ends React / Next</h3>
         <p>Interfaces temps-réel, éditeurs, canvases, dashboards interactifs. Déployés sur Vercel.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
-        <h4>Agents IA autonomes</h4>
+        <h3>Agents IA autonomes</h3>
         <p>Claude agents via MCP, tool-calling typé, human-in-the-loop, exécution long-running.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H4zM2 20h20"/><path d="M9 8l3 3 3-3"/></svg></div>
-        <h4>White-label &amp; multi-tenants</h4>
+        <h3>White-label &amp; multi-tenants</h3>
         <p>Un code, N clients finaux, chacun avec son domaine, ses couleurs, ses utilisateurs.</p>
       </div>
     </div>
@@ -373,8 +373,8 @@ ${navHtml}
         <h2>De l'idée au premier<br>utilisateur en 5 étapes.</h2>
       </div>
       <div class="right">
-        On ne disparaît pas trois mois pour revenir avec un gros livrable. Vous voyez le produit
-        grandir chaque semaine, avec un livrable démontrable à chaque sprint.
+        Le devis fixe les étapes, les jalons de démonstration, les personnes qui valident
+        et le calendrier. Les durées varient selon le périmètre, les intégrations et les retours.
       </div>
     </div>
 
@@ -382,35 +382,35 @@ ${navHtml}
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 01</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
-        <h4>Cadrage</h4>
+        <h3>Cadrage</h3>
         <p>Workshop de 2 jours avec les décideurs. On définit le périmètre exact du MVP, les user stories, les écrans clés.</p>
-        <div class="proc-dur">1 SEMAINE</div>
+        <div class="proc-dur">JALON AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
-        <h4>Design</h4>
+        <h3>Design</h3>
         <p>Maquettes haute fidélité sur Figma, prototype cliquable et validation des parcours avec les décideurs et futurs utilisateurs identifiés.</p>
-        <div class="proc-dur">1 SEMAINE</div>
+        <div class="proc-dur">JALON AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
-        <h4>Développement</h4>
+        <h3>Développement</h3>
         <p>Le devis fixe la durée des sprints, les démonstrations, le dépôt Git et les accès accordés pendant la réalisation.</p>
-        <div class="proc-dur">3–6 SEMAINES</div>
+        <div class="proc-dur">PLANNING AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
-        <h4>QA &amp; conformité</h4>
-        <p>Tests automatisés, audit sécurité OWASP, revue RGPD, mise en conformité CGV, DPA, registre des traitements.</p>
-        <div class="proc-dur">3–5 JOURS</div>
+        <h3>QA &amp; conformité</h3>
+        <p>Tests automatisés, revue de sécurité applicative et contrôle des flux. Les éléments techniques utiles aux DPA et registres sont préparés pour validation par le client, son DPO ou son conseil ; les CGV ne relèvent pas de notre validation juridique.</p>
+        <div class="proc-dur">RECETTE AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
-        <h4>Mise en ligne</h4>
+        <h3>Mise en ligne</h3>
         <p>Déploiement sur notre infra ou la vôtre. Formation de vos équipes. Transfert du code. Support mensuel optionnel.</p>
         <div class="proc-dur">CONTINU</div>
       </div>
@@ -517,8 +517,8 @@ ${navHtml}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Produits du groupe Hagnéré</div>
-        <h2>La preuve par des produits<br>que nous exploitons nous-mêmes.</h2>
+        <div class="eyebrow">— Pages produit publiques</div>
+        <h2>Des fonctions à consulter,<br>sans preuve d'exploitation implicite.</h2>
       </div>
       <div class="right">
         <a href="/realisations" class="btn btn-ghost">Toutes les réalisations →</a>
@@ -548,9 +548,9 @@ ${navHtml}
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>SaaS B2C</span><span class="tag-stack">IA native · Stripe</span><span>— en production</span></div>
+          <div class="scase-meta"><span>Comptabilité LMNP</span><span class="tag-stack">Fonctions présentées</span><span>— page publique</span></div>
           <h3>LMNP.AI</h3>
-          <p>Comptabilité fiscale automatisée pour loueurs meublés. Extraction de factures et génération de liasse 2031 par IA.</p>
+          <p>La page présente une offre de comptabilité pour loueurs meublés et ses fonctions visibles. Le lien ne prouve ni exploitation, ni exactitude, ni résultat.</p>
           <div class="scase-metric">
             <div class="scm"><div class="n">IA</div><div class="l">Lecture de pièces et contrôles</div></div>
             <div class="scm"><div class="n">2031</div><div class="l">Production de la liasse fiscale</div></div>
@@ -586,9 +586,9 @@ ${navHtml}
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>SaaS fiscal</span><span class="tag-stack">Moteurs IR · IS</span><span>— en production</span></div>
+          <div class="scase-meta"><span>Comptabilité SCI</span><span class="tag-stack">IR · IS présentés</span><span>— page publique</span></div>
           <h3>SCI-AI.app</h3>
-          <p>Comptabilité et déclarations fiscales des SCI, avec deux parcours distincts selon le régime à l'IR ou à l'IS.</p>
+          <p>La page présente une offre de comptabilité pour SCI et les régimes couverts. Le lien ne prouve ni moteur interne, ni exploitation, ni résultat.</p>
           <div class="scase-metric">
             <div class="scm"><div class="n">IR</div><div class="l">Parcours fiscal dédié</div></div>
             <div class="scm"><div class="n">IS</div><div class="l">Comptabilité en partie double</div></div>
@@ -605,29 +605,29 @@ ${navHtml}
     <div class="section-head reveal" style="margin-bottom:0">
       <div class="left">
         <div class="eyebrow">— Forfaits</div>
-        <h2>Trois formats, un prix fixe.<br>Jamais de surprise.</h2>
+        <h2>Trois formats,<br>des budgets de cadrage.</h2>
       </div>
       <div class="right">
-        On vend au forfait, pas au temps passé. Vous savez exactement ce que vous payez
-        et ce que vous recevez avant de signer.
+        Les fourchettes sont indicatives. Le devis fixe le périmètre, le prix,
+        les livrables, les coûts tiers et le planning avant engagement.
       </div>
     </div>
 
     <div class="price-grid">
       <div class="plan reveal">
         <div class="plan-tag">MVP COURT</div>
-        <h4>Essentiel</h4>
-        <div class="plan-sub">Un SaaS fonctionnel avec les 3–5 features qui comptent, prêt à montrer à des premiers clients.</div>
+        <h3>Essentiel</h3>
+        <div class="plan-sub">Un parcours critique complet, exploitable et mesurable avec de premiers clients.</div>
         <div class="plan-price">
           <span class="amount">15–30 k€</span>
           <span class="per">forfait HT</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>3–5 écrans clés + back-office</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Auth, facturation Stripe, emails</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 6 mois inclus</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison en 3–4 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Parcours client et exploitation nécessaires</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Accès, isolation, paiement et emails selon le besoin</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement et coûts tiers précisés au devis</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning confirmé après cadrage</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
       </div>
@@ -635,28 +635,27 @@ ${navHtml}
       <div class="plan featured reveal reveal-d-1">
         <div class="plan-badge">PÉRIMÈTRE ÉTENDU</div>
         <div class="plan-tag">MVP COMPLET</div>
-        <h4>Standard</h4>
-        <div class="plan-sub">Un SaaS prêt à monter en charge : multi-utilisateurs, permissions, dashboards, intégrations tierces. App mobile en option.</div>
+        <h3>Standard</h3>
+        <div class="plan-sub">Un parcours étendu, exploitable par plusieurs rôles, dont le périmètre et les preuves de charge sont définis au devis.</div>
         <div class="plan-price">
           <span class="amount">30–60 k€</span>
           <span class="per">forfait HT</span>
         </div>
         <div class="plan-hr"></div>
         <ul class="plan-features">
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>10–15 écrans web + back-office riche</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design system Figma complet</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>API publique + webhooks</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1–2 agents IA (extraction, RAG)</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Parcours étendu et opérations nécessaires</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design et administration adaptés aux rôles</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>API, automatisations ou IA si le contrat l'exige</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Mesures RGPD cadrées et documentées</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>App mobile iOS/Android en option (+10–20 k€)</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison en 5–6 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning et recette définis au devis</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
       </div>
 
       <div class="plan reveal reveal-d-2">
         <div class="plan-tag">CO-BUILD</div>
-        <h4>Partenariat</h4>
+        <h3>Partenariat</h3>
         <div class="plan-sub">On construit avec vous dans la durée : feuille de route produit, lots successifs, exploitation et support.</div>
         <div class="plan-price">
           <span class="amount">Sur-mesure</span>
@@ -666,7 +665,7 @@ ${navHtml}
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intervenants et rôles précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Product + design + dev + growth</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO + ads + contenus inclus</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO, publicité et contenus selon feuille de route et devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intéressement possible (equity)</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parlons-en</a></div>
@@ -709,7 +708,7 @@ ${navHtml}
           </div>
           <div class="faq-a">
             Un format d'entrée <b>peu engageant</b> pour valider qu'on est la bonne équipe. <b>2 jours</b>,
-            <b>1 500 € HT</b>. On challenge votre besoin, on défriche les 3 à 5 écrans clés,
+            <b>1 500 € HT</b>. On challenge votre besoin, on défriche le parcours critique et ses écrans nécessaires,
             on sort un <b>prototype Figma cliquable</b> et un <b>cadrage technique chiffré</b>. Si on part
             ensemble derrière, les 1 500 € sont <b>déduits du forfait final</b>. Si on ne part pas, vous repartez avec
             un livrable utilisable par une autre équipe.
@@ -817,7 +816,7 @@ ${navHtml}
     <h2 style="margin-top:14px">Parlons de votre SaaS.<br><span class="accent">30 minutes suffisent.</span></h2>
     <p>Un échange de cadrage gratuit avec un membre de l'équipe. On vous dit honnêtement si le projet est assez défini, si notre approche convient et quelle information manque avant un devis.</p>
     <div class="scta-cta">
-      <a href="#" class="btn btn-accent btn-lg">
+      <a href="/rendez-vous" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -825,7 +824,7 @@ ${navHtml}
         Envoyer un email →
       </a>
     </div>
-    <div class="scta-meta">RÉPONSE SOUS 24H OUVRÉES · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
+    <div class="scta-meta">OBJECTIF : PROCHAIN JOUR OUVRÉ · DÉLAI NON GARANTI · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
   </div>
 </section>
 
@@ -842,7 +841,7 @@ ${navHtml}
       </div>
       <div class="foot-cols">
         <div class="foot-col">
-          <h5>SERVICES</h5>
+          <h3>SERVICES</h3>
           <a href="/services/saas-applications-metier">SaaS &amp; applications métier</a>
           <a href="/services/outils-internes-sur-mesure">Outils internes</a>
           <a href="/services/sites-vitrines">Sites vitrines</a>
@@ -850,28 +849,27 @@ ${navHtml}
           <a href="/services/publicite-en-ligne">Publicité</a>
         </div>
         <div class="foot-col">
-          <h5>STUDIO</h5>
+          <h3>STUDIO</h3>
           <a href="/methode">Méthode</a>
           <a href="/realisations">Réalisations</a>
           <a href="/equipe">Équipe</a>
           <a href="/tarifs">Tarifs</a>
         </div>
         <div class="foot-col">
-          <h5>CONTACT</h5>
+          <h3>CONTACT</h3>
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">YouTube</a>
+          <a href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
         <div class="foot-col">
-          <h5>LÉGAL</h5>
-          <a href="#">CGV</a>
-          <a href="#">Mentions légales</a>
-          <a href="#">Confidentialité</a>
+          <h3>LÉGAL</h3>
+          <a href="/legal/cgv">CGV</a>
+          <a href="/legal/mentions">Mentions légales</a>
+          <a href="/legal/confidentialite">Confidentialité</a>
         </div>
       </div>
     </div>
     <div class="foot-bot">
-      <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
+      <div>© 2026 HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000 Bassens</div>
       <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
     </div>
   </div>

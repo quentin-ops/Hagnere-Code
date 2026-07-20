@@ -19,7 +19,7 @@ export const integrationsHtml = `
           <div class="ec-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
           <div>
             <div class="ec-integ-kind">PAIEMENT CB &amp; WALLETS</div>
-            <h4>Encaisser simplement, 3DS2 compris.</h4>
+            <h3>Encaisser simplement, 3DS2 compris.</h3>
           </div>
         </div>
         <div class="ec-integ-chips">
@@ -42,7 +42,7 @@ export const integrationsHtml = `
           <div class="ec-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
           <div>
             <div class="ec-integ-kind">PAIEMENT FRACTIONNÉ BNPL</div>
-            <h4>Augmenter le panier moyen FR.</h4>
+            <h3>Augmenter le panier moyen FR.</h3>
           </div>
         </div>
         <div class="ec-integ-chips">
@@ -61,7 +61,7 @@ export const integrationsHtml = `
           <div class="ec-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="10" rx="1"/><path d="M7 17v2M17 17v2M1 13h22"/></svg></div>
           <div>
             <div class="ec-integ-kind">TRANSPORT &amp; LIVRAISON</div>
-            <h4>Étiquettes + tracking + retours.</h4>
+            <h3>Étiquettes + tracking + retours.</h3>
           </div>
         </div>
         <div class="ec-integ-chips">
@@ -85,7 +85,7 @@ export const integrationsHtml = `
           <div class="ec-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
           <div>
             <div class="ec-integ-kind">FACTURATION ÉLECTRONIQUE 2026</div>
-            <h4>Factur-X, B2G et Plateformes Agréées.</h4>
+            <h3>Factur-X, B2G et Plateformes Agréées.</h3>
           </div>
         </div>
         <div class="ec-integ-chips">
@@ -106,7 +106,7 @@ export const integrationsHtml = `
           <div class="ec-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
           <div>
             <div class="ec-integ-kind">ERP &amp; COMPTA FR</div>
-            <h4>Des flux comptables à définir et rapprocher.</h4>
+            <h3>Des flux comptables à définir et rapprocher.</h3>
           </div>
         </div>
         <div class="ec-integ-chips">
@@ -129,7 +129,7 @@ export const integrationsHtml = `
           <div class="ec-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
           <div>
             <div class="ec-integ-kind">MARKETPLACES</div>
-            <h4>Un catalogue, N canaux.</h4>
+            <h3>Un catalogue, N canaux.</h3>
           </div>
         </div>
         <div class="ec-integ-chips">
@@ -151,7 +151,7 @@ export const integrationsHtml = `
           <div class="ec-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div>
           <div>
             <div class="ec-integ-kind">EMAIL · CRM · MARKETING</div>
-            <h4>Retention et acquisition.</h4>
+            <h3>Retention et acquisition.</h3>
           </div>
         </div>
         <div class="ec-integ-chips">
@@ -172,7 +172,7 @@ export const integrationsHtml = `
           <div class="ec-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 9l-5 5-3-3-4 4"/></svg></div>
           <div>
             <div class="ec-integ-kind">TRACKING · AVIS · RECHERCHE</div>
-            <h4>Piloter ce qui convertit.</h4>
+            <h3>Piloter ce qui convertit.</h3>
           </div>
         </div>
         <div class="ec-integ-chips">

@@ -32,16 +32,11 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -58,7 +53,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4870,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -136,7 +130,7 @@ const faqItems = [
   {
     question: "Un site créé par IA est-il bien référencé sur Google ?",
     answer:
-      "Il peut l'être — la donnée la plus solide vient d'Ahrefs : sur 600 000 pages analysées, aucune corrélation entre la part de contenu IA et la position Google, et 74,2 % des nouvelles pages contiennent déjà de l'IA (mais seulement 2,5 % de « pur IA » sans édition humaine). Le référencement d'un site généré se joue ailleurs : contenu réellement utile et retravaillé, structure technique propre, vitesse, maillage, autorité. C'est précisément là que les générateurs plafonnent — pages standardisées, architecture imposée — et que le sur-mesure garde l'avantage : liberté totale d'architecture et stratégie de contenu illimitée. Ce site et ses guides en sont la démonstration en production.",
+      "Il peut l'être — la donnée la plus solide vient d'Ahrefs : sur 600 000 pages analysées, aucune corrélation entre la part de contenu IA et la position Google, et 74,2 % des nouvelles pages contiennent déjà de l'IA (mais seulement 2,5 % de « pur IA » sans édition humaine). Le référencement d'un site généré se joue ailleurs : contenu réellement utile et retravaillé, structure technique propre, vitesse, maillage, autorité. C'est précisément là que les générateurs plafonnent — pages standardisées, architecture imposée — et que le sur-mesure garde l'avantage : liberté totale d'architecture et stratégie de contenu illimitée. Ce site et ses guides constituent un exemple public à examiner ; ils ne garantissent aucun résultat de référencement.",
   },
   {
     question: "L'IA peut-elle remplacer un développeur web ?",
@@ -166,7 +160,7 @@ const faqItems = [
   {
     question: "Créer son site avec l'IA ou passer par une agence web ?",
     answer:
-      "Fausse alternative en 2026 : la bonne agence UTILISE l'IA — la question est qui pilote. Faites-le vous-même avec un outil IA si vous testez une idée, si le budget est sous 1 000 €, ou pour un side-project : c'est le cas résiduel légitime, et un générateur y est imbattable. Passez au sur-mesure assisté par IA dès que le site doit générer des clients, porter votre image et durer : le développement assisté par IA a fait baisser son coût (vitrine complète dès 6 900 € chez nous, forfait fixe), et vous obtenez ce qu'aucun outil autonome ne produit — design propre à votre marque, animations, référencement architecturé, code possédé, conformité. Notre Discovery Sprint (1 500 €, 2 jours, déduit à 100 % si le projet se lance) est fait pour trancher ce choix sur vos chiffres.",
+      "Le choix dépend du rôle du site, du budget, du besoin d'export et du niveau de risque. Un générateur peut convenir pour tester une idée ou publier une présence provisoire. Un développement accompagné devient pertinent lorsque l'architecture, l'identité, les intégrations, la sécurité, l'accessibilité ou la réversibilité comptent. L'usage de l'IA par un prestataire ne prouve ni une baisse de prix ni un résultat : demandez ses usages, ses contrôles, sa politique de données et les livrables contractuels. Chez Hagnéré Code, le périmètre vitrine d'entrée est affiché à 6 900 € et le Discovery Sprint à 1 500 € ; seul le devis engage.",
   },
   {
     question: "Quelle IA pour créer un site e-commerce ?",
@@ -175,30 +169,19 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
           { label: "Créer un site avec l'IA" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Les 3 familles d'outils IA passées au crible — générateurs no-code, vibe coding, assistants de développement — avec les prix vérifiés (renouvellements compris), les pièges documentés, la position officielle de Google… et le vrai bouleversement que les comparatifs ratent : l'IA a fait baisser le prix du sur-mesure."
+        heroDescription="Les 3 familles d'outils IA passées au crible — générateurs no-code, vibe coding, assistants de développement — avec leurs coûts, leurs limites, les questions de propriété et de sécurité, et la position officielle de Google."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -228,23 +211,23 @@ export default function Page() {
           l&apos;outil Durable le promet même « en 30 secondes ». La vraie question est
           ailleurs : <strong>que vaut ce site, à qui appartient-il, et
           que coûte-t-il vraiment sur 3 ans ?</strong> Ce guide est
-          écrit par une agence qui développe avec l&apos;IA tous les
-          jours — ce site inclus — et qui va vous montrer ce que les
-          comparatifs affiliés ne montrent jamais.
+          écrit par une agence qui propose du développement assisté par IA&nbsp;:
+          ce biais commercial est déclaré, et les affirmations doivent être
+          jugées sur leurs sources et leur périmètre.
         </p>
 
         <GuideToc
           items={[
             { id: "reponse-rapide", label: "1. La réponse en 30 secondes" },
-            { id: "de-quoi-parle-t-on", label: "2. Les 3 familles d'outils IA (que tout le monde confond)" },
+            { id: "de-quoi-parle-t-on", label: "2. Les 3 familles d'outils IA à distinguer" },
             { id: "generateurs-no-code", label: "3. Famille 1 : les générateurs no-code (Wix AI, Hostinger, Durable…)" },
             { id: "vibe-coding", label: "4. Famille 2 : le vibe coding (Lovable, Bolt, v0)" },
             { id: "assistants-pro", label: "5. Famille 3 : les assistants de code professionnels" },
             { id: "google-seo", label: "6. Ce que Google pense vraiment des sites générés par IA" },
             { id: "pieges", label: "7. Les 5 pièges que les comparatifs ne montrent pas" },
             { id: "cout-reel", label: "8. Le coût réel sur 3 ans, toutes familles confondues" },
-            { id: "bouleversement", label: "9. Le vrai bouleversement : l'IA a fait baisser le prix du sur-mesure" },
-            { id: "preuve", label: "10. La preuve : le site que vous êtes en train de lire" },
+            { id: "bouleversement", label: "9. Ce que les études de productivité permettent réellement de conclure" },
+            { id: "preuve", label: "10. Un exemple public : le site que vous lisez" },
             { id: "quand-outil-suffit", label: "11. Les cas où un outil IA suffit vraiment" },
             { id: "rgpd-propriete", label: "12. Propriété, RGPD, maintenance : les questions de dirigeant" },
             { id: "verdict-par-profil", label: "13. Le verdict par profil" },
@@ -266,11 +249,12 @@ export default function Page() {
           développeur. Les <strong>assistants de code</strong> (Claude
           Code, Copilot, Cursor, 10 à 100 $/mois) ne créent rien tout
           seuls : ils démultiplient un développeur — et c&apos;est eux
-          qui ont fait <strong>baisser le prix du sur-mesure
-          professionnel</strong> (site vitrine complet dès 6 900 € chez
-          nous, droits, dépôt et exclusions détaillés au devis). Google, lui, ne pénalise pas l&apos;IA : il
-          pénalise le contenu générique sans valeur — position
-          officielle décryptée section 6.
+          qui peuvent accélérer certaines tâches lorsqu&apos;un développeur
+          contrôle le résultat. Cela ne démontre pas une baisse générale des
+          prix. Notre périmètre vitrine d&apos;entrée est affiché à 6 900 € ;
+          droits, dépôt, exclusions et contrôles figurent au devis. Google
+          évalue surtout la qualité et applique ses règles antispam aux contenus
+          produits à grande échelle, quel que soit l&apos;outil — section 6.
         </p>
         <GuideTable
           headers={["Votre objectif", "La bonne famille d'outils", "Budget réaliste"]}
@@ -301,10 +285,10 @@ export default function Page() {
           </ul>
         </InfoBox>
 
-        <h2 id="de-quoi-parle-t-on">2. Les 3 familles d&apos;outils IA (que tout le monde confond)</h2>
+        <h2 id="de-quoi-parle-t-on">2. Les 3 familles d&apos;outils IA à distinguer</h2>
         <p>
-          Le vice caché de presque tous les comparatifs « IA pour créer
-          un site » : ils mélangent des outils qui n&apos;ont rien à
+          Un comparatif « IA pour créer un site » doit éviter de mélanger des
+          outils qui n&apos;ont rien à
           voir, comme un guide auto qui comparerait une trottinette en
           libre-service (utilisable tout de suite, jamais à vous), une
           voiture en kit (à vous, mais à faire assembler par
@@ -321,7 +305,8 @@ export default function Page() {
           code</strong> : ils n&apos;assemblent rien pour un débutant —
           ils font produire un développeur professionnel 2 fois plus
           vite sur les tâches standard. Fil rouge de ce guide :{" "}
-          <strong>Nadia, fondatrice d&apos;un cabinet de recrutement à
+          <strong>scénario fictif composite — ni client ni témoignage
+          réel — avec Nadia, fondatrice d&apos;un cabinet de recrutement à
           Annecy</strong>, 3 000 € de budget initial, qui veut un site
           qui lui amène des clients — nous la suivrons dans les trois
           familles. Spoiler honnête : chacune servira à quelque chose,
@@ -340,8 +325,9 @@ export default function Page() {
 
         <h2 id="generateurs-no-code">3. Famille 1 : les générateurs no-code (Wix AI, Hostinger, Durable…)</h2>
         <p>
-          La promesse est réelle : Nadia décrit son cabinet à Wix AI un
-          mardi soir, et à 23 h un site existe — textes générés,
+          La promesse commerciale existe. Dans le scénario, Nadia
+          décrirait son cabinet à Wix AI un mardi soir et pourrait obtenir
+          à 23 h un site — textes générés,
           images en place. Les prix aussi sont réels, à condition de
           lire les petites lignes que voici. <strong>Wix</strong> :
           gratuit pour démarrer, mais domaine personnalisé et
@@ -364,8 +350,8 @@ export default function Page() {
           acceptez l&apos;engagement long, Durable pour la mise en
           ligne la plus rapide d&apos;une simple vitrine, Framer si
           l&apos;esthétique compte plus que les fonctions. Ce que Nadia
-          obtient : un site en ligne, hébergé, correct. Ce
-          qu&apos;elle n&apos;obtient pas : un design qui la distingue
+          obtiendrait : un site en ligne, hébergé, correct. Ce
+          qu&apos;elle n&apos;obtiendrait pas : un design qui la distingue
           (les mêmes modèles servent des millions de sites), une
           stratégie de contenu qui la fait trouver sur Google, et
           surtout <strong>la propriété</strong> — Wix documente
@@ -389,7 +375,7 @@ export default function Page() {
 
         <h2 id="vibe-coding">4. Famille 2 : le vibe coding (Lovable, Bolt, v0)</h2>
         <p>
-          Deuxième essai de Nadia : Lovable. La différence saute aux
+          Deuxième hypothèse pour Nadia : Lovable. La différence sauterait aux
           yeux — l&apos;outil ne remplit pas un modèle,{" "}
           <strong>il écrit du vrai code React/Next.js</strong>, et sa
           page tarifs l&apos;affiche fièrement : « You own your
@@ -405,8 +391,9 @@ export default function Page() {
           100 $/mois. Repère rapide : Lovable pour prototyper une
           application complète avec base de données, v0 si le relais
           sera pris par un développeur Next.js, Bolt pour itérer vite
-          sur des variantes d&apos;interface. En quelques heures, Nadia a un prototype
-          interactif bluffant. Puis vient <strong>le mur</strong>,
+          sur des variantes d&apos;interface. En quelques heures, Nadia
+          pourrait obtenir un prototype interactif convaincant. Puis
+          viendrait <strong>le mur</strong>,
           documenté par les chiffres de 2025 : Veracode, entreprise
           spécialisée dans les tests de sécurité logicielle, a mesuré
           que <strong>45 % du code généré par IA contient une
@@ -424,27 +411,22 @@ export default function Page() {
 
         <h2 id="assistants-pro">5. Famille 3 : les assistants de code professionnels</h2>
         <p>
-          La troisième famille ne s&apos;adresse pas à Nadia — et
-          c&apos;est pourtant elle qui va changer son projet.{" "}
+          La troisième famille ne s&apos;adresserait pas à Nadia — et
+          c&apos;est pourtant elle qui pourrait changer son projet.{" "}
           <strong>Claude Code</strong> (inclus dès l&apos;abonnement
           Claude Pro à 20 $/mois), <strong>GitHub Copilot</strong>{" "}
           (dès 10 $/mois), <strong>Cursor</strong> (20 $/mois) : des
-          outils dont le prix est dérisoire comparé à ce qu&apos;ils
-          changent — un développeur professionnel outillé d&apos;IA
-          produit le code standard beaucoup plus vite, à qualité
-          contrôlée. Les études convergent : l&apos;expérience
-          contrôlée de GitHub mesure une tâche standard terminée{" "}
+          outils qui peuvent modifier la manière de travailler, avec un résultat
+          très dépendant de la tâche, du développeur, du dépôt et du protocole.
+          L&apos;expérience contrôlée de GitHub mesure une tâche standard terminée{" "}
           <strong>55 % plus vite</strong> (1 h 11 contre 2 h 41) ;
           McKinsey chiffre 35 à 45 % de gain sur la génération de
           code et 45 à 50 % sur la documentation ; le rapport DORA
-          2025 (Google Cloud) compte <strong>90 % des professionnels
-          du logiciel utilisant l&apos;IA</strong>, deux heures par
-          jour en médiane. Or un site vitrine ou e-commerce est
-          largement constitué de ce code « standard » où les gains
-          sont maximaux. La conséquence économique est mécanique :{" "}
-          <strong>le sur-mesure professionnel a baissé de prix</strong> —
-          nous y consacrons la section 9, c&apos;est le vrai titre de
-          ce guide.
+          2025 (Google Cloud) décrit une adoption large de l&apos;IA. Ces résultats
+          ne sont pas directement transposables au prix ou au délai d&apos;un site
+          complet : design, cadrage, contenus, intégrations, tests et sécurité
+          ne sont pas la tâche isolée mesurée. La section 9 pose précisément
+          cette limite.
         </p>
 
         <InfoBox variant="amber" title="L'honnêteté d'abord : ce que l'IA ne fait PAS gagner">
@@ -544,14 +526,13 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Envie de savoir ce que l'IA change pour VOTRE projet ?"
-          description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc — y compris quand un outil IA à 20 €/mois est la bonne réponse à votre stade. Et si le projet mérite du sur-mesure, le Discovery Sprint (1 500 €, 2 jours, déduit à 100 %) produit maquettes, cahier des charges et devis au forfait fixe."
+          description="Décrivez votre projet en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis franc — y compris quand un outil IA à 20 €/mois est la bonne réponse à votre stade. Et si le projet mérite du sur-mesure, le Discovery Sprint (1 500 €, 2 jours, déduit à 100 %) produit maquettes, cahier des charges et devis au forfait fixe."
           tags={["Réponse personnelle", "Objectifs de performance au devis", "Droits et dépôt inventoriés"]}
         />
 
         <h2 id="cout-reel">8. Le coût réel sur 3 ans, toutes familles confondues</h2>
         <p>
-          Le tableau qu&apos;aucun comparatif ne publie : ce que
-          coûtent réellement les trois familles sur 3 ans, prix de
+          Le tableau suivant compare ce que coûtent les trois familles sur 3 ans, prix de
           renouvellement compris — et ce que vous possédez à la fin.
         </p>
         <GuideTable
@@ -570,12 +551,11 @@ export default function Page() {
           (section 11). Mais pour un site dont le travail est de{" "}
           <strong>générer des clients</strong>, comparez ce qui est
           comparable : 1 100 à 1 700 € sur 3 ans pour un site
-          générique que vous ne possédez pas et qui plafonne, contre
-          6 900 € une fois pour un actif que vous possédez, différencié
-          et sans plafond. L&apos;écart n&apos;est plus celui de
-          2020 : il s&apos;est resserré précisément parce que
-          l&apos;IA a fait baisser le coût du sur-mesure — la
-          démonstration arrive. Les budgets complets par type de site
+          standardisé dont l&apos;export peut être limité, contre 6 900 € pour
+          notre périmètre vitrine d&apos;entrée. Propriété, droits, dépôt,
+          hébergement et coûts récurrents doivent être vérifiés dans les deux
+          contrats : aucun outil n&apos;implique automatiquement que vous possédiez
+          tout ou qu&apos;il n&apos;existe aucun plafond. Les budgets complets par type de site
           sont dans notre{" "}
           <Link href="/guides/combien-coute-un-site-internet">guide
           des prix d&apos;un site internet</Link> et notre{" "}
@@ -583,95 +563,55 @@ export default function Page() {
           d&apos;un site vitrine</Link>.
         </p>
 
-        <h2 id="bouleversement">9. Le vrai bouleversement : l&apos;IA a fait baisser le prix du sur-mesure</h2>
+        <h2 id="bouleversement">9. Ce que les études de productivité permettent réellement de conclure</h2>
         <p>
-          Voici la section que vous ne trouverez dans aucun comparatif
-          — et c&apos;est pourtant la conséquence économique la plus
-          importante de l&apos;IA pour votre projet.{" "}
-          <strong>Avant 2023</strong>, un site vitrine sur mesure
-          professionnel exigeait des semaines de développement
-          facturées au jour : le sur-mesure était réservé aux budgets
-          confortables, et les plateformes gagnaient par défaut.{" "}
-          <strong>Depuis</strong>, les assistants de code ont changé
-          la structure de coût du métier : 55 % plus rapide sur les
-          tâches standard (étude contrôlée GitHub), 35 à 45 % sur la
-          génération de code (McKinsey), 90 % des professionnels
-          équipés (DORA 2025). Un site vitrine étant largement composé
-          de ce code standard — pages, formulaires, structure —,{" "}
-          <strong>le nombre de jours nécessaires a baissé à périmètre
-          égal : le coût de production du sur-mesure a chuté</strong>.
-          Toutes les agences ne le répercutent pas — la seule étude de
-          prix publique (Digital Applied, 2026) mesure des délais
-          réduits de 22 à 34 % grâce à l&apos;IA mais des prix
-          affichés le plus souvent inchangés, le gain restant en
-          marge. Nous faisons le choix inverse : c&apos;est ce qui
-          rend possible <Link href="/tarifs">notre grille
-          publique</Link> — vitrine complète dès
-          6 900 €, e-commerce dès 15 000 €, première version
-          d&apos;une application en ligne par abonnement (le « MVP
-          SaaS ») dès 15 000 €, au forfait fixe. Et c&apos;est ce qui inverse la conclusion des
-          comparatifs « plateforme vs agence » écrits avant 2023 : le
-          sur-mesure n&apos;est plus le luxe qu&apos;il faut
-          justifier, il est devenu <strong>le choix par défaut
-          d&apos;un site professionnel</strong> — la plateforme
-          restant la bonne réponse des cas résiduels : test, micro-budget,
-          side-project. L&apos;expertise, elle, n&apos;a pas baissé de
-          prix : moins de 10 % de gain IA sur les tâches complexes
-          (McKinsey) — c&apos;est précisément pour ça que le
-          développeur reste dans l&apos;équation, et que les sites
-          générés sans lui se ressemblent tous.
+          Les études citées mesurent des contextes différents : une tâche
+          standard contrôlée, certaines activités de génération de code, une
+          enquête d&apos;adoption, et à l&apos;inverse un essai où des développeurs
+          expérimentés ont ralenti sur leurs propres dépôts. Elles établissent
+          que l&apos;effet peut être important, faible ou négatif selon la tâche ;
+          elles ne prouvent pas une baisse du prix final d&apos;un site ni le gain
+          d&apos;un prestataire particulier. Notre <Link href="/tarifs">grille
+          publique</Link> — 6 900 € pour le périmètre vitrine d&apos;entrée,
+          15 000 € pour une première version applicative ou e-commerce — relève
+          de notre politique commerciale. Comparez ces montants sur un même
+          périmètre et exigez que l&apos;éventuel usage de l&apos;IA, la revue humaine,
+          la protection des données et les critères de recette soient écrits.
         </p>
 
-        <h2 id="preuve">10. La preuve : le site que vous êtes en train de lire</h2>
+        <h2 id="preuve">10. Un exemple public : le site que vous êtes en train de lire</h2>
         <p>
-          Plutôt qu&apos;une promesse, une démonstration en
-          production : <strong>hagnere-code.ai est développé à 100 %
-          en React/Next.js, avec Claude Code</strong> — la même chaîne
-          de production que celle décrite sur notre page{" "}
-          <Link href="/agence-next-js">agence Next.js</Link>. Le design
-          est
-          propriétaire — aucun template, des animations et des
-          micro-interactions qu&apos;aucun générateur ne produit
-          (bibliothèques professionnelles type Framer Motion et GSAP,
-          qui font gagner du temps de développement sans standardiser
-          le rendu). La performance est mesurable par n&apos;importe
-          qui : ouvrez PageSpeed Insights, l&apos;outil de test
-          gratuit de Google, et testez cette page — Lighthouse est la
-          note de qualité sur 100 qu&apos;il attribue, et le{" "}
-          <strong>objectif de performance défini dans un devis</strong> doit
-          préciser ses conditions de mesure&nbsp;; ce site ne constitue pas une preuve client.
-          Et la stratégie de contenu que vous lisez — des guides
-          longs, sourcés et reliés entre eux par des liens
-          internes — est exactement ce qu&apos;une
-          architecture sur mesure permet et qu&apos;un générateur
-          plafonne. L&apos;IA a écrit du code de ce site ; elle
-          n&apos;a décidé ni de l&apos;architecture, ni du design, ni
-          de la stratégie. C&apos;est toute la différence entre{" "}
-          <em>générer</em> et <em>construire</em>.
+          Cette page est un objet public que vous pouvez examiner&nbsp;: contenu,
+          interactions, HTML livré au navigateur et mesures PageSpeed Insights.
+          Ces observations ne prouvent pas à elles seules l&apos;auteur du code,
+          la stack interne, les outils utilisés ni la performance d&apos;un futur projet.
+          Notre page <Link href="/agence-next-js">agence Next.js</Link> décrit
+          la stack proposée ; le devis et la documentation doivent confirmer celle
+          qui sera réellement retenue, ainsi que le protocole de performance.
         </p>
 
-        <InfoBox variant="amber" title="Le cas Nadia, résolu">
+        <InfoBox variant="amber" title="L'issue possible du scénario Nadia">
           <p>
-            Épilogue du fil rouge. Le site Wix de Nadia lui a rendu un
-            vrai service : trois semaines en ligne, quelques appels, la
-            preuve que sa niche répond. Son prototype Lovable lui a
-            servi à montrer son idée d&apos;espace candidats à deux
-            confrères. Puis elle a fait le calcul de la section 8 :
-            son cabinet vit des missions que le site rapporte — le
-            site est son commercial, pas sa carte de visite. Son
-            budget initial de 3 000 € n&apos;y suffisait pas : elle a
-            laissé le Wix travailler quelques mois de plus, et les
-            premières missions décrochées ont financé la différence —
-            c&apos;est exactement le rôle d&apos;un site provisoire
-            bien utilisé. Elle a gardé le Wix en ligne le temps du
-            chantier (comptez plusieurs semaines pour un sur-mesure —
+            Épilogue hypothétique du fil rouge. Le site Wix de Nadia
+            pourrait lui rendre un vrai service : tester sa niche pendant
+            trois semaines et observer quelques appels. Son prototype
+            Lovable pourrait lui servir à montrer son idée d&apos;espace
+            candidats à deux confrères. Elle ferait ensuite le calcul de
+            la section 8 : son cabinet vivrait des missions apportées par
+            le site — le site serait son commercial, pas sa carte de
+            visite. Son budget initial de 3 000 € n&apos;y suffirait pas :
+            elle pourrait conserver le Wix quelques mois de plus et
+            affecter d&apos;éventuelles premières missions à la différence —
+            c&apos;est le rôle possible d&apos;un site provisoire bien
+            utilisé, pas un résultat promis. Elle garderait le Wix en ligne
+            le temps du chantier (comptez plusieurs semaines pour un sur-mesure —
             notre <Link href="/guides/combien-de-temps-pour-creer-un-site">guide
-            des délais de création</Link> les détaille), investi
-            6 900 € dans un site sur mesure dont elle possède le code,
-            et réutilisé tout ce que les outils IA lui avaient appris :
+            des délais de création</Link> les détaille), investirait
+            6 900 € dans un site sur mesure dont elle posséderait le code,
+            et réutiliserait tout ce que les outils IA lui auraient appris :
             son positionnement, ses textes de départ, la liste de ce
-            qui manquait. Aucun des trois outils n&apos;a été un
-            gaspillage — chacun à sa place, dans le bon ordre.
+            qui manquerait. Aucun des trois outils ne serait alors un
+            gaspillage — chacun aurait sa place, dans le bon ordre.
           </p>
         </InfoBox>
 
@@ -749,7 +689,7 @@ export default function Page() {
             ["Porteur d'idée, marché à valider", "Générateur no-code, assumé provisoire", "0-40 €/mois pour apprendre vite — l'argent va au test, pas au site"],
             ["Créateur d'app, prototype à montrer", "Vibe coding (Lovable, v0)", "Du vrai code possédé, bluffant en démo — un dev pour passer en production"],
             ["TPE/PME dont le site doit générer des clients", "Sur-mesure assisté par IA (React/Next.js)", "Design différenciant, SEO architecturé, droits et dépôt au devis — dès 6 900 €"],
-            ["Entreprise avec un site plateforme qui plafonne", "Migration vers le sur-mesure", "L'IA a fait baisser le coût de la bascule — audit d'abord"],
+            ["Entreprise limitée par sa plateforme", "Auditer avant de migrer", "Comparer le coût total, les limites d'export et le bénéfice attendu"],
             ["E-commerce", "Shopify pour tester, sur-mesure pour durer", "Notre comparatif Shopify ou sur-mesure chiffre la bascule"],
             ["Side-project, présence minimale", "Générateur no-code, sans culpabilité", "Le cas résiduel légitime — gardez juste votre domaine en propre"],
           ]}
@@ -778,10 +718,9 @@ export default function Page() {
             et date de réévaluation dans l&apos;agenda (6 mois).
           </li>
           <li>
-            <strong>Si le site doit rapporter : chiffrez le
-            sur-mesure d&apos;abord.</strong> L&apos;IA a fait baisser
-            son ticket d&apos;entrée — comparez le coût 3 ans, pas le
-            prix du premier mois (tableau section 8).
+            <strong>Si le site doit rapporter : comparez plusieurs voies sur
+            le même périmètre.</strong> Chiffrez le coût sur trois ans, les
+            droits, les intégrations et la sortie — pas seulement le premier mois.
           </li>
           <li>
             <strong>Exigez la propriété, quelle que soit la
@@ -801,7 +740,7 @@ export default function Page() {
           Et si vous voulez l&apos;avis d&apos;une équipe qui
           développe avec l&apos;IA tous les jours :{" "}
           <strong>décrivez votre projet en 3 minutes</strong> —
-          réponse personnelle sous 24 h ouvrées, gratuite et sans
+          objectif de réponse personnelle le prochain jour ouvré, gratuite et sans
           engagement, y compris quand la bonne réponse est « restez
           sur votre générateur pour l&apos;instant ». Le{" "}
           <strong>Discovery Sprint (1 500 €, 2 jours, déduit à 100 %

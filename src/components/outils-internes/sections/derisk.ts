@@ -8,9 +8,9 @@ export const deriskHtml = `
         <h2>On les nomme.<br>On y répond par écrit.</h2>
       </div>
       <div class="right">
-        À chaque Audit processus, on entend les mêmes quatre peurs — de la part du DSI,
-        du DAF ou du dirigeant. On les traite frontalement, avec des <b>engagements contractuels</b>,
-        pas des slogans.
+        Quatre risques doivent être instruits avec le DSI, le DAF ou le dirigeant.
+        Les réponses utiles prennent la forme de <b>conditions écrites au devis ou au contrat</b>,
+        pas de slogans.
       </div>
     </div>
 

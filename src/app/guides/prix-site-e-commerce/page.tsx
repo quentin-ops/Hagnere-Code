@@ -33,16 +33,11 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -59,7 +54,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 5000,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -171,23 +165,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -235,8 +218,8 @@ export default function Page() {
             { id: "plateformes", label: "3. Prix par plateforme : Shopify, WooCommerce, PrestaShop, sur-mesure" },
             { id: "tco", label: "4. Le vrai coût sur 3 ans (celui que les devis ne montrent pas)" },
             { id: "commissions", label: "5. Commissions de paiement : le poste invisible, enfin chiffré" },
-            { id: "couts-caches", label: "6. Logistique, contenus, flux : les coûts que personne ne chiffre" },
-            { id: "devis", label: "7. Un devis e-commerce réel, décortiqué ligne à ligne" },
+            { id: "couts-caches", label: "6. Logistique, contenus, flux : les coûts hors développement" },
+            { id: "devis", label: "7. Un exemple de devis e-commerce, décortiqué ligne à ligne" },
             { id: "obligations-2026", label: "8. Ce que 2026 change dans le budget (échéances légales)" },
             { id: "rentabilite", label: "9. Combien rapporte un site e-commerce ? Le calcul honnête" },
             { id: "refonte", label: "10. Prix d'une refonte e-commerce" },
@@ -527,7 +510,7 @@ export default function Page() {
           comparatif entier : notre{" "}
           <Link href="/guides/shopify-ou-sur-mesure">guide Shopify ou
           e-commerce sur mesure</Link>, avec le match sur 3 ans chiffré
-          et le coût de sortie que personne ne publie.
+          et le coût de sortie à intégrer.
         </p>
 
         <h2 id="tco">4. Le vrai coût sur 3 ans (celui que les devis ne montrent pas)</h2>
@@ -595,7 +578,7 @@ export default function Page() {
         <h2 id="commissions">5. Commissions de paiement : le poste invisible, enfin chiffré</h2>
         <p>
           Chaque vente est taxée par votre prestataire de paiement — un
-          pourcentage abstrait que personne ne convertit en euros. Voici les
+          pourcentage converti ci-dessous en euros. Voici les
           taux France 2026 (pages tarifs officielles) ramenés à{" "}
           <strong>100 000 € de CA annuel</strong> (≈ 1 600 commandes à 62 €) :
         </p>
@@ -652,12 +635,10 @@ export default function Page() {
           la relation client.
         </p>
 
-        <h2 id="couts-caches">6. Logistique, contenus, flux : les coûts que personne ne chiffre</h2>
+        <h2 id="couts-caches">6. Logistique, contenus, flux : les coûts hors développement</h2>
         <p>
-          Deux postes décident si votre boutique gagnera de l&apos;argent,
-          et aucun devis — ni aucun guide de prix que nous ayons lu — ne
-          les chiffre : la logistique et les contenus produit. Les voici,
-          en euros.
+          Deux postes distincts du développement pèsent directement sur la
+          rentabilité : la logistique et les contenus produit. Les voici, en euros.
         </p>
 
         <h3>La logistique : 15 à 25 % de votre chiffre d&apos;affaires</h3>
@@ -748,14 +729,14 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un chiffrage e-commerce qui inclut tout ça ?"
-          description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées avec une fourchette argumentée — commissions, logistique et conformité comprises."
-          tags={["Réponse sous 24 h ouvrées", "Forfait fixe contractuel", "Sans engagement"]}
+          description="Décrivez votre projet en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec une fourchette argumentée — commissions, logistique et conformité comprises."
+          tags={["Objectif : prochain jour ouvré", "Forfait fixe contractuel", "Sans engagement"]}
         />
 
-        <h2 id="devis">7. Un devis e-commerce réel, décortiqué ligne à ligne</h2>
+        <h2 id="devis">7. Un exemple de devis e-commerce, décortiqué ligne à ligne</h2>
         <p>
-          Personne ne publie ses devis ; nous, oui. Voici, anonymisé, un
-          devis Hagnéré Code accepté pour un profil B typique : PME de
+          Voici un exemple de devis construit pour un scénario fictif composite,
+          ni client ni témoignage réel : une PME de
           négoce, environ 300 références, migration depuis une ancienne
           boutique, synchronisation avec le logiciel de gestion, front
           Next.js sur moteur headless. Taux journalier (le « TJM » des
@@ -819,7 +800,7 @@ export default function Page() {
             ["Bouton de rétractation en ligne", "en vigueur depuis le 19 juin 2026", "15 000 € (pers. physique) / 75 000 € (société)", "1 – 2 jours de développement"],
             ["Facturation électronique (réception)", "1er septembre 2026 — toutes entreprises", "amendes fiscales", "plateforme agréée : 0 – 99 €/mois"],
             ["Facturation électronique (émission PME)", "1er septembre 2027", "amendes fiscales", "projet de mise en place : 1 000 – 1 500 €"],
-            ["RGPD / cookies (CNIL)", "permanent", "20 M€ ou 4 % du CA mondial", "bannière cookies (CMP, la plateforme de gestion du consentement — ex. Axeptio) : ~29 €/mois + mise en conformité"],
+            ["Données personnelles et traceurs (CNIL)", "permanent", "Selon le texte et le manquement : le plafond RGPD de 20 M€ ou 4 % du CA mondial ne s'applique pas automatiquement à toute irrégularité de cookies", "analyse des traceurs réellement utilisés, puis CMP si un consentement est requis : ~29 €/mois + paramétrage"],
           ]}
         />
         <p>Dans le détail :</p>
@@ -871,9 +852,8 @@ export default function Page() {
         <h2 id="rentabilite">9. Combien rapporte un site e-commerce ? Le calcul honnête</h2>
         <p>
           Avant de débattre du prix du site, posez la question qui commande
-          tout le reste : combien peut-il rapporter ? C&apos;est celle que
-          tout porteur de projet se pose — et que presque aucun guide de
-          prix ne traite honnêtement. Le marché est réel : les Français ont
+          tout le reste : combien peut-il rapporter ? Cette question doit être
+          traitée avec les hypothèses du projet. Le marché est documenté : les Français ont
           dépensé <strong>196,4 milliards d&apos;euros en ligne en
           2025</strong> (+7 % sur un an, FEVAD), la France compte 158 200
           sites marchands actifs et 42,2 millions de cyberacheteurs, et
@@ -995,10 +975,9 @@ export default function Page() {
 
         <h2 id="erreurs">12. Les 6 erreurs qui font exploser la facture</h2>
         <p>
-          Sur les projets que nous reprenons après un premier échec, les
-          mêmes causes reviennent. Les voici, de la plus fréquente à la
-          plus coûteuse — chacune renvoie à la section qui permet de
-          l&apos;éviter.
+          Six erreurs structurelles peuvent faire déraper le coût d&apos;un projet.
+          Les voici dans l&apos;ordre du parcours de décision — chacune renvoie
+          à la section qui permet de l&apos;éviter.
         </p>
         <ol>
           <li>
@@ -1083,7 +1062,7 @@ export default function Page() {
           <Link href="/methode">Sprint Fixe™</Link>. Vous voulez une
           fourchette avant d&apos;aller plus loin ?{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées, gratuite
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré, gratuite
           et sans engagement. Et si vous hésitez encore entre vitrine et
           boutique, notre guide du{" "}
           <Link href="/guides/prix-site-vitrine">prix d&apos;un site

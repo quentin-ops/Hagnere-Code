@@ -17,21 +17,21 @@ export const pricingHtml = `
 
       <div class="cv-price-card reveal">
         <div class="cv-price-tag">À L'UNITÉ</div>
-        <h4>Vidéo ponctuelle</h4>
+        <h3>Vidéo ponctuelle</h3>
         <div class="cv-price-sub">1 vidéo unique, sans engagement mensuel. Pour tester notre patte avant de passer en retainer.</div>
         <div class="cv-price-amount">2 500 <span>€ / vidéo</span></div>
         <ul class="cv-price-feats">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1 brief &amp; 1 script</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Monteur et outil précisés au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>1 version longue + 3 shorts</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison en 10-14 jours</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Date et retours précisés au devis</li>
         </ul>
         <div class="cv-price-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
       </div>
 
       <div class="cv-price-card reveal reveal-d-1">
         <div class="cv-price-tag">RETAINER · 01</div>
-        <h4>YouTube Founder</h4>
+        <h3>YouTube Founder</h3>
         <div class="cv-price-sub">Chaîne YouTube clé en main pour CEO / expert. 1h de tournage/semaine, on livre 4 longues + 16 shorts par mois.</div>
         <div class="cv-price-amount">3 500 <span>€ / mois</span></div>
         <ul class="cv-price-feats">
@@ -46,7 +46,7 @@ export const pricingHtml = `
       <div class="cv-price-card cv-price-card-featured reveal reveal-d-2">
         <div class="cv-price-badge">OFFRE RECOMMANDÉE</div>
         <div class="cv-price-tag">RETAINER · 03</div>
-        <h4>Content Retainer</h4>
+        <h3>Content Retainer</h3>
         <div class="cv-price-sub">Pipeline industriel pour marques DTC / SaaS en scale. ~25 livrables par mois, ads + motion + UGC + product.</div>
         <div class="cv-price-amount">6 900 <span>€ / mois</span></div>
         <ul class="cv-price-feats">
@@ -61,7 +61,7 @@ export const pricingHtml = `
 
       <div class="cv-price-card reveal reveal-d-3">
         <div class="cv-price-tag">SUR-MESURE</div>
-        <h4>Studio dédié</h4>
+        <h3>Studio dédié</h3>
         <div class="cv-price-sub">Besoin complexe, brand film hero, campagne multi-canaux, volumes hors cadre. On cadre, on chiffre au forfait.</div>
         <div class="cv-price-amount">Sur devis<span>&nbsp;</span></div>
         <ul class="cv-price-feats">

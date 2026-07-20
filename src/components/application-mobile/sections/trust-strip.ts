@@ -5,29 +5,29 @@ export const trustStripHtml = `
     <div class="mob-trust-strip-inner reveal">
       <div class="mob-trust-strip-stats">
         <div class="mob-trust-strip-stat">
-          <div class="mob-trust-strip-v">12 sem.</div>
-          <div class="mob-trust-strip-k">Du brief aux stores · MVP cadré</div>
+          <div class="mob-trust-strip-v">Cadré</div>
+          <div class="mob-trust-strip-k">Périmètre et planning indicatif au devis</div>
         </div>
         <div class="mob-trust-strip-stat">
-          <div class="mob-trust-strip-v">×3<span class="mob-trust-strip-tilde">~</span></div>
-          <div class="mob-trust-strip-k">Conversion app vs site mobile · secteur retail<sup>*</sup></div>
+          <div class="mob-trust-strip-v">Mesuré</div>
+          <div class="mob-trust-strip-k">Objectifs propres à votre produit</div>
         </div>
         <div class="mob-trust-strip-stat">
-          <div class="mob-trust-strip-v">+40 %<span class="mob-trust-strip-tilde">~</span></div>
-          <div class="mob-trust-strip-k">Panier moyen mobile observé · études secteur<sup>*</sup></div>
+          <div class="mob-trust-strip-v">Testé</div>
+          <div class="mob-trust-strip-k">Recette sur appareils et OS convenus</div>
         </div>
         <div class="mob-trust-strip-stat">
-          <div class="mob-trust-strip-v">5–10×<span class="mob-trust-strip-tilde">~</span></div>
-          <div class="mob-trust-strip-k">Ouverture push vs email · benchmarks 2023-2024<sup>*</sup></div>
+          <div class="mob-trust-strip-v">Encadré</div>
+          <div class="mob-trust-strip-k">Permissions et notifications documentées</div>
         </div>
         <div class="mob-trust-strip-stat">
-          <div class="mob-trust-strip-v">100 %</div>
-          <div class="mob-trust-strip-k">Code &amp; comptes stores à votre nom</div>
+          <div class="mob-trust-strip-v">Écrit</div>
+          <div class="mob-trust-strip-k">Comptes, droits et licences au contrat</div>
         </div>
       </div>
 
       <div class="mob-trust-strip-chips">
-        <div class="mob-trust-strip-chips-note"><sup>*</sup> Données secteur mobile (Criteo, App Annie / data.ai, Batch, OneSignal 2023-2024) — votre résultat dépend de votre vertical, de votre offre et de la qualité de votre lancement.</div>
+        <div class="mob-trust-strip-chips-note">Aucun taux de conversion, panier moyen, ouverture ou délai de rentabilité n'est présumé&nbsp;: les objectifs et leur méthode de mesure sont propres à votre produit.</div>
         <div class="mob-trust-strip-chips-kicker">Stack mobile · iOS + Android natifs cross-platform</div>
         <div class="mob-trust-strip-chips-row">
           <span class="mob-trust-strip-chip">

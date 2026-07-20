@@ -63,7 +63,7 @@ export const comparisonHtml = `
         <div class="sr-comp-cell sr-comp-cell-label">Conformité IA "by design"</div>
         <div class="sr-comp-cell"><span class="sr-comp-mark sr-comp-mark-yes">✓</span> Qualification et gouvernance</div>
         <div class="sr-comp-cell"><span class="sr-comp-mark sr-comp-mark-mid">~</span> Sécurité selon périmètre</div>
-        <div class="sr-comp-cell sr-comp-cell-us"><span class="sr-comp-mark sr-comp-mark-yes">✓</span> Mesures techniques validées</div>
+        <div class="sr-comp-cell sr-comp-cell-us"><span class="sr-comp-mark sr-comp-mark-yes">✓</span> Mesures prévues au devis et recettées</div>
       </div>
 
       <div class="sr-comp-row">

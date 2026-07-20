@@ -41,11 +41,11 @@ export const comparisonHtml = `
       </div>
 
       <div class="sa-cmp-row">
-        <div class="sa-cmp-col sa-cmp-col-label">Architecture multi-tenant</div>
+        <div class="sa-cmp-col sa-cmp-col-label">Séparation des espaces clients</div>
         <div class="sa-cmp-col">Possible selon la plateforme et le modèle de données</div>
         <div class="sa-cmp-col sa-cmp-bad">N/A (pas prévu pour)</div>
         <div class="sa-cmp-col">Dépend de sa spécialité</div>
-        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Standard dès J+1</b></div>
+        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Conçue selon le modèle et les risques</b></div>
       </div>
 
       <div class="sa-cmp-row">
@@ -53,7 +53,7 @@ export const comparisonHtml = `
         <div class="sa-cmp-col">Connecteur ou plugin selon la plateforme</div>
         <div class="sa-cmp-col sa-cmp-bad">À coder soi-même</div>
         <div class="sa-cmp-col">À scoper en option</div>
-        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Cashier + webhooks + essais + relances</b></div>
+        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Intégrée si l'achat autonome l'exige ; sinon contrat et facture</b></div>
       </div>
 
       <div class="sa-cmp-row">
@@ -61,7 +61,7 @@ export const comparisonHtml = `
         <div class="sa-cmp-col">Souvent réservé aux offres supérieures</div>
         <div class="sa-cmp-col sa-cmp-good">Oui mais pour l'interne</div>
         <div class="sa-cmp-col">Variable</div>
-        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>SAML + OAuth inclus</b></div>
+        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Selon le contrat, pas par défaut</b></div>
       </div>
 
       <div class="sa-cmp-row">
@@ -77,7 +77,7 @@ export const comparisonHtml = `
         <div class="sa-cmp-col">À valider par test de charge et limites du plan</div>
         <div class="sa-cmp-col sa-cmp-bad">Pas fait pour public</div>
         <div class="sa-cmp-col">Dépend du dev</div>
-        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Queues, Redis, cache, PostgreSQL tuné</b></div>
+        <div class="sa-cmp-col sa-cmp-col-us sa-cmp-good"><b>Objectif et preuves de charge définis au devis</b></div>
       </div>
 
       <div class="sa-cmp-row">

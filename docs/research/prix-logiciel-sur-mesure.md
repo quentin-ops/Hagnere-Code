@@ -1,8 +1,12 @@
 # Dossier de recherche — prix-logiciel-sur-mesure
 
 > Dernière vérification substantielle : 20 juillet 2026.
-> Statut éditorial : **contre-audit sources, calculs et promesses intégré ; contrôles techniques et revue humaine requis avant publication**.
-> Ce statut ne prouve ni publication, ni indexation, ni positionnement.
+> Statut au 20 juillet 2026 : **publié dans le registre éditorial, parmi les
+> 40 `PUBLISHED_GUIDES`**, après intégration du contre-audit des sources,
+> calculs et promesses. Cette mention décrit le snapshot du dépôt et son
+> alimentation automatique du hub, du sitemap et de `llms.txt` lors du build ; elle ne prouve
+> ni validation par un lecteur humain, ni présence dans le déploiement actif,
+> ni indexation ou positionnement.
 
 ## 1. Fiche d’identité
 
@@ -131,7 +135,8 @@ Le lecteur doit remplacer cette simulation par la documentation de l’API, les 
 - [x] cas fictif, hypothèses et inconnues étiquetés ;
 - [x] champ HDS et propriété intellectuelle nuancés ;
 - [x] liens vers les trois guides du cluster et le kit de cahier des charges ;
+- [x] guide compté parmi les 40 entrées publiées du registre au 20 juillet 2026 ;
 - [ ] test lecteur humain non technique ;
-- [ ] lint, types, tests et build après intégration ;
+- [ ] batterie du dépôt relancée sur le snapshot final après toute modification ; ne pas reporter ici un ancien décompte de tests ou de pages ;
 - [ ] rendu navigateur à 320, 360, 390, 430, 640, 768, 1024, 1280, 1440 et 1600 px ;
-- [ ] publication et disponibilité en production vérifiées sans confondre découverte, indexation et position.
+- [ ] présence revérifiée sur le déploiement actif, sans confondre publication de registre, découverte, indexation et position.

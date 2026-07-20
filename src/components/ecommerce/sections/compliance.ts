@@ -81,11 +81,11 @@ export const complianceHtml = `
         <h3>RGPD + CMP + droits</h3>
         <p>
           CMP type <b>Axeptio</b> ou <b>Didomi</b> pour les cookies, Consent Mode v2 branché sur GA4 et
-          Meta, DPA fourni, registre des traitements, sous-traitants listés. Droits clients (accès,
+          Meta, DPA préparé à compléter lorsqu'il est requis, registre des traitements et sous-traitants documentés. Droits clients (accès,
           rectification, portabilité, suppression) implémentés dans le compte client.
         </p>
         <div class="ec-comp-tags">
-          <span>Axeptio / Didomi</span><span>DPA signé</span><span>Droit à l'oubli</span><span>Consent Mode v2</span>
+          <span>Axeptio / Didomi</span><span>DPA à compléter</span><span>Exercice des droits</span><span>Consent Mode v2</span>
         </div>
         <div class="ec-comp-foot">Configuration documentée, à valider par votre DPO ou conseil selon vos traitements.</div>
       </div>

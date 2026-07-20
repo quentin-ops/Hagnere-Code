@@ -40,4 +40,10 @@ describe("SaaS service page credibility", () => {
     expect(composedBodyHtml).toContain("RPO et RTO");
     expect(composedBodyHtml).toContain("Aucun dépassement unilatéral");
   });
+
+  it("limits SaaS proof to public availability and visible functions", () => {
+    expect(composedBodyHtml).not.toMatch(/nous les faisons tourner tous les jours|joignables quand la période déclarative|factures d'hébergement|utilisé en interne tous les jours|exploité par nos soins/i);
+    expect(composedBodyHtml).toContain("pages SaaS à vérifier directement");
+    expect(composedBodyHtml).toContain("page publique à consulter");
+  });
 });

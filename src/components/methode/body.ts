@@ -56,7 +56,7 @@ ${navHtml}
           Lire la méthode
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
         </a>
-        <a href="#contact" class="mhero-btn-ghost">
+        <a href="/rendez-vous" class="mhero-btn-ghost">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.95.68l1.5 4.49a1 1 0 01-.5 1.21l-2.26 1.13a11.04 11.04 0 005.52 5.52l1.13-2.26a1 1 0 011.21-.5l4.49 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2 16 16 0 01-16-16z"/></svg>
           Réserver un cadrage
         </a>
@@ -109,13 +109,12 @@ ${navHtml}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Quatre pratiques qu'on refuse</div>
-        <h2>Quatre pratiques courantes<br>qui font dérailler<br>des projets — <span class="strike-bad">et qu'on exclut</span>.</h2>
+        <div class="eyebrow">— Quatre risques à cadrer</div>
+        <h2>Quatre zones de risque<br>à rendre explicites<br><span class="strike-bad">avant de signer</span>.</h2>
       </div>
       <div class="right">
-        On ne juge pas les agences qui les pratiquent — ce sont des usages installés du métier.
-        Mais elles reposent toutes sur la même mécanique&nbsp;: reporter le risque sur le client.
-        Sprint Fixe™ est construit pour l'exclure. Voici ce qu'on fait à la place.
+        Régie, rythme de validation, accès et cadrage peuvent tous fonctionner, à condition que
+        leurs règles soient comprises. Voici les points que notre proposition cherche à écrire clairement.
       </div>
     </div>
 
@@ -123,12 +122,12 @@ ${navHtml}
       <div class="anti-card reveal">
         <div class="anti-broken">
           <span class="anti-x">×</span>
-          <span class="anti-broken-label">LA PRATIQUE COURANTE</span>
+          <span class="anti-broken-label">RISQUE À ÉVITER</span>
         </div>
         <h3 class="anti-bad">Régie au TJM extensible</h3>
         <p class="anti-bad-p">
-          « 600 €/jour, on verra combien de jours ça prend. » Dans ce modèle, chaque imprécision
-          de cadrage se transforme en jours facturés. C'est l'agence qui cadre mal, et le client qui paie.
+          Une régie sans plafond, estimation de charge ni règle d'arbitrage peut rendre le budget
+          difficile à anticiper. Le risque dépend du contrat, du pilotage et de la précision du suivi.
         </p>
         <div class="anti-divider"></div>
         <div class="anti-good">
@@ -139,21 +138,20 @@ ${navHtml}
         </div>
         <h4 class="anti-good-h">Forfait fixe contractuel</h4>
         <p class="anti-good-p">
-          Le devis vaut engagement. Si on dépasse, c'est notre problème, pas votre facture.
-          On absorbe le risque de dérive — c'est notre métier de bien estimer.
+          Le prix, le périmètre, les hypothèses et la procédure d'avenant sont écrits dans le devis.
+          Aucun coût supplémentaire ne s'applique sans accord écrit dans les conditions signées.
         </p>
       </div>
 
       <div class="anti-card reveal reveal-d-1">
         <div class="anti-broken">
           <span class="anti-x">×</span>
-          <span class="anti-broken-label">LA PRATIQUE COURANTE</span>
+          <span class="anti-broken-label">RISQUE À ÉVITER</span>
         </div>
         <h3 class="anti-bad">Démo en fin de projet</h3>
         <p class="anti-bad-p">
-          L'agence disparaît trois mois et revient avec un livrable. Le client découvre l'écart
-          entre ce qu'il imaginait et ce qui a été construit une fois le budget consommé —
-          et c'est presque toujours lui qui paie la reprise.
+          Une validation trop tardive peut laisser grandir un écart entre le besoin et le produit.
+          Le devis doit préciser quand les démonstrations ont lieu et qui valide quoi.
         </p>
         <div class="anti-divider"></div>
         <div class="anti-good">
@@ -162,22 +160,22 @@ ${navHtml}
           </span>
           <span class="anti-good-label">CE QU'ON FAIT À LA PLACE</span>
         </div>
-        <h4 class="anti-good-h">Démo chaque vendredi · 16 h</h4>
+        <h4 class="anti-good-h">Démonstrations à cadence convenue</h4>
         <p class="anti-good-p">
-          Vous voyez votre produit grandir semaine après semaine. Vous corrigez la trajectoire
-          en temps réel, avant que ce soit coûteux. Pas de grande révélation finale.
+          Une cadence régulière permet de contrôler les choix et de corriger la trajectoire plus tôt.
+          Le jour, le rythme et les personnes attendues sont définis pour chaque projet.
         </p>
       </div>
 
       <div class="anti-card reveal reveal-d-2">
         <div class="anti-broken">
           <span class="anti-x">×</span>
-          <span class="anti-broken-label">LA PRATIQUE COURANTE</span>
+          <span class="anti-broken-label">RISQUE À ÉVITER</span>
         </div>
         <h3 class="anti-bad">Repo + hébergement chez nous</h3>
         <p class="anti-bad-p">
-          L'agence garde la main « pour faciliter ». En réalité, c'est un lock-in déguisé&nbsp;:
-          récupérer son code et son hébergement peut prendre des semaines de négociation.
+          Des accès, droits ou procédures de sortie non écrits peuvent compliquer une reprise.
+          La propriété des comptes ne se déduit ni du nom du prestataire ni de l'outil utilisé.
         </p>
         <div class="anti-divider"></div>
         <div class="anti-good">
@@ -196,13 +194,12 @@ ${navHtml}
       <div class="anti-card reveal reveal-d-3">
         <div class="anti-broken">
           <span class="anti-x">×</span>
-          <span class="anti-broken-label">LA PRATIQUE COURANTE</span>
+          <span class="anti-broken-label">RISQUE À ÉVITER</span>
         </div>
         <h3 class="anti-bad">Discovery « gratuit »</h3>
         <p class="anti-bad-p">
-          Un cadrage de 2-3 jours offert en avant-vente n'est jamais gratuit&nbsp;: pour rester
-          rentable, on sous-investit sur les zones grises. Ce sont exactement celles qui
-          explosent ensuite, en cours de projet.
+          Un cadrage annoncé comme gratuit peut rester utile, mais son niveau de détail et ses
+          livrables doivent être explicites pour permettre une comparaison honnête des offres.
         </p>
         <div class="anti-divider"></div>
         <div class="anti-good">
@@ -251,13 +248,13 @@ ${navHtml}
             <!-- Arrow with minus -->
             <path d="M76 30 L 132 30" stroke-width="1.5" class="sk-stroke" fill="none" stroke-dasharray="3 3"/>
             <path d="M127 25 L 134 30 L 127 35" stroke-width="1.5" class="sk-stroke" fill="none"/>
-            <text x="104" y="22" text-anchor="middle" class="sk-mono-mute">déduit</text>
+            <text x="104" y="22" text-anchor="middle" class="sk-mono-mute">si prévu</text>
             <!-- Project box (bigger) -->
             <rect x="138" y="6" width="76" height="48" rx="6" fill="none" class="sk-stroke" stroke-width="1.5"/>
             <text x="176" y="22" text-anchor="middle" class="sk-mono">PHASE 2</text>
             <text x="176" y="34" text-anchor="middle" class="sk-mono-mute">30 000 €</text>
             <line x1="148" y1="40" x2="204" y2="40" class="sk-mute" stroke-width="1"/>
-            <text x="176" y="50" text-anchor="middle" class="sk-mono-accent">−1 500 €</text>
+            <text x="176" y="50" text-anchor="middle" class="sk-mono-accent">AU DEVIS</text>
           </svg>
         </div>
         <h3>Discovery payé, cadré</h3>
@@ -294,8 +291,8 @@ ${navHtml}
             </g>
           </svg>
         </div>
-        <h3>Forfait fixe, prix verrouillé</h3>
-        <p>Le devis vaut engagement total. Tout ajout de scope passe par un avenant chiffré, signé avant développement. Aucun dépassement caché possible.</p>
+        <h3>Forfait fixe, règles écrites</h3>
+        <p>Le devis fixe le prix et le périmètre initial. Toute évolution qui modifie le coût ou le calendrier exige l'accord écrit prévu par les documents signés.</p>
         <div class="pil-clause">
           <span class="pil-clause-h">POINT À ÉCRIRE</span>
           <span class="pil-clause-t">Le prix et le périmètre signés, puis un avenant écrit avant toute évolution qui modifie le coût ou le calendrier.</span>
@@ -310,7 +307,7 @@ ${navHtml}
         <div class="pil-schema" aria-hidden="true">
           <svg viewBox="0 0 220 60" preserveAspectRatio="xMidYMid meet">
             <!-- Title -->
-            <text x="110" y="10" text-anchor="middle" class="sk-mono-mute">VENDREDI · 16 H</text>
+            <text x="110" y="10" text-anchor="middle" class="sk-mono-mute">RYTHME CONVENU</text>
             <!-- Timeline rail -->
             <line x1="14" y1="32" x2="206" y2="32" stroke-width="1.5" class="sk-mute" stroke-dasharray="2 3"/>
             <!-- 5 demo dots -->
@@ -489,7 +486,7 @@ ${navHtml}
           </div>
           <div class="tl-friday">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            DÉMO VENDREDI 16 H · les premiers écrans cliquables
+            CRÉNEAU D'EXEMPLE · premiers écrans cliquables
           </div>
         </div>
       </div>
@@ -512,7 +509,7 @@ ${navHtml}
           </div>
           <div class="tl-friday">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            DÉMO VENDREDI 16 H · login fonctionnel, vous testez en direct
+            CRÉNEAU D'EXEMPLE · login fonctionnel à tester
           </div>
         </div>
       </div>
@@ -535,7 +532,7 @@ ${navHtml}
           </div>
           <div class="tl-friday">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            DÉMO VENDREDI 16 H · le produit prend vraiment forme
+            CRÉNEAU D'EXEMPLE · parcours principal à tester
           </div>
         </div>
       </div>
@@ -563,7 +560,7 @@ ${navHtml}
           </div>
           <div class="tl-friday">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            DÉMO VENDREDI 16 H · paiements + IA en live
+            CRÉNEAU D'EXEMPLE · paiements et IA à tester
           </div>
         </div>
       </div>
@@ -586,7 +583,7 @@ ${navHtml}
           </div>
           <div class="tl-friday">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-            DÉMO VENDREDI 16 H · UAT pré-prod, vous validez
+            CRÉNEAU D'EXEMPLE · pré-recette à valider
           </div>
         </div>
       </div>
@@ -799,10 +796,10 @@ ${navHtml}
         <h2>À quoi ressemble<br>le vendredi<br><span class="grad-accent">sur votre projet.</span></h2>
       </div>
       <div class="right">
-        Chaque vendredi à 16 h, une démo en visio, puis une ligne au journal de suivi.
+        Une démo et une mise à jour du journal peuvent être organisées à la cadence convenue.
         Ci-dessous, <b>un exemple illustratif</b> — pas le compte rendu de missions réelles :
-        il montre le format exact de ce que vous recevrez, semaine après semaine, sur votre
-        propre projet. Le journal de votre projet, lui, vous appartient et reste dans votre repo.
+        il montre un format possible, pas un livrable contractuel universel. Le devis précise le
+        support, la fréquence et l'emplacement du journal de votre projet.
       </div>
     </div>
 
@@ -908,7 +905,7 @@ ${navHtml}
             <span class="fri-meta-sep">·</span>
             <span class="fri-meta-dur">DÉMO DE MISE EN PROD</span>
           </div>
-          <h4>Le dernier vendredi est celui de la production</h4>
+          <h4>Le dernier jalon illustratif est celui de la mise en ligne</h4>
           <p>Déploiement, formation et remise de la documentation prévue. La recette, les corrections et une maintenance éventuelle suivent les modalités du devis&nbsp;; le forfait Care reste optionnel.</p>
         </div>
         <div class="fri-status fri-status-done">
@@ -924,10 +921,10 @@ ${navHtml}
       </div>
       <div class="fri-cta-body">
         <b>Vous voulez voir la méthode en action ?</b>
-        <span>On vous fait la démo de nos propres produits — LMNP.AI, SCI-AI, Hagnéré Patrimoine, Hagnéré Investissement — dans le format exact du vendredi. Ce sont les logiciels qu'on conçoit et qu'on exploite nous-mêmes.</span>
+        <span>Les pages publiques de LMNP.AI, SCI-AI, Hagnéré Patrimoine et Hagnéré Investissement peuvent servir de support de discussion. Elles prouvent leur disponibilité et leurs fonctions visibles, pas leur conception, leur exploitation ni leurs résultats.</span>
       </div>
       <a href="#contact" class="btn btn-ghost">
-        Voir une démo du vendredi
+        Demander une démonstration
         <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
     </div>
@@ -946,7 +943,7 @@ ${navHtml}
           <span>OUTIL</span>
           <span>Claude Code · pas un pilier, un copilote</span>
         </div>
-        <h3>${TEAM_TOTAL_COUNT} personnes :<br>1 gérant, 1 CTO, ${TEAM_OTHER_DEVELOPERS_COUNT} autres devs,<br><span class="accent">Claude Code en copilote.</span></h3>
+        <h3>${TEAM_TOTAL_COUNT} personnes :<br>1 président, 1 CTO, ${TEAM_OTHER_DEVELOPERS_COUNT} autres devs,<br><span class="accent">Claude Code en copilote.</span></h3>
         <p class="claude-lead">
           Beaucoup d'agences brandissent l'IA comme un argument marketing. Chez nous, c'est un
           outil de productivité opéré par chaque dev senior — recherche de doc, exploration de bibliothèques,
@@ -962,7 +959,7 @@ ${navHtml}
           </div>
           <div class="claude-rule">
             <div class="claude-rule-num">RÈGLE 02</div>
-            <h4>Code review humaine systématique</h4>
+            <h4>Revue humaine adaptée au risque</h4>
             <p>Les changements passent par une revue humaine adaptée au risque. Les choix structurants sont validés par le responsable technique.</p>
           </div>
           <div class="claude-rule">
@@ -1009,12 +1006,12 @@ ${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Ce que nous pouvons réellement montrer</div>
-        <h2>Quatre terrains internes,<br>pas quatre faux clients.</h2>
+        <h2>Quatre pages publiques,<br>pas quatre faux clients.</h2>
       </div>
       <div class="right">
         Hagnéré Code ne publie ici aucun témoignage client externe non vérifiable. Les cartes ci-dessous
-        désignent des produits du groupe utilisés comme terrains de conception et d'exploitation.
-        Elles prouvent un contexte de travail, <b>pas un résultat commercial transposable</b>.
+        renvoient vers des pages présentées comme liées au groupe. Leur consultation prouve leur disponibilité
+        et leurs fonctions visibles, <b>pas leur attribution, leur exploitation ou un résultat commercial</b>.
       </div>
     </div>
 
@@ -1023,15 +1020,15 @@ ${navHtml}
         <div class="quote-mark">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 2C7 2 5 4 5 6.5v3c0 2.5 2 4.5 4.5 4.5H10v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C13 4 11 2 8.5 2H9.4zM19.4 2C17 2 15 4 15 6.5v3c0 2.5 2 4.5 4.5 4.5H20v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C23 4 21 2 18.5 2h.9z"/></svg>
         </div>
-        <blockquote><em>LMNP.AI</em> sert de terrain interne pour les parcours documentaires, les calculs métier et les interfaces de suivi. Les choix présentés doivent être vérifiés dans l'étude de cas correspondante.</blockquote>
+        <blockquote><em>LMNP.AI</em> présente publiquement une offre, des parcours et des fonctions. Les choix internes décrits dans l'étude de cas restent déclaratifs sans pièce complémentaire.</blockquote>
         <figcaption class="quote-meta">
           <div class="quote-avatar quote-avatar-1">LM</div>
           <div class="quote-meta-body">
             <div class="quote-meta-name">LMNP.AI</div>
-            <div class="quote-meta-role">Produit interne du groupe</div>
+            <div class="quote-meta-role">Page liée au groupe · déclaration</div>
           </div>
           <div class="quote-context">
-            <span class="quote-context-tag">PREUVE INTERNE</span>
+            <span class="quote-context-tag">PAGE PUBLIQUE</span>
             <span class="quote-context-meta">Aucun témoignage client</span>
           </div>
         </figcaption>
@@ -1041,15 +1038,15 @@ ${navHtml}
         <div class="quote-mark">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 2C7 2 5 4 5 6.5v3c0 2.5 2 4.5 4.5 4.5H10v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C13 4 11 2 8.5 2H9.4zM19.4 2C17 2 15 4 15 6.5v3c0 2.5 2 4.5 4.5 4.5H20v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C23 4 21 2 18.5 2h.9z"/></svg>
         </div>
-        <blockquote><em>SCI-AI.app</em> constitue un second terrain interne pour éprouver le cadrage d'un produit métier. Aucun gain, délai ou satisfaction externe n'est déduit de cette expérience.</blockquote>
+        <blockquote><em>SCI-AI.app</em> présente publiquement une offre et des fonctions. Aucun gain, délai, attribution technique ou satisfaction externe n'est déduit de cette page.</blockquote>
         <figcaption class="quote-meta">
           <div class="quote-avatar quote-avatar-2">SCI</div>
           <div class="quote-meta-body">
             <div class="quote-meta-name">SCI-AI.app</div>
-            <div class="quote-meta-role">Produit interne du groupe</div>
+            <div class="quote-meta-role">Page liée au groupe · déclaration</div>
           </div>
           <div class="quote-context">
-            <span class="quote-context-tag">PREUVE INTERNE</span>
+            <span class="quote-context-tag">PAGE PUBLIQUE</span>
             <span class="quote-context-meta">Méthode à documenter au devis</span>
           </div>
         </figcaption>
@@ -1059,7 +1056,7 @@ ${navHtml}
         <div class="quote-mark">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 2C7 2 5 4 5 6.5v3c0 2.5 2 4.5 4.5 4.5H10v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C13 4 11 2 8.5 2H9.4zM19.4 2C17 2 15 4 15 6.5v3c0 2.5 2 4.5 4.5 4.5H20v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C23 4 21 2 18.5 2h.9z"/></svg>
         </div>
-        <blockquote><em>Hagnéré Patrimoine</em> permet de travailler des parcours éditoriaux et réglementés sur un produit lié au groupe. Il ne s'agit pas d'une référence client indépendante.</blockquote>
+        <blockquote><em>Hagnéré Patrimoine</em> publie des contenus et des parcours visibles. Cette page ne constitue pas une référence client indépendante ni une preuve de conception par Hagnéré Code.</blockquote>
         <figcaption class="quote-meta">
           <div class="quote-avatar quote-avatar-3">HP</div>
           <div class="quote-meta-body">
@@ -1067,7 +1064,7 @@ ${navHtml}
             <div class="quote-meta-role">Activité liée au groupe</div>
           </div>
           <div class="quote-context">
-            <span class="quote-context-tag">PREUVE INTERNE</span>
+            <span class="quote-context-tag">PAGE PUBLIQUE</span>
             <span class="quote-context-meta">Contexte explicitement signalé</span>
           </div>
         </figcaption>
@@ -1077,7 +1074,7 @@ ${navHtml}
         <div class="quote-mark">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 2C7 2 5 4 5 6.5v3c0 2.5 2 4.5 4.5 4.5H10v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C13 4 11 2 8.5 2H9.4zM19.4 2C17 2 15 4 15 6.5v3c0 2.5 2 4.5 4.5 4.5H20v3c0 1-1 2-2 2v2c3 0 5-2 5-5V6.5C23 4 21 2 18.5 2h.9z"/></svg>
         </div>
-        <blockquote><em>Hagnéré Investissement</em> complète ces terrains internes. Les éléments publics peuvent illustrer des choix de conception, jamais remplacer une preuve client ou un audit indépendant.</blockquote>
+        <blockquote><em>Hagnéré Investissement</em> publie des contenus et des parcours visibles. Ces éléments peuvent servir de support de discussion, jamais remplacer une preuve client ou un audit indépendant.</blockquote>
         <figcaption class="quote-meta">
           <div class="quote-avatar quote-avatar-4">HI</div>
           <div class="quote-meta-body">
@@ -1085,7 +1082,7 @@ ${navHtml}
             <div class="quote-meta-role">Activité liée au groupe</div>
           </div>
           <div class="quote-context">
-            <span class="quote-context-tag">PREUVE INTERNE</span>
+            <span class="quote-context-tag">PAGE PUBLIQUE</span>
             <span class="quote-context-meta">Aucun résultat client revendiqué</span>
           </div>
         </figcaption>
@@ -1094,7 +1091,7 @@ ${navHtml}
 
     <div class="quotes-foot reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
-      <span><b>Transparence&nbsp;:</b> ces produits sont liés au groupe. Les futures références externes ne seront publiées qu'avec preuve et autorisation.</span>
+      <span><b>Transparence&nbsp;:</b> ces pages sont présentées comme liées au groupe. Une référence externe ne doit être publiée qu'avec preuve et autorisation.</span>
     </div>
   </div>
 </section>
@@ -1108,10 +1105,9 @@ ${navHtml}
         <h2>Sprint Fixe™ <span class="strike-bad">n'est pas</span><br>la bonne réponse pour vous<br>dans ces 4 cas.</h2>
       </div>
       <div class="right">
-        Nous refusons les projets que nous ne saurions pas livrer dans les conditions promises.
-        Si vous reconnaissez votre situation ci-dessous, on vous oriente <b>gratuitement</b>
-        vers une équipe mieux adaptée. C'est plus utile pour vous, et ça nous évite un projet
-        qu'on n'aurait pas livré dans les conditions promises.
+        Certaines situations ne correspondent pas à notre modèle. Nous le signalons pendant le
+        cadrage et pouvons, lorsque nous connaissons un interlocuteur pertinent, suggérer une autre piste
+        sans faire de cette orientation une prestation ou une garantie.
       </div>
     </div>
 
@@ -1319,7 +1315,7 @@ ${navHtml}
     </p>
 
     <div class="mfinal-cta">
-      <a href="#contact" class="btn btn-accent btn-lg mfinal-btn">
+      <a href="/rendez-vous" class="btn btn-accent btn-lg mfinal-btn">
         📅 Réserver 30 min sur Calendly
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -1334,34 +1330,34 @@ ${navHtml}
     </div>
 
     <div class="mfinal-fourchettes">
-      <div class="mfinal-fourchette-h">FOURCHETTES TYPIQUES SPRINT FIXE™</div>
+      <div class="mfinal-fourchette-h">EXEMPLES INDICATIFS · À RECALCULER APRÈS CADRAGE</div>
       <div class="mfinal-fourchette-grid">
         <div class="mfinal-fourchette">
           <div class="mfinal-fourchette-name">Site vitrine 6 pages</div>
           <div class="mfinal-fourchette-price">6–12 k€</div>
-          <div class="mfinal-fourchette-meta">3 semaines</div>
+          <div class="mfinal-fourchette-meta">exemple · 3 semaines</div>
         </div>
         <div class="mfinal-fourchette">
           <div class="mfinal-fourchette-name">Outil interne complet</div>
           <div class="mfinal-fourchette-price">15–30 k€</div>
-          <div class="mfinal-fourchette-meta">5 semaines</div>
+          <div class="mfinal-fourchette-meta">exemple · 5 semaines</div>
         </div>
         <div class="mfinal-fourchette mfinal-fourchette-hot">
-          <div class="mfinal-fourchette-tag">PROJET STANDARD</div>
+          <div class="mfinal-fourchette-tag">EXEMPLE</div>
           <div class="mfinal-fourchette-name">MVP SaaS B2B</div>
           <div class="mfinal-fourchette-price">25–50 k€</div>
-          <div class="mfinal-fourchette-meta">6 semaines</div>
+          <div class="mfinal-fourchette-meta">exemple · 6 semaines</div>
         </div>
         <div class="mfinal-fourchette">
           <div class="mfinal-fourchette-name">Refonte e-commerce Plus</div>
           <div class="mfinal-fourchette-price">30–60 k€</div>
-          <div class="mfinal-fourchette-meta">8 semaines</div>
+          <div class="mfinal-fourchette-meta">exemple · 8 semaines</div>
         </div>
       </div>
     </div>
 
     <div class="mfinal-trust">
-      <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Réponse sous 24 h ouvrées</span>
+      <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Objectif : prochain jour ouvré</span>
       <span class="sep"></span>
       <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Par un expert · pas un commercial</span>
       <span class="sep"></span>

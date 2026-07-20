@@ -1,9 +1,14 @@
 import { NextResponse } from "next/server";
+import { CALENDLY_URL } from "@/lib/calendly";
 import { Resend } from "resend";
 import { eq } from "drizzle-orm";
-import { randomBytes } from "node:crypto";
 import { getClientIp } from "@/lib/rate-limit";
-import { checkServiceRateLimit, hashEmail, logAiCall } from "@/lib/ai-rate-limit";
+import {
+  bindReservationEmail,
+  checkServiceRateLimit,
+  hashEmail,
+  logAiCall,
+} from "@/lib/ai-rate-limit";
 import {
   getMathChallengeSecret,
   isValidMathChallenge,
@@ -13,9 +18,15 @@ import { projectBrief } from "@/db/schema";
 import { log } from "@/lib/logger";
 import {
   confirmationMailFailureOutcome,
+  deliverInquiryEmails,
   missingMailProviderOutcome,
   teamMailFailureOutcome,
 } from "@/lib/project-inquiry-delivery";
+import { sendResendEmail } from "@/lib/resend-email";
+import {
+  createInquirySlug,
+  isValidInquiryIdempotencyKey,
+} from "@/lib/inquiry-idempotency";
 import {
   PayloadTooLargeError,
   readJsonWithLimit,
@@ -24,6 +35,7 @@ import {
 export const runtime = "nodejs";
 
 const MAX_BODY_BYTES = 50_000;
+const PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION = "2026-07-20";
 
 // Extended payload — the funnel sends the FULL state so we can persist
 // every field in the DB (the email message stays the human-readable summary).
@@ -64,8 +76,6 @@ function asStringArray(v: unknown): string[] {
 function asText(value: unknown): string {
   return typeof value === "string" ? value : "";
 }
-
-const CALENDLY_URL = "https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte";
 
 /**
  * projectType / timeline / budget arrivent de deux formulaires aux options
@@ -123,7 +133,8 @@ function renderEmailShell(preheader: string, innerHtml: string): string {
                 ${innerHtml}
                 <tr>
                   <td style="padding:22px 28px;background:#fafafa;border-top:1px solid #ededed;color:#737373;font-size:12px;line-height:1.55">
-                    Hagnéré Code SAS · 82 impasse de Bellevue, 73000 Bassens<br>
+                    HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856<br>
+                    82 impasse de Bellevue, 73000 Bassens<br>
                     <a href="mailto:quentin@hagnere-patrimoine.fr" style="color:#4c1d95;text-decoration:none">quentin@hagnere-patrimoine.fr</a> · <a href="tel:+33374472018" style="color:#4c1d95;text-decoration:none">+33 3 74 47 20 18</a>
                   </td>
                 </tr>
@@ -139,6 +150,7 @@ function renderEmailShell(preheader: string, innerHtml: string): string {
 export async function POST(request: Request) {
   const ip = getClientIp(request);
   const userAgent = request.headers.get("user-agent");
+  const idempotencyKey = request.headers.get("idempotency-key")?.trim() || null;
 
   let body: Body;
   try {
@@ -159,9 +171,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  // 2. Anti-bot : l'équation a été émise et signée côté serveur. Le POST ne
-  // peut pas choisir ses propres opérandes. Sans secret valide, on échoue de
-  // façon conservatrice et on laisse l'email/téléphone comme solution de repli.
   const mathChallengeSecret = getMathChallengeSecret();
   if (!mathChallengeSecret) {
     return NextResponse.json(
@@ -172,35 +181,16 @@ export async function POST(request: Request) {
       { status: 503 },
     );
   }
-  if (!isValidMathChallenge(body.mathChallenge, mathChallengeSecret)) {
-    await logAiCall({
-      service: "inquiry",
-      ip,
-      userAgent,
-      status: "blocked",
-      blockReason: "captcha_failed",
-    });
-    return NextResponse.json(
-      {
-        error:
-          "La réponse au calcul anti-robot est incorrecte. Vérifiez le calcul puis réessayez, ou écrivez à quentin@hagnere-patrimoine.fr.",
-      },
-      { status: 403 },
-    );
-  }
 
-  // 3. Rate limit Postgres-backed (multi-tier, partagé avec les autres
-  // routes via la table ai_call_log filtrée par service='inquiry').
-  // On extrait l'email AVANT validation pour pouvoir compter par email
-  // même sur les payloads invalides.
-  // Le rate limit protège une ressource externe (email). Une panne de son
-  // stockage ne doit pas transformer la route en relais de spam : fail closed.
-  const emailFromBody = asText(body.email).trim().slice(0, 200) || null;
+  // 2. Le rate-limit est réservé AVANT la validation du calcul. Ainsi, même
+  // les réponses fausses et les relectures d'un token signé restent bornées
+  // par IP et volume global. Le quota email n'est lié qu'après validation.
+  // Une panne du stockage échoue fermée.
   let rateCheck: Awaited<ReturnType<typeof checkServiceRateLimit>>;
   try {
     rateCheck = await checkServiceRateLimit(
       ip,
-      emailFromBody,
+      null,
       "inquiry",
       userAgent,
     );
@@ -215,20 +205,33 @@ export async function POST(request: Request) {
     );
   }
   if (!rateCheck.allowed) {
-    await logAiCall({
-      service: "inquiry",
-      ip,
-      email: emailFromBody,
-      userAgent,
-      status: "blocked",
-      blockReason: rateCheck.reason,
-    });
     return NextResponse.json(
-      { error: rateCheck.message || "Trop de demandes. Réessaye plus tard." },
+      { error: rateCheck.message },
       {
         status: 429,
-        headers: { "Retry-After": String(rateCheck.retryAfterSec || 3600) },
+        headers: { "Retry-After": String(rateCheck.retryAfterSec) },
       },
+    );
+  }
+
+  // 3. L'équation a été émise et signée côté serveur. C'est une friction
+  // anti-automatisation, complétée par le rate-limit ; ce n'est pas une preuve
+  // autonome qu'un humain est à l'origine de la requête.
+  if (!isValidMathChallenge(body.mathChallenge, mathChallengeSecret)) {
+    await logAiCall({
+      reservationId: rateCheck.reservationId,
+      service: "inquiry",
+      ip,
+      userAgent,
+      status: "blocked",
+      blockReason: "captcha_failed",
+    });
+    return NextResponse.json(
+      {
+        error:
+          "La réponse au calcul anti-robot est incorrecte. Vérifiez le calcul puis réessayez, ou écrivez à quentin@hagnere-patrimoine.fr.",
+      },
+      { status: 403 },
     );
   }
 
@@ -254,11 +257,14 @@ export async function POST(request: Request) {
   if (!message || message.length < 10) errors.message = "Décrivez votre projet en 1-2 phrases";
   if (body.consent !== true) {
     errors.consent =
-      "Confirmez avoir pris connaissance de la politique de confidentialité et demander le traitement de votre demande dans le cadre de mesures précontractuelles.";
+      "Confirmez avoir pris connaissance de la politique de confidentialité et demander le traitement de votre demande professionnelle.";
   }
   if (!isPlausibleLabel(budget)) errors.budget = "Budget invalide";
   if (!isPlausibleLabel(projectType)) errors.projectType = "Type de projet invalide";
   if (!isPlausibleLabel(timeline)) errors.timeline = "Échéance invalide";
+  if (!isValidInquiryIdempotencyKey(idempotencyKey)) {
+    errors.submission = "Identifiant de soumission invalide";
+  }
   // Phone : si fourni, doit ressembler à un numéro plausible.
   if (phone) {
     const phoneDigits = phone.replace(/[^\d]/g, "");
@@ -273,13 +279,54 @@ export async function POST(request: Request) {
 
   if (Object.keys(errors).length > 0) {
     await logAiCall({
+      reservationId: rateCheck.reservationId,
       service: "inquiry",
       ip,
-      email: emailFromBody,
+      email,
       userAgent,
       status: "validation",
     });
     return NextResponse.json({ errors }, { status: 400 });
+  }
+
+  // Le quota lié à l'adresse n'est attaché qu'après captcha et validation.
+  // Une requête invalide ne peut donc pas épuiser le quota d'un tiers.
+  let emailRateCheck: Awaited<ReturnType<typeof bindReservationEmail>>;
+  try {
+    emailRateCheck = await bindReservationEmail(
+      rateCheck.reservationId,
+      "inquiry",
+      email,
+    );
+  } catch (err) {
+    log.error("project_inquiry_email_rate_limit_unavailable", {
+      err: err as Error,
+    });
+    return NextResponse.json(
+      {
+        error:
+          "Le formulaire est temporairement indisponible. Écrivez à quentin@hagnere-patrimoine.fr ou réessayez plus tard.",
+      },
+      { status: 503 },
+    );
+  }
+  if (!emailRateCheck.allowed) {
+    await logAiCall({
+      reservationId: rateCheck.reservationId,
+      service: "inquiry",
+      ip,
+      email,
+      userAgent,
+      status: "blocked",
+      blockReason: emailRateCheck.reason,
+    });
+    return NextResponse.json(
+      { error: emailRateCheck.message },
+      {
+        status: 429,
+        headers: { "Retry-After": String(emailRateCheck.retryAfterSec) },
+      },
+    );
   }
 
   // ── DB persistence ────────────────────────────────────────────────
@@ -288,16 +335,42 @@ export async function POST(request: Request) {
   // itself is best-effort — if DATABASE_URL is missing we log and continue
   // so the funnel never blocks on a misconfigured env.
   let briefId: number | null = null;
-  let briefSlug: string | null = null;
+  const canonicalPayload = JSON.stringify([
+    firstName,
+    lastName,
+    email.toLowerCase(),
+    company,
+    phone,
+    projectType,
+    timeline,
+    budget,
+    message,
+    asText(body.role).trim(),
+    asText(body.siren).replace(/\s/g, ""),
+    asStringArray(body.projectKinds),
+    asStringArray(body.objectives),
+    asText(body.description),
+    asText(body.currentSituation),
+    asText(body.audience),
+    asStringArray(body.mustHaves),
+    asStringArray(body.integrations),
+    asStringArray(body.existingAssets),
+    asText(body.openScope),
+    asText(body.decisionStage),
+  ]);
+  // Identifiant interne non énumérable et racine stable des clés Resend.
+  // Il n'est jamais exposé dans la réponse publique.
+  const briefSlug = createInquirySlug({
+    secret: mathChallengeSecret,
+    clientKey: idempotencyKey,
+    canonicalPayload,
+  });
   try {
-    // 16 bytes → 22 chars base64url (≈128 bits d'entropie). Identifiant
-    // public non-énumérable du brief, conservé pour un futur backoffice.
-    // Pas de dépendance externe — randomBytes est natif Node (crypto-strong).
-    const generatedSlug = randomBytes(16).toString("base64url");
-    const inserted = await getDb()
+    const db = getDb();
+    const inserted = await db
       .insert(projectBrief)
       .values({
-        publicSlug: generatedSlug,
+        publicSlug: briefSlug,
         firstName,
         lastName,
         email,
@@ -318,13 +391,20 @@ export async function POST(request: Request) {
         budget: budget || null,
         decisionStage: asText(body.decisionStage).slice(0, 200) || null,
         consent: body.consent === true,
-        ip: getClientIp(request),
-        userAgent: request.headers.get("user-agent")?.slice(0, 500) || null,
+        privacyNoticeVersion: PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION,
         mailSent: false,
       })
-      .returning({ id: projectBrief.id, publicSlug: projectBrief.publicSlug });
+      .onConflictDoNothing({ target: projectBrief.publicSlug })
+      .returning({ id: projectBrief.id });
     briefId = inserted[0]?.id ?? null;
-    briefSlug = inserted[0]?.publicSlug ?? null;
+    if (briefId == null) {
+      const existing = await db
+        .select({ id: projectBrief.id })
+        .from(projectBrief)
+        .where(eq(projectBrief.publicSlug, briefSlug))
+        .limit(1);
+      briefId = existing[0]?.id ?? null;
+    }
     // PII : on logge l'id et un email haché pour ne pas écrire l'adresse en clair.
     log.info("project_brief_inserted", { briefId, emailHash: hashEmail(email) });
   } catch (err) {
@@ -348,6 +428,7 @@ export async function POST(request: Request) {
     `Projet    : ${projectType || "non précisé"}`,
     `Budget    : ${budget || "non précisé"}`,
     `Échéance  : ${timeline || "non précisée"}`,
+    `Notice vie privée lue : version ${PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION}`,
     "",
     "Message :",
     message,
@@ -361,7 +442,7 @@ export async function POST(request: Request) {
         <td style="padding:30px 28px 10px">
           <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6d28d9;font-weight:700">Nouveau projet</div>
           <h1 style="margin:10px 0 8px;font-size:28px;line-height:1.08;letter-spacing:0;color:#0a0a0a">Contact reçu depuis le site.</h1>
-          <p style="margin:0;color:#525252;font-size:14px;line-height:1.6">À traiter sous 24 h ouvrées. Répondre directement à l'email du prospect.</p>
+          <p style="margin:0;color:#525252;font-size:14px;line-height:1.6">Objectif interne : traiter le prochain jour ouvré. Répondre directement à l'email du prospect.</p>
         </td>
       </tr>
       <tr>
@@ -374,6 +455,7 @@ export async function POST(request: Request) {
             <tr><td style="width:130px;color:#737373;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Projet</td><td style="font-size:15px">${escapeHtml(projectType || "non précisé")}</td></tr>
             <tr><td style="width:130px;color:#737373;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Budget</td><td style="font-size:15px">${escapeHtml(budget || "non précisé")}</td></tr>
             <tr><td style="width:130px;color:#737373;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Échéance</td><td style="font-size:15px">${escapeHtml(timeline || "non précisée")}</td></tr>
+            <tr><td style="width:130px;color:#737373;font-size:12px;text-transform:uppercase;letter-spacing:0.08em">Notice vie privée</td><td style="font-size:15px">Version ${PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION} — prise de connaissance confirmée</td></tr>
           </table>
         </td>
       </tr>
@@ -394,7 +476,7 @@ export async function POST(request: Request) {
     "",
     "Ce qui se passe maintenant :",
     "1. Votre brief est lu personnellement par notre équipe.",
-    "2. Vous recevez une réponse argumentée sous 24 h ouvrées.",
+    "2. Nous visons une réponse argumentée le prochain jour ouvré, sans délai garanti.",
     "3. Si le sujet s'y prête, nous vous proposons un créneau d'échange.",
     "",
     "Récapitulatif :",
@@ -402,6 +484,7 @@ export async function POST(request: Request) {
     `Projet     : ${projectType || "non précisé"}`,
     `Budget     : ${budget || "non précisé"}`,
     `Échéance   : ${timeline || "non précisée"}`,
+    `Notice vie privée lue : version ${PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION}`,
     "",
     "Votre message :",
     message,
@@ -412,12 +495,12 @@ export async function POST(request: Request) {
   ].filter(Boolean).join("\n");
 
   const confirmationHtml = renderEmailShell(
-    "Votre message est bien arrivé. Réponse sous 24 h ouvrées.",
+    "Votre message est bien arrivé. Objectif : le prochain jour ouvré.",
     `
       <tr>
         <td style="padding:32px 28px 8px">
           <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6d28d9;font-weight:700">Message reçu</div>
-          <h1 style="margin:10px 0 12px;font-size:31px;line-height:1.04;letter-spacing:0;color:#0a0a0a">Bonjour ${escapeHtml(firstName)},<br>on revient vers vous sous 24 h.</h1>
+          <h1 style="margin:10px 0 12px;font-size:31px;line-height:1.04;letter-spacing:0;color:#0a0a0a">Bonjour ${escapeHtml(firstName)},<br>votre demande est bien arrivée.</h1>
           <p style="margin:0;color:#404040;font-size:15px;line-height:1.65">Votre message est arrivé au bon endroit. Il sera lu par quelqu'un qui code, pas par un commercial — et vous recevrez une réponse franche sur la meilleure prochaine étape.</p>
         </td>
       </tr>
@@ -429,7 +512,7 @@ export async function POST(request: Request) {
                 <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#c4b5fd;font-weight:700">Ce qui se passe maintenant</div>
                 <ol style="margin:14px 0 0;padding-left:20px;color:#f5f5f5;font-size:14px;line-height:1.8">
                   <li>Votre brief est lu personnellement par notre équipe.</li>
-                  <li>Vous recevez une réponse argumentée sous 24 h ouvrées.</li>
+                  <li>Nous visons une réponse argumentée le prochain jour ouvré, sans délai garanti.</li>
                   <li>Si le sujet s'y prête, nous vous proposons un créneau d'échange.</li>
                 </ol>
               </td>
@@ -445,6 +528,7 @@ export async function POST(request: Request) {
             <div style="padding:13px 16px;border-bottom:1px solid #ededed"><b>Projet</b><br><span style="color:#525252">${escapeHtml(projectType || "non précisé")}</span></div>
             <div style="padding:13px 16px;border-bottom:1px solid #ededed"><b>Budget</b><br><span style="color:#525252">${escapeHtml(budget || "non précisé")}</span></div>
             <div style="padding:13px 16px;border-bottom:1px solid #ededed"><b>Échéance</b><br><span style="color:#525252">${escapeHtml(timeline || "non précisée")}</span></div>
+            <div style="padding:13px 16px;border-bottom:1px solid #ededed"><b>Information vie privée</b><br><span style="color:#525252">Version ${PROJECT_INQUIRY_PRIVACY_NOTICE_VERSION} — prise de connaissance confirmée</span></div>
             <div style="padding:13px 16px"><b>Message</b><br><span style="color:#525252;white-space:pre-wrap">${escapedMessage}</span></div>
           </div>
         </td>
@@ -469,10 +553,7 @@ export async function POST(request: Request) {
       process.env.NODE_ENV === "production",
       briefId != null,
     );
-    return NextResponse.json(
-      { ...outcome.payload, briefId, briefSlug },
-      { status: outcome.status },
-    );
+    return NextResponse.json(outcome.payload, { status: outcome.status });
   }
 
   // Helper to update mail_sent flag on the brief row (best-effort).
@@ -488,86 +569,51 @@ export async function POST(request: Request) {
     }
   }
 
-  try {
-    const resend = new Resend(apiKey);
-    const result = await resend.emails.send({
-      from: `Hagnéré Code <${fromAddr}>`,
-      to: [toAddr],
-      replyTo: email,
-      subject,
-      text: textBody,
-      html: htmlBody,
-    });
-
-    if (result.error) {
-      log.error("project_inquiry_resend_team_failed", { err: result.error, briefId });
-      await logAiCall({
-        service: "inquiry",
-        ip,
-        email,
-        userAgent,
-        status: "ai_error",
-        briefId,
-      });
-      const outcome = teamMailFailureOutcome(briefId != null);
-      return NextResponse.json(
-        { ...outcome.payload, briefId, briefSlug },
-        { status: outcome.status },
+  const resend = new Resend(apiKey);
+  const delivery = await deliverInquiryEmails(
+    async () => {
+      const result = await sendResendEmail(
+        resend,
+        {
+          from: `Hagnéré Code <${fromAddr}>`,
+          to: [toAddr],
+          replyTo: email,
+          subject,
+          text: textBody,
+          html: htmlBody,
+        },
+        `inquiry-${briefSlug}-team`,
       );
-    }
-
-    const confirmation = await resend.emails.send({
-      from: `Hagnéré Code <${fromAddr}>`,
-      to: [email],
-      replyTo: toAddr,
-      subject: confirmationSubject,
-      text: confirmationText,
-      html: confirmationHtml,
-    });
-
-    if (confirmation.error) {
-      log.error("project_inquiry_resend_confirmation_failed", {
-        err: confirmation.error,
-        briefId,
-      });
-      // Mark mail_sent anyway since the team mail went through — losing
-      // the prospect confirmation is annoying but the lead is captured.
-      await markMailSent();
-      await logAiCall({
-        service: "inquiry",
-        ip,
-        email,
-        userAgent,
-        status: "ok",
-        briefId,
-      });
-      const outcome = confirmationMailFailureOutcome();
-      return NextResponse.json(
-        { ...outcome.payload, briefId, briefSlug },
-        { status: outcome.status },
+      return result.error
+        ? { ok: false, errorName: result.error.name }
+        : { ok: true };
+    },
+    async () => {
+      const result = await sendResendEmail(
+        resend,
+        {
+          from: `Hagnéré Code <${fromAddr}>`,
+          to: [email],
+          replyTo: toAddr,
+          subject: confirmationSubject,
+          text: confirmationText,
+          html: confirmationHtml,
+        },
+        `inquiry-${briefSlug}-confirmation`,
       );
-    }
+      return result.error
+        ? { ok: false, errorName: result.error.name }
+        : { ok: true };
+    },
+  );
 
-    await markMailSent();
-    await logAiCall({
-      service: "inquiry",
-      ip,
-      email,
-      userAgent,
-      status: "ok",
+  if (delivery.kind === "team_failed") {
+    log.error("project_inquiry_resend_team_failed", {
+      providerErrorName: delivery.errorName,
       briefId,
     });
-    return NextResponse.json({
-      ok: true,
-      captured: true,
-      teamNotified: true,
-      confirmationSent: true,
-      briefId,
-      briefSlug,
-    });
-  } catch (err) {
-    log.error("project_inquiry_unexpected_error", { err: err as Error, briefId });
     await logAiCall({
+      reservationId: rateCheck.reservationId,
       service: "inquiry",
       ip,
       email,
@@ -576,9 +622,33 @@ export async function POST(request: Request) {
       briefId,
     });
     const outcome = teamMailFailureOutcome(briefId != null);
-    return NextResponse.json(
-      { ...outcome.payload, briefId, briefSlug },
-      { status: outcome.status },
-    );
+    return NextResponse.json(outcome.payload, { status: outcome.status });
   }
+
+  await markMailSent();
+  await logAiCall({
+    reservationId: rateCheck.reservationId,
+    service: "inquiry",
+    ip,
+    email,
+    userAgent,
+    status: "ok",
+    briefId,
+  });
+
+  if (delivery.kind === "confirmation_failed") {
+    log.error("project_inquiry_resend_confirmation_failed", {
+      providerErrorName: delivery.errorName,
+      briefId,
+    });
+    const outcome = confirmationMailFailureOutcome();
+    return NextResponse.json(outcome.payload, { status: outcome.status });
+  }
+
+  return NextResponse.json({
+    ok: true,
+    captured: true,
+    teamNotified: true,
+    confirmationSent: true,
+  });
 }

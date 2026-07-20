@@ -21,42 +21,42 @@ export const refuseHtml = `
         <li>
           <div class="oi-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Tout ce qui n'est pas légal en France / UE</h4>
+            <h3>Tout ce qui n'est pas légal en France / UE</h3>
             <p>Outils de contournement fiscal, collecte de données RH sans base légale, surveillance salariale non déclarée, non-respect du droit du travail. On ne discute pas.</p>
           </div>
         </li>
         <li>
           <div class="oi-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Projets sans sponsor interne identifié</h4>
+            <h3>Projets sans sponsor interne identifié</h3>
             <p>Sans décideur, responsable opérationnel et disponibilité côté client, le risque d'échec augmente fortement. Le projet est reporté ou orienté vers un accompagnement adapté.</p>
           </div>
         </li>
         <li>
           <div class="oi-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Refonte complète d'un ERP groupe</h4>
+            <h3>Refonte complète d'un ERP groupe</h3>
             <p>Sage X3 / SAP / Oracle groupe à remplacer de zéro : c'est le métier d'un intégrateur ERP spécialisé (type Micropole, Capgemini). Nous, on branche à votre ERP, on ne le refait pas.</p>
           </div>
         </li>
         <li>
           <div class="oi-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Reprise d'un outil moribond sans audit préalable</h4>
+            <h3>Reprise d'un outil moribond sans audit préalable</h3>
             <p>"Notre outil interne existe mais il bugge depuis 3 ans" — on commence par un audit pour comparer correction ciblée, reprise progressive et réécriture. La recommandation dépend des preuves recueillies, pas d'un pourcentage maison.</p>
           </div>
         </li>
         <li>
           <div class="oi-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Projets en pur mode "régie au compteur"</h4>
+            <h3>Projets en pur mode "régie au compteur"</h3>
             <p>Notre modèle est <b>forfait fixe</b>. Si vous cherchez un dev facturé au TJM pour piloter vous-même au jour le jour, nous ne sommes pas la bonne équipe — Malt ou Comet sont plus efficaces pour ce besoin.</p>
           </div>
         </li>
         <li>
           <div class="oi-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Relations commerciales toxiques</h4>
+            <h3>Relations commerciales toxiques</h3>
             <p>Mépris de l'équipe, micro-management, négociations agressives permanentes, changements de scope déguisés en "petites précisions". La vie est courte — on passe, même sur un gros budget.</p>
           </div>
         </li>

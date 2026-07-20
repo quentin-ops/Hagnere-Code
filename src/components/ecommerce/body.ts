@@ -692,42 +692,42 @@ ${navHtml}
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 01</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg></div>
-        <h4>Audit &amp; cadrage</h4>
+        <h3>Audit &amp; cadrage</h3>
         <p>Workshop avec décideur + équipe ops. Analyse de l'existant (perfs, SEO, stack). Catalogage des intégrations cibles.</p>
         <div class="proc-dur">À PLANIFIER</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-        <h4>Design &amp; Figma</h4>
+        <h3>Design &amp; Figma</h3>
         <p>Moodboard, charte graphique, design system. Prototype cliquable validé par vos équipes avant une seule ligne de code.</p>
         <div class="proc-dur">À PLANIFIER</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
-        <h4>Sprint dev</h4>
+        <h3>Sprint dev</h3>
         <p>Développement par itérations courtes, dépôt et environnements définis au lancement, démonstrations selon la cadence convenue.</p>
         <div class="proc-dur">SELON PÉRIMÈTRE</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
-        <h4>QA &amp; tests de charge</h4>
+        <h3>QA &amp; tests de charge</h3>
         <p>Tests unitaires et E2E, scénario de charge dimensionné, revue du parcours de paiement et budget de performance.</p>
         <div class="proc-dur">AU PLAN DE RECETTE</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M4 4h16v16H4zM4 12h16M12 4v16"/></svg></div>
-        <h4>Migration 301</h4>
+        <h3>Migration 301</h3>
         <p>Inventaire des URL utiles, imports contrôlés, redirections, recette et plan de bascule avec procédure de retour.</p>
         <div class="proc-dur">SELON VOLUMES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 06</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
-        <h4>Go-live + TMA</h4>
+        <h3>Go-live + TMA</h3>
         <p>Formation et documentation prévues au devis, bascule préparée et accompagnement post-lancement selon l'option retenue.</p>
         <div class="proc-dur">LIVRABLES CONTRACTUELS</div>
       </div>
@@ -758,7 +758,7 @@ ${navHtml}
         </div>
         <h3 class="ec-stack-track-title">Shopify Plus + storefront <em>sur mesure</em>.</h3>
         <p class="ec-stack-track-pitch">
-          On exploite <b>un écosystème largement outillé</b> (checkout Shopify, Klaviyo, Gorgias,
+          On s'appuie sur <b>un écosystème largement outillé</b> (checkout Shopify, Klaviyo, Gorgias,
           Judge.me). On ajoute un storefront <b>Hydrogen ou Next.js</b> quand le SEO, la vitesse
           ou l'identité de marque le justifient. Vous gardez Shopify. On apporte le sur-mesure là où ça compte.
         </p>
@@ -854,28 +854,28 @@ ${navHtml}
           <div class="ec-stack-extra-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
           </div>
-          <h4>App mobile React Native</h4>
+          <h3>App mobile React Native</h3>
           <p>Même API, deux stores et mises à jour OTA compatibles avec leurs règles, si l'app figure au devis.</p>
         </div>
         <div class="ec-stack-extra">
           <div class="ec-stack-extra-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
           </div>
-          <h4>Back-office métier sur mesure (React)</h4>
+          <h3>Back-office métier sur mesure (React)</h3>
           <p>Taillé pour votre équipe ops, pas un admin générique. Stocks, SAV, retours, reporting.</p>
         </div>
         <div class="ec-stack-extra">
           <div class="ec-stack-extra-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg>
           </div>
-          <h4>IA Claude intégrée</h4>
+          <h3>IA Claude intégrée</h3>
           <p>Fiches produit multi-langues, recherche sémantique pgvector, agent SAV niveau 1, routing logistique.</p>
         </div>
         <div class="ec-stack-extra">
           <div class="ec-stack-extra-ic">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
-          <h4>Infra EU + observabilité</h4>
+          <h3>Infra EU + observabilité</h3>
           <p>Fournisseur, localisation, supervision, alertes et astreinte éventuelle sont choisis selon l'architecture.</p>
         </div>
       </div>
@@ -887,7 +887,7 @@ ${navHtml}
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
       </div>
       <div class="ec-stack-honest-body">
-        <h4>Ce qu'on ne fait pas</h4>
+        <h3>Ce qu'on ne fait pas</h3>
         <p>
           Réinventer un checkout quand Shopify le fait mieux. Vendre du sur-mesure en moteur e-commerce
           quand Medusa ou Shopify est le bon outil. Livrer une boutique "templatée" déguisée en sur-mesure.
@@ -916,7 +916,7 @@ ${navHtml}
     <div class="price-grid">
       <div class="plan reveal">
         <div class="plan-tag">LAUNCH</div>
-        <h4>Nouvelle boutique</h4>
+        <h3>Nouvelle boutique</h3>
         <div class="plan-sub">Pour lancer une boutique e-commerce propre et scalable, sans les contraintes d'un Shopify.</div>
         <div class="plan-price">
           <span class="amount">15–30 k€</span>
@@ -938,7 +938,7 @@ ${navHtml}
       <div class="plan featured reveal reveal-d-1">
         <div class="plan-badge">POUR UNE REFONTE ÉTENDUE</div>
         <div class="plan-tag">SCALE</div>
-        <h4>Refonte + App mobile</h4>
+        <h3>Refonte + App mobile</h3>
         <div class="plan-sub">Pour refondre une boutique existante et, si l'usage le justifie, sortir l'app mobile dans le même programme.</div>
         <div class="plan-price">
           <span class="amount">30–70 k€</span>
@@ -960,7 +960,7 @@ ${navHtml}
 
       <div class="plan reveal reveal-d-2">
         <div class="plan-tag">ENTERPRISE</div>
-        <h4>B2B + B2C + multi-pays</h4>
+        <h3>B2B + B2C + multi-pays</h3>
         <div class="plan-sub">Pour les marques qui vendent sur plusieurs pays, avec une composante B2B (pros, revendeurs, grossistes).</div>
         <div class="plan-price">
           <span class="amount">70–120 k€</span>
@@ -996,9 +996,9 @@ ${navHtml}
   <div class="wrap inner">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:14px">Parlons de votre boutique.<br><span class="accent">30 minutes, c'est tout.</span></h2>
-    <p>Un call avec un expert : on regarde votre stack actuelle (ou votre brief), on challenge le périmètre, on sort une fourchette budget + délai le soir même. Si ce n'est pas pour nous, on vous oriente ailleurs.</p>
+    <p>Un échange avec un expert : nous examinons votre stack actuelle ou votre brief, puis nous précisons le périmètre, les prochaines étapes et le délai de chiffrage. Si une autre solution paraît plus adaptée, nous vous le disons.</p>
     <div class="scta-cta">
-      <a href="#" class="btn btn-accent btn-lg">
+      <a href="/rendez-vous" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min sur Calendly
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -1006,7 +1006,7 @@ ${navHtml}
         Envoyer un email →
       </a>
     </div>
-    <div class="scta-meta">RÉPONSE SOUS 24H OUVRÉES · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
+    <div class="scta-meta">OBJECTIF : PROCHAIN JOUR OUVRÉ · DÉLAI NON GARANTI · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
   </div>
 </section>
 

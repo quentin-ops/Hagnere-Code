@@ -1,11 +1,10 @@
-"use client";
-
 import Link from "next/link";
-import { useRef } from "react";
-import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
+import type { CSSProperties } from "react";
+import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { MainNav } from "@/components/design-shared/MainNav";
-import { CaseStudy, CASES } from "./cases";
+import { CASES } from "./cases";
+import type { CaseStudy } from "./cases";
 import "./case-study.css";
 import "@/components/design-shared/responsive.css";
 import "@/components/design-shared/nav-dropdown.css";
@@ -14,26 +13,24 @@ import "@/components/design-shared/site-footer.css";
 type Props = { caseStudy: CaseStudy };
 
 export function CaseStudyPage({ caseStudy: c }: Props) {
-  const rootRef = useRef<HTMLDivElement>(null);
-  useDesignInteractive(rootRef);
-
   const otherCases = Object.values(CASES).filter((x) => x.slug !== c.slug);
 
-  const brandVars: React.CSSProperties & Record<string, string> = {
+  const brandVars: CSSProperties & Record<string, string> = {
     "--brand": c.brandColor,
     "--brand-soft": c.brandSoft,
   };
 
   return (
-    <div ref={rootRef} className="hc-design cs-root" style={brandVars}>
+    <InteractiveDesignRoot className="hc-design cs-root" style={brandVars}>
       <MainNav />
+      <main id="main-content" tabIndex={-1}>
 
       {/* Breadcrumb */}
       <div className="wrap">
         <div className="crumb">
           <Link href="/">Accueil</Link>
           <span className="sep">/</span>
-          <Link href="/realisations">Réalisations</Link>
+          <Link href="/realisations">Analyses publiques</Link>
           <span className="sep">/</span>
           <span>{c.brandName}</span>
         </div>
@@ -46,7 +43,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
           <div className="cs-hero-meta">
             <span className="cs-chip">{c.category}</span>
             <span className="sep" />
-            <span className="cs-year">Livré {c.year}</span>
+            <span className="cs-year">{c.status}</span>
           </div>
           <div className="cs-hero-head">
             <div className="cs-hero-logo">{c.brandLogo}</div>
@@ -65,14 +62,18 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
           </div>
           <p className="cs-hero-tagline">{c.tagline}</p>
           <p className="cs-hero-intro">{c.heroIntro}</p>
+          <p className="cs-hero-intro">
+            Le lien public permet de contrôler les seuls éléments recensés ici. Il ne
+            démontre ni une intervention technique de Hagnéré Code, ni une équipe, ni une
+            stack, ni une performance commerciale.
+          </p>
 
-          {/* Key metrics grid */}
+          {/* Stable product highlights: capabilities, never unsourced outcomes. */}
           <div className="cs-kpis">
-            {c.metrics.map((m, i) => (
-              <div className="cs-kpi" key={i}>
-                <div className="cs-kpi-value">{m.value}</div>
-                <div className="cs-kpi-label">{m.label}</div>
-                {m.note && <div className="cs-kpi-note">{m.note}</div>}
+            {c.highlights.map((highlight) => (
+              <div className="cs-kpi" key={`${highlight.value}-${highlight.label}`}>
+                <div className="cs-kpi-value">{highlight.value}</div>
+                <div className="cs-kpi-label">{highlight.label}</div>
               </div>
             ))}
           </div>
@@ -83,33 +84,13 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
       <section className="cs-info">
         <div className="wrap cs-info-grid">
           <div>
-            <div className="cs-info-k">Durée</div>
-            <div className="cs-info-v">{c.duration}</div>
+            <div className="cs-info-k">Source vérifiée</div>
+            <div className="cs-info-v">{c.engagement}</div>
           </div>
           <div>
-            <div className="cs-info-k">Équipe</div>
-            <div className="cs-info-v">{c.team.join(" · ")}</div>
+            <div className="cs-info-k">Nature</div>
+            <div className="cs-info-v">Analyse éditoriale d&apos;une page externe</div>
           </div>
-          <div>
-            <div className="cs-info-k">Stack</div>
-            <div className="cs-info-v cs-info-stack">
-              {c.stack.map((s) => (
-                <span key={s}>{s}</span>
-              ))}
-            </div>
-          </div>
-          {c.services && c.services.length > 0 && (
-            <div>
-              <div className="cs-info-k">Services</div>
-              <div className="cs-info-v cs-info-stack">
-                {c.services.map((s) => (
-                  <Link key={s.href} href={s.href}>
-                    {s.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </section>
 
@@ -117,8 +98,8 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
       <section className="cs-section">
         <div className="wrap">
           <div className="cs-section-head">
-            <div className="eyebrow">— Le contexte</div>
-            <h2>D&apos;où on part.</h2>
+            <div className="eyebrow">— Observation publique</div>
+            <h2>Ce que présente la page liée.</h2>
           </div>
           <p className="cs-prose">{c.context}</p>
         </div>
@@ -128,12 +109,12 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
       <section className="cs-section cs-section-dark">
         <div className="wrap">
           <div className="cs-section-head">
-            <div className="eyebrow on-dark">— Le problème</div>
-            <h2>Ce qui coinçait, concrètement.</h2>
+            <div className="eyebrow on-dark">— Besoins rendus visibles</div>
+            <h2>Comment la page organise l&apos;information.</h2>
           </div>
           <div className="cs-cards">
             {c.problem.map((p, i) => (
-              <div className="cs-card cs-card-dark" key={i}>
+              <div className="cs-card cs-card-dark" key={p.title}>
                 <div className="cs-card-num">{String(i + 1).padStart(2, "0")}</div>
                 <h3>{p.title}</h3>
                 <p>{p.body}</p>
@@ -147,12 +128,12 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
       <section className="cs-section">
         <div className="wrap">
           <div className="cs-section-head">
-            <div className="eyebrow">— La solution</div>
-            <h2>Comment on s&apos;y est pris.</h2>
+            <div className="eyebrow">— Éléments observables</div>
+            <h2>Ce que le visiteur peut contrôler.</h2>
           </div>
           <div className="cs-cards">
             {c.solution.map((s, i) => (
-              <div className="cs-card" key={i}>
+              <div className="cs-card" key={s.title}>
                 <div className="cs-card-num cs-card-num-brand">
                   {String(i + 1).padStart(2, "0")}
                 </div>
@@ -164,19 +145,19 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
         </div>
       </section>
 
-      {/* Features delivered */}
+      {/* Publicly observable features only. */}
       <section className="cs-section cs-section-soft">
         <div className="wrap">
           <div className="cs-section-head">
-            <div className="eyebrow">— Livré</div>
+            <div className="eyebrow">— Inventaire public</div>
             <h2>
-              {c.features.length} modules construits,<br />
-              testés, déployés en production.
+              {c.features.length} éléments visibles<br />
+              sur la page liée.
             </h2>
           </div>
           <div className="cs-features">
-            {c.features.map((f, i) => (
-              <div className="cs-feat" key={i}>
+            {c.features.map((f) => (
+              <div className="cs-feat" key={f}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M5 12l5 5L20 7" />
                 </svg>
@@ -191,12 +172,12 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
       <section className="cs-section">
         <div className="wrap">
           <div className="cs-section-head">
-            <div className="eyebrow">— Ce que ça donne</div>
-            <h2>Aperçus produit.</h2>
+            <div className="eyebrow">— Illustrations</div>
+            <h2>Représentations schématiques.</h2>
           </div>
           <div className="cs-shots">
-            {c.screenshots.map((s, i) => (
-              <div className="cs-shot" key={i}>
+            {c.screenshots.map((s) => (
+              <div className="cs-shot" key={s.title}>
                 <div className={`cs-shot-canvas cs-shot-${s.kind}`}>
                   {/* Placeholder visual, swapped for real screenshots later */}
                   <div className="cs-shot-chrome">
@@ -224,7 +205,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
               <path d="M12 9v4M12 17h.01" />
               <circle cx="12" cy="12" r="10" />
             </svg>
-            Captures produit réelles ajoutées sous peu — accès live disponible sur{" "}
+            Visuels schématiques, non probants. La page publique peut être consultée sur{" "}
             <a href={c.url} target="_blank" rel="noopener noreferrer">
               {c.url.replace(/^https?:\/\//, "")}
             </a>
@@ -233,9 +214,10 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
         </div>
       </section>
 
-      {/* Testimonial */}
+      {/* Explicitly identified editorial note, never presented as a client review. */}
       <section className="cs-section cs-section-dark">
         <div className="wrap cs-testimonial">
+          <div className="eyebrow on-dark">— Note éditoriale · pas un avis client</div>
           <svg className="cs-quote-mark" width="48" height="40" viewBox="0 0 48 40" fill="currentColor">
             <path d="M14 0v12H8c0 4 2 6 6 6v10c-8-1-14-5-14-16V0h14zM34 0v12h-6c0 4 2 6 6 6v10c-8-1-14-5-14-16V0h14z" opacity="0.2" />
           </svg>
@@ -266,21 +248,17 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
               }}
             >
               <p style={{ margin: 0 }}>
-                <strong>Avertissement.</strong> Le cabinet présenté ({c.brandName})
-                exerce une activité réglementée en matière d&apos;investissement
-                immobilier et/ou de conseil en gestion de patrimoine. Les
-                chiffres affichés (rendement, performance, volumes clients)
-                sont des données historiques propres au cabinet et ne
-                constituent <strong>ni une offre, ni une recommandation
-                d&apos;investissement</strong>. Les{" "}
-                <strong>performances passées ne préjugent pas des performances
-                futures</strong>, le capital investi n&apos;est pas garanti et
-                tout placement présente un risque de perte. Les mentions
-                réglementaires (immatriculation ORIAS, statut CGP, agrément
-                AMF le cas échéant) sont disponibles sur le site du cabinet
-                concerné. HAGNÉRÉ CODE SAS intervient ici en qualité de
-                prestataire technique et marketing — sans démarchage ni
-                conseil financier au visiteur.
+                <strong>Avertissement.</strong> Cette analyse porte sur la page
+                publique externe de {c.brandName}. Elle ne constitue pas une preuve
+                de réalisation, d&apos;intervention de Hagnéré Code ou de performance.
+                Les écrans, simulateurs et parcours décrits ici ne constituent <strong>ni une
+                offre, ni une recommandation d&apos;investissement</strong>.
+                Toute simulation repose sur des hypothèses, le capital investi
+                n&apos;est pas garanti et tout placement présente un risque de
+                perte. Les informations réglementaires du professionnel sont
+                à vérifier sur son site et, lorsqu&apos;il est concerné, dans le
+                registre public de l&apos;ORIAS. Aucune prestation technique,
+                marketing, SEO ou publicitaire de Hagnéré Code n&apos;est revendiquée ici.
               </p>
             </div>
           </div>
@@ -291,7 +269,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
       <section className="cs-section cs-section-soft">
         <div className="wrap">
           <div className="cs-section-head">
-            <div className="eyebrow">— Autres réalisations</div>
+            <div className="eyebrow">— Autres analyses publiques</div>
             <h2>Poursuivre la lecture.</h2>
           </div>
           <div className="cs-others">
@@ -311,7 +289,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
                 </div>
                 <p>{o.tagline}</p>
                 <div className="cs-other-foot">
-                  Lire l&apos;étude
+                  Lire l&apos;analyse
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M13 5l7 7-7 7" />
                   </svg>
@@ -328,7 +306,8 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
         </div>
       </section>
 
+      </main>
       <SiteFooter />
-    </div>
+    </InteractiveDesignRoot>
   );
 }

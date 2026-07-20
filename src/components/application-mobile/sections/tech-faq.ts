@@ -15,16 +15,16 @@ export const techFaqHtml = `
 
     <div class="mob-tech-faq-grid">
       <div class="mob-tech-faq-item reveal">
-        <h4>Pourquoi Expo et pas React Native bare ?</h4>
+        <h3>Pourquoi Expo et pas React Native bare ?</h3>
         <p>
-          Expo SDK 53+ couvre 99 % des modules natifs dont une app PME a besoin (Push, IAP, Apple Pay, BLE, géoloc, biométrie, caméra, contacts, calendrier, fichiers).
+          La compatibilité d'Expo avec les modules requis (push, paiement, BLE, géolocalisation, biométrie, caméra ou fichiers) est vérifiée pendant le cadrage.
           On gagne <b>EAS Build, EAS Submit et EAS Update (OTA)</b> sans bricoler de scripts Fastlane custom.
           Si vous avez besoin d'un module natif tiers non couvert, on prebuild en mode "expo-dev-client" (vs ejecter).
         </p>
       </div>
 
       <div class="mob-tech-faq-item reveal reveal-d-1">
-        <h4>Stratégie offline-first : optimistic UI, sync, conflits ?</h4>
+        <h3>Stratégie offline-first : optimistic UI, sync, conflits ?</h3>
         <p>
           Approche standard : <b>cache local SQLite (WatermelonDB ou Op-SQLite)</b>, queue de mutations,
           optimistic UI sur les actions utilisateur, sync différentielle à la reconnexion. Conflits gérés
@@ -35,37 +35,36 @@ export const techFaqHtml = `
       </div>
 
       <div class="mob-tech-faq-item reveal reveal-d-2">
-        <h4>Comment vous gérez ATT / IDFA / tracking iOS 14.5+ ?</h4>
+        <h3>Comment vous gérez ATT / IDFA / tracking iOS 14.5+ ?</h3>
         <p>
           Par défaut, <b>aucun tracking activé</b>. Si vous avez un budget Ads à mesurer, on ajoute AppsFlyer ou Adjust avec
-          un opt-in ATT contextuel (jamais au cold start), conforme aux guidelines Apple. Pour le tracking
+          un opt-in ATT contextuel (jamais au cold start), configuré et recetté au regard des règles Apple. Pour le tracking
           analytics produit (DAU, rétention), on utilise des SDK first-party (Amplitude, PostHog, Firebase Analytics)
           qui ne déclenchent pas l'ATT.
         </p>
       </div>
 
       <div class="mob-tech-faq-item reveal reveal-d-3">
-        <h4>Apple IAP vs Stripe : où est la frontière exacte ?</h4>
+        <h3>Apple IAP vs Stripe : où est la frontière exacte ?</h3>
         <p>
-          Règle Apple App Review §3.1 : <b>biens digitaux et abonnements consommés in-app</b> = Apple IAP obligatoire (15-30 %).
-          <b>Biens physiques, services rendus hors app, livraisons, dons</b> = paiement web autorisé (Stripe / PayPlug, 0 % Apple).
-          Cas tendus : SaaS B2B (Apple a assoupli), formations en ligne, contenus média : on cadre au discovery,
-          on documente la justification dans App Store Connect.
+          Les règles de paiement varient selon le type de bien ou service, le pays, le programme applicable et les modalités autorisées au moment de la soumission.
+          Le cadrage vérifie les règles Apple et Google à jour avant de retenir achat intégré, paiement externe ou un autre parcours,
+          puis documente la justification nécessaire dans les consoles des stores.
         </p>
       </div>
 
       <div class="mob-tech-faq-item reveal">
-        <h4>Releases : OTA via EAS Update vs nouvelle build sur les stores ?</h4>
+        <h3>Releases : OTA via EAS Update vs nouvelle build sur les stores ?</h3>
         <p>
-          <b>OTA EAS Update</b> pour les changements JS/TS, copy, config, correctifs visuels = déploiement en 10 min sans review Apple/Google.
-          <b>Nouveau build store</b> obligatoire pour : modification de code natif, ajout de permission, mise à jour SDK Expo, changement de version target API.
-          On configure des <b>channels EAS</b> (preview, staging, production) pour rollback en 1 clic.
-          Le coût d'infrastructure EAS (plan Expo) est cadré au devis selon le volume de MAU prévu.
+          <b>OTA EAS Update</b> peut convenir à certains changements JS/TS, contenus, configurations et correctifs visuels, sous réserve de leur éligibilité et des règles des stores.
+          Une <b>nouvelle build store</b> reste notamment nécessaire pour certaines modifications de code natif, permissions, SDK Expo ou version d'API cible.
+          Les channels EAS, les tests, le rollback et le délai cible sont définis au devis&nbsp;; aucune diffusion instantanée ni absence de revue n'est promise.
+          Le coût d'infrastructure EAS est cadré selon le volume et le plan Expo retenu.
         </p>
       </div>
 
       <div class="mob-tech-faq-item reveal reveal-d-1">
-        <h4>Observabilité, monitoring, alerting : la stack ?</h4>
+        <h3>Observabilité, monitoring, alerting : la stack ?</h3>
         <p>
           <b>Sentry</b> pour le crash reporting cross-platform avec source maps + stack traces symbolisées (iOS dSYMs auto-uploadés).
           <b>Firebase Crashlytics</b> en backup natif. <b>PostHog</b> ou <b>Amplitude</b> pour les funnels. <b>UptimeRobot</b> sur l'API back-end.
@@ -74,16 +73,16 @@ export const techFaqHtml = `
       </div>
 
       <div class="mob-tech-faq-item reveal reveal-d-2">
-        <h4>Tests : quel niveau de couverture, quels outils ?</h4>
+        <h3>Tests : quel niveau de couverture, quels outils ?</h3>
         <p>
-          <b>Jest</b> pour les tests unitaires logique métier (~70 % couverture cible). <b>React Native Testing Library</b> pour les composants.
-          <b>Maestro</b> pour les flows end-to-end critiques (login, achat, push, paiement). <b>Detox</b> en complément si modules natifs custom.
-          Lancés en CI sur GitHub Actions à chaque PR. Snapshots visuels via Jest + screenshots Maestro sur les écrans clés.
+          <b>Jest</b> pour les tests unitaires de logique métier et <b>React Native Testing Library</b> pour les composants. Le niveau de couverture cible est défini selon les risques du produit.
+          <b>Maestro</b> peut couvrir les parcours end-to-end critiques (login, achat, push, paiement), avec <b>Detox</b> en complément si des modules natifs spécifiques le justifient.
+          Les outils, la fréquence CI, les appareils et les preuves visuelles sont définis dans le plan de test annexé au devis selon les risques du produit.
         </p>
       </div>
 
       <div class="mob-tech-faq-item reveal reveal-d-3">
-        <h4>Reprise d'app existante : audit, refactor, migration ?</h4>
+        <h3>Reprise d'app existante : audit, refactor, migration ?</h3>
         <p>
           On accepte les reprises Cordova / Ionic / Flutter / RN bare → migration React Native + Expo
           via une <b>phase d'audit payante</b> (chiffrée selon la taille du repo et la complexité). Livrable : rapport sur la dette, les bugs critiques,

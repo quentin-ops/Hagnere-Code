@@ -20,12 +20,13 @@ Il est **interdit** de créer :
 
 **Les faits, à respecter partout :**
 
-- Hagnéré Code **n'a aucun client externe**. Les seules réalisations sont
-  les **quatre produits du groupe Hagnéré** — LMNP.AI, SCI-AI.app,
-  Hagnéré Patrimoine, Hagnéré Investissement — conçus, développés **et
-  exploités** en interne.
+- Le site ne publie actuellement aucun témoignage de client externe. Les quatre
+  références liées au groupe — LMNP.AI, SCI-AI.app, Hagnéré Patrimoine et
+  Hagnéré Investissement — ne sont pas des clients indépendants. Ne revendiquer
+  que les pages et fonctions publiques réellement vérifiées, jamais leur
+  exploitation interne, leurs résultats ou leur architecture sans preuve.
 - L'équipe Hagnéré Code compte **sept personnes au total** : **un
-  gérant/fondateur, un CTO et cinq autres développeurs**. Cette composition
+  président fondateur, un CTO et cinq autres développeurs**. Cette composition
   est la source à reprendre dans les contenus publics.
 - La société a été créée le **30 septembre 2025**. C'est vrai, ne le
   contredis jamais — mais ne le mets pas en avant : on ne compense pas un
@@ -33,13 +34,13 @@ Il est **interdit** de créer :
 
 **Ce qui reste autorisé :**
 
-- tout ce qui décrit nos propres produits — ils sont en ligne et
-  vérifiables en un clic ; le fait de les **exploiter** en production est
-  l'argument le plus fort du site ;
-- les **engagements contractuels** (SLA, MTTR, Lighthouse 95+, garantie
-  30 jours, forfait fixe) : ce sont des promesses, pas des historiques ;
-- les statistiques réellement internes, tant qu'elles ne sont pas
-  présentées comme des résultats obtenus chez des clients.
+- les fonctions et informations visibles sur les pages publiques des produits
+  liés, en les présentant comme telles et non comme des résultats clients ;
+- les engagements réellement écrits dans un devis ou contrat identifié, avec
+  leur périmètre et leur mode de mesure. SLA, MTTR, score Lighthouse, garantie
+  ou remise ne sont jamais des engagements génériques du site ;
+- les statistiques internes traçables, datées et reproductibles, accompagnées
+  de leur protocole et sans extrapolation à un client.
 
 **En cas de doute, une formulation qualitative vaut toujours mieux qu'un
 chiffre inventé.** Cette règle prime sur toute considération commerciale
@@ -55,8 +56,17 @@ solution ».*
 
 ## Règle obligatoire — contenu éditorial
 
+**Avant de créer ou modifier une page éditoriale, une ressource ou un guide,
+lire en intégralité
+[docs/regle-or-vigilance-seo-publication.md](docs/regle-or-vigilance-seo-publication.md).**
+Cette règle d'or décrit les invariants de publication, de crawl, de sitemap,
+de `llms.txt`, de metadata, de données structurées, de maillage et de
+performance. Elle est obligatoire y compris pour une correction ponctuelle
+d'une page existante.
+
 **Avant d'écrire, réécrire ou modifier un guide (`src/app/guides/`), lire
-en intégralité [docs/charte-qualite-guides.md](docs/charte-qualite-guides.md).**
+également en intégralité
+[docs/charte-qualite-guides.md](docs/charte-qualite-guides.md).**
 Cette charte définit le pipeline complet (étude des concurrents, recherche
 sourcée multi-agents, chartes pédagogique et SEO, batterie de vérification,
 contre-vérification par panel ≥ 8,5/10, audit de production). Elle prime
@@ -73,4 +83,5 @@ est dans [docs/roadmap-guides-seo.md](docs/roadmap-guides-seo.md).
 - Base de données : Neon (la branche de prod est utilisée en dev — ne pas
   lancer de migration destructive type `db:push` sans validation).
 - Funnel commercial : lead-only — jamais de tarification temps réel ou IA
-  sur le site ; réponse manuelle sous 24 h ouvrées.
+  sur le site ; objectif de réponse humaine le prochain jour ouvré, sans délai
+  garanti.

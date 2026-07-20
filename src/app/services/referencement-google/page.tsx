@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SeoReferencement } from "@/components/seo-referencement/SeoReferencement";
-import { SEO_FAQS, SEO_FORMATS } from "@/components/seo-referencement/content";
-import { GUIDES } from "@/lib/guides";
+import { SEO_FORMATS } from "@/components/seo-referencement/content";
+import { PUBLISHED_GUIDES } from "@/lib/guides";
 import { OG_BASE, SERVICES_OG_IMAGE, SITE_URL } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ const serviceJsonLd = JSON.stringify({
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
     name: "Hagnéré Code",
-    legalName: "HAGNÉRÉ CODE SAS",
+    legalName: "HAGNERE CODE",
     url: SITE_URL,
     logo: `${SITE_URL}/logos/logo-dark.png`,
     vatID: "FR30993672856",
@@ -76,19 +76,6 @@ const serviceJsonLd = JSON.stringify({
   },
 });
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: SEO_FAQS.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-});
-
 const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -103,9 +90,8 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <SeoReferencement guideCount={GUIDES.length} />
+      <SeoReferencement guideCount={PUBLISHED_GUIDES.length} />
     </>
   );
 }

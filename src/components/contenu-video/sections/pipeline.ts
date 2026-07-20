@@ -85,7 +85,7 @@ export const pipelineHtml = `
 
         <div class="cv-track-foot">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          <span>Délai typique · <b>7 à 10 jours</b> par vidéo longue</span>
+          <span>Planning par vidéo · <b>défini au devis</b></span>
         </div>
       </article>
 
@@ -178,7 +178,7 @@ export const pipelineHtml = `
         </svg>
       </div>
       <div class="cv-pipeline-ethics-body">
-        <h4>Charte IA · transparente</h4>
+        <h3>Charte IA · transparente</h3>
         <p>
           <b>Avatar IA</b> : seulement avec votre accord écrit, déclaré comme "vidéo IA" dans les métadonnées
           et sous-titres. <b>Clone de voix</b> : uniquement la vôtre, autorisation explicite, destruction après mission.

@@ -5,15 +5,17 @@ import "@/components/project-funnel/project-funnel.css";
 import { ConversionTracker } from "./ConversionTracker";
 import { ThemeToggle } from "@/components/design-shared/ThemeToggle";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { LegalLinksFooter } from "@/components/legal/LegalLinksFooter";
+import { CALENDLY_URL } from "@/lib/calendly";
 
 export const metadata: Metadata = {
   title: "Brief envoyé · Hagnéré Code",
-  description: "Votre brief a bien été transmis. Nous vous répondons personnellement sous 24 h ouvrées.",
+  description: "Votre brief a bien été transmis. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti.",
   robots: { index: false, follow: true },
   openGraph: {
     ...OG_BASE,
     title: "Brief envoyé · Hagnéré Code",
-    description: "Votre brief a bien été transmis. Nous vous répondons personnellement sous 24 h ouvrées.",
+    description: "Votre brief a bien été transmis. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti.",
     url: "/demarrer-un-projet/merci",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -25,7 +27,7 @@ export default function Page() {
       <ConversionTracker />
       <header className="pf-topbar">
         <div className="pf-top-left">
-          <Link href="/" className="pf-brand" aria-label="Retour à l'accueil Hagnéré Code">
+          <Link href="/" className="pf-brand">
             <span className="pf-brand-mark">HC</span>
             <span><b>Hagnéré</b> Code</span>
           </Link>
@@ -44,7 +46,7 @@ export default function Page() {
         </nav>
       </header>
 
-      <main id="main-content" className="pf-shell pf-shell-success">
+      <main id="main-content" tabIndex={-1} className="pf-shell pf-shell-success">
         <div className="pf-success-card">
           <div className="pf-success-icon">
             <Check size={28} strokeWidth={2.4} />
@@ -58,7 +60,7 @@ export default function Page() {
             </li>
             <li>
               <Mail size={16} />
-              <span><b>Vous recevez une réponse argumentée</b> sous 24 h ouvrées : premières recommandations et prochaines étapes.</span>
+              <span><b>Nous visons une réponse argumentée le prochain jour ouvré</b>, sans engagement contractuel de délai : premières recommandations et prochaines étapes.</span>
             </li>
             <li>
               <ShieldCheck size={16} />
@@ -71,7 +73,7 @@ export default function Page() {
           </p>
           <div className="pf-success-actions">
             <a
-              href="https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte"
+              href={CALENDLY_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="pf-primary"
@@ -85,6 +87,7 @@ export default function Page() {
           </div>
         </div>
       </main>
+      <LegalLinksFooter />
     </div>
   );
 }

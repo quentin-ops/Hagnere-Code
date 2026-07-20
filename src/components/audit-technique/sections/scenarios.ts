@@ -14,8 +14,8 @@ export const scenariosHtml = `
       </div>
     </div>
 
-    <div class="at-scen-tabs reveal" role="tablist">
-      <button type="button" class="at-scen-tab is-active" data-scenario="dd-seller" role="tab" aria-selected="true">
+    <div class="at-scen-tabs reveal" role="tablist" aria-label="Choisir un scénario">
+      <button type="button" class="at-scen-tab is-active" data-scenario="dd-seller" role="tab" aria-selected="true" id="at-scenario-tab-dd-seller" aria-controls="at-scenario-panel-dd-seller" tabindex="0">
         <span class="at-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
         </span>
@@ -30,7 +30,7 @@ export const scenariosHtml = `
         <span class="at-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
       </button>
 
-      <button type="button" class="at-scen-tab" data-scenario="dd-buyer" role="tab" aria-selected="false">
+      <button type="button" class="at-scen-tab" data-scenario="dd-buyer" role="tab" aria-selected="false" id="at-scenario-tab-dd-buyer" aria-controls="at-scenario-panel-dd-buyer" tabindex="-1">
         <span class="at-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2h-3M9 12l2 2 4-4M8 3v4h8V3"/></svg>
         </span>
@@ -45,7 +45,7 @@ export const scenariosHtml = `
         <span class="at-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
       </button>
 
-      <button type="button" class="at-scen-tab" data-scenario="cto-baseline" role="tab" aria-selected="false">
+      <button type="button" class="at-scen-tab" data-scenario="cto-baseline" role="tab" aria-selected="false" id="at-scenario-tab-cto-baseline" aria-controls="at-scenario-panel-cto-baseline" tabindex="-1">
         <span class="at-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 22v-2a8 8 0 0116 0v2"/></svg>
         </span>
@@ -60,7 +60,7 @@ export const scenariosHtml = `
         <span class="at-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
       </button>
 
-      <button type="button" class="at-scen-tab" data-scenario="refonte" role="tab" aria-selected="false">
+      <button type="button" class="at-scen-tab" data-scenario="refonte" role="tab" aria-selected="false" id="at-scenario-tab-refonte" aria-controls="at-scenario-panel-refonte" tabindex="-1">
         <span class="at-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
         </span>
@@ -75,7 +75,7 @@ export const scenariosHtml = `
         <span class="at-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
       </button>
 
-      <button type="button" class="at-scen-tab" data-scenario="soc2" role="tab" aria-selected="false">
+      <button type="button" class="at-scen-tab" data-scenario="soc2" role="tab" aria-selected="false" id="at-scenario-tab-soc2" aria-controls="at-scenario-panel-soc2" tabindex="-1">
         <span class="at-scen-tab-ic">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         </span>
@@ -92,7 +92,7 @@ export const scenariosHtml = `
     </div>
 
     <!-- PANEL dd-seller -->
-    <div class="at-scen-panel is-active" data-panel="dd-seller">
+    <div class="at-scen-panel is-active" data-panel="dd-seller" role="tabpanel" tabindex="0" aria-hidden="false" id="at-scenario-panel-dd-seller" aria-labelledby="at-scenario-tab-dd-seller">
       <div class="at-scen-cols">
         <div class="at-scen-main">
           <div class="at-scen-kind">Tech Due Diligence · côté vendeur · pré-levée</div>
@@ -113,13 +113,13 @@ export const scenariosHtml = `
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Restitution board 90 min + Loom 30 min pour le fonds</div>
           </div>
         </div>
-        <aside class="at-scen-aside">
+        <div class="at-scen-aside">
           <div class="at-scen-aside-head">
             <span class="at-scen-aside-kind">Format Deep</span>
             <div class="at-scen-aside-price">38 000 <span>€ HT · fixe</span></div>
           </div>
           <dl class="at-scen-meta">
-            <div class="at-scen-meta-row"><dt>Durée</dt><dd>15 à 20 jours ouvrés</dd></div>
+            <div class="at-scen-meta-row"><dt>Durée</dt><dd>Confirmée au devis</dd></div>
             <div class="at-scen-meta-row"><dt>Intervenants</dt><dd>Nommés au devis</dd></div>
             <div class="at-scen-meta-row"><dt>Confidentialité</dt><dd>Accord validé avant les accès</dd></div>
             <div class="at-scen-meta-row"><dt>Remise éventuelle</dt><dd>Uniquement si écrite au devis</dd></div>
@@ -133,12 +133,12 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             Appel de cadrage 30 min offert avant signature
           </div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL dd-buyer -->
-    <div class="at-scen-panel" data-panel="dd-buyer" hidden>
+    <div class="at-scen-panel" data-panel="dd-buyer" role="tabpanel" tabindex="0" aria-hidden="true" id="at-scenario-panel-dd-buyer" aria-labelledby="at-scenario-tab-dd-buyer" hidden>
       <div class="at-scen-cols">
         <div class="at-scen-main">
           <div class="at-scen-kind">Tech Due Diligence M&amp;A · côté acheteur</div>
@@ -160,13 +160,13 @@ export const scenariosHtml = `
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Restitution comité d'investissement + argumentaire de re-négo</div>
           </div>
         </div>
-        <aside class="at-scen-aside at-scen-aside-hot">
+        <div class="at-scen-aside at-scen-aside-hot">
           <div class="at-scen-aside-head">
             <span class="at-scen-aside-kind">Format Tech DD M&amp;A</span>
             <div class="at-scen-aside-price">68 000 <span>€ HT · fixe</span></div>
           </div>
           <dl class="at-scen-meta">
-            <div class="at-scen-meta-row"><dt>Durée</dt><dd>20 à 30 jours ouvrés</dd></div>
+            <div class="at-scen-meta-row"><dt>Durée</dt><dd>Confirmée au devis</dd></div>
             <div class="at-scen-meta-row"><dt>Intervenants</dt><dd>Nommés au devis</dd></div>
             <div class="at-scen-meta-row"><dt>Confidentialité</dt><dd>Coordonnée avec vos conseils</dd></div>
             <div class="at-scen-meta-row"><dt>Conflits d'intérêts</dt><dd>Déclarés et traités au devis</dd></div>
@@ -180,12 +180,12 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             Démarche confidentielle · coordination avec vos avocats selon leurs propres règles
           </div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL cto-baseline -->
-    <div class="at-scen-panel" data-panel="cto-baseline" hidden>
+    <div class="at-scen-panel" data-panel="cto-baseline" role="tabpanel" tabindex="0" aria-hidden="true" id="at-scenario-panel-cto-baseline" aria-labelledby="at-scenario-tab-cto-baseline" hidden>
       <div class="at-scen-cols">
         <div class="at-scen-main">
           <div class="at-scen-kind">Baseline · Nouveau CTO / VP Eng</div>
@@ -199,7 +199,7 @@ export const scenariosHtml = `
           </p>
           <div class="at-scen-items-title">CE QU'ON LIVRE</div>
           <div class="at-scen-items">
-            <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Audit Standard 10 j · 9 dimensions + Tech Debt P&amp;L</div>
+            <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Audit Standard · jusqu&apos;à 8 dimensions · calendrier au devis</div>
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Plan 100 jours co-construit avec vous · priorités P1/P2/P3</div>
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Version board-safe (sans noms) pour le CEO / CA</div>
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Version équipe (co-auteure) qui favorise l'adoption</div>
@@ -207,13 +207,13 @@ export const scenariosHtml = `
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Option&nbsp;: Shadow CTO 4 semaines post-audit · +8 à 15 k€</div>
           </div>
         </div>
-        <aside class="at-scen-aside">
+        <div class="at-scen-aside">
           <div class="at-scen-aside-head">
             <span class="at-scen-aside-kind">Format Standard</span>
             <div class="at-scen-aside-price">18 000 <span>€ HT · fixe</span></div>
           </div>
           <dl class="at-scen-meta">
-            <div class="at-scen-meta-row"><dt>Durée</dt><dd>10 jours ouvrés</dd></div>
+            <div class="at-scen-meta-row"><dt>Durée</dt><dd>Confirmée au devis</dd></div>
             <div class="at-scen-meta-row"><dt>Intervenants</dt><dd>Nommés au devis</dd></div>
             <div class="at-scen-meta-row"><dt>Méthode</dt><dd>Co-construction · no-blame · off-the-record</dd></div>
             <div class="at-scen-meta-row"><dt>Remise éventuelle</dt><dd>Uniquement si écrite au devis</dd></div>
@@ -227,12 +227,12 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             Vous restez aux commandes — on vous donne les arguments, pas les ordres
           </div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL refonte -->
-    <div class="at-scen-panel" data-panel="refonte" hidden>
+    <div class="at-scen-panel" data-panel="refonte" role="tabpanel" tabindex="0" aria-hidden="true" id="at-scenario-panel-refonte" aria-labelledby="at-scenario-tab-refonte" hidden>
       <div class="at-scen-cols">
         <div class="at-scen-main">
           <div class="at-scen-kind">Go / no-go refonte · arbitrage CEO vs CFO</div>
@@ -245,7 +245,7 @@ export const scenariosHtml = `
           </p>
           <div class="at-scen-items-title">CE QU'ON LIVRE</div>
           <div class="at-scen-items">
-            <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Rapport 60-80 p. · 9 dimensions · <b>Tech Debt P&amp;L sur 3 ans</b></div>
+            <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Rapport et volume définis au devis · jusqu&apos;à 8 dimensions · <b>scénarios de dette technique documentés</b></div>
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>3 scenarios chiffrés&nbsp;: patch agressif · refonte partielle · refonte complète</div>
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Dashboard comparatif opex vs capex par scenario · sur 3 ans</div>
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Analyse du risque d'exécution (réussite historique des refontes du secteur)</div>
@@ -253,13 +253,13 @@ export const scenariosHtml = `
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Restitution trilatérale CTO + CFO + CEO · pour alignement</div>
           </div>
         </div>
-        <aside class="at-scen-aside">
+        <div class="at-scen-aside">
           <div class="at-scen-aside-head">
             <span class="at-scen-aside-kind">Format Deep</span>
             <div class="at-scen-aside-price">38 000 <span>€ HT · fixe</span></div>
           </div>
           <dl class="at-scen-meta">
-            <div class="at-scen-meta-row"><dt>Durée</dt><dd>15 à 20 jours ouvrés</dd></div>
+            <div class="at-scen-meta-row"><dt>Durée</dt><dd>Confirmée au devis</dd></div>
             <div class="at-scen-meta-row"><dt>Intervenants</dt><dd>Nommés au devis</dd></div>
             <div class="at-scen-meta-row"><dt>Indépendance</dt><dd>Constats et hypothèses de coût séparés</dd></div>
             <div class="at-scen-meta-row"><dt>Acceptation</dt><dd>Critères et procédure écrits au devis</dd></div>
@@ -273,12 +273,12 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             Clé de décision CEO · on refuse de servir un agenda
           </div>
-        </aside>
+        </div>
       </div>
     </div>
 
     <!-- PANEL soc2 -->
-    <div class="at-scen-panel" data-panel="soc2" hidden>
+    <div class="at-scen-panel" data-panel="soc2" role="tabpanel" tabindex="0" aria-hidden="true" id="at-scenario-panel-soc2" aria-labelledby="at-scenario-tab-soc2" hidden>
       <div class="at-scen-cols">
         <div class="at-scen-main">
           <div class="at-scen-kind">Préparation SOC2 / ISO 27001 · gap analysis</div>
@@ -299,7 +299,7 @@ export const scenariosHtml = `
             <div class="at-scen-item"><span class="at-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Deck commercial pour rassurer votre prospect enterprise · 8 slides</div>
           </div>
         </div>
-        <aside class="at-scen-aside">
+        <div class="at-scen-aside">
           <div class="at-scen-aside-head">
             <span class="at-scen-aside-kind">Standard + Pentest</span>
             <div class="at-scen-aside-price">28 000 <span>€ HT · 18 k + 10 k pentest</span></div>
@@ -319,7 +319,7 @@ export const scenariosHtml = `
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
             On prépare le terrain · l'audit officiel est mené par un tiers habilité
           </div>
-        </aside>
+        </div>
       </div>
     </div>
   </div>

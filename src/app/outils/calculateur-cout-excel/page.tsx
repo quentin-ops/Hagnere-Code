@@ -5,13 +5,13 @@ import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Combien coûte votre Excel ? Calcul gratuit · Hagnéré Code",
   description:
-    "Chiffrez en 2 minutes le coût caché de vos fichiers Excel : temps perdu, erreurs, ressaisies. Gratuit, sans email obligatoire, ROI en mois.",
+    "Estimez le coût annuel de vos fichiers Excel : temps perdu, erreurs et ressaisies. Calcul gratuit, hypothèses visibles et sans email obligatoire.",
   alternates: { canonical: "/outils/calculateur-cout-excel" },
   openGraph: {
     ...OG_BASE,
     title: "Combien vous coûte réellement votre Excel ?",
     description:
-      "Calculateur gratuit du coût caché de vos tableurs métier. ROI outil sur mesure en mois.",
+      "Calculateur gratuit du coût de vos tableurs métier, avec hypothèses modifiables et comparaison brute sur trois ans.",
     url: "/outils/calculateur-cout-excel",
     images: [DEFAULT_OG_IMAGE],
   },

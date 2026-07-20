@@ -558,7 +558,7 @@
   font-weight: 200;
   letter-spacing: -0.06em;
   line-height: 0.85;
-  color: rgba(109,40,217,0.15);
+  color: #946BC2;
   user-select: none;
 }
 .cv-problem-main {
@@ -684,7 +684,7 @@
   letter-spacing: 0.08em;
   font-weight: 600;
 }
-.cv-prod-dark .cv-prod-num { color: rgba(255,255,255,0.4); }
+.cv-prod-dark .cv-prod-num { color: #A3A3A3; }
 .cv-prod-kind {
   font-family: var(--font-geist-mono);
   font-size: 10px;
@@ -1371,7 +1371,7 @@
   display: grid;
   place-items: center;
 }
-.cv-pipeline-ethics-body h4 {
+.cv-pipeline-ethics-body h3 {
   font-family: var(--font-geist-mono);
   font-size: 11px;
   letter-spacing: 0.08em;
@@ -1527,7 +1527,7 @@
   display: block;
   margin-bottom: 4px;
 }
-.cv-roadmap-block h4 {
+.cv-roadmap-block h3 {
   font-family: var(--font-geist);
   font-size: 14px;
   font-weight: 600;
@@ -1808,7 +1808,7 @@
   letter-spacing: 0.08em;
   color: var(--mute);
 }
-.cv-scen-tab.is-active .cv-scen-tab-k { color: var(--accent); }
+.cv-scen-tab.is-active .cv-scen-tab-k { color: #A78BFA; }
 .cv-scen-tab-t {
   font-size: 18px;
   font-weight: 600;
@@ -1862,7 +1862,7 @@
 .cv-scen-deliv {
   margin-top: 26px;
 }
-.cv-scen-deliv h4 {
+.cv-scen-deliv h3 {
   font-size: 12px;
   color: var(--ink);
   margin-bottom: 12px;
@@ -2105,8 +2105,8 @@
   color: var(--accent-ink);
   text-transform: uppercase;
 }
-.cv-price-card-featured .cv-price-tag { color: var(--accent); }
-.cv-price-card h4 {
+.cv-price-card-featured .cv-price-tag { color: #A78BFA; }
+.cv-price-card h3 {
   font-family: var(--font-geist);
   font-size: 22px;
   font-weight: 600;
@@ -2114,7 +2114,7 @@
   color: var(--ink);
   margin: 4px 0 2px;
 }
-.cv-price-card-featured h4 { color: #fff; }
+.cv-price-card-featured h3 { color: #fff; }
 .cv-price-sub {
   font-size: 12.5px;
   color: var(--mute);
@@ -2282,7 +2282,7 @@
   display: grid;
   place-items: center;
 }
-.cv-trust-card h4 { font-size: 16px; letter-spacing: -0.015em; }
+.cv-trust-card h3 { font-size: 16px; letter-spacing: -0.015em; }
 .cv-trust-card p {
   font-size: 13px;
   color: var(--mute);
@@ -2315,7 +2315,7 @@
   gap: 60px;
   align-items: start;
 }
-.cv-refuse-intro .eyebrow { color: var(--accent); }
+.cv-refuse-intro .eyebrow { color: #A78BFA; }
 .cv-refuse-intro h2 {
   color: #fff;
   font-size: 44px;
@@ -2361,7 +2361,7 @@
   display: grid;
   place-items: center;
 }
-.cv-refuse-list h4 {
+.cv-refuse-list h3 {
   color: #fff;
   font-size: 15px;
   letter-spacing: -0.01em;

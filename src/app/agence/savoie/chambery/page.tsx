@@ -9,7 +9,12 @@ import {
 } from "@/components/guides/guide-content-blocks";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import { OG_BASE, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
-import { getLocalPage, localPagePath, localPageUrl } from "@/lib/local-pages";
+import {
+  formatLocalPageDate,
+  getLocalPage,
+  localPagePath,
+  localPageUrl,
+} from "@/lib/local-pages";
 
 const page = getLocalPage("agence", "savoie/chambery");
 
@@ -28,17 +33,6 @@ export const metadata: Metadata = {
     url: localPagePath(page),
     images: [DEFAULT_OG_IMAGE],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 const serviceJsonLd = JSON.stringify({
@@ -48,7 +42,7 @@ const serviceJsonLd = JSON.stringify({
   url: localPageUrl(page),
   serviceType:
     "Création de site internet, e-commerce, applications métier, référencement naturel et campagnes Google Ads",
-  provider: { "@id": `${SITE_URL}/#business` },
+  provider: { "@id": `${SITE_URL}/#organization` },
   areaServed: { "@type": "City", name: "Chambéry" },
 });
 
@@ -96,23 +90,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Notre agence", href: "/agence" },
@@ -126,7 +109,7 @@ export default function Page() {
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel="Mis à jour le 18 juillet 2026"
+        updatedLabel={`Mis à jour le ${formatLocalPageDate(page.dateModified)}`}
         keyPoints={[
           { number: "01", title: "À Bassens, limitrophe de Chambéry", description: "", color: "violet" },
           { number: "02", title: "85 % de l'emploi dans les services", description: "", color: "blue" },
@@ -151,7 +134,7 @@ export default function Page() {
           Cette page décrit l&apos;économie de la ville
           telle que les chiffres la montrent — très largement tertiaire —,
           les zones où se concentrent les entreprises, et ce que ces
-          entreprises achètent réellement en matière de numérique.
+          besoins numériques qu&apos;un cadrage peut faire apparaître.
         </p>
 
         <GuideToc
@@ -160,8 +143,8 @@ export default function Page() {
             { id: "employeurs", label: "2. Qui emploie à Chambéry" },
             { id: "zones", label: "3. Où sont les entreprises : Bissy, Landiers, Technolac" },
             { id: "besoins", label: "4. Ce dont les entreprises chambériennes ont besoin" },
-            { id: "constat", label: "5. Ce que nous avons mesuré sur les sites du bassin" },
-            { id: "bassin", label: "6. Le bassin que nous couvrons au quotidien" },
+            { id: "constat", label: "5. Comment mesurer votre propre site" },
+            { id: "bassin", label: "6. Le bassin où nous pouvons intervenir" },
             { id: "ecosysteme", label: "7. L'écosystème numérique local" },
             { id: "concurrence", label: "8. Les autres agences du bassin" },
             { id: "travailler", label: "9. Travailler avec nous" },
@@ -325,18 +308,15 @@ export default function Page() {
           ]}
         />
         <p>
-          Une remarque d&apos;honnêteté sur ce tableau : les trois premières
-          lignes représentent l&apos;écrasante majorité des demandes que nous
-          recevons localement, ce qui est logique dans un bassin où près de
-          deux tiers des établissements n&apos;ont aucun salarié. Les lignes
-          suivantes concernent moins d&apos;entreprises, mais ce sont les
-          projets où le sur-mesure change réellement quelque chose — et où
-          une agence de communication généraliste atteint vite ses limites.
+          Ce tableau présente des scénarios de besoin, pas la distribution de nos
+          demandes ni une étude représentative du bassin. Le bon périmètre dépend
+          de vos usages, de l&apos;existant, du budget et des contraintes ; une
+          solution standard peut être préférable au sur-mesure.
         </p>
 
         <GuideInlineCTA
           title="Un projet à Chambéry ?"
-          description="Décrivez-le en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. On peut se voir à Bassens, à quelques minutes du centre de Chambéry, ou en visioconférence."
+          description="Décrivez-le en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti. Cette première réponse est gratuite et sans engagement. On peut se voir à Bassens, à quelques minutes du centre de Chambéry, ou en visioconférence."
         />
 
         <h2 id="constat">5. Comment mesurer votre site sans généraliser</h2>
@@ -362,16 +342,16 @@ export default function Page() {
           responsabilités et procédure de correction.
         </p>
 
-        <h2 id="bassin">6. Le bassin que nous couvrons au quotidien</h2>
+        <h2 id="bassin">6. Le bassin où nous pouvons intervenir</h2>
         <p>
           Nous sommes à Bassens, l&apos;une des 38 communes de Grand
-          Chambéry, et nous intervenons sans difficulté sur toutes les
-          autres :{" "}
+          Chambéry. Une intervention peut être prévue dans les autres communes
+          du bassin lorsque le projet et le devis le justifient, notamment :{" "}
           <strong>Chambéry, La Motte-Servolex, La Ravoire, Cognin,
           Barberaz, Saint-Alban-Leysse, Barby, Jacob-Bellecombette,
-          Challes-les-Eaux</strong> et les suivantes. Nous nous déplaçons
-          également régulièrement sur Aix-les-Bains, Le Bourget-du-Lac et la
-          Combe de Savoie.
+          Challes-les-Eaux</strong>. Aix-les-Bains, Le Bourget-du-Lac et la
+          Combe de Savoie sont également accessibles sur rendez-vous ; le reste
+          du projet peut être conduit à distance.
         </p>
         <InfoBox variant="blue" title="Une précision que beaucoup se trompent">
           <strong>Aix-les-Bains et Le Bourget-du-Lac ne font pas partie de
@@ -494,14 +474,14 @@ export default function Page() {
           Le format de cadrage, son prix, ses livrables et toute remise éventuelle
           sont précisés avant engagement. Notre{" "}
           <Link href="/methode">page méthode</Link> détaille le déroulé, et
-          nos <Link href="/tarifs">tarifs</Link> sont publics. Il arrive que
-          ce cadrage se conclue par « votre site actuel suffit, voici les
-          trois choses à corriger » lorsque les preuves ne justifient pas une refonte.
+          nos <Link href="/tarifs">tarifs</Link> sont publics. Ce cadrage peut
+          conclure « votre site actuel suffit, voici les trois choses à
+          corriger » lorsque les preuves ne justifient pas une refonte.
         </p>
 
         <GuideInlineCTA
           title="Parlons de votre projet chambérien"
-          description="Décrivez votre besoin en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Rendez-vous à Bassens, aux portes de Chambéry, ou en visioconférence, comme vous préférez."
+          description="Décrivez votre besoin en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Rendez-vous à Bassens, aux portes de Chambéry, ou en visioconférence, comme vous préférez."
         />
 
         <h2 id="sources">Sources</h2>

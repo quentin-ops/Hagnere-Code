@@ -12,7 +12,7 @@ export const ctaFinalHtml = `
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
       <a href="mailto:quentin@hagnere-patrimoine.fr" class="btn btn-ghost btn-lg" style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.15)">
-        Réserver un call de cadrage · 30 min →
+        Envoyer un e-mail →
       </a>
     </div>
     <div class="scta-meta">CONFIDENTIALITÉ · PÉRIMÈTRE CHIFFRÉ · CRITÈRES D'ACCEPTATION AU DEVIS</div>

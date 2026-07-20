@@ -6,22 +6,22 @@ export const faqHtml = `
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ</div>
         <h2 style="margin-top:14px">Les 12 questions<br>qu'on nous pose<br>avant de signer.</h2>
-        <p>Filtrez par profil décideur. Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par un consultant senior, sans détour.</p>
+        <p>Filtrez par profil décideur. Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Votre demande est relue personnellement, par un consultant senior, sans détour.</p>
 
-        <div class="me-faq-filters" role="tablist" aria-label="Filtrer les questions par profil">
-          <button type="button" class="me-faq-filter is-active" data-faq-filter="all" role="tab" aria-selected="true">
+        <div class="me-faq-filters" role="group" aria-label="Filtrer les questions par profil">
+          <button type="button" class="me-faq-filter is-active" data-faq-filter="all" aria-pressed="true">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
             Tous <span class="me-faq-count">12</span>
           </button>
-          <button type="button" class="me-faq-filter" data-faq-filter="ceo" role="tab" aria-selected="false">
+          <button type="button" class="me-faq-filter" data-faq-filter="ceo" aria-pressed="false">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21v-2a4 4 0 014-4h10a4 4 0 014 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             CEO <span class="me-faq-count">10</span>
           </button>
-          <button type="button" class="me-faq-filter" data-faq-filter="cto" role="tab" aria-selected="false">
+          <button type="button" class="me-faq-filter" data-faq-filter="cto" aria-pressed="false">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             CTO <span class="me-faq-count">8</span>
           </button>
-          <button type="button" class="me-faq-filter" data-faq-filter="daf" role="tab" aria-selected="false">
+          <button type="button" class="me-faq-filter" data-faq-filter="daf" aria-pressed="false">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
             DAF <span class="me-faq-count">6</span>
           </button>
@@ -43,7 +43,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Vous, directement</b>. AWS / OVH / Scaleway / Vercel restent sur <b>votre compte</b>, facturés par le provider à votre entité. Pas de rebilling, pas de margeage, pas de lock-in. Nous on opère, mais on ne s'intercale pas dans la facture.
+            Le devis identifie le titulaire de chaque compte AWS, OVH, Scaleway, Vercel ou équivalent, le payeur, les licences et les rôles d'administration. Une facturation directe au client peut être retenue pour faciliter la réversibilité.
           </div>
         </div>
 

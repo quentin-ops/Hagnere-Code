@@ -98,9 +98,8 @@ export const integrationsHtml = `
         <div class="me-eco-head-text">
           <div class="me-eco-kind">OBSERVABILITY &amp; SECURITY · <span>notre stack</span></div>
           <h3>6 familles d'outils à connecter<br>selon votre environnement.</h3>
-          <p>Sentry, Better Stack, Grafana, Axiom, Snyk, PagerDuty. <b>Comptes à votre nom, sur votre facturation si vous préférez</b>.
-             Mais c'est nous qui les installons, paramétrons, calibrons et gardons calmes.
-             Zéro bruit, alertes utiles.</p>
+          <p>Sentry, Better Stack, Grafana, Axiom, Snyk ou PagerDuty peuvent être retenus. <b>Le titulaire, la facturation, les licences et les accès sont écrits au devis</b>.
+             Les seuils et canaux sont calibrés pour limiter le bruit sans promettre de supprimer toute fausse alerte.</p>
         </div>
       </div>
 
@@ -167,9 +166,8 @@ export const integrationsHtml = `
         <div class="me-eco-head-text">
           <div class="me-eco-kind">PILOTAGE &amp; COMMUNICATION</div>
           <h3>Là où vous voyez tout<br>— même le lundi matin.</h3>
-          <p>Slack Connect pour le jour-le-jour, Linear pour le backlog, Notion pour la doc,
-             GitHub pour le code, Loom pour les onboardings. <b>Tout est ouvert, consultable,
-             récupérable en 1 clic si vous partez</b>. Aucune rétention par l'ignorance.</p>
+          <p>Slack Connect, Linear, Notion, GitHub ou Loom peuvent couvrir échanges, backlog, code et documentation.
+             <b>Habilitations, formats d'export, durée d'accès et protocole de passation</b> sont inventoriés au devis.</p>
         </div>
       </div>
 
@@ -179,7 +177,7 @@ export const integrationsHtml = `
             <svg viewBox="0 0 24 24" fill="#fff"><rect x="3" y="3" width="7" height="4" rx="2"/><rect x="3" y="10" width="7" height="4" rx="2"/><rect x="3" y="17" width="7" height="4" rx="2"/><rect x="14" y="3" width="7" height="4" rx="2"/><rect x="14" y="10" width="7" height="4" rx="2"/><rect x="14" y="17" width="7" height="4" rx="2"/></svg>
           </div>
           <div class="me-eco-tile-name">Slack Connect</div>
-          <div class="me-eco-tile-sub">Canal dédié · threads · &lt; 2h HO</div>
+          <div class="me-eco-tile-sub">Canal, horaires et délai cible au devis</div>
         </div>
 
         <div class="me-eco-tile" data-brand="#5E6AD2">
@@ -211,7 +209,7 @@ export const integrationsHtml = `
             <svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="1.8"/><path d="M10 8v8l6-4z"/></svg>
           </div>
           <div class="me-eco-tile-name">Loom · onboarding vidéo</div>
-          <div class="me-eco-tile-sub">10-15 vidéos par projet · à vie</div>
+          <div class="me-eco-tile-sub">Contenu et durée d'accès au devis</div>
         </div>
 
         <div class="me-eco-tile" data-brand="#2563EB">

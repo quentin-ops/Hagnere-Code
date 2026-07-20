@@ -258,11 +258,11 @@ export function GuideLayout({
             </article>
 
             {/* Sidebar — only CTA card, sticky */}
-            <aside className="min-w-0 w-full shrink-0 lg:w-72 xl:w-80">
+            <div className="min-w-0 w-full shrink-0 lg:w-72 xl:w-80">
               <div className="lg:sticky lg:top-24">
                 <GuideSidebarCTA showWhitePaperPromo={showWhitePaperPromo} />
               </div>
-            </aside>
+            </div>
           </div>
         </div>
       </section>

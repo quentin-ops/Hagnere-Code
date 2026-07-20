@@ -14,7 +14,7 @@ export const trustHtml = `
       </div>
     </div>
 
-    <!-- Rangée 1 : engagements tenus (réels) -->
+    <!-- Rangée 1 : règles à retrouver dans les documents contractuels -->
     <div class="tr-grid reveal">
       <div class="tr-item">
         <div class="tr-ic">
@@ -22,7 +22,7 @@ export const trustHtml = `
         </div>
         <div class="tr-body">
           <div class="tr-title">Livrables, accès et droits écrits</div>
-          <div class="tr-sub">Transfert après paiement selon les CGV, dépôt et réversibilité détaillés au devis.</div>
+          <div class="tr-sub">Transfert des livrables spécifiques après paiement complet selon les CGV ; dépôt, réversibilité, composants préexistants et licences tierces détaillés au devis.</div>
         </div>
       </div>
 
@@ -31,8 +31,8 @@ export const trustHtml = `
           <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M2 12h20"/></svg>
         </div>
         <div class="tr-body">
-          <div class="tr-title">100% équipe France</div>
-          <div class="tr-sub">Aucune sous-traitance offshore. Bassens + télétravail hexagone.</div>
+          <div class="tr-title">Intervenants identifiés</div>
+          <div class="tr-sub">Nom, rôle et statut des personnes mobilisées indiqués au devis ; tout changement est communiqué.</div>
         </div>
       </div>
 
@@ -51,8 +51,8 @@ export const trustHtml = `
           <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <div class="tr-body">
-          <div class="tr-title">Forfait fixe, pilotage visible</div>
-          <div class="tr-sub">Prix annoncé = prix payé. Démo régulière, arbitrages écrits, aucun dépassement non validé.</div>
+          <div class="tr-title">Prix et changements écrits</div>
+          <div class="tr-sub">Le prix couvre le périmètre signé. Aucun dépassement ni travail hors périmètre sans accord écrit préalable.</div>
         </div>
       </div>
 
@@ -98,27 +98,27 @@ export const trustHtml = `
       </div>
     </div>
 
-    <!-- Rangée 3 : preuves honnêtes, chiffres vérifiables -->
+    <!-- Rangée 3 : éléments vérifiables ou règles contractuelles -->
     <div class="tr-ratings reveal reveal-d-2">
       <div class="tr-rating">
         <div class="tr-rating-value">4</div>
-        <div class="tr-rating-kind">Produits en production</div>
-        <div class="tr-rating-source">Preuves internes assumées</div>
-        <div class="tr-rating-meta">Deux SaaS IA et deux sites métier du groupe Hagnéré, visibles et opérés par nous.</div>
+        <div class="tr-rating-kind">Pages produit publiques</div>
+        <div class="tr-rating-source">Liens consultables sans rendez-vous</div>
+        <div class="tr-rating-meta">Deux logiciels et deux sites métier sont présentés publiquement ; ces liens prouvent leur disponibilité et leurs fonctions visibles, pas leurs résultats ni leur exploitation interne.</div>
       </div>
 
       <div class="tr-rating">
-        <div class="tr-rating-value">100<span>%</span></div>
-        <div class="tr-rating-kind">Forfait fixe tenu</div>
-        <div class="tr-rating-source">Prix annoncé = prix payé</div>
-        <div class="tr-rating-meta">Notre modèle commercial : un périmètre cadré, un prix écrit, pas de régie masquée.</div>
+        <div class="tr-rating-value">ÉCRIT</div>
+        <div class="tr-rating-kind">Périmètre et prix</div>
+        <div class="tr-rating-source">Devis signé</div>
+        <div class="tr-rating-meta">Les changements sont chiffrés et acceptés par écrit avant exécution ; aucun dépassement unilatéral.</div>
       </div>
 
       <div class="tr-rating">
-        <div class="tr-rating-value">0</div>
-        <div class="tr-rating-kind">Sous-traitance cachée</div>
-        <div class="tr-rating-source">Vous parlez aux personnes qui codent</div>
-        <div class="tr-rating-meta">Pas de commercial qui vend une équipe que vous ne verrez jamais.</div>
+        <div class="tr-rating-value">NOMMÉS</div>
+        <div class="tr-rating-kind">Intervenants du projet</div>
+        <div class="tr-rating-source">Rôles et statuts annoncés</div>
+        <div class="tr-rating-meta">Le devis précise qui intervient réellement et les modalités prévues en cas de remplacement.</div>
       </div>
     </div>
   </div>

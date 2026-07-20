@@ -32,16 +32,11 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -160,7 +155,7 @@ const faqItems = [
   {
     question: "Qu'est-ce qu'un MVP et pourquoi commencer par là ?",
     answer:
-      "Le MVP (produit minimum viable) est la première version de votre application, volontairement réduite aux fonctionnalités qui prouvent la valeur — assez pour être utilisée, assez peu pour sortir vite et à budget contenu. Les rapports Pendo et AppsFlyer cités dans ce guide observent, sur leurs propres échantillons, de la sous-utilisation et des désinstallations précoces ; ils illustrent un risque de sur-périmètre sans prédire votre application. Construire petit, mesurer, puis élargir sur des preuves reste donc une méthode prudente. Chez nous, un MVP peut viser les stores dès 12 semaines lorsque le périmètre le permet.",
+      "Le MVP (produit minimum viable) est la première version de votre application, volontairement réduite aux fonctionnalités qui prouvent la valeur — assez pour être utilisée, assez peu pour sortir à un budget contenu. Les rapports Pendo et AppsFlyer cités dans ce guide observent, sur leurs propres échantillons, de la sous-utilisation et des désinstallations précoces ; ils illustrent un risque de sur-périmètre sans prédire votre application. Construire petit, mesurer, puis élargir sur des preuves reste donc une méthode prudente. Le planning de conception, de recette et de soumission aux stores dépend du périmètre et est défini au devis.",
   },
   {
     question: "Word ou PDF : sous quel format rédiger et envoyer le cahier des charges ?",
@@ -174,23 +169,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -309,7 +293,8 @@ export default function Page() {
           modèles génériques recyclés du web.
         </p>
         <p>
-          Fil rouge de ce guide : <strong>« Fleurs d&apos;Aix »,
+          Fil rouge de ce guide : <strong>scénario fictif composite —
+          ni client ni témoignage réel — avec « Fleurs d&apos;Aix »,
           chaîne fictive de trois boutiques de fleuristes autour
           d&apos;Aix-les-Bains</strong>, qui veut son application de
           click-and-collect : commander son bouquet, choisir sa
@@ -534,8 +519,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un cahier des charges à faire relire — ou à construire en atelier ?"
-          description="Envoyez-nous votre projet ou votre brouillon en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc sur le périmètre, une fourchette argumentée — et notre Discovery Sprint transforme le tout en CDC complet, maquettes et devis au forfait fixe en 2 jours."
-          tags={["Réponse sous 24 h ouvrées", "Planning confirmé au devis", "Comptes, dépôt et droits inventoriés"]}
+          description="Envoyez-nous votre projet ou votre brouillon en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis franc sur le périmètre, une fourchette argumentée — et notre Discovery Sprint transforme le tout en CDC complet, maquettes et devis au forfait fixe en 2 jours."
+          tags={["Objectif : prochain jour ouvré", "Planning confirmé au devis", "Comptes, dépôt et droits inventoriés"]}
           ctaLabel="Faire relire mon périmètre"
         />
 
@@ -886,12 +871,13 @@ export default function Page() {
           <strong>Discovery Sprint (1 500 €, 2 jours, déduit à 100 %
           si le projet se lance)</strong> produit le cahier des charges
           fonctionnel complet, les maquettes des écrans clés et un
-          devis au forfait fixe — puis un{" "}
-          <strong>MVP sur les stores dès 12 semaines</strong>, code
-          cédé et comptes développeur à votre nom (méthode{" "}
+          devis au forfait fixe. Si le développement est confié à Hagnéré Code,
+          le planning de livraison et de soumission aux stores, les droits transférés
+          après paiement, les exclusions et la titularité des comptes sont écrits au
+          devis et dans les CGV applicables (méthode{" "}
           <Link href="/methode">Sprint Fixe™</Link>).{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées,
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré,
           gratuite et sans engagement.
         </p>
 

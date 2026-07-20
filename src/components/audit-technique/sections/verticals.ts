@@ -22,7 +22,7 @@ export const verticalsHtml = `
           <span class="at-vt-tag at-vt-tag-live">● Cœur de cible</span>
         </div>
         <h3>SaaS B2B mature</h3>
-        <p>App en prod depuis 2-6 ans, 1 000-50 000 MAU, facturation récurrente Stripe, multi-tenant, SSO enterprise. <b>Notre sweet spot</b>&nbsp;: dimensions critiques = architecture multi-tenant, billing edge-cases, data isolation, SOC2-readiness.</p>
+        <p>Exemple de contexte à auditer&nbsp;: application existante, utilisateurs actifs, facturation récurrente, multi-tenant ou SSO. Les dimensions retenues peuvent inclure l'isolation des données, les cas limites de facturation et la préparation à un référentiel de sécurité.</p>
         <div class="at-vt-feats">
           <span>Multi-tenant</span>
           <span>Billing edge-cases</span>

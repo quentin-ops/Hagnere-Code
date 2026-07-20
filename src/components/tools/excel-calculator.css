@@ -453,6 +453,12 @@
 }
 .calc-res-savings-roi b { color: var(--good-ink); font-weight: 700; font-family: var(--font-geist-mono), ui-monospace, monospace; }
 .calc-res-savings.is-neutral .calc-res-savings-roi b { color: var(--ink); }
+.calc-res-caveat {
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
 
 /* --------- Capture form ---------------------------------------------- */
 .calc-capture {
@@ -499,6 +505,16 @@
   background: var(--paper);
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.14);
+}
+.calc-capture-field input[aria-invalid="true"] {
+  border-color: #b91c1c;
+}
+.calc-capture-field > em,
+.calc-field-error {
+  color: #991b1b;
+  font-size: 11.5px;
+  font-style: normal;
+  line-height: 1.4;
 }
 
 .calc-capture-submit {

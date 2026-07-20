@@ -9,6 +9,7 @@ describe("trackFunnelEvent", () => {
   beforeEach(() => {
     vi.unstubAllEnvs();
     vi.stubEnv("NEXT_PUBLIC_COOKIE_BANNER", "1");
+    vi.stubEnv("NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED", "true");
     sendBeacon.mockReset();
     sendBeacon.mockReturnValue(true);
     fetch.mockReset();
@@ -19,7 +20,13 @@ describe("trackFunnelEvent", () => {
       fetch,
       localStorage: {
         getItem: vi.fn(() =>
-          JSON.stringify({ necessary: true, analytics: true, ts: Date.now() }),
+          JSON.stringify({
+            version: 2,
+            necessary: true,
+            analytics: true,
+            categories: { necessary: true, analytics: true },
+            ts: Date.now(),
+          }),
         ),
       },
     });
@@ -80,7 +87,13 @@ describe("trackFunnelEvent", () => {
     Object.assign(window, {
       localStorage: {
         getItem: vi.fn(() =>
-          JSON.stringify({ necessary: true, analytics: false, ts: Date.now() }),
+          JSON.stringify({
+            version: 2,
+            necessary: true,
+            analytics: false,
+            categories: { necessary: true, analytics: false },
+            ts: Date.now(),
+          }),
         ),
       },
     });
@@ -100,13 +113,24 @@ describe("trackFunnelEvent", () => {
     expect(fetch).not.toHaveBeenCalled();
   });
 
+  it("does not emit anything when no compatible collector is enabled", () => {
+    vi.stubEnv("NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED", "false");
+
+    trackFunnelEvent("guide_cta_click");
+
+    expect(sendBeacon).not.toHaveBeenCalled();
+    expect(fetch).not.toHaveBeenCalled();
+  });
+
   it("does not send analytics after the 183-day choice has expired", () => {
     Object.assign(window, {
       localStorage: {
         getItem: vi.fn(() =>
           JSON.stringify({
+            version: 2,
             necessary: true,
             analytics: true,
+            categories: { necessary: true, analytics: true },
             ts: Date.now() - 184 * 86_400_000,
           }),
         ),
@@ -124,7 +148,13 @@ describe("trackFunnelEvent", () => {
     Object.assign(window, {
       localStorage: {
         getItem: vi.fn(() =>
-          JSON.stringify({ necessary: true, analytics: true, ts: Date.now() }),
+          JSON.stringify({
+            version: 2,
+            necessary: true,
+            analytics: true,
+            categories: { necessary: true, analytics: true },
+            ts: Date.now(),
+          }),
         ),
       },
     });

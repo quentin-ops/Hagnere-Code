@@ -22,7 +22,7 @@ export const problemsHtml = `
           <span class="sap-n">01</span>
         </div>
         <h3>« Mon CAC Google Ads a triplé en 2 ans »</h3>
-        <p>Vous spendez 15 à 40 k€/mois, le CPC a doublé, Performance Max cannibalise votre brand et vous ne savez plus ce qui <b>amène vraiment des clients payants</b> vs. du clic vide.</p>
+        <p>Vous dépensez 15 à 40 k€/mois, le coût par clic a augmenté, vous soupçonnez Performance Max de reprendre une demande de marque qui aurait existé sans elle et vous ne savez plus ce qui <b>amène vraiment des clients payants</b>. Ce soupçon doit être vérifié.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
           <span class="sap-foot-v">Restructuration comptes + bid strategies · 4–6 sem.</span>
@@ -96,11 +96,11 @@ export const problemsHtml = `
           </div>
           <span class="sap-n">06</span>
         </div>
-        <h3>« Je lance un produit, ma campagne doit tourner dans 15 jours »</h3>
-        <p>Deadline produit ou levée, vous avez besoin d'un setup complet — <b>tracking, comptes, creatives, landing, budgets</b> — opérationnel en 2 semaines. Pas en 2 trimestres.</p>
+        <h3>« Je lance un produit, ma campagne a une date impérative »</h3>
+        <p>Deadline produit ou levée : il faut inventorier <b>tracking, comptes, créations, landing et budgets</b>, puis confirmer la capacité et le jalon technique avant signature.</p>
         <div class="sap-foot sap-foot-hot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Sprint lancement · 15 jours clé en main</span>
+          <span class="sap-foot-v">Sprint lancement · date et périmètre sur devis</span>
         </div>
       </article>
     </div>

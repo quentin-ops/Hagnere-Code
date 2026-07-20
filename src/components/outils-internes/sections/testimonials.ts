@@ -5,28 +5,27 @@ export const testimonialsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Ce que vous pouvez vérifier vous-même</div>
-        <h2>Aucun témoignage.<br>Quatre produits en production.</h2>
+        <h2>Aucun témoignage.<br>Quatre pages publiques à vérifier.</h2>
       </div>
       <div class="right">
         Nous n’affichons pas d’avis client, pour une raison simple : nous n’avons pas encore de client
-        externe. En revanche, nos quatre produits, nous ne les avons pas seulement livrés — nous les
-        <b>exploitons nous-mêmes tous les jours</b>. Les adresses sont publiques, ouvrez-les.
+        externe. Les quatre liens ci-dessous permettent uniquement de vérifier <b>la disponibilité des
+        pages et les fonctions qu'elles présentent</b>. Ils ne prouvent ni conception, ni exploitation,
+        données internes, sécurité ou résultat.
       </div>
     </div>
 
     <div class="oi-testim-grid">
       <figure class="oi-testim-card reveal">
         <blockquote>
-          <b>Un CRM métier, utilisé pour de vrai.</b> Le cabinet Hagnéré Patrimoine ne pilote pas ses
-          dossiers dans un tableur partagé : il travaille dans un outil que nous avons spécifié,
-          développé et mis en production. Contacts, cycle de vie des dossiers, relances, documents.
-          C’est exactement l’objet de cette page — à ceci près que l’utilisateur, c’est nous. Chaque
-          friction nous revient dessus le jour même, pas six mois après la recette.
+          <b>Un site éditorial et des formulaires visibles.</b> Hagnéré Patrimoine publie des contenus,
+          des offres et des parcours de contact. Le lien permet de contrôler ces interfaces publiques,
+          sans conclure sur le CRM, les données, son usage, son code source ou ses résultats.
         </blockquote>
         <figcaption>
           <div class="oi-testim-who">
             <div>
-              <div class="oi-testim-name">Hagnéré Patrimoine — CRM du cabinet</div>
+              <div class="oi-testim-name">Hagnéré Patrimoine — pages publiques</div>
               <div class="oi-testim-meta"><a href="https://hagnere-patrimoine.fr">hagnere-patrimoine.fr</a></div>
             </div>
           </div>
@@ -35,11 +34,10 @@ export const testimonialsHtml = `
 
       <figure class="oi-testim-card reveal reveal-d-1">
         <blockquote>
-          <b>Des règles de calcul qui n’ont pas le droit d’être fausses.</b> LMNP.AI et SCI-AI.app
-          produisent de la comptabilité fiscale : amortissements, écritures, documents de fin
-          d’exercice. Un outil interne pose la même exigence — des règles métier écrites noir sur
-          blanc, des données sensibles, et des utilisateurs qui repèrent une anomalie avant vous.
-          Nous tenons ces deux produits ouverts au public, avec les échéances que cela impose.
+          <b>Deux offres comptables présentées publiquement.</b> LMNP.AI et SCI-AI.app décrivent
+          des fonctions de comptabilité, leurs régimes couverts et leurs parcours d'accès.
+          Ces pages ne permettent pas de vérifier les calculs, les données traitées, les échéances,
+          l'exploitation ou le retour des utilisateurs.
         </blockquote>
         <figcaption>
           <div class="oi-testim-who">
@@ -53,12 +51,9 @@ export const testimonialsHtml = `
 
       <figure class="oi-testim-card reveal reveal-d-2">
         <blockquote>
-          <b>Nous vivons avec ce que nous construisons.</b> Hagnéré Investissement tourne avec ses
-          parcours, son back-office et ses flux de données. Nous en assurons les correctifs, les
-          montées de version et les factures d’infrastructure. C’est là toute la différence avec un
-          prestataire qui livre puis s’en va : la dette technique que nous créons, c’est nous qui la
-          payons. Un outil interne conçu dans ces conditions est pensé pour durer, pas seulement pour
-          être livré.
+          <b>Des offres et parcours publics.</b> Hagnéré Investissement présente des offres immobilières
+          et des parcours de contact. Le lien permet d'observer ces pages, sans prouver le back-office,
+          les flux de données, les correctifs, l'infrastructure, la maintenance ou la durabilité du service.
         </blockquote>
         <figcaption>
           <div class="oi-testim-who">
@@ -74,7 +69,7 @@ export const testimonialsHtml = `
     <div class="oi-testim-bar reveal">
       <div class="oi-testim-bar-stat">
         <div class="oi-testim-bar-v">4</div>
-        <div class="oi-testim-bar-k">produits maison<br>en production</div>
+        <div class="oi-testim-bar-k">pages produit<br>publiques</div>
       </div>
       <div class="oi-testim-bar-sep"></div>
       <div class="oi-testim-bar-stat">
@@ -93,8 +88,8 @@ export const testimonialsHtml = `
       </div>
       <div class="oi-testim-bar-sep"></div>
       <div class="oi-testim-bar-stat">
-        <div class="oi-testim-bar-v">24<span class="oi-testim-bar-v-s">h</span></div>
-        <div class="oi-testim-bar-k">pour une réponse écrite<br>de Quentin Hagnéré (jours ouvrés)</div>
+        <div class="oi-testim-bar-v">J+1<span class="oi-testim-bar-v-s"> visé</span></div>
+        <div class="oi-testim-bar-k">objectif de réponse le prochain jour ouvré<br>sans délai garanti</div>
       </div>
     </div>
   </div>

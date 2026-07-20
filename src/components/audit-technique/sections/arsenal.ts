@@ -5,7 +5,7 @@ export const arsenalHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Notre arsenal d'audit</div>
-        <h2>Neuf outils pros qu'on opère,<br>pas un mur de logos.</h2>
+        <h2>Neuf outils mobilisables,<br>selon le périmètre retenu.</h2>
       </div>
       <div class="right">
         Trois familles d'outils, trois missions. Chacun documente, accélère ou vérifie une étape précise de l'audit.

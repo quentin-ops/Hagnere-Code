@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-const CALENDLY_URL =
-  "https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte";
+import { CALENDLY_URL } from "@/lib/calendly";
 
 const CALENDLY_SCRIPT_SRC = "https://assets.calendly.com/assets/external/widget.js";
+const CALENDLY_LOAD_TIMEOUT_MS = 12_000;
 
 type CalendlyApi = {
   initInlineWidget: (options: {
@@ -34,14 +33,31 @@ export function CalendlyEmbed({ height = 700 }: { height?: number }) {
   useEffect(() => {
     if (!authorised) return;
 
-    const markFailed = () => setLoadFailed(true);
+    let active = true;
+    const markFailed = () => {
+      if (active) setLoadFailed(true);
+    };
 
     const initialise = () => {
       const parentElement = containerRef.current;
       if (!parentElement || parentElement.querySelector("iframe")) return;
-      if (!window.Calendly) return;
-      window.Calendly.initInlineWidget({ url: CALENDLY_URL, parentElement });
+      if (!window.Calendly) {
+        markFailed();
+        return;
+      }
+      try {
+        window.Calendly.initInlineWidget({ url: CALENDLY_URL, parentElement });
+      } catch {
+        markFailed();
+      }
     };
+
+    // `load` ne garantit ni la présence de l'API globale ni la création de
+    // l'iframe. Sans garde temporelle, un bloqueur de contenus peut laisser un
+    // grand espace vide indéfiniment.
+    const timeoutId = window.setTimeout(() => {
+      if (!containerRef.current?.querySelector("iframe")) markFailed();
+    }, CALENDLY_LOAD_TIMEOUT_MS);
 
     const existing = document.querySelector<HTMLScriptElement>(
       `script[src="${CALENDLY_SCRIPT_SRC}"]`,
@@ -52,6 +68,8 @@ export function CalendlyEmbed({ height = 700 }: { height?: number }) {
       else existing.addEventListener("load", initialise, { once: true });
       existing.addEventListener("error", markFailed, { once: true });
       return () => {
+        active = false;
+        window.clearTimeout(timeoutId);
         existing.removeEventListener("load", initialise);
         existing.removeEventListener("error", markFailed);
       };
@@ -65,6 +83,8 @@ export function CalendlyEmbed({ height = 700 }: { height?: number }) {
     document.body.appendChild(script);
 
     return () => {
+      active = false;
+      window.clearTimeout(timeoutId);
       script.removeEventListener("load", initialise);
       script.removeEventListener("error", markFailed);
     };

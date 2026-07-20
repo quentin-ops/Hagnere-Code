@@ -5,14 +5,14 @@ vitrine (tous les CTA "Démarrer un projet" pointent ici). Le prospect
 décrit son projet en 2-3 minutes via un stepper guidé ; à la soumission,
 le brief complet part par email à l'équipe et en base — **aucune
 tarification en temps réel, aucun chiffrage automatique**. L'équipe
-répond personnellement sous 24 h ouvrées.
+vise une réponse personnelle le prochain jour ouvré, sans délai garanti.
 
 ## Architecture
 
 ```text
 page.tsx (metadata + JSON-LD ContactPage)
 └── ProjectFunnel.tsx (1 seule page client)
-    ├── Landing hero (promesse : réponse humaine sous 24 h) + 3 étapes + FAQ
+    ├── Landing hero (objectif : réponse humaine le prochain jour ouvré) + 3 étapes + FAQ
     ├── 6 étapes : projet → contexte → périmètre → contraintes → contact → envoi
     ├── 12 ProjectKindId (site, saas, mobile, outil, ecommerce, seo, ads,
     │                    content, maintenance, audit, security, automatisation,
@@ -21,7 +21,7 @@ page.tsx (metadata + JSON-LD ContactPage)
     │   adaptés au dominantKind
     ├── dictée vocale (Groq Whisper via /api/transcribe)
     ├── SIRENE auto-fill (recherche-entreprises.api.gouv.fr via /api/sirene)
-    ├── localStorage draft persistence (clé pf:draft:v2)
+    ├── sessionStorage opt-in, 24 h max, sans coordonnées (clé pf:draft:v3)
     └── analytics events vendor-agnostic (pf:funnel_open, pf:step_complete, …)
 
 brief-format.ts

@@ -11,7 +11,7 @@ interface GuideFAQSectionProps {
  *
  * Volontairement PAS d'accordéon Radix ici : Radix démonte le contenu des
  * items fermés → les réponses n'existent pas dans le HTML servi, Google ne
- * les indexe pas et le FAQPage JSON-LD décrit un contenu invisible
+ * les indexe pas et rend les réponses inaccessibles aux lecteurs
  * (violation des guidelines structured data). Avec <details>, tout le texte
  * est dans le DOM, replié visuellement, et le premier item est ouvert.
  */

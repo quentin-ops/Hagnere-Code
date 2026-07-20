@@ -17,6 +17,10 @@
   "vars": {
     // Valeur runtime alignée avec la production. Les scripts build/cf:build
     // imposent aussi cette valeur pendant le rendu statique des métadonnées.
-    "NEXT_PUBLIC_ENV": "production"
+    "NEXT_PUBLIC_ENV": "production",
+    // Le Worker reçoit cet en-tête de l'infrastructure Cloudflare. Sans cette
+    // attestation explicite, le limiteur regrouperait les visiteurs sous
+    // `unknown` afin de ne jamais faire confiance à un header client.
+    "TRUST_CF_CONNECTING_IP": "1"
   }
 }

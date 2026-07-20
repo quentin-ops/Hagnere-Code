@@ -1,4 +1,5 @@
 import { navHtml } from "@/components/design-shared/nav-html";
+import { CALENDLY_URL } from "@/lib/calendly";
 
 export const bodyHtml = `
 ${navHtml}
@@ -14,7 +15,8 @@ ${navHtml}
       <div class="eyebrow">— Contact</div>
       <h1>Contact Hagnéré Code.<br><span class="accent">Dites-nous bonjour.</span></h1>
       <p class="c-hero-lead">
-        Quelqu'un qui code lit votre message, vous répond <b>sous 24 h ouvrées</b>,
+        Quelqu'un qui code lit votre message. Nous visons une réponse <b>le prochain jour ouvré</b>,
+        sans engagement contractuel de délai,
         et vous dit franchement si c'est pour nous — ou pas. Pas de commercial,
         pas de filtre, pas de ballet. On va droit au but.
       </p>
@@ -23,10 +25,10 @@ ${navHtml}
           Formulaire projet
           <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Réserver 30 min →</a>
+        <a href="${CALENDLY_URL}" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Réserver 30 min →</a>
       </div>
       <div class="c-hero-meta">
-        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Réponse sous 24 h</span>
+        <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Objectif : prochain jour ouvré</span>
         <span class="sep"></span>
         <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Sans engagement</span>
         <span class="sep"></span>
@@ -135,7 +137,7 @@ ${navHtml}
         </p>
       </div>
       <div class="c-local-aside">
-        <div class="c-local-row"><span>Réponse</span><b>Sous 24 h ouvrées</b></div>
+        <div class="c-local-row"><span>Réponse visée</span><b>Prochain jour ouvré</b></div>
         <div class="c-local-row"><span>Premier échange</span><b>30 min gratuites</b></div>
         <div class="c-local-row"><span>Horaires</span><b>Lun-ven · 9 h-19 h</b></div>
         <div class="c-local-row"><span>Téléphone</span><a href="tel:+33374472018">+33 3 74 47 20 18</a></div>
@@ -146,7 +148,7 @@ ${navHtml}
       <a href="/realisations/lmnp-ai" class="c-proof-item">
         <span>SaaS comptable</span>
         <b>LMNP.AI</b>
-        <em>Produit en production, clients payants, automatisations métier.</em>
+        <em>Offre et fonctions de comptabilité présentées sur une page publique.</em>
       </a>
       <a href="/realisations/sci-ai" class="c-proof-item">
         <span>Application métier</span>
@@ -156,12 +158,12 @@ ${navHtml}
       <a href="/realisations/hagnere-patrimoine" class="c-proof-item">
         <span>Acquisition B2B</span>
         <b>Hagnéré Patrimoine</b>
-        <em>SEO, qualification commerciale, site premium orienté leads.</em>
+        <em>Contenus, offres et formulaires visibles sur le site public.</em>
       </a>
       <a href="/realisations/hagnere-investissement" class="c-proof-item">
         <span>Génération de leads</span>
         <b>Hagnéré Investissement</b>
-        <em>Site vitrine, simulateur de rendement, funnel 3 segments.</em>
+        <em>Offres immobilières et parcours de contact présentés publiquement.</em>
       </a>
     </div>
   </div>
@@ -198,8 +200,8 @@ ${navHtml}
           <div class="c-flow-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg></div>
         </div>
         <h4>Un expert vous répond</h4>
-        <p>En pratique 3–6 h, garanti sous 24 h ouvrées. Vrai humain, pas un accusé de réception auto ni un chatbot.</p>
-        <div class="c-flow-tag">Nous · sous 24 h</div>
+        <p>Votre demande est lue par une personne de l'équipe. Nous visons une réponse le prochain jour ouvré, sans délai garanti.</p>
+        <div class="c-flow-tag">Objectif · prochain jour ouvré</div>
       </div>
 
       <div class="c-flow-step reveal reveal-d-2">
@@ -219,7 +221,7 @@ ${navHtml}
         </div>
         <h4>Devis ferme ou orientation</h4>
         <p>Soit on vous propose un forfait fixe avec date de livraison, soit on vous oriente vers le bon interlocuteur. Dans les deux cas, vous repartez avec une direction claire.</p>
-        <div class="c-flow-tag">Vous décidez · J+5 max</div>
+        <div class="c-flow-tag">Vous décidez · délai annoncé après l'échange</div>
       </div>
     </div>
   </div>
@@ -232,7 +234,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— Avant de nous écrire</div>
         <h2 style="margin-top:14px">Cinq questions<br>qui reviennent<br>tout le temps.</h2>
-        <p>Si la vôtre n'est pas ci-dessous, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">glissez-la dans le formulaire</a>, on répond sous 24 h ouvrées.</p>
+        <p>Si la vôtre n'est pas ci-dessous, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">glissez-la dans le formulaire</a>. Nous visons une réponse le prochain jour ouvré, sans délai garanti.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
@@ -241,8 +243,8 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Non, au contraire.</b> La moitié de nos prospects arrive avec une idée mais pas de cahier des charges.
-            C'est exactement le moment où un cadrage honnête vous fait gagner 3 mois. On vous pose les bonnes
+            <b>Non, au contraire.</b> Vous pouvez arriver avec une idée sans cahier des charges.
+            Un premier cadrage sert précisément à clarifier le besoin et les prochaines décisions. On vous pose les bonnes
             questions, vous repartez avec une direction claire — même si on ne bosse finalement pas ensemble.
           </div>
         </div>
@@ -263,8 +265,8 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>24 h ouvrées maximum</b>, en pratique 3–6 h la plupart du temps. Le week-end et les jours
-            fériés, on coupe : mieux vaut une équipe reposée le lundi qu'une équipe rincée le dimanche.
+            Nous visons une réponse <b>le prochain jour ouvré</b>, sans engagement contractuel de délai avant
+            accord écrit. Le week-end et les jours fériés ne sont pas comptés comme jours ouvrés.
           </div>
         </div>
 

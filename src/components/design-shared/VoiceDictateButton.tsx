@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 type Status =
   | { kind: "idle" }
+  | { kind: "requesting" }
   | { kind: "recording" }
   | { kind: "processing" }
   | { kind: "error"; message: string };
@@ -85,6 +86,10 @@ export function VoiceDictateButton({
   const streamRef = useRef<MediaStream | null>(null);
   const tickIntervalRef = useRef<number | null>(null);
   const autoStopTimeoutRef = useRef<number | null>(null);
+  const mountedRef = useRef(false);
+  const startPendingRef = useRef(false);
+  const discardOnStopRef = useRef(false);
+  const transcriptionAbortRef = useRef<AbortController | null>(null);
 
   const clearTimers = useCallback(() => {
     if (tickIntervalRef.current !== null) {
@@ -98,15 +103,30 @@ export function VoiceDictateButton({
   }, []);
 
   useEffect(() => {
+    mountedRef.current = true;
     return () => {
+      mountedRef.current = false;
+      startPendingRef.current = false;
+      discardOnStopRef.current = true;
+      transcriptionAbortRef.current?.abort();
+      transcriptionAbortRef.current = null;
       clearTimers();
       try {
         const recorder = mediaRecorderRef.current;
-        if (recorder && recorder.state !== "inactive") recorder.stop();
+        if (recorder) {
+          // Arrêter le micro à l'unmount ne doit jamais déclencher un upload.
+          recorder.ondataavailable = null;
+          recorder.onstop = null;
+          recorder.onerror = null;
+          if (recorder.state !== "inactive") recorder.stop();
+        }
       } catch {
         /* noop */
       }
       streamRef.current?.getTracks().forEach((track) => track.stop());
+      mediaRecorderRef.current = null;
+      streamRef.current = null;
+      chunksRef.current = [];
     };
   }, [clearTimers]);
 
@@ -117,7 +137,18 @@ export function VoiceDictateButton({
   }, []);
 
   const startRecording = useCallback(async () => {
+    if (
+      startPendingRef.current ||
+      (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive")
+    ) {
+      return;
+    }
+
+    startPendingRef.current = true;
+    discardOnStopRef.current = false;
+
     if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === "undefined") {
+      startPendingRef.current = false;
       setStatus({
         kind: "error",
         message: "Enregistrement audio non supporté par ce navigateur.",
@@ -125,6 +156,7 @@ export function VoiceDictateButton({
       return;
     }
 
+    setStatus({ kind: "requesting" });
     let stream: MediaStream | null = null;
     try {
       stream = await navigator.mediaDevices.getUserMedia({
@@ -134,6 +166,13 @@ export function VoiceDictateButton({
           autoGainControl: true,
         },
       });
+
+      if (!mountedRef.current) {
+        stream.getTracks().forEach((track) => track.stop());
+        startPendingRef.current = false;
+        return;
+      }
+
       streamRef.current = stream;
 
       const preferredMimeType = getRecorderMimeType();
@@ -150,21 +189,39 @@ export function VoiceDictateButton({
       };
       recorder.onstop = async () => {
         clearTimers();
-        setStatus({ kind: "processing" });
+        mediaRecorderRef.current = null;
         activeStream.getTracks().forEach((track) => track.stop());
         streamRef.current = null;
+        const recordedChunks = chunksRef.current;
+        chunksRef.current = [];
+
+        if (discardOnStopRef.current || !mountedRef.current) return;
+
+        setStatus({ kind: "processing" });
         try {
-          const audio = new Blob(chunksRef.current, { type: mimeType });
+          const audio = new Blob(recordedChunks, { type: mimeType });
+          if (audio.size === 0) {
+            setStatus({
+              kind: "error",
+              message: "Aucun son n'a été enregistré. Vérifiez le micro puis réessayez.",
+            });
+            return;
+          }
+
           const formData = new FormData();
           formData.append("audio", audio, getAudioFilename(mimeType));
+          const controller = new AbortController();
+          transcriptionAbortRef.current = controller;
           const res = await fetch("/api/transcribe", {
             method: "POST",
             body: formData,
+            signal: controller.signal,
           });
           const json = (await res.json().catch(() => ({}))) as {
             text?: string;
             error?: string;
           };
+          if (!mountedRef.current) return;
           if (!res.ok) {
             setStatus({
               kind: "error",
@@ -174,15 +231,41 @@ export function VoiceDictateButton({
           }
           if (json.text) onTranscribed(json.text.trim());
           setStatus({ kind: "idle" });
-        } catch {
+        } catch (error) {
+          if (!mountedRef.current || (error instanceof DOMException && error.name === "AbortError")) {
+            return;
+          }
           setStatus({
             kind: "error",
             message: "La transcription a échoué. Réessayez ou écrivez à la main.",
+          });
+        } finally {
+          transcriptionAbortRef.current = null;
+        }
+      };
+      recorder.onerror = () => {
+        discardOnStopRef.current = true;
+        recorder.onstop = null;
+        clearTimers();
+        try {
+          if (recorder.state !== "inactive") recorder.stop();
+        } catch {
+          /* Le navigateur a déjà interrompu l'enregistreur. */
+        }
+        activeStream.getTracks().forEach((track) => track.stop());
+        mediaRecorderRef.current = null;
+        streamRef.current = null;
+        chunksRef.current = [];
+        if (mountedRef.current) {
+          setStatus({
+            kind: "error",
+            message: "L'enregistrement audio s'est interrompu. Réessayez ou écrivez à la main.",
           });
         }
       };
 
       recorder.start();
+      startPendingRef.current = false;
       setElapsed(0);
       setStatus({ kind: "recording" });
       tickIntervalRef.current = window.setInterval(() => {
@@ -190,14 +273,26 @@ export function VoiceDictateButton({
       }, 1000);
       autoStopTimeoutRef.current = window.setTimeout(() => {
         stopRecording();
-      }, maxDurationSec * 1000);
+      }, Math.min(120, Math.max(1, Number.isFinite(maxDurationSec) ? maxDurationSec : 120)) * 1000);
     } catch (err) {
+      startPendingRef.current = false;
       stream?.getTracks().forEach((track) => track.stop());
+      const recorder = mediaRecorderRef.current;
+      if (recorder) {
+        recorder.ondataavailable = null;
+        recorder.onstop = null;
+        recorder.onerror = null;
+      }
+      mediaRecorderRef.current = null;
       streamRef.current = null;
-      setStatus({ kind: "error", message: microphoneErrorMessage(err) });
+      chunksRef.current = [];
+      if (mountedRef.current) {
+        setStatus({ kind: "error", message: microphoneErrorMessage(err) });
+      }
     }
   }, [onTranscribed, maxDurationSec, stopRecording, clearTimers]);
 
+  const isRequesting = status.kind === "requesting";
   const isRecording = status.kind === "recording";
   const isProcessing = status.kind === "processing";
   const isError = status.kind === "error";
@@ -206,24 +301,26 @@ export function VoiceDictateButton({
     <div className={`vdb-wrap ${className}`}>
       <button
         type="button"
-        className={`vdb-btn ${isRecording ? "is-recording" : ""} ${isProcessing ? "is-processing" : ""}`}
+        className={`vdb-btn ${isRecording ? "is-recording" : ""} ${isProcessing || isRequesting ? "is-processing" : ""}`}
         onClick={isRecording ? stopRecording : startRecording}
-        disabled={isProcessing}
+        disabled={isProcessing || isRequesting}
         aria-label={
           isRecording
             ? "Arrêter la dictée"
+            : isRequesting
+              ? "Activation du micro en cours"
             : isProcessing
               ? "Transcription en cours"
               : "Dicter votre projet"
         }
         aria-pressed={isRecording}
       >
-        {isProcessing ? (
+        {isProcessing || isRequesting ? (
           <>
             <svg className="vdb-spin" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
               <path d="M21 12a9 9 0 11-6.219-8.56" />
             </svg>
-            <span>{processingLabel}</span>
+            <span>{isRequesting ? "Activation du micro…" : processingLabel}</span>
           </>
         ) : isRecording ? (
           <>
@@ -255,7 +352,7 @@ export function VoiceDictateButton({
         </span>
       )}
       <span className="vdb-privacy">
-        Dictée facultative : l&apos;audio est transmis à Groq pour transcription.{" "}
+        En activant « Dicter », vous consentez à transmettre l&apos;audio à Groq pour cette transcription facultative. La saisie clavier reste disponible.{" "}
         <a href="/legal/confidentialite#dictee">En savoir plus</a>
       </span>
     </div>

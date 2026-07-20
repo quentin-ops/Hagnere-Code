@@ -42,7 +42,7 @@ export const whatWeDoHtml = `
           <span class="ads-wwd-badge ads-wwd-badge-google">Google</span>
         </div>
         <h3>Google Ads · Search · PMax · Shopping</h3>
-        <p>Structure comptes propre (MCC, conversion primaire, Enhanced Conv), bid strategies par objectif, exclusions brand, scripts anti-gaspillage. <b>PMax dompté, pas laissé en auto-pilote.</b></p>
+        <p>Structure des comptes, objectifs et actions de conversion documentés par campagne, suivi avancé si pertinent, enchères par objectif, contrôles de marque et alertes d'anomalie. <b>Les automatisations restent reliées aux preuves métier.</b></p>
         <div class="ads-wwd-tags">
           <span class="ads-wwd-tag">Search</span>
           <span class="ads-wwd-tag">Performance Max</span>

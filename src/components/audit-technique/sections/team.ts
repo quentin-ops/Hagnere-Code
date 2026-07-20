@@ -28,7 +28,7 @@ export const teamHtml = `
           <span class="at-tm-badge">Associé-lead</span>
         </div>
         <div class="at-tm-body">
-          <h4>Quentin Hagnéré</h4>
+          <h3>Quentin Hagnéré</h3>
           <p class="at-tm-role">Fondateur · Lead auditor · Restitution client</p>
           <p class="at-tm-bio">Peut intervenir sur le cadrage, la synthèse et la restitution selon l'équipe nommée au devis. Les règles de prévention des conflits d'intérêts sont précisées pour la mission.</p>
           <div class="at-tm-meta">
@@ -53,7 +53,7 @@ export const teamHtml = `
           <span class="at-tm-badge at-tm-badge-cto">CTO · CDI</span>
         </div>
         <div class="at-tm-body">
-          <h4>Nicolas Wallerand</h4>
+          <h3>Nicolas Wallerand</h3>
           <p class="at-tm-role">Direction technique · Architecture · Code review</p>
           <p class="at-tm-bio">Peut contribuer au cadrage d'architecture et à la revue de code selon le devis. Son rôle exact, les dimensions couvertes et les éventuels spécialistes tiers sont confirmés avant signature.</p>
           <div class="at-tm-meta">
@@ -78,7 +78,7 @@ export const teamHtml = `
           <span class="at-tm-badge">Freelance long-terme</span>
         </div>
         <div class="at-tm-body">
-          <h4>Arthur Monney</h4>
+          <h3>Arthur Monney</h3>
           <p class="at-tm-role">Senior Dev Back-end · Paiements · Architecture</p>
           <p class="at-tm-bio">Peut contribuer à une revue back-end, de facturation ou d'architecture selon le périmètre. Sa mobilisation et les outils autorisés sont confirmés au devis.</p>
           <div class="at-tm-meta">
@@ -103,7 +103,7 @@ export const teamHtml = `
           <span class="at-tm-badge">CDI</span>
         </div>
         <div class="at-tm-body">
-          <h4>Frédéric Curinckx</h4>
+          <h3>Frédéric Curinckx</h3>
           <p class="at-tm-role">Senior Dev · Full-stack · Temps-réel</p>
           <p class="at-tm-bio">Peut contribuer à la revue d'interfaces métier, de flux temps-réel ou d'une reprise Laravel selon le périmètre et la disponibilité confirmés au devis.</p>
           <div class="at-tm-meta">
@@ -128,7 +128,7 @@ export const teamHtml = `
           <span class="at-tm-badge">Freelance long-terme</span>
         </div>
         <div class="at-tm-body">
-          <h4>Ryan Mazzitelli</h4>
+          <h3>Ryan Mazzitelli</h3>
           <p class="at-tm-role">Senior Dev · Back-end + IA · Agents Claude</p>
           <p class="at-tm-bio">Peut contribuer à la revue d'intégrations IA, d'API et de pipelines d'extraction selon le périmètre. Aucune qualification d'auditeur sécurité n'est présumée par cette présentation.</p>
           <div class="at-tm-meta">
@@ -153,7 +153,7 @@ export const teamHtml = `
           <span class="at-tm-badge">CDI</span>
         </div>
         <div class="at-tm-body">
-          <h4>Killian Hoarau</h4>
+          <h3>Killian Hoarau</h3>
           <p class="at-tm-role">Senior Dev · Back-end + DevOps · Infrastructure</p>
           <p class="at-tm-bio">Peut contribuer à la revue d'infrastructure, de CI/CD et de tests selon le périmètre. Le rôle d'auditeur, les entretiens et les responsabilités sont ceux nommés au devis.</p>
           <div class="at-tm-meta">

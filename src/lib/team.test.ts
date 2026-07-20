@@ -22,7 +22,7 @@ describe("public team source of truth", () => {
     expect(TEAM_TOTAL_COUNT).toBe(TEAM_LIST.length);
     expect(TEAM_OTHER_DEVELOPERS_COUNT).toBe(DEVS.length);
     expect(TEAM_PUBLIC_COMPOSITION).toBe(
-      "7 personnes au total : 1 gérant fondateur, 1 CTO et 5 autres développeurs",
+      "7 personnes au total : 1 président fondateur, 1 CTO et 5 autres développeurs",
     );
   });
 
@@ -32,9 +32,18 @@ describe("public team source of truth", () => {
   });
 
   it("keeps public continuity claims aligned with the mixed team composition", () => {
-    expect(homepageComparisonHtml).toContain(`équipe de ${TEAM_TOTAL_COUNT}`);
+    expect(homepageComparisonHtml).toContain(
+      `${TEAM_TOTAL_COUNT} profils présentés`,
+    );
     expect(homepageComparisonHtml).not.toMatch(/équipe en CDI/i);
     expect(saasComparisonHtml).toContain(TEAM_PUBLIC_COMPOSITION);
     expect(saasComparisonHtml).not.toMatch(/seniors CDI/i);
+  });
+
+  it("keeps bios descriptive and leaves performance or service levels to the contract", () => {
+    const bios = TEAM_LIST.map((member) => member.bio ?? "").join("\n");
+    expect(bios).not.toMatch(/3 entreprises fondées|2 cabinets actifs|restaurables en moins de 15 minutes|quelques jours là où d'autres mettent des semaines|produire vite et propre/i);
+    expect(bios).toContain("objectifs de capacité, de restauration et leurs tests sont définis au contrat");
+    expect(bios).toContain("Aucune certification SOC 2 ou ISO 27001 n'est revendiquée");
   });
 });

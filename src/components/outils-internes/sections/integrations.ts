@@ -20,7 +20,7 @@ export const integrationsHtml = `
           <div class="oi-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2h3z"/><path d="M14 2v6h6M8 12h8M8 16h8M8 20h4"/></svg></div>
           <div>
             <div class="oi-integ-kind">COMPTABILITÉ &amp; ERP FR</div>
-            <h4>Là où votre DAF vit.</h4>
+            <h3>Là où votre DAF vit.</h3>
           </div>
         </div>
         <div class="oi-integ-chips">
@@ -42,7 +42,7 @@ export const integrationsHtml = `
           <div class="oi-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
           <div>
             <div class="oi-integ-kind">CRM &amp; COMMERCIAL</div>
-            <h4>Là où vos commerciaux bossent.</h4>
+            <h3>Là où vos commerciaux bossent.</h3>
           </div>
         </div>
         <div class="oi-integ-chips">
@@ -62,7 +62,7 @@ export const integrationsHtml = `
           <div class="oi-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
           <div>
             <div class="oi-integ-kind">IDENTITÉ &amp; SSO ENTREPRISE</div>
-            <h4>Là où votre DSI contrôle.</h4>
+            <h3>Là où votre DSI contrôle.</h3>
           </div>
         </div>
         <div class="oi-integ-chips">
@@ -83,7 +83,7 @@ export const integrationsHtml = `
           <div class="oi-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
           <div>
             <div class="oi-integ-kind">GED, SIGNATURE, FACTURATION</div>
-            <h4>Les documents qui tournent.</h4>
+            <h3>Les documents qui tournent.</h3>
           </div>
         </div>
         <div class="oi-integ-chips">
@@ -104,7 +104,7 @@ export const integrationsHtml = `
           <div class="oi-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div>
           <div>
             <div class="oi-integ-kind">COMMUNICATION INTERNE</div>
-            <h4>Email, chat, téléphonie.</h4>
+            <h3>Email, chat, téléphonie.</h3>
           </div>
         </div>
         <div class="oi-integ-chips">
@@ -124,7 +124,7 @@ export const integrationsHtml = `
           <div class="oi-integ-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></div>
           <div>
             <div class="oi-integ-kind">BANQUE, PAIEMENTS, OUTILS MÉTIER</div>
-            <h4>Le reste de votre stack.</h4>
+            <h3>Le reste de votre stack.</h3>
           </div>
         </div>
         <div class="oi-integ-chips">

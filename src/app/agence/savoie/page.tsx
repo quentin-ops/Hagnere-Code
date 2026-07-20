@@ -9,7 +9,13 @@ import {
 } from "@/components/guides/guide-content-blocks";
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import { OG_BASE, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
-import { getLocalPage, localPagePath, localPageUrl } from "@/lib/local-pages";
+import {
+  formatLocalPageDate,
+  getLocalPage,
+  localPagePath,
+  localPageUrl,
+} from "@/lib/local-pages";
+import { PUBLISHED_GUIDES } from "@/lib/guides";
 
 const page = getLocalPage("agence", "savoie");
 
@@ -28,17 +34,6 @@ export const metadata: Metadata = {
     url: localPagePath(page),
     images: [DEFAULT_OG_IMAGE],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 const serviceJsonLd = JSON.stringify({
@@ -48,7 +43,7 @@ const serviceJsonLd = JSON.stringify({
   url: localPageUrl(page),
   serviceType:
     "Création de site internet, e-commerce, applications métier, référencement naturel et campagnes Google Ads",
-  provider: { "@id": `${SITE_URL}/#business` },
+  provider: { "@id": `${SITE_URL}/#organization` },
   areaServed: { "@type": "AdministrativeArea", name: "Savoie" },
 });
 
@@ -66,7 +61,7 @@ const faqItems = [
   {
     question: "Intervenez-vous partout en Savoie, y compris en montagne ?",
     answer:
-      "Oui. Le bassin chambérien et le tour du lac du Bourget sont à notre porte, et nous nous déplaçons régulièrement sur Albertville, la Combe de Savoie et l'Avant-pays. Pour la Tarentaise et la Maurienne, la distance est réelle : nous organisons le cadrage sur place, puis le reste du projet à distance, ce qui convient bien aux entreprises de vallée dont les équipes sont elles-mêmes très mobiles. Un point important pour les acteurs du tourisme : nous savons que votre disponibilité n'est pas la même en février qu'en mai, et nous calons les plannings de projet en conséquence.",
+      "Oui. Le bassin chambérien et le tour du lac du Bourget sont à notre porte. Une intervention sur site est possible à Albertville, dans la Combe de Savoie, l'Avant-pays, la Tarentaise ou la Maurienne lorsque le devis le prévoit ; le reste du projet peut être conduit à distance. Pour les acteurs du tourisme, le calendrier de cadrage et de validation doit tenir compte de la saisonnalité et est confirmé avant engagement.",
   },
   {
     question: "Le tourisme représente une grosse part de l'activité savoyarde. Vous y connaissez-vous ?",
@@ -76,12 +71,12 @@ const faqItems = [
   {
     question: "Travaillez-vous avec des industriels ?",
     answer:
-      "Oui, et c'est une part de l'activité que beaucoup d'agences de communication ne couvrent pas. L'industrie savoyarde est concentrée sur quelques pôles — Ugine avec la métallurgie, Saint-Jean-de-Maurienne avec l'aluminium, la Combe de Savoie avec le parc Alpespace. Leurs besoins ne sont presque jamais un site vitrine : ce sont des outils internes, des portails pour leurs clients ou leurs distributeurs, des connexions entre leur logiciel de gestion et le web. C'est exactement le type de projet que nous traitons, et le détail est sur notre page consacrée aux applications métier.",
+      "Oui. L'industrie savoyarde est concentrée sur plusieurs pôles — Ugine avec la métallurgie, Saint-Jean-de-Maurienne avec l'aluminium, la Combe de Savoie avec le parc Alpespace. Les outils internes, portails clients ou distributeurs et connexions entre logiciels de gestion et web correspondent au périmètre de notre offre d'applications métier ; leur faisabilité dépend toutefois de l'audit des systèmes et contraintes du projet.",
   },
   {
     question: "Quel budget prévoir pour un site d'entreprise en Savoie ?",
     answer:
-      "Nos forfaits démarrent à 6 900 € pour un site vitrine sur mesure, 14 900 € pour un site avec blog et référencement travaillé, 22 000 € et plus pour du multilingue ou des fonctionnalités avancées. Une boutique en ligne sur mesure va de 15 000 à 120 000 €. Vous trouverez localement des offres à 490 € ou 990 € par mois : elles existent, elles ont leur public, mais elles reposent presque toujours sur un modèle où vous ne possédez rien à la fin. Nos guides sur les prix détaillent ce que recouvre chaque niveau de budget, et ce qui fait vraiment varier un devis.",
+      "Nos forfaits démarrent à 6 900 € pour un site vitrine sur mesure, 14 900 € pour un site avec blog et référencement travaillé, 22 000 € et plus pour du multilingue ou des fonctionnalités avancées. Une boutique en ligne sur mesure va de 15 000 à 120 000 €. Les abonnements et offres d'entrée de gamme peuvent répondre à d'autres besoins : avant de comparer, vérifiez dans chaque contrat la propriété des livrables, l'accès au code et aux comptes, les possibilités d'export, les coûts récurrents et les conditions de sortie. Nos guides sur les prix détaillent ce que recouvre chaque niveau de budget.",
   },
   {
     question: "Pourquoi choisir une agence savoyarde plutôt qu'une agence parisienne ou lyonnaise ?",
@@ -91,27 +86,16 @@ const faqItems = [
   {
     question: "Faites-vous du référencement pour des entreprises savoyardes déjà en ligne ?",
     answer:
-      "Oui, et c'est souvent le point d'entrée le plus rentable quand le site existe déjà et fonctionne correctement. Nous commençons systématiquement par un audit : il arrive que le problème ne soit pas le référencement mais la vitesse du site, sa structure, ou le fait qu'il ne réponde à aucune recherche réellement tapée par les clients. Dans ce cas, nous le disons — refaire le site coûte parfois moins cher que de le pousser pendant deux ans. Nous gérons également des campagnes Google Ads pour les entreprises qui ont besoin de visibilité immédiate.",
+      "Oui. Un audit préalable permet de distinguer un problème de référencement d'un problème de vitesse, de structure, de mesure ou d'adéquation avec les recherches des clients. Il peut conclure à des corrections ciblées, à une refonte ou à l'absence d'intérêt d'une mission SEO ; aucun gain ni position n'est garanti. Une campagne Google Ads peut aussi être étudiée lorsque le besoin de visibilité est immédiat.",
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Notre agence", href: "/agence" },
@@ -124,7 +108,7 @@ export default function Page() {
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel="Mis à jour le 18 juillet 2026"
+        updatedLabel={`Mis à jour le ${formatLocalPageDate(page.dateModified)}`}
         keyPoints={[
           { number: "01", title: "448 226 habitants, 205 398 emplois", description: "", color: "violet" },
           { number: "02", title: "60 971 établissements actifs", description: "", color: "blue" },
@@ -295,7 +279,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un projet en Savoie ?"
-          description="Décrivez-le en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Rendez-vous à Bassens, aux portes de Chambéry, ou en visioconférence."
+          description="Décrivez-le en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti. Cette première réponse est gratuite et sans engagement. Rendez-vous à Bassens, aux portes de Chambéry, ou en visioconférence."
         />
 
         <h2 id="besoins">5. Ce dont ces entreprises ont besoin</h2>
@@ -387,7 +371,7 @@ export default function Page() {
         <p>
           Avant même de nous contacter, vous pouvez vous faire une idée
           précise de ce que coûte un projet et de la façon de comparer des
-          devis. Nous publions une vingtaine de guides longs, sourcés et
+          devis. Nous publions {PUBLISHED_GUIDES.length} guides longs, sourcés et
           gratuits, sans formulaire à remplir.
         </p>
         <ul>
@@ -420,7 +404,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Parlons de votre projet savoyard"
-          description="Décrivez votre besoin en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement — y compris quand notre réponse est qu'une solution plus simple suffirait."
+          description="Décrivez votre besoin en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement — y compris quand notre réponse est qu'une solution plus simple suffirait."
         />
 
         <h2 id="sources">Sources</h2>

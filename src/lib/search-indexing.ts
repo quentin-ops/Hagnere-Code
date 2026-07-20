@@ -6,7 +6,7 @@
  * Next.js ne génère les métadonnées et robots.txt statiques.
  */
 export function isSearchIndexingEnabled(
-  deploymentEnv: string | undefined = process.env.NEXT_PUBLIC_ENV,
+  deploymentEnv: string | undefined,
 ): boolean {
   return deploymentEnv === "production";
 }

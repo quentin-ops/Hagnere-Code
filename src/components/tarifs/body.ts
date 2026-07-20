@@ -119,7 +119,7 @@ ${navHtml}
 
         <div class="qmock-total">
           <div class="qmock-total-l">
-            <div class="qmock-total-tag">FORFAIT FERME · LIVRAISON 6 SEMAINES</div>
+            <div class="qmock-total-tag">EXEMPLE DE DEVIS · DATES À CONFIRMER</div>
             <div class="qmock-total-sub">
               <span>30/30/40</span>
               <span class="sep"></span>
@@ -163,8 +163,8 @@ ${navHtml}
         <div class="kpi-l">Du forfait signé<br>engagé au contrat.</div>
       </div>
       <div class="kpi reveal reveal-d-2">
-        <div class="kpi-n">30<span class="kpi-s">j</span></div>
-        <div class="kpi-l">Garantie incluse<br>après livraison.</div>
+        <div class="kpi-n">Au<span class="kpi-s"> devis</span></div>
+        <div class="kpi-l">Recette, garantie<br>et exclusions écrites.</div>
       </div>
       <div class="kpi reveal reveal-d-3">
         <div class="kpi-n">1 500<span class="kpi-s">€</span></div>
@@ -183,8 +183,9 @@ ${navHtml}
         <h2>Quatre règles<br>qui ne bougent jamais.</h2>
       </div>
       <div class="right">
-        Notre modèle économique tient en quatre principes, écrits dans chaque devis et dans nos CGV.
-        Si on les enfreint un jour, c'est nous qui payons l'écart — pas vous.
+        Notre grille commerciale repose sur quatre principes. Seuls le devis signé et les CGV
+        applicables au projet créent des engagements&nbsp;: ils précisent le périmètre, le prix,
+        les livrables, les exclusions et les modalités d'avenant.
       </div>
     </div>
 
@@ -207,7 +208,7 @@ ${navHtml}
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 7v5l3 2"/></svg>
         </div>
         <h3>Discovery payé, déduit</h3>
-        <p>2 jours, 1 500 €, livrable utilisable par n'importe qui. Si vous partez avec nous, c'est offert. Si vous ne partez pas, vous gardez tout.</p>
+        <p>2 jours, 1 500 € HT, livrables réutilisables selon les droits prévus au devis. Si la phase suivante est lancée avec nous, le devis précise la déduction applicable ; sinon vous conservez les livrables remis.</p>
         <div class="prin-foot">
           <span class="prin-tag">−1 500 € PHASE 2</span>
         </div>
@@ -285,7 +286,7 @@ ${navHtml}
           </a>
           <div class="disc-foot-meta">
             <span class="disc-foot-pill">2 jours</span>
-            <span>Démarrage sous 2 semaines</span>
+            <span>Date de démarrage confirmée avant signature</span>
           </div>
         </div>
       </div>
@@ -386,7 +387,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design sur mesure</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO technique de série</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement et durée précisés au devis</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 2–4 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning et jalons précisés au devis</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
       </div>
@@ -407,7 +408,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intégrations tierces (Stripe, Pennylane…)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Agents IA selon besoin</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Mesures techniques et documents RGPD au périmètre</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 5–10 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning et jalons précisés au devis</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
       </div>
@@ -479,7 +480,7 @@ ${navHtml}
         <div class="ptcol"><b>6,9 k€</b><span>Essentiel — 3–5 pages</span></div>
         <div class="ptcol"><b>14,9 k€</b><span>Performance — 10–20 pages, blog</span></div>
         <div class="ptcol"><b>22 k€</b><span>Sur-mesure — multi-langue, e&#8209;com</span></div>
-        <div class="ptcol ptcol-time"><b>2–14 sem.</b></div>
+        <div class="ptcol ptcol-time"><b>Sur devis</b></div>
       </div>
 
       <div class="ptable-row">
@@ -497,7 +498,7 @@ ${navHtml}
         <div class="ptcol"><b>15 k€</b><span>Essentiel — MVP 3–5 écrans</span></div>
         <div class="ptcol"><b>30 k€</b><span>Standard — 10–15 écrans + IA</span></div>
         <div class="ptcol"><b>120 k€</b><span>Partenariat — équipe dédiée</span></div>
-        <div class="ptcol ptcol-time"><b>3–24 sem.</b></div>
+        <div class="ptcol ptcol-time"><b>Sur devis</b></div>
       </div>
 
       <div class="ptable-row">
@@ -515,7 +516,7 @@ ${navHtml}
         <div class="ptcol"><b>8 k€</b><span>Starter — process ciblé, 1 équipe</span></div>
         <div class="ptcol"><b>25 k€</b><span>Pro — CRM/ERP léger + intégrations</span></div>
         <div class="ptcol"><b>80 k€</b><span>Enterprise — SSO, multi-départements</span></div>
-        <div class="ptcol ptcol-time"><b>2–12 sem.</b></div>
+        <div class="ptcol ptcol-time"><b>Sur devis</b></div>
       </div>
 
       <div class="ptable-row">
@@ -533,7 +534,7 @@ ${navHtml}
         <div class="ptcol"><b>15 k€</b><span>Launch — 500 produits, Stripe/Alma</span></div>
         <div class="ptcol"><b>30 k€</b><span>Scale — + app mobile, marketplaces</span></div>
         <div class="ptcol"><b>70 k€</b><span>Enterprise — B2B + multi-pays</span></div>
-        <div class="ptcol ptcol-time"><b>6–16 sem.</b></div>
+        <div class="ptcol ptcol-time"><b>Sur devis</b></div>
       </div>
 
       <div class="ptable-row">
@@ -551,7 +552,7 @@ ${navHtml}
         <div class="ptcol"><b>+12,5 k€</b><span>compagnon d'un SaaS</span></div>
         <div class="ptcol"><b>30 k€</b><span>app autonome 8–12 écrans</span></div>
         <div class="ptcol"><b>60 k€</b><span>native complexe (BLE, AR)</span></div>
-        <div class="ptcol ptcol-time"><b>4–10 sem.</b></div>
+        <div class="ptcol ptcol-time"><b>Sur devis</b></div>
       </div>
 
       <div class="ptable-row">
@@ -562,14 +563,14 @@ ${navHtml}
             </div>
             <div>
               <div class="ptcol-svc-t">SEO &amp; référencement</div>
-              <div class="ptcol-svc-s">Audit, contenu, tech, netlinking</div>
+              <div class="ptcol-svc-s">Qualité, formats, validation et acquisition définis au devis</div>
             </div>
           </a>
         </div>
-        <div class="ptcol"><b>1 450 €/m</b><span>Fondations — 8 articles + 3 BL</span></div>
-        <div class="ptcol"><b>2 850 €/m</b><span>Croissance — 14 articles + 6 BL</span></div>
-        <div class="ptcol"><b>4 900 €/m</b><span>Premium — 20+ contenus + équipe</span></div>
-        <div class="ptcol ptcol-time"><b>3 mois min.</b></div>
+        <div class="ptcol"><b>1 450 €/m</b><span>Fondations — audit, priorités et périmètre au devis</span></div>
+        <div class="ptcol"><b>2 850 €/m</b><span>Croissance — production et acquisition cadrées au devis</span></div>
+        <div class="ptcol"><b>4 900 €/m</b><span>Premium — pilotage et équipe définis au devis</span></div>
+        <div class="ptcol ptcol-time"><b>Durée au devis</b></div>
       </div>
 
       <div class="ptable-row">
@@ -623,7 +624,7 @@ ${navHtml}
         <div class="ptcol"><b>8 k€</b><span>Express — 3-5 j ouvrés, 1 senior</span></div>
         <div class="ptcol"><b>18 k€</b><span>Standard — 10 j, rapport 40-70 p.</span></div>
         <div class="ptcol"><b>38 k€</b><span>Deep — 15-20 j, restitution CEO/CTO/CFO</span></div>
-        <div class="ptcol ptcol-time"><b>3–20 j. ouvrés</b></div>
+        <div class="ptcol ptcol-time"><b>Sur devis</b></div>
       </div>
     </div>
 
@@ -774,7 +775,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Plan de reprise et tests cadrés</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Rythme de pilotage défini</li>
         </ul>
-        <div class="care-cta"><a href="#contact" class="btn btn-ghost">Parler au gérant</a></div>
+        <div class="care-cta"><a href="#contact" class="btn btn-ghost">Parler au fondateur</a></div>
       </div>
     </div>
 
@@ -816,14 +817,14 @@ ${navHtml}
 
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">MVP SaaS B2B (10 écrans)</div>
-        <div class="vsm-cell vsm-cell-us"><b>30–60 k€</b><span>5–6 sem., devis ferme</span></div>
+        <div class="vsm-cell vsm-cell-us"><b>30–60 k€</b><span>Périmètre et planning confirmés au devis</span></div>
         <div class="vsm-cell"><span>À comparer</span><span>Périmètre, équipe et délai écrits</span></div>
         <div class="vsm-cell"><span>À comparer</span><span>Disponibilité et relais documentés</span></div>
       </div>
 
       <div class="vsm-row">
         <div class="vsm-cell vsm-cell-label">Site vitrine 10 pages</div>
-        <div class="vsm-cell vsm-cell-us"><b>8–15 k€</b><span>2–4 sem., LCP &lt; 1,5 s</span></div>
+        <div class="vsm-cell vsm-cell-us"><b>6,9–15 k€</b><span>Délai, pages et cible de performance au devis</span></div>
         <div class="vsm-cell"><span>À comparer</span><span>Design, CMS, contenu et mesure inclus ?</span></div>
         <div class="vsm-cell"><span>À comparer</span><span>Mêmes livrables et mêmes conditions ?</span></div>
       </div>
@@ -964,13 +965,13 @@ ${navHtml}
         <h3>Décrivez votre projet<br><span class="accent">en 3 minutes.</span></h3>
         <p class="ct-lead">
           Quelques questions guidées sur votre besoin, votre contexte et vos délais —
-          puis notre équipe lit votre brief et vous adresse une réponse personnelle
-          et argumentée sous 24 h ouvrées. Pas de robot, pas d'appel commercial.
+          puis notre équipe lit votre brief et vise une réponse personnelle le
+          prochain jour ouvré, sans délai garanti. Pas de robot, pas d'appel commercial.
         </p>
 
         <div class="ct-bullets">
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> 3 minutes chrono</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Réponse personnelle sous 24 h ouvrées</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Objectif : prochain jour ouvré</span>
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Sans engagement ni création de compte</span>
         </div>
 
@@ -1007,7 +1008,7 @@ ${navHtml}
               <div class="ct-mini-total-tag">BRIEF ENVOYÉ</div>
               <div class="ct-mini-total-sub">réponse personnelle et argumentée</div>
             </div>
-            <div class="ct-mini-total-r">sous 24 h</div>
+            <div class="ct-mini-total-r">objectif : prochain jour ouvré</div>
           </div>
         </div>
       </div>
@@ -1022,7 +1023,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— Questions fréquentes</div>
         <h2 style="margin-top:14px">Sur les prix.<br>Et la facturation.</h2>
-        <p>Manquante ? <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a>, on répond sous 24h ouvrées.</p>
+        <p>Manquante ? <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a>, nous visons le prochain jour ouvré, sans délai garanti.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
@@ -1141,10 +1142,9 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Non, jamais.</b> Le forfait inclut tous les calls, démos, allers-retours design et code reviews.
-            On ne décompte rien à la minute — on est sur un livrable, pas sur du temps.
-            Seules exceptions facturées : ateliers en présentiel hors Chambéry (déplacement à coût réel)
-            et formations équipe au-delà des 4 h incluses.
+            <b>Le volume et la cadence sont précisés au devis.</b> Les échanges nécessaires au
+            périmètre signé sont inclus selon ces modalités. Une demande nouvelle ou hors périmètre
+            fait l'objet d'un accord et, si nécessaire, d'un avenant chiffré avant réalisation.
           </div>
         </div>
       </div>

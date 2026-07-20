@@ -33,16 +33,11 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -179,23 +174,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -1026,7 +1010,7 @@ preuves référencées, retest et décision explicite.`}
             ],
             [
               "Discovery Sprint Hagnéré Code",
-              "1 500 € pour 2 jours ; déduit si la phase suivante démarre avec nous sous 90 jours",
+              "1 500 € pour 2 jours ; l'offre signée précise la déduction éventuelle et son délai",
               "Spécifications, prototype cliquable et devis au forfait",
             ],
           ]}
@@ -1254,9 +1238,10 @@ preuves référencées, retest et décision explicite.`}
           <strong>Discovery Sprint (1 500 €, 2 jours)</strong> : transformer
           votre expression de besoin en spécifications écrites, prototype
           cliquable (maquette interactive) et{" "}
-          <strong>devis au forfait fixe</strong>. Les 1 500 € sont déduits si la
-          phase suivante démarre avec nous sous 90 jours ; sinon vous conservez
-          les livrables. Le périmètre validé est ensuite repris dans les
+          <strong>devis au forfait fixe</strong>. L&apos;offre de Discovery signée
+          précise la déduction éventuellement applicable à la phase suivante,
+          son délai et les droits de réutilisation des livrables. Le périmètre
+          validé est ensuite repris dans les
           documents contractuels — c&apos;est notre{" "}
           <Link href="/methode">méthode Sprint Fixe™</Link>.
         </p>
@@ -1265,7 +1250,7 @@ preuves référencées, retest et décision explicite.`}
           <Link href="/demarrer-un-projet">
             Décrivez votre projet en 3 minutes
           </Link>{" "}
-          : nous vous répondons personnellement sous 24 h ouvrées, gratuitement
+          : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, gratuitement
           et sans engagement.
         </p>
 

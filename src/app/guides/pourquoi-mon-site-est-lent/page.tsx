@@ -31,16 +31,11 @@ export const metadata: Metadata = {
     modifiedTime: `${guide.dateModified}T09:00:00+02:00`,
     authors: [`${SITE_URL}/equipe`],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -56,7 +51,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4380,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -106,32 +100,32 @@ const faqItems = [
   {
     question: "Quels sont les seuils officiels de Google en 2026 ?",
     answer:
-      "Trois mesures, et trois seuils. L'affichage du contenu principal doit tenir sous 2,5 secondes. La réactivité aux interactions doit rester sous 200 millisecondes. La stabilité visuelle doit rester sous 0,1 sur l'échelle utilisée par l'outil. Ces valeurs sont mesurées au 75e percentile de vos chargements — autrement dit, il faut que trois visiteurs sur quatre soient au-dessus du seuil, pas la moyenne. Attention à un point que beaucoup de guides français ratent : la mesure de réactivité s'appelle INP depuis le 12 mars 2024. Elle a remplacé l'ancienne mesure FID, qui n'existe plus.",
+      "Trois mesures, et trois seuils. L'affichage du contenu principal doit tenir sous ou à 2,5 secondes. La réactivité aux interactions doit rester sous ou à 200 millisecondes. La stabilité visuelle doit rester sous ou à 0,1. Google évalue le 75e percentile : au moins 75 % des expériences doivent donc être au niveau du seuil ou meilleures. INP a remplacé FID comme Core Web Vital le 12 mars 2024 ; FID peut encore apparaître dans des données historiques.",
   },
   {
     question: "Pourquoi mon score change à chaque test ?",
     answer:
-      "Parce que la mesure de laboratoire est instable par nature, et Google le reconnaît noir sur blanc : l'essentiel de la variabilité ne vient pas de l'outil, mais de votre environnement. Les causes listées officiellement sont les tests A/B, le routage du trafic, les différences d'appareil, les extensions de votre navigateur et les antivirus. Nous l'avons constaté nous-mêmes en mesurant neuf sites savoyards : sur trois d'entre eux, l'écart entre deux passages atteignait dix-huit points. La conséquence pratique : ne tirez jamais de conclusion d'une seule mesure, lancez le test deux ou trois fois et retenez l'ordre de grandeur.",
+      "Parce que la mesure de laboratoire varie avec l'environnement. La documentation Lighthouse cite notamment le routage, le matériel, les extensions, les antivirus et les variations de contenu. Ne tirez donc pas de conclusion d'un seul passage : répétez le test dans les mêmes conditions, conservez les résultats et distinguez toujours laboratoire et données de terrain.",
   },
   {
     question: "Faut-il d'abord optimiser les images ?",
     answer:
-      "C'est le conseil universel, et il est à moitié faux. Les images sont bien le premier poste en volume — 911 kilooctets sur une page mobile médiane — et dans trois cas sur quatre, l'élément qui détermine votre temps d'affichage est une image. À ce titre, les compresser reste le meilleur rapport gain/effort. Mais le maillon le plus faible du web mobile n'est pas là : c'est le temps de réponse du serveur, correct sur seulement 44 % des pages mobiles, le pire score de toutes les mesures. Or ce temps-là ne dépend ni de vos images ni de votre thème : il dépend de votre hébergement.",
+      "Les images peuvent être le premier poste en volume et l'élément principal affiché ; les dimensionner, compresser et charger correctement est donc souvent utile. Mais il faut d'abord lire la trace : le temps serveur dépend de l'hébergement, du cache, du code, de la base de données, des appels externes et du réseau. Le diagnostic choisit le correctif à partir de la cause mesurée, pas d'une recette universelle.",
   },
   {
     question: "Mon hébergement mutualisé est-il responsable ?",
     answer:
-      "Très souvent, oui, et c'est vérifiable en une minute. Regardez votre temps de réponse serveur dans PageSpeed Insights : au-delà de 1,5 seconde alors que votre page est légère, le problème est en amont de votre site. Point important à comprendre : ce n'est pas une défaillance de l'hébergeur, c'est le produit que vous avez acheté. Les offres mutualisées d'entrée de gamme ne garantissent contractuellement aucune ressource processeur ni mémoire — elles sont explicitement partagées. Passer sur une offre avec ressources dédiées coûte 20 à 50 euros par mois et règle souvent le problème sans toucher au site.",
+      "C'est une hypothèse à tester, pas un verdict. Un temps serveur élevé peut venir des ressources, mais aussi du cache, du code, de la base, d'une extension ou d'un appel externe. Comparez plusieurs pages, consultez les métriques de l'hébergeur et profilez la requête avant de migrer. Une offre dédiée ne corrige pas automatiquement une application lente.",
   },
   {
     question: "Combien pèse une page web normale ?",
     answer:
-      "Les valeurs médianes mesurées sur le web mobile en 2025 : 911 kilooctets d'images, 632 de JavaScript, 122 de polices, 77 de feuilles de style et 22 de HTML. Une nuance essentielle que presque personne n'explique : 911 kilooctets d'images n'ont pas le même coût que 911 kilooctets de JavaScript. Une image se décode en parallèle sans bloquer l'affichage ; le JavaScript, lui, doit être téléchargé, analysé, compilé puis exécuté sur le fil principal du navigateur, ce qui gèle la page pendant ce temps. À poids égal, le JavaScript coûte beaucoup plus cher que l'image.",
+      "Les médianes du Web Almanac donnent un repère, pas une cible pour chaque site. Images et JavaScript n'ont pas le même profil : les images demandent transfert, décodage et parfois rendu critique ; le JavaScript demande aussi analyse et exécution, dont une partie peut occuper le fil principal. Leur coût réel dépend du chargement, de l'appareil et de ce qui bloque l'affichage ou l'interaction.",
   },
   {
     question: "Les extensions WordPress ralentissent-elles vraiment un site ?",
     answer:
-      "Oui, mais méfiez-vous des chiffres qui circulent. L'affirmation la plus citée — « 25 extensions produisent 80 à 150 requêtes en base et 800 à 1 500 millisecondes côté serveur » — provient d'un unique article de blog publié par l'éditeur d'un CMS concurrent de WordPress, sans aucune méthodologie ni liste des extensions testées. Ce qui est mesuré, en revanche : une page WordPress médiane pèse 2 894 kilooctets sur mobile. Chaque extension ajoute son propre code sur toutes vos pages, y compris celles où elle ne sert à rien. Le problème n'est pas leur nombre, c'est qu'aucune ne se désactive là où elle est inutile.",
+      "Certaines oui, d'autres non. Le nombre d'extensions ne mesure ni les requêtes, ni les scripts chargés, ni la qualité du cache. Vérifiez page par page ce qui est exécuté côté serveur et envoyé au navigateur ; certaines extensions chargent partout, d'autres conditionnent correctement leurs ressources. Désactivez et mesurez dans un environnement de test avant de conclure.",
   },
   {
     question: "Que valent les chiffres du type « 100 ms de latence = 1 % de chiffre d'affaires » ?",
@@ -156,39 +150,28 @@ const faqItems = [
   {
     question: "Un site Next.js est-il forcément plus rapide ?",
     answer:
-      "Pas automatiquement, mais il part avec un avantage structurel réel. Sur un site pré-généré, les pages sont préparées à l'avance : au moment de la visite, le serveur n'interroge aucune base de données et n'exécute aucun calcul, ce qui élimine par construction le poste le plus faible du web mobile. Cela dit, on peut parfaitement construire un site Next.js lent — en y empilant des images non optimisées, des polices lourdes et des scripts tiers. La technologie donne un plancher élevé, pas une garantie. C'est la raison pour laquelle nous inscrivons un score minimum dans nos contrats plutôt que de promettre « un site rapide ».",
+      "Non. La pré-génération peut réduire le travail serveur au moment de la visite, mais images, polices, JavaScript, scripts tiers et stratégie de cache restent déterminants. Une cible de performance utile précise les pages, l'appareil, le réseau, l'outil, le nombre de passages et les exclusions ; elle n'existe que si le devis la prévoit.",
   },
   {
     question: "Comment vérifier que mon prestataire tient ses promesses de performance ?",
     answer:
-      "Exigez un chiffre au contrat, et testez-le vous-même. C'est l'engagement le plus facile à vérifier de tout un devis de site internet : vous ouvrez PageSpeed Insights, vous collez l'adresse, vous regardez l'onglet mobile — trente secondes, gratuit, sans compétence technique. Un prestataire qui vend de la performance mais refuse d'inscrire un score minimum dans le contrat vous dit quelque chose d'utile. De notre côté, nous contractualisons un score de 95 sur 100 minimum sur mobile, avec corrections gratuites si le seuil n'est pas tenu à la livraison.",
+      "Faites écrire un protocole de recette : pages testées, appareil et réseau simulés, outil et version, nombre de passages, données terrain attendues lorsqu'elles existent, seuils, exclusions et procédure de correction. Un score Lighthouse isolé n'est ni un Core Web Vital de terrain, ni une garantie de classement ou de conversion.",
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
           { label: "Pourquoi mon site est lent" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Les causes réelles mesurées sur le web mondial, la différence entre données de laboratoire et données terrain que presque personne n'explique, trois chiffres du secteur démontés à la source — et les correctifs classés par rapport gain sur effort, du gratuit au chantier."
+        heroDescription="Les causes mesurées sur le web mondial, la différence entre données de laboratoire et données terrain, trois chiffres du secteur vérifiés à la source — et les correctifs classés par rapport gain sur effort, du gratuit au chantier."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -196,9 +179,9 @@ export default function Page() {
         }}
         updatedLabel={`Mis à jour le ${formatGuideDate(guide.dateModified)}`}
         keyPoints={[
-          { number: "01", title: "Le vrai maillon faible : le serveur, pas les images", description: "", color: "violet" },
+          { number: "01", title: "Mesurer avant de choisir le correctif", description: "", color: "violet" },
           { number: "02", title: "Seuils 2026 : 2,5 s · 200 ms · 0,1", description: "", color: "blue" },
-          { number: "03", title: "FID n'existe plus depuis mars 2024", description: "", color: "emerald" },
+          { number: "03", title: "INP a remplacé FID dans les Core Web Vitals", description: "", color: "emerald" },
           { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
         ]}
         relatedLinks={[
@@ -214,12 +197,11 @@ export default function Page() {
       >
         <p className="lead">
           Le conseil universel, c&apos;est « optimisez vos images ». Il
-          n&apos;est pas faux, mais il masque le vrai problème :{" "}
-          <strong>le maillon le plus faible du web mobile n&apos;est pas
-          votre thème ni vos photos, c&apos;est le temps de réponse de votre
-          serveur</strong> — correct sur seulement 44 % des pages mobiles.
-          Ce guide vous fait poser le bon diagnostic avant de dépenser
-          quoi que ce soit.
+          peut être utile, mais aucune cause n&apos;est universelle. Serveur,
+          cache, HTML, CSS, JavaScript, images, polices et scripts tiers
+          interagissent. Une statistique agrégée du web ne diagnostique pas votre
+          page : ce guide sépare les mesures terrain et laboratoire avant de
+          choisir un correctif.
         </p>
 
         <InfoBox variant="amber" title="Les 10 mots de ce guide, traduits en français courant">
@@ -229,8 +211,9 @@ export default function Page() {
           s&apos;afficher. <strong>INP</strong> : le délai entre le moment où
           vous cliquez et celui où la page réagit.{" "}
           <strong>CLS</strong> : la mesure du contenu qui saute pendant le
-          chargement. <strong>TTFB</strong> : le délai avant que le serveur
-          commence à répondre — c&apos;est la mesure de votre hébergement.{" "}
+          chargement. <strong>TTFB</strong> : le délai jusqu&apos;au premier octet,
+          influencé notamment par le réseau, le cache, l&apos;application, la base
+          de données, le CDN et l&apos;hébergement.{" "}
           <strong>Données terrain</strong> : ce que vivent vos vrais
           visiteurs. <strong>Données de laboratoire</strong> : une simulation
           faite sur un appareil standardisé.{" "}
@@ -248,9 +231,9 @@ export default function Page() {
             { id: "mesurer", label: "2. Mesurer correctement, en trois minutes" },
             { id: "labo-terrain", label: "3. Laboratoire ou terrain : la distinction qui change tout" },
             { id: "seuils", label: "4. Les seuils officiels 2026 (et celui qui n'existe plus)" },
-            { id: "maillon-faible", label: "5. Le vrai maillon faible du mobile" },
+            { id: "maillon-faible", label: "5. Ce que montrent les statistiques agrégées" },
             { id: "poids", label: "6. Ce que pèse une page, poste par poste" },
-            { id: "causes", label: "7. Les causes réelles, par ordre de fréquence" },
+            { id: "causes", label: "7. Les causes à tester" },
             { id: "chiffres-faux", label: "8. Trois chiffres qu'on vous répète et qui ne valent rien" },
             { id: "correctifs", label: "9. Les correctifs par rapport gain sur effort" },
             { id: "hebergement", label: "10. Quand c'est l'hébergement" },
@@ -281,12 +264,13 @@ export default function Page() {
           ]}
         />
 
-        <InfoBox variant="blue" title="Le fil rouge de ce guide : Karim, magasin de sport à Albertville">
-          Karim vend du matériel de montagne et fait un tiers de son chiffre
-          d&apos;affaires en ligne. Depuis l&apos;hiver, son site WordPress
-          « rame », surtout au téléphone. Une agence lui a proposé une
-          refonte à 14 000 euros. Nous suivrons son diagnostic section par
-          section — parce que sa facture finale n&apos;a rien à voir avec ce
+        <InfoBox variant="blue" title="Le fil rouge : scénario fictif composite — Karim, magasin de sport (ni client ni témoignage réel)">
+          Dans ce scénario, Karim vendrait du matériel de montagne et ferait
+          un tiers de son chiffre d&apos;affaires en ligne. Depuis l&apos;hiver,
+          son site WordPress « ramerait », surtout au téléphone. Une agence
+          lui aurait proposé une refonte à 14 000 euros. Nous suivrons cette
+          hypothèse section par section — parce que son budget de correction
+          n&apos;aurait rien à voir avec ce
           devis, et que la raison vous concerne probablement aussi.
         </InfoBox>
 
@@ -300,15 +284,14 @@ export default function Page() {
         </p>
         <p>
           Relancez le test deux ou trois fois. Le score bouge, parfois
-          beaucoup — nous avons mesuré des écarts de dix-huit points entre
-          deux passages sur un même site. Retenez l&apos;ordre de grandeur,
-          jamais le chiffre exact d&apos;une mesure unique.
+          beaucoup selon l&apos;environnement. Retenez une série réalisée dans
+          des conditions comparables, jamais le chiffre exact d&apos;une mesure
+          unique.
         </p>
 
         <h2 id="labo-terrain">3. Laboratoire ou terrain : la distinction qui change tout</h2>
         <p>
-          C&apos;est le point que presque aucun guide français
-          n&apos;explique, et il détermine sur quoi vous devez travailler.
+          Cette distinction détermine sur quoi vous devez travailler.
           L&apos;outil affiche <strong>deux blocs</strong>, et ils ne
           mesurent pas la même chose.
         </p>
@@ -333,7 +316,8 @@ export default function Page() {
           Corollaire important : si le bloc terrain est absent chez vous,
           c&apos;est que votre site n&apos;a pas assez de visiteurs pour que
           Google ait pu mesurer. Ce n&apos;est pas une erreur, et cela veut
-          dire que votre priorité n&apos;est probablement pas la vitesse.
+          ne dit rien, à lui seul, sur la priorité à donner à la vitesse : utilisez
+          alors le laboratoire et, si possible, votre propre mesure utilisateur.
         </InfoBox>
 
         <h2 id="seuils">4. Les seuils officiels 2026 (et celui qui n&apos;existe plus)</h2>
@@ -348,21 +332,20 @@ export default function Page() {
         <p>
           Ces seuils s&apos;évaluent au <strong>75e percentile</strong> :
           il ne s&apos;agit pas d&apos;une moyenne, mais d&apos;une exigence
-          que trois visiteurs sur quatre soient au-dessus du seuil. Un site
+          qu&apos;au moins trois visites sur quatre soient au niveau « bon » : LCP
+          et INP au plus égaux au seuil, CLS au plus égal à 0,1. Un site
           rapide pour la moitié de son audience et catastrophique pour
           l&apos;autre moitié échoue au test.
         </p>
-        <InfoBox variant="amber" title="Si un prestataire vous parle de FID, son information a deux ans de retard">
+        <InfoBox variant="amber" title="FID reste une mesure historique ; INP est la métrique Core Web Vitals actuelle">
           La mesure de réactivité s&apos;appelle <strong>INP</strong> depuis
           le <strong>12 mars 2024</strong>. Elle a remplacé l&apos;ancienne
-          mesure FID, retirée de la Search Console le jour même. Beaucoup de
-          guides français, et quelques audits vendus au prix fort, citent
-          encore FID comme si de rien n&apos;était. C&apos;est un test de
-          fraîcheur simple à appliquer à n&apos;importe quel document qu&apos;on
-          vous remet.
+          mesure FID comme Core Web Vital. FID peut encore apparaître dans des
+          archives, bibliothèques ou historiques ; il ne faut pas la confondre
+          avec la métrique actuelle utilisée pour ce volet de l&apos;évaluation.
         </InfoBox>
 
-        <h2 id="maillon-faible">5. Le vrai maillon faible du mobile</h2>
+        <h2 id="maillon-faible">5. Ce que montrent les statistiques agrégées</h2>
         <p>
           Voici la donnée qui devrait réorienter la moitié des budgets
           d&apos;optimisation. Sur le web mobile mondial, la part de pages
@@ -394,8 +377,8 @@ export default function Page() {
         </p>
 
         <p>
-          <strong>Karim, lui, découvre ceci</strong> : son temps de réponse
-          serveur est de 2,1 secondes. Son site n&apos;a même pas commencé à
+          <strong>Dans le scénario, Karim découvrirait ceci</strong> : son temps de réponse
+          serveur serait de 2,1 secondes. Son site n&apos;aurait même pas commencé à
           envoyer sa page que deux secondes sont déjà perdues. Aucune
           compression d&apos;image n&apos;y changerait quoi que ce soit — et
           la refonte à 14 000 euros qu&apos;on lui propose ne traite pas ce
@@ -405,7 +388,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre site est lent et vous ne savez pas pourquoi ?"
-          description="Décrivez votre situation en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement — y compris quand la réponse est « changez d'hébergement, ça suffira »."
+          description="Décrivez votre situation en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti. Cette première réponse est gratuite et sans engagement — y compris si elle consiste à recommander un changement d'hébergement."
         />
 
         <h2 id="poids">6. Ce que pèse une page, poste par poste</h2>
@@ -426,53 +409,50 @@ POIDS MÉDIAN PAR SOCLE (mobile)
   WordPress           2 894 Ko`}
         </FormulaBox>
         <InfoBox variant="blue" title="911 Ko d'images n'égalent pas 911 Ko de JavaScript">
-          C&apos;est la nuance que presque personne n&apos;explique, et elle
-          est décisive. Une image se télécharge et se décode{" "}
-          <strong>en parallèle</strong>, sans empêcher le reste de la page
-          de s&apos;afficher. Le JavaScript, lui, doit être téléchargé,
-          analysé, compilé puis exécuté <strong>sur le fil principal du
-          navigateur</strong> — celui-là même qui dessine la page et répond
-          à vos clics. Pendant ce temps, la page est figée.
+          Cette nuance est décisive. Images et scripts n&apos;ont pas le même coût,
+          mais aucune règle « au kilo-octet » n&apos;est universelle. Une image peut
+          être l&apos;élément LCP et retarder l&apos;affichage si elle est lourde, mal
+          dimensionnée ou découverte tard. Le JavaScript peut, selon son mode de
+          chargement et son exécution, occuper le fil principal et retarder rendu
+          ou interactions.
           <br />
           <br />
-          À poids égal, le JavaScript coûte donc beaucoup plus cher que
-          l&apos;image. C&apos;est pourquoi un site chargé de six cents
-          kilooctets de scripts peut paraître plus lent qu&apos;un site
-          affichant un mégaoctet de photos.
+          Comparez donc le chemin critique, le temps CPU, le LCP et l&apos;INP plutôt
+          que le poids total seul. Deux ressources du même poids peuvent avoir des
+          effets très différents selon leur priorité, leur cache et l&apos;appareil.
         </InfoBox>
 
-        <h2 id="causes">7. Les causes réelles, par ordre de fréquence</h2>
+        <h2 id="causes">7. Les causes à tester, sans ordre universel</h2>
         <ol>
           <li>
-            <strong>L&apos;hébergement.</strong> Première cause en gravité,
-            dernière en notoriété. Les offres mutualisées d&apos;entrée de
-            gamme ne garantissent contractuellement aucune ressource
-            processeur ni mémoire : elles sont explicitement partagées.
+            <strong>Le serveur et le chemin réseau.</strong> Mesurez le TTFB et
+            séparez DNS, connexion, cache, calcul applicatif, base de données,
+            CDN et ressources de l&apos;hébergement avant de conclure.
           </li>
           <li>
-            <strong>Les images.</strong> Dans trois cas sur quatre, elles
-            constituent l&apos;élément qui détermine le temps
-            d&apos;affichage de votre page. Elles
-            sont encore au format JPEG ou PNG dans 83 % des cas, alors que
-            les formats modernes divisent leur poids.
+            <strong>Les images.</strong> Vérifiez l&apos;élément LCP, les dimensions,
+            le format, la compression, les variantes responsives, la priorité de
+            l&apos;image principale et le chargement différé des autres.
           </li>
           <li>
             <strong>Le JavaScript.</strong> 632 kilooctets médians, avec le
-            coût d&apos;exécution décrit plus haut. Sur un site à
-            extensions, chacune ajoute son code sur toutes les pages — y
-            compris celles où elle ne sert à rien.
+            coût d&apos;exécution décrit plus haut. Une extension peut charger du
+            code globalement ou seulement sur certaines pages : l&apos;onglet réseau
+            et le profil CPU permettent de le vérifier.
           </li>
           <li>
             <strong>Les scripts tiers.</strong> Mesure d&apos;audience,
             bandeau de consentement, chat, pixels publicitaires, polices
             distantes : chacun ajoute une connexion à un serveur que vous ne
-            maîtrisez pas. Ce sont aussi les seuls dont vous ne contrôlez
-            ni le poids ni la disponibilité.
+            maîtrisez pas entièrement. Leur configuration, leur consentement,
+            leur chargement et parfois leur auto-hébergement peuvent toutefois
+            réduire l&apos;impact.
           </li>
           <li>
             <strong>L&apos;absence de cache.</strong> Sans mise en mémoire,
             votre site refabrique chaque page à chaque visite. C&apos;est le
-            correctif le plus rentable sur un site dynamique.
+            correctif potentiellement efficace sur un site dynamique, à valider
+            selon la fraîcheur des données et les règles d&apos;invalidation.
           </li>
         </ol>
 
@@ -507,10 +487,10 @@ POIDS MÉDIAN PAR SOCLE (mobile)
             ["Différer les scripts tiers", "Moyen", "1 à 2 jours", "Non"],
           ]}
         />
-        <InfoBox variant="emerald" title="Ce que Karim a réellement payé">
-          Changement d&apos;hébergement pour une offre à ressources dédiées :
+        <InfoBox variant="emerald" title="Budget de correction dans le scénario Karim">
+          Hypothèse de changement d&apos;hébergement pour une offre à ressources dédiées :
           <strong> 39 euros par mois</strong>, temps de réponse serveur
-          ramené sous 400 millisecondes en une demi-journée. Compression des
+          qui ramènerait le temps de réponse serveur sous 400 millisecondes en une demi-journée. Compression des
           photos de matériel, encore au format d&apos;origine sorti de
           l&apos;appareil photo : <strong>deux jours de travail</strong>.
           Retrait de quatre extensions dont deux ne servaient plus depuis
@@ -518,8 +498,8 @@ POIDS MÉDIAN PAR SOCLE (mobile)
           <br />
           <br />
           Total : environ <strong>2 800 euros</strong> et 39 euros par mois,
-          contre 14 000 euros pour la refonte proposée. Son site n&apos;est
-          pas neuf, mais il est rapide — et il pourra décider de la refonte
+          contre 14 000 euros pour la refonte proposée. Son site ne serait
+          pas neuf, mais il serait rapide — et il pourrait décider de la refonte
           quand elle se justifiera vraiment, pas quand la lenteur sert
           d&apos;argument de vente.
         </InfoBox>
@@ -548,10 +528,11 @@ POIDS MÉDIAN PAR SOCLE (mobile)
           contractuel.
         </p>
         <p>
-          Le correctif coûte 20 à 50 euros par mois et ne demande pas de
-          toucher au site. Sur un site pré-généré comme ceux que nous
-          construisons, la question disparaît : il n&apos;y a plus de calcul
-          au moment de la visite, donc plus de temps de réponse à optimiser.
+          Le correctif dépend de la cause : cache, CDN, requêtes, application,
+          base de données, offre d&apos;hébergement ou architecture. Son coût et sa
+          difficulté ne peuvent pas être déduits du TTFB seul. Une page pré-générée
+          réduit le calcul à la visite, mais conserve DNS, réseau, CDN, fonctions
+          éventuelles, cache et origine : le temps de réponse ne disparaît pas.
           Notre{" "}
           <Link href="/guides/nextjs-ou-wordpress">comparatif Next.js ou
           WordPress</Link> détaille ce mécanisme.
@@ -586,11 +567,11 @@ POIDS MÉDIAN PAR SOCLE (mobile)
           </li>
         </ul>
         <p>
-          Karim en comptait <strong>un seul</strong> : son thème n&apos;est
+          Dans le scénario, Karim en compterait <strong>un seul</strong> : son thème ne serait
           plus mis à jour depuis 2024. Un signal sur cinq, c&apos;est un
           point de vigilance à surveiller, pas une refonte à 14 000 euros.
-          C&apos;est précisément le calcul que la proposition qu&apos;on lui
-          avait faite ne montrait nulle part.
+          C&apos;est précisément le calcul que la proposition simulée ne
+          montrerait nulle part.
         </p>
         <p>
           En dessous de trois signaux : optimisez. Vous économiserez
@@ -668,19 +649,17 @@ POIDS MÉDIAN PAR SOCLE (mobile)
           </li>
         </ol>
         <p>
-          Chez Hagnéré Code, nous inscrivons un{" "}
-          <strong>score de performance de 95 sur 100 minimum sur
-          mobile</strong> dans nos contrats, avec corrections gratuites si
-          le seuil n&apos;est pas tenu. C&apos;est l&apos;engagement le plus
-          facile à vérifier d&apos;un devis de site : trente secondes,
-          gratuit, sans compétence technique. Le détail est sur notre page{" "}
+          Chez Hagnéré Code, une éventuelle cible de performance est définie
+          avec ses pages, conditions de mesure, exclusions et procédure de
+          correction dans le devis. Un score de laboratoire ne remplace pas
+          les données de terrain et ne garantit aucun résultat SEO. Le détail est sur notre page{" "}
           <Link href="/agence-next-js">agence Next.js</Link> et dans nos{" "}
           <Link href="/tarifs">tarifs publics</Link>.
         </p>
 
         <GuideInlineCTA
           title="Faites poser le bon diagnostic"
-          description="Décrivez votre site en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Si un changement d'hébergement suffit, nous vous le dirons."
+          description="Décrivez votre site en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Si un changement d'hébergement suffit, nous vous le dirons."
         />
 
         <InfoBox variant="emerald" title="À retenir : les 6 chiffres de ce guide">

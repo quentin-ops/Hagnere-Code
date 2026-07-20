@@ -12,7 +12,7 @@ interface TocItem {
 export function GuideToc({ items }: { items: TocItem[] }) {
   return (
     <div className="not-prose rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5 my-6 sm:my-8">
-      <p className="text-xs font-bold uppercase tracking-widest text-zinc-400 mb-3">
+      <p className="text-xs font-bold uppercase tracking-widest text-zinc-600 dark:text-zinc-300 mb-3">
         Sommaire
       </p>
       <ul className="space-y-1.5 text-xs sm:text-sm">
@@ -20,7 +20,7 @@ export function GuideToc({ items }: { items: TocItem[] }) {
           <li key={item.id}>
             <a
               href={`#${item.id}`}
-              className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+              className="flex min-h-7 items-center py-1.5 text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
             >
               {item.label}
             </a>
@@ -83,13 +83,45 @@ export function InfoBox({ variant, title, children }: InfoBoxProps) {
    ────────────────────────────────────────────── */
 interface GuideTableProps {
   headers: string[];
-  rows: (string | { text: string; className?: string })[][];
+  rows: (string | { text: string; className?: string; colSpan?: number })[][];
+  /** Intitulé accessible explicite. Un intitulé descriptif est sinon dérivé des données. */
+  caption?: string;
 }
 
-export function GuideTable({ headers, rows }: GuideTableProps) {
+function getCellText(
+  cell: string | { text: string; className?: string; colSpan?: number } | undefined,
+): string {
+  return typeof cell === "string" ? cell : cell?.text || "";
+}
+
+export function GuideTable({ headers, rows, caption }: GuideTableProps) {
+  const isWide = headers.length >= 4;
+  const minWidthClass =
+    headers.length >= 5
+      ? "min-w-[680px]"
+      : headers.length === 4
+        ? "min-w-[560px]"
+        : "";
+  const rowLabels = rows
+    .slice(0, 3)
+    .map((row) => getCellText(row[0]))
+    .filter(Boolean)
+    .join(", ");
+  const tableCaption =
+    caption ||
+    `Comparaison ${headers.join(", ")}${rowLabels ? ` — ${rowLabels}` : ""}`;
+
   return (
-    <div className="not-prose overflow-x-auto my-6 -mx-4 px-4 sm:mx-0 sm:px-0">
-      <table className="w-full text-xs sm:text-sm border-collapse">
+    <div
+      className="not-prose overflow-x-auto my-6 -mx-4 px-4 sm:mx-0 sm:px-0"
+      tabIndex={isWide ? 0 : undefined}
+      role={isWide ? "region" : undefined}
+      aria-label={isWide ? `Tableau défilable : ${tableCaption}` : undefined}
+    >
+      <table
+        className={`w-full ${minWidthClass} text-xs sm:text-sm border-collapse`}
+      >
+        <caption className="sr-only">{tableCaption}</caption>
         <thead>
           <tr className="bg-zinc-50 dark:bg-zinc-900">
             {headers.map((header, i) => (
@@ -107,23 +139,32 @@ export function GuideTable({ headers, rows }: GuideTableProps) {
             <tr key={rowIndex}>
               {row.map((cell, cellIndex) => {
                 const isObj = typeof cell === "object";
+                const className = `p-2 sm:p-3 border border-zinc-200 dark:border-zinc-700 ${
+                  isObj && cell.className
+                    ? cell.className
+                    : cellIndex === 0
+                      ? "text-zinc-900 dark:text-zinc-100 font-semibold"
+                      : "text-zinc-600 dark:text-zinc-400"
+                }`;
+                const colSpan = isObj ? cell.colSpan : undefined;
+                const content = isObj ? cell.text : cell;
+
+                if (cellIndex === 0) {
+                  return (
+                    <th
+                      key={cellIndex}
+                      scope="row"
+                      className={className}
+                      colSpan={colSpan}
+                    >
+                      {content}
+                    </th>
+                  );
+                }
+
                 return (
-                  <td
-                    key={cellIndex}
-                    className={`p-2 sm:p-3 border border-zinc-200 dark:border-zinc-700 ${
-                      isObj && cell.className
-                        ? cell.className
-                        : cellIndex === 0
-                          ? "text-zinc-900 dark:text-zinc-100 font-semibold"
-                          : "text-zinc-600 dark:text-zinc-400"
-                    }`}
-                    colSpan={
-                      isObj && "colSpan" in cell
-                        ? (cell as { colSpan: number }).colSpan
-                        : undefined
-                    }
-                  >
-                    {isObj ? cell.text : cell}
+                  <td key={cellIndex} className={className} colSpan={colSpan}>
+                    {content}
                   </td>
                 );
               })}
@@ -161,8 +202,8 @@ interface GuideInlineCTAProps {
 
 export function GuideInlineCTA({
   title = "Votre projet web, cadré en 3 minutes",
-  description = "Décrivez votre besoin en quelques étapes guidées — notre équipe vous répond personnellement sous 24 h ouvrées avec une réponse argumentée.",
-  tags = ["Gratuit", "Sans engagement", "Réponse sous 24 h ouvrées"],
+  description = "Décrivez votre besoin en quelques étapes guidées — notre équipe lit chaque demande et vise une réponse argumentée le prochain jour ouvré, sans délai garanti.",
+  tags = ["Gratuit", "Sans engagement", "Objectif : prochain jour ouvré"],
   ctaLabel = "Décrire mon projet",
   ctaHref = "/demarrer-un-projet",
 }: GuideInlineCTAProps) {

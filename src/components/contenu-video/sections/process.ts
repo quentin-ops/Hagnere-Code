@@ -30,13 +30,13 @@ export const processHtml = `
         <div class="cv-roadmap-lane">
           <div class="cv-roadmap-block cv-rm-block-a" style="left:0%;width:20%">
             <span class="cv-rm-num">01</span>
-            <h4>Brief &amp; angle</h4>
+            <h3>Brief &amp; angle</h3>
             <p>Visio 30 min. On cadre l'objectif, l'audience, les KPIs. On sort avec un angle.</p>
             <div class="cv-rm-tag">1 SLOT · 30 MIN</div>
           </div>
           <div class="cv-roadmap-block cv-rm-block-b" style="left:20%;width:20%">
             <span class="cv-rm-num">02</span>
-            <h4>Script &amp; storyboard</h4>
+            <h3>Script &amp; storyboard</h3>
             <p>Claude rédige 3 angles, on polit à la main, vous validez en 1 clic.</p>
             <div class="cv-rm-tag">J+3 · V1 LIVRÉE</div>
           </div>
@@ -49,13 +49,13 @@ export const processHtml = `
         <div class="cv-roadmap-lane">
           <div class="cv-roadmap-block cv-rm-block-c" style="left:40%;width:20%">
             <span class="cv-rm-num">03</span>
-            <h4>Tournage ou voix</h4>
+            <h3>Tournage ou voix</h3>
             <p>Vous tournez 1h, on capte votre voix, ou on utilise un comédien selon votre choix.</p>
             <div class="cv-rm-tag">J+5 · ASSETS ACQUIS</div>
           </div>
           <div class="cv-roadmap-block cv-rm-block-d" style="left:60%;width:20%">
             <span class="cv-rm-num">04</span>
-            <h4>Montage Premiere Pro</h4>
+            <h3>Montage Premiere Pro</h3>
             <p>Le monteur nommé au devis assemble et reste responsable du rythme, du son et des choix de coupe.</p>
             <div class="cv-rm-tag">J+7 · V1 MONTAGE</div>
           </div>
@@ -68,13 +68,13 @@ export const processHtml = `
         <div class="cv-roadmap-lane">
           <div class="cv-roadmap-block cv-rm-block-e" style="left:80%;width:20%">
             <span class="cv-rm-num">05</span>
-            <h4>Motion, sous-titres, localisation</h4>
+            <h3>Motion, sous-titres, localisation</h3>
             <p>Typo After Effects, lower thirds, burned-in subs FR/EN/DE si besoin.</p>
             <div class="cv-rm-tag">J+10 · V2 FINAL</div>
           </div>
           <div class="cv-roadmap-block cv-rm-block-f" style="left:100%;width:0%">
             <span class="cv-rm-num">06</span>
-            <h4>Livraison + publication</h4>
+            <h3>Livraison + publication</h3>
             <p>Master ProRes + H.264, sortie sur vos canaux, dashboard VidIQ / GA4.</p>
             <div class="cv-rm-tag">J+14 · GO LIVE</div>
           </div>
@@ -86,7 +86,7 @@ export const processHtml = `
         <div class="cv-rm-playhead-line"></div>
         <div class="cv-rm-playhead-badge">
           <span class="cv-rm-playhead-dot"></span>
-          EN PROD
+          MISE EN LIGNE
         </div>
       </div>
     </div>

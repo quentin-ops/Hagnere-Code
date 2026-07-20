@@ -3,13 +3,13 @@
 > Version du 19/07/2026. Ce fichier documente les décisions visibles dans le
 > guide et dans son kit téléchargeable. Il ne constitue ni une preuve de
 > positionnement dans les résultats de recherche, ni un compte rendu de test
-> utilisateur, ni une preuve de déploiement.
+> utilisateur, ni une preuve d'indexation.
 
 ## 1. Fiche d'identité
 
 ```text
 Slug : cahier-des-charges-site-internet
-Statut actuel : guide et kit implémentés, contre-audités et validés sur une build locale isolée ; test humain, déploiement et production non attestés
+Statut au 20 juillet 2026 : guide publié dans le registre éditorial, parmi les 40 `PUBLISHED_GUIDES`, et kit intégré ; le hub, le sitemap et `llms.txt` sont alimentés automatiquement lors du build ; test humain, déploiement actif et indexation Google restent des preuves distinctes non déduites de ce statut
 Requête principale, encore hypothétique avant recherche : cahier des charges site internet
 Moment du parcours : sécuriser, avec une composante décider
 Lecteur précis : dirigeant de TPE/PME ou indépendant en France qui doit cadrer une création ou une refonte de site et consulter un ou plusieurs prestataires
@@ -309,7 +309,7 @@ inconnues empêchent un chiffrage ferme, pas la condition d'accès à la ressour
 | Originalité |        1 | Chaîne guide/Word/exemple/Excel observable                                                | Aucune étude de SERP conservée ne permet d'affirmer l'unicité                                             |
 | Style       |        2 | Ton concret, absence de superlatif de classement, exemple fictif étiqueté                 | Confronter encore le rythme à un lecteur non technique                                                    |
 | Conversion  |        2 | Téléchargement autonome avant le sommaire, rappel après checklist, CTA commercial tardif  | Mesurer sans confondre clic et téléchargement abouti                                                      |
-| SEO/produit |        1 | Metadata, Article, FAQ, maillage, build et rendu multi-largeurs sont contrôlés localement | Demande observée, production et indexation restent à prouver séparément                                   |
+| SEO/produit |        1 | Metadata, Article, FAQ, maillage, registre et kit sont intégrés ; le guide fait partie des 40 entrées publiées | Déploiement actif, demande observée et indexation restent à prouver séparément                             |
 
 ### Test lecteur non technique
 
@@ -335,7 +335,7 @@ Réserves sur la clarté et le plan : longueur et rythme encore à confronter à
 Réserves sur la conversion : le relais d'événement n'installe aucun collecteur et un clic ne démontre ni téléchargement réussi ni conversion commerciale
 Corrections appliquées : formule Excel corrigée pour les gravités réellement vides ; treize scénarios recalculés ; hashes et tailles resynchronisés ; niveau du titre « Guides liés » corrigé ; CTA du hero et compatibilité Office clarifiés
 Verdict du contre-audit : 5/5 fichiers conformes au manifeste, aucune anomalie bloquante résiduelle ; réserves Office natif, antivirus, métadonnée LibreOfficeDev et test humain maintenues
-Statut maximal réellement atteint : implémenté, contre-audité et validé sur build locale isolée, sans preuve de test humain, de déploiement, d'indexation ni de conversion réelle
+Statut atteint au 20 juillet 2026 : publication dans le registre éditorial après contre-audit délégué ; aucun test lecteur humain, conversion, position ou indexation n'est revendiqué et le déploiement actif doit être revérifié après chaque livraison
 ```
 
 ### Vérifications
@@ -349,11 +349,13 @@ Statut maximal réellement atteint : implémenté, contre-audité et validé sur
 - [x] sources officielles rouvertes le 19/07/2026 et URL consignées ; à rouvrir
       lors de la prochaine modification substantielle ;
 - [ ] test réalisé par un lecteur non technique indépendant ;
-- [x] metadata, données structurées, registre, maillage et ancres validés par
-      le build final ;
-- [x] TypeScript, ESLint, tests et build requis consignés dans
-      `docs/qa-kit-cahier-des-charges-site-internet-2026-07-19.md` ;
+- [x] metadata, données structurées, registre, maillage et ancres intégrés ;
+- [x] guide compté parmi les 40 entrées publiées du registre au 20 juillet 2026 ;
+- [ ] batterie du dépôt relancée sur le snapshot final après toute
+      modification ; le relevé QA du 19 juillet reste historique et ne vaut
+      pas preuve pour un nouveau build ;
 - [x] rendu observé à 320, 360, 390, 430, 640, 768, 1024, 1280, 1440 et
       1600 px ;
-- [x] aucune mise en ligne, aucun déploiement public, aucune indexation, position
-      Google ou conversion finale déclarée dans ce dossier.
+- [ ] présence du guide et du kit revérifiée sur le déploiement actif ;
+- [x] aucune indexation, position Google ou conversion finale déduite de la
+      publication du registre dans ce dossier.

@@ -1843,6 +1843,7 @@ html.dark {
 .pf-saved-badge {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 6px;
   margin-top: 10px;
   padding: 7px 11px;
@@ -1854,6 +1855,42 @@ html.dark {
 }
 
 .pf-saved-badge svg { flex-shrink: 0; }
+
+.pf-saved-badge > button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.pf-saved-badge > button:not(.pf-draft-optin) {
+  margin-left: auto;
+}
+
+.pf-saved-badge.is-optin {
+  padding: 0;
+  background: transparent;
+}
+
+.pf-saved-badge .pf-draft-optin {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+  border: 1px solid var(--pf-line);
+  border-radius: 999px;
+  background: var(--pf-paper);
+  color: var(--pf-muted);
+  text-decoration: none;
+}
+
+.pf-saved-badge > button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--pf-accent) 28%, transparent);
+  outline-offset: 3px;
+}
 
 /* Step transition animation */
 .pf-card-body {

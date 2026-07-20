@@ -32,16 +32,11 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+  twitter: {
+    card: "summary_large_image",
+    title: guide.cardTitle,
+    description: guide.metaDescription,
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -58,7 +53,6 @@ const articleJsonLd = JSON.stringify({
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
-  wordCount: 4800,
   isPartOf: {
     "@type": "WebPage",
     "@id": `${SITE_URL}/guides`,
@@ -116,17 +110,17 @@ const faqItems = [
   {
     question: "Quelles aides de l'État pour créer un site internet en 2026 ?",
     answer:
-      "Aucune subvention nationale directe. Ce qui existe au niveau national : le Prêt Boost Transformation Numérique de Bpifrance (5 000 à 75 000 €, sans garantie personnelle, entreprises de 2 à 49 salariés et plus de 3 ans), les prêts d'honneur à taux zéro et le microcrédit ADIE, plus un levier fiscal méconnu : la déduction totale des coûts du site dès l'exercice de création (option de l'article 236, I du CGI). Les vraies subventions sont régionales — 30 à 50 % du montant HT quand elles existent.",
+      "Au 20 juillet 2026, notre recherche n'a pas identifié de subvention nationale forfaitaire dédiée à toute création de site. Il existe des financements et accompagnements soumis à conditions — notamment des prêts Bpifrance, prêts d'honneur, microcrédit et dispositifs régionaux — dont montant, assiette, calendrier et éligibilité doivent être vérifiés sur la fiche officielle avant tout engagement. Un traitement fiscal particulier peut exister pour certains coûts de site ; il dépend de leur qualification et doit être validé par votre expert-comptable.",
   },
   {
     question: "Un auto-entrepreneur peut-il bénéficier d'une aide pour son site internet ?",
     answer:
-      "Rarement, et il faut vérifier dispositif par dispositif : plusieurs aides régionales excluent explicitement le régime micro (la Normandie, par exemple). Les leviers réellement accessibles sont indirects : l'ACRE (cotisations réduites la première année, qui libère de la trésorerie), l'ARCE (60 % des droits chômage versés en capital, utilisables pour financer le site) et, en franchise de TVA, gardez en tête que la TVA de 20 % sur la prestation n'est pas récupérable.",
+      "Il faut vérifier dispositif par dispositif : certains règlements excluent le régime micro, d'autres l'acceptent. ACRE et ARCE dépendent de la situation personnelle et de leurs conditions à la date de la demande ; ce ne sont pas des aides dédiées au site. Si la franchise en base de TVA s'applique, la TVA facturée sur les achats n'est pas déductible. Vérifiez les fiches officielles et votre situation avant de budgéter.",
   },
   {
     question: "Peut-on cumuler plusieurs aides pour un même site ?",
     answer:
-      "Parfois, dans deux limites. Chaque dispositif fixe ses règles (l'INAC des Hauts-de-France plafonne le cumul d'aides publiques à 80 % des dépenses et interdit le cumul avec les autres aides régionales numériques). Et le droit européen ajoute la règle dite « de minimis », qui dispense les petites aides d'une autorisation de Bruxelles : toutes vos aides publiques s'additionnent dans une même enveloppe de 300 000 € par entreprise sur 3 exercices glissants. Pour un site internet, vous en êtes très loin — mais chaque dossier vous demandera de déclarer sur l'honneur les aides déjà perçues, et depuis le 1er janvier 2026, un registre national permet aux administrations de vérifier votre déclaration : listez tout, y compris les petites aides locales.",
+      "Parfois, mais aucun plafond unique ne s'applique à tous les dossiers. Le règlement de chaque aide précise les dépenses cumulables, le taux maximal de financement public et les éventuelles exclusions. Certaines aides relèvent aussi du régime européen « de minimis » : le plafond et la période de référence doivent alors être vérifiés pour l'entreprise concernée, avec les aides déjà reçues entrant dans ce régime. Déclarez-les toutes à l'organisme instructeur et demandez une confirmation écrite avant de bâtir votre plan de financement.",
   },
   {
     question: "Mon site vitrine est-il éligible aux aides régionales ?",
@@ -136,12 +130,12 @@ const faqItems = [
   {
     question: "Quel est le délai pour recevoir une subvention numérique ?",
     answer:
-      "Long. Comptez 2 à 6 mois d'instruction entre le dépôt et la décision, puis le versement n'intervient qu'après la fin du projet, sur présentation de factures acquittées — jusqu'à 4 mois supplémentaires en Normandie par exemple. Conclusion pratique : une subvention récompense un projet bien monté, mais ne résout jamais un problème de trésorerie initial. Vous payez d'abord, vous êtes remboursé ensuite.",
+      "Il dépend du dispositif, de la complétude du dossier et du calendrier de l'organisme. Le versement peut intervenir en avance, en acompte ou après réalisation sur justificatifs : ne supposez donc ni un délai uniforme ni un remboursement systématique. Relevez dans le règlement la date d'engagement autorisée, les pièces demandées, les étapes de décision et de paiement, puis prévoyez la trésorerie correspondant à ce scénario.",
   },
   {
     question: "Le CPF peut-il financer la création de mon site ?",
     answer:
-      "Non. Le CPF finance des formations certifiantes (créer et gérer son site, marketing digital…) — jamais la prestation de création elle-même, avec un reste à charge de 150 € par formation depuis 2024. Toute offre « site internet offert en échange de votre CPF » est une arnaque signalée par la DGCCRF : ni la Caisse des Dépôts ni France Travail ne démarchent par téléphone à ce sujet.",
+      "Le CPF finance des formations éligibles, pas une prestation de création de site déguisée. Le montant de la participation obligatoire et les cas d'exonération évoluent : vérifiez-les dans votre espace officiel Mon Compte Formation au moment de l'inscription. Une offre qui promet un site « offert » contre vos droits CPF doit être contrôlée avec une vigilance particulière et ne doit jamais conduire à communiquer vos identifiants.",
   },
   {
     question: "La location de site internet est-elle éligible aux aides ?",
@@ -151,7 +145,7 @@ const faqItems = [
   {
     question: "Quelles aides en Auvergne-Rhône-Alpes et en Savoie ?",
     answer:
-      "Pas de subvention régionale directe pour la création d'un site en 2026 (« Mon Commerce en ligne » était un dispositif Covid, clos depuis 2021). Ce qui existe et vaut le détour : Atouts Numériques, un accompagnement pris en charge à 100 % (Région + FEDER, via CCI et CMA) pour les entreprises de plus de 2 ans et moins de 50 salariés — diagnostic de maturité numérique, jusqu'à 7 h d'accompagnement individuel et de l'aide à la rédaction du cahier des charges. Point d'entrée : votre CCI (CCI Savoie à Chambéry : 04 57 73 73 73) ou le Campus Région du numérique.",
+      "La fiche officielle consultée en juillet 2026 présente Atouts Numériques comme un accompagnement régional, avec diagnostic et appui individuel, accessible sous conditions. Ce n'est pas une promesse de subvention du prix du site. Les critères, la durée et le niveau de prise en charge pouvant évoluer, faites confirmer votre éligibilité et le contenu actuel par la CCI Savoie ou l'opérateur indiqué sur la fiche avant toute décision.",
   },
   {
     question: "Une association peut-elle obtenir une subvention pour son site ?",
@@ -161,32 +155,21 @@ const faqItems = [
   {
     question: "L'aide est-elle versée avant ou après la dépense ?",
     answer:
-      "Après, presque toujours. La mécanique standard : dossier déposé AVANT toute signature de devis (la non-rétroactivité est la règle d'or — signer avant l'accord fait perdre l'aide), instruction, accord, réalisation du projet, puis remboursement sur factures acquittées, calculé sur le montant HT (la TVA reste à votre charge, sauf récupération au régime réel). Prévoyez donc la trésorerie totale du projet.",
+      "Cela dépend du règlement. De nombreux dispositifs exigent une demande avant le début du projet et versent l'aide après justificatifs, mais la date qui constitue un commencement, l'assiette HT ou TTC, les acomptes et le calendrier varient. Ne signez ni ne payez avant d'avoir lu la fiche officielle ou obtenu une confirmation écrite de l'organisme instructeur, et prévoyez la trésorerie demandée par le scénario applicable.",
   },
   {
     question: "Comment vérifier qu'une aide existe encore ?",
     answer:
-      "Deux réflexes, 5 minutes : le moteur officiel francenum.gouv.fr/aides-financieres (près de 200 dispositifs, filtrables par code postal et type de projet) et la base les-aides.fr (réseau des CCI), qui publie les règlements complets. Vérifiez la date de mise à jour de la fiche et la mention « dispositif mobilisable » — les aides numériques ouvrent et ferment sans préavis, souvent à épuisement d'enveloppe. En cas de doute, appelez votre CCI.",
+      "Consultez le moteur officiel France Num et la base les-aides.fr du réseau des CCI, puis ouvrez le règlement ou la décision source. Vérifiez la date de mise à jour, l'état du guichet, votre code postal, les dépenses éligibles et la date à laquelle le projet peut commencer. Une fiche de synthèse ne remplace pas la confirmation écrite de l'organisme instructeur.",
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -218,7 +201,7 @@ export default function Page() {
         faqItems={faqItems}
       >
         <p className="lead">
-          Disons-le franchement, parce que personne ne le fait :{" "}
+          Disons-le franchement :{" "}
           <strong>la plupart des TPE n&apos;obtiendront aucune subvention
           pour un simple site vitrine en 2026</strong>. Mais des aides
           réelles existent — régionales, fiscales, en prêt ou en
@@ -231,7 +214,7 @@ export default function Page() {
             { id: "reponse-rapide", label: "1. La réponse rapide : le paysage réel des aides en 2026" },
             { id: "aides-mortes", label: "2. Ces aides n'existent plus (et on vous les vend encore)" },
             { id: "aides-nationales", label: "3. Les aides nationales encore actives" },
-            { id: "fiscalite", label: "4. Le levier que tout le monde oublie : la fiscalité" },
+            { id: "fiscalite", label: "4. Le levier fiscal à intégrer au budget" },
             { id: "createurs", label: "5. Créateurs d'entreprise : ACRE, ARCE, AGEFIPH" },
             { id: "formation", label: "6. Se former (CPF, OPCO) : ce que ça finance vraiment" },
             { id: "regions", label: "7. Les aides région par région (statut vérifié)" },
@@ -292,9 +275,9 @@ export default function Page() {
         <GuideTable
           headers={["Levier", "Ce que c'est", "Montant type", "Pour qui"]}
           rows={[
-            ["Subventions régionales", "30-50 % du HT, remboursées après projet", "1 000 – 15 000 €", "Selon région et secteur (voir §7)"],
+            ["Subventions régionales", "Assiette, taux et calendrier propres à chaque règlement", "1 000 – 15 000 € dans les exemples cités", "Selon région, secteur, dépenses et date (voir §7)"],
             ["Prêt Boost (Bpifrance)", "Prêt sans garantie personnelle", "5 000 – 75 000 €", "2-49 salariés, +3 ans d'existence"],
-            ["Déduction fiscale (voir §4)", "Déduire tout le coût du site de vos impôts dès la 1re année", "ex. 2 500 € d'impôt en moins sur un site à 10 000 €", "Toute entreprise imposée au réel"],
+            ["Traitement fiscal (voir §4)", "Charge, immobilisation ou dispositif spécifique selon qualification", "Effet propre à la situation fiscale", "À valider avec l'expert-comptable"],
             ["Accompagnements 100 % pris en charge", "Diagnostic, conseil, cahier des charges", "0 € (payés par la Région et le FEDER, un fonds européen)", "TPE-PME (ex. AURA, voir §8)"],
             ["ACRE / ARCE", "Cotisations réduites / chômage en capital", "variable", "Créateurs d'entreprise"],
           ]}
@@ -308,19 +291,19 @@ export default function Page() {
           rows={[
             ["Créateur d'entreprise (moins de 3 ans)", "ACRE, ARCE, prêt d'honneur, microcrédit ADIE (§5)", "Prêt Boost et la plupart des subventions régionales"],
             ["TPE de +3 ans avec salariés", "Subvention régionale (§7), Prêt Boost (§3), déduction fiscale (§4)", "Le chèque France Num, mort depuis 2021"],
-            ["Micro-entrepreneur installé", "ACRE, ARCE, rares dispositifs incluant le régime micro (§11)", "La récupération de TVA et la plupart des subventions régionales"],
+            ["Micro-entrepreneur installé", "Dispositifs dont le règlement inclut ce régime ; ACRE/ARCE selon situation (§11)", "Rien par principe : vérifier éligibilité et régime de TVA"],
             ["Association", "Subvention de projet via Le Compte Asso (§11)", "Toutes les aides « entreprises » de ce guide"],
           ]}
         />
         <InfoBox variant="blue" title="Traduction : les 8 mots de l'administration, en clair">
           <ul className="space-y-1.5">
-            <li><strong>HT / TTC</strong> : hors taxes / toutes taxes comprises. Les aides se calculent toujours sur le HT.</li>
-            <li><strong>Régime réel</strong> : le régime de TVA classique — vous facturez la TVA et récupérez celle qu&apos;on vous facture.</li>
-            <li><strong>Franchise de TVA</strong> : le régime de la plupart des micro-entrepreneurs — pas de TVA facturée, ni récupérée.</li>
+            <li><strong>HT / TTC</strong> : hors taxes / toutes taxes comprises. L&apos;assiette éligible dépend du règlement de l&apos;aide et de la récupérabilité de la TVA.</li>
+            <li><strong>Régime de TVA</strong> : facturer la TVA n&apos;implique pas une déduction intégrale de toute dépense ; le droit et le prorata de déduction dépendent de l&apos;activité.</li>
+            <li><strong>Franchise en base de TVA</strong> : régime distinct du micro-fiscal, accessible sous conditions et avec option possible ; pas de TVA facturée ni déduite lorsqu&apos;il s&apos;applique.</li>
             <li><strong>Facture acquittée</strong> : une facture portant la mention « payée », apposée par le prestataire. C&apos;est elle qui déclenche le versement.</li>
             <li><strong>Instruction</strong> : la période où l&apos;administration étudie votre dossier (2 à 6 mois).</li>
             <li><strong>Exercice</strong> : votre année comptable.</li>
-            <li><strong>Subvention</strong> : de l&apos;argent donné, jamais remboursé — mais versé après le projet.</li>
+            <li><strong>Subvention</strong> : financement soumis à un règlement et à des justificatifs ; un reversement peut être exigé si les conditions ou engagements ne sont pas respectés.</li>
             <li><strong>Prêt d&apos;honneur</strong> : un prêt à taux zéro, sans garantie, accordé à la personne (pas à l&apos;entreprise).</li>
           </ul>
         </InfoBox>
@@ -439,10 +422,10 @@ export default function Page() {
           trésorerie est le vrai point de blocage.
         </p>
 
-        <h2 id="fiscalite">4. Le levier que tout le monde oublie : la fiscalité</h2>
+        <h2 id="fiscalite">4. Le levier fiscal à intégrer au budget</h2>
         <p>
-          La seule « aide » universelle ne figure dans aucun comparatif :
-          le traitement fiscal du site. Elle est ouverte à toute
+          Le traitement fiscal du site est un levier transversal, distinct des
+          subventions présentées dans les comparatifs d&apos;aides. Il concerne toute
           entreprise imposée au réel — c&apos;est-à-dire qui déduit ses
           dépenses réelles de son résultat, contrairement au régime
           micro. Le BOFiP — le recueil officiel dans lequel
@@ -452,37 +435,30 @@ export default function Page() {
         <GuideTable
           headers={["Phase", "Dépenses", "Traitement fiscal"]}
           rows={[
-            ["1. Avant le projet", "Cahier des charges, étude, conseil", "Déduction immédiate, l'année de la dépense"],
-            ["2. Développement", "Design, développement, mise en ligne", "Étalé sur plusieurs années — ou tout déduit dès l'année 1 sur option (article 236, I du Code général des impôts)"],
-            ["3. Après la mise en ligne", "Hébergement (la location de l'espace informatique où votre site est stocké, accessible 24 h/24), nom de domaine (votre adresse sur internet, du type votre-entreprise.fr), mises à jour", "Déduit au fil de l'eau, comme n'importe quelle facture"],
+            ["1. Avant le projet", "Cahier des charges, étude, conseil", "Qualification comptable et fiscale à valider"],
+            ["2. Développement", "Design, développement, mise en ligne", "Immobilisation ou traitement spécifique selon la nature, la phase et les options applicables"],
+            ["3. Après la mise en ligne", "Hébergement, nom de domaine, maintenance et évolutions", "Traitement distinct selon la dépense ; validation comptable requise"],
           ]}
         />
         <p>
-          La phase 2 mérite qu&apos;on s&apos;y arrête. Le développement
-          du site est normalement traité comme un investissement : la
-          dépense se déduit petit bout par petit bout sur plusieurs
-          années (les comptables disent qu&apos;elle est
-          « immobilisée »). Mais l&apos;option de l&apos;article 236, I
-          du Code général des impôts (CGI) permet de{" "}
-          <strong>tout déduire d&apos;un coup, dès la première
-          année</strong>. Pour un site à 10 000 € et une entreprise
-          soumise à l&apos;impôt sur les sociétés (IS) à 25 %,
-          c&apos;est 2 500 € d&apos;impôt en moins dès l&apos;année 1 —
-          sans dossier à monter, l&apos;option se signale dans votre
-          liasse fiscale. Parlez-en à votre expert-comptable{" "}
-          <em>avant</em> de signer : elle se choisit pour
-          l&apos;ensemble des dépenses du site, en une seule fois — pas
-          de tri ligne par ligne après coup — et se prévoit avant la
-          clôture de l&apos;exercice.
+          La phase de développement mérite qu&apos;on s&apos;y arrête. Selon la
+          nature du site, les fonctions et la phase de la dépense, les coûts
+          peuvent relever d&apos;une charge ou d&apos;une immobilisation. L&apos;article
+          236, I du Code général des impôts peut, dans son champ, permettre une
+          déduction fiscale immédiate via un amortissement dérogatoire. Le traitement dépend notamment de la
+          nature du site, de la phase concernée, de la qualification comptable des
+          dépenses et de l&apos;option de gestion retenue. Il ne produit pas
+          automatiquement une économie égale au prix multiplié par le taux d&apos;IS.
+          Faites valider l&apos;écriture et son périmètre par votre expert-comptable
+          avant la clôture ; la doctrine BOFiP sur les frais de création de sites
+          internet et l&apos;article 236 du CGI sont cités en sources.
         </p>
         <p>
-          Reste la TVA de 20 % facturée par l&apos;agence. Au régime
-          réel — vous facturez la TVA à vos clients et déduisez celle
-          que vous payez à vos fournisseurs — elle ne vous coûte rien au
-          final. En franchise de TVA (la plupart des
-          micro-entrepreneurs : pas de TVA facturée, donc pas de TVA
-          déduite), le site vous coûte réellement son prix TTC : un site
-          affiché 10 000 € HT vous revient alors à 12 000 €.
+          Reste la TVA facturée par le prestataire. Une entreprise assujettie ne
+          peut la déduire que dans la mesure où la dépense ouvre effectivement ce
+          droit ; activités exonérées, usage mixte et prorata peuvent limiter la
+          récupération. Sous franchise en base, la TVA n&apos;est pas déduite : le
+          coût à comparer est alors TTC. Faites confirmer votre situation fiscale.
         </p>
         <InfoBox variant="blue" title="En clair : pourquoi le fisc ne traite pas toutes les dépenses pareil">
           Pour le fisc, il existe deux façons de dépenser. La charge,
@@ -490,13 +466,11 @@ export default function Page() {
           déduit tout de suite. L&apos;investissement (une
           « immobilisation », en langage comptable), c&apos;est
           l&apos;achat de la voiture : elle sert plusieurs années, sa
-          déduction s&apos;étale sur plusieurs années. Un site est
-          normalement traité comme la voiture ; l&apos;option de
-          l&apos;article 236, I du CGI est une permission officielle de
-          le traiter comme le plein d&apos;essence. L&apos;État ne vous
-          verse rien, mais vous laisse récupérer jusqu&apos;à un quart
-          du coût dès la première année — au moment précis où votre
-          trésorerie vient d&apos;encaisser le coût du site.
+          déduction peut s&apos;étaler. Pour un site, la qualification dépend
+          des fonctions, des phases et des règles comptables ; l&apos;article 236,
+          I du CGI peut permettre un traitement fiscal spécifique dans son
+          champ. L&apos;État ne verse pas une aide et l&apos;effet fiscal réel
+          dépend de la situation de l&apos;entreprise.
         </InfoBox>
 
         <h2 id="createurs">5. Créateurs d&apos;entreprise : ACRE, ARCE, AGEFIPH</h2>
@@ -624,22 +598,22 @@ export default function Page() {
           éligible aux mêmes conditions que la création — la plupart des
           règlements visent « la création ou la refonte ». À condition
           d&apos;apporter de nouvelles capacités (vente en ligne, prise
-          de rendez-vous), pas un simple rafraîchissement graphique : la
-          maintenance, elle, n&apos;est jamais éligible.
+          de rendez-vous), pas un simple rafraîchissement graphique. La
+          maintenance courante est souvent exclue, mais seul le règlement du
+          dispositif permet de qualifier chaque dépense.
         </p>
         <p>
-          Cas à part, l&apos;outre-mer : La Réunion tient avec Kap
-          Numérik l&apos;aide au site web la plus généreuse de France
-          (voir tableau), réservée aux entreprises de moins de 10
-          salariés — une demande par an, factures obligatoirement
-          postérieures au dépôt. Les autres territoires ultramarins
-          n&apos;ont pas de dispositif équivalent confirmé en 2026 :
-          passez par le moteur France Num et votre CCI locale.
+          Cas à part, l&apos;outre-mer : la fiche Kap Numérik consultée pour
+          La Réunion prévoit une aide sous conditions (voir tableau). Montant,
+          effectif admissible, fréquence des demandes et date des factures
+          doivent être vérifiés dans le règlement en vigueur. Pour chaque
+          territoire ultramarin, utilisez le moteur France Num et confirmez
+          le dispositif auprès de la CCI ou de l&apos;organisme instructeur.
         </p>
 
         <h2 id="aura">8. Focus Auvergne-Rhône-Alpes et Savoie</h2>
         <p>
-          Notre région — parlons-en précisément, personne ne le fait.{" "}
+          Notre région mérite un examen précis.{" "}
           <strong>Il n&apos;existe pas de subvention régionale directe pour
           créer un site en AURA en 2026</strong> : « Mon Commerce en
           ligne » (jusqu&apos;à 1 500 €) était un dispositif Covid, clos
@@ -668,104 +642,84 @@ export default function Page() {
           numérique, où le diagnostic en ligne vaut dossier de candidature.
           Pensez aussi aux agglomérations (Grand Chambéry, Grand Lac,
           Grand Annecy) : leurs dispositifs commerce évoluent chaque année —
-          un appel à votre agglo peut révéler un fonds local que personne ne
-          référence en ligne.
+          un appel à votre agglo peut révéler un fonds local encore mal référencé
+          en ligne.
         </p>
 
         <InfoBox variant="emerald" title="Le bon plan méconnu : faire financer le cadrage">
-          Le cahier des charges est la partie du projet que les entreprises
-          bâclent faute de temps — et c&apos;est précisément celle
-          qu&apos;Atouts Numériques peut prendre en charge à 100 %. Un
-          cadrage propre fait ensuite baisser les devis (les prestataires
-          ne facturent plus l&apos;incertitude) et rend les offres
-          comparables. Autrement dit : même sans subvention directe, une
-          TPE d&apos;Auvergne-Rhône-Alpes peut faire financer
-          l&apos;étape qui a le plus d&apos;effet sur le prix final de son
-          site.
+          Le cahier des charges est souvent sous-estimé. Lorsque le dispositif
+          Atouts Numériques, ses conditions et son enveloppe permettent une
+          prise en charge de l&apos;accompagnement, demandez une confirmation
+          écrite avant engagement. Un cadrage précis rend les offres plus
+          comparables et peut réduire l&apos;incertitude ; il ne garantit ni une
+          aide, ni une baisse du devis final.
         </InfoBox>
 
         <GuideInlineCTA
           title="On vérifie les aides de votre territoire avec vous"
-          description="Décrivez votre projet en 3 minutes : nous vous répondons sous 24 h ouvrées avec un chiffrage honnête — et les dispositifs réellement mobilisables sur votre territoire, sources à l'appui."
-          tags={["Réponse sous 24 h ouvrées", "Vérification des aides incluse", "Sans engagement"]}
+          description="Décrivez votre projet en 3 minutes : nous visons une réponse le prochain jour ouvré, sans délai garanti, avec un chiffrage honnête — et les dispositifs réellement mobilisables sur votre territoire, sources à l'appui."
+          tags={["Objectif : prochain jour ouvré", "Vérification des aides incluse", "Sans engagement"]}
         />
 
         <h2 id="mode-emploi">9. Mode d&apos;emploi : déposer sans se faire recaler</h2>
         <p>
-          La mécanique brutale que les articles promotionnels
-          n&apos;expliquent jamais tient en une image : une subvention
-          fonctionne comme une note de frais — autorisation{" "}
-          <em>avant</em> d&apos;engager la dépense,
-          avance de votre poche, remboursement sur justificatifs des
-          mois plus tard, et le moindre justificatif manquant bloque
-          tout. Cinq règles en découlent.
+          Il n&apos;existe pas de procédure universelle : date de départ,
+          assiette, TVA, avance, remboursement, délais et cumul dépendent du
+          règlement et de la décision attributive. Utilisez donc les cinq
+          contrôles suivants avant de traiter une aide comme acquise.
         </p>
         <ol>
           <li>
-            <strong>Le dossier se dépose AVANT de signer quoi que ce
-            soit.</strong> La non-rétroactivité est la règle d&apos;or —
-            verbatim du règlement normand : la demande doit être déposée
-            « avant le démarrage du projet (signature de la commande) ».
-            Un devis signé ou un acompte versé avant l&apos;accord =
-            aide perdue. La raison ? Une aide publique doit déclencher
-            un projet, pas récompenser une décision déjà prise : signer
-            avant de déposer prouve que le projet se serait fait sans
-            elle — c&apos;est « l&apos;effet incitatif »
-            qu&apos;exigent les règlements.
+            <strong>Vérifiez la date de départ autorisée avant de signer.</strong>{" "}
+            Plusieurs règlements, dont l&apos;exemple normand cité dans les
+            sources, exigent un dépôt avant tout commencement ou engagement.
+            D&apos;autres distinguent dépôt, accusé de réception et décision.
+            Demandez par écrit quel acte — devis signé, commande, acompte ou
+            début d&apos;exécution — rendrait la dépense inéligible.
           </li>
           <li>
-            <strong>Les taux s&apos;appliquent au montant HT.</strong> La
-            TVA n&apos;est jamais subventionnée ; elle se récupère au
-            régime réel, pas en franchise (voir §4).
+            <strong>Utilisez l&apos;assiette écrite dans le règlement.</strong>{" "}
+            Elle peut être exprimée hors taxes ou, dans certains dispositifs,
+            tenir compte de la TVA non récupérable. Votre régime fiscal ne
+            suffit pas à conclure : vérifiez à la fois le règlement de l&apos;aide
+            et votre droit effectif à déduction avec l&apos;expert-comptable.
           </li>
           <li>
-            <strong>C&apos;est un remboursement, pas une avance.</strong>{" "}
-            Vous payez l&apos;agence, puis vous êtes remboursé sur
-            factures acquittées — une facture « acquittée » porte la
-            mention « payée », la date et le mode de règlement, apposées
-            par votre prestataire. Ce n&apos;est pas automatique :
-            demandez-la après chaque paiement — le versement, parfois 4
-            mois après la fin du projet, en dépend. Prévoyez la
-            trésorerie totale.
+            <strong>Lisez les modalités de versement.</strong> Certaines aides
+            remboursent sur factures acquittées ; d&apos;autres prévoient une
+            avance, des acomptes ou plusieurs jalons. Relevez les justificatifs,
+            le calendrier et la définition d&apos;une dépense acquittée, puis
+            construisez la trésorerie sur le scénario le plus défavorable
+            autorisé par le texte.
           </li>
           <li>
-            <strong>Comptez 2 à 6 mois d&apos;instruction</strong>, et des
-            enveloppes qui s&apos;épuisent en cours d&apos;année : déposez
-            tôt.
+            <strong>Ne réutilisez pas un délai générique.</strong> Relevez la
+            date de clôture, le délai annoncé, la possibilité de demandes de
+            pièces et le caractère limité de l&apos;enveloppe. Tant que la décision
+            n&apos;est pas reçue, gardez un scénario financier sans aide.
           </li>
           <li>
-            <strong>Le cumul est plafonné, deux fois.</strong>{" "}
-            D&apos;abord par chaque règlement (souvent 80 %
-            d&apos;aides publiques maximum sur un même projet). Ensuite
-            par la règle européenne dite « de minimis » : toutes vos
-            aides publiques, quelle qu&apos;en soit l&apos;origine,
-            s&apos;additionnent dans une même enveloppe de 300 000 € par
-            entreprise sur 3 ans — vous n&apos;en approcherez jamais
-            avec un site. Retenez que tout est compté ensemble et que,
-            depuis le 1er janvier 2026, un registre national permet de
-            vérifier ce que vous avez déjà perçu : déclarez tout,
-            exactement.
+            <strong>Identifiez le régime de cumul.</strong> Le règlement fixe le
+            taux maximal et les dépenses qui peuvent recevoir plusieurs aides.
+            Lorsqu&apos;une aide relève du régime général de minimis, son plafond
+            et sa période s&apos;apprécient au niveau de l&apos;entreprise unique ;
+            toutes les aides publiques ne relèvent toutefois pas de ce même
+            régime. Déclarez les aides demandées ou reçues et faites valider le
+            calcul par l&apos;organisme instructeur.
           </li>
         </ol>
 
-        <InfoBox variant="emerald" title="Le calcul complet : une TPE de 8 salariés cumule tout">
-          Une entreprise de 8 salariés en Normandie, au régime réel,
-          veut un site à 8 000 € HT
-          (9 600 € TTC). Étape 1 : dossier Impulsion Transition déposé
-          avec le devis non signé, accord, projet réalisé, 9 600 €
-          payés. Étape 2 : la TVA de 1 600 € est récupérée à la
-          déclaration suivante. Étape 3 : la subvention de 50 % du HT
-          rembourse 4 000 €, jusqu&apos;à 4 mois après la fin du projet.
-          Étape 4 : l&apos;option fiscale du §4 déduit le coût restant
-          (4 000 €) dès l&apos;année 1, soit environ 1 000 €
-          d&apos;impôt sur les sociétés en moins. Coût final réel :
-          autour de 3 000 € pour un site facturé 8 000 € HT — à
-          condition d&apos;avoir avancé 9 600 € de trésorerie et
-          respecté l&apos;ordre des étapes. Ordres de grandeur à valider
-          avec votre expert-comptable.
+        <InfoBox variant="emerald" title="Exemple pédagogique : construisez le calcul seulement après lecture du règlement">
+          Pour un devis à 8 000 € HT, ne soustrayez pas automatiquement une
+          subvention et la TVA. Relevez d&apos;abord le taux applicable, le plafond,
+          les dépenses éligibles, le régime de cumul, la date de départ autorisée
+          et le calendrier de versement. Déterminez ensuite, avec votre
+          expert-comptable, quelle part de TVA est réellement déductible et le
+          traitement fiscal du reste à charge. Le résultat peut différer fortement
+          d&apos;un dossier à l&apos;autre ; conservez l&apos;accord écrit et les factures.
         </InfoBox>
         <InfoBox variant="amber" title="À retenir : les 4 règles d'or d'un dossier de subvention">
-          1. Déposez AVANT de signer. 2. Raisonnez en hors taxes :
+          1. Vérifiez par écrit la date de départ autorisée avant de signer. 2. Utilisez l&apos;assiette indiquée par le règlement :
           l&apos;aide se calcule sur le HT, jamais sur la TVA. 3.
           Prévoyez 100 % de la trésorerie : la subvention rembourse
           après coup, sur factures acquittées. 4. Déposez tôt dans
@@ -841,7 +795,8 @@ export default function Page() {
           commerciales est fausse. <strong>Beaucoup d&apos;aides
           régionales excluent explicitement le régime micro</strong> (la
           Normandie l&apos;écrit noir sur blanc dans son règlement), et
-          la franchise de TVA rend la TVA de 20 % non récupérable. Les
+          lorsqu&apos;elle s&apos;applique, la franchise en base de TVA ne permet
+          pas de déduire la TVA sur les achats. Les
           leviers réels : l&apos;ACRE la première année, l&apos;ARCE si
           vous venez du chômage, les rares dispositifs qui incluent
           expressément les indépendants — et surtout un projet
@@ -862,15 +817,15 @@ export default function Page() {
 
         <h2 id="sans-aide">12. Éligible à rien ? Les vraies alternatives</h2>
         <p>
-          C&apos;est le cas majoritaire en 2026, autant le planifier.
-          Quatre leviers, dans l&apos;ordre d&apos;efficacité :
+          Si aucun dispositif ne correspond, planifiez le financement sans aide.
+          Quatre leviers possibles, à comparer selon votre situation :
         </p>
         <ul>
           <li>
             <strong>La fiscalité</strong> (voir §4) : déduction
-            immédiate possible et TVA récupérée au régime réel. Sur un
-            site à 10 000 €, l&apos;effet réel dépasse souvent ce
-            qu&apos;aurait donné une subvention à 30 % — introuvable.
+            immédiate parfois possible dans un champ précis et TVA éventuellement
+            déductible selon l&apos;activité. Faites chiffrer l&apos;effet réel plutôt que
+            de l&apos;assimiler à une subvention.
           </li>
           <li>
             <strong>Le Prêt Boost</strong>, si vous avez 3 ans
@@ -971,7 +926,7 @@ export default function Page() {
           Chez Hagnéré Code, la vérification des aides fait partie du
           cadrage : décrivez votre projet en 3 minutes via{" "}
           <Link href="/demarrer-un-projet">notre parcours guidé</Link> —
-          réponse personnelle sous 24 h ouvrées, avec un chiffrage au
+          objectif de réponse personnelle le prochain jour ouvré, avec un chiffrage au
           forfait fixe (méthode{" "}
           <Link href="/methode">Sprint Fixe™</Link>) et, si votre
           territoire finance quelque chose, le dispositif exact et son

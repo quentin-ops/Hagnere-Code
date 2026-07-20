@@ -20,8 +20,8 @@ export const matrixHtml = `
         <div class="sr-matrix-head">
           <div class="sr-matrix-num">01</div>
           <div class="sr-matrix-title">
-            <div class="sr-matrix-kind">RGPD opérationnel</div>
-            <h3>Registre, DPA, transferts, droits.</h3>
+            <div class="sr-matrix-kind">Outillage des opérations RGPD</div>
+            <h3>Inventaire, preuves et fonctions.</h3>
           </div>
           <div class="sr-matrix-ic sr-matrix-ic-rgpd">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
@@ -31,17 +31,18 @@ export const matrixHtml = `
           </div>
         </div>
         <p class="sr-matrix-sub">
-          On reprend (ou on construit) votre registre de traitements, on audite vos DPA sous-traitants,
-          on documente les transferts et on implémente les fonctions nécessaires à l'exercice des droits.
-          Les clauses, bases juridiques et AIPD sont validées par votre DPO ou conseil.
+          Nous structurons les données utiles au registre, recensons les documents fournisseurs,
+          cartographions les flux et implémentons les fonctions nécessaires à l'exercice des droits.
+          Nous ne qualifions pas les clauses, les bases juridiques ou les transferts : ces décisions et les AIPD
+          restent pilotées et validées par votre DPO ou conseil habilité.
         </p>
         <ul class="sr-matrix-feats">
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Registre Article 30 (responsable + sous-traitant)</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Audit des DPA et clauses sous-traitants</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SCC + analyse transferts (Schrems II + DPF)</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Support structuré pour le registre Article 30</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Inventaire des DPA, versions et pièces disponibles</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Cartographie factuelle des flux et accès hors EEE</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Procédure DSAR &amp; portail d'exercice des droits</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Bannière cookies + Consent Mode v2 conforme</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>AIPD pour traitements à risque</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Bannière cookies + Consent Mode v2 documentés et recettés</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Dossier de preuves pour l'AIPD pilotée par votre DPO ou conseil</li>
         </ul>
         <div class="sr-matrix-foot">
           <div class="sr-matrix-meta">
@@ -83,7 +84,7 @@ export const matrixHtml = `
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Documentation technique (Article 11)</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tests de biais &amp; supervision humaine</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Charte interne IA + formation AI literacy équipe</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Logs &amp; traçabilité décisions IA (codé en prod)</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Logs &amp; traçabilité des décisions IA selon le périmètre retenu</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Assistance technique aux formalités retenues</li>
         </ul>
         <div class="sr-matrix-foot">
@@ -143,8 +144,8 @@ export const matrixHtml = `
         <div class="sr-matrix-head">
           <div class="sr-matrix-num">04</div>
           <div class="sr-matrix-title">
-            <div class="sr-matrix-kind">Accompagnement RGPD récurrent</div>
-            <h3>Pilotage opérationnel et remédiation technique.</h3>
+            <div class="sr-matrix-kind">Maintenance documentaire et technique</div>
+            <h3>Suivi des preuves et remédiation codée.</h3>
           </div>
           <div class="sr-matrix-ic sr-matrix-ic-dpo">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
@@ -163,14 +164,14 @@ export const matrixHtml = `
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Registre, cartographie et plan d'action maintenus</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Coordination avec votre DPO ou conseil</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Revue mensuelle (1 h visio + livrable)</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Assistance technique aux AIPD selon formule</li>
-          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Veille AI Act / DORA / NIS2 / CRA</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Collecte des preuves techniques demandées pour les AIPD</li>
+          <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Suivi des remédiations décidées par vos responsables</li>
           <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Canal et délais d'intervention définis au devis</li>
         </ul>
         <div class="sr-matrix-foot">
           <div class="sr-matrix-meta">
-            <span class="sr-matrix-meta-k">Engagement</span>
-            <span class="sr-matrix-meta-v">12 mois</span>
+            <span class="sr-matrix-meta-k">Durée</span>
+            <span class="sr-matrix-meta-v">Définie au devis</span>
           </div>
           <div class="sr-matrix-meta">
             <span class="sr-matrix-meta-k">À partir de</span>

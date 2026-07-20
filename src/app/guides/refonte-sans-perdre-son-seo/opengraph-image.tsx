@@ -75,7 +75,7 @@ export default function OgImage() {
         </div>
 
         <div style={{ display: "flex", gap: 14 }}>
-          {["301 : zéro perte de PageRank (officiel)", "Protocole daté J+1 → M+3", "Cas WordPress → Next.js chiffré"].map(
+          {["301 : redirection permanente", "Protocole de suivi J+1 → M+3", "Cas WordPress → Next.js chiffré"].map(
             (t) => (
               <div
                 key={t}

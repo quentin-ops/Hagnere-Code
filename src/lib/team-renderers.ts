@@ -37,7 +37,7 @@ interface ServiceTeamConfig {
 /** Avatar 36px utilisé dans la grille devs des services. */
 function devAvatar(member: TeamMember, prefix: string): string {
   if (member.photoAvailable) {
-    return `<div class="${prefix}-team-dev-av ${prefix}-team-dev-av-photo"><img src="${member.photo}" alt="${member.fullName}" loading="lazy" /></div>`;
+    return `<div class="${prefix}-team-dev-av ${prefix}-team-dev-av-photo"><img src="${member.photo}" alt="${member.fullName}" width="72" height="72" loading="lazy" decoding="async" /></div>`;
   }
   return `<div class="${prefix}-team-dev-av">${member.initials}</div>`;
 }
@@ -61,7 +61,7 @@ function renderServiceDevCard(member: TeamMember, prefix: string): string {
 /** Photo founder ou SVG fallback abstrait (utilisé sur toutes les pages services). */
 function renderFounderImage(prefix: string): string {
   if (FOUNDER.photoAvailable) {
-    return `<img src="${FOUNDER.photo}" alt="${FOUNDER.fullName}" loading="lazy" />`;
+    return `<img src="${FOUNDER.photo}" alt="${FOUNDER.fullName}" width="740" height="926" loading="lazy" decoding="async" />`;
   }
   // Si pas de photo, on tombe sur les initiales sur fond sombre (cohérent avec les autres avatars).
   return `<div class="${prefix}-team-founder-photo-fallback" style="background:linear-gradient(135deg,${FOUNDER.avatarGradient[0]},${FOUNDER.avatarGradient[1]});display:grid;place-items:center;font-family:var(--font-geist);font-weight:700;font-size:96px;color:#fff;letter-spacing:-0.04em;width:100%;height:100%">${FOUNDER.initials}</div>`;
@@ -95,7 +95,7 @@ export function buildServiceTeamHtml(config: ServiceTeamConfig): string {
       <div class="${prefix}-team-founder reveal">
         <div class="${prefix}-team-founder-photo">
           ${renderFounderImage(prefix)}
-          <div class="${prefix}-team-founder-tag"><span class="dot"></span> ASSOCIÉ DIRIGEANT</div>
+          <div class="${prefix}-team-founder-tag"><span class="dot"></span> PRÉSIDENT FONDATEUR</div>
         </div>
         <div class="${prefix}-team-founder-body">
           <div class="${prefix}-team-founder-name">${FOUNDER.fullName}</div>
@@ -106,7 +106,7 @@ export function buildServiceTeamHtml(config: ServiceTeamConfig): string {
           <div class="${prefix}-team-founder-meta">
             <div><span class="k">Domaines</span><span class="v">${founderDomains}</span></div>
             <div><span class="k">Rôle projet</span><span class="v">${founderRoleProject}</span></div>
-            <div><span class="k">Entreprises fondées</span><span class="v">3 · dont 2 cabinets actifs</span></div>
+            <div><span class="k">Rôle</span><span class="v">Président fondateur · cadrage</span></div>
             <div><span class="k">Studio</span><span class="v">${STUDIO_LOCATION}</span></div>
           </div>
           <a class="${prefix}-team-founder-li" href="${FOUNDER.linkedin}" target="_blank" rel="noopener noreferrer">
@@ -128,7 +128,7 @@ export function buildServiceTeamHtml(config: ServiceTeamConfig): string {
 
         <div class="${prefix}-team-note">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          Aucune mission n'est déléguée à un pool anonyme ou à un offshore. Les mêmes personnes, nommées au cadrage, du brief à la livraison.
+          L'équipe proposée, ses rôles et les éventuels renforts sont identifiés au cadrage puis confirmés au devis. Toute sous-traitance ou modification d'intervenant suit les modalités d'information prévues au contrat.
         </div>
       </div>
     </div>

@@ -6,8 +6,8 @@
  * pendant l'animation. Fallback : bascule instantanée si l'API n'est pas
  * disponible (Firefox) ou si l'utilisateur préfère réduire les animations.
  *
- * Écrit la même clé localStorage que next-themes ("theme") pour que les
- * deux systèmes restent synchronisés.
+ * Écrit la préférence dans la clé fonctionnelle `theme`, documentée par la
+ * politique cookies et relue par le script d'initialisation du layout.
  */
 
 type DocumentWithViewTransition = Document & {
@@ -16,14 +16,35 @@ type DocumentWithViewTransition = Document & {
   };
 };
 
-export function applyTheme(dark: boolean): void {
+export const THEME_CHANGE_EVENT = "hc-theme-change";
+
+function updateThemeColor(dark: boolean): void {
+  document
+    .querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')
+    .forEach((meta) => meta.setAttribute("content", dark ? "#0a0a0a" : "#ffffff"));
+}
+
+function applyDocumentTheme(dark: boolean, persist: boolean): void {
   document.documentElement.classList.toggle("dark", dark);
   document.documentElement.style.colorScheme = dark ? "dark" : "light";
-  try {
-    window.localStorage.setItem("theme", dark ? "dark" : "light");
-  } catch {
-    /* private mode */
+  updateThemeColor(dark);
+  if (persist) {
+    try {
+      window.localStorage.setItem("theme", dark ? "dark" : "light");
+    } catch {
+      /* private mode */
+    }
   }
+  window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+}
+
+export function applyTheme(dark: boolean): void {
+  applyDocumentTheme(dark, true);
+}
+
+/** Suit le système sans créer artificiellement une préférence locale. */
+export function applySystemTheme(dark: boolean): void {
+  applyDocumentTheme(dark, false);
 }
 
 /**

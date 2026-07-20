@@ -20,7 +20,7 @@ ${navHtml}
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Application mobile iOS &amp; Android</span></div>
-      <h1>Votre application mobile<br>sur les <span class="accent">stores dès 12 semaines</span>,<br>pas dans 2 ans.</h1>
+      <h1>Votre application mobile<br>sur les <span class="accent">stores selon un plan cadré</span>,<br>sans promesse artificielle.</h1>
       <div class="mob-hero-feats">
         <span class="mob-hero-feat">
           <span class="mob-hero-feat-ic">
@@ -62,11 +62,11 @@ ${navHtml}
         <a href="/demarrer-un-projet" class="btn btn-ghost btn-lg">Décrire mon projet (3 min)</a>
       </div>
       <div class="shero-meta">
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Livré en 8 à 20 semaines</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Planning indicatif confirmé au devis</span>
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Soumission stores incluse</span>
         <span class="sep"></span>
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Hot-fixes en 10 min via OTA</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> OTA selon éligibilité et règles des stores</span>
       </div>
     </div>
 
@@ -284,7 +284,7 @@ ${navHtml}
       </div>
       <div class="right">
         Pas une "super app" copiée d'Uber. Une app focalisée sur <b>1 à 3 cas d'usage</b> qui font la différence pour vos clients
-        — et qui s'amortissent en 12 à 18 mois grâce à la rétention, la fidélité et le panier moyen mobile.
+        — avec des objectifs produit et économiques mesurés après lancement, sans délai d'amortissement promis.
       </div>
     </div>
 
@@ -292,7 +292,7 @@ ${navHtml}
       <div class="uc reveal">
         <div class="uc-num">/ 01</div>
         <h3>App e-commerce mobile</h3>
-        <p>Extension de votre boutique web : catalogue, panier, Apple Pay / Google Pay, push promo, fidélité. Sur le secteur retail mobile, l'app convertit nettement mieux que le site mobile et le panier moyen tend à grimper — avec une exécution sérieuse.</p>
+        <p>Extension de votre boutique web : catalogue, panier, Apple Pay / Google Pay, push promotionnel et fidélité. Conversion, réachat et panier moyen doivent être mesurés sur votre audience&nbsp;; aucun gain sectoriel n'est présumé.</p>
         <div class="uc-tags">
           <span class="uc-tag">Stripe · Apple Pay</span>
           <span class="uc-tag">Sync Shopify</span>
@@ -409,102 +409,102 @@ ${navHtml}
     <div class="caps-grid">
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 00-12 0v3.2c0 .5-.2 1-.6 1.4L4 17h5"/><path d="M9 17a3 3 0 006 0"/></svg></div>
-        <h4>Push notifications natives</h4>
-        <p>iOS APNs + Android FCM via Firebase ou Batch. Segmentation, scheduling, géofencing. <b>Taux d'ouverture nettement supérieur à l'email</b>, opt-in contextuel RGPD-friendly.</p>
+        <h3>Push notifications natives</h3>
+        <p>iOS APNs + Android FCM via Firebase ou Batch. Segmentation, planification et géofencing selon le besoin, avec un opt-in contextuel et des finalités documentées.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/><circle cx="12" cy="12" r="4"/></svg></div>
-        <h4>Mode hors-ligne</h4>
+        <h3>Mode hors-ligne</h3>
         <p>L'app fonctionne en 3G, dans le métro, en avion. Cache local, sync à la reconnexion, queue de mutations. Indispensable pour <b>terrain, livraison, coaching, formation</b>.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78a5.5 5.5 0 000-7.78z"/></svg></div>
-        <h4>Apple Pay + Google Pay</h4>
-        <p>Checkout 1-tap avec Face ID / Touch ID / empreinte. Conversion <b>×2 vs saisie carte manuelle</b>. Branché sur Stripe (web pricing) ou IAP Apple (digital).</p>
+        <h3>Apple Pay + Google Pay</h3>
+        <p>Checkout avec Face ID / Touch ID / empreinte lorsqu'il est compatible avec le produit. Le gain de conversion dépend du parcours et doit être mesuré ; Stripe ou l'achat intégré sont cadrés selon la nature de ce qui est vendu et les règles des stores.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
-        <h4>OTA updates via EAS</h4>
-        <p>Bug fix en prod en <b>10 minutes</b>, pas 3 jours de review Apple. Zéro republication store pour des correctifs JS / contenu / config. Rollback en 1 clic.</p>
+        <h3>OTA updates via EAS</h3>
+        <p>Certains correctifs JavaScript, de contenu ou de configuration peuvent être diffusés sans nouvelle soumission au store, dans les limites des règles Apple et Google. Le délai, l'éligibilité de la mise à jour et le rollback sont vérifiés au cas par cas.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="11" r="3"/><path d="M21 11c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/></svg></div>
-        <h4>Géolocalisation &amp; géofencing</h4>
-        <p>Push à 50 m d'une boutique, store locator, déclencheurs zones. Permission Apple/Google conforme : on demande la géoloc <b>uniquement quand c'est utile</b>.</p>
+        <h3>Géolocalisation &amp; géofencing</h3>
+        <p>Push à proximité d'une boutique, store locator, déclencheurs par zone. La demande de géolocalisation est contextuelle, limitée au besoin décrit et recettée au regard des règles Apple, Google et de la finalité retenue.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h4v4H3zM17 3h4v4h-4zM3 17h4v4H3zM17 17h4v4h-4zM9 10h6v4H9z"/></svg></div>
-        <h4>Scan QR &amp; code-barres</h4>
+        <h3>Scan QR &amp; code-barres</h3>
         <p>Scanner natif via caméra : QR fidélité en caisse, scan produit pour réassort, billet d'événement, Wi-Fi pairing. Lecture offline, ultra-rapide.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-        <h4>Wallet Apple &amp; Google</h4>
+        <h3>Wallet Apple &amp; Google</h3>
         <p>Carte fidélité, billet, ticket, abonnement transports — directement dans l'app Wallet, sans installer la nôtre. Mises à jour push (solde, expiration).</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M7 7l5 5 5-5M7 17l5-5 5 5"/></svg></div>
-        <h4>Deep links &amp; universal links</h4>
+        <h3>Deep links &amp; universal links</h3>
         <p>Un lien email ouvre directement la bonne fiche dans l'app. Onboarding, parrainage, tracking attribution. Universal Links iOS + App Links Android natifs, ou Branch.io en option pour l'attribution multi-canal.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h4>Biométrie Face ID / empreinte</h4>
-        <p>Connexion 1-tap, validation paiement, accès zone sensible. Stockage sécurisé via Keychain iOS / Keystore Android. Conforme banques &amp; santé.</p>
+        <h3>Biométrie Face ID / empreinte</h3>
+        <p>Connexion rapide et accès à une zone sensible avec Keychain iOS ou Keystore Android. Les exigences sectorielles comme PCI DSS ou l'hébergement de données de santé nécessitent un périmètre, des prestataires et des audits spécifiques ; elles ne sont pas incluses ni certifiées par défaut.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20M6 14h4"/></svg></div>
-        <h4>Paiement web (Stripe / PayPlug)</h4>
-        <p>Pour les biens physiques, livraisons, services — Stripe / PayPlug en webview, <b>0 % de commission Apple</b>. Pour le digital, IAP Apple obligatoire.</p>
+        <h3>Paiement web (Stripe / PayPlug)</h3>
+        <p>Stripe, PayPlug, l'achat intégré ou un autre parcours sont retenus selon le bien ou service vendu, le pays et les règles des stores applicables au moment de la soumission.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg></div>
-        <h4>App Clip &amp; Instant App</h4>
+        <h3>App Clip &amp; Instant App</h3>
         <p>Une mini-version sans téléchargement (quelques Mo) déclenchée par QR ou NFC. Idéal pour <b>commande au resto, paiement parking, ouverture casier</b>.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 6 8 10 8 10s8-4 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h4>RGPD &amp; CNIL prêt à l'audit</h4>
-        <p>La CNIL contrôle les apps depuis 2025. On livre <b>politique de confidentialité dédiée, gestion permissions (geo, contacts, micro), DPA signé</b>. Sanction max évitée : 4 % CA.</p>
+        <h3>Dossier vie privée préparé pour revue</h3>
+        <p>Selon le périmètre, nous préparons l'inventaire des permissions, les flux, les sous-traitants, les éléments de politique de confidentialité et un DPA à compléter si nécessaire. Les qualifications juridiques et la validation finale relèvent de votre DPO ou conseil ; aucune absence de contrôle ou de sanction n'est garantie.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <h4>Background tasks &amp; sync</h4>
-        <p>Sync silencieuse en arrière-plan, refresh contenu, géofencing, badge non-lus. L'app reste vivante même fermée. Conforme limites Apple/Google batterie.</p>
+        <h3>Background tasks &amp; sync</h3>
+        <p>Synchronisation, rafraîchissement de contenu, géofencing et badges sont configurés selon les API et contraintes d'énergie prévues par Apple et Google, puis testés sur les versions d'OS inscrites au plan de recette.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M5 5l14 14M19 5L5 19M1 12h22"/></svg></div>
-        <h4>Watch &amp; Wear OS</h4>
+        <h3>Watch &amp; Wear OS</h3>
         <p>Apple Watch + Wear OS pour les apps fitness, paiement contactless, notifications discrètes. Sur option, dans le forfait Sur-mesure.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
-        <h4>Tracking attribution opt-in</h4>
-        <p>Conforme ATT iOS 14.5+ : tracking n'est activé que si l'utilisateur consent. AppsFlyer / Adjust / Branch en option pour <b>mesurer Ads ROI</b>.</p>
+        <h3>Tracking attribution opt-in</h3>
+        <p>Le tracking d'attribution reste désactivé avant l'autorisation ATT lorsqu'elle est requise. AppsFlyer, Adjust ou Branch sont optionnels ; leur configuration et les autres obligations de consentement sont documentées et recettées selon les finalités retenues.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
-        <h4>Analytics produit &amp; dashboards</h4>
+        <h3>Analytics produit &amp; dashboards</h3>
         <p>DAU / MAU, rétention J1 / J7 / J30, funnel d'onboarding, churn, événements custom. Firebase, Amplitude, PostHog. Dashboard partagé en lecture.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
-        <h4>Chat &amp; messagerie temps réel</h4>
+        <h3>Chat &amp; messagerie temps réel</h3>
         <p>WebSockets, Stream Chat, Pusher ou Firebase Realtime. Indicateurs typing, lus / non-lus, push si app fermée. Pour <b>coaching, support, communauté, marketplace</b>.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
-        <h4>Caméra, photos, vidéo, micro</h4>
+        <h3>Caméra, photos, vidéo, micro</h3>
         <p>Capture in-app, scan documents (avec OCR), enregistrement audio, upload progressif avec resume. Compression côté client, pas de surcoût bande passante.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
-        <h4>Crash reporting &amp; monitoring</h4>
+        <h3>Crash reporting &amp; monitoring</h3>
         <p>Sentry mobile, Firebase Crashlytics ou un outil équivalent peuvent être retenus. Stack trace, contexte de crash et éventuel replay sont configurés selon le besoin. <b>Le délai cible sur un blocage est écrit dans le forfait de maintenance</b>.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h4>Recette et suivi post-publication</h4>
+        <h3>Recette et suivi post-publication</h3>
         <p>Le devis précise la recette, la période éventuelle de correction des anomalies, les niveaux de sévérité et la maintenance après publication.</p>
       </div>
     </div>
@@ -520,7 +520,7 @@ ${navHtml}
         <h2>Du brief à la première<br>review Apple, en 5 étapes.</h2>
       </div>
       <div class="right">
-        Démos hebdomadaires sur TestFlight (iOS) et Internal Testing (Android), <b>vous voyez l'app grandir chaque semaine</b> sur votre propre téléphone.
+        Démonstrations sur TestFlight (iOS) et Internal Testing (Android) à la cadence convenue, <b>avec des versions testables aux jalons prévus</b> sur votre propre téléphone.
         Pas d'effet tunnel, pas de surprise à la livraison.
       </div>
     </div>
@@ -529,37 +529,37 @@ ${navHtml}
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 01</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
-        <h4>Discovery Sprint</h4>
+        <h3>Discovery Sprint</h3>
         <p>Atelier <b>payant et déductible</b> (déduit du devis si on continue) : on cadre le scope MVP, on défriche les 5-7 écrans clés, on sort un prototype Figma cliquable. Si on arrête là, vous repartez avec un livrable utilisable par n'importe quel autre studio.</p>
         <div class="proc-dur">2 JOURS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
-        <h4>Design iOS + Android</h4>
-        <p>Maquettes Figma haute fidélité, respect des Human Interface Guidelines (Apple) et Material 3 (Google). Prototype cliquable. <b>2 tours de révisions inclus</b>. Vous validez avant la moindre ligne de code.</p>
-        <div class="proc-dur">2–3 SEMAINES</div>
+        <h3>Design iOS + Android</h3>
+        <p>Maquettes Figma haute fidélité, prise en compte des recommandations Apple et Material 3, prototype cliquable. Le nombre de parcours, de validations et de révisions est précisé au devis.</p>
+        <div class="proc-dur">PLANNING AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
-        <h4>Développement React Native + Expo</h4>
-        <p>Sprints de 2 semaines, démo TestFlight + Internal Testing à chaque fin de sprint. Vous installez l'app sur votre iPhone / Android dès la 4ᵉ semaine. <b>Tests E2E</b> (Maestro), monitoring Sentry actif dès le sprint 1.</p>
-        <div class="proc-dur">6–14 SEMAINES</div>
+        <h3>Développement React Native + Expo</h3>
+        <p>La cadence des sprints, des démonstrations TestFlight / Internal Testing et de l'accès aux versions intermédiaires est définie au devis. Les tests E2E et le monitoring sont activés selon le plan de recette retenu.</p>
+        <div class="proc-dur">PLANNING AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
-        <h4>Recette &amp; tests sur vrais devices</h4>
-        <p>Tests sur <b>iPhone SE (entrée de gamme), Android Pixel 5, tablette</b>. Audit performances (fluidité 60 fps cible), accessibilité, RGPD CNIL, batterie. Beta fermée 50–100 utilisateurs en TestFlight. <b>1 tour de corrections inclus</b>.</p>
-        <div class="proc-dur">1–2 SEMAINES</div>
+        <h3>Recette &amp; tests sur vrais devices</h3>
+        <p>Le plan de recette nomme les versions iOS et Android, appareils ou émulateurs, parcours, accessibilité, performance, consommation et bêta éventuelle. La couverture, les seuils et les corrections incluses sont définis au devis.</p>
+        <div class="proc-dur">RECETTE AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
-        <h4>Soumission stores + suivi 30 j</h4>
+        <h3>Soumission stores et suivi défini au devis</h3>
         <p>Le devis peut couvrir App Store Connect et Google Play Console&nbsp;: fiche store, captures, soumission, retours des équipes de revue et formation. Le nombre d'itérations et les délais des stores ne sont pas garantis par l'agence.</p>
-        <div class="proc-dur">5–10 JOURS · J+30</div>
+        <div class="proc-dur">DÉLAIS TIERS NON GARANTIS</div>
       </div>
     </div>
   </div>
@@ -573,9 +573,9 @@ ${navHtml}
         <div class="eyebrow">— Notre stack mobile</div>
         <h2 style="margin-top:14px">Un seul codebase,<br>deux stores, cinq plateformes.</h2>
         <p style="color:var(--mute);font-size:16px;margin-top:20px;max-width:480px">
-          On fait <b>React Native + Expo</b> par défaut : iOS, Android, web mobile, tablette, Apple Watch via 1 seule codebase TypeScript.
-          Coût divisé par 2 vs natif Swift/Kotlin séparé, perfs 60 fps, et <b>OTA updates en 10 min</b>. On sort du natif Swift/Kotlin
-          uniquement si la perf critique l'exige (jeu, IoT BLE pointu, finance lourde).
+          On étudie <b>React Native + Expo</b> pour mutualiser une partie du code iOS et Android, avec adaptation web ou tablette lorsque le besoin le justifie.
+          Les extensions Apple Watch ou Wear OS, le niveau de fluidité et les mises à jour à distance exigent un périmètre et des tests propres ; ni le coût, ni le délai ne sont divisés mécaniquement par deux. Le natif Swift/Kotlin
+          reste pertinent lorsque les contraintes matérielles, de performance ou de sécurité l'exigent.
         </p>
 
         <div class="stack-list">
@@ -587,7 +587,7 @@ ${navHtml}
           <div class="sl-row">
             <div class="sl-cat">DISTRIBUTION</div>
             <div class="sl-val">EAS Build · EAS Submit · EAS Update (OTA)</div>
-            <div class="sl-note">FIX EN 10 MIN</div>
+            <div class="sl-note">SELON RÈGLES STORES</div>
           </div>
           <div class="sl-row">
             <div class="sl-cat">UI / DESIGN</div>
@@ -677,7 +677,7 @@ ${navHtml}
     <div class="price-grid">
       <div class="plan reveal">
         <div class="plan-tag">MVP / LANCEMENT</div>
-        <h4>Lancement</h4>
+        <h3>Lancement</h3>
         <div class="plan-sub">Une app native iOS + Android focalisée sur 1 cas d'usage : fidélité, réservation, click &amp; collect, app interne. Idéal pour valider un marché ou digitaliser un service existant.</div>
         <div class="plan-price">
           <span class="amount">Sur devis</span>
@@ -690,16 +690,16 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Soumission App Store + Play Store incluse</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tests E2E sur 3 devices réels</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement back 1 an + formation 2 h</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 8 à 12 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning indicatif confirmé après cadrage</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
       </div>
 
       <div class="plan featured reveal reveal-d-1">
-        <div class="plan-badge">LE PLUS DEMANDÉ</div>
+        <div class="plan-badge">PÉRIMÈTRE ÉTENDU</div>
         <div class="plan-tag">APP COMPLÈTE</div>
-        <h4>Performance</h4>
-        <div class="plan-sub">L'app que vos clients utilisent <b>tous les jours</b> : commerce, fidélité, communauté, paiement, push géoloc, back-office complet. La gamme qui s'amortit sur 12-18 mois.</div>
+        <h3>Performance</h3>
+        <div class="plan-sub">Une app complète pour le commerce, la fidélité, la communauté, le paiement, les notifications et le back-office. Les objectifs d'usage et de rentabilité sont définis puis mesurés avec vous.</div>
         <div class="plan-price">
           <span class="amount">Sur devis</span>
           <span class="per">forfait fixe après cadrage</span>
@@ -712,14 +712,14 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Push géoloc, biométrie, mode hors-ligne, OTA EAS</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Back-office React / Strapi inclus</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Tests E2E Maestro · monitoring Sentry</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 14 à 20 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning indicatif confirmé au devis</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
       </div>
 
       <div class="plan reveal reveal-d-2">
         <div class="plan-tag">PLATEFORME</div>
-        <h4>Sur-mesure</h4>
+        <h3>Sur-mesure</h3>
         <div class="plan-sub">Marketplace 2-sided, app entreprise terrain avec offline complexe, IoT / BLE, IA embarquée, multi-langue, intégrations ERP. Devis personnalisé après un cadrage approfondi.</div>
         <div class="plan-price">
           <span class="amount">Sur devis</span>
@@ -732,7 +732,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Modules natifs Swift / Kotlin si perf critique</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Watch / Wear OS · Apple TV · App Clip</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Multi-langue, multi-tenant, intégration ERP (Sage, Cegid, SAP)</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 5 à 9 mois</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Jalons et calendrier définis après diagnostic</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Cadrer mon besoin</a></div>
       </div>
@@ -752,7 +752,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ commerciale</div>
         <h2 style="margin-top:14px">Les vraies questions<br>qu'on nous pose<br>avant de signer.</h2>
-        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par quelqu'un qui code, sans détour ni jargon.</p>
+        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Le canal et le délai de réponse annoncé au moment de la demande restent explicites.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
@@ -802,7 +802,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            On fait <b>React Native + Expo par défaut</b> : couvre la grande majorité des besoins PME, mutualise iOS et Android sur une seule codebase, animations fluides à 60 fps via Reanimated, OTA updates via EAS. <b>Flutter</b> est techniquement équivalent — on n'en fait pas car notre stack web est React et la cohérence avec votre back-end existant, quel qu'il soit, est meilleure. <b>Natif Swift/Kotlin</b> uniquement si la perf est critique (jeu 3D, IoT BLE pointu, finance lourde) — sur option dans le forfait Sur-mesure, pour les modules concernés.
+            On utilise souvent <b>React Native + Expo</b> pour mutualiser une partie du code iOS et Android. Flutter ou du natif Swift/Kotlin peuvent être préférables selon les contraintes matérielles, de performance, d'équipe ou de store. Le choix et les éventuels modules natifs sont justifiés au cadrage, sans promettre un ratio universel de coût ou de fluidité.
           </div>
         </div>
 
@@ -842,7 +842,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Avec React Native, <b>les deux d'un coup</b>, dans la même codebase. En France : iOS représente environ 30 % des utilisateurs mais <b>une part bien plus grande du chiffre d'affaires app</b> (CSP+, paniers premium). Si votre cible est CSP+ et que vous voulez prioriser la beta, on peut commencer par <b>TestFlight iOS</b> puis sortir Android au sprint suivant. En pratique, sur React Native, l'écart est minime — autant publier sur les deux stores en même temps.
+            React Native permet de mutualiser une partie du code iOS et Android, sans rendre les deux plateformes identiques. La priorité de bêta et l'ordre de publication dépendent de votre audience, des fonctions natives, des tests et des contraintes de chaque store. Le devis précise si les deux plateformes sortent ensemble ou selon des jalons distincts.
           </div>
         </div>
 
@@ -852,7 +852,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Échéancier <b>30 / 40 / 30</b> : 30 % à la signature du devis, 40 % à la validation du design Figma, 30 % à la mise en ligne stores. Devis + contrat signés électroniquement (Yousign). Facturation SAS française, TVA française applicable. Sur une véritable opération de R&amp;D, <b>nous documentons les verrous, essais et résultats</b> ; votre conseil valide séparément toute éventuelle éligibilité au CIR selon les travaux, votre situation et l'agrément du prestataire.
+            Le devis signé précise l'échéancier, les jalons de facturation, les critères de validation et les conséquences d'une dépendance aux stores. Sur une véritable opération de R&amp;D, <b>nous pouvons documenter les verrous, essais et résultats si le périmètre le prévoit</b>&nbsp;; votre conseil valide séparément toute éventuelle éligibilité au CIR selon les travaux, votre situation et l'agrément du prestataire.
           </div>
         </div>
 
@@ -862,7 +862,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Évolution mineure (1 écran, 1 intégration) : <b>chiffrée au ticket</b> sur la base d'un cadrage rapide. Module (paiement supplémentaire, vertical secondaire, watch app) : sur devis. <b>Releases mensuelles en standard</b>. Pour un partenariat long terme, on propose un forfait évolutions mensuel cadré ensemble — <b>volume et budget définis selon votre rythme</b> — sans friction de devis pour chaque ajustement.
+            Une évolution est qualifiée puis chiffrée au ticket, au lot ou dans un forfait mensuel selon sa portée. Le devis précise la cadence des releases, le volume réservé, les dépendances, le budget et la procédure d'accord avant développement.
           </div>
         </div>
 
@@ -886,9 +886,9 @@ ${navHtml}
   <div class="wrap">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:18px">Votre app sur les stores,<br>cadrée et chiffrée par quelqu'un qui code.</h2>
-    <p>Un call de 30 min avec un expert. Vous repartez avec un avis franc sur votre projet et, sous 48 h, un devis chiffré au forfait — sans engagement.</p>
+    <p>Un échange de cadrage avec un expert. Le délai et les informations nécessaires à l'établissement d'un éventuel devis sont annoncés après l'analyse du projet, sans engagement.</p>
     <div class="scta-cta">
-      <a href="#contact" class="btn btn-accent btn-lg">
+      <a href="/rendez-vous" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min avec un expert
         <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </a>
@@ -896,7 +896,7 @@ ${navHtml}
         Envoyer un email →
       </a>
     </div>
-    <div class="scta-meta">RÉPONSE SOUS 24 H · PAR UN ASSOCIÉ QUI CODE · SANS ENGAGEMENT · DISCOVERY SPRINT DÉDUCTIBLE DU DEVIS</div>
+    <div class="scta-meta">DÉLAI DE RÉPONSE ANNONCÉ · SANS ENGAGEMENT · DISCOVERY ET CONDITIONS AU DEVIS</div>
   </div>
 </section>
 
@@ -913,7 +913,7 @@ ${navHtml}
       </div>
       <div class="foot-cols">
         <div class="foot-col">
-          <h5>SERVICES</h5>
+          <h3>SERVICES</h3>
           <a href="/services/saas-applications-metier">SaaS &amp; applis métier</a>
           <a href="/services/outils-internes-sur-mesure">Outils internes</a>
           <a href="/services/sites-vitrines">Sites vitrines</a>
@@ -921,28 +921,27 @@ ${navHtml}
           <a href="/services/application-mobile">Application mobile</a>
         </div>
         <div class="foot-col">
-          <h5>STUDIO</h5>
+          <h3>STUDIO</h3>
           <a href="/methode">Méthode</a>
           <a href="/realisations">Réalisations</a>
           <a href="/equipe">Équipe</a>
           <a href="/tarifs">Tarifs</a>
         </div>
         <div class="foot-col">
-          <h5>CONTACT</h5>
+          <h3>CONTACT</h3>
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">YouTube</a>
+          <a href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
         <div class="foot-col">
-          <h5>LÉGAL</h5>
-          <a href="#">CGV</a>
-          <a href="#">Mentions légales</a>
-          <a href="#">Confidentialité</a>
+          <h3>LÉGAL</h3>
+          <a href="/legal/cgv">CGV</a>
+          <a href="/legal/mentions">Mentions légales</a>
+          <a href="/legal/confidentialite">Confidentialité</a>
         </div>
       </div>
     </div>
     <div class="foot-bot">
-      <div>© 2026 HAGNÉRÉ CODE SAS · RCS Chambéry 993 672 856 · SIRET 993 672 856 00016 · TVA FR30 993 672 856 · NAF 62.01Z</div>
+      <div>© 2026 HAGNERE CODE · SASU au capital de 10 € · RCS Chambéry 993 672 856 · TVA FR30 993 672 856 · NAF 62.01Z · 82 impasse de Bellevue, 73000 Bassens</div>
       <div>BUILT WITH NEXT.JS + CLAUDE CODE</div>
     </div>
   </div>
