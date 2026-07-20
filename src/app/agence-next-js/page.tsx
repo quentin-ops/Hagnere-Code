@@ -28,17 +28,6 @@ export const metadata: Metadata = {
     images: [SERVICES_OG_IMAGE],
   },
   twitter: { images: [SERVICES_OG_IMAGE.url] },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 const serviceJsonLd = JSON.stringify({
@@ -115,23 +104,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[{ label: "Agence Next.js" }]}
         heroTitle="Agence Next.js : développement sur mesure et performance mesurée"
@@ -253,16 +231,16 @@ export default function Page() {
           </li>
         </ul>
 
-        <h2 id="preuves">3. Nos réalisations Next.js, chiffres à l&apos;appui</h2>
+        <h2 id="preuves">3. Nos réalisations Next.js, vérifiables en ligne</h2>
         <p>
           Deux projets en production, construits en Next.js 15, React 19 et
           TypeScript.
         </p>
         <GuideTable
-          headers={["Projet", "Nature", "Résultats mesurés"]}
+          headers={["Projet", "Nature", "Éléments publics vérifiables"]}
           rows={[
-            ["Hagnéré Patrimoine", "Site éditorial premium + CRM interne pour un cabinet de gestion de patrimoine", "+340 % de trafic organique en 6 mois · 4,2 % de conversion en rendez-vous · pipeline commercial ×3"],
-            ["Hagnéré Investissement", "Site de génération de leads pour un cabinet d'investissement immobilier", "×2,5 de leads qualifiés · coût par acquisition sous 80 € sur le segment principal"],
+            ["Hagnéré Patrimoine", "Site éditorial et outils internes pour un cabinet de gestion de patrimoine", "Pages éditoriales, simulateurs et prise de rendez-vous consultables sur le site public"],
+            ["Hagnéré Investissement", "Site de présentation pour un cabinet d'investissement immobilier", "Parcours, contenus et formulaire consultables sur le site public"],
           ]}
         />
         <InfoBox variant="amber" title="Une transparence qui nous dessert, mais qui est due">
@@ -270,8 +248,9 @@ export default function Page() {
           nous&nbsp;: ce ne sont pas des clients externes.</strong> Nous préférons l&apos;écrire noir sur blanc plutôt que
           de laisser croire à des références décrochées en concurrence. Ce que
           cela ne change pas : les sites sont en production, les technologies
-          sont vérifiables en ouvrant le code source, et les chiffres sont
-          ceux que nous mesurons. Ce que cela change : vous êtes en droit de
+          et les choix de conception peuvent être examinés sur les sites publics.
+          Aucune métrique d&apos;acquisition n&apos;est publiée ici sans dossier de preuve
+          daté. Ce que cela change : vous êtes en droit de
           leur accorder moins de poids qu&apos;à une référence externe, et
           nous le comprenons. Vous pouvez en revanche tester nos réalisations
           vous-même sur PageSpeed Insights — c&apos;est gratuit, ça prend
@@ -291,7 +270,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un projet Next.js en tête ?"
-          description="Décrivez-le en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement — y compris si notre réponse est qu'une solution plus simple suffirait."
+          description="Décrivez-le en 3 minutes. Objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement — y compris si notre réponse est qu'une solution plus simple suffirait."
         />
 
         <h2 id="garanties">4. Ce que le devis doit préciser</h2>
@@ -428,7 +407,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Parlons de votre projet"
-          description="Décrivez votre besoin en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Nous répondons nous-mêmes, il n'y a pas de service commercial intermédiaire."
+          description="Décrivez votre besoin en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Nous répondons nous-mêmes, il n'y a pas de service commercial intermédiaire."
         />
       </GuideLayout>
     </GuidesShell>

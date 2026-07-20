@@ -22,4 +22,36 @@ describe("application mobile public claims", () => {
     expect(composedBodyHtml).not.toMatch(/données santé[^<.]{0,100}DPO obligatoire/i);
     expect(composedBodyHtml).not.toMatch(/mineurs[^<.]{0,100}double consentement parental/i);
   });
+
+  it("ne transforme pas la stack choisie en gain universel", () => {
+    expect(composedBodyHtml).not.toMatch(
+      /conversion\s*[×x]2|bug fix en prod en\s*10 minutes|zéro republication store|coût divisé par 2|Apple Watch via 1 seule codebase/i,
+    );
+    expect(composedBodyHtml).not.toMatch(
+      /sous-traitance offshore[^<.]{0,100}refus quasi-certain|poubelle dans 6 mois/i,
+    );
+  });
+
+  it("ne publie plus de benchmarks sectoriels non sourcés", () => {
+    expect(composedBodyHtml).not.toMatch(
+      /conversion app vs site mobile|conversion mobile \(secteur retail\)|panier moyen mobile observé|ouverture push vs email|Criteo|App Annie|data\.ai/i,
+    );
+    expect(composedBodyHtml).not.toMatch(/(?:×3|\+40\s*%|5[–-]10×)[^<]{0,100}(?:conversion|panier|ouverture)/i);
+  });
+
+  it("ne promet ni OTA instantanée ni calendrier de livraison absolu", () => {
+    expect(composedBodyHtml).not.toMatch(/(?:OTA|hot-?fix)[^<.]{0,100}(?:en\s*10\s*min|instantan|sans review)/i);
+    expect(composedBodyHtml).not.toMatch(/stores dès\s*12\s*semaines|livraison\s*(?:8 à 12|14 à 20)\s*semaines|livraison\s*5 à 9\s*mois/i);
+    expect(composedBodyHtml).toMatch(/planning indicatif[^<.]{0,100}(?:devis|cadrage)/i);
+  });
+
+  it("distingue comptes, cession de droits, paiement et licences", () => {
+    expect(composedBodyHtml).not.toMatch(/100\s*%[^<.]{0,80}(?:code|comptes|propriété)|(?:code|comptes)[^<.]{0,80}100\s*%/i);
+    expect(composedBodyHtml).toMatch(/livrables spécifiques[^<.]{0,160}paiement complet[^<.]{0,120}(?:CGV|licences tierces)/i);
+  });
+
+  it("identifie les situations commerciales comme fictives", () => {
+    expect(composedBodyHtml).toMatch(/situations-types fictives/i);
+    expect(composedBodyHtml).toMatch(/exemples sont fictifs/i);
+  });
 });

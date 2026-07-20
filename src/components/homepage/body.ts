@@ -46,7 +46,7 @@ export const bodyHtml = `${navHtml}
         </li>
         <li class="hero-badge">
           <span class="hero-badge-ic"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span>
-          Réponse sous 24 h ouvrées
+          Objectif : prochain jour ouvré
         </li>
       </ul>
     </div>
@@ -157,7 +157,7 @@ export const bodyHtml = `${navHtml}
       <div class="hv-stack">
         <div class="hv-orbit">
           <span class="hv-orbit-ic">
-            <img src="/logos/stack/authjs.webp" alt="Auth.js" loading="lazy" decoding="async" />
+            <img src="/logos/stack/authjs-64.webp" alt="Auth.js" width="15" height="15" loading="lazy" decoding="async" />
           </span>
           <div class="hv-orbit-body">
             <span class="hv-orbit-k">Auth.js</span>
@@ -167,7 +167,7 @@ export const bodyHtml = `${navHtml}
 
         <div class="hv-orbit">
           <span class="hv-orbit-ic hv-orbit-ic-stripe">
-            <img src="/logos/stack/stripe.svg" alt="Stripe" loading="lazy" decoding="async" />
+            <img src="/logos/stack/stripe.svg" alt="Stripe" width="15" height="15" loading="lazy" decoding="async" />
           </span>
           <div class="hv-orbit-body">
             <span class="hv-orbit-k">Paiements</span>
@@ -177,7 +177,7 @@ export const bodyHtml = `${navHtml}
 
         <div class="hv-orbit">
           <span class="hv-orbit-ic">
-            <img src="/logos/stack/nextjs.svg" alt="Next.js" loading="lazy" decoding="async" />
+            <img src="/logos/stack/nextjs.svg" alt="Next.js" width="15" height="15" loading="lazy" decoding="async" />
           </span>
           <div class="hv-orbit-body">
             <span class="hv-orbit-k">Back-end</span>
@@ -187,7 +187,7 @@ export const bodyHtml = `${navHtml}
 
         <div class="hv-orbit">
           <span class="hv-orbit-ic hv-orbit-ic-claude">
-            <img src="/logos/stack/anthropic.svg" alt="Claude" loading="lazy" decoding="async" />
+            <img src="/logos/stack/anthropic.svg" alt="Claude" width="15" height="15" loading="lazy" decoding="async" />
           </span>
           <div class="hv-orbit-body">
             <span class="hv-orbit-k">Claude Code</span>
@@ -205,7 +205,7 @@ export const bodyHtml = `${navHtml}
     <div class="lb-inner">
       <div class="lb-side">
         <div class="lb-kicker">Notre stack</div>
-        <h3>Une stack <em>moderne</em>, choisie, maîtrisée.</h3>
+        <h2>Une stack <em>moderne</em>, choisie, maîtrisée.</h2>
         <p>Pas de framework choisi pour faire joli. Un socle standard, maintenable et lisible par d'autres équipes : Next.js/React, TypeScript, bases SQL, CI/CD, observabilité et agents IA modernes. Chaque brique a un rôle clair.</p>
         <div class="lb-note">— Versions revues trimestriellement · sécurité et dépendances surveillées</div>
       </div>
@@ -215,35 +215,35 @@ export const bodyHtml = `${navHtml}
           <div class="lb-row-label">Back-end</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <img src="/logos/stack/nextjs.svg" alt="Next.js" loading="lazy" decoding="async" />
+              <img src="/logos/stack/nextjs.svg" alt="Next.js" width="18" height="18" loading="lazy" decoding="async" />
               Next.js 16 <span class="lb-chip-dim">React 19 · Node</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/typescript.svg" alt="TypeScript" loading="lazy" decoding="async" />
+              <img src="/logos/stack/typescript.svg" alt="TypeScript" width="18" height="18" loading="lazy" decoding="async" />
               TypeScript <span class="lb-chip-dim">bout en bout</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/postgresql.svg" alt="PostgreSQL" loading="lazy" decoding="async" />
+              <img src="/logos/stack/postgresql.svg" alt="PostgreSQL" width="18" height="18" loading="lazy" decoding="async" />
               PostgreSQL <span class="lb-chip-dim">Neon / Supabase</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/redis.svg" alt="Redis" loading="lazy" decoding="async" />
+              <img src="/logos/stack/redis.svg" alt="Redis" width="18" height="18" loading="lazy" decoding="async" />
               Redis <span class="lb-chip-dim">cache + queues</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/drizzle.svg" alt="Drizzle ORM" loading="lazy" decoding="async" />
+              <img src="/logos/stack/drizzle.svg" alt="Drizzle ORM" width="18" height="18" loading="lazy" decoding="async" />
               Drizzle ORM <span class="lb-chip-dim">migrations typées</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/authjs.webp" alt="Auth.js" loading="lazy" decoding="async" />
+              <img src="/logos/stack/authjs-64.webp" alt="Auth.js" width="18" height="18" loading="lazy" decoding="async" />
               Auth.js <span class="lb-chip-dim">SSO / sessions</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/mysql.svg" alt="MySQL" loading="lazy" decoding="async" />
+              <img src="/logos/stack/mysql.svg" alt="MySQL" width="18" height="18" loading="lazy" decoding="async" />
               MySQL 8 <span class="lb-chip-dim">legacy &amp; métier</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/laravel.svg" alt="Laravel" loading="lazy" decoding="async" />
+              <img src="/logos/stack/laravel.svg" alt="Laravel" width="18" height="18" loading="lazy" decoding="async" />
               Laravel <span class="lb-chip-dim">reprises d'existant</span>
             </span>
           </div>
@@ -253,31 +253,31 @@ export const bodyHtml = `${navHtml}
           <div class="lb-row-label">Front-end web</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <img src="/logos/stack/react.svg" alt="React" loading="lazy" decoding="async" />
+              <img src="/logos/stack/react.svg" alt="React" width="18" height="18" loading="lazy" decoding="async" />
               React 19.2
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/nextjs.svg" alt="Next.js" loading="lazy" decoding="async" />
+              <img src="/logos/stack/nextjs.svg" alt="Next.js" width="18" height="18" loading="lazy" decoding="async" />
               Next.js 16
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/react.svg" alt="React Server Components" loading="lazy" decoding="async" />
+              <img src="/logos/stack/react.svg" alt="React Server Components" width="18" height="18" loading="lazy" decoding="async" />
               React Server Components
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/tailwindcss.svg" alt="Tailwind CSS" loading="lazy" decoding="async" />
+              <img src="/logos/stack/tailwindcss.svg" alt="Tailwind CSS" width="18" height="18" loading="lazy" decoding="async" />
               Tailwind v4
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/typescript.svg" alt="TypeScript" loading="lazy" decoding="async" />
+              <img src="/logos/stack/typescript.svg" alt="TypeScript" width="18" height="18" loading="lazy" decoding="async" />
               TypeScript 5 <span class="lb-chip-dim">strict</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/radixui.svg" alt="Radix UI" loading="lazy" decoding="async" />
+              <img src="/logos/stack/radixui.svg" alt="Radix UI" width="18" height="18" loading="lazy" decoding="async" />
               Radix UI <span class="lb-chip-dim">accessibilité</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/motion.png" alt="Motion" loading="lazy" decoding="async" />
+              <img src="/logos/stack/motion.png" alt="Motion" width="18" height="18" loading="lazy" decoding="async" />
               Motion <span class="lb-chip-dim">interactions</span>
             </span>
           </div>
@@ -287,16 +287,16 @@ export const bodyHtml = `${navHtml}
           <div class="lb-row-label">Mobile iOS/Android</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <img src="/logos/stack/react.svg" alt="React Native" loading="lazy" decoding="async" />
+              <img src="/logos/stack/react.svg" alt="React Native" width="18" height="18" loading="lazy" decoding="async" />
               React Native
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/expo.svg" alt="Expo" loading="lazy" decoding="async" />
+              <img src="/logos/stack/expo.svg" alt="Expo" width="18" height="18" loading="lazy" decoding="async" />
               Expo SDK
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/apple.svg" alt="iOS" loading="lazy" decoding="async" />
-              <img src="/logos/stack/android.svg" alt="Android" loading="lazy" decoding="async" />
+              <img src="/logos/stack/apple.svg" alt="iOS" width="18" height="18" loading="lazy" decoding="async" />
+              <img src="/logos/stack/android.svg" alt="Android" width="18" height="18" loading="lazy" decoding="async" />
               iOS &amp; Android
             </span>
             <span class="lb-chip">
@@ -310,15 +310,15 @@ export const bodyHtml = `${navHtml}
           <div class="lb-row-label">IA &amp; agents</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <img src="/logos/stack/anthropic.svg" alt="Anthropic Claude" loading="lazy" decoding="async" />
+              <img src="/logos/stack/anthropic.svg" alt="Anthropic Claude" width="18" height="18" loading="lazy" decoding="async" />
               Claude Opus 4.7 <span class="lb-chip-dim">agents &amp; code</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/openai.svg" alt="OpenAI" loading="lazy" decoding="async" />
+              <img src="/logos/stack/openai.svg" alt="OpenAI" width="18" height="18" loading="lazy" decoding="async" />
               GPT-5.5 <span class="lb-chip-dim">raisonnement &amp; code</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/prism.webp" alt="Prism PHP" loading="lazy" decoding="async" />
+              <img src="/logos/stack/prism.webp" alt="Prism PHP" width="18" height="18" loading="lazy" decoding="async" />
               Prism <span class="lb-chip-dim">LLM abstraction</span>
             </span>
             <span class="lb-chip">
@@ -336,35 +336,35 @@ export const bodyHtml = `${navHtml}
           <div class="lb-row-label">Infra &amp; ops</div>
           <div class="lb-chips">
             <span class="lb-chip">
-              <img src="/logos/stack/vercel.svg" alt="Vercel" loading="lazy" decoding="async" />
+              <img src="/logos/stack/vercel.svg" alt="Vercel" width="18" height="18" loading="lazy" decoding="async" />
               Vercel <span class="lb-chip-dim">edge</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/cloudflare.svg" alt="Cloudflare" loading="lazy" decoding="async" />
+              <img src="/logos/stack/cloudflare.svg" alt="Cloudflare" width="18" height="18" loading="lazy" decoding="async" />
               Cloudflare <span class="lb-chip-dim">OpenNext</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/aws.svg" alt="AWS" loading="lazy" decoding="async" />
+              <img src="/logos/stack/aws.svg" alt="AWS" width="18" height="18" loading="lazy" decoding="async" />
               AWS S3 + SES
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/docker.svg" alt="Docker" loading="lazy" decoding="async" />
+              <img src="/logos/stack/docker.svg" alt="Docker" width="18" height="18" loading="lazy" decoding="async" />
               Docker <span class="lb-chip-dim">Coolify</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/githubactions.svg" alt="GitHub Actions" loading="lazy" decoding="async" />
+              <img src="/logos/stack/githubactions.svg" alt="GitHub Actions" width="18" height="18" loading="lazy" decoding="async" />
               GitHub Actions
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/sentry.svg" alt="Sentry" loading="lazy" decoding="async" />
+              <img src="/logos/stack/sentry.svg" alt="Sentry" width="18" height="18" loading="lazy" decoding="async" />
               Sentry <span class="lb-chip-dim">erreurs</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/betterstack.svg" alt="Better Stack" loading="lazy" decoding="async" />
+              <img src="/logos/stack/betterstack.svg" alt="Better Stack" width="18" height="18" loading="lazy" decoding="async" />
               Better Stack <span class="lb-chip-dim">uptime</span>
             </span>
             <span class="lb-chip">
-              <img src="/logos/stack/dependabot.svg" alt="Dependabot" loading="lazy" decoding="async" />
+              <img src="/logos/stack/dependabot.svg" alt="Dependabot" width="18" height="18" loading="lazy" decoding="async" />
               Dependabot <span class="lb-chip-dim">CVE</span>
             </span>
           </div>
@@ -621,12 +621,13 @@ export const bodyHtml = `${navHtml}
   <div class="wrap">
     <div class="descr-grid">
       <div class="descr-copy reveal">
-        <div class="eyebrow">— Cadrage en 48h</div>
+        <div class="eyebrow">— Premier cadrage</div>
         <h2>Décrivez-nous votre besoin.<br>On s'occupe du reste.</h2>
         <p>
           Pas besoin d'un cahier des charges de 80 pages. En <b>30 minutes d'appel</b>, on comprend
-          votre contexte, votre urgence, vos contraintes. Réponse argumentée sous <b>24 h ouvrées</b>,
-          fourchette et plan sous <b>48 h</b> après l'échange — le devis ferme est établi après le
+          votre contexte, votre urgence, vos contraintes. Nous visons une réponse argumentée le
+          <b>prochain jour ouvré</b>, sans délai garanti ; le calendrier de cadrage est annoncé après
+          l'échange — le devis ferme est établi après le
           Discovery Sprint (1 500 € HT, déduit à 100 % du forfait).
         </p>
         <ul class="chks">
@@ -651,7 +652,7 @@ export const bodyHtml = `${navHtml}
               <div class="dc-bar-path">
                 <span>Inbox</span>
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg>
-                <span>Cadrage 48h</span>
+                <span>Cadrage</span>
               </div>
             </div>
             <div class="dc-bar-right">
@@ -667,15 +668,15 @@ export const bodyHtml = `${navHtml}
               <div class="dc-subj-l">
                 <div class="dc-subj-avatar">MD</div>
                 <div>
-                  <div class="dc-subj-from"><b>Marc Dubois</b> <span class="dc-subj-co">· Cabinet Dubois &amp; Associés</span></div>
-                  <div class="dc-subj-to">PME · 8 personnes · comptabilité</div>
+                  <div class="dc-subj-from"><b>Scénario fictif composite</b> <span class="dc-subj-co">· ni client ni témoignage réel</span></div>
+                  <div class="dc-subj-to">PME fictive · 8 personnes · comptabilité</div>
                 </div>
               </div>
-              <p>« On recopie des deals entre Excel, HubSpot et Pennylane. On veut centraliser et sortir les factures automatiquement. »</p>
+              <p>Exemple de besoin : recopier des dossiers entre Excel, un CRM et un outil comptable, puis centraliser la facturation.</p>
               <div class="dc-signal-row">
                 <span><b>3</b> outils à connecter</span>
                 <span><b>5</b> semaines</span>
-                <span><b>48h</b> pour cadrer</span>
+                <span><b>1</b> périmètre à cadrer</span>
               </div>
             </div>
 
@@ -747,7 +748,7 @@ export const bodyHtml = `${navHtml}
                 Obtenir mon cadrage
                 <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </a>
-              <div class="dc-action-note">30 min avec le gérant · fourchette sous 48 h · devis ferme après Discovery Sprint</div>
+              <div class="dc-action-note">30 min avec le fondateur · calendrier annoncé après l'échange · devis ferme après Discovery Sprint</div>
             </div>
           </div>
         </div>
@@ -767,7 +768,7 @@ export const bodyHtml = `${navHtml}
       </div>
       <div class="right">
         Pas de mystère, pas de « consulting » qui traîne. Quatre étapes claires,
-        des livrables précis, des démos chaque vendredi, un forfait fixe sans dépassement.
+        des livrables précis, des démos selon le planning et aucun dépassement sans accord écrit.
       </div>
     </div>
 
@@ -779,9 +780,9 @@ export const bodyHtml = `${navHtml}
           Notre engagement · simple, écrit, vérifiable
         </div>
         <h3>
-          Le prix annoncé <span class="sf-manifesto-accent">est</span> le prix payé.<br>
-          Le périmètre annoncé <span class="sf-manifesto-accent">est</span> le périmètre livré.<br>
-          Les arbitrages sont visibles chaque semaine.
+          Aucun dépassement <span class="sf-manifesto-accent">sans</span> accord écrit.<br>
+          Le périmètre signé <span class="sf-manifesto-accent">cadre</span> la livraison.<br>
+          Les arbitrages suivent le rythme défini au devis.
         </h3>
         <p class="sf-manifesto-copy">
           Une méthode courte pour passer d'un besoin flou à un périmètre signé,
@@ -789,8 +790,8 @@ export const bodyHtml = `${navHtml}
         </p>
         <div class="sf-proof-strip">
           <span><b>30 min</b> cadrage</span>
-          <span><b>48 h</b> fourchette &amp; plan</span>
-          <span><b>J+30</b> garantie</span>
+          <span><b>Après échange</b> fourchette &amp; plan</span>
+          <span><b>Au devis</b> jalons et conditions</span>
         </div>
       </div>
 
@@ -872,9 +873,9 @@ export const bodyHtml = `${navHtml}
           <div class="meth-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
         </div>
         <h4>On vous renvoie un chiffrage clair.</h4>
-        <p>Réponse argumentée sous <b>24 h ouvrées</b>, fourchette et plan sous <b>48 h</b> après l'échange. Devis ferme après le Discovery Sprint (1 500 € HT, déduit à 100 %).</p>
+        <p>Nous visons une réponse argumentée le <b>prochain jour ouvré</b>, sans délai garanti. Le calendrier de cadrage est annoncé après l'échange ; devis ferme après le Discovery Sprint (1 500 € HT, déduit à 100 %).</p>
         <div class="meth-foot">
-          <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>48 h</div>
+          <div class="meth-dur"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Après échange</div>
           <div class="meth-tag">Forfait fixe</div>
         </div>
       </div>
@@ -935,9 +936,9 @@ export const bodyHtml = `${navHtml}
       </div>
       <div class="right">
         Quatre produits du groupe, conçus et opérés par le studio : deux SaaS IA de
-        comptabilité immobilière, et deux sites à forte conversion dans la gestion
+        comptabilité immobilière, et deux sites métier dans la gestion
         de patrimoine. Ce sont nos preuves principales aujourd'hui : des produits
-        réels, en production, avec des chiffres que l'on peut expliquer.
+        réels, en production, dont on peut détailler les modules et les choix techniques.
         <a href="/realisations">Toutes les réalisations&nbsp;→</a>
       </div>
     </div>
@@ -955,11 +956,11 @@ export const bodyHtml = `${navHtml}
             <rect x="110" y="56" width="380" height="228" rx="14" fill="#121212" stroke="#262626"/>
             <circle cx="132" cy="82" r="4" fill="#ffffff"/>
             <text x="146" y="86" font-family="Geist Mono" font-size="11" fill="#D4D4D4" letter-spacing="1">LMNP.AI · RÉSULTAT</text>
-            <text x="132" y="130" font-family="Geist" font-weight="700" font-size="15" fill="#737373">Économie annuelle estimée</text>
-            <text x="132" y="180" font-family="Geist" font-weight="700" font-size="52" fill="#fff" letter-spacing="-2">4 128<tspan font-size="30" fill="#A3A3A3"> €</tspan></text>
+            <text x="132" y="130" font-family="Geist" font-weight="700" font-size="15" fill="#737373">Exemple de simulation</text>
+            <text x="132" y="180" font-family="Geist" font-weight="700" font-size="52" fill="#fff" letter-spacing="-2">—<tspan font-size="30" fill="#A3A3A3"> €</tspan></text>
             <rect x="132" y="200" width="336" height="1" fill="#262626"/>
             <text x="132" y="226" font-family="Geist Mono" font-size="10" fill="#737373" letter-spacing="1">RÉGIME RECOMMANDÉ</text>
-            <text x="132" y="248" font-family="Geist" font-weight="600" font-size="17" fill="#fff">LMNP au réel simplifié</text>
+            <text x="132" y="248" font-family="Geist" font-weight="600" font-size="17" fill="#fff">À confirmer selon le dossier</text>
             <rect x="132" y="260" width="336" height="10" rx="5" fill="#1f1f1f"/>
             <rect x="132" y="260" width="280" height="10" rx="5" fill="#ffffff"/>
           </svg>
@@ -974,11 +975,11 @@ export const bodyHtml = `${navHtml}
         </div>
         <div class="real-body">
           <div class="real-meta">LARAVEL 12 <span class="dot"></span> SaaS B2C</div>
-          <p>Logiciel de comptabilité LMNP/LMP en ligne. L'IA guide l'investisseur dans sa liasse fiscale, amortissements, transmission EDI. 163 guides fiscaux rédigés, 7,2 M impressions Google sur 12 mois, +61 % de marge nette grâce à l'automatisation.</p>
+          <p>Logiciel de comptabilité LMNP/LMP en ligne. Le parcours réunit la saisie, les amortissements, les liasses fiscales, la transmission EDI et une bibliothèque de guides.</p>
           <div class="real-metric">
-            <div class="rm"><div class="n">6<span class="s"> k+</span></div><div class="l">inscrits</div></div>
-            <div class="rm"><div class="n">156<span class="s"> k</span></div><div class="l">clics SEO · 12 mois</div></div>
-            <div class="rm"><div class="n">3,8<span class="s"> M€</span></div><div class="l">valo société · 2 SaaS</div></div>
+            <div class="rm"><div class="n">EDI</div><div class="l">télétransmission DGFiP</div></div>
+            <div class="rm"><div class="n">IA</div><div class="l">assistance en contexte</div></div>
+            <div class="rm"><div class="n">Guides</div><div class="l">aide fiscale</div></div>
           </div>
         </div>
       </a>
@@ -999,18 +1000,18 @@ export const bodyHtml = `${navHtml}
             <g font-family="Geist">
               <rect x="64" y="108" width="152" height="76" rx="10" fill="#EEF2FF"/>
               <text x="78" y="128" font-family="Geist Mono" font-size="9" fill="#6B7B96" letter-spacing="1">BÉNÉFICE NET</text>
-              <text x="78" y="158" font-weight="700" font-size="22" fill="#0A0A0A">12 840 €</text>
-              <text x="78" y="174" font-family="Geist Mono" font-size="9" fill="#4F46E5">+ IS 15 %</text>
+              <text x="78" y="158" font-weight="700" font-size="22" fill="#0A0A0A">— €</text>
+              <text x="78" y="174" font-family="Geist Mono" font-size="9" fill="#4F46E5">exemple simulé</text>
 
               <rect x="224" y="108" width="152" height="76" rx="10" fill="#EEF2FF"/>
               <text x="238" y="128" font-family="Geist Mono" font-size="9" fill="#6B7B96" letter-spacing="1">AMORT. ANNUEL</text>
-              <text x="238" y="158" font-weight="700" font-size="22" fill="#0A0A0A">8 920 €</text>
-              <text x="238" y="174" font-family="Geist Mono" font-size="9" fill="#4F46E5">6 composants</text>
+              <text x="238" y="158" font-weight="700" font-size="22" fill="#0A0A0A">— €</text>
+              <text x="238" y="174" font-family="Geist Mono" font-size="9" fill="#4F46E5">hypothèses à valider</text>
 
               <rect x="384" y="108" width="152" height="76" rx="10" fill="#4F46E5"/>
               <text x="398" y="128" font-family="Geist Mono" font-size="9" fill="#C7D2FE" letter-spacing="1">ASSOCIÉS</text>
-              <text x="398" y="158" font-weight="700" font-size="22" fill="#fff">3</text>
-              <text x="398" y="174" font-family="Geist Mono" font-size="9" fill="#C7D2FE">parts à jour</text>
+              <text x="398" y="158" font-weight="700" font-size="22" fill="#fff">Dossier</text>
+              <text x="398" y="174" font-family="Geist Mono" font-size="9" fill="#C7D2FE">parts à contrôler</text>
             </g>
             <!-- Bottom row -->
             <rect x="64" y="200" width="472" height="80" rx="10" fill="#EEF2FF"/>
@@ -1018,7 +1019,7 @@ export const bodyHtml = `${navHtml}
             <text x="80" y="240" font-family="Geist Mono" font-size="10" fill="#6B7B96">DGFiP · accusé de réception reçu</text>
             <rect x="80" y="252" width="280" height="8" rx="4" fill="#E0E7FF"/>
             <rect x="80" y="252" width="280" height="8" rx="4" fill="#4F46E5"/>
-            <text x="522" y="244" text-anchor="end" font-family="Geist Mono" font-weight="600" font-size="14" fill="#4F46E5">✓ Validée</text>
+            <text x="522" y="244" text-anchor="end" font-family="Geist Mono" font-weight="600" font-size="14" fill="#4F46E5">À vérifier</text>
           </svg>
         </div>
         <div class="real-head">
@@ -1031,11 +1032,11 @@ export const bodyHtml = `${navHtml}
         </div>
         <div class="real-body">
           <div class="real-meta">LARAVEL 12 <span class="dot"></span> EDI DGFiP <span class="dot"></span> LIVRÉ AVRIL 2026</div>
-          <p>Logiciel de comptabilité SCI (IR et IS). Liasses 2033, 2065, 2072 générées et télétransmises. Gestion des associés, parts, comptes courants, démembrement et amortissements par composants.</p>
+          <p>Logiciel de comptabilité SCI (IR et IS). Déclaration 2072 pour les SCI non soumises à l'IS ; déclaration 2065 et tableaux 2033 au réel simplifié pour les SCI à l'IS. Gestion des associés, parts, comptes courants et amortissements.</p>
           <div class="real-metric">
-            <div class="rm"><div class="n">2</div><div class="l">régimes (IR/IS)</div></div>
-            <div class="rm"><div class="n">3,8<span class="s"> M€</span></div><div class="l">valo société · 2 SaaS</div></div>
-            <div class="rm"><div class="n">229<span class="s"> €</span></div><div class="l">/an autonomie</div></div>
+            <div class="rm"><div class="n">IR</div><div class="l">déclaration 2072</div></div>
+            <div class="rm"><div class="n">IS</div><div class="l">déclaration 2065</div></div>
+            <div class="rm"><div class="n">2033</div><div class="l">réel simplifié IS</div></div>
           </div>
         </div>
       </a>
@@ -1053,13 +1054,13 @@ export const bodyHtml = `${navHtml}
             <text x="60" y="208" font-family="Geist" font-weight="300" font-size="42" fill="#fff" letter-spacing="-1">ensemble.</text>
             <line x1="60" y1="232" x2="200" y2="232" stroke="#C9A96E" stroke-width="1"/>
             <text x="60" y="256" font-family="Geist Mono" font-size="10" fill="#9e9e9e" letter-spacing="1">CABINET DE GESTION · CHAMBÉRY</text>
-            <!-- Right side metric -->
+            <!-- Right side: stable capabilities, not commercial metrics -->
             <rect x="420" y="60" width="140" height="220" rx="2" fill="none" stroke="#C9A96E" stroke-width="1" opacity="0.3"/>
-            <text x="490" y="110" text-anchor="middle" font-family="Geist Mono" font-size="9" fill="#C9A96E" letter-spacing="1.5">SOUS GESTION</text>
-            <text x="490" y="170" text-anchor="middle" font-family="Geist" font-weight="300" font-size="44" fill="#fff" letter-spacing="-2">18 M€</text>
+            <text x="490" y="110" text-anchor="middle" font-family="Geist Mono" font-size="9" fill="#C9A96E" letter-spacing="1.5">SITE + CRM</text>
+            <text x="490" y="170" text-anchor="middle" font-family="Geist" font-weight="300" font-size="30" fill="#fff" letter-spacing="-1">Sur mesure</text>
             <line x1="450" y1="190" x2="530" y2="190" stroke="#C9A96E" opacity="0.5"/>
-            <text x="490" y="216" text-anchor="middle" font-family="Geist Mono" font-size="9" fill="#9e9e9e" letter-spacing="1">CIF · ORIAS</text>
-            <text x="490" y="236" text-anchor="middle" font-family="Geist" font-weight="400" font-size="11" fill="#fff">284 clients</text>
+            <text x="490" y="216" text-anchor="middle" font-family="Geist Mono" font-size="9" fill="#9e9e9e" letter-spacing="1">CONTENUS</text>
+            <text x="490" y="236" text-anchor="middle" font-family="Geist" font-weight="400" font-size="11" fill="#fff">Outils · rendez-vous</text>
           </svg>
         </div>
         <div class="real-head">
@@ -1074,9 +1075,9 @@ export const bodyHtml = `${navHtml}
           <div class="real-meta">NEXT.JS <span class="dot"></span> SEO + ADS <span class="dot"></span> Site vitrine</div>
           <p>Refonte complète du cabinet de gestion de patrimoine : site vitrine premium, prise de RDV, tunnel de qualification, stratégie SEO longue traîne et campagnes Google Ads sur les requêtes patrimoniales.</p>
           <div class="real-metric">
-            <div class="rm"><div class="n">1,46<span class="s"> M</span></div><div class="l">impressions · 12 mois</div></div>
-            <div class="rm"><div class="n">26<span class="s"> k+</span></div><div class="l">clics SEO · 12 mois</div></div>
-            <div class="rm"><div class="n">×12</div><div class="l">trafic SEO · 12 mois</div></div>
+            <div class="rm"><div class="n">Site</div><div class="l">architecture éditoriale</div></div>
+            <div class="rm"><div class="n">CRM</div><div class="l">back-office interne</div></div>
+            <div class="rm"><div class="n">RDV</div><div class="l">parcours qualifié</div></div>
           </div>
         </div>
       </a>
@@ -1095,27 +1096,27 @@ export const bodyHtml = `${navHtml}
             <!-- Hero -->
             <rect x="40" y="40" width="330" height="260" rx="14" fill="url(#hiNavy)"/>
             <text x="62" y="70" font-family="Geist Mono" font-size="10" fill="#94A3B8" letter-spacing="1.5">◆ HAGNÉRÉ INVESTISSEMENT</text>
-            <text x="62" y="128" font-family="Geist" font-weight="700" font-size="28" fill="#fff" letter-spacing="-1">Investir dans</text>
-            <text x="62" y="160" font-family="Geist" font-weight="700" font-size="28" fill="#fff" letter-spacing="-1">l'immobilier rentable,</text>
-            <text x="62" y="192" font-family="Geist" font-weight="700" font-size="28" fill="#94A3B8" letter-spacing="-1">100% clé-en-main.</text>
+            <text x="62" y="128" font-family="Geist" font-weight="700" font-size="28" fill="#fff" letter-spacing="-1">Préparer un projet</text>
+            <text x="62" y="160" font-family="Geist" font-weight="700" font-size="28" fill="#fff" letter-spacing="-1">immobilier,</text>
+            <text x="62" y="192" font-family="Geist" font-weight="700" font-size="28" fill="#94A3B8" letter-spacing="-1">étape par étape.</text>
             <rect x="62" y="232" width="170" height="42" rx="8" fill="#fff"/>
             <text x="147" y="258" text-anchor="middle" font-family="Geist" font-weight="600" font-size="13" fill="#0F172A">Prendre RDV →</text>
-            <!-- Right: rendement card -->
+            <!-- Right: interface examples without performance claims -->
             <rect x="390" y="40" width="170" height="125" rx="14" fill="#fff" stroke="#E2E8F0"/>
-            <text x="410" y="66" font-family="Geist Mono" font-size="9" fill="#64748B" letter-spacing="1">RENDEMENT BRUT MOYEN</text>
-            <text x="410" y="108" font-family="Geist" font-weight="700" font-size="34" fill="#0F172A" letter-spacing="-1">9,07 %</text>
-            <text x="410" y="128" font-family="Geist Mono" font-size="9" fill="#64748B">sur leurs projets réalisés</text>
+            <text x="410" y="66" font-family="Geist Mono" font-size="9" fill="#64748B" letter-spacing="1">SIMULATION</text>
+            <text x="410" y="108" font-family="Geist" font-weight="700" font-size="25" fill="#0F172A" letter-spacing="-1">Hypothèses</text>
+            <text x="410" y="128" font-family="Geist Mono" font-size="9" fill="#64748B">à confirmer au rendez-vous</text>
             <rect x="410" y="138" width="130" height="4" rx="2" fill="#E2E8F0"/>
             <rect x="410" y="138" width="116" height="4" rx="2" fill="#0F172A"/>
             <!-- Right card 2 -->
             <rect x="390" y="175" width="170" height="125" rx="14" fill="#fff" stroke="#E2E8F0"/>
-            <text x="410" y="200" font-family="Geist Mono" font-size="9" fill="#64748B" letter-spacing="1">LOGEMENTS RÉNOVÉS</text>
-            <text x="410" y="242" font-family="Geist" font-weight="700" font-size="34" fill="#0F172A" letter-spacing="-1">144</text>
-            <text x="410" y="262" font-family="Geist Mono" font-size="9" fill="#64748B">en 3 ans</text>
+            <text x="410" y="200" font-family="Geist Mono" font-size="9" fill="#64748B" letter-spacing="1">PARCOURS</text>
+            <text x="410" y="242" font-family="Geist" font-weight="700" font-size="25" fill="#0F172A" letter-spacing="-1">Qualification</text>
+            <text x="410" y="262" font-family="Geist Mono" font-size="9" fill="#64748B">données de démonstration</text>
             <circle cx="420" cy="282" r="6" fill="#0F172A"/>
             <circle cx="432" cy="282" r="6" fill="#0F172A" opacity="0.7"/>
             <circle cx="444" cy="282" r="6" fill="#0F172A" opacity="0.4"/>
-            <text x="460" y="286" font-family="Geist Mono" font-size="9" fill="#64748B">+ chaque mois</text>
+            <text x="460" y="286" font-family="Geist Mono" font-size="9" fill="#64748B">puis prise de RDV</text>
           </svg>
         </div>
         <div class="real-head">
@@ -1130,9 +1131,9 @@ export const bodyHtml = `${navHtml}
           <div class="real-meta">NEXT.JS <span class="dot"></span> SEO + ADS <span class="dot"></span> Site vitrine</div>
           <p>Site marque du cabinet d'investissement immobilier clé en main. Funnel de qualification de prospects investisseurs, simulateur de rendement, prise de RDV, contenus YouTube intégrés.</p>
           <div class="real-metric">
-            <div class="rm"><div class="n">144</div><div class="l">logements rénovés</div></div>
-            <div class="rm"><div class="n">9,07<span class="s"> %</span></div><div class="l">rendement brut moyen</div></div>
-            <div class="rm"><div class="n">×2,5</div><div class="l">leads qualifiés</div></div>
+            <div class="rm"><div class="n">Simu</div><div class="l">hypothèses projet</div></div>
+            <div class="rm"><div class="n">Funnel</div><div class="l">qualification</div></div>
+            <div class="rm"><div class="n">Vidéo</div><div class="l">contenus reliés</div></div>
           </div>
         </div>
       </a>
@@ -1145,31 +1146,31 @@ export const bodyHtml = `${navHtml}
   <div class="stats-bg"></div>
   <div class="wrap inner">
     <div class="stats-head reveal">
-      <div class="eyebrow on-dark">— En chiffres</div>
-      <h2 style="margin-top:14px">Nos propres produits,<br>nos propres chiffres.</h2>
-      <p>On ne gonfle pas les chiffres. Tous ceux ci-dessous sont issus directement des 4 réalisations présentées plus haut — Google Search Console à l'appui, vérifiables en un clic.</p>
+      <div class="eyebrow on-dark">— Périmètre documenté</div>
+      <h2 style="margin-top:14px">Quatre produits,<br>quatre études détaillées.</h2>
+      <p>Nous publions les modules, parcours et choix techniques observables. Un résultat commercial n'est affiché que s'il est accompagné d'un périmètre, d'une période et d'une source contrôlable.</p>
     </div>
 
     <div class="stats-grid">
       <div class="stat reveal">
         <div class="k">PROJETS EN PROD</div>
         <div class="n">4</div>
-        <div class="l">2 SaaS IA vivants + 2 sites vitrines à conversion, tous livrés en forfait fixe.</div>
+        <div class="l">Deux SaaS fiscaux et deux sites métier présentés dans les études de cas.</div>
       </div>
       <div class="stat reveal reveal-d-1">
-        <div class="k">IMPRESSIONS GOOGLE · 12 MOIS</div>
-        <div class="n">8,76<span class="s"> M</span></div>
-        <div class="l">Cumulées sur LMNP.AI, Hagnéré Patrimoine et SCI-AI — position moyenne top 10.</div>
+        <div class="k">SAAS FISCAUX</div>
+        <div class="n">2</div>
+        <div class="l">Parcours guidés, déclarations, télétransmission et assistance en contexte.</div>
       </div>
       <div class="stat reveal reveal-d-2">
-        <div class="k">CLICS SEO · 12 MOIS</div>
-        <div class="n">183<span class="s"> k+</span></div>
-        <div class="l">Trafic organique cumulé sur les 3 sites. LMNP.AI seul : 156 k clics, ×2,6 vs l'an passé.</div>
+        <div class="k">SITES MÉTIER</div>
+        <div class="n">2</div>
+        <div class="l">Contenus, outils, qualification, rendez-vous et back-office reliés.</div>
       </div>
       <div class="stat reveal reveal-d-3">
-        <div class="k">VALORISATION GROUPE</div>
-        <div class="n">3,8<span class="s"> M€</span></div>
-        <div class="l">Cessions de parts + levée (LMNP.AI / SCI-AI), en moins de 3 ans.</div>
+        <div class="k">RÈGLE DE PUBLICATION</div>
+        <div class="n">Preuve</div>
+        <div class="l">Pas de volume, de délai ni de performance sans dossier de justification.</div>
       </div>
     </div>
   </div>
@@ -1181,7 +1182,7 @@ export const bodyHtml = `${navHtml}
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— L'équipe</div>
-        <h2>${TEAM_TOTAL_COUNT} personnes :<br>un gérant, un CTO et ${TEAM_OTHER_DEVELOPERS_COUNT} autres développeurs.</h2>
+        <h2>${TEAM_TOTAL_COUNT} personnes :<br>un président, un CTO et ${TEAM_OTHER_DEVELOPERS_COUNT} autres développeurs.</h2>
       </div>
       <div class="right">
         Pas de pool anonyme, pas de sous-traitance offshore, pas de white-label.
@@ -1197,14 +1198,14 @@ export const bodyHtml = `${navHtml}
         <div class="eq-founder-photo">
           <div class="eq-founder-tag">
             <span class="dot"></span>
-            ASSOCIÉ DIRIGEANT
+            PRÉSIDENT FONDATEUR
           </div>
-          <img src="/team/quentin.webp" alt="Quentin Hagnéré, gérant associé codeur de Hagnéré Code" loading="lazy" />
+          <img src="/team/quentin.webp" alt="Quentin Hagnéré, président fondateur codeur de Hagnéré Code" width="740" height="926" loading="lazy" decoding="async" />
         </div>
         <div class="eq-founder-body">
           <div>
             <div class="eq-founder-name">Quentin Hagnéré</div>
-            <span class="eq-founder-role">Gérant associé codeur · Brief / Design / Front-end / Back-office</span>
+            <span class="eq-founder-role">Président fondateur codeur · Brief / Design / Front-end / Back-office</span>
             <a class="eq-founder-li" href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Quentin Hagnéré"><svg class="eq-li-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> Voir le profil</a>
           </div>
           <div class="eq-founder-quote">
@@ -1336,11 +1337,11 @@ export const bodyHtml = `${navHtml}
         <div class="eq-stats reveal reveal-d-3">
           <div class="eqs">
             <div class="n">${TEAM_TOTAL_COUNT}</div>
-            <div class="l">personnes au total, gérant et CTO compris</div>
+            <div class="l">personnes au total, président et CTO compris</div>
           </div>
           <div class="eqs">
             <div class="n">${TEAM_OTHER_DEVELOPERS_COUNT}</div>
-            <div class="l">développeurs en plus du gérant et du CTO</div>
+            <div class="l">développeurs en plus du président et du CTO</div>
           </div>
           <div class="eqs">
             <div class="n">0</div>
@@ -1380,7 +1381,7 @@ export const bodyHtml = `${navHtml}
         Les fourchettes ci-dessous sont <b>indicatives sur des projets-types récurrents</b>
         (site vitrine, SaaS PME, partenariat tech). Votre projet — son périmètre, sa complexité, ses intégrations,
         son délai — sera <b>chiffré individuellement après cadrage</b>. Décrivez votre projet en 3 minutes :
-        nous vous répondons personnellement sous 24 h ouvrées ; pour un devis ferme, on commence par un Discovery Sprint.
+        nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti ; pour un devis ferme, on commence par un Discovery Sprint.
       </p>
       <a href="/demarrer-un-projet" class="price-context-cta">
         Décrire mon projet (3 min)
@@ -1391,7 +1392,7 @@ export const bodyHtml = `${navHtml}
     <div class="price-grid">
       <div class="plan plan-discovery reveal">
         <div class="plan-tag">LE POINT DE DÉPART</div>
-        <h4>Discovery Sprint</h4>
+        <h3>Discovery Sprint</h3>
         <div class="plan-sub">2 jours payés pour transformer votre idée en plan exécutable. Aucun engagement sur la phase 2.</div>
         <div class="plan-price">
           <span class="amount">1 500 €</span>
@@ -1410,7 +1411,7 @@ export const bodyHtml = `${navHtml}
 
       <div class="plan reveal">
         <div class="plan-tag">DÉMARRAGE</div>
-        <h4>Essentiel</h4>
+        <h3>Essentiel</h3>
         <div class="plan-sub">Un site vitrine ou une landing qui convertit. Idéal pour une première collaboration.</div>
         <div class="plan-price">
           <span class="amount">Sur devis</span>
@@ -1429,7 +1430,7 @@ export const bodyHtml = `${navHtml}
       <div class="plan featured reveal reveal-d-1">
         <div class="plan-badge">FORMULE INTERMÉDIAIRE</div>
         <div class="plan-tag">PROJET COMPLET</div>
-        <h4>Standard</h4>
+        <h3>Standard</h3>
         <div class="plan-sub">Un SaaS, un outil interne ou une marketplace. Le sweet spot des PME ambitieuses.</div>
         <div class="plan-price">
           <span class="amount">Sur devis</span>
@@ -1449,7 +1450,7 @@ export const bodyHtml = `${navHtml}
 
       <div class="plan reveal reveal-d-2">
         <div class="plan-tag">PARTENARIAT</div>
-        <h4>Partenariat</h4>
+        <h3>Partenariat</h3>
         <div class="plan-sub">On devient votre équipe tech externalisée. Plusieurs projets, forfait mensuel.</div>
         <div class="plan-price">
           <span class="amount">Sur mesure</span>
@@ -1459,8 +1460,8 @@ export const bodyHtml = `${navHtml}
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Équipe dédiée dimensionnée selon vos besoins</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Roadmap co-construite</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SLA : uptime 99,9 % · astreinte Lun–Ven 8h–20h</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Engagement 6 mois minimum</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Objectifs de service, niveaux de sévérité et plages de support définis au contrat</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Durée et conditions d'engagement précisées dans le devis</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Parlons-en</a></div>
       </div>
@@ -1479,7 +1480,7 @@ export const bodyHtml = `${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ</div>
         <h2 style="margin-top:14px">Les questions<br>qu'on nous pose<br>tout le temps.</h2>
-        <p>Manquante ? <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a> par email, on répond sous 24 h ouvrées.</p>
+        <p>Manquante ? <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a> par email, nous visons le prochain jour ouvré, sans délai garanti.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
@@ -1572,7 +1573,7 @@ export const bodyHtml = `${navHtml}
         Envoyer un email →
       </a>
     </div>
-    <div class="fcta-meta">RÉPONSE SOUS 24H OUVRÉES · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
+    <div class="fcta-meta">OBJECTIF : PROCHAIN JOUR OUVRÉ · DÉLAI NON GARANTI · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
   </div>
 </section>
 

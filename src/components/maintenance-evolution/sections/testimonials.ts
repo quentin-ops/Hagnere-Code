@@ -25,9 +25,8 @@ export const testimonialsHtml = `
         <div class="me-testi-name">LMNP.AI — comptabilité fiscale LMNP et LMP</div>
         <p class="me-testi-quote">
           Une application qui produit de vraies liasses fiscales, pour de vrais utilisateurs.
-          Montées de version, supervision, sauvegardes, reprise après incident : c'est nous, et
-          personne d'autre. <b>Quand quelque chose casse un dimanche soir de campagne fiscale,
-          c'est nous qui nous levons.</b>
+          Montées de version, supervision, sauvegardes et reprise après incident font partie de notre propre expérience d'exploitation.
+          <b>Les plages de surveillance, d'astreinte et d'intervention restent toutefois à définir pour chaque contrat client.</b>
         </p>
         <div class="me-testi-meta">
           <div>
@@ -68,7 +67,7 @@ export const testimonialsHtml = `
         <p class="me-testi-quote">
           Un site éditorial adossé au CRM d'un cabinet, et une plateforme d'investissement
           immobilier. Deux plateformes vivantes : contenus publiés, dépendances mises à jour,
-          factures d'infrastructure payées, évolutions livrées sans fenêtre d'arrêt.
+          factures d'infrastructure payées et évolutions livrées selon des protocoles de déploiement adaptés.
           <b>Nous ne vendons pas de la maintenance : nous en faisons d'abord pour nous.</b>
         </p>
         <div class="me-testi-meta">

@@ -259,6 +259,20 @@ a.sf-direct-v:hover { color: var(--accent); }
   white-space: nowrap;
 }
 
+.sf-captcha-pending {
+  min-height: 70px;
+  justify-content: center;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper-2);
+}
+.sf-captcha-pending small {
+  color: var(--mute);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 .sf-submit { margin-top: 4px; width: 100%; justify-content: center; }
 
 .sf-alert {

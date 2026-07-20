@@ -1,8 +1,12 @@
 "use client";
 
-import { useEffect, RefObject } from "react";
+import { useEffect, type RefObject } from "react";
 import { calculateEcommerceCostComparison } from "@/lib/ecommerce-cost-comparison";
-import { applyTheme, toggleThemeWithReveal } from "@/lib/theme-transition";
+import {
+  applySystemTheme,
+  applyTheme,
+  toggleThemeWithReveal,
+} from "@/lib/theme-transition";
 
 function makeSvg(paths: Array<{ d: string }>): SVGElement {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
@@ -76,20 +80,27 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       if (!q) return;
       q.setAttribute("role", "button");
       q.setAttribute("tabindex", "0");
-      q.setAttribute("aria-expanded", item.classList.contains("open") ? "true" : "false");
-      if (a) a.setAttribute("aria-hidden", item.classList.contains("open") ? "false" : "true");
+      const initiallyOpen = item.classList.contains("open");
+      q.setAttribute("aria-expanded", initiallyOpen ? "true" : "false");
+      if (a) {
+        a.setAttribute("aria-hidden", initiallyOpen ? "false" : "true");
+        a.toggleAttribute("inert", !initiallyOpen);
+      }
 
       const toggle = () => {
         const wasOpen = item.classList.contains("open");
         root.querySelectorAll(".faq-item").forEach((x) => {
           x.classList.remove("open");
           x.querySelector(".faq-q")?.setAttribute("aria-expanded", "false");
-          x.querySelector(".faq-a")?.setAttribute("aria-hidden", "true");
+          const answer = x.querySelector<HTMLElement>(".faq-a");
+          answer?.setAttribute("aria-hidden", "true");
+          answer?.setAttribute("inert", "");
         });
         if (!wasOpen) {
           item.classList.add("open");
           q.setAttribute("aria-expanded", "true");
           a?.setAttribute("aria-hidden", "false");
+          a?.removeAttribute("inert");
         }
       };
       const onKey = (e: KeyboardEvent) => {
@@ -107,9 +118,12 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
     });
 
     // Toggle thème clair/sombre (bouton injecté dans nav-html). Écrit la
-    // même clé localStorage que next-themes ("theme") et bascule la classe
-    // .dark sur <html> — les deux systèmes restent synchronisés.
-    root.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((btn) => {
+    // même clé localStorage que le script d'initialisation du layout
+    // ("theme") et bascule la classe .dark sur <html>.
+    const staticThemeButtons = root.querySelectorAll<HTMLButtonElement>(
+      "[data-theme-toggle]",
+    );
+    staticThemeButtons.forEach((btn) => {
       const onToggle = () => {
         const rect = btn.getBoundingClientRect();
         const dark = !document.documentElement.classList.contains("dark");
@@ -121,6 +135,27 @@ export function useDesignInteractive(rootRef: RefObject<HTMLElement | null>) {
       btn.addEventListener("click", onToggle);
       cleanups.push(() => btn.removeEventListener("click", onToggle));
     });
+
+    // Les pages dont la navigation provient de nav-html n'embarquent pas le
+    // composant ThemeToggle. Elles suivent tout de même un changement de thème
+    // système en direct tant qu'aucun choix explicite n'est enregistré.
+    if (staticThemeButtons.length > 0) {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+      const onSystemThemeChange = () => {
+        let storedTheme: string | null = null;
+        try {
+          storedTheme = window.localStorage.getItem("theme");
+        } catch {
+          /* stockage indisponible : le thème système reste la source */
+        }
+        if (storedTheme === "dark" || storedTheme === "light") return;
+        applySystemTheme(systemTheme.matches);
+      };
+      systemTheme.addEventListener("change", onSystemThemeChange);
+      cleanups.push(() =>
+        systemTheme.removeEventListener("change", onSystemThemeChange),
+      );
+    }
 
     const nav = root.querySelector<HTMLElement>(".nav");
     const navCta = root.querySelector<HTMLElement>(".nav-cta");

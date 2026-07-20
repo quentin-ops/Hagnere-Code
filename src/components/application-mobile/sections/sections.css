@@ -268,7 +268,7 @@
 }
 .mob-trust-strip-chips-note {
   font-size: 11px;
-  color: var(--mute);
+  color: #666;
   line-height: 1.55;
   margin-bottom: 4px;
   padding: 10px 12px;
@@ -538,7 +538,7 @@
   font-family: var(--font-geist-mono);
   font-size: 18px;
   font-weight: 700;
-  color: var(--line);
+  color: #737373;
   letter-spacing: -0.02em;
 }
 .mob-ownership-ic {
@@ -551,7 +551,7 @@
   place-items: center;
   margin-bottom: 16px;
 }
-.mob-ownership-card h4 {
+.mob-ownership-card h3 {
   font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.015em;
@@ -722,7 +722,7 @@
 }
 .mob-compar-cell-sub {
   font-size: 11.5px;
-  color: var(--mute);
+  color: #666;
   margin-top: 2px;
   font-family: var(--font-geist-mono);
   font-weight: 400;
@@ -799,7 +799,7 @@
   color: #C4B5FD;
   border-color: rgba(124, 58, 237, 0.25);
 }
-.mob-refuse-card h4 {
+.mob-refuse-card h3 {
   font-size: 15px;
   font-weight: 600;
   color: #fff;
@@ -866,7 +866,7 @@
   place-items: center;
   margin-bottom: 18px;
 }
-.mob-trust-card h4 {
+.mob-trust-card h3 {
   font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.015em;
@@ -905,7 +905,7 @@
   border-radius: 14px;
   padding: 26px 28px;
 }
-.mob-tech-faq-item h4 {
+.mob-tech-faq-item h3 {
   font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.015em;

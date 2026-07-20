@@ -93,8 +93,8 @@ export const testimonialsHtml = `
       </div>
       <div class="oi-testim-bar-sep"></div>
       <div class="oi-testim-bar-stat">
-        <div class="oi-testim-bar-v">24<span class="oi-testim-bar-v-s">h</span></div>
-        <div class="oi-testim-bar-k">pour une réponse écrite<br>de Quentin Hagnéré (jours ouvrés)</div>
+        <div class="oi-testim-bar-v">J+1<span class="oi-testim-bar-v-s"> visé</span></div>
+        <div class="oi-testim-bar-k">objectif de réponse le prochain jour ouvré<br>sans délai garanti</div>
       </div>
     </div>
   </div>

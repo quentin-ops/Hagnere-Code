@@ -103,7 +103,9 @@ export default function OgImage() {
                   fontSize: 18,
                 }}
               >
-                <div style={{ display: "flex", width: 24, color: "#a78bfa" }}>✓</div>
+                <div style={{ display: "flex", width: 24 }}>
+                  <div style={{ width: 8, height: 8, borderRadius: 999, background: "#a78bfa" }} />
+                </div>
                 {label}
               </div>
             ))}

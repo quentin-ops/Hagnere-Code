@@ -13,6 +13,6 @@ export const teamHtml = buildServiceTeamHtml({
     Tous formés à utiliser Claude Code comme copilote senior : recherches, architecture,
     plans d'implémentation, revues. <b>On pose moins de questions, on avance plus vite,
     on livre plus proprement.</b>`,
-  founderRoleTitle: "Gérant associé codeur · Vision produit & cadrage",
+  founderRoleTitle: "Président fondateur codeur · Vision produit & cadrage",
   founderDomains: "Patrimoine · Immobilier · site B2B",
 });

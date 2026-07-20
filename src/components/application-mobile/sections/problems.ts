@@ -4,12 +4,12 @@ export const problemsHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Vous êtes probablement ici</div>
-        <h2>Six situations qu'on entend<br>chaque semaine en call.</h2>
+        <div class="eyebrow">— Situations-types fictives</div>
+        <h2>Six exemples pour cadrer<br>le besoin réel.</h2>
       </div>
       <div class="right">
-        Aucune n'est une fatalité. Toutes se règlent. Mais plus on attend, plus la concurrence prend
-        de l'avance pendant que vos clients regardent ailleurs leur téléphone.
+        Ces exemples sont fictifs et ne décrivent ni un client ni une fréquence observée.
+        Ils servent à identifier les hypothèses à vérifier avant tout chiffrage.
       </div>
     </div>
 
@@ -33,11 +33,10 @@ export const problemsHtml = `
         </div>
         <h3>« Les agences me proposent des devis disproportionnés pour un MVP »</h3>
         <p>
-          Vous avez consulté 3 agences, on vous parle TJM ouvert, « complexité incertaine »,
-          et personne ne s'engage sur un prix. Vous avez besoin d'un MVP en 12 semaines, pas
-          d'un cahier des charges de 60 pages avant de signer.
+          Plusieurs offres peuvent reposer sur des hypothèses différentes de périmètre, d'équipe et de recette.
+          Vous avez besoin d'un MVP priorisé et d'un planning réaliste, pas d'un calendrier présenté comme certain avant cadrage.
         </p>
-        <div class="mob-problem-foot">Ce qu'on propose : <b>discovery payant puis devis forfaitaire ferme en 48 h</b>.</div>
+        <div class="mob-problem-foot">Ce qu'on propose : <b>discovery payant puis devis forfaitaire selon le délai annoncé au cadrage</b>.</div>
       </div>
 
       <div class="mob-problem-card reveal reveal-d-2">
@@ -72,9 +71,8 @@ export const problemsHtml = `
         </div>
         <h3>« J'ai une idée d'app mobile, pas de CTO, pas le temps de recruter »</h3>
         <p>
-          Le marché existe, vos premiers clients aussi, vous avez peut-être même 2-3 LOIs.
-          Recruter un CTO mobile, c'est 6 à 9 mois de recherche et un coût annuel chargé conséquent.
-          Vous voulez prouver le concept d'abord, sans dilution. Un MVP propre en 12 semaines vaut mieux qu'un CTO « futur ».
+          Vous avez identifié un besoin et peut-être obtenu de premiers signaux, sans disposer encore d'une équipe mobile interne.
+          Vous voulez tester le concept avant de structurer durablement l'équipe. Le MVP, son niveau de finition et son calendrier se définissent après validation des hypothèses.
         </p>
         <div class="mob-problem-foot">Ce qu'on propose : <b>build + transfert</b> — ou co-build si vous recrutez ensuite.</div>
       </div>
@@ -85,9 +83,9 @@ export const problemsHtml = `
         </div>
         <h3>« Mes équipes terrain perdent 1 h / jour à recopier des Excels »</h3>
         <p>
-          Commerciaux, livreurs, techniciens, agents de service : ils prennent les commandes / relevés
-          sur papier ou Excel, puis vous les ressaisissez. Vous savez qu'une app mobile métier
-          ferait gagner 5-10 h / semaine / personne, mais vous craignez le projet qui dérape.
+          Commerciaux, livreurs, techniciens ou agents de service prennent encore des commandes et relevés
+          sur papier ou Excel, puis les ressaisissent. Le temps réellement évitable doit être observé avant de chiffrer
+          le gain attendu d'une app métier.
         </p>
         <div class="mob-problem-foot">Ce qu'on construit : <b>app B2B terrain offline-first</b> branchée à votre ERP.</div>
       </div>

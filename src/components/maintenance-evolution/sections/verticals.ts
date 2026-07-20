@@ -22,7 +22,7 @@ export const verticalsHtml = `
           <span class="me-vt-tag me-vt-tag-live">● Cœur de cible</span>
         </div>
         <h3>SaaS B2B mature</h3>
-        <p>App en prod depuis 2-6 ans, 1 000-50 000 MAU, facturation récurrente Stripe, multi-tenant. <b>Notre sweet spot</b>&nbsp;: évolutions continues + sécurité + scaling modéré, sans dramatique.</p>
+        <p>Application multi-tenant en production avec facturation récurrente et besoin d'évolutions continues. Le diagnostic vérifie la charge, la sécurité, les dépendances et la capacité réellement nécessaire.</p>
         <div class="me-vt-feats">
           <span>Multi-tenant</span>
           <span>Billing Stripe</span>
@@ -67,7 +67,7 @@ export const verticalsHtml = `
           <span class="me-vt-tag">● Courant</span>
         </div>
         <h3>Outils internes &amp; apps métier</h3>
-        <p>Back-office B2B, CRM maison, ERP custom, app de gestion interne. Utilisateurs&nbsp;: vos 20-300 salariés. Peu de sécurité publique, beaucoup de règles métier. <b>Évolutions dictées par l'opérationnel terrain</b>.</p>
+        <p>Back-office B2B, CRM maison, ERP custom ou application de gestion interne. Les règles métier, les habilitations, les intégrations et la criticité opérationnelle déterminent le dispositif.</p>
         <div class="me-vt-feats">
           <span>Règles métier</span>
           <span>Back-office</span>
@@ -96,8 +96,8 @@ export const verticalsHtml = `
           <div class="me-vt-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 4 4 4-6"/></svg></div>
           <span class="me-vt-tag me-vt-tag-hot">● Remédiation</span>
         </div>
-        <h3>Legacy à faire vivre 3-5 ans</h3>
-        <p>App 6-10 ans, devs partis, stack vieillie (Laravel 7, Symfony 4, PHP 7.4). Vous avez besoin d'un <b>plan de remédiation progressive</b> avant refonte complète&nbsp;: patchs, refactos ciblés, modernisation incrementale.</p>
+        <h3>Legacy à maintenir avant refonte</h3>
+        <p>Stack vieillissante, versions parfois non supportées et équipe historique partie. Un <b>plan de remédiation progressive</b> peut préparer la refonte&nbsp;: correctifs, refactorisations ciblées et modernisation incrémentale.</p>
         <div class="me-vt-feats">
           <span>Plan remédiation</span>
           <span>Refactos ciblés</span>

@@ -21,9 +21,9 @@
   --paper-rgb:255,255,255;
   --blue:#2563EB;
   --blue-soft:#EFF6FF;
-  --green:#059669;
+  --green:#047857;
   --green-soft:#ECFDF5;
-  --amber:#D97706;
+  --amber:#B45309;
   --amber-soft:#FFFBEB;
   --red:#DC2626;
   --red-soft:#FEF2F2;
@@ -708,9 +708,12 @@ html.dark {
 }
 
 .compose-copy .eyebrow,
-.services-proof .eyebrow,
-.services-final .eyebrow {
+.services-proof .eyebrow {
   color: #a78bfa;
+}
+
+.services-final .eyebrow {
+  color: var(--accent-ink);
 }
 
 .compose-copy h2,

@@ -196,7 +196,7 @@
   text-transform: uppercase;
   margin-bottom: 4px;
 }
-.oi-integ-head h4 {
+.oi-integ-head h3 {
   font-size: 17px;
   letter-spacing: -0.015em;
 }
@@ -420,7 +420,7 @@
   letter-spacing: 0.08em;
   color: var(--mute);
 }
-.oi-scen-tab.is-active .oi-scen-tab-k { color: var(--accent); }
+.oi-scen-tab.is-active .oi-scen-tab-k { color: #A78BFA; }
 .oi-scen-tab-t {
   font-size: 18px;
   font-weight: 600;
@@ -469,7 +469,7 @@
   max-width: 540px;
 }
 .oi-scen-deliv { margin-top: 28px; }
-.oi-scen-deliv h4 {
+.oi-scen-deliv h3 {
   font-size: 13px;
   color: var(--ink);
   margin-bottom: 12px;
@@ -633,7 +633,7 @@
   color: #fff;
   margin-top: 14px;
 }
-.oi-refuse-intro .eyebrow { color: var(--accent); }
+.oi-refuse-intro .eyebrow { color: #A78BFA; }
 .oi-refuse-intro p {
   color: rgba(255,255,255,0.65);
   font-size: 16px;
@@ -683,7 +683,7 @@
   flex-shrink: 0;
   margin-top: 2px;
 }
-.oi-refuse-list h4 {
+.oi-refuse-list h3 {
   color: #fff;
   font-size: 15px;
   margin-bottom: 4px;
@@ -743,7 +743,7 @@
   display: grid;
   place-items: center;
 }
-.oi-trust-card h4 {
+.oi-trust-card h3 {
   font-size: 16px;
   letter-spacing: -0.015em;
 }

@@ -714,10 +714,9 @@ notoriété de l'entreprise.
   de fraîcheur.
 - `Article` et `BreadcrumbList` suivent la convention du site et reflètent
   exactement le contenu visible.
-- `FAQPage` est conditionnel : uniquement pour une FAQ visible et avec un
-  miroir exact. Google ne montre plus régulièrement les résultats enrichis
-  FAQ aux sites hors santé/gouvernement ; ce balisage n'est donc ni un CTA
-  ni un levier de classement garanti.
+- La FAQ reste visible, utile et accessible lorsqu'elle apporte une vraie
+  réponse. Aucun schéma `FAQPage` n'est publié : Google a retiré ce résultat
+  enrichi le 7 mai 2026 puis sa documentation le 15 juin 2026.
 - Ne jamais coder un `wordCount` approximatif. Le calculer depuis le texte
   final ou omettre la propriété.
 - L'auteur visible et le balisage renvoient vers une page qui explique son
@@ -739,7 +738,7 @@ Références officielles à relire lors d'une évolution majeure :
 - [guide de démarrage SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=fr) ;
 - [bonnes pratiques des liens](https://developers.google.com/search/docs/crawling-indexing/links-crawlable?hl=fr) ;
 - [données structurées Article](https://developers.google.com/search/docs/appearance/structured-data/article?hl=fr) ;
-- [évolution des résultats enrichis FAQ](https://developers.google.com/search/blog/2023/08/howto-faq-changes?hl=fr) ;
+- [journal des mises à jour Google Search](https://developers.google.com/search/updates) ;
 - [expérience de page](https://developers.google.com/search/docs/appearance/page-experience?hl=fr) ;
 - [règles anti-spam](https://developers.google.com/search/docs/essentials/spam-policies?hl=fr).
 
@@ -820,10 +819,16 @@ humaine » : l'agent le signale au lieu d'inventer un panel ou une validation.
 | Faits vérifiés          | Fiche de preuves réconciliée, rédaction encore révisable                    |
 | Prêt pour contre-audit  | Brouillon complet soumis à une revue indépendante                           |
 | Prêt techniquement      | Score et batterie locale passés, hors validation humaine                    |
-| Prêt pour revue humaine | Aucun blocage connu, agrément humain restant                                |
-| Publiable               | Seuil, contre-audit, test humain et contrôles locaux passés                 |
+| Prêt pour revue humaine | Aucun blocage connu, validation éditoriale restant à acquérir                |
+| Publiable               | Seuil, contre-audit, validation éditoriale et contrôles locaux passés       |
 | Publié                  | URL de production vérifiée ; cela ne signifie pas indexée                   |
 | Indexé                  | État confirmé pour l'URL, distinct du sitemap et de la demande d'indexation |
+
+La validation éditoriale est acquise soit par un test lecteur humain suivi des
+corrections, soit par une instruction explicite du commanditaire qui délègue la
+décision de publication à un contre-audit indépendant. Cette délégation ne
+réduit aucun seuil : le score doit passer, les axes obligatoires restent à 2 et
+aucun blocage factuel, éditorial, commercial ou technique ne peut subsister.
 
 ---
 
@@ -837,8 +842,8 @@ humaine » : l'agent le signale au lieu d'inventer un panel ou une validation.
 - FAQ visible dans le DOM si elle existe ;
 - liens internes et externes valides ;
 - sitemap et hub à jour ;
-- si la FAQ est absente : tableau vide, aucune section vide et aucun JSON-LD
-  `FAQPage` ;
+- si la FAQ est absente : tableau vide et aucune section vide ; dans tous les
+  cas, aucun JSON-LD `FAQPage` ;
 - image `opengraph-image.tsx` dédiée selon la convention du projet, puis
   vérification de son URL et de la balise sociale rendue ;
 - le temps de lecture utilise la convention interne : mots visibles du corps,

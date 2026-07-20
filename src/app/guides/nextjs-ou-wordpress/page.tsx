@@ -32,17 +32,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -166,27 +155,16 @@ const faqItems = [
   {
     question: "Quel budget pour quitter WordPress sans perdre son référencement ?",
     answer:
-      "Une migration vers un site sur mesure se chiffre comme une refonte : 60 à 80 % du prix d'une création équivalente, plus la migration des contenus et surtout le plan de redirections 301 page à page (chaque ancienne adresse renvoie automatiquement visiteurs et Google vers la nouvelle) — c'est lui qui préserve vos positions Google. Pour un site vitrine : 6 900 à 22 000 € selon l'ampleur chez Hagnéré Code, redirections et suivi SEO post-migration inclus. Exigez ce plan dans tout devis : votre trafic acquis vaut plus que le site.",
+      "Une migration vers un site sur mesure se chiffre comme une refonte : 60 à 80 % du prix d'une création équivalente, plus la migration des contenus et surtout le plan de redirections 301 page à page (chaque ancienne adresse renvoie automatiquement visiteurs et moteurs vers la nouvelle). Ce plan réduit les risques techniques de migration, sans garantir le maintien des positions. Pour un site vitrine : 6 900 à 22 000 € selon l'ampleur chez Hagnéré Code, redirections et suivi SEO post-migration inclus. Exigez ce plan dans tout devis : votre trafic acquis mérite une migration contrôlée.",
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -743,8 +721,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Vous hésitez pour votre propre site ?"
-          description="Décrivez votre projet en 3 minutes : nous vous disons honnêtement si WordPress suffit — ou ce que du sur-mesure changerait, chiffres à l'appui. Réponse personnelle sous 24 h ouvrées."
-          tags={["Réponse sous 24 h ouvrées", "Conseil honnête", "Sans engagement"]}
+          description="Décrivez votre projet en 3 minutes : nous vous disons honnêtement si WordPress suffit — ou ce que du sur-mesure changerait, chiffres à l'appui. Objectif de réponse personnelle le prochain jour ouvré."
+          tags={["Objectif : prochain jour ouvré", "Conseil honnête", "Sans engagement"]}
         />
 
         <h2 id="contenu">10. « Et pour publier mon contenu ? » — l&apos;autonomie honnête</h2>
@@ -984,7 +962,7 @@ export default function Page() {
           cahier des charges</Link> est libre de copie — et comparez en coût
           sur 3 ans. Si vous voulez notre avis sur votre cas précis,{" "}
           <Link href="/demarrer-un-projet">décrivez votre projet en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées, gratuite,
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré, gratuite,
           et nous vous dirons si WordPress suffit. Pour chiffrer les deux
           scénarios, nos guides du{" "}
           <Link href="/guides/combien-coute-un-site-internet">prix

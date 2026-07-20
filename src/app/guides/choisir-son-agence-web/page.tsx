@@ -33,17 +33,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -176,23 +165,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -570,7 +548,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Vous voulez nous appliquer cette méthode ?"
-          description="Testez hagnere-code.ai sur PageSpeed Insights, cherchez notre SIREN sur Pappers, ouvrez le code source de nos réalisations. Puis décrivez-nous votre projet en 3 minutes : réponse personnelle sous 24 h ouvrées, sans engagement."
+          description="Testez hagnere-code.ai sur PageSpeed Insights, cherchez notre SIREN sur Pappers, ouvrez le code source de nos réalisations. Puis décrivez-nous votre projet en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, sans engagement."
         />
 
         <h2 id="appeler-clients">7. Appeler deux clients : les 5 questions</h2>
@@ -1072,7 +1050,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Prêt à mettre un prestataire à l'épreuve ?"
-          description="Commencez par nous. Décrivez votre projet en 3 minutes : nous répondons personnellement sous 24 h ouvrées, gratuitement et sans engagement — y compris quand notre réponse est qu'une solution plus simple suffirait à votre besoin."
+          description="Commencez par nous. Décrivez votre projet en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, gratuitement et sans engagement — y compris quand notre réponse est qu'une solution plus simple suffirait à votre besoin."
         />
 
         <InfoBox variant="emerald" title="À retenir : les 6 réflexes avant de signer">

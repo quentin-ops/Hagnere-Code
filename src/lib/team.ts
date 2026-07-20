@@ -35,7 +35,7 @@ export interface TeamMember {
   /** Spécialité technique (1 phrase, pour les pages services). */
   specialty?: string;
   status: TeamStatus;
-  /** Label affiché dans les badges (ex : "Associé dirigeant", "CDI", "Freelance long-terme"). */
+  /** Label affiché dans les badges (ex : "Président fondateur", "CDI", "Freelance long-terme"). */
   statusLabel: string;
   basedAt: string;
   yearsExp: string;
@@ -66,12 +66,12 @@ export const TEAM = {
     lastName: "Hagnéré",
     fullName: "Quentin Hagnéré",
     initials: "QH",
-    role: "Gérant associé codeur",
+    role: "Président fondateur codeur",
     roleDetail: "Brief / Design / Front-end / Back-office",
-    bio: "Interlocuteur principal du brief à la livraison. Vient du terrain métier (3 entreprises fondées, 2 cabinets actifs), pas du conseil — c'est ce qui fait la différence sur les premiers cadrages.",
-    specialty: "Brief client, cadrage, design produit, intégration front, suivi client de A à Z.",
+    bio: "Président de Hagnéré Code et interlocuteur de cadrage. Son rôle effectif sur chaque mission — pilotage, design, front-end ou back-office — est précisé dans le devis.",
+    specialty: "Cadrage, design produit, intégration front et pilotage selon le périmètre signé.",
     status: "gerant",
-    statusLabel: "Associé dirigeant",
+    statusLabel: "Président fondateur",
     basedAt: STUDIO_LOCATION,
     yearsExp: "10+",
     photo: "/team/quentin.webp",
@@ -79,7 +79,7 @@ export const TEAM = {
     avatarGradient: ["#6D28D9", "#A78BFA"],
     linkedin: "https://www.linkedin.com/in/quentin-hagnere",
     stack: ["DESIGN", "REACT", "NEXT.JS", "FIGMA"],
-    quote: "Je viens du terrain. Je sais ce qu'un métier attend vraiment d'un outil, pas ce qu'un brief en parle. C'est ça que j'apporte à chaque projet.",
+    quote: "Mon rôle est de transformer le besoin métier en décisions vérifiables, puis de faire écrire les responsabilités et les critères de recette.",
     domains: "Patrimoine · Immobilier · SaaS B2B",
   },
   nicolas: {
@@ -90,8 +90,8 @@ export const TEAM = {
     initials: "NW",
     role: "CTO",
     roleDetail: "Direction technique · Architecture · Code review",
-    bio: "Vision architecture, management transverse, cadrage des projets complexes et revue de code senior. Compliance SOC2 / ISO 27001 sur les audits.",
-    specialty: "Architecture, choix de stack, jalons techniques, revue de code, compliance.",
+    bio: "Intervient sur l'architecture, les choix de stack, les jalons techniques et la revue de code selon la mission. Aucune certification SOC 2 ou ISO 27001 n'est revendiquée par cette bio.",
+    specialty: "Architecture, choix de stack, jalons techniques et revue de code selon le devis.",
     status: "CDI",
     statusLabel: "CTO · CDI",
     basedAt: "Chambéry",
@@ -111,8 +111,8 @@ export const TEAM = {
     initials: "KH",
     role: "Senior Dev",
     roleDetail: "Back-end + DevOps · Infrastructure",
-    bio: "Le gardien de l'infra. Docker, CI/CD, monitoring, backups, sécurité. C'est lui qui s'assure que vos serveurs tiennent un pic de charge à 3 h du matin et que vos données sont restaurables en moins de 15 minutes.",
-    specialty: "DevOps, sécurité, scalabilité, CI/CD et tests automatisés.",
+    bio: "Intervient sur Docker, CI/CD, supervision, sauvegardes et sécurité selon le périmètre. Les objectifs de capacité, de restauration et leurs tests sont définis au contrat, jamais déduits de cette présentation.",
+    specialty: "DevOps, sécurité, capacité, CI/CD et tests automatisés selon la mission.",
     status: "CDI",
     statusLabel: "CDI",
     basedAt: "Chambéry",
@@ -131,8 +131,8 @@ export const TEAM = {
     initials: "FC",
     role: "Senior Dev",
     roleDetail: "Full-stack · Temps-réel",
-    bio: "Le maestro du Livewire / Flux UI. Construit des interfaces métier riches en quelques jours là où d'autres mettent des semaines. Spécialiste des formulaires complexes et des dashboards temps-réel.",
-    specialty: "Formulaires métier, interfaces temps-réel et queues — React Server Components, reprises Laravel/Livewire.",
+    bio: "Intervient sur les interfaces métier, les formulaires complexes et les tableaux de bord. Délais, niveau de performance et critères de recette restent propres à chaque projet.",
+    specialty: "Formulaires métier, interfaces temps réel et queues — React Server Components, reprises Laravel/Livewire.",
     status: "CDI",
     statusLabel: "CDI",
     basedAt: "Chambéry",
@@ -151,8 +151,8 @@ export const TEAM = {
     initials: "AM",
     role: "Senior Dev Back-end",
     roleDetail: "Paiements · Multi-tenant · Architecture",
-    bio: "Architecte des systèmes complexes : multi-tenant, facturation, paiements récurrents. Le go-to de l'équipe quand un client dit « il nous faut Stripe + Pennylane + comptabilité ».",
-    specialty: "Architecture back-end, systèmes complexes, paiements et facturation. Reprises Laravel.",
+    bio: "Intervient sur les architectures multi-tenant, la facturation et les paiements récurrents. Les intégrations, responsabilités et dépendances tierces sont précisées au devis.",
+    specialty: "Architecture back-end, paiements, facturation et reprises Laravel selon le périmètre.",
     status: "freelance",
     statusLabel: "Freelance long-terme",
     basedAt: "France",
@@ -171,8 +171,8 @@ export const TEAM = {
     initials: "RM",
     role: "Senior Dev",
     roleDetail: "Back-end + IA · Agents Claude",
-    bio: "Le pont entre Laravel et l'IA. Construit les agents Claude, les RAG, les pipelines d'extraction et les intégrations LLM. Notre spécialiste pour transformer un dossier PDF en données structurées exploitables.",
-    specialty: "Intégrations IA, agents Claude, webhooks et APIs tierces. Reprises Laravel.",
+    bio: "Intervient sur les intégrations LLM, les pipelines d'extraction, le RAG et les agents outillés. Les contrôles humains, données autorisées et limites du modèle sont cadrés par projet.",
+    specialty: "Intégrations IA, agents, webhooks, API tierces et reprises Laravel selon la mission.",
     status: "freelance",
     statusLabel: "Freelance long-terme",
     basedAt: "France",
@@ -191,8 +191,8 @@ export const TEAM = {
     initials: "PS",
     role: "Dev confirmé Full-stack",
     roleDetail: "Full-stack React / Vue.js · PHP (Laravel, Symfony)",
-    bio: "Le couteau suisse back + front. Quand il faut produire vite et propre — endpoints API, intégrations, refactor — Peter livre. Bilingue PHP (Laravel, Symfony) et JS moderne (React, Vue.js), il enchaîne backend critique et UI sans rupture de tempo.",
-    specialty: "Renforts API, modélisation BDD, intégrations — front React/Vue, back Laravel/Symfony.",
+    bio: "Intervient côté API, intégrations, refactorisation et interfaces. Le rôle, la charge et les composants critiques qui lui sont confiés sont confirmés pour chaque mission.",
+    specialty: "API, modélisation BDD, intégrations — front React/Vue, back Laravel/Symfony.",
     status: "freelance",
     statusLabel: "Freelance long-terme",
     basedAt: "France",
@@ -229,7 +229,7 @@ export const DEVS: TeamMember[] = [
 /** Effectif public : 1 fondateur, 1 CTO et les développeurs ci-dessus. */
 export const TEAM_TOTAL_COUNT = TEAM_LIST.length;
 export const TEAM_OTHER_DEVELOPERS_COUNT = DEVS.length;
-export const TEAM_PUBLIC_COMPOSITION = `${TEAM_TOTAL_COUNT} personnes au total : 1 gérant fondateur, 1 CTO et ${TEAM_OTHER_DEVELOPERS_COUNT} autres développeurs`;
+export const TEAM_PUBLIC_COMPOSITION = `${TEAM_TOTAL_COUNT} personnes au total : 1 président fondateur, 1 CTO et ${TEAM_OTHER_DEVELOPERS_COUNT} autres développeurs`;
 
 export const CDI_MEMBERS: TeamMember[] = TEAM_LIST.filter((m) => m.status === "CDI");
 export const FREELANCE_MEMBERS: TeamMember[] = TEAM_LIST.filter((m) => m.status === "freelance");
@@ -248,7 +248,7 @@ interface AvatarOptions {
 }
 
 /**
- * Avatar inline : si photo dispo → <img>, sinon initiales sur fond gradient.
+ * Avatar inline : si photo dispo → élément `img`, sinon initiales sur fond gradient.
  * Retourne du HTML brut (pour insertion dans un template string).
  */
 export function renderAvatar(member: TeamMember, options: AvatarOptions = {}): string {
@@ -258,7 +258,7 @@ export function renderAvatar(member: TeamMember, options: AvatarOptions = {}): s
   const fontSize = Math.round(size * 0.36);
 
   if (member.photoAvailable) {
-    return `<div class="${cls}" style="width:${size}px;height:${size}px;border-radius:${radius};overflow:hidden;flex-shrink:0;background:#171717"><img src="${member.photo}" alt="${member.fullName}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block" /></div>`;
+    return `<div class="${cls}" style="width:${size}px;height:${size}px;border-radius:${radius};overflow:hidden;flex-shrink:0;background:#171717"><img src="${member.photo}" alt="${member.fullName}" width="${size}" height="${size}" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block" /></div>`;
   }
 
   const [from, to] = member.avatarGradient;

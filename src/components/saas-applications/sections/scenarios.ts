@@ -43,11 +43,11 @@ export const scenariosHtml = `
             Le but : un SaaS <b>vendable et exploitable</b>, limité aux parcours qui prouvent l'usage.
           </p>
           <div class="sa-scen-deliv">
-            <h4>Ce qu'on livre</h4>
+            <h3>Ce qu'on livre</h3>
             <ul>
-              <li>5 à 15 écrans web + back-office admin</li>
-              <li>Auth complète, Stripe billing, multi-tenant</li>
-              <li>1 à 2 agents IA ciblés (extraction, RAG)</li>
+              <li>Un parcours critique web complet et ses opérations nécessaires</li>
+              <li>Accès, isolation et administration adaptés aux données</li>
+              <li>Paiement, intégrations ou IA seulement si le test ou le contrat les exige</li>
               <li>Mesures RGPD et hébergement documentés selon les données</li>
               <li>Handover filmé + repo Git chez vous</li>
             </ul>
@@ -82,7 +82,7 @@ export const scenariosHtml = `
             Il faut <b>mesurer, consolider puis faire évoluer</b> sans casser ce qui fonctionne.
           </p>
           <div class="sa-scen-deliv">
-            <h4>Ce qu'on livre</h4>
+            <h3>Ce qu'on livre</h3>
             <ul>
               <li>Refonte des goulets d'étranglement (perf, queues, cache)</li>
               <li>Self-serve complet (onboarding, billing, gestion équipe)</li>
@@ -122,7 +122,7 @@ export const scenariosHtml = `
             on modernise — <b>sans tout casser et sans perdre vos utilisateurs</b>.
           </p>
           <div class="sa-scen-deliv">
-            <h4>Ce qu'on livre</h4>
+            <h3>Ce qu'on livre</h3>
             <ul>
               <li>Audit technique écrit (dette, sécurité, perf) avec priorisation</li>
               <li>Reprise du code ou réécriture partielle selon ROI</li>

@@ -5,7 +5,7 @@ export const storesHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— App Store + Google Play</div>
-        <h2>On gère la soumission<br>de A à Z, sous votre nom.</h2>
+        <h2>On cadre la soumission<br>et chaque responsabilité.</h2>
       </div>
       <div class="right">
         Apple et Google décident de l'acceptation et du délai de review. Le devis précise <b>les tests,
@@ -33,7 +33,7 @@ export const storesHtml = `
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Build EAS Submit · upload TestFlight beta</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Soumission App Review · itérations définies au devis</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Réponse aux questions du reviewer selon le délai convenu</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>ASO (App Store Optimization) : titre, sous-titre, 100 mots-clés</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>ASO au périmètre : titre, sous-titre, champ mots-clés et visuels</li>
         </ul>
 
         <div class="mob-store-block-foot">

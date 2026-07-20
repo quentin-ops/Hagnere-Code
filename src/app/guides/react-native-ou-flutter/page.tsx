@@ -32,17 +32,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -174,23 +163,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -575,8 +553,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Deux devis contradictoires sur la table ?"
-          description="Décrivez votre projet d'application en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc et argumenté — y compris quand Flutter ou le natif est le meilleur choix pour votre cas. Notre biais React est déclaré : jugez-nous sur les arguments."
-          tags={["Réponse sous 24 h ouvrées", "MVP sur les stores dès 12 semaines", "Biais déclaré, arguments sourcés"]}
+          description="Décrivez votre projet d'application en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis franc et argumenté — y compris quand Flutter ou le natif est le meilleur choix pour votre cas. Notre biais React est déclaré : jugez-nous sur les arguments."
+          tags={["Objectif : prochain jour ouvré", "MVP sur les stores dès 12 semaines", "Biais déclaré, arguments sourcés"]}
           ctaLabel="Comparer mes options"
         />
 
@@ -882,7 +860,7 @@ export default function Page() {
           si le projet se lance)</strong> tranche votre cas sur vos
           contraintes réelles.{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées,
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré,
           gratuite et sans engagement.
         </p>
 

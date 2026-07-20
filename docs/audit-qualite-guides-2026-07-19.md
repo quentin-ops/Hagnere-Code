@@ -90,7 +90,8 @@ juridique présente dans les six textes.
 ### Socle SEO et produit
 
 - Titres, H1, canonical, byline, date, OG et données structurées existent.
-- Les FAQ sont visibles dans le DOM et reflétées dans le JSON-LD.
+- Les FAQ sont visibles dans le DOM ; le schéma `FAQPage` retiré par Google a
+  depuis été supprimé du JSON-LD.
 - Les guides possèdent des liens contextuels vers services et contenus
   frères.
 
@@ -313,7 +314,7 @@ Références :
 - [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) ;
 - [SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) ;
 - [Link best practices](https://developers.google.com/search/docs/crawling-indexing/links-crawlable) ;
-- [FAQ rich result changes](https://developers.google.com/search/blog/2023/08/howto-faq-changes) ;
+- [Google Search updates — retrait de FAQ](https://developers.google.com/search/updates) ;
 - [Understanding page experience](https://developers.google.com/search/docs/appearance/page-experience).
 
 ---
@@ -356,8 +357,8 @@ Vérifications passées le 19 juillet 2026 :
   1 280, 1 440 et 1 600 px ;
 - aucun débordement racine ni élément de contenu rogné ; tableaux dans un
   conteneur horizontal, CTA et FAQ présents ;
-- canonical, `dateModified`, Article, BreadcrumbList et FAQPage cohérents,
-  sans `wordCount` approximatif ;
+- canonical, `dateModified`, Article et BreadcrumbList cohérents, absence de
+  `FAQPage` obsolète et de `wordCount` approximatif ;
 - aucune erreur runtime dans la console ; uniquement des avertissements de
   rechargement Fast Refresh provoqués par les modifications en direct.
 

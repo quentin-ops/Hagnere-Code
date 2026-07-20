@@ -1,18 +1,19 @@
 /**
  * Registre central des guides — SOURCE DE VÉRITÉ UNIQUE.
  *
- * Chaque guide déclaré ici alimente automatiquement :
- *   - le hub /guides (cartes + ItemList JSON-LD),
- *   - le sitemap (src/app/sitemap.ts),
- *   - les métadonnées et JSON-LD de la page du guide elle-même.
+ * Chaque guide déclaré ici alimente sa route, ses métadonnées et son JSON-LD.
+ * Le hub, le sitemap et llms.txt utilisent PUBLISHED_GUIDES : un guide encore
+ * en attente de revue humaine reste accessible par URL mais noindex.
  *
- * Pour ajouter un guide : (1) ajouter son entrée ici, (2) créer
- * src/app/guides/<slug>/page.tsx en copiant le pattern du guide budget.
- * Rien d'autre à synchroniser — le test structurel du sitemap échoue si
- * la page existe sans entrée ici (et inversement le hub reflète ce registre).
+ * Pour ajouter un guide, suivre intégralement
+ * docs/regle-or-vigilance-seo-publication.md et docs/charte-qualite-guides.md :
+ * recherche, entrée ici, page, image Open Graph dédiée, maillage et tests.
+ * Le sitemap et llms.txt se synchronisent ensuite depuis ce registre ; ne pas
+ * les modifier à la main.
  */
 
 import { SITE_URL } from "./seo";
+import { isSearchIndexingEnabled } from "./search-indexing";
 
 export interface GuideEntry {
   slug: string;
@@ -32,9 +33,126 @@ export interface GuideEntry {
   dateModified: string; // ISO YYYY-MM-DD
   readTimeMin: number;
   featured?: boolean;
+  /** Tant que la revue humaine manque, la route reste accessible mais noindex. */
+  editorialStatus?: "ready-for-human-review";
 }
 
 export const GUIDES: GuideEntry[] = [
+  {
+    slug: "audit-seo-que-contient-il",
+    title: "Audit SEO : que doit-il contenir ? · Hagnéré Code",
+    cardTitle: "Audit SEO : ce que le rapport doit permettre de décider",
+    metaDescription:
+      "Découvrez les preuves, analyses et livrables à exiger d’un audit SEO, puis vérifiez si son plan d’action peut réellement être exécuté et mesuré.",
+    cardDescription:
+      "Une méthode pour vérifier périmètre, preuves, priorités, responsables et critères d’acceptation avant de financer les corrections.",
+    heroTitle: "Audit SEO : que doit-il contenir pour être vraiment utile ?",
+    section: "Référencement naturel",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 18,
+  },
+  {
+    slug: "audit-google-ads-que-verifier",
+    title: "Audit Google Ads : que vérifier ? · Hagnéré Code",
+    cardTitle: "Audit Google Ads : les contrôles avant de dépenser plus",
+    metaDescription:
+      "Suivi des conversions, requêtes, ciblage, annonces, enchères, consentement et accès : auditez Google Ads avant d’augmenter le budget.",
+    cardDescription:
+      "Une méthode fondée sur des preuves pour vérifier mesure, trafic acheté, valeur métier, accès et responsabilités avant toute hausse de budget.",
+    heroTitle: "Audit Google Ads : que vérifier avant d’investir ?",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 18,
+  },
+  {
+    slug: "mvp-saas-quoi-inclure",
+    title: "MVP SaaS : quoi inclure ? · Hagnéré Code",
+    cardTitle: "MVP SaaS : quelles fonctionnalités inclure et exclure ?",
+    metaDescription:
+      "Comptes, droits, données, facturation, support et mesure : définissez le minimum pour mettre un premier client SaaS B2B en production.",
+    cardDescription:
+      "Une méthode pour construire une tranche verticale exploitable, choisir ce qui peut rester manuel et tester le premier client avant le devis.",
+    heroTitle:
+      "MVP SaaS : que faut-il inclure pour mettre un premier client en production ?",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 23,
+  },
+  {
+    slug: "reprendre-logiciel-metier-existant",
+    title: "Reprendre un logiciel métier : checklist · Hagnéré Code",
+    cardTitle: "Reprendre un logiciel métier existant : audit et checklist",
+    metaDescription:
+      "Code, accès, données, dette technique, contrat : la checklist pour changer de prestataire et décider s’il faut stabiliser, migrer ou réécrire.",
+    cardDescription:
+      "Cinq portes non compensables et huit tests pour vérifier qu’une nouvelle équipe peut réellement observer, restaurer, livrer et quitter le logiciel.",
+    heroTitle:
+      "Comment reprendre un logiciel métier existant sans perdre le code, les données ni la continuité de service ?",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 20,
+  },
+  {
+    slug: "calculer-roi-application-metier",
+    title: "Calculer le ROI d’une application métier · Hagnéré Code",
+    cardTitle: "Calculer le ROI d’une application métier",
+    metaDescription:
+      "Mesurez coût actuel, TCO, gains attribuables et délai de retour. Trois scénarios fictifs et quatre options comparées sur 48 mois.",
+    cardDescription:
+      "Une méthode pour distinguer temps théorique et bénéfice réel, refaire trois scénarios, comparer quatre options et contrôler le résultat après lancement.",
+    heroTitle: "Comment calculer le ROI d’une application métier ?",
+    section: "Budget & prix",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 23,
+  },
+  {
+    slug: "automatiser-processus-metier",
+    title: "Automatiser un processus métier : méthode · Hagnéré Code",
+    cardTitle: "Automatiser un processus métier : quoi choisir d’abord",
+    metaDescription:
+      "Choisissez le bon processus à automatiser : matrice gain-risque-stabilité, options, rentabilité fictive, tests, responsabilités et cas inadaptés.",
+    cardDescription:
+      "Une méthode pour observer, classer et tester le premier processus à automatiser, avec six réponses possibles et une rentabilité fictive recalculable.",
+    heroTitle: "Automatiser un processus métier : lequel choisir en premier ?",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 18,
+  },
+  {
+    slug: "valider-idee-saas-avant-developper",
+    title: "Valider une idée SaaS avant de développer · Hagnéré Code",
+    cardTitle: "Valider une idée SaaS avant de développer",
+    metaDescription:
+      "Testez problème, acheteur, accès, engagement et faisabilité avant un MVP : entretiens sans biais, tests sans code et critères de décision.",
+    cardDescription:
+      "Une méthode concrète entre entreprises pour hiérarchiser les preuves, tester sans code et décider de développer, pivoter ou arrêter sans fausse validation.",
+    heroTitle: "Comment valider une idée SaaS avant de développer ?",
+    section: "Cadrer son projet",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 20,
+  },
+  {
+    slug: "prix-gestion-google-ads",
+    title: "Prix de gestion Google Ads en 2026 · Hagnéré Code",
+    cardTitle: "Prix de gestion Google Ads : comparer les vrais postes",
+    metaDescription:
+      "Budget média, honoraires, mise en route, suivi, pages et créations : calculez le coût Google Ads sur 3, 6 et 12 mois et comparez les devis.",
+    cardDescription:
+      "Séparez média, honoraires et coûts annexes, comparez forfait, pourcentage et hybride, puis calculez trois socles, le coût par prospect et la sortie.",
+    heroTitle:
+      "Prix de gestion Google Ads : ce que coûte vraiment une campagne",
+    section: "Budget & prix",
+    datePublished: "2026-07-20",
+    dateModified: "2026-07-20",
+    readTimeMin: 18,
+  },
   {
     slug: "transformer-excel-en-application",
     title: "Transformer Excel en application métier · Hagnéré Code",
@@ -99,11 +217,11 @@ export const GUIDES: GuideEntry[] = [
       "Avant de refaire votre site, prouvez qu'il est en cause. Le taux affiché est faux dans les deux sens — et les 7 signes chiffrés qui disent de ne PAS refondre.",
     cardTitle: "Pourquoi mon site ne convertit pas : le diagnostic",
     cardDescription:
-      "Le seul guide qui commence par démontrer que votre taux de conversion est faux, et dont le fil rouge est un devis de refonte à 14 900 € que nous avons refusé.",
+      "Le guide qui montre pourquoi votre taux affiché peut être trompeur, avec un scénario fictif composite autour d'un devis de refonte à 14 900 € à remettre en question.",
     heroTitle: "Pourquoi mon site ne convertit pas : l'arbre de diagnostic",
     section: "Cadrer son projet",
     datePublished: "2026-07-19",
-    dateModified: "2026-07-19",
+    dateModified: "2026-07-20",
     readTimeMin: 28,
   },
   {
@@ -117,7 +235,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Qui est propriétaire de votre site et de son code source ?",
     section: "Cadrer son projet",
     datePublished: "2026-07-19",
-    dateModified: "2026-07-19",
+    dateModified: "2026-07-20",
     readTimeMin: 30,
   },
   {
@@ -131,7 +249,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Prix du référencement naturel : le guide 2026",
     section: "Budget & prix",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-20",
     readTimeMin: 29,
   },
   {
@@ -145,7 +263,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Pourquoi mon site est lent : le diagnostic complet",
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-20",
     readTimeMin: 24,
   },
   {
@@ -159,7 +277,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "No-code ou développement sur mesure : le comparatif chiffré",
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-20",
     readTimeMin: 25,
   },
   {
@@ -218,7 +336,7 @@ export const GUIDES: GuideEntry[] = [
       "Agence web ou freelance : la grille de décision honnête, par budget et par risque",
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-20",
     readTimeMin: 24,
   },
   {
@@ -233,7 +351,7 @@ export const GUIDES: GuideEntry[] = [
       "Créer un site avec l'IA : ce qui marche, ce qui déçoit, ce que ça coûte",
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-20",
     readTimeMin: 24,
   },
   {
@@ -359,14 +477,14 @@ export const GUIDES: GuideEntry[] = [
     title: "Refonte site internet : prix 2026, 1 500 à 40 000 € · Hagnéré Code",
     cardTitle: "Refonte de site internet : le vrai prix en 2026",
     metaDescription:
-      "Combien coûte une refonte de site ? Grille 2026 par type, la migration SEO enfin chiffrée, un devis réel décortiqué — et quand il ne faut pas refondre.",
+      "Combien coûte une refonte de site ? Grille 2026 par type, migration SEO chiffrée, simulation détaillée — et les cas où il ne faut pas refondre.",
     cardDescription:
-      "Les grilles 2026 par type de refonte, le poste migration SEO que tous les devis oublient, un devis réel ligne à ligne et les cas où il ne faut pas refondre.",
+      "Les grilles 2026 par type de refonte, le poste migration SEO souvent oublié, une simulation ligne à ligne et les cas où il ne faut pas refondre.",
     heroTitle:
       "Refonte de site internet : le vrai prix en 2026 (+ devis décortiqué)",
     section: "Budget & prix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-20",
     readTimeMin: 25,
   },
   {
@@ -396,7 +514,7 @@ export const GUIDES: GuideEntry[] = [
       "Coût de la maintenance d'un site internet : les vrais prix 2026 (+ contrat décodé)",
     section: "Budget & prix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-20",
     readTimeMin: 25,
   },
   {
@@ -411,7 +529,7 @@ export const GUIDES: GuideEntry[] = [
       "WooCommerce ou Shopify : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-20",
     readTimeMin: 25,
   },
   {
@@ -426,7 +544,7 @@ export const GUIDES: GuideEntry[] = [
       "Combien de temps pour créer un site internet ? Les délais réels en 2026",
     section: "Cadrer son projet",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-17",
+    dateModified: "2026-07-20",
     readTimeMin: 25,
   },
   {
@@ -440,7 +558,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle: "Wix ou WordPress : le comparatif honnête pour décider en 2026",
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-18",
+    dateModified: "2026-07-20",
     readTimeMin: 25,
   },
   {
@@ -470,7 +588,7 @@ export const GUIDES: GuideEntry[] = [
       "Cahier des charges d'application mobile : le modèle complet (+ exemple)",
     section: "Cadrer son projet",
     datePublished: "2026-07-17",
-    dateModified: "2026-07-19",
+    dateModified: "2026-07-20",
     readTimeMin: 25,
   },
   {
@@ -503,6 +621,25 @@ export const GUIDES: GuideEntry[] = [
     readTimeMin: 25,
   },
 ];
+
+/** Guides ayant franchi la porte éditoriale humaine et donc découvrables. */
+export const PUBLISHED_GUIDES = GUIDES.filter(
+  (guide) => guide.editorialStatus !== "ready-for-human-review",
+);
+
+/**
+ * Rend la politique d'indexation explicite au niveau de chaque guide.
+ * Une preview reste toujours fermée, même pour un guide éditorialement validé.
+ */
+export function guideRobots(guide: GuideEntry) {
+  const canBeIndexed =
+    guide.editorialStatus !== "ready-for-human-review" &&
+    isSearchIndexingEnabled(process.env.NEXT_PUBLIC_ENV);
+
+  return canBeIndexed
+    ? ({ index: true, follow: true } as const)
+    : ({ index: false, follow: false } as const);
+}
 
 export function guidePath(g: GuideEntry): string {
   return `/guides/${g.slug}`;

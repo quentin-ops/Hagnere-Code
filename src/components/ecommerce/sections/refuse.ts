@@ -21,49 +21,49 @@ export const refuseHtml = `
         <li>
           <div class="ec-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Tout ce qui n'est pas légal en France / UE</h4>
+            <h3>Tout ce qui n'est pas légal en France / UE</h3>
             <p>Contrefaçon, CBD non autorisé, produits réglementés sans licence, contournement des seuils de vente à perte. On ne se pose pas la question.</p>
           </div>
         </li>
         <li>
           <div class="ec-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Dropshipping pur ou business model bidon</h4>
+            <h3>Dropshipping pur ou business model bidon</h3>
             <p>On construit des boutiques pour des marques qui ont <b>un vrai produit, un vrai SAV, une vraie logistique</b>. Pas pour tester une arnaque Meta Ads à revente AliExpress.</p>
           </div>
         </li>
         <li>
           <div class="ec-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Dark patterns : faux compteurs, abos piégés, désinscription cachée</h4>
+            <h3>Dark patterns : faux compteurs, abos piégés, désinscription cachée</h3>
             <p>Si l'idée c'est de maximiser la conversion en manipulant le client, on passe. Même si le cahier des charges dit "benchmarké sur Amazon" ou "on veut les trucs qui convertissent".</p>
           </div>
         </li>
         <li>
           <div class="ec-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Boutiques &lt; 50 k€ GMV annuel prévu</h4>
+            <h3>Boutiques &lt; 50 k€ GMV annuel prévu</h3>
             <p>Honnêtement, une plateforme standard est souvent plus rationnelle pour tester le marché. Vérifiez son tarif officiel et vos frais réels, puis revenez vers le sur-mesure si les contraintes métier ou le TCO sur 36 mois le justifient. <b>Pas de deal qui ne vous sert pas.</b></p>
           </div>
         </li>
         <li>
           <div class="ec-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>"Faites-nous Amazon en 3 mois"</h4>
+            <h3>"Faites-nous Amazon en 3 mois"</h3>
             <p>La complexité d'un marketplace pluri-vendeurs à l'échelle n'est pas faisable en forfait fixe 3 mois. Si c'est votre objectif, on oriente vers des spécialistes (Mirakl, Izberg) ou on cadre un MVP beaucoup plus petit pour valider.</p>
           </div>
         </li>
         <li>
           <div class="ec-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Projets sans référent unique côté client</h4>
+            <h3>Projets sans référent unique côté client</h3>
             <p>Un e-commerce touche 5-6 services internes (marketing, ops, compta, logistique, DSI, RH). Sans un <b>sponsor unique qui arbitre</b> chez vous, le projet dérive. On fait un cadrage payant en amont si le sujet n'est pas clair.</p>
           </div>
         </li>
         <li>
           <div class="ec-refuse-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 6l12 12M6 18L18 6"/></svg></div>
           <div>
-            <h4>Relations commerciales toxiques</h4>
+            <h3>Relations commerciales toxiques</h3>
             <p>Mépris de l'équipe, micro-management agressif, négociations permanentes, avenants déguisés en "petites précisions". La vie est courte, on passe même sur un gros budget.</p>
           </div>
         </li>

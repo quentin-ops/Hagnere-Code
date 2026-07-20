@@ -33,17 +33,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -171,23 +160,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -748,8 +726,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un chiffrage e-commerce qui inclut tout ça ?"
-          description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées avec une fourchette argumentée — commissions, logistique et conformité comprises."
-          tags={["Réponse sous 24 h ouvrées", "Forfait fixe contractuel", "Sans engagement"]}
+          description="Décrivez votre projet en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti avec une fourchette argumentée — commissions, logistique et conformité comprises."
+          tags={["Objectif : prochain jour ouvré", "Forfait fixe contractuel", "Sans engagement"]}
         />
 
         <h2 id="devis">7. Un devis e-commerce réel, décortiqué ligne à ligne</h2>
@@ -1083,7 +1061,7 @@ export default function Page() {
           <Link href="/methode">Sprint Fixe™</Link>. Vous voulez une
           fourchette avant d&apos;aller plus loin ?{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées, gratuite
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré, gratuite
           et sans engagement. Et si vous hésitez encore entre vitrine et
           boutique, notre guide du{" "}
           <Link href="/guides/prix-site-vitrine">prix d&apos;un site

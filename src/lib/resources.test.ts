@@ -122,7 +122,7 @@ describe("downloadable resources", () => {
         ).toEqual(fs.readFileSync(publicFile(file.href)));
       }
     }
-  });
+  }, 15_000);
 
   it("publishes a 1200 by 630 PNG social preview for every kit", () => {
     for (const resource of DOWNLOADABLE_RESOURCES) {

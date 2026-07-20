@@ -203,7 +203,7 @@ Les trois scénarios n’ont pas le même périmètre fonctionnel et ne constitu
 7. SaaS ou outil spécifique : équation à fonctions égales et critères de renoncement.
 8. Grille pour comparer deux propositions et plan pour préparer la décision en dix jours ouvrés, sous réserve d’obtenir les accès et documents nécessaires.
 9. Une seule conversion, suivie des sources primaires.
-10. Six FAQ visibles, identiques au JSON-LD.
+10. Six FAQ visibles, sans schéma `FAQPage` obsolète.
 
 ## 11. Ressource et conversion
 
@@ -238,7 +238,7 @@ Cette évaluation intègre le contre-audit éditorial. Elle reste plafonnée par
 - [x] Articles 25, 29 et 50 du Data Act relus sur EUR-Lex.
 - [x] Arithmétique des trois socles refaite ligne par ligne ; onboarding HubSpot conservé comme inconnue.
 - [x] Aucun faux devis, faux client ou taux d’échec universel.
-- [x] FAQ limitée à six questions et destinée à être reflétée dans le JSON-LD.
+- [x] FAQ limitée à six questions visibles, sans schéma `FAQPage`.
 - [x] `git diff --check` passé sur les trois fichiers du périmètre après corrections.
 - [x] ESLint ciblé passé sur le nouveau guide CRM et le passage connexe du guide prix.
 - [x] Contre-audit indépendant intégré : TCO incomplets renommés, conflit HubSpot traité, sources rapprochées et seuil universel supprimé du guide voisin.

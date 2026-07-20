@@ -9,9 +9,13 @@
 import { readdirSync } from "node:fs";
 import { join, relative } from "node:path";
 import { describe, it, expect } from "vitest";
+import { GUIDES, PUBLISHED_GUIDES } from "@/lib/guides";
+import { DOWNLOADABLE_RESOURCES } from "@/lib/resources";
+import { SITE_URL } from "@/lib/seo";
+import { WHITE_PAPERS } from "@/lib/white-papers";
 import sitemap from "./sitemap";
 
-const BASE = "https://hagnere-code.ai";
+const BASE = SITE_URL;
 
 /** Routes volontairement absentes du sitemap (redirects 3xx ou noindex). */
 const EXCLUDED_ROUTES = [
@@ -20,6 +24,9 @@ const EXCLUDED_ROUTES = [
   "/outils", // permanentRedirect → /demarrer-un-projet
   "/outils/estimer-mon-projet", // permanentRedirect → /demarrer-un-projet
   "/demarrer-un-projet/merci", // page de confirmation, noindex
+  ...GUIDES.filter((guide) => guide.editorialStatus).map(
+    (guide) => `/guides/${guide.slug}`,
+  ), // brouillons accessibles par URL mais noindex jusqu'à la revue humaine
 ];
 
 function collectPageRoutes(dir: string, appDir: string): string[] {
@@ -40,10 +47,10 @@ describe("sitemap", () => {
   const map = sitemap();
   const urls = map.map((e) => e.url);
 
-  it("inclut la home avec priority max", () => {
+  it("inclut la home canonique une seule fois", () => {
     const home = map.find((e) => e.url === BASE);
     expect(home).toBeDefined();
-    expect(home?.priority).toBe(1.0);
+    expect(urls.filter((url) => url === BASE)).toHaveLength(1);
   });
 
   it("inclut les 11 services", () => {
@@ -73,6 +80,22 @@ describe("sitemap", () => {
     expect(urls).toContain(`${BASE}/guides/combien-coute-un-site-internet`);
   });
 
+  it("inclut chaque guide publiable avec sa vraie date de modification", () => {
+    for (const guide of PUBLISHED_GUIDES) {
+      const entry = map.find(
+        (candidate) => candidate.url === `${BASE}/guides/${guide.slug}`,
+      );
+      expect(entry, guide.slug).toBeDefined();
+      expect(entry?.lastModified, guide.slug).toEqual(
+        new Date(`${guide.dateModified}T12:00:00Z`),
+      );
+    }
+
+    for (const guide of GUIDES.filter((entry) => entry.editorialStatus)) {
+      expect(urls).not.toContain(`${BASE}/guides/${guide.slug}`);
+    }
+  });
+
   it("inclut le hub et les livres blancs publiés", () => {
     expect(urls).toContain(`${BASE}/livres-blancs`);
     expect(urls).toContain(
@@ -80,11 +103,29 @@ describe("sitemap", () => {
     );
   });
 
+  it("inclut chaque livre blanc du registre central", () => {
+    for (const entry of WHITE_PAPERS) {
+      expect(urls, entry.slug).toContain(`${BASE}${entry.path}`);
+    }
+  });
+
   it("inclut le hub de ressources et les kits publiés", () => {
     expect(urls).toContain(`${BASE}/ressources`);
     expect(urls).toContain(
       `${BASE}/ressources/kit-cahier-des-charges-site-internet`,
     );
+  });
+
+  it("inclut chaque ressource du registre central avec sa vraie date de mise à jour", () => {
+    for (const resource of DOWNLOADABLE_RESOURCES) {
+      const entry = map.find(
+        (candidate) => candidate.url === `${BASE}${resource.path}`,
+      );
+      expect(entry, resource.id).toBeDefined();
+      expect(entry?.lastModified, resource.id).toEqual(
+        new Date(`${resource.updatedAt}T12:00:00Z`),
+      );
+    }
   });
 
   it("exclut les routes redirigées (estimer-mon-projet, blog, outils, guide)", () => {
@@ -107,11 +148,10 @@ describe("sitemap", () => {
     }
   });
 
-  it("toutes les entrées ont une priority valide", () => {
+  it("omet les champs priority et changefreq ignorés par Google", () => {
     for (const e of map) {
-      expect(e.priority).toBeDefined();
-      expect(e.priority).toBeGreaterThan(0);
-      expect(e.priority).toBeLessThanOrEqual(1);
+      expect(e.priority).toBeUndefined();
+      expect(e.changeFrequency).toBeUndefined();
     }
   });
 

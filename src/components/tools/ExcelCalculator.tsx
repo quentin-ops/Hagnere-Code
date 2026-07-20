@@ -153,6 +153,7 @@ export function ExcelCalculator() {
   return (
     <div ref={rootRef} className="hc-design calc-root">
       <MainNav />
+      <main id="main-content" tabIndex={-1}>
 
       {/* Hero */}
       <section className="calc-hero">
@@ -191,11 +192,12 @@ export function ExcelCalculator() {
               </div>
 
               <div className="calc-field">
-                <label>
+                <label htmlFor="excel-people">
                   <span>Personnes concernées par ces Excel</span>
                   <b className="calc-val">{people}</b>
                 </label>
                 <input
+                  id="excel-people"
                   type="range"
                   min="1"
                   max="30"
@@ -209,11 +211,12 @@ export function ExcelCalculator() {
               </div>
 
               <div className="calc-field">
-                <label>
+                <label htmlFor="excel-hours-per-week">
                   <span>Heures par semaine perdues (par personne)</span>
                   <b className="calc-val">{hoursPerWeek} h</b>
                 </label>
                 <input
+                  id="excel-hours-per-week"
                   type="range"
                   min="1"
                   max="20"
@@ -228,11 +231,12 @@ export function ExcelCalculator() {
               </div>
 
               <div className="calc-field">
-                <label>
+                <label htmlFor="excel-average-salary">
                   <span>Salaire brut chargé moyen</span>
                   <b className="calc-val">{euro(avgSalary)} / an</b>
                 </label>
                 <input
+                  id="excel-average-salary"
                   type="range"
                   min="25000"
                   max="120000"
@@ -247,11 +251,12 @@ export function ExcelCalculator() {
               </div>
 
               <div className="calc-field">
-                <label>
+                <label htmlFor="excel-error-rate">
                   <span>Taux d&apos;erreur dans ces fichiers (estimé)</span>
                   <b className="calc-val">{errorRate} %</b>
                 </label>
                 <input
+                  id="excel-error-rate"
                   type="range"
                   min="0"
                   max="40"
@@ -266,11 +271,12 @@ export function ExcelCalculator() {
               </div>
 
               <div className="calc-field">
-                <label>
+                <label htmlFor="excel-incident-cost">
                   <span>Coût moyen d&apos;un incident causé par l&apos;Excel</span>
                   <b className="calc-val">{euro(errorCostPerIncident)}</b>
                 </label>
                 <input
+                  id="excel-incident-cost"
                   type="range"
                   min="0"
                   max="2000"
@@ -524,6 +530,7 @@ export function ExcelCalculator() {
         </div>
       </section>
 
+      </main>
       <SiteFooter />
     </div>
   );

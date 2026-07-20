@@ -10,6 +10,7 @@ import {
 import { GuidesShell } from "@/components/guides/GuidesShell";
 import { OG_BASE, SITE_URL, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import { getLocalPage, localPagePath, localPageUrl } from "@/lib/local-pages";
+import { PUBLIC_ORGANIZATION_JSON_LD } from "@/lib/organization-structured-data";
 
 const page = getLocalPage("agence", "");
 
@@ -28,45 +29,12 @@ export const metadata: Metadata = {
     url: localPagePath(page),
     images: [DEFAULT_OG_IMAGE],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
-// --- JSON-LD : ProfessionalService rattaché à l'entité #business déclarée
+// --- JSON-LD : ProfessionalService rattaché à l'entité #organization déclarée
 // sur l'accueil (pas de seconde déclaration d'établissement), + fil d'Ariane
 // + FAQ. Voir docs/plan-seo-local-savoie.md §6.
-const businessJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": `${SITE_URL}/#business`,
-  name: "Hagnéré Code",
-  url: localPageUrl(page),
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "82 impasse de Bellevue",
-    addressLocality: "Bassens",
-    addressRegion: "Savoie",
-    postalCode: "73000",
-    addressCountry: "FR",
-  },
-  areaServed: [
-    { "@type": "AdministrativeArea", name: "Savoie" },
-    { "@type": "AdministrativeArea", name: "Haute-Savoie" },
-    { "@type": "AdministrativeArea", name: "Auvergne-Rhône-Alpes" },
-    { "@type": "Country", name: "France" },
-  ],
-  telephone: "+33374472018",
-  priceRange: "€€€",
-});
+const businessJsonLd = JSON.stringify(PUBLIC_ORGANIZATION_JSON_LD);
 
 const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
@@ -110,23 +78,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: businessJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[{ label: "Notre agence" }]}
         heroTitle={page.heroTitle}
@@ -335,7 +292,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un projet en Savoie ou ailleurs ?"
-          description="Décrivez-le en 3 minutes. Nous répondons personnellement sous 24 h ouvrées, gratuitement et sans engagement — y compris quand notre réponse est qu'une solution plus simple suffirait."
+          description="Décrivez-le en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, gratuitement et sans engagement — y compris quand notre réponse est qu'une solution plus simple suffirait."
         />
 
         <h2 id="ce-que-nous-faisons">6. Ce que nous faisons</h2>
@@ -428,7 +385,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Parlons de votre projet"
-          description="Décrivez votre besoin en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Rendez-vous à Bassens, aux portes de Chambéry, ou en visioconférence, comme vous préférez."
+          description="Décrivez votre besoin en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Rendez-vous à Bassens, aux portes de Chambéry, ou en visioconférence, comme vous préférez."
         />
 
         <h2 id="sources">Sources</h2>

@@ -1,10 +1,10 @@
 // Section "preuves" et non "témoignages". Hagnéré Code n'a pas encore de client
 // externe : afficher des citations, des notes ou des logos serait un mensonge.
-// La preuve réelle, vérifiable par n'importe qui, ce sont les quatre produits du
-// groupe Hagnéré que nous avons construits ET que nous exploitons en production.
+// La seule preuve retenue ici est la disponibilité publique des pages et de leurs
+// fonctions visibles. Elle ne vaut pas audit de sécurité, de conformité ou d'exploitation.
 
 export const testimonialsHtml = `
-<!-- PREUVES · produits en ligne, exploités par nous -->
+<!-- PREUVES · pages publiques consultables -->
 <section class="sr-proofs">
   <div class="wrap">
     <div class="section-head reveal">
@@ -14,9 +14,9 @@ export const testimonialsHtml = `
       </div>
       <div class="right">
         Nous n'affichons ni citation, ni note, ni logo emprunté : à ce jour, Hagnéré Code n'a pas de client
-        externe. Nos quatre réalisations sont les produits du groupe Hagnéré, que nous avons conçus,
-        développés, et <b>que nous exploitons nous-mêmes tous les jours</b>. Sur un sujet comme la sécurité
-        et le RGPD, c'est une preuve plus solide qu'un avis anonyme : vous pouvez aller la vérifier maintenant.
+        externe. Les quatre liens ci-dessous permettent de vérifier la disponibilité et les fonctions
+        présentées publiquement. <b>Ils ne démontrent ni conformité RGPD, ni niveau de sécurité,
+        ni exploitation quotidienne par Hagnéré Code</b>&nbsp;: ces points exigent des preuves distinctes.
       </div>
     </div>
 
@@ -29,18 +29,18 @@ export const testimonialsHtml = `
           <div class="sr-proofs-step-line" aria-hidden="true"></div>
         </div>
         <div class="sr-proofs-body">
-          <div class="sr-proofs-tag">EN LIGNE · DONNÉES FISCALES</div>
-          <h3>Deux outils qui traitent<br>des données fiscales.</h3>
+          <div class="sr-proofs-tag">PAGES PUBLIQUES · COMPTABILITÉ</div>
+          <h3>Deux offres comptables<br>présentées en ligne.</h3>
           <p>
-            LMNP.AI et SCI-AI.app sont deux logiciels de comptabilité ouverts au public. Ils manipulent des
-            <b>données d'identité, des relevés et des pièces justificatives</b> de particuliers. Les mettre
-            en ligne nous a obligés à trancher, pour de vrai :
+            LMNP.AI et SCI-AI.app présentent publiquement des fonctions de comptabilité et des parcours
+            d'accès. Leur consultation permet de vérifier les pages et mentions visibles, <b>pas les données
+            réellement traitées, les mesures internes ni leur efficacité</b>.
           </p>
           <ul class="sr-proofs-feats">
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Information et recueil du consentement</li>
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Durée de conservation des documents déposés</li>
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Suppression de compte et export des données</li>
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Contrat avec chaque sous-traitant technique</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Fonctions et offres décrites sur les pages publiques</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Mentions légales et politiques accessibles à contrôler séparément</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Aucune conclusion sur les traitements internes sans audit</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Aucune certification revendiquée par ces liens</li>
           </ul>
           <a href="https://lmnp.ai" target="_blank" rel="noopener" class="sr-comp-foot-link">
             lmnp.ai
@@ -63,15 +63,15 @@ export const testimonialsHtml = `
           <div class="sr-proofs-tag sr-proofs-tag-mid">EN LIGNE · SECTEUR RÉGULÉ</div>
           <h3>Un cabinet régulé et sa<br>plateforme d'investissement.</h3>
           <p>
-            Hagnéré Patrimoine est un cabinet de conseil en investissements financiers ; Hagnéré
-            Investissement, une plateforme d'investissement immobilier. Nous avons bâti leurs sites et leur
-            CRM, où l'on collecte des <b>informations patrimoniales</b>. Ce que cela impose :
+            Hagnéré Patrimoine et Hagnéré Investissement publient des contenus, des offres et des parcours
+            de contact. On peut vérifier ces interfaces et leurs mentions publiques, <b>sans en déduire
+            l'architecture du CRM, les données collectées ni leur conformité</b>.
           </p>
           <ul class="sr-proofs-feats">
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Base légale et mentions au moment de la collecte</li>
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Cloisonnement des accès aux fiches</li>
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Traçabilité des consultations</li>
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Cookies et mesure d'audience assumés</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Pages éditoriales et offres visibles</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Formulaires et mentions publiques consultables</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Aucune preuve d'accès interne fournie ici</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Conformité à vérifier traitement par traitement</li>
           </ul>
           <a href="https://hagnere-patrimoine.fr" target="_blank" rel="noopener" class="sr-comp-foot-link">
             hagnere-patrimoine.fr
@@ -90,18 +90,18 @@ export const testimonialsHtml = `
           <div class="sr-proofs-step-num">03</div>
         </div>
         <div class="sr-proofs-body">
-          <div class="sr-proofs-tag sr-proofs-tag-end">TOUS LES JOURS · EXPLOITATION</div>
-          <h3>Nous vivons avec ce<br>que nous construisons.</h3>
+          <div class="sr-proofs-tag sr-proofs-tag-end">À VÉRIFIER · PREUVES TECHNIQUES</div>
+          <h3>Une page publique ne prouve<br>pas sa sécurité.</h3>
           <p>
-            C'est là notre vraie différence, et presque aucune agence ne peut la revendiquer : nous n'avons
-            pas livré ces produits pour ensuite refermer le dossier. <b>Nous les exploitons.</b> Quand un
-            incident tombe un dimanche soir, il n'y a personne d'autre. Nous portons donc :
+            Disponibilité publique, sécurité, conformité et exploitation sont quatre sujets distincts.
+            <b>Pour votre projet, les contrôles, preuves, responsabilités et objectifs sont écrits</b>
+            dans le devis et les documents applicables. Il faut notamment cadrer&nbsp;:
           </p>
           <ul class="sr-proofs-feats">
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Les correctifs de sécurité et les dépendances</li>
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Les sauvegardes et leur restauration</li>
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>La dette technique que nous créons nous-mêmes</li>
-            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Les factures d'hébergement et leurs arbitrages</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Mises à jour, dépendances et responsabilités</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Sauvegardes, restauration et protocole de test</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Journalisation, accès et réponse aux incidents</li>
+            <li><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement, sous-traitants et coûts tiers</li>
           </ul>
           <a href="/realisations" class="sr-comp-foot-link">
             Voir nos réalisations

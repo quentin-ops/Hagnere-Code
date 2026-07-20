@@ -25,7 +25,7 @@ contourner son rate-limit sur un appel externe facturé.
 
 | Variable | Valeur attendue | Usage |
 |---|---|---|
-| `NEXT_PUBLIC_ENV` | `production` | Active `index/follow` dans `robots.ts` et `metadata.robots`. Sans ça → site `noindex`. |
+| `NEXT_PUBLIC_ENV` | `production` en Production ; `preview` en Preview | Active `index/follow` uniquement pour la production. Toute preview reste `noindex,nofollow`. Les deux portées Vercel ont été séparées le 20 juillet 2026. |
 | `DATABASE_URL` | URL Neon prod | Persistance des briefs, ai_call_log. |
 | `RESEND_API_KEY` | Clé Resend prod | Envoi emails formulaire. |
 | `GROQ_API_KEY` | Clé Groq prod | Transcription audio `/api/transcribe`. |
@@ -39,12 +39,11 @@ Les autres secrets doivent être posés dans l'interface Vercel et limités aux
 environnements qui en ont besoin. La configuration Wrangler ne concerne que la
 chaîne Cloudflare alternative, non active en production.
 
-> **Blocage production constaté le 20 juillet 2026** :
-> `https://hagnere-code.ai/api/math-challenge` répond `503` tant que
-> `MATH_CHALLENGE_SECRET` (ou le fallback `AUTH_SECRET`) n'est pas défini. Les
-> formulaires qui dépendent de ce contrôle ne sont donc pas opérationnels. Poser
-> un secret aléatoire d'au moins 32 caractères dans Preview et Production,
-> redéployer, puis vérifier un `GET /api/math-challenge` et une soumission valide.
+> **Configuration préparée le 20 juillet 2026** : `MATH_CHALLENGE_SECRET` est
+> défini séparément dans Preview et Production, sans valeur dans le dépôt. La
+> production actuelle peut encore répondre `503` jusqu'au redéploiement du
+> commit corrigé ; vérifier ensuite `GET /api/math-challenge` sans consigner le
+> jeton retourné, puis une soumission valide.
 > Ne pas conserver la valeur du secret dans ce dépôt.
 
 > Nettoyage post-suppression de l'estimateur IA : `ANTHROPIC_API_KEY` et
@@ -156,20 +155,18 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 - [ ] `/services/ecommerce`
 - [ ] `/services/referencement-google`
 - [ ] `/services/publicite-en-ligne`
-- [ ] `/services/contenu-video` (JSON-LD avec offers + FAQPage)
+- [ ] `/services/contenu-video` (JSON-LD cohérent ; aucun schéma retiré `FAQPage` ou `HowTo`)
 - [ ] `/services/maintenance-evolution`
 - [ ] `/services/securite-rgpd` (CTA → /demarrer-un-projet, JSON-LD complet)
 - [ ] `/services/audit-technique`
 - [ ] `/methode` (chiffres et composition d'équipe cohérents avec les sources actuelles)
 - [ ] `/tarifs` (fourchettes présentées comme indicatives et non comme historique client sans preuve)
-- [ ] `/realisations` (méta-discours nettoyé, lien vers /etudes-de-cas)
+- [ ] `/realisations` (index et quatre études de cas accessibles)
 - [ ] `/realisations/lmnp-ai` (témoignage signalé "produit interne du groupe")
 - [ ] `/realisations/sci-ai`
 - [ ] `/realisations/hagnere-patrimoine` (bandeau AMF en bas)
 - [ ] `/realisations/hagnere-investissement` (bandeau AMF en bas, mention rendement)
-- [ ] **`/etudes-de-cas` (NOUVEAU — index)**
-- [ ] `/etudes-de-cas/saas-b2b-reprise-app-orpheline` (breadcrumb : Accueil / Études de cas / Maintenance / Cas)
-- [ ] `/equipe` (6 personnes en CDI, légende cliquez pour LinkedIn)
+- [ ] `/equipe` (7 personnes au total : 1 président, 3 CDI et 3 freelances ; statuts issus de `src/lib/team.ts`)
 - [ ] `/contact`
 - [ ] `/demarrer-un-projet` (funnel complet)
 - [ ] `/outils` + `/outils/calculateur-cout-excel`
@@ -194,6 +191,7 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 ### SEO / sitemap
 - [ ] Vérifier `https://hagnere-code.ai/sitemap.xml` (doit inclure toutes les pages légales, dont `/legal/reclamations`)
 - [ ] Vérifier `https://hagnere-code.ai/robots.txt` (`Allow: /` en prod)
+- [ ] Vérifier `https://hagnere-code.ai/llms.txt` (liens HTML canoniques ; aucun guide encore en revue)
 - [ ] Tester un partage Open Graph via le Facebook Sharing Debugger
 - [ ] Tester un partage via le Twitter Card Validator
 
@@ -214,7 +212,7 @@ ce slug existe sur le compte Calendly. Sinon, créer le créneau ou définir
 - **P0 (16/16)** : harmonisations chiffrées, IDOR slug, /template supprimé, équipe portfolio, footer liens, CTA Calendly, etc.
 - **P1 (23/23)** : not-found / error pages, dead code supprimé, JSON-LD complétés, anglicismes retirés, CGV art. 28 ajouté, etc.
 - **P2 (10/12)** : rate-limit Sirene, phone validation, honeypot, logs PII, dates Journal, env vars, ai_call_log Postgres-backed.
-- **Maillage interne** : /etudes-de-cas linké depuis /realisations + footer + sitemap, breadcrumbs corrigés et domaine canonique `.ai` conservé partout.
+- **Maillage interne** : les quatre études de cas sont reliées depuis `/realisations`, le footer et le sitemap ; breadcrumbs et domaine canonique `.ai` sont conservés partout.
 - **Juridique documenté** : pages publiques alignées sur les traitements observés, statut d'accessibilité non évalué, registre interne, procédure incident/purge et modèle DPA à compléter. Cela ne remplace ni l'exécution des procédures ni la revue d'un conseil pour un contrat à enjeu.
 
 **Validation finale** : inscrire ici le commit exact, le nombre réel de routes et les résultats TypeScript, lint, tests, build et smoke tests obtenus sur ce commit.

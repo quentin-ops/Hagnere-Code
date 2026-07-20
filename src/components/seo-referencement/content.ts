@@ -170,6 +170,11 @@ export const SEO_REFUSALS: SeoItem[] = [
 
 export const SEO_RELATED_RESOURCES = [
   {
+    href: "/guides/audit-seo-que-contient-il",
+    label: "Audit",
+    title: "Ce que doit contenir un audit SEO vraiment exploitable",
+  },
+  {
     href: "/guides/prix-referencement-naturel",
     label: "Budget",
     title: "Prix du référencement naturel : ce que vous achetez vraiment",

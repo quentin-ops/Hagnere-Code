@@ -30,7 +30,7 @@ export const processHtml = `
           </div>
         </div>
         <div class="at-proc-step-wide-body">
-          <h4>Cadrage, confidentialité &amp; accès</h4>
+          <h3>Cadrage, confidentialité &amp; accès</h3>
           <p>Le cadrage confirme la décision à sécuriser, les zones critiques, les personnes à interviewer et la charge attendue côté client. <b>Les documents contractuels, l'éventuel NDA et les conflits potentiels</b> sont traités avant tout accès sensible. Les rôles en lecture seule et outils autorisés sont ensuite configurés selon le devis.</p>
           <div class="at-proc-step-wide-grid">
             <div class="at-proc-step-wide-item">
@@ -70,7 +70,7 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           </div>
         </div>
-        <h4>Snapshot &amp; code review</h4>
+        <h3>Snapshot &amp; code review</h3>
         <p>Clone du repo, branchement SonarQube Enterprise + Semgrep + Snyk. Revue manuelle des 5 modules métier critiques (billing, auth, core, integrations, data).</p>
         <div class="at-proc-step-foot">Jalon illustratif · intervenants au devis</div>
       </article>
@@ -82,7 +82,7 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
         </div>
-        <h4>8 dimensions en parallèle</h4>
+        <h3>8 dimensions en parallèle</h3>
         <p>Perf (p95/p99, N+1), sécu (OWASP, CVE, secrets), infra (IaC, DR), archi (C4, couplage), DevEx (DORA), FinOps (cost breakdown), équipe (git blame, ownership). Exports bruts produits.</p>
         <div class="at-proc-step-foot">J3 → J5 · outillage parallélisé</div>
       </article>
@@ -94,7 +94,7 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
           </div>
         </div>
-        <h4>Premiers insights &amp; hypothèses</h4>
+        <h3>Premiers insights &amp; hypothèses</h3>
         <p>Note de synthèse intermédiaire de 3-4 pages envoyée au CTO à J+5, avec les 5 findings les plus critiques et les hypothèses à valider en entretien. <b>Vous pouvez arrêter ici</b> si le scope doit pivoter.</p>
         <div class="at-proc-step-foot">J+5 · livrable intermédiaire</div>
       </article>
@@ -117,7 +117,7 @@ export const processHtml = `
           </div>
         </div>
         <div class="at-proc-step-wide-body">
-          <h4>Entretiens équipe no-blame</h4>
+          <h3>Entretiens équipe no-blame</h3>
           <p>5 à 8 interviews de 45 min, <b>off-the-record</b>, avec le CTO, les lead devs, le PM, parfois le DAF. Structurées selon SPACE (Satisfaction, Performance, Activity, Communication, Efficiency). On valide / infirme les hypothèses formulées en phase 02. Pas de retranscription nominative dans le rapport final.</p>
           <div class="at-proc-step-wide-grid">
             <div class="at-proc-step-wide-item">
@@ -157,7 +157,7 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg>
           </div>
         </div>
-        <h4>Scoring, Tech Debt P&amp;L &amp; rédaction</h4>
+        <h3>Scoring, Tech Debt P&amp;L &amp; rédaction</h3>
         <p>Consolidation&nbsp;: score /100 par dimension pondéré, positionnement vs référentiels publics (DORA, OWASP ASVS, Web Almanac), <b>Tech Debt P&amp;L chiffré en euros</b>, matrice impact × effort, roadmap 6/12/18 mois. Rédaction du PDF 40-70 p. + deck 12-18 slides board-ready + version board-safe anonymisée. Revue interne par le lead.</p>
         <div class="at-proc-step-foot">Jalon illustratif · revue au devis</div>
       </article>
@@ -169,7 +169,7 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </div>
         </div>
-        <h4>Restitution Loom + livraison</h4>
+        <h3>Restitution Loom + livraison</h3>
         <p>Restitution avec les interlocuteurs prévus au cadrage, accompagnée des supports listés au devis. Les livrables spécifiques sont remis puis transférés selon les CGV après paiement complet. La date de clôture dépend du format et des prérequis convenus.</p>
         <div class="at-proc-step-foot">J10 · visio + Loom + Notion livrés</div>
       </article>

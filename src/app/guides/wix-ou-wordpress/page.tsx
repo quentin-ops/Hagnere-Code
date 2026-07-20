@@ -32,17 +32,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -176,23 +165,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -314,9 +292,10 @@ export default function Page() {
           affaire, chaque année.
         </p>
         <p>
-          Fil rouge de ce guide : <strong>Claire, naturopathe à
-          Annecy</strong>. Site Wix Light depuis 2023 — douze pages
-          qu&apos;elle modifie elle-même, un vrai confort. Son projet
+          Fil rouge de ce guide : <strong>scénario fictif composite —
+          ni client ni témoignage réel — avec Claire, naturopathe à
+          Annecy</strong>. Elle utiliserait Wix Light depuis 2023 — douze pages
+          qu&apos;elle modifierait elle-même, un vrai confort. Son projet
           change la donne : vivre de sa visibilité, avec un blog santé
           sérieux qui doit la faire trouver sur Google au-delà
           d&apos;Annecy. Rester sur Wix, migrer vers WordPress, ou
@@ -512,8 +491,8 @@ export default function Page() {
           une configuration SEO de base », mais une plateforme qui
           « manque de la flexibilité des réglages avancés » — le
           multilingue au contrôle limité et le plan de site
-          auto-généré non éditable en sont les exemples types. Pour
-          Claire, la traduction est simple :{" "}
+          auto-généré non éditable en sont les exemples types. Pour le
+          scénario Claire, la traduction est simple :{" "}
           <strong>être trouvée sur « naturopathe Annecy », Wix le
           fait ; construire un blog santé qui rayonne au national
           demande une liberté SEO totale</strong> — WordPress la donne
@@ -555,8 +534,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre site doit exister — ou conquérir ?"
-          description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc — rester sur Wix, passer à WordPress ou investir dans un site fait pour l'acquisition — sans un euro d'affiliation dans la réponse."
-          tags={["Réponse sous 24 h ouvrées", "Zéro affiliation, zéro plateforme à vendre", "Avis franc, même si c'est « restez sur Wix »"]}
+          description="Décrivez votre projet en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis franc — rester sur Wix, passer à WordPress ou investir dans un site fait pour l'acquisition — sans un euro d'affiliation dans la réponse."
+          tags={["Objectif : prochain jour ouvré", "Zéro affiliation, zéro plateforme à vendre", "Avis franc, même si c'est « restez sur Wix »"]}
         />
 
         <h2 id="verrouillage">9. La clause de sortie : ce que vous emportez en partant</h2>
@@ -589,9 +568,9 @@ export default function Page() {
           pas recréé ». En pratique, <strong>quitter Wix coûte le prix
           d&apos;un site neuf</strong> — création (800 à 6 000 € selon
           le prestataire) plus la reprise manuelle des contenus, plus
-          les redirections pour préserver l&apos;acquis Google. Pour
-          Claire, c&apos;est la mauvaise nouvelle annoncée : ses trois
-          ans de pages et d&apos;articles ne la suivront pas —
+          les redirections pour préserver l&apos;acquis Google. Dans le
+          scénario Claire, la mauvaise nouvelle serait la suivante : ses
+          trois ans de pages et d&apos;articles ne la suivraient pas —
           repartir tôt coûte moins cher que repartir tard, car chaque
           mois d&apos;écriture sur Wix augmente la rançon du départ.
           La leçon vaut avant de choisir :{" "}
@@ -607,7 +586,7 @@ export default function Page() {
           ces trois réflexes vaudront des semaines de re-saisie.
         </p>
 
-        <InfoBox variant="blue" title="Les trois chemins de Claire, chiffrés">
+        <InfoBox variant="blue" title="Les trois chemins simulés pour Claire">
           <strong>Rester sur Wix</strong> : passer au forfait Essentiel
           (30 € TTC/mois) pour dépasser les 2 Go de stockage de Light
           et outiller le blog — ≈ 1 330 € sur 3 ans (forfait + domaine
@@ -623,8 +602,8 @@ export default function Page() {
           d&apos;acquisition sur mesure</strong> : 6 900 € et plus —
           le choix cohérent dès lors que la visibilité doit devenir le
           premier canal de l&apos;activité… ce qui est précisément le
-          projet de Claire. Sa décision rationnelle
-          aujourd&apos;hui : le chemin 3 si son projet est confirmé,
+          projet du scénario. Sa décision rationnelle
+          serait le chemin 3 si son projet était confirmé,
           le chemin 2 si le budget l&apos;impose — et dans les deux
           cas partir vite, car chaque mois d&apos;écriture sur Wix
           alourdit la reprise manuelle.
@@ -657,8 +636,8 @@ export default function Page() {
           photo ou un tarif dans un WordPress bien construit est du
           même ordre de difficulté que dans Wix. C&apos;est
           l&apos;arrière-boutique qui demande un professionnel, pas le
-          comptoir — Claire continuera de publier seule, quel que soit
-          son choix.
+          comptoir — Claire pourrait continuer de publier seule, quel que
+          soit son choix.
         </p>
 
         <h2 id="marche">11. Parts de marché : deux trajectoires opposées</h2>
@@ -698,7 +677,7 @@ export default function Page() {
             ["Stratégie de contenu, ambition Google au-delà du local", "WordPress ou sur-mesure", "WordPress si le budget est contraint ; liberté SEO totale (architecture, vitesse, stratégie de guides) en sur-mesure — section 13"],
             ["Boutique en ligne en croissance", "WordPress (WooCommerce)", "Wix coince vers 500-1 000 produits ou ~10 000 €/mois de chiffre d'affaires"],
             ["Site stratégique : acquisition, conversion, vitesse garantie", "Sur-mesure", "Le site est un actif commercial — section 13"],
-            ["Claire, notre fil rouge (blog santé ambitieux)", "Sur-mesure si le projet est confirmé — WordPress si le budget l'impose", "Et partir tôt dans les deux cas : chaque mois sur Wix alourdit la reconstruction"],
+            ["Claire, scénario fictif composite (blog santé ambitieux)", "Sur-mesure si le projet est confirmé — WordPress si le budget l'impose", "Et partir tôt dans les deux cas : chaque mois sur Wix alourdit la reconstruction"],
           ]}
         />
 
@@ -809,7 +788,7 @@ export default function Page() {
           votre cas sur vos
           chiffres.{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées,
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré,
           gratuite et sans engagement.
         </p>
 

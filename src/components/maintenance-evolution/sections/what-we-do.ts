@@ -5,12 +5,11 @@ export const whatWeDoHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— Ce qu'on fait, tous les jours</div>
-        <h2>Huit métiers qu'on tient<br>pour que votre app vive<br>3, 5, 10 ans.</h2>
+        <h2>Huit métiers à combiner<br>pour maintenir et faire évoluer<br>votre application.</h2>
       </div>
       <div class="right">
-        Pas un simple "support", pas une régie à la journée. Une équipe nommée qui
-        <b>reprend, surveille, patche, fait évoluer</b> votre app — et reste là quand les autres
-        ont envoyé la facture finale.
+        Le diagnostic permet de sélectionner les activités utiles. Le devis nomme les intervenants,
+        la capacité et les responsabilités pour <b>reprendre, surveiller, corriger et faire évoluer</b> l'application.
       </div>
     </div>
 
@@ -28,11 +27,11 @@ export const whatWeDoHtml = `
         <h3>Reprise d'app orpheline</h3>
         <p>Votre prestataire a disparu, le code est là, mais plus d'équipe. Un <a href="/services/audit-technique"><b>diagnostic initial</b></a> peut couvrir le code, l'infrastructure, la sécurité et la dette avant de définir une reprise progressive.</p>
         <div class="me-wwd-tags">
-          <span class="me-wwd-tag">Audit flash 5 j</span>
+          <span class="me-wwd-tag">Diagnostic chiffré</span>
           <span class="me-wwd-tag">Plan de reprise</span>
           <span class="me-wwd-tag">Bascule propre</span>
         </div>
-        <div class="me-wwd-flag">Point d'entrée n°1</div>
+        <div class="me-wwd-flag">Cas de reprise à diagnostiquer</div>
       </article>
 
       <!-- 02 · MAINTENANCE APPLICATIVE -->
@@ -62,7 +61,7 @@ export const whatWeDoHtml = `
           </div>
           <span class="me-wwd-badge me-wwd-badge-observability">Observabilité</span>
         </div>
-        <h3>Monitoring &amp; observabilité 24/7</h3>
+        <h3>Monitoring &amp; observabilité selon couverture</h3>
         <p>Sentry, Better Stack, Grafana, Axiom ou des équivalents peuvent couvrir erreurs, disponibilité, métriques et logs. <b>Seuils, canaux et horaires de surveillance</b> sont définis au devis.</p>
         <div class="me-wwd-tags">
           <span class="me-wwd-tag">Sentry</span>
@@ -116,11 +115,11 @@ export const whatWeDoHtml = `
           </div>
           <span class="me-wwd-badge me-wwd-badge-roadmap">Roadmap</span>
         </div>
-        <h3>Roadmap produit trimestrielle</h3>
-        <p>Pas un exécutant passif. On <b>propose, challenge, priorise</b> au comité mensuel. Roadmap 12 mois partagée, OKRs tech, revue trimestrielle. Votre board voit clair sur les 6 prochains mois — sans attendre votre CTO interne.</p>
+        <h3>Roadmap produit et revues</h3>
+        <p>Les propositions, arbitrages, indicateurs et horizons de roadmap sont partagés avec les responsables nommés. Le devis fixe la périodicité des comités et le format de décision.</p>
         <div class="me-wwd-tags">
-          <span class="me-wwd-tag">Comité mensuel</span>
-          <span class="me-wwd-tag">Roadmap 12 mois</span>
+          <span class="me-wwd-tag">Comité au devis</span>
+          <span class="me-wwd-tag">Horizon partagé</span>
           <span class="me-wwd-tag">OKRs partagés</span>
         </div>
       </article>

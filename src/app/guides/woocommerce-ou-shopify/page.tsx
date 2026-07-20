@@ -32,17 +32,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -157,7 +146,7 @@ const faqItems = [
   {
     question: "Quel impact sur le SEO lors d'une migration ?",
     answer:
-      "C'est le vrai risque, et il se maîtrise. Les adresses de pages changent mécaniquement (WooCommerce utilise /product/, Shopify impose /products/) : chaque ancienne adresse doit être redirigée vers sa nouvelle équivalente — le plan de redirections 301, systématique et page par page. Bien exécutée (inventaire complet, redirections, surveillance 30 jours), une migration conserve le référencement acquis ; bâclée, elle peut coûter des mois de trafic. Le processus complet, ses prix et ses pièges sont dans notre guide du prix d'une refonte — il s'applique intégralement à un changement de plateforme e-commerce.",
+      "C'est un risque important qui se pilote sans pouvoir garantir les positions. Les adresses de pages changent mécaniquement (WooCommerce utilise /product/, Shopify impose /products/) : chaque ancienne adresse doit être redirigée vers sa nouvelle équivalente — le plan de redirections 301, systématique et page par page. Un inventaire complet, des redirections testées et une surveillance après mise en ligne réduisent les risques contrôlables ; une migration bâclée peut faire perdre du trafic. Le processus complet, ses prix et ses pièges sont dans notre guide du prix d'une refonte — il s'applique intégralement à un changement de plateforme e-commerce.",
   },
   {
     question: "Comment se comparent les coûts réels sur la durée ?",
@@ -176,23 +165,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -320,9 +298,10 @@ export default function Page() {
           responsabilité à des endroits différents.
         </p>
         <p>
-          Fil rouge de ce guide : <strong>Les Toiles du Lac, marque de
+          Fil rouge de ce guide : <strong>scénario fictif composite —
+          ni client ni témoignage réel — avec Les Toiles du Lac, marque de
           sacs en toile recyclée à Aix-les-Bains</strong>. Deux
-          associées, un site WordPress qui existe déjà — un blog
+          associées auraient un site WordPress qui existe déjà — un blog
           d&apos;atelier suivi, de bonnes positions Google sur
           « sac cabas toile recyclée » — et une gamme de 40 produits
           prête à vendre. Leur hésitation est exactement celle de ce
@@ -452,7 +431,7 @@ export default function Page() {
           comparables (1,5 à 1,1 % + 0,25 €)… mais le libre choix se
           paie : <strong>0,6 à 2 % de pénalité</strong> sur chaque
           vente si vous passez par un prestataire externe. Traduction
-          pour Les Toiles du Lac à terme (disons 300 000 € de CA) :
+          pour le scénario Les Toiles du Lac à terme (hypothèse : 300 000 € de CA) :
           avec PayPlug Pro à 1,1 % au lieu de 1,5 %, l&apos;écart
           représente environ <strong>1 200 € par an — soit ≈ 840 €
           net une fois déduit l&apos;abonnement PayPlug de
@@ -480,7 +459,7 @@ export default function Page() {
         <p>
           Incarnons avec notre fil rouge, à volume de démarrage :
         </p>
-        <InfoBox variant="blue" title="Le calcul des Toiles du Lac, première année">
+        <InfoBox variant="blue" title="Le calcul simulé des Toiles du Lac, première année">
           <strong>Chemin WooCommerce</strong> — leur WordPress existe
           déjà : ajout de la boutique par un freelance (2 500 à
           4 000 €), hébergement sérieux déjà payé, thème e-commerce
@@ -514,8 +493,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre boutique relève-t-elle de WooCommerce, de Shopify — ou d'aucun des deux ?"
-          description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc et argumenté — nous ne vendons ni thèmes, ni apps, ni hébergement. Nous recommandons encore une plateforme là où elle reste imbattable (micro-budget, test de marché ou side-project, vente en caisse physique, WordPress vivant dont le contenu est l'actif), et le sur-mesure quand la boutique est le cœur de l'entreprise."
-          tags={["Réponse sous 24 h ouvrées", "Avis indépendant : aucune plateforme à vendre", "E-commerce 15 000 – 120 000 €"]}
+          description="Décrivez votre projet en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis franc et argumenté — nous ne vendons ni thèmes, ni apps, ni hébergement. Nous recommandons encore une plateforme là où elle reste imbattable (micro-budget, test de marché ou side-project, vente en caisse physique, WordPress vivant dont le contenu est l'actif), et le sur-mesure quand la boutique est le cœur de l'entreprise."
+          tags={["Objectif : prochain jour ouvré", "Avis indépendant : aucune plateforme à vendre", "E-commerce 15 000 – 120 000 €"]}
         />
 
         <h2 id="performance">8. La vitesse, mesurée sur données réelles</h2>
@@ -606,8 +585,8 @@ export default function Page() {
 
         <h2 id="seo">10. SEO et contenu : adresses libres contre cadre imposé</h2>
         <p>
-          Pour Les Toiles du Lac — dont le blog d&apos;atelier amène
-          l&apos;essentiel du trafic —, ce chapitre pèse lourd.
+          Pour le scénario Les Toiles du Lac — dont le blog d&apos;atelier
+          amènerait l&apos;essentiel du trafic —, ce chapitre pèse lourd.
           Structurellement, <strong>WooCommerce part avec
           l&apos;avantage</strong> : les adresses de pages sont
           entièrement libres (vous pouvez construire
@@ -684,7 +663,7 @@ export default function Page() {
             ["Vente aussi en boutique physique ou sur les marchés", "Shopify", "Caisse et stock unifiés en natif (POS) ; côté Woo, extensions tierces à assembler"],
             ["Boutique cœur de l'entreprise", "Sur-mesure (React/Next.js), à chiffrer avant de trancher", "Évite un projet de migration complet deux ans plus tard — budgets en section 13"],
             ["Boutique qui grossit vers le B2B ou une logique de vente hors standard", "Sur-mesure direct si le besoin métier est déjà là ; s'il reste à valider, testez sur la plateforme en budgétant la bascule dès le départ", "La bascule se planifie et se chiffre — section 13"],
-            ["Les Toiles du Lac (notre fil rouge)", "WooCommerce", "Leur WordPress et son trafic sont un actif : on construit dessus — au volume de lancement, le sur-mesure (15 000 €+) se rechiffrera quand la boutique aura fait ses preuves"],
+            ["Les Toiles du Lac (scénario fictif composite)", "WooCommerce", "Leur WordPress et son trafic sont un actif dans l'hypothèse : on construit dessus — au volume de lancement, le sur-mesure (15 000 €+) se rechiffrera quand la boutique aura fait ses preuves"],
           ]}
         />
 
@@ -783,8 +762,8 @@ export default function Page() {
           plateformes chaque fois qu&apos;elles restent imbattables :
           micro-budget de lancement, test de marché ou side-project,
           vente physique unifiée (le POS) — et site WordPress vivant
-          dont le contenu est l&apos;actif, comme Les Toiles du Lac, à
-          qui ce guide recommande WooCommerce sans arrière-pensée. Ce
+          dont le contenu est l&apos;actif. Dans le scénario Les Toiles du
+          Lac, l&apos;analyse conduirait ainsi à recommander WooCommerce. Ce
           site lui-même est développé à 100 % en React/Next.js avec
           Claude Code — la vitesse, la qualité visuelle et la
           stratégie de guides que vous lisez en ce moment en sont la
@@ -795,7 +774,7 @@ export default function Page() {
           chiffres réels — trafic, volumes, équipe — et produit une
           recommandation écrite, quelle qu&apos;elle soit.{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées,
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré,
           gratuite et sans engagement.
         </p>
 

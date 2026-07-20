@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import { ContactPage } from "@/components/contact/ContactPage";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { PUBLIC_ORGANIZATION_ENTITY } from "@/lib/organization-structured-data";
 
 export const metadata: Metadata = {
-  title: "Contact agence web Chambéry · Réponse 24 h · Hagnéré Code",
+  title: "Contact agence web à Chambéry · Hagnéré Code",
   description:
-    "Parlez à quelqu'un qui code — pas à un commercial. Réponse sous 24 h ouvrées (souvent 3 à 6 h), 30 min de cadrage gratuit. Bureau à Bassens, aux portes de Chambéry.",
+    "Parlez à quelqu'un qui code — pas à un commercial. Objectif de réponse le prochain jour ouvré, sans délai garanti. Bureau à Bassens, aux portes de Chambéry.",
   alternates: { canonical: "/contact" },
   openGraph: {
     ...OG_BASE,
     title: "Contact projet web sur mesure · Hagnéré Code Chambéry",
     description:
-      "SaaS, applications métier, outils internes, reprise Laravel. Quelqu'un qui code répond sous 24 h ouvrées.",
+      "SaaS, applications métier, outils internes, reprise Laravel. Votre demande est lue par quelqu'un qui code.",
     url: "/contact",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -24,63 +25,9 @@ const contactJsonLd = JSON.stringify({
   url: "https://hagnere-code.ai/contact",
   description:
     "Prendre contact avec Hagnéré Code pour un projet web sur mesure : SaaS B2B, application métier, outil interne, reprise Laravel ou site vitrine.",
-  mainEntity: {
-    "@type": "ProfessionalService",
-    "@id": "https://hagnere-code.ai/#business",
-    name: "Hagnéré Code",
-    legalName: "HAGNERE CODE",
-    url: "https://hagnere-code.ai",
-    logo: "https://hagnere-code.ai/logos/logo-dark.png",
-    image: "https://hagnere-code.ai/og-image.png",
-    priceRange: "€€€",
-    email: "quentin@hagnere-patrimoine.fr",
-    telephone: "+33374472018",
-    vatID: "FR30993672856",
-    foundingDate: "2025-09-30",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "82 impasse de Bellevue",
-      addressLocality: "Bassens",
-      addressRegion: "Savoie",
-      postalCode: "73000",
-      addressCountry: "FR",
-    },
-    // Zones réellement desservies : ancrage physique en Savoie, et travail à
-    // distance sur toute la France (c'est la réalité de l'activité, donc c'est
-    // ce qu'on déclare). Ce champ décrit le périmètre commercial ; il n'est PAS
-    // le levier de positionnement sur les villes hors bassin — celui-ci passe
-    // par les contenus nationaux et les pages technologies (§ « moteur
-    // national » de docs/plan-seo-local-savoie.md).
-    areaServed: [
-      "Chambéry",
-      "Savoie",
-      "Haute-Savoie",
-      "Auvergne-Rhône-Alpes",
-      "Lyon",
-      "Grenoble",
-      "France",
-    ],
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "19:00",
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "sales",
-      email: "quentin@hagnere-patrimoine.fr",
-      telephone: "+33374472018",
-      availableLanguage: ["French"],
-      areaServed: "FR",
-      hoursAvailable: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "09:00",
-        closes: "19:00",
-      },
-    },
-  },
+  // Source unique : la page Contact ne redéclare plus une seconde version de
+  // l'entreprise avec d'autres zones, horaires ou identifiants.
+  mainEntity: PUBLIC_ORGANIZATION_ENTITY,
 });
 
 const breadcrumbJsonLd = JSON.stringify({
@@ -92,64 +39,12 @@ const breadcrumbJsonLd = JSON.stringify({
   ],
 });
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Je n'ai pas encore de brief précis — je vous dérange ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Non, au contraire. La moitié de nos prospects arrive avec une idée mais pas de cahier des charges. C'est exactement le moment où un cadrage honnête vous fait gagner 3 mois. On vous pose les bonnes questions, vous repartez avec une direction claire — même si on ne bosse finalement pas ensemble.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "C'est gratuit, vraiment ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Oui, 100 %. Le premier échange (30 min), le cadrage léger et l'avis franc sont gratuits. Si on décide ensemble de creuser, on passe à un Discovery Sprint payé (1 500 €, 2 jours, entièrement déduit du devis final). Aucune facturation avant signature d'un forfait.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Combien de temps avant votre réponse ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "24 h ouvrées maximum, en pratique 3–6 h la plupart du temps. Le week-end et les jours fériés, on coupe : mieux vaut une équipe reposée le lundi qu'une équipe rincée le dimanche.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Et si mon projet n'est pas pour vous ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "On vous le dit en 2 minutes et on vous oriente. Réseau de confrères freelances et studios sur Chambéry, Lyon, Paris, Bordeaux. Si ce n'est pas du web (Next.js/React ou reprise Laravel/PHP), pas PME/ETI — on vous envoie vers le bon interlocuteur. Zéro intérêt à vous garder chez nous si on n'est pas la bonne équipe.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Je veux voir du code avant de vous parler.",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Normal. Nos 4 projets publics (LMNP.AI, SCI-AI, Hagnéré Patrimoine, Hagnéré Investissement) sont tous visitables en direct. Pendant l'appel de 30 min, on peut aussi vous faire une démo live en partage d'écran sur nos repos Git privés.",
-      },
-    },
-  ],
-});
 
 export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: contactJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
       <ContactPage />
     </>
   );

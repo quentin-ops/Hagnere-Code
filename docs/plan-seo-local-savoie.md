@@ -556,23 +556,16 @@ jamais dans une liste de fin de page. Exemples d'ancres réelles :
 
 ### 6.1 Règle de gouvernance des entités
 
-Il existe **une** entité `ProfessionalService`, `https://hagnere-code.ai/#business`,
-**déclarée en entier à un seul endroit** — l'accueil, `src/app/page.tsx`. Partout ailleurs,
-référence par `@id` uniquement.
+Il existe **une** entité combinant `Organization` et `ProfessionalService`,
+`https://hagnere-code.ai/#organization`. Sa source unique est
+`src/lib/organization-structured-data.ts`. L'accueil la déclare en entier ; les
+autres pages réutilisent cette source ou la référencent par `@id`.
 
-**Défaut existant à corriger avant toute nouvelle page [VU dans le code]** : l'entité
-`#business` est aujourd'hui déclarée **deux fois avec des contenus divergents**.
-
-- `src/app/page.tsx` — `areaServed` = objets `AdministrativeArea` : Savoie, Haute-Savoie,
-  Isère, Ain, Auvergne-Rhône-Alpes, France.
-- `src/app/contact/page.tsx` — `areaServed` = chaînes de caractères : Chambéry, Savoie,
-  Haute-Savoie, **Lyon, Grenoble**, France.
-
-Deux définitions contradictoires du même `@id` affaiblissent la consolidation de l'entité, et
-le problème devient sérieux dès que vingt pages référencent cet `@id`. **Action vague 0** :
-supprimer la redéclaration dans `/contact`, la remplacer par `mainEntity: { "@id": … }`, et
-retirer Lyon et Grenoble d'`areaServed` — l'agence n'y a ni client ni présence, et le cas
-Digital Unicorn / Brest montre que la déclaration ne produit rien.
+**Correction réalisée le 20 juillet 2026.** L'ancien `#business` était déclaré
+plusieurs fois avec des contenus divergents. Il a été fusionné dans
+`#organization`, l'adresse a été alignée sur Bassens, et les zones Lyon et
+Grenoble ont été retirées de l'identité centrale. Un test bloque le retour de
+`#business`, d'un ancien SIRET ou d'une seconde identité contradictoire.
 
 **Second point à trancher en vague 0** : le champ `email` de l'entité est
 `quentin@hagnere-patrimoine.fr`. C'est une incohérence NAP visible — l'adresse e-mail
@@ -584,10 +577,10 @@ porter exactement le même triplet nom / adresse / téléphone / e-mail.
 
 | Type de page | Balisage |
 |---|---|
-| Accueil | `Organization` + `WebSite` + **`ProfessionalService` — déclaration complète, unique** |
-| `/agence` | `WebPage` + `BreadcrumbList` + `mainEntity: {@id: #business}`. Pas de seconde déclaration |
+| Accueil | entité unique `Organization` + `ProfessionalService`, puis `WebSite` |
+| `/agence` | entité centrale réutilisée + `BreadcrumbList`. Pas de seconde version manuelle |
 | `/agence/{dept}` | `Service` (`areaServed: AdministrativeArea`) + `provider: {@id}` + `BreadcrumbList` |
-| `/agence/{dept}/{ville}` | `Service` (`areaServed: City`) + `provider: {@id}` + `BreadcrumbList` + `FAQPage` **si et seulement si la FAQ est réellement locale** |
+| `/agence/{dept}/{ville}` | `Service` (`areaServed: City`) + `provider: {@id}` + `BreadcrumbList`. Une FAQ peut rester visible si elle est réellement locale, sans schéma `FAQPage` |
 | `/agence/…/{service}` | `Service` avec `serviceType` précis + `areaServed: City` + `provider: {@id}` + `BreadcrumbList` |
 | `/secteurs/{slug}` | `Service` + `audience: BusinessAudience` + `areaServed` (les deux `AdministrativeArea`) + `provider: {@id}` + `BreadcrumbList` |
 
@@ -656,7 +649,7 @@ porter exactement le même triplet nom / adresse / téléphone / e-mail.
        l'accueil. Un seul nom, une seule adresse, un seul téléphone sur tout
        le domaine — c'est ce qui rend l'ensemble cohérent avec la fiche GBP
        et avec le SIREN 993672856. */
-    "provider": { "@id": "https://hagnere-code.ai/#business" },
+    "provider": { "@id": "https://hagnere-code.ai/#organization" },
 
     /* areaServed ne liste QUE des communes réellement traitées dans le corps
        visible de la page. Un areaServed de 40 communes sous une page qui en
@@ -694,31 +687,6 @@ porter exactement le même triplet nom / adresse / téléphone / e-mail.
     },
 
     "inLanguage": "fr-FR"
-  },
-
-  /* ─────────── 4. FAQ — CONDITIONNELLE ───────────
-     À n'inclure QUE si les questions sont réellement locales et réellement
-     présentes dans le HTML visible. Une FAQPage dont les questions sont
-     transposables d'une ville à l'autre est un balisage de gabarit : elle
-     rend le duplicate lisible par la machine, ce qui est pire que de ne rien
-     baliser du tout. */
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": "https://hagnere-code.ai/agence/savoie/aix-les-bains#faq",
-    "isPartOf": { "@id": "https://hagnere-code.ai/agence/savoie/aix-les-bains#webpage" },
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Pouvez-vous livrer avant l'ouverture de la saison thermale ?",
-        "acceptedAnswer": { "@type": "Answer",
-          "text": "Les Thermes Chevalley et Marlioz ouvrent début février. Pour qu'un site d'hébergement de cure ou de praticien soit en ligne et indexé à l'ouverture, le projet doit démarrer au plus tard en octobre. Au-delà, nous le disons plutôt que de promettre une date que nous ne tiendrions pas." } },
-      {
-        "@type": "Question",
-        "name": "Vous déplacez-vous à Aix-les-Bains pour le premier rendez-vous ?",
-        "acceptedAnswer": { "@type": "Answer",
-          "text": "Oui, systématiquement et sans condition de budget : nos bureaux sont au 82 impasse de Bellevue à Bassens, soit une vingtaine de minutes. Nous nous déplaçons aussi sur les parcs des Combaruches et des Sources, et à Savoie Hexapôle." } }
-    ]
   }
 ]
 ```
@@ -726,7 +694,8 @@ porter exactement le même triplet nom / adresse / téléphone / e-mail.
 **Trois règles qui découlent de cet exemple.**
 
 1. `areaServed` ne contient **jamais** une commune que le texte visible ne mentionne pas.
-2. `FAQPage` n'est jamais posé par défaut : il n'apparaît que si la FAQ est locale.
+2. Une FAQ locale peut rester visible si elle aide le lecteur, mais le schéma
+   `FAQPage` retiré par Google en 2026 n'est jamais publié.
 3. Aucune page locale ne porte de balisage de prix (`Offer.price`, `PriceSpecification`,
    `AggregateOffer`). Le funnel est lead-only ; publier une tarification structurée sur une
    page locale contredirait la règle et exposerait à des extraits de prix que personne ne
@@ -922,7 +891,7 @@ sont plus une **condition** de publication.
 |---|---|---|
 | 1 | Créer et faire valider la fiche Google Business Profile | Fiche validée, catégories arbitrées, 10 zones de service, 8 photos réelles |
 | 2 | Figer le NAP et corriger l'e-mail public | Triplet unique documenté, e-mail sur le domaine hagnere-code.ai |
-| 3 | Corriger le JSON-LD `#business` dupliqué (`src/app/contact/page.tsx`) | Une seule déclaration, sur l'accueil. Lyon et Grenoble retirés d'`areaServed` |
+| 3 | **Terminé le 20/07/2026** — fusionner `#business` dans l'entité centrale `#organization` | Source unique testée ; Lyon et Grenoble retirés de l'identité centrale |
 | 4 | Créer `src/lib/local-pages.ts` et brancher le sitemap | Registre vide mais opérationnel, test structurel vert |
 | 5 | Inscription à `auvergnerhonealpes.digital` | Fiche en ligne |
 | 6 | Appeler le Club des Entreprises USMB (04 50 09 24 06) | Tarif connu, décision d'adhésion prise |
@@ -1122,7 +1091,7 @@ Puis la liste de contrôle, dix points, tous obligatoires :
 | 2 | **Test des H2** | J'aligne les H2 de cette page et de la page ville voisine : les listes sont différentes, pas identiques à l'ordre près |
 | 3 | **Test des sources** | Chaque chiffre a une source nommée et un millésime. Aucune exception |
 | 4 | **Test de l'île** | La page est atteignable depuis la navigation, depuis son pilier départemental, depuis `/agence`, et elle est dans le sitemap |
-| 5 | **Test du balisage** | Un seul `@id` `#business` sur tout le domaine. `areaServed` ne cite que des communes présentes dans le texte visible. `FAQPage` uniquement si la FAQ est locale |
+| 5 | **Test du balisage** | Un seul `@id` `#organization` pour l'entreprise et aucun `#business`. `areaServed` ne cite que des zones réellement desservies. Aucun schéma `FAQPage` |
 | 6 | **Test de la preuve** | Soit une référence locale nommée et vérifiable, soit **rien**. Jamais de témoignage anonymisé |
 | 7 | **Test du maillage** | 3 à 5 liens vers `/services/*`, 2 à 3 vers des guides, au maximum 2 vers des villes sœurs et chacun justifié dans la phrase. Total ≤ 18 |
 | 8 | **Test des ancres** | Aucune ancre vers une page service nationale ne contient un nom de ville. Aucune ancre répétée |
@@ -1141,12 +1110,13 @@ un peu moins brillante, et elle reste vraie.
 
 ## Annexe — journal des vérifications du 18/07/2026
 
-**Vérifié dans le code du dépôt :**
-`src/app/page.tsx` et `src/app/contact/page.tsx` déclarent tous deux l'entité
-`https://hagnere-code.ai/#business` avec des `areaServed` divergents · `src/lib/guides.ts`
-contient 23 guides · `src/components/realisations/cases.ts` contient 4 cas, tous des entités
-du groupe Hagnéré · `src/app/sitemap.test.ts` impose déjà que toute `page.tsx` figure au
-sitemap · aucune route `/agence` n'existe à ce jour.
+**Constat historique du 18 juillet 2026, corrigé le 20 juillet 2026 :**
+`src/app/page.tsx` et `src/app/contact/page.tsx` déclaraient tous deux l'entité
+`https://hagnere-code.ai/#business` avec des `areaServed` divergents. Le site
+utilise désormais la source unique `src/lib/organization-structured-data.ts`
+et l'`@id` `#organization`. Le nombre courant de guides et de routes locales
+est vérifié automatiquement depuis les registres ; ne plus recopier un total
+figé dans ce journal historique.
 
 **Vérifié par curl et inspection HTML :**
 le lien sortant d'une fiche société sur `auvergnerhonealpes.digital` porte

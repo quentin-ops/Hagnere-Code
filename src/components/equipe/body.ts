@@ -136,11 +136,11 @@ ${navHtml}
     <div class="kpi-grid">
       <div class="kpi reveal">
         <div class="kpi-n">${TEAM_TOTAL_COUNT}<span class="kpi-s"></span></div>
-        <div class="kpi-l">Personnes au total,<br>gérant et CTO compris.</div>
+        <div class="kpi-l">Personnes au total,<br>président et CTO compris.</div>
       </div>
       <div class="kpi reveal reveal-d-1">
         <div class="kpi-n">${TEAM_OTHER_DEVELOPERS_COUNT}<span class="kpi-s"></span></div>
-        <div class="kpi-l">Développeurs en plus<br>du gérant et du CTO.</div>
+        <div class="kpi-l">Développeurs en plus<br>du président et du CTO.</div>
       </div>
       <div class="kpi reveal reveal-d-2">
         <div class="kpi-n">0<span class="kpi-s">%</span></div>
@@ -173,10 +173,10 @@ ${navHtml}
     <div class="founder-card reveal">
       <div class="founder-photo-wrap">
         <div class="founder-photo">
-          <img src="/team/quentin.webp" alt="Quentin Hagnéré, gérant associé codeur de Hagnéré Code" loading="lazy" />
+          <img src="/team/quentin.webp" alt="Quentin Hagnéré, président fondateur codeur de Hagnéré Code" width="740" height="926" loading="lazy" decoding="async" />
           <div class="founder-photo-tag">
             <span class="dot"></span>
-            ASSOCIÉ DIRIGEANT
+            PRÉSIDENT FONDATEUR
           </div>
         </div>
 
@@ -200,7 +200,7 @@ ${navHtml}
         <div class="founder-head">
           <div>
             <h3 class="founder-name">Quentin Hagnéré</h3>
-            <div class="founder-role">Gérant associé codeur — Brief client · Design · Front-end · Back-office</div>
+            <div class="founder-role">Président fondateur codeur — Brief client · Design · Front-end · Back-office</div>
           </div>
           <a class="founder-li" href="https://www.linkedin.com/in/quentin-hagnere" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Quentin Hagnéré">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -966,7 +966,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— Questions fréquentes</div>
         <h2 style="margin-top:14px">Sur l'équipe.<br>Et la collaboration.</h2>
-        <p>Manquante ? <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a>, on répond sous 24 h ouvrées.</p>
+        <p>Manquante ? <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a>, nous visons le prochain jour ouvré, sans délai garanti.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">

@@ -1,7 +1,8 @@
 // Section PREUVES — remplace les anciens témoignages fabriqués.
 // Hagnéré Code n'a aucun client externe : aucune citation, aucune note, aucun
 // avatar, aucune promesse de mise en relation. La preuve est publique : les
-// quatre produits du groupe sont en ligne et c'est nous qui achetons leur trafic.
+// quatre pages produit sont accessibles publiquement. Leur disponibilité et les
+// fonctions affichées ne prouvent ni exploitation interne, ni achat média, ni résultat.
 // Classes réutilisées telles quelles depuis sections.css (aucune classe inventée).
 
 export const testimonialsHtml = `
@@ -10,64 +11,61 @@ export const testimonialsHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Aucun témoignage · quatre produits en ligne</div>
-        <h2>Pas de client à citer.<br>Des campagnes que nous payons.</h2>
+        <div class="eyebrow">— Aucun témoignage · quatre liens publics</div>
+        <h2>Pas de client à citer.<br>Des pages à vérifier directement.</h2>
       </div>
       <div class="right">
         Nous n'avons pas encore de client externe, donc aucun témoignage à afficher.
-        En revanche, les quatre produits ci-dessous sont les nôtres&nbsp;:
-        <b>nous les avons construits et c'est nous qui achetons le trafic qui les alimente</b>.
-        Le budget média part de notre trésorerie, pas de celle d'un annonceur.
+        Les liens ci-dessous permettent seulement de constater que les pages sont accessibles
+        et de lire les fonctions qu'elles présentent. <b>Ils ne prouvent ni campagnes actives,
+        ni budget média, ni conversion, ni exploitation technique par Hagnéré Code</b>.
       </div>
     </div>
 
     <div class="ads-testi-grid">
       <article class="ads-testi-card reveal">
-        <h3>Nous payons nos propres campagnes</h3>
+        <h3>Fonctions LMNP présentées publiquement</h3>
         <p class="ads-testi-quote">
-          LMNP.AI est en production et ouvert à tous. Le suivi des conversions, c'est nous
-          qui l'avons posé&nbsp;; la facture média de fin de mois, c'est nous qui la réglons.
-          Quand une campagne dépense sans rien rapporter, <b>aucun intermédiaire ne vient
-          nous l'expliquer</b>&nbsp;: nous le voyons le jour même, et c'est notre argent.
+          Le site LMNP.AI présente publiquement une offre de comptabilité pour locations meublées,
+          ses fonctions et ses conditions d'accès. Le lien permet de contrôler ces éléments visibles,
+          <b>pas les performances publicitaires ni l'organisation qui les opère</b>.
         </p>
         <div class="ads-testi-meta">
           <a class="ads-testi-name" href="https://lmnp.ai" target="_blank" rel="noopener">lmnp.ai</a>
           <div class="ads-testi-role">
-            Comptabilité fiscale LMNP et LMP · <b>conçu, développé et exploité par nous</b>
+            Comptabilité fiscale LMNP et LMP · <b>page publique à consulter</b>
           </div>
         </div>
       </article>
 
       <article class="ads-testi-card reveal reveal-d-1">
-        <h3>Un lancement parti de zéro</h3>
+        <h3>Fonctions SCI présentées publiquement</h3>
         <p class="ads-testi-quote">
-          SCI-AI.app a démarré sans audience et sans historique de conversions à donner
-          aux algorithmes. Nous avons donc vécu la phase que redoutent les annonceurs,
-          celle où les plateformes n'ont encore rien à optimiser. <b>Les arbitrages que
-          nous vous proposerons dans ce cas, nous les avons d'abord pris pour nous.</b>
+          SCI-AI.app présente publiquement une offre de comptabilité pour SCI, ses régimes
+          couverts et ses parcours visibles. Cette disponibilité <b>ne documente ni son audience,
+          ni son historique de conversions, ni les arbitrages média réalisés</b>.
         </p>
         <div class="ads-testi-meta">
           <a class="ads-testi-name" href="https://sci-ai.app" target="_blank" rel="noopener">sci-ai.app</a>
           <div class="ads-testi-role">
-            Comptabilité des SCI à l'IR et à l'IS · <b>mis en ligne et opéré par nous</b>
+            Comptabilité des SCI à l'IR et à l'IS · <b>page publique à consulter</b>
           </div>
         </div>
       </article>
 
       <article class="ads-testi-card reveal reveal-d-2">
-        <h3>Du clic jusqu'au CRM</h3>
+        <h3>Parcours éditoriaux et formulaires visibles</h3>
         <p class="ads-testi-quote">
-          Hagnéré Patrimoine et Hagnéré Investissement transforment des visiteurs en
-          demandes de rendez-vous, traitées dans un CRM que nous avons développé et que
-          nous administrons. Nous ne nous arrêtons donc pas au formulaire envoyé&nbsp;:
-          <b>nous voyons ce qu'une source publicitaire donne une fois les demandes
-          qualifiées par un humain</b>, et pas seulement ce qu'en dit la régie.
+          Hagnéré Patrimoine et Hagnéré Investissement publient des contenus, des offres
+          et des parcours de contact accessibles. On peut vérifier ces interfaces et leurs
+          mentions publiques, <b>mais pas en déduire le contenu d'un CRM, la qualification
+          des demandes ni l'attribution publicitaire</b>.
         </p>
         <div class="ads-testi-meta">
           <a class="ads-testi-name" href="https://hagnere-patrimoine.fr" target="_blank" rel="noopener">hagnere-patrimoine.fr</a>
           <div class="ads-testi-role">
-            Cabinet CIF et plateforme d'investissement immobilier ·
-            <b>site éditorial, formulaires et CRM maison</b>
+            Cabinet et plateforme d'investissement ·
+            <b>pages et formulaires publics à consulter</b>
           </div>
         </div>
       </article>
@@ -78,11 +76,9 @@ export const testimonialsHtml = `
       <a href="https://sci-ai.app" target="_blank" rel="noopener">sci-ai.app</a>,
       <a href="https://hagnere-patrimoine.fr" target="_blank" rel="noopener">hagnere-patrimoine.fr</a>,
       <a href="https://hagnere-investissement.fr" target="_blank" rel="noopener">hagnere-investissement.fr</a>.
-      Rien à demander, rien à signer pour aller les regarder.
-      Une agence livre puis s'en va&nbsp;; nous, nous restons sur nos produits, avec l'astreinte,
-      les factures d'infrastructure et les utilisateurs qui écrivent quand ça casse.
-      Le jour où un client acceptera d'être cité, il le sera nommément — d'ici là, cette section
-      restera vide de témoignages.
+      Rien à demander ni à signer pour ouvrir ces pages. Elles constituent une preuve de disponibilité
+      et de présentation publique à la date de consultation, pas une preuve de trafic, de sécurité,
+      d'exploitation, d'astreinte ou de résultat. Aucun témoignage externe n'est publié ici.
     </p>
   </div>
 </section>

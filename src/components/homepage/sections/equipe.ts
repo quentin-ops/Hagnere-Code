@@ -27,7 +27,7 @@ const CODEUR_SVG = `<svg class="eq-li-icon" width="14" height="14" viewBox="0 0 
 /** Avatar 36px : photo si dispo, sinon initiales sur fond gradient (variant numéroté). */
 function devAvatar(member: TeamMember, variantClass: string): string {
   if (member.photoAvailable) {
-    return `<div class="eq-dev-avatar eq-dev-avatar-photo"><img src="${member.photo}" alt="${member.fullName}" loading="lazy" /></div>`;
+    return `<div class="eq-dev-avatar eq-dev-avatar-photo"><img src="${member.photo}" alt="${member.fullName}" width="72" height="72" loading="lazy" decoding="async" /></div>`;
   }
   return `<div class="eq-dev-avatar ${variantClass}">${member.initials}</div>`;
 }
@@ -74,7 +74,7 @@ function renderDevCard(member: TeamMember, variantClass: string): string {
 /** Photo / placeholder du fondateur (grand format à gauche). */
 function renderFounderPhoto(): string {
   if (FOUNDER.photoAvailable) {
-    return `<img src="${FOUNDER.photo}" alt="${FOUNDER.fullName}, ${FOUNDER.role.toLowerCase()} de Hagnéré Code" loading="lazy" />`;
+    return `<img src="${FOUNDER.photo}" alt="${FOUNDER.fullName}, ${FOUNDER.role.toLowerCase()} de Hagnéré Code" width="740" height="926" loading="lazy" decoding="async" />`;
   }
   // Fallback : SVG initiales géantes sur fond dégradé violet (état historique).
   return `<svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
@@ -127,12 +127,11 @@ export const equipeHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— L'équipe</div>
-        <h2>${TEAM_TOTAL_COUNT} personnes :<br>un gérant, un CTO et ${TEAM_OTHER_DEVELOPERS_COUNT} autres développeurs.</h2>
+        <h2>${TEAM_TOTAL_COUNT} personnes :<br>un président, un CTO et ${TEAM_OTHER_DEVELOPERS_COUNT} autres développeurs.</h2>
       </div>
       <div class="right">
-        Pas de pool anonyme, pas de sous-traitance offshore, pas de white-label.
-        <b>${TEAM_PUBLIC_COMPOSITION}</b>. Toute l'équipe partage les mêmes rituels et utilise Claude Code.
-        Les personnes affectées à votre projet sont
+        <b>${TEAM_PUBLIC_COMPOSITION}</b>. Les profils, rôles et statuts affichés viennent de notre
+        source d'équipe publique. Les personnes réellement affectées à votre projet sont
         <b>nommées au cadrage</b> et figurent dans le devis.
       </div>
     </div>
@@ -143,7 +142,7 @@ export const equipeHtml = `
         <div class="eq-founder-photo">
           <div class="eq-founder-tag">
             <span class="dot"></span>
-            ASSOCIÉ DIRIGEANT
+            PRÉSIDENT FONDATEUR
           </div>
           ${renderFounderPhoto()}
         </div>
@@ -151,7 +150,7 @@ export const equipeHtml = `
           <div>
             <div class="eq-founder-name">${FOUNDER.fullName}</div>
             <span class="eq-founder-role">${FOUNDER.role} · ${FOUNDER.roleDetail}</span>
-            <a class="eq-founder-li" href="${FOUNDER.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn ${FOUNDER.fullName}">${LINKEDIN_SVG} Voir le profil</a>
+            <a class="eq-founder-li" href="${FOUNDER.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="Voir le profil LinkedIn de ${FOUNDER.fullName}">${LINKEDIN_SVG} Voir le profil</a>
           </div>
           <div class="eq-founder-quote">
             « ${FOUNDER.quote} »
@@ -166,8 +165,8 @@ export const equipeHtml = `
               <span class="v">Brief · cadrage · design · intégration front</span>
             </div>
             <div class="eq-fm">
-              <span class="k">Entreprises fondées</span>
-              <span class="v">3 · dont 2 cabinets actifs</span>
+              <span class="k">Profil public</span>
+              <span class="v">Parcours détaillé sur LinkedIn</span>
             </div>
             <div class="eq-fm">
               <span class="k">Studio</span>
@@ -180,15 +179,13 @@ export const equipeHtml = `
       <!-- EQUIPE TECH -->
       <div class="eq-team">
         <div class="eq-team-intro reveal">
-          <h3>Un CTO et des développeurs<br>seniors nommés,<br>augmentés par <em>Claude Code</em>.</h3>
+          <h3>Un CTO et des développeurs<br>nommés,<br>assistés par <em>Claude Code</em>.</h3>
           <p>
             Nicolas au CTO, puis Killian, Frédéric, Arthur, Ryan et Peter sur l'exécution —
-            tous seniors ou confirmés, spécialisés React/Next.js et TypeScript,
-            avec une expertise Laravel pour les reprises d'existant.
-            Le CTO apporte la vision transverse et le management tech, les devs la profondeur d'exécution.
-            Et tous utilisent <b>Claude Code</b> comme assistant de développement : recherches, cadrage,
-            architecture, plans d'implémentation. Résultat : <b>on pose moins de questions, on avance
-            plus vite, on livre plus proprement</b>.
+            avec les rôles et spécialités déclarés sur chaque carte. La composition réellement mobilisée,
+            la disponibilité et les responsabilités sont confirmées au devis.
+            Claude Code peut assister la recherche, l'exploration technique et les plans d'implémentation&nbsp;:
+            <b>ses sorties restent relues, testées et validées par un intervenant humain</b>.
           </p>
         </div>
 
@@ -203,27 +200,27 @@ export const equipeHtml = `
           <div class="eq-claude-body">
             <span class="tag">Méthode · Claude Code</span>
             <h4>Vous décrivez le besoin. On gère le reste.</h4>
-            <p>Pas de « 36 000 questions » : nos devs s'appuient sur Claude Code pour <b>faire la recherche de leur côté</b> — cadrage juridique, exploration technique, plans d'implémentation. Vous validez, on livre.</p>
+            <p>Claude Code peut aider à explorer une base de code, documenter des hypothèses et préparer un plan d'implémentation. Il ne remplace ni la validation métier, ni les tests, ni un conseil juridique qualifié.</p>
           </div>
         </div>
 
         <!-- Stats -->
         <div class="eq-stats reveal reveal-d-3">
           <div class="eqs">
-            <div class="n">7</div>
-            <div class="l">développeurs travaillent avec le gérant</div>
+            <div class="n">${TEAM_TOTAL_COUNT}</div>
+            <div class="l">profils présentés dans la source d'équipe publique</div>
           </div>
           <div class="eqs">
-            <div class="n">Senior</div>
-            <div class="l">niveau moyen de l'équipe tech</div>
+            <div class="n">1 + ${TEAM_OTHER_DEVELOPERS_COUNT}</div>
+            <div class="l">CTO et autres développeurs présentés</div>
           </div>
           <div class="eqs">
-            <div class="n">0</div>
-            <div class="l">offshore, white-label, pool anonyme</div>
+            <div class="n">DEVIS</div>
+            <div class="l">intervenants, rôles et statuts confirmés</div>
           </div>
           <div class="eqs">
-            <div class="n">100<span class="s"> %</span></div>
-            <div class="l">de l'équipe outillée avec Claude Code</div>
+            <div class="n">REVUE</div>
+            <div class="l">sorties IA vérifiées par un humain</div>
           </div>
         </div>
       </div>

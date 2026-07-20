@@ -8,8 +8,8 @@ export const processHtml = `
         <h2>De la prise en main à la<br>relation long-terme, en 7 étapes.</h2>
       </div>
       <div class="right">
-        Pas d'intégration de 3 mois avant de commencer à produire. <b>Onboarding en 4 semaines</b>,
-        puis rythme hebdo tenu pendant 3, 5, 10 ans. Trois phases claires, sept étapes, jalons documentés.
+        Le diagnostic détermine la durée d'intégration réaliste. <b>Le devis fixe les jalons d'onboarding</b>,
+        puis le contrat précise le rythme de run, les responsabilités, la durée et les revues.
       </div>
     </div>
 
@@ -17,7 +17,7 @@ export const processHtml = `
     <div class="me-proc-phase reveal">
       <div class="me-proc-phase-head" data-phase="setup">
         <span class="me-proc-phase-k">PHASE 01 · ONBOARDING</span>
-        <span class="me-proc-phase-d">Jour -5 → Semaine 4</span>
+        <span class="me-proc-phase-d">Calendrier au devis</span>
         <span class="me-proc-phase-n">4 étapes</span>
       </div>
     </div>
@@ -29,9 +29,9 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
           </div>
         </div>
-        <h4>Audit flash &amp; diagnostic</h4>
-        <p>Revue code, infra, sécurité, dépendances, backups, monitoring existant. Livrable&nbsp;: rapport 15-25 pages + plan de remédiation priorisé impact/effort.</p>
-        <div class="me-proc-step-foot">J-5 → J+5 · 2 devs full-time</div>
+        <h3>Audit flash &amp; diagnostic</h3>
+        <p>Revue du code, de l'infrastructure, de la sécurité, des dépendances, sauvegardes et outils existants. Le format du rapport, les intervenants et le plan de remédiation sont précisés au devis.</p>
+        <div class="me-proc-step-foot">Charge et délai confirmés après inventaire</div>
       </article>
 
       <article class="me-proc-step" data-phase="setup">
@@ -41,9 +41,9 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
           </div>
         </div>
-        <h4>Prise de contrôle accès</h4>
-        <p>Bascule GitHub org, comptes cloud, DNS, Stripe, Intercom. Rotation des secrets, revue IAM. <b>Tout reste en propriété client</b> — on devient admin, pas propriétaire.</p>
-        <div class="me-proc-step-foot">Semaine 1 → 2 · sans coupure</div>
+        <h3>Prise de contrôle accès</h3>
+        <p>GitHub, comptes cloud, DNS, Stripe, Intercom, secrets et IAM sont inventoriés avant toute bascule. <b>Titularité, droits, licences et transfert après paiement</b> suivent le devis et les CGV.</p>
+        <div class="me-proc-step-foot">Protocole de bascule et retour arrière validé</div>
       </article>
 
       <article class="me-proc-step" data-phase="setup">
@@ -53,9 +53,9 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l3 3 4-8 4 12 3-5h4"/></svg>
           </div>
         </div>
-        <h4>Branchement observability</h4>
-        <p>Sentry, Better Stack, Grafana, Axiom, PagerDuty installés et calibrés. Statuspage publique mise en ligne. Premier dashboard health opérationnel.</p>
-        <div class="me-proc-step-foot">Semaine 2 → 3 · alerte Slack live</div>
+        <h3>Branchement observability</h3>
+        <p>Sentry, Better Stack, Grafana, Axiom, PagerDuty ou leurs équivalents sont sélectionnés selon la stack. Seuils, canaux, accès, licences et couverture sont calibrés au périmètre retenu.</p>
+        <div class="me-proc-step-foot">Outils et jalon de mise en service au devis</div>
       </article>
 
       <article class="me-proc-step" data-phase="setup">
@@ -65,9 +65,9 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l3-3 3 3M3 12l4-4 5 5 5-5 4 4"/></svg>
           </div>
         </div>
-        <h4>Backlog &amp; roadmap initiale</h4>
-        <p>Linear ou Notion ouvert, reprise des tickets Jira / Asana existants, priorisation ensemble. Roadmap 90 jours co-construite, OKRs tech alignés.</p>
-        <div class="me-proc-step-foot">Semaine 3 → 4 · comité J+30 calé</div>
+        <h3>Backlog &amp; roadmap initiale</h3>
+        <p>Linear, Notion ou l'outil convenu reprend les tickets existants. L'horizon de roadmap, les critères de priorité et le premier comité sont définis avec les responsables nommés.</p>
+        <div class="me-proc-step-foot">Horizon et date de revue convenus</div>
       </article>
     </div>
 
@@ -75,7 +75,7 @@ export const processHtml = `
     <div class="me-proc-phase reveal">
       <div class="me-proc-phase-head" data-phase="launch">
         <span class="me-proc-phase-k">PHASE 02 · RUN</span>
-        <span class="me-proc-phase-d">Mois 2 → permanent</span>
+        <span class="me-proc-phase-d">Après validation de l'onboarding</span>
         <span class="me-proc-phase-n">2 étapes</span>
       </div>
     </div>
@@ -87,7 +87,7 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
           </div>
         </div>
-        <h4>Sprint maintenance + évolutions</h4>
+        <h3>Sprint maintenance + évolutions</h3>
         <p>Le rythme de revue, de livraison et de maintenance est défini avec votre équipe. Bugs, évolutions et refactorings suivent des files et critères distincts, sans afficher de moyenne client inexistante.</p>
         <div class="me-proc-step-foot">Rythme et capacité définis au devis</div>
       </article>
@@ -99,7 +99,7 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v4M16 4v4"/></svg>
           </div>
         </div>
-        <h4>Rituels mensuels &amp; reporting</h4>
+        <h3>Rituels mensuels &amp; reporting</h3>
         <p>Le devis fixe le rythme de comité, le format du rapport, les destinataires et le délai d'un éventuel post-mortem. Les alertes et décisions restent traçables entre deux revues.</p>
         <div class="me-proc-step-foot">Rythme · format · destinataires au devis</div>
       </article>
@@ -109,7 +109,7 @@ export const processHtml = `
     <div class="me-proc-phase reveal">
       <div class="me-proc-phase-head" data-phase="pilot">
         <span class="me-proc-phase-k">PHASE 03 · SCALE &amp; RÉVISION</span>
-        <span class="me-proc-phase-d">Trimestriel + annuel</span>
+        <span class="me-proc-phase-d">Périodicité contractuelle</span>
         <span class="me-proc-phase-n">1 étape en continu</span>
       </div>
     </div>
@@ -122,24 +122,24 @@ export const processHtml = `
           </div>
         </div>
         <div class="me-proc-step-wide-body">
-          <h4>Revue trimestrielle, scaling, révision annuelle</h4>
-          <p>Tous les 3 mois&nbsp;: revue DORA (uptime, MTTR, deploy freq, CFR), ajustement de forfait si scaling, revue sécurité. Tous les 12 mois&nbsp;: <b>revue stratégique produit</b> avec vos décideurs. <b>La relation se renégocie explicitement chaque année</b> — pas par défaut silencieux.</p>
+          <h3>Revue trimestrielle, scaling, révision annuelle</h3>
+          <p>Les indicateurs DORA, la sécurité, la capacité et la roadmap sont revus selon la périodicité convenue. Le contrat précise aussi les conditions de révision du forfait, de renouvellement, de sortie et de passation.</p>
           <div class="me-proc-step-wide-grid">
             <div class="me-proc-step-wide-item">
-              <span class="me-proc-step-wide-k">Chaque lundi</span>
-              <span class="me-proc-step-wide-v">Standup Slack · priorités de la semaine</span>
+              <span class="me-proc-step-wide-k">Rythme opérationnel</span>
+              <span class="me-proc-step-wide-v">Priorités et canal convenus</span>
             </div>
             <div class="me-proc-step-wide-item">
-              <span class="me-proc-step-wide-k">Le 5 du mois</span>
-              <span class="me-proc-step-wide-v">Comité 1 h · rapport mensuel</span>
+              <span class="me-proc-step-wide-k">Comité de service</span>
+              <span class="me-proc-step-wide-v">Date, durée et rapport au devis</span>
             </div>
             <div class="me-proc-step-wide-item">
-              <span class="me-proc-step-wide-k">Fin trimestre</span>
-              <span class="me-proc-step-wide-v">Revue DORA · ajustement forfait</span>
+              <span class="me-proc-step-wide-k">Revue de performance</span>
+              <span class="me-proc-step-wide-v">Indicateurs et décisions traçables</span>
             </div>
             <div class="me-proc-step-wide-item">
-              <span class="me-proc-step-wide-k">Annuel</span>
-              <span class="me-proc-step-wide-v">Revue stratégique · renégociation</span>
+              <span class="me-proc-step-wide-k">Revue contractuelle</span>
+              <span class="me-proc-step-wide-v">Renouvellement, sortie et passation</span>
             </div>
           </div>
         </div>

@@ -3,15 +3,15 @@ import { ProjectFunnel } from "@/components/project-funnel/ProjectFunnel";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Démarrer un projet web · Réponse sous 24 h · Hagnéré Code",
+  title: "Démarrer un projet web · Hagnéré Code",
   description:
-    "Décrivez votre projet (SaaS, site, outil métier) en 3 minutes, au clavier ou à la voix. Réponse personnelle et argumentée sous 24 h ouvrées.",
+    "Décrivez votre projet (SaaS, site, outil métier) en 3 minutes, au clavier ou à la voix. Objectif de réponse personnelle le prochain jour ouvré, sans délai garanti.",
   alternates: { canonical: "/demarrer-un-projet" },
   openGraph: {
     ...OG_BASE,
     title: "Démarrer un projet web · Hagnéré Code",
     description:
-      "Un parcours guidé de 3 minutes pour transmettre votre besoin — texte ou dictée vocale. Réponse personnelle et argumentée sous 24 h ouvrées.",
+      "Un parcours guidé de 3 minutes pour transmettre votre besoin — texte ou dictée vocale. Objectif de réponse personnelle le prochain jour ouvré.",
     url: "/demarrer-un-projet",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -24,7 +24,7 @@ export default function Page() {
     name: "Démarrer un projet — Hagnéré Code",
     url: "https://hagnere-code.ai/demarrer-un-projet",
     description:
-      "Parcours guidé pour décrire un projet web, SaaS, application métier, e-commerce ou reprise technique. Réponse personnelle sous 24 h ouvrées.",
+      "Parcours guidé pour décrire un projet web, SaaS, application métier, e-commerce ou reprise technique. Demande relue par l'équipe, avec un objectif de réponse le prochain jour ouvré.",
     provider: {
       "@type": "Organization",
       name: "Hagnéré Code",

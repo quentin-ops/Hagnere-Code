@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { stripFinalCta, stripFooter } from "./stripBody";
+import { navHtml } from "@/components/design-shared/nav-html";
+import {
+  stripFinalCta,
+  stripFooter,
+  stripNav,
+} from "@/components/design-shared/stripBody";
 
 describe("stripBody", () => {
   it("preserves internal CTA markers and removes only the final CTA", () => {
@@ -35,5 +40,22 @@ describe("stripBody", () => {
     const html = `<main>Contenu</main>\n<!-- FOOTER -->\n<footer>Ancien footer</footer>`;
 
     expect(stripFooter(html)).toBe("<main>Contenu</main>\n");
+  });
+});
+
+describe("stripNav", () => {
+  it("retire la navigation canonique quand elle ouvre le gabarit", () => {
+    const html = `\n${navHtml}\n<section><h1>Contenu</h1></section>`;
+
+    const result = stripNav(html);
+
+    expect(result).not.toContain(navHtml);
+    expect(result).toContain("<section><h1>Contenu</h1></section>");
+  });
+
+  it("ne retire pas une navigation située dans le contenu", () => {
+    const html = `<section><h1>Contenu</h1></section>${navHtml}`;
+
+    expect(stripNav(html)).toBe(html);
   });
 });

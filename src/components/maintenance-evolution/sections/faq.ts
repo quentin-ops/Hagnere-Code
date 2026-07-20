@@ -6,7 +6,7 @@ export const faqHtml = `
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ</div>
         <h2 style="margin-top:14px">Les 12 questions<br>qu'on nous pose<br>avant de signer.</h2>
-        <p>Filtrez par profil décideur. Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par un consultant senior, sans détour.</p>
+        <p>Filtrez par profil décideur. Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Votre demande est relue personnellement, par un consultant senior, sans détour.</p>
 
         <div class="me-faq-filters" role="tablist" aria-label="Filtrer les questions par profil">
           <button type="button" class="me-faq-filter is-active" data-faq-filter="all" role="tab" aria-selected="true">
@@ -43,7 +43,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Vous, directement</b>. AWS / OVH / Scaleway / Vercel restent sur <b>votre compte</b>, facturés par le provider à votre entité. Pas de rebilling, pas de margeage, pas de lock-in. Nous on opère, mais on ne s'intercale pas dans la facture.
+            Le devis identifie le titulaire de chaque compte AWS, OVH, Scaleway, Vercel ou équivalent, le payeur, les licences et les rôles d'administration. Une facturation directe au client peut être retenue pour faciliter la réversibilité.
           </div>
         </div>
 

@@ -17,7 +17,7 @@ export const pricingHtml = `
       <!-- EXPRESS -->
       <div class="plan reveal">
         <div class="plan-tag">EXPRESS · URGENCE</div>
-        <h4>Express</h4>
+        <h3>Express</h3>
         <div class="plan-sub">Post-incident, pré-décision urgente ou second avis ciblé. Durée, intervenants et livrable confirmés après cadrage.</div>
         <div class="plan-price">
           <span class="amount">8 000 €</span>
@@ -39,7 +39,7 @@ export const pricingHtml = `
       <div class="plan featured reveal reveal-d-1">
         <div class="plan-badge">FORMULE INTERMÉDIAIRE</div>
         <div class="plan-tag">STANDARD · 10 J</div>
-        <h4>Standard</h4>
+        <h3>Standard</h3>
         <div class="plan-sub">Le format complet&nbsp;: 8 dimensions couvertes, rapport board-ready, Tech Debt P&amp;L, deck 12-18 slides. Baseline CTO, pré-levée, SOC2-gap, go/no-go.</div>
         <div class="plan-price">
           <span class="amount">18 000 €</span>
@@ -64,7 +64,7 @@ export const pricingHtml = `
       <!-- DEEP -->
       <div class="plan reveal reveal-d-2">
         <div class="plan-tag">DEEP · REFONTE / LEVÉE</div>
-        <h4>Deep</h4>
+        <h3>Deep</h3>
         <div class="plan-sub">Pour une décision complexe&nbsp;: go/no-go refonte, levée côté vendeur ou écart de contrôle important. Dispositif confirmé au devis.</div>
         <div class="plan-price">
           <span class="amount">38 000 €</span>
@@ -87,7 +87,7 @@ export const pricingHtml = `
       <!-- TECH DD M&A -->
       <div class="plan reveal reveal-d-3">
         <div class="plan-tag">TECH DD · M&amp;A</div>
-        <h4>Tech DD M&amp;A</h4>
+        <h3>Tech DD M&amp;A</h3>
         <div class="plan-sub">Pour les acquéreurs&nbsp;: due diligence avant opération, avec coordination des conseils et intervenants définie au cas par cas.</div>
         <div class="plan-price">
           <span class="amount">68 000 €</span>

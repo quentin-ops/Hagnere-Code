@@ -24,7 +24,7 @@ const rdvJsonLd = JSON.stringify({
   url: "https://hagnere-code.ai/rendez-vous",
   description:
     "Rendez-vous découverte de 30 minutes en visio ou téléphone avec Hagnéré Code pour cadrer un projet web sur mesure.",
-  provider: { "@id": "https://hagnere-code.ai/#business" },
+  provider: { "@id": "https://hagnere-code.ai/#organization" },
   offers: {
     "@type": "Offer",
     price: "0",

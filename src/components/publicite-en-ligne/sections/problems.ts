@@ -22,7 +22,7 @@ export const problemsHtml = `
           <span class="sap-n">01</span>
         </div>
         <h3>« Mon CAC Google Ads a triplé en 2 ans »</h3>
-        <p>Vous spendez 15 à 40 k€/mois, le CPC a doublé, Performance Max cannibalise votre brand et vous ne savez plus ce qui <b>amène vraiment des clients payants</b> vs. du clic vide.</p>
+        <p>Vous dépensez 15 à 40 k€/mois, le coût par clic a augmenté, vous soupçonnez Performance Max de reprendre une demande de marque qui aurait existé sans elle et vous ne savez plus ce qui <b>amène vraiment des clients payants</b>. Ce soupçon doit être vérifié.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
           <span class="sap-foot-v">Restructuration comptes + bid strategies · 4–6 sem.</span>

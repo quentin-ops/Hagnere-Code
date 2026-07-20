@@ -251,7 +251,7 @@
   letter-spacing: 0.06em;
 }
 .sa-cmp-head .sa-cmp-col-us .sa-cmp-kind {
-  color: var(--accent);
+  color: #A78BFA;
 }
 .sa-cmp-title {
   font-weight: 600;
@@ -709,7 +709,7 @@
   display: grid;
   place-items: center;
 }
-.sa-trust-card h4 {
+.sa-trust-card h3 {
   font-size: 16px;
   letter-spacing: -0.015em;
 }
@@ -947,7 +947,7 @@
   text-transform: uppercase;
   margin-bottom: 4px;
 }
-.sa-integ-head h4 {
+.sa-integ-head h3 {
   font-size: 17px;
   letter-spacing: -0.015em;
 }
@@ -1078,7 +1078,7 @@
   margin-top: 14px;
 }
 .sa-refuse-intro .eyebrow {
-  color: var(--accent);
+  color: #A78BFA;
 }
 .sa-refuse-intro p {
   color: rgba(255,255,255,0.65);
@@ -1132,7 +1132,7 @@
   flex-shrink: 0;
   margin-top: 2px;
 }
-.sa-refuse-list h4 {
+.sa-refuse-list h3 {
   color: #fff;
   font-size: 15px;
   margin-bottom: 4px;
@@ -1191,7 +1191,7 @@
   color: var(--mute);
 }
 .sa-scen-tab.is-active .sa-scen-tab-k {
-  color: var(--accent);
+  color: #A78BFA;
 }
 .sa-scen-tab-t {
   font-size: 18px;
@@ -1243,7 +1243,7 @@
 .sa-scen-deliv {
   margin-top: 28px;
 }
-.sa-scen-deliv h4 {
+.sa-scen-deliv h3 {
   font-size: 13px;
   color: var(--ink);
   margin-bottom: 12px;

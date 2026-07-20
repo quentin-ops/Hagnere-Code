@@ -33,17 +33,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -176,23 +165,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -629,7 +607,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre site vitrine, cadré en 3 minutes"
-          description="Décrivez votre projet en quelques étapes guidées — notre équipe vous répond personnellement sous 24 h ouvrées avec une recommandation de gamme argumentée."
+          description="Décrivez votre projet en quelques étapes guidées — notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti avec une recommandation de gamme argumentée."
         />
 
         <h2 id="postes-devis">7. Les postes d&apos;un devis vitrine, décomposés</h2>
@@ -1093,9 +1071,9 @@ SUR-MESURE NEXT.JS À 6 900 € (tout inclus) — 3 ans
         <p>
           Vous hésitez encore sur la gamme ?{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en
-          3 minutes</Link> — notre équipe vous répond personnellement sous
-          24 h ouvrées avec une recommandation argumentée, gratuite et sans
-          engagement.
+          3 minutes</Link> — notre équipe vise une réponse personnelle le
+          prochain jour ouvré, sans délai garanti, avec une recommandation
+          argumentée, gratuite et sans engagement.
         </p>
 
         <hr />

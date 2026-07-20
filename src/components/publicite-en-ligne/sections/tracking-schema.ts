@@ -49,7 +49,7 @@ export const trackingSchemaHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           </div>
         </div>
-        <h4>Browser &amp; App</h4>
+        <h3>Browser &amp; App</h3>
         <p>Visite, clic, formulaire ou achat selon le plan de marquage autorisé. Le domaine first-party ne neutralise ni ITP, ni le consentement, ni les bloqueurs.</p>
         <div class="ads-track-node-tags">
           <span>user.id</span>
@@ -69,7 +69,7 @@ export const trackingSchemaHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 .9-4.5 4.4 1 6.7L12 17l-5.5 2.9 1-6.7L3 8.9 9 8l3-6z"/></svg>
           </div>
         </div>
-        <h4>GTM Client minimal</h4>
+        <h3>GTM Client minimal</h3>
         <p>Un plan de tags limité et documenté. Le routage direct ou server-side est choisi selon la plateforme et la configuration validée.</p>
         <div class="ads-track-node-tags">
           <span>dataLayer</span>
@@ -89,7 +89,7 @@ export const trackingSchemaHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
         </div>
-        <h4>GTM Server Container</h4>
+        <h3>GTM Server Container</h3>
         <p>Déduplique, filtre et prépare les données autorisées par destination. Le hachage n'anonymise pas automatiquement une donnée personnelle.</p>
         <div class="ads-track-node-tags">
           <span>dedupe</span>
@@ -111,7 +111,7 @@ export const trackingSchemaHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M9 6h6M9 18h6M6 9v6M18 9v6"/></svg>
           </div>
         </div>
-        <h4>Destinations multiples</h4>
+        <h3>Destinations multiples</h3>
         <p>Meta CAPI, Google Enhanced Conv., LinkedIn Conv API, GA4, CRM webhook, BigQuery, Slack alert. Un seul event source, N destinations propres.</p>
         <div class="ads-track-node-tags">
           <span>CAPI</span>
@@ -129,7 +129,7 @@ export const trackingSchemaHtml = `
           <span class="ads-track-zone-n">01</span>
           <span class="ads-track-zone-k">First-party data</span>
         </div>
-        <h4>Vos données, collectées sur votre domaine</h4>
+        <h3>Vos données, collectées sur votre domaine</h3>
         <p>Un sous-domaine first-party peut être prévu (ex. <code>metrics.votresite.com</code>). Il ne doit pas servir à contourner un refus de consentement ou les protections du navigateur.</p>
       </div>
 
@@ -138,7 +138,7 @@ export const trackingSchemaHtml = `
           <span class="ads-track-zone-n">02</span>
           <span class="ads-track-zone-k">Dedupe &amp; filtering</span>
         </div>
-        <h4>1 conversion = 1 ligne propre</h4>
+        <h3>1 conversion = 1 ligne propre</h3>
         <p>Un identifiant <code>event_id</code> permet de tester la déduplication entre destinations. Les écarts d'attribution peuvent subsister car les plateformes n'emploient pas toutes le même modèle.</p>
       </div>
 
@@ -147,7 +147,7 @@ export const trackingSchemaHtml = `
           <span class="ads-track-zone-n">03</span>
           <span class="ads-track-zone-k">Conversion APIs</span>
         </div>
-        <h4>Les algos reçoivent enfin du signal propre</h4>
+        <h3>Les algos reçoivent enfin du signal propre</h3>
         <p>Meta CAPI, Google Enhanced Conversions ou LinkedIn Conversion API peuvent recevoir certains champs hachés lorsque la base légale, le consentement et les règles de la plateforme le permettent.</p>
       </div>
 
@@ -156,7 +156,7 @@ export const trackingSchemaHtml = `
           <span class="ads-track-zone-n">04</span>
           <span class="ads-track-zone-k">CRM attribution</span>
         </div>
-        <h4>Le lead devient client qualifié → won</h4>
+        <h3>Le lead devient client qualifié → won</h3>
         <p>Un webhook CRM peut rapprocher les étapes MQL, SQL, won ou lost des campagnes lorsque les identifiants sont disponibles et que ce traitement est documenté.</p>
       </div>
 
@@ -165,7 +165,7 @@ export const trackingSchemaHtml = `
           <span class="ads-track-zone-n">05</span>
           <span class="ads-track-zone-k">Consent Mode v2</span>
         </div>
-        <h4>Respecter le choix avant de mesurer</h4>
+        <h3>Respecter le choix avant de mesurer</h3>
         <p>Les signaux <code>denied</code> et la modélisation éventuelle sont configurés selon la CMP et la validation juridique du client. Un refus ne donne pas droit à une collecte équivalente.</p>
       </div>
 
@@ -174,7 +174,7 @@ export const trackingSchemaHtml = `
           <span class="ads-track-zone-n">06</span>
           <span class="ads-track-zone-k">Looker Studio</span>
         </div>
-        <h4>Ads × CRM × margin, une seule vue</h4>
+        <h3>Ads × CRM × margin, une seule vue</h3>
         <p>Le tableau de bord expose les indicateurs calculables à partir des sources effectivement reliées, avec définitions et limites d'attribution.</p>
       </div>
     </div>

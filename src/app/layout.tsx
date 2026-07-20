@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/providers/theme-provider";
 import { CookieBanner } from "@/components/cookies/CookieBanner";
 import { SkipToContent } from "@/components/design-shared/SkipToContent";
 import { isSearchIndexingEnabled } from "@/lib/search-indexing";
@@ -10,16 +9,43 @@ import { LegacyProjectDraftCleanup } from "@/components/privacy/LegacyProjectDra
 const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin"],
-  display: "swap",
+  // `optional` évite qu'un remplacement tardif de la police repousse le LCP
+  // textuel sur une connexion mobile lente. Geist reste utilisé lorsqu'il est
+  // disponible immédiatement ; le fallback système, très proche, reste sinon.
+  display: "optional",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
 });
 
-const isProd = isSearchIndexingEnabled();
+const isProd = isSearchIndexingEnabled(process.env.NEXT_PUBLIC_ENV);
+const isCookieBannerEnabled =
+  process.env.NEXT_PUBLIC_COOKIE_BANNER === "1" ||
+  process.env.NEXT_PUBLIC_COOKIE_BANNER === "true";
+
+// Applique la préférence avant le premier rendu, sans hydrater toute
+// l'application dans un provider client. Le code est statique et ne contient
+// aucune donnée extérieure.
+const themeInitScript = `
+(function () {
+  try {
+    var stored = window.localStorage.getItem("theme");
+    var dark = stored === "dark" ||
+      (stored !== "light" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.classList.toggle("dark", dark);
+    document.documentElement.style.colorScheme = dark ? "dark" : "light";
+    var syncThemeColor = function () {
+      document.querySelectorAll('meta[name="theme-color"]').forEach(function (meta) {
+        meta.setAttribute("content", dark ? "#0a0a0a" : "#ffffff");
+      });
+    };
+    syncThemeColor();
+    document.addEventListener("DOMContentLoaded", syncThemeColor, { once: true });
+  } catch (_) {}
+})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hagnere-code.ai"),
@@ -101,21 +127,17 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geist.variable} ${geistMono.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body className="antialiased">
         <LegacyProjectDraftCleanup />
         <SkipToContent />
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        {children}
         {/* Pré-installé, désactivé tant que NEXT_PUBLIC_COOKIE_BANNER!=1.
             Les intégrations tierces existantes restent bloquées localement
             jusqu'à une action explicite, indépendamment de cette bannière. */}
-        <CookieBanner />
+        {isCookieBannerEnabled ? <CookieBanner /> : null}
       </body>
     </html>
   );

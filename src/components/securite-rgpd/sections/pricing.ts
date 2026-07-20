@@ -18,7 +18,7 @@ export const pricingHtml = `
 
       <div class="sr-price-card reveal">
         <div class="sr-price-tag">PHASE 01</div>
-        <h4>Cadrage initial</h4>
+        <h3>Cadrage initial</h3>
         <div class="sr-price-sub">Cartographie factuelle, audit applicatif et dossier d'écarts techniques à qualifier par vos responsables. Sans engagement de suite.</div>
         <div class="sr-price-amount">5 000 <span>€ HT</span></div>
         <ul class="sr-price-feats">
@@ -34,7 +34,7 @@ export const pricingHtml = `
 
       <div class="sr-price-card reveal reveal-d-1">
         <div class="sr-price-tag">SUIVI · 01</div>
-        <h4>Accompagnement Starter</h4>
+        <h3>Accompagnement Starter</h3>
         <div class="sr-price-sub">Pour maintenir le plan d'action technique avec votre DPO ou conseil.</div>
         <div class="sr-price-amount">1 200 <span>€ / mois</span></div>
         <ul class="sr-price-feats">
@@ -51,7 +51,7 @@ export const pricingHtml = `
       <div class="sr-price-card sr-price-card-featured reveal reveal-d-2">
         <div class="sr-price-badge">PÉRIMÈTRE ÉTENDU</div>
         <div class="sr-price-tag">SUIVI · 02</div>
-        <h4>Accompagnement Scale</h4>
+        <h3>Accompagnement Scale</h3>
         <div class="sr-price-sub">Pour plusieurs produits, systèmes IA ou flux internationaux à documenter.</div>
         <div class="sr-price-amount">3 500 <span>€ / mois</span></div>
         <ul class="sr-price-feats">
@@ -68,7 +68,7 @@ export const pricingHtml = `
 
       <div class="sr-price-card reveal reveal-d-3">
         <div class="sr-price-tag">REMÉDIATION</div>
-        <h4>Sprint dev codé</h4>
+        <h3>Sprint dev codé</h3>
         <div class="sr-price-sub">Quand le rapport pointe une faille (chiffrement, IAM, consent, anonymisation), nos devs codent la correction directement dans votre repo.</div>
         <div class="sr-price-amount">3-15 <span>k€ / lot</span></div>
         <ul class="sr-price-feats">

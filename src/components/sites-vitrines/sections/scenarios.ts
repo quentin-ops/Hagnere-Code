@@ -75,7 +75,7 @@ export const scenariosHtml = `
           <h3>« Mon site a 5 ans, il ne fait plus le poids. »</h3>
           <p class="sv-scen-lead">
             Refonte complète d'un site vitrine existant&nbsp;: nouveau design,
-            nouvelle structure SEO, migration du contenu, conservation des positions Google,
+            nouvelle structure SEO, migration du contenu et plan visant à préserver les signaux utiles,
             ajout de fonctions modernes (formulaires CRM, Calendly, blog).
           </p>
           <div class="sv-scen-items-title">CE QU'ON LIVRE</div>
@@ -119,7 +119,7 @@ export const scenariosHtml = `
             </div>
             <div class="sv-scen-meta-row">
               <dt>Équipe</dt>
-              <dd>1 gérant · 1 designer · 1 dev senior</dd>
+              <dd>1 président · 1 designer · 1 dev senior</dd>
             </div>
             <div class="sv-scen-meta-row">
               <dt>Livrables</dt>
@@ -217,7 +217,7 @@ export const scenariosHtml = `
           <h3>« Je veux générer du trafic organique, durablement. »</h3>
           <p class="sv-scen-lead">
             Architecture SEO en cocons sémantiques, 15 à 40 pages piliers, blog éditeur-friendly,
-            contenu initial rédigé par nos soins si besoin. Une stratégie inbound qui performe sur 12–24 mois.
+            contenu initial rédigé par nos soins si besoin. Le plan éditorial et ses résultats sont suivis sur 12 à 24 mois, sans position ni trafic garantis.
           </p>
           <div class="sv-scen-items-title">CE QU'ON LIVRE</div>
           <div class="sv-scen-items">

@@ -18,7 +18,7 @@ export const deriskHtml = `
         <div class="sv-derisk-fear">
           « Et si je me retrouve <b>prisonnier</b> de vous comme avec l'ancien presta ? »
         </div>
-        <h4>Réversibilité, accès et droits contractualisés</h4>
+        <h3>Réversibilité, accès et droits contractualisés</h3>
         <p>Le devis inventorie le dépôt Git, l'hébergement, le domaine, la documentation et les éléments de passation. Les livrables spécifiques sont transférés après paiement complet selon les CGV.</p>
         <div class="sv-derisk-proof">
           <span>✓ Clause dans le devis</span>
@@ -31,7 +31,7 @@ export const deriskHtml = `
         <div class="sv-derisk-fear">
           « Et si je <b>perds tout mon SEO</b> en refaisant le site ? »
         </div>
-        <h4>Plan de migration SEO + suivi à cadrer</h4>
+        <h3>Plan de migration SEO + suivi à cadrer</h3>
         <p>Inventaire des URLs, redirections 301, conservation des contenus et balises utiles, contrôle des liens entrants et suivi post-mise en ligne. Une migration peut faire varier les positions&nbsp;: aucun taux de conservation n'est garanti sans cohorte vérifiable.</p>
         <div class="sv-derisk-proof">
           <span>✓ Audit SEO initial</span>
@@ -44,7 +44,7 @@ export const deriskHtml = `
         <div class="sv-derisk-fear">
           « Comment je <b>mets à jour le contenu</b> sans vous appeler ? »
         </div>
-        <h4>CMS headless éditeur-friendly + formation 2 h</h4>
+        <h3>CMS headless éditeur-friendly + formation 2 h</h3>
         <p>Sanity ou Strapi selon votre équipe. Interface type <i>Notion</i>, pas Drupal. Votre community manager publie un article, crée une page, change une photo en quelques clics. Formation 2 h en visio, guide PDF, vidéo Loom de prise en main.</p>
         <div class="sv-derisk-proof">
           <span>✓ CMS Sanity/Strapi</span>
@@ -57,7 +57,7 @@ export const deriskHtml = `
         <div class="sv-derisk-fear">
           « Et si le <b>projet dérape</b> et dépasse le budget ? »
         </div>
-        <h4>Périmètre, révisions et retard cadrés</h4>
+        <h3>Périmètre, révisions et retard cadrés</h3>
         <p>Le devis fixe le périmètre, les dépendances client, les tours de révision et la procédure de changement. Une pénalité ou remise de retard ne s'applique que si le contrat signé la prévoit.</p>
         <div class="sv-derisk-proof">
           <span>✓ Forfait contractuel</span>

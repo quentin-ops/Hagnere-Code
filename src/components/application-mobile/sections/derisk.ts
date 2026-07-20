@@ -45,7 +45,7 @@ export const deriskHtml = `
           Si on continue, c'est <b>déduit du devis</b>. Si on arrête, vous repartez avec un livrable utilisable par un autre studio.
         </p>
         <div class="mob-derisk-proof">
-          <span>✓ Cadrage 2 jours</span>
+          <span>✓ Durée de cadrage au devis</span>
           <span>✓ Prototype cliquable</span>
           <span>✓ Déductible du forfait</span>
         </div>
@@ -74,7 +74,7 @@ export const deriskHtml = `
         <div class="mob-derisk-num">/ 04</div>
         <div class="mob-derisk-fear">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-          « Je vais dépendre de l'agence à vie pour le moindre changement. »
+          « Je vais dépendre de l'agence pour le moindre changement. »
         </div>
         <h3>Comptes à votre nom · réversibilité cadrée.</h3>
         <p>

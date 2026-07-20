@@ -259,7 +259,7 @@ CTA principal et résultat après clic : « Demander un second regard » vers `/
 | Originalité |        2 | Note de décision + TCO et ROI entièrement reproductibles                        | —                                                                   |
 | Style       |        1 | Pas de faux client ni de superlatif ; exemple arithmétique clairement fictif    | Relecture par un dirigeant réel encore nécessaire                   |
 | Conversion  |        2 | Mauvais fit explicite et CTA adouci, après l’action autonome                    | —                                                                   |
-| SEO/produit |        1 | Metadata, Article/Breadcrumb/FAQ, OG, registre et maillage sortant présents     | Build, navigateur et maillage entrant à finaliser par l’intégrateur |
+| SEO/produit |        1 | Metadata, Article/Breadcrumb, FAQ visible, OG, registre et maillage sortant présents | Build, navigateur et maillage entrant à finaliser par l’intégrateur |
 
 Total auto-évalué après correction : **18/20**. Le contre-audit est indépendant
 de la rédaction, mais ce score ne remplace ni une lecture humaine ni les

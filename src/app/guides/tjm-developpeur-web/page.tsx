@@ -33,17 +33,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -176,23 +165,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -548,7 +526,7 @@ LA RÈGLE DU CINQUIÈME (consultant SALARIÉ d'une ESN)
 
         <GuideInlineCTA
           title="Vous voulez savoir combien de jours coûte VOTRE projet ?"
-          description="Décrivez-le en 3 minutes. Nous vous répondons personnellement sous 24 h ouvrées avec une estimation en jours, la ventilation par poste et le budget réaliste correspondant — gratuitement et sans engagement."
+          description="Décrivez-le en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti avec une estimation en jours, la ventilation par poste et le budget réaliste correspondant — gratuitement et sans engagement."
         />
 
         <h2 id="offshore">7. L&apos;offshore à 150 €/jour, calculé honnêtement</h2>
@@ -1022,7 +1000,7 @@ LE CONTRÔLE À FAIRE SUR TOUT DEVIS
 
         <GuideInlineCTA
           title="Un projet, un budget à cadrer ?"
-          description="Décrivez votre besoin en 3 minutes : réponse personnelle sous 24 h ouvrées avec une estimation en jours, la ventilation par poste et un budget réaliste. Gratuit, sans engagement, et sans simulateur automatique — c'est nous qui lisons et qui répondons."
+          description="Décrivez votre besoin en 3 minutes : objectif de réponse personnelle le prochain jour ouvré avec une estimation en jours, la ventilation par poste et un budget réaliste. Gratuit, sans engagement, et sans simulateur automatique — c'est nous qui lisons et qui répondons."
         />
 
         <InfoBox variant="emerald" title="À retenir : les 6 chiffres de ce guide">

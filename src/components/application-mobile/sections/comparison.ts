@@ -89,10 +89,10 @@ export const comparisonHtml = `
       </div>
 
       <div class="mob-compar-row">
-        <div class="mob-compar-cell mob-compar-cell-label">Conversion mobile (secteur retail)</div>
-        <div class="mob-compar-cell">Référence</div>
-        <div class="mob-compar-cell mob-compar-cell-mid">Légèrement supérieur</div>
-        <div class="mob-compar-cell mob-compar-cell-best">Nettement supérieur (études secteur)</div>
+        <div class="mob-compar-cell mob-compar-cell-label">Performance commerciale</div>
+        <div class="mob-compar-cell">À mesurer sur le parcours web</div>
+        <div class="mob-compar-cell mob-compar-cell-mid">À mesurer sur la PWA</div>
+        <div class="mob-compar-cell mob-compar-cell-best">À mesurer sur l'app et son audience</div>
       </div>
 
       <div class="mob-compar-row">
@@ -104,9 +104,9 @@ export const comparisonHtml = `
     </div>
 
     <div class="mob-compar-foot reveal reveal-d-2">
-      Notre règle : <b>si vos clients reviennent moins de 1 fois / mois</b>, un site mobile responsive premium suffit.
-      <b>Si une PWA correspond à votre besoin (B2B interne, audience tech)</b>, on vous le dira et on la fera — moins cher qu'une app native.
-      <b>Si vous visez la rétention, le push, le paiement biométrique, l'écran d'accueil</b> — alors une vraie app native vaut son investissement.
+      Notre règle&nbsp;: la fréquence d'usage, le besoin hors ligne, les fonctions natives, l'acquisition et le coût total doivent être comparés.
+      <b>Si un site responsive ou une PWA répond au besoin</b>, le cadrage doit le montrer.
+      <b>Si l'usage exige notifications, biométrie, accès matériel ou présence dans les stores</b>, une app native peut devenir pertinente sans garantir son retour sur investissement.
     </div>
   </div>
 </section>

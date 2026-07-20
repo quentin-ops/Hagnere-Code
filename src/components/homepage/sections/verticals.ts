@@ -10,8 +10,8 @@ export const verticalsHtml = `
       <div class="right">
         On ne prétend pas avoir déjà travaillé dans tous les secteurs. Nos preuves
         les plus fortes viennent du patrimoine, de l'immobilier et de la comptabilité.
-        Ce qu'on sait surtout faire : transformer un problème métier en produit clair,
-        maintenable et exploitable par vos équipes.
+        Notre rôle est de transformer un problème métier en périmètre produit, puis
+        d'écrire les critères de recette, de maintenance et d'exploitation adaptés.
       </div>
     </div>
 
@@ -24,7 +24,7 @@ export const verticalsHtml = `
         </p>
       </div>
       <div class="vt-proof-tags" aria-label="Preuves actuelles du studio">
-        <span><b>4</b> produits groupe en production</span>
+        <span><b>4</b> pages produit publiques à consulter</span>
         <span>Patrimoine</span>
         <span>Immobilier</span>
         <span>Comptabilité IA</span>
@@ -40,7 +40,7 @@ export const verticalsHtml = `
               <path d="M8 5v14M16 5v14"/>
             </svg>
           </div>
-          <span class="vt-tag vt-tag-live"><span class="vt-dot"></span>Très fréquent</span>
+          <span class="vt-tag vt-tag-live"><span class="vt-dot"></span>Cas à cadrer</span>
         </div>
         <div class="vt-index">01</div>
         <h3>Votre activité tourne encore sur Excel, Notion ou des copier-coller.</h3>
@@ -59,7 +59,7 @@ export const verticalsHtml = `
           <span>Workflows</span>
           <span>Automatisation</span>
         </div>
-        <div class="vt-outcome">Résultat : moins de ressaisie, moins d'erreurs, un process visible.</div>
+        <div class="vt-outcome">Objectif à mesurer : réduire la ressaisie et rendre le process traçable.</div>
       </a>
 
       <a class="vt-card vt-card-situation reveal reveal-d-1" data-accent="blue" href="/services/saas-applications-metier">
@@ -88,7 +88,7 @@ export const verticalsHtml = `
           <span>Documents</span>
           <span>Paiement</span>
         </div>
-        <div class="vt-outcome">Résultat : moins d'emails, plus d'autonomie côté client.</div>
+        <div class="vt-outcome">Objectif à mesurer : centraliser les échanges et les actions accessibles au client.</div>
       </a>
 
       <a class="vt-card vt-card-situation reveal reveal-d-2" data-accent="emerald" href="#contact">
@@ -115,7 +115,7 @@ export const verticalsHtml = `
           <span>RAG</span>
           <span>Tool calling</span>
         </div>
-        <div class="vt-outcome">Résultat : l'IA agit dans un workflow, pas dans une démo isolée.</div>
+        <div class="vt-outcome">Périmètre possible : intégrer l'IA à un workflow testé, avec validation humaine selon le risque.</div>
       </a>
 
       <a class="vt-card vt-card-situation reveal" data-accent="gold" href="/services/saas-applications-metier">
@@ -142,7 +142,7 @@ export const verticalsHtml = `
           <span>Stripe</span>
           <span>Back-office</span>
         </div>
-        <div class="vt-outcome">Résultat : un produit lançable, pas un prototype jetable.</div>
+        <div class="vt-outcome">Livrable à définir : un socle recetté pour le périmètre du lancement.</div>
       </a>
 
       <a class="vt-card vt-card-situation reveal reveal-d-1" data-accent="pink" href="/services/sites-vitrines">
@@ -169,7 +169,7 @@ export const verticalsHtml = `
           <span>SEO</span>
           <span>Tracking</span>
         </div>
-        <div class="vt-outcome">Résultat : un site qui vend votre valeur, pas une brochure.</div>
+        <div class="vt-outcome">Objectif à mesurer : rendre l'offre compréhensible et les actions de conversion traçables.</div>
       </a>
 
       <a class="vt-card vt-card-situation reveal reveal-d-2" data-accent="orange" href="/services/audit-technique">
@@ -198,7 +198,7 @@ export const verticalsHtml = `
           <span>Sécurité</span>
           <span>Maintenance</span>
         </div>
-        <div class="vt-outcome">Résultat : une trajectoire propre, sans big bang risqué.</div>
+        <div class="vt-outcome">Livrable attendu : une trajectoire priorisée, avec risques et dépendances explicités.</div>
       </a>
 
       <a class="vt-card vt-card-situation reveal" data-accent="violet" href="/services/application-mobile">

@@ -43,7 +43,7 @@ export const scenariosHtml = `
             L'information existe déjà — elle est juste dans des fichiers au lieu d'être dans un vrai outil.
           </p>
           <div class="oi-scen-deliv">
-            <h4>Ce qu'on livre</h4>
+            <h3>Ce qu'on livre</h3>
             <ul>
               <li>App web qui reprend vos 3–5 fichiers Excel clés</li>
               <li>Import propre des données existantes</li>
@@ -83,7 +83,7 @@ export const scenariosHtml = `
             sait pas parler à votre Sage. Vous gagneriez plus à construire ce qui <b>vous</b> correspond.
           </p>
           <div class="oi-scen-deliv">
-            <h4>Ce qu'on livre</h4>
+            <h3>Ce qu'on livre</h3>
             <ul>
               <li>Outil métier calibré sur vos vrais process</li>
               <li>Migration des données depuis l'ancien SaaS (via API)</li>
@@ -124,7 +124,7 @@ export const scenariosHtml = `
             il faut juste le coder.
           </p>
           <div class="oi-scen-deliv">
-            <h4>Ce qu'on livre</h4>
+            <h3>Ce qu'on livre</h3>
             <ul>
               <li>App web + app mobile compagnon (React Native)</li>
               <li>Saisie terrain hors ligne (mode offline first)</li>

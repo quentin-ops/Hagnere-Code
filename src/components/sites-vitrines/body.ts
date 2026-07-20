@@ -20,16 +20,16 @@ ${navHtml}
   <div class="wrap shero-inner">
     <div>
       <div class="shero-eyebrow"><span class="pill"><span class="dot"></span> Service · Sites vitrines &amp; landing pages</span></div>
-      <h1>Le <span class="accent">site vitrine qui convertit</span>,<br>pas juste un site<br>qui existe.</h1>
+      <h1>Le <span class="accent">site vitrine pensé pour convertir</span>,<br>pas juste un site<br>qui existe.</h1>
       <div class="shero-tagline">
         <span>⚡ Budget de performance mesuré</span>
         <span class="sep"></span>
         <span>🎯 Pensé pour convertir</span>
         <span class="sep"></span>
-        <span>💶 Forfait fixe, sans surprise</span>
+        <span>💶 Prix et changements écrits</span>
       </div>
       <p class="shero-sub">
-        Un site vitrine qui fait <b>signer vos prospects</b>, une landing page qui <b>transforme votre budget Ads en leads qualifiés</b>, un blog SEO qui vous positionne sur les bonnes requêtes.
+        Un site vitrine conçu pour <b>aider vos prospects à passer à l'action</b>, une landing page qui <b>rend votre acquisition Ads mesurable</b>, un blog structuré autour des requêtes utiles à votre activité.
         Design sur mesure, développement Next.js, objectifs de performance mesurés et CMS adapté —
         avec des accès, droits et conditions de réversibilité écrits au devis.
       </p>
@@ -40,7 +40,7 @@ ${navHtml}
         <a href="#contact" class="btn btn-ghost btn-lg">Audit gratuit de mon site actuel</a>
       </div>
       <div class="shero-meta">
-        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Livré en 2 à 8 semaines</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Planning et dépendances au devis</span>
         <span class="sep"></span>
         <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Objectifs LCP / CLS / INP au devis</span>
         <span class="sep"></span>
@@ -118,7 +118,7 @@ ${navHtml}
             <rect x="368" y="58" width="96" height="4" rx="2" fill="#a3a3a3"/>
             <rect x="368" y="66" width="68" height="4" rx="2" fill="#a3a3a3"/>
           </g>
-        </svg>        </svg>
+        </svg>
       </div>
 
       <div class="mock-window mw-side">
@@ -127,6 +127,7 @@ ${navHtml}
           <div class="win-url" style="color:rgba(255,255,255,0.5)">PageSpeed Insights · mobile</div>
         </div>
         <div style="padding:20px 22px 18px;background:#0A0A0A;color:#E5E5E5;font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:12px;line-height:1.5">
+          <div style="font-family:'Geist Mono';font-size:9px;color:#a3a3a3;letter-spacing:0.08em;margin-bottom:12px">Exemple illustratif d'un objectif de performance · données de démonstration</div>
           <!-- Score dial (simulé) -->
           <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px">
             <svg width="64" height="64" viewBox="0 0 64 64">
@@ -174,7 +175,7 @@ ${navHtml}
         <h2>Un site vitrine, ce n'est pas<br>juste une brochure en ligne.</h2>
       </div>
       <div class="right">
-        On construit des sites qui vendent vraiment (<a href="/guides/prix-site-vitrine">les prix du marché, gamme par gamme</a>) : <a href="/services/referencement-google">SEO technique</a> de série, CWV verts,
+        On construit des sites orientés vers des actions mesurables (<a href="/guides/prix-site-vitrine">les prix du marché, gamme par gamme</a>) : <a href="/services/referencement-google">SEO technique</a> de série, objectifs Core Web Vitals,
         CMS que vous éditez sans nous, formulaires branchés au CRM, tunnel de conversion pensé au pixel.
       </div>
     </div>
@@ -220,7 +221,7 @@ ${navHtml}
         <div class="uc-tags">
           <span class="uc-tag">Migration SEO</span>
           <span class="uc-tag">Redirections 301</span>
-          <span class="uc-tag">Conservation positions</span>
+          <span class="uc-tag">Plan de préservation SEO</span>
         </div>
       </div>
 
@@ -238,20 +239,20 @@ ${navHtml}
       <div class="uc reveal reveal-d-2">
         <div class="uc-num">/ 06</div>
         <h3>E-commerce &amp; boutique légère</h3>
-        <p>Catalogue, panier, Stripe, livraison, gestion de stock, emails transactionnels. Pour &lt; 500 commandes/mois, stack Next Commerce ou Shopify headless selon le besoin.</p>
+        <p>Catalogue, panier, paiement, livraison, gestion de stock et emails transactionnels. Le choix entre Next Commerce, Shopify ou une autre solution dépend du volume, des intégrations et de l'exploitation attendue.</p>
         <div class="uc-tags">
           <span class="uc-tag">Stripe · PayPlug</span>
           <span class="uc-tag">Shopify headless</span>
-          <span class="uc-tag">RGPD-ready</span>
+          <span class="uc-tag">Traitements à cadrer</span>
         </div>
       </div>
 
       <div class="uc reveal">
         <div class="uc-num">/ 07</div>
         <h3>Micro-sites campagne &amp; événementiels</h3>
-        <p>Lancement produit, événement entreprise, rapport annuel interactif, page de recrutement massive. Livré en <b>2 à 3 semaines</b>, éventuellement désactivable en un clic post-campagne.</p>
+        <p>Lancement produit, événement entreprise, rapport annuel interactif ou page de recrutement. Le devis fixe le planning, les dépendances et les modalités d'archivage ou de désactivation.</p>
         <div class="uc-tags">
-          <span class="uc-tag">2–3 semaines</span>
+          <span class="uc-tag">Planning au devis</span>
           <span class="uc-tag">Design éditorial</span>
           <span class="uc-tag">Analytics campagne</span>
         </div>
@@ -281,115 +282,115 @@ ${navHtml}
         <h2 style="color:#fff">Tout ce dont un site<br>professionnel a besoin,<br>déjà dans notre boîte à outils.</h2>
       </div>
       <div class="right" style="color:rgba(255,255,255,0.7)">
-        SEO technique, performance, analytics, formulaires CRM, multilingue, A/B testing, RGPD&nbsp;: tout ce qu'on met par défaut dans chaque projet. Vous n'avez pas à nous demander — c'est inclus.
+        SEO technique, performance, analytics, formulaires CRM, multilingue, A/B testing et confidentialité&nbsp;: le devis sélectionne les briques utiles, leurs dépendances et ce qui reste hors périmètre.
       </div>
     </div>
 
     <div class="caps-grid">
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
-        <h4>SEO technique natif</h4>
-        <p>Schema.org, sitemap dynamique, robots.txt, Open Graph, balises hreflang. Pré-rendu HTML côté serveur, indexation en moins de 14 jours.</p>
+        <h3>SEO technique natif</h3>
+        <p>Schema.org, sitemap dynamique, robots.txt, Open Graph et balises hreflang selon le périmètre. Pré-rendu HTML, canonicals et indexabilité vérifiés avant mise en ligne, puis suivi dans Search Console — sans délai d'indexation garanti.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg></div>
-        <h4>Core Web Vitals optimisés</h4>
-        <p>LCP < 1.5 s, CLS < 0.05, INP < 100 ms. Images AVIF auto-générées, fonts self-hosted, zéro JS bloquant en route critique.</p>
+        <h3>Core Web Vitals mesurés</h3>
+        <p>Les objectifs LCP, CLS et INP, les pages testées, l'appareil, le réseau et les scripts tiers sont fixés au devis. Les résultats sont mesurés&nbsp;; aucun score universel n'est promis.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div>
-        <h4>CMS headless éditeur-friendly</h4>
-        <p>Sanity ou Strapi selon votre équipe. Votre community manager publie en 30 secondes, pas 30 minutes.</p>
+        <h3>CMS headless éditeur-friendly</h3>
+        <p>Sanity ou Strapi selon votre équipe. Les rôles, le workflow éditorial et les opérations à rendre autonomes sont recettés sur des cas définis.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg></div>
-        <h4>Formulaires branchés CRM</h4>
-        <p>HubSpot, Pipedrive, Brevo, Mailchimp, Salesforce. Webhook + double opt-in RGPD + anti-spam invisible (pas de reCAPTCHA).</p>
+        <h3>Formulaires branchés CRM</h3>
+        <p>HubSpot, Pipedrive, Brevo, Mailchimp ou Salesforce selon le devis. Webhook, confirmation et anti-spam sont configurés d'après le parcours, la base légale et les outils retenus.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
-        <h4>Analytics privacy-first</h4>
+        <h3>Analytics privacy-first</h3>
         <p>Plausible, Fathom ou GA4 selon le besoin. Une exemption de consentement n'est retenue que si tous les critères CNIL sont réunis ; sinon, la mesure reste bloquée jusqu'au choix positif. Dashboard agrégé fourni.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
-        <h4>Multilingue natif</h4>
+        <h3>Multilingue natif</h3>
         <p>Routing i18n, traductions au CMS, hreflang automatique, devises et formats locaux. 2 à 10 langues selon besoin.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h4M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4"/></svg></div>
-        <h4>A/B testing prêt à l'emploi</h4>
-        <p>Setup GrowthBook ou Vercel Flags inclus, pour tester hero, CTA, ou tunnel sans rebranchement technique.</p>
+        <h3>A/B testing prêt à l'emploi</h3>
+        <p>GrowthBook ou Vercel Flags peuvent être proposés pour tester un hero, un CTA ou un tunnel. L'outil, le trafic requis et la règle de décision sont précisés au devis.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h4>RGPD &amp; confidentialité</h4>
+        <h3>RGPD &amp; confidentialité</h3>
         <p>Bannière avec accepter, refuser et gérer les choix au même niveau, inventaire des traceurs et politique cookies. La configuration est recettée selon les traitements réels ; la validation juridique reste à votre DPO ou conseil.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
-        <h4>Prise de RDV intégrée</h4>
+        <h3>Prise de RDV intégrée</h3>
         <p>Calendly, Cal.com ou HubSpot Meetings intégrés en natif. Rendez-vous pris sans sortir du site, pré-qualification facultative.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div>
-        <h4>Emails transactionnels</h4>
+        <h3>Emails transactionnels</h3>
         <p>Resend ou Postmark pour confirmation form, auto-responder, tunnel email. Templates versionnés, logs d'ouverture.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
-        <h4>Blog &amp; architecture SEO</h4>
-        <p>Cocons sémantiques, silos éditoriaux, fil d'Ariane, articles liés, author schema. Pensé pour ranker, pas juste publier.</p>
+        <h3>Blog &amp; architecture SEO</h3>
+        <p>Architecture éditoriale, fil d'Ariane, articles liés et données structurées fidèles. Pensé pour être exploré, compris et maillé — sans promesse de position.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-        <h4>Composants sur-mesure</h4>
+        <h3>Composants sur-mesure</h3>
         <p>Bibliothèque Figma + React dédiée à votre projet. Pas de shadcn générique : votre charte, vos animations, votre style.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
-        <h4>Animations éditoriales</h4>
-        <p>Scroll-reveal, parallax léger, transitions de page, hover interactifs. Sans alourdir, sans gêner l'accessibilité.</p>
+        <h3>Animations éditoriales</h3>
+        <p>Scroll-reveal, parallax léger, transitions de page et interactions peuvent être ajoutés. Leur poids, le mode mouvement réduit, le clavier et le contraste sont vérifiés selon la recette convenue.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-        <h4>Images optimisées à la volée</h4>
+        <h3>Images optimisées à la volée</h3>
         <p>Next/Image + CDN. AVIF servi quand supporté, fallback WebP/JPEG. Lazy loading, placeholder blur, srcset auto.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 6 4 10 8 10s8-4 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h4>Sécurité sans maintenance</h4>
-        <p>Site statique pré-rendu : pas de base de données exposée, pas de CMS PHP attaquable, pas de plugin obsolète à patcher.</p>
+        <h3>Surface technique à maintenir</h3>
+        <p>Le pré-rendu statique peut réduire certains composants exposés, sans supprimer les mises à jour, les dépendances, les formulaires, le CMS, le domaine ni les services tiers. Le suivi nécessaire est chiffré selon l'architecture.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="6" r="2"/><path d="M12 8v8m-4 0l4-4 4 4M6 13l6-3 6 3"/></svg></div>
-        <h4>Accessibilité WCAG AA</h4>
-        <p>Contrastes audités, navigation clavier, focus visible, labels ARIA, skip links, lecteurs d'écran testés.</p>
+        <h3>Accessibilité à recetter</h3>
+        <p>Contrastes, navigation clavier, focus visible, libellés, liens d'évitement et tests d'assistance sont définis dans le périmètre. Une conformité WCAG ou RGAA n'est revendiquée qu'après un audit correspondant.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 22h20z"/></svg></div>
-        <h4>Déploiement sur Vercel ou OVH</h4>
-        <p>Preview automatique par branche. Rollback en 1 clic. Monitoring intégré. Hébergement gratuit 12 mois inclus.</p>
+        <h3>Déploiement sur Vercel ou OVH</h3>
+        <p>Preview par branche, stratégie de retour arrière, supervision et hébergement peuvent être configurés. Le fournisseur, les coûts, la durée et les responsabilités figurent au devis.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.5L3 11l9 4.5 9-4.5zM3 11v6.5l9 4.5 9-4.5V11M3 14l9 4.5"/></svg></div>
-        <h4>Formation &amp; doc</h4>
-        <p>2 h de formation en visio pour votre équipe + guide PDF + vidéo Loom. Vous éditez le site sans nous dès le lendemain de la livraison.</p>
+        <h3>Formation &amp; doc</h3>
+        <p>La durée de formation, la documentation et les opérations à rendre autonomes sont précisées au devis puis vérifiées pendant la recette.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h4>SEO local &amp; pages villes</h4>
-        <p>Template de pages villes automatisé pour une présence géo (ex. CGP à Lyon, à Grenoble, à Annecy). Ranking local en 3-4 mois.</p>
+        <h3>SEO local &amp; pages villes</h3>
+        <p>Gabarits de pages locales uniquement lorsqu'une présence réelle, un contenu distinct et une utilité locale peuvent être démontrés. Exploration, indexation et classement restent mesurés séparément, sans délai garanti.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8v18L3 13zM11 7v10"/></svg></div>
-        <h4>Intégrations Ads</h4>
-        <p>GA4, Meta Pixel, LinkedIn Insight, TikTok Pixel, Microsoft Ads. Server-side tracking sur demande pour contourner iOS 14+.</p>
+        <h3>Intégrations Ads</h3>
+        <p>GA4, Meta Pixel, LinkedIn Insight, TikTok Pixel ou Microsoft Ads selon le besoin. Le suivi côté serveur reste soumis au consentement, aux données autorisées et aux règles des plateformes.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h4>Support 30 jours inclus</h4>
-        <p>Hotfix, ajustements mineurs, questions. Après, forfait maintenance optionnel à la carte — sans engagement.</p>
+        <h3>Période de correction cadrée</h3>
+        <p>Durée, anomalies couvertes, sévérités, exclusions et délais cibles sont ceux du devis. La maintenance ultérieure fait l'objet d'un périmètre distinct.</p>
       </div>
     </div>
   </div>
@@ -404,7 +405,7 @@ ${navHtml}
         <h2>De la signature à la mise<br>en ligne, en 5 étapes.</h2>
       </div>
       <div class="right">
-        On ne disparaît pas plusieurs semaines pour revenir avec « le site final ». Vous voyez le design, puis le site, grandir chaque semaine — avec une démo live à chaque fin de sprint.
+        Le devis précise les points de validation, les accès à la prévisualisation et la cadence des démonstrations. Les retours attendus de chaque partie sont inscrits dans le planning.
       </div>
     </div>
 
@@ -412,35 +413,35 @@ ${navHtml}
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 01</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
-        <h4>Cadrage &amp; stratégie</h4>
+        <h3>Cadrage &amp; stratégie</h3>
         <p>Atelier 2 h avec les décideurs. Arborescence, 50 mots-clés ciblés, charte éditoriale, tone of voice. Livrable&nbsp;: brief de 3 pages validé avant tout design.</p>
         <div class="proc-dur">3–5 JOURS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
-        <h4>Design Figma</h4>
-        <p>Maquettes desktop + mobile, prototype cliquable. <b>2 tours de révisions inclus</b>. Vous validez l'apparence avant la moindre ligne de code — pas de surprise visuelle.</p>
-        <div class="proc-dur">1–2 SEMAINES</div>
+        <h3>Design Figma</h3>
+        <p>Maquettes desktop et mobile, prototype cliquable et nombre de révisions définis au devis. La validation visuelle précède l'intégration des gabarits concernés.</p>
+        <div class="proc-dur">PLANNING AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
-        <h4>Intégration Next.js</h4>
-        <p>Environnement de preview en continu, lien partagé. Point hebdo 30 min. Commits visibles, branches par feature. Le site prend forme sous vos yeux.</p>
-        <div class="proc-dur">2–4 SEMAINES</div>
+        <h3>Intégration Next.js</h3>
+        <p>Environnement de prévisualisation, accès et points d'avancement selon le projet. Les branches, revues et critères d'acceptation sont adaptés à l'organisation retenue.</p>
+        <div class="proc-dur">PLANNING AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
-        <h4>Recette &amp; performance</h4>
-        <p>Checklist 30 points, tests cross-browser, audit Core Web Vitals, intégration contenu final. <b>1 tour de corrections inclus</b>. Rapport Lighthouse avant mise en ligne.</p>
-        <div class="proc-dur">3–5 JOURS</div>
+        <h3>Recette &amp; performance</h3>
+        <p>Navigateurs, appareils, pages, mesures Core Web Vitals et cycles de correction définis dans le plan de recette. Les rapports correspondent aux conditions de test indiquées.</p>
+        <div class="proc-dur">RECETTE AU DEVIS</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
-        <h4>Mise en ligne + suivi</h4>
+        <h3>Mise en ligne + suivi</h3>
         <p>Déploiement, redirections, monitoring, formation et période de correction selon le périmètre et les délais inscrits au devis.</p>
         <div class="proc-dur">AU DEVIS</div>
       </div>
@@ -633,19 +634,19 @@ ${navHtml}
     <div class="section-head reveal" style="margin-bottom:0">
       <div class="left">
         <div class="eyebrow">— Forfaits</div>
-        <h2>Trois formats,<br>un prix fixe affiché.</h2>
+        <h2>Trois formats,<br>avec des prix de départ.</h2>
       </div>
       <div class="right">
-        On vend au forfait, pas au temps passé. Vous connaissez le prix et le délai
-        <b>avant</b> de signer — pas d'avenant surprise, jamais.
+        Le devis fixe le périmètre, le prix et le planning avant signature.
+        Toute demande hors périmètre est chiffrée et soumise à votre <b>accord écrit</b> avant exécution&nbsp;: aucun dépassement unilatéral.
       </div>
     </div>
 
     <div class="price-grid">
       <div class="plan reveal">
         <div class="plan-tag">LANDING PAGE</div>
-        <h4>Essentiel</h4>
-        <div class="plan-sub">Une landing page longue optimisée conversion, ou un mini-site de 3–5 pages. Idéal pour un lancement, une campagne, un test de marché.</div>
+        <h3>Essentiel</h3>
+        <div class="plan-sub">Une landing page longue orientée conversion, ou un mini-site de 3–5 pages. Base indicative pour un lancement, une campagne ou un test de marché.</div>
         <div class="plan-price">
           <span class="amount">à partir de 6 900 €</span>
           <span class="per">HT · forfait</span>
@@ -654,10 +655,10 @@ ${navHtml}
         <ul class="plan-features">
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Design sur mesure + 2 révisions</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Budget de performance défini au devis</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>CMS Sanity ou Strapi inclus</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO technique, tracking GA4 &amp; Meta</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 1 an + formation 2 h</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 2 à 4 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>CMS Sanity ou Strapi selon le devis</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>SEO technique et mesure selon le parcours</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement et formation précisés au devis</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning confirmé après cadrage</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Demander un devis</a></div>
       </div>
@@ -665,8 +666,8 @@ ${navHtml}
       <div class="plan featured reveal reveal-d-1">
         <div class="plan-badge">FORMULE INTERMÉDIAIRE</div>
         <div class="plan-tag">SITE COMPLET</div>
-        <h4>Performance</h4>
-        <div class="plan-sub">Le site vitrine corporate qui convertit sur la durée&nbsp;: 10–20 pages, blog éditorial, SEO technique et stratégique, intégration CRM complète.</div>
+        <h3>Performance</h3>
+        <div class="plan-sub">Base de site vitrine corporate&nbsp;: 10–20 pages, blog éditorial, SEO technique et intégration CRM à préciser selon les outils.</div>
         <div class="plan-price">
           <span class="amount">14 900 €</span>
           <span class="per">HT · forfait fixe</span>
@@ -678,15 +679,15 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>50 mots-clés ciblés, schema.org, cocons sémantiques</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Formulaires HubSpot / Brevo / Salesforce</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Calendly bloqué avant action, flux documenté</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement 1 an + formation 2 h</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 5 à 7 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Hébergement et formation précisés au devis</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning confirmé après cadrage</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-accent">Démarrer mon projet</a></div>
       </div>
 
       <div class="plan reveal reveal-d-2">
         <div class="plan-tag">PLATEFORME</div>
-        <h4>Sur-mesure</h4>
+        <h3>Sur-mesure</h3>
         <div class="plan-sub">Site multilingue international, e-commerce headless, plateforme corporate avec espace client ou référentiel produit. Devis après cadrage.</div>
         <div class="plan-price">
           <span class="amount">à partir de 22 000 €</span>
@@ -698,14 +699,14 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>E-commerce headless (Stripe, Shopify)</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Espace client sécurisé, documents, RDV</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Intégrations métier sur mesure</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Livraison 8 à 14 semaines</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Planning confirmé après cadrage</li>
         </ul>
         <div class="plan-cta"><a href="#contact" class="btn btn-ghost">Cadrer mon besoin</a></div>
       </div>
     </div>
 
     <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
-      <b style="color:var(--ink)">Chaque devis précise</b> : livrables et droits · dépôt et accès · hébergement et coûts tiers · formation · recette et garantie éventuelle · échéancier de paiement.
+      <b style="color:var(--ink)">Chaque devis précise</b> : livrables · dépôt et accès · transfert des droits après paiement complet selon les CGV · composants préexistants et licences tierces · hébergement et coûts tiers · formation · recette · échéancier de paiement.
     </p>
   </div>
 </section>
@@ -717,7 +718,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ</div>
         <h2 style="margin-top:14px">Les vraies questions<br>qu'on nous pose avant<br>de signer.</h2>
-        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par un expert, sans détour.</p>
+        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Votre demande est relue personnellement, par un expert, sans détour.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
@@ -747,7 +748,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Via un <b>CMS headless</b> (Sanity ou Strapi selon votre équipe) avec interface éditeur simple&nbsp;: votre community manager ou votre équipe marketing publie articles, visuels, pages sans nous appeler. Formation 2 h incluse + guide PDF + vidéo Loom de prise en main.
+            Via un <b>CMS headless</b> adapté à l'équipe. Le devis liste les contenus modifiables, les rôles, la formation et la documentation ; l'autonomie est vérifiée pendant la recette sur des opérations convenues.
           </div>
         </div>
 
@@ -787,7 +788,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Option rédaction SEO disponible&nbsp;: <b>80 à 150 € la page optimisée</b> (brief, rédaction, maillage interne). Pour les photos&nbsp;: on part de vos visuels, ou on utilise des banques premium (Unsplash+, Pexels Pro, inclus), ou on vous met en relation avec un photographe partenaire.
+            La rédaction et les visuels sont chiffrés selon le volume, les droits et le niveau de validation requis. Le devis identifie la source de chaque image, sa licence et les éventuels coûts tiers ; un photographe peut être proposé séparément.
           </div>
         </div>
 
@@ -797,7 +798,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Page supplémentaire simple&nbsp;: <b>300 à 500 €</b>. Module (formulaire avancé, calculateur, intégration) sur devis. Pour un partenariat long terme, forfait évolutions mensuel qui couvre un volume constant de petites évolutions sans friction devis.
+            Toute page ou fonctionnalité supplémentaire est chiffrée avant exécution. Un forfait d'évolution peut prévoir un volume, des exclusions et une procédure d'arbitrage ; il ne vaut pas autorisation de dépassement du périmètre signé.
           </div>
         </div>
 
@@ -827,7 +828,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Acompte <b>30 %</b> à la signature du devis, <b>30 %</b> à la validation du design Figma, <b>40 %</b> à la mise en ligne. Devis + contrat signés électroniquement (Yousign). Facturation SAS française avec TVA 20 %. Jamais de demande de paiement avant la signature du devis détaillé.
+            L'échéancier, les jalons de facturation et les moyens de signature figurent dans le devis et les CGV applicables. Les livrables spécifiques sont transférés après paiement complet selon ces documents, sous réserve des composants préexistants et licences tierces.
           </div>
         </div>
       </div>
@@ -840,7 +841,7 @@ ${navHtml}
   <div class="stats-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="eyebrow on-dark">— Prochaine étape</div>
-    <h2 style="margin-top:18px">Un site qui convertit,<br>livré en 4 à 7 semaines.</h2>
+    <h2 style="margin-top:18px">Un site orienté conversion,<br>avec un planning écrit au devis.</h2>
     <p>Un call de 30 min avec un expert. Vous repartez avec un avis franc sur votre projet et, sous 48 h, un devis chiffré — sans engagement.</p>
     <div class="scta-cta">
       <a href="#contact" class="btn btn-accent btn-lg">
@@ -851,7 +852,7 @@ ${navHtml}
         Envoyer un email →
       </a>
     </div>
-    <div class="scta-meta">RÉPONSE SOUS 24H OUVRÉES · PAR UN ASSOCIÉ QUI CODE · SANS ENGAGEMENT</div>
+    <div class="scta-meta">RÉPONSE PERSONNELLE · PAR UN ASSOCIÉ QUI CODE · SANS ENGAGEMENT</div>
   </div>
 </section>
 
@@ -868,7 +869,7 @@ ${navHtml}
       </div>
       <div class="foot-cols">
         <div class="foot-col">
-          <h5>SERVICES</h5>
+          <h3>SERVICES</h3>
           <a href="/services/saas-applications-metier">SaaS &amp; applications métier</a>
           <a href="/services/outils-internes-sur-mesure">Outils internes</a>
           <a href="/services/sites-vitrines">Sites vitrines</a>
@@ -876,20 +877,20 @@ ${navHtml}
           <a href="/services/publicite-en-ligne">Publicité</a>
         </div>
         <div class="foot-col">
-          <h5>STUDIO</h5>
+          <h3>STUDIO</h3>
           <a href="/methode">Méthode</a>
           <a href="/realisations">Réalisations</a>
           <a href="/equipe">Équipe</a>
           <a href="/tarifs">Tarifs</a>
         </div>
         <div class="foot-col">
-          <h5>CONTACT</h5>
+          <h3>CONTACT</h3>
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
           <a href="#">LinkedIn</a>
           <a href="#">YouTube</a>
         </div>
         <div class="foot-col">
-          <h5>LÉGAL</h5>
+          <h3>LÉGAL</h3>
           <a href="#">CGV</a>
           <a href="#">Mentions légales</a>
           <a href="#">Confidentialité</a>

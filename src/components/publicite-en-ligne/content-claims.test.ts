@@ -23,4 +23,13 @@ describe("publicite en ligne public claims", () => {
     expect(publishedContent).not.toMatch(/CNIL OK|100\s*%\s*(?:RGPD|des signaux)/i);
     expect(publishedContent).not.toMatch(/tout est inclus|tout inclus/i);
   });
+
+  it("ne promet ni calendrier SEO ni citation par une IA", () => {
+    const publishedContent = `${composedBodyHtml}\n${servicePageSource}`;
+
+    expect(publishedContent).not.toMatch(
+      /premiers mouvements à 3 mois|trafic significatif à 6[–-]9 mois|ROI business mesurable à 9[–-]12 mois|SEO se joue sur 9 à 12 mois/i,
+    );
+    expect(publishedContent).not.toMatch(/faire que votre site soit[^<.]{0,80}l'une de ces sources/i);
+  });
 });

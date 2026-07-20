@@ -5,11 +5,11 @@ export const logoWallHtml = `
     <div class="cw-kicker">— Nos produits internes, en production</div>
     <div class="cw-grid">
       <div class="cw-logo cw-logo-img">
-        <img src="/logos/clients/hagnere-patrimoine.webp" alt="Hagnéré Patrimoine" width="160" height="48" loading="lazy" decoding="async" />
+        <img src="/logos/clients/hagnere-patrimoine-320.webp" alt="Hagnéré Patrimoine" width="160" height="68" loading="lazy" decoding="async" />
       </div>
       <div class="cw-sep" aria-hidden="true"></div>
       <div class="cw-logo cw-logo-img">
-        <img src="/logos/clients/hagnere-investissement.png" alt="Hagnéré Investissement" width="160" height="48" loading="lazy" decoding="async" />
+        <img src="/logos/clients/hagnere-investissement-320.webp" alt="Hagnéré Investissement" width="160" height="56" loading="lazy" decoding="async" />
       </div>
       <div class="cw-sep" aria-hidden="true"></div>
       <div class="cw-logo cw-logo-img">

@@ -32,17 +32,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -170,23 +159,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -686,8 +664,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="On vérifie les aides de votre territoire avec vous"
-          description="Décrivez votre projet en 3 minutes : nous vous répondons sous 24 h ouvrées avec un chiffrage honnête — et les dispositifs réellement mobilisables sur votre territoire, sources à l'appui."
-          tags={["Réponse sous 24 h ouvrées", "Vérification des aides incluse", "Sans engagement"]}
+          description="Décrivez votre projet en 3 minutes : nous visons une réponse le prochain jour ouvré, sans délai garanti avec un chiffrage honnête — et les dispositifs réellement mobilisables sur votre territoire, sources à l'appui."
+          tags={["Objectif : prochain jour ouvré", "Vérification des aides incluse", "Sans engagement"]}
         />
 
         <h2 id="mode-emploi">9. Mode d&apos;emploi : déposer sans se faire recaler</h2>
@@ -971,7 +949,7 @@ export default function Page() {
           Chez Hagnéré Code, la vérification des aides fait partie du
           cadrage : décrivez votre projet en 3 minutes via{" "}
           <Link href="/demarrer-un-projet">notre parcours guidé</Link> —
-          réponse personnelle sous 24 h ouvrées, avec un chiffrage au
+          objectif de réponse personnelle le prochain jour ouvré, avec un chiffrage au
           forfait fixe (méthode{" "}
           <Link href="/methode">Sprint Fixe™</Link>) et, si votre
           territoire finance quelque chose, le dispositif exact et son

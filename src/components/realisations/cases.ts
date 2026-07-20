@@ -12,15 +12,15 @@ export type CaseStudy = {
   url: string;
   tagline: string;
   heroIntro: string;
-  year: string;
-  duration: string;
+  status: string;
+  engagement: string;
   team: string[];
   stack: string[];
   context: string;
   problem: { title: string; body: string }[];
   solution: { title: string; body: string }[];
   features: string[];
-  metrics: { value: string; label: string; note?: string }[];
+  highlights: { value: string; label: string }[];
   screenshots: {
     title: string;
     caption: string;
@@ -38,9 +38,9 @@ export const CASES: Record<string, CaseStudy> = {
   "lmnp-ai": {
     slug: "lmnp-ai",
     seo: {
-      title: "Étude de cas LMNP.AI · SaaS à 5 400 clients · Hagnéré Code",
+      title: "Étude de cas LMNP.AI · SaaS de comptabilité · Hagnéré Code",
       description:
-        "Comment on a construit LMNP.AI : SaaS de comptabilité fiscale guidé par IA, MVP en 4 mois, 5 400 clients payants. Stack Laravel, Livewire, Stripe.",
+        "Conception de LMNP.AI : parcours de comptabilité fiscale guidé, amortissements, liasses et télétransmission EDI. Architecture et modules livrés.",
     },
     services: [
       { label: "Développement SaaS", href: "/services/saas-applications-metier" },
@@ -53,53 +53,53 @@ export const CASES: Record<string, CaseStudy> = {
     url: "https://lmnp.ai",
     tagline: "Le SaaS de compta LMNP/LMP qui rend la liasse fiscale intelligible.",
     heroIntro:
-      "Première plateforme française qui fait la comptabilité LMNP au réel en autonomie, guidée par IA, avec télétransmission EDI à la DGFiP.",
-    year: "2025",
-    duration: "4 mois (MVP) + évolutions continues",
+      "Plateforme de comptabilité LMNP/LMP au régime réel, avec parcours guidé, assistance contextuelle et télétransmission EDI à la DGFiP.",
+    status: "En production",
+    engagement: "Produit interne · évolutions continues",
     team: ["Nicolas (CTO)", "Frédéric (Livewire)", "Ryan (IA)", "Arthur (paiements)", "Quentin (produit / UX)"],
     stack: [
       "Laravel 12",
       "Livewire 3",
       "Flux UI",
       "Tailwind v4",
-      "Claude Opus 4.7",
+      "Assistant IA",
       "Prism",
       "PostgreSQL",
       "Stripe",
       "EDI DGFiP",
     ],
     context:
-      "Le marché du LMNP est dominé par des expert-comptables à 800-1 500 € / an, ou par des logiciels en marque blanche peu pédagogiques. L'ambition : un produit B2C autonome, pédagogique, et 4 à 6× moins cher, sans jamais sacrifier la conformité.",
+      "Au régime réel, l'utilisateur doit réunir des informations comptables, comprendre les amortissements et préparer une liasse fiscale. Le produit a été conçu pour organiser ces étapes dans un parcours explicite, avec des contrôles et des explications en contexte.",
     problem: [
       {
-        title: "La fiscalité LMNP est incompréhensible pour 90 % des investisseurs",
-        body: "Amortissements par composants, régime réel, récupération de déficit, obligations DPE — tous ces concepts sont traités de manière absconse par les logiciels historiques. Résultat : l'investisseur délègue, paie cher, ou abandonne le régime réel au profit du micro-BIC souvent moins avantageux.",
+        title: "La fiscalité LMNP demande un parcours pédagogique",
+        body: "Amortissements par composants, régime réel et suivi des déficits mobilisent plusieurs notions techniques. Une succession de formulaires sans explication ne suffit pas à guider l'utilisateur ni à lui permettre de contrôler les informations saisies.",
       },
       {
-        title: "L'EDI DGFiP est un champ de mines technique",
-        body: "La transmission des liasses 2031 et 2033 vers la DGFiP impose un format EDI-TDFC strict, avec certificat requis et contrôles de cohérence. Peu d'éditeurs maîtrisent la chaîne complète.",
+        title: "L'EDI DGFiP impose une chaîne technique stricte",
+        body: "La transmission des liasses 2031 et 2033 utilise le format EDI-TDFC, un certificat et des contrôles de cohérence. Le produit doit suivre chaque étape, du fichier généré jusqu'au retour de la télétransmission.",
       },
       {
-        title: "Concurrents : expert-comptable en ligne, pas de self-service guidé",
-        body: "Les options existantes laissent l'utilisateur face à des formulaires bruts sans assistance contextuelle.",
+        title: "Les formulaires ont besoin de contexte",
+        body: "Le parcours devait rapprocher chaque question des informations du bien et de la situation déclarée, tout en laissant les données et la validation finale visibles par l'utilisateur.",
       },
     ],
     solution: [
       {
         title: "IA contextualisée à chaque étape",
-        body: "À chaque formulaire, Claude Opus 4.7 répond en temps réel aux questions de l'utilisateur avec un contexte fiscal personnalisé (régime, situation, biens). L'IA explique, jamais elle ne décide — traçabilité et responsabilité restent à l'utilisateur.",
+        body: "À chaque formulaire, l'assistant répond aux questions à partir du contexte fiscal renseigné (régime, situation, biens). Il fournit des explications ; les données utilisées et la validation finale restent du ressort de l'utilisateur.",
       },
       {
         title: "Moteur d'amortissements par composants automatique",
-        body: "Moteur fiscal interne qui calcule les amortissements par composants (gros œuvre, toiture, menuiseries, etc.) à partir de la fiche du bien. Conforme BOI-BIC-AMT.",
+        body: "Le moteur prépare les amortissements par composants à partir de la fiche du bien et rend les hypothèses consultables avant validation.",
       },
       {
         title: "Télétransmission EDI intégrée",
-        body: "Liasse 2031 et 2033 générées, signées via certificat partenaire, et télétransmises en un clic vers la DGFiP. Accusé de réception sous 24 h.",
+        body: "Les liasses 2031 et 2033 peuvent être générées, transmises via le certificat du partenaire EDI et suivies jusqu'au retour de traitement de la DGFiP.",
       },
       {
         title: "Double offre : autonomie ou validation expert",
-        body: "Soit l'utilisateur valide seul (229 € / an), soit un expert-comptable partenaire valide et signe (389 € / an). Même produit, deux niveaux de risque assumé.",
+        body: "Le même parcours prend en charge une utilisation autonome ou une formule incluant l'intervention d'un expert-comptable partenaire. Le contenu précis des offres est présenté sur le site du produit.",
       },
     ],
     features: [
@@ -110,26 +110,26 @@ export const CASES: Record<string, CaseStudy> = {
       "Liasse 2031 / 2033 auto",
       "Télétransmission EDI DGFiP",
       "Assistance IA contextuelle",
-      "Bibliothèque de 163 guides",
+      "Bibliothèque de guides fiscaux",
       "Option validation expert",
     ],
-    metrics: [
-      { value: "5,4 k", label: "clients actifs", note: "payants en 2025" },
-      { value: "163", label: "guides fiscaux rédigés" },
-      { value: "15 min", label: "de compta par an", note: "médiane utilisateur" },
-      { value: "229 €", label: "prix autonomie", note: "vs 900 € concurrent moyen" },
+    highlights: [
+      { value: "2031 + 2033", label: "liasses prises en charge" },
+      { value: "EDI", label: "télétransmission DGFiP" },
+      { value: "Multi-biens", label: "parcours de gestion" },
+      { value: "Guides", label: "aide fiscale en contexte" },
     ],
     screenshots: [
       {
         title: "Résultat fiscal personnalisé",
         caption:
-          "Économie annuelle estimée, régime recommandé, progression de la liasse.",
+          "Hypothèses calculées à partir des données saisies, avec progression de la liasse et étapes de validation.",
         kind: "dashboard",
       },
       {
         title: "Assistant IA en contexte",
         caption:
-          "L'utilisateur pose ses questions fiscales à Claude — l'IA répond avec le contexte du bien en cours.",
+          "L'utilisateur pose ses questions à l'assistant, qui répond avec le contexte du bien en cours.",
         kind: "form",
       },
       {
@@ -140,7 +140,7 @@ export const CASES: Record<string, CaseStudy> = {
     ],
     testimonial: {
       quote:
-        "On a cadré ce SaaS en 6 semaines avec l'équipe. L'impact sur l'adoption du régime réel est concret : 5,4 k clients en moins d'un an.",
+        "Nous avons cadré ce produit autour d'un principe : expliquer chaque étape et laisser à l'utilisateur la visibilité sur les données transmises.",
       author: "Quentin Hagnéré",
       role: "Fondateur · LMNP.AI (mot du fondateur — produit interne du groupe Hagnéré)",
       initials: "QH",
@@ -152,7 +152,7 @@ export const CASES: Record<string, CaseStudy> = {
     seo: {
       title: "Étude de cas SCI-AI · SaaS compta SCI IR/IS · Hagnéré Code",
       description:
-        "Le premier logiciel de comptabilité SCI gérant IR et IS, livré en 5 mois : liasses EDI DGFiP, bilan de clôture en 30 min. Par Hagnéré Code.",
+        "Conception de SCI-AI.app : parcours distincts pour SCI à l'IR et à l'IS, déclarations 2072 et 2065, liasse 2033 selon le régime applicable.",
     },
     services: [
       { label: "Développement SaaS", href: "/services/saas-applications-metier" },
@@ -163,11 +163,11 @@ export const CASES: Record<string, CaseStudy> = {
     brandSoft: "#E0ECFF",
     category: "SaaS B2C · Comptabilité fiscale",
     url: "https://sci-ai.app",
-    tagline: "Comptabilité SCI à l'IR comme à l'IS, liasses 2033 / 2065 / 2072 auto-générées.",
+    tagline: "Comptabilité SCI à l'IR comme à l'IS, avec les déclarations adaptées à chaque régime.",
     heroIntro:
-      "Le premier logiciel de comptabilité SCI qui gère les deux régimes (IR et IS) dans une seule interface, avec télétransmission EDI DGFiP complète.",
-    year: "2025",
-    duration: "5 mois",
+      "Un parcours unifié pour gérer une SCI à l'IR ou à l'IS, préparer les déclarations correspondantes et suivre leur télétransmission.",
+    status: "En production",
+    engagement: "Produit interne · évolutions continues",
     team: ["Nicolas (CTO)", "Frédéric (Livewire)", "Ryan (IA)", "Killian (DevOps)", "Quentin (UX / front)"],
     stack: [
       "Laravel 12",
@@ -175,20 +175,20 @@ export const CASES: Record<string, CaseStudy> = {
       "Tailwind v4",
       "PostgreSQL",
       "Redis",
-      "Claude Opus 4.7",
+      "Assistant IA",
       "EDI DGFiP (TDFC)",
       "Stripe",
     ],
     context:
-      "Les SCI sont un véhicule d'investissement familial massif en France (plus de 1,5 M immatriculées) mais 70 % sont accompagnées par un cabinet à 1 000-2 500 € / an. L'enjeu : démocratiser la gestion autonome pour les SCI simples (≤ 3 associés, patrimoine locatif direct).",
+      "Les obligations déclaratives d'une SCI diffèrent selon son régime fiscal. Une SCI non soumise à l'IS déclare ses revenus fonciers avec une 2072 ; une SCI à l'IS dépose une 2065 accompagnée de la liasse applicable. Le produit devait rendre cette distinction explicite tout en centralisant la gestion des associés.",
     problem: [
       {
         title: "La SCI cumule deux régimes fiscaux complexes",
-        body: "En IR (par défaut), chaque associé déclare sa quote-part via la 2072. En IS (sur option), la SCI devient assujettie à l'IS avec une 2065. Peu de logiciels gèrent les deux dans une interface unique.",
+        body: "Une SCI non soumise à l'IS dépose une déclaration 2072 et le résultat est réparti entre les associés. Une SCI à l'IS dépose une déclaration 2065 accompagnée des tableaux de sa liasse fiscale.",
       },
       {
         title: "Gestion des associés et parts",
-        body: "Entrées / sorties d'associés, cessions de parts, démembrement (nue-propriété / usufruit), comptes courants associés — tout ça déclenche des écritures comptables spécifiques qu'un logiciel grand public ne saurait gérer.",
+        body: "Entrées et sorties d'associés, cessions de parts, démembrement et comptes courants exigent des données cohérentes entre le registre, la comptabilité et les déclarations.",
       },
       {
         title: "Amortissements par composants en IS",
@@ -198,19 +198,19 @@ export const CASES: Record<string, CaseStudy> = {
     solution: [
       {
         title: "Interface unifiée IR / IS",
-        body: "Un seul parcours qui s'adapte au régime de la SCI. Bascule IR → IS gérée avec génération automatique des écritures d'ouverture IS (bilan initial, amortissements rétroactifs légaux).",
+        body: "Un seul parcours adapte les écrans et les contrôles au régime de la SCI. Lors d'une transition vers l'IS, les écritures d'ouverture et les hypothèses sont préparées pour être contrôlées avant validation.",
       },
       {
         title: "Module associés complet",
-        body: "Registre des associés, gestion des parts, comptes courants, démembrement. Chaque mouvement déclenche les écritures comptables et la mise à jour de la 2072.",
+        body: "Registre des associés, gestion des parts, comptes courants et démembrement sont regroupés dans le même module. Les informations utiles à la répartition du résultat et à la déclaration 2072 restent consultables.",
       },
       {
-        title: "Télétransmission EDI DGFiP · 3 liasses",
-        body: "Liasses 2033 (IR), 2065 (IS) et 2072 (associés) générées et télétransmises en un clic. Accusés de réception conservés.",
+        title: "Déclarations adaptées au régime fiscal",
+        body: "Pour une SCI non soumise à l'IS, le parcours prépare la déclaration 2072-C ou 2072-S. Pour une SCI à l'IS, il prépare la déclaration 2065 et, au régime réel simplifié, les tableaux 2033-A à 2033-G. La liasse 2033 n'est pas une déclaration de SCI à l'IR.",
       },
       {
         title: "Assistant IA fiscal",
-        body: "Claude Opus 4.7 entraîné sur le BOI-IS et le BOFiP SCI pour répondre aux questions en contexte, avec citations des articles CGI de référence.",
+        body: "L'assistant formule des réponses en contexte à partir de documents administratifs de référence et affiche les sources utilisées pour permettre leur contrôle.",
       },
     ],
     features: [
@@ -219,16 +219,18 @@ export const CASES: Record<string, CaseStudy> = {
       "Comptes courants associés",
       "Démembrement (NP / US)",
       "Amortissements par composants",
-      "Liasse 2033 / 2065 / 2072 auto",
+      "Déclaration 2072 pour les SCI non soumises à l'IS",
+      "Déclaration 2065 pour les SCI à l'IS",
+      "Tableaux 2033 au réel simplifié IS",
       "Télétransmission EDI DGFiP",
       "Assistant IA fiscal",
       "Bilan et compte de résultat",
     ],
-    metrics: [
-      { value: "2", label: "régimes gérés (IR/IS)", note: "en parcours unifié" },
-      { value: "3", label: "liasses auto-générées" },
-      { value: "229 €", label: "/ an autonomie", note: "vs 1 800 € cabinet moyen" },
-      { value: "< 30 min", label: "bilan de clôture", note: "médiane utilisateur" },
+    highlights: [
+      { value: "IR", label: "déclaration 2072" },
+      { value: "IS", label: "déclaration 2065" },
+      { value: "2033", label: "tableaux au réel simplifié IS" },
+      { value: "Sources", label: "références administratives visibles" },
     ],
     screenshots: [
       {
@@ -240,18 +242,18 @@ export const CASES: Record<string, CaseStudy> = {
       {
         title: "Bascule IR → IS guidée",
         caption:
-          "Génération automatique du bilan d'ouverture IS et des amortissements rétroactifs.",
+          "Écritures d'ouverture et hypothèses préparées dans un parcours de contrôle avant validation.",
         kind: "form",
       },
       {
-        title: "Télétransmission 2065 validée",
-        caption: "Accusé de réception DGFiP reçu, archivage 10 ans automatique.",
+        title: "Suivi de la déclaration 2065",
+        caption: "Statut de télétransmission et retour de traitement regroupés dans le dossier.",
         kind: "report",
       },
     ],
     testimonial: {
       quote:
-        "La bascule IR → IS est le moment le plus risqué pour une SCI. On l'a automatisée proprement grâce à un gros travail de cadrage fiscal avec l'équipe.",
+        "Le cadrage a commencé par séparer clairement les obligations d'une SCI non soumise à l'IS de celles d'une SCI à l'IS, avant de concevoir les écrans.",
       author: "Quentin Hagnéré",
       role: "Co-fondateur · SCI-AI.app (mot du fondateur — produit interne du groupe Hagnéré)",
       initials: "QH",
@@ -261,9 +263,9 @@ export const CASES: Record<string, CaseStudy> = {
   "hagnere-patrimoine": {
     slug: "hagnere-patrimoine",
     seo: {
-      title: "Refonte site + CRM patrimoine : +340 % SEO · Hagnéré Code",
+      title: "Refonte site et CRM patrimoine · Hagnéré Code",
       description:
-        "Refonte d'un cabinet de gestion de patrimoine : +340 % de trafic en 6 mois, 4,2 % de conversion en RDV, CRM sur mesure. Livré en 6 semaines.",
+        "Étude de cas Hagnéré Patrimoine : site éditorial, CRM interne, simulateurs, parcours de qualification et prise de rendez-vous.",
     },
     services: [
       { label: "Sites vitrines", href: "/services/sites-vitrines" },
@@ -275,11 +277,11 @@ export const CASES: Record<string, CaseStudy> = {
     brandSoft: "#FAF3E3",
     category: "Site éditorial + CRM interne · Cabinet CIF",
     url: "https://hagnere-patrimoine.fr",
-    tagline: "Site éditorial premium + CRM interne pour piloter des milliers de programmes neufs.",
+    tagline: "Site éditorial et CRM interne pour structurer les contenus, les programmes et les rendez-vous.",
     heroIntro:
-      "Refonte complète d'un cabinet de conseil en gestion de patrimoine — site éditorial premium, CRM interne qui gère des milliers de programmes immobiliers neufs, simulateurs et convertisseurs fiscaux, entonnoirs de conversion défiscalisation.",
-    year: "2025",
-    duration: "6 semaines + évolutions continues",
+      "Refonte du site d'un cabinet de conseil en gestion de patrimoine, avec CRM interne, simulateurs, contenus éditoriaux et parcours de qualification.",
+    status: "En production",
+    engagement: "Produit interne · évolutions continues",
     team: ["Quentin (UX / front / SEO)", "Killian (DevOps / hosting)", "Frédéric (back-end / CRM)"],
     stack: [
       "Next.js 15",
@@ -292,19 +294,19 @@ export const CASES: Record<string, CaseStudy> = {
       "Plausible",
     ],
     context:
-      "Cabinet de gestion de patrimoine agréé CIF · ORIAS basé à Chambéry, 18 M€ sous gestion, 284 clients. Site historique daté, pas de SEO, génération de leads uniquement par recommandation, et aucun outil interne pour gérer le catalogue des programmes immobiliers neufs proposés en défiscalisation. Objectif : doubler le flux entrant qualifié en 6 mois et industrialiser la gestion des programmes côté back-office.",
+      "Le cabinet disposait d'un site à refondre et de plusieurs flux de travail séparés pour les contenus, les programmes immobiliers et le suivi des demandes. Le projet a consisté à réunir la vitrine publique, les outils de simulation, la prise de rendez-vous et le back-office dans un ensemble cohérent.",
     problem: [
       {
-        title: "Aucune présence SEO",
-        body: "Le site existant n'apparaissait sur aucune requête patrimoniale nationale. 100 % du trafic venait du bouche-à-oreille et de quelques backlinks presse.",
+        title: "Une architecture éditoriale à reconstruire",
+        body: "Le site existant ne structurait pas clairement les différentes intentions patrimoniales ni les liens entre contenus, outils et prise de rendez-vous.",
       },
       {
-        title: "Conversion visiteur → RDV < 0,5 %",
-        body: "Pas de qualification, pas de prise de RDV directe, formulaire générique. Les prospects froids abandonnaient avant le contact.",
+        title: "Un parcours de contact trop générique",
+        body: "Le formulaire ne permettait pas de préciser suffisamment le besoin avant le rendez-vous. Le nouveau parcours devait recueillir le contexte utile sans transformer le site en questionnaire interminable.",
       },
       {
         title: "Positionnement flou",
-        body: "Le site parlait 'gestion de patrimoine' sans promesse claire. Impossible de se différencier face aux dizaines d'autres cabinets CIF régionaux.",
+        body: "Le site parlait de gestion de patrimoine sans expliciter les besoins traités ni le parcours proposé à chaque profil de visiteur.",
       },
     ],
     solution: [
@@ -314,39 +316,39 @@ export const CASES: Record<string, CaseStudy> = {
       },
       {
         title: "CRM interne · catalogue programmes neufs",
-        body: "Back-office sur-mesure pour gérer des milliers de programmes immobiliers neufs (Pinel, Pinel+, LMNP neuf, Denormandie, Malraux). Fiches programme structurées, pièces fiscales, disponibilités, suivi commercial — le commercial pilote son catalogue depuis une seule interface.",
+        body: "Le back-office regroupe les fiches de programmes immobiliers neufs, les documents, les disponibilités et le suivi commercial dans une interface unique.",
       },
       {
         title: "Simulateurs et convertisseurs fiscaux",
-        body: "Suite d'outils intégrés : simulateurs IFI, PER, LMNP, déficit foncier, capacité d'emprunt ; convertisseurs TMI, rendement net, cash-flow. Chaque simulateur sert d'aimant SEO et de point d'entrée d'un entonnoir de conversion vers la prise de RDV.",
+        body: "Des outils thématiques sont intégrés aux contenus afin d'aider le visiteur à préparer sa réflexion et, s'il le souhaite, transmettre son contexte avant un rendez-vous.",
       },
       {
         title: "Stratégie SEO longue traîne",
-        body: "35 pages piliers rédigées autour des intentions patrimoniales fortes (optimisation fiscale, transmission, SCPI, LMNP, IFI, PER). 200 backlinks patiemment construits sur 4 mois.",
+        body: "Les contenus sont organisés autour d'intentions patrimoniales distinctes, avec des pages piliers, des guides, des liens internes et des métadonnées propres à chaque sujet.",
       },
       {
         title: "Tunnel de qualification + Google Ads",
-        body: "Formulaire 4 étapes de qualification, RDV Calendly direct avec le fondateur, campagnes Search sur 40 requêtes transactionnelles ('conseil patrimonial [ville]', 'CGP [ville]', 'réduire IFI'). CPA cible < 120 €.",
+        body: "Le formulaire progressif, la prise de rendez-vous et le suivi des événements sont reliés. Les éventuelles campagnes d'acquisition utilisent les mêmes points de mesure, sans promesse de coût ni de volume.",
       },
     ],
     features: [
       "Site éditorial premium",
-      "CRM interne programmes neufs (milliers de références)",
+      "CRM interne programmes neufs",
       "Simulateurs fiscaux (IFI, PER, LMNP, déficit foncier)",
       "Convertisseurs (TMI, rendement net, capacité d'emprunt)",
       "Entonnoirs de conversion défiscalisation",
       "Tunnel de qualification 4 étapes",
       "Prise de RDV Calendly",
-      "35 pages piliers SEO",
+      "Pages piliers et guides SEO",
       "Google Ads Search + Performance Max",
       "Tracking Plausible + GA4",
-      "Accessibilité WCAG AA",
+      "Bonnes pratiques d'accessibilité",
     ],
-    metrics: [
-      { value: "+ 340 %", label: "trafic organique", note: "en 6 mois" },
-      { value: "4,2 %", label: "taux de conversion", note: "visiteurs → RDV qualifié" },
-      { value: "× 3", label: "pipeline commercial", note: "en valeur" },
-      { value: "98 €", label: "CPA moyen Ads", note: "sous le seuil cible" },
+    highlights: [
+      { value: "Site", label: "architecture éditoriale" },
+      { value: "CRM", label: "back-office interne" },
+      { value: "SEO", label: "pages et maillage thématique" },
+      { value: "RDV", label: "parcours de qualification" },
     ],
     screenshots: [
       {
@@ -361,7 +363,7 @@ export const CASES: Record<string, CaseStudy> = {
       },
       {
         title: "CRM interne · programmes neufs",
-        caption: "Catalogue de milliers de programmes Pinel / LMNP / Denormandie, fiches structurées, pièces fiscales, suivi commercial du prospect au compromis.",
+        caption: "Fiches structurées, documents, disponibilités et suivi commercial regroupés dans le back-office.",
         kind: "dashboard",
       },
     ],
@@ -377,9 +379,9 @@ export const CASES: Record<string, CaseStudy> = {
   "hagnere-investissement": {
     slug: "hagnere-investissement",
     seo: {
-      title: "Étude de cas : site vitrine à ×2,5 leads · Hagnéré Code",
+      title: "Étude de cas Hagnéré Investissement · Hagnéré Code",
       description:
-        "Site de génération de leads pour un cabinet d'investissement : simulateur de rendement, funnel 3 segments, ×2,5 leads qualifiés. Livré en 8 semaines.",
+        "Conception d'un site pour un cabinet d'investissement immobilier : simulateur, parcours de qualification, prise de rendez-vous et contenus vidéo.",
     },
     services: [
       { label: "Sites vitrines", href: "/services/sites-vitrines" },
@@ -391,11 +393,11 @@ export const CASES: Record<string, CaseStudy> = {
     brandSoft: "#D1FAE5",
     category: "Site vitrine conversion · Investissement clé en main",
     url: "https://hagnere-investissement.fr",
-    tagline: "Le site qui capte des investisseurs immobiliers qualifiés à grande échelle.",
+    tagline: "Un site qui relie contenus, simulation et qualification des demandes.",
     heroIntro:
       "Plateforme marketing d'un cabinet d'investissement immobilier clé en main, avec simulateur de rendement, funnel de qualification et intégration YouTube.",
-    year: "2025",
-    duration: "8 semaines",
+    status: "En production",
+    engagement: "Produit interne · évolutions continues",
     team: ["Quentin (UX / front / SEO)", "Killian (DevOps)", "Frédéric (back-end CMS)", "Ryan (intégrations YouTube)"],
     stack: [
       "Next.js 15",
@@ -411,11 +413,11 @@ export const CASES: Record<string, CaseStudy> = {
       "Plausible",
     ],
     context:
-      "Cabinet d'investissement immobilier clé en main : recherche, négociation, travaux, location. 612 clients accompagnés depuis 2021. Objectif : industrialiser l'acquisition de leads investisseurs qualifiés via site + contenus vidéo.",
+      "Le cabinet accompagne des projets d'investissement immobilier clé en main, de la recherche du bien à sa mise en location. Le site devait relier les contenus vidéo, une première simulation, la qualification du projet et la prise de rendez-vous.",
     problem: [
       {
         title: "Leads principalement venus de YouTube sans captage structuré",
-        body: "La chaîne YouTube générait du trafic important mais les visiteurs atterrissaient sur un site générique sans parcours de qualification. Perte massive de leads potentiels.",
+        body: "Les vidéos renvoyaient vers un site générique, sans continuité claire entre le sujet consulté, les informations demandées et le rendez-vous.",
       },
       {
         title: "Simulateur inexistant — frein commercial",
@@ -423,7 +425,7 @@ export const CASES: Record<string, CaseStudy> = {
       },
       {
         title: "Pas de segmentation par profil investisseur",
-        body: "Investisseurs à 50 k€ et investisseurs à 500 k€ suivaient le même parcours. Mauvaise qualification, temps commercial gâché.",
+        body: "Des profils aux budgets et objectifs différents suivaient le même parcours, ce qui limitait la précision des informations recueillies avant le rendez-vous.",
       },
     ],
     solution: [
@@ -437,11 +439,11 @@ export const CASES: Record<string, CaseStudy> = {
       },
       {
         title: "Intégration YouTube continue",
-        body: "Les nouvelles vidéos de la chaîne apparaissent automatiquement dans les pages pertinentes (ex : vidéo Lyon dans la page 'Investir à Lyon'). SEO et temps passé augmentés.",
+        body: "Les nouvelles vidéos peuvent être rattachées automatiquement aux pages pertinentes, par exemple une vidéo sur Lyon à la page consacrée à cette ville.",
       },
       {
         title: "Campagnes Meta + Google synchronisées",
-        body: "Audiences miroir segmentées sur les 612 clients existants. CPA cible < 80 € sur les investisseurs < 100 k€, < 250 € sur les > 300 k€.",
+        body: "Les événements du site alimentent une mesure commune aux canaux Google et Meta. Les budgets, audiences et objectifs sont définis par campagne, sans coût d'acquisition garanti.",
       },
     ],
     features: [
@@ -454,11 +456,11 @@ export const CASES: Record<string, CaseStudy> = {
       "Google Ads + Meta Ads",
       "Tracking multi-touch attribution",
     ],
-    metrics: [
-      { value: "612", label: "clients accompagnés", note: "depuis 2021" },
-      { value: "7,68 %", label: "rendement net/net moyen", note: "sur leurs projets réalisés — performances passées non garantes du futur, capital non garanti" },
-      { value: "× 2,5", label: "leads qualifiés", note: "vs ancien site" },
-      { value: "< 80 €", label: "CPA segment A", note: "objectif tenu" },
+    highlights: [
+      { value: "Simulateur", label: "première estimation" },
+      { value: "Funnel", label: "qualification du projet" },
+      { value: "Vidéo", label: "contenus reliés aux pages" },
+      { value: "RDV", label: "orientation vers un conseiller" },
     ],
     screenshots: [
       {
@@ -479,7 +481,7 @@ export const CASES: Record<string, CaseStudy> = {
     ],
     testimonial: {
       quote:
-        "L'objectif du simulateur était simple : que le prospect arrive au rendez-vous avec son projet déjà chiffré. C'est ce qui change la nature de la conversation commerciale.",
+        "L'objectif du simulateur était simple : permettre au prospect de préparer des hypothèses avant le rendez-vous et donner au conseiller un contexte exploitable.",
       author: "Quentin Hagnéré",
       role: "Fondateur · Hagnéré Investissement (mot du fondateur — cabinet du groupe Hagnéré)",
       initials: "QH",

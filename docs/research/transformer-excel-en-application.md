@@ -703,9 +703,8 @@ publié, indexé ni validé par un lecteur non technique.**
   prototype Power Apps, Power Apps/low-code et cadrage sur mesure ;
 - réinitialisation et confirmation visuelle de la copie du résultat contrôlées ;
 - aucune erreur ni alerte dans la console du navigateur ;
-- canonique, `index, follow`, un seul H1, données structurées `Article`,
-  `BreadcrumbList` et `FAQPage` valides ; les huit questions du schéma FAQ
-  correspondent à la FAQ visible ;
+- canonique, `index, follow`, un seul H1, données structurées `Article` et
+  `BreadcrumbList` valides ; FAQ visible sans schéma `FAQPage` ;
 - carte présente sur `/guides`, URL présente dans `/sitemap.xml`, image Open
   Graph servie en PNG 1200 × 630 avec un statut HTTP 200.
 

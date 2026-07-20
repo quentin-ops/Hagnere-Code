@@ -367,7 +367,7 @@
   letter-spacing: 0.06em;
 }
 .at-cmp-head .at-cmp-col-us .at-cmp-kind {
-  color: var(--accent);
+  color: #A78BFA;
 }
 .at-cmp-title {
   font-weight: 600;
@@ -469,7 +469,7 @@
 .at-vt-tag {
   font-family: var(--font-geist-mono);
   font-size: 10px;
-  color: var(--mute);
+  color: #666;
   padding: 4px 8px;
   background: var(--paper-3);
   border-radius: 999px;
@@ -813,7 +813,7 @@
   display: grid;
   place-items: center;
 }
-.at-trust-card h4 {
+.at-trust-card h3 {
   font-size: 16px;
   letter-spacing: -0.015em;
 }
@@ -1051,7 +1051,7 @@
   text-transform: uppercase;
   margin-bottom: 4px;
 }
-.at-integ-head h4 {
+.at-integ-head h3 {
   font-size: 17px;
   letter-spacing: -0.015em;
 }
@@ -1182,7 +1182,7 @@
   margin-top: 14px;
 }
 .at-refuse-intro .eyebrow {
-  color: var(--accent);
+  color: #A78BFA;
 }
 .at-refuse-intro p {
   color: rgba(255,255,255,0.65);
@@ -1236,7 +1236,7 @@
   flex-shrink: 0;
   margin-top: 2px;
 }
-.at-refuse-list h4 {
+.at-refuse-list h3 {
   color: #fff;
   font-size: 15px;
   margin-bottom: 4px;
@@ -1954,7 +1954,7 @@
   padding: 3px 8px;
   border-radius: 5px;
 }
-.at-perf-how-item h4 {
+.at-perf-how-item h3 {
   font-size: 15px;
   font-weight: 600;
   color: #fff;
@@ -2361,7 +2361,7 @@
   text-transform: uppercase;
   font-weight: 600;
 }
-.at-serp-zone-card h4 {
+.at-serp-zone-card h3 {
   font-size: 16px;
   color: #fff;
   letter-spacing: -0.015em;
@@ -3129,7 +3129,7 @@
   place-items: center;
   margin-left: auto;
 }
-.at-track-node h4 {
+.at-track-node h3 {
   margin: 0 0 8px;
   font-family: var(--font-serif, Georgia, serif);
   font-size: 16px;
@@ -3234,7 +3234,7 @@
   border-radius: 999px;
   font-weight: 500;
 }
-.at-track-zone-card h4 {
+.at-track-zone-card h3 {
   margin: 0 0 10px;
   font-family: var(--font-serif, Georgia, serif);
   font-size: 18px;
@@ -3571,7 +3571,7 @@
   place-items: center;
   margin-left: auto;
 }
-.at-roi-step h4 {
+.at-roi-step h3 {
   margin: 0 0 10px;
   font-family: var(--font-serif, Georgia, serif);
   font-size: 17px;
@@ -3708,8 +3708,8 @@
   border-radius: 2px;
 }
 .at-proc-phase-head[data-phase="setup"] { --phase-color: #6D28D9; }
-.at-proc-phase-head[data-phase="launch"] { --phase-color: #0EA5E9; }
-.at-proc-phase-head[data-phase="pilot"] { --phase-color: #059669; }
+.at-proc-phase-head[data-phase="launch"] { --phase-color: #075985; }
+.at-proc-phase-head[data-phase="pilot"] { --phase-color: #047857; }
 
 .at-proc-phase-k {
   font-family: var(--font-mono, ui-monospace, monospace);
@@ -3765,8 +3765,8 @@
   transition: opacity 0.25s ease;
 }
 .at-proc-step[data-phase="setup"] { --phase-color: #6D28D9; }
-.at-proc-step[data-phase="launch"] { --phase-color: #0EA5E9; }
-.at-proc-step[data-phase="pilot"] { --phase-color: #059669; }
+.at-proc-step[data-phase="launch"] { --phase-color: #075985; }
+.at-proc-step[data-phase="pilot"] { --phase-color: #047857; }
 
 .at-proc-step:hover {
   transform: translateY(-3px);
@@ -3802,7 +3802,7 @@
   place-items: center;
   margin-left: auto;
 }
-.at-proc-step h4 {
+.at-proc-step h3 {
   margin: 0 0 10px;
   font-family: var(--font-serif, Georgia, serif);
   font-size: 18px;
@@ -3849,7 +3849,7 @@
   flex-direction: column;
   gap: 14px;
 }
-.at-proc-step-wide-body h4 {
+.at-proc-step-wide-body h3 {
   margin: 0;
   font-family: var(--font-serif, Georgia, serif);
   font-size: 22px;
@@ -3906,10 +3906,10 @@
   .at-proc-phase-head { flex-wrap: wrap; gap: 8px; }
   .at-proc-phase-n { margin-left: 0; }
   .at-proc-step { padding: 18px 16px; }
-  .at-proc-step h4 { font-size: 16px; }
+  .at-proc-step h3 { font-size: 16px; }
   .at-proc-step p { font-size: 13px; }
   .at-proc-step-wide { grid-template-columns: 1fr; padding: 20px 18px; gap: 16px; }
-  .at-proc-step-wide-body h4 { font-size: 18px; }
+  .at-proc-step-wide-body h3 { font-size: 18px; }
   .at-proc-step-wide-grid { grid-template-columns: 1fr; gap: 8px; }
 }
 
@@ -4164,7 +4164,7 @@
   border-color: var(--accent);
 }
 
-.at-tm-body h4 {
+.at-tm-body h3 {
   margin: 0 0 4px;
   font-family: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   font-size: 19px;
@@ -5361,7 +5361,7 @@
 .pricing .plan {
   padding: 22px 20px;
 }
-.pricing .plan h4 {
+.pricing .plan h3 {
   font-size: 22px;
 }
 .pricing .plan-sub {

@@ -44,4 +44,11 @@ describe("audit technique public claims", () => {
     expect(composedBodyHtml).not.toMatch(/NDA mutuel signé|NDA mutuel \+ clause|signature du NDA/i);
     expect(composedBodyHtml).toContain("NDA éventuel");
   });
+
+  it("ne promet ni calendrier SEO ni citation par une IA", () => {
+    expect(composedBodyHtml).not.toMatch(
+      /premiers mouvements à 3 mois|trafic significatif à 6[–-]9 mois|ROI business mesurable à 9[–-]12 mois/i,
+    );
+    expect(composedBodyHtml).not.toMatch(/faire que votre site soit[^<.]{0,80}l'une de ces sources/i);
+  });
 });

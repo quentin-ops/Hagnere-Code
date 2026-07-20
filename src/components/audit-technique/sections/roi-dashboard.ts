@@ -140,7 +140,7 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
             </div>
           </div>
-          <h4>Méthodologie documentée</h4>
+          <h3>Méthodologie documentée</h3>
           <p>La méthode, les critères, les outils et les limites sont communiqués avant signature. Vos devs peuvent les lire, les challenger et proposer des ajustements. Les principes applicables du référentiel ISO 19011 servent de guide, sans revendiquer une certification.</p>
           <div class="at-roi-step-foot">→ Livrable reproductible</div>
         </div>
@@ -152,7 +152,7 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/><circle cx="17" cy="11" r="3"/></svg>
             </div>
           </div>
-          <h4>Équipe adaptée au périmètre</h4>
+          <h3>Équipe adaptée au périmètre</h3>
           <p>Les intervenants, leur rôle et leur niveau d'expérience sont nommés dans le devis à partir des compétences réellement nécessaires. Aucun niveau d'ancienneté supérieur aux profils publics n'est présumé.</p>
           <div class="at-roi-step-foot">→ Composition nommée dans le devis</div>
         </div>
@@ -164,7 +164,7 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
           </div>
-          <h4>Livrables cumulatifs</h4>
+          <h3>Livrables cumulatifs</h3>
           <p>Les restitutions intermédiaires et la procédure de pivot sont inscrites au devis. Leur fréquence dépend de la durée et du périmètre de la mission.</p>
           <div class="at-roi-step-foot">→ Zéro effet tunnel</div>
         </div>
@@ -176,7 +176,7 @@ export const roiDashboardHtml = `
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
             </div>
           </div>
-          <h4>No-blame &amp; board-safe</h4>
+          <h3>No-blame &amp; board-safe</h3>
           <p>Les règles de citation, les destinataires et l'éventuelle version anonymisée sont convenus avant les entretiens. Aucune confidentialité particulière n'est présumée hors document signé.</p>
           <div class="at-roi-step-foot">→ Protection de vos équipes</div>
         </div>

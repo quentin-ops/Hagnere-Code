@@ -178,7 +178,7 @@ export const pipelineHtml = `
         </svg>
       </div>
       <div class="cv-pipeline-ethics-body">
-        <h4>Charte IA · transparente</h4>
+        <h3>Charte IA · transparente</h3>
         <p>
           <b>Avatar IA</b> : seulement avec votre accord écrit, déclaré comme "vidéo IA" dans les métadonnées
           et sous-titres. <b>Clone de voix</b> : uniquement la vôtre, autorisation explicite, destruction après mission.

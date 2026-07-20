@@ -43,7 +43,7 @@ export const scenariosHtml = `
             selon le besoin, le délai, les coûts tiers et le TCO sur 36 mois.
           </p>
           <div class="ec-scen-deliv">
-            <h4>Ce qu'on livre</h4>
+            <h3>Ce qu'on livre</h3>
             <ul>
               <li>Charte graphique + Figma complet</li>
               <li>Storefront Next.js (jusqu'à ~500 produits)</li>
@@ -83,7 +83,7 @@ export const scenariosHtml = `
             l'app mobile, et comparer objectivement vos coûts sur 36 mois.
           </p>
           <div class="ec-scen-deliv">
-            <h4>Ce qu'on livre</h4>
+            <h3>Ce qu'on livre</h3>
             <ul>
               <li>Tout le scénario "Nouvelle boutique"</li>
               <li>App iOS + Android si retenue au devis (React Native)</li>
@@ -124,7 +124,7 @@ export const scenariosHtml = `
             avant de retenir l'architecture ; aucun moteur n'est écarté par principe.
           </p>
           <div class="ec-scen-deliv">
-            <h4>Ce qu'on livre</h4>
+            <h3>Ce qu'on livre</h3>
             <ul>
               <li>Tout le scénario "Migration"</li>
               <li>B2B complet : tarifs pro, paiement 30 j, devis</li>

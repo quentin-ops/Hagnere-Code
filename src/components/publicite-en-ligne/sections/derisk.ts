@@ -18,7 +18,7 @@ export const deriskHtml = `
         <div class="ads-derisk-fear">
           « Et si mes campagnes <b>ne performent pas</b> dans 3 mois ? »
         </div>
-        <h4>Métriques, revue et sortie écrites</h4>
+        <h3>Métriques, revue et sortie écrites</h3>
         <p>Le devis définit les métriques suivies, la fréquence de revue, la procédure d'ajustement, la durée et le préavis. Les comptes ouverts au nom du client restent sous son contrôle.</p>
         <div class="ads-derisk-proof">
           <span>✓ Jalons contractuels</span>
@@ -31,7 +31,7 @@ export const deriskHtml = `
         <div class="ads-derisk-fear">
           « Et si mon <b>budget media</b> part en clics inutiles ? »
         </div>
-        <h4>Alertes temps réel, listes négatives dynamiques, revue hebdo</h4>
+        <h3>Alertes temps réel, listes négatives dynamiques, revue hebdo</h3>
         <p>Scripts Google Ads de monitoring placements PMax, script d'ajout automatique des search terms pourris à la liste négative partagée, <b>alertes Slack si spend &times; 2 ou CPA &times; 1,5</b> en 24 h. Revue hebdo manuelle des 50 premiers search terms / placements. Vous ne découvrez pas un dérapage 3 semaines après la facture.</p>
         <div class="ads-derisk-proof">
           <span>✓ Alertes Slack temps réel</span>
@@ -44,7 +44,7 @@ export const deriskHtml = `
         <div class="ads-derisk-fear">
           « Si je pars, est-ce que <b>les comptes me restent</b> ? »
         </div>
-        <h4>Comptes client et passation inventoriée.</h4>
+        <h3>Comptes client et passation inventoriée.</h3>
         <p>Les comptes publicitaires peuvent être ouverts au nom du client. Le devis liste pixels, audiences, conteneur, créations, documents et droits applicables, ainsi que la durée et le coût éventuel d'une passation.</p>
         <div class="ads-derisk-proof">
           <span>✓ Comptes sous contrôle client</span>
@@ -57,7 +57,7 @@ export const deriskHtml = `
         <div class="ads-derisk-fear">
           « Et si le <b>tracking casse</b> en plein milieu de la mission ? »
         </div>
-        <h4>Monitoring et procédure de correction adaptés</h4>
+        <h3>Monitoring et procédure de correction adaptés</h3>
         <p>Le devis précise les destinations testées, la fréquence, les alertes, les responsabilités, les exclusions et le délai cible de correction selon la criticité.</p>
         <div class="ads-derisk-proof">
           <span>✓ Healthchecks définis</span>

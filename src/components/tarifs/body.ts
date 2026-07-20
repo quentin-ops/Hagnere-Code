@@ -774,7 +774,7 @@ ${navHtml}
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Plan de reprise et tests cadrés</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>Rythme de pilotage défini</li>
         </ul>
-        <div class="care-cta"><a href="#contact" class="btn btn-ghost">Parler au gérant</a></div>
+        <div class="care-cta"><a href="#contact" class="btn btn-ghost">Parler au fondateur</a></div>
       </div>
     </div>
 
@@ -964,13 +964,13 @@ ${navHtml}
         <h3>Décrivez votre projet<br><span class="accent">en 3 minutes.</span></h3>
         <p class="ct-lead">
           Quelques questions guidées sur votre besoin, votre contexte et vos délais —
-          puis notre équipe lit votre brief et vous adresse une réponse personnelle
-          et argumentée sous 24 h ouvrées. Pas de robot, pas d'appel commercial.
+          puis notre équipe lit votre brief et vise une réponse personnelle le
+          prochain jour ouvré, sans délai garanti. Pas de robot, pas d'appel commercial.
         </p>
 
         <div class="ct-bullets">
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> 3 minutes chrono</span>
-          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Réponse personnelle sous 24 h ouvrées</span>
+          <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Objectif : prochain jour ouvré</span>
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Sans engagement ni création de compte</span>
         </div>
 
@@ -1007,7 +1007,7 @@ ${navHtml}
               <div class="ct-mini-total-tag">BRIEF ENVOYÉ</div>
               <div class="ct-mini-total-sub">réponse personnelle et argumentée</div>
             </div>
-            <div class="ct-mini-total-r">sous 24 h</div>
+            <div class="ct-mini-total-r">objectif : prochain jour ouvré</div>
           </div>
         </div>
       </div>
@@ -1022,7 +1022,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— Questions fréquentes</div>
         <h2 style="margin-top:14px">Sur les prix.<br>Et la facturation.</h2>
-        <p>Manquante ? <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a>, on répond sous 24h ouvrées.</p>
+        <p>Manquante ? <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">Posez-la directement</a>, nous visons le prochain jour ouvré, sans délai garanti.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">

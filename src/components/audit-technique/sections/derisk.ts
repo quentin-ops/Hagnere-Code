@@ -19,7 +19,7 @@ export const deriskHtml = `
         <div class="at-derisk-fear">
           « On va <b>trouver des cadavres</b> qu'on préfère ne pas voir. »
         </div>
-        <h4>Confidentialité, destinataires et droits écrits</h4>
+        <h3>Confidentialité, destinataires et droits écrits</h3>
         <p>Le devis ou le NDA précise la confidentialité, les destinataires et la durée. Les droits sur les livrables suivent le devis et les CGV. Une version anonymisée et la participation de l'équipe ne sont incluses que si elles sont prévues dans le périmètre.</p>
         <div class="at-derisk-proof">
           <span>✓ Confidentialité écrite</span>
@@ -33,7 +33,7 @@ export const deriskHtml = `
         <div class="at-derisk-fear">
           « Le rapport va se <b>retourner contre nous</b> en négo (levée / M&A). »
         </div>
-        <h4>Audit vendeur avant la DD · version data-room contrôlée</h4>
+        <h3>Audit vendeur avant la DD · version data-room contrôlée</h3>
         <p>Côté vendeur (levée ou M&A vente)&nbsp;: on audite <b>avant</b> que le fonds ou l'acquéreur ne mandate sa propre DD. Vous découvrez les findings avant eux, vous préparez les réponses, vous livrez vous-même la version data-room que <b>vous choisissez de partager</b>. Vous gardez le contrôle narratif&nbsp;: ce qui est dans le rapport, ce qui est dans la data room, ce qui reste interne.</p>
         <div class="at-derisk-proof">
           <span>✓ Contrôle narratif client</span>
@@ -47,7 +47,7 @@ export const deriskHtml = `
         <div class="at-derisk-fear">
           « Les consultants vont pousser <b>leur propre agenda</b> (nous vendre une refonte). »
         </div>
-        <h4>Constats traçables · remédiation séparée</h4>
+        <h3>Constats traçables · remédiation séparée</h3>
         <p>Chaque constat renvoie à une preuve et les hypothèses de coût sont séparées du diagnostic. Une mission de remédiation fait l'objet d'un devis distinct. Toute remise éventuelle doit être écrite dans ce devis&nbsp;: elle n'est pas contenue par défaut dans les CGV publiques.</p>
         <div class="at-derisk-proof">
           <span>✓ Preuves rattachées</span>
@@ -61,7 +61,7 @@ export const deriskHtml = `
         <div class="at-derisk-fear">
           « <b>10 jours c'est trop long</b>, on a besoin du rapport pour dans 2 semaines. »
         </div>
-        <h4>Jalons et restitution intermédiaire au devis</h4>
+        <h3>Jalons et restitution intermédiaire au devis</h3>
         <p>Pour une urgence, le cadrage réduit le périmètre et fixe les preuves prioritaires. La date de démarrage, les restitutions intermédiaires et la procédure de pivot dépendent des disponibilités, des accès et du contrat signé.</p>
         <div class="at-derisk-proof">
           <span>✓ Périmètre priorisé</span>
@@ -75,7 +75,7 @@ export const deriskHtml = `
         <div class="at-derisk-fear">
           « Le rapport sera <b>générique</b>, on l'aura déjà lu 10 fois. »
         </div>
-        <h4>Exemple interne présenté sur demande · grille documentée</h4>
+        <h3>Exemple interne présenté sur demande · grille documentée</h3>
         <p>Un exemple construit sur l'un de nos propres produits peut être présenté pendant le cadrage, en étant clairement identifié comme tel. Chaque recommandation du futur audit renvoie au critère et aux hypothèses qui la produisent&nbsp;: vous pouvez la contester ligne à ligne.</p>
         <div class="at-derisk-proof">
           <span>✓ Exemple interne identifié</span>
@@ -89,7 +89,7 @@ export const deriskHtml = `
         <div class="at-derisk-fear">
           « <b>Mes devs vont le prendre mal</b>, je vais les perdre. »
         </div>
-        <h4>Méthodologie no-blame · équipe co-auteure · entretiens off-the-record</h4>
+        <h3>Méthodologie no-blame · équipe co-auteure · entretiens off-the-record</h3>
         <p>Le devis précise qui est interrogé, la durée, les règles de citation et la façon de valider les constats. Le focus porte sur les systèmes et les contraintes&nbsp;; aucune absence de citation nominative ou co-écriture n'est présumée si elle n'est pas convenue.</p>
         <div class="at-derisk-proof">
           <span>✓ Off-the-record</span>

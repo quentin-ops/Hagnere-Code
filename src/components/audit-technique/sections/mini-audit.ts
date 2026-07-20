@@ -297,7 +297,7 @@ export const miniAuditHtml = `
       <!-- CTA -->
       <div class="at-audit-result-cta">
         <a href="/demarrer-un-projet" class="btn btn-ghost at-audit-cta">
-          Décrire mon projet (3 min) — réponse sous 24 h ouvrées
+          Décrire mon projet (3 min) — objectif : prochain jour ouvré
         </a>
 
         <div class="at-audit-or">ou</div>

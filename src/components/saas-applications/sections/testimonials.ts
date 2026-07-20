@@ -1,7 +1,8 @@
 // Section de preuves produits — remplace l'ancien bloc de témoignages.
 // Hagnéré Code n'a aucun client externe à ce jour : pas de citation, pas de note,
 // pas de nom de tiers, pas de mise en relation promise. La seule preuve revendiquée
-// est publique et vérifiable : les produits sont en ligne, à ces adresses.
+// est publique et vérifiable : les pages et fonctions présentées sont accessibles
+// à ces adresses. Cela ne prouve ni exploitation interne, ni sécurité, ni résultat.
 // Classes réutilisées telles quelles depuis sections.css — aucune classe inventée.
 
 export const testimonialsHtml = `
@@ -11,13 +12,13 @@ export const testimonialsHtml = `
     <div class="section-head reveal">
       <div class="left">
         <div class="eyebrow">— La preuve, ce sont les produits, pas les citations</div>
-        <h2>Aucun témoignage à afficher.<br>Des SaaS que nous exploitons nous-mêmes.</h2>
+        <h2>Aucun témoignage à afficher.<br>Des pages SaaS à vérifier directement.</h2>
       </div>
       <div class="right">
         Nous n'avons pas encore de client externe, et nous préférons l'écrire plutôt que
-        de fabriquer des citations invérifiables. En revanche, les produits ci-dessous, nous
-        ne les avons pas seulement livrés : <b>nous les faisons tourner tous les jours</b>.
-        Ils sont en ligne, à ces adresses — ouvrez-les et jugez sur pièce.
+        de fabriquer des citations invérifiables. Les liens ci-dessous permettent de vérifier
+        <b>la disponibilité et les fonctions présentées publiquement</b>. Ils ne démontrent
+        ni l'exploitation quotidienne, ni le niveau de service, ni la sécurité, ni les résultats.
       </div>
     </div>
 
@@ -28,11 +29,9 @@ export const testimonialsHtml = `
           <span class="sa-vt-tag sa-vt-tag-live">En ligne</span>
         </div>
         <p class="sa-testi-quote">
-          Un SaaS de comptabilité fiscale complet : saisie des opérations, amortissements par
-          composants, production de la liasse. Nous l'avons cadré, développé et mis en production
-          — et c'est encore nous qui sommes joignables quand la période déclarative met le service
-          sous tension. Chaque raccourci d'architecture que nous nous autorisons, nous le payons
-          nous-mêmes quelques mois plus tard.
+          La page publique présente une offre de comptabilité fiscale, avec notamment la saisie
+          d'opérations, les amortissements et la préparation déclarative. Ces fonctions affichées
+          peuvent être consultées&nbsp;; la charge, l'architecture et le support ne sont pas prouvés ici.
         </p>
         <div class="sa-testi-meta">
           <div class="sa-testi-av" aria-hidden="true">
@@ -40,7 +39,7 @@ export const testimonialsHtml = `
           </div>
           <div>
             <div class="sa-testi-name"><a href="https://lmnp.ai" target="_blank" rel="noopener">lmnp.ai</a></div>
-            <div class="sa-testi-role">Produit du groupe Hagnéré · <b>conçu, développé et exploité par nos soins</b></div>
+            <div class="sa-testi-role">Offre de comptabilité LMNP / LMP · <b>page publique à consulter</b></div>
           </div>
         </div>
       </article>
@@ -51,11 +50,9 @@ export const testimonialsHtml = `
           <span class="sa-vt-tag sa-vt-tag-live">En ligne</span>
         </div>
         <p class="sa-testi-quote">
-          Deux régimes fiscaux, deux moteurs de calcul, un seul produit à maintenir : exactement
-          le type de complexité métier qu'on ne peut pas simuler dans une démonstration
-          commerciale. Les migrations de base de données, les factures d'hébergement et les
-          demandes d'évolution des utilisateurs nous reviennent directement. C'est la meilleure
-          discipline de conception que nous connaissions.
+          La page publique présente une offre couvrant les SCI à l'IR et à l'IS ainsi que ses
+          fonctions visibles. Elle ne permet pas de vérifier les moteurs de calcul internes,
+          les migrations, l'hébergement, la maintenance ou les demandes des utilisateurs.
         </p>
         <div class="sa-testi-meta">
           <div class="sa-testi-av" aria-hidden="true">
@@ -63,7 +60,7 @@ export const testimonialsHtml = `
           </div>
           <div>
             <div class="sa-testi-name"><a href="https://sci-ai.app" target="_blank" rel="noopener">sci-ai.app</a></div>
-            <div class="sa-testi-role">Produit du groupe Hagnéré · <b>en production, maintenu par la même équipe</b></div>
+            <div class="sa-testi-role">Offre de comptabilité SCI · <b>page publique à consulter</b></div>
           </div>
         </div>
       </article>
@@ -74,11 +71,9 @@ export const testimonialsHtml = `
           <span class="sa-vt-tag sa-vt-tag-live">En ligne</span>
         </div>
         <p class="sa-testi-quote">
-          Le site éditorial et l'outil interne d'un cabinet de conseil en investissements
-          financiers : suivi des dossiers, pièces réglementaires, traitement des demandes
-          entrantes. Des personnes travaillent dedans toute la journée et c'est nous qu'elles
-          appellent quand quelque chose coince. Une application métier ne se juge pas le jour de
-          la livraison, mais six mois après.
+          Le site public d'un cabinet de conseil en investissements financiers présente des
+          contenus, des offres et des parcours de contact. L'outil interne, son usage quotidien,
+          le suivi des dossiers et le support ne sont pas vérifiables depuis cette page.
         </p>
         <div class="sa-testi-meta">
           <div class="sa-testi-av" aria-hidden="true">
@@ -86,7 +81,7 @@ export const testimonialsHtml = `
           </div>
           <div>
             <div class="sa-testi-name"><a href="https://hagnere-patrimoine.fr" target="_blank" rel="noopener">hagnere-patrimoine.fr</a></div>
-            <div class="sa-testi-role">Produit du groupe Hagnéré · <b>utilisé en interne tous les jours</b></div>
+            <div class="sa-testi-role">Site éditorial et parcours de contact · <b>pages publiques à consulter</b></div>
           </div>
         </div>
       </article>
@@ -94,9 +89,9 @@ export const testimonialsHtml = `
 
     <p class="sa-testi-foot reveal">
       Une quatrième plateforme, <a href="https://hagnere-investissement.fr" target="_blank" rel="noopener">hagnere-investissement.fr</a>,
-      fonctionne sur le même principe. Ni logo emprunté, ni référence anonyme, ni note complaisante :
-      construire un SaaS est une chose, l'exploiter en est une autre — nous faisons les deux, et c'est
-      vérifiable en un clic.
+      présente elle aussi ses offres et parcours sur des pages publiques. Ni logo emprunté, ni référence
+      anonyme, ni note complaisante&nbsp;: cette section se limite à ce qu'un visiteur peut effectivement
+      observer en ouvrant les liens.
     </p>
   </div>
 </section>

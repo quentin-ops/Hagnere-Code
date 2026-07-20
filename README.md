@@ -26,9 +26,11 @@ comme porte de sortie, mais elle n'est pas la cible de production actuelle.
 
 ```bash
 npm run dev              # dev server (Turbopack) sur http://localhost:3000
-npm run build            # build de production Next.js
+NEXT_PUBLIC_ENV=production npm run build  # artefact public indexable
+NEXT_PUBLIC_ENV=preview npm run build     # artefact de preview en noindex
 npm run test             # vitest run (test:watch / test:ui disponibles)
 npm run lint             # eslint
+npm run check:seo        # registres, sitemap, llms.txt et données structurées
 
 npm run db:generate      # génère les migrations Drizzle depuis src/db/schema.ts
 npm run db:migrate       # applique les migrations
@@ -49,12 +51,21 @@ npm run cf:deploy        # déploiement Cloudflare
 | `CONTACT_TO_EMAIL` | Destinataire interne des formulaires |
 | `CONTACT_FROM_EMAIL` | Expéditeur Resend (domaine DKIM-validé) |
 | `GROQ_API_KEY` | Transcription audio Whisper (`/api/transcribe`) |
+| `MATH_CHALLENGE_SECRET` | Signature HMAC serveur du contrôle anti-robot ; secret distinct par environnement |
 | `NEXT_PUBLIC_ENV` | `production` active l'indexation (sinon `noindex`) |
 
 En local : `.env.local` (jamais commité). En prod : variables d'environnement du
-projet Vercel (Settings → Environment Variables). `NEXT_PUBLIC_ENV` doit y être
-défini à `production` — il est aussi déclaré dans `wrangler.jsonc`, mais ce
-fichier ne sert que la chaîne Cloudflare non active.
+projet Vercel (Settings → Environment Variables). `NEXT_PUBLIC_ENV` doit être
+défini séparément : `production` pour l'environnement Production et `preview`
+pour l'environnement Preview. Le script `build` ne force volontairement aucune
+valeur afin qu'une preview ne puisse jamais hériter d'un artefact indexable. La
+valeur est aussi déclarée dans `wrangler.jsonc`, mais ce fichier ne sert que la
+chaîne Cloudflare non active.
+
+Ne jamais préfixer `MATH_CHALLENGE_SECRET` par `NEXT_PUBLIC_`, ni réutiliser sa
+valeur entre preview et production. Le workflow GitHub
+`.github/workflows/quality.yml` et les builds Vercel exécutent les contrôles SEO
+avant build, puis vérifient l'artefact public après build.
 
 ## Architecture
 

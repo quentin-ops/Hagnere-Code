@@ -1,11 +1,10 @@
-"use client";
-
 import Link from "next/link";
-import { useRef } from "react";
-import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
+import type { CSSProperties } from "react";
+import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import { MainNav } from "@/components/design-shared/MainNav";
-import { CaseStudy, CASES } from "./cases";
+import { CASES } from "./cases";
+import type { CaseStudy } from "./cases";
 import "./case-study.css";
 import "@/components/design-shared/responsive.css";
 import "@/components/design-shared/nav-dropdown.css";
@@ -14,19 +13,17 @@ import "@/components/design-shared/site-footer.css";
 type Props = { caseStudy: CaseStudy };
 
 export function CaseStudyPage({ caseStudy: c }: Props) {
-  const rootRef = useRef<HTMLDivElement>(null);
-  useDesignInteractive(rootRef);
-
   const otherCases = Object.values(CASES).filter((x) => x.slug !== c.slug);
 
-  const brandVars: React.CSSProperties & Record<string, string> = {
+  const brandVars: CSSProperties & Record<string, string> = {
     "--brand": c.brandColor,
     "--brand-soft": c.brandSoft,
   };
 
   return (
-    <div ref={rootRef} className="hc-design cs-root" style={brandVars}>
+    <InteractiveDesignRoot className="hc-design cs-root" style={brandVars}>
       <MainNav />
+      <main id="main-content" tabIndex={-1}>
 
       {/* Breadcrumb */}
       <div className="wrap">
@@ -46,7 +43,7 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
           <div className="cs-hero-meta">
             <span className="cs-chip">{c.category}</span>
             <span className="sep" />
-            <span className="cs-year">Livré {c.year}</span>
+            <span className="cs-year">{c.status}</span>
           </div>
           <div className="cs-hero-head">
             <div className="cs-hero-logo">{c.brandLogo}</div>
@@ -66,13 +63,12 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
           <p className="cs-hero-tagline">{c.tagline}</p>
           <p className="cs-hero-intro">{c.heroIntro}</p>
 
-          {/* Key metrics grid */}
+          {/* Stable product highlights: capabilities, never unsourced outcomes. */}
           <div className="cs-kpis">
-            {c.metrics.map((m, i) => (
-              <div className="cs-kpi" key={i}>
-                <div className="cs-kpi-value">{m.value}</div>
-                <div className="cs-kpi-label">{m.label}</div>
-                {m.note && <div className="cs-kpi-note">{m.note}</div>}
+            {c.highlights.map((highlight) => (
+              <div className="cs-kpi" key={`${highlight.value}-${highlight.label}`}>
+                <div className="cs-kpi-value">{highlight.value}</div>
+                <div className="cs-kpi-label">{highlight.label}</div>
               </div>
             ))}
           </div>
@@ -83,8 +79,8 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
       <section className="cs-info">
         <div className="wrap cs-info-grid">
           <div>
-            <div className="cs-info-k">Durée</div>
-            <div className="cs-info-v">{c.duration}</div>
+            <div className="cs-info-k">Suivi</div>
+            <div className="cs-info-v">{c.engagement}</div>
           </div>
           <div>
             <div className="cs-info-k">Équipe</div>
@@ -266,21 +262,16 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
               }}
             >
               <p style={{ margin: 0 }}>
-                <strong>Avertissement.</strong> Le cabinet présenté ({c.brandName})
-                exerce une activité réglementée en matière d&apos;investissement
-                immobilier et/ou de conseil en gestion de patrimoine. Les
-                chiffres affichés (rendement, performance, volumes clients)
-                sont des données historiques propres au cabinet et ne
-                constituent <strong>ni une offre, ni une recommandation
-                d&apos;investissement</strong>. Les{" "}
-                <strong>performances passées ne préjugent pas des performances
-                futures</strong>, le capital investi n&apos;est pas garanti et
-                tout placement présente un risque de perte. Les mentions
-                réglementaires (immatriculation ORIAS, statut CGP, agrément
-                AMF le cas échéant) sont disponibles sur le site du cabinet
-                concerné. HAGNERE CODE intervient ici en qualité de
-                prestataire technique et marketing — sans démarchage ni
-                conseil financier au visiteur.
+                <strong>Avertissement.</strong> Cette étude présente uniquement
+                le travail technique réalisé pour {c.brandName}. Les écrans,
+                simulateurs et parcours décrits ici ne constituent <strong>ni une
+                offre, ni une recommandation d&apos;investissement</strong>.
+                Toute simulation repose sur des hypothèses, le capital investi
+                n&apos;est pas garanti et tout placement présente un risque de
+                perte. Les informations réglementaires du professionnel sont
+                à vérifier sur son site et, lorsqu&apos;il est concerné, dans le
+                registre public de l&apos;ORIAS. HAGNERE CODE est présenté ici en
+                qualité de prestataire technique et marketing.
               </p>
             </div>
           </div>
@@ -328,7 +319,8 @@ export function CaseStudyPage({ caseStudy: c }: Props) {
         </div>
       </section>
 
+      </main>
       <SiteFooter />
-    </div>
+    </InteractiveDesignRoot>
   );
 }

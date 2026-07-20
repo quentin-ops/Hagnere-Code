@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import {
-  buildEcommerceFaqJsonLd,
   ECOMMERCE_FAQ_ITEMS,
   ecommerceFaqAnswerText,
   ecommerceFaqItemsHtml,
@@ -8,17 +7,11 @@ import {
 import { composedBodyHtml } from "./composed-body";
 
 describe("e-commerce FAQ source", () => {
-  it("builds the visible FAQ and JSON-LD from the same ten entries", () => {
-    const jsonLd = buildEcommerceFaqJsonLd();
-
+  it("builds the visible FAQ from the ten editorial entries", () => {
     expect(ECOMMERCE_FAQ_ITEMS).toHaveLength(10);
-    expect(jsonLd.mainEntity).toHaveLength(ECOMMERCE_FAQ_ITEMS.length);
-    ECOMMERCE_FAQ_ITEMS.forEach((item, index) => {
+    ECOMMERCE_FAQ_ITEMS.forEach((item) => {
       expect(ecommerceFaqItemsHtml).toContain(item.question);
-      expect(jsonLd.mainEntity[index].name).toBe(item.question);
-      expect(jsonLd.mainEntity[index].acceptedAnswer.text).toBe(
-        ecommerceFaqAnswerText(item),
-      );
+      expect(ecommerceFaqAnswerText(item).trim().length).toBeGreaterThan(0);
     });
   });
 

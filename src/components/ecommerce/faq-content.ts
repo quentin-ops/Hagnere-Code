@@ -253,21 +253,6 @@ export function renderEcommerceFaqItemsHtml(
     .join("\n");
 }
 
-export function buildEcommerceFaqJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: ECOMMERCE_FAQ_ITEMS.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: ecommerceFaqAnswerText(item),
-      },
-    })),
-  };
-}
-
 export const ecommerceFaqItemsHtml = renderEcommerceFaqItemsHtml();
 
 export const ecommerceFaqSectionHtml = `

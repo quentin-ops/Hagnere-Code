@@ -84,7 +84,7 @@ export const scenariosHtml = `
           <h3>« On spend 15-40 k€/mois, le CAC a triplé, on ne sait plus ce qui convertit. »</h3>
           <p class="ads-scen-lead">
             Compte Google Ads / Meta historique, tracking client-side cassé depuis iOS 14,
-            PMax qui cannibalise la brand, trop de campagnes empilées par plusieurs prestataires successifs.
+            soupçon que Performance Max reprend la demande de marque, trop de campagnes empilées par plusieurs prestataires successifs.
             On remet à plat&nbsp;: tracking server-side, structuration propre, exclusions, bid strategies calibrées.
             <b>L'objectif est d'isoler les causes avant d'attribuer une évolution du CAC.</b>
           </p>
@@ -93,7 +93,7 @@ export const scenariosHtml = `
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Audit comptes + mesure du signal perdu</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Tracking server-side déployé (GTM SS + CAPI + EC)</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Restructuration comptes sans interruption</div>
-            <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>PMax dompté, exclusions brand, scripts monitor</div>
+            <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Performance Max, contrôles de marque et surveillance documentés</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Dashboard Looker CRM × Ads × margin</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Pilotage hebdo + reporting mensuel business</div>
           </div>
@@ -131,13 +131,13 @@ export const scenariosHtml = `
           <p class="ads-scen-lead">
             Le biais est structurel&nbsp;: une agence rémunérée au pourcentage du media
             a <b>intérêt à ce que vous dépensiez plus</b>, pas à ce que votre CAC baisse.
-            On prend la suite en forfait fixe mensuel, on audite les 12 derniers mois,
+            On prend la suite en forfait fixe mensuel, on audite une période justifiée par le cycle de vente, le volume et les changements récents,
             on récupère les comptes, les pixels, les audiences, les creatives.
             La bascule est séquencée pour réduire le risque de coupure, sans promettre qu'il est nul.
           </p>
           <div class="ads-scen-items-title">CE QU'ON LIVRE</div>
           <div class="ads-scen-items">
-            <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Audit 12 mois + décompte du spend gaspillé</div>
+            <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Dépenses et résultats rapprochés sur une période justifiée, avec limites explicites</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Prise de contrôle comptes (MCC, BM, accès)</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Récupération creatives, audiences, pixels, data</div>
             <div class="ads-scen-item"><span class="ads-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Passage forfait fixe (aligné sur votre CAC)</div>
@@ -250,7 +250,7 @@ export const scenariosHtml = `
             <div class="ads-scen-meta-row"><dt>Engagement</dt><dd>3 mois puis mois par mois</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg ads-scen-cta">
-            Parler au gérant
+            Parler au fondateur
             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <div class="ads-scen-aside-foot">

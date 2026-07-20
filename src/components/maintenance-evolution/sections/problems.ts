@@ -4,12 +4,12 @@ export const problemsHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Vous êtes probablement ici</div>
-        <h2>Six situations qu'on entend<br>chaque semaine en call.</h2>
+        <div class="eyebrow">— Situations-types fictives</div>
+        <h2>Six exemples pour préparer<br>un diagnostic de reprise.</h2>
       </div>
       <div class="right">
-        Aucune n'est honteuse. Toutes se règlent. Mais chaque semaine qui passe,
-        <b>votre dette technique grossit, vos dépendances vieillissent, vos équipes perdent confiance en leur app</b>.
+        Ces exemples sont fictifs et ne décrivent ni des clients réels ni une fréquence observée.
+        Ils servent à repérer les accès, risques, dépendances et responsabilités à examiner.
       </div>
     </div>
 
@@ -23,10 +23,10 @@ export const problemsHtml = `
           <span class="sap-n">01</span>
         </div>
         <h3>« Mon prestataire a disparu après la release »</h3>
-        <p>L'agence a facturé la version 1.0, puis plus personne ne répond sous 15 jours. Le freelance a pris un autre client plus rentable. <b>Vous êtes seul avec une app en prod et aucune équipe qui connaît le code.</b></p>
+        <p>Le prestataire répond difficilement, la documentation est incomplète et aucune équipe de relais n'est identifiée. <b>La continuité doit être organisée à partir des accès et de l'état réel du code.</b></p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Reprise + audit éclair · 5 jours · équipe nommée</span>
+          <span class="sap-foot-v">Diagnostic, calendrier et équipe au devis</span>
         </div>
       </article>
 
@@ -39,7 +39,7 @@ export const problemsHtml = `
           <span class="sap-n">02</span>
         </div>
         <h3>« Chaque évolution = devis d'avenant surprise »</h3>
-        <p>Un champ en plus, une règle métier qui change, une intégration CRM&nbsp;? <b>Nickel-and-diming au ticket Jira</b>, délais de 3 semaines, motivation des équipes métier à zéro. On n'ose plus demander.</p>
+        <p>Un champ, une règle métier ou une intégration peuvent déclencher des avenants imprévus si le contrat ne prévoit pas la gestion du backlog. <b>Capacité, priorité et procédure de changement doivent être écrites.</b></p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
           <span class="sap-foot-v">Forfait mensuel fixe · backlog trimestriel partagé</span>
@@ -55,7 +55,7 @@ export const problemsHtml = `
           <span class="sap-n">03</span>
         </div>
         <h3>« Mes dépendances ont 2 ans, je ne dors plus sur les CVE »</h3>
-        <p>Composer / npm sans mises à jour depuis 18-24 mois. Laravel 9, Node 16, PHP 7.4. <b>Pas de Dependabot, pas de Snyk, pas de scan SAST</b>. Votre prochain audit SOC2 ou pentest client va hurler.</p>
+        <p>Des dépendances anciennes, des versions non supportées et l'absence de suivi automatisé peuvent augmenter le risque. <b>Le diagnostic vérifie versions, exposition, contrôles existants et exigences du référentiel visé.</b></p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
           <span class="sap-foot-v">Plan de remédiation priorisé · délais par criticité</span>
@@ -71,10 +71,10 @@ export const problemsHtml = `
           <span class="sap-n">04</span>
         </div>
         <h3>« Un seul dev connaît le projet · bus factor = 1 »</h3>
-        <p>Si votre freelance / CTO / lead dev tombe malade ou part demain, <b>personne ne peut prendre le relais en moins de 2 mois</b>. Code peu documenté, choix techniques dans la tête d'une personne. Fragilité critique à cacher au board.</p>
+        <p>Lorsqu'une seule personne connaît le projet, son indisponibilité peut retarder la reprise. <b>Documentation, droits d'accès, recouvrement et modalités de remplacement</b> doivent être évalués sans promettre un délai universel.</p>
         <div class="sap-foot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Binôme obligatoire + docs vivantes + Loom onboarding</span>
+          <span class="sap-foot-v">Relais, documentation et recouvrement au devis</span>
         </div>
       </article>
 
@@ -102,11 +102,11 @@ export const problemsHtml = `
           </div>
           <span class="sap-n">06</span>
         </div>
-        <h3>« On a 0 roadmap. Les évolutions dorment depuis 8 mois »</h3>
-        <p>Des dizaines de tickets dans Notion, aucun shipped depuis mars. Le prestataire exécute sans proposer, <b>aucune vision à 3-6 mois</b>, aucun comité produit. Votre app stagne pendant que les concurrents sortent 2 features par trimestre.</p>
+        <h3>« La roadmap n'est pas arbitrée et les évolutions s'accumulent »</h3>
+        <p>Des tickets existent sans responsable, horizon ni critères de priorité. <b>Une revue partagée doit relier capacité, risque, valeur métier et décisions</b>, selon un rythme convenu.</p>
         <div class="sap-foot sap-foot-hot">
           <span class="sap-foot-k">Solution</span>
-          <span class="sap-foot-v">Roadmap trimestrielle co-construite · 14 deploys/trim.</span>
+          <span class="sap-foot-v">Roadmap, capacité et cadence définies au devis</span>
         </div>
       </article>
     </div>

@@ -47,10 +47,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Backups PostgreSQL toutes les 15 minutes</b> (WAL continu), rétention 30 jours
-          + snapshot hebdo conservé 1 an. Stockage chiffré sur un <b>second provider</b>
-          (3-2-1). Procédure de restauration testée tous les trimestres sur environnement
-          isolé. <b>RTO cible : 2 h. RPO cible : 15 min.</b> Documenté dans un runbook.
+          La sauvegarde dépend de l'hébergement et de la criticité : journal continu,
+          snapshots, rétention et copie chez un autre fournisseur sont des options à
+          dimensionner. Le devis précise fréquence, chiffrement, responsables, tests de
+          restauration et, lorsque nécessaire, des objectifs RTO/RPO dans un runbook.
         </div>
       </div>
 
@@ -63,7 +63,8 @@ export const techFaqHtml = `
           <b>Sentry</b> pour les erreurs (front + back + mobile) avec context riche (user,
           tenant, release). <b>Monitoring applicatif</b> pour perfs &amp; slow queries. <b>Dashboards
           dédiés</b> pour les queues. <b>Logs structurés JSON</b> (Monolog → stdout → agrégateur).
-          <b>PostHog</b> pour les events produit. Alerting Slack 24/7 sur signaux critiques.
+          <b>PostHog</b> peut servir aux événements produit avec le consentement requis.
+          Canaux, horaires et niveaux d'alerte sont définis dans le contrat de maintenance.
         </div>
       </div>
 
@@ -76,8 +77,8 @@ export const techFaqHtml = `
           Architecture pensée <b>stateless</b>, scale horizontal via Docker/Coolify ou
           Vercel / Cloudflare. <b>PostgreSQL avec index ciblés + partitioning sur tables chaudes</b>.
           Redis pour le cache applicatif, les sessions, le rate-limit. Queries lentes
-          tracées, réécrites, parfois réindexées par IA. On a des SaaS en prod qui tiennent
-          sans effort plusieurs milliers de requêtes / seconde.
+          tracées, réécrites et testées. La capacité n'est jamais déduite de l'architecture
+          seule : elle est mesurée par des tests de charge correspondant au trafic prévu.
         </div>
       </div>
 
@@ -128,11 +129,10 @@ export const techFaqHtml = `
           <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
         </div>
         <div class="faq-a">
-          <b>Oui, et encouragés</b>. On a déjà livré du code soumis à pen test externe
-          (OWASP top 10, headers sécu, injections, race conditions). On prépare le terrain
-          SOC2 Type 2 sans faire l'audit nous-mêmes (il est mené par un tiers habilité).
-          Le code passe <b>SAST (Semgrep) + TypeScript strict en CI</b>. Un audit de sécurité annuel est
-          inclus dans les forfaits maintenance.
+          Les revues externes, pentests et dossiers SOC 2 peuvent être préparés avec le
+          client, puis réalisés par les tiers compétents. Les contrôles CI, le périmètre du
+          SAST et la cadence des audits sont écrits dans le devis : ils ne sont pas réputés
+          inclus ni certifiants par défaut.
         </div>
       </div>
     </div>

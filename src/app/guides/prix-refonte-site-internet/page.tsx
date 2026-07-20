@@ -33,17 +33,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -177,30 +166,19 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
           { label: "Refonte de site internet : le vrai prix" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Les grilles 2026 par type de site, le poste migration SEO que les devis oublient — enfin chiffré —, un devis réel décortiqué ligne à ligne, le coût de ne rien faire, et l'honnêteté de vous dire quand une refonte ne se justifie pas."
+        heroDescription="Les grilles 2026 par type de site, le poste migration SEO que les devis oublient — enfin chiffré —, une simulation détaillée ligne à ligne, le coût de ne rien faire, et l'honnêteté de vous dire quand une refonte ne se justifie pas."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -245,7 +223,7 @@ export default function Page() {
             { id: "refonte-vs-creation", label: "6. Le mythe « une refonte coûte moins cher qu'une création »" },
             { id: "migration-seo", label: "7. Migration SEO : le poste invisible des devis, enfin chiffré" },
             { id: "mecanique-301", label: "8. Redirections 301 : la mécanique, et les erreurs qui détruisent" },
-            { id: "devis-reel", label: "9. Un devis réel de refonte, décortiqué ligne à ligne" },
+            { id: "devis-reel", label: "9. Une simulation de refonte, décortiquée ligne à ligne" },
             { id: "wordpress-nextjs", label: "10. De WordPress à un site moderne : le vrai budget" },
             { id: "cout-inaction", label: "11. Le coût de ne rien faire" },
             { id: "tco", label: "12. Le vrai coût sur 3 ans" },
@@ -265,7 +243,7 @@ export default function Page() {
           un e-commerce</strong> et <strong>15 000 à 80 000 € et plus pour
           une plateforme sur mesure</strong>. S&apos;y ajoute le poste que
           la plupart des devis oublient : la <strong>migration SEO
-          (1 500 à 10 000 €)</strong>, qui évite de perdre votre trafic
+          (1 500 à 10 000 €)</strong>, qui réduit les risques techniques de perte de trafic sans garantir le maintien des positions
           Google au moment de la bascule.
         </p>
         <GuideTable
@@ -321,10 +299,11 @@ export default function Page() {
         </p>
         <p>
           Pour rendre les chiffres concrets, suivons un fil rouge de bout
-          en bout : <strong>l&apos;Hôtel du Lac, 15 chambres à
-          Aix-les-Bains</strong>. Son site : un WordPress de 2019, une
+          en bout : <strong>scénario fictif composite — ni client ni
+          témoignage réel — avec l&apos;Hôtel du Lac, 15 chambres à
+          Aix-les-Bains</strong>. Son site serait un WordPress de 2019, une
           soixantaine de pages, 5,8 secondes de chargement sur mobile, et
-          un enjeu vital — environ 45 % de ses réservations arrivent en
+          un enjeu vital — environ 45 % de ses réservations arriveraient en
           direct par le site, dont la moitié via Google. Refondre, pour
           lui, c&apos;est toucher à la machine qui remplit les chambres.
           Nous allons chiffrer sa refonte ligne à ligne.
@@ -514,9 +493,9 @@ export default function Page() {
         />
         <p>
           Pour un site de PME, ce poste représente couramment{" "}
-          <strong>15 à 30 % du budget de refonte</strong>. Traduisons pour
-          notre fil rouge : l&apos;Hôtel du Lac encaisse environ
-          90 000 € de réservations par an venues de Google. Une migration
+          <strong>15 à 30 % du budget de refonte</strong>. Appliquons ce
+          calcul aux hypothèses du fil rouge : l&apos;Hôtel du Lac encaisserait
+          environ 90 000 € de réservations par an venues de Google. Une migration
           ratée qui divise ce trafic par deux pendant six mois coûte
           autour de <strong>22 500 € de nuitées envolées</strong> — cinq
           fois le prix du poste migration SEO de son devis (section 9).
@@ -587,13 +566,13 @@ export default function Page() {
           avant/après dans la recette.
         </p>
 
-        <h2 id="devis-reel">9. Un devis réel de refonte, décortiqué ligne à ligne</h2>
+        <h2 id="devis-reel">9. Une simulation de refonte, décortiquée ligne à ligne</h2>
         <p>
-          Aucune des pages concurrentes ne publie un devis complet ;
-          nous, oui — c&apos;est la marque de fabrique de nos guides.
-          Voici, anonymisé, le devis de refonte de notre fil rouge :
-          l&apos;Hôtel du Lac, WordPress 2019, une soixantaine de pages,
-          vers un site moderne. Taux journalier : 650 € HT.
+          Voici une simulation complète et reproductible construite à partir
+          des hypothèses visibles de notre fil rouge : l&apos;Hôtel du Lac,
+          WordPress 2019, une soixantaine de pages, vers un site moderne.
+          Il ne s&apos;agit ni d&apos;un devis client ni d&apos;un document
+          anonymisé. Taux journalier retenu pour le calcul : 650 € HT.
         </p>
         <FormulaBox>
           <strong>Devis « refonte + migration » — 25 jours, 16 250 € HT</strong>
@@ -601,7 +580,7 @@ export default function Page() {
           Audit de l&apos;existant : inventaire des 60 pages, Search
           Console, pages qui rapportent (2 j) — 1 300 €
           <br />
-          Maquettes des écrans clés, validées avec l&apos;hôtelier (5 j) —
+          Maquettes des écrans clés, avec un cycle de validation prévu (5 j) —
           3 250 €
           <br />
           Développement du nouveau site : 8 modèles de page — les
@@ -641,8 +620,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre site mérite-t-il une refonte — ou un bon réglage ?"
-          description="Décrivez votre site et vos objectifs en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc — refonte justifiée ou simple optimisation — et une fourchette argumentée en jours par poste, plan de migration SEO compris."
-          tags={["Réponse sous 24 h ouvrées", "Avis franc : refondre ou optimiser", "Migration SEO incluse"]}
+          description="Décrivez votre site et vos objectifs en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis franc — refonte justifiée ou simple optimisation — et une fourchette argumentée en jours par poste, plan de migration SEO compris."
+          tags={["Objectif : prochain jour ouvré", "Avis franc : refondre ou optimiser", "Migration SEO incluse"]}
         />
 
         <h2 id="wordpress-nextjs">10. De WordPress à un site moderne : le vrai budget</h2>
@@ -746,7 +725,7 @@ export default function Page() {
           ]}
         />
         <p>
-          Pour l&apos;Hôtel du Lac : 16 250 € de refonte + environ
+          Dans le scénario Hôtel du Lac : 16 250 € de refonte + environ
           2 500 € d&apos;ajustements post-lancement (15 %) + environ
           2 000 €/an de maintenance (12 %) + 360 €/an d&apos;hébergement
           ≈ <strong>25 800 € sur 3 ans</strong> — soit environ 1,6 fois
@@ -905,13 +884,13 @@ export default function Page() {
           le projet se lance)</strong> qui audite votre site existant,
           tranche honnêtement entre refonte et optimisation, et produit
           maquettes et devis au forfait fixe — puis une refonte livrée
-          par étapes à dates contractuelles (méthode{" "}
-          <Link href="/methode">Sprint Fixe™</Link>), avec un score de
-          vitesse de 95/100 minimum garanti par contrat — mesuré avec
-          Lighthouse, l&apos;outil de notation de Google — et le plan de
-          migration SEO inclus. <Link href="/demarrer-un-projet">Décrivez
-          votre site en 3 minutes</Link> : réponse personnelle sous 24 h
-          ouvrées, gratuite et sans engagement. Et pour situer ce budget
+          par étapes selon les jalons écrits au devis (méthode{" "}
+          <Link href="/methode">Sprint Fixe™</Link>), avec des critères de
+          performance, un protocole Lighthouse et le plan de migration SEO
+          précisés avant signature. <Link href="/demarrer-un-projet">Décrivez
+          votre site en 3 minutes</Link> : objectif de réponse personnelle le
+          prochain jour ouvré, sans délai garanti, gratuitement et sans
+          engagement. Et pour situer ce budget
           dans l&apos;ensemble des prix du web, notre{" "}
           <Link href="/guides/combien-coute-un-site-internet">panorama
           des prix d&apos;un site internet</Link> complète ce guide.

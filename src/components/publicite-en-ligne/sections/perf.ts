@@ -14,7 +14,7 @@ export const perfHtml = `
     </div>
 
     <div class="ads-perf-grid">
-      <!-- Left : big dial (trafic +) -->
+      <!-- Left : big dial (niveaux de mesure) -->
       <div class="ads-perf-dial reveal">
         <svg viewBox="0 0 240 240" width="100%" aria-hidden="true">
           <defs>
@@ -25,12 +25,12 @@ export const perfHtml = `
           </defs>
           <circle cx="120" cy="120" r="96" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="14"/>
           <circle cx="120" cy="120" r="96" fill="none" stroke="url(#adsPerfGrad)" stroke-width="14" stroke-linecap="round" stroke-dasharray="540 604" transform="rotate(-90 120 120)"/>
-          <text x="120" y="126" text-anchor="middle" font-family="Geist" font-weight="700" font-size="54" fill="#fff">12</text>
-          <text x="120" y="156" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#A78BFA" letter-spacing="2">MOIS D'HORIZON</text>
+          <text x="120" y="126" text-anchor="middle" font-family="Geist" font-weight="700" font-size="54" fill="#fff">4</text>
+          <text x="120" y="156" text-anchor="middle" font-family="Geist Mono" font-size="10" fill="#A78BFA" letter-spacing="2">NIVEAUX DE MESURE</text>
         </svg>
         <div class="ads-perf-dial-caption">
-          <div class="ads-perf-dial-kind">HORIZON DE TRAVAIL</div>
-          <div class="ads-perf-dial-sub">Le SEO se joue sur 9 à 12 mois. Vos objectifs de clics organiques sont fixés avec vous au cadrage, puis suivis chaque mois dans le reporting.</div>
+          <div class="ads-perf-dial-kind">LECTURE SANS RACCOURCI</div>
+          <div class="ads-perf-dial-sub">Le reporting sépare exploration, indexation, visibilité organique et résultat métier. Les objectifs et contrôles sont fixés au cadrage&nbsp;; aucun délai de position ou de ROI n'est garanti.</div>
         </div>
       </div>
 
@@ -98,12 +98,12 @@ export const perfHtml = `
     <div class="ads-perf-how reveal reveal-d-2">
       <div class="ads-perf-how-kicker">Comment on y arrive</div>
       <div class="ads-perf-how-grid">
-        <div class="ads-perf-how-item"><div class="ads-perf-how-n">01</div><h4>Audit technique &amp; fix avant contenu</h4><p>Inutile d'ajouter des articles sur un site qui indexe mal. On corrige la technique d'abord, le contenu ensuite.</p></div>
-        <div class="ads-perf-how-item"><div class="ads-perf-how-n">02</div><h4>Cocons sémantiques, pas articles isolés</h4><p>Page pilier + 8 à 15 pages filles reliées par maillage interne dense. La structure qui tient sur 3+ ans.</p></div>
-        <div class="ads-perf-how-item"><div class="ads-perf-how-n">03</div><h4>Rédaction experte, pas IA brute</h4><p>Briefs précis, interview d'experts métier, validation SEO. 4 à 8 h de travail humain par article.</p></div>
-        <div class="ads-perf-how-item"><div class="ads-perf-how-n">04</div><h4>Netlinking blanc, pas PBN</h4><p>Placements presse, partenariats sectoriels, RP digitales. Des liens qui tiennent 5 ans, pas 5 mois.</p></div>
-        <div class="ads-perf-how-item"><div class="ads-perf-how-n">05</div><h4>Signaux E-E-A-T systématiques</h4><p>Pages auteurs, schema Person, sources citées, mentions externes. Critique depuis HCU 2023.</p></div>
-        <div class="ads-perf-how-item"><div class="ads-perf-how-n">06</div><h4>Attribution CA business</h4><p>GA4 + CRM + Looker Studio. Vous voyez quelle page rapporte quel euro, pas juste du trafic brut.</p></div>
+        <div class="ads-perf-how-item"><div class="ads-perf-how-n">01</div><h3>Audit technique &amp; fix avant contenu</h3><p>Inutile d'ajouter des articles sur un site qui indexe mal. On corrige la technique d'abord, le contenu ensuite.</p></div>
+        <div class="ads-perf-how-item"><div class="ads-perf-how-n">02</div><h3>Cocons sémantiques, pas articles isolés</h3><p>Page pilier + 8 à 15 pages filles reliées par maillage interne dense. La structure qui tient sur 3+ ans.</p></div>
+        <div class="ads-perf-how-item"><div class="ads-perf-how-n">03</div><h3>Rédaction experte, pas IA brute</h3><p>Briefs précis, interview d'experts métier, validation SEO. 4 à 8 h de travail humain par article.</p></div>
+        <div class="ads-perf-how-item"><div class="ads-perf-how-n">04</div><h3>Netlinking blanc, pas PBN</h3><p>Placements presse, partenariats sectoriels, RP digitales. Des liens qui tiennent 5 ans, pas 5 mois.</p></div>
+        <div class="ads-perf-how-item"><div class="ads-perf-how-n">05</div><h3>Signaux E-E-A-T systématiques</h3><p>Pages auteurs, schema Person, sources citées, mentions externes. Critique depuis HCU 2023.</p></div>
+        <div class="ads-perf-how-item"><div class="ads-perf-how-n">06</div><h3>Attribution CA business</h3><p>GA4 + CRM + Looker Studio. Vous voyez quelle page rapporte quel euro, pas juste du trafic brut.</p></div>
       </div>
     </div>
   </div>

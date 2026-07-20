@@ -37,7 +37,7 @@ interface ServiceTeamConfig {
 /** Avatar 36px utilisé dans la grille devs des services. */
 function devAvatar(member: TeamMember, prefix: string): string {
   if (member.photoAvailable) {
-    return `<div class="${prefix}-team-dev-av ${prefix}-team-dev-av-photo"><img src="${member.photo}" alt="${member.fullName}" loading="lazy" /></div>`;
+    return `<div class="${prefix}-team-dev-av ${prefix}-team-dev-av-photo"><img src="${member.photo}" alt="${member.fullName}" width="72" height="72" loading="lazy" decoding="async" /></div>`;
   }
   return `<div class="${prefix}-team-dev-av">${member.initials}</div>`;
 }
@@ -61,7 +61,7 @@ function renderServiceDevCard(member: TeamMember, prefix: string): string {
 /** Photo founder ou SVG fallback abstrait (utilisé sur toutes les pages services). */
 function renderFounderImage(prefix: string): string {
   if (FOUNDER.photoAvailable) {
-    return `<img src="${FOUNDER.photo}" alt="${FOUNDER.fullName}" loading="lazy" />`;
+    return `<img src="${FOUNDER.photo}" alt="${FOUNDER.fullName}" width="740" height="926" loading="lazy" decoding="async" />`;
   }
   // Si pas de photo, on tombe sur les initiales sur fond sombre (cohérent avec les autres avatars).
   return `<div class="${prefix}-team-founder-photo-fallback" style="background:linear-gradient(135deg,${FOUNDER.avatarGradient[0]},${FOUNDER.avatarGradient[1]});display:grid;place-items:center;font-family:var(--font-geist);font-weight:700;font-size:96px;color:#fff;letter-spacing:-0.04em;width:100%;height:100%">${FOUNDER.initials}</div>`;
@@ -95,7 +95,7 @@ export function buildServiceTeamHtml(config: ServiceTeamConfig): string {
       <div class="${prefix}-team-founder reveal">
         <div class="${prefix}-team-founder-photo">
           ${renderFounderImage(prefix)}
-          <div class="${prefix}-team-founder-tag"><span class="dot"></span> ASSOCIÉ DIRIGEANT</div>
+          <div class="${prefix}-team-founder-tag"><span class="dot"></span> PRÉSIDENT FONDATEUR</div>
         </div>
         <div class="${prefix}-team-founder-body">
           <div class="${prefix}-team-founder-name">${FOUNDER.fullName}</div>

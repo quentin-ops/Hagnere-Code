@@ -55,9 +55,7 @@ function isTermInRange(n: unknown): n is number {
 }
 
 export function getMathChallengeSecret(): string | null {
-  const secret =
-    process.env.MATH_CHALLENGE_SECRET?.trim() ||
-    process.env.AUTH_SECRET?.trim();
+  const secret = process.env.MATH_CHALLENGE_SECRET?.trim();
   return secret && secret.length >= 32 ? secret : null;
 }
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { TarifsPage } from "@/components/tarifs/TarifsPage";
 import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
+import { PUBLIC_ORGANIZATION_JSON_LD } from "@/lib/organization-structured-data";
 
 export const metadata: Metadata = {
   title: "Tarifs développement web & SaaS au forfait · Hagnéré Code",
@@ -18,11 +19,7 @@ export const metadata: Metadata = {
 };
 
 const offersJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": "https://hagnere-code.ai/#business",
-  name: "Hagnéré Code",
-  url: "https://hagnere-code.ai",
+  ...PUBLIC_ORGANIZATION_JSON_LD,
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Tarifs Hagnéré Code",
@@ -82,91 +79,12 @@ const breadcrumbJsonLd = JSON.stringify({
   ],
 });
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Pourquoi un prix fixe et pas un TJM ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Parce qu'on vend un résultat, pas du temps. Le TJM transfère tout le risque de dérive sur vous. Le forfait nous oblige à bien cadrer en amont — c'est tout l'intérêt du Discovery Sprint à 1 500 €.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Que se passe-t-il en cas de dépassement de périmètre ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Le périmètre est cadré puis signé. Une demande supplémentaire est expliquée et chiffrée avant réalisation dans un avenant ou un nouveau lot ; aucun dépassement ne peut être ajouté unilatéralement.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Le Discovery Sprint est-il vraiment déduit ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "La déduction, son délai et les droits de réutilisation des livrables sont indiqués dans l'offre de Discovery signée. La page publique présente le format courant, mais seul le devis nominatif engage les parties.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Pourquoi des fourchettes (15-30 k€) et pas un prix sec ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Parce que le périmètre n'est pas figé avant le cadrage. Les fourchettes affichées sont des ordres de grandeur éditoriaux, pas une statistique de 23 missions externes. Seul le devis nominatif signé engage les parties.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Acomptes, paiements, échelonnement ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "L'acompte, les jalons, le solde et le délai de paiement sont précisés dans le devis ou le contrat. Le paiement s'effectue par les moyens indiqués sur la facture.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "L'hébergement et les outils tiers sont compris ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Le devis distingue l'hébergement, les outils tiers, leurs titulaires de compte, la durée éventuellement incluse et leur mode de facturation. Aucun coût tiers n'est réputé compris s'il n'est pas listé.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Garantie après livraison, ça veut dire quoi exactement ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "La recette, la période de correction, les niveaux de sévérité, les exclusions et les délais cibles sont définis dans le devis. Une évolution fonctionnelle se distingue d'une non-conformité au périmètre signé.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Vous prenez de l'equity au lieu de cash ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text:
-          "Une composante en capital peut être étudiée au cas par cas, uniquement en complément d'une rémunération en numéraire couvrant le travail prévu. Elle n'est jamais présumée ni annoncée comme financement du projet.",
-      },
-    },
-  ],
-});
 
 export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: offersJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
       <TarifsPage />
     </>
   );

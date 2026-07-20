@@ -287,7 +287,7 @@ const steps: Array<{
     id: "recap",
     label: "Envoi",
     title: "Votre brief est prêt à partir.",
-    help: "Relisez la synthèse, puis envoyez — réponse personnalisée sous 24 h ouvrées.",
+    help: "Relisez la synthèse, puis envoyez — objectif de réponse personnalisée le prochain jour ouvré, sans délai garanti.",
     substeps: ["Synthèse", "Envoi"],
   },
 ];
@@ -2150,7 +2150,7 @@ export function ProjectFunnel() {
     <div className="pf-root">
       <header className="pf-topbar">
         <div className="pf-top-left">
-          <Link href="/" className="pf-brand" aria-label="Retour à l'accueil Hagnéré Code">
+          <Link href="/" className="pf-brand">
             <span className="pf-brand-mark">HC</span>
             <span><b>Hagnéré</b> Code</span>
           </Link>
@@ -2169,7 +2169,7 @@ export function ProjectFunnel() {
         </nav>
       </header>
 
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
       <section className="pf-landing">
         <div className="pf-landing-inner">
           <span className="pf-kicker">
@@ -2183,7 +2183,7 @@ export function ProjectFunnel() {
           <p className="pf-landing-sub">
             Un parcours guidé pour transmettre votre besoin — au clavier ou à la voix.
             Pas de devis automatique, pas de robot : chaque brief est lu par notre
-            équipe, qui vous répond personnellement sous 24 h ouvrées.
+            équipe. Nous visons le prochain jour ouvré, sans engagement contractuel de délai.
           </p>
           <a
             href="#brief"
@@ -2195,7 +2195,7 @@ export function ProjectFunnel() {
           </a>
           <div className="pf-landing-badges">
             <span><Check size={13} strokeWidth={3} /> Gratuit, sans engagement</span>
-            <span><Check size={13} strokeWidth={3} /> Réponse personnelle sous 24 h ouvrées</span>
+            <span><Check size={13} strokeWidth={3} /> Objectif : prochain jour ouvré</span>
             <span>
               <Check size={13} strokeWidth={3} />{" "}
               <Link href="/legal/confidentialite" style={{ textDecoration: "underline", textUnderlineOffset: "2px" }}>
@@ -2217,7 +2217,7 @@ export function ProjectFunnel() {
             <li>
               <span className="pf-landing-step-num">3</span>
               <b>Réponse argumentée</b>
-              <small>Sous 24 h ouvrées : premières recommandations et, si pertinent, un créneau d&apos;échange.</small>
+              <small>Objectif : le prochain jour ouvré, premières recommandations et, si pertinent, un créneau d&apos;échange.</small>
             </li>
           </ol>
         </div>
@@ -2233,14 +2233,22 @@ export function ProjectFunnel() {
             <h2 className="pf-side-title">Un brief complet, sans réunion interminable.</h2>
             <p>
               On récupère les informations utiles, on clarifie le périmètre, et on
-              vous répond personnellement sous 24 h ouvrées.
+              vise une réponse personnelle le prochain jour ouvré, sans délai garanti.
             </p>
             <div className="pf-progress-block">
               <div className="pf-progress-meta">
                 <span>Étape {activeStep + 1} sur {steps.length}</span>
                 <b>{completedStepCount} étape{completedStepCount > 1 ? "s" : ""} validée{completedStepCount > 1 ? "s" : ""}</b>
               </div>
-              <div className="pf-progress-segments" aria-label={`Progression : étape ${activeStep + 1} sur ${steps.length}`}>
+              <div
+                className="pf-progress-segments"
+                role="progressbar"
+                aria-label="Progression du cadrage"
+                aria-valuemin={1}
+                aria-valuemax={steps.length}
+                aria-valuenow={activeStep + 1}
+                aria-valuetext={`Étape ${activeStep + 1} sur ${steps.length}`}
+              >
                 {steps.map((step, index) => {
                   const complete = step.id !== "recap" && stepIsComplete(step.id, state);
                   return (
@@ -2687,7 +2695,7 @@ export function ProjectFunnel() {
                 {status.kind !== "captured" && <div className="pf-reassure">
                   <div className="pf-reassure-item">
                     <Mail size={14} />
-                    <span><b>Réponse personnalisée sous 24 h ouvrées</b> &middot; analyse humaine de votre brief</span>
+                    <span><b>Objectif : prochain jour ouvré</b> &middot; analyse humaine de votre brief, sans délai garanti</span>
                   </div>
                   <div className="pf-reassure-item">
                     <Sparkles size={14} />
@@ -2750,8 +2758,8 @@ export function ProjectFunnel() {
               <dt>Vais-je recevoir un prix immédiatement ?</dt>
               <dd>
                 Non — et c&apos;est volontaire. Un chiffrage sérieux demande une lecture
-                attentive de votre contexte. Vous recevez sous 24 h ouvrées une réponse
-                argumentée, puis un devis ferme après échange.
+                attentive de votre contexte. Nous visons une réponse argumentée le prochain
+                jour ouvré, sans délai garanti, puis un devis ferme après échange.
               </dd>
             </div>
             <div className="pf-faq-item">

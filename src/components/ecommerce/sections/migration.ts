@@ -86,7 +86,7 @@ export const migrationHtml = `
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
       </div>
       <div class="ec-mig-promise-right">
-        <h4>Un engagement de recette, pas une promesse de classement</h4>
+        <h3>Un engagement de recette, pas une promesse de classement</h3>
         <p>
           Le contrat peut couvrir l'inventaire, les redirections, la recette, la surveillance et la correction des
           anomalies techniques imputables à la migration. Il ne promet pas un niveau de trafic ou une position Google,

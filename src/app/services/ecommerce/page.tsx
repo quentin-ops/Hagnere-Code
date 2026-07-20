@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Ecommerce } from "@/components/ecommerce/Ecommerce";
-import { buildEcommerceFaqJsonLd } from "@/components/ecommerce/faq-content";
 import { OG_BASE, SERVICES_OG_IMAGE } from "@/lib/seo";
 
 export const metadata: Metadata = {
@@ -91,8 +90,6 @@ const serviceJsonLd = JSON.stringify({
   ],
 });
 
-const faqJsonLd = JSON.stringify(buildEcommerceFaqJsonLd());
-
 const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -112,7 +109,6 @@ export default function Page() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
       <Ecommerce />
     </>

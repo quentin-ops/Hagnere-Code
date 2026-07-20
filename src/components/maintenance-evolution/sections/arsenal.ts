@@ -10,7 +10,7 @@ export const arsenalHtml = `
       <div class="right">
         Neuf outils, trois missions. Aucun ne fait le travail à notre place —
         chacun surveille, sécurise ou pilote une partie précise de votre app.
-        <b>Tous inclus dans votre forfait · comptes à votre nom · 0 rebilling.</b>
+        <b>Outils, titulaires des comptes, licences et modalités de facturation sont confirmés au devis.</b>
       </div>
     </div>
 
@@ -36,7 +36,7 @@ export const arsenalHtml = `
             </div>
           </div>
           <div class="me-arsenal-tool-body">Capture erreurs avec stack trace complet, context user/tenant/release, breadcrumbs. <b>Alerte Slack sur erreurs nouvelles</b>, issue auto-assignée au dev qui a touché le code.</div>
-          <div class="me-arsenal-tool-chip">Monitoré 24/7</div>
+          <div class="me-arsenal-tool-chip">Couverture définie au contrat</div>
         </div>
 
         <div class="me-arsenal-tool">
@@ -52,8 +52,8 @@ export const arsenalHtml = `
               <div class="me-arsenal-tool-kind">Uptime + statuspage publique</div>
             </div>
           </div>
-          <div class="me-arsenal-tool-body">Monitoring HTTP + TCP + SSL toutes les 30 s depuis 6 régions, <b>statuspage publique avec historique 12 mois</b>, on-call Slack + SMS + téléphone en escalation.</div>
-          <div class="me-arsenal-tool-chip">Check toutes les 30 s</div>
+          <div class="me-arsenal-tool-body">Monitoring HTTP, TCP ou SSL, statuspage et escalade peuvent être configurés. <b>Fréquence, régions, historique, canaux et couverture</b> dépendent du plan et du contrat retenus.</div>
+          <div class="me-arsenal-tool-chip">Fréquence selon le devis</div>
         </div>
 
         <div class="me-arsenal-tool">
@@ -69,7 +69,7 @@ export const arsenalHtml = `
               <div class="me-arsenal-tool-kind">Métriques infra + applicatif</div>
             </div>
           </div>
-          <div class="me-arsenal-tool-body">Dashboards sur-mesure pour votre app&nbsp;: CPU, RAM, DB slow queries, Redis eviction, queues Horizon. <b>Corrélation trace ID avec Sentry + Axiom</b> — root cause en 10 min max.</div>
+          <div class="me-arsenal-tool-body">Dashboards adaptés à l'application&nbsp;: CPU, RAM, requêtes lentes, Redis ou queues selon la stack. La corrélation par trace vise à accélérer le diagnostic&nbsp;; aucun délai maximal de cause racine n'est promis.</div>
           <div class="me-arsenal-tool-chip">Dashboards sur mesure</div>
         </div>
       </div>
@@ -128,7 +128,7 @@ export const arsenalHtml = `
               <div class="me-arsenal-tool-kind">Secrets scanning</div>
             </div>
           </div>
-          <div class="me-arsenal-tool-body">Scan pre-commit + CI + historique git. <b>Alerte immédiate</b> sur API key, token, private key leaks. Rotation automatique via workflow GitHub Actions dédié.</div>
+          <div class="me-arsenal-tool-body">Le scan pre-commit, CI ou historique peut détecter des secrets. Les canaux d'alerte, responsables, procédures de révocation et rotation sont définis selon le périmètre.</div>
           <div class="me-arsenal-tool-chip">Hooks pre-commit</div>
         </div>
       </div>
@@ -172,8 +172,8 @@ export const arsenalHtml = `
               <div class="me-arsenal-tool-kind">Backlog partagé transparent</div>
             </div>
           </div>
-          <div class="me-arsenal-tool-body">Votre équipe voit nos tickets en temps réel, peut prioriser avec nous. <b>Roadmap 12 mois publique</b>, OKRs tech alignés sur vos OKRs produit. Zéro opacité.</div>
-          <div class="me-arsenal-tool-chip">Accès équipe client illimité</div>
+          <div class="me-arsenal-tool-body">Votre équipe peut accéder aux tickets et participer aux priorités. L'horizon de roadmap, les indicateurs, les habilitations et la conservation des données sont cadrés au devis.</div>
+          <div class="me-arsenal-tool-chip">Accès selon rôles convenus</div>
         </div>
 
         <div class="me-arsenal-tool">

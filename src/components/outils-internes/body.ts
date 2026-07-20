@@ -191,50 +191,50 @@ ${navHtml}
     <div class="prob-grid">
       <div class="prob reveal">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <h4>Recopiage entre logiciels</h4>
+        <h3>Recopiage entre logiciels</h3>
         <p>Un commercial signe un deal dans Pipedrive. Puis le recopie dans Pennylane. Puis dans un Excel. Puis dans un Slack.</p>
         <div class="prob-cost">TEMPS À MESURER</div>
       </div>
       <div class="prob reveal reveal-d-1">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div>
-        <h4>Relances manuelles</h4>
+        <h3>Relances manuelles</h3>
         <p>Relancer un impayé, une pièce manquante, un rendez-vous : votre équipe le fait à la main, à chaque fois.</p>
         <div class="prob-cost">FRÉQUENCE À MESURER</div>
       </div>
       <div class="prob reveal reveal-d-2">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg></div>
-        <h4>PDF à dépouiller à la main</h4>
+        <h3>PDF à dépouiller à la main</h3>
         <p>Factures fournisseurs, contrats, CV, devis : quelqu'un les ouvre, lit, recopie les chiffres.</p>
         <div class="prob-cost">DURÉE / DOCUMENT À MESURER</div>
       </div>
       <div class="prob reveal reveal-d-3">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-5"/></svg></div>
-        <h4>Reporting du vendredi</h4>
+        <h3>Reporting du vendredi</h3>
         <p>À chaque reporting, des personnes peuvent devoir rassembler manuellement des chiffres qui vieillissent vite.</p>
         <div class="prob-cost">DURÉE / RAPPORT À MESURER</div>
       </div>
 
       <div class="prob reveal">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg></div>
-        <h4>Onboarding nouveaux salariés</h4>
+        <h3>Onboarding nouveaux salariés</h3>
         <p>Créer les accès et expliquer des processus non documentés retarde la prise en main des nouveaux arrivants.</p>
         <div class="prob-cost">DÉLAI D'AUTONOMIE À MESURER</div>
       </div>
       <div class="prob reveal reveal-d-1">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4l3 3M20 4L4 20M12 2a10 10 0 1010 10"/></svg></div>
-        <h4>Dépendance à une personne</h4>
+        <h3>Dépendance à une personne</h3>
         <p>Un salarié connaît « la bonne façon » de faire un truc critique. S'il est malade, tout s'arrête.</p>
         <div class="prob-cost">RISQUE OPÉRATIONNEL</div>
       </div>
       <div class="prob reveal reveal-d-2">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg></div>
-        <h4>Erreurs humaines coûteuses</h4>
+        <h3>Erreurs humaines coûteuses</h3>
         <p>Un chiffre mal recopié dans un devis. Une TVA à 20% au lieu de 10%. Un mail envoyé au mauvais client.</p>
         <div class="prob-cost">INCIDENTS À RECENSER</div>
       </div>
       <div class="prob reveal reveal-d-3">
         <div class="prob-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82zM7 7h.01"/></svg></div>
-        <h4>SaaS du marché inadaptés</h4>
+        <h3>SaaS du marché inadaptés</h3>
         <p>Vous pouvez payer des fonctions peu utilisées tout en conservant des contournements manuels pour votre vrai besoin.</p>
         <div class="prob-cost">COÛT COMPLET À CALCULER</div>
       </div>
@@ -586,28 +586,28 @@ ${navHtml}
       <div class="flow-track">
         <div class="flow-node">
           <div class="fn-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div>
-          <h5>Documents entrants</h5>
+          <h3>Documents entrants</h3>
           <p>Facture fournisseur, CV, contrat, devis, photo de reçu.</p>
           <span class="tag">EMAIL · UPLOAD</span>
         </div>
         <div class="flow-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
         <div class="flow-node ai">
           <div class="fn-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div>
-          <h5>Extraction IA typée</h5>
+          <h3>Extraction IA typée</h3>
           <p>Claude ou GPT-4 lit, comprend, extrait un objet JSON validé.</p>
           <span class="tag">CLAUDE · GPT-4</span>
         </div>
         <div class="flow-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
         <div class="flow-node">
           <div class="fn-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
-          <h5>Validation humaine</h5>
+          <h3>Validation humaine</h3>
           <p>Un opérateur vérifie en 5 secondes (champs préremplis).</p>
           <span class="tag">UI · MOBILE</span>
         </div>
         <div class="flow-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
         <div class="flow-node">
           <div class="fn-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L12 3L4 7M20 7L12 11L4 7M20 7v10l-8 4m-8-14v10l8 4"/></svg></div>
-          <h5>Votre système</h5>
+          <h3>Votre système</h3>
           <p>Écriture comptable, fiche client, stock, CRM — synchronisés.</p>
           <span class="tag">PENNYLANE · CRM</span>
         </div>
@@ -649,25 +649,25 @@ ${navHtml}
     </div>
 
     <div class="bq-grid">
-      <div class="bq reveal"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L12 3L4 7M20 7L12 11M20 7v10l-8 4M4 7v10l8 4M12 11v10"/></svg></div><h5>Auth &amp; SSO</h5><p>Email, Google, Microsoft, SAML entreprise.</p></div>
-      <div class="bq reveal reveal-d-1"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h5>Permissions par rôle</h5><p>Équipes, droits, audit log complet.</p></div>
-      <div class="bq reveal reveal-d-2"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><h5>Tables géantes</h5><p>Filtres, tri, pagination sur 1M+ de lignes.</p></div>
-      <div class="bq reveal reveal-d-3"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 4 4 5-5"/></svg></div><h5>Dashboards &amp; KPI</h5><p>Graphs temps réel, exports PDF/Excel.</p></div>
+      <div class="bq reveal"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L12 3L4 7M20 7L12 11M20 7v10l-8 4M4 7v10l8 4M12 11v10"/></svg></div><h3>Auth &amp; SSO</h3><p>Email, Google, Microsoft, SAML entreprise.</p></div>
+      <div class="bq reveal reveal-d-1"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h3>Permissions par rôle</h3><p>Équipes, droits, audit log complet.</p></div>
+      <div class="bq reveal reveal-d-2"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><h3>Tables géantes</h3><p>Filtres, tri, pagination sur 1M+ de lignes.</p></div>
+      <div class="bq reveal reveal-d-3"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 4 4 5-5"/></svg></div><h3>Dashboards &amp; KPI</h3><p>Graphs temps réel, exports PDF/Excel.</p></div>
 
-      <div class="bq reveal"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div><h5>Gestion documentaire</h5><p>Upload, versioning, prévisualisation.</p></div>
-      <div class="bq reveal reveal-d-1"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div><h5>Extraction IA</h5><p>Factures, CV, contrats, photos de reçus.</p></div>
-      <div class="bq reveal reveal-d-2"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h5>Messagerie interne</h5><p>Commentaires contextuels, notifications.</p></div>
-      <div class="bq reveal reveal-d-3"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h5>Tâches planifiées</h5><p>Cron, emails récurrents, rapports hebdo.</p></div>
+      <div class="bq reveal"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div><h3>Gestion documentaire</h3><p>Upload, versioning, prévisualisation.</p></div>
+      <div class="bq reveal reveal-d-1"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg></div><h3>Extraction IA</h3><p>Factures, CV, contrats, photos de reçus.</p></div>
+      <div class="bq reveal reveal-d-2"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3>Messagerie interne</h3><p>Commentaires contextuels, notifications.</p></div>
+      <div class="bq reveal reveal-d-3"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>Tâches planifiées</h3><p>Cron, emails récurrents, rapports hebdo.</p></div>
 
-      <div class="bq reveal"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div><h5>Emails transactionnels</h5><p>Templates, suivi d'ouverture.</p></div>
-      <div class="bq reveal reveal-d-1"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h5>Géolocalisation</h5><p>Tournées, cartes, trajets optimisés.</p></div>
-      <div class="bq reveal reveal-d-2"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h5>Fonctions RGPD</h5><p>Consentements, exports et conservation selon le rôle et le périmètre.</p></div>
-      <div class="bq reveal reveal-d-3"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><h5>Signature électronique</h5><p>Yousign, DocuSign, intégré aux workflows.</p></div>
+      <div class="bq reveal"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zM2 6l10 7 10-7"/></svg></div><h3>Emails transactionnels</h3><p>Templates, suivi d'ouverture.</p></div>
+      <div class="bq reveal reveal-d-1"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Géolocalisation</h3><p>Tournées, cartes, trajets optimisés.</p></div>
+      <div class="bq reveal reveal-d-2"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Fonctions RGPD</h3><p>Consentements, exports et conservation selon le rôle et le périmètre.</p></div>
+      <div class="bq reveal reveal-d-3"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div><h3>Signature électronique</h3><p>Yousign, DocuSign, intégré aux workflows.</p></div>
 
-      <div class="bq reveal"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div><h5>Intégrations tierces</h5><p>Pennylane, Axonaut, Pipedrive, Slack.</p></div>
-      <div class="bq reveal reveal-d-1"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L9 18l-5-5"/></svg></div><h5>Validations multi-niveaux</h5><p>N+1, N+2, seuils, délégations.</p></div>
-      <div class="bq reveal reveal-d-2"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10M21 7v10M3 7l9 5 9-5M3 17l9-5 9 5"/></svg></div><h5>Imports Excel massifs</h5><p>Migration données anciennes, en 1 clic.</p></div>
-      <div class="bq reveal reveal-d-3"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 12h6M12 9v6"/></svg></div><h5>QR codes atelier</h5><p>Scan mobile, déclarations terrain.</p></div>
+      <div class="bq reveal"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div><h3>Intégrations tierces</h3><p>Pennylane, Axonaut, Pipedrive, Slack.</p></div>
+      <div class="bq reveal reveal-d-1"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7L9 18l-5-5"/></svg></div><h3>Validations multi-niveaux</h3><p>N+1, N+2, seuils, délégations.</p></div>
+      <div class="bq reveal reveal-d-2"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v10M21 7v10M3 7l9 5 9-5M3 17l9-5 9 5"/></svg></div><h3>Imports Excel massifs</h3><p>Migration données anciennes, en 1 clic.</p></div>
+      <div class="bq reveal reveal-d-3"><div class="bq-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 12h6M12 9v6"/></svg></div><h3>QR codes atelier</h3><p>Scan mobile, déclarations terrain.</p></div>
     </div>
   </div>
 </section>
@@ -767,7 +767,7 @@ ${navHtml}
     <div class="price-grid price-grid-4">
       <div class="plan plan-audit reveal">
         <div class="plan-tag">DÉMARRAGE</div>
-        <h4>Audit processus</h4>
+        <h3>Audit processus</h3>
         <div class="plan-sub">Point d'entrée peu engageant. Déductible du forfait si mission ensuite.</div>
         <div class="plan-price">
           <span class="amount">990 €</span>
@@ -785,7 +785,7 @@ ${navHtml}
 
       <div class="plan reveal reveal-d-1">
         <div class="plan-tag">AUTOMATION SIMPLE</div>
-        <h4>Starter</h4>
+        <h3>Starter</h3>
         <div class="plan-sub">Un seul processus douloureux, automatisé proprement. Idéal pour tester.</div>
         <div class="plan-price">
           <span class="amount">8–15 k€</span>
@@ -804,7 +804,7 @@ ${navHtml}
       <div class="plan featured reveal reveal-d-2">
         <div class="plan-badge">FORMULE INTERMÉDIAIRE</div>
         <div class="plan-tag">OUTIL COMPLET</div>
-        <h4>Pro</h4>
+        <h3>Pro</h3>
         <div class="plan-sub">Un back-office complet qui remplace vos fichiers Excel et vos process manuels.</div>
         <div class="plan-price">
           <span class="amount">25–50 k€</span>
@@ -824,7 +824,7 @@ ${navHtml}
 
       <div class="plan reveal reveal-d-3">
         <div class="plan-tag">ERP ENTREPRISE</div>
-        <h4>Enterprise</h4>
+        <h3>Enterprise</h3>
         <div class="plan-sub">Outil central qui fait tourner toute la boîte. Multi-services, multi-sites.</div>
         <div class="plan-price">
           <span class="amount">Sur-mesure</span>
@@ -883,7 +883,7 @@ ${navHtml}
 
       <div class="roi-calc reveal reveal-d-1">
         <div class="roi-row">
-          <label>Nombre de salariés concernés</label>
+          <label for="roi-people">Nombre de salariés concernés</label>
           <div class="roi-input">
             <input type="range" id="roi-people" min="1" max="50" value="8">
             <div class="roi-val"><span id="roi-people-v">8</span> personnes</div>
@@ -891,7 +891,7 @@ ${navHtml}
         </div>
 
         <div class="roi-row">
-          <label>Heures perdues / semaine / personne</label>
+          <label for="roi-hours">Heures perdues / semaine / personne</label>
           <div class="roi-input">
             <input type="range" id="roi-hours" min="1" max="20" value="6">
             <div class="roi-val"><span id="roi-hours-v">6</span> h / semaine</div>
@@ -899,7 +899,7 @@ ${navHtml}
         </div>
 
         <div class="roi-row">
-          <label>Coût horaire chargé moyen</label>
+          <label for="roi-cost">Coût horaire chargé moyen</label>
           <div class="roi-input">
             <input type="range" id="roi-cost" min="20" max="100" step="5" value="45">
             <div class="roi-val"><span id="roi-cost-v">45</span> € / h</div>
@@ -1016,7 +1016,7 @@ ${navHtml}
         Envoyer un email →
       </a>
     </div>
-    <div class="scta-meta">RÉPONSE SOUS 24H OUVRÉES · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
+    <div class="scta-meta">OBJECTIF : PROCHAIN JOUR OUVRÉ · DÉLAI NON GARANTI · PAR UN ASSOCIÉ · SANS ENGAGEMENT</div>
   </div>
 </section>
 
@@ -1033,7 +1033,7 @@ ${navHtml}
       </div>
       <div class="foot-cols">
         <div class="foot-col">
-          <h5>SERVICES</h5>
+          <h3>SERVICES</h3>
           <a href="/services/saas-applications-metier">SaaS &amp; applications métier</a>
           <a href="/services/outils-internes-sur-mesure">Outils internes</a>
           <a href="#">Sites vitrines</a>
@@ -1041,20 +1041,20 @@ ${navHtml}
           <a href="#">Publicité</a>
         </div>
         <div class="foot-col">
-          <h5>STUDIO</h5>
+          <h3>STUDIO</h3>
           <a href="/methode">Méthode</a>
           <a href="/realisations">Réalisations</a>
           <a href="/equipe">Équipe</a>
           <a href="/tarifs">Tarifs</a>
         </div>
         <div class="foot-col">
-          <h5>CONTACT</h5>
+          <h3>CONTACT</h3>
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
           <a href="#">LinkedIn</a>
           <a href="#">YouTube</a>
         </div>
         <div class="foot-col">
-          <h5>LÉGAL</h5>
+          <h3>LÉGAL</h3>
           <a href="#">CGV</a>
           <a href="#">Mentions légales</a>
           <a href="#">Confidentialité</a>

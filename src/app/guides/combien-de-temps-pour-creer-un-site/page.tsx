@@ -33,17 +33,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -167,7 +156,7 @@ const faqItems = [
   {
     question: "Que se passe-t-il une fois le site mis en ligne ?",
     answer:
-      "Le chrono continue — et c'est la partie que personne ne raconte. L'indexation d'abord : Google annonce officiellement « de quelques jours à quelques semaines » pour explorer un nouveau site (soumettez le sitemap dès le premier jour). Le référencement ensuite : les premiers effets arrivent en 3 à 6 mois, un flux régulier de contacts en 6 à 12 mois — moins de 2 % des pages nouvelles atteignent le top 10 de Google en moins d'un an sur des requêtes concurrentielles. En attendant, la publicité en ligne prend le relais… avec ses propres délais : 1 à 2 semaines d'apprentissage des campagnes.",
+      "Le travail continue, sans calendrier garanti. Google indique que l'exploration peut prendre de quelques jours à quelques semaines, mais exploration et indexation sont deux étapes distinctes : soumettre un sitemap signale les URL, sans garantir leur exploration ni leur indexation. La visibilité et les contacts organiques dépendent ensuite du marché, de la qualité et de la pertinence des contenus, de l'autorité du site, des liens et du socle technique. Dans le corpus observationnel cité par Ahrefs, moins de 2 % des pages nouvelles ont atteint le top 10 en moins d'un an sur les requêtes étudiées ; ce constat ne prédit ni le délai ni le résultat d'un site donné. Une campagne publicitaire peut aussi connaître une phase d'apprentissage, sans garantir des contacts.",
   },
   {
     question: "Sur combien d'années un site internet s'amortit-il ?",
@@ -176,23 +165,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -304,17 +282,18 @@ export default function Page() {
           s&apos;écoulent entre le premier jour et la mise en ligne —
           toujours plus long, car il inclut les allers-retours, vos
           validations, les plannings de chacun.{" "}
-          <strong>Le temps de visibilité</strong> : les mois avant que
-          Google vous envoie des clients — le chrono que presque aucun
-          guide ne compte, et qui commence seulement à la mise en ligne
-          (section 10). Quand une IA promet « un site en 2 minutes »,
+          <strong>Le temps de visibilité</strong> : le travail mené après
+          la mise en ligne pour être découvert, compris et choisi, sans
+          garantie d&apos;indexation, de position ni de client (section 10).
+          Quand une IA promet « un site en 2 minutes »,
           elle parle du premier chrono, sur un périmètre minimal ;
           quand votre entourage dit « trois mois », il parle du
-          deuxième ; quand votre site « ne rapporte rien » au bout de
-          six semaines, c&apos;est le troisième qui travaille.
+          deuxième ; après la mise en ligne, le troisième se pilote dans
+          la durée à partir des données réellement observées.
         </p>
         <p>
-          Fil rouge de ce guide : <strong>Mécanic&apos;Alpes,
+          Fil rouge de ce guide : <strong>scénario fictif composite —
+          ni client ni témoignage réel — avec Mécanic&apos;Alpes,
           sous-traitant d&apos;usinage à Annecy</strong>, 22 salariés.
           Son échéance est concrète : un salon industriel majeur
           mi-mars, où son site vieillissant fait tache face aux
@@ -448,8 +427,8 @@ export default function Page() {
           + temps de décision et de contenus (vous)
           <br />
           <br />
-          Chez Mécanic&apos;Alpes : 5 semaines de production annoncées…
-          et un délai réel de 9 semaines au premier devis — 4 semaines
+          Dans le scénario Mécanic&apos;Alpes : 5 semaines de production
+          annoncées… et un délai simulé de 9 semaines au premier devis — 4 semaines
           de différence entièrement logées côté client : textes
           techniques à écrire, photos d&apos;atelier à faire, deux
           comités de validation espacés. C&apos;est le poste sur lequel
@@ -544,60 +523,56 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre échéance est déjà fixée ?"
-          description="Décrivez votre projet et sa date butoir en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées avec un rétro-planning réaliste. Le devis fixe les jalons, les dépendances et le traitement d'un éventuel retard."
-          tags={["Réponse sous 24 h ouvrées", "Jalons écrits au devis", "Rédaction selon forfait"]}
+          description="Décrivez votre projet et sa date butoir en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti avec un rétro-planning réaliste. Le devis fixe les jalons, les dépendances et le traitement d'un éventuel retard."
+          tags={["Objectif : prochain jour ouvré", "Jalons écrits au devis", "Rédaction selon forfait"]}
         />
 
         <h2 id="apres-mise-en-ligne">10. Après la mise en ligne : le chrono que personne ne raconte</h2>
         <p>
           Votre site est en ligne. Combien de temps avant qu&apos;il
-          rapporte ? C&apos;est la question que les guides de délais
-          esquivent tous — voici les chiffres, des rares sources non
-          commerciales du sujet. <strong>L&apos;indexation</strong> :
-          Google annonce officiellement « de quelques jours à quelques
-          semaines » pour explorer un nouveau site ; soumettre le plan
-          du site (sitemap) dès le premier jour ramène généralement les
-          premières pages indexées à 3-7 jours.{" "}
+          rapporte ? Il n&apos;existe pas de délai universel, et aucune
+          soumission technique ne permet d&apos;en promettre un.
+          <strong> L&apos;exploration et l&apos;indexation sont deux étapes
+          distinctes</strong> : Google indique que l&apos;exploration peut
+          prendre de quelques jours à quelques semaines, mais une page
+          explorée peut ne pas être indexée. Soumettre le plan du site
+          (sitemap) signale les URL et leurs évolutions à Google ; ce
+          fichier ne garantit ni leur exploration, ni leur indexation.{" "}
           <strong>Le{" "}
           <Link href="/services/referencement-google">référencement
-          naturel</Link></strong> : les premiers
-          effets se mesurent en 3 à 6 mois, un flux régulier de
-          contacts en 6 à 12 mois. L&apos;étude de référence (Ahrefs,
-          2025) est sans appel : <strong>moins de 2 % des pages
-          nouvellement publiées atteignent le top 10 de Google en
-          moins d&apos;un an</strong> sur des requêtes concurrentielles
-          — mais sur des requêtes locales ou de niche, la moitié des
-          pages récentes y parviennent en 2 à 4 mois : le choix des
-          batailles compte plus que l&apos;ancienneté.{" "}
+          naturel</Link></strong> : le délai et le résultat dépendent du
+          marché, de la qualité et de la pertinence des contenus, de
+          l&apos;autorité du site, des liens obtenus et du socle technique.
+          Dans le corpus observationnel présenté par Ahrefs dans l&apos;étude
+          citée, <strong>moins de 2 % des pages nouvellement publiées ont
+          atteint le top 10 en moins d&apos;un an</strong> sur les requêtes
+          étudiées. Ce résultat décrit ce corpus ; il ne prédit ni un
+          délai, ni une position, ni des contacts pour votre site.{" "}
           <strong>La{" "}
           <Link href="/services/publicite-en-ligne">publicité en
           attendant</Link></strong> : Google Ads
-          lui-même a une période d&apos;apprentissage officielle de 1 à
-          2 semaines par campagne, et une stabilisation en 3-4 semaines.
-          Moralité, à graver dans le planning :{" "}
-          <strong>un site « livré en 6 semaines » est un site
-          « productif en 6 à 12 mois »</strong> — et c&apos;est
-          précisément pour cela que la date de mise en ligne se
-          calcule à rebours de vos échéances business, pas de vos
-          disponibilités.
+          lui-même décrit une phase d&apos;apprentissage pour certaines
+          campagnes. Elle ne garantit ni stabilisation à une date donnée,
+          ni rentabilité. Moralité pour le planning :{" "}
+          <strong>un site mis en ligne n&apos;est pas une visibilité
+          acquise</strong>. Prévoyez après la livraison le travail de
+          contenu, d&apos;autorité, de mesure et d&apos;amélioration, sans
+          inscrire une date de « premier client Google » au contrat.
         </p>
-        <InfoBox variant="blue" title="La frise complète de Mécanic'Alpes, de la décision au premier client">
+        <InfoBox variant="blue" title="La frise de planification de Mécanic'Alpes, sans délai SEO garanti">
           Décision interne et choix du prestataire : 6 semaines.
           Embarquement (accès, contenus, planification) : 3 semaines.
           Production : 9 semaines. Mise en ligne : 2 jours, DNS
-          compris. Indexation des pages : 1 à 3 semaines, sitemap
-          soumis le premier jour. Premières positions sur les requêtes
-          locales du métier (« usinage précision Annecy ») : 2 à
-          4 mois. Flux régulier de demandes entrantes : 6 à 12 mois
-          après la mise en ligne. <strong>Du « on y va » (prestataire
-          choisi et signé) au premier client venu de Google : 9 à
-          15 mois — et 10 à 16 en comptant depuis le tout premier
-          « il nous faut un nouveau site ».</strong> C&apos;est la
-          frise que ce guide voulait montrer : chaque maillon est
-          court, c&apos;est la chaîne qui est longue — et c&apos;est
-          précisément pourquoi un site ne se lance pas « quand on aura
-          le temps », mais à rebours du jour où l&apos;on veut
-          qu&apos;il rapporte.
+          compris. Le sitemap serait soumis dès la mise en ligne pour
+          signaler les URL. Ensuite, aucune date fiable ne peut être
+          inscrite : Google peut explorer puis indexer les pages à des
+          moments différents, ou choisir de ne pas les indexer. Les
+          positions et demandes entrantes dépendraient de la concurrence,
+          des contenus, de l&apos;autorité, des liens et de la qualité
+          technique. <strong>La frise ferme donc le calendrier de
+          production, pas celui du premier client venu de Google.</strong>
+          La visibilité se pilote après la mise en ligne avec des mesures
+          réelles ; elle ne se déduit pas du sitemap.
         </InfoBox>
 
         <h2 id="retro-planning">11. Le rétro-planning business : Noël, salon, saison</h2>
@@ -616,15 +591,15 @@ export default function Page() {
           ]}
         />
         <p>
-          Le cas Mécanic&apos;Alpes, résolu : salon mi-mars, site en
+          Dans le scénario Mécanic&apos;Alpes : salon mi-mars, site en
           ligne visé fin février (15 jours de marge), durée réaliste
           de 9 semaines — production plus contenus et validations
           (section 6) —, embarquement 3 semaines —
-          <strong> le projet devait se lancer début décembre</strong>.
-          Le dirigeant nous a contactés en janvier : nous avons tenu
-          fin février en appliquant les compresseurs de la section
-          suivante — contenus d&apos;abord, décideur unique, périmètre
-          figé — mais le confort avait disparu. La règle générale :{" "}
+          <strong> le projet devrait se lancer début décembre</strong>.
+          S&apos;il ne démarrait qu&apos;en janvier, tenir fin février
+          imposerait les compresseurs de la section suivante — contenus
+          d&apos;abord, décideur unique, périmètre figé — sans garantie et
+          avec une marge presque nulle. La règle générale :{" "}
           <strong>ajoutez toujours une marge de 2 à 3 semaines à votre
           rétro-planning</strong> ; personne ne s&apos;est jamais
           plaint d&apos;un site prêt en avance.
@@ -734,7 +709,7 @@ export default function Page() {
             <li><strong>−30 à −50 %</strong> : l&apos;effet de contenus prêts au premier jour — le levier le plus puissant, et il est chez vous.</li>
             <li><strong>3 semaines</strong> : la médiane d&apos;attente des contenus client — la moitié du calendrier vous appartient.</li>
             <li><strong>60 jours</strong> : le verrou incontournable sur un nom de domaine récemment transféré ou modifié — vérifiez vos accès aujourd&apos;hui.</li>
-            <li><strong>6 à 12 mois</strong> : le délai avant qu&apos;un site nouvellement lancé génère un flux régulier de contacts par Google — le chrono d&apos;après la mise en ligne.</li>
+            <li><strong>Moins de 2 %</strong> : dans le corpus Ahrefs cité, la part des pages nouvelles ayant atteint le top 10 en moins d&apos;un an sur les requêtes étudiées — une observation, jamais un délai promis pour votre site.</li>
           </ul>
         </InfoBox>
 
@@ -764,10 +739,10 @@ export default function Page() {
             le périmètre, pas par la technique.
           </li>
           <li>
-            <strong>Comptez jusqu&apos;au premier client, pas
-            jusqu&apos;à la mise en ligne.</strong> Indexation, SEO,
-            campagnes (section 10) : la visibilité se planifie comme le
-            site lui-même.
+            <strong>Planifiez aussi l&apos;après-lancement.</strong>
+            Exploration, indexation, SEO et campagnes (section 10) se
+            suivent avec des données réelles ; aucun calendrier de projet
+            ne peut garantir la date du premier client.
           </li>
         </ol>
         <p>
@@ -781,8 +756,9 @@ export default function Page() {
           rédaction prévue selon le forfait pour réduire la
           cause n°1 de dérapage.{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet et
-          votre échéance en 3 minutes</Link> : réponse personnelle
-          sous 24 h ouvrées, gratuite et sans engagement. Et pour le
+          votre échéance en 3 minutes</Link> : objectif de réponse personnelle
+          le prochain jour ouvré, sans délai garanti, gratuitement et sans
+          engagement. Et pour le
           budget qui va avec ces délais, notre{" "}
           <Link href="/guides/combien-coute-un-site-internet">panorama
           des prix d&apos;un site internet</Link> complète ce guide.

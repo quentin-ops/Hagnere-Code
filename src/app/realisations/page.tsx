@@ -6,7 +6,7 @@ import { OG_BASE, DEFAULT_OG_IMAGE } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Réalisations : 4 produits en production · Hagnéré Code",
   description:
-    "4 études de cas documentées : SaaS à 5 400 clients payants, +340 % de trafic SEO en 6 mois. Contexte, stack, résultats mesurés — zéro logo volé.",
+    "4 études de cas documentées : contexte, parcours, modules livrés et stack technique de deux SaaS et deux sites métier.",
   alternates: { canonical: "/realisations" },
   openGraph: {
     ...OG_BASE,

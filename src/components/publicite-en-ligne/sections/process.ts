@@ -30,7 +30,7 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6"/></svg>
           </div>
         </div>
-        <h4>Cadrage &amp; alignement</h4>
+        <h3>Cadrage &amp; alignement</h3>
         <p>Kickoff, audit des comptes existants, interviews business, définition des CAC cibles par canal et du funnel de référence CRM.</p>
         <div class="ads-proc-step-foot">J-5 → J0 · 1 atelier 2 h</div>
       </article>
@@ -42,7 +42,7 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
         </div>
-        <h4>Déploiement tracking server-side</h4>
+        <h3>Déploiement tracking server-side</h3>
         <p>GTM Server Container, Meta CAPI, Google Enhanced, LinkedIn Conv API, Consent Mode v2, première maquette Looker Studio.</p>
         <div class="ads-proc-step-foot">Semaine 1 → 3 · livré clé en main</div>
       </article>
@@ -54,8 +54,8 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
           </div>
         </div>
-        <h4>Restructuration des comptes</h4>
-        <p>Hiérarchie propre, conversion primaire unique, exclusions brand, audience signals PMax, listes négatives, nomenclature lisible.</p>
+        <h3>Restructuration des comptes</h3>
+        <p>Hiérarchie propre, objectifs et actions de conversion documentés par campagne, contrôles de marque, signaux d'audience, listes négatives et nomenclature lisible.</p>
         <div class="ads-proc-step-foot">Semaine 2 → 4 · zero downtime</div>
       </article>
 
@@ -66,7 +66,7 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20M7 15h3"/></svg>
           </div>
         </div>
-        <h4>Kickoff creatives &amp; landing</h4>
+        <h3>Kickoff creatives &amp; landing</h3>
         <p>Brief du premier batch (8-12 variantes), moodboards, sourcing UGC, variantes landing à tester. On arrive avec les templates prêts.</p>
         <div class="ads-proc-step-foot">Semaine 3 → 4 · batch 1 validé</div>
       </article>
@@ -88,7 +88,7 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
           </div>
         </div>
-        <h4>Lancement / bascule progressive</h4>
+        <h3>Lancement / bascule progressive</h3>
         <p>Go live des nouvelles campagnes ou bascule progressive depuis l'ancien compte. Budgets calibrés prudemment, alertes Slack activées, Looker Studio ouvert à vos équipes. <b>Premier point hebdo à J+7.</b></p>
         <div class="ads-proc-step-foot">Semaine 4 → 5 · ramp-up 30 % → 100 %</div>
       </article>
@@ -100,7 +100,7 @@ export const processHtml = `
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
           </div>
         </div>
-        <h4>Learning phase &amp; calibration</h4>
+        <h3>Learning phase &amp; calibration</h3>
         <p>On respecte les fenêtres d'apprentissage des algos (pas de switch toutes les 48 h), on teste les premiers creatives, on calibre tCPA/tROAS. <b>La patience technique qui évite de cramer le compte.</b></p>
         <div class="ads-proc-step-foot">Semaine 5 → 12 · revue hebdo</div>
       </article>
@@ -123,7 +123,7 @@ export const processHtml = `
           </div>
         </div>
         <div class="ads-proc-step-wide-body">
-          <h4>Scale, itérations &amp; pilotage hebdo</h4>
+          <h3>Scale, itérations &amp; pilotage hebdo</h3>
           <p>Rituel permanent&nbsp;: point lundi 30 min, revue creatives (on coupe, on scale, on remplace), A/B testing continu, reporting business le 5 de chaque mois, alertes Slack anomalies en temps réel. <b>La phase qui fait la différence entre un compte tenu et un compte qui dérive.</b></p>
           <div class="ads-proc-step-wide-grid">
             <div class="ads-proc-step-wide-item">

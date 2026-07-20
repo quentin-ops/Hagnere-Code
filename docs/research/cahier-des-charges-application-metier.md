@@ -264,7 +264,7 @@ Contenu livré :
 2. Build complet sans erreur de résolution de guide.
 3. Rendu visuel de la page aux largeurs prévues par la procédure projet.
 4. Rendu réel de l'image OG en 1200 × 630.
-5. Cohérence entre FAQ visible et schéma `FAQPage`.
+5. FAQ visible et utile, sans schéma `FAQPage` retiré par Google.
 6. Validation des liens internes et externes.
 7. Contrôle du canonique absolu, de l'indexation, du fil d'Ariane et du schéma `Article`.
 8. Vérification du sitemap après publication ; découverte ou demande d'indexation ne vaut pas preuve d'indexation.

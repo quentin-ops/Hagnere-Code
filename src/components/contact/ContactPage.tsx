@@ -1,8 +1,6 @@
-"use client";
-
-import { useMemo, useRef } from "react";
 import { bodyHtml } from "./body";
-import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
+import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
+import { MainNav } from "@/components/design-shared/MainNav";
 import {
   ContactProjectSection,
   SiteFooter,
@@ -17,19 +15,13 @@ import "@/components/design-shared/site-footer.css";
 import "@/components/design-shared/calendly.css";
 import "./page.css";
 
+const { contentHtml } = splitContactPageHtml(bodyHtml);
+
 export function ContactPage() {
-  const rootRef = useRef<HTMLDivElement>(null);
-  useDesignInteractive(rootRef);
-
-  const { navHtml, contentHtml } = useMemo(
-    () => splitContactPageHtml(bodyHtml),
-    [],
-  );
-
   return (
-    <div ref={rootRef} className="hc-design">
-      <main id="main-content">
-        <div dangerouslySetInnerHTML={{ __html: navHtml }} />
+    <InteractiveDesignRoot className="hc-design">
+      <MainNav />
+      <main id="main-content" tabIndex={-1}>
         <ContactProjectSection
           headingLevel="h1"
           className="sf-contact--contact-hero"
@@ -81,6 +73,6 @@ export function ContactPage() {
         </section>
       </main>
       <SiteFooter showContact={false} />
-    </div>
+    </InteractiveDesignRoot>
   );
 }

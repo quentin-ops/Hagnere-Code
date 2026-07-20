@@ -31,17 +31,6 @@ export const metadata: Metadata = {
     modifiedTime: `${guide.dateModified}T09:00:00+02:00`,
     authors: [`${SITE_URL}/equipe`],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 const articleJsonLd = JSON.stringify({
@@ -165,23 +154,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -281,12 +259,13 @@ export default function Page() {
           ]}
         />
 
-        <InfoBox variant="blue" title="Le fil rouge de ce guide : Karim, magasin de sport à Albertville">
-          Karim vend du matériel de montagne et fait un tiers de son chiffre
-          d&apos;affaires en ligne. Depuis l&apos;hiver, son site WordPress
-          « rame », surtout au téléphone. Une agence lui a proposé une
-          refonte à 14 000 euros. Nous suivrons son diagnostic section par
-          section — parce que sa facture finale n&apos;a rien à voir avec ce
+        <InfoBox variant="blue" title="Le fil rouge : scénario fictif composite — Karim, magasin de sport (ni client ni témoignage réel)">
+          Dans ce scénario, Karim vendrait du matériel de montagne et ferait
+          un tiers de son chiffre d&apos;affaires en ligne. Depuis l&apos;hiver,
+          son site WordPress « ramerait », surtout au téléphone. Une agence
+          lui aurait proposé une refonte à 14 000 euros. Nous suivrons cette
+          hypothèse section par section — parce que son budget de correction
+          n&apos;aurait rien à voir avec ce
           devis, et que la raison vous concerne probablement aussi.
         </InfoBox>
 
@@ -394,8 +373,8 @@ export default function Page() {
         </p>
 
         <p>
-          <strong>Karim, lui, découvre ceci</strong> : son temps de réponse
-          serveur est de 2,1 secondes. Son site n&apos;a même pas commencé à
+          <strong>Dans le scénario, Karim découvrirait ceci</strong> : son temps de réponse
+          serveur serait de 2,1 secondes. Son site n&apos;aurait même pas commencé à
           envoyer sa page que deux secondes sont déjà perdues. Aucune
           compression d&apos;image n&apos;y changerait quoi que ce soit — et
           la refonte à 14 000 euros qu&apos;on lui propose ne traite pas ce
@@ -405,7 +384,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre site est lent et vous ne savez pas pourquoi ?"
-          description="Décrivez votre situation en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement — y compris quand la réponse est « changez d'hébergement, ça suffira »."
+          description="Décrivez votre situation en 3 minutes. Objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement — y compris quand la réponse est « changez d'hébergement, ça suffira »."
         />
 
         <h2 id="poids">6. Ce que pèse une page, poste par poste</h2>
@@ -507,10 +486,10 @@ POIDS MÉDIAN PAR SOCLE (mobile)
             ["Différer les scripts tiers", "Moyen", "1 à 2 jours", "Non"],
           ]}
         />
-        <InfoBox variant="emerald" title="Ce que Karim a réellement payé">
-          Changement d&apos;hébergement pour une offre à ressources dédiées :
+        <InfoBox variant="emerald" title="Budget de correction dans le scénario Karim">
+          Hypothèse de changement d&apos;hébergement pour une offre à ressources dédiées :
           <strong> 39 euros par mois</strong>, temps de réponse serveur
-          ramené sous 400 millisecondes en une demi-journée. Compression des
+          qui ramènerait le temps de réponse serveur sous 400 millisecondes en une demi-journée. Compression des
           photos de matériel, encore au format d&apos;origine sorti de
           l&apos;appareil photo : <strong>deux jours de travail</strong>.
           Retrait de quatre extensions dont deux ne servaient plus depuis
@@ -518,8 +497,8 @@ POIDS MÉDIAN PAR SOCLE (mobile)
           <br />
           <br />
           Total : environ <strong>2 800 euros</strong> et 39 euros par mois,
-          contre 14 000 euros pour la refonte proposée. Son site n&apos;est
-          pas neuf, mais il est rapide — et il pourra décider de la refonte
+          contre 14 000 euros pour la refonte proposée. Son site ne serait
+          pas neuf, mais il serait rapide — et il pourrait décider de la refonte
           quand elle se justifiera vraiment, pas quand la lenteur sert
           d&apos;argument de vente.
         </InfoBox>
@@ -586,11 +565,11 @@ POIDS MÉDIAN PAR SOCLE (mobile)
           </li>
         </ul>
         <p>
-          Karim en comptait <strong>un seul</strong> : son thème n&apos;est
+          Dans le scénario, Karim en compterait <strong>un seul</strong> : son thème ne serait
           plus mis à jour depuis 2024. Un signal sur cinq, c&apos;est un
           point de vigilance à surveiller, pas une refonte à 14 000 euros.
-          C&apos;est précisément le calcul que la proposition qu&apos;on lui
-          avait faite ne montrait nulle part.
+          C&apos;est précisément le calcul que la proposition simulée ne
+          montrerait nulle part.
         </p>
         <p>
           En dessous de trois signaux : optimisez. Vous économiserez
@@ -680,7 +659,7 @@ POIDS MÉDIAN PAR SOCLE (mobile)
 
         <GuideInlineCTA
           title="Faites poser le bon diagnostic"
-          description="Décrivez votre site en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Si un changement d'hébergement suffit, nous vous le dirons."
+          description="Décrivez votre site en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Si un changement d'hébergement suffit, nous vous le dirons."
         />
 
         <InfoBox variant="emerald" title="À retenir : les 6 chiffres de ce guide">

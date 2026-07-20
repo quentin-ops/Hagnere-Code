@@ -32,17 +32,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -175,23 +164,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -321,7 +299,8 @@ export default function Page() {
           code</strong> : ils n&apos;assemblent rien pour un débutant —
           ils font produire un développeur professionnel 2 fois plus
           vite sur les tâches standard. Fil rouge de ce guide :{" "}
-          <strong>Nadia, fondatrice d&apos;un cabinet de recrutement à
+          <strong>scénario fictif composite — ni client ni témoignage
+          réel — avec Nadia, fondatrice d&apos;un cabinet de recrutement à
           Annecy</strong>, 3 000 € de budget initial, qui veut un site
           qui lui amène des clients — nous la suivrons dans les trois
           familles. Spoiler honnête : chacune servira à quelque chose,
@@ -340,8 +319,9 @@ export default function Page() {
 
         <h2 id="generateurs-no-code">3. Famille 1 : les générateurs no-code (Wix AI, Hostinger, Durable…)</h2>
         <p>
-          La promesse est réelle : Nadia décrit son cabinet à Wix AI un
-          mardi soir, et à 23 h un site existe — textes générés,
+          La promesse commerciale existe. Dans le scénario, Nadia
+          décrirait son cabinet à Wix AI un mardi soir et pourrait obtenir
+          à 23 h un site — textes générés,
           images en place. Les prix aussi sont réels, à condition de
           lire les petites lignes que voici. <strong>Wix</strong> :
           gratuit pour démarrer, mais domaine personnalisé et
@@ -364,8 +344,8 @@ export default function Page() {
           acceptez l&apos;engagement long, Durable pour la mise en
           ligne la plus rapide d&apos;une simple vitrine, Framer si
           l&apos;esthétique compte plus que les fonctions. Ce que Nadia
-          obtient : un site en ligne, hébergé, correct. Ce
-          qu&apos;elle n&apos;obtient pas : un design qui la distingue
+          obtiendrait : un site en ligne, hébergé, correct. Ce
+          qu&apos;elle n&apos;obtiendrait pas : un design qui la distingue
           (les mêmes modèles servent des millions de sites), une
           stratégie de contenu qui la fait trouver sur Google, et
           surtout <strong>la propriété</strong> — Wix documente
@@ -389,7 +369,7 @@ export default function Page() {
 
         <h2 id="vibe-coding">4. Famille 2 : le vibe coding (Lovable, Bolt, v0)</h2>
         <p>
-          Deuxième essai de Nadia : Lovable. La différence saute aux
+          Deuxième hypothèse pour Nadia : Lovable. La différence sauterait aux
           yeux — l&apos;outil ne remplit pas un modèle,{" "}
           <strong>il écrit du vrai code React/Next.js</strong>, et sa
           page tarifs l&apos;affiche fièrement : « You own your
@@ -405,8 +385,9 @@ export default function Page() {
           100 $/mois. Repère rapide : Lovable pour prototyper une
           application complète avec base de données, v0 si le relais
           sera pris par un développeur Next.js, Bolt pour itérer vite
-          sur des variantes d&apos;interface. En quelques heures, Nadia a un prototype
-          interactif bluffant. Puis vient <strong>le mur</strong>,
+          sur des variantes d&apos;interface. En quelques heures, Nadia
+          pourrait obtenir un prototype interactif convaincant. Puis
+          viendrait <strong>le mur</strong>,
           documenté par les chiffres de 2025 : Veracode, entreprise
           spécialisée dans les tests de sécurité logicielle, a mesuré
           que <strong>45 % du code généré par IA contient une
@@ -424,8 +405,8 @@ export default function Page() {
 
         <h2 id="assistants-pro">5. Famille 3 : les assistants de code professionnels</h2>
         <p>
-          La troisième famille ne s&apos;adresse pas à Nadia — et
-          c&apos;est pourtant elle qui va changer son projet.{" "}
+          La troisième famille ne s&apos;adresserait pas à Nadia — et
+          c&apos;est pourtant elle qui pourrait changer son projet.{" "}
           <strong>Claude Code</strong> (inclus dès l&apos;abonnement
           Claude Pro à 20 $/mois), <strong>GitHub Copilot</strong>{" "}
           (dès 10 $/mois), <strong>Cursor</strong> (20 $/mois) : des
@@ -544,7 +525,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Envie de savoir ce que l'IA change pour VOTRE projet ?"
-          description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc — y compris quand un outil IA à 20 €/mois est la bonne réponse à votre stade. Et si le projet mérite du sur-mesure, le Discovery Sprint (1 500 €, 2 jours, déduit à 100 %) produit maquettes, cahier des charges et devis au forfait fixe."
+          description="Décrivez votre projet en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis franc — y compris quand un outil IA à 20 €/mois est la bonne réponse à votre stade. Et si le projet mérite du sur-mesure, le Discovery Sprint (1 500 €, 2 jours, déduit à 100 %) produit maquettes, cahier des charges et devis au forfait fixe."
           tags={["Réponse personnelle", "Objectifs de performance au devis", "Droits et dépôt inventoriés"]}
         />
 
@@ -650,28 +631,28 @@ export default function Page() {
           <em>générer</em> et <em>construire</em>.
         </p>
 
-        <InfoBox variant="amber" title="Le cas Nadia, résolu">
+        <InfoBox variant="amber" title="L'issue possible du scénario Nadia">
           <p>
-            Épilogue du fil rouge. Le site Wix de Nadia lui a rendu un
-            vrai service : trois semaines en ligne, quelques appels, la
-            preuve que sa niche répond. Son prototype Lovable lui a
-            servi à montrer son idée d&apos;espace candidats à deux
-            confrères. Puis elle a fait le calcul de la section 8 :
-            son cabinet vit des missions que le site rapporte — le
-            site est son commercial, pas sa carte de visite. Son
-            budget initial de 3 000 € n&apos;y suffisait pas : elle a
-            laissé le Wix travailler quelques mois de plus, et les
-            premières missions décrochées ont financé la différence —
-            c&apos;est exactement le rôle d&apos;un site provisoire
-            bien utilisé. Elle a gardé le Wix en ligne le temps du
-            chantier (comptez plusieurs semaines pour un sur-mesure —
+            Épilogue hypothétique du fil rouge. Le site Wix de Nadia
+            pourrait lui rendre un vrai service : tester sa niche pendant
+            trois semaines et observer quelques appels. Son prototype
+            Lovable pourrait lui servir à montrer son idée d&apos;espace
+            candidats à deux confrères. Elle ferait ensuite le calcul de
+            la section 8 : son cabinet vivrait des missions apportées par
+            le site — le site serait son commercial, pas sa carte de
+            visite. Son budget initial de 3 000 € n&apos;y suffirait pas :
+            elle pourrait conserver le Wix quelques mois de plus et
+            affecter d&apos;éventuelles premières missions à la différence —
+            c&apos;est le rôle possible d&apos;un site provisoire bien
+            utilisé, pas un résultat promis. Elle garderait le Wix en ligne
+            le temps du chantier (comptez plusieurs semaines pour un sur-mesure —
             notre <Link href="/guides/combien-de-temps-pour-creer-un-site">guide
-            des délais de création</Link> les détaille), investi
-            6 900 € dans un site sur mesure dont elle possède le code,
-            et réutilisé tout ce que les outils IA lui avaient appris :
+            des délais de création</Link> les détaille), investirait
+            6 900 € dans un site sur mesure dont elle posséderait le code,
+            et réutiliserait tout ce que les outils IA lui auraient appris :
             son positionnement, ses textes de départ, la liste de ce
-            qui manquait. Aucun des trois outils n&apos;a été un
-            gaspillage — chacun à sa place, dans le bon ordre.
+            qui manquerait. Aucun des trois outils ne serait alors un
+            gaspillage — chacun aurait sa place, dans le bon ordre.
           </p>
         </InfoBox>
 
@@ -801,7 +782,7 @@ export default function Page() {
           Et si vous voulez l&apos;avis d&apos;une équipe qui
           développe avec l&apos;IA tous les jours :{" "}
           <strong>décrivez votre projet en 3 minutes</strong> —
-          réponse personnelle sous 24 h ouvrées, gratuite et sans
+          objectif de réponse personnelle le prochain jour ouvré, gratuite et sans
           engagement, y compris quand la bonne réponse est « restez
           sur votre générateur pour l&apos;instant ». Le{" "}
           <strong>Discovery Sprint (1 500 €, 2 jours, déduit à 100 %

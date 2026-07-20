@@ -1,34 +1,53 @@
 "use client";
 
 import { useRef, useSyncExternalStore } from "react";
-import { flushSync } from "react-dom";
-import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
-import { toggleThemeWithReveal } from "@/lib/theme-transition";
+import {
+  applyTheme,
+  applySystemTheme,
+  THEME_CHANGE_EVENT,
+  toggleThemeWithReveal,
+} from "@/lib/theme-transition";
 
-const emptySubscribe = () => () => {};
-/** false pendant SSR/hydratation, true côté client — sans setState. */
-function useMounted(): boolean {
-  return useSyncExternalStore(
-    emptySubscribe,
-    () => true,
-    () => false,
-  );
+function subscribeTheme(onStoreChange: () => void): () => void {
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  const onSystemChange = () => {
+    let storedTheme: string | null = null;
+    try {
+      storedTheme = window.localStorage.getItem("theme");
+    } catch {
+      /* stockage indisponible : le thème système reste la source */
+    }
+    if (storedTheme === "dark" || storedTheme === "light") return;
+    applySystemTheme(media.matches);
+  };
+
+  window.addEventListener(THEME_CHANGE_EVENT, onStoreChange);
+  media.addEventListener("change", onSystemChange);
+  return () => {
+    window.removeEventListener(THEME_CHANGE_EVENT, onStoreChange);
+    media.removeEventListener("change", onSystemChange);
+  };
 }
 
+const getThemeSnapshot = () =>
+  document.documentElement.classList.contains("dark");
+const getServerThemeSnapshot = () => false;
+
 /**
- * Bouton clair/sombre (next-themes) avec révélation circulaire : le nouveau
+ * Bouton clair/sombre avec révélation circulaire : le nouveau
  * thème se dévoile dans un cercle qui s'étend depuis le bouton (View
  * Transitions API, fallback instantané). Les deux icônes sont superposées
  * et se passent le relais par rotation — le morphing est piloté par le CSS
  * global `.hc-theme-toggle` (globals.css).
  */
 export function ThemeToggle({ className = "" }: { className?: string }) {
-  const { resolvedTheme, setTheme } = useTheme();
-  const mounted = useMounted();
   const btnRef = useRef<HTMLButtonElement>(null);
-
-  const isDark = mounted && resolvedTheme === "dark";
+  const isDark = useSyncExternalStore(
+    subscribeTheme,
+    getThemeSnapshot,
+    getServerThemeSnapshot,
+  );
 
   const onToggle = () => {
     const next = isDark ? "light" : "dark";
@@ -37,10 +56,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       ? { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }
       : { x: window.innerWidth, y: 0 };
     toggleThemeWithReveal(origin, () => {
-      // flushSync : la View Transition capture le DOM juste après son
-      // callback — le changement de thème doit être appliqué de façon
-      // synchrone, pas au prochain commit React.
-      flushSync(() => setTheme(next));
+      applyTheme(next === "dark");
     });
   };
 

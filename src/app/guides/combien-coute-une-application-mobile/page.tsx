@@ -33,17 +33,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -166,27 +155,16 @@ const faqItems = [
   {
     question: "Comment obtenir un chiffrage précis pour mon application ?",
     answer:
-      "Décrivez votre projet via notre parcours guidé (3 minutes) : notre équipe vous répond personnellement sous 24 h ouvrées, gratuitement et sans engagement. Pour un chiffrage ferme, le Discovery Sprint (1 500 €, 2 jours) livre le périmètre écrit, un prototype cliquable et un devis au forfait fixe — déduit à 100 % si le projet se lance.",
+      "Décrivez votre projet via notre parcours guidé (3 minutes) : notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti, gratuitement et sans engagement. Pour un chiffrage ferme, le Discovery Sprint (1 500 €, 2 jours) livre le périmètre écrit, un prototype cliquable et un devis au forfait fixe — déduit à 100 % si le projet se lance.",
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -602,7 +580,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre projet d'app, cadré en 3 minutes"
-          description="Décrivez votre application en quelques étapes guidées — notre équipe vous répond personnellement sous 24 h ouvrées avec une réponse argumentée."
+          description="Décrivez votre application en quelques étapes guidées — notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti avec une réponse argumentée."
         />
 
         <h2 id="devis-decortique">6. Un devis de MVP décortiqué ligne par ligne</h2>
@@ -1140,7 +1118,7 @@ APP MÉTIER À 40 000 € — coût réel sur 3 ans
           Vous voulez un chiffre pour <em>votre</em> application, pas une
           fourchette générique ?{" "}
           <Link href="/demarrer-un-projet">Décrivez-la en 3 minutes</Link> —
-          notre équipe vous répond personnellement sous 24 h ouvrées,
+          notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti,
           gratuitement et sans engagement.
         </p>
 

@@ -47,17 +47,6 @@ export const metadata: Metadata = {
     description: guide.metaDescription,
     images: [guideUrl(guide) + "/opengraph-image"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 const articleJsonLd = JSON.stringify({
@@ -154,15 +143,6 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
@@ -179,11 +159,6 @@ export default function Page() {
           __html: breadcrumbJsonLd.replace(/</g, "\\u003c"),
         }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }}
-      />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },

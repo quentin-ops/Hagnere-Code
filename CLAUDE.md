@@ -55,8 +55,17 @@ solution ».*
 
 ## Règle obligatoire — contenu éditorial
 
+**Avant de créer ou modifier une page éditoriale, une ressource ou un guide,
+lire en intégralité
+[docs/regle-or-vigilance-seo-publication.md](docs/regle-or-vigilance-seo-publication.md).**
+Cette règle d'or décrit les invariants de publication, de crawl, de sitemap,
+de `llms.txt`, de metadata, de données structurées, de maillage et de
+performance. Elle est obligatoire y compris pour une correction ponctuelle
+d'une page existante.
+
 **Avant d'écrire, réécrire ou modifier un guide (`src/app/guides/`), lire
-en intégralité [docs/charte-qualite-guides.md](docs/charte-qualite-guides.md).**
+également en intégralité
+[docs/charte-qualite-guides.md](docs/charte-qualite-guides.md).**
 Cette charte définit le pipeline complet (étude des concurrents, recherche
 sourcée multi-agents, chartes pédagogique et SEO, batterie de vérification,
 contre-vérification par panel ≥ 8,5/10, audit de production). Elle prime

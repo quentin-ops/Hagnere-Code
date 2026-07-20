@@ -946,7 +946,7 @@ ${navHtml}
           <span>OUTIL</span>
           <span>Claude Code · pas un pilier, un copilote</span>
         </div>
-        <h3>${TEAM_TOTAL_COUNT} personnes :<br>1 gérant, 1 CTO, ${TEAM_OTHER_DEVELOPERS_COUNT} autres devs,<br><span class="accent">Claude Code en copilote.</span></h3>
+        <h3>${TEAM_TOTAL_COUNT} personnes :<br>1 président, 1 CTO, ${TEAM_OTHER_DEVELOPERS_COUNT} autres devs,<br><span class="accent">Claude Code en copilote.</span></h3>
         <p class="claude-lead">
           Beaucoup d'agences brandissent l'IA comme un argument marketing. Chez nous, c'est un
           outil de productivité opéré par chaque dev senior — recherche de doc, exploration de bibliothèques,
@@ -1361,7 +1361,7 @@ ${navHtml}
     </div>
 
     <div class="mfinal-trust">
-      <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Réponse sous 24 h ouvrées</span>
+      <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Objectif : prochain jour ouvré</span>
       <span class="sep"></span>
       <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg> Par un expert · pas un commercial</span>
       <span class="sep"></span>

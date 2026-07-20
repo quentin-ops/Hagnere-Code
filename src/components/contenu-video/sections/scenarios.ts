@@ -41,7 +41,7 @@ export const scenariosHtml = `
             Vous avez de vraies choses à dire mais <b>pas le temps d'écrire, de tourner et de monter</b>. On écrit les scripts à partir de 30 min d'interview, vous tournez 1 h par semaine face cam (iPhone suffit), on livre le reste.
           </p>
           <div class="cv-scen-deliv">
-            <h4>Ce qu'on livre chaque mois</h4>
+            <h3>Ce qu'on livre chaque mois</h3>
             <ul>
               <li><b>4 vidéos longues</b> (10-18 min) montées Premiere Pro</li>
               <li><b>16 shorts / reels / TikToks</b> dérivés</li>
@@ -81,7 +81,7 @@ export const scenariosHtml = `
             Explainer produit, teaser de lancement, motion de fiche, intégrations natives web (Rive, Lottie). On construit un <b>design system vidéo</b> qui traverse site, ads, pitch deck, emails.
           </p>
           <div class="cv-scen-deliv">
-            <h4>Ce qu'on livre chaque mois</h4>
+            <h3>Ce qu'on livre chaque mois</h3>
             <ul>
               <li><b>1 vidéo brand hero</b> (30-60s) par mois</li>
               <li><b>3 motion courts</b> (15s) pour site / ads</li>
@@ -121,7 +121,7 @@ export const scenariosHtml = `
             Vous êtes <b>une marque DTC ou un SaaS en scale</b> et vous avez besoin de contenu chaque semaine pour nourrir Meta Ads, Reels, TikTok, LinkedIn, la newsletter, le site. On monte un pipeline industriel, sans jamais sacrifier la DA.
           </p>
           <div class="cv-scen-deliv">
-            <h4>Ce qu'on livre chaque mois</h4>
+            <h3>Ce qu'on livre chaque mois</h3>
             <ul>
               <li><b>12 ads payantes</b> (Meta / TikTok / Google) scroll-stopper</li>
               <li><b>8 UGC</b> briefés et montés</li>

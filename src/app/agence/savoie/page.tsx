@@ -28,17 +28,6 @@ export const metadata: Metadata = {
     url: localPagePath(page),
     images: [DEFAULT_OG_IMAGE],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 const serviceJsonLd = JSON.stringify({
@@ -48,7 +37,7 @@ const serviceJsonLd = JSON.stringify({
   url: localPageUrl(page),
   serviceType:
     "Création de site internet, e-commerce, applications métier, référencement naturel et campagnes Google Ads",
-  provider: { "@id": `${SITE_URL}/#business` },
+  provider: { "@id": `${SITE_URL}/#organization` },
   areaServed: { "@type": "AdministrativeArea", name: "Savoie" },
 });
 
@@ -95,23 +84,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Notre agence", href: "/agence" },
@@ -295,7 +273,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un projet en Savoie ?"
-          description="Décrivez-le en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Rendez-vous à Bassens, aux portes de Chambéry, ou en visioconférence."
+          description="Décrivez-le en 3 minutes. Objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Rendez-vous à Bassens, aux portes de Chambéry, ou en visioconférence."
         />
 
         <h2 id="besoins">5. Ce dont ces entreprises ont besoin</h2>
@@ -420,7 +398,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Parlons de votre projet savoyard"
-          description="Décrivez votre besoin en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement — y compris quand notre réponse est qu'une solution plus simple suffirait."
+          description="Décrivez votre besoin en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement — y compris quand notre réponse est qu'une solution plus simple suffirait."
         />
 
         <h2 id="sources">Sources</h2>

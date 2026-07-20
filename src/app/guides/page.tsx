@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { GuidesHubPage } from "@/components/guides/GuidesHubPage";
 import { OG_BASE, DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/seo";
-import { GUIDES, guideUrl } from "@/lib/guides";
+import { PUBLISHED_GUIDES, guideUrl } from "@/lib/guides";
 
 export const metadata: Metadata = {
   title: "Guides : prix d'un site internet, SaaS et SEO · Hagnéré Code",
@@ -18,17 +18,6 @@ export const metadata: Metadata = {
       "Des guides chiffrés pour cadrer votre projet web : prix d'un site internet, SaaS, outils métier, SEO.",
     url: "/guides",
     images: [DEFAULT_OG_IMAGE],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
   },
 };
 
@@ -55,7 +44,7 @@ const collectionJsonLd = JSON.stringify({
   },
   mainEntity: {
     "@type": "ItemList",
-    itemListElement: GUIDES.map((g, i) => ({
+    itemListElement: PUBLISHED_GUIDES.map((g, i) => ({
       "@type": "ListItem",
       position: i + 1,
       name: g.cardTitle,

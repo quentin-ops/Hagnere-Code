@@ -9,8 +9,8 @@ export const scenariosHtml = `
         <h2>Quatre situations d'entrée,<br>quatre plans de reprise.</h2>
       </div>
       <div class="right">
-        La plupart des missions TMA qu'on signe entrent dans un de ces quatre scénarios.
-        <b>Cliquez sur le vôtre</b>&nbsp;: les livrables, le rythme d'onboarding et le budget changent.
+        <b>Ces quatre scénarios sont fictifs</b>&nbsp;: ils ne décrivent ni des clients réels, ni une répartition observée.
+        Utilisez-les pour préparer les questions de diagnostic&nbsp;; seuls le devis et le contrat fixent livrables, rythme et budget.
       </div>
     </div>
 
@@ -22,7 +22,7 @@ export const scenariosHtml = `
         <div class="me-scen-tab-body">
           <div class="me-scen-tab-top">
             <span class="me-scen-tab-k">Scénario 01</span>
-            <span class="me-scen-tab-d">40 % des entrées</span>
+            <span class="me-scen-tab-d">Cas fictif · reprise</span>
           </div>
           <div class="me-scen-tab-t">App orpheline · prestataire disparu</div>
           <div class="me-scen-tab-sub">« L'agence ne répond plus, on a une app en prod et aucune équipe »</div>
@@ -37,7 +37,7 @@ export const scenariosHtml = `
         <div class="me-scen-tab-body">
           <div class="me-scen-tab-top">
             <span class="me-scen-tab-k">Scénario 02</span>
-            <span class="me-scen-tab-d">25 % · transition</span>
+            <span class="me-scen-tab-d">Cas fictif · transition</span>
           </div>
           <div class="me-scen-tab-t">Montée en gamme depuis un freelance</div>
           <div class="me-scen-tab-sub">« Notre freelance est top, mais il est seul — on a peur du bus factor »</div>
@@ -52,7 +52,7 @@ export const scenariosHtml = `
         <div class="me-scen-tab-body">
           <div class="me-scen-tab-top">
             <span class="me-scen-tab-k">Scénario 03</span>
-            <span class="me-scen-tab-d">20 % · post-levée</span>
+            <span class="me-scen-tab-d">Cas fictif · organisation</span>
           </div>
           <div class="me-scen-tab-t">Scale-up cherche partenaire long-terme</div>
           <div class="me-scen-tab-sub">« On vient de lever, le CTO arrive, on a besoin d'un binôme run »</div>
@@ -67,10 +67,10 @@ export const scenariosHtml = `
         <div class="me-scen-tab-body">
           <div class="me-scen-tab-top">
             <span class="me-scen-tab-k">Scénario 04</span>
-            <span class="me-scen-tab-d">15 % · modernisation</span>
+            <span class="me-scen-tab-d">Cas fictif · modernisation</span>
           </div>
-          <div class="me-scen-tab-t">PME legacy à faire vivre 3-5 ans</div>
-          <div class="me-scen-tab-sub">« App 6-10 ans, devs partis, stack vieillie, avant refonte »</div>
+          <div class="me-scen-tab-t">PME legacy à maintenir avant refonte</div>
+          <div class="me-scen-tab-sub">« Stack vieillissante, équipe partie, trajectoire à décider »</div>
         </div>
         <div class="me-scen-tab-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
       </button>
@@ -89,11 +89,11 @@ export const scenariosHtml = `
           </p>
           <div class="me-scen-items-title">CE QU'ON LIVRE</div>
           <div class="me-scen-items">
-            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Audit flash 5 j · rapport 15-25 pages</div>
+            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Diagnostic, format et livrable définis au devis</div>
             <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Prise de contrôle GitHub, cloud, Stripe, DNS</div>
-            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Monitoring branché dès S2 (Sentry + Better Stack)</div>
-            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Plan de remédiation dette tech 6-12 mois</div>
-            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Patches CVE critiques priorité absolue</div>
+            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Monitoring selon faisabilité, outils et jalon convenus</div>
+            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Plan de remédiation priorisé et daté après diagnostic</div>
+            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>CVE priorisées selon sévérité, exposition et tests requis</div>
             <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Documentation repartant de zéro (Notion + Loom)</div>
           </div>
         </div>
@@ -128,15 +128,15 @@ export const scenariosHtml = `
           <div class="me-scen-kind">Transition · Freelance vers équipe agence</div>
           <h3>« Notre freelance est top, mais il est seul. Bus factor = 1, pas scalable. »</h3>
           <p class="me-scen-lead">
-            Votre dev est bon, mais vous angoissez&nbsp;: s'il tombe malade ou se fait recruter ailleurs, <b>2 mois de reprise</b>.
-            On prend le relais en douceur&nbsp;: le freelance reste 4-8 semaines en <b>consultant onboarding</b>, on reprend
-            progressivement, on documente tout, il part serein avec un vrai BFA. <b>Aucune coupure</b>.
+            Une dépendance à une seule personne peut compliquer la continuité.
+            Le protocole de transition définit l'overlap possible avec le freelance, les accès, la documentation, les validations
+            et un plan de retour arrière. Il vise à limiter l'interruption sans promettre qu'elle sera impossible.
           </p>
           <div class="me-scen-items-title">CE QU'ON LIVRE</div>
           <div class="me-scen-items">
-            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Transition douce avec le freelance (overlap 4-8 sem.)</div>
-            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Documentation exhaustive (Loom + Notion)</div>
-            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Binôme 2 devs nommés · fin du bus factor</div>
+            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Overlap et calendrier de transition définis au devis</div>
+            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Documentation dont le périmètre est inventorié</div>
+            <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Intervenants et modalités de relais nommés au devis</div>
             <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Stack observability pro branchée</div>
             <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>CI/CD, tests, SAST modernisés</div>
             <div class="me-scen-item"><span class="me-scen-item-ic"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg></span>Rituel mensuel + roadmap trimestrielle</div>
@@ -149,10 +149,10 @@ export const scenariosHtml = `
           </div>
           <dl class="me-scen-meta">
             <div class="me-scen-meta-row"><dt>Tier recommandé</dt><dd>Essentiel ou Scale</dd></div>
-            <div class="me-scen-meta-row"><dt>Overlap freelance</dt><dd>4 à 8 semaines · payé par vous</dd></div>
-            <div class="me-scen-meta-row"><dt>Équipe</dt><dd>2 devs nommés + lead</dd></div>
-            <div class="me-scen-meta-row"><dt>Engagement</dt><dd>3 mois puis mensuel</dd></div>
-            <div class="me-scen-meta-row"><dt>Démarrage</dt><dd>Audit 1 500 € (déductible)</dd></div>
+            <div class="me-scen-meta-row"><dt>Overlap freelance</dt><dd>Durée et coût au devis</dd></div>
+            <div class="me-scen-meta-row"><dt>Équipe</dt><dd>Intervenants et relais nommés</dd></div>
+            <div class="me-scen-meta-row"><dt>Engagement</dt><dd>Durée et préavis au devis</dd></div>
+            <div class="me-scen-meta-row"><dt>Démarrage</dt><dd>Diagnostic initial chiffré</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg me-scen-cta">
             Organiser la transition
@@ -160,7 +160,7 @@ export const scenariosHtml = `
           </a>
           <div class="me-scen-aside-foot">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
-            Sans couper la confiance avec votre freelance
+            Protocole de transition validé avec les parties
           </div>
         </aside>
       </div>
@@ -173,7 +173,7 @@ export const scenariosHtml = `
           <div class="me-scen-kind">Partenariat · Scale-up post-levée</div>
           <h3>« On vient de lever, on recrute un CTO, on a besoin d'une équipe de run. »</h3>
           <p class="me-scen-lead">
-            Votre série A/B est closée, le CTO arrive (ou est là depuis 3 mois), vos devs internes bossent sur le <b>core
+            Votre financement est réalisé, le CTO arrive ou structure l'équipe, et les développeurs internes travaillent sur le <b>core
             product</b>. Nous, on prend le <b>long tail</b>&nbsp;: maintenance, back-office, intégrations CRM, évolutions
             périphériques, sécurité, infra. <b>La durée et la capacité sont définies avec votre CTO selon la feuille de route.</b>
           </p>
@@ -205,7 +205,7 @@ export const scenariosHtml = `
           </a>
           <div class="me-scen-aside-foot">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
-            Pack sélectif · 2 slots Premium max en parallèle
+            Capacité réelle confirmée avant signature
           </div>
         </aside>
       </div>
@@ -216,12 +216,12 @@ export const scenariosHtml = `
       <div class="me-scen-cols">
         <div class="me-scen-main">
           <div class="me-scen-kind">Modernisation · Legacy à faire vivre avant refonte</div>
-          <h3>« App 6-10 ans, les devs sont partis, on doit la tenir 3-5 ans avant refonte. »</h3>
+          <h3>« La stack vieillit, les développeurs sont partis et la refonte n'est pas encore décidée. »</h3>
           <p class="me-scen-lead">
             Laravel 7, Symfony 4, Node 14, MySQL 5.7&hellip; votre app a bien servi mais la stack est vieillie.
             Refonte complète&nbsp;: trop cher, trop risqué tout de suite. On fait un <b>plan de remédiation progressive</b>&nbsp;:
-            on patche les CVE critiques, on refactore les zones chaudes, on modernise module par module. <b>3 à 5 ans de vie
-            supplémentaire</b> avant refonte, dans les meilleures conditions.
+            on priorise les vulnérabilités, on refactore les zones chaudes et on modernise module par module.
+            L'horizon soutenable dépend du diagnostic, des versions supportées, des risques et du budget&nbsp;: aucune durée de vie supplémentaire n'est promise.
           </p>
           <div class="me-scen-items-title">CE QU'ON LIVRE</div>
           <div class="me-scen-items">
@@ -240,9 +240,9 @@ export const scenariosHtml = `
           </div>
           <dl class="me-scen-meta">
             <div class="me-scen-meta-row"><dt>Tier recommandé</dt><dd>Essentiel · focus run + remédiation</dd></div>
-            <div class="me-scen-meta-row"><dt>Durée</dt><dd>12 à 36 mois avant refonte</dd></div>
+            <div class="me-scen-meta-row"><dt>Durée</dt><dd>Horizon réévalué après diagnostic</dd></div>
             <div class="me-scen-meta-row"><dt>Objectif</dt><dd>Tenir · pas accélérer</dd></div>
-            <div class="me-scen-meta-row"><dt>Engagement</dt><dd>3 mois puis mensuel</dd></div>
+            <div class="me-scen-meta-row"><dt>Engagement</dt><dd>Durée et préavis au devis</dd></div>
             <div class="me-scen-meta-row"><dt>Démarrage</dt><dd>Audit legacy 2 000 € (déductible)</dd></div>
           </dl>
           <a href="#contact" class="btn btn-accent btn-lg me-scen-cta">

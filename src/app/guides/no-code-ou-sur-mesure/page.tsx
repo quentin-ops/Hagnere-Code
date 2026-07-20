@@ -31,17 +31,6 @@ export const metadata: Metadata = {
     modifiedTime: `${guide.dateModified}T09:00:00+02:00`,
     authors: [`${SITE_URL}/equipe`],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 const articleJsonLd = JSON.stringify({
@@ -180,15 +169,6 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
@@ -205,11 +185,6 @@ export default function Page() {
           __html: breadcrumbJsonLd.replace(/</g, "\\u003c"),
         }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }}
-      />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -478,13 +453,14 @@ export default function Page() {
 
         <InfoBox
           variant="blue"
-          title="Le fil rouge de ce guide : Sophie, cabinet de recrutement, 14 salariés"
+          title="Le fil rouge : scénario fictif composite — Sophie, cabinet de recrutement (ni client ni témoignage réel)"
         >
-          Sophie dirige un cabinet de recrutement à Chambéry. Elle suit ses
-          candidats dans un tableur partagé qui atteint ses limites : quatorze
-          personnes y écrivent, deux versions circulent, et personne ne sait
-          laquelle fait foi. Elle hésite entre un outil no-code monté en interne
-          et un développement sur mesure. Nous la retrouverons à chaque étape du
+          Dans ce scénario, Sophie dirigerait un cabinet de recrutement à
+          Chambéry. Elle suivrait ses candidats dans un tableur partagé qui
+          atteint ses limites : quatorze personnes y écriraient, deux versions
+          circuleraient, et personne ne saurait laquelle fait foi. Elle
+          hésiterait entre un outil no-code monté en interne et un développement
+          sur mesure. Nous appliquerons son hypothèse à chaque étape du
           calcul — parce que sa situation est exactement celle où la réponse
           n&apos;est évidente <em>ni</em> dans un sens <em>ni</em> dans
           l&apos;autre.
@@ -679,7 +655,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Vous hésitez entre les deux ?"
-          description="Décrivez votre besoin en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement — y compris quand notre réponse est qu'un outil no-code suffira largement."
+          description="Décrivez votre besoin en 3 minutes. Objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement — y compris quand notre réponse est qu'un outil no-code suffira largement."
         />
 
         <h2 id="changements">
@@ -749,9 +725,9 @@ SCÉNARIO C — Prototype pour valider une idée
   → LE NO-CODE GAGNE, et de très loin`}
         </FormulaBox>
         <p>
-          <strong>Appliquons-le à Sophie.</strong> Son cabinet compte quatorze
-          personnes, toutes internes, et aucun candidat n&apos;aura accès à
-          l&apos;outil — les échanges continueront par e-mail. Elle est donc
+          <strong>Appliquons-le au scénario Sophie.</strong> Son cabinet compterait quatorze
+          personnes, toutes internes, et aucun candidat n&apos;aurait accès à
+          l&apos;outil — les échanges continueraient par e-mail. Elle serait donc
           dans le scénario A, avec deux personnes de plus. Une base no-code
           correctement outillée lui coûterait autour de 7 500 dollars par an,
           soit environ 37 500 dollars sur cinq ans. Un développement sur mesure
@@ -759,14 +735,14 @@ SCÉNARIO C — Prototype pour valider une idée
           l&apos;entretien : environ 22 500 euros sur la même durée.
         </p>
         <p>
-          Le croisement se produit dans sa troisième année. Ce qui veut dire,
+          Le croisement se produirait dans sa troisième année. Ce qui veut dire,
           très concrètement :{" "}
           <strong>
             si elle compte garder cet outil plus de trois ans, le sur-mesure est
             moins cher ; si elle n&apos;en sait rien, le no-code est le pari
             raisonnable
           </strong>
-          . Et comme son processus de recrutement n&apos;a jamais été formalisé
+          . Et comme son processus de recrutement n&apos;aurait jamais été formalisé
           — c&apos;est justement pour cela que le tableur a dérivé —, notre
           conseil serait de commencer en no-code, précisément pour découvrir ce
           dont elle a besoin avant de le faire construire.
@@ -1080,24 +1056,24 @@ SCÉNARIO C — Prototype pour valider une idée
           ]}
         />
 
-        <InfoBox variant="emerald" title="Ce que nous avons conseillé à Sophie">
-          Commencer en no-code, sur une base structurée, pour un coût de
+        <InfoBox variant="emerald" title="La recommandation issue du scénario Sophie">
+          La recommandation rationnelle serait de commencer en no-code, sur une base structurée, pour un coût de
           quelques centaines d&apos;euros par an. Non pas parce que le
           sur-mesure serait mauvais pour elle — le calcul montre l&apos;inverse
           au-delà de trois ans —, mais parce que{" "}
           <strong>
-            son processus de recrutement n&apos;est pas encore écrit
+            son processus de recrutement ne serait pas encore écrit
           </strong>
           . Développer sur mesure aujourd&apos;hui reviendrait à figer dans du
-          code une organisation qu&apos;elle est en train de découvrir.
+          code une organisation qu&apos;elle serait en train de découvrir.
           <br />
           <br />
-          Le rendez-vous est pris dans dix-huit mois : à ce moment-là, elle
-          saura exactement ce dont son cabinet a besoin, son outil no-code aura
-          servi de cahier des charges vivant, et le développement se fera sans
+          Une revue serait programmée dans dix-huit mois : à ce moment-là, elle
+          saurait mieux ce dont son cabinet a besoin, son outil no-code aurait
+          servi de cahier des charges vivant, et le développement pourrait se faire sans
           le premier risque de tout projet — construire la mauvaise chose.
-          C&apos;est une mission que nous ne prenons pas maintenant, et
-          c&apos;est la bonne décision.
+          Dans cette hypothèse, ne pas lancer immédiatement la mission serait
+          la bonne décision.
         </InfoBox>
 
         <h2 id="methode">14. Méthode : trancher en 5 étapes</h2>
@@ -1143,7 +1119,7 @@ SCÉNARIO C — Prototype pour valider une idée
 
         <GuideInlineCTA
           title="Un outil à construire, un no-code qui sature ?"
-          description="Décrivez votre situation en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Si le no-code suffit, nous vous le dirons — c'est déjà arrivé."
+          description="Décrivez votre situation en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Si le no-code suffit, nous vous le dirons — c'est déjà arrivé."
         />
 
         <InfoBox

@@ -301,107 +301,107 @@ ${navHtml}
     <div class="caps-grid">
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h4>Audit technique 200+ points</h4>
+        <h3>Audit technique 200+ points</h3>
         <p>Crawl, indexation, vitesse, mobile, schema, logs server. Rapport priorisé impact/effort + specs dev.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
-        <h4>Recherche sémantique large</h4>
+        <h3>Recherche sémantique large</h3>
         <p>500 à 1 500 mots-clés analysés : volume, difficulté, intention, saisonnalité, SERP features.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2h10zM9 7h6M9 11h6M9 15h4"/></svg></div>
-        <h4>Cartographie concurrentielle</h4>
+        <h3>Cartographie concurrentielle</h3>
         <p>Qui rank sur quoi, avec quels backlinks, quelle structure. On identifie les gaps exploitables.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l10 6-10 6L2 8z"/><path d="M2 16l10 6 10-6M2 12l10 6 10-6"/></svg></div>
-        <h4>Architecture en cocons sémantiques</h4>
+        <h3>Architecture en cocons sémantiques</h3>
         <p>Silos thématiques, pages piliers, maillage interne optimisé. La fondation qui dure 3+ ans.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8zM14 2v6h6M16 13H8M16 17H8"/></svg></div>
-        <h4>Rédaction éditoriale experte</h4>
+        <h3>Rédaction éditoriale experte</h3>
         <p>8 à 20 articles/mois rédigés par nos soins. IA pour structure, humain pour contenu, SEO pour optimisation.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h10M4 17h14"/></svg></div>
-        <h4>Optimisation on-page</h4>
+        <h3>Optimisation on-page</h3>
         <p>Titles, metas, Hx, internal links, schema, images ALT, core vitals. Page par page, pas en batch industriel.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
-        <h4>Netlinking qualitatif</h4>
+        <h3>Netlinking qualitatif</h3>
         <p>3 à 10 backlinks/mois sur domaines pertinents et autoritatifs. Partenariats, presse, placements thématiques.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h18M8 3h8a2 2 0 012 2v14H6V5a2 2 0 012-2zM12 11v4M10 13h4"/></svg></div>
-        <h4>Relations presse &amp; citations</h4>
+        <h3>Relations presse &amp; citations</h3>
         <p>Placements dans la presse éco, bloggers vérifiés, interviews podcasts. Trust authority au-delà du DR.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5 4 9 8 10 4-1 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h4>Stratégie E-E-A-T</h4>
+        <h3>Stratégie E-E-A-T</h3>
         <p>Pages auteurs, schema Person/Article, sources citées, mentions externes. Critique depuis HCU 2023.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h4>SEO local &amp; Google Business</h4>
+        <h3>SEO local &amp; Google Business</h3>
         <p>Optimisation GBP, citations locales (Pages Jaunes, Yelp, Tripadvisor), pages villes authentiques.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></div>
-        <h4>Multilingue &amp; international</h4>
+        <h3>Multilingue &amp; international</h3>
         <p>Structure hreflang, ciblage pays, adaptation SERP locales (Google.fr vs .de vs .es).</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
-        <h4>Recherche &amp; gestion d'avis</h4>
+        <h3>Recherche &amp; gestion d'avis</h3>
         <p>Workflow avis clients automatisé (Google, Trustpilot). Trust signals qui boostent CTR SERP.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg></div>
-        <h4>AI Overviews &amp; SGE-ready</h4>
+        <h3>AI Overviews &amp; SGE-ready</h3>
         <p>Structuration contenu pour être cité par Google AI Overviews, Perplexity, Gemini. Le nouveau terrain 2025-2026.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3l4 4-4 4M20 7H4M8 21l-4-4 4-4M4 17h16"/></svg></div>
-        <h4>Migration SEO sans perte</h4>
+        <h3>Migration SEO sans perte</h3>
         <p>Plan de redirections 301 page à page, préservation des positions. 98 % des positions conservées sur nos migrations WordPress → Next.js.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20l9-16H3z"/><path d="M12 14v6M8 20h8"/></svg></div>
-        <h4>CTR &amp; snippet optimization</h4>
+        <h3>CTR &amp; snippet optimization</h3>
         <p>Tests title/meta sur les pages #4-15 pour les remonter. +1,5 à +3 points de CTR régulièrement gagnés.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>
-        <h4>Schema.org &amp; rich snippets</h4>
-        <p>Article, Organization, Breadcrumb, FAQ, Product, Review, LocalBusiness, VideoObject. Tout validé Search Console.</p>
+        <h3>Schema.org &amp; rich snippets</h3>
+        <p>Les données structurées sont limitées aux types pertinents pour le contenu visible et encore pris en charge par Google. Leur validation technique ne garantit aucun résultat enrichi.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18l-2 14H5zM8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M10 11v5M14 11v5"/></svg></div>
-        <h4>Content pruning &amp; rewrites</h4>
+        <h3>Content pruning &amp; rewrites</h3>
         <p>Identifier les pages qui tirent le site vers le bas. Suppression, fusion ou refonte. Méthode post-HCU.</p>
       </div>
       <div class="cap reveal reveal-d-1">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg></div>
-        <h4>Featured snippets &amp; position zéro</h4>
+        <h3>Featured snippets &amp; position zéro</h3>
         <p>Structuration sémantique pour capturer les positions 0, People Also Ask, FAQ schema.</p>
       </div>
       <div class="cap reveal reveal-d-2">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <h4>Data &amp; dashboard business</h4>
+        <h3>Data &amp; dashboard business</h3>
         <p>Looker Studio connecté Search Console + GA4 + CRM. Vue CA organique attribué, pas juste des courbes.</p>
       </div>
       <div class="cap reveal reveal-d-3">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M10 13l2 2 4-4"/></svg></div>
-        <h4>Reporting mensuel transparent</h4>
+        <h3>Reporting mensuel transparent</h3>
         <p>15-20 pages : KPIs, actions du mois, plan du mois suivant, FAQ. Pas un PDF automatique de Semrush.</p>
       </div>
       <div class="cap reveal">
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <h4>Veille algorithmique</h4>
+        <h3>Veille algorithmique</h3>
         <p>Monitoring des updates Google. Si votre site est touché, diagnostic + plan d'ajustement inclus dans le forfait.</p>
       </div>
     </div>
@@ -425,35 +425,35 @@ ${navHtml}
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 01</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="10"/><path d="M12 2a15 15 0 010 20M2 12h20"/></svg></div>
-        <h4>Audit &amp; stratégie</h4>
+        <h3>Audit &amp; stratégie</h3>
         <p>Audit technique + sémantique + concurrentiel. 500 à 1 500 mots-clés analysés. Restitution 2 h. Livrable&nbsp;: rapport 30-50 pages + roadmap 12 mois.</p>
         <div class="proc-dur">3 SEMAINES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 02</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="10"/></svg></div>
-        <h4>Fondations techniques</h4>
+        <h3>Fondations techniques</h3>
         <p>Corrections critiques livrées en specs au dev interne (ou exécutées par nous). Setup tracking propre : Search Console, GA4, dashboard Looker Studio.</p>
         <div class="proc-dur">1–3 SEMAINES</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 03</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
-        <h4>Production éditoriale</h4>
+        <h3>Production éditoriale</h3>
         <p>Plan éditorial mensuel validé en avance. 8 à 20 contenus/mois rédigés et optimisés par nos soins. Process : brief → rédaction → SEO → validation → publication.</p>
         <div class="proc-dur">MENSUEL</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 04</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg></div>
-        <h4>Netlinking &amp; autorité</h4>
+        <h3>Netlinking &amp; autorité</h3>
         <p>3 à 10 backlinks/mois sur domaines pertinents. Mix : partenariats, RP, contenu linkable, placements thématiques. Jamais de PBN ni de liens achetés en masse.</p>
         <div class="proc-dur">MENSUEL</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">ÉTAPE 05</div>
         <div class="proc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
-        <h4>Reporting business</h4>
+        <h3>Reporting business</h3>
         <p>Rapport mensuel 15-20 pages. Réunion 1 h avec votre consultant. Dashboard Looker accessible 24/7. <b>On parle CA organique, pas positions moyennes.</b></p>
         <div class="proc-dur">MENSUEL</div>
       </div>
@@ -657,7 +657,7 @@ ${navHtml}
     <div class="price-grid">
       <div class="plan reveal">
         <div class="plan-tag">PORTE D'ENTRÉE</div>
-        <h4>Audit SEO</h4>
+        <h3>Audit SEO</h3>
         <div class="plan-sub">Audit technique + sémantique + concurrentiel + backlinks. Rapport 30-50 pages + roadmap 12 mois priorisée.</div>
         <div class="plan-price">
           <span class="amount">2 400 €</span>
@@ -677,7 +677,7 @@ ${navHtml}
 
       <div class="plan reveal reveal-d-1">
         <div class="plan-tag">DÉMARRAGE</div>
-        <h4>Fondations</h4>
+        <h3>Fondations</h3>
         <div class="plan-sub">Pour PME avec site &lt; 5 000 visiteurs/mois qui veulent enfin se lancer sérieusement sur l'organique.</div>
         <div class="plan-price">
           <span class="amount">1 450 €</span>
@@ -698,7 +698,7 @@ ${navHtml}
       <div class="plan featured reveal reveal-d-2">
         <div class="plan-badge">FORMULE INTERMÉDIAIRE</div>
         <div class="plan-tag">SCALE</div>
-        <h4>Croissance</h4>
+        <h3>Croissance</h3>
         <div class="plan-sub">Pour PME 5 000-30 000 visiteurs/mois qui veulent accélérer. Pack idéal sur 6-12 mois pour générer leads qualifiés.</div>
         <div class="plan-price">
           <span class="amount">2 850 €</span>
@@ -719,7 +719,7 @@ ${navHtml}
 
       <div class="plan reveal reveal-d-3">
         <div class="plan-tag">PERFORMANCE</div>
-        <h4>Premium</h4>
+        <h3>Premium</h3>
         <div class="plan-sub">Pour ETI ou SaaS en phase de scaling intense, ou récupération post-update Google (HCU, Core).</div>
         <div class="plan-price">
           <span class="amount">4 900 €</span>
@@ -751,7 +751,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ</div>
         <h2 style="margin-top:14px">Les 12 questions<br>qu'on nous pose<br>avant de signer.</h2>
-        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par un consultant senior, sans détour.</p>
+        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Nous visons le prochain jour ouvré, sans délai garanti, par un consultant senior, sans détour.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
@@ -760,7 +760,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            <b>Premiers mouvements à 3 mois</b> (positions, impressions). <b>Trafic significatif à 6–9 mois</b>. <b>ROI business mesurable à 9–12 mois</b>. On pose des jalons mensuels pour que vous puissiez juger la trajectoire avant d'avoir les résultats finaux — et ajuster.
+            Aucun délai universel n'est sérieux. Une correction technique peut être vérifiée dès son déploiement&nbsp;; exploration, indexation, impressions, positions et résultat commercial restent des états distincts. Le plan fixe des contrôles observables et des responsables, jamais une date de classement ou de ROI.
           </div>
         </div>
 
@@ -769,7 +769,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Oui, et un site bien structuré peut même y gagner du trafic organique. Les AI Overviews citent des sources&nbsp;: notre job est de faire que votre site soit <b>l'une de ces sources</b>. On optimise pour l'ère post-IA (E-E-A-T, contenu original, données propriétaires, structure claire).
+            Google n'exige aucun fichier ni balisage spécial pour ses fonctionnalités d'IA&nbsp;: les exigences techniques habituelles de Search s'appliquent. Un contenu accessible, original et structuré peut être compris, mais ni sa citation par une IA, ni son trafic ne peuvent être garantis. Les apparitions observées sont suivies séparément des clics et des demandes.
           </div>
         </div>
 
@@ -900,7 +900,7 @@ ${navHtml}
       </div>
       <div class="foot-cols">
         <div class="foot-col">
-          <h5>SERVICES</h5>
+          <h3>SERVICES</h3>
           <a href="/services/saas-applications-metier">Sites vitrines &amp; landing pages</a>
           <a href="/services/outils-internes-sur-mesure">Outils internes</a>
           <a href="/services/sites-vitrines">Sites vitrines</a>
@@ -908,20 +908,20 @@ ${navHtml}
           <a href="/services/publicite-en-ligne">Publicité</a>
         </div>
         <div class="foot-col">
-          <h5>STUDIO</h5>
+          <h3>STUDIO</h3>
           <a href="/methode">Méthode</a>
           <a href="/realisations">Réalisations</a>
           <a href="/equipe">Équipe</a>
           <a href="/tarifs">Tarifs</a>
         </div>
         <div class="foot-col">
-          <h5>CONTACT</h5>
+          <h3>CONTACT</h3>
           <a href="mailto:quentin@hagnere-patrimoine.fr">quentin@hagnere-patrimoine.fr</a>
           <a href="#">LinkedIn</a>
           <a href="#">YouTube</a>
         </div>
         <div class="foot-col">
-          <h5>LÉGAL</h5>
+          <h3>LÉGAL</h3>
           <a href="#">CGV</a>
           <a href="#">Mentions légales</a>
           <a href="#">Confidentialité</a>

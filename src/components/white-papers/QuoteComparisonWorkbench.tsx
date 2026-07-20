@@ -425,7 +425,7 @@ export function QuoteComparisonWorkbench() {
                     <b className="block text-sm text-zinc-900 dark:text-zinc-100">
                       {row.label}
                     </b>
-                    <span className="mt-1 block text-xs leading-relaxed text-zinc-500">
+                    <span className="mt-1 block text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
                       {row.hint}
                     </span>
                   </th>
@@ -449,7 +449,7 @@ export function QuoteComparisonWorkbench() {
                           }
                           className="w-full rounded-lg border border-zinc-200 bg-zinc-50 py-2 pl-3 pr-8 text-right font-mono text-sm text-zinc-900 outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-100 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100 dark:focus:ring-violet-950"
                         />
-                        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-zinc-400">
+                        <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-xs text-zinc-600 dark:text-zinc-400">
                           {row.unit === "hours" ? "h" : "€"}
                         </span>
                       </div>
@@ -491,7 +491,7 @@ export function QuoteComparisonWorkbench() {
                         className={`mt-1 inline-flex items-center gap-1 text-xs font-semibold ${
                           isBest
                             ? "text-emerald-700 dark:text-emerald-300"
-                            : "text-zinc-500"
+                            : "text-zinc-600 dark:text-zinc-400"
                         }`}
                       >
                         {total === null ? (
@@ -525,7 +525,7 @@ export function QuoteComparisonWorkbench() {
           {dynamicSummary}
         </p>
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="m-0 max-w-3xl text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+          <p className="m-0 max-w-3xl text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
             {dynamicSummary}
           </p>
           <button
@@ -544,7 +544,7 @@ export function QuoteComparisonWorkbench() {
               <h3 className="m-0 text-sm font-semibold text-zinc-950 dark:text-white">
                 Deuxième onglet : l&apos;exemple qualitatif entièrement rempli
               </h3>
-              <p className="mt-1 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
+              <p className="mt-1 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
                 Les 40 notes, leurs poids, les preuves attendues et les formules
                 de score sont inclus. Modifiez-les après votre filtre
                 d&apos;éligibilité.
@@ -573,7 +573,7 @@ export function QuoteComparisonWorkbench() {
                     {calculateQuoteScore(offer.scores).toFixed(1)} / 100
                   </strong>
                 </div>
-                <p className="mt-1 text-xs text-zinc-500">{offer.decision}</p>
+                <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">{offer.decision}</p>
               </div>
             ))}
           </div>

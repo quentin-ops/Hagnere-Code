@@ -35,17 +35,6 @@ export const metadata: Metadata = {
     // Pas d'images ici : l'og:image dédiée est générée par
     // opengraph-image.tsx (convention de fichier Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -138,7 +127,7 @@ const faqItems = [
   {
     question: "Combien coûte une refonte de site internet ?",
     answer:
-      "De 1 500 à 10 000 € pour un site vitrine (2 000 à 4 500 € pour 5-10 pages, 4 500 à 8 000 € en premium) et de 5 000 à plus de 30 000 € pour un e-commerce. Le poste le plus souvent oublié des devis de refonte : la migration SEO (redirections 301 page à page, conservation des positions), qui peut représenter 10 à 20 % du budget mais évite de perdre le trafic acquis.",
+      "De 1 500 à 10 000 € pour un site vitrine (2 000 à 4 500 € pour 5-10 pages, 4 500 à 8 000 € en premium) et de 5 000 à plus de 30 000 € pour un e-commerce. Le poste souvent oublié des devis de refonte est le plan de migration SEO : inventaire des URL et performances utiles, correspondance des anciennes pages vers les nouvelles, redirections 301, contrôle avant bascule et suivi après mise en ligne. Ce travail réduit les risques contrôlables ; il ne garantit pas que les positions ou le trafic seront maintenus.",
   },
   {
     question: "Combien coûte la maintenance d'un site internet ?",
@@ -168,27 +157,16 @@ const faqItems = [
   {
     question: "Comment obtenir un chiffrage précis pour mon projet ?",
     answer:
-      "Décrivez votre projet via notre parcours guidé (3 minutes) : notre équipe vous répond personnellement sous 24 h ouvrées avec une première réponse argumentée, gratuite et sans engagement. Pour un chiffrage ferme, le Discovery Sprint (1 500 €, 2 jours) livre les spécifications, un prototype cliquable et un devis au forfait fixe — déduit à 100 % si le projet se lance.",
+      "Décrivez votre projet via notre parcours guidé (3 minutes) : notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti avec une première réponse argumentée, gratuite et sans engagement. Pour un chiffrage ferme, le Discovery Sprint (1 500 €, 2 jours) livre les spécifications, un prototype cliquable et un devis au forfait fixe — déduit à 100 % si le projet se lance.",
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -1022,10 +1000,11 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           <li>
             <strong>La migration SEO</strong> — les redirections 301 page à
             page (le « suivi de courrier » du web : chaque ancienne adresse
-            renvoie vers la nouvelle, réputation Google comprise) et la
-            conservation des positions. Poste le plus souvent absent des devis
-            de refonte, et le plus coûteux quand il manque : un trafic
-            construit en 3 ans peut disparaître en une mise en ligne.
+            renvoie vers la nouvelle), l&apos;inventaire des signaux utiles et
+            les contrôles avant et après bascule. Ce plan limite les erreurs de
+            migration, mais une refonte peut faire varier l&apos;exploration,
+            l&apos;indexation, les positions et le trafic&nbsp;: aucun taux de
+            conservation ne peut être promis.
           </li>
           <li>
             <strong>La refonte prématurée, coût caché du low-cost</strong> —
@@ -1305,7 +1284,7 @@ SITE SUR MESURE À 10 000 € (Next.js) — coût réel sur 3 ans
           Vous voulez un chiffre pour <em>votre</em> projet, pas une fourchette
           générique ?{" "}
           <Link href="/demarrer-un-projet">Décrivez-le en 3 minutes</Link> —
-          notre équipe vous répond personnellement sous 24 h ouvrées avec une
+          notre équipe vise une réponse personnelle le prochain jour ouvré, sans délai garanti avec une
           réponse argumentée, gratuite et sans engagement.
         </p>
 

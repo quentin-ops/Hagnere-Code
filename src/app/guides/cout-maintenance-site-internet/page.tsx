@@ -33,17 +33,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -176,23 +165,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -320,7 +298,8 @@ export default function Page() {
           on sait qu&apos;une chaudière négligée finit par lâcher un
           soir de janvier. Un site professionnel est la chaudière de
           votre acquisition de clients ; il obéit à la même loi.
-          Fil rouge de ce guide : <strong>la fromagerie Perrin, à
+          Fil rouge de ce guide : <strong>scénario fictif composite —
+          ni client ni témoignage réel — avec la fromagerie Perrin, à
           Chambéry</strong> — un WordPress de 2023, 18 pages, un module
           de commande de plateaux apéritif qui encaisse environ
           2 000 €/mois (le triple en décembre), et aucune maintenance
@@ -412,7 +391,8 @@ export default function Page() {
           moyen d&apos;une cyberattaque réussie en France à{" "}
           <strong>25 600 €</strong> — sur 347 000 attaques réussies
           recensées en 2022, 330 000 ont touché des PME. Pour la
-          fromagerie Perrin, le scénario noir est plus modeste mais
+          ce scénario composite, le risque simulé pour la fromagerie
+          Perrin est plus modeste mais
           parlant : un piratage début décembre — nettoyage 800 €,
           écran rouge pendant les 5 jours où elle prend ses commandes
           de fêtes (~1 000 € de plateaux envolés), et la confiance à
@@ -465,7 +445,7 @@ export default function Page() {
           n&apos;audite les extensions abandonnées ni ne répond au
           téléphone le jour du problème. Le passage à 70-170 €/mois
           paie précisément cela : un humain qui vérifie, corrige et
-          répond. Pour la fromagerie Perrin — 18 pages et un module de
+          répond. Dans l&apos;hypothèse de la fromagerie Perrin — 18 pages et un module de
           commande qui encaisse —, le bon niveau est l&apos;entrée du
           régime « avec un humain derrière », dimensionné pour un site
           qui vend : <strong>autour de 70 à 80 €/mois</strong> (le
@@ -606,8 +586,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Votre site est-il entretenu — ou juste en ligne ?"
-          description="Décrivez votre site en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un diagnostic franc de son état (mises à jour, sauvegardes, sécurité, conformité) et une proposition de maintenance au forfait fixe, engagements écrits."
-          tags={["Réponse sous 24 h ouvrées", "SLA contractuel", "Réversibilité garantie"]}
+          description="Décrivez votre site en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un diagnostic franc de son état (mises à jour, sauvegardes, sécurité, conformité) et une proposition de maintenance au forfait fixe, engagements écrits."
+          tags={["Objectif : prochain jour ouvré", "SLA contractuel", "Réversibilité garantie"]}
         />
 
         <h2 id="contrat">10. Le contrat décodé : SLA, GTI, GTR — et les pièges</h2>
@@ -678,7 +658,7 @@ export default function Page() {
           <strong>Coût réel du « je m&apos;en occupe » = heures passées
           × valeur de votre heure</strong>
           <br />
-          Chez Perrin : 3 h/mois × 40 € (l&apos;heure d&apos;un gérant,
+          Hypothèse Perrin : 3 h/mois × 40 € (l&apos;heure d&apos;un gérant,
           prudemment) = <strong>120 €/mois</strong> — bien plus que le
           forfait à 70-80 €/mois qui ferait le travail avec un
           professionnel derrière.
@@ -692,7 +672,7 @@ export default function Page() {
         <p>
           Notre position : le DIY est défendable pour un site sans
           enjeu commercial. Dès que le site génère des contacts ou des
-          ventes — le cas Perrin —, la question n&apos;est plus
+          ventes — comme dans le scénario Perrin —, la question n&apos;est plus
           « puis-je le faire ? » mais « est-ce le meilleur usage de mes
           heures, avec ce niveau de risque ? ». La réponse se calcule,
           et elle penche rarement du côté du bricolage.
@@ -820,7 +800,7 @@ export default function Page() {
           sites critiques, la réversibilité garantie — et un avis franc
           quand le socle ne mérite plus d&apos;être maintenu.{" "}
           <Link href="/demarrer-un-projet">Décrivez votre site en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées,
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré,
           gratuite et sans engagement. Pour situer ce budget dans le
           coût complet d&apos;un site, notre{" "}
           <Link href="/guides/combien-coute-un-site-internet">panorama

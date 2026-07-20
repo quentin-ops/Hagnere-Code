@@ -247,9 +247,9 @@ plusieurs lecteurs d'écran ni d'une certification d'accessibilité.
   `https://hagnere-code.ai/guides/cahier-des-charges-site-internet` ;
 - métadonnées Open Graph avec titre, description, URL et image ;
 - endpoint Open Graph local en HTTP 200 avec `Content-Type: image/png` ;
-- trois objets JSON-LD prévus et sérialisables : `Article`,
-  `BreadcrumbList` et `FAQPage` ;
-- FAQ structurée de 12 questions, cohérente avec les réponses visibles ;
+- deux objets JSON-LD prévus et sérialisables : `Article` et
+  `BreadcrumbList` ;
+- FAQ visible de 12 questions, sans schéma `FAQPage` retiré par Google ;
 - dates de publication et modification, auteur, éditeur et langue `fr-FR`
   présents ;
 - directives robots configurées sur `index, follow`.

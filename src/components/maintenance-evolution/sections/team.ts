@@ -28,7 +28,7 @@ export const teamHtml = `
           <span class="me-tm-badge">Fondateur</span>
         </div>
         <div class="me-tm-body">
-          <h4>Quentin Hagnéré</h4>
+          <h3>Quentin Hagnéré</h3>
           <p class="me-tm-role">Front-end · Design · Brief client</p>
           <p class="me-tm-bio">Interlocuteur principal du cadrage à la livraison. Garde le lien business avec vos équipes sur toute la durée du contrat.</p>
           <div class="me-tm-meta">
@@ -53,7 +53,7 @@ export const teamHtml = `
           <span class="me-tm-badge me-tm-badge-cto">CTO</span>
         </div>
         <div class="me-tm-body">
-          <h4>Nicolas Wallerand</h4>
+          <h3>Nicolas Wallerand</h3>
           <p class="me-tm-role">CTO · direction technique transverse</p>
           <p class="me-tm-bio">Architecture, choix de stack, jalons techniques, compliance SOC2 / ISO. Revue hebdo avec votre CTO interne si vous en avez un.</p>
           <div class="me-tm-meta">
@@ -78,7 +78,7 @@ export const teamHtml = `
           <span class="me-tm-badge">Senior</span>
         </div>
         <div class="me-tm-body">
-          <h4>Arthur Monney</h4>
+          <h3>Arthur Monney</h3>
           <p class="me-tm-role">Senior Dev · Back-end Laravel</p>
           <p class="me-tm-bio">Spécialiste architecture Laravel, API REST, performances DB. Référent sur nos SaaS à forte logique métier.</p>
           <div class="me-tm-meta">
@@ -103,7 +103,7 @@ export const teamHtml = `
           <span class="me-tm-badge">Senior</span>
         </div>
         <div class="me-tm-body">
-          <h4>Frédéric Curinckx</h4>
+          <h3>Frédéric Curinckx</h3>
           <p class="me-tm-role">Senior Dev · Back-end Laravel</p>
           <p class="me-tm-bio">Expert architecture multi-tenant, billing Stripe, intégrations complexes. Référent sur nos produits où les flux métier sont critiques.</p>
           <div class="me-tm-meta">
@@ -128,7 +128,7 @@ export const teamHtml = `
           <span class="me-tm-badge">Senior</span>
         </div>
         <div class="me-tm-body">
-          <h4>Ryan Mazzitelli</h4>
+          <h3>Ryan Mazzitelli</h3>
           <p class="me-tm-role">Senior Dev · Back-end Laravel + IA</p>
           <p class="me-tm-bio">Intégration IA native dans les apps (agents Claude, fonctions métier), refactos complexes, patterns event-driven. Ref sur apps avec features IA.</p>
           <div class="me-tm-meta">
@@ -153,7 +153,7 @@ export const teamHtml = `
           <span class="me-tm-badge">Senior</span>
         </div>
         <div class="me-tm-body">
-          <h4>Killian Hoarau</h4>
+          <h3>Killian Hoarau</h3>
           <p class="me-tm-role">Senior Dev · Back-end Laravel + DevOps</p>
           <p class="me-tm-bio">Infrastructure, CI/CD, Terraform, monitoring, astreinte. Référent sur la supervision et la gestion d'incident de nos produits en production.</p>
           <div class="me-tm-meta">
@@ -178,7 +178,7 @@ export const teamHtml = `
           <span class="me-tm-badge">Confirmé</span>
         </div>
         <div class="me-tm-body">
-          <h4>Peter Sum Sie Kung</h4>
+          <h3>Peter Sum Sie Kung</h3>
           <p class="me-tm-role">Dev confirmé · Laravel + front</p>
           <p class="me-tm-bio">Renfort produit sur le suivi applicatif. Intégrations CMS, debugging applicatif, support utilisateur niveau 2. Bus factor maîtrisé sur les apps les plus chargées.</p>
           <div class="me-tm-meta">

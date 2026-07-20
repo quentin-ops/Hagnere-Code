@@ -1,7 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { useRef, type ComponentType } from "react";
+import { type ComponentType } from "react";
 import {
   ArrowRight,
   BarChart3,
@@ -22,7 +20,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
-import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
+import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import { TEAM_TOTAL_COUNT } from "@/lib/team";
 import { MainNav } from "@/components/design-shared/MainNav";
 import "./services-hub.css";
@@ -272,7 +270,7 @@ const bundles = [
 
 const proofLinks = [
   { href: "/realisations", label: "Réalisations", value: "4 cas documentés" },
-  { href: "/demarrer-un-projet", label: "Décrire mon projet", value: "Réponse sous 24 h ouvrées" },
+  { href: "/demarrer-un-projet", label: "Décrire mon projet", value: "Objectif : prochain jour ouvré" },
   { href: "/outils/calculateur-cout-excel", label: "Coût Excel", value: "ROI outil interne" },
   { href: "/equipe", label: "Équipe", value: `${TEAM_TOTAL_COUNT} personnes · équipe nommée` },
 ];
@@ -282,14 +280,11 @@ function ArrowIcon() {
 }
 
 export function ServicesHubPage() {
-  const rootRef = useRef<HTMLDivElement>(null);
-  useDesignInteractive(rootRef);
-
   return (
-    <div ref={rootRef} className="hc-design services-hub">
+    <InteractiveDesignRoot className="hc-design services-hub">
       <MainNav />
 
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <section className="services-hero">
           <div className="services-hero-grid" aria-hidden="true" />
           <div className="wrap services-hero-inner">
@@ -399,7 +394,7 @@ export function ServicesHubPage() {
                 const Icon = service.icon;
                 return (
                   <article className={`service-card service-card-${service.accent}`} key={service.href}>
-                    <Link href={service.href} className="service-card-link" aria-label={`Voir le service ${service.label}`}>
+                    <Link href={service.href} className="service-card-link">
                       <div className="service-card-top">
                         <div className="service-card-icon"><Icon size={18} /></div>
                         <span>{service.eyebrow}</span>
@@ -503,6 +498,6 @@ export function ServicesHubPage() {
       </main>
 
       <SiteFooter />
-    </div>
+    </InteractiveDesignRoot>
   );
 }

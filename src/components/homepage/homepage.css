@@ -25,6 +25,15 @@
   body{margin:0;font-family:var(--font-geist),ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;letter-spacing:-0.005em}
   .hc-design{min-height:100vh;overflow:visible}
   #main-content{display:block;min-height:100vh;overflow:visible}
+  /* Les longues sections sous la ligne de flottaison ne participent pas au
+     premier layout mobile. Le navigateur conserve une taille intrinsèque et
+     calcule chaque bloc lorsqu'il approche du viewport. */
+  @supports (content-visibility:auto) {
+    .hc-homepage #main-content > section:not(.hero) {
+      content-visibility:auto;
+      contain-intrinsic-size:auto 1000px;
+    }
+  }
   .mono{font-family:var(--font-geist-mono),ui-monospace,monospace}
   .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
   .hc-design a{color:inherit}
@@ -102,6 +111,7 @@
 
   /* ============ HERO ============ */
   .hero{padding:80px 0 120px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+
   .hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px),linear-gradient(to bottom,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 85%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 30%,transparent 85%);pointer-events:none}
   .hero-radial{position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 60% 30%,rgba(109,40,217,0.09),transparent 70%);pointer-events:none}
   .hero-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;position:relative;min-height:560px}
@@ -130,8 +140,8 @@
   .lb-inner{position:relative;display:grid;grid-template-columns:380px 1fr;gap:80px;align-items:start}
   .lb-side .lb-kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-geist-mono);font-size:11px;color:var(--accent-ink);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px;font-weight:500}
   .lb-side .lb-kicker::before{content:"";width:20px;height:1px;background:var(--accent)}
-  .lb-side h3{font-size:36px;line-height:1.05;letter-spacing:-0.035em;font-weight:600;margin:0 0 20px;color:var(--ink)}
-  .lb-side h3 em{font-style:normal;color:var(--accent)}
+  .lb-side h2{font-size:36px;line-height:1.05;letter-spacing:-0.035em;font-weight:600;margin:0 0 20px;color:var(--ink)}
+  .lb-side h2 em{font-style:normal;color:var(--accent)}
   .lb-side p{font-size:15px;line-height:1.6;color:var(--ink-3);margin:0;max-width:340px}
   .lb-side .lb-note{margin-top:28px;padding-top:24px;border-top:1px solid var(--line-2);font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.02em}
 
@@ -577,7 +587,7 @@
   .plan{padding:28px}
   .plan-discovery{border:1px dashed var(--accent);background:linear-gradient(180deg,rgba(109,40,217,0.04),var(--paper) 45%)}
   .plan-discovery .plan-tag{color:var(--accent-ink)}
-  .plan-discovery h4{color:var(--accent-ink)}
+  .plan-discovery h3{color:var(--accent-ink)}
   .plan-discovery .plan-price .amount{color:var(--accent-ink)}
   .plan-discovery .plan-cta .btn-ghost{border-color:var(--accent);color:var(--accent-ink);background:var(--paper)}
   .plan-discovery .plan-cta .btn-ghost:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -585,10 +595,10 @@
   /* Carte featured volontairement sombre : littéraux pinés, identique dans les deux thèmes. */
   .plan.featured{background:#0A0A0A;color:#fff;border-color:#0A0A0A}
   .plan-tag{font-family:var(--font-geist-mono);font-size:11px;color:var(--mute);letter-spacing:0.06em;text-transform:uppercase}
-  .plan.featured .plan-tag{color:var(--accent)}
+  .plan.featured .plan-tag{color:#A78BFA}
   .plan-badge{position:absolute;top:-10px;right:24px;background:var(--accent);color:#fff;font-family:var(--font-geist-mono);font-size:10px;padding:4px 10px;border-radius:999px;letter-spacing:0.04em}
-  .plan h4{font-size:22px;margin-top:10px;margin-bottom:8px}
-  .plan.featured h4{color:#fff}
+  .plan h3{font-size:22px;margin-top:10px;margin-bottom:8px}
+  .plan.featured h3{color:#fff}
   .plan-sub{font-size:14px;color:var(--mute);min-height:42px}
   .plan.featured .plan-sub{color:rgba(255,255,255,0.6)}
   .plan-price{margin-top:28px;display:flex;flex-direction:column;align-items:flex-start;gap:4px}

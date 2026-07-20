@@ -1,26 +1,22 @@
-"use client";
-
-import { useRef } from "react";
 import { bodyHtml as raw } from "./body";
-import { stripFooter, stripFinalCta } from "@/components/design-shared/stripBody";
-import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
+import { stripFooter, stripFinalCta, stripNav } from "@/components/design-shared/stripBody";
+import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
+import { MainNav } from "@/components/design-shared/MainNav";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
 import "./page.css";
 import "@/components/design-shared/nav-dropdown.css";
 import "@/components/design-shared/responsive.css";
 import "@/components/design-shared/site-footer.css";
 
-const bodyHtmlClean = stripFooter(stripFinalCta(raw));
+const bodyHtmlClean = stripNav(stripFooter(stripFinalCta(raw)));
 
 export function EquipePage() {
-  const rootRef = useRef<HTMLDivElement>(null);
-  useDesignInteractive(rootRef);
-
   const markup = { __html: bodyHtmlClean };
   return (
-    <div ref={rootRef} className="hc-design">
-      <div dangerouslySetInnerHTML={markup} />
+    <InteractiveDesignRoot className="hc-design">
+      <MainNav />
+      <main id="main-content" tabIndex={-1} dangerouslySetInnerHTML={markup} />
       <SiteFooter />
-    </div>
+    </InteractiveDesignRoot>
   );
 }

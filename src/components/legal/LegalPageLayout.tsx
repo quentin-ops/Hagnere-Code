@@ -174,7 +174,7 @@ export function LegalPageLayout({
       </header>
 
       {/* Two-column layout : sticky ToC + article */}
-      <section className="lp-main">
+      <main id="main-content" tabIndex={-1} className="lp-main">
         <div className="wrap lp-grid">
           {/* Left : sticky table of contents */}
           <aside className="lp-toc-wrap" aria-label="Sommaire">
@@ -328,7 +328,7 @@ export function LegalPageLayout({
             </footer>
           </article>
         </div>
-      </section>
+      </main>
 
       <SiteFooter />
     </div>

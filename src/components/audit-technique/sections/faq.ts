@@ -8,7 +8,7 @@ export const faqHtml = `
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ</div>
         <h2 style="margin-top:14px">Les 12 questions<br>qu'on nous pose<br>avant de signer.</h2>
-        <p>Filtrez par profil décideur. Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. On répond sous 24 h ouvrées, par un expert, sans détour.</p>
+        <p>Filtrez par profil décideur. Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Nous visons le prochain jour ouvré, sans délai garanti, par un expert, sans détour.</p>
 
         <div class="at-faq-filters" role="tablist" aria-label="Filtrer les questions par profil">
           <button type="button" class="at-faq-filter is-active" data-faq-filter="all" role="tab" aria-selected="true">

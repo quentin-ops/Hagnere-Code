@@ -1,7 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { useRef, type ComponentType } from "react";
+import { type ComponentType } from "react";
 import {
   ArrowRight,
   BarChart3,
@@ -20,7 +18,7 @@ import {
 } from "lucide-react";
 import { MainNav } from "@/components/design-shared/MainNav";
 import { SiteFooter } from "@/components/design-shared/SiteFooter";
-import { useDesignInteractive } from "@/components/design-shared/useDesignInteractive";
+import { InteractiveDesignRoot } from "@/components/design-shared/InteractiveDesignRoot";
 import {
   SEO_DELIVERABLES,
   SEO_FAQS,
@@ -70,14 +68,11 @@ function IconCard({
 }
 
 export function SeoReferencement({ guideCount }: SeoReferencementProps) {
-  const rootRef = useRef<HTMLDivElement>(null);
-  useDesignInteractive(rootRef);
-
   return (
-    <div ref={rootRef} className="hc-design seo-public-page">
+    <InteractiveDesignRoot className="hc-design seo-public-page">
       <MainNav />
 
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <div className="seo-shell seo-breadcrumb" aria-label="Fil d’Ariane">
           <Link href="/">Accueil</Link>
           <span aria-hidden="true">/</span>
@@ -162,15 +157,15 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
               </div>
               <p>
                 Hagnéré Code n’invente ni historique client ni capture de
-                dashboard. Nos preuves actuelles sont les quatre produits du
-                groupe que nous exploitons et le travail éditorial visible sur
-                ce site.
+                dashboard. Les liens ci-dessous prouvent uniquement la
+                disponibilité des pages et les fonctions qui y sont présentées,
+                pas leur exploitation interne, leur sécurité ou leurs résultats.
               </p>
             </div>
             <div className="seo-proof-grid">
               <Link href="/realisations" className="seo-proof-card">
                 <span className="seo-proof-card__value">4</span>
-                <span className="seo-proof-card__label">produits du groupe en production</span>
+                <span className="seo-proof-card__label">pages produit publiques à consulter</span>
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
               <Link href="/guides" className="seo-proof-card">
@@ -184,8 +179,8 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
               <Link href="/methode" className="seo-proof-card">
-                <span className="seo-proof-card__value">100 %</span>
-                <span className="seo-proof-card__label">livrables conservés par votre équipe</span>
+                <span className="seo-proof-card__value">ÉCRIT</span>
+                <span className="seo-proof-card__label">droits et accès au devis ; transfert après paiement complet selon les CGV, hors composants préexistants et licences tierces</span>
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
             </div>
@@ -273,7 +268,8 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
               <p>
                 Pas de catalogue artificiel ni de volume automatique. Le
                 périmètre, le calendrier et le prix sont établis après le
-                cadrage, puis écrits au devis.
+                cadrage, puis écrits au devis. Aucun dépassement ni travail hors
+                périmètre n'est engagé sans accord écrit préalable.
               </p>
             </div>
             <div className="seo-format-grid">
@@ -379,9 +375,9 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
             <span className="seo-eyebrow">PROCHAINE ÉTAPE</span>
             <h2>Partir de votre site, de vos données et d’un problème précis.</h2>
             <p>
-              En trois minutes, décrivez ce qui bloque. Vous recevez une réponse
-              personnelle sous 24 h ouvrées — y compris si la bonne décision est
-              de ne pas lancer une mission SEO maintenant.
+              En trois minutes, décrivez ce qui bloque. Notre objectif est de
+              répondre le prochain jour ouvré, sans délai garanti — y compris si
+              la bonne décision est de ne pas lancer une mission SEO maintenant.
             </p>
             <div className="seo-final-cta__actions">
               <Link className="seo-button seo-button--light" href="/demarrer-un-projet">
@@ -400,6 +396,6 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
       </main>
 
       <SiteFooter />
-    </div>
+    </InteractiveDesignRoot>
   );
 }

@@ -32,17 +32,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -175,23 +164,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -315,7 +293,8 @@ export default function Page() {
           studio de dix seniors. Comparer « le freelance » à
           « l&apos;agence » sans préciser, c&apos;est comparer « la
           voiture » à « le véhicule ». Fil rouge de ce guide :{" "}
-          <strong>Karim, gérant d&apos;une entreprise
+          <strong>scénario fictif composite — ni client ni témoignage
+          réel — avec Karim, gérant d&apos;une entreprise
           d&apos;électricité de 12 salariés</strong>, deux devis sur
           la table pour le même site — 4 200 € chez un freelance,
           9 800 € dans une agence — et une seule question : où est
@@ -497,8 +476,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Deux devis incomparables sur la table ?"
-          description="Décrivez votre projet en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc — y compris quand un bon freelance est la meilleure option pour votre budget. Et si le périmètre mérite d'être cadré avant d'engager qui que ce soit, le Discovery Sprint (1 500 €, 2 jours, déduit à 100 %) produit cahier des charges, maquettes et devis comparables."
-          tags={["Réponse sous 24 h ouvrées", "Intervenants nommés au devis", "Droits, dépôt et comptes inventoriés"]}
+          description="Décrivez votre projet en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis franc — y compris quand un bon freelance est la meilleure option pour votre budget. Et si le périmètre mérite d'être cadré avant d'engager qui que ce soit, le Discovery Sprint (1 500 €, 2 jours, déduit à 100 %) produit cahier des charges, maquettes et devis comparables."
+          tags={["Objectif : prochain jour ouvré", "Intervenants nommés au devis", "Droits, dépôt et comptes inventoriés"]}
         />
 
         <h2 id="sous-traitance">7. L&apos;agence-coquille et la sous-traitance déguisée</h2>
@@ -677,13 +656,13 @@ export default function Page() {
           maintenance (forfait catalogue pour un site standard, 10 à
           20 % du coût de création par an dès que le projet est sur
           mesure), l&apos;hébergement, et la TVA —
-          selon votre statut (FAQ). Le fil rouge, résolu : Karim a
-          choisi le devis agence à 9 800 € — non parce que
+          selon votre statut (FAQ). Dans ce scénario, Karim choisirait
+          le devis agence à 9 800 € — non parce que
           l&apos;agence « vaut mieux », mais parce que son site est
           son premier canal d&apos;acquisition, que le devis détaillait
           les jours par poste, et que le contrat incluait cession de
           droits, garantie et maintenance. Son électricien
-          concurrent, lui, a bien fait de prendre un freelance à
+          concurrent pourrait, lui, retenir à juste titre un freelance à
           3 500 € : site simple, enjeu modéré, contrat propre. Deux
           bonnes décisions — parce que deux situations différentes.
         </p>
@@ -783,7 +762,7 @@ export default function Page() {
           recette, équipe et période de correction sont écrits avant engagement</strong> (méthode{" "}
           <Link href="/methode">Sprint Fixe™</Link>).{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées,
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré,
           gratuite et sans engagement — y compris quand elle est
           « prenez un freelance ».
         </p>

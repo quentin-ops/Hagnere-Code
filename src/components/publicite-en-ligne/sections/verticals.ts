@@ -4,12 +4,12 @@ export const verticalsHtml = `
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Pour qui on gagne le plus vite</div>
-        <h2>Six verticales où notre mix<br>tracking × CRM × creative<br>fait la différence.</h2>
+        <div class="eyebrow">— Situations à évaluer</div>
+        <h2>Six verticales où tracking,<br>CRM et créations doivent<br>être cadrés ensemble.</h2>
       </div>
       <div class="right">
-        Pas parce qu'on refuse les autres, mais parce qu'on a <b>affûté notre méthode</b> sur ces profils —
-        on connaît leurs cycles d'achat, leurs CAC sains, les canaux qui marchent et ceux qu'on évite.
+        Ces exemples ne préjugent ni du canal gagnant ni du coût d'acquisition.
+        Le diagnostic part de votre cycle d'achat, de vos marges, des données autorisées et des résultats mesurés.
       </div>
     </div>
 
@@ -18,7 +18,7 @@ export const verticalsHtml = `
       <div class="ads-vt-card reveal">
         <div class="ads-vt-head">
           <div class="ads-vt-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-          <span class="ads-vt-tag ads-vt-tag-live">● Cœur de cible</span>
+          <span class="ads-vt-tag ads-vt-tag-live">● Cas à cadrer</span>
         </div>
         <h3>SaaS &amp; éditeurs B2B</h3>
         <p>Cycle long, décideur technique. LinkedIn ABM, Google Search, retargeting et webinaires sont évalués selon le marché, les données autorisées et l'économie unitaire. <b>Le coût cible d'un lead qualifié se calcule sur vos marges et votre conversion</b>.</p>
@@ -33,10 +33,10 @@ export const verticalsHtml = `
       <div class="ads-vt-card reveal reveal-d-1">
         <div class="ads-vt-head">
           <div class="ads-vt-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 01-8 0"/></svg></div>
-          <span class="ads-vt-tag ads-vt-tag-live">● Cœur de cible</span>
+          <span class="ads-vt-tag ads-vt-tag-live">● Cas à cadrer</span>
         </div>
         <h3>E-commerce DTC</h3>
-        <p>Catalogue produits, cycle court, ROAS-driven. <b>Meta Advantage+ Shopping + Google PMax Shopping + TikTok Spark</b>. DPA retargeting catalog, Reels UGC, bundles. ROAS visé&nbsp;: ×3 à ×5.</p>
+        <p>Catalogue produits et cycle à mesurer. <b>Meta Advantage+ Shopping, Google PMax Shopping ou TikTok Spark</b> peuvent être testés selon le marché, le consentement et le budget. Aucun ROAS n'est promis avant observation.</p>
         <div class="ads-vt-feats">
           <span>Advantage+ ASC</span>
           <span>PMax Shopping</span>
@@ -48,7 +48,7 @@ export const verticalsHtml = `
       <div class="ads-vt-card reveal reveal-d-2">
         <div class="ads-vt-head">
           <div class="ads-vt-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10l10-6 10 6-10 6L2 10z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5M22 10v6"/></svg></div>
-          <span class="ads-vt-tag ads-vt-tag-live">● Cœur de cible</span>
+          <span class="ads-vt-tag ads-vt-tag-live">● Cas à cadrer</span>
         </div>
         <h3>Formation pro &amp; edtech</h3>
         <p>Décision individuelle, financement CPF / OPCO. <b>Meta Lead Gen + YouTube discovery + LinkedIn B2B2C</b>. Lead magnets forts (masterclass, brochure), webhook CRM vers équipe commerciale.</p>
@@ -81,7 +81,7 @@ export const verticalsHtml = `
           <span class="ads-vt-tag">● Courant</span>
         </div>
         <h3>Marketplace &amp; plateformes 2-sided</h3>
-        <p>Supply-side et demand-side en même temps. <b>Campagnes séparées pour acquérir vendeurs vs. acheteurs</b>, attribution différenciée, incentives dédiés. L'équilibre offre/demande piloté à la semaine.</p>
+        <p>Supply-side et demand-side en même temps. <b>Des campagnes et mesures distinctes peuvent être prévues pour vendeurs et acheteurs</b>. La cadence de pilotage et les objectifs sont inscrits au devis.</p>
         <div class="ads-vt-feats">
           <span>Supply campaigns</span>
           <span>Demand campaigns</span>
@@ -98,7 +98,7 @@ export const verticalsHtml = `
         <h3>Lancement produit / levée de fonds</h3>
         <p>Deadline stricte&nbsp;: il faut prioriser tracking, comptes, créations et landing selon les accès réellement disponibles. Le jalon peut porter sur un lancement technique, pas sur une traction commerciale garantie.</p>
         <div class="ads-vt-feats">
-          <span>Sprint 15 j</span>
+          <span>Sprint planifié</span>
           <span>Brand + perf</span>
           <span>Jalon technique mesurable</span>
         </div>

@@ -28,17 +28,6 @@ export const metadata: Metadata = {
     images: [SERVICES_OG_IMAGE],
   },
   twitter: { images: [SERVICES_OG_IMAGE.url] },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 const serviceJsonLd = JSON.stringify({
@@ -99,23 +88,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serviceJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[{ label: "Agence React" }]}
         heroTitle="Agence React : applications web et interfaces métier sur mesure"
@@ -250,7 +228,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un projet applicatif en tête ?"
-          description="Décrivez-le en 3 minutes. Réponse personnelle sous 24 h ouvrées, gratuite et sans engagement — y compris si notre réponse est qu'un outil du marché ferait l'affaire."
+          description="Décrivez-le en 3 minutes. Objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement — y compris si notre réponse est qu'un outil du marché ferait l'affaire."
         />
 
         <h2 id="reprise">4. Reprendre une application existante</h2>
@@ -367,7 +345,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Parlons de votre application"
-          description="Décrivez votre besoin en 3 minutes : réponse personnelle sous 24 h ouvrées, gratuite et sans engagement. Nous répondons nous-mêmes, il n'y a pas de service commercial intermédiaire."
+          description="Décrivez votre besoin en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Nous répondons nous-mêmes, il n'y a pas de service commercial intermédiaire."
         />
       </GuideLayout>
     </GuidesShell>

@@ -363,7 +363,7 @@ export async function POST(request: Request) {
         <td style="padding:30px 28px 10px">
           <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6d28d9;font-weight:700">Nouveau projet</div>
           <h1 style="margin:10px 0 8px;font-size:28px;line-height:1.08;letter-spacing:0;color:#0a0a0a">Contact reçu depuis le site.</h1>
-          <p style="margin:0;color:#525252;font-size:14px;line-height:1.6">À traiter sous 24 h ouvrées. Répondre directement à l'email du prospect.</p>
+          <p style="margin:0;color:#525252;font-size:14px;line-height:1.6">Objectif interne : traiter le prochain jour ouvré. Répondre directement à l'email du prospect.</p>
         </td>
       </tr>
       <tr>
@@ -397,7 +397,7 @@ export async function POST(request: Request) {
     "",
     "Ce qui se passe maintenant :",
     "1. Votre brief est lu personnellement par notre équipe.",
-    "2. Vous recevez une réponse argumentée sous 24 h ouvrées.",
+    "2. Nous visons une réponse argumentée le prochain jour ouvré, sans délai garanti.",
     "3. Si le sujet s'y prête, nous vous proposons un créneau d'échange.",
     "",
     "Récapitulatif :",
@@ -416,12 +416,12 @@ export async function POST(request: Request) {
   ].filter(Boolean).join("\n");
 
   const confirmationHtml = renderEmailShell(
-    "Votre message est bien arrivé. Réponse sous 24 h ouvrées.",
+    "Votre message est bien arrivé. Objectif : le prochain jour ouvré.",
     `
       <tr>
         <td style="padding:32px 28px 8px">
           <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#6d28d9;font-weight:700">Message reçu</div>
-          <h1 style="margin:10px 0 12px;font-size:31px;line-height:1.04;letter-spacing:0;color:#0a0a0a">Bonjour ${escapeHtml(firstName)},<br>on revient vers vous sous 24 h.</h1>
+          <h1 style="margin:10px 0 12px;font-size:31px;line-height:1.04;letter-spacing:0;color:#0a0a0a">Bonjour ${escapeHtml(firstName)},<br>votre demande est bien arrivée.</h1>
           <p style="margin:0;color:#404040;font-size:15px;line-height:1.65">Votre message est arrivé au bon endroit. Il sera lu par quelqu'un qui code, pas par un commercial — et vous recevrez une réponse franche sur la meilleure prochaine étape.</p>
         </td>
       </tr>
@@ -433,7 +433,7 @@ export async function POST(request: Request) {
                 <div style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#c4b5fd;font-weight:700">Ce qui se passe maintenant</div>
                 <ol style="margin:14px 0 0;padding-left:20px;color:#f5f5f5;font-size:14px;line-height:1.8">
                   <li>Votre brief est lu personnellement par notre équipe.</li>
-                  <li>Vous recevez une réponse argumentée sous 24 h ouvrées.</li>
+                  <li>Nous visons une réponse argumentée le prochain jour ouvré, sans délai garanti.</li>
                   <li>Si le sujet s'y prête, nous vous proposons un créneau d'échange.</li>
                 </ol>
               </td>

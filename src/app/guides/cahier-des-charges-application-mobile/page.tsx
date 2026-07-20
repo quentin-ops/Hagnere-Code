@@ -32,17 +32,6 @@ export const metadata: Metadata = {
     authors: [`${SITE_URL}/equipe`],
     // og:image générée par opengraph-image.tsx (convention Next.js).
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
 };
 
 // --- JSON-LD SCHEMAS (constantes statiques uniquement) ---
@@ -174,23 +163,12 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-});
 
 export default function Page() {
   return (
     <GuidesShell>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd.replace(/</g, "\\u003c") }} />
-
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
@@ -309,7 +287,8 @@ export default function Page() {
           modèles génériques recyclés du web.
         </p>
         <p>
-          Fil rouge de ce guide : <strong>« Fleurs d&apos;Aix »,
+          Fil rouge de ce guide : <strong>scénario fictif composite —
+          ni client ni témoignage réel — avec « Fleurs d&apos;Aix »,
           chaîne fictive de trois boutiques de fleuristes autour
           d&apos;Aix-les-Bains</strong>, qui veut son application de
           click-and-collect : commander son bouquet, choisir sa
@@ -534,8 +513,8 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Un cahier des charges à faire relire — ou à construire en atelier ?"
-          description="Envoyez-nous votre projet ou votre brouillon en 3 minutes : nous vous répondons personnellement sous 24 h ouvrées, avec un avis franc sur le périmètre, une fourchette argumentée — et notre Discovery Sprint transforme le tout en CDC complet, maquettes et devis au forfait fixe en 2 jours."
-          tags={["Réponse sous 24 h ouvrées", "Planning confirmé au devis", "Comptes, dépôt et droits inventoriés"]}
+          description="Envoyez-nous votre projet ou votre brouillon en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis franc sur le périmètre, une fourchette argumentée — et notre Discovery Sprint transforme le tout en CDC complet, maquettes et devis au forfait fixe en 2 jours."
+          tags={["Objectif : prochain jour ouvré", "Planning confirmé au devis", "Comptes, dépôt et droits inventoriés"]}
           ctaLabel="Faire relire mon périmètre"
         />
 
@@ -891,7 +870,7 @@ export default function Page() {
           cédé et comptes développeur à votre nom (méthode{" "}
           <Link href="/methode">Sprint Fixe™</Link>).{" "}
           <Link href="/demarrer-un-projet">Décrivez votre projet en
-          3 minutes</Link> : réponse personnelle sous 24 h ouvrées,
+          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré,
           gratuite et sans engagement.
         </p>
 
