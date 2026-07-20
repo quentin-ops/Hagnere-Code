@@ -32,4 +32,11 @@ describe("publicite en ligne public claims", () => {
     );
     expect(publishedContent).not.toMatch(/faire que votre site soit[^<.]{0,80}l'une de ces sources/i);
   });
+
+  it("ne transforme pas des liens publics en preuve de campagnes ou de résultats", () => {
+    expect(composedBodyHtml).not.toMatch(/ROAS visé|nous payons nos propres campagnes|c'est notre argent|facture média|opéré par nous|CRM maison|8-12\/mois|20\s*% gagnent|on sait ce qu'ils testent/i);
+    expect(composedBodyHtml).toContain("ne prouvent ni campagnes actives");
+    expect(composedBodyHtml).toContain("aucun ratio gagnant n'est présumé");
+    expect(composedBodyHtml).toContain("ne permettent pas de connaître les résultats");
+  });
 });

@@ -28,4 +28,12 @@ describe("sites vitrines public claims", () => {
       /audit de sécurité annuel[^<.]{0,80}inclus/i,
     );
   });
+
+  it("cadre les performances, prix, droits et preuves publiques", () => {
+    expect(composedBodyHtml).not.toMatch(/LCP\s*<\s*1[.,]5|CLS\s*<\s*0[.,]05|INP\s*<\s*100|sécurité sans maintenance|rollback en 1 clic|hébergement gratuit 12 mois|dès le lendemain|pas d'avenant surprise|produits en production|levée en cours/i);
+    expect(composedBodyHtml).toContain("Exemple illustratif d'un objectif de performance");
+    expect(composedBodyHtml).toContain("aucun dépassement unilatéral");
+    expect(composedBodyHtml).toContain("transfert des droits après paiement complet selon les CGV");
+    expect(composedBodyHtml).toContain("fourchette après cadrage");
+  });
 });

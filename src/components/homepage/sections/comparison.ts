@@ -27,8 +27,8 @@ export const comparisonHtml = `
         paiements Stripe, dashboard, back-office, hébergement FR</b>. Un projet plus simple
         (landing, site vitrine) descend nettement, un projet plus complexe (multi-tenant, IA, marketplace)
         monte. Les tarifs des autres prestataires dépendent de leur proposition et ne sont pas estimés ici.
-        <b>Votre cas est chiffré individuellement</b> en 48 h après un cadrage de 30 min — vous
-        pouvez aussi décrire votre projet en 3 min et recevoir une réponse personnelle visée le prochain jour ouvré, sans délai garanti.
+        <b>Votre fourchette est établie après cadrage</b>. Vous pouvez aussi décrire votre projet
+        en 3 min&nbsp;: notre objectif est de répondre le prochain jour ouvré, sans délai garanti.
       </p>
       <a href="/demarrer-un-projet" class="cmp-context-cta">
         Décrire mon projet (3 min)

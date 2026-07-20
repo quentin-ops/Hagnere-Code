@@ -47,4 +47,10 @@ describe("security and GDPR service credibility", () => {
     expect(composedBodyHtml).not.toMatch(/Sous-traitants UE[^<]{0,100}Cloudflare EU/i);
     expect(composedBodyHtml).toContain("sans certification revendiquée");
   });
+
+  it("does not treat public availability as security or GDPR proof", () => {
+    expect(composedBodyHtml).not.toMatch(/que nous exploitons nous-mêmes tous les jours|cloisonnement des accès aux fiches|traçabilité des consultations|les sauvegardes et leur restauration|presque aucune agence/i);
+    expect(composedBodyHtml).toContain("Ils ne démontrent ni conformité RGPD, ni niveau de sécurité");
+    expect(composedBodyHtml).toContain("Une page publique ne prouve");
+  });
 });

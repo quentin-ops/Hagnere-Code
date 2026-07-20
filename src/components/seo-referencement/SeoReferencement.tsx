@@ -269,7 +269,7 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
                 Pas de catalogue artificiel ni de volume automatique. Le
                 périmètre, le calendrier et le prix sont établis après le
                 cadrage, puis écrits au devis. Aucun dépassement ni travail hors
-                périmètre n'est engagé sans accord écrit préalable.
+                périmètre n&apos;est engagé sans accord écrit préalable.
               </p>
             </div>
             <div className="seo-format-grid">

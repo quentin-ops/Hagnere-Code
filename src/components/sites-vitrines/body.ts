@@ -546,8 +546,8 @@ ${navHtml}
   <div class="wrap">
     <div class="section-head reveal">
       <div class="left">
-        <div class="eyebrow">— Produits internes</div>
-        <h2>Des produits en production,<br>présentés sans faux client.</h2>
+        <div class="eyebrow">— Pages produit publiques</div>
+        <h2>Des fonctions à consulter,<br>sans faux témoignage.</h2>
       </div>
       <div class="right">
         <a href="/realisations" class="btn btn-ghost">Toutes les réalisations →</a>
@@ -577,11 +577,11 @@ ${navHtml}
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>SaaS B2C</span><span class="tag-stack">IA native · Stripe</span><span>— en production</span></div>
+          <div class="scase-meta"><span>Comptabilité LMNP</span><span class="tag-stack">Fonctions présentées en ligne</span><span>— page publique</span></div>
           <h3>LMNP.AI</h3>
-          <p>Comptabilité fiscale automatisée pour loueurs meublés. Extraction de factures et génération de liasse 2031 par IA.</p>
+          <p>La page publique présente une offre de comptabilité fiscale pour loueurs meublés. Le lien permet de contrôler les fonctions affichées, pas leur exploitation ni leurs résultats.</p>
           <div class="scase-metric">
-            <div class="scm"><div class="n">INTERNE</div><div class="l">Produit du groupe</div></div>
+            <div class="scm"><div class="n">VISIBLE</div><div class="l">Fonctions présentées publiquement</div></div>
             <div class="scm"><div class="n">PUBLIC</div><div class="l">Étude de cas consultable</div></div>
           </div>
         </div>
@@ -615,11 +615,11 @@ ${navHtml}
           </svg>
         </div>
         <div class="scase-body">
-          <div class="scase-meta"><span>SaaS B2B</span><span class="tag-stack">IA native</span><span>— levée en cours</span></div>
-          <h3>Comptabilité AI</h3>
-          <p>Comptabilité en partie double pour PME avec bilan automatisé par IA. Positionnement Blue Ocean.</p>
+          <div class="scase-meta"><span>Comptabilité SCI</span><span class="tag-stack">IR et IS présentés</span><span>— page publique</span></div>
+          <h3>SCI-AI.app</h3>
+          <p>La page publique présente une offre de comptabilité pour SCI. Le lien permet de contrôler les fonctions affichées, pas l'architecture, l'exploitation ou les résultats.</p>
           <div class="scase-metric">
-            <div class="scm"><div class="n">INTERNE</div><div class="l">Produit du groupe</div></div>
+            <div class="scm"><div class="n">VISIBLE</div><div class="l">Fonctions présentées publiquement</div></div>
             <div class="scm"><div class="n">PUBLIC</div><div class="l">Étude de cas consultable</div></div>
           </div>
         </div>
@@ -718,7 +718,7 @@ ${navHtml}
       <div class="faq-intro reveal">
         <div class="eyebrow">— FAQ</div>
         <h2 style="margin-top:14px">Les vraies questions<br>qu'on nous pose avant<br>de signer.</h2>
-        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Votre demande est relue personnellement, par un expert, sans détour.</p>
+        <p>Si la vôtre n'y est pas, <a href="#contact" style="color:var(--accent-ink);text-decoration:underline">écrivez-nous</a>. Notre objectif est de répondre le prochain jour ouvré, sans délai garanti.</p>
       </div>
 
       <div class="faq-list reveal reveal-d-1">
@@ -842,7 +842,7 @@ ${navHtml}
   <div class="wrap">
     <div class="eyebrow on-dark">— Prochaine étape</div>
     <h2 style="margin-top:18px">Un site orienté conversion,<br>avec un planning écrit au devis.</h2>
-    <p>Un call de 30 min avec un expert. Vous repartez avec un avis franc sur votre projet et, sous 48 h, un devis chiffré — sans engagement.</p>
+    <p>Un échange de 30 min pour cadrer le projet. La fourchette est établie après ce cadrage&nbsp;; notre objectif est de répondre le prochain jour ouvré, sans délai garanti.</p>
     <div class="scta-cta">
       <a href="#contact" class="btn btn-accent btn-lg">
         📅 &nbsp;Réserver 30 min avec un expert

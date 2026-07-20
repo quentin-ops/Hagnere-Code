@@ -140,7 +140,7 @@ export const scenariosHtml = `
           </a>
           <div class="sv-scen-aside-foot">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
-            Sans engagement · fourchette sous 48 h
+            Sans engagement · fourchette après cadrage
           </div>
         </aside>
       </div>
@@ -203,7 +203,7 @@ export const scenariosHtml = `
           </a>
           <div class="sv-scen-aside-foot">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
-            Sans engagement · fourchette sous 48 h
+            Sans engagement · fourchette après cadrage
           </div>
         </aside>
       </div>
@@ -266,7 +266,7 @@ export const scenariosHtml = `
           </a>
           <div class="sv-scen-aside-foot">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6l9-4zM9 12l2 2 4-4"/></svg>
-            Sans engagement · fourchette sous 48 h
+            Sans engagement · fourchette après cadrage
           </div>
         </aside>
       </div>

@@ -84,7 +84,7 @@ export const testimonialsHtml = `
         </div>
       </article>
 
-      <!-- 03 : nous exploitons ce que nous construisons -->
+      <!-- 03 : limites des preuves publiques -->
       <article class="sr-proofs-card sr-proofs-card-end reveal reveal-d-2">
         <div class="sr-proofs-step">
           <div class="sr-proofs-step-num">03</div>
@@ -121,9 +121,9 @@ export const testimonialsHtml = `
           </svg>
         </div>
         <div class="sr-proofs-foot-text">
-          <b>Rien à croire sur parole.</b> Ces quatre produits sont accessibles à tous, sans démonstration ni
-          intermédiaire. <b>Nous parlerons de nos choix de sécurité et de conformité dès le premier échange</b>,
-          sur votre projet et non sur le nôtre.
+          <b>Rien à déduire au-delà des pages visibles.</b> Ces quatre liens sont consultables sans
+          intermédiaire. Pour votre projet, <b>les choix de sécurité et de conformité devront être documentés,
+          testés et attribués</b> selon le périmètre retenu.
         </div>
       </div>
       <a href="#contact" class="btn btn-accent">

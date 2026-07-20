@@ -39,4 +39,11 @@ describe("public team source of truth", () => {
     expect(saasComparisonHtml).toContain(TEAM_PUBLIC_COMPOSITION);
     expect(saasComparisonHtml).not.toMatch(/seniors CDI/i);
   });
+
+  it("keeps bios descriptive and leaves performance or service levels to the contract", () => {
+    const bios = TEAM_LIST.map((member) => member.bio ?? "").join("\n");
+    expect(bios).not.toMatch(/3 entreprises fondées|2 cabinets actifs|restaurables en moins de 15 minutes|quelques jours là où d'autres mettent des semaines|produire vite et propre/i);
+    expect(bios).toContain("objectifs de capacité, de restauration et leurs tests sont définis au contrat");
+    expect(bios).toContain("Aucune certification SOC 2 ou ISO 27001 n'est revendiquée");
+  });
 });
