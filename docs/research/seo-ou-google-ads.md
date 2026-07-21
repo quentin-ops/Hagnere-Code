@@ -167,7 +167,25 @@ contrôles techniques et visuels ci-dessous.
 - [x] batterie globale TypeScript, ESLint et SEO sur le snapshot final ;
 - [x] build de production et contrôle de l'artefact indexable ;
 - [x] rendu final contrôlé de 320 à 1 600 px, notamment à 390 px ;
-- [ ] URL de production, canonical, robots, données structurées et image sociale vérifiés.
+- [x] URL de production, canonical, robots, données structurées et image sociale vérifiés.
 
-Statut actuel : **publiable ; vérification de l'URL de production encore en
-attente du déploiement de ce snapshot**.
+## 10. Preuve de publication
+
+Contrôle réalisé le 21 juillet 2026 après fusion du commit `0815aeb` dans
+`main` par le commit `a12f5b7` :
+
+- déploiement Vercel de production `dpl_Gq6XYZhxKmXR7JXW8j9kobQQbHcm` prêt et
+  relié à `https://hagnere-code.ai` ;
+- URL canonique en `200`, sans redirection ;
+- robots `index, follow` ;
+- canonical exact ;
+- un H1, `Article` et `BreadcrumbList` présents ;
+- image sociale en PNG de 1 200 × 630 px, titre non coupé ;
+- guide présent dans le hub, le sitemap et `llms.txt` ;
+- ancienne terminologie et tableau principal absents ;
+- rendu réel sans débordement à 390 × 844 px et console sans erreur ;
+- les 43 URL de guides ont répondu en `200` avec canonical, robots et données
+  structurées cohérents.
+
+Statut actuel : **publié et contrôlé en production**. Ce statut ne signifie pas
+que Google a déjà exploré, indexé ou classé la nouvelle version.

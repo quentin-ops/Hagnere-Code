@@ -175,7 +175,13 @@ n'est présent. Un guide riche en comparaisons affiche des cartes de 358 px à
 cases, change d'orientation lorsqu'un risque critique est sélectionné et se
 réinitialise correctement.
 
-La dernière étape reste externe : après le déploiement de ce snapshot, l'URL
-publique doit confirmer le canonical, la règle `index, follow`, les données
-structurées et l'image sociale. Ces contrôles ne prouvent ni l'indexation par
-Google ni un futur classement.
+La vérification externe a été réalisée après la fusion du 21 juillet 2026. Le
+déploiement Vercel `dpl_Gq6XYZhxKmXR7JXW8j9kobQQbHcm` sert bien le domaine
+canonique. Les 43 URL répondent en `200`, déclarent leur canonical exact,
+`index, follow`, un H1, `Article` et `BreadcrumbList`. Le hub expose 43 liens
+uniques ; le guide témoin figure dans le sitemap et `llms.txt`. Son image
+sociale mesure 1 200 × 630 px et son rendu à 390 × 844 px ne déborde pas.
+
+Ces contrôles prouvent la publication et l'absence des obstacles techniques
+examinés. Ils ne prouvent ni l'exploration ou l'indexation par Google, ni un
+futur classement, ni le taux de conversion réel auprès de dirigeants.
