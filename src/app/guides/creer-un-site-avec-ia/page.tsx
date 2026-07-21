@@ -442,6 +442,16 @@ export default function Page() {
           justifie néanmoins une revue des accès, des données, des sauvegardes
           et du code avant la mise en ligne.
         </p>
+        <p>
+          Si vous avez déjà obtenu une démonstration, ne décidez pas à partir de
+          son apparence. Notre guide consacré à la{` `}
+          <Link href="/guides/reprendre-mvp-vibe-code">
+            reprise d’un MVP créé avec Lovable, Bolt ou v0
+          </Link>
+          {` `}
+          explique les cinq preuves à demander avant de conserver, migrer ou
+          réécrire une partie du projet.
+        </p>
 
         <h2 id="assistants-pro">
           5. Aider un développeur sans remplacer son travail

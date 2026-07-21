@@ -212,6 +212,11 @@ export default function Page() {
             label: "Gestion de publicité en ligne",
           },
           {
+            href: "/guides/pourquoi-google-ads-ne-convertit-pas",
+            label:
+              "Comprendre pourquoi les clics ne deviennent pas des clients",
+          },
+          {
             href: "/guides/audit-google-ads-que-verifier",
             label: "Auditer le compte avant d’augmenter le budget",
           },

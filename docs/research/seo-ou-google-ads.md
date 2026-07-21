@@ -11,6 +11,27 @@ Page : `/guides/seo-ou-google-ads`
 > `audit-pedagogie-humaine-43-guides-2026-07-21.md`. Ce dossier décrit
 > uniquement la version réécrite.
 
+## Journal des quatre passes — correction factuelle du 21 juillet 2026
+
+| Passe                        | État                     | Date       | Responsable                | Snapshot     | Blocages                   |
+| ---------------------------- | ------------------------ | ---------- | -------------------------- | ------------ | -------------------------- |
+| 1. Recherche                 | Terminée — porte validée | 2026-07-21 | orchestrateur + fact-check | dossier relu | aucun fait majeur faux     |
+| 2. Rédaction et intégration  | Terminée — porte validée | 2026-07-21 | orchestrateur              | `9df5056…`   | aucun                      |
+| 3. Contre-audit indépendant  | Terminée — porte validée | 2026-07-21 | agent indépendant          | à actualiser | aucun P0/P1 restant        |
+| 4. Plume humaine et contrôle | Bloquée                  |            |                            |              | P3 validée ; P4 à exécuter |
+
+Le dossier historique ne comportait pas les rapports normalisés du nouveau
+workflow. Ils sont donc constitués honnêtement lors de cette correction, sans
+prétendre que le processus actuel avait été appliqué avant sa création.
+
+### Manifeste d'entrée de P3
+
+| Fichier                                                | SHA-256                                                            |
+| ------------------------------------------------------ | ------------------------------------------------------------------ |
+| `src/app/guides/seo-ou-google-ads/page.tsx`            | `9df50561f6836c1f51e11e1c39c372b1251fd9930bd20340516a45c8a78b7159` |
+| `src/app/guides/seo-ou-google-ads/opengraph-image.tsx` | `60bbdeca61fa15ccf69cffc11be91bc61cb84367f5ca57c63068abdc48bafe4d` |
+| `src/lib/guides.ts`                                    | `bcf3ce4569dd45db8a94a92e06ed5a45cc474ed8bda32657fdc1c21f8fc91dfb` |
+
 ## 1. Lecteur et décision
 
 ```text
@@ -26,12 +47,14 @@ Mauvais fit : vente certaine exigée à très court terme, offre encore floue, p
 
 ### Réponse courte attendue
 
-Google Ads permet de payer pour afficher rapidement une annonce auprès de
-personnes qui recherchent des mots précis. Le référencement naturel, appelé
-SEO, consiste à améliorer le site et à publier des pages utiles pour être trouvé
-dans les résultats non publicitaires. Google Ads convient mieux pour tester
-vite une offre déjà prête ; le SEO convient mieux pour répondre durablement à
-des questions récurrentes. Aucun des deux ne garantit une vente.
+Google Ads permet de payer pour tenter d'afficher rapidement une annonce sur
+des recherches ciblées, après examen et mise en concurrence. Le référencement
+naturel, appelé SEO, consiste à améliorer le site et à publier des pages utiles
+pour être trouvé dans les résultats non publicitaires. Google Ads peut tester
+plus vite l'ensemble formé par le ciblage, l'annonce, l'offre, la page et le
+traitement commercial ; le SEO convient mieux pour répondre dans la durée à
+des recherches récurrentes. Aucun des deux ne garantit visibilité, demande ou
+vente.
 
 ## 2. Frontière avec les autres pages
 
@@ -59,19 +82,25 @@ question : « dans lequel des deux dois-je investir en premier ? »
 
 ## 4. Fiche de preuves
 
-| Affirmation utilisée                                                                        | Source primaire                                                                                                                  | Limite à conserver dans la page                                        | Conséquence pour le lecteur                                                      |
-| ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| Le SEO aide Google à comprendre le contenu et les internautes à décider de visiter une page | [Google Search Central — Guide de démarrage SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=fr) | aucune position ni présence n'est garantie                             | investir dans l'utilité et la clarté, pas acheter une promesse de classement     |
-| Google recommande de créer du contenu d'abord pour les personnes                            | [Google Search Central — Contenu utile](https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=fr)   | ce principe ne garantit pas le trafic                                  | répondre aux vraies questions des clients plutôt que remplir un quota d'articles |
-| Une campagne Search affiche des annonces en lien avec des recherches                        | [Google Ads — Campagnes sur le Réseau de Recherche](https://support.google.com/google-ads/answer/9510373?hl=fr)                  | affichage, clic, demande et vente restent quatre étapes différentes    | Ads peut tester une demande existante, pas fabriquer une vente certaine          |
-| Google Ads n'impose pas de dépense minimale au niveau du produit                            | [Google Ads — Coûts et budget](https://support.google.com/google-ads/answer/6319?hl=fr)                                          | un petit budget n'est pas forcément suffisant pour apprendre           | établir le budget depuis le marché et le test souhaité                           |
-| Le suivi des conversions mesure des actions choisies après une interaction                  | [Google Ads — Suivre les conversions](https://support.google.com/google-ads/answer/1722054?hl=fr)                                | une conversion configurée n'est pas automatiquement un client rentable | relier formulaire, appel ou achat au suivi commercial                            |
-| Acheter des annonces n'améliore pas directement le classement naturel                       | [Google for Small Business — SEO et publicité au clic](https://business.google.com/fr/resources/articles/seo-vs-ppc/)            | des effets commerciaux indirects peuvent exister                       | séparer les objectifs et les budgets des deux actions                            |
-| Les traceurs publicitaires relèvent de règles de consentement en France                     | [CNIL — Cookies et autres traceurs](https://www.cnil.fr/fr/cookies-et-autres-traceurs/que-dit-la-loi)                            | l'application dépend des finalités et du paramétrage                   | prévoir une mesure conforme et accepter qu'elle puisse être incomplète           |
+| Fait sourcé                                                                                                                                                                                                               | Source primaire et passage utile                                                                                                                                           | Limite                                                                                                            | Déduction stratégique Hagnéré Code                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Google présente le SEO comme un travail qui aide les moteurs à comprendre le contenu et les personnes à décider de visiter                                                                                                | [Google Search Central — Guide de démarrage SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=fr), sections sur l'utilité et les délais     | aucune indexation, présence ou position n'est garantie ; l'effet peut prendre de quelques heures à plusieurs mois | investir dans l'utilité, l'indexabilité et l'entretien plutôt qu'acheter une promesse de classement |
+| Google recommande de créer du contenu d'abord pour les personnes                                                                                                                                                          | [Google Search Central — Contenu utile](https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=fr), auto-évaluation du contenu people-first    | ce principe ne garantit ni trafic ni vente                                                                        | répondre aux vraies questions plutôt que remplir un quota d'articles                                |
+| Une annonce doit être examinée, puis gagner une enchère dont le résultat dépend notamment du montant proposé, de sa qualité, du contexte et de la concurrence                                                             | [Google Ads — Examen](https://support.google.com/google-ads/answer/1722120?hl=fr) et [classement des annonces](https://support.google.com/google-ads/answer/1752122?hl=fr) | la visibilité rapide reste une possibilité, jamais un droit acheté                                                | présenter Ads comme un test plus rapide, pas comme une présence immédiate garantie                  |
+| Les campagnes Search visent les personnes qui recherchent des produits ou services, mais une campagne teste simultanément ciblage, annonce, offre, page et traitement                                                     | [Google Ads — Campagnes Search](https://support.google.com/google-ads/answer/9510373?hl=fr)                                                                                | la seconde partie est une déduction du parcours, pas une affirmation de Google sur la demande totale              | ne jamais conclure qu'une campagne seule valide ou invalide la demande                              |
+| Le rapport sur les termes de recherche ne montre pas individuellement toutes les requêtes à faible activité                                                                                                               | [Google Ads — Termes de recherche](https://support.google.com/google-ads/answer/2472708?hl=fr), limites de confidentialité                                                 | le rapport disponible n'est pas exhaustif                                                                         | parler d'une partie des termes, jamais des mots réellement recherchés au complet                    |
+| Google Ads n'impose pas de dépense minimale, mais le budget quotidien est une moyenne et peut atteindre deux fois ce montant un jour donné, dans la limite mensuelle de 30,4 fois la moyenne pour de nombreuses campagnes | [Google Ads — Coûts](https://support.google.com/google-ads/answer/6319?hl=fr) et [budgets](https://support.google.com/google-ads/answer/10486536?hl=fr)                    | les règles varient selon le type de budget et de campagne                                                         | fixer un risque total supportable plutôt qu'assimiler le budget quotidien à un plafond journalier   |
+| Une conversion Google Ads est une action configurée par l'annonceur                                                                                                                                                       | [Google Ads — Suivre les conversions](https://support.google.com/google-ads/answer/1722054?hl=fr)                                                                          | formulaire, clic ou appel ne signifie pas automatiquement client rentable                                         | rapprocher les actions des prospects qualifiés, ventes et marges dans l'outil commercial            |
+| Acheter des annonces n'améliore pas directement le classement naturel                                                                                                                                                     | [Google Ads — Résultats naturels et sponsorisés](https://support.google.com/google-ads/answer/3097241?hl=fr)                                                               | des apprentissages commerciaux indirects restent possibles                                                        | suivre séparément média, gestion, site et contenus                                                  |
+| Les traceurs publicitaires non strictement nécessaires nécessitent en principe un consentement préalable en France                                                                                                        | [CNIL — Cookies et autres traceurs](https://www.cnil.fr/fr/cookies-et-autres-traceurs/que-dit-la-loi)                                                                      | l'application exacte dépend des finalités et du paramétrage                                                       | prévoir une mesure conforme et présenter ses données comme potentiellement incomplètes              |
 
 ### Affirmations volontairement exclues
 
 - « Google Ads apporte immédiatement des prospects » ;
+- « payer Google Ads garantit une visibilité immédiate » ;
+- « le rapport montre toutes les recherches effectuées » ;
+- « le budget quotidien est toujours un plafond journalier » ;
+- « une campagne Ads mesure la demande indépendamment de l'offre et de la page » ;
 - « le SEO prend toujours trois, six ou douze mois » ;
 - « le SEO est gratuit » ;
 - « une répartition 50/50 convient aux PME » ;

@@ -78,8 +78,9 @@ extérieur n'a participé, le dossier de recherche doit l'indiquer explicitement
 intégralement
 [docs/workflow-maitre-guides-4-passes.md](docs/workflow-maitre-guides-4-passes.md).**
 Ce workflow transforme la charte en quatre passes séquentielles sur un seul
-guide : création, vérification factuelle, polish humain, puis contre-audit et
-contrôle final. Une passe ne valide jamais automatiquement la suivante.
+guide : recherche et dossier de preuves, rédaction et intégration,
+contre-audit indépendant, puis plume humaine et contrôle final. Une passe ne
+valide jamais automatiquement la suivante.
 La liste des sujets est dans
 [docs/roadmap-guides-seo.md](docs/roadmap-guides-seo.md).
 

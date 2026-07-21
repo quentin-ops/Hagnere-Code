@@ -2,15 +2,15 @@
 
 > Dernière révision : 21 juillet 2026. Cette roadmap a été créée avec **100
 > nouveaux sujets**, en plus des 32 guides alors inscrits dans
-> `src/lib/guides.ts`. Les onze premiers sujets sont désormais implémentés
-> localement : il reste donc 89 sujets à produire. Ce portefeuille
+> `src/lib/guides.ts`. Les quatorze premiers sujets sont désormais implémentés :
+> il reste donc 86 sujets à produire. Ce portefeuille
 > éditorial n'est pas une promesse que le volume constitue en lui-même un
 > facteur de classement.
 
-Avant toute rédaction, lire la
-[charte qualité des guides](charte-qualite-guides.md) et ouvrir un dossier
-`docs/research/<slug>.md` à partir du
-[modèle de recherche](research/_modele-guide.md).
+Avant toute rédaction, suivre l’
+[ordre de lecture unique du workflow maître](workflow-maitre-guides-4-passes.md).
+La roadmap choisit les sujets ; elle ne redéfinit ni le processus, ni ses
+statuts, ni ses portes.
 
 ## 1. Décision stratégique
 
@@ -81,9 +81,11 @@ Chaque guide utilise une sortie cohérente avec le problème traité :
 | `TMA`    | `/services/maintenance-evolution`      | Audit de reprise, contrat ou plan de stabilisation      |
 | `SITE`   | `/services/sites-vitrines`             | Cadrage d'un site ou d'une refonte                      |
 
-Le CTA final renvoie vers `/demarrer-un-projet` avec un libellé contextualisé.
-Le petit formulaire du footer ne couvre pas toutes ces missions ; il ne doit
-donc pas être la seule sortie des guides SEO, Ads, TMA ou automatisation.
+Lorsqu’un CTA éditorial est utile, sa destination par défaut est
+`/demarrer-un-projet` avec un libellé contextualisé. Son absence est justifiée
+dans le dossier de recherche. Le petit formulaire du footer ne couvre pas
+toutes ces missions ; il ne doit donc pas être la seule sortie des guides SEO,
+Ads, TMA ou automatisation.
 
 ## 4. Ordre du premier sprint éditorial
 
@@ -103,7 +105,7 @@ de devis, sans attendre la fin de la roadmap :
 |     9 | `seo-ou-google-ads`                    | Arbitrage budgétaire fréquent entre deux offres réelles du site                |
 |    10 | `contrat-tma-application`              | Prépare un besoin récurrent de maintenance applicative                         |
 |    11 | `template-ou-site-sur-mesure`          | Décision claire pour un prospect de site vitrine                               |
-|    12 | `signes-besoin-logiciel-metier`        | Aide l'entreprise à reconnaître son propre seuil de bascule                    |
+|    12 | `signes-besoin-logiciel-metier`        | Aide l'entreprise à choisir la première réponse utile sans seuil arbitraire    |
 |    13 | `reprendre-mvp-vibe-code`              | Sujet actuel, mais traité sous l'angle de la reprise et des preuves techniques |
 |    14 | `pourquoi-google-ads-ne-convertit-pas` | Diagnostic directement relié à une dépense active                              |
 |    15 | `preparer-contenus-site-vitrine`       | Retire un frein concret avant devis et raccourcit le démarrage du projet       |
@@ -120,7 +122,7 @@ descendre après validation Search Console, Keyword Planner et SERP.
 | --: | :--: | -------------------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------- | --------------------------- |
 |   1 |  P1  | `automatiser-processus-metier`               | Choisir les processus à automatiser en premier                               | Carte processus, matrice gain/risque et exemple chiffré             | Diagnostic `OUTILS`         |
 |   2 |  P1  | `calculer-roi-application-metier`            | Décider si le projet rembourse son coût                                      | Formule TCO/ROI, coût du temps et scénarios pessimiste/central/haut | Cadrage `OUTILS`            |
-|   3 |  P1  | `signes-besoin-logiciel-metier`              | Reconnaître le moment où les outils actuels deviennent un risque             | Score de maturité et seuils de décision                             | Diagnostic `OUTILS`         |
+|   3 |  P1  | `signes-besoin-logiciel-metier`              | Reconnaître le moment où les outils actuels deviennent un risque             | Fiche de trois situations et six réponses possibles                 | Diagnostic `OUTILS`         |
 |   4 |  P1  | `remplacer-microsoft-access-application-web` | Sortir d'une base Access devenue critique sans perdre les données            | Inventaire tables, usages, dépendances et plan de migration         | Diagnostic `OUTILS`         |
 |   5 |  P1  | `power-apps-ou-application-sur-mesure`       | Arbitrer Microsoft Power Apps et développement dédié                         | TCO, licences, limites et réversibilité                             | Diagnostic `OUTILS`         |
 |   6 |  P2  | `airtable-notion-ou-application-metier`      | Savoir jusqu'où pousser Airtable ou Notion                                   | Test de charge organisationnelle et grille de sortie                | Diagnostic `OUTILS`         |
@@ -289,8 +291,8 @@ Chaque nouveau guide doit :
 - utiliser des ancres descriptives et naturelles ;
 - proposer les deux ou trois suites logiques du parcours, pas une liste
   automatique de liens ;
-- pointer vers la page service concernée et vers `/demarrer-un-projet` avec un
-  CTA correspondant au problème ;
+- pointer vers la page service concernée et, si un CTA éditorial est utile,
+  vers `/demarrer-un-projet` avec un libellé correspondant au problème ;
 - recevoir en retour au moins un lien contextuel d'une page déjà publiée ;
 - conserver Article et Breadcrumb structurés quand ils correspondent au
   contenu visible. Une FAQ n'est ajoutée que si elle aide vraiment le lecteur ;
@@ -299,21 +301,26 @@ Chaque nouveau guide doit :
 
 ## 9. Cadence d'exécution
 
-La roadmap avance par sprints de trois guides :
+La roadmap avance par sprints de trois guides en suivant le workflow maître :
 
-1. recherche et briefs des trois sujets ;
-2. production avec formes volontairement différentes ;
-3. contre-audit pédagogique, factuel, commercial et anti-cannibalisation ;
-4. validation éditoriale selon la charte, puis publication, maillage réciproque
-   et QA navigateur ;
-5. enregistrement des URLs et mesure sans bloquer le sprint suivant.
+1. les recherches et dossiers de preuves des trois sujets peuvent avancer en
+   parallèle ;
+2. chaque rédaction et intégration se fait ensuite successivement dans le
+   worktree partagé, avec une forme propre au sujet ;
+3. chaque guide reçoit son contre-audit indépendant et ses corrections avant
+   le suivant ;
+4. la passe de plume humaine, les tests et la QA navigateur ferment le guide
+   avant que la rédaction suivante commence ;
+5. le lot est publié uniquement quand les trois statuts individuels sont
+   démontrables, puis les URLs et conversions sont mesurées sans bloquer le
+   sprint suivant.
 
 Les indicateurs sont suivis en parallèle : URLs découvertes/indexées,
 impressions non-marque, requêtes, CTR, clics vers les pages service, démarrages
 de formulaire et demandes qualifiées. Une position moyenne isolée ou un temps
 passé ne suffit pas à juger un guide.
 
-## 10. Onze premiers guides implémentés et prochain lot
+## 10. Quatorze premiers guides implémentés et prochain lot
 
 Le premier sprint a été implémenté le 20 juillet 2026 :
 
@@ -358,8 +365,24 @@ sitemap et `llms.txt` avec la politique `index,follow`. Cette ouverture signifie
 que les pages sont indexables ; elle ne prouve ni leur crawl, ni leur indexation
 effective, ni leur position future.
 
-Le prochain lot logique de la roadmap devient :
+Le quatrième lot a franchi les quatre passes le 21 juillet 2026 :
 
 1. `signes-besoin-logiciel-metier` ;
 2. `reprendre-mvp-vibe-code` ;
 3. `pourquoi-google-ads-ne-convertit-pas`.
+
+Chaque guide part d’une situation dite avec les mots du dirigeant, fournit une
+action autonome avant le CTA et possède une forme propre : trois situations
+d’entreprise et six réponses possibles pour le logiciel métier, cinq tests de
+reprise pour le prototype généré, quatre symptômes puis un relevé du clic à la
+marge pour Google Ads. Les recherches, contre-audits, passes anti-IA, images
+sociales et contrôles responsive sont consignés dans leurs dossiers respectifs.
+
+Le prochain lot logique devient :
+
+1. `preparer-contenus-site-vitrine`, pour retirer un frein concret avant la
+   création d’un site ;
+2. `remplacer-microsoft-access-application-web`, pour capter une situation de
+   logiciel interne critique et directement qualifiable ;
+3. `budget-google-ads-pme`, pour compléter le parcours entre prix de gestion,
+   rentabilité et lancement d’un test.

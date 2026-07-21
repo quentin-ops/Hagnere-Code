@@ -288,6 +288,10 @@ export default function Page() {
         ]}
         relatedLinks={[
           {
+            href: "/guides/pourquoi-google-ads-ne-convertit-pas",
+            label: "Trouver pourquoi les clics ne deviennent pas des clients",
+          },
+          {
             href: "/guides/prix-gestion-google-ads",
             label: "Comparer le coût complet de Google Ads",
           },

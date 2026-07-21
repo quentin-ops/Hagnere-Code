@@ -40,6 +40,48 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "pourquoi-google-ads-ne-convertit-pas",
+    title: "Google Ads ne convertit pas : que vérifier ? · Hagnéré Code",
+    cardTitle: "Pourquoi Google Ads ne convertit pas malgré les clics ?",
+    metaDescription:
+      "Des clics mais peu de clients ? Repérez si la mesure compte la mauvaise action, si les contacts se perdent ou ne deviennent pas des ventes rentables.",
+    cardDescription:
+      "Partez de votre symptôme, rapprochez Google Ads des contacts et des ventes, puis corrigez le premier endroit où le résultat réel disparaît.",
+    heroTitle: "Pourquoi Google Ads ne convertit pas malgré les clics ?",
+    section: "Google Ads & acquisition",
+    datePublished: "2026-07-21",
+    dateModified: "2026-07-21",
+    readTimeMin: 15,
+  },
+  {
+    slug: "reprendre-mvp-vibe-code",
+    title: "Reprendre un MVP Lovable, Bolt ou v0 · Hagnéré Code",
+    cardTitle: "Peut-on reprendre un MVP créé avec Lovable, Bolt ou v0 ?",
+    metaDescription:
+      "Votre MVP Lovable, Bolt ou v0 peut-il être repris ? Vérifiez code, mise en ligne, données, accès et comptes avant de conserver ou réécrire.",
+    cardDescription:
+      "Cinq vérifications concrètes pour savoir ce qui peut être conservé, stabilisé, migré ou réécrit sans jeter votre premier produit par principe.",
+    heroTitle: "Peut-on reprendre un MVP créé avec Lovable, Bolt ou v0 ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-21",
+    dateModified: "2026-07-21",
+    readTimeMin: 15,
+  },
+  {
+    slug: "signes-besoin-logiciel-metier",
+    title: "Besoin d’un logiciel métier : les signes · Hagnéré Code",
+    cardTitle: "Votre entreprise a-t-elle besoin d’un logiciel métier ?",
+    metaDescription:
+      "Fichiers, ressaisies, erreurs : découvrez quand sécuriser, corriger, automatiser, acheter un outil ou étudier un logiciel métier sur mesure.",
+    cardDescription:
+      "Partez de trois problèmes réels, écartez les faux signaux et choisissez entre corriger, automatiser, acheter, étudier du sur-mesure ou attendre.",
+    heroTitle: "Votre entreprise a-t-elle besoin d’un logiciel métier ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-21",
+    dateModified: "2026-07-21",
+    readTimeMin: 12,
+  },
+  {
     slug: "template-ou-site-sur-mesure",
     title: "Template ou site sur mesure : comment choisir · Hagnéré Code",
     cardTitle: "Template, personnalisé ou sur mesure : que choisir ?",
@@ -66,7 +108,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 15,
+    readTimeMin: 17,
   },
   {
     slug: "contrat-tma-application",
