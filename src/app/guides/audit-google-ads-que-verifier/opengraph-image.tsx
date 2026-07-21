@@ -2,14 +2,14 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Audit Google Ads reliant preuves de plateforme et résultats métier";
+  "Audit Google Ads : relier clics, prospects et ventes avant d’augmenter le budget";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const evidenceRows = [
-  ["CONVERSION", "CONTACT QUALIFIÉ"],
-  ["REQUÊTE", "BESOIN RÉEL"],
-  ["COÛT", "MARGE"],
+  ["CONVERSIONS", "PROSPECTS RÉELS"],
+  ["MOTS RECHERCHÉS", "BESOINS DES CLIENTS"],
+  ["BUDGET DÉPENSÉ", "VENTES ET MARGE"],
 ];
 
 export default function OgImage() {
@@ -119,7 +119,7 @@ export default function OgImage() {
               color: "#d4d4d8",
             }}
           >
-            Réconcilier ce que Google compte avec ce que l’entreprise obtient.
+            Relier les chiffres de Google aux prospects et aux ventes.
           </div>
         </div>
 
@@ -145,11 +145,9 @@ export default function OgImage() {
               letterSpacing: 1.3,
             }}
           >
-            <div style={{ display: "flex", color: "#93c5fd" }}>
-              PREUVE GOOGLE
-            </div>
+            <div style={{ display: "flex", color: "#93c5fd" }}>DANS GOOGLE</div>
             <div style={{ display: "flex", color: "#6ee7b7" }}>
-              PREUVE MÉTIER
+              DANS L’ENTREPRISE
             </div>
           </div>
           {evidenceRows.map(([ads, business]) => (

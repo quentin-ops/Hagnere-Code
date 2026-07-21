@@ -9,7 +9,7 @@ export const contentType = "image/png";
 const options = [
   { label: "Standard", color: "#60a5fa" },
   { label: "Configurable", color: "#a78bfa" },
-  { label: "Hybride", color: "#34d399" },
+  { label: "ERP + module", color: "#34d399" },
   { label: "Sur mesure", color: "#fbbf24" },
 ];
 
@@ -85,7 +85,7 @@ export default function OgImage() {
             ERP, logiciel standard ou sur mesure : comment choisir ?
           </div>
           <div style={{ display: "flex", fontSize: 26, color: "#a1a1aa" }}>
-            Une décision fondée sur des preuves
+            Partez du travail réel, pas de la solution préférée du prestataire
           </div>
         </div>
 
@@ -111,7 +111,7 @@ export default function OgImage() {
               marginBottom: 2,
             }}
           >
-            4 OPTIONS À PROUVER
+            4 OPTIONS À COMPARER
           </div>
           {options.map((option, index) => (
             <div
@@ -151,10 +151,10 @@ export default function OgImage() {
 
       <div style={{ display: "flex", gap: 12 }}>
         {[
-          "10 critères",
-          "Coût total · 4 ans",
-          "Test d’adoption",
-          "Réversibilité",
+          "Tâches réelles",
+          "Coût sur 4 ans",
+          "Essai avec l’équipe",
+          "Changer de prestataire",
         ].map((label) => (
           <div
             key={label}

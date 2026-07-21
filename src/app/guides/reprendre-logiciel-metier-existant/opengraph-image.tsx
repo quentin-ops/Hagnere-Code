@@ -2,16 +2,16 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Reprendre un logiciel métier existant avec cinq preuves non compensables";
+  "Reprendre un logiciel métier existant sans bloquer l’entreprise";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const gates = [
-  { label: "COMPTES", detail: "propriété", color: "#60a5fa" },
-  { label: "CODE", detail: "build", color: "#818cf8" },
-  { label: "DONNÉES", detail: "restauration", color: "#a78bfa" },
-  { label: "MÉTIER", detail: "exploitation", color: "#c084fc" },
-  { label: "DROITS", detail: "sortie", color: "#34d399" },
+  { label: "ACCÈS", detail: "comptes", color: "#60a5fa" },
+  { label: "CODE", detail: "copie complète", color: "#818cf8" },
+  { label: "DONNÉES", detail: "sauvegarde", color: "#a78bfa" },
+  { label: "MISE EN ROUTE", detail: "test", color: "#c084fc" },
+  { label: "CONTRAT", detail: "droits", color: "#34d399" },
 ];
 
 export default function OgImage() {
@@ -107,7 +107,7 @@ export default function OgImage() {
               color: "#c4b5fd",
             }}
           >
-            Prouver la maîtrise avant la maintenance
+            Changer d’équipe sans bloquer l’activité
           </div>
         </div>
 
@@ -133,7 +133,7 @@ export default function OgImage() {
               letterSpacing: 1.5,
             }}
           >
-            5 PREUVES À OBTENIR
+            5 ÉLÉMENTS À RÉCUPÉRER
           </div>
           {gates.map((gate, index) => (
             <div
@@ -191,9 +191,9 @@ export default function OgImage() {
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         {[
-          "8 tests exécutés",
-          "Aucun score compensatoire",
-          "Reprendre · migrer · reporter",
+          "Premières 48 heures",
+          "Sauvegarde testée",
+          "Stabiliser · migrer · réécrire",
         ].map((label) => (
           <div
             key={label}

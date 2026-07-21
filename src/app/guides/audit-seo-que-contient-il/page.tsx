@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: guideUrl(guide) + "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Fiche de réception d’un audit SEO reliant preuve, décision et vérification",
+        alt: "Audit SEO : ce que le rapport doit expliquer et permettre de corriger",
       },
     ],
     publishedTime: guide.datePublished + "T09:00:00+02:00",
@@ -106,76 +106,81 @@ const faqItems = [
     question:
       "Quelle est la différence entre un audit SEO et un scan automatisé ?",
     answer:
-      "Un scan parcourt un périmètre configuré et signale des motifs connus : codes HTTP, balises, liens ou profondeur, par exemple. Un audit confronte ces observations aux données des moteurs, aux modèles de pages, aux objectifs de l’entreprise et aux limites de la collecte. Il explique ce qui compte, ce qui ne compte pas, ce qui reste hypothétique et comment vérifier chaque correction.",
+      "Le scan trouve des alertes ; l’audit vous dit lesquelles méritent votre temps et votre budget. Un logiciel peut repérer des liens cassés, des balises absentes ou des pages lentes. L’auditeur vérifie ensuite les pages concernées, les données disponibles, l’effet possible sur vos visiteurs et l’ordre des corrections. Un export d’outil sans explication n’est donc pas un audit complet.",
   },
   {
     question: "Que doit contenir le rapport final d’un audit SEO ?",
     answer:
-      "Au minimum : le périmètre daté, les accès et outils utilisés, les exclusions, une synthèse de décision, les constats avec leurs preuves, un plan priorisé, les responsables pressentis, les critères d’acceptation et un protocole de mesure après mise en œuvre. Les exports bruts peuvent être annexés, mais ils ne remplacent pas l’interprétation.",
+      "Le rapport doit vous permettre de décider quoi faire, dans quel ordre et avec qui. Il précise les pages et les données examinées, explique les problèmes avec des exemples, distingue les faits des hypothèses, classe les actions par importance et indique comment contrôler chaque correction. Les listes techniques détaillées peuvent rester en annexe.",
   },
   {
     question: "Quels accès faut-il donner à l’auditeur ?",
     answer:
-      "Commencez par les droits de lecture nécessaires : Search Console, outil de mesure d’audience et, selon le sujet, gestionnaire de balises ou exports. Google recommande explicitement la lecture seule de Search Console au stade de l’audit. Les journaux serveur, le système de gestion du site ou les données commerciales peuvent compléter l’analyse, avec un périmètre et une autorisation séparés.",
+      "Donnez d’abord des accès en lecture seule aux outils nécessaires. Search Console et votre outil de mesure d’audience suffisent souvent pour commencer. Selon le problème, l’auditeur peut ensuite demander les traces du serveur, l’administration du site ou des données commerciales. Chaque accès supplémentaire doit avoir une raison claire, une durée et un niveau de droit adapté.",
   },
   {
     question: "Combien de pages faut-il analyser ?",
     answer:
-      "Il n’existe pas de nombre universel. Un petit site peut être parcouru intégralement ; un grand catalogue demande souvent une couverture par modèles, sections, profondeur et valeur métier. Le rapport doit indiquer le nombre d’URL découvertes et analysées, les limites de l’outil, les exclusions, les règles d’échantillonnage et les modèles de pages testés manuellement.",
+      "Le bon nombre dépend du site, pas d’un forfait universel. Un petit site peut être contrôlé page par page. Pour une grande boutique, il faut couvrir chaque type de page, les sections importantes et un échantillon expliqué. Le rapport doit dire combien d’adresses ont été trouvées, combien ont été examinées et ce qui est resté hors de l’analyse.",
   },
   {
-    question: "Comment prioriser les corrections SEO ?",
+    question: "Comment savoir quelles corrections SEO faire en premier ?",
     answer:
-      "Croisez la gravité réelle, la portée, la valeur des pages touchées, le niveau de confiance, l’effort et les dépendances. Une anomalie bloquant l’accès à une section rentable peut passer avant des centaines d’avertissements mineurs. La priorité doit rester compréhensible sans score magique et préciser ce qui sera vérifié après correction.",
+      "Commencez par ce qui empêche une page importante d’être trouvée, comprise ou utilisée. Regardez ensuite le nombre de pages touchées, leur rôle commercial, la certitude du diagnostic, le coût de la correction et le risque de régression. Une erreur sur un formulaire de contact peut être plus urgente que des centaines de descriptions manquantes.",
   },
   {
-    question: "Un audit SEO garantit-il l’indexation ou une hausse de trafic ?",
+    question: "Un audit SEO garantit-il une hausse de trafic ?",
     answer:
-      "Non. Google précise qu’une page conforme aux exigences techniques minimales est seulement éligible à l’indexation, sans garantie d’être indexée. Une correction peut rendre une page accessible ou cohérente ; elle ne garantit ni sa position, ni ses clics, ni les demandes commerciales. Le rapport doit séparer résultat technique contrôlable et effet futur à observer.",
+      "Non. Il peut garantir qu’un problème est documenté et qu’une correction sera vérifiable, pas que Google donnera une position ou un volume de visites précis. Une page techniquement accessible reste seulement susceptible d’être indexée. Le contenu, la concurrence, la demande et les évolutions du moteur comptent aussi.",
   },
   {
     question: "Faut-il toujours commander un audit SEO complet ?",
     answer:
-      "Non. Une vérification ciblée suffit souvent lorsqu’une question et un périmètre sont clairement identifiés : baisse sur une section, problème d’indexation, modèle de page ou préparation d’une décision. Un audit complet devient pertinent lorsque les causes sont inconnues, que plusieurs systèmes interagissent ou qu’une feuille de route globale doit être arbitrée.",
+      "Non. Un contrôle ciblé est souvent plus utile lorsque la question est précise : une chute sur une catégorie, des pages qui disparaissent de Google ou une refonte à préparer. L’audit complet est pertinent lorsque les causes sont inconnues, que plusieurs parties du site sont concernées ou qu’il faut bâtir un plan de travail global.",
   },
   {
-    question: "Qui doit mettre en œuvre les recommandations ?",
+    question: "Qui doit appliquer les recommandations ?",
     answer:
-      "Le rapport doit attribuer chaque tâche au bon rôle : direction, développement, contenu, design, hébergement ou prestataire SEO. L’auditeur peut aussi exécuter, mais le diagnostic, l’autorisation de modifier et la recette gagnent à rester explicitement séparés. Le commanditaire doit conserver ses accès et pouvoir vérifier ce qui a changé.",
+      "La personne dépend de l’action : développeur, rédacteur, responsable marketing, hébergeur ou direction. Le rapport doit le préciser. Il doit aussi séparer l’analyse, l’autorisation de modifier le site et la vérification finale. Même si le même prestataire réalise plusieurs étapes, vous devez garder vos accès et savoir exactement ce qui a changé.",
   },
 ];
 
 function SeoAuditReceptionSheet() {
   const fields = [
-    ["1", "Fait", "Que peut-on reproduire aujourd’hui ?", "text-emerald-300"],
+    [
+      "1",
+      "Le constat",
+      "Que voit-on précisément aujourd’hui ?",
+      "text-emerald-300",
+    ],
     [
       "2",
-      "Périmètre",
-      "Quelles URL, données et dates ont été vues ?",
+      "Les pages",
+      "Quelles pages et quelles dates ont été examinées ?",
       "text-blue-300",
     ],
     [
       "3",
-      "Conséquence",
-      "Quel risque est plausible, et avec quelle confiance ?",
+      "L’enjeu",
+      "Pourquoi cela compte-t-il pour vos visiteurs ou votre activité ?",
       "text-amber-300",
     ],
     [
       "4",
-      "Action",
-      "Qui change quoi, avec quelles dépendances ?",
+      "La correction",
+      "Que faut-il changer, sans ambiguïté ?",
       "text-violet-300",
     ],
     [
       "5",
-      "Réception",
-      "Quel test prouve que la tâche est bien exécutée ?",
+      "Le responsable",
+      "Qui décide, qui réalise et qui contrôle ?",
       "text-cyan-300",
     ],
     [
       "6",
-      "Mesure",
-      "Quand observer l’effet, et que ne peut-on pas conclure ?",
+      "Le contrôle",
+      "Quel test permettra de fermer la tâche ?",
       "text-rose-300",
     ],
   ];
@@ -188,14 +193,14 @@ function SeoAuditReceptionSheet() {
     >
       <figcaption id="seo-reception-title" className="mb-5">
         <span className="block text-xs font-bold uppercase tracking-[0.18em] text-violet-300">
-          Fiche de réception
+          À vérifier pour chaque recommandation
         </span>
         <span className="mt-2 block text-lg font-bold text-white">
-          Une recommandation SEO recevable tient en six preuves
+          Six réponses avant de financer une correction
         </span>
         <span className="mt-1 block max-w-2xl text-sm leading-relaxed text-zinc-400">
-          Si une case reste vide, la recommandation doit être complétée,
-          reformulée ou conservée comme hypothèse — pas exécutée par réflexe.
+          Une réponse manque ? Demandez-la avant de lancer le travail, surtout
+          si la correction est coûteuse ou difficile à annuler.
         </span>
       </figcaption>
 
@@ -222,24 +227,6 @@ function SeoAuditReceptionSheet() {
           </div>
         ))}
       </div>
-
-      <div className="mt-3 rounded-xl border border-white/10 bg-black/20 p-4">
-        <p className="m-0 text-xs font-bold uppercase tracking-[0.14em] text-zinc-400">
-          Sortie attendue
-        </p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {["Accepter", "Demander une preuve", "Tester d’abord", "Écarter"].map(
-            (decision) => (
-              <span
-                key={decision}
-                className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-zinc-300"
-              >
-                {decision}
-              </span>
-            ),
-          )}
-        </div>
-      </div>
     </figure>
   );
 }
@@ -265,39 +252,39 @@ export default function Page() {
           { label: "Audit SEO : que doit-il contenir ?" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Un bon audit ne se contente pas de trouver des erreurs. Il indique ce qui a été observé, ce qui reste incertain, ce qu’il faut traiter en premier et comment une autre personne pourra exécuter puis vérifier le plan d’action."
+        heroDescription="Vous envisagez un audit SEO, ou vous venez d’en recevoir un ? Voici ce que le rapport doit expliquer pour que vous sachiez quoi corriger, dans quel ordre et pourquoi — sans devoir devenir spécialiste de Google."
         heroAction={{
           href: "#fiche-reception",
-          label: "Voir la fiche de réception",
+          label: "Contrôler une recommandation",
         }}
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel={`Mis à jour le ${formatGuideDate(guide.dateModified)}`}
+        updatedLabel={"Mis à jour le " + formatGuideDate(guide.dateModified)}
         keyPoints={[
           {
             number: "01",
-            title: "4 résultats obligatoires",
+            title: "Ce que le rapport doit expliquer",
             description: "",
             color: "violet",
           },
           {
             number: "02",
-            title: "6 preuves par recommandation",
+            title: "Comment choisir les priorités",
             description: "",
             color: "blue",
           },
           {
             number: "03",
-            title: "Aucun score magique",
+            title: "Comment contrôler les corrections",
             description: "",
             color: "emerald",
           },
           {
             number: "04",
-            title: `Lecture : ${guide.readTimeMin} min`,
+            title: "Lecture : " + guide.readTimeMin + " min",
             description: "",
             color: "amber",
           },
@@ -320,354 +307,336 @@ export default function Page() {
             label: "Notre accompagnement SEO",
           },
         ]}
-        faqTitle="Recevoir et exploiter un audit SEO : les questions utiles"
+        faqTitle="Comprendre un audit SEO avant de le commander ou de l’accepter"
         faqItems={faqItems}
         showWhitePaperPromo={false}
       >
         <p className="lead">
-          <strong>Scène fictive :</strong> vous recevez un rapport de 83 pages.
-          La couverture est rouge, le score du site vaut 62 sur 100 et 1 247 «
-          erreurs critiques » sont annoncées. Pourtant, personne ne sait dire
-          quelles pages génèrent des demandes, pourquoi ces alertes seraient
-          prioritaires, qui doit intervenir ni comment accepter le travail.{" "}
+          Vous cherchez peut-être à comprendre pourquoi votre site ne remonte
+          pas sur Google, pourquoi les visites baissent ou ce qu’une agence va
+          réellement vous livrer. Un <strong>audit SEO</strong> est l’examen du
+          site, de ses contenus et de ses données pour repérer ce qui limite sa
+          visibilité dans les moteurs de recherche. À la fin, vous devez savoir
           <strong>
-            Ce document est un relevé, pas encore un audit exploitable.
+            {" "}
+            ce qui pose problème, ce qu’il faut traiter d’abord, qui doit s’en
+            charger et comment vérifier le résultat
           </strong>
+          . Si le rapport se contente d’aligner des centaines d’alertes
+          techniques, il ne vous aide pas encore à décider.
         </p>
 
-        <InfoBox variant="blue" title="La réponse en une minute">
-          Un audit SEO utile remet quatre résultats : une référence datée de
-          l’existant, un diagnostic argumenté avec ses limites, un plan
-          exécutable et un protocole de vérification. Le nombre de contrôles ou
-          de pages du PDF ne suffit pas. À la fin, une personne qui n’a pas mené
-          l’analyse doit pouvoir décider, réaliser et réceptionner les actions.
+        <InfoBox variant="blue" title="La réponse simple">
+          Un audit SEO utile contient cinq choses : les pages et les données
+          examinées, les problèmes illustrés par des exemples, leur conséquence
+          probable, un plan classé par importance et un moyen de contrôler
+          chaque correction. Il ne garantit ni une première position, ni un
+          nombre de visites. Il transforme une situation floue en décisions
+          compréhensibles et vérifiables.
         </InfoBox>
 
         <GuideToc
           items={[
             {
               id: "quatre-resultats",
-              label: "Les quatre résultats obligatoires",
+              label: "Ce que vous devez pouvoir décider",
             },
             {
               id: "quatre-prestations",
-              label: "Scan, audit, stratégie ou mise en œuvre ?",
+              label: "Scan, audit, conseil ou correction ?",
             },
-            { id: "perimetre", label: "Le contrat de périmètre" },
+            {
+              id: "perimetre",
+              label: "Ce que l’auditeur a réellement examiné",
+            },
             {
               id: "sources-preuves",
-              label: "Ce que chaque source peut prouver",
+              label: "Pourquoi plusieurs sources sont nécessaires",
             },
-            { id: "socle", label: "Le socle systématique" },
-            { id: "modules", label: "Les modules conditionnels" },
-            { id: "rapport", label: "Le contenu du rapport final" },
-            { id: "reception", label: "La fiche de réception" },
-            { id: "prioriser", label: "Prioriser sans score magique" },
-            { id: "niveau", label: "Audit ciblé ou complet ?" },
-            { id: "apres", label: "Après le rapport" },
-            { id: "alertes", label: "Les signaux d’alerte" },
+            { id: "socle", label: "Les contrôles indispensables" },
+            { id: "modules", label: "Les contrôles propres à votre site" },
+            { id: "rapport", label: "À quoi ressemble un bon rapport" },
+            { id: "reception", label: "Contrôler une recommandation" },
+            {
+              id: "prioriser",
+              label: "Choisir ce qu’il faut corriger d’abord",
+            },
+            { id: "niveau", label: "Audit ciblé ou audit complet ?" },
+            { id: "apres", label: "Que faire après le rapport ?" },
+            { id: "alertes", label: "Les signaux qui doivent vous alerter" },
             { id: "sources-limites", label: "Sources et limites" },
           ]}
         />
 
-        <h2 id="quatre-resultats">Les quatre résultats obligatoires</h2>
+        <h2 id="quatre-resultats">
+          À la fin de l’audit, que devez-vous pouvoir décider ?
+        </h2>
 
         <p>
-          Un audit peut prendre des formes différentes, mais son utilité se
-          vérifie avec quatre sorties. Si l’une manque, la mission laisse une
-          partie de la décision à reconstruire.
+          Imaginez que vous recevez 80 pages et un score de 62 sur 100. Vous
+          savez que le site possède des « erreurs », mais pas si elles empêchent
+          un prospect de vous trouver, si elles touchent une page importante ou
+          si elles valent 30 minutes ou trois semaines de travail. Le rapport
+          est long, mais la décision reste entière.
         </p>
 
+        <p>Un bon audit doit répondre à ces quatre questions de direction :</p>
+
         <GuideTable
-          headers={["Sortie", "Ce qu’elle contient", "Question de réception"]}
+          headers={["Question", "Réponse attendue", "Décision possible"]}
           rows={[
             [
-              "1. Référence datée",
-              "Périmètre, date, configuration, accès, outils, volumes et exclusions",
-              "Pourrait-on refaire le même constat demain ?",
+              "Quelle est la situation aujourd’hui ?",
+              "Pages examinées, période, outils, accès et limites de l’analyse.",
+              "Accepter le diagnostic ou demander les éléments manquants.",
             ],
             [
-              "2. Diagnostic",
-              "Faits, causes plausibles, conséquences, confiance et données manquantes",
-              "Le rapport sépare-t-il observation et interprétation ?",
+              "Qu’est-ce qui gêne vraiment le site ?",
+              "Problèmes expliqués avec des exemples et un degré de certitude.",
+              "Distinguer le problème réel de la simple alerte d’un logiciel.",
             ],
             [
-              "3. Plan exécutable",
-              "Action, priorité, responsable, dépendances, charge et ordre",
-              "Une équipe extérieure pourrait-elle le réaliser ?",
+              "Que faut-il faire d’abord ?",
+              "Actions classées selon l’enjeu, le nombre de pages touchées et l’effort.",
+              "Allouer le budget et choisir les bons intervenants.",
             ],
             [
-              "4. Vérification",
-              "Critère d’acceptation immédiat et mesure différée de l’effet",
-              "Comment saura-t-on que la tâche est faite puis utile ?",
+              "Comment vérifier le travail ?",
+              "Un test précis pour chaque correction et une mesure à suivre ensuite.",
+              "Valider la livraison sans exiger une promesse de position Google.",
             ],
           ]}
         />
 
         <p>
-          La distinction entre vérification immédiate et résultat différé est
-          essentielle. Une redirection peut être testée dès sa livraison. Son
-          effet éventuel sur l’exploration, l’indexation, les impressions ou les
-          demandes s’observe ensuite, sans calendrier ni résultat garantis.
-          Google rappelle qu’une page qui respecte ses exigences techniques
-          minimales reste seulement <em>éligible</em> à l’indexation :
-          l’indexation elle-même n’est pas garantie. Consultez les{` `}
+          Une correction technique et son effet commercial ne se contrôlent pas
+          de la même façon. On peut vérifier immédiatement qu’un lien fonctionne
+          ou qu’une page est accessible. On ne peut pas garantir quand Google
+          l’indexera, à quelle position elle apparaîtra ni combien de demandes
+          elle générera. Google rappelle qu’une page conforme à ses{" "}
           <a
             href="https://developers.google.com/search/docs/essentials/technical?hl=fr"
             target="_blank"
             rel="noreferrer"
           >
-            exigences techniques de Google Search
-          </a>
-          .
+            exigences techniques minimales
+          </a>{" "}
+          reste seulement susceptible d’être indexée.
         </p>
 
         <h2 id="quatre-prestations">
-          Scan, audit, stratégie ou mise en œuvre ?
+          Un scan, un audit, des conseils et des corrections ne sont pas la même
+          chose
         </h2>
 
         <p>
-          Ces quatre prestations peuvent se suivre, mais elles ne promettent pas
-          le même résultat. Les confondre crée la plupart des déceptions : un
-          export d’outil est reçu comme une feuille de route, ou une stratégie
-          est vendue alors que l’accès technique n’a jamais été contrôlé.
+          Cette distinction évite beaucoup de déceptions. Un outil automatique
+          peut être utile pour trouver rapidement des anomalies, mais il ne
+          connaît ni vos marges, ni vos meilleurs services, ni la raison pour
+          laquelle une page existe. Demandez clairement ce qui est inclus dans
+          la proposition reçue.
         </p>
 
         <GuideTable
           headers={[
-            "Prestation",
-            "Question traitée",
-            "Livrable normal",
-            "Ne prouve pas",
+            "Ce que vous achetez",
+            "Ce que vous recevez",
+            "Ce qui reste à faire",
           ]}
           rows={[
             [
-              "Scan automatisé",
-              "Quels motifs connus l’outil détecte-t-il dans le périmètre parcouru ?",
-              "Liste d’URL, erreurs, avertissements et paramètres du crawl",
-              "La cause, la valeur métier ou la priorité réelle",
+              "Un scan automatique",
+              "Une liste d’alertes sur les pages parcourues par un logiciel.",
+              "Comprendre les causes, vérifier les exemples et choisir les priorités.",
             ],
             [
-              "Audit SEO",
-              "Qu’est-ce qui bloque, limite ou fragilise la visibilité et la mesure ?",
-              "Diagnostic sourcé, limites et liste d’actions recevable",
-              "Le résultat futur d’une correction",
+              "Un audit SEO",
+              "Une analyse expliquée et un plan d’actions classé.",
+              "Décider, faire réaliser les corrections et les contrôler.",
             ],
             [
-              "Stratégie SEO",
-              "Quels publics, sujets, pages et avantages faut-il travailler ?",
-              "Choix éditoriaux, architecture cible, objectifs et arbitrages",
-              "Que le socle technique est sain si aucun audit ne l’a établi",
+              "Une stratégie SEO",
+              "Les publics, les sujets et les pages à développer pour être trouvé.",
+              "Vérifier que le site peut soutenir cette stratégie.",
             ],
             [
-              "Mise en œuvre",
-              "Comment réaliser les actions autorisées ?",
-              "Code, contenus, redirections, paramétrage et preuves de recette",
-              "L’indépendance du diagnostic si la même partie vend tout le lot",
+              "La mise en œuvre",
+              "Les contenus, réglages ou développements effectivement réalisés.",
+              "Contrôler la livraison et observer les effets dans le temps.",
             ],
           ]}
         />
 
-        <InfoBox variant="amber" title="Dix mots techniques, traduits">
-          <strong>Crawl</strong> : parcours automatisé des URL.{" "}
-          <strong>Indexation</strong> : enregistrement possible d’une page par
-          un moteur. <strong>Canonique</strong> : URL indiquée comme version de
-          référence. <strong>Maillage interne</strong> : liens entre les pages
-          du site. <strong>Journaux serveur</strong> : traces des requêtes
-          reçues par le serveur. <strong>Données structurées</strong> : balisage
-          lisible par machine décrivant le contenu.{" "}
-          <strong>Core Web Vitals</strong> : trois mesures d’expérience réelle.{" "}
-          <strong>Backlink</strong> : lien provenant d’un autre site.{" "}
-          <strong>Robots.txt</strong> : fichier qui indique aux robots les zones
-          qu’ils peuvent explorer. <strong>Noindex</strong> : instruction
-          demandant de ne pas indexer une page.
+        <InfoBox variant="amber" title="La question à poser avant de signer">
+          « À la fin de votre intervention, quelles décisions pourrons-nous
+          prendre sans refaire l’analyse ? » La réponse doit parler de votre
+          site, de vos pages et des actions attendues — pas seulement du nombre
+          d’outils utilisés ou de lignes dans le rapport.
         </InfoBox>
 
-        <h2 id="perimetre">Le premier livrable est un contrat de périmètre</h2>
+        <h2 id="perimetre">
+          Le rapport doit dire ce que l’auditeur a réellement examiné
+        </h2>
 
         <p>
-          Avant la première recommandation, le rapport doit expliquer ce qu’il a
-          réellement observé. « Audit complet du site » ne veut rien dire si le
-          site possède plusieurs domaines, une boutique, un espace connecté, des
-          pages générées en JavaScript ou des versions internationales.
+          La mention « audit complet » ne suffit pas. Votre site peut comprendre
+          une boutique, plusieurs langues, un espace client, un ancien blog ou
+          des pages créées automatiquement. Si une partie n’a pas été regardée,
+          vous devez le savoir avant d’interpréter les conclusions.
         </p>
 
-        <p>La page de périmètre doit au minimum préciser :</p>
+        <p>Demandez une page simple qui précise :</p>
 
         <ul>
+          <li>les domaines et les parties du site incluses ou exclues ;</li>
+          <li>la date de l’analyse et la période de trafic étudiée ;</li>
+          <li>le nombre d’adresses trouvées, parcourues et vérifiées ;</li>
+          <li>les types de pages contrôlés à la main ;</li>
           <li>
-            les domaines, sous-domaines, répertoires et environnements inclus ;
-          </li>
-          <li>les dates d’extraction et la période de performance étudiée ;</li>
-          <li>
-            le nombre d’URL découvertes, parcourues et retenues, sans les
-            confondre ;
-          </li>
-          <li>
-            les limites de profondeur, de quota, de rendu JavaScript et de
-            vitesse du crawl ;
+            les accès utilisés et les données qui n’étaient pas disponibles ;
           </li>
           <li>
-            les modèles testés manuellement : accueil, service, article,
-            catégorie, produit, recherche ou erreur ;
-          </li>
-          <li>
-            les accès utilisés et les données refusées, absentes ou trop
-            récentes ;
-          </li>
-          <li>
-            les événements susceptibles de fausser la comparaison : refonte,
-            panne, campagne, saisonnalité ou changement de mesure.
+            les événements récents : refonte, panne, campagne ou changement de
+            mesure.
           </li>
         </ul>
 
         <p>
-          Même un outil officiel doit être décrit. Bing présente par exemple
-          Site Scan comme un crawl à la demande dont le périmètre, la
-          profondeur, la vitesse et le quota sont configurables. Le nombre
-          d’erreurs obtenu dépend donc aussi de la{` `}
+          Un <strong>crawl</strong> est simplement le parcours automatique des
+          adresses du site. Sa couverture dépend de ses réglages. Bing le
+          précise pour son propre{" "}
           <a
             href="https://www.bing.com/webmasters/help/site-scan-623520c9"
             target="_blank"
             rel="noreferrer"
           >
-            configuration du scan
-          </a>
-          , pas seulement de l’état du site.
+            outil Site Scan
+          </a>{" "}
+          : la profondeur, la vitesse et le nombre de pages peuvent être
+          limités. Un total d’alertes sans ces informations n’est donc pas
+          comparable d’un audit à l’autre.
         </p>
 
         <h2 id="sources-preuves">
-          Ce que chaque source peut prouver — et ce qu’elle ignore
+          Pourquoi l’audit doit croiser plusieurs sources
         </h2>
 
         <p>
-          Aucun outil ne voit toute la chaîne. Le crawl simule un parcours ; la
-          Search Console décrit la relation avec Google Search ; l’outil de
-          mesure d’audience observe une partie des visites ; les données métier
-          disent si une demande devient utile. L’audit professionnel rapproche
-          ces vues sans forcer leur égalité.
+          Chaque outil voit une partie différente de la réalité. Search Console
+          montre ce qui se passe dans Google. Votre outil de statistiques suit
+          une partie des visites. Les données commerciales indiquent si un
+          contact devient un client. Un bon audit rapproche ces informations au
+          lieu de prétendre qu’une seule suffit.
         </p>
 
         <GuideTable
-          headers={["Source", "Ce qu’elle apporte", "Angle mort à écrire"]}
+          headers={[
+            "Source",
+            "Ce qu’elle permet de comprendre",
+            "Ce qu’elle ne dit pas seule",
+          ]}
           rows={[
             [
-              "Crawl",
-              "Liens, statuts HTTP, balises, profondeur, variantes d’URL et modèles rencontrés",
-              "Ce qui est hors périmètre, non lié, protégé ou rendu différemment",
+              "Parcours automatique du site",
+              "Liens, erreurs, redirections, balises et pages rencontrées.",
+              "L’importance commerciale d’une page ou la cause certaine d’un problème.",
             ],
             [
-              "Search Console",
-              "Exploration, indexation déclarée, requêtes, impressions et clics Google",
-              "Requêtes masquées, limites d’export, autres moteurs et conversion métier",
+              "Google Search Console",
+              "Requêtes, impressions, clics et informations données par Google.",
+              "Toutes les requêtes, les autres moteurs ou la qualité d’un prospect.",
             ],
             [
-              "Mesure d’audience",
-              "Sessions observées, pages, événements et parcours selon la configuration",
-              "Consentement, bloqueurs, définitions, trafic sans balise et ventes hors ligne",
+              "Outil de mesure d’audience",
+              "Visites et actions enregistrées selon sa configuration.",
+              "Les visites bloquées, non consenties ou les ventes réalisées hors ligne.",
             ],
             [
-              "Journaux serveur",
-              "Requêtes réellement reçues, robots, statuts, fréquence et ressources demandées",
-              "Intention du moteur, qualité du contenu et action humaine après la réponse",
+              "Traces du serveur",
+              "Les demandes réellement reçues par le site, y compris celles des robots.",
+              "Pourquoi un moteur a choisi une page ou si son contenu convainc.",
             ],
             [
-              "Données de liens",
-              "Domaines et pages référentes connus de la base utilisée",
-              "Exhaustivité, valeur réelle, causalité et liens inconnus de l’outil",
-            ],
-            [
-              "Revue humaine",
-              "Clarté, cohérence avec l’offre, utilité, expertise visible et obstacles du parcours",
-              "Représentativité sans test utilisateur ni données comportementales",
+              "Lecture humaine et données métier",
+              "Clarté de l’offre, parcours de contact et valeur des demandes reçues.",
+              "Une tendance représentative sans données ni test auprès de lecteurs.",
             ],
           ]}
         />
 
         <p>
-          Des chiffres différents ne prouvent donc pas automatiquement une
-          panne. Google documente que les clics Search Console et les sessions
-          de l’outil de mesure d’audience ne coïncident pas exactement,
-          notamment parce que les outils utilisent des systèmes et des
-          définitions différents. L’important est d’expliquer les écarts
-          importants et de comparer des tendances cohérentes. Voir la
-          documentation{` `}
+          Il est normal que Search Console et l’outil de mesure d’audience
+          n’affichent pas exactement les mêmes nombres : leurs définitions et
+          leurs méthodes diffèrent. La{" "}
           <a
             href="https://developers.google.com/search/docs/monitor-debug/google-analytics-search-console?hl=fr"
             target="_blank"
             rel="noreferrer"
           >
-            Search Console et outil de mesure d’audience
-          </a>
-          .
+            documentation de Google sur ces écarts
+          </a>{" "}
+          invite à comprendre les différences plutôt qu’à forcer une égalité.
         </p>
 
-        <h2 id="socle">Le socle systématique de l’audit</h2>
+        <h2 id="socle">Les contrôles que tout audit sérieux doit couvrir</h2>
 
         <p>
-          Le socle n’est pas une liste de cent cases identiques. Il suit la
-          manière dont une page peut être découverte, comprise, choisie puis
-          reliée à un résultat. Pour chaque axe, l’auditeur doit sélectionner
-          quelques preuves représentatives et indiquer la portée du problème.
+          Le vocabulaire technique importe moins que la question posée. Vous
+          n’avez pas besoin de mémoriser cent points de contrôle : vous devez
+          comprendre pourquoi une page importante pourrait ne pas être trouvée,
+          lue ou utilisée.
         </p>
 
         <GuideTable
-          headers={["Axe", "Contrôles attendus", "Décision produite"]}
+          headers={[
+            "Question de dirigeant",
+            "Ce que l’auditeur vérifie",
+            "Décision attendue",
+          ]}
           rows={[
             [
-              "Accès et exploration",
-              "fichier robots.txt, statuts, redirections, liens, sitemaps, profondeur et pièges à URL",
-              "Quelles pages importantes peuvent réellement être atteintes ?",
+              "Google peut-il atteindre les bonnes pages ?",
+              "Liens, erreurs, redirections, fichier robots.txt et plans du site.",
+              "Rendre les pages utiles accessibles et retirer les chemins inutiles.",
             ],
             [
-              "Indexabilité et consolidation",
-              "instruction noindex, canonique, doublons, pagination, variantes et rendu du contenu principal",
-              "Quelle URL devrait représenter chaque intention ?",
+              "Google comprend-il quelle page montrer ?",
+              "Doublons, instructions d’indexation et adresse de référence.",
+              "Conserver, regrouper ou retirer les versions concurrentes.",
             ],
             [
-              "Architecture et maillage",
-              "navigation, catégories, pages orphelines, ancres, profondeur et cohérence des parcours",
-              "Comment utilisateurs et moteurs trouvent-ils les pages utiles ?",
+              "Le site répond-il aux questions des prospects ?",
+              "Clarté, profondeur, originalité et correspondance avec les recherches.",
+              "Améliorer, fusionner, créer ou supprimer un contenu.",
             ],
             [
-              "Contenu et intention",
-              "réponse, preuves, originalité, date, auteur, chevauchement et utilité commerciale",
-              "Faut-il conserver, fusionner, enrichir, créer ou retirer ?",
+              "Les pages sont-elles faciles à trouver et à utiliser ?",
+              "Navigation, liens internes, mobile, vitesse et parcours de contact.",
+              "Lever les obstacles qui font abandonner un visiteur.",
             ],
             [
-              "Présentation dans les résultats",
-              "titres, descriptions, données structurées, images et cohérence du contenu visible",
-              "La page est-elle éligible et compréhensible sans promesse d’affichage ?",
-            ],
-            [
-              "Expérience et fonctionnement",
-              "mobile, performance réelle, stabilité, interactions, erreurs et parcours de contact",
-              "Un visiteur peut-il comprendre et accomplir l’action attendue ?",
-            ],
-            [
-              "Mesure et gouvernance",
-              "Search Console, mesure d’audience, conversions, consentement, accès, propriétaires et historique",
-              "Pourra-t-on mesurer et transmettre le travail sans dépendance cachée ?",
+              "Pourrons-nous mesurer les progrès ?",
+              "Accès, événements suivis, formulaires, appels et qualité des contacts.",
+              "Corriger la mesure avant de conclure sur le retour du SEO.",
             ],
           ]}
         />
 
         <p>
-          Deux nuances empêchent les faux raccourcis. Un sitemap aide à signaler
-          des URL, mais Google le décrit comme une indication qui ne garantit ni
-          son téléchargement ni l’exploration des pages. De même, des données
-          structurées valides créent une éligibilité, pas une garantie de
-          résultat enrichi. Les sources officielles détaillent ces limites pour
-          les{` `}
+          Deux raccourcis sont particulièrement fréquents. Un fichier sitemap
+          aide les moteurs à découvrir des adresses, mais Google indique qu’il
+          ne garantit ni leur exploration ni leur indexation. De même, des
+          données structurées valides peuvent rendre une page admissible à un
+          affichage enrichi sans garantir qu’il apparaisse. Consultez les
+          explications officielles sur les{" "}
           <a
             href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap?hl=fr"
             target="_blank"
             rel="noreferrer"
           >
             sitemaps
-          </a>
-          {` `}
-          et les{` `}
+          </a>{" "}
+          et les{" "}
           <a
             href="https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=fr"
             target="_blank"
@@ -679,231 +648,183 @@ export default function Page() {
         </p>
 
         <h2 id="modules">
-          Les modules conditionnels : complets seulement si nécessaires
+          Certains contrôles ne sont utiles que pour certains sites
         </h2>
 
         <p>
-          Un audit devient profond lorsqu’il suit les risques du site, pas
-          lorsqu’il applique la même checklist à tous. Le périmètre doit prévoir
-          des branches conditionnelles et justifier celles qui sont écartées.
+          Une boutique et un cabinet local n’ont pas les mêmes risques. Payer
+          une liste identique pour tous les sites n’est pas un gage de
+          profondeur. L’audit doit expliquer pourquoi il ajoute ou écarte les
+          contrôles suivants.
         </p>
 
         <GuideTable
-          headers={["Contexte", "Module à ajouter", "Question spécifique"]}
+          headers={[
+            "Votre situation",
+            "Contrôle supplémentaire utile",
+            "Question à résoudre",
+          ]}
           rows={[
             [
-              "Commerce en ligne",
-              "filtres à combinaisons (facettes), stocks, variantes, catégories, produits retirés et données marchandes",
-              "Le catalogue crée-t-il des URL inutiles ou perd-il des pages qui vendent ?",
+              "Boutique en ligne",
+              "Filtres, variantes, stocks, catégories et produits retirés.",
+              "Le catalogue crée-t-il trop de pages ou masque-t-il celles qui vendent ?",
             ],
             [
-              "Entreprise locale",
-              "zones réellement servies, établissement, cohérence des coordonnées et pages locales",
-              "Chaque page correspond-elle à une présence ou un service défendable ?",
+              "Activité locale",
+              "Établissement, coordonnées, zones réellement servies et pages locales.",
+              "Chaque page correspond-elle à une activité réelle et crédible ?",
             ],
             [
-              "International",
-              "langues, pays, balises hreflang qui associent les versions, redirections et équivalences de contenu",
-              "Quelle version doit être proposée à quel public ?",
+              "Plusieurs langues ou pays",
+              "Correspondance entre les versions et navigation internationale.",
+              "Le bon contenu est-il proposé au bon public ?",
             ],
             [
-              "Application JavaScript",
-              "HTML initial, rendu, activation interactive de la page (hydratation), navigation, erreurs et contenu accessible sans interaction",
-              "Le contenu important arrive-t-il de façon fiable pour l’utilisateur et le moteur ?",
+              "Site très interactif",
+              "Contenu disponible au chargement, erreurs et navigation en JavaScript.",
+              "Les visiteurs et les moteurs reçoivent-ils toujours l’information importante ?",
             ],
             [
-              "Refonte ou migration",
-              "inventaire, correspondance d’URL, redirections, environnement de test et contrôle après bascule",
-              "Comment conserver les actifs et détecter une perte ?",
+              "Refonte prochaine",
+              "Inventaire des adresses, redirections et contrôles avant et après la mise en ligne.",
+              "Comment éviter de perdre les pages déjà connues des moteurs ?",
             ],
             [
-              "Site éditorial ou actualité",
-              "fraîcheur, auteurs, sources, archives, taxonomies et rythme de mise à jour",
-              "Le corpus reste-t-il utile et maintenable dans le temps ?",
-            ],
-            [
-              "Forte dépendance à l’IA",
-              "accessibilité, contenu textuel, provenance, contrôles et mesure des parcours",
-              "Les fondamentaux sont-ils solides sans inventer un balisage spécial ?",
+              "Site riche en articles",
+              "Dates, auteurs, sources, catégories, contenus proches et mises à jour.",
+              "Quels articles restent utiles et lesquels se concurrencent ?",
             ],
           ]}
         />
 
         <p>
-          À propos des fonctions d’intelligence artificielle dans Google Search,
-          la documentation actuelle indique qu’il n’existe ni exigence technique
-          supplémentaire, ni fichier spécial, ni schéma Schema.org particulier
-          pour apparaître dans AI Overviews ou AI Mode. Elle recommande les
-          mêmes fondamentaux : accès, liens internes, contenu textuel utile,
-          expérience et cohérence entre balisage et page visible. Cette
-          information est volatile et doit être revalidée :{` `}
+          Les fonctions d’intelligence artificielle de Google ne demandent pas,
+          à ce jour, un fichier ou un balisage spécial. La documentation sur les{" "}
           <a
             href="https://developers.google.com/search/docs/appearance/ai-features?hl=fr"
             target="_blank"
             rel="noreferrer"
           >
-            fonctions IA et site web
-          </a>
-          .
+            fonctionnalités d’IA dans Google Search
+          </a>{" "}
+          renvoie aux mêmes fondamentaux : contenu utile, accessible, visible
+          dans la page et correctement relié. Cette documentation évolue ; elle
+          doit être vérifiée au moment de l’audit.
         </p>
 
-        <h2 id="rapport">
-          Le contenu du rapport final, dans l’ordre de décision
-        </h2>
+        <h2 id="rapport">À quoi ressemble un rapport vraiment exploitable ?</h2>
 
         <p>
-          Un rapport professionnel n’a pas besoin d’être spectaculaire. Il doit
-          permettre trois niveaux de lecture : la direction comprend la décision
-          en quelques minutes, les responsables arbitrent le plan et les
-          exécutants retrouvent chaque preuve.
+          La direction doit pouvoir lire l’essentiel en quelques minutes, puis
+          transmettre chaque action à la bonne personne. Les détails techniques
+          sont utiles, mais ils viennent après la décision.
         </p>
 
         <ol>
           <li>
-            <strong>Une synthèse d’une page :</strong> décision, risques
-            majeurs, opportunités, inconnues et prochaine étape.
+            <strong>Une synthèse courte :</strong> les trois à cinq sujets les
+            plus importants, leur conséquence et la prochaine décision.
           </li>
           <li>
-            <strong>Le périmètre :</strong> sites, périodes, accès, outils,
-            couverture, exclusions et événements connus.
+            <strong>Ce qui a été examiné :</strong> parties du site, période,
+            outils, accès, volume et limites.
           </li>
           <li>
-            <strong>La méthode :</strong> manière de collecter, limites,
-            définitions et règles d’échantillonnage.
+            <strong>Les constats :</strong> exemples de pages, explication en
+            français courant et niveau de certitude.
           </li>
           <li>
-            <strong>Le diagnostic par axe :</strong> fait, preuve, portée,
-            conséquence et confiance.
+            <strong>Le plan :</strong> action, responsable, ordre, charge
+            indicative et dépendances.
           </li>
           <li>
-            <strong>Le plan priorisé :</strong> action, propriétaire,
-            dépendances, charge indicative et ordre.
+            <strong>Le contrôle :</strong> test à réaliser lorsque la correction
+            est livrée, puis indicateur à observer dans le temps.
           </li>
           <li>
-            <strong>Les fiches de réception :</strong> test immédiat, résultat
-            attendu et retour arrière si nécessaire.
-          </li>
-          <li>
-            <strong>Le plan de mesure :</strong> référence avant changement,
-            indicateur, fenêtre d’observation et limites causales.
-          </li>
-          <li>
-            <strong>Les annexes :</strong> exports, listes d’URL, captures
-            datées et documentation utile.
+            <strong>Les annexes :</strong> exports, captures et listes complètes
+            pour les personnes qui exécuteront le travail.
           </li>
         </ol>
 
-        <p>
-          L’annexe peut compter des milliers de lignes. Le corps du rapport doit
-          rester sélectif. Chaque exemple doit mener à une décision ; sinon il
-          appartient à l’export brut.
-        </p>
-
         <h2 id="reception">
-          Réceptionner chaque recommandation avec six preuves
+          Contrôlez chaque recommandation avant de lancer le travail
         </h2>
 
         <SeoAuditReceptionSheet />
 
         <p>
-          Prenons un exemple entièrement fictif. Un outil annonce « 1 247 pages
-          dupliquées, priorité haute ». La phrase ne dit pas si ces URL sont
-          accessibles aux moteurs, si elles reçoivent des liens, si elles
-          représentent des variantes légitimes ni si elles touchent une section
-          utile.
+          <strong>Exemple illustratif fictif :</strong> un logiciel signale « 1
+          247 pages dupliquées — urgence élevée ». Pris seul, ce nombre ne dit
+          pas si les pages sont visibles dans Google, utiles à vos clients ou
+          volontairement proches. Voici comment transformer l’alerte en
+          décision.
         </p>
 
         <GuideTable
-          headers={["Champ", "Exemple de formulation recevable"]}
+          headers={["À demander", "Réponse exploitable"]}
           rows={[
             [
-              "Fait et périmètre",
-              "Le crawl du 20 juillet a rencontré 1 247 URL à paramètres depuis les filtres de trois catégories ; 312 renvoient un contenu très proche de leur catégorie de référence.",
+              "Ce qui a été vu",
+              "Le 20 juillet, le logiciel a trouvé 1 247 adresses créées par les filtres de trois catégories ; 312 montrent presque le même contenu.",
             ],
             [
-              "Preuve et limite",
-              "Liste d’URL et chemin de découverte joints ; journaux serveur absents, donc fréquence réelle d’exploration inconnue.",
+              "Ce que l’on ignore encore",
+              "Les traces du serveur n’ont pas été fournies : on ne sait pas à quelle fréquence les moteurs visitent ces adresses.",
             ],
             [
-              "Conséquence et confiance",
-              "Dilution possible des chemins et maintenance plus complexe ; impact sur l’indexation non démontré. Confiance moyenne.",
+              "Pourquoi cela compte",
+              "Ces adresses compliquent la navigation et la maintenance ; leur effet sur la visibilité reste à confirmer.",
             ],
             [
-              "Action",
-              "Tester la consolidation d’un modèle de filtre non générateur de ventes avant généralisation ; développement responsable, métier consulté.",
+              "Ce qu’il faut faire",
+              "Tester une correction sur un seul type de filtre, sans toucher aux pages qui génèrent des ventes.",
             ],
             [
-              "Réception",
-              "Les URL de test ne sont plus liées, renvoient la réponse décidée et la catégorie reste fonctionnelle sur mobile et ordinateur.",
-            ],
-            [
-              "Mesure différée",
-              "Comparer exploration et couverture de l’échantillon après retraitement ; ne pas promettre de hausse de position ou de chiffre d’affaires.",
+              "Comment contrôler",
+              "Vérifier le fonctionnement des filtres et l’accès aux pages importantes avant d’étendre la correction.",
             ],
           ]}
         />
 
-        <p>
-          Ce niveau de précision protège aussi le prestataire : il empêche de
-          lui attribuer un résultat que le rapport n’a jamais garanti et rend
-          visible une dépendance au développement, au contenu ou à la décision
-          métier.
-        </p>
-
-        <h2 id="prioriser">Prioriser sans score magique</h2>
+        <h2 id="prioriser">
+          Comment choisir ce qu’il faut corriger en premier ?
+        </h2>
 
         <p>
-          La gravité affichée par un outil exprime sa propre règle. La priorité
-          de l’entreprise doit croiser plusieurs dimensions que personne ne peut
-          additionner honnêtement sans expliquer le calcul.
+          N’utilisez pas automatiquement la gravité donnée par l’outil. Une
+          alerte classée « critique » peut toucher une ancienne page sans
+          visite. Une erreur moins impressionnante peut bloquer le formulaire de
+          votre service le plus rentable. Pour chaque action, posez cinq
+          questions :
         </p>
 
         <ul>
+          <li>le problème empêche-t-il une page importante de fonctionner ?</li>
+          <li>combien de pages et quels services sont concernés ?</li>
           <li>
-            <strong>Gravité :</strong> la page devient-elle inaccessible,
-            trompeuse ou simplement imparfaite ?
+            le lien entre le problème et la conséquence est-il certain ou
+            seulement probable ?
           </li>
-          <li>
-            <strong>Portée :</strong> une URL, un modèle, une section ou tout le
-            site ?
-          </li>
-          <li>
-            <strong>Valeur :</strong> quelles intentions, demandes, ventes ou
-            fonctions sont touchées ?
-          </li>
-          <li>
-            <strong>Confiance :</strong> fait reproduit, cause probable,
-            hypothèse à tester ou donnée absente ?
-          </li>
-          <li>
-            <strong>Effort et risque :</strong> correction isolée, chantier
-            transversal, dépendance ou possibilité de retour arrière ?
-          </li>
+          <li>combien coûte la correction et que risque-t-elle de casser ?</li>
+          <li>peut-on commencer par un petit test facile à annuler ?</li>
         </ul>
 
-        <p>
-          La bonne sortie n’est pas forcément « corriger ». Une ligne du plan
-          peut devenir : conserver tel quel, documenter, mesurer davantage,
-          tester sur un échantillon, fusionner avec un autre chantier ou écarter
-          l’alerte. Une petite erreur sur le formulaire d’une page très demandée
-          peut ainsi passer avant des centaines de descriptions manquantes.
-        </p>
-
-        <InfoBox variant="emerald" title="Deux critères, pas un seul">
-          Le <strong>critère d’acceptation</strong> vérifie que la tâche est
-          bien livrée : statut, contenu, lien ou événement attendu. La{" "}
-          <strong>mesure différée</strong> observe ensuite ce qui évolue.
-          Confondre les deux oblige le développeur à garantir une position qu’il
-          ne contrôle pas, ou permet de clôturer une tâche sans vérifier sa mise
-          en œuvre.
+        <InfoBox variant="emerald" title="Deux moments de contrôle">
+          À la livraison, vérifiez que la correction fonctionne : la bonne page
+          répond, le lien mène au bon endroit, le formulaire envoie la demande.
+          Ensuite, observez les impressions, les visites et les contacts sur une
+          période adaptée. Le premier contrôle valide le travail ; le second
+          étudie son effet sans l’inventer.
         </InfoBox>
 
-        <h2 id="niveau">Revue interne, audit ciblé ou audit complet ?</h2>
+        <h2 id="niveau">Audit ciblé ou audit complet : lequel choisir ?</h2>
 
         <p>
-          Le périmètre le plus large n’est pas toujours le plus utile. La bonne
-          prestation dépend du nombre d’inconnues et de la portée de la
-          décision. Le budget est traité séparément dans notre guide sur le{` `}
+          Le plus gros rapport n’est pas toujours le meilleur achat. Partez de
+          la question que vous devez résoudre. Le budget des différentes
+          prestations est détaillé dans notre guide sur le{" "}
           <Link href="/guides/prix-referencement-naturel">
             prix du référencement naturel
           </Link>
@@ -911,205 +832,170 @@ export default function Page() {
         </p>
 
         <GuideTable
-          headers={["Format", "À choisir quand", "Livrable minimal", "Limite"]}
+          headers={[
+            "Votre situation",
+            "Format adapté",
+            "Ce que vous devez recevoir",
+          ]}
           rows={[
             [
-              "Revue interne",
-              "Question simple, équipe compétente, changement limité et données accessibles",
-              "Constat daté, décision, test et responsable",
-              "Peut manquer de recul ou de temps d’enquête",
+              "Une question simple et bien localisée",
+              "Contrôle interne ou avis ponctuel.",
+              "Constat, décision, responsable et test final.",
             ],
             [
-              "Audit ciblé",
-              "Baisse sur une section, problème d’indexation, modèle de page ou mesure précise",
-              "Périmètre restreint, preuves croisées et plan propre au problème",
-              "Ne constitue pas un bilan global du site",
+              "Une chute sur une section ou un problème précis",
+              "Audit ciblé.",
+              "Analyse des pages concernées, causes possibles et plan limité au problème.",
             ],
             [
-              "Audit complet",
-              "Causes inconnues, plusieurs systèmes, refonte, catalogue ou feuille de route globale",
-              "Socle, modules pertinents, arbitrages, dépendances et réception",
-              "Demande davantage d’accès, de temps et d’implication métier",
+              "Des causes inconnues ou une refonte importante",
+              "Audit complet.",
+              "Vue d’ensemble, contrôles propres au site et plan de travail ordonné.",
             ],
           ]}
         />
 
         <GuideInlineCTA
-          title="Faire cadrer le périmètre de mon audit"
-          description="Décrivez le site, le symptôme et la décision à prendre. Nous préciserons les accès minimaux, les modules utiles et le livrable attendu — ou nous vous dirons si une revue interne ou ciblée suffit."
+          title="Vous voulez savoir quel audit est réellement nécessaire ?"
+          description="Expliquez-nous le site, le symptôme observé et la décision que vous devez prendre. Nous vous dirons quels accès et quels contrôles sont utiles — y compris lorsqu’un contrôle ciblé suffit et vous évite un audit trop large."
           tags={[
-            "Périmètre explicite",
-            "Preuves vérifiables",
-            "Aucune garantie de position",
+            "Réponse adaptée au problème",
+            "Priorités compréhensibles",
+            "Aucune promesse de position",
           ]}
-          ctaLabel="Cadrer mon audit SEO"
+          ctaLabel="Présenter mon problème SEO"
           ctaHref="/demarrer-un-projet"
         />
 
-        <h2 id="apres">
-          Après le rapport : passer de la recommandation à la preuve
-        </h2>
+        <h2 id="apres">Que faire après avoir reçu le rapport ?</h2>
 
         <p>
-          La livraison du rapport doit comprendre une restitution et un
-          protocole de contrôle. L’exécution, la recette et le suivi peuvent
-          relever d’un périmètre séparé, à écrire au devis. La boucle ci-dessous
-          décrit donc la gouvernance à organiser après l’audit, quel que soit
-          l’intervenant retenu.
+          N’envoyez pas immédiatement tout le document au développeur avec la
+          consigne « corriger ». Réunissez les personnes concernées, acceptez ou
+          reformulez les actions importantes, puis lancez les corrections par
+          petits groupes cohérents.
         </p>
 
         <ol>
           <li>
-            <strong>Geler la référence :</strong> conserver exports, captures,
-            versions et période avant modification.
+            Conservez les données et captures prises avant les changements.
           </li>
           <li>
-            <strong>Arbitrer :</strong> accepter, reformuler, tester ou écarter
-            chaque priorité importante.
+            Validez les priorités avec la personne qui connaît les enjeux
+            commerciaux.
+          </li>
+          <li>Nommez qui décide, qui réalise et qui contrôle chaque action.</li>
+          <li>
+            Commencez par les problèmes bloquants et les tests peu risqués.
           </li>
           <li>
-            <strong>Attribuer :</strong> nommer le décideur, l’exécutant et la
-            personne qui réceptionne.
+            Vérifiez le site sur mobile et ordinateur après chaque mise en
+            ligne.
           </li>
           <li>
-            <strong>Regrouper :</strong> ordonner les dépendances pour éviter de
-            réécrire deux fois la même brique.
-          </li>
-          <li>
-            <strong>Recetter :</strong> exécuter le test immédiat et documenter
-            le résultat, y compris lorsqu’il échoue.
-          </li>
-          <li>
-            <strong>Observer :</strong> attendre une fenêtre adaptée aux
-            données, comparer avec la référence et conserver les autres causes
-            possibles.
+            Observez ensuite les données sans attribuer trop vite toute
+            variation à une seule correction.
           </li>
         </ol>
 
         <p>
-          Pour une refonte, cette séquence doit s’intégrer à un protocole de
-          migration plus large : inventaire d’URL, correspondances, contrôle
-          avant bascule et surveillance après mise en ligne. Notre guide{` `}
+          Une refonte demande un suivi particulier : liste des anciennes
+          adresses, correspondance avec les nouvelles, redirections et contrôle
+          après la mise en ligne. Notre guide pour{" "}
           <Link href="/guides/refonte-sans-perdre-son-seo">
-            refonte sans perdre son SEO
-          </Link>
-          {` `}
-          traite ce chantier spécifique.
+            refondre un site sans perdre son SEO
+          </Link>{" "}
+          détaille cette opération.
         </p>
 
         <p>
-          Une baisse de trafic mérite la même prudence. Google énumère plusieurs
-          familles de causes — techniques, saisonnières, changements de demande,
-          mises à jour ou évolution du site — et rappelle qu’une modification ne
-          garantit pas un effet visible. Le rapport doit donc conserver les
-          hypothèses concurrentes. Voir le guide officiel pour{` `}
+          Une baisse de trafic peut aussi venir de plusieurs causes : changement
+          technique, saison, évolution de la demande, mise à jour du moteur ou
+          modification du contenu. La méthode officielle de Google pour{" "}
           <a
             href="https://developers.google.com/search/docs/monitor-debug/debugging-search-traffic-drops?hl=fr"
             target="_blank"
             rel="noreferrer"
           >
-            diagnostiquer une baisse de trafic Google Search
-          </a>
-          .
+            analyser une baisse de trafic
+          </a>{" "}
+          recommande de conserver plusieurs explications possibles tant que les
+          données ne permettent pas de trancher.
         </p>
 
-        <h2 id="alertes">Douze signaux d’alerte dans un rapport SEO</h2>
+        <h2 id="alertes">Les signaux qui doivent vous alerter</h2>
 
         <ul>
           <li>
-            le périmètre, la date ou la configuration du crawl ne sont pas
-            indiqués ;
+            le rapport ne dit pas quelles pages et quelles dates ont été
+            examinées ;
           </li>
-          <li>un score global remplace l’explication des priorités ;</li>
+          <li>un score global remplace l’explication des problèmes ;</li>
+          <li>les alertes d’un logiciel sont copiées sans exemple concret ;</li>
+          <li>toutes les erreurs sont présentées comme urgentes ;</li>
           <li>
-            les erreurs d’outil sont copiées sans exemples d’URL ni revue
-            humaine ;
-          </li>
-          <li>observation, cause, corrélation et garantie sont mélangées ;</li>
-          <li>
-            Search Console et l’outil de mesure d’audience sont sommés
-            d’afficher le même total ;
+            les recommandations ne disent ni qui intervient ni comment vérifier
+            ;
           </li>
           <li>
-            un sitemap, une canonique ou des données structurées sont présentés
-            comme une garantie d’indexation ou d’affichage ;
+            une conformité RGPD ou accessibilité est annoncée sans audit
+            spécialisé ;
           </li>
           <li>
-            le rapport ordonne de retirer ou désavouer des liens sans preuve ni
-            contexte ;
+            l’auditeur demande des droits de modification avant d’expliquer
+            pourquoi ;
           </li>
           <li>
-            toutes les pages reçoivent le même modèle de contenu sans intention
-            ni valeur propre ;
-          </li>
-          <li>
-            une conformité RGPD, cookies ou accessibilité est déclarée sans
-            audit spécialisé ;
-          </li>
-          <li>
-            la recommandation ne nomme ni responsable, ni dépendance, ni critère
-            d’acceptation ;
-          </li>
-          <li>
-            l’auditeur demande immédiatement des droits d’écriture sans
-            nécessité expliquée ni sauvegarde ;
-          </li>
-          <li>
-            une première position, un délai, un trafic ou un chiffre d’affaires
-            sont garantis.
+            une position, un trafic, un délai ou un chiffre d’affaires sont
+            garantis.
           </li>
         </ul>
 
         <p>
-          Google recommande lui-même de commencer un audit avec un accès Search
-          Console en lecture seule, d’examiner les recommandations avant des
-          modifications importantes et de se méfier des garanties de première
-          position. La page officielle{` `}
+          Google recommande de commencer avec un accès Search Console en lecture
+          seule, d’examiner les recommandations avant les modifications
+          importantes et de se méfier des garanties de première position. Sa
+          page officielle pour{" "}
           <a
             href="https://developers.google.com/search/docs/fundamentals/do-i-need-seo?hl=fr"
             target="_blank"
             rel="noreferrer"
           >
-            choisir un référenceur
-          </a>
-          {` `}
-          constitue un bon minimum contractuel. Pour comparer ensuite les
-          personnes et les engagements, consultez aussi notre guide pour{` `}
+            choisir un prestataire SEO
+          </a>{" "}
+          constitue une bonne base. Notre guide pour{" "}
           <Link href="/guides/choisir-son-agence-web">
             choisir une agence web
-          </Link>
-          .
+          </Link>{" "}
+          complète les questions sur le devis, les accès et la relation de
+          travail.
         </p>
 
-        <h2 id="sources-limites">Sources, conformité et limites de ce guide</h2>
+        <h2 id="sources-limites">Sources et limites de ce guide</h2>
 
         <p>
-          Ce guide décrit la réception d’un audit SEO ; il ne certifie ni le
-          site, ni un prestataire. Les fonctions des moteurs et de leurs outils
-          évoluent. Les pages officielles ont été contrôlées le 20 juillet 2026
-          et doivent être revalidées au moment d’une mission.
+          Les documents ci-dessous ont été consultés le 20 juillet 2026. Ils
+          peuvent évoluer. Un audit SEO ne remplace pas un audit juridique,
+          l’examen complet de l’accessibilité ni une étude commerciale de vos
+          prospects.
         </p>
 
         <ul>
           <li>
-            Google Search Central :{` `}
-            <a
-              href="https://developers.google.com/search/docs/essentials/technical?hl=fr"
-              target="_blank"
-              rel="noreferrer"
-            >
-              exigences techniques
-            </a>
-            ,{` `}
+            Google Search Central : les{" "}
             <a
               href="https://developers.google.com/search/docs/appearance/core-web-vitals?hl=fr"
               target="_blank"
               rel="noreferrer"
             >
               Core Web Vitals
-            </a>
-            {` `}
-            et{` `}
+            </a>{" "}
+            mesurent des aspects de l’expérience réelle, sans résumer à eux
+            seuls le classement.
+          </li>
+          <li>
+            Google explique aussi les{" "}
             <a
               href="https://developers.google.com/search/blog/2022/10/performance-data-deep-dive"
               target="_blank"
@@ -1117,58 +1003,52 @@ export default function Page() {
             >
               limites des données Search Console
             </a>
-            .
+            , notamment les requêtes masquées et les limites d’export.
           </li>
           <li>
-            CNIL : les traceurs de mesure d’audience ne peuvent être exemptés de
-            consentement que sous conditions, selon leur finalité, leur
-            configuration et l’usage des données. Voir les{` `}
+            La CNIL encadre sous conditions l’exemption de consentement de
+            certains outils de mesure d’audience : voir les{" "}
             <a
               href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/regles/cookies-solutions-pour-les-outils-de-mesure-daudience"
               target="_blank"
               rel="noreferrer"
             >
-              conditions relatives à la mesure d’audience
+              règles relatives à la mesure d’audience
             </a>
             .
           </li>
           <li>
-            DINUM : le{` `}
+            Le{" "}
             <a
               href="https://accessibilite.numerique.gouv.fr/"
               target="_blank"
               rel="noreferrer"
             >
-              RGAA 4.1.2
-            </a>
-            {` `}
-            possède une méthode et 106 critères. Signaler un problème visible
-            dans un audit SEO ne permet pas de déclarer un niveau de conformité
-            d’accessibilité.
+              référentiel général d’amélioration de l’accessibilité
+            </a>{" "}
+            possède sa propre méthode. Repérer un problème dans un audit SEO ne
+            suffit pas à déclarer un site conforme.
           </li>
         </ul>
 
         <InfoBox
           variant="amber"
-          title="Ce que l’audit ne peut pas certifier seul"
+          title="Ce qu’un audit SEO peut honnêtement promettre"
         >
-          Ni l’indexation future, ni un classement, ni l’attribution certaine
-          d’une variation, ni la conformité juridique ou d’accessibilité, ni la
-          rentabilité commerciale. Il peut en revanche rendre les faits
-          reproductibles, les décisions explicites et les corrections
-          vérifiables. C’est déjà ce qui transforme un rapport en outil de
-          direction.
+          Il peut rendre les problèmes compréhensibles, les décisions explicites
+          et les corrections contrôlables. Il ne peut pas certifier une future
+          position Google, un volume de trafic, un nombre de clients ni une
+          conformité juridique complète.
         </InfoBox>
 
         <p>
-          Vous pouvez présenter notre{` `}
+          Vous pouvez évaluer notre{" "}
           <Link href="/services/referencement-google">
             accompagnement en référencement naturel
-          </Link>
-          {` `}à cette même grille. Demandez le périmètre, les preuves, la
-          personne responsable et la façon de vérifier chaque action. Un
-          prestataire professionnel doit pouvoir répondre sans transformer une
-          estimation en promesse.
+          </Link>{" "}
+          avec les mêmes questions : quelles pages seront examinées, quelles
+          actions seront proposées, qui les réalisera et comment vous pourrez
+          les contrôler.
         </p>
       </GuideLayout>
     </GuidesShell>

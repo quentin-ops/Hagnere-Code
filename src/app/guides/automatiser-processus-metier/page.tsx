@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: guideUrl(guide) + "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Automatiser un processus métier : matrice gain, risque et stabilité",
+        alt: "Choisir le premier processus à automatiser dans son entreprise",
       },
     ],
     publishedTime: guide.datePublished + "T09:00:00+02:00",
@@ -104,44 +104,42 @@ const breadcrumbJsonLd = JSON.stringify({
 
 const faqItems = [
   {
-    question: "Quel processus métier faut-il automatiser en premier ?",
+    question: "Quel processus faut-il automatiser en premier ?",
     answer:
-      "Commencez par un processus dont le gain est mesuré, le chemin normal stable et le risque d’erreur faible ou contenu par une validation humaine. Les ressaisies entre deux outils, les notifications et la préparation de dossiers sont souvent de meilleurs premiers candidats qu’une décision complexe ou qu’un planning rempli d’exceptions. La tâche la plus irritante n’est pas forcément celle qui produit le meilleur premier projet.",
+      "Commencez par une tâche fréquente, stable, mesurable et facile à reprendre à la main si quelque chose se passe mal. Une ressaisie entre deux logiciels, la préparation d’un document ou l’orientation de demandes simples constituent souvent de bons premiers essais. Une décision commerciale exceptionnelle, un paiement ou un planning rempli de cas particuliers sont de moins bons candidats.",
+  },
+  {
+    question: "Faut-il forcément développer un logiciel sur mesure ?",
+    answer:
+      "Non. Vérifiez d’abord si vous pouvez supprimer une étape, mieux utiliser un logiciel déjà payé ou activer une fonction existante. Un connecteur entre deux outils peut ensuite suffire. Le développement sur mesure devient pertinent lorsque plusieurs rôles, règles propres à l’entreprise ou intégrations importantes ne sont pas correctement couverts par une solution standard.",
   },
   {
     question:
-      "Faut-il utiliser de l’intelligence artificielle pour automatiser ?",
+      "L’intelligence artificielle est-elle nécessaire pour automatiser ?",
     answer:
-      "Non. Une règle déterministe reste préférable quand l’entrée est structurée et la décision explicable. L’IA devient utile pour classer ou extraire une information ambiguë, mais sa sortie doit alors être évaluée sur des exemples réels, assortie d’un seuil de confiance et d’une voie de validation humaine lorsque l’erreur a des conséquences.",
+      "Non. Une règle classique est souvent plus fiable lorsque les données et la décision sont claires. L’intelligence artificielle peut aider à classer un message, extraire une information d’un document ou préparer un brouillon. Sa réponse n’étant pas certaine à chaque fois, prévoyez un contrôle humain lorsque l’erreur peut avoir une conséquence commerciale, financière ou juridique.",
   },
   {
-    question: "Peut-on automatiser sans remplacer les logiciels actuels ?",
+    question: "Comment calculer si une automatisation sera rentable ?",
     answer:
-      "Oui, si leurs fonctions natives, leurs connecteurs ou leurs API permettent d’échanger les bonnes données avec des identifiants fiables. Commencez par vérifier ce qui existe déjà dans vos outils. Si l’un d’eux n’offre aucun accès stable, une automatisation par clics peut dépanner, mais elle doit être surveillée car une modification d’écran peut la casser.",
-  },
-  {
-    question:
-      "Comment calculer le retour sur investissement d’une automatisation ?",
-    answer:
-      "Mesurez d’abord fréquence, durée et personnes concernées. Valorisez uniquement la part du temps qui sera réellement réaffectée ou la dépense effectivement évitée. Comparez ces bénéfices au coût total de possession sur le même horizon. Le retour sur investissement est égal aux bénéfices cumulés attribuables moins le coût total, divisés par ce coût total, puis multipliés par 100.",
+      "Mesurez le nombre de cas, le temps réellement passé et les corrections pendant une période représentative. Valorisez seulement le temps qui pourra réellement être réaffecté à une activité utile ou la dépense qui sera effectivement évitée. Comparez ce bénéfice au coût de mise en place, aux abonnements, au suivi, à la maintenance, au temps de vos équipes et au coût de sortie sur la même durée.",
   },
   {
     question: "Combien de temps faut-il pour automatiser un processus ?",
     answer:
-      "La durée dépend moins du nombre d’écrans que de la clarté des règles, de l’accès aux données, des intégrations et des exceptions. Exigez un calendrier par preuves : cartographie validée, accès testés, pilote, tests d’acceptation des cas normaux et des pannes, puis déploiement. Une date donnée avant l’inventaire des systèmes et des exceptions est une hypothèse, pas un engagement fiable.",
+      "Il n’existe pas de délai sérieux sans connaître les règles, les logiciels à connecter et les exceptions. Un premier essai limité peut être planifié après une courte observation, puis chiffré avec ses étapes : préparation, connexion, test avec des cas réels, correction et mise en service. Demandez toujours un calendrier lié à ces résultats, pas seulement une date finale.",
   },
   {
-    question: "Qui doit être responsable d’une automatisation interne ?",
+    question: "Qui doit s’occuper de l’automatisation après son lancement ?",
     answer:
-      "Un propriétaire métier décide des règles et des indicateurs ; un responsable d’exploitation reçoit les alertes et organise la reprise ; les utilisateurs testent les situations réelles ; le prestataire construit, documente et corrige selon le contrat. Une automatisation sans propriétaire après sa mise en service devient rapidement un risque.",
+      "Une personne de l’entreprise doit rester responsable de la règle métier et une autre, parfois la même dans une petite structure, doit recevoir les alertes et traiter les échecs. Le prestataire peut surveiller et maintenir la partie technique selon le contrat. Les utilisateurs doivent savoir reconnaître un cas bloqué et revenir temporairement au traitement manuel.",
   },
   {
-    question: "Comment éviter qu’une automatisation propage une erreur ?",
+    question: "Comment éviter qu’une erreur soit répétée automatiquement ?",
     answer:
-      "Testez les données manquantes, doublons, droits insuffisants, indisponibilités d’un logiciel, relances et reprises après panne. Conservez un identifiant unique, un journal lisible, une alerte et une file de traitement manuel. Pour les actions coûteuses ou irréversibles, placez une validation humaine avant l’action finale.",
+      "Testez les champs manquants, les doublons, les droits insuffisants, les logiciels indisponibles et la reprise après une panne. Chaque cas doit avoir un identifiant, laisser une trace compréhensible et rejoindre une liste de traitement manuel s’il échoue. Ajoutez une validation humaine avant toute action difficile à annuler.",
   },
 ];
-
 
 export default function Page() {
   return (
@@ -164,29 +162,29 @@ export default function Page() {
           { label: "Automatiser un processus métier" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="La bonne première automatisation n’est pas la tâche la plus agaçante. C’est un processus dont le gain est mesuré, les règles assez stables et l’erreur maîtrisable. Voici comment le choisir, comparer six réponses et prouver sa valeur avant de le généraliser."
+        heroDescription="Vous perdez du temps à recopier des informations, préparer les mêmes documents ou relancer des dossiers ? Ce guide vous aide à choisir une première tâche à automatiser, à comparer les solutions possibles et à vérifier la rentabilité avant d’investir."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel={"Publié le " + formatGuideDate(guide.datePublished)}
+        updatedLabel={"Mis à jour le " + formatGuideDate(guide.dateModified)}
         keyPoints={[
           {
             number: "01",
-            title: "Matrice gain-risque-stabilité",
+            title: "Une tâche simple à choisir",
             description: "",
             color: "violet",
           },
           {
             number: "02",
-            title: "6 réponses comparées",
+            title: "6 solutions à comparer",
             description: "",
             color: "blue",
           },
           {
             number: "03",
-            title: "Rentabilité fictive recalculable",
+            title: "Un calcul de rentabilité complet",
             description: "",
             color: "emerald",
           },
@@ -219,152 +217,110 @@ export default function Page() {
             label: "Développement d’outils internes",
           },
         ]}
-        faqTitle="Automatisation métier : les questions qui restent"
+        faqTitle="Automatiser un processus : les questions fréquentes"
         faqItems={faqItems}
         showWhitePaperPromo={false}
       >
         <p className="lead">
-          <strong>
-            Automatisez d’abord un processus à gain mesurable, chemin stable et
-            erreur contenue.
-          </strong>{" "}
-          Si le gain est faible, simplifiez sans logiciel. Si les règles
-          changent encore, stabilisez-les. Si une erreur peut payer le mauvais
-          fournisseur, refuser un client ou bloquer la production, gardez un
-          contrôle humain jusqu’à ce que les preuves permettent d’aller plus
-          loin.
+          Vous voyez peut-être la même information passer d’un courriel à un
+          tableur, puis du tableur à votre logiciel de facturation. Vos équipes
+          y consacrent du temps, oublient parfois une étape et vous demandent
+          s’il faut « automatiser tout cela ».{" "}
+          <strong>La réponse courte :</strong> commencez par une seule tâche
+          fréquente, dont les règles changent peu et dont une erreur reste
+          facile à repérer. Une automatisation est simplement un logiciel qui
+          exécute une suite d’actions à votre place. Elle peut tenir dans une
+          fonction déjà présente dans vos outils ; elle ne nécessite pas
+          forcément une nouvelle application ni de l’intelligence artificielle.
         </p>
-
-        <InfoBox variant="blue" title="La règle de sélection en quatre filtres">
-          <ol className="mb-0 mt-2 space-y-1.5 pl-5">
-            <li>
-              <strong>Mesurez</strong> la fréquence, le temps, les attentes et
-              les corrections sur des cas réels.
-            </li>
-            <li>
-              <strong>Stabilisez</strong> le chemin normal et nommez les
-              exceptions avant de choisir un outil.
-            </li>
-            <li>
-              <strong>Contenez</strong> l’erreur avec une validation, une
-              alerte, un journal et une reprise manuelle.
-            </li>
-            <li>
-              <strong>Choisissez la moindre complexité durable</strong> :
-              supprimer une étape, utiliser une fonction existante, connecter
-              deux outils ou développer seulement si le besoin le justifie.
-            </li>
-          </ol>
-        </InfoBox>
 
         <p>
-          Hagnéré Code développe des outils internes : notre intérêt commercial
-          est visible. La méthode ci-dessous empêche justement ce biais de
-          devenir votre conclusion. Elle peut recommander de ne rien développer,
-          d’exploiter une fonction déjà payée ou de conserver une décision
-          humaine.
+          Dans ce guide, vous allez choisir un premier cas utile, comparer six
+          réponses — y compris simplifier le travail ou ne rien développer —,
+          calculer le coût complet et préparer un essai limité. L’objectif est
+          que vous puissiez prendre une décision compréhensible par la direction
+          comme par les personnes qui réalisent le travail chaque jour.
         </p>
+
+        <InfoBox variant="blue" title="La réponse en une minute">
+          Une bonne première automatisation réunit quatre qualités : elle
+          revient souvent, son résultat est facile à vérifier, ses règles sont
+          déjà comprises et l’équipe peut reprendre la main en cas de problème.
+          Si l’une de ces conditions manque, commencez par simplifier ou
+          observer le travail au lieu d’acheter immédiatement un outil.
+        </InfoBox>
 
         <GuideToc
           items={[
             {
               id: "definition",
-              label: "1. Partir du processus, pas de l’outil",
+              label: "1. Ce que vous automatisez réellement",
             },
             {
               id: "observation",
-              label: "2. Observer sept jours et produire la carte",
+              label: "2. Mesurer le travail pendant une semaine",
             },
-            { id: "matrice", label: "3. La matrice gain-risque-stabilité" },
-            {
-              id: "options",
-              label: "4. Six réponses possibles, dont ne rien faire",
-            },
+            { id: "matrice", label: "3. Choisir le meilleur premier candidat" },
+            { id: "options", label: "4. Comparer six réponses possibles" },
             {
               id: "techniques",
-              label: "5. Connecteurs, robot, IA ou code : traduire",
+              label: "5. Comprendre les solutions proposées",
             },
-            {
-              id: "roi",
-              label: "6. Coût total et retour sur investissement",
-            },
-            { id: "responsabilites", label: "7. Responsabilités et adoption" },
-            {
-              id: "pilote-recette",
-              label: "8. Piloter et tester les cas d’échec",
-            },
-            {
-              id: "cas-inadaptes",
-              label: "9. Les projets à reporter ou refuser",
-            },
-            {
-              id: "plan-sept-jours",
-              label: "10. Votre décision en sept jours",
-            },
-            { id: "sources", label: "Sources et périmètres" },
+            { id: "roi", label: "6. Calculer le coût et le gain réalistes" },
+            { id: "responsabilites", label: "7. Répartir les responsabilités" },
+            { id: "pilote-recette", label: "8. Tester avant de généraliser" },
+            { id: "cas-inadaptes", label: "9. Savoir quand attendre" },
+            { id: "plan-sept-jours", label: "10. Décider en sept jours" },
+            { id: "sources", label: "Sources et limites" },
           ]}
         />
 
-        <h2 id="definition">1. Partir du processus, pas de l’outil</h2>
+        <h2 id="definition">1. Ce que vous automatisez réellement</h2>
 
         <p>
-          Un <strong>processus métier</strong> commence par un événement et se
-          termine par un résultat utile : une demande reçue devient un devis
-          envoyé, une intervention terminée devient une facture contrôlée, une
-          pièce reçue devient un dossier complet. Une tâche n’est qu’une étape
-          de ce parcours. Automatiser « l’envoi du courriel » sans comprendre
-          qui valide, d’où vient l’adresse et ce qui se passe si la pièce manque
-          peut accélérer le mauvais travail.
+          Ne partez pas du nom d’un outil. Partez du résultat que vous voulez
+          obtenir. Par exemple : « lorsqu’un devis est signé, créer le client
+          dans la facturation, transmettre les bonnes coordonnées et prévenir la
+          comptabilité si une information manque ». Cette phrase montre le
+          début, la fin, les données et la personne qui intervient lorsque le
+          cas n’est pas normal.
         </p>
 
         <p>
-          L’automatisation consiste à faire exécuter certaines étapes par un
-          logiciel selon un déclencheur, des règles et des contrôles. Elle ne
-          suppose ni intelligence artificielle, ni application neuve. Une règle
-          native dans l’outil de gestion de la relation client (CRM), un échange
-          entre deux logiciels ou une génération de document peuvent suffire. La
-          gestion du processus reste plus large : elle inclut les
-          responsabilités, les exceptions, la mesure et l’amélioration, y
-          compris quand aucune étape n’est automatisée.
+          Un <strong>processus métier</strong> est simplement cette suite
+          d’étapes, depuis un événement de départ jusqu’à un résultat utile pour
+          l’entreprise. Une tâche n’en est qu’une partie. Automatiser l’envoi
+          d’un courriel sans préciser qui doit le recevoir, avec quelles données
+          et dans quels cas il ne faut pas l’envoyer peut faire gagner quelques
+          secondes tout en créant de nouveaux problèmes.
         </p>
 
-        <GuideTable
-          headers={[
-            "Ne formulez pas le besoin ainsi",
-            "Décrivez plutôt le résultat",
-          ]}
-          rows={[
-            [
-              "« Mettre de l’IA dans les devis »",
-              "À partir d’une demande complète, préparer un brouillon avec les clauses validées et faire approuver le prix par le responsable",
-            ],
-            [
-              "« Connecter le CRM à la compta »",
-              "Après signature, créer une fois le client avec le bon identifiant, transmettre les données validées et signaler tout rejet",
-            ],
-            [
-              "« Automatiser les relances »",
-              "Relancer seulement les dossiers incomplets, arrêter dès réception et laisser un opérateur traiter les litiges",
-            ],
-          ]}
-        />
+        <ul>
+          <li>
+            « Mettre de l’IA dans les devis » devient : préparer un brouillon à
+            partir d’une demande complète, puis faire valider le prix par le
+            responsable.
+          </li>
+          <li>
+            « Connecter le commercial à la comptabilité » devient : créer une
+            seule fois le client signé et signaler clairement toute donnée
+            refusée.
+          </li>
+          <li>
+            « Automatiser les relances » devient : relancer les dossiers
+            incomplets, arrêter dès réception et confier les litiges à une
+            personne.
+          </li>
+        </ul>
+
+        <h2 id="observation">2. Mesurer le travail pendant une semaine</h2>
 
         <p>
-          Cette reformulation révèle déjà les données, les validations et les
-          exceptions. Elle empêche aussi un prestataire de vendre une
-          démonstration séduisante qui ignore la moitié du travail réel.
-        </p>
-
-        <h2 id="observation">2. Observer sept jours et produire la carte</h2>
-
-        <p>
-          Ne demandez pas seulement « combien de temps cela prend ? ». Les
-          tâches pénibles sont souvent surestimées, tandis que les recherches,
-          attentes et corrections dispersées disparaissent des souvenirs.
-          Pendant une semaine représentative, notez chaque occurrence : heure de
-          départ, résultat, durée active, attente, correction et personne
-          sollicitée. Pour un cycle mensuel, observez aussi la clôture
-          correspondante.
+          Demandez aux personnes concernées de noter chaque occurrence pendant
+          une semaine représentative : heure de départ, temps réellement passé,
+          attente, correction, personne sollicitée et résultat. Pour une tâche
+          mensuelle, observez aussi une clôture complète. Cette mesure évite de
+          décider à partir d’un souvenir ou de l’agacement du jour.
         </p>
 
         <p>
@@ -375,289 +331,215 @@ export default function Page() {
           >
             France Num
           </a>{" "}
-          recommande de cartographier les étapes, informations, exceptions et
-          acteurs avant d’automatiser. Le portail propose aussi de calculer
-          fréquence × durée × nombre de personnes, puis d’examiner la complexité
-          et l’impact d’une erreur. La fiche suivante ajoute ce qui manque pour
-          consulter un fournisseur ou écrire un pilote exploitable.
+          recommande de décrire les étapes, les informations, les exceptions et
+          les personnes impliquées avant d’automatiser. Cette observation révèle
+          parfois une solution plus simple : supprimer une double validation,
+          rendre un champ obligatoire ou ranger un document au même endroit pour
+          tout le monde.
         </p>
 
         <FormulaBox>
           {[
-            "FICHE D’UN PROCESSUS — UNE PAGE",
+            "FICHE SIMPLE POUR UNE TÂCHE",
             "",
-            "Nom et résultat attendu :",
-            "Déclencheur et fin observable :",
-            "Volume : __ cas/jour, semaine ou mois",
-            "Durée active + temps d’attente :",
-            "Acteurs et responsable de la décision :",
-            "Systèmes utilisés et système de référence qui fait foi :",
-            "Données entrantes, identifiant unique et sortie :",
-            "Chemin normal, étape par étape :",
-            "Exceptions observées et fréquence :",
-            "Erreurs/retards : nombre, correction et conséquence :",
-            "Action irréversible ou sensible :",
-            "Mode manuel si le système ne répond plus :",
-            "Indicateur avant/après :",
-            "Propriétaire après mise en service :",
+            "Ce qui déclenche le travail :",
+            "Résultat attendu :",
+            "Nombre de cas par semaine ou par mois :",
+            "Temps actif et temps d’attente :",
+            "Logiciels et documents utilisés :",
+            "Étapes normales :",
+            "Trois exceptions les plus fréquentes :",
+            "Conséquence d’une erreur :",
+            "Personne qui décide en cas de doute :",
+            "Solution manuelle si l’outil ne fonctionne plus :",
+            "Indicateur à comparer avant et après :",
           ].join("\n")}
         </FormulaBox>
 
         <InfoBox
           variant="emerald"
-          title="L’option zéro doit être testée avant le devis"
+          title="Testez d’abord la solution sans logiciel"
         >
-          Supprimez les doubles validations sans fonction, imposez un
-          identifiant unique, rendez un champ obligatoire ou placez le document
-          au bon endroit. France Num indique que la cartographie révèle parfois
-          une inefficacité que l’on peut résoudre sans automatisation. Mesurez à
-          nouveau : un problème supprimé n’a pas besoin de logiciel.
+          Supprimez les saisies inutiles, choisissez une seule source pour
+          chaque donnée et clarifiez qui valide quoi. Mesurez de nouveau. Si le
+          problème a disparu, vous avez obtenu le résultat le plus économique :
+          moins de travail, sans nouvel outil à payer ni à maintenir.
         </InfoBox>
 
-        <p>
-          Retenez trois candidats, pas vingt. Ils doivent être assez précis pour
-          tenir sur la fiche : « traiter une demande de devis entrante » est
-          testable ; « automatiser l’administratif » ne l’est pas. Photographiez
-          le travail réel avec les personnes qui l’exécutent, pas seulement la
-          procédure officielle.
-        </p>
-
-        <h2 id="matrice">3. La matrice gain-risque-stabilité</h2>
-
-        <p>
-          Un score total est dangereux : un gain élevé peut masquer une décision
-          risquée, et un processus très stable peut rester sans valeur. Notez
-          les trois axes séparément. Un candidat passe seulement si chaque axe
-          trouve une réponse acceptable.
-        </p>
-
-        <GuideTable
-          headers={[
-            "Axe",
-            "1 — faible ou défavorable",
-            "2 — intermédiaire",
-            "3 — favorable au pilote",
-          ]}
-          rows={[
-            [
-              "Gain prouvé",
-              "rare, court, aucun retard ni coût observable",
-              "temps ou qualité mesurés, mais réaffectation incertaine",
-              "volume et bénéfice attribuable mesurés ; résultat métier clair",
-            ],
-            [
-              "Stabilité",
-              "chemin négocié à chaque cas, règles changeantes",
-              "chemin normal connu, exceptions encore incomplètes",
-              "règles, données et principales exceptions observées et nommées",
-            ],
-            [
-              "Risque contenu",
-              "erreur difficile à détecter, coûteuse ou irréversible",
-              "erreur détectable avec validation ou retour arrière",
-              "erreur peu coûteuse, visible et facilement rejouable",
-            ],
-          ]}
-        />
-
-        <p>
-          Ajoutez deux portes binaires : les données sont-elles accessibles et
-          un propriétaire accepte-t-il de maintenir les règles ? Un « non »
-          arrête le projet, même avec trois bonnes notes. N’additionnez jamais
-          les colonnes pour produire un classement automatique.
-        </p>
-
-        <h3>Exemple illustratif fictif : cinq candidats dans une même PME</h3>
-
-        <p>
-          <strong>Exemple illustratif fictif.</strong> Une PME de services
-          examine cinq irritants. Les notes viennent d’une semaine d’observation
-          inventée pour expliquer la méthode ; elles ne représentent ni un
-          client ni une moyenne de marché.
-        </p>
-
-        <GuideTable
-          headers={[
-            "Processus fictif",
-            "Gain",
-            "Stabilité",
-            "Risque contenu",
-            "Décision",
-          ]}
-          rows={[
-            [
-              "Accuser réception et distribuer les demandes complètes",
-              "3",
-              "3",
-              "3",
-              "Bon premier pilote ; garder les demandes ambiguës en file humaine",
-            ],
-            [
-              "Recopier un client signé du CRM vers la facturation",
-              "3",
-              "3",
-              "2",
-              "Connecter si identifiant, doublon et rejet sont testés",
-            ],
-            [
-              "Assembler le reporting mensuel",
-              "2",
-              "3",
-              "3",
-              "Vérifier d’abord une source unique et les fonctions existantes",
-            ],
-            [
-              "Accorder une remise commerciale exceptionnelle",
-              "2",
-              "1",
-              "1",
-              "Ne pas automatiser la décision ; préparer l’information seulement",
-            ],
-            [
-              "Replanifier les urgences terrain",
-              "3",
-              "1",
-              "1",
-              "Mauvais premier projet ; formaliser les arbitrages avec l’équipe",
-            ],
-          ]}
-        />
-
-        <p>
-          La première ligne gagne sans être la plus spectaculaire. Elle permet
-          d’éprouver les accès, les alertes et la gouvernance sur une action
-          réversible. Le deuxième flux peut apporter plus de valeur, mais une
-          création en double dans la facturation exige déjà des contrôles plus
-          sérieux.
-        </p>
-
-        <h2 id="options">4. Six réponses possibles, dont ne rien faire</h2>
-
-        <p>
-          Comparez les options sur le même processus, le même volume et un
-          horizon identique. Un abonnement seul ne se compare pas à un projet
-          comprenant nettoyage, intégration, formation et maintenance. Le bon
-          choix est la réponse la moins complexe qui tient durablement la règle,
-          le risque et l’évolution attendue.
-        </p>
-
-        <GuideTable
-          headers={[
-            "Réponse",
-            "Elle gagne quand",
-            "Ce qu’il faut vérifier",
-            "Cas inadapté",
-          ]}
-          rows={[
-            [
-              "Reporter ou ne rien faire",
-              "gain faible, règles instables ou aucun propriétaire",
-              "coût réel de l’inaction et date de réexamen",
-              "risque critique déjà actif sans mesure compensatoire",
-            ],
-            [
-              "Supprimer ou standardiser",
-              "l’étape existe par habitude ou les données arrivent mal",
-              "effet sur les contrôles utiles et les autres équipes",
-              "règle complexe réellement nécessaire",
-            ],
-            [
-              "Fonction native ou logiciel existant",
-              "processus courant couvert sans contournement majeur",
-              "plan souscrit, droits, export, administration et coût total",
-              "écart portant sur une règle métier critique",
-            ],
-            [
-              "Connecteur ou automatisation visuelle",
-              "quelques systèmes disposent d’interfaces de programmation (API) et les règles sont explicites",
-              "quotas, erreurs, comptes techniques, journaux et maintenance",
-              "fort volume critique ou enchaînement devenu illisible",
-            ],
-            [
-              "Automatisation partielle avec validation humaine",
-              "la machine peut préparer, classer ou alerter sans décider seule",
-              "file de revue, délai, droit de corriger et traçabilité",
-              "la validation humaine n’est qu’un clic aveugle",
-            ],
-            [
-              "Application ou service sur mesure",
-              "règles propres, plusieurs rôles, intégrations et avantage durable",
-              "coût total, propriété, réversibilité, exploitation et critères d’acceptation",
-              "un outil standard couvre correctement le besoin",
-            ],
-          ]}
-        />
-
-        <p>
-          Si le besoin part d’un tableur devenu central, utilisez ensuite le
-          diagnostic{" "}
-          <Link href="/guides/transformer-excel-en-application">
-            Excel vers application métier
-          </Link>
-          . Si la question devient celle de la plateforme, le comparatif{" "}
-          <Link href="/guides/no-code-ou-sur-mesure">
-            no-code ou développement sur mesure
-          </Link>{" "}
-          traite les coûts, plafonds et conditions de sortie.
-        </p>
-
-        <h2 id="techniques">
-          5. Connecteurs, robot, IA ou code : traduire le devis
+        <h2 id="matrice">
+          3. Choisir le premier cas et la réponse la plus simple
         </h2>
 
         <p>
-          Une <strong>API</strong> est une porte documentée par laquelle deux
-          logiciels échangent des données. Un <strong>connecteur</strong>{" "}
-          prépare cet échange dans une plateforme. Une <strong>RPA</strong>, ou
-          automatisation robotisée, imite les clics et saisies d’une personne
-          quand aucune porte stable n’existe. Une IA traite une entrée moins
-          structurée avec un résultat probabiliste. Ces techniques peuvent se
-          combiner ; aucune ne remplace la règle métier.
+          Parmi les tâches observées, retenez celle qui obtient le plus de « oui
+          » aux questions suivantes. Il ne s’agit pas de fabriquer une note
+          savante, mais de vérifier que le premier essai sera utile et
+          maîtrisable.
         </p>
 
         <GuideTable
-          headers={["Technique", "Usage raisonnable", "Preuve à demander"]}
+          caption="Les trois questions qui permettent de choisir"
+          headers={["Question", "Bon signe", "Signe qu’il faut attendre"]}
           rows={[
             [
-              "Règle déterministe",
-              "déclencheur et conditions explicites",
-              "table des règles, versions et cas limites",
+              "Le gain est-il visible ?",
+              "La tâche revient souvent et le temps ou les erreurs sont mesurés",
+              "Elle est rare ou son bénéfice reste une impression",
             ],
             [
-              "API ou connecteur",
-              "synchroniser des systèmes accessibles",
-              "test d’authentification, quotas, rejet et reprise",
+              "Les règles sont-elles stables ?",
+              "Le déroulement normal et les principales exceptions sont connus",
+              "Chaque dossier se négocie différemment",
             ],
             [
-              "Robot de clics",
-              "transition quand un logiciel fermé ne propose pas d’API",
-              "surveillance après changement d’écran et procédure manuelle",
+              "Une erreur est-elle maîtrisable ?",
+              "Elle se voit vite, se corrige et le traitement manuel reste possible",
+              "Elle déclenche une action coûteuse ou impossible à annuler",
+            ],
+          ]}
+        />
+
+        <h3>Un premier essai sans risque commercial</h3>
+
+        <p>
+          <strong>Exemple illustratif fictif.</strong> Une entreprise compare
+          cinq irritants. L’envoi d’un accusé de réception pour les demandes
+          complètes est un bon premier essai : le volume est connu, les règles
+          sont simples et les demandes ambiguës peuvent rester dans une liste
+          traitée par une personne. Accorder automatiquement une remise
+          exceptionnelle serait au contraire prématuré, car la décision dépend
+          encore du contexte commercial.
+        </p>
+
+        <GuideTable
+          caption="Lecture simple de cinq tâches fictives"
+          headers={["Tâche observée", "Décision raisonnable", "Pourquoi"]}
+          rows={[
+            [
+              "Orienter les demandes complètes",
+              "Tester en premier",
+              "Fréquent, vérifiable et facile à reprendre à la main",
             ],
             [
-              "IA",
-              "extraire, classer ou préparer un contenu variable",
-              "jeu d’évaluation réel, erreurs connues, seuil et revue humaine",
+              "Recopier un client signé vers la facturation",
+              "Tester après contrôle des doublons",
+              "Gain clair, mais une erreur touche la comptabilité",
             ],
             [
-              "Code sur mesure",
-              "orchestrer règles, données, rôles et exploitation spécifiques",
-              "dépôt, tests, documentation, surveillance technique, alertes et réversibilité",
+              "Préparer le rapport mensuel",
+              "Vérifier les fonctions existantes",
+              "Une source unique peut suffire sans nouveau développement",
+            ],
+            [
+              "Accorder une remise exceptionnelle",
+              "Garder la décision humaine",
+              "La règle change selon la relation commerciale",
+            ],
+            [
+              "Replanifier toutes les urgences terrain",
+              "Clarifier d’abord les priorités",
+              "Trop d’exceptions pour un premier essai",
+            ],
+          ]}
+        />
+
+        <h3 id="options">4. Comparer six réponses possibles</h3>
+
+        <p>
+          Une fois la tâche comprise, comparez les solutions sur le même besoin.
+          La meilleure n’est pas la plus impressionnante : c’est la plus simple
+          qui produit durablement le résultat attendu.
+        </p>
+
+        <GuideTable
+          caption="Six façons de répondre au même besoin"
+          headers={["Réponse", "Quand elle convient", "Ce qu’il faut vérifier"]}
+          rows={[
+            [
+              "Ne rien changer pour l’instant",
+              "Le gain est faible ou les règles bougent encore",
+              "La date à laquelle vous réexaminerez le sujet",
+            ],
+            [
+              "Supprimer ou simplifier une étape",
+              "La difficulté vient d’une habitude ou d’une mauvaise saisie",
+              "Qu’aucun contrôle réellement utile ne disparaît",
+            ],
+            [
+              "Utiliser une fonction déjà disponible",
+              "Votre logiciel couvre le cas sans contournement important",
+              "Le prix du forfait, les droits et l’export des données",
+            ],
+            [
+              "Relier deux outils",
+              "Les règles sont claires et les logiciels peuvent échanger",
+              "Les rejets, doublons, alertes et limites d’utilisation",
+            ],
+            [
+              "Préparer automatiquement, puis faire valider",
+              "Le logiciel peut assister sans prendre la décision finale",
+              "Le délai de validation et la possibilité de corriger",
+            ],
+            [
+              "Créer un outil sur mesure",
+              "Plusieurs rôles et règles propres ne sont pas couverts ailleurs",
+              "Le coût complet, la maintenance, les accès et la reprise",
             ],
           ]}
         />
 
         <p>
-          Demandez ce qui se passe si le même événement arrive deux fois. Une
-          automatisation robuste doit reconnaître l’identifiant et éviter une
-          seconde facture ou un second courriel. Demandez aussi où va un cas en
-          erreur, qui reçoit l’alerte, comment il est rejoué et comment vérifier
-          que la cible contient bien le résultat. « Le scénario est vert » ne
-          prouve pas que le métier a reçu la bonne donnée.
+          Si le problème vient d’un tableur devenu central, poursuivez avec le
+          guide{" "}
+          <Link href="/guides/transformer-excel-en-application">
+            transformer Excel en application métier
+          </Link>
+          . Si vous hésitez entre une plateforme visuelle et un développement,
+          consultez{" "}
+          <Link href="/guides/no-code-ou-sur-mesure">
+            no-code ou sur mesure
+          </Link>
+          .
         </p>
+
+        <h3 id="techniques">5. Comprendre les solutions proposées</h3>
+
+        <p>
+          Une <strong>API</strong> est un accès prévu par un logiciel pour
+          échanger des données avec un autre. Un <strong>connecteur</strong> est
+          une liaison déjà préparée entre deux outils. Un robot de clics,
+          parfois appelé RPA, reproduit les gestes d’une personne sur un écran
+          lorsque le logiciel ne propose pas d’accès direct. L’intelligence
+          artificielle sert plutôt à traiter une information variable, comme le
+          texte d’un courriel ou d’un document.
+        </p>
+
+        <ul>
+          <li>
+            <strong>Règle classique :</strong> demandez ce qui se passe dans
+            chaque cas limite.
+          </li>
+          <li>
+            <strong>API ou connecteur :</strong> demandez comment un rejet ou un
+            doublon sera signalé.
+          </li>
+          <li>
+            <strong>Robot de clics :</strong> demandez qui intervient lorsque
+            l’écran du logiciel change.
+          </li>
+          <li>
+            <strong>Intelligence artificielle :</strong> demandez sur quels
+            exemples réels sa qualité sera vérifiée.
+          </li>
+          <li>
+            <strong>Développement sur mesure :</strong> demandez comment
+            récupérer le code, les données et la documentation.
+          </li>
+        </ul>
 
         <InfoBox
           variant="amber"
-          title="Une décision sur une personne exige un cadrage particulier"
+          title="Certaines décisions doivent rester humaines"
         >
           La{" "}
           <a
@@ -667,64 +549,50 @@ export default function Page() {
           >
             CNIL
           </a>{" "}
-          rappelle que l’article 22 du RGPD encadre les décisions fondées
-          exclusivement sur un traitement automatisé lorsqu’elles produisent un
-          effet juridique ou affectent significativement une personne. Le droit
-          à l’information, à la contestation et, dans les situations concernées,
-          à une intervention humaine ne se résume pas à ajouter un bouton «
-          valider ». Faites qualifier le cas avant d’automatiser un refus, un
-          tarif, un recrutement ou une décision comparable. Ce guide n’est pas
-          un conseil juridique personnalisé.
+          explique que le RGPD encadre certaines décisions entièrement
+          automatisées qui produisent un effet juridique ou affectent fortement
+          une personne. Cela ne concerne pas chaque automatisation interne, mais
+          justifie une analyse spécifique avant d’automatiser un refus, un
+          recrutement, un tarif individuel ou une décision comparable. Ce guide
+          ne remplace pas un conseil juridique appliqué à votre situation.
         </InfoBox>
 
-        <h2 id="roi">
-          6. Chiffrer le coût total et le retour sur investissement
-        </h2>
+        <h2 id="roi">6. Calculer le coût et le gain réalistes</h2>
 
         <p>
-          Le <strong>coût total de possession (TCO)</strong> additionne les
-          dépenses initiales, récurrentes et de sortie sur un même horizon. Le{" "}
-          <strong>retour sur investissement (ROI)</strong> compare ensuite les
-          bénéfices attribuables à ce coût complet. Si une ligne reste inconnue,
-          le calcul n’est encore qu’un socle provisoire.
-        </p>
-
-        <p>
-          Le temps « gagné » n’est pas automatiquement une économie. Pour créer
-          un bénéfice monétaire, il doit permettre d’absorber davantage de
-          dossiers, d’éviter une dépense ou de produire un résultat mesurable.
-          Sinon, le confort est réel mais le gain comptable peut rester nul.
-          Affichez donc la part réellement réaffectée et testez une hypothèse
-          prudente.
+          Le temps « gagné » ne devient pas automatiquement une économie. Il
+          crée de la valeur s’il permet de traiter davantage de dossiers,
+          d’éviter une dépense ou de consacrer les heures libérées à une
+          activité utile. Retenez donc une part prudente du temps mesuré, puis
+          additionnez tous les coûts : préparation, réalisation, abonnement,
+          suivi, maintenance, temps de vos équipes et sortie éventuelle.
         </p>
 
         <FormulaBox>
           {[
-            "Temps annuel actuel = (volume × durée active + temps de consolidation) × périodes",
+            "Temps annuel = volume × durée par cas × nombre de périodes",
             "",
-            "TCO = cartographie + mise en œuvre + temps interne",
-            "    + abonnements + surveillance + maintenance + sortie",
+            "Bénéfice annuel = temps réellement réaffecté × coût horaire réel",
             "",
-            "Gain net = bénéfices attribuables cumulés - TCO",
+            "Coût sur la période = préparation + réalisation + temps interne",
+            "                     + abonnements + suivi + maintenance + sortie",
             "",
-            "ROI = (bénéfices attribuables cumulés - TCO) / TCO × 100",
-            "",
-            "Délai de retour = coût initial / (bénéfice mensuel - coût récurrent mensuel)",
+            "ROI = (bénéfices cumulés - coût) / coût × 100",
           ].join("\n")}
         </FormulaBox>
 
-        <h3>Exemple illustratif fictif sur 36 mois</h3>
+        <h3>Ce que change une hypothèse prudente</h3>
 
         <p>
           <strong>Exemple illustratif fictif.</strong> Une PME de services de 18
-          salariés trie 30 demandes par semaine. Chaque demande mobilise 12
-          minutes, plus 1 h 30 de rapprochement hebdomadaire, pendant 46
-          semaines. Le processus représente donc{" "}
-          <code>((30 × 12) / 60 + 1,5) × 46 = 345 heures</code> par an.
+          salariés traite 30 demandes par semaine. Chaque demande prend 12
+          minutes, auxquelles s’ajoute 1 h 30 de rapprochement hebdomadaire,
+          pendant 46 semaines. Le travail représente donc 345 heures par an.
         </p>
 
         <p>
-          Pour valoriser l’heure, l’exemple utilise 44,2 €. L’
+          Pour rendre le calcul reproductible, l’exemple utilise 44,20 € par
+          heure. L’
           <a
             href="https://www.insee.fr/fr/statistiques/2381340"
             target="_blank"
@@ -732,83 +600,79 @@ export default function Page() {
           >
             Insee
           </a>{" "}
-          estime en 2025 le coût horaire de la main-d’œuvre à 44,2 € dans les
-          services marchands, pour les entreprises françaises de 10 salariés ou
-          plus. Cette moyenne, publiée le 2 juillet 2026, n’est pas le coût de
-          cette entreprise fictive : remplacez-la par votre coût chargé réel.
+          estime à ce niveau le coût horaire moyen du travail dans les services
+          marchands en 2025 pour les entreprises françaises de dix salariés ou
+          plus. Cette moyenne n’est pas le coût de votre entreprise :
+          remplacez-la par votre donnée chargée réelle.
         </p>
 
         <GuideTable
-          headers={["Poste fictif", "36 mois", "Hypothèse"]}
+          caption="Dépenses fictives sur 36 mois"
+          headers={["Dépense", "Montant", "Calcul"]}
           rows={[
-            ["Cartographie et pilote", "1 600 € HT", "investissement initial"],
-            ["Mise en œuvre", "5 000 € HT", "investissement initial"],
-            ["Temps interne", "1 414,40 €", "32 h × 44,2 €"],
+            ["Observation et premier essai", "1 600 € HT", "dépense initiale"],
+            ["Mise en place", "5 000 € HT", "dépense initiale"],
+            ["Temps de l’équipe", "1 414,40 €", "32 h × 44,20 €"],
             ["Abonnement", "2 700 € HT", "75 € × 36 mois"],
-            ["Surveillance et maintenance", "5 400 € HT", "150 € × 36 mois"],
+            ["Suivi et maintenance", "5 400 € HT", "150 € × 36 mois"],
+            ["Total connu", "16 114,40 €", "hors sortie et fiscalité"],
+          ]}
+        />
+
+        <p>
+          Si 70 % des 345 heures sont réellement réaffectées, le bénéfice annuel
+          estimé est de 10 674,30 €. Sur trois ans, les bénéfices atteignent 32
+          022,90 €. Comparés aux seuls coûts connus, le gain net provisoire est
+          de 15 908,50 € et le ROI provisoire de 98,72 %. Le coût initial serait
+          récupéré environ 12,1 mois après la mise en service, une fois le
+          fonctionnement stabilisé.
+        </p>
+
+        <GuideTable
+          caption="Pourquoi tester une hypothèse prudente"
+          headers={[
+            "Temps réellement réaffecté",
+            "Bénéfice annuel",
+            "Résultat à 36 mois",
+          ]}
+          rows={[
             [
-              "Socle chiffré sur 36 mois",
-              "16 114,40 €",
-              "dépenses externes HT ; sortie, fiscalité et inflation à confirmer",
+              "40 %",
+              "6 099,60 €",
+              "ROI provisoire 13,55 % ; retour après environ 28,3 mois",
+            ],
+            [
+              "70 %",
+              "10 674,30 €",
+              "ROI provisoire 98,72 % ; retour après environ 12,1 mois",
             ],
           ]}
         />
 
         <p>
-          Ce total de 16 114,40 € n’est donc <strong>pas encore un TCO</strong>{" "}
-          : il manque notamment le coût de sortie et les éventuelles taxes non
-          récupérables. Les dépenses externes sont exprimées hors taxes et la
-          récupération de TVA n’est pas modélisée. Ajoutez ces lignes selon la
-          situation de l’entreprise avant toute décision.
-        </p>
-
-        <p>
-          Dans le scénario central, 70 % des 345 heures sont réellement
-          réaffectées : <code>345 × 70 % × 44,2 € = 10 674,30 €</code> par an.
-          Les bénéfices sur trois ans valent 32 022,90 €. Sur les seuls coûts
-          chiffrés, le gain net provisoire est 15 908,50 € et le ROI provisoire
-          98,72 %. Le délai de retour est d’environ 12,1 mois après la mise en
-          service, en régime stable. Pour obtenir le délai calendaire, ajoutez
-          la durée encore inconnue de cartographie, de pilote, de déploiement et
-          de montée en charge.
-        </p>
-
-        <GuideTable
-          headers={[
-            "Scénario fictif",
-            "Part réaffectée",
-            "Bénéfice annuel",
-            "ROI provisoire à 36 mois",
-            "Retour après mise en service",
-          ]}
-          rows={[
-            ["Prudent", "40 %", "6 099,60 €", "13,55 %", "28,3 mois"],
-            ["Central", "70 %", "10 674,30 €", "98,72 %", "12,1 mois"],
-          ]}
-        />
-
-        <p>
-          Aucun gain de vente, d’erreur évitée ou de satisfaction n’est ajouté :
-          il faudrait d’abord le mesurer. Si le projet n’est rentable qu’en
-          valorisant 100 % du temps et des ventes hypothétiques, lancez un
-          pilote ou simplifiez avant d’investir. Le guide pour{" "}
+          Ce calcul ne comprend ni ventes supplémentaires, ni erreurs évitées,
+          ni inflation, ni fiscalité, ni coût de sortie : ce n’est donc pas un
+          coût total définitif. Il montre surtout qu’un projet séduisant avec 70
+          % de temps réaffecté peut devenir peu intéressant avec 40 %. Retrouvez
+          une méthode plus détaillée dans{" "}
           <Link href="/guides/calculer-roi-application-metier">
-            calculer le ROI d’une application métier
-          </Link>{" "}
-          détaille le TCO, les scénarios prudent, central et haut ainsi que le
-          contrôle après mise en service. Pour budgéter une application plus
-          large, consultez ensuite la méthode du{" "}
-          <Link href="/guides/prix-logiciel-sur-mesure">
-            prix d’un logiciel sur mesure
+            le guide du ROI d’une application métier
           </Link>
           .
         </p>
 
-        <h2 id="responsabilites">7. Responsabilités et adoption</h2>
+        <h2 id="responsabilites">7. Répartir les responsabilités</h2>
 
         <p>
-          L’automatisation modifie qui voit l’information, qui décide et qui
-          corrige. L’
+          L’outil ne doit pas devenir un sujet réservé au prestataire. Une
+          personne de l’entreprise définit le résultat et les règles. Les
+          utilisateurs apportent les cas réels. Une personne reçoit les alertes
+          après le lancement. Le prestataire construit, documente et corrige ce
+          que prévoit le contrat.
+        </p>
+
+        <p>
+          L’
           <a
             href="https://www.anact.fr/table-de-simulation-numerique"
             target="_blank"
@@ -816,257 +680,180 @@ export default function Page() {
           >
             Anact
           </a>{" "}
-          recommande d’associer direction, encadrement et salariés à la
-          simulation des futurs flux afin d’identifier avantages et
-          inconvénients des scénarios. Une démonstration au dirigeant ne
-          remplace donc pas l’essai par la personne qui gère le dossier
-          incomplet un lundi matin.
+          propose d’associer direction, encadrement et salariés à la simulation
+          des futurs usages. C’est particulièrement utile ici : la personne qui
+          traite les dossiers incomplets connaît souvent une exception que la
+          procédure officielle ne mentionne pas.
         </p>
-
-        <GuideTable
-          headers={[
-            "Rôle",
-            "Responsabilité non transférable",
-            "Preuve attendue",
-          ]}
-          rows={[
-            [
-              "Sponsor",
-              "objectif, budget, arbitrage et condition d’arrêt",
-              "note de décision et indicateur cible",
-            ],
-            [
-              "Propriétaire métier",
-              "règles, exceptions et priorité des corrections",
-              "carte signée et historique des règles",
-            ],
-            [
-              "Utilisateurs référents",
-              "situations réelles, test et retour d’usage",
-              "scénarios exécutés et anomalies qualifiées",
-            ],
-            [
-              "Responsable des données et systèmes",
-              "accès, système de référence, sécurité et conservation",
-              "comptes nominatifs, matrice des droits, sauvegarde",
-            ],
-            [
-              "Prestataire",
-              "conception, intégration, tests, documentation et corrections contractuelles",
-              "dépôt, journaux, dossier de recette et procédure d’exploitation",
-            ],
-            [
-              "Exploitant après lancement",
-              "surveiller, traiter les échecs et organiser les évolutions",
-              "alertes testées, file d’erreurs, journal d’intervention",
-            ],
-          ]}
-        />
-
-        <p>
-          Formez d’abord aux exceptions : comment reconnaître un cas bloqué,
-          corriger une donnée et basculer en manuel. Pendant le pilote, comparez
-          l’ancien et le nouveau résultat sans imposer une double saisie
-          indéfinie. Mesurez l’usage réel, les corrections et le délai de
-          traitement ; un compte créé ne prouve pas l’adoption.
-        </p>
-
-        <h2 id="pilote-recette">8. Piloter et tester les cas d’échec</h2>
-
-        <p>
-          Ces <strong>tests d’acceptation avant mise en service</strong>, aussi
-          appelés recette, doivent couvrir le résultat utile et les incidents.
-          Le premier lot doit produire une valeur exploitable seul : un
-          déclencheur, une sortie, un groupe d’utilisateurs et une période
-          métier complète. Il ne doit pas attendre la refonte de tout le système
-          d’information pour être jugé. En revanche, son périmètre inclut les
-          pannes et la reprise ; ce ne sont pas des options de fin de projet.
-        </p>
-
-        <GuideTable
-          headers={[
-            "Scénario de recette",
-            "Résultat attendu",
-            "Preuve à conserver",
-          ]}
-          rows={[
-            [
-              "Cas normal",
-              "sortie exacte, une seule fois",
-              "entrée, identifiant et résultat",
-            ],
-            [
-              "Champ obligatoire absent",
-              "rejet compréhensible sans donnée corrompue",
-              "message et file de correction",
-            ],
-            [
-              "Événement reçu deux fois",
-              "aucun doublon",
-              "journal des deux réceptions et action unique",
-            ],
-            [
-              "Droit insuffisant",
-              "action refusée et signalée",
-              "compte testé et alerte",
-            ],
-            [
-              "Logiciel cible indisponible",
-              "attente ou échec contrôlé",
-              "horodatage, nombre de tentatives et notification",
-            ],
-            [
-              "Reprise après panne",
-              "traitement rejoué sans perte ni double action",
-              "journal avant et après",
-            ],
-            [
-              "Exception métier",
-              "orientation vers la bonne personne",
-              "délai et décision humaine",
-            ],
-            [
-              "Retour arrière",
-              "mode manuel utilisable et données récupérables",
-              "exercice réellement exécuté",
-            ],
-          ]}
-        />
-
-        <p>
-          Écrivez les critères avant le développement. Tous les scénarios
-          convenus doivent passer ; une anomalie bloquante ne devient pas
-          acceptable parce que le taux global paraît bon. Après lancement,
-          suivez au minimum volume traité, taux envoyé en revue, échecs,
-          doublons, durée de traitement et temps réellement réaffecté.
-        </p>
-
-        <InfoBox
-          variant="emerald"
-          title="Le livrable qui rend le pilote transmissible"
-        >
-          Exigez une page contenant le but, le propriétaire, le déclencheur, les
-          systèmes, les données, les règles, les secrets ou comptes à
-          renouveler, les alertes, la procédure de reprise, le mode manuel et la
-          date du dernier test. Un schéma visuel sans exploitation ne suffit
-          pas.
-        </InfoBox>
-
-        <h2 id="cas-inadaptes">9. Les projets à reporter ou refuser</h2>
 
         <ul>
           <li>
-            <strong>Le processus change chaque semaine.</strong> Automatisez au
-            besoin la collecte, pas une décision encore négociée au cas par cas.
+            <strong>La direction</strong> fixe le but, le budget, la condition
+            d&apos;arrêt et un indicateur compréhensible.
           </li>
           <li>
-            <strong>La tâche est rare et sans conséquence.</strong> Une
-            checklist peut coûter moins cher à exploiter pendant des années.
+            <strong>Le responsable métier</strong> tient les règles à jour et
+            tranche les exceptions connues.
           </li>
           <li>
-            <strong>Personne ne possède la règle.</strong> Le prestataire ne
-            doit pas choisir seul ce qu’est un dossier valide ou un paiement
-            juste.
+            <strong>Les utilisateurs</strong> essaient des situations réelles et
+            signalent les erreurs. Une démonstration du prestataire ne suffit
+            pas.
           </li>
           <li>
-            <strong>Les données n’ont ni identifiant ni source fiable.</strong>
-            Nettoyez et attribuez d’abord la responsabilité de chaque donnée.
+            <strong>Le prestataire</strong> construit, teste, documente et
+            corrige ce que prévoit l&apos;accord ; il remet les accès, les
+            alertes et les résultats des essais.
           </li>
           <li>
-            <strong>Le seul accès est un écran instable.</strong> Un robot peut
-            servir de transition, pas devenir un système critique sans
-            surveillance et solution de repli.
-          </li>
-          <li>
-            <strong>L’erreur est invisible ou irréversible.</strong> Gardez une
-            validation humaine et réduisez le périmètre jusqu’à pouvoir tester
-            la récupération.
-          </li>
-          <li>
-            <strong>Le projet déplace la charge.</strong> Dix minutes gagnées à
-            l’accueil ne valent rien si la comptabilité passe une heure à
-            corriger la donnée produite.
+            <strong>Une personne de suivi</strong> reçoit les alertes, classe
+            les erreurs et sait comment reprendre le travail à la main.
           </li>
         </ul>
 
+        <h2 id="pilote-recette">8. Tester avant de généraliser</h2>
+
         <p>
-          Un bon cas d’usage pour un outil dédié apparaît lorsque le processus
-          est stable, récurrent et stratégique, que plusieurs rôles doivent
-          agir, que les intégrations existantes échouent à couvrir une règle
-          propre et qu’un responsable accepte l’exploitation. Si un logiciel
-          standard couvre le résultat avec une sortie acceptable, il reste
-          généralement préférable.
+          Le premier essai doit porter sur un volume limité, avec de vrais cas
+          et un retour simple au traitement manuel. Avant la mise en service,
+          écrivez ce qui doit se produire lorsqu’une information manque, que le
+          même dossier arrive deux fois ou qu’un logiciel ne répond plus. Ces
+          essais sont parfois appelés « recette » : ils servent simplement à
+          vérifier que le résultat convenu est bien obtenu.
         </p>
 
-        <GuideInlineCTA
-          title="Faites relire le premier processus avant de choisir l’outil"
-          description="Transmettez le déclencheur, le volume, les systèmes, trois exceptions et votre indicateur. Nous vous aidons à cadrer le premier flux et signalons aussi si une simplification ou une fonction existante paraît plus rationnelle qu’un développement."
-          tags={["Retour humain", "Sans engagement", "Cas inadapté signalé"]}
-          ctaLabel="Faire relire mon processus"
-          ctaHref="/demarrer-un-projet"
-        />
-
-        <h2 id="plan-sept-jours">10. Votre décision en sept jours</h2>
-
         <GuideTable
-          headers={["Jour", "Action", "Livrable"]}
+          caption="Les essais indispensables"
+          headers={["Situation testée", "Résultat attendu", "À conserver"]}
           rows={[
             [
-              "1",
-              "lister dix irritants et en retenir trois précis",
-              "trois noms avec début et fin",
+              "Cas normal",
+              "Le bon résultat est produit une seule fois",
+              "Entrée et résultat",
             ],
             [
-              "2 à 4",
-              "observer occurrences, durée, attente, correction et exception",
-              "journal factuel, pas une estimation de mémoire",
+              "Information manquante",
+              "Le dossier attend une correction compréhensible",
+              "Message affiché",
             ],
             [
-              "5",
-              "remplir les trois fiches et la matrice séparée",
-              "gain, stabilité, risque et portes d’accès/propriété",
+              "Même dossier reçu deux fois",
+              "Aucun doublon n’est créé",
+              "Trace des deux réceptions",
             ],
             [
-              "6",
-              "tester supprimer, fonction native, logiciel et connexion",
-              "option la moins complexe et raison d’écarter les autres",
+              "Accès refusé",
+              "L’action s’arrête et une personne est prévenue",
+              "Alerte reçue",
             ],
             [
-              "7",
-              "écrire le pilote, les cas d’échec et la condition d’arrêt",
-              "note de décision partageable",
+              "Logiciel indisponible",
+              "Le dossier attend ou rejoint la liste manuelle",
+              "Heure et tentatives",
+            ],
+            [
+              "Reprise après panne",
+              "Aucune perte ni double action",
+              "Résultat avant et après",
             ],
           ]}
         />
 
         <p>
-          La note finale tient en une phrase : « nous testons ce flux parce que
-          son gain est mesuré, ses règles sont stables et l’erreur revient dans
-          cette file ; nous arrêtons si tel indicateur n’évolue pas ». Si vous
-          ne pouvez pas écrire cette phrase, vous n’avez pas encore besoin d’un
-          devis : vous avez besoin d’observer le travail.
+          Après le lancement, suivez le nombre de cas traités, les dossiers
+          envoyés à une personne, les échecs, les doublons, le temps de
+          traitement et les heures réellement réaffectées. C’est ainsi que vous
+          saurez si l’automatisation tient sa promesse dans votre entreprise.
+        </p>
+
+        <h2 id="cas-inadaptes">9. Savoir quand attendre</h2>
+
+        <p>Il est raisonnable de reporter le projet lorsque :</p>
+        <ul>
+          <li>les règles changent encore chaque semaine ;</li>
+          <li>la tâche est rare et une liste de contrôle suffit ;</li>
+          <li>personne ne peut dire ce qu’est un résultat correct ;</li>
+          <li>les données sont en double ou sans source fiable ;</li>
+          <li>une erreur est difficile à voir ou impossible à annuler ;</li>
+          <li>
+            le temps gagné dans une équipe crée davantage de travail ailleurs ;
+          </li>
+          <li>un logiciel standard couvre déjà correctement le besoin.</li>
+        </ul>
+
+        <p>
+          Attendre ne signifie pas abandonner. Vous pouvez clarifier les règles,
+          nettoyer les données ou mesurer le travail, puis réexaminer le sujet
+          avec de meilleures informations.
+        </p>
+
+        <h2 id="plan-sept-jours">10. Décider en sept jours</h2>
+
+        <ol>
+          <li>
+            <strong>Jour 1 :</strong> choisissez trois tâches précises et
+            définissez le début et la fin de chacune.
+          </li>
+          <li>
+            <strong>Jours 2 à 4 :</strong> notez les cas rencontrés, le temps et
+            les corrections pour partir de faits.
+          </li>
+          <li>
+            <strong>Jour 5 :</strong> comparez le gain, la stabilité des règles
+            et la conséquence d&apos;une erreur afin de retenir un premier
+            candidat.
+          </li>
+          <li>
+            <strong>Jour 6 :</strong> essayez d&apos;abord de supprimer
+            l&apos;étape, d&apos;utiliser une fonction existante ou de relier
+            les outils.
+          </li>
+          <li>
+            <strong>Jour 7 :</strong> écrivez le périmètre du premier essai, les
+            erreurs à provoquer et la condition d&apos;arrêt. Vous obtenez une
+            demande claire à chiffrer.
+          </li>
+        </ol>
+
+        <p>
+          Votre décision doit pouvoir tenir dans une phrase : « nous testons
+          cette tâche parce qu’elle revient souvent, que ses règles sont connues
+          et qu’un échec retourne dans cette liste ; nous arrêtons si le temps
+          mesuré ne diminue pas ». Si cette phrase reste impossible à écrire,
+          poursuivez l’observation avant de demander un devis.
         </p>
 
         <p>
-          Si le pilote révèle plusieurs flux et rôles, transformez les fiches en
-          critères de réception avec le guide du{" "}
+          Si le besoin implique finalement plusieurs équipes et écrans,
+          transformez ce travail en{" "}
           <Link href="/guides/cahier-des-charges-application-metier">
-            cahier des charges d’une application métier
+            cahier des charges d’application métier
           </Link>
-          . La page sur les{" "}
+          . Vous pouvez ensuite consulter notre service de{" "}
           <Link href="/services/outils-internes-sur-mesure">
-            outils internes sur mesure
+            développement d’outils internes
           </Link>{" "}
-          présente ensuite le service correspondant, ses bases budgétaires et
-          les points confirmés au devis.
+          pour comprendre ce qui est chiffré avant tout engagement.
         </p>
 
-        <h2 id="sources">Sources et périmètres</h2>
+        <GuideInlineCTA
+          title="Vous hésitez sur la première tâche à automatiser ?"
+          description="Décrivez le travail actuel, son volume, les logiciels utilisés et trois cas particuliers. Nous vous aidons à distinguer une simple amélioration, une connexion entre outils et un besoin d’application sur mesure — y compris lorsque le bon conseil est de ne rien développer pour l’instant."
+          tags={[
+            "Réponse humaine",
+            "Option simple examinée",
+            "Budget expliqué",
+          ]}
+          ctaLabel="Décrire mon processus"
+          ctaHref="/demarrer-un-projet"
+        />
+
+        <h2 id="sources">Sources et limites</h2>
 
         <p>
-          Recherche effectuée le 20 juillet 2026. Les calculs du guide sont un
-          exemple fictif reproductible ; les recommandations de méthode ne sont
-          ni une promesse de gain ni un conseil juridique individualisé.
+          Recherche mise à jour le 21 juillet 2026. Les montants et calculs sont
+          ceux d’un exemple fictif, fourni pour rendre la méthode vérifiable.
+          Ils ne promettent ni gain ni rentabilité pour un projet réel.
         </p>
 
         <ul>
@@ -1076,12 +863,11 @@ export default function Page() {
               target="_blank"
               rel="noreferrer"
             >
-              France Num — L’automatisation : une solution pour les TPE-PME
+              France Num — L’automatisation, une solution pour les TPE-PME
             </a>
-            , mise à jour le 9 juillet 2026, pour la cartographie, la
-            priorisation, le test, la maintenance, la documentation et la
-            formation. Les fourchettes de prix et promesses générales de retour
-            de cette page ne sont pas reprises.
+            , pour l’observation, la simplification, le test, la documentation
+            et la formation. Les promesses générales de prix ou de gain ne sont
+            pas reprises.
           </li>
           <li>
             <a
@@ -1089,11 +875,9 @@ export default function Page() {
               target="_blank"
               rel="noreferrer"
             >
-              Insee — Coût horaire du travail selon l’activité
+              Insee — coût horaire du travail selon l’activité
             </a>
-            , paru le 2 juillet 2026, pour l’estimation 2025 de 44,2 € dans les
-            services marchands, entreprises de 10 salariés ou plus. Cette
-            moyenne est remplaçable par le coût réel du lecteur.
+            , pour la moyenne de 44,20 € utilisée uniquement dans l’exemple.
           </li>
           <li>
             <a
@@ -1101,10 +885,9 @@ export default function Page() {
               target="_blank"
               rel="noreferrer"
             >
-              Anact — Table de simulation numérique
+              Anact — table de simulation numérique
             </a>
-            , pour la participation des salariés et la comparaison des futurs
-            flux de travail dans les projets numériques.
+            , pour la participation des salariés à l’étude des futurs usages.
           </li>
           <li>
             <a
@@ -1112,11 +895,9 @@ export default function Page() {
               target="_blank"
               rel="noreferrer"
             >
-              CNIL — Profilage et décision entièrement automatisée
+              CNIL — profilage et décision entièrement automatisée
             </a>
-            , pour le périmètre de l’article 22 du RGPD et les droits associés
-            aux décisions exclusivement automatisées à effet juridique ou
-            significatif.
+            , pour le champ d’application de l’article 22 du RGPD.
           </li>
         </ul>
       </GuideLayout>

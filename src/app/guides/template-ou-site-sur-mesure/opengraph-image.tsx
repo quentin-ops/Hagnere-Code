@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Template, personnalisation, hybride ou sur mesure : cinq niveaux de conception";
+  "Template ou site sur mesure : choisir selon son budget et ses besoins";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -10,8 +10,7 @@ const levels = [
   ["0", "CORRIGER", "#a1a1aa"],
   ["1", "TEMPLATE", "#60a5fa"],
   ["2", "PERSONNALISER", "#22d3ee"],
-  ["3", "HYBRIDE", "#a78bfa"],
-  ["4", "SUR MESURE", "#fbbf24"],
+  ["3", "SUR MESURE", "#fbbf24"],
 ];
 
 export default function OgImage() {
@@ -113,7 +112,7 @@ export default function OgImage() {
               color: "#d4d4d8",
             }}
           >
-            Payez les différences utiles, pas l’étiquette.
+            Comparez le budget, l’autonomie et l’entretien.
           </div>
         </div>
 
@@ -185,7 +184,7 @@ export default function OgImage() {
         }}
       >
         <div style={{ display: "flex" }}>
-          Test de la page la moins standard
+          Template, personnalisation ou conception complète
         </div>
         <div style={{ display: "flex", marginLeft: "auto", color: "#e4e4e7" }}>
           hagnere-code.ai/guides

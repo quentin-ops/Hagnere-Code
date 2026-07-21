@@ -58,24 +58,25 @@ export function GuideSidebarCTA({
           {/* Header */}
           <div className="mb-6">
             <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2">
-              Votre projet web
+              Une question sur votre projet ?
             </p>
             <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
-              Gratuit &amp; sans engagement
+              Obtenez un premier avis concret
             </h3>
             <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
-              Décrivez votre projet en 3 minutes — notre équipe lit votre
-              demande et vise le prochain jour ouvré, sans délai garanti.
+              Expliquez votre activité, le problème rencontré et le résultat
+              attendu. Votre demande est lue par un développeur, qui peut aussi
+              vous recommander une solution plus simple.
             </p>
           </div>
 
           {/* Benefits */}
           <div className="space-y-2.5 mb-6">
             {[
-              "Objectif : prochain jour ouvré",
-              "Forfait fixe contractuel",
-              "Une équipe qui code",
-              "Recette et correction cadrées au devis",
+              "Échange sans engagement",
+              "Budget et étapes expliqués",
+              "Réponse par un développeur",
+              "Conserver l’existant reste une option",
             ].map((benefit) => (
               <div key={benefit} className="flex items-center gap-2.5">
                 <CheckCircle2 className="size-4 text-emerald-400 shrink-0" />

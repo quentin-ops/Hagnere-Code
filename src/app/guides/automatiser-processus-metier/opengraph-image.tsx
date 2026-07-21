@@ -2,14 +2,14 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Automatiser un processus métier — matrice gain, risque et stabilité";
+  "Quel processus métier faut-il automatiser en premier ? — Hagnéré Code";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const axes = [
-  { label: "GAIN", value: "MESURÉ", color: "#34d399" },
-  { label: "STABILITÉ", value: "PROUVÉE", color: "#60a5fa" },
-  { label: "RISQUE", value: "CONTENU", color: "#c4b5fd" },
+const questions = [
+  { label: "TEMPS", value: "combien d’heures ?", color: "#34d399" },
+  { label: "RÈGLES", value: "sont-elles stables ?", color: "#60a5fa" },
+  { label: "ERREURS", value: "que coûtent-elles ?", color: "#c4b5fd" },
 ];
 
 export default function OgImage() {
@@ -99,7 +99,7 @@ export default function OgImage() {
               color: "#a5b4fc",
             }}
           >
-            Choisir, chiffrer, tester — ou reporter
+            Choisir une tâche utile, puis tester simplement
           </div>
         </div>
 
@@ -125,11 +125,11 @@ export default function OgImage() {
               marginBottom: 2,
             }}
           >
-            MATRICE DE DÉCISION
+            TROIS QUESTIONS À POSER
           </div>
-          {axes.map((axis) => (
+          {questions.map((question) => (
             <div
-              key={axis.label}
+              key={question.label}
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -146,8 +146,8 @@ export default function OgImage() {
                   width: 14,
                   height: 14,
                   borderRadius: 99,
-                  background: axis.color,
-                  boxShadow: "0 0 18px " + axis.color,
+                  background: question.color,
+                  boxShadow: "0 0 18px " + question.color,
                 }}
               />
               <div
@@ -159,7 +159,7 @@ export default function OgImage() {
                   color: "#d4d4d8",
                 }}
               >
-                {axis.label}
+                {question.label}
               </div>
               <div
                 style={{
@@ -167,10 +167,10 @@ export default function OgImage() {
                   marginLeft: "auto",
                   fontSize: 17,
                   fontWeight: 750,
-                  color: axis.color,
+                  color: question.color,
                 }}
               >
-                {axis.value}
+                {question.value}
               </div>
             </div>
           ))}
@@ -179,10 +179,10 @@ export default function OgImage() {
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         {[
-          "6 réponses comparées",
-          "Socle sur 36 mois",
-          "Tests des pannes",
-          "Cas à refuser",
+          "Observer une semaine",
+          "Comparer les solutions",
+          "Tester avant d’investir",
+          "Savoir quand attendre",
         ].map((label) => (
           <div
             key={label}

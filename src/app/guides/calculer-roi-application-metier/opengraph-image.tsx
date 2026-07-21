@@ -2,26 +2,26 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Calculer le ROI d’une application métier — trois scénarios et coût total";
+  "Calculer si une application métier sera rentable pour l’entreprise";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const scenarios = [
   {
-    label: "PRUDENT",
-    value: "35 % · ROI −32,61 %",
+    label: "COÛT ACTUEL",
+    value: "temps et erreurs",
     color: "#fbbf24",
-    width: 35,
+    width: 45,
   },
   {
-    label: "CENTRAL",
-    value: "60 % · ROI +15,76 %",
+    label: "COÛT DU PROJET",
+    value: "création + entretien",
     color: "#60a5fa",
-    width: 60,
+    width: 65,
   },
   {
-    label: "HAUT",
-    value: "80 % · ROI +53,81 %",
+    label: "GAIN UTILISABLE",
+    value: "économie réelle",
     color: "#34d399",
     width: 80,
   },
@@ -114,7 +114,8 @@ export default function OgImage() {
               color: "#a5b4fc",
             }}
           >
-            Coût complet, gains attribuables, délai de retour
+            Comparez ce que le problème coûte et ce que le projet fera vraiment
+            gagner
           </div>
         </div>
 
@@ -138,7 +139,7 @@ export default function OgImage() {
               letterSpacing: 1.4,
             }}
           >
-            PART DE CAPACITÉ RÉAFFECTÉE
+            LES TROIS NOMBRES À COMPARER
           </div>
           {scenarios.map((scenario) => (
             <div
@@ -186,24 +187,27 @@ export default function OgImage() {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        {["TCO", "Gain net", "3 scénarios", "Contrôle après lancement"].map(
-          (label) => (
-            <div
-              key={label}
-              style={{
-                display: "flex",
-                padding: "10px 17px",
-                borderRadius: 999,
-                background: "rgba(255,255,255,0.055)",
-                border: "1px solid rgba(255,255,255,0.10)",
-                color: "#d4d4d8",
-                fontSize: 19,
-              }}
-            >
-              {label}
-            </div>
-          ),
-        )}
+        {[
+          "Coût complet",
+          "Gain réel",
+          "Délai de retour",
+          "Vérification après lancement",
+        ].map((label) => (
+          <div
+            key={label}
+            style={{
+              display: "flex",
+              padding: "10px 17px",
+              borderRadius: 999,
+              background: "rgba(255,255,255,0.055)",
+              border: "1px solid rgba(255,255,255,0.10)",
+              color: "#d4d4d8",
+              fontSize: 19,
+            }}
+          >
+            {label}
+          </div>
+        ))}
       </div>
     </div>,
     size,

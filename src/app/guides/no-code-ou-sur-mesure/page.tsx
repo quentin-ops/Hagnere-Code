@@ -108,72 +108,41 @@ const faqItems = [
   {
     question: "Le no-code coûte-t-il vraiment moins cher que le sur-mesure ?",
     answer:
-      "Au démarrage, oui, et l'écart est énorme : quelques dizaines d'euros par mois contre plusieurs milliers d'euros de développement. Sur la durée, la réponse dépend d'une seule variable — le nombre d'utilisateurs. Les outils no-code facturent presque tous par siège, par enregistrement ou par unité de traitement : votre facture grimpe quand votre activité grandit, exactement au moment où vous auriez besoin de marges. Un développement sur mesure coûte cher une fois, puis presque rien. Le point où les deux courbes se croisent se situe le plus souvent entre la deuxième et la quatrième année pour un outil interne, et bien plus tôt dès qu'il y a beaucoup d'utilisateurs externes.",
+      "Au démarrage, généralement oui : un abonnement permet de tester un besoin sans financer un développement complet. Sur plusieurs années, comparez les licences, les volumes, le temps interne, les adaptations et la maintenance. Le sur-mesure conserve lui aussi des coûts d’hébergement, de support et d’évolution.",
   },
   {
-    question: "Quels sont les plafonds techniques réels des outils no-code ?",
+    question: "Quelles limites faut-il vérifier dans un outil no-code ?",
     answer:
-      "Ils sont publiés par les éditeurs eux-mêmes, et rarement lus. Airtable limite son interface de programmation à 5 requêtes par seconde et par base : au-delà, le service refuse la demande et impose 30 secondes d'attente. C'est l'ordre de grandeur d'un seul utilisateur actif sur une interface un peu dense — ce plafond disqualifie Airtable comme socle d'une application à trafic réel. Chez Bubble, la contrainte est différente : la formule à 209 dollars par mois n'autorise que deux personnes à modifier l'application simultanément, et cinq à 549 dollars. Sur un développement sur mesure, il n'existe aucune limite de ce genre.",
+      "Ils dépendent de l’outil et de la formule. Airtable publie notamment une limite de cinq requêtes par seconde et par base pour son interface de programmation ; Bubble limite aussi certains collaborateurs et volumes selon le forfait. Un logiciel sur mesure n’est pas sans limite : son infrastructure doit être dimensionnée et payée selon l’usage.",
   },
   {
     question: "Est-on prisonnier d'un outil no-code ?",
     answer:
-      "Partiellement, et il faut distinguer deux choses. Vos données sortent généralement sans difficulté : la plupart des outils proposent un export. Votre logique métier, elle, ne sort pas — les règles que vous avez construites dans l'éditeur visuel n'existent que dans cet éditeur, et il n'y a pas de fichier à emporter. Concrètement : si vous changez d'outil, vous récupérez votre base et vous reconstruisez tout le reste. C'est la raison pour laquelle nous recommandons de passer le test de réversibilité en six questions de ce guide avant de signer, et non le jour où vous voudrez partir.",
+      "Souvent en partie. Les données peuvent généralement être exportées, mais les écrans, les automatisations et les règles métier doivent fréquemment être reconstruits. Testez l’export et chiffrez une sortie avant de vous engager.",
   },
   {
     question:
-      "Un éditeur no-code peut-il changer ses conditions du jour au lendemain ?",
+      "Un éditeur no-code peut-il modifier ses fonctions ou ses tarifs ?",
     answer:
-      "Oui, et ce n'est pas théorique. Webflow a supprimé sa fonctionnalité Logic en juin 2025, puis les comptes utilisateurs en janvier 2026 — des fonctions sur lesquelles des clients avaient bâti leur produit. En mai 2026, la même société a fusionné deux formules : la bande passante incluse dans l'ancienne offre Business est passée de 100 à 50 gigaoctets, et les quotas de son offre d'hébergement de 10 millions à 2 millions de requêtes par mois. Ces changements s'appliquent automatiquement au renouvellement. C'est le risque structurel du modèle : vous louez une plateforme dont vous ne maîtrisez ni le prix, ni le périmètre, ni le calendrier.",
+      "Oui, selon les conditions du contrat. Webflow a par exemple arrêté certaines fonctions en 2025 et 2026 et modifié des quotas. Prévoyez une solution de remplacement pour les fonctions importantes et vérifiez les règles applicables au renouvellement.",
   },
   {
     question: "Le no-code permet-il de respecter le RGPD ?",
     answer:
-      "Cela dépend de l'outil, et le critère à vérifier est l'endroit où sont stockées vos données. Chez Bubble, le choix de la localisation d'hébergement n'est disponible que sur l'offre Enterprise, sur devis : sur les formules courantes, une entreprise française ne choisit pas où atterrissent ses données. Make, à l'inverse, propose un hébergement dans l'Union européenne sur toutes ses formules. Ce n'est pas un détail si vous traitez des données de santé, des données de salariés ou des informations sensibles : c'est le premier point à vérifier, avant même le prix.",
-  },
-  {
-    question: "Que valent les statistiques qu'on lit sur le no-code ?",
-    answer:
-      "Beaucoup sont inventées, y compris par des agences de développement sur mesure — c'est-à-dire par notre propre camp. L'affirmation la plus citée, selon laquelle « 68 % des applications Bubble plantent sous 10 000 utilisateurs », n'a aucune source : nous avons cherché sur le forum officiel de l'éditeur et ailleurs, elle n'existe nulle part. Le fameux « 70 % des applications utiliseront du low-code d'ici 2025 » de Gartner existe, lui, mais c'est une prévision de 2021 pour laquelle nous n'avons retrouvé aucune évaluation après coup. Notre position : les plafonds publiés par les éditeurs sont plus parlants que ces chiffres, et ils sont vérifiables en trois clics.",
-  },
-  {
-    question: "Le no-code convient-il pour un site vitrine ?",
-    answer:
-      "Pour un site simple qui doit exister sans enjeu d'acquisition, oui, sans hésiter. Webflow produit des sites corrects, et pour une plaquette de quelques pages, c'est un choix raisonnable. La limite apparaît sur deux terrains : la performance, où un site pré-généré sur mesure conserve une avance nette, et la bande passante, facturée chez Webflow autour de 0,40 dollar par gigaoctet — un tarif sans rapport avec le marché de l'hébergement, qui transforme un site à fort trafic en abonnement coûteux. Notre guide du prix d'un site vitrine chiffre les deux scénarios.",
+      "Oui dans certains cas, mais pas automatiquement. Vérifiez le lieu d’hébergement, les sous-traitants, les contrats, les droits d’accès et les possibilités d’effacement ou d’export. Les besoins changent fortement selon que l’outil traite des données publiques, de salariés, de santé ou de clients.",
   },
   {
     question: "Peut-on migrer d'un outil no-code vers du sur-mesure ?",
     answer:
-      "Oui. Un scénario possible est que l'outil ait permis de valider l'idée avant d'atteindre un plafond. L'usage réel aide alors à préciser le besoin, sans supprimer le risque de développer la mauvaise chose. Les données peuvent souvent être exportées selon les capacités de la plateforme ; la logique métier, les automatisations et les droits doivent généralement être reconstruits et testés. Le budget dépend donc du nouveau périmètre, de la qualité des exports et de la reprise.",
-  },
-  {
-    question: "n8n est-il open source ?",
-    answer:
-      "Non, et l'éditeur le dit lui-même explicitement. n8n est distribué sous une licence dite « Sustainable Use License », qui limite l'usage à vos besoins internes ou à un usage non commercial. Vous ne pouvez pas revendre un produit dont la valeur dépend substantiellement de n8n, ni héberger l'outil et facturer l'accès à des tiers. L'éditeur écrit noir sur blanc que les licences open source ne peuvent pas comporter de limitation d'usage, et qu'il ne se qualifie donc pas ainsi. Beaucoup d'articles le présentent pourtant comme open source : c'est faux, et cela change ce que vous avez le droit d'en faire.",
-  },
-  {
-    question: "Combien de temps faut-il pour construire avec du no-code ?",
-    answer:
-      "Nettement moins qu'en développement, et c'est son intérêt principal. Un outil interne simple se monte en quelques jours ; un prototype présentable en une à deux semaines. C'est imbattable pour valider une idée avant d'engager un budget. La nuance est que ce temps de construction rapide masque un temps d'exploitation qui, lui, s'allonge : contournements successifs, dépendance à la personne qui a construit l'outil, et travaux de maintenance quand l'éditeur change quelque chose. La vitesse initiale est réelle, la vitesse au bout de deux ans l'est beaucoup moins.",
-  },
-  {
-    question: "Le no-code peut-il gérer beaucoup d'utilisateurs externes ?",
-    answer:
-      "C'est précisément là qu'il faut comparer les modèles. Certaines plateformes facturent les utilisateurs externes, les sièges, les automatisations ou les volumes ; relevez leur grille datée. Un développement sur mesure n'ajoute pas nécessairement une licence par utilisateur, mais le volume peut augmenter infrastructure, support, sécurité, supervision et maintenance. Calculez les deux coûts totaux avec les mêmes utilisateurs et usages sur cinq ans, sans traiter la montée en charge comme gratuite.",
-  },
-  {
-    question: "Quand le no-code est-il clairement le bon choix ?",
-    answer:
-      "Dans quatre situations que nous nommons sans détour, parce qu'elles nous font perdre des missions. Pour valider une idée avant d'investir : construire un prototype en deux semaines vaut mieux que dépenser 20 000 euros dans le vide. Pour un outil interne à faible enjeu, utilisé par une poignée de personnes, dont la panne ne coûte rien. Pour automatiser des tâches répétitives entre logiciels existants, où Make et n8n sont excellents et n'ont pas d'équivalent sur mesure raisonnable. Et quand votre budget total est inférieur à 3 000 euros : le sur-mesure n'a alors aucun sens.",
+      "Oui. L’usage réel aide à préciser le besoin, sans supprimer le risque de développer la mauvaise chose. Les données peuvent souvent être exportées selon les possibilités de la plateforme ; les écrans, les automatisations et les droits doivent généralement être reconstruits et testés. Le budget dépend donc des fonctions à reprendre, de la qualité des exports et des données à conserver.",
   },
   {
     question:
       "Comment savoir si j'ai atteint les limites de mon outil no-code ?",
     answer:
-      "Cinq signaux, et il en faut au moins trois. Votre facture mensuelle dépasse le coût amorti d'un développement sur cinq ans. Vous passez plus de temps à contourner l'outil qu'à l'utiliser. Une seule personne sait comment il fonctionne, et son départ serait un problème. Vous avez commencé à exporter des données vers un tableur pour faire ce que l'outil ne sait pas faire. Et vous avez déjà subi un changement de conditions imposé par l'éditeur. Si vous cochez trois de ces cases, le calcul de ce guide vaut la peine d'être fait sérieusement.",
+      "Faites le calcul lorsque la facture augmente fortement, que les contournements se multiplient, qu’une seule personne comprend l’outil ou que les exports vers Excel deviennent indispensables. Un seul blocage critique peut suffire ; il n’existe pas de nombre magique de signaux.",
   },
 ];
-
 
 export default function Page() {
   return (
@@ -196,7 +165,7 @@ export default function Page() {
           { label: "No-code ou sur-mesure" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Les tarifs relevés le 18 juillet 2026 sur les pages officielles, les plafonds contractuels publiés par les éditeurs, quatre chiffres du secteur vérifiés à la source — dont un sans source retrouvée —, et la courbe de coût sur cinq ans."
+        heroDescription="Vous hésitez entre un outil no-code, un logiciel existant et du sur-mesure ? Comparez le coût, le délai, les limites, les données et la possibilité de changer de solution avant d’investir."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -212,13 +181,13 @@ export default function Page() {
           },
           {
             number: "02",
-            title: "Airtable : 5 requêtes/seconde par base",
+            title: "Comparez le coût total sur cinq ans",
             description: "",
             color: "blue",
           },
           {
             number: "03",
-            title: "4 chiffres bidon démontés",
+            title: "Un outil existant peut suffire",
             description: "",
             color: "emerald",
           },
@@ -265,256 +234,256 @@ export default function Page() {
         faqItems={faqItems}
       >
         <p className="lead">
-          Le débat est pollué par deux camps qui ont chacun un produit à vendre.
-          Nous en faisons partie — nous développons sur mesure — et nous avons
-          découvert en préparant ce guide que{" "}
           <strong>
-            l&apos;un des chiffres les plus cités contre le no-code a été
-            fabriqué par des agences comme la nôtre
-          </strong>
-          . Alors plutôt qu&apos;un avis, voici des tarifs relevés à la main,
-          des plafonds publiés par les éditeurs, et un calcul que vous ferez
-          vous-même.
+            Vous voulez remplacer un tableur, automatiser une tâche ou lancer un
+            nouvel outil, mais vous ne savez pas s’il faut utiliser du no-code
+            ou financer un développement sur mesure ?
+          </strong>{" "}
+          Commencez par l’option la plus simple qui répond au besoin. Un
+          logiciel déjà disponible peut suffire. Le no-code — construire avec
+          des blocs visuels — peut permettre de tester plus vite, avec un
+          investissement initial plus faible. Le sur-mesure devient pertinent
+          lorsque le fonctionnement propre à votre entreprise, les données, les
+          volumes ou les connexions avec vos autres logiciels justifient
+          l’investissement. Il n’existe pas de bascule automatique après deux
+          ans ou dix utilisateurs : comparez le coût total, le temps de votre
+          équipe et ce que vous devrez reconstruire si vous changez de solution.
         </p>
 
         <InfoBox
           variant="amber"
-          title="Les 10 mots de ce guide, traduits en français courant"
+          title="Étudiez aussi l’outil que vous possédez déjà"
         >
-          <strong>No-code</strong> : construire un outil ou un site en
-          assemblant des blocs dans une interface visuelle, sans écrire de code.{" "}
-          <strong>Low-code</strong> : la même chose, mais avec un peu de code
-          pour les cas particuliers. <strong>Sur-mesure</strong> : un logiciel
-          écrit ligne à ligne pour vous. <strong>Éditeur</strong> :
-          l&apos;entreprise qui fournit l&apos;outil no-code et fixe ses règles.{" "}
-          <strong>API</strong> : le passe-plat numérique par lequel deux
-          logiciels s&apos;échangent des données. <strong>Réversibilité</strong>{" "}
-          : votre capacité à partir en emportant ce qui vous appartient.{" "}
-          <strong>Verrouillage propriétaire</strong> : la situation où partir
-          coûte si cher qu&apos;on reste.{" "}
-          <strong>Coût total de possession</strong> : ce que l&apos;outil coûte
-          sur plusieurs années, abonnements compris — pas seulement à
-          l&apos;achat. <strong>Siège (ou licence)</strong> : une place payante,
-          facturée par personne et par mois. <strong>Bande passante</strong> :
-          le volume de données que votre site envoie à ses visiteurs, souvent
-          facturé au gigaoctet.
+          Avant de comparer deux nouvelles solutions, chiffrez le statu quo :
+          coût des erreurs, temps perdu, risque et limites actuelles. Si une
+          meilleure organisation ou une fonction de votre logiciel existant
+          résout le problème, ne construisez rien.
         </InfoBox>
 
         <GuideToc
           items={[
-            { id: "reponse-rapide", label: "1. La réponse en 30 secondes" },
+            {
+              id: "reponse-rapide",
+              label: "1. Le choix selon votre situation",
+            },
             {
               id: "de-quoi-parle-t-on",
-              label: "2. De quoi parle-t-on exactement",
+              label: "2. Les solutions que vous pouvez rencontrer",
             },
             {
               id: "tarifs",
-              label: "3. Les tarifs réels, relevés le 18 juillet 2026",
-            },
-            {
-              id: "chiffres-faux",
-              label:
-                "4. Quatre chiffres qu'on vous répète et qui n'existent pas",
+              label: "3. Les tarifs publics relevés le 18 juillet 2026",
             },
             {
               id: "plafonds",
-              label: "5. Les plafonds techniques que les éditeurs publient",
+              label: "4. Lire les limites publiées par les éditeurs",
             },
             {
               id: "changements",
-              label: "6. Quand l'éditeur change les règles en cours de route",
+              label: "5. Quand l'éditeur change les règles en cours de route",
             },
             {
               id: "cout-5-ans",
-              label: "7. La courbe sur 5 ans : trois scénarios chiffrés",
+              label: "6. Comparer le coût sur cinq ans",
             },
             {
               id: "reversibilite",
-              label: "8. Le test de réversibilité en 6 questions",
+              label: "7. Savoir ce que vous pourrez récupérer",
             },
-            { id: "juridique", label: "9. Propriété, RGPD, accessibilité" },
-            {
-              id: "quand-no-code",
-              label: "10. Les 4 cas où le no-code est le bon choix",
-            },
-            {
-              id: "quand-sur-mesure",
-              label: "11. Les 5 signaux qui disent qu'il faut basculer",
-            },
-            { id: "migration", label: "12. Passer du no-code au sur-mesure" },
+            { id: "juridique", label: "8. Propriété, RGPD, accessibilité" },
+            { id: "migration", label: "9. Passer du no-code au sur-mesure" },
             {
               id: "verdict-par-profil",
-              label: "13. Le verdict, profil par profil",
+              label: "10. Quelle solution pour votre entreprise ?",
             },
-            { id: "methode", label: "14. Méthode : trancher en 5 étapes" },
           ]}
         />
 
-        <h2 id="reponse-rapide">1. La réponse en 30 secondes</h2>
+        <h2 id="reponse-rapide">1. Le choix selon votre situation</h2>
         <p>
-          <strong>
-            Le no-code gagne au démarrage, le sur-mesure gagne sur la durée
-          </strong>
-          , et le point de bascule dépend presque entièrement du nombre
-          d&apos;utilisateurs. Les outils no-code facturent par personne, par
-          enregistrement ou par unité de traitement : votre facture grandit avec
-          votre activité. Un développement sur mesure coûte cher une fois, puis
-          presque rien.
+          Le no-code demande souvent moins d&apos;investissement au départ pour
+          tester et équiper une petite équipe. Le sur-mesure coûte davantage au
+          départ et reste à héberger, maintenir et faire évoluer. Il peut
+          devenir préférable si la plateforme facture fortement les utilisateurs
+          ou empêche une fonction importante. Un outil existant ou le maintien
+          de l’organisation actuelle restent de meilleures réponses lorsqu’ils
+          couvrent déjà le besoin.
         </p>
         <GuideTable
-          headers={["Votre situation", "Verdict", "Pourquoi"]}
+          headers={["Votre situation", "Piste à examiner", "Pourquoi"]}
           rows={[
             [
               "Vous voulez valider une idée avant d'investir",
-              "No-code, sans hésiter",
-              "Deux semaines et quelques dizaines d'euros valent mieux que 20 000 € dans le vide",
+              "Prototype no-code ou outil existant",
+              "Apprendre avant d’engager un budget important",
             ],
             [
-              "Outil interne, moins de 10 personnes, faible enjeu",
-              "No-code",
-              "La facture reste basse et la panne ne coûte rien",
+              "Petit outil interne, faible enjeu",
+              "No-code ou logiciel du marché",
+              "La mise en route reste rapide et le risque limité",
             ],
             [
               "Automatiser des tâches entre logiciels existants",
-              "No-code (Make, n8n)",
-              "Aucun équivalent sur mesure raisonnable à ce prix",
+              "Connecteur existant ou automatisation no-code",
+              "Réutiliser les échanges déjà prévus avant de développer",
             ],
             [
-              "Budget total sous 3 000 €",
-              "No-code",
-              "Le sur-mesure n'a aucun sens à ce niveau",
+              "Budget insuffisant pour un développement complet",
+              "No-code, outil existant ou statu quo amélioré",
+              "Adapter l’ambition au budget réel",
             ],
             [
-              "Outil ouvert à des dizaines d'utilisateurs externes",
-              "Sur-mesure",
-              "8 à 10 $ par utilisateur et par mois, indéfiniment, sur les outils no-code",
+              "Nombreux utilisateurs externes",
+              "Comparer no-code et sur-mesure sur cinq ans",
+              "Les licences peuvent augmenter, mais le sur-mesure ajoute infrastructure et support",
             ],
             [
-              "Le produit EST votre activité",
-              "Sur-mesure",
-              "Vous ne pouvez pas louer ce qui fait votre différence",
+              "Le produit est votre activité",
+              "Sur-mesure ou plateforme dont les limites sont acceptées",
+              "La propriété et la différenciation deviennent stratégiques",
             ],
             [
               "Données sensibles, exigence de localisation",
-              "Sur-mesure ou outil avec hébergement UE",
-              "Chez certains éditeurs, choisir où sont vos données coûte une offre Enterprise",
+              "Outil dont le contrat et l’hébergement répondent à vos exigences",
+              "Localisation, sous-traitants, droits d’accès, sécurité et export doivent être vérifiés dans tous les cas",
             ],
           ]}
         />
 
-        <h2 id="de-quoi-parle-t-on">2. De quoi parle-t-on exactement</h2>
+        <h2 id="de-quoi-parle-t-on">
+          2. Les solutions que vous pouvez rencontrer
+        </h2>
         <p>
-          « No-code » recouvre en réalité quatre familles d&apos;outils qui
-          n&apos;ont ni les mêmes usages, ni les mêmes limites. Les confondre
-          est la première source de mauvaise décision.
+          « No-code » signifie que l&apos;on construit avec une interface
+          visuelle plutôt qu&apos;en écrivant tout le code. Mais ce mot regroupe
+          des outils très différents. Avant de comparer les prix, identifiez
+          celui qui correspond réellement à votre besoin.
         </p>
         <GuideTable
-          headers={["Famille", "Exemples", "À quoi ça sert", "Là où ça coince"]}
+          headers={["Solution", "Usage adapté", "Limite à vérifier"]}
           rows={[
             [
-              "Construction d'applications",
-              "Bubble",
-              "Créer une application web ou mobile complète sans coder",
-              "Facturation à l'unité de traitement, nombre d'éditeurs plafonné",
+              "Application no-code — Bubble",
+              "Créer un prototype ou un outil métier sans équipe technique",
+              "Coût lié à l'usage et impossibilité d'exporter le code",
             ],
             [
-              "Création de sites",
-              "Webflow",
-              "Sites vitrines et éditoriaux au design soigné",
-              "Bande passante facturée cher, fonctions supprimées sans préavis",
+              "Création de sites — Webflow",
+              "Publier un site vitrine ou éditorial avec une grande liberté visuelle",
+              "Fonctions, trafic inclus et conditions d'export",
             ],
             [
-              "Bases de données visuelles",
-              "Airtable",
+              "Base visuelle — Airtable",
               "Remplacer un tableur par une base structurée et partagée",
-              "5 requêtes par seconde et par base, coût par utilisateur externe",
+              "Prix par utilisateur et limites de l'interface de programmation",
             ],
             [
-              "Automatisation entre outils",
-              "Make, n8n, Zapier",
-              "Faire dialoguer des logiciels existants",
-              "Facturation à l'action ou à l'exécution, qui grimpe vite en volume",
+              "Automatisation — Make, n8n, Zapier",
+              "Faire circuler des informations entre des logiciels existants",
+              "Facturation à l'action ou à l'exécution lorsque le volume augmente",
+            ],
+            [
+              "Logiciel du marché",
+              "Utiliser un CRM, un ERP ou un outil métier déjà prêt",
+              "Écart entre vos besoins et les fonctions disponibles",
             ],
           ]}
         />
         <p>
-          Une nuance de vocabulaire, parce qu&apos;elle revient dans tous les
-          devis : le <strong>low-code</strong> désigne les mêmes outils, mais
-          avec la possibilité d&apos;ajouter un peu de code pour les cas que
-          l&apos;interface visuelle ne couvre pas. C&apos;est rassurant sur le
-          papier. En pratique, ce code vit dans la plateforme et ne
-          s&apos;exporte pas davantage que le reste — la question de la
-          réversibilité se pose exactement dans les mêmes termes.
+          Le terme <strong>low-code</strong>, que vous croiserez dans certains
+          devis, désigne une plateforme visuelle à laquelle on peut ajouter du
+          code. Cette souplesse est utile, mais elle ne garantit pas que
+          l&apos;application pourra être transférée chez un autre fournisseur.
+          Demandez toujours ce qui est exportable : les données, les écrans et
+          les règles qui font fonctionner votre métier.
         </p>
         <p>
-          Une analogie utile pour la suite : le no-code, c&apos;est{" "}
-          <strong>louer un local aménagé</strong>. Vous emménagez en quelques
-          jours, vous ne payez rien à l&apos;entrée, et vous démarrez vite. Mais
-          vous payez un loyer à vie, vous ne pouvez pas pousser les murs, et le
-          propriétaire peut décider seul d&apos;augmenter le loyer ou de
-          condamner une pièce. Le sur-mesure, c&apos;est faire construire :
-          c&apos;est cher au départ, long, et ça vous appartient.
+          Le no-code ressemble donc à un local déjà aménagé : vous démarrez
+          rapidement, en acceptant les règles du propriétaire. Le sur-mesure
+          ressemble davantage à des travaux conçus pour votre activité : ils
+          demandent plus de temps et d&apos;argent, puis restent eux aussi à
+          entretenir. Aucun des deux modèles n&apos;est supérieur dans tous les
+          cas.
         </p>
 
-        <InfoBox
-          variant="blue"
-          title="Le fil rouge : scénario fictif composite — Sophie, cabinet de recrutement (ni client ni témoignage réel)"
-        >
-          Dans ce scénario, Sophie dirigerait un cabinet de recrutement à
-          Chambéry. Elle suivrait ses candidats dans un tableur partagé qui
-          atteint ses limites : quatorze personnes y écriraient, deux versions
-          circuleraient, et personne ne saurait laquelle fait foi. Elle
-          hésiterait entre un outil no-code monté en interne et un développement
-          sur mesure. Nous appliquerons son hypothèse à chaque étape du
-          calcul — parce que sa situation est exactement celle où la réponse
-          n&apos;est évidente <em>ni</em> dans un sens <em>ni</em> dans
-          l&apos;autre.
-        </InfoBox>
-
-        <h2 id="tarifs">3. Les tarifs réels, relevés le 18 juillet 2026</h2>
+        <h2 id="tarifs">3. Ce que les abonnements facturent vraiment</h2>
         <p>
-          Les comparatifs que nous avons lus reprennent des prix périmés,
-          parfois de deux ans. Voici un relevé fait à la main sur les pages
-          tarifaires officielles, le 18 juillet 2026. Les montants sont en
-          dollars hors taxes, en facturation annuelle sauf mention contraire.
+          Voici les prix affichés par les éditeurs le 18 juillet 2026. Ils sont
+          donnés hors taxes, généralement avec un engagement annuel, et peuvent
+          changer. Le chiffre utile n&apos;est pas seulement l&apos;abonnement
+          de départ : regardez aussi ce qui augmente avec les utilisateurs, le
+          trafic ou le nombre d&apos;actions.
+        </p>
+        <p>
+          Avant de calculer, ouvrez les pages officielles de{" "}
+          <a
+            href="https://bubble.io/pricing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Bubble
+          </a>
+          ,{" "}
+          <a
+            href="https://webflow.com/pricing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Webflow
+          </a>
+          ,{" "}
+          <a
+            href="https://www.airtable.com/pricing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Airtable
+          </a>
+          ,{" "}
+          <a
+            href="https://www.make.com/en/pricing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Make
+          </a>{" "}
+          et{" "}
+          <a
+            href="https://n8n.io/pricing/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            n8n
+          </a>
+          . Le tableau est un relevé daté, pas un tarif garanti.
         </p>
         <GuideTable
-          headers={[
-            "Outil",
-            "Entrée de gamme",
-            "Palier intermédiaire",
-            "Ce qui est facturé",
-          ]}
+          headers={["Outil", "Prix public observé", "Variable à surveiller"]}
           rows={[
             [
               "Bubble (web + mobile)",
-              "59 $/mois — 175 000 unités de traitement",
-              "209 $/mois — 250 000 unités, 2 éditeurs",
-              "Unités de traitement, cumulées web et mobile",
+              "59 $/mois pour 175 000 unités ; 209 $ pour 250 000 unités et 2 éditeurs",
+              "Unités de traitement et nombre de personnes qui construisent l'application",
             ],
             [
               "Webflow (site)",
-              "15 $/mois — sans gestion de contenu",
-              "25 $/mois — avec gestion de contenu",
-              "Par site, plus la bande passante en supplément",
+              "15 $/mois sans gestion de contenu ; 25 $ avec",
+              "Formule par site, trafic inclus et éventuels dépassements",
             ],
             [
               "Airtable",
-              "20 $/licence/mois — 50 000 enregistrements",
-              "45 $/licence/mois — 125 000 enregistrements",
-              "Par personne et par mois",
+              "20 $/personne/mois pour 50 000 enregistrements ; 45 $ pour 125 000",
+              "Nombre de personnes, d'invités et de lignes",
             ],
             [
               "Make",
-              "9 $/mois — 10 000 crédits",
-              "29 $/mois — 10 000 crédits, équipe",
-              "1 crédit par action de module",
+              "9 $/mois pour 10 000 crédits ; 29 $ en formule équipe",
+              "Chaque action d'un scénario consomme en principe un crédit",
             ],
             [
               "n8n",
-              "20 €/mois — 2 500 exécutions",
-              "50 €/mois — 10 000 exécutions",
-              "Par exécution de scénario complet, utilisateurs illimités",
+              "20 €/mois pour 2 500 exécutions ; 50 € pour 10 000",
+              "Nombre d'exécutions complètes et palier nécessaire",
             ],
           ]}
         />
@@ -523,124 +492,66 @@ export default function Page() {
           title="Trois pièges de facturation que le tableau ne montre pas"
         >
           <strong>
-            Le prix des dépassements chez Bubble n&apos;est pas publié.
+            Le prix des dépassements Bubble n&apos;apparaît pas dans le tableau
+            principal.
           </strong>{" "}
-          La page tarifaire indique que les dépassements sont facturés « par
-          tranche de 1 000 unités supplémentaires », sans donner le prix de la
-          tranche. Nous ne l&apos;inventons pas : nous signalons l&apos;opacité.
+          La page principale renvoie vers des paliers supplémentaires et permet
+          aussi de désactiver les dépassements. Consultez le détail au jour de
+          la décision et fixez une alerte ou un plafond de dépense.
+          <br />
+          <br />
+          <strong>Le trafic peut changer le coût de Webflow.</strong> La
+          quantité incluse dépend de la formule et des paliers sélectionnés.
+          Relevez donc le trafic réel du site avant de comparer. Cette dépense
+          ne se résume pas au prix brut d&apos;un hébergeur : la formule finance
+          aussi la plateforme et ses fonctions.
           <br />
           <br />
           <strong>
-            La bande passante Webflow revient à environ 0,40 $ par gigaoctet et
-            par mois
-          </strong>
-          , d&apos;après les scénarios que l&apos;éditeur publie lui-même. Un
-          hébergement standard se compte en centimes par gigaoctet. Sur un site
-          à fort trafic, ce poste dépasse largement le prix de
-          l&apos;abonnement.
-          <br />
-          <br />
-          <strong>Le saut de palier de n8n est brutal</strong> : de 50 € à 667 €
-          par mois, soit treize fois le prix pour quatre fois le volume.
-          C&apos;est le genre de marche qui transforme un budget maîtrisé en
-          mauvaise surprise.
+            Les formules n8n ne se comparent pas seulement au volume.
+          </strong>{" "}
+          Au moment du relevé, la formule Pro hébergée affichait 50 € par mois
+          pour 10 000 exécutions, tandis que l&apos;offre Business auto-hébergée
+          affichait 667 € pour 40 000 exécutions et des fonctions de
+          collaboration, d&apos;environnements et de contrôle supplémentaires.
+          Ne présentez donc pas ce passage comme un simple dépassement :
+          comparez le mode d&apos;hébergement et les fonctions réellement
+          utiles.
         </InfoBox>
 
-        <h2 id="chiffres-faux">
-          4. Quatre chiffres qu&apos;on vous répète et qui n&apos;existent pas
-        </h2>
-        <p>
-          Cette section est celle qui nous a le plus surpris à écrire. Nous
-          avons voulu vérifier les statistiques qui circulent contre le no-code
-          — celles qui servent notre camp. Elles ne tiennent pas.
-        </p>
-        <GuideTable
-          headers={[
-            "Le chiffre répété",
-            "Ce qu'on trouve en remontant à la source",
-          ]}
-          rows={[
-            [
-              "« 68 % des applications Bubble plantent sous 10 000 utilisateurs, 42 % des fondateurs abandonnent »",
-              "Aucune trace de cette enquête, ni sur le forum officiel de l'éditeur, ni ailleurs. La source n'existe pas — et ce chiffre est diffusé par des agences de développement sur mesure",
-            ],
-            [
-              "« Bubble plafonne à environ 100 lignes par seconde »",
-              "Aucune source éditeur. La documentation officielle des limites ne contient rien de tel",
-            ],
-            [
-              "« Gartner : 70 % des applications utiliseront du low-code d'ici 2025 »",
-              "La prévision existe, mais elle date de 2021 et elle est régulièrement mal attribuée. Nous n'avons retrouvé aucune évaluation publiée après coup en 2026",
-            ],
-            [
-              "« Le no-code, c'est 10 fois plus rapide et 80 % moins cher »",
-              "Slogan commercial. Aucune étude méthodologiquement défendable derrière",
-            ],
-          ]}
-        />
-        <p>
-          Nous laissons ces chiffres de côté et nous nous appuyons uniquement
-          sur ce que les éditeurs publient eux-mêmes. C&apos;est plus solide, et
-          franchement plus parlant : les vraies limites sont plus contraignantes
-          que les fausses.
-        </p>
-        <InfoBox
-          variant="amber"
-          title="Pourquoi ces chiffres existent : deux camps, deux intérêts"
-        >
-          Il faut comprendre d&apos;où viennent ces statistiques pour savoir
-          quoi en faire.{" "}
-          <strong>
-            D&apos;un côté, les éditeurs no-code et les agences qui construisent
-            dessus
-          </strong>{" "}
-          : leur intérêt est de faire croire que tout est faisable sans code,
-          d&apos;où les « dix fois plus rapide, 80 % moins cher » et les
-          prévisions Gartner régulièrement reprises sans évaluation postérieure
-          retrouvée dans notre recherche.{" "}
-          <strong>
-            De l&apos;autre, les agences de développement sur mesure — nous
-          </strong>{" "}
-          : notre intérêt est de faire peur sur les plafonds et le verrouillage,
-          d&apos;où des chiffres d&apos;échec spectaculaires sans mesure publiée
-          retrouvée dans notre recherche.
-          <br />
-          <br />
-          Le fait que nous ayons trouvé le chiffre fabriqué dans <em>
-            notre
-          </em>{" "}
-          camp en dit long sur l&apos;état du débat. Une comparaison honnête
-          consiste à ne citer que ce qui est vérifiable en trois clics : les
-          pages tarifaires et la documentation des éditeurs. C&apos;est ce que
-          fait ce guide, et c&apos;est pour cela que chaque chiffre y porte sa
-          date de relevé.
+        <InfoBox variant="amber" title="Écartez les pourcentages sans méthode">
+          Les promesses « dix fois plus rapide » ou « 80 % moins cher » ne
+          décrivent pas votre entreprise. Demandez la source, la date, le type
+          de projet et les coûts oubliés. Nous vendons du développement sur
+          mesure : notre intérêt commercial existe lui aussi. C’est pourquoi la
+          décision doit reposer sur les limites officielles, un essai avec vos
+          volumes et plusieurs offres comparables.
         </InfoBox>
 
-        <h2 id="plafonds">
-          5. Les plafonds techniques que les éditeurs publient
-        </h2>
+        <h2 id="plafonds">4. Les limites que les éditeurs publient</h2>
         <p>
-          Ces limites figurent dans la documentation officielle. Elles ne sont
-          pas cachées — elles sont simplement rarement lues avant de signer.
+          Ces limites figurent dans la documentation officielle. Elles ne
+          condamnent pas un outil à elles seules : elles indiquent ce qu&apos;il
+          faut tester avec votre volume réel avant de signer.
         </p>
         <ul>
           <li>
-            <strong>Airtable : 5 requêtes par seconde et par base.</strong>{" "}
-            Au-delà, le service refuse la demande et impose 30 secondes
-            d&apos;attente. Pour donner l&apos;échelle : cinq requêtes par
-            seconde, c&apos;est l&apos;ordre de grandeur d&apos;un <em>seul</em>{" "}
-            utilisateur actif sur une interface un peu dense. C&apos;est le
-            plafond qui disqualifie Airtable comme socle d&apos;une application
-            à trafic réel.
+            <strong>Airtable : 5 requêtes par seconde et par base.</strong> Une
+            requête est un échange automatique avec la base. Au-delà, le service
+            peut refuser temporairement les demandes. L&apos;impact dépend de la
+            façon dont l&apos;application regroupe et met en cache ces échanges
+            : faites un test de charge au lieu de déduire un nombre
+            d&apos;utilisateurs de ce seul plafond.
           </li>
           <li>
             <strong>
               Bubble : le nombre de personnes qui peuvent modifier
               l&apos;application est plafonné.
             </strong>{" "}
-            Deux éditeurs à 209 dollars par mois, cinq à 549 dollars. Sur un
-            développement sur mesure, le nombre de développeurs pouvant
-            travailler sur le code est illimité et gratuit.
+            Deux éditeurs à 209 dollars par mois, cinq à 549 dollars au moment
+            du relevé. Un projet sur mesure n&apos;ajoute pas nécessairement une
+            licence par développeur, mais chaque personne mobilisée reste bien
+            entendu facturée pour son travail.
           </li>
           <li>
             <strong>Make : un crédit par action.</strong> Un scénario comportant
@@ -659,18 +570,29 @@ export default function Page() {
           </li>
         </ul>
 
-        <GuideInlineCTA
-          title="Vous hésitez entre les deux ?"
-          description="Décrivez votre besoin en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti. Cette première réponse est gratuite et sans engagement — y compris si elle consiste à recommander un outil no-code."
-        />
-
         <h2 id="changements">
-          6. Quand l&apos;éditeur change les règles en cours de route
+          5. Quand l&apos;éditeur change les règles en cours de route
         </h2>
         <p>
-          C&apos;est le risque le plus sous-estimé, et il ne relève pas de la
-          spéculation : les trois exemples ci-dessous sont documentés et
-          récents.
+          Une plateforme peut modifier ses fonctions et ses quotas selon son
+          contrat. Webflow a documenté la{" "}
+          <a
+            href="https://webflow.com/updates/deprecating-logic-and-user-accounts"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            fin de Logic et des comptes utilisateurs
+          </a>{" "}
+          ainsi que les{" "}
+          <a
+            href="https://help.webflow.com/hc/en-us/articles/51059955082387-Updated-pricing-and-simplified-plans-for-May-2026"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            changements de formules de mai 2026
+          </a>
+          . Ces exemples montrent le type de dépendance à prévoir ; ils ne
+          signifient pas que tous les éditeurs agiront de la même façon.
         </p>
         <GuideTable
           headers={["Quand", "Ce qui a changé", "Conséquence pour les clients"]}
@@ -687,83 +609,62 @@ export default function Page() {
             ],
             [
               "Mai 2026",
-              "Webflow fusionne deux formules ; la bande passante incluse de l'ancienne offre Business passe de 100 à 50 Go, et les quotas d'hébergement de 10 à 2 millions de requêtes",
-              "Dégradation appliquée automatiquement au renouvellement",
+              "Webflow fusionne deux formules ; la bande passante incluse de l'ancienne offre Business passe de 100 à 50 Go, et les requêtes d'applications Webflow Cloud incluses de 10 à 2 millions",
+              "Changement appliqué au renouvellement ou lors d'une modification facturable du site",
             ],
           ]}
         />
         <InfoBox variant="amber" title="Ce que ces trois cas ont en commun">
-          Aucun n&apos;était négociable, aucun n&apos;était prévisible, et tous
-          se sont appliqués <strong>à des clients qui payaient</strong>.
-          C&apos;est la contrepartie structurelle du modèle locatif : vous
-          n&apos;achetez pas un outil, vous louez l&apos;accès à une plateforme
-          dont l&apos;éditeur maîtrise seul le prix, le périmètre et le
-          calendrier. Ce n&apos;est pas une critique morale — c&apos;est un
-          risque à intégrer au calcul, au même titre qu&apos;une clause de bail.
+          Ces changements rappellent qu&apos;un abonnement donne un droit
+          d&apos;usage, pas le contrôle de la feuille de route de
+          l&apos;éditeur. Vérifiez donc les délais d&apos;annonce, les
+          possibilités d&apos;export et le coût d&apos;une solution de secours.
+          Un logiciel sur mesure a d&apos;autres risques — dépendance à une
+          équipe, dette technique et maintenance — qui doivent être évalués avec
+          la même exigence.
         </InfoBox>
 
-        <h2 id="cout-5-ans">
-          7. La courbe sur 5 ans : trois scénarios chiffrés
-        </h2>
+        <h2 id="cout-5-ans">6. Comparer le coût sur cinq ans</h2>
         <p>
-          Voici le calcul utilisé pour comparer les deux options. Les hypothèses sont indiquées pour
-          que vous puissiez les remplacer par les vôtres.
+          Un abonnement bas n&apos;est pas toujours économique sur la durée. Un
+          devis sur mesure ne doit pas être traité comme un achat unique sans
+          frais futurs. Les scénarios suivants servent uniquement à montrer le
+          calcul : ils mélangent dollars et euros et ne constituent ni des devis
+          ni une prévision de taux de change. Les montants de 15 000 € et 25 000
+          € sont des hypothèses Hagnéré cohérentes avec notre{" "}
+          <Link href="/tarifs">grille publique</Link>, à remplacer par des
+          offres établies sur les mêmes fonctions.
         </p>
         <FormulaBox>
           {`SCÉNARIO A — Outil interne, 12 utilisateurs
   No-code (base + automatisations)     ~ 45 $/user/mois
   → 12 × 45 × 12 mois                  ≈ 6 500 $/an
   → sur 5 ans                          ≈ 32 400 $
-  Sur-mesure : 15 000 € + ~1 500 €/an  ≈ 22 500 €
-  → CROISEMENT vers la 3e année
+  Sur-mesure (hypothèse)               15 000 € au départ
+  Hébergement, maintenance, évolutions  à estimer séparément
+  → comparer avec de vrais devis et une marge d'imprévu
 
 SCÉNARIO B — Outil ouvert à 100 partenaires externes
   No-code : 12 sièges internes + 100 invités
   → 6 500 $ + (100 × 9 $ × 12)         ≈ 17 300 $/an
   → sur 5 ans                          ≈ 86 500 $
-  Sur-mesure : 25 000 € + ~2 500 €/an  ≈ 37 500 €
-  → CROISEMENT dès la 2e année
+  Sur-mesure (hypothèse)               25 000 € au départ
+  Infrastructure, support, évolutions   à chiffrer selon l'usage
+  → l'écart dépend surtout du support et de la croissance réelle
 
 SCÉNARIO C — Prototype pour valider une idée
   No-code : 2 mois × 60 $              ≈ 120 $
-  Sur-mesure : 15 000 € minimum
-  → LE NO-CODE GAGNE, et de très loin`}
+  Outil existant ou tableur amélioré    parfois déjà disponible
+  Sur-mesure                            investissement nettement supérieur
+  → commencer léger permet d'apprendre avant de construire`}
         </FormulaBox>
         <p>
-          <strong>Appliquons-le au scénario Sophie.</strong> Son cabinet compterait quatorze
-          personnes, toutes internes, et aucun candidat n&apos;aurait accès à
-          l&apos;outil — les échanges continueraient par e-mail. Elle serait donc
-          dans le scénario A, avec deux personnes de plus. Une base no-code
-          correctement outillée lui coûterait autour de 7 500 dollars par an,
-          soit environ 37 500 dollars sur cinq ans. Un développement sur mesure
-          pour ce périmètre se situerait vers 15 000 euros, plus
-          l&apos;entretien : environ 22 500 euros sur la même durée.
-        </p>
-        <p>
-          Le croisement se produirait dans sa troisième année. Ce qui veut dire,
-          très concrètement :{" "}
-          <strong>
-            si elle compte garder cet outil plus de trois ans, le sur-mesure est
-            moins cher ; si elle n&apos;en sait rien, le no-code est le pari
-            raisonnable
-          </strong>
-          . Et comme son processus de recrutement n&apos;aurait jamais été formalisé
-          — c&apos;est justement pour cela que le tableur a dérivé —, notre
-          conseil serait de commencer en no-code, précisément pour découvrir ce
-          dont elle a besoin avant de le faire construire.
-        </p>
-        <p>
-          Lecture honnête de ces trois calculs :{" "}
-          <strong>
-            le no-code n&apos;est pas « moins cher », il est moins cher au
-            démarrage et plus cher à l&apos;échelle
-          </strong>
-          . Le facteur qui décide n&apos;est presque jamais la complexité
-          technique — c&apos;est le nombre d&apos;utilisateurs, et surtout la
-          présence d&apos;utilisateurs externes. Un outil pour douze personnes
-          peut rester en no-code des années sans que cela pose problème. Le même
-          outil ouvert à cent partenaires devient un mauvais calcul dès la
-          deuxième année.
+          Le résultat dépend du nombre d&apos;utilisateurs, du volume
+          d&apos;automatisations, du support attendu et du rythme des
+          changements. Dans certains cas, le no-code restera le moins cher cinq
+          ans. Dans d&apos;autres, un logiciel du marché ou un développement
+          dédié prendra l&apos;avantage. Le tableau doit être rempli avec vos
+          factures et deux devis comparables.
         </p>
         <p>
           Notre{" "}
@@ -778,81 +679,69 @@ SCÉNARIO C — Prototype pour valider une idée
           traite le cas où l&apos;outil devient un produit.
         </p>
 
-        <h2 id="reversibilite">8. Le test de réversibilité en 6 questions</h2>
+        <h2 id="reversibilite">
+          7. Que pourrez-vous récupérer si vous changez de solution ?
+        </h2>
         <p>
-          À passer <strong>avant</strong> de signer, pas le jour où vous voudrez
-          partir. Six questions, vingt minutes, et vous saurez à quoi vous vous
-          engagez réellement.
+          Faites ces vérifications <strong>avant</strong> de signer, pas le jour
+          où vous voudrez partir. Les six questions suivantes permettent de
+          repérer ce qui manque encore au contrat ou au test de sortie.
         </p>
         <p>
-          Avant les six questions, un tableau qui répond à la plus importante
-          d&apos;entre elles. Ce que chaque outil laisse réellement sortir,
-          d&apos;après leur documentation officielle :
+          Autrement dit : pouvez-vous changer de fournisseur sans repartir de
+          zéro ? Voici ce que les documentations indiquaient lors de notre
+          vérification ; confirmez ces possibilités dans votre contrat.
         </p>
         <GuideTable
-          headers={[
-            "Outil",
-            "Vos données",
-            "Votre logique métier",
-            "Le détail qui compte",
-          ]}
+          headers={["Outil", "Ce que vous récupérez", "Ce qu'il faut prévoir"]}
           rows={[
             [
               "Webflow",
-              "Oui, séparément en CSV",
-              "Le design seulement",
-              "L'export de code n'existe que sur les formules Workspace, et il restitue une coquille vide pour un site à contenu : les listes s'affichent sans données",
+              "Données en CSV et, avec certaines formules, une partie du code visuel",
+              "Les fonctions et les contenus dynamiques peuvent devoir être reconstruits",
             ],
             [
               "Bubble",
-              "Oui",
-              "Non",
-              "Aucune fonction d'export du code source. La demande est ouverte sur le forum officiel de l'éditeur, dans la catégorie « idée » — c'est-à-dire non implémentée",
+              "Les données dans un format standard",
+              "L'application et ses règles ne sont pas exportées comme un code réutilisable",
             ],
             [
               "Airtable",
-              "Oui, en CSV ou par interface de programmation",
-              "Non",
-              "Les automatisations et les vues ne s'exportent pas",
+              "Les données en CSV ou par interface de programmation",
+              "Les vues, formulaires et automatisations sont à recréer",
             ],
             [
               "Make, Softr, Glide",
-              "Oui",
-              "Non",
-              "Même logique : les données sortent, les règles restent",
+              "Les données selon les connecteurs et exports disponibles",
+              "Vérifier séparément scénarios, écrans et règles",
             ],
             [
               "Développement sur mesure",
-              "Oui",
-              "Oui — c'est du code",
-              "Le dépôt vous appartient, n'importe quel développeur peut le reprendre",
+              "Données et code si le contrat, les comptes et les accès le prévoient",
+              "Documentation, qualité du code et passation conditionnent la reprise",
             ],
           ]}
         />
         <p>
-          Ce tableau explique la mécanique du verrouillage bien mieux qu&apos;un
-          discours :{" "}
-          <strong>
-            ce n&apos;est pas vos données qui vous retiennent, c&apos;est le
-            travail que vous avez investi dans les règles
-          </strong>
-          . Et c&apos;est aussi pourquoi un client n&apos;a aucun levier quand
-          l&apos;éditeur change son modèle de facturation : il ne peut ni
-          exporter, ni héberger ailleurs, ni négocier.
+          Exporter une liste de clients ne suffit pas à déplacer un outil. Les
+          règles, les écrans, les automatisations et les droits d&apos;accès
+          représentent souvent la plus grande partie du travail. Chiffrez leur
+          reconstruction avant de considérer qu’un changement restera possible.
         </p>
         <ol>
           <li>
             <strong>
               Puis-je exporter mes données dans un format standard ?
             </strong>{" "}
-            Réponse généralement oui. C&apos;est la partie facile.
+            C&apos;est souvent possible pour les tableaux principaux, mais
+            testez aussi les pièces jointes, les relations et les champs propres
+            à votre configuration.
           </li>
           <li>
-            <strong>Puis-je exporter ma logique métier ?</strong> Réponse
-            généralement non — et c&apos;est le point décisif. Les règles que
-            vous construisez dans l&apos;éditeur visuel n&apos;existent que là.
-            En partant, vous emportez vos données et vous reconstruisez tout le
-            reste.
+            <strong>Puis-je exporter ma logique métier ?</strong> Elle
+            n&apos;est souvent pas réutilisable directement. Les règles
+            construites dans l&apos;éditeur visuel peuvent devoir être
+            documentées, puis reconstruites et testées ailleurs.
           </li>
           <li>
             <strong>Qui possède le compte ?</strong> S&apos;il est au nom
@@ -863,16 +752,16 @@ SCÉNARIO C — Prototype pour valider une idée
             <strong>
               Que dit exactement la licence sur l&apos;usage commercial ?
             </strong>{" "}
-            Question loin d&apos;être théorique : n8n interdit de revendre un
-            produit dont la valeur dépend substantiellement de l&apos;outil, ou
-            d&apos;en héberger une instance et d&apos;en facturer l&apos;accès.
+            La licence de n8n, par exemple, encadre certains usages de revente
+            ou d&apos;hébergement. Faites vérifier votre modèle précis si
+            l&apos;outil devient une partie du produit vendu à vos clients.
           </li>
           <li>
             <strong>
-              Que se passe-t-il si le prix double l&apos;an prochain ?
+              Que se passe-t-il si le prix ou les conditions changent ?
             </strong>{" "}
-            Regardez l&apos;historique de l&apos;éditeur plutôt que ses
-            promesses — la section 6 donne trois précédents.
+            Regardez l&apos;historique de l&apos;éditeur, les clauses de
+            révision et votre solution de repli.
           </li>
           <li>
             <strong>
@@ -884,282 +773,126 @@ SCÉNARIO C — Prototype pour valider une idée
           </li>
         </ol>
 
-        <h2 id="juridique">9. Propriété, RGPD, accessibilité</h2>
+        <h2 id="juridique">8. Propriété, RGPD, accessibilité</h2>
         <p>
-          Trois points juridiques que les comparatifs ignorent et qui peuvent
-          coûter cher.
+          Ces trois sujets ne se règlent pas par le seul choix entre no-code et
+          sur-mesure. Ils doivent apparaître dans le cahier des charges et le
+          contrat. Les éléments ci-dessous sont des points de vigilance, pas un
+          conseil juridique personnalisé.
         </p>
         <p>
           <strong>La propriété.</strong> Sur un développement sur mesure, la
           question se règle par une clause de cession conforme à l&apos;article
           L131-3 du Code de la propriété intellectuelle — en droit français,
-          payer ne rend pas automatiquement propriétaire du code. Sur du
-          no-code, la question ne se pose même pas : il n&apos;y a pas de code à
-          céder. Vous n&apos;êtes propriétaire que de vos données.
+          payer ne rend pas automatiquement propriétaire du code. Sur une
+          plateforme, vous conservez normalement vos contenus et données, mais
+          vous obtenez surtout un droit d&apos;utiliser le logiciel selon ses
+          conditions. Les modèles, extensions et éléments créés par un
+          prestataire doivent eux aussi être couverts par le contrat.
         </p>
         <p>
           <strong>Le RGPD et la localisation des données.</strong> C&apos;est le
-          point à vérifier en premier si vous traitez des données sensibles.
+          point à vérifier en premier si vous traitez des données personnelles.
           Chez Bubble, le choix de la localisation d&apos;hébergement n&apos;est
           disponible que sur l&apos;offre Enterprise, sur devis : sur les
           formules courantes, vous ne choisissez pas où sont vos données. Make,
-          à l&apos;inverse, propose un hébergement européen sur toutes ses
-          formules. Notre page{" "}
+          à l&apos;inverse, annonçait un hébergement européen sur ses formules.
+          La localisation ne suffit pas : vérifiez aussi le contrat de
+          sous-traitance, les transferts, les droits d&apos;accès, la durée de
+          conservation et la sécurité. Notre page{" "}
           <Link href="/services/securite-rgpd">sécurité et RGPD</Link> détaille
           ce que cela implique.
         </p>
         <p>
           <strong>L&apos;accessibilité.</strong> La réglementation européenne
-          sur l&apos;accessibilité s&apos;applique depuis le 28 juin 2025 à de
-          nombreux services en ligne vendus aux particuliers. Sur un outil
-          no-code, votre marge de manœuvre pour corriger un défaut
-          d&apos;accessibilité est limitée à ce que l&apos;éditeur permet. Sur
-          un développement sur mesure, tout est modifiable.
+          sur l&apos;accessibilité s&apos;applique depuis le 28 juin 2025 à
+          certaines catégories de services, avec un champ d’application et des
+          exemptions à vérifier. Une plateforme peut limiter les corrections
+          possibles. Un développement sur mesure donne plus de maîtrise, mais il
+          n&apos;est accessible que si cette exigence est réellement conçue,
+          testée et maintenue.
         </p>
 
-        <h2 id="quand-no-code">10. Les 4 cas où le no-code est le bon choix</h2>
+        <InfoBox variant="blue" title="Quand refaire la comparaison">
+          Le no-code fait partie des premières options à examiner pour tester
+          une idée, automatiser une tâche ou équiper une petite équipe.
+          Recomparez les solutions si la facture augmente fortement, si les
+          contournements deviennent quotidiens, si une fonction indispensable
+          reste impossible ou si une seule personne sait maintenir l’outil. Un
+          irritant isolé ne justifie pas automatiquement un développement
+          complet.
+        </InfoBox>
+
+        <h2 id="migration">9. Passer du no-code au sur-mesure</h2>
         <p>
-          Nous vendons du développement sur mesure. Voici néanmoins les
-          situations où nous vous dirons d&apos;aller vers le no-code — elles
-          nous font perdre des missions, et elles sont réelles.
+          Une phase no-code peut aider à observer les usages avant de construire
+          autrement. Elle ne produit pas automatiquement un cahier des charges
+          complet : les exceptions, les droits, les intégrations et les besoins
+          futurs doivent encore être décrits avec les équipes.
         </p>
-        <ul>
-          <li>
-            <strong>Valider une idée avant d&apos;investir.</strong> Construire
-            un prototype en deux semaines pour quelques dizaines d&apos;euros
-            vaut infiniment mieux que dépenser 20 000 euros sur une intuition.
-            C&apos;est le meilleur usage du no-code, et de loin.
-          </li>
-          <li>
-            <strong>Un outil interne à faible enjeu.</strong> Moins de dix
-            personnes, une panne qui ne coûte rien, un processus stable : la
-            facture reste basse et le risque est nul.
-          </li>
-          <li>
-            <strong>Automatiser des tâches entre logiciels existants.</strong>{" "}
-            Make et n8n sont excellents sur ce terrain, et il n&apos;existe pas
-            d&apos;équivalent sur mesure raisonnable à ce prix. Nous les
-            utilisons nous-mêmes.
-          </li>
-          <li>
-            <strong>Un budget total inférieur à 3 000 euros.</strong> À ce
-            niveau, le sur-mesure n&apos;a aucun sens. Nous vous le dirons au
-            premier rendez-vous plutôt que de vous vendre un forfait
-            surdimensionné.
-          </li>
-        </ul>
+        <p>
+          Les données peuvent souvent être exportées, mais il faut contrôler
+          leur qualité, leurs doublons et les pièces jointes. La logique métier
+          et les écrans sont généralement à reconstruire. Le budget doit donc
+          couvrir un inventaire, le nettoyage, les tests, la reprise des
+          historiques et une période où les deux systèmes coexistent.
+        </p>
+        <p>
+          Lorsque le contexte le permet, évitez de tout basculer en une fois.
+          Gardez l&apos;outil no-code en fonctionnement pendant que le nouveau
+          se construit, transférez une fonction à la fois, et ne coupez
+          l&apos;ancien qu&apos;une fois le nouveau éprouvé. Cette coexistence
+          prend du temps, mais réduit le risque d&apos;interrompre le travail.
+        </p>
 
-        <h2 id="quand-sur-mesure">
-          11. Les 5 signaux qui disent qu&apos;il faut basculer
+        <h2 id="verdict-par-profil">
+          10. Quelle solution choisir pour votre entreprise ?
         </h2>
-        <p>
-          À l&apos;inverse, voici les signaux de saturation. Il en faut au moins
-          trois pour que le calcul vaille la peine d&apos;être fait
-          sérieusement.
-        </p>
-        <ol>
-          <li>
-            <strong>
-              Votre facture mensuelle dépasse le coût amorti d&apos;un
-              développement sur cinq ans.
-            </strong>{" "}
-            C&apos;est le calcul de la section 7, appliqué à vos chiffres.
-          </li>
-          <li>
-            <strong>
-              Vous passez plus de temps à contourner l&apos;outil qu&apos;à
-              l&apos;utiliser.
-            </strong>{" "}
-            Les contournements s&apos;empilent, et chacun devient une fragilité.
-          </li>
-          <li>
-            <strong>Une seule personne sait comment il fonctionne.</strong>{" "}
-            C&apos;est un risque de continuité identique à celui d&apos;un
-            développeur unique — souvent invoqué contre le sur-mesure, rarement
-            contre le no-code.
-          </li>
-          <li>
-            <strong>
-              Vous exportez vers un tableur pour faire ce que l&apos;outil ne
-              sait pas faire.
-            </strong>{" "}
-            Signal classique : la plateforme a atteint sa limite fonctionnelle.
-          </li>
-          <li>
-            <strong>
-              Vous avez déjà subi un changement de conditions imposé.
-            </strong>{" "}
-            S&apos;il y en a eu un, il y en aura d&apos;autres.
-          </li>
-        </ol>
-
-        <h2 id="migration">12. Passer du no-code au sur-mesure</h2>
-        <p>
-          C&apos;est un parcours possible après une phase de validation, avec un
-          avantage utile mais non automatique :{" "}
-          <strong>
-            après un ou deux ans d&apos;usage réel, vous savez exactement ce
-            dont vous avez besoin
-          </strong>
-          . Le premier risque d&apos;un développement sur mesure — construire la
-          mauvaise chose — est fortement réduit. Votre outil no-code a servi de
-          cahier des charges vivant.
-        </p>
-        <p>
-          Ce qui se migre : vos données, sans difficulté majeure. Ce qui ne se
-          migre pas : la logique métier, à reconstruire intégralement. Comptez
-          donc le budget d&apos;un développement neuf, diminué de
-          l&apos;économie de cadrage, augmenté de la reprise des données.
-        </p>
-        <p>
-          Notre recommandation de méthode : ne basculez jamais tout d&apos;un
-          coup. Gardez l&apos;outil no-code en fonctionnement pendant que le
-          nouveau se construit, migrez un périmètre à la fois, et ne coupez
-          l&apos;ancien qu&apos;une fois le nouveau éprouvé. C&apos;est plus
-          long, et c&apos;est ce qui évite les migrations catastrophiques.
-        </p>
-
-        <h2 id="verdict-par-profil">13. Le verdict, profil par profil</h2>
         <GuideTable
-          headers={["Votre profil", "Notre verdict", "Pourquoi"]}
+          headers={["Votre profil", "Choix à examiner", "Pourquoi"]}
           rows={[
             [
               "Créateur d'entreprise qui teste une idée",
-              "No-code",
-              "Le coût d'un prototype est sans commune mesure avec celui d'un développement",
+              "No-code, maquette ou outil existant",
+              "Apprendre avec peu de fonctions et un budget limité",
             ],
             [
               "TPE, outil interne pour 5 à 10 personnes",
-              "No-code",
-              "La facture reste maîtrisée et l'enjeu est faible",
+              "Outil du marché ou no-code",
+              "Éviter une construction spécifique si les fonctions sont standard",
             ],
             [
               "PME, outil interne pour 20 personnes et plus",
-              "Calculez sur 5 ans",
-              "Le croisement se produit généralement entre la 2e et la 3e année",
+              "Comparez trois options sur 5 ans",
+              "Les licences, la maintenance et le temps interne peuvent changer le résultat",
             ],
             [
               "Outil ouvert à des clients ou partenaires",
-              "Sur-mesure",
-              "Le coût par utilisateur externe rend le no-code intenable à l'échelle",
+              "Testez les coûts et les limites",
+              "Certains outils facturent les invités ; d'autres modèles restent viables",
             ],
             [
               "Éditeur de logiciel : le produit EST l'activité",
-              "Sur-mesure",
-              "On ne loue pas ce qui fait sa différence, et la propriété devient stratégique",
+              "Sur-mesure ou plateforme assumée",
+              "La différenciation, la continuité et les droits deviennent stratégiques",
             ],
             [
               "Automatisation entre logiciels existants",
-              "No-code",
-              "Make et n8n sont les bons outils, y compris pour nous",
+              "Connecteur existant ou no-code",
+              "Réutiliser des intégrations disponibles avant de développer",
             ],
             [
               "Données de santé, RH ou sensibles",
-              "Sur-mesure ou outil à hébergement UE vérifié",
-              "La localisation des données n'est pas négociable et n'est pas garantie partout",
+              "Solution dont le contrat et la sécurité sont vérifiés",
+              "L’hébergement ne suffit pas : contrôlez aussi accès, sous-traitants, export et obligations propres aux données",
             ],
           ]}
         />
 
-        <InfoBox variant="emerald" title="La recommandation issue du scénario Sophie">
-          La recommandation rationnelle serait de commencer en no-code, sur une base structurée, pour un coût de
-          quelques centaines d&apos;euros par an. Non pas parce que le
-          sur-mesure serait mauvais pour elle — le calcul montre l&apos;inverse
-          au-delà de trois ans —, mais parce que{" "}
-          <strong>
-            son processus de recrutement ne serait pas encore écrit
-          </strong>
-          . Développer sur mesure aujourd&apos;hui reviendrait à figer dans du
-          code une organisation qu&apos;elle serait en train de découvrir.
-          <br />
-          <br />
-          Une revue serait programmée dans dix-huit mois : à ce moment-là, elle
-          saurait mieux ce dont son cabinet a besoin, son outil no-code aurait
-          servi de cahier des charges vivant, et le développement pourrait se faire sans
-          le premier risque de tout projet — construire la mauvaise chose.
-          Dans cette hypothèse, ne pas lancer immédiatement la mission serait
-          la bonne décision.
-        </InfoBox>
-
-        <h2 id="methode">14. Méthode : trancher en 5 étapes</h2>
-        <ol>
-          <li>
-            <strong>
-              Comptez vos utilisateurs, en séparant internes et externes.
-            </strong>{" "}
-            C&apos;est la variable qui décide, avant la complexité technique.
-          </li>
-          <li>
-            <strong>Faites le calcul sur cinq ans</strong> avec la trame de la
-            section 7 et les tarifs de la section 3, remplacés par ceux que vous
-            relèverez vous-même le jour de votre décision.
-          </li>
-          <li>
-            <strong>Passez le test de réversibilité</strong> de la section 8.
-            Vingt minutes, et la question 2 vous donnera l&apos;essentiel de la
-            réponse.
-          </li>
-          <li>
-            <strong>Vérifiez la localisation de vos données</strong> si vous
-            traitez autre chose que des informations publiques.
-          </li>
-          <li>
-            <strong>Commencez petit, quel que soit le camp choisi.</strong> En
-            no-code, un premier périmètre resserré. En sur-mesure, une première
-            version utilisable plutôt qu&apos;un produit complet — c&apos;est
-            l&apos;objet de notre <Link href="/methode">Discovery Sprint</Link>,
-            deux jours de cadrage à 1 500 €, intégralement déduits si le projet
-            se lance.
-          </li>
-        </ol>
-        <p>
-          Nos projets sur mesure démarrent à 15 000 € pour une première version
-          d&apos;outil réellement utilisable, au forfait fixe contractuel, code
-          déposé sur un compte à votre nom. Le détail est sur notre page{" "}
-          <Link href="/services/outils-internes-sur-mesure">
-            outils internes sur mesure
-          </Link>{" "}
-          et dans nos <Link href="/tarifs">tarifs publics</Link>.
-        </p>
-
         <GuideInlineCTA
-          title="Un outil à construire, un no-code qui sature ?"
-          description="Décrivez votre situation en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Le cadrage peut recommander de conserver le no-code lorsque le sur-mesure n'est pas justifié."
+          title="Obtenez un choix argumenté avant un devis"
+          description="Décrivez vos utilisateurs, votre processus et votre budget. Nous comparerons le statu quo, un logiciel existant, le no-code et le sur-mesure avant de recommander une construction."
         />
-
-        <InfoBox
-          variant="emerald"
-          title="À retenir : les 6 chiffres de ce guide"
-        >
-          <ul className="list-disc pl-4 space-y-1.5">
-            <li>
-              <strong>5 requêtes/seconde</strong> : le plafond d&apos;Airtable
-              par base — l&apos;ordre de grandeur d&apos;un seul utilisateur
-              actif.
-            </li>
-            <li>
-              <strong>2 éditeurs</strong> : le nombre de personnes pouvant
-              modifier une application Bubble à 209 $/mois.
-            </li>
-            <li>
-              <strong>0,40 $ par gigaoctet</strong> : le coût de la bande
-              passante chez Webflow, quand un hébergement standard se compte en
-              centimes.
-            </li>
-            <li>
-              <strong>× 13 pour × 4</strong> : le saut de palier de n8n, de 50 €
-              à 667 € par mois.
-            </li>
-            <li>
-              <strong>8 à 10 $ par mois</strong> : le prix d&apos;un utilisateur
-              externe sur Airtable, indéfiniment.
-            </li>
-            <li>
-              <strong>2e à 3e année</strong> : le moment où la courbe du
-              sur-mesure passe sous celle du no-code sur un outil interne.
-            </li>
-          </ul>
-        </InfoBox>
 
         <h2 id="sources">Sources</h2>
         <p className="text-sm">
@@ -1228,8 +961,8 @@ SCÉNARIO C — Prototype pour valider une idée
           >
             article L131-3 du Code de la propriété intellectuelle
           </a>
-          . Les changements de conditions cités en section 6 proviennent des
-          annonces publiées par l&apos;éditeur concerné.
+          . Les changements de Webflow sont reliés directement dans la section
+          qui les analyse.
         </p>
         <p className="text-sm">
           Les tarifs des éditeurs no-code changent fréquemment : le relevé

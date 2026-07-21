@@ -103,69 +103,39 @@ const breadcrumbJsonLd = JSON.stringify({
 
 const faqItems = [
   {
-    question: "Combien coûte le référencement naturel par mois ?",
+    question: "Quel budget SEO prévoir pour une PME, audit compris ?",
     answer:
-      "Les grilles publiques d'agences françaises relevées en juillet 2026 s'étalent d'environ 220 à 8 000 euros HT par mois. Mais cette fourchette ne vous apprend rien, parce qu'elle mélange des prestations sans commune mesure. La seule réponse utile passe par une division : un budget mensuel divisé par le prix d'une journée de consultant donne le temps de travail que vous achetez réellement. Sur la base d'un tarif journalier de 900 euros, 221 euros par mois achètent moins de deux heures, et 1 500 euros achètent moins de deux jours. C'est ce nombre-là qu'il faut regarder, pas le prix affiché.",
-  },
-  {
-    question: "Quel budget SEO pour une PME ?",
-    answer:
-      "Pour une entreprise régionale avec un site de vingt à cent pages, les fourchettes convergent, toutes sources confondues, vers 800 à 1 500 euros HT par mois. En marché national concurrentiel, on passe à 2 500 à 5 000 euros. Attention : ces valeurs sont des observations de marché, pas des données. Il n'existe en France aucune statistique officielle du marché des prestations de référencement — ni l'INSEE ni aucun syndicat professionnel ne le mesure. Tous les chiffres qui circulent, y compris les nôtres, sont publiés par des gens qui vendent la prestation. Le savoir change la façon de les lire.",
-  },
-  {
-    question: "Combien coûte un audit SEO ?",
-    answer:
-      "Les grilles publiques donnent environ 300 à 800 euros pour un audit express sur un petit site, 800 à 3 000 euros pour un audit complet de PME, et 3 000 à 8 000 euros sur un e-commerce à gros catalogue. Ce qui distingue un audit à 500 euros d'un audit à 3 000 euros n'est pas le nombre de pages du rapport : c'est la présence des quatre volets — technique, sémantique, popularité, et surtout un plan d'action priorisé avec une estimation de charge pour chaque item. Un audit qui liste des problèmes sans les classer par gain sur effort vous laisse exactement là où vous étiez.",
-  },
-  {
-    question: "Le SEO pas cher, ça existe ?",
-    answer:
-      "Oui, et c'est précisément le problème. Faites la division vous-même : un forfait à 221 euros par mois, divisé par un tarif journalier d'agence de 900 euros et rapporté à une journée de huit heures, représente moins de deux heures de travail mensuel. Or les offres à ce prix annoncent un audit complet, des corrections techniques, deux articles rédigés, du netlinking et un interlocuteur dédié. Ces deux choses ne peuvent pas être vraies en même temps. Ce n'est pas une question de bonne ou mauvaise agence, c'est une question d'arithmétique.",
+      "Les grilles publiques relevées en juillet 2026 situent souvent un accompagnement régional entre 800 et 1 500 € HT par mois, et un marché national concurrentiel entre 2 500 et 5 000 €. Un audit complet de PME est plutôt affiché entre 800 et 3 000 € HT. Ces repères viennent de prestataires : vérifiez les actions réellement prévues, l’état du site et la concurrence avant de fixer votre budget.",
   },
   {
     question: "Combien de temps avant d'avoir des résultats en SEO ?",
     answer:
-      "Il n’existe pas de délai universel démontrable. Une mise en ligne, l’exploration d’une URL, son éventuelle indexation, l’apparition d’impressions, l’obtention d’une position et la génération d’une demande sont six états différents. Google indique que certaines modifications peuvent être prises en compte rapidement et que d’autres demandent plusieurs mois, sans garantir d’effet notable. Les données Ahrefs décrivent l’âge et le classement d’échantillons de pages ; elles ne permettent pas de transformer ces observations en calendrier pour votre site. Le devis doit donc fixer les livrables et les points de mesure, jamais une date de résultat.",
+      "Il n’existe pas de délai garanti. Google indique que certaines modifications sont prises en compte rapidement et que d’autres demandent plusieurs mois, sans promettre d’amélioration. Suivez séparément l’indexation, les impressions, les visites et les demandes commerciales.",
   },
   {
-    question: "Une agence peut-elle garantir la première place sur Google ?",
+    question: "Une agence peut-elle garantir une position sur Google ?",
     answer:
-      "Non, et Google l'écrit noir sur blanc dans sa documentation destinée aux entreprises : personne ne peut garantir la première position dans les résultats de recherche. Google va plus loin en listant les signaux d'alerte, dont un très concret : se méfier des prestataires qui vous démarchent par e-mail sans que vous les ayez sollicités. Il faut aussi savoir qu'une garantie de position tenue porte presque toujours sur des mots-clés sans concurrence ni valeur commerciale — techniquement honorée, commercialement vide. Et en droit français, cette promesse se retourne contre l'agence : voyez la question suivante.",
+      "Google précise que personne ne peut garantir une première position. Une promesse écrite peut néanmoins avoir des conséquences contractuelles selon ses mots exacts et le contexte ; les décisions françaises ne créent pas de règle automatique pour tous les contrats SEO. Exigez plutôt des livrables contrôlables et faites relire toute promesse sensible par un professionnel du droit.",
   },
   {
-    question: "Une promesse de position engage-t-elle juridiquement l'agence ?",
+    question: "Combien coûte un lien entrant et est-ce risqué ?",
     answer:
-      "La portée juridique dépend des termes exacts du contrat, des preuves et du droit applicable. Des décisions françaises ont distingué obligation de moyens et engagement de résultat dans des contextes particuliers, sans créer une règle automatique pour tout contrat SEO. Évitez une garantie de position que personne ne contrôle et faites relire toute clause sensible par un professionnel du droit.",
+      'Les grilles de vendeurs consultées vont d’environ 30 à 120 € sur certains petits sites à 600–2 500 € sur des médias plus établis, parfois davantage. Le prix ne prouve ni l’audience ni la qualité. Google classe l’achat de liens destiné à manipuler le classement parmi les pratiques contraires à ses règles ; un lien publicitaire payé doit notamment signaler sa nature avec rel="sponsored".',
   },
   {
-    question: "Acheter des backlinks est-il risqué ?",
+    question: "Que changent les résumés IA de Google ?",
     answer:
-      'Oui si l’objectif est de manipuler le classement. Les règles anti-spam de Google classent l’achat ou la vente de liens à cette fin parmi le link spam. Un lien publicitaire payé doit être qualifié avec rel="sponsored" — ou rel="nofollow" lorsque nécessaire — afin d’indiquer sa nature. Ces attributs sont des indications interprétées par Google, pas une unité d’autorité que l’on peut chiffrer ou garantir. Un achat peut avoir une valeur publicitaire ou de notoriété mesurable ; personne ne peut en promettre un effet de classement.',
-  },
-  {
-    question: "Combien coûte un backlink en 2026 ?",
-    answer:
-      "Les grilles publiées vont d'environ 30 à 120 euros pour un petit blog thématique jusqu'à 600 à 2 500 euros pour un média d'autorité, et plusieurs milliers pour la presse nationale. Prenez ces chiffres avec des pincettes : aucune des sources qui les publient ne fournit d'échantillon, de méthodologie ni de date de relevé, et ce sont toutes des entreprises qui vendent des liens. Deux sources donnent d'ailleurs des bornes différentes pour la même tranche. Quant aux classements « meilleures plateformes de netlinking », la quasi-totalité sont des pages d'affiliation : le classement suit les commissions, pas la qualité.",
-  },
-  {
-    question: "Ce que les AI Overviews changent-ils au calcul ?",
-    answer:
-      "Une étude du Pew Research Center sur un échantillon américain en mars 2025 a observé moins de clics vers les résultats classiques lorsque certains résumés IA apparaissaient ; Google a contesté l'interprétation générale de ces résultats. Une projection fondée sur d'anciens taux de clic doit donc être revalidée pour vos requêtes, appareils et types de résultats. Elle n'est pas automatiquement fausse, mais elle ne peut plus être transposée sans contrôle.",
+      "Les résumés générés par l’intelligence artificielle peuvent modifier le nombre de clics vers les résultats classiques. Une étude américaine de Pew l’a observé sur son échantillon en mars 2025, tandis que Google en a contesté la portée générale. Vérifiez donc l’évolution sur vos propres requêtes.",
   },
   {
     question: "SEO ou Google Ads : par quoi commencer ?",
     answer:
-      "Commencez par la preuve la plus urgente : tester une demande identifiable avec Ads, construire une réponse organique à une demande récurrente, combiner deux rôles distincts ou corriger d’abord l’offre, la page ou la mesure. Le guide dédié « SEO ou Google Ads » fournit la matrice complète ; aucune répartition ni durée universelle ne remplace vos données.",
-  },
-  {
-    question: "Freelance ou agence : quelle différence de prix ?",
-    answer:
-      "Sur les tarifs journaliers publiés par les prestataires eux-mêmes, un freelance se situe autour de 250 à 800 euros selon son niveau, une agence à partir de 1 000 euros et jusqu'à 1 500 euros. Ce que la différence achète : la continuité en cas d'absence, la pluridisciplinarité — un développeur, un rédacteur et un stratège plutôt qu'une seule personne — et une capacité de production supérieure. Ce qu'elle n'achète pas : une meilleure compréhension de votre marché. Sur un projet local simple, un bon freelance fait aussi bien pour moitié prix. Sur un e-commerce à catalogue ou un site multilingue, l'écart se justifie.",
+      "Google Ads permet de tester rapidement une demande connue ; le SEO construit des pages qui peuvent attirer des visiteurs dans la durée. Le choix dépend de votre urgence, de votre budget, de la maturité de l’offre et de la fréquence des questions posées par vos prospects.",
   },
   {
     question: "Si je change d'agence, est-ce que je garde mes articles ?",
     answer:
-      "Pas automatiquement, et c'est une mauvaise surprise fréquente. L'article L131-3 du code de la propriété intellectuelle exige que chaque droit cédé fasse l'objet d'une mention distincte dans l'acte, avec l'étendue, la destination, le lieu et la durée de la cession. Sans clause de cession conforme, les textes rédigés par votre agence restent la propriété de leur auteur. Exigez donc trois choses par écrit avant de signer : la cession des droits sur les contenus produits, la propriété du nom de domaine à votre nom, et la restitution des accès à la Search Console, à l'outil de mesure d'audience et au site lui-même en fin de contrat.",
+      "Pas automatiquement. L’article L131-3 du code de la propriété intellectuelle encadre précisément la cession des droits. Faites écrire dans le contrat la cession des contenus, la propriété du nom de domaine et la restitution de tous les accès en fin de mission.",
   },
 ];
 
@@ -190,7 +160,7 @@ export default function Page() {
           { label: "Prix du référencement naturel" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Les fourchettes relevées sur les grilles publiques, la conversion de chaque forfait en heures de consultant, huit statistiques vérifiées à la source, la jurisprudence française sur les promesses de position — et les huit situations où nous refusons la mission."
+        heroDescription="Vous cherchez combien investir pour être mieux trouvé sur Google ? Voici les prix observés pour un audit, un accompagnement local ou national, ce que ces budgets doivent financer et les questions à poser avant de signer."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -200,19 +170,19 @@ export default function Page() {
         keyPoints={[
           {
             number: "01",
-            title: "221 €/mois = moins de 2 h de travail",
+            title: "800 à 1 500 €/mois en local",
             description: "",
             color: "violet",
           },
           {
             number: "02",
-            title: "Le « 3 à 6 mois » n'a aucune source",
+            title: "2 500 à 5 000 €/mois en national",
             description: "",
             color: "blue",
           },
           {
             number: "03",
-            title: "8 statistiques démontées à la source",
+            title: "Audit PME : 800 à 3 000 €",
             description: "",
             color: "emerald",
           },
@@ -251,30 +221,41 @@ export default function Page() {
         faqItems={faqItems}
       >
         <p className="lead">
-          Un budget de référencement n&apos;est pas un prix,{" "}
-          <strong>c&apos;est un nombre d&apos;heures de consultant</strong>.
-          Tant qu&apos;on raisonne en euros par mois, on compare des choses
-          incomparables. Divisez ce montant par le prix d&apos;une journée de
-          travail et tout devient lisible en trente secondes — y compris les
-          offres qui ne peuvent pas tenir leurs promesses.
+          <strong>
+            Vous dirigez une entreprise et vous voulez savoir combien investir
+            pour apparaître lorsque vos futurs clients cherchent vos services
+            sur Google ?
+          </strong>{" "}
+          Le référencement naturel, aussi appelé SEO, regroupe les améliorations
+          techniques, les pages et les contenus qui aident un site à être trouvé
+          sans payer chaque clic.
+        </p>
+        <p>
+          Les grilles publiques relevées en juillet 2026 situent un
+          accompagnement régional autour de 800 à 1 500 € HT par mois et un
+          marché national concurrentiel autour de 2 500 à 5 000 €. Un audit
+          complet de PME est plutôt affiché entre 800 et 3 000 €. Ce sont des
+          ordres de grandeur, pas des moyennes officielles ni une promesse de
+          résultat. Pour choisir, regardez ce qui sera fait chaque mois, qui le
+          fera et comment les demandes commerciales seront mesurées.
         </p>
 
         <GuideTable
           headers={[
             "Prestation",
             "Fourchette observée (HT)",
-            "Fiabilité du chiffre",
+            "Origine du repère",
           ]}
           rows={[
             [
-              "Audit express (site < 50 pages)",
+              "Audit rapide (site < 50 pages)",
               "300 – 800 €",
               "Grilles publiques d'agences",
             ],
             [
               "Audit complet PME",
               "800 – 3 000 €",
-              "Grilles publiques, convergentes",
+              "Plusieurs grilles publiques",
             ],
             [
               "Audit e-commerce approfondi",
@@ -284,12 +265,12 @@ export default function Page() {
             [
               "Accompagnement mensuel, ambition locale",
               "800 – 1 500 €/mois",
-              "Convergence multi-sources",
+              "Plusieurs grilles publiques",
             ],
             [
               "Accompagnement mensuel, national concurrentiel",
               "2 500 – 5 000 €/mois",
-              "Convergence multi-sources",
+              "Plusieurs grilles publiques",
             ],
             [
               "Rédaction d'un article optimisé",
@@ -297,7 +278,7 @@ export default function Page() {
               "Grilles publiques, forte dispersion",
             ],
             [
-              "Un lien entrant (netlinking)",
+              "Création de liens entrants",
               "30 € – plusieurs milliers",
               "Aucune source ne publie sa méthode",
             ],
@@ -316,169 +297,98 @@ export default function Page() {
 
         <InfoBox
           variant="amber"
-          title="Les 12 mots de ce guide, traduits en français courant"
+          title="Ces prix sont des repères, pas un tarif officiel"
         >
-          <strong>TJM</strong> : le prix d&apos;une journée de travail du
-          consultant. <strong>Forfait mensuel</strong> : un abonnement, une
-          somme fixe chaque mois contre un volume de travail défini.{" "}
-          <strong>Régie</strong> : on achète des jours de consultant, pas un
-          résultat. <strong>Netlinking</strong> : obtenir des liens depuis
-          d&apos;autres sites vers le vôtre. <strong>Backlink</strong> : un de
-          ces liens entrants. <strong>DR</strong> : une note d&apos;autorité de
-          site donnée par un outil du marché, qui sert de grille de prix aux
-          vendeurs de liens. <strong>rel=&quot;sponsored&quot;</strong> : une
-          étiquette dans le code qui déclare à Google qu&apos;un lien est payé.{" "}
-          <strong>PBN</strong> : un réseau de sites créés uniquement pour se
-          faire des liens entre eux. <strong>AI Overview</strong> : le résumé
-          rédigé par l&apos;IA en haut des résultats Google.{" "}
-          <strong>Zero-click</strong> : une recherche qui se termine sans aucun
-          clic. <strong>CTR</strong> : la part des gens qui cliquent sur votre
-          lien parmi ceux qui le voient. <strong>Obligation de moyens</strong> :
-          le prestataire s&apos;engage à travailler sérieusement, pas à obtenir
-          un rang.
+          Aucune statistique publique française ne mesure le prix des
+          prestations SEO. Les fourchettes ci-dessus viennent de grilles
+          affichées par des prestataires et ne couvrent pas toujours le même
+          travail. Les termes techniques utiles sont expliqués dans la section
+          où ils apparaissent.
         </InfoBox>
 
         <GuideToc
           items={[
             {
               id: "prix-reels",
-              label: "1. Ce que coûte vraiment le SEO en France en 2026",
-            },
-            {
-              id: "prix-peu-fiables",
-              label:
-                "2. Pourquoi les prix affichés sur le web sont peu fiables",
+              label: "Prix observés et écarts entre les devis",
             },
             {
               id: "modeles",
-              label:
-                "3. Les quatre modèles de facturation et ce qu'ils révèlent",
-            },
-            {
-              id: "tjm",
-              label: "4. Le TJM, seule unité de compte qui ne ment pas",
+              label: "Facturation et temps réellement acheté",
             },
             {
               id: "contenu-prestation",
-              label: "5. Ce que contient réellement une prestation sérieuse",
-            },
-            {
-              id: "outils",
-              label:
-                "6. Le coût des outils, et ce que vous pouvez payer vous-même",
+              label: "Travail mensuel et coût des outils",
             },
             {
               id: "liens",
-              label:
-                "7. Combien coûte un lien — et pourquoi la question est piégée",
+              label: "Prix et risques des liens entrants",
             },
             {
               id: "delais",
-              label: "8. Combien de temps avant des résultats : les données",
-            },
-            {
-              id: "ai-overviews",
-              label: "9. Ce que les AI Overviews changent au calcul",
-            },
-            {
-              id: "statistiques",
-              label: "10. Huit statistiques à vérifier",
+              label: "Délais, résumés IA et mesure des résultats",
             },
             {
               id: "arnaques",
-              label: "11. Les arnaques documentées du référencement",
-            },
-            { id: "droit", label: "12. Ce que dit le droit français" },
-            {
-              id: "proprietes",
-              label:
-                "13. Propriété, réversibilité, accès : les clauses à exiger",
+              label: "Promesses, contrat et actifs à protéger",
             },
             {
               id: "gratuit",
-              label: "14. Ce que vous pouvez faire vous-même, gratuitement",
+              label: "Ce que vous pouvez faire vous-même",
             },
-            { id: "roi", label: "15. Calculer le retour sur investissement" },
+            { id: "roi", label: "Rentabilité avec vos propres chiffres" },
             {
               id: "pas-le-bon-investissement",
-              label: "16. Quand le SEO n'est PAS le bon investissement",
+              label: "Quand choisir un autre investissement",
             },
           ]}
         />
 
         <InfoBox
           variant="blue"
-          title="Le fil rouge : scénario fictif composite — Nathalie, cabinet RH (ni client ni témoignage réel)"
+          title="Exemple fictif : trois devis pour la même entreprise"
         >
-          Neuf salariés, une activité régionale, un site vitrine de
-          trente-quatre pages. Dans ce scénario, Nathalie aurait reçu trois
-          propositions de référencement en trois semaines :{" "}
+          Ce cas est construit pour expliquer la comparaison. Il ne décrit ni un
+          client ni un témoignage réel. Neuf salariés, une activité régionale,
+          un site vitrine de trente-quatre pages. Dans ce scénario, Nathalie
+          aurait reçu trois propositions de référencement en trois semaines :{" "}
           <strong>290 € par mois</strong> (démarchage téléphonique),{" "}
           <strong>1 400 € par mois</strong> (agence lyonnaise) et{" "}
           <strong>3 200 € par mois</strong> (agence parisienne). Les trois
-          promettent « la première page de Google ». Nous suivrons son arbitrage
-          section par section — et la seule division qui lui a permis de
-          trancher.
+          promettent « la première page de Google ». Cet exemple servira à
+          montrer pourquoi le prix seul ne permet pas de choisir : il faut aussi
+          comparer les travaux prévus, le temps consacré et les droits
+          conservés.
         </InfoBox>
 
         <h2 id="prix-reels">
-          1. Ce que coûte vraiment le SEO en France en 2026
+          Quels prix observe-t-on et pourquoi les devis sont-ils si différents ?
         </h2>
         <p>
-          Le tableau d&apos;ouverture donne les fourchettes. Avant de les
-          utiliser, une précision d&apos;honnêteté que vous ne trouverez sur
-          aucune autre page :{" "}
-          <strong>
-            il n&apos;existe en France aucune statistique officielle du marché
-            des prestations de référencement naturel
-          </strong>
-          . Ni l&apos;INSEE, ni aucun syndicat professionnel ne le mesure. Tous
-          les chiffres qui circulent — y compris ceux de ce guide — sont des
-          observations de marché publiées par des gens qui vendent la
-          prestation.
+          Retenez d’abord trois ordres de grandeur : 800 à 3 000 € HT pour un
+          audit complet de PME, 800 à 1 500 € HT par mois pour travailler une
+          visibilité régionale et 2 500 à 5 000 € HT par mois pour un marché
+          national concurrentiel. Un site marchand très vaste, plusieurs pays ou
+          un problème technique important peuvent demander davantage.
         </p>
         <p>
-          Ce qui existe, en revanche, ce sont des{" "}
-          <strong>grilles publiques</strong> : des agences qui affichent leurs
-          prix sur leur site. Ce sont les seuls chiffres « durs », parce que le
-          vendeur s&apos;y engage publiquement. Relevés le 18 juillet 2026, ils
-          donnent par exemple un pack local à 221 € HT par mois, un pack
-          régional à 321 €, un pack national à 580 € chez un acteur de bas de
-          marché ; et chez un autre, une visio d&apos;une heure à 190 €, une
-          stratégie clé en main à 3 900 €, un audit technique à partir de 500 €
-          et un article rédigé entre 300 et 500 €.
+          Ces fourchettes viennent de grilles publiques relevées le 18 juillet
+          2026. Elles affichent, par exemple, des forfaits à 221 €, 321 € ou 580
+          € HT par mois chez un prestataire ; chez un autre, une consultation
+          d’une heure à 190 €, une stratégie à 3 900 €, un audit technique à
+          partir de 500 € et un article entre 300 et 500 €. Elles donnent des
+          repères, mais pas une moyenne officielle : ni l’Insee ni un syndicat
+          professionnel ne publie de statistique sur le prix des prestations
+          SEO.
         </p>
-        <InfoBox
-          variant="emerald"
-          title="Le seul repère institutionnel français disponible"
-        >
-          Le 36ᵉ Observatoire de l&apos;e-pub, publié le 9 juillet 2026 par le
-          SRI, l&apos;UDECAM et Oliver Wyman, mesure un marché publicitaire
-          digital français de{" "}
-          <strong>6,689 milliards d&apos;euros au premier semestre 2026</strong>
-          , en hausse de 12 %. Le segment recherche y pèse 2,74 milliards,
-          retail media inclus.
-          <br />
-          <br />
-          Deux précautions que la plupart des articles ne prennent pas.
-          D&apos;abord, hors retail media, la recherche pèse{" "}
-          <strong>2,14 milliards</strong> et se fait dépasser pour la première
-          fois par les réseaux sociaux (2,22 milliards) — ne pas confondre les
-          deux chiffres. Ensuite et surtout :{" "}
-          <strong>
-            ces montants mesurent l&apos;achat de publicité, pas le marché des
-            prestations de référencement naturel
-          </strong>
-          . Ils donnent le contexte, pas votre budget.
-        </InfoBox>
-
-        <h2 id="prix-peu-fiables">
-          2. Pourquoi les prix affichés sur le web sont peu fiables
-        </h2>
+        <h3 id="prix-peu-fiables">
+          Pourquoi certains prix publiés sont-ils peu fiables ?
+        </h3>
         <p>
-          Nous avons remonté la source des chiffres les plus cités sur les pages
-          qui se classent aujourd&apos;hui sur cette question. Voici ce
-          qu&apos;on trouve.
+          Une même étiquette, « accompagnement SEO », peut désigner deux heures
+          de conseil ou une équipe qui corrige le site, rédige des pages et suit
+          les demandes commerciales. Les chiffres souvent repris en ligne ont
+          aussi des sources très inégales. Voici comment les lire.
         </p>
         <GuideTable
           headers={["Le chiffre affiché", "Ce qu'il y a derrière"]}
@@ -506,73 +416,60 @@ export default function Page() {
           ]}
         />
         <p>
-          Le point le plus structurant est ailleurs :{" "}
-          <strong>
-            la totalité des pages qui se classent sur « prix du référencement
-            naturel » sont éditées par des agences ou des freelances qui vendent
-            du référencement
-          </strong>
-          . Aucun média, aucun organisme neutre, aucune étude sectorielle
-          indépendante n&apos;est positionné. Nous sommes dans le même cas, et
-          le dire est la moindre des choses.
+          La plupart de ces prix sont publiés par des agences ou des freelances
+          qui vendent le service, comme Hagnéré Code. L’information peut être
+          utile, mais elle doit être accompagnée de sa date, de son origine et
+          du contenu exact de l’offre.
         </p>
-        <InfoBox variant="amber" title="Un test de fraîcheur en dix secondes">
-          Environ neuf articles français sur dix publiés en 2026 citent encore
-          les plans <strong>« Pro, Guru et Business »</strong> d&apos;un outil
-          SEO majeur. Ces offres <strong>n&apos;existent plus</strong> : la page
-          tarifaire officielle affiche aujourd&apos;hui d&apos;autres formules.
-          C&apos;est un marqueur imparable : si un article donne ces noms, il
-          n&apos;a pas été revérifié. Appliquez le test à n&apos;importe quel
-          document qu&apos;on vous remet.
+        <InfoBox variant="amber" title="Vérifiez toujours la date des tarifs">
+          Plusieurs articles consultés en 2026 citaient encore les anciennes
+          offres « Pro, Guru et Business » d’un outil SEO, alors que sa page
+          tarifaire affiche désormais d’autres formules. Avant d’utiliser un
+          chiffre, ouvrez sa source et vérifiez qu’elle correspond encore à
+          l’offre actuelle.
         </InfoBox>
 
         <h2 id="modeles">
-          3. Les quatre modèles de facturation et ce qu&apos;ils révèlent
+          Comment serez-vous facturé et combien de temps achetez-vous ?
         </h2>
-        <GuideTable
-          headers={[
-            "Modèle",
-            "Comment ça marche",
-            "Ce que ça incite à produire",
-          ]}
-          rows={[
-            [
-              "Forfait mensuel",
-              "Une somme fixe contre un volume de travail défini",
-              "De la régularité — mais aussi, si le contrat est flou, le minimum syndical",
-            ],
-            [
-              "Audit ponctuel",
-              "Un livrable unique, payé une fois",
-              "Un diagnostic. Rien ne garantit l'exécution derrière",
-            ],
-            [
-              "Forfait projet",
-              "Un périmètre fermé (migration, cocon sémantique)",
-              "Le respect du périmètre, pas la performance",
-            ],
-            [
-              "Régie / TJM",
-              "Vous achetez des jours de consultant",
-              "Une lecture du temps facturé, si activités et temps sont réellement tracés",
-            ],
-          ]}
-        />
+        <p>Quatre modes de facturation reviennent dans les devis :</p>
+        <ul>
+          <li>
+            <strong>Le forfait mensuel</strong> finance un travail régulier. Il
+            n&apos;est lisible que si les tâches et les livrables de chaque mois
+            sont écrits.
+          </li>
+          <li>
+            <strong>L&apos;audit ponctuel</strong> livre un diagnostic et un
+            plan d&apos;action. Vérifiez qui réalisera ensuite les corrections.
+          </li>
+          <li>
+            <strong>Le forfait projet</strong> couvre une mission délimitée,
+            comme une migration ou un ensemble de pages, sans garantir une
+            position dans Google.
+          </li>
+          <li>
+            <strong>Le temps passé</strong> achète des journées de consultant.
+            Demandez alors le suivi des tâches et du temps réellement consommé.
+          </li>
+        </ul>
         <p>
           Deux modèles supplémentaires méritent une alerte. La{" "}
           <strong>facturation au mot</strong> peut inciter au volume si aucun
           critère de qualité ou de résultat n&apos;est prévu. La{" "}
-          <strong>facturation à la position garantie</strong> concentre un risque
-          contractuel et commercial puisque le prestataire ne contrôle pas les
-          résultats de Google ; sa portée juridique dépend du contrat.
+          <strong>facturation à la position garantie</strong> concentre un
+          risque contractuel et commercial puisque le prestataire ne contrôle
+          pas les résultats de Google ; sa portée juridique dépend du contrat.
         </p>
 
-        <h2 id="tjm">4. Le TJM, un contrôle de cohérence parmi d&apos;autres</h2>
+        <h3 id="tjm">Transformez le forfait en temps de travail</h3>
         <p>
-          Convertir un budget en jours fournit un ordre de grandeur si le TJM
-          correspond réellement aux personnes mobilisées. Cela ne décrit pas à
-          lui seul les outils, actifs réutilisés, coûts tiers, temps non facturé
-          ni le résultat.
+          Le tarif journalier moyen, ou TJM, est le prix d’une journée de
+          travail. Diviser le forfait mensuel par ce tarif donne un ordre de
+          grandeur du temps prévu. C’est un bon contrôle, mais pas une note de
+          qualité : des outils, des modèles déjà prêts ou plusieurs niveaux
+          d’expertise peuvent changer ce que le prestataire produit dans ce
+          temps.
         </p>
         <FormulaBox>
           {`CONVERSION D'UN FORFAIT EN TEMPS DE TRAVAIL
@@ -586,19 +483,21 @@ Base : tarif journalier agence 900 € HT, journée de 8 heures.
 2 500 €/mois   →  2,8  jours →  environ 3 journées par mois
 5 000 €/mois   →  5,6  jours →  environ 1 semaine par mois
 
-Refaites le calcul avec le TJM de VOTRE prestataire :
+Refaites le calcul avec le TJM de votre prestataire :
   temps acheté (jours) = budget mensuel ÷ TJM`}
         </FormulaBox>
         <p>
           Relisez ensuite ce que promet une offre à 221 € par mois : audit
           complet, optimisation de la vitesse, correction des balises, stratégie
           de mots-clés, <strong>deux articles rédigés par mois</strong>,
-          netlinking, communiqués de presse et un interlocuteur dédié. Tout cela
-          pour un équivalent théorique de deux heures au TJM retenu. Demandez
-          alors quelle part est automatisée ou réutilisée, qui intervient, quels
-          coûts tiers sont inclus et quelles tâches sont réellement prévues. La
-          division signale une question à poser ; elle ne prouve pas à elle seule
-          que l&apos;offre est impossible ou trompeuse.
+          recherche de liens entrants, communiqués de presse et un interlocuteur
+          dédié. Tout cela correspondrait ici à environ deux heures de travail.
+        </p>
+        <p>
+          Demandez alors quelle part est automatisée ou réutilisée, qui
+          intervient, quels coûts tiers sont inclus et quelles tâches sont
+          réellement prévues. Cette division soulève une question ; elle ne
+          prouve pas à elle seule que l&apos;offre est impossible ou trompeuse.
         </p>
         <InfoBox
           variant="blue"
@@ -610,9 +509,9 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           et demie.
           <br />
           <br />
-          En trente secondes, elle ne comparerait plus trois prix mais{" "}
-          <strong>trois volumes de travail</strong>. Et la question devient la
-          bonne : de combien de journées son cabinet a-t-il besoin ?
+          Cette conversion ne choisit pas le devis à sa place. Elle lui permet
+          de demander à chaque prestataire ce qu’il fera réellement pendant ce
+          temps et quels résultats intermédiaires elle pourra vérifier.
         </InfoBox>
         <p>
           Un mot sur les tarifs journaliers eux-mêmes. Ceux que nous citons sont{" "}
@@ -625,17 +524,14 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           appliquant un coefficient jamais justifié.
         </p>
 
-        <GuideInlineCTA
-          title="Vous avez trois devis SEO et vous ne savez pas les comparer ?"
-          description="Envoyez-nous votre situation en 3 minutes. Nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti. Cette première réponse est gratuite — y compris si elle consiste à recommander un autre canal."
-        />
-
         <h2 id="contenu-prestation">
-          5. Ce que contient réellement une prestation sérieuse
+          Que devez-vous recevoir chaque mois, outils compris ?
         </h2>
         <p>
-          Quatre volets. Un devis qui n&apos;en détaille aucun ne vous permet
-          pas de savoir ce que vous achetez.
+          Une prestation complète peut couvrir quatre familles de travail. Elles
+          ne doivent pas toutes représenter la même part du budget, mais le
+          devis doit dire lesquelles sont utiles à votre site et ce qui sera
+          livré.
         </p>
         <p>
           Pour contrôler un livrable ponctuel avant de financer les corrections,
@@ -643,15 +539,15 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           <Link href="/guides/audit-seo-que-contient-il">
             ce que doit contenir un audit SEO réellement exploitable
           </Link>
-          . Elle distingue le scan automatisé, le diagnostic, le plan
-          d&apos;action et les preuves de réception.
+          . Elle distingue le contrôle automatisé, le diagnostic, le plan
+          d&apos;action et les résultats à vérifier après correction.
         </p>
         <ul>
           <li>
             <strong>Le technique</strong> : vitesse, structure des adresses,
             indexation, données structurées, correction des erreurs
-            d&apos;exploration. C&apos;est le socle : sans lui, le reste
-            n&apos;est pas lu correctement. Notre guide{" "}
+            d&apos;exploration. Ces corrections sont prioritaires si elles
+            empêchent Google ou les visiteurs d’accéder aux pages. Notre guide{" "}
             <Link href="/guides/pourquoi-mon-site-est-lent">
               pourquoi mon site est lent
             </Link>{" "}
@@ -663,8 +559,9 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
             en temps, et de loin.
           </li>
           <li>
-            <strong>La popularité</strong> : les liens entrants — voir la
-            section 7, où le sujet est plus retors qu&apos;il n&apos;y paraît.
+            <strong>La popularité</strong> : les liens entrants — la section qui
+            leur est consacrée explique pourquoi leur achat demande de la
+            prudence.
           </li>
           <li>
             <strong>Le pilotage</strong> : mesure, reporting mensuel,
@@ -686,9 +583,7 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           Utilisez-la pour poser des questions, pas pour arbitrer.
         </InfoBox>
 
-        <h2 id="outils">
-          6. Le coût des outils, et ce que vous pouvez payer vous-même
-        </h2>
+        <h3 id="outils">Quels outils devez-vous payer vous-même ?</h3>
         <GuideTable
           headers={[
             "Outil",
@@ -739,8 +634,14 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
         </p>
 
         <h2 id="liens">
-          7. Combien coûte un lien — et pourquoi la question est piégée
+          Combien coûtent les liens entrants et quels risques prenez-vous ?
         </h2>
+        <p>
+          Un lien entrant, aussi appelé backlink, est un lien placé sur un autre
+          site vers le vôtre. Le netlinking désigne le travail entrepris pour en
+          obtenir. Il peut s’agir de relations presse, de partenariats ou de
+          publications payées : le prix et le risque ne sont pas les mêmes.
+        </p>
         <GuideTable
           headers={[
             "Type de site qui publie le lien",
@@ -754,41 +655,24 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           ]}
         />
         <p>
-          Prenez ce tableau avec précaution.{" "}
-          <strong>
-            Aucune des sources qui publient ces grilles ne fournit
-            d&apos;échantillon, de méthodologie ni de date de relevé
-          </strong>
-          , et toutes vendent des liens. Deux d&apos;entre elles donnent
-          d&apos;ailleurs des bornes incompatibles pour la même tranche. Quant
-          aux classements « meilleures plateformes de netlinking », la
-          quasi-totalité sont des pages d&apos;affiliation : le classement suit
-          les commissions.
+          Prenez ce tableau comme un aperçu commercial. Les sources consultées
+          vendent des liens et ne publient ni échantillon complet ni méthode de
+          calcul. Demandez donc le site qui publiera, son audience réelle, le
+          contenu compris dans le prix et la manière dont le lien sera signalé.
         </p>
         <InfoBox
           variant="blue"
-          title="Le paradoxe que le marché ne veut pas énoncer"
+          title="Ce que disent les règles de Google sur les liens payés"
         >
-          Les règles anti-spam de Google classent explicitement{" "}
-          <strong>l&apos;échange d&apos;argent contre des liens</strong> dans le
-          « link spam ». Google prévoit une exception nette : ce n&apos;est pas
-          une infraction si le lien porte l&apos;étiquette{" "}
-          <strong>rel=&quot;nofollow&quot;</strong> ou{" "}
-          <strong>rel=&quot;sponsored&quot;</strong>, et Google précise même que
-          l&apos;achat de liens à des fins publicitaires est une pratique
-          commerciale normale quand elle est déclarée.
-          <br />
-          <br />
-          Sauf qu&apos;un lien ainsi étiqueté{" "}
-          <strong>ne transmet aucune autorité</strong>. Il ne produit donc aucun
-          des effets de classement qui justifient son prix. La conclusion
-          s&apos;impose d&apos;elle-même :{" "}
-          <strong>
-            un netlinking payant conforme aux règles de Google est, par
-            construction, un netlinking sans effet sur votre classement
-          </strong>
-          . Le marché du lien payant repose donc massivement sur des liens non
-          déclarés — c&apos;est-à-dire non conformes.
+          Les règles anti-spam de Google visent l’achat de liens destiné à
+          manipuler le classement. Un lien publicitaire doit notamment être
+          identifié avec l’attribut <strong>rel=&quot;sponsored&quot;</strong>,
+          ou <strong>rel=&quot;nofollow&quot;</strong> lorsque cela convient.
+          Google traite ces attributs comme des indications : personne ne peut
+          donc garantir le gain de position d’un lien acheté. Une publication
+          peut néanmoins être rentable pour son audience, ses visites ou sa
+          notoriété ; évaluez-la alors comme une action publicitaire, avec des
+          résultats mesurables.
         </InfoBox>
         <p>
           Deux pièges tarifaires concrets, faciles à vérifier. Premièrement,
@@ -802,245 +686,76 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           nom du site qui publiera.
         </p>
         <p>
-          Enfin, si un prestataire vous propose des liens venant de « réseaux
-          privés » ou de « réseaux de sites partenaires », sachez que Google
-          classe explicitement cette pratique en link spam. Certaines agences
-          l&apos;écrivent noir sur blanc dans leur argumentaire commercial, ce
-          qui est au moins franc.
+          Enfin, demandez l’origine exacte des liens. Les réseaux de sites créés
+          principalement pour manipuler le classement font partie des pratiques
+          visées par les règles anti-spam de Google.
         </p>
 
         <h2 id="delais">
-          8. Combien de temps avant des résultats : les données
+          Quand mesurer les résultats et que changent les résumés IA ?
         </h2>
         <p>
-          La formule « 3 à 6 mois » est largement reprise. En remontant, on ne trouve{" "}
-          <strong>aucune source</strong> à ce chiffre — aucune des pages qui se
-          classent sur cette question ne le sourcent. Voici, à la place, ce que
-          mesurent les données publiées.
+          La formule « 3 à 6 mois » circule souvent, mais elle ne constitue pas
+          une garantie applicable à tous les sites. Une correction technique,
+          une nouvelle page et une demande commerciale ne suivent pas le même
+          calendrier. Les données ci-dessous apportent du contexte sans prédire
+          le délai de votre entreprise.
         </p>
-        <GuideTable
-          headers={["Ce qui est mesuré", "Le résultat", "Source"]}
-          rows={[
-            [
-              "Nouvelles pages atteignant le top 10 en un an",
-              "1,74 %",
-              "Ahrefs, 15/05/2025, ~1 M d'URL",
-            ],
-            [
-              "Même mesure, échantillon alternatif",
-              "6,11 %",
-              "Ahrefs, 15/05/2025, 2 M d'URL créées",
-            ],
-            [
-              "Pages du top 10 ayant plus de 3 ans",
-              "72,9 %",
-              "Ahrefs, 15/05/2025, 1,3 M de mots-clés",
-            ],
-            [
-              "Pages du top 10 ayant moins d'un an",
-              "13,7 %",
-              "Ahrefs, 15/05/2025",
-            ],
-            ["Âge moyen de la page classée n°1", "5 ans", "Ahrefs, 15/05/2025"],
-            [
-              "Mots-clés à 10 000+ recherches/mois : entrées au top 10 en un an",
-              "0,3 %",
-              "Ahrefs, 15/05/2025",
-            ],
-            [
-              "Pages de l'index Ahrefs sans aucun trafic organique",
-              "96,55 %",
-              "Ahrefs, décembre 2023, ~14 Md de pages",
-            ],
-          ]}
-        />
-        <InfoBox variant="amber" title="Trois précautions sur ces chiffres">
-          Ce sont des <strong>données américaines</strong>, produites par un
-          éditeur d&apos;outils SEO avec une méthodologie propriétaire. Ahrefs
-          reconnaît lui-même que son index est biaisé vers la « qualité » du
-          web. Nous les citons parce que ce sont les seules du secteur à publier
-          échantillon et calcul — pas parce qu&apos;elles seraient parole
-          d&apos;évangile.
-          <br />
-          <br />
-          Ce que Google écrit, en revanche, est incontestable :{" "}
-          <em>
-            « toutes les modifications que vous apportez à votre site
-            n&apos;auront pas forcément d&apos;impact notable sur les résultats
-            de recherche »
-          </em>
-          , et certaines produisent un effet en quelques heures quand
-          d&apos;autres prennent plusieurs mois. Le « 4 à 12 mois » souvent
-          attribué à Google vient d&apos;une vidéo aujourd&apos;hui archivée,
-          pas de la documentation en vigueur — la nuance mérite d&apos;être
-          faite.
-        </InfoBox>
-        <p>
-          Ces observations ne produisent donc{" "}
-          <strong>aucune fourchette de résultat applicable à votre site</strong>
-          . Elles rappellent seulement qu&apos;une page récente peut se classer,
-          qu&apos;une majorité ne le fait pas et que l&apos;âge n&apos;est pas
-          une cause isolée. Le suivi doit séparer la publication technique,
-          l&apos;exploration, l&apos;indexation, les impressions, les positions
-          par requête et les demandes réellement attribuables. Une absence de
-          progression déclenche un diagnostic ; elle ne valide ni un délai
-          générique ni une causalité automatique.
-        </p>
-
-        <h2 id="ai-overviews">9. Ce que les AI Overviews changent au calcul</h2>
-        <p>
-          C&apos;est l&apos;angle mort de tous les comparatifs de prix, et il
-          change la rentabilité de votre investissement.
-        </p>
-        <GuideTable
-          headers={["Mesure", "Résultat", "Source et méthode"]}
-          rows={[
-            [
-              "Clic sur un résultat classique, avec résumé IA",
-              "8 % des visites",
-              "Pew Research Center, 22/07/2025 — 900 adultes, 68 879 recherches",
-            ],
-            [
-              "Clic sur un résultat classique, sans résumé IA",
-              "15 % des visites",
-              "Pew Research Center, 22/07/2025",
-            ],
-            [
-              "Clic sur un lien à l'intérieur du résumé IA",
-              "1 % des visites",
-              "Pew Research Center, 22/07/2025",
-            ],
-            [
-              "Fin de session après la page de résultats",
-              "26 % avec résumé IA contre 16 % sans",
-              "Pew Research Center, 22/07/2025",
-            ],
-            [
-              "Baisse du taux de clic en position 1 quand un résumé IA apparaît",
-              "−34,5 % (mars 2024 vs mars 2025)",
-              "Ahrefs, avril 2025 — calcul publié",
-            ],
-            [
-              "Part des requêtes déclenchant un résumé IA qui sont informationnelles",
-              "99,2 %",
-              "Ahrefs, avril 2025",
-            ],
-          ]}
-        />
-        <p>
-          Deux honnêtetés à poser.{" "}
-          <strong>Google a publiquement contesté l&apos;étude Pew</strong> — il
-          faut le dire. Et ces données sont américaines. Cela dit, le Pew
-          Research Center est{" "}
-          <strong>
-            la seule source de tout ce dossier qui n&apos;a aucun intérêt
-            financier dans sa conclusion
-          </strong>{" "}
-          : ce n&apos;est ni une agence SEO, ni un éditeur d&apos;outils, ni un
-          vendeur de liens. Sa méthodologie est publiée intégralement.
-        </p>
-        <InfoBox
-          variant="emerald"
-          title="La conséquence budgétaire, en une phrase"
-        >
-          <strong>
-            Gagner des positions ne garantit plus de gagner des clics.
-          </strong>{" "}
-          Toute projection de rentabilité bâtie sur des taux de clic
-          d&apos;avant 2024 — y compris celles des simulateurs de « ROI SEO » en
-          ligne — est donc fausse par construction.
-          <br />
-          <br />
-          Bonne nouvelle en revanche, et c&apos;est le chiffre le plus utile de
-          la section :{" "}
-          <strong>
-            99,2 % des requêtes qui déclenchent un résumé IA sont
-            informationnelles
-          </strong>
-          . Les requêtes transactionnelles — « devis », « prix », « près de chez
-          moi », un nom de produit — sont bien moins touchées. Traduction
-          pratique : le référencement de contenus explicatifs se déprécie, le
-          référencement des pages qui vendent tient bon. Arbitrez votre budget
-          en conséquence.
+        <InfoBox variant="amber" title="Aucun délai universel n’est sérieux">
+          Google indique que certaines modifications peuvent produire un effet
+          rapidement et que d’autres demandent plusieurs mois, sans garantir un
+          résultat. Demandez donc un calendrier de travail, pas une date de
+          position : correction publiée, page accessible, premières impressions,
+          clics puis demandes commerciales. Si une étape ne progresse pas, elle
+          déclenche un diagnostic avant de continuer à payer de la production.
         </InfoBox>
 
-        <h2 id="statistiques">10. Huit statistiques à vérifier</h2>
-        <GuideTable
-          headers={[
-            "La statistique",
-            "Ce qu'on trouve en remontant à la source",
-          ]}
-          rows={[
-            [
-              "« Le SEO représente 53 % du trafic des sites »",
-              "Données de mai 2019, publiées par un éditeur de plateforme SEO, sur un échantillon constitué de ses propres clients — donc d'entreprises investissant déjà massivement en SEO. Sept ans avant les articles qui la citent, et avant les résumés IA",
-            ],
-            [
-              "« 75 % des gens ne dépassent pas la première page »",
-              "Chiffre de 2010, popularisé par une présentation marketing. Le site source n'est plus consultable. Antérieur au mobile, aux extraits enrichis et au défilement continu",
-            ],
-            [
-              "« Le SEO génère 748 % de retour sur investissement »",
-              "Données propriétaires d'une agence SEO, moyennées sur ses propres campagnes. Non auditables, non reproductibles, et sans les campagnes ratées",
-            ],
-            [
-              "« 22 € gagnés pour 1 € investi »",
-              "Même famille : une agence SEO, aucune méthodologie publiée",
-            ],
-            [
-              "« Un SEO à 800–2 500 €/mois rapporte 5 fois plus que Google Ads »",
-              "Aucune étude, aucun échantillon. Argument commercial présenté comme une statistique",
-            ],
-            [
-              "« 68 % des dirigeants de TPE-PME placent le SEO en premier canal »",
-              "Aucune source primaire retrouvée, et absent du Baromètre France Num, seule enquête française de cette ampleur",
-            ],
-            [
-              "« Prix médian d'un projet SEO : 5 000 € »",
-              "Budgets déclarés par les agences d'un annuaire commercial rémunéré à l'apport d'affaires. Écart d'un facteur cinq avec toutes les autres estimations",
-            ],
-            [
-              "« Résultats en 3 à 6 mois »",
-              "Rien. Aucune source. Contredit par les données Ahrefs et par la documentation de Google",
-            ],
-          ]}
-        />
-        <InfoBox
-          variant="amber"
-          title="Pourquoi un « ROI moyen du SEO » n'a aucun sens"
-        >
-          Un retour sur investissement dépend entièrement de votre marge, de
-          votre panier moyen et de votre taux de transformation. Un même gain de
-          trafic peut rapporter 400 € à un artisan et 400 000 € à un éditeur de
-          logiciel.{" "}
-          <strong>
-            Une moyenne calculée sur ces deux cas ne décrit ni l&apos;un ni
-            l&apos;autre.
-          </strong>{" "}
-          C&apos;est pourquoi la section 15 vous donne la formule et non un
-          chiffre.
-        </InfoBox>
+        <h3 id="ai-overviews">
+          Les résumés générés par l’intelligence artificielle changent-ils le
+          calcul ?
+        </h3>
+        <p>
+          Google affiche parfois un résumé généré par intelligence artificielle,
+          parfois appelé AI Overview, au-dessus des résultats classiques. Les
+          études américaines citées en sources observent moins de clics lorsque
+          ce résumé apparaît, mais leurs taux ne doivent pas être appliqués tels
+          quels à votre marché français. La conséquence budgétaire est simple :
+          ne payez pas pour une position théorique. Suivez séparément les pages
+          d’information, les pages commerciales, les clics et surtout les
+          demandes reçues. Une meilleure position ne garantit pas davantage de
+          visites ni de clients.
+        </p>
 
-        <h2 id="arnaques">11. Les arnaques documentées du référencement</h2>
+        <h3 id="statistiques">Quelles statistiques devez-vous vérifier ?</h3>
+        <p>
+          Écartez les promesses fondées sur un taux de rentabilité moyen, une
+          première place garantie ou un délai identique pour tous. Leur source
+          est souvent ancienne, propriétaire ou sans méthode publiée. Votre
+          rentabilité dépend de votre marge, du nombre de recherches utiles, du
+          taux de demande et de votre capacité à transformer ces demandes en
+          clients. Le calcul proposé plus loin part donc de votre cas au lieu de
+          reprendre un chiffre commercial.
+        </p>
+
+        <h2 id="arnaques">
+          Quelles promesses, clauses et dépendances doivent vous alerter ?
+        </h2>
         <p>
           Google publie une page destinée aux entreprises qui cherchent un
-          prestataire. Elle est courte, gratuite, et vaut mieux que la plupart
-          des guides du secteur. Ses signaux d&apos;alerte, dans son propre
-          vocabulaire :
+          prestataire. Ses principaux signaux d&apos;alerte sont faciles à
+          comprendre :
         </p>
         <ul>
           <li>
-            <em>
-              « Personne ne peut garantir la première position dans les
-              résultats de recherche Google. »
-            </em>{" "}
-            Google ajoute : se méfier des prestataires qui prétendent avoir une
-            « relation spéciale » avec lui.
+            <strong>Une première position garantie.</strong> Google rappelle
+            qu’aucun prestataire ne peut garantir ce résultat et recommande de
+            se méfier d’une prétendue relation privilégiée avec le moteur.
           </li>
           <li>
-            <strong>Le démarchage à froid par e-mail</strong> est explicitement
-            listé comme signal d&apos;alerte — Google le compare à une promesse
-            de « perdre 20 kilos en 15 jours ».
+            <strong>
+              Un démarchage accompagné de promesses spectaculaires.
+            </strong>
+            Google cite les courriels non sollicités parmi les signaux d’alerte.
           </li>
           <li>
             <strong>Le flou sur les prestations</strong> : se méfier d&apos;une
@@ -1067,12 +782,9 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           variant="blue"
           title="La garantie de position qui est tenue… et qui ne sert à rien"
         >
-          Un point peu traité dans notre revue des offres concerne les promesses à{" "}
-          <strong>« première position garantie »</strong> portent en pratique
-          sur des mots-clés{" "}
-          <strong>sans concurrence et sans valeur commerciale</strong>. La
-          garantie est techniquement honorée — vous êtes bien premier — sur une
-          requête sans demande mesurable.
+          Une promesse de « première position » peut porter sur une expression
+          très précise que personne ne recherche. Être premier ne crée alors
+          aucune demande commerciale.
           <br />
           <br />
           La parade tient en une question, à poser avant de signer :{" "}
@@ -1084,71 +796,33 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           Planner de Google.
         </InfoBox>
 
-        <h2 id="droit">12. Ce que dit le droit français</h2>
+        <h3 id="droit">Ce que le droit français change dans votre contrat</h3>
         <p>
-          Aucune page concurrente ne traite ce sujet. C&apos;est pourtant ce qui
-          protège concrètement un dirigeant.
+          Le contrat doit décrire les engagements avec précision. Les décisions
+          et textes cités en sources montrent trois points utiles : un
+          prestataire ne maîtrise pas le classement de Google ; une promesse de
+          position très précise peut créer un engagement contractuel plus fort ;
+          une présentation trompeuse peut aussi concerner une offre adressée aux
+          professionnels. Leur application dépend toutefois du contrat et des
+          faits.
         </p>
-        <GuideTable
-          headers={["Décision ou texte", "Ce qu'il établit"]}
-          rows={[
-            [
-              "CA Lyon, 29 juin 2006, n° 05/04499",
-              "À défaut de stipulation contraire, le référenceur est tenu d'une obligation de moyens. Le client ne peut invoquer une faute au seul motif que le site n'apparaît pas en première page, et la charge de la preuve lui incombe",
-            ],
-            [
-              "CA Montpellier, 1er juillet 2008",
-              "Dès que le prestataire s'engage sur un positionnement précis et objectivement déterminable, l'obligation devient une obligation de résultat",
-            ],
-            [
-              "T. com. Paris, 28 octobre 2014",
-              "Prestataire condamné : engagement de positionner la moitié des mots-clés sur les deux premières pages, non atteint, sans alerte ni traitement des difficultés techniques connues",
-            ],
-            [
-              "Cass. com., 19 février 2013, n° 11-22827",
-              "La connaissance des conditions générales ne se déduit pas d'une clause-type sur un bon de commande — directement applicable aux bons signés en démarchage",
-            ],
-            [
-              "Art. L121-2 du code de la consommation",
-              "Définit la pratique commerciale trompeuse : allégations fausses ou de nature à induire en erreur sur les caractéristiques essentielles du service et son aptitude à l'usage",
-            ],
-            [
-              "Art. L121-5 du code de la consommation",
-              "Étend expressément ce régime aux pratiques visant les professionnels. Une promesse de « 1ʳᵉ position garantie » faite à une entreprise entre donc dans le champ, même en B2B",
-            ],
-          ]}
-        />
         <InfoBox
           variant="emerald"
-          title="Le retournement que peu d'agences ont compris"
+          title="Évitez les promesses de position dans le contrat"
         >
-          Une agence qui écrit « première page garantie » dans son contrat croit
-          rassurer. En réalité, elle{" "}
-          <strong>
-            transforme son obligation de moyens en obligation de résultat
-          </strong>{" "}
-          et peut être condamnée sur simple constat de non-atteinte —{" "}
-          <strong>
-            même si l&apos;échec provient d&apos;une mise à jour
-            d&apos;algorithme sur laquelle elle n&apos;a aucune prise
-          </strong>
-          .
-          <br />
-          <br />
-          Une promesse de position est donc soit un mensonge commercial, soit
-          une prise de risque juridique que son auteur n&apos;a pas mesurée.
-          Dans les deux cas, ce n&apos;est pas le prestataire qu&apos;il vous
-          faut. Précision d&apos;honnêteté : nous n&apos;avons trouvé aucune
-          sanction administrative visant spécifiquement une agence SEO pour ce
-          motif. Le risque documenté est civil, et il est réel.
+          Une formulation précise peut créer un engagement plus fort qu’une
+          simple obligation de travailler sérieusement. Préférez des engagements
+          que les deux parties peuvent contrôler : corrections, pages, suivi,
+          alertes et comptes rendus. La portée juridique dépend toujours du
+          contrat, des faits et du droit applicable ; faites relire une clause
+          sensible par un professionnel du droit.
         </InfoBox>
 
-        <h2 id="proprietes">
-          13. Propriété, réversibilité, accès : les clauses à exiger
-        </h2>
+        <h3 id="proprietes">Gardez vos contenus, votre domaine et vos accès</h3>
         <p>
-          Absente de toutes les pages concurrentes, c&apos;est la section qui
-          vous coûtera le plus cher si vous l&apos;ignorez.
+          Votre référencement repose sur des actifs que vous devez pouvoir
+          conserver si vous changez de prestataire : articles, nom de domaine,
+          données de mesure et accès au site.
         </p>
         <p>
           L&apos;
@@ -1158,12 +832,9 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           exige que chacun des droits cédés fasse l&apos;objet d&apos;une
           mention distincte dans l&apos;acte de cession, et que le domaine
           d&apos;exploitation soit délimité quant à son étendue, sa destination,
-          son lieu et sa durée. Conséquence directe :{" "}
-          <strong>
-            sans clause de cession conforme, les articles rédigés par votre
-            agence restent la propriété de leur auteur
-          </strong>
-          . Vous les avez payés, ils ne sont pas à vous.
+          son lieu et sa durée. Faites donc préciser par écrit les droits cédés
+          sur les contenus, leur étendue et leur durée. Le simple paiement d’un
+          article ne remplace pas une clause adaptée.
         </p>
         <p>Les cinq clauses à exiger par écrit, avant signature :</p>
         <ol>
@@ -1209,9 +880,7 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           qui est notre cas, et celui de la plupart des agences complètes.
         </InfoBox>
 
-        <h2 id="gratuit">
-          14. Ce que vous pouvez faire vous-même, gratuitement
-        </h2>
+        <h2 id="gratuit">Que pouvez-vous faire vous-même avant de payer ?</h2>
         <p>
           Avant de payer qui que ce soit — nous compris — voici sept actions qui
           ne coûtent rien d&apos;autre que du temps. Comptez une quinzaine à une
@@ -1258,19 +927,26 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           ]}
         />
         <p>
-          Le point de bascule vers un professionnel arrive quand ces actions
-          sont faites et que vous butez sur l&apos;une de ces trois choses : un
-          problème technique que votre outil ne sait pas corriger, une
-          production éditoriale que vous ne tenez pas dans la durée, ou un
-          marché où vos concurrents publient plus vite que vous.
+          Une fois ces actions réalisées, un professionnel devient surtout utile
+          dans trois cas. Votre outil détecte un problème technique sans pouvoir
+          le corriger. Vous ne pouvez pas publier régulièrement avec vos
+          ressources actuelles. Ou vos concurrents couvrent les questions du
+          marché plus vite et plus précisément que vous.
         </p>
 
-        <h2 id="roi">15. Calculer le retour sur investissement</h2>
+        <h2 id="roi">Le SEO peut-il être rentable pour votre entreprise ?</h2>
+        <p>
+          Partez du nombre de recherches, du taux de clic, du taux de demande et
+          de la marge par client. Le taux de clic, souvent abrégé CTR, mesure la
+          part des personnes qui cliquent après avoir vu votre résultat. Dès que
+          vous disposez de données réelles, remplacez les hypothèses par celles
+          de votre Search Console, de votre outil d’audience et de votre
+          logiciel commercial, ou CRM.
+        </p>
         <FormulaBox>
           {`ÉTAPE 1 — le trafic espéré
   Visiteurs/mois = Volume mensuel de la requête
-                 × CTR de la position visée
-                 × (correction AI Overview si la requête en déclenche un)
+                 × taux de clic prudent pour le résultat affiché
 
 ÉTAPE 2 — l'argent
   Clients/mois = Visiteurs × Taux de conversion du site
@@ -1280,9 +956,9 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
 
 À VÉRIFIER AVANT DE CALCULER
   · Le volume vient du Keyword Planner, pas d'une estimation d'agence
-  · Si la requête déclenche un résumé IA, le CTR doit être corrigé
-  · Aucun délai n'est déductible : calculez zéro, central et haut
-  · Remplacez les hypothèses par Search Console, analytics et CRM dès observation`}
+  · Réduisez le taux de clic si Google répond déjà dans sa page de résultats
+  · Aucun délai n'est certain : calculez un cas pessimiste, probable et favorable
+  · Remplacez les hypothèses par Search Console, votre outil d'audience et vos ventes`}
         </FormulaBox>
         <p>
           Un exemple avec les hypothèses du scénario Nathalie. Sa requête
@@ -1290,88 +966,92 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           la troisième position, elle utiliserait un taux de clic hypothétique
           de 6 %, soit une trentaine de visiteurs mensuels. Son site transforme
           2,5 % des visiteurs en demandes de contact, et elle signerait un
-          dossier sur trois : environ <strong>0,24 client par mois</strong>,
-          soit à peu près trois par an. Sa marge par mission étant de 4 200 €,
-          cela fait <strong>environ 12 100 € par an</strong> pour un budget de 1
-          400 € par mois, soit 16 800 € annuels. Ce calcul illustre une méthode
-          ; il ne prédit ni position, ni trafic, ni chiffre d&apos;affaires.
+          dossier sur trois : environ{" "}
+          <strong>un quart de client par mois</strong>, soit à peu près trois
+          par an.
         </p>
         <p>
-          Sur douze mois, l&apos;opération est <strong>déficitaire</strong>.
-          Elle ne devient intéressante qu&apos;à partir de la deuxième année, où
-          le budget peut être réduit alors que les positions acquises continuent
-          de produire. C&apos;est exactement le genre de calcul qu&apos;aucun
-          devis ne présente — et c&apos;est pourtant le seul qui permette de
-          décider.
+          Avec une marge de 4 200 € par mission, le calcul donne environ 12 100
+          € par an, contre 16 800 € de prestation. Il illustre une méthode ; il
+          ne prédit ni position, ni trafic, ni chiffre d&apos;affaires.
+        </p>
+        <p>
+          Avec ces hypothèses, l’opération est déficitaire sur douze mois. Rien
+          ne permet d’affirmer qu’elle deviendra automatiquement rentable la
+          deuxième année : les positions, les clics, le budget et la concurrence
+          peuvent changer. Refaites donc le calcul avec un scénario bas, central
+          et haut, puis fixez une date à laquelle vous déciderez de poursuivre,
+          d’ajuster ou d’arrêter.
         </p>
 
         <h2 id="pas-le-bon-investissement">
-          16. Quand le SEO n&apos;est PAS le bon investissement
+          Quand le SEO n&apos;est-il pas le bon investissement ?
         </h2>
         <p>
-          Voici la section qu&apos;aucun vendeur de référencement n&apos;écrit.
-          Dans les huit situations suivantes, nous refusons la mission — et nous
-          le disons avant le devis, pas après.
+          Le référencement naturel n’est pas toujours le premier investissement
+          à faire. Les situations ci-dessous sont des signaux de décision, pas
+          des seuils universels : vérifiez-les avec la demande, la marge et la
+          trésorerie de votre entreprise.
         </p>
         <GuideTable
-          headers={["Situation", "Seuil", "Ce qu'il faut faire à la place"]}
+          headers={["Signal", "Ce qu’il faut vérifier", "Alternative possible"]}
           rows={[
             [
               "Volume de recherche insuffisant",
-              "Moins de 300 recherches/mois cumulées en France",
+              "Les recherches pertinentes ne suffiraient pas à couvrir le coût, même avec un bon taux de vente.",
               "Google Ads géolocalisé, prospection directe, place de marché sectorielle",
             ],
             [
               "Besoin de résultat immédiat",
-              "Horizon inférieur à 6 mois",
-              "Google Ads : du trafic dès le lendemain",
+              "Vous devez générer des demandes avant que de nouvelles pages aient le temps d’être découvertes et évaluées.",
+              "Google Ads ou prospection directe pour tester la demande plus vite.",
             ],
             [
               "Budget trop faible",
-              "Moins de 500 €/mois HT",
+              "Le budget ne finance pas les corrections ou pages prioritaires identifiées.",
               "Un audit unique, puis exécution en interne",
             ],
             [
               "Trésorerie insuffisante",
-              "Impossible d'engager 12 mois",
-              "Ne pas démarrer. Un arrêt au 5ᵉ mois détruit l'investissement",
+              "L’investissement mensuel mettrait en danger les dépenses essentielles de l’entreprise.",
+              "Reporter la mission et traiter d’abord les actions gratuites ou ponctuelles.",
             ],
             [
-              "Requêtes majoritairement informationnelles",
-              "Plus de 60 % du portefeuille",
-              "Réorienter vers le transactionnel — 99,2 % des résumés IA visent l'informationnel",
+              "Visites sans intention d’achat",
+              "Les sujets attirent des lecteurs, mais peu de prospects correspondant à votre offre.",
+              "Prioriser les pages de services, de prix, de comparaison ou de proximité.",
             ],
             [
               "Pas de site, ou site à refondre",
-              "—",
-              "La refonte d'abord : aucun référencement ne tient sur une base condamnée",
+              "Le site est difficile à utiliser, techniquement bloqué ou ne présente pas clairement l’offre.",
+              "Corriger ou refondre les pages essentielles avant de produire en volume.",
             ],
             [
               "B2B ultra-niche à cycle long",
-              "Moins de 50 comptes cibles identifiables",
+              "Le marché compte peu d’entreprises identifiables et la vente repose sur une relation directe.",
               "Prospection directe, LinkedIn, salons",
             ],
             [
               "Local à très faible concurrence",
-              "Zone de moins de 20 000 habitants, moins de 5 concurrents référencés",
-              "Une fiche Google Business Profile gratuite couvre l'essentiel",
+              "Une fiche d’établissement bien renseignée et quelques pages répondent déjà à la demande locale.",
+              "Commencer par la fiche Google Business Profile et mesurer avant un forfait mensuel.",
             ],
           ]}
         />
-        <InfoBox variant="emerald" title="La décision simulée pour Nathalie">
-          Volume suffisant, horizon compatible, trésorerie solide : trois feux
-          verts. Requêtes majoritairement transactionnelles — « cabinet RH
-          Annecy », « accompagnement recrutement Haute-Savoie » — donc peu
-          exposées aux résumés IA. Elle écarterait le devis à 290 € par mois,
-          non pas parce qu&apos;il était bon marché, mais parce qu&apos;il
-          promettait dix fois ce que deux heures et demie permettent.
+        <InfoBox variant="emerald" title="Dans l’exemple de Nathalie">
+          La demande régionale et les requêtes commerciales rendent le SEO
+          envisageable, mais le calcul reste incertain. Elle écarterait le devis
+          à 290 € par mois non parce qu’il est bon marché, mais parce que les
+          tâches promises ne sont pas compatibles avec le temps théorique prévu.
           <br />
           <br />
-          Elle retiendrait le devis à 1 400 €, en exigeant trois ajouts : le
-          détail écrit des livrables mensuels, la cession des droits sur les
-          articles, et la restitution des accès en fin de contrat. Les trois
-          devraient être acceptés avant signature.{" "}
-          <strong>C&apos;est la négociation qui compte, pas le prix.</strong>
+          Elle ne signerait pourtant pas non plus douze mois à 1 400 € : avec
+          les hypothèses retenues, les 16 800 € de budget dépassent les 12 100 €
+          de marge espérée. Elle demanderait d’abord une mission plus courte
+          pour corriger les pages prioritaires et mesurer la demande. Un
+          accompagnement mensuel ne deviendrait raisonnable qu’après un nouveau
+          calcul positif, avec des livrables écrits, la cession des droits sur
+          les articles et la restitution des accès.
         </InfoBox>
 
         <p>
@@ -1391,46 +1071,37 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           donne la grille de lecture d&apos;un devis complet.
         </p>
 
-        <GuideInlineCTA
-          title="Faites relire vos devis SEO avant de signer"
-          description="Décrivez votre situation en 3 minutes : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement. Nous vous dirons franchement si le référencement est le bon investissement — ou pas."
-        />
-
         <InfoBox
           variant="emerald"
-          title="À retenir : les 7 chiffres de ce guide"
+          title="Avant de signer, vous devez pouvoir répondre à cinq questions"
         >
           <ul className="list-disc pl-4 space-y-1.5">
             <li>
-              <strong>221 € ÷ 900 €/jour</strong> : la division qui règle la
-              question. Moins de deux heures de travail par mois.
+              Comparez d’abord le travail inclus, puis le prix et le temps
+              prévu.
             </li>
             <li>
-              <strong>800 à 1 500 €/mois HT</strong> : la convergence
-              multi-sources pour une PME en ambition régionale.
+              Refusez une position ou un délai garanti par le prestataire.
             </li>
             <li>
-              <strong>1,74 %</strong> des nouvelles pages atteignent le top 10
-              en un an ; <strong>72,9 %</strong> du top 10 a plus de trois ans.
+              Gardez le domaine, les contenus, les données et les accès à votre
+              nom.
             </li>
             <li>
-              <strong>8 % contre 15 %</strong> : le taux de clic avec et sans
-              résumé IA, mesuré par le Pew Research Center.
+              Calculez la rentabilité avec votre marge et vos demandes, pas avec
+              une moyenne publiée par une agence.
             </li>
             <li>
-              <strong>99,2 %</strong> des requêtes déclenchant un résumé IA sont
-              informationnelles — le transactionnel tient bon.
-            </li>
-            <li>
-              <strong>Zéro</strong> : le nombre de statistiques officielles
-              françaises sur le marché des prestations SEO.
-            </li>
-            <li>
-              <strong>8 situations</strong> où le référencement naturel
-              n&apos;est pas le bon investissement.
+              Commencez plus petit ou choisissez un autre canal si le scénario
+              prudent ne couvre pas le budget.
             </li>
           </ul>
         </InfoBox>
+
+        <GuideInlineCTA
+          title="Savoir quel budget SEO correspond à votre entreprise"
+          description="Indiquez votre zone de marché, votre site, vos objectifs et les devis déjà reçus. Nous vous aidons à chiffrer le travail utile, repérer les éléments manquants et décider si le référencement naturel est le bon investissement maintenant."
+        />
 
         <h2 id="sources">Sources</h2>
         <p className="text-sm">
@@ -1466,7 +1137,10 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
           >
             Ahrefs, étude sur le trafic de recherche
           </a>
-          . Résumés IA :{" "}
+          .
+        </p>
+        <p className="text-sm">
+          Résumés IA :{" "}
           <a
             href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/"
             target="_blank"
@@ -1491,7 +1165,10 @@ Refaites le calcul avec le TJM de VOTRE prestataire :
             36ᵉ Observatoire de l&apos;e-pub, SRI / UDECAM / Oliver Wyman,
             09/07/2026
           </a>
-          . Fraude :{" "}
+          .
+        </p>
+        <p className="text-sm">
+          Fraude :{" "}
           <a
             href="https://www.economie.gouv.fr/dgccrf/laction-de-la-dgccrf/les-enquetes/sites-internet-daide-aux-demarches-administratives"
             target="_blank"

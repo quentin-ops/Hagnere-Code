@@ -9,22 +9,6 @@ afterEach(() => {
   vi.unstubAllEnvs();
 });
 
-const guidesWithCompositeScenarios = [
-  "agence-web-ou-freelance",
-  "cahier-des-charges-application-mobile",
-  "combien-de-temps-pour-creer-un-site",
-  "cout-maintenance-site-internet",
-  "creer-un-site-avec-ia",
-  "no-code-ou-sur-mesure",
-  "pourquoi-mon-site-est-lent",
-  "pourquoi-mon-site-ne-convertit-pas",
-  "prix-referencement-naturel",
-  "prix-refonte-site-internet",
-  "proprietaire-site-internet-code-source",
-  "wix-ou-wordpress",
-  "woocommerce-ou-shopify",
-] as const;
-
 const falseClientExperiencePatterns = [
   /nous a contactés/i,
   /nous avons tenu/i,
@@ -85,10 +69,9 @@ describe("guide registry", () => {
     for (const guide of GUIDES) {
       for (const fileName of ["page.tsx", "opengraph-image.tsx"] as const) {
         const filePath = path.join(guidesRoot, guide.slug, fileName);
-        const source = fs.readFileSync(filePath, "utf8").replaceAll(
-          "&apos;",
-          "'",
-        );
+        const source = fs
+          .readFileSync(filePath, "utf8")
+          .replaceAll("&apos;", "'");
 
         for (const pattern of inflatedHookPatterns) {
           expect(source, `${guide.slug}/${fileName}: ${pattern}`).not.toMatch(
@@ -155,31 +138,41 @@ describe("guide registry", () => {
   });
 
   it("labels composite scenarios before their narrative and rejects false client experience", () => {
-    expect(guidesWithCompositeScenarios).toHaveLength(13);
-
-    for (const slug of guidesWithCompositeScenarios) {
+    for (const guide of GUIDES) {
       const source = fs.readFileSync(
-        path.join(guidesRoot, slug, "page.tsx"),
+        path.join(guidesRoot, guide.slug, "page.tsx"),
         "utf8",
       );
       const normalizedSource = source.replace(/\s+/g, " ");
-      const firstScenario = normalizedSource.search(/fil rouge/i);
+      const scenarioMatches = [
+        ...Array.from(
+          source.matchAll(/<h[2-4]\b[^>]*>[\s\S]*?<\/h[2-4]>/gi),
+        ).filter((match) => /(?:exemple|scénario) fictif/i.test(match[0])),
+        ...source.matchAll(
+          /<InfoBox\b[^>]*title=["'](?:exemple|scénario) fictif/gi,
+        ),
+      ];
 
-      expect(firstScenario, `${slug}: fil rouge absent`).toBeGreaterThanOrEqual(0);
+      if (scenarioMatches.length > 0) {
+        const disclosurePattern =
+          /(?:ni (?:un )?client ni (?:un )?témoignage réel|ni (?:un )?cas client(?: Hagnéré Code)?|ne décrit (?:ni )?(?:un )?client)/i;
+        const hasAdjacentDisclosure = scenarioMatches.every((match) => {
+          const index = match.index || 0;
+          return disclosurePattern.test(
+            source.slice(index, index + 1_200).replace(/\s+/g, " "),
+          );
+        });
 
-      const firstScenarioContext = normalizedSource.slice(
-        Math.max(0, firstScenario - 80),
-        firstScenario + 520,
-      );
-      expect(firstScenarioContext, `${slug}: scénario non qualifié`).toMatch(
-        /scénario fictif composite/i,
-      );
-      expect(firstScenarioContext, `${slug}: absence de dénégation explicite`).toMatch(
-        /ni client ni témoignage réel/i,
-      );
+        expect(
+          hasAdjacentDisclosure,
+          `${guide.slug}: scénario fictif sans dénégation adjacente`,
+        ).toBe(true);
+      }
 
       for (const pattern of falseClientExperiencePatterns) {
-        expect(normalizedSource, `${slug}: ${pattern}`).not.toMatch(pattern);
+        expect(normalizedSource, `${guide.slug}: ${pattern}`).not.toMatch(
+          pattern,
+        );
       }
     }
   });
@@ -197,16 +190,19 @@ describe("guide registry", () => {
       .replace(/\s+/g, " ");
 
     expect(deliverySource).not.toMatch(/sitemap.{0,100}3\s*(?:à|-)\s*7 jours/i);
-    expect(deliverySource).not.toMatch(/moitié des pages.{0,100}2\s*à\s*4 mois/i);
+    expect(deliverySource).not.toMatch(
+      /moitié des pages.{0,100}2\s*à\s*4 mois/i,
+    );
     expect(deliverySource).not.toMatch(/productif en 6\s*à\s*12 mois/i);
-    expect(deliverySource).not.toMatch(/indexation des pages\s*:\s*1\s*à\s*3 semaines/i);
-    expect(deliverySource).toContain(
-      "ce fichier ne garantit ni leur exploration, ni leur indexation",
+    expect(deliverySource).not.toMatch(
+      /indexation des pages\s*:\s*1\s*à\s*3 semaines/i,
     );
     expect(deliverySource).toMatch(
-      /marché.{0,180}contenus.{0,180}autorité.{0,180}liens.{0,180}socle technique/i,
+      /demande d(?:'|&apos;)exploration.{0,120}ne garantit pas (?:son\s+indexation|l(?:'|&apos;)indexation)/i,
     );
-    expect(deliverySource).toMatch(/corpus observationnel.{0,200}Ahrefs/i);
+    expect(deliverySource).toMatch(
+      /référencement naturel et l(?:'|&apos;)acquisition.{0,160}propre calendrier.{0,180}pas être confondus avec le temps de fabrication/i,
+    );
 
     const seoPricingSource = fs
       .readFileSync(
@@ -215,11 +211,15 @@ describe("guide registry", () => {
       )
       .replace(/\s+/g, " ");
 
-    expect(seoPricingSource).not.toMatch(/bonne fourchette.{0,80}\d+\s*à\s*\d+\s*mois/i);
+    expect(seoPricingSource).not.toMatch(
+      /bonne fourchette.{0,80}\d+\s*à\s*\d+\s*mois/i,
+    );
     expect(seoPricingSource).not.toMatch(/résultat n.apparaît pas avant/i);
-    expect(seoPricingSource).not.toMatch(/SEO.{0,160}investissement le plus rentable/i);
+    expect(seoPricingSource).not.toMatch(
+      /SEO.{0,160}investissement le plus rentable/i,
+    );
     expect(seoPricingSource).toMatch(
-      /publication technique.{0,120}exploration.{0,120}indexation.{0,120}impressions.{0,120}positions.{0,120}demandes/i,
+      /calendrier de travail.{0,160}correction publiée.{0,120}page accessible.{0,120}premières impressions.{0,120}clics.{0,120}demandes commerciales/i,
     );
 
     const sitePricingSource = fs
@@ -232,7 +232,7 @@ describe("guide registry", () => {
     expect(sitePricingSource).not.toMatch(/conservation des positions/i);
     expect(sitePricingSource).not.toMatch(/évite de perdre le trafic acquis/i);
     expect(sitePricingSource).toMatch(
-      /refonte peut faire varier.{0,140}exploration.{0,140}indexation.{0,140}positions.{0,140}trafic/i,
+      /Refonte.{0,120}pages.{0,120}données.{0,120}positions Google faut-il protéger.{0,180}prix d(?:'|&apos;)une refonte/i,
     );
   });
 

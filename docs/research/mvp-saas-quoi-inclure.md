@@ -3,7 +3,7 @@
 ## 1. Fiche d'identité
 
 - Slug : mvp-saas-quoi-inclure
-- Statut actuel : publiable — validation éditoriale déléguée le 20 juillet 2026
+- Statut actuel : publiable — validation éditoriale déléguée ; réécriture humaine intégrée le 21 juillet 2026, avec contrôles techniques et temps de lecture à revalider
 - Requête principale : MVP SaaS quoi inclure
 - Moment du parcours : cadrer un premier produit utilisable après validation du problème
 - Lecteur précis : dirigeant, indépendant ou porteur d'un SaaS B2B qui doit décider ce qui entre dans le premier lot mis entre les mains d'un client
@@ -153,11 +153,11 @@ seront propres au cas fictif et ne deviendront jamais un benchmark.
   premier client sans dépendance dangereuse au fondateur.
 - Ouverture : journée fictive du premier client, avec invitation, première
   valeur, erreur, support, administration et décision.
-- Progression : question d'apprentissage, parcours complet, minimum
-  d'exploitation, quatre traitements, contrat de premier client, critères de
-  sortie.
-- Artefact : contrat de premier client en une page et test de journée complète ;
-  aucun score.
+- Progression : choisir le bon test, remplir une seule checklist, assumer le
+  manuel, vendre et protéger, mesurer sur un exemple, puis autoriser ou reporter
+  le lancement.
+- Artefact : une checklist unique « maintenant, manuel, intégré ou plus tard »
+  et une fiche courte remise au premier client ; aucun score.
 - Voix : responsable produit pragmatique ; termes techniques traduits.
 - CTA : après la fiche de périmètre et les cas où ne pas développer.
 - Conclusion : prêt, pilote accompagné, test plus léger ou report.
@@ -166,28 +166,20 @@ seront propres au cas fictif et ne deviendront jamais un benchmark.
 
 ## 7. Plan annoté
 
-| Section                           | Question résolue                                    | Preuve ou exemple                                                                   | Décision                                                                    | Format                     |
-| --------------------------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | -------------------------- |
-| Journée du premier client         | qu'oublie une liste d'écrans ?                      | invitation, valeur, erreur, support, administration et sortie                       | identifier les trous avant le devis                                         | scène horodatée            |
-| Prototype, POC, pilote, MVP ou V1 | quel objet faut-il réellement construire ?          | incertitude, données réelles et niveau d'exploitation distincts                     | revenir à un test plus léger si le produit exploitable n'est pas nécessaire | tableau                    |
-| Tranche verticale                 | comment réduire sans livrer une démo fragile ?      | sept couches traversées par un même parcours                                        | choisir un seul parcours complet                                            | figure sémantique          |
-| Fiche de première exploitation    | que faut-il pour accueillir un client ?             | valeur, compte, données, offre, exploitation, confiance et apprentissage            | nommer résultat, manuel, preuve, report et responsable par socle            | grille copiable            |
-| Manuel ou automatique             | faut-il tout coder ?                                | critères de volume, fréquence, risque et apprentissage                              | construire, opérer manuellement, intégrer ou reporter                       | tableau décisionnel        |
-| Chemin heureux et échecs          | quels incidents empêchent la valeur ?               | invitation, rôle, données, traitement, courriel, facture et export                  | retenir les échecs qui bloquent, exposent ou perdent                        | chaîne commentée           |
-| Produit opérateur                 | que doit pouvoir faire l'équipe de support ?        | retrouver, comprendre, corriger, tracer et escalader                                | éviter les modifications directes incontrôlées en production                | checklist                  |
-| Offre, facturation et support     | le libre-service est-il indispensable ?             | pilote contractuel, abonnement accompagné et libre-service                          | choisir le mode adapté au premier client                                    | comparaison                |
-| Confiance                         | que ne peut-on pas repousser sous l'étiquette MVP ? | minimisation, accès, secrets, restauration, journaux, incident et sortie            | proportionner les mesures au risque réel                                    | responsabilités et sources |
-| Mesure                            | qu'observer sans inventer de seuil universel ?      | activation définie, délai avant valeur, répétition, erreurs et temps manuel         | décider quoi automatiser, corriger ou arrêter                               | définitions et événements  |
-| Exemple fictif                    | comment passer de 27 demandes à un lot cohérent ?   | SaaS B2B d'approbation de devis                                                     | inclure, accompagner, intégrer et reporter avec déclencheur                 | fiche remplie              |
-| Dix preuves                       | le lot est-il prêt pour un vrai client ?            | scénarios exécutés de création à restauration et sortie                             | accepter, corriger ou bloquer                                               | recette adaptable          |
-| Contrat de premier client         | que remettre à l'équipe et aux prestataires ?       | hypothèse, parcours, socles, manuel, exclusions, données, support, mesure et sortie | rendre responsabilités et critères comparables                              | modèle HTML copiable       |
-| Verdict                           | MVP, pilote, prototype, V1 ou report ?              | quatre sorties et mauvais fits                                                      | choisir la prochaine dépense utile                                          | tableau                    |
+| Section                   | Question résolue                                      | Preuve ou exemple                                                      | Décision                                                                    | Format                       |
+| ------------------------- | ----------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------- |
+| 1. Choisir le bon test    | prototype, essai client ou version vendable ?         | incertitude, données réelles et niveau d'exploitation distincts        | revenir à un test plus léger si le produit exploitable n'est pas nécessaire | comparaison courte           |
+| 2. Remplir une checklist  | que faut-il vraiment prévoir pour le premier client ? | service, accès, données, vente, aide, sécurité et mesure               | classer chaque capacité : maintenant, manuel, intégrée ou plus tard         | grille unique et copiable    |
+| 3. Assumer le manuel      | quand automatiser et comment traiter les échecs ?     | temps cumulé, volume, fragilité, risque, erreurs et besoins du support | automatiser sur un seuil explicite, pas sur la fréquence seule              | critères et parcours         |
+| 4. Vendre et protéger     | que promettre sans sous-estimer les responsabilités ? | contrat, paiement, données, sauvegarde, sécurité et accessibilité      | choisir le mode de vente et les protections adaptés au premier client       | comparaison et sources       |
+| 5. Mesurer sur un exemple | qu'observer pour décider du prochain lot ?            | SaaS fictif d'approbation de devis et métriques utiles                 | corriger, automatiser, approfondir ou arrêter                               | définitions et fiche remplie |
+| 6. Autoriser ou reporter  | le lot est-il prêt pour un vrai client ?              | six groupes de vérifications et fiche client en une page               | lancer prudemment, revenir au pilote, prototyper ou reporter                | recette courte et verdict    |
 
 ### Choix d'architecture arrêtés
 
 - H1 : « MVP SaaS : que faut-il inclure pour mettre un premier client en production ? »
-- Réponse d'ouverture : un MVP SaaS est une tranche verticale exploitable, pas une petite pile de fonctionnalités.
-- Artefact signature : figure statique en sept couches, lisible sans couleur et sans JavaScript client.
+- Réponse d'ouverture : un MVP SaaS est un service court mais complet, pas une petite pile de fonctionnalités.
+- Artefact signature : une checklist unique en sept lignes, lisible sans couleur et sans JavaScript client.
 - Fil pédagogique : suivre la journée du premier client puis révéler le produit invisible dont l'opérateur a besoin.
 - Définitions : prototype, preuve de faisabilité, pilote accompagné, MVP de production, première version ; aucune durée ni prix générique.
 - Exemple : exemple illustratif fictif d'approbation de devis, avec 27 demandes initiales réduites à un parcours et des déclencheurs écrits. Le nombre illustre le cas et ne constitue pas un benchmark.
@@ -224,22 +216,23 @@ seront propres au cas fictif et ne deviendront jamais un benchmark.
 
 ### Scorecard justifiée
 
-| Axe            | Note 0-2 | Preuve dans la page                                                                     | Correction éventuelle           |
-| -------------- | -------: | --------------------------------------------------------------------------------------- | ------------------------------- |
-| Intention      |        2 | réponse directe par tranche verticale et premier client                                 | —                               |
-| Décision       |        2 | distinction prototype, POC, pilote, MVP et V1 puis quatre sorties                       | —                               |
-| Pédagogie      |        2 | termes définis dans la phrase, grille copiable et exemple fictif                        | —                               |
-| Profondeur     |        2 | valeur, comptes, données, offre, exploitation, confiance et mesure                      | —                               |
-| Preuve         |        2 | sources primaires ou référentiels contextualisés, sans les transformer en certification | —                               |
-| Comparaison    |        2 | formats comparés sur la même incertitude et la même sortie                              | —                               |
-| Originalité    |        2 | journée du premier client et sept couches non compensables                              | —                               |
-| Style          |        1 | progression cohérente mais article dense                                                | confirmer par un lecteur humain |
-| Conversion     |        2 | mauvais fits, action autonome et CTA après le verdict                                   | —                               |
-| SEO ou produit |        2 | metadata, Article, BreadcrumbList, OG, registre et index/follow après validation        | —                               |
+| Axe            | Note 0-2 | Preuve dans la page                                                                                   | Correction éventuelle   |
+| -------------- | -------: | ----------------------------------------------------------------------------------------------------- | ----------------------- |
+| Intention      |        2 | réponse directe par service court mais complet et premier client                                      | —                       |
+| Décision       |        2 | distinction prototype, POC, pilote, MVP et V1 puis quatre sorties                                     | —                       |
+| Pédagogie      |        2 | termes définis dans la phrase, grille copiable et exemple fictif                                      | —                       |
+| Profondeur     |        2 | valeur, comptes, données, offre, exploitation, confiance et mesure                                    | —                       |
+| Preuve         |        2 | sources primaires ou référentiels contextualisés, sans les transformer en certification               | —                       |
+| Comparaison    |        2 | formats comparés sur la même incertitude et la même sortie                                            | —                       |
+| Originalité    |        2 | une checklist unique complétée par la journée du premier client                                       | —                       |
+| Style          |        2 | six sections de décision ; doublon des sept indispensables supprimé ; dix tests ramenés à six groupes | —                       |
+| Conversion     |        2 | mauvais fits, action autonome et CTA après le verdict                                                 | —                       |
+| SEO ou produit |        1 | metadata, Article, BreadcrumbList et OG conservés ; temps de lecture et artefact à revalider          | contrôle central requis |
 
-**Total du contre-audit agent : 19/20.** Le commanditaire a explicitement
-délégué et autorisé l'arbitrage de publication ; aucun test lecteur humain
-n'est revendiqué.
+**Total provisoire après réécriture : 19/20.** La note SEO ou produit reste
+plafonnée à 1 tant que les contrôles techniques, le temps de lecture et
+l'artefact de production n'ont pas été rejoués. Aucun test lecteur humain n'est
+revendiqué.
 
 ### Test lecteur non technique
 
@@ -249,7 +242,7 @@ n'est revendiqué.
 - Décision de publication : autorisée explicitement par le commanditaire sur la
   base du contre-audit indépendant ; cela ne constitue pas un test lecteur.
 
-### Contre-audit indépendant
+### Contre-audit indépendant historique
 
 - Auteur : agent `/root/mvp_guide_audit`, distinct du rédacteur initial, puis
   contrôle technique du parent le 20 juillet 2026.
@@ -257,22 +250,29 @@ n'est revendiqué.
 - Réserves : exemple du dossier de recherche incohérent avec la page, temps de
   lecture sous-estimé, ancienne consigne `FAQPage`, jargon PCI/SSO/API et
   incohérences avec la carte commerciale du MVP.
-- Corrections : exemple réconcilié sur l'approbation de devis, temps porté à
-  23 minutes, schéma FAQ retiré, source PCI corrigée, jargon traduit et offre
-  alignée sur un parcours critique complet avec éléments conditionnels. Le
-  rendu commercial courant a été vérifié sur le serveur local.
-- Statut maximal : publiable après autorisation éditoriale déléguée du commanditaire.
+- Corrections historiques : exemple réconcilié sur l'approbation de devis,
+  schéma FAQ retiré, source PCI corrigée, jargon traduit et offre alignée sur un
+  parcours critique complet avec éléments conditionnels.
+- Limite : la réécriture du 21 juillet invalide le temps de lecture, le build et
+  le contrôle visuel précédemment consignés.
+
+La passe pédagogique du 21 juillet 2026 ramène le guide de 5 412 à 4 779 mots
+visibles et de 15 à 7 H2. Une seule checklist visuelle classe les sept éléments
+de la première version ; les autres listes servent aux tests ou à la fiche du
+client sans créer un second système de classement. La FAQ ne recommande plus
+d’automatiser sur le seul critère d’une fréquence hebdomadaire.
 
 ### Vérifications
 
 - [x] faits, citations et fraîcheur relus le 20 juillet 2026 ;
 - [x] aucun chiffre ou cas réel présenté comme tel ;
 - [x] CTA disponible et aucune ressource fantôme ;
-- [x] metadata, données structurées, registre, maillage et ancres réconciliés ;
-- [x] Prettier, ESLint, TypeScript, batterie SEO et build du snapshot
-      d'intégration passés ; toute nouvelle modification invalide cette preuve ;
-- [x] rendu contrôlé aux dix largeurs de 320 à 1 600 px, CTA, H1, figure,
-      tableaux, FAQ et image Open Graph inspectés ;
-- [x] route incluse dans le hub, le sitemap et `llms.txt`, avec `index,follow`
-      dans l'artefact de production ; crawl et indexation effective restent à
-      vérifier séparément.
+- [x] metadata, données structurées, registre, maillage, ancres et temps de
+      lecture réconciliés après réécriture : 4 779 mots visibles, 24 minutes,
+      7 H2 et 6 tableaux ;
+- [ ] Prettier, ESLint, TypeScript, batterie SEO et build rejoués sur le nouveau
+      contenu ;
+- [ ] rendu recontrôlé aux largeurs utiles, notamment figure, tableaux, FAQ et
+      image Open Graph ;
+- [ ] route et `index,follow` recontrôlés dans l'artefact de production ; crawl
+      et indexation effective restent à vérifier séparément.

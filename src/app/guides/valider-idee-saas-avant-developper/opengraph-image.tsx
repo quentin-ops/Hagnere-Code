@@ -2,16 +2,16 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Valider une idée SaaS avant de développer en vérifiant cinq risques";
+  "Valider une idée SaaS avant d’investir dans le développement";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const gates = [
-  { label: "Problème", color: "#38bdf8" },
+  { label: "Problème fréquent", color: "#38bdf8" },
   { label: "Acheteur", color: "#818cf8" },
-  { label: "Accès", color: "#a78bfa" },
-  { label: "Engagement", color: "#c084fc" },
-  { label: "Faisabilité", color: "#34d399" },
+  { label: "Entretiens", color: "#a78bfa" },
+  { label: "Test manuel", color: "#c084fc" },
+  { label: "Prix", color: "#34d399" },
 ];
 
 export default function OgImage() {
@@ -107,7 +107,7 @@ export default function OgImage() {
               color: "#c4b5fd",
             }}
           >
-            Des preuves avant le MVP
+            Un plan de terrain sur 14 jours
           </div>
         </div>
 
@@ -190,9 +190,9 @@ export default function OgImage() {
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         {[
-          "Entretiens sans biais",
-          "Tests sans code",
-          "Développer · pivoter · arrêter",
+          "Parler à de vrais prospects",
+          "Tester sans logiciel",
+          "Développer · modifier · arrêter",
         ].map((label) => (
           <div
             key={label}

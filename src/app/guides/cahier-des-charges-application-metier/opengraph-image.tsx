@@ -2,14 +2,14 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Cahier des charges d'une application métier — scénarios, recette et preuves";
+  "Cahier des charges d’une application métier pour obtenir des devis comparables";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const steps = [
-  { number: "01", title: "Scénario", detail: "Le travail réel" },
-  { number: "02", title: "Critère", detail: "Le résultat attendu" },
-  { number: "03", title: "Preuve", detail: "La recette observable" },
+  { number: "01", title: "Votre travail", detail: "La situation réelle" },
+  { number: "02", title: "Ce qu’il faut", detail: "Le résultat attendu" },
+  { number: "03", title: "Comment vérifier", detail: "Le test avant paiement" },
 ];
 
 export default function OgImage() {
@@ -99,7 +99,7 @@ export default function OgImage() {
               color: "#a5b4fc",
             }}
           >
-            Du besoin à une recette vérifiable
+            Expliquez le besoin et comparez enfin les mêmes projets
           </div>
         </div>
 
@@ -208,10 +208,10 @@ export default function OgImage() {
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         {[
-          "7 livrables",
+          "Modèle gratuit",
           "5 à 8 scénarios",
-          "Matrice des droits",
-          "Exemple fictif",
+          "Devis comparables",
+          "Tests avant paiement",
         ].map((label) => (
           <div
             key={label}

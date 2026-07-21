@@ -91,7 +91,12 @@ const breadcrumbJsonLd = JSON.stringify({
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE_URL}/guides` },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Guides",
+      item: `${SITE_URL}/guides`,
+    },
     {
       "@type": "ListItem",
       position: 3,
@@ -103,85 +108,79 @@ const breadcrumbJsonLd = JSON.stringify({
 
 const faqItems = [
   {
-    question: "Quelle est la différence principale entre Flutter et React Native ?",
+    question: "Quelle est la différence entre React Native et Flutter ?",
     answer:
-      "Les deux fabriquent une seule application qui tourne sur iPhone et Android — au lieu d'en développer deux. La différence est sous le capot : React Native (créé par Meta) s'écrit en JavaScript/React, le langage de la majorité des développeurs web — une équipe qui a déjà un site React parle déjà la langue. Flutter (créé par Google) s'écrit en Dart, un langage propre à Google, avec un moteur graphique qui dessine lui-même toute l'interface — d'où son aisance sur les designs très personnalisés. Pour un dirigeant, la vraie différence n'est ni la vitesse ni le prix du jour-homme : c'est l'équipe que vous pourrez recruter et garder.",
+      "Les deux permettent de créer une application iPhone et Android en partageant une grande partie du travail. React Native utilise JavaScript et React ; Flutter utilise Dart et son propre moteur d'affichage. Pour l'entreprise, la différence la plus concrète concerne les compétences disponibles, la reprise du projet et les besoins visuels.",
   },
   {
-    question: "Flutter est-il meilleur que React Native ?",
+    question: "React Native est-il meilleur que Flutter ?",
     answer:
-      "Aucun n'écrase l'autre techniquement — mais pour la majorité des situations d'entreprise en France (app métier, existant web, exigence de réversibilité), React Native part favori : vivier ~2× plus large, gouvernance multi-sponsors, et domination du haut du panier des stores (1 350 apps du top 10 000 contre 1 184, et 47 % des téléchargements de ce segment contre 38 % — données Appfigures ; les enquêtes développeurs, elles, les placent au coude-à-coude : 14,5 % contre 13,6 % — Stack Overflow 2025). Flutter reste le bon choix pour une interface visuelle distinctive et des animations riches. Notre grille par profil est en fin de guide.",
+      "Non, pas dans tous les cas. React Native est souvent naturel pour une équipe déjà compétente en React. Flutter peut être pertinent pour une interface très personnalisée et une équipe qui le maîtrise. La qualité de la préparation, des tests et de la maintenance compte davantage qu'un classement général.",
   },
   {
-    question: "Quel est le moins cher : React Native ou Flutter ?",
+    question: "Quel framework coûte le moins cher ?",
     answer:
-      "Le baromètre SILKHOM 2025 publie les mêmes grilles pour React Native, Flutter et le natif : le framework ne suffit donc pas à prédire le prix du jour. Des agences évoquent 30 à 40 % d'économie pour une application multiplateforme face à deux développements natifs, mais ce recoupement n'est pas un benchmark représentatif. Utilisez-le comme hypothèse à vérifier sur deux devis au même périmètre, maintenance comprise.",
+      "Le cadre technique, parfois appelé framework, ne donne pas le prix à lui seul. Les grilles SILKHOM citées publient les mêmes repères de tarif journalier pour React Native et Flutter. Le budget dépend surtout des écrans, des fonctions, du serveur, du hors-ligne, des tests et de l'expérience de l'équipe.",
   },
   {
-    question: "Un développeur web peut-il se former rapidement à React Native ?",
+    question: "Peut-on partager tout le code entre iPhone et Android ?",
     answer:
-      "Oui — c'est l'atout stratégique n°1 de React Native pour une entreprise française. Le framework s'écrit en JavaScript — pratiqué par environ deux développeurs sur trois dans le monde — avec React, utilisé par près d'un développeur sur deux ; un développeur React web expérimenté devient productif sur React Native en quelques semaines. Flutter s'écrit en Dart, un langage qu'on n'apprend pratiquement que pour Flutter : le recrutement passe par des profils spécialisés, environ deux fois moins nombreux sur les plateformes françaises de freelances. Traduction : avec React Native, votre équipe (ou votre agence) web et mobile peut être la même — c'est le cas de figure qui change le budget.",
+      "Une grande partie peut être commune, mais rarement 100 %. Les notifications, permissions, achats, fonctions du téléphone et détails d'interface demandent parfois un travail propre à chaque plateforme. Shopify a publié 86 % de code commun sur son projet React Native ; ce cas ne garantit pas le même taux ailleurs.",
   },
   {
-    question: "Peut-on vraiment partager le code entre iOS et Android ?",
+    question: "Quel choix pour une entreprise qui utilise déjà React ?",
     answer:
-      "Oui, massivement — c'est tout l'intérêt du multiplateforme. Les retours publics documentés : Shopify a achevé fin 2024 cinq ans de migration vers React Native avec 86 % de code commun entre iPhone et Android (et 1,8 million de lignes de code en double supprimées) ; les équipes Flutter revendiquent des taux de 80 à 95 % selon les projets. Le code restant couvre les spécificités de chaque plateforme (notifications, permissions, intégrations propres à iOS ou Android). En pratique : vous payez une application et quelques finitions, pas deux applications.",
+      "React Native mérite d'être étudié en premier, car l'équipe peut réutiliser une partie de ses connaissances et parfois de sa logique métier. Il faut néanmoins vérifier les fonctions mobiles, les modules disponibles et l'expérience réelle de l'équipe avant de conclure.",
   },
   {
-    question: "Quel framework permet de livrer un MVP plus vite ?",
+    question: "Flutter convient-il aux applications métier ?",
     answer:
-      "Les comparatifs qui tranchent ce point se contredisent. Le vrai facteur de vitesse est le point de départ : périmètre, design, backend, intégrations, comptes stores, jeu de test et maîtrise du framework par l'équipe. Chez Hagnéré Code, le calendrier est établi après ce cadrage et confirmé dans le devis ; le framework seul ne produit pas un délai.",
+      "Oui. Formulaires, listes, tableaux de bord, photos, notifications et fonctionnement hors ligne peuvent être réalisés avec Flutter comme avec React Native. Le choix doit venir des compétences, des modules nécessaires et d'un test des scénarios les plus risqués.",
   },
   {
-    question: "Quel framework est le plus pérenne à long terme ?",
+    question: "Faut-il choisir le natif plutôt que le multiplateforme ?",
     answer:
-      "La question se traduit en « qui paie les ingénieurs du framework, et pour combien de temps ? ». React Native est porté par Meta — qui l'utilise dans Facebook et Instagram — et co-investi par Microsoft (Office, Outlook), Shopify et Amazon : plusieurs sponsors, dont l'éditeur est le premier client. Flutter dépend d'un seul sponsor, Google, qui a licencié dans les équipes Flutter/Dart en mai 2024 — provoquant la création, par un ancien de l'équipe, d'une copie indépendante du projet (un « fork », nommé Flock) — tout en réaffirmant officiellement son soutien… et en poussant en parallèle une seconde technologie multiplateforme (Kotlin Multiplatform). Aucun des deux ne va disparaître demain ; la gouvernance multi-entreprises de React Native est structurellement plus rassurante.",
+      "Le développement natif, séparé pour iPhone et Android, se justifie lorsque l'application dépend fortement des dernières fonctions de chaque appareil ou impose une exigence très particulière. Pour une application métier classique, le multiplateforme peut réduire le travail en double.",
   },
   {
-    question: "Flutter va-t-il être abandonné par Google ?",
+    question: "Combien prévoir pour la maintenance d'une application ?",
     answer:
-      "Rien ne l'indique à court terme — et l'inquiétude n'est pas non plus une invention. Les faits : Google a licencié une partie des équipes Flutter, Dart et Python en mai 2024 ; un ancien ingénieur de l'équipe a créé une copie indépendante du projet (un « fork », nommé Flock) en invoquant une équipe réduite ; Google a répondu publiquement fin 2024 en revendiquant plus d'un million de développeurs actifs mensuels et des déploiements majeurs (Toyota, BMW, Google Pay). Mais Google investit aussi dans Kotlin Multiplatform, une approche concurrente — deux paris chez Google, contre un seul chez Meta. Un dirigeant n'a pas à trancher ce débat : il doit juste exiger un code propre et documenté, réutilisable quoi qu'il arrive.",
+      "Il n'existe pas de pourcentage obligatoire. Ce guide utilise 10 à 20 % du coût initial par an comme hypothèse de planification, à remplacer par un contrat précis. Celui-ci doit couvrir les mises à jour des stores, les dépendances, les appareils testés, les incidents et les nouvelles publications.",
   },
   {
-    question: "Lequel choisir pour une application avec animations complexes ou design très personnalisé ?",
+    question: "Comment éviter de dépendre de son prestataire mobile ?",
     answer:
-      "C'est le cas honnête où Flutter part favori — et nous le disons en étant une agence React. Son moteur graphique dessine lui-même chaque pixel de l'interface, ce qui excelle pour les designs très éloignés des standards et les animations riches ; les mesures en conditions extrêmes lui donnent l'avantage en consommation processeur et mémoire (avec une réserve : ces tests datent d'avant la refonte majeure de React Native fin 2024). Pour les applications métier classiques — formulaires, listes, tableaux de bord, prise de photos —, la différence est imperceptible pour l'utilisateur : la qualité de l'équipe pèse plus que le framework.",
+      "Ouvrez les comptes Apple, Google et le dépôt de code au nom de l'entreprise. Faites écrire la cession des droits, la documentation, la procédure de publication, les accès et les conditions de maintenance. Ces garanties protègent davantage que le choix de la technologie à lui seul.",
   },
   {
-    question: "Est-il possible de migrer une application native vers React Native ou Flutter ?",
+    question: "Peut-on migrer de React Native vers Flutter, ou l'inverse ?",
     answer:
-      "Oui, et les deux sens existent. Les grandes migrations documentées vont plutôt vers le multiplateforme : Shopify (cinq ans, achevée fin 2024), Discord (application Android réécrite en React Native), Google Pay (vers Flutter, avec 35 % de code en moins). Le contre-exemple célèbre est Airbnb, qui a abandonné React Native en 2018 pour revenir au natif — un cas d'école instructif, mais antérieur à la refonte technique majeure du framework. Une migration est un vrai projet (plusieurs mois) : elle se justifie quand la maintenance de deux applications natives devient le goulot, rarement avant.",
-  },
-  {
-    question: "Quelle est la différence entre PWA, application native et application hybride ?",
-    answer:
-      "L'application native est développée spécifiquement pour iOS (Swift) ou Android (Kotlin) : performance maximale, deux développements. Le multiplateforme (React Native, Flutter — souvent appelé « hybride ») produit une vraie application des stores à partir d'un seul code. La PWA (Progressive Web App) est un site web installable qui ressemble à une application : pas de passage par les stores, pas de commission — mais des capacités réduites (notifications limitées sur iPhone) et une dépendance aux décisions d'Apple, qui a montré en 2024 qu'il pouvait restreindre ce canal du jour au lendemain avant de reculer sous la pression. Pour une app métier qui exige un hors-ligne robuste, des notifications ou les fonctions du téléphone, le multiplateforme offre aujourd'hui le meilleur rapport coût/capacités ; pour un usage interne simple, la PWA mérite d'être testée d'abord.",
-  },
-  {
-    question: "Combien coûte la maintenance d'une application mobile ?",
-    answer:
-      "Ce guide retient 10 à 20 % du coût initial par an comme hypothèse de planification, pas comme taux imposé par Apple ou Google. Les stores imposent en revanche des versions de SDK et de niveau d'API qui rendent la maintenance nécessaire. Un cas publié chiffre à 380 000 $ la remise à niveau d'une application délaissée quatre ans ; il illustre le risque sans fournir un multiplicateur transposable. Demandez un forfait détaillant versions supportées, délai de correction et publication.",
-  },
-  {
-    question: "Comment éviter de dépendre de son agence mobile ?",
-    answer:
-      "Quatre clauses à exiger avant de signer, quel que soit le framework : la propriété du code (cession écrite, dépôt sur un compte GitHub à votre nom) ; les comptes développeur Apple et Google ouverts au nom de votre entreprise, jamais à celui de l'agence — c'est votre identité sur les stores ; une documentation et un code standard, qu'une autre équipe peut reprendre (demandez : « si vous disparaissez, qui peut maintenir ça ? ») ; et un framework au vivier large — c'est ici que le choix technique rejoint la prudence : environ deux fois plus de développeurs React Native que Flutter sur le marché français des freelances, et un réservoir React web immense derrière. La réversibilité se négocie au contrat, pas au moment du divorce.",
+      "Oui, mais la partie mobile doit en grande partie être reconstruite. Le serveur, les données, les règles métier, les maquettes et les tests restent réutilisables s'ils sont bien séparés et documentés. Une migration doit résoudre un problème mesuré, pas suivre une mode technique.",
   },
 ];
-
 
 export default function Page() {
   return (
     <GuidesShell>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleJsonLd.replace(/</g, "\\u003c") }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJsonLd.replace(/</g, "\\u003c") }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: articleJsonLd.replace(/</g, "\\u003c"),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: breadcrumbJsonLd.replace(/</g, "\\u003c"),
+        }}
+      />
       <GuideLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
           { label: "React Native ou Flutter" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Le débat est technique, votre décision ne l'est pas. Ce comparatif traduit tout en critères de dirigeant : coûts comparés, repères de TJM, vivier de recrutement, gouvernance des deux camps, maintenance requise par l'évolution des stores et verdict par profil — biais déclaré."
+        heroDescription="React Native et Flutter permettent tous deux de créer une application iPhone et Android. Ce guide vous aide à choisir selon votre équipe, vos fonctions, votre budget de maintenance et la possibilité de faire reprendre le projet."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -189,16 +188,48 @@ export default function Page() {
         }}
         updatedLabel={`Mis à jour le ${formatGuideDate(guide.dateModified)}`}
         keyPoints={[
-          { number: "01", title: "TJM identiques : 330 – 720 €/j", description: "", color: "violet" },
-          { number: "02", title: "Vivier FR : ~2× plus large côté React Native", description: "", color: "blue" },
-          { number: "03", title: "Repère d'agences vs 2 apps : 30-40 %", description: "", color: "emerald" },
-          { number: "04", title: `Lecture : ${guide.readTimeMin} min`, description: "", color: "amber" },
+          {
+            number: "01",
+            title: "Deux solutions professionnelles",
+            description: "",
+            color: "violet",
+          },
+          {
+            number: "02",
+            title: "L’équipe et les usages doivent décider",
+            description: "",
+            color: "blue",
+          },
+          {
+            number: "03",
+            title: "Maintenance et reprise à prévoir",
+            description: "",
+            color: "emerald",
+          },
+          {
+            number: "04",
+            title: `Lecture : ${guide.readTimeMin} min`,
+            description: "",
+            color: "amber",
+          },
         ]}
         relatedLinks={[
-          { href: "/guides/combien-coute-une-application-mobile", label: "Combien coûte une application mobile ?" },
-          { href: "/guides/combien-coute-un-saas", label: "Combien coûte un SaaS ?" },
-          { href: "/guides/nextjs-ou-wordpress", label: "Next.js ou WordPress ?" },
-          { href: "/guides/cahier-des-charges-application-mobile", label: "Cahier des charges d'app mobile" },
+          {
+            href: "/guides/combien-coute-une-application-mobile",
+            label: "Combien coûte une application mobile ?",
+          },
+          {
+            href: "/guides/combien-coute-un-saas",
+            label: "Combien coûte un SaaS ?",
+          },
+          {
+            href: "/guides/nextjs-ou-wordpress",
+            label: "Next.js ou WordPress ?",
+          },
+          {
+            href: "/guides/cahier-des-charges-application-mobile",
+            label: "Cahier des charges d'app mobile",
+          },
           { href: "/services/application-mobile", label: "Application mobile" },
           { href: "/methode", label: "Notre méthode Sprint Fixe™" },
         ]}
@@ -206,700 +237,484 @@ export default function Page() {
         faqItems={faqItems}
       >
         <p className="lead">
-          Votre prestataire jure par Flutter, un autre ne parle que de
-          React Native, et les comparatifs alignent des benchmarks
-          d&apos;images par seconde qui ne vous disent rien.{" "}
-          <strong>Ce guide traduit le débat en langage de
-          dirigeant</strong> — coûts, recrutement, pérennité, dépendance
-          — avec chaque chiffre sourcé, et notre biais d&apos;agence
-          React déclaré dès la première ligne plutôt que caché derrière
-          une fausse neutralité.
+          Vous devez créer une application pour iPhone et Android et deux
+          prestataires vous recommandent des technologies différentes :{" "}
+          <strong>React Native</strong> pour l&apos;un, <strong>Flutter</strong>{" "}
+          pour l&apos;autre. Les deux solutions sont capables de produire une
+          application professionnelle. Votre décision doit surtout répondre à
+          quatre questions : qui pourra la développer, quelles fonctions sont
+          réellement difficiles, combien coûtera son entretien et comment une
+          autre équipe pourra la reprendre.
+        </p>
+        <p>
+          Ce guide ne cherche pas à désigner un gagnant universel. Il vous aide
+          à choisir la solution la plus raisonnable pour votre entreprise, même
+          si vous n&apos;êtes pas technicien. Notre activité utilise
+          majoritairement React ; ce biais est déclaré, et les cas où Flutter,
+          le développement natif ou une application web conviennent mieux sont
+          explicitement présentés.
         </p>
 
         <GuideToc
           items={[
-            { id: "reponse-rapide", label: "1. Le verdict en 30 secondes" },
-            { id: "de-quoi-parle-t-on", label: "2. Deux ateliers pour la même voiture" },
-            { id: "enjeu-business", label: "3. Ce que le choix change vraiment (et ne change pas)" },
-            { id: "couts", label: "4. Les coûts : le TJM est identique, l'économie est ailleurs" },
-            { id: "recrutement", label: "5. Recruter en France : le vivier, chiffré" },
-            { id: "performance", label: "6. Performance : le vrai du faux" },
-            { id: "adoption", label: "7. Sondages contre stores : qui utilise quoi, mesuré" },
-            { id: "gouvernance", label: "8. Qui gouverne quoi : Meta, Google — et le risque fournisseur" },
-            { id: "production", label: "9. Les preuves en production, des deux côtés" },
-            { id: "maintenance", label: "10. La maintenance qu'on ne vous dit jamais" },
-            { id: "reversibilite", label: "11. Dépendance et réversibilité : le cas Airbnb" },
-            { id: "alternatives", label: "12. Ni l'un ni l'autre : natif, Kotlin Multiplatform, PWA" },
-            { id: "verdict-par-profil", label: "13. La grille de décision — et les 7 questions à votre agence" },
-            { id: "methode", label: "14. Méthode : choisir en 5 étapes" },
+            {
+              id: "reponse-rapide",
+              label: "1. Le choix selon votre situation",
+            },
+            {
+              id: "comprendre",
+              label: "2. Ce que React Native et Flutter ont en commun",
+            },
+            {
+              id: "equipe",
+              label: "3. Commencer par l'équipe qui entretiendra l'application",
+            },
+            {
+              id: "budget",
+              label: "4. Ce qui fait réellement varier le budget",
+            },
+            {
+              id: "usage",
+              label: "5. Tester les fonctions difficiles avant de choisir",
+            },
+            { id: "performance", label: "6. Performance et qualité perçue" },
+            {
+              id: "perennite",
+              label: "7. Pérennité, écosystème et dépendance",
+            },
+            {
+              id: "maintenance",
+              label: "8. Prévoir l'entretien après la mise en ligne",
+            },
+            {
+              id: "alternatives",
+              label: "9. Quand choisir une autre approche",
+            },
+            {
+              id: "decider",
+              label: "10. Les questions à poser aux prestataires",
+            },
           ]}
         />
 
-        <h2 id="reponse-rapide">1. Le verdict en 30 secondes</h2>
+        <h2 id="reponse-rapide">1. Le choix selon votre situation</h2>
         <p>
-          En 2026, <strong>React Native et Flutter sont deux choix
-          sérieux et aucun ne va disparaître — mais sur les critères
-          qui comptent pour un dirigeant français (vivier ~2× plus
-          large, gouvernance multi-sponsors, équipe web réutilisable),
-          React Native est notre choix par défaut</strong> ; Flutter
-          garde un vrai terrain de prédilection : les interfaces très
-          personnalisées et les animations riches.
-          Le prix du jour-homme est identique (330 à 720 €/jour à
-          Paris selon la séniorité, de l&apos;ordre de 10 à 25 % de
-          moins en régions selon le profil —
-          les baromètres publient les mêmes grilles pour les deux). Le
-          multiplateforme mutualise le code et les tests ; des pages d&apos;agences
-          évoquent <strong>30 à 40 % de moins que deux développements
-          natifs</strong>, repère non représentatif à vérifier sur des devis au
-          même périmètre. Les critères de départage :{" "}
-          <strong>votre équipe existante</strong> (un site ou SaaS en
-          React → React Native s&apos;impose),{" "}
-          <strong>le vivier de recrutement</strong> (environ deux fois
-          plus de profils React Native en France), et{" "}
-          <strong>la gouvernance</strong> (plusieurs sponsors derrière
-          React Native, un seul — Google — derrière Flutter). La
-          grille de la section 13 précise, profil par profil, quand
-          Flutter — ou une autre voie — reprend l&apos;avantage.
+          Si votre entreprise dispose déjà d&apos;une équipe React, React Native
+          constitue un point de départ logique. Si l&apos;équipe qui réalisera
+          et maintiendra le produit maîtrise Flutter, ou si l&apos;interface
+          demande un travail visuel très spécifique, Flutter mérite la même
+          attention. Sans équipe existante, comparez d&apos;abord les
+          prestataires et leur capacité de reprise plutôt que les logos des
+          technologies.
         </p>
         <GuideTable
-          headers={["Votre situation", "Notre verdict", "Pourquoi"]}
+          headers={[
+            "Votre situation",
+            "Option à étudier d'abord",
+            "Ce qu'il faut vérifier",
+          ]}
           rows={[
-            ["Vous avez déjà un site ou logiciel en ligne (SaaS) en React", "React Native + Expo (outillage de compilation et publication)", "Même langage, équipe unique web + mobile, code partagé"],
-            ["Interface très personnalisée, animations riches", "Flutter", "Son moteur graphique excelle sur le sur-mesure visuel"],
-            ["Vous partez de zéro, sans équipe technique", "React Native légèrement favori", "À qualité égale, le vivier français (~2× plus de profils) tranche — sauf interface visuelle distinctive, où Flutter reprend l'avantage"],
-            ["L'app EST le produit, performance extrême exigée", "Développement natif (Swift/Kotlin) à étudier", "La leçon du cas Airbnb — section 11"],
-            ["Équipe Android/Kotlin existante", "Kotlin Multiplatform à regarder", "L'outsider qui monte — section 12"],
+            [
+              "Votre site ou votre logiciel utilise déjà React",
+              "React Native",
+              "Expérience mobile réelle, modules et capacité de publication",
+            ],
+            [
+              "Votre équipe maîtrise Flutter et le produit mise sur une interface très dessinée",
+              "Flutter",
+              "Maintenabilité, recrutement et comportement sur les appareils ciblés",
+            ],
+            [
+              "Vous partez sans équipe technique",
+              "Les deux, sur le même cahier des charges",
+              "Références, méthode, coût complet et solution de reprise",
+            ],
+            [
+              "L'application pilote du matériel ou dépend fortement du téléphone",
+              "Prototype comparatif, puis éventuellement natif",
+              "Scénario critique testé sur de vrais appareils",
+            ],
+            [
+              "L'usage est interne et peut fonctionner dans un navigateur",
+              "Application web installable à évaluer",
+              "Notifications, hors-ligne et fonctions du téléphone réellement nécessaires",
+            ],
           ]}
         />
-        <p>
-          Le bon réflexe n&apos;est donc pas de chercher un vainqueur absolu.
-          Identifiez la contrainte qui ne peut pas céder : compétences déjà
-          présentes, interface distinctive, intégration matérielle critique,
-          fonctionnement sans réseau ou facilité de remplacement du
-          prestataire. Si aucune contrainte ne départage les deux options,
-          choisissez la technologie que l&apos;équipe retenue maîtrise et peut
-          maintenir durablement ; une excellente équipe Flutter vaut mieux
-          qu&apos;une équipe React Native improvisée, et inversement.
-        </p>
 
-        <InfoBox variant="blue" title="Les 12 mots de ce guide, traduits en français courant">
-          <ul className="list-disc pl-4 space-y-1.5">
-            <li><strong>Framework</strong> : la boîte à outils de base sur laquelle les développeurs construisent votre application.</li>
-            <li><strong>React Native</strong> : le framework mobile de Meta (Facebook) — on écrit en JavaScript/React, la langue du web.</li>
-            <li><strong>Flutter</strong> : le framework mobile de Google — on écrit en Dart, un langage propre à cet écosystème.</li>
-            <li><strong>Multiplateforme (cross-platform)</strong> : une seule application qui tourne sur iPhone ET Android — au lieu de deux développements.</li>
-            <li><strong>Natif</strong> : une application développée spécifiquement pour iOS (Swift) ou Android (Kotlin) — deux codes et deux compétences spécialisées, qu&apos;une même équipe peut réunir.</li>
-            <li><strong>TJM</strong> : le taux journalier d&apos;un développeur — son « taux horaire d&apos;artisan », à la journée.</li>
-            <li><strong>MVP</strong> : la première version d&apos;une app, volontairement réduite à l&apos;essentiel pour sortir vite.</li>
-            <li><strong>SaaS</strong> : un logiciel utilisé en ligne, par abonnement — l&apos;outil de facturation ou le CRM que vos équipes ouvrent dans leur navigateur.</li>
-            <li><strong>Expo</strong> : la boîte à outils standard qui industrialise React Native (compilation, mises à jour, publication).</li>
-            <li><strong>Stores</strong> : l&apos;App Store (Apple) et Google Play — les deux magasins par lesquels votre app doit passer.</li>
-            <li><strong>PWA</strong> : un site web installable qui ressemble à une app — sans passer par les stores, avec des capacités réduites.</li>
-            <li><strong>Réversibilité</strong> : votre capacité à changer de prestataire ou de technologie sans repartir de zéro.</li>
-          </ul>
+        <InfoBox
+          variant="amber"
+          title="Ne choisissez pas à partir d'une démonstration fluide"
+        >
+          Une liste qui défile parfaitement ne dit rien sur votre
+          synchronisation hors ligne, votre lecteur de code-barres, vos
+          notifications ou votre connexion au logiciel de gestion. Demandez que
+          le prestataire teste d&apos;abord la fonction qui peut faire échouer
+          votre projet.
         </InfoBox>
 
-        <h2 id="de-quoi-parle-t-on">2. Deux ateliers pour la même voiture</h2>
+        <h2 id="comprendre">2. Ce que React Native et Flutter ont en commun</h2>
         <p>
-          L&apos;image la plus juste : vous voulez une voiture qui
-          roule sur deux routes différentes (iPhone et Android). Le
-          natif construit deux voitures, une par route — le meilleur
-          résultat, le double du budget. React Native et Flutter sont{" "}
-          <strong>deux ateliers qui construisent une seule voiture
-          adaptée aux deux routes</strong> : même promesse, mais
-          l&apos;atelier React Native travaille avec l&apos;outillage
-          du web (JavaScript/React — vos artisans web savent déjà s&apos;en
-          servir), quand l&apos;atelier Flutter utilise un outillage
-          propre à Google (Dart), très performant mais que peu
-          d&apos;artisans français maîtrisent. Le choix ne se joue pas
-          sur la voiture — les deux roulent très bien — mais sur{" "}
-          <strong>l&apos;atelier que vous pourrez faire tourner pendant
-          cinq ans</strong>.
+          Une application mobile développée séparément pour Apple et Android
+          demande deux codes et souvent deux équipes. React Native et Flutter
+          proposent une autre approche : une grande partie du travail est
+          partagée, puis adaptée lorsque les deux systèmes se comportent
+          différemment. On parle de développement{" "}
+          <strong>multiplateforme</strong>.
         </p>
         <p>
-          Cette image règle aussi le cas des devis « exotiques » :
-          si un prestataire vous propose une technologie que vous
-          n&apos;avez jamais croisée dans ce guide, demandez-lui
-          combien d&apos;ateliers en France savent la faire tourner —
-          la réponse est souvent la vraie information du rendez-vous.
+          Ces cadres de développement, aussi appelés frameworks, fonctionnent
+          différemment. React Native, créé par Meta, s&apos;appuie sur
+          JavaScript et React. Flutter, créé par Google, utilise le langage Dart
+          et dessine l&apos;interface avec son propre moteur. Pour le dirigeant,
+          ces détails techniques deviennent utiles seulement lorsqu&apos;ils
+          influencent le recrutement, les modules disponibles, la qualité
+          visuelle ou le coût de reprise.
         </p>
         <p>
-          Exemple illustratif suivi dans ce guide : <strong>Batilog, éditeur
-          chambérien fictif d&apos;un outil de suivi de chantier</strong>. Ce
-          n&apos;est pas un client ; ses chiffres servent uniquement à rendre
-          deux devis comparables. Il compte 15 salariés, avec un SaaS web en
-          React utilisé par 200 entreprises du BTP, et un besoin devenu urgent :
-          l&apos;application mobile
-          de terrain pour les chefs de chantier (pointages, photos,
-          réserves, hors-ligne). Deux devis sont sur la table — un en
-          React Native, un en Flutter, écarts inexpliqués — et le
-          dirigeant veut comprendre avant de signer. Cas d&apos;école :
-          nous allons dérouler chaque critère sur son dossier.
+          Le code partagé n&apos;est jamais une promesse de 100 %. Shopify a
+          publié 86 % de code commun entre iPhone et Android après sa migration
+          vers React Native. C&apos;est une référence solide pour ce projet
+          précis, pas un taux garanti. Les permissions, les achats, les
+          notifications, certaines fonctions du téléphone et les finitions
+          propres à chaque système peuvent demander du travail séparé.
         </p>
 
-        <h2 id="enjeu-business">3. Ce que le choix change vraiment (et ne change pas)</h2>
+        <h2 id="equipe">
+          3. Commencer par l&apos;équipe qui entretiendra l&apos;application
+        </h2>
         <p>
-          Un indice révélateur avant tout : les comparatifs se
-          contredisent frontalement entre eux — l&apos;un affirme que
-          Flutter livre un MVP plus vite, l&apos;autre l&apos;inverse ;
-          l&apos;un donne l&apos;accès aux fonctions natives à React
-          Native, l&apos;autre à Flutter. Quand des experts de bonne
-          foi se contredisent sur un critère, c&apos;est
-          généralement que <strong>ce critère ne discrimine pas</strong> —
-          les deux outils font le travail, et la réponse dépend de
-          l&apos;équipe qui les tient. Débarrassons donc la table de ce
-          que le choix <strong>ne change pas</strong> : le prix du jour-homme
-          (identique — section 4), la qualité perçue par vos
-          utilisateurs sur une app métier standard (imperceptible —
-          section 6), la nécessité de maintenir l&apos;app chaque année
-          (imposée par Apple et Google — section 10), et le passage par
-          les stores avec leurs règles et commissions. Ce que le choix{" "}
-          <strong>change vraiment</strong> : qui peut travailler sur
-          votre application (le vivier — section 5), la mutualisation
-          avec votre existant web (même langage, mêmes compétences et parfois
-          une partie de la logique métier), la mutualisation entre iPhone et
-          Android (le cas Shopify mesure 86 % de code commun), votre
-          exposition au risque fournisseur (section 8), et votre
-          liberté de changer de prestataire (section 11). Autrement
-          dit : <strong>un choix d&apos;équipe et de gouvernance,
-          déguisé en choix technique</strong> — exactement pourquoi il
-          mérite un guide pour dirigeants.
+          La meilleure technologie est d&apos;abord celle qu&apos;une équipe
+          compétente peut maintenir pendant plusieurs années. Une entreprise qui
+          utilise déjà React peut mutualiser des connaissances et parfois une
+          partie de sa logique métier avec React Native. Une équipe Flutter
+          expérimentée peut, à l&apos;inverse, livrer plus sûrement qu&apos;une
+          équipe React qui découvre le mobile.
         </p>
         <p>
-          Le hors-ligne de Batilog illustre un autre point : certaines
-          contraintes importantes <strong>ne départagent pas les
-          frameworks</strong>. Les deux peuvent enregistrer des données sans
-          réseau. Le risque se trouve dans la synchronisation : doublons,
-          conflits entre deux téléphones, envoi interrompu d&apos;une photo et
-          reprise après fermeture. Exigez un prototype de ce parcours et des
-          critères de recette écrits. Sans cela, le meilleur framework du
-          comparatif peut livrer une mauvaise application de terrain.
-        </p>
-
-        <h2 id="couts">4. Les coûts : le TJM est identique, l&apos;économie est ailleurs</h2>
-        <p>
-          Un point utile de ce comparatif vient du baromètre TJM SILKHOM 2025,
-          qui publie des grilles{" "}
-          <strong>strictement identiques</strong> pour les développeurs
-          React Native, Flutter et natifs iOS/Android :
+          Ne déduisez pas la disponibilité d’une équipe d’un comptage global de
+          profils. Demandez qui travaillera réellement sur votre projet, son
+          expérience de publication et la possibilité pour un second prestataire
+          de reprendre le code.
         </p>
         <GuideTable
-          headers={["Profil", "TJM Paris", "TJM régions"]}
+          headers={["À vérifier", "Question simple", "Preuve attendue"]}
           rows={[
-            ["Junior (0-2 ans)", "330 – 430 €", "300 – 380 €"],
-            ["Confirmé (2-5 ans)", "400 – 500 €", "≈ 15 % de moins qu'à Paris"],
-            ["Senior (5 ans et +)", "500 – 650 €", "≈ 15 % de moins"],
-            ["Lead (8 ans et +)", "600 – 720 €", "450 – 550 €"],
+            [
+              "Compétence",
+              "Avez-vous déjà publié une application comparable ?",
+              "Une référence vérifiable et le rôle exact de l'équipe",
+            ],
+            [
+              "Continuité",
+              "Qui maintient l'application après le lancement ?",
+              "Des noms, un budget et des délais d'intervention",
+            ],
+            [
+              "Reprise",
+              "Que se passe-t-il si nous changeons de prestataire ?",
+              "Code, comptes, documentation et procédure de publication à votre nom",
+            ],
           ]}
         />
+
+        <h2 id="budget">4. Ce qui fait réellement varier le budget</h2>
         <p>
-          Le TJM ne suffit donc pas à comparer deux devis. Placez les mêmes
-          postes sur la même ligne et demandez ce qui explique le nombre de
-          jours :
+          Le baromètre SILKHOM 2025 cité en sources publie la même grille pour
+          React Native, Flutter et le développement mobile natif. Le repère va
+          d&apos;environ 330 à 720 € par jour à Paris selon le niveau
+          d&apos;expérience, avec des écarts selon la région et le profil. Cela
+          ne signifie pas que tous les projets coûtent pareil. Le nombre de
+          jours reste la variable principale.
         </p>
         <GuideTable
-          headers={["Poste de coût", "React Native", "Flutter", "Ce qui tranche"]}
+          headers={["Poste", "Ce qui ajoute du travail", "Comment le préparer"]}
           rows={[
-            ["Conception et développement", "TJM comparable ; compétences React réutilisables", "TJM comparable ; couche mobile écrite en Dart", "Nombre de jours et maîtrise réelle de l'équipe"],
-            ["Réemploi de l'existant", "Langage et logique React parfois partageables", "Serveur et données communs, interface mobile réécrite en Dart", "Votre patrimoine logiciel actuel"],
-            ["Paiement, cartographie, Bluetooth, objets connectés", "Module officiel ou ajout de code natif", "Module officiel ou ajout de code natif", "Disponibilité et qualité de la brique fournie par l'éditeur"],
-            ["Maintenance annuelle", "Cycles Apple/Google + dépendances React Native et Expo", "Cycles Apple/Google + dépendances Flutter et Dart", "Qualité du code, tests et retard accumulé"],
-            ["Changement de prestataire", "Vivier français plus large", "Vivier plus resserré mais viable", "Propriété du dépôt, documentation et compétences disponibles"],
+            [
+              "Écrans et parcours",
+              "Rôles, validations, cas d'erreur et accessibilité",
+              "Maquettes et règles d'acceptation",
+            ],
+            [
+              "Données et serveur",
+              "Comptes, droits, synchronisation et connexions métier",
+              "Liste des systèmes et données échangées",
+            ],
+            [
+              "Fonctions mobiles",
+              "Photo, GPS, paiement, notifications, hors-ligne ou matériel",
+              "Prototype du scénario le plus risqué",
+            ],
+            [
+              "Qualité et publication",
+              "Appareils, versions, tests et règles des stores",
+              "Matrice de tests et responsabilités écrites",
+            ],
           ]}
         />
         <p>
-          Ce tableau révèle le coût caché le plus fréquent : une technologie
-          n&apos;est pas chère en elle-même ; elle le devient quand l&apos;équipe
-          doit apprendre, reconstruire une intégration absente ou reprendre un
-          code mal documenté. Demandez donc les jours par poste et les
-          hypothèses, pas seulement un total.
-        </p>
-        <p>
-          Conséquence directe : <strong>quiconque vous vend Flutter ou
-          React Native « parce que c&apos;est moins cher » que
-          l&apos;autre se trompe ou vous trompe</strong> — le jour-homme
-          coûte pareil (méfiance aussi envers les « TJM à 150 € » des
-          plateformes de micro-projets, qui ne comparent pas des
-          développements professionnels). L&apos;économie du
-          multiplateforme est ailleurs :{" "}
-          <strong>une seule application au lieu de deux</strong>, une
-          équipe au lieu de deux, des tests mutualisés. Des pages d&apos;agences
-          convergent vers 30-40 % par rapport à deux développements natifs,
-          sans corpus représentatif : traitez ce chiffre comme une hypothèse
-          à tester sur des devis comparables. Dans l&apos;exemple
-          Batilog, la traduction est immédiate : ses deux devis illustratifs à TJM
-          comparables se départagent sur le <em>nombre de jours</em> et
-          sur un facteur que le devis Flutter ne peut pas offrir — la
-          réutilisation de la logique métier déjà écrite en React pour
-          son SaaS. Les budgets complets par type d&apos;app sont dans
-          notre <Link href="/guides/combien-coute-une-application-mobile">guide
-          du prix d&apos;une application mobile</Link>.
+          Pour mesurer l’économie éventuelle, comparez des devis couvrant
+          exactement les mêmes écrans, fonctions, services côté serveur, tests
+          et maintenance. Le partage d’une partie du code ne se transforme pas
+          automatiquement en pourcentage de réduction du budget.
         </p>
 
-        <h2 id="recrutement">5. Recruter en France : le vivier, chiffré</h2>
+        <h2 id="usage">5. Tester les fonctions difficiles avant de choisir</h2>
         <p>
-          Le critère décisif pour une PME n&apos;est pas dans les
-          benchmarks : c&apos;est <strong>qui maintiendra votre app
-          dans trois ans</strong>. Les ordres de grandeur français
-          (relevés mi-2026, à considérer comme des instantanés) : la
-          plateforme Malt référence{" "}
-          <strong>environ deux fois plus de freelances React Native
-          que Flutter</strong> (~2 000 contre ~1 000 profils), et
-          l&apos;écart réel est plus large encore, car derrière React
-          Native se tient l&apos;immense réservoir des développeurs
-          web : JavaScript est pratiqué par environ deux développeurs
-          sur trois dans le monde, React par près d&apos;un sur deux
-          (Stack Overflow 2025) — un développeur React web devient
-          productif sur React Native en quelques semaines. Dart, le
-          langage de Flutter, ne s&apos;apprend pratiquement que pour
-          Flutter. Nuance d&apos;honnêteté : chez les développeurs en
-          formation, Flutter est plus populaire (11,1 % contre 6,7 %) —
-          le vivier junior Flutter grandit. Mais pour un dirigeant qui
-          raisonne en risque de dépendance — « si mon prestataire
-          disparaît, qui reprend ? » —, le réservoir React est
-          aujourd&apos;hui l&apos;assurance la plus solide du marché
-          français. Pour ceux qui recrutent en interne plutôt
-          qu&apos;en prestation, les salaires suivent la même logique
-          que les TJM : comparables entre les deux technologies —
-          comptez en France environ 38-48 k€ pour un junior, 55-72 k€
-          pour un confirmé, 80-95 k€ pour un senior mobile, à quelques
-          milliers d&apos;euros près selon la rareté locale du profil.
-          Là encore, ce n&apos;est pas le framework qui fait le prix :
-          c&apos;est la séniorité et la ville.
-        </p>
-
-        <h2 id="performance">6. Performance : le vrai du faux</h2>
-        <p>
-          Les benchmarks qui font gagner Flutter existent : en
-          conditions extrêmes (animations lourdes), les mesures
-          documentées lui donnent l&apos;avantage en consommation
-          processeur et mémoire. Deux réserves les remettent à leur
-          place : ces tests simulent des cas non représentatifs
-          d&apos;une application métier, et la plupart datent
-          d&apos;avant la refonte majeure de React Native (la « New
-          Architecture », activée par défaut depuis octobre 2024, qui a
-          supprimé son principal goulot historique). Le consensus
-          honnête des praticiens : <strong>pour l&apos;immense
-          majorité des applications d&apos;entreprise — formulaires,
-          listes, tableaux de bord, photos —, la différence est
-          imperceptible pour l&apos;utilisateur</strong> ; la qualité
-          de l&apos;architecture pèse plus que le framework. Le cas où
-          Flutter mérite vraiment sa réputation : les interfaces très
-          personnalisées et les animations complexes, où son moteur
-          graphique qui dessine chaque pixel fait la différence — si
-          votre application est de celles-là, dites-le à votre
-          prestataire, c&apos;est un vrai critère. Nuance récente :
-          React Native a réduit cet écart (animations Reanimated,
-          moteur graphique Skia porté par Shopify), mais pour une
-          interface signature dessinée pixel par pixel, Flutter reste
-          le favori honnête de ce comparatif. Dernière nuance
-          utile si votre public utilise des téléphones d&apos;entrée
-          de gamme (usage terrain, international) : le moteur graphique
-          de Flutter, qui dessine tout lui-même, garde une régularité
-          appréciée sur les appareils modestes — un point à mettre dans
-          la balance pour les applications déployées sur des flottes de
-          téléphones professionnels basiques.
+          Pour une application composée de formulaires, de listes, de photos et
+          de tableaux de bord, les deux technologies peuvent convenir. Le risque
+          se situe davantage dans les conditions réelles : réseau instable,
+          données volumineuses, caméra, Bluetooth, géolocalisation, paiement ou
+          synchronisation avec un outil interne.
         </p>
         <p>
-          Un dernier réflexe, souvent absent des comparatifs et
-          pourtant décisif : <strong>listez vos intégrations
-          critiques</strong> (paiement, cartographie, Bluetooth, objets
-          connectés, mesure d&apos;usage…) et vérifiez que chacune publie un SDK
-          officiel — la brique logicielle fournie par l&apos;éditeur —
-          pour la technologie proposée. L&apos;écosystème JavaScript de
-          React Native est le plus fourni du marché, mais certains
-          fournisseurs ne livrent qu&apos;un SDK natif ou Flutter : une
-          intégration absente se recode à vos frais, en jours
-          facturés — précisément le genre de ligne qui explique un
-          écart inexpliqué entre deux devis. Posez la question à chaque
-          prestataire, intégration par intégration.
+          Transformez le cas le plus risqué en un petit prototype. Par exemple :
+          « un technicien saisit dix interventions sans réseau, prend vingt
+          photos, puis récupère la connexion sans perdre ni doubler une donnée
+          ». Ce test vaut davantage qu&apos;un comparatif général, car il
+          reproduit ce que votre équipe vivra.
         </p>
-        <p>
-          Pour trancher la performance, remplacez le benchmark générique par
-          une preuve sur votre terrain : le téléphone le plus ancien de votre
-          parc, le parcours critique, une connexion dégradée, puis une reprise
-          après fermeture. Mesurez la fluidité et la fiabilité de ce prototype
-          avec les deux équipes candidates. Vous comparez alors une exécution
-          réelle, pas le plafond théorique d&apos;un framework.
-        </p>
-
-        <h2 id="adoption">7. Sondages contre stores : qui utilise quoi, mesuré</h2>
-        <p>
-          Les comparatifs recyclent un chiffre de 2023 (« Flutter 46 %,
-          React Native 35 % ») issu de sondages développeurs. Les
-          données récentes racontent une histoire plus fine. Côté
-          sondages : quasi-égalité (14,5 % contre 13,6 % chez les
-          professionnels, Stack Overflow 2025). Côté{" "}
-          <strong>mesures réelles des stores</strong> (Appfigures, qui
-          analyse les technologies embarquées dans les applications) :
-          Flutter équipe davantage de <em>nouvelles</em> applications
-          (~11 % contre ~7 % en 2024) — la longue traîne des petites
-          apps —, mais dans le <strong>top 10 000 des applications les
-          plus téléchargées, React Native domine</strong> : 1 350 apps
-          contre 1 184, et 47 % des téléchargements du segment
-          multiplateforme contre 38 %. Traduction pour un dirigeant :{" "}
-          <strong>Flutter gagne le volume, React Native gagne les
-          applications d&apos;entreprise à fort trafic</strong> — les
-          deux sont massivement adoptés, aucun choix n&apos;est
-          marginal. Deux repères complètent le tableau : le
-          multiplateforme dans son ensemble progresse vite — environ
-          15 % des nouvelles applications publiées en 2024 embarquaient
-          React Native ou Flutter, contre 7 % en 2020 (chiffres
-          arrondis, issus de mesures Appfigures distinctes de celles
-          des parts par framework citées plus haut) — et méfiez-vous des
-          chiffres d&apos;éditeurs : Google revendique « près de 30 %
-          des nouvelles apps iOS » sous Flutter quand la mesure
-          indépendante d&apos;Appfigures compte ~11 % des nouvelles
-          apps toutes plateformes — deux périmètres différents, un
-          seul est neutre. À noter enfin, la percée mesurée
-          d&apos;un troisième acteur, Kotlin Multiplatform
-          (section 12).
-        </p>
-
-        <GuideInlineCTA
-          title="Deux devis contradictoires sur la table ?"
-          description="Décrivez votre projet d'application en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec un avis franc et argumenté — y compris quand Flutter ou le natif est le meilleur choix pour votre cas. Notre biais React est déclaré : jugez-nous sur les arguments."
-          tags={["Objectif : prochain jour ouvré", "Planning confirmé au devis", "Biais déclaré, arguments sourcés"]}
-          ctaLabel="Comparer mes options"
-        />
-
-        <InfoBox variant="blue" title="L'exemple Batilog, résolu">
-          Ses deux devis illustratifs affichaient des TJM comparables (≈ 500 €) —
-          normal, section 4. Le départage s&apos;est fait sur trois
-          lignes. Le nombre de jours : le devis React Native
-          réutilisait la logique métier déjà écrite pour le SaaS
-          (calculs de pointages, règles de chantier) — 12 jours de
-          moins. L&apos;équipe : les deux développeurs React de
-          Batilog peuvent relire, tester et un jour maintenir le code
-          mobile — impossible en Dart sans recruter. La
-          réversibilité : une dizaine de prestataires React Native
-          accessibles en région Auvergne-Rhône-Alpes, contre trois en
-          Flutter identifiés dans ce scénario. Verdict fictif : React Native
-          + Expo, avec une cible illustrative de 12 semaines — non parce que Flutter est inférieur, mais
-          parce que le contexte de Batilog rendait le choix
-          asymétrique. C&apos;est toute la thèse de ce guide : le bon
-          framework est une propriété de votre situation, pas du
-          framework — et la situation la plus fréquente des PME
-          françaises (un existant web en React, une exigence de
-          réversibilité, un vivier local à sécuriser) pointe vers
-          React Native. Les jours et les prestataires cités sont propres à ce
-          exemple : ils illustrent la méthode, pas une promesse applicable à
-          tous les projets.
+        <InfoBox
+          variant="blue"
+          title="Un prototype n'est pas une première version cachée"
+        >
+          Il doit répondre à une question précise, sur un nombre limité
+          d&apos;écrans, avec un résultat observable. S&apos;il devient un
+          projet complet sans limite claire ni critère de réussite, vous perdez
+          justement l&apos;avantage de cette étape.
         </InfoBox>
 
-        <h2 id="gouvernance">8. Qui gouverne quoi : Meta, Google — et le risque fournisseur</h2>
+        <h2 id="performance">6. Performance et qualité perçue</h2>
         <p>
-          Une question de gouvernance concerne directement le dirigeant :{" "}
-          <strong>qui paie les ingénieurs du framework, et
-          pourquoi ?</strong> Côté React Native : Meta l&apos;utilise
-          dans ses propres applications à milliards
-          d&apos;utilisateurs (Facebook, Instagram) — l&apos;éditeur
-          est son premier client —, a achevé fin 2024 la refonte
-          technique majeure du framework, et n&apos;est pas seul :
-          Microsoft (Office, Outlook, Teams), Shopify et Amazon
-          co-investissent massivement.{" "}
-          <strong>Une gouvernance multi-entreprises</strong>. Côté
-          Flutter : un sponsor unique, Google — qui a licencié dans
-          les équipes Flutter et Dart en mai 2024 (au point qu&apos;un
-          ancien de l&apos;équipe a lancé « Flock », une copie
-          indépendante du projet — un « fork » — destinée à survivre
-          si Google se désengageait), a répondu publiquement fin 2024 en
-          réaffirmant son engagement (plus d&apos;un million de
-          développeurs actifs mensuels, déploiements chez Toyota, BMW,
-          Google Pay)… et pousse en parallèle une seconde technologie
-          multiplateforme concurrente, Kotlin Multiplatform.{" "}
-          <strong>Deux paris chez Google, un seul chez Meta.</strong>{" "}
-          Aucun des deux frameworks ne disparaîtra demain — mais à
-          horizon cinq ans, la structure de sponsoring de React Native réduit
-          le risque de concentration, et un dirigeant qui engage 50 000 € doit
-          le savoir. Ce n&apos;est pas une garantie de longévité, pas plus que
-          le sponsor unique de Flutter ne prouve un futur abandon. Traitez la
-          gouvernance comme un facteur de risque après l&apos;équipe et les
-          intégrations critiques, pas comme un argument éliminatoire.
+          Sur une application métier classique, un utilisateur ne devrait pas
+          deviner si l&apos;équipe a choisi React Native ou Flutter. Il perçoit
+          un démarrage rapide, des écrans compréhensibles, des messages
+          d&apos;erreur utiles et l&apos;absence de perte de données. La qualité
+          de conception et de test pèse donc davantage que quelques mesures
+          obtenues dans un laboratoire.
+        </p>
+        <p>
+          Flutter offre un contrôle très poussé sur le rendu visuel, ce qui peut
+          aider pour des interfaces et animations spécifiques. React Native
+          s&apos;intègre naturellement à l&apos;écosystème React et aux
+          composants propres aux plateformes. Dans les deux cas, une liste mal
+          construite, des images trop lourdes ou un serveur lent produiront une
+          mauvaise expérience.
+        </p>
+        <p>
+          Si une exigence de performance est réellement décisive, écrivez-la :
+          temps maximal pour afficher un dossier, nombre d&apos;éléments à faire
+          défiler, volume de données hors ligne ou modèle d&apos;appareil le
+          plus ancien à supporter. Le prestataire peut alors la tester et
+          l&apos;intégrer au contrat.
         </p>
 
-        <h2 id="production">9. Les preuves en production, des deux côtés</h2>
+        <h2 id="perennite">7. Pérennité, écosystème et dépendance</h2>
         <p>
-          Les deux camps ont leurs références vérifiables — les voici,
-          pour que le choix ne soit pas un pari sur l&apos;inconnu.
-          Côté React Native, le cas le plus documenté du secteur :{" "}
-          <strong>Shopify a achevé fin 2024 cinq ans de migration</strong>{" "}
-          et publié son bilan — 86 % de code commun iPhone/Android,
-          1,8 million de lignes de code en double supprimées, plus de
-          99,9 % de sessions sans plantage. Ajoutez Microsoft (Office,
-          Outlook, Xbox — 38 applications mesurées), Amazon, Discord.
-          Côté Flutter : <strong>Google Pay</strong> (migration
-          documentée, 35 % de code en moins),{" "}
-          <strong>BMW</strong> (l&apos;app My BMW, ~300 ingénieurs,
-          47 pays), Toyota, eBay, Alibaba. La conclusion qui compte :
-          les deux frameworks font tourner des applications critiques
-          à très grande échelle — <strong>l&apos;échec d&apos;un
-          projet mobile vient du cadrage et de l&apos;équipe, pas du
-          framework</strong>, et quiconque vous promet le contraire
-          vend quelque chose.
+          React Native est porté par Meta et reçoit aussi des contributions
+          d&apos;entreprises comme Microsoft, Shopify ou Amazon. Flutter est
+          porté principalement par Google. Les deux sont utilisés en production
+          et disposent d&apos;outils, de bibliothèques et de communautés
+          actives. Aucune source ne permet de garantir leur situation dans dix
+          ans.
+        </p>
+        <p>
+          Les réductions d&apos;effectifs signalées en 2024 dans les équipes
+          Flutter et Dart ont alimenté des interrogations, tandis que Google a
+          réaffirmé son investissement et communiqué sur une large adoption. Ce
+          contexte mérite d&apos;être suivi, sans transformer une actualité
+          d&apos;entreprise en annonce d&apos;abandon.
+        </p>
+        <p>
+          Votre meilleure protection reste concrète : un code standard, peu de
+          dépendances obscures, des versions entretenues, des tests, une
+          documentation à jour et plusieurs équipes capables de reprendre le
+          projet. Exigez aussi que les comptes Apple et Google ainsi que le
+          dépôt de code soient ouverts au nom de votre entreprise.
         </p>
 
-        <h2 id="maintenance">10. La maintenance qu&apos;on ne vous dit jamais</h2>
+        <h2 id="maintenance">
+          8. Prévoir l&apos;entretien après la mise en ligne
+        </h2>
         <p>
-          Le coût caché ne vient pas seulement du code : il est aussi imposé
-          par les règles des magasins. Apple et Google actualisent leurs
-          exigences de soumission et de disponibilité, quel que soit le
-          framework. Depuis le 28 avril 2026, Apple demande Xcode 26 et un SDK
-          iOS 26 pour les nouvelles soumissions. Google Play exige une API cible
-          récente et passera, le 31 août 2026, à Android 16 (API 36) pour la
-          plupart des nouvelles apps et mises à jour, avec des exceptions
-          publiées par type d&apos;appareil. Une application qui n&apos;est plus suivie
-          peut donc perdre sa capacité de mise à jour ou sa disponibilité pour
-          certains nouveaux utilisateurs. Pour sa simulation, ce guide
-          provisionne <strong>10 à 20 % du coût initial par an</strong> ;
-          remplacez cette hypothèse par un contrat adapté au périmètre.
-          Et ne repoussez pas : un cas publié chiffre à 380 000 $ la remise
-          à niveau d&apos;une application laissée quatre ans sans mise à jour.
-          Ce cas illustre le risque sans fournir un multiplicateur
-          transposable à votre projet. La bonne nouvelle : les deux
-          frameworks ont industrialisé ces migrations — c&apos;est un
-          budget, pas un drame. Flutter publie une version stable
-          environ chaque trimestre, avec une page officielle des
-          changements et des guides de migration en partie
-          automatisés. Côté React Native, l&apos;outillage
-          d&apos;Expo (utilisé par 71 % des équipes, enquête 2024)
-          industrialise compilation et publication — et permet de
-          pousser certains correctifs directement chez
-          l&apos;utilisateur, sans repasser par la validation des
-          stores (dans les limites fixées par Apple) : pour un produit
-          grand public qui corrige et itère chaque semaine, ce sont des
-          jours de délai de validation économisés. Chez Flutter, cette
-          mise à jour à distance passe par un outil tiers plus récent
-          (Shorebird) ; dans les deux cas, la cadence de migration
-          reste largement dictée par le calendrier d&apos;Apple et de
-          Google.
+          Une application publiée n&apos;est pas terminée pour toujours. Apple
+          et Google font évoluer les versions de leurs systèmes, les outils de
+          compilation et les exigences des magasins. Au 28 avril 2026, Apple
+          demande Xcode 26 et les outils prévus pour iOS 26 lors des nouvelles
+          soumissions. Google Play annonce Android 16, niveau technique 36, pour
+          la plupart des nouvelles applications et mises à jour à compter du 31
+          août 2026, avec les exceptions publiées par l&apos;éditeur.
         </p>
         <p>
-          Dans un devis de maintenance, cherchez donc des lignes explicites :
-          mises à jour du framework et de ses dépendances, tests sur les
-          versions iPhone et Android supportées, suivi des plantages, correctifs
-          de sécurité, adaptation des modules externes et nouvelles soumissions
-          aux magasins. Une enveloppe sans contenu ne permet pas de comparer le
-          coût total ; elle repousse simplement la discussion à la première
-          mise à jour obligatoire.
+          Ces règles rendent la maintenance nécessaire, mais n&apos;imposent pas
+          un taux financier universel. Pour planifier, ce guide utilise une
+          hypothèse de <strong>10 à 20 % du coût initial par an</strong>. Elle
+          doit être remplacée par un contrat précisant :
+        </p>
+        <ul>
+          <li>les versions d&apos;iPhone et d&apos;Android testées ;</li>
+          <li>les mises à jour de la technologie et des modules externes ;</li>
+          <li>la surveillance des plantages et des failles ;</li>
+          <li>les délais de correction et les nouvelles publications ;</li>
+          <li>
+            ce qui relève de la maintenance ou d&apos;une évolution payante.
+          </li>
+        </ul>
+        <p>
+          Une application laissée sans mise à jour pendant plusieurs années peut
+          demander plusieurs étapes de remise à niveau avant toute nouvelle
+          fonction : outils de compilation, bibliothèques, règles des magasins
+          et tests sur les appareils actuels. Demandez donc un budget annuel et
+          une liste de tâches, plutôt qu’un pourcentage présenté comme garanti.
         </p>
 
-        <h2 id="reversibilite">11. Dépendance et réversibilité : le cas Airbnb</h2>
-        <p>
-          L&apos;histoire que tout dirigeant devrait connaître avant
-          de signer : en 2018, <strong>Airbnb a abandonné React
-          Native</strong> après deux ans, 220 écrans et 120 000 lignes
-          de code, pour revenir au natif — le cas d&apos;abandon le
-          plus documenté du multiplateforme. Les leçons utiles,
-          au-delà du titre choc : Airbnb avait des besoins extrêmes
-          (l&apos;app EST le produit), une organisation de centaines
-          de développeurs, et le framework de 2018 n&apos;est pas
-          celui de 2026 (sa refonte majeure date de fin 2024). Côté
-          Flutter, aucun abandon comparable n&apos;est documenté —
-          l&apos;inquiétude porte sur la gouvernance, pas sur des
-          retraits. La vraie protection ne dépend d&apos;ailleurs pas
-          du framework : elle est contractuelle.{" "}
-          <strong>Code cédé et déposé à votre nom, comptes
-          développeur Apple et Google ouverts au nom de votre
-          entreprise, documentation à jour, et un framework au vivier
-          assez large pour qu&apos;une autre équipe reprenne</strong> —
-          quatre clauses qui transforment un mariage en partenariat.
-          Un mot d&apos;insistance sur les comptes développeur, un
-          risque contractuel à éviter lors d&apos;une reprise de
-          projet : les comptes Apple et Google Play sont votre identité officielle sur les
-          stores — les avis, l&apos;historique et le nom public de
-          l&apos;application y sont attachés. Ouverts au nom de
-          l&apos;agence « pour aller plus vite », ils deviennent un
-          instrument de rétention le jour du désaccord. Exigez-les à
-          votre nom dès le premier jour : le formulaire prend dix minutes,
-          même si la validation peut durer davantage, contre des semaines de
-          récupération ensuite.
-          Notre <Link href="/guides/prix-logiciel-sur-mesure">guide du
-          prix d&apos;un logiciel sur mesure</Link> détaille le volet
-          juridique de la propriété du code, il s&apos;applique
-          intégralement au mobile.
-        </p>
-        <p>
-          Attention à une confusion fréquente : ces clauses rendent le projet
-          <strong>reprenable par une autre équipe dans la même
-          technologie</strong>. Elles ne rendent pas le code interchangeable.
-          Passer de React Native à Flutter, ou l&apos;inverse, impose de
-          reconstruire la couche mobile. Le serveur, les données, les maquettes,
-          les règles métier et les scénarios de test peuvent survivre si vous
-          les possédez et s&apos;ils sont documentés. La vraie réversibilité est
-          donc un ensemble d&apos;actifs exploitables, pas une promesse vague de
-          « code portable ».
-        </p>
-
-        <h2 id="alternatives">12. Ni l&apos;un ni l&apos;autre : natif, Kotlin Multiplatform, PWA</h2>
-        <p>
-          Trois alternatives honnêtes complètent le paysage.{" "}
-          <strong>Le natif pur</strong> (Swift pour iOS, Kotlin pour
-          Android) reste le bon choix quand l&apos;application est le
-          cœur absolu du produit et exige le dernier cri de chaque
-          plateforme — c&apos;est la leçon Airbnb ; comptez le double
-          du budget. <strong>Kotlin Multiplatform</strong> (KMP) est
-          l&apos;outsider mesurable : son adoption a plus que doublé
-          en un an (7 % → 18 %, enquête JetBrains 2025), Google le
-          soutient officiellement depuis 2024, et — signal
-          révélateur — les 218 applications KMP du top 10 000
-          concentrent 27 % des revenus du segment multiplateforme :
-          des apps peu nombreuses mais très rentables. Sa logique
-          diffère : KMP partage la logique métier (30 à 60 % du code)
-          en gardant des interfaces natives — un budget intermédiaire
-          entre le multiplateforme complet et le natif pur, puisque
-          les interfaces restent développées deux fois. Pertinent
-          surtout pour les équipes Android/Kotlin existantes.{" "}
-          <strong>La PWA</strong>, enfin — le site web installable —
-          évite les stores et leurs commissions, mais avec des
-          capacités réduites sur iPhone et une dépendance aux
-          décisions d&apos;Apple, qui a démontré en 2024 qu&apos;il
-          pouvait restreindre ce canal du jour au lendemain (avant de
-          reculer sous la pression européenne). Pour une app métier
-          distribuée à des équipes ou des clients et qui exige notifications,
-          hors-ligne robuste ou fonctions du téléphone, le multiplateforme
-          reste aujourd&apos;hui le meilleur rapport coût/capacités. Pour un
-          usage interne simple, la PWA de la grille suivante mérite d&apos;être
-          testée avant d&apos;ouvrir un projet mobile complet.
-        </p>
-
-        <h2 id="verdict-par-profil">13. La grille de décision — et les 7 questions à votre agence</h2>
-        <p>
-          Tout ce guide condensé en une grille — cherchez votre ligne,
-          chaque verdict renvoie aux sections qui le justifient :
-        </p>
+        <h2 id="alternatives">9. Quand choisir une autre approche</h2>
         <GuideTable
-          headers={["Votre profil", "Verdict", "Pourquoi"]}
+          headers={["Approche", "Quand l'étudier", "Contrepartie principale"]}
           rows={[
-            ["Site ou SaaS React existant (l'exemple Batilog)", "React Native + Expo", "Équipe unique web + mobile, logique métier réutilisée, vivier maximal"],
-            ["Jeune entreprise, interface distinctive et animations riches", "Flutter", "Son terrain d'excellence assumé"],
-            ["PME sans existant technique, app métier standard", "React Native légèrement favori", "À qualité égale, le vivier français tranche"],
-            ["Hors-ligne ou matériel critique", "Prototype avant verdict", "Les deux conviennent ; la synchronisation et les modules disponibles tranchent"],
-            ["Équipe Android/Kotlin en place", "Kotlin Multiplatform à étudier", "Réutilise les compétences, adoption ×2,5 en un an"],
-            ["App = produit, exigence extrême", "Natif", "Le double du budget, pour la dernière frontière de qualité"],
-            ["Usage interne simple, budget minimal", "PWA d'abord", "Testez sans les stores — en connaissant ses limites iPhone"],
+            [
+              "Développement natif séparé",
+              "Fonctions très proches du matériel ou exigence propre à chaque plateforme",
+              "Deux codes et davantage de travail à coordonner",
+            ],
+            [
+              "Kotlin Multiplatform",
+              "Équipe Kotlin existante et volonté de partager surtout la logique métier",
+              "Interfaces parfois maintenues séparément",
+            ],
+            [
+              "Application web installable",
+              "Usage interne simple pouvant fonctionner dans le navigateur",
+              "Accès plus limité à certaines fonctions du téléphone",
+            ],
+            [
+              "Aucune application",
+              "Un site mobile ou un outil existant répond déjà au besoin",
+              "Moins de présence dans les stores, mais aucun produit inutile à maintenir",
+            ],
           ]}
         />
-        <InfoBox variant="amber" title="Les 7 questions à poser à votre agence (détecteur de biais)">
-          <ul className="list-disc pl-4 space-y-1.5">
-            <li>« Pourquoi cette techno pour MON projet — et dans quel cas m&apos;auriez-vous conseillé l&apos;autre ? » (une agence sérieuse répond et sait démontrer le parcours critique)</li>
-            <li>« Quelle est votre technologie de prédilection — votre « stack » maison, celle avec laquelle vous travaillez le plus —, et quel pourcentage de vos projets utilise celle que vous me proposez ? » (le biais maison, assumé ou caché)</li>
-            <li>« Le TJM serait-il différent dans l&apos;autre techno ? » (la bonne réponse est non — section 4)</li>
-            <li>« Qui possédera le code, et sur quel compte sera-t-il déposé ? » (GitHub — le coffre-fort en ligne où vit le code source — doit être au nom de votre entreprise, comme les comptes stores)</li>
-            <li>« Les comptes développeur Apple et Google seront-ils au nom de mon entreprise ? » (non négociable)</li>
-            <li>« Si vous disparaissez, combien d&apos;équipes en France peuvent reprendre ce code ? » (la question vivier)</li>
-            <li>« Quel budget annuel de maintenance dois-je provisionner, mises à jour Apple/Google comprises ? » (10-20 % — s&apos;il dit zéro, fuyez)</li>
-          </ul>
-        </InfoBox>
+        <p>
+          Le développement mobile natif utilise Swift pour iPhone et Kotlin pour
+          Android. Kotlin Multiplatform partage surtout la logique métier tout
+          en conservant davantage de code propre à chaque plateforme. Une
+          application web installable, parfois appelée PWA, reste un site qui
+          peut être ajouté à l&apos;écran d&apos;accueil. Ces solutions ne sont
+          pas des versions inférieures : elles répondent à d&apos;autres
+          contraintes.
+        </p>
 
-        <InfoBox variant="emerald" title="À retenir : les 5 chiffres de ce guide">
-          <ul className="list-disc pl-4 space-y-1.5">
-            <li><strong>330 – 720 €/jour à Paris</strong> (≈ 10-25 % de moins en régions selon le profil) : le TJM des développeurs mobiles — identique pour React Native, Flutter et natif : l&apos;économie vient du nombre de jours, pas du prix du jour.</li>
-            <li><strong>30 – 40 %</strong> : le repère éditorial souvent cité face à deux développements natifs, à vérifier sur des devis au même périmètre.</li>
-            <li><strong>~2×</strong> : le rapport du vivier français React Native / Flutter — et le réservoir React web derrière (près d&apos;un développeur sur deux).</li>
-            <li><strong>86 %</strong> : le code partagé iPhone/Android mesuré par Shopify après cinq ans de React Native.</li>
-            <li><strong>10 – 20 %/an</strong> : l&apos;hypothèse de maintenance de nos simulations ; les stores imposent des mises à jour, pas ce taux.</li>
-          </ul>
-        </InfoBox>
-
-        <h2 id="methode">14. Méthode : choisir en 5 étapes</h2>
+        <h2 id="decider">10. Les questions à poser aux prestataires</h2>
         <ol>
           <li>
-            <strong>Partez de votre existant, pas des benchmarks.</strong>{" "}
-            Un site ou SaaS React dans l&apos;entreprise ? Le choix est
-            quasi fait (React Native). Une équipe Kotlin ? Regardez
-            KMP. Rien ? Passez à l&apos;étape 2.
+            <strong>Pourquoi cette technologie pour notre usage ?</strong>{" "}
+            Demandez un raisonnement lié à vos équipes et à vos fonctions.
           </li>
           <li>
-            <strong>Qualifiez votre interface.</strong> App métier
-            standard (formulaires, listes, photos) : les deux se
-            valent. Interface distinctive, animations riches : Flutter
-            marque des points réels. Hors-ligne ou matériel critique :
-            décrivez le scénario d&apos;échec à tester avant de choisir.
+            <strong>
+              Dans quel cas conseilleriez-vous l&apos;autre option ?
+            </strong>{" "}
+            La réponse révèle si la comparaison est réelle.
           </li>
           <li>
-            <strong>Chiffrez le vivier local.</strong> Qui, dans votre
-            région ou chez vos prestataires accessibles, maîtrise
-            chaque techno ? La réversibilité vaut plus que 5 % de
-            performance théorique.
+            <strong>Quelle fonction testerez-vous d&apos;abord ?</strong> Le
+            prestataire doit identifier le risque principal avant de tout
+            construire.
           </li>
           <li>
-            <strong>Posez les 7 questions</strong> de la section 13 à
-            chaque prestataire — surtout les trois dernières
-            (propriété, comptes stores, maintenance).
+            <strong>Que comprend le prix ?</strong> Séparez application,
+            serveur, design, publication, tests et maintenance.
           </li>
           <li>
-            <strong>Comparez les devis en jours par poste</strong>, à
-            TJM affiché, maintenance annuelle comprise — jamais sur le
-            total seul. Notre{" "}
-            <Link href="/guides/combien-coute-une-application-mobile">guide
-            du prix d&apos;une application mobile</Link> donne toutes
-            les fourchettes de référence, et notre{" "}
-            <Link href="/guides/cahier-des-charges-application-mobile">modèle
-            de cahier des charges d&apos;application mobile</Link> vous
-            aide à obtenir des devis réellement comparables.
+            <strong>Qui possède les comptes, le code et les données ?</strong>{" "}
+            La réponse doit être écrite au contrat.
+          </li>
+          <li>
+            <strong>
+              Comment une autre équipe reprendrait-elle le projet ?
+            </strong>{" "}
+            Demandez la documentation et la procédure de livraison.
           </li>
         </ol>
+
+        <GuideInlineCTA
+          title="Vous préparez une application mobile ?"
+          description="Décrivez les utilisateurs, les trois fonctions indispensables, les outils à connecter et le scénario qui vous paraît le plus risqué. Nous pourrons vous répondre sur l'approche à tester avant de chiffrer toute l'application."
+        />
         <p>
-          Notre position, déclarée d&apos;entrée : Hagnéré Code est une{" "}
-          <Link href="/agence-react">agence majoritairement
-          React/Next.js</Link> — ce site illustre notre socle web, pas notre
-          savoir-faire mobile à lui seul — et nous développons les applications mobiles en React
-          Native précisément pour la cohérence web + mobile décrite
-          dans ce guide. Nous utilisons les assistants de code pour accélérer
-          les tâches répétitives, avec revue humaine et tests ; ce gain dépend
-          de l&apos;équipe et ne suffit pas, à lui seul, à choisir un framework.
-          Concrètement : un planning, un périmètre, un protocole de recette,
-          les droits sur le code et les comptes stores sont précisés au devis.
-          Quand Flutter ou le
-          natif est le meilleur choix pour votre cas, nous vous le
-          disons avant le devis. Un{" "}
-          <strong>Discovery Sprint (1 500 €, 2 jours, déduit à 100 %
-          si le projet se lance)</strong> tranche votre cas sur vos
-          contraintes réelles.{" "}
-          <Link href="/demarrer-un-projet">Décrivez votre projet en
-          3 minutes</Link> : objectif de réponse personnelle le prochain jour ouvré,
-          gratuite et sans engagement.
+          Pour obtenir des propositions comparables, préparez notre{" "}
+          <Link href="/guides/cahier-des-charges-application-mobile">
+            cahier des charges d&apos;application mobile
+          </Link>{" "}
+          puis rapprochez les postes du{" "}
+          <Link href="/guides/combien-coute-une-application-mobile">
+            guide de prix d&apos;une application
+          </Link>
+          . Le meilleur devis n&apos;est pas celui qui promet une technologie
+          supérieure : c&apos;est celui qui relie chaque décision à un usage, un
+          test, un coût et une responsabilité.
         </p>
 
         <hr />
         <p className="text-sm">
-          <strong>Sources</strong> — références citées dans ce guide
-          (consultées en juillet 2026) :{" "}
-          <a href="https://www.silkhom.com/barometre-des-tjm-informatique-electronique-digital/" target="_blank" rel="noopener noreferrer">baromètre TJM SILKHOM 2025</a>{" "}
-          (grilles identiques cross-platform/natif) ; Malt (TJM et
-          comptages de profils — instantanés) ;{" "}
-          <a href="https://survey.stackoverflow.co/2025/technology" target="_blank" rel="noopener noreferrer">Stack Overflow Developer Survey 2024/2025</a> ;{" "}
-          <a href="https://appfigures.com/resources/insights/20251219" target="_blank" rel="noopener noreferrer">Appfigures, SDK Intelligence (mesures des stores, top 10 000)</a> ;{" "}
-          <a href="https://devecosystem-2025.jetbrains.com/" target="_blank" rel="noopener noreferrer">JetBrains, State of Developer Ecosystem 2025 (Kotlin Multiplatform)</a> ;{" "}
-          <a href="https://reactnative.dev/blog/2024/10/23/release-0.76-new-architecture" target="_blank" rel="noopener noreferrer">React Native 0.76, New Architecture par défaut (blog officiel Meta)</a> ;{" "}
-          <a href="https://shopify.engineering/five-years-of-react-native-at-shopify" target="_blank" rel="noopener noreferrer">Shopify Engineering, « Five years of React Native » (janv. 2025)</a> ;{" "}
-          <a href="https://techcrunch.com/2024/05/01/google-lays-off-staff-from-flutter-dart-python-weeks-before-its-developer-conference/" target="_blank" rel="noopener noreferrer">TechCrunch, licenciements équipes Flutter/Dart (mai 2024)</a> ;{" "}
-          <a href="https://developers.googleblog.com/en/celebrating-flutters-production-era/" target="_blank" rel="noopener noreferrer">Google Developers Blog, réponse officielle (déc. 2024)</a> ;
-          DevClass (fork Flock) ; Android Developers Blog (support
-          Kotlin Multiplatform, I/O 2024) ; Expo (EAS Update) et
-          Shorebird (mises à jour à distance, dans les limites des
-          règles Apple) ;{" "}
-          <a href="https://medium.com/airbnb-engineering/sunsetting-react-native-1868ba28e30a" target="_blank" rel="noopener noreferrer">Airbnb Engineering, « Sunsetting React Native » (2018)</a> ;{" "}
-          <a href="https://developer.apple.com/news/upcoming-requirements/" target="_blank" rel="noopener noreferrer">Apple Developer, exigences SDK/Xcode</a> ;{" "}
-          <a href="https://support.google.com/googleplay/android-developer/answer/11926878" target="_blank" rel="noopener noreferrer">Google Play, exigences de niveau d&apos;API</a> ;
-          études de cas Flutter (Google Pay, BMW — showcases
-          officiels) ; benchmark inVerita (cité avec ses limites) ;
-          TechCrunch (épisode PWA/Apple UE, fév.-mars 2024). Les
-          chiffres de viviers et d&apos;offres d&apos;emploi sont des
-          instantanés volatils, cités en ordre de grandeur. Les
-          estimations d&apos;économie (30-40 %) émanent d&apos;agences
-          convergentes, pas d&apos;études académiques — c&apos;est
-          signalé dans le texte.
+          <strong>Sources</strong> — références citées dans ce guide (consultées
+          en juillet 2026) :{" "}
+          <a
+            href="https://www.silkhom.com/barometre-des-tjm-informatique-electronique-digital/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            baromètre TJM SILKHOM 2025
+          </a>{" "}
+          (grilles identiques cross-platform/natif) ;{" "}
+          <a
+            href="https://shopify.engineering/five-years-of-react-native-at-shopify"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Shopify Engineering, « Five years of React Native » (janv. 2025)
+          </a>{" "}
+          ;{" "}
+          <a
+            href="https://techcrunch.com/2024/05/01/google-lays-off-staff-from-flutter-dart-python-weeks-before-its-developer-conference/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            TechCrunch, licenciements équipes Flutter/Dart (mai 2024)
+          </a>{" "}
+          ;{" "}
+          <a
+            href="https://developers.googleblog.com/en/celebrating-flutters-production-era/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google Developers Blog, réponse officielle (déc. 2024)
+          </a>{" "}
+          ;{" "}
+          <a
+            href="https://developer.apple.com/news/upcoming-requirements/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Apple Developer, exigences SDK/Xcode
+          </a>{" "}
+          ;{" "}
+          <a
+            href="https://support.google.com/googleplay/android-developer/answer/11926878"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google Play, exigences de niveau d&apos;API
+          </a>
+          .
         </p>
         <p className="text-sm">
           <em>
-            React Native est une marque de Meta ; Flutter et Dart sont
-            des marques de Google ; Kotlin est une marque de JetBrains.
-            Ce guide est indépendant et son biais éditorial (agence
-            React) est déclaré dans le corps de l&apos;article. Les
-            fourchettes sont des constats de marché : seul un devis
-            établi sur votre périmètre vous engage.
+            React Native est une marque de Meta ; Flutter et Dart sont des
+            marques de Google ; Kotlin est une marque de JetBrains. Ce guide est
+            indépendant et son biais éditorial (agence React) est déclaré dans
+            le corps de l&apos;article. Les repères de tarif proviennent du
+            baromètre cité ; seul un devis établi sur votre besoin vous engage.
           </em>
         </p>
       </GuideLayout>

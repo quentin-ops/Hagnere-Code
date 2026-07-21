@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Combien coûte un CRM en 2026 — trois socles chiffrés et méthode TCO — Hagnéré Code";
+  "Combien coûte un CRM en 2026 : trois entreprises comparées sur 36 mois";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -99,7 +99,7 @@ export default function OgImage() {
               lineHeight: 1.3,
             }}
           >
-            Licences, temps interne et sortie comparés sur 36 mois
+            Abonnement, mise en route, données, formation et temps interne
           </div>
         </div>
 
@@ -124,13 +124,13 @@ export default function OgImage() {
               marginBottom: 18,
             }}
           >
-            <span style={{ display: "flex" }}>MÉTHODE TCO</span>
+            <span style={{ display: "flex" }}>BUDGET COMPLET</span>
             <span style={{ display: "flex", color: "#93c5fd" }}>36 MOIS</span>
           </div>
 
           {[
             ["Licences", "36 mois", "#60a5fa"],
-            ["Déploiement", "périmètre", "#a78bfa"],
+            ["Mise en route", "réglages", "#a78bfa"],
             ["Temps interne", "heures", "#34d399"],
             ["Sortie", "export", "#fbbf24"],
           ].map(([label, value, color]) => (
@@ -178,7 +178,7 @@ export default function OgImage() {
               fontWeight: 700,
             }}
           >
-            <span style={{ display: "flex" }}>3 socles</span>
+            <span style={{ display: "flex" }}>3 entreprises</span>
             <span style={{ display: "flex", marginLeft: "auto" }}>
               1 formule
             </span>
@@ -188,10 +188,10 @@ export default function OgImage() {
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
         {[
-          "Tarifs officiels datés",
-          "Coûts cachés",
-          "Grille de devis",
-          "Clauses de sortie",
+          "Tarifs publics datés",
+          "Dépenses oubliées",
+          "Comparaison de devis",
+          "Récupération des données",
         ].map((label) => (
           <div
             key={label}

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: guideUrl(guide) + "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Calculer le ROI d’une application métier avec trois scénarios",
+        alt: "Calculer si une application métier sera rentable pour l’entreprise",
       },
     ],
     publishedTime: guide.datePublished + "T09:00:00+02:00",
@@ -107,30 +107,29 @@ const faqItems = [
     question:
       "Faut-il réduire les effectifs pour obtenir un ROI sur le temps gagné ?",
     answer:
-      "Non. Le temps libéré peut créer une valeur économique s’il permet d’absorber davantage de dossiers, d’éviter un recrutement prévu ou d’être réellement réaffecté à une activité utile. Sans usage observable, conservez les heures comme un bénéfice opérationnel non monétisé au lieu de simuler une économie de salaire.",
+      "Non. Le temps gagné a une valeur financière seulement s’il évite une dépense, permet de traiter plus de dossiers ou est réellement réaffecté à une tâche utile. Sinon, présentez-le comme du temps libéré, sans le transformer artificiellement en économie de salaire.",
   },
   {
     question: "Comment traiter une aide ou un crédit d’impôt dans le calcul ?",
     answer:
-      "Calculez d’abord le projet sans aide. Ajoutez ensuite un scénario distinct seulement quand l’éligibilité, le montant, le calendrier et le traitement comptable sont confirmés. Une aide incertaine n’est ni un coût négatif ni une raison de rendre artificiellement rentable un projet fragile ; faites valider son traitement par votre conseil comptable.",
+      "Calculez d’abord le projet sans aide. Ajoutez-la dans un scénario séparé uniquement lorsque son éligibilité, son montant et sa date sont confirmés. Faites valider son traitement par votre conseil comptable.",
   },
   {
     question: "Faut-il annualiser ou actualiser le ROI ?",
     answer:
-      "Le ROI simple de ce guide est un résultat cumulé, non annualisé et non actualisé. Cette convention suffit pour un premier tri si elle est écrite et identique entre les options. Pour un investissement long, important ou financé, la direction financière peut compléter avec des flux de trésorerie datés, une valeur actuelle nette et un taux d’actualisation adapté.",
+      "Pas forcément pour un premier tri. Ce guide utilise un ROI cumulé, non annualisé et non actualisé, calculé de la même façon pour toutes les options. Pour un investissement long, important ou financé, faites compléter l’analyse par la direction financière avec des flux datés et une valeur actuelle nette.",
   },
   {
     question: "Quel horizon retenir si le processus change rapidement ?",
     answer:
-      "Raccourcissez l’horizon jusqu’à la dernière période où les règles, les volumes et l’organisation restent raisonnablement défendables. Comparez toutes les options depuis la même date de décision et jusqu’à la même date de fin. Si aucune option ne couvre ses coûts avant une évolution déjà prévue, privilégiez une réponse réversible ou un pilote.",
+      "Choisissez la dernière période pendant laquelle les règles, les volumes et l’organisation restent crédibles. Comparez toutes les options entre les mêmes dates. Si le processus va bientôt changer, préférez un pilote ou une solution facile à remplacer.",
   },
   {
     question: "Comment donner un prix à une réduction de risque ?",
     answer:
-      "Utilisez une valeur monétaire seulement si la fréquence des incidents, leur coût et la part réellement évitable sont documentés. Multiplier une probabilité observée par un impact défendable donne une espérance de perte, pas une économie certaine. Sans historique suffisant, gardez le risque dans un registre séparé et ne l’ajoutez pas au ROI.",
+      "Donnez-lui une valeur seulement si vous connaissez la fréquence des incidents, leur coût et la part réellement évitable. Le résultat reste une perte moyenne estimée, pas une économie certaine. Sans historique suffisant, suivez le risque séparément et ne l’ajoutez pas au ROI.",
   },
 ];
-
 
 export default function Page() {
   return (
@@ -153,29 +152,29 @@ export default function Page() {
           { label: "Calculer le ROI d’une application métier" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Un ROI crédible ne consiste pas à multiplier toutes les heures pénibles par un taux horaire. Il relie une base mesurée, des bénéfices réellement obtenables et le coût complet de chaque option, puis confronte la prévision aux résultats après lancement."
+        heroDescription="Vous hésitez à financer une application métier ? Ce guide vous aide à comparer le sur-mesure, un logiciel standard, une amélioration simple et le statu quo à partir de vos coûts et de gains réellement utilisables."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel={"Publié le " + formatGuideDate(guide.datePublished)}
+        updatedLabel={"Mis à jour le " + formatGuideDate(guide.dateModified)}
         keyPoints={[
           {
             number: "01",
-            title: "5 blocs à documenter",
+            title: "Coûts cachés inclus",
             description: "",
             color: "violet",
           },
           {
             number: "02",
-            title: "3 scénarios recalculables",
+            title: "Gains réalistes, pas théoriques",
             description: "",
             color: "blue",
           },
           {
             number: "03",
-            title: "4 options sur 48 mois",
+            title: "4 choix réellement comparés",
             description: "",
             color: "emerald",
           },
@@ -214,114 +213,110 @@ export default function Page() {
       >
         <p className="lead">
           <strong>
-            Un projet peut afficher 107,56 % de ROI dans un tableur et retomber
-            à 15,76 % dès que les hypothèses sont alignées sur le calendrier
-            réel.
+            Vous envisagez une application pour supprimer des ressaisies,
+            accélérer les dossiers ou éviter des erreurs. Le devis paraît élevé,
+            tandis que votre équipe affirme que l’outil fera gagner des
+            centaines d’heures. Faut-il investir ?
           </strong>{" "}
-          La différence ne vient pas d’une formule plus compliquée, mais de
-          quatre mois sans bénéfice, d’une part de temps réellement réaffectée
-          et du coût complet jusqu’à la sortie.
+          La bonne réponse ne consiste pas à transformer chaque minute pénible
+          en économie de salaire. Elle consiste à comparer, sur la même durée,
+          ce que chaque option coûte vraiment et les gains que l’entreprise sera
+          réellement capable d’utiliser.
         </p>
 
         <p>
-          <strong>Exemple illustratif fictif.</strong> Une lecture naïve
-          valorise 100 % de 26 035,20 € de capacité annuelle et 2 400 € de
-          décaissements évités pendant quatre ans. Face à un coût de 54 800 €,
-          elle annonce :
+          Le <strong>retour sur investissement (ROI)</strong> compare le gain
+          net d’un projet à son coût total. Il vous aide à choisir entre quatre
+          décisions : développer, acheter un outil standard, simplifier
+          l’existant ou reporter. Commencez avec quelques mesures observées,
+          faites un scénario prudent et conservez séparément les bénéfices
+          utiles mais impossibles à convertir honnêtement en euros.
         </p>
 
-        <FormulaBox>
-          {[
-            "Calcul naïf : (113 740,80 € - 54 800 €) / 54 800 € = 107,56 %",
-            "",
-            "Calcul central corrigé du mois 0 au mois 48 :",
-            "(63 437,44 € - 54 800 €) / 54 800 € = 15,76 %",
-          ].join("\n")}
-        </FormulaBox>
+        <InfoBox variant="blue" title="La réponse tient en trois questions">
+          Combien l’entreprise paiera-t-elle jusqu’à l’arrêt ou au remplacement
+          de l’outil ? Quels gains pourront réellement être utilisés ? Le projet
+          reste-t-il intéressant si le déploiement prend du retard ou si les
+          gains sont plus faibles que prévu ?
+        </InfoBox>
 
         <p>
-          Le premier calcul attribue quatre années de bénéfices à un outil qui
-          n’est disponible qu’après quatre mois et suppose que chaque heure
-          libérée produit de l’argent. Le second compte 44 mois d’exploitation,
-          une capacité partiellement réaffectée, les coûts récurrents et la
-          sortie. Le scénario prudent, lui, reste négatif. La suite montre
-          comment refaire ce contre-calcul avec vos propres données.
+          Un calcul qui transforme toutes les heures gagnées en argent peut
+          faire paraître rentable un projet qui ne l’est pas. L’exemple détaillé
+          vient plus loin : il montre comment le retard de mise en service, les
+          coûts récurrents et les heures réellement réutilisées changent le
+          résultat.
         </p>
 
         <GuideToc
           items={[
-            { id: "dossier", label: "1. Les cinq pièces du dossier" },
-            { id: "base", label: "2. Mesurer la situation actuelle" },
+            { id: "dossier", label: "1. Les cinq questions avant le calcul" },
+            { id: "base", label: "2. Mesurer le travail actuel" },
             {
               id: "benefices",
-              label: "3. Quels gains valent vraiment des euros ?",
+              label: "3. Compter seulement les gains utilisables",
             },
-            { id: "tco", label: "4. Construire un coût total comparable" },
-            { id: "exemple", label: "5. Exemple fictif : trois scénarios" },
-            { id: "options", label: "6. Comparer quatre options" },
             {
-              id: "stress-test",
-              label: "7. Mettre le dossier économique à l’épreuve",
+              id: "tco",
+              label: "4. Compter tout ce que chaque option coûtera",
             },
-            { id: "responsabilites", label: "8. Responsabilités et décision" },
             {
-              id: "suivi",
-              label: "9. Contrôler le réel après le lancement",
+              id: "exemple",
+              label: "5. Exemple fictif : du calcul naïf au calcul réaliste",
+            },
+            {
+              id: "options",
+              label: "6. Comparer le sur-mesure aux solutions simples",
             },
             {
               id: "decision",
-              label: "10. Feu vert, pilote, solution simple ou report",
+              label: "7. Tester, faire valider et décider",
             },
             { id: "sources", label: "Sources et limites" },
           ]}
         />
 
-        <h2 id="dossier">1. Les cinq pièces du dossier avant toute formule</h2>
+        <h2 id="dossier">
+          1. Répondez à cinq questions avant d’ouvrir le tableur
+        </h2>
 
         <p>
-          Le <strong>retour sur investissement (ROI)</strong> exprime le gain ou
-          la perte d’un projet par rapport à son coût. Ce pourcentage arrive à
-          la fin du raisonnement, pas au début. Avant de le calculer, écrivez
-          une page que la direction, le responsable métier et la personne qui
-          tient les comptes peuvent relire sans interpréter les mots
-          différemment.
+          Le pourcentage de ROI arrive à la fin, pas au début. Avant de le
+          calculer, réunissez sur une page les cinq réponses ci-dessous. La
+          direction, le responsable du travail concerné et la personne qui suit
+          les comptes doivent pouvoir les relire sans comprendre trois projets
+          différents.
         </p>
 
         <GuideTable
           headers={[
-            "Pièce",
-            "Question à résoudre",
-            "Preuve minimale",
-            "Signal d’arrêt",
+            "Question",
+            "Ce qu’il faut écrire",
+            "Quand ne pas conclure",
           ]}
           rows={[
             [
-              "1. Base actuelle",
-              "Que se passe-t-il réellement aujourd’hui ?",
+              "1. Que se passe-t-il aujourd’hui ?",
               "volumes, durées, erreurs et décaissements sur un cycle",
               "les chiffres viennent d’un souvenir ou d’une journée exceptionnelle",
             ],
             [
-              "2. Bénéfices",
-              "Quel effet sera attribuable au changement ?",
-              "économie évitée, capacité réaffectée ou indicateur non monétaire",
+              "2. Quel gain vient vraiment du changement ?",
+              "dépense évitée, heures réellement réutilisées ou amélioration suivie sans la convertir en euros",
               "le même gain est compté sous deux noms",
             ],
             [
-              "3. Coût complet",
-              "Que faudra-t-il payer et mobiliser jusqu’à la sortie ?",
+              "3. Que faudra-t-il payer jusqu’à la sortie ?",
               "investissement, exploitation, temps interne et réversibilité",
               "une ligne inconnue est remplacée par zéro",
             ],
             [
-              "4. Scénarios",
-              "Que devient la décision si les hypothèses déçoivent ?",
+              "4. Que se passe-t-il si le projet déçoit ?",
               "prudent, central et haut avec les mêmes formules",
               "seul le scénario favorable est présenté",
             ],
             [
-              "5. Règle de décision",
-              "Qui lance, pilote, simplifie ou reporte ?",
+              "5. Qui décide de lancer, piloter ou reporter ?",
               "seuils écrits, responsable et date de contrôle",
               "le devis tient lieu de validation économique",
             ],
@@ -355,7 +350,7 @@ export default function Page() {
           quand la mise est-elle couverte ? ». Gardez les trois résultats.
         </p>
 
-        <h2 id="base">2. Mesurer la situation actuelle sans deviner</h2>
+        <h2 id="base">2. Mesurez ce que le travail actuel coûte vraiment</h2>
 
         <p>
           Le calcul commence par une <strong>base de référence</strong>,
@@ -377,41 +372,35 @@ export default function Page() {
         </p>
 
         <GuideTable
-          headers={["Mesure", "Unité", "Où la trouver", "Piège"]}
+          headers={["Mesure à relever", "Où la trouver", "Erreur à éviter"]}
           rows={[
             [
-              "Volume traité",
-              "dossiers, lignes ou interventions/période",
+              "Volume traité — dossiers, lignes ou interventions par période",
               "journal, facturation, échantillon daté",
               "confondre demandes reçues et dossiers terminés",
             ],
             [
-              "Temps actif",
-              "minutes réellement travaillées",
+              "Temps actif — minutes réellement travaillées",
               "chronométrage de plusieurs cas",
               "inclure toute l’attente",
             ],
             [
-              "Corrections",
-              "nombre × durée moyenne",
+              "Corrections — nombre multiplié par la durée moyenne",
               "retours, avoirs, tickets, reprises",
               "compter deux fois l’erreur et sa correction",
             ],
             [
-              "Décaissement",
-              "euros réellement payés ou perdus",
+              "Décaissement — euros réellement payés ou perdus",
               "comptabilité, avoirs, pénalités",
               "valoriser une gêne comme une sortie de caisse",
             ],
             [
-              "Délai de service",
-              "heures ou jours calendaires",
+              "Délai de service — heures ou jours calendaires",
               "horodatages de début et de fin",
               "le convertir automatiquement en salaire",
             ],
             [
-              "Adoption actuelle",
-              "utilisateurs, fréquence et contournements",
+              "Adoption actuelle — utilisateurs, fréquence et contournements",
               "entretiens et traces d’usage",
               "supposer que tous utilisent le processus officiel",
             ],
@@ -435,8 +424,8 @@ export default function Page() {
           couvre les entreprises françaises de 10 salariés ou plus des secteurs
           marchands B à N, apprentis inclus. Ce n’est ni le salaire net, ni le
           coût de votre TPE, ni celui d’un poste précis. Utilisez votre coût
-          chargé réel quand il est disponible ; sinon, conservez le repère avec
-          son périmètre et testez une fourchette.
+          chargé réel quand il est disponible ; sinon, notez quelles entreprises
+          ce repère couvre et testez une fourchette.
         </InfoBox>
 
         <p>
@@ -457,7 +446,9 @@ export default function Page() {
           déplace simplement la charge vers une autre personne.
         </p>
 
-        <h2 id="benefices">3. Quels gains valent vraiment des euros ?</h2>
+        <h2 id="benefices">
+          3. Comptez seulement les gains que l’entreprise pourra utiliser
+        </h2>
 
         <p>
           Classez les bénéfices avant de les additionner. Un euro de facture
@@ -477,48 +468,47 @@ export default function Page() {
         </p>
 
         <GuideTable
-          headers={["Famille", "Quand la monétiser", "Calcul", "Sinon"]}
+          headers={[
+            "Type de gain",
+            "Quand le compter en euros",
+            "Comment rester prudent",
+          ]}
           rows={[
             [
               "Dépense évitée",
               "le paiement disparaît réellement",
-              "montant observé × part évitée",
-              "conserver le décaissement actuel comme base",
+              "montant observé × part évitée ; sinon, conservez seulement la dépense actuelle",
             ],
             [
-              "Capacité réaffectée",
+              "Temps réellement réaffecté",
               "les heures servent à produire, vendre ou absorber une charge identifiable",
-              "heures libérées × part réaffectée × coût pertinent",
-              "mesurer les heures sans les convertir en euros",
+              "heures libérées × part réellement réutilisée × coût pertinent ; sinon, mesurez seulement le temps gagné",
             ],
             [
-              "Recette supplémentaire",
+              "Ventes supplémentaires",
               "volume, conversion, marge et capacité de livraison sont défendables",
-              "ventes additionnelles attribuables × marge, pas chiffre d’affaires",
-              "suivre le volume sans l’inclure au ROI",
+              "comptez la marge des ventes attribuables, pas leur chiffre d’affaires ; sinon, suivez le volume à part",
             ],
             [
               "Risque réduit",
               "fréquence et impact proviennent d’incidents ou d’une analyse documentée",
-              "probabilité × impact évitable, avec prudence",
-              "garder un indicateur de risque séparé",
+              "probabilité × impact évitable, avec prudence ; sinon, gardez un indicateur de risque séparé",
             ],
             [
               "Qualité ou confort",
               "un lien économique mesurable existe",
-              "seulement ce lien, sans prix de convenance",
-              "note qualitative et retour utilisateur",
+              "comptez uniquement ce lien ; sinon, conservez une note qualitative et les retours utilisateurs",
             ],
           ]}
         />
 
         <p>
-          La <strong>part réaffectée</strong> est la fraction du temps libéré
-          qui produit effectivement une valeur économique. Si cinq personnes
-          gagnent chacune douze minutes dispersées dans la journée, l’entreprise
-          ne réduit pas mécaniquement une heure de paie. Elle peut toutefois
-          répondre plus vite, absorber une hausse de volume ou réduire la
-          fatigue. Mesurez cet effet avec le bon indicateur et monétisez
+          La <strong>part réellement réutilisée</strong> est la fraction du
+          temps libéré qui produit effectivement une valeur économique. Si cinq
+          personnes gagnent chacune douze minutes dispersées dans la journée,
+          l’entreprise ne réduit pas mécaniquement une heure de paie. Elle peut
+          toutefois répondre plus vite, absorber une hausse de volume ou réduire
+          la fatigue. Mesurez cet effet avec le bon indicateur et monétisez
           seulement ce que l’organisation peut réellement utiliser.
         </p>
 
@@ -531,19 +521,23 @@ export default function Page() {
           qu’elle n’alimente aucune autre ligne.
         </InfoBox>
 
-        <h2 id="tco">4. Construire un coût total comparable</h2>
+        <h2 id="tco">
+          4. Comptez ce que chaque option coûtera jusqu’à sa sortie
+        </h2>
 
         <p>
-          Le <strong>coût total de possession (TCO)</strong> additionne les
-          coûts d’acquisition, de mise en œuvre, d’exploitation, d’évolution et
-          de sortie sur une même durée. Le prix du devis n’en est qu’une partie.
-          Une solution à faible coût initial peut devenir chère avec les
-          licences par utilisateur ; un développement payé une fois peut exiger
-          hébergement, surveillance et maintenance pendant toute sa vie.
+          Le <strong>coût complet</strong>, parfois appelé coût total de
+          possession ou TCO, additionne les coûts d’acquisition, de mise en
+          œuvre, d’exploitation, d’évolution et de sortie sur une même durée.
+          Dans la suite du guide, nous parlerons simplement de coût complet. Le
+          prix du devis n’en est qu’une partie. Une solution à faible coût
+          initial peut devenir chère avec les licences par utilisateur ; un
+          développement payé une fois peut exiger hébergement, surveillance et
+          maintenance pendant toute sa vie.
         </p>
 
         <GuideTable
-          headers={["Moment", "Postes à examiner", "Questions de preuve"]}
+          headers={["Moment", "Postes à examiner", "Questions à poser"]}
           rows={[
             [
               "Avant le lancement",
@@ -557,7 +551,7 @@ export default function Page() {
             ],
             [
               "Bascule",
-              "nettoyage, migration, double saisie, recette, formation",
+              "nettoyage, reprise des données, double saisie, vérification et formation",
               "combien de cycles et quels cas d’échec seront testés ?",
             ],
             [
@@ -608,20 +602,19 @@ export default function Page() {
           <Link href="/guides/erp-ou-logiciel-sur-mesure">
             ERP, logiciel standard ou sur mesure
           </Link>
-          , puis ramenez les options retenues dans le même TCO.
+          , puis calculez leur coût complet sur la même durée.
         </p>
 
-        <h2 id="exemple">
-          5. Exemple fictif : trois scénarios entre la décision et le mois 48
-        </h2>
+        <h2 id="exemple">5. Exemple fictif : d’environ 108 % à environ 16 %</h2>
 
         <p>
-          <strong>Exemple illustratif fictif.</strong> Un atelier de maintenance
-          industrielle emploie 28 personnes. Après chaque intervention, le
-          compte rendu est ressaisi, rapproché et corrigé avant facturation. Les
-          nombres ci-dessous ne décrivent ni un client, ni un prix Hagnéré Code,
-          ni un rendement moyen. Ils montrent comment remplir le dossier et
-          permettent de refaire chaque opération.
+          <strong>Exemple illustratif fictif.</strong> Il ne décrit ni un client
+          ni un témoignage réel. Un atelier de maintenance industrielle emploie
+          28 personnes. Après chaque intervention, le compte rendu est ressaisi,
+          rapproché et corrigé avant facturation. Les nombres ci-dessous ne
+          décrivent ni un client, ni un prix Hagnéré Code, ni un rendement
+          moyen. Ils montrent comment remplir le dossier et permettent de
+          refaire chaque opération.
         </p>
 
         <h3>La base observée dans l’exemple illustratif fictif</h3>
@@ -653,11 +646,15 @@ export default function Page() {
         </ul>
 
         <p>
-          Les 26 035,20 € ne sont pas encore un bénéfice. Ils valorisent toute
-          la charge actuelle comme si elle disparaissait et était entièrement
-          réaffectée. Les scénarios appliqueront donc deux coefficients
-          distincts : part de capacité réellement réaffectée et part des
-          décaissements réellement évitée.
+          Le calcul naïf valorise 100 % du temps et des décaissements pendant
+          quatre années pleines :{" "}
+          <code>(26 035,20 + 2 400) × 4 = 113 740,80 €</code> de bénéfices, puis{" "}
+          <code>(113 740,80 − 54 800) / 54 800 × 100 = 107,56 %</code> de ROI,
+          soit environ 108 %. Ce résultat est trompeur : il suppose que toute la
+          charge disparaît, que tout le temps est réutilisé et que les bénéfices
+          commencent avant même la mise en service. Le scénario central corrigé
+          applique donc une part réaliste de réutilisation et seulement 44 mois
+          de fonctionnement.
         </p>
 
         <h3>Le coût fictif de l’option sur mesure, du mois 0 au mois 48</h3>
@@ -681,7 +678,7 @@ export default function Page() {
               "26 000 € HT",
             ],
             ["Temps interne projet", "100 h × 36 €", "3 600 €"],
-            ["Migration et formation", "socle hypothétique", "2 400 € HT"],
+            ["Migration et formation", "forfait hypothétique", "2 400 € HT"],
             [
               "Hébergement et surveillance",
               "150 € × 44 mois en service",
@@ -694,7 +691,7 @@ export default function Page() {
               "1 200 € HT",
             ],
             [
-              "TCO fictif, mois 0–48",
+              "Coût complet fictif, mois 0–48",
               "chaque poste compté une fois",
               "54 800 €",
             ],
@@ -711,7 +708,7 @@ export default function Page() {
 
         <FormulaBox>
           {[
-            "Bénéfice annuel fictif = 26 035,20 € × part de capacité réaffectée",
+            "Bénéfice annuel fictif = 26 035,20 € × part des heures réellement réutilisées",
             "                          + 2 400 € × part des décaissements évités",
             "",
             "Bénéfices des mois 5 à 48 = bénéfice annuel / 12 × 44 mois",
@@ -721,34 +718,22 @@ export default function Page() {
         </FormulaBox>
 
         <GuideTable
-          headers={[
-            "Scénario fictif",
-            "Capacité réaffectée / décaissements évités",
-            "Bénéfice annuel",
-            "Bénéfices des mois 5–48",
-            "Gain net des mois 0–48 / ROI",
-          ]}
+          headers={["Scénario fictif", "Hypothèses", "Résultat sur 48 mois"]}
           rows={[
             [
               "Prudent",
-              "35 % / 40 %",
-              "10 072,32 €",
-              "36 931,84 €",
-              "−17 868,16 € / −32,61 %",
+              "35 % du temps réaffecté et 40 % des décaissements évités",
+              "environ 10 100 € par an ; 36 900 € de bénéfices cumulés ; perte nette 17 900 € ; ROI −33 %",
             ],
             [
-              "Central",
-              "60 % / 70 %",
-              "17 301,12 €",
-              "63 437,44 €",
-              "8 637,44 € / 15,76 %",
+              "Scénario central",
+              "60 % du temps réaffecté et 70 % des décaissements évités",
+              "environ 17 300 € par an ; 63 400 € de bénéfices cumulés ; gain net 8 600 € ; ROI 16 %",
             ],
             [
               "Haut",
-              "80 % / 90 %",
-              "22 988,16 €",
-              "84 289,92 €",
-              "29 489,92 € / 53,81 %",
+              "80 % du temps réaffecté et 90 % des décaissements évités",
+              "environ 23 000 € par an ; 84 300 € de bénéfices cumulés ; gain net 29 500 € ; ROI 54 %",
             ],
           ]}
         />
@@ -756,13 +741,17 @@ export default function Page() {
         <p>
           Le scénario prudent détruit de la valeur sur l’horizon. Ce résultat
           n’est pas une anomalie à gommer : il informe la décision. Le scénario
-          central crée 63 437,44 € de bénéfices cumulés entre les mois 5 et 48,
-          puis 8 637,44 € de gain net après le TCO. Son ROI est donc :{" "}
-          <code>(63 437,44 − 54 800) / 54 800 × 100 = 15,76 %</code>. Il s’agit
-          d’un <strong>ROI simple cumulé sur 48 mois calendaires</strong>, non
-          annualisé et non actualisé. Pour un investissement long ou matériel,
-          la finance peut compléter ce premier tri avec des flux datés et une
-          valeur actuelle nette.
+          central crée environ 63 400 € de bénéfices cumulés entre les mois 5 et
+          48, puis environ 8 600 € de gain net après le coût complet. Le calcul
+          non arrondi reste :{" "}
+          <code>(63 437,44 − 54 800) / 54 800 × 100 = 15,76 %</code>. Le
+          résultat utile à la décision est donc un ROI d’environ 16 %.
+        </p>
+        <p>
+          Ce pourcentage résume les 48 mois : il ne représente pas un rendement
+          annuel et ne tient pas compte de la date exacte de chaque paiement.
+          Pour un investissement important ou très long, votre expert-comptable
+          peut compléter ce premier tri avec un calcul financier plus précis.
         </p>
 
         <h3>Le délai de retour économique n’est pas un délai de trésorerie</h3>
@@ -770,26 +759,29 @@ export default function Page() {
         <p>
           L’investissement économique avant mise en service vaut 36 000 € dans
           cet exemple fictif, temps interne compris. Le bénéfice central mensuel
-          vaut 1 441,76 €. Après 400 € d’hébergement et maintenance et 27,27 €
+          vaut environ 1 442 €. Après 400 € d’hébergement et maintenance et 27 €
           de provision mensuelle pour la sortie, le gain économique stable vaut
-          1 014,49 € par mois. Le raccourci donne environ{" "}
-          <strong>35,49 mois après la mise en service</strong> :{" "}
-          <code>36 000 / 1 014,49</code>, soit 39,49 mois depuis la décision.
+          environ 1 014 € par mois. Le raccourci donne environ{" "}
+          <strong>36 mois après la mise en service</strong> :{" "}
+          <code>36 000 / 1 014 ≈ 35,5</code>, soit environ 40 mois depuis la
+          décision.
         </p>
 
         <p>
           Ce résultat signifie que les gains économiques cumulés compensent
           l’investissement économique ; il ne mesure pas une trésorerie
-          immobilisée. La capacité réaffectée n’est pas une entrée de caisse et
-          le temps interne n’est pas toujours un paiement additionnel. Un délai
-          de retour de trésorerie exigerait un calendrier séparé ne conservant
-          que les encaissements et décaissements réels. Dans tous les cas, le
-          mois de retour exact est celui où les flux nets cumulés franchissent
-          zéro ; la division précédente n’est qu’un raccourci valable ici parce
-          que les flux mensuels fictifs sont stables.
+          immobilisée. Le temps réellement réutilisé n’est pas une entrée de
+          caisse et le temps interne n’est pas toujours un paiement additionnel.
+          Un délai de retour de trésorerie exigerait un calendrier séparé ne
+          conservant que les encaissements et décaissements réels. Dans tous les
+          cas, le mois de retour exact est celui où les flux nets cumulés
+          franchissent zéro ; la division précédente n’est qu’un raccourci
+          valable ici parce que les flux mensuels fictifs sont stables.
         </p>
 
-        <h2 id="options">6. Comparer quatre options sur la même base</h2>
+        <h2 id="options">
+          6. Comparez le sur-mesure à trois solutions plus simples
+        </h2>
 
         <p>
           Le ROI d’un projet ne dit pas si une autre réponse ferait mieux. Pour
@@ -813,39 +805,29 @@ export default function Page() {
         <GuideTable
           headers={[
             "Option fictive",
-            "Service / hypothèses",
-            "Coût additionnel mois 0–48",
-            "Bénéfices mois 0–48",
-            "Résultat cumulé",
+            "Hypothèses et coût",
+            "Résultat sur 48 mois",
           ]}
           rows={[
             [
               "Statu quo",
-              "aucune mise en service ; charge actuelle conservée",
-              "0 € nouveau dans ce comparatif",
-              "0 € nouveau",
-              "référence ; ROI incrémental non pertinent",
+              "aucune mise en service ; charge actuelle conservée ; 0 € de coût nouveau dans ce comparatif",
+              "0 € de bénéfice nouveau ; option de référence, sans ROI incrémental pertinent",
             ],
             [
               "Simplifier l’existant",
-              "mois 2 ; 25 % de capacité / 40 % des décaissements",
-              "8 000 € = 4 000 € initiaux et internes + 75 € × 47 mois + 475 € de sortie",
-              "29 252,80 € sur 47 mois",
-              "+21 252,80 € ; ROI 265,66 %",
+              "mise en service au mois 2 ; 25 % du temps réaffecté ; 40 % des décaissements évités ; coût total 8 000 € (4 000 € initiaux et internes + 75 € × 47 mois + 475 € de sortie)",
+              "environ 29 300 € de bénéfices sur 47 mois ; gain net 21 300 € ; ROI 266 %",
             ],
             [
               "Logiciel standard configuré",
-              "mois 3 ; 50 % de capacité / 60 % des décaissements",
-              "32 000 € = 16 000 € initiaux et internes + 325 € × 46 mois + 1 050 € de sortie",
-              "55 420,80 € sur 46 mois",
-              "+23 420,80 € ; ROI 73,19 %",
+              "mise en service au mois 3 ; 50 % du temps réaffecté ; 60 % des décaissements évités ; coût total 32 000 € (16 000 € initiaux et internes + 325 € × 46 mois + 1 050 € de sortie)",
+              "environ 55 400 € de bénéfices sur 46 mois ; gain net 23 400 € ; ROI 73 %",
             ],
             [
               "Sur mesure, scénario central",
-              "mois 5 ; 60 % de capacité / 70 % des décaissements",
-              "54 800 € = 36 000 € initiaux et internes + 400 € × 44 mois + 1 200 € de sortie",
-              "63 437,44 € sur 44 mois",
-              "+8 637,44 € ; ROI 15,76 %",
+              "mise en service au mois 5 ; 60 % du temps réaffecté ; 70 % des décaissements évités ; coût total 54 800 € (36 000 € initiaux et internes + 400 € × 44 mois + 1 200 € de sortie)",
+              "environ 63 400 € de bénéfices sur 44 mois ; gain net 8 600 € ; ROI 16 %",
             ],
           ]}
         />
@@ -882,30 +864,32 @@ export default function Page() {
           autre crée plus de valeur à long terme.
         </InfoBox>
 
-        <h2 id="stress-test">
-          7. Mettre le dossier économique à l’épreuve avant de signer
+        <h2 id="decision">
+          7. Testez les hypothèses, faites valider les chiffres, puis décidez
         </h2>
 
         <p>
-          Un <strong>test de résistance</strong> consiste à dégrader séparément
-          les hypothèses pour trouver celle qui fait basculer la décision. Il ne
-          s’agit pas d’empiler des catastrophes, mais de savoir si le projet
-          résiste à un retard, une adoption partielle ou un coût supérieur. Une
-          moyenne centrale sans bornes masque précisément ce risque.
+          Avant de signer, refaites le calcul avec un retard, moins
+          d’utilisateurs ou un coût supérieur. Le but n’est pas d’imaginer le
+          pire, mais d’identifier l’hypothèse qui ferait changer de décision. Si
+          une petite déception suffit à rendre le projet déficitaire, commencez
+          par tester cette hypothèse à moindre coût.
         </p>
 
         <ol>
           <li>
-            <strong>Réduisez la capacité réaffectée.</strong> Que devient le ROI
-            si seuls 35 %, puis 50 % des heures produisent une valeur ?
+            <strong>Réduisez les heures réellement réutilisées.</strong> Que
+            devient le ROI si seuls 35 %, puis 50 % du temps gagné servent à
+            produire, vendre ou éviter une dépense ?
           </li>
           <li>
             <strong>Retardez les bénéfices.</strong> Ajoutez trois ou six mois
             de montée en charge au lieu de compter le régime stable dès J1.
           </li>
           <li>
-            <strong>Augmentez le TCO.</strong> Testez migration, intégration ou
-            maintenance à +20 %, sans réduire les autres postes.
+            <strong>Augmentez le coût complet.</strong> Testez la reprise des
+            données, les connexions ou la maintenance à +20 %, sans réduire les
+            autres postes.
           </li>
           <li>
             <strong>Retirez le bénéfice le plus fragile.</strong> Si la vente
@@ -918,89 +902,54 @@ export default function Page() {
         </ol>
 
         <p>
-          Repérez ensuite le <strong>seuil de rupture</strong> : la valeur à
-          partir de laquelle le gain net passe sous zéro ou une option devient
-          meilleure. Si ce seuil est proche de l’hypothèse centrale, le projet
-          n’est pas condamné, mais il doit acheter de l’information avant
-          d’acheter tout le logiciel : prototype de flux, pilote sur une équipe,
-          test d’intégration ou inventaire de données.
+          Repérez ensuite le point à partir duquel le gain net passe sous zéro
+          ou une autre option devient meilleure. S’il est proche de votre
+          hypothèse centrale, le projet n’est pas forcément mauvais : il faut
+          simplement apprendre avant d’investir tout le budget, avec un pilote,
+          un test d’intégration ou un inventaire des données.
         </p>
 
-        <GuideTable
-          headers={[
-            "Résultat du test de résistance",
-            "Décision prudente",
-            "Preuve suivante",
-          ]}
-          rows={[
-            [
-              "positif même avec hypothèses prudentes",
-              "préparer le cadrage et la trésorerie",
-              "devis à périmètre comparable et plan de mesure",
-            ],
-            [
-              "positif seulement au scénario central",
-              "piloter une hypothèse critique",
-              "mesure de réaffectation, intégration ou adoption",
-            ],
-            [
-              "une option simple domine",
-              "simplifier ou configurer d’abord",
-              "contrôle après un cycle complet",
-            ],
-            [
-              "négatif dans les scénarios crédibles",
-              "reporter ou réduire le périmètre",
-              "nouveau déclencheur métier avant réexamen",
-            ],
-            [
-              "données de départ absentes",
-              "ne pas calculer de ROI",
-              "observation et journal d’incidents",
-            ],
-          ]}
-        />
+        <InfoBox variant="amber" title="Le résultat donne l’action suivante">
+          Si le projet reste positif dans le scénario prudent, préparez-le et
+          vérifiez la trésorerie. S’il ne tient que dans le scénario central,
+          testez d’abord l’hypothèse la plus fragile. Si une solution simple
+          domine, essayez-la sur un cycle complet. Si les données manquent ou si
+          tous les scénarios crédibles sont négatifs, mesurez ou reportez au
+          lieu de forcer un pourcentage.
+        </InfoBox>
 
-        <h2 id="responsabilites">8. Qui répond de chaque hypothèse ?</h2>
+        <h3>Faites valider chaque famille de chiffres par la bonne personne</h3>
 
         <p>
           Un dossier économique sans propriétaire devient vite une négociation
           de chiffres. Le métier connaît le flux, la direction choisit le
           risque, la finance vérifie la convention économique, les utilisateurs
-          éprouvent l’adoption et le prestataire chiffre le périmètre. Aucun de
-          ces rôles ne peut valider seul l’ensemble.
+          éprouvent l’adoption et le prestataire chiffre le travail prévu. Aucun
+          de ces rôles ne peut valider seul l’ensemble.
         </p>
 
-        <GuideTable
-          headers={["Responsable", "Ce qu’il doit valider", "Preuve livrée"]}
-          rows={[
-            [
-              "Propriétaire métier",
-              "base, exceptions, bénéfices et indicateur",
-              "journal daté et règle de calcul",
-            ],
-            [
-              "Utilisateurs référents",
-              "nouveau flux, charge déplacée et formation",
-              "scénarios testés et retours nommés",
-            ],
-            [
-              "Direction / finance",
-              "coût horaire, trésorerie, horizon et seuil",
-              "version approuvée du dossier",
-            ],
-            [
-              "Prestataire ou éditeur",
-              "périmètre, exclusions, dépendances et exploitation",
-              "devis, hypothèses, responsabilités et sortie",
-            ],
-            [
-              "Responsable d’exploitation",
-              "mesure après lancement, incidents et continuité",
-              "tableau après 1, 3 et 6 mois et procédure d’alerte",
-            ],
-          ]}
-        />
+        <ul>
+          <li>
+            le responsable métier valide les volumes, les exceptions et le
+            bénéfice attendu ;
+          </li>
+          <li>
+            les utilisateurs vérifient le nouveau travail, la formation et les
+            tâches déplacées ;
+          </li>
+          <li>
+            la direction ou la finance valide le coût horaire, la trésorerie,
+            l’horizon et le seuil d’arrêt ;
+          </li>
+          <li>
+            le prestataire chiffre ce qui est inclus, l’exploitation et la
+            sortie, sans promettre les gains de l’entreprise ;
+          </li>
+          <li>
+            une personne nommée mesure le coût et le résultat après le
+            lancement.
+          </li>
+        </ul>
 
         <p>
           Demandez au prestataire de montrer les coûts et les limites, pas de
@@ -1013,32 +962,30 @@ export default function Page() {
         </p>
 
         <p>
-          Lorsque plusieurs flux, rôles et intégrations entrent dans le
-          périmètre, transformez le dossier économique en critères de réception
+          Lorsque le projet comporte plusieurs flux, rôles et logiciels
+          connectés, transformez le dossier économique en critères de réception
           avec le guide du{" "}
           <Link href="/guides/cahier-des-charges-application-metier">
             cahier des charges d’une application métier
           </Link>
-          . Le bénéfice attendu n’est pas un critère de recette technique ; en
-          revanche, les fonctions, données, droits et mesures nécessaires pour
-          l’obtenir doivent pouvoir être testés.
+          . Le bénéfice attendu n’est pas un critère technique d’acceptation ;
+          en revanche, les fonctions, données, droits et mesures nécessaires
+          pour l’obtenir doivent pouvoir être testés.
         </p>
 
         <GuideInlineCTA
-          title="Faire relire le dossier avant de chiffrer la solution"
-          description="Décrivez le processus, la base mesurée, les options déjà examinées et les inconnues. Le premier échange sert à vérifier le périmètre et les preuves nécessaires ; il ne promet ni ROI ni devis instantané. Si un outil standard ou une simplification suffit, le cadrage doit pouvoir le conclure."
+          title="Savoir si l’application mérite vraiment l’investissement"
+          description="Décrivez le travail actuel, les volumes, les coûts connus et les solutions déjà envisagées. Nous vous aidons à vérifier si le sur-mesure est justifié, si un outil standard ferait mieux ou si une amélioration plus simple suffit — sans vous promettre un ROI avant d’avoir mesuré."
           tags={[
-            "Périmètre vérifié",
-            "Cas inadaptés signalés",
-            "Sans promesse de rentabilité",
+            "Coût complet comparé",
+            "Gains réalistes",
+            "Alternative simple étudiée",
           ]}
-          ctaLabel="Décrire mon processus"
+          ctaLabel="Évaluer mon projet d’application"
           ctaHref="/demarrer-un-projet"
         />
 
-        <h2 id="suivi">
-          9. Remplacer les hypothèses par le réel après 1, 3 et 6 mois
-        </h2>
+        <h3>Vérifiez après 1, 3 et 6 mois si les gains sont réellement là</h3>
 
         <p>
           Le ROI prévisionnel autorise un investissement ; il ne prouve pas son
@@ -1049,45 +996,25 @@ export default function Page() {
           critique après le projet.
         </p>
 
-        <GuideTable
-          headers={["Moment", "Ce qu’il faut regarder", "Décision possible"]}
-          rows={[
-            [
-              "Avant lancement",
-              "base, hypothèses, coût prévu et seuil d’arrêt",
-              "lancer, réduire ou reporter",
-            ],
-            [
-              "Après 1 mois",
-              "utilisateurs actifs, blocages, charge déplacée et coût réel",
-              "corriger l’adoption ou le flux",
-            ],
-            [
-              "Après 3 mois",
-              "temps par dossier, erreurs, volumes et décaissements",
-              "poursuivre, limiter ou renforcer",
-            ],
-            [
-              "Après 6 mois",
-              "bénéfices attribuables cumulés, TCO réel et tendance",
-              "étendre, stabiliser ou arrêter",
-            ],
-            [
-              "Chaque évolution majeure",
-              "nouveau coût et bénéfice supplémentaire attendu",
-              "ouvrir un dossier économique séparé",
-            ],
-          ]}
-        />
+        <ol>
+          <li>
+            <strong>Après un mois :</strong> vérifiez les utilisateurs actifs,
+            les blocages, les tâches déplacées et le coût déjà payé.
+          </li>
+          <li>
+            <strong>Après trois mois :</strong> comparez temps par dossier,
+            erreurs, volumes et décaissements avec la situation de départ.
+          </li>
+          <li>
+            <strong>Après six mois :</strong> remplacez progressivement la
+            prévision par les bénéfices attribuables et le coût réel cumulés.
+          </li>
+        </ol>
 
         <p>
-          Après un mois, une faible adoption peut expliquer l’absence de gain ;
-          elle ne justifie pas de déclarer automatiquement le projet en retard.
-          Vérifiez formation, accès, performance et contournements. Après trois
-          mois, la répétition fournit assez de cas pour comparer des durées et
-          erreurs. Après six mois, vous pouvez commencer à remplacer le scénario
-          par un cumul observé, tout en conservant la saisonnalité et les
-          changements de volume.
+          Une faible adoption peut expliquer un démarrage lent : contrôlez
+          formation, accès et contournements avant de conclure. Gardez aussi la
+          saisonnalité et les changements de volume visibles dans le suivi.
         </p>
 
         <InfoBox variant="blue" title="La feuille de suivi à copier">
@@ -1099,47 +1026,41 @@ export default function Page() {
         </InfoBox>
 
         <p>
-          N’effacez pas le coût déjà engagé lorsque le périmètre change. Séparez
-          le résultat de la première décision du dossier économique de
-          l’évolution. Sinon, une nouvelle promesse peut masquer un
-          investissement initial décevant, ou inversement faire porter à la
-          première version le coût d’un besoin qui n’existait pas au lancement.
+          N’effacez pas le coût déjà engagé lorsque le projet change. Séparez le
+          résultat de la première décision du dossier économique de l’évolution.
+          Sinon, une nouvelle promesse peut masquer un investissement initial
+          décevant, ou inversement faire porter à la première version le coût
+          d’un besoin qui n’existait pas au lancement.
         </p>
 
-        <h2 id="decision">10. Feu vert, pilote, solution simple ou report</h2>
+        <h3>Choisissez : feu vert, pilote, solution simple ou report</h3>
 
         <p>
           La décision finale ne se résume pas à « ROI positif ». Écrivez une
-          phrase que chacun peut contester avec une donnée : option retenue,
-          horizon, investissement maximal, scénario minimal acceptable,
-          hypothèse la plus fragile, preuve suivante et date de réexamen.
+          phrase simple : option retenue, durée étudiée, investissement maximal,
+          résultat minimal acceptable, hypothèse la plus fragile, mesure à
+          obtenir et date de réexamen.
         </p>
 
-        <GuideTable
-          headers={["Verdict", "Conditions observables", "Prochaine action"]}
-          rows={[
-            [
-              "Feu vert",
-              "option dominante dans le scénario prudent, trésorerie disponible, responsabilités et exploitation couvertes",
-              "cadrer le périmètre et les critères de réception",
-            ],
-            [
-              "Pilote",
-              "scénario central positif mais hypothèse de gain, donnée ou intégration fragile",
-              "tester cette hypothèse sur un flux limité",
-            ],
-            [
-              "Solution plus simple",
-              "simplification, fonction existante ou standard satisfait le besoin avec un meilleur rapport valeur/risque",
-              "mettre en œuvre puis mesurer un cycle",
-            ],
-            [
-              "Report",
-              "base absente, règles mouvantes, bénéfice non attribuable, TCO incomplet ou scénario prudent négatif",
-              "observer et fixer un déclencheur de réexamen",
-            ],
-          ]}
-        />
+        <ul>
+          <li>
+            <strong>Feu vert</strong> si l’option reste la meilleure dans le
+            scénario prudent et si la trésorerie peut la financer.
+          </li>
+          <li>
+            <strong>Pilote</strong> si le scénario central est positif, mais
+            qu’un gain, une donnée ou une connexion reste incertain.
+          </li>
+          <li>
+            <strong>Solution plus simple</strong> si une fonction existante ou
+            un logiciel standard satisfait le besoin avec moins de risque.
+          </li>
+          <li>
+            <strong>Report</strong> si le travail actuel n’est pas mesuré, si
+            les règles changent encore ou si les scénarios crédibles restent
+            négatifs.
+          </li>
+        </ul>
 
         <p>
           Un cas adapté à Hagnéré Code possède un processus assez stable, des
@@ -1153,12 +1074,12 @@ export default function Page() {
 
         <p>
           Votre action autonome tient en trois étapes : mesurez un cycle,
-          recopiez les cinq pièces du dossier, puis faites varier capacité
-          réaffectée, délai de montée en charge et TCO. Si la même option reste
-          gagnante et qu’un échéancier de caisse séparé confirme le financement
-          des décaissements, vous avez une base de consultation. Sinon, le
-          calcul a déjà produit de la valeur en évitant un investissement
-          prématuré.
+          recopiez les cinq réponses de départ, puis faites varier la part des
+          heures réellement réutilisées, le retard de mise en service et le coût
+          complet. Si la même option reste gagnante et qu’un échéancier séparé
+          confirme que la trésorerie peut financer les paiements, vous avez une
+          base de consultation. Sinon, le calcul a déjà produit de la valeur en
+          évitant un investissement prématuré.
         </p>
 
         <h2 id="sources">Sources et limites</h2>

@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         url: guideUrl(guide) + "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Cahier des charges d'une application métier : scénarios, recette et modèle",
+        alt: "Cahier des charges d’une application métier pour obtenir des devis comparables",
       },
     ],
     publishedTime: guide.datePublished + "T09:00:00+02:00",
@@ -116,33 +116,32 @@ const faqItems = [
     question:
       "Combien de pages doit faire un cahier des charges d'application métier ?",
     answer:
-      "Il n'existe pas de longueur universelle. Le document est assez précis lorsque chaque candidat peut rejouer les mêmes scénarios, repérer les exceptions, chiffrer le même premier lot et expliquer comment il sera accepté. Cinq scénarios bien décrits avec leurs données, règles, droits et critères de recette valent davantage qu'un long catalogue d'écrans sans priorité.",
+      "Il n’existe pas de longueur idéale. Le document est assez précis lorsque tous les candidats chiffrent la même première version et comprennent les mêmes cas particuliers. Cinq scénarios concrets valent mieux qu’un long catalogue d’écrans sans priorité.",
   },
   {
     question:
       "Qui doit rédiger le cahier des charges : l'entreprise ou le prestataire ?",
     answer:
-      "L'entreprise reste propriétaire des décisions métier : objectifs, priorités, exceptions acceptables, données, personnes habilitées et résultat attendu. Un prestataire peut animer les ateliers, reformuler et révéler les angles morts. Faites toutefois valider chaque scénario par la personne qui réalise réellement le travail et désignez une seule personne capable d'arbitrer.",
+      "L’entreprise décide des objectifs, priorités, exceptions, données, droits et résultats attendus. Un prestataire peut organiser les ateliers et reformuler. Chaque scénario doit toutefois être validé par une personne qui réalise le travail, avec un décideur clairement désigné.",
   },
   {
     question:
       "Faut-il choisir la technologie avant d'envoyer le cahier des charges ?",
     answer:
-      "Généralement non. Décrivez d'abord les usages, volumes, connexions, exigences de continuité et contraintes déjà certaines. Demandez ensuite à chaque candidat de proposer une architecture et de justifier ses compromis, y compris face à un logiciel existant. Une technologie ne devient une contrainte légitime que si elle découle de votre existant, de compétences internes ou d'une politique établie.",
+      "Généralement non. Décrivez d’abord les usages, volumes, connexions et contraintes certaines. Demandez ensuite aux candidats de proposer une solution et de la comparer à un logiciel existant. N’imposez une technologie que si votre système, vos compétences internes ou une règle établie l’exigent réellement.",
   },
   {
     question:
       "Un cahier des charges est-il compatible avec une méthode agile ?",
     answer:
-      "Oui, s'il fixe le résultat et les limites sans prétendre figer chaque écran. Les scénarios prioritaires, règles incontournables, données, responsabilités et critères d'acceptation forment le socle. Les détails d'interface peuvent évoluer si la décision est tracée, que son effet sur le budget et le calendrier est visible, et que les critères de sortie restent compris.",
+      "Oui. Fixez les résultats attendus, les scénarios prioritaires, les règles incontournables, les données, les responsabilités et les critères d’acceptation, sans figer chaque écran. L’interface peut évoluer si l’effet sur le budget, le calendrier et la validation reste visible.",
   },
   {
     question: "Comment obtenir des devis de logiciel réellement comparables ?",
     answer:
-      "Envoyez à tous les candidats le même dossier, les mêmes exemples anonymisés, les mêmes volumes et une feuille de réponse commune. Demandez de distinguer hypothèses, exclusions, licences tierces, reprise de données, recette, déploiement, maintenance et réversibilité. Une différence de prix n'a de sens qu'après rapprochement de ces lignes.",
+      "Envoyez à tous le même document, les mêmes exemples anonymisés, les mêmes volumes et la même grille de réponse. Faites séparer hypothèses, exclusions, licences, reprise de données, tests, mise en production, maintenance et restitution. Vous pourrez alors expliquer les écarts de prix.",
   },
 ];
-
 
 export default function Page() {
   return (
@@ -165,7 +164,7 @@ export default function Page() {
           { label: "Cahier des charges d'une application métier" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Un dossier utile permet à chaque candidat de rejouer les mêmes scénarios métier, de chiffrer la même première version utile (V1) et de dire exactement comment le résultat sera vérifié. Voici le modèle, la méthode de recette et un exemple fictif complet."
+        heroDescription="Vous voulez faire développer un outil interne, mais chaque prestataire comprend un projet différent ? Ce guide et son modèle gratuit vous aident à expliquer le besoin, obtenir des devis comparables et éviter les désaccords en fin de projet."
         heroAction={{
           href: "#telecharger-kit",
           label: "Télécharger le modèle",
@@ -175,17 +174,17 @@ export default function Page() {
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel={"Publié le " + formatGuideDate(guide.datePublished)}
+        updatedLabel={"Mis à jour le " + formatGuideDate(guide.dateModified)}
         keyPoints={[
           {
             number: "01",
-            title: "7 livrables concrets",
+            title: "Besoin compris de tous",
             description: "",
             color: "violet",
           },
           {
             number: "02",
-            title: "Scénarios + recette",
+            title: "Devis réellement comparables",
             description: "",
             color: "blue",
           },
@@ -234,51 +233,30 @@ export default function Page() {
       >
         <p className="lead">
           <strong>
-            Le bon livrable n&apos;est ni un roman ni une liste de boutons.
-          </strong>{" "}
-          C&apos;est un dossier dans lequel un développeur, un éditeur de
-          logiciel et votre responsable métier comprennent la même chose. Chacun
-          doit pouvoir suivre un dossier réel de son déclenchement à sa clôture,
-          nommer les exceptions et montrer la preuve qui autorisera la mise en
-          production.
+            Vous expliquez votre projet à trois prestataires. Le premier imagine
+            un simple formulaire, le deuxième une plateforme complète et le
+            troisième vous envoie un prix impossible à comparer. Le problème
+            n&apos;est pas forcément leur compétence : chacun a compris un
+            besoin différent.
+          </strong>
+        </p>
+        <p>
+          Un <strong>cahier des charges d&apos;application métier</strong> est
+          un document qui explique le travail à simplifier, les personnes
+          concernées, les cas particuliers, les données utilisées et la façon de
+          vérifier que la première version fonctionne. Il ne sert pas à dessiner
+          tous les boutons : il sert à obtenir des réponses et des devis portant
+          sur le même projet.
         </p>
 
-        <InfoBox
-          variant="blue"
-          title="À la fin, votre dossier tient en 7 livrables"
-        >
-          <ol className="mb-0 mt-2 space-y-1.5 pl-5">
-            <li>
-              <strong>une synthèse de décision</strong> : problème, résultat,
-              périmètre et décideur ;
-            </li>
-            <li>
-              <strong>5 à 8 scénarios métier prioritaires</strong>, avec leurs
-              exceptions ;
-            </li>
-            <li>
-              <strong>un dictionnaire des données</strong> et des exemples
-              anonymisés ;
-            </li>
-            <li>
-              <strong>une matrice des rôles et des droits</strong> ;
-            </li>
-            <li>
-              <strong>la carte des intégrations</strong>, y compris leurs pannes
-              possibles ;
-            </li>
-            <li>
-              <strong>
-                un plan de recette, de migration et de retour arrière
-              </strong>{" "}
-              ;
-            </li>
-            <li>
-              <strong>une matrice des responsabilités</strong> pour construire,
-              exploiter et sortir du contrat.
-            </li>
-          </ol>
-        </InfoBox>
+        <p>
+          La réponse simple est de partir de situations réelles : comment un
+          dossier arrive, qui le traite, où il bloque, qui valide et ce qui doit
+          ressortir à la fin. Avec cinq à huit scénarios prioritaires, des
+          exemples anonymisés et des critères d&apos;acceptation clairs, vous
+          pouvez décider si le sur-mesure est justifié, comparer les offres et
+          limiter les malentendus pendant la réalisation.
+        </p>
 
         <p>
           Cette approche ne suppose pas que le sur-mesure soit la bonne réponse.
@@ -307,9 +285,10 @@ export default function Page() {
           </p>
           <p className="mb-0">
             Réservez aussi du temps pour relire les scénarios, répondre aux
-            questions et valider la recette. L&apos;effort dépend du nombre de
-            parcours, d&apos;exceptions, de sources de données et
-            d&apos;intégrations ; aucune durée universelle ne serait sérieuse.
+            questions, puis vérifier et accepter la version. L&apos;effort
+            dépend du nombre de parcours, d&apos;exceptions, de sources de
+            données et d&apos;intégrations ; aucune durée universelle ne serait
+            sérieuse.
           </p>
         </InfoBox>
 
@@ -317,82 +296,45 @@ export default function Page() {
           items={[
             {
               id: "dossier-final",
-              label: "1. Le dossier final en 7 livrables",
+              label: "1. Le modèle d’une page à remplir",
             },
-            { id: "scenarios", label: "2. Décrire 5 à 8 scénarios métier" },
+            {
+              id: "v1",
+              label: "2. Choisir la première version et comparer les offres",
+            },
+            { id: "scenarios", label: "3. Décrire 5 à 8 scénarios métier" },
             {
               id: "regles-donnees-droits",
-              label: "3. Règles, données, droits et intégrations",
+              label:
+                "4. Expliquer règles, données, droits et logiciels connectés",
             },
-            { id: "v1", label: "4. Couper une V1 sans déplacer le problème" },
-            { id: "recette", label: "5. Écrire la recette avant le devis" },
-            { id: "responsabilites", label: "6. Répartir les responsabilités" },
+            { id: "recette", label: "5. Décider comment accepter la version" },
+            { id: "responsabilites", label: "6. Écrire qui fait quoi" },
             {
               id: "exigences-transverses",
-              label: "7. Sécurité, RGPD, continuité et sobriété",
+              label: "7. Adapter sécurité et continuité aux risques réels",
             },
             { id: "exemple", label: "8. Exemple illustratif fictif" },
-            { id: "comparer", label: "9. Comparer les offres et agir" },
             { id: "sources", label: "Sources officielles consultées" },
           ]}
         />
 
-        <h2 id="dossier-final">
-          1. Commencez par le dossier que vous voulez recevoir
-        </h2>
+        <h2 id="dossier-final">1. Remplissez d’abord ce modèle d’une page</h2>
 
         <p>
-          Avant la première réunion, créez les sept blocs ci-dessous. Ils
-          peuvent vivre dans un document principal et quelques tableaux annexes.
-          Leur rôle n&apos;est pas de tout prévoir : ils rendent visibles les
-          décisions qui changent le prix, le risque ou l&apos;acceptation du
+          Cette page suffit pour une première discussion. Les annexes viennent
+          seulement lorsqu’une règle, une donnée ou une connexion exige plus de
+          précision. Son rôle n&apos;est pas de tout prévoir : elle rend
+          visibles les décisions qui changent le prix ou l&apos;acceptation du
           logiciel.
         </p>
-
-        <GuideTable
-          headers={["Livrable", "Question à trancher", "Preuve minimale"]}
-          rows={[
-            [
-              "Synthèse",
-              "Pourquoi agir, pour qui et quel résultat observer ?",
-              "Un objectif, un indicateur actuel, une cible et un décideur",
-            ],
-            [
-              "Scénarios",
-              "Que se passe-t-il du déclencheur au résultat ?",
-              "5 à 8 parcours avec variantes et exceptions",
-            ],
-            [
-              "Données",
-              "Quelles informations entrent, changent, sortent et disparaissent ?",
-              "Dictionnaire, volumes et fichiers anonymisés",
-            ],
-            [
-              "Droits",
-              "Qui peut voir, créer, modifier, valider ou supprimer ?",
-              "Matrice rôles × actions × périmètres",
-            ],
-            [
-              "Intégrations",
-              "Quels systèmes échangent quoi et que faire en cas d'échec ?",
-              "Carte des flux, responsable et mode dégradé",
-            ],
-            [
-              "Recette et bascule",
-              "Comment prouver que le lot fonctionne sans perdre l'existant ?",
-              "Jeux d'essai, migration et retour arrière",
-            ],
-            [
-              "Responsabilités",
-              "Qui fournit, décide, réalise, vérifie, exploite et restitue ?",
-              "Un responsable et une preuve par activité",
-            ],
-          ]}
-        />
 
         <p>
           Voici une ossature à copier dans votre outil de rédaction. Elle reste
           volontairement courte : les annexes portent les données répétitives.
+          Dans le modèle, <strong>V1</strong> désigne la première version assez
+          complète pour être réellement utilisée, pas une démonstration ni une
+          accumulation de fonctions secondaires.
         </p>
 
         <FormulaBox>
@@ -401,29 +343,29 @@ export default function Page() {
             "- Problème observé :",
             "- Résultat métier attendu :",
             "- Indicateur actuel / cible / méthode de mesure :",
-            "- Sponsor et décideur final :",
+            "- Dirigeant qui porte le projet et décideur final :",
             "- Budget, date ou contrainte réellement fixe :",
             "",
-            "2. Périmètre",
-            "- Équipe et processus concernés :",
-            "- Scénarios de V1 :",
-            "- Reporté après V1 :",
-            "- Explicitement hors périmètre :",
+            "2. Ce qui est inclus",
+            "- Équipe et travail concernés :",
+            "- Situations traitées dans la première version :",
+            "- Reporté après la première version :",
+            "- Explicitement exclu :",
             "",
             "3. Scénarios métier",
-            "- Déclencheur, acteurs, étapes, règles, exceptions, résultat, preuve :",
+            "- Déclencheur, acteurs, étapes, règles, exceptions, résultat et contrôle :",
             "",
-            "4. Données, droits et intégrations",
-            "- Dictionnaire, volumes, qualité, conservation, rôles, flux et pannes :",
+            "4. Données, droits et logiciels connectés",
+            "- Sens des données, volumes, qualité, conservation, rôles, échanges et pannes :",
             "",
-            "5. Recette et bascule",
-            "- Jeux d'essai, critères d'acceptation, migration et retour arrière :",
+            "5. Vérification et mise en service",
+            "- Données d'essai, résultats attendus, reprise des données et retour à l'ancien outil :",
             "",
             "6. Responsabilités et exploitation",
             "- Fournitures, décisions, développement, validation, support et sortie :",
             "",
             "7. Réponse attendue du candidat",
-            "- Solution, alternatives, hypothèses, exclusions, coût et preuves livrées :",
+            "- Solution, autres options étudiées, suppositions, exclusions, coût et éléments remis :",
           ].join("\n")}
         </FormulaBox>
 
@@ -432,16 +374,91 @@ export default function Page() {
           title="Trois éléments ne doivent jamais être implicites"
         >
           <p className="mb-0">
-            Écrivez noir sur blanc ce qui est <strong>hors périmètre</strong>,
-            qui a le pouvoir d&apos;<strong>arbitrer</strong> et quelle preuve
-            déclenche l&apos;<strong>acceptation</strong>. Sans eux, une même
-            phrase peut encore produire plusieurs projets et plusieurs devis
-            incomparables.
+            Écrivez noir sur blanc ce qui est <strong>exclu</strong>, qui a le
+            pouvoir d&apos;<strong>arbitrer</strong> et quel résultat déclenche
+            l&apos;<strong>acceptation</strong>. Sans eux, une même phrase peut
+            encore produire plusieurs projets et plusieurs devis incomparables.
           </p>
         </InfoBox>
 
+        <h2 id="v1">
+          2. Choisissez la première version avant de demander un prix
+        </h2>
+
+        <p>
+          Pour chaque besoin, posez d’abord la question la moins coûteuse :
+          faut-il conserver le fonctionnement actuel, corriger l’organisation,
+          acheter un outil, relier deux logiciels ou développer ? La première
+          version ne garde que les situations sans lesquelles l’équipe ne peut
+          pas obtenir un résultat fiable.
+        </p>
+
+        <GuideTable
+          headers={[
+            "Réponse possible",
+            "Quand elle est crédible",
+            "Question à trancher",
+          ]}
+          rows={[
+            [
+              "Conserver ou corriger",
+              "Le coût actuel reste acceptable ou le blocage vient surtout d’une règle ou d’un rôle flou.",
+              "Quelle étape disparaît sans nouveau logiciel ?",
+            ],
+            [
+              "Acheter un outil existant",
+              "Le besoin est courant et l’équipe peut adopter son fonctionnement.",
+              "Les scénarios prioritaires fonctionnent-ils avec vos cas réels ?",
+            ],
+            [
+              "Relier les outils",
+              "Deux logiciels conviennent mais imposent une ressaisie stable.",
+              "Que se passe-t-il si un échange échoue ou est relancé ?",
+            ],
+            [
+              "Configurer une plateforme",
+              "Le flux évolue encore et les limites de volume, licence et export sont acceptables.",
+              "Pouvez-vous récupérer les données et changer de solution ?",
+            ],
+            [
+              "Développer sur mesure",
+              "Une règle, une intégration ou un usage est réellement particulier.",
+              "Quel scénario justifie ce coût et quelle alternative a été écartée ?",
+            ],
+          ]}
+        />
+
+        <h3>Donnez la même feuille de réponse à chaque candidat</h3>
+
+        <p>
+          Demandez pour chaque scénario : couvert, partiel, reporté ou exclu ;
+          hypothèses sur les volumes et les données ; travail du prestataire et
+          du client ; coût initial et récurrent ; tests ; éléments restitués en
+          sortie. Un prix ne devient comparable qu’après cette normalisation.
+        </p>
+
+        <InfoBox variant="blue" title="Trois signaux d’une offre encore floue">
+          Les exceptions sont renvoyées à plus tard, la proposition ne sépare
+          pas inclus et exclu, ou personne ne prépare les cas de test. Faites
+          corriger ces points avant de comparer les totaux.
+        </InfoBox>
+
+        <p>
+          Le{" "}
+          <a
+            href="https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Référentiel général d&apos;écoconception des services numériques
+          </a>{" "}
+          invite aussi à questionner la nécessité des fonctions et à documenter
+          les alternatives. Classez chaque demande : utile maintenant, utile
+          plus tard ou non justifiée.
+        </p>
+
         <h2 id="scenarios">
-          2. Écrivez 5 à 8 scénarios métier, pas une liste d&apos;écrans
+          3. Écrivez 5 à 8 scénarios métier, pas une liste d&apos;écrans
         </h2>
 
         <p>
@@ -455,27 +472,22 @@ export default function Page() {
         <h3>Le gabarit d&apos;un scénario exploitable</h3>
 
         <p>
-          <strong>
-            Exemple fil rouge entièrement fictif — Alp&apos;Interventions.
-          </strong>{" "}
-          Les personnes, montants et règles ci-dessous servent uniquement à
-          montrer la méthode ; ils ne décrivent aucun client ni résultat réel.
+          Rejouez un dossier récent avec la personne qui l’a traité. Décrivez le
+          résultat attendu sans choisir l’écran à sa place, puis ajoutez une
+          exception réellement rencontrée.
         </p>
 
         <FormulaBox>
           {[
-            "Scénario S-04 — Valider une pièce exceptionnelle",
+            "Scénario S-01 — [verbe + résultat attendu]",
             "",
-            "But : autoriser une pièce coûteuse sans bloquer la clôture courante.",
-            "Déclencheur : un technicien ajoute une pièce à l'intervention.",
-            "Acteurs : technicien, responsable d'agence, comptabilité.",
-            "Préconditions : intervention active, pièce et technicien identifiés.",
-            "Parcours : ajout → contrôle du seuil → validation → clôture → export.",
-            "Règles : au-delà de 500 € HT, validation distincte ; aucune auto-validation.",
-            "Exceptions : responsable absent ; justificatif manquant ; relance d'export.",
-            "Données : montant HT, référence, justificatif, acteur et historique.",
-            "Résultat : pièce validée, refusée ou renvoyée avec un motif traçable.",
-            "Preuve : jeu d'essai + statut final + journal des décisions.",
+            "But : quel travail doit aboutir ?",
+            "Déclencheur : quel événement fait commencer le parcours ?",
+            "Acteurs : qui agit, décide et doit être informé ?",
+            "Parcours normal : quelles étapes mènent au résultat ?",
+            "Règles et exceptions : qu'est-ce qui change la décision ?",
+            "Données : quelles informations entrent, changent et ressortent ?",
+            "Résultat et vérification : qu'observe la personne qui accepte ?",
           ].join("\n")}
         </FormulaBox>
 
@@ -488,24 +500,14 @@ export default function Page() {
               "Le responsable d'agence valide uniquement les interventions de son agence",
             ],
             [
-              "Quand ?",
-              "À la création",
-              "À l'ajout de la pièce, puis après toute modification de son montant ou de sa référence",
-            ],
-            [
               "Selon quelle règle ?",
               "Selon le montant",
-              "Au-delà de 500 € HT, une validation par une autre personne est obligatoire",
+              "La condition et la personne qui tranche sont écrites sans valeur implicite",
             ],
             [
               "Et si cela échoue ?",
               "Afficher une erreur",
-              "Conserver le brouillon, expliquer l'action possible et notifier après trois échecs",
-            ],
-            [
-              "Comment vérifier ?",
-              "Le workflow fonctionne",
-              "Le cas A est validé une fois ; le cas B est refusé et les deux décisions sont journalisées",
+              "Conserver le travail utile, expliquer la suite et permettre une reprise contrôlée",
             ],
           ]}
         />
@@ -545,276 +547,55 @@ export default function Page() {
         </InfoBox>
 
         <h2 id="regles-donnees-droits">
-          3. Faites apparaître règles, données, droits et intégrations
+          4. Expliquez les règles, les données, les droits et les logiciels
+          connectés
         </h2>
 
         <p>
-          Le scénario raconte le mouvement. Quatre annexes décrivent ce qui le
-          rend fiable : règles de gestion, données, droits et systèmes
-          connectés. C&apos;est ici que se cachent une grande partie des écarts
-          de devis.
+          Le scénario raconte le travail. Quatre annexes courtes rendent ce
+          travail fiable. Ne les remplissez que pour les éléments réellement
+          utilisés dans la première version.
         </p>
 
-        <h3>Une règle : condition, décision, exception</h3>
-
         <GuideTable
-          headers={[
-            "ID",
-            "Condition",
-            "Comportement attendu",
-            "Exception / arbitre",
-          ]}
+          headers={["Annexe", "Ce qu’elle doit répondre", "Exemple de preuve"]}
           rows={[
             [
-              "R-01",
-              "Montant supérieur au seuil du centre",
-              "Ajouter la validation de la direction",
-              "Seuil modifiable par un administrateur habilité",
+              "Règles",
+              "Quelle condition change le résultat, qui tranche et qui peut modifier le seuil ?",
+              "Règle numérotée reliée au scénario et au test.",
             ],
             [
-              "R-02",
-              "Demandeur également validateur prévu",
-              "Interdire l'auto-validation et chercher un suppléant",
-              "La direction désigne le suppléant",
+              "Données",
+              "À quoi sert chaque information, d’où vient-elle, qui la voit et combien de temps reste-t-elle ?",
+              "Petit fichier anonymisé avec cas normal, valeur absente et doublon.",
             ],
             [
-              "R-03",
-              "Même fournisseur, montant et date déjà présents",
-              "Signaler un doublon potentiel sans supprimer",
-              "La comptabilité confirme ou écarte",
+              "Droits",
+              "Qui peut voir, créer, modifier, valider, exporter ou supprimer dans quel périmètre ?",
+              "Essai avec deux rôles et un accès qui doit être refusé.",
+            ],
+            [
+              "Logiciels connectés",
+              "Qu’échangent-ils, qui les possède et que se passe-t-il en cas d’échec ou de relance ?",
+              "Rapport des succès, rejets et doublons potentiels.",
             ],
           ]}
         />
 
         <p>
-          Numérotez les règles afin de les relier aux scénarios, tests et
-          anomalies. Indiquez aussi qui peut modifier un seuil : un paramètre
-          administrable n&apos;a pas le même coût ni le même risque qu&apos;une
-          valeur changée dans le code.
+          Une interface entre logiciels est souvent appelée <strong>API</strong>
+          . La <strong>journalisation</strong> est la trace datée d’une action.
+          Le
+          <strong>mode dégradé</strong> décrit comment continuer temporairement
+          lorsqu’un composant tombe. Ces termes ne dispensent jamais d’écrire le
+          résultat attendu en français.
         </p>
 
-        <h3>Le dictionnaire de données : sens, source et cycle de vie</h3>
-
-        <GuideTable
-          headers={[
-            "Champ",
-            "Finalité et source",
-            "Qualité / volume",
-            "Accès et sort",
-          ]}
-          rows={[
-            [
-              "Centre de coût",
-              "Affecter et contrôler ; référentiel comptable",
-              "Code obligatoire, synchronisé chaque nuit",
-              "Visible au périmètre concerné ; archivé avec la demande",
-            ],
-            [
-              "Pièce jointe",
-              "Justifier ; déposée par l'utilisateur",
-              "PDF ou image, taille maximale à décider",
-              "Accès restreint ; durée selon la finalité",
-            ],
-            [
-              "Statut",
-              "Piloter le flux ; calculé par l'application",
-              "Une valeur dans une liste versionnée",
-              "Visible aux acteurs ; changements journalisés",
-            ],
-          ]}
-        />
-
-        <p>
-          Joignez de petits échantillons <strong>anonymisés</strong> : un
-          fichier propre, un cas incomplet, un doublon et un historique.
-          Précisez volumes, croissance et qualité constatée. « Importer
-          l&apos;Excel » ne dit pas qui nettoie les dates incohérentes ou
-          tranche entre deux valeurs.
-        </p>
-
-        <h3>La matrice des droits : action, périmètre, contrôle</h3>
-
-        <GuideTable
-          headers={["Rôle", "Voir", "Créer / modifier", "Valider / supprimer"]}
-          rows={[
-            [
-              "Demandeur",
-              "Ses demandes",
-              "Créer et modifier un brouillon",
-              "Soumettre ; jamais valider sa demande",
-            ],
-            [
-              "Responsable",
-              "Dossiers de son périmètre",
-              "Commenter et renvoyer",
-              "Valider dans sa délégation",
-            ],
-            [
-              "Comptabilité",
-              "Dossiers validés",
-              "Compléter la référence comptable",
-              "Marquer exporté ; toute correction est tracée",
-            ],
-            [
-              "Administrateur fonctionnel",
-              "Paramètres et journaux nécessaires",
-              "Gérer référentiels et délégations",
-              "Pas de validation métier par défaut",
-            ],
-          ]}
-        />
-
-        <p>
-          Le moindre privilège consiste à n&apos;accorder que les accès
-          nécessaires. Évitez un rôle « administrateur » qui cumule paramétrage,
-          lecture de toutes les données et validation métier sans justification.
-          Cadrez aussi l&apos;ouverture, la modification et la suppression des
-          comptes.
-        </p>
-
-        <h3>Les intégrations : décrivez aussi la panne</h3>
-
-        <p>
-          Pour chaque logiciel connecté, notez le propriétaire, le sens du flux,
-          la fréquence, le format, l&apos;authentification, le volume et la
-          règle en cas d&apos;échec. Une synchronisation n&apos;est pas terminée
-          si une relance crée des doublons ou si personne ne sait rapprocher un
-          rejet.
-        </p>
-
-        <FormulaBox>
-          {[
-            "Intégration I-02 — Application → comptabilité",
-            "- Déclencheur : dossier validé et complet",
-            "- Données : référence, fournisseur, montant, centre, justificatif",
-            "- Résultat : identifiant comptable enregistré une seule fois",
-            "- Échec : dossier en attente, motif visible, aucune création aveugle",
-            "- Relance : manuelle ou automatique selon une règle documentée",
-            "- Rapprochement : rapport des succès, rejets et doublons potentiels",
-            "- Responsables métier et technique : à nommer",
-          ].join("\n")}
-        </FormulaBox>
-
-        <h3>Mini-lexique pour relire les offres</h3>
-
-        <GuideTable
-          headers={["Terme", "Traduction opérationnelle"]}
-          rows={[
-            [
-              "API",
-              "Moyen documenté par lequel deux logiciels échangent des données ou déclenchent une action",
-            ],
-            [
-              "Source de vérité",
-              "Système désigné comme référence quand une information existe à plusieurs endroits",
-            ],
-            [
-              "Journalisation",
-              "Trace datée d'une action, de son auteur et des valeurs modifiées",
-            ],
-            [
-              "Recette",
-              "Vérification formelle à partir de scénarios et de résultats attendus",
-            ],
-            [
-              "Réversibilité",
-              "Capacité à récupérer données, accès et connaissances pour changer de solution",
-            ],
-            [
-              "Mode dégradé",
-              "Façon temporaire de continuer ou reprendre quand un composant est indisponible",
-            ],
-          ]}
-        />
-
-        <h2 id="v1">4. Coupez la V1 sans déplacer le problème</h2>
-
-        <p>
-          Une V1 n&apos;est pas toutes les demandes marquées « importantes ».
-          C&apos;est le plus petit ensemble de scénarios qui produit un résultat
-          exploitable, avec ses contrôles, sa sécurité et sa reprise. Retirer
-          les droits ou la migration pour sauver une date peut simplement
-          déplacer le travail et le risque vers vos équipes.
-        </p>
-
-        <GuideTable
-          headers={["Option", "Quand elle est crédible", "Question de preuve"]}
-          rows={[
-            [
-              "Conserver ou reporter",
-              "Le coût et le risque actuels restent acceptables, ou les règles ne sont pas stabilisées",
-              "Quelle preuve montre qu'investir maintenant est préférable au statu quo ?",
-            ],
-            [
-              "Corriger le processus",
-              "Le défaut vient d'une règle, d'un rôle ou d'une organisation floue",
-              "Quelle étape disparaît sans nouveau logiciel ?",
-            ],
-            [
-              "Acheter un logiciel",
-              "Le besoin est courant et le métier peut adopter son fonctionnement",
-              "Les scénarios prioritaires sont-ils rejoués avec vos cas ?",
-            ],
-            [
-              "Automatiser une jonction",
-              "Deux outils conviennent mais imposent une ressaisie stable",
-              "Que se passe-t-il si l'un refuse ou renvoie deux fois l'opération ?",
-            ],
-            [
-              "Configurer du no-code",
-              "Le flux bouge encore et les limites de plateforme sont acceptées",
-              "Volumes, licences, accès, export et sortie ont-ils été testés ?",
-            ],
-            [
-              "Développer sur mesure",
-              "Les règles ou intégrations sont réellement spécifiques",
-              "Quel scénario justifie le spécifique et quelle alternative est écartée ?",
-            ],
-          ]}
-        />
-
-        <p>
-          Le{" "}
-          <a
-            href="https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Référentiel général d&apos;écoconception des services numériques
-            (RGESN)
-          </a>{" "}
-          invite à questionner la nécessité de chaque fonctionnalité et à
-          documenter les choix face aux alternatives. Appliquez le test :
-          <strong> utile pour la V1, utile plus tard, ou non justifié</strong>.
-          Écrivez ensuite ce qui reste hors périmètre : portail client, pilotage
-          avancé, reprise de tout l&apos;historique ou connexion à un futur
-          outil, selon votre situation.
-        </p>
-
-        <FormulaBox>
-          {[
-            "V1 acceptable = scénarios indispensables",
-            "              + règles qui protègent le résultat",
-            "              + données et droits nécessaires",
-            "              + recette et bascule réalistes",
-            "",
-            "V1 dangereuse  = écrans séduisants",
-            "               - exceptions",
-            "               - reprise des données",
-            "               - exploitation après mise en ligne",
-          ].join("\n")}
-        </FormulaBox>
-
-        <p>
-          Pour choisir ensuite le mode de réalisation, consultez le{" "}
-          <Link href="/guides/no-code-ou-sur-mesure">
-            comparatif no-code ou développement sur mesure
-          </Link>
-          . La technologie reste une réponse au dossier, pas son point de
-          départ.
-        </p>
-
-        <h2 id="recette">5. Écrivez la recette avant de demander un devis</h2>
+        <h2 id="recette">
+          5. Décidez avant le devis comment vous direz « cette version
+          fonctionne »
+        </h2>
 
         <p>
           Un critère de recette décrit un résultat qu&apos;une personne
@@ -877,14 +658,12 @@ export default function Page() {
 
         <FormulaBox>
           {[
-            "Étant donné : une demande de 650 €, un seuil de 500 €",
-            "              et le responsable habituel absent,",
-            "Lorsque :      le demandeur soumet puis le suppléant valide,",
-            "Alors :        le demandeur ne peut pas s'auto-valider,",
-            "              le suppléant voit le motif et le justificatif,",
-            "              la décision est horodatée,",
-            "              un seul export est créé vers la comptabilité,",
-            "              et toute relance retrouve cet export sans le dupliquer.",
+            "Étant donné : un demandeur de l’agence A",
+            "              et un dossier appartenant à l’agence B,",
+            "Lorsque :      le demandeur ouvre directement l’adresse du dossier,",
+            "Alors :        l’accès est refusé sans afficher ses données,",
+            "              la tentative est horodatée,",
+            "              et le responsable prévu peut retrouver ce refus.",
           ].join("\n")}
         </FormulaBox>
 
@@ -903,73 +682,65 @@ export default function Page() {
 
         <InfoBox
           variant="amber"
-          title="Une démonstration n'est pas une recette"
+          title="Une démonstration ne suffit pas pour accepter la version"
         >
           <p className="mb-0">
             Le prestataire maîtrise sa démonstration ; vos utilisateurs
-            maîtrisent leurs cas. La recette commence lorsqu&apos;une personne
-            habilitée exécute le scénario convenu avec les données convenues et
-            compare le résultat à un critère écrit.
+            maîtrisent leurs cas. La vérification commence lorsqu&apos;une
+            personne autorisée exécute la situation prévue avec les bonnes
+            données et compare le résultat à un critère écrit.
           </p>
         </InfoBox>
 
         <h2 id="responsabilites">
-          6. Répartissez les responsabilités de la préparation à
-          l&apos;exploitation
+          6. Écrivez qui fait quoi, de la préparation à la maintenance
         </h2>
 
         <p>
           « Le client fournit les éléments nécessaires » est trop vague. Une
-          responsabilité exploitable nomme un livrable, un propriétaire, une
-          date et la conséquence d&apos;un retard. Une version légère du RACI
-          suffit souvent : qui réalise, qui décide, qui est consulté et qui est
+          responsabilité exploitable nomme ce qui doit être fourni, la personne
+          responsable, une date et la conséquence d&apos;un retard. Écrivez
+          simplement qui réalise, qui décide, qui est consulté et qui doit être
           informé.
         </p>
 
         <GuideTable
-          headers={["Activité", "Entreprise", "Prestataire", "Preuve"]}
+          headers={["Activité", "Qui fait quoi", "Comment valider"]}
           rows={[
             [
               "Scénarios",
-              "Décrit, fait observer, choisit V1 et exclusions",
-              "Questionne et signale les contradictions",
-              "Validation par le décideur",
+              "l’entreprise décrit et choisit la V1 ; le prestataire questionne et signale les contradictions",
+              "validation par le décideur",
             ],
             [
               "Données",
-              "Fournit les sources et tranche les valeurs",
-              "Profile, transforme, rejette et rapporte",
-              "Bilan avant/après et rejets",
+              "l’entreprise fournit les sources et tranche les valeurs ; le prestataire analyse, transforme et signale les rejets",
+              "bilan avant/après et liste des rejets",
             ],
             [
               "Architecture",
-              "Expose contraintes et systèmes existants",
-              "Propose, compare et justifie",
-              "Note de décision et dépendances",
+              "l’entreprise expose ses contraintes ; le prestataire propose, compare et justifie",
+              "note de décision et dépendances",
             ],
             [
-              "Recette",
-              "Prépare les cas, exécute et accepte",
-              "Prépare l'environnement, corrige et prouve",
-              "Procès-verbal et anomalies restantes",
+              "Vérification et acceptation",
+              "l’entreprise prépare les cas, exécute et accepte ; le prestataire prépare l’environnement et corrige",
+              "procès-verbal et anomalies restantes",
             ],
             [
-              "Bascule",
-              "Décide la fenêtre et mobilise les équipes",
-              "Exécute, surveille et sait revenir",
-              "Checklist horodatée",
+              "Mise en service",
+              "l’entreprise choisit l’horaire et mobilise les équipes ; le prestataire exécute, surveille et sait revenir à l’ancienne version",
+              "liste de contrôle horodatée",
             ],
             [
               "Exploitation",
-              "Nomme support et propriétaires métier",
-              "Documente et traite selon le contrat",
-              "Procédures, accès et suivi",
+              "l’entreprise nomme le support et les responsables métier ; le prestataire documente et traite selon le contrat",
+              "procédures, accès et suivi",
             ],
             [
               "Fin de contrat",
-              "Révoque les accès et choisit la destination",
-              "Restitue puis détruit selon l'accord",
-              "Export testé et inventaire des accès",
+              "l’entreprise révoque les accès et choisit la destination ; le prestataire restitue puis détruit selon l’accord",
+              "export testé et inventaire des accès",
             ],
           ]}
         />
@@ -988,9 +759,9 @@ export default function Page() {
           <Link href="/guides/contrat-tma-application">
             contrat TMA d’une application
           </Link>{" "}
-          montre comment relier incident, priorité, niveau de service, capacité,
-          recette et réversibilité sans transformer le RACI du projet en
-          promesse vague de support.
+          montre comment relier incident, priorité, délai, temps réservé,
+          acceptation des corrections et changement de prestataire sans
+          transformer le tableau des rôles en promesse vague de support.
         </p>
 
         <h3>Migration et retour arrière</h3>
@@ -1013,7 +784,8 @@ export default function Page() {
         </p>
 
         <h2 id="exigences-transverses">
-          7. Cadrez sécurité, RGPD, continuité et sobriété à la juste mesure
+          7. Adaptez sécurité, données personnelles et continuité aux risques
+          réels
         </h2>
 
         <p>
@@ -1092,7 +864,7 @@ export default function Page() {
           </li>
           <li>
             Sauvegardes séparées, protégées et restauration testée avec une
-            preuve.
+            trace datée.
           </li>
           <li>
             Procédure d&apos;incident : contact, qualification, information,
@@ -1115,10 +887,10 @@ export default function Page() {
           </a>{" "}
           allant de l&apos;identification des risques à leur acceptation
           explicite. Pour préparer le cahier des charges d&apos;une PME non
-          soumise à une homologation formelle, commencez par un registre interne
-          : risque, impact, mesure, propriétaire, preuve et risque résiduel
-          accepté. Ce registre ne remplace ni une analyse de risques ni une
-          homologation lorsqu&apos;elles sont requises.
+          soumise à une homologation formelle, commencez par un tableau interne
+          : risque, impact, mesure prévue, responsable, contrôle et risque
+          résiduel accepté. Ce tableau ne remplace ni une analyse de risques ni
+          une homologation lorsqu&apos;elles sont requises.
         </p>
 
         <h3>Accessibilité et écoconception</h3>
@@ -1198,7 +970,7 @@ export default function Page() {
           ]}
         />
 
-        <h3>Un scénario relié à sa preuve</h3>
+        <h3>Un scénario relié à ses tests</h3>
 
         <p>
           Le technicien clôture une intervention avec le temps passé, les pièces
@@ -1209,7 +981,11 @@ export default function Page() {
         </p>
 
         <GuideTable
-          headers={["Risque", "Critère de recette fictif", "Preuve"]}
+          headers={[
+            "Risque",
+            "Critère de recette fictif",
+            "Résultat à conserver",
+          ]}
           rows={[
             [
               "Perte en mobilité",
@@ -1242,143 +1018,45 @@ export default function Page() {
         <p>
           Un candidat peut proposer une application mobile, une interface web ou
           une autre architecture. Le dossier n&apos;impose pas la solution ; il
-          impose la continuité, les contrôles, le résultat et sa preuve. Les
-          réponses techniques deviennent ainsi discutables et comparables.
+          impose la continuité, les contrôles, le résultat et sa vérification.
+          Les réponses techniques deviennent ainsi discutables et comparables.
         </p>
 
-        <h2 id="comparer">9. Comparez les offres sur les mêmes hypothèses</h2>
-
-        <p>
-          Envoyez le même dossier et les mêmes annexes à chaque candidat. Donnez
-          un canal commun aux questions, puis partagez les réponses qui
-          modifient le périmètre. Demandez enfin une feuille de réponse imposée
-          : une proposition libre facilite le récit commercial, rarement le
-          rapprochement ligne à ligne.
-        </p>
-
-        <GuideTable
-          headers={["Ligne", "Réponse exigée", "Écart à repérer"]}
-          rows={[
-            [
-              "Couverture",
-              "Scénarios couverts, partiels, reportés ou exclus",
-              "Une fonction citée sans exception ni critère",
-            ],
-            [
-              "Hypothèses",
-              "Volumes, qualité des données, disponibilité et accès tiers",
-              "Une hypothèse optimiste cachée dans le forfait",
-            ],
-            [
-              "Solution",
-              "Alternative étudiée, architecture et compromis",
-              "Une technologie imposée sans contrainte associée",
-            ],
-            [
-              "Prestations",
-              "Cadrage, réalisation, données, tests, formation et déploiement",
-              "Recette ou reprise entièrement laissée au client",
-            ],
-            [
-              "Coûts récurrents",
-              "Licences, hébergement, support, maintenance et évolution",
-              "Un prix initial qui déplace les charges après lancement",
-            ],
-            [
-              "Réversibilité",
-              "Formats d'export, code, documentation, accès et assistance",
-              "Une propriété promise sans accès exploitable",
-            ],
-            [
-              "Acceptation",
-              "Environnements, preuves, corrections et anomalies bloquantes",
-              "Paiement final après une simple démonstration",
-            ],
-          ]}
-        />
-
-        <p>
-          Le prix n&apos;arrive qu&apos;après cette normalisation. Consultez les{" "}
-          <Link href="/guides/prix-logiciel-sur-mesure">
-            postes de prix d&apos;un logiciel sur mesure
-          </Link>{" "}
-          et vérifiez les droits, le dépôt, les comptes et la documentation avec
-          le guide sur la{" "}
-          <Link href="/guides/proprietaire-site-internet-code-source">
-            propriété du code source
-          </Link>
-          .
-        </p>
-
-        <h3>Les signaux d&apos;une offre encore non comparable</h3>
-
-        <ul>
-          <li>
-            Le besoin est reformulé uniquement en écrans et en nombre de jours.
-          </li>
-          <li>
-            Exceptions, qualité des données ou pannes sont « à voir plus tard ».
-          </li>
-          <li>
-            La proposition ne sépare pas inclus, supposé, optionnel et exclu.
-          </li>
-          <li>
-            Personne ne prépare les jeux d&apos;essai ni n&apos;accepte le
-            résultat.
-          </li>
-          <li>
-            La maintenance est un pourcentage sans service ni responsabilité.
-          </li>
-          <li>
-            La réversibilité promet un export sans format, pièces jointes ni
-            test.
-          </li>
-          <li>
-            Une norme ou un hébergeur sert de preuve globale de conformité.
-          </li>
-        </ul>
-
-        <h3>Votre premier scénario dans les prochaines 48 heures</h3>
+        <h3>Votre première page dans les prochaines 48 heures</h3>
 
         <ol>
           <li>
-            Choisissez un dossier récent et faites-le rejouer par son
-            utilisateur.
+            Faites rejouer un dossier récent, son cas normal et une exception.
           </li>
           <li>
-            Écrivez le résultat en une phrase avec un indicateur mesurable.
+            Remplissez le modèle, choisissez ce qui entre dans la première
+            version et rédigez deux tests.
           </li>
           <li>
-            Décrivez le parcours nominal puis trois exceptions déjà rencontrées.
-          </li>
-          <li>
-            Listez les données, logiciels et rôles touchés par ce scénario.
-          </li>
-          <li>
-            Rédigez un test normal et un cas qui doit être refusé ou repris.
-          </li>
-          <li>
-            Faites relire par un utilisateur, le décideur et le propriétaire des
-            données.
+            Faites relire par l’utilisateur, le décideur et la personne
+            responsable des données avant d’envoyer le même dossier aux
+            candidats.
           </li>
         </ol>
 
         <p>
-          Si ces étapes sont impossibles, ne lancez pas encore la consultation.
-          Le blocage révèle une règle non tranchée, une donnée sans propriétaire
-          ou des attentes contradictoires. Les résoudre avant le devis est déjà
-          un résultat de cadrage.
+          Si cette page est impossible à compléter, ne lancez pas encore la
+          consultation. Pour lire ensuite les montants, consultez les{" "}
+          <Link href="/guides/prix-logiciel-sur-mesure">
+            postes de prix d&apos;un logiciel sur mesure
+          </Link>
+          .
         </p>
 
         <GuideInlineCTA
-          title="Votre dossier est-il réellement consultable ?"
-          description="Nous pouvons relire scénarios, exclusions, données, critères de recette et hypothèses avant consultation. Cette revue convient aux processus spécifiques ou critiques ; elle n'est pas destinée à mettre en page un document ou à donner un prix instantané sans périmètre."
+          title="Obtenir des devis qui parlent enfin du même projet"
+          description="Vous avez décrit l’idée mais vous hésitez sur les situations à traiter, les exclusions ou les tests à demander ? Nous relisons le besoin avant consultation pour rendre les réponses comparables et repérer ce qui ferait varier le prix. Cette revue n’est pas un devis instantané sans savoir ce qui est inclus."
           tags={[
-            "Revue argumentée",
-            "Périmètre et risques",
-            "Sans promesse automatique",
+            "Besoin mieux compris",
+            "Devis comparables",
+            "Risques visibles avant signature",
           ]}
-          ctaLabel="Faire relire mon dossier"
+          ctaLabel="Faire relire mon cahier des charges"
           ctaHref="/demarrer-un-projet"
         />
 

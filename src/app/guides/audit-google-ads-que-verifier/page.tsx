@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: guideUrl(guide) + "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Registre d’audit Google Ads reliant preuves de plateforme et preuves métier",
+        alt: "Audit Google Ads : relier clics, prospects et ventes avant d’augmenter le budget",
       },
     ],
     publishedTime: guide.datePublished + "T09:00:00+02:00",
@@ -105,47 +105,46 @@ const faqItems = [
   {
     question: "Par quoi commencer un audit Google Ads ?",
     answer:
-      "Commencez par définir le résultat métier attendu et par vérifier les conversions qui alimentent les rapports et les enchères. Si le compte optimise un clic, une visite ou un formulaire en double alors que l’entreprise attend un prospect qualifié ou une vente, les autres réglages seront interprétés sur une base trompeuse.",
+      "Commencez par répondre à une question : qu’attendez-vous réellement de la campagne — un appel utile, un prospect qualifié ou une vente ? Vérifiez ensuite que Google compte bien cette action, une seule fois. Sans cela, les autres chiffres peuvent être trompeurs.",
   },
   {
     question: "Combien de mois de données faut-il analyser ?",
     answer:
-      "Il n’existe pas de fenêtre universelle. Elle doit couvrir le délai de conversion, les changements récents, le volume disponible et, lorsque c’est pertinent, la saisonnalité. L’audit doit expliquer pourquoi la période choisie permet ou non de conclure.",
+      "Il n’existe pas de durée valable pour tous les comptes. La période doit couvrir assez de ventes, le délai entre le clic et la vente, les changements récents et, si nécessaire, la saisonnalité. L’audit doit dire clairement ce que cette période permet de conclure.",
   },
   {
     question: "Un accès en lecture seule suffit-il pour l’audit ?",
     answer:
-      "Il suffit généralement pour diagnostiquer le compte Google Ads. Search Console, Analytics, Merchant Center, la plateforme de consentement ou le logiciel de suivi commercial (CRM) peuvent nécessiter des droits de lecture ou des exports séparés. Toute modification doit faire l’objet d’une autorisation distincte et d’un état initial conservé.",
+      "Oui, généralement, pour examiner Google Ads sans rien modifier. Il faut parfois aussi lire Analytics, Merchant Center, l’outil de consentement ou le logiciel commercial. Une correction ne doit commencer qu’après votre autorisation et la conservation de l’état initial.",
   },
   {
     question: "Le score d’optimisation suffit-il pour juger le compte ?",
     answer:
-      "Non. Il s’agit d’une estimation produite par Google et reliée aux recommandations de la plateforme. Il ne prouve ni la fiabilité des conversions, ni la qualité des prospects, ni la marge, ni la rentabilité. Chaque recommandation doit être reliée à l’objectif réel avant d’être acceptée.",
+      "Non. Ce score reflète les recommandations de Google ; il ne dit pas si vos contacts sont qualifiés ni si vos ventes sont rentables. Une recommandation n’est utile que si elle sert votre objectif commercial.",
   },
   {
     question: "Faut-il viser un Quality Score de 10 sur 10 ?",
     answer:
-      "Non. Le Quality Score, ou niveau de qualité, sert au diagnostic de la pertinence et de l’expérience pour certains mots-clés des campagnes sur le moteur de recherche, dites Search. Google précise qu’il n’est pas un indicateur clé de performance métier ni une entrée directe de l’enchère. Corrigez une cause vérifiée, pas une note pour elle-même.",
+      "Non. Le Quality Score, ou niveau de qualité, aide à repérer un problème de pertinence sur certaines campagnes Search. Google précise que ce n’est ni un indicateur de résultat commercial ni une entrée directe de l’enchère. Cherchez la cause d’une mauvaise note au lieu de poursuivre le 10 sur 10.",
   },
   {
     question: "Peut-on vraiment auditer Performance Max ?",
     answer:
-      "Oui, avec les rapports, contrôles et historiques disponibles au moment de l’audit, mais sans prétendre à une transparence absolue. Il faut examiner objectifs, éléments créatifs ou textuels appelés actifs, requêtes ou catégories visibles, pages de destination, exclusions, flux et résultats métier. Savoir quelles ventes n’auraient pas existé sans la campagne — son incrémentalité — peut nécessiter un test adapté.",
+      "Oui, dans les limites des rapports disponibles. L’audit peut vérifier les objectifs, les contenus diffusés, les requêtes visibles, les pages, les exclusions, le catalogue et les ventes obtenues. Il ne peut pas prétendre voir chaque décision de l’algorithme ; certaines questions nécessitent un test séparé.",
   },
   {
     question: "Consent Mode rend-il le suivi conforme au RGPD ?",
     answer:
-      "Non. Consent Mode transmet et applique des états de consentement dans les balises Google ; il ne fournit pas la bannière et ne remplace ni l’analyse des finalités, ni l’information, ni la base juridique, ni les autres obligations applicables. L’audit Ads n’est pas une certification RGPD.",
+      "Non. Consent Mode transmet des choix de consentement aux outils Google, mais ne fournit pas la bannière et ne règle pas à lui seul les obligations juridiques. Un audit Google Ads n’est pas une certification RGPD.",
   },
   {
     question: "L’audit autorise-t-il automatiquement une hausse de budget ?",
     answer:
-      "Non. Il peut conclure que les données sont insuffisantes, qu’une correction doit précéder toute hausse, qu’un test isolé est nécessaire ou qu’une tranche supplémentaire peut être encadrée. Même cette dernière décision conserve un plafond, une fenêtre d’observation et un critère de retour arrière.",
+      "Non. Il peut recommander d’attendre, de corriger le suivi, de tester un changement ou d’augmenter progressivement. Une hausse raisonnable conserve toujours un plafond, une durée d’essai et une condition d’arrêt.",
   },
 ];
 
-
-function AdsEvidenceRegister() {
+function AdsDecisionCheck() {
   return (
     <figure
       className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 p-4 shadow-sm sm:p-6 dark:border-zinc-800"
@@ -153,10 +152,10 @@ function AdsEvidenceRegister() {
     >
       <figcaption id="ads-register-title" className="mb-5">
         <span className="block text-xs font-bold uppercase tracking-[0.18em] text-blue-300">
-          Registre à double entrée
+          Exemple de contrôle avant une hausse de budget
         </span>
         <span className="mt-2 block text-lg font-bold text-white">
-          Une preuve Google Ads face à une preuve métier
+          Ce que Google compte et ce que l’entreprise reçoit
         </span>
         <span className="mt-1 block max-w-2xl text-sm leading-relaxed text-zinc-400">
           Exemple illustratif fictif. Ces volumes ne constituent ni un
@@ -188,7 +187,7 @@ function AdsEvidenceRegister() {
         <dl className="mt-4 grid gap-3 sm:grid-cols-2">
           <div className="rounded-lg bg-black/20 p-3">
             <dt className="text-xs font-semibold text-blue-300">
-              Preuve Google Ads
+              Dans Google Ads
             </dt>
             <dd className="mt-1 text-xs leading-relaxed text-zinc-400">
               42 actions « formulaire envoyé » sur la période choisie, avec
@@ -197,7 +196,7 @@ function AdsEvidenceRegister() {
           </div>
           <div className="rounded-lg bg-black/20 p-3">
             <dt className="text-xs font-semibold text-emerald-300">
-              Preuve métier
+              Dans le suivi commercial
             </dt>
             <dd className="mt-1 text-xs leading-relaxed text-zinc-400">
               17 contacts uniques dans le logiciel de suivi commercial (CRM),
@@ -207,7 +206,7 @@ function AdsEvidenceRegister() {
           </div>
           <div className="rounded-lg bg-black/20 p-3">
             <dt className="text-xs font-semibold text-amber-300">
-              Nature et inconnues
+              Ce qui reste à comprendre
             </dt>
             <dd className="mt-1 text-xs leading-relaxed text-zinc-400">
               Écart observé ; doublons, tests, dates, consentement et règle
@@ -216,7 +215,7 @@ function AdsEvidenceRegister() {
           </div>
           <div className="rounded-lg bg-black/20 p-3">
             <dt className="text-xs font-semibold text-violet-300">
-              Décision et vérification
+              Décision raisonnable
             </dt>
             <dd className="mt-1 text-xs leading-relaxed text-zinc-400">
               Correction préalable. Tester l’événement réel et rapprocher les
@@ -250,33 +249,33 @@ export default function Page() {
           { label: "Audit Google Ads : que vérifier ?" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Un audit utile réconcilie ce que Google compte avec ce que l’entreprise obtient : conversions réelles, demande achetée, qualité des prospects, ventes, accès et décisions. Il peut aussi conclure qu’il est trop tôt pour augmenter le budget."
+        heroDescription="Vous payez des clics, Google annonce des conversions, mais vous ne savez pas combien sont devenues de vrais prospects ou de vraies ventes ? Un audit vérifie cette chaîne avant de vous conseiller de corriger, tester ou augmenter le budget."
         heroAction={{
-          href: "#registre",
-          label: "Voir le registre de preuves",
+          href: "#verdict",
+          label: "Voir les 4 décisions possibles",
         }}
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel={"Publié le " + formatGuideDate(guide.datePublished)}
+        updatedLabel={"Mis à jour le " + formatGuideDate(guide.dateModified)}
         keyPoints={[
           {
             number: "01",
-            title: "Preuves Ads et métier rapprochées",
+            title: "Conversions réellement vérifiées",
             description: "",
             color: "violet",
           },
           {
             number: "02",
-            title: "Aucun score global",
+            title: "Requêtes et pages contrôlées",
             description: "",
             color: "blue",
           },
           {
             number: "03",
-            title: "4 décisions de sortie",
+            title: "Décision de budget explicite",
             description: "",
             color: "emerald",
           },
@@ -315,225 +314,81 @@ export default function Page() {
       >
         <p className="lead">
           <strong>
-            Un compte peut afficher des conversions, un score d’optimisation
-            élevé et des annonces jugées « excellentes » tout en envoyant
-            l’algorithme vers le mauvais résultat métier.
+            Chaque mois, la facture Google Ads tombe. Le tableau de bord affiche
+            des clics et des conversions, mais personne ne sait dire combien de
+            ces conversions sont devenues des appels utiles, des devis signés ou
+            des ventes rentables.
           </strong>{" "}
-          Auditer Google Ads ne consiste donc pas à additionner des réglages. Il
-          faut rapprocher chaque preuve de plateforme d’un contact, d’une
-          commande, d’une vente ou d’une limite observable hors de Google.
+          Dans cette situation, augmenter le budget revient à accélérer sans
+          savoir si l’argent va au bon endroit. La réponse simple est de
+          vérifier d’abord ce que Google mesure, les recherches payées, les
+          pages d’arrivée et ce que votre équipe commerciale reçoit réellement.
         </p>
 
         <p>
-          Avant d’augmenter le budget, l’audit doit vérifier quatre chaînes :
-          <strong> mesure</strong>, <strong>demande achetée</strong>,{" "}
-          <strong>promesse jusqu’à la destination</strong> et{" "}
-          <strong>valeur métier</strong>. Sa conclusion n’est pas toujours «
-          optimiser puis dépenser plus ». Elle peut être : données
-          insuffisantes, correction préalable, test isolé ou hausse encadrée.
+          Un <strong>audit Google Ads</strong> est un contrôle ponctuel du
+          compte et du parcours qui suit le clic. Il doit déboucher sur une
+          décision compréhensible par un dirigeant :{" "}
+          <strong>attendre faute de données</strong>,{" "}
+          <strong>corriger avant de dépenser davantage</strong>,{" "}
+          <strong>tester un changement précis</strong> ou{" "}
+          <strong>augmenter progressivement avec une limite</strong>. Ce guide
+          vous montre quoi demander et comment repérer un audit qui se contente
+          de commenter les écrans de Google.
         </p>
 
         <InfoBox
           variant="amber"
-          title="Une photographie ne prouve pas une cause"
+          title="Ce qu’un audit ne peut pas vous promettre"
         >
-          Un audit peut constater un écart, documenter une configuration et
-          proposer une hypothèse. Il ne peut pas attribuer honnêtement toute
-          variation à un seul réglage, projeter un gain certain ou certifier la
-          conformité juridique sans méthode et périmètre adaptés.
+          Il peut montrer un problème, proposer une explication et préparer un
+          test. Il ne peut pas garantir un gain, attribuer chaque baisse à un
+          réglage unique ni certifier la conformité juridique de tous vos
+          traitements de données.
         </InfoBox>
 
         <GuideToc
           items={[
-            { id: "verdict", label: "1. Les quatre sorties possibles" },
-            { id: "portee", label: "2. Ce qu’un audit peut prouver" },
-            { id: "registre", label: "3. Le registre à double entrée" },
-            { id: "avant-compte", label: "4. Avant d’ouvrir le compte" },
-            { id: "acces", label: "5. Accès et photographie initiale" },
-            { id: "conversions", label: "6. Mesure et conversions" },
-            { id: "consentement", label: "7. Consentement et données" },
-            { id: "demande", label: "8. Demande et inventaires achetés" },
             {
-              id: "formats",
-              label: "9. Quatre formats à auditer différemment",
+              id: "point-depart",
+              label: "Avant l’audit : objectif, accès et période",
             },
-            { id: "annonces", label: "10. Annonces et destinations" },
-            { id: "encheres", label: "11. Enchères et automatisations" },
-            { id: "crm", label: "12. Le verdict commercial" },
-            { id: "tests", label: "13. Historique, hypothèses et tests" },
-            { id: "livrable", label: "14. Le livrable professionnel" },
-            { id: "decision", label: "15. Décider sans faux feu vert" },
+            {
+              id: "suivi",
+              label: "1. Le suivi mesure-t-il une action utile ?",
+            },
+            { id: "recherches", label: "2. Quelles recherches payez-vous ?" },
+            { id: "annonces", label: "3. Que promettent les annonces ?" },
+            { id: "pages", label: "4. Que se passe-t-il sur les pages ?" },
+            {
+              id: "contacts",
+              label: "5. Les contacts deviennent-ils clients ?",
+            },
+            {
+              id: "budget",
+              label: "6. Le budget poursuit-il le bon résultat ?",
+            },
+            {
+              id: "cas-complexes",
+              label: "Bloc optionnel : PMax, AI Max et imports",
+            },
+            { id: "livrable", label: "Le résultat à recevoir" },
             { id: "sources", label: "Sources et limites" },
           ]}
         />
 
-        <h2 id="verdict">
-          1. La première réponse de l’audit est une décision, pas une note
-        </h2>
-
-        <GuideTable
-          headers={["Sortie", "Quand elle s’impose", "Action suivante"]}
-          rows={[
-            [
-              "Données insuffisantes",
-              "conversion non testable, accès manquant, période incohérente ou aucun rapprochement métier",
-              "obtenir la preuve absente avant de juger les campagnes",
-            ],
-            [
-              "Correction préalable",
-              "l’algorithme optimise une mauvaise action, les droits sont fragiles ou le parcours perd les contacts",
-              "corriger, vérifier la correction et constituer un nouvel état de référence",
-            ],
-            [
-              "Test isolé",
-              "plusieurs causes restent plausibles et une modification contrôlée peut les départager",
-              "écrire hypothèse, base, variante, fenêtre et arrêt avant le test",
-            ],
-            [
-              "Hausse encadrée",
-              "mesure, demande, capacité et économie sont suffisamment cohérentes pour apprendre avec une tranche supplémentaire",
-              "fixer plafond, fenêtre, indicateurs métier et retour arrière",
-            ],
-          ]}
-        />
-
-        <p>
-          Ces sorties ne forment pas un classement du compte. Une campagne peut
-          être techniquement propre et rester inadaptée à une offre sans marge,
-          à un stock indisponible ou à une équipe qui rappelle trop tard. À
-          l’inverse, une campagne imparfaite peut produire des clients utiles :
-          la priorité consiste alors à préserver ce qui fonctionne pendant le
-          test, pas à reconstruire pour satisfaire une checklist.
-        </p>
-
-        <h2 id="portee">
-          2. Distinguez constat, causalité, projection et certification
+        <h2 id="point-depart">
+          Avant l’audit : fixez l’objectif, les accès et la période
         </h2>
 
         <p>
-          Un <strong>constat</strong> est reproductible : une campagne utilise
-          tel objectif, une requête a déclenché telle dépense, un formulaire
-          s’envoie deux fois. Une <strong>hypothèse causale</strong> explique
-          pourquoi : elle doit encore être testée lorsque d’autres causes
-          tiennent. Une <strong>projection</strong> estime la suite sous des
-          hypothèses explicites. Une <strong>certification</strong> répond à un
-          référentiel et à une méthode distincts ; un audit Ads généraliste n’en
-          crée pas une par son intitulé.
+          Écrivez d’abord le résultat qui paie la campagne, le délai habituel
+          entre clic et vente, la marge utilisable, les zones servies et la
+          capacité de l’équipe à traiter les demandes. La période d’analyse doit
+          couvrir ce cycle et signaler les changements de prix, d’offre, de
+          site, de consentement ou de stock. Sans ce contexte, un coût par
+          conversion peut être exact dans Google et inutile pour décider.
         </p>
-
-        <GuideTable
-          headers={["Formulation", "Preuve minimale", "Limite à écrire"]}
-          rows={[
-            [
-              "Le formulaire est compté deux fois",
-              "test réel, identifiants ou événements datés et rapprochement de la confirmation",
-              "période, navigateur, consentement et configuration testés",
-            ],
-            [
-              "Les requêtes semblent trop larges",
-              "termes visibles, coûts, correspondances et issues métier",
-              "rapport non exhaustif et autres causes de mauvaise qualification",
-            ],
-            [
-              "Cette enchère cause la hausse",
-              "historique de modification et test ou rupture suffisamment isolée",
-              "saisonnalité, concurrence, offre et délai de conversion",
-            ],
-            [
-              "Consent Mode est actif",
-              "états avant choix, acceptation, refus et retrait observés",
-              "fonctionnement technique distinct de la conformité juridique",
-            ],
-          ]}
-        />
-
-        <p>
-          Bannissez donc les titres « budget gaspillé » calculés en appliquant
-          un scénario idéal à chaque clic non converti. Sans contrefactuel — ce
-          qui se serait passé avec une autre décision — et sans marge
-          attribuable, il s’agit au mieux d’un potentiel à examiner, pas d’une
-          économie certaine.
-        </p>
-
-        <h2 id="registre">
-          3. Recevez chaque constat dans un registre à double entrée
-        </h2>
-
-        <p>
-          Le registre empêche un export d’outil de se faire passer pour une
-          décision. Chaque ligne contient une question, une preuve Google datée,
-          une preuve hors plateforme, sa nature, l’action ou le test, le
-          responsable, le test d’acceptation — la preuve que la correction
-          fonctionne —, le retour arrière et la limite. Une ligne sans preuve
-          métier reste explicitement incomplète.
-        </p>
-
-        <AdsEvidenceRegister />
-
-        <p>
-          Copiez ces colonnes dans votre tableur :{" "}
-          <strong>
-            ID · question · preuve Ads · preuve métier · nature · priorité ·
-            action ou test · responsable · acceptation · retour arrière · limite
-          </strong>
-          . N’ajoutez pas de moyenne générale. Une conversion cassée, un compte
-          inaccessible ou une destination interdite ne doit pas être compensé
-          par dix bonnes notes ailleurs.
-        </p>
-
-        <h2 id="avant-compte">
-          4. Définissez le métier avant d’ouvrir le compte
-        </h2>
-
-        <p>
-          Une même dépense n’a pas le même sens selon la marge, le délai de
-          vente et la capacité de l’entreprise. Avant le premier export,
-          consignez le produit ou service, les zones réellement servies, les
-          périodes de stock, les promotions, les changements récents, la
-          qualification d’un prospect, la vente attendue et qui peut traiter le
-          volume.
-        </p>
-
-        <GuideTable
-          headers={[
-            "Question",
-            "Pourquoi elle change l’audit",
-            "Preuve à obtenir",
-          ]}
-          rows={[
-            [
-              "Quel résultat paie réellement la campagne ?",
-              "un formulaire, un prospect qualifié et une vente ne valent pas la même chose",
-              "définition CRM, statut et marge ou valeur utilisable",
-            ],
-            [
-              "Quel est le délai de conversion ?",
-              "les jours récents peuvent être incomplets et fausser la comparaison",
-              "durée observée entre clic, contact, qualification et vente",
-            ],
-            [
-              "Quelle capacité peut absorber la demande ?",
-              "plus de contacts peut dégrader délai de rappel, qualité et satisfaction",
-              "horaires, routage, stock, équipe et rejets",
-            ],
-            [
-              "Qu’est-ce qui a changé ?",
-              "offre, prix, site, consentement ou force de vente peuvent expliquer la rupture",
-              "journal daté des changements internes et publicitaires",
-            ],
-          ]}
-        />
-
-        <p>
-          La période d’analyse découle de ces éléments. Imposer trois mois ou
-          douze mois dans tous les comptes ignore le délai de conversion, le
-          volume et la saisonnalité. L’audit doit dire ce que la fenêtre inclut,
-          ce qu’elle exclut et ce qu’elle permet réellement de comparer.
-        </p>
-
-        <h2 id="acces">
-          5. Commencez en lecture seule et conservez l’état initial
-        </h2>
 
         <p>
           Les{" "}
@@ -570,16 +425,14 @@ export default function Page() {
         </p>
 
         <p>
-          La photographie initiale contient au minimum : identifiant, devise,
-          fuseau, pays, campagnes et objectifs actifs, budgets, stratégies
-          d’enchères, utilisateurs, comptes liés, règles, scripts,
-          recommandations auto-appliquées et historique disponible. Exportez ce
-          qui permet de revenir au diagnostic et listez ce qui n’a pas été
-          accessible. Le silence sur un angle mort est plus dangereux que
-          l’angle mort lui-même.
+          Avant toute modification, conservez une photographie datée des
+          campagnes, objectifs, budgets, enchères, utilisateurs, comptes liés,
+          automatisations et historique disponibles. Listez les accès et données
+          absents : une conclusion doit rester partielle lorsque sa preuve
+          manque.
         </p>
 
-        <h2 id="conversions">6. Testez ce que Google appelle une conversion</h2>
+        <h2 id="suivi">1. Le suivi mesure-t-il une action vraiment utile ?</h2>
 
         <p>
           Une <strong>conversion</strong> est une action définie comme utile
@@ -600,9 +453,10 @@ export default function Page() {
         <ol>
           <li>
             <strong>Inventoriez chaque action :</strong> origine, catégorie,
-            principale ou secondaire, valeur, devise, comptage, fenêtre, règle
-            d’attribution — la façon dont la plateforme répartit le crédit — et
-            campagnes qui l’utilisent.
+            principale ou secondaire, valeur, devise, comptage, période pendant
+            laquelle l’action reste rattachée au clic, règle d’attribution — la
+            façon dont la plateforme répartit le crédit — et campagnes qui
+            l’utilisent.
           </li>
           <li>
             <strong>Exécutez l’action réelle :</strong> envoi confirmé,
@@ -668,9 +522,10 @@ export default function Page() {
           pas une intention d’achat.
         </InfoBox>
 
-        <h2 id="consentement">
-          7. Vérifiez ce que le consentement change dans la mesure
-        </h2>
+        <h3>
+          Vérifiez aussi ce que le suivi fait avant et après le choix de
+          l’utilisateur
+        </h3>
 
         <p>
           Une CMP, ou plateforme de gestion du consentement, recueille et
@@ -690,7 +545,7 @@ export default function Page() {
         <GuideTable
           headers={[
             "État à tester",
-            "Preuve technique",
+            "Ce qu’il faut observer",
             "Question de contrôle",
           ]}
           rows={[
@@ -734,8 +589,8 @@ export default function Page() {
           guide ne remplace pas un avis juridique ou une analyse RGPD.
         </p>
 
-        <h2 id="demande">
-          8. Identifiez les recherches et inventaires réellement achetés
+        <h2 id="recherches">
+          2. Quels mots, zones et horaires payez-vous réellement ?
         </h2>
 
         <p>
@@ -785,88 +640,9 @@ export default function Page() {
           de la zone servie et du résultat observé.
         </p>
 
-        <h2 id="formats">
-          9. Recherche, Performance Max, AI Max et Shopping demandent des
-          branches différentes
+        <h2 id="annonces">
+          3. Les annonces promettent-elles ce que l’offre délivre ?
         </h2>
-
-        <p>
-          Ces noms ne désignent pas quatre niveaux de qualité. Les campagnes
-          <strong> Search</strong> diffusent des annonces sur le moteur de
-          recherche. <strong>Performance Max (PMax)</strong> répartit la
-          diffusion sur plusieurs emplacements Google à partir d’objectifs et
-          d’éléments fournis. <strong>AI Max</strong> ajoute des fonctions
-          automatisées aux campagnes Search. <strong>Shopping</strong> s’appuie
-          sur un catalogue de produits. On ne leur applique donc pas une seule
-          checklist.
-        </p>
-
-        <GuideTable
-          headers={["Format utilisé", "Contrôles propres", "Limite à déclarer"]}
-          rows={[
-            [
-              "Réseau de Recherche (Search)",
-              "termes, correspondances, négatifs, marque, annonces, extensions, zones et pages",
-              "rapport de requêtes non exhaustif et enchère contextuelle",
-            ],
-            [
-              "Performance Max (PMax)",
-              "objectifs, éléments créatifs ou textuels (actifs), requêtes ou catégories visibles, pages, extension d’URL, exclusions, flux et résultats du logiciel commercial",
-              "rapports, métriques et historique disponibles au moment de l’audit",
-            ],
-            [
-              "AI Max pour Search",
-              "adaptation du texte, extension d’URL, contrôles de marque et correspondance réellement activés",
-              "fonctionnalité volatile ; vérifier le compte et la documentation actuelle",
-            ],
-            [
-              "Shopping",
-              "refus, flux, prix, stock, devise, variantes, destination et achat",
-              "qualité du flux et du site distincte de l’enchère",
-            ],
-          ]}
-        />
-
-        <p>
-          Google expose un{" "}
-          <a
-            href="https://support.google.com/google-ads/answer/16327396?hl=fr"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            rapport de Performance Max
-          </a>{" "}
-          avec des informations sur termes, formats et pages, assorties de
-          limites. Il documente aussi les{" "}
-          <a
-            href="https://support.google.com/google-ads/answer/14337773?hl=fr"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            exclusions liées à l’extension d’URL finale
-          </a>
-          . Auditer PMax est donc possible, sans promettre de voir tout ce qui
-          contribue à chaque impression. Pour savoir si la campagne capte des
-          ventes qui auraient eu lieu sans elle — ce que mesure l’incrémentalité
-          — ou si elle reprend la demande de marque, il faut une preuve adaptée,
-          pas le seul nom du format.
-        </p>
-
-        <p>
-          Si AI Max est actif, sa{" "}
-          <a
-            href="https://support.google.com/google-ads/answer/15910187?hl=fr"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            documentation actuelle
-          </a>{" "}
-          décrit notamment adaptation du texte, extension d’URL et contrôles de
-          marque. Notez ce qui était actif pendant la période ; ne relisez pas
-          des résultats historiques avec la configuration d’aujourd’hui.
-        </p>
-
-        <h2 id="annonces">10. Suivez la promesse jusqu’à la destination</h2>
 
         <p>
           Vérifiez l’approbation, la promesse, le prix, les conditions, les
@@ -899,6 +675,10 @@ export default function Page() {
           un objectif de dix sur dix indépendant des ventes.
         </p>
 
+        <h2 id="pages">
+          4. La page permet-elle de comprendre l’offre et d’aller au bout ?
+        </h2>
+
         <p>
           Ouvrez ensuite chaque destination sur mobile et ordinateur. Contrôlez
           URL, redirections, contenu promis, prix, disponibilité, formulaire,
@@ -910,8 +690,43 @@ export default function Page() {
           au lieu d’attribuer mécaniquement l’échec à l’annonce.
         </p>
 
-        <h2 id="encheres">
-          11. Demandez ce que l’algorithme optimise réellement
+        <h2 id="contacts">
+          5. Les contacts publicitaires deviennent-ils de vrais clients ?
+        </h2>
+
+        <p>
+          Reliez chaque chiffre Google à un contact unique, une qualification,
+          un devis, une vente et, lorsque c’est pertinent, une marge. Le CRM —
+          logiciel de gestion de la relation client — doit aussi faire
+          apparaître spam, doublons, appels non décrochés, délai de rappel et
+          motifs de rejet. Un coût par prospect bas peut cacher des demandes
+          hors cible.
+        </p>
+
+        <AdsDecisionCheck />
+
+        <p>
+          Dans le registre d’audit, placez côte à côte : question, chiffre
+          Google Ads, résultat commercial, inconnue, priorité, correction ou
+          test, responsable, résultat attendu et condition d’arrêt. Les deux
+          systèmes ne doivent pas forcément afficher le même total : dates,
+          fenêtres, attribution, consentement, modélisation et identifiants
+          peuvent créer des écarts légitimes, à expliquer plutôt qu’à masquer.
+        </p>
+
+        <InfoBox
+          variant="amber"
+          title="Un retour sur dépenses publicitaires (ROAS) n’est pas automatiquement une rentabilité"
+        >
+          Le retour sur dépenses publicitaires dépend de la valeur correctement
+          importée. La rentabilité dépend aussi de la marge, des coûts de
+          service, des remboursements, des délais et de l’attribution. Ne
+          qualifiez pas le compte de rentable sans pont explicite vers le
+          résultat de l’entreprise.
+        </InfoBox>
+
+        <h2 id="budget">
+          6. Le budget et les enchères poursuivent-ils le bon résultat ?
         </h2>
 
         <p>
@@ -971,39 +786,7 @@ export default function Page() {
           indépendant.
         </p>
 
-        <h2 id="crm">
-          12. Le CRM, logiciel de suivi commercial, peut inverser le verdict
-        </h2>
-
-        <p>
-          Le CRM — logiciel de gestion de la relation client — doit distinguer
-          au minimum contact unique, qualification, opportunité et vente selon
-          le cycle réel. Rapprochez spam, doublons, appels non décrochés, délai
-          de rappel, motifs de rejet, stock et capacité. Un coût par prospect
-          bas peut cacher des demandes hors cible ; un coût plus élevé peut
-          rester soutenable si la marge et la signature le justifient.
-        </p>
-
-        <p>
-          Cette réconciliation ne force pas Google Ads et le CRM à afficher le
-          même chiffre. Dates, fenêtres, attribution, consentement, modélisation
-          et identifiants peuvent produire des écarts légitimes. L’audit décrit
-          ces objets avant de les comparer et indique ce qui reste impossible à
-          rapprocher.
-        </p>
-
-        <InfoBox
-          variant="amber"
-          title="Un retour sur dépenses publicitaires (ROAS) n’est pas automatiquement une rentabilité"
-        >
-          Le retour sur dépenses publicitaires dépend de la valeur correctement
-          importée. La rentabilité de l’entreprise dépend aussi de marge, coûts
-          de service, remboursements, délais et attribution. Ne qualifiez pas le
-          compte de rentable tant que le pont entre valeur Google et résultat
-          comptable n’est pas explicite.
-        </InfoBox>
-
-        <h2 id="tests">13. Reliez l’historique à une hypothèse testable</h2>
+        <h3>Expliquez une variation avant de changer plusieurs réglages</h3>
 
         <p>
           L’
@@ -1038,49 +821,104 @@ export default function Page() {
           risque méthodologique.
         </p>
 
-        <h2 id="livrable">
-          14. Exigez un livrable qu’une autre équipe peut exécuter
+        <h2 id="cas-complexes">
+          Bloc optionnel : PMax, AI Max, Shopping et imports hors connexion
         </h2>
 
         <p>
-          Le nombre de pages ou de contrôles ne mesure pas la qualité. Un audit
-          professionnel doit permettre au dirigeant de décider et à une équipe
-          distincte d’appliquer puis de vérifier. Demandez le paquet de sortie
-          suivant :
+          N’ajoutez ce bloc que si ces fonctions sont réellement actives pendant
+          la période. Leur présence ne remplace pas les six questions
+          précédentes et leurs rapports ne rendent pas toute la diffusion
+          observable.
+        </p>
+
+        <GuideTable
+          headers={["Fonction active", "Contrôle propre", "Limite à déclarer"]}
+          rows={[
+            [
+              "Performance Max",
+              "objectifs, éléments, requêtes ou catégories visibles, pages, extension d’URL, exclusions et flux",
+              "niveau de détail disponible dans les rapports au jour de l’audit",
+            ],
+            [
+              "AI Max pour Search",
+              "adaptation du texte, extension d’URL, contrôles de marque et correspondance activés",
+              "configuration et documentation susceptibles d’évoluer",
+            ],
+            [
+              "Shopping",
+              "refus, prix, stock, devise, variantes, destination et achat",
+              "qualité du flux et du site distincte de la stratégie d’enchères",
+            ],
+            [
+              "Imports hors connexion",
+              "identifiant, définition du statut, date, devise, valeur, doublons et fraîcheur du CRM",
+              "un import accepté techniquement ne prouve pas la qualité métier de la donnée",
+            ],
+          ]}
+        />
+
+        <p>
+          Google documente le{" "}
+          <a
+            href="https://support.google.com/google-ads/answer/16327396?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            rapport Performance Max
+          </a>
+          , les{" "}
+          <a
+            href="https://support.google.com/google-ads/answer/14337773?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            exclusions d’extension d’URL
+          </a>{" "}
+          et le{" "}
+          <a
+            href="https://support.google.com/google-ads/answer/15910187?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            fonctionnement d’AI Max
+          </a>
+          . Notez la configuration observée et n’appliquez pas la configuration
+          actuelle à une période historique sans preuve.
+        </p>
+
+        <h2 id="livrable">
+          Exigez un résultat que votre équipe peut comprendre et appliquer
+        </h2>
+
+        <p>
+          Le nombre de pages ne mesure pas la qualité. À la fin, vous devez
+          comprendre ce qui bloque, ce qui fonctionne déjà, ce qui doit changer
+          en premier et comment vérifier l’effet de la correction. Demandez les
+          éléments suivants dans un format que votre équipe peut reprendre :
         </p>
 
         <ol>
           <li>
-            <strong>Note de décision :</strong> objectifs, verdict, blocages et
-            inconnues sur une lecture courte.
+            <strong>Résumé pour décider :</strong> objectif, réponse, blocages
+            et inconnues sur une page courte.
           </li>
           <li>
-            <strong>Périmètre :</strong> comptes, pays, campagnes, période,
-            accès, données vues et exclusions.
+            <strong>Périmètre et point de départ :</strong> comptes, campagnes,
+            période, accès, exclusions, configuration et chiffres à conserver.
           </li>
           <li>
-            <strong>État initial :</strong> configuration et preuves nécessaires
-            pour comparer après intervention.
+            <strong>Registre de preuves :</strong> chiffre Google, résultat
+            commercial, source, inconnue, priorité et limite connue.
           </li>
           <li>
-            <strong>Registre :</strong> preuve Ads, preuve métier, nature,
-            priorité, action, responsable, test d’acceptation et limite.
+            <strong>Plan d’action éditable :</strong> correction ou test,
+            responsable, dépendances, durée, indicateur, règle d’arrêt et retour
+            arrière.
           </li>
           <li>
-            <strong>Liste de tâches éditable :</strong> actions transmissibles,
-            ordre, dépendances, estimation et responsabilité.
-          </li>
-          <li>
-            <strong>Plan de test :</strong> changements isolés, fenêtre,
-            indicateurs, arrêt et retour arrière.
-          </li>
-          <li>
-            <strong>Annexes :</strong> exports bruts utiles, sources et
-            instructions de conservation.
-          </li>
-          <li>
-            <strong>Sortie :</strong> restitution, décisions consignées,
-            propriété des comptes et révocation des accès.
+            <strong>Passation :</strong> exports utiles, sources, décisions,
+            propriété des comptes et révocation des accès temporaires.
           </li>
         </ol>
 
@@ -1091,48 +929,33 @@ export default function Page() {
           <Link href="/guides/prix-gestion-google-ads">
             prix complet de la gestion Google Ads
           </Link>
-          . Pour comprendre le périmètre public actuel d’Hagnéré Code, consultez
-          le service de{" "}
-          <Link href="/services/publicite-en-ligne">publicité en ligne</Link>.
+          .
         </p>
 
-        <h2 id="decision">
-          15. N’augmentez que ce que vous savez encore arrêter
-        </h2>
-
         <p>
-          Reprenez les quatre sorties de départ. Si la preuve primaire est
-          mauvaise, corrigez-la. Si deux causes restent plausibles, testez-en
-          une. Si les données sont trop faibles, écrivez ce qui manque. Si une
-          hausse est justifiée, elle reste une expérience : tranche, plafond,
-          fenêtre, valeur métier, capacité opérationnelle et retour arrière.
+          La conclusion doit choisir entre quatre suites : attendre une donnée
+          manquante, corriger une chaîne défaillante, tester une explication ou
+          augmenter progressivement avec une limite. Le format de mission dépend
+          du nombre de questions encore ouvertes :
         </p>
 
         <GuideTable
-          headers={[
-            "Format",
-            "Il suffit lorsque",
-            "Livrable attendu",
-            "Limite",
-          ]}
+          headers={["Format", "Quand le choisir", "Ce que vous devez obtenir"]}
           rows={[
             [
               "Revue interne",
               "la question est unique, le compte est lisible et l’équipe maîtrise déjà mesure et historique",
-              "constat daté, test exécuté et décision consignée",
-              "pas de regard indépendant ni de réconciliation large",
+              "un contrôle daté, un test exécuté et une décision consignée ; elle n’apporte pas de regard indépendant",
             ],
             [
               "Audit ciblé",
               "une chaîne précise bloque la décision : conversion, requêtes, accès, page ou qualité des contacts",
-              "périmètre, preuves, cause ou hypothèse, correction et test d’acceptation",
-              "ne vaut pas validation du reste du compte",
+              "la cause confirmée ou l’explication à tester, la correction et son contrôle ; le reste du compte n’est pas validé",
             ],
             [
               "Audit complet",
               "plusieurs campagnes, outils ou équipes doivent être rapprochés avant un choix de budget ou de prestataire",
-              "note de décision, registre, liste de tâches, plan de test, limites et passation",
-              "conclusion bornée aux accès, données et période réellement observés",
+              "un résumé de décision, une liste d’actions, un plan de test et une passation ; la conclusion reste limitée aux données observées",
             ],
           ]}
         />
@@ -1157,14 +980,14 @@ export default function Page() {
         </InfoBox>
 
         <GuideInlineCTA
-          title="Sécuriser la prochaine décision de budget Google Ads"
-          description="Vous avez déjà un compte et hésitez à augmenter, restructurer ou changer de pilotage ? Décrivez l’objectif métier, les campagnes utilisées et le doute principal. Nous cadrons les accès minimaux, les preuves attendues et le livrable — ou nous indiquons si une revue interne suffit."
+          title="Savoir quoi corriger avant de remettre du budget"
+          description="Vous avez déjà un compte mais vous ne savez pas si ses conversions deviennent de vrais clients ? Décrivez votre objectif, vos campagnes et le doute principal. Vous saurez si une vérification ciblée suffit, si le suivi doit être réparé ou si un audit complet est utile."
           tags={[
-            "Accès minimaux",
-            "Preuves avant recommandation",
-            "Audit ciblé ou complet",
+            "Conversions vérifiées",
+            "Priorités compréhensibles",
+            "Budget mieux décidé",
           ]}
-          ctaLabel="Cadrer mon audit Google Ads"
+          ctaLabel="Vérifier mon compte Google Ads"
           ctaHref="/demarrer-un-projet"
         />
 

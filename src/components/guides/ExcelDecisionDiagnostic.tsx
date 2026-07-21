@@ -2,33 +2,20 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import {
-  ArrowRight,
-  Check,
-  ClipboardCheck,
-  RotateCcw,
-} from "lucide-react";
+import { ArrowRight, Check, ClipboardCheck, RotateCcw } from "lucide-react";
 import { copyTextToClipboard } from "@/lib/clipboard";
-import { buildExcelDiagnosticClipboardText } from "@/lib/excel-decision-diagnostic";
+import {
+  buildExcelDiagnosticClipboardText,
+  getExcelDiagnosticRecommendation,
+  getExcelPainScore,
+  type ExcelDiagnosticAnswers,
+  type ExcelPainKey,
+} from "@/lib/excel-decision-diagnostic";
 import { trackFunnelEvent } from "@/lib/funnel-analytics";
 
-type Answers = {
-  simultaneous: boolean;
-  mobile: boolean;
-  permissions: boolean;
-  duplicates: boolean;
-  auditTrail: boolean;
-  fragileRules: boolean;
-  integrations: boolean;
-  costlyIncident: boolean;
-  stableProcess: boolean;
-  existingSoftware: boolean;
-  microsoft365: boolean;
-};
+type QuestionKey = keyof ExcelDiagnosticAnswers;
 
-type QuestionKey = keyof Answers;
-
-const INITIAL_ANSWERS: Answers = {
+const INITIAL_ANSWERS: ExcelDiagnosticAnswers = {
   simultaneous: false,
   mobile: false,
   permissions: false,
@@ -37,34 +24,38 @@ const INITIAL_ANSWERS: Answers = {
   fragileRules: false,
   integrations: false,
   costlyIncident: false,
-  stableProcess: false,
-  existingSoftware: false,
+  processRulesUnderstood: false,
+  existingSoftwareCoversEssentials: false,
   microsoft365: false,
 };
 
 const PAIN_QUESTIONS: Array<{
-  key: Exclude<QuestionKey, "stableProcess" | "existingSoftware" | "microsoft365">;
+  key: ExcelPainKey;
   label: string;
   help: string;
 }> = [
   {
     key: "simultaneous",
-    label: "Plusieurs personnes doivent modifier les mêmes données en même temps",
+    label:
+      "Plusieurs personnes doivent modifier les mêmes données en même temps",
     help: "Le fichier se verrouille, les équipes attendent ou créent des copies.",
   },
   {
     key: "mobile",
-    label: "Des personnes saisissent des données en déplacement, sur mobile ou tablette",
+    label:
+      "Des personnes saisissent des données en déplacement, sur mobile ou tablette",
     help: "Techniciens, commerciaux, équipes de chantier ou responsables multi-sites.",
   },
   {
     key: "permissions",
-    label: "Chaque profil ne devrait voir ou modifier qu’une partie des informations",
+    label:
+      "Chaque profil ne devrait voir ou modifier qu’une partie des informations",
     help: "Par exemple : marge, données RH, validation ou portefeuille client.",
   },
   {
     key: "duplicates",
-    label: "Vous consolidez plusieurs fichiers ou ressaisissez les mêmes informations",
+    label:
+      "Vous consolidez plusieurs fichiers ou ressaisissez les mêmes informations",
     help: "Les versions divergent et personne ne sait immédiatement laquelle fait foi.",
   },
   {
@@ -74,32 +65,38 @@ const PAIN_QUESTIONS: Array<{
   },
   {
     key: "fragileRules",
-    label: "Des formules, macros ou règles métier sont comprises par une seule personne",
+    label:
+      "Des formules, macros ou règles métier sont comprises par une seule personne",
     help: "Son absence ou son départ mettrait le processus en difficulté.",
   },
   {
     key: "integrations",
-    label: "Le fichier doit échanger avec votre CRM, ERP, comptabilité ou machines",
+    label:
+      "Le fichier doit échanger avec votre CRM, ERP, comptabilité ou machines",
     help: "Les exports et imports manuels sont devenus une tâche récurrente.",
   },
   {
     key: "costlyIncident",
-    label: "Une erreur ou une indisponibilité peut bloquer une vente, une paie ou une production",
+    label:
+      "Une erreur ou une indisponibilité peut bloquer une vente, une paie ou une production",
     help: "Le risque dépasse le simple inconfort d’utilisation.",
   },
 ];
 
 const CONTEXT_QUESTIONS: Array<{
-  key: "stableProcess" | "existingSoftware" | "microsoft365";
+  key:
+    | "processRulesUnderstood"
+    | "existingSoftwareCoversEssentials"
+    | "microsoft365";
   label: string;
 }> = [
   {
-    key: "stableProcess",
-    label: "Le processus est stable depuis au moins un an",
+    key: "processRulesUnderstood",
+    label: "Le déroulement normal et les principales exceptions sont compris",
   },
   {
-    key: "existingSoftware",
-    label: "Un logiciel existant couvre au moins 80 % du besoin",
+    key: "existingSoftwareCoversEssentials",
+    label: "Un logiciel existant couvre tous les besoins indispensables",
   },
   {
     key: "microsoft365",
@@ -107,106 +104,23 @@ const CONTEXT_QUESTIONS: Array<{
   },
 ];
 
-type Recommendation = {
-  label: string;
-  title: string;
-  summary: string;
-  actions: string[];
-  tone: "green" | "blue" | "violet";
-};
-
-function getRecommendation(answers: Answers, painScore: number): Recommendation {
-  if (answers.existingSoftware) {
-    return {
-      label: "Priorité : logiciel existant",
-      title: "Testez d’abord le logiciel du marché qui couvre déjà votre besoin.",
-      summary:
-        "Un outil existant qui couvre réellement 80 % du processus est généralement plus rapide, moins risqué et moins coûteux à maintenir qu’une construction spécifique.",
-      actions: [
-        "Faire tester un scénario réel par trois utilisateurs, pas seulement regarder une démonstration.",
-        "Chiffrer licences, paramétrage, reprise des données, formation et sortie sur quatre ans.",
-        "Vérifier l’export complet, l’hébergement et les droits d’accès avant de signer.",
-      ],
-      tone: "green",
-    };
-  }
-
-  if (painScore <= 2) {
-    return {
-      label: "Priorité : fiabiliser Excel",
-      title: "Vous n’avez probablement pas besoin de remplacer Excel maintenant.",
-      summary:
-        "Le coût et le risque d’une migration seraient difficiles à justifier tant que les symptômes restent limités. Commencez par rendre le fichier partageable, documenté et mesurable.",
-      actions: [
-        "Créer une table structurée, des listes de valeurs et une feuille de mode d’emploi.",
-        "Déplacer le fichier sur OneDrive ou SharePoint Online si la coédition est le seul blocage.",
-        "Mesurer pendant quatre semaines les heures de ressaisie, erreurs et verrouillages.",
-      ],
-      tone: "green",
-    };
-  }
-
-  if (!answers.stableProcess) {
-    return {
-      label: answers.microsoft365 ? "Priorité : prototype Power Apps" : "Priorité : prototype no-code",
-      title: "Votre besoin mérite un prototype, pas encore un développement complet.",
-      summary:
-        "Le problème est réel, mais le processus bouge encore. Un prototype limité à un seul flux permet d’apprendre sans figer trop tôt des règles qui changeront.",
-      actions: [
-        answers.microsoft365
-          ? "Tester Power Apps avec une source standard déjà comprise dans votre environnement Microsoft 365."
-          : "Tester une base no-code sur un seul processus et avec des données non sensibles.",
-        "Fixer un plafond de temps, de licences et d’enregistrements avant le test.",
-        "Écrire dès le départ comment exporter les données si le prototype devient insuffisant.",
-      ],
-      tone: "blue",
-    };
-  }
-
-  if (painScore <= 5 && !answers.integrations && !answers.costlyIncident) {
-    return {
-      label: answers.microsoft365 ? "Priorité : Power Apps / low-code" : "Priorité : no-code encadré",
-      title: "Une plateforme peut suffire, à condition de calculer le coût et la sortie.",
-      summary:
-        "Le processus est stabilisé, mais sa criticité et ses intégrations restent contenues. Une solution configurée peut résoudre le problème sans financer tout de suite un logiciel spécifique.",
-      actions: [
-        "Comparer les limites sur le nombre d’utilisateurs, de lignes, d’automatisations et d’historique.",
-        "Additionner quatre ans de licences et le temps d’administration interne.",
-        "Exiger un export test avant la mise en production et nommer deux administrateurs internes.",
-      ],
-      tone: "blue",
-    };
-  }
-
-  return {
-    label: "Priorité : cadrage sur mesure",
-    title: "Un développement spécifique devient défendable — pas automatique.",
-    summary:
-      "Le cumul des droits, intégrations, règles métier, usages simultanés ou risques d’incident dépasse ce qu’un tableur gère sereinement. La prochaine étape est un cadrage limité, pas un grand projet signé à l’aveugle.",
-    actions: [
-      "Isoler un premier processus qui produit une valeur visible et peut fonctionner seul.",
-      "Nettoyer un échantillon de données et écrire dix scénarios de recette avant le devis.",
-      "Comparer le coût total sur quatre ans avec le statu quo et au moins une solution existante.",
-    ],
-    tone: "violet",
-  };
-}
-
 const toneStyles = {
-  green: "border-emerald-200 bg-emerald-50 text-emerald-950 dark:border-emerald-900 dark:bg-emerald-950/35 dark:text-emerald-100",
+  green:
+    "border-emerald-200 bg-emerald-50 text-emerald-950 dark:border-emerald-900 dark:bg-emerald-950/35 dark:text-emerald-100",
   blue: "border-blue-200 bg-blue-50 text-blue-950 dark:border-blue-900 dark:bg-blue-950/35 dark:text-blue-100",
-  violet: "border-violet-200 bg-violet-50 text-violet-950 dark:border-violet-900 dark:bg-violet-950/35 dark:text-violet-100",
+  violet:
+    "border-violet-200 bg-violet-50 text-violet-950 dark:border-violet-900 dark:bg-violet-950/35 dark:text-violet-100",
 };
 
 export function ExcelDecisionDiagnostic() {
-  const [answers, setAnswers] = useState<Answers>(INITIAL_ANSWERS);
-  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
-
-  const painScore = PAIN_QUESTIONS.reduce(
-    (total, question) => total + Number(answers[question.key]),
-    0,
+  const [answers, setAnswers] =
+    useState<ExcelDiagnosticAnswers>(INITIAL_ANSWERS);
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">(
+    "idle",
   );
-  const recommendation = getRecommendation(answers, painScore);
+
+  const painScore = getExcelPainScore(answers);
+  const recommendation = getExcelDiagnosticRecommendation(answers);
 
   function toggle(key: QuestionKey) {
     setAnswers((current) => ({ ...current, [key]: !current[key] }));
@@ -250,11 +164,16 @@ export function ExcelDecisionDiagnostic() {
         <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.18em] text-violet-300">
           Diagnostic local · sans email
         </p>
-        <h3 id="excel-diagnostic-title" className="m-0 text-lg font-bold sm:text-xl">
+        <h3
+          id="excel-diagnostic-title"
+          className="m-0 text-lg font-bold sm:text-xl"
+        >
           Excel doit-il vraiment devenir une application ?
         </h3>
         <p className="mb-0 mt-2 max-w-2xl text-sm leading-relaxed text-zinc-400">
-          Cochez uniquement les situations observées. Le résultat repose sur des règles visibles et peut recommander de garder Excel.
+          Cochez uniquement les situations observées. Cette orientation peut
+          recommander de garder Excel, mais elle isole les risques qui exigent
+          une étude humaine.
         </p>
       </div>
 
@@ -295,7 +214,7 @@ export function ExcelDecisionDiagnostic() {
 
           <fieldset className="mt-6 grid gap-3 sm:grid-cols-3">
             <legend className="mb-3 text-sm font-semibold text-zinc-950 dark:text-white">
-              Trois questions qui peuvent changer le verdict
+              Trois informations qui peuvent changer l’orientation
             </legend>
             {CONTEXT_QUESTIONS.map((question) => (
               <label
@@ -359,7 +278,10 @@ export function ExcelDecisionDiagnostic() {
               </p>
               <ol className="m-0 space-y-3 p-0">
                 {recommendation.actions.map((action, index) => (
-                  <li key={action} className="flex gap-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
+                  <li
+                    key={action}
+                    className="flex gap-3 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300"
+                  >
                     <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-white text-xs font-bold text-violet-700 shadow-sm dark:bg-zinc-800 dark:text-violet-300">
                       {index + 1}
                     </span>
@@ -375,8 +297,14 @@ export function ExcelDecisionDiagnostic() {
                 onClick={copyResult}
                 className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-zinc-300 bg-white px-4 py-2.5 text-sm font-semibold text-zinc-900 hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800"
               >
-                {copyStatus === "copied" ? <Check className="size-4" aria-hidden="true" /> : <ClipboardCheck className="size-4" aria-hidden="true" />}
-                {copyStatus === "copied" ? "Résultat copié" : "Copier mon résultat"}
+                {copyStatus === "copied" ? (
+                  <Check className="size-4" aria-hidden="true" />
+                ) : (
+                  <ClipboardCheck className="size-4" aria-hidden="true" />
+                )}
+                {copyStatus === "copied"
+                  ? "Résultat copié"
+                  : "Copier mon résultat"}
               </button>
               <Link
                 href="/demarrer-un-projet"
@@ -412,7 +340,12 @@ export function ExcelDecisionDiagnostic() {
             </p>
 
             <p className="mb-0 mt-4 text-[11px] leading-relaxed text-zinc-500">
-              Les réponses détaillées restent dans votre navigateur. Si un outil de mesure est configuré et que vous copiez le résultat ou ouvrez le formulaire, seuls l’action, le score total et la recommandation peuvent être mesurés — jamais le détail des cases. Ce diagnostic oriente un cadrage ; il ne remplace pas l’étude du fichier, du processus et des obligations applicables.
+              Les réponses détaillées restent dans votre navigateur. Si un outil
+              de mesure est configuré et que vous copiez le résultat ou ouvrez
+              le formulaire, seuls l’action, le score total et la recommandation
+              peuvent être mesurés — jamais le détail des cases. Ce diagnostic
+              oriente une étude ; il ne remplace pas l’examen du fichier, du
+              processus et des obligations applicables.
             </p>
           </div>
         </div>

@@ -30,21 +30,21 @@ export const metadata: Metadata = {
     url: guideUrl(guide),
     images: [
       {
-        url: `${guideUrl(guide)}/opengraph-image`,
+        url: guideUrl(guide) + "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Transformer un fichier Excel en application métier : diagnostic et méthode",
+        alt: "Transformer un fichier Excel en application métier",
       },
     ],
-    publishedTime: `${guide.datePublished}T09:00:00+02:00`,
-    modifiedTime: `${guide.dateModified}T09:00:00+02:00`,
-    authors: [`${SITE_URL}/equipe`],
+    publishedTime: guide.datePublished + "T09:00:00+02:00",
+    modifiedTime: guide.dateModified + "T09:00:00+02:00",
+    authors: [SITE_URL + "/equipe"],
   },
   twitter: {
     card: "summary_large_image",
     title: guide.cardTitle,
     description: guide.metaDescription,
-    images: [`${guideUrl(guide)}/opengraph-image`],
+    images: [guideUrl(guide) + "/opengraph-image"],
   },
 };
 
@@ -55,21 +55,21 @@ const articleJsonLd = JSON.stringify({
   description: guide.metaDescription,
   url: guideUrl(guide),
   mainEntityOfPage: { "@type": "WebPage", "@id": guideUrl(guide) },
-  image: [`${guideUrl(guide)}/opengraph-image`],
+  image: [guideUrl(guide) + "/opengraph-image"],
   datePublished: guide.datePublished,
   dateModified: guide.dateModified,
   inLanguage: "fr-FR",
   articleSection: guide.section,
   isPartOf: {
     "@type": "WebPage",
-    "@id": `${SITE_URL}/guides`,
+    "@id": SITE_URL + "/guides",
     name: "Guides web Hagnéré Code",
   },
   author: {
     "@type": "Person",
     name: "Quentin Hagnéré",
     jobTitle: "Fondateur de Hagnéré Code",
-    url: `${SITE_URL}/equipe`,
+    url: SITE_URL + "/equipe",
     knowsAbout: [
       "Applications métier",
       "Outils internes",
@@ -79,16 +79,16 @@ const articleJsonLd = JSON.stringify({
       "Développement sur mesure",
     ],
     sameAs: ["https://www.linkedin.com/in/quentin-hagnere"],
-    worksFor: { "@id": `${SITE_URL}/#organization` },
+    worksFor: { "@id": SITE_URL + "/#organization" },
   },
   publisher: {
     "@type": "Organization",
-    "@id": `${SITE_URL}/#organization`,
+    "@id": SITE_URL + "/#organization",
     name: "Hagnéré Code",
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/logos/logo-dark.png`,
+      url: SITE_URL + "/logos/logo-dark.png",
     },
   },
 });
@@ -97,12 +97,12 @@ const breadcrumbJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 1, name: "Accueil", item: SITE_URL + "/" },
     {
       "@type": "ListItem",
       position: 2,
       name: "Guides",
-      item: `${SITE_URL}/guides`,
+      item: SITE_URL + "/guides",
     },
     {
       "@type": "ListItem",
@@ -118,47 +118,35 @@ const faqItems = [
     question:
       "Peut-on transformer automatiquement un fichier Excel en application ?",
     answer:
-      "Des outils comme Power Apps savent importer une table Excel et générer une première interface. Cela transforme des colonnes en champs et des lignes en enregistrements, mais pas votre processus en logiciel fini. Les formules, macros, droits par profil, validations, doublons et exceptions métier doivent encore être compris, traduits et testés. L’automatisation accélère le prototype ; elle ne remplace ni le cadrage ni la recette.",
+      "On peut générer une première interface à partir d'un tableau, mais pas une application fiable en un clic. Les formules, droits d'accès, validations, doublons et cas particuliers doivent être compris puis reconstruits. L'import accélère le départ ; il ne remplace pas l'analyse du travail réel.",
   },
   {
-    question: "Comment savoir s’il faut garder Excel ou le remplacer ?",
+    question: "Quand vaut-il mieux garder Excel ?",
     answer:
-      "Gardez Excel si une ou deux personnes l’utilisent, si le risque d’erreur reste faible et si aucune intégration ni traçabilité fine n’est nécessaire. Une application devient pertinente lorsque plusieurs personnes écrivent simultanément, que des droits différents sont nécessaires, que les ressaisies se multiplient, que les règles sont devenues fragiles ou qu’une erreur peut bloquer l’activité. Le diagnostic interactif du guide applique cette logique et peut recommander de conserver Excel.",
+      "Gardez Excel si peu de personnes le modifient, si les règles restent simples et si une erreur se corrige sans conséquence importante. Commencez aussi par tester la coédition et une meilleure organisation du fichier. Une application devient pertinente lorsque les copies, droits, validations ou échanges avec d'autres outils rendent le fonctionnement fragile.",
   },
   {
     question: "Power Apps est-il inclus dans Microsoft 365 ?",
     answer:
-      "Microsoft 365 inclut des capacités Power Apps permettant de créer, exécuter et partager des applications utilisant des données Microsoft 365 et des connecteurs standard. L’accès aux données sur site et l’usage de connecteurs premium ou personnalisés ne sont pas inclus. Au 19 juillet 2026, Microsoft France affiche Power Apps Premium à 17,30 euros HT par utilisateur et par mois avec paiement annuel. Vérifiez toujours les connecteurs et le tarif au moment du devis.",
+      "Certaines possibilités Power Apps liées à Microsoft 365 et aux connecteurs standard peuvent être incluses, mais les données locales et les connecteurs premium ou personnalisés ne le sont pas de la même façon. Vérifiez les sources de données utilisées et le nombre d'utilisateurs avant de retenir un prix.",
   },
   {
-    question: "Combien coûte le passage d’Excel à une application métier ?",
+    question: "Faut-il choisir du no-code ou du sur-mesure ?",
     answer:
-      "Il n’existe pas de prix moyen public suffisamment fiable pour répondre par une fourchette universelle. Comparez plutôt quatre ans de coût total : licences, paramétrage ou développement, nettoyage et reprise des données, temps de vos équipes, formation, hébergement, maintenance, évolutions et coût de sortie. Deux devis ne sont comparables que s’ils couvrent le même processus, le même volume, les mêmes utilisateurs et le même horizon.",
-  },
-  {
-    question: "Faut-il migrer tout l’historique Excel ?",
-    answer:
-      "Pas nécessairement. Trois stratégies sont courantes : tout reprendre, ne migrer que les dossiers actifs en conservant une archive consultable, ou repartir avec une base propre et une archive séparée. La décision dépend des usages et des obligations de conservation. Les documents comptables et leurs justificatifs doivent notamment être conservés dix ans en France ; les documents fiscaux visés par l’article L102 B du Livre des procédures fiscales, six ans.",
+      "Choisissez une plateforme no-code lorsque le besoin est assez standard et que ses limites sont acceptables. Le sur-mesure devient plus cohérent lorsque vos règles différencient réellement l'entreprise, que plusieurs logiciels doivent communiquer ou que vous devez maîtriser finement les droits et les évolutions.",
   },
   {
     question:
-      "Qui est propriétaire de l’application développée à partir de mon Excel ?",
+      "Que deviennent les anciens fichiers Excel après la mise en ligne ?",
     answer:
-      "Vos données restent les vôtres, mais payer le développement ne transfère pas automatiquement les droits sur le code. L’article L131-3 du Code de la propriété intellectuelle impose une cession écrite qui précise chaque droit cédé ainsi que son étendue, sa destination, son territoire et sa durée. Demandez aussi un dépôt Git à votre nom, la documentation et une clause de réversibilité : la propriété juridique sans les accès techniques ne suffit pas.",
+      "Conservez-les en lecture seule tant que les données reprises et les obligations d'archive n'ont pas été vérifiées. Une migration réussie ne consiste pas à supprimer l'ancien fichier le jour du lancement. Elle prévoit qui contrôle les résultats, combien de temps l'ancien système reste consultable et comment revenir en arrière en cas de problème.",
   },
   {
-    question:
-      "Combien de temps faut-il conserver l’ancien fichier après la bascule ?",
+    question: "Combien coûte la transformation d'Excel en application ?",
     answer:
-      "Conservez une copie figée et protégée au minimum pendant la période nécessaire à la recette et au retour arrière. Ensuite, appliquez vos durées légales et métier : dix ans pour les documents comptables et pièces justificatives au titre de l’article L123-22 du Code de commerce, six ans pour les documents fiscaux concernés par l’article L102 B. Un document établi ou reçu sous forme informatique doit rester conservé sous cette forme pendant cette durée.",
-  },
-  {
-    question: "Quel est le premier livrable à demander à un prestataire ?",
-    answer:
-      "Demandez une cartographie courte du processus actuel : acteurs, données, règles, exceptions, systèmes connectés et dix scénarios de recette. Elle doit séparer ce qui est indispensable au premier lot de ce qui peut attendre. Si le premier livrable est seulement une maquette séduisante sans inventaire des données ni critères d’acceptation, le projet est encore insuffisamment cadré.",
+      "Le prix dépend moins du nombre de lignes que des règles, des utilisateurs, des droits, des intégrations et de la qualité des données. Comparez sur la même durée les licences, la construction, la reprise des données, la formation, l'entretien et le temps interne. Sans ces postes, deux devis ne sont pas comparables.",
   },
 ];
-
 
 export default function Page() {
   return (
@@ -181,21 +169,21 @@ export default function Page() {
           { label: "Transformer Excel en application" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Le bon résultat n’est pas forcément une application sur mesure. Ce guide vous aide à choisir entre Excel fiabilisé, logiciel existant, Power Apps/no-code et développement spécifique — puis à chiffrer, migrer et contractualiser sans perdre vos données."
+        heroDescription="Votre entreprise dépend d'un fichier Excel devenu difficile à partager, contrôler ou faire évoluer ? Découvrez s'il faut simplement le fiabiliser, choisir un logiciel existant ou le remplacer par une vraie application métier."
         heroAction={{
           href: "#diagnostic",
-          label: "Faire le diagnostic gratuit",
+          label: "Faire le diagnostic",
         }}
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel={`Publié le ${formatGuideDate(guide.datePublished)}`}
+        updatedLabel={"Mis à jour le " + formatGuideDate(guide.dateModified)}
         keyPoints={[
           {
             number: "01",
-            title: "Diagnostic sans email",
+            title: "Garder Excel reste possible",
             description: "",
             color: "violet",
           },
@@ -207,13 +195,13 @@ export default function Page() {
           },
           {
             number: "03",
-            title: "Coût total sur 4 ans",
+            title: "Migration sans arrêt brutal",
             description: "",
             color: "emerald",
           },
           {
             number: "04",
-            title: `Lecture : ${guide.readTimeMin} min`,
+            title: "Lecture : " + guide.readTimeMin + " min",
             description: "",
             color: "amber",
           },
@@ -225,7 +213,7 @@ export default function Page() {
           },
           {
             href: "/guides/prix-logiciel-sur-mesure",
-            label: "Prix d’un logiciel sur mesure",
+            label: "Prix d'un logiciel sur mesure",
           },
           {
             href: "/guides/erp-ou-logiciel-sur-mesure",
@@ -244,880 +232,564 @@ export default function Page() {
             label: "Quel processus automatiser en premier ?",
           },
         ]}
-        faqTitle="Excel vers application : vos questions"
+        faqTitle="Passer d'Excel à une application : vos questions"
         faqItems={faqItems}
         showWhitePaperPromo={false}
       >
         <p className="lead">
-          <strong>Ne remplacez pas Excel parce que le fichier est gros.</strong>{" "}
-          Remplacez-le quand le processus autour du fichier devient coûteux,
-          risqué ou impossible à partager : plusieurs personnes doivent écrire
-          en même temps, les droits diffèrent selon les profils, les copies se
-          contredisent, les règles reposent sur une seule personne ou les
-          ressaisies relient péniblement plusieurs logiciels. Sinon, une table
-          structurée, Power Query et un stockage compatible avec la coédition
-          peuvent suffire.
+          Vos équipes utilisent un fichier Excel pour suivre des commandes, des
+          interventions, des stocks ou des dossiers clients. Au fil du temps,
+          les copies se multiplient, certaines formules ne sont comprises que
+          par une personne et deux collègues ne savent plus quelle version est
+          la bonne.{" "}
+          <strong>Faut-il en faire une application ? Pas forcément.</strong>
         </p>
-
-        <InfoBox
-          variant="blue"
-          title="La réponse courte : choisissez dans cet ordre"
-        >
-          <ol className="mb-0 mt-2 space-y-1.5 pl-5">
-            <li>
-              <strong>Réparer l’existant</strong> si le problème vient surtout
-              du partage ou d’un fichier mal structuré.
-            </li>
-            <li>
-              <strong>Acheter un logiciel métier</strong> s’il couvre réellement
-              l’essentiel du besoin.
-            </li>
-            <li>
-              <strong>Tester Power Apps ou une plateforme no-code</strong> si le
-              processus bouge encore ou reste peu critique.
-            </li>
-            <li>
-              <strong>Développer sur mesure</strong> lorsque vos règles,
-              intégrations, volumes, droits ou contraintes justifient
-              durablement cette complexité.
-            </li>
-          </ol>
-        </InfoBox>
-
         <p>
-          Nous développons des applications métier : notre biais commercial est
-          donc évident. Pour qu’il ne décide pas à votre place, le diagnostic
-          ci-dessous expose ses règles, ne demande aucune coordonnée et peut
-          conclure que vous ne devez rien nous acheter.
+          Une application métier est un outil conçu autour du travail réel de
+          l&apos;entreprise : chacun voit les informations utiles, les règles
+          sont appliquées de la même façon et les actions importantes laissent
+          une trace. Avant d&apos;en commander une, vérifiez si une correction
+          d&apos;Excel ou un logiciel déjà disponible peut résoudre le problème
+          plus simplement.
         </p>
+
+        <InfoBox variant="blue" title="La décision la plus raisonnable">
+          Commencez par l&apos;option la moins coûteuse qui couvre correctement
+          le besoin : fiabiliser Excel, acheter un logiciel métier existant,
+          tester une plateforme permettant de construire sans beaucoup de code,
+          puis envisager le sur-mesure si vos règles justifient vraiment un
+          outil propre à l&apos;entreprise.
+        </InfoBox>
 
         <GuideToc
           items={[
             {
               id: "avant-de-remplacer",
-              label: "1. Le test à faire avant de remplacer Excel",
+              label: "Ce qu'il faut essayer avant de remplacer Excel",
             },
             {
               id: "diagnostic",
-              label: "2. Diagnostic : Excel doit-il devenir une application ?",
+              label: "Votre fichier doit-il devenir une application ?",
             },
             {
               id: "quatre-solutions",
-              label: "3. Les quatre solutions, à périmètre égal",
+              label: "Comparer les quatre solutions possibles",
             },
             {
               id: "donnees-regles-ecrans",
-              label: "4. Ce qui doit être traduit, pas seulement importé",
+              label: "Transformer le travail, pas seulement les colonnes",
             },
             {
               id: "cout-quatre-ans",
-              label: "5. Le calcul qui décide : quatre ans, tout compris",
+              label: "Comparer les coûts sur la même durée",
             },
             {
               id: "migration",
-              label: "6. Migrer sans perdre l’historique ni bloquer l’équipe",
+              label: "Migrer sans bloquer l'équipe",
             },
-            { id: "donnees-rgpd", label: "7. Données, RGPD et conservation" },
-            { id: "contrat", label: "8. Les clauses et preuves à exiger" },
+            {
+              id: "donnees-rgpd",
+              label: "Protéger les données et conserver les archives",
+            },
+            {
+              id: "contrat",
+              label: "Ce que le contrat doit vous permettre de récupérer",
+            },
             {
               id: "exemple",
-              label: "9. Exemple fictif : la décision de Nathalie",
+              label: "Exemple d'une décision raisonnable",
             },
             {
               id: "plan-30-jours",
-              label: "10. Votre plan d’action sur 30 jours",
+              label: "Ce que vous pouvez décider en trente jours",
             },
-            { id: "sources", label: "Sources primaires consultées" },
+            { id: "sources", label: "Sources et points à revalider" },
           ]}
         />
 
         <h2 id="avant-de-remplacer">
-          1. Le test à faire avant de remplacer Excel
+          Avant de remplacer Excel, essayez de supprimer le problème le plus
+          simple
         </h2>
-
         <p>
-          Le message « fichier verrouillé » ne prouve pas qu’Excel est arrivé à
-          sa limite. Il peut simplement révéler que le classeur est stocké sur
-          un NAS ou un partage réseau. Microsoft réserve la coédition moderne à
-          un abonnement Microsoft 365 et à un fichier enregistré sur OneDrive,
-          OneDrive Entreprise ou SharePoint Online. La documentation précise que
-          SharePoint installé sur vos propres serveurs ne prend pas en charge
-          cette coédition. Un déplacement du fichier peut donc supprimer le
-          symptôme principal sans projet logiciel.
+          Un fichier posé sur un serveur partagé ou envoyé par email crée
+          rapidement des copies concurrentes. Si la difficulté principale est
+          là, testez d&apos;abord la coédition. Microsoft indique qu&apos;elle
+          nécessite un abonnement Microsoft 365 adapté, un format compatible et
+          un stockage sur OneDrive, OneDrive Entreprise ou SharePoint Online. Un
+          partage réseau classique ou un SharePoint installé dans
+          l&apos;entreprise ne fonctionne pas de la même manière.
         </p>
-
-        <p>
-          Autre fausse piste : le million de lignes. Excel accepte
-          officiellement 1 048 576 lignes et 16 384 colonnes par feuille. Ce
-          sont des limites de format, pas un seuil de confort. Un classeur de 8
-          000 lignes peut déjà être dangereux si personne ne comprend ses macros
-          ; un fichier de 100 000 lignes peut rester parfaitement adapté s’il
-          sert uniquement à une analyse maîtrisée par une personne.
-        </p>
-
         <GuideTable
-          headers={[
-            "Symptôme observé",
-            "Premier contrôle",
-            "Ne migrez que si…",
-          ]}
+          caption="Les corrections à tester avant un projet logiciel"
+          headers={["Problème vécu", "Essai simple", "Limite à surveiller"]}
           rows={[
             [
-              "Fichier verrouillé",
-              "Emplacement, version d’Excel, format du fichier",
-              "la coédition cloud ne répond pas au besoin terrain",
+              "Plusieurs copies du même fichier",
+              "Un seul fichier partagé avec coédition",
+              "Tous les utilisateurs doivent employer un environnement compatible.",
             ],
             [
-              "Fichier lent",
-              "Formules volatiles, styles, macros, requêtes et mémoire",
-              "le processus exige une base ou des traitements plus robustes",
+              "Colonnes et formules incompréhensibles",
+              "Nettoyer les noms, séparer les tables et documenter les calculs",
+              "Si une seule personne comprend encore les règles, le risque reste élevé.",
             ],
             [
-              "Copies contradictoires",
-              "Une source unique et des droits de modification",
-              "plusieurs flux doivent vraiment fonctionner hors connexion ou en parallèle",
-            ],
-            [
-              "Erreurs de saisie",
-              "Listes, validations, champs obligatoires et protection",
-              "des règles par rôle et un historique détaillé sont nécessaires",
-            ],
-            [
-              "Ressaisies",
-              "Power Query, imports planifiés et API disponibles",
-              "les intégrations doivent être bidirectionnelles ou déclencher un processus",
+              "Ressaisie entre deux outils",
+              "Importer ou automatiser l'échange le plus fréquent",
+              "Une suite de contournements peut devenir plus fragile qu'une application.",
             ],
           ]}
         />
-
-        <InfoBox
-          variant="emerald"
-          title="L’option zéro, en une demi-journée de vérification"
-        >
-          <p className="mb-2">
-            Faites une copie de travail, transformez les plages en tables
-            structurées, documentez les colonnes et déplacez le fichier sur un
-            espace compatible avec la coédition. Mesurez ensuite pendant quatre
-            semaines les verrouillages, les heures de consolidation et les
-            corrections. Si le problème disparaît, vous venez d’éviter une
-            migration inutile.
-          </p>
-          <a
-            href="https://support.microsoft.com/en-us/office/collaborate-on-excel-workbooks-at-the-same-time-with-co-authoring-7152aa8b-b791-414c-a3bb-3024e46fb104"
-            target="_blank"
-            rel="noreferrer"
-            className="font-semibold underline"
-          >
-            Vérifier les conditions de coédition dans la documentation Microsoft
-          </a>
-        </InfoBox>
-
-        <div id="diagnostic" className="scroll-mt-24">
-          <h2>2. Diagnostic : Excel doit-il devenir une application ?</h2>
-          <p>
-            Cochez des faits observables, pas des impressions. Le nombre de
-            lignes ne compte volontairement pas dans le score : ce sont les
-            usages, les risques et les dépendances qui déterminent le besoin.
-          </p>
-          <ExcelDecisionDiagnostic />
-        </div>
-
         <p>
-          Le résultat est un point de départ. Un score élevé ne signifie pas «
-          sur-mesure obligatoire ». Il signifie que le tableur porte désormais
-          des responsabilités de logiciel : authentifier, autoriser, tracer,
-          synchroniser, sauvegarder et résister à une erreur humaine. Un
-          logiciel existant peut encore être la meilleure réponse.
-        </p>
-        <p>
-          Le seuil de 80 % utilisé pour un logiciel existant est un{" "}
-          <strong>
-            critère éditorial de décision, pas une statistique de marché
-          </strong>{" "}
-          : adaptez-le aux écarts concernés. Les 20 % manquants ne se valent pas
-          si l’un porte sur la couleur d’un écran et l’autre sur votre règle de
-          facturation.
+          Le nombre de lignes n&apos;est généralement pas le meilleur
+          indicateur. Microsoft publie les limites du format Excel, mais une PME
+          peut être bloquée bien avant de les atteindre. Comptez plutôt les
+          personnes qui doivent modifier le fichier, les copies qui circulent,
+          les corrections manuelles et les décisions qui dépendent d&apos;une
+          formule mal comprise.
         </p>
 
-        <h2 id="quatre-solutions">3. Les quatre solutions, à périmètre égal</h2>
-
+        <h2 id="diagnostic">
+          Votre fichier doit-il réellement devenir une application ?
+        </h2>
         <p>
-          Une comparaison honnête ne met pas un abonnement d’appel face à un
-          devis complet. Elle demande d’abord le même résultat aux quatre
-          options : qui saisit, qui valide, où sont les données, quelles règles
-          s’appliquent, quels logiciels échangent, que se passe-t-il en cas de
-          panne et comment récupère-t-on l’historique ?
+          Répondez à partir de ce qui se passe aujourd&apos;hui, pas de ce que
+          vous espérez construire. Le diagnostic ci-dessous fonctionne dans
+          votre navigateur, ne demande aucune coordonnée et peut vous conseiller
+          de conserver Excel.
+        </p>
+        <ExcelDecisionDiagnostic />
+        <p>
+          Le résultat sert à ouvrir la discussion. Il ne connaît ni la qualité
+          de vos données, ni les logiciels déjà présents, ni le risque financier
+          d&apos;une erreur. Avant un achat, faites confirmer les points qui
+          changent réellement la décision.
         </p>
 
+        <h2 id="quatre-solutions">
+          Quatre réponses possibles, de la plus simple à la plus spécifique
+        </h2>
         <GuideTable
+          caption="Choisir une solution selon le besoin réel"
           headers={[
-            "Option",
-            "Elle gagne quand…",
-            "Son coût oublié",
-            "Son point de sortie",
+            "Solution",
+            "Quand elle convient",
+            "Ce qu'il faut accepter",
           ]}
           rows={[
             [
               "Excel fiabilisé",
-              "1 à 3 éditeurs, analyse ou processus simple, risque limité",
-              "documentation, contrôle des versions et dépendance à l’expert du fichier",
-              "droits fins, mobilité terrain, historique par opération ou intégrations",
+              "Peu d'utilisateurs, règles simples, risque limité",
+              "Un outil encore dépendant de sa structure et de ses auteurs.",
             ],
             [
               "Logiciel métier existant",
-              "un produit couvre environ 80 % du besoin sans détourner votre organisation",
-              "paramétrage, reprise, formation et options payantes",
-              "écart métier durable ou absence d’export exploitable",
+              "Le marché propose déjà l'essentiel des fonctions",
+              "Adapter une partie de vos habitudes au produit.",
             ],
             [
-              "Power Apps / no-code",
-              "prototype, outil interne contenu, processus encore évolutif",
-              "licences par utilisateur, administration, plafonds et reconstruction à la sortie",
-              "contournements, coût par siège ou intégrations premium",
+              "Power Apps ou plateforme no-code",
+              "Besoin assez standard, équipe prête à administrer la plateforme",
+              "Licences, limites de l'éditeur et coût de sortie.",
             ],
             [
-              "Développement sur mesure",
-              "règles différenciantes, intégrations fortes, droits complexes ou criticité élevée",
-              "cadrage, reprise, maintenance et évolution",
-              "besoin instable, faible usage ou solution standard suffisante",
+              "Application sur mesure",
+              "Règles propres, intégrations importantes, droits fins ou usage central",
+              "Investissement initial et entretien dans le temps.",
             ],
           ]}
         />
-
-        <h3>Power Apps : ce qui est compris, et où la facture commence</h3>
-
         <p>
-          Microsoft indique que les capacités Power Apps associées à Microsoft
-          365 permettent de créer, exécuter et partager des applications sur les
-          données Microsoft 365 et des connecteurs standard. La même page exclut
-          l’accès aux données hébergées sur site ainsi que les connecteurs
-          premium ou personnalisés. Cette ligne change souvent toute l’économie
-          du projet : une démonstration sur Excel Online ou SharePoint ne prouve
-          pas que la future connexion à SQL, à un ERP ou à Dataverse restera
-          incluse.
+          Un logiciel existant couvrant correctement votre besoin est souvent
+          préférable à un développement. Demandez une démonstration avec vos
+          vrais cas et vos vrais profils d&apos;utilisateurs. Si le produit ne
+          couvre les écarts qu&apos;avec une longue liste de contournements,
+          comparez alors le{" "}
+          <Link href="/guides/no-code-ou-sur-mesure">
+            no-code et le développement sur mesure
+          </Link>{" "}
+          sur les mêmes exigences.
         </p>
-
-        <p>
-          Au 19 juillet 2026, la page française de Microsoft affiche Power Apps
-          Premium à <strong>17,30 € HT par utilisateur et par mois</strong>,
-          avec paiement annuel. Elle affiche aussi 250 Mo de base de données et
-          2 Go de fichiers dans les droits indiqués, puis un complément de
-          capacité Dataverse à 34,70 € HT par Go et par mois. Ces tarifs sont
-          volatils : conservez la capture ou le devis daté utilisé dans votre
-          calcul.
-        </p>
-
-        <InfoBox
-          variant="amber"
-          title="Une importation n’est pas une migration terminée"
-        >
-          Microsoft propose bien de charger un fichier Excel pour créer une
-          table Dataverse et une première application. Sa documentation précise
-          que la conversion travaille sur la première plage tabulaire de la
-          première feuille. Un classeur avec six onglets, des macros, des
-          références croisées et des exceptions métier nécessite donc toujours
-          un travail de modèle de données et de validation.
-        </InfoBox>
 
         <h2 id="donnees-regles-ecrans">
-          4. Ce qui doit être traduit, pas seulement importé
+          Importer les lignes ne suffit pas : il faut comprendre le travail
         </h2>
-
         <p>
-          Dans Excel, les données, les règles et l’interface sont mélangées dans
-          les mêmes cellules. Une application les sépare. La migration ne
-          consiste donc pas à « mettre le fichier sur le web » : elle transforme
-          ce que le classeur sous-entend en objets explicites, contrôlables et
-          testables.
+          Un générateur peut transformer des colonnes en champs et afficher une
+          première liste. Il ne sait pas pourquoi une remise doit être validée,
+          qui peut voir une marge, ce qui rend un dossier complet ou quelle
+          exception un commercial applique à un client historique.
         </p>
-
         <GuideTable
-          headers={[
-            "Dans le classeur",
-            "Dans l’application",
-            "Question à résoudre",
-          ]}
+          caption="Ce qu'il faut traduire avant de construire"
+          headers={["Dans Excel", "Dans l'application", "Question à poser"]}
           rows={[
             [
-              "Une ligne",
-              "Un enregistrement identifié",
-              "quel identifiant reste unique dans le temps ?",
+              "Colonnes et onglets",
+              "Données reliées entre elles",
+              "Qu'est-ce qu'un client, un dossier, une commande ou une intervention ?",
             ],
             [
-              "Un onglet",
-              "Une table, une vue ou une étape",
-              "s’agit-il d’une donnée différente ou seulement d’un autre affichage ?",
+              "Formules et macros",
+              "Règles visibles et testables",
+              "Qui peut expliquer chaque calcul et chaque exception ?",
             ],
             [
-              "Une formule",
-              "Une règle métier testée",
-              "qui peut expliquer les cas normaux et les exceptions ?",
+              "Couleurs et commentaires",
+              "États, alertes et historique",
+              "Quelle action la couleur déclenche-t-elle réellement ?",
             ],
             [
-              "Une couleur",
-              "Un statut défini",
-              "qu’est-ce qui déclenche le passage au statut suivant ?",
-            ],
-            [
-              "Une cellule protégée",
-              "Un droit lié au rôle",
-              "qui peut lire, créer, modifier, valider ou supprimer ?",
-            ],
-            [
-              "Une macro",
-              "Une automatisation journalisée",
-              "que se passe-t-il si elle échoue au milieu ?",
-            ],
-            [
-              "Un copier-coller",
-              "Un import, une API ou un formulaire",
-              "quelle source fait foi et comment traite-t-on les doublons ?",
+              "Fichier partagé",
+              "Écrans et droits par rôle",
+              "Qui peut lire, modifier, valider ou supprimer ?",
             ],
           ]}
         />
-
         <p>
-          Commencez par vingt lignes représentatives, pas par une exportation
-          complète. Choisissez aussi des cas difficiles : champ vide, client en
-          double, date au mauvais format, intervention annulée, montant négatif,
-          pièce jointe absente. Si le modèle ne sait pas expliquer ces vingt
-          lignes, il ne saura pas absorber vingt mille lignes proprement.
+          Faites raconter une journée normale à chaque rôle concerné. Les
+          détails utiles apparaissent dans des phrases comme « je copie cette
+          ligne pour prévenir l&apos;atelier » ou « je demande toujours à Marie
+          avant de confirmer ». Ce sont ces gestes qu&apos;il faut simplifier,
+          pas reproduire aveuglément à l&apos;écran.
         </p>
 
-        <h3>Les dix scénarios de recette à écrire avant le devis</h3>
-
+        <h2 id="cout-quatre-ans">Comparez le coût complet sur la même durée</h2>
         <p>
-          La <strong>recette</strong> est la phase où vos équipes vérifient que
-          l’outil livré respecte le besoin. Écrivez dix scénarios sous la forme
-          « étant donné / quand / alors ». Par exemple : « étant donné une
-          intervention urgente attribuée à un technicien absent, quand le
-          responsable la réaffecte, alors le nouveau technicien reçoit l’ordre
-          et l’historique conserve les deux affectations ». Ces scénarios valent
-          davantage qu’une liste vague de fonctionnalités.
+          Comparer un abonnement mensuel avec un devis de construction crée une
+          fausse différence. Choisissez une durée commune, par exemple quatre
+          ans, puis ajoutez les mêmes postes des deux côtés.
         </p>
-
-        <h2 id="cout-quatre-ans">
-          5. Le calcul qui décide : quatre ans, tout compris
-        </h2>
-
-        <p>
-          Le prix visible n’est qu’une ligne. Pour comparer le statu quo, un
-          logiciel, une plateforme et du sur-mesure, utilisez le même horizon,
-          le même nombre d’utilisateurs et le même périmètre. Quatre ans sont
-          suffisamment longs pour faire apparaître les abonnements et assez
-          courts pour rester raisonnables dans une PME.
-        </p>
-
-        <FormulaBox>{`Coût total sur 4 ans =
-mise en œuvre ou développement
-+ licences × utilisateurs × 48 mois
-+ nettoyage et reprise des données
-+ heures internes × coût horaire chargé
-+ formation et conduite du changement
-+ hébergement, maintenance et support
-+ évolutions prévisibles
-+ coût de sortie ou de réversibilité`}</FormulaBox>
-
-        <p>
-          Utilisez votre coût horaire chargé réel, obtenu auprès de la paie ou
-          de votre expert-comptable. Ne le remplacez pas par le salaire net et
-          ne transformez pas une moyenne nationale en vérité sur votre
-          entreprise. Pour le temps perdu, mesurez quatre semaines :
-          consolidation, recherche de la bonne version, ressaisie, correction et
-          attente d’un fichier verrouillé.
-        </p>
-
-        <InfoBox
-          variant="blue"
-          title="Exemple illustratif fictif — la formule, pas une promesse de ROI"
-        >
-          Nathalie mesure 4 heures de consolidation par semaine. Avec 48
-          semaines de travail et un coût chargé hypothétique de 45 € par heure,
-          le statu quo représente 4 × 48 × 45 = <strong>8 640 € par an</strong>,
-          soit 34 560 € sur quatre ans avant même les incidents. Si douze
-          utilisateurs avaient besoin de Power Apps Premium au tarif relevé, les
-          licences seules représenteraient 12 × 17,30 × 48 ={" "}
-          <strong>9 964,80 € HT</strong> sur quatre ans. Aucun des deux nombres
-          ne suffit : il manque encore la mise en œuvre, la reprise,
-          l’administration, l’hébergement et la sortie.
-        </InfoBox>
-
+        <FormulaBox>
+          Coût sur 4 ans = construction ou mise en place + licences + reprise
+          des données + formation + entretien + évolutions + temps interne +
+          sortie
+        </FormulaBox>
         <GuideTable
-          headers={[
-            "Poste",
-            "Excel actuel",
-            "Logiciel / no-code",
-            "Sur-mesure",
-          ]}
+          caption="Les postes à demander dans chaque proposition"
+          headers={["Poste", "Question simple", "Oubli fréquent"]}
           rows={[
             [
-              "Démarrage",
-              "audit et fiabilisation",
-              "paramétrage + éventuel intégrateur",
-              "cadrage + conception + développement",
+              "Utilisateurs",
+              "Combien de personnes doivent avoir une licence aujourd'hui et demain ?",
+              "Les comptes occasionnels ou externes.",
             ],
             [
-              "Récurrent",
-              "temps manuel + Microsoft 365 déjà souscrit",
-              "licences + administration + options",
-              "hébergement + maintenance + évolutions",
+              "Mise en place",
+              "Qui nettoie les données et reconstruit les règles ?",
+              "Le temps des salariés mobilisés.",
             ],
             [
-              "Temps interne",
-              "corrections et consolidation",
-              "nettoyage + recette + formation",
-              "ateliers + nettoyage + recette + formation",
+              "Fonctionnement",
+              "Qui corrige, sauvegarde, assiste et fait évoluer ?",
+              "L'administration de la plateforme.",
             ],
             [
               "Sortie",
-              "faible si le fichier reste documenté",
-              "export des données, reconstruction des écrans et automatisations",
-              "transfert du dépôt, de la documentation et de l’infrastructure",
+              "Que récupérons-nous si nous changeons d'outil ?",
+              "Les automatisations et pièces jointes non exportables.",
+            ],
+          ]}
+        />
+        <p>
+          <strong>Exemple illustratif fictif.</strong> Au relevé du 21 juillet
+          2026, Microsoft affiche Power Apps Premium à 17,30 € HT par
+          utilisateur et par mois avec paiement annuel. Pour dix utilisateurs
+          pendant quarante-huit mois, les licences seules représentent 8 304 €
+          HT si le tarif reste inchangé. Ce montant n&apos;inclut ni la
+          préparation, ni la reprise des données, ni la formation, ni
+          l&apos;administration. Il illustre la méthode ; il ne constitue pas un
+          devis.
+        </p>
+
+        <h2 id="migration">
+          Faites cohabiter l&apos;ancien fichier et le nouvel outil le temps de
+          vérifier
+        </h2>
+        <p>
+          La migration commence par une copie de travail. On nettoie les
+          doublons, on choisit les champs réellement utiles et on relie chaque
+          ancienne colonne à sa destination. Les lignes ambiguës sont signalées
+          à une personne capable de décider ; elles ne doivent pas être «
+          corrigées » automatiquement sans règle.
+        </p>
+        <ol>
+          <li>
+            Choisissez un échantillon comprenant des cas simples et des
+            exceptions.
+          </li>
+          <li>
+            Importez-le, puis comparez les totaux et quelques dossiers ligne par
+            ligne.
+          </li>
+          <li>
+            Faites travailler un petit groupe dans le nouvel outil sur une
+            période limitée.
+          </li>
+          <li>
+            Corrigez les règles et formez les utilisateurs avant la bascule
+            générale.
+          </li>
+          <li>
+            Conservez l&apos;ancien fichier en lecture seule et prévoyez la
+            marche à suivre si un problème important apparaît.
+          </li>
+        </ol>
+        <p>
+          Ce temps de vérification n&apos;est pas du retard. Il protège
+          l&apos;activité et révèle les habitudes que personne n&apos;avait
+          pensé à décrire.
+        </p>
+
+        <h2 id="donnees-rgpd">
+          L&apos;outil ne devient pas « conforme » à votre place
+        </h2>
+        <p>
+          Si le fichier contient des données de clients, de salariés ou de
+          partenaires, votre entreprise reste responsable de leur utilisation.
+          La CNIL rappelle que la relation avec un éditeur ou un hébergeur doit
+          être encadrée lorsqu&apos;il traite ces données pour votre compte.
+          Vérifiez le contrat, les mesures de sécurité, les lieux de stockage,
+          les personnes autorisées et les conditions de restitution.
+        </p>
+        <p>
+          Le plan acheté compte autant que le nom de l&apos;éditeur. Airtable
+          indique par exemple que le choix d&apos;une résidence des données en
+          Europe est lié à son offre Enterprise Scale et que certaines données
+          peuvent rester traitées ailleurs. Ne vous contentez donc pas de la
+          phrase « hébergé en Europe » : demandez quelles données, avec quel
+          abonnement et quels sous-traitants.
+        </p>
+        <InfoBox
+          variant="amber"
+          title="Migration et archive sont deux sujets différents"
+        >
+          Les textes cités en source prévoient notamment des durées de
+          conservation pour certains documents comptables et fiscaux. Une
+          application avec un historique ne remplace pas automatiquement une
+          archive conforme. Faites valider les durées et les formats applicables
+          à vos documents avant de supprimer quoi que ce soit.
+        </InfoBox>
+
+        <h2 id="contrat">
+          Le contrat doit préciser ce que vous possédez et ce que vous récupérez
+        </h2>
+        <p>
+          Pour une plateforme, demandez le format d&apos;export des données,
+          pièces jointes, utilisateurs et historiques. Pour un développement,
+          ajoutez l&apos;accès au code, à l&apos;hébergement, aux comptes
+          techniques et aux instructions nécessaires pour qu&apos;un autre
+          prestataire puisse reprendre le service.
+        </p>
+        <p>
+          Le paiement d&apos;une facture ne suffit pas toujours à définir les
+          droits d&apos;utilisation du code. L&apos;article L131-3 du Code de la
+          propriété intellectuelle encadre la cession des droits. Faites
+          préciser par écrit les droits transmis, leur étendue et leur durée,
+          puis faites relire les clauses importantes si l&apos;outil devient
+          essentiel à l&apos;entreprise.
+        </p>
+        <GuideTable
+          caption="Les questions à faire apparaître dans le contrat"
+          headers={["Sujet", "Ce que vous devez savoir", "Pourquoi"]}
+          rows={[
+            [
+              "Données",
+              "Formats, délai et coût de restitution",
+              "Pouvoir changer de solution.",
             ],
             [
-              "Risque majeur",
-              "dépendance à une personne et erreur silencieuse",
-              "verrouillage fournisseur et hausse des licences",
-              "mauvais cadrage ou dépendance au prestataire",
+              "Code et comptes",
+              "Accès remis et droits d'utilisation écrits",
+              "Ne pas dépendre d'une seule personne.",
+            ],
+            [
+              "Entretien",
+              "Délais, horaires, sauvegardes et corrections incluses",
+              "Savoir ce qui se passe après la mise en ligne.",
+            ],
+            [
+              "Fin de relation",
+              "Aide prévue pour le transfert",
+              "Éviter une sortie improvisée.",
             ],
           ]}
         />
 
+        <h2 id="exemple">
+          Exemple : choisir une amélioration avant de développer
+        </h2>
         <p>
-          Pour comprendre les postes d’un devis et construire votre propre
-          scénario sans dépendre d’un score opaque, consultez aussi le guide du{" "}
-          <Link href="/guides/prix-logiciel-sur-mesure">
-            prix d’un logiciel sur mesure
+          <strong>Exemple illustratif fictif.</strong> Une entreprise de
+          services utilise trois copies d&apos;un fichier de planning. Huit
+          personnes le consultent, mais deux seulement le modifient. Le premier
+          essai raisonnable consiste à réunir les données dans un fichier
+          structuré, stocké dans un environnement compatible avec la coédition,
+          puis à définir qui a le droit de changer quoi.
+        </p>
+        <p>
+          Si cet essai règle les conflits de version, l&apos;entreprise peut
+          conserver Excel et reporter l&apos;investissement. S&apos;il révèle au
+          contraire des validations par rôle, des interventions mobiles et des
+          échanges indispensables avec la facturation, l&apos;application
+          devient plus facile à justifier. La décision vient des usages
+          observés, pas de la taille du fichier.
+        </p>
+
+        <h2 id="plan-30-jours">
+          En trente jours, vous pouvez décider sans lancer le développement
+        </h2>
+        <GuideTable
+          caption="Un mois pour obtenir une décision argumentée"
+          headers={["Période", "Travail à faire", "Résultat attendu"]}
+          rows={[
+            [
+              "Première semaine",
+              "Lister utilisateurs, copies, erreurs et ressaisies",
+              "Une description factuelle du problème.",
+            ],
+            [
+              "Deuxième semaine",
+              "Tester la correction simple et regarder les logiciels existants",
+              "Une option écartée ou confirmée.",
+            ],
+            [
+              "Troisième semaine",
+              "Décrire les règles, droits, données et échanges nécessaires",
+              "Un besoin compréhensible par plusieurs prestataires.",
+            ],
+            [
+              "Quatrième semaine",
+              "Comparer coûts, entretien, données et sortie sur la même durée",
+              "Une décision : conserver, acheter, tester ou développer.",
+            ],
+          ]}
+        />
+        <p>
+          Si le processus change encore chaque semaine, stabilisez-le avant de
+          le figer dans un logiciel. Si un produit existant répond à
+          l&apos;essentiel, testez-le avec vos données. Si les règles propres à
+          l&apos;entreprise restent décisives, préparez alors un{" "}
+          <Link href="/guides/cahier-des-charges-application-metier">
+            document de besoin pour l&apos;application métier
           </Link>
           .
         </p>
 
-        <h2 id="migration">
-          6. Migrer sans perdre l’historique ni bloquer l’équipe
-        </h2>
-
-        <p>
-          Une bascule sûre se prépare comme une opération métier, pas comme un
-          simple import. Chaque étape a un responsable, un livrable et un
-          critère de sortie observable.
-        </p>
-
-        <ol>
-          <li>
-            <strong>Geler une copie de référence.</strong> Datez-la, rendez-la
-            non modifiable et calculez un condensat ou conservez-la dans un
-            espace d’archives protégé. Elle permettra de démontrer ce qui
-            existait avant le nettoyage.
-          </li>
-          <li>
-            <strong>Inventorier les données et les règles.</strong> Pour chaque
-            onglet : propriétaire, colonnes, volume, formules, macro, source,
-            destinataire, durée de conservation et niveau de sensibilité.
-          </li>
-          <li>
-            <strong>Nettoyer sur une copie.</strong> Normalisez dates, unités,
-            listes de valeurs et identifiants ; arbitrez les doublons avec le
-            métier. Le prestataire ne doit jamais décider seul quel client ou
-            montant est « le bon ».
-          </li>
-          <li>
-            <strong>Migrer un échantillon.</strong> Importez des cas normaux et
-            difficiles, puis rapprochez le nombre de lignes, les totaux et dix
-            dossiers choisis au hasard avec la source.
-          </li>
-          <li>
-            <strong>Faire une marche parallèle courte.</strong> Pendant une
-            période définie, comparez les résultats de l’ancien et du nouveau
-            système. N’organisez pas une double saisie indéfinie : elle crée
-            précisément les divergences que le projet devait supprimer.
-          </li>
-          <li>
-            <strong>Décider la bascule et le retour arrière.</strong> Écrivez
-            qui donne le feu vert, à quelle heure, sur quels critères, et
-            jusqu’à quel moment l’ancien système peut être réactivé sans perte.
-          </li>
-          <li>
-            <strong>Archiver l’ancien fichier.</strong> Retirez les droits de
-            modification, conservez les versions exigées et documentez comment
-            retrouver un dossier ancien. « On garde le NAS au cas où » n’est pas
-            une politique d’archive.
-          </li>
-        </ol>
-
-        <InfoBox variant="emerald" title="Critères de réception minimaux">
-          <ul className="mb-0 mt-2 space-y-1.5 pl-5">
-            <li>
-              100 % des enregistrements attendus sont importés ou justifiés
-              comme exclus ;
-            </li>
-            <li>
-              les totaux de contrôle concordent entre la source et la cible ;
-            </li>
-            <li>chaque rôle a été testé avec un compte réel de test ;</li>
-            <li>
-              les dix scénarios métier passent avec une preuve conservée ;
-            </li>
-            <li>
-              un export complet et une restauration ont été réellement exécutés
-              ;
-            </li>
-            <li>
-              le responsable métier signe la recette, pas seulement le
-              prestataire.
-            </li>
-          </ul>
-        </InfoBox>
-
-        <h2 id="donnees-rgpd">
-          7. Données, RGPD et conservation : les questions avant l’outil
-        </h2>
-
-        <p>
-          Si le classeur contient des données de clients, prospects, salariés ou
-          partenaires, l’éditeur de la plateforme ou l’hébergeur devient souvent
-          un sous-traitant au sens du RGPD. La CNIL rappelle que ses obligations
-          doivent figurer dans le contrat. Vous restez responsable de traitement
-          : l’étiquette « conforme RGPD » sur une page commerciale ne vous
-          transfère pas cette responsabilité.
-        </p>
-
-        <p>
-          Demandez où sont stockées les données du plan réellement souscrit, pas
-          de l’offre Enterprise présentée dans la documentation de sécurité.
-          Exemple vérifié le 19 juillet 2026 : Airtable indique que la résidence
-          européenne est réservée à Enterprise Scale. Même lorsqu’une région
-          européenne est choisie, sa documentation liste encore aux États-Unis
-          des métadonnées de base, des données d’authentification ainsi que des
-          éléments d’analyse et de support. Ce fait n’interdit pas
-          automatiquement l’outil ; il oblige à documenter le transfert et le
-          contrat.
-        </p>
-
-        <GuideTable
-          headers={["Question", "Preuve à demander", "Signal d’alerte"]}
-          rows={[
-            [
-              "Où sont les données ?",
-              "région du plan, sous-traitants, sauvegardes et support",
-              "réponse globale sans distinguer le plan",
-            ],
-            [
-              "Qui y accède ?",
-              "matrice des rôles, comptes nominatifs, journaux",
-              "comptes partagés ou droits administrateur généralisés",
-            ],
-            [
-              "Combien de temps ?",
-              "durées par type de donnée et procédure de purge",
-              "conservation illimitée par défaut",
-            ],
-            [
-              "Comment restaurer ?",
-              "fréquence, rétention et preuve d’un test de restauration",
-              "simple mention « sauvegardé »",
-            ],
-            [
-              "Comment sortir ?",
-              "format, périmètre, pièces jointes, délai et coût",
-              "export CSV présenté comme réversibilité complète",
-            ],
-          ]}
-        />
-
-        <h3>Que faire des dix années d’historique ?</h3>
-
-        <p>
-          Ne confondez pas historique applicatif et archive légale. L’article
-          L123-22 du Code de commerce exige la conservation des documents
-          comptables et pièces justificatives pendant dix ans. L’article L102 B
-          du Livre des procédures fiscales fixe six ans pour les livres,
-          registres, documents ou pièces concernés par les contrôles fiscaux et
-          précise qu’un document établi ou reçu sur support informatique doit
-          rester conservé sous cette forme pendant cette durée.
-        </p>
-
-        <p>
-          Vous pouvez donc migrer uniquement les dossiers actifs et conserver le
-          reste dans une archive protégée, indexée et consultable. L’application
-          n’a pas à porter tout l’historique si l’archive répond mieux au
-          besoin. Pour un périmètre comptable, social, médical ou réglementé,
-          faites valider les durées applicables à votre situation : ce guide
-          n’est pas un conseil juridique personnalisé.
-        </p>
-
-        <h2 id="contrat">8. Les clauses et preuves à exiger avant de signer</h2>
-
-        <p>
-          Une application sur mesure ne vous rend autonome que si le contrat et
-          les accès racontent la même histoire. L’article L131-3 du Code de la
-          propriété intellectuelle impose que chaque droit cédé soit mentionné
-          distinctement et que son exploitation soit délimitée par l’étendue, la
-          destination, le lieu et la durée. La formule « le client est
-          propriétaire » ne remplace pas ce formalisme.
-        </p>
-
-        <GuideTable
-          headers={["À exiger", "Ce que vous devez pouvoir vérifier"]}
-          rows={[
-            [
-              "Périmètre et exclusions",
-              "écrans, rôles, règles, intégrations, données reprises et éléments hors lot",
-            ],
-            [
-              "Critères de recette",
-              "scénarios, données de test, responsable de validation et délai de correction",
-            ],
-            [
-              "Cession de droits",
-              "droits énumérés et quatre délimitations de l’article L131-3",
-            ],
-            [
-              "Dépôt du code",
-              "organisation Git appartenant au client et historique accessible dès le projet",
-            ],
-            [
-              "Infrastructure",
-              "comptes d’hébergement, domaine, base, secrets et procédure de déploiement",
-            ],
-            [
-              "Réversibilité",
-              "données, pièces jointes, journaux, formats, délai, coût et assistance",
-            ],
-            [
-              "Maintenance",
-              "ce qui relève d’un bug ou d’une évolution, horaires, prise en charge et rétablissement",
-            ],
-            [
-              "Sortie par jalon",
-              "livrable utilisable, paiement associé et possibilité d’arrêter sans perdre le travail acquis",
-            ],
-          ]}
-        />
-
-        <p>
-          La propriété du code ne suffit pas si le dépôt, l’hébergement ou les
-          accès restent au nom du prestataire. Inversement, un dépôt accessible
-          ne remplace pas une cession écrite. Le guide sur la{" "}
-          <Link href="/guides/proprietaire-site-internet-code-source">
-            propriété du site et du code source
-          </Link>{" "}
-          détaille cette différence entre droit, accès et réversibilité.
-        </p>
-
-        <h2 id="exemple">
-          9. Exemple fictif : ce que Nathalie devrait décider lundi matin
-        </h2>
-
-        <p>
-          <strong>Exemple illustratif fictif.</strong> Nathalie dirige une PME
-          de maintenance industrielle de quatorze personnes à Montmélian. Son
-          fichier comporte six onglets et 38 000 lignes accumulées depuis 2019.
-          Douze personnes doivent écrire, dont cinq techniciens en déplacement.
-          Le classeur est sur le NAS du bureau ; quatre heures par semaine sont
-          consacrées à consolider les versions.
-        </p>
-
-        <p>
-          Elle ne devrait pourtant pas demander immédiatement une application
-          sur mesure. Son métier dispose de logiciels de gestion de maintenance
-          assistée par ordinateur. La première semaine consiste donc à vérifier
-          trois choses : la coédition cloud corrige-t-elle le verrouillage ? Une
-          GMAO existante couvre-t-elle les interventions, pièces, plannings et
-          historiques ? Quelles règles spécifiques expliquent les quatre heures
-          de consolidation ?
-        </p>
-
-        <p>
-          Si une GMAO couvre l’essentiel et accepte un export test, elle gagne.
-          Si le processus continue de changer, Nathalie prototype un seul flux.
-          Le sur-mesure ne devient rationnel que si les règles de planification,
-          l’intégration aux machines ou à l’ERP et le fonctionnement hors
-          connexion créent un avantage métier que les outils standards ne savent
-          pas fournir. Dans ce cas, le premier lot ne remplace pas les six
-          onglets : il traite les interventions actives, avec un résultat
-          exploitable seul.
-        </p>
-
-        <InfoBox
-          variant="blue"
-          title="La décision obtenue, sans faux cas client"
-        >
-          Le bon livrable n’est pas « une application ». C’est un arbitrage
-          documenté entre quatre scénarios, avec coût total, risques, preuves et
-          condition d’abandon. Nathalie peut décider de conserver Excel,
-          d’acheter une GMAO, de prototyper ou de développer — sans perdre le
-          travail de diagnostic.
-        </InfoBox>
-
-        <h2 id="plan-30-jours">10. Votre plan d’action sur 30 jours</h2>
-
-        <GuideTable
-          headers={[
-            "Période",
-            "Travail",
-            "Livrable qui prouve que c’est terminé",
-          ]}
-          rows={[
-            [
-              "Jours 1 à 5",
-              "copie figée, inventaire des onglets, formules, macros, acteurs et irritants",
-              "carte du processus + propriétaire de chaque donnée",
-            ],
-            [
-              "Jours 6 à 10",
-              "mesure du temps perdu et test de l’option zéro",
-              "journal des incidents + fichier fiabilisé en environnement de test",
-            ],
-            [
-              "Jours 11 à 15",
-              "démonstrations de logiciels sur trois scénarios réels",
-              "grille comparable : couverture, coût 4 ans, export, hébergement",
-            ],
-            [
-              "Jours 16 à 20",
-              "échantillon nettoyé et dix scénarios de recette",
-              "jeu de données test + critères d’acceptation signables",
-            ],
-            [
-              "Jours 21 à 25",
-              "comparaison plateforme / sur-mesure si le standard échoue",
-              "deux scénarios au même périmètre, avec exclusions",
-            ],
-            [
-              "Jours 26 à 30",
-              "décision du premier lot et du plan de retour arrière",
-              "note de décision : faire, tester, reporter ou renoncer",
-            ],
-          ]}
-        />
-
-        <p>
-          À la fin du mois, vous devez pouvoir expliquer la décision sans citer
-          une technologie : « nous gardons Excel car le partage résout le
-          problème », « nous achetons cet outil car il couvre huit scénarios sur
-          dix », ou « nous construisons ce premier flux car aucune solution ne
-          satisfait telle règle et telle intégration ». Si la phrase reste «
-          l’interface était moderne », vous n’avez pas encore assez travaillé le
-          besoin.
-        </p>
-
         <GuideInlineCTA
-          title="Faites relire le diagnostic avant de choisir l’outil"
-          description="Envoyez-nous le fichier sans données sensibles, la carte du processus ou simplement le résultat copié du diagnostic. Nous vous répondons personnellement avec le premier point à vérifier — y compris si conserver Excel ou acheter un outil existant est plus rationnel."
-          tags={["Réponse humaine", "Sans engagement", "Mauvais fit signalé"]}
-          ctaLabel="Faire vérifier mon cas"
-          ctaHref="/demarrer-un-projet"
+          title="Votre fichier Excel est devenu indispensable à l'entreprise ?"
+          description="Expliquez-nous qui l'utilise, ce qui se bloque et ce que vous avez déjà essayé. Nous comparerons avec vous l'amélioration d'Excel, un logiciel existant, une plateforme et le sur-mesure."
+          tags={[
+            "Solution simple possible",
+            "Coûts comparés",
+            "Migration progressive",
+          ]}
+          ctaLabel="Faire examiner mon besoin"
         />
 
-        <h2 id="sources">Sources primaires consultées le 19 juillet 2026</h2>
-
+        <h2 id="sources">Sources et points à revalider avant de signer</h2>
         <p>
-          Les prix, fonctionnalités et politiques d’hébergement peuvent changer.
-          Les sources suivantes sont celles utilisées pour les affirmations
-          décisives de ce guide ; vérifiez leur version au moment de votre
-          choix.
+          Les règles de licence, tarifs et conditions d&apos;hébergement
+          évoluent. Les pages suivantes ont été utilisées pour distinguer les
+          faits techniques des hypothèses ; vérifiez-les de nouveau au moment de
+          votre choix.
         </p>
-
         <ul>
           <li>
-            <a
-              href="https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Microsoft Support — spécifications et limites d’Excel
-            </a>
-            , pour les limites de format.
-          </li>
-          <li>
+            Microsoft Support :{" "}
             <a
               href="https://support.microsoft.com/en-us/office/collaborate-on-excel-workbooks-at-the-same-time-with-co-authoring-7152aa8b-b791-414c-a3bb-3024e46fb104"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
-              Microsoft Support — coédition des classeurs Excel
+              conditions de coédition des classeurs Excel
+            </a>{" "}
+            et{" "}
+            <a
+              href="https://support.microsoft.com/en-us/office/excel-specifications-and-limits-1672b34d-7043-467e-8e27-269d656771c3"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              spécifications et limites d&apos;Excel
             </a>
-            , pour l’abonnement et les emplacements compatibles.
+            .
           </li>
           <li>
+            Microsoft Learn :{" "}
             <a
               href="https://learn.microsoft.com/fr-fr/power-apps/maker/canvas-apps/get-started-create-from-blank"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
-              Microsoft Learn — créer une application à partir de données Excel
-            </a>
-            , pour les modes d’import et de connexion.
-          </li>
-          <li>
+              création d&apos;une application canevas
+            </a>{" "}
+            et{" "}
             <a
               href="https://learn.microsoft.com/en-us/power-platform/admin/pricing-billing-skus"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
-              Microsoft Learn — capacités Power Apps pour Microsoft 365
+              vue d&apos;ensemble des licences Power Platform
             </a>
-            , pour les connecteurs standard et les exclusions.
+            .
           </li>
           <li>
             <a
               href="https://www.microsoft.com/fr-fr/power-platform/products/power-apps/pricing"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
-              Microsoft France — tarifs Power Apps
+              Microsoft France, tarifs Power Apps
             </a>
-            , relevés le 19 juillet 2026.
+            , relevés le 21 juillet 2026 et susceptibles d&apos;évoluer.
           </li>
           <li>
             <a
               href="https://support.airtable.com/docs/data-residency-at-airtable"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
-              Airtable — résidence des données
+              Airtable, résidence des données selon l&apos;offre
             </a>
-            , pour les plans et données restant aux États-Unis.
+            .
           </li>
           <li>
             <a
               href="https://www.cnil.fr/fr/definition/sous-traitant"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
-              CNIL — définition et obligations du sous-traitant
+              CNIL, rôle et obligations du sous-traitant
             </a>
-            , pour le cadre contractuel RGPD.
+            .
           </li>
           <li>
+            Légifrance :{" "}
             <a
               href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006219327/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
-              Légifrance — article L123-22 du Code de commerce
+              conservation des documents comptables
             </a>
-            , pour la conservation comptable de dix ans.
-          </li>
-          <li>
+            ,{" "}
             <a
               href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000041471233/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
-              Légifrance — article L102 B du Livre des procédures fiscales
-            </a>
-            , pour la conservation fiscale de six ans et le format informatique.
-          </li>
-          <li>
+              conservation de certains documents fiscaux
+            </a>{" "}
+            et{" "}
             <a
               href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
-              Légifrance — article L131-3 du Code de la propriété intellectuelle
+              cession des droits d&apos;auteur
             </a>
-            , pour le formalisme de la cession de droits.
+            .
           </li>
         </ul>
       </GuideLayout>

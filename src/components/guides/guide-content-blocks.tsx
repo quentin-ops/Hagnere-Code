@@ -89,7 +89,8 @@ interface GuideTableProps {
 }
 
 function getCellText(
-  cell: string | { text: string; className?: string; colSpan?: number } | undefined,
+  cell:
+    string | { text: string; className?: string; colSpan?: number } | undefined,
 ): string {
   return typeof cell === "string" ? cell : cell?.text || "";
 }
@@ -112,67 +113,116 @@ export function GuideTable({ headers, rows, caption }: GuideTableProps) {
     `Comparaison ${headers.join(", ")}${rowLabels ? ` — ${rowLabels}` : ""}`;
 
   return (
-    <div
-      className="not-prose overflow-x-auto my-6 -mx-4 px-4 sm:mx-0 sm:px-0"
-      tabIndex={isWide ? 0 : undefined}
-      role={isWide ? "region" : undefined}
-      aria-label={isWide ? `Tableau défilable : ${tableCaption}` : undefined}
-    >
-      <table
-        className={`w-full ${minWidthClass} text-xs sm:text-sm border-collapse`}
+    <>
+      <div
+        className="not-prose my-6 sm:hidden"
+        role="group"
+        aria-label={tableCaption}
       >
-        <caption className="sr-only">{tableCaption}</caption>
-        <thead>
-          <tr className="bg-zinc-50 dark:bg-zinc-900">
-            {headers.map((header, i) => (
-              <th
-                key={i}
-                className="text-left p-2 sm:p-3 border border-zinc-200 dark:border-zinc-700 font-semibold text-zinc-900 dark:text-zinc-100"
-              >
-                {header}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
+        {caption && (
+          <p className="mb-3 text-sm font-semibold leading-relaxed text-zinc-900 dark:text-zinc-100">
+            {caption}
+          </p>
+        )}
+        <div className="space-y-3">
           {rows.map((row, rowIndex) => (
-            <tr key={rowIndex}>
+            <dl
+              key={rowIndex}
+              className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
+            >
               {row.map((cell, cellIndex) => {
                 const isObj = typeof cell === "object";
-                const className = `p-2 sm:p-3 border border-zinc-200 dark:border-zinc-700 ${
+                const valueClassName =
                   isObj && cell.className
                     ? cell.className
                     : cellIndex === 0
-                      ? "text-zinc-900 dark:text-zinc-100 font-semibold"
-                      : "text-zinc-600 dark:text-zinc-400"
-                }`;
-                const colSpan = isObj ? cell.colSpan : undefined;
+                      ? "font-semibold text-zinc-950 dark:text-zinc-100"
+                      : "text-zinc-700 dark:text-zinc-300";
                 const content = isObj ? cell.text : cell;
 
-                if (cellIndex === 0) {
-                  return (
-                    <th
-                      key={cellIndex}
-                      scope="row"
-                      className={className}
-                      colSpan={colSpan}
+                return (
+                  <div
+                    key={cellIndex}
+                    className="border-b border-zinc-200 p-4 last:border-b-0 dark:border-zinc-800"
+                  >
+                    <dt className="text-[11px] font-bold uppercase tracking-[0.1em] text-zinc-500 dark:text-zinc-400">
+                      {headers[cellIndex] || `Information ${cellIndex + 1}`}
+                    </dt>
+                    <dd
+                      className={`mb-0 mt-1.5 text-sm leading-relaxed ${valueClassName}`}
                     >
                       {content}
-                    </th>
-                  );
-                }
-
-                return (
-                  <td key={cellIndex} className={className} colSpan={colSpan}>
-                    {content}
-                  </td>
+                    </dd>
+                  </div>
                 );
               })}
-            </tr>
+            </dl>
           ))}
-        </tbody>
-      </table>
-    </div>
+        </div>
+      </div>
+
+      <div
+        className="not-prose my-6 hidden overflow-x-auto sm:block"
+        tabIndex={isWide ? 0 : undefined}
+        role={isWide ? "region" : undefined}
+        aria-label={isWide ? `Tableau défilable : ${tableCaption}` : undefined}
+      >
+        <table
+          className={`w-full ${minWidthClass} border-collapse text-xs sm:text-sm`}
+        >
+          <caption className="sr-only">{tableCaption}</caption>
+          <thead>
+            <tr className="bg-zinc-50 dark:bg-zinc-900">
+              {headers.map((header, i) => (
+                <th
+                  key={i}
+                  className="border border-zinc-200 p-2 text-left font-semibold text-zinc-900 dark:border-zinc-700 dark:text-zinc-100 sm:p-3"
+                >
+                  {header}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {row.map((cell, cellIndex) => {
+                  const isObj = typeof cell === "object";
+                  const className = `border border-zinc-200 p-2 dark:border-zinc-700 sm:p-3 ${
+                    isObj && cell.className
+                      ? cell.className
+                      : cellIndex === 0
+                        ? "font-semibold text-zinc-900 dark:text-zinc-100"
+                        : "text-zinc-600 dark:text-zinc-400"
+                  }`;
+                  const colSpan = isObj ? cell.colSpan : undefined;
+                  const content = isObj ? cell.text : cell;
+
+                  if (cellIndex === 0) {
+                    return (
+                      <th
+                        key={cellIndex}
+                        scope="row"
+                        className={className}
+                        colSpan={colSpan}
+                      >
+                        {content}
+                      </th>
+                    );
+                  }
+
+                  return (
+                    <td key={cellIndex} className={className} colSpan={colSpan}>
+                      {content}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 
@@ -201,9 +251,9 @@ interface GuideInlineCTAProps {
 }
 
 export function GuideInlineCTA({
-  title = "Votre projet web, cadré en 3 minutes",
-  description = "Décrivez votre besoin en quelques étapes guidées — notre équipe lit chaque demande et vise une réponse argumentée le prochain jour ouvré, sans délai garanti.",
-  tags = ["Gratuit", "Sans engagement", "Objectif : prochain jour ouvré"],
+  title = "Parlons de ce que votre projet doit vraiment résoudre",
+  description = "Décrivez votre activité, le problème rencontré et le résultat attendu. Nous vous répondons avec une première lecture concrète, y compris si une solution plus simple suffit.",
+  tags = ["Sans engagement", "Réponse argumentée", "Solution simple possible"],
   ctaLabel = "Décrire mon projet",
   ctaHref = "/demarrer-un-projet",
 }: GuideInlineCTAProps) {

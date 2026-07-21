@@ -7,7 +7,7 @@
 > qualité du fond, ce document gouverne la publication, la découvrabilité et la
 > fidélité technique.
 
-Version : **20 juillet 2026** · Périmètre : `https://hagnere-code.ai`
+Version : **21 juillet 2026** · Périmètre : `https://hagnere-code.ai`
 
 ---
 
@@ -53,10 +53,18 @@ risques que tout futur contenu doit empêcher de réintroduire :
   n'est pas franchie. Le 20 juillet 2026, le commanditaire a explicitement
   délégué l'arbitrage aux contre-audits documentés ; les huit guides ont dépassé
   le seuil sans blocage résiduel, puis leur statut d'attente a été retiré ;
-- après cette décision, le snapshot éditorial du 20 juillet 2026 contient
-  **40 `PUBLISHED_GUIDES`**. Ce nombre décrit le registre du dépôt : il ne prouve
-  ni que le dernier déploiement est achevé, ni que les 40 URL ont été explorées
+- après cette décision, le snapshot éditorial du 21 juillet 2026 contient
+  **43 `PUBLISHED_GUIDES`**. Ce nombre décrit le registre du dépôt : il ne prouve
+  ni que le dernier déploiement est achevé, ni que les 43 URL ont été explorées
   ou indexées ;
+- le 21 juillet 2026, une lecture sur téléphone du guide SEO ou Google Ads a
+  révélé un échec que les contrôles techniques et la scorecard n'avaient pas
+  détecté : dans un écran de 390 px, le tableau principal mesurait 560 px et
+  masquait les colonnes décisives ; le texte demandait en plus de comprendre
+  « contrainte dominante », « portes non compensables » et « prochaine preuve ».
+  Une page peut donc être exacte, sourcée et indexable tout en restant
+  inutilisable pour un dirigeant. La charte impose désormais les 150 premiers
+  mots, le filtre anti-langage de consultant et le test mobile pédagogique ;
 - des métriques, témoignages, architectures et résultats illustratifs étaient
   parfois formulés comme des preuves de production, et des superlatifs
   d'exclusivité ne reposaient pas sur un relevé exhaustif vérifiable ;
@@ -177,11 +185,11 @@ des **tests avant build** et un **contrôle de l'artefact après build**.
 
 ## 3. Ne jamais confondre les trois mécanismes
 
-| Mécanisme | Rôle réel | Source du projet | Ce qu'il ne prouve pas |
-| --- | --- | --- | --- |
-| `robots.txt` | Autoriser ou interdire le crawl de familles d'URL | `src/app/robots.ts` | Découverte exhaustive, indexation ou classement |
-| `sitemap.xml` | Déclarer les URL canoniques publiques que l'on souhaite voir explorées | `src/app/sitemap.ts` | Crawl immédiat ou indexation effective |
-| `llms.txt` | Donner un index éditorial lisible à certains outils et assistants | `src/lib/llms.ts` puis `src/app/llms.txt/route.ts` | Prise en charge par Google, citation par un LLM ou gain de position |
+| Mécanisme     | Rôle réel                                                              | Source du projet                                   | Ce qu'il ne prouve pas                                              |
+| ------------- | ---------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------- |
+| `robots.txt`  | Autoriser ou interdire le crawl de familles d'URL                      | `src/app/robots.ts`                                | Découverte exhaustive, indexation ou classement                     |
+| `sitemap.xml` | Déclarer les URL canoniques publiques que l'on souhaite voir explorées | `src/app/sitemap.ts`                               | Crawl immédiat ou indexation effective                              |
+| `llms.txt`    | Donner un index éditorial lisible à certains outils et assistants      | `src/lib/llms.ts` puis `src/app/llms.txt/route.ts` | Prise en charge par Google, citation par un LLM ou gain de position |
 
 ### 3.1 `robots.txt` n'est jamais une liste d'articles
 
@@ -256,15 +264,15 @@ Références officielles : [fonctionnalités d'IA et votre site dans Google Sear
 
 ## 4. Sources de vérité à utiliser
 
-| Type de contenu | Registre obligatoire | Route ou consommateur automatique |
-| --- | --- | --- |
-| Guide | `src/lib/guides.ts` (`GUIDES`) | route et metadata ; seuls `PUBLISHED_GUIDES` alimentent hub, sitemap et `llms.txt` |
-| Ressource téléchargeable | `src/lib/resources.ts` (`DOWNLOADABLE_RESOURCES`) | hub, landing page, sitemap et `llms.txt` |
-| Livre blanc | `src/lib/white-papers.ts` (`WHITE_PAPERS`) | hub, landing page, sitemap et `llms.txt` |
-| Service | `src/lib/services.ts` (`SERVICE_LINKS`) | sitemap et `llms.txt`, alignement testé |
-| Pages locales | `src/lib/local-pages.ts` (`LOCAL_PAGES`) | pages locales et sitemap |
-| Canonical du domaine | `src/lib/seo.ts` (`SITE_URL`) | métadonnées et générateurs |
-| Politique d'indexation | `src/lib/search-indexing.ts` | layout et `robots.ts` |
+| Type de contenu          | Registre obligatoire                              | Route ou consommateur automatique                                                  |
+| ------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Guide                    | `src/lib/guides.ts` (`GUIDES`)                    | route et metadata ; seuls `PUBLISHED_GUIDES` alimentent hub, sitemap et `llms.txt` |
+| Ressource téléchargeable | `src/lib/resources.ts` (`DOWNLOADABLE_RESOURCES`) | hub, landing page, sitemap et `llms.txt`                                           |
+| Livre blanc              | `src/lib/white-papers.ts` (`WHITE_PAPERS`)        | hub, landing page, sitemap et `llms.txt`                                           |
+| Service                  | `src/lib/services.ts` (`SERVICE_LINKS`)           | sitemap et `llms.txt`, alignement testé                                            |
+| Pages locales            | `src/lib/local-pages.ts` (`LOCAL_PAGES`)          | pages locales et sitemap                                                           |
+| Canonical du domaine     | `src/lib/seo.ts` (`SITE_URL`)                     | métadonnées et générateurs                                                         |
+| Politique d'indexation   | `src/lib/search-indexing.ts`                      | layout et `robots.ts`                                                              |
 
 Ne pas recopier une source de vérité dans un second tableau « temporaire ».
 Si une donnée doit alimenter plusieurs sorties, la centraliser puis tester les
@@ -272,8 +280,10 @@ consommateurs.
 
 ### Ajouter un guide
 
-1. lire ce document et `docs/charte-qualite-guides.md` ;
-2. créer ou mettre à jour `docs/research/<slug>.md` ;
+1. lire ce document, `docs/charte-qualite-guides.md` et
+   `docs/workflow-maitre-guides-4-passes.md` ;
+2. créer ou mettre à jour `docs/research/<slug>.md`, y compris le journal des
+   quatre passes ;
 3. créer `src/app/guides/<slug>/page.tsx` ;
 4. créer son image `opengraph-image.tsx` dédiée ;
 5. ajouter une entrée complète et datée dans `GUIDES`, avec
@@ -588,6 +598,12 @@ petit écran :
 - formulaires avec labels, erreurs compréhensibles et fonctionnement sans
   dépendre d'une ressource en échec.
 
+Un tableau qui défile peut être accessible techniquement et mauvais pour la
+compréhension. Si la question se trouve dans la première colonne et la réponse
+hors écran, le contrôle échoue. Les comparaisons contenant des phrases doivent
+afficher ensemble la situation, le choix et sa conséquence à 390 px, au besoin
+sous forme de cartes ou de listes.
+
 Contrôler au minimum les largeurs `320`, `360`, `390`, `430`, `640`, `768`,
 `1024`, `1280`, `1440` et `1600` px sur les gabarits réellement touchés. Une
 réponse HTTP `200` et un DOM correct ne remplacent pas l'inspection visuelle.
@@ -599,12 +615,20 @@ réponse HTTP `200` et un DOM correct ne remplacent pas l'inspection visuelle.
 ### Fond et preuve
 
 - [ ] intention, lecteur et décision définis ;
+- [ ] les 150 premiers mots décrivent la situation du dirigeant, répondent et
+      annoncent la décision sans vocabulaire de consultant ;
+- [ ] le terme central est expliqué en français courant à son premier usage ;
+- [ ] aucun lexique massif, métaphore propriétaire ou cadre de méthode ne
+      précède la réponse ;
+- [ ] chaque H2 reste compréhensible isolément ;
+- [ ] la FAQ répond dans sa première phrase et le CTA promet un résultat
+      concret pour le prospect ;
 - [ ] faits décisifs sourcés et datés ;
 - [ ] estimations et exemples fictifs explicitement nommés ;
 - [ ] chiffres et calculs réconciliés dans le corps, tableaux et FAQ ;
 - [ ] aucune promesse de ressource, résultat ou délai sans réalité vérifiable ;
 - [ ] aucune fonctionnalité annoncée (PDF, rapport, réservation, envoi) si le
-  parcours ne la produit pas réellement ;
+      parcours ne la produit pas réellement ;
 - [ ] chaque CTA décrit sa destination et aucun lien public ne pointe vers `#` ;
 - [ ] absence de cannibalisation non résolue.
 
@@ -618,21 +642,23 @@ réponse HTTP `200` et un DOM correct ne remplacent pas l'inspection visuelle.
 - [ ] liens entrants et sortants testés ;
 - [ ] ressource réelle, téléchargeable et correctement versionnée ;
 - [ ] images dimensionnées et optimisées ;
-- [ ] rendu clavier, mobile et ordinateur vérifié.
+- [ ] rendu clavier, mobile et ordinateur vérifié ;
+- [ ] à 390 px, aucune réponse décisive n'est cachée dans une colonne qu'il faut
+      faire défiler.
 
 ### Automatisation
 
 - [ ] après validation éditoriale documentée — test lecteur humain ou
-  délégation explicite du commanditaire selon le §4 — le guide apparaît
-  automatiquement dans le hub, sitemap et `llms.txt` ; avant cette porte, il
-  reste `noindex,nofollow` ;
+      délégation explicite du commanditaire selon le §4 — le guide apparaît
+      automatiquement dans le hub, sitemap et `llms.txt` ; avant cette porte, il
+      reste `noindex,nofollow` ;
 - [ ] la landing de ressource ou livre blanc apparaît dans sitemap et
-  `llms.txt` ;
+      `llms.txt` ;
 - [ ] aucune URL binaire n'a été ajoutée au sitemap ou `llms.txt` ;
 - [ ] aucune modification manuelle de `robots.txt` pour ajouter un article ;
 - [ ] les commandes du §11 sont vertes.
 - [ ] les écritures des agents parallèles sont figées avant le dernier test et
-  aucun fichier source n'est plus récent que l'artefact validé.
+      aucun fichier source n'est plus récent que l'artefact validé.
 
 ---
 
@@ -648,7 +674,7 @@ réponse HTTP `200` et un DOM correct ne remplacent pas l'inspection visuelle.
 - [ ] inspection d'URL Search Console demandée si pertinent ;
 - [ ] canonical choisi et état d'indexation contrôlés ultérieurement ;
 - [ ] données Core Web Vitals de terrain suivies lorsqu'elles deviennent
-  disponibles ;
+      disponibles ;
 - [ ] requêtes, impressions, clics et conversions observés avant de réécrire.
 
 Statuts à ne pas confondre :

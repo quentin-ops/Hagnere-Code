@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         url: `${guideUrl(guide)}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "Prix de gestion Google Ads : média, honoraires et coût total",
+        alt: "Combien coûte Google Ads : budget publicitaire, gestion et frais de lancement",
       },
     ],
     publishedTime: `${guide.datePublished}T09:00:00+02:00`,
@@ -115,41 +115,41 @@ const faqItems = [
   {
     question: "Combien coûte la gestion de Google Ads par mois ?",
     answer:
-      "Il n’existe pas de moyenne française publique assez homogène. Les cinq tarifs propres relevés le 20 juillet 2026 utilisent des points de départ et des formules très différents, sans couvrir les mêmes livrables. Comparez donc média, gestion, mise en route, tracking, pages, créations, outils et temps interne sur le même horizon.",
+      "Il n’existe pas de moyenne française publique assez homogène. Dans les cinq offres publiques relevées le 20 juillet 2026, la gestion débute selon les cas à environ 90 € ou à 450 € HT par mois, mais les services inclus diffèrent. Ajoutez toujours le budget versé à Google et les éventuels frais de lancement.",
   },
   {
     question: "Les honoraires d’agence incluent-ils le budget versé à Google ?",
     answer:
-      "Ne le supposez jamais. Le montage le plus lisible sépare le média facturé sur le compte du client et les honoraires. Le devis doit indiquer montant Google, formule de gestion, minimum, plafond, taxes et services tiers. En cas de refacturation, exigez le détail et les accès.",
+      "Pas nécessairement. Demandez une ligne pour le budget versé à Google et une autre pour les honoraires. L’entreprise doit aussi conserver l’accès à son compte publicitaire.",
   },
   {
     question: "Forfait fixe ou pourcentage du budget média : que choisir ?",
     answer:
-      "Aucun modèle n’est supérieur par principe. Le forfait est prévisible ; le pourcentage évolue avec la dépense ; l’hybride combine socle et variable. Appliquez chaque formule à plusieurs budgets, puis comparez le périmètre, les personnes mobilisées et la fréquence de pilotage.",
+      "Le forfait donne un prix prévisible ; le pourcentage augmente avec votre dépense. Calculez les deux formules avec votre vrai budget, puis comparez surtout le travail inclus et la fréquence de suivi.",
   },
   {
     question: "Quel budget Google Ads minimum faut-il prévoir ?",
     answer:
-      "Il n’existe pas de seuil universel. Il dépend du coût par clic, du volume nécessaire, de la conversion, de la marge et de la gestion. Si les honoraires absorbent l’enveloppe, un test interne, un audit ponctuel ou un report peut être plus rationnel.",
+      "Il n’existe pas de minimum universel. Le bon budget dépend du prix des clics, du nombre de prospects nécessaire, de votre marge et des honoraires. Si le test est trop petit pour apprendre quoi que ce soit, mieux vaut le reporter ou commencer par un audit.",
   },
   {
     question: "Qui doit être propriétaire du compte Google Ads ?",
     answer:
-      "L’entreprise doit conserver un accès administrateur qu’elle contrôle. Google permet d’associer puis de dissocier le prestataire. Le devis inventorie aussi paiement, balises, audiences, pages, créations, tableaux de bord et droits : l’historique financé par le client doit rester accessible.",
-  },
-  {
-    question: "Le tracking et la page de destination sont-ils inclus ?",
-    answer:
-      "Cela dépend du devis. Une balise de formulaire n’équivaut pas à un retour des ventes du CRM ; une « optimisation » n’équivaut pas à concevoir et développer une page. Demandez événements, outils, tests, pages, variantes, droits et responsables.",
+      "Votre entreprise doit conserver un accès administrateur. Le prestataire peut être associé au compte puis retiré sans vous faire perdre l’historique des campagnes.",
   },
   {
     question:
-      "Une agence peut-elle garantir un ROAS ou un nombre de prospects ?",
+      "Le suivi des demandes et la page de destination sont-ils inclus ?",
     answer:
-      "Elle peut engager livrables, contrôles, rythme et alertes, pas contrôler seule concurrence, demande, offre, page et transformation commerciale. Une projection doit rester un scénario assorti d’hypothèses et d’une condition d’arrêt, jamais une garantie de revenu.",
+      "Cela dépend du devis. Demandez noir sur blanc si le suivi des demandes, le retour des ventes et la création ou l’amélioration des pages sont compris. Le mot « optimisation » seul ne suffit pas.",
+  },
+  {
+    question:
+      "Une agence peut-elle garantir une rentabilité ou un nombre de prospects ?",
+    answer:
+      "Non, car l’agence ne contrôle ni la demande, ni vos prix, ni votre équipe commerciale. Elle peut en revanche s’engager sur le travail fourni, les contrôles, le rythme de suivi et les alertes.",
   },
 ];
-
 
 export default function Page() {
   return (
@@ -172,14 +172,14 @@ export default function Page() {
           { label: "Prix de gestion Google Ads" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Budget média, honoraires, mise en route, suivi des conversions, page, créations, outils et temps interne : trois scénarios sur 3, 6 et 12 mois pour comparer les devis et tester le coût par prospect."
-        heroAction={{ href: "#socles", label: "Voir les trois budgets" }}
+        heroDescription="Vous voulez savoir combien prévoir pour Google Ads ? Séparez le budget payé à Google, les honoraires de gestion et les frais nécessaires au lancement. Ce guide vous donne des prix publics, trois exemples complets et une méthode simple pour comparer les devis."
+        heroAction={{ href: "#socles", label: "Voir trois exemples de budget" }}
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel={`Publié le ${formatGuideDate(guide.datePublished)}`}
+        updatedLabel={`Mis à jour le ${formatGuideDate(guide.dateModified)}`}
         keyPoints={[
           {
             number: "01",
@@ -189,7 +189,7 @@ export default function Page() {
           },
           {
             number: "02",
-            title: "Socles sur 3, 6 et 12 mois",
+            title: "3 exemples sur 3, 6 et 12 mois",
             description: "",
             color: "blue",
           },
@@ -243,92 +243,74 @@ export default function Page() {
       >
         <p className="lead">
           <strong>
-            Le prix d’une campagne Google Ads n’est ni le budget versé à Google,
-            ni le forfait de l’agence : c’est la somme des deux, plus tout ce
-            qui rend les clics mesurables et convertibles.
-          </strong>{" "}
-          Pour comparer deux devis, posez sept lignes sur le même horizon :
-          média, gestion, mise en route, mesure, page, créations et outils.
-          Ajoutez le temps interne et une sortie documentée. Une inconnue reste
-          « à confirmer » ; jamais zéro.
+            Vous cherchez combien coûte réellement Google Ads pour votre
+            entreprise ? Commencez par additionner le budget payé à Google et
+            les honoraires de la personne qui gère les campagnes.
+          </strong>
+        </p>
+        <p>
+          Dans les cinq offres publiques françaises relevées le 20 juillet 2026,
+          la gestion débute selon les prestataires à environ 90 € ou à 450 € HT
+          par mois, avec des contenus très différents. À cela s’ajoutent le
+          budget publicitaire, les frais de lancement et parfois la mesure des
+          demandes, la page d’arrivée ou les créations.
+        </p>
+        <p>
+          Dans notre exemple d’une entreprise locale, 900 € de publicité et 450
+          € de gestion par mois conduisent à un coût complet de 11 534 € HT sur
+          six mois une fois le lancement et le temps interne ajoutés. Ce n’est
+          pas une moyenne : l’exemple montre ce qu’un prix mensuel isolé peut
+          cacher.
         </p>
 
         <InfoBox
           variant="blue"
-          title="La réponse courte : additionnez avant de comparer"
+          title="Les trois montants à demander dans chaque devis"
         >
-          <FormulaBox>{`Coût complet Google Ads sur une période =
-  budget média facturé par la plateforme
-+ honoraires de gestion
-+ audit, stratégie et mise en route
-+ suivi des conversions et liaison avec le logiciel de gestion de la relation client (CRM)
-+ création ou amélioration des pages de destination
-+ annonces, images et vidéos
-+ outils, hébergement et licences
-+ temps interne de validation et de suivi
-+ coût de passation ou de sortie`}</FormulaBox>
-          <p className="mb-0">
-            Les offres publiques relevées en France ne couvrent pas toutes ces
-            lignes. Leur dispersion ne forme donc pas une « moyenne de marché ».
-            Elle prouve seulement qu’un prix mensuel sans périmètre est
-            impossible à interpréter.
-          </p>
-        </InfoBox>
-
-        <InfoBox variant="amber" title="Le vocabulaire utile, sans jargon">
-          <strong>Budget média</strong> : argent consommé par Google pour
-          diffuser les annonces. <strong>Honoraires</strong> : rémunération de
-          la personne ou de l’équipe qui pilote. <strong>Mise en route</strong>,
-          souvent appelée <em>setup</em> : analyse, structure et lancement du
-          compte. <strong>Page de destination</strong>, ou <em>landing page</em>
-          : page ouverte après le clic. <strong>Conversion</strong> : action
-          utile mesurée, par exemple un achat ou une demande.{" "}
-          <strong>Suivi des conversions</strong>, ou <em>tracking</em> :
-          dispositif qui relie ces actions aux campagnes. <strong>CPL</strong> :
-          coût par prospect. <strong>CPA</strong> : coût par acquisition, dont
-          la définition doit préciser s’il s’agit d’un formulaire, d’un prospect
-          qualifié ou d’un client. <strong>ROAS</strong> : valeur de conversion
-          divisée par la dépense média ; il n’intègre pas automatiquement
-          honoraires, marge et coûts de production.
+          <ol className="mb-0 list-decimal space-y-1.5 pl-5">
+            <li>
+              <strong>Le budget publicitaire</strong> directement dépensé sur
+              Google.
+            </li>
+            <li>
+              <strong>Les honoraires</strong> pour créer, suivre et améliorer
+              les campagnes.
+            </li>
+            <li>
+              <strong>Les frais complémentaires</strong> : lancement, suivi des
+              demandes, page, visuels ou outils lorsqu’ils sont nécessaires.
+            </li>
+          </ol>
         </InfoBox>
 
         <GuideToc
           items={[
-            { id: "sept-postes", label: "1. Les sept factures d’une campagne" },
+            { id: "sept-postes", label: "1. Ce que vous payez exactement" },
             {
               id: "tarifs-publics",
-              label: "2. Ce que montrent cinq tarifs publics français",
-            },
-            {
-              id: "modeles",
-              label: "3. Forfait, pourcentage, hybride ou temps passé",
+              label: "2. Tarifs publics et modes de facturation",
             },
             {
               id: "socles",
-              label: "4. Trois socles chiffrés sur 3, 6 et 12 mois",
+              label: "3. Trois budgets complets sur 3, 6 et 12 mois",
             },
-            { id: "rentabilite", label: "5. CPL, CPA et seuil de rentabilité" },
             {
-              id: "mesure",
-              label: "6. Pourquoi mesure, pages et créations coûtent",
+              id: "rentabilite",
+              label: "4. Savoir si la campagne peut être rentable",
             },
-            { id: "prestataire", label: "7. Interne, freelance ou agence" },
-            { id: "propriete", label: "8. Compte, données et réversibilité" },
-            {
-              id: "offre-hagnere",
-              label: "9. Où se situe l’offre Hagnéré Code",
-            },
+            { id: "prestataire", label: "5. Interne, freelance ou agence" },
             {
               id: "checklist",
-              label: "10. La checklist pour comparer deux devis",
+              label: "6. La checklist pour comparer deux devis",
             },
             { id: "sources", label: "Sources consultées" },
           ]}
         />
 
-        <h2 id="sept-postes">1. Les sept factures d’une campagne Google Ads</h2>
+        <h2 id="sept-postes">1. Comprenez ce que vous payez exactement</h2>
 
         <p>
+          Le premier montant est celui dépensé pour afficher vos annonces.
           Google vous demande un budget quotidien moyen par campagne. Pour la
           plupart des campagnes, sa documentation indique une limite de dépense
           quotidienne égale à deux fois ce budget et une limite mensuelle égale
@@ -346,46 +328,38 @@ export default function Page() {
           .
         </p>
 
-        <GuideTable
-          headers={["Poste", "Ce qu’il doit décrire", "Erreur de comparaison"]}
-          rows={[
-            [
-              "Budget média",
-              "Montant facturé par Google, campagnes concernées, règle d’augmentation",
-              "Le confondre avec les honoraires",
-            ],
-            [
-              "Gestion",
-              "Formule, fréquence d’optimisation, campagnes, pays et personnes",
-              "Comparer deux forfaits sans comparer la charge",
-            ],
-            [
-              "Mise en route",
-              "Audit, recherche, structure, annonces, tests d’acceptation (recette) et lancement",
-              "Supposer qu’elle est incluse dans le premier mois",
-            ],
-            [
-              "Mesure",
-              "Conversions, consentement, tests, CRM et surveillance",
-              "Payer pour un formulaire sans savoir s’il devient une vente",
-            ],
-            [
-              "Page de destination",
-              "Conception, rédaction, développement, variantes et maintenance",
-              "Lire « optimisation » comme une refonte complète",
-            ],
-            [
-              "Créations",
-              "Textes, images, vidéos, volumes, validations et droits",
-              "Oublier le renouvellement des formats",
-            ],
-            [
-              "Outils et exploitation",
-              "Connecteurs, hébergement, tableau de bord, alertes et passation",
-              "Traiter les licences et le temps interne comme gratuits",
-            ],
-          ]}
-        />
+        <p>
+          Faites apparaître sept lignes, même lorsque certaines valent zéro :
+        </p>
+
+        <ul>
+          <li>
+            le <strong>budget média</strong> facturé par Google ;
+          </li>
+          <li>
+            la <strong>gestion</strong>, avec sa formule et la fréquence du
+            travail ;
+          </li>
+          <li>
+            la <strong>mise en route</strong> : recherche, structure, annonces
+            et tests ;
+          </li>
+          <li>
+            la <strong>mesure</strong> des demandes, prospects et ventes ;
+          </li>
+          <li>la page vers laquelle les annonces envoient les visiteurs ;</li>
+          <li>les textes, images ou vidéos à produire et renouveler ;</li>
+          <li>
+            les outils, connexions, alertes, licences et le temps de votre
+            équipe.
+          </li>
+        </ul>
+
+        <p>
+          Un « forfait tout compris » ne permet pas de comparer deux offres si
+          l’une inclut la page et le suivi des ventes tandis que l’autre couvre
+          seulement le compte Google Ads.
+        </p>
 
         <h2 id="tarifs-publics">
           2. Ce que montrent cinq tarifs publics français — et rien de plus
@@ -419,7 +393,7 @@ export default function Page() {
             [
               "DP Medias",
               "Audit 500 € HT ; création de compte 250 € HT ; suivi dès 450 € HT/mois",
-              "Périmètre au-delà du point de départ et livrables de page",
+              "Travail prévu au-delà du prix de départ et livrables de page",
             ],
             [
               "Ad-Works",
@@ -479,127 +453,121 @@ export default function Page() {
           variant="amber"
           title="Ce que l’échantillon ne permet pas d’écrire"
         >
-          Il ne permet pas d’annoncer que « le marché coûte de 90 à 990 € par
-          mois ». Les plans ne couvrent ni le même volume, ni les mêmes
+          Il ne permet pas d’annoncer une fourchette de marché à partir de ces
+          seuls prix. Les plans ne couvrent ni le même volume, ni les mêmes
           compétences, ni les mêmes comptes. Il permet seulement d’exiger des
           lignes séparées et de refaire la formule avec votre budget.
         </InfoBox>
 
-        <h2 id="modeles">
-          3. Forfait, pourcentage, hybride ou travail au temps passé (régie)
-        </h2>
+        <h3 id="modeles">Comprenez comment les honoraires sont calculés</h3>
+
+        <p>
+          Le prestataire peut facturer un prix fixe, un pourcentage de votre
+          dépense publicitaire ou du temps de travail. Aucun modèle n’est
+          automatiquement meilleur. Le bon choix est celui dont le prix reste
+          compréhensible lorsque votre budget augmente ou que le nombre de
+          campagnes change.
+        </p>
 
         <GuideTable
-          headers={["Modèle", "Calcul", "Bon usage", "Point de vigilance"]}
+          headers={["Mode de facturation", "Ce que cela change", "À vérifier"]}
           rows={[
             [
               "Forfait fixe",
-              "Montant mensuel défini",
-              "Charge assez stable et périmètre écrit",
-              "Prévoir ce qui se passe si pays, produits ou campagnes augmentent",
+              "Vous payez le même montant chaque mois tant que le besoin reste stable.",
+              "Ce qui se passe si les pays, produits ou campagnes augmentent.",
             ],
             [
               "% du budget média",
-              "Média dépensé × taux",
-              "Pilotage dont la charge évolue réellement avec le volume",
-              "Les honoraires montent automatiquement ; prévoir minimum et plafond",
+              "Les honoraires augmentent automatiquement lorsque vous dépensez plus.",
+              "Le pourcentage exact, le minimum éventuel et un plafond.",
             ],
             [
               "Hybride",
-              "Socle fixe + pourcentage",
-              "Garantir une capacité minimale puis accompagner la croissance",
-              "Additionner les deux éléments à chaque niveau de budget",
+              "Vous payez une base fixe puis un pourcentage du budget Google.",
+              "Le total obtenu à chacun de vos niveaux de budget.",
             ],
             [
-              "Régie / tarif journalier",
-              "Jours consommés × tarif journalier",
-              "Audit, reprise ou besoin variable avec liste de travaux priorisée",
-              "Définir priorité, plafond de jours et preuve du temps livré",
+              "Temps passé ou tarif journalier",
+              "Vous payez les heures ou journées réellement consacrées au compte.",
+              "La priorité des travaux, le nombre maximal de jours et le compte rendu.",
             ],
           ]}
         />
 
         <p>
-          Comparez trois devis fictifs à périmètre supposé identique, avec des
-          montants hors taxes : 900 € fixes, 15 % du média, et 500 € + 10 % du
-          média. Cette hypothèse n’est pas une grille Hagnéré Code ni un relevé
-          de marché ; elle sert à voir la mécanique.
+          Voici trois devis fictifs couvrant exactement le même travail, avec
+          des montants hors taxes : 900 € fixes, 15 % du média, et 500 € + 10 %
+          du média. Cette hypothèse n’est pas une grille Hagnéré Code ni un
+          relevé de marché ; elle sert à voir la mécanique.
         </p>
 
         <GuideTable
           headers={[
             "Budget média mensuel",
             "Forfait 900 €",
-            "15 % du média",
-            "500 € + 10 %",
+            "Deux formules variables",
           ]}
           rows={[
-            ["1 000 €", "900 €", "150 €", "600 €"],
-            ["5 000 €", "900 €", "750 €", "1 000 €"],
-            ["10 000 €", "900 €", "1 500 €", "1 500 €"],
-            ["30 000 €", "900 €", "4 500 €", "3 500 €"],
+            ["1 000 €", "900 €", "15 % : 150 € · Hybride : 600 €"],
+            ["5 000 €", "900 €", "15 % : 750 € · Hybride : 1 000 €"],
+            ["10 000 €", "900 €", "15 % : 1 500 € · Hybride : 1 500 €"],
+            ["30 000 €", "900 €", "15 % : 4 500 € · Hybride : 3 500 €"],
           ]}
         />
 
         <p>
           Ici, l’hybride rejoint le forfait à 4 000 € de média. Le modèle à 15 %
           rejoint le forfait à 6 000 €, puis l’hybride à 10 000 €. Ces
-          croisements ne départagent pas les devis : le périmètre et la charge
-          restent décisifs.
+          croisements ne suffisent pas à choisir : vérifiez aussi le travail
+          réellement inclus.
         </p>
 
-        <h2 id="socles">4. Trois socles chiffrés sur 3, 6 et 12 mois</h2>
+        <h2 id="socles">3. Trois budgets complets sur 3, 6 et 12 mois</h2>
 
         <p>
           Les trois cas ci-dessous sont des{" "}
           <strong>exemples illustratifs fictifs</strong>. Ils ne décrivent aucun
           client, aucun devis reçu et aucun prix moyen. Les dépenses externes
           sont exprimées hors taxes ; le temps interne, qui n’est pas une
-          facture, est valorisé à 44,2 € par heure, coût 2025 publié par l’Insee
+          facture, est valorisé à 44,2 € par heure,{" "}
+          <a
+            href="https://www.insee.fr/fr/statistiques/2381340"
+            target="_blank"
+            rel="noreferrer"
+          >
+            coût 2025 publié par l’Insee
+          </a>{" "}
           pour les services marchands dans les entreprises de 10 salariés ou
           plus. Remplacez-le par votre coût chargé réel.
         </p>
 
         <GuideTable
           headers={[
-            "Socle fictif",
-            "Coûts initiaux",
-            "Coût mensuel",
-            "3 mois",
-            "6 mois",
-            "12 mois",
+            "Exemple fictif",
+            "Période",
+            "Budget complet arrondi à l’euro",
           ]}
           rows={[
+            ["A — Recherche Google locale, forfait fixe", "3 mois", "7 219 €"],
+            ["A — Recherche Google locale, forfait fixe", "6 mois", "11 534 €"],
             [
               "A — Recherche Google locale, forfait fixe",
-              "2 903,60 €",
-              "1 438,40 €",
-              "7 218,80 €",
-              "11 534 €",
-              "20 164,40 €",
+              "12 mois",
+              "20 164 €",
             ],
-            [
-              "B — SaaS B2B, 15 % du média",
-              "6 895,60 €",
-              "4 071 €",
-              "19 108,60 €",
-              "31 321,60 €",
-              "55 747,60 €",
-            ],
-            [
-              "C — E-commerce, hybride",
-              "6 318,80 €",
-              "6 926,80 €",
-              "27 099,20 €",
-              "47 879,60 €",
-              "89 440,40 €",
-            ],
+            ["B — SaaS B2B, 15 % du média", "3 mois", "19 109 €"],
+            ["B — SaaS B2B, 15 % du média", "6 mois", "31 322 €"],
+            ["B — SaaS B2B, 15 % du média", "12 mois", "55 748 €"],
+            ["C — E-commerce, hybride", "3 mois", "27 099 €"],
+            ["C — E-commerce, hybride", "6 mois", "47 880 €"],
+            ["C — E-commerce, hybride", "12 mois", "89 440 €"],
           ]}
         />
 
-        <h3>Socle A : entreprise locale, annonces sur la recherche Google</h3>
+        <h3>Exemple A : entreprise locale, annonces sur la recherche Google</h3>
         <FormulaBox>{`Coûts initiaux =
-  setup 750 € + tracking 600 € + landing 1 200 €
+  mise en route 750 € + suivi des demandes 600 € + page 1 200 €
 + 8 h internes × 44,2 € = 2 903,60 €
 
 Récurrent mensuel =
@@ -613,9 +581,9 @@ Total chiffré à 6 mois = 2 903,60 + (6 × 1 438,40) = 11 534 €`}</FormulaBox
           confirmer.
         </p>
 
-        <h3>Socle B : acquisition de prospects pour un SaaS B2B</h3>
+        <h3>Exemple B : acquisition de prospects pour un SaaS B2B</h3>
         <FormulaBox>{`Coûts initiaux =
-  setup 900 € + tracking/CRM 2 400 € + landing 2 000 €
+  mise en route 900 € + liaison au logiciel commercial (CRM) 2 400 € + page 2 000 €
 + créations initiales 800 € + 18 h internes × 44,2 €
 = 6 895,60 €
 
@@ -624,13 +592,14 @@ Récurrent mensuel =
 + créations 300 € + outils 100 € + 5 h internes × 44,2 €
 = 4 071 €`}</FormulaBox>
         <p>
-          La mesure relie ici le compte aux prospects qualifiés ou signés. CRM
-          payant, équipe commerciale et contenu de démonstration sont exclus.
+          La mesure relie ici le compte aux prospects qualifiés ou signés. Le
+          logiciel de gestion de la relation client (CRM), l’équipe commerciale
+          et le contenu de démonstration sont exclus.
         </p>
 
-        <h3>Socle C : catalogue e-commerce et modèle hybride</h3>
+        <h3>Exemple C : catalogue e-commerce et modèle hybride</h3>
         <FormulaBox>{`Coûts initiaux =
-  setup 1 200 € + tracking/flux 1 800 € + landing 1 500 €
+  mise en route 1 200 € + suivi des ventes et du catalogue 1 800 € + page 1 500 €
 + créations initiales 1 200 € + 14 h internes × 44,2 €
 = 6 318,80 €
 
@@ -640,26 +609,25 @@ Récurrent mensuel =
 = 6 926,80 €`}</FormulaBox>
         <p>
           Marge, retours, promotions, stock et frais de paiement changent la
-          rentabilité. Un ROAS sur le chiffre d’affaires ne remplace pas la
-          marge.
+          rentabilité. Le ROAS — chiffre d’affaires attribué divisé par la
+          dépense publicitaire — ne remplace pas un calcul de marge.
         </p>
 
-        <h2 id="rentabilite">
-          5. Du coût par prospect au seuil de rentabilité
-        </h2>
+        <h2 id="rentabilite">4. Vérifiez si la campagne peut être rentable</h2>
 
         <p>
           Le coût par clic (CPC) répond à « combien avons-nous payé la visite ?
-          ». Le CPL répond à « combien avons-nous payé le prospect ? ». Le CPA
-          doit ensuite préciser l’étape achetée. Pour une entreprise de
-          services, le seul seuil durable part de la marge par vente et du taux
-          de transformation commercial.
+          ». Le coût par prospect (CPL) répond à « combien avons-nous payé la
+          demande qualifiée ? ». Le coût par acquisition (CPA) doit ensuite
+          préciser s’il mesure un formulaire, un prospect ou un client. Pour une
+          entreprise de services, le seul seuil durable part de la marge par
+          vente et du taux de transformation commercial.
         </p>
 
         <FormulaBox>{`CPL média = budget média ÷ prospects qualifiés
 
 CPL complet =
-  (média + gestion + coûts récurrents + setup amorti) ÷ prospects qualifiés
+  (média + gestion + coûts récurrents + frais de lancement amortis) ÷ prospects qualifiés
 
 CPA client = coût complet ÷ nouveaux clients attribuables
 
@@ -671,9 +639,10 @@ CPL média maximal à l'équilibre =
           <strong>Exemple illustratif fictif :</strong> une vente apporte 2 400
           € de marge, 20 % des prospects qualifiés signent, et la campagne doit
           en produire 15. La valeur de marge attendue par prospect est 2 400 ×
-          20 % = 480 €. Si gestion, outils et setup amorti coûtent 1 200 € par
-          mois, ils absorbent 80 € par prospect. Le CPL média maximal à
-          l’équilibre est donc 400 €, soit 6 000 € de média pour 15 prospects.
+          20 % = 480 €. Si gestion, outils et frais de lancement répartis
+          coûtent 1 200 € par mois, ils absorbent 80 € par prospect. Le CPL
+          média maximal à l’équilibre est donc 400 €, soit 6 000 € de média pour
+          15 prospects.
         </p>
 
         <InfoBox variant="emerald" title="Contrôle inverse du calcul">
@@ -698,19 +667,25 @@ CPL média maximal à l'équilibre =
         </p>
 
         <p>
-          Si la question porte d’abord sur l’ordre d’investissement, utilisez la{" "}
-          <Link href="/guides/seo-ou-google-ads">
-            matrice SEO ou Google Ads
-          </Link>{" "}
-          avant de chiffrer la campagne. Elle peut conclure à Ads, au SEO, à une
-          combinaison aux rôles séparés ou au report tant que l’offre, la page
-          ou la mesure n’est pas prête.
+          Si la question porte d’abord sur l’ordre d’investissement, utilisez le{" "}
+          <Link href="/guides/seo-ou-google-ads">guide SEO ou Google Ads</Link>{" "}
+          avant de chiffrer la campagne. Il peut vous conduire vers la
+          publicité, le référencement naturel, les deux avec des objectifs
+          distincts, ou vous conseiller d’attendre tant que l’offre, la page ou
+          le suivi des demandes n’est pas prêt.
         </p>
 
-        <h2 id="mesure">
-          6. Pourquoi tracking, page et créations ne sont pas des suppléments
-          décoratifs
-        </h2>
+        <h3 id="mesure">
+          Évitez de payer des clics que votre site ne transforme pas
+        </h3>
+
+        <p>
+          Acheter du trafic ne suffit pas. Il faut savoir quelles demandes
+          deviennent de vrais clients, envoyer les visiteurs vers une page
+          claire et renouveler les annonces lorsqu’elles ne fonctionnent plus.
+          Ces dépenses peuvent donc être nécessaires au résultat ; le devis doit
+          simplement dire lesquelles sont incluses.
+        </p>
 
         <p>
           Google explique que le classement d’une annonce dépend notamment de
@@ -731,36 +706,26 @@ CPL média maximal à l'équilibre =
           cosmétique d’un score.
         </p>
 
-        <GuideTable
-          headers={["Brique", "Preuve de livraison", "Question économique"]}
-          rows={[
-            [
-              "Mesure Web",
-              "Événements testés, reçus une seule fois, valeur et consentement documentés",
-              "Quelle action guide réellement les enchères ?",
-            ],
-            [
-              "Retour CRM",
-              "Prospect qualifié et vente importés, rejets surveillés",
-              "Le compte optimise-t-il des formulaires ou des clients ?",
-            ],
-            [
-              "Page de destination",
-              "Message, action, mobile, vitesse et formulaire recettés",
-              "Une nouvelle page coûte-t-elle moins que des clics perdus ?",
-            ],
-            [
-              "Créations",
-              "Nombre, formats, droits, calendrier et validation",
-              "Qui paie le renouvellement et qui possède les fichiers ?",
-            ],
-            [
-              "Surveillance",
-              "Seuils, alertes, destinataires et délai cible écrits",
-              "Qui agit si la mesure casse ou si la dépense dérape ?",
-            ],
-          ]}
-        />
+        <p>Demandez cinq réponses concrètes dans le devis :</p>
+
+        <ul>
+          <li>quelle action mesurée guide réellement les enchères ;</li>
+          <li>
+            si les prospects qualifiés et les ventes reviennent du logiciel
+            commercial vers Google Ads ;
+          </li>
+          <li>
+            qui corrige le message, la vitesse et le formulaire de la page ;
+          </li>
+          <li>
+            combien de créations sont produites, qui les valide et qui possède
+            les fichiers ;
+          </li>
+          <li>
+            qui reçoit l’alerte et intervient si la mesure casse ou si la
+            dépense dérape.
+          </li>
+        </ul>
 
         <p>
           Pour la génération de prospects, Google Ads permet de distinguer une
@@ -779,40 +744,31 @@ CPL média maximal à l'équilibre =
         </p>
 
         <h2 id="prestataire">
-          7. Gérer en interne, avec un freelance ou une agence
+          5. Gérer en interne, avec un freelance ou une agence
         </h2>
 
         <GuideTable
-          headers={[
-            "Option",
-            "Coût à calculer",
-            "Bon choix si…",
-            "Risque à couvrir",
-          ]}
+          headers={["Option", "Bon choix si…", "À ne pas oublier dans le coût"]}
           rows={[
             [
               "Interne",
-              "Heures × coût chargé + outils + formation + contrôle",
               "Compte simple, personne formée, temps réellement réservé",
-              "Priorité sacrifiée, absence et apprentissage non budgétés",
+              "Heures de travail, outils, formation, contrôle et remplacement en cas d’absence.",
             ],
             [
               "Freelance",
-              "Forfait, jours ou % + éventuels spécialistes externes",
-              "Périmètre resserré et besoin d’un interlocuteur expert direct",
-              "Continuité, tracking, création et remplacement à préciser",
+              "Besoin bien délimité et interlocuteur expert direct",
+              "Forfait ou pourcentage, suivi des ventes, créations et solution de remplacement.",
             ],
             [
               "Agence",
-              "Setup + gestion + licences + productions hors forfait",
               "Plusieurs compétences, canaux, marchés ou besoin de continuité",
-              "Savoir qui travaille vraiment et à quelle fréquence",
+              "Lancement, gestion, licences, productions hors forfait et personnes réellement mobilisées.",
             ],
             [
               "Audit puis autonomie",
-              "Mission ponctuelle + temps interne d’exécution",
               "Petit budget, équipe capable d’appliquer une feuille de route",
-              "Plan obsolète si personne ne suit les changements",
+              "Mission ponctuelle, temps interne d’exécution et mises à jour futures.",
             ],
           ]}
         />
@@ -850,7 +806,9 @@ CPL média maximal à l'équilibre =
           aide à vérifier le troisième et le quatrième point.
         </InfoBox>
 
-        <h2 id="propriete">8. Compte, données et réversibilité</h2>
+        <h3 id="propriete">
+          Gardez la propriété de votre compte et de vos données
+        </h3>
 
         <p>
           Google permet d’ajouter, modifier et supprimer des accès à un compte.
@@ -873,7 +831,7 @@ CPL média maximal à l'équilibre =
           </li>
           <li>
             Faites écrire les droits sur textes, images, vidéos, modèles de
-            landing pages, scripts et connecteurs.
+            pages de destination, scripts et connecteurs.
           </li>
           <li>
             Exigez une passation : campagnes actives, budgets, conversions,
@@ -914,7 +872,7 @@ CPL média maximal à l'équilibre =
           .
         </p>
 
-        <h2 id="offre-hagnere">9. Où se situe l’offre Hagnéré Code</h2>
+        <h3 id="offre-hagnere">Où se situe l’offre Hagnéré Code</h3>
 
         <p>
           Hagnéré Code vend cette prestation et n’est donc pas une source neutre
@@ -922,34 +880,30 @@ CPL média maximal à l'équilibre =
           <Link href="/services/publicite-en-ligne">publicité en ligne</Link>{" "}
           affiche un audit à 1 500 € HT, puis trois scénarios de pilotage à 1
           800 €, 3 500 € et 4 500 € HT par mois. Le budget média reste séparé.
-          Le devis précise tracking, créations, outils, intervenants, engagement
-          et responsabilités réellement inclus.
+          Le devis précise suivi des conversions, créations, outils,
+          intervenants, engagement et responsabilités réellement inclus.
         </p>
 
         <GuideTable
           headers={[
-            "Scénario public Hagnéré",
-            "Prix affiché",
+            "Offre et prix affiché",
             "À envisager si…",
-            "Cas probablement inadapté",
+            "Probablement inadapté si…",
           ]}
           rows={[
             [
-              "Audit Ads",
-              "1 500 € HT ponctuels",
+              "Audit Ads — 1 500 € HT ponctuels",
               "Compte existant, besoin d’un diagnostic et d’une feuille de route",
               "Vous cherchez uniquement une certification ou un rapport automatique",
             ],
             [
-              "Starter",
-              "1 800 € HT/mois",
-              "1 à 2 canaux, tracking et pilotage structurés à cadrer",
+              "Starter — 1 800 € HT/mois",
+              "1 à 2 canaux, suivi des conversions et pilotage régulier à organiser",
               "Le budget média est faible et une campagne de recherche simple suffit",
             ],
             [
-              "Scale / Premium",
-              "3 500 à 4 500 € HT/mois",
-              "Multi-canaux, données CRM, créations et gouvernance plus complexes",
+              "Scale / Premium — 3 500 à 4 500 € HT/mois",
+              "Plusieurs canaux, données commerciales, créations et organisation plus complexes",
               "Vous n’avez ni mesure, ni marge, ni équipe pour traiter le volume",
             ],
           ]}
@@ -964,25 +918,13 @@ CPL média maximal à l'équilibre =
           masque le travail de mesure et de production.
         </p>
 
-        <GuideInlineCTA
-          title="Cadrer le budget complet avant d’ouvrir les campagnes"
-          description="Décrivez votre offre, votre marge, le budget média envisagé et vos outils actuels. Nous séparons gestion, tracking, pages et créations, puis nous vous disons aussi si un audit ponctuel, un freelance ou une gestion interne paraît plus proportionné."
-          tags={[
-            "Budget et périmètre séparés",
-            "Cas adaptés et inadaptés explicités",
-            "Objectif : prochain jour ouvré · délai non garanti",
-          ]}
-          ctaLabel="Cadrer mon budget Ads"
-          ctaHref="/demarrer-un-projet"
-        />
-
-        <h2 id="checklist">10. La checklist pour comparer deux devis</h2>
+        <h2 id="checklist">6. La checklist pour comparer deux devis</h2>
 
         <p>
           Copiez cette liste dans un tableur. Placez une colonne par offre, puis
-          une colonne « preuve ». Une réponse orale, « inclus » ou « selon
-          besoin » ne suffit pas : demandez un montant, une limite, un
-          responsable ou un livrable vérifiable.
+          une colonne « réponse précise ». Une mention orale, « inclus » ou «
+          selon besoin » ne suffit pas : demandez un montant, une limite, un
+          responsable ou un document à recevoir.
         </p>
 
         <ol>
@@ -995,20 +937,21 @@ CPL média maximal à l'équilibre =
             quelle validation avant augmentation ?
           </li>
           <li>
-            <strong>Formule d’honoraires.</strong> Forfait, pourcentage, socle,
-            minimum, plafond et assiette exacte.
+            <strong>Formule d’honoraires.</strong> Forfait, pourcentage, part
+            fixe, minimum, plafond et assiette exacte.
           </li>
           <li>
             <strong>Mise en route.</strong> Audit, stratégie, recherche,
-            structure, annonces, import et recette inclus ou séparés.
+            structure, annonces, import, tests et lancement inclus ou séparés.
           </li>
           <li>
-            <strong>Périmètre.</strong> Pays, langues, campagnes, produits,
-            marques et nombre de pages.
+            <strong>Ce qui est inclus.</strong> Pays, langues, campagnes,
+            produits, marques et nombre de pages.
           </li>
           <li>
             <strong>Conversions.</strong> Action principale, actions
-            secondaires, valeurs, déduplication et test de recette.
+            secondaires, valeurs, suppression des doublons et test de bon
+            fonctionnement.
           </li>
           <li>
             <strong>Qualité des prospects.</strong> Retour des prospects
@@ -1035,8 +978,9 @@ CPL média maximal à l'équilibre =
             destinataire et délai cible d’intervention.
           </li>
           <li>
-            <strong>Indicateurs.</strong> CPC et conversions, mais aussi CPL
-            qualifié, CPA client, marge et délai de transformation.
+            <strong>Indicateurs.</strong> Coût par clic (CPC), coût par prospect
+            qualifié (CPL), coût par client acquis (CPA), marge et délai de
+            transformation.
           </li>
           <li>
             <strong>Temps interne.</strong> Qui valide, fournit les contenus,
@@ -1062,6 +1006,18 @@ CPL média maximal à l'équilibre =
           votre marge et votre taux de signature. Si une donnée manque,
           demandez-la avant de comparer le total — ou avant de lancer.
         </InfoBox>
+
+        <GuideInlineCTA
+          title="Obtenir un budget Google Ads complet et compréhensible"
+          description="Indiquez votre offre, votre marge, le budget que vous pensez verser à Google et les outils que vous utilisez déjà. Nous chiffrons séparément la gestion, le suivi des ventes, les pages et les créations, puis nous vous disons si une gestion mensuelle est réellement adaptée."
+          tags={[
+            "Budget Google séparé des honoraires",
+            "Coût total lisible",
+            "Réponse adaptée à votre situation",
+          ]}
+          ctaLabel="Demander mon budget Google Ads"
+          ctaHref="/demarrer-un-projet"
+        />
 
         <h2 id="sources">Sources consultées</h2>
 

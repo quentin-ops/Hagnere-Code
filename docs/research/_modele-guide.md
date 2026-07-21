@@ -4,6 +4,22 @@
 > section. Ce dossier est le journal de décision du guide ; il ne sert pas à
 > accumuler du texte brut ni des transcripts d'agents.
 
+Le déroulement et les portes de sortie sont définis dans
+[`docs/workflow-maitre-guides-4-passes.md`](../workflow-maitre-guides-4-passes.md).
+
+## Journal des quatre passes
+
+| Passe                    | État           | Date | Fichier contrôlé | SHA-256 | Responsable | Blocages |
+| ------------------------ | -------------- | ---- | ---------------- | ------- | ----------- | -------- |
+| 1. Création              | À faire        |      |                  |         |             |          |
+| 2. Vérification          | Bloquée par P1 |      |                  |         |             |          |
+| 3. Polish humain         | Bloquée par P2 |      |                  |         |             |          |
+| 4. Contre-audit et final | Bloquée par P3 |      |                  |         |             |          |
+
+États autorisés : `À faire`, `En cours`, `Bloquée`, `À reprendre` et
+`Terminée — porte validée`. Une modification du fichier principal après le
+hash consigné invalide les portes ultérieures jusqu'à la revue du diff.
+
 ## 1. Fiche d'identité
 
 ```text
@@ -24,14 +40,48 @@ Date de la recherche :
 Responsable de la synthèse :
 ```
 
+## 1 bis. Contrat de langage humain
+
+Cette section est rédigée avant le plan. Elle est relue après la rédaction.
+
+- Phrase exacte que le lecteur pourrait dire au téléphone :
+- Réponse qu'il attend en une phrase :
+- Terme central expliqué sans jargon :
+- Mots ordinaires employés par le lecteur :
+- Mots d'agence ou de consultant à éviter :
+- Projet des 150 premiers mots :
+- Ce que le lecteur saura décider après ces 150 mots :
+- H2 relus isolément : oui / non
+- Comparaison comprise à 390 px sans colonne masquée : oui / non
+- FAQ dont la première phrase répond : oui / non
+- CTA formulé comme résultat pour le prospect :
+
+### Test sujet, action, résultat
+
+Recopier les cinq phrases les plus abstraites du brouillon. Pour chacune,
+nommer qui agit, ce qu'il fait et ce qui change. Si l'un des trois éléments
+manque, réécrire la phrase.
+
+| Phrase initiale | Qui agit ? | Action concrète | Résultat pour le lecteur | Phrase réécrite |
+| --------------- | ---------- | --------------- | ------------------------ | --------------- |
+|                 |            |                 |                          |                 |
+
+### Test de l'ouverture
+
+- [ ] la situation vécue apparaît avant la méthode de l'agence ;
+- [ ] SEO, SLA, TCO, MVP ou tout autre sigle est défini au premier usage ;
+- [ ] aucun lexique de masse ne retarde la réponse ;
+- [ ] aucune métaphore ne devient un système à apprendre ;
+- [ ] la réponse reste honnête sans accumuler les réserves avant l'explication.
+
 ## 2. Cannibalisation
 
 | Page existante | Intention de cette page | Différence du nouveau guide | Lien ou arbitrage nécessaire |
 | -------------- | ----------------------- | --------------------------- | ---------------------------- |
 |                |                         |                             |                              |
 
-**Porte de sortie :** expliquer en une phrase pourquoi ce guide mérite une URL
-distincte.
+**Justification d'une URL distincte :** expliquer en une phrase pourquoi ce
+guide répond à une décision que les pages existantes ne traitent pas déjà.
 
 ## 3. Demande et vocabulaire du lecteur
 
@@ -53,9 +103,16 @@ distincte.
 
 ## 5. Fiche de preuves
 
-| Affirmation utilisable | Source primaire, URL et passage utile | Nature | Périmètre | Date/consultation | Confiance | Conséquence lecteur | Fraîcheur |
-| ---------------------- | ------------------------------------- | ------ | --------- | ----------------- | --------- | ------------------- | --------- |
-|                        |                                       |        |           |                   |           |                     |           |
+| Affirmation utilisable | Source primaire, URL et passage utile | Nature | Périmètre | Date/consultation | Confiance | Emplacement du lien visible | Conséquence lecteur | Fraîcheur |
+| ---------------------- | ------------------------------------- | ------ | --------- | ----------------- | --------- | --------------------------- | ------------------- | --------- |
+|                        |                                       |        |           |                   |           |                             |                     |           |
+
+Un prix, un taux, une obligation ou un cas décisif doit être relié à sa source
+au niveau de l'affirmation visible. Une liste de liens en fin de page ne suffit
+pas. Sans corpus daté et méthode publiable, une fourchette est nommée
+« estimation éditoriale Hagnéré Code » et ses hypothèses sont données. Un cas
+extrême n'est conservé que s'il représente réellement le problème traité ; il
+ne sert jamais à inquiéter artificiellement le lecteur.
 
 ### Contradictions et données à ne pas publier
 
@@ -66,7 +123,7 @@ distincte.
 Pour chaque calcul : formule, unités, hypothèses, résultat, contrôle inverse et
 arrondis.
 
-- Nature du résultat : socle chiffré / estimation / TCO / gain net / ROI / délai de retour
+- Nature du résultat : estimation initiale / coût total / gain net / ROI / délai de retour
 - Horizon et périodicité :
 - Postes inclus une seule fois :
 - Postes exclus ou inconnus, explicitement « à confirmer » :
@@ -77,9 +134,9 @@ arrondis.
 
 Observer les trois à cinq guides les plus proches :
 
-| Guide | Type d'ouverture | Progression | Dispositif récurrent | Exemple/fil rouge | Place du CTA | Type de conclusion |
-| ----- | ---------------- | ----------- | -------------------- | ----------------- | ------------ | ------------------ |
-|       |                  |             |                      |                   |              |                    |
+| Guide | Type d'ouverture | Progression | Dispositif récurrent | Type d'exemple | Place du CTA | Type de conclusion |
+| ----- | ---------------- | ----------- | -------------------- | -------------- | ------------ | ------------------ |
+|       |                  |             |                      |                |              |                    |
 
 Choix du nouveau guide :
 
@@ -170,9 +227,23 @@ Statut maximal réellement atteint :
 
 ### Vérifications
 
+- [ ] les 150 premiers mots passent le contrat de langage humain ;
+- [ ] chaque H2 est compréhensible hors contexte ;
+- [ ] cinq phrases abstraites ont passé le test sujet, action, résultat ;
+- [ ] aucun mur de lexique ne précède la réponse ;
+- [ ] tableaux ou cartes testés à 390 px sans réponse masquée ;
+- [ ] FAQ courtes et CTA formulé comme bénéfice concret ;
 - [ ] faits, citations et fraîcheur revérifiés ;
 - [ ] calculs refaits indépendamment ;
 - [ ] cas réels autorisés et cas fictifs étiquetés ;
+- [ ] chaque prix, taux ou obligation décisive est relié à sa source près de
+      l'affirmation, ou nommé estimation avec hypothèses ;
+- [ ] aucun incident extrême sans contexte ne dramatise artificiellement la
+      décision ;
+- [ ] aucune note d'auteur, mention d'ancienne version ou trace d'audit n'est
+      visible dans l'article ;
+- [ ] l'ouverture, la progression et la conclusion diffèrent réellement des
+      guides voisins lorsque le sujet le permet ;
 - [ ] CTA et ressource réellement disponibles ;
 - [ ] metadata, données structurées, registre, maillage et ancres cohérents ;
 - [ ] TypeScript, ESLint, tests et build requis passés ;
