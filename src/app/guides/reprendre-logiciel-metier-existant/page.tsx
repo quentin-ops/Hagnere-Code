@@ -198,6 +198,10 @@ export default function Page() {
             label: "Audit technique d’un logiciel",
           },
           {
+            href: "/guides/reprendre-mvp-vibe-code",
+            label: "Reprendre un MVP créé avec Lovable, Bolt ou v0",
+          },
+          {
             href: "/guides/proprietaire-site-internet-code-source",
             label: "Propriété du code source et des accès",
           },

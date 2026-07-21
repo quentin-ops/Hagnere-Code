@@ -197,6 +197,10 @@ export default function Page() {
         ]}
         relatedLinks={[
           {
+            href: "/guides/signes-besoin-logiciel-metier",
+            label: "Vérifier si l’entreprise a besoin d’un logiciel métier",
+          },
+          {
             href: "/guides/transformer-excel-en-application",
             label: "Transformer Excel en application",
           },

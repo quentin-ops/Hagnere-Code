@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
+  FormulaBox,
   GuideInlineCTA,
   GuideToc,
   InfoBox,
@@ -114,12 +115,12 @@ const faqItems = [
   {
     question: "Google Ads peut-il apporter des clients immédiatement ?",
     answer:
-      "Une campagne peut afficher des annonces rapidement, mais elle ne garantit ni clic, ni demande sérieuse, ni vente. Google Ads sert surtout à tester vite une offre déjà claire auprès de personnes qui la recherchent.",
+      "Une campagne peut avoir la possibilité d’afficher des annonces rapidement après leur examen, mais elle doit encore gagner les enchères. Elle ne garantit ni visibilité, ni clic, ni demande sérieuse, ni vente. Google Ads sert surtout à tester une offre déjà claire auprès de personnes qui la recherchent.",
   },
   {
     question: "Combien de temps faut-il pour obtenir des résultats en SEO ?",
     answer:
-      "Il n’existe pas de délai universel. Google explique que certains changements peuvent être visibles en quelques jours tandis que d’autres demandent plusieurs mois, sans résultat garanti. Suivez d’abord l’apparition des pages sur les bonnes recherches, puis les visites, les demandes et les ventes.",
+      "Il n’existe pas de délai universel. Google explique que l’effet de certains changements peut apparaître en quelques heures, tandis que d’autres demandent plusieurs mois, sans résultat garanti. Suivez d’abord l’apparition des pages sur les bonnes recherches, puis les visites, les demandes et les ventes.",
   },
   {
     question: "Faut-il arrêter Google Ads lorsque le SEO fonctionne ?",
@@ -129,7 +130,7 @@ const faqItems = [
   {
     question: "Google Ads améliore-t-il le référencement naturel ?",
     answer:
-      "Non. Payer des annonces n’achète pas une meilleure position dans les résultats naturels. Une campagne peut vous apprendre quels mots emploient vos prospects, mais le SEO reste un travail distinct sur le site et ses contenus.",
+      "Non. Payer des annonces n’achète pas une meilleure position dans les résultats naturels. Une campagne peut vous montrer une partie des expressions employées par vos prospects, mais le SEO reste un travail distinct sur le site et ses contenus.",
   },
 ];
 
@@ -234,17 +235,20 @@ function SeoAdsComparison() {
           Publicité sur Google — Google Ads
         </p>
         <h3 className="mb-0 mt-2 text-lg font-bold text-zinc-950 dark:text-white">
-          Vous payez pour être visible maintenant
+          Vous payez pour tenter d’être visible rapidement
         </h3>
         <ul className="mb-0 mt-4 space-y-3 pl-5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
           <li>
-            Vous affichez une annonce auprès de personnes qui recherchent des
-            mots choisis.
+            Vous tentez d’afficher une annonce sur des recherches liées aux mots
+            ou aux pages que vous ciblez.
           </li>
           <li>
             Vous payez la publicité, le plus souvent lorsqu’une personne clique.
           </li>
-          <li>Vous pouvez tester une offre rapidement si la demande existe.</li>
+          <li>
+            Vous pouvez tester plus vite l’offre, l’annonce, la page et le suivi
+            commercial.
+          </li>
           <li>
             Quand la campagne s’arrête, cette visibilité publicitaire s’arrête
             aussi.
@@ -345,9 +349,8 @@ export default function Page() {
             Vous cherchez à savoir s’il vaut mieux investir dans le
             référencement naturel — améliorer votre site et publier des pages
             utiles — ou dans Google Ads — payer pour afficher des annonces. La
-            réponse dépend de ce que vous attendez : des demandes rapides pour
-            une offre déjà prête, ou une visibilité qui se construit dans le
-            temps.
+            réponse dépend de ce que vous attendez : tester plus vite une offre
+            déjà prête, ou construire progressivement votre visibilité.
           </strong>
         </p>
 
@@ -368,9 +371,10 @@ export default function Page() {
           title="Le point essentiel avant de parler de marketing"
         >
           Ni le SEO ni Google Ads ne peuvent garantir une vente. Ces deux
-          leviers amènent des personnes vers votre site. Votre offre, votre
-          page, votre prix, vos références et la manière dont vous répondez aux
-          demandes déterminent ensuite si ces visites deviennent des clients.
+          approches peuvent amener des personnes vers votre site ou directement
+          vers une prise de contact. Votre offre, votre page, votre prix, vos
+          références et la manière dont vous répondez déterminent ensuite si cet
+          intérêt devient une vente.
         </InfoBox>
 
         <GuideToc
@@ -410,6 +414,29 @@ export default function Page() {
         <SeoAdsComparison />
 
         <p>
+          « Rapidement » ne signifie pas « automatiquement ». Google doit
+          d’abord{" "}
+          <a
+            href="https://support.google.com/google-ads/answer/1722120?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            examiner l’annonce
+          </a>
+          , puis celle-ci doit gagner une{" "}
+          <a
+            href="https://support.google.com/google-ads/answer/1752122?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            enchère qui dépend notamment du montant proposé, de la concurrence,
+            de la qualité de l’annonce et de sa page de destination
+          </a>
+          . Vous achetez donc la possibilité d’obtenir vite de la visibilité,
+          jamais une place garantie.
+        </p>
+
+        <p>
           Prenons la recherche « logiciel de gestion sur mesure ». Une
           entreprise peut apparaître dans les annonces parce qu’elle paie pour
           cibler cette recherche. Elle peut aussi apparaître dans les résultats
@@ -429,10 +456,11 @@ export default function Page() {
         <h2 id="objectif">2. Commencez par votre objectif, pas par l’outil</h2>
 
         <p>
-          La première question n’est pas « quel canal est le meilleur ? », mais
-          « qu’est-ce que mon entreprise doit obtenir, et dans quel délai ? ».
-          Un restaurateur qui veut remplir une nouvelle terrasse cet été n’a pas
-          le même besoin qu’un éditeur de logiciel qui veut devenir une
+          La première question n’est pas « quelle option est la meilleure ? »,
+          mais « qu’est-ce que mon entreprise doit obtenir, et dans quel délai ?
+          ». Dans cet <strong>exemple illustratif fictif</strong>, un
+          restaurateur qui veut faire connaître une nouvelle terrasse cet été
+          n’a pas le même besoin qu’un éditeur de logiciel qui veut devenir une
           référence sur un sujet pendant plusieurs années.
         </p>
 
@@ -441,10 +469,11 @@ export default function Page() {
         </h3>
         <p>
           Commencez généralement par une campagne Google Ads limitée à quelques
-          recherches très précises. Vous pourrez voir si l’annonce attire des
-          visites, si la page donne envie de vous contacter et si les demandes
-          correspondent vraiment à ce que vous vendez. Cela ne garantit pas des
-          ventes, mais cela permet d’apprendre plus vite.
+          recherches précises. Elle ne mesure pas la demande toute seule : elle
+          teste en même temps votre ciblage, votre message, votre offre, votre
+          page et la façon dont vous traitez les contacts. Elle peut donc vous
+          apprendre plus vite où cette chaîne fonctionne ou se rompt, sans
+          garantir de vente.
         </p>
 
         <h3>
@@ -473,8 +502,8 @@ export default function Page() {
         <p>
           Google Ads est utile lorsque des personnes cherchent déjà une solution
           comme la vôtre et que vous voulez tester rapidement votre capacité à
-          les convaincre. La campagne doit rester assez précise pour que vous
-          sachiez ce qui a fonctionné ou non.
+          obtenir des demandes auprès de cette demande estimée. La campagne doit
+          rester assez précise pour que vous sachiez ce qui a fonctionné ou non.
         </p>
 
         <p>Commencer par Google Ads est cohérent si :</p>
@@ -489,11 +518,19 @@ export default function Page() {
 
         <h3>Ce que vous pouvez apprendre avec une campagne</h3>
         <p>
-          Vous pouvez observer les mots réellement recherchés, les annonces qui
-          donnent envie de cliquer, les pages qui génèrent des contacts et la
-          qualité de ces contacts. Pour juger la campagne, ne vous arrêtez pas
-          aux clics : notez les appels sérieux, les rendez-vous, les devis, les
-          ventes et la marge obtenue.
+          Vous pouvez observer{" "}
+          <a
+            href="https://support.google.com/google-ads/answer/2472708?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            une partie des termes de recherche
+          </a>
+          , les annonces qui donnent envie de cliquer, les pages qui génèrent
+          des contacts et la qualité de ces contacts. Google n’affiche pas
+          individuellement toutes les requêtes à faible activité. Pour juger la
+          campagne, ne vous arrêtez donc pas aux clics : notez les appels
+          sérieux, les rendez-vous, les devis, les ventes et la marge obtenue.
         </p>
 
         <h3>Ce que Google Ads ne peut pas régler à votre place</h3>
@@ -513,16 +550,33 @@ export default function Page() {
           variant="amber"
           title="Un petit budget n’est pas toujours un vrai test"
         >
-          Google n’impose pas de dépense minimale universelle. Pourtant, si
-          votre budget ne permet d’obtenir que quelques clics, vous risquez de
-          ne rien apprendre. Estimez le coût des clics, fixez un plafond et
-          décidez combien de demandes sérieuses seraient nécessaires pour
-          poursuivre.
+          Google{" "}
+          <a
+            href="https://support.google.com/google-ads/answer/6319?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            n’impose pas de dépense minimale universelle
+          </a>
+          . Pourtant, si votre budget ne permet d’obtenir que quelques clics,
+          vous risquez de ne rien apprendre. Le budget quotidien est une
+          moyenne, pas toujours un plafond par jour : pour de nombreuses
+          campagnes,{" "}
+          <a
+            href="https://support.google.com/google-ads/answer/10486536?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            la dépense peut atteindre deux fois cette moyenne un jour donné,
+            avec une limite mensuelle de 30,4 fois la moyenne
+          </a>
+          . Fixez donc un risque total supportable et décidez ce que vous devez
+          apprendre avant de poursuivre.
         </InfoBox>
 
         <p>
-          Si une campagne existe déjà, vérifiez d’abord où part l’argent,
-          quelles recherches ont déclenché les annonces et quelles ventes ont
+          Si une campagne existe déjà, vérifiez d’abord où part l’argent, quelle
+          partie des termes de recherche est disponible et quelles ventes ont
           suivi. Notre guide d’{" "}
           <Link href="/guides/audit-google-ads-que-verifier">
             audit Google Ads
@@ -534,9 +588,11 @@ export default function Page() {
 
         <p>
           Le SEO devient prioritaire lorsque vos futurs clients effectuent
-          régulièrement les mêmes recherches et que votre entreprise peut leur
-          apporter une réponse meilleure, plus claire ou plus complète que les
-          pages déjà visibles.
+          régulièrement les mêmes recherches, que votre site peut être consulté
+          par Google et que votre entreprise peut apporter une réponse plus
+          utile que les pages déjà visibles. Les questions entendues au
+          téléphone sont un bon départ ; elles ne prouvent pas à elles seules
+          qu’une page pourra être trouvée.
         </p>
 
         <p>Commencer par le SEO est cohérent si :</p>
@@ -550,26 +606,44 @@ export default function Page() {
           </li>
           <li>vous disposez d’une véritable expertise à partager ;</li>
           <li>votre site peut être corrigé et enrichi dans le temps ;</li>
+          <li>
+            vous pouvez faire connaître ces pages et construire votre autorité
+            dans un secteur concurrentiel ;
+          </li>
           <li>vous pouvez attendre avant de juger le résultat commercial ;</li>
           <li>une personne pourra relire et mettre à jour les contenus.</li>
         </ul>
 
         <h3>Un bon contenu SEO aide d’abord le client à décider</h3>
         <p>
-          Écrire beaucoup d’articles ne suffit pas. Chaque page doit répondre à
-          une vraie question : combien coûte un projet, combien de temps
-          faut-il, quelles erreurs éviter, quelle solution choisir ou comment
-          préparer un cahier des charges. Un dirigeant doit comprendre la
-          réponse et savoir quoi faire ensuite, même s’il ne vous contacte
-          jamais.
+          Écrire beaucoup d’articles ne suffit pas.{" "}
+          <a
+            href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google recommande de créer d’abord un contenu utile aux personnes
+          </a>
+          . Chaque page doit donc répondre à une vraie question : combien coûte
+          un projet, combien de temps faut-il, quelles erreurs éviter, quelle
+          solution choisir ou comment préparer un cahier des charges. Un
+          dirigeant doit comprendre la réponse et savoir quoi faire ensuite,
+          même s’il ne vous contacte jamais.
         </p>
 
         <h3>Le SEO n’est ni gratuit ni garanti</h3>
         <p>
           Il faut rechercher les sujets, interroger les personnes qui
           connaissent le métier, rédiger, illustrer, intégrer, améliorer la
-          technique du site et mettre les pages à jour. Google indique que
-          l’effet d’une modification peut apparaître en quelques jours ou
+          technique du site, faire connaître les pages et les mettre à jour.{" "}
+          <a
+            href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google indique
+          </a>{" "}
+          que l’effet d’une modification peut apparaître en quelques heures ou
           demander plusieurs mois, et qu’aucun résultat n’est garanti.
         </p>
 
@@ -616,8 +690,8 @@ export default function Page() {
           </p>
           <ol className="mb-0 mt-4 space-y-3 pl-5 text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">
             <li>
-              Google Ads teste quelques recherches précises et envoie les
-              visiteurs vers une page consacrée au problème traité.
+              Google Ads cible quelques recherches précises et teste la chaîne
+              entre l’annonce, la page et la demande.
             </li>
             <li>
               Les appels permettent de comprendre les mots utilisés, les
@@ -632,16 +706,24 @@ export default function Page() {
         </div>
 
         <p>
-          Les deux budgets doivent rester séparés. Vous devez savoir ce qui est
-          payé à Google, ce qui finance la gestion des campagnes et ce qui
-          finance le site ou les contenus. Payer Google Ads n’améliore pas
-          directement le classement naturel de votre site.
+          Suivez les deux budgets séparément. Vous devez savoir ce qui est payé
+          à Google, ce qui finance la gestion des campagnes et ce qui finance le
+          site ou les contenus.{" "}
+          <a
+            href="https://support.google.com/google-ads/answer/3097241?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Payer Google Ads n’améliore pas directement le classement naturel de
+            votre site
+          </a>
+          .
         </p>
 
         <h2 id="avant">6. Que faut-il vérifier avant d’investir ?</h2>
 
         <p>
-          Vérifiez les cinq points suivants. Si l’un d’eux manque, vous saurez
+          Vérifiez les six points suivants. Si l’un d’eux manque, vous saurez
           exactement quoi corriger au lieu de conclure trop vite que « le
           marketing ne fonctionne pas ».
         </p>
@@ -665,6 +747,11 @@ export default function Page() {
             nombre de demandes sérieuses et le nombre de ventes obtenues ?
           </li>
           <li>
+            <strong>La mesure :</strong> un appel, un formulaire et une vente
+            sont-ils distingués, avec les choix de consentement correctement
+            transmis ?
+          </li>
+          <li>
             <strong>Le suivi :</strong> qui rappelle les prospects, dans quel
             délai et où sont notées les raisons d’une vente ou d’un refus ?
           </li>
@@ -672,9 +759,28 @@ export default function Page() {
 
         <p>
           Vous n’avez pas besoin d’un suivi parfait pour commencer. En revanche,
-          vous devez pouvoir suivre une visite jusqu’à une demande sérieuse,
-          puis jusqu’à une vente. Sinon, vous compterez les clics sans savoir si
-          l’investissement rapporte de l’argent.
+          une{" "}
+          <a
+            href="https://support.google.com/google-ads/answer/1722054?hl=fr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            « conversion » Google Ads reste une action que vous avez choisie de
+            mesurer
+          </a>
+          , pas nécessairement une vente. Rapprochez autant que possible les
+          formulaires et appels des prospects qualifiés puis des clients dans
+          votre outil commercial. En France, les traceurs publicitaires non
+          strictement nécessaires nécessitent en principe un{" "}
+          <a
+            href="https://www.cnil.fr/fr/cookies-et-autres-traceurs/que-dit-la-loi"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            consentement préalable
+          </a>
+          . La mesure peut donc rester incomplète : indiquez cette limite au
+          lieu de transformer les chiffres de la plateforme en vérité absolue.
         </p>
 
         <h2 id="cout">7. Comment comparer tous les coûts ?</h2>
@@ -714,12 +820,32 @@ export default function Page() {
 
         <h3>Le calcul utile pour un dirigeant</h3>
         <p>
-          Pour chaque canal, additionnez toutes les dépenses et le temps
-          interne. Notez ensuite le nombre de ventes réellement obtenues et la
-          marge qu’elles ont générée. Les clics, les positions et les
-          formulaires sont des étapes ; la décision financière se prend sur des
-          clients et de la marge, avec assez de recul pour respecter votre cycle
-          de vente.
+          Pour chaque approche, retenez le même horizon et additionnez toutes
+          les dépenses, y compris le temps interne. Notez ensuite les ventes que
+          vous pouvez raisonnablement lui attribuer et la marge qu’elles ont
+          générée. Les clics, les positions et les formulaires sont des étapes ;
+          la décision financière se prend sur des clients et de la marge, avec
+          assez de recul pour respecter votre cycle de vente.
+        </p>
+
+        <FormulaBox>
+          {[
+            "Coût complet = budget média éventuel + prestations externes + pages et contenus + outils de mesure + temps interne valorisé",
+            "",
+            "Coût par client attribuable = coût complet ÷ nombre de clients attribuables",
+            "",
+            "Résultat attribuable après acquisition = marge contributive des ventes attribuables − coût complet",
+          ].join("\n")}
+        </FormulaBox>
+
+        <p>
+          Ici, la <strong>marge contributive</strong> désigne le chiffre
+          d’affaires des ventes attribuables diminué de leurs coûts variables,
+          mais avant les dépenses d’acquisition déjà incluses dans le coût
+          complet. Cette séparation évite de compter deux fois la même dépense.
+          Si vous ne pouvez pas attribuer toutes les ventes avec certitude,
+          calculez une fourchette basse et une fourchette haute. Cette
+          incertitude vaut mieux qu’un coût par client artificiellement précis.
         </p>
 
         <InfoBox
@@ -747,8 +873,9 @@ export default function Page() {
         <p>
           Son offre est claire, son équipe peut répondre et des habitants
           recherchent déjà ce service. Une campagne Google Ads bien ciblée peut
-          tester rapidement la demande. En parallèle, quelques pages locales
-          utiles peuvent préparer une visibilité naturelle plus durable.
+          tester sa capacité à transformer ces recherches en demandes. En
+          parallèle, quelques pages locales utiles peuvent préparer une
+          visibilité naturelle plus durable.
         </p>
 
         <h3>Un cabinet de conseil vend des missions longues et complexes</h3>
@@ -812,13 +939,13 @@ export default function Page() {
 
         <h3>Décidez à l’avance ce qui vous fera arrêter</h3>
         <p>
-          Écrivez une règle simple avant le lancement. Par exemple : « Nous
-          investissons jusqu’à 2 000 € pour tester cette offre pendant huit
-          semaines. Nous poursuivons si nous obtenons au moins trois demandes
-          correspondant à notre cible ; sinon, nous analysons les recherches, la
-          page et les retours commerciaux avant toute nouvelle dépense. » Les
-          montants et les seuils doivent venir de votre activité, pas d’un
-          modèle universel.
+          Écrivez une règle simple avant le lancement.{" "}
+          <strong>Exemple illustratif fictif :</strong> « Nous investissons
+          jusqu’à 2 000 € pour tester cette offre pendant huit semaines. Nous
+          poursuivons si nous obtenons au moins trois demandes correspondant à
+          notre cible ; sinon, nous analysons les recherches, la page et les
+          retours commerciaux avant toute nouvelle dépense. » Les montants et
+          les seuils doivent venir de votre activité, pas d’un modèle universel.
         </p>
 
         <h2 id="decision">
@@ -838,7 +965,7 @@ export default function Page() {
             utiles sans exiger un retour immédiat.
           </li>
           <li>
-            <strong>Choisissez les deux</strong> si chaque canal a un rôle
+            <strong>Choisissez les deux</strong> si chaque approche a un rôle
             précis, un budget suffisant et une personne responsable.
           </li>
           <li>
@@ -849,8 +976,8 @@ export default function Page() {
         </ul>
 
         <p>
-          Le meilleur choix n’est donc pas le canal qui promet le plus de
-          trafic. C’est celui qui répond au besoin actuel de votre entreprise
+          Le meilleur choix n’est donc pas l’option qui promet le plus de
+          trafic. C’est celle qui répond au besoin actuel de votre entreprise
           avec un budget supportable et un résultat que vous pourrez réellement
           mesurer.
         </p>
@@ -881,7 +1008,7 @@ export default function Page() {
 
         <GuideInlineCTA
           title="Choisir où investir votre prochain budget"
-          description="Expliquez-nous votre offre, votre objectif, votre délai et votre budget. Nous vous aidons à choisir entre SEO, Google Ads, les deux ou une correction préalable — sans promesse de position ni de vente."
+          description="Expliquez votre offre, votre objectif, votre délai et votre budget. Hagnéré Code relit directement votre demande et cherche à répondre le jour ouvré qui suit, sans garantir ce délai. Vous restez libre de ne lancer aucune prestation."
           tags={[
             "Réponse adaptée à votre situation",
             "Coûts et priorités expliqués",
@@ -894,7 +1021,7 @@ export default function Page() {
         <h2 id="sources">Sources officielles et limites</h2>
 
         <p>
-          Sources consultées le 20 juillet 2026. Les outils, les interfaces et
+          Sources consultées le 21 juillet 2026. Les outils, les interfaces et
           les recommandations évoluent. Les documentations Google expliquent le
           fonctionnement de leurs produits ; elles ne prouvent pas la
           rentabilité d’une campagne ou d’un projet SEO pour votre entreprise.
@@ -935,6 +1062,24 @@ export default function Page() {
           </li>
           <li>
             <a
+              href="https://support.google.com/google-ads/answer/1722120?hl=fr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google Ads — Examen des annonces
+            </a>{" "}
+            et{" "}
+            <a
+              href="https://support.google.com/google-ads/answer/1752122?hl=fr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              classement des annonces
+            </a>{" "}
+            : conditions nécessaires avant d’obtenir une visibilité.
+          </li>
+          <li>
+            <a
               href="https://support.google.com/google-ads/answer/6319?hl=fr"
               target="_blank"
               rel="noopener noreferrer"
@@ -942,6 +1087,26 @@ export default function Page() {
               Google Ads — Coûts et contrôle du budget
             </a>{" "}
             : absence de dépense minimale imposée par la plateforme.
+          </li>
+          <li>
+            <a
+              href="https://support.google.com/google-ads/answer/10486536?hl=fr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google Ads — Budget quotidien moyen
+            </a>{" "}
+            : limites de dépense journalière et mensuelle.
+          </li>
+          <li>
+            <a
+              href="https://support.google.com/google-ads/answer/2472708?hl=fr"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google Ads — Rapport sur les termes de recherche
+            </a>{" "}
+            : requêtes disponibles et limites de confidentialité.
           </li>
           <li>
             <a
@@ -955,11 +1120,11 @@ export default function Page() {
           </li>
           <li>
             <a
-              href="https://business.google.com/fr/resources/articles/seo-vs-ppc/"
+              href="https://support.google.com/google-ads/answer/3097241?hl=fr"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Google for Small Business — SEO et publicité au clic
+              Google Ads — Résultats naturels et sponsorisés
             </a>{" "}
             : la publicité ne modifie pas directement le classement naturel.
           </li>

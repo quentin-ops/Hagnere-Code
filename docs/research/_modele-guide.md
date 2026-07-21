@@ -9,22 +9,35 @@ Le déroulement et les portes de sortie sont définis dans
 
 ## Journal des quatre passes
 
-| Passe                    | État           | Date | Fichier contrôlé | SHA-256 | Responsable | Blocages |
-| ------------------------ | -------------- | ---- | ---------------- | ------- | ----------- | -------- |
-| 1. Création              | À faire        |      |                  |         |             |          |
-| 2. Vérification          | Bloquée par P1 |      |                  |         |             |          |
-| 3. Polish humain         | Bloquée par P2 |      |                  |         |             |          |
-| 4. Contre-audit et final | Bloquée par P3 |      |                  |         |             |          |
+Propriétaire éditorial unique :
+
+| Passe                        | État    | Date | Responsable | Snapshot | Blocages       |
+| ---------------------------- | ------- | ---- | ----------- | -------- | -------------- |
+| 1. Recherche                 | À faire |      |             |          |                |
+| 2. Rédaction et intégration  | Bloquée |      |             |          | P1 non validée |
+| 3. Contre-audit indépendant  | Bloquée |      |             |          | P2 non validée |
+| 4. Plume humaine et contrôle | Bloquée |      |             |          | P3 non validée |
 
 États autorisés : `À faire`, `En cours`, `Bloquée`, `À reprendre` et
-`Terminée — porte validée`. Une modification du fichier principal après le
-hash consigné invalide les portes ultérieures jusqu'à la revue du diff.
+`Terminée — porte validée`. Une modification d'un fichier du snapshot après le
+manifeste consigné invalide les portes concernées jusqu'à la revue du diff.
+
+### Manifeste du snapshot
+
+| Fichier contrôlé | SHA-256 | Passe | Remarque |
+| ---------------- | ------- | ----- | -------- |
+|                  |         |       |          |
+
+Ne pas inscrire ici le hash de ce dossier après modification : cela créerait
+une référence impossible à stabiliser. Après chaque porte, enregistrer ce hash
+dans `docs/research/manifests/<slug>-p<1|2|3|4>.sha256` comme prévu par le
+workflow.
 
 ## 1. Fiche d'identité
 
 ```text
 Slug :
-Statut actuel : brouillon
+Statut actuel : Brouillon
 Requête principale, encore hypothétique avant recherche :
 Moment du parcours : comprendre / explorer / décider / sécuriser
 Lecteur précis :
@@ -182,7 +195,75 @@ Action non commerciale :
 CTA principal et résultat après clic :
 ```
 
-## 9. Revue finale
+## 9. Rapports de sortie des quatre passes
+
+### Rapport P1 — Recherche
+
+```text
+PASSE 1 TERMINÉE
+Slug :
+Lecteur et phrase réelle :
+Décision :
+Angle et forme dominante :
+Pages proches et différence :
+Sources décisives :
+Incertitudes exclues :
+Action autonome et CTA possible :
+Plan :
+Snapshot :
+```
+
+### Rapport P2 — Rédaction et intégration
+
+```text
+PASSE 2 TERMINÉE
+Fichiers créés ou modifiés :
+Ouverture et réponse :
+Forme propre au sujet :
+Exemples ou calculs :
+Sources visibles :
+Action autonome, bon fit et mauvais fit :
+CTA et destination :
+Contrôles rapides :
+Snapshot :
+```
+
+### Rapport P3 — Contre-audit indépendant
+
+```text
+PASSE 3 TERMINÉE
+Relecteur indépendant :
+Affirmations et sources revérifiées :
+Calculs refaits :
+P0 trouvés / corrigés :
+P1 trouvés / corrigés :
+Suggestions rejetées et pourquoi :
+Corrections pédagogiques et commerciales :
+Revalidation du relecteur :
+Contrôles intermédiaires :
+Snapshot :
+```
+
+### Rapport P4 — Plume humaine et contrôle final
+
+```text
+PASSE 4 TERMINÉE
+Passages humanisés :
+Coupe ou resserrement :
+Retour P3 effectué :
+Diff sémantique après la plume et revalidation éventuelle :
+Scorecard justifiée :
+Validation humaine réelle : oui/non
+Autorisation éditoriale :
+Commandes et résultats :
+Largeurs et états contrôlés :
+Route, image sociale et console :
+Snapshot final :
+Statut maximal :
+Verdict :
+```
+
+## 10. Revue finale
 
 ### Scorecard justifiée
 
@@ -244,8 +325,11 @@ Statut maximal réellement atteint :
       visible dans l'article ;
 - [ ] l'ouverture, la progression et la conclusion diffèrent réellement des
       guides voisins lorsque le sujet le permet ;
-- [ ] CTA et ressource réellement disponibles ;
+- [ ] CTA et ressource réellement disponibles s’ils sont prévus ; sinon,
+      décision « non pertinent » justifiée ;
 - [ ] metadata, données structurées, registre, maillage et ancres cohérents ;
 - [ ] TypeScript, ESLint, tests et build requis passés ;
-- [ ] rendu observé à 320, 360, 390, 430, 640, 768, 1024, 1280, 1440 et 1600 px ;
+- [ ] rendu observé à 320, 390, 768, 1024 et 1440 px, puis aux ruptures
+      touchées ; 360, 430, 640, 1280 et 1600 px ajoutés si un composant partagé
+      ou la mise en page a changé ;
 - [ ] aucune publication ou indexation déclarée sans preuve.

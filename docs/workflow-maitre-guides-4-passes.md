@@ -1,113 +1,102 @@
 # Workflow maître en quatre passes pour les guides Hagnéré Code
 
-> **Document opérationnel pour agents.** Ce fichier décrit la chaîne complète
-> de création d’un guide, de la recherche initiale au contrôle final. Les quatre
-> passes sont obligatoires, strictement séquentielles et exécutées sur **un seul
-> guide à la fois**.
+> **Document d’exécution.** La charte définit le niveau de qualité. Ce fichier
+> indique dans quel ordre travailler, qui peut valider quoi, quelles traces
+> conserver et quelle porte franchir avant de continuer.
 
 - Version : **21 juillet 2026**
 - Projet : **Hagnéré Code**
 - Domaine canonique : **https://hagnere-code.ai**
 - Périmètre : `src/app/guides/<slug>/`, `src/lib/guides.ts`,
-  `src/components/guides/`, `docs/research/<slug>.md`
+  `src/components/guides/` et `docs/research/<slug>.md`
 
 ---
 
-## 0. Mission du document
+## 0. Le processus en une page
 
-Ce protocole sert à produire des centaines de guides sans industrialiser les
-erreurs, les plans mécaniques, les faux faits ni la voix générée. Il conserve
-le principe des quatre passes spécialisées :
+Les quatre passes correspondent exactement à quatre responsabilités distinctes :
 
-1. **Création** : comprendre la demande, prouver les faits, choisir un angle,
-   écrire et intégrer un premier guide complet ;
-2. **Enrichissement et vérification** : auditer le brouillon, refaire les
-   recherches et les calculs, corriger le fond et l’intégration ;
-3. **Polish rédactionnel** : rendre l’ensemble clair, fluide, distinctif et
-   immédiatement utile sans altérer les faits validés ;
-4. **Anti-IA et contrôle final** : relire chaque section au niveau de la phrase,
-   éliminer les automatismes de rédaction, puis figer et vérifier le résultat
-   complet.
+| Passe                    | Travail                                                               | Responsable                             | Livrable principal                              | Question de sortie                                                   |
+| ------------------------ | --------------------------------------------------------------------- | --------------------------------------- | ----------------------------------------------- | -------------------------------------------------------------------- |
+| 1. Rechercher            | Comprendre le lecteur, la demande, les pages voisines et les faits    | Chercheur ou orchestrateur              | Dossier de preuves et plan annoté               | Peut-on écrire sans inventer ni dupliquer ?                          |
+| 2. Écrire                | Rédiger et intégrer un guide complet à partir du dossier validé       | Un seul éditeur                         | Page, registre, image sociale et maillage       | Le brouillon répond-il entièrement à la décision ?                   |
+| 3. Contre-auditer        | Refaire les vérifications et contredire le brouillon                  | Relecteur indépendant, en lecture seule | Rapport factuel, pédagogique, commercial et SEO | Un second regard peut-il défendre chaque conclusion ?                |
+| 4. Humaniser et vérifier | Corriger la plume, retirer les automatismes, tester le snapshot final | Orchestrateur                           | Guide naturel, tests et preuves visuelles       | Une personne comprend-elle et la page fonctionne-t-elle réellement ? |
 
-Une passe n’est pas une simple relecture de la précédente. Elle possède un
-objectif, un périmètre, des livrables et une porte de sortie propres. **La passe
-N+1 ne commence jamais avant la clôture écrite de la passe N.**
+```text
+P1 RECHERCHE VALIDÉE
+        ↓
+P2 BROUILLON COMPLET
+        ↓
+P3 CONTRE-AUDIT INDÉPENDANT VALIDÉ
+        ↓
+P4 PLUME ET QA VALIDÉES
+        ↓
+PRÊT POUR REVUE HUMAINE OU PUBLIABLE SELON L’AUTORISATION ACQUISE
+```
 
-Ce document ne remplace pas les règles locales. Avant tout travail, l’agent lit
-intégralement et applique, dans cet ordre :
+Règles absolues :
+
+1. une passe ne valide jamais automatiquement la suivante ;
+2. la passe 1 ne rédige pas la page publique ;
+3. un seul éditeur modifie les fichiers d’un guide ;
+4. la passe 3 est menée par un regard indépendant de la rédaction ;
+5. une modification après validation invalide les preuves qu’elle touche ;
+6. aucun nombre de mots, de titres, de tableaux ou de FAQ ne constitue une
+   porte de sortie ;
+7. publier est une action distincte, soumise à autorisation et à une
+   vérification de production.
+
+---
+
+## 1. Autorité, lectures et sources de vérité
+
+### 1.1 Ordre de lecture unique
+
+Avant toute action, lire intégralement, dans cet ordre :
 
 1. `CLAUDE.md` ;
 2. `docs/regle-or-vigilance-seo-publication.md` ;
 3. `docs/charte-qualite-guides.md` ;
-4. `docs/roadmap-guides-seo.md` ;
-5. le présent document ;
+4. le présent workflow ;
+5. `docs/roadmap-guides-seo.md` ;
 6. `docs/research/_modele-guide.md` ;
-7. les fichiers techniques réellement concernés.
+7. le dossier de recherche du guide s’il existe ;
+8. les fichiers techniques réellement concernés.
 
-En cas de conflit, l’ordre d’autorité est :
+En cas de conflit :
 
 1. instruction explicite actuelle de l’utilisateur ;
 2. sécurité, droit applicable et vérité vérifiable ;
 3. `CLAUDE.md` ;
 4. règle d’or de publication ;
-5. charte qualité des guides ;
+5. charte qualité ;
 6. présent workflow ;
-7. conventions observées dans les anciens guides.
+7. roadmap ;
+8. conventions des anciens guides.
 
-Un guide existant peut montrer une convention de code. Il ne décide ni de
-l’angle, ni du plan, ni du verdict, ni des chiffres du nouveau guide.
+Un ancien guide peut fournir une convention de code. Il ne fournit ni le plan,
+ni l’angle, ni le verdict du nouveau guide.
 
----
+### 1.2 Sources de vérité du produit
 
-## 1. Résultat final attendu
+| Élément                                               | Source de vérité                                 |
+| ----------------------------------------------------- | ------------------------------------------------ |
+| Métadonnées et statut d’un guide                      | `src/lib/guides.ts`                              |
+| Guides visibles dans le hub, le sitemap et `llms.txt` | `PUBLISHED_GUIDES`                               |
+| Domaine canonique                                     | `src/lib/seo.ts`                                 |
+| Politique d’indexation                                | `src/lib/search-indexing.ts` et `guideRobots`    |
+| Mise en page                                          | `src/components/guides/guide-layout.tsx`         |
+| Blocs éditoriaux                                      | `src/components/guides/guide-content-blocks.tsx` |
+| Recherche, preuves et arbitrages                      | `docs/research/<slug>.md`                        |
+| Exigences éditoriales                                 | `docs/charte-qualite-guides.md`                  |
 
-Le lecteur est un dirigeant de TPE/PME, un commerçant, un artisan, un
-indépendant ou un porteur de projet. Il maîtrise son activité, pas le langage
-d’une agence, d’une DSI ou d’un cabinet de conseil.
+La stack et les versions viennent de `package.json` et du lockfile au moment du
+travail. Ne jamais les recopier depuis un ancien rapport sans les vérifier.
 
-Après lecture, il doit pouvoir répondre sans nouvelle recherche essentielle :
+### 1.3 Contrat technique d’un guide
 
-1. de quoi parle-t-on, en français courant ?
-2. quelle option convient à sa situation, et laquelle ne convient pas ?
-3. combien cela peut coûter, prendre de temps et mobiliser de personnes ?
-4. quels risques, coûts cachés, dépendances et responsabilités anticiper ?
-5. quelles preuves soutiennent les réponses ?
-6. quelle action utile peut-il faire maintenant, même sans contacter Hagnéré
-   Code ?
-
-Le but est de produire la réponse la plus utile possible pour l’intention
-visée. Il est interdit de promettre une première place, un délai d’indexation,
-un nombre de demandes, une citation par une IA ou un résultat commercial non
-mesuré.
-
-Le succès éditorial ne se mesure pas au nombre de mots, de H2, de FAQ, de
-tableaux ou de liens. Il se mesure à la qualité de la décision que le lecteur
-peut prendre et à la solidité des preuves qui la rendent possible.
-
----
-
-## 2. Stack et composition réelles du site
-
-### 2.1 Stack actuelle
-
-- Next.js **16.2.10**, App Router ;
-- React **19.2.7** ;
-- TypeScript 5 ;
-- Tailwind CSS 4 et `@tailwindcss/typography` ;
-- composants serveur par défaut, frontière `use client` au plus bas ;
-- Vitest pour les tests ;
-- déploiement de production sur Vercel ;
-- chaîne Cloudflare/OpenNext disponible mais non active en production ;
-- PostgreSQL Neon et Drizzle existent dans le projet, sans rôle normal dans la
-  publication d’un guide.
-
-La version réelle vient toujours de `package.json` et du lockfile au moment de
-l’exécution. Ne jamais recopier une version depuis ce document sans la
-revérifier.
-
-### 2.2 Fichiers d’un guide
-
-Un nouveau guide utilise normalement :
+Un guide utilise normalement :
 
 ```text
 docs/research/<slug>.md
@@ -116,1807 +105,857 @@ src/app/guides/<slug>/opengraph-image.tsx
 src/lib/guides.ts
 ```
 
-Des liens entrants peuvent nécessiter des modifications ciblées dans d’autres
-pages. Une ressource autonome ajoute ses propres fichiers et son registre ;
-elle ne doit jamais être promise avant d’exister et d’avoir été testée.
+La page :
 
-### 2.3 Sources de vérité
-
-| Élément                          | Source de vérité                                 | Consommateurs                                     |
-| -------------------------------- | ------------------------------------------------ | ------------------------------------------------- |
-| Métadonnées du guide             | `src/lib/guides.ts` (`GUIDES`)                   | page, hub, sitemap, `llms.txt`, tests             |
-| Guides publiquement découvrables | `PUBLISHED_GUIDES`                               | hub, sitemap, `llms.txt`                          |
-| Domaine canonique                | `src/lib/seo.ts`                                 | metadata, JSON-LD, sitemap                        |
-| Indexation                       | `src/lib/search-indexing.ts` + `guideRobots`     | metadata robots, preview, production              |
-| Mise en page d’un guide          | `src/components/guides/guide-layout.tsx`         | hero, auteur, contenu, sidebar, FAQ               |
-| Blocs éditoriaux                 | `src/components/guides/guide-content-blocks.tsx` | sommaire, encadrés, tableaux, formule, CTA        |
-| FAQ visible                      | `GuideFAQSection`                                | `<details>/<summary>` natifs, contenu dans le DOM |
-| Sitemap                          | `src/app/sitemap.ts`                             | génération automatique depuis les registres       |
-| Index `llms.txt`                 | `src/lib/llms.ts`                                | route `src/app/llms.txt/route.ts`                 |
-| Recherche et décisions           | `docs/research/<slug>.md`                        | toutes les passes et la maintenance future        |
-
-### 2.4 Contrat de page TSX
-
-La page type est un **Server Component** `page.tsx` qui :
-
+- est un Server Component sauf besoin client démontré ;
 - récupère son entrée avec `getGuide("<slug>")` ;
-- exporte un objet `metadata: Metadata` dérivé du registre ;
-- appelle `robots: guideRobots(guide)` ;
-- utilise `guideUrl(guide)` pour le canonical et les URL absolues ;
-- publie uniquement les JSON-LD autorisés et fidèles au visible ;
-- est enveloppée dans `<GuidesShell>` ;
-- rend son contenu avec `<GuideLayout>` ;
+- dérive metadata, canonical et robots du registre ;
+- utilise `<GuidesShell>` puis `<GuideLayout>` ;
 - commence le corps par `<p className="lead">` ;
-- utilise les composants existants lorsqu’ils conviennent ;
-- transmet la FAQ visible via `faqItems`, sans second jeu de données ;
-- possède une image sociale dédiée via `opengraph-image.tsx`.
+- publie uniquement `Article` et `BreadcrumbList` lorsqu’ils reflètent le
+  contenu visible ;
+- transmet une FAQ visible unique via `faqItems` si une FAQ est utile ;
+- possède une image sociale dédiée de 1 200 × 630 px.
 
-### 2.5 Composants disponibles
-
-- `GuideLayout` : hero, fil d’Ariane, auteur, date, points clés, article,
-  sidebar, liens liés et FAQ ;
-- `GuideToc` : sommaire explicite dont chaque `id` doit correspondre à un H2 ;
-- `InfoBox` : précision, alerte ou décision réellement utile ;
-- `GuideTable` : comparaison sémantique ; le composant rend des cartes complètes
-  sur téléphone ;
-- `FormulaBox` : formule ou calcul lisible ;
-- `ComparisonGrid` : comparaison courte de deux options ;
-- `GuideInlineCTA` : CTA éditorial adapté au guide ;
-- `GuideFAQSection` : FAQ visible, native et sans JavaScript obligatoire.
-
-Ne pas créer un nouveau composant parce qu’un texte pourrait être « plus
-joli ». Le faire uniquement lorsqu’un besoin éditorial ou accessible n’est pas
-couvert par les composants actuels, puis le tester.
-
-### 2.6 Ce que les anciens prompts ne doivent jamais réintroduire
-
-Les règles suivantes sont obsolètes ou incompatibles avec ce dépôt :
-
-- pas de Laravel, Blade, `routes/web.php`, Pint ou `php artisan` ;
-- pas de MDX ni de frontmatter : les guides sont des pages TSX et leur registre
-  fournit les métadonnées ;
-- pas de fichier maître Excel pour publier les guides ;
-- pas de JSON-LD `FAQPage` ;
-- pas de JSON-LD `HowTo` pour viser un résultat enrichi retiré ;
-- pas de double FAQ « ASCII pour Google / français pour le lecteur » ;
-- les accents, apostrophes et guillemets français sont normaux dans le contenu
-  et les chaînes JSON-LD ;
-- pas de densité de mot-clé imposée ;
-- pas de minimum automatique de mots, H2, FAQ, tableaux, mentions de marque ou
-  liens ;
-- pas de trois CTA par réflexe : la sidebar existe déjà et la charte autorise
-  au maximum un CTA éditorial principal dans le corps ;
-- pas de `priority` ni de `changefreq` ajoutés au sitemap ;
-- pas d’ajout manuel d’un guide dans `robots.txt`, le sitemap ou `llms.txt` ;
-- pas de `wordCount` approximatif dans le JSON-LD ;
-- pas de modification cosmétique de `dateModified` ;
-- pas de promesse « top 1 », « indexé en X jours » ou « quatre fois plus cité
-  par les IA » ;
-- pas de note d’un détecteur d’IA présentée comme une preuve scientifique ;
-- pas d’identité professionnelle, de qualification, d’effectif, d’ancienneté,
-  de témoignage, de client ou de résultat inventé.
+Interdictions : `FAQPage`, `HowTo`, faux `Offer`, faux avis, `wordCount`
+approximatif, densité de mot-clé imposée, ajout manuel au sitemap, à
+`robots.txt` ou à `llms.txt`.
 
 ---
 
-## 3. Machine à états des quatre passes
+## 2. Journal, snapshot et travail à plusieurs
 
-### 3.1 États autorisés
+### 2.1 Journal obligatoire
 
-Chaque dossier `docs/research/<slug>.md` contient en tête un journal :
+Chaque dossier `docs/research/<slug>.md` contient :
 
 ```md
 ## Journal des quatre passes
 
-| Passe              | État           | Date | Fichier contrôlé | SHA-256 | Responsable | Blocages |
-| ------------------ | -------------- | ---- | ---------------- | ------- | ----------- | -------- |
-| 1. Création        | À faire        |      |                  |         |             |          |
-| 2. Vérification    | Bloquée par P1 |      |                  |         |             |          |
-| 3. Polish          | Bloquée par P2 |      |                  |         |             |          |
-| 4. Anti-IA + final | Bloquée par P3 |      |                  |         |             |          |
+| Passe           | État    | Date | Responsable | Snapshot | Blocages       |
+| --------------- | ------- | ---- | ----------- | -------- | -------------- |
+| 1. Recherche    | À faire |      |             |          |                |
+| 2. Rédaction    | Bloquée |      |             |          | P1 non validée |
+| 3. Contre-audit | Bloquée |      |             |          | P2 non validée |
+| 4. Plume et QA  | Bloquée |      |             |          | P3 non validée |
 ```
 
-États possibles :
+États autorisés : `À faire`, `En cours`, `Bloquée`, `À reprendre` et
+`Terminée — porte validée`.
 
-- `À faire` ;
-- `En cours` ;
-- `Bloquée` ;
-- `À reprendre` ;
-- `Terminée — porte validée`.
+### 2.2 Manifeste du snapshot
 
-À la fin de chaque passe, calculer l’empreinte du fichier principal :
+Un hash du seul `page.tsx` est insuffisant. Chaque passe consigne les fichiers
+contrôlés et leur SHA-256 :
 
 ```bash
-shasum -a 256 src/app/guides/<slug>/page.tsx
+shasum -a 256 \
+  src/app/guides/<slug>/page.tsx \
+  src/app/guides/<slug>/opengraph-image.tsx \
+  src/lib/guides.ts
 ```
 
-La passe suivante vérifie que le hash d’entrée correspond au hash de sortie de
-la passe précédente. Une modification intervenue entre les deux invalide la
-porte et impose une revue du diff avant de continuer.
+Ajouter les pages modifiées pour le maillage ou tout composant partagé touché.
+Le dossier de recherche ne consigne pas son propre hash : l’écrire dans le
+fichier modifierait précisément ce hash. Après chaque porte, calculer le hash
+en lecture seule :
 
-### 3.2 Règle de séquentialité
-
-```text
-PASSE 1 TERMINÉE
-        ↓
-PASSE 2 TERMINÉE
-        ↓
-PASSE 3 TERMINÉE
-        ↓
-PASSE 4 TERMINÉE
-        ↓
-PRÊT TECHNIQUEMENT / PRÊT POUR REVUE HUMAINE / PUBLIABLE
+```bash
+shasum -a 256 docs/research/<slug>.md
 ```
 
-Il est interdit de :
+Créer ensuite le manifeste frère immuable
+`docs/research/manifests/<slug>-p<1|2|3|4>.sha256` avec `apply_patch`. La
+redirection shell ne sert jamais à créer ou modifier ce fichier. Si le dossier
+`manifests` n’existe pas encore, le créer dans le même patch.
 
-- commencer la passe 2 sur un plan ou un article incomplet ;
-- commencer la passe 3 tant qu’un chiffre, une source ou un calcul important
-  reste douteux ;
-- commencer la passe 4 avant que la structure et les transitions de la passe 3
-  soient stabilisées ;
-- publier entre deux passes ;
-- déclarer une passe terminée en listant uniquement les actions lancées ;
-- lancer plusieurs agents éditeurs sur le même fichier ;
-- conserver un résultat d’audit seulement dans un transcript ou un dossier
-  temporaire.
+Le rapport de passe pointe vers ce manifeste. Pour un fichier nouveau, relire
+également tout son contenu ; un simple `git diff` peut l’omettre s’il n’est pas
+encore suivi.
 
-### 3.3 Retour arrière obligatoire
+La passe suivante compare son entrée au manifeste précédent. Toute divergence
+est lue et expliquée. Une modification matérielle remet les portes concernées à
+`À reprendre`.
 
-Une passe tardive peut révéler un défaut antérieur. Elle ne le « maquille » pas.
+### 2.3 Retour arrière
 
-| Défaut découvert                                    | Retour obligatoire                                          |
-| --------------------------------------------------- | ----------------------------------------------------------- |
-| fait non sourcé, source contradictoire, calcul faux | Passe 2                                                     |
-| intention dupliquée ou verdict à changer            | Passe 1, puis nouvelles P2 et P3                            |
-| section inutile ou architecture incohérente         | Passe 3 ; retour P1 si la décision principale change        |
-| phrase artificielle sans effet sur le fond          | Reste en passe 4                                            |
-| metadata ou JSON-LD infidèle au visible             | Passe 2                                                     |
-| CTA ou ressource inexistante                        | Passe 1 ou retrait immédiat de la promesse                  |
-| défaut mobile structurel                            | Passe 2 pour le composant, passe 3 pour la forme éditoriale |
+| Défaut découvert                                         | Retour obligatoire                  |
+| -------------------------------------------------------- | ----------------------------------- |
+| fait, prix, règle, source ou calcul douteux              | Passe 3, puis nouvelle P4           |
+| intention, URL, décision ou verdict à changer            | Passe 1, puis nouvelles P2 à P4     |
+| section manquante ou architecture qui empêche de décider | Passe 2, puis nouvelles P3 et P4    |
+| phrase artificielle sans impact factuel                  | Reste en passe 4                    |
+| metadata ou JSON-LD infidèle                             | Passe 3                             |
+| ressource ou CTA promis mais inexistant                  | Passe 2 ou retrait immédiat         |
+| défaut mobile structurel                                 | Passe 2 pour le code, puis P3 et P4 |
 
-Après un retour, toutes les portes ultérieures repassent à `À reprendre`.
+### 2.4 Indépendance et parallélisme
 
-### 3.4 Travail avec plusieurs agents
-
-Lorsque l’environnement et l’utilisateur autorisent le travail parallèle :
-
-- les missions parallèles portent sur des axes indépendants et **en lecture
-  seule** : demande/SERP, sources primaires, calculs, concurrence, clarté,
-  contre-audit ;
-- un seul orchestrateur lit les rapports complets, résout les contradictions,
-  met à jour `docs/research/<slug>.md` et édite les fichiers ;
-- les agents ne se citent jamais comme sources ;
-- aucun agent ne valide seul son propre travail ;
-- l’orchestrateur attend tous les rapports nécessaires avant la synthèse ;
-- une recherche lancée n’est pas une recherche terminée ;
-- la parallélisation n’est jamais une excuse pour dépasser le contexte, perdre
-  les URLs ou mélanger les conclusions de plusieurs guides.
-
-Pour un sujet simple, un seul agent peut exécuter les quatre passes dans des
-tours séparés. Le nombre d’agents ne constitue jamais un critère de qualité.
+- un agent peut rechercher ou rédiger ; il ne peut pas attribuer seul le statut
+  `Publiable` à son propre guide ;
+- la passe 3 est exécutée par un autre agent ou un relecteur disposant d’un
+  contexte froid et explicitement chargé de contredire ;
+- un propriétaire éditorial est nommé en P1 ; lui seul applique la rédaction,
+  les corrections de P3 et les changements de P4 ;
+- le relecteur de P3 reste en lecture seule ; le propriétaire éditorial
+  applique les corrections et lui renvoie les points matériels ;
+- les recherches de plusieurs guides peuvent avancer en parallèle ;
+- l’écriture et l’intégration sont successives dans un worktree partagé, car le
+  registre et le maillage sont communs ;
+- un seul orchestrateur consolide et résout les contradictions ;
+- un rapport d’agent n’est jamais une source et une simulation n’est jamais un
+  test réalisé par un dirigeant réel.
 
 ---
 
-## 4. Règles permanentes pendant les quatre passes
+## 3. Règles permanentes
 
-### 4.1 Zéro invention
+### 3.1 Des dirigeants, pas des consultants
 
-Il est interdit d’inventer :
+Le lecteur maîtrise son entreprise, pas le vocabulaire d’une agence, d’une DSI
+ou d’un cabinet de conseil.
 
-- témoignage, citation, avis, client, logo, référence ou résultat ;
-- métrique de satisfaction, conversion, délai, budget, rétention ou trafic ;
-- expérience vécue par Hagnéré Code ;
-- architecture ou résultat interne d’un produit lié au groupe ;
-- tarif, version logicielle, obligation, jurisprudence ou statistique ;
-- date de publication ou de modification ;
-- validation par un lecteur humain ;
-- fonctionnalité d’une ressource, d’un outil ou d’un CTA.
-
-Un exemple fabriqué pour expliquer est autorisé seulement s’il est annoncé dès
-sa première occurrence comme **« exemple illustratif fictif »** ou **« scénario
-fictif composite »**. Il ne devient jamais une preuve sociale. Ses hypothèses
-précèdent le calcul et restent cohérentes partout.
-
-### 4.2 Hiérarchie des sources
-
-Pour chaque affirmation décisive, choisir la source la plus proche de la vérité
-recherchée :
-
-1. artefact de première main vérifiable et autorisé ;
-2. texte officiel, tarif officiel, documentation officielle ou donnée publique
-   primaire ;
-3. étude primaire avec méthode, population, pays et période ;
-4. standard ou benchmark reconnu avec périmètre lisible ;
-5. recoupement de marché explicite et daté ;
-6. contenu concurrent uniquement pour comprendre la demande ou vérifier ce que
-   le lecteur rencontrera, jamais comme autorité finale si une source primaire
-   existe.
-
-Une réponse d’IA, un résumé de moteur, un snippet, un forum ou une publication
-sociale ne sont pas des preuves suffisantes. Ils peuvent révéler une question à
-vérifier, puis l’agent ouvre la source originale.
-
-### 4.3 Fiche de preuve obligatoire
-
-Chaque fait important est inscrit dans `docs/research/<slug>.md` :
-
-| Affirmation | Source et passage | Nature | Périmètre | Date/consultation | Confiance | Emplacement visible | Conséquence lecteur | Fraîcheur |
-| ----------- | ----------------- | ------ | --------- | ----------------- | --------- | ------------------- | ------------------- | --------- |
-
-Une bibliographie générale ne suffit pas pour un prix, un taux, une obligation,
-une version ou une statistique qui change la décision. Le lien ou la note doit
-être identifiable au niveau de l’affirmation visible.
-
-### 4.4 Les six questions de chaque chiffre
-
-Pour chaque prix, pourcentage, durée, taux, volume, seuil ou économie, vérifier :
-
-1. **combien ?**
-2. **de quoi ?** — assiette, unité, population, fonction incluse ;
-3. **dans quel sens ?** — au-dessus, en dessous, minimum, maximum, moyenne ;
-4. **sur quelle période ?** — mensuel, annuel, horizon total, date de départ ;
-5. **dans quel périmètre ?** — HT/TTC, France, profil, outil, offre, conditions ;
-6. **sur quelle preuve ?** — source, formule, hypothèses, date.
-
-Une inconnue reste `à confirmer`. Elle ne devient jamais zéro par silence.
-
-### 4.5 Calculs
-
-- refaire chaque calcul indépendamment ;
-- montrer formule, unités, hypothèses, résultat et arrondi ;
-- vérifier l’ordre de grandeur et, si possible, le calcul inverse ;
-- rechercher chaque valeur répétée dans le guide et les pages liées ;
-- distinguer coût de départ, coût récurrent, coût interne, migration,
-  maintenance, évolution et sortie ;
-- un TCO additionne chaque poste une seule fois sur un horizon explicite ;
-- le gain net et le ROI ne sont pas synonymes ;
-- le temps économisé ne devient de l’argent que si l’hypothèse de réaffectation
-  ou de coût évité est expliquée.
-
-Pour plusieurs calculs, créer un script reproductible dans un emplacement
-approprié et le conserver si le résultat public doit pouvoir être maintenu.
-
-### 4.6 Voix Hagnéré Code
-
-- expert calme, honnête, concret ;
-- « vous » de politesse ;
-- réponse avant démonstration ;
 - mots du dirigeant avant mots du prestataire ;
+- réponse avant méthode ;
 - une idée principale par phrase ;
-- terme technique expliqué dans la phrase où il devient utile ;
-- voix active et verbes précis ;
-- reconnaissance des limites, mauvais fits et options moins chères ;
-- aucun ton de vendeur pressant, d’avocat ou de rapport d’audit ;
-- « nous » seulement pour une pratique ou une offre réellement attribuable à
-  Hagnéré Code.
+- terme technique expliqué lorsqu’il devient utile ;
+- sujet, action et résultat identifiables ;
+- bon choix, mauvais choix et possibilité de reporter ;
+- aucune métaphore ou matrice que le lecteur doit apprendre avant de comprendre
+  le sujet.
 
-### 4.7 Typographie française
+### 3.2 Zéro invention
 
-- guillemets français « » ;
-- apostrophe typographique `’` dans la prose ;
-- espaces françaises cohérentes avant `:`, `;`, `?`, `!` ;
-- nombres et monnaies lisibles : `15 000 € HT`, `15 000 à 20 000 € HT` ;
-- pourcentages : `25 %` ;
-- dates lisibles : `21 juillet 2026` ;
-- acronymes développés au premier usage ;
-- noms de produits, sociétés et institutions recopiés depuis leur source.
+Ne jamais inventer : client, témoignage, avis, résultat, prix, taux, délai,
+qualification, effectif, fonctionnalité, obligation, jurisprudence, date,
+validation humaine ou expérience Hagnéré Code.
 
-La correction typographique ne doit pas casser les chaînes de code, les URLs,
-les imports ou les expressions régulières.
+Un scénario construit pour expliquer est annoncé dès sa première occurrence
+comme **« exemple illustratif fictif »**. Ses hypothèses précèdent le résultat.
+Il ne devient jamais une preuve sociale ni un seuil recommandé universel.
 
-### 4.8 SEO utile
+### 3.3 Fait, déduction et recommandation
 
-- une intention principale et une décision principale ;
-- `title`, H1, card title et description uniques, fidèles et naturels ;
-- les repères de 50–60 caractères pour le title et 140–160 pour la description
-  servent l’affichage, pas le classement ;
-- la requête principale apparaît naturellement là où elle aide à comprendre ;
-- aucun comptage de densité ;
-- les H2 découlent des questions utiles ;
-- les liens sont contextuels et descriptifs ;
-- la FAQ recueille seulement les questions résiduelles ;
-- les dates sont vraies ;
-- le JSON-LD est le miroir du contenu visible ;
-- `llms.txt` est un index complémentaire, pas un levier Google ;
-- aucune optimisation destinée aux moteurs ne doit dégrader la page pour le
-  lecteur.
+Chaque affirmation décisive appartient à une catégorie :
 
-### 4.9 Conversion honnête
+- `FAIT VÉRIFIÉ` : directement soutenu par une source ;
+- `DÉDUCTION` : conséquence raisonnable tirée de plusieurs faits ;
+- `RECOMMANDATION HAGNÉRÉ CODE` : méthode ou choix éditorial assumé ;
+- `ESTIMATION` : hypothèses, périmètre et date visibles ;
+- `EXEMPLE ILLUSTRATIF FICTIF` : scénario pédagogique déclaré ;
+- `INCERTITUDE` : à confirmer ou à ne pas publier.
 
-- une action non commerciale doit rester possible ;
-- le CTA principal décrit le résultat après clic ;
-- la destination correspond au verbe : « Réserver » ouvre un agenda réel,
-  « Décrire mon projet » ouvre le funnel ;
-- la sidebar compte déjà dans la pression commerciale ;
-- un seul `GuideInlineCTA` au maximum et seulement après une démonstration
-  suffisante ;
-- bon fit et mauvais fit sont explicites ;
-- une ressource est autonome, testée, maintenable et utile sans donner son
-  adresse e-mail ;
-- aucune urgence artificielle ni promesse non contractualisée.
+Ne jamais attribuer à Google, à un éditeur ou à un régulateur une recommandation
+que Hagnéré Code déduit lui-même.
 
-### 4.10 Git et environnement local
+### 3.4 Sources
 
-- inspecter `git status --short` avant de modifier ;
-- le dépôt peut être sale : préserver les changements de l’utilisateur et ne
-  pas réécrire un fichier sans avoir lu son état actuel ;
-- ne pas restaurer, supprimer ou écraser des modifications sans autorisation ;
-- ne pas commit ni push sans demande explicite ;
-- ne pas lancer de migration destructive ;
-- ne pas tuer ou redémarrer un serveur inconnu par réflexe ;
-- ne pas neutraliser un test pour obtenir du vert ;
-- séparer les défauts préexistants des défauts introduits par le guide.
+Hiérarchie : artefact de première main autorisé, source officielle, étude
+primaire, standard reconnu, benchmark documenté, recoupement de marché. Les
+concurrents servent à comprendre la demande, pas à établir un fait lorsqu’une
+source primaire existe.
+
+Pour un prix, une version, une règle, une fonctionnalité, un taux ou une
+obligation, la recherche web actuelle est obligatoire.
+
+Une bibliographie finale ne suffit pas. Le lien ou la note apparaît au plus près
+de l’affirmation visible qui change la décision. Une section « Sources et
+limites » peut récapituler, mais ne remplace pas cette proximité.
+
+### 3.5 Chiffres et calculs
+
+Pour chaque valeur : combien, de quoi, dans quel sens, sur quelle période, dans
+quel périmètre et sur quelle preuve ?
+
+- formule, unités, hypothèses, résultat et arrondi ;
+- HT/TTC et ponctuel/récurrent explicites ;
+- inconnue nommée `à confirmer`, jamais transformée en zéro ;
+- TCO sans double comptage ;
+- gain net distinct du ROI ;
+- temps valorisé seulement si réaffectation ou coût évité expliqués ;
+- même valeur dans le corps, les tableaux, la FAQ et les pages liées.
+
+### 3.6 Conversion honnête
+
+- une action autonome reste possible sans contacter Hagnéré Code ;
+- le bon fit et le mauvais fit sont visibles ;
+- au maximum un `GuideInlineCTA` dans le corps ;
+- le CTA arrive après la démonstration et décrit le résultat du clic ;
+- aucune urgence artificielle ni garantie non contractualisée ;
+- une ressource promise existe, fonctionne et reste utile sans échange d’adresse
+  e-mail ;
+- le guide peut conclure qu’il faut corriger, acheter un outil existant,
+  attendre ou ne pas investir.
+
+### 3.7 SEO et produit
+
+- une intention principale, une décision principale et une URL ;
+- title, meta, H1 et card copy uniques, naturels et fidèles ;
+- aucun quota ou densité ;
+- H2 issus des questions utiles ;
+- liens contextuels et descriptifs ;
+- date de modification seulement après changement substantiel ;
+- JSON-LD miroir du visible ;
+- `llms.txt` est un index complémentaire, pas un facteur Google ;
+- généré, déployé, découvert, exploré, indexé et classé sont des états distincts.
+
+### 3.8 Git et dépôt partagé
+
+- lire `git status --short` avant toute modification ;
+- préserver les changements de l’utilisateur et des autres agents ;
+- ne jamais restaurer, écraser ou supprimer un travail non attribué ;
+- un seul éditeur touche les fichiers partagés ;
+- ne pas commit, push ou déployer sans autorisation ;
+- corriger la source d’un test, jamais neutraliser le contrôle ;
+- distinguer défaut introduit et défaut préexistant.
 
 ---
 
-# PASSE 1 — Création du guide
+# PASSE 1 — Rechercher et décider
 
-## 5. Objectif de la passe 1
+## 4. Objectif
 
-Transformer un sujet en un guide complet, sourcé et intégré localement. La
-passe 1 prend toutes les décisions structurantes : intention, angle, verdict,
-plan, exemples, sources, action utile, CTA et composition TSX.
+Produire un dossier suffisant pour qu’un autre agent puisse rédiger sans
+inventer, copier un concurrent ni deviner la décision du lecteur. La passe 1 ne
+rédige pas `page.tsx`.
 
-Elle ne cherche pas encore la perfection phrase par phrase. Elle doit produire
-un article suffisamment complet et stable pour qu’un audit indépendant puisse
-le contredire en passe 2.
+## 5. Étapes
 
-## 6. Entrées obligatoires
+### P1.0 — Prévol
 
-L’agent réunit :
+- lire les documents obligatoires ;
+- relever branche, `git status --short` et fichiers proches ;
+- vérifier le slug dans la roadmap, le registre, les pages et la recherche ;
+- créer ou mettre à jour `docs/research/<slug>.md` depuis le modèle ;
+- passer P1 à `En cours`, consigner le responsable et nommer le propriétaire
+  éditorial qui restera l’unique éditeur du guide.
 
-- sujet ou slug proposé ;
-- entrée de roadmap ou justification hors roadmap ;
-- intention de recherche pressentie ;
-- offre ou service éventuellement relié ;
-- pages voisines du site ;
-- état du dépôt ;
-- éventuelle fiche `docs/research/<slug>.md` existante ;
-- accès autorisé aux sources actuelles.
+### P1.1 — Brief du lecteur
 
-Si le sujet n’est pas assez défini, l’agent remplit le brief avec des
-hypothèses signalées. Il ne bloque la progression que si une décision manquante
-changerait matériellement l’URL, l’intention, le public ou le résultat attendu.
-
-## 7. Étapes de la passe 1
-
-### P1.0 — Prévol et baseline
-
-To-do :
-
-- [ ] lire tous les documents obligatoires listés au début de ce workflow ;
-- [ ] relever `git status --short` et la branche ;
-- [ ] vérifier si le slug existe dans `src/lib/guides.ts`, `src/app/guides/`,
-      `docs/research/` et la roadmap ;
-- [ ] identifier les changements utilisateur dans les fichiers proches ;
-- [ ] créer `docs/research/<slug>.md` depuis le modèle si nécessaire ;
-- [ ] mettre `Passe 1 = En cours` dans le journal ;
-- [ ] noter la date et le responsable de la synthèse.
-
-Livrable : baseline courte dans le dossier de recherche.
-
-### P1.1 — Brief lecteur et décision
-
-Remplir sans jargon :
+Renseigner :
 
 ```text
-Requête principale :
+Requête principale pressentie :
 Lecteur précis :
-Situation déclenchante :
-Moment du parcours : comprendre / explorer / décider / sécuriser
-Phrase réelle qu’il pourrait prononcer :
-Décision principale après lecture :
-Niveau de connaissance au départ :
-5 questions indispensables :
-3 objections ou craintes :
+Situation qui déclenche sa recherche :
+Phrase qu’il dirait au téléphone :
+Décision à prendre après lecture :
+Niveau de connaissance initial :
+Questions indispensables :
+Objections et craintes :
 Mots ordinaires employés :
 Termes d’expert à traduire :
 Action utile sans contact :
-CTA possible :
+Bon fit / mauvais fit :
 Hors périmètre :
 Projet des 150 premiers mots :
 ```
 
 Porte locale : une seule décision principale peut être formulée en une phrase.
 
-### P1.2 — Déduplication et cannibalisation
+### P1.2 — Déduplication
 
-Inspecter :
+Comparer roadmap, registre, pages service, ressources et guides proches :
 
-- roadmap ;
-- registre `GUIDES` ;
-- pages service ;
-- guides partageant la requête, la situation ou la décision ;
-- ressources et livres blancs proches ;
-- Search Console si elle est disponible et si son usage est autorisé.
+| Page | Intention | Réponse existante | Différence nécessaire | Lien ou fusion |
+| ---- | --------- | ----------------- | --------------------- | -------------- |
 
-Créer le tableau :
+Si environ 60 % de la réponse utile existe déjà, enrichir, fusionner ou changer
+l’angle. Un synonyme ne justifie pas une URL.
 
-| Page existante | Intention | Réponse actuelle | Différence nécessaire | Lien ou fusion |
-| -------------- | --------- | ---------------- | --------------------- | -------------- |
+### P1.3 — Demande et résultats existants
 
-Si environ 60 % de la réponse utile existe déjà, enrichir la page actuelle ou
-redéfinir le sujet. Un nouveau mot-clé ne justifie pas une nouvelle URL.
+Observer une SERP actuelle et localisée, Search Console si disponible et les
+formulations réellement rencontrées. Relever :
 
-Livrable : justification d’une URL distincte ou décision de ne pas créer.
-
-### P1.3 — Observation de la demande et de la SERP
-
-La recherche est datée et localisée. Observer assez de résultats pour
-comprendre le marché de réponse, sans imposer mécaniquement dix pages si cinq
-suffisent ou si des familles de résultats se répètent.
-
-Relever :
-
-- type de résultats dominants ;
-- questions associées et formulations du lecteur ;
+- type de résultats ;
+- questions et mots du lecteur ;
 - réponse donnée dès l’ouverture ;
-- architecture générale ;
 - critères de comparaison ;
-- chiffres et sources visibles ;
-- exemples, calculateurs, modèles ou checklists ;
+- preuves, exemples et outils proposés ;
 - limites reconnues ;
-- CTA et conflit d’intérêt ;
-- dates et fraîcheur ;
+- conflits d’intérêt ;
 - angle mort empêchant encore une décision.
 
-Ne pas copier un plan concurrent. Ne pas traiter les estimations d’un outil SEO
-comme des volumes ou difficultés certaines. Si Google ou un site bloque, le
-noter et poursuivre avec les sources accessibles ; ne pas contourner un captcha.
+Ne pas copier un plan. Un outil SEO fournit une estimation, pas une vérité sur
+le volume ou la difficulté.
 
-Livrable : carte concurrentielle synthétique et angle mort commun.
+### P1.4 — Fiche de preuves
 
-### P1.4 — Recherche de preuves
+| Affirmation | Catégorie | Source et passage | Périmètre | Consultation | Limite | Conséquence lecteur | Fraîcheur |
+| ----------- | --------- | ----------------- | --------- | ------------ | ------ | ------------------- | --------- |
 
-Construire la fiche de preuves avant le plan définitif. Selon le sujet :
+Consigner aussi : contradictions, informations retirées, inconnues et événement
+qui imposera une future revalidation.
 
-- documentation officielle de l’éditeur ;
-- prix et conditions commerciales officielles ;
-- normes W3C, WCAG, documentation Next.js, React ou navigateur ;
-- Google Search Central, Search Console ou documentation publicitaire ;
-- CNIL, ANSSI, Légifrance, EUR-Lex, Service Public, impôts ou organismes
-  compétents ;
-- études primaires avec méthode ;
-- artefacts et tests de première main autorisés ;
-- pages publiques des produits du groupe, limitées à ce qui est visible.
+### P1.5 — Angle et dispositif utile
 
-Pour les sujets juridiques, fiscaux, sécurité, prix, versions, aides ou
-fonctionnalités de logiciels, une recherche web actuelle est obligatoire.
+Choisir l’architecture selon la décision, pas selon un gabarit :
 
-Étiqueter les affirmations :
+- comparatif : critères avant verdict, conditions égales, troisième option ;
+- prix : inclus, exclus, hypothèses, scénarios et coût total ;
+- diagnostic : symptômes, causes, contrôles, urgence et ordre d’action ;
+- méthode : résultat, étapes, responsable et critère d’acceptation ;
+- juridique : juridiction, date, obligation, exceptions et source compétente.
 
-- `FAIT VÉRIFIÉ` ;
-- `ESTIMATION ÉDITORIALE` ;
-- `INTERPRÉTATION` ;
-- `EXEMPLE ILLUSTRATIF FICTIF` ;
-- `OFFRE HAGNÉRÉ CODE` ;
-- `INCERTITUDE / À NE PAS PUBLIER`.
-
-Livrable : fiche de preuves complète, contradictions visibles et liste de ce
-qui ne doit pas être publié.
-
-### P1.5 — Angle et architecture
-
-Choisir l’architecture d’après la décision :
-
-#### Guide de prix
-
-- réponse courte avec hypothèses et année ;
-- inclus, exclus et postes oubliés ;
-- scénarios cohérents ;
-- facteurs de variation ;
-- coût total sur un horizon adapté ;
-- méthode de comparaison des devis ;
-- solution plus simple ou report du projet.
-
-#### Comparatif
-
-- critères définis avant le verdict ;
-- options jugées à conditions égales ;
-- cas où A gagne, où B gagne et où une troisième option gagne ;
-- coûts de migration et de sortie ;
-- conséquence organisationnelle ;
-- verdict conditionnel par situation.
-
-#### Méthode ou modèle
-
-- résultat à produire ;
-- étapes dans l’ordre ;
-- responsable et critère d’acceptation ;
-- exemple rempli ;
-- temps, budget, informations nécessaires ;
-- signaux d’alerte ;
-- vraie ressource si la requête la promet.
-
-#### Diagnostic, incident ou migration
-
-- symptômes et urgence ;
-- causes classées ;
-- contrôles accessibles au dirigeant ;
-- preuves à exiger du prestataire ;
-- actions datées et responsables ;
-- retour arrière ;
-- indicateurs après intervention.
-
-#### Juridique, conformité ou aides
-
-- juridiction, date, entreprises concernées ;
-- obligation, recommandation et pratique de marché séparées ;
-- exceptions et zones grises ;
-- source officielle primaire ;
-- avertissement adapté ;
-- aucun conseil personnalisé.
-
-Comparer l’empreinte de trois à cinq guides voisins. Nommer au moins trois
-différences de progression, d’ouverture, d’exemple, de format ou de sortie.
-
-Livrable : angle, promesse démontrable, forme dominante et artefact signature.
+Comparer trois à cinq guides voisins et nommer au moins trois différences de
+progression, d’ouverture, d’exemple, de format ou de conclusion.
 
 ### P1.6 — Plan annoté
 
-Créer un plan où chaque section possède une fonction :
-
-| Section | Question résolue | Preuve/exemple | Conséquence lecteur | Format |
-| ------- | ---------------- | -------------- | ------------------- | ------ |
+| Section provisoire | Question résolue | Preuve ou exemple | Conséquence | Format |
+| ------------------ | ---------------- | ----------------- | ----------- | ------ |
 
 Règles :
 
-- les 150 premiers mots reprennent la situation, expliquent le terme central,
+- les 150 premiers mots montrent la situation, expliquent le terme central,
   donnent la réponse courte et annoncent la décision ;
-- chaque H2 reste compréhensible isolément ;
-- la réponse précède l’historique ou la méthode ;
-- une section sans réponse, preuve ou décision est supprimée ;
-- les formats servent le contenu : prose pour expliquer, tableau pour comparer,
-  liste numérotée pour agir, formule pour calculer, encadré pour alerter ;
-- la FAQ ne reçoit que les questions résiduelles ;
-- le CTA arrive après une valeur autonome suffisante ;
-- les sources et limites apparaissent dans le parcours, pas comme un dépotoir
-  final.
+- chaque H2 se comprend isolément ;
+- une section sans réponse, preuve ou conséquence est retirée ;
+- prose pour expliquer, tableau pour comparer, liste numérotée pour agir ;
+- la FAQ ne récupère que les questions résiduelles ;
+- le CTA vient après une valeur autonome suffisante ;
+- les sources importantes sont prévues près des affirmations.
 
-Livrable : plan annoté stable. C’est le dernier contrôle avant rédaction.
+## 6. Porte de sortie P1
 
-### P1.7 — Rédaction du brouillon complet
-
-Rédiger dans l’ordre du raisonnement du lecteur :
-
-1. lead de 150 mots maximum, adressé au lecteur ;
-2. réponse courte ou encadré si cela améliore la compréhension ;
-3. sommaire fidèle aux H2 ;
-4. sections avec réponse, explication, preuve, conséquence et transition ;
-5. alternatives et statu quo ;
-6. exemple ou calcul seulement s’il réduit l’abstraction ;
-7. décision finale ou action ;
-8. CTA adapté ;
-9. sources et limites ;
-10. FAQ utile si des questions résiduelles subsistent.
-
-Ne pas forcer le même mini-gabarit dans chaque H2. Le contenu doit respirer et
-varier naturellement. Un tableau important est suivi d’une traduction dans la
-vie du lecteur, sans imposer que chaque paragraphe commence littéralement par
-« Concrètement ».
-
-Livrable : contenu complet, sans placeholder éditorial.
-
-### P1.8 — Exemples, calculs et ressources
-
-- [ ] chaque exemple est réel et autorisé, ou explicitement fictif ;
-- [ ] les hypothèses précèdent les résultats ;
-- [ ] les calculs sont reproductibles ;
-- [ ] les valeurs restent cohérentes partout ;
-- [ ] le scénario ne fabrique ni client ni citation ;
-- [ ] la ressource promise existe réellement ;
-- [ ] la ressource a un format utile, un mode d’emploi, un exemple, une version,
-      une date, des limites et des tests ;
-- [ ] le lecteur peut conclure « ne pas investir maintenant ».
-
-### P1.9 — Intégration Next.js
-
-Créer ou mettre à jour :
-
-1. `src/app/guides/<slug>/page.tsx` ;
-2. `src/app/guides/<slug>/opengraph-image.tsx` ;
-3. l’entrée de `src/lib/guides.ts` ;
-4. les liens entrants réellement pertinents ;
-5. le dossier de recherche.
-
-Pour un guide neuf, ajouter par défaut :
-
-```ts
-editorialStatus: "ready-for-human-review",
-```
-
-tant que la porte éditoriale définie par la charte n’a pas été franchie.
-
-Contrôles d’intégration :
-
-- metadata dérivée du registre ;
-- canonical `guideUrl(guide)` ;
-- `guideRobots(guide)` ;
-- OpenGraph et Twitter cohérents ;
-- image dédiée 1200 × 630 ;
-- JSON-LD `Article` et `BreadcrumbList` fidèles ;
-- aucun `FAQPage`, `HowTo`, faux `Offer` ou `wordCount` estimé ;
-- auteur et identité exacts ;
-- H1 unique ;
-- FAQ visible unique ;
-- ancres du sommaire exactes ;
-- liens vers sources originales ;
-- un lien entrant contextuel au minimum ;
-- pas d’édition manuelle du sitemap, de `robots.txt` ou de `llms.txt`.
-
-### P1.10 — Autocontrôle de création
-
-Effectuer un contrôle proportionné avant de livrer à la passe 2 :
-
-```bash
-git diff --check
-npx eslint src/app/guides/<slug>/page.tsx \
-  src/app/guides/<slug>/opengraph-image.tsx src/lib/guides.ts
-npx tsc --noEmit
-```
-
-Les tests complets et le build final seront répétés en passe 4. Une passe 1 ne
-peut toutefois pas être clôturée avec une erreur de syntaxe ou de type connue.
-
-## 8. Porte de sortie de la passe 1
-
-La passe 1 est terminée seulement si :
-
-- [ ] intention et décision uniques ;
-- [ ] cannibalisation résolue ;
-- [ ] recherche datée et fiche de preuves exploitable ;
-- [ ] contradictions consignées et aucune contradiction décisive masquée ;
-- [ ] plan justifié, distinct des voisins ;
-- [ ] guide complet dans `page.tsx` ;
-- [ ] exemples et calculs vérifiables ;
-- [ ] registre, metadata, JSON-LD, OG et maillage intégrés ;
-- [ ] ressource et CTA réels ;
-- [ ] ESLint ciblé et TypeScript sans défaut introduit ;
-- [ ] dossier de recherche à jour ;
-- [ ] hash SHA-256 enregistré ;
+- [ ] brief complet et décision unique ;
+- [ ] URL distincte justifiée ;
+- [ ] recherche actuelle et datée ;
+- [ ] fiche de preuves exploitable ;
+- [ ] faits, déductions et recommandations séparés ;
+- [ ] aucune contradiction décisive masquée ;
+- [ ] plan annoté et distinct des voisins ;
+- [ ] action autonome, bon fit et mauvais fit définis ;
+- [ ] dossier de recherche suffisant pour un autre rédacteur ;
+- [ ] snapshot consigné ;
 - [ ] `Passe 1 = Terminée — porte validée`.
 
-### Rapport de sortie P1
+### Rapport P1
 
 ```text
 PASSE 1 TERMINÉE
 Slug :
-Décision principale :
-Angle :
-Fichiers créés/modifiés :
+Lecteur et phrase réelle :
+Décision :
+Angle et forme dominante :
+Pages proches et différence :
 Sources décisives :
-Calculs/exemples :
-Action autonome :
-CTA :
-Risques ou inconnues transmis à P2 :
-Commandes passées :
-SHA-256 page.tsx :
+Incertitudes exclues :
+Action autonome et CTA possible :
+Plan :
+Snapshot :
 ```
 
 ---
 
-# PASSE 2 — Enrichissement et vérification
+# PASSE 2 — Écrire et intégrer
 
-## 9. Objectif de la passe 2
+## 7. Objectif
 
-Traiter le guide comme potentiellement faux jusqu’à vérification. La passe 2
-réexamine le contenu complet, les sources, les calculs, les promesses, le SEO
-technique et la composition locale. Elle corrige le fond par modifications
-ciblées et laisse une table de vérité maintenable.
+Transformer le dossier validé en un guide complet, utile et intégré. Un seul
+éditeur écrit. Il n’improvise pas un fait absent de P1 : il retourne au dossier
+de preuves.
 
-Elle ne part pas du principe que la passe 1 a « déjà cherché ». Elle refait les
-contrôles décisifs de manière indépendante.
+## 8. Étapes
 
-## 10. Entrée et préconditions
+### P2.0 — Vérifier l’entrée
 
-- passe 1 marquée terminée ;
-- hash d’entrée identique ;
-- page complète et lisible ;
-- dossier de recherche présent ;
-- slug, requête et décision connus ;
-- aucune édition parallèle en cours.
+- P1 terminée ;
+- manifeste identique ou diff expliqué ;
+- aucune édition parallèle ;
+- intention, décision, plan et sources connus.
 
-Si le hash diffère, lire le diff, mettre P1 à reprendre si nécessaire et ne pas
-auditer un état non documenté.
+### P2.1 — Écrire le guide complet
 
-## 11. Étapes de la passe 2
+Ordre naturel recommandé, sans gabarit obligatoire :
 
-### P2.0 — Baseline avant correction
+1. situation et réponse courte ;
+2. explication du terme central ;
+3. démonstration dans l’ordre des questions ;
+4. options, mauvais fits et possibilité d’attendre ;
+5. exemples ou calculs utiles ;
+6. décision ou action finale ;
+7. CTA éventuel ;
+8. sources récapitulatives et FAQ résiduelle.
 
-Relever au minimum :
+Chaque affirmation décisive reçoit sa source au moment où elle apparaît. Les
+exemples fictifs sont étiquetés avant leurs chiffres.
 
-- chemins concernés ;
-- hash et `git diff --stat` ;
-- H1, H2, H3 et ancres ;
-- nombre de tableaux, encadrés, formules, FAQ et CTA ;
-- title, meta description, hero title, hero description ;
-- dates ;
-- JSON-LD présents ;
-- liens internes et externes ;
-- affirmations chiffrées ;
-- état des commandes ciblées ;
-- statut éditorial dans le registre.
+Ne pas imposer : réponse rapide, sommaire, tableau, scénarios, FAQ, ressource ou
+CTA. Chaque forme doit résoudre un besoin réel du sujet.
 
-Ces nombres décrivent le brouillon. Ils ne deviennent pas des objectifs de
-volume.
+### P2.2 — Contrat de langage humain
 
-### P2.1 — Lecture intégrale et cartographie
+- mots du lecteur ;
+- acronymes développés au premier usage ;
+- aucun titre métaphorique ou administratif ;
+- une conséquence après chaque comparaison importante ;
+- aucune phrase générique qui resterait vraie après substitution du sujet ;
+- pas de répétition mécanique « paragraphe, liste, encadré ».
 
-Lire `page.tsx` du premier au dernier caractère, puis lire l’article rendu si
-un serveur local est disponible. Cartographier :
+### P2.3 — Conversion
 
-- progression de la décision ;
-- assertions décisives ;
-- calculs ;
-- cas réels ou fictifs ;
-- sources visibles ;
-- alternatives ;
-- bon fit / mauvais fit ;
-- CTA et promesses ;
-- metadata, JSON-LD, registre, OG, FAQ, sommaire, liens ;
-- passages trop courts, trop longs ou ambigus.
+Le lecteur sait :
 
-Livrable : inventaire des absences, incohérences et zones à haut risque.
+- ce qu’il peut faire seul ;
+- quand Hagnéré Code peut aider ;
+- quand une solution moins chère, un outil existant ou un report est préférable ;
+- ce qu’il obtient après le clic ;
+- où mène le CTA réel.
 
-### P2.2 — Recherche indépendante par axes
+### P2.4 — Intégration
 
-Répartir la vérification selon le sujet. Les axes recommandés sont :
+Créer ou modifier :
 
-#### Axe A — Sources officielles et règles
+1. `page.tsx` ;
+2. `opengraph-image.tsx` ;
+3. l’entrée `GUIDES` avec `editorialStatus: "ready-for-human-review"` ;
+4. les liens entrants et sortants pertinents ;
+5. le dossier de recherche.
 
-- textes juridiques et régulateurs ;
-- normes et documentations officielles ;
-- conditions d’éligibilité et exceptions ;
-- versions et dates.
+Contrôler metadata, canonical, robots, H1, auteur, dates, Article,
+BreadcrumbList, FAQ visible, ancres, image sociale et absence de schémas
+interdits.
 
-#### Axe B — Produits, prix et fonctions actuelles
-
-- tarifs officiels, taxes, périodicité et limites ;
-- fonctions réellement documentées ;
-- pays et plans concernés ;
-- date de consultation ;
-- distinction offre gratuite, payante, entreprise ou option.
-
-#### Axe C — SERP et contenus concurrents
-
-- changements depuis P1 ;
-- angle utile manquant ;
-- objections non traitées ;
-- preuves ou outils que le lecteur rencontrera ailleurs ;
-- erreurs fréquentes à ne pas reproduire.
-
-#### Axe D — Calculs et cohérence
-
-- recalcul indépendant ;
-- cohérence des unités ;
-- HT/TTC ;
-- mensuel/annuel/horizon total ;
-- bornes et arrondis ;
-- valeurs dupliquées dans le dépôt.
-
-#### Axe E — Expérience métier et décision
-
-- conséquences organisationnelles ;
-- charge côté client ;
-- données, accès, propriété et sortie ;
-- solution existante, correction ou statu quo ;
-- critères observables de bon et mauvais choix.
-
-Si plusieurs agents sont autorisés, ils rendent des rapports sourcés en lecture
-seule. Un seul orchestrateur consolide.
-
-### P2.3 — Table de vérité et arbitrage
-
-Mettre à jour la fiche de preuves en distinguant :
-
-- affirmation confirmée ;
-- affirmation corrigée ;
-- affirmation réduite ;
-- contradiction résolue ;
-- contradiction non résolue ;
-- information retirée ;
-- événement de revalidation.
-
-En cas de conflit :
-
-1. comparer périmètre, date, juridiction, version et définitions ;
-2. privilégier la source primaire compétente ;
-3. expliquer la différence si deux chiffres sont vrais dans deux cas ;
-4. écrire l’incertitude si elle subsiste ;
-5. retirer l’affirmation si elle n’est pas nécessaire ;
-6. arrêter si le verdict repose entièrement sur une contradiction insoluble.
-
-Livrable : table de vérité unifiée dans le dossier de recherche.
-
-### P2.4 — Audit de tous les chiffres
-
-Lister chaque :
-
-- prix ;
-- fourchette ;
-- pourcentage ;
-- taux ;
-- durée ;
-- date ;
-- quantité ;
-- version ;
-- seuil ;
-- économie ;
-- score ou performance.
-
-Pour chacun, appliquer les six questions du §4.4. Recalculer depuis les
-hypothèses, rechercher toutes les occurrences avec `rg`, puis réconcilier corps,
-tableaux, encadrés, FAQ, metadata, JSON-LD, outils et pages liées.
-
-Écart toléré : uniquement l’arrondi explicitement choisi. Un écart supérieur à
-1 € ou 0,1 % dans le même calcul impose une explication ou une correction.
-
-Livrable : rapport de calculs avec formule, résultat attendu, résultat publié et
-correction.
-
-### P2.5 — Intégration chirurgicale
-
-Appliquer les corrections par blocs cohérents :
-
-1. faits faux ou trompeurs ;
-2. calculs ;
-3. contradictions ;
-4. manques décisionnels ;
-5. sources visibles ;
-6. exemples et étiquettes ;
-7. CTA et promesses ;
-8. metadata et données structurées ;
-9. liens et ancres ;
-10. registre et dates.
-
-Préserver ce qui est correct. Ne pas réécrire tout le guide par confort. Après
-chaque groupe important, relire le paragraphe complet, les transitions et les
-répétitions créées.
-
-### P2.6 — Audit pédagogique de fond
-
-Vérifier :
-
-- les 150 premiers mots répondent réellement ;
-- le terme central est défini sans mur de lexique ;
-- chaque H2 reste compréhensible isolément ;
-- chaque section produit une décision ou une conséquence ;
-- le jargon est traduit au premier usage ;
-- les tableaux sont expliqués ;
-- les alternatives et mauvais fits ne sont pas cachés ;
-- les FAQ répondent dans la première phrase ;
-- le lecteur repart avec budget, délai, risques, personnes et prochaine action ;
-- le CTA décrit le résultat et sa destination.
-
-La passe 2 corrige les incompréhensions factuelles. La passe 3 travaillera le
-rythme et la plume.
-
-### P2.7 — Audit SEO, identité et données structurées
-
-Contrôler :
-
-- `GuideEntry` complet, unique et daté ;
-- `editorialStatus` cohérent avec la validation acquise ;
-- title, meta, card copy, H1 et hero cohérents ;
-- canonical absolu ;
-- robots ;
-- OpenGraph et Twitter ;
-- image sociale existante et dédiée ;
-- `Article` fidèle ;
-- `BreadcrumbList` fidèle ;
-- auteur et publisher exacts, sans duplications contradictoires ;
-- dates identiques au registre ;
-- aucun `FAQPage`, `HowTo`, faux `Offer`, fausse note ou faux prix caché ;
-- aucun `wordCount` approximatif ;
-- FAQ visible dans le DOM ;
-- `relatedLinks` et liens inline utiles ;
-- au moins un lien entrant contextuel ;
-- aucun ajout manuel à `robots.txt`, sitemap ou `llms.txt`.
-
-### P2.8 — Audit des affirmations commerciales
-
-Rechercher dans la page, la metadata, l’OG, la FAQ et les CTA :
-
-- témoignages ou clients non prouvés ;
-- « nous avons livré », « notre client », « nous refusons régulièrement » ;
-- délai de réponse garanti ;
-- résultat SEO ou commercial ;
-- superlatif d’exclusivité ;
-- nombre de projets, années d’expérience ou métrique d’équipe ;
-- prix ou garantie non alignés avec les pages commerciales ;
-- bouton dont la destination ne correspond pas au verbe ;
-- maquette ressemblant à une donnée de production sans étiquette fictive.
-
-Tout fait sur l’entreprise vient de `CLAUDE.md`, des mentions légales, des pages
-commerciales actuelles ou d’une preuve officielle actuelle.
-
-### P2.9 — Audit du maillage et des sources
-
-- [ ] liens internes vers des routes existantes ;
-- [ ] ancres descriptives ;
-- [ ] liens externes vers les pages originales ;
-- [ ] statuts HTTP vérifiés lorsque possible ;
-- [ ] aucun lien `#` public ;
-- [ ] chaque `id` du sommaire existe et reste stable ;
-- [ ] au moins un lien entrant depuis une page pertinente ;
-- [ ] aucun cluster artificiel de liens en fin de guide ;
-- [ ] les suites logiques du parcours sont proposées ;
-- [ ] les binaires ne deviennent pas des pages canoniques.
-
-### P2.10 — Contrôle technique intermédiaire
+### P2.5 — Contrôle rapide
 
 ```bash
 git diff --check
-npx eslint src/app/guides/<slug>/page.tsx \
-  src/app/guides/<slug>/opengraph-image.tsx src/lib/guides.ts
+npx eslint <tous-les-fichiers-code-modifiés>
 npx tsc --noEmit
-npm run check:seo
 ```
 
-Si une commande échoue, identifier si le défaut est introduit ou préexistant.
-Un défaut introduit bloque la porte. Un défaut préexistant est documenté avec
-la preuve qu’il n’est pas aggravé ; il ne doit jamais être présenté comme vert.
+## 9. Porte de sortie P2
 
-## 12. Porte de sortie de la passe 2
-
-- [ ] page et dossier relus intégralement ;
-- [ ] faits décisifs confirmés ou retirés ;
-- [ ] chaque calcul refait ;
-- [ ] chiffres réconciliés partout ;
-- [ ] contradictions résolues ou visibles ;
-- [ ] exemples réels autorisés ou fictifs étiquetés ;
-- [ ] promesses commerciales exactes ;
-- [ ] metadata, JSON-LD, registre et maillage fidèles ;
-- [ ] aucun schéma interdit ;
-- [ ] sources visibles au bon endroit ;
-- [ ] contrôles techniques intermédiaires passés ou limites préexistantes
-      documentées ;
-- [ ] table de vérité et rapport de calculs conservés ;
-- [ ] hash enregistré ;
+- [ ] guide complet sans placeholder ;
+- [ ] décision et réponse présentes dès l’ouverture ;
+- [ ] toutes les affirmations décisives reliées au dossier et aux sources ;
+- [ ] coûts, délais, personnes, risques et alternatives couverts si pertinents ;
+- [ ] exemples et calculs cohérents ;
+- [ ] si un CTA ou une ressource est prévu, il existe et a été testé ; sinon,
+      la décision « non pertinent » est justifiée ;
+- [ ] page, OG, registre, données structurées et maillage intégrés ;
+- [ ] statut de revue humaine conservé ;
+- [ ] contrôles rapides sans défaut introduit ;
+- [ ] snapshot consigné ;
 - [ ] `Passe 2 = Terminée — porte validée`.
 
-### Rapport de sortie P2
+### Rapport P2
 
 ```text
 PASSE 2 TERMINÉE
-Affirmations contrôlées :
-Sources ajoutées/remplacées :
-Contradictions résolues :
-Calculs vérifiés :
-Erreurs factuelles corrigées :
-Promesses retirées ou qualifiées :
-Corrections SEO/techniques :
-Risques de fraîcheur futurs :
-Commandes passées :
-SHA-256 page.tsx :
+Fichiers créés ou modifiés :
+Ouverture et réponse :
+Forme propre au sujet :
+Exemples ou calculs :
+Sources visibles :
+Action autonome, bon fit et mauvais fit :
+CTA et destination :
+Contrôles rapides :
+Snapshot :
 ```
 
 ---
 
-# PASSE 3 — Polish rédactionnel
+# PASSE 3 — Contre-auditer et corriger
 
-## 13. Objectif de la passe 3
+## 10. Objectif
 
-Transformer un guide exact en guide agréable à lire, facile à parcourir et
-distinct des autres. La passe 3 travaille l’architecture de lecture, le rythme,
-les transitions, l’accessibilité du vocabulaire, les FAQ, le CTA et la pression
-commerciale.
+Traiter le brouillon comme potentiellement faux, incomplet ou trop commercial.
+Le relecteur indépendant travaille en lecture seule, refait les contrôles et
+cherche des raisons de contredire le verdict. L’orchestrateur applique ensuite
+les corrections.
 
-Elle ne modifie pas un chiffre, une règle, une source ou un verdict validés sans
-retour en passe 2. Elle ne réécrit pas tout le guide pour uniformiser la voix.
+## 11. Étapes
 
-## 14. Préconditions
+### P3.0 — Relecture intégrale
 
-- passe 2 terminée ;
-- hash correspondant ;
-- aucune incertitude décisive ;
-- article complet ;
-- structure encore modifiable sans changer l’intention ;
-- un seul éditeur.
+Lire page, dossier, registre, OG, liens entrants et composants touchés. Relever
+la progression, les assertions, calculs, scénarios, sources, alternatives,
+promesses, metadata et points où un dirigeant peut décrocher.
 
-## 15. Étapes de la passe 3
+### P3.1 — Vérification indépendante
 
-### P3.0 — Cartographie de lecture
+Refaire, sans reprendre les conclusions de P1 :
 
-Lire uniquement, dans un premier temps :
+- sources officielles et règles ;
+- prix, produits, versions et fonctions actuels ;
+- calculs, unités, arrondis et hypothèses ;
+- termes de recherche, objections et résultats existants ;
+- conséquences métier, charge client, propriété, accès et sortie ;
+- alternatives et statu quo.
 
-- title ;
-- meta description ;
-- H1 ;
-- hero description ;
-- lead ;
-- H2/H3 ;
-- premières et dernières phrases de chaque section ;
-- tableaux et encadrés ;
-- CTA ;
-- FAQ ;
-- conclusion.
+Pour tout sujet volatil, rouvrir les sources actuelles. Une source ancienne
+encore accessible n’est pas automatiquement la meilleure preuve disponible.
 
-Le squelette seul doit raconter un parcours logique. Repérer :
+### P3.2 — Audit pédagogique
 
-- réponse retardée ;
-- titre abstrait ;
-- section trop proche d’une voisine ;
-- changement de sujet sans pont ;
-- conclusion mécanique ;
-- tableau qui porte trop de prose ;
-- pression commerciale excessive.
+- la réponse est comprise dans les 150 premiers mots ;
+- chaque H2 se comprend seul ;
+- aucun terme ne demande une traduction mentale ;
+- les tableaux restent compréhensibles sur téléphone ;
+- chaque section produit une conséquence ;
+- les FAQ répondent dans leur première phrase ;
+- le lecteur sait quoi faire, quoi mesurer et quand arrêter.
 
-### P3.1 — Title, meta, H1 et ouverture
+### P3.3 — Audit comparatif et commercial
 
-Le title :
+- options jugées à conditions égales ;
+- aucune option artificiellement affaiblie ;
+- coûts cachés et temps interne ;
+- bon fit, mauvais fit et option moins chère ;
+- aucune promesse Hagnéré Code non prouvée ;
+- un CTA maximum, destination et résultat exacts ;
+- scénario fictif clairement nommé ;
+- absence de faux client, faux chiffre ou peur artificielle.
 
-- nomme le sujet et la décision ;
-- évite choc, exagération et promesse non démontrable ;
-- reste lisible dans les résultats ;
-- n’ajoute une année que si la page dépend réellement de cette année.
+### P3.4 — Audit SEO et technique
 
-La meta description :
+- intention distincte et absence de cannibalisation ;
+- title, meta, H1 et hero fidèles ;
+- canonical, robots, dates et statut ;
+- Article et BreadcrumbList identiques au visible ;
+- aucun `FAQPage`, `HowTo`, faux `Offer` ou `wordCount` ;
+- liens internes et externes valides ;
+- au moins un lien entrant pertinent ;
+- image sociale cohérente.
 
-- répond à l’intention ;
-- indique la valeur concrète ;
-- reste fidèle ;
-- n’énumère pas artificiellement les mots-clés ;
-- ne promet ni classement ni résultat garanti.
+### P3.5 — Rapport contradictoire
 
-Les 150 premiers mots :
+Classer chaque problème :
 
-1. reprennent une situation crédible ;
-2. définissent le terme indispensable ;
-3. donnent une réponse courte ;
-4. annoncent ce que le lecteur saura décider.
+- `P0` : faux, trompeur, juridiquement risqué ou décision majeure impossible ;
+- `P1` : manque important de preuve, pédagogie, comparaison ou conversion ;
+- `P2` : amélioration réelle mais non bloquante ;
+- `REJETÉ` : suggestion qui réduirait la précision ou sortirait du périmètre.
 
-Tests : substitution du sujet, lecture à voix haute, sujet-verbe-résultat,
-absence de jargon d’agence.
+Le rapport contient fichier, ligne, preuve, correction proposée et conséquence.
 
-### P3.2 — Vocabulaire et pédagogie
+### P3.6 — Correction et revalidation
 
-Pour chaque terme technique :
+L’orchestrateur applique les corrections par blocs. Le relecteur vérifie les P0
+et P1 matériels sur le nouveau snapshot. Si le verdict ou l’intention change,
+retour P1 ; si une nouvelle section structurante apparaît, retour P2.
 
-- est-il nécessaire ?
-- peut-il être remplacé par un mot ordinaire ?
-- sinon, est-il expliqué au premier usage ?
-- la conséquence pour le lecteur suit-elle immédiatement ?
+Contrôle intermédiaire :
 
-Déclencheurs de relecture : `cadrage`, `périmètre`, `socle`, `signal`,
-`capacité`, `arbitrage`, `gouvernance`, `réversibilité`, `criticité`, `recette`,
-`jalon`, `livrable`, `trajectoire`, `activation`, ainsi que les anglicismes.
+```bash
+git diff --check
+npm run check:seo
+npx eslint <tous-les-fichiers-code-modifiés>
+npx tsc --noEmit
+```
 
-Ils ne sont pas interdits par chaîne de caractères. Ils sont refusés lorsqu’ils
-obligent le lecteur à traduire. Reformuler avec : qui agit, quelle action, quel
-résultat.
+## 12. Porte de sortie P3
 
-### P3.3 — Transitions et progression
-
-Pour chaque paire de H2 : lire la dernière phrase de la première section et la
-première de la suivante. Elles doivent former une mini-conversation logique.
-
-Transitions possibles :
-
-- question qui ouvre le problème suivant ;
-- conséquence qui impose la prochaine étape ;
-- nuance qui corrige une première impression ;
-- progression chronologique ;
-- retour à la décision principale.
-
-Éviter les ponts vides : « par ailleurs », « dans un second temps », « comme
-nous l’avons vu », « passons maintenant à » lorsqu’ils ne disent pas pourquoi
-la suite compte.
-
-Niveaux à contrôler :
-
-- macro entre H2 ;
-- méso entre H3 ;
-- micro entre paragraphes.
-
-Une section ne finit pas sur une liste sans phrase qui tire une conséquence.
-
-### P3.4 — Rythme et formes
-
-- une idée principale par paragraphe ;
-- phrases courtes et longues alternées selon le sens, pas selon une formule ;
-- paragraphes denses coupés ou démontrés ;
-- voix active ;
-- questions utilisées avec mesure ;
-- pas de parenthèses en cascade ;
-- pas de listes quand une explication est nécessaire ;
-- pas de tableau quand les cellules deviennent des mini-articles ;
-- pas de répétition de la même séquence « paragraphe, liste, encadré » ;
-- chiffres exacts dans les tableaux, arrondis honnêtes dans le récit si cela
-  aide, sauf valeurs réglementaires ou contractuelles ;
-- exemples conservés cohérents du début à la fin.
-
-### P3.5 — Affirmations creuses et chiffres orphelins
-
-Rechercher les formulations qui forcent le lecteur à deviner :
-
-- « au-dessus du seuil » sans seuil ni base ;
-- « sous conditions » sans conditions utiles ;
-- « selon votre situation » sans situations de bascule ;
-- « prix abordable », « impact important », « gain notable » sans mesure ;
-- « dans la limite du plafond » sans plafond ;
-- « plus rapide » sans point de comparaison ;
-- « sur plusieurs années » sans horizon ;
-- mécanisme nommé sans définition ;
-- taux sans nature ;
-- durée sans point de départ ;
-- montant sans HT/TTC, fréquence ou périmètre.
-
-Choisir la forme la plus légère :
-
-1. précision inline ;
-2. court encadré si une notion mérite quelques lignes ;
-3. lien contextuel vers un guide qui existe ;
-4. retrait si le détail détourne de la décision.
-
-Vérifier l’URL avant d’ajouter un lien. Ne pas créer dix encadrés pour donner
-une impression de richesse.
-
-### P3.6 — FAQ
-
-Pour chaque question :
-
-- est-elle réellement résiduelle ?
-- la première phrase répond-elle ?
-- la réponse peut-elle tenir en quelques phrases ?
-- une réponse importante mérite-t-elle plutôt un H2 ?
-- le vocabulaire est-il celui du lecteur ?
-- la réponse reste-t-elle cohérente avec le corps ?
-
-La FAQ visible est l’unique version. Accents et apostrophes restent normaux. Il
-n’existe aucun quota, et aucun JSON-LD `FAQPage` n’est ajouté.
-
-### P3.7 — CTA, maillage vivant et conclusion
-
-Le CTA :
-
-- arrive après la démonstration ;
-- dit ce que le lecteur obtient ;
-- mentionne les mauvais fits si nécessaire ;
-- pointe vers la destination réelle ;
-- n’est présent qu’une fois dans le corps ;
-- n’imite pas une urgence.
-
-Le maillage :
-
-- apparaît lorsqu’un concept crée une vraie question suivante ;
-- utilise une ancre descriptive ;
-- n’interrompt pas chaque paragraphe ;
-- évite les listes automatiques ;
-- laisse au lecteur une action autonome.
-
-La conclusion ne résume pas mécaniquement toutes les sections. Elle conduit à
-une décision : choisir, reporter, vérifier un devis, préparer un document,
-tester une hypothèse ou ne pas investir.
-
-### P3.8 — Contre-audit de lecture
-
-Faire une lecture indépendante selon le profil défini dans le brief :
-
-- comprend-il la réponse après 150 mots ?
-- où commence-t-il à survoler ?
-- quelle phrase semble commerciale ?
-- quelle notion oblige à rechercher ailleurs ?
-- les transitions donnent-elles envie de continuer ?
-- sait-il quoi faire ensuite ?
-- les mauvais choix sont-ils expliqués sans condescendance ?
-
-Une simulation par agent est un contre-audit, pas un test humain. Ne pas écrire
-qu’un vrai dirigeant a validé si personne n’a participé.
-
-### P3.9 — Application ciblée et rescoring
-
-Appliquer les corrections par priorité :
-
-1. incompréhension de l’ouverture ;
-2. titre ou section abstraits ;
-3. transition cassée ;
-4. jargon ;
-5. affirmation creuse ;
-6. FAQ ;
-7. pression commerciale ;
-8. rythme local.
-
-Après chaque groupe, relire les paragraphes voisins. Si une correction touche
-un fait ou un calcul, retour en P2.
-
-## 16. Les dix tests de plume humaine de la passe 3
-
-1. **Substitution** : remplacer le sujet ; si l’ouverture fonctionne encore,
-   elle est générique.
-2. **150 mots** : situation, terme, réponse, décision.
-3. **Sujet-action-résultat** : aucune phrase abstraite sans acteur ni effet.
-4. **Squelette** : H1, lead, H2, encadrés et CTA racontent un parcours.
-5. **Titres isolés** : chaque titre se comprend seul.
-6. **Lecture orale** : ouverture et transitions se prononcent naturellement.
-7. **Point d’ennui** : le passage de décrochage est raccourci, déplacé, prouvé
-   ou supprimé.
-8. **Téléphone** : à 390 px, la décision ne dépend pas d’une colonne hors écran.
-9. **FAQ** : la première phrase répond sans recréer un chapitre caché.
-10. **Sortie** : le lecteur sait agir et comprend le résultat du clic.
-
-## 17. Porte de sortie de la passe 3
-
-- [ ] title, meta, H1 et ouverture fidèles et engageants ;
-- [ ] 150 premiers mots validés ;
-- [ ] chaque H2 compréhensible isolément ;
-- [ ] jargon traduit ;
-- [ ] transitions macro, méso et micro relues ;
-- [ ] aucun point de décrochage majeur ;
-- [ ] affirmations creuses d’impact fort corrigées ;
-- [ ] chiffres contextualisés sans altération factuelle ;
-- [ ] FAQ utile et simple ;
-- [ ] CTA unique, honnête et tardif ;
-- [ ] conclusion décisionnelle ;
-- [ ] contre-audit documenté ;
-- [ ] aucune validation humaine inventée ;
-- [ ] hash enregistré ;
+- [ ] relecteur indépendant identifié ;
+- [ ] page et dossier relus intégralement ;
+- [ ] faits décisifs confirmés ou retirés ;
+- [ ] calculs refaits ;
+- [ ] faits, déductions et recommandations correctement attribués ;
+- [ ] sources proches des affirmations ;
+- [ ] contradictions résolues ou visibles ;
+- [ ] P0 et P1 corrigés puis revérifiés ;
+- [ ] pédagogie, comparaison et conversion défendables ;
+- [ ] aucun défaut SEO ou technique introduit ;
+- [ ] snapshot consigné ;
 - [ ] `Passe 3 = Terminée — porte validée`.
 
-### Rapport de sortie P3
+### Rapport P3
 
 ```text
 PASSE 3 TERMINÉE
-Ouverture :
-Sections déplacées/raccourcies :
-Transitions corrigées :
-Termes traduits :
-Affirmations creuses corrigées :
-FAQ modifiées/supprimées :
-CTA et conclusion :
-Point de décrochage traité :
-Contre-audit :
-Retour en P2 effectué : oui/non
-SHA-256 page.tsx :
+Relecteur indépendant :
+Affirmations et sources revérifiées :
+Calculs refaits :
+P0 trouvés / corrigés :
+P1 trouvés / corrigés :
+Suggestions rejetées et pourquoi :
+Corrections pédagogiques et commerciales :
+Revalidation du relecteur :
+Contrôles intermédiaires :
+Snapshot :
 ```
 
 ---
 
-# PASSE 4 — Anti-IA, authenticité et contrôle final
-
-## 18. Objectif de la passe 4
-
-Effectuer une dernière lecture phrase par phrase pour retirer les automatismes
-de rédaction, sans détériorer l’exactitude, la nuance ou la personnalité du
-guide. Puis figer le snapshot et exécuter la batterie technique et visuelle
-complète.
-
-Cette passe ne cherche pas à « tromper un détecteur ». Les détecteurs d’IA ne
-sont pas une preuve fiable d’auteur ni de qualité. L’objectif est un texte
-naturel, précis, spécifique au sujet et agréable pour une personne réelle.
-
-## 19. Préconditions
-
-- passe 3 terminée ;
-- hash identique ;
-- structure stabilisée ;
-- faits et calculs validés ;
-- aucun autre éditeur actif ;
-- environnement local inspecté.
-
-## 20. Étapes de la passe 4
-
-### P4.0 — Découpage exhaustif
-
-Cartographier toutes les sections du corps, y compris :
-
-- lead ;
-- chaque H2 et ses H3 ;
-- tableaux, encadrés et formules ;
-- CTA ;
-- sources et limites ;
-- toutes les FAQ.
-
-Chaque section doit être relue intégralement. La passe ne porte pas uniquement
-sur quelques extraits « suspects ».
-
-Si plusieurs relecteurs sont autorisés, attribuer des sections non
-chevauchantes en lecture seule. L’orchestrateur relit l’ensemble et applique
-les modifications.
-
-### P4.1 — Les quinze familles de tics à traquer
-
-Ces familles déclenchent une analyse, pas un remplacement automatique.
-
-#### 1. Auto-félicitation
-
-Exemples : « personne ne vous le dit », « le comparatif le plus complet », « ce
-guide n’existe nulle part ailleurs ».
-
-Correction : supprimer ou remplacer par la valeur réellement démontrée.
-
-#### 2. Triplettes et énumérations mécaniques
-
-Exemples : « Un… Deux… Trois… » dans plusieurs sections, `(1) (2) (3) (4)` dans
-une phrase.
-
-Correction : vraie liste si l’ordre compte, ou narration asymétrique.
-
-#### 3. Symétrie excessive
-
-Suite de phrases identiques : « Si A, B. Si C, D. Si E, F. »
-
-Correction : regrouper, varier le rythme, ajouter la condition décisive.
-
-#### 4. Adjectif vendeur sans preuve
-
-« majeur », « imbattable », « considérable », « exceptionnel », « notable ».
-
-Correction : verbe précis, chiffre contextualisé ou suppression.
-
-#### 5. Métaphore fabriquée
-
-Métaphore que le lecteur doit apprendre avant le sujet.
-
-Correction : mécanisme expliqué directement.
-
-#### 6. Parenthèses en cascade
-
-Plusieurs explications secondaires dans la même phrase.
-
-Correction : déplacer l’information utile ou couper la phrase.
-
-#### 7. Connecteur automatique
-
-« il est important de noter », « par ailleurs », « en effet », « dans cette
-optique », « au regard de », « il convient de ».
-
-Correction : supprimer si le lien est évident ; sinon nommer le vrai lien de
-cause, d’opposition ou de conséquence.
-
-#### 8. Conclusion formatée
-
-« En conclusion », « Au final », « Ce qu’il faut retenir » répétés sans apport.
-
-Correction : finir sur la décision ou la conséquence propre à la section.
-
-#### 9. Longueur trop régulière
-
-Toutes les phrases et tous les paragraphes suivent la même cadence.
-
-Correction : laisser le sens décider du rythme, insérer une phrase courte
-lorsqu’elle porte une vraie bascule.
-
-#### 10. Verbe neutre ou nominalisation
-
-« permettre de », « procéder à », « mise en œuvre de », « effectuer une
-vérification ».
-
-Correction : « vérifier », « choisir », « payer », « récupérer », « tester ».
-
-#### 11. Formulation administrative
-
-« aux fins de », « dans la mesure où », « compte tenu de », « sous réserve des
-éléments précités ».
-
-Correction : français direct, sans perdre la nuance juridique nécessaire.
-
-#### 12. Inversion artificielle
-
-« Ainsi pourrez-vous », « Aussi convient-il ».
-
-Correction : ordre sujet-verbe naturel.
-
-#### 13. Listes parfaitement parallèles
-
-Chaque puce commence par le même substantif ou la même formule sans raison.
-
-Correction : garder le parallélisme lorsqu’il aide une comparaison ; le casser
-seulement lorsqu’il sonne mécanique.
-
-#### 14. Dramatisation creuse
-
-« c’est ici que tout se joue », « l’erreur qui coûte très cher », « piège
-silencieux » sans donnée.
-
-Correction : conséquence réelle, fréquence démontrée ou formulation calme.
-
-#### 15. Lien logique implicite
-
-Deux phrases vraies sont juxtaposées sans expliquer pourquoi la seconde découle
-de la première.
-
-Correction : expliciter la cause, la condition ou la limite.
-
-### P4.2 — Format d’audit par passage
-
-Pour chaque correction matérielle, noter dans le dossier de recherche :
-
-```md
-#### Passage P4-XX — section `<id>`
-
-- Phrase actuelle : « … »
-- Famille détectée :
-- Diagnostic :
-- Reformulation : « … »
-- Effet sur le fond : aucun / retour P2 nécessaire
-- Priorité : bloquante / forte / moyenne / faible
-```
-
-Ne pas viser un nombre arbitraire de corrections. Une section naturelle peut
-rester inchangée. Une correction faible ne doit pas rendre la phrase moins
-précise.
-
-### P4.3 — Règles positives de reformulation
-
-- introduire la situation avant la règle ;
-- utiliser le mot que le lecteur emploie ;
-- expliquer la cause et l’effet ;
-- donner la condition de bascule ;
-- garder les chiffres contextualisés ;
-- définir les acronymes au premier usage ;
-- préférer les verbes concrets ;
-- varier le rythme sans fabriquer une voix familière ;
-- conserver la prudence juridique et les limites ;
-- ne pas ajouter de fausse anecdote ;
-- ne pas remplacer une phrase exacte par une phrase « punchy » moins vraie ;
-- ne pas forcer « du coup », « sauf que », « honnêtement » ou un ton oral qui
-  ne correspond pas au sujet.
-
-### P4.4 — Relecture finale de cohérence
-
-Après les modifications locales, relire l’article entier. Contrôler :
-
-- une même définition partout ;
-- un même exemple et les mêmes chiffres ;
-- aucune transition cassée ;
-- aucune répétition créée ;
-- aucun glissement de ton ;
-- aucun résidu d’édition, note à l’agent ou ancienne version ;
-- sources et liens toujours proches des affirmations ;
-- CTA et FAQ cohérents avec le corps ;
-- metadata et JSON-LD toujours fidèles.
-
-Une relecture section par section peut casser le fil global. Cette relecture
-intégrale est obligatoire.
-
-### P4.5 — Gel du snapshot
-
-Annoncer un gel d’écriture. Puis :
-
-1. relever `git status --short` ;
-2. enregistrer le hash du guide et des fichiers directement liés ;
-3. arrêter toute édition ;
-4. lancer la batterie sur ce snapshot ;
-5. recommencer les preuves invalidées par toute modification ultérieure.
-
-Ne rattacher un nombre de tests ou un verdict qu’au snapshot exact qui les a
-produits.
-
-### P4.6 — Batterie technique bloquante
-
-Depuis la racine du dépôt :
+# PASSE 4 — Humaniser, tester et figer
+
+## 13. Objectif
+
+Rendre le guide naturel, précis et agréable sans toucher silencieusement aux
+faits validés. Puis tester le snapshot complet dans le code et dans un vrai
+navigateur.
+
+La passe anti-IA ne cherche pas à tromper un détecteur. Elle retire ce qui gêne
+une personne : abstraction, rythme mécanique, survente, répétition et logique
+implicite.
+
+## 14. Étapes
+
+### P4.0 — Lecture humaine complète
+
+Lire à voix haute l’ouverture, les transitions et la conclusion, puis relire
+toutes les sections, les encadrés, les tableaux, le CTA, les sources et la FAQ.
+
+Traquer sans remplacement automatique :
+
+- auto-félicitation et superlatifs ;
+- triplettes ou parallélismes répétés ;
+- métaphore fabriquée ;
+- jargon de consultant ou formulation administrative ;
+- connecteurs vides ;
+- nominalisations et verbes neutres ;
+- paragraphes de longueur artificiellement régulière ;
+- dramatisation ;
+- conclusion générique ;
+- deux phrases vraies sans lien de cause, de condition ou de limite.
+
+Le parallélisme utile à une comparaison reste. Une phrase exacte ne devient pas
+« punchy » au prix de la vérité.
+
+### P4.1 — Tests de plume
+
+1. **Substitution** : si l’ouverture accepte n’importe quel sujet, elle est
+   générique.
+2. **150 mots** : situation, définition, réponse et décision.
+3. **Sujet-action-résultat** : aucun passage abstrait sans acteur ni effet.
+4. **Titres isolés** : chaque H2 se comprend seul.
+5. **Lecture orale** : aucune phrase qui oblige à reprendre son souffle ou à
+   traduire.
+6. **Point d’ennui** : raccourcir, déplacer, prouver ou retirer.
+7. **Variété utile** : la forme découle du sujet, pas des guides voisins.
+8. **Téléphone** : la décision n’est pas cachée dans une colonne.
+9. **FAQ** : première phrase immédiatement utile.
+10. **Sortie** : le lecteur sait agir et comprend le résultat du clic.
+11. **Coupe de 20 %** : vérifier si une partie peut être retirée sans perdre une
+    preuve, une nuance ou une décision.
+
+Après la réécriture, relire le diff sémantique. Toute phrase modifiée qui
+contient un chiffre, une source, une négation, une modalité, un délai, un prix
+ou le verdict retourne au relecteur de P3. Cette liste n’est qu’un minimum :
+toute modification de sens factuel, causal, juridique ou décisionnel, y
+compris un changement de périmètre, de responsabilité ou de recommandation,
+impose elle aussi ce retour. Le rapport final consigne soit cette revalidation,
+soit « aucun changement sémantique ».
+
+### P4.2 — Gel du snapshot
+
+Avant le gel, consigner l’autorisation éditoriale et fixer l’état du registre :
+
+- sans test humain réel ni délégation explicite, conserver
+  `editorialStatus: "ready-for-human-review"` ;
+- avec validation acquise, retirer ce marqueur avant le build public ;
+- cette décision ne vaut pas encore statut `Publiable` : les contrôles suivants
+  restent bloquants.
+
+Annoncer ensuite le gel d’écriture, relever `git status --short`, consigner le
+manifeste complet et arrêter les éditions. Toute modification ultérieure, y
+compris du statut du registre, impose un nouveau gel et la reprise de P4.3 à
+P4.6.
+
+### P4.3 — Batterie bloquante
 
 ```bash
 npm run check:seo
-npx eslint src/app/guides/<slug>/page.tsx \
-  src/app/guides/<slug>/opengraph-image.tsx src/lib/guides.ts
+npx eslint <tous-les-fichiers-code-modifiés>
 npx tsc --noEmit
 npm test
 NEXT_PUBLIC_ENV=production npm run build
 git diff --check
 ```
 
-Règles :
+Ne pas annoncer un build vert si `postbuild` échoue. Ne pas compter deux fois
+les tests du `prebuild`. Un défaut introduit bloque ; un défaut préexistant est
+documenté et n’est jamais présenté comme vert.
 
-- exécuter dans cet ordre ;
-- ne pas compter deux fois les tests lancés par `prebuild` ;
-- ne pas omettre `npm test` même si `check:seo` passe ;
-- ne pas annoncer un build vert si `postbuild` échoue ;
-- séparer erreur introduite, erreur préexistante et manque de ressources ;
-- corriger la source plutôt que le test ;
-- vérifier que les fichiers sources ne sont pas plus récents que l’artefact.
+### P4.4 — Route et HTML du build gelé
 
-### P4.7 — Vérification locale de la route
+Démarrer le `.next` fraîchement produit, par exemple avec
+`NEXT_PUBLIC_ENV=production npm run start -- -p <port>`, ou utiliser une preview
+rattachée au commit exact du manifeste. Consigner URL, port, mode et commit.
+Vérifier : statut 200, title, H1 unique, canonical, robots, JSON-LD parsable,
+FAQ dans le DOM, image sociale, liens et absence d’erreur.
 
-Si le serveur correspondant est déjà lancé et identifié :
+Un 200 ne prouve pas une page visible.
 
-```bash
-curl -sS -o /dev/null -w '%{http_code}\n' \
-  --max-time 30 http://localhost:3000/guides/<slug>
-```
+### P4.5 — Vrai navigateur
 
-Attendu : `200`. Vérifier aussi l’HTML rendu :
+Contrôle obligatoire à **320, 390, 768, 1 024 et 1 440 px**, puis aux ruptures
+réellement touchées par les composants. Si un composant partagé ou la mise en
+page change, ajouter **360, 430, 640, 1 280 et 1 600 px**.
 
-- title unique ;
-- H1 unique ;
-- canonical ;
-- robots attendu selon environnement et statut éditorial ;
-- JSON-LD parsable ;
-- absence de `FAQPage` et `HowTo` ;
-- contenu FAQ dans le DOM ;
-- image sociale et liens ;
-- aucun message d’erreur.
+Vérifier : hero, H1, auteur, sommaire, ancres, cartes ou tableaux, formules,
+CTA, FAQ au clavier, focus, footer, débordement, chevauchement, contenu coupé,
+console et requêtes critiques. Contrôler clair et sombre si le composant touché
+les gère.
 
-Un `200` ne prouve pas que la page est visible ou utilisable.
+À 390 px, situation, choix et conséquence doivent rester visibles ensemble.
 
-### P4.8 — Contrôle dans un vrai navigateur
+### P4.6 — Image sociale
 
-Observer réellement la page aux largeurs :
+Route en 200, dimensions 1 200 × 630, texte non coupé, titre fidèle, marque
+correcte et aucune promesse absente de la page.
 
-```text
-320, 360, 390, 430, 640, 768, 1024, 1280, 1440, 1600 px
-```
+### P4.7 — Scorecard et constat du statut
 
-Contrôler à chaque famille de largeur :
-
-- hero, H1, auteur, date et promesse ;
-- sommaire et ancres ;
-- contenu disponible après la sidebar ;
-- tableaux ou cartes ;
-- formules et encadrés ;
-- CTA et destination ;
-- FAQ au clavier ;
-- focus visible ;
-- footer ;
-- absence de débordement horizontal, chevauchement, contenu coupé ou overlay ;
-- console et requêtes réseau critiques ;
-- thème clair et sombre si les composants touchés le nécessitent.
-
-À 390 px, la situation, le choix et la conséquence doivent être visibles
-ensemble. Un tableau techniquement scrollable échoue si la réponse décisive est
-hors écran.
-
-### P4.9 — Contrôle de l’image sociale
-
-- route `/guides/<slug>/opengraph-image` en 200 ;
-- image 1200 × 630 ;
-- aucun texte coupé ;
-- titre fidèle et lisible ;
-- nom Hagnéré Code correct ;
-- aucune promesse ou donnée absente de la page ;
-- cohérence entre metadata et URL générée.
-
-### P4.10 — Scorecard finale
-
-Noter chaque axe de 0 à 2 avec une phrase de preuve :
-
-| Axe         | Question                                                              |
-| ----------- | --------------------------------------------------------------------- |
-| Intention   | La page répond-elle immédiatement à la vraie question ?               |
-| Décision    | Le lecteur sait-il choisir, renoncer ou agir ?                        |
-| Pédagogie   | Un non-technicien comprend-il sans seconde recherche ?                |
-| Profondeur  | Alternatives, coûts cachés et conséquences sont-ils couverts ?        |
-| Preuve      | Les affirmations importantes sont-elles traçables ?                   |
-| Comparaison | Les options sont-elles jugées à conditions égales ?                   |
-| Originalité | Réponse, exemples et artefact sont-ils propres au sujet ?             |
-| Style       | Le texte est-il naturel, calme, précis et non mécanique ?             |
-| Conversion  | Bon lecteur, mauvais fit et prochain pas sont-ils clairs ?            |
-| SEO/produit | Structure, metadata, liens, accessibilité et rendu sont-ils propres ? |
+Noter de 0 à 2 avec une preuve : intention, décision, pédagogie, profondeur,
+preuve, comparaison, originalité, style, conversion et SEO/produit.
 
 Seuil : **17/20**, aucune note à 0, et `Intention`, `Décision`, `Pédagogie` et
-`Preuve` obligatoirement à 2.
+`Preuve` à 2.
 
-Conditions bloquantes avant même le score :
+Bloquants indépendamment du score : ouverture ratée, jargon propriétaire,
+comparaison cachée sur mobile, fait décisif douteux, source seulement en
+bibliographie, CTA trompeur, test ou contrôle visuel obligatoire en échec.
 
-- les 150 premiers mots échouent ;
-- un H2 exige d’apprendre un vocabulaire propriétaire ;
-- un mur de lexique précède la réponse ;
-- la comparaison principale masque la décision à 390 px ;
-- le CTA ou la FAQ parlent du processus de l’agence plutôt que du résultat ;
-- un fait décisif ou un calcul reste douteux ;
-- une commande ou un contrôle visuel obligatoire échoue.
+Ne pas confondre trois niveaux :
 
-### P4.11 — Validation éditoriale et statut exact
+1. l’**état de passe** du journal utilise seulement `À faire`, `En cours`,
+   `Bloquée`, `À reprendre` ou `Terminée — porte validée` ;
+2. le **stade éditorial** ci-dessous décrit ce qui est réellement prouvé ;
+3. le **registre** ne connaît qu’une porte binaire : présence de
+   `editorialStatus: "ready-for-human-review"` ou publication autorisée sans ce
+   marqueur.
 
-Après la batterie, choisir uniquement un statut démontrable :
+Stades éditoriaux exacts :
 
-| Statut                  | Signification                                                  |
-| ----------------------- | -------------------------------------------------------------- |
-| Brouillon               | travail incomplet                                              |
-| Faits vérifiés          | table de vérité réconciliée                                    |
-| Prêt pour contre-audit  | brouillon complet à relire indépendamment                      |
-| Prêt techniquement      | tests et contrôles locaux passés                               |
-| Prêt pour revue humaine | aucun blocage connu, validation humaine restante               |
-| Publiable               | seuil, contre-audit, validation éditoriale et contrôles passés |
-| Publié                  | URL de production contrôlée                                    |
-| Indexé                  | état confirmé dans Search Console                              |
+| Statut                  | Sens                                                      |
+| ----------------------- | --------------------------------------------------------- |
+| Brouillon               | recherche ou rédaction incomplète                         |
+| Faits vérifiés          | P3 validée, style encore révisable                        |
+| Prêt techniquement      | batterie locale passée                                    |
+| Prêt pour revue humaine | aucun blocage connu, validation éditoriale restante       |
+| Publiable               | score, contre-audit, autorisation éditoriale et QA passés |
+| Publié                  | URL de production contrôlée                               |
+| Indexé                  | état confirmé dans Search Console                         |
 
-Une relecture d’agent n’est pas un lecteur humain. Sans test réel ou délégation
-explicite du commanditaire conforme à la charte, le statut maximal est `Prêt
-pour revue humaine` et `editorialStatus: "ready-for-human-review"` reste en
-place.
+Sans lecteur humain réel ou délégation explicite du commanditaire, le statut
+maximal reste `Prêt pour revue humaine` et `editorialStatus` demeure.
 
-## 21. Porte de sortie de la passe 4
+Cette étape constate l’état testé ; elle ne modifie plus le registre. Si le
+statut appliqué en P4.2 n’est pas le bon, retourner en P4.2 puis reconstruire et
+retester l’artefact.
 
-- [ ] toutes les sections relues ;
-- [ ] tics matériels corrigés sans perte de précision ;
+## 15. Porte de sortie P4
+
 - [ ] article entier relu après les corrections locales ;
-- [ ] aucun retour P2 ou P3 non traité ;
+- [ ] automatismes retirés sans perte factuelle ;
+- [ ] aucun retour P3 non traité ;
 - [ ] snapshot gelé ;
-- [ ] `check:seo`, ESLint, TypeScript, tests, build/postbuild et diff check
-      passés ;
-- [ ] route locale et HTML contrôlés ;
-- [ ] rendu visible contrôlé aux dix largeurs ;
-- [ ] OG contrôlée ;
-- [ ] score ≥ 17/20 et conditions bloquantes satisfaites ;
-- [ ] validation éditoriale décrite honnêtement ;
+- [ ] batterie complète verte ;
+- [ ] route, HTML et OG contrôlés ;
+- [ ] rendu visible contrôlé aux largeurs requises ;
+- [ ] score ≥ 17/20 et axes obligatoires à 2 ;
+- [ ] validation humaine ou délégation décrite honnêtement ;
 - [ ] statut du registre cohérent ;
-- [ ] hash final enregistré ;
 - [ ] `Passe 4 = Terminée — porte validée`.
 
-### Rapport de sortie P4
+### Rapport P4
 
 ```text
 PASSE 4 TERMINÉE
-Sections relues :
-Passages reformulés :
-Familles dominantes :
-Retours P2/P3 effectués :
-Scorecard justifiée : XX/20
+Passages humanisés :
+Coupe ou resserrement :
+Retour P3 effectué :
+Scorecard justifiée :
 Validation humaine réelle : oui/non
-Statut maximal :
+Autorisation éditoriale :
 Commandes et résultats :
-Largeurs contrôlées :
-Route et OG :
-Limites préexistantes :
-SHA-256 final :
+Largeurs et états contrôlés :
+Route, OG et console :
+Snapshot final :
+Statut maximal :
 Verdict :
 ```
 
 ---
 
-## 22. Après publication
+## 16. Sprint de trois guides
 
-La publication n’est pas incluse automatiquement dans les quatre passes. Elle
-exige l’autorisation et le workflow de déploiement appropriés.
+Pour trois guides :
 
-Après une publication réellement effectuée :
+1. les recherches P1 peuvent avancer en parallèle ;
+2. l’orchestrateur consolide chaque dossier ;
+3. la rédaction P2 est exécutée successivement, un guide à la fois ;
+4. chaque guide reçoit sa propre P3 indépendante ;
+5. chaque guide franchit sa P4 éditoriale et son contrôle navigateur avant le
+   début de la rédaction du suivant ;
+6. le registre et le maillage sont modifiés par un seul éditeur ;
+7. aucun test sur un guide ne vaut pour les deux autres ;
+8. l’ajout d’un guide suivant invalide le hash global du registre des guides
+   précédents, sans invalider leur contre-audit éditorial ;
+9. après les trois guides, identifier toute page ou tout composant modifié
+   depuis sa propre P4, notamment à cause du maillage tardif ; si le sens a
+   changé, reprendre P3, puis refaire P4.3 à P4.6 — navigateur compris — sur
+   toutes les routes concernées ;
+10. geler le lot complet, recalculer tous les manifestes, relancer la batterie
+    P4 de production et revérifier les trois routes ;
+11. le lot n’est publié que lorsque chaque statut individuel et le snapshot
+    final commun sont démontrables.
 
-- [ ] URL publique en 200 sans redirection ;
-- [ ] canonical exact ;
-- [ ] robots `index, follow` ;
-- [ ] présence dans le sitemap public ;
-- [ ] présence dans `llms.txt` si le registre le prévoit ;
-- [ ] image OG, liens, FAQ et éventuelle ressource ;
-- [ ] JSON-LD public ;
-- [ ] absence d’erreurs console ou réseau critiques ;
-- [ ] inspection d’URL Search Console si pertinente ;
-- [ ] indexation contrôlée ultérieurement, sans la déduire de la soumission ;
-- [ ] requêtes, impressions, clics et conversions observés avant réécriture ;
-- [ ] données de terrain Core Web Vitals suivies lorsqu’elles existent.
-
-Ne jamais confondre : généré, déployé, découvert, exploré, indexé, classé et
-cité par une IA.
-
----
-
-## 23. Organisation à l’échelle de centaines de guides
-
-### 23.1 Un guide à la fois
-
-Le portefeuille peut avancer par sprints, mais chaque guide possède :
-
-- son brief ;
-- sa décision ;
-- son dossier de recherche ;
-- ses quatre portes ;
-- ses sources ;
-- ses calculs ;
-- son contre-audit ;
-- ses contrôles techniques et visuels ;
-- son statut propre.
-
-Il est interdit de valider un lot en supposant qu’un contrôle sur un guide vaut
-pour les autres.
-
-### 23.2 Sprints recommandés
-
-Un sprint peut contenir trois sujets distincts :
-
-1. recherche et briefs ;
-2. passes 1 séparées ;
-3. passes 2 séparées ;
-4. passes 3 séparées ;
-5. passes 4 séparées ;
-6. décision éditoriale et maillage ;
-7. publication autorisée ;
-8. observation sans bloquer tout le prochain sprint.
-
-Ne pas lancer les quatre passes simultanément sur le même guide. Le parallélisme
-porte sur des guides distincts ou des recherches indépendantes en lecture
-seule.
-
-### 23.3 Prévenir l’uniformisation
-
-Pour chaque nouveau guide, le dossier nomme :
-
-- tension motrice ;
-- type d’ouverture ;
-- progression ;
-- type d’exemple ;
-- format utile principal ;
-- place du CTA ;
-- forme de conclusion ;
-- trois choix volontairement différents des guides voisins.
-
-La cohérence vient des preuves, de la voix et des composants. Elle ne vient pas
-d’un plan copié cent fois.
-
-### 23.4 Maintenance
-
-Chaque donnée volatile conserve un événement de revalidation : nouvelle
-version, nouvelle année, changement tarifaire, évolution réglementaire,
-modification de l’offre ou signal Search Console. `dateModified` change
-seulement après une modification substantielle réellement publiée.
+Cette organisation permet la vitesse sur la recherche sans transformer les
+guides en production parallèle mécanique.
 
 ---
 
-## 24. Prompt de lancement réutilisable
+## 17. Après publication
 
-Le bloc suivant peut être donné à un agent. Il ne remplace pas la lecture du
-présent document.
+Après une publication autorisée :
+
+- URL publique en 200 ;
+- canonical exact ;
+- robots `index, follow` ;
+- présence dans hub, sitemap et `llms.txt` ;
+- Article et BreadcrumbList publics ;
+- image sociale, liens, FAQ et ressource éventuelle ;
+- aucune erreur console ou réseau critique ;
+- indexation contrôlée ultérieurement sans la déduire d’une soumission ;
+- impressions, requêtes, clics, clics CTA et demandes observés avant une nouvelle
+  réécriture ;
+- `dateModified` changée seulement après publication d’une modification
+  substantielle.
+
+---
+
+## 18. Prompt de lancement
 
 ```text
 Tu travailles sur UN guide Hagnéré Code.
 
 SUJET : <SUJET>
 SLUG : <SLUG>
-PASSE À EXÉCUTER : <1|2|3|4>
-REQUÊTE PRINCIPALE PRESSENTIE : <REQUÊTE>
-LECTEUR : <LECTEUR>
-DÉCISION À PERMETTRE : <DÉCISION>
+PASSE : <1|2|3|4>
 
-Avant toute action, lis intégralement :
-1. CLAUDE.md
-2. docs/regle-or-vigilance-seo-publication.md
-3. docs/charte-qualite-guides.md
-4. docs/roadmap-guides-seo.md
-5. docs/workflow-maitre-guides-4-passes.md
-6. docs/research/_modele-guide.md
-7. docs/research/<SLUG>.md s’il existe
+Lis intégralement, dans l’ordre : CLAUDE.md, la règle d’or de publication, la
+charte qualité, le workflow en quatre passes, la roadmap, le modèle de dossier,
+le dossier du guide et les fichiers concernés.
 
-Inspecte ensuite la stack et les fichiers actuels. Ne suppose jamais que les
-versions, nombres, dates, offres, routes ou composants de ce prompt sont encore
-à jour.
+Exécute uniquement la passe demandée. Vérifie la porte et le manifeste de la
+passe précédente. Si l’état a changé, documente le diff et retourne à la passe
+nécessaire.
 
-Exécute uniquement la passe demandée. Vérifie que la porte précédente est
-validée et que le hash correspond. Si ce n’est pas le cas, arrête la passe,
-documente la divergence et reprends la passe antérieure nécessaire.
+Règles : zéro invention, sources primaires et actuelles, faits séparés des
+déductions, sources visibles près des affirmations, un seul éditeur, exemples
+fictifs étiquetés, aucun schéma interdit, aucun commit/push/déploiement sans
+autorisation, préservation du travail partagé.
 
-Règles absolues : zéro invention, un seul guide, un seul éditeur, sources
-primaires, calculs reproductibles, aucun FAQPage/HowTo, aucune modification
-manuelle du sitemap/robots/llms.txt, aucun commit/push sans ordre explicite,
-préservation des changements utilisateur.
-
-À la fin, mets à jour docs/research/<SLUG>.md, applique la checklist et fournis
-le rapport de sortie normalisé de la passe. Ne déclare jamais une passe terminée
-si une case bloquante reste ouverte.
+Mets à jour le journal, le rapport de sortie et le snapshot. Ne déclare jamais
+une porte validée si une case bloquante reste ouverte.
 ```
 
 ---
 
-## 25. Références externes de contrôle
+## 19. Règle finale
 
-À revalider lors d’un changement important :
-
-- [Google — créer des contenus utiles, fiables et people-first](https://developers.google.com/search/docs/fundamentals/creating-helpful-content?hl=fr) ;
-- [Google — guide de démarrage SEO](https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=fr) ;
-- [Google — règles des données structurées](https://developers.google.com/search/docs/appearance/structured-data/sd-policies?hl=fr) ;
-- [Google — données structurées Article](https://developers.google.com/search/docs/appearance/structured-data/article?hl=fr) ;
-- [Google — journal des mises à jour Search](https://developers.google.com/search/updates) ;
-- [Google — fonctionnalités d’IA et Search](https://developers.google.com/search/docs/appearance/ai-features?hl=fr) ;
-- [Google — guide d’optimisation des fonctions d’IA générative](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide?hl=fr) ;
-- [Google — sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap?hl=fr) ;
-- [Google — expérience de page](https://developers.google.com/search/docs/appearance/page-experience?hl=fr) ;
-- [Next.js 16 — metadata et images OpenGraph](https://nextjs.org/docs/app/getting-started/metadata-and-og-images) ;
-- [Next.js 16 — convention `opengraph-image`](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image) ;
-- [W3C/WAI — WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) ;
-- [web.dev — seuils Core Web Vitals](https://web.dev/articles/defining-core-web-vitals-thresholds?hl=fr).
-
----
-
-## 26. Règle finale
-
-Un article n’est pas terminé parce qu’il est long, bien présenté, compilable ou
-« humain » en apparence. Il est terminé lorsque :
+Un guide n’est pas terminé parce qu’il est long, compilable ou « humain » en
+apparence. Il est terminé lorsque :
 
 - le lecteur comprend et peut décider ;
 - chaque affirmation décisive est prouvée ou honnêtement qualifiée ;
-- chaque calcul est reproductible ;
-- la page correspond à la stack et aux sources de vérité actuelles ;
-- les quatre passes ont franchi leur porte dans l’ordre ;
-- le rendu réel, les tests et le statut éditorial ont été vérifiés sans
-  invention.
+- les quatre responsabilités ont été exercées dans l’ordre ;
+- un second regard a réellement contredit le brouillon ;
+- le rendu, les tests et le statut ont été vérifiés sur le snapshot final.
 
-Si une seule de ces conditions manque, le guide retourne à la passe appropriée.
+Si une condition manque, le guide retourne à la passe appropriée.

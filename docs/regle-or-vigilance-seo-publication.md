@@ -280,8 +280,9 @@ consommateurs.
 
 ### Ajouter un guide
 
-1. lire ce document, `docs/charte-qualite-guides.md` et
-   `docs/workflow-maitre-guides-4-passes.md` ;
+1. respecter l'ordre de lecture unique défini dans
+   `docs/workflow-maitre-guides-4-passes.md`, sans sauter la charte, la roadmap
+   ni le modèle de dossier ;
 2. créer ou mettre à jour `docs/research/<slug>.md`, y compris le journal des
    quatre passes ;
 3. créer `src/app/guides/<slug>/page.tsx` ;
@@ -604,9 +605,10 @@ hors écran, le contrôle échoue. Les comparaisons contenant des phrases doiven
 afficher ensemble la situation, le choix et sa conséquence à 390 px, au besoin
 sous forme de cartes ou de listes.
 
-Contrôler au minimum les largeurs `320`, `360`, `390`, `430`, `640`, `768`,
-`1024`, `1280`, `1440` et `1600` px sur les gabarits réellement touchés. Une
-réponse HTTP `200` et un DOM correct ne remplacent pas l'inspection visuelle.
+Contrôler au minimum les largeurs `320`, `390`, `768`, `1024` et `1440` px,
+puis les ruptures réellement touchées. Si un composant partagé ou le gabarit
+change, ajouter `360`, `430`, `640`, `1280` et `1600` px. Une réponse HTTP
+`200` et un DOM correct ne remplacent pas l'inspection visuelle.
 
 ---
 
@@ -640,7 +642,8 @@ réponse HTTP `200` et un DOM correct ne remplacent pas l'inspection visuelle.
 - [ ] JSON-LD parsable et strictement fidèle au visible ;
 - [ ] aucun JSON-LD `FAQPage`, qu'une FAQ visible existe ou non ;
 - [ ] liens entrants et sortants testés ;
-- [ ] ressource réelle, téléchargeable et correctement versionnée ;
+- [ ] si une ressource est promise, elle est réelle, téléchargeable, testée et
+      correctement versionnée ; sinon, l’absence de ressource est justifiée ;
 - [ ] images dimensionnées et optimisées ;
 - [ ] rendu clavier, mobile et ordinateur vérifié ;
 - [ ] à 390 px, aucune réponse décisive n'est cachée dans une colonne qu'il faut
@@ -702,11 +705,13 @@ npm run check:seo
 npx eslint <fichiers-modifiés>
 npx tsc --noEmit
 npm test
-npm run build
+NEXT_PUBLIC_ENV=production npm run build
 git diff --check
 ```
 
-La batterie complète doit être lancée dans l'ordre ci-dessus. `npm run build`
+La batterie complète doit être lancée dans l'ordre ci-dessus. Le build final
+local utilise toujours `NEXT_PUBLIC_ENV=production` afin de vérifier l’artefact
+indexable ; un simple `npm run build` local contrôle un autre état. Le build
 n'exécute automatiquement que les étapes 2 à 4 ci-dessous ; `npm test` reste
 une barrière distincte du workflow CI et ne doit jamais être omise :
 

@@ -12,9 +12,12 @@ const delegatedPublicationGuides = [
   "calculer-roi-application-metier",
   "contrat-tma-application",
   "mvp-saas-quoi-inclure",
+  "pourquoi-google-ads-ne-convertit-pas",
   "prix-gestion-google-ads",
   "reprendre-logiciel-metier-existant",
+  "reprendre-mvp-vibe-code",
   "seo-ou-google-ads",
+  "signes-besoin-logiciel-metier",
   "template-ou-site-sur-mesure",
   "valider-idee-saas-avant-developper",
 ] as const;

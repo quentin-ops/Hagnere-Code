@@ -141,19 +141,21 @@ vérifier et maintenir ses choix.
 
 ### 3.1 Fichiers à ouvrir avant de commencer
 
-Lire, dans cet ordre :
+L'ordre de lecture unique est défini par le workflow maître. Il est repris ici
+pour éviter toute ambiguïté :
 
-1. cette charte en entier ;
-2. `docs/workflow-maitre-guides-4-passes.md` pour connaître la passe à exécuter
-   et sa porte de sortie ;
-3. `docs/roadmap-guides-seo.md` ;
-4. `src/lib/guides.ts` et les pages service liées au sujet ;
-5. les guides visant une intention proche ;
-6. les trois à cinq derniers guides du même cluster, uniquement pour
-   repérer ce qu'il ne faut pas reproduire mécaniquement ;
-7. le dossier `docs/research/` et l'éventuelle fiche existante du sujet ;
-8. les composants de `src/components/guides/` avant toute modification
-   d'interface.
+1. `CLAUDE.md` ;
+2. `docs/regle-or-vigilance-seo-publication.md` ;
+3. cette charte en entier ;
+4. `docs/workflow-maitre-guides-4-passes.md` ;
+5. `docs/roadmap-guides-seo.md` ;
+6. `docs/research/_modele-guide.md` ;
+7. le dossier de recherche du guide s'il existe ;
+8. `src/lib/guides.ts`, les pages service, les guides voisins et les
+   composants réellement concernés.
+
+Observer trois à cinq guides proches sert uniquement à repérer ce qu'il ne
+faut pas reproduire mécaniquement.
 
 Un guide existant peut fournir une convention de code. Il ne fournit ni le
 plan, ni l'angle, ni le verdict du nouveau contenu.
@@ -180,21 +182,21 @@ synthétisés dans ce fichier versionné.
 
 ### 3.3 Étapes, livrables et critères de validation
 
-| Étape              | Travail à effectuer                                                                                  | Trace obligatoire                                   | Critère de validation                                              |
-| ------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------ |
-| 1. Cadrer          | Définir lecteur, déclencheur, intention, décision, objections et hors-périmètre                      | Brief rempli                                        | Une seule décision principale est formulée en une phrase           |
-| 2. Dédupliquer     | Inspecter roadmap, registre, guides et pages service proches                                         | Tableau « page voisine / différence d'intention »   | Aucun doublon d'intention non résolu                               |
-| 3. Observer        | Croiser Search Console disponible, questions visibles, suggestions et SERP actuelle                  | Liste de questions et vocabulaire du lecteur, datée | Les besoins réels sont connus sans inventer de volume              |
-| 4. Comparer        | Étudier assez de résultats représentatifs pour comprendre réponses, formats, preuves et angles morts | Carte concurrentielle synthétique                   | L'angle n'est pas seulement « plus long »                          |
-| 5. Prouver         | Vérifier les sources primaires, tarifs, règles, calculs et limites                                   | Fiche de preuves du §4                              | Aucun fait décisif ne repose sur une source absente ou déformée    |
-| 6. Différencier    | Comparer l'empreinte des guides voisins, choisir la progression et l'artefact signature              | Fiche de variation du §9                            | Le plan découle de la décision du lecteur et non d'un ancien guide |
-| 7. Planifier       | Associer chaque question utile à une section, une preuve et une conséquence                          | Plan annoté                                         | Chaque section a une fonction ; les doublons sont retirés          |
-| 8. Rédiger         | Écrire réponse, démonstration, exemples, limites, alternatives et verdict                            | Brouillon complet                                   | Un non-technicien peut agir sans seconde recherche essentielle     |
-| 9. Convertir       | Choisir action autonome, bon fit, mauvais fit, CTA et éventuelle ressource                           | Parcours de sortie décrit                           | Le CTA prolonge le raisonnement et ne force pas la conclusion      |
-| 10. Intégrer       | Ajouter page, registre, metadata, données structurées, image et maillage pertinent                   | Diff de code cohérent                               | Les promesses visibles existent réellement                         |
-| 11. Contre-auditer | Refaire calculs, sources, cohérence, style, scorecard et test lecteur                                | Preuve par axe et liste des corrections             | Seuil du §13 atteint, aucun point bloquant                         |
-| 12. Vérifier       | Lancer contrôles techniques et observer le rendu réel                                                | Commandes, URLs et tailles contrôlées               | Les critères du §14 passent                                        |
-| 13. Livrer         | Distinguer créé, testé localement, publié et indexé                                                  | Rapport de livraison factuel                        | Aucun état externe n'est déclaré sans preuve                       |
+| Étape                     | Travail à effectuer                                                                                                        | Trace obligatoire                                   | Critère de validation                                              |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------ |
+| 1. Cadrer                 | Définir lecteur, déclencheur, intention, décision, objections et hors-périmètre                                            | Brief rempli                                        | Une seule décision principale est formulée en une phrase           |
+| 2. Dédupliquer            | Inspecter roadmap, registre, guides et pages service proches                                                               | Tableau « page voisine / différence d'intention »   | Aucun doublon d'intention non résolu                               |
+| 3. Observer               | Croiser Search Console disponible, questions visibles, suggestions et SERP actuelle                                        | Liste de questions et vocabulaire du lecteur, datée | Les besoins réels sont connus sans inventer de volume              |
+| 4. Comparer               | Étudier assez de résultats représentatifs pour comprendre réponses, formats, preuves et angles morts                       | Carte concurrentielle synthétique                   | L'angle n'est pas seulement « plus long »                          |
+| 5. Prouver                | Vérifier les sources primaires, tarifs, règles, calculs et limites                                                         | Fiche de preuves du §4                              | Aucun fait décisif ne repose sur une source absente ou déformée    |
+| 6. Différencier           | Comparer l'empreinte des guides voisins, choisir la progression et l'artefact signature                                    | Fiche de variation du §9                            | Le plan découle de la décision du lecteur et non d'un ancien guide |
+| 7. Planifier              | Associer chaque question utile à une section, une preuve et une conséquence                                                | Plan annoté                                         | Chaque section a une fonction ; les doublons sont retirés          |
+| 8. Rédiger                | Écrire réponse, démonstration, exemples, limites, alternatives et verdict                                                  | Brouillon complet                                   | Un non-technicien peut agir sans seconde recherche essentielle     |
+| 9. Convertir              | Choisir action autonome, bon fit, mauvais fit, CTA et éventuelle ressource                                                 | Parcours de sortie décrit                           | Le CTA prolonge le raisonnement et ne force pas la conclusion      |
+| 10. Intégrer              | Ajouter page, registre, metadata, données structurées, image et maillage pertinent                                         | Diff de code cohérent                               | Les promesses visibles existent réellement                         |
+| 11. Contre-auditer        | Refaire calculs, sources, logique, pédagogie, comparaison et promesses                                                     | P0/P1, preuves et liste des corrections             | Aucun P0/P1 ne subsiste avant la passe de plume                    |
+| 12. Humaniser et vérifier | Relire le texte final, justifier la scorecard, réaliser l’éventuel test lecteur, lancer les contrôles et observer le rendu | Score, commandes, URLs et tailles contrôlées        | Le seuil du §13 et les critères du §14 passent                     |
+| 13. Livrer                | Distinguer créé, testé localement, publié et indexé                                                                        | Rapport de livraison factuel                        | Aucun état externe n'est déclaré sans preuve                       |
 
 Les étapes sont obligatoires ; le nombre d'agents et d'outils dépend de la
 complexité. Une recherche multi-agents est recommandée pour les sujets
@@ -725,11 +727,11 @@ Le lecteur doit comprendre, sans publicité répétée :
 
 ### 10.2 Les appels à l'action
 
-Une page possède **un CTA éditorial principal**. Avec la sidebar commerciale
-globale actuelle, préférer une seule occurrence dans l'article après une
-démonstration suffisante ; une répétition finale n'est acceptable que si la
-longueur et la progression la rendent naturelle. Adapter son libellé à
-l'intention et annoncer un résultat compréhensible :
+Une page possède **au maximum un CTA éditorial dans l'article**, placé après
+une démonstration suffisante. La sidebar commerciale globale compte déjà dans
+la pression ressentie : elle ne justifie ni un second `GuideInlineCTA`, ni une
+répétition finale. Adapter le libellé à l'intention et annoncer un résultat
+compréhensible :
 
 - prix : « Vérifier ce que mon budget permet » ;
 - comparatif : « Comparer les options pour mon entreprise » ;
@@ -975,7 +977,7 @@ validation.
 | Statut                  | Signification exacte                                                        |
 | ----------------------- | --------------------------------------------------------------------------- |
 | Brouillon               | Recherche ou rédaction incomplète                                           |
-| Faits vérifiés          | Fiche de preuves réconciliée, rédaction encore révisable                    |
+| Faits vérifiés          | Contre-audit P3 validé, rédaction encore révisable                          |
 | Prêt pour contre-audit  | Brouillon complet soumis à une revue indépendante                           |
 | Prêt techniquement      | Score et batterie locale passés, hors validation humaine                    |
 | Prêt pour revue humaine | Aucun blocage connu, validation éditoriale restant à acquérir               |
@@ -1024,10 +1026,10 @@ réellement présents :
 
 ```bash
 git diff --check
-npx eslint src/app/guides/<slug>/page.tsx src/app/guides/<slug>/opengraph-image.tsx src/lib/guides.ts
+npx eslint <tous-les-fichiers-code-modifiés>
 npx tsc --noEmit
 npm test
-npm run build
+NEXT_PUBLIC_ENV=production npm run build
 ```
 
 Une commande en échec n'est ni masquée ni déclarée réussie. Examiner aussi le
@@ -1051,9 +1053,11 @@ la colonne qui contient la réponse, remplacer le tableau par des cartes, une
 liste ou plusieurs comparaisons courtes sur les écrans étroits. À 390 px, la
 question, l'option et sa conséquence doivent être visibles ensemble.
 
-Avant livraison, contrôler le rendu réel à `320`, `360`, `390`, `430`, `640`,
-`768`, `1024`, `1280`, `1440` et `1600` px. Vérifier la largeur de contenu
-réellement disponible après la sidebar, pas seulement celle de la fenêtre.
+Avant livraison, contrôler le rendu réel à `320`, `390`, `768`, `1024` et
+`1440` px, puis aux ruptures réellement touchées par les composants. Si un
+composant partagé ou la mise en page change, ajouter `360`, `430`, `640`,
+`1280` et `1600` px. Vérifier la largeur de contenu réellement disponible
+après la sidebar, pas seulement celle de la fenêtre.
 Contrôler hero, sommaire, tableaux, cartes, filtres éventuels, formulaire ou
 dialogue de ressource, états de chargement/vide/erreur lorsqu'ils existent,
 ainsi que les téléchargements et l'impression utiles. Un DOM correct ou une
