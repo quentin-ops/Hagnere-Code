@@ -112,6 +112,10 @@ maximal qui incorpore les coûts hors média et une checklist de propriété/mes
 
 Base interne illustrative : 44,2 €/h (Insee 2025, périmètre ci-dessus).
 
+L’introduction et la FAQ disent « environ 90 € » car le corpus contient des
+points d’entrée à 89 € et 90 €. Les calculs ci-dessous conservent les centimes
+pour être reproductibles ; le tableau de décision les affiche arrondis à l’euro.
+
 **Scénario A — Search local, forfait fixe**
 
 - coûts initiaux : 750 + 600 + 1 200 + (8 × 44,2) = 2 903,60 € ;
@@ -166,6 +170,11 @@ Différences : pas de « seule unité qui ne ment pas », pas de fil rouge nomin
 ```
 
 ## 7. Plan annoté
+
+Architecture finale : six chapitres de décision avant les sources. Les modèles
+de facturation, la mesure, la propriété et le positionnement de l’offre restent
+des sous-sections de leur chapitre parent afin d’éviter une table des matières
+en onze étapes.
 
 | Section            | Question résolue                            | Preuve/exemple            | Décision                                       | Format            |
 | ------------------ | ------------------------------------------- | ------------------------- | ---------------------------------------------- | ----------------- |
@@ -230,10 +239,24 @@ Réserves : croisements de modèles, unité HT et faux libellé TCO corrigés ; 
 Statut maximal après cette étape : publiable après autorisation éditoriale déléguée du commanditaire
 ```
 
+### Passe pédagogique du 21 juillet 2026
+
+- Le prix d’entrée est formulé « environ 90 € » : le corpus contient 89 € et
+  90 €, sans transformer cet échantillon de cinq offres en moyenne de marché.
+- Le lien Insee est placé dans la phrase qui utilise l’hypothèse de 44,2 €/h ;
+  les formules exactes restent visibles et les totaux de décision sont arrondis.
+- Les modes de facturation ont été regroupés avec les tarifs publics ; mesure,
+  propriété du compte et offre Hagnéré Code sont devenues des sous-parties de
+  leur décision principale.
+- Le rendu passe de 4 534 à 4 120 mots, de 11 à 7 H2 et de 8 à 6 tableaux. Le
+  registre affiche 21 minutes à 200 mots/minute.
+
 ### Vérifications
 
 - [x] sources et fraîcheur revérifiées le 20 juillet 2026 ;
 - [x] calculs refaits par script et contrôle inverse du seuil de rentabilité ;
+- [x] montants exacts conservés dans les formules et totaux décisionnels arrondis
+      à l’euro ;
 - [x] exemples tous étiquetés fictifs ;
 - [x] CTA disponible et aucune ressource inexistante promise ;
 - [x] entrée du registre et maillage partagé ;

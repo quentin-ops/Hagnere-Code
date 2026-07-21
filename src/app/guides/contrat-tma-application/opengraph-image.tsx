@@ -2,18 +2,16 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Contrat TMA testé sur les sept états d’un incident applicatif";
+  "Contrat TMA : qui intervient quand votre application tombe en panne ?";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const stages = [
-  ["1", "RÉCEPTION"],
-  ["2", "PRISE EN CHARGE"],
-  ["3", "DIAGNOSTIC"],
-  ["4", "CONTOURNEMENT"],
-  ["5", "RÉTABLISSEMENT"],
-  ["6", "CORRECTION"],
-  ["7", "CLÔTURE"],
+  ["1", "ALERTE REÇUE"],
+  ["2", "INTERVENTION"],
+  ["3", "SOLUTION TEMPORAIRE"],
+  ["4", "SERVICE RÉTABLI"],
+  ["5", "PANNE CORRIGÉE"],
 ];
 
 export default function OgImage() {
@@ -108,7 +106,7 @@ export default function OgImage() {
             color: "#d4d4d8",
           }}
         >
-          Chaque délai commence et finit par une preuve
+          Qui intervient, quand et jusqu’à quel résultat ?
         </div>
       </div>
 

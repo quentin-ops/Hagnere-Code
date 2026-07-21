@@ -300,6 +300,20 @@ Contrôle navigateur parent : dix largeurs CSS réelles de 320 à 1 600 px, aucu
 Statut maximal actuel : publiable après autorisation éditoriale déléguée, sans prétendre à un test lecteur réel
 ```
 
+### Passe pédagogique du 21 juillet 2026
+
+- Le titre et le corps montrent désormais le contre-calcul naïf complet :
+  113 740,80 € de bénéfices fictifs, puis
+  (113 740,80 − 54 800) / 54 800 × 100 = 107,56 %.
+- Ce résultat est présenté comme environ 108 %, puis comparé au scénario
+  central corrigé d’environ 16 % ; les autres scénarios et options sont
+  également arrondis dans les tableaux.
+- Les quatre chapitres de contrôle final ont été regroupés en une seule
+  progression : tester les hypothèses, faire valider, mesurer, puis décider.
+- Le rendu compte 5 609 mots, 8 H2 et 7 tableaux, contre 6 348 mots, 11 H2 et
+  11 tableaux avant cette passe. Le registre affiche 28 minutes à 200
+  mots/minute.
+
 ### Vérifications
 
 - [x] faits, citations et fraîcheur revérifiés ;

@@ -2,15 +2,15 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Audit SEO structuré en référence, diagnostic, plan et vérification";
+  "Audit SEO : ce que le rapport doit expliquer et permettre de corriger";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const outputs = [
-  { number: "01", label: "RÉFÉRENCE DATÉE", color: "#a78bfa" },
-  { number: "02", label: "DIAGNOSTIC", color: "#60a5fa" },
-  { number: "03", label: "PLAN EXÉCUTABLE", color: "#34d399" },
-  { number: "04", label: "VÉRIFICATION", color: "#fbbf24" },
+  { number: "01", label: "PAGES EXAMINÉES", color: "#a78bfa" },
+  { number: "02", label: "PROBLÈMES EXPLIQUÉS", color: "#60a5fa" },
+  { number: "03", label: "PRIORITÉS", color: "#34d399" },
+  { number: "04", label: "CONTRÔLE APRÈS CORRECTION", color: "#fbbf24" },
 ];
 
 export default function OgImage() {
@@ -120,7 +120,7 @@ export default function OgImage() {
               color: "#d4d4d8",
             }}
           >
-            Des preuves qui permettent de décider, exécuter et vérifier.
+            Comprendre quoi corriger, dans quel ordre et comment le contrôler.
           </div>
         </div>
 
@@ -147,7 +147,7 @@ export default function OgImage() {
               letterSpacing: 1.5,
             }}
           >
-            LES 4 SORTIES OBLIGATOIRES
+            LES 4 RÉSULTATS À OBTENIR
           </div>
           {outputs.map((output) => (
             <div
@@ -194,7 +194,7 @@ export default function OgImage() {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        {["Fait", "Périmètre", "Confiance", "Action", "Recette", "Mesure"].map(
+        {["Pages", "Exemples", "Priorités", "Responsable", "Contrôle"].map(
           (label) => (
             <div
               key={label}

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: guideUrl(guide) + "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Les cinq preuves indispensables pour reprendre un logiciel métier",
+        alt: "Les contrôles indispensables pour reprendre un logiciel métier",
       },
     ],
     publishedTime: guide.datePublished + "T09:00:00+02:00",
@@ -103,32 +103,32 @@ const breadcrumbJsonLd = JSON.stringify({
 
 const faqItems = [
   {
-    question: "Peut-on reprendre un logiciel qui n’a aucune documentation ?",
+    question: "Peut-on reprendre un logiciel sans documentation ?",
     answer:
-      "Oui dans certains cas, mais l’absence de documentation augmente l’incertitude et doit être compensée par des preuves exécutées : cloner le dépôt, reconstruire l’application, restaurer les données, observer les parcours métier et réussir une petite livraison réversible. Si ces tests échouent, la nouvelle équipe ne doit pas promettre une maintenance normale avant une phase de sécurisation.",
+      "Oui, si une nouvelle équipe peut reconstruire l’application, restaurer une sauvegarde et comprendre les opérations essentielles. Sans documentation, prévoyez d’abord une phase d’examen et de sécurisation avant de demander de nouvelles fonctionnalités.",
   },
   {
-    question: "Quand faut-il couper les accès de l’ancien prestataire ?",
+    question: "Quand retirer les accès de l’ancien prestataire ?",
     answer:
-      "Pas au premier jour par réflexe, sauf risque ou décision de sécurité qui impose une révocation immédiate. Il faut d’abord inventorier les comptes, créer les accès nominatifs de remplacement, transférer la propriété des services, vérifier les procédures d’urgence et convenir d’une fenêtre de bascule. Les droits devenus inutiles sont ensuite retirés et l’opération est tracée.",
+      "Après avoir créé et testé les accès de remplacement. En cas de risque de sécurité, la révocation peut être immédiate ; sinon, organisez une bascule tracée pour éviter de couper un service utile par erreur.",
   },
   {
-    question: "Un audit du code source suffit-il pour accepter la reprise ?",
+    question: "Un audit du code source suffit-il ?",
     answer:
-      "Non. Un code lisible ne prouve ni la maîtrise de l’hébergement, ni la restauration des données, ni la connaissance des règles métier, ni les droits permettant l’intervention d’un tiers. L’audit doit relier cinq portes : contrôle des actifs, chaîne de livraison, données restaurables, exploitation métier et cadre contractuel.",
+      "Non. Il faut aussi vérifier l’hébergement, les sauvegardes, les données, les comptes administrateurs et les principales règles métier. Un code lisible ne garantit pas que le logiciel puisse être remis en service.",
   },
   {
-    question: "Qui devrait posséder le domaine, le cloud et le dépôt Git ?",
+    question:
+      "À quel nom doivent être le domaine, le cloud et le dépôt de code ?",
     answer:
-      "Pour limiter la dépendance, les actifs structurants devraient être rattachés à une organisation contrôlée par l’entreprise, avec facturation, administrateurs de secours et comptes nominatifs. Le prestataire reçoit les droits nécessaires à sa mission sans devenir l’unique propriétaire opérationnel. Les modalités précises dépendent toutefois du contrat et de l’architecture.",
+      "Idéalement au nom d’une organisation contrôlée par votre entreprise, avec au moins deux administrateurs nominatifs. Le prestataire reçoit les droits nécessaires sans être l’unique propriétaire des comptes.",
   },
   {
-    question: "Que faire si les droits sur le logiciel ne sont pas clairs ?",
+    question: "Que faire si les droits sur le logiciel sont flous ?",
     answer:
-      "Ne déduisez pas les droits de modification du simple paiement ou de la remise du dépôt. Rassemblez contrats, avenants, factures, licences tierces et historique des contributeurs, limitez les interventions non urgentes, puis faites analyser le dossier par un professionnel du droit compétent. Ce guide fournit des questions de contrôle, pas un avis juridique.",
+      "Rassemblez contrats, avenants, factures et licences avant toute intervention non urgente. Le paiement d’un projet ne suffit pas toujours à établir les droits de modification ; un professionnel du droit doit trancher les situations litigieuses.",
   },
 ];
-
 
 export default function Page() {
   return (
@@ -151,33 +151,33 @@ export default function Page() {
           { label: "Reprendre un logiciel métier existant" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Changer d’équipe technique ne consiste pas à transférer un ZIP. La reprise devient crédible quand l’entreprise possède ses actifs et qu’une nouvelle équipe a reconstruit l’application, restauré les données, livré une correction et préparé sa propre sortie."
+        heroDescription="Votre prestataire ne répond plus, les incidents s’accumulent ou vous voulez changer d’équipe ? Voici ce qu’il faut récupérer, vérifier et tester pour confier le logiciel à un nouveau partenaire sans mettre l’activité en danger."
         heroAction={{
-          href: "#portes",
-          label: "Tester les cinq portes",
+          href: "#premiere-reponse",
+          label: "Vérifier si la reprise est possible",
         }}
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel={"Publié le " + formatGuideDate(guide.datePublished)}
+        updatedLabel={"Mis à jour le " + formatGuideDate(guide.dateModified)}
         keyPoints={[
           {
             number: "01",
-            title: "5 portes non compensables",
+            title: "Les accès à récupérer",
             description: "",
             color: "violet",
           },
           {
             number: "02",
-            title: "8 preuves à exécuter",
+            title: "Les sauvegardes à tester",
             description: "",
             color: "blue",
           },
           {
             number: "03",
-            title: "4 trajectoires comparées",
+            title: "3 décisions possibles",
             description: "",
             color: "emerald",
           },
@@ -207,7 +207,7 @@ export default function Page() {
           },
           {
             href: "/guides/contrat-tma-application",
-            label: "Structurer le contrat TMA après la reprise",
+            label: "Structurer le contrat de maintenance après la reprise",
           },
           {
             href: "/guides/calculer-roi-application-metier",
@@ -219,992 +219,547 @@ export default function Page() {
         showWhitePaperPromo={false}
       >
         <p className="lead">
+          Votre prestataire ne répond plus, les incidents s’accumulent ou vous
+          souhaitez simplement changer d’équipe. La première question est très
+          concrète :{" "}
           <strong>
-            Lundi, 8 h : l’équipe initiale ne répond plus et une livraison doit
-            partir avant midi.
+            une autre équipe peut-elle reprendre le logiciel sans interrompre
+            votre activité ni perdre vos données ?
           </strong>{" "}
-          Vous avez un dépôt Git, un accès au serveur et un fichier nommé «
-          sauvegarde ». Pouvez-vous confier le logiciel à une autre équipe ? Pas
-          encore. Il faut d’abord prouver que ces éléments correspondent à la
-          production et qu’ils permettent de reconstruire, restaurer, déployer
-          et revenir en arrière.
+          Oui, dans de nombreux cas. Mais avant de promettre des évolutions,
+          elle doit récupérer les bons accès, remettre une copie du logiciel en
+          fonctionnement et comprendre les opérations indispensables à votre
+          entreprise.
         </p>
 
-        <div className="not-prose my-7 grid gap-3 sm:grid-cols-3">
-          {[
-            [
-              "08:10",
-              "Observer",
-              "Voir incidents, journaux et état des services sans appeler l’ancien prestataire.",
-            ],
-            [
-              "09:30",
-              "Restaurer",
-              "Remettre une copie protégée des données dans un environnement isolé.",
-            ],
-            [
-              "11:00",
-              "Livrer",
-              "Déployer un changement réversible puis revenir à la version précédente.",
-            ],
-          ].map(([time, title, description]) => (
-            <div
-              key={time}
-              className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900"
-            >
-              <p className="mb-2 font-mono text-xs font-semibold text-violet-600 dark:text-violet-400">
-                {time}
-              </p>
-              <p className="mb-1 text-sm font-bold text-zinc-950 dark:text-white">
-                {title}
-              </p>
-              <p className="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">
-                {description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <p>
-          Le « test du lundi 8 h » n’est pas une promesse de délai. C’est une
-          façon de rendre la dépendance visible. Un document affirme ; un test
-          exécuté montre. Ce guide vous aide à constituer un coffre de reprise,
-          à classer chaque porte en vert, ambre ou rouge et à choisir entre
-          reprise directe, stabilisation, migration progressive ou réécriture.
-        </p>
+        <InfoBox variant="blue" title="La réponse simple">
+          Une reprise est raisonnable lorsque votre entreprise contrôle ses
+          comptes essentiels, qu’une sauvegarde a réellement été restaurée et
+          qu’une nouvelle équipe peut installer puis modifier le logiciel dans
+          un environnement sans risque. Si l’un de ces points manque, on
+          commence par le sécuriser : cela ne signifie pas automatiquement qu’il
+          faut tout réécrire.
+        </InfoBox>
 
         <InfoBox
           variant="amber"
-          title="Arrêtez cette méthode si un incident cyber est actif"
+          title="En cas de cyberattaque, changez immédiatement de procédure"
         >
           Une compromission en cours, une fuite soupçonnée ou un accès hostile
-          appellent une réponse à incident adaptée, avec préservation des
-          preuves et intervenants compétents. Ce guide traite une passation et
-          ne remplace pas ce dispositif.
+          exigent une réponse à incident adaptée, avec préservation des éléments
+          utiles à l’enquête et intervenants compétents. Ce guide traite une
+          passation normale ou difficile, pas une attaque active.
         </InfoBox>
 
         <GuideToc
           items={[
             {
-              id: "definition",
-              label: "1. Ce que signifie vraiment reprendre",
+              id: "premiere-reponse",
+              label: "1. Savoir si la reprise est possible",
             },
-            { id: "urgence", label: "2. Les premières 48 heures" },
-            { id: "portes", label: "3. Les cinq portes non compensables" },
-            { id: "coffre", label: "4. Constituer le coffre de reprise" },
-            { id: "preuves", label: "5. Exécuter la chaîne de preuves" },
-            { id: "donnees", label: "6. Données, sauvegardes et secrets" },
-            { id: "dette", label: "7. Prioriser la dette utilement" },
-            { id: "strategies", label: "8. Comparer quatre trajectoires" },
-            { id: "contrat", label: "9. Contrat et réversibilité" },
-            { id: "audit", label: "10. Comparer deux audits de reprise" },
             {
-              id: "trente-jours",
-              label: "11. Un plan adaptable sur trente jours",
+              id: "a-recuperer",
+              label: "2. Ce que votre entreprise doit récupérer",
             },
-            { id: "decision", label: "12. Décider sans faux feu vert" },
+            { id: "premieres-48-heures", label: "3. Les premières 48 heures" },
+            {
+              id: "tests",
+              label: "4. Les tests qui évitent les mauvaises surprises",
+            },
+            {
+              id: "metier",
+              label: "5. Comprendre le travail réel des équipes",
+            },
+            {
+              id: "donnees",
+              label: "6. Protéger les données et les sauvegardes",
+            },
+            { id: "strategie", label: "7. Stabiliser, migrer ou réécrire" },
+            {
+              id: "contrat",
+              label: "8. Sécuriser le contrat et la prochaine sortie",
+            },
+            {
+              id: "choisir-audit",
+              label: "9. Comparer deux propositions de reprise",
+            },
+            { id: "plan", label: "10. Un plan de reprise adaptable" },
             { id: "sources", label: "Sources et limites" },
           ]}
         />
 
-        <h2 id="definition">1. Reprendre signifie transférer la maîtrise</h2>
+        <h2 id="premiere-reponse">
+          1. Comment savoir si une autre équipe peut reprendre ?
+        </h2>
 
         <p>
-          Une <strong>reprise applicative</strong> transfère la capacité de
-          comprendre, exploiter, corriger et faire évoluer un logiciel. Elle ne
-          commence donc pas par une liste de nouvelles fonctionnalités. Elle
-          commence par une question plus sobre : l’entreprise et la nouvelle
-          équipe peuvent-elles maintenir le service sans dépendre d’une personne
-          qui n’est plus disponible ?
+          Ne cherchez pas d’abord à savoir si le code est « propre ». Pour un
+          dirigeant, la vraie question est de savoir si le service peut
+          continuer : les salariés peuvent-ils travailler, les clients être
+          servis et les données être récupérées si le serveur tombe demain ?
         </p>
 
         <p>
-          Cinq situations sont souvent regroupées sous le même mot : passer d’un
-          prestataire actif à un autre, récupérer une application devenue
-          orpheline, stabiliser un outil qui accumule les incidents, moderniser
-          un socle en fin de vie ou refaire un produit devenu inadapté. Elles
-          n’appellent ni le même niveau d’urgence, ni le même engagement. Un
-          audit honnête nomme la situation avant de chiffrer la suite.
+          Une nouvelle équipe doit pouvoir répondre simplement à quatre
+          questions :
+        </p>
+
+        <ul>
+          <li>
+            <strong>Où se trouve le logiciel ?</strong> Le code, les serveurs,
+            le nom de domaine et les services externes sont identifiés.
+          </li>
+          <li>
+            <strong>Peut-on le remettre en route ailleurs ?</strong>{" "}
+            L’installation fonctionne sur un environnement séparé de la
+            production.
+          </li>
+          <li>
+            <strong>Peut-on récupérer les données ?</strong> Une sauvegarde est
+            restaurée et contrôlée, pas seulement repérée dans un dossier.
+          </li>
+          <li>
+            <strong>Peut-on faire un petit changement sans danger ?</strong> Une
+            correction limitée est testée, mise en ligne puis annulée si
+            nécessaire.
+          </li>
+        </ul>
+
+        <p>
+          Si les quatre réponses sont positives, la maintenance peut
+          généralement commencer dans de bonnes conditions. Si une réponse est
+          inconnue, la priorité est de lever cette inconnue. Si elle est
+          négative, il faut sécuriser le service avant d’ajouter de nouvelles
+          fonctions.
+        </p>
+
+        <h2 id="a-recuperer">2. Les éléments à récupérer avant la passation</h2>
+
+        <p>
+          Vous n’avez pas besoin de connaître la technique pour demander les
+          bons éléments. Nommez une personne responsable côté entreprise, puis
+          constituez un dossier partagé qui reste sous votre contrôle.
         </p>
 
         <GuideTable
           headers={[
-            "Situation",
-            "Premier objectif",
-            "Ce qu’il ne faut pas promettre",
+            "À récupérer",
+            "Pourquoi c’est important",
+            "Contrôle simple",
           ]}
           rows={[
             [
-              "Passation organisée",
-              "transférer savoir, comptes et exploitation pendant que l’équipe sortante répond",
-              "que la documentation suffira sans test",
+              "Code source et historique des versions",
+              "Permet de comprendre ce qui a changé et de préparer une correction",
+              "La nouvelle équipe ouvre le projet et retrouve la version en production",
             ],
             [
-              "Logiciel orphelin",
-              "retrouver les actifs et reconstruire une connaissance minimale",
-              "une maintenance normale dès le premier jour",
+              "Comptes du domaine, du cloud et des services externes",
+              "Évite qu’une seule personne puisse bloquer le service",
+              "Deux administrateurs nominatifs peuvent se connecter",
             ],
             [
-              "Application instable",
-              "réduire le risque et rétablir une chaîne de livraison sûre",
-              "des évolutions rapides avant stabilisation",
+              "Sauvegardes des données et des fichiers",
+              "Permet de redémarrer après une erreur ou une panne",
+              "Une copie est restaurée dans un espace isolé",
             ],
             [
-              "Socle vieillissant",
-              "séparer obsolescence gênante et obsolescence simplement visible",
-              "qu’un framework récent justifie à lui seul une migration",
+              "Procédure de mise en ligne",
+              "Réduit le risque lors de la première correction",
+              "Un changement mineur peut être publié puis annulé",
             ],
             [
-              "Besoin profondément changé",
-              "préserver données et continuité pendant l’étude d’une nouvelle cible",
-              "une réécriture intégrale sans transition",
+              "Liste des fournisseurs et abonnements",
+              "Évite la coupure d’un email, d’un paiement ou d’une connexion à un autre logiciel oubliée",
+              "Chaque service a un propriétaire, un contact et une date de renouvellement",
+            ],
+            [
+              "Contrats, licences et factures",
+              "Clarifie les droits et les engagements encore en cours",
+              "Les documents sont lisibles avant toute modification non urgente",
             ],
           ]}
         />
 
         <p>
-          Une reprise peut donc se conclure par « pas encore » ou « pas dans ce
-          périmètre ». Un litige non tranché sur les droits, un refus d’accès ou
-          un domaine exigeant des qualifications non couvertes peuvent suspendre
-          la mission. Nommer ces cas protège davantage le client qu’une
-          acceptation automatique.
+          Le mot « accès » ne signifie pas un mot de passe envoyé par email. Les
+          comptes structurants devraient appartenir à une organisation contrôlée
+          par l’entreprise, avec des droits nominatifs et un administrateur de
+          secours. Notre guide sur la{" "}
+          <Link href="/guides/proprietaire-site-internet-code-source">
+            propriété du code source et des accès
+          </Link>{" "}
+          détaille cette vérification.
         </p>
 
-        <h2 id="urgence">
-          2. Les premières 48 heures : préserver avant de modifier
+        <h2 id="premieres-48-heures">
+          3. Que faire pendant les premières 48 heures ?
         </h2>
 
         <p>
-          Le premier risque d’une passation tendue est de détruire la dernière
-          possibilité de comprendre le système : couper tous les comptes avant
-          d’avoir créé leurs remplaçants, mettre à jour une dépendance en
-          production, nettoyer des journaux, écraser un environnement ou lancer
-          une migration de données sans retour arrière. Pendant la phase
-          initiale, préférez les actions observables et réversibles.
+          Les deux premiers jours servent à éviter une aggravation. Ils ne
+          servent pas à promettre une date de refonte ni à modifier tout ce qui
+          semble ancien.
         </p>
 
         <ol>
           <li>
-            <strong>Nommer un responsable interne.</strong> Il porte les
-            arbitrages métier, connaît les périodes critiques et décide qui
-            reçoit quel accès. Le nouveau développeur ne doit pas devenir par
-            défaut le propriétaire de l’entreprise numérique.
+            <strong>Identifier le responsable métier.</strong> Cette personne
+            sait quelles opérations ne peuvent pas s’arrêter : facturer,
+            préparer une commande, planifier une intervention ou répondre à un
+            client.
           </li>
           <li>
-            <strong>Geler les changements risqués.</strong> Les corrections de
-            sécurité ou de continuité restent possibles, mais chaque geste doit
-            avoir une justification, une sauvegarde adaptée et un retour arrière
-            préparé.
+            <strong>Geler les changements non urgents.</strong> On conserve le
+            service en l’état le temps de comprendre comment il fonctionne.
           </li>
           <li>
-            <strong>Capturer l’état présent.</strong> Copiez le dépôt avec son
-            historique, inventoriez les versions déployées, services tiers, DNS,
-            tâches planifiées et certificats, sans exposer les secrets dans un
-            document partagé.
+            <strong>Sécuriser les comptes importants.</strong> On crée des accès
+            nominatifs, on vérifie la facturation et on retire seulement les
+            droits devenus inutiles.
           </li>
           <li>
-            <strong>Protéger les données.</strong> Vérifiez qui peut lire,
-            modifier, exporter et supprimer. Une copie destinée aux tests doit
-            être isolée et protégée.
+            <strong>Observer les incidents actuels.</strong> Les erreurs,
+            alertes, tâches manuelles et demandes du support donnent une
+            première image des risques réels.
           </li>
           <li>
-            <strong>Écrire les fenêtres critiques.</strong> Paie, facturation,
-            production ou clôture déterminent quand un test est acceptable.
-          </li>
-          <li>
-            <strong>Préparer le canal d’incident.</strong> Qui appelle qui, sur
-            quels critères, avec quelle autorité d’arrêt et quelle communication
-            aux utilisateurs ?
-          </li>
-        </ol>
-
-        <p>
-          Ne conservez pas les accès de l’ancienne équipe indéfiniment. Il faut
-          identifier et prouver la capacité de révocation, créer les comptes
-          nominatifs de remplacement, transférer la propriété, tester les
-          procédures, puis retirer les droits devenus inutiles et consigner
-          l’opération. La{" "}
-          <a
-            href="https://www.cnil.fr/fr/securite-gerer-les-habilitations"
-            target="_blank"
-            rel="noreferrer"
-          >
-            CNIL recommande de gérer les habilitations selon le besoin
-          </a>{" "}
-          et de supprimer celles qui ne sont plus justifiées dans le périmètre
-          des traitements de données personnelles.
-        </p>
-
-        <h2 id="portes">3. Les cinq portes non compensables</h2>
-
-        <p>
-          Une moyenne générale masque les blocages. Une documentation parfaite
-          ne compense pas une sauvegarde impossible à restaurer ; dix tests
-          unitaires ne donnent pas les droits contractuels de faire intervenir
-          un tiers. Évaluez chaque porte séparément : <strong>VERT</strong> si
-          la preuve a été exécutée, <strong>AMBRE</strong> si elle reste
-          partielle ou dépendante d’un tiers, <strong>ROUGE</strong> si elle
-          manque ou échoue.
-        </p>
-
-        <GuideTable
-          headers={["Porte", "Preuve verte", "Signal ambre ou rouge", "Effet"]}
-          rows={[
-            [
-              "1. Maîtrise des comptes",
-              "actifs détenus par l’entreprise, accès nominatifs et compte de secours testé",
-              "compte personnel, mot de passe partagé ou service au nom du prestataire",
-              "transférer la propriété avant de dépendre du service",
-            ],
-            [
-              "2. Code et livraison",
-              "clone propre, construction technique, version de production, déploiement et retour arrière testés",
-              "ZIP isolé, branche inconnue ou procédure orale",
-              "limiter la responsabilité à l’investigation",
-            ],
-            [
-              "3. Données restaurables",
-              "copie isolée restaurée et contrôles métier réussis",
-              "voyant vert, export incomplet ou restauration jamais exécutée",
-              "bloquer les changements irréversibles",
-            ],
-            [
-              "4. Exploitation métier",
-              "parcours critiques, alertes, fournisseurs, règles et fenêtres connus",
-              "connaissance dans une seule tête ou incidents sans propriétaire",
-              "organiser observation et transmission",
-            ],
-            [
-              "5. Droits et sortie",
-              "droits, licences, responsabilités, données et réversibilité clarifiés",
-              "paiement assimilé à une cession ou sortie non documentée",
-              "faire analyser avant évolution non urgente",
-            ],
-          ]}
-        />
-
-        <p>
-          La couleur n’est pas une note du prestataire sortant. Elle décrit un
-          niveau de preuve à une date donnée, sous la responsabilité d’une
-          personne nommée. Une porte peut passer d’ambre à vert après un
-          transfert de compte ou une restauration réussie. Sans date, test et
-          résultat, le vert redevient une opinion.
-        </p>
-
-        <h3>Exemple illustratif fictif : aucun score global</h3>
-
-        <p>
-          Une PME fictive utilise une application de planification. Le dépôt se
-          clone et se construit : code vert. Les administrateurs cloud sont
-          encore rattachés à l’agence : comptes ambre. Les sauvegardes sont
-          visibles mais la restauration échoue : données rouges. Les parcours
-          critiques sont décrits et le contrat doit être relu : exploitation
-          verte, droits ambre.
-        </p>
-
-        <div
-          className="not-prose my-6 flex flex-wrap gap-2"
-          aria-label="Exemple fictif d’état des cinq portes"
-        >
-          {[
-            [
-              "Code · VERT",
-              "border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-300",
-            ],
-            [
-              "Comptes · AMBRE",
-              "border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-300",
-            ],
-            [
-              "Données · ROUGE",
-              "border-red-200 bg-red-50 text-red-800 dark:border-red-800 dark:bg-red-950/30 dark:text-red-300",
-            ],
-            [
-              "Exploitation · VERT",
-              "border-emerald-200 bg-emerald-50 text-emerald-800 dark:border-emerald-800 dark:bg-emerald-950/30 dark:text-emerald-300",
-            ],
-            [
-              "Droits · AMBRE",
-              "border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-300",
-            ],
-          ].map(([label, classes]) => (
-            <span
-              key={label}
-              className={
-                "rounded-full border px-3 py-1.5 text-xs font-semibold " +
-                classes
-              }
-            >
-              {label}
-            </span>
-          ))}
-        </div>
-
-        <p>
-          Quatre portes sur cinq ne donnent pas « 80 % prêt ». La porte données
-          bloque les modifications risquées tant qu’une restauration n’a pas
-          réussi. Le verdict utile est : investigation possible, maintenance
-          durable non acceptée, priorité à la restauration et au transfert des
-          comptes.
-        </p>
-
-        <h2 id="coffre">4. Constituer un coffre de reprise vérifiable</h2>
-
-        <p>
-          Le coffre de reprise n’est pas un dossier rempli de mots de passe.
-          C’est un inventaire sécurisé qui indique pour chaque actif son
-          propriétaire, son emplacement, son rôle, les personnes autorisées, la
-          preuve testée, la date du contrôle et la procédure de sortie. Les
-          secrets restent dans un gestionnaire adapté ; le coffre contient leur
-          référence, jamais leur valeur en clair.
-        </p>
-
-        <GuideTable
-          headers={[
-            "Bloc",
-            "Éléments à inventorier",
-            "Preuve acceptable",
-            "Fausse sécurité",
-          ]}
-          rows={[
-            [
-              "Identité numérique",
-              "domaines, DNS, certificats, messagerie technique, comptes stores",
-              "organisation client et administrateur de secours testé",
-              "un identifiant envoyé par e-mail",
-            ],
-            [
-              "Code et fabrication",
-              "dépôts, historique, versions, dépendances, scripts et registres",
-              "clone propre puis construction reproductible",
-              "un ZIP sans historique",
-            ],
-            [
-              "Infrastructure",
-              "cloud, bases, stockage, files, tâches, supervision et journaux",
-              "cartographie reliée aux comptes, factures et accès vérifiés",
-              "une capture de console",
-            ],
-            [
-              "Données",
-              "schémas, documents, historiques, relations, sauvegardes et clés",
-              "restauration isolée et contrôles de cohérence",
-              "un CSV non vérifié",
-            ],
-            [
-              "Services tiers",
-              "paiement, e-mail, SMS, SSO, API métier et analytics",
-              "contrat, limites, propriétaire, test et procédure de rotation",
-              "une clé API seule",
-            ],
-            [
-              "Connaissance métier",
-              "rôles, règles, exceptions, calendriers et traitements manuels",
-              "parcours observés avec les utilisateurs",
-              "une documentation jamais confrontée au réel",
-            ],
-            [
-              "Cadre contractuel",
-              "contrats, avenants, licences, sous-traitants et réversibilité",
-              "dossier analysé dans son ensemble",
-              "une facture supposée tout transférer",
-            ],
-          ]}
-        />
-
-        <InfoBox
-          variant="blue"
-          title="Les colonnes à copier dans votre inventaire"
-        >
-          Actif ; URL ou emplacement ; organisation propriétaire ;
-          administrateurs nominatifs ; dépendance métier ; preuve exécutée ;
-          date du dernier contrôle ; inconnue restante ; procédure de sortie.
-          Ajoutez un registre séparé pour chaque inconnue avec risque,
-          responsable, contournement et condition de fermeture.
-        </InfoBox>
-
-        <h2 id="preuves">
-          5. Exécuter la chaîne de preuves avant la maintenance
-        </h2>
-
-        <p>
-          Recevoir les actifs ne prouve pas qu’ils fonctionnent ensemble. La
-          nouvelle équipe doit traverser une chaîne minimale, hors production
-          d’abord lorsque c’est possible. Chaque étape produit une trace :
-          procédure, versions, résultat, anomalie, décision et nom de la
-          personne qui valide le comportement métier.
-        </p>
-
-        <ol>
-          <li>
-            <strong>Cloner le dépôt depuis un environnement propre.</strong> Une
-            copie déjà configurée peut cacher des fichiers locaux jamais
-            versionnés.
-          </li>
-          <li>
-            <strong>Installer et construire l’application.</strong> Les versions
-            du langage, dépendances et outils doivent être déterminées sans
-            dépendre de la mémoire de l’ancienne équipe.
-          </li>
-          <li>
-            <strong>Reconstituer une configuration de test.</strong> Les secrets
-            arrivent par un canal approprié et restent séparés du code.
-          </li>
-          <li>
-            <strong>Restaurer une copie protégée des données.</strong> Ouvrir
-            l’application ne suffit pas : contrôlez documents, historiques,
-            relations, comptes et volumes attendus.
-          </li>
-          <li>
-            <strong>Rejouer les fonctions critiques.</strong> Un responsable
-            métier vérifie cas normaux, exceptions, droits et sorties.
-          </li>
-          <li>
-            <strong>Déployer en préproduction.</strong> La version obtenue doit
-            être identifiable et observable.
-          </li>
-          <li>
-            <strong>Livrer une petite correction réversible.</strong> Choisissez
-            un changement utile mais limité, avec critère d’acceptation.
-          </li>
-          <li>
-            <strong>Exécuter le retour arrière et vérifier les alertes.</strong>{" "}
-            Une procédure jamais jouée et une alerte sans destinataire restent
-            des hypothèses.
+            <strong>Copier avant d’expérimenter.</strong> Les essais se font sur
+            un environnement séparé, jamais directement sur les données de
+            production.
           </li>
         </ol>
 
         <InfoBox
           variant="emerald"
-          title="Le livrable n’est pas « audit terminé »"
+          title="Ce que vous devez obtenir à la fin de cette étape"
         >
-          Demandez une table « attendu / exécuté / résultat / preuve / limite /
-          propriétaire / prochaine action ». Elle reste exploitable par
-          l’entreprise et par une autre équipe. Un rapport qui ne dit pas ce qui
-          a réellement été exécuté entretient la dépendance qu’il devait
-          réduire.
+          Une liste claire des services indispensables, des personnes qui
+          peuvent y accéder, des incidents en cours et des éléments encore
+          manquants. Ce bilan tient sur quelques pages et peut être compris par
+          la direction.
         </InfoBox>
 
+        <h2 id="tests">4. Les tests qui rendent la reprise crédible</h2>
+
         <p>
-          Le{" "}
-          <a
-            href="https://csrc.nist.gov/pubs/sp/800/218/final"
-            target="_blank"
-            rel="noreferrer"
-          >
-            NIST Secure Software Development Framework 1.1
-          </a>{" "}
-          fournit notamment un vocabulaire pour protéger les dépôts, conserver
-          versions et documents, inventorier la provenance des composants et
-          préparer la fin de support des dépendances. C’est un cadre volontaire
-          américain, pas une certification de l’application ni une règle
-          juridique française.
+          Un dossier peut être complet sur le papier et inutilisable le jour où
+          il faut intervenir. Demandez donc des résultats observables. La
+          nouvelle équipe doit expliquer ce qu’elle a fait, ce qui a fonctionné
+          et ce qui reste incertain.
+        </p>
+
+        <GuideTable
+          headers={["Test", "Résultat attendu", "Si le test échoue"]}
+          rows={[
+            [
+              "Installer une copie du logiciel",
+              "L’application démarre sans utiliser la production",
+              "Documenter les dépendances et corriger l’installation",
+            ],
+            [
+              "Restaurer une sauvegarde récente",
+              "Les données attendues sont présentes et cohérentes",
+              "Revoir la fréquence, le stockage et la procédure de sauvegarde",
+            ],
+            [
+              "Rejouer trois opérations métier",
+              "Un utilisateur retrouve son travail habituel",
+              "Interroger les équipes et documenter les règles oubliées",
+            ],
+            [
+              "Publier une correction limitée",
+              "Le changement est testé et peut être annulé",
+              "Sécuriser la mise en ligne avant toute évolution importante",
+            ],
+            [
+              "Simuler l’absence d’un prestataire",
+              "L’entreprise garde ses comptes et ses contacts d’urgence",
+              "Transférer les comptes et nommer des remplaçants",
+            ],
+          ]}
+        />
+
+        <p>
+          Aucun score global ne doit masquer un échec important. Une sauvegarde
+          inutilisable n’est pas compensée par un code bien commenté. De même,
+          un hébergement accessible ne suffit pas si personne ne sait comment
+          une facture ou une commande est produite.
+        </p>
+
+        <h2 id="metier">
+          5. Comprendre le travail réel avant de corriger le logiciel
+        </h2>
+
+        <p>
+          Une application métier contient souvent des règles qui n’existent dans
+          aucun document : une remise exceptionnelle, un ordre de validation, un
+          export retravaillé chaque vendredi ou une alerte que seule une
+          personne sait interpréter. C’est là que se trouve une grande partie du
+          risque de reprise.
+        </p>
+
+        <p>
+          Choisissez trois à cinq opérations fréquentes et demandez à leurs
+          utilisateurs de les montrer du début à la fin. Pour chacune, notez :
+        </p>
+
+        <ul>
+          <li>qui commence l’opération et à quel moment ;</li>
+          <li>quelles informations entrent dans le logiciel ;</li>
+          <li>ce qui est vérifié ou corrigé manuellement ;</li>
+          <li>quel document, paiement ou message doit être produit ;</li>
+          <li>ce qui se passe lorsque l’opération échoue.</li>
+        </ul>
+
+        <p>
+          Ce travail évite deux erreurs coûteuses : réparer une fonction qui
+          n’est plus utilisée ou supprimer une particularité qui paraît étrange
+          mais protège une étape commerciale. Il fournit aussi une base solide
+          pour le futur{" "}
+          <Link href="/guides/cahier-des-charges-application-metier">
+            cahier des charges des évolutions
+          </Link>
+          .
         </p>
 
         <h2 id="donnees">
-          6. Données, sauvegardes et secrets : trois objets différents
+          6. Données, sauvegardes et mots de passe : les contrôles essentiels
         </h2>
 
         <p>
-          Une <strong>réplication</strong> recopie rapidement un état, y compris
-          parfois une suppression ou une corruption. Une{" "}
-          <strong>sauvegarde</strong> conserve un état récupérable selon une
-          politique. Un <strong>plan de reprise</strong> organise le
-          rétablissement des services, des dépendances et des responsabilités
-          dans un ordre compatible avec l’activité. Posséder l’un ne prouve pas
-          les deux autres.
+          Voir un fichier de sauvegarde ne prouve pas qu’il permettra de
+          redémarrer. Une restauration doit être réalisée sur une copie isolée,
+          avec une date connue et des contrôles métier simples : nombre de
+          clients, dernières commandes, documents joints et relations entre les
+          informations.
         </p>
 
+        <ul>
+          <li>
+            <strong>Fréquence :</strong> la perte maximale acceptable doit être
+            reliée au rythme réel de l’activité. Une sauvegarde hebdomadaire
+            peut être insuffisante pour une entreprise qui enregistre des
+            commandes chaque heure.
+          </li>
+          <li>
+            <strong>Emplacement :</strong> au moins une copie doit rester
+            séparée du service principal et protégée contre une suppression
+            accidentelle.
+          </li>
+          <li>
+            <strong>Accès :</strong> les mots de passe et clés techniques sont
+            conservés dans un gestionnaire adapté, jamais dans le code ou un
+            tableur partagé.
+          </li>
+          <li>
+            <strong>Données personnelles :</strong> les accès, sous-traitants,
+            transferts et mesures de sécurité doivent être cohérents avec les
+            obligations réellement applicables.
+          </li>
+        </ul>
+
         <p>
-          Pour chaque ensemble de données, écrivez la perte maximale que
-          l’entreprise peut accepter et l’interruption maximale qu’elle sait
-          absorber. Ce sont des décisions métier, pas des valeurs choisies par
-          le cloud. L’ANSSI recommande notamment de définir ces besoins, de
-          protéger une copie hors ligne, de tester les restaurations et de
-          conserver les configurations et procédures nécessaires dans son{" "}
-          <a
-            href="https://messervices.cyber.gouv.fr/documents-guides/anssi_fondamentaux_sauvegarde_systemes_dinformation_v1.1.pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
-            guide 2025 sur les sauvegardes des systèmes d’information
-          </a>
-          . Les mesures exactes restent à adapter au risque et à l’activité.
+          Les recommandations de l’ANSSI, de la CNIL, du NIST et de l’OWASP
+          citées en fin de guide donnent un cadre de contrôle. Elles ne
+          remplacent pas l’évaluation de votre activité ni, lorsque nécessaire,
+          un audit de sécurité spécialisé.
         </p>
 
-        <GuideTable
-          headers={["Contrôle", "Question à poser", "Test concret"]}
-          rows={[
-            [
-              "Périmètre",
-              "bases, fichiers, pièces jointes, historiques et configurations sont-ils couverts ?",
-              "rapprocher inventaire des données et catalogue de sauvegarde",
-            ],
-            [
-              "Isolement",
-              "une erreur ou un compte compromis peut-il atteindre toutes les copies ?",
-              "vérifier droits, séparation et copie protégée selon le risque",
-            ],
-            [
-              "Restauration",
-              "qui sait restaurer, dans quel ordre et avec quelles clés ?",
-              "reconstruire en environnement isolé et consigner durée et écarts",
-            ],
-            [
-              "Cohérence métier",
-              "la base ouverte contient-elle réellement les éléments indispensables ?",
-              "contrôler échantillon défini, relations et parcours critiques",
-            ],
-            [
-              "Sortie",
-              "les données peuvent-elles être restituées, comprises et réimportées ?",
-              "tester format, documentation, complétude et import limité",
-            ],
-          ]}
-        />
+        <h2 id="strategie">7. Faut-il stabiliser, migrer ou réécrire ?</h2>
 
         <p>
-          Les clés API, certificats, jetons et comptes de service suivent leur
-          propre cycle. Notez leur finalité, leur propriétaire, leurs
-          consommateurs, leurs droits, leur procédure de révocation et les
-          journaux disponibles. L’{" "}
-          <a
-            href="https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html"
-            target="_blank"
-            rel="noreferrer"
-          >
-            OWASP Secrets Management Cheat Sheet
-          </a>{" "}
-          décrit ces pratiques ; ce guide communautaire ne crée ni fréquence
-          universelle de rotation ni obligation contractuelle. Renouvelez ou
-          révoquez selon l’exposition, le transfert et le risque documentés.
-        </p>
-
-        <p>
-          Si le logiciel traite des données personnelles, le changement de
-          prestataire n’efface pas les responsabilités prévues par le RGPD. Les
-          articles 28 et 32 encadrent notamment la relation de sous-traitance,
-          la restitution ou suppression en fin de prestation dans leur
-          périmètre, les informations et audits prévus, ainsi que des mesures de
-          sécurité adaptées au risque et une capacité de rétablissement. Le{" "}
-          <a
-            href="https://eur-lex.europa.eu/eli/reg/2016/679/2016-05-04?locale=fr"
-            target="_blank"
-            rel="noreferrer"
-          >
-            texte consolidé est disponible sur EUR-Lex
-          </a>
-          . Il ne transfère pas à lui seul le code, le domaine ou les actifs non
-          personnels, et ne signifie pas que tout hébergement doit se situer
-          dans l’Union européenne dans tous les cas.
-        </p>
-
-        <h2 id="dette">
-          7. Prioriser la dette par risque métier, pas par goût technique
-        </h2>
-
-        <p>
-          La <strong>dette technique</strong> désigne ici un choix, un manque ou
-          une accumulation qui rend les changements et l’exploitation plus
-          risqués ou plus coûteux. Un framework ancien, beaucoup de lignes de
-          code, un faible taux de tests ou un style différent ne suffisent pas à
-          classer une application « à refaire ». La priorité relie un défaut
-          observable à une conséquence métier.
-        </p>
-
-        <GuideTable
-          headers={["Priorité", "Critère", "Exemples", "Décision"]}
-          rows={[
-            [
-              "P0 · Continuité menacée",
-              "impact critique, probable ou déjà présent, sans contournement sûr",
-              "perte de données, accès incontrôlé, production bloquée",
-              "sécuriser avec autorité, preuve et retour arrière",
-            ],
-            [
-              "P1 · Exploitation fragile",
-              "incident important, restauration ou livraison incertaine",
-              "déploiement manuel, alerte absente, dépendance abandonnée exposée",
-              "fermer avant les évolutions concernées",
-            ],
-            [
-              "P2 · Évolution coûteuse",
-              "la dette ralentit ou rend risquée une famille de changements",
-              "zone touchée à chaque demande, tests critiques manquants",
-              "traiter avec une évolution qui justifie le coût",
-            ],
-            [
-              "P3 · Confort",
-              "aucun impact métier démontré à court terme",
-              "nommage, style ou outil préféré par la nouvelle équipe",
-              "documenter, ne pas faire passer avant le risque",
-            ],
-          ]}
-        />
-
-        <p>
-          Pour chaque ligne, consignez impact, probabilité, détectabilité,
-          contournement, dépendances et condition de fermeture. Une anomalie
-          silencieuse peut être plus urgente qu’un défaut visible à impact égal.
-          Une procédure de mode dégradé réellement exercée peut réduire
-          l’urgence sans supprimer le problème.
-        </p>
-
-        <InfoBox
-          variant="amber"
-          title="Un scan automatique ne produit pas un verdict de sécurité"
-        >
-          Un inventaire de vulnérabilités ou une vérification fondée sur l’
-          <a
-            href="https://owasp.org/www-project-application-security-verification-standard/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            OWASP Application Security Verification Standard (ASVS)
-          </a>
-          , référentiel ouvert de contrôles pour les applications web, peut
-          révéler des éléments à examiner. Aucun outil, absence d’identifiant
-          public de vulnérabilité connu — souvent appelé CVE — ou référence à un
-          standard ne prouve à lui seul que l’application est certifiée sûre.
-          Demandez version du référentiel, périmètre, contrôles exécutés,
-          exclusions et contexte d’exploitation.
-        </InfoBox>
-
-        <h2 id="strategies">8. Reprendre, stabiliser, migrer ou réécrire ?</h2>
-
-        <p>
-          Les quatre trajectoires ne sont pas toujours exclusives. Stabiliser
-          peut précéder une reprise durable, une migration ou une réécriture.
-          L’arbitrage porte sur le chemin le moins risqué pour le besoin actuel,
-          pas sur la technologie préférée de l’équipe entrante.
+          La découverte de code ancien ne justifie pas automatiquement une
+          réécriture. Le bon choix dépend surtout de la continuité du service,
+          du coût des incidents, des évolutions attendues et de la capacité à
+          intervenir sans risque.
         </p>
 
         <GuideTable
           headers={[
-            "Trajectoire",
-            "Quand elle est cohérente",
-            "Preuve minimale",
+            "Situation observée",
+            "Décision raisonnable",
+            "Prochaine étape",
+          ]}
+          rows={[
+            [
+              "Le logiciel fonctionne et les accès sont maîtrisés",
+              "Reprise et maintenance progressive",
+              "Traiter les incidents puis planifier les évolutions utiles",
+            ],
+            [
+              "Le service fonctionne mais les mises en ligne sont risquées",
+              "Stabilisation",
+              "Sécuriser sauvegardes, tests et procédure de publication",
+            ],
+            [
+              "Une partie précise bloque la croissance",
+              "Migration progressive",
+              "Remplacer cette partie sans interrompre le reste",
+            ],
+            [
+              "Le logiciel ne peut plus être exploité de façon fiable",
+              "Étudier une réécriture ou un remplacement",
+              "Comparer coût, durée, migration des données et fonctionnement transitoire",
+            ],
+          ]}
+        />
+
+        <p>
+          Demandez plusieurs options chiffrées plutôt qu’un verdict
+          technologique. Pour un investissement important, le{" "}
+          <Link href="/guides/calculer-roi-application-metier">
+            calcul du retour sur investissement
+          </Link>{" "}
+          doit intégrer les incidents évités, le temps réellement économisé, la
+          migration et le coût de coexistence des deux systèmes.
+        </p>
+
+        <h2 id="contrat">
+          8. Le contrat doit protéger la continuité et la prochaine sortie
+        </h2>
+
+        <p>
+          La reprise technique ne règle pas automatiquement les droits
+          juridiques. Avant une modification non urgente, rassemblez contrats,
+          avenants, licences, factures et historique des contributeurs. En cas
+          de doute sérieux, demandez un avis juridique adapté : ce guide ne peut
+          pas décider qui possède quels droits.
+        </p>
+
+        <p>Le nouveau contrat devrait préciser au minimum :</p>
+
+        <ul>
+          <li>
+            les services réellement couverts et les horaires d’intervention ;
+          </li>
+          <li>la façon de déclarer, classer et suivre un incident ;</li>
+          <li>les sauvegardes, tests et responsabilités de chaque partie ;</li>
+          <li>la propriété et l’administration des comptes structurants ;</li>
+          <li>les documents tenus à jour pendant la mission ;</li>
+          <li>
+            ce qui sera remis à la sortie, dans quel format et dans quel délai ;
+          </li>
+          <li>les licences ou services tiers qui resteront à payer.</li>
+        </ul>
+
+        <p>
+          Le guide sur le{" "}
+          <Link href="/guides/contrat-tma-application">
+            contrat de maintenance applicative
+          </Link>{" "}
+          aide à tester ces clauses sur un incident concret avant de signer.
+        </p>
+
+        <h2 id="choisir-audit">
+          9. Comment comparer deux propositions de reprise ?
+        </h2>
+
+        <p>
+          Un audit utile ne vend pas immédiatement une refonte. Il dit ce qui
+          sera examiné, ce qui sera réellement essayé et ce que vous recevrez à
+          la fin.
+        </p>
+
+        <GuideTable
+          headers={[
+            "Question à poser",
+            "Réponse rassurante",
             "Signal d’alerte",
           ]}
           rows={[
             [
-              "Reprendre l’existant",
-              "besoin encore couvert, actifs maîtrisés et changements reproductibles",
-              "petite livraison et retour arrière réussis",
-              "dépendance persistante ou restauration non prouvée",
+              "Quels accès et documents allez-vous examiner ?",
+              "Une liste précise avec les responsables",
+              "« Tout le système » sans périmètre écrit",
             ],
             [
-              "Stabiliser d’abord",
-              "incidents, sauvegardes, alertes ou déploiements rendent l’évolution dangereuse",
-              "risques limités, critères de sortie et tests",
-              "stabilisation transformée en refonte sans fin",
+              "Allez-vous restaurer une sauvegarde ?",
+              "Oui, dans un environnement isolé",
+              "Simple vérification de la présence des fichiers",
             ],
             [
-              "Migrer progressivement",
-              "données et métier utiles, mais composant ou infrastructure durablement bloquants",
-              "lots autonomes, coexistence, rapprochement et retour arrière",
-              "big bang sans étape vérifiable",
+              "Comment comprendrez-vous le métier ?",
+              "Entretiens et observation de plusieurs opérations",
+              "Lecture du code uniquement",
             ],
             [
-              "Réécrire",
-              "besoin profondément changé ou socle durablement incompatible avec les exigences",
-              "cible, données, transition et coût total comparés",
-              "seul argument : code ancien ou peu élégant",
+              "Quel livrable recevrai-je ?",
+              "Risques, options, priorités, inconnues et plan d’action",
+              "Une note globale sans éléments vérifiables",
+            ],
+            [
+              "Que se passe-t-il si la reprise est trop risquée ?",
+              "Une phase de sécurisation ou des alternatives chiffrées",
+              "Maintenance normale promise avant tout examen",
             ],
           ]}
         />
 
-        <p>
-          Comparez ces réponses sur le même horizon : sécurisation,
-          exploitation, temps interne, double système, migration, formation et
-          sortie. Le guide pour{" "}
-          <Link href="/guides/calculer-roi-application-metier">
-            calculer le ROI d’une application métier
-          </Link>{" "}
-          aide à poser ces hypothèses sans remplacer l’inconnu par zéro. Un
-          résultat économique favorable ne compense jamais une donnée non
-          récupérable ou des droits non clarifiés.
-        </p>
-
-        <h2 id="contrat">
-          9. Contrat et réversibilité : les questions à faire clarifier
-        </h2>
-
-        <p>
-          La remise matérielle du code, le droit de l’utiliser, celui de le
-          modifier, les licences des composants et la propriété des comptes sont
-          des sujets distincts. En droit français, l’article L131-3 du{" "}
-          <a
-            href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Code de la propriété intellectuelle
-          </a>{" "}
-          prévoit notamment que chacun des droits cédés soit mentionné
-          distinctement et que son exploitation soit délimitée. L’
-          <a
-            href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039279818"
-            target="_blank"
-            rel="noreferrer"
-          >
-            article L113-9
-          </a>{" "}
-          prévoit un régime particulier pour certains logiciels créés par des
-          salariés, tandis que l’
-          <a
-            href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278919"
-            target="_blank"
-            rel="noreferrer"
-          >
-            article L122-6
-          </a>{" "}
-          décrit des droits d’exploitation du logiciel. Ces textes ne permettent
-          pas de conclure sur un contrat isolé, un prestataire externe ou toute
-          la chaîne de contributeurs.
-        </p>
-
-        <GuideTable
-          headers={["Sujet", "Questions à résoudre", "Preuve ou livrable"]}
-          rows={[
-            [
-              "Périmètre",
-              "applications, environnements, interfaces et horaires couverts ?",
-              "annexe d’actifs et responsabilités sans zone implicite",
-            ],
-            [
-              "Droits et licences",
-              "qui peut utiliser, modifier, faire maintenir et sous quelles limites ?",
-              "contrats, avenants, licences tierces et analyse adaptée",
-            ],
-            [
-              "Comptes et sous-traitants",
-              "qui contracte, paie, administre et peut transférer ?",
-              "organisation propriétaire et droits nominatifs",
-            ],
-            [
-              "Données",
-              "quoi restituer, dans quel format, avec quelle assistance et suppression ?",
-              "procédure testable, contrôles et calendrier",
-            ],
-            [
-              "Incidents",
-              "qui décide, intervient, informe et supporte le retour arrière ?",
-              "niveaux de service, exclusions et escalade",
-            ],
-            [
-              "Réversibilité",
-              "que reçoit l’entreprise à la sortie, quand et à quel coût ?",
-              "formats, accès, transmission et test de sortie",
-            ],
+        <GuideInlineCTA
+          title="Besoin de savoir si votre logiciel peut être repris ?"
+          description="Nous examinons les accès, la remise en route, les sauvegardes et les opérations essentielles avant de proposer une maintenance ou une évolution. Vous obtenez un diagnostic compréhensible, les risques à traiter et plusieurs options pour la suite."
+          tags={[
+            "Accès et sauvegardes contrôlés",
+            "Risques expliqués sans jargon",
+            "Maintenance proposée seulement si elle est raisonnable",
           ]}
         />
 
-        <InfoBox variant="amber" title="Ce guide ne tranche pas vos droits">
-          Rassemblez contrats, avenants, factures, licences open source ou
-          commerciales et historique des contributeurs. Faites vérifier
-          séparément salariés, prestataires, sous-traitants et composants tiers
-          par un professionnel compétent. Le guide sur la{" "}
-          <Link href="/guides/proprietaire-site-internet-code-source">
-            propriété du code source et des accès
-          </Link>{" "}
-          donne une première cartographie, pas un avis juridique individuel.
+        <h2 id="plan">10. Un plan de reprise adaptable à votre situation</h2>
+
+        <p>
+          Le calendrier dépend de la taille du logiciel et de l’urgence. L’ordre
+          des décisions reste cependant assez stable :
+        </p>
+
+        <ol>
+          <li>
+            <strong>Sécuriser la continuité.</strong> Identifier les services
+            indispensables, les incidents en cours, les personnes à joindre et
+            les accès à protéger.
+          </li>
+          <li>
+            <strong>Rassembler les actifs.</strong> Centraliser code, comptes,
+            sauvegardes, contrats, fournisseurs et documents existants.
+          </li>
+          <li>
+            <strong>Remettre une copie en fonctionnement.</strong> Installer le
+            logiciel et restaurer des données sans toucher à la production.
+          </li>
+          <li>
+            <strong>Observer le métier.</strong> Rejouer plusieurs opérations
+            avec leurs utilisateurs et documenter les exceptions importantes.
+          </li>
+          <li>
+            <strong>Réaliser une première correction limitée.</strong> Tester la
+            mise en ligne et le retour arrière avant un changement plus
+            ambitieux.
+          </li>
+          <li>
+            <strong>Présenter les options à la direction.</strong> Distinguer ce
+            qui doit être sécurisé maintenant, ce qui peut attendre et ce qui
+            mérite un investissement séparé.
+          </li>
+        </ol>
+
+        <InfoBox variant="emerald" title="La décision attendue">
+          À la fin de cette phase, vous devez pouvoir choisir entre trois
+          réponses compréhensibles : reprendre et maintenir, stabiliser avant
+          d’évoluer, ou préparer un remplacement progressif. Les inconnues
+          restantes doivent être nommées ; elles ne doivent jamais être cachées
+          derrière une note globale.
         </InfoBox>
 
         <p>
-          Le{" "}
-          <a
-            href="https://www.cnil.fr/sites/default/files/2024-03/cnil_guide_securite_personnelle_2024.pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Guide de la sécurité des données personnelles 2024 de la CNIL
-          </a>{" "}
-          recommande, dans le périmètre de la sous-traitance de données
-          personnelles, de préciser notamment responsabilités, authentification,
-          incidents, assistance, restitution ou destruction et audit des
-          mesures. Pour la télémaintenance, il recommande aussi d’encadrer la
-          durée d’accès, de le refermer après intervention et de consigner les
-          opérations. Ces recommandations sont à adapter au système et au
-          risque.
-        </p>
-
-        <h2 id="audit">10. Comparer deux propositions d’audit de reprise</h2>
-
-        <p>
-          Un audit se compare moins au nombre de jours qu’à la décision qu’il
-          rend possible. Aucun délai universel ne convient à la fois à un outil
-          isolé et à une plateforme qui facture, échange avec dix services et
-          fonctionne en continu. Demandez de distinguer les entrées nécessaires,
-          le périmètre observé, les exclusions et les tests inclus.
-        </p>
-
-        <GuideTable
-          headers={["Question", "Réponse utile", "Réponse insuffisante"]}
-          rows={[
-            [
-              "Que faut-il avant de commencer ?",
-              "liste par porte, niveaux d’accès, données de test et interlocuteurs",
-              "le code source uniquement",
-            ],
-            [
-              "Qu’allez-vous exécuter ?",
-              "clone, construction, restauration, parcours, préproduction et retour arrière selon le périmètre",
-              "analyse complète sans protocole",
-            ],
-            [
-              "Quelles exclusions ?",
-              "juridique, cyber approfondi, performance ou fonctionnel clairement délimités",
-              "tout sera vérifié",
-            ],
-            [
-              "Quels livrables restent au client ?",
-              "coffre, preuves, inconnues, dette, procédures et décisions",
-              "une restitution orale",
-            ],
-            [
-              "Qu’est-ce qui bloque la maintenance ?",
-              "portes rouges et responsabilités non maîtrisées",
-              "aucun risque avant examen",
-            ],
-            [
-              "Comment pourra-t-on vous remplacer ?",
-              "comptes client, formats de sortie, documentation et assistance",
-              "partenaire de long terme sans sortie détaillée",
-            ],
-          ]}
-        />
-
-        <p>
-          Le rapport final sépare faits observés, tests réussis, tests échoués,
-          limites, interprétations et recommandations. Il nomme aussi les motifs
-          de refus : incident actif, litige de propriété, accès refusés ou
-          périmètre exigeant des compétences non couvertes. Une certification
-          cyber, un avis juridique, une absence totale de dette ou un délai
-          garanti n’y sont pas sous-entendus.
-        </p>
-
-        <p>
-          Hagnéré Code vend des audits, de la maintenance et du développement :
-          ce conflit d’intérêt est explicite. La méthode doit permettre de
-          conclure à une stabilisation limitée, une migration, une réécriture
-          différée, au maintien avec l’équipe actuelle ou à un refus de reprise.
-          Sinon, l’audit n’est qu’un devis plus long.
-        </p>
-
-        <GuideInlineCTA
-          title="Cadrer un audit de reprise avant de signer une maintenance"
-          description="Décrivez l’usage critique, les incidents connus, l’équipe sortante et les accès déjà détenus. Nous préciserons d’abord le périmètre vérifiable, les limites et les livrables ; la maintenance n’est pas acceptée avant cet examen."
-          tags={["Périmètre écrit", "Preuves exécutées", "Sortie documentée"]}
-          ctaLabel="Décrire le logiciel à reprendre"
-          ctaHref="/demarrer-un-projet"
-        />
-
-        <h2 id="trente-jours">
-          11. Un plan adaptable sur les trente premiers jours
-        </h2>
-
-        <p>
-          La chronologie suivante est un cadre pédagogique, jamais une promesse.
-          Sa durée dépend du nombre d’actifs, des accès, de la criticité et des
-          tests autorisés. Le principe utile est la succession des décisions :
-          sécuriser avant de stabiliser, stabiliser avant d’accélérer.
-        </p>
-
-        <GuideTable
-          headers={["Période indicative", "Travail", "Livrable", "Décision"]}
-          rows={[
-            [
-              "Jours 1 à 3",
-              "responsable, gel, actifs, comptes, données et fenêtres critiques",
-              "coffre initial et cinq portes documentées",
-              "peut-on poursuivre sans aggraver la continuité ?",
-            ],
-            [
-              "Fin de semaine 1",
-              "clone, construction, environnements et version de production",
-              "procédure reproductible et inconnues",
-              "l’équipe peut-elle reproduire le logiciel ?",
-            ],
-            [
-              "Semaine 2",
-              "restauration, parcours, secrets, habilitations et alertes",
-              "résultats de restauration et risques prioritaires",
-              "données et exploitation sont-elles maîtrisables ?",
-            ],
-            [
-              "Semaine 3",
-              "petite correction, recette, livraison et retour arrière",
-              "preuve de changement réversible",
-              "une maintenance limitée peut-elle commencer ?",
-            ],
-            [
-              "Semaine 4",
-              "restitution, contrat, dette et trajectoires",
-              "dossier client et recommandation motivée",
-              "reprendre, stabiliser, migrer, réécrire ou reporter ?",
-            ],
-          ]}
-        />
-
-        <p>
-          Si une preuve critique échoue, la chronologie s’arrête et devient un
-          plan de sécurisation. La décision peut être « poursuivre sous
-          conditions », à condition de nommer la limite, le responsable et la
-          preuve suivante. N’empilez pas des changements sur un état que
-          personne ne sait encore restaurer.
-        </p>
-
-        <h2 id="decision">
-          12. Décider sans transformer l’audit en permission automatique
-        </h2>
-
-        <p>
-          La conclusion tient en une phrase contrôlable : trajectoire retenue,
-          portes encore ambre ou rouges, changements autorisés, risques acceptés
-          par la direction, propriétaire interne, preuve suivante et date de
-          réexamen. Le mot « reprise » ne doit pas cacher une investigation
-          encore ouverte.
-        </p>
-
-        <GuideTable
-          headers={["Verdict", "Conditions observables", "Action suivante"]}
-          rows={[
-            [
-              "Reprise acceptée",
-              "portes maîtrisées au niveau requis, changement réversible et responsabilités écrites",
-              "maintenance mesurée avec suivi et revue des accès",
-            ],
-            [
-              "Reprise sous conditions",
-              "continuité protégée, mais preuves non critiques encore partielles",
-              "limiter le périmètre et fermer chaque condition",
-            ],
-            [
-              "Stabilisation uniquement",
-              "données, livraison, alertes ou incidents empêchent le fonctionnement normal",
-              "traiter les risques prioritaires avec critères de sortie",
-            ],
-            [
-              "Migration ou réécriture à étudier",
-              "blocage durable démontré et alternatives comparées",
-              "cadrer un lot réversible sans abandon prématuré",
-            ],
-            [
-              "Report ou autre dispositif",
-              "droits non clarifiés, accès refusés, incident actif ou compétence non couverte",
-              "obtenir l’autorité, la réponse spécialisée ou la preuve",
-            ],
-          ]}
-        />
-
-        <p>
-          Votre action autonome tient en trois gestes : nommez un propriétaire
-          interne, placez une preuve exécutée devant chacune des cinq portes,
-          puis identifiez la première porte rouge. Tant qu’elle le reste, ne
-          demandez pas « combien coûte la maintenance ? », mais « quel test sûr
-          permet de fermer ce risque ? ». Ce dossier restera comparable entre
-          prestataires et réutilisable lors d’une future sortie.
+          Vous pouvez commencer sans prestataire en nommant un responsable
+          interne et en rassemblant les comptes, contrats, sauvegardes et
+          contacts utiles. Pour faire examiner l’application, consultez notre{" "}
+          <Link href="/services/audit-technique">
+            service d’audit technique
+          </Link>{" "}
+          ou décrivez la situation depuis la page{" "}
+          <Link href="/demarrer-un-projet">démarrer un projet</Link>.
         </p>
 
         <h2 id="sources">Sources et limites</h2>

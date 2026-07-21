@@ -69,15 +69,15 @@ export default function OgImage() {
           Comment rédiger un cahier des charges de site internet
         </div>
         <div style={{ display: "flex", fontSize: 30, color: "#a1a1aa" }}>
-          Méthode en 13 étapes · rubriques, budget, recette et erreurs à éviter
+          Quoi écrire avant de demander des devis ?
         </div>
       </div>
 
       <div style={{ display: "flex", gap: 14 }}>
         {[
-          "10 questions clés",
-          "18 rubriques expliquées",
-          "7 erreurs à éviter",
+          "Choisir le bon niveau de détail",
+          "Répartir les responsabilités",
+          "Comparer les devis",
         ].map((t) => (
           <div
             key={t}

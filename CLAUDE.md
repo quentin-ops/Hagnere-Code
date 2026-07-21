@@ -46,13 +46,13 @@ Il est **interdit** de créer :
 chiffre inventé.** Cette règle prime sur toute considération commerciale
 ou esthétique, et sur toute imitation d'une section existante.
 
-*Contexte : un audit du 19/07/2026 a trouvé 30 faux témoignages sur
+_Contexte : un audit du 19/07/2026 a trouvé 30 faux témoignages sur
 8 pages, des métriques clients fabriquées et un historique de plusieurs
 années pour une société de 9 mois. Risque juridique réel — art. L121-2 et
 L121-5 du code de la consommation, qui couvre le B2B, et art. L111-7-2 sur
 les avis en ligne. Risque commercial supérieur : les guides du site
 démontent précisément « les chiffres publiés par celui qui vend la
-solution ».*
+solution »._
 
 ## Règle obligatoire — contenu éditorial
 
@@ -69,9 +69,19 @@ d'une page existante.
 [docs/charte-qualite-guides.md](docs/charte-qualite-guides.md).**
 Cette charte définit le pipeline complet (étude des concurrents, recherche
 sourcée multi-agents, chartes pédagogique et SEO, batterie de vérification,
-contre-vérification par panel ≥ 8,5/10, audit de production). Elle prime
-sur toute habitude ou imitation d'un guide existant. La liste des sujets
-est dans [docs/roadmap-guides-seo.md](docs/roadmap-guides-seo.md).
+contre-audit indépendant, audit de production). Elle prime sur toute habitude
+ou imitation d'un guide existant. Une relecture par des agents n'est jamais
+présentée comme un test réalisé par de vrais dirigeants : si aucun lecteur
+extérieur n'a participé, le dossier de recherche doit l'indiquer explicitement.
+
+**Pour créer un guide ou mener une réécriture substantielle, suivre ensuite
+intégralement
+[docs/workflow-maitre-guides-4-passes.md](docs/workflow-maitre-guides-4-passes.md).**
+Ce workflow transforme la charte en quatre passes séquentielles sur un seul
+guide : création, vérification factuelle, polish humain, puis contre-audit et
+contrôle final. Une passe ne valide jamais automatiquement la suivante.
+La liste des sujets est dans
+[docs/roadmap-guides-seo.md](docs/roadmap-guides-seo.md).
 
 ## Repères techniques
 

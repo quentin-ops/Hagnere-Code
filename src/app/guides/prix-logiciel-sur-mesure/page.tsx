@@ -111,70 +111,42 @@ const faqItems = [
   {
     question: "Quel est le prix d'un logiciel sur mesure ?",
     answer:
-      "Quatre grilles commerciales françaises relevées le 20 juillet 2026 publient 5 000 à 40 000 € pour leurs catégories simples et 15 000 à 120 000 € pour leurs catégories intermédiaires ou métier. Leurs catégories complexes commencent, selon la définition retenue, entre 30 000 et 150 000 €, et montent jusqu'à 400 000 € ou plus. Ce ne sont ni un échantillon statistique ni des budgets clients vérifiés. Pour construire un premier scénario comparable, le guide retient 5 000–15 000 €, 15 000–60 000 € et 60 000–250 000 €, à remplacer par des devis au même périmètre.",
-  },
-  {
-    question: "Combien coûte le développement d'un logiciel de gestion ?",
-    answer:
-      "Dans les hypothèses de planification de ce guide, un suivi de stock ou de commandes simple se situe entre 8 000 et 30 000 €, une gestion plus complète entre 20 000 et 60 000 €, et un ERP simplifié entre 50 000 et 120 000 €. Ce ne sont pas des moyennes de marché : faites chiffrer les rôles, les règles métier, les données et chaque connexion à l'existant en jours par profil.",
+      "Pour préparer un budget, retenez environ 5 000 à 15 000 € pour un outil interne simple, 15 000 à 60 000 € pour un logiciel métier et davantage pour une plateforme complexe. Ces fourchettes synthétisent quatre grilles commerciales françaises relevées le 20 juillet 2026 ; elles ne remplacent pas des devis établis sur le même besoin.",
   },
   {
     question: "Comment est calculé le prix d'un logiciel ?",
     answer:
-      "Divisez chaque poste par le nombre de jours annoncé pour obtenir son taux journalier implicite, puis comparez ce taux et la charge avec les profils réellement mobilisés. L’exemple de ce guide utilise 650 € HT par jour comme hypothèse pédagogique, ni comme moyenne nationale ni comme tarif universel. À ce taux, un « logiciel complet à 3 000 € » représente moins de cinq jours : demandez alors quels cadrage, tests, données, sécurité et transfert sont réellement inclus.",
+      "Le prestataire estime le travail par poste, puis applique ses taux et ajoute les services, licences et risques inclus dans son forfait. Demandez le détail de la compréhension du besoin, des écrans, des connexions, des tests, de la reprise de données, de la formation et de la mise en service.",
   },
   {
     question: "Logiciel sur mesure ou SaaS : comment choisir ?",
     answer:
-      "Il n’existe pas de seuil universel d’utilisateurs ou d’années. On s’abonne généralement pour un besoin standard bien couvert ; on chiffre le sur-mesure lorsqu’une règle métier différenciante ou un contournement coûteux le justifie. Comparez les deux options sur la même durée, les mêmes fonctions, le temps interne, la maintenance et la sortie. Pour un CRM, notre guide dédié fournit une grille sur 36 mois à compléter avec vos devis.",
+      "Choisissez un logiciel par abonnement si votre besoin est standard et bien couvert. Étudiez le sur-mesure si une règle propre à votre entreprise ou des contournements coûteux le justifient. Comparez fonctions, coût complet, temps interne et possibilité de changer de solution sur la même durée.",
   },
   {
     question: "Combien coûte la maintenance d'un logiciel sur mesure ?",
     answer:
-      "Comme hypothèse de planification, ce guide retient 10 à 25 % du coût initial par an pour correctifs, sécurité et évolutions. Ce n'est pas une règle statistique : le montant dépend du niveau de service, des dépendances et du rythme d'évolution. Pour un outil à 30 000 €, la simulation donne 3 000 à 7 500 €/an, auxquels s'ajoute un hébergement chiffré selon l'usage. Exigez les prestations, délais d'intervention et exclusions plutôt qu'un simple pourcentage.",
-  },
-  {
-    question: "Peut-on créer un logiciel de gestion avec Excel ou Access ?",
-    answer:
-      "Oui — c'est même souvent la bonne première étape. Mais connaissez les limites : les travaux académiques reliés dans les sources concluent que les erreurs de tableur sont courantes, difficiles à détecter et non triviales, sans permettre d'appliquer un pourcentage universel à votre fichier. Les signaux qu'il est temps de changer : le fichier ne marche que pour son auteur, les versions se contredisent, les macros cassent et la ressaisie consomme des heures chaque semaine.",
+      "Pour une première simulation, ce guide retient 10 à 25 % du coût initial par an, plus l'hébergement. Ce n'est pas une règle de marché : exigez le contenu du service, les délais d'intervention, les évolutions incluses et les exclusions.",
   },
   {
     question:
       "Combien coûte le remplacement d'un vieux logiciel (Access, VB6, WinDev) ?",
     answer:
-      "Trois niveaux d'intervention : une reprise-stabilisation, une modernisation progressive module par module, ou une refonte avec reprise des données. Les durées et budgets de ce guide sont des ordres de grandeur à cadrer. Une bascule générale concentre données, formation et continuité métier le même jour ; une migration progressive réduit souvent cette concentration de risques, sans être obligatoire dans tous les contextes.",
+      "Faites chiffrer trois options : stabiliser l'existant, remplacer progressivement les fonctions les plus risquées ou refaire l'outil avec reprise des données. Le bon budget dépend surtout de l'accès au code, de la qualité des données et de la durée de coexistence des deux systèmes.",
   },
   {
     question:
       "Combien de temps faut-il pour développer un logiciel sur mesure ?",
     answer:
-      "Avec une équipe expérimentée : 3 à 8 semaines pour un outil interne simple, 2 à 6 mois pour un logiciel métier complet, 6 mois et plus pour une plateforme. Le vrai facteur de délai n'est pas le code : c'est la disponibilité de vos équipes pour montrer leurs processus réels, tester les versions intermédiaires et trancher les décisions. Des décisions rapides et un interlocuteur disponible réduisent les temps d'attente, sans permettre de promettre un délai universel.",
-  },
-  {
-    question: "L'IA permet-elle de créer un logiciel moins cher ?",
-    answer:
-      "Oui pour certaines tâches de code standard, pas automatiquement pour un projet complet — et méfiez-vous des promesses de division par dix. Les essais reliés dans les sources de ce guide mesurent aussi bien une accélération sur une tâche cadrée qu'un ralentissement sur du code complexe. Ce que l'IA ne réduit pas automatiquement : comprendre votre métier, concevoir les bons écrans, connecter vos outils et fiabiliser. Chez Hagnéré Code, elle reste un outil de production avec revue humaine ; nous ne présentons pas ce gain interne comme la preuve causale d'une remise commerciale systématique.",
+      "Pour préparer le calendrier, nos scénarios retiennent 3 à 8 semaines pour un outil interne simple, 2 à 6 mois pour un logiciel métier et davantage pour une plateforme. Ce ne sont pas des délais de marché : le planning du devis doit intégrer les fonctions, les données et la disponibilité de vos équipes pour expliquer le travail, tester et décider.",
   },
   {
     question:
       "À qui appartient le code d'un logiciel développé par un prestataire ?",
     answer:
-      "Pour un logiciel commandé à un prestataire externe, payer les factures ne transfère pas automatiquement tous les droits. En droit français, il faut identifier les auteurs, l'éventuel employeur titulaire et les licences tierces. Le contrat organise ensuite une cession ou une licence adaptée à l'usage attendu ; l'article L.131-3 encadre notamment la cession. Faites inventorier cette chaîne de droits et valider la clause juridiquement avant de signer.",
-  },
-  {
-    question:
-      "Quel est le retour sur investissement d'un logiciel sur mesure ?",
-    answer:
-      "Commencez par valoriser seulement les heures réellement réaffectées ou les coûts évités, puis appliquez la formule : (bénéfices cumulés attribuables − coût total) / coût total × 100. Exemple illustratif : 5 heures réellement réaffectées par semaine pour 3 salariés, sur 47 semaines à 44,70 €/h, représentent environ 31 500 € de capacité annuelle. Ce coût horaire 2025 publié par l’Insee couvre les entreprises marchandes d’au moins 10 salariés : remplacez-le par votre coût réel. Le délai de retour et les bénéfices non monétaires se présentent séparément.",
-  },
-  {
-    question:
-      "Combien coûte une connexion entre deux logiciels (intégration) ?",
-    answer:
-      "Faites chiffrer séparément l'authentification, les données à lire et écrire, les règles d'erreur, les tests et la supervision. Une grille commerciale citée dans ce guide estime 2 à 15 jours par intégration ; avec l'hypothèse pédagogique de 650 € HT par jour, cela représente 1 300 à 9 750 € avant abonnement, aléa et maintenance. Remplacez cette simulation par la documentation de l'API et le taux du devis : le nom « paiement », « CRM » ou « ERP » ne suffit pas à fixer un prix.",
+      "Payer la facture ne transfère pas automatiquement tous les droits. Le contrat doit préciser la cession ou la licence, la remise du code et des accès, ainsi que les composants tiers qui gardent leur propre licence. Faites valider cette clause selon votre projet.",
   },
 ];
-
 
 export default function Page() {
   return (
@@ -197,7 +169,7 @@ export default function Page() {
           { label: "Prix d'un logiciel sur mesure" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="La grille 2026 par type d'outil et la méthode jours × taux journalier pour vérifier un devis. Distinguez le TCO illustratif sur 3 ans du comparatif de scénarios sur 5 ans, puis calculez correctement le retour sur investissement. Un exemple de devis et la propriété du code sont expliqués ligne à ligne."
+        heroDescription="Vous envisagez un logiciel pour supprimer des ressaisies, fiabiliser un processus ou remplacer un vieux fichier ? Voici les budgets à prévoir, les alternatives à comparer et les questions à poser avant de signer un devis."
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
@@ -266,26 +238,24 @@ export default function Page() {
         faqItems={faqItems}
       >
         <p className="lead">
-          Pour le même besoin, une agence vous répond 5 000 € et une autre 150
-          000 €. L&apos;écart peut être justifié par le périmètre — ou masquer
-          des postes absents. Ce guide donne{" "}
-          <strong>
-            les fourchettes indicatives 2026, la méthode pour vérifier un devis
-            en une multiplication, et le calcul qui compte vraiment : ce que
-            l&apos;absence d&apos;outil vous coûte déjà
-          </strong>
-          .
+          Vous cherchez à savoir combien coûterait un logiciel adapté à votre
+          entreprise, et surtout si cet investissement en vaut la peine. La
+          réponse courte : un outil simple peut démarrer autour de 5 000 à 15
+          000 €, mais un abonnement existant, une automatisation ou
+          l&apos;amélioration de votre fichier actuel peuvent être de meilleurs
+          choix. Ce guide vous aide à comparer ces options, comprendre un devis
+          sans jargon et calculer le coût complet avant de décider.
         </p>
 
         <GuideToc
           items={[
             {
               id: "reponse-rapide",
-              label: "1. La réponse rapide : les fourchettes 2026",
+              label: "1. Quel budget prévoir ?",
             },
             {
               id: "de-quoi-parle-t-on",
-              label: "2. Sur mesure, SaaS, no-code, Excel : de quoi parle-t-on",
+              label: "2. Les solutions à comparer",
             },
             {
               id: "cout-actuel",
@@ -297,270 +267,151 @@ export default function Page() {
             },
             {
               id: "ecart-devis",
-              label: "5. Pourquoi les devis vont de 5 000 à 150 000 €",
-            },
-            {
-              id: "methode-tjm",
-              label: "6. La méthode jours × TJM pour vérifier un devis",
+              label: "5. Pourquoi deux devis peuvent tant varier",
             },
             {
               id: "devis",
-              label: "7. Un exemple de devis, décortiqué ligne à ligne",
+              label: "6. Lire un devis ligne par ligne",
             },
             {
               id: "tco",
-              label:
-                "8. Le vrai coût sur 3 ans (maintenance, hébergement, coûts cachés)",
-            },
-            {
-              id: "match",
-              label: "9. Sur mesure, SaaS ou Excel : le match chiffré",
-            },
-            {
-              id: "ia",
-              label: "10. Ce que l'IA change vraiment aux prix (2026)",
-            },
-            {
-              id: "legacy",
-              label: "11. Remplacer un vieux logiciel (Access, Excel, WinDev…)",
+              label: "7. Comparer le coût total et les alternatives",
             },
             {
               id: "juridique",
-              label: "12. Propriété du code et reprise",
-            },
-            {
-              id: "methode",
-              label: "13. Méthode : payer le juste prix en 5 étapes",
+              label: "8. Propriété du code et reprise",
             },
             {
               id: "sources",
-              label: "Sources, périmètres et limites",
+              label: "Sources et limites",
             },
           ]}
         />
 
-        <h2 id="reponse-rapide">1. La réponse rapide : les fourchettes 2026</h2>
+        <h2 id="reponse-rapide">1. Quel budget prévoir ?</h2>
         <p>
-          À titre de scénarios de planification, notre relevé daté de quatre
-          grilles commerciales françaises situe en 2026 un logiciel sur mesure à{" "}
+          Pour construire un premier budget, notre relevé de quatre grilles
+          commerciales françaises situe en 2026 un logiciel sur mesure à{" "}
           <strong>5 000 à 15 000 € pour un outil interne simple</strong> (un
           processus digitalisé, quelques écrans),{" "}
           <strong>15 000 à 60 000 € pour un logiciel métier complet</strong>{" "}
           (rôles, planning, connexions à vos outils), et{" "}
-          <strong>60 000 à 250 000 € pour une plateforme</strong> (ERP sur
-          mesure, portail multi-services). Les quatre sources commerciales sont
-          nommées en fin de guide ; elles ne forment ni échantillon statistique
-          ni médiane de budgets signés. S&apos;y ajoutent, dans nos simulations,
-          une hypothèse de maintenance de 10 à 25 % du coût initial par an et un
-          hébergement de 40 à 100 €/mois, à remplacer par les contrats réels. La{" "}
+          <strong>60 000 à 250 000 € pour une plateforme</strong> (outil reliant
+          plusieurs activités, portail multi-services). Ces montants servent à
+          préparer une discussion, pas à prédire votre devis : les sources sont
+          des prestataires, pas une étude statistique. S&apos;y ajoutent, dans
+          nos simulations, une hypothèse de maintenance de 10 à 25 % du coût
+          initial par an et un hébergement de 40 à 100 €/mois, à remplacer par
+          les contrats réels. La{" "}
           <Link href="/tarifs">page Tarifs Hagnéré Code</Link> affiche
           séparément les offres publiques à jour ; seul un devis nominatif
-          engage les parties.
+          engage les parties. Les délais du tableau sont, eux aussi, des
+          scénarios de planification Hagnéré : ils supposent que les décisions,
+          les contenus et les accès aux logiciels existants arrivent sans
+          blocage. Faites-les remplacer par un calendrier construit à partir de
+          votre projet.
         </p>
         <GuideTable
           headers={[
-            "Type de logiciel",
-            "Budget 2026",
-            "Délai typique",
-            "Exemples",
+            "Votre besoin",
+            "Budget et délai à confirmer",
+            "Fonctions supposées",
           ]}
           rows={[
             [
-              "Outil interne simple",
-              "5 000 – 15 000 €",
-              "3 – 8 semaines",
-              "Suivi de commandes, registre, formulaires métier",
+              "Suivre un processus interne simple",
+              "5 000 – 15 000 € ; scénario de 3 à 8 semaines",
+              "Quelques écrans, formulaires et règles métier",
             ],
             [
-              "Logiciel métier complet",
-              "15 000 – 60 000 €",
-              "2 – 6 mois",
-              "Gestion clients + devis + planning + facturation",
+              "Relier plusieurs étapes du métier",
+              "15 000 – 60 000 € ; scénario de 2 à 6 mois",
+              "Rôles, planning, documents et connexions aux outils",
             ],
             [
-              "Portail client / extranet",
-              "18 000 – 70 000 €",
-              "2 – 4 mois",
-              "Espace où vos clients suivent leurs dossiers",
+              "Ouvrir un espace à vos clients",
+              "18 000 – 70 000 € ; scénario de 2 à 4 mois",
+              "Comptes, dossiers, documents, notifications ou paiement",
             ],
             [
-              "Plateforme / ERP sur mesure",
-              "60 000 – 250 000 €",
-              "6 – 18 mois",
-              "Tous les processus de l'entreprise reliés",
+              "Relier plusieurs services de l'entreprise",
+              "60 000 – 250 000 € ; scénario de 6 à 18 mois",
+              "Processus multiples, droits fins, connexions et reprise de données",
             ],
             [
-              "Automatisation entre outils existants",
-              "500 – 5 000 € par flux",
-              "1 – 4 semaines",
-              "Devis signé → facture créée → client prévenu",
+              "Éviter une ressaisie entre deux outils",
+              "500 – 5 000 € par automatisation ; scénario de 1 à 4 semaines",
+              "Exemple : un devis signé crée la facture et prévient le client",
             ],
           ]}
         />
 
         <InfoBox
           variant="blue"
-          title="Les 10 mots de ce guide, traduits en français courant"
+          title="Ne choisissez pas la technologie avant le problème"
         >
-          <ul className="list-disc pl-4 space-y-1.5">
-            <li>
-              <strong>Logiciel sur mesure</strong> : un programme construit pour
-              vos processus à vous ; le contrat décide des droits qui vous sont
-              cédés.
-            </li>
-            <li>
-              <strong>SaaS</strong> : un logiciel loué par abonnement, souvent
-              facturé par utilisateur.
-            </li>
-            <li>
-              <strong>No-code</strong> : des outils pour assembler une
-              application sans programmer ; son fonctionnement reste dépendant
-              de la plateforme.
-            </li>
-            <li>
-              <strong>TJM</strong> : le taux journalier d&apos;un développeur —
-              le prix facturé pour une journée de travail.
-            </li>
-            <li>
-              <strong>Intégration</strong> : la connexion entre deux logiciels
-              pour qu&apos;ils échangent leurs données sans ressaisie.
-            </li>
-            <li>
-              <strong>API</strong> : la « prise » standardisée sur laquelle se
-              branche une intégration.
-            </li>
-            <li>
-              <strong>MVP</strong> : une première version volontairement réduite
-              à l&apos;essentiel, pour démarrer vite.
-            </li>
-            <li>
-              <strong>Maintenance</strong>, éventuellement confiée à un tiers
-              sous contrat de tierce maintenance applicative (TMA) :
-              l&apos;entretien du logiciel après sa mise en service —
-              correctifs, sécurité, petites évolutions.
-            </li>
-            <li>
-              <strong>Reprise de données</strong> : le transfert de vos données
-              actuelles (Excel, ancien logiciel) vers le nouveau.
-            </li>
-            <li>
-              <strong>
-                Cession de droits sur les développements spécifiques
-              </strong>{" "}
-              : la clause écrite qui organise les droits transmis ; les briques
-              tierces gardent leurs licences (section 12).
-            </li>
-          </ul>
+          Commencez par une phrase très concrète : « cinq personnes
+          ressaisissent les mêmes commandes dans trois outils et nous perdons
+          environ dix heures par semaine ». Cette phrase permet de tester quatre
+          réponses : conserver et sécuriser l&apos;existant, automatiser une
+          étape, acheter un logiciel déjà prêt ou construire du sur-mesure. Les
+          termes techniques sont expliqués au moment où ils deviennent utiles.
         </InfoBox>
 
         <h2 id="de-quoi-parle-t-on">
-          2. Sur mesure, SaaS, no-code, Excel : de quoi parle-t-on
+          2. Les solutions à comparer avant de développer
         </h2>
         <p>
-          Ces quatre options déplacent le coût, la capacité d&apos;adaptation et
-          la dépendance. Aucun modèle ne donne automatiquement la maîtrise du
-          logiciel ou des données : vérifiez le contrat, les formats
-          d&apos;export, les droits et les composants tiers.
+          Vous ne comparez pas seulement quatre technologies, mais quatre façons
+          de résoudre le même problème. Aucun modèle ne donne automatiquement la
+          maîtrise du logiciel ou des données : vérifiez le contrat, les formats
+          d&apos;export, les droits et les composants utilisés.
         </p>
         <GuideTable
           headers={[
             "Option",
-            "Coût dominant",
-            "Adaptation",
-            "Dépendance et sortie",
+            "Quand elle est raisonnable",
+            "Ce qu'il faut vérifier",
           ]}
           rows={[
             [
               "Excel ou tableur",
-              "Temps interne, contrôle, erreurs et continuité",
-              "Très souple pour l’auteur, plus fragile à plusieurs",
-              "Documenter règles, macros, historique et formats de reprise",
+              "Le besoin reste rare, compris et géré par peu de personnes",
+              "Temps interne, sauvegardes, erreurs, accès et continuité",
             ],
             [
               "SaaS",
-              "Abonnement, déploiement, options, administration et sortie",
-              "Configuration et extensions variables selon l’offre",
-              "Contrat, éditeur, API et export complet à tester",
+              "Le besoin est standard et un logiciel par abonnement le couvre",
+              "Options, mise en place, connexion, export et coût de sortie",
             ],
             [
               "No-code",
-              "Licences de plateforme, assemblage et maintenance",
-              "Rapide sur les cas couverts, limites propres à la plateforme",
-              "Portabilité de l’application, des données et des composants à vérifier",
+              "Vous voulez tester ou équiper rapidement un processus simple",
+              "Licences, limites, maintenance et récupération du travail",
             ],
             [
               "Sur-mesure",
-              "Conception initiale, exploitation, maintenance et évolution",
-              "Périmètre conçu pour les règles retenues, sans flexibilité illimitée",
-              "Code, infrastructure, équipe et licences tierces ; sortie à contractualiser",
+              "Une règle propre au métier crée un avantage ou un gain mesurable",
+              "Conception, données, maintenance, droits sur le code et continuité",
             ],
           ]}
         />
-        <p>
-          Prenons un cas illustratif que nous suivrons tout au long du guide :{" "}
-          <strong>
-            les Transports Bréban, entreprise fictive de 14 salariés en Savoie
-          </strong>
-          . Ce personnage pédagogique ne décrit pas un client identifiable. Leur
-          planning de tournées vit dans un classeur Excel que seule
-          l&apos;assistante de direction sait manipuler, les bons de livraison
-          se ressaisissent dans la facturation, et deux versions du fichier
-          circulent en permanence. Aucun logiciel de transport du marché ne
-          colle à leur activité mixte (messagerie + bennes). C&apos;est le cas
-          d&apos;école du sur-mesure — et nous allons le chiffrer de bout en
-          bout.
-        </p>
-
         <h2 id="cout-actuel">
           3. Ce que l&apos;absence d&apos;outil vous coûte déjà
         </h2>
         <p>
           Avant de demander « combien coûte un logiciel ? », posez la question
-          inverse : <strong>combien coûte le fait de ne pas en avoir ?</strong>{" "}
-          Deux études souvent citées éclairent des populations différentes. En
-          2012, le{" "}
-          <a
-            href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-social-economy"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            McKinsey Global Institute
-          </a>
-          estimait que les « interaction workers », des profils qualifiés qui
-          collaborent beaucoup, consacraient près de 20 % de leur semaine à
-          rechercher de l&apos;information interne ou des collègues. Une enquête
-          éditeur publiée par{" "}
-          <a
-            href="https://www.smartsheet.com/content-center/product-news/automation/workers-waste-quarter-work-week-manual-repetitive-tasks"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Smartsheet
-          </a>
-          rapportait que plus de 40 % des salariés interrogés déclaraient
-          consacrer au moins un quart de leur semaine à des tâches manuelles
-          répétitives. Ni l&apos;une ni l&apos;autre ne mesure votre PME :
-          chronométrez votre processus avant de valoriser un gain. Enfin, la
-          synthèse académique de{" "}
-          <a
-            href="https://arxiv.org/abs/0802.3457"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ray Panko (Université d&apos;Hawaï)
-          </a>{" "}
-          conclut, après quinze ans d’études, que les erreurs de tableur sont
-          courantes et non triviales. Cette synthèse ne transforme pas ce
-          constat en probabilité universelle pour votre propre fichier.
-        </p>
-        <p>
-          Traduisons d&apos;abord les heures en capacité économique, puis
-          distinguons ce montant du retour sur investissement :
+          inverse : <strong>combien coûte le fonctionnement actuel ?</strong>{" "}
+          Pendant quatre semaines, notez le temps passé à ressaisir, rechercher
+          une information, corriger une erreur ou attendre une validation.
+          Ajoutez seulement les dépenses réellement évitables. Une heure
+          théoriquement « gagnée » n&apos;est pas automatiquement une heure de
+          salaire économisée.
         </p>
         <FormulaBox>
           <strong>
-            Gains annuels attribuables = heures réellement réaffectées ou
-            évitées par semaine × 47 semaines × coût horaire chargé
+            Gain annuel possible = heures qui disparaissent réellement chaque
+            semaine × 47 semaines × coût horaire chargé
           </strong>
           <br />
           Repère public 2025 : 44,70 € par heure dans l&apos;ensemble marchand,
@@ -573,15 +424,13 @@ export default function Page() {
             Insee, publié le 2 juillet 2026
           </a>
           ). Remplacez ce repère par votre coût réel si votre entreprise ou le
-          poste étudié diffère de ce champ.
+          poste étudié diffère de ce champ. Les 47 semaines sont une hypothèse
+          de calcul Hagnéré : utilisez le nombre de semaines pendant lesquelles
+          la tâche est réellement effectuée dans votre entreprise.
           <br />
           <br />
-          Chez Bréban : l&apos;assistante passe 6 h/semaine sur le planning et 4
-          h sur la ressaisie des bons ; deux exploitants perdent chacun 3 h de
-          coordination.
-          <br />
-          (6 + 4 + 3 + 3) h × 47 semaines × 44,70 € ={" "}
-          <strong>≈ 33 600 € de capacité annuelle</strong>. Ce montant ne
+          Exemple pédagogique : 12 h × 47 × 44,70 € ={" "}
+          <strong>environ 25 200 € de capacité annuelle</strong>. Ce montant ne
           devient une économie que si l&apos;entreprise réaffecte effectivement
           ces heures ou évite une dépense. Le ROI se calcule ensuite ainsi :
           <br />
@@ -592,54 +441,14 @@ export default function Page() {
           . Le délai de retour indique séparément le mois où les bénéfices
           cumulés couvrent le coût.
         </FormulaBox>
-        <p>
-          Les erreurs, justement, coûtent généralement plus cher
-          lorsqu&apos;elles sont détectées après propagation : correction de
-          plusieurs fichiers, nouvelle facture, reprise du stock ou mauvaise
-          décision. Nous ne retenons pas ici le multiplicateur « 1-10-100 »,
-          faute de source et de périmètre suffisamment traçables. Un logiciel
-          qui valide la donnée à la saisie et la propage ensuite réduit surtout
-          le nombre de reprises possibles.
-        </p>
         <InfoBox
           variant="amber"
-          title="Quand Excel dérape : trois incidents documentés"
+          title="Mesurez votre entreprise, pas un cas spectaculaire"
         >
-          En 2003, le producteur canadien d&apos;électricité{" "}
-          <a
-            href="https://www.theregister.com/2003/06/19/excel_snafu_costs_firm_24m/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            TransAlta
-          </a>{" "}
-          a perdu 24 millions de dollars à cause d&apos;un décalage de lignes
-          dans un copier-coller Excel. Ce montant est souvent présenté comme 10
-          % de son résultat annuel, mais la source contemporaine accessible
-          confirme le montant et l&apos;erreur, pas ce ratio. En 2012,
-          l&apos;affaire « London Whale » de{" "}
-          <a
-            href="https://elischolar.library.yale.edu/ypfs-documents/454/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            JPMorgan
-          </a>{" "}
-          (plus de 6 milliards de dollars de pertes) impliquait une erreur de
-          formule — une somme à la place d&apos;une moyenne — dans un modèle de
-          risque sous Excel. Elle n&apos;explique pas, à elle seule, toute la
-          perte. Et en 2020,{" "}
-          <a
-            href="https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Public Health England
-          </a>{" "}
-          a retardé l’intégration de 15 841 cas positifs parce que des fichiers
-          avaient dépassé la taille maximale acceptée par le processus de
-          consolidation. Votre entreprise ne joue pas à cette échelle — mais
-          votre classeur de devis reste soumis à des limites techniques.
+          Une erreur célèbre dans un grand groupe ne permet pas de calculer
+          votre retour sur investissement. Listez plutôt vos incidents des douze
+          derniers mois : facture reprise, stock faux, dossier retardé ou client
+          rappelé. Leur fréquence et leur coût donnent une base défendable.
         </InfoBox>
 
         <h2 id="prix-par-type">4. Les prix 2026 par type de logiciel</h2>
@@ -649,109 +458,106 @@ export default function Page() {
           décomposition pédagogique en jours. Les définitions diffèrent entre
           sources et chaque éditeur vend ses services : ces montants sont des
           hypothèses de planification, pas une observation indépendante du
-          marché ni un engagement tarifaire.
+          marché ni un engagement tarifaire. Les fourchettes de maintenance dans
+          la troisième colonne sont des hypothèses Hagnéré à remplacer par un
+          contrat détaillé. Les prix de création recoupent les grilles
+          commerciales de{" "}
+          <a
+            href="https://lmsdesign.fr/blog/cout-application-metier-sur-mesure"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LMS Design
+          </a>
+          ,{" "}
+          <a
+            href="https://www.ftel.fr/budget-d-une-application-sur-mesure-comprendre-les-couts-et-faire-les-bons-choix"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            FTEL
+          </a>
+          ,{" "}
+          <a
+            href="https://www.aquilapp.fr/ressources/developpement-sur-mesure/cout-application-web-sur-mesure"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Aquilapp
+          </a>{" "}
+          et{" "}
+          <a
+            href="https://peaklab.fr/blog/prix-logiciel-sur-mesure-en-2026-combien-prevoir"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            PeakLab
+          </a>
+          .
         </p>
         <GuideTable
           headers={[
             "Ce que vous voulez",
-            "Budget création",
-            "Récurrent / an",
-            "Le poste qui fait varier",
+            "Budget de création indicatif",
+            "À chiffrer avec soin",
           ]}
           rows={[
             [
               "Suivi clients / devis (CRM léger)",
               "8 000 – 25 000 €",
-              "1 500 – 4 000 €",
-              "Connexion à la facturation existante",
+              "Connexion à la facturation et entretien annuel estimé à 1 500–4 000 €",
             ],
             [
               "Gestion de stock / commandes",
               "8 000 – 30 000 €",
-              "1 500 – 5 000 €",
-              "Codes-barres, multi-dépôts, inventaires",
+              "Codes-barres, dépôts, inventaires et entretien estimé à 1 500–5 000 €/an",
             ],
             [
               "Planning / interventions terrain",
               "15 000 – 45 000 €",
-              "2 500 – 8 000 €",
-              "Application mobile pour les équipes",
+              "Application mobile et entretien estimé à 2 500–8 000 €/an",
             ],
             [
               "Portail client (suivi de dossiers)",
               "18 000 – 70 000 €",
-              "3 000 – 10 000 €",
-              "Volume d'utilisateurs, documents, paiement",
+              "Utilisateurs, documents, paiement et entretien estimé à 3 000–10 000 €/an",
             ],
             [
-              "ERP simplifié (tout relié)",
+              "Logiciel reliant plusieurs services",
               "50 000 – 120 000 €",
-              "8 000 – 25 000 €",
-              "Nombre de processus et d'intégrations",
+              "Processus, connexions et entretien estimé à 8 000–25 000 €/an",
             ],
             [
               "Automatisations entre outils",
               "500 – 5 000 € par flux",
-              "300 – 1 500 €",
-              "Complexité des règles métier",
+              "Règles métier, surveillance et entretien estimé à 300–1 500 €/an",
             ],
           ]}
         />
         <p>
-          Une lecture honnête de cette grille : le prix suit moins le nombre
-          d&apos;écrans que <strong>trois multiplicateurs</strong> — le nombre
-          de rôles différents (qui voit quoi, qui valide quoi), les connexions à
-          l&apos;existant (une grille commerciale citée dans les sources estime
-          2 à 15 jours par intégration, à vérifier sur la documentation de
-          chaque API), et l&apos;exigence de fiabilité. Une panne sur un outil
-          de consultation gêne ; une erreur sur un outil qui facture crée
-          immédiatement un risque financier et client. C&apos;est pour cela
-          qu&apos;un « simple outil de planning » peut légitimement coûter 15
-          000 € : le planning est simple, le brancher sur la paie et l&apos;app
-          mobile des équipes ne l&apos;est pas (le choix de la technologie
-          mobile a son comparatif dédié : notre{" "}
-          <Link href="/guides/react-native-ou-flutter">
-            guide React Native ou Flutter
-          </Link>
-          ). Par secteur, les cas d&apos;usage courants comprennent le
-          BTP (suivi multi-chantiers, matériel, pointages), le transport
-          (tournées, bons de livraison), la santé et l&apos;industrie (ordres de
-          fabrication, traçabilité). Pour la santé, le régime HDS ne
-          s&apos;applique pas à toute donnée liée à un patient : il vise
-          notamment l&apos;hébergement par un tiers de données de santé à
-          caractère personnel recueillies dans les activités prévues par{" "}
-          <a
-            href="https://esante.gouv.fr/labels-certifications/hebergement-des-donnees-de-sante"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            l&apos;article L.1111-8, présenté par l&apos;Agence du Numérique en
-            Santé
-          </a>
-          . Qualifiez le périmètre et les rôles avant de budgéter un hébergement
-          certifié ou, le cas échéant, une démarche de certification. Ce sont
-          exactement les périmètres que couvre notre offre d&apos;
-          <Link href="/services/outils-internes-sur-mesure">
-            outils internes sur mesure
-          </Link>
-          , au forfait fixe contractuel.
+          Le prix dépend surtout du nombre de rôles, des connexions aux outils
+          existants et du niveau de fiabilité attendu. Un planning isolé peut
+          rester simple ; le relier à la paie, à une application mobile et à la
+          facturation change le projet. Si vous traitez des données de santé,
+          financières ou particulièrement sensibles, faites identifier les
+          obligations applicables avant le devis : elles peuvent modifier
+          l&apos;hébergement, les accès, les tests et la maintenance.
         </p>
 
-        <h2 id="ecart-devis">
-          5. Pourquoi les devis vont de 5 000 à 150 000 €
-        </h2>
+        <h2 id="ecart-devis">5. Pourquoi deux devis peuvent tant varier</h2>
         <p>
           C&apos;est la vraie question derrière votre recherche : les pages que
           vous avez ouvertes annoncent des prix qui vont du simple au décuple.
-          Cet écart a quatre explications rationnelles — les connaître vous
-          permet de classer n&apos;importe quel devis en cinq minutes :
+          Cet écart a quatre explications fréquentes. Elles permettent de poser
+          les bonnes questions, pas de juger un devis sans comprendre le projet
+          :
         </p>
         <ul>
           <li>
-            <strong>Le périmètre supposé.</strong> « Un CRM » peut vouloir dire
-            3 écrans ou 30. Sans cahier des charges commun, chaque agence
-            chiffre un périmètre différent. Comparez les hypothèses avant de
-            comparer les montants.
+            <strong>La liste de fonctions supposée.</strong> « Un CRM » peut
+            vouloir dire 3 écrans ou 30. Sans cahier des charges commun, chaque
+            agence chiffre un produit différent. Comparez les hypothèses avant
+            de comparer les montants.
           </li>
           <li>
             <strong>La composition de l’équipe.</strong> Un taux varie avec le
@@ -762,28 +568,28 @@ export default function Page() {
           </li>
           <li>
             <strong>Le niveau de finition.</strong> Un outil utilisé par 3
-            personnes formées tolère une interface rugueuse ; un portail ouvert
-            à vos clients exige le soin d&apos;un produit public. Même fonction,
-            budget du simple au double.
+            personnes formées peut accepter une interface plus simple ; un
+            portail ouvert à vos clients demande davantage de conception et de
+            tests. Le niveau attendu peut donc changer fortement le budget.
           </li>
           <li>
             <strong>L&apos;usage — ou l&apos;affichage — de l&apos;IA.</strong>{" "}
             L&apos;IA peut réduire l&apos;effort sur certaines tâches, mais son
             effet sur un devis complet ne se déduit pas sans comparer le même
-            périmètre et les mêmes garanties. La section 10 sépare les résultats
-            publiés de l&apos;argument commercial.
+            ensemble de fonctions et les mêmes garanties. Demandez quelle ligne
+            du devis diminue et qui contrôle le résultat.
           </li>
         </ul>
         <p>
           Le statut du prestataire change aussi ce que vous achetez, même à
-          périmètre égal :
+          besoin égal :
         </p>
         <GuideTable
           headers={["Modèle", "Bon choix lorsque", "Compromis à contrôler"]}
           rows={[
             [
               "Freelance senior",
-              "Un périmètre net peut être porté par une personne",
+              "Un projet bien défini peut être porté par une personne",
               "Continuité, renfort en cas d'absence et couverture du design",
             ],
             [
@@ -803,28 +609,26 @@ export default function Page() {
             ],
           ]}
         />
-        <InfoBox variant="emerald" title="À retenir">
-          Un devis ne se juge jamais dans l&apos;absolu, mais à périmètre égal.
-          Envoyez le même{" "}
+        <InfoBox variant="emerald" title="Comparez les mêmes travaux">
+          Un devis ne se juge jamais dans l&apos;absolu, mais sur la même liste
+          de fonctions. Envoyez le même{" "}
           <Link href="/guides/cahier-des-charges-application-metier">
             cahier des charges
           </Link>{" "}
           à trois prestataires, exigez le détail en jours par poste.
-          L&apos;écart devient alors explicable : périmètre, composition
+          L&apos;écart devient alors explicable : fonctions prévues, composition
           d&apos;équipe, risques assumés, finition ou marge. Aucun ratio de
           réduction n&apos;est garanti.
         </InfoBox>
 
-        <h2 id="methode-tjm">
-          6. La méthode jours × TJM pour vérifier un devis
-        </h2>
+        <h3 id="methode-tjm">Contrôlez le nombre de jours</h3>
         <p>
-          La part de travail d&apos;un devis peut être contrôlée par une
-          multiplication :{" "}
-          <strong>nombre de jours de travail × taux journalier (TJM)</strong>.
-          Un forfait peut aussi intégrer licences, risque, garantie ou
-          sous-traitance : demandez-les séparément au lieu de les confondre avec
-          l&apos;effort humain. Le{" "}
+          Vous n&apos;avez pas besoin d&apos;être développeur pour contrôler la
+          logique d&apos;un devis. Demandez combien de jours sont prévus pour
+          chaque résultat, puis multipliez-les par le prix d&apos;une journée de
+          travail — souvent appelé taux journalier ou TJM. Un forfait peut aussi
+          intégrer licences, risque, garantie ou sous-traitance : demandez-les
+          séparément au lieu de les confondre avec l&apos;effort humain. Le{" "}
           <a
             href="https://www.silkhom.com/barometre-des-tjm-informatique-electronique-digital/"
             target="_blank"
@@ -853,23 +657,23 @@ export default function Page() {
           <Link href="/guides/tjm-developpeur-web">
             guide du tarif journalier
           </Link>{" "}
-          détaille cette méthode : nombre de jours par livrable, poids relatif
-          de chaque poste et calcul du tarif implicite d&apos;un devis.
+          détaille cette méthode : nombre de jours par résultat attendu, poids
+          relatif de chaque poste et calcul du tarif implicite d&apos;un devis.
         </p>
 
-        <h2 id="devis">7. Un exemple de devis, décortiqué ligne à ligne</h2>
+        <h2 id="devis">6. Lire un devis ligne par ligne</h2>
         <p>
-          Voici un <strong>exemple illustratif</strong>, construit pour le cas
-          fictif de notre fil rouge : la gestion de tournées des Transports
-          Bréban — planning, bons de livraison numériques sur mobile et
-          facturation connectée. Il sert à vérifier le calcul, pas à laisser
-          croire qu&apos;un document client est publié. Taux journalier retenu :
-          650 € HT.
+          Voici un <strong>exemple entièrement fictif</strong> pour un outil de
+          gestion de tournées : planning, bons de livraison sur mobile et
+          facturation connectée. Il montre comment vérifier le calcul ; il ne
+          s&apos;agit ni d&apos;un devis client ni d&apos;un prix de marché. Le
+          taux de 650 € HT par jour est l&apos;hypothèse pédagogique annoncée
+          ci-dessus.
         </p>
         <FormulaBox>
           <strong>Devis « gestion de tournées » — 50 jours, 32 500 € HT</strong>
           <br />
-          Cadrage : ateliers sur vos processus réels (2 j) — 1 300 €
+          Compréhension du besoin et des règles (2 j) — 1 300 €
           <br />
           Maquettes des écrans clés, validées par les utilisateurs (5 j) — 3 250
           €
@@ -891,13 +695,6 @@ export default function Page() {
           Mise en production + transfert de propriété du code (2 j) — 1 300 €
         </FormulaBox>
         <p>
-          Cet exemple valorise le cadrage au taux journalier : sa ligne ressort
-          donc à 1 300 €. Le Discovery Sprint forfaitaire présenté en section 13
-          est l&apos;offre actuelle à 1 500 €, déduite si le projet se lance.
-          Les deux montants correspondent à des cadres commerciaux différents,
-          pas à deux prix simultanés pour le même cadrage.
-        </p>
-        <p>
           Trois enseignements. D&apos;abord,{" "}
           <strong>
             le planning visible ne pèse qu&apos;un cinquième du budget
@@ -910,7 +707,8 @@ export default function Page() {
           Enfin, la dernière ligne regroupe la mise en production, la remise du
           code et des accès sur 2 jours. La clause de cession n&apos;est pas une
           option facturée à part : elle doit déjà figurer dans le contrat et la
-          liste des briques tierces doit être annexée (section 12).
+          liste des briques tierces doit être annexée. La section consacrée à la
+          propriété précise les points à vérifier.
         </p>
 
         <InfoBox
@@ -918,9 +716,9 @@ export default function Page() {
           title="Rendre deux devis réellement comparables"
         >
           <p>
-            Exigez pour chacun la même liste : cadrage, maquettes,
-            développement, tests, reprise de données, formation, mise en
-            production, garantie et maintenance. Faites écrire séparément les
+            Exigez pour chacun la même liste : compréhension du besoin,
+            maquettes, développement, tests, reprise de données, formation, mise
+            en production, garantie et maintenance. Faites écrire séparément les
             exclusions et les coûts qui dépendront d&apos;un service tiers.
             Enfin, chaque lot doit avoir un résultat observable, la personne qui
             le valide et ce qui vous est remis en cas d&apos;arrêt du projet.
@@ -931,24 +729,12 @@ export default function Page() {
           </p>
         </InfoBox>
 
-        <GuideInlineCTA
-          title="Un chiffrage honnête pour votre outil métier ?"
-          description="Décrivez votre processus en 3 minutes : nous visons une réponse personnelle le prochain jour ouvré, sans délai garanti, avec une fourchette argumentée en jours × postes — et notre avis franc si un abonnement du marché suffit."
-          tags={[
-            "Objectif : prochain jour ouvré",
-            "Outils internes 8 000 – 80 000 €",
-            "Forfait fixe contractuel",
-          ]}
-          ctaLabel="Cadrer mon outil"
-        />
-
-        <h2 id="tco">
-          8. Le vrai coût sur 3 ans (maintenance, hébergement, coûts cachés)
-        </h2>
+        <h2 id="tco">7. Comparer le coût total et les alternatives</h2>
         <p>
-          Le devis de création n&apos;est pas le coût total. Voici les postes à
-          faire écrire d&apos;emblée, qu&apos;ils soient inclus, exclus ou à
-          confirmer :
+          Le devis de création n&apos;est pas le coût total. Les pourcentages et
+          montants ci-dessous sont des hypothèses Hagnéré pour préparer une
+          discussion, pas des moyennes du marché. Remplacez-les par le contrat
+          de maintenance, les tarifs d&apos;hébergement et les besoins réels.
         </p>
         <GuideTable
           headers={["Poste", "Ordre de grandeur", "En clair"]}
@@ -981,441 +767,120 @@ export default function Page() {
             [
               "Intégrations découvertes en route",
               "2 – 15 jours chacune*",
-              "Listez les API et les flux avant le devis",
+              "Listez les logiciels, données et échanges avant le devis",
             ],
           ]}
         />
         <p className="text-sm">
           * Hypothèse de charge publiée par LMS Design, l&apos;une des quatre
-          grilles commerciales détaillées dans les sources. Convertissez-la avec
-          le taux du devis et faites préciser les tests, la supervision et les
+          grilles commerciales reliées plus haut. Convertissez-la avec le taux
+          du devis et faites préciser les tests, la supervision et les
           abonnements éventuels.
         </p>
-        <p>
-          Pour notre fil rouge Bréban : 32 500 € de création + environ 4 900
-          €/an de maintenance (15 %) + 900 €/an d&apos;hébergement ≈{" "}
-          <strong>50 000 € sur 3 ans</strong>. La capacité brute calculée en
-          section 3 atteint ~33 600 €/an. Si 100 % de ces heures étaient
-          réellement réaffectées dès le premier jour, leur cumul couvrirait ce
-          coût vers le 18e mois ; à 50 %, il faudrait près de 36 mois. Ce sont
-          deux hypothèses à vérifier après livraison, pas une promesse
-          d&apos;économie. La ligne « maintenance » doit aussi être tenue par
-          quelqu&apos;un, ce qui est l&apos;objet d&apos;un contrat de{" "}
-          <Link href="/services/maintenance-evolution">
-            maintenance et d&apos;évolution
-          </Link>{" "}
-          au périmètre écrit. Le guide du{" "}
-          <Link href="/guides/contrat-tma-application">
-            contrat TMA d’une application
-          </Link>{" "}
-          permet de vérifier tickets, niveaux de service, capacité, preuves et
-          sortie. Et c&apos;est un calcul que nous vous recommandons d&apos;exiger
-          de tout prestataire : pas de devis sans regard sur ce que
-          l&apos;absence d&apos;outil coûte déjà.
-        </p>
-        <p>
-          Un mot sur le risque, honnêtement : les statistiques d&apos;échec des
-          projets informatiques sont réelles (les grands projets dépassent leur
-          budget de 45 % en moyenne selon{" "}
-          <a
-            href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/delivering-large-scale-it-projects-on-time-on-budget-and-on-value"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            McKinsey-Oxford
-          </a>
-          ). Mais lisez-les bien : elles portent sur de <em>grands</em> projets.
-          Un outil de PME cadré serré et livré par étapes réduit cette
-          exposition ; il ne supprime pas le risque. Les échecs plus discrets
-          viennent d&apos;un processus mal compris, de données impossibles à
-          reprendre, d&apos;utilisateurs indisponibles pour tester ou d&apos;une
-          adoption laissée pour la fin. Un critère de succès mesurable à chaque
-          palier permet de les voir tôt, au lieu de les découvrir après un
-          projet-cathédrale de 18 mois.
-        </p>
-
-        <p>
-          Un mot de trésorerie, enfin : pour limiter le risque sur un projet
-          substantiel, privilégiez un paiement{" "}
-          <strong>par jalons livrables et vérifiables</strong>. Le devis précise
-          l&apos;acompte, les conditions d&apos;acceptation et ce qui se passe
-          en cas de désaccord ou d&apos;arrêt. Et avant de signer, jetez un œil
-          aux dispositifs publics de financement de la numérisation : notre{" "}
-          <Link href="/guides/aides-creation-site-internet">
-            guide des aides
-          </Link>{" "}
-          recense ceux qui s&apos;appliquent aussi aux logiciels métier —
-          plusieurs régions financent précisément les « outils numériques à
-          forte valeur ajoutée ».
-        </p>
-
-        <h2 id="match">9. Sur mesure, SaaS ou Excel : le match chiffré</h2>
-        <p>
-          Pour un besoin standard bien couvert — paie, comptabilité ou
-          messagerie, par exemple — commencez généralement par tester un produit
-          éprouvé. Un développement spécifique peut se justifier lorsqu&apos;une
-          règle métier différenciante ou un contournement mesuré coûte plus que
-          l&apos;écart de TCO et de risque. Entre les deux, une troisième voie
-          mérite d&apos;être chiffrée avant de trancher : notre{" "}
-          <Link href="/guides/no-code-ou-sur-mesure">
-            comparatif no-code ou sur-mesure
-          </Link>{" "}
-          donne les tarifs affichés des plateformes et le point où leur courbe
-          de coût croise celle d&apos;un développement.
-        </p>
-        <p>
-          Voici une simulation pédagogique sur cinq ans pour un outil central à
-          10 utilisateurs. Elle illustre une méthode de calcul ; ses prix fixes
-          et son périmètre fictif ne décrivent ni une moyenne du marché, ni un
-          point de bascule universel.
-        </p>
+        <FormulaBox>
+          <strong>Coût sur trois ans</strong>
+          <br />
+          = création ou mise en place
+          <br />
+          + 36 mois de licences et d&apos;hébergement
+          <br />
+          + maintenance, support et évolutions prévues
+          <br />+ formation, reprise de données et temps interne
+        </FormulaBox>
         <GuideTable
-          headers={[
-            "Option simulée",
-            "Socle sur 5 ans",
-            "À ajouter ou vérifier",
-          ]}
+          headers={["Option", "Coûts à saisir", "Quand elle reste rationnelle"]}
           rows={[
             [
-              "Rester sur Excel",
-              "0 € de licence supplémentaire dans l’hypothèse",
-              "Temps perdu, erreurs, sauvegarde, accès et continuité à mesurer",
+              "Conserver Excel ou l'outil actuel",
+              "Temps interne, erreurs, sauvegardes et risque de dépendre d'une personne",
+              "Usage rare, compris et sans conséquence critique",
             ],
             [
-              "SaaS à 100 €/utilisateur/mois",
-              "10 × 100 € × 60 mois = 60 000 €",
-              "Options, administration, indexation, taxes et sortie",
+              "Logiciel par abonnement",
+              "Abonnement × utilisateurs × 36 mois, mise en place, options et sortie",
+              "Besoin standard déjà bien couvert",
             ],
             [
-              "No-code à 20 €/utilisateur/mois",
-              "10 × 20 € × 60 mois = 12 000 €",
-              "Assemblage, maintenance, limites, données et sortie",
+              "No-code ou automatisation",
+              "Licences, assemblage, maintenance, volumes et reconstruction éventuelle",
+              "Besoin simple à tester rapidement",
             ],
             [
-              "Sur mesure à 30 000 €",
-              "30 000 € (année 1 incluse) + 4 × 4 500 € de maintenance pour les années 2 à 5 + 5 × 2 000 € d’hébergement = 58 000 €",
-              "Évolutions, sécurité, continuité prestataire, temps interne et reprise des données",
+              "Logiciel sur mesure",
+              "Création, hébergement, maintenance, évolutions, formation et temps interne",
+              "Règle métier spécifique ou gain mesurable",
             ],
           ]}
         />
-        <p>
-          Le résultat change dès qu&apos;un prix, une fonction, un nombre de
-          comptes ou un coût de maintenance change. Dix utilisateurs ne prouvent
-          donc rien à eux seuls. Pour un besoin de gestion commerciale, utilisez
-          les tarifs éditeurs datés et la grille du guide{" "}
-          <Link href="/guides/combien-coute-un-crm">
-            « combien coûte un CRM »
-          </Link>{" "}
-          avant de comparer une offre standard à un outil spécifique. Si un
-          produit du marché couvre votre besoin sans contournement coûteux,
-          prenez-le. Si vous hésitez plutôt avec un produit à vendre par
-          abonnement, notre guide{" "}
-          <Link href="/guides/combien-coute-un-saas">
-            « combien coûte un SaaS »
-          </Link>{" "}
-          traite ce cas.
-        </p>
-        <InfoBox
-          variant="amber"
-          title="Les cas où nous déconseillons le sur-mesure"
-        >
-          <p>
-            Restez sur le produit du marché si votre besoin est standard.
-            Automatisez seulement le passage entre vos outils si la difficulté
-            vient d&apos;une ressaisie. Gardez Excel si le processus est rare,
-            maîtrisé et sans donnée critique. Enfin, reportez le projet si
-            personne dans l&apos;entreprise ne peut décider, tester et porter
-            l&apos;adoption : le meilleur code ne remplace pas ce responsable
-            interne.
-          </p>
+        <InfoBox variant="amber" title="Quand remplacer un ancien logiciel">
+          Faites chiffrer trois réponses : stabiliser l&apos;existant, remplacer
+          progressivement les fonctions les plus risquées ou reconstruire avec
+          reprise des données. L&apos;âge d&apos;Excel, Access ou WinDev ne
+          suffit pas à décider ; regardez la dépendance à une personne, les
+          sauvegardes, les erreurs et l&apos;impossibilité d&apos;évoluer.
         </InfoBox>
-
-        <h2 id="ia">10. Ce que l&apos;IA change vraiment aux prix (2026)</h2>
-        <p>
-          Vous croiserez deux discours : « l&apos;IA divise les coûts par dix »
-          et « l&apos;IA ne change rien ». Les études publiées racontent une
-          histoire plus utile. Sur des tâches de code standard et bien cadrées,
-          l&apos;
-          <a
-            href="https://arxiv.org/abs/2302.06590"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            essai contrôlé de GitHub
-          </a>{" "}
-          a mesuré des développeurs <strong>55 % plus rapides</strong> avec
-          l&apos;assistance IA. Sur du code complexe et mature, l&apos;
-          <a
-            href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            essai randomisé METR (2025)
-          </a>{" "}
-          a mesuré l&apos;inverse : <strong>19 % plus lents</strong> — tout en
-          se croyant plus rapides. Et le{" "}
-          <a
-            href="https://dora.dev/research/2025/dora-report/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            rapport DORA de Google
-          </a>{" "}
-          conclut que l&apos;IA agit comme un <em>amplificateur</em> des forces
-          et faiblesses existantes des organisations. Aucune des études citées
-          ne documente une division par dix du coût d&apos;un logiciel métier
-          complet.
-        </p>
-        <p>
-          Traduction pour votre budget : l&apos;IA peut réduire l&apos;effort
-          consacré aux écrans et au code standard — une part d&apos;un outil
-          métier — mais ne réduit ni la compréhension de votre métier, ni la
-          conception des bons écrans, ni les connexions à vos logiciels, ni la
-          fiabilité. Les études citées ne permettent ni de convertir directement
-          la vitesse d&apos;une tâche en remise sur un projet complet, ni
-          d&apos;établir une baisse générale de 20 à 30 %. Le montant d&apos;un
-          devis doit donc être justifié par le périmètre et les jours de chaque
-          poste, pas par un gain interne annoncé. Chez Hagnéré Code, l&apos;IA
-          est un outil de production encadré dans une équipe senior, avec revue
-          humaine ; ce choix n&apos;est pas présenté comme la preuve causale
-          d&apos;une remise commerciale systématique. Posez une seule question
-          aux prestataires « 100 % IA » :{" "}
-          <strong>
-            qui relit chaque ligne, et qui maintient le code dans deux ans ?
-          </strong>
-        </p>
-
-        <h2 id="legacy">
-          11. Remplacer un vieux logiciel (Access, Excel, WinDev…)
-        </h2>
-        <p>
-          Un ancien logiciel Access, VB6 ou WinDev, ou un classeur devenu
-          central, ne doit pas être remplacé sur son âge seul. Recherchez des
-          signaux observables : versions de système non supportées, sauvegarde
-          ou restauration non testée, dépendance à une seule personne, accès
-          excessifs, documentation absente, données personnelles sans règles de
-          conservation, ou évolution devenue impossible à chiffrer.
-        </p>
-        <p>
-          Trois scénarios éditoriaux à faire chiffrer, du plus léger au plus
-          lourd :
-        </p>
-        <ul>
-          <li>
-            <strong>Stabiliser</strong> : documenter, sauvegarder, tester la
-            restauration et corriger le critique. La durée et le budget
-            dépendent de l&apos;accès au code, aux données et à
-            l&apos;expertise.
-          </li>
-          <li>
-            <strong>Moderniser progressivement</strong> : remplacer un parcours
-            vérifiable pendant que l&apos;ancien système continue de tourner.
-            Cette option réduit la concentration des risques, mais ajoute une
-            période de coexistence et des synchronisations à maintenir.
-          </li>
-          <li>
-            <strong>Refondre avec reprise des données</strong> : reconstruire le
-            périmètre retenu, migrer l&apos;historique utile puis organiser
-            l&apos;arrêt de l&apos;ancien système. Faites chiffrer séparément
-            audit, reprise, coexistence et recette ; c&apos;est le cœur de notre
-            métier d&apos;
-            <Link href="/agence-react">
-              agence React pour applications métier
-            </Link>
-            .
-          </li>
-        </ul>
-        <InfoBox variant="amber" title="Quand éviter une bascule générale">
-          Une bascule unique concentre données, formation, processus et
-          technique le même jour. Une alternative est la migration progressive,
-          souvent appelée{" "}
-          <a
-            href="https://martinfowler.com/bliki/StranglerFigApplication.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            « Strangler Fig »
-          </a>
-          , qui remplace l&apos;ancien système par parcours successifs. Elle
-          n&apos;est pas toujours préférable : comparez le coût de coexistence,
-          la synchronisation et le risque d&apos;une première tranche courte,
-          testable et réversible avec ceux d&apos;une bascule unique.
+        <InfoBox variant="blue" title="Quand ne pas développer">
+          Restez sur un produit du marché si le besoin est standard. Automatisez
+          seulement la ressaisie si c&apos;est le vrai problème. Gardez le
+          fichier actuel s&apos;il est maîtrisé et peu risqué. Reportez enfin le
+          projet si personne dans l&apos;entreprise ne peut décider, tester et
+          accompagner les utilisateurs.
         </InfoBox>
 
         <h2 id="juridique">
-          12. Propriété du code : la clause qui conditionne la reprise
+          8. Propriété du code : ce que le contrat doit prévoir
         </h2>
         <p>
-          Pour un logiciel commandé à un prestataire externe,
-          <strong>
-            {" "}
-            payer toutes les factures ne vous transfère pas automatiquement les
-            droits patrimoniaux
-          </strong>
-          . L&apos;auteur détient les droits selon l&apos;article L.111-1 ;
-          lorsque le code est créé par un salarié dans ses fonctions, ils sont
-          dévolus à son employeur par l&apos;article L.113-9. Le contrat doit
-          donc organiser une{" "}
-          <strong>cession ou une licence adaptée à l&apos;usage attendu</strong>
-          , avec un périmètre précis ; l&apos;article L.131-3 encadre notamment
-          la cession. Faites valider ce montage au regard de votre projet. Les
-          bibliothèques libres ou commerciales restent régies par leurs propres
-          licences et doivent être listées à part. Notre guide{" "}
+          Payer le développement ne vous transfère pas automatiquement tous les
+          droits sur le code. Le contrat doit préciser ce qui est cédé ou
+          licencié, pour quels usages et à quel moment. L&apos;article L.131-3
+          du Code de la propriété intellectuelle encadre notamment la cession.
+          Les bibliothèques libres ou commerciales gardent leur propre licence
+          et doivent être listées séparément. Faites adapter ces clauses à votre
+          projet par un professionnel compétent. Notre guide{" "}
           <Link href="/guides/proprietaire-site-internet-code-source">
             qui est propriétaire de votre site et de son code source
           </Link>{" "}
-          fournit un exemple de clause à adapter et à faire valider
-          juridiquement, l&apos;annexe des briques soumises à des licences
-          tierces, et les 14 accès à réclamer.
+          fournit une checklist plus détaillée.
         </p>
-        <p>
-          Ce n&apos;est pas de la théorie de juriste. Une chaîne de droits
-          incomplète peut compliquer la reprise du logiciel, une levée de fonds
-          ou la vente de l&apos;entreprise. La « due diligence » — l&apos;audit
-          de l&apos;acheteur — vérifie qui détient quoi. Sans exclusivité ni
-          périmètre clair, le prestataire peut aussi conserver des droits de
-          réutilisation sur ses composants génériques, sous réserve de ses
-          engagements de confidentialité. Les quatre clauses à exiger avant de
-          signer :
-        </p>
+        <p>Avant de signer, vérifiez quatre résultats très concrets :</p>
         <ul>
           <li>
-            <strong>Cession ou licence de propriété intellectuelle</strong> :
-            droits cédés, usages, supports, territoire, durée, prix et moment
-            d&apos;effet clairement négociés puis validés juridiquement ;
+            vos droits sur les développements créés spécialement pour vous sont
+            écrits ;
           </li>
           <li>
-            <strong>Réversibilité</strong> : déclencheurs, délai, coût et
-            contenu de la remise du code, de la documentation, des accès et des
-            données en fin de contrat ;
+            le code, les comptes administrateurs et la documentation peuvent
+            être remis à votre entreprise ;
           </li>
           <li>
-            <strong>Maîtrise et portabilité des données</strong> : le contrat
-            garantit un export complet à tout moment, dans un format standard,
-            sans confondre ce droit d&apos;usage avec une propriété générale sur
-            les données personnelles ;
+            les données sont exportables dans un format exploitable par un autre
+            prestataire ;
           </li>
           <li>
-            Pour les logiciels critiques : l&apos;<strong>entiercement</strong>{" "}
-            (le dépôt du code chez un tiers de confiance comme{" "}
-            <a
-              href="https://www.app.asso.fr/nos-solutions/entiercement-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              l&apos;Agence pour la Protection des Programmes
-            </a>
-            ). Le contrat d&apos;entiercement précise la fréquence et le
-            contrôle des dépôts ainsi que les événements autorisant la remise ;
-            sans ces conditions, le dépôt ne garantit ni accès effectif ni code
-            exploitable.
+            les composants appartenant à des tiers, leurs licences et leurs
+            abonnements sont inventoriés.
           </li>
         </ul>
         <p>
-          Chez Hagnéré Code, le contrat de base cède les développements créés
-          spécifiquement pour le projet et annexe les briques tierces qui
-          gardent leur licence — c&apos;est le sens de la ligne « transfert de
-          propriété » de l&apos;exemple en section 7. Un prestataire doit
-          pouvoir expliquer cette frontière sans ambiguïté avant la signature.
+          Ces points déterminent si un autre prestataire pourra reprendre le
+          logiciel sans repartir de zéro. Demandez le délai, le format et le
+          coût de cette remise avant de payer l&apos;acompte.
         </p>
 
-        <InfoBox
-          variant="emerald"
-          title="À retenir : les 5 chiffres de ce guide"
-        >
-          <ul className="list-disc pl-4 space-y-1.5">
-            <li>
-              <strong>15 000 – 60 000 €</strong> : la fourchette indicative
-              retenue dans ce guide pour un logiciel métier, sans médiane
-              statistique revendiquée.
-            </li>
-            <li>
-              <strong>650 €/jour</strong> : l&apos;hypothèse pédagogique du
-              devis fictif en section 7 — remplacez-la par les taux réels, ce
-              n&apos;est pas une médiane de marché.
-            </li>
-            <li>
-              <strong>10 – 25 %/an</strong> : l&apos;hypothèse de maintenance de
-              nos simulations, à remplacer par un contrat chiffré.
-            </li>
-            <li>
-              <strong>Aucun seuil universel d&apos;utilisateurs</strong> :
-              comparez abonnement et sur-mesure sur vos prix, votre durée et
-              votre besoin.
-            </li>
-            <li>
-              <strong>44,70 €/heure</strong> : le repère Insee 2025 pour
-              l&apos;ensemble marchand, entreprises d&apos;au moins 10 salariés
-              — une base à remplacer par votre coût réel, pas un ROI à elle
-              seule.
-            </li>
-          </ul>
-        </InfoBox>
-
-        <h2 id="methode">13. Méthode : payer le juste prix en 5 étapes</h2>
-        <ol>
-          <li>
-            <strong>Chiffrez d&apos;abord le statu quo</strong> — heures
-            réellement réaffectables ou coûts évitables × 47 × coût horaire
-            pertinent (section 3). C&apos;est un bénéfice potentiel à confronter
-            au coût total, pas une économie acquise : mesurez les gains après
-            livraison et l&apos;adoption avant de conclure.
-          </li>
-          <li>
-            <strong>Vérifiez qu&apos;un produit du marché ne suffit pas</strong>{" "}
-            — confrontez les quatre scénarios de la section 9. Demandez un avis
-            écrit sur l&apos;option abonnement et sur une simple automatisation
-            avant d&apos;accepter du sur-mesure.
-          </li>
-          <li>
-            <strong>Décrivez vos processus, pas des écrans</strong> — qui fait
-            quoi, avec quels outils existants à connecter. Notre{" "}
-            <Link href="/ressources/kit-cahier-des-charges-application-metier">
-              modèle de cahier des charges
-            </Link>{" "}
-            s&apos;adapte en version logiciel — et envoyez-le à l&apos;identique
-            à 3 prestataires. Nommez aussi le responsable interne, la situation
-            de départ et le résultat observable qui prouvera le gain.
-          </li>
-          <li>
-            <strong>Comparez en jours par poste et en coût sur 3 ans</strong> —
-            jamais en prix de création seul (sections 6 et 8). Exigez le TCO et
-            les hypothèses d&apos;impact ; validez côté entreprise les gains
-            réellement attribuables, puis mesurez-les après livraison.
-          </li>
-          <li>
-            <strong>
-              Exigez une chaîne de droits claire et un démarrage par étapes
-            </strong>{" "}
-            — cession L.131-3 sur les développements spécifiques, inventaire des
-            licences tierces, réversibilité et une première brique en production
-            en quelques semaines plutôt qu&apos;un projet-tunnel.
-          </li>
-        </ol>
-        <p>
-          C&apos;est le déroulé exact de notre méthode : un{" "}
-          <strong>
-            Discovery Sprint (1 500 €, 2 jours, déduit à 100 % si le projet se
-            lance)
-          </strong>{" "}
-          qui produit le périmètre écrit, les maquettes des écrans clés et un
-          devis au forfait fixe — puis un outil livré par étapes, dates
-          contractuelles (méthode <Link href="/methode">Sprint Fixe™</Link>),
-          développements spécifiques cédés et briques tierces inventoriées.{" "}
-          <Link href="/demarrer-un-projet">
-            Décrivez votre processus en 3 minutes
-          </Link>{" "}
-          : objectif de réponse personnelle le prochain jour ouvré, gratuite et sans engagement.
-          Et pour situer ce budget dans l&apos;ensemble de votre présence
-          numérique, notre{" "}
-          <Link href="/guides/combien-coute-un-site-internet">
-            panorama des prix d&apos;un site internet
-          </Link>{" "}
-          complète ce guide.
-        </p>
+        <GuideInlineCTA
+          title="Vérifiez d'abord si un développement est nécessaire"
+          description="Décrivez le processus, les personnes concernées et le temps perdu. Nous comparerons une amélioration de l'existant, un logiciel du marché, une automatisation et un projet sur mesure avant de proposer un budget."
+          tags={[
+            "Solutions simples comparées",
+            "Budget expliqué poste par poste",
+            "Décision avant devis",
+          ]}
+          ctaLabel="Décrire mon besoin"
+        />
 
         <hr />
-        <h2 id="sources">Sources, périmètres et limites</h2>
+        <h2 id="sources">Sources et limites</h2>
         <p className="text-sm">
           Références consultées le 20 juillet 2026. Une source commerciale
           décrit les prix ou l’expérience de son éditeur ; elle ne devient pas
@@ -1510,91 +975,26 @@ export default function Page() {
         </ul>
         <p className="text-sm">
           L&apos;union de ces publications explique l&apos;enveloppe large de la
-          FAQ. Les scénarios resserrés du guide sont une synthèse éditoriale
-          destinée à lancer une comparaison ; ils ne prouvent ni moyenne ni
-          médiane. Les prix et périmètres évoluent : relevez-les à nouveau et
-          demandez plusieurs devis identiques avant de décider.
+          FAQ. Les scénarios resserrés sont des estimations Hagnéré construites
+          à partir de ces grilles pour vous aider à lancer une comparaison ; ils
+          ne constituent ni une moyenne ni une médiane du marché. Les prix et le
+          contenu des offres évoluent : relevez-les à nouveau et demandez
+          plusieurs devis portant sur les mêmes fonctions avant de décider.
         </p>
 
-        <h3>Travail, tableurs et assistance par IA</h3>
+        <h3>Droit</h3>
         <ul className="text-sm">
           <li>
-            <a
-              href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-social-economy"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              McKinsey Global Institute, 2012
-            </a>{" "}
-            : temps de recherche d&apos;information des profils qualifiés
-            collaboratifs, pas moyenne des salariés français.
-          </li>
-          <li>
-            <a
-              href="https://www.smartsheet.com/content-center/product-news/automation/workers-waste-quarter-work-week-manual-repetitive-tasks"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Smartsheet — enquête déclarative sur les tâches manuelles
-            </a>
-            , et{" "}
-            <a
-              href="https://arxiv.org/abs/0802.3457"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              synthèse académique de R. Panko
-            </a>{" "}
-            sur les erreurs de tableur.
-          </li>
-          <li>
-            <a
-              href="https://arxiv.org/abs/2302.06590"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              essai contrôlé GitHub Copilot, 2023
-            </a>
-            ,{" "}
-            <a
-              href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              essai randomisé METR, 2025
-            </a>{" "}
-            et{" "}
-            <a
-              href="https://dora.dev/research/2025/dora-report/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              rapport DORA 2025
-            </a>{" "}
-            : tâches et populations différentes, sans conversion automatique en
-            remise projet.
-          </li>
-        </ul>
-
-        <h3>Droit, santé et continuité</h3>
-        <ul className="text-sm">
-          <li>
-            <a
-              href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039279818"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Article L.113-9 du Code de la propriété intellectuelle
-            </a>
-            ,{" "}
             <a
               href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958"
               target="_blank"
               rel="noopener noreferrer"
             >
-              article L.131-3
+              Article L.131-3 du Code de la propriété intellectuelle
             </a>{" "}
-            et{" "}
+            : la cession doit préciser les droits transmis et leur étendue.
+          </li>
+          <li>
             <a
               href="https://www.inpi.fr/realiser-demarches/propriete-intellectuelle/cas-particulier-logiciels"
               target="_blank"
@@ -1602,77 +1002,19 @@ export default function Page() {
             >
               synthèse INPI sur les logiciels
             </a>
-            .
-          </li>
-          <li>
-            <a
-              href="https://www.app.asso.fr/nos-solutions/entiercement-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              APP — entiercement de logiciel
-            </a>{" "}
-            : mécanisme à encadrer par ses déclencheurs et la qualité des
-            dépôts.
-          </li>
-          <li>
-            <a
-              href="https://esante.gouv.fr/labels-certifications/hebergement-des-donnees-de-sante"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Agence du Numérique en Santé — champ de l&apos;hébergement HDS
-            </a>
-            .
+            : présentation générale de la protection d&apos;un logiciel et de
+            ses différents éléments.
           </li>
         </ul>
 
-        <h3>Cas documentés et grands projets</h3>
-        <ul className="text-sm">
-          <li>
-            <a
-              href="https://www.theregister.com/2003/06/19/excel_snafu_costs_firm_24m/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              TransAlta
-            </a>
-            ,{" "}
-            <a
-              href="https://elischolar.library.yale.edu/ypfs-documents/454/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              rapport JPMorgan
-            </a>{" "}
-            et{" "}
-            <a
-              href="https://www.gov.uk/government/news/phe-statement-on-delayed-reporting-of-covid-19-cases"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Public Health England
-            </a>{" "}
-            : incidents cités avec leur portée limitée.
-          </li>
-          <li>
-            <a
-              href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/delivering-large-scale-it-projects-on-time-on-budget-and-on-value"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              McKinsey-Oxford — grands projets informatiques
-            </a>{" "}
-            : résultats non transposés aux petits outils PME.
-          </li>
-        </ul>
         <p className="text-sm">
           <em>
-            Les fourchettes de ce guide sont des repères éditoriaux issus du
-            recoupement décrit ci-dessus, donnés à titre indicatif : seul un
-            devis établi sur votre périmètre vous engage. Ce guide ne constitue
-            pas un conseil juridique personnalisé — pour une cession de droits
-            ou un contrat, consultez un avocat.
+            Les fourchettes de ce guide sont une synthèse Hagnéré des grilles
+            commerciales citées, donnée à titre indicatif : seul un devis établi
+            à partir de la liste exacte des fonctions, des contraintes et des
+            services attendus vous engage. Ce guide ne constitue pas un conseil
+            juridique personnalisé — pour une cession de droits ou un contrat,
+            consultez un avocat.
           </em>
         </p>
       </GuideLayout>

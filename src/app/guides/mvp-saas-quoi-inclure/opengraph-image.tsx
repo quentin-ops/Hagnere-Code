@@ -2,18 +2,18 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "MVP SaaS avec une tranche verticale en sept couches pour le premier client";
+  "MVP SaaS : les sept indispensables pour servir un premier client";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const layers = [
-  { label: "VALEUR", color: "#a78bfa" },
-  { label: "COMPTE", color: "#818cf8" },
+  { label: "ACCÈS", color: "#a78bfa" },
+  { label: "TÂCHE PRINCIPALE", color: "#818cf8" },
   { label: "DONNÉES", color: "#60a5fa" },
-  { label: "OFFRE", color: "#38bdf8" },
-  { label: "EXPLOITATION", color: "#2dd4bf" },
-  { label: "CONFIANCE", color: "#34d399" },
-  { label: "APPRENTISSAGE", color: "#a3e635" },
+  { label: "SAUVEGARDE", color: "#38bdf8" },
+  { label: "AIDE", color: "#2dd4bf" },
+  { label: "PAIEMENT", color: "#34d399" },
+  { label: "ADMINISTRATION", color: "#a3e635" },
 ];
 
 export default function OgImage() {
@@ -111,7 +111,7 @@ export default function OgImage() {
               color: "#c4b5fd",
             }}
           >
-            La plus petite tranche capable de servir un premier client réel
+            Une petite version, mais un service vraiment utilisable
           </div>
         </div>
 
@@ -137,7 +137,7 @@ export default function OgImage() {
               letterSpacing: 1.5,
             }}
           >
-            TRANCHE VERTICALE
+            7 INDISPENSABLES
           </div>
           {layers.map((layer, index) => (
             <div
@@ -186,7 +186,7 @@ export default function OgImage() {
                   fontSize: 14,
                 }}
               >
-                preuve
+                inclus
               </div>
             </div>
           ))}
@@ -194,7 +194,7 @@ export default function OgImage() {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        {["Construire", "Opérer manuellement", "Intégrer", "Reporter"].map(
+        {["À construire", "Peut rester manuel", "Peut attendre"].map(
           (label) => (
             <div
               key={label}

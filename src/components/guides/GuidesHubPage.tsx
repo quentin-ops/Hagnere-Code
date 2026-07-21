@@ -68,36 +68,45 @@ const COLLECTIONS: Collection[] = [
     anchor: "budget-prix",
     accent: "purple",
     icon: Calculator,
-    title: "Combien ça coûte, vraiment.",
-    text: "Fourchettes réelles par type de projet, coûts cachés, coût total sur 3 ans et devis décortiqués ligne à ligne.",
-    laneText: "Sites, SaaS, apps, logiciels : les vrais prix.",
+    title: "Comprendre le budget complet.",
+    text: "Fourchettes observées par type de projet, dépenses souvent oubliées, coût sur trois ans et devis expliqués ligne par ligne.",
+    laneText: "Sites, SaaS, applications et logiciels : les budgets à prévoir.",
+  },
+  {
+    section: "Référencement naturel",
+    anchor: "referencement-naturel",
+    accent: "green",
+    icon: Globe,
+    title: "Être trouvé sur Google et savoir quoi mesurer.",
+    text: "Prix, audits et priorités expliqués sans promesse de position : ce que le travail doit produire et comment suivre les demandes obtenues.",
+    laneText: "Budget SEO, audit et suivi des résultats.",
   },
   {
     section: "Comparatifs & choix",
     anchor: "comparatifs",
     accent: "blue",
     icon: Scale,
-    title: "Choisir sa techno sans se tromper.",
-    text: "Next.js, WordPress, Shopify, Flutter… Des comparatifs écrits pour les dirigeants, avec un verdict tranché par profil.",
-    laneText: "Les comparatifs honnêtes, verdict par profil.",
+    title: "Choisir une solution adaptée à l’entreprise.",
+    text: "WordPress, Shopify, outils existants ou développement sur mesure : des comparaisons expliquées selon vos besoins, votre équipe et votre budget.",
+    laneText: "Des choix expliqués selon votre situation.",
   },
   {
-    section: "Cadrer son projet",
-    anchor: "cadrer",
+    section: "Préparer son projet",
+    anchor: "preparer",
     accent: "green",
     icon: ClipboardList,
-    title: "Cadrer avant de signer.",
-    text: "Cahiers des charges modèles, délais réels phase par phase et rétro-plannings pour un projet qui ne dérape pas.",
-    laneText: "Cahiers des charges, délais, rétro-plannings.",
+    title: "Préparer le projet avant de demander des devis.",
+    text: "Modèles de cahiers des charges, délais expliqués étape par étape et questions à régler avant de choisir un prestataire.",
+    laneText: "Cahiers des charges, délais et responsabilités.",
   },
   {
     section: "Financer son projet",
     anchor: "financer",
     accent: "amber",
     icon: HandCoins,
-    title: "Financer sans se faire avoir.",
-    text: "Les dispositifs réellement actifs, vérifiés à la source, région par région — et les arnaques à éviter.",
-    laneText: "Les aides qui existent vraiment en 2026.",
+    title: "Vérifier les aides avant de compter dessus.",
+    text: "Les dispositifs retrouvés dans les sources officielles, les conditions à vérifier et les démarches à faire avant de les intégrer au budget.",
+    laneText: "Aides, conditions et démarches en 2026.",
   },
 ];
 
@@ -128,9 +137,9 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
 
 /** Fourchettes du visuel héros — reprises des guides budget correspondants. */
 const PRICE_RANGES = [
-  { label: "Site vitrine", value: "500 € – 22 k€", left: 2, width: 26 },
-  { label: "E-commerce", value: "2 k€ – 80 k€", left: 8, width: 46 },
-  { label: "SaaS (MVP → V1)", value: "5 k€ – 100 k€", left: 14, width: 54 },
+  { label: "Site vitrine", value: "0,5 k€ – 30 k€", left: 2, width: 30 },
+  { label: "E-commerce", value: "1,5 k€ – 50 k€+", left: 7, width: 40 },
+  { label: "SaaS (1re version)", value: "5 k€ – 100 k€", left: 14, width: 54 },
   { label: "App mobile", value: "5 k€ – 150 k€", left: 14, width: 64 },
   { label: "Logiciel métier", value: "5 k€ – 250 k€", left: 14, width: 80 },
 ];
@@ -151,7 +160,7 @@ const RESOURCES = [
     href: "/livres-blancs/comparer-devis-site-internet",
     label: "Grille de comparaison de devis",
     value:
-      "TCO sur 36 mois, 40 critères et exemple rempli à copier dans Excel ou Sheets.",
+      "Coût sur 36 mois, 40 points de comparaison et exemple rempli à copier dans Excel ou Sheets.",
   },
   {
     href: "/outils/calculateur-cout-excel",
@@ -161,17 +170,19 @@ const RESOURCES = [
   {
     href: "/realisations",
     label: "Nos réalisations",
-    value: "4 études déclaratives : contexte, périmètre public et limites de preuve.",
+    value:
+      "Quatre projets présentés avec leur contexte, les choix réalisés et les limites des informations publiées.",
   },
   {
     href: "/methode",
     label: "Notre méthode",
-    value: "Sprint Fixe : périmètre écrit, budget plafonné, cadence de démo convenue.",
+    value:
+      "Sprint Fixe : fonctions écrites, budget plafonné et démonstrations prévues à l’avance.",
   },
   {
     href: "/tarifs",
     label: "Nos tarifs",
-    value: "La grille publique, au forfait fixe — sans surprise.",
+    value: "La grille publique et ce que chaque forfait inclut.",
   },
 ];
 
@@ -227,19 +238,19 @@ export function GuidesHubPage() {
               </nav>
 
               <div className="ghub-kicker">
-                <span aria-hidden="true" /> Bibliothèque · {PUBLISHED_GUIDES.length}{" "}
-                guides chiffrés
+                <span aria-hidden="true" /> Bibliothèque ·{" "}
+                {PUBLISHED_GUIDES.length} guides pratiques
               </div>
 
               <h1>
-                Guides : <span className="grad">combien coûte</span> et comment
-                réussir votre projet web
+                Guides : <span className="grad">comprendre le budget</span> et
+                choisir la bonne solution
               </h1>
               <p className="ghub-hero-sub">
                 Prix d&apos;un site internet, budget d&apos;un SaaS, coûts
-                cachés, comparatifs, cahiers des charges : des guides pratiques,
-                clairs et chiffrés, rédigés par l&apos;équipe qui code — pas par
-                un rédacteur hors-sol.
+                cachés, comparatifs, cahiers des charges : des guides écrits
+                pour des dirigeants, avec des réponses simples, des sources et
+                des exemples que vous pouvez refaire.
               </p>
 
               <div className="ghub-hero-actions">
@@ -260,10 +271,11 @@ export function GuidesHubPage() {
                   <Check size={13} aria-hidden="true" /> Chiffres sourcés
                 </span>
                 <span>
-                  <Check size={13} aria-hidden="true" /> Devis décortiqués
+                  <Check size={13} aria-hidden="true" /> Options comparées
                 </span>
                 <span>
-                  <Check size={13} aria-hidden="true" /> Zéro affiliation
+                  <Check size={13} aria-hidden="true" /> Solutions simples
+                  incluses
                 </span>
               </div>
             </div>
@@ -296,7 +308,8 @@ export function GuidesHubPage() {
               </div>
               <div className="ghub-library-foot">
                 <span>
-                  <Timer size={13} aria-hidden="true" /> ~25 min par guide
+                  <Timer size={13} aria-hidden="true" /> Réponse rapide puis
+                  détails
                 </span>
                 <span>
                   <Check size={13} aria-hidden="true" /> Mis à jour{" "}
@@ -348,7 +361,7 @@ export function GuidesHubPage() {
                   </div>
                   <div className="ghub-ranges-body">
                     <div className="ghub-ranges-title">
-                      <b>Fourchettes 2026</b>
+                      <b>Estimations 2026</b>
                       <span>PRIX HT</span>
                     </div>
                     {PRICE_RANGES.map((r) => (
@@ -364,7 +377,7 @@ export function GuidesHubPage() {
                       </div>
                     ))}
                     <div className="ghub-ranges-note">
-                      Source : guides Hagnéré Code · juillet 2026
+                      Hypothèses et limites dans chaque guide · juillet 2026
                     </div>
                   </div>
                 </div>
@@ -374,7 +387,7 @@ export function GuidesHubPage() {
                     <Euro size={14} strokeWidth={2.4} />
                   </div>
                   <div>
-                    <b>Devis décortiqué</b>
+                    <b>Devis expliqué</b>
                     <span>ligne à ligne</span>
                   </div>
                 </div>
@@ -467,13 +480,10 @@ export function GuidesHubPage() {
           <div className="wrap ghub-resources-inner">
             <div className="ghub-resources-copy">
               <div className="eyebrow">Aller plus loin</div>
-              <h2>
-                Avant de nous écrire, vous pouvez déjà vérifier le niveau.
-              </h2>
+              <h2>Préparez déjà votre décision avec des outils gratuits.</h2>
               <p>
-                Les guides donnent les ordres de grandeur. Les livres blancs,
-                outils et réalisations permettent de les appliquer à votre
-                propre décision.
+                Les guides donnent les repères. Les modèles, calculateurs et
+                exemples vous aident ensuite à les appliquer à votre projet.
               </p>
             </div>
             <div className="ghub-resources-grid">
@@ -493,13 +503,11 @@ export function GuidesHubPage() {
           <div className="wrap ghub-final-inner">
             <div>
               <div className="eyebrow">Prochaine étape</div>
-              <h2>
-                Vous avez les ordres de grandeur. Passons à votre chiffre.
-              </h2>
+              <h2>Vous voulez appliquer ces repères à votre entreprise ?</h2>
               <p>
-                Décrivez votre projet en quelques phrases : un développeur — pas
-                un commercial — lit votre demande et vise une réponse le
-                prochain jour ouvré, sans délai garanti.
+                Décrivez votre activité, le problème et le résultat attendu. Un
+                développeur lit votre demande et vous répond avec une première
+                analyse, y compris si une solution plus simple suffit.
               </p>
             </div>
             <div className="ghub-final-actions">

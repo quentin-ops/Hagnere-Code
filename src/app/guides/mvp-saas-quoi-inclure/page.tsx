@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: guideUrl(guide) + "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Les sept couches d’un MVP SaaS exploitable pour un premier client",
+        alt: "MVP SaaS : les sept indispensables pour servir un premier client",
       },
     ],
     publishedTime: guide.datePublished + "T09:00:00+02:00",
@@ -105,49 +105,49 @@ const faqItems = [
   {
     question: "Combien de fonctionnalités faut-il dans un MVP SaaS ?",
     answer:
-      "Il n’existe pas de nombre universel. Un parcours critique complet et les socles nécessaires à son exploitation valent mieux que cinq fonctions disjointes. Comptez les capacités par la preuve qu’elles permettent d’obtenir, puis retirez celles qui n’influencent ni la valeur, ni la sécurité, ni l’apprentissage du premier client.",
+      "Il n’existe pas de nombre idéal. Votre première version doit surtout permettre à un client de se connecter, d’accomplir la tâche principale, de retrouver ses données et d’obtenir de l’aide s’il est bloqué. Tout ce qui ne sert pas ce premier usage peut attendre.",
   },
   {
     question: "Un MVP SaaS doit-il obligatoirement intégrer Stripe ?",
     answer:
-      "Non. Une facturation manuelle peut convenir à un pilote B2B si le contrat, les droits d’accès, le statut de paiement et la sortie sont maîtrisés. Le paiement automatisé devient nécessaire lorsque l’achat autonome, le volume, les changements d’offre ou la gestion des échecs font partie du test produit.",
+      "Non. Pour quelques clients professionnels, un contrat et une facture manuelle peuvent suffire. Automatisez le paiement lorsque les clients doivent acheter seuls ou que les changements d’abonnement deviennent trop nombreux à gérer à la main.",
   },
   {
     question: "Le support et l’administration peuvent-ils rester manuels ?",
     answer:
-      "Oui, s’ils sont documentés, traçables, réversibles et compatibles avec la charge. Chaque opération manuelle doit avoir un responsable, une procédure, une limite de volume et un déclencheur d’automatisation. Sa répétition devient alors une donnée d’apprentissage, pas une dette cachée.",
+      "Oui, surtout avec les premiers clients. Écrivez qui intervient, comment et jusqu’à quelle limite. Automatisez lorsque le temps cumulé devient trop lourd, que le volume rend la procédure fragile ou que l’intervention expose les données à un risque inutile — pas à cause d’une fréquence hebdomadaire isolée.",
   },
   {
-    question: "Faut-il une architecture multi-tenant dès le MVP ?",
+    question:
+      "Faut-il une base de données séparée pour chaque entreprise cliente ?",
     answer:
-      "Il faut au minimum choisir et tester le mode d’isolation adapté. Si plusieurs organisations partagent un même système, elles ne doivent pas accéder aux données les unes des autres. Une architecture multi-tenant avancée n’est toutefois pas la seule manière de servir un premier pilote isolé.",
+      "Pas nécessairement. Une même base peut servir plusieurs entreprises si les accès et les données sont réellement séparés. Votre prestataire doit expliquer cette séparation avec des mots simples et tester qu’un client ne peut jamais voir les informations d’un autre avant le lancement.",
   },
   {
     question: "Peut-on reporter la sécurité et le RGPD à la V1 ?",
     answer:
-      "Non pour les mesures nécessaires au risque réel et au traitement effectué. Le niveau doit être proportionné aux données, aux accès et aux conséquences d’un incident ; le mot MVP ne crée aucune exemption générale. Une checklist ne constitue cependant ni une certification de sécurité ni un avis juridique personnalisé.",
+      "Non. Une première version peut être limitée, mais elle doit déjà protéger les comptes et les données qu’elle utilise. Les contrôles dépendent de la sensibilité des informations et ne remplacent pas un audit ou un avis juridique lorsque l’enjeu l’exige.",
   },
   {
     question: "Une application mobile est-elle nécessaire dans un MVP SaaS ?",
     answer:
-      "Seulement si le parcours critique dépend réellement du hors-ligne, de la caméra, de la géolocalisation, des notifications ou d’un usage mobile dominant. Sinon, une interface web adaptée aux petits écrans peut permettre de tester la valeur avant de financer deux produits à exploiter.",
+      "Seulement si l’usage dépend du téléphone : travail hors connexion, photo, géolocalisation ou notifications. Dans les autres cas, un site web bien adapté au mobile permet de tester le service sans financer deux applications.",
   },
 ];
 
-
-const mvpLayers = [
+const firstVersionEssentials = [
   {
-    label: "Valeur",
+    label: "Service rendu",
     result:
       "Un travail métier complet produit un résultat que l’utilisateur peut employer.",
     manual: "Préparer l’entrée ou vérifier le résultat avec lui.",
-    proof: "Le parcours est exécuté de bout en bout avec un cas représentatif.",
-    later: "Les variantes et automatisations qui ne changent pas la preuve.",
+    proof: "Un client va du point de départ au résultat avec un cas réaliste.",
+    later: "Les variantes et automatisations qui ne changent pas le résultat.",
   },
   {
-    label: "Compte",
+    label: "Accès",
     result:
-      "La bonne personne entre, récupère son accès et ne voit que son périmètre.",
+      "La bonne personne entre, récupère son accès et ne voit que ses données.",
     manual: "Créer l’organisation et envoyer la première invitation.",
     proof: "Invitation, retrait et contrôle d’un rôle sont testés.",
     later:
@@ -162,7 +162,7 @@ const mvpLayers = [
     later: "Importateur universel et connecteurs non nécessaires au pilote.",
   },
   {
-    label: "Offre",
+    label: "Vente",
     result:
       "Le droit d’usage correspond au contrat ou au paiement réellement choisi.",
     manual: "Contrat et facture B2B, puis activation contrôlée.",
@@ -171,7 +171,7 @@ const mvpLayers = [
       "Essai gratuit, coupons ou catalogue complexe si le test est accompagné.",
   },
   {
-    label: "Exploitation",
+    label: "Aide et administration",
     result:
       "L’équipe sait assister, débloquer et administrer sans improviser dans la base.",
     manual: "Support direct et procédure interne sobre.",
@@ -180,7 +180,7 @@ const mvpLayers = [
       "Centre d’aide exhaustif et interface interne d’administration très automatisée.",
   },
   {
-    label: "Confiance",
+    label: "Sécurité et continuité",
     result:
       "Accès, secrets, sauvegarde, surveillance et responsabilités sont proportionnés.",
     manual: "Revue humaine d’une action sensible selon une procédure.",
@@ -189,7 +189,7 @@ const mvpLayers = [
       "Référentiels ou niveaux de service non exigés par le risque ou le contrat.",
   },
   {
-    label: "Apprentissage",
+    label: "Mesure utile",
     result:
       "Le lot montre où la valeur arrive, où elle échoue et ce qu’il coûte à servir.",
     manual: "Consigner retours et temps d’intervention après chaque usage.",
@@ -199,7 +199,7 @@ const mvpLayers = [
   },
 ];
 
-function MvpVerticalSlice() {
+function FirstVersionChecklist() {
   return (
     <figure
       className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 p-4 shadow-sm sm:p-6 dark:border-zinc-800"
@@ -207,20 +207,20 @@ function MvpVerticalSlice() {
     >
       <figcaption id="mvp-slice-title" className="mb-5">
         <span className="block text-xs font-bold uppercase tracking-[0.18em] text-violet-300">
-          Artefact de cadrage
+          Checklist de la première version
         </span>
         <span className="mt-2 block text-lg font-bold text-white">
-          La tranche verticale minimale du premier client
+          Ce que le premier client doit pouvoir faire
         </span>
         <span className="mt-1 block max-w-2xl text-sm leading-relaxed text-zinc-400">
-          Chaque couche doit atteindre un résultat vérifiable. « Manuel » décrit
-          une procédure assumée ; « plus tard » possède un déclencheur, pas une
-          promesse vague.
+          Une première version peut rester simple. Elle doit néanmoins permettre
+          un usage complet, protéger les données et donner à votre équipe les
+          moyens d’aider le client.
         </span>
       </figcaption>
 
       <ol className="relative space-y-3 before:absolute before:bottom-5 before:left-[1.1rem] before:top-5 before:w-px before:bg-gradient-to-b before:from-violet-400 before:via-blue-400 before:to-emerald-400 sm:before:left-[1.35rem]">
-        {mvpLayers.map((layer, index) => (
+        {firstVersionEssentials.map((layer, index) => (
           <li
             key={layer.label}
             className="relative rounded-xl border border-white/10 bg-white/[0.045] p-3 pl-12 sm:p-4 sm:pl-14"
@@ -238,7 +238,7 @@ function MvpVerticalSlice() {
                 <dd className="mt-1 text-zinc-400">{layer.manual}</dd>
               </div>
               <div className="rounded-lg bg-black/20 p-2.5">
-                <dt className="font-semibold text-emerald-300">Preuve</dt>
+                <dt className="font-semibold text-emerald-300">À tester</dt>
                 <dd className="mt-1 text-zinc-400">{layer.proof}</dd>
               </div>
               <div className="rounded-lg bg-black/20 p-2.5">
@@ -274,33 +274,33 @@ export default function Page() {
           { label: "Que faut-il inclure dans un MVP SaaS ?" },
         ]}
         heroTitle={guide.heroTitle}
-        heroDescription="Un MVP exploitable n’est pas une démonstration avec moins d’écrans. C’est la plus petite tranche qui permet à un premier client réel d’entrer, d’obtenir le résultat promis, d’être assisté et de sortir sans improvisation."
+        heroDescription="Vous avez un premier client intéressé et vous vous demandez quoi construire en premier ? Voici ce qui doit fonctionner le jour du lancement, ce qui peut encore être fait à la main et ce qui peut attendre."
         heroAction={{
           href: "#tranche-verticale",
-          label: "Voir la tranche minimale",
+          label: "Voir la checklist",
         }}
         author={{
           name: "Quentin Hagnéré",
           role: "fondateur de Hagnéré Code",
           href: "/equipe",
         }}
-        updatedLabel={"Publié le " + formatGuideDate(guide.datePublished)}
+        updatedLabel={"Mis à jour le " + formatGuideDate(guide.dateModified)}
         keyPoints={[
           {
             number: "01",
-            title: "1 parcours client complet",
+            title: "1 tâche client complète",
             description: "",
             color: "violet",
           },
           {
             number: "02",
-            title: "7 socles d’exploitation",
+            title: "7 indispensables au lancement",
             description: "",
             color: "blue",
           },
           {
             number: "03",
-            title: "10 tests avant production",
+            title: "6 vérifications avant production",
             description: "",
             color: "emerald",
           },
@@ -326,7 +326,7 @@ export default function Page() {
           },
           {
             href: "/guides/cahier-des-charges-application-metier",
-            label: "Écrire les scénarios et la recette",
+            label: "Décrire les besoins et les tests",
           },
           {
             href: "/guides/proprietaire-site-internet-code-source",
@@ -337,30 +337,32 @@ export default function Page() {
             label: "Développement de SaaS sur mesure",
           },
         ]}
-        faqTitle="Périmètre d’un MVP SaaS : les questions restantes"
+        faqTitle="Première version d’un SaaS : vos questions"
         faqItems={faqItems}
         showWhitePaperPromo={false}
       >
         <p className="lead">
           <strong>
-            Le premier client est prêt. La fonction métier marche en
-            démonstration.
+            Vous avez trouvé un premier client et votre idée fonctionne en
+            démonstration. Que faut-il maintenant construire pour pouvoir lui
+            vendre une vraie première version ?
           </strong>{" "}
-          Mais qui crée son organisation, invite ses collègues, corrige un
-          import, constate qu’un traitement n’est pas parti, répond au support
-          et organise la sortie de ses données ? Si ces réponses n’existent pas,
-          vous avez peut-être une bonne démonstration. Vous n’avez pas encore un
-          MVP SaaS exploitable.
+          Le client doit pouvoir entrer, accomplir la tâche principale,
+          retrouver son travail et demander de l’aide. De votre côté, vous devez
+          pouvoir l’administrer, protéger ses données et savoir quoi faire si
+          quelque chose échoue. Le reste peut attendre.
         </p>
 
         <p>
-          La réponse courte est donc conditionnelle : incluez{" "}
-          <strong>un parcours de valeur complet</strong>, puis le minimum de
-          comptes, données, offre, exploitation, confiance et mesure qui permet
-          de servir le premier client réel. Une action peut rester manuelle si
-          elle est écrite, attribuée, traçable et soutenable. Une fonction peut
-          attendre si son déclencheur est explicite. Le mot « minimum » retire
-          de la largeur ; il ne retire pas la maîtrise.
+          Un SaaS est ici un logiciel que vos clients utilisent en ligne,
+          généralement par abonnement. Son MVP — une première version
+          volontairement limitée — n’est donc pas une longue liste de fonctions
+          à moitié terminées. C’est un service court mais complet. Vous pouvez
+          encore créer les comptes, importer un fichier ou envoyer les factures
+          à la main si le volume est faible et si une personne en est clairement
+          responsable. En revanche, les accès, la séparation des données, les
+          sauvegardes et la possibilité d’aider un client bloqué ne peuvent pas
+          être improvisés après le lancement.
         </p>
 
         <div className="not-prose my-7 grid gap-3 sm:grid-cols-3">
@@ -400,69 +402,53 @@ export default function Page() {
 
         <InfoBox
           variant="amber"
-          title="Cette méthode commence après la validation du problème"
+          title="À utiliser quand un vrai client est prêt à essayer"
         >
-          Elle suppose un premier client ou pilote nommable, un problème B2B
-          documenté et une décision que l’usage réel doit éclairer. Si vous ne
-          disposez encore que de compliments ou d’une liste d’attente, commencez
-          par{" "}
+          Ce guide suppose que vous connaissez le problème à résoudre et qu’au
+          moins un client accepte d’essayer la solution. Si vous ne disposez
+          encore que de compliments ou d’une liste d’attente, commencez par{" "}
           <Link href="/guides/valider-idee-saas-avant-developper">
             valider l’idée avant de développer
           </Link>
           . Marketplace, grand public, santé, finance ou données très sensibles
-          demandent en outre des analyses propres à leur périmètre.
+          demandent en outre des analyses particulières.
         </InfoBox>
 
         <GuideToc
           items={[
-            { id: "premier-client", label: "1. Le test du premier client" },
             {
-              id: "prototype-pilote-mvp",
-              label: "2. Prototype, POC, pilote, MVP ou V1 ?",
+              id: "premier-client",
+              label: "1. Choisir ce qu’il faut réellement tester",
             },
             {
               id: "tranche-verticale",
-              label: "3. Une tranche complète, pas une liste courte",
-            },
-            {
-              id: "sept-socles",
-              label: "4. Remplir les sept socles",
+              label: "2. La checklist du premier client",
             },
             {
               id: "manuel-ou-automatique",
-              label: "5. Ce qui peut rester manuel",
-            },
-            {
-              id: "parcours-et-echecs",
-              label: "6. Concevoir le parcours et ses échecs",
-            },
-            {
-              id: "operateur",
-              label: "7. Le produit dont l’opérateur a besoin",
+              label: "3. Faire à la main sans improviser",
             },
             {
               id: "offre-facturation-support",
-              label: "8. Vendre sans tout automatiser",
+              label: "4. Vendre et protéger le service",
             },
-            {
-              id: "confiance",
-              label: "9. Sécurité, données et accessibilité",
-            },
-            { id: "mesure", label: "10. Mesurer l’apprentissage" },
-            { id: "exemple", label: "11. Exemple illustratif rempli" },
-            { id: "dix-tests", label: "12. Dix tests avant production" },
-            {
-              id: "contrat-premier-client",
-              label: "13. Le contrat de premier client",
-            },
-            { id: "decision", label: "14. Choisir le bon format" },
+            { id: "mesure", label: "5. Mesurer avec un exemple concret" },
+            { id: "dix-tests", label: "6. Autoriser ou reporter le lancement" },
             { id: "sources", label: "Sources et limites" },
           ]}
         />
 
         <h2 id="premier-client">
-          1. Le MVP se juge pendant une journée réelle
+          1. Choisissez ce que vous devez réellement tester
         </h2>
+
+        <p>
+          Imaginez sa première journée. Qui lui ouvre le compte ? Quelles
+          données apporte-t-il ? Quelle tâche vient-il accomplir ? Que reçoit-il
+          à la fin ? Et s’il se trompe ou reste bloqué, qui peut l’aider ? Ces
+          questions définissent mieux la première version qu’un objectif
+          arbitraire de cinq ou dix fonctionnalités.
+        </p>
 
         <p>
           Le{" "}
@@ -473,86 +459,69 @@ export default function Page() {
           >
             produit minimum viable décrit par Eric Ries
           </a>{" "}
-          sert à obtenir un apprentissage utile avec une version cohérente du
-          produit. Cette source méthodologique ne fixe ni écrans obligatoires,
-          ni architecture, ni niveau de conformité. Pour un SaaS B2B déjà
-          destiné à un premier client réel, nous en tirons une conséquence
-          pratique : le périmètre doit permettre d’observer la valeur sans
-          cacher le coût ni le risque nécessaires pour la délivrer.
+          sert à apprendre avec une version cohérente du produit. Il ne fixe pas
+          de liste universelle. Pour un logiciel destiné aux entreprises,
+          retenez une règle simple : le client doit obtenir le résultat promis
+          et votre équipe doit pouvoir assurer le service sans bricolage
+          dangereux.
         </p>
 
         <p>
-          Écrivez d’abord une phrase testable : « Pour{" "}
-          <em>[utilisateur précis]</em>, le produit transforme{" "}
-          <em>[entrée réelle]</em> en <em>[résultat utilisable]</em>, ce qui
-          permet de décider <em>[automatiser, corriger, élargir ou arrêter]</em>
-          . » Si plusieurs produits ou décisions entrent dans la phrase, le lot
-          est probablement trop large. Si aucune décision ne dépend du résultat,
-          le développement n’est probablement pas encore le meilleur test.
+          Écrivez la promesse en une phrase : « Un responsable dépose un devis,
+          l’envoie à la bonne personne et obtient une décision qu’il peut
+          retrouver plus tard. » Si vous avez besoin de plusieurs « et » pour la
+          terminer, votre première version est probablement trop large.
         </p>
 
         <p>
-          Rejouez ensuite une journée : ouverture du compte, première donnée,
-          résultat, erreur, demande d’aide, action d’administration, facturation
-          ou droit d’accès, sauvegarde, export et mesure. Vous ne cherchez pas à
-          anticiper tous les incidents futurs. Vous cherchez ceux qui feraient
-          perdre une donnée, exposeraient un autre client, bloqueraient le
-          travail ou rendraient l’offre incohérente dès le pilote.
+          Rejouez ensuite le parcours complet : ouverture du compte, première
+          donnée, résultat, erreur, demande d’aide, facturation et export. Vous
+          n’avez pas à prévoir tous les cas futurs. Vous devez traiter ceux qui
+          bloqueraient le travail, feraient perdre une donnée ou exposeraient
+          les informations d’un autre client.
         </p>
 
-        <h2 id="prototype-pilote-mvp">
-          2. Prototype, POC, pilote, MVP ou V1 ne prouvent pas la même chose
-        </h2>
+        <h3 id="prototype-pilote-mvp">
+          Prototype, essai client ou version vendable ?
+        </h3>
 
         <p>
-          Une <strong>preuve de faisabilité</strong>, souvent appelée POC,
-          vérifie qu’un verrou technique peut être levé. Un{" "}
-          <strong>prototype</strong> rend un parcours compréhensible, sans
-          devoir traiter de vraies données. Un{" "}
-          <strong>pilote accompagné</strong> teste la valeur avec un client réel
-          tout en assumant des opérations manuelles. Le{" "}
-          <strong>MVP de production</strong> rend ce premier usage suffisamment
-          répétable et exploitable. La <strong>V1</strong> élargit ensuite la
-          couverture ou l’autonomie.
+          Un prototype sert à montrer et comprendre une idée. Un test technique,
+          parfois appelé POC, vérifie qu’une difficulté précise peut être
+          surmontée. Un pilote fait travailler un vrai client avec votre aide.
+          Un MVP exploitable peut être utilisé plusieurs fois sans que votre
+          équipe improvise à chaque étape. Ne payez pas une version vendable si
+          une maquette ou un pilote manuel suffit encore à répondre à votre
+          question.
         </p>
 
         <GuideTable
-          headers={[
-            "Format",
-            "Incertitude traitée",
-            "Données et client réels",
-            "Sortie attendue",
-          ]}
+          headers={["Format", "Quand l’utiliser", "Décision suivante"]}
           rows={[
             [
-              "POC",
-              "faisabilité d’un verrou technique",
-              "non requis ; jeu fictif ou anonymisé de préférence",
-              "jeter, approfondir ou arrêter",
+              "Test technique (POC)",
+              "Vous devez vérifier une difficulté précise, avec des données fictives ou anonymisées.",
+              "Poursuivre, changer d’approche ou arrêter.",
             ],
             [
               "Prototype",
-              "compréhension du parcours et du résultat",
-              "non requis ; aucune exploitation normale",
-              "corriger le parcours avant de coder le socle",
+              "Vous voulez montrer les écrans et vérifier que le parcours est compris.",
+              "Corriger l’idée avant de développer.",
             ],
             [
-              "Pilote accompagné",
-              "valeur et usage dans un contexte réel",
-              "oui, avec opérations manuelles déclarées",
-              "automatiser ce qui se répète, pivoter ou arrêter",
+              "Essai avec un client",
+              "Un vrai client utilise la solution avec votre accompagnement.",
+              "Automatiser ce qui se répète, corriger ou arrêter.",
             ],
             [
-              "MVP de production",
-              "usage réel répétable et coût d’exploitation",
-              "oui, avec socle minimal testé",
-              "mesurer puis élargir seulement ce que la preuve justifie",
+              "Première version vendable",
+              "Le service doit fonctionner plusieurs fois avec de vraies données.",
+              "Mesurer l’usage avant d’ajouter des fonctions.",
             ],
             [
-              "V1",
-              "couverture de plusieurs profils ou engagements",
-              "oui, exploitation plus durable",
-              "piloter une feuille de route produit",
+              "Version élargie",
+              "Plusieurs clients, rôles ou engagements sont déjà connus.",
+              "Organiser les prochaines améliorations.",
             ],
           ]}
         />
@@ -566,164 +535,78 @@ export default function Page() {
           >
             manuel de conception des services GOV.UK
           </a>{" "}
-          recommande, dans son contexte public britannique, de tester les
-          hypothèses les plus risquées pendant une phase alpha et autorise la
-          conclusion « ne pas construire ». Ce n’est pas une norme pour les SaaS
-          privés français, mais la discipline est utile : ne financez pas un
-          produit exploitable quand une maquette, un service manuel ou une
-          intégration existante peut encore répondre à la question.
+          recommande de tester d’abord ce qui pourrait faire échouer le projet
+          et accepte la conclusion « ne pas construire ». Ce manuel concerne les
+          services publics britanniques, pas tous les SaaS français, mais la
+          règle reste utile : choisissez le test le moins coûteux qui permet
+          réellement de décider.
         </p>
 
         <h2 id="tranche-verticale">
-          3. Construisez une tranche complète, pas une liste courte
+          2. Utilisez cette checklist pour servir le premier client
         </h2>
 
         <p>
-          Un MVP peut n’exposer qu’une seule fonction métier et pourtant
-          nécessiter plusieurs capacités invisibles. Inversement, une
-          authentification sophistiquée, un paiement automatisé, une application
-          mobile et dix tableaux de bord ne rendent pas un lot viable si aucun
-          utilisateur n’obtient le résultat promis. La bonne unité de cadrage
-          n’est donc ni l’écran ni la « fonctionnalité ». C’est la tranche
-          verticale qui traverse le parcours client et les moyens de
-          l’exploiter.
+          Une seule fonction métier peut suffire, à condition qu’un client
+          puisse réellement l’utiliser. Des comptes sophistiqués, un paiement
+          automatisé, une application mobile et dix tableaux de bord ne servent
+          à rien si le résultat principal reste incomplet. Construisez donc un
+          parcours court de bout en bout, plutôt que plusieurs fonctions à
+          moitié terminées.
         </p>
 
-        <MvpVerticalSlice />
+        <FirstVersionChecklist />
 
         <p>
-          Chaque ligne doit avoir un propriétaire et une preuve. Si une couche
-          est absente, ne la compensez pas par la qualité d’une autre : une
-          interface claire n’isole pas les données ; une sauvegarde planifiée ne
-          prouve pas la restauration ; un contrat signé ne montre pas que le
-          support peut débloquer l’utilisateur. Le bon résultat peut donc être «
-          pilote accompagné » plutôt que « MVP en libre-service ».
-        </p>
-
-        <h2 id="sept-socles">
-          4. Remplissez la fiche de première exploitation
-        </h2>
-
-        <p>
-          Copiez la grille ci-dessous dans votre document de cadrage. Une ligne
-          n’est terminée que lorsque son résultat, sa procédure temporaire, sa
-          preuve, son report et son responsable sont explicites. « Ce sera fait
-          plus tard » ne répond à aucune de ces questions.
-        </p>
-
-        <GuideTable
-          headers={[
-            "Socle",
-            "Résultat nécessaire maintenant",
-            "Preuve avant production",
-            "Responsable à nommer",
-          ]}
-          rows={[
-            [
-              "Valeur",
-              "un parcours critique transforme une entrée réelle en résultat utilisable",
-              "scénario exécuté de bout en bout avec critère d’acceptation",
-              "responsable produit ou métier",
-            ],
-            [
-              "Compte",
-              "organisation, identité, invitation, récupération et rôles minimaux",
-              "création, retrait et accès interdit testés",
-              "administrateur client et opérateur",
-            ],
-            [
-              "Données",
-              "entrée, validation, isolation, correction, export et durée adaptés",
-              "jeu représentatif, erreur et sortie vérifiés",
-              "métier, technique et protection des données selon le cas",
-            ],
-            [
-              "Offre",
-              "droits d’usage cohérents avec contrat, plan ou paiement",
-              "entrée, changement, échec et fin testés",
-              "vendeur, facturation et produit",
-            ],
-            [
-              "Exploitation",
-              "support et administration peuvent comprendre et débloquer",
-              "incident prévu traité sans modification sauvage",
-              "opérateur ou support nommé",
-            ],
-            [
-              "Confiance",
-              "mesures proportionnées aux accès, données et conséquences",
-              "contrôles d’accès, restauration, alertes et canal d’incident exercés",
-              "dirigeant, technique et prestataires concernés",
-            ],
-            [
-              "Apprentissage",
-              "usage, échec et charge manuelle rendent la suite décidable",
-              "événements et décision de sortie écrits avant le lancement",
-              "responsable produit",
-            ],
-          ]}
-        />
-
-        <p>
-          Les sept socles ne signifient pas sept chantiers lourds. Pour un seul
-          pilote B2B, la création de l’organisation peut être manuelle, le
-          support direct et la facture émise par le processus comptable
-          existant. En revanche, la séparation des données, la cohérence des
-          droits et la capacité de récupérer après un incident doivent rester
-          adaptées au risque réel.
+          Aucun de ces éléments ne compense les autres : une belle interface ne
+          protège pas les données ; une sauvegarde jamais restaurée ne rassure
+          pas ; un contrat signé ne montre pas que l’équipe saura débloquer le
+          client. Si tout ne peut pas être prêt, lancez un essai accompagné
+          plutôt qu’un service ouvert à tous.
         </p>
 
         <h2 id="manuel-ou-automatique">
-          5. Manuel ne signifie ni caché, ni informel
+          3. Faites à la main ce qui aide à apprendre, sans improviser
         </h2>
 
         <p>
-          Une opération manuelle est souvent un excellent instrument
-          d’apprentissage : elle révèle les variantes avant de les figer dans du
-          code. Elle devient dangereuse lorsqu’elle dépend de la mémoire du
-          fondateur, exige un accès direct incontrôlé à la production ou ne
-          possède aucune limite de volume. Pour chaque tâche, choisissez entre
-          <strong> construire</strong>, <strong>opérer manuellement</strong>,{" "}
-          <strong>acheter ou intégrer</strong>, et <strong>reporter</strong>.
+          Faire une tâche à la main avec les premiers clients permet souvent de
+          comprendre ce qu’il faudra automatiser. Cela devient dangereux si une
+          seule personne sait le faire, si elle doit modifier directement les
+          données du client ou si personne ne connaît la limite acceptable.
         </p>
 
         <GuideTable
           headers={[
-            "Capacité",
-            "Manuel acceptable si…",
-            "Automatiser dès maintenant si…",
-            "Jamais improviser",
+            "Tâche",
+            "Elle peut rester manuelle si…",
+            "Automatisez lorsque…",
           ]}
           rows={[
             [
               "Création du compte",
-              "quelques pilotes sont onboardés avec eux et chaque étape est tracée",
-              "l’inscription autonome fait partie de la preuve commerciale",
-              "l’identité, la récupération et la suppression des accès",
+              "Vous accompagnez quelques clients et notez chaque étape.",
+              "Les clients doivent s’inscrire seuls ou les demandes se multiplient.",
             ],
             [
               "Import initial",
-              "le format varie encore et l’équipe contrôle chaque résultat",
-              "le volume ou la fréquence rend l’accompagnement insoutenable",
-              "la validation, les doublons, la confidentialité et le retour arrière",
+              "Les formats varient encore et vous contrôlez le résultat avec le client.",
+              "Le volume ou la fréquence rend l’accompagnement trop lourd.",
             ],
             [
               "Facturation B2B",
-              "contrat, facture, statut et droits sont réconciliés par une personne nommée",
-              "achat autonome, nombreux changements ou impayés font partie du test",
-              "le droit d’accès lors d’un échec, d’une résiliation ou d’un remboursement",
+              "Une personne relie facture, paiement et droit d’accès.",
+              "L’achat autonome, les changements d’offre ou les impayés deviennent fréquents.",
             ],
             [
               "Support",
-              "le contact direct accélère l’apprentissage et la charge reste observable",
-              "les demandes répétées dépassent la capacité ou les engagements pris",
-              "la confidentialité, la trace des actions et l’escalade d’un incident",
+              "Le contact direct vous aide à comprendre les blocages.",
+              "Les mêmes demandes reviennent ou le délai promis n’est plus tenable.",
             ],
             [
               "Rapport client",
-              "sa forme et sa décision associée ne sont pas stabilisées",
-              "le même rapport est attendu à fréquence élevée sans interprétation humaine",
-              "la provenance, les règles de calcul et le contrôle d’accès",
+              "Le format change encore selon le besoin du client.",
+              "Le même rapport est demandé souvent et sans analyse particulière.",
             ],
           ]}
         />
@@ -732,25 +615,21 @@ export default function Page() {
           variant="blue"
           title="Donnez une limite à chaque opération manuelle"
         >
-          Écrivez le responsable, la procédure, la trace, le temps consommé, le
-          volume maximal et le déclencheur d’automatisation. Par exemple : «
-          import accompagné par l’opérateur ; automatiser lorsque trois formats
-          stables ou une charge récurrente incompatible avec le pilote sont
-          observés ». Le seuil appartient à votre contexte ; ce n’est pas un
-          benchmark de marché.
+          Notez qui s’en charge, comment, combien de temps cela prend et à
+          partir de quel volume vous automatiserez. Exemple : « Nous importons
+          les trois premiers fichiers avec le client. Lorsque le format est
+          stabilisé ou que l’opération prend plus d’une demi-journée par
+          semaine, nous créons l’import automatique. »
         </InfoBox>
 
-        <h2 id="parcours-et-echecs">
-          6. Concevez le chemin de valeur et les échecs qui le cassent
-        </h2>
+        <h3 id="parcours-et-echecs">Testez aussi ce qui peut mal se passer</h3>
 
         <p>
-          Commencez par une chaîne courte :{" "}
-          <strong>entrée → action métier → résultat → preuve de valeur</strong>.
-          Une étape qui n’alimente pas cette chaîne doit justifier sa présence
-          par l’exploitation, le risque ou l’apprentissage. Puis provoquez les
-          échecs qui empêcheraient le premier client de travailler : vous ne
-          testez pas l’exhaustivité, mais la capacité à détecter et reprendre.
+          Rejouez d’abord le cas normal : le client entre ses informations,
+          accomplit sa tâche et obtient un résultat qu’il peut utiliser. Testez
+          ensuite les incidents les plus gênants. Le but n’est pas d’imaginer
+          toutes les erreurs possibles, mais de vérifier que le client comprend
+          ce qui se passe et que votre équipe peut reprendre la situation.
         </p>
 
         <ol>
@@ -760,7 +639,7 @@ export default function Page() {
           </li>
           <li>
             <strong>Rôle insuffisant ou trop large :</strong> l’action échoue
-            clairement sans exposer le périmètre d’un autre utilisateur.
+            clairement sans montrer les données d’un autre utilisateur.
           </li>
           <li>
             <strong>Donnée invalide, incomplète ou en double :</strong> elle
@@ -785,23 +664,24 @@ export default function Page() {
         </ol>
 
         <p>
-          Un message « une erreur est survenue » ne suffit pas à exploiter. Le
-          client doit savoir si son action a été prise en compte ; l’opérateur
-          doit retrouver l’organisation, l’étape et la cause utile sans lire des
-          secrets ni fouiller directement la base. La correction doit enfin être
-          vérifiable et, lorsque le risque l’exige, réversible.
+          Un message « une erreur est survenue » ne suffit pas. Le client doit
+          savoir si son action a été prise en compte. Votre équipe doit pouvoir
+          retrouver le compte concerné, l’étape bloquée et la cause utile sans
+          voir de mot de passe ni modifier directement la base de données. Une
+          fois la correction faite, elle doit pouvoir vérifier que tout
+          fonctionne.
         </p>
 
-        <h2 id="operateur">
-          7. L’équipe qui sert le client a aussi besoin d’un produit
-        </h2>
+        <h3 id="operateur">
+          Donnez à votre équipe les moyens d’aider le client
+        </h3>
 
         <p>
-          Beaucoup de périmètres décrivent uniquement les écrans visibles par le
-          client. Le premier utilisateur bloqué révèle alors le produit oublié :
-          celui de l’opérateur. Une interface interne d’administration — souvent
-          appelée back-office — n’est pas toujours nécessaire, mais l’équipe
-          doit pouvoir agir selon une procédure contrôlée.
+          On pense souvent aux écrans du client et on oublie ceux de l’équipe
+          qui devra l’aider. Une interface interne d’administration, souvent
+          appelée back-office, n’est pas toujours indispensable au premier
+          lancement. En revanche, votre équipe doit pouvoir effectuer sans
+          danger les actions suivantes :
         </p>
 
         <ul>
@@ -834,57 +714,54 @@ export default function Page() {
         </ul>
 
         <p>
-          Pour un pilote, une interface interne sobre peut être remplacée sur
-          certains gestes par un mode opératoire et un outil d’administration
-          protégé. La limite est simple : si la personne doit modifier
-          directement des données de production sans garde-fou, sans trace ou
-          sans moyen de revenir en arrière, le raccourci crée un risque au lieu
-          d’économiser du temps.
+          Pendant un essai avec quelques clients, une procédure écrite et un
+          outil d’administration protégé peuvent suffire. En revanche, demander
+          à une personne de modifier directement les données réelles, sans
+          contrôle, sans historique et sans retour en arrière, n’est pas une
+          économie : c’est un risque pour le client et pour votre entreprise.
         </p>
 
         <h2 id="offre-facturation-support">
-          8. Vendez et servez sans construire tout le libre-service
+          4. Choisissez comment le client achète et comment ses données sont
+          protégées
         </h2>
 
         <p>
-          Le mode de vente décide d’une partie du produit. Un contrat négocié
-          avec un premier client n’exige pas le même tunnel qu’un achat autonome
-          par carte. Comparez les trois modes sur le même périmètre : entrée,
-          droits, facture ou paiement, changement, échec, résiliation et charge
-          interne.
+          Un premier client qui signe un contrat et reçoit une facture n’a pas
+          besoin du même parcours qu’un inconnu qui s’abonne seul par carte. Ne
+          développez pas un système d’achat complet par réflexe : choisissez le
+          mode qui correspond à votre manière réelle de vendre aujourd’hui.
         </p>
 
         <GuideTable
           headers={[
-            "Mode",
-            "À inclure dans le premier lot",
-            "Peut attendre",
-            "Signal de bascule",
+            "Mode de vente",
+            "À prévoir maintenant",
+            "Ajoutez la suite lorsque…",
           ]}
           rows={[
             [
-              "Pilote B2B contractuel",
-              "contrat, facture existante, activation contrôlée, support direct et sortie",
-              "inscription publique, essai, coupons et paiement autonome",
-              "charge manuelle répétée ou besoin de vendre sans intervention",
+              "Premier client sous contrat",
+              "Contrat, facture habituelle, activation du compte, aide directe et possibilité de récupérer ses données.",
+              "Les tâches manuelles se répètent ou vous devez vendre sans intervenir.",
             ],
             [
-              "Abonnement avec onboarding accompagné",
-              "paiement, états d’abonnement, droits, échecs, notifications et support",
-              "onboarding entièrement automatisé et catalogue complexe",
-              "volume d’entrée ou variantes stabilisées",
+              "Abonnement avec mise en route accompagnée",
+              "Paiement, droits d’accès, gestion d’un échec de paiement, notifications et aide au démarrage.",
+              "Le nombre de nouveaux clients justifie d’automatiser l’accueil.",
             ],
             [
               "Libre-service complet",
-              "inscription, récupération, paiement, cycle d’abonnement, aide et mesure",
-              "fonctions entreprise sans client demandeur",
-              "le libre-service est lui-même l’hypothèse commerciale",
+              "Inscription, récupération du compte, paiement, abonnement, aide et suivi de l’usage.",
+              "Un client réel réclame des fonctions plus complexes pour son entreprise.",
             ],
           ]}
         />
 
         <p>
-          Si vous choisissez Stripe Checkout, sa{" "}
+          Si vous facturez encore quelques clients professionnels à la main,
+          vous n’avez pas besoin d’intégrer un paiement en ligne pour lancer le
+          service. Si vous choisissez Stripe Checkout, sa{" "}
           <a
             href="https://docs.stripe.com/payments/checkout/build-subscriptions"
             target="_blank"
@@ -892,11 +769,14 @@ export default function Page() {
           >
             documentation sur les abonnements
           </a>{" "}
-          décrit des événements traités en arrière-plan et signalés au serveur,
-          dits asynchrones : le retour du navigateur ne prouve pas à lui seul
-          que tout le cycle est correctement traité. Cette règle concerne
-          l’intégration Stripe, pas tous les modèles de facturation. De même,
-          pour la norme de sécurité des données de carte PCI DSS, le{" "}
+          confirme que le retour du navigateur ne prouve pas, à lui seul, que le
+          paiement est terminé. Testez au minimum le paiement accepté, refusé ou
+          annulé, le remboursement et les droits accordés au client.
+        </p>
+        <p>
+          Confier la saisie de la carte à un prestataire réduit ce que votre
+          application doit manipuler, mais ne supprime pas toutes vos
+          responsabilités ; le{" "}
           <a
             href="https://www.pcisecuritystandards.org/faqs/1092/"
             target="_blank"
@@ -904,30 +784,30 @@ export default function Page() {
           >
             PCI Security Standards Council
           </a>{" "}
-          explique que l’externalisation peut retirer certaines exigences du
-          périmètre directement applicable au système du marchand. Elle ne
-          supprime ni ses responsabilités ni la validation à confirmer avec son
-          acquéreur.
+          précise les points à confirmer avec l’établissement qui gère vos
+          paiements.
         </p>
 
-        <h2 id="confiance">
-          9. Le mot « MVP » ne suspend ni la sécurité ni les responsabilités
-        </h2>
+        <h3 id="confiance">
+          Le mot « MVP » ne suspend pas les responsabilités
+        </h3>
 
         <p>
-          Lorsque le produit traite des données personnelles, les articles{" "}
+          Lorsque le produit traite des données personnelles, le Règlement
+          général sur la protection des données (RGPD) et notamment ses articles{" "}
           <a
             href="https://eur-lex.europa.eu/eli/reg/2016/679/2016-05-04?locale=fr"
             target="_blank"
             rel="noopener noreferrer"
           >
-            5, 25 et 32 du RGPD
+            5, 25 et 32
           </a>{" "}
-          encadrent notamment finalité, minimisation, protection dès la
-          conception et mesures adaptées au risque. Le périmètre exact dépend du
-          traitement : le consentement n’est pas la base légale universelle,
-          toute première version n’exige pas automatiquement une analyse
-          d’impact, et une donnée chiffrée n’est pas pour autant anonyme.
+          encadrent notamment le but de la collecte, la limitation des données,
+          la protection dès la conception et les mesures adaptées au risque. Les
+          obligations exactes dépendent de l’usage des données : le consentement
+          n’est pas la base légale universelle, toute première version n’exige
+          pas automatiquement une analyse d’impact, et une donnée chiffrée n’est
+          pas pour autant anonyme.
         </p>
 
         <p>
@@ -937,14 +817,14 @@ export default function Page() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            guide RGPD du développeur de la CNIL
+            guide de la CNIL destiné aux développeurs
           </a>{" "}
           recommande notamment de maîtriser comptes et habilitations, de séparer
           code, configuration et secrets, et de privilégier des données de test
-          fictives ou anonymisées. Pour votre lot, transformez ces principes en
-          décisions concrètes : données réellement nécessaires, personnes
-          autorisées, fournisseurs, durée, export, suppression et procédure
-          d’incident.
+          fictives ou anonymisées. Pour votre première version, transformez ces
+          principes en décisions concrètes : données réellement nécessaires,
+          personnes autorisées, fournisseurs, durée, export, suppression et
+          procédure d’incident.
         </p>
 
         <p>
@@ -963,56 +843,46 @@ export default function Page() {
         </p>
 
         <p>
-          Pour la vérification technique,{" "}
-          <a
-            href="https://owasp.org/www-project-application-security-verification-standard/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            référentiel OWASP ASVS 5.0 de vérification de sécurité applicative
-          </a>{" "}
-          peut fournir des exigences testables, sans constituer une
-          certification automatique. Le{" "}
-          <a
-            href="https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            guide OWASP sur la journalisation
-          </a>{" "}
-          aide à choisir des événements utiles tout en évitant mots de passe,
-          jetons et données bancaires dans les journaux. Enfin, les{" "}
-          <a
-            href="https://www.w3.org/TR/WCAG22/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            WCAG 2.2 du W3C
-          </a>{" "}
-          fournissent des critères techniques d’accessibilité. Elles ne
-          déterminent pas seules toutes les obligations françaises d’un SaaS
-          B2B, mais structure sémantique, clavier, focus, libellés, erreurs et
-          contraste coûtent souvent moins cher lorsqu’ils entrent tôt dans le
-          système d’interface.
+          Avant le premier client, demandez des preuves sur six situations
+          simples :
+        </p>
+        <ul>
+          <li>
+            un salarié de l’entreprise A ne voit aucune donnée de l’entreprise B
+            ;
+          </li>
+          <li>
+            aucun mot de passe ni numéro de carte n’apparaît dans les journaux
+            techniques ;
+          </li>
+          <li>une personne peut utiliser les écrans au clavier ;</li>
+          <li>les champs et les erreurs sont compréhensibles ;</li>
+          <li>le service reste utilisable sur téléphone ;</li>
+          <li>une sauvegarde peut réellement être restaurée.</li>
+        </ul>
+        <p>
+          Les référentiels OWASP et WCAG cités dans les sources aident l’équipe
+          technique à préparer ces tests, mais leurs sigles ne remplacent pas
+          les résultats.
         </p>
 
-        <InfoBox variant="amber" title="Une checklist ne certifie rien">
+        <InfoBox
+          variant="amber"
+          title="Une liste de contrôles ne garantit pas la conformité"
+        >
           Les contrôles ci-dessus doivent être adaptés aux données, aux
-          utilisateurs, aux engagements et aux menaces du produit. Ils ne
-          prouvent à eux seuls ni conformité RGPD, ni conformité PCI, ni niveau
-          d’accessibilité, ni sécurité absolue. Demandez la version du
-          référentiel, le périmètre testé, la méthode et les preuves réellement
-          obtenues.
+          utilisateurs et aux engagements du produit. Ils ne prouvent à eux
+          seuls ni conformité juridique, ni accessibilité complète, ni sécurité
+          absolue. Demandez ce qui a été testé, comment et avec quel résultat.
         </InfoBox>
 
-        <h2 id="mesure">10. Mesurez une décision, pas un tableau de bord</h2>
+        <h2 id="mesure">5. Mesurez seulement ce qui aide à décider</h2>
 
         <p>
-          Avec un ou quelques pilotes, le but n’est pas de déclarer un taux de
-          rétention statistiquement convaincant ou une adéquation
-          produit-marché. Le but est d’observer précisément qui atteint la
-          valeur, combien de temps cela prend, où le parcours échoue et combien
-          d’intervention humaine le service consomme.
+          Avec un ou quelques clients, les grands pourcentages ne veulent pas
+          encore dire grand-chose. Cherchez des réponses simples : le client
+          obtient-il le résultat promis ? En combien de temps ? Où reste-t-il
+          bloqué ? Combien d’heures votre équipe passe-t-elle à l’aider ?
         </p>
 
         <GuideTable
@@ -1023,52 +893,50 @@ export default function Page() {
           ]}
           rows={[
             [
-              "Activation",
-              "comptes éligibles ayant réalisé l’événement de valeur défini dans la fenêtre choisie / comptes éligibles",
-              "onboarding, clarté du parcours ou adéquation de la promesse",
+              "Premier résultat obtenu",
+              "Nombre de clients ayant terminé la tâche principale dans le délai choisi.",
+              "Simplifier l’accueil, le parcours ou la promesse.",
             ],
             [
               "Délai avant valeur",
-              "temps entre le départ défini et le premier résultat réellement utilisable",
-              "étapes à retirer, préparer ou accompagner",
+              "Temps entre l’ouverture du compte et le premier résultat utilisable.",
+              "Retirer, préparer ou accompagner certaines étapes.",
             ],
             [
               "Répétition utile",
-              "retour à l’action métier selon la cadence normale du produit",
-              "valeur durable ou simple essai ponctuel",
+              "Le client revient-il faire cette tâche au rythme prévu ?",
+              "Distinguer un usage durable d’un simple essai.",
             ],
             [
-              "Échecs",
-              "abandons, erreurs et blocages du parcours critique, avec contexte suffisant",
-              "corriger produit, données, intégration ou accompagnement",
+              "Blocages",
+              "Étape abandonnée, message d’erreur et contexte nécessaire pour comprendre.",
+              "Corriger le produit, les données ou l’accompagnement.",
             ],
             [
-              "Charge opérateur",
-              "temps et nature des interventions manuelles par organisation ou parcours",
-              "automatiser, facturer différemment ou limiter le pilote",
+              "Temps d’aide par client",
+              "Durée et nature des interventions manuelles pour chaque entreprise.",
+              "Automatiser, adapter le prix ou limiter l’essai.",
             ],
           ]}
         />
 
         <p>
-          L’événement de valeur dépend du produit : un compte créé n’est pas
-          forcément activé, et une connexion n’est pas une preuve d’usage. Pour
-          un SaaS B2B, une lecture au niveau de l’organisation cliente peut être
-          plus utile qu’une moyenne par utilisateur lorsque plusieurs rôles
-          contribuent au même résultat. C’est une décision éditoriale à vérifier
-          dans votre modèle, pas une règle universelle.
+          Un compte créé ou une connexion ne prouvent pas que le service est
+          utile. Mesurez l’action qui correspond au résultat vendu : un devis
+          approuvé, un rapport produit ou une commande traitée, par exemple.
+          Pour un logiciel vendu aux entreprises, regardez aussi le résultat
+          obtenu par l’entreprise entière lorsque plusieurs personnes
+          interviennent.
         </p>
 
-        <h2 id="exemple">
-          11. Exemple illustratif fictif : de 27 demandes à un seul parcours
-        </h2>
+        <h3 id="exemple">Exemple fictif : de 27 demandes à un seul parcours</h3>
 
         <p>
           <strong>Exemple illustratif fictif :</strong> une entreprise imagine
-          un SaaS B2B d’approbation de devis. Sa liste initiale contient 27
-          demandes, depuis l’application mobile jusqu’au SSO. Ce nombre sert
-          uniquement à rendre le cas lisible ; il ne constitue ni une moyenne de
-          marché, ni un cas client Hagnéré Code.
+          un SaaS vendu aux entreprises (B2B) pour approuver des devis. Sa liste
+          initiale contient 27 demandes, depuis l’application mobile jusqu’au
+          SSO. Ce nombre sert uniquement à rendre le cas lisible ; il ne
+          constitue ni une moyenne de marché, ni un cas client Hagnéré Code.
         </p>
 
         <p>
@@ -1082,197 +950,161 @@ export default function Page() {
 
         <GuideTable
           headers={[
-            "Traitement",
-            "Capacités du cas fictif",
-            "Déclencheur ou preuve",
+            "Décision",
+            "Ce que contient l’exemple",
+            "Comment vérifier ou décider la suite",
           ]}
           rows={[
             [
               "Construire",
               "invitation, dépôt du devis, circuit unique, notification, décision, historique, droits minimaux et administration",
-              "un devis représentatif va de l’entrée à la décision sans canal parallèle",
+              "Un devis représentatif va du dépôt à la décision sans revenir aux courriels.",
             ],
             [
-              "Opérer manuellement",
-              "création de l’organisation, import initial, onboarding, facture B2B et support direct",
-              "chaque geste est tracé ; le temps par client est mesuré",
+              "Faire à la main au début",
+              "Création de l’entreprise, import initial, accueil, facture et aide directe.",
+              "Chaque action est notée et le temps passé par client est mesuré.",
             ],
             [
               "Intégrer",
-              "envoi transactionnel, hébergement et composants d’identité adaptés au risque",
-              "propriété des comptes, contrats, états d’erreur et sortie vérifiés",
+              "Envoi des courriels, hébergement et gestion des comptes adaptés au risque.",
+              "Les propriétaires des comptes, les contrats, les erreurs et la sortie sont vérifiés.",
             ],
             [
-              "Reporter",
+              "Garder pour plus tard",
               "connexion unique d’entreprise (SSO), application mobile, interface ouverte aux logiciels tiers (API publique), marque blanche, trois plans, dix rôles et tableaux avancés",
-              "demande contractuelle, usage mobile prouvé, volume ou répétition rendant le report coûteux",
+              "Un contrat, un usage mobile réel ou un volume important justifie de les ajouter.",
             ],
           ]}
         />
 
         <p>
-          Le lot n’est pas « petit » parce qu’il contient peu d’écrans. Il est
-          cohérent parce que chaque élément sert le même résultat et que les
-          fonctions reportées ont une raison observable de revenir. Si le
-          premier client exige le SSO dans son contrat, le classement change. Si
+          Cette première version est cohérente parce que chaque élément sert le
+          même résultat et que chaque fonction repoussée répond à un besoin qui
+          n’existe pas encore. Si le premier client exige la connexion unique
+          d’entreprise, ou SSO, dans son contrat, le classement change. Si
           personne n’utilise l’historique, le problème se situe peut-être dans
           la promesse ou le parcours, pas dans l’absence d’un tableau de bord.
         </p>
 
-        <h2 id="dix-tests">12. Dix preuves à exécuter avant la production</h2>
+        <h2 id="dix-tests">6. Autorisez ou reportez le premier lancement</h2>
 
         <p>
-          Cette recette est adaptable. Elle n’est ni une certification de
-          sécurité ni une garantie d’absence d’incident. Elle vise les preuves
-          de base qu’un dirigeant peut demander au prestataire et à l’équipe
-          produit avant d’accueillir le premier client réel.
+          Cette liste doit être adaptée à votre produit. Elle ne garantit ni la
+          sécurité ni l’absence d’incident. Elle donne six vérifications
+          concrètes avant d’utiliser de vraies données client.
         </p>
 
         <ol>
           <li>
-            <strong>Créer une organisation et son administrateur</strong>, puis
-            vérifier qui possède les comptes techniques nécessaires.
+            <strong>Comptes et droits :</strong> créer l’entreprise, inviter
+            puis retirer une personne et vérifier qu’un rôle refusé ne voit
+            aucune donnée interdite.
           </li>
           <li>
-            <strong>Inviter puis retirer un second utilisateur</strong>, y
-            compris après expiration ou erreur d’adresse.
+            <strong>Données :</strong> importer un jeu représentatif avec une
+            valeur invalide et vérifier la correction puis l’export.
           </li>
           <li>
-            <strong>Tester un refus d’accès</strong> : un rôle ne voit ni
-            l’action ni les données qui lui sont interdites.
+            <strong>Résultat vendu :</strong> accomplir la tâche principale avec
+            le client et comparer le résultat au critère écrit.
           </li>
           <li>
-            <strong>Importer ou saisir un jeu représentatif</strong>, avec une
-            donnée invalide, incomplète et dupliquée.
+            <strong>Échec et aide :</strong> provoquer un incident prévu, puis
+            le diagnostiquer et reprendre sans exposer de secret ni modifier les
+            données au hasard.
           </li>
           <li>
-            <strong>Exécuter le parcours critique jusqu’au résultat</strong> et
-            vérifier sa provenance ainsi que son critère d’acceptation.
+            <strong>Vente :</strong> vérifier que contrat ou paiement, droits
+            d’accès, facture et sortie restent cohérents.
           </li>
           <li>
-            <strong>Provoquer un échec prévu</strong>, puis constater le message
-            client, la trace opérateur et la reprise.
-          </li>
-          <li>
-            <strong>Retrouver et débloquer le client côté support</strong> sans
-            exposer un secret ni modifier directement une donnée incontrôlée.
-          </li>
-          <li>
-            <strong>Tester l’offre choisie</strong> : activation, facture ou
-            paiement, changement, échec et sortie cohérente.
-          </li>
-          <li>
-            <strong>Contrôler les événements produit et alertes utiles</strong>:
-            ils permettent la décision sans collecter plus que nécessaire.
-          </li>
-          <li>
-            <strong>Restaurer ou revenir en arrière</strong> selon le plan, puis
-            vérifier l’export ou la sortie prévue pour le client.
+            <strong>Continuité et décision :</strong> restaurer selon le plan,
+            contrôler les mesures utiles et décider ce qui sera corrigé,
+            automatisé ou arrêté.
           </li>
         </ol>
 
         <p>
           Conservez pour chaque test : contexte, données utilisées, résultat
           attendu, résultat observé, auteur, date, anomalie et décision. Une
-          case cochée sans preuve ne rendra pas un devis comparable et ne
-          facilitera pas la reprise par une autre équipe.
+          simple case cochée sans résultat conservé ne rendra pas un devis
+          comparable et ne facilitera pas la reprise par une autre équipe.
         </p>
 
-        <h2 id="contrat-premier-client">
-          13. Écrivez le contrat de premier client avant le devis
-        </h2>
+        <h3 id="contrat-premier-client">Résumez ce que le client achète</h3>
 
         <p>
-          Il ne s’agit pas du contrat juridique complet. C’est une fiche de
-          cadrage partageable qui relie la promesse du produit à son
-          exploitation. Elle permet au fondateur, au client pilote et aux
-          prestataires de comparer le même objet.
+          Avant de demander un prix, rédigez une fiche d’une page. Ce n’est pas
+          le contrat juridique : elle sert à vérifier que vous, le client et le
+          prestataire parlez bien de la même première version.
         </p>
 
         <div className="not-prose my-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-sm text-zinc-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 sm:p-6">
           <p className="mb-4 font-bold text-zinc-950 dark:text-white">
-            Contrat de premier client — modèle copiable
+            Première version pour le client — modèle à copier
           </p>
           <ol className="m-0 space-y-3 pl-5">
             <li>
-              <strong>Client et rôles :</strong> acheteur, administrateur,
-              utilisateur principal et opérateur interne nommés.
+              <strong>Client, rôles et résultat :</strong> qui achète, qui
+              utilise, ce qu’il doit réussir et qui l’aide.
             </li>
             <li>
-              <strong>Hypothèse :</strong> comportement ou résultat attendu,
-              puis décision permise si la preuve réussit ou échoue.
+              <strong>Parcours retenu :</strong> point de départ, tâche,
+              résultat, ce qui fonctionne maintenant et ce qui reste manuel.
             </li>
             <li>
-              <strong>Parcours critique :</strong> entrée, action, résultat,
-              répétition et critères d’acceptation.
+              <strong>Données et continuité :</strong> provenance, accès,
+              fournisseurs, sauvegarde, correction, export et sortie.
             </li>
             <li>
-              <strong>Sept socles :</strong> résultat nécessaire, manuel
-              acceptable, preuve, report et responsable pour chaque couche.
+              <strong>Vente et aide :</strong> contrat ou paiement, droits,
+              canal de contact, personne à prévenir et limites de l’essai.
             </li>
             <li>
-              <strong>Données :</strong> provenance, nécessité, accès,
-              fournisseurs, sauvegarde, durée, correction et sortie.
-            </li>
-            <li>
-              <strong>Offre et support :</strong> contrat ou paiement, droits,
-              horaires ou canal, escalade et limites du pilote.
-            </li>
-            <li>
-              <strong>Mesure :</strong> événement de valeur, erreurs, temps
-              manuel et date de la décision suivante.
-            </li>
-            <li>
-              <strong>Exclusions :</strong> fonctions reportées avec déclencheur
-              observable, sans promesse automatique de les construire.
+              <strong>Mesure et suite :</strong> résultat, erreurs, temps
+              manuel, fonctions exclues et date de la prochaine décision.
             </li>
           </ol>
         </div>
 
         <p>
-          Demandez ensuite à chaque devis de préciser ce qui est construit,
-          intégré, opéré par le client, opéré par le prestataire et exclu.
-          Faites apparaître environnements, accès, propriété des comptes,
-          reprise de données, recette, surveillance, sauvegarde, maintenance et
-          sortie. Un prix plus bas n’est comparable que si ces responsabilités
-          portent sur le même périmètre.
+          Demandez ensuite à chaque devis de préciser ce que le prestataire
+          construit, ce que votre entreprise prend en charge et ce qui est
+          exclu. Faites apparaître les accès, la propriété des comptes, la
+          reprise des données, les tests, la surveillance, les sauvegardes, la
+          maintenance et la récupération de vos données. Deux prix ne sont
+          comparables que si ces responsabilités sont identiques.
         </p>
 
-        <h2 id="decision">
-          14. Choisissez le format le moins lourd qui produit la preuve
-        </h2>
+        <h3 id="decision">Choisissez la version la plus simple</h3>
 
         <GuideTable
           headers={[
             "Décision",
-            "Conditions observables",
+            "Comment reconnaître le bon cas",
             "Prochaine action utile",
           ]}
           rows={[
             [
               "Prototype ou POC",
-              "l’incertitude principale porte encore sur le parcours ou un verrou technique, sans besoin de servir des données réelles",
-              "tester cette seule incertitude et accepter de jeter le résultat",
+              "Vous devez encore vérifier si le parcours est compris ou si une difficulté technique peut être résolue, sans données réelles.",
+              "Tester cette seule question et accepter de ne pas conserver le prototype.",
             ],
             [
               "Pilote accompagné",
-              "un client réel doit éprouver la valeur, mais plusieurs opérations peuvent rester manuelles et limitées",
-              "écrire les procédures, la charge maximale et la décision de sortie",
+              "Un client réel doit essayer le service, mais votre équipe peut encore effectuer quelques tâches à la main.",
+              "Écrire les procédures, la limite de temps acceptable et la décision attendue.",
             ],
             [
-              "MVP de production",
-              "le parcours critique et les sept socles ont chacun une preuve acceptable pour le risque réel",
-              "exécuter les dix tests, lancer à périmètre limité et mesurer",
-            ],
-            [
-              "V1 plus large",
-              "plusieurs clients, rôles, engagements ou intégrations exigent déjà davantage d’autonomie et d’exploitation",
-              "séparer obligations du premier lancement et feuille de route ultérieure",
+              "Première version utilisable",
+              "La tâche principale et les sept points de la première version fonctionnent à un niveau adapté au risque réel.",
+              "Effectuer les six vérifications, commencer avec peu de clients et observer l’usage.",
             ],
             [
               "Reporter ou acheter",
-              "aucun client accessible, produit existant suffisant, responsabilité non couverte ou preuve possible sans logiciel",
-              "tester avec l’outil ou le service le moins coûteux avant de développer",
+              "Vous n’avez pas de client prêt à essayer, un outil existant suffit ou la question peut être testée sans logiciel.",
+              "Tester avec l’outil ou le service le moins coûteux avant de développer.",
             ],
           ]}
         />
@@ -1283,29 +1115,29 @@ export default function Page() {
         >
           <p className="mb-2">
             <strong>Cas adapté :</strong> problème B2B déjà documenté, premier
-            client accessible, parcours métier différenciant, responsable
-            produit disponible et besoin de transformer les preuves en un lot
-            exploitable, testable et réversible.
+            client accessible, tâche métier différenciante, responsable produit
+            disponible et besoin de construire une première version réellement
+            utilisable.
           </p>
           <p className="mb-0">
             <strong>Cas inadapté :</strong> aucun prospect accessible, besoin
             correctement couvert par un outil existant, attente d’une garantie
-            commerciale, clone servile, périmètre réglementé sans compétences
-            adaptées ou indisponibilité totale du métier pendant la recette et
-            le support initial. Dans ces cas, le bon conseil peut être de ne pas
-            développer maintenant.
+            commerciale, copie d’un produit existant, secteur réglementé sans
+            compétences adaptées ou indisponibilité totale du métier pendant la
+            recette et le support initial. Dans ces cas, le bon conseil peut
+            être de ne pas développer maintenant.
           </p>
         </InfoBox>
 
         <GuideInlineCTA
-          title="Faire relire la tranche du premier client"
-          description="Présentez le client visé, son parcours critique, le mode de vente, les données, les intégrations et ce que votre équipe accepte encore de gérer manuellement. Nous distinguons le nécessaire, le manuel acceptable et ce qui peut attendre ; la conclusion peut être un pilote sans développement complet."
+          title="Savoir quoi construire pour votre premier client"
+          description="Décrivez le client visé, ce qu’il doit réussir et ce que votre équipe peut encore gérer à la main. Nous vous aidons à séparer ce qui doit fonctionner au lancement de ce qui peut attendre — y compris si un simple essai accompagné suffit."
           tags={[
-            "Périmètre avant devis",
-            "Inclus, manuel et plus tard",
-            "Possibilité de ne pas construire",
+            "Première version claire",
+            "Budget concentré sur l’essentiel",
+            "Possibilité de commencer par un essai",
           ]}
-          ctaLabel="Faire relire mon périmètre MVP"
+          ctaLabel="Définir ma première version"
           ctaHref="/demarrer-un-projet"
         />
 

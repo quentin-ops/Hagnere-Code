@@ -1,16 +1,15 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt =
-  "SEO ou Google Ads avec quatre décisions : Ads, SEO, hybride ou report";
+export const alt = "SEO ou Google Ads : lequel choisir pour votre entreprise ?";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const paths = [
-  { label: "ADS", detail: "tester", color: "#60a5fa" },
-  { label: "SEO", detail: "construire", color: "#34d399" },
-  { label: "HYBRIDE", detail: "coordonner", color: "#a78bfa" },
-  { label: "REPORT", detail: "réparer", color: "#fbbf24" },
+  { label: "GOOGLE ADS", detail: "tester vite", color: "#60a5fa" },
+  { label: "SEO", detail: "investir dans le temps", color: "#34d399" },
+  { label: "LES DEUX", detail: "deux rôles précis", color: "#a78bfa" },
+  { label: "ATTENDRE", detail: "corriger le site d’abord", color: "#fbbf24" },
 ];
 
 export default function OgImage() {
@@ -120,7 +119,7 @@ export default function OgImage() {
               color: "#d4d4d8",
             }}
           >
-            Choisir la prochaine preuve, pas un vainqueur universel
+            Payer pour être visible maintenant ou investir dans votre site ?
           </div>
         </div>
 
@@ -193,22 +192,24 @@ export default function OgImage() {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        {["Urgence", "Demande", "Marge", "Mesure", "Capacité"].map((label) => (
-          <div
-            key={label}
-            style={{
-              display: "flex",
-              padding: "10px 17px",
-              borderRadius: 999,
-              background: "rgba(255,255,255,0.055)",
-              border: "1px solid rgba(255,255,255,0.1)",
-              color: "#d4d4d8",
-              fontSize: 17,
-            }}
-          >
-            {label}
-          </div>
-        ))}
+        {["Délai", "Budget", "Type de vente", "Suivi des demandes"].map(
+          (label) => (
+            <div
+              key={label}
+              style={{
+                display: "flex",
+                padding: "10px 17px",
+                borderRadius: 999,
+                background: "rgba(255,255,255,0.055)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                color: "#d4d4d8",
+                fontSize: 17,
+              }}
+            >
+              {label}
+            </div>
+          ),
+        )}
       </div>
     </div>,
     size,

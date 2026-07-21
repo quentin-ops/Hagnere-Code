@@ -11,9 +11,9 @@
 - Situation déclenchante : coût par acquisition qui dérive, prospects peu qualifiés, mesure incertaine, changement d’agence, budget supplémentaire demandé, passage à Performance Max ou AI Max
 - Décision principale après lecture : refuser provisoirement la hausse, corriger le socle, lancer un test isolé ou autoriser une hausse encadrée
 - Niveau de connaissance au départ : sait lire dépenses, clics et conversions, sans pouvoir vérifier ce que la plateforme optimise réellement
-- Questions indispensables : mesure-t-on le bon résultat ; quelles recherches et zones ont été achetées ; quelle promesse atteint quelle page ; que pilote l’enchère ; le CRM confirme-t-il la valeur
+- Questions indispensables : le suivi mesure-t-il une action utile ; quelles recherches sont payées ; que promettent les annonces ; la page permet-elle d’aller au bout ; les contacts deviennent-ils clients ; le budget poursuit-il ce résultat
 - Objections : les chiffres Google suffiraient ; un bon score d’optimisation prouverait la santé ; l’automatisation rendrait l’audit inutile ; le prestataire refuserait l’accès
-- Action autonome : copier le registre à double entrée, réunir les preuves et écrire les données absentes avant toute modification
+- Action autonome : réunir objectif, accès et période, puis compléter le registre Ads/CRM au fil des six questions avant toute modification
 - CTA possible : cadrer les accès minimaux, les preuves et le livrable d’un audit ciblé ou complet
 - Hors périmètre : tutoriel de création de campagne, benchmark de CPC, tarifs de gestion, classement d’agences, implémentation détaillée du marquage, promesse de ROAS
 - Date de la recherche : 20 juillet 2026
@@ -130,31 +130,25 @@ global. Un bon texte d’annonce ne compense pas une conversion primaire erroné
 
 - Tension : un tableau de bord peut être vert tout en optimisant le mauvais résultat.
 - Ouverture : écran fictif « 42 conversions » confronté au registre commercial, clairement étiqueté exemple illustratif.
-- Progression : enquête de preuve, de la définition métier jusqu’à la décision de budget.
+- Progression : six questions ordinaires suivent le parcours mesure → recherches → annonces → pages → contacts → budget.
 - Artefact : registre à double entrée Google Ads / preuve métier ; aucun score global.
-- Rythme : constats courts, tableaux de réception, branches conditionnelles selon les campagnes.
+- Rythme : constats courts, registre unique dans la partie contacts et bloc avancé optionnel après les six questions.
 - CTA : après le livrable professionnel et les quatre sorties possibles.
 - Conclusion : données insuffisantes, correction préalable, test isolé ou hausse encadrée.
 
 ## 6. Plan annoté
 
-| Section                     | Question résolue                                                    | Preuve ou exemple                                                     | Décision                              |
-| --------------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------- |
-| Le tableau vert qui trompe  | pourquoi les métriques de plateforme ne suffisent-elles pas ?       | exemple fictif 42 actions, 17 contacts uniques, 6 qualifiés, 2 ventes | suspendre le jugement                 |
-| Ce qu’un audit prouve       | photographie, cause, projection ou certification ?                  | quatre niveaux de conclusion                                          | qualifier chaque phrase               |
-| Registre à double entrée    | comment recevoir chaque constat ?                                   | preuve Ads, preuve métier, nature, action, recette et limite          | remplir sans score                    |
-| Avant le compte             | quelles données métier changent l’analyse ?                         | offre, marge, capacité, saisonnalité, délai et changements            | fixer périmètre et fenêtre            |
-| Accès et photographie       | qui peut voir et modifier ?                                         | droits Google, propriété, comptes associés et historique              | lecture seule d’abord                 |
-| Mesure et conversions       | l’algorithme optimise-t-il la bonne action ?                        | inventaire, test réel, déduplication, appels et CRM                   | corriger avant d’augmenter            |
-| Consentement                | les chiffres dépendent-ils du choix utilisateur ?                   | quatre états de test et limites juridiques                            | déclarer la qualité de mesure         |
-| Demande et inventaire       | qu’a-t-on réellement acheté ?                                       | termes, correspondances, négatifs, zones, réseaux et appareils        | isoler gaspillage ou hypothèse        |
-| Branches par campagne       | les contrôles sont-ils adaptés à Search, PMax, AI Max et Shopping ? | rapports et angles morts officiels                                    | ne pas appliquer une checklist unique |
-| Annonce et destination      | la promesse va-t-elle jusqu’au résultat ?                           | approbation, combinaison, URL, formulaire, appel et confirmation      | distinguer média, offre et page       |
-| Enchères et automatisations | quel signal pilote le budget ?                                      | objectif, stratégie, état, délai, recommandations et historique       | conserver, corriger ou tester         |
-| CRM et exploitation         | la conversion devient-elle vente soutenable ?                       | qualité, délai de rappel, stock, capacité et marge                    | refuser un faux succès                |
-| Historique et test          | peut-on attribuer une variation ?                                   | changement daté et expérience isolée                                  | conclure ou garder l’hypothèse        |
-| Livrable professionnel      | que doit remettre l’auditeur ?                                      | note de décision, registre, preuves, backlog, recette et sortie       | comparer deux audits                  |
-| Verdict                     | le budget peut-il augmenter ?                                       | quatre sorties sans score                                             | action suivante                       |
+| Section        | Question résolue                                       | Preuve ou exemple                                                | Décision                              |
+| -------------- | ------------------------------------------------------ | ---------------------------------------------------------------- | ------------------------------------- |
+| Prérequis      | quel objectif, quels accès et quelle période ?         | résultat métier, cycle, photographie et angles morts             | lecture seule et périmètre daté       |
+| 1. Suivi       | mesure-t-on une action utile, une seule fois ?         | inventaire, test réel, consentement et déduplication             | corriger avant d’interpréter          |
+| 2. Recherches  | quels mots, zones et horaires sont payés ?             | termes visibles, correspondances, lieux, appareils et issue      | exclure ou tester avec une preuve     |
+| 3. Annonces    | la promesse correspond-elle à l’offre ?                | approbation, combinaisons, force et niveau de qualité            | corriger la promesse, pas une note    |
+| 4. Pages       | le visiteur comprend-il et termine-t-il l’action ?     | mobile, URL, prix, formulaire, appel et confirmation             | distinguer média, offre et parcours   |
+| 5. Contacts    | la conversion devient-elle contact, devis puis vente ? | registre Ads/CRM, qualité, rappel, marge et écarts expliqués     | refuser un faux succès                |
+| 6. Budget      | l’enchère maximise-t-elle le bon résultat ?            | objectif, délai, recommandations, historique et test isolé       | conserver, corriger, tester ou borner |
+| Bloc optionnel | PMax, AI Max, Shopping ou imports sont-ils actifs ?    | contrôles propres, configuration datée et angles morts officiels | ne pas surcharger un compte simple    |
+| Livrable       | que doit remettre l’auditeur ?                         | résumé, périmètre, registre, plan d’action et passation          | choisir revue, audit ciblé ou complet |
 
 ## 7. Ressource et conversion
 
@@ -172,22 +166,22 @@ global. Un bon texte d’annonce ne compense pas une conversion primaire erroné
 
 ### Scorecard justifiée
 
-| Axe            | Note 0-2 | Preuve dans la page                                                                | Correction éventuelle |
-| -------------- | -------: | ---------------------------------------------------------------------------------- | --------------------- |
-| Intention      |        2 | les quatre chaînes à vérifier sont annoncées avant le plan                         | —                     |
-| Décision       |        2 | quatre sorties observables sans score global                                       | —                     |
-| Pédagogie      |        2 | constat, cause, projection et certification sont séparés                           | —                     |
-| Profondeur     |        2 | accès, conversions, consentement, demande, formats, CRM et tests                   | —                     |
-| Preuve         |        2 | documentation Google Ads, Tag Platform et CNIL reliée aux contrôles                | —                     |
-| Comparaison    |        2 | campagnes et conclusions évaluées selon une grille commune                         | —                     |
-| Originalité    |        2 | registre à double entrée plateforme / preuve métier                                | —                     |
-| Style          |        2 | enquête de preuve, lexique traduit et alternance de tableaux, décisions et limites | —                     |
-| Conversion     |        2 | mauvais fits et livrable décrits avant le CTA                                      | —                     |
-| SEO ou produit |        2 | metadata, Article, BreadcrumbList, OG, registre et index/follow après validation   | —                     |
+| Axe            | Note 0-2 | Preuve dans la page                                                                | Correction éventuelle  |
+| -------------- | -------: | ---------------------------------------------------------------------------------- | ---------------------- |
+| Intention      |        2 | les six questions ordinaires sont annoncées avant le plan                          | —                      |
+| Décision       |        2 | quatre sorties observables sans score global                                       | —                      |
+| Pédagogie      |        2 | le parcours suit suivi, recherches, annonces, pages, contacts puis budget          | —                      |
+| Profondeur     |        2 | accès, consentement, demande, CRM, enchères, tests et formats optionnels           | —                      |
+| Preuve         |        2 | documentation Google Ads, Tag Platform et CNIL reliée aux contrôles                | —                      |
+| Comparaison    |        2 | campagnes et conclusions évaluées selon une grille commune                         | —                      |
+| Originalité    |        2 | registre à double entrée plateforme / preuve métier                                | —                      |
+| Style          |        2 | enquête de preuve, lexique traduit et alternance de tableaux, décisions et limites | —                      |
+| Conversion     |        2 | mauvais fits et livrable décrits avant le CTA                                      | —                      |
+| SEO ou produit |        1 | metadata, Article, BreadcrumbList, OG et registre conservés                        | rendu responsive final |
 
-**Total du contre-audit indépendant : 20/20.** Le commanditaire a explicitement
-délégué et autorisé l'arbitrage de publication ; aucun test lecteur humain
-n'est revendiqué.
+**État après restructuration : 19/20.** Le contre-audit indépendant précédent
+avait atteint 20/20, mais il ne couvre pas la nouvelle hiérarchie du 21 juillet 2026. Le point produit restant dépend du contrôle responsive final ; aucun test
+lecteur humain n'est revendiqué.
 
 ### Test lecteur non technique
 
@@ -205,22 +199,27 @@ n'est revendiqué.
 - Réserves initiales : jargon non expliqué, manque de comparaison de
   périmètres, lien de conversion améliorée imprécis et contradictions avec
   certaines formulations de la page service Ads.
-- Corrections : jargon traduit, comparaison revue interne/audit ciblé/audit
-  complet ajoutée, source rectifiée, offre commerciale alignée et ancien schéma
-  `FAQPage` retiré. Second passage : 20/20, aucun blocage factuel, éditorial ou
-  commercial résiduel.
-- Statut maximal : publiable après autorisation éditoriale déléguée du commanditaire.
+- Corrections de ce passage : jargon traduit, comparaison revue interne/audit
+  ciblé/audit complet ajoutée, source rectifiée, offre commerciale alignée et
+  ancien schéma `FAQPage` retiré.
+- Limite actuelle : la restructuration en six questions est postérieure à ce
+  contre-audit indépendant et doit encore être contrôlée visuellement.
+
+La passe du 21 juillet 2026 ramène le rendu de 4 613 à 3 162 mots, de 16 à
+10 H2 et de 7 à 4 tableaux. Le registre affiche 16 minutes à 200 mots/minute.
+Les six questions ordinaires restent le parcours principal ; PMax, AI Max,
+Shopping et imports hors connexion forment un bloc optionnel.
 
 ### Vérifications
 
 - [x] sources relues et liens externes contrôlés le 20 juillet 2026 ;
 - [x] exemple toujours étiqueté fictif ;
 - [x] FAQ visible, sans schéma `FAQPage` obsolète ;
-- [x] metadata, registre, image sociale, maillage et ancres cohérents ;
-- [x] Prettier, ESLint, TypeScript, batterie SEO et build du snapshot
-      d'intégration passés ; toute nouvelle modification invalide cette preuve ;
-- [x] rendu contrôlé aux dix largeurs de 320 à 1 600 px, CTA, H1, registre,
-      tableaux et image Open Graph inspectés ;
+- [x] metadata, registre, image sociale et maillage conservés ;
+- [x] ESLint ciblé, TypeScript et 37 tests de langage, déclarations publiques et
+      cohérence commerciale passés après la restructuration du 21 juillet 2026 ;
+- [ ] rendu responsive à recontrôler après la restructuration ; la preuve du
+      sprint précédent ne couvre pas la nouvelle hiérarchie ;
 - [x] route incluse dans le hub, le sitemap et `llms.txt`, avec `index,follow`
       dans l'artefact de production ; crawl et indexation effective restent à
       vérifier séparément.

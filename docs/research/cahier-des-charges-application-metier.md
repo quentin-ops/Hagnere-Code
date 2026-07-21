@@ -9,12 +9,11 @@
 - **Stade du parcours** : problème reconnu, projet plausible, avant consultation ou avant validation d'un devis.
 - **Promesse** : repartir avec un modèle copiable fondé sur 7 livrables, 5 à 8 scénarios métier et des critères de recette observables.
 - **Date de collecte et de vérification** : 20 juillet 2026.
-- **Statut au 20 juillet 2026** : publié dans le registre éditorial ; ce guide
-  fait partie des **40 `PUBLISHED_GUIDES`**. Cette mention atteste la sortie du
-  gate éditorial et son alimentation automatique du hub, du sitemap et de
-  `llms.txt` lors du build ; elle ne prouve ni l'état du déploiement
-  au moment de la lecture, ni une indexation Google. Aucun test lecteur humain
-  indépendant n'est revendiqué.
+- **Statut au 21 juillet 2026** : réécriture humaine intégrée ; modèle unique,
+  décision V1 avancée et corridor technique raccourci. Le guide reste présent
+  dans le registre, mais build, rendu, temps de lecture et artefacts doivent être
+  revalidés sur ce snapshot. Aucun test lecteur humain indépendant n'est
+  revendiqué.
 
 ## 2. Frontière sémantique et cannibalisation
 
@@ -197,27 +196,27 @@ Ne pas publier :
 Pour ne pas reproduire mécaniquement les autres guides :
 
 - ouverture sur le **dossier final attendu**, pas sur la définition du cahier des charges ;
-- progression par objets de preuve : scénario, règle, donnée, droit, recette, responsabilité ;
+- progression par décision : modèle d’une page, réponse la moins complexe, comparaison, puis annexes utiles ;
 - modèle complet copiable dans la page, sans dépendance à une capture d'e-mail ;
-- tableau des options avant V1, incluant « ne pas développer » ;
+- un seul exposé des sept livrables ; aucune répétition en liste, tableau puis formule ;
+- alternatives au développement et feuille de réponse des candidats avant les détails techniques ;
 - un seul exemple filé, explicitement fictif, qui relie scénario, exception et recette ;
-- un mini-lexique placé au moment où le lecteur en a besoin, non un glossaire artificiel en fin de page ;
+- trois termes techniques traduits dans le fil, sans mini-lexique autonome ;
 - cinq FAQ seulement, alignées sur les objections de décision ;
 - un seul CTA commercial, après la méthode et avant les sources ;
 - pas de fourchette de prix ni de promesse de délai : le sujet est la comparabilité du périmètre.
 
 ## 7. Plan annoté du guide
 
-1. **Le dossier final en sept livrables** — donner immédiatement la sortie attendue et le modèle copiable.
-2. **Cinq à huit scénarios métier** — décrire le cas nominal, les exceptions et la preuve attendue sans imposer un écran.
-3. **Règles, données et droits** — produire dictionnaire, matrice des rôles et modes de défaillance des intégrations.
-4. **Découper la V1** — confronter chaque besoin à conserver/corriger/acheter/relier/développer ; écrire les exclusions.
+1. **Le modèle unique d’une page** — donner immédiatement la sortie attendue sans la répéter sous trois formats.
+2. **Découper la V1 et préparer la comparaison** — confronter chaque besoin à conserver/corriger/acheter/relier/développer, puis imposer la même feuille de réponse.
+3. **Cinq à huit scénarios métier** — décrire le cas nominal, les exceptions et la preuve attendue sans imposer un écran.
+4. **Quatre annexes seulement si utiles** — réunir règles, données, droits et pannes des logiciels connectés dans une grille courte.
 5. **Écrire la recette avant le devis** — rendre les critères observables, préparer les jeux d'essai et classer les anomalies.
 6. **Répartir les responsabilités** — de la fourniture des données à l'exploitation, avec preuve et décideur.
 7. **Exigences transverses proportionnées** — sécurité, données personnelles, continuité, accessibilité et écoconception sans sur-promesse juridique.
 8. **Exemple illustratif fictif** — PME de maintenance de 18 personnes, un seul processus, critère complet avec cas déconnecté et validation d'une pièce coûteuse.
-9. **Comparer les offres** — feuille d'hypothèses commune, tableau de comparaison, signaux d'offres non comparables et plan d'action de 48 heures.
-10. **Sources ou référentiels** — titre, organisme, périmètre et lien.
+9. **Sources ou référentiels** — titre, organisme, périmètre et lien.
 
 ## 8. Conversion et ressource
 
@@ -248,23 +247,28 @@ Contenu livré :
 
 ## 9. Relevé qualité après intégration éditoriale
 
-| Critère de la charte | Score provisoire / 2 | Justification                                                                                                                                |
-| -------------------- | -------------------: | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Intention            |                    2 | Une intention : produire et exploiter un dossier de consultation/recette.                                                                    |
-| Décision             |                    2 | Le lecteur peut cadrer V1, exclusions, preuves et comparabilité.                                                                             |
-| Pédagogie            |                    2 | Modèles copiables, méthode progressive, exemple filé et mini-lexique.                                                                        |
-| Profondeur           |                    2 | Données, droits, intégrations, migration, continuité, responsabilités et réversibilité.                                                      |
-| Preuves              |                    2 | Sources officielles DINUM, RGESN, CNIL, ANSSI et France Num, périmètres signalés.                                                            |
-| Comparaison          |                    2 | Alternatives au spécifique et feuille d'hypothèses identique pour les offres.                                                                |
-| Originalité          |                    2 | Scénario + preuve de recette comme unité, non une suite de rubriques génériques.                                                             |
-| Style                |                    2 | Phrases directes, jargon traduit, aucune statistique décorative ni faux client.                                                              |
-| Conversion           |                    2 | Valeur autonome puis CTA qualifié, sans captation préalable.                                                                                 |
+| Critère de la charte | Score provisoire / 2 | Justification                                                                                                                                                                                                 |
+| -------------------- | -------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Intention            |                    2 | Une intention : produire et exploiter un dossier de consultation/recette.                                                                                                                                     |
+| Décision             |                    2 | Le lecteur peut cadrer V1, exclusions, preuves et comparabilité.                                                                                                                                              |
+| Pédagogie            |                    2 | Un seul modèle copiable, arbitrage avancé, quatre annexes compactes et exemple filé.                                                                                                                          |
+| Profondeur           |                    2 | Données, droits, intégrations, migration, continuité, responsabilités et réversibilité.                                                                                                                       |
+| Preuves              |                    2 | Sources officielles DINUM, RGESN, CNIL, ANSSI et France Num, périmètres signalés.                                                                                                                             |
+| Comparaison          |                    2 | Alternatives au spécifique et feuille d'hypothèses identique pour les offres.                                                                                                                                 |
+| Originalité          |                    2 | Scénario + preuve de recette comme unité, non une suite de rubriques génériques.                                                                                                                              |
+| Style                |                    2 | Sept livrables dédupliqués, comparaison avancée, tableaux ramenés de 12 à 7 et jargon traduit dans le fil.                                                                                                    |
+| Conversion           |                    2 | Valeur autonome puis CTA qualifié, sans captation préalable.                                                                                                                                                  |
 | SEO/produit          |                    1 | Métadonnées, JSON-LD, maillage, OG, registre et ressource sont intégrés ; le guide est publié parmi les 40 entrées du registre, tandis que l'artefact déployé et l'indexation restent à contrôler séparément. |
 
-**Total documentaire : 19/20.** Ce score reste une auto-évaluation après
-contre-audit, pas un test humain. La publication dans le registre a été acquise
-par la délégation éditoriale documentée ; elle ne transforme pas ce score en
-validation par un lecteur de la cible.
+**Total documentaire provisoire : 19/20.** Ce score reste une auto-évaluation
+après réécriture, pas un test humain. Le point SEO/produit reste à revalider avec
+le recomptage rendu, la valeur `readTimeMin`, le build et le navigateur.
+
+Le recomptage du 21 juillet 2026 relève 4 528 mots visibles, 9 H2 éditoriaux
+et 7 tableaux, contre 6 242 mots, 10 H2 et 12 tableaux avant la passe. Le
+registre affiche 23 minutes à 200 mots/minute. Le modèle copiable n’apparaît
+qu’une fois ; l’unique exemple monétaire de seuil reste dans le cas fictif
+final, tandis que la recette générique illustre désormais un contrôle d’accès.
 
 ### Contrôles permanents après sortie du gate éditorial
 

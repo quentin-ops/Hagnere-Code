@@ -5,40 +5,59 @@
 > charte est la source de vérité éditoriale. Un ancien guide sert
 > d'exemple technique, jamais de modèle de fond à recopier.
 
-Version : **20 juillet 2026** · Propriétaire : Hagnéré Code
+Version : **21 juillet 2026** · Propriétaire : Hagnéré Code
 
-Fichiers liés : [roadmap éditoriale](roadmap-guides-seo.md) · registre
-`src/lib/guides.ts` · composants `src/components/guides/`.
+> **CIBLE NON NÉGOCIABLE — DES DIRIGEANTS, PAS DES CONSULTANTS.** Le lecteur
+> de référence est un chef d'entreprise, un commerçant, un artisan ou un
+> indépendant qui veut vendre, gagner du temps, fiabiliser son activité ou
+> lancer un projet. Il maîtrise son métier, pas le vocabulaire d'une agence,
+> d'une DSI ou d'un cabinet de conseil. S'il doit traduire une phrase avant de
+> pouvoir la comprendre, la phrase est ratée, même si elle est techniquement
+> exacte. L'agent réécrit jusqu'à ce que le sens soit immédiat.
+
+Fichiers liés : [workflow maître en quatre passes](workflow-maitre-guides-4-passes.md)
+· [roadmap éditoriale](roadmap-guides-seo.md) · registre `src/lib/guides.ts` ·
+composants `src/components/guides/`.
 
 ---
 
-## Lecture rapide — les 12 règles non négociables
+## Lecture rapide — les 15 règles non négociables
 
 Un agent peut utiliser cette liste pour se repérer, mais doit lire les
 sections détaillées avant de livrer :
 
-1. une page sert un lecteur précis, une intention et une décision ;
-2. aucun plan n'est arrêté avant l'étude de la demande, des preuves et des
+1. la page s'adresse explicitement à un dirigeant ou indépendant non
+   technicien, dans les mots qu'il emploie pour parler de son activité ;
+2. les **150 premiers mots** reformulent sa situation, donnent la réponse
+   courte et annoncent exactement ce qu'il pourra décider après lecture ;
+3. aucun plan n'est arrêté avant l'étude de la demande, des faits et des
    contenus déjà publiés ;
-3. la réponse principale apparaît avant le développement détaillé ;
-4. chaque terme technique est traduit au moment où il devient utile ;
-5. les options sont comparées à conditions égales, y compris ne rien faire,
+4. le sujet est expliqué en français courant avant toute méthode, matrice,
+   sigle, formule, lexique ou précaution d'expert ;
+5. chaque terme technique est traduit dans la phrase où il devient utile ;
+   un mur de définitions au début signale que le texte doit être réécrit ;
+6. chaque titre reste compréhensible isolément et nomme une question ou un
+   résultat réel, jamais une métaphore que le lecteur doit apprendre ;
+7. les options sont comparées à conditions égales, y compris ne rien faire,
    acheter un outil existant ou reporter le projet ;
-6. chaque fait important porte une source, un périmètre, une date et un
-   niveau de confiance ;
-7. un scénario inventé est toujours nommé « exemple illustratif » et ne
-   devient jamais un faux client ou un faux devis réel ;
-8. le lecteur repart avec coûts, délais, risques, responsabilités, preuves
-   attendues et critères de réception ;
-9. le CTA prolonge la décision du lecteur, recommande aussi les mauvais fits
-   et ne promet aucun résultat invérifiable ;
-10. l'angle, l'ouverture, la progression et la conclusion ne recopient pas
+8. chaque fait important porte une source, une portée, une date et un niveau
+   de confiance, sans laisser ces précautions étouffer la réponse ;
+9. un scénario inventé est toujours nommé « exemple illustratif », utilise
+   des nombres arrondis et ne devient jamais un faux client ou un faux devis ;
+10. le lecteur repart avec coûts, délais, risques, responsabilités et
+    prochaine action, exprimés dans un vocabulaire qu'il peut réutiliser ;
+11. le CTA décrit le bénéfice concret de l'échange, signale les mauvais fits
+    et ne demande pas au prospect de maîtriser le langage du prestataire ;
+12. l'angle, l'ouverture, la progression et la conclusion ne recopient pas
     l'empreinte éditoriale des guides voisins ;
-11. une ressource promise produit un résultat autonome et testé ; elle ne
+13. les tableaux qui contiennent des phrases restent compréhensibles sur un
+    téléphone sans défilement horizontal ; sinon ils deviennent cartes ou
+    listes ;
+14. une ressource promise produit un résultat autonome et testé ; elle ne
     résume pas simplement l'article dans un PDF ;
-12. aucun quota de mots, titres, FAQ ou liens ne remplace la pertinence, et
-    la page ne sort qu'après revue anti-erreurs, scorecard, tests et contrôle
-    dans un vrai navigateur.
+15. aucun quota de mots, titres, FAQ ou liens ne remplace la pertinence, et
+    la page ne sort qu'après revue anti-erreurs, contre-audit, tests et
+    contrôle dans un vrai navigateur.
 
 ---
 
@@ -85,12 +104,16 @@ Lecteur précis :
 Situation déclenchante :
 Décision qu'il doit prendre après lecture :
 Niveau de connaissance au départ :
+Phrase que le lecteur pourrait réellement prononcer :
+Mots ordinaires qu'il emploie :
+Termes d'expert à éviter ou traduire :
 5 questions auxquelles il exige une réponse :
 3 objections ou craintes :
 Ce qui prouvera notre expertise :
 Action utile sans contact commercial :
 CTA pertinent si Hagnéré Code peut réellement aider :
 Hors périmètre du guide :
+Projet des 150 premiers mots :
 ```
 
 Une page = **une intention principale et une décision principale**. Si le
@@ -101,12 +124,12 @@ désigner clairement l'une comme secondaire.
 
 Identifier le moment dominant ; il détermine la structure et le CTA :
 
-| Moment     | Question du lecteur                   | Ce que le guide doit produire                              |
-| ---------- | ------------------------------------- | ---------------------------------------------------------- |
-| Comprendre | « Qu'est-ce que c'est ? »             | définition, exemples, limites                              |
-| Explorer   | « Quelles solutions existent ? »      | options, critères, cas d'usage                             |
-| Décider    | « Laquelle choisir et à quel prix ? » | arbitrage, budget, risques, verdict par profil             |
-| Sécuriser  | « Comment éviter une erreur ? »       | méthode, responsabilités, contrôles, critères de réception |
+| Moment     | Question du lecteur                   | Ce que le guide doit produire                               |
+| ---------- | ------------------------------------- | ----------------------------------------------------------- |
+| Comprendre | « Qu'est-ce que c'est ? »             | définition, exemples, limites                               |
+| Explorer   | « Quelles solutions existent ? »      | options, critères, cas d'usage                              |
+| Décider    | « Laquelle choisir et à quel prix ? » | choix expliqué, budget, risques, réponse selon la situation |
+| Sécuriser  | « Comment éviter une erreur ? »       | méthode, responsabilités, contrôles, critères de réception  |
 
 ---
 
@@ -121,13 +144,15 @@ vérifier et maintenir ses choix.
 Lire, dans cet ordre :
 
 1. cette charte en entier ;
-2. `docs/roadmap-guides-seo.md` ;
-3. `src/lib/guides.ts` et les pages service liées au sujet ;
-4. les guides visant une intention proche ;
-5. les trois à cinq derniers guides du même cluster, uniquement pour
+2. `docs/workflow-maitre-guides-4-passes.md` pour connaître la passe à exécuter
+   et sa porte de sortie ;
+3. `docs/roadmap-guides-seo.md` ;
+4. `src/lib/guides.ts` et les pages service liées au sujet ;
+5. les guides visant une intention proche ;
+6. les trois à cinq derniers guides du même cluster, uniquement pour
    repérer ce qu'il ne faut pas reproduire mécaniquement ;
-6. le dossier `docs/research/` et l'éventuelle fiche existante du sujet ;
-7. les composants de `src/components/guides/` avant toute modification
+7. le dossier `docs/research/` et l'éventuelle fiche existante du sujet ;
+8. les composants de `src/components/guides/` avant toute modification
    d'interface.
 
 Un guide existant peut fournir une convention de code. Il ne fournit ni le
@@ -153,9 +178,9 @@ Ne jamais stocker l'unique copie d'une recherche dans un dossier temporaire,
 un transcript d'agent ou un outil externe. Les résultats utiles sont
 synthétisés dans ce fichier versionné.
 
-### 3.3 Pipeline, livrable et porte de sortie
+### 3.3 Étapes, livrables et critères de validation
 
-| Étape              | Travail à effectuer                                                                                  | Trace obligatoire                                   | Porte de sortie                                                    |
+| Étape              | Travail à effectuer                                                                                  | Trace obligatoire                                   | Critère de validation                                              |
 | ------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------------------ |
 | 1. Cadrer          | Définir lecteur, déclencheur, intention, décision, objections et hors-périmètre                      | Brief rempli                                        | Une seule décision principale est formulée en une phrase           |
 | 2. Dédupliquer     | Inspecter roadmap, registre, guides et pages service proches                                         | Tableau « page voisine / différence d'intention »   | Aucun doublon d'intention non résolu                               |
@@ -189,7 +214,7 @@ et poursuivre uniquement sur les éléments sûrs lorsque :
   revalidé ;
 - une ressource ou un CTA promis n'existe pas encore ;
 - le nouveau contenu duplique l'intention d'une page existante ;
-- le rendu, les tests ou une porte de sortie obligatoire échouent.
+- le rendu, les tests ou un critère de validation obligatoire échouent.
 
 L'agent peut retirer une affirmation ou réduire le périmètre si le guide reste
 utile. Il ne peut pas transformer une incertitude en certitude pour terminer.
@@ -233,8 +258,18 @@ Règles de collecte :
   sa période et ses limites ;
 - la fiche conserve la page, le tableau ou la section qui soutient réellement
   l'affirmation, sans recopier de longs extraits ;
+- une bibliographie générale en fin de page ne suffit pas à soutenir un prix,
+  un pourcentage ou une obligation : le lecteur doit pouvoir identifier la
+  source exacte depuis la phrase, le tableau ou la note qui porte
+  l'affirmation ;
+- une fourchette de marché exige un corpus, une date et une méthode
+  décrivables. À défaut, elle devient une « estimation éditoriale Hagnéré
+  Code », accompagnée de ses hypothèses, et non un « prix observé » ;
 - un ordre de grandeur sans corpus publiable est nommé « estimation
   éditoriale » et expose ses hypothèses ;
+- un incident spectaculaire ou un cas extrême n'est conservé que s'il éclaire
+  réellement la situation courante du lecteur, avec son contexte et ses
+  limites. Il ne sert jamais à provoquer la peur pour accélérer une vente ;
 - une source inaccessible ou contradictoire impose de réduire la portée,
   d'expliquer l'incertitude ou de retirer l'affirmation ;
 - ne jamais reconstruire un article en paraphrasant le plan d'un concurrent.
@@ -371,21 +406,68 @@ conseil juridique, fiscal ou financier personnalisé.
 
 ## 6. Pédagogie : rendre le complexe utilisable
 
+### 6.1 Les 150 premiers mots : l'entrée obligatoire
+
+Les 150 premiers mots ne servent ni à montrer la méthode de l'agence, ni à
+poser toutes les réserves, ni à installer une métaphore. Ils doivent accomplir
+quatre choses dans cet ordre :
+
+1. reprendre la situation telle que le lecteur la vit ;
+2. expliquer les termes indispensables avec des mots ordinaires ;
+3. donner la réponse courte, y compris « cela dépend » avec ses deux ou trois
+   conditions concrètes ;
+4. annoncer les décisions que le guide va permettre de prendre.
+
+Exemple refusé :
+
+> Le bon choix dépend moins du canal que de la prochaine preuve dont votre
+> entreprise a besoin. Ce guide relie urgence, demande, marge, mesure et
+> capacité commerciale.
+
+Cette formulation paraît sérieuse mais oblige le lecteur à traduire « canal »,
+« preuve », « mesure » et « capacité commerciale » avant de comprendre ce
+qu'il va lire.
+
+Exemple attendu :
+
+> Vous hésitez entre payer Google pour afficher des annonces rapidement et
+> investir dans votre site pour apparaître naturellement dans les résultats ?
+> Google Ads peut tester une offre plus vite, tandis que le référencement
+> naturel demande davantage de temps mais construit des pages qui restent
+> utiles. Ce guide vous aide à choisir selon votre objectif, votre délai,
+> votre budget et la manière dont vous traitez les demandes reçues.
+
+La formule « dans ce guide, vous allez… » est autorisée lorsqu'elle annonce
+des réponses précises. Elle est interdite lorsqu'elle ne fait que retarder la
+réponse avec une promesse vague.
+
+**Tests bloquants de l'ouverture :**
+
+- un dirigeant peut la reformuler après une seule lecture ;
+- le sujet, le verbe et le résultat sont identifiables dans chaque phrase ;
+- aucun sigle non défini, aucun mot d'agence et aucun cadre à mémoriser ;
+- la requête principale reçoit déjà une réponse, pas seulement une annonce ;
+- le texte resterait utile même si le lecteur ne descendait pas plus bas.
+
+### 6.2 Rendre le reste du guide immédiatement utilisable
+
 1. **Réponse avant contexte.** Les premières lignes répondent directement
    à la requête, avec les conditions qui changent la réponse. Le lecteur
    pressé doit comprendre l'essentiel sans lire l'historique du sujet.
 2. **Un terme défini à sa première apparition.** Définition courte dans la
-   phrase. Un lexique d'ouverture n'est utile que si au moins cinq termes
-   techniques sont inévitables et réapparaissent ensuite.
+   phrase. Un lexique de dix mots placé avant la réponse est interdit : si
+   tant de définitions sont nécessaires, réécrire le texte dans la langue du
+   lecteur et déplacer les détails techniques au moment où ils deviennent
+   utiles.
 3. **Chaque chiffre produit une conséquence.** Pourcentage traduit en
    personnes, commission en euros, TJM en budget projet, délai en charge
    côté client.
 4. **Hypothèses visibles.** Une somme ou un TCO indique durée, volume,
    prix HT/TTC, fonctions et exclusions. Le lecteur doit pouvoir refaire
    le calcul.
-5. **Exemples incarnés et cohérents.** Un fil rouge est utile quand il
+5. **Exemples incarnés et cohérents.** Un exemple suivi est utile quand il
    réduit l'abstraction ; il garde le même contexte et les mêmes chiffres
-   jusqu'à la fin.
+   jusqu'à la fin. Il n'est ni obligatoire ni transformé en faux client.
 6. **Analogies parcimonieuses.** Une analogie explique un mécanisme ; elle
    ne remplace pas l'explication et ne devient pas un tic de rédaction.
 7. **Progression explicite.** Chaque section résout une question et prépare
@@ -401,10 +483,41 @@ conseil juridique, fiscal ou financier personnalisé.
     phrases longues ou chargées de parenthèses. Éviter les anglicismes
     quand un mot français précis existe.
 
+### 6.3 Le filtre anti-langage de consultant
+
+Les mots suivants ne sont pas interdits en soi, mais déclenchent une relecture
+obligatoire lorsqu'ils pourraient être remplacés par une action concrète :
+« cadrage », « périmètre », « preuve », « socle », « chaîne », « signal »,
+« capacité », « horizon », « arbitrage », « gouvernance », « réversibilité »,
+« criticité », « recette », « jalon », « livrable », « trajectoire »,
+« report » et « activation ».
+
+Pour chaque occurrence, demander :
+
+1. **Qui agit ?**
+2. **Que fait cette personne ou cette entreprise ?**
+3. **Qu'est-ce qui change ensuite pour le lecteur ?**
+
+Exemples :
+
+- « cadrer le périmètre » devient « décider quelles fonctions seront
+  construites dans la première version » ;
+- « produire une preuve métier » devient « vérifier si les demandes reçues
+  correspondent à de vrais clients potentiels » ;
+- « assurer la réversibilité » devient d'abord « pouvoir récupérer le code,
+  les données et les accès si vous changez de prestataire » ;
+- « définir le critère de recette » devient « écrire comment vous vérifierez
+  que la fonction marche avant de la payer ».
+
+Une métaphore peut éclairer une phrase. Elle ne doit jamais devenir une méthode
+complète avec ses portes, serrures, horloges, couches ou codes couleur. Si le
+lecteur doit apprendre la métaphore avant d'apprendre le sujet, la métaphore
+est supprimée.
+
 Pour les calculs économiques, appliquer en plus ces invariants :
 
-- Un scénario partiel est nommé **socle chiffré**, estimation initiale ou
-  budget connu, jamais « coût total », si l'administration, les options, la
+- Un scénario partiel est nommé **estimation initiale** ou budget connu,
+  jamais « coût total », si l'administration, les options, la
   fiscalité, la sortie ou d'autres postes restent inconnus. Une inconnue est
   marquée « à confirmer » ; elle n'est jamais remplacée silencieusement par
   zéro.
@@ -425,14 +538,14 @@ Le champ lexical sert la compréhension, pas la densité de mots-clés.
 Avant rédaction, établir une petite carte des mots que le lecteur emploie
 réellement :
 
-| Famille         | Exemples à adapter au sujet                                                       |
-| --------------- | --------------------------------------------------------------------------------- |
-| Problème métier | ressaisie, erreur, délai, dépendance, perte de vente, tâche manuelle              |
-| Décision        | choisir, comparer, arbitrer, prioriser, renoncer, tester                          |
-| Économie        | budget, coût total, abonnement, maintenance, retour sur investissement            |
-| Livraison       | périmètre, jalon, livrable, recette, responsabilité, garantie                     |
-| Risque          | sécurité, conformité, réversibilité, disponibilité, dette, dépendance fournisseur |
-| Résultat        | temps gagné, conversion, fiabilité, autonomie, adoption, croissance               |
+| Famille        | Mots et formulations à adapter au sujet                                                           |
+| -------------- | ------------------------------------------------------------------------------------------------- |
+| Problème vécu  | je recopie, cela plante, personne ne sait, mes clients abandonnent, je perds du temps             |
+| Décision       | choisir, comparer, commencer par, garder, remplacer, attendre, arrêter                            |
+| Argent         | budget, abonnement, coût de départ, coût mensuel, marge, argent économisé                         |
+| Travail livré  | ce qui sera construit, ce qui est inclus, date prévue, personne responsable, test avant paiement  |
+| Risque concret | panne, perte de données, blocage chez un prestataire, retard, accès impossible, amende éventuelle |
+| Résultat       | appels reçus, ventes, heures gagnées, erreurs évitées, autonomie, utilisation réelle              |
 
 Ajouter synonymes, entités et questions uniquement lorsqu'ils apportent
 une nuance ou permettent au lecteur de reconnaître sa situation. Bannir
@@ -446,17 +559,24 @@ villes sans valeur locale et les répétitions destinées aux moteurs.
 Un article profond ne se contente pas d'énumérer. Il relie les faits à
 une décision et traite les conséquences de second ordre.
 
-Vérifier systématiquement :
+Vérifier systématiquement, puis écrire les réponses dans la langue du lecteur :
 
-- **périmètre** : qu'achète-t-on réellement ?
-- **alternative** : peut-on faire plus simple, acheter ou ne rien faire ?
-- **horizon** : que se passe-t-il après la mise en ligne ?
-- **organisation** : qui décide, fournit les contenus, teste et maintient ?
-- **adoption** : les équipes ou clients utiliseront-ils réellement l'outil ?
-- **réversibilité** : que récupère-t-on si le prestataire ou la plateforme
-  disparaît ?
-- **risque** : quel échec est le plus coûteux et comment le détecter tôt ?
-- **mesure** : quel indicateur prouvera que l'investissement fonctionne ?
+- **ce qui est acheté** : quelles pages, fonctions ou interventions sont
+  réellement incluses ?
+- **les solutions plus simples** : peut-on garder l'existant, acheter un outil
+  du marché, corriger un point ou attendre ?
+- **la suite** : que faudra-t-il payer, mettre à jour ou organiser après la
+  mise en ligne ?
+- **les personnes** : qui décide, fournit les informations, teste, répond aux
+  clients et entretient le résultat ?
+- **l'utilisation réelle** : les salariés ou les clients sauront-ils et
+  voudront-ils s'en servir ?
+- **la possibilité de changer** : quels codes, données, contenus et accès
+  l'entreprise récupère-t-elle si elle change de prestataire ?
+- **l'échec coûteux** : quelle panne, perte, dérive ou absence de résultat faut-il
+  détecter tôt ?
+- **le résultat observé** : quelle vente, heure gagnée, erreur évitée ou action
+  terminée montrera que l'investissement est utile ?
 
 Une comparaison porte sur le même périmètre, la même durée et les mêmes
 contraintes. Si ce n'est pas possible, l'article le dit au lieu de
@@ -490,14 +610,20 @@ Mécanismes des guides voisins volontairement non repris :
 Les choix possibles servent à penser ; ils ne forment pas une rotation
 automatique :
 
-| Dimension   | Possibilités à adapter au besoin                                                                                                                             |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Angle       | arbitrage économique, coût de l'inaction, risque, résultat métier, décision par profil, contrainte dominante, parcours de projet, diagnostic                 |
-| Ouverture   | verdict conditionnel, situation déclenchante, dilemme, mini-diagnostic, calcul révélateur, erreur fréquente corrigée                                         |
-| Progression | arbre de décision, chronologie, scénarios, audit par risques, comparaison par critères, récit de projet commenté, minimum vers robuste, résultat vers moyens |
-| Exemples    | fil rouge discret, microprofils, contre-exemple, avant/après, budget commenté, décision ratée puis corrigée                                                  |
-| Artefact    | calcul, matrice, modèle rempli, checklist, plan d'action, grille, protocole de recette                                                                       |
-| Sortie      | interpréter un résultat, produire un livrable, sécuriser une décision, comparer deux scénarios, cadrer un risque                                             |
+| Dimension         | Possibilités à adapter au besoin                                                                             |
+| ----------------- | ------------------------------------------------------------------------------------------------------------ |
+| Angle             | coût, temps, risque, résultat pour l'entreprise, choix selon la situation, déroulement du projet, diagnostic |
+| Ouverture         | question réelle, situation vécue, dilemme, réponse courte, calcul simple, erreur fréquente corrigée          |
+| Progression       | pas-à-pas, chronologie, situations comparées, questions successives, avant/après, résultat puis moyens       |
+| Exemples          | exemple bref, trois profils, contre-exemple, budget commenté, mauvais choix puis correction                  |
+| Résultat pratique | calcul, modèle rempli, checklist, plan d'action, tableau de comparaison, liste de vérifications              |
+| Conclusion        | choisir une option, refaire un calcul, corriger un devis, préparer un document ou décider de ne pas investir |
+
+Ce tableau sert aux notes de l'auteur, pas au vocabulaire visible. Un titre
+comme « Matrice d'arbitrage de la contrainte dominante » doit devenir une
+question ordinaire telle que « Quelle option choisir dans votre situation ? ».
+L'originalité d'un guide vient d'une réponse juste et d'exemples utiles, pas
+d'un cadre conceptuel baptisé pour paraître propriétaire.
 
 Ne jamais reprendre **simultanément** l'ouverture, la progression et le
 dispositif d'exemple du guide le plus proche. Le nouveau dossier doit nommer
@@ -515,7 +641,7 @@ rythme, les exemples et la sortie.
   dans son métier ; ne jamais le prendre de haut.
 - Éviter la voix industrielle : tous les guides n'ont pas besoin d'un
   « verdict en 30 secondes », de « cinq chiffres à retenir », de quatorze
-  sections et du même fil rouge.
+  sections et du même exemple suivi.
 - Éviter les superlatifs et formules de vendeur : « révolutionnaire »,
   « personne ne vous le dit », « imbattable », « fatal », « garanti ».
   Les employer seulement si le périmètre les rend démontrables.
@@ -523,8 +649,8 @@ rythme, les exemples et la sortie.
   illustratif et offre Hagnéré Code.
 - Reconnaître les limites de l'analyse et les situations où l'offre
   concurrente est meilleure.
-- Montrer l'expertise par le raisonnement, les artefacts, les méthodes et
-  les contrôles. Citer une technologie n'est pas une preuve d'expérience.
+- Montrer l'expertise par le raisonnement, les exemples, les calculs et les
+  contrôles. Citer une technologie ne démontre pas une expérience réelle.
 - Ne jamais inventer un client, une mesure, un devis, un panel de lecteurs
   ou une note d'audit.
 - Une section doit faire avancer le raisonnement. Éviter deux sections
@@ -541,23 +667,39 @@ rythme, les exemples et la sortie.
 - Donner de la présence au texte avec des situations, objections et détails
   métier vérifiables. Ne pas fabriquer d'anecdote pour rendre un passage
   vivant.
+- Les notes d'auteur, journaux de révision et mentions telles que « ancienne
+  version », « passage corrigé » ou « ajouté après audit » restent dans le
+  dossier de travail. Elles ne doivent jamais apparaître dans l'article
+  public.
 - Relire les transitions après chaque correction : les doublons et
   contradictions apparaissent souvent entre deux passes.
 
-### 9.3 Les cinq tests anti-formatage
+### 9.3 Les dix tests de plume humaine
 
-Ils sont bloquants pour obtenir `Style = 2` dans la scorecard :
+Ils sont bloquants pour obtenir la note maximale en style dans la scorecard :
 
 1. **Substitution.** Si changer le sujet dans l'ouverture laisse un texte
    encore valable, elle est trop générique.
-2. **Squelette.** Lire seulement H1, ouverture, H2, encadrés et CTA : ils
+2. **150 mots.** Le lecteur se reconnaît, comprend les termes, reçoit une
+   première réponse et sait ce que la suite va l'aider à décider.
+3. **Sujet-verbe-résultat.** Pour chaque phrase abstraite, nommer qui agit,
+   ce qu'il fait et ce qui change. Si l'auteur ne peut pas répondre, réécrire.
+4. **Squelette.** Lire seulement H1, ouverture, H2, encadrés et CTA : ils
    doivent raconter une progression propre à ce problème.
-3. **Lecture orale.** Lire l'ouverture et les transitions à voix haute ;
+5. **Titres isolés.** Chaque H2 reste compréhensible copié seul dans un
+   message. Supprimer les portes, serrures, couches, chronos ou autres
+   métaphores qui exigent le chapitre précédent.
+6. **Lecture orale.** Lire l'ouverture et les transitions à voix haute ;
    couper les phrases artificielles, répétitives ou imprononçables.
-4. **Point d'ennui.** Identifier l'endroit où un dirigeant commencerait à
+7. **Point d'ennui.** Identifier l'endroit où un dirigeant commencerait à
    survoler ; raccourcir, déplacer, démontrer ou supprimer ce passage.
-5. **Sortie.** Le lecteur doit savoir quelle décision ou action devient
-   possible, et précisément ce qu'il obtiendra s'il clique.
+8. **Téléphone.** À 390 px, la réponse, les cartes et les comparaisons se
+   comprennent sans zoom ni défilement horizontal. Un tableau scrollable qui
+   masque les colonnes décisives échoue à ce test.
+9. **FAQ.** La première phrase répond. Une FAQ ne sert pas à cacher un nouveau
+   chapitre de cent mots ni à réintroduire tout le jargon supprimé du corps.
+10. **Sortie.** Le lecteur doit savoir quelle décision ou action devient
+    possible, et précisément ce qu'il obtiendra s'il clique.
 
 Au test lecteur du §13, poser au minimum : « Où avez-vous commencé à
 survoler ? », « Quelle décision pouvez-vous prendre maintenant ? » et
@@ -578,7 +720,8 @@ Le lecteur doit comprendre, sans publicité répétée :
 - pour quels projets l'agence n'est pas le bon choix ;
 - le résultat concret du premier échange ;
 - qui répond, sous quel délai et sans quelle obligation ;
-- ce qui différencie la méthode, avec une preuve ou un livrable associé.
+- ce qui différencie l'accompagnement, avec un exemple, un document ou un
+  contrôle concret associé.
 
 ### 10.2 Les appels à l'action
 
@@ -586,12 +729,12 @@ Une page possède **un CTA éditorial principal**. Avec la sidebar commerciale
 globale actuelle, préférer une seule occurrence dans l'article après une
 démonstration suffisante ; une répétition finale n'est acceptable que si la
 longueur et la progression la rendent naturelle. Adapter son libellé à
-l'intention :
+l'intention et annoncer un résultat compréhensible :
 
-- prix : « cadrer mon budget et mon périmètre » ;
-- comparatif : « faire trancher mon cas » ;
-- cahier des charges : « faire relire mon périmètre » ;
-- migration/incident : « sécuriser le plan avant la bascule ».
+- prix : « Vérifier ce que mon budget permet » ;
+- comparatif : « Comparer les options pour mon entreprise » ;
+- cahier des charges : « Faire relire mon cahier des charges » ;
+- migration ou incident : « Vérifier le plan avant la mise en ligne ».
 
 Le CTA décrit ce qui se passe après le clic. Il ne crée ni urgence
 artificielle ni promesse de résultat invérifiable.
@@ -621,9 +764,10 @@ Exemples de ressources utiles :
 - cahier des charges éditable avec exemple rempli ;
 - comparateur de devis normalisé sur trois ans ;
 - calculateur de budget, coût total ou trésorerie avec hypothèses visibles ;
-- matrice pour choisir statu quo, SaaS, no-code ou sur-mesure ;
+- tableau pour choisir entre conserver l'existant, acheter un logiciel,
+  utiliser du no-code ou développer sur mesure ;
 - fichier CSV de correspondance d'URL et checklist de migration SEO ;
-- grille de recette avec critères d'acceptation et responsables ;
+- liste de tests avant paiement, avec résultat attendu et responsable ;
 - inventaire de tâches à automatiser, priorisé par temps, risque et valeur ;
 - canevas de MVP séparant hypothèses, indispensable, version ultérieure et
   critère d'abandon.
@@ -769,13 +913,26 @@ Chaque point est bloquant :
 10. **Répétitions.** Une démonstration vit à un endroit canonique ; les
     autres sections y renvoient au lieu de la répéter.
 11. **Résidus d'édition.** Relire le paragraphe complet et ses transitions,
-    pas seulement le diff.
+    pas seulement le diff ; rechercher aussi les mentions de version, de
+    correction, d'audit et les commentaires adressés aux prochains agents.
 12. **Offre et coordonnées.** Comparer chaque fait commercial à sa source
     actuelle avant livraison.
 
 ---
 
 ## 13. Scorecard de publication
+
+Avant de compter les points, cinq conditions sont bloquantes :
+
+1. les 150 premiers mots réussissent le test du §6.1 ;
+2. les H2 sont compréhensibles sans apprendre un vocabulaire propre au guide ;
+3. aucun mur de lexique ne précède la réponse ;
+4. la comparaison principale reste lisible à 390 px sans masquer une colonne ;
+5. le CTA et la FAQ parlent du résultat du lecteur, pas du processus de l'agence.
+
+Si une seule de ces conditions échoue, le guide n'est pas publiable, même si
+les faits, les sources et le SEO technique sont corrects. Les notes Intention,
+Pédagogie, Style et SEO/produit ne peuvent alors pas dépasser 1.
 
 Noter chaque axe de 0 à 2 :
 
@@ -791,7 +948,7 @@ Noter chaque axe de 0 à 2 :
 | Profondeur  | Les conséquences, alternatives et coûts cachés sont-ils couverts ?     |
 | Preuve      | Les affirmations importantes sont-elles traçables et bien qualifiées ? |
 | Comparaison | Les options sont-elles jugées à conditions égales ?                    |
-| Originalité | Existe-t-il un artefact, calcul ou cadre difficile à remplacer ?       |
+| Originalité | La réponse, les exemples et l'outil utile sont-ils propres au sujet ?  |
 | Style       | Le texte est-il naturel, précis, sans voix industrielle ni survente ?  |
 | Conversion  | Le bon lecteur comprend-il le prochain pas et le mauvais fit ?         |
 | SEO/produit | Structure, liens, metadata, accessibilité et rendu sont-ils propres ?  |
@@ -821,7 +978,7 @@ validation.
 | Faits vérifiés          | Fiche de preuves réconciliée, rédaction encore révisable                    |
 | Prêt pour contre-audit  | Brouillon complet soumis à une revue indépendante                           |
 | Prêt techniquement      | Score et batterie locale passés, hors validation humaine                    |
-| Prêt pour revue humaine | Aucun blocage connu, validation éditoriale restant à acquérir                |
+| Prêt pour revue humaine | Aucun blocage connu, validation éditoriale restant à acquérir               |
 | Publiable               | Seuil, contre-audit, validation éditoriale et contrôles locaux passés       |
 | Publié                  | URL de production vérifiée ; cela ne signifie pas indexée                   |
 | Indexé                  | État confirmé pour l'URL, distinct du sitemap et de la demande d'indexation |
@@ -887,6 +1044,12 @@ Vérifier au minimum :
 - CTA et ressource promise ;
 - FAQ au clavier, ordre de tabulation et focus visible ;
 - absence de débordement horizontal, d'overlay et d'erreur console.
+
+Le défilement horizontal d'un tableau est une protection technique, pas une
+validation pédagogique. Si le lecteur doit faire glisser l'écran pour découvrir
+la colonne qui contient la réponse, remplacer le tableau par des cartes, une
+liste ou plusieurs comparaisons courtes sur les écrans étroits. À 390 px, la
+question, l'option et sa conséquence doivent être visibles ensemble.
 
 Avant livraison, contrôler le rendu réel à `320`, `360`, `390`, `430`, `640`,
 `768`, `1024`, `1280`, `1440` et `1600` px. Vérifier la largeur de contenu

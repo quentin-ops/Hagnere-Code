@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Prix de gestion Google Ads : média, honoraires et coût total — Hagnéré Code";
+  "Combien coûte Google Ads : budget publicitaire, gestion et frais de lancement";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -99,7 +99,8 @@ export default function OgImage() {
               lineHeight: 1.3,
             }}
           >
-            Média, honoraires et socles chiffrés sur 3, 6 et 12 mois
+            Budget publicitaire, gestion et frais de lancement sur 3, 6 et 12
+            mois
           </div>
         </div>
 
@@ -129,10 +130,10 @@ export default function OgImage() {
           </div>
 
           {[
-            ["Budget média", "plateforme", "#60a5fa"],
-            ["Honoraires", "pilotage", "#a78bfa"],
-            ["Conversions", "mesure", "#34d399"],
-            ["Page + créations", "conversion", "#fbbf24"],
+            ["Publicité", "payée à Google", "#60a5fa"],
+            ["Gestion", "agence ou freelance", "#a78bfa"],
+            ["Suivi des demandes", "outils", "#34d399"],
+            ["Page et visuels", "si nécessaires", "#fbbf24"],
           ].map(([label, value, color]) => (
             <div
               key={label}
@@ -187,22 +188,24 @@ export default function OgImage() {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        {["Forfait", "% du média", "Hybride", "Compte client"].map((label) => (
-          <div
-            key={label}
-            style={{
-              display: "flex",
-              padding: "10px 17px",
-              borderRadius: 999,
-              background: "rgba(255,255,255,0.055)",
-              border: "1px solid rgba(255,255,255,0.09)",
-              color: "#d4d4d8",
-              fontSize: 18,
-            }}
-          >
-            {label}
-          </div>
-        ))}
+        {["Prix mensuel", "Coût par prospect", "Compte à votre nom"].map(
+          (label) => (
+            <div
+              key={label}
+              style={{
+                display: "flex",
+                padding: "10px 17px",
+                borderRadius: 999,
+                background: "rgba(255,255,255,0.055)",
+                border: "1px solid rgba(255,255,255,0.09)",
+                color: "#d4d4d8",
+                fontSize: 18,
+              }}
+            >
+              {label}
+            </div>
+          ),
+        )}
       </div>
     </div>,
     size,

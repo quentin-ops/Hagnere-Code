@@ -1,9 +1,9 @@
 # Roadmap de 100 nouveaux guides orientés conversion
 
-> Dernière révision : 20 juillet 2026. Cette roadmap a été créée avec **100
+> Dernière révision : 21 juillet 2026. Cette roadmap a été créée avec **100
 > nouveaux sujets**, en plus des 32 guides alors inscrits dans
-> `src/lib/guides.ts`. Les huit premiers sujets sont désormais implémentés
-> localement : il reste donc 92 sujets à produire. Ce portefeuille
+> `src/lib/guides.ts`. Les onze premiers sujets sont désormais implémentés
+> localement : il reste donc 89 sujets à produire. Ce portefeuille
 > éditorial n'est pas une promesse que le volume constitue en lui-même un
 > facteur de classement.
 
@@ -255,7 +255,7 @@ chaque sprint, noter chaque candidat sur 100 :
 | Proximité d'une demande de devis                                               |      25 |
 | Preuve de demande : Search Console, Keyword Planner, questions clients ou SERP |      15 |
 | Capacité à fournir une preuve, une expérience ou un outil original             |      15 |
-| Différenciation par rapport aux 32 guides et aux pages service                 |      10 |
+| Différenciation par rapport au corpus publié et aux pages service              |      10 |
 | Potentiel de maillage, ressource et CTA utile                                  |      10 |
 | **Total**                                                                      | **100** |
 
@@ -270,8 +270,8 @@ restent nécessaires.
 1. La page service conserve l'intention transactionnelle
    « agence/prestataire + service ». Le guide répond à une douleur, un budget,
    un arbitrage, un risque, une méthode ou une préparation.
-2. Avant rédaction, comparer le nouveau brief aux H1, promesses et plans des
-   32 guides existants. Si 60 % de la réponse est identique, enrichir la page
+2. Avant rédaction, comparer le nouveau brief aux H1, promesses et plans de
+   tous les guides publiés. Si 60 % de la réponse est identique, enrichir la page
    existante plutôt que publier.
 3. Une requête principale, une situation de lecteur, une décision et une URL
    primaire. Les synonymes appartiennent à la même page.
@@ -313,7 +313,7 @@ impressions non-marque, requêtes, CTR, clics vers les pages service, démarrage
 de formulaire et demandes qualifiées. Une position moyenne isolée ou un temps
 passé ne suffit pas à juger un guide.
 
-## 10. Huit premiers guides implémentés et prochain lot
+## 10. Onze premiers guides implémentés et prochain lot
 
 Le premier sprint a été implémenté le 20 juillet 2026 :
 
