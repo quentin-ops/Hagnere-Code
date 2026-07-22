@@ -643,6 +643,13 @@ export default function Page() {
         </p>
 
         <h2 id="planning">10. Le calendrier réaliste</h2>
+        <p>
+          Les fourchettes ci-dessous sont seulement des repères de cadrage. Ce
+          ne sont ni des délais moyens, ni une promesse pour votre projet : deux
+          prestataires peuvent chiffrer des lignes d’arrivée différentes sous le
+          même nom. Votre calendrier doit être recalculé à partir du résultat
+          attendu, des travaux, des personnes disponibles et des accès réels.
+        </p>
         <GuideTable
           headers={["Étape", "Repère indicatif", "Condition de tenue"]}
           rows={[
@@ -672,6 +679,12 @@ export default function Page() {
           La date dépend aussi de vous : disponibilité des experts métier, accès
           aux outils, exemples de données et validation des règles. Le planning
           doit identifier chaque dépendance et l&apos;effet d&apos;un retard.
+          Pour construire ce calendrier à partir de votre propre projet,
+          utilisez la méthode détaillée dans le guide{" "}
+          <Link href="/guides/combien-de-temps-developper-saas">
+            combien de temps faut-il pour développer un SaaS
+          </Link>
+          .
         </p>
 
         <h2 id="comparer">11. Comparer les devis et protéger la reprise</h2>

@@ -1,0 +1,7 @@
+d7a37bc3ce141f1ce1904dd2506cdd33c7ba112d015e7934414ef2c14be31a2a  docs/research/automatiser-saisie-donnees-entreprise.md
+9d03c976b7850b267478f4333a6b3ce03cdc728f75912e95a0543b83eb6fbe55  src/app/guides/automatiser-saisie-donnees-entreprise/page.tsx
+d8145699660e765dc6fd3f7d6a650cd7f2c296ab767af6cb79751bd0e5e6577f  src/app/guides/automatiser-saisie-donnees-entreprise/opengraph-image.tsx
+6e955103ad0ba1d3005c8c885a7e13d5eb51c33c761a4c10525f41d233552d5d  src/lib/guides.ts
+49ad3a006a23c10a9070a8b3f31b5af4a500767b0128afa7d8e8d6800b6d9214  src/components/guides/GuidesHubPage.tsx
+f666e84fbeb668ac7ec00352286d32fe6e640179e306de6ef648b1be4f768a6f  src/lib/guide-human-language.test.ts
+4a907f851db8e724d9f5aa6b563311e8292df6b5db45c67cc9ceb150c2a1c71d  src/app/guides/automatiser-processus-metier/page.tsx

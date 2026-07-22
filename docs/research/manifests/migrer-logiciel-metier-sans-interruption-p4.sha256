@@ -1,0 +1,9 @@
+adbb5fcaa6eac5f4a0ad3592ce56e5a4f5207f6155e25e904f5db2e5c54a6c78  docs/research/migrer-logiciel-metier-sans-interruption.md
+b38dd44dec0bfd3402b385c54fd2200b0b0e341f75ad07545cf5297eaaac3a20  src/app/guides/migrer-logiciel-metier-sans-interruption/page.tsx
+bffdd1e9f0f2567ab4af327d0f2abf379adc59ccefda965abf4f552fe5270091  src/app/guides/migrer-logiciel-metier-sans-interruption/opengraph-image.tsx
+742207acce91896370683f1da0242a92e38b1c1ed1e328c0b623623245a74736  src/lib/guides.ts
+7b36f55d8a0e80b1f483b71399b5b7dcd412f0a9210b48c7efb7287b278a1fa9  src/app/guides/reprendre-logiciel-metier-existant/page.tsx
+276a6f9b64a4c1a7a9d7d620b1080625f11103fb03a2cdb04e93cec64481fe3d  src/components/guides/GuidesHubPage.tsx
+e92d9a8c4e85780442fd0360e087f65500686dc37d5f4b27a04b4f089f769e25  src/lib/guide-human-language.test.ts
+aae204aee289ae468d68b08155e0009f495d0eb4a99d8abce907a81dc58ab84b  src/components/guides/guide-content-blocks.tsx
+102c03d1509bc52759d13a9852076ff7bd1d3df974c9ac0b31b3703cfb47677f  src/lib/editorial-governance.test.ts

@@ -1,0 +1,7 @@
+84b1408b80a6eb2b943e9c9e783597066e497b19609f5304e73985142a5820c8  docs/research/positions-google-baissent.md
+0788c525a3e1976a192f076c391270d69a771bbfb375bfdb11f568492e93900c  src/app/guides/positions-google-baissent/page.tsx
+6a299e4d4f6eef0c5d95b4528e67674551230c9f265cf076594614bd585995f1  src/app/guides/positions-google-baissent/opengraph-image.tsx
+4f7a05cb026a3cbb192230046d670c98b21e45ef5af816e871d9522238da73cf  src/lib/guides.ts
+c5cd8ff994f28c48d325b90ec95709e473d8d913f0be55b0b7da8a605e40c1ff  src/components/guides/GuidesHubPage.tsx
+87d39309251dcd1d64356c4892722a56df454f6154208cc6dd05293a06a5de98  src/lib/guide-human-language.test.ts
+7a529c29bef04184624876a4a4c24d925125fc599fe0e78efcf8b62acf64278e  src/app/guides/audit-seo-que-contient-il/page.tsx

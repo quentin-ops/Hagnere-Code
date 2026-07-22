@@ -1,0 +1,7 @@
+1b796390ebcd8825d953622e131e4ceb61c0a1e59767074f259b15a2a02a59a3  docs/research/combien-de-temps-developper-saas.md
+8cfbdd7cc1f4d95a0075df8aa6f197a4159e6a4eaff6c98d6cc603c3d576acd3  src/app/guides/combien-de-temps-developper-saas/page.tsx
+26f11755bd0e270a8977b1919daf048c6a65b910cf4d9949576b97efee54db19  src/app/guides/combien-de-temps-developper-saas/opengraph-image.tsx
+4a9c7d0d5a644ca34da484b167bbc6f4470146d504171ebe2c6389dc6f6c5bef  src/lib/guides.ts
+753320b271fab44cc66e534980910c33b6be87a3b51127b1c22f4972ca852000  src/components/guides/GuidesHubPage.tsx
+836618533200beccd3cf36bbc45a6e7415784101ea39b61ce13988649025e7a0  src/lib/guide-human-language.test.ts
+b3f6217c8d28b8b6976af2b28f740d9d498e7394fabf697b2d9f64ed900d5f40  src/app/guides/combien-coute-un-saas/page.tsx

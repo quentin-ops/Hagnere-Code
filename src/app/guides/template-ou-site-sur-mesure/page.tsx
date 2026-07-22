@@ -326,6 +326,15 @@ export default function Page() {
           des gammes complexes à plusieurs types d’acheteurs.
         </p>
 
+        <p>
+          Si vous ne savez pas encore si ces besoins tiennent sur une page ou
+          demandent plusieurs chemins, commencez par{" "}
+          <Link href="/guides/landing-page-ou-site-vitrine">
+            choisir entre une page dédiée et un site vitrine
+          </Link>
+          . Vous pourrez ensuite comparer la manière de les produire.
+        </p>
+
         <p>Posez ensuite cinq questions simples :</p>
 
         <ul>

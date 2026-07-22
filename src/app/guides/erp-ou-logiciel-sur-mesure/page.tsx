@@ -407,6 +407,15 @@ export default function Page() {
           et les volumes dont vous avez besoin.
         </p>
 
+        <p>
+          Avant de valider cette solution, utilisez notre guide pour{" "}
+          <Link href="/guides/connecter-erp-crm-logiciel-metier">
+            préparer la connexion entre l’ERP, le CRM et le logiciel métier
+          </Link>
+          . Il vous aide à écrire où chaque information doit être corrigée, dans
+          quel sens elle circule et qui reprend un envoi refusé.
+        </p>
+
         <h2 id="dix-criteres">
           Écrivez vos questions avant de voir les démonstrations
         </h2>

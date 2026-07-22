@@ -625,6 +625,16 @@ export default function Page() {
         />
 
         <p>
+          Si la migration devient l’option retenue, préparez séparément le
+          passage en production. Notre guide pour{" "}
+          <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+            changer de logiciel métier sans arrêter l’activité
+          </Link>{" "}
+          détaille la répétition complète, les contrôles du jour prévu et les
+          conditions qui imposent un retour temporaire à l’ancien outil.
+        </p>
+
+        <p>
           Demandez plusieurs options chiffrées plutôt qu’un verdict
           technologique. Pour un investissement important, le{" "}
           <Link href="/guides/calculer-roi-application-metier">

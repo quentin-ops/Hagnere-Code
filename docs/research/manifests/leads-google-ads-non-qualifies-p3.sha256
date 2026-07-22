@@ -1,0 +1,8 @@
+5c67956cec024acc2a9a12144c4619fe3a55d52b6aede6f1018094af8dbc9f1f  docs/research/leads-google-ads-non-qualifies.md
+f2466e67649040ecb727a2a900711b15e89763dc4aed4fd263da762de5dd9a45  src/app/guides/leads-google-ads-non-qualifies/page.tsx
+259dbe8fca19cdf6157d0f16aeb2a630553a2cbea6485fe9bea22daf5f7056e1  src/app/guides/leads-google-ads-non-qualifies/opengraph-image.tsx
+6dc7d2fc282831499e661f404ba617b5c2cdef4fb5b8c29bce80ef3eb47ba95a  src/lib/guides.ts
+36141c442e1b1c7f695d7b7660a85fe25135f99fb3669643af6b5b092c8bd6b1  src/app/guides/pourquoi-google-ads-ne-convertit-pas/page.tsx
+9299e792f12a16e6dd68287f84732c2aa442126d5e543bc7f4d9eb2101d346d4  src/components/guides/GuidesHubPage.tsx
+034016859a254645289e51d16058eff37415fc85b99c737be84c76815d2697b7  src/lib/guide-human-language.test.ts
+c207073fa81c607e0abe25d7a77b6764d72178bd875edd39482aeaf92ee5083b  src/components/guides/guide-content-blocks.tsx

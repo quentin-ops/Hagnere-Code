@@ -487,6 +487,16 @@ export default function Page() {
           à être utiles après leur publication.
         </p>
 
+        <p>
+          Une fois ce travail lancé, ne jugez pas seulement le nombre de mois
+          écoulés. Le guide pour{" "}
+          <Link href="/guides/combien-de-temps-resultats-seo">
+            savoir quand attendre, corriger ou arrêter une action SEO
+          </Link>{" "}
+          sépare ce qui a réellement été publié, les apparitions dans Google,
+          les clics, les demandes et les ventes.
+        </p>
+
         <h3>Vous avez besoin de ventes certaines dès le mois prochain</h3>
         <p>
           Aucun des deux ne peut honnêtement vous offrir cette certitude. Google
