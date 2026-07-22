@@ -126,7 +126,7 @@ const faqItems = [
   {
     question: "Combien coûte la maintenance d'un logiciel sur mesure ?",
     answer:
-      "Pour une première simulation, ce guide retient 10 à 25 % du coût initial par an, plus l'hébergement. Ce n'est pas une règle de marché : exigez le contenu du service, les délais d'intervention, les évolutions incluses et les exclusions.",
+      "Il n'existe pas de pourcentage annuel fiable pour toutes les applications. Construisez le budget à partir des factures d'infrastructure, du contrat, des incidents observés, des évolutions décidées et du temps interne. Si un poste n'est pas encore chiffré, gardez-le comme montant inconnu au lieu de le ramener à zéro.",
   },
   {
     question:
@@ -299,10 +299,12 @@ export default function Page() {
           <strong>60 000 à 250 000 € pour une plateforme</strong> (outil reliant
           plusieurs activités, portail multi-services). Ces montants servent à
           préparer une discussion, pas à prédire votre devis : les sources sont
-          des prestataires, pas une étude statistique. S&apos;y ajoutent, dans
-          nos simulations, une hypothèse de maintenance de 10 à 25 % du coût
-          initial par an et un hébergement de 40 à 100 €/mois, à remplacer par
-          les contrats réels. La{" "}
+          des prestataires, pas une étude statistique. Le budget de construction
+          n&apos;inclut pas automatiquement l&apos;année d&apos;exploitation qui
+          suit. N&apos;ajoutez pas un pourcentage par réflexe : recensez les
+          factures d&apos;infrastructure, la couverture de support, les
+          incidents, les évolutions décidées et le temps interne. Tant
+          qu&apos;un poste n&apos;est pas chiffré, notez « montant inconnu ». La{" "}
           <Link href="/tarifs">page Tarifs Hagnéré Code</Link> affiche
           séparément les offres publiques à jour ; seul un devis nominatif
           engage les parties. Les délais du tableau sont, eux aussi, des
@@ -505,32 +507,32 @@ export default function Page() {
             [
               "Suivi clients / devis (CRM léger)",
               "8 000 – 25 000 €",
-              "Connexion à la facturation et entretien annuel estimé à 1 500–4 000 €",
+              "Facturation, utilisateurs, incidents, mises à jour et support à recenser",
             ],
             [
               "Gestion de stock / commandes",
               "8 000 – 30 000 €",
-              "Codes-barres, dépôts, inventaires et entretien estimé à 1 500–5 000 €/an",
+              "Codes-barres, dépôts, terminaux, sauvegardes et support à recenser",
             ],
             [
               "Planning / interventions terrain",
               "15 000 – 45 000 €",
-              "Application mobile et entretien estimé à 2 500–8 000 €/an",
+              "Application mobile, mode hors ligne, appareils et versions à maintenir",
             ],
             [
               "Portail client (suivi de dossiers)",
               "18 000 – 70 000 €",
-              "Utilisateurs, documents, paiement et entretien estimé à 3 000–10 000 €/an",
+              "Utilisateurs, documents, paiement, assistance et restauration à chiffrer",
             ],
             [
               "Logiciel reliant plusieurs services",
               "50 000 – 120 000 €",
-              "Processus, connexions et entretien estimé à 8 000–25 000 €/an",
+              "Connexions, surveillance, restauration et disponibilité à chiffrer",
             ],
             [
               "Automatisations entre outils",
               "500 – 5 000 € par flux",
-              "Règles métier, surveillance et entretien estimé à 300–1 500 €/an",
+              "Usage des services, erreurs, alertes et changements d'API à chiffrer",
             ],
           ]}
         />
@@ -731,51 +733,58 @@ export default function Page() {
 
         <h2 id="tco">7. Comparer le coût total et les alternatives</h2>
         <p>
-          Le devis de création n&apos;est pas le coût total. Les pourcentages et
-          montants ci-dessous sont des hypothèses Hagnéré pour préparer une
-          discussion, pas des moyennes du marché. Remplacez-les par le contrat
-          de maintenance, les tarifs d&apos;hébergement et les besoins réels.
+          Le devis de création n&apos;est pas le coût total. Les dépenses
+          récurrentes ne se déduisent pas honnêtement d&apos;un pourcentage du
+          prix initial : partez des preuves disponibles et conservez les
+          inconnues jusqu&apos;à leur chiffrage.
+        </p>
+        <p>
+          Le guide consacré au{" "}
+          <Link href="/guides/cout-maintenance-application-metier">
+            coût annuel de maintenance d’une application métier
+          </Link>{" "}
+          fournit le registre à remplir poste par poste après la mise en
+          production.
         </p>
         <GuideTable
-          headers={["Poste", "Ordre de grandeur", "En clair"]}
+          headers={["Poste", "Preuve à réunir", "Ce qui change le montant"]}
           rows={[
             [
               "Maintenance corrective",
-              "5 – 10 % du coût initial / an",
-              "Bugs, mises à jour de sécurité — à prévoir",
+              "Contrat et tickets des douze derniers mois",
+              "Couverture, criticité, fréquence et temps de résolution",
             ],
             [
               "Maintenance évolutive",
-              "5 – 15 % du coût initial / an",
-              "Les améliorations demandées à l'usage",
+              "Feuille de route et devis des changements décidés",
+              "Nombre, taille et risque des évolutions réellement retenues",
             ],
             [
               "Hébergement + sauvegardes",
-              "40 – 100 €/mois",
-              "Infrastructure moderne, sauvegardes automatiques",
+              "Factures, volumes et politique de conservation",
+              "Usage, stockage, courriels, surveillance et tests de restauration",
             ],
             [
               "Reprise de données",
-              "souvent sous-estimée",
-              "Nettoyer et migrer l'existant — chiffrez-la au devis",
+              "Échantillon, volumes et règles de nettoyage",
+              "Qualité des données, contrôles et coexistence des deux systèmes",
             ],
             [
               "Formation & accompagnement",
-              "1 – 3 jours",
-              "Un outil non adopté est un outil perdu",
+              "Utilisateurs, rôles et parcours à apprendre",
+              "Nombre de groupes, renouvellement des équipes et supports attendus",
             ],
             [
               "Intégrations découvertes en route",
-              "2 – 15 jours chacune*",
-              "Listez les logiciels, données et échanges avant le devis",
+              "Liste des logiciels, données et échanges",
+              "Documentation, accès, limites des fournisseurs et scénarios de test",
             ],
           ]}
         />
         <p className="text-sm">
-          * Hypothèse de charge publiée par LMS Design, l&apos;une des quatre
-          grilles commerciales reliées plus haut. Convertissez-la avec le taux
-          du devis et faites préciser les tests, la supervision et les
-          abonnements éventuels.
+          Pour chaque ligne, notez le montant connu, la personne qui le confirme
+          et la date de décision. Un poste sans devis ni mesure reste « montant
+          inconnu » ; il ne devient pas gratuit.
         </p>
         <FormulaBox>
           <strong>Coût sur trois ans</strong>

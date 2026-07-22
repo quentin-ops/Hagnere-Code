@@ -866,6 +866,14 @@ export default function Page() {
           que nous mettons nous-mêmes derrière une proposition. Vous pouvez
           ainsi nous comparer sur les mêmes critères.
         </p>
+        <p>
+          Pour un outil interne, le guide{" "}
+          <Link href="/guides/choisir-prestataire-application-metier">
+            choisir le prestataire d’une application métier
+          </Link>{" "}
+          va plus loin : tous les candidats travaillent sur le même cas de
+          commande, puis leurs réponses sont consignées en six phrases.
+        </p>
 
         <GuideInlineCTA
           title="Vous voulez comparer un devis freelance et un devis d’agence ?"

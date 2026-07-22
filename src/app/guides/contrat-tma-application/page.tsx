@@ -208,8 +208,8 @@ export default function Page() {
             label: "Vérifier les droits, le code et les accès",
           },
           {
-            href: "/guides/cout-maintenance-site-internet",
-            label: "Budgéter la maintenance d’un site internet",
+            href: "/guides/cout-maintenance-application-metier",
+            label: "Construire le budget annuel de l’application",
           },
           {
             href: "/services/maintenance-evolution",
@@ -550,6 +550,15 @@ export default function Page() {
           ne vaut jamais zéro.
         </p>
 
+        <p>
+          Pour passer de cette liste à un budget défendable, utilisez le{" "}
+          <Link href="/guides/cout-maintenance-application-metier">
+            registre annuel des coûts de maintenance
+          </Link>
+          . Il sépare les factures certaines, les dépenses à déclencher et les
+          montants encore inconnus.
+        </p>
+
         <h3>
           Comparez cinq façons d’organiser la maintenance, pas seulement deux
           prix
@@ -888,6 +897,10 @@ export default function Page() {
             compétente, une absence totale d’actifs un{" "}
             <Link href="/guides/reprendre-logiciel-metier-existant">
               audit de reprise
+            </Link>
+            , le départ du développeur d’un SaaS actif un{" "}
+            <Link href="/guides/reprendre-saas-developpe-par-freelance">
+              registre de passation des comptes
             </Link>{" "}
             et un litige une analyse juridique. Une TMA commerciale ne doit pas
             masquer ces besoins.

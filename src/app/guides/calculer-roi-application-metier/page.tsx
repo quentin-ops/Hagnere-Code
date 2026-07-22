@@ -536,6 +536,15 @@ export default function Page() {
           maintenance pendant toute sa vie.
         </p>
 
+        <p>
+          Avant de calculer le retour sur investissement, construisez l’année
+          d’exploitation avec le{" "}
+          <Link href="/guides/cout-maintenance-application-metier">
+            registre du budget de maintenance
+          </Link>
+          . Vous éviterez de transformer un coût encore inconnu en zéro.
+        </p>
+
         <GuideTable
           headers={["Moment", "Postes à examiner", "Questions à poser"]}
           rows={[

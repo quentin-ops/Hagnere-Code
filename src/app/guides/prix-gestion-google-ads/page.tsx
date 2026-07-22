@@ -366,6 +366,17 @@ export default function Page() {
           seulement le compte Google Ads.
         </p>
 
+        <p>
+          Pour calculer le montant à verser à Google avant un premier test,
+          utilisez le guide{" "}
+          <Link href="/guides/budget-google-ads-pme">
+            quel budget Google Ads prévoir pour une PME
+          </Link>
+          . Il compare la prévision de clics, le plafond conditionnel tiré de la
+          marge et la perte maximale acceptable, sans redétailler les tarifs de
+          gestion présentés ci-dessous.
+        </p>
+
         <h2 id="tarifs-publics">
           2. Ce que montrent cinq tarifs publics français — et rien de plus
         </h2>
@@ -625,8 +636,8 @@ Récurrent mensuel =
           ». Le coût par prospect (CPL) répond à « combien avons-nous payé la
           demande qualifiée ? ». Le coût par acquisition (CPA) doit ensuite
           préciser s’il mesure un formulaire, un prospect ou un client. Pour une
-          entreprise de services, le seul seuil durable part de la marge par
-          vente et du taux de transformation commercial.
+          entreprise de services, ces indicateurs doivent ensuite être
+          rapprochés des ventes et de la marge réellement obtenues.
         </p>
 
         <FormulaBox>{`CPL média = budget média ÷ prospects qualifiés
@@ -634,36 +645,19 @@ Récurrent mensuel =
 CPL complet =
   (média + gestion + coûts récurrents + frais de lancement amortis) ÷ prospects qualifiés
 
-CPA client = coût complet ÷ nouveaux clients attribuables
-
-CPL média maximal à l'équilibre =
-  (marge par vente × taux prospect qualifié → vente)
-  − (coûts non média mensuels ÷ prospects qualifiés visés)`}</FormulaBox>
+CPA client = coût complet ÷ nouveaux clients attribuables`}</FormulaBox>
 
         <p>
-          <strong>Exemple illustratif fictif :</strong> une vente apporte 2 400
-          € de marge, 20 % des prospects qualifiés signent, et la campagne doit
-          en produire 15. La valeur de marge attendue par prospect est 2 400 ×
-          20 % = 480 €. Si gestion, outils et frais de lancement répartis
-          coûtent 1 200 € par mois, ils absorbent 80 € par prospect. Le CPL
-          média maximal à l’équilibre est donc 400 €, soit 6 000 € de média pour
-          15 prospects.
-        </p>
-
-        <InfoBox variant="emerald" title="Contrôle inverse du calcul">
-          Quinze prospects × 20 % donnent trois ventes. Trois ventes × 2 400 €
-          produisent 7 200 € de marge. Les coûts valent 6 000 € de média + 1 200
-          € hors média = 7 200 €. Le résultat est exactement nul : 400 € est un
-          seuil d’équilibre, pas un objectif recommandé. Pour dégager un
-          bénéfice et absorber l’incertitude, la cible opérationnelle doit être
-          inférieure.
-        </InfoBox>
-
-        <p>
-          Si vous ne connaissez ni la marge, ni le taux de qualification, ni le
-          taux de signature, commencez par les mesurer. Augmenter le budget dans
-          l’espoir que l’algorithme découvrira votre économie unitaire ne
-          remplace pas ce travail. Avant toute hausse, utilisez la méthode de l’
+          Cette page reste propriétaire du coût complet et des honoraires. Pour
+          dimensionner un premier budget média à partir d’un objectif de
+          demandes, d’une marge conditionnelle et de la perte maximale que la
+          trésorerie accepte, utilisez le{" "}
+          <Link href="/guides/budget-google-ads-pme">
+            calculateur de budget Google Ads pour PME
+          </Link>
+          . Si vous ne connaissez ni la marge, ni le taux de qualification, ni
+          le taux de signature, commencez par les mesurer. Avant toute hausse,
+          utilisez la méthode de l’
           <Link href="/guides/audit-google-ads-que-verifier">
             audit Google Ads
           </Link>{" "}

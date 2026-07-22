@@ -788,7 +788,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            La rédaction et les visuels sont chiffrés selon le volume, les droits et le niveau de validation requis. Le devis identifie la source de chaque image, sa licence et les éventuels coûts tiers ; un photographe peut être proposé séparément.
+            La rédaction et les visuels sont chiffrés selon le volume, les droits et le niveau de validation requis. Le devis identifie la source de chaque image, sa licence et les éventuels coûts tiers ; un photographe peut être proposé séparément. Notre <a href="/guides/preparer-contenus-site-vitrine">guide pour préparer les contenus d'un site vitrine</a> explique ce que vous pouvez fournir, faire produire ou confirmer avant le démarrage.
           </div>
         </div>
 

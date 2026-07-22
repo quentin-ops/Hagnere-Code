@@ -1,9 +1,9 @@
 # Roadmap de 100 nouveaux guides orientés conversion
 
-> Dernière révision : 21 juillet 2026. Cette roadmap a été créée avec **100
+> Dernière révision : 22 juillet 2026. Cette roadmap a été créée avec **100
 > nouveaux sujets**, en plus des 32 guides alors inscrits dans
-> `src/lib/guides.ts`. Les quatorze premiers sujets sont désormais implémentés :
-> il reste donc 86 sujets à produire. Ce portefeuille
+> `src/lib/guides.ts`. Les vingt-quatre premiers sujets sont désormais
+> implémentés : il reste donc 76 sujets à produire. Ce portefeuille
 > éditorial n'est pas une promesse que le volume constitue en lui-même un
 > facteur de classement.
 
@@ -378,11 +378,24 @@ reprise pour le prototype généré, quatre symptômes puis un relevé du clic �
 marge pour Google Ads. Les recherches, contre-audits, passes anti-IA, images
 sociales et contrôles responsive sont consignés dans leurs dossiers respectifs.
 
-Le prochain lot logique devient :
+Le lot suivant a franchi successivement les quatre passes le 22 juillet 2026 :
 
-1. `preparer-contenus-site-vitrine`, pour retirer un frein concret avant la
-   création d’un site ;
-2. `remplacer-microsoft-access-application-web`, pour capter une situation de
-   logiciel interne critique et directement qualifiable ;
-3. `budget-google-ads-pme`, pour compléter le parcours entre prix de gestion,
-   rentabilité et lancement d’un test.
+1. `preparer-contenus-site-vitrine` ;
+2. `remplacer-microsoft-access-application-web` ;
+3. `budget-google-ads-pme` ;
+4. `cahier-des-charges-saas` ;
+5. `choisir-prestataire-application-metier` ;
+6. `reprendre-saas-developpe-par-freelance` ;
+7. `cout-maintenance-application-metier` ;
+8. `pourquoi-site-pas-visible-google` ;
+9. `suivi-conversions-google-ads` ;
+10. `landing-page-google-ads`.
+
+Le lot couvre les six offres prioritaires du site sans transformer les pages en
+variantes mécaniques : préparation d’un site, reprise Access et SaaS, cadrage
+SaaS, choix d’un prestataire, maintenance applicative, visibilité naturelle,
+budget publicitaire, preuve des conversions et cohérence annonce-page. Chaque
+guide possède sa propre recherche, son contre-audit indépendant, une passe de
+plume, une image sociale, un maillage contextuel et une vérification navigateur.
+Le gel final commun autorise `index,follow` ; il ne prouve ni crawl, ni
+indexation effective, ni position future.

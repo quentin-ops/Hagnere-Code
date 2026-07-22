@@ -170,6 +170,11 @@ export const SEO_REFUSALS: SeoItem[] = [
 
 export const SEO_RELATED_RESOURCES = [
   {
+    href: "/guides/pourquoi-site-pas-visible-google",
+    label: "Diagnostic",
+    title: "Pourquoi votre site n’apparaît pas sur Google ?",
+  },
+  {
     href: "/guides/audit-seo-que-contient-il",
     label: "Audit",
     title: "Ce que doit contenir un audit SEO vraiment exploitable",

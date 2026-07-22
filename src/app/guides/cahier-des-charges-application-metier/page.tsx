@@ -1047,6 +1047,14 @@ export default function Page() {
           </Link>
           .
         </p>
+        <p>
+          Lorsque le dossier est prêt, utilisez le guide{" "}
+          <Link href="/guides/choisir-prestataire-application-metier">
+            choisir un prestataire pour une application métier
+          </Link>
+          . Il propose le même mini-cas à tous les candidats, six preuves à
+          obtenir et une fiche de décision sans note artificielle.
+        </p>
 
         <GuideInlineCTA
           title="Obtenir des devis qui parlent enfin du même projet"

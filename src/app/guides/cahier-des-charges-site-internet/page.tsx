@@ -423,6 +423,16 @@ export default function Page() {
           ]}
         />
         <p>
+          Si vous savez quelles pages sont nécessaires mais pas encore quels
+          textes, photos ou justificatifs remettre, commencez par notre guide
+          pour{" "}
+          <Link href="/guides/preparer-contenus-site-vitrine">
+            préparer les contenus d’un site vitrine
+          </Link>
+          . Il distingue les faits à fournir, les éléments à faire produire et
+          ceux qui doivent encore être confirmés.
+        </p>
+        <p>
           Évitez les demandes comme « site moderne », « espace dynamique » ou «
           bon référencement » sans explication. Préférez une situation visible :
           « sur téléphone, un visiteur doit trouver le numéro en moins de deux

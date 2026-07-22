@@ -77,35 +77,57 @@ Valeur = 50 × 650 € HT = 32 500 € HT
 
 Le taux de 650 € HT/jour est une variable pédagogique. Il n’est présenté ni comme médiane nationale ni comme tarif universel.
 
-### TCO illustratif sur trois ans
+### Coût complet sur trois ans
+
+L'ancienne version de ce dossier appliquait 15 % du coût initial à la
+maintenance et un montant fixe à l'hébergement. Cette convention a été
+abandonnée le 21 juillet 2026 : elle donnait une impression de précision sans
+décrire le service couvert.
 
 ```text
-Création = 32 500 €
-Maintenance = 32 500 × 15 % × 3 ans = 14 625 €
-Hébergement = 900 × 3 ans = 2 700 €
-TCO = 32 500 + 14 625 + 2 700 = 49 825 €, affiché environ 50 000 €
+Coût complet sur trois ans
+= création ou mise en place
++ factures d'infrastructure et de services sur 36 mois
++ support, corrections et prévention réellement couverts
++ évolutions décidées
++ formation, reprise de données, sortie et temps interne
 ```
 
-Les 15 % de maintenance et 900 €/an d’hébergement sont des hypothèses à remplacer par les prestations et contrats réels.
+Chaque poste est saisi depuis une facture, un contrat, un devis ou une mesure.
+Un poste sans preuve reste « montant inconnu » et empêche d'afficher un total
+ferme.
 
-### Délai de retour illustratif
+### Délai de retour
 
 ```text
-Hypothèse 100 % réaffecté = 49 825 ÷ 33 614,40 × 12 = 17,8 mois
-Hypothèse 50 % réaffecté = 49 825 ÷ (33 614,40 × 50 %) × 12 = 35,6 mois
+Délai de retour en mois
+= coût complet confirmé ÷ gain annuel attribuable confirmé × 12
 ```
 
-Ce délai n’est pas le ROI. Le ROI utilise `(bénéfices cumulés attribuables − TCO) ÷ TCO × 100` et dépend d’un horizon explicite.
+Le cas Bréban ne reçoit plus de délai chiffré tant que son coût d'exploitation
+n'est pas établi. Ce délai n'est pas le ROI. Le ROI utilise
+`(bénéfices cumulés attribuables − coût complet) ÷ coût complet × 100` et dépend
+d'un horizon explicite.
 
 ### Comparatif sur cinq ans
 
 ```text
-SaaS = 10 utilisateurs × 100 € × 60 mois = 60 000 €
-No-code = 10 utilisateurs × 20 € × 60 mois = 12 000 €
-Sur-mesure = 30 000 € + 4 × 4 500 € + 5 × 2 000 € = 58 000 €
+SaaS
+= mise en place + utilisateurs × tarif vérifié × 60 mois
++ options + temps interne + coût de sortie
+
+No-code
+= assemblage + licences vérifiées sur 60 mois
++ exploitation + reconstruction éventuelle + temps interne
+
+Sur-mesure
+= création + factures d'infrastructure sur 60 mois
++ maintenance couverte + évolutions décidées + temps interne + sortie
 ```
 
-Pour le sur-mesure, le coût initial inclut l’année 1, la maintenance est ajoutée pour les années 2 à 5, et l’hébergement pour les cinq années. Temps interne, évolutions, taxes, indexation, sécurité et sortie restent à ajouter ou confirmer.
+Le comparatif n'affiche un total que lorsque les options suivent le même
+périmètre, la même durée et les mêmes assiettes. Taxes, indexation, sécurité,
+évolutions et sortie restent séparées ou explicitement confirmées.
 
 ### Intégration
 
@@ -124,7 +146,7 @@ Le lecteur doit remplacer cette simulation par la documentation de l’API, les 
 - Fourchettes concurrentes datées et signalées comme commerciales.
 - Une inconnue n’est jamais assimilée à zéro.
 - TCO, capacité économique, économie, gains nets, ROI et délai de retour restent distincts.
-- Les durées, pourcentages de maintenance et coûts d’hébergement sont des hypothèses de planification.
+- Les délais de construction restent des hypothèses de planification. Maintenance et infrastructure proviennent de factures, contrats, devis ou mesures ; à défaut, leur montant reste inconnu.
 - Un CTA ne promet ni économie ni rentabilité ; il propose un cadrage et un chiffrage au même périmètre.
 - Les clauses juridiques sont des points de vigilance, pas un conseil personnalisé.
 

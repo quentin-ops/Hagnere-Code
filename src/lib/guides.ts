@@ -40,6 +40,148 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "landing-page-google-ads",
+    title: "Landing page Google Ads : quelle page utiliser ?",
+    cardTitle: "Votre page est-elle prête pour vos clics Google Ads ?",
+    metaDescription:
+      "Vérifiez si votre page répond à vos annonces Search, puis gardez-la, corrigez-la, créez-en une autre ou reportez la campagne.",
+    cardDescription:
+      "Vérifiez les titres, descriptions, page, formulaire et réception avant de décider si votre campagne Search peut démarrer.",
+    heroTitle: "Votre page est-elle prête à recevoir vos clics Google Ads ?",
+    section: "Google Ads & acquisition",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 21,
+  },
+  {
+    slug: "suivi-conversions-google-ads",
+    title: "Conversions Google Ads : demandes et ventes · Hagnéré Code",
+    cardTitle: "Vos conversions Google Ads sont-elles de vraies demandes ?",
+    metaDescription:
+      "Reliez conversions Google Ads, demandes, devis et ventes. Testez la chaîne, évitez les doublons et choisissez l’action qui doit guider les enchères.",
+    cardDescription:
+      "Un registre simple pour suivre les mêmes dossiers de l’événement envoyé jusqu’à la vente, sans confondre conversion publicitaire et client réel.",
+    heroTitle: "Comment relier vos conversions Google Ads aux vraies ventes ?",
+    section: "Google Ads & acquisition",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 22,
+  },
+  {
+    slug: "pourquoi-site-pas-visible-google",
+    title: "Site invisible sur Google : que vérifier ? · Hagnéré Code",
+    cardTitle: "Pourquoi votre site n’apparaît-il pas sur Google ?",
+    metaDescription:
+      "Site en ligne mais introuvable ? Vérifiez une URL et une recherche dans Search Console, puis corrigez la première preuve qui manque.",
+    cardDescription:
+      "Un diagnostic gratuit pour distinguer découverte, exploration, indexation, impressions, clics et demandes avant de commander une refonte.",
+    heroTitle: "Pourquoi votre site n’apparaît-il pas sur Google ?",
+    section: "Référencement naturel",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 16,
+  },
+  {
+    slug: "cout-maintenance-application-metier",
+    title: "Maintenance application métier : quel coût ? · Hagnéré Code",
+    cardTitle: "Combien coûte la maintenance de votre application métier ?",
+    metaDescription:
+      "Hébergement, support, corrections, sécurité et évolutions : construisez le budget annuel de votre application sans appliquer un pourcentage arbitraire.",
+    cardDescription:
+      "Un registre annuel fondé sur vos factures, incidents et projets décidés, avec un exemple chiffré et les montants encore inconnus laissés visibles.",
+    heroTitle:
+      "Combien coûte la maintenance annuelle d’une application métier ?",
+    section: "Budget & prix",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 12,
+  },
+  {
+    slug: "reprendre-saas-developpe-par-freelance",
+    title: "Départ du développeur SaaS : que reprendre ? · Hagnéré Code",
+    cardTitle: "Votre développeur SaaS part : quels accès reprendre ?",
+    metaDescription:
+      "Votre développeur part ? Vérifiez code, comptes, paiements, données, domaine et support avant de retirer ses accès ou de décider une refonte.",
+    cardDescription:
+      "Dix fiches pour reprendre les comptes qui font réellement fonctionner un SaaS et retirer chaque ancien accès après un contrôle observable.",
+    heroTitle: "Comment reprendre un SaaS développé par un freelance ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 16,
+  },
+  {
+    slug: "choisir-prestataire-application-metier",
+    title: "Choisir un prestataire d’application métier · Hagnéré Code",
+    cardTitle: "Choisir le bon prestataire pour son application métier",
+    metaDescription:
+      "Comparez plusieurs prestataires sur un même cas métier : réponses écrites, prix, maintenance, données, code et décision sans jargon.",
+    cardDescription:
+      "Un entretien identique pour tous, six engagements écrits et une fiche de décision qui révèle les hypothèses cachées derrière chaque devis.",
+    heroTitle: "Comment choisir le prestataire de votre application métier ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 13,
+  },
+  {
+    slug: "cahier-des-charges-saas",
+    title: "Cahier des charges SaaS : exemple complet · Hagnéré Code",
+    cardTitle: "Rédiger un cahier des charges SaaS sans jargon",
+    metaDescription:
+      "Suivez un exemple rempli de cahier des charges SaaS : comptes clients, abonnement, droits, support, données, tests et sortie du service.",
+    cardDescription:
+      "Un SaaS fictif suivi de l’achat au départ du client pour rendre visibles les décisions, exclusions, tests et responsabilités oubliés.",
+    heroTitle:
+      "Cahier des charges SaaS : comment cadrer le produit de l’abonnement à la sortie du client ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 16,
+  },
+  {
+    slug: "budget-google-ads-pme",
+    title: "Quel budget Google Ads pour une PME ? · Hagnéré Code",
+    cardTitle: "Quel budget Google Ads votre PME peut-elle tester ?",
+    metaDescription:
+      "Calculez un budget test Google Ads avec votre marge, les clics prévus, le coût complet et la perte que votre trésorerie peut accepter.",
+    cardDescription:
+      "Comparez la prévision Google, la marge finançable et le risque de trésorerie avant de lancer une campagne Search, sans minimum arbitraire.",
+    heroTitle: "Quel budget Google Ads prévoir pour une PME ?",
+    section: "Google Ads & acquisition",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 9,
+  },
+  {
+    slug: "remplacer-microsoft-access-application-web",
+    title: "Remplacer Access par une application web · Hagnéré Code",
+    cardTitle: "Comment remplacer Microsoft Access sans tout perdre ?",
+    metaDescription:
+      "Base Access devenue fragile ou inaccessible à distance ? Découvrez quoi inventorier, ce qui peut être transféré et comment migrer sans tout refaire.",
+    cardDescription:
+      "Données, formulaires, états, VBA et fichiers liés : une méthode pour comprendre l’existant, comparer quatre trajectoires et tester un pilote.",
+    heroTitle: "Comment remplacer Microsoft Access sans tout perdre ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 14,
+  },
+  {
+    slug: "preparer-contenus-site-vitrine",
+    title: "Préparer les contenus d’un site vitrine · Hagnéré Code",
+    cardTitle: "Que préparer avant de faire créer votre site vitrine ?",
+    metaDescription:
+      "Textes, photos, preuves, formulaire : découvrez ce que vous devez fournir, ce que le prestataire peut produire et ce qu’il faut vérifier.",
+    cardDescription:
+      "Une méthode simple pour rassembler les faits, les preuves et les visuels, répartir la rédaction et savoir si votre dossier est prêt.",
+    heroTitle: "Que préparer avant de faire créer votre site vitrine ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 16,
+  },
+  {
     slug: "pourquoi-google-ads-ne-convertit-pas",
     title: "Google Ads ne convertit pas : que vérifier ? · Hagnéré Code",
     cardTitle: "Pourquoi Google Ads ne convertit pas malgré les clics ?",
@@ -227,7 +369,7 @@ export const GUIDES: GuideEntry[] = [
   {
     slug: "prix-gestion-google-ads",
     title: "Prix de gestion Google Ads en 2026 · Hagnéré Code",
-    cardTitle: "Quel budget prévoir pour Google Ads ?",
+    cardTitle: "Combien coûte la gestion de Google Ads ?",
     metaDescription:
       "Budget payé à Google, honoraires et frais de lancement : comparez les prix de gestion Google Ads et trois exemples complets sur 3, 6 et 12 mois.",
     cardDescription:
