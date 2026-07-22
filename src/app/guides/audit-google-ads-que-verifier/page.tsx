@@ -288,6 +288,10 @@ export default function Page() {
         ]}
         relatedLinks={[
           {
+            href: "/guides/suivi-conversions-google-ads",
+            label: "Relier conversions, demandes, devis et ventes",
+          },
+          {
             href: "/guides/pourquoi-google-ads-ne-convertit-pas",
             label: "Trouver pourquoi les clics ne deviennent pas des clients",
           },
@@ -478,6 +482,16 @@ export default function Page() {
             dates et attribution.
           </li>
         </ol>
+
+        <p>
+          Si vos totaux Google Ads, boîte de réception et CRM ne correspondent
+          pas, utilisez le guide dédié au{" "}
+          <Link href="/guides/suivi-conversions-google-ads">
+            suivi des conversions Google Ads jusqu’à la vente
+          </Link>
+          . Il fournit un registre commun et un protocole de recette de bout en
+          bout, au lieu d’ajouter un réglage isolé à cet audit général.
+        </p>
 
         <p>
           Les{" "}
@@ -691,7 +705,14 @@ export default function Page() {
           <Link href="/guides/pourquoi-mon-site-ne-convertit-pas">
             pourquoi le site ne convertit pas
           </Link>{" "}
-          au lieu d’attribuer mécaniquement l’échec à l’annonce.
+          au lieu d’attribuer mécaniquement l’échec à l’annonce. Pour vérifier
+          précisément les textes que l’annonce peut afficher, la page
+          correspondante et la réception du formulaire, utilisez aussi la fiche
+          du guide{" "}
+          <Link href="/guides/landing-page-google-ads">
+            quelle landing page choisir pour Google Ads
+          </Link>
+          .
         </p>
 
         <h2 id="contacts">

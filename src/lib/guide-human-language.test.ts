@@ -18,6 +18,19 @@ const guideSources = GUIDES.map((guide) => ({
   ),
 }));
 
+const july22PublicationSlugs = new Set([
+  "landing-page-google-ads",
+  "suivi-conversions-google-ads",
+  "pourquoi-site-pas-visible-google",
+  "cout-maintenance-application-metier",
+  "reprendre-saas-developpe-par-freelance",
+  "choisir-prestataire-application-metier",
+  "cahier-des-charges-saas",
+  "budget-google-ads-pme",
+  "remplacer-microsoft-access-application-web",
+  "preparer-contenus-site-vitrine",
+]);
+
 const rejectedFramework =
   /contrainte qui commande|contrainte dominante|portes non compensables|cinq portes|prochaine preuve|matrice d['’]arbitrage|tranche verticale|socles chiffrés|chaîne jusqu['’]au résultat métier|comité d['’]investissement|report ciblé/i;
 
@@ -233,8 +246,11 @@ describe("human language guardrails for guides", () => {
         guide.metaDescription.length,
         `${guide.slug}: meta description`,
       ).toBeLessThanOrEqual(155);
+      const expectedReviewDate = july22PublicationSlugs.has(guide.slug)
+        ? "2026-07-22"
+        : "2026-07-21";
       expect(guide.dateModified, `${guide.slug}: review date`).toBe(
-        "2026-07-21",
+        expectedReviewDate,
       );
 
       const publicCopy = [

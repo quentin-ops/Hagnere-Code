@@ -214,6 +214,10 @@ export default function Page() {
             label: "Structurer le contrat de maintenance après la reprise",
           },
           {
+            href: "/guides/cout-maintenance-application-metier",
+            label: "Construire le budget annuel après la reprise",
+          },
+          {
             href: "/guides/calculer-roi-application-metier",
             label: "Calculer le ROI d’une migration",
           },
@@ -527,6 +531,17 @@ export default function Page() {
           .
         </p>
 
+        <p>
+          Si l’outil à reprendre est une base Microsoft Access, l’inventaire
+          doit aussi distinguer les tables des formulaires, états, requêtes,
+          macros et modules VBA. Le guide{" "}
+          <Link href="/guides/remplacer-microsoft-access-application-web">
+            remplacer Access par une application web
+          </Link>{" "}
+          explique ce qui peut être transféré et ce qui doit être compris ou
+          reconstruit.
+        </p>
+
         <h2 id="donnees">
           6. Données, sauvegardes et mots de passe : les contrôles essentiels
         </h2>
@@ -653,6 +668,13 @@ export default function Page() {
             contrat de maintenance applicative
           </Link>{" "}
           aide à tester ces clauses sur un incident concret avant de signer.
+          Lorsque l’outil est un SaaS déjà vendu et que son développeur part,
+          utilisez aussi le{" "}
+          <Link href="/guides/reprendre-saas-developpe-par-freelance">
+            registre de passation des comptes, paiements et accès
+          </Link>{" "}
+          : cette situation exige de protéger les clients actifs pendant le
+          transfert.
         </p>
 
         <h2 id="choisir-audit">

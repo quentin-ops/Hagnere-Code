@@ -145,7 +145,7 @@ const faqItems = [
   {
     question: "Combien prévoir pour la maintenance d'une application ?",
     answer:
-      "Il n'existe pas de pourcentage obligatoire. Ce guide utilise 10 à 20 % du coût initial par an comme hypothèse de planification, à remplacer par un contrat précis. Celui-ci doit couvrir les mises à jour des stores, les dépendances, les appareils testés, les incidents et les nouvelles publications.",
+      "Le prix initial ne permet pas de déduire un budget annuel fiable. Partez des factures de services, de la couverture du contrat, des incidents observés, des versions d'iPhone et d'Android à tester et des publications prévues. Un besoin encore non chiffré doit rester visible comme montant inconnu.",
   },
   {
     question: "Comment éviter de dépendre de son prestataire mobile ?",
@@ -547,9 +547,9 @@ export default function Page() {
         </p>
         <p>
           Ces règles rendent la maintenance nécessaire, mais n&apos;imposent pas
-          un taux financier universel. Pour planifier, ce guide utilise une
-          hypothèse de <strong>10 à 20 % du coût initial par an</strong>. Elle
-          doit être remplacée par un contrat précisant :
+          un taux financier universel. Pour planifier, réunissez les factures
+          des services utilisés, le contrat actuel, les incidents observés et
+          les changements déjà décidés. Faites ensuite préciser :
         </p>
         <ul>
           <li>les versions d&apos;iPhone et d&apos;Android testées ;</li>

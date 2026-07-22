@@ -1,0 +1,7 @@
+630789e5187b5fc86d931b657a4adecf1ca9b13b0615f3519067f11d5a883e74  docs/research/choisir-prestataire-application-metier.md
+069e242b8493d94a7d0d68420543d44d27875fdc1f88e36c14bbddae3a611667  src/app/guides/choisir-prestataire-application-metier/page.tsx
+ed76e24d7e5ad5a94be219e7c37499f1c8ea91e1f3c5133ffc4276d74db4370f  src/app/guides/choisir-prestataire-application-metier/opengraph-image.tsx
+e2babd55cf531bceecd45febfc923d8f48dfc14d297d7b3ea1288acb71daf86e  src/lib/guides.ts
+1f318e061b81fffe4bdee8b6be52af04c4027cd670e78708a377a097ee0928dc  src/components/guides/GuidesHubPage.tsx
+4fd7d6b89403d5010df92d2324b834b8b97333123d16cff4a01bf2a4a2ea73b9  src/app/guides/cahier-des-charges-application-metier/page.tsx
+2b390a740c439d7423131a3e3eca4c4ca29e639178f0b8652342248755c21ccc  src/app/guides/agence-web-ou-freelance/page.tsx

@@ -1,0 +1,6 @@
+0c94ef9ed744c50cc8680a01570ba517d8b9e71f4de078e267a1181216f923f2  docs/research/cahier-des-charges-saas.md
+75608ac19e11037a42a208ddbadefe8990543e1b6fb6c3ed470e9711854c6d01  src/app/guides/cahier-des-charges-saas/page.tsx
+3948123360213c5a12c79ff648cada519ae4ddf89d6e39cfd293ac9444464070  src/app/guides/cahier-des-charges-saas/opengraph-image.tsx
+cd7209d7e9d329668b99a76a0b8d49e5a98125335c3109bb371bc13803d48a62  src/lib/guides.ts
+d5739cd823d6e2f09e9c92c1239f47f8088ba3eddb2a3b320c0ead739641c766  src/components/guides/GuidesHubPage.tsx
+236cb3b521da42e73779cbec830856cfd5d9ab418976bc94ccb861fcb7e59371  src/app/guides/mvp-saas-quoi-inclure/page.tsx

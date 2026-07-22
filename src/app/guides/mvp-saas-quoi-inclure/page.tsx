@@ -325,8 +325,8 @@ export default function Page() {
             label: "No-code ou développement sur mesure",
           },
           {
-            href: "/guides/cahier-des-charges-application-metier",
-            label: "Décrire les besoins et les tests",
+            href: "/guides/cahier-des-charges-saas",
+            label: "Transformer le parcours en cahier des charges SaaS",
           },
           {
             href: "/guides/proprietaire-site-internet-code-source",
@@ -1067,6 +1067,16 @@ export default function Page() {
             </li>
           </ol>
         </div>
+
+        <p>
+          Une fois cette première version choisie, poursuivez avec l’
+          <Link href="/guides/cahier-des-charges-saas">
+            exemple complet de cahier des charges SaaS
+          </Link>
+          . Il rend explicites les comptes des entreprises clientes,
+          l’abonnement, les erreurs, le support, les tests et la récupération
+          des données avant de demander plusieurs devis.
+        </p>
 
         <p>
           Demandez ensuite à chaque devis de préciser ce que le prestataire
