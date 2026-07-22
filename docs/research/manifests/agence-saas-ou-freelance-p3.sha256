@@ -1,0 +1,6 @@
+f567e48be0e94b0828fc4493bee93fea83d8d7ef5421598922037540bcba791d  docs/research/agence-saas-ou-freelance.md
+eaef1f981884ea73739453d23e3acf269c7409e73c2b0b174bbdd14fc79f1ab8  src/app/guides/agence-saas-ou-freelance/page.tsx
+519974e8ab8f7ee9fcb3572f49a1e56fd1c304eb5635a7fab1497b777019718a  src/app/guides/agence-saas-ou-freelance/opengraph-image.tsx
+0f2288dc61b31c9887eae4cee04a961175abef16b089fc6aa61a923d4281fa02  src/lib/guides.ts
+dfe7cc61ebf17d11d608da662362efe7eff7efb397ab7da443619c2753253320  src/app/guides/mvp-saas-quoi-inclure/page.tsx
+3735f7fe31a3c4cf0a059885e1a8ac9c92e787dc0f6fd76697dee46cb00101e0  src/lib/guide-human-language.test.ts

@@ -40,6 +40,81 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "choisir-agence-seo",
+    title: "Choisir une agence SEO : les preuves avant de signer",
+    cardTitle: "Comment choisir une agence SEO ?",
+    metaDescription:
+      "Comparez trois devis SEO sur cinq points concrets, repérez les promesses dangereuses et sachez quand signer, demander des précisions ou attendre.",
+    cardDescription:
+      "Comparez ce qui sera fait, les pages concernées, ce que l’agence vous remettra, les comptes que vous garderez et le bilan prévu.",
+    heroTitle:
+      "Comment choisir une agence SEO quand les devis ne promettent pas la même chose ?",
+    section: "Référencement naturel",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 12,
+  },
+  {
+    slug: "choisir-agence-google-ads",
+    title: "Choisir une agence Google Ads : 6 preuves à exiger",
+    cardTitle: "Comment choisir une agence Google Ads ?",
+    metaDescription:
+      "Comparez les agences Google Ads sur six points concrets : accès au compte, budget, personne en charge, suivi des ventes, décisions et conditions de départ.",
+    cardDescription:
+      "Envoyez les mêmes informations, rencontrez la personne qui gérera les campagnes et exigez six preuves avant de comparer les promesses.",
+    heroTitle:
+      "Comment choisir une agence Google Ads sans vous fier aux promesses ?",
+    section: "Google Ads & acquisition",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 12,
+  },
+  {
+    slug: "reprendre-maintenance-site-autre-agence",
+    title: "Changer d’agence de maintenance : reprendre son site",
+    cardTitle: "Comment changer d’équipe pour maintenir votre site ?",
+    metaDescription:
+      "Avant de changer d’agence, vérifiez domaine, hébergement, sauvegarde, formulaires et accès. Testez la reprise avant de retirer l’ancien compte.",
+    cardDescription:
+      "Séparez maintenance, hébergement et domaine, restaurez une copie puis retirez l’ancienne agence seulement lorsque la reprise fonctionne.",
+    heroTitle:
+      "Comment confier la maintenance de votre site à une autre agence en gardant le contrôle ?",
+    section: "Maintenance & reprise",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 14,
+  },
+  {
+    slug: "agence-saas-ou-freelance",
+    title: "Agence SaaS ou freelance : comment choisir ?",
+    cardTitle: "Agence ou freelance : qui couvrira vraiment votre SaaS ?",
+    metaDescription:
+      "Agence ou freelance pour votre SaaS ? Comparez qui publie, aide les clients, traite les incidents, garde les accès et assure la suite.",
+    cardDescription:
+      "Comparez qui mettra le SaaS en ligne, aidera les clients, traitera les incidents et permettra à une autre équipe de reprendre.",
+    heroTitle:
+      "Agence ou freelance : qui doit construire et faire vivre votre SaaS ?",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 13,
+  },
+  {
+    slug: "application-gestion-interventions-terrain",
+    title: "Application d’intervention terrain : que prévoir ?",
+    cardTitle: "Que doit relier votre application d’interventions ?",
+    metaDescription:
+      "Planning, mobile, compte rendu, facturation : suivez une intervention complète pour choisir un logiciel standard, une connexion ou du sur-mesure.",
+    cardDescription:
+      "Suivez une intervention du premier appel aux éléments de facturation, testez cinq situations difficiles et choisissez le niveau de solution utile.",
+    heroTitle:
+      "Quelle application faut-il pour gérer vos interventions terrain ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 12,
+  },
+  {
     slug: "landing-page-google-ads",
     title: "Landing page Google Ads : quelle page utiliser ?",
     cardTitle: "Votre page est-elle prête pour vos clics Google Ads ?",

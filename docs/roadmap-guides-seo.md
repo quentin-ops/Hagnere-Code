@@ -2,8 +2,8 @@
 
 > Dernière révision : 22 juillet 2026. Cette roadmap a été créée avec **100
 > nouveaux sujets**, en plus des 32 guides alors inscrits dans
-> `src/lib/guides.ts`. Les vingt-quatre premiers sujets sont désormais
-> implémentés : il reste donc 76 sujets à produire. Ce portefeuille
+> `src/lib/guides.ts`. Vingt-neuf de ces sujets sont désormais
+> implémentés : il reste donc 71 sujets à produire. Ce portefeuille
 > éditorial n'est pas une promesse que le volume constitue en lui-même un
 > facteur de classement.
 
@@ -212,21 +212,21 @@ descendre après validation Search Console, Keyword Planner et SERP.
 
 ### E. Maintenance, TMA et reprise — 13 guides
 
-|   # | Prio | Slug proposé                                  | Travail accompli pour le lecteur                         | Format ou preuve différenciante                             | Sortie                 |
-| --: | :--: | --------------------------------------------- | -------------------------------------------------------- | ----------------------------------------------------------- | ---------------------- |
-|  75 |  P1  | `contrat-maintenance-site-internet`           | Comprendre périmètre, délais, exclusions et sortie       | Matrice incidents/livrables et clauses à clarifier          | Cadrage `TMA`          |
-|  76 |  P1  | `contrat-tma-application`                     | Préparer une maintenance applicative exploitable         | RACI, files de demandes, niveaux d'urgence et réversibilité | Cadrage `TMA`          |
-|  77 |  P1  | `cout-maintenance-application-metier`         | Budgéter correction, prévention, support et évolution    | TCO annuel avec inconnues visibles                          | Cadrage `TMA`          |
-|  78 |  P2  | `tma-ou-regie`                                | Choisir entre capacité réservée, tickets et lots         | Comparatif charge prévisible, urgence et gouvernance        | Cadrage `TMA`          |
-|  79 |  P2  | `sla-maintenance-applicative`                 | Fixer disponibilité, prise en charge et rétablissement   | Exemples de niveaux de service et coût associé              | Cadrage `TMA`          |
-|  80 |  P3  | `maintenance-preventive-corrective-evolutive` | Répartir le budget entre trois natures de travail        | Portefeuille type et arbitrages trimestriels                | Cadrage `TMA`          |
-|  81 |  P1  | `reprendre-maintenance-site-autre-agence`     | Changer de prestataire sans perdre accès ni continuité   | Checklist de réversibilité et plan des 30 jours             | Audit de reprise `TMA` |
-|  82 |  P1  | `audit-technique-avant-reprendre-site`        | Mesurer l'état réel avant de signer une maintenance      | Inventaire code, hébergement, données, sécurité et dette    | Audit technique        |
-|  83 |  P2  | `site-wordpress-pirate-que-faire`             | Contenir l'incident puis restaurer proprement            | Chronologie urgence/preuves/nettoyage/durcissement          | Intervention `TMA`     |
-|  84 |  P1  | `site-internet-en-panne-que-faire`            | Prioriser diagnostic, communication et retour en service | Arbre d'incident et informations à transmettre              | Intervention `TMA`     |
-|  85 |  P2  | `dette-technique-cout-entreprise`             | Traduire dette et risque en impact business              | Registre dette, probabilité, impact et arbitrage            | Audit technique        |
-|  86 |  P3  | `mise-a-jour-wordpress-risques`               | Organiser sauvegarde, test, mise à jour et rollback      | Procédure reproductible et matrice de criticité             | Maintenance `TMA`      |
-|  87 |  P3  | `obsolescence-framework-application-web`      | Décider entre maintien, mise à niveau et réécriture      | Arbre de décision support/sécurité/recrutement              | Audit `TMA`            |
+|   # | Prio | Slug proposé                                  | Travail accompli pour le lecteur                                  | Format ou preuve différenciante                             | Sortie                 |
+| --: | :--: | --------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------- | ---------------------- |
+|  75 |  P1  | `contrat-maintenance-site-internet`           | Comprendre périmètre, délais, exclusions et sortie                | Matrice incidents/livrables et clauses à clarifier          | Cadrage `TMA`          |
+|  76 |  P1  | `contrat-tma-application`                     | Préparer une maintenance applicative exploitable                  | RACI, files de demandes, niveaux d'urgence et réversibilité | Cadrage `TMA`          |
+|  77 |  P1  | `cout-maintenance-application-metier`         | Budgéter correction, prévention, support et évolution             | TCO annuel avec inconnues visibles                          | Cadrage `TMA`          |
+|  78 |  P2  | `tma-ou-regie`                                | Choisir entre capacité réservée, tickets et lots                  | Comparatif charge prévisible, urgence et gouvernance        | Cadrage `TMA`          |
+|  79 |  P2  | `sla-maintenance-applicative`                 | Fixer disponibilité, prise en charge et rétablissement            | Exemples de niveaux de service et coût associé              | Cadrage `TMA`          |
+|  80 |  P3  | `maintenance-preventive-corrective-evolutive` | Répartir le budget entre trois natures de travail                 | Portefeuille type et arbitrages trimestriels                | Cadrage `TMA`          |
+|  81 |  P1  | `reprendre-maintenance-site-autre-agence`     | Changer d’équipe en testant la reprise avant le retrait des accès | Bascule service par service, copie isolée et contrôle final | Audit de reprise `TMA` |
+|  82 |  P1  | `audit-technique-avant-reprendre-site`        | Mesurer l'état réel avant de signer une maintenance               | Inventaire code, hébergement, données, sécurité et dette    | Audit technique        |
+|  83 |  P2  | `site-wordpress-pirate-que-faire`             | Contenir l'incident puis restaurer proprement                     | Chronologie urgence/preuves/nettoyage/durcissement          | Intervention `TMA`     |
+|  84 |  P1  | `site-internet-en-panne-que-faire`            | Prioriser diagnostic, communication et retour en service          | Arbre d'incident et informations à transmettre              | Intervention `TMA`     |
+|  85 |  P2  | `dette-technique-cout-entreprise`             | Traduire dette et risque en impact business                       | Registre dette, probabilité, impact et arbitrage            | Audit technique        |
+|  86 |  P3  | `mise-a-jour-wordpress-risques`               | Organiser sauvegarde, test, mise à jour et rollback               | Procédure reproductible et matrice de criticité             | Maintenance `TMA`      |
+|  87 |  P3  | `obsolescence-framework-application-web`      | Décider entre maintien, mise à niveau et réécriture               | Arbre de décision support/sécurité/recrutement              | Audit `TMA`            |
 
 ### F. Sites vitrines pour professionnels — 13 guides
 
@@ -301,9 +301,11 @@ Chaque nouveau guide doit :
 
 ## 9. Cadence d'exécution
 
-La roadmap avance par sprints de trois guides en suivant le workflow maître :
+La roadmap avance par lots successifs en suivant le workflow maître. La taille
+du lot organise le calendrier ; elle ne permet pas d’abréger les quatre passes
+propres à chaque guide :
 
-1. les recherches et dossiers de preuves des trois sujets peuvent avancer en
+1. les recherches et dossiers de preuves des sujets du lot peuvent avancer en
    parallèle ;
 2. chaque rédaction et intégration se fait ensuite successivement dans le
    worktree partagé, avec une forme propre au sujet ;
@@ -311,7 +313,7 @@ La roadmap avance par sprints de trois guides en suivant le workflow maître :
    le suivant ;
 4. la passe de plume humaine, les tests et la QA navigateur ferment le guide
    avant que la rédaction suivante commence ;
-5. le lot est publié uniquement quand les trois statuts individuels sont
+5. le lot est publié uniquement quand tous les statuts individuels sont
    démontrables, puis les URLs et conversions sont mesurées sans bloquer le
    sprint suivant.
 
@@ -320,7 +322,7 @@ impressions non-marque, requêtes, CTR, clics vers les pages service, démarrage
 de formulaire et demandes qualifiées. Une position moyenne isolée ou un temps
 passé ne suffit pas à juger un guide.
 
-## 10. Quatorze premiers guides implémentés et prochain lot
+## 10. Vingt-neuf guides de la roadmap implémentés
 
 Le premier sprint a été implémenté le 20 juillet 2026 :
 
@@ -399,3 +401,21 @@ guide possède sa propre recherche, son contre-audit indépendant, une passe de
 plume, une image sociale, un maillage contextuel et une vérification navigateur.
 Le gel final commun autorise `index,follow` ; il ne prouve ni crawl, ni
 indexation effective, ni position future.
+
+Cinq nouveaux guides ont ensuite été produits successivement le 22 juillet
+2026 :
+
+1. `application-gestion-interventions-terrain` ;
+2. `agence-saas-ou-freelance` ;
+3. `reprendre-maintenance-site-autre-agence` ;
+4. `choisir-agence-google-ads` ;
+5. `choisir-agence-seo`.
+
+Ce lot relie cinq décisions directement commerciales : choisir le niveau de
+solution pour les équipes terrain, confier un SaaS à une agence ou un
+indépendant, changer d’équipe de maintenance sans perdre le contrôle, puis
+comparer des propositions Google Ads ou SEO sans se fier aux promesses. Les
+cinq guides ont chacun franchi recherche, rédaction, contre-audit indépendant,
+corrections, passe de plume, build et contrôle responsive réel. Leur ouverture
+à `index,follow` indique qu’ils sont techniquement indexables ; elle ne prouve
+ni exploration, ni indexation effective, ni classement futur.

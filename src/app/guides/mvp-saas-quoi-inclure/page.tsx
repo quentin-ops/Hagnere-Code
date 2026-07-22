@@ -1086,6 +1086,15 @@ export default function Page() {
           maintenance et la récupération de vos données. Deux prix ne sont
           comparables que si ces responsabilités sont identiques.
         </p>
+        <p>
+          Si vous hésitez encore sur la forme de l’équipe, répartissez ces rôles
+          avec le guide{" "}
+          <Link href="/guides/agence-saas-ou-freelance">
+            agence SaaS ou freelance
+          </Link>
+          . Vous pourrez vérifier les personnes réellement proposées, le relais
+          prévu et le travail couvert avant de comparer les prix.
+        </p>
 
         <h3 id="decision">Choisissez la version la plus simple</h3>
 

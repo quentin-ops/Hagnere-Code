@@ -1,0 +1,9 @@
+15b56eb24b4b446f7b77545debdc944129ca8f0684689867f9340df3c90d8e64  docs/research/agence-saas-ou-freelance.md
+26a2008b2eedfd7b9d68db07cb6c346f45cf9c42b31eb175fd00287930943600  src/app/guides/agence-saas-ou-freelance/page.tsx
+519974e8ab8f7ee9fcb3572f49a1e56fd1c304eb5635a7fab1497b777019718a  src/app/guides/agence-saas-ou-freelance/opengraph-image.tsx
+7d7b2d775ace435ee724cfd9b8b09aa4e74ab2e9b002317d34326c7171832bc2  src/lib/guides.ts
+dfe7cc61ebf17d11d608da662362efe7eff7efb397ab7da443619c2753253320  src/app/guides/mvp-saas-quoi-inclure/page.tsx
+226b72dae0119bfa2270c5e86660fd1b268d4187d906256019c046bb40d94567  src/components/guides/GuidesHubPage.tsx
+3735f7fe31a3c4cf0a059885e1a8ac9c92e787dc0f6fd76697dee46cb00101e0  src/lib/guide-human-language.test.ts
+51816f401d5c374ffca5553a5229824cd3f41c1bc00dded5bb51e1fd4f20ac8e  src/lib/editorial-governance.test.ts
+49f6bf53c75d068aeffc1d8cc3bc3562e68a781e5fff04279feccfa14c490375  docs/roadmap-guides-seo.md
