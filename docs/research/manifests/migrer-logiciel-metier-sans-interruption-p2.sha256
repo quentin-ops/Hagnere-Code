@@ -1,0 +1,7 @@
+5b72bbc5249a6a7f61e65798f0ea963d94828abebf2114aa244a6abfb28d9578  docs/research/migrer-logiciel-metier-sans-interruption.md
+4fd6291c1308c4cf1638a15800ee5fbb040c3e648c5a56565cc1f1b52e9aaf5b  src/app/guides/migrer-logiciel-metier-sans-interruption/page.tsx
+cb8bc7951ff1aeb57da564fa6eca1936b706fc957c667692c2f109287ff2d0cd  src/app/guides/migrer-logiciel-metier-sans-interruption/opengraph-image.tsx
+7f673ff37c13d832ee46b4aeb17c541848956663aa8e7f6b570edf166daa7c98  src/lib/guides.ts
+7b36f55d8a0e80b1f483b71399b5b7dcd412f0a9210b48c7efb7287b278a1fa9  src/app/guides/reprendre-logiciel-metier-existant/page.tsx
+33bd070bf140167387ed3d2e03a1e9dcdedaaaae129c71d2700c2f66e16b7a4d  src/components/guides/GuidesHubPage.tsx
+24f8395bb93a84e208adfbec520bb60b03ff70ae1e85c174a083ef44d6707c03  src/lib/guide-human-language.test.ts

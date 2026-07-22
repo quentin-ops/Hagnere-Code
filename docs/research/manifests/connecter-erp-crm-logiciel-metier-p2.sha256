@@ -1,0 +1,7 @@
+f87433068dfedb7a43a8a559926f90238d0b030dabe0e0eefc26830168ff43d6  docs/research/connecter-erp-crm-logiciel-metier.md
+89ff685500041743aa1d005fd9b4328dc7d6d2a512367d62583385a5b52b8d5d  src/app/guides/connecter-erp-crm-logiciel-metier/page.tsx
+6303b88ed28a79992428bacedbbe25098206ebe1ee8461f761e1aec9ec4af3e5  src/app/guides/connecter-erp-crm-logiciel-metier/opengraph-image.tsx
+e717dc89b5657183901b8070e79142966589055a20e0cc796fbb82943dc4e556  src/lib/guides.ts
+a5ca6f60b3060a8a25b9465889265e075d008bef08c9b6f45a44e9f6f321b740  src/components/guides/GuidesHubPage.tsx
+67ab5d34f388a90f397a5f0d456ae77ff10dbb2d47bf3b57b1028cfeb7ff51ac  src/lib/guide-human-language.test.ts
+396301062dbbaf83309e18a2aaba8ae651a2f9af4d101d481cd1df54c7e20c05  src/app/guides/erp-ou-logiciel-sur-mesure/page.tsx

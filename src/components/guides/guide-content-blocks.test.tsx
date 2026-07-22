@@ -19,7 +19,7 @@ describe("GuideTable responsive reading", () => {
       />,
     );
 
-    expect(html).toContain("not-prose my-6 sm:hidden");
+    expect(html).toContain("not-prose my-6 md:hidden");
     expect(html).toContain('role="group"');
     expect(html).toContain("Quel canal choisir ?");
     expect(html).toContain("Situation");
@@ -39,7 +39,7 @@ describe("GuideTable responsive reading", () => {
       />,
     );
 
-    expect(html).toContain("hidden overflow-x-auto sm:block");
+    expect(html).toContain("hidden overflow-x-auto md:block");
     expect(html).toContain("<table");
     expect(html).toContain("<caption");
     expect(html).toContain("Comparaison simple");

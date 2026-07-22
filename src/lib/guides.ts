@@ -40,6 +40,153 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "landing-page-ou-site-vitrine",
+    title: "Landing page ou site vitrine : que choisir ?",
+    cardTitle: "Landing page ou site vitrine : que choisir ?",
+    metaDescription:
+      "Page dédiée, site vitrine ou les deux ? Choisissez selon vos visiteurs, leurs questions, la durée du besoin et les informations à maintenir.",
+    cardDescription:
+      "Décidez s’il faut conserver une page, en créer une ou structurer plusieurs pages, puis choisissez séparément leur durée et leur emplacement.",
+    heroTitle:
+      "Landing page ou site vitrine : que faut-il créer pour votre entreprise ?",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 19,
+  },
+  {
+    slug: "combien-de-temps-resultats-seo",
+    title: "Combien de temps pour des résultats SEO ?",
+    cardTitle: "Quand attendre des résultats SEO ?",
+    metaDescription:
+      "Vous payez du SEO sans savoir s’il avance ? Vérifiez le travail publié, puis les apparitions, les clics, les demandes et les ventes avant de décider.",
+    cardDescription:
+      "Séparez ce qui a été mis en ligne, ce que Google montre et les demandes obtenues. Puis copiez un journal pour décider sans délai magique.",
+    heroTitle: "Combien de temps faut-il attendre des résultats SEO ?",
+    section: "Référencement naturel",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 22,
+  },
+  {
+    slug: "positions-google-baissent",
+    title: "Positions Google en baisse : que vérifier ?",
+    cardTitle: "Vos positions Google baissent : que vérifier ?",
+    metaDescription:
+      "Vos clics ou positions Google baissent ? Comparez les mêmes périodes, localisez les pages touchées et décidez quoi corriger sans tout réécrire.",
+    cardDescription:
+      "Une méthode pour séparer impressions, clics, taux de clics et position moyenne, localiser la baisse et choisir une correction sans toucher à tout le site.",
+    heroTitle:
+      "Vos positions Google baissent : que vérifier avant de modifier le site ?",
+    section: "Référencement naturel",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 16,
+  },
+  {
+    slug: "combien-de-temps-developper-saas",
+    title: "Combien de temps pour développer un SaaS ?",
+    cardTitle: "Quel délai prévoir pour développer votre SaaS ?",
+    metaDescription:
+      "Deux délais incompatibles pour votre SaaS ? Définissez ce qui sera utilisable, reliez les travaux et calculez trois scénarios avant de signer.",
+    cardDescription:
+      "Une méthode à refaire avec votre projet : résultat attendu, travaux qui s’enchaînent, responsables, trois scénarios et choix si la date ne tient plus.",
+    heroTitle: "Combien de temps faut-il pour développer votre SaaS ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 7,
+  },
+  {
+    slug: "connecter-erp-crm-logiciel-metier",
+    title: "Connecter ERP, CRM et logiciel métier : éviter les doublons",
+    cardTitle: "Comment connecter vos logiciels en limitant les erreurs ?",
+    metaDescription:
+      "CRM, ERP, outil métier : décidez où corriger chaque donnée, limitez les doublons et rendez chaque rejet visible avant de connecter vos logiciels.",
+    cardDescription:
+      "Un contrat à copier pour choisir qui écrit, dans quel sens transmettre, comment reconnaître un nouvel essai et qui reprend chaque erreur.",
+    heroTitle:
+      "Comment connecter votre ERP, votre CRM et votre logiciel métier en gardant les erreurs visibles ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 19,
+  },
+  {
+    slug: "automatiser-saisie-donnees-entreprise",
+    title: "Automatiser la saisie de données en entreprise",
+    cardTitle:
+      "Comment supprimer les doubles saisies sans perdre le contrôle ?",
+    metaDescription:
+      "Vos équipes retapent les mêmes clients ou commandes ? Suivez une donnée, supprimez les copies inutiles et rendez chaque rejet visible.",
+    cardDescription:
+      "Une carte à copier pour choisir où saisir, quoi transmettre, comment repérer les doublons et qui reprend un dossier refusé.",
+    heroTitle:
+      "Comment automatiser la saisie de données sans créer d’erreurs invisibles ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 16,
+  },
+  {
+    slug: "mvp-prototype-ou-poc",
+    title: "Prototype, POC ou MVP : que faut-il choisir ?",
+    cardTitle: "Prototype, POC ou MVP : lequel faut-il construire ?",
+    metaDescription:
+      "Prototype, POC, pilote ou MVP : choisissez le test qui répond au doute actuel, ce qu’il doit montrer et la décision à prendre ensuite.",
+    cardDescription:
+      "Partez de la question qui bloque, comparez quatre formats et copiez les dix lignes à écrire avant de demander un devis.",
+    heroTitle: "Prototype, POC ou MVP : que faut-il construire d’abord ?",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 15,
+  },
+  {
+    slug: "site-internet-en-panne-que-faire",
+    title: "Site internet en panne : que faire dans l’ordre ?",
+    cardTitle: "Votre site est en panne : que faire tout de suite ?",
+    metaDescription:
+      "Site inaccessible, formulaire ou paiement bloqué ? Voici quoi vérifier sans aggraver, qui appeler et quels tests exiger avant d’annoncer le retour.",
+    cardDescription:
+      "Une fiche réflexe pour les quinze premières minutes, la première heure et la reprise : faits à noter, clients à informer et tests à exiger.",
+    heroTitle: "Votre site internet est en panne : quoi faire maintenant ?",
+    section: "Maintenance & reprise",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 17,
+  },
+  {
+    slug: "leads-google-ads-non-qualifies",
+    title: "Leads Google Ads non qualifiés : que corriger ?",
+    cardTitle: "Pourquoi vos contacts Google Ads sont-ils hors cible ?",
+    metaDescription:
+      "Des contacts Google Ads arrivent mais sont hors cible ? Classez une période complète, trouvez la cause et testez une correction avant de toucher au budget.",
+    cardDescription:
+      "Une méthode concrète pour distinguer recherche, zone, promesse, formulaire et traitement commercial avant de modifier toute la campagne.",
+    heroTitle:
+      "Pourquoi vos contacts Google Ads ne correspondent-ils pas à vos clients ?",
+    section: "Google Ads & acquisition",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 14,
+  },
+  {
+    slug: "migrer-logiciel-metier-sans-interruption",
+    title: "Migrer un logiciel métier sans interrompre l’activité",
+    cardTitle: "Comment changer de logiciel sans arrêter l’activité ?",
+    metaDescription:
+      "Changez de logiciel sans arrêter commandes, interventions ou factures : préparez les données, répétez la bascule et sachez quand revenir en arrière.",
+    cardDescription:
+      "Une chronologie concrète pour préparer les données, répéter tout le changement et décider quand continuer, reporter ou revenir à l’ancien outil.",
+    heroTitle:
+      "Comment migrer votre logiciel métier sans interrompre l’activité ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-22",
+    dateModified: "2026-07-22",
+    readTimeMin: 17,
+  },
+  {
     slug: "choisir-agence-seo",
     title: "Choisir une agence SEO : les preuves avant de signer",
     cardTitle: "Comment choisir une agence SEO ?",

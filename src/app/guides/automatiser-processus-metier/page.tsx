@@ -246,6 +246,17 @@ export default function Page() {
           comme par les personnes qui réalisent le travail chaque jour.
         </p>
 
+        <p>
+          Si vous avez déjà choisi le cas et que le même client, la même
+          commande ou la même intervention est retapé dans plusieurs outils,
+          passez directement au guide pour{" "}
+          <Link href="/guides/automatiser-saisie-donnees-entreprise">
+            supprimer les doubles saisies sans cacher les dossiers refusés
+          </Link>
+          . Vous y suivrez une seule information et déciderez où la corriger,
+          quoi transmettre et qui reprend la main si le transfert bloque.
+        </p>
+
         <InfoBox variant="blue" title="La réponse en une minute">
           Une bonne première automatisation réunit quatre qualités : elle
           revient souvent, son résultat est facile à vérifier, ses règles sont

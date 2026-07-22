@@ -48,6 +48,8 @@ interface GuideLayoutProps {
   faqTitle: string;
   faqItems: GuideFAQItem[];
   showWhitePaperPromo?: boolean;
+  /** Affiche le bloc de contact générique placé à côté de l'article. */
+  showSidebarCta?: boolean;
   children: React.ReactNode;
 }
 
@@ -84,6 +86,7 @@ export function GuideLayout({
   faqTitle,
   faqItems,
   showWhitePaperPromo = false,
+  showSidebarCta = true,
   children,
 }: GuideLayoutProps) {
   return (
@@ -222,7 +225,9 @@ export function GuideLayout({
           {/* Two-column layout: Article + Sidebar */}
           <div className="flex min-w-0 flex-col gap-8 sm:gap-10 lg:flex-row lg:gap-12 xl:gap-20">
             {/* Article */}
-            <article className="min-w-0 w-full flex-1 max-w-3xl">
+            <article
+              className={`min-w-0 w-full flex-1 max-w-3xl ${showSidebarCta ? "" : "mx-auto"}`}
+            >
               <div className="prose prose-zinc prose-sm max-w-none dark:prose-invert prose-headings:tracking-tight prose-headings:font-semibold prose-h1:text-2xl prose-h1:mb-6 prose-h2:text-lg prose-h2:mt-10 prose-h2:mb-4 prose-p:text-zinc-600 dark:prose-p:text-zinc-400 prose-p:leading-relaxed prose-li:text-zinc-600 dark:prose-li:text-zinc-400 prose-strong:text-zinc-900 dark:prose-strong:text-zinc-100">
                 {children}
               </div>
@@ -258,11 +263,13 @@ export function GuideLayout({
             </article>
 
             {/* Sidebar — only CTA card, sticky */}
-            <div className="min-w-0 w-full shrink-0 lg:w-72 xl:w-80">
-              <div className="lg:sticky lg:top-24">
-                <GuideSidebarCTA showWhitePaperPromo={showWhitePaperPromo} />
+            {showSidebarCta && (
+              <div className="min-w-0 w-full shrink-0 lg:w-72 xl:w-80">
+                <div className="lg:sticky lg:top-24">
+                  <GuideSidebarCTA showWhitePaperPromo={showWhitePaperPromo} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>

@@ -716,6 +716,16 @@ Premier chiffre absent ou contradictoire :
         </p>
 
         <p>
+          Si les demandes existent déjà mais restent souvent hors zone, hors
+          service ou destinées à un autre type de client, le guide consacré aux{" "}
+          <Link href="/guides/leads-google-ads-non-qualifies">
+            contacts Google Ads non qualifiés
+          </Link>{" "}
+          vous aide à classer toute une période et à choisir une seule
+          correction mesurable.
+        </p>
+
+        <p>
           Google propose des catégories telles que{` `}
           <a
             href="https://support.google.com/google-ads/answer/11459091?hl=fr"

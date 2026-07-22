@@ -1,0 +1,7 @@
+4f6166b6a1b2b7f060b86ba3adf871b9689db370295311b0843b490d112cd84c  docs/research/landing-page-ou-site-vitrine.md
+754a48708666a7e834af7bec3dc06c82864e918129632655d77c0c7c20cbd505  src/app/guides/landing-page-ou-site-vitrine/page.tsx
+61015fd093da313d13ef8db56774573ceb27835c7fcbfb47a9460c094882a743  src/app/guides/landing-page-ou-site-vitrine/opengraph-image.tsx
+64f785465298a48195ed129eb6007335eadcc52956b77799e7087ebccda07f25  src/lib/guides.ts
+276a6f9b64a4c1a7a9d7d620b1080625f11103fb03a2cdb04e93cec64481fe3d  src/components/guides/GuidesHubPage.tsx
+e92d9a8c4e85780442fd0360e087f65500686dc37d5f4b27a04b4f089f769e25  src/lib/guide-human-language.test.ts
+3d5efb06caca134fc1861d9c7237e8edea79a2ea49d3222bd31c05e3add79aa1  src/app/guides/template-ou-site-sur-mesure/page.tsx

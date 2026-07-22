@@ -492,7 +492,12 @@ export default function Page() {
           Un MVP exploitable peut être utilisé plusieurs fois sans que votre
           équipe improvise à chaque étape. Ne payez pas une version vendable si
           une maquette ou un pilote manuel suffit encore à répondre à votre
-          question.
+          question. Pour écrire ce que chaque mission doit tester, remettre et
+          permettre de décider, comparez{" "}
+          <Link href="/guides/mvp-prototype-ou-poc">
+            prototype, POC, pilote et MVP avant de demander un devis
+          </Link>
+          .
         </p>
 
         <GuideTable

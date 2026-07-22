@@ -11,7 +11,10 @@ interface TocItem {
 
 export function GuideToc({ items }: { items: TocItem[] }) {
   return (
-    <div className="not-prose rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5 my-6 sm:my-8">
+    <nav
+      aria-label="Sommaire du guide"
+      className="not-prose rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-4 sm:p-5 my-6 sm:my-8"
+    >
       <p className="text-xs font-bold uppercase tracking-widest text-zinc-600 dark:text-zinc-300 mb-3">
         Sommaire
       </p>
@@ -27,7 +30,7 @@ export function GuideToc({ items }: { items: TocItem[] }) {
           </li>
         ))}
       </ul>
-    </div>
+    </nav>
   );
 }
 
@@ -115,7 +118,7 @@ export function GuideTable({ headers, rows, caption }: GuideTableProps) {
   return (
     <>
       <div
-        className="not-prose my-6 sm:hidden"
+        className="not-prose my-6 md:hidden"
         role="group"
         aria-label={tableCaption}
       >
@@ -162,13 +165,13 @@ export function GuideTable({ headers, rows, caption }: GuideTableProps) {
       </div>
 
       <div
-        className="not-prose my-6 hidden overflow-x-auto sm:block"
+        className="not-prose my-6 hidden overflow-x-auto md:block"
         tabIndex={isWide ? 0 : undefined}
         role={isWide ? "region" : undefined}
         aria-label={isWide ? `Tableau défilable : ${tableCaption}` : undefined}
       >
         <table
-          className={`w-full ${minWidthClass} border-collapse text-xs sm:text-sm`}
+          className={`w-full ${minWidthClass} border-collapse text-xs md:text-sm`}
         >
           <caption className="sr-only">{tableCaption}</caption>
           <thead>
@@ -176,7 +179,7 @@ export function GuideTable({ headers, rows, caption }: GuideTableProps) {
               {headers.map((header, i) => (
                 <th
                   key={i}
-                  className="border border-zinc-200 p-2 text-left font-semibold text-zinc-900 dark:border-zinc-700 dark:text-zinc-100 sm:p-3"
+                  className="border border-zinc-200 p-2 text-left font-semibold text-zinc-900 dark:border-zinc-700 dark:text-zinc-100 md:p-3"
                 >
                   {header}
                 </th>
@@ -188,7 +191,7 @@ export function GuideTable({ headers, rows, caption }: GuideTableProps) {
               <tr key={rowIndex}>
                 {row.map((cell, cellIndex) => {
                   const isObj = typeof cell === "object";
-                  const className = `border border-zinc-200 p-2 dark:border-zinc-700 sm:p-3 ${
+                  const className = `border border-zinc-200 p-2 dark:border-zinc-700 md:p-3 ${
                     isObj && cell.className
                       ? cell.className
                       : cellIndex === 0

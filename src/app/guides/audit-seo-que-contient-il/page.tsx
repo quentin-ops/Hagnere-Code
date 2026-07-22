@@ -921,7 +921,13 @@ export default function Page() {
             analyser une baisse de trafic
           </a>{" "}
           recommande de conserver plusieurs explications possibles tant que les
-          données ne permettent pas de trancher.
+          données ne permettent pas de trancher. Avant de modifier le site, vous
+          pouvez aussi{" "}
+          <Link href="/guides/positions-google-baissent">
+            préparer le relevé d’une baisse de positions Google
+          </Link>{" "}
+          avec les mêmes périodes, les mêmes filtres et les pages réellement
+          touchées.
         </p>
 
         <h2 id="alertes">Les signaux qui doivent vous alerter</h2>

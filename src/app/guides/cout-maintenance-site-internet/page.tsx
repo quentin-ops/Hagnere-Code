@@ -799,6 +799,15 @@ export default function Page() {
           </li>
         </ol>
         <p>
+          Si votre site est déjà indisponible, commencez par notre fiche réflexe
+          «{" "}
+          <Link href="/guides/site-internet-en-panne-que-faire">
+            site internet en panne : que faire maintenant ?
+          </Link>{" "}
+          » : elle vous aide à noter les faits, choisir le bon interlocuteur et
+          vérifier le retour avant de discuter d’un contrat futur.
+        </p>
+        <p>
           C&apos;est la logique de notre offre de{" "}
           <Link href="/services/maintenance-evolution">
             maintenance et évolution
