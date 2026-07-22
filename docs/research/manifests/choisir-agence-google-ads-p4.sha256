@@ -1,0 +1,9 @@
+d6ea487667e413ebbc155ffbf1441db1b0b67a51973c76a3482947cf9cb6eb96  docs/research/choisir-agence-google-ads.md
+689565fe2933fc7299c6c21622e5e88f2971b7e19723927a05b8d9e2f0790988  src/app/guides/choisir-agence-google-ads/page.tsx
+7b688080c561483330f340a4c00bc2a9136464ad4e0696f4fc622b6a7daa6ab8  src/app/guides/choisir-agence-google-ads/opengraph-image.tsx
+7d7b2d775ace435ee724cfd9b8b09aa4e74ab2e9b002317d34326c7171832bc2  src/lib/guides.ts
+dfc3d59b052acedac46ed1837bb39b4b233e00039980f77e113b1cf72a6c7b6c  src/app/guides/prix-gestion-google-ads/page.tsx
+226b72dae0119bfa2270c5e86660fd1b268d4187d906256019c046bb40d94567  src/components/guides/GuidesHubPage.tsx
+3735f7fe31a3c4cf0a059885e1a8ac9c92e787dc0f6fd76697dee46cb00101e0  src/lib/guide-human-language.test.ts
+51816f401d5c374ffca5553a5229824cd3f41c1bc00dded5bb51e1fd4f20ac8e  src/lib/editorial-governance.test.ts
+49f6bf53c75d068aeffc1d8cc3bc3562e68a781e5fff04279feccfa14c490375  docs/roadmap-guides-seo.md

@@ -111,6 +111,15 @@ const COLLECTIONS: Collection[] = [
     laneText: "Cahiers des charges, délais et responsabilités.",
   },
   {
+    section: "Maintenance & reprise",
+    anchor: "maintenance-reprise",
+    accent: "amber",
+    icon: Wrench,
+    title: "Maintenir un service et changer d’équipe sans le fragiliser.",
+    text: "Accès, sauvegardes, responsabilités et reprise expliqués avant de transférer un site ou une application à une nouvelle équipe.",
+    laneText: "Maintenance, continuité et changement de prestataire.",
+  },
+  {
     section: "Financer son projet",
     anchor: "financer",
     accent: "amber",
@@ -123,6 +132,11 @@ const COLLECTIONS: Collection[] = [
 
 /** Icône de carte par guide (défaut : Globe). */
 const GUIDE_ICONS: Record<string, LucideIcon> = {
+  "application-gestion-interventions-terrain": TabletSmartphone,
+  "agence-saas-ou-freelance": Scale,
+  "reprendre-maintenance-site-autre-agence": ShieldCheck,
+  "choisir-agence-google-ads": Megaphone,
+  "choisir-agence-seo": Globe,
   "landing-page-google-ads": PanelsTopLeft,
   "suivi-conversions-google-ads": ArrowDown,
   "pourquoi-site-pas-visible-google": Globe,

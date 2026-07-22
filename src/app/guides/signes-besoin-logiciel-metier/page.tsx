@@ -717,6 +717,16 @@ export default function Page() {
           seulement si le projet mérite d’être étudié.
         </p>
 
+        <p>
+          Si vos trois situations concernent des techniciens, des rendez-vous,
+          des comptes rendus et une ressaisie avant facturation, suivez plutôt{" "}
+          <Link href="/guides/application-gestion-interventions-terrain">
+            une intervention complète du bureau jusqu’au terrain
+          </Link>
+          . Vous pourrez tester un logiciel existant sur les mêmes cas avant de
+          conclure qu’une application adaptée est nécessaire.
+        </p>
+
         <h2 id="sur-mesure">
           8. Vérifiez six points avant d’étudier le sur-mesure
         </h2>

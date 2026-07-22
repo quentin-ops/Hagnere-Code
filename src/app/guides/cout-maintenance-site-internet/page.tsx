@@ -661,6 +661,15 @@ export default function Page() {
             </li>
           </ul>
         </InfoBox>
+        <p>
+          Si vous préparez déjà la sortie, ne retirez pas l’ancien prestataire
+          dès la fin du préavis. Suivez l’ordre proposé dans le guide pour{" "}
+          <Link href="/guides/reprendre-maintenance-site-autre-agence">
+            changer d’agence de maintenance en gardant le site, les e-mails et
+            les demandes clients sous contrôle
+          </Link>
+          .
+        </p>
 
         <h2 id="diy">
           7. Calculez le coût seul ou avec une plateforme hébergée

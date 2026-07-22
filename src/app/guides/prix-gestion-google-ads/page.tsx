@@ -425,6 +425,16 @@ export default function Page() {
         />
 
         <p>
+          Lorsque vous avez choisi le format adapté, ne comparez pas seulement
+          les logos et les promesses. Le guide pour{" "}
+          <Link href="/guides/choisir-agence-google-ads">
+            choisir une agence Google Ads
+          </Link>{" "}
+          vous aide à vérifier l’accès au compte, la personne qui travaillera,
+          le résultat commercial suivi et ce que vous récupérerez en partant.
+        </p>
+
+        <p>
           Les pages sources de{" "}
           <a
             href="https://www.ms-web.fr/creation-et-gestion-de-campagne-google-ads/"

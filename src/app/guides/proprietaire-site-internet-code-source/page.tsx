@@ -344,6 +344,16 @@ export default function Page() {
           l’inverse, disposer des bons accès peut permettre une reprise même
           lorsque certains droits doivent encore être clarifiés.
         </p>
+        <p>
+          Lorsque le site existe déjà, passez ensuite des droits à l’action :
+          découvrez comment{" "}
+          <Link href="/guides/reprendre-maintenance-site-autre-agence">
+            confier sa maintenance à une autre agence sans retirer les accès
+            trop tôt
+          </Link>
+          , avec une copie restaurée et des formulaires testés avant le
+          changement.
+        </p>
 
         <h2 id="avant-signature">
           2. Avant de signer, faites écrire ce que vous recevrez

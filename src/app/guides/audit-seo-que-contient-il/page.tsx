@@ -299,8 +299,8 @@ export default function Page() {
             label: "Refondre sans perdre son SEO",
           },
           {
-            href: "/guides/choisir-son-agence-web",
-            label: "Choisir son agence web",
+            href: "/guides/choisir-agence-seo",
+            label: "Comparer plusieurs propositions d’agences SEO",
           },
           {
             href: "/services/referencement-google",
@@ -965,11 +965,9 @@ export default function Page() {
             choisir un prestataire SEO
           </a>{" "}
           constitue une bonne base. Notre guide pour{" "}
-          <Link href="/guides/choisir-son-agence-web">
-            choisir une agence web
-          </Link>{" "}
-          complète les questions sur le devis, les accès et la relation de
-          travail.
+          <Link href="/guides/choisir-agence-seo">choisir une agence SEO</Link>{" "}
+          complète les questions sur les promesses du devis, les accès, les
+          preuves remises et la relation de travail.
         </p>
 
         <h2 id="sources-limites">Sources et limites de ce guide</h2>

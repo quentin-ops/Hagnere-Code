@@ -19,6 +19,11 @@ const guideSources = GUIDES.map((guide) => ({
 }));
 
 const july22PublicationSlugs = new Set([
+  "application-gestion-interventions-terrain",
+  "agence-saas-ou-freelance",
+  "reprendre-maintenance-site-autre-agence",
+  "choisir-agence-google-ads",
+  "choisir-agence-seo",
   "landing-page-google-ads",
   "suivi-conversions-google-ads",
   "pourquoi-site-pas-visible-google",

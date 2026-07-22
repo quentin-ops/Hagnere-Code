@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
@@ -5,15 +6,28 @@ import { GUIDES, PUBLISHED_GUIDES } from "./guides";
 
 const researchRoot = path.join(process.cwd(), "docs/research");
 
+const frozenFourPassLot = [
+  "application-gestion-interventions-terrain",
+  "agence-saas-ou-freelance",
+  "reprendre-maintenance-site-autre-agence",
+  "choisir-agence-google-ads",
+  "choisir-agence-seo",
+] as const;
+
 const delegatedPublicationGuides = [
+  "agence-saas-ou-freelance",
+  "application-gestion-interventions-terrain",
   "audit-google-ads-que-verifier",
   "audit-seo-que-contient-il",
   "automatiser-processus-metier",
   "calculer-roi-application-metier",
+  "choisir-agence-google-ads",
+  "choisir-agence-seo",
   "contrat-tma-application",
   "mvp-saas-quoi-inclure",
   "pourquoi-google-ads-ne-convertit-pas",
   "prix-gestion-google-ads",
+  "reprendre-maintenance-site-autre-agence",
   "reprendre-logiciel-metier-existant",
   "reprendre-mvp-vibe-code",
   "seo-ou-google-ads",
@@ -22,7 +36,54 @@ const delegatedPublicationGuides = [
   "valider-idee-saas-avant-developper",
 ] as const;
 
+function parseManifest(manifestPath: string) {
+  return fs
+    .readFileSync(manifestPath, "utf8")
+    .trim()
+    .split("\n")
+    .map((line) => {
+      const match = line.match(/^([a-f0-9]{64}) {2}(.+)$/);
+      expect(match, `${manifestPath}: ${line}`).not.toBeNull();
+      return { expectedHash: match![1], relativePath: match![2] };
+    });
+}
+
+function fileHash(filePath: string) {
+  return createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
+}
+
 describe("editorial governance evidence", () => {
+  it("keeps the four passes and the final common snapshot demonstrable", () => {
+    for (const slug of frozenFourPassLot) {
+      for (const pass of [1, 2, 3, 4]) {
+        const manifestPath = path.join(
+          researchRoot,
+          "manifests",
+          `${slug}-p${pass}.sha256`,
+        );
+        expect(fs.existsSync(manifestPath), `${slug}: P${pass}`).toBe(true);
+
+        const entries = parseManifest(manifestPath);
+        expect(entries.length, `${slug}: P${pass}`).toBeGreaterThan(0);
+
+        for (const entry of entries) {
+          const targetPath = path.join(process.cwd(), entry.relativePath);
+          expect(
+            fs.existsSync(targetPath),
+            `${slug}: P${pass}: ${entry.relativePath}`,
+          ).toBe(true);
+
+          if (pass === 4) {
+            expect(
+              fileHash(targetPath),
+              `${slug}: P4: ${entry.relativePath}`,
+            ).toBe(entry.expectedHash);
+          }
+        }
+      }
+    }
+  });
+
   it("publishes the delegated corpus only with documented independent counter-audits", () => {
     for (const slug of delegatedPublicationGuides) {
       const guide = GUIDES.find((entry) => entry.slug === slug);
