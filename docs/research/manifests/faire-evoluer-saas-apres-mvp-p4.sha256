@@ -1,0 +1,6 @@
+6d9ba854f90f7eadc6f5b40c74411b115e8460db503e7b73c03ac88072df67c7  docs/research/faire-evoluer-saas-apres-mvp.md
+abe9bfb2a7027033748e1c65e6e9cd8ee087f417255b9c197bbcfa276bfec5a7  src/app/guides/faire-evoluer-saas-apres-mvp/page.tsx
+a28b110a417554abfed8960bafb1b19aa23d67b958d80be7ff1b09a119b86bcc  src/app/guides/faire-evoluer-saas-apres-mvp/opengraph-image.tsx
+58578fa9c300aa963f471bd5812a4132459388f57efb72ceb59201e7dd682c8e  src/lib/guides.ts
+912f2022f125cc7e3c9ef6a69d420107ec038a35a4c8223d10c665e1e321bade  src/app/guides/prioriser-fonctionnalites-mvp-saas/page.tsx
+6eb85fea7390eac771837fd726d2097353bae73786224df7c02e815facb2336b  src/lib/guide-human-language.test.ts

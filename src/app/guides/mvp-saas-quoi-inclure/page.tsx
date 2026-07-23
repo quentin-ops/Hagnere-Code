@@ -329,6 +329,10 @@ export default function Page() {
             label: "Transformer le parcours en cahier des charges SaaS",
           },
           {
+            href: "/guides/prioriser-fonctionnalites-mvp-saas",
+            label: "Choisir les fonctions de la prochaine version",
+          },
+          {
             href: "/guides/proprietaire-site-internet-code-source",
             label: "Sécuriser code, droits et accès",
           },

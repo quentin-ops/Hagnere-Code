@@ -1,0 +1,6 @@
+f9f6879cd9952017008a4dc4b839822822fbdd383a16510075065db8462d3911  docs/research/seo-local-pme.md
+16ffe71ec356111e9b0bccfdd718d6b10d07d6831719502791928502ea8cef30  src/app/guides/seo-local-pme/page.tsx
+dabca5ef5a862d6a9dfa0f57bda7092afa2ab7d7d913744c1408518d15c7702e  src/app/guides/seo-local-pme/opengraph-image.tsx
+58578fa9c300aa963f471bd5812a4132459388f57efb72ceb59201e7dd682c8e  src/lib/guides.ts
+c9db9b163e8d9b0547f1ae5cb7952692307b61c14873e30b6dcafd9d3f5245e2  src/app/guides/pourquoi-site-pas-visible-google/page.tsx
+6eb85fea7390eac771837fd726d2097353bae73786224df7c02e815facb2336b  src/lib/guide-human-language.test.ts

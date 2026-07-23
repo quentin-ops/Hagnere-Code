@@ -1032,6 +1032,16 @@ export default function Page() {
           personne qui répond manquent encore, attendez.
         </p>
 
+        <p>
+          Si le site durable est déjà choisi mais que vous ne savez pas comment
+          répartir plusieurs offres, utilisez ensuite le guide{" "}
+          <Link href="/guides/site-one-page-ou-multipage">
+            site one-page ou multipage
+          </Link>
+          . Il vous aide à décider quelles réponses garder ensemble et
+          lesquelles méritent leur propre page.
+        </p>
+
         <div className="not-prose my-6 grid gap-4 sm:grid-cols-2">
           <section
             aria-labelledby="fit-guide"
