@@ -119,6 +119,7 @@ export function GuideTable({ headers, rows, caption }: GuideTableProps) {
     <>
       <div
         className="not-prose my-6 md:hidden"
+        data-read-time-exclude="true"
         role="group"
         aria-label={tableCaption}
       >
@@ -251,6 +252,7 @@ interface GuideInlineCTAProps {
   tags?: string[];
   ctaLabel?: string;
   ctaHref?: string;
+  showPhone?: boolean;
 }
 
 export function GuideInlineCTA({
@@ -259,6 +261,7 @@ export function GuideInlineCTA({
   tags = ["Sans engagement", "Réponse argumentée", "Solution simple possible"],
   ctaLabel = "Décrire mon projet",
   ctaHref = "/demarrer-un-projet",
+  showPhone = true,
 }: GuideInlineCTAProps) {
   return (
     <div className="not-prose relative my-10 rounded-2xl overflow-hidden bg-zinc-950 border border-zinc-800/60">
@@ -302,13 +305,15 @@ export function GuideInlineCTA({
             {ctaLabel}
             <ArrowRight className="size-4 shrink-0" />
           </Link>
-          <a
-            href="tel:+33374472018"
-            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-700 text-zinc-400 text-sm hover:bg-zinc-800/60 hover:border-zinc-600 transition-colors"
-          >
-            <Phone className="size-4 shrink-0" />
-            03 74 47 20 18
-          </a>
+          {showPhone ? (
+            <a
+              href="tel:+33374472018"
+              className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-zinc-700 text-zinc-400 text-sm hover:bg-zinc-800/60 hover:border-zinc-600 transition-colors"
+            >
+              <Phone className="size-4 shrink-0" />
+              03 74 47 20 18
+            </a>
+          ) : null}
         </div>
       </div>
     </div>

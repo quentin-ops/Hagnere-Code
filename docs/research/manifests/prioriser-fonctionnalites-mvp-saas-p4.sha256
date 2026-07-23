@@ -1,0 +1,7 @@
+d29f40739f2e03bd67e1ca227d29072354f10328dd94f2cc669f7228158b81d1  docs/research/prioriser-fonctionnalites-mvp-saas.md
+912f2022f125cc7e3c9ef6a69d420107ec038a35a4c8223d10c665e1e321bade  src/app/guides/prioriser-fonctionnalites-mvp-saas/page.tsx
+b3be16004b60cb4d00d9df8a31d6029d7b2f611af7ad3dc64872c9f677079962  src/app/guides/prioriser-fonctionnalites-mvp-saas/opengraph-image.tsx
+58578fa9c300aa963f471bd5812a4132459388f57efb72ceb59201e7dd682c8e  src/lib/guides.ts
+8f3b4bb5f66e54b60656cc97afb9e52d267626b482771c37a946c35ce1cba4ce  src/app/guides/mvp-saas-quoi-inclure/page.tsx
+6eb85fea7390eac771837fd726d2097353bae73786224df7c02e815facb2336b  src/lib/guide-human-language.test.ts
+c809e6822c5bbd889849e571e09373ea7dc07e1a4cb7ead576aa1d400d415afa  src/lib/editorial-governance.test.ts

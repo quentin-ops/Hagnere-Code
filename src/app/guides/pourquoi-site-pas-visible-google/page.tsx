@@ -198,8 +198,8 @@ export default function Page() {
               "Diagnostiquer les visites qui ne deviennent pas des demandes",
           },
           {
-            href: "/guides/prix-referencement-naturel",
-            label: "Comprendre le prix du référencement naturel",
+            href: "/guides/seo-local-pme",
+            label: "Améliorer la visibilité locale de votre entreprise",
           },
         ]}
         faqTitle="Site absent de Google : les réponses sans raccourci"

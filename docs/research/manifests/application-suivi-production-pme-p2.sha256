@@ -1,0 +1,6 @@
+328f5eb39e19bae3f5c1f5e5c52391b7350618ff6dcd429d4f9f38b5e7999c4f  docs/research/application-suivi-production-pme.md
+9361b2faa9690560637766b08dd566ecdd3912e9fd3dc2ecabd3fe68e4f20ef8  src/app/guides/application-suivi-production-pme/page.tsx
+420626036eebb20657588966a5283f5dc1294278f7cc1bdb34fa01abc223f8de  src/app/guides/application-suivi-production-pme/opengraph-image.tsx
+7ead663efb3476fc7165d561ef2b96042e268aef555fc4dfcf6c565eb25c0f1f  src/lib/guides.ts
+20a72b8beef923889f2920693e83bca037254fc1461f66c9013b0d26d51523bd  src/app/guides/signes-besoin-logiciel-metier/page.tsx
+5a5d6552d406a331a0c094f453ebe89962029292cfad81ce1cdc1c2ac84b1c79  src/lib/guide-human-language.test.ts

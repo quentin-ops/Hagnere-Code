@@ -1,0 +1,6 @@
+d73ea5025bf985897c11e165588314a9e533d41ff99b77784627cd9aa36fbbcb  docs/research/tma-ou-regie.md
+ad92092d91797b84c085eae57838a2646f98307990afcfc30206ff97fe8a5528  src/app/guides/tma-ou-regie/page.tsx
+fa384a90a137d17f755911af2595e1fbd5cff01bf42d97a81f72a0bbe45e7ac9  src/app/guides/tma-ou-regie/opengraph-image.tsx
+58578fa9c300aa963f471bd5812a4132459388f57efb72ceb59201e7dd682c8e  src/lib/guides.ts
+b1519c0f8dd4047bc45d9d224c7ee503e723ea773774a5dc8325550abedde1f9  src/app/guides/contrat-tma-application/page.tsx
+6eb85fea7390eac771837fd726d2097353bae73786224df7c02e815facb2336b  src/lib/guide-human-language.test.ts

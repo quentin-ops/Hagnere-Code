@@ -40,6 +40,154 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "site-one-page-ou-multipage",
+    title: "Site one-page ou multipage : lequel choisir ?",
+    cardTitle: "Une page ou plusieurs pour votre site ?",
+    metaDescription:
+      "Vous présentez plusieurs services ? Regroupez ce qui répond à la même personne et séparez les pages quand la question, la preuve ou l’action change.",
+    cardDescription:
+      "Une carte en huit champs et deux exemples fictifs pour regrouper les réponses cohérentes, séparer les offres autonomes et éviter les pages de remplissage.",
+    heroTitle:
+      "Site one-page ou multipage : lequel choisir pour votre entreprise ?",
+    section: "Sites vitrines",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 16,
+  },
+  {
+    slug: "tma-ou-regie",
+    title: "TMA ou régie : comment choisir pour votre application ?",
+    cardTitle: "TMA ou régie : quel modèle choisir ?",
+    metaDescription:
+      "Bugs et évolutions reviennent chaque mois ? Distinguez continuité, diagnostic et livraison, puis comparez capacité, temps, lot et formule hybride.",
+    cardDescription:
+      "Classez vos demandes réelles, séparez le service de sa facturation, puis comparez capacité récurrente, temps piloté, lot borné et formule hybride.",
+    heroTitle:
+      "TMA ou régie : comment choisir pour maintenir votre application ?",
+    section: "Maintenance et évolution",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 20,
+  },
+  {
+    slug: "seo-local-pme",
+    title: "SEO local pour PME : comment être visible ?",
+    cardTitle: "Comment améliorer le SEO local de votre PME ?",
+    metaDescription:
+      "Votre fiche Google attire peu de contacts ? Vérifiez l’éligibilité, les informations, le site, les avis et la mesure avant d’ajouter des pages locales.",
+    cardDescription:
+      "Suivez une recherche fictive de la fiche au contact, distinguez clics et appels reçus, puis corrigez le premier blocage sans promesse de top 3.",
+    heroTitle:
+      "Comment améliorer le SEO local de votre PME sans fausse promesse ?",
+    section: "Référencement naturel",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 21,
+  },
+  {
+    slug: "google-search-ads-ou-performance-max",
+    title: "Google Search Ads ou Performance Max : que choisir ?",
+    cardTitle: "Search ou Performance Max : que choisir ?",
+    metaDescription:
+      "Vous hésitez entre Search et Performance Max ? Comparez contrôle, conversions, contenus et test pour choisir, combiner ou reporter.",
+    cardDescription:
+      "Deux parcours concrets, quatre conditions et sept questions pour tester Search, tester PMax, les combiner ou corriger d’abord la mesure.",
+    heroTitle:
+      "Google Search Ads ou Performance Max : quelle campagne choisir ?",
+    section: "Google Ads",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 19,
+  },
+  {
+    slug: "faire-evoluer-saas-apres-mvp",
+    title: "Faire évoluer un SaaS après le MVP : quelle cadence ?",
+    cardTitle: "Comment faire évoluer votre SaaS après le MVP ?",
+    metaDescription:
+      "Bugs, demandes et mises à jour se disputent le même temps ? Séparez les décisions, sécurisez chaque livraison et vérifiez son effet.",
+    cardDescription:
+      "Un calendrier copiable pour protéger le service, enregistrer les signaux, livrer ou reporter, vérifier l’effet et revoir le budget.",
+    heroTitle:
+      "Comment faire évoluer votre SaaS après le MVP sans subir l’urgence ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 22,
+  },
+  {
+    slug: "application-suivi-production-pme",
+    title: "Application de suivi de production pour PME : que choisir ?",
+    cardTitle: "Quel outil pour suivre la production de votre PME ?",
+    metaDescription:
+      "Personne ne sait où en est la commande ? Reconstituez une journée d’atelier, testez six événements et comparez cinq niveaux d’outil.",
+    cardDescription:
+      "Un ordre fictif traverse quantité, blocage, reprise et six mauvais cas avant de comparer attente active, outil existant, standard, no-code et sur-mesure.",
+    heroTitle:
+      "Quelle application choisir pour suivre la production de votre PME ?",
+    section: "Applications métier",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 25,
+  },
+  {
+    slug: "portail-client-b2b-sur-mesure",
+    title: "Portail client B2B sur mesure : faut-il le créer ?",
+    cardTitle: "Votre PME a-t-elle besoin d’un portail client B2B ?",
+    metaDescription:
+      "Vos clients réclament documents et statuts ? Choisissez la première action à ouvrir, sécurisez chaque droit et comparez six solutions.",
+    cardDescription:
+      "Un dossier fictif suit invitation, dépôt et clôture, puis compare l’assistance, la correction interne, un lien, un module, un produit standard ou le sur-mesure.",
+    heroTitle: "Faut-il créer un portail client B2B pour votre entreprise ?",
+    section: "Applications métier",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 24,
+  },
+  {
+    slug: "digitaliser-bons-intervention",
+    title: "Digitaliser les bons d’intervention : que choisir ?",
+    cardTitle: "Comment digitaliser vos bons d’intervention ?",
+    metaDescription:
+      "Bons papier incomplets ou tardifs ? Suivez un document jusqu’à la décision de facturer, testez le hors-ligne et comparez quatre solutions.",
+    cardDescription:
+      "Un bon fictif traverse réserve, coupure réseau, correction et contrôle administratif avant de comparer papier, no-code, logiciel standard et sur-mesure.",
+    heroTitle:
+      "Comment digitaliser vos bons d’intervention sans bloquer le terrain ?",
+    section: "Applications métier",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 16,
+  },
+  {
+    slug: "back-office-sur-mesure-pme",
+    title: "Back-office sur mesure pour PME : faut-il le créer ?",
+    cardTitle: "Votre PME a-t-elle besoin d’un back-office ?",
+    metaDescription:
+      "Votre équipe ouvre plusieurs outils pour traiter un dossier ? Suivez son parcours et choisissez entre logiciel standard, no-code ou sur-mesure.",
+    cardDescription:
+      "Un dossier, trois rôles et cinq choix honnêtes pour décider s’il faut configurer, acheter, assembler, développer ou attendre.",
+    heroTitle: "Votre PME a-t-elle besoin d’un back-office sur mesure ?",
+    section: "Applications métier",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 16,
+  },
+  {
+    slug: "prioriser-fonctionnalites-mvp-saas",
+    title: "SaaS : prioriser les fonctionnalités après le MVP",
+    cardTitle: "Que développer après votre MVP ?",
+    metaDescription:
+      "Dix demandes et une seule prochaine version ? Reliez chaque idée à un problème et à des faits, puis choisissez quoi construire, tester ou reporter.",
+    cardDescription:
+      "Une fiche concrète pour comparer les demandes clients, isoler les urgences réelles et décider du prochain lot sans score magique.",
+    heroTitle:
+      "Comment prioriser les fonctionnalités de la prochaine version de votre SaaS ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 14,
+  },
+  {
     slug: "landing-page-ou-site-vitrine",
     title: "Landing page ou site vitrine : que choisir ?",
     cardTitle: "Landing page ou site vitrine : que choisir ?",
@@ -52,7 +200,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 19,
+    readTimeMin: 18,
   },
   {
     slug: "combien-de-temps-resultats-seo",
@@ -66,7 +214,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Référencement naturel",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 22,
+    readTimeMin: 17,
   },
   {
     slug: "positions-google-baissent",
@@ -81,7 +229,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Référencement naturel",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 16,
+    readTimeMin: 13,
   },
   {
     slug: "combien-de-temps-developper-saas",
@@ -95,7 +243,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 7,
+    readTimeMin: 18,
   },
   {
     slug: "connecter-erp-crm-logiciel-metier",
@@ -110,7 +258,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 19,
+    readTimeMin: 17,
   },
   {
     slug: "automatiser-saisie-donnees-entreprise",
@@ -126,7 +274,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 16,
+    readTimeMin: 14,
   },
   {
     slug: "mvp-prototype-ou-poc",
@@ -140,7 +288,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 15,
+    readTimeMin: 14,
   },
   {
     slug: "site-internet-en-panne-que-faire",
@@ -154,7 +302,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Maintenance & reprise",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 17,
+    readTimeMin: 15,
   },
   {
     slug: "leads-google-ads-non-qualifies",
@@ -169,7 +317,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Google Ads & acquisition",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 14,
+    readTimeMin: 12,
   },
   {
     slug: "migrer-logiciel-metier-sans-interruption",
@@ -184,7 +332,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 17,
+    readTimeMin: 16,
   },
   {
     slug: "choisir-agence-seo",
@@ -229,7 +377,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Maintenance & reprise",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 14,
+    readTimeMin: 15,
   },
   {
     slug: "agence-saas-ou-freelance",
@@ -273,7 +421,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Google Ads & acquisition",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 21,
+    readTimeMin: 22,
   },
   {
     slug: "suivi-conversions-google-ads",
@@ -287,7 +435,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Google Ads & acquisition",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 22,
+    readTimeMin: 19,
   },
   {
     slug: "pourquoi-site-pas-visible-google",
@@ -301,7 +449,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Référencement naturel",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 16,
+    readTimeMin: 14,
   },
   {
     slug: "cout-maintenance-application-metier",
@@ -330,7 +478,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 16,
+    readTimeMin: 17,
   },
   {
     slug: "choisir-prestataire-application-metier",
@@ -344,7 +492,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 13,
+    readTimeMin: 12,
   },
   {
     slug: "cahier-des-charges-saas",
@@ -387,7 +535,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 14,
+    readTimeMin: 12,
   },
   {
     slug: "preparer-contenus-site-vitrine",
@@ -401,7 +549,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-22",
     dateModified: "2026-07-22",
-    readTimeMin: 16,
+    readTimeMin: 14,
   },
   {
     slug: "pourquoi-google-ads-ne-convertit-pas",
@@ -429,7 +577,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-21",
     dateModified: "2026-07-21",
-    readTimeMin: 15,
+    readTimeMin: 16,
   },
   {
     slug: "signes-besoin-logiciel-metier",
@@ -443,7 +591,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-21",
     dateModified: "2026-07-21",
-    readTimeMin: 12,
+    readTimeMin: 13,
   },
   {
     slug: "template-ou-site-sur-mesure",
@@ -458,7 +606,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 12,
+    readTimeMin: 11,
   },
   {
     slug: "seo-ou-google-ads",
@@ -486,7 +634,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 24,
+    readTimeMin: 17,
   },
   {
     slug: "audit-seo-que-contient-il",
@@ -500,7 +648,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Référencement naturel",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 19,
+    readTimeMin: 15,
   },
   {
     slug: "audit-google-ads-que-verifier",
@@ -514,7 +662,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 16,
+    readTimeMin: 14,
   },
   {
     slug: "mvp-saas-quoi-inclure",
@@ -529,7 +677,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 24,
+    readTimeMin: 20,
   },
   {
     slug: "reprendre-logiciel-metier-existant",
@@ -544,7 +692,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 15,
+    readTimeMin: 13,
   },
   {
     slug: "calculer-roi-application-metier",
@@ -558,7 +706,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 28,
+    readTimeMin: 23,
   },
   {
     slug: "automatiser-processus-metier",
@@ -572,7 +720,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 16,
+    readTimeMin: 13,
   },
   {
     slug: "valider-idee-saas-avant-developper",
@@ -586,7 +734,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 14,
+    readTimeMin: 11,
   },
   {
     slug: "prix-gestion-google-ads",
@@ -600,7 +748,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 21,
+    readTimeMin: 17,
   },
   {
     slug: "transformer-excel-en-application",
@@ -615,7 +763,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-19",
     dateModified: "2026-07-21",
-    readTimeMin: 15,
+    readTimeMin: 12,
   },
   {
     slug: "cahier-des-charges-application-metier",
@@ -630,7 +778,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 23,
+    readTimeMin: 18,
   },
   {
     slug: "combien-coute-un-crm",
@@ -644,7 +792,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 18,
+    readTimeMin: 13,
   },
   {
     slug: "erp-ou-logiciel-sur-mesure",
@@ -658,7 +806,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-20",
     dateModified: "2026-07-21",
-    readTimeMin: 23,
+    readTimeMin: 17,
   },
   {
     slug: "pourquoi-mon-site-ne-convertit-pas",
@@ -672,7 +820,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-19",
     dateModified: "2026-07-21",
-    readTimeMin: 15,
+    readTimeMin: 12,
   },
   {
     slug: "proprietaire-site-internet-code-source",
@@ -686,7 +834,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-19",
     dateModified: "2026-07-21",
-    readTimeMin: 12,
+    readTimeMin: 11,
   },
   {
     slug: "prix-referencement-naturel",
@@ -700,7 +848,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-21",
-    readTimeMin: 27,
+    readTimeMin: 23,
   },
   {
     slug: "pourquoi-mon-site-est-lent",
@@ -714,7 +862,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-21",
-    readTimeMin: 13,
+    readTimeMin: 10,
   },
   {
     slug: "no-code-ou-sur-mesure",
@@ -728,7 +876,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-21",
-    readTimeMin: 21,
+    readTimeMin: 16,
   },
   {
     slug: "migrer-wordpress-vers-nextjs",
@@ -742,7 +890,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-21",
-    readTimeMin: 20,
+    readTimeMin: 17,
   },
   {
     slug: "tjm-developpeur-web",
@@ -756,7 +904,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-21",
-    readTimeMin: 14,
+    readTimeMin: 11,
   },
   {
     slug: "choisir-son-agence-web",
@@ -770,7 +918,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-18",
     dateModified: "2026-07-21",
-    readTimeMin: 12,
+    readTimeMin: 10,
   },
   {
     slug: "agence-web-ou-freelance",
@@ -784,7 +932,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-21",
-    readTimeMin: 16,
+    readTimeMin: 13,
   },
   {
     slug: "creer-un-site-avec-ia",
@@ -798,7 +946,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-18",
     dateModified: "2026-07-21",
-    readTimeMin: 15,
+    readTimeMin: 13,
   },
   {
     slug: "combien-coute-un-site-internet",
@@ -812,7 +960,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-11",
     dateModified: "2026-07-21",
-    readTimeMin: 15,
+    readTimeMin: 11,
     featured: true,
   },
   {
@@ -827,7 +975,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-13",
     dateModified: "2026-07-21",
-    readTimeMin: 14,
+    readTimeMin: 10,
   },
   {
     slug: "prix-site-vitrine",
@@ -841,7 +989,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-14",
     dateModified: "2026-07-21",
-    readTimeMin: 14,
+    readTimeMin: 11,
   },
   {
     slug: "prix-site-e-commerce",
@@ -855,7 +1003,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-16",
     dateModified: "2026-07-21",
-    readTimeMin: 17,
+    readTimeMin: 14,
   },
   {
     slug: "nextjs-ou-wordpress",
@@ -869,7 +1017,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-16",
     dateModified: "2026-07-21",
-    readTimeMin: 18,
+    readTimeMin: 14,
   },
   {
     slug: "aides-creation-site-internet",
@@ -883,7 +1031,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Financer son projet",
     datePublished: "2026-07-16",
     dateModified: "2026-07-21",
-    readTimeMin: 16,
+    readTimeMin: 13,
   },
   {
     slug: "combien-coute-un-saas",
@@ -897,7 +1045,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-21",
-    readTimeMin: 14,
+    readTimeMin: 11,
   },
   {
     slug: "prix-logiciel-sur-mesure",
@@ -911,7 +1059,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-21",
-    readTimeMin: 21,
+    readTimeMin: 17,
   },
   {
     slug: "prix-refonte-site-internet",
@@ -925,7 +1073,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-21",
-    readTimeMin: 14,
+    readTimeMin: 11,
   },
   {
     slug: "shopify-ou-sur-mesure",
@@ -939,7 +1087,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-21",
-    readTimeMin: 15,
+    readTimeMin: 12,
   },
   {
     slug: "cout-maintenance-site-internet",
@@ -953,7 +1101,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Budget & prix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-21",
-    readTimeMin: 16,
+    readTimeMin: 14,
   },
   {
     slug: "woocommerce-ou-shopify",
@@ -968,7 +1116,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-21",
-    readTimeMin: 15,
+    readTimeMin: 12,
   },
   {
     slug: "combien-de-temps-pour-creer-un-site",
@@ -982,7 +1130,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-17",
     dateModified: "2026-07-21",
-    readTimeMin: 13,
+    readTimeMin: 10,
   },
   {
     slug: "wix-ou-wordpress",
@@ -996,7 +1144,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-21",
-    readTimeMin: 13,
+    readTimeMin: 11,
   },
   {
     slug: "react-native-ou-flutter",
@@ -1011,7 +1159,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Comparatifs & choix",
     datePublished: "2026-07-17",
     dateModified: "2026-07-21",
-    readTimeMin: 13,
+    readTimeMin: 11,
   },
   {
     slug: "cahier-des-charges-application-mobile",
@@ -1026,7 +1174,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-17",
     dateModified: "2026-07-21",
-    readTimeMin: 19,
+    readTimeMin: 15,
   },
   {
     slug: "refonte-sans-perdre-son-seo",
@@ -1040,7 +1188,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-18",
     dateModified: "2026-07-21",
-    readTimeMin: 11,
+    readTimeMin: 10,
   },
   {
     slug: "cahier-des-charges-site-internet",
@@ -1054,7 +1202,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Préparer son projet",
     datePublished: "2026-07-15",
     dateModified: "2026-07-21",
-    readTimeMin: 13,
+    readTimeMin: 10,
   },
 ];
 

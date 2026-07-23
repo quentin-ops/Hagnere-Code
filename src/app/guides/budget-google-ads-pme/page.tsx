@@ -210,6 +210,10 @@ export default function Page() {
             label: "SEO ou Google Ads : que lancer en premier ?",
           },
           {
+            href: "/guides/google-search-ads-ou-performance-max",
+            label: "Choisir entre Search et Performance Max",
+          },
+          {
             href: "/guides/audit-google-ads-que-verifier",
             label: "Auditer une campagne Google Ads active",
           },

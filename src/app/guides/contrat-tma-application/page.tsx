@@ -474,6 +474,16 @@ export default function Page() {
           passent, quelle unité est consommée et qui autorise un dépassement.
         </p>
 
+        <p>
+          Si vous hésitez encore entre forfait, temps mobilisé et capacité
+          récurrente, commencez par{" "}
+          <Link href="/guides/tma-ou-regie">
+            choisir le mode de maintenance adapté à vos demandes réelles
+          </Link>
+          . Revenez ensuite à cette checklist pour négocier les engagements du
+          contrat.
+        </p>
+
         <GuideTable
           caption="Points économiques et opérationnels d’un forfait TMA"
           headers={["Question", "Ce qui doit être écrit", "Risque si absent"]}

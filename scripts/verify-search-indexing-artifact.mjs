@@ -134,7 +134,9 @@ function tagAttribute(tag, attribute) {
 function requiredMetaContent(html, attribute, value, pathname) {
   const tags = htmlTagsWithAttribute(html, "meta", attribute, value);
   if (tags.length !== 1) {
-    fail(`meta ${value} présente ${tags.length} fois au lieu d'une : ${pathname}`);
+    fail(
+      `meta ${value} présente ${tags.length} fois au lieu d'une : ${pathname}`,
+    );
   }
   const tag = tags[0];
   const content = tagAttribute(tag, "content")?.trim();
@@ -174,7 +176,9 @@ function checkSocialImage(imageUrl, pathname, appPaths) {
     );
   });
   if (!matchingManifestRoute && !existsSync(staticAsset)) {
-    fail(`og:image sans route ni fichier public pour ${pathname} : ${imagePath}`);
+    fail(
+      `og:image sans route ni fichier public pour ${pathname} : ${imagePath}`,
+    );
     return;
   }
 
@@ -182,7 +186,9 @@ function checkSocialImage(imageUrl, pathname, appPaths) {
     const image = readFileSync(staticAsset);
     const pngSignature = image.subarray(0, 8).toString("hex");
     if (pngSignature !== "89504e470d0a1a0a" || image.length < 24) {
-      fail(`image sociale statique non PNG ou illisible pour ${pathname} : ${imagePath}`);
+      fail(
+        `image sociale statique non PNG ou illisible pour ${pathname} : ${imagePath}`,
+      );
       return;
     }
     const width = image.readUInt32BE(16);
@@ -196,9 +202,14 @@ function checkSocialImage(imageUrl, pathname, appPaths) {
   }
 
   const sourceRoute = matchingManifestRoute.replace(/\/route$/, "");
-  const sourcePath = resolve("src/app", `${sourceRoute.replace(/^\//, "")}.tsx`);
+  const sourcePath = resolve(
+    "src/app",
+    `${sourceRoute.replace(/^\//, "")}.tsx`,
+  );
   if (!existsSync(sourcePath)) {
-    fail(`source de l'image sociale introuvable pour ${pathname} : ${sourceRoute}`);
+    fail(
+      `source de l'image sociale introuvable pour ${pathname} : ${sourceRoute}`,
+    );
     return;
   }
   const source = readFileSync(sourcePath, "utf8");
@@ -207,13 +218,20 @@ function checkSocialImage(imageUrl, pathname, appPaths) {
       source,
     )
   ) {
-    fail(`image sociale dynamique sans taille 1200×630 pour ${pathname} : ${sourceRoute}`);
+    fail(
+      `image sociale dynamique sans taille 1200×630 pour ${pathname} : ${sourceRoute}`,
+    );
   }
 }
 
 function checkPageMetadata(html, url, appPaths) {
   const { pathname } = new URL(url);
-  const description = requiredMetaContent(html, "name", "description", pathname);
+  const description = requiredMetaContent(
+    html,
+    "name",
+    "description",
+    pathname,
+  );
   const ogTitle = requiredMetaContent(html, "property", "og:title", pathname);
   const ogDescription = requiredMetaContent(
     html,
@@ -224,13 +242,25 @@ function checkPageMetadata(html, url, appPaths) {
   const ogUrl = requiredMetaContent(html, "property", "og:url", pathname);
   const ogImage = requiredMetaContent(html, "property", "og:image", pathname);
   const ogType = requiredMetaContent(html, "property", "og:type", pathname);
-  const twitterCard = requiredMetaContent(html, "name", "twitter:card", pathname);
+  const twitterCard = requiredMetaContent(
+    html,
+    "name",
+    "twitter:card",
+    pathname,
+  );
   requiredMetaContent(html, "name", "twitter:title", pathname);
   requiredMetaContent(html, "name", "twitter:description", pathname);
-  const twitterImage = requiredMetaContent(html, "name", "twitter:image", pathname);
+  const twitterImage = requiredMetaContent(
+    html,
+    "name",
+    "twitter:image",
+    pathname,
+  );
 
   if (description && description.length < 50) {
-    fail(`meta description trop peu informative (${description.length} caractères) : ${pathname}`);
+    fail(
+      `meta description trop peu informative (${description.length} caractères) : ${pathname}`,
+    );
   }
   if (ogTitle && ogTitle.length < 10) {
     fail(`og:title trop peu informatif : ${pathname}`);
@@ -242,7 +272,9 @@ function checkPageMetadata(html, url, appPaths) {
     fail(`og:url incohérent pour ${pathname} : ${ogUrl || "absent"}`);
   }
   if (twitterCard !== "summary_large_image") {
-    fail(`twitter:card inattendue pour ${pathname} : ${twitterCard || "absente"}`);
+    fail(
+      `twitter:card inattendue pour ${pathname} : ${twitterCard || "absente"}`,
+    );
   }
   if (ogImage) checkSocialImage(ogImage, pathname, appPaths);
   if (twitterImage && twitterImage !== ogImage) {
@@ -275,14 +307,17 @@ function checkDocumentBasics(html, canonicalUrl) {
   const { pathname } = new URL(canonicalUrl);
   const canonicalTags = htmlTagsWithAttribute(html, "link", "rel", "canonical");
   if (canonicalTags.length !== 1) {
-    fail(`canonical présente ${canonicalTags.length} fois au lieu d'une : ${pathname}`);
+    fail(
+      `canonical présente ${canonicalTags.length} fois au lieu d'une : ${pathname}`,
+    );
   }
   const canonical = tagAttribute(canonicalTags[0], "href");
   if (canonical !== canonicalUrl) {
     fail(`canonical incohérent pour ${pathname} : ${canonical ?? "absent"}`);
   }
 
-  const titleCount = (html.match(/<title\b[^>]*>[\s\S]*?<\/title>/gi) ?? []).length;
+  const titleCount = (html.match(/<title\b[^>]*>[\s\S]*?<\/title>/gi) ?? [])
+    .length;
   if (titleCount !== 1) {
     fail(`title présent ${titleCount} fois au lieu d'un : ${pathname}`);
   }
@@ -299,7 +334,8 @@ function checkDocumentBasics(html, canonicalUrl) {
     fail(`landmark main#main-content absent : ${pathname}`);
     return;
   }
-  const mainTargetCount = (html.match(/\bid=["']main-content["']/gi) ?? []).length;
+  const mainTargetCount = (html.match(/\bid=["']main-content["']/gi) ?? [])
+    .length;
   if (mainTargetCount !== 1) {
     fail(`cible main-content dupliquée (${mainTargetCount}) : ${pathname}`);
   }
@@ -323,7 +359,9 @@ function decodeHtmlText(html) {
         hexadecimal ? value.slice(1) : value,
         hexadecimal ? 16 : 10,
       );
-      return Number.isFinite(codePoint) && codePoint >= 0 && codePoint <= 0x10ffff
+      return Number.isFinite(codePoint) &&
+        codePoint >= 0 &&
+        codePoint <= 0x10ffff
         ? String.fromCodePoint(codePoint)
         : " ";
     })
@@ -338,23 +376,92 @@ function decodeHtmlText(html) {
     .trim();
 }
 
+function extractGuideArticleHtml(html) {
+  const mainTag = htmlTagWithAttribute(html, "main", "id", "main-content");
+  if (!mainTag) return null;
+
+  const mainIndex = html.indexOf(mainTag);
+  const openingMatch = /<article\b[^>]*>/gi;
+  openingMatch.lastIndex = mainIndex + mainTag.length;
+  const opening = openingMatch.exec(html);
+  if (!opening) return null;
+
+  const contentStart = opening.index + opening[0].length;
+  const articleTag = /<\/?article\b[^>]*>/gi;
+  articleTag.lastIndex = contentStart;
+  let depth = 1;
+
+  for (let tag = articleTag.exec(html); tag; tag = articleTag.exec(html)) {
+    depth += tag[0].startsWith("</") ? -1 : 1;
+    if (depth === 0) {
+      return html.slice(contentStart, tag.index);
+    }
+  }
+
+  return null;
+}
+
+function stripReadTimeExcludedElements(html) {
+  const openingElement =
+    /<([a-z][a-z0-9-]*)\b[^>]*\bdata-read-time-exclude=["']true["'][^>]*>/gi;
+  let cursor = 0;
+  let output = "";
+
+  for (
+    let opening = openingElement.exec(html);
+    opening;
+    opening = openingElement.exec(html)
+  ) {
+    output += html.slice(cursor, opening.index);
+
+    const tagName = opening[1];
+    const matchingTag = new RegExp(`</?${tagName}\\b[^>]*>`, "gi");
+    matchingTag.lastIndex = opening.index + opening[0].length;
+    let depth = 1;
+    let closingEnd = -1;
+
+    for (let tag = matchingTag.exec(html); tag; tag = matchingTag.exec(html)) {
+      depth += tag[0].startsWith("</") ? -1 : 1;
+      if (depth === 0) {
+        closingEnd = matchingTag.lastIndex;
+        break;
+      }
+    }
+
+    if (closingEnd === -1) return html;
+    cursor = closingEnd;
+    openingElement.lastIndex = closingEnd;
+  }
+
+  return output + html.slice(cursor);
+}
+
 function checkGuideReadTime(html, pathname, guideEntry) {
-  const articleHtml = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1];
+  const articleHtml = extractGuideArticleHtml(html);
   if (!articleHtml) {
-    fail(`contenu article introuvable pour calculer le temps de lecture : ${pathname}`);
+    fail(
+      `contenu article introuvable pour calculer le temps de lecture : ${pathname}`,
+    );
     return;
   }
-  if (!Number.isInteger(guideEntry?.readTimeMin) || guideEntry.readTimeMin < 1) {
+  if (
+    !Number.isInteger(guideEntry?.readTimeMin) ||
+    guideEntry.readTimeMin < 1
+  ) {
     fail(`readTimeMin absent ou invalide dans le registre : ${pathname}`);
     return;
   }
 
-  const visibleText = decodeHtmlText(articleHtml);
+  const visibleText = decodeHtmlText(
+    stripReadTimeExcludedElements(articleHtml),
+  );
   const wordCount =
-    visibleText.match(/[\p{L}\p{N}]+(?:[\u2019'\-][\p{L}\p{N}]+)*/gu)
-      ?.length ?? 0;
+    visibleText.match(/[\p{L}\p{N}]+(?:[\u2019'\-][\p{L}\p{N}]+)*/gu)?.length ??
+    0;
   if (wordCount < 100) {
-    fail(`article trop court ou extraction illisible (${wordCount} mots) : ${pathname}`);
+    fail(
+      `article trop court ou extraction illisible (${wordCount} mots) : ${pathname}`,
+    );
     return;
   }
 
@@ -413,7 +520,9 @@ function checkStructuredData(html, pathname) {
           fail(`nom contradictoire pour #organization : ${pathname}`);
         }
         if (node.legalName && node.legalName !== "HAGNERE CODE") {
-          fail(`raison sociale contradictoire pour #organization : ${pathname}`);
+          fail(
+            `raison sociale contradictoire pour #organization : ${pathname}`,
+          );
         }
         if (node.url && node.url !== SITE_ORIGIN) {
           fail(`URL contradictoire pour #organization : ${pathname}`);
@@ -466,15 +575,22 @@ function checkStructuredData(html, pathname) {
       checkGuideReadTime(html, pathname, guideEntry);
     }
     if (articles.length !== 1) {
-      fail(`guide avec ${articles.length} schéma(s) Article au lieu d'un : ${pathname}`);
+      fail(
+        `guide avec ${articles.length} schéma(s) Article au lieu d'un : ${pathname}`,
+      );
     } else {
       const article = articles[0];
-      const images = Array.isArray(article.image) ? article.image : [article.image];
+      const images = Array.isArray(article.image)
+        ? article.image
+        : [article.image];
       const expectedImage = `${canonicalUrl}/opengraph-image`;
       if (!String(article.headline || "").trim()) {
         fail(`Article sans headline : ${pathname}`);
       }
-      if (article.url !== canonicalUrl || article.mainEntityOfPage?.["@id"] !== canonicalUrl) {
+      if (
+        article.url !== canonicalUrl ||
+        article.mainEntityOfPage?.["@id"] !== canonicalUrl
+      ) {
         fail(`Article sans URL canonique cohérente : ${pathname}`);
       }
       if (!images.includes(expectedImage)) {
@@ -517,9 +633,7 @@ if (robots) {
     if (!/^Disallow: \/api\/$/im.test(robots)) {
       fail("robots.txt ne protège pas les routes non éditoriales /api/.");
     }
-    if (
-      !/^Sitemap: https:\/\/hagnere-code\.ai\/sitemap\.xml$/im.test(robots)
-    ) {
+    if (!/^Sitemap: https:\/\/hagnere-code\.ai\/sitemap\.xml$/im.test(robots)) {
       fail("robots.txt ne publie pas le sitemap canonique.");
     }
     const disallowedPaths = Array.from(
@@ -558,9 +672,7 @@ if (appPathsManifest) {
 const guidesSource = readRequired(guidesSourcePath, "registre des guides");
 const guideEntries = guidesSource
   ? Array.from(
-      guidesSource.matchAll(
-        /\{\s*slug:\s*"([^"]+)"([\s\S]*?)\n\s*\},/g,
-      ),
+      guidesSource.matchAll(/\{\s*slug:\s*"([^"]+)"([\s\S]*?)\n\s*\},/g),
       (match) => ({
         slug: match[1],
         pending: /editorialStatus:\s*"ready-for-human-review"/.test(match[2]),
@@ -577,7 +689,9 @@ if (sitemapXml && sitemapUrls.length === 0) {
   fail("sitemap.xml ne contient aucune URL.");
 }
 if (sitemapXml && /<(?:priority|changefreq)>/i.test(sitemapXml)) {
-  fail("sitemap.xml contient encore priority ou changefreq, valeurs non maintenues.");
+  fail(
+    "sitemap.xml contient encore priority ou changefreq, valeurs non maintenues.",
+  );
 }
 if (sitemapUrlSet.size !== sitemapUrls.length) {
   fail("sitemap.xml contient au moins une URL dupliquée.");
@@ -620,7 +734,10 @@ for (const url of sitemapUrls) {
     if (!robotsContent || !robotsContent.includes("index")) {
       fail(`directive robots index absente : ${parsed.pathname}`);
     }
-    if (robotsContent?.includes("noindex") || robotsContent?.includes("nofollow")) {
+    if (
+      robotsContent?.includes("noindex") ||
+      robotsContent?.includes("nofollow")
+    ) {
       fail(`page du sitemap générée non indexable : ${parsed.pathname}`);
     }
   } else if (
@@ -651,10 +768,7 @@ for (const url of sitemapUrls) {
 
 const llms = readRequired(llmsPath, "llms.txt");
 const llmsUrls = llms
-  ? Array.from(
-      llms.matchAll(/\]\((https:\/\/[^)\s]+)\)/g),
-      (match) => match[1],
-    )
+  ? Array.from(llms.matchAll(/\]\((https:\/\/[^)\s]+)\)/g), (match) => match[1])
   : [];
 const llmsUrlSet = new Set(llmsUrls);
 
@@ -724,7 +838,10 @@ const guidesHub = readRequired(
 function guideHubContains(slug) {
   return Boolean(
     guidesHub?.match(
-      new RegExp(`href=["']/guides/${slug.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`, "i"),
+      new RegExp(
+        `href=["']/guides/${slug.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`,
+        "i",
+      ),
     ),
   );
 }
@@ -775,13 +892,19 @@ for (const slug of pendingGuideSlugs) {
   const pagePath = artifactHtmlPath(canonicalUrl);
 
   if (sitemapUrlSet.has(canonicalUrl)) {
-    fail(`guide avec porte éditoriale non levée présent dans le sitemap : ${pathname}`);
+    fail(
+      `guide avec porte éditoriale non levée présent dans le sitemap : ${pathname}`,
+    );
   }
   if (llmsUrlSet.has(canonicalUrl)) {
-    fail(`guide avec porte éditoriale non levée présent dans llms.txt : ${pathname}`);
+    fail(
+      `guide avec porte éditoriale non levée présent dans llms.txt : ${pathname}`,
+    );
   }
   if (guideHubContains(slug)) {
-    fail(`guide avec porte éditoriale non levée présent dans le hub : ${pathname}`);
+    fail(
+      `guide avec porte éditoriale non levée présent dans le hub : ${pathname}`,
+    );
   }
   if (!existsSync(pagePath)) {
     fail(`artefact du guide en attente absent : ${pathname}`);

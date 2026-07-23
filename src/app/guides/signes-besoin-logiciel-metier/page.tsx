@@ -286,6 +286,14 @@ export default function Page() {
         ]}
         relatedLinks={[
           {
+            href: "/guides/application-suivi-production-pme",
+            label: "Choisir un outil de suivi de production pour une PME",
+          },
+          {
+            href: "/guides/back-office-sur-mesure-pme",
+            label: "Décider s’il faut créer un back-office",
+          },
+          {
             href: "/guides/automatiser-processus-metier",
             label: "Choisir un processus à automatiser",
           },

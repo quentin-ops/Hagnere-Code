@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import { GuideTable } from "./guide-content-blocks";
+import { GuideInlineCTA, GuideTable } from "./guide-content-blocks";
 
 describe("GuideTable responsive reading", () => {
   it("renders complete labelled cards for phone screens", () => {
@@ -20,6 +20,7 @@ describe("GuideTable responsive reading", () => {
     );
 
     expect(html).toContain("not-prose my-6 md:hidden");
+    expect(html).toContain('data-read-time-exclude="true"');
     expect(html).toContain('role="group"');
     expect(html).toContain("Quel canal choisir ?");
     expect(html).toContain("Situation");
@@ -44,5 +45,21 @@ describe("GuideTable responsive reading", () => {
     expect(html).toContain("<caption");
     expect(html).toContain("Comparaison simple");
     expect(html).toContain('scope="row"');
+  });
+});
+
+describe("GuideInlineCTA actions", () => {
+  it("can expose only the declared primary action", () => {
+    const html = renderToStaticMarkup(
+      <GuideInlineCTA
+        ctaHref="/demarrer-un-projet"
+        ctaLabel="Présenter le trajet du bon"
+        showPhone={false}
+      />,
+    );
+
+    expect(html).toContain('href="/demarrer-un-projet"');
+    expect(html).toContain("Présenter le trajet du bon");
+    expect(html).not.toContain("tel:");
   });
 });

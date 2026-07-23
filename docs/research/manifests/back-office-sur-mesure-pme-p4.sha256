@@ -1,0 +1,6 @@
+654df65e64dc0bce534c00f7e734c09a5855a4d4c73e9439dd1bd06ef38753c7  docs/research/back-office-sur-mesure-pme.md
+a81fb79181236b705cd215609213369a78f7cbdc60249cfdd6040725f45e9e44  src/app/guides/back-office-sur-mesure-pme/page.tsx
+9c9856c68fc95b15dae8cb0999c595cc313ed656f4629d7f179ece8041259c4a  src/app/guides/back-office-sur-mesure-pme/opengraph-image.tsx
+58578fa9c300aa963f471bd5812a4132459388f57efb72ceb59201e7dd682c8e  src/lib/guides.ts
+20a72b8beef923889f2920693e83bca037254fc1461f66c9013b0d26d51523bd  src/app/guides/signes-besoin-logiciel-metier/page.tsx
+6eb85fea7390eac771837fd726d2097353bae73786224df7c02e815facb2336b  src/lib/guide-human-language.test.ts

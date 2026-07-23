@@ -1,0 +1,6 @@
+4297fd7c51373faf58c32f8d61476f247508b195b897655b74fc332d94d074e9  docs/research/prioriser-fonctionnalites-mvp-saas.md
+e0afa953f2a116c593e3bef075a0ddb1e11c0ba0a6f90b00dd1d2c437f4ce477  src/app/guides/prioriser-fonctionnalites-mvp-saas/page.tsx
+b3be16004b60cb4d00d9df8a31d6029d7b2f611af7ad3dc64872c9f677079962  src/app/guides/prioriser-fonctionnalites-mvp-saas/opengraph-image.tsx
+23df5cc3866cc9e46895e5f7e2cc8336e2d00c12d78483d44e58558748e9d4aa  src/lib/guides.ts
+8f3b4bb5f66e54b60656cc97afb9e52d267626b482771c37a946c35ce1cba4ce  src/app/guides/mvp-saas-quoi-inclure/page.tsx
+77d64032f44719d675ae8dc94281f681422ea47c5b58fda8cb3326961e267b9f  src/lib/guide-human-language.test.ts

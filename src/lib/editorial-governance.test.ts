@@ -7,6 +7,16 @@ import { GUIDES, PUBLISHED_GUIDES } from "./guides";
 const researchRoot = path.join(process.cwd(), "docs/research");
 
 const frozenFourPassLot = [
+  "prioriser-fonctionnalites-mvp-saas",
+  "back-office-sur-mesure-pme",
+  "digitaliser-bons-intervention",
+  "portail-client-b2b-sur-mesure",
+  "application-suivi-production-pme",
+  "faire-evoluer-saas-apres-mvp",
+  "google-search-ads-ou-performance-max",
+  "seo-local-pme",
+  "tma-ou-regie",
+  "site-one-page-ou-multipage",
   "application-gestion-interventions-terrain",
   "agence-saas-ou-freelance",
   "reprendre-maintenance-site-autre-agence",
@@ -25,6 +35,16 @@ const frozenFourPassLot = [
 ] as const;
 
 const delegatedPublicationGuides = [
+  "prioriser-fonctionnalites-mvp-saas",
+  "back-office-sur-mesure-pme",
+  "digitaliser-bons-intervention",
+  "portail-client-b2b-sur-mesure",
+  "application-suivi-production-pme",
+  "faire-evoluer-saas-apres-mvp",
+  "google-search-ads-ou-performance-max",
+  "seo-local-pme",
+  "tma-ou-regie",
+  "site-one-page-ou-multipage",
   "agence-saas-ou-freelance",
   "application-gestion-interventions-terrain",
   "audit-google-ads-que-verifier",

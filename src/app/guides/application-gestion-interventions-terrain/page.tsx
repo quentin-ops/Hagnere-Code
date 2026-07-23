@@ -295,6 +295,10 @@ export default function Page() {
         ]}
         relatedLinks={[
           {
+            href: "/guides/digitaliser-bons-intervention",
+            label: "Comprendre quoi mettre dans un bon d’intervention",
+          },
+          {
             href: "/guides/automatiser-processus-metier",
             label: "Choisir le premier processus à automatiser",
           },
