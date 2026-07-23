@@ -207,6 +207,10 @@ export default function Page() {
             label: "Définir le périmètre du premier MVP",
           },
           {
+            href: "/guides/seo-saas-b2b",
+            label: "Relier le futur contenu aux questions de vente",
+          },
+          {
             href: "/guides/combien-coute-un-saas",
             label: "Combien coûte un SaaS ?",
           },

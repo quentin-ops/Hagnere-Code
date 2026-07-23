@@ -204,6 +204,10 @@ export default function Page() {
             label: "Transformer Excel en application",
           },
           {
+            href: "/guides/power-apps-ou-application-sur-mesure",
+            label: "Évaluer une Power App déjà utilisée",
+          },
+          {
             href: "/guides/prix-logiciel-sur-mesure",
             label: "Prix d'un logiciel sur mesure",
           },

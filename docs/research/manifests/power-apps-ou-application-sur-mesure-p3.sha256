@@ -1,0 +1,7 @@
+80043c8bb2400e25d41bc8dd06899c1aacc133df0e81f3eb2d1d3548ff816ada  docs/research/power-apps-ou-application-sur-mesure.md
+1edd0201e087f7256fdafa1d5e127f609bab59727c85a9ad4ce3db5d9886e2c0  src/app/guides/power-apps-ou-application-sur-mesure/page.tsx
+0e1f241c987795dc92fedc66e79382263c154a7e77a8887d3ec3599b437e69ac  src/app/guides/power-apps-ou-application-sur-mesure/opengraph-image.tsx
+51d17a5149d2f5ee4977b70d6a0c42e74318575a650aa8a319ba9a145d806706  src/lib/guides.ts
+d965ce6976d99a53d504fc274c5c4783fed1451491a1aa46d65aa100cd0f8c35  src/app/guides/no-code-ou-sur-mesure/page.tsx
+0241a105a711793083b08b3a6c139eb44054e9fd259ff681a3d861c4f2fa311d  src/lib/guide-human-language.test.ts
+1764df98bf9fc3217ecae9c873a2eb5311cd9b8fcb88fa5a66ce105171e76639  src/lib/batch3-guide-quality.test.ts

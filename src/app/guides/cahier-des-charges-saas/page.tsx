@@ -265,6 +265,14 @@ export default function Page() {
             label: "Choisir le parcours de la première version",
           },
           {
+            href: "/guides/facturation-abonnements-saas",
+            label: "Écrire le cycle de facturation des abonnements",
+          },
+          {
+            href: "/guides/securite-saas-b2b",
+            label: "Préparer les preuves de sécurité demandées en B2B",
+          },
+          {
             href: "/guides/combien-coute-un-saas",
             label: "Estimer ensuite le budget du SaaS",
           },

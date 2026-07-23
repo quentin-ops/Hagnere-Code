@@ -209,6 +209,10 @@ export default function Page() {
             label: "Transformer Excel en application",
           },
           {
+            href: "/guides/logiciel-gestion-stock-sur-mesure",
+            label: "Fiabiliser un stock avant de changer de logiciel",
+          },
+          {
             href: "/guides/no-code-ou-sur-mesure",
             label: "No-code ou sur-mesure",
           },

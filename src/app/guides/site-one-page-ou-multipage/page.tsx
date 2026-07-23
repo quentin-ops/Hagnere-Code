@@ -322,6 +322,10 @@ export default function Page() {
             label: "Préparer les contenus du site vitrine",
           },
           {
+            href: "/guides/prise-rendez-vous-en-ligne-site-vitrine",
+            label: "Choisir le bon parcours de prise de rendez-vous",
+          },
+          {
             href: "/guides/template-ou-site-sur-mesure",
             label: "Choisir entre template et site sur mesure",
           },

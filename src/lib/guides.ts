@@ -40,6 +40,155 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "prise-rendez-vous-en-ligne-site-vitrine",
+    title: "Prise de rendez-vous en ligne : quelle solution choisir ?",
+    cardTitle: "Quel agenda en ligne relier à votre site ?",
+    metaDescription:
+      "Doublons, absences ou créneaux fantômes ? Écrivez vos règles puis choisissez entre formulaire, agenda, plateforme, paiement ou sur-mesure.",
+    cardDescription:
+      "Rejouez cinq rendez-vous, nommez les ressources et les exceptions, puis choisissez la solution la plus simple qui confirme réellement un créneau.",
+    heroTitle:
+      "Quelle solution de prise de rendez-vous en ligne choisir pour votre site ?",
+    section: "Sites vitrines",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 9,
+  },
+  {
+    slug: "dette-technique-cout-entreprise",
+    title: "Dette technique : quel coût pour l’entreprise ?",
+    cardTitle: "Combien votre dette technique coûte-t-elle ?",
+    metaDescription:
+      "Chaque évolution devient un chantier ? Mesurez retards, reprises et régressions avant de stabiliser, moderniser ou reconstruire votre logiciel.",
+    cardDescription:
+      "Transformez cinq changements récents en coûts observables, puis choisissez une réponse proportionnée sans conclure trop vite à la réécriture.",
+    heroTitle:
+      "Comment mesurer le coût de la dette technique pour votre entreprise ?",
+    section: "Maintenance et évolution",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 8,
+  },
+  {
+    slug: "sla-maintenance-applicative",
+    title: "SLA de maintenance applicative : que faut-il prévoir ?",
+    cardTitle: "Que doit vraiment promettre un SLA applicatif ?",
+    metaDescription:
+      "Une réponse sous quatre heures ne rétablit pas votre activité. Distinguez prise en charge, restauration, horaires et données avant de signer un SLA.",
+    cardDescription:
+      "Partez d’une journée de panne pour écrire des niveaux de service compris par la direction, les utilisateurs et le mainteneur.",
+    heroTitle:
+      "SLA de maintenance applicative : quels engagements faut-il réellement écrire ?",
+    section: "Maintenance et évolution",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 10,
+  },
+  {
+    slug: "google-ads-ou-meta-ads",
+    title: "Google Ads ou Meta Ads : que choisir pour votre entreprise ?",
+    cardTitle: "Google Ads ou Meta Ads : lequel choisir ?",
+    metaDescription:
+      "Faut-il capter une demande sur Google ou créer l’intérêt sur Facebook et Instagram ? Choisissez selon votre offre, vos preuves et votre mesure.",
+    cardDescription:
+      "Comparez deux rôles publicitaires différents, puis décidez de tester Google, Meta, une séquence des deux ou aucun des deux pour l’instant.",
+    heroTitle:
+      "Google Ads ou Meta Ads : quel canal choisir pour trouver des clients ?",
+    section: "Publicité en ligne",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 11,
+  },
+  {
+    slug: "calculer-cout-par-lead-google-ads",
+    title: "Calculer son coût par lead Google Ads",
+    cardTitle: "Combien coûte un vrai lead Google Ads ?",
+    metaDescription:
+      "Google affiche 35 € par conversion ? Calculez le coût d’une demande, d’un lead qualifié et d’un client sur la même cohorte avant de changer le budget.",
+    cardDescription:
+      "Six formules reproductibles pour distinguer conversion, demande, qualification et vente, puis comparer le coût observé à votre marge prudente.",
+    heroTitle:
+      "Comment calculer le vrai coût par lead de vos campagnes Google Ads ?",
+    section: "Google Ads",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 11,
+  },
+  {
+    slug: "seo-saas-b2b",
+    title: "SEO SaaS B2B : comment obtenir des demandes qualifiées ?",
+    cardTitle: "Quel SEO pour vendre un SaaS B2B ?",
+    metaDescription:
+      "Votre blog attire peu de démonstrations ? Transformez les questions commerciales en trois pages utiles, puis mesurez demande, qualification et vente.",
+    cardDescription:
+      "Reprenez dix conversations de vente, choisissez trois pages de rôles différents et décidez après un pilote limité plutôt que publier au rythme d’un quota.",
+    heroTitle:
+      "Comment construire un SEO de SaaS B2B qui aide vraiment les ventes ?",
+    section: "Référencement naturel",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 10,
+  },
+  {
+    slug: "securite-saas-b2b",
+    title: "Sécurité SaaS B2B : que prouver avant de signer ?",
+    cardTitle: "Que prouver sur la sécurité de votre SaaS ?",
+    metaDescription:
+      "Un grand compte envoie son questionnaire sécurité ? Classez les preuves, les écarts planifiables et les vrais blocages avant de répondre ou signer.",
+    cardDescription:
+      "Huit fiches pour répondre avec des faits sur les accès, sauvegardes, journaux, incidents, sous-traitants et continuité sans prétendre être certifié.",
+    heroTitle:
+      "Sécurité d’un SaaS B2B : quelles preuves fournir avant de signer ?",
+    section: "SaaS et applications métier",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 10,
+  },
+  {
+    slug: "facturation-abonnements-saas",
+    title: "Facturation des abonnements SaaS : que faut-il prévoir ?",
+    cardTitle: "Comment facturer les abonnements d’un SaaS ?",
+    metaDescription:
+      "Mensuel, annuel, essai, impayé ou changement d’offre : reliez contrat, facture, paiement et accès avant d’automatiser votre abonnement SaaS.",
+    cardDescription:
+      "Suivez la vie complète d’un abonnement, traitez les mauvais cas et choisissez ce qui peut rester manuel, être hébergé ou intégré au produit.",
+    heroTitle:
+      "Comment organiser la facturation des abonnements de votre SaaS ?",
+    section: "SaaS et applications métier",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 10,
+  },
+  {
+    slug: "logiciel-gestion-stock-sur-mesure",
+    title: "Logiciel de gestion de stock sur mesure : faut-il le créer ?",
+    cardTitle: "Votre stock a-t-il besoin d’un logiciel sur mesure ?",
+    metaDescription:
+      "ERP, entrepôt et site affichent trois stocks différents ? Retrouvez le mouvement fautif avant de configurer, intégrer, acheter ou développer.",
+    cardDescription:
+      "Suivez une référence de la réception au retour, testez les scénarios difficiles et choisissez une réponse proportionnée aux écarts observés.",
+    heroTitle: "Faut-il créer un logiciel de gestion de stock sur mesure ?",
+    section: "Applications métier",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 8,
+  },
+  {
+    slug: "power-apps-ou-application-sur-mesure",
+    title: "Power Apps ou application sur mesure : que choisir ?",
+    cardTitle: "Faut-il remplacer votre Power App ?",
+    metaDescription:
+      "Votre Power App passe de 8 à 30 utilisateurs ? Auditez licences, données, hors-ligne, maintenance et sortie avant de la renforcer ou remplacer.",
+    cardDescription:
+      "Inventoriez l’application réellement utilisée, rejouez une journée critique et décidez de gouverner, industrialiser, piloter ou reconstruire.",
+    heroTitle:
+      "Power Apps ou application sur mesure : faut-il renforcer ou remplacer votre outil ?",
+    section: "Applications métier",
+    datePublished: "2026-07-23",
+    dateModified: "2026-07-23",
+    readTimeMin: 10,
+  },
+  {
     slug: "site-one-page-ou-multipage",
     title: "Site one-page ou multipage : lequel choisir ?",
     cardTitle: "Une page ou plusieurs pour votre site ?",

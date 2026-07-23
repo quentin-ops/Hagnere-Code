@@ -1,0 +1,7 @@
+926a2093aebd02f1d3717c79f54b3049afa72237fbd32ac48dd3b505b885f7c8  docs/research/facturation-abonnements-saas.md
+c11397f45cec492f2cc6aa1aa90f717673b8591e470f687156ebcccffbc82859  src/app/guides/facturation-abonnements-saas/page.tsx
+db29441328866e3e12b50e8ae7e3381fcb34c6d1faba9dd6b5e4e10bfe354c45  src/app/guides/facturation-abonnements-saas/opengraph-image.tsx
+51d17a5149d2f5ee4977b70d6a0c42e74318575a650aa8a319ba9a145d806706  src/lib/guides.ts
+b577065d8226bcbcbff8e58102f999b03955029d6d94c8ff49b1593a5cc06da0  src/app/guides/cahier-des-charges-saas/page.tsx
+0241a105a711793083b08b3a6c139eb44054e9fd259ff681a3d861c4f2fa311d  src/lib/guide-human-language.test.ts
+1764df98bf9fc3217ecae9c873a2eb5311cd9b8fcb88fa5a66ce105171e76639  src/lib/batch3-guide-quality.test.ts

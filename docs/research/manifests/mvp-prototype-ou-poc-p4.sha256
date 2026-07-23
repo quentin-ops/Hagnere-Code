@@ -1,10 +1,10 @@
 cf187e27023f280f5e6f72cea74c6987aa43caf473a2454b5cc601b3a7dfba78  docs/research/mvp-prototype-ou-poc.md
 17f08e21719b9d2fd64ea74de45ffe95844af1b336a608afd3cc24303fe17737  src/app/guides/mvp-prototype-ou-poc/page.tsx
 be9639b01ff2a049db6d072b39b3e76e381961f1d1d76fbe748c3c609268c1d1  src/app/guides/mvp-prototype-ou-poc/opengraph-image.tsx
-58578fa9c300aa963f471bd5812a4132459388f57efb72ceb59201e7dd682c8e  src/lib/guides.ts
+8d1f27349a753a031819123e6ababe6279fdc78518966df9d7ed84b379133dd0  src/lib/guides.ts
 276a6f9b64a4c1a7a9d7d620b1080625f11103fb03a2cdb04e93cec64481fe3d  src/components/guides/GuidesHubPage.tsx
-6eb85fea7390eac771837fd726d2097353bae73786224df7c02e815facb2336b  src/lib/guide-human-language.test.ts
+0241a105a711793083b08b3a6c139eb44054e9fd259ff681a3d861c4f2fa311d  src/lib/guide-human-language.test.ts
 8f3b4bb5f66e54b60656cc97afb9e52d267626b482771c37a946c35ce1cba4ce  src/app/guides/mvp-saas-quoi-inclure/page.tsx
 fb6e7d2871b549bc2666ff5770cad9559b9fdb7594b272a1407eba499cf2307b  src/components/guides/guide-content-blocks.tsx
 f210600f7951c549fae472d789e4abecb21584df23c2cda04c771f99d6b50009  src/components/guides/guide-content-blocks.test.tsx
-c809e6822c5bbd889849e571e09373ea7dc07e1a4cb7ead576aa1d400d415afa  src/lib/editorial-governance.test.ts
+804cc3f051f1d5b0419a62d3bd56d14501f8afa8dc2e0df93bd28db5416d4a6a  src/lib/editorial-governance.test.ts

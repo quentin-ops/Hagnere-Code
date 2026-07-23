@@ -210,6 +210,10 @@ export default function Page() {
             label: "Cadrer les évolutions après la reprise",
           },
           {
+            href: "/guides/dette-technique-cout-entreprise",
+            label: "Objectiver le coût des changements devenus difficiles",
+          },
+          {
             href: "/guides/contrat-tma-application",
             label: "Structurer le contrat de maintenance après la reprise",
           },

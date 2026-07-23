@@ -212,6 +212,10 @@ export default function Page() {
             label: "Construire le budget annuel de l’application",
           },
           {
+            href: "/guides/sla-maintenance-applicative",
+            label: "Écrire les engagements de prise en charge et de reprise",
+          },
+          {
             href: "/services/maintenance-evolution",
             label: "Maintenance et évolution d’applications",
           },
