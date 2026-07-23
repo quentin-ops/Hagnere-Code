@@ -1,0 +1,6 @@
+d76bb3ab74413a3c5ea30ef8493daef08d7322a476162b617022b1152e4d7f9e  docs/research/calculer-cout-par-lead-google-ads.md
+6b5c5b8427eb3db5b62dc782485481b96da4fda3a4eb177bb122a99eb7cc41cc  src/app/guides/calculer-cout-par-lead-google-ads/page.tsx
+38f27264e0e0ebd3e63db0a059d584965d85e9f6e0719cd4c1c2a8a85c35fb63  src/app/guides/calculer-cout-par-lead-google-ads/opengraph-image.tsx
+51d17a5149d2f5ee4977b70d6a0c42e74318575a650aa8a319ba9a145d806706  src/lib/guides.ts
+b7a0c8250af2b511cf8dc9c8ba784663e61ba6a8eaac50bc90f26cdab9f048f6  src/app/guides/budget-google-ads-pme/page.tsx
+0241a105a711793083b08b3a6c139eb44054e9fd259ff681a3d861c4f2fa311d  src/lib/guide-human-language.test.ts

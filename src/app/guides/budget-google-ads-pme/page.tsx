@@ -214,6 +214,14 @@ export default function Page() {
             label: "Choisir entre Search et Performance Max",
           },
           {
+            href: "/guides/google-ads-ou-meta-ads",
+            label: "Choisir entre Google Ads et Meta Ads",
+          },
+          {
+            href: "/guides/calculer-cout-par-lead-google-ads",
+            label: "Calculer le coût d’une demande vraiment qualifiée",
+          },
+          {
             href: "/guides/audit-google-ads-que-verifier",
             label: "Auditer une campagne Google Ads active",
           },

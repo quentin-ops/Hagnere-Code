@@ -54,6 +54,16 @@ const july22PublicationSlugs = new Set([
 ]);
 
 const july23PublicationSlugs = new Set([
+  "power-apps-ou-application-sur-mesure",
+  "logiciel-gestion-stock-sur-mesure",
+  "facturation-abonnements-saas",
+  "securite-saas-b2b",
+  "seo-saas-b2b",
+  "calculer-cout-par-lead-google-ads",
+  "google-ads-ou-meta-ads",
+  "sla-maintenance-applicative",
+  "dette-technique-cout-entreprise",
+  "prise-rendez-vous-en-ligne-site-vitrine",
   "prioriser-fonctionnalites-mvp-saas",
   "back-office-sur-mesure-pme",
   "digitaliser-bons-intervention",

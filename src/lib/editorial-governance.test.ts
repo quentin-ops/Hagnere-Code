@@ -32,6 +32,16 @@ const frozenFourPassLot = [
   "positions-google-baissent",
   "combien-de-temps-resultats-seo",
   "landing-page-ou-site-vitrine",
+  "power-apps-ou-application-sur-mesure",
+  "logiciel-gestion-stock-sur-mesure",
+  "facturation-abonnements-saas",
+  "securite-saas-b2b",
+  "seo-saas-b2b",
+  "calculer-cout-par-lead-google-ads",
+  "google-ads-ou-meta-ads",
+  "sla-maintenance-applicative",
+  "dette-technique-cout-entreprise",
+  "prise-rendez-vous-en-ligne-site-vitrine",
 ] as const;
 
 const delegatedPublicationGuides = [
@@ -74,6 +84,16 @@ const delegatedPublicationGuides = [
   "site-internet-en-panne-que-faire",
   "template-ou-site-sur-mesure",
   "valider-idee-saas-avant-developper",
+  "power-apps-ou-application-sur-mesure",
+  "logiciel-gestion-stock-sur-mesure",
+  "facturation-abonnements-saas",
+  "securite-saas-b2b",
+  "seo-saas-b2b",
+  "calculer-cout-par-lead-google-ads",
+  "google-ads-ou-meta-ads",
+  "sla-maintenance-applicative",
+  "dette-technique-cout-entreprise",
+  "prise-rendez-vous-en-ligne-site-vitrine",
 ] as const;
 
 function parseManifest(manifestPath: string) {

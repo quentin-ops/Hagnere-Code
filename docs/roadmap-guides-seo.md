@@ -1,9 +1,9 @@
 # Roadmap de 100 nouveaux guides orientés conversion
 
-> Dernière révision : 22 juillet 2026. Cette roadmap a été créée avec **100
+> Dernière révision : 23 juillet 2026. Cette roadmap a été créée avec **100
 > nouveaux sujets**, en plus des 32 guides alors inscrits dans
-> `src/lib/guides.ts`. Vingt-neuf de ces sujets sont désormais
-> implémentés : il reste donc 71 sujets à produire. Ce portefeuille
+> `src/lib/guides.ts`. Cinquante-neuf de ces sujets sont désormais
+> implémentés : il reste donc 41 sujets à produire. Ce portefeuille
 > éditorial n'est pas une promesse que le volume constitue en lui-même un
 > facteur de classement.
 
@@ -322,7 +322,7 @@ impressions non-marque, requêtes, CTR, clics vers les pages service, démarrage
 de formulaire et demandes qualifiées. Une position moyenne isolée ou un temps
 passé ne suffit pas à juger un guide.
 
-## 10. Vingt-neuf guides de la roadmap implémentés
+## 10. Cinquante-neuf guides de la roadmap implémentés
 
 Le premier sprint a été implémenté le 20 juillet 2026 :
 
@@ -419,3 +419,71 @@ cinq guides ont chacun franchi recherche, rédaction, contre-audit indépendant,
 corrections, passe de plume, build et contrôle responsive réel. Leur ouverture
 à `index,follow` indique qu’ils sont techniquement indexables ; elle ne prouve
 ni exploration, ni indexation effective, ni classement futur.
+
+Le lot de dix suivant a ensuite été validé le 22 juillet 2026 :
+
+1. `migrer-logiciel-metier-sans-interruption` ;
+2. `leads-google-ads-non-qualifies` ;
+3. `site-internet-en-panne-que-faire` ;
+4. `mvp-prototype-ou-poc` ;
+5. `automatiser-saisie-donnees-entreprise` ;
+6. `connecter-erp-crm-logiciel-metier` ;
+7. `combien-de-temps-developper-saas` ;
+8. `positions-google-baissent` ;
+9. `combien-de-temps-resultats-seo` ;
+10. `landing-page-ou-site-vitrine`.
+
+Ces dix guides couvrent une bascule applicative, la qualité des demandes Ads,
+un incident de site, le choix du bon objet avant un MVP, les ressaisies, les
+échanges entre logiciels, le délai de développement d’un SaaS, une baisse SEO,
+le calendrier des résultats et le choix entre page de campagne et site
+durable. Chacun possède une décision, une forme, un dossier de recherche et un
+contre-audit propres. Leur présence dans le sitemap et la politique
+`index,follow` ne prouvent toujours pas une indexation effective.
+
+Le lot suivant a franchi les quatre passes le 23 juillet 2026 :
+
+1. `prioriser-fonctionnalites-mvp-saas` ;
+2. `back-office-sur-mesure-pme` ;
+3. `digitaliser-bons-intervention` ;
+4. `portail-client-b2b-sur-mesure` ;
+5. `application-suivi-production-pme` ;
+6. `faire-evoluer-saas-apres-mvp` ;
+7. `google-search-ads-ou-performance-max` ;
+8. `seo-local-pme` ;
+9. `tma-ou-regie` ;
+10. `site-one-page-ou-multipage`.
+
+Ce lot renforce les parcours SaaS, applications métier, maintenance,
+publicité, référencement local et sites vitrines. Les ouvertures suivent des
+situations différentes — demande client, dossier, bon terrain, ordre de
+production, campagne ou recherche locale — afin que la structure éditoriale ne
+devienne pas une signature mécanique. Les dix pages ont été soumises à leurs
+contrôles techniques et visuels ; elles sont indexables, sans que cela vaille
+preuve d’exploration, d’indexation ou de position.
+
+Le lot suivant a été produit le 23 juillet 2026 :
+
+1. `power-apps-ou-application-sur-mesure` ;
+2. `logiciel-gestion-stock-sur-mesure` ;
+3. `facturation-abonnements-saas` ;
+4. `securite-saas-b2b` ;
+5. `seo-saas-b2b` ;
+6. `calculer-cout-par-lead-google-ads` ;
+7. `google-ads-ou-meta-ads` ;
+8. `sla-maintenance-applicative` ;
+9. `dette-technique-cout-entreprise` ;
+10. `prise-rendez-vous-en-ligne-site-vitrine`.
+
+Ces dix guides partent de décisions différentes : renforcer ou remplacer un
+outil Microsoft, retrouver un écart de stock, organiser un abonnement, répondre
+à un acheteur sécurité, relier le SEO aux ventes, calculer les vrais coûts Ads,
+choisir un premier canal publicitaire, écrire des engagements de maintenance,
+mesurer le coût des ralentissements techniques ou confirmer honnêtement un
+rendez-vous. Les contre-audits ont notamment corrigé une formule de CAC, séparé
+un plafond média d’un plafond complet et retiré des gabarits éditoriaux répétés.
+Le snapshot final a franchi le build de production, le contrôle de l’artefact
+SEO et 50 combinaisons route/largeur dans un vrai navigateur. Les dix routes
+sont donc autorisées en `index,follow` et peuvent rejoindre le hub, le sitemap
+et `llms.txt`. Cette ouverture technique ne prouve ni exploration, ni
+indexation effective, ni classement.
