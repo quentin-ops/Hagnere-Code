@@ -1,6 +1,6 @@
 83a116576b36f2e709fb756e3dd987b551ad219ab1653fdbf306e94a3e0491b9  docs/research/google-search-ads-ou-performance-max.md
 9dee56a7ecb3bf6579b3c3ccda7eff57615e992225ef97ee95f2219aac9b2b0d  src/app/guides/google-search-ads-ou-performance-max/page.tsx
 6403f886f5ceaf6a855a55f79dfe29cb22688329b842aad3bb2b37cd8c56ad2c  src/app/guides/google-search-ads-ou-performance-max/opengraph-image.tsx
-8d1f27349a753a031819123e6ababe6279fdc78518966df9d7ed84b379133dd0  src/lib/guides.ts
+b2eeda0fc3d7be23834108823176da59814d312e4b93c33426ab9e475a00ee3f  src/lib/guides.ts
 b7a0c8250af2b511cf8dc9c8ba784663e61ba6a8eaac50bc90f26cdab9f048f6  src/app/guides/budget-google-ads-pme/page.tsx
-0241a105a711793083b08b3a6c139eb44054e9fd259ff681a3d861c4f2fa311d  src/lib/guide-human-language.test.ts
+8fbf045722ebbda2bd46407564e40b92bdf5b17ce3cb087a27c776ddc4f73a7b  src/lib/guide-human-language.test.ts

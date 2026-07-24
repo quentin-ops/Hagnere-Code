@@ -40,6 +40,156 @@ export interface GuideEntry {
 
 export const GUIDES: GuideEntry[] = [
   {
+    slug: "audit-technique-avant-reprendre-site",
+    title: "Audit technique avant reprise d’un site : que vérifier ?",
+    cardTitle: "Que vérifier avant de reprendre un site ?",
+    metaDescription:
+      "Site mal documenté ? Vérifiez les accès, restaurez une copie et testez les fonctions importantes avant de signer, négocier ou reporter.",
+    cardDescription:
+      "Transformez les inconnues techniques en une décision claire : reprise possible, reprise sous conditions ou attente.",
+    heroTitle:
+      "Quel audit technique réaliser avant de reprendre un site internet ?",
+    section: "Maintenance & reprise",
+    datePublished: "2026-07-24",
+    dateModified: "2026-07-24",
+    readTimeMin: 16,
+  },
+  {
+    slug: "site-indexe-sans-trafic",
+    title: "Site indexé sans trafic : que faut-il corriger ?",
+    cardTitle: "Pourquoi un site indexé reste-t-il sans trafic ?",
+    metaDescription:
+      "Vos pages sont indexées mais presque jamais visitées ? Séparez absence d’impressions, mauvais classement et manque de clics avant de les retravailler.",
+    cardDescription:
+      "Croisez pages, requêtes, impressions et clics pour conserver, améliorer, fusionner ou retirer chaque groupe de contenus.",
+    heroTitle:
+      "Pourquoi votre site est-il indexé sur Google mais reste sans trafic ?",
+    section: "Référencement naturel",
+    datePublished: "2026-07-24",
+    dateModified: "2026-07-24",
+    readTimeMin: 15,
+  },
+  {
+    slug: "contrat-seo-duree-engagement",
+    title: "Contrat SEO : quelle durée d’engagement accepter ?",
+    cardTitle: "Faut-il signer douze mois de SEO ?",
+    metaDescription:
+      "Une agence SEO vous demande douze mois ? Vérifiez travaux, accès, documents à récupérer et conditions de sortie avant de signer ou négocier.",
+    cardDescription:
+      "Reliez chaque période payée à des travaux vérifiables, des éléments récupérables et une règle de sortie compréhensible.",
+    heroTitle:
+      "Contrat SEO : quelle durée d’engagement faut-il réellement accepter ?",
+    section: "Référencement naturel",
+    datePublished: "2026-07-24",
+    dateModified: "2026-07-24",
+    readTimeMin: 9,
+  },
+  {
+    slug: "google-ads-commerce-local",
+    title: "Google Ads pour commerce local : comment mesurer ?",
+    cardTitle: "Google Ads peut-il amener des clients en magasin ?",
+    metaDescription:
+      "Vous voulez plus d’appels, d’itinéraires ou de ventes en magasin ? Choisissez une action locale mesurable avant de financer Google Ads.",
+    cardDescription:
+      "Séparez appel, déplacement et achat, puis reliez chaque parcours à ce que votre commerce peut réellement observer.",
+    heroTitle:
+      "Comment utiliser Google Ads pour attirer des clients dans un commerce local ?",
+    section: "Google Ads & acquisition",
+    datePublished: "2026-07-24",
+    dateModified: "2026-07-24",
+    readTimeMin: 9,
+  },
+  {
+    slug: "google-ads-saas-b2b",
+    title: "Google Ads pour SaaS B2B : comment décider ?",
+    cardTitle: "Google Ads est-il rentable pour votre SaaS B2B ?",
+    metaDescription:
+      "Vos campagnes génèrent des démonstrations mais peu de contrats ? Remontez du client signé au clic avant d’augmenter, corriger ou arrêter le budget.",
+    cardDescription:
+      "Suivez le même groupe de contacts du clic au contrat et comparez les segments sur des ventes réelles plutôt que sur un formulaire rempli.",
+    heroTitle:
+      "Comment savoir si Google Ads peut être rentable pour votre SaaS B2B ?",
+    section: "Google Ads & acquisition",
+    datePublished: "2026-07-24",
+    dateModified: "2026-07-24",
+    readTimeMin: 9,
+  },
+  {
+    slug: "logiciel-planning-sur-mesure",
+    title: "Logiciel de planning sur mesure : est-ce nécessaire ?",
+    cardTitle: "Votre planning a-t-il besoin de sur-mesure ?",
+    metaDescription:
+      "Compétences, absences, véhicules et urgences se contredisent ? Rejouez une semaine difficile avant de choisir un logiciel standard ou sur mesure.",
+    cardDescription:
+      "Testez vos vraies règles de conflit et choisissez entre organisation, outil standard, intégration ou développement dédié.",
+    heroTitle:
+      "Faut-il créer un logiciel de planning sur mesure pour votre entreprise ?",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-24",
+    dateModified: "2026-07-24",
+    readTimeMin: 12,
+  },
+  {
+    slug: "zapier-make-ou-developpement-sur-mesure",
+    title: "Zapier, Make ou sur-mesure : que choisir ?",
+    cardTitle: "Faut-il remplacer vos automatisations ?",
+    metaDescription:
+      "Vos scénarios Make ou Zapier cassent, doublonnent ou coûtent trop cher ? Rejouez un mois réel avant de conserver, hybrider ou développer.",
+    cardDescription:
+      "Mesurez un flux sur trente jours, ses erreurs, ses reprises et son coût par résultat métier avant de choisir son mode d’exécution.",
+    heroTitle:
+      "Zapier, Make ou développement sur mesure : comment choisir pour vos automatisations ?",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-24",
+    dateModified: "2026-07-24",
+    readTimeMin: 10,
+  },
+  {
+    slug: "rgpd-saas-b2b",
+    title: "RGPD d’un SaaS B2B : que faut-il prévoir ?",
+    cardTitle: "Que prévoir pour le RGPD de votre SaaS B2B ?",
+    metaDescription:
+      "Votre SaaS traite les données confiées par des entreprises ? Clarifiez rôles, contrat, fonctions et sous-traitants avant de signer.",
+    cardDescription:
+      "Suivez une donnée de sa collecte à son effacement, répartissez les responsabilités et repérez les décisions à faire valider.",
+    heroTitle:
+      "RGPD d’un SaaS B2B : que faut-il prévoir avant de signer avec des clients ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-24",
+    dateModified: "2026-07-24",
+    readTimeMin: 12,
+  },
+  {
+    slug: "lovable-bolt-v0-ou-agence-saas",
+    title: "Lovable, Bolt ou v0 : faut-il une agence pour son SaaS ?",
+    cardTitle: "Créer son SaaS avec l’IA ou avec une agence ?",
+    metaDescription:
+      "Vous avez une idée de SaaS : faut-il tester seul avec Lovable, Bolt ou v0, se faire accompagner ou confier le produit à une agence ?",
+    cardDescription:
+      "Choisissez entre démonstration autonome, prototype accompagné et développement encadré selon ce que votre première version doit démontrer.",
+    heroTitle:
+      "Lovable, Bolt ou v0 : faut-il une agence pour créer votre SaaS ?",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-24",
+    dateModified: "2026-07-24",
+    readTimeMin: 13,
+  },
+  {
+    slug: "crm-sur-mesure-ou-hubspot",
+    title: "HubSpot ou CRM sur mesure : que choisir ?",
+    cardTitle: "Faut-il garder HubSpot ou créer son CRM ?",
+    metaDescription:
+      "HubSpot ne suit plus votre façon de vendre ? Rejouez vos actions commerciales avant de le configurer, l’intégrer ou le remplacer.",
+    cardDescription:
+      "Testez le processus réel, les droits, les connexions et la sortie avant de conclure qu’un CRM sur mesure devient nécessaire.",
+    heroTitle:
+      "HubSpot ou CRM sur mesure : comment choisir pour votre entreprise ?",
+    section: "Comparatifs & choix",
+    datePublished: "2026-07-24",
+    dateModified: "2026-07-24",
+    readTimeMin: 14,
+  },
+  {
     slug: "prise-rendez-vous-en-ligne-site-vitrine",
     title: "Prise de rendez-vous en ligne : quelle solution choisir ?",
     cardTitle: "Quel agenda en ligne relier à votre site ?",

@@ -301,6 +301,10 @@ export default function Page() {
             label: "Inscrire les exigences dans le cahier des charges",
           },
           {
+            href: "/guides/rgpd-saas-b2b",
+            label: "Répartir les responsabilités RGPD du SaaS",
+          },
+          {
             href: "/guides/reprendre-saas-developpe-par-freelance",
             label: "Reprendre les accès d’un SaaS existant",
           },

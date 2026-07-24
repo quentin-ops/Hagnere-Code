@@ -1,0 +1,4 @@
+db14e53124f615bf0f22203e06d2618c8fe3b8715b2706f04cd1b00ceb51f253  docs/research/rgpd-saas-b2b.md
+71d2a35afb04e5556578ef809217502f1bf05448cc9b2a65363c683d40e901c8  src/app/guides/rgpd-saas-b2b/page.tsx
+4fa0b1f422c7e84e49fb5884ae7b57f605ddffb158defdb79a2968566288289c  src/app/guides/rgpd-saas-b2b/opengraph-image.tsx
+cd815deb1fec4d4b3f4a6e9cb615054081c917ce4e61a4b41f139f1e8af88842  src/lib/guides.ts

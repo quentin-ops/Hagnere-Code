@@ -1,6 +1,6 @@
 5721d41fb20cf39a16e53915bc459b44ec65100dc7aad9d7668bde20a2270d58  docs/research/site-one-page-ou-multipage.md
 96f3f31f7ce3fb4a00204939e3546b1baeafad38092bc990746aa6b5f4c3dc90  src/app/guides/site-one-page-ou-multipage/page.tsx
 3826b8430ee514664488a562d11dba5efd9f65e668fd08b41aa3927d55832596  src/app/guides/site-one-page-ou-multipage/opengraph-image.tsx
-8d1f27349a753a031819123e6ababe6279fdc78518966df9d7ed84b379133dd0  src/lib/guides.ts
+b2eeda0fc3d7be23834108823176da59814d312e4b93c33426ab9e475a00ee3f  src/lib/guides.ts
 7af614a8a42d8788da158b4becb6fec81602be7054004da6048a8c83707a9e69  src/app/guides/landing-page-ou-site-vitrine/page.tsx
-0241a105a711793083b08b3a6c139eb44054e9fd259ff681a3d861c4f2fa311d  src/lib/guide-human-language.test.ts
+8fbf045722ebbda2bd46407564e40b92bdf5b17ce3cb087a27c776ddc4f73a7b  src/lib/guide-human-language.test.ts

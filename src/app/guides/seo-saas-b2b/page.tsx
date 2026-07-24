@@ -262,6 +262,10 @@ export default function Page() {
             label: "Choisir entre SEO et Google Ads",
           },
           {
+            href: "/guides/google-ads-saas-b2b",
+            label: "Relier Google Ads aux contrats du SaaS",
+          },
+          {
             href: "/guides/combien-de-temps-resultats-seo",
             label: "Fixer un horizon de revue SEO",
           },

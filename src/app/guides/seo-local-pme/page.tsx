@@ -544,6 +544,10 @@ export default function Page() {
             label: "Choisir entre référencement naturel et publicité",
           },
           {
+            href: "/guides/google-ads-commerce-local",
+            label: "Mesurer une campagne pour un commerce local",
+          },
+          {
             href: "/services/referencement-google",
             label: "Découvrir notre accompagnement en référencement",
           },

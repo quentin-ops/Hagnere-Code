@@ -209,6 +209,10 @@ export default function Page() {
             label: "No-code ou développement sur mesure",
           },
           {
+            href: "/guides/zapier-make-ou-developpement-sur-mesure",
+            label: "Choisir entre Make, Zapier et code dédié",
+          },
+          {
             href: "/guides/cahier-des-charges-application-metier",
             label: "Cahier des charges d’une application métier",
           },

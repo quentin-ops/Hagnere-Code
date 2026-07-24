@@ -189,6 +189,10 @@ export default function Page() {
             label: "Vérifier ce que doit livrer un audit SEO",
           },
           {
+            href: "/guides/site-indexe-sans-trafic",
+            label: "Diagnostiquer des pages indexées sans trafic",
+          },
+          {
             href: "/guides/refonte-sans-perdre-son-seo",
             label: "Protéger les pages lors d’une refonte",
           },

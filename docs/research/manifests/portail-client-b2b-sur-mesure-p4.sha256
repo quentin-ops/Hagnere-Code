@@ -1,6 +1,6 @@
 b67fdac17217f874d927e3e9d8e54a0d60891f4dd676fccee66759349b374abc  docs/research/portail-client-b2b-sur-mesure.md
 3de8241f53b6ef328f7cf67b8c86d5a19befaaacde73c7e551e3d6fc47b4285b  src/app/guides/portail-client-b2b-sur-mesure/page.tsx
 4d82697c3c7b6ed1131e10c717600b2d3575a5eec24945af657201b6fb3936e0  src/app/guides/portail-client-b2b-sur-mesure/opengraph-image.tsx
-8d1f27349a753a031819123e6ababe6279fdc78518966df9d7ed84b379133dd0  src/lib/guides.ts
+b2eeda0fc3d7be23834108823176da59814d312e4b93c33426ab9e475a00ee3f  src/lib/guides.ts
 a81fb79181236b705cd215609213369a78f7cbdc60249cfdd6040725f45e9e44  src/app/guides/back-office-sur-mesure-pme/page.tsx
-0241a105a711793083b08b3a6c139eb44054e9fd259ff681a3d861c4f2fa311d  src/lib/guide-human-language.test.ts
+8fbf045722ebbda2bd46407564e40b92bdf5b17ce3cb087a27c776ddc4f73a7b  src/lib/guide-human-language.test.ts

@@ -1,6 +1,6 @@
 1dde5791f034c5fe887f1cb2bf187e17580ddaeb1e3ec54d71904fbfa4949dfd  docs/research/reprendre-saas-developpe-par-freelance.md
 cd1ed59ca986f329e5402a89721321da61f0d5ce0c7a82e178ad18dbdbe94dc4  src/app/guides/reprendre-saas-developpe-par-freelance/page.tsx
 ff4a9a5005a50c33d2da857a5610dd4ae69857c832c529f8acc2b58552cfdc30  src/app/guides/reprendre-saas-developpe-par-freelance/opengraph-image.tsx
-8d1f27349a753a031819123e6ababe6279fdc78518966df9d7ed84b379133dd0  src/lib/guides.ts
+b2eeda0fc3d7be23834108823176da59814d312e4b93c33426ab9e475a00ee3f  src/lib/guides.ts
 f8d1b2c1a80b6a3f42ab58d7f0d0ded39575c1c85b64f10bf0828f52fbbe2223  src/app/guides/reprendre-logiciel-metier-existant/page.tsx
 d5b1d9495cc5d4374776167f74165984d6ccac13baee18aa3c69422e2ed47c0f  src/app/guides/contrat-tma-application/page.tsx

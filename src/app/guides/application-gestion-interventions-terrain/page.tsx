@@ -303,6 +303,10 @@ export default function Page() {
             label: "Choisir le premier processus à automatiser",
           },
           {
+            href: "/guides/logiciel-planning-sur-mesure",
+            label: "Tester les règles difficiles du planning",
+          },
+          {
             href: "/guides/cahier-des-charges-application-metier",
             label: "Rédiger le besoin de l’application",
           },

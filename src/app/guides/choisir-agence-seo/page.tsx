@@ -316,6 +316,10 @@ export default function Page() {
             label: "Comparer le prix des prestations SEO",
           },
           {
+            href: "/guides/contrat-seo-duree-engagement",
+            label: "Lire la durée et la sortie du contrat SEO",
+          },
+          {
             href: "/guides/pourquoi-site-pas-visible-google",
             label: "Diagnostiquer un site peu visible",
           },

@@ -1,9 +1,9 @@
 0f4c7cb774d3da1b6c031f04ae11eae8a61d52a271b70869b5264863f9a3421b  docs/research/leads-google-ads-non-qualifies.md
 549cfd97384dd85e41b09394e3bd47552489dd832fa297343c50cd1f3de03bb2  src/app/guides/leads-google-ads-non-qualifies/page.tsx
 259dbe8fca19cdf6157d0f16aeb2a630553a2cbea6485fe9bea22daf5f7056e1  src/app/guides/leads-google-ads-non-qualifies/opengraph-image.tsx
-8d1f27349a753a031819123e6ababe6279fdc78518966df9d7ed84b379133dd0  src/lib/guides.ts
+b2eeda0fc3d7be23834108823176da59814d312e4b93c33426ab9e475a00ee3f  src/lib/guides.ts
 36141c442e1b1c7f695d7b7660a85fe25135f99fb3669643af6b5b092c8bd6b1  src/app/guides/pourquoi-google-ads-ne-convertit-pas/page.tsx
 276a6f9b64a4c1a7a9d7d620b1080625f11103fb03a2cdb04e93cec64481fe3d  src/components/guides/GuidesHubPage.tsx
-0241a105a711793083b08b3a6c139eb44054e9fd259ff681a3d861c4f2fa311d  src/lib/guide-human-language.test.ts
+8fbf045722ebbda2bd46407564e40b92bdf5b17ce3cb087a27c776ddc4f73a7b  src/lib/guide-human-language.test.ts
 fb6e7d2871b549bc2666ff5770cad9559b9fdb7594b272a1407eba499cf2307b  src/components/guides/guide-content-blocks.tsx
-804cc3f051f1d5b0419a62d3bd56d14501f8afa8dc2e0df93bd28db5416d4a6a  src/lib/editorial-governance.test.ts
+0d55dda9e33192fdc42172898dcbf7b084e77b6b60454c9c97423bd56e33bee5  src/lib/editorial-governance.test.ts
