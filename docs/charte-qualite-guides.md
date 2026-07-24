@@ -5,7 +5,7 @@
 > charte est la source de vérité éditoriale. Un ancien guide sert
 > d'exemple technique, jamais de modèle de fond à recopier.
 
-Version : **21 juillet 2026** · Propriétaire : Hagnéré Code
+Version : **24 juillet 2026** · Propriétaire : Hagnéré Code
 
 > **CIBLE NON NÉGOCIABLE — DES DIRIGEANTS, PAS DES CONSULTANTS.** Le lecteur
 > de référence est un chef d'entreprise, un commerçant, un artisan ou un
@@ -39,7 +39,9 @@ sections détaillées avant de livrer :
 6. chaque titre reste compréhensible isolément et nomme une question ou un
    résultat réel, jamais une métaphore que le lecteur doit apprendre ;
 7. les options sont comparées à conditions égales, y compris ne rien faire,
-   acheter un outil existant ou reporter le projet ;
+   acheter un outil existant ou reporter le projet ; si le titre nomme des
+   produits, chacun reçoit une réponse concrète et datée, pas seulement un
+   protocole générique pour les tester ;
 8. chaque fait important porte une source, une portée, une date et un niveau
    de confiance, sans laisser ces précautions étouffer la réponse ;
 9. un scénario inventé est toujours nommé « exemple illustratif », utilise
@@ -584,6 +586,20 @@ Une comparaison porte sur le même périmètre, la même durée et les mêmes
 contraintes. Si ce n'est pas possible, l'article le dit au lieu de
 fabriquer un faux match.
 
+Lorsqu'un titre ou une requête nomme plusieurs produits, la promesse n'est
+tenue que si le lecteur peut distinguer chaque produit après lecture. Ajouter
+un comparatif daté, sourcé uniquement sur les documentations officielles pour
+les fonctions actuelles, et couvrir au minimum :
+
+- ce que chaque produit permet réellement de construire aujourd'hui ;
+- où vivent le code, l'hébergement, les données et les fonctions serveur ;
+- ce que l'entreprise peut récupérer et la manière de tester cette reprise ;
+- le cas d'usage où l'option est raisonnable et celui où elle ne l'est pas.
+
+Un protocole commun reste utile pour vérifier les options, mais il ne remplace
+jamais ce comparatif. Écrire « les produits évoluent » sans expliquer leurs
+différences concrètes constitue un échec de la promesse du titre.
+
 ---
 
 ## 9. Style professionnel et confiance
@@ -1011,6 +1027,11 @@ aucun blocage factuel, éditorial, commercial ou technique ne peut subsister.
 - le temps de lecture utilise la convention interne : mots visibles du corps,
   listes, tableaux et FAQ divisés par 200, arrondis à la minute la plus proche ;
   exclure code, metadata et JSON-LD ;
+- pendant que le serveur local tourne, mesurer les nouveaux slugs avec
+  `npm run measure:guide-readtime -- <slug> [<slug> ...]`, reporter les minutes
+  calculées dans `src/lib/guides.ts`, puis laisser le `postbuild` refaire le
+  même contrôle sur l'artefact de production ; ne jamais estimer à partir du
+  nombre de lignes du fichier TSX ;
 - prix français sous la forme `15 000 € HT`, fourchette `15 000 à 20 000 €
 HT`, et date lisible `19 juillet 2026` ;
 - `datePublished` correspond à la première publication réelle ; pour un guide
@@ -1026,6 +1047,7 @@ réellement présents :
 
 ```bash
 git diff --check
+npm run measure:guide-readtime -- <slug> [<slug> ...]
 npx eslint <tous-les-fichiers-code-modifiés>
 npx tsc --noEmit
 npm test

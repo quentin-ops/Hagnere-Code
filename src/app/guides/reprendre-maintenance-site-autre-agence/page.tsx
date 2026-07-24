@@ -311,6 +311,10 @@ export default function Page() {
             label: "Comparer le coût de la maintenance",
           },
           {
+            href: "/guides/audit-technique-avant-reprendre-site",
+            label: "Vérifier l’état du site avant de signer",
+          },
+          {
             href: "/guides/proprietaire-site-internet-code-source",
             label: "Vérifier qui possède le site et les accès",
           },

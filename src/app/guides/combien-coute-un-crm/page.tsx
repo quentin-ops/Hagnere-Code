@@ -222,6 +222,10 @@ export default function Page() {
             label: "No-code ou sur-mesure",
           },
           {
+            href: "/guides/crm-sur-mesure-ou-hubspot",
+            label: "Tester HubSpot avant de le remplacer",
+          },
+          {
             href: "/guides/combien-coute-un-saas",
             label: "Combien coûte un SaaS ?",
           },

@@ -1,9 +1,9 @@
 # Roadmap de 100 nouveaux guides orientés conversion
 
-> Dernière révision : 23 juillet 2026. Cette roadmap a été créée avec **100
+> Dernière révision : 24 juillet 2026. Cette roadmap a été créée avec **100
 > nouveaux sujets**, en plus des 32 guides alors inscrits dans
-> `src/lib/guides.ts`. Cinquante-neuf de ces sujets sont désormais
-> implémentés : il reste donc 41 sujets à produire. Ce portefeuille
+> `src/lib/guides.ts`. Soixante-neuf de ces sujets sont désormais
+> implémentés : il reste donc 31 sujets à produire. Ce portefeuille
 > éditorial n'est pas une promesse que le volume constitue en lui-même un
 > facteur de classement.
 
@@ -487,3 +487,34 @@ SEO et 50 combinaisons route/largeur dans un vrai navigateur. Les dix routes
 sont donc autorisées en `index,follow` et peuvent rejoindre le hub, le sitemap
 et `llms.txt`. Cette ouverture technique ne prouve ni exploration, ni
 indexation effective, ni classement.
+
+Le lot suivant a franchi les quatre passes le 24 juillet 2026 :
+
+1. `crm-sur-mesure-ou-hubspot` ;
+2. `lovable-bolt-v0-ou-agence-saas` ;
+3. `rgpd-saas-b2b` ;
+4. `zapier-make-ou-developpement-sur-mesure` ;
+5. `logiciel-planning-sur-mesure` ;
+6. `google-ads-saas-b2b` ;
+7. `google-ads-commerce-local` ;
+8. `contrat-seo-duree-engagement` ;
+9. `site-indexe-sans-trafic` ;
+10. `audit-technique-avant-reprendre-site`.
+
+Ce lot répond à dix décisions concrètes de dirigeant : choisir entre un CRM
+standard et un outil adapté, arbitrer entre trois générateurs d’application et
+une agence, préparer la conformité d’un SaaS, savoir quand une automatisation
+visuelle atteint ses limites, organiser un planning réellement contraint,
+piloter l’acquisition d’un SaaS ou d’un commerce local, lire un contrat SEO,
+diagnostiquer un site pourtant indexé et sécuriser la reprise d’un site
+existant. Les comparaisons de produits et les points réglementaires ont été
+datés et reliés à leurs sources ; les cas chiffrés sont explicitement fictifs.
+
+Après recherche, rédaction, deux contre-audits indépendants et passe de plume,
+le lot a réussi 55 tests ciblés, 228 contrôles SEO, 453 tests globaux,
+TypeScript, ESLint et le build de production. Le rendu a également été vérifié
+dans un vrai navigateur sur les dix routes et cinq largeurs, soit 50
+combinaisons, ainsi qu’en clair et sombre ; les dix images sociales mesurent
+1 200 × 630 pixels. L’autorisation `index,follow`, l’inclusion au sitemap et la
+présence des données structurées rendent les pages techniquement indexables :
+elles ne prouvent ni leur exploration ni leur indexation effective par Google.

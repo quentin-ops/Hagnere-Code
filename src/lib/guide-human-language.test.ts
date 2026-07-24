@@ -76,6 +76,19 @@ const july23PublicationSlugs = new Set([
   "site-one-page-ou-multipage",
 ]);
 
+const july24PublicationSlugs = new Set([
+  "crm-sur-mesure-ou-hubspot",
+  "lovable-bolt-v0-ou-agence-saas",
+  "rgpd-saas-b2b",
+  "zapier-make-ou-developpement-sur-mesure",
+  "logiciel-planning-sur-mesure",
+  "google-ads-saas-b2b",
+  "google-ads-commerce-local",
+  "contrat-seo-duree-engagement",
+  "site-indexe-sans-trafic",
+  "audit-technique-avant-reprendre-site",
+]);
+
 const rejectedFramework =
   /contrainte qui commande|contrainte dominante|portes non compensables|cinq portes|prochaine preuve|matrice d['’]arbitrage|tranche verticale|socles chiffrés|chaîne jusqu['’]au résultat métier|comité d['’]investissement|report ciblé/i;
 
@@ -1435,7 +1448,7 @@ describe("human language guardrails for guides", () => {
     for (const { guide, source } of guideSources) {
       const inlineCtas = source.match(/<GuideInlineCTA\b/g) || [];
       const faqBlock = source.match(
-        /const faqItems\s*=\s*\[([\s\S]*?)\n\];/,
+        /const faqItems(?::[^=]+)?\s*=\s*\[([\s\S]*?)\n\];/,
       )?.[1];
       const faqCount = faqBlock?.match(/\bquestion:\s*["']/g)?.length || 0;
 
@@ -1469,11 +1482,13 @@ describe("human language guardrails for guides", () => {
         guide.metaDescription.length,
         `${guide.slug}: meta description`,
       ).toBeLessThanOrEqual(155);
-      const expectedReviewDate = july23PublicationSlugs.has(guide.slug)
-        ? "2026-07-23"
-        : july22PublicationSlugs.has(guide.slug)
-          ? "2026-07-22"
-          : "2026-07-21";
+      const expectedReviewDate = july24PublicationSlugs.has(guide.slug)
+        ? "2026-07-24"
+        : july23PublicationSlugs.has(guide.slug)
+          ? "2026-07-23"
+          : july22PublicationSlugs.has(guide.slug)
+            ? "2026-07-22"
+            : "2026-07-21";
       expect(guide.dateModified, `${guide.slug}: review date`).toBe(
         expectedReviewDate,
       );

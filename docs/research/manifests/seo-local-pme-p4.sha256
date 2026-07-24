@@ -1,6 +1,6 @@
 f9f6879cd9952017008a4dc4b839822822fbdd383a16510075065db8462d3911  docs/research/seo-local-pme.md
-16ffe71ec356111e9b0bccfdd718d6b10d07d6831719502791928502ea8cef30  src/app/guides/seo-local-pme/page.tsx
+b82dcf834744f442dcaa77501c038d39f7af7817bce52c7e05787ef2b8c7f49e  src/app/guides/seo-local-pme/page.tsx
 dabca5ef5a862d6a9dfa0f57bda7092afa2ab7d7d913744c1408518d15c7702e  src/app/guides/seo-local-pme/opengraph-image.tsx
-8d1f27349a753a031819123e6ababe6279fdc78518966df9d7ed84b379133dd0  src/lib/guides.ts
-c9db9b163e8d9b0547f1ae5cb7952692307b61c14873e30b6dcafd9d3f5245e2  src/app/guides/pourquoi-site-pas-visible-google/page.tsx
-0241a105a711793083b08b3a6c139eb44054e9fd259ff681a3d861c4f2fa311d  src/lib/guide-human-language.test.ts
+b2eeda0fc3d7be23834108823176da59814d312e4b93c33426ab9e475a00ee3f  src/lib/guides.ts
+ea1b7697b2bedd4ff4a6fe4661ef9ca5f7001223f8974a64c447eec170645166  src/app/guides/pourquoi-site-pas-visible-google/page.tsx
+8fbf045722ebbda2bd46407564e40b92bdf5b17ce3cb087a27c776ddc4f73a7b  src/lib/guide-human-language.test.ts

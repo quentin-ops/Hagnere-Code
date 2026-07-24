@@ -42,6 +42,16 @@ const frozenFourPassLot = [
   "sla-maintenance-applicative",
   "dette-technique-cout-entreprise",
   "prise-rendez-vous-en-ligne-site-vitrine",
+  "crm-sur-mesure-ou-hubspot",
+  "lovable-bolt-v0-ou-agence-saas",
+  "rgpd-saas-b2b",
+  "zapier-make-ou-developpement-sur-mesure",
+  "logiciel-planning-sur-mesure",
+  "google-ads-saas-b2b",
+  "google-ads-commerce-local",
+  "contrat-seo-duree-engagement",
+  "site-indexe-sans-trafic",
+  "audit-technique-avant-reprendre-site",
 ] as const;
 
 const delegatedPublicationGuides = [
@@ -94,6 +104,16 @@ const delegatedPublicationGuides = [
   "sla-maintenance-applicative",
   "dette-technique-cout-entreprise",
   "prise-rendez-vous-en-ligne-site-vitrine",
+  "crm-sur-mesure-ou-hubspot",
+  "lovable-bolt-v0-ou-agence-saas",
+  "rgpd-saas-b2b",
+  "zapier-make-ou-developpement-sur-mesure",
+  "logiciel-planning-sur-mesure",
+  "google-ads-saas-b2b",
+  "google-ads-commerce-local",
+  "contrat-seo-duree-engagement",
+  "site-indexe-sans-trafic",
+  "audit-technique-avant-reprendre-site",
 ] as const;
 
 function parseManifest(manifestPath: string) {

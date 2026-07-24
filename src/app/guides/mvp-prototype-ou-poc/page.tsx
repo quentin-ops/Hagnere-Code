@@ -279,6 +279,10 @@ export default function Page() {
             label: "Choisir ce qui doit fonctionner dans le MVP",
           },
           {
+            href: "/guides/lovable-bolt-v0-ou-agence-saas",
+            label: "Choisir entre générateur IA et accompagnement",
+          },
+          {
             href: "/guides/choisir-prestataire-application-metier",
             label: "Comparer les prestataires sur les mêmes demandes",
           },
