@@ -1106,8 +1106,7 @@ export default function Page() {
           />
 
           <p>
-            Faites participer les personnes qui réalisent le travail. Le guide
-            de l’{" "}
+            Faites participer les personnes qui réalisent le travail. La{" "}
             <a
               href="https://www.anact.fr/sites/default/files/2024-10/boite-a-outils-qvct-numerique.pdf"
               target="_blank"

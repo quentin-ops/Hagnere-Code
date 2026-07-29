@@ -603,7 +603,15 @@ Publication possible uniquement si :
 - axes 1, 2, 3, 5, 7 et 10 au moins `9/10` ;
 - aucun défaut P0 ou P1 ;
 - les quatre manifests existent ;
-- l’empreinte P4 correspond exactement aux fichiers candidats ;
+- l’empreinte P4 correspond exactement aux fichiers contrôlés au `GATE_P4` ;
+- si le candidat n’a pas changé après `GATE_P4`, l’empreinte P4 correspond
+  aussi au candidat final ;
+- si une correction ou un durcissement intervient après `GATE_P4`, le
+  manifeste P4 reste une preuve historique et ne doit pas être réécrit : le
+  candidat final doit alors disposer d’un nouveau manifeste qualité, vérifié
+  sur son état exact, et d’un nouveau contre-audit indépendant
+  `GO_QUALITE_GUIDE` conforme à
+  `docs/instructions-guide-de-qualite.md` ;
 - la délégation éditoriale ou la validation humaine est consignée.
 
 Un `NO_GO` n’est pas compensable par une bonne moyenne.

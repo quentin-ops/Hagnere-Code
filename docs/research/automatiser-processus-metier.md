@@ -1143,7 +1143,7 @@ git diff --check : PASS
 Build Next.js production : PASS
 Postbuild SEO : 43 URL de sitemap, 26 liens llms.txt, 43 pages,
   1 temps de lecture et 74 blocs JSON-LD contrôlés
-Temps de lecture servi : 3 922 mots / 20 minutes
+Temps de lecture servi : 3 919 mots / 20 minutes
 ```
 
 Le navigateur réel a confirmé :
@@ -1216,8 +1216,8 @@ guide courant et aucun `FAQPage` ou `HowTo` n’est publié.
 ### J.5 Mesures de poids et de laboratoire
 
 ```text
-HTML brut servi : 491 837 octets
-HTML transféré avec compression : 73 231 octets
+HTML brut servi : 491 631 octets
+HTML transféré avec compression : 73 222 octets
 DOM mesuré par Lighthouse : 2 126 éléments
 Images éditoriales sources :
   16:9 1600 × 900 — 69 600 octets
