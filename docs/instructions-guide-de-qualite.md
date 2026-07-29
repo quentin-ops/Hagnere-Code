@@ -112,6 +112,8 @@ Le guide apporte :
 | Dates sans heure inventée | Éviter trois instants artificiels pour une seule date éditoriale | Instants ISO réels, avec fuseau, identiques dans registre, Open Graph, Article et sitemap | Comparaison des sorties servies |
 | Trois images Article | Fournir une illustration utile et adaptée aux ratios recommandés sans surcharger l’OG de texte | Illustration visible en 16:9 et déclinaisons 4:3 et 1:1 | Fichiers, dimensions, HTML et tableau `Article.image` |
 | Vocabulaire du hub corrigé | Ne pas confondre capacité réaffectée et gain financier | « capacité réaffectée » dans le parcours du hub | Hub et guide réconciliés |
+| Dépendances de test déclarées | Empêcher un cache local de masquer un paquet absent en CI | Toute dépendance appelée par Vitest figure dans `devDependencies` et dans le lockfile | Installation propre puis build identique à la plateforme |
+| Dépendances de production auditées | Ne pas publier silencieusement une version dans une plage vulnérable connue | `npm audit --omit=dev`, lecture de l’avis officiel et montée de patch ciblée | Version installée, build et tests consignés ; aucune correction `--force` aveugle |
 
 ---
 
@@ -478,13 +480,27 @@ Depuis la racine propre du candidat :
 
 ```bash
 git diff --check
+# Dans un clone, worktree jetable ou environnement CI propre :
+npm ci
 npm run measure:guide-readtime -- <slug>
 npx eslint <tous-les-fichiers-modifies>
 npx tsc --noEmit
 npm run check:seo
 npm test
+npm audit --omit=dev
 NEXT_PUBLIC_ENV=production npm run build
 ```
+
+Une exécution locale verte avec un `node_modules` ancien n’est pas une preuve
+de reproductibilité. Toute nouvelle bibliothèque de test ou de build doit être
+déclarée dans `package.json`, verrouillée dans `package-lock.json`, puis
+réinstallée dans un environnement propre avant publication.
+
+Un audit non nul doit être qualifié paquet par paquet. Une version directe
+correctible bloque la publication jusqu’à sa montée de patch et ses
+régressions. Une alerte transitive sans correctif compatible est consignée
+avec sa portée réelle ; elle n’autorise jamais un `npm audit fix --force`
+susceptible de rétrograder ou de casser la pile sans requalification complète.
 
 Puis, sur un serveur construit depuis exactement le même état source :
 

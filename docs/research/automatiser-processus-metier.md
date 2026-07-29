@@ -1131,6 +1131,15 @@ Le protocole obligatoire correspondant est
 - contrôle de l’artefact étendu aux trois images Article ;
 - vocabulaire du hub corrigé de « valeur réaffectable » vers « capacité
   réaffectée ».
+- déclaration explicite de `happy-dom` dans les dépendances de développement
+  et le lockfile : la première construction Vercel du commit `4ce31ed` a révélé
+  que le test de FAQ dépendait d’un paquet seulement présent dans le cache
+  local ; une installation propre doit désormais réussir avant publication.
+- montée de patch ciblée de Next.js `16.2.10` vers `16.2.12`, alignement de
+  `eslint-config-next` et mise à jour du Sharp direct vers `0.35.3` après
+  l’avis de sécurité officiel de juillet 2026 ; aucun `npm audit fix --force`
+  n’a été appliqué aux alertes transitives d’OpenNext, Wrangler ou aux
+  versions de Sharp encore imposées par leurs paquets parents.
 
 ### J.3 Batterie locale sur l’état final
 
@@ -1216,8 +1225,8 @@ guide courant et aucun `FAQPage` ou `HowTo` n’est publié.
 ### J.5 Mesures de poids et de laboratoire
 
 ```text
-HTML brut servi : 491 631 octets
-HTML transféré avec compression : 73 222 octets
+HTML brut servi par le build de production : 491 876 octets
+HTML transféré avec compression : 73 302 octets
 DOM mesuré par Lighthouse : 2 126 éléments
 Images éditoriales sources :
   16:9 1600 × 900 — 69 600 octets
