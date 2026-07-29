@@ -120,7 +120,7 @@ export default function Page() {
           { href: "/services/sites-vitrines", label: "Création de sites vitrines" },
           { href: "/services/saas-applications-metier", label: "SaaS et applications métier" },
           { href: "/services/referencement-google", label: "Référencement naturel" },
-          { href: "/guides/combien-coute-un-site-internet", label: "Combien coûte un site internet ?" },
+          { href: "/guides/automatiser-processus-metier", label: "Quel processus automatiser en premier ?" },
           { href: "/tarifs", label: "Nos tarifs" },
         ]}
         faqTitle="Développement web en Savoie : vos questions"
@@ -370,35 +370,21 @@ export default function Page() {
         <h2 id="guides">8. Nos guides pour préparer votre projet</h2>
         <p>
           Avant même de nous contacter, vous pouvez vous faire une idée
-          précise de ce que coûte un projet et de la façon de comparer des
-          devis. Nous publions {PUBLISHED_GUIDES.length} guides longs, sourcés et
-          gratuits, sans formulaire à remplir.
+          précise des décisions à prendre avant un projet. Nous reconstruisons
+          cette bibliothèque guide par guide :{" "}
+          {PUBLISHED_GUIDES.length === 1
+            ? "un guide long, sourcé et gratuit est actuellement publié"
+            : `${PUBLISHED_GUIDES.length} guides longs, sourcés et gratuits sont actuellement publiés`}
+          , sans formulaire à remplir.
         </p>
         <ul>
           <li>
-            <Link href="/guides/combien-coute-un-site-internet">Combien coûte
-            un site internet</Link> — les fourchettes par type de projet et ce
-            qui fait varier un devis.
-          </li>
-          <li>
-            <Link href="/guides/prix-site-vitrine">Prix d&apos;un site
-            vitrine</Link> — le calcul sur trois ans, abonnements et
-            maintenance compris.
-          </li>
-          <li>
-            <Link href="/guides/choisir-son-agence-web">Comment choisir son
-            agence web</Link> — dix-huit vérifications gratuites, applicables à
-            n&apos;importe quel prestataire savoyard, nous compris.
-          </li>
-          <li>
-            <Link href="/guides/tjm-developpeur-web">Le tarif journalier
-            d&apos;un développeur</Link> — pour lire un devis en jours et
-            repérer les estimations gonflées.
-          </li>
-          <li>
-            <Link href="/guides/refonte-sans-perdre-son-seo">Refondre son site
-            sans perdre son référencement</Link> — si vous avez déjà un site
-            qui fonctionne.
+            <Link href="/guides/automatiser-processus-metier">
+              Quel processus métier automatiser en premier ?
+            </Link>{" "}
+            — une méthode pour cartographier le travail, écarter les mauvais
+            candidats et tester un premier périmètre sans investir à
+            l&apos;aveugle.
           </li>
         </ul>
 

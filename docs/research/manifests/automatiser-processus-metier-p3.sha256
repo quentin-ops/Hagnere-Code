@@ -1,0 +1,6 @@
+1da1a80daaf308e6531eba5f89ccebd90cdfc12d3fbc1e59fcc3c1fca03c8ca4  docs/research/automatiser-processus-metier.md
+4b39efd5e6156190cd84b58a4fbc61b90b2623da6aae4bdc1bb685bb8738606e  src/app/guides/automatiser-processus-metier/page.tsx
+b94a185c9f2e1e76dc90a0830aa7af053864755a128b0c9b488ae2805af24100  src/app/guides/automatiser-processus-metier/opengraph-image.tsx
+6e0635f2849b5c98457615992778d90cfc9c11403c375335a59533c5f21a0f07  src/app/guides/automatiser-processus-metier/process-priority-tool.tsx
+85f933bdeaf82825dcf18db487c879761a9bd3447dcea4583a2d98c3ca11fb58  src/app/guides/automatiser-processus-metier/process-priority-tool.test.ts
+369ab05e66ea7e4a8247f700a54894b3738003e5c7e29fd7fdb672c639012126  src/lib/guides.ts

@@ -104,8 +104,8 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
                   Décrire mon besoin
                   <ArrowRight size={16} aria-hidden="true" />
                 </Link>
-                <Link className="seo-button seo-button--secondary" href="/guides/prix-referencement-naturel">
-                  Comprendre les budgets SEO
+                <Link className="seo-button seo-button--secondary" href="/tarifs">
+                  Voir nos tarifs
                 </Link>
               </div>
               <ul className="seo-hero__facts" aria-label="Repères de la prestation">
@@ -170,7 +170,11 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
               </Link>
               <Link href="/guides" className="seo-proof-card">
                 <span className="seo-proof-card__value">{guideCount}</span>
-                <span className="seo-proof-card__label">guides publics, sourcés et maillés</span>
+                <span className="seo-proof-card__label">
+                  {guideCount === 1
+                    ? "guide public, sourcé et maillé"
+                    : "guides publics, sourcés et maillés"}
+                </span>
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
               <Link href="/agence" className="seo-proof-card">
@@ -308,8 +312,8 @@ export function SeoReferencement({ guideCount }: SeoReferencementProps) {
                 Une page SEO crédible doit dire ce qu’elle ne peut pas garantir.
                 Ces refus protègent votre budget autant que notre travail.
               </p>
-              <Link className="seo-inline-link" href="/guides/choisir-son-agence-web">
-                La grille pour choisir une agence <ArrowRight size={15} aria-hidden="true" />
+              <Link className="seo-inline-link" href="/methode">
+                Notre méthode de vérification <ArrowRight size={15} aria-hidden="true" />
               </Link>
             </div>
             <div className="seo-refusals-list">

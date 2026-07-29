@@ -307,26 +307,26 @@ export default function Page() {
         ]}
         relatedLinks={[
           {
-            href: "/guides/combien-coute-un-site-internet",
-            label: "Combien coûte un site internet ?",
+            href: "/tarifs",
+            label: "Tarifs Hagnéré Code",
           },
           {
-            href: "/guides/prix-site-vitrine",
-            label: "Prix d'un site vitrine",
+            href: "/services/sites-vitrines",
+            label: "Création de sites vitrines",
           },
           {
-            href: "/guides/prix-refonte-site-internet",
-            label: "Prix d'une refonte de site",
+            href: "/services/maintenance-evolution",
+            label: "Maintenance et évolution",
           },
           {
-            href: "/guides/cahier-des-charges-site-internet",
+            href: "/ressources/kit-cahier-des-charges-site-internet",
             label: "Modèle de cahier des charges",
           },
           {
-            href: "/guides/choisir-son-agence-web",
-            label: "Comment choisir son agence web",
+            href: "/methode",
+            label: "Notre méthode",
           },
-          { href: "/tarifs", label: "Tarifs Hagnéré Code" },
+          { href: "/demarrer-un-projet", label: "Décrire un projet" },
         ]}
         faqTitle="Comparer des devis web : vos questions"
         faqItems={faqItems}
@@ -585,7 +585,7 @@ export default function Page() {
         <p>
           Si les candidats ont reçu des briefs différents, revenez un cran en
           arrière. Le{" "}
-          <Link href="/guides/cahier-des-charges-site-internet">
+          <Link href="/ressources/kit-cahier-des-charges-site-internet">
             modèle de cahier des charges de site internet
           </Link>{" "}
           sert précisément à créer ce socle commun.
@@ -807,22 +807,14 @@ Seuil de travail conseillé :
           ]}
         />
         <p>
-          Pour des fourchettes détaillées, utilisez en complément nos guides sur
-          le
-          <Link href="/guides/combien-coute-un-site-internet">
-            {" "}
-            coût d&apos;un site internet
+          Pour challenger les montants, comparez le périmètre à notre{" "}
+          <Link href="/tarifs">grille tarifaire</Link>, aux livrables de la page{" "}
+          <Link href="/services/sites-vitrines">sites vitrines</Link> et aux
+          responsabilités décrites dans notre offre de{" "}
+          <Link href="/services/maintenance-evolution">
+            maintenance et évolution
           </Link>
-          , le{" "}
-          <Link href="/guides/prix-site-vitrine">
-            prix d&apos;un site vitrine
-          </Link>{" "}
-          et le{" "}
-          <Link href="/guides/prix-refonte-site-internet">
-            prix d&apos;une refonte
-          </Link>
-          . Les fourchettes servent à challenger une ligne, pas à remplacer le
-          chiffrage de votre périmètre.
+          . Ces repères ne remplacent pas le chiffrage de votre périmètre.
         </p>
 
         <h2 id="questions">10. Les 15 questions à renvoyer aux candidats</h2>

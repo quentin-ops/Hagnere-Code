@@ -7,6 +7,11 @@ Le [workflow maître en quatre passes](../workflow-maitre-guides-4-passes.md)
 définit l'ordre d'exécution, les hashes et les portes de sortie ; la charte
 définit le niveau éditorial attendu.
 
+Depuis le 29 juillet 2026, cet ordre est strict : création complète,
+enrichissement/vérification, polish rédactionnel, puis antipasse IA. Chaque
+passe appartient à un agent distinct et attend le `GO` écrit de
+l'orchestrateur avant la suivante.
+
 Pour un nouveau guide, copier [`_modele-guide.md`](_modele-guide.md) vers
 `<slug>.md` avant de rédiger la page. Les anciens digests peuvent avoir une
 forme différente ou contenir d'anciens objectifs de longueur : la charte et

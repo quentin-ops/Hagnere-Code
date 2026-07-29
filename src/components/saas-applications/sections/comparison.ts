@@ -123,8 +123,8 @@ export const comparisonHtml = `
 
     <div class="sa-cmp-disclaimer reveal">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="10"/></svg>
-      Pour décider sans raccourci, lire le <a href="/guides/no-code-ou-sur-mesure">comparatif no-code ou sur-mesure</a>
-      puis le <a href="/guides/combien-coute-un-saas">budget complet d'un SaaS</a>. Vous pouvez ensuite
+      Pour décider sans raccourci, appliquez la <a href="/guides/automatiser-processus-metier">méthode de choix d'une première automatisation</a>,
+      puis comparez le périmètre retenu à notre <a href="/tarifs">grille tarifaire</a>. Vous pouvez ensuite
       <a href="#contact">faire relire votre périmètre pendant 30 minutes</a>.
     </div>
   </div>

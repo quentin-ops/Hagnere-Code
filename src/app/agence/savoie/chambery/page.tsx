@@ -121,7 +121,7 @@ export default function Page() {
           { href: "/services/sites-vitrines", label: "Création de sites vitrines" },
           { href: "/services/saas-applications-metier", label: "SaaS et applications métier" },
           { href: "/services/referencement-google", label: "Référencement naturel" },
-          { href: "/guides/choisir-son-agence-web", label: "Comment choisir son agence web" },
+          { href: "/methode", label: "Notre méthode de cadrage" },
           { href: "/tarifs", label: "Nos tarifs" },
         ]}
         faqTitle="Agence web à Chambéry : vos questions"
@@ -448,15 +448,12 @@ export default function Page() {
         </p>
         <p>
           Ce n&apos;est pas un jugement : WordPress fait tourner une grande
-          partie du web et convient à beaucoup de projets. Notre{" "}
-          <Link href="/guides/nextjs-ou-wordpress">comparatif Next.js ou
-          WordPress</Link> traite la question honnêtement, y compris les cas
-          où WordPress reste le meilleur choix. Et si vous voulez vérifier
-          nos affirmations comme celles de n&apos;importe quel prestataire,
-          notre{" "}
-          <Link href="/guides/choisir-son-agence-web">guide pour choisir son
-          agence web</Link> donne dix-huit vérifications gratuites,
-          applicables à nous aussi.
+          partie du web et convient à beaucoup de projets. Notre page{" "}
+          <Link href="/services/sites-vitrines">sites vitrines</Link> explique
+          le type de besoin que nous traitons et les cas où une solution plus
+          simple suffit. Notre <Link href="/methode">méthode</Link> décrit les
+          contrôles que vous pouvez appliquer à nos propositions comme à celles
+          de n&apos;importe quel prestataire.
         </p>
 
         <h2 id="travailler">9. Travailler avec nous</h2>

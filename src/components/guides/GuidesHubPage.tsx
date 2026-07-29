@@ -3,30 +3,17 @@ import { type ComponentType } from "react";
 import {
   ArrowDown,
   ArrowRight,
-  Blocks,
   Cable,
-  CalendarClock,
   Calculator,
   Check,
   ChevronRight,
   ClipboardList,
-  Copy,
-  Database,
-  Euro,
   FileText,
   Globe,
   HandCoins,
-  Layers3,
   Megaphone,
-  PanelsTopLeft,
-  RefreshCw,
   Scale,
   ShieldCheck,
-  ShoppingBag,
-  ShoppingCart,
-  Smartphone,
-  Store,
-  TabletSmartphone,
   Timer,
   Wrench,
   type LucideIcon,
@@ -67,6 +54,15 @@ type Collection = {
  * pour qu'aucun guide ne disparaisse silencieusement du hub.
  */
 const COLLECTIONS: Collection[] = [
+  {
+    section: "Outils internes et automatisation",
+    anchor: "outils-automatisation",
+    accent: "purple",
+    icon: Cable,
+    title: "Automatiser sans déplacer le problème.",
+    text: "Travail réel, solutions simples, calculs transparents, cas d’échec et reprise manuelle : les repères pour décider avant de brancher un outil.",
+    laneText: "Processus, automatisation et outils internes.",
+  },
   {
     section: "Budget & prix",
     anchor: "budget-prix",
@@ -132,103 +128,18 @@ const COLLECTIONS: Collection[] = [
   },
 ];
 
-/** Icône de carte par guide (défaut : Globe). */
+/** Icône propre aux guides déjà reconstruits (défaut : Globe). */
 const GUIDE_ICONS: Record<string, LucideIcon> = {
-  "landing-page-ou-site-vitrine": PanelsTopLeft,
-  "combien-de-temps-resultats-seo": CalendarClock,
-  "positions-google-baissent": ArrowDown,
-  "combien-de-temps-developper-saas": Timer,
-  "connecter-erp-crm-logiciel-metier": Cable,
-  "automatiser-saisie-donnees-entreprise": Copy,
-  "mvp-prototype-ou-poc": Layers3,
-  "site-internet-en-panne-que-faire": Wrench,
-  "leads-google-ads-non-qualifies": ClipboardList,
-  "migrer-logiciel-metier-sans-interruption": RefreshCw,
-  "application-gestion-interventions-terrain": TabletSmartphone,
-  "agence-saas-ou-freelance": Scale,
-  "reprendre-maintenance-site-autre-agence": ShieldCheck,
-  "choisir-agence-google-ads": Megaphone,
-  "choisir-agence-seo": Globe,
-  "landing-page-google-ads": PanelsTopLeft,
-  "suivi-conversions-google-ads": ArrowDown,
-  "pourquoi-site-pas-visible-google": Globe,
-  "choisir-prestataire-application-metier": Scale,
-  "cahier-des-charges-saas": ClipboardList,
-  "budget-google-ads-pme": Calculator,
-  "remplacer-microsoft-access-application-web": Database,
-  "preparer-contenus-site-vitrine": FileText,
-  "transformer-excel-en-application": ClipboardList,
-  "cahier-des-charges-application-metier": FileText,
-  "combien-coute-un-crm": Euro,
-  "erp-ou-logiciel-sur-mesure": Scale,
-  "combien-coute-un-site-internet": Globe,
-  "combien-coute-une-application-mobile": Smartphone,
-  "prix-site-vitrine": PanelsTopLeft,
-  "prix-site-e-commerce": ShoppingCart,
-  "combien-coute-un-saas": Layers3,
-  "prix-logiciel-sur-mesure": Wrench,
-  "prix-refonte-site-internet": RefreshCw,
-  "cout-maintenance-site-internet": ShieldCheck,
-  "nextjs-ou-wordpress": Scale,
-  "shopify-ou-sur-mesure": ShoppingBag,
-  "woocommerce-ou-shopify": Store,
-  "wix-ou-wordpress": Blocks,
-  "react-native-ou-flutter": TabletSmartphone,
-  "combien-de-temps-pour-creer-un-site": CalendarClock,
-  "cahier-des-charges-site-internet": FileText,
-  "cahier-des-charges-application-mobile": ClipboardList,
-  "aides-creation-site-internet": HandCoins,
+  "automatiser-processus-metier": Cable,
 };
 
-/** Fourchettes du visuel héros — reprises des guides budget correspondants. */
-const PRICE_RANGES = [
-  { label: "Site vitrine", value: "0,5 k€ – 30 k€", left: 2, width: 30 },
-  { label: "E-commerce", value: "1,5 k€ – 50 k€+", left: 7, width: 40 },
-  { label: "SaaS (1re version)", value: "5 k€ – 100 k€", left: 14, width: 54 },
-  { label: "App mobile", value: "5 k€ – 150 k€", left: 14, width: 64 },
-  { label: "Logiciel métier", value: "5 k€ – 250 k€", left: 14, width: 80 },
-];
-
-const RESOURCES = [
-  {
-    href: "/ressources/kit-cahier-des-charges-application-metier",
-    label: "Kit cahier des charges d'application métier",
-    value: "Modèle Word, exemple rempli et mode d'emploi sourcé — sans email.",
-  },
-  {
-    href: "/ressources/kit-cahier-des-charges-site-internet",
-    label: "Kit cahier des charges de site",
-    value:
-      "Modèle Word, exemple rempli, grille Excel de 56 tests et mode d'emploi — sans email.",
-  },
-  {
-    href: "/livres-blancs/comparer-devis-site-internet",
-    label: "Grille de comparaison de devis",
-    value:
-      "Coût sur 36 mois, 40 points de comparaison et exemple rempli à copier dans Excel ou Sheets.",
-  },
-  {
-    href: "/outils/calculateur-cout-excel",
-    label: "Calculateur coût Excel",
-    value: "Ce que la gestion manuelle vous coûte, en heures et en euros.",
-  },
-  {
-    href: "/realisations",
-    label: "Nos réalisations",
-    value:
-      "Quatre projets présentés avec leur contexte, les choix réalisés et les limites des informations publiées.",
-  },
-  {
-    href: "/methode",
-    label: "Notre méthode",
-    value:
-      "Sprint Fixe : fonctions écrites, budget plafonné et démonstrations prévues à l’avance.",
-  },
-  {
-    href: "/tarifs",
-    label: "Nos tarifs",
-    value: "La grille publique et ce que chaque forfait inclut.",
-  },
+/** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */
+const DECISION_PATH = [
+  { label: "Cartographier", value: "le travail réel", left: 2, width: 32 },
+  { label: "Écarter", value: "les risques bloquants", left: 10, width: 44 },
+  { label: "Comparer", value: "sept réponses possibles", left: 18, width: 54 },
+  { label: "Calculer", value: "la valeur réaffectable", left: 26, width: 62 },
+  { label: "Tester", value: "l’erreur et la reprise", left: 34, width: 64 },
 ];
 
 const featuredGuide =
@@ -284,18 +195,20 @@ export function GuidesHubPage() {
 
               <div className="ghub-kicker">
                 <span aria-hidden="true" /> Bibliothèque ·{" "}
-                {PUBLISHED_GUIDES.length} guides pratiques
+                {PUBLISHED_GUIDES.length === 1
+                  ? "1 guide pratique"
+                  : `${PUBLISHED_GUIDES.length} guides pratiques`}
               </div>
 
               <h1>
-                Guides : <span className="grad">comprendre le budget</span> et
-                choisir la bonne solution
+                Guides : <span className="grad">prendre une décision</span>{" "}
+                avant de développer
               </h1>
               <p className="ghub-hero-sub">
-                Prix d&apos;un site internet, budget d&apos;un SaaS, coûts
-                cachés, comparatifs, cahiers des charges : des guides écrits
-                pour des dirigeants, avec des réponses simples, des sources et
-                des exemples que vous pouvez refaire.
+                Nous reconstruisons cette bibliothèque guide par guide. Chaque
+                publication doit donner aux dirigeants une méthode claire, des
+                sources vérifiables, des calculs reproductibles et les cas où
+                il vaut mieux ne rien développer.
               </p>
 
               <div className="ghub-hero-actions">
@@ -303,7 +216,7 @@ export function GuidesHubPage() {
                   href={guidePath(featuredGuide)}
                   className="btn btn-accent btn-lg"
                 >
-                  Voir le guide budget <ArrowIcon />
+                  Lire le premier guide <ArrowIcon />
                 </Link>
                 <a href="#collections" className="btn btn-ghost btn-lg">
                   Parcourir les collections{" "}
@@ -406,10 +319,10 @@ export function GuidesHubPage() {
                   </div>
                   <div className="ghub-ranges-body">
                     <div className="ghub-ranges-title">
-                      <b>Estimations 2026</b>
-                      <span>PRIX HT</span>
+                      <b>Méthode de décision</b>
+                      <span>PROCESSUS</span>
                     </div>
-                    {PRICE_RANGES.map((r) => (
+                    {DECISION_PATH.map((r) => (
                       <div key={r.label} className="ghub-range-row">
                         <span>{r.label}</span>
                         <i>{r.value}</i>
@@ -422,18 +335,19 @@ export function GuidesHubPage() {
                       </div>
                     ))}
                     <div className="ghub-ranges-note">
-                      Hypothèses et limites dans chaque guide · juillet 2026
+                      Hypothèses, formules et limites dans le guide · juillet
+                      2026
                     </div>
                   </div>
                 </div>
 
                 <div className="ghub-float ghub-float-1">
                   <div className="ghub-float-ic">
-                    <Euro size={14} strokeWidth={2.4} />
+                    <ShieldCheck size={14} strokeWidth={2.4} />
                   </div>
                   <div>
-                    <b>Devis expliqué</b>
-                    <span>ligne à ligne</span>
+                    <b>5 portes bloquantes</b>
+                    <span>avant le calcul</span>
                   </div>
                 </div>
                 <div className="ghub-float ghub-float-2">
@@ -441,8 +355,8 @@ export function GuidesHubPage() {
                     <Check size={14} strokeWidth={2.6} />
                   </div>
                   <div>
-                    <b>Coût total sur 3 ans</b>
-                    <span>maintenance incluse</span>
+                    <b>Calcul transparent</b>
+                    <span>avec vos hypothèses</span>
                   </div>
                 </div>
               </div>
@@ -517,29 +431,6 @@ export function GuidesHubPage() {
                 </div>
               );
             })}
-          </div>
-        </section>
-
-        {/* ============ RESSOURCES ============ */}
-        <section className="ghub-resources">
-          <div className="wrap ghub-resources-inner">
-            <div className="ghub-resources-copy">
-              <div className="eyebrow">Aller plus loin</div>
-              <h2>Préparez déjà votre décision avec des outils gratuits.</h2>
-              <p>
-                Les guides donnent les repères. Les modèles, calculateurs et
-                exemples vous aident ensuite à les appliquer à votre projet.
-              </p>
-            </div>
-            <div className="ghub-resources-grid">
-              {RESOURCES.map((r) => (
-                <Link key={r.href} href={r.href} className="ghub-resource">
-                  <span>{r.label}</span>
-                  <b>{r.value}</b>
-                  <ArrowIcon />
-                </Link>
-              ))}
-            </div>
           </div>
         </section>
 

@@ -115,7 +115,7 @@ export default function Page() {
           { href: "/services/saas-applications-metier", label: "SaaS et applications métier" },
           { href: "/services/outils-internes-sur-mesure", label: "Outils internes sur mesure" },
           { href: "/services/audit-technique", label: "Audit technique" },
-          { href: "/guides/prix-logiciel-sur-mesure", label: "Prix d'un logiciel sur mesure" },
+          { href: "/methode", label: "Notre méthode de cadrage" },
           { href: "/tarifs", label: "Nos tarifs" },
         ]}
         faqTitle="Développement React : vos questions"
@@ -283,13 +283,11 @@ export default function Page() {
         />
         <p>
           Pour comprendre ce qui fait varier ces montants avant même de nous
-          consulter, notre{" "}
-          <Link href="/guides/prix-logiciel-sur-mesure">guide du prix
-          d&apos;un logiciel sur mesure</Link> détaille la méthode de calcul,
-          et notre{" "}
-          <Link href="/guides/tjm-developpeur-web">guide du tarif journalier
-          d&apos;un développeur</Link> vous apprend à lire un devis en jours
-          et à repérer les estimations gonflées.
+          consulter, notre <Link href="/tarifs">page tarifs</Link> détaille les
+          périmètres publiés. Notre{" "}
+          <Link href="/methode">méthode de cadrage et de devis</Link> explique
+          ensuite comment les fonctions, responsabilités, tests et limites
+          deviennent un prix contractuel.
         </p>
 
         <h2 id="quand-non">7. Quand React n&apos;est pas la bonne réponse</h2>

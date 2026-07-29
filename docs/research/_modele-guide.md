@@ -11,12 +11,12 @@ Le déroulement et les portes de sortie sont définis dans
 
 Propriétaire éditorial unique :
 
-| Passe                        | État    | Date | Responsable | Snapshot | Blocages       |
-| ---------------------------- | ------- | ---- | ----------- | -------- | -------------- |
-| 1. Recherche                 | À faire |      |             |          |                |
-| 2. Rédaction et intégration  | Bloquée |      |             |          | P1 non validée |
-| 3. Contre-audit indépendant  | Bloquée |      |             |          | P2 non validée |
-| 4. Plume humaine et contrôle | Bloquée |      |             |          | P3 non validée |
+| Passe                                  | État    | Date | Responsable | Snapshot | Blocages       |
+| -------------------------------------- | ------- | ---- | ----------- | -------- | -------------- |
+| 1. Création complète                   | À faire |      |             |          |                |
+| 2. Enrichissement et vérification      | Bloquée |      |             |          | P1 non validée |
+| 3. Polish rédactionnel                 | Bloquée |      |             |          | P2 non validée |
+| 4. Antipasse IA et contrôle final      | Bloquée |      |             |          | P3 non validée |
 
 États autorisés : `À faire`, `En cours`, `Bloquée`, `À reprendre` et
 `Terminée — porte validée`. Une modification d'un fichier du snapshot après le
@@ -197,70 +197,65 @@ CTA principal et résultat après clic :
 
 ## 9. Rapports de sortie des quatre passes
 
-### Rapport P1 — Recherche
+### Rapport P1 — Création complète
 
 ```text
-PASSE 1 TERMINÉE
+PASSE_1_TERMINEE
 Slug :
-Lecteur et phrase réelle :
-Décision :
-Angle et forme dominante :
-Pages proches et différence :
-Sources décisives :
-Incertitudes exclues :
-Action autonome et CTA possible :
-Plan :
-Snapshot :
-```
-
-### Rapport P2 — Rédaction et intégration
-
-```text
-PASSE 2 TERMINÉE
-Fichiers créés ou modifiés :
-Ouverture et réponse :
-Forme propre au sujet :
-Exemples ou calculs :
-Sources visibles :
-Action autonome, bon fit et mauvais fit :
+Fichiers créés ou réécrits :
+Contrat de réponse :
+Sources primaires :
+Plan et sections :
+Calculs et exemples :
+Contre-cas :
 CTA et destination :
-Contrôles rapides :
-Snapshot :
+Contrôles :
+Risques résiduels :
+Manifeste P1 :
 ```
 
-### Rapport P3 — Contre-audit indépendant
+### Rapport P2 — Enrichissement et vérification
 
 ```text
-PASSE 3 TERMINÉE
-Relecteur indépendant :
-Affirmations et sources revérifiées :
-Calculs refaits :
-P0 trouvés / corrigés :
-P1 trouvés / corrigés :
-Suggestions rejetées et pourquoi :
-Corrections pédagogiques et commerciales :
-Revalidation du relecteur :
-Contrôles intermédiaires :
-Snapshot :
+PASSE_2_TERMINEE
+Affirmations revérifiées :
+Affirmations corrigées ou retirées :
+Sources contradictoires :
+Calculs refaits indépendamment :
+Risques, sécurité, données et réversibilité :
+Enrichissements qui changent la décision :
+Contrôles :
+Risques résiduels :
+Manifeste P2 :
 ```
 
-### Rapport P4 — Plume humaine et contrôle final
+### Rapport P3 — Polish rédactionnel
 
 ```text
-PASSE 4 TERMINÉE
-Passages humanisés :
-Coupe ou resserrement :
-Retour P3 effectué :
-Diff sémantique après la plume et revalidation éventuelle :
-Scorecard justifiée :
-Validation humaine réelle : oui/non
-Autorisation éditoriale :
-Commandes et résultats :
-Largeurs et états contrôlés :
-Route, image sociale et console :
-Snapshot final :
-Statut maximal :
-Verdict :
+PASSE_3_TERMINEE
+Problèmes de lisibilité corrigés :
+Jargon retiré ou défini :
+Transitions restructurées :
+Chiffres clarifiés :
+Répétitions retirées :
+Nuances P2 préservées :
+Contrôles :
+Risques résiduels :
+Manifeste P3 :
+```
+
+### Rapport P4 — Antipasse IA et contrôle final
+
+```text
+PASSE_4_TERMINEE
+Motifs artificiels détectés :
+Corrections appliquées :
+Passages volontairement conservés :
+Faits et calculs inchangés ou revérifiés :
+Scorecard proposée :
+Contrôles :
+Risques résiduels :
+Manifeste P4 :
 ```
 
 ## 10. Revue finale

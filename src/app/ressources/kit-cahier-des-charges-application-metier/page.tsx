@@ -294,10 +294,10 @@ export default function Page() {
                   </span>
                 </TrackedDownloadLink>
                 <Link
-                  href="/guides/cahier-des-charges-application-metier"
+                  href="/guides/automatiser-processus-metier"
                   className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 sm:w-fit"
                 >
-                  Lire la méthode complète
+                  Lire le premier guide décisionnel
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </Link>
               </div>
@@ -422,10 +422,10 @@ export default function Page() {
                 intégrations, sécurité, gouvernance et sortie.
               </p>
               <Link
-                href="/guides/erp-ou-logiciel-sur-mesure"
+                href="/services/outils-internes-sur-mesure"
                 className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-violet-700 hover:text-violet-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:text-violet-300 dark:hover:text-violet-200"
               >
-                Comparer ERP et sur mesure
+                Découvrir les outils internes sur mesure
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
             </div>

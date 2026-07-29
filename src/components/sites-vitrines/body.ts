@@ -175,7 +175,7 @@ ${navHtml}
         <h2>Un site vitrine, ce n'est pas<br>juste une brochure en ligne.</h2>
       </div>
       <div class="right">
-        On construit des sites orientés vers des actions mesurables (<a href="/guides/prix-site-vitrine">les prix du marché, gamme par gamme</a>) : <a href="/services/referencement-google">SEO technique</a> de série, objectifs Core Web Vitals,
+        On construit des sites orientés vers des actions mesurables (<a href="/tarifs">notre grille tarifaire, gamme par gamme</a>) : <a href="/services/referencement-google">SEO technique</a> de série, objectifs Core Web Vitals,
         CMS que vous éditez sans nous, formulaires branchés au CRM, tunnel de conversion pensé au pixel.
       </div>
     </div>
@@ -778,7 +778,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Même un site statique demande un suivi des dépendances, du domaine, des formulaires, des contenus et des services tiers. Le besoin et le budget de maintenance sont chiffrés selon l'architecture. Pour comparer les coûts sur trois ans, voir notre <a href="/guides/combien-coute-un-site-internet">guide des prix d'un site internet</a>.
+            Même un site statique demande un suivi des dépendances, du domaine, des formulaires, des contenus et des services tiers. Le besoin et le budget de maintenance sont chiffrés selon l'architecture. Notre <a href="/services/maintenance-evolution">service de maintenance et d'évolution</a> détaille les responsabilités à prévoir après la livraison.
           </div>
         </div>
 
@@ -788,7 +788,7 @@ ${navHtml}
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            La rédaction et les visuels sont chiffrés selon le volume, les droits et le niveau de validation requis. Le devis identifie la source de chaque image, sa licence et les éventuels coûts tiers ; un photographe peut être proposé séparément. Notre <a href="/guides/preparer-contenus-site-vitrine">guide pour préparer les contenus d'un site vitrine</a> explique ce que vous pouvez fournir, faire produire ou confirmer avant le démarrage.
+            La rédaction et les visuels sont chiffrés selon le volume, les droits et le niveau de validation requis. Le devis identifie la source de chaque image, sa licence et les éventuels coûts tiers ; un photographe peut être proposé séparément. Le <a href="/demarrer-un-projet">formulaire de cadrage</a> précise ce que vous pouvez fournir, faire produire ou confirmer avant le démarrage.
           </div>
         </div>
 

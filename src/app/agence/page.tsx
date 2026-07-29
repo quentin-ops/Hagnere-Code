@@ -245,12 +245,11 @@ export default function Page() {
         <p>
           Pourquoi cela compte pour vous : la vitesse d&apos;affichage sur mobile
           fait partie des signaux d&apos;expérience de page documentés par Google et
-          peut affecter l&apos;usage, sans garantir classement ni conversion. Notre{" "}
-          <Link href="/guides/combien-coute-un-site-internet">guide sur le prix
-          d&apos;un site internet</Link> détaille ce mécanisme, chiffres à
-          l&apos;appui. C&apos;est aussi la raison pour laquelle nous
-          pouvons inscrire au devis un budget de performance avec pages, conditions,
-          responsabilités et seuils de recette explicites.
+          peut affecter l&apos;usage, sans garantir classement ni conversion.
+          C&apos;est aussi la raison pour laquelle notre{" "}
+          <Link href="/services/sites-vitrines">offre de sites vitrines</Link>{" "}
+          peut inscrire au devis un budget de performance avec pages,
+          conditions, responsabilités et seuils de recette explicites.
         </p>
 
         <h2 id="paysage">5. Comparer les prestataires locaux sur des critères vérifiables</h2>
@@ -274,10 +273,8 @@ export default function Page() {
             <strong>Socle et réversibilité.</strong> Demandez pourquoi la solution
             convient au besoin, qui possède le domaine, le dépôt et les comptes,
             quelles dépendances sont utilisées et comment un tiers peut reprendre.
-            Notre{" "}
-            <Link href="/guides/nextjs-ou-wordpress">comparatif Next.js ou
-            WordPress</Link> traite la question honnêtement, y compris les cas
-            où WordPress reste le bon choix.
+            Notre <Link href="/methode">méthode de projet</Link> décrit les
+            accès, livrables et critères de reprise à exiger.
           </li>
         </ul>
         <p>
@@ -343,9 +340,9 @@ export default function Page() {
             spécifiques sont transférés après paiement complet selon les CGV.
             Le devis inventorie le dépôt, les accès, le domaine, les exclusions
             et les composants tiers. Notre{" "}
-            <Link href="/guides/choisir-son-agence-web">guide pour choisir son
-            agence web</Link> explique comment le vérifier chez n&apos;importe
-            quel prestataire, nous compris.
+            <Link href="/tarifs">présentation des tarifs et livrables</Link>{" "}
+            donne les points à vérifier chez n&apos;importe quel prestataire,
+            nous compris.
           </li>
         </ul>
         <p>
@@ -373,10 +370,12 @@ export default function Page() {
         <p>
           Une dernière chose, sur le référencement : si vous cherchez à
           comprendre ce que coûte un site, comment lire un devis ou comment
-          choisir un prestataire, nous avons publié {PUBLISHED_GUIDES.length} guides
-          longs et sourcés sur ces sujets. Ils sont gratuits, sans formulaire, et
-          ils vous serviront même si vous travaillez avec quelqu&apos;un
-          d&apos;autre — c&apos;est le principe. Le sommaire est sur notre{" "}
+          choisir un prestataire, nous reconstruisons actuellement notre
+          bibliothèque éditoriale. {PUBLISHED_GUIDES.length === 1
+            ? "Un guide long et sourcé est déjà publié."
+            : `${PUBLISHED_GUIDES.length} guides longs et sourcés sont déjà publiés.`}{" "}
+          L&apos;accès reste gratuit et sans formulaire, même si vous travaillez
+          avec quelqu&apos;un d&apos;autre. Le sommaire est sur notre{" "}
           <Link href="/guides">page guides</Link>.
         </p>
 

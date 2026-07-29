@@ -170,34 +170,34 @@ export const SEO_REFUSALS: SeoItem[] = [
 
 export const SEO_RELATED_RESOURCES = [
   {
-    href: "/guides/pourquoi-site-pas-visible-google",
+    href: "/methode",
     label: "Diagnostic",
-    title: "Pourquoi votre site n’apparaît pas sur Google ?",
+    title: "Notre méthode pour transformer un diagnostic en décisions",
   },
   {
-    href: "/guides/audit-seo-que-contient-il",
+    href: "/services/audit-technique",
     label: "Audit",
-    title: "Ce que doit contenir un audit SEO vraiment exploitable",
+    title: "Faire auditer le socle technique d’un site ou d’une application",
   },
   {
-    href: "/guides/prix-referencement-naturel",
+    href: "/tarifs",
     label: "Budget",
-    title: "Prix du référencement naturel : ce que vous achetez vraiment",
+    title: "Consulter les tarifs et le périmètre de nos prestations",
   },
   {
-    href: "/guides/refonte-sans-perdre-son-seo",
-    label: "Migration",
-    title: "Refondre un site sans perdre son référencement",
+    href: "/services/sites-vitrines",
+    label: "Refonte",
+    title: "Cadrer une création ou une refonte de site vitrine",
   },
   {
-    href: "/guides/migrer-wordpress-vers-nextjs",
+    href: "/agence-next-js",
     label: "Technique",
-    title: "Migrer WordPress vers Next.js : méthode, prix et risques",
+    title: "Comprendre les projets que nous réalisons avec Next.js",
   },
   {
-    href: "/guides/pourquoi-mon-site-est-lent",
+    href: "/services/maintenance-evolution",
     label: "Performance",
-    title: "Pourquoi mon site est lent : le diagnostic complet",
+    title: "Maintenir, corriger et faire évoluer un service existant",
   },
 ] as const;
 

@@ -29,7 +29,7 @@ ${navHtml}
         <span>💶 Livré en forfait fixe</span>
       </div>
       <p class="shero-sub">
-        Vous avez une idée de plateforme, un <a href="/guides/transformer-excel-en-application"><b>outil interne qui tourne sur Excel</b></a> depuis trop longtemps,
+        Vous avez une idée de plateforme, un <a href="/services/outils-internes-sur-mesure"><b>outil interne qui tourne sur Excel</b></a> depuis trop longtemps,
         ou un <b>besoin métier</b> qu'aucun logiciel du marché ne couvre vraiment. On construit la solution —
         <b>web, mobile iOS/Android, back-office, IA native</b>. Le devis précise jusqu'où va la mission&nbsp;:
         conception, code, tests, mise en ligne, hébergement et support selon le périmètre retenu.
@@ -736,7 +736,7 @@ ${navHtml}
             Nous écrivons principalement du <b>code TypeScript</b>, testé, typé et versionné. Le no-code reste pertinent
             pour valider un usage simple ou automatiser un processus interne. Le sur-mesure prend l'avantage quand
             les règles métier, les intégrations, la réversibilité ou le coût à plusieurs années deviennent structurants.
-            Notre <a href="/guides/no-code-ou-sur-mesure">comparatif no-code ou sur-mesure</a> détaille ces critères.
+            Notre <a href="/guides/automatiser-processus-metier">méthode pour choisir une première automatisation</a> aide à comparer une fonction existante, le no-code et le sur-mesure.
           </div>
         </div>
 

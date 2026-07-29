@@ -618,10 +618,10 @@ export default function Page() {
               une création ou une refonte.
             </p>
             <Link
-              href="/guides/cahier-des-charges-site-internet"
+              href="/methode"
               className="mt-5 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-violet-700 hover:text-violet-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 dark:text-violet-300 dark:hover:text-violet-200"
             >
-              Lire le guide complet
+              Voir notre méthode de cadrage
               <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </div>

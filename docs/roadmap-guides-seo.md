@@ -1,11 +1,13 @@
 # Roadmap de 100 nouveaux guides orientés conversion
 
-> Dernière révision : 24 juillet 2026. Cette roadmap a été créée avec **100
-> nouveaux sujets**, en plus des 32 guides alors inscrits dans
-> `src/lib/guides.ts`. Soixante-neuf de ces sujets sont désormais
-> implémentés : il reste donc 31 sujets à produire. Ce portefeuille
-> éditorial n'est pas une promesse que le volume constitue en lui-même un
-> facteur de classement.
+> Dernière révision : 29 juillet 2026. Cette roadmap est la file canonique des
+> **100 sujets à reconstruire** après la remise à zéro du corpus public. Un
+> sujet n’est compté comme publié qu’après ses quatre passes, les quatre gates
+> de l’orchestrateur et la vérification de sa page en production. Le premier
+> sujet reconstruit et autorisé à publication est
+> `automatiser-processus-metier` ; les 99 autres restent dans l’ordre
+> ci-dessous. Ce portefeuille éditorial n'est pas une promesse que le volume
+> constitue en lui-même un facteur de classement.
 
 Avant toute rédaction, suivre l’
 [ordre de lecture unique du workflow maître](workflow-maitre-guides-4-passes.md).
@@ -14,9 +16,9 @@ statuts, ni ses portes.
 
 ## 1. Décision stratégique
 
-Nous continuons à publier sans attendre plusieurs mois les résultats du
-corpus précédent. La mesure Search Console et la production avancent en
-parallèle.
+Le corpus repart guide par guide. Les anciennes routes restent protégées par
+des redirections permanentes, tandis que la mesure Search Console et la
+production avancent en parallèle.
 
 La logique est la suivante :
 
@@ -52,13 +54,14 @@ Références de cadrage :
 | Référencement naturel                   |              17 | Construire un vrai silo de décision autour de l'offre SEO, aujourd'hui peu couverte                                 |
 | Google Ads                              |              15 | Combler le plus gros trou du corpus : aucun guide dédié pour une offre déjà commercialisée                          |
 | Maintenance, TMA et reprise             |              13 | Besoins urgents, récurrents et directement reliés aux projets web, SaaS et métiers                                  |
-| Sites vitrines pour professionnels      |              13 | Compléter le silo existant avec des décisions et situations encore non traitées                                     |
-| **Total**                               |         **100** | **100 nouvelles intentions, hors 32 guides existants**                                                              |
+| Sites vitrines pour professionnels      |              13 | Construire un silo de décisions et de situations propres aux professionnels                                          |
+| **Total**                               |         **100** | **100 intentions dans la nouvelle file canonique**                                                                  |
 
-Les guides déjà publiés sur les prix des sites, le prix d'un SaaS, le prix
-d'un logiciel sur mesure, Excel, CRM, ERP, le no-code, les cahiers des charges,
-la refonte SEO et le choix d'une agence sont volontairement exclus de cette
-liste.
+Les anciens guides sur les prix des sites, le prix d'un SaaS, le prix d'un
+logiciel sur mesure, Excel, CRM, ERP, le no-code, les cahiers des charges, la
+refonte SEO et le choix d'une agence restent volontairement hors de cette
+liste. Leur ancienne publication ne vaut plus validation : toute future
+réécriture devra être réservée et suivre le même protocole à quatre passes.
 
 Le site commercialise aussi l'e-commerce, les applications mobiles, l'audit
 technique, la sécurité/RGPD et la production de contenu. Ils ne deviennent pas
@@ -322,199 +325,17 @@ impressions non-marque, requêtes, CTR, clics vers les pages service, démarrage
 de formulaire et demandes qualifiées. Une position moyenne isolée ou un temps
 passé ne suffit pas à juger un guide.
 
-## 10. Cinquante-neuf guides de la roadmap implémentés
+## 10. État après la remise à zéro
 
-Le premier sprint a été implémenté le 20 juillet 2026 :
+Le corpus précédent ne constitue plus une référence de qualité ni un état
+publié à prolonger. Les routes historiques sont traitées comme des routes
+héritées à rediriger ; elles ne comptent plus dans la file éditoriale.
 
-1. `automatiser-processus-metier` ;
-2. `valider-idee-saas-avant-developper` ;
-3. `prix-gestion-google-ads`.
+`automatiser-processus-metier` est le premier guide reconstruit. Il a suivi les
+quatre passes successives et les quatre gates documentées dans son dossier de
+recherche. Il est autorisé à rejoindre le hub, le sitemap et `llms.txt` dans un
+artefact de production indexable. Cette autorisation ne prouve ni déploiement,
+ni exploration, ni indexation effective, ni classement.
 
-Ce trio ouvre trois portes d'entrée différentes : une entreprise qui perd du
-temps dans un processus, un porteur d'idée SaaS avant investissement et une PME
-qui cherche à externaliser ses campagnes. Les trois mènent vers une offre
-réellement vendue et n'entrent pas en concurrence avec les 32 guides
-antérieurs. Après contre-audit, tests, build et contrôle aux dix largeurs, leur
-publication a été autorisée le 20 juillet 2026 par décision explicite du
-commanditaire déléguant l'arbitrage éditorial aux contre-audits documentés.
-
-Les cinq sujets suivants ont ensuite été produits successivement, avec dossier
-de recherche, contre-audit, maillage et contrôle technique propres :
-
-1. `calculer-roi-application-metier` ;
-2. `reprendre-logiciel-metier-existant` ;
-3. `mvp-saas-quoi-inclure` ;
-4. `audit-google-ads-que-verifier` ;
-5. `audit-seo-que-contient-il`.
-
-La batterie de prépublication exécute les tests SEO puis valide le build et le
-postbuild du snapshot gelé ; ses nombres courants sont consignés dans la
-checklist de lancement. Les huit routes ont franchi la porte éditoriale le 20 juillet 2026 :
-elles alimentent désormais le hub, le sitemap et `llms.txt`, et héritent de la
-politique `index,follow` dans l'artefact de production. Cette ouverture ne vaut
-ni preuve de crawl, ni preuve d'indexation effective, ni promesse de position.
-
-Le lot suivant a ensuite été produit et validé le 20 juillet 2026 :
-
-1. `seo-ou-google-ads` ;
-2. `contrat-tma-application` ;
-3. `template-ou-site-sur-mesure`.
-
-Les trois guides disposent chacun d’un dossier de recherche, d’un
-contre-audit indépendant, d’un maillage entrant et sortant, d’une image sociale
-dédiée et d’un contrôle navigateur aux dix largeurs. Ils alimentent le hub, le
-sitemap et `llms.txt` avec la politique `index,follow`. Cette ouverture signifie
-que les pages sont indexables ; elle ne prouve ni leur crawl, ni leur indexation
-effective, ni leur position future.
-
-Le quatrième lot a franchi les quatre passes le 21 juillet 2026 :
-
-1. `signes-besoin-logiciel-metier` ;
-2. `reprendre-mvp-vibe-code` ;
-3. `pourquoi-google-ads-ne-convertit-pas`.
-
-Chaque guide part d’une situation dite avec les mots du dirigeant, fournit une
-action autonome avant le CTA et possède une forme propre : trois situations
-d’entreprise et six réponses possibles pour le logiciel métier, cinq tests de
-reprise pour le prototype généré, quatre symptômes puis un relevé du clic à la
-marge pour Google Ads. Les recherches, contre-audits, passes anti-IA, images
-sociales et contrôles responsive sont consignés dans leurs dossiers respectifs.
-
-Le lot suivant a franchi successivement les quatre passes le 22 juillet 2026 :
-
-1. `preparer-contenus-site-vitrine` ;
-2. `remplacer-microsoft-access-application-web` ;
-3. `budget-google-ads-pme` ;
-4. `cahier-des-charges-saas` ;
-5. `choisir-prestataire-application-metier` ;
-6. `reprendre-saas-developpe-par-freelance` ;
-7. `cout-maintenance-application-metier` ;
-8. `pourquoi-site-pas-visible-google` ;
-9. `suivi-conversions-google-ads` ;
-10. `landing-page-google-ads`.
-
-Le lot couvre les six offres prioritaires du site sans transformer les pages en
-variantes mécaniques : préparation d’un site, reprise Access et SaaS, cadrage
-SaaS, choix d’un prestataire, maintenance applicative, visibilité naturelle,
-budget publicitaire, preuve des conversions et cohérence annonce-page. Chaque
-guide possède sa propre recherche, son contre-audit indépendant, une passe de
-plume, une image sociale, un maillage contextuel et une vérification navigateur.
-Le gel final commun autorise `index,follow` ; il ne prouve ni crawl, ni
-indexation effective, ni position future.
-
-Cinq nouveaux guides ont ensuite été produits successivement le 22 juillet
-2026 :
-
-1. `application-gestion-interventions-terrain` ;
-2. `agence-saas-ou-freelance` ;
-3. `reprendre-maintenance-site-autre-agence` ;
-4. `choisir-agence-google-ads` ;
-5. `choisir-agence-seo`.
-
-Ce lot relie cinq décisions directement commerciales : choisir le niveau de
-solution pour les équipes terrain, confier un SaaS à une agence ou un
-indépendant, changer d’équipe de maintenance sans perdre le contrôle, puis
-comparer des propositions Google Ads ou SEO sans se fier aux promesses. Les
-cinq guides ont chacun franchi recherche, rédaction, contre-audit indépendant,
-corrections, passe de plume, build et contrôle responsive réel. Leur ouverture
-à `index,follow` indique qu’ils sont techniquement indexables ; elle ne prouve
-ni exploration, ni indexation effective, ni classement futur.
-
-Le lot de dix suivant a ensuite été validé le 22 juillet 2026 :
-
-1. `migrer-logiciel-metier-sans-interruption` ;
-2. `leads-google-ads-non-qualifies` ;
-3. `site-internet-en-panne-que-faire` ;
-4. `mvp-prototype-ou-poc` ;
-5. `automatiser-saisie-donnees-entreprise` ;
-6. `connecter-erp-crm-logiciel-metier` ;
-7. `combien-de-temps-developper-saas` ;
-8. `positions-google-baissent` ;
-9. `combien-de-temps-resultats-seo` ;
-10. `landing-page-ou-site-vitrine`.
-
-Ces dix guides couvrent une bascule applicative, la qualité des demandes Ads,
-un incident de site, le choix du bon objet avant un MVP, les ressaisies, les
-échanges entre logiciels, le délai de développement d’un SaaS, une baisse SEO,
-le calendrier des résultats et le choix entre page de campagne et site
-durable. Chacun possède une décision, une forme, un dossier de recherche et un
-contre-audit propres. Leur présence dans le sitemap et la politique
-`index,follow` ne prouvent toujours pas une indexation effective.
-
-Le lot suivant a franchi les quatre passes le 23 juillet 2026 :
-
-1. `prioriser-fonctionnalites-mvp-saas` ;
-2. `back-office-sur-mesure-pme` ;
-3. `digitaliser-bons-intervention` ;
-4. `portail-client-b2b-sur-mesure` ;
-5. `application-suivi-production-pme` ;
-6. `faire-evoluer-saas-apres-mvp` ;
-7. `google-search-ads-ou-performance-max` ;
-8. `seo-local-pme` ;
-9. `tma-ou-regie` ;
-10. `site-one-page-ou-multipage`.
-
-Ce lot renforce les parcours SaaS, applications métier, maintenance,
-publicité, référencement local et sites vitrines. Les ouvertures suivent des
-situations différentes — demande client, dossier, bon terrain, ordre de
-production, campagne ou recherche locale — afin que la structure éditoriale ne
-devienne pas une signature mécanique. Les dix pages ont été soumises à leurs
-contrôles techniques et visuels ; elles sont indexables, sans que cela vaille
-preuve d’exploration, d’indexation ou de position.
-
-Le lot suivant a été produit le 23 juillet 2026 :
-
-1. `power-apps-ou-application-sur-mesure` ;
-2. `logiciel-gestion-stock-sur-mesure` ;
-3. `facturation-abonnements-saas` ;
-4. `securite-saas-b2b` ;
-5. `seo-saas-b2b` ;
-6. `calculer-cout-par-lead-google-ads` ;
-7. `google-ads-ou-meta-ads` ;
-8. `sla-maintenance-applicative` ;
-9. `dette-technique-cout-entreprise` ;
-10. `prise-rendez-vous-en-ligne-site-vitrine`.
-
-Ces dix guides partent de décisions différentes : renforcer ou remplacer un
-outil Microsoft, retrouver un écart de stock, organiser un abonnement, répondre
-à un acheteur sécurité, relier le SEO aux ventes, calculer les vrais coûts Ads,
-choisir un premier canal publicitaire, écrire des engagements de maintenance,
-mesurer le coût des ralentissements techniques ou confirmer honnêtement un
-rendez-vous. Les contre-audits ont notamment corrigé une formule de CAC, séparé
-un plafond média d’un plafond complet et retiré des gabarits éditoriaux répétés.
-Le snapshot final a franchi le build de production, le contrôle de l’artefact
-SEO et 50 combinaisons route/largeur dans un vrai navigateur. Les dix routes
-sont donc autorisées en `index,follow` et peuvent rejoindre le hub, le sitemap
-et `llms.txt`. Cette ouverture technique ne prouve ni exploration, ni
-indexation effective, ni classement.
-
-Le lot suivant a franchi les quatre passes le 24 juillet 2026 :
-
-1. `crm-sur-mesure-ou-hubspot` ;
-2. `lovable-bolt-v0-ou-agence-saas` ;
-3. `rgpd-saas-b2b` ;
-4. `zapier-make-ou-developpement-sur-mesure` ;
-5. `logiciel-planning-sur-mesure` ;
-6. `google-ads-saas-b2b` ;
-7. `google-ads-commerce-local` ;
-8. `contrat-seo-duree-engagement` ;
-9. `site-indexe-sans-trafic` ;
-10. `audit-technique-avant-reprendre-site`.
-
-Ce lot répond à dix décisions concrètes de dirigeant : choisir entre un CRM
-standard et un outil adapté, arbitrer entre trois générateurs d’application et
-une agence, préparer la conformité d’un SaaS, savoir quand une automatisation
-visuelle atteint ses limites, organiser un planning réellement contraint,
-piloter l’acquisition d’un SaaS ou d’un commerce local, lire un contrat SEO,
-diagnostiquer un site pourtant indexé et sécuriser la reprise d’un site
-existant. Les comparaisons de produits et les points réglementaires ont été
-datés et reliés à leurs sources ; les cas chiffrés sont explicitement fictifs.
-
-Après recherche, rédaction, deux contre-audits indépendants et passe de plume,
-le lot a réussi 55 tests ciblés, 228 contrôles SEO, 453 tests globaux,
-TypeScript, ESLint et le build de production. Le rendu a également été vérifié
-dans un vrai navigateur sur les dix routes et cinq largeurs, soit 50
-combinaisons, ainsi qu’en clair et sombre ; les dix images sociales mesurent
-1 200 × 630 pixels. L’autorisation `index,follow`, l’inclusion au sitemap et la
-présence des données structurées rendent les pages techniquement indexables :
-elles ne prouvent ni leur exploration ni leur indexation effective par Google.
+Les 99 sujets suivants conservent le statut `NON_LANCE`. Aucun ancien contenu,
+ancien score ou ancien contrôle ne leur est transféré.

@@ -78,7 +78,9 @@ describe("sitemap", () => {
 
   it("inclut la section guides", () => {
     expect(urls).toContain(`${BASE}/guides`);
-    expect(urls).toContain(`${BASE}/guides/combien-coute-un-site-internet`);
+    expect(urls).toContain(
+      `${BASE}/guides/automatiser-processus-metier`,
+    );
   });
 
   it("inclut chaque guide publiable avec sa vraie date de modification", () => {

@@ -132,8 +132,8 @@ export default function Page() {
           { href: "/services/sites-vitrines", label: "Sites vitrines" },
           { href: "/services/ecommerce", label: "E-commerce sur mesure" },
           { href: "/services/saas-applications-metier", label: "SaaS et applications métier" },
-          { href: "/guides/nextjs-ou-wordpress", label: "Next.js ou WordPress ?" },
-          { href: "/guides/migrer-wordpress-vers-nextjs", label: "Migrer de WordPress vers Next.js" },
+          { href: "/methode", label: "Notre méthode de cadrage" },
+          { href: "/services/audit-technique", label: "Audit et reprise d'existant" },
           { href: "/tarifs", label: "Nos tarifs" },
         ]}
         faqTitle="Développement Next.js : vos questions"
@@ -180,10 +180,12 @@ export default function Page() {
           ]}
         />
         <p>
-          Nous prenons également en charge les{" "}
-          <Link href="/guides/migrer-wordpress-vers-nextjs">migrations depuis
-          WordPress</Link>, avec le plan de redirection qui protège votre
-          référencement existant, ainsi que le{" "}
+          Nous prenons également en charge l&apos;{" "}
+          <Link href="/services/audit-technique">
+            audit avant une migration depuis WordPress
+          </Link>
+          , puis le plan de redirection adapté au référencement existant, ainsi
+          que le{" "}
           <Link href="/services/referencement-google">référencement
           naturel</Link> et les{" "}
           <Link href="/services/publicite-en-ligne">campagnes Google Ads</Link>{" "}
@@ -256,11 +258,9 @@ export default function Page() {
           daté. Ce que cela change : vous êtes en droit de
           leur accorder moins de poids qu&apos;à une référence externe, et
           nous le comprenons. Vous pouvez en revanche tester nos réalisations
-          vous-même sur PageSpeed Insights — c&apos;est gratuit, ça prend
-          trente secondes, et c&apos;est le genre de vérification que notre{" "}
-          <Link href="/guides/choisir-son-agence-web">guide pour choisir son
-          agence web</Link> recommande d&apos;appliquer à tout prestataire,
-          nous compris.
+          vous-même avec les outils adaptés et appliquer les mêmes critères à
+          tout prestataire. Notre <Link href="/methode">méthode</Link> explique
+          comment nous transformons ces contrôles en critères d&apos;acceptation.
         </InfoBox>
         <p>
           Le détail de ces projets — problème, solution, décisions techniques —
@@ -314,13 +314,10 @@ export default function Page() {
         />
         <p>
           La grille complète, poste par poste, est sur notre{" "}
-          <Link href="/tarifs">page tarifs</Link>. Si vous voulez comprendre ce
-          qui fait varier un devis avant même de nous consulter, notre{" "}
-          <Link href="/guides/combien-coute-un-site-internet">guide du prix
-          d&apos;un site internet</Link> et notre{" "}
-          <Link href="/guides/tjm-developpeur-web">guide du tarif journalier
-          d&apos;un développeur</Link> décortiquent le sujet, sources à
-          l&apos;appui.
+          <Link href="/tarifs">page tarifs</Link>. Notre{" "}
+          <Link href="/methode">méthode de cadrage</Link> explique comment un
+          périmètre, des responsabilités, des tests et des dépendances deviennent
+          un devis contrôlable.
         </p>
 
         <h2 id="quand-non">6. Quand Next.js n&apos;est pas la bonne réponse</h2>
@@ -343,10 +340,9 @@ export default function Page() {
           <li>
             <strong>Votre WordPress actuel est récent et performant.</strong>{" "}
             Si vos mesures sont bonnes, optimisez plutôt que de reconstruire.
-            Notre{" "}
-            <Link href="/guides/migrer-wordpress-vers-nextjs">guide de la
-            migration</Link> liste cinq situations où nous refusons la mission,
-            celle-ci comprise.
+            Un <Link href="/services/audit-technique">audit de l&apos;existant</Link>{" "}
+            doit d&apos;abord démontrer qu&apos;une migration apporte plus qu&apos;une
+            optimisation ciblée.
           </li>
           <li>
             <strong>Votre équipe éditoriale publie tous les jours avec un

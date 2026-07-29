@@ -4,18 +4,18 @@ import { OG_BASE, DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/seo";
 import { PUBLISHED_GUIDES, guideUrl } from "@/lib/guides";
 
 export const metadata: Metadata = {
-  title: "Guides : prix d'un site internet, SaaS et SEO · Hagnéré Code",
+  title: "Guides pour décider avant de développer · Hagnéré Code",
   description:
-    "Des guides chiffrés pour cadrer votre projet web : prix d'un site internet, SaaS, outils métier, SEO. Par l'équipe Hagnéré Code, agence Next.js/React.",
+    "Des guides sourcés, des calculs transparents et des méthodes concrètes pour cadrer un projet numérique avant de choisir un outil ou un prestataire.",
   authors: [{ name: "Hagnéré Code" }],
   creator: "Hagnéré Code",
   publisher: "Hagnéré Code",
   alternates: { canonical: "/guides" },
   openGraph: {
     ...OG_BASE,
-    title: "Guides : prix d'un site internet, SaaS et SEO · Hagnéré Code",
+    title: "Guides pour décider avant de développer · Hagnéré Code",
     description:
-      "Des guides chiffrés pour cadrer votre projet web : prix d'un site internet, SaaS, outils métier, SEO.",
+      "Des méthodes sourcées et des calculs transparents pour cadrer un projet numérique avant de choisir une solution.",
     url: "/guides",
     images: [DEFAULT_OG_IMAGE],
   },
@@ -33,9 +33,9 @@ const breadcrumbJsonLd = JSON.stringify({
 const collectionJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Guides : prix d'un site internet, SaaS et SEO",
+  name: "Guides Hagnéré Code pour cadrer un projet numérique",
   description:
-    "Des guides pratiques et chiffrés pour cadrer votre projet web, rédigés par l'équipe Hagnéré Code.",
+    "Des guides pratiques, sourcés et vérifiables pour cadrer un projet numérique avant de choisir une solution.",
   url: `${SITE_URL}/guides`,
   author: {
     "@type": "Organization",

@@ -451,8 +451,8 @@ ${navHtml}
         Les fourchettes ci-dessous sont calibrées sur <b>nos barèmes internes</b> — charge de travail,
         profils mobilisés, périmètre fonctionnel. Nous nous engageons à ce que nos devis tombent
         <b>dans la fourchette annoncée</b> : c'est ce qui nous permet de l'afficher publiquement.
-        Pour situer ces prix par rapport au marché, poste par poste, lisez notre guide
-        <a href="/guides/combien-coute-un-site-internet">combien coûte un site internet en 2026</a>.
+        Les hypothèses, inclusions et facteurs de variation sont détaillés
+        ci-dessous, poste par poste, pour comparer des périmètres réellement équivalents.
       </div>
     </div>
 

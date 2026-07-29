@@ -2,14 +2,14 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Quel processus métier faut-il automatiser en premier ? — Hagnéré Code";
+  "Quel processus métier automatiser en premier ? — Hagnéré Code";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const questions = [
-  { label: "TEMPS", value: "combien d’heures ?", color: "#34d399" },
-  { label: "RÈGLES", value: "sont-elles stables ?", color: "#60a5fa" },
-  { label: "ERREURS", value: "que coûtent-elles ?", color: "#c4b5fd" },
+const steps = [
+  { number: "01", label: "Cartographier", detail: "le travail réel" },
+  { number: "02", label: "Écarter", detail: "les risques bloquants" },
+  { number: "03", label: "Distinguer", detail: "capacité et dépense évitée" },
 ];
 
 export default function OgImage() {
@@ -20,15 +20,20 @@ export default function OgImage() {
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
-        padding: 66,
+        padding: "62px 66px 58px",
         background:
-          "radial-gradient(circle at 82% 22%, rgba(124,58,237,0.28), transparent 28%), linear-gradient(135deg, #09090b 0%, #111827 54%, #172554 100%)",
+          "radial-gradient(circle at 86% 12%, rgba(129,140,248,0.25), transparent 30%), linear-gradient(135deg, #09090b 0%, #111827 58%, #172554 100%)",
         color: "#ffffff",
         fontFamily: "sans-serif",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <div
           style={{
             display: "flex",
@@ -36,10 +41,10 @@ export default function OgImage() {
             justifyContent: "center",
             width: 52,
             height: 52,
-            borderRadius: 14,
-            background: "linear-gradient(135deg, #7c3aed, #2563eb)",
-            fontSize: 21,
-            fontWeight: 750,
+            borderRadius: 15,
+            background: "linear-gradient(135deg, #6366f1, #7c3aed)",
+            fontSize: 20,
+            fontWeight: 800,
           }}
         >
           HC
@@ -48,8 +53,8 @@ export default function OgImage() {
           style={{
             display: "flex",
             marginLeft: 16,
-            fontSize: 28,
-            fontWeight: 650,
+            fontSize: 27,
+            fontWeight: 700,
           }}
         >
           Hagnéré Code
@@ -58,12 +63,12 @@ export default function OgImage() {
           style={{
             display: "flex",
             marginLeft: "auto",
-            padding: "9px 19px",
+            padding: "9px 18px",
+            border: "1px solid rgba(165,180,252,0.35)",
             borderRadius: 999,
-            border: "1px solid rgba(167,139,250,0.36)",
-            background: "rgba(76,29,149,0.18)",
-            color: "#ddd6fe",
-            fontSize: 20,
+            color: "#c7d2fe",
+            background: "rgba(49,46,129,0.22)",
+            fontSize: 18,
           }}
         >
           Guide décisionnel 2026
@@ -73,130 +78,99 @@ export default function OgImage() {
       <div
         style={{
           display: "flex",
-          alignItems: "center",
-          gap: 58,
-          width: "100%",
+          flexDirection: "column",
+          marginTop: 62,
+          maxWidth: 960,
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-          <div
-            style={{
-              display: "flex",
-              maxWidth: 680,
-              fontSize: 51,
-              fontWeight: 760,
-              lineHeight: 1.07,
-              letterSpacing: -1.9,
-            }}
-          >
-            Quel processus métier automatiser en premier ?
-          </div>
-          <div
-            style={{
-              display: "flex",
-              marginTop: 22,
-              fontSize: 25,
-              color: "#a5b4fc",
-            }}
-          >
-            Choisir une tâche utile, puis tester simplement
-          </div>
-        </div>
-
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            width: 350,
-            gap: 11,
-            padding: 20,
-            borderRadius: 24,
-            border: "1px solid rgba(255,255,255,0.14)",
-            background: "rgba(255,255,255,0.055)",
-            boxShadow: "0 24px 80px rgba(37,99,235,0.18)",
+            fontSize: 60,
+            lineHeight: 1.03,
+            letterSpacing: -2.4,
+            fontWeight: 800,
           }}
         >
+          Quel processus métier automatiser en premier ?
+        </div>
+        <div
+          style={{
+            display: "flex",
+            marginTop: 20,
+            fontSize: 24,
+            color: "#c4b5fd",
+          }}
+        >
+          Une méthode, cinq portes bloquantes et un calcul transparent
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          gap: 14,
+          width: "100%",
+          marginTop: "auto",
+        }}
+      >
+        {steps.map((step) => (
           <div
+            key={step.number}
             style={{
               display: "flex",
-              color: "#a1a1aa",
-              fontSize: 16,
-              letterSpacing: 1.5,
-              marginBottom: 2,
+              alignItems: "center",
+              flex: 1,
+              minHeight: 84,
+              padding: "15px 18px",
+              borderRadius: 18,
+              border: "1px solid rgba(255,255,255,0.12)",
+              background: "rgba(255,255,255,0.055)",
             }}
           >
-            TROIS QUESTIONS À POSER
-          </div>
-          {questions.map((question) => (
             <div
-              key={question.label}
               style={{
                 display: "flex",
                 alignItems: "center",
-                minHeight: 58,
-                padding: "10px 14px",
-                borderRadius: 14,
-                border: "1px solid rgba(255,255,255,0.09)",
-                background: "rgba(9,9,11,0.32)",
+                justifyContent: "center",
+                width: 43,
+                height: 43,
+                borderRadius: 13,
+                background: "rgba(99,102,241,0.22)",
+                color: "#c7d2fe",
+                fontSize: 16,
+                fontWeight: 800,
+              }}
+            >
+              {step.number}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                marginLeft: 13,
               }}
             >
               <div
                 style={{
                   display: "flex",
-                  width: 14,
-                  height: 14,
-                  borderRadius: 99,
-                  background: question.color,
-                  boxShadow: "0 0 18px " + question.color,
-                }}
-              />
-              <div
-                style={{
-                  display: "flex",
-                  marginLeft: 13,
-                  fontSize: 17,
-                  fontWeight: 700,
-                  color: "#d4d4d8",
+                  fontSize: 19,
+                  fontWeight: 750,
                 }}
               >
-                {question.label}
+                {step.label}
               </div>
               <div
                 style={{
                   display: "flex",
-                  marginLeft: "auto",
-                  fontSize: 17,
-                  fontWeight: 750,
-                  color: question.color,
+                  marginTop: 3,
+                  fontSize: 16,
+                  color: "#a1a1aa",
                 }}
               >
-                {question.value}
+                {step.detail}
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-
-      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        {[
-          "Observer une semaine",
-          "Comparer les solutions",
-          "Tester avant d’investir",
-          "Savoir quand attendre",
-        ].map((label) => (
-          <div
-            key={label}
-            style={{
-              display: "flex",
-              padding: "10px 17px",
-              borderRadius: 999,
-              background: "rgba(255,255,255,0.055)",
-              border: "1px solid rgba(255,255,255,0.10)",
-              color: "#d4d4d8",
-              fontSize: 19,
-            }}
-          >
-            {label}
           </div>
         ))}
       </div>

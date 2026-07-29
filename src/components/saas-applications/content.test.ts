@@ -29,10 +29,10 @@ describe("SaaS service page credibility", () => {
     expect(publishedContent).not.toMatch(/30 jours[^<.]{0,60}garantie|garantie[^<.]{0,60}30 jours/i);
   });
 
-  it("connects the service decision to the three relevant guides", () => {
-    expect(composedBodyHtml).toContain("/guides/transformer-excel-en-application");
-    expect(composedBodyHtml).toContain("/guides/no-code-ou-sur-mesure");
-    expect(composedBodyHtml).toContain("/guides/combien-coute-un-saas");
+  it("connects the service decision only to active routes", () => {
+    expect(composedBodyHtml).toContain("/services/outils-internes-sur-mesure");
+    expect(composedBodyHtml).toContain("/guides/automatiser-processus-metier");
+    expect(composedBodyHtml).toContain("/tarifs");
   });
 
   it("states that ranges need scoping and that architecture choices are documented", () => {

@@ -603,12 +603,12 @@ export function ExcelCalculator() {
                 signature.
               </p>
               <p>
-                Avant de chiffrer une reconstruction, faites aussi le{" "}
+                Avant de chiffrer une reconstruction, appliquez aussi notre{" "}
                 <Link
-                  href="/guides/transformer-excel-en-application"
+                  href="/guides/automatiser-processus-metier"
                   style={{ textDecoration: "underline" }}
                 >
-                  diagnostic Excel vers application
+                  méthode pour choisir un premier processus à automatiser
                 </Link>{" "}
                 : il peut recommander de fiabiliser le fichier ou d&apos;acheter un
                 logiciel existant plutôt que de développer.

@@ -29,21 +29,21 @@ export function OutilsInternes() {
               Préparer la décision
             </p>
             <h2 className="mt-2 max-w-3xl text-2xl font-bold tracking-tight text-zinc-950 dark:text-white">
-              Trois guides pour choisir avant de développer.
+              Trois ressources pour choisir avant de développer.
             </h2>
             <div className="mt-6 grid gap-3 md:grid-cols-3">
               {[
                 [
-                  "/guides/transformer-excel-en-application",
-                  "Transformer Excel en application",
+                  "/guides/automatiser-processus-metier",
+                  "Choisir le premier processus à automatiser",
                 ],
                 [
-                  "/guides/erp-ou-logiciel-sur-mesure",
-                  "Comparer ERP et logiciel sur mesure",
+                  "/methode",
+                  "Comprendre notre méthode de cadrage",
                 ],
                 [
-                  "/guides/cahier-des-charges-application-metier",
-                  "Rédiger le cahier des charges métier",
+                  "/demarrer-un-projet",
+                  "Décrire le besoin métier à étudier",
                 ],
               ].map(([href, label]) => (
                 <Link

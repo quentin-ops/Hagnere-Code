@@ -33,9 +33,9 @@ export const ECOMMERCE_FAQ_ITEMS: readonly EcommerceFaqItem[] = [
         ),
       ],
       [
-        part("Pour situer ces montants dans le marché, consultez notre "),
-        part("guide des prix d'un site internet en 2026", {
-          href: "/guides/combien-coute-un-site-internet",
+        part("Pour lire les périmètres associés à ces montants, consultez notre "),
+        part("grille tarifaire publiée", {
+          href: "/tarifs",
         }),
         part("."),
       ],
