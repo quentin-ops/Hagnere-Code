@@ -1,6 +1,6 @@
 /** @vitest-environment happy-dom */
 
-import { act } from "react";
+import { flushSync } from "react-dom";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { GuidePremiumFaqCategorized } from "./guide-premium-faq-categorized";
@@ -44,11 +44,13 @@ describe("GuidePremiumFaqCategorized accessibility", () => {
     container = document.createElement("div");
     document.body.append(container);
     root = createRoot(container);
-    act(() => root.render(<GuidePremiumFaqCategorized categories={categories} />));
+    flushSync(() =>
+      root.render(<GuidePremiumFaqCategorized categories={categories} />),
+    );
   });
 
   afterEach(() => {
-    act(() => root.unmount());
+    flushSync(() => root.unmount());
     container.remove();
   });
 
@@ -94,7 +96,7 @@ describe("GuidePremiumFaqCategorized accessibility", () => {
   it("moves and activates tabs with arrow, Home and End keys", () => {
     const tabs = [...container.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
 
-    act(() => {
+    flushSync(() => {
       tabs[0].focus();
       tabs[0].dispatchEvent(
         new KeyboardEvent("keydown", { key: "ArrowDown", bubbles: true }),
@@ -103,7 +105,7 @@ describe("GuidePremiumFaqCategorized accessibility", () => {
     expect(tabs[1].getAttribute("aria-selected")).toBe("true");
     expect(document.activeElement).toBe(tabs[1]);
 
-    act(() => {
+    flushSync(() => {
       tabs[1].dispatchEvent(
         new KeyboardEvent("keydown", { key: "Home", bubbles: true }),
       );
@@ -111,7 +113,7 @@ describe("GuidePremiumFaqCategorized accessibility", () => {
     expect(tabs[0].getAttribute("aria-selected")).toBe("true");
     expect(document.activeElement).toBe(tabs[0]);
 
-    act(() => {
+    flushSync(() => {
       tabs[0].dispatchEvent(
         new KeyboardEvent("keydown", { key: "End", bubbles: true }),
       );
@@ -127,14 +129,14 @@ describe("GuidePremiumFaqCategorized accessibility", () => {
     expect(question).not.toBeNull();
     expect(question?.type).toBe("button");
 
-    act(() => {
+    flushSync(() => {
       question?.dispatchEvent(
         new KeyboardEvent("keydown", { key: "Enter", bubbles: true }),
       );
     });
     expect(question?.getAttribute("aria-expanded")).toBe("false");
 
-    act(() => {
+    flushSync(() => {
       question?.dispatchEvent(
         new KeyboardEvent("keydown", { key: " ", bubbles: true }),
       );

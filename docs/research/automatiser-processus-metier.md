@@ -1135,6 +1135,11 @@ Le protocole obligatoire correspondant est
   et le lockfile : la première construction Vercel du commit `4ce31ed` a révélé
   que le test de FAQ dépendait d’un paquet seulement présent dans le cache
   local ; une installation propre doit désormais réussir avant publication.
+- remplacement de l’aide React `act` par `flushSync` dans le test de FAQ :
+  la seconde construction Vercel du commit `cbe168b`, correctement installée,
+  a révélé que `act` n’est pas disponible dans le bundle React chargé avec
+  `NODE_ENV=production`. Le gate SEO est désormais rejoué explicitement avec
+  cet environnement avant publication.
 - montée de patch ciblée de Next.js `16.2.10` vers `16.2.12`, alignement de
   `eslint-config-next` et mise à jour du Sharp direct vers `0.35.3` après
   l’avis de sécurité officiel de juillet 2026 ; aucun `npm audit fix --force`

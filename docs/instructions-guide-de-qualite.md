@@ -486,6 +486,8 @@ npm run measure:guide-readtime -- <slug>
 npx eslint <tous-les-fichiers-modifies>
 npx tsc --noEmit
 npm run check:seo
+# Rejouer le gate exécuté pendant un build Vercel :
+NODE_ENV=production npm run check:seo
 npm test
 npm audit --omit=dev
 NEXT_PUBLIC_ENV=production npm run build
@@ -495,6 +497,12 @@ Une exécution locale verte avec un `node_modules` ancien n’est pas une preuve
 de reproductibilité. Toute nouvelle bibliothèque de test ou de build doit être
 déclarée dans `package.json`, verrouillée dans `package-lock.json`, puis
 réinstallée dans un environnement propre avant publication.
+
+Les tests lancés par `prebuild` doivent aussi être exécutables lorsque
+`NODE_ENV=production`. Certaines bibliothèques, notamment React, n’exposent
+pas exactement les mêmes aides de test dans leur bundle de production : un
+test vert uniquement avec l’environnement de développement peut donc bloquer
+le build distant alors que le composant lui-même est correct.
 
 Un audit non nul doit être qualifié paquet par paquet. Une version directe
 correctible bloque la publication jusqu’à sa montée de patch et ses
