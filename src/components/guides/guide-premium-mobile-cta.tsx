@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Calendar, Phone } from "lucide-react";
+import { MessageSquareText, Phone } from "lucide-react";
 
 interface GuidePremiumMobileCtaProps {
   ctaHref: string;
@@ -10,6 +10,7 @@ interface GuidePremiumMobileCtaProps {
   phoneHref: string;
   phoneLabel: string;
   showAfter?: number;
+  triggerId?: string;
 }
 
 export function GuidePremiumMobileCta({
@@ -18,33 +19,69 @@ export function GuidePremiumMobileCta({
   phoneHref,
   phoneLabel,
   showAfter = 400,
+  triggerId = "guide-premium-hero",
 }: GuidePremiumMobileCtaProps) {
-  const [visible, setVisible] = useState(false);
+  const [pastTrigger, setPastTrigger] = useState(false);
+  const [overCompetingCta, setOverCompetingCta] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setVisible(window.scrollY > showAfter);
+    const trigger = document.getElementById(triggerId);
+    const competingSections = ["faq", "contact"]
+      .map((id) => document.getElementById(id))
+      .filter((element): element is HTMLElement => element !== null);
+    let animationFrame = 0;
+
+    const updateVisibility = () => {
+      setPastTrigger(
+        trigger
+          ? trigger.getBoundingClientRect().bottom <= 0
+          : window.scrollY > showAfter,
+      );
+      setOverCompetingCta(
+        competingSections.some((section) => {
+          const rect = section.getBoundingClientRect();
+          return rect.top < window.innerHeight && rect.bottom > 0;
+        }),
+      );
     };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [showAfter]);
+    const scheduleUpdate = () => {
+      if (animationFrame) return;
+      animationFrame = window.requestAnimationFrame(() => {
+        animationFrame = 0;
+        updateVisibility();
+      });
+    };
+
+    updateVisibility();
+    scheduleUpdate();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    };
+  }, [showAfter, triggerId]);
+
+  const visible = pastTrigger && !overCompetingCta;
 
   return (
     <div
       aria-hidden={!visible}
       className={`fixed inset-x-0 bottom-0 z-40 lg:hidden print:hidden transition-transform duration-300 ${
-        visible ? "translate-y-0" : "translate-y-full"
+        visible
+          ? "translate-y-0"
+          : "pointer-events-none translate-y-full"
       }`}
     >
-      <div className="bg-white/95 backdrop-blur border-t border-zinc-200 dark:border-zinc-800 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.12)] px-3 pt-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
+      <div className="bg-white/95 dark:bg-zinc-950/95 backdrop-blur border-t border-zinc-200 dark:border-zinc-800 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.12)] px-3 pt-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
         <div className="flex gap-2 max-w-md mx-auto">
           <Link
             href={ctaHref}
             tabIndex={visible ? undefined : -1}
             className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-zinc-950 text-white text-sm font-semibold hover:bg-zinc-800 transition-colors"
           >
-            <Calendar className="size-4" aria-hidden="true" />
+            <MessageSquareText className="size-4" aria-hidden="true" />
             <span className="truncate">{ctaLabel}</span>
           </Link>
           <a

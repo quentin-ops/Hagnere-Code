@@ -583,7 +583,10 @@ function checkStructuredData(html, pathname) {
       const images = Array.isArray(article.image)
         ? article.image
         : [article.image];
-      const expectedImage = `${canonicalUrl}/opengraph-image`;
+      const expectedImages =
+        guideEntry?.articleImagePaths.length > 0
+          ? guideEntry.articleImagePaths.map((path) => `${SITE_ORIGIN}${path}`)
+          : [`${canonicalUrl}/opengraph-image`];
       if (!String(article.headline || "").trim()) {
         fail(`Article sans headline : ${pathname}`);
       }
@@ -593,8 +596,13 @@ function checkStructuredData(html, pathname) {
       ) {
         fail(`Article sans URL canonique cohérente : ${pathname}`);
       }
-      if (!images.includes(expectedImage)) {
-        fail(`Article sans image canonique dédiée : ${pathname}`);
+      const missingImages = expectedImages.filter(
+        (expectedImage) => !images.includes(expectedImage),
+      );
+      if (missingImages.length > 0) {
+        fail(
+          `Article sans toutes ses images éditoriales dédiées (${missingImages.join(", ")}) : ${pathname}`,
+        );
       }
       if (
         guideEntry &&
@@ -673,15 +681,23 @@ const guidesSource = readRequired(guidesSourcePath, "registre des guides");
 const guideEntries = guidesSource
   ? Array.from(
       guidesSource.matchAll(/\{\s*slug:\s*"([^"]+)"([\s\S]*?)\n\s*\},/g),
-      (match) => ({
-        slug: match[1],
-        pending: /editorialStatus:\s*"ready-for-human-review"/.test(match[2]),
-        datePublished: match[2].match(/datePublished:\s*"([^"]+)"/)?.[1],
-        dateModified: match[2].match(/dateModified:\s*"([^"]+)"/)?.[1],
-        readTimeMin: Number(
-          match[2].match(/readTimeMin:\s*(\d+)/)?.[1] ?? Number.NaN,
-        ),
-      }),
+      (match) => {
+        const imageBlock =
+          match[2].match(/articleImagePaths:\s*\[([\s\S]*?)\]/)?.[1] ?? "";
+        return {
+          slug: match[1],
+          pending: /editorialStatus:\s*"ready-for-human-review"/.test(match[2]),
+          datePublished: match[2].match(/datePublished:\s*"([^"]+)"/)?.[1],
+          dateModified: match[2].match(/dateModified:\s*"([^"]+)"/)?.[1],
+          readTimeMin: Number(
+            match[2].match(/readTimeMin:\s*(\d+)/)?.[1] ?? Number.NaN,
+          ),
+          articleImagePaths: Array.from(
+            imageBlock.matchAll(/"([^"]+)"/g),
+            (imageMatch) => imageMatch[1],
+          ),
+        };
+      },
     )
   : [];
 

@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import type { GuideEntry } from "./guides";
 import { guideRobots, guideUrl } from "./guides";
+import {
+  ORGANIZATION_ID,
+  QUENTIN_HAGNERE_ID,
+  QUENTIN_HAGNERE_URL,
+} from "./organization-structured-data";
 import { OG_BASE, SITE_URL } from "./seo";
+import { TEAM } from "./team";
+
+export const GUIDES_COLLECTION_ID = `${SITE_URL}/guides#collection`;
 
 export function buildGuideMetadata(
   guide: GuideEntry,
@@ -13,7 +21,7 @@ export function buildGuideMetadata(
   return {
     title: guide.title,
     description: guide.metaDescription,
-    authors: [{ name: "Quentin Hagnéré" }],
+    authors: [{ name: TEAM.quentin.fullName, url: QUENTIN_HAGNERE_URL }],
     creator: "Hagnéré Code",
     publisher: "Hagnéré Code",
     robots: guideRobots(guide),
@@ -25,9 +33,9 @@ export function buildGuideMetadata(
       description: guide.metaDescription,
       url,
       images: [{ url: image, width: 1200, height: 630, alt: imageAlt }],
-      publishedTime: `${guide.datePublished}T09:00:00+02:00`,
-      modifiedTime: `${guide.dateModified}T09:00:00+02:00`,
-      authors: [`${SITE_URL}/equipe`],
+      publishedTime: guide.datePublished,
+      modifiedTime: guide.dateModified,
+      authors: [QUENTIN_HAGNERE_URL],
     },
     twitter: {
       card: "summary_large_image",
@@ -48,31 +56,36 @@ export function buildGuideStructuredData(
     {
       "@context": "https://schema.org",
       "@type": "Article",
+      "@id": `${url}#article`,
       headline: guide.heroTitle,
       description: guide.metaDescription,
       url,
       mainEntityOfPage: { "@type": "WebPage", "@id": url },
-      image: [`${url}/opengraph-image`],
+      image:
+        guide.articleImagePaths?.map((path) => `${SITE_URL}${path}`) ?? [
+          `${url}/opengraph-image`,
+        ],
       datePublished: guide.datePublished,
       dateModified: guide.dateModified,
       inLanguage: "fr-FR",
       articleSection: guide.section,
       isPartOf: {
-        "@type": "WebPage",
-        "@id": `${SITE_URL}/guides`,
-        name: "Guides web Hagnéré Code",
+        "@type": "CollectionPage",
+        "@id": GUIDES_COLLECTION_ID,
+        name: "Guides Hagnéré Code",
       },
       author: {
         "@type": "Person",
-        name: "Quentin Hagnéré",
-        jobTitle: "Fondateur de Hagnéré Code",
-        url: `${SITE_URL}/equipe`,
-        sameAs: ["https://www.linkedin.com/in/quentin-hagnere"],
-        worksFor: { "@id": `${SITE_URL}/#organization` },
+        "@id": QUENTIN_HAGNERE_ID,
+        name: TEAM.quentin.fullName,
+        jobTitle: TEAM.quentin.role,
+        url: QUENTIN_HAGNERE_URL,
+        sameAs: TEAM.quentin.linkedin ? [TEAM.quentin.linkedin] : undefined,
+        worksFor: { "@id": ORGANIZATION_ID },
       },
       publisher: {
         "@type": "Organization",
-        "@id": `${SITE_URL}/#organization`,
+        "@id": ORGANIZATION_ID,
         name: "Hagnéré Code",
         url: SITE_URL,
         logo: {

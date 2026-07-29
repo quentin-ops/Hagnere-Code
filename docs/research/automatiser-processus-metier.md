@@ -190,7 +190,7 @@ des pages ; toute affirmation conservée a été contrôlée sur la page origina
 | `https://www.cnil.fr/fr/profilage-et-decision-entierement-automatisee` | CNIL | Page d’origine 2018, reconsultée 2026-07-29 | Fiche officielle | L’article 22 encadre les décisions fondées exclusivement sur un traitement automatisé produisant un effet juridique ou un effet similaire significatif ; la page détaille exceptions, information, contestation et intervention humaine | Ne permet pas d’affirmer que toute automatisation, tout classement ou toute IA tombe sous l’article 22 | 2026-07-29 |
 | `https://www.cnil.fr/fr/ce-quil-faut-savoir-sur-lanalyse-dimpact-relative-la-protection-des-donnees-aipd` | CNIL | Page d’origine 2017, reconsultée 2026-07-29 | Fiche officielle | Une AIPD est requise lorsqu’un traitement de données personnelles est susceptible d’engendrer un risque élevé ; la décision se prend avant la mise en œuvre selon le contexte et les critères applicables | Une technologie ou l’IA seule ne suffit pas à conclure ; le responsable de traitement doit qualifier son cas | 2026-07-29 |
 | `https://eur-lex.europa.eu/eli/reg/2016/679/oj?locale=fr` | Union européenne | Règlement 2016/679 ; applicable depuis 2018-05-25 | Texte juridique primaire | Articles 22, 28, 32 et 35 : décision automatisée, sous-traitance, sécurité et AIPD | L’application à un cas exige de qualifier les données, rôles, finalités et risques | 2026-07-29 |
-| `https://www.anact.fr/sites/default/files/2023-12/FSE%2520Nume%25CC%2581rique.pdf` | Anact | Métadonnée PDF 2020-03-06 ; chemin de diffusion actuel 2023-12 | Guide public issu d’une expérimentation avec cinq PME industrielles | Analyser le travail actuel, associer les salariés, simuler le travail futur et ajuster le projet | Retour de terrain ciblé, pas mesure causale universelle de productivité ni règle pour tout secteur | 2026-07-29 |
+| `https://www.anact.fr/sites/default/files/2024-10/boite-a-outils-qvct-numerique.pdf` | Anact | Boîte à outils QVCT numérique, publiée en octobre 2024 | Repères de cadrage d’un projet de transformation numérique | Partir du travail réel, articuler les dialogues technique, professionnel et social, associer activement les utilisateurs finaux | Repères organisationnels, pas mesure causale universelle de productivité | 2026-07-29 |
 | `https://learn.microsoft.com/en-gb/power-automate/overview-cloud` | Microsoft Learn | Mis à jour 2025-11-27 | Documentation officielle éditeur | Les flux cloud peuvent être événementiels, instantanés ou planifiés et relier des services par connecteurs | Exemple d’un produit ; ne définit pas tout le marché ni les licences actuelles | 2026-07-29 |
 | `https://learn.microsoft.com/en-us/power-automate/limits-and-config` | Microsoft Learn | Page mise à jour en continu, état consulté 2026-07-29 | Documentation officielle éditeur | Les limites, la rétention, les arrêts après erreurs, la propriété et les requêtes varient avec le produit et la licence | Valeurs volatiles ; le guide n’en publie aucun seuil et demande une revalidation au choix | 2026-07-29 |
 | `https://learn.microsoft.com/en-us/power-automate/desktop-flows/ui-elements` | Microsoft Learn | Mis à jour 2026-05-14 | Documentation officielle éditeur | Les flux de bureau pilotent des éléments d’interface au moyen de sélecteurs ; plusieurs sélecteurs et des tests peuvent être nécessaires, et certains éléments web sont moins fiables que les éléments web natifs | Exemple Power Automate ; ne définit pas tous les produits RPA et n’autorise pas à généraliser leurs fonctions ou licences | 2026-07-29 |
@@ -591,9 +591,9 @@ Sources relues contradictoirement :
   exceptions, information, contestation et intervention humaine réelle
 - CNIL AIPD : exigence liée au risque élevé, à qualifier avant mise en œuvre ;
   aucune automaticité fondée sur la seule présence d’IA
-- Anact : guide tiré d’une expérimentation avec cinq PME industrielles ;
-  observation du travail réel, participation et simulation, sans généraliser
-  un effet causal de productivité
+- Anact : boîte à outils QVCT numérique 2024 ; cadrage depuis le travail réel,
+  articulation des dialogues et participation active des utilisateurs finaux,
+  sans généraliser un effet causal de productivité
 - Microsoft Learn : limites de flux par produit/licence et dépendance des
   automatisations d’interface aux éléments et sélecteurs
 - NIST AI RMF : cadre volontaire en révision, utilisé seulement pour les tests
@@ -1080,5 +1080,174 @@ Redirections testées : 100/100 anciennes routes en 308 exact ; neuf
   destinations en 200 ; route inconnue en 404
 Indexation : NON_VERIFIEE
 Décision finale : GO_DEPLOIEMENT — en attente de commit, déploiement et
-  contrôle de la production servie
+contrôle de la production servie
+```
+
+## J. Durcissement qualité transversal du 29 juillet 2026
+
+Cette section complète les quatre passes historiques. Elle ne les remplace pas
+et ne transforme pas leur ancien `GO_PUBLICATION` en preuve de production.
+
+### J.1 Objectif
+
+Une relecture sous tous les prismes a montré que le fond était déjà solide,
+mais que la sortie devait encore mieux réconcilier :
+
+- la première décision du lecteur et la longueur du guide ;
+- l’identité visible de l’auteur et les entités du site ;
+- le rendu mobile, le CTA fixe et la FAQ ;
+- les images éditoriales et les recommandations Article ;
+- les metadata, robots, dates, sitemap et JSON-LD ;
+- le contrôle après la passe 4.
+
+Le protocole obligatoire correspondant est
+`docs/instructions-guide-de-qualite.md`.
+
+### J.2 Corrections et enrichissements
+
+- ajout d’un parcours express à cinq étapes et de quatre sorties qui ne
+  supposent pas un développement ;
+- ajout d’une illustration éditoriale visible, représentative du processus,
+  de l’exception et de la reprise humaine, déclinée en 16:9, 4:3 et 1:1 ;
+- reformulation du cas fictif en demandes d’intervention et mention explicite
+  qu’aucune donnée client n’est utilisée ;
+- définition de « processus métier » replacée avant le parcours express afin
+  que la méthode ne précède plus son objet ;
+- remplacement de l’ancien PDF Anact protégé par une page anti-robot par la
+  boîte à outils QVCT et numérique 2024, servie directement en PDF par
+  `anact.fr` (réponse HTTP 200 et type `application/pdf` contrôlés) ;
+- H1 équilibré, ponctuation non orpheline et statistique de confidentialité
+  limitée au calculateur ;
+- auteur visible, metadata et JSON-LD issus de `src/lib/team.ts` ;
+- CTA de formulaire représentés par une icône de message, pas par un
+  calendrier, avec déclenchement après le héros et masquage devant FAQ/contact ;
+- catégories de FAQ converties en vrais onglets ARIA avec navigation par
+  flèches, Home et End ; questions reliées à leurs réponses et activation
+  Entrée/Espace garantie ;
+- directives robots publiques/privées centralisées ;
+- dates réelles avec fuseau, sans heure fabriquée ;
+- `Article`, auteur, organisation, collection et site reliés par des `@id`
+  uniques et réutilisés ;
+- contrôle de l’artefact étendu aux trois images Article ;
+- vocabulaire du hub corrigé de « valeur réaffectable » vers « capacité
+  réaffectée ».
+
+### J.3 Batterie locale sur l’état final
+
+```text
+Vitest global : 405/405
+Contrôles SEO : 171/171
+ESLint ciblé : 0 erreur
+TypeScript : PASS
+git diff --check : PASS
+Build Next.js production : PASS
+Postbuild SEO : 43 URL de sitemap, 26 liens llms.txt, 43 pages,
+  1 temps de lecture et 74 blocs JSON-LD contrôlés
+Temps de lecture servi : 3 922 mots / 20 minutes
+```
+
+Le navigateur réel a confirmé :
+
+- un H1 et aucun identifiant dupliqué ;
+- aucun débordement horizontal à 320, 360, 390, 430, 640, 768, 1024, 1280,
+  1440 et 1600 px ;
+- le héros, le parcours express, l’illustration, le calculateur, la FAQ et les
+  CTA en thème clair et sombre ;
+- un paysage 640 × 360 sans débordement et avec CTA masqué dans le héros ;
+- une navigation FAQ aux flèches avec focus et panneau réconciliés ;
+- l’ouverture et la fermeture des réponses par Entrée et Espace ;
+- le CTA mobile masqué dans le héros, visible pendant la lecture et masqué
+  devant `#faq` et `#contact` ;
+- le zoom natif Chrome à 200 % : héros, section de calcul et FAQ sans coupure
+  horizontale ni chevauchement bloquant ; CTA masqué devant la FAQ ;
+- la taille de police Chrome réglée temporairement sur « Très grande » :
+  héros, CTA latéral, formulaire et contenu restent lisibles et utilisables ;
+- VoiceOver réellement activé dans macOS : l’arbre expose le H1, les titres,
+  le fil d’Ariane, les liens d’auteur et de CTA, le groupe d’onglets, les
+  onglets et les panneaux de FAQ ; le parcours Tab annonce notamment
+  « Accueil », « Guides », « Quentin Hagnéré » et
+  « Décrire mon premier processus » dans un ordre cohérent ;
+- le scénario à 600 cas par mois : 18 203 € d’écart, 194,1 % de ROI de
+  capacité et 6 mois théoriques ; le retrait d’une porte rebloque la décision
+  malgré le résultat positif ;
+- aucune erreur console.
+
+Après ces BAT, Chrome a été rétabli à 100 %, sa taille de police à
+« Moyenne (recommandé) » et VoiceOver a été désactivé. Le contrôle à 320 px et
+le zoom natif à 200 % restent deux preuves distinctes : aucun ne sert de
+substitut à l’autre.
+
+### J.4 Données structurées servies localement
+
+```text
+Canonical :
+https://hagnere-code.ai/guides/automatiser-processus-metier
+
+Robots :
+index, follow
+
+Googlebot :
+index, follow, max-video-preview:-1,
+max-image-preview:large, max-snippet:-1
+
+Types sur le guide :
+Article + BreadcrumbList
+
+Article @id :
+https://hagnere-code.ai/guides/automatiser-processus-metier#article
+
+Auteur :
+https://hagnere-code.ai/equipe#fondateur
+
+Organisation :
+https://hagnere-code.ai/#organization
+
+Collection :
+https://hagnere-code.ai/guides#collection
+
+Site :
+https://hagnere-code.ai/#website
+```
+
+Le `headline`, le H1 et le title donnent la même question. Les trois images
+Article sont publiques dans l’artefact, le fil d’Ariane suit Accueil → Guides →
+guide courant et aucun `FAQPage` ou `HowTo` n’est publié.
+
+### J.5 Mesures de poids et de laboratoire
+
+```text
+HTML brut servi : 491 837 octets
+HTML transféré avec compression : 73 231 octets
+DOM mesuré par Lighthouse : 2 126 éléments
+Images éditoriales sources :
+  16:9 1600 × 900 — 69 600 octets
+  4:3 1200 × 900 — 74 552 octets
+  1:1 1200 × 1200 — 95 472 octets
+
+Lighthouse local mobile :
+  Performance 90
+  Accessibilité 100
+  Bonnes pratiques 100
+  SEO 100
+  FCP 1,8 s
+  LCP 3,5 s
+  TBT 20 ms
+  CLS 0
+```
+
+Le DOM long, 53 Kio de JavaScript inutilisé estimé et un LCP de laboratoire à
+3,5 s restent des P2 de performance acceptables pour cette livraison, pas des
+preuves de performance terrain. Les Core Web Vitals réels restent inconnus
+tant que la route publiée ne dispose pas d’un échantillon suffisant.
+
+### J.6 État avant publication de ce durcissement
+
+```text
+P0 : aucun
+P1 : aucun
+P2 acceptés :
+- performance laboratoire à surveiller en production
+Production de ce durcissement : NON ENCORE VERIFIEE
+Indexation : NON VERIFIEE
+Décision locale : en attente du contre-audit indépendant final
 ```

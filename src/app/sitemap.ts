@@ -58,18 +58,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // lastModified réel par guide (dateModified maintenue à la main).
   const guideRoutes: MetadataRoute.Sitemap = PUBLISHED_GUIDES.map((g) => ({
     url: `${baseUrl}/guides/${g.slug}`,
-    lastModified: new Date(`${g.dateModified}T12:00:00Z`),
+    lastModified: g.dateModified,
   }));
 
   const whitePaperRoutes: MetadataRoute.Sitemap = WHITE_PAPERS.map((entry) => ({
     url: `${baseUrl}${entry.path}`,
-    lastModified: new Date(`${entry.dateModified}T12:00:00Z`),
+    lastModified: entry.dateModified,
   }));
 
   const resourceRoutes: MetadataRoute.Sitemap = DOWNLOADABLE_RESOURCES.map(
     (entry) => ({
       url: `${baseUrl}${entry.path}`,
-      lastModified: new Date(`${entry.updatedAt}T12:00:00Z`),
+      lastModified: entry.updatedAt,
     }),
   );
 
@@ -96,7 +96,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // de docs/plan-seo-local-savoie.md.
   const localRoutes: MetadataRoute.Sitemap = LOCAL_PAGES.map((p) => ({
     url: `${baseUrl}${localPagePath(p)}`,
-    lastModified: new Date(`${p.dateModified}T12:00:00Z`),
+    lastModified: p.dateModified,
   }));
 
   return [

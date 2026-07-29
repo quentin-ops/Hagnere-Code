@@ -1,7 +1,16 @@
 import fs from "node:fs";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import {
+  GUIDES_COLLECTION_ID,
+  buildGuideStructuredData,
+} from "./guide-page-seo";
 import { GUIDES, PUBLISHED_GUIDES, guideRobots } from "./guides";
+import {
+  ORGANIZATION_ID,
+  QUENTIN_HAGNERE_ID,
+} from "./organization-structured-data";
+import { SITE_URL } from "./seo";
 
 const guidesRoot = path.join(process.cwd(), "src/app/guides");
 
@@ -31,14 +40,17 @@ describe("guide registry after the editorial reset", () => {
         guide.metaDescription.length,
         `${guide.slug}: description`,
       ).toBeLessThanOrEqual(160);
-      expect(guide.datePublished).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-      expect(guide.dateModified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-      expect(
-        Date.parse(`${guide.dateModified}T12:00:00Z`),
-      ).toBeGreaterThanOrEqual(
-        Date.parse(`${guide.datePublished}T12:00:00Z`),
+      expect(guide.datePublished).toMatch(
+        /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/,
+      );
+      expect(guide.dateModified).toMatch(
+        /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/,
+      );
+      expect(Date.parse(guide.dateModified)).toBeGreaterThanOrEqual(
+        Date.parse(guide.datePublished),
       );
       expect(guide.readTimeMin).toBeGreaterThan(0);
+      expect(guide.articleImagePaths).toHaveLength(3);
     }
   });
 
@@ -62,6 +74,16 @@ describe("guide registry after the editorial reset", () => {
         fs.existsSync(path.join(guidesRoot, slug, "opengraph-image.tsx")),
         slug,
       ).toBe(true);
+
+      const guide = GUIDES.find((entry) => entry.slug === slug);
+      for (const imagePath of guide?.articleImagePaths ?? []) {
+        expect(
+          fs.existsSync(
+            path.join(process.cwd(), "public", imagePath.replace(/^\//, "")),
+          ),
+          imagePath,
+        ).toBe(true);
+      }
     }
   });
 
@@ -86,9 +108,24 @@ describe("guide registry after the editorial reset", () => {
         path.join(guidesRoot, guide.slug, "page.tsx"),
         "utf8",
       );
+      const [article, breadcrumb] = buildGuideStructuredData(
+        guide,
+        "Titre du fil d’Ariane",
+      );
 
-      expect(source, guide.slug).toContain('"@type": "Article"');
-      expect(source, guide.slug).toContain('"@type": "BreadcrumbList"');
+      expect(source, guide.slug).toContain("buildGuideStructuredData");
+      expect(article["@type"], guide.slug).toBe("Article");
+      expect(article.headline, guide.slug).toBe(guide.heroTitle);
+      expect(article.author["@id"], guide.slug).toBe(QUENTIN_HAGNERE_ID);
+      expect(article.publisher["@id"], guide.slug).toBe(ORGANIZATION_ID);
+      expect(article.isPartOf["@id"], guide.slug).toBe(GUIDES_COLLECTION_ID);
+      expect(article["@id"], guide.slug).toBe(
+        `${SITE_URL}/guides/${guide.slug}#article`,
+      );
+      expect(article.image, guide.slug).toEqual(
+        guide.articleImagePaths?.map((imagePath) => `${SITE_URL}${imagePath}`),
+      );
+      expect(breadcrumb["@type"], guide.slug).toBe("BreadcrumbList");
 
       for (const pattern of prohibited) {
         expect(source, `${guide.slug}: ${pattern}`).not.toMatch(pattern);
@@ -102,10 +139,21 @@ describe("guide registry after the editorial reset", () => {
 
     vi.stubEnv("VERCEL_ENV", "");
     vi.stubEnv("NEXT_PUBLIC_ENV", "preview");
-    expect(guideRobots(guide)).toEqual({ index: false, follow: false });
+    expect(guideRobots(guide)).toEqual({
+      index: false,
+      follow: false,
+    });
 
     vi.stubEnv("NEXT_PUBLIC_ENV", "production");
-    expect(guideRobots(guide)).toEqual({ index: true, follow: true });
+    expect(guideRobots(guide)).toMatchObject({
+      index: true,
+      follow: true,
+      googleBot: {
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    });
     expect(
       guideRobots({
         ...guide,

@@ -1,6 +1,10 @@
 import { SITE_URL } from "@/lib/seo";
+import { TEAM } from "@/lib/team";
 
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+export const QUENTIN_HAGNERE_ID = `${SITE_URL}/equipe#fondateur`;
+export const QUENTIN_HAGNERE_URL = QUENTIN_HAGNERE_ID;
 
 /**
  * Entité publique unique de Hagnéré Code.
@@ -24,9 +28,11 @@ export const PUBLIC_ORGANIZATION_ENTITY = {
   foundingDate: "2025-09-30",
   founder: {
     "@type": "Person",
-    name: "Quentin Hagnéré",
-    jobTitle: "Président",
-    sameAs: ["https://www.linkedin.com/in/quentin-hagnere"],
+    "@id": QUENTIN_HAGNERE_ID,
+    name: TEAM.quentin.fullName,
+    jobTitle: TEAM.quentin.role,
+    url: QUENTIN_HAGNERE_URL,
+    sameAs: TEAM.quentin.linkedin ? [TEAM.quentin.linkedin] : undefined,
   },
   address: {
     "@type": "PostalAddress",
@@ -46,7 +52,6 @@ export const PUBLIC_ORGANIZATION_ENTITY = {
   },
   email: "quentin@hagnere-patrimoine.fr",
   telephone: "+33374472018",
-  priceRange: "€€€",
   areaServed: [
     { "@type": "AdministrativeArea", name: "Savoie" },
     { "@type": "AdministrativeArea", name: "Haute-Savoie" },
@@ -86,8 +91,9 @@ export const PUBLIC_ORGANIZATION_JSON_LD = {
 export const WEBSITE_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": `${SITE_URL}/#website`,
+  "@id": WEBSITE_ID,
   name: "Hagnéré Code",
+  alternateName: "Hagnere Code",
   url: SITE_URL,
   inLanguage: "fr-FR",
   publisher: { "@id": ORGANIZATION_ID },

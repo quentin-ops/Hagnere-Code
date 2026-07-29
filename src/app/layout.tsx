@@ -3,7 +3,11 @@ import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { CookieBanner } from "@/components/cookies/CookieBanner";
 import { SkipToContent } from "@/components/design-shared/SkipToContent";
-import { isSearchIndexingEnabled } from "@/lib/search-indexing";
+import {
+  INDEXABLE_ROBOTS,
+  PRIVATE_ROBOTS,
+  isSearchIndexingEnabled,
+} from "@/lib/search-indexing";
 import { LegacyProjectDraftCleanup } from "@/components/privacy/LegacyProjectDraftCleanup";
 
 const geist = Geist({
@@ -91,19 +95,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/og-image.png"],
   },
-  robots: isProd
-    ? {
-        index: true,
-        follow: true,
-        googleBot: {
-          index: true,
-          follow: true,
-          "max-image-preview": "large",
-          "max-snippet": -1,
-          "max-video-preview": -1,
-        },
-      }
-    : { index: false, follow: false },
+  robots: isProd ? INDEXABLE_ROBOTS : PRIVATE_ROBOTS,
   // favicon.ico est servi par la convention de fichier src/app/favicon.ico ;
   // ne déclarer que l'apple-touch-icon évite les balises <link rel=icon> dupliquées.
   icons: {

@@ -1,7 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { isSearchIndexingEnabled } from "./search-indexing";
+import {
+  INDEXABLE_ROBOTS,
+  PRIVATE_ROBOTS,
+  isSearchIndexingEnabled,
+} from "./search-indexing";
 
 function pageSources(dir: string): string[] {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -28,7 +32,20 @@ describe("search indexing environment", () => {
     expect(isSearchIndexingEnabled(undefined, undefined)).toBe(false);
   });
 
-  it("keeps positive robots directives centralized in the root layout", () => {
+  it("keeps public and private robots directives reusable without losing previews", () => {
+    expect(INDEXABLE_ROBOTS).toMatchObject({
+      index: true,
+      follow: true,
+      googleBot: {
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    });
+    expect(PRIVATE_ROBOTS).toEqual({ index: false, follow: false });
+  });
+
+  it("keeps positive robots directives out of page-local literals", () => {
     const sources = pageSources(path.join(process.cwd(), "src", "app"));
 
     for (const source of sources) {

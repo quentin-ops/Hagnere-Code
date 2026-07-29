@@ -18,6 +18,11 @@ passe ne peut commencer qu’après une décision écrite de l’orchestrateur :
 `GO_PASSE_N`. Une décision `NO_GO` renvoie le travail au même agent jusqu’à
 correction ; elle n’autorise jamais à lancer l’agent suivant.
 
+Après la passe 4, appliquer obligatoirement
+`docs/instructions-guide-de-qualite.md`. Son contrôle transversal fond, rendu,
+accessibilité, données structurées et production conditionne la décision
+`GO_QUALITE_GUIDE`. Aucun guide suivant ne commence avant cette décision.
+
 ---
 
 ## 1. Résultat exigé

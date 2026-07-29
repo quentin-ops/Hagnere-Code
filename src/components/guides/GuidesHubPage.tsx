@@ -138,7 +138,7 @@ const DECISION_PATH = [
   { label: "Cartographier", value: "le travail réel", left: 2, width: 32 },
   { label: "Écarter", value: "les risques bloquants", left: 10, width: 44 },
   { label: "Comparer", value: "sept réponses possibles", left: 18, width: 54 },
-  { label: "Calculer", value: "la valeur réaffectable", left: 26, width: 62 },
+  { label: "Calculer", value: "la capacité réaffectée", left: 26, width: 62 },
   { label: "Tester", value: "l’erreur et la reprise", left: 34, width: 64 },
 ];
 

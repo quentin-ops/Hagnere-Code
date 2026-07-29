@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   FormulaBox,
@@ -13,98 +13,23 @@ import {
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
 import { GuidesShell } from "@/components/guides/GuidesShell";
-import { formatGuideDate, getGuide, guideRobots, guideUrl } from "@/lib/guides";
-import { OG_BASE, SITE_URL } from "@/lib/seo";
+import {
+  buildGuideMetadata,
+  buildGuideStructuredData,
+} from "@/lib/guide-page-seo";
+import { formatGuideDate, getGuide } from "@/lib/guides";
+import { TEAM } from "@/lib/team";
 import { ProcessPriorityTool } from "./process-priority-tool";
 
 const guide = getGuide("automatiser-processus-metier");
+const breadcrumbName = "Automatiser un processus métier";
 
-export const metadata: Metadata = {
-  title: guide.title,
-  description: guide.metaDescription,
-  authors: [{ name: "Quentin Hagnéré" }],
-  creator: "Hagnéré Code",
-  publisher: "Hagnéré Code",
-  robots: guideRobots(guide),
-  alternates: { canonical: guideUrl(guide) },
-  openGraph: {
-    ...OG_BASE,
-    type: "article",
-    title: guide.cardTitle,
-    description: guide.metaDescription,
-    url: guideUrl(guide),
-    images: [
-      {
-        url: guideUrl(guide) + "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Choisir le premier processus métier à automatiser",
-      },
-    ],
-    publishedTime: guide.datePublished + "T09:00:00+02:00",
-    modifiedTime: guide.dateModified + "T09:00:00+02:00",
-    authors: [SITE_URL + "/equipe"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: guide.cardTitle,
-    description: guide.metaDescription,
-    images: [guideUrl(guide) + "/opengraph-image"],
-  },
-};
+export const metadata = buildGuideMetadata(
+  guide,
+  "Choisir le premier processus métier à automatiser",
+);
 
-const articleJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: guide.heroTitle,
-  description: guide.metaDescription,
-  url: guideUrl(guide),
-  mainEntityOfPage: { "@type": "WebPage", "@id": guideUrl(guide) },
-  image: [guideUrl(guide) + "/opengraph-image"],
-  datePublished: guide.datePublished,
-  dateModified: guide.dateModified,
-  inLanguage: "fr-FR",
-  articleSection: guide.section,
-  isPartOf: {
-    "@type": "WebPage",
-    "@id": SITE_URL + "/guides",
-    name: "Guides Hagnéré Code",
-  },
-  author: {
-    "@type": "Person",
-    name: "Quentin Hagnéré",
-    jobTitle: "Fondateur de Hagnéré Code",
-    url: SITE_URL + "/equipe",
-    worksFor: { "@id": SITE_URL + "/#organization" },
-  },
-  publisher: {
-    "@type": "Organization",
-    "@id": SITE_URL + "/#organization",
-    name: "Hagnéré Code",
-    url: SITE_URL,
-    logo: { "@type": "ImageObject", url: SITE_URL + "/logos/logo-dark.png" },
-  },
-});
-
-const breadcrumbJsonLd = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Accueil", item: SITE_URL + "/" },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "Guides",
-      item: SITE_URL + "/guides",
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      name: "Automatiser un processus métier",
-      item: guideUrl(guide),
-    },
-  ],
-});
+const structuredData = buildGuideStructuredData(guide, breadcrumbName);
 
 const toc = [
   {
@@ -240,26 +165,131 @@ const faqCategories: GuidePremiumFaqCategory[] = [
   },
 ];
 
+function QuickDecisionPath() {
+  const steps = [
+    {
+      number: "1",
+      title: "Décrire",
+      text: "Un déclencheur, un résultat vérifiable, le volume et trois exceptions.",
+      href: "#carte-processus",
+    },
+    {
+      number: "2",
+      title: "Filtrer",
+      text: "Cinq portes bloquantes : mesure, stabilité, données, contrôle et reprise.",
+      href: "#portes",
+    },
+    {
+      number: "3",
+      title: "Comparer",
+      text: "La réponse la plus simple parmi sept, y compris ne rien automatiser.",
+      href: "#options",
+    },
+    {
+      number: "4",
+      title: "Chiffrer",
+      text: "Capacité réaffectée, coût complet et éventuelle dépense réellement évitée.",
+      href: "#calcul",
+    },
+    {
+      number: "5",
+      title: "Décider",
+      text: "Un résultat explicite, un responsable et la prochaine preuve à obtenir.",
+      href: "#decision",
+    },
+  ] as const;
+
+  return (
+    <aside
+      aria-labelledby="parcours-decision-rapide"
+      className="not-prose my-8 overflow-hidden rounded-2xl border border-indigo-200/80 bg-indigo-50/60 dark:border-indigo-900 dark:bg-indigo-950/20"
+    >
+      <div className="border-b border-indigo-200/70 px-4 py-4 dark:border-indigo-900 sm:px-6 sm:py-5">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-indigo-700 dark:text-indigo-300">
+          Parcours express
+        </p>
+        <h3
+          id="parcours-decision-rapide"
+          className="mt-2 text-xl font-bold tracking-tight text-zinc-950 dark:text-white"
+        >
+          Obtenir une première orientation avant d’approfondir
+        </h3>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-200">
+          Ce schéma donne une première orientation. Les sections suivantes
+          fournissent les contrôles et les calculs nécessaires pour la confirmer.
+        </p>
+      </div>
+
+      <ol className="grid gap-px bg-indigo-200/70 dark:bg-indigo-900 sm:grid-cols-2">
+        {steps.map((step) => (
+          <li
+            key={step.number}
+            className="flex gap-3 bg-white p-4 dark:bg-zinc-950 sm:min-h-32 sm:gap-4 sm:p-5"
+          >
+            <span className="grid size-8 shrink-0 place-items-center rounded-full bg-indigo-600 text-sm font-bold text-white">
+              {step.number}
+            </span>
+            <span>
+              <Link
+                href={step.href}
+                className="flex min-h-11 items-center text-sm font-bold text-zinc-950 underline decoration-indigo-300 underline-offset-4 hover:text-indigo-700 dark:text-white dark:hover:text-indigo-300"
+              >
+                {step.title}
+              </Link>
+              <span className="mt-1.5 block text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+                {step.text}
+              </span>
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <div className="px-4 py-4 dark:bg-zinc-950/60 sm:px-6 sm:py-5">
+        <p className="text-sm font-semibold text-zinc-950 dark:text-white">
+          La sortie n’est pas forcément « développer » :
+        </p>
+        <ul className="mt-3 grid grid-cols-2 gap-2 text-[13px] text-zinc-700 dark:text-zinc-200">
+          <li className="rounded-lg border border-zinc-200 bg-white px-2.5 py-2.5 dark:border-zinc-800 dark:bg-zinc-900 sm:px-3">
+            Activer une fonction déjà disponible
+          </li>
+          <li className="rounded-lg border border-zinc-200 bg-white px-2.5 py-2.5 dark:border-zinc-800 dark:bg-zinc-900 sm:px-3">
+            Lancer un pilote limité et réversible
+          </li>
+          <li className="rounded-lg border border-zinc-200 bg-white px-2.5 py-2.5 dark:border-zinc-800 dark:bg-zinc-900 sm:px-3">
+            Simplifier, fiabiliser, puis remesurer
+          </li>
+          <li className="rounded-lg border border-zinc-200 bg-white px-2.5 py-2.5 dark:border-zinc-800 dark:bg-zinc-900 sm:px-3">
+            Garder le traitement humain
+          </li>
+        </ul>
+        <Link
+          href="#calcul"
+          className="mt-4 inline-flex min-h-11 items-center font-semibold text-indigo-700 underline decoration-indigo-300 underline-offset-4 hover:text-indigo-900 dark:text-indigo-300 dark:hover:text-indigo-200"
+        >
+          Aller directement au calcul et au simulateur
+        </Link>
+      </div>
+    </aside>
+  );
+}
+
 export default function Page() {
   return (
     <GuidesShell>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: articleJsonLd.replace(/</g, "\\u003c"),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: breadcrumbJsonLd.replace(/</g, "\\u003c"),
-        }}
-      />
+      {structuredData.map((item) => (
+        <script
+          key={item["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(item).replace(/</g, "\\u003c"),
+          }}
+        />
+      ))}
 
       <GuidePremiumLayout
         breadcrumbs={[
           { label: "Guides", href: "/guides" },
-          { label: "Automatiser un processus métier" },
+          { label: breadcrumbName },
         ]}
         badges={[
           { label: "Guide décisionnel 2026", variant: "dark" },
@@ -272,20 +302,20 @@ export default function Page() {
         ]}
         heroTitle="Quel processus métier"
         heroTitleEm="automatiser"
-        heroTitleSuffix="en premier ?"
+        heroTitleSuffix={"en premier\u00a0?"}
         heroDescription="Commencez par un travail fréquent, mesuré et facile à reprendre si l’outil échoue. Vous saurez écarter les mauvais candidats, comparer sept réponses et calculer si un essai limité vaut le coût."
         stats={[
           { label: "Portes bloquantes", value: "5" },
           { label: "Réponses comparées", value: "7" },
           { label: "Méthode de calcul", value: "Visible" },
-          { label: "Données envoyées", value: "Aucune" },
+          { label: "Calculateur · envoi", value: "Aucun" },
           { label: "Lecture", value: `${guide.readTimeMin} min` },
         ]}
         author={{
-          initials: "QH",
-          name: "Quentin Hagnéré",
-          role: "Fondateur de Hagnéré Code",
-          profileUrl: "/equipe",
+          initials: TEAM.quentin.initials,
+          name: TEAM.quentin.fullName,
+          role: TEAM.quentin.role,
+          profileUrl: "/equipe#fondateur",
         }}
         sidebarHeroCta={{
           eyebrow: "Premier échange",
@@ -305,6 +335,7 @@ export default function Page() {
         }}
         toc={toc}
         tocLabel="Sommaire du guide"
+        mobileCtaLabel="Décrire mon besoin · 3 min"
         sidebarContextCta={{
           eyebrow: "Automatisation métier",
           title: "Faire étudier mon premier processus",
@@ -361,9 +392,9 @@ export default function Page() {
           },
           {
             source: "Anact",
-            href: "https://www.anact.fr/sites/default/files/2023-12/FSE%2520Nume%25CC%2581rique.pdf",
+            href: "https://www.anact.fr/sites/default/files/2024-10/boite-a-outils-qvct-numerique.pdf",
             description:
-              "Repères pour un projet numérique en PME : observer le travail réel, associer les salariés concernés, simuler les usages et ajuster avant généralisation.",
+              "Boîte à outils 2024 : cadrer un projet numérique à partir du travail réel, articuler les dialogues technique, professionnel et social, puis associer activement les utilisateurs finaux.",
           },
           {
             source: "Microsoft Learn",
@@ -421,6 +452,23 @@ export default function Page() {
             confier certaines de ces étapes à un logiciel. Cela ne suppose ni
             intelligence artificielle, ni nouvelle application.
           </p>
+
+          <figure className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+            <Image
+              src="/guides/automatiser-processus-metier/article-processus-16x9.webp"
+              width={1600}
+              height={900}
+              sizes="(max-width: 768px) calc(100vw - 32px), 760px"
+              alt="Un processus avec une voie simple, une alerte et deux reprises humaines avant validation"
+              className="h-auto w-full"
+            />
+            <figcaption className="border-t border-zinc-200 px-4 py-3 text-sm leading-relaxed text-zinc-600 dark:border-zinc-800 dark:text-zinc-300 sm:px-5">
+              Un premier essai contrôlable garde une voie manuelle pour les
+              exceptions et une validation identifiable avant la sortie.
+            </figcaption>
+          </figure>
+
+          <QuickDecisionPath />
 
           <p>
             Dans l’ordre : dessinez le travail réel, passez cinq portes qui ne
@@ -813,16 +861,19 @@ export default function Page() {
         >
           <GuidePremiumCase
             initial="120"
-            eyebrow="Exemple fictif — hypothèses arrondies"
-            title="Le suivi de 120 dossiers par mois sur vingt-quatre mois"
+            eyebrow="Scénario entièrement fictif — hypothèses arrondies"
+            title="Le traitement de 120 demandes d’intervention par mois"
           >
             <p>
-              Chaque dossier demande neuf minutes. L’automatisation retirerait
-              techniquement 70 % de ce temps, avec une adoption moyenne de 80 %
-              sur toute la période. Dans ce scénario, 60 % des heures
-              effectivement retirées seraient affectées à un travail utile
-              identifié. Le coût horaire chargé retenu pour l’exercice est de
-              38 €.
+              Une coordinatrice reçoit une demande, vérifie les coordonnées et
+              la catégorie, crée la fiche de suivi puis prévient la bonne équipe.
+              Les demandes incomplètes ou ambiguës restent dans une file
+              manuelle. Le traitement moyen d’une demande prend neuf minutes.
+              Le chemin simple, entièrement fictif et sans donnée issue d’un
+              client, permettrait de retirer techniquement 70 % de ce temps.
+              L’adoption moyenne retenue est de 80 % sur vingt-quatre mois ; 60 %
+              des heures effectivement retirées seraient affectées à un travail
+              utile identifié. Le coût horaire chargé de l’exercice est de 38 €.
             </p>
           </GuidePremiumCase>
 
@@ -1058,17 +1109,17 @@ export default function Page() {
             Faites participer les personnes qui réalisent le travail. Le guide
             de l’{" "}
             <a
-              href="https://www.anact.fr/sites/default/files/2023-12/FSE%2520Nume%25CC%2581rique.pdf"
+              href="https://www.anact.fr/sites/default/files/2024-10/boite-a-outils-qvct-numerique.pdf"
               target="_blank"
               rel="noreferrer"
             >
-              Agence nationale pour l’amélioration des conditions de travail
-              (Anact) sur les projets numériques en PME
+              boîte à outils de l’Agence nationale pour l’amélioration des
+              conditions de travail (Anact)
             </a>{" "}
-            propose d’observer l’activité, de simuler les usages futurs et
-            d’ajuster avec les salariés concernés. Une démonstration réussie par
-            le prestataire ne montre pas encore que l’équipe saura traiter les
-            exceptions un lundi chargé.
+            demande de partir du travail réel et d’associer activement les
+            utilisateurs finaux aux étapes clés du projet. Une démonstration
+            réussie par le prestataire ne montre pas encore que l’équipe saura
+            traiter les exceptions un lundi chargé.
           </p>
         </GuidePremiumSection>
 

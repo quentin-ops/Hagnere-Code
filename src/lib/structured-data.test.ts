@@ -8,6 +8,10 @@ import {
   ORGANIZATION_ID,
   PUBLIC_ORGANIZATION_ENTITY,
   PUBLIC_ORGANIZATION_JSON_LD,
+  QUENTIN_HAGNERE_ID,
+  QUENTIN_HAGNERE_URL,
+  WEBSITE_JSON_LD,
+  WEBSITE_ID,
 } from "@/lib/organization-structured-data";
 import { SITE_URL } from "@/lib/seo";
 
@@ -39,7 +43,7 @@ function publicSources(): string {
 }
 
 describe("public structured data safeguards", () => {
-  it("publishes no FAQPage markup after Google removed support in May 2026", () => {
+  it("publishes no FAQPage markup for this non-eligible commercial site", () => {
     const sources = publicSources();
 
     expect(sources).not.toContain('"@type": "FAQPage"');
@@ -104,6 +108,20 @@ describe("public structured data safeguards", () => {
     const organization = JSON.stringify(PUBLIC_ORGANIZATION_JSON_LD);
 
     expect(ORGANIZATION_ID).toBe(`${SITE_URL}/#organization`);
+    expect(WEBSITE_ID).toBe(`${SITE_URL}/#website`);
+    expect(WEBSITE_JSON_LD).toMatchObject({
+      "@id": WEBSITE_ID,
+      name: "Hagnéré Code",
+      alternateName: "Hagnere Code",
+      publisher: { "@id": ORGANIZATION_ID },
+    });
+    expect(QUENTIN_HAGNERE_ID).toBe(
+      `${SITE_URL}/equipe#fondateur`,
+    );
+    expect(PUBLIC_ORGANIZATION_JSON_LD.founder).toMatchObject({
+      "@id": QUENTIN_HAGNERE_ID,
+      url: QUENTIN_HAGNERE_URL,
+    });
     expect(sources).not.toContain(`${SITE_URL}/#business`);
     expect(organization).toContain("82 impasse de Bellevue");
     expect(organization).toContain("73000");

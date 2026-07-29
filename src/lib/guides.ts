@@ -7,14 +7,20 @@
  * mais noindex.
  *
  * Pour ajouter un guide, suivre intégralement
- * docs/regle-or-vigilance-seo-publication.md et docs/charte-qualite-guides.md :
- * recherche, entrée ici, page, image Open Graph dédiée, maillage et tests.
+ * docs/regle-or-vigilance-seo-publication.md,
+ * docs/charte-qualite-guides.md et
+ * docs/instructions-guide-de-qualite.md : recherche, quatre passes, contrôle
+ * transversal, entrée ici, page, images dédiées, maillage et tests.
  * Le sitemap et llms.txt se synchronisent ensuite depuis ce registre ; ne pas
  * les modifier à la main.
  */
 
 import { SITE_URL } from "./seo";
-import { isSearchIndexingEnabled } from "./search-indexing";
+import {
+  INDEXABLE_ROBOTS,
+  PRIVATE_ROBOTS,
+  isSearchIndexingEnabled,
+} from "./search-indexing";
 
 export interface GuideEntry {
   slug: string;
@@ -30,9 +36,13 @@ export interface GuideEntry {
   heroTitle: string;
   /** Catégorie éditoriale (articleSection du JSON-LD + tag de carte). */
   section: string;
-  datePublished: string; // ISO YYYY-MM-DD
-  dateModified: string; // ISO YYYY-MM-DD
+  /** Instant réel de première publication, ISO 8601 avec fuseau. */
+  datePublished: string;
+  /** Instant réel de dernière modification substantielle, ISO 8601 avec fuseau. */
+  dateModified: string;
   readTimeMin: number;
+  /** Images éditoriales visibles, en chemins absolus du site, pour Article. */
+  articleImagePaths?: string[];
   featured?: boolean;
   /** Tant que la validation éditoriale manque, la route reste accessible mais noindex. */
   editorialStatus?: "ready-for-human-review";
@@ -47,12 +57,16 @@ export const GUIDES: GuideEntry[] = [
       "Choisissez le premier processus à automatiser : cinq portes bloquantes, sept réponses possibles et un calcul transparent avec vos propres données.",
     cardDescription:
       "Cinq portes bloquantes, sept réponses possibles et un calcul transparent pour choisir, reporter ou refuser une automatisation.",
-    heroTitle:
-      "Quel processus métier faut-il automatiser en premier ?",
+    heroTitle: "Quel processus métier automatiser en premier ?",
     section: "Outils internes et automatisation",
-    datePublished: "2026-07-29",
-    dateModified: "2026-07-29",
-    readTimeMin: 19,
+    datePublished: "2026-07-29T17:01:33+02:00",
+    dateModified: "2026-07-29T19:07:13Z",
+    readTimeMin: 20,
+    articleImagePaths: [
+      "/guides/automatiser-processus-metier/article-processus-16x9.webp",
+      "/guides/automatiser-processus-metier/article-processus-4x3.webp",
+      "/guides/automatiser-processus-metier/article-processus-1x1.webp",
+    ],
   },
 ];
 
@@ -73,9 +87,7 @@ export function guideRobots(guide: GuideEntry) {
       process.env.VERCEL_ENV,
     );
 
-  return canBeIndexed
-    ? ({ index: true, follow: true } as const)
-    : ({ index: false, follow: false } as const);
+  return canBeIndexed ? INDEXABLE_ROBOTS : PRIVATE_ROBOTS;
 }
 
 export function guidePath(g: GuideEntry): string {
@@ -94,7 +106,7 @@ export function getGuide(slug: string): GuideEntry {
 
 /** « 13 juillet 2026 » à partir d'une date ISO. */
 export function formatGuideDate(iso: string): string {
-  return new Date(`${iso}T12:00:00Z`).toLocaleDateString("fr-FR", {
+  return new Date(iso).toLocaleDateString("fr-FR", {
     day: "numeric",
     month: "long",
     year: "numeric",

@@ -6,7 +6,7 @@ import {
   ArrowRight,
   CheckCircle2,
   FileText,
-  Calendar,
+  MessageSquareText,
   Star,
   AlertTriangle,
   BookOpen,
@@ -194,6 +194,7 @@ export interface GuidePremiumLayoutProps {
   sidebarHeroCta?: GuidePremiumSidebarHeroCta;
   toc: GuidePremiumTocItem[];
   tocLabel?: string;
+  mobileCtaLabel?: string;
   sidebarContextCta?: GuidePremiumContextCta;
   faqTitle?: string;
   faqItems?: { question: string; answer: ReactNode }[];
@@ -385,7 +386,7 @@ function PremiumSidebarHeroCta({ cta }: { cta: GuidePremiumSidebarHeroCta }) {
             href={cta.primaryCtaHref ?? cta.ctaHref ?? CTA_HREF_DEFAUT}
             className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-semibold rounded-xl bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white hover:bg-zinc-50 transition-colors"
           >
-            <Calendar className="size-4" aria-hidden="true" />
+            <MessageSquareText className="size-4" aria-hidden="true" />
             {cta.primaryCtaLabel ?? cta.ctaLabel ?? CTA_LABEL_DEFAUT}
           </Link>
           <a
@@ -426,7 +427,7 @@ function ContextCtaCard({ data }: { data: GuidePremiumContextCta }) {
       <div className="relative">
         <div className="flex items-center gap-2 mb-4">
           <span className="inline-flex items-center justify-center size-7 rounded-lg bg-indigo-50 text-indigo-600 ring-1 ring-indigo-100">
-            <Calendar className="size-3.5" aria-hidden="true" />
+            <MessageSquareText className="size-3.5" aria-hidden="true" />
           </span>
           <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-indigo-700">
             {data.eyebrow}
@@ -473,7 +474,7 @@ function ContextCtaCard({ data }: { data: GuidePremiumContextCta }) {
             href={data.ctaHref ?? CTA_HREF_DEFAUT}
             className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl bg-zinc-950 text-white text-sm font-semibold hover:bg-zinc-800 transition-colors"
           >
-            <Calendar className="size-4" aria-hidden="true" />
+            <MessageSquareText className="size-4" aria-hidden="true" />
             {data.ctaLabel ?? CTA_LABEL_DEFAUT}
             <ArrowRight className="size-4" aria-hidden="true" />
           </Link>
@@ -510,6 +511,7 @@ export function GuidePremiumLayout({
   sidebarHeroCta,
   toc,
   tocLabel,
+  mobileCtaLabel,
   sidebarContextCta,
   faqTitle = "Questions fréquentes",
   faqItems,
@@ -525,7 +527,10 @@ export function GuidePremiumLayout({
   return (
     <div className="guide-premium-page">
       {/* Hero — light cream background (homepage-aligned) */}
-      <section className="pt-10 sm:pt-12 md:pt-14 pb-10 sm:pb-12 md:pb-14 bg-[#fbfaf7] dark:bg-zinc-950">
+      <section
+        id="guide-premium-hero"
+        className="pt-10 sm:pt-12 md:pt-14 pb-10 sm:pb-12 md:pb-14 bg-[#fbfaf7] dark:bg-zinc-950"
+      >
         <div className="container mx-auto px-4 max-w-[1180px]">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] xl:grid-cols-[1fr_400px] gap-10 lg:gap-12 xl:gap-16 items-start">
             {/* Left column */}
@@ -540,7 +545,7 @@ export function GuidePremiumLayout({
               </div>
 
               {/* H1 — serif Playfair Display */}
-              <h1 className="font-[family-name:var(--font-playfair)] text-[34px] leading-[1.05] sm:text-[44px] sm:leading-[1.05] md:text-[52px] md:leading-[1.04] font-bold tracking-[-0.02em] text-zinc-950 dark:text-white max-w-3xl">
+              <h1 className="max-w-3xl text-balance font-[family-name:var(--font-playfair)] text-[34px] font-bold leading-[1.05] tracking-[-0.02em] text-zinc-950 dark:text-white sm:text-[44px] sm:leading-[1.05] md:text-[52px] md:leading-[1.04]">
                 {heroTitle}
                 {heroTitleEm && (
                   <>
@@ -637,11 +642,11 @@ export function GuidePremiumLayout({
         )
       )}
 
-      {/* Mobile sticky CTA — only renders <lg, slides in after 400px scroll */}
+      {/* Mobile sticky CTA — only renders <lg, after the guide-specific threshold. */}
       {sidebarContextCta && (
         <GuidePremiumMobileCta
           ctaHref={sidebarContextCta.ctaHref}
-          ctaLabel={sidebarContextCta.ctaLabel}
+          ctaLabel={mobileCtaLabel ?? sidebarContextCta.ctaLabel}
           phoneHref={
             sidebarContextCta.secondaryHref ??
             (sidebarContextCta.secondaryLabel
@@ -888,7 +893,7 @@ function PremiumStrategyCta({ data }: { data: GuidePremiumStrategyCtaData }) {
                 href={data.ctaHref ?? CTA_HREF_DEFAUT}
                 className="flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-xl bg-zinc-950 text-white text-sm font-semibold hover:bg-zinc-800 transition-colors"
               >
-                <Calendar className="size-4" aria-hidden="true" />
+                <MessageSquareText className="size-4" aria-hidden="true" />
                 {data.ctaLabel ?? CTA_LABEL_DEFAUT}
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>

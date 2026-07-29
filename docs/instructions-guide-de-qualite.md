@@ -1,0 +1,617 @@
+# Instructions guide de qualité
+
+Version : 29 juillet 2026
+Statut : protocole obligatoire pour chaque guide Hagnéré Code
+Périmètre : recherche, écriture, intégration, publication et contrôle après
+publication de toute route `/guides/[slug]`
+
+Ce document complète :
+
+- `docs/workflow-maitre-guides-4-passes.md`, qui gouverne les quatre passes
+  éditoriales successives ;
+- `docs/charte-qualite-guides.md`, qui définit la qualité éditoriale ;
+- `docs/regle-or-vigilance-seo-publication.md`, qui gouverne l’indexation et
+  les affirmations publiques.
+
+Il ne les remplace pas. En cas de contradiction, la règle la plus prudente et
+la plus vérifiable s’applique.
+
+---
+
+## 1. Principe non négociable
+
+Un guide suit exactement quatre passes d’écriture :
+
+1. création ;
+2. enrichissement et vérification ;
+3. polish rédactionnel ;
+4. antipasse IA et contre-audit.
+
+Chaque passe est confiée à un agent distinct. L’orchestrateur relit, contrôle
+et valide la passe avant de lancer la suivante. Un compte rendu d’agent, un
+test vert ou un texte long ne valent jamais validation automatique.
+
+Après la passe 4, un **contrôle qualité transversal obligatoire** est réalisé.
+Ce contrôle n’est pas une cinquième passe de rédaction : c’est une porte de
+sortie qui réconcilie le fond, le rendu, le code, les données structurées, les
+signaux Google et la production réellement servie.
+
+> Aucun guide suivant ne commence et aucun guide courant n’est publié tant que
+> le contrôle qualité final n’a pas reçu un `GO_QUALITE_GUIDE` explicite de
+> l’orchestrateur.
+
+---
+
+## 2. Ce qui a été mis en place lors de la remise à zéro
+
+### 2.1 Corpus
+
+- Les anciens guides ont été retirés du registre, du hub, du sitemap et du
+  maillage actif.
+- Les 100 anciens slugs sont conservés dans un inventaire fermé.
+- Chaque ancien slug est redirigé vers une route active et pertinente du site ;
+  une URL inventée n’est pas redirigée par défaut.
+- Le premier guide reconstruit est
+  `/guides/automatiser-processus-metier`.
+- Le hub, le sitemap et `llms.txt` sont alimentés depuis le registre canonique
+  `src/lib/guides.ts`, pas par des listes éditées séparément.
+- Aucun téléchargement XLS, XLSX ou CSV n’est présenté comme ressource du
+  guide.
+
+### 2.2 Gabarit
+
+Le nouveau guide réutilise le système premium du site :
+
+- navigation et pied de page globaux ;
+- héros avec badges, promesse, auteur, statistiques et CTA contextuel ;
+- sommaire ancré ;
+- colonne de lecture et CTA latéral ;
+- sections numérotées ;
+- tableaux adaptatifs, encadrés, formules et exemple chiffré ;
+- calculateur local ;
+- sources et avertissement ;
+- FAQ catégorisée ;
+- CTA mobile et bloc de contact global.
+
+Le gabarit est partagé. Un guide ne doit pas recopier plusieurs centaines de
+lignes de mise en page pour créer une variante impossible à maintenir.
+
+### 2.3 Valeur propre au premier guide
+
+Le guide apporte :
+
+- cinq portes bloquantes qui empêchent un gain financier de masquer un risque ;
+- sept réponses possibles, dont simplifier, activer une fonction existante ou
+  ne pas automatiser ;
+- une carte de processus utilisable sans outil ;
+- une séparation entre temps retirable, adoption, heures réaffectées, valeur
+  de capacité et dépense réellement évitée ;
+- un scénario volontairement défavorable et reproductible ;
+- un calculateur dont les données restent dans le navigateur ;
+- un protocole de pilote, d’erreur, de reprise et de responsabilité ;
+- des sources officielles et leurs limites.
+
+### 2.4 Durcissements ajoutés après l’analyse finale
+
+| Modification | Pourquoi | Mise en œuvre | Preuve attendue |
+|---|---|---|---|
+| H1 équilibré et espace insécable avant `?` | Éviter une ponctuation seule sur une ligne à 390 px | `text-balance` dans le gabarit et `\u00a0` dans le suffixe | Capture et mesure à 320, 360, 390 et 430 px |
+| Statistique « Calculateur · envoi : Aucun » | Ne pas laisser croire que toute la page ne traite aucune donnée | Libellé limité au calculateur | Texte visible identique au comportement réseau |
+| Parcours express à cinq étapes | Donner une orientation avant la lecture longue | Liens vers carte, portes, options, calcul et décision | Chaque ancre mène à la bonne section |
+| Quatre sorties explicites | Ne pas présenter le développement comme issue automatique | Fonction existante, pilote, simplification ou maintien humain | Les quatre issues restent visibles sur mobile |
+| Scénario opérationnel concret | Rendre les calculs compréhensibles sans fabriquer un client | Demandes d’intervention, file manuelle et hypothèses visibles | Mention « entièrement fictif » à proximité des chiffres |
+| CTA mobile déclenché après le héros | Ne pas recouvrir la promesse avant que le lecteur ait commencé | Géométrie du héros rendu, seuil de pixels seulement en repli | CTA absent dans le héros et visible pendant la lecture |
+| CTA masqué devant FAQ et contact | Éviter les doublons et les contenus masqués | Détection de l’intersection visible de `#faq` et `#contact` | Aucun recouvrement aux largeurs mobiles |
+| CTA et icônes cohérents | Décrire la vraie destination au lieu de simuler une réservation | Liens vers `/demarrer-un-projet`, libellé mobile « Décrire mon besoin · 3 min » et icône de message dans le gabarit | Libellé, icône et destination cohérents |
+| FAQ accessible | Relier catégories, panneaux, questions et réponses | `tablist`, `tab`, `tabpanel`, identifiants uniques, ARIA, flèches, Home et End | Test automatisé, clavier et lecteur d’écran |
+| Auteur canonique | Éviter trois intitulés différents pour la même personne | Nom, initiales, rôle et profil issus de `src/lib/team.ts` | Carte, metadata, équipe et JSON-LD réconciliés |
+| Métadonnées centralisées | Empêcher le titre, la canonical et l’image sociale de diverger | `buildGuideMetadata` | Test du registre et HTML servi |
+| JSON-LD centralisé | Empêcher chaque page de recréer auteur et éditeur | `buildGuideStructuredData` | Tests unitaires et JSON parsable |
+| Collection de guides identifiée | Relier le guide à son hub sans inventer une seconde page | `https://hagnere-code.ai/guides#collection` | Même `@id` sur le hub et dans l’Article |
+| Directives robots centralisées | Ne pas perdre `max-image-preview:large` lorsqu’une page remplace les metadata globales | Constantes publiques et privées dans `search-indexing.ts` | HTML public et tests robots |
+| Dates sans heure inventée | Éviter trois instants artificiels pour une seule date éditoriale | Instants ISO réels, avec fuseau, identiques dans registre, Open Graph, Article et sitemap | Comparaison des sorties servies |
+| Trois images Article | Fournir une illustration utile et adaptée aux ratios recommandés sans surcharger l’OG de texte | Illustration visible en 16:9 et déclinaisons 4:3 et 1:1 | Fichiers, dimensions, HTML et tableau `Article.image` |
+| Vocabulaire du hub corrigé | Ne pas confondre capacité réaffectée et gain financier | « capacité réaffectée » dans le parcours du hub | Hub et guide réconciliés |
+
+---
+
+## 3. Chaîne d’exécution : quatre passes et quatre gates
+
+### 3.1 Règle d’isolement
+
+Avant la passe 1, l’orchestrateur :
+
+1. choisit un seul slug de la roadmap ;
+2. vérifie qu’aucun autre agent ne travaille sur ce slug ;
+3. gèle le corpus et les fichiers autorisés ;
+4. crée ou complète `docs/research/[slug].md` ;
+5. relève l’état Git et sépare tout changement utilisateur sans rapport ;
+6. confirme la route de service et le CTA ;
+7. vérifie les anciennes URL et la stratégie de redirection ;
+8. note les inconnues qui doivent rester des `STOP`, jamais des inventions.
+
+### 3.2 Passe 1 — création
+
+Agent : rédacteur-recherche dédié.
+
+Livrable :
+
+- contrat de réponse ;
+- corpus interne et risque de cannibalisation ;
+- recherche externe et sources primaires ;
+- registre des affirmations ;
+- architecture complète ;
+- réponse courte ;
+- guide intégral ;
+- exemples et contre-exemples ;
+- FAQ visible ;
+- CTA adapté ;
+- metadata, OG et JSON-LD autorisé ;
+- manifeste P1.
+
+Gate G1 de l’orchestrateur :
+
+- la question principale reçoit une réponse dans les premiers paragraphes ;
+- le lecteur sait aussi quand renoncer ;
+- aucun chiffre, client, prix, délai, qualification ou résultat n’est inventé ;
+- les sources importantes ont été ouvertes et lues ;
+- les calculs sont refaits indépendamment ;
+- le guide est complet, pas seulement bien introduit ;
+- le rendu n’est pas déjà cassé.
+
+Sortie : `GO_PASSE_2` ou `NO_GO_PASSE_1`.
+
+### 3.3 Passe 2 — enrichissement et vérification
+
+Agent : vérificateur distinct du rédacteur.
+
+Mission :
+
+- contredire les affirmations importantes ;
+- revenir aux textes officiels et documentations primaires ;
+- vérifier dates, périmètres et exceptions ;
+- refaire tous les calculs ;
+- rechercher les coûts, risques, responsables et cas de refus oubliés ;
+- corriger les liens et les sources faibles ;
+- vérifier le comportement réel des outils intégrés ;
+- produire le manifeste P2.
+
+Gate G2 :
+
+- chaque affirmation contrôlable est `VERIFIEE`, `A_NUANCER`, `A_RETIRER` ou
+  `INCONNUE` ;
+- une inconnue n’a pas été transformée en zéro ou en certitude ;
+- les unités, périodes et formules sont cohérentes ;
+- le droit, la sécurité et le RGPD ne dépassent pas le périmètre des sources ;
+- les limites et contre-cas sont visibles dans le texte, pas cachés en note.
+
+Sortie : `GO_PASSE_3` ou `NO_GO_PASSE_2`.
+
+### 3.4 Passe 3 — polish rédactionnel
+
+Agent : éditeur distinct des passes 1 et 2.
+
+Mission :
+
+- rendre chaque phrase plus naturelle et plus précise ;
+- supprimer jargon, remplissage, symétries artificielles et répétitions ;
+- améliorer les transitions et la hiérarchie ;
+- placer définitions, exemples et décisions au bon moment ;
+- vérifier que tableaux et encadrés accélèrent la compréhension ;
+- conserver intégralement les nuances factuelles ;
+- produire le manifeste P3.
+
+Gate G3 :
+
+- les 150 premiers mots décrivent le problème réel, répondent et orientent ;
+- chaque H2 reste compréhensible isolément ;
+- la longueur vient de la couverture utile, pas d’un quota SEO ;
+- la FAQ répond dès sa première phrase ;
+- le CTA décrit la prochaine action réelle ;
+- aucun polish n’a simplifié une limite juridique, technique ou financière.
+
+Sortie : `GO_PASSE_4` ou `NO_GO_PASSE_3`.
+
+### 3.5 Passe 4 — antipasse IA et contre-audit
+
+Agent : contre-auditeur distinct des trois précédents.
+
+Mission :
+
+- rechercher la voix industrielle, les transitions mécaniques et la fausse
+  assurance ;
+- détecter les sauts logiques, contradictions, répétitions et promesses ;
+- vérifier que les exemples fictifs ne ressemblent pas à des preuves client ;
+- faire une lecture adversariale des sources, chiffres et CTA ;
+- contrôler la cohérence du document entier après correction ;
+- produire le manifeste P4.
+
+Gate G4 :
+
+- aucun P0 ni P1 éditorial, factuel, légal, commercial ou logique ;
+- score de publication au-dessus du seuil du dépôt ;
+- aucun axe critique sous le minimum ;
+- les manifestes correspondent aux fichiers réellement relus ;
+- les quatre agents sont distincts ;
+- le diff est gelé avant le contrôle transversal.
+
+Sortie : `GO_CONTROLE_QUALITE` ou `NO_GO_PASSE_4`.
+
+---
+
+## 4. Contrôle qualité transversal obligatoire
+
+Ce contrôle commence uniquement après G4. Toute correction matérielle rouvre
+les contrôles concernés et invalide les preuves prises sur l’ancien état.
+
+### 4.1 Fond éditorial
+
+- intention, lecteur, décision et hors-sujet réconciliés ;
+- réponse courte cohérente avec la conclusion ;
+- alternatives simples et option « ne pas faire » visibles ;
+- exemples proches de situations réelles mais explicitement fictifs ;
+- aucune expérience Hagnéré Code inventée ;
+- aucune promesse de classement, délai, ROI ou trafic ;
+- faits, calculs, scénarios, déductions et recommandations distinguables ;
+- termes techniques expliqués au premier emploi ;
+- chaque lien apporte une preuve ou une prochaine étape utile ;
+- FAQ limitée aux vraies questions résiduelles.
+
+### 4.2 Arithmétique et outils
+
+- chaque formule refaite avec une seconde méthode ;
+- mêmes valeurs dans prose, tableau, FAQ et calculateur ;
+- mêmes unités et même horizon ;
+- zéros distingués des inconnues ;
+- cas limites testés : vide, zéro, décimales, valeurs extrêmes, portes
+  bloquantes et données invalides ;
+- aucun envoi réseau si l’interface annonce un calcul local ;
+- résultat interprété sans confondre capacité et trésorerie.
+
+### 4.3 Hauteur, rythme et harmonie visuelle
+
+Contrôler la page entière, pas uniquement le composant modifié :
+
+- même en-tête, même grille, même système typographique et même footer que le
+  reste du site ;
+- hauteur du héros déterminée par son contenu, sans `min-height` arbitraire qui
+  crée un vide sur mobile ;
+- H1 équilibré sans mot ou ponctuation orpheline ;
+- badges qui reviennent à la ligne sans collision ;
+- statistiques de hauteur harmonieuse et libellés complets ;
+- cartes d’une même rangée visuellement cohérentes sans masquer de texte ;
+- rythme vertical stable entre H2, paragraphes, tableaux et encadrés ;
+- largeur de lecture raisonnable après la sidebar ;
+- tableaux remplacés par des cartes mobiles lorsque la réponse décisive serait
+  hors écran ;
+- CTA fixe absent du héros et masqué devant tout CTA concurrent ;
+- aucun contenu final caché sous le bandeau mobile ;
+- thème sombre sans bloc blanc, texte gris illisible ni icône invisible ;
+- impression propre si le guide est destiné à être conservé.
+
+Largeurs obligatoires :
+
+`320`, `360`, `390`, `430`, `640`, `768`, `1024`, `1280`, `1440` et
+`1600` px.
+
+À chaque largeur :
+
+- `scrollWidth <= innerWidth` ;
+- aucun texte tronqué ;
+- cibles tactiles d’au moins 44 px lorsque possible ;
+- héros, sommaire, tableaux, calculateur, FAQ, CTA et footer contrôlés ;
+- capture ou relevé daté conservé.
+
+Vérifier également zoom navigateur 200 %, taille de police augmentée et
+orientation paysage sur un petit écran.
+
+### 4.4 Accessibilité
+
+- un seul H1 ;
+- ordre H2/H3 logique ;
+- lien d’évitement fonctionnel ;
+- focus visible ;
+- ordre de tabulation conforme à l’ordre de lecture ;
+- aucune action accessible uniquement à la souris ;
+- boutons et liens nommés par leur résultat ;
+- catégories de FAQ annoncées comme onglets ou boutons cohérents, sans mélange
+  de rôles ;
+- `aria-controls`, `aria-labelledby`, `aria-selected` et `aria-expanded`
+  pointent vers des identifiants uniques existants ;
+- flèches, Home et End fonctionnent dans la liste d’onglets ;
+- réponses ouvertes et fermées correctement annoncées ;
+- informations non portées par la couleur seule ;
+- tableaux avec légende et en-têtes ;
+- lecteur d’écran contrôlé au minimum sur le héros, le parcours express, le
+  calculateur, la FAQ et le CTA.
+
+### 4.5 Performance
+
+Mesurer, ne pas deviner :
+
+- poids HTML brut et compressé ;
+- nombre de nœuds DOM ;
+- nombre et poids des scripts et images ;
+- absence d’erreurs console et réseau ;
+- absence de déplacement de mise en page visible ;
+- chargement des polices et image OG ;
+- Core Web Vitals de laboratoire avant publication ;
+- Core Web Vitals de terrain seulement lorsqu’assez de données réelles
+  existent.
+
+Un build vert ne prouve ni LCP, ni INP, ni CLS de terrain.
+
+### 4.6 Cohérence de marque et de conversion
+
+- auteur visible, metadata et JSON-LD issus de la même source canonique ;
+- CTA adapté au sujet du guide ;
+- libellé fidèle à la destination : ne pas écrire « réserver » si le lien ouvre
+  un formulaire ;
+- téléphone, email et calendrier vérifiés avant toute modification ;
+- aucune adresse `@hagnere-code.ai` inventée ;
+- aucun calendrier renommé sans URL publique testée ;
+- promesse de délai uniquement si le parcours la tient et si le site
+  l’exprime de manière cohérente ;
+- mauvaise cible et cas de refus expliqués.
+
+Point actuellement contrôlé : l’adresse visible
+`quentin@hagnere-patrimoine.fr` et l’URL Calendly historique sont utilisées
+globalement. Leur apparence peut sembler décalée avec Hagnéré Code, mais elles
+ne doivent être remplacées que par des coordonnées Hagnéré Code réellement
+créées, opérationnelles et testées. La migration devra alors être globale :
+footer, contact, formulaires, erreurs, emails, JSON-LD et tests.
+
+---
+
+## 5. Données structurées et harmonie Google
+
+### 5.1 Principe
+
+Les données structurées décrivent ce que le lecteur voit. Elles ne servent pas
+à ajouter une promesse, une FAQ, une compétence, un avis ou un résultat absent
+de la page.
+
+JSON-LD est utilisé pour la maintenabilité. Le balisage ne garantit ni résultat
+enrichi, ni indexation, ni classement.
+
+### 5.2 Graphe canonique du site
+
+| Entité | `@id` canonique | Source |
+|---|---|---|
+| Organisation | `https://hagnere-code.ai/#organization` | `organization-structured-data.ts` |
+| Site | `https://hagnere-code.ai/#website` | `organization-structured-data.ts` |
+| Quentin Hagnéré | `https://hagnere-code.ai/equipe#fondateur` | `team.ts` + page équipe |
+| Collection de guides | `https://hagnere-code.ai/guides#collection` | `guide-page-seo.ts` + hub |
+| Article | URL canonique exacte du guide + `#article` | `guide-page-seo.ts` |
+| Page principale | URL canonique exacte du guide | `mainEntityOfPage` |
+
+Règles :
+
+- réutiliser les `@id` ; ne jamais créer `#business`, `#agency` ou une seconde
+  organisation pour la même entité ;
+- le fondateur de l’organisation, le membre de la page équipe et l’auteur du
+  guide utilisent le même `@id` ;
+- l’Article appartient à la même `CollectionPage` que celle publiée par le
+  hub ;
+- la Collection appartient au `WebSite` ;
+- auteur et éditeur pointent vers les entités canoniques ;
+- nom, rôle, URL et profils sociaux viennent de la fiche équipe ;
+- toute modification de l’identité est testée sur toutes les pages qui
+  republient l’entité.
+
+### 5.3 Schémas autorisés sur un guide
+
+Par défaut :
+
+- `Article` ;
+- `BreadcrumbList`.
+
+Les entités globales `Organization` et `WebSite` restent gérées au niveau
+approprié du site. Elles ne sont pas recopiées intégralement dans chaque guide.
+
+Champs Article à réconcilier :
+
+- `headline` = H1 visible ;
+- `description` = promesse réelle de la page ;
+- `url` et `mainEntityOfPage.@id` = canonical absolue ;
+- `image` = illustration éditoriale visible et représentative, idéalement
+  disponible en 16:9, 4:3 et 1:1 ; l’image OG 1200 × 630 peut rester distincte
+  lorsqu’elle sert de carte de partage ;
+- `datePublished` = première publication réelle ;
+- `dateModified` = modification substantielle réellement publiée ;
+- `inLanguage` = `fr-FR` ;
+- `articleSection` = catégorie visible et stable ;
+- `isPartOf.@id` = collection des guides ;
+- `author.@id`, nom, rôle et URL = personne visible ;
+- `publisher.@id` = organisation canonique.
+
+Le fil d’Ariane JSON-LD doit suivre le fil visible :
+
+1. Accueil ;
+2. Guides ;
+3. guide courant.
+
+### 5.4 Schémas interdits par défaut
+
+- aucun `FAQPage` : la FAQ reste visible et accessible, mais n’est pas balisée
+  comme résultat enrichi ;
+- aucun `HowTo` pour transformer artificiellement des sections en étapes ;
+- aucun `Review`, `AggregateRating`, `Offer` ou `Product` sans réalité visible,
+  éligibilité et preuve ;
+- aucun `wordCount` estimé ;
+- aucune note, prix ou promesse ajoutée uniquement dans le JSON-LD.
+
+### 5.5 Contrôles Google et crawl
+
+Avant publication :
+
+- title unique et descriptif ;
+- meta description utile, sans promesse de classement ;
+- canonical absolue et auto-référente ;
+- robots cohérent avec le statut éditorial et l’environnement ;
+- Open Graph et Twitter cohérents ;
+- image sociale servie ;
+- hub, sitemap et `llms.txt` issus du registre ;
+- liens internes explorables avec de vraies balises `<a href>`;
+- JSON-LD parsable et fidèle au visible ;
+- aucun contenu essentiel uniquement après interaction.
+
+Après publication :
+
+- HTML public en 200 ;
+- canonical et robots relus dans le HTML servi ;
+- URL présente dans le sitemap public ;
+- redirections historiques testées sur la production ;
+- image OG publique contrôlée ;
+- données structurées de l’URL publique validées ;
+- inspection Search Console demandée si utile ;
+- canonical choisie et indexation contrôlées ultérieurement.
+
+Publication, découverte, exploration, indexation, classement et conversion sont
+des états distincts. Aucun ne se déduit automatiquement du précédent.
+
+---
+
+## 6. Tests bloquants
+
+Depuis la racine propre du candidat :
+
+```bash
+git diff --check
+npm run measure:guide-readtime -- <slug>
+npx eslint <tous-les-fichiers-modifies>
+npx tsc --noEmit
+npm run check:seo
+npm test
+NEXT_PUBLIC_ENV=production npm run build
+```
+
+Puis, sur un serveur construit depuis exactement le même état source :
+
+1. vérifier le guide, le hub, l’image OG, sitemap, robots et `llms.txt` ;
+2. extraire et parser chaque bloc JSON-LD ;
+3. comparer H1, `headline`, title, canonical et fil d’Ariane ;
+4. tester le calculateur et ses cas limites ;
+5. tester clavier, thème sombre, zoom et toutes les largeurs ;
+6. mesurer débordement, poids HTML et DOM ;
+7. conserver le SHA du commit ou de l’archive testée.
+
+Après toute correction :
+
+- relancer les tests ciblés du défaut ;
+- relancer les barrières transversales susceptibles d’être affectées ;
+- reconstruire avant de déclarer le rendu validé ;
+- ne pas réutiliser une capture ou une mesure de l’ancien artefact.
+
+---
+
+## 7. Rapport final obligatoire
+
+Le rapport du contrôle qualité contient :
+
+```text
+Guide :
+Slug :
+Commit ou SHA :
+Date :
+
+P1 agent / manifeste / décision :
+P2 agent / manifeste / décision :
+P3 agent / manifeste / décision :
+P4 agent / manifeste / décision :
+
+Valeur lecteur :
+Faits et sources :
+Calculs :
+Exemples fictifs :
+Accessibilité :
+Responsive :
+Thème sombre et zoom :
+CTA et conversion :
+Metadata :
+JSON-LD :
+Hub / sitemap / llms.txt :
+Redirections :
+Performance laboratoire :
+Production servie :
+Search Console :
+
+P0 :
+P1 :
+P2 :
+Inconnues / STOP :
+Décision : GO_QUALITE_GUIDE ou NO_GO_QUALITE_GUIDE
+```
+
+Un `GO_QUALITE_GUIDE` exige :
+
+- zéro P0 ;
+- zéro P1 ;
+- P2 explicitement acceptés et non trompeurs ;
+- batterie locale verte ;
+- BAT visuel complet ;
+- contre-audit indépendant ;
+- production vérifiée si le statut annoncé est « publié ».
+
+---
+
+## 8. Statuts autorisés
+
+| Statut | Ce qu’il prouve |
+|---|---|
+| Brouillon | Travail incomplet |
+| Quatre passes terminées | P1 à P4 exécutées, pas encore de gate transversal |
+| GO qualité local | Fond, code, build et BAT local validés |
+| Poussé | Commit présent sur le dépôt distant |
+| Déployé | Une plateforme a construit le commit |
+| Publié | URL publique et HTML servi vérifiés |
+| Découvert | Google connaît l’URL ou le sitemap |
+| Indexé | Search Console confirme l’indexation |
+| Classé | Impressions observées sur des requêtes |
+| Convertissant | Demandes attribuables mesurées |
+
+Ne jamais écrire « publié » après un simple build, « indexé » après une
+demande d’inspection, ni « performant » à partir d’un cache ou d’un score
+local unique.
+
+---
+
+## 9. Références officielles à revalider
+
+- [Règles générales relatives aux données structurées](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)
+- [Données structurées Article](https://developers.google.com/search/docs/appearance/structured-data/article)
+- [Fil d’Ariane](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb)
+- [Galerie des fonctionnalités de données structurées](https://developers.google.com/search/docs/appearance/structured-data/search-gallery)
+- [Nom du site et WebSite](https://developers.google.com/search/docs/appearance/site-names)
+- [Consolidation des URL en double et canonical](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+- [Création et envoi d’un sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
+- [Titres dans les résultats](https://developers.google.com/search/docs/appearance/title-link)
+- [Contrôle des extraits et meta descriptions](https://developers.google.com/search/docs/appearance/snippet)
+- [Dates de publication et de modification](https://developers.google.com/search/docs/appearance/publication-dates)
+- [Inspection d’URL dans Search Console](https://support.google.com/webmasters/answer/9012289?hl=fr)
+
+Ces pages sont des sources vivantes. Leur date et leur contenu doivent être
+recontrôlés lors d’une évolution de schéma ou d’une nouvelle série de guides.
+
+---
+
+## 10. Règle de continuité
+
+Après chaque guide :
+
+1. terminer les quatre passes ;
+2. geler le diff ;
+3. exécuter le contrôle qualité transversal ;
+4. corriger ;
+5. refaire le contrôle impacté ;
+6. obtenir `GO_QUALITE_GUIDE` ;
+7. publier et vérifier l’URL si la publication est autorisée ;
+8. seulement ensuite réserver le guide suivant.
+
+Cette règle reste obligatoire même si :
+
+- les quatre agents annoncent un succès ;
+- le score éditorial est élevé ;
+- les tests unitaires sont verts ;
+- le commit a été poussé ;
+- le guide précédent était construit avec le même gabarit.

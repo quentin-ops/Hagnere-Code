@@ -36,8 +36,8 @@ export const metadata: Metadata = {
     title: whitePaper.cardTitle,
     description: whitePaper.description,
     url: whitePaper.path,
-    publishedTime: `${whitePaper.datePublished}T09:00:00+02:00`,
-    modifiedTime: `${whitePaper.dateModified}T09:00:00+02:00`,
+    publishedTime: whitePaper.datePublished,
+    modifiedTime: whitePaper.dateModified,
     authors: [`${SITE_URL}/equipe`],
   },
   twitter: {

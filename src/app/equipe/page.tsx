@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { EquipePage } from "@/components/equipe/EquipePage";
 import { OG_BASE } from "@/lib/seo";
-import { TEAM_PUBLIC_COMPOSITION, TEAM_TOTAL_COUNT } from "@/lib/team";
-import { PUBLIC_ORGANIZATION_JSON_LD } from "@/lib/organization-structured-data";
+import { TEAM, TEAM_PUBLIC_COMPOSITION, TEAM_TOTAL_COUNT } from "@/lib/team";
+import {
+  PUBLIC_ORGANIZATION_JSON_LD,
+  QUENTIN_HAGNERE_ID,
+  QUENTIN_HAGNERE_URL,
+} from "@/lib/organization-structured-data";
 
 const EQUIPE_OG_IMAGE = {
   url: "/og-image.png",
@@ -32,9 +36,12 @@ const orgJsonLd = JSON.stringify({
   member: [
     {
       "@type": "Person",
-      name: "Quentin Hagnéré",
-      jobTitle: "Président fondateur — Brief client / Design / Front-end / Back-office",
-      sameAs: ["https://www.linkedin.com/in/quentin-hagnere"],
+      "@id": QUENTIN_HAGNERE_ID,
+      name: TEAM.quentin.fullName,
+      jobTitle: TEAM.quentin.role,
+      description: TEAM.quentin.roleDetail,
+      url: QUENTIN_HAGNERE_URL,
+      sameAs: TEAM.quentin.linkedin ? [TEAM.quentin.linkedin] : undefined,
     },
     {
       "@type": "Person",

@@ -19,3 +19,22 @@ export function isSearchIndexingEnabled(
 
   return deploymentEnv?.trim() === "production";
 }
+
+/** Directives communes à toute page publique indexable. */
+export const INDEXABLE_ROBOTS = {
+  index: true,
+  follow: true,
+  googleBot: {
+    index: true,
+    follow: true,
+    "max-image-preview": "large",
+    "max-snippet": -1,
+    "max-video-preview": -1,
+  },
+} as const;
+
+/** Une preview ou un contenu éditorial non validé reste entièrement fermé. */
+export const PRIVATE_ROBOTS = {
+  index: false,
+  follow: false,
+} as const;

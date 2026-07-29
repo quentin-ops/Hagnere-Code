@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import { GuidesHubPage } from "@/components/guides/GuidesHubPage";
+import { GUIDES_COLLECTION_ID } from "@/lib/guide-page-seo";
+import {
+  ORGANIZATION_ID,
+  WEBSITE_ID,
+} from "@/lib/organization-structured-data";
 import { OG_BASE, DEFAULT_OG_IMAGE, SITE_URL } from "@/lib/seo";
 import { PUBLISHED_GUIDES, guideUrl } from "@/lib/guides";
 
@@ -33,15 +38,14 @@ const breadcrumbJsonLd = JSON.stringify({
 const collectionJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "CollectionPage",
+  "@id": GUIDES_COLLECTION_ID,
   name: "Guides Hagnéré Code pour cadrer un projet numérique",
   description:
     "Des guides pratiques, sourcés et vérifiables pour cadrer un projet numérique avant de choisir une solution.",
   url: `${SITE_URL}/guides`,
-  author: {
-    "@type": "Organization",
-    name: "Hagnéré Code",
-    url: SITE_URL,
-  },
+  isPartOf: { "@id": WEBSITE_ID },
+  author: { "@id": ORGANIZATION_ID },
+  publisher: { "@id": ORGANIZATION_ID },
   mainEntity: {
     "@type": "ItemList",
     itemListElement: PUBLISHED_GUIDES.map((g, i) => ({

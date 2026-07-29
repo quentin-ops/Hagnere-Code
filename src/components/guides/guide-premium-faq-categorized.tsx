@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import type { KeyboardEvent } from "react";
 import Link from "next/link";
 import { ArrowRight, Plus, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -36,12 +37,35 @@ export function GuidePremiumFaqCategorized({
 }: GuidePremiumFaqCategorizedProps) {
   const [activeKey, setActiveKey] = useState<string>(categories[0].key);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const categoryButtons = useRef<Array<HTMLButtonElement | null>>([]);
 
   const active = categories.find((c) => c.key === activeKey) ?? categories[0];
 
   const onSelectCategory = (key: string) => {
     setActiveKey(key);
     setOpenIndex(0);
+  };
+
+  const onCategoryKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) => {
+    let nextIndex: number | null = null;
+
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+      nextIndex = (index + 1) % categories.length;
+    } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+      nextIndex = (index - 1 + categories.length) % categories.length;
+    } else if (event.key === "Home") {
+      nextIndex = 0;
+    } else if (event.key === "End") {
+      nextIndex = categories.length - 1;
+    }
+
+    if (nextIndex === null) return;
+    event.preventDefault();
+    onSelectCategory(categories[nextIndex].key);
+    categoryButtons.current[nextIndex]?.focus();
   };
 
   return (
@@ -109,28 +133,42 @@ export function GuidePremiumFaqCategorized({
               <p className="mb-3 text-[10.5px] font-semibold uppercase tracking-[0.22em] text-zinc-500 dark:text-white">
                 Catégories
               </p>
-              <ul className="flex flex-col">
+              <ul
+                className="flex flex-col"
+                role="tablist"
+                aria-label="Catégories de questions"
+                aria-orientation="vertical"
+              >
                 {categories.map((cat, idx) => {
                   const isActive = cat.key === activeKey;
                   const isLast = idx === categories.length - 1;
                   return (
                     <li
                       key={cat.key}
+                      role="presentation"
                       className={cn(
                         !isLast &&
                           "border-b border-zinc-100 dark:border-zinc-800",
                       )}
                     >
                       <button
+                        ref={(element) => {
+                          categoryButtons.current[idx] = element;
+                        }}
+                        id={`faq-category-${cat.key}-button`}
                         type="button"
                         onClick={() => onSelectCategory(cat.key)}
+                        onKeyDown={(event) => onCategoryKeyDown(event, idx)}
                         className={cn(
                           "group flex w-full items-center gap-3 py-3 text-left transition-colors",
                           isActive
                             ? "text-zinc-950 dark:text-white"
                             : "text-zinc-500 hover:text-zinc-800 dark:text-white dark:hover:text-zinc-200",
                         )}
-                        aria-pressed={isActive}
+                        role="tab"
+                        aria-selected={isActive}
+                        aria-controls={`faq-category-${cat.key}-panel`}
+                        tabIndex={isActive ? 0 : -1}
                       >
                         <span
                           className={cn(
@@ -221,6 +259,11 @@ export function GuidePremiumFaqCategorized({
               return (
                 <div
                   key={category.key}
+                  id={`faq-category-${category.key}-panel`}
+                  role="tabpanel"
+                  aria-labelledby={`faq-category-${category.key}-button`}
+                  aria-hidden={!isActive}
+                  tabIndex={isActive ? 0 : -1}
                   className={cn(
                     isActive ? "block" : "hidden",
                     "print:block",
@@ -234,6 +277,7 @@ export function GuidePremiumFaqCategorized({
                     {category.items.map((item, i) => (
                       <FaqAccordionItem
                         key={`${category.key}-${i}`}
+                        categoryKey={category.key}
                         index={i}
                         item={item}
                         isOpen={isActive && openIndex === i}
@@ -256,6 +300,7 @@ export function GuidePremiumFaqCategorized({
 }
 
 function FaqAccordionItem({
+  categoryKey,
   index,
   item,
   isOpen,
@@ -263,6 +308,7 @@ function FaqAccordionItem({
   isFirst,
   isLast,
 }: {
+  categoryKey: string;
   index: number;
   item: GuidePremiumFaqItem;
   isOpen: boolean;
@@ -271,14 +317,25 @@ function FaqAccordionItem({
   isLast?: boolean;
 }) {
   const num = String(index + 1).padStart(2, "0");
+  const buttonId = `faq-${categoryKey}-question-${index + 1}`;
+  const panelId = `faq-${categoryKey}-answer-${index + 1}`;
+
   return (
     <li
       className={cn(!isLast && "border-b border-zinc-100 dark:border-zinc-800")}
     >
       <button
+        id={buttonId}
         type="button"
         onClick={onToggle}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            onToggle();
+          }
+        }}
         aria-expanded={isOpen}
+        aria-controls={panelId}
         className={cn(
           "group flex w-full items-start gap-5 px-3 py-5 text-left lg:gap-7 lg:px-4 lg:py-6",
           isFirst && "rounded-t-2xl",
@@ -314,6 +371,10 @@ function FaqAccordionItem({
         </span>
       </button>
       <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        aria-hidden={!isOpen}
         className={cn(
           "px-3 pb-6 pl-12 pr-12 text-[14px] leading-relaxed text-zinc-600 dark:text-white lg:pb-7 lg:pl-16 lg:pr-16",
           !isOpen && "hidden print:block",

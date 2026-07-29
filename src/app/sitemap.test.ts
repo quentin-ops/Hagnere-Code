@@ -89,9 +89,7 @@ describe("sitemap", () => {
         (candidate) => candidate.url === `${BASE}/guides/${guide.slug}`,
       );
       expect(entry, guide.slug).toBeDefined();
-      expect(entry?.lastModified, guide.slug).toEqual(
-        new Date(`${guide.dateModified}T12:00:00Z`),
-      );
+      expect(entry?.lastModified, guide.slug).toBe(guide.dateModified);
     }
 
     for (const guide of GUIDES.filter((entry) => entry.editorialStatus)) {
@@ -125,9 +123,7 @@ describe("sitemap", () => {
         (candidate) => candidate.url === `${BASE}${resource.path}`,
       );
       expect(entry, resource.id).toBeDefined();
-      expect(entry?.lastModified, resource.id).toEqual(
-        new Date(`${resource.updatedAt}T12:00:00Z`),
-      );
+      expect(entry?.lastModified, resource.id).toBe(resource.updatedAt);
     }
   });
 
@@ -139,9 +135,7 @@ describe("sitemap", () => {
       );
 
       expect(entry, route).toBeDefined();
-      expect(entry?.lastModified, route).toEqual(
-        new Date(`${page.dateModified}T12:00:00Z`),
-      );
+      expect(entry?.lastModified, route).toBe(page.dateModified);
     }
   });
 
