@@ -70,6 +70,7 @@ export const scenariosHtml = `
             À mesurer : temps de ressaisie, erreurs, délais de relance et adoption avant / après pilote.
             Avant de comparer les propositions, <a href="/guides/choisir-prestataire-application-metier">soumettez les candidats au même cas métier</a>.
             <a href="/guides/securite-application-metier">Avant la mise en service, vérifiez que le socle de sécurité est prouvé et testé.</a>
+            <a href="/guides/droits-acces-application-metier">Définissez aussi qui peut voir, modifier, valider, exporter ou supprimer chaque objet métier.</a>
           </div>
         </div>
       </div>

@@ -447,6 +447,15 @@ export default function Page() {
           />
 
           <p>
+            Pour rendre la ligne « contrôle d’accès » testable,{" "}
+            <Link href="/guides/droits-acces-application-metier">
+              définissez qui peut voir et modifier quoi
+            </Link>{" "}
+            objet par objet, puis associez à chaque autorisation critique un cas
+            autorisé et un cas refusé.
+          </p>
+
+          <p>
             Pour un traitement de données personnelles, l’
             <a
               href="https://eur-lex.europa.eu/eli/reg/2016/679/art_32/oj/fra"

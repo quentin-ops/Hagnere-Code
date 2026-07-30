@@ -1,0 +1,13 @@
+558d5bb4bc052a1f49387366cfa756fcdd19fcf6247c1b7ddb2431fb4949ab70  docs/research/droits-acces-application-metier.md
+3ce75b431d906d423811351ea3800eb0738860f5021aa9424c327b0be59e62bd  public/guides/droits-acces-application-metier/matrice-droits-16x9.svg
+fa918e34109d1b6c0932a8c3492bc83f1129df20b46b8d826de4f460a759856b  public/guides/droits-acces-application-metier/matrice-droits-16x9.webp
+ca6bb010715262615665f7b8d39e844741ff5856a5f06835c35db43f1090b581  public/guides/droits-acces-application-metier/matrice-droits-4x3.svg
+aed0966772ef368bbd92f374699f18a2ad37c244488ac4260a62d5b513fb5c43  public/guides/droits-acces-application-metier/matrice-droits-4x3.webp
+73448668d54e7df80f5ea5e812786e613480746d63c3abca254c103c8209c2e9  public/guides/droits-acces-application-metier/matrice-droits-1x1.svg
+2564864ab563743a660967ab5e0d666cbd2e4ad6a7bc617b586ac850aaaf8392  public/guides/droits-acces-application-metier/matrice-droits-1x1.webp
+8b66d5dd30c4cf967825e8e4f168878d8bf1e026e5acf673de3ea7c4f9578be9  src/app/guides/droits-acces-application-metier/page.tsx
+e02c08fd87084a37fa28a9a88c6078fe83bf6ebb3dee377a043dfc1c1fd72efa  src/app/guides/droits-acces-application-metier/opengraph-image.tsx
+6ca2f187fe3115aeb39018a2c6e1b9fe953f746a7a9adb6b71057d4cdcd6bb03  src/app/guides/droits-acces-application-metier/access-rights-readiness.ts
+effd0a96139d5fb1119d251c57b7d33019ac3bc60cb63883f622322d517c8ffb  src/app/guides/droits-acces-application-metier/access-rights-readiness-tool.tsx
+2804cc2a91cfebf88007f0a9ed916140e7a0e4b2409815400d90dbb3fd33f84a  src/app/guides/droits-acces-application-metier/access-rights-readiness.test.ts
+003f3489e029785126b17967728feb0922009a4082f51f0f9d9dfc63e2979cd0  src/app/guides/droits-acces-application-metier/content-quality.test.ts

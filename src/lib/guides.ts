@@ -188,6 +188,26 @@ export const GUIDES: GuideEntry[] = [
     ],
     editorialStatus: "ready-for-human-review",
   },
+  {
+    slug: "droits-acces-application-metier",
+    title: "Droits d’accès d’une application métier",
+    cardTitle: "Droits d’accès d’une application métier",
+    metaDescription:
+      "Définissez qui peut voir, modifier, valider, exporter ou supprimer quoi : matrice sans score, portée, refus, cycle de vie et tests d’accès.",
+    cardDescription:
+      "Une matrice de dix dimensions, des STOP non compensables et un outil local pour préciser rôles, portée, refus, revue et tests.",
+    heroTitle: "Qui peut voir et modifier quoi dans votre application métier ?",
+    section: "Applications métiers et outils internes",
+    datePublished: "2026-07-31T01:07:59+02:00",
+    dateModified: "2026-07-31T01:07:59+02:00",
+    readTimeMin: 14,
+    articleImagePaths: [
+      "/guides/droits-acces-application-metier/matrice-droits-16x9.webp",
+      "/guides/droits-acces-application-metier/matrice-droits-4x3.webp",
+      "/guides/droits-acces-application-metier/matrice-droits-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */

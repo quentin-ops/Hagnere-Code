@@ -45,6 +45,13 @@ const providerSelectionGuideSource = fs.readFileSync(
   ),
   "utf8",
 );
+const securityGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/securite-application-metier/page.tsx",
+  ),
+  "utf8",
+);
 const outilsScenariosSource = fs.readFileSync(
   path.join(
     process.cwd(),
@@ -67,6 +74,7 @@ describe("guide registry after the editorial reset", () => {
       "plan-recette-application-metier",
       "choisir-prestataire-application-metier",
       "securite-application-metier",
+      "droits-acces-application-metier",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
@@ -101,6 +109,13 @@ describe("guide registry after the editorial reset", () => {
 
     expect(providerSelectionGuideSource).toContain(securityPath);
     expect(outilsScenariosSource).toContain(securityPath);
+  });
+
+  it("links the access-rights guide from security and service context", () => {
+    const accessRightsPath = "/guides/droits-acces-application-metier";
+
+    expect(securityGuideSource).toContain(accessRightsPath);
+    expect(outilsScenariosSource).toContain(accessRightsPath);
   });
 
   it("keeps metadata unique, dated and restrained", () => {

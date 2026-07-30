@@ -12,6 +12,7 @@ import {
   FlaskConical,
   Globe,
   HandCoins,
+  KeyRound,
   Megaphone,
   Route,
   Scale,
@@ -64,6 +65,15 @@ const COLLECTIONS: Collection[] = [
     title: "Automatiser sans déplacer le problème.",
     text: "Travail réel, solutions simples, calculs transparents, cas d’échec et reprise manuelle : les repères pour décider avant de brancher un outil.",
     laneText: "Processus, automatisation et outils internes.",
+  },
+  {
+    section: "Applications métiers et outils internes",
+    anchor: "applications-outils-internes",
+    accent: "blue",
+    icon: KeyRound,
+    title: "Applications métiers et outils internes",
+    text: "Objets, actions, portée, refus, cycle de vie et tests : les règles à faire valider avant d’ouvrir l’application aux équipes.",
+    laneText: "Droits, données et décisions pour vos applications métier.",
   },
   {
     section: "SaaS et MVP",
@@ -157,6 +167,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "plan-recette-application-metier": ClipboardList,
   "choisir-prestataire-application-metier": Scale,
   "securite-application-metier": ShieldCheck,
+  "droits-acces-application-metier": KeyRound,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */
