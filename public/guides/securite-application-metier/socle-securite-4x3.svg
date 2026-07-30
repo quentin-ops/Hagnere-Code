@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Quatre capacités du socle de sécurité</title>
+  <desc id="desc">Composition pédagogique présentant les quatre capacités prévenir, détecter, reprendre et répondre autour de l’application métier et d’une ligne de preuve.</desc>
+  <defs>
+    <linearGradient id="bg" x1="60" y1="30" x2="1150" y2="870" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#08172F"/>
+      <stop offset=".58" stop-color="#151B3B"/>
+      <stop offset="1" stop-color="#073138"/>
+    </linearGradient>
+    <radialGradient id="halo">
+      <stop stop-color="#22D3EE" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" rx="40" fill="url(#bg)"/>
+  <circle cx="600" cy="465" r="380" fill="url(#halo)"/>
+  <text x="70" y="82" fill="#67E8F9" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="3">REVUE AVANT MISE EN SERVICE</text>
+  <text x="70" y="130" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="37" font-weight="700">Relier les contrôles aux preuves</text>
+  <text x="70" y="166" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="20">Pas de score : une action, un test et un responsable.</text>
+
+  <path d="M398 351L492 420" stroke="#38BDF8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M802 351L708 420" stroke="#2DD4BF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M398 645L492 544" stroke="#A78BFA" stroke-width="4" stroke-linecap="round"/>
+  <path d="M802 645L708 544" stroke="#FBBF24" stroke-width="4" stroke-linecap="round"/>
+
+  <rect x="62" y="235" width="336" height="176" rx="26" fill="#0E2549" stroke="#38BDF8" stroke-opacity=".72"/>
+  <circle cx="112" cy="284" r="21" fill="#38BDF8" fill-opacity=".15" stroke="#38BDF8"/>
+  <path d="M101 284L110 293L125 273" fill="none" stroke="#7DD3FC" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="150" y="281" fill="#7DD3FC" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="2.3">PRÉVENIR</text>
+  <text x="94" y="335" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Exigence + test</text>
+  <text x="94" y="369" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="17">Accès, secrets, composants</text>
+
+  <rect x="802" y="235" width="336" height="176" rx="26" fill="#0A3038" stroke="#2DD4BF" stroke-opacity=".72"/>
+  <circle cx="852" cy="284" r="21" fill="#2DD4BF" fill-opacity=".15" stroke="#2DD4BF"/>
+  <path d="M840 288C846 276 858 276 864 288C858 300 846 300 840 288Z" fill="none" stroke="#5EEAD4" stroke-width="3"/>
+  <circle cx="852" cy="288" r="4" fill="#5EEAD4"/>
+  <text x="890" y="281" fill="#5EEAD4" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="2.3">DÉTECTER</text>
+  <text x="834" y="335" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Événement → alerte</text>
+  <text x="834" y="369" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="17">Trace, signal, destinataire</text>
+
+  <rect x="62" y="575" width="336" height="176" rx="26" fill="#221B47" stroke="#A78BFA" stroke-opacity=".72"/>
+  <circle cx="112" cy="624" r="21" fill="#A78BFA" fill-opacity=".15" stroke="#A78BFA"/>
+  <path d="M123 614A14 14 0 1 0 125 630M123 614V626H111" fill="none" stroke="#C4B5FD" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="150" y="621" fill="#C4B5FD" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="2.3">REPRENDRE</text>
+  <text x="94" y="675" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Restauration exercée</text>
+  <text x="94" y="709" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="17">Ordre, intégrité, limites</text>
+
+  <rect x="802" y="575" width="336" height="176" rx="26" fill="#392A10" stroke="#FBBF24" stroke-opacity=".72"/>
+  <circle cx="852" cy="624" r="21" fill="#FBBF24" fill-opacity=".15" stroke="#FBBF24"/>
+  <path d="M842 624L850 632L864 614" fill="none" stroke="#FDE68A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="890" y="621" fill="#FDE68A" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="2.3">RÉPONDRE</text>
+  <text x="834" y="675" fill="#F8FAFC" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Responsable nommé</text>
+  <text x="834" y="709" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="17">Isoler, corriger, informer</text>
+
+  <rect x="438" y="348" width="324" height="268" rx="44" fill="#F8FAFC" fill-opacity=".08" stroke="#E2E8F0" stroke-opacity=".25"/>
+  <circle cx="600" cy="449" r="62" fill="#07152F" stroke="#67E8F9" stroke-width="3"/>
+  <path d="M570 436H630M570 456H620M570 476H612" stroke="#E0F2FE" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="638" cy="476" r="10" fill="#2DD4BF"/>
+  <text x="600" y="549" text-anchor="middle" fill="#67E8F9" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="2.4">PREUVES LOCALISÉES</text>
+  <text x="600" y="578" text-anchor="middle" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="16">résultats · limites · propriétaires</text>
+
+  <rect x="172" y="799" width="856" height="58" rx="29" fill="#020617" fill-opacity=".5" stroke="#94A3B8" stroke-opacity=".24"/>
+  <circle cx="214" cy="828" r="7" fill="#F87171"/>
+  <text x="237" y="835" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">STOP si incident actif ou contrôle critique bloquant</text>
+  <text x="988" y="835" text-anchor="end" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="1.7">SCHÉMA PÉDAGOGIQUE</text>
+</svg>

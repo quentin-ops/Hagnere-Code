@@ -884,6 +884,16 @@ export default function Page() {
           </p>
 
           <p>
+            Après le choix du prestataire, transformez ces garanties en
+            vérifications concrètes :{" "}
+            <Link href="/guides/securite-application-metier">
+              établissez le socle de sécurité avant la mise en service
+            </Link>
+            , puis attribuez chaque preuve, alerte et exercice de restauration à
+            une personne nommée.
+          </p>
+
+          <p>
             Pour le code, ne déduisez pas les droits du paiement.{" "}
             <a
               href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958"

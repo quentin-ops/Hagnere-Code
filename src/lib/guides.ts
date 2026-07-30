@@ -168,6 +168,26 @@ export const GUIDES: GuideEntry[] = [
     ],
     editorialStatus: "ready-for-human-review",
   },
+  {
+    slug: "securite-application-metier",
+    title: "Sécurité d’une application métier avant sa mise en service",
+    cardTitle: "Sécurité d’une application métier",
+    metaDescription:
+      "Menaces, sauvegardes testées, journaux, alertes et responsables : fixez des exigences proportionnées avant la mise en service.",
+    cardDescription:
+      "Une méthode sans score pour obtenir des preuves, tester la restauration, attribuer les alertes et décider de la mise en service.",
+    heroTitle: "Quel socle de sécurité exiger pour une application métier ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-30T22:03:29+02:00",
+    dateModified: "2026-07-30T22:03:29+02:00",
+    readTimeMin: 16,
+    articleImagePaths: [
+      "/guides/securite-application-metier/socle-securite-16x9.webp",
+      "/guides/securite-application-metier/socle-securite-4x3.webp",
+      "/guides/securite-application-metier/socle-securite-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */

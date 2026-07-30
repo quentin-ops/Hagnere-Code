@@ -156,6 +156,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "migrer-logiciel-metier-sans-interruption": Route,
   "plan-recette-application-metier": ClipboardList,
   "choisir-prestataire-application-metier": Scale,
+  "securite-application-metier": ShieldCheck,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */
