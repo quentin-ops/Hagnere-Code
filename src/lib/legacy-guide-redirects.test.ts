@@ -8,16 +8,13 @@ import {
 
 describe("legacy guide redirects", () => {
   it("keeps the reset inventory complete and unique", () => {
-    expect(LEGACY_GUIDE_SLUGS).toHaveLength(99);
-    expect(new Set(LEGACY_GUIDE_SLUGS).size).toBe(
-      LEGACY_GUIDE_SLUGS.length,
-    );
-    expect(LEGACY_GUIDE_SLUGS).not.toContain(
-      "automatiser-processus-metier",
-    );
+    expect(LEGACY_GUIDE_SLUGS).toHaveLength(98);
+    expect(new Set(LEGACY_GUIDE_SLUGS).size).toBe(LEGACY_GUIDE_SLUGS.length);
+    expect(LEGACY_GUIDE_SLUGS).not.toContain("automatiser-processus-metier");
     expect(LEGACY_GUIDE_SLUGS).not.toContain(
       "valider-idee-saas-avant-developper",
     );
+    expect(LEGACY_GUIDE_SLUGS).not.toContain("prix-gestion-google-ads");
   });
 
   it("redirects only routes that actually existed", () => {
@@ -36,9 +33,7 @@ describe("legacy guide redirects", () => {
   it("always points a known legacy route to an active site route", () => {
     for (const slug of LEGACY_GUIDE_SLUGS) {
       const destination = getLegacyGuideDestination(slug);
-      expect(destination, slug).toMatch(
-        /^\/(?:guides|services\/[a-z0-9-]+)$/,
-      );
+      expect(destination, slug).toMatch(/^\/(?:guides|services\/[a-z0-9-]+)$/);
       expect(
         fs.existsSync(
           path.join(
@@ -68,17 +63,16 @@ describe("legacy guide redirects", () => {
           visit(absolute);
           continue;
         }
-        if (
-          ignored.has(absolute) ||
-          !/\.(?:ts|tsx)$/.test(entry.name)
-        ) {
+        if (ignored.has(absolute) || !/\.(?:ts|tsx)$/.test(entry.name)) {
           continue;
         }
 
         const source = fs.readFileSync(absolute, "utf8");
         for (const slug of LEGACY_GUIDE_SLUGS) {
           if (source.includes(`/guides/${slug}`)) {
-            findings.push(`${path.relative(process.cwd(), absolute)} -> ${slug}`);
+            findings.push(
+              `${path.relative(process.cwd(), absolute)} -> ${slug}`,
+            );
           }
         }
       }

@@ -27,10 +27,12 @@ describe("guide registry after the editorial reset", () => {
     expect(GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
       "valider-idee-saas-avant-developper",
+      "prix-gestion-google-ads",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
       "valider-idee-saas-avant-developper",
+      "prix-gestion-google-ads",
     ]);
   });
 

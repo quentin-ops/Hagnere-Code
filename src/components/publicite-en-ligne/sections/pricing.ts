@@ -105,6 +105,10 @@ export const pricingHtml = `
     <p style="text-align:center;margin-top:44px;color:var(--mute);font-size:14px">
       <b style="color:var(--ink)">À vérifier dans chaque devis</b> : hébergement du conteneur, licences, volume de créations, alertes, horaires de surveillance et délai cible d'intervention. Rien n'est ajouté automatiquement par cette page.
     </p>
+    <p style="text-align:center;margin-top:14px;color:var(--mute);font-size:14px">
+      Pour remettre forfait, pourcentage, hybride et temps passé sur la même base, consultez notre
+      <a href="/guides/prix-gestion-google-ads">guide du coût complet d’une gestion Google Ads</a>.
+    </p>
   </div>
 </section>
 `;

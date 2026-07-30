@@ -72,7 +72,6 @@ export const LEGACY_GUIDE_SLUGS = [
   "preparer-contenus-site-vitrine",
   "prioriser-fonctionnalites-mvp-saas",
   "prise-rendez-vous-en-ligne-site-vitrine",
-  "prix-gestion-google-ads",
   "prix-logiciel-sur-mesure",
   "prix-referencement-naturel",
   "prix-refonte-site-internet",

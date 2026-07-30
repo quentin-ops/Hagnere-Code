@@ -87,6 +87,25 @@ export const GUIDES: GuideEntry[] = [
       "/guides/valider-idee-saas-avant-developper/article-validation-1x1.webp",
     ],
   },
+  {
+    slug: "prix-gestion-google-ads",
+    title: "Prix de la gestion Google Ads en 2026 : 4 modèles comparés",
+    cardTitle: "Prix d’une gestion Google Ads",
+    metaDescription:
+      "Comparez quatre modèles de rémunération Google Ads et calculez le coût complet à 3, 6 et 12 mois : média, honoraires, TVA, frais annexes et temps interne.",
+    cardDescription:
+      "Un guide et un calculateur local pour remettre quatre modes de rémunération sur la même base, sans confondre média, honoraires et acquisition.",
+    heroTitle: "Combien coûte vraiment la gestion de Google Ads ?",
+    section: "Google Ads & acquisition",
+    datePublished: "2026-07-31T00:24:23+02:00",
+    dateModified: "2026-07-31T00:24:23+02:00",
+    readTimeMin: 32,
+    articleImagePaths: [
+      "/guides/prix-gestion-google-ads/article-prix-ads-16x9.webp",
+      "/guides/prix-gestion-google-ads/article-prix-ads-4x3.webp",
+      "/guides/prix-gestion-google-ads/article-prix-ads-1x1.webp",
+    ],
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */
