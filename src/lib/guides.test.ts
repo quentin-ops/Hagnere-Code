@@ -13,17 +13,25 @@ import {
 import { SITE_URL } from "./seo";
 
 const guidesRoot = path.join(process.cwd(), "src/app/guides");
+const guidesHubSource = fs.readFileSync(
+  path.join(process.cwd(), "src/components/guides/GuidesHubPage.tsx"),
+  "utf8",
+);
 
 afterEach(() => {
   vi.unstubAllEnvs();
 });
 
 describe("guide registry after the editorial reset", () => {
-  it("exposes only the first rebuilt guide", () => {
+  it("registers rebuilt guides but publishes only approved guides", () => {
     expect(GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
+      "valider-idee-saas-avant-developper",
     ]);
-    expect(PUBLISHED_GUIDES).toEqual(GUIDES);
+    expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
+      "automatiser-processus-metier",
+      "valider-idee-saas-avant-developper",
+    ]);
   });
 
   it("keeps metadata unique, dated and restrained", () => {
@@ -84,6 +92,17 @@ describe("guide registry after the editorial reset", () => {
           imagePath,
         ).toBe(true);
       }
+    }
+  });
+
+  it("assigns every rebuilt guide to a named hub collection and icon", () => {
+    for (const guide of GUIDES) {
+      expect(guidesHubSource, `${guide.slug}: collection`).toContain(
+        `section: "${guide.section}"`,
+      );
+      expect(guidesHubSource, `${guide.slug}: icon`).toContain(
+        `"${guide.slug}":`,
+      );
     }
   });
 

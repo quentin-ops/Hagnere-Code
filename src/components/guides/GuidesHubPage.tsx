@@ -9,6 +9,7 @@ import {
   ChevronRight,
   ClipboardList,
   FileText,
+  FlaskConical,
   Globe,
   HandCoins,
   Megaphone,
@@ -62,6 +63,15 @@ const COLLECTIONS: Collection[] = [
     title: "Automatiser sans déplacer le problème.",
     text: "Travail réel, solutions simples, calculs transparents, cas d’échec et reprise manuelle : les repères pour décider avant de brancher un outil.",
     laneText: "Processus, automatisation et outils internes.",
+  },
+  {
+    section: "SaaS et MVP",
+    anchor: "saas-mvp",
+    accent: "purple",
+    icon: FlaskConical,
+    title: "Valider avant de construire.",
+    text: "Problème, acheteur, offre, usage et faisabilité : des tests proportionnés pour décider s’il faut continuer, changer d’hypothèse ou ne rien développer.",
+    laneText: "Idées SaaS, prototypes, pilotes et décisions avant le code.",
   },
   {
     section: "Budget & prix",
@@ -131,6 +141,7 @@ const COLLECTIONS: Collection[] = [
 /** Icône propre aux guides déjà reconstruits (défaut : Globe). */
 const GUIDE_ICONS: Record<string, LucideIcon> = {
   "automatiser-processus-metier": Cable,
+  "valider-idee-saas-avant-developper": FlaskConical,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */
@@ -207,8 +218,8 @@ export function GuidesHubPage() {
               <p className="ghub-hero-sub">
                 Nous reconstruisons cette bibliothèque guide par guide. Chaque
                 publication doit donner aux dirigeants une méthode claire, des
-                sources vérifiables, des calculs reproductibles et les cas où
-                il vaut mieux ne rien développer.
+                sources vérifiables, des calculs reproductibles et les cas où il
+                vaut mieux ne rien développer.
               </p>
 
               <div className="ghub-hero-actions">

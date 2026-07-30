@@ -68,6 +68,25 @@ export const GUIDES: GuideEntry[] = [
       "/guides/automatiser-processus-metier/article-processus-1x1.webp",
     ],
   },
+  {
+    slug: "valider-idee-saas-avant-developper",
+    title: "Comment valider une idée SaaS avant de développer ?",
+    cardTitle: "Valider une idée SaaS avant de développer",
+    metaDescription:
+      "Testez une idée SaaS avant de développer : problème, acheteur, prix, usage et critères pour continuer, changer ou arrêter.",
+    cardDescription:
+      "Séparez six questions, choisissez un test sans produit et décidez s’il faut continuer, changer l’idée, attendre ou arrêter.",
+    heroTitle: "Valider une idée SaaS avant de développer",
+    section: "SaaS et MVP",
+    datePublished: "2026-07-30T07:04:32+02:00",
+    dateModified: "2026-07-30T07:04:32+02:00",
+    readTimeMin: 20,
+    articleImagePaths: [
+      "/guides/valider-idee-saas-avant-developper/article-validation-16x9.webp",
+      "/guides/valider-idee-saas-avant-developper/article-validation-4x3.webp",
+      "/guides/valider-idee-saas-avant-developper/article-validation-1x1.webp",
+    ],
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */

@@ -1,0 +1,9 @@
+1e2c076c2415d392a9611e3d258467f25b3301cbe726b84770162ac468eab960  docs/research/valider-idee-saas-avant-developper.md
+a60e7c8d027dafdd8a383f229826e63ac3c7157d77ba1cb1bf1b427d096d2a93  src/app/guides/valider-idee-saas-avant-developper/page.tsx
+da25e38c0a6fb1e12797a2ceafb611138bff60583d51308ad12cd1f0f4f91a9a  src/app/guides/valider-idee-saas-avant-developper/opengraph-image.tsx
+f00789544ce3775149b596b431f290ae54e373a08ff760f00d4c9515a872924c  src/app/guides/valider-idee-saas-avant-developper/validation-test-planner.tsx
+c72a29c98f86195091390f4ccd9fa2e7cdf1b3f59acff7d0a4a90d9e1188cb86  src/app/guides/valider-idee-saas-avant-developper/validation-test-planner.test.ts
+158456adebac5be166fdcd2e8853c2b3192ecb2ff0288aec6a2555b48b190acb  src/lib/guides.ts
+018ec7a0089dab00574bdfd1b7a2358a4487c308f299b38178b21aef9adc48c8  public/guides/valider-idee-saas-avant-developper/article-validation-16x9.webp
+55226d27a12b0b34d43b953e00562544326fcfe2794dd49bcc88b9d3943f2e40  public/guides/valider-idee-saas-avant-developper/article-validation-4x3.webp
+2a5afb696217da0a211e12d27b68050659cd414b436b9de91467aa9d62090cce  public/guides/valider-idee-saas-avant-developper/article-validation-1x1.webp

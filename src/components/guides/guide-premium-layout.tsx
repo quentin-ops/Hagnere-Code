@@ -919,9 +919,9 @@ function PremiumSources({ sources }: { sources: GuidePremiumLegalSource[] }) {
   return (
     <section className="bg-[#fbfaf7] dark:bg-zinc-950 pt-12 sm:pt-14 pb-4">
       <div className="container mx-auto px-4 max-w-[1180px]">
-        <h3 className="text-lg sm:text-xl font-bold tracking-tight text-zinc-950 dark:text-white mb-5">
+        <h2 className="text-lg sm:text-xl font-bold tracking-tight text-zinc-950 dark:text-white mb-5">
           Sources et références légales
-        </h3>
+        </h2>
         <div className="rounded-2xl border border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-950">
           <ul className="divide-y divide-zinc-100 dark:divide-zinc-800">
             {sources.map((entry) => (

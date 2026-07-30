@@ -102,7 +102,6 @@ export const LEGACY_GUIDE_SLUGS = [
   "tjm-developpeur-web",
   "tma-ou-regie",
   "transformer-excel-en-application",
-  "valider-idee-saas-avant-developper",
   "wix-ou-wordpress",
   "woocommerce-ou-shopify",
   "zapier-make-ou-developpement-sur-mesure",
