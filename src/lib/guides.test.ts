@@ -17,6 +17,20 @@ const guidesHubSource = fs.readFileSync(
   path.join(process.cwd(), "src/components/guides/GuidesHubPage.tsx"),
   "utf8",
 );
+const repriseGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/reprendre-logiciel-metier-existant/page.tsx",
+  ),
+  "utf8",
+);
+const outilsScenariosSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/components/outils-internes/sections/scenarios.ts",
+  ),
+  "utf8",
+);
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -28,11 +42,19 @@ describe("guide registry after the editorial reset", () => {
       "automatiser-processus-metier",
       "valider-idee-saas-avant-developper",
       "reprendre-logiciel-metier-existant",
+      "migrer-logiciel-metier-sans-interruption",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
       "valider-idee-saas-avant-developper",
     ]);
+  });
+
+  it("links the migration guide from the takeover guide and service context", () => {
+    const migrationPath = "/guides/migrer-logiciel-metier-sans-interruption";
+
+    expect(repriseGuideSource).toContain(migrationPath);
+    expect(outilsScenariosSource).toContain(migrationPath);
   });
 
   it("keeps metadata unique, dated and restrained", () => {

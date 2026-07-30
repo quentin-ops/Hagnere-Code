@@ -13,6 +13,7 @@ import {
   Globe,
   HandCoins,
   Megaphone,
+  Route,
   Scale,
   ShieldCheck,
   Timer,
@@ -128,6 +129,15 @@ const COLLECTIONS: Collection[] = [
     laneText: "Maintenance, continuité et changement de prestataire.",
   },
   {
+    section: "Outils internes et migration",
+    anchor: "outils-migration",
+    accent: "amber",
+    icon: Route,
+    title: "Changer de logiciel sans perdre le fil de l’activité.",
+    text: "Périmètre, source d’écriture, répétition, critères d’arrêt et retour arrière : les preuves à réunir avant une bascule.",
+    laneText: "Migration, continuité métier et retour arrière.",
+  },
+  {
     section: "Financer son projet",
     anchor: "financer",
     accent: "amber",
@@ -143,6 +153,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "automatiser-processus-metier": Cable,
   "valider-idee-saas-avant-developper": FlaskConical,
   "reprendre-logiciel-metier-existant": Wrench,
+  "migrer-logiciel-metier-sans-interruption": Route,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */

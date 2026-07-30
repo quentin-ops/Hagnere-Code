@@ -107,7 +107,10 @@ export const scenariosHtml = `
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="oi-scen-ref">À comparer : licences, migration, maintenance, formation, réversibilité et coût total sur trois ans.</div>
+          <div class="oi-scen-ref">
+            À comparer : licences, migration, maintenance, formation, réversibilité et coût total sur trois ans.
+            Si le remplacement est retenu, <a href="/guides/migrer-logiciel-metier-sans-interruption">préparez une bascule réversible</a>.
+          </div>
         </div>
       </div>
     </div>

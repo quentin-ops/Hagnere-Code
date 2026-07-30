@@ -95,8 +95,7 @@ export const GUIDES: GuideEntry[] = [
       "Faites le test de relève : vérifiez code, accès, déploiement, sauvegardes, données et contrat avant de confier votre logiciel à une nouvelle équipe.",
     cardDescription:
       "Un test de relève en cinq capacités et un procès-verbal de reprise pour décider de reprendre, limiter la mission ou reporter la bascule.",
-    heroTitle:
-      "Reprendre un logiciel métier existant sans signer à l’aveugle",
+    heroTitle: "Reprendre un logiciel métier existant sans signer à l’aveugle",
     section: "Maintenance & reprise",
     datePublished: "2026-07-30T12:47:39+02:00",
     dateModified: "2026-07-30T12:47:39+02:00",
@@ -105,6 +104,26 @@ export const GUIDES: GuideEntry[] = [
       "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-16x9.webp",
       "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-4x3.webp",
       "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
+  {
+    slug: "migrer-logiciel-metier-sans-interruption",
+    title: "Migrer un logiciel métier sans interruption",
+    cardTitle: "Migrer un logiciel métier sans interrompre l’activité",
+    metaDescription:
+      "Préparez une migration sans arrêt subi : un logiciel de référence, cinq preuves, une répétition et assez de temps pour décider ou revenir.",
+    cardDescription:
+      "Cinq preuves et un budget en minutes pour basculer, réduire le lot ou reporter sans masquer les inconnues.",
+    heroTitle: "Migrer un logiciel métier sans interrompre l’activité",
+    section: "Outils internes et migration",
+    datePublished: "2026-07-30T14:53:22+02:00",
+    dateModified: "2026-07-30T14:53:22+02:00",
+    readTimeMin: 19,
+    articleImagePaths: [
+      "/guides/migrer-logiciel-metier-sans-interruption/migration-reversible-16x9.webp",
+      "/guides/migrer-logiciel-metier-sans-interruption/migration-reversible-4x3.webp",
+      "/guides/migrer-logiciel-metier-sans-interruption/migration-reversible-1x1.webp",
     ],
     editorialStatus: "ready-for-human-review",
   },

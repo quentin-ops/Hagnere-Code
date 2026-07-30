@@ -841,7 +841,11 @@ export default function Page() {
             sans risque acceptable, une migration par lots ou une réécriture
             ultérieure peut être étudiée. Ce choix demande son propre dossier de
             bascule ; il ne doit pas être déduit automatiquement du présent
-            guide.
+            guide. Lorsque la cible est décidée, commencez par{" "}
+            <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+              préparer la bascule vers un nouveau logiciel
+            </Link>
+            .
           </p>
 
           <GuidePremiumMemo title="Le périmètre doit aussi dire ce qui reste exclu">
