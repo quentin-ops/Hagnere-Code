@@ -8,7 +8,7 @@ import {
 
 describe("legacy guide redirects", () => {
   it("keeps the reset inventory complete and unique", () => {
-    expect(LEGACY_GUIDE_SLUGS).toHaveLength(97);
+    expect(LEGACY_GUIDE_SLUGS).toHaveLength(96);
     expect(new Set(LEGACY_GUIDE_SLUGS).size).toBe(LEGACY_GUIDE_SLUGS.length);
     expect(LEGACY_GUIDE_SLUGS).not.toContain("automatiser-processus-metier");
     expect(LEGACY_GUIDE_SLUGS).not.toContain(
@@ -19,6 +19,9 @@ describe("legacy guide redirects", () => {
     );
     expect(LEGACY_GUIDE_SLUGS).not.toContain(
       "migrer-logiciel-metier-sans-interruption",
+    );
+    expect(LEGACY_GUIDE_SLUGS).not.toContain(
+      "choisir-prestataire-application-metier",
     );
   });
 

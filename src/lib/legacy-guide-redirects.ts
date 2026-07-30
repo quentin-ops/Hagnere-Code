@@ -25,7 +25,6 @@ export const LEGACY_GUIDE_SLUGS = [
   "calculer-roi-application-metier",
   "choisir-agence-google-ads",
   "choisir-agence-seo",
-  "choisir-prestataire-application-metier",
   "choisir-son-agence-web",
   "combien-coute-un-crm",
   "combien-coute-un-saas",

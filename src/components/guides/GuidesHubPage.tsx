@@ -155,6 +155,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "reprendre-logiciel-metier-existant": Wrench,
   "migrer-logiciel-metier-sans-interruption": Route,
   "plan-recette-application-metier": ClipboardList,
+  "choisir-prestataire-application-metier": Scale,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */

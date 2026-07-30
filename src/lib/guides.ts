@@ -148,6 +148,26 @@ export const GUIDES: GuideEntry[] = [
     ],
     editorialStatus: "ready-for-human-review",
   },
+  {
+    slug: "choisir-prestataire-application-metier",
+    title: "Choisir un prestataire d’application métier",
+    cardTitle: "Choisir le prestataire de son application métier",
+    metaDescription:
+      "Comparez des prestataires sur un même cas : périmètre, coûts, validation, données, droits, maintenance et sortie, sans score global.",
+    cardDescription:
+      "Un cas métier commun, huit points non compensables et un outil local pour choisir, préciser, cadrer ou reporter.",
+    heroTitle: "Comment choisir le prestataire de votre application métier ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-30T18:41:28+02:00",
+    dateModified: "2026-07-30T18:41:28+02:00",
+    readTimeMin: 17,
+    articleImagePaths: [
+      "/guides/choisir-prestataire-application-metier/comparaison-preuves-16x9.webp",
+      "/guides/choisir-prestataire-application-metier/comparaison-preuves-4x3.webp",
+      "/guides/choisir-prestataire-application-metier/comparaison-preuves-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */

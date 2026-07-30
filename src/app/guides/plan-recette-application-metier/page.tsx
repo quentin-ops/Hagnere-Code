@@ -315,6 +315,10 @@ export default function Page() {
             label: "Migrer un logiciel métier sans interruption",
             href: "/guides/migrer-logiciel-metier-sans-interruption",
           },
+          {
+            label: "Choisir un prestataire d’application métier",
+            href: "/guides/choisir-prestataire-application-metier",
+          },
         ]}
         relatedGuidesLabel="À lire avant ou après la recette"
       >

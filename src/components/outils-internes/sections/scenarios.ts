@@ -66,7 +66,10 @@ export const scenariosHtml = `
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="oi-scen-ref">À mesurer : temps de ressaisie, erreurs, délais de relance et adoption avant / après pilote.</div>
+          <div class="oi-scen-ref">
+            À mesurer : temps de ressaisie, erreurs, délais de relance et adoption avant / après pilote.
+            Avant de comparer les propositions, <a href="/guides/choisir-prestataire-application-metier">soumettez les candidats au même cas métier</a>.
+          </div>
         </div>
       </div>
     </div>
