@@ -82,7 +82,6 @@ export const LEGACY_GUIDE_SLUGS = [
   "react-native-ou-flutter",
   "refonte-sans-perdre-son-seo",
   "remplacer-microsoft-access-application-web",
-  "reprendre-logiciel-metier-existant",
   "reprendre-maintenance-site-autre-agence",
   "reprendre-mvp-vibe-code",
   "reprendre-saas-developpe-par-freelance",

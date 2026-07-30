@@ -27,6 +27,7 @@ describe("guide registry after the editorial reset", () => {
     expect(GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
       "valider-idee-saas-avant-developper",
+      "reprendre-logiciel-metier-existant",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",

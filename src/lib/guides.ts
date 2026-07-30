@@ -87,6 +87,27 @@ export const GUIDES: GuideEntry[] = [
       "/guides/valider-idee-saas-avant-developper/article-validation-1x1.webp",
     ],
   },
+  {
+    slug: "reprendre-logiciel-metier-existant",
+    title: "Reprendre un logiciel métier : le test de relève",
+    cardTitle: "Reprendre un logiciel métier existant",
+    metaDescription:
+      "Faites le test de relève : vérifiez code, accès, déploiement, sauvegardes, données et contrat avant de confier votre logiciel à une nouvelle équipe.",
+    cardDescription:
+      "Un test de relève en cinq capacités et un procès-verbal de reprise pour décider de reprendre, limiter la mission ou reporter la bascule.",
+    heroTitle:
+      "Reprendre un logiciel métier existant sans signer à l’aveugle",
+    section: "Maintenance & reprise",
+    datePublished: "2026-07-30T12:47:39+02:00",
+    dateModified: "2026-07-30T12:47:39+02:00",
+    readTimeMin: 12,
+    articleImagePaths: [
+      "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-16x9.webp",
+      "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-4x3.webp",
+      "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */
