@@ -666,6 +666,17 @@ export default function Page() {
             hypothèse.
           </p>
 
+          <p>
+            Pour transformer les parcours métier en cas rejouables et conserver
+            les états échoué, bloqué ou non exécuté jusqu’à la décision,
+            préparez séparément le{" "}
+            <Link href="/guides/plan-recette-application-metier">
+              plan de recette de l’application métier
+            </Link>
+            . La recette prouve les besoins ; la répétition de migration prouve
+            la bascule et son retour.
+          </p>
+
           <GuideTable
             caption="Les cinq preuves avant la revue GO ou STOP"
             headers={["Preuve", "Démonstration attendue", "STOP si…"]}

@@ -1,0 +1,13 @@
+316a9fb0fcbed8a6b70c236a2d09269d7ca76ce4acb756d1482c143e3730fc94  docs/research/plan-recette-application-metier.md
+1221f576b402b33eb19ebc439fc9cae830ac7d28a201ff70f3307f3cdef4883e  src/app/guides/plan-recette-application-metier/page.tsx
+3f9ee30030269a6eda57f0763724b6559466397dd2ae5bf69b686c8d2651a072  src/app/guides/plan-recette-application-metier/opengraph-image.tsx
+f7e669c4355475ebc4100f49a7a3d177c0b2ca6d2a4923c89425ccf4a27116d6  src/app/guides/plan-recette-application-metier/acceptance-readiness.ts
+a7f0bdbcf8464f9ef78223d732dff1b347e568df6e9673ae03491f22ad392344  src/app/guides/plan-recette-application-metier/acceptance-readiness-tool.tsx
+d87ea3939275d51a802ed9a3825d7b5be619a99b3bffac1c2d281d9fcd66915f  src/app/guides/plan-recette-application-metier/acceptance-readiness.test.ts
+748d729cef55e1e74ea202ad0f3c23138aa9116c642597652579e640675bc386  src/app/guides/plan-recette-application-metier/content-quality.test.ts
+e4f24c241cbdcc4093307fa4625c9e79aff5b6710b301ea6af5ad48a9245d6c4  public/guides/plan-recette-application-metier/recette-preuve-16x9.svg
+7a9fc6cfd19bcb3143030e9b931c05086c0fc2283737b7f21af2cba821ca016b  public/guides/plan-recette-application-metier/recette-preuve-16x9.webp
+57e9ae5cc871b6d49a87ecb6c5c06fc6677c90fbdbf98b466589eba39b874184  public/guides/plan-recette-application-metier/recette-preuve-4x3.svg
+b1cf736cc50d53ec42c46e62055b1d059aa7895027617008b89cd9861d3c2154  public/guides/plan-recette-application-metier/recette-preuve-4x3.webp
+fe8a53786ff158d8507b61405f8c55dc724300dd3d3cdbb400ea52ef6b00349b  public/guides/plan-recette-application-metier/recette-preuve-1x1.svg
+74dce98fe79f34b413b71155722e2221625e5a5ce1498ff42fb78b054806c1b7  public/guides/plan-recette-application-metier/recette-preuve-1x1.webp

@@ -151,7 +151,10 @@ export const scenariosHtml = `
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="oi-scen-ref">À tester : saisie hors ligne, qualité d'extraction, reprise sur erreur et usage réel sur le terrain.</div>
+          <div class="oi-scen-ref">
+            À tester : saisie hors ligne, qualité d'extraction, reprise sur erreur et usage réel sur le terrain.
+            Avant la livraison, <a href="/guides/plan-recette-application-metier">préparez des cas de recette rejouables</a>.
+          </div>
         </div>
       </div>
     </div>

@@ -24,6 +24,13 @@ const repriseGuideSource = fs.readFileSync(
   ),
   "utf8",
 );
+const migrationGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/migrer-logiciel-metier-sans-interruption/page.tsx",
+  ),
+  "utf8",
+);
 const outilsScenariosSource = fs.readFileSync(
   path.join(
     process.cwd(),
@@ -43,6 +50,7 @@ describe("guide registry after the editorial reset", () => {
       "valider-idee-saas-avant-developper",
       "reprendre-logiciel-metier-existant",
       "migrer-logiciel-metier-sans-interruption",
+      "plan-recette-application-metier",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
@@ -55,6 +63,13 @@ describe("guide registry after the editorial reset", () => {
 
     expect(repriseGuideSource).toContain(migrationPath);
     expect(outilsScenariosSource).toContain(migrationPath);
+  });
+
+  it("links the acceptance-plan guide from migration and service context", () => {
+    const acceptancePlanPath = "/guides/plan-recette-application-metier";
+
+    expect(migrationGuideSource).toContain(acceptancePlanPath);
+    expect(outilsScenariosSource).toContain(acceptancePlanPath);
   });
 
   it("keeps metadata unique, dated and restrained", () => {

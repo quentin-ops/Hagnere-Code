@@ -154,6 +154,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "valider-idee-saas-avant-developper": FlaskConical,
   "reprendre-logiciel-metier-existant": Wrench,
   "migrer-logiciel-metier-sans-interruption": Route,
+  "plan-recette-application-metier": ClipboardList,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */

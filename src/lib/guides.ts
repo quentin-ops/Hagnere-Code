@@ -127,6 +127,27 @@ export const GUIDES: GuideEntry[] = [
     ],
     editorialStatus: "ready-for-human-review",
   },
+  {
+    slug: "plan-recette-application-metier",
+    title: "Plan de recette d’une application métier",
+    cardTitle: "Préparer la recette d’une application métier",
+    metaDescription:
+      "Transformez vos besoins métier en cas de recette rejouables, preuves et décision, sans masquer tests critiques, anomalies ni réserves.",
+    cardDescription:
+      "Une chaîne besoin, cas, preuve et huit points non compensables pour préparer une décision sans cacher les échecs ni les réserves.",
+    heroTitle:
+      "Plan de recette d’une application métier : prouver avant d’accepter",
+    section: "Préparer son projet",
+    datePublished: "2026-07-30T16:30:59+02:00",
+    dateModified: "2026-07-30T16:30:59+02:00",
+    readTimeMin: 16,
+    articleImagePaths: [
+      "/guides/plan-recette-application-metier/recette-preuve-16x9.webp",
+      "/guides/plan-recette-application-metier/recette-preuve-4x3.webp",
+      "/guides/plan-recette-application-metier/recette-preuve-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */
