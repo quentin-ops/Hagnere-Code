@@ -141,6 +141,7 @@ const COLLECTIONS: Collection[] = [
 /** Icône propre aux guides déjà reconstruits (défaut : Globe). */
 const GUIDE_ICONS: Record<string, LucideIcon> = {
   "automatiser-processus-metier": Cable,
+  "calculer-roi-application-metier": Calculator,
   "valider-idee-saas-avant-developper": FlaskConical,
   "prix-gestion-google-ads": HandCoins,
 };

@@ -6,7 +6,7 @@
  * src/app : toute nouvelle page doit être ajoutée au sitemap (ou à la liste
  * d'exclusions volontaires ci-dessous) pour que la suite reste verte.
  */
-import { readdirSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { join, relative } from "node:path";
 import { describe, it, expect } from "vitest";
 import { GUIDES, PUBLISHED_GUIDES } from "@/lib/guides";
@@ -42,6 +42,15 @@ function collectPageRoutes(dir: string, appDir: string): string[] {
     }
   }
   return routes;
+}
+
+function isLocalNoindexGuideDraft(route: string, appDir: string): boolean {
+  if (!route.startsWith("/guides/")) return false;
+  const source = readFileSync(
+    join(appDir, route.replace(/^\//, ""), "page.tsx"),
+    "utf8",
+  );
+  return source.includes('editorialStatus: "ready-for-human-review"');
 }
 
 describe("sitemap", () => {
@@ -171,7 +180,10 @@ describe("sitemap", () => {
     const routes = collectPageRoutes(appDir, appDir)
       // Les routes dynamiques ([slug]) sont couvertes par des assertions dédiées.
       .filter((r) => !r.includes("["))
-      .filter((r) => !EXCLUDED_ROUTES.includes(r));
+      .filter((r) => !EXCLUDED_ROUTES.includes(r))
+      // Une passe éditoriale peut créer une route locale explicitement noindex
+      // avant que l'orchestrateur ne l'ajoute au registre de publication.
+      .filter((r) => !isLocalNoindexGuideDraft(r, appDir));
 
     for (const route of routes) {
       const expected = route === "/" ? BASE : `${BASE}${route}`;

@@ -1,5 +1,11 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { composedBodyHtml } from "./composed-body";
+
+const componentSource = readFileSync(
+  new URL("./OutilsInternes.tsx", import.meta.url),
+  "utf8",
+);
 
 describe("outils internes public claims", () => {
   it("ne publie pas les anciennes performances non étayées", () => {
@@ -17,5 +23,17 @@ describe("outils internes public claims", () => {
     expect(composedBodyHtml).toContain("EXEMPLE ILLUSTRATIF · DONNÉES FICTIVES");
     expect(composedBodyHtml).toContain("simulation non contractuelle");
     expect(composedBodyHtml).toContain("Ce montant n'est pas une économie garantie");
+  });
+
+  it("relie le service au guide de calcul du ROI avec une ancre descriptive", () => {
+    expect(componentSource).toContain(
+      '"/guides/calculer-roi-application-metier"',
+    );
+    expect(componentSource).toContain(
+      '"Calculer le ROI sans inventer les gains"',
+    );
+    expect(componentSource).toContain(
+      "Quatre ressources pour choisir avant de développer.",
+    );
   });
 });

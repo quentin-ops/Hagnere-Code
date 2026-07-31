@@ -69,6 +69,26 @@ export const GUIDES: GuideEntry[] = [
     ],
   },
   {
+    slug: "calculer-roi-application-metier",
+    title: "ROI d’une application métier : calcul et cas complet",
+    cardTitle: "Calculer le ROI d’une application métier",
+    metaDescription:
+      "Calculez le ROI d’une application métier sans confondre trésorerie et temps gagné : coût total, scénarios, délai de retour et comparaison des options.",
+    cardDescription:
+      "Deux lectures du ROI, douze familles de coûts et trois scénarios pour décider sans transformer une inconnue en zéro.",
+    heroTitle:
+      "Calculer le ROI d’une application métier sans inventer les gains",
+    section: "Outils internes et automatisation",
+    datePublished: "2026-07-31T05:30:49+02:00",
+    dateModified: "2026-07-31T05:30:49+02:00",
+    readTimeMin: 23,
+    articleImagePaths: [
+      "/guides/calculer-roi-application-metier/article-roi-16x9.webp",
+      "/guides/calculer-roi-application-metier/article-roi-4x3.webp",
+      "/guides/calculer-roi-application-metier/article-roi-1x1.webp",
+    ],
+  },
+  {
     slug: "valider-idee-saas-avant-developper",
     title: "Comment valider une idée SaaS avant de développer ?",
     cardTitle: "Valider une idée SaaS avant de développer",

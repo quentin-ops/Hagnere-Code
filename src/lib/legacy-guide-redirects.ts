@@ -22,7 +22,6 @@ export const LEGACY_GUIDE_SLUGS = [
   "cahier-des-charges-saas",
   "cahier-des-charges-site-internet",
   "calculer-cout-par-lead-google-ads",
-  "calculer-roi-application-metier",
   "choisir-agence-google-ads",
   "choisir-agence-seo",
   "choisir-prestataire-application-metier",

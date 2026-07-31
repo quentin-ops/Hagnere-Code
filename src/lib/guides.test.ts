@@ -26,11 +26,13 @@ describe("guide registry after the editorial reset", () => {
   it("registers rebuilt guides but publishes only approved guides", () => {
     expect(GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
+      "calculer-roi-application-metier",
       "valider-idee-saas-avant-developper",
       "prix-gestion-google-ads",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
+      "calculer-roi-application-metier",
       "valider-idee-saas-avant-developper",
       "prix-gestion-google-ads",
     ]);
@@ -69,10 +71,15 @@ describe("guide registry after the editorial reset", () => {
     const routed = fs
       .readdirSync(guidesRoot, { withFileTypes: true })
       .filter(
-        (entry) =>
-          entry.isDirectory() &&
-          entry.name !== "[slug]" &&
-          fs.existsSync(path.join(guidesRoot, entry.name, "page.tsx")),
+        (entry) => {
+          if (!entry.isDirectory() || entry.name === "[slug]") return false;
+          const pagePath = path.join(guidesRoot, entry.name, "page.tsx");
+          if (!fs.existsSync(pagePath)) return false;
+
+          return !fs
+            .readFileSync(pagePath, "utf8")
+            .includes('editorialStatus: "ready-for-human-review"');
+        },
       )
       .map((entry) => entry.name)
       .sort();
@@ -95,6 +102,49 @@ describe("guide registry after the editorial reset", () => {
         ).toBe(true);
       }
     }
+  });
+
+  it("permits only explicit unregistered local drafts and keeps them undiscoverable", () => {
+    const staticRoutes = fs
+      .readdirSync(guidesRoot, { withFileTypes: true })
+      .filter(
+        (entry) =>
+          entry.isDirectory() &&
+          entry.name !== "[slug]" &&
+          fs.existsSync(path.join(guidesRoot, entry.name, "page.tsx")),
+      )
+      .map((entry) => {
+        const source = fs.readFileSync(
+          path.join(guidesRoot, entry.name, "page.tsx"),
+          "utf8",
+        );
+        return {
+          slug: entry.name,
+          explicitLocalDraft: source.includes(
+            'editorialStatus: "ready-for-human-review"',
+          ),
+        };
+      });
+    const registered = new Set(GUIDES.map((guide) => guide.slug));
+    const published = new Set(PUBLISHED_GUIDES.map((guide) => guide.slug));
+    const localDrafts = staticRoutes.filter(
+      (route) => !registered.has(route.slug),
+    );
+
+    expect(localDrafts).toEqual([]);
+    for (const route of staticRoutes) {
+      if (registered.has(route.slug)) {
+        expect(route.explicitLocalDraft, route.slug).toBe(false);
+        continue;
+      }
+
+      // Anti-contournement : une route statique hors registre n'est tolérée
+      // que si sa page porte le statut draft exact, et elle ne peut pas être
+      // publiée par le filtre central utilisé par le hub, sitemap et llms.
+      expect(route.explicitLocalDraft, route.slug).toBe(true);
+      expect(published.has(route.slug), route.slug).toBe(false);
+    }
+    expect(guidesHubSource).toContain("PUBLISHED_GUIDES");
   });
 
   it("assigns every rebuilt guide to a named hub collection and icon", () => {

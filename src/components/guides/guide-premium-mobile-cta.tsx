@@ -79,7 +79,7 @@ export function GuidePremiumMobileCta({
           <Link
             href={ctaHref}
             tabIndex={visible ? undefined : -1}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-zinc-950 text-white text-sm font-semibold hover:bg-zinc-800 transition-colors"
+            className="min-w-0 flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-zinc-950 text-white text-sm font-semibold hover:bg-zinc-800 transition-colors"
           >
             <MessageSquareText className="size-4" aria-hidden="true" />
             <span className="truncate">{ctaLabel}</span>

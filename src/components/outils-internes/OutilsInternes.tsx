@@ -29,13 +29,17 @@ export function OutilsInternes() {
               Préparer la décision
             </p>
             <h2 className="mt-2 max-w-3xl text-2xl font-bold tracking-tight text-zinc-950 dark:text-white">
-              Trois ressources pour choisir avant de développer.
+              Quatre ressources pour choisir avant de développer.
             </h2>
-            <div className="mt-6 grid gap-3 md:grid-cols-3">
+            <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
               {[
                 [
                   "/guides/automatiser-processus-metier",
                   "Choisir le premier processus à automatiser",
+                ],
+                [
+                  "/guides/calculer-roi-application-metier",
+                  "Calculer le ROI sans inventer les gains",
                 ],
                 [
                   "/methode",

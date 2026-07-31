@@ -321,8 +321,8 @@ function PremiumAuthorCard({ author }: { author: GuidePremiumAuthor }) {
           ) : (
             <span className="font-semibold">{author.name}</span>
           )}
-          <span className="text-zinc-400 mx-1.5">·</span>
-          <span className="text-zinc-600 dark:text-white">
+          <span className="mx-1.5 hidden text-zinc-400 sm:inline">·</span>
+          <span className="mt-1 block text-zinc-600 dark:text-white sm:mt-0 sm:inline">
             {author.role ?? author.title ?? "Auteur du guide"}
           </span>
         </p>
