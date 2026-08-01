@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Chaîne du cahier des charges SaaS</title>
+  <desc id="desc">Une organisation cliente traverse les droits, l'offre, l'abonnement, le support et la sortie. Chaque étape porte une preuve.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="0.55" stop-color="#0b1a2d"/>
+      <stop offset="1" stop-color="#102439"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#60a5fa"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000" flood-opacity=".28"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity=".12" stroke="#93c5fd">
+    <path d="M0 120h1600M0 240h1600M0 360h1600M0 480h1600M0 600h1600M0 720h1600M0 840h1600"/>
+    <path d="M120 0v900M280 0v900M440 0v900M600 0v900M760 0v900M920 0v900M1080 0v900M1240 0v900M1400 0v900"/>
+  </g>
+  <text x="120" y="115" fill="#67e8f9" font-family="Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="5">CAHIER DES CHARGES SAAS</text>
+  <text x="120" y="180" fill="#f8fafc" font-family="Arial, sans-serif" font-size="52" font-weight="700">Un même produit à faire chiffrer</text>
+  <text x="120" y="226" fill="#a5b4c8" font-family="Arial, sans-serif" font-size="25">Chaque transition nomme sa décision, son responsable et sa preuve.</text>
+  <path d="M168 472H1432" stroke="url(#accent)" stroke-width="8" stroke-linecap="round"/>
+  <g font-family="Arial, sans-serif" filter="url(#shadow)">
+    <g transform="translate(110 360)">
+      <rect width="210" height="224" rx="28" fill="#12283d" stroke="#22d3ee" stroke-width="2"/>
+      <circle cx="105" cy="70" r="34" fill="#164e63"/>
+      <path d="M80 80h50M92 80V60h26v20M72 111h66" stroke="#67e8f9" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <text x="105" y="146" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">Organisation</text>
+      <text x="105" y="178" text-anchor="middle" fill="#a5b4c8" font-size="16">création · transfert</text>
+      <text x="105" y="201" text-anchor="middle" fill="#a5b4c8" font-size="16">suspension · fermeture</text>
+    </g>
+    <g transform="translate(350 360)">
+      <rect width="210" height="224" rx="28" fill="#12283d" stroke="#38bdf8" stroke-width="2"/>
+      <circle cx="105" cy="70" r="34" fill="#0c4a6e"/>
+      <circle cx="92" cy="65" r="12" fill="none" stroke="#7dd3fc" stroke-width="5"/>
+      <circle cx="120" cy="76" r="10" fill="none" stroke="#7dd3fc" stroke-width="5"/>
+      <path d="M74 105c6-20 30-25 42-8M108 105c4-15 22-19 31-7" fill="none" stroke="#7dd3fc" stroke-width="5" stroke-linecap="round"/>
+      <text x="105" y="146" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">Rôles</text>
+      <text x="105" y="178" text-anchor="middle" fill="#a5b4c8" font-size="16">objet · action · portée</text>
+      <text x="105" y="201" text-anchor="middle" fill="#a5b4c8" font-size="16">refus · révocation</text>
+    </g>
+    <g transform="translate(590 360)">
+      <rect width="210" height="224" rx="28" fill="#12283d" stroke="#60a5fa" stroke-width="2"/>
+      <circle cx="105" cy="70" r="34" fill="#1e3a8a"/>
+      <path d="M81 59h49v31H81zM90 50h31M92 72h27" fill="none" stroke="#93c5fd" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="105" y="146" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">Offre</text>
+      <text x="105" y="178" text-anchor="middle" fill="#a5b4c8" font-size="16">catalogue · droits</text>
+      <text x="105" y="201" text-anchor="middle" fill="#a5b4c8" font-size="16">limites · changement</text>
+    </g>
+    <g transform="translate(830 360)">
+      <rect width="210" height="224" rx="28" fill="#12283d" stroke="#818cf8" stroke-width="2"/>
+      <circle cx="105" cy="70" r="34" fill="#312e81"/>
+      <path d="M84 55h42v31H84zM84 66h42M93 76h9" fill="none" stroke="#a5b4fc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="105" y="146" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">Abonnement</text>
+      <text x="105" y="178" text-anchor="middle" fill="#a5b4c8" font-size="16">état · événement</text>
+      <text x="105" y="201" text-anchor="middle" fill="#a5b4c8" font-size="16">message · correction</text>
+    </g>
+    <g transform="translate(1070 360)">
+      <rect width="210" height="224" rx="28" fill="#12283d" stroke="#a78bfa" stroke-width="2"/>
+      <circle cx="105" cy="70" r="34" fill="#4c1d95"/>
+      <path d="M78 70a27 27 0 0 1 54 0v20h-13V73M78 70v20h13V73M105 102h18" fill="none" stroke="#c4b5fd" stroke-width="5" stroke-linecap="round"/>
+      <text x="105" y="146" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">Support</text>
+      <text x="105" y="178" text-anchor="middle" fill="#a5b4c8" font-size="16">accès borné · trace</text>
+      <text x="105" y="201" text-anchor="middle" fill="#a5b4c8" font-size="16">incident · correction</text>
+    </g>
+    <g transform="translate(1310 360)">
+      <rect width="210" height="224" rx="28" fill="#12283d" stroke="#c084fc" stroke-width="2"/>
+      <circle cx="105" cy="70" r="34" fill="#581c87"/>
+      <path d="M80 59h37v30H80zM107 50l22 20-22 20M105 70h24" fill="none" stroke="#d8b4fe" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="105" y="146" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">Sortie</text>
+      <text x="105" y="178" text-anchor="middle" fill="#a5b4c8" font-size="16">restaurer · exporter</text>
+      <text x="105" y="201" text-anchor="middle" fill="#a5b4c8" font-size="16">résilier · supprimer</text>
+    </g>
+  </g>
+  <g font-family="Arial, sans-serif">
+    <rect x="120" y="680" width="1360" height="108" rx="24" fill="#07111f" stroke="#31506d"/>
+    <text x="165" y="725" fill="#67e8f9" font-size="19" font-weight="700" letter-spacing="2">PREUVE DE RÉCEPTION</text>
+    <text x="165" y="758" fill="#dbeafe" font-size="23">préconditions → action → résultat attendu → refus → trace → décision humaine</text>
+    <rect x="1245" y="708" width="190" height="50" rx="25" fill="#3f1725" stroke="#fb7185"/>
+    <text x="1340" y="740" text-anchor="middle" fill="#fecdd3" font-size="19" font-weight="700">STOP VISIBLE</text>
+  </g>
+</svg>

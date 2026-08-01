@@ -168,6 +168,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "choisir-prestataire-application-metier": Scale,
   "securite-application-metier": ShieldCheck,
   "droits-acces-application-metier": KeyRound,
+  "cahier-des-charges-saas": ClipboardList,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */

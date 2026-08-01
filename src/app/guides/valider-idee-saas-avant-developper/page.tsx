@@ -1198,6 +1198,17 @@ export default function Page() {
             la sécurité, au consentement ou au résultat promis.
           </p>
 
+          <p>
+            Quand les faits autorisent enfin un produit à construire, traduisez
+            le parcours vendu, les responsabilités, les preuves et les inconnues
+            restantes dans un{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges SaaS remis à tous les répondants
+            </Link>
+            . Ce document ne remplace pas la validation : il empêche surtout
+            chaque proposition de chiffrer un produit différent.
+          </p>
+
           <FormulaBox>
             {[
               "FICHE DE DÉCISION — UNE PAGE",

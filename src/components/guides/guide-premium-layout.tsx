@@ -545,7 +545,12 @@ export function GuidePremiumLayout({
               </div>
 
               {/* H1 — serif Playfair Display */}
-              <h1 className="max-w-3xl text-balance font-[family-name:var(--font-playfair)] text-[34px] font-bold leading-[1.05] tracking-[-0.02em] text-zinc-950 dark:text-white sm:text-[44px] sm:leading-[1.05] md:text-[52px] md:leading-[1.04]">
+              <h1
+                aria-label={[heroTitle, heroTitleEm, heroTitleSuffix]
+                  .filter(Boolean)
+                  .join(" ")}
+                className="max-w-3xl text-balance font-[family-name:var(--font-playfair)] text-[34px] font-bold leading-[1.05] tracking-[-0.02em] text-zinc-950 dark:text-white sm:text-[44px] sm:leading-[1.05] md:text-[52px] md:leading-[1.04]"
+              >
                 {heroTitle}
                 {heroTitleEm && (
                   <>

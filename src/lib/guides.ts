@@ -208,6 +208,26 @@ export const GUIDES: GuideEntry[] = [
     ],
     editorialStatus: "ready-for-human-review",
   },
+  {
+    slug: "cahier-des-charges-saas",
+    title: "Comment rédiger un cahier des charges SaaS ?",
+    cardTitle: "Rédiger un cahier des charges SaaS",
+    metaDescription:
+      "Rédigez un cahier des charges SaaS comparable : périmètre, droits, abonnement, données, support, sortie, preuves et inconnues bloquantes.",
+    cardDescription:
+      "Neuf blocs et cinq champs par bloc pour décrire le même produit, révéler les inconnues bloquantes et comparer des offres sur des preuves.",
+    heroTitle: "Cahier des charges SaaS : faire chiffrer le même produit",
+    section: "Préparer son projet",
+    datePublished: "2026-07-22T07:29:32+02:00",
+    dateModified: "2026-08-01T13:03:24+02:00",
+    readTimeMin: 42,
+    articleImagePaths: [
+      "/guides/cahier-des-charges-saas/cahier-saas-16x9.webp",
+      "/guides/cahier-des-charges-saas/cahier-saas-4x3.webp",
+      "/guides/cahier-des-charges-saas/cahier-saas-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */

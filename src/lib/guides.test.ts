@@ -17,6 +17,13 @@ const guidesHubSource = fs.readFileSync(
   path.join(process.cwd(), "src/components/guides/GuidesHubPage.tsx"),
   "utf8",
 );
+const validationGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/valider-idee-saas-avant-developper/page.tsx",
+  ),
+  "utf8",
+);
 const repriseGuideSource = fs.readFileSync(
   path.join(
     process.cwd(),
@@ -52,6 +59,13 @@ const securityGuideSource = fs.readFileSync(
   ),
   "utf8",
 );
+const accessRightsGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/droits-acces-application-metier/page.tsx",
+  ),
+  "utf8",
+);
 const outilsScenariosSource = fs.readFileSync(
   path.join(
     process.cwd(),
@@ -75,6 +89,7 @@ describe("guide registry after the editorial reset", () => {
       "choisir-prestataire-application-metier",
       "securite-application-metier",
       "droits-acces-application-metier",
+      "cahier-des-charges-saas",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
@@ -116,6 +131,13 @@ describe("guide registry after the editorial reset", () => {
 
     expect(securityGuideSource).toContain(accessRightsPath);
     expect(outilsScenariosSource).toContain(accessRightsPath);
+  });
+
+  it("links the SaaS specification guide from validation and access rights", () => {
+    const saasSpecificationPath = "/guides/cahier-des-charges-saas";
+
+    expect(validationGuideSource).toContain(saasSpecificationPath);
+    expect(accessRightsGuideSource).toContain(saasSpecificationPath);
   });
 
   it("keeps metadata unique, dated and restrained", () => {

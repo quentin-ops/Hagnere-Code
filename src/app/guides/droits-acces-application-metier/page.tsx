@@ -350,6 +350,17 @@ export default function Page() {
             de données personnelles.
           </p>
 
+          <p>
+            Pour un produit par abonnement, replacez cette matrice dans le{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges complet du SaaS
+            </Link>
+            {" : "}
+            création de l’organisation cliente, offre, échecs de paiement,
+            support et sortie doivent conduire aux mêmes droits et aux mêmes
+            refus vérifiables.
+          </p>
+
           <div className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
             <Image
               src="/guides/droits-acces-application-metier/matrice-droits-16x9.webp"
