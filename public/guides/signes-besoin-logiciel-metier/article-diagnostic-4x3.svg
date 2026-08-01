@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title description">
+  <title id="title">Trois situations, six réponses</title>
+  <desc id="description">Une illustration éditoriale au format 4:3 relie trois fiches de situations réelles à six réponses possibles.</desc>
+  <defs>
+    <linearGradient id="background43" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfaf7"/>
+      <stop offset="1" stop-color="#ede9fe"/>
+    </linearGradient>
+    <linearGradient id="dark43" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#18181b"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <filter id="shadow43" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="15" stdDeviation="16" flood-color="#312e81" flood-opacity=".13"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" rx="44" fill="url(#background43)"/>
+  <circle cx="1090" cy="70" r="220" fill="#c7d2fe" opacity=".38"/>
+  <g transform="translate(70 60)">
+    <rect width="1060" height="780" rx="36" fill="#fff" stroke="#e4e4e7" stroke-width="2" filter="url(#shadow43)"/>
+    <text x="48" y="64" fill="#4f46e5" font-family="system-ui, sans-serif" font-size="18" font-weight="750" letter-spacing="3">DIAGNOSTIC MÉTIER</text>
+    <text x="48" y="111" fill="#18181b" font-family="system-ui, sans-serif" font-size="37" font-weight="800">Trois faits avant la solution</text>
+    <text x="48" y="145" fill="#71717a" font-family="system-ui, sans-serif" font-size="19">Aucun seuil magique. Aucun développement automatique.</text>
+
+    <g transform="translate(48 190)">
+      <rect width="964" height="150" rx="26" fill="#fafafa" stroke="#d4d4d8" stroke-width="2"/>
+      <g transform="translate(22 25)">
+        <rect width="270" height="100" rx="19" fill="#fff" stroke="#e4e4e7"/>
+        <circle cx="38" cy="37" r="22" fill="#4f46e5"/><text x="38" y="43" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="800">01</text>
+        <text x="72" y="35" fill="#18181b" font-family="system-ui" font-size="18" font-weight="750">Situation réelle</text>
+        <text x="72" y="61" fill="#71717a" font-family="system-ui" font-size="14">fait · fréquence</text>
+        <text x="72" y="83" fill="#71717a" font-family="system-ui" font-size="14">conséquence · reprise</text>
+      </g>
+      <g transform="translate(347 25)">
+        <rect width="270" height="100" rx="19" fill="#fff" stroke="#e4e4e7"/>
+        <circle cx="38" cy="37" r="22" fill="#6366f1"/><text x="38" y="43" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="800">02</text>
+        <text x="72" y="35" fill="#18181b" font-family="system-ui" font-size="18" font-weight="750">Situation réelle</text>
+        <text x="72" y="61" fill="#71717a" font-family="system-ui" font-size="14">fait · fréquence</text>
+        <text x="72" y="83" fill="#71717a" font-family="system-ui" font-size="14">conséquence · reprise</text>
+      </g>
+      <g transform="translate(672 25)">
+        <rect width="270" height="100" rx="19" fill="#fff" stroke="#e4e4e7"/>
+        <circle cx="38" cy="37" r="22" fill="#818cf8"/><text x="38" y="43" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="800">03</text>
+        <text x="72" y="35" fill="#18181b" font-family="system-ui" font-size="18" font-weight="750">Situation réelle</text>
+        <text x="72" y="61" fill="#71717a" font-family="system-ui" font-size="14">fait · fréquence</text>
+        <text x="72" y="83" fill="#71717a" font-family="system-ui" font-size="14">conséquence · reprise</text>
+      </g>
+    </g>
+
+    <g transform="translate(48 372)">
+      <rect width="964" height="274" rx="28" fill="url(#dark43)"/>
+      <text x="34" y="48" fill="#c7d2fe" font-family="system-ui" font-size="16" font-weight="800" letter-spacing="2">EXACTEMENT SIX RÉPONSES</text>
+      <g font-family="system-ui" font-size="17" font-weight="750">
+        <g transform="translate(34 78)"><rect width="280" height="64" rx="16" fill="#fff" opacity=".11"/><text x="18" y="39" fill="#fff">01 · Sécuriser</text></g>
+        <g transform="translate(342 78)"><rect width="280" height="64" rx="16" fill="#fff" opacity=".11"/><text x="18" y="39" fill="#fff">02 · Simplifier</text></g>
+        <g transform="translate(650 78)"><rect width="280" height="64" rx="16" fill="#fff" opacity=".11"/><text x="18" y="39" fill="#fff">03 · Configurer</text></g>
+        <g transform="translate(34 158)"><rect width="280" height="64" rx="16" fill="#fff" opacity=".11"/><text x="18" y="39" fill="#fff">04 · Connecter</text></g>
+        <g transform="translate(342 158)"><rect width="280" height="64" rx="16" fill="#fff" opacity=".11"/><text x="18" y="39" fill="#fff">05 · Standard</text></g>
+        <g transform="translate(650 158)"><rect width="280" height="64" rx="16" fill="#fff" opacity=".11"/><text x="18" y="39" fill="#fff">06 · Sur mesure</text></g>
+      </g>
+    </g>
+
+    <g transform="translate(48 670)">
+      <rect width="964" height="64" rx="18" fill="#fffbeb" stroke="#fde68a" stroke-width="2"/>
+      <circle cx="34" cy="32" r="12" fill="#f59e0b"/>
+      <text x="60" y="28" fill="#92400e" font-family="system-ui" font-size="16" font-weight="800">OBSERVER = UN VERDICT DE DIAGNOSTIC</text>
+      <text x="60" y="49" fill="#a16207" font-family="system-ui" font-size="14">Pas une septième solution technique à financer.</text>
+    </g>
+  </g>
+</svg>

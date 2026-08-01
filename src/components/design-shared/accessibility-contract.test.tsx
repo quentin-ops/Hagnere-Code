@@ -121,6 +121,23 @@ describe("public accessibility contracts", () => {
     expect(describedBy).toContain(errorId);
   });
 
+  it("keeps the skip link for keyboards but removes it from printed pages", () => {
+    const skipLink = readFileSync(
+      join(process.cwd(), "src/components/design-shared/SkipToContent.tsx"),
+      "utf8",
+    );
+    const globalStyles = readFileSync(
+      join(process.cwd(), "src/app/globals.css"),
+      "utf8",
+    );
+
+    expect(skipLink).toContain('href="#main-content"');
+    expect(skipLink).toContain('className="skip-to-content"');
+    expect(globalStyles).toMatch(
+      /@media print\s*{[\s\S]*?\.skip-to-content\s*{[\s\S]*?display:\s*none !important;/,
+    );
+  });
+
   it("avoids nested complementary landmarks and exposes form announcements", () => {
     const guideLayout = readFileSync(
       join(process.cwd(), "src/components/guides/guide-layout.tsx"),

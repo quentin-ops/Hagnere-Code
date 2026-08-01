@@ -90,7 +90,6 @@ export const LEGACY_GUIDE_SLUGS = [
   "seo-ou-google-ads",
   "seo-saas-b2b",
   "shopify-ou-sur-mesure",
-  "signes-besoin-logiciel-metier",
   "site-indexe-sans-trafic",
   "site-internet-en-panne-que-faire",
   "site-one-page-ou-multipage",

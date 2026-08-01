@@ -1,1 +1,9 @@
-42473b0670ada9023282cb8507f22c915cf59f88a6a932931263fa7d4d420c1c  docs/research/signes-besoin-logiciel-metier.md
+09faf139177cfe36dec1c0464ddea8e1a1f643931d8298f421edc73821a7fbb2  docs/research/signes-besoin-logiciel-metier.md
+142f10c11af19b6b7e69571d8e37937c9074ade4b3f070da6faa9df95400d2c4  src/app/guides/signes-besoin-logiciel-metier/page.tsx
+c3f65d8a98ef235d64ffb05daf6e904063ad3ae14f01809ba64174d0729de08f  src/app/guides/signes-besoin-logiciel-metier/opengraph-image.tsx
+ebd6e154ad10bf754fe2a1517130a5519bc1f58c0bc6760948dedab3d5a93c5e  src/app/guides/signes-besoin-logiciel-metier/situation-diagnostic.tsx
+50b6d181130afa05ee77d8e861db2ed0cd0f6c1313dc1b62f27446771e3500fb  src/app/guides/signes-besoin-logiciel-metier/situation-diagnostic.test.tsx
+93cd2a5be34ae171feb968334ee262437b596804c8a8bcd1f362f0def6fb0812  src/app/guides/signes-besoin-logiciel-metier/content-quality.test.ts
+4775f363a868d3e6e1833b1a9276520ef93d5ff0a2201467a3aec5760f4d2d60  public/guides/signes-besoin-logiciel-metier/article-diagnostic-16x9.svg
+3b69e29b85acde2d5f0c33e373a98f59516bce026dcf5643f53ce3aa44de286f  public/guides/signes-besoin-logiciel-metier/article-diagnostic-4x3.svg
+c0a8ced871e3f1f0977311d7458b0948f945d1d99421fd10de45ca62946154df  public/guides/signes-besoin-logiciel-metier/article-diagnostic-1x1.svg

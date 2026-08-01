@@ -1283,6 +1283,17 @@ export default function Page() {
           </p>
 
           <p>
+            Si vous ne savez pas encore si vos blocages justifient un nouvel
+            outil, commencez par le{" "}
+            <Link href="/guides/signes-besoin-logiciel-metier">
+              diagnostic en trois situations
+            </Link>
+            . Il permet d’écarter d’abord un risque d’accès, une étape inutile
+            ou une fonction déjà disponible, avant de choisir un processus à
+            automatiser.
+          </p>
+
+          <p>
             Si votre fiche montre qu’un même besoin relie plusieurs équipes ou
             logiciels, consultez la page consacrée aux{" "}
             <Link href="/services/outils-internes-sur-mesure">

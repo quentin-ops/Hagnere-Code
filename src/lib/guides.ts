@@ -89,6 +89,25 @@ export const GUIDES: GuideEntry[] = [
     ],
   },
   {
+    slug: "signes-besoin-logiciel-metier",
+    title: "Besoin d’un logiciel métier : le diagnostic en 6 réponses",
+    cardTitle: "Votre entreprise a-t-elle besoin d’un logiciel métier ?",
+    metaDescription:
+      "Documentez trois blocages réels, sécurisez les urgences et comparez six réponses avant de choisir entre l’existant, un standard ou du sur-mesure.",
+    cardDescription:
+      "Trois situations réelles, six réponses comparées et une décision qui peut rester « observer ».",
+    heroTitle: "Votre entreprise a-t-elle besoin d’un logiciel métier ?",
+    section: "Outils internes et automatisation",
+    datePublished: "2026-08-01T11:59:46+02:00",
+    dateModified: "2026-08-01T11:59:46+02:00",
+    readTimeMin: 21,
+    articleImagePaths: [
+      "/guides/signes-besoin-logiciel-metier/article-diagnostic-16x9.svg",
+      "/guides/signes-besoin-logiciel-metier/article-diagnostic-4x3.svg",
+      "/guides/signes-besoin-logiciel-metier/article-diagnostic-1x1.svg",
+    ],
+  },
+  {
     slug: "valider-idee-saas-avant-developper",
     title: "Comment valider une idée SaaS avant de développer ?",
     cardTitle: "Valider une idée SaaS avant de développer",

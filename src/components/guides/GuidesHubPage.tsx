@@ -142,6 +142,7 @@ const COLLECTIONS: Collection[] = [
 const GUIDE_ICONS: Record<string, LucideIcon> = {
   "automatiser-processus-metier": Cable,
   "calculer-roi-application-metier": Calculator,
+  "signes-besoin-logiciel-metier": ClipboardList,
   "valider-idee-saas-avant-developper": FlaskConical,
   "prix-gestion-google-ads": HandCoins,
 };
@@ -157,6 +158,11 @@ const DECISION_PATH = [
 
 const featuredGuide =
   PUBLISHED_GUIDES.find((g) => g.featured) ?? PUBLISHED_GUIDES[0];
+const latestGuide = PUBLISHED_GUIDES.reduce((latest, candidate) =>
+  Date.parse(candidate.dateModified) > Date.parse(latest.dateModified)
+    ? candidate
+    : latest,
+);
 
 function collectionsWithGuides(): Array<Collection & { guides: GuideEntry[] }> {
   const known = COLLECTIONS.map((c) => ({
@@ -284,7 +290,7 @@ export function GuidesHubPage() {
                 </span>
                 <span>
                   <Check size={13} aria-hidden="true" /> Mis à jour{" "}
-                  {formatGuideDate(featuredGuide.dateModified)
+                  {formatGuideDate(latestGuide.dateModified)
                     .split(" ")
                     .slice(1)
                     .join(" ")}

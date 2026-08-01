@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title description">
+  <title id="title">Trois situations, six réponses</title>
+  <desc id="description">Une illustration éditoriale relie trois fiches de situations réelles à six réponses possibles, avec observer comme verdict séparé.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfaf7"/>
+      <stop offset="1" stop-color="#eeeafc"/>
+    </linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#18181b"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#312e81" flood-opacity=".13"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" rx="48" fill="url(#background)"/>
+  <circle cx="1430" cy="82" r="270" fill="#c7d2fe" opacity=".34"/>
+  <circle cx="180" cy="850" r="250" fill="#ddd6fe" opacity=".35"/>
+
+  <g transform="translate(90 70)">
+    <rect width="1420" height="760" rx="38" fill="#fff" stroke="#e4e4e7" stroke-width="2" filter="url(#shadow)"/>
+
+    <text x="58" y="70" fill="#4f46e5" font-family="system-ui, sans-serif" font-size="19" font-weight="750" letter-spacing="3">DIAGNOSTIC MÉTIER</text>
+    <text x="58" y="123" fill="#18181b" font-family="system-ui, sans-serif" font-size="42" font-weight="800">Trois faits avant la solution</text>
+    <text x="58" y="158" fill="#71717a" font-family="system-ui, sans-serif" font-size="21">Le problème est décrit, sécurisé et comparé avant tout développement.</text>
+
+    <g transform="translate(58 207)">
+      <rect width="440" height="132" rx="23" fill="#fafafa" stroke="#d4d4d8" stroke-width="2"/>
+      <rect x="20" y="20" width="47" height="47" rx="14" fill="#4f46e5"/>
+      <text x="43.5" y="51" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="18" font-weight="800">01</text>
+      <text x="88" y="42" fill="#18181b" font-family="system-ui, sans-serif" font-size="20" font-weight="750">Travail attendu</text>
+      <text x="88" y="72" fill="#71717a" font-family="system-ui, sans-serif" font-size="17">Fait observé · fréquence</text>
+      <text x="88" y="101" fill="#71717a" font-family="system-ui, sans-serif" font-size="17">Conséquence · reprise</text>
+    </g>
+    <g transform="translate(58 357)">
+      <rect width="440" height="132" rx="23" fill="#fafafa" stroke="#d4d4d8" stroke-width="2"/>
+      <rect x="20" y="20" width="47" height="47" rx="14" fill="#6366f1"/>
+      <text x="43.5" y="51" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="18" font-weight="800">02</text>
+      <text x="88" y="42" fill="#18181b" font-family="system-ui, sans-serif" font-size="20" font-weight="750">Travail attendu</text>
+      <text x="88" y="72" fill="#71717a" font-family="system-ui, sans-serif" font-size="17">Fait observé · fréquence</text>
+      <text x="88" y="101" fill="#71717a" font-family="system-ui, sans-serif" font-size="17">Conséquence · reprise</text>
+    </g>
+    <g transform="translate(58 507)">
+      <rect width="440" height="132" rx="23" fill="#fafafa" stroke="#d4d4d8" stroke-width="2"/>
+      <rect x="20" y="20" width="47" height="47" rx="14" fill="#818cf8"/>
+      <text x="43.5" y="51" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="18" font-weight="800">03</text>
+      <text x="88" y="42" fill="#18181b" font-family="system-ui, sans-serif" font-size="20" font-weight="750">Travail attendu</text>
+      <text x="88" y="72" fill="#71717a" font-family="system-ui, sans-serif" font-size="17">Fait observé · fréquence</text>
+      <text x="88" y="101" fill="#71717a" font-family="system-ui, sans-serif" font-size="17">Conséquence · reprise</text>
+    </g>
+
+    <path d="M528 423 H610" stroke="#a5b4fc" stroke-width="6" stroke-linecap="round"/>
+    <path d="M596 407 L615 423 L596 439" fill="none" stroke="#6366f1" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <g transform="translate(625 345)">
+      <rect width="190" height="156" rx="30" fill="url(#dark)"/>
+      <circle cx="95" cy="57" r="24" fill="#fff" opacity=".14"/>
+      <path d="M84 57 L92 65 L108 47" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="95" y="105" text-anchor="middle" fill="#fff" font-family="system-ui, sans-serif" font-size="19" font-weight="800">DIAGNOSTIC</text>
+      <text x="95" y="130" text-anchor="middle" fill="#c7d2fe" font-family="system-ui, sans-serif" font-size="15">sans score caché</text>
+    </g>
+    <path d="M830 423 H892" stroke="#a5b4fc" stroke-width="6" stroke-linecap="round"/>
+    <path d="M878 407 L897 423 L878 439" fill="none" stroke="#6366f1" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <g transform="translate(915 207)">
+      <rect width="203" height="108" rx="22" fill="#fff1f2" stroke="#fecdd3" stroke-width="2"/>
+      <text x="20" y="34" fill="#be123c" font-family="system-ui, sans-serif" font-size="16" font-weight="800">01 · SÉCURISER</text>
+      <text x="20" y="63" fill="#881337" font-family="system-ui, sans-serif" font-size="15">Accès, sauvegarde,</text>
+      <text x="20" y="85" fill="#881337" font-family="system-ui, sans-serif" font-size="15">continuité, reprise</text>
+    </g>
+    <g transform="translate(1137 207)">
+      <rect width="203" height="108" rx="22" fill="#f0f9ff" stroke="#bae6fd" stroke-width="2"/>
+      <text x="20" y="34" fill="#0369a1" font-family="system-ui, sans-serif" font-size="16" font-weight="800">02 · SIMPLIFIER</text>
+      <text x="20" y="63" fill="#075985" font-family="system-ui, sans-serif" font-size="15">Supprimer l’étape</text>
+      <text x="20" y="85" fill="#075985" font-family="system-ui, sans-serif" font-size="15">qui ne sert plus</text>
+    </g>
+    <g transform="translate(915 333)">
+      <rect width="203" height="108" rx="22" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="2"/>
+      <text x="20" y="34" fill="#6d28d9" font-family="system-ui, sans-serif" font-size="16" font-weight="800">03 · CONFIGURER</text>
+      <text x="20" y="63" fill="#5b21b6" font-family="system-ui, sans-serif" font-size="15">Fonction existante</text>
+      <text x="20" y="85" fill="#5b21b6" font-family="system-ui, sans-serif" font-size="15">et formation</text>
+    </g>
+    <g transform="translate(1137 333)">
+      <rect width="203" height="108" rx="22" fill="#ecfeff" stroke="#a5f3fc" stroke-width="2"/>
+      <text x="20" y="34" fill="#0e7490" font-family="system-ui, sans-serif" font-size="16" font-weight="800">04 · CONNECTER</text>
+      <text x="20" y="63" fill="#155e75" font-family="system-ui, sans-serif" font-size="15">Un échange limité,</text>
+      <text x="20" y="85" fill="#155e75" font-family="system-ui, sans-serif" font-size="15">alerté, réversible</text>
+    </g>
+    <g transform="translate(915 459)">
+      <rect width="203" height="108" rx="22" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="2"/>
+      <text x="20" y="34" fill="#047857" font-family="system-ui, sans-serif" font-size="16" font-weight="800">05 · STANDARD</text>
+      <text x="20" y="63" fill="#065f46" font-family="system-ui, sans-serif" font-size="15">Tester les vrais cas</text>
+      <text x="20" y="85" fill="#065f46" font-family="system-ui, sans-serif" font-size="15">et les exceptions</text>
+    </g>
+    <g transform="translate(1137 459)">
+      <rect width="203" height="108" rx="22" fill="#eef2ff" stroke="#c7d2fe" stroke-width="2"/>
+      <text x="20" y="34" fill="#4338ca" font-family="system-ui, sans-serif" font-size="16" font-weight="800">06 · SUR MESURE</text>
+      <text x="20" y="63" fill="#3730a3" font-family="system-ui, sans-serif" font-size="15">Une fonction minimale</text>
+      <text x="20" y="85" fill="#3730a3" font-family="system-ui, sans-serif" font-size="15">à étudier en dernier</text>
+    </g>
+
+    <g transform="translate(915 590)">
+      <rect width="425" height="64" rx="18" fill="#fffbeb" stroke="#fde68a" stroke-width="2"/>
+      <circle cx="30" cy="32" r="12" fill="#f59e0b"/>
+      <text x="55" y="28" fill="#92400e" font-family="system-ui, sans-serif" font-size="15" font-weight="800">OBSERVER = VERDICT</text>
+      <text x="55" y="49" fill="#a16207" font-family="system-ui, sans-serif" font-size="14">Pas une septième solution à acheter</text>
+    </g>
+
+    <text x="58" y="704" fill="#71717a" font-family="system-ui, sans-serif" font-size="17">HAGNÉRÉ CODE · GUIDE DÉCISIONNEL · 2026</text>
+  </g>
+</svg>

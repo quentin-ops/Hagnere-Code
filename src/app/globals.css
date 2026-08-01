@@ -351,6 +351,11 @@
   outline: 2px solid #ff6b2b;
   outline-offset: 2px;
 }
+@media print {
+  .skip-to-content {
+    display: none !important;
+  }
+}
 
 /* Global keyboard focus indicator (a11y WCAG 2.4.7) */
 :focus-visible {

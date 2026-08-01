@@ -27,12 +27,14 @@ describe("guide registry after the editorial reset", () => {
     expect(GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
       "calculer-roi-application-metier",
+      "signes-besoin-logiciel-metier",
       "valider-idee-saas-avant-developper",
       "prix-gestion-google-ads",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
       "calculer-roi-application-metier",
+      "signes-besoin-logiciel-metier",
       "valider-idee-saas-avant-developper",
       "prix-gestion-google-ads",
     ]);
@@ -64,6 +66,7 @@ describe("guide registry after the editorial reset", () => {
       expect(guide.readTimeMin).toBeGreaterThan(0);
       expect(guide.articleImagePaths).toHaveLength(3);
     }
+    expect(guidesHubSource).toContain("latestGuide.dateModified");
   });
 
   it("matches the static guide routes and their social images", () => {
