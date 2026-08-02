@@ -602,7 +602,8 @@ d’une question réelle de la cible et annoncer le résultat de lecture. Ils ne
 présentent jamais le vocabulaire du chantier (`audit`, `gate`, `passe`, hash,
 certificat, nom de modèle ou identifiant de cas) comme une promesse publique.
 Avant la fin de P4, puis dans la revue post-guide, extraire le texte réellement
-visible et contrôler que :
+visible, compter les marqueurs sans distinguer majuscules et minuscules, et
+contrôler que :
 
 - aucun identifiant interne, hash, version de modèle ou marqueur de gate
   n’apparaît dans un H1, H2, chapeau, légende, FAQ ou CTA ; ces valeurs peuvent
