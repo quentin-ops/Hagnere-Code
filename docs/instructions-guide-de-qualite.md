@@ -162,6 +162,17 @@ Une cellule matérielle vide, une réponse présente seulement dans les notes, u
 corps du guide ; la FAQ ne reçoit que des questions résiduelles apportant une
 réponse autonome.
 
+Pour chaque événement opérationnel susceptible de changer le résultat
+(rotation d'équipe ou de prestataire, incident, reprise manuelle, migration,
+maintenance, sortie ou équivalent), la matrice et le texte visible séparent au
+minimum : perte de revenu ou de capacité, décaissements monétaires, prestation
+éventuellement déjà comprise dans un contrat, temps ou coût non monétaire et
+conséquence sur la continuité. Ils indiquent aussi les lignes qui pourraient se
+recouvrir afin d'empêcher un oubli ou un double compte. Nommer un angle ou
+écrire qu'il « crée des coûts » ne prouve pas sa couverture : le lecteur doit
+savoir où inscrire la donnée, comment la dater ou la normaliser, quelle preuve
+chercher et quand suspendre la conclusion.
+
 #### Exigence qualitative d’exemples
 
 Il n’existe aucun quota universel d’exemples. En revanche :
