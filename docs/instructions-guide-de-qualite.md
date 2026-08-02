@@ -1,6 +1,6 @@
 # Instructions guide de qualité
 
-Version : 29 juillet 2026
+Version : 2 août 2026
 Statut : protocole obligatoire pour chaque guide Hagnéré Code
 Périmètre : recherche, écriture, intégration, publication et contrôle après
 publication de toute route `/guides/[slug]`
@@ -132,7 +132,127 @@ Avant la passe 1, l’orchestrateur :
 7. vérifie les anciennes URL et la stratégie de redirection ;
 8. note les inconnues qui doivent rester des `STOP`, jamais des inventions.
 
-### 3.2 Passe 1 — création
+### 3.2 Profondeur utile, exemples et recherche active des angles manquants
+
+Un guide complet n’est pas celui qui traite tout ce qui pourrait être dit sur
+un sujet. Il traite tout ce qui peut modifier la compréhension, l’application,
+la comparaison, le risque, le coût ou la décision du lecteur. La longueur n’est
+jamais un objectif autonome.
+
+Avant `GO_PASSE_2`, le dossier de travail contient une matrice de couverture
+localisable dans `docs/research/[slug].md`. Son empreinte figure dans les
+manifestes concernés :
+
+| Angle ou sous-intention | Question réelle ou objection du lecteur | Réponse claire et localisation dans le guide | Exemple, démonstration ou cas contrasté | Limite, contre-cas, source ou inconnue | Décision ou action rendue possible | Statut |
+|---|---|---|---|---|---|---|
+|   |   |   |   |   |   |   |
+
+Chaque angle envisagé reçoit exactement l’un de ces statuts :
+
+- `COUVERT` : la réponse est visible et localisable dans le guide ;
+- `RENVOI_EXPLICITE` : le sujet appartient à une autre ressource réellement
+  disponible et la frontière est expliquée ;
+- `ECARTE_JUSTIFIE` : l’angle ne change pas la décision ou sort du périmètre
+  annoncé, avec justification ;
+- `BLOQUANT` : une réponse matérielle manque encore.
+
+Une cellule matérielle vide, une réponse présente seulement dans les notes, un
+« cela dépend » sans variables ni prochaine action, ou un angle important
+écarté sans justification bloque la passe. Une question décisive appartient au
+corps du guide ; la FAQ ne reçoit que des questions résiduelles apportant une
+réponse autonome.
+
+#### Exigence qualitative d’exemples
+
+Il n’existe aucun quota universel d’exemples. En revanche :
+
+- toute notion centrale encore abstraite reçoit une situation concrète, une
+  démonstration, un calcul ou un cas contrasté placé près de son explication ;
+- toute recommandation structurante montre la condition ou le cas dans lequel
+  elle cesse d’être préférable ;
+- tout exemple nomme, lorsque c’est pertinent, le rôle concerné, la tâche, la
+  donnée utilisée, l’erreur ou le coût évité, la responsabilité et ce qui se
+  passe ensuite ;
+- tout exemple chiffré expose le contexte, les entrées, l’opération, le
+  résultat, la conséquence et la limite ;
+- un même cas suivi peut traverser plusieurs sections s’il reste cohérent et
+  fait réellement progresser le raisonnement ;
+- un exemple fictif est annoncé comme tel avant les faits ou chiffres qui le
+  composent ;
+- un chiffre inconnu reste inconnu : il n’est jamais créé pour donner une
+  illusion de précision ;
+- si aucun chiffre défendable n’est disponible, un exemple qualitatif concret
+  vaut mieux qu’un faux ROI, un faux devis, un faux client ou un gain inventé ;
+- un exemple qui ne fait que répéter la règle est supprimé ou remplacé.
+
+Pour un guide logiciel, les perspectives suivantes sont interrogées
+lorsqu’elles peuvent changer la décision : dirigeant non technique, métier
+utilisateur, opérations, finance, IT et sécurité, données et RGPD, achats ou
+juridique, adoption, maintenance, incident et reprise, réversibilité ou
+changement de prestataire, solution plus simple et maintien du statu quo.
+
+Chacune de ces perspectives apparaît dans un registre de cadrage avec
+`APPLICABLE` et au moins une question reportée dans la matrice, ou avec
+`NON_APPLICABLE_JUSTIFIE` et une justification précise. Une perspective sans
+trace bloque G1 : l’auteur ne peut pas rendre invisible un angle oublié en
+omettant simplement de le créer.
+
+#### Idéation contradictoire obligatoire
+
+En passe 2, puis lors du contrôle qualité post-guide, un relecteur recommence la
+recherche de questions sans se limiter au plan existant :
+
+1. **Lecteur débutant** : quel mot, mécanisme ou présupposé reste opaque ?
+2. **Lecteur prêt à agir** : quelle donnée, pièce, personne ou étape lui
+   manque ?
+3. **Autre profil** : dans quelle situation la réponse ou la priorité
+   change-t-elle ?
+4. **Scénario dégradé** : qu’est-ce qui échoue, coûte plus cher ou prend plus
+   de temps ?
+5. **Cas inverse** : quand la recommandation devient-elle mauvaise ?
+6. **Solution opposée** : une fonction existante, une simplification, le statu
+   quo ou un report peuvent-ils être préférables ?
+7. **Chronologie** : que se passe-t-il avant, pendant, après, lors de la
+  maintenance, d’un incident et à la sortie ?
+8. **Contradiction** : quelle objection sérieuse ou quelle source crédible
+   pourrait invalider le raisonnement ?
+9. **Autonomie** : le lecteur peut-il contrôler ou entreprendre une prochaine
+   action utile sans contacter Hagnéré Code ?
+
+Chaque question nouvelle est consignée comme `AJOUTEE`, `DEJA_COUVERTE`,
+`RENVOYEE` ou `ECARTEE_JUSTIFIEE`, avec une localisation ou une justification.
+Une question `AJOUTEE` doit aboutir dans la matrice finale à `COUVERT`,
+`RENVOI_EXPLICITE` ou `ECARTE_JUSTIFIE`. Elle n’est intégrée que si elle
+modifie la compréhension, l’application, la comparaison, le risque, le coût ou
+la décision. Cette recherche ne sert jamais à fabriquer une FAQ ou une section
+supplémentaire.
+
+#### Tests de clarté bloquants
+
+- **Reformulation en une lecture** : un relecteur distinct des agents de
+  rédaction lit le H1, l’introduction et les H2 puis, texte masqué, restitue la
+  réponse principale, les conditions qui la modifient et la prochaine action.
+  Toute erreur matérielle, tout terme central incompris ou toute action
+  impossible à formuler vaut `ECHEC_CLARTE` et bloque le guide. La restitution,
+  les écarts et la décision sont conservés dans le dossier.
+- **Langage ordinaire** : chaque terme technique est traduit au moment utile,
+  avant qu’il soit nécessaire pour suivre le raisonnement.
+- **Traçabilité de l’exemple** : le lecteur suit contexte, données, opération,
+  résultat, conséquence et limite sans deviner une étape.
+- **Décision de section** : chaque section importante débouche sur un contrôle,
+  une conséquence ou une action, pas sur un résumé abstrait.
+- **Cas inverse** : le lecteur voit quand la recommandation ne s’applique plus.
+- **Lecture rapide** : H1, introduction, H2 et premières phrases racontent un
+  chemin de décision cohérent.
+- **Non-duplication** : corps, tableaux, exemples et FAQ ne répètent pas la
+  même réponse sous plusieurs formes.
+
+Une correction matérielle issue de cette boucle rouvre les passes et contrôles
+qu’elle affecte. Il est interdit de gonfler le texte, de dupliquer le corps dans
+la FAQ, d’ajouter des variantes artificielles ou de multiplier les chiffres
+non sourcés pour satisfaire cette exigence.
+
+### 3.3 Passe 1 — création
 
 Agent : rédacteur-recherche dédié.
 
@@ -159,11 +279,16 @@ Gate G1 de l’orchestrateur :
 - les sources importantes ont été ouvertes et lues ;
 - les calculs sont refaits indépendamment ;
 - le guide est complet, pas seulement bien introduit ;
+- aucun angle matériel de la matrice n’est `BLOQUANT` ;
+- aucune perspective obligatoire ne reste sans statut ni justification ;
+- la matrice fait partie du périmètre contrôlé et hashé ;
+- les notions centrales possèdent une explication ou un exemple traçable et
+  les recommandations structurantes un cas inverse ;
 - le rendu n’est pas déjà cassé.
 
 Sortie : `GO_PASSE_2` ou `NO_GO_PASSE_1`.
 
-### 3.3 Passe 2 — enrichissement et vérification
+### 3.4 Passe 2 — enrichissement et vérification
 
 Agent : vérificateur distinct du rédacteur.
 
@@ -174,6 +299,8 @@ Mission :
 - vérifier dates, périmètres et exceptions ;
 - refaire tous les calculs ;
 - rechercher les coûts, risques, responsables et cas de refus oubliés ;
+- exécuter l’idéation contradictoire, consigner chaque nouvelle question et
+  compléter la matrice sans transformer P2 en rédaction de rattrapage ;
 - corriger les liens et les sources faibles ;
 - vérifier le comportement réel des outils intégrés ;
 - produire le manifeste P2.
@@ -185,11 +312,15 @@ Gate G2 :
 - une inconnue n’a pas été transformée en zéro ou en certitude ;
 - les unités, périodes et formules sont cohérentes ;
 - le droit, la sécurité et le RGPD ne dépassent pas le périmètre des sources ;
-- les limites et contre-cas sont visibles dans le texte, pas cachés en note.
+- les limites et contre-cas sont visibles dans le texte, pas cachés en note ;
+- toute nouvelle question matérielle est couverte, renvoyée ou écartée avec une
+  justification vérifiable ;
+- les exemples structurants exposent leur conséquence et leur limite, pas
+  seulement une situation décorative.
 
 Sortie : `GO_PASSE_3` ou `NO_GO_PASSE_2`.
 
-### 3.4 Passe 3 — polish rédactionnel
+### 3.5 Passe 3 — polish rédactionnel
 
 Agent : éditeur distinct des passes 1 et 2.
 
@@ -199,6 +330,8 @@ Mission :
 - supprimer jargon, remplissage, symétries artificielles et répétitions ;
 - améliorer les transitions et la hiérarchie ;
 - placer définitions, exemples et décisions au bon moment ;
+- remplacer les abstractions évitables par des mots courants sans perdre la
+  précision et rendre chaque exemple suivable sans calcul implicite ;
 - vérifier que tableaux et encadrés accélèrent la compréhension ;
 - conserver intégralement les nuances factuelles ;
 - produire le manifeste P3.
@@ -214,7 +347,7 @@ Gate G3 :
 
 Sortie : `GO_PASSE_4` ou `NO_GO_PASSE_3`.
 
-### 3.5 Passe 4 — antipasse IA et contre-audit
+### 3.6 Passe 4 — antipasse IA et contre-audit
 
 Agent : contre-auditeur distinct des trois précédents.
 
@@ -223,6 +356,8 @@ Mission :
 - rechercher la voix industrielle, les transitions mécaniques et la fausse
   assurance ;
 - détecter les sauts logiques, contradictions, répétitions et promesses ;
+- rejouer les tests de clarté et chercher la question matérielle que les trois
+  premières passes auraient collectivement pu manquer ;
 - vérifier que les exemples fictifs ne ressemblent pas à des preuves client ;
 - faire une lecture adversariale des sources, chiffres et CTA ;
 - contrôler la cohérence du document entier après correction ;
@@ -257,7 +392,13 @@ les contrôles concernés et invalide les preuves prises sur l’ancien état.
 - faits, calculs, scénarios, déductions et recommandations distinguables ;
 - termes techniques expliqués au premier emploi ;
 - chaque lien apporte une preuve ou une prochaine étape utile ;
-- FAQ limitée aux vraies questions résiduelles.
+- FAQ limitée aux vraies questions résiduelles ;
+- matrice de couverture réconciliée avec le texte final, sans angle matériel
+  seulement implicite ;
+- note contradictoire « qu’avons-nous oublié ? » jointe au dossier, avec les
+  questions ajoutées, déjà couvertes, renvoyées et écartées ;
+- exemples compréhensibles, traçables et utiles à une décision, sans chiffre
+  de remplissage ni expérience Hagnéré Code inventée.
 
 ### 4.2 Arithmétique et outils
 
@@ -544,6 +685,12 @@ P2 agent / manifeste / décision :
 P3 agent / manifeste / décision :
 P4 agent / manifeste / décision :
 
+Matrice de couverture / statuts / localisations :
+Questions apparues à la relecture contradictoire :
+Angles ajoutés / renvoyés / écartés et justifications :
+Notions centrales et exemples associés :
+Cas inverses ou scénarios dégradés :
+Test de reformulation — relecteur / restitution / écarts / décision / preuve :
 Valeur lecteur :
 Faits et sources :
 Calculs :
@@ -571,6 +718,11 @@ Un `GO_QUALITE_GUIDE` exige :
 
 - zéro P0 ;
 - zéro P1 ;
+- zéro angle matériel `BLOQUANT` dans la matrice finale ;
+- aucune perspective obligatoire sans statut ni justification ;
+- matrice finale incluse dans le périmètre contrôlé et hashé ;
+- une note contradictoire localisable et un test de clarté réussi par un
+  relecteur distinct ;
 - P2 explicitement acceptés et non trompeurs ;
 - batterie locale verte ;
 - BAT visuel complet ;
@@ -625,12 +777,14 @@ Après chaque guide :
 
 1. terminer les quatre passes ;
 2. geler le diff ;
-3. exécuter le contrôle qualité transversal ;
-4. corriger ;
-5. refaire le contrôle impacté ;
-6. obtenir `GO_QUALITE_GUIDE` ;
-7. publier et vérifier l’URL si la publication est autorisée ;
-8. seulement ensuite réserver le guide suivant.
+3. exécuter la relecture contradictoire « qu’avons-nous oublié ? » et
+   réconcilier la matrice de couverture avec le texte final ;
+4. exécuter le contrôle qualité transversal ;
+5. corriger ;
+6. refaire toute passe et tout contrôle invalidés par la correction ;
+7. obtenir `GO_QUALITE_GUIDE` ;
+8. publier et vérifier l’URL si la publication est autorisée ;
+9. seulement ensuite réserver le guide suivant.
 
 Cette règle reste obligatoire même si :
 
