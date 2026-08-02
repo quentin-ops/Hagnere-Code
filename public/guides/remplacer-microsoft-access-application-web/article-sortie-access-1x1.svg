@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Sept trajectoires pour remplacer Microsoft Access</title>
+  <desc id="desc">Le travail contenu dans Access est inventorié avant de choisir entre stabiliser, séparer, migrer le stockage, un standard, une plateforme avec peu de code, une application web dédiée ou ne pas migrer.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8f5ec"/><stop offset="1" stop-color="#e8e7ff"/></linearGradient>
+    <linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+    <filter id="s" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#312e81" flood-opacity=".14"/></filter>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)"/>
+  <circle cx="1070" cy="105" r="240" fill="#c7d2fe" opacity=".42"/>
+  <circle cx="90" cy="1130" r="260" fill="#ddd6fe" opacity=".4"/>
+  <text x="80" y="90" fill="#312e81" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3">DOSSIER DE SORTIE ACCESS</text>
+  <text x="80" y="155" fill="#18181b" font-family="Arial, sans-serif" font-size="45" font-weight="700">Préserver le travail,</text>
+  <text x="80" y="208" fill="#18181b" font-family="Arial, sans-serif" font-size="45" font-weight="700">puis choisir la cible</text>
+
+  <g filter="url(#s)" font-family="Arial, sans-serif">
+    <rect x="80" y="285" width="1040" height="235" rx="30" fill="#fff" stroke="#d4d4d8"/>
+    <rect x="115" y="325" width="220" height="155" rx="22" fill="url(#a)"/>
+    <text x="155" y="393" fill="#fff" font-size="31" font-weight="700">Access</text>
+    <text x="155" y="432" fill="#e0e7ff" font-size="17">Données · écrans</text>
+    <text x="155" y="460" fill="#e0e7ff" font-size="17">Rapports · VBA</text>
+    <text x="390" y="342" fill="#18181b" font-size="27" font-weight="700">Inventaire vérifiable</text>
+    <g font-size="17" fill="#3f3f46">
+      <text x="390" y="386">• Tâches et responsables</text>
+      <text x="390" y="422">• Dépendances et droits</text>
+      <text x="390" y="458">• Preuves de reprise</text>
+    </g>
+    <rect x="760" y="335" width="315" height="120" rx="18" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="795" y="382" fill="#065f46" font-size="17" font-weight="700">INCONNUE</text>
+    <text x="795" y="424" fill="#064e3b" font-size="25" font-weight="700">= à vérifier</text>
+  </g>
+
+  <text x="80" y="600" fill="#312e81" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="2">7 TRAJECTOIRES À COMPARER</text>
+  <g filter="url(#s)" font-family="Arial, sans-serif" font-size="19" font-weight="700">
+    <rect x="80" y="635" width="500" height="76" rx="18" fill="#312e81"/><text x="115" y="681" fill="#fff">01 · Stabiliser Access</text>
+    <rect x="620" y="635" width="500" height="76" rx="18" fill="#3730a3"/><text x="655" y="681" fill="#fff">02 · Séparer interface et données</text>
+    <rect x="80" y="730" width="500" height="76" rx="18" fill="#4338ca"/><text x="115" y="776" fill="#fff">03 · Migrer seulement le stockage</text>
+    <rect x="620" y="730" width="500" height="76" rx="18" fill="#4f46e5"/><text x="655" y="776" fill="#fff">04 · Choisir un logiciel standard</text>
+    <rect x="80" y="825" width="500" height="76" rx="18" fill="#5b5bd6"/><text x="115" y="871" fill="#fff">05 · Plateforme avec peu de code</text>
+    <rect x="620" y="825" width="500" height="76" rx="18" fill="#6d5ee8"/><text x="655" y="871" fill="#fff">06 · Application web dédiée</text>
+    <rect x="80" y="920" width="1040" height="76" rx="18" fill="#52525b"/><text x="115" y="966" fill="#fff">07 · Ne pas migrer maintenant</text>
+  </g>
+  <rect x="80" y="1050" width="1040" height="82" rx="22" fill="#fff" stroke="#d4d4d8"/>
+  <text x="120" y="1101" fill="#27272a" font-family="Arial, sans-serif" font-size="21" font-weight="700">La cible reste une hypothèse. La reprise se prouve.</text>
+</svg>

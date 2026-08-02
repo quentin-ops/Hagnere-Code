@@ -1,5 +1,9 @@
-263faaf8d67b221d18c8a701070e19ed9e5bad4b56b7c426b590f1fcd52bac6e  docs/research/remplacer-microsoft-access-application-web.md
-c73b872a95aa402ae5b145ea456a3fbb788e67126d13348326d0ef3133839141  src/app/guides/remplacer-microsoft-access-application-web/page.tsx
+72ccaae6225910c76a401c38657237e136f503155f55ec160c5cc25f15a66ad4  docs/research/manifests/remplacer-microsoft-access-application-web-p1.sha256
+4ba42b9e0729b7496d219a81bf4ba0c384a73884af2a18030f2c06ed0f4da6c7  docs/research/manifests/remplacer-microsoft-access-application-web-p2.sha256
+0ec36f9bcadef4095b81c467dc6a700004c9cfe1d536a523e0f5e98d44b5a613  docs/research/manifests/remplacer-microsoft-access-application-web-p3.sha256
+06bb7762cb6e7d57d15beb78a7109145eca8d16773c78c7cf31b22d80ae98116  docs/research/manifests/remplacer-microsoft-access-application-web-p4.sha256
+9402d993671842905881e645d762abde403ee8b0ab434566b90d44be3456ac51  docs/research/remplacer-microsoft-access-application-web.md
+d4b174fbf901b1c6701ef75e5f8e934def4205c6d735a2382fa429118e555e55  src/app/guides/remplacer-microsoft-access-application-web/page.tsx
 396725458dbbd99586f09295424a5a758815bed5417b71e1be5470ed831fbbd9  src/app/guides/remplacer-microsoft-access-application-web/opengraph-image.tsx
 5fca37f54f42ccc12c0c2a21a4266f724b41000e99fe2d92ee6280c127645e1e  src/app/guides/remplacer-microsoft-access-application-web/access-exit-dossier.tsx
 1fe59df76bec83fb823b11ea1757ad4690b9690545744b4ea68b30896108b820  src/app/guides/remplacer-microsoft-access-application-web/access-exit-dossier.test.tsx
