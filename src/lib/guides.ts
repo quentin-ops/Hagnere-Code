@@ -228,6 +228,26 @@ export const GUIDES: GuideEntry[] = [
     ],
     editorialStatus: "ready-for-human-review",
   },
+  {
+    slug: "combien-de-temps-developper-saas",
+    title: "Combien de temps faut-il pour développer un SaaS ?",
+    cardTitle: "Estimer le délai de développement d’un SaaS",
+    metaDescription:
+      "Calculez un calendrier SaaS à partir des dépendances, des capacités et de quatre scénarios, sans durée moyenne ni promesse de date.",
+    cardDescription:
+      "Un planificateur local pour relier les tâches, tester quatre scénarios, garder les inconnues visibles et mesurer l’écart au délai disponible.",
+    heroTitle: "Combien de temps faut-il pour développer un SaaS ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-23T00:59:26+02:00",
+    dateModified: "2026-08-02T22:39:26+02:00",
+    readTimeMin: 17,
+    articleImagePaths: [
+      "/guides/combien-de-temps-developper-saas/calendrier-saas-16x9.webp",
+      "/guides/combien-de-temps-developper-saas/calendrier-saas-4x3.webp",
+      "/guides/combien-de-temps-developper-saas/calendrier-saas-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */

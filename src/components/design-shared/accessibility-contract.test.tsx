@@ -31,6 +31,17 @@ function attribute(tag: string, name: string): string | undefined {
 }
 
 describe("public accessibility contracts", () => {
+  it("keeps the keyboard skip link out of printed pages", () => {
+    const globalStyles = readFileSync(
+      join(process.cwd(), "src/app/globals.css"),
+      "utf8",
+    );
+
+    expect(globalStyles).toMatch(
+      /@media print\s*{[\s\S]*?\.skip-to-content\s*{[\s\S]*?display:\s*none\s*!important;/,
+    );
+  });
+
   it.each(scenarios)("links every scenario tab to one named panel", (html) => {
     const tabs = html.match(/<button[^>]+role="tab"[^>]*>/g) || [];
     const panels = html.match(/<div[^>]+role="tabpanel"[^>]*>/g) || [];

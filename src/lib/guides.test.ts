@@ -66,6 +66,10 @@ const accessRightsGuideSource = fs.readFileSync(
   ),
   "utf8",
 );
+const saasSpecificationGuideSource = fs.readFileSync(
+  path.join(process.cwd(), "src/app/guides/cahier-des-charges-saas/page.tsx"),
+  "utf8",
+);
 const outilsScenariosSource = fs.readFileSync(
   path.join(
     process.cwd(),
@@ -90,6 +94,7 @@ describe("guide registry after the editorial reset", () => {
       "securite-application-metier",
       "droits-acces-application-metier",
       "cahier-des-charges-saas",
+      "combien-de-temps-developper-saas",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
@@ -138,6 +143,13 @@ describe("guide registry after the editorial reset", () => {
 
     expect(validationGuideSource).toContain(saasSpecificationPath);
     expect(accessRightsGuideSource).toContain(saasSpecificationPath);
+  });
+
+  it("links the SaaS schedule guide from validation and specification", () => {
+    const saasSchedulePath = "/guides/combien-de-temps-developper-saas";
+
+    expect(validationGuideSource).toContain(saasSchedulePath);
+    expect(saasSpecificationGuideSource).toContain(saasSchedulePath);
   });
 
   it("keeps metadata unique, dated and restrained", () => {

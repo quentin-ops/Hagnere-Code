@@ -414,6 +414,7 @@ describe("public content quality for the SaaS specification guide", () => {
     const allowed = new Set([
       "/guides/valider-idee-saas-avant-developper",
       "/guides/droits-acces-application-metier",
+      "/guides/combien-de-temps-developper-saas",
       "/guides",
       "/services/saas-applications-metier",
       "/demarrer-un-projet",

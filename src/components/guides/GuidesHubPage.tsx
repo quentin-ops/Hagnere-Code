@@ -169,6 +169,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "securite-application-metier": ShieldCheck,
   "droits-acces-application-metier": KeyRound,
   "cahier-des-charges-saas": ClipboardList,
+  "combien-de-temps-developper-saas": Timer,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */

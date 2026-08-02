@@ -29,7 +29,6 @@ export const LEGACY_GUIDE_SLUGS = [
   "combien-coute-un-saas",
   "combien-coute-un-site-internet",
   "combien-coute-une-application-mobile",
-  "combien-de-temps-developper-saas",
   "combien-de-temps-pour-creer-un-site",
   "combien-de-temps-resultats-seo",
   "connecter-erp-crm-logiciel-metier",

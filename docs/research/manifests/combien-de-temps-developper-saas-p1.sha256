@@ -1,1 +1,15 @@
-ba44f9328374a369b08d8a642950de679309b334685bd3e00dbf4bbeacf60c6f  docs/research/combien-de-temps-developper-saas.md
+d5de473a17731836401ed7fb442bfb3c39883691179f71e861bd608f2d2adc33  docs/research/combien-de-temps-developper-saas-input-freeze.md
+df425c451f045eeaa298393d6453e24b658dd41a21ba084c27310aff7a7be154  docs/research/combien-de-temps-developper-saas.md
+92dfc3e1c40a41383d9a36f0914f98aac5c6c70608a57e186f5e9cd72e8ac5fc  public/guides/combien-de-temps-developper-saas/calendrier-saas-16x9.svg
+2a447f7109c35f92c95584e683220d1a384661f8d7cb2429d61849ab10eb4234  public/guides/combien-de-temps-developper-saas/calendrier-saas-16x9.webp
+1e410fb61c1224549bca89f018f93571d0c07d813f671847cd92988ad7b19e85  public/guides/combien-de-temps-developper-saas/calendrier-saas-1x1.svg
+ac6acf8d6ae4796f8a9c8e6a69e30c18308f1adcfea0d9406738357540e75966  public/guides/combien-de-temps-developper-saas/calendrier-saas-1x1.webp
+11390affbcdd4225d68a4898d784e4461a3938f8856cdd7dd469277bad658b01  public/guides/combien-de-temps-developper-saas/calendrier-saas-4x3.svg
+bedcebd1b0ff67515e0ed1952809869df4616e884e62e53ed61524451879de23  public/guides/combien-de-temps-developper-saas/calendrier-saas-4x3.webp
+29fae6866cec8548d4fe9e67575130b2f7f43ab771d5b5766a656db8936f8398  src/app/guides/combien-de-temps-developper-saas/content-quality.test.ts
+0115bcb8ca28bfda1afc0d7f4ad5cd4d506a2bf2889efeac76c708a0f3957b65  src/app/guides/combien-de-temps-developper-saas/opengraph-image.tsx
+547e4d8767ae7ac7e7b24166068429c5c4574437a80dcaaf1a5db45610e9f668  src/app/guides/combien-de-temps-developper-saas/page.tsx
+7b0e4d4d164bbab744a7b5552ca76514fce5212d32bff2b516b0c00d4fd472fb  src/app/guides/combien-de-temps-developper-saas/schedule-planner-engine.test.ts
+655e34f552c2e326711940358b9f10b5a3d9fc9b2e6c5f681ec60afdec045270  src/app/guides/combien-de-temps-developper-saas/schedule-planner-engine.ts
+2d97c1606583269dbd5d510103f19b1e326fa3f5ee904239bab3d2363708ffc2  src/app/guides/combien-de-temps-developper-saas/schedule-planner-tool.test.tsx
+cd11f51eb943ac2705be20e88999761a98e7b8fd06fe9eab75a0c1c96cb07c89  src/app/guides/combien-de-temps-developper-saas/schedule-planner-tool.tsx

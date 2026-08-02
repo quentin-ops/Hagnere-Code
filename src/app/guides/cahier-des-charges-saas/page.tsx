@@ -1401,6 +1401,15 @@ export default function Page() {
             permet de retrouver les méthodes complémentaires.
           </p>
 
+          <p>
+            Le même document devient l’entrée du calendrier. Pour comprendre{" "}
+            <Link href="/guides/combien-de-temps-developper-saas">
+              combien de temps il faut pour développer un SaaS
+            </Link>
+            , reliez alors les tâches qui s’attendent, les capacités réellement
+            disponibles et les inconnues qui interdisent encore une date.
+          </p>
+
           <GuidePremiumMemo
             eyebrow="Décision finale"
             title="Comparable ne veut pas dire prêt à signer"

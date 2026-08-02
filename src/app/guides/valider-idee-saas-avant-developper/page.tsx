@@ -1209,6 +1209,15 @@ export default function Page() {
             chaque proposition de chiffrer un produit différent.
           </p>
 
+          <p>
+            Le calendrier vient ensuite. Le guide sur{" "}
+            <Link href="/guides/combien-de-temps-developper-saas">
+              le temps nécessaire pour développer un SaaS
+            </Link>{" "}
+            relie les dépendances, les capacités et quatre scénarios sans
+            transformer une estimation en promesse de date.
+          </p>
+
           <FormulaBox>
             {[
               "FICHE DE DÉCISION — UNE PAGE",
