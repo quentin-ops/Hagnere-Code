@@ -597,6 +597,29 @@ Le fil d’Ariane JSON-LD doit suivre le fil visible :
 
 ### 5.5 Contrôles Google et crawl
 
+Le H1, le title, l’extrait et la meta description doivent reprendre le langage
+d’une question réelle de la cible et annoncer le résultat de lecture. Ils ne
+présentent jamais le vocabulaire du chantier (`audit`, `gate`, `passe`, hash,
+certificat, nom de modèle ou identifiant de cas) comme une promesse publique.
+Avant la fin de P4, puis dans la revue post-guide, extraire le texte réellement
+visible et contrôler que :
+
+- aucun identifiant interne, hash, version de modèle ou marqueur de gate
+  n’apparaît dans un H1, H2, chapeau, légende, FAQ ou CTA ; ces valeurs peuvent
+  rester dans les métadonnées, attributs techniques et preuves ;
+- `STOP`, `À SOURCER`, `PASS`, `NO_GO` et les autres états de production ne
+  sont pas répétés comme du jargon public : employer une formulation naturelle
+  telle que `suspendre la décision`, `obtenir la pièce` ou `hypothèse non
+  vérifiée`, sans supprimer le seuil d’arrêt ;
+- le titre et le snippet restent compréhensibles hors contexte et pourraient
+  être formulés spontanément dans un moteur de recherche par la cible ;
+- la traduction en langage public préserve les formules, les conventions, les
+  preuves et les limites.
+
+Le test porte sur le rendu servi, pas seulement sur le code source. Un
+identifiant dans un attribut `data-*` peut rester invisible ; le même
+identifiant dans une légende ou un intertitre est un défaut éditorial.
+
 Avant publication :
 
 - title unique et descriptif ;
