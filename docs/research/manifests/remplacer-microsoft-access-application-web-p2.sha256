@@ -1,1 +1,9 @@
-e295d346f8a3ea1ed8180692e6dc0bf0f5d897298f3a07955ae019e5ee7d81da  docs/research/remplacer-microsoft-access-application-web.md
+7e79447cf327c5e790c6dd7cc455999cc0031661dc4f7db94c5052d2c73bfe30  docs/research/remplacer-microsoft-access-application-web.md
+9357ce43de5e7ad6478dfe2754f634b71578e40a3c52d48e8b0c47dd14dd8fac  src/app/guides/remplacer-microsoft-access-application-web/page.tsx
+396725458dbbd99586f09295424a5a758815bed5417b71e1be5470ed831fbbd9  src/app/guides/remplacer-microsoft-access-application-web/opengraph-image.tsx
+5fca37f54f42ccc12c0c2a21a4266f724b41000e99fe2d92ee6280c127645e1e  src/app/guides/remplacer-microsoft-access-application-web/access-exit-dossier.tsx
+1fe59df76bec83fb823b11ea1757ad4690b9690545744b4ea68b30896108b820  src/app/guides/remplacer-microsoft-access-application-web/access-exit-dossier.test.tsx
+aff95581a2f0ebf6b43234196e712bfee8b8d4fea00767ecba969df062a34867  src/app/guides/remplacer-microsoft-access-application-web/content-quality.test.ts
+805a10d52dd74218e2b200f4135f0be20058238f1284707222601d069510691c  public/guides/remplacer-microsoft-access-application-web/article-sortie-access-16x9.svg
+7b03e2756a6aa241bf40fa1e80d370054d5218ff04d9240813eb135b2df95be9  public/guides/remplacer-microsoft-access-application-web/article-sortie-access-4x3.svg
+c1b78ac346b0f59f095be7dd802fcb9c43d8b4f144e42eece0f2110c8375d847  public/guides/remplacer-microsoft-access-application-web/article-sortie-access-1x1.svg

@@ -1,418 +1,709 @@
-# Dossier de recherche — Remplacer Microsoft Access par une application web
+# Dossier P1–P4 — Remplacer Microsoft Access sans perdre le métier
 
-> Journal éditorial du guide `remplacer-microsoft-access-application-web`. La
-> page publique ne peut être rédigée qu’après validation de la porte P1.
+> Journal reconstruit de zéro le 1er août 2026 pour le guide
+> `remplacer-microsoft-access-application-web`. Aucun paragraphe, statut, score
+> ni verdict de l’ancien dossier n’a été repris. La route reste privée et
+> `noindex` jusqu’à la validation P4, au contrôle transversal et à l’intégration
+> explicitement autorisée par l’orchestrateur.
 
 ## Journal des quatre passes
 
-Propriétaire éditorial unique : Codex, agent racine du lot du 21 juillet 2026.
+Propriétaire éditorial unique : orchestrateur du lot Hagnéré Code.
 
-| Passe                        | État                     | Date       | Responsable              | Snapshot                                               | Blocages |
-| ---------------------------- | ------------------------ | ---------- | ------------------------ | ------------------------------------------------------ | -------- |
-| 1. Recherche                 | Terminée — porte validée | 2026-07-21 | Codex                    | `remplacer-microsoft-access-application-web-p1.sha256` | Aucun    |
-| 2. Rédaction et intégration  | Terminée — porte validée | 2026-07-21 | Codex                    | `remplacer-microsoft-access-application-web-p2.sha256` | Aucun    |
-| 3. Contre-audit indépendant  | Terminée — porte validée | 2026-07-21 | Agent `p3_contenus_site` | `remplacer-microsoft-access-application-web-p3.sha256` | Aucun    |
-| 4. Plume humaine et contrôle | Terminée — porte validée | 2026-07-21 | Codex                    | `remplacer-microsoft-access-application-web-p4.sha256` | Aucun    |
+| Passe                             | État                                        | Date       | Responsable                             | Snapshot                                               | Blocages                                    |
+| --------------------------------- | ------------------------------------------- | ---------- | --------------------------------------- | ------------------------------------------------------ | ------------------------------------------- |
+| 1. Création complète              | Validée par l’orchestrateur                 | 2026-08-01 | Agent `access_p1_creation`              | `remplacer-microsoft-access-application-web-p1.sha256` | `GO_PASSE_2` après correction du `NO_GO_P1` |
+| 2. Enrichissement et vérification | Validée par l’orchestrateur                  | 2026-08-02 | Agent distinct `access_p2_verification` | `remplacer-microsoft-access-application-web-p2.sha256` | `GO_PASSE_3` rendu                          |
+| 3. Polish rédactionnel            | Validée par l’orchestrateur                 | 2026-08-02 | Agent distinct `/root/access_p3_polish` | `remplacer-microsoft-access-application-web-p3.sha256` | `GO_PASSE_4` rendu                          |
+| 4. Antipasse IA et contrôle final | Validée par l’orchestrateur                 | 2026-08-02 | Agents H2 distincts + orchestrateur     | `remplacer-microsoft-access-application-web-p4.sha256` | Contrôle transversal requis                 |
 
-Une modification du corpus P1 après son manifeste impose de rejouer la porte.
-Les manifestes d’une passe validée ne sont jamais écrasés.
+Une modification d’un fichier du snapshot après calcul du manifeste invalide
+la passe concernée. Le fichier manifeste ne s’auto-hache pas.
+
+### Preuve d’entrée de la passe 2
+
+- Contrôle effectué le 1er août 2026 avant la première modification P2 ;
+  l’heure précise n’a pas été consignée dans une preuve terminale et n’est donc
+  pas revendiquée.
+- Commande : `shasum -a 256 -c
+docs/research/manifests/remplacer-microsoft-access-application-web-p1.sha256`.
+- Résultat : neuf lignes de manifeste, neuf fichiers `OK`, soit `9/9`.
+- Le Prompt #2 a été extrait jusqu’à sa dernière ligne, rendu en 28 pages
+  PNG et relu intégralement avant cette modification.
+- `CLAUDE.md`, le workflow maître, les instructions qualité, la charte, la
+  règle SEO, le dossier, la route, l’outil, les deux tests, l’OG et les trois
+  SVG P1 ont été lus intégralement avant cette modification.
+- Décision d’entrée communiquée par l’orchestrateur : `GO_PASSE_2` ; le
+  registre partagé est `P1_VALIDEE`.
+
+### Baseline P2 avant enrichissement
+
+```text
+page.tsx : 910 lignes
+outil : 632 lignes
+tests outil : 143 lignes
+tests contenu : 312 lignes
+OG : 210 lignes
+H2 de guide : 8
+FAQ visibles : 9
+tableaux : 4
+exemples fictifs : 3
+sources visibles : 17
+statut : ready-for-human-review, noindex/nofollow, hors registre
+```
+
+### Preuve d’entrée de la passe 3
+
+- Contrôle effectué le 2 août 2026 avant la première modification P3 ; l’heure
+  précise n’a pas été capturée dans une preuve terminale et n’est pas revendiquée.
+- Commande : `shasum -a 256 -c
+  docs/research/manifests/remplacer-microsoft-access-application-web-p2.sha256`.
+- Résultat : neuf lignes de manifeste, neuf fichiers `OK`, soit `9/9`.
+- Le Prompt #3 a été extrait intégralement : 468 blocs, dont 418 paragraphes et
+  50 tableaux. Le DOCX a été rendu en 33 pages PNG, toutes inspectées à leur
+  résolution originale avant la première modification.
+- Le skill Documents, sa procédure de lecture/revue, `CLAUDE.md`, le workflow
+  maître, les instructions qualité, la charte, la règle SEO, le modèle, le
+  dossier, la route, l’outil, les deux tests, l’OG et les trois SVG ont été lus
+  intégralement avant le polish.
+- Décision d’entrée communiquée par l’orchestrateur : `GO_PASSE_3` ; le registre
+  partagé est `P2_VALIDEE`.
+
+### Baseline P3 avant polish
+
+```text
+page.tsx : 1 166 lignes
+outil : 644 lignes
+tests outil : 498 lignes
+tests contenu : 339 lignes
+OG : 210 lignes
+H2 de guide : 8
+FAQ visibles : 9
+sources visibles : 21
+temps de lecture mesuré : 18 min à 200 mots/minute
+statut : ready-for-human-review, noindex/nofollow, hors registre
+```
 
 ### Manifeste du snapshot
 
-| Fichier contrôlé                                                                | SHA-256                                                            | Passe | Remarque                                           |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----- | -------------------------------------------------- |
-| Corpus P1 consigné dans le présent dossier                                      | Voir le manifeste P1 frère                                         | P1    | Aucun fichier public créé avant cette porte        |
-| `src/app/guides/remplacer-microsoft-access-application-web/page.tsx`            | `3d961f5e1824a9edaf05a14b85f8dfc7490e3004a5c990c03ee385af6e5c783b` | P2    | Page avec porte éditoriale fermée                  |
-| `src/app/guides/remplacer-microsoft-access-application-web/opengraph-image.tsx` | `bb1d40de99f4d9d054123da07fe71e133a6f2dd215877bcb399a6540ccc66444` | P2    | Image dédiée 1200 × 630                            |
-| `src/lib/guides.ts`                                                             | `422a7272611afdd65b35f918daebbc6b6e7e979c385f2d09c32f2f4fcf122f89` | P2    | Entrée `ready-for-human-review`                    |
-| `src/app/guides/reprendre-logiciel-metier-existant/page.tsx`                    | `8dc2e369fd8278c46e7b7a8177c0c4b14a1409a18d47d902bc6a8c3858656b73` | P2    | Lien entrant contextuel                            |
-| `src/components/guides/GuidesHubPage.tsx`                                       | `14565088a1bd5b65a1d2d13046bfaaa0a69c7e64c50e01ade5c30976345f962d` | P2    | Icône explicite dans le hub                        |
-| `src/app/guides/remplacer-microsoft-access-application-web/page.tsx`            | `3a91cb75634b5ec8dbb690387a6855f6c1742f19255f6a03bac48ad0456b797a` | P3    | Corrections factuelles, sécurité et plume validées |
-| `src/app/guides/remplacer-microsoft-access-application-web/opengraph-image.tsx` | `bb1d40de99f4d9d054123da07fe71e133a6f2dd215877bcb399a6540ccc66444` | P3    | Image dédiée revalidée                             |
-| `src/lib/guides.ts`                                                             | `b3d7c6bf1c23106a29aad14c2bf915695b1c392f8e0d98043a399f6f82e1e1d2` | P3    | Temps de lecture exact à 14 minutes                |
-| `src/app/guides/reprendre-logiciel-metier-existant/page.tsx`                    | `8dc2e369fd8278c46e7b7a8177c0c4b14a1409a18d47d902bc6a8c3858656b73` | P3    | Lien entrant revalidé                              |
-| `src/components/guides/GuidesHubPage.tsx`                                       | `14565088a1bd5b65a1d2d13046bfaaa0a69c7e64c50e01ade5c30976345f962d` | P3    | Icône revalidée                                    |
-| `src/app/guides/remplacer-microsoft-access-application-web/page.tsx`            | `3a91cb75634b5ec8dbb690387a6855f6c1742f19255f6a03bac48ad0456b797a` | P4    | Snapshot éditorial et responsive final             |
-| `src/app/guides/remplacer-microsoft-access-application-web/opengraph-image.tsx` | `bb1d40de99f4d9d054123da07fe71e133a6f2dd215877bcb399a6540ccc66444` | P4    | Image 1200 × 630 observée                          |
-| `src/lib/guides.ts`                                                             | `b3d7c6bf1c23106a29aad14c2bf915695b1c392f8e0d98043a399f6f82e1e1d2` | P4    | Porte conservée jusqu’au gel du lot                |
-| `src/app/guides/reprendre-logiciel-metier-existant/page.tsx`                    | `8dc2e369fd8278c46e7b7a8177c0c4b14a1409a18d47d902bc6a8c3858656b73` | P4    | Lien entrant final                                 |
-| `src/components/guides/GuidesHubPage.tsx`                                       | `14565088a1bd5b65a1d2d13046bfaaa0a69c7e64c50e01ade5c30976345f962d` | P4    | Carte du hub prête                                 |
+| Fichier contrôlé                                     | SHA-256                    | Passe | Remarque                              |
+| ---------------------------------------------------- | -------------------------- | ----- | ------------------------------------- |
+| Dossier, route, outil, tests, OG et trois SVG dédiés | Voir le manifeste P1 frère | P1    | Neuf fichiers ; aucun fichier partagé |
 
 ## 1. Fiche d’identité
 
 ```text
 Slug : remplacer-microsoft-access-application-web
-Statut actuel : publiable sous délégation, indexation différée au gel du lot
-Requête principale : remplacer Microsoft Access par une application web
-Variantes : migration Access vers application web, convertir base Access,
-Access vers SQL Server, Access vers Dataverse, alternative Access entreprise
-Moment du parcours : comprendre l’existant puis décider d’une trajectoire
-Lecteur précis : dirigeant de PME dont un processus important dépend d’une base
-Access, souvent comprise par une seule personne et difficile à utiliser à distance
-Situation déclenchante : besoin d’accès navigateur, départ du référent, lenteurs,
-version vieillissante, nouveaux sites ou intégrations impossibles à ajouter proprement
-Décision principale : conserver et sécuriser Access, déplacer seulement les
-données, choisir un outil standard/low-code ou reconstruire progressivement
-Niveau de connaissance : connaît les tâches et les résultats, pas les objets Access
-5 questions : Access est-il abandonné ; faut-il tout refaire ; que migrer ;
-qu’est-ce qui peut être automatisé ; comment basculer sans perdre l’activité
-3 craintes : perdre les données ; casser les habitudes ; payer une réécriture inutile
-Action autonome : dresser un dossier de sortie, une ligne par objet ou dépendance
-CTA : faire cadrer la sortie d’Access
-Hors périmètre : choisir toute l’architecture cible, promettre un prix ou un délai,
-réaliser une migration, donner un avis juridique ou certifier la sécurité
-Date de recherche : 2026-07-21
-Responsable de la synthèse : Codex
+Statut actuel : brouillon P4 privé, ready-for-human-review, noindex/nofollow
+Requête principale hypothétique : remplacer Microsoft Access par une application web
+Variantes utiles : migration Access vers le web ; alternative à Access pour PME ;
+Access vers SQL Server ; Access vers Dataverse ; moderniser une base Access
+Moment du parcours : sécuriser, comprendre, comparer puis décider
+Lecteur précis : dirigeant non technique d’une PME dont une activité dépend
+d’une application Access comprise par peu de personnes
+Situation déclenchante : départ du référent, besoin d’accès distant, version en
+fin de support, lenteurs, corruption, croissance, nouvel outil à connecter
+Décision principale : stabiliser Access ; séparer interface et données ; migrer
+seulement le stockage ; adopter un standard ; utiliser une plateforme avec peu
+de code ; reconstruire progressivement une application web dédiée ; ou ne pas migrer
+Niveau initial : connaît le travail et le fichier, pas forcément les objets Access
+5 questions indispensables : Access est-il abandonné ? que faut-il sauver ? que
+voient les outils ? quelle trajectoire choisir ? comment basculer sans promesse ?
+3 craintes : perdre des données ; casser des règles cachées ; payer une réécriture inutile
+Action autonome : remplir un dossier de sortie local, une fiche par tâche ou objet
+CTA possible : présenter le dossier et trois tâches représentatives
+Hors périmètre : réparer une corruption, auditer la sécurité ou la conformité,
+choisir une architecture, annoncer prix/délai, promettre une absence d’interruption
+Date de recherche : 2026-08-01
+Responsable de la synthèse : agent P1 distinct
 ```
 
-### Score de lancement
+### Décision de lancement
 
-| Critère                          |       Note | Justification                                                         |
-| -------------------------------- | ---------: | --------------------------------------------------------------------- |
-| Offre réellement vendue          |      25/25 | Audit, outils internes et migration progressive entrent dans l’offre  |
-| Proximité d’une demande de devis |      24/25 | Le lecteur possède déjà un problème et un actif concret               |
-| Preuve de demande                |      10/15 | Formulations observées, sans volume Keyword Planner ni Search Console |
-| Preuve ou outil original         |      15/15 | Dossier de sortie objet par objet et scénario de test associé         |
-| Différenciation du corpus        |       9/10 | Access exige un inventaire différent d’Excel ou d’un logiciel web     |
-| Maillage, ressource et CTA       |      10/10 | Liens naturels vers audit, cahier des charges et outils internes      |
-| **Total**                        | **93/100** | Porte de lancement franchie                                           |
+- Le sujet correspond à une demande proche d’un cadrage d’outil interne.
+- L’intention n’est pas « acheter une application web », mais choisir une
+  trajectoire après inventaire.
+- Aucun volume Search Console, Keyword Planner ou outil tiers n’a été mesuré.
+- La preuve originale est un dossier local qui conserve les inconnues.
+- Décision P1 : créer un guide privé complet ; aucune décision de publication.
 
 ## 1 bis. Contrat de langage humain
 
-- **Phrase téléphone :** « Toute l’entreprise dépend d’une base Access qu’une
-  seule personne comprend. Je voudrais qu’elle fonctionne dans un navigateur,
-  mais sans perdre nos données ni nos habitudes de travail. Est-ce qu’il faut
-  tout refaire ? »
-- **Réponse attendue :** pas forcément ; inventoriez d’abord les données, les
-  écrans, les documents, les calculs et les automatismes, puis choisissez une
-  trajectoire proportionnée au besoin réel.
-- **Terme central :** migrer ne signifie pas seulement copier les tables ; il
-  faut aussi reprendre ce que les salariés voient, font, calculent et éditent.
-- **Mots ordinaires :** base Access, écrans, boutons, données, calculs, documents,
-  règles automatiques, fichiers liés, ancien outil, nouvel outil.
-- **Mots à éviter ou traduire :** legacy, replatforming, lift and shift, schéma
-  relationnel, refactoring, découplage, cloud-native, reverse engineering, TCO.
-- **Projet des 150 premiers mots :** reconnaître la dépendance, répondre « pas
-  forcément », expliquer pourquoi le fichier ne résume pas le travail, puis
-  donner les quatre issues possibles.
-- **Décision après 150 mots :** ne commander aucune réécriture avant inventaire.
-- **H2 isolés :** oui, chaque titre annonce une question ou une action.
-- **Comparaison à 390 px :** oui, cartes complètes sans colonne masquée.
-- **FAQ :** oui, chaque première phrase tranche.
-- **CTA :** « Faire cadrer l’avenir de ma base Access ».
-
-### Test de l’ouverture
-
-- [x] la situation vécue précède toute explication technique ;
-- [x] aucun sigle n’est nécessaire dans le premier écran ;
-- [x] aucun lexique ne retarde la réponse ;
-- [x] aucune métaphore ne devient un système ;
-- [x] la nuance « garder Access peut être raisonnable » est annoncée sans détour.
+- Phrase lecteur : « Ma boîte tourne sur une base Access faite il y a dix ans ;
+  comment la remplacer sans perdre ce qu’elle fait ? »
+- Réponse en une phrase : « Sécurisez une copie restaurable, recensez les tâches
+  et dépendances, puis testez la trajectoire la plus petite qui reprend les
+  résultats importants. »
+- Terme expliqué : une plateforme `low-code` est une plateforme configurée avec
+  peu de code, qui peut tout de même exiger développement, licences et maintenance.
+- Mots ordinaires : fichier, écran, impression, export, personne responsable,
+  résultat, sauvegarde, reprise, règle, connexion.
+- Mots à éviter sans explication : legacy, lift-and-shift, UI, refactoring,
+  cloud-native, seamless, scalabilité, modernization factory.
+- Projet des 150 premiers mots : répondre « pas nécessairement », traiter
+  l’incident actif, vérifier version/licence et restaurabilité.
+- Décision après 150 mots : migrer n’est pas encore décidé ; l’inventaire vient avant la cible.
+- FAQ avec réponse dans la première phrase : oui.
+- Comparaisons lisibles sur mobile : cartes mobiles générées par `GuideTable`.
+- CTA comme résultat : faire examiner l’application et obtenir les vérifications suivantes.
 
 ### Test sujet, action, résultat
 
-| Phrase initiale                                             | Qui agit ?                       | Action concrète                            | Résultat pour le lecteur                                 | Phrase réécrite                              |
-| ----------------------------------------------------------- | -------------------------------- | ------------------------------------------ | -------------------------------------------------------- | -------------------------------------------- |
-| « Commencez par comprendre ce que l’outil fait réellement » | Le dirigeant et les utilisateurs | Montrent les tâches critiques              | L’inventaire décrit le travail, pas seulement le fichier | Conservée, puis illustrée                    |
-| « L’inventaire vient avant le choix »                       | L’entreprise                     | Liste données, écrans, documents et règles | Elle évite une réécriture mal chiffrée                   | Conservée                                    |
-| « Une étape hybride peut éviter le grand saut »             | L’équipe projet                  | Déplace les données avant l’interface      | Elle teste une transition limitée                        | Détaillée avec limites et authentification   |
-| « Testez un parcours »                                      | Les utilisateurs concernés       | Rejouent cas normal et exceptions          | La reprise devient observable                            | Conservée                                    |
-| « Le prix ne dépend pas seulement du nombre de tables »     | Le prestataire et l’entreprise   | Chiffrent comportements, données et tests  | Deux offres deviennent comparables                       | Réécrite depuis une formule trop catégorique |
+| Formulation abstraite écartée | Qui agit ?               | Action                               | Résultat visible                 | Formulation retenue                                                                     |
+| ----------------------------- | ------------------------ | ------------------------------------ | -------------------------------- | --------------------------------------------------------------------------------------- |
+| Moderniser le système         | dirigeant + utilisateurs | lister trois tâches et leurs objets  | périmètre explicable             | « Reliez trois tâches aux formulaires, requêtes, rapports, macros, VBA et connexions. » |
+| Sécuriser la migration        | responsable désigné      | tester copie, droits et restauration | reprise jouée                    | « Faites créer et restaurer une copie saine sans toucher à l’original. »                |
+| Assurer la continuité         | équipe métier            | écrire le fonctionnement dégradé     | travail possible pendant l’arrêt | « Écrivez ce que l’équipe fait si Access s’arrête. »                                    |
+| Garantir l’intégrité          | responsable données      | comparer source et cible             | écarts expliqués                 | « Réconciliez lignes, totaux, documents et rejets. »                                    |
+| Prévoir la réversibilité      | acheteur + prestataire   | rejouer export et retour arrière     | sortie exécutable                | « Testez l’export et le retour avant la dépendance critique. »                          |
+
+### Test de l’ouverture
+
+- [x] situation vécue avant la méthode de l’agence ;
+- [x] aucun sigle technique ne gouverne les 150 premiers mots ;
+- [x] réponse directe avant les réserves ;
+- [x] incident actif séparé du projet de modernisation ;
+- [x] aucune promesse commerciale dans l’ouverture.
 
 ## 2. Cannibalisation
 
-| Page existante                          | Intention de cette page                             | Différence du nouveau guide                              | Arbitrage                                 |
-| --------------------------------------- | --------------------------------------------------- | -------------------------------------------------------- | ----------------------------------------- |
-| `transformer-excel-en-application`      | Décider si un tableur doit être corrigé ou remplacé | Access contient déjà écrans, états, requêtes et code     | Lien court, aucun score Excel repris      |
-| `erp-ou-logiciel-sur-mesure`            | Choisir l’architecture cible                        | Comprendre l’outil source avant de choisir la cible      | Renvoyer au comparatif après l’inventaire |
-| `reprendre-logiciel-metier-existant`    | Sécuriser une reprise de logiciel et de prestataire | Radiographier les objets propres à Access                | Ajouter un lien entrant contextuel        |
-| `cahier-des-charges-application-metier` | Décrire le futur outil                              | Produire la matière qui alimentera le cahier des charges | Lien après le dossier de sortie           |
-| `no-code-ou-sur-mesure`                 | Comparer deux modes de construction                 | Ne choisir aucun outil avant le diagnostic               | Résumer sans refaire le comparatif        |
+| Page existante                                 | Intention                                     | Différence du nouveau guide                                              | Arbitrage                                                                            |
+| ---------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `/guides/reprendre-logiciel-metier-existant`   | reprendre un logiciel de technologie inconnue | inventaire Access précis, limites Documenter/Dependencies/SSMA/Dataverse | frontière éditoriale à surveiller ; aucun lien visible tant que cette route redirige |
+| `/guides/transformer-excel-en-application`     | décider depuis un tableur                     | Access contient formulaires, requêtes, rapports, macros et VBA           | vocabulaire et artefact distincts                                                    |
+| `/guides/power-apps-ou-application-sur-mesure` | comparer deux cibles                          | ici sept trajectoires, dont conserver et standard                        | Power Apps reste une option, pas le cadre entier                                     |
+| `/guides/signes-besoin-logiciel-metier`        | vérifier si un nouvel outil est justifié      | le guide Access commence après l’identification d’un actif précis        | guide connexe publié et non redirigé                                                 |
+| `/guides/automatiser-processus-metier`         | choisir le premier processus à automatiser    | ici préserver une application et ses dépendances avant toute cible       | guide connexe publié et non redirigé                                                 |
+| `/services/outils-internes-sur-mesure`         | présenter le service                          | le guide répond et permet d’agir sans contact                            | un CTA contextuel seulement                                                          |
 
-**Justification d’une URL distincte :** aucun guide existant ne montre comment
-distinguer, dans Access, les données transférables des écrans, documents,
-requêtes, règles VBA et dépendances qu’il faut comprendre ou reconstruire.
+**Justification d’une URL distincte :** la décision porte sur la conservation du
+travail dispersé dans les objets et dépendances propres à Access, pas sur le choix
+générique d’un logiciel métier.
 
-## 3. Demande et vocabulaire du lecteur
+## 3. Demande, vocabulaire et carte SERP
 
-Formulations observées le 21 juillet 2026 : remplacer Microsoft Access,
-migration Access vers application web, convertir une base Access, alternative
-Access pour une entreprise, Access vers Power Apps, SQL Server ou Dataverse,
-utiliser Access dans un navigateur, migrer sans perdre les données, savoir si
-Access va disparaître et déterminer s’il faut tout réécrire.
+### Questions observées le 1er août 2026
 
-Ces requêtes prouvent l’existence de la question, pas son volume ni la facilité
-de classement. Aucun chiffre de recherche ne sera avancé.
+- Microsoft Access est-il abandonné ?
+- Peut-on convertir une base Access en application web automatiquement ?
+- Access vers SQL Server, Dataverse, Power Apps ou application dédiée ?
+- Peut-on garder les formulaires Access et déplacer seulement les données ?
+- Que deviennent VBA, macros, rapports, pièces jointes et tables liées ?
+- Combien coûte la migration et peut-on la faire sans interruption ?
 
-Questions à traiter :
+Mode d’observation : recherche web française et anglophone, pages Microsoft
+officielles, pages d’agences et de vendeurs. Aucune volumétrie de requête mesurée.
 
-1. Access est-il abandonné ?
-2. Une base stable doit-elle être remplacée ?
-3. Que contient réellement une application Access ?
-4. Qu’est-ce qui migre automatiquement ?
-5. Peut-on conserver l’interface et déplacer seulement les données ?
-6. Power Apps est-il toujours le meilleur remplacement ?
-7. Comment retrouver les règles cachées dans le code VBA ?
-8. Comment tester sans arrêter l’activité ?
-9. Comment comparer deux propositions ?
+### Carte d’intentions
+
+| Intention     | Formulation                             | Réponse attendue                                            | Section       |
+| ------------- | --------------------------------------- | ----------------------------------------------------------- | ------------- |
+| urgence       | base Access corrompue / ne s’ouvre plus | isoler l’incident, copie et restauration                    | `#reponse`    |
+| compréhension | que contient une base Access            | objets + tâches + dépendances humaines                      | `#travail`    |
+| inventaire    | documenter une base Access              | dossier local multi-fiches                                  | `#inventaire` |
+| faisabilité   | convertir Access automatiquement        | capacités et limites exactes                                | `#transfert`  |
+| comparaison   | alternative Access PME                  | sept trajectoires équitables                                | `#choix`      |
+| exécution     | migrer Access sans arrêt                | pilote, réconciliation, retour ; aucune promesse zéro arrêt | `#pilote`     |
+| achat         | devis migration Access                  | périmètre, licences, propriété, maintenance                 | `#devis`      |
 
 ## 4. Carte concurrentielle
 
-| Famille de page              | Bon point                                      | Manque décisionnel ou biais                                |
-| ---------------------------- | ---------------------------------------------- | ---------------------------------------------------------- |
-| Microsoft Support et Learn   | Limites et possibilités techniques vérifiables | Ne construisent pas la décision complète du dirigeant      |
-| Éditeurs d’alternatives      | Montrent mobilité et collaboration possibles   | Choisissent souvent leur produit avant l’inventaire        |
-| Sociétés de migration Access | Reconnaissent parfois la valeur de l’existant  | Seuils, délais et promesses commerciales peu transposables |
-| Listes d’outils              | Donnent des noms à comparer                    | Ignorent les règles et documents à reprendre               |
+| Page                                                                                        | Réponse et angle                                               | Preuves/artefacts                       | Bon point                                               | Manque décisionnel                                                           | Conflit possible            |
+| ------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | --------------------------------------- | ------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------------- |
+| [GG Software](https://www.ggsoftware.ch/fr/posts/entwicklung/excel-access-web-app/)         | Access/Excel deviennent limitants ; application web sur mesure | liste de bénéfices                      | formulation française, problèmes courants               | présente le web comme solution dominante, peu de trajectoires intermédiaires | agence de développement web |
+| [Caspio](https://www.caspio.com/use-cases/migrate-microsoft-access-online/)                 | migrer Access vers sa plateforme cloud/no-code                 | import, cas clients, fonctions          | montre formulaires/rapports/intégrations                | promesses très larges, peu de règles cachées ou de non-migration             | éditeur de la cible vendue  |
+| [Gislen](https://www.gislen.com/migrate-microsoft-access-to-web-application/)               | découverte, hybride, progressif, web                           | inventaire, profilage, POC              | reconnaît règles cachées et réécriture non systématique | trajectoires et preuves de retour restent orientées service                  | agence de migration         |
+| [Access Evolved](https://accessevolved.com/cost-to-migrate-microsoft-access-to-power-apps/) | coûts vers Power Apps selon modèle, VBA, formulaires, données  | fourchettes commerciales et facteurs    | rappelle rapports, nettoyage, tests et support          | chiffres US non transposables ; Power Apps présumé                           | spécialiste Power Platform  |
+| [Convertigo](https://www.convertigo.com/fr)                                                 | plateforme française/open source avec peu de code              | fonctions, connecteurs, tarifs affichés | expose cloud/on-premise et intégrations                 | page produit, pas un diagnostic Access ; indépendance/sécurité revendiquées  | éditeur de plateforme       |
+| [Microsoft Access](https://www.microsoft.com/fr-fr/microsoft-365/access)                    | Access reste vendu pour PC                                     | page produit actuelle                   | contredit « Access est mort »                           | ne décide pas d’une trajectoire de PME                                       | éditeur du produit source   |
 
-**Angle mort commun :** demander « par quoi remplacer Access ? » avant de
-demander « que fait réellement cette base pour l’entreprise ? ».
+**Angle mort commun :** distinguer ce que les outils découvrent de ce que les
+utilisateurs doivent prouver, tout en donnant à « stabiliser » et « ne pas
+migrer » la même dignité qu’à une nouvelle plateforme.
 
-**Valeur originale :** une radiographie en six parties, suivie d’une décision
-pour chaque élément : conserver, transférer, reconstruire ou supprimer.
+**Valeur originale :** dossier de sortie local par tâche/objet, inconnues
+explicites, sept trajectoires, limites sourcées des outils et recette avec retour.
 
 ## 5. Fiche de preuves
 
-Sources primaires consultées le 21 juillet 2026.
+Consultation de toutes les sources : 2026-08-01.
 
-| Affirmation utilisable                                                                                              | Source primaire                                                                                                                                                                                     | Périmètre et limite                                               | Conséquence lecteur                                     |
-| ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------- |
-| Access n’est pas globalement abandonné : Access 2021 se retire le 13 octobre 2026 et Access 2024 le 9 octobre 2029  | [Cycle Access 2021](https://learn.microsoft.com/en-us/lifecycle/products/access-2021) et [produits retirés en 2029](https://learn.microsoft.com/en-us/lifecycle/end-of-support/end-of-support-2029) | Distinguer versions perpétuelles et Microsoft 365                 | Vérifier la version, ne pas migrer à cause d’une rumeur |
-| Une base Access comprend tables, requêtes, formulaires et états ; macros et modules peuvent aussi porter des règles | [Structure d’une base Access](https://support.microsoft.com/en-US/Access/learn-the-structure-of-an-access-database)                                                                                 | Inventaire technique à compléter par l’usage réel                 | Ne pas limiter le devis aux tables                      |
-| Microsoft publie 2 Go par fichier et 255 utilisateurs simultanés comme limites maximales                            | [Spécifications Access](https://support.microsoft.com/en-us/access/access-specifications)                                                                                                           | Maximum de format, pas seuil de confort                           | Refuser les seuils commerciaux universels               |
-| Pour partager Access, Microsoft décrit une séparation entre données et interface locale                             | [Déployer Access](https://support.microsoft.com/en-us/access/deploy-an-access-application) et [scinder une base](https://support.microsoft.com/en-us/access/split-an-access-database)               | Peut stabiliser un usage local ; ne crée pas une application web  | Tester la correction la plus simple                     |
-| Le Documenteur détaille objets, propriétés et contrôles                                                             | [Structure d’une base Access](https://support.microsoft.com/en-US/Access/learn-the-structure-of-an-access-database)                                                                                 | Le rapport ne dit pas ce qui compte pour le salarié               | L’associer à des démonstrations utilisateur             |
-| Le volet des dépendances omet notamment macros/modules et s’arrête à quatre niveaux                                 | [Dépendances d’objet](https://support.microsoft.com/en-us/access/use-the-object-dependencies-pane-to-see-how-objects-relate)                                                                        | Inventaire non exhaustif                                          | Compléter manuellement                                  |
-| SSMA convertit les tables, colonnes, index, clés étrangères et la plupart des requêtes SELECT                       | [Conversion Access avec SSMA](https://learn.microsoft.com/en-us/sql/ssma/access/converting-access-database-objects-accesstosql?view=sql-server-ver17)                                               | Certaines requêtes ne sont pas converties                         | Lire le rapport d’évaluation                            |
-| SSMA ne convertit pas formulaires, états, macros ou modules                                                         | [Conversion Access avec SSMA](https://learn.microsoft.com/en-us/sql/ssma/access/converting-access-database-objects-accesstosql?view=sql-server-ver17)                                               | Migration des données seulement                                   | Chiffrer séparément la reconstruction des usages        |
-| SSMA peut produire un rapport d’évaluation avec erreurs et avertissements                                           | [Guide Access vers SQL Server](https://learn.microsoft.com/en-us/sql/sql-server/migrate/guides/access-to-sql-server?view=sql-server-ver17)                                                          | Rapport technique, à confronter aux tâches                        | Prioriser le pilote                                     |
-| Access peut continuer à utiliser des tables liées après migration SQL                                               | [Lier Access à SQL Server](https://learn.microsoft.com/en-us/sql/ssma/access/linking-access-applications-to-sql-server-azure-sql-db-accesstosql?view=sql-server-ver17)                              | Des requêtes peuvent devoir être adaptées                         | Une étape hybride est possible                          |
-| Access et Dataverse permettent aussi un scénario de tables liées                                                    | [Access vers Dataverse](https://support.microsoft.com/en-US/Access/get-started-migrate-access-data-to-dataverse)                                                                                    | Licences, clés, relations et types à vérifier                     | Ne pas présenter Power Platform comme automatique       |
-| Microsoft déconseille de créer de nouvelles Access Web Apps                                                         | [Base bureau ou Access Web App](https://support.microsoft.com/fr-fr/access/training/decide-whether-to-create-a-desktop-database-or-an-access-web-app)                                               | Concerne l’ancien produit web, pas la disparition d’Access bureau | Ne pas confondre les deux offres                        |
-| Une sauvegarde doit être saine et restaurable                                                                       | [Sauvegarde Access](https://support.microsoft.com/en-US/Access/protect-your-data-with-backup-and-restore-processes) et [CNIL](https://www.cnil.fr/fr/securite-sauvegarder)                          | La CNIL vise notamment les traitements de données personnelles    | Tester la restauration avant la bascule                 |
-| L’ANSSI recommande inventaire, maintien de la restauration et audit après migration                                 | [ANSSI, Sécuriser une migration numérique, janvier 2026](https://messervices.cyber.gouv.fr/documents-guides/anssi_essentiels_migration_1.0.pdf)                                                     | Guide général à proportionner au risque de la PME                 | Prévoir pilote et retour possible                       |
+| Affirmation utilisable                                                                                      | Source primaire et URL                                                                                                                                                      | Périmètre / passage utile                                                                    | Confiance | Emplacement               | Fraîcheur                             |
+| ----------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | --------- | ------------------------- | ------------------------------------- |
+| La fiche Access 2021 affiche « Retirement Date » au 13/10/2026                                              | [Microsoft Lifecycle](https://learn.microsoft.com/en-us/lifecycle/products/access-2021)                                                                                     | produit Access 2021 uniquement ; ne pas transformer ce champ en promesse autonome de support | élevée    | réponse + sources         | dynamique, vérifier avant publication |
+| La fiche Access 2024 affiche « Retirement Date » au 09/10/2029                                              | [Microsoft Lifecycle](https://learn.microsoft.com/en-us/lifecycle/products/access-2024)                                                                                     | produit Access 2024 uniquement ; politique moderne                                           | élevée    | réponse + sources         | dynamique                             |
+| Microsoft 365 Apps est « In Support » à la consultation                                                     | [fiche Microsoft 365 Apps](https://learn.microsoft.com/en-us/lifecycle/products/microsoft-365-apps)                                                                         | cycle moderne, aucune date fixe courante                                                     | élevée    | réponse + sources         | dynamique                             |
+| Le cycle moderne exige mise à jour, licence/droit d’usage et offre de support encore proposée par Microsoft | [Modern Lifecycle Policy](https://learn.microsoft.com/en-us/lifecycle/policies/modern)                                                                                      | trois conditions cumulatives ; exigences de service et système propres au produit            | élevée    | réponse + sources         | dynamique                             |
+| Access est vendu pour PC et Access 2024 est la version perpétuelle courante                                 | [Microsoft France](https://www.microsoft.com/fr-fr/microsoft-365/access)                                                                                                    | page produit, biais éditeur                                                                  | élevée    | réponse/FAQ               | dynamique                             |
+| 2 Go moins l’espace des objets système et 255 utilisateurs simultanés sont des maxima publiés               | [Access specifications](https://support.microsoft.com/en-us/access/access-specifications)                                                                                   | maxima techniques, jamais capacité pratique promise ni seuils de confort                     | élevée    | réponse + sources         | stable, vérifier                      |
+| Objets principaux : tables, requêtes, formulaires, rapports                                                 | [Structure of an Access database](https://support.microsoft.com/en-us/access/learn-the-structure-of-an-access-database)                                                     | structure technique ; liens externes possibles                                               | élevée    | travail + sources         | stable                                |
+| Documenter produit des détails d’objets                                                                     | [Database Documenter](https://support.microsoft.com/en-us/access/document-and-print-your-database-design)                                                                   | rapport technique, pas priorité métier                                                       | élevée    | transfert                 | stable                                |
+| Dependencies : 4 niveaux, exclusions macros/modules et requêtes                                             | [Object Dependencies](https://support.microsoft.com/en-us/access/use-the-object-dependencies-pane-to-see-how-objects-relate)                                                | dépend aussi des droits/cartes de nom                                                        | élevée    | transfert + sources       | stable                                |
+| SSMA convertit tables/index/FK et plusieurs SELECT, pas UI/macros/VBA ni certaines requêtes                 | [SSMA converting objects](https://learn.microsoft.com/en-us/sql/ssma/access/converting-access-database-objects-accesstosql?view=sql-server-ver17)                           | SQL Server ; version doc 2026                                                                | élevée    | transfert + sources       | dynamique                             |
+| Rapport SSMA donne % de conversion et temps estimé technique                                                | [SSMA assessment](https://learn.microsoft.com/en-us/sql/ssma/access/assessing-access-database-objects-for-conversion-accesstosql?view=sql-server-ver17)                     | ne mesure pas importance métier                                                              | élevée    | transfert                 | dynamique                             |
+| Validation source/cible, environnement isolé et tests de performance                                        | [Access to SQL Server guide](https://learn.microsoft.com/en-us/sql/sql-server/migrate/guides/access-to-sql-server?view=sql-server-ver17)                                    | migration SQL Server, guide technique                                                        | élevée    | pilote                    | dynamique                             |
+| Frontal Access possible sur tables SQL liées ; risques performance/types/authentification                   | [Link Access to SQL](https://learn.microsoft.com/en-us/sql/ssma/access/linking-access-applications-to-sql-server-azure-sql-db-accesstosql?view=sql-server-ver17)            | cas tables SQL Server/Azure SQL liées                                                        | élevée    | transfert + sources       | dynamique                             |
+| Dataverse peut garder un frontal Access lié ; Power Apps est une interface séparée                          | [Migrate Access data to Dataverse](https://support.microsoft.com/en-US/Access/get-started-migrate-access-data-to-dataverse)                                                 | migration tables/données ; licences et erreurs possibles                                     | élevée    | FAQ/transfert + sources   | dynamique                             |
+| Dataverse ne reprend pas tous les types/limites Access                                                      | [doc Power Apps FR](https://learn.microsoft.com/fr-fr/power-apps/maker/data-platform/migrate-access-to-dataverse)                                                           | Dataverse/Teams ; vérifier fonctionnalités/licences                                          | élevée    | transfert + sources       | dynamique                             |
+| Ne pas ouvrir un fichier Access depuis OneDrive/bibliothèque SharePoint                                     | [Ways to share](https://support.microsoft.com/en-us/access/ways-to-share-an-access-desktop-database)                                                                        | avertissement limité à ce mode d’ouverture                                                   | élevée    | FAQ/transfert + sources   | stable                                |
+| Éviter base Access scindée sur WAN/Azure file shares                                                        | [Deploy Access](https://support.microsoft.com/en-us/access/deploy-an-access-application)                                                                                    | risque lenteur/corruption pour cette architecture                                            | élevée    | choix/transfert + sources | stable                                |
+| Séparer front/back peut améliorer fiabilité ; front par utilisateur                                         | [Split an Access database](https://support.microsoft.com/en-us/access/split-an-access-database)                                                                             | sauvegarder avant ; compatibilité des versions                                               | élevée    | choix                     | stable                                |
+| Anciennes Access Web Apps déconseillées                                                                     | [Microsoft decision page](https://support.microsoft.com/en-gb/office/decide-whether-to-create-a-desktop-database-or-an-access-web-app-7bf7ccc9-0850-48f2-858f-273271d30fa0) | Access Services SharePoint, pas Access desktop                                               | élevée    | choix                     | historique                            |
+| Sauvegardes fréquentes, séparée/offline, intégrité/restauration testées                                     | [CNIL sauvegarder](https://www.cnil.fr/fr/securite-sauvegarder)                                                                                                             | données personnelles ; proportionner                                                         | élevée    | inventaire + sources      | 2024, vérifier                        |
+| Inventaires, risques, continuité, réversibilité et ancien backup durant migration                           | [ANSSI PDF](https://messervices.cyber.gouv.fr/documents-guides/anssi_essentiels_migration_1.0.pdf)                                                                          | guide SI général, pas Access ; proportionner PME                                             | élevée    | pilote + sources          | v1.0 01/2026                          |
 
-### Contradictions et affirmations interdites
+### Contradictions résolues
 
-- « Access est mort » ou « Microsoft l’a abandonné » ;
-- un seuil pratique universel à 5, 10 ou 255 utilisateurs ;
-- « mettre le fichier dans le cloud le transforme en application web » ;
-- « SSMA convertit toute l’application » ;
-- « Power Apps remplace automatiquement Access » ;
-- « SQL Server ou Dataverse rendent l’outil sécurisé ou conforme » ;
-- un prix moyen, un délai standard, zéro panne ou un ROI immédiat ;
-- « le VBA peut toujours être traduit automatiquement » ;
-- « une réécriture complète est obligatoire » ;
-- « le fichier accdb contient forcément toutes les données ».
+- « Access est mort » contredit les pages produit et cycles actuels : formulation interdite.
+- Retrait des anciennes Access Web Apps SharePoint ≠ retrait d’Access desktop.
+- Migration vers Dataverse ≠ obligation de Power Apps : frontal Access lié possible.
+- SSMA « conversion % » ≠ proportion du métier repris.
+- 2 Go/255 ≠ seuils recommandés de migration.
+- Cloud ≠ sécurité/conformité automatique ; aucune certification de cible déduite.
+
+## 5 bis. Contre-audit P2 des preuves et enrichissements
+
+### Porte d’entrée et méthode
+
+- Le manifeste P1 a été vérifié `9/9 OK` avant le premier edit P2.
+- Les 21 URL primaires du dossier ont été ouvertes et relues le 1er août 2026.
+- Les pages produit et Lifecycle sont traitées comme dynamiques et devront être
+  recliquées avant toute publication ultérieure.
+- Les sources Microsoft décrivent leurs propres produits : leur portée
+  technique est utilisable, mais leur biais éditeur interdit d’en déduire la
+  cible commerciale à choisir.
+- Le PDF ANSSI V1.0 de janvier 2026 a été lu sur ses deux pages ; la fiche CNIL
+  consultée est datée du 14 mars 2024.
+
+### Correspondance preuve visible / affirmation
+
+| Groupe vérifié               | Sources ouvertes | Résultat P2                  | Correction ou limite conservée                                                                                           |
+| ---------------------------- | ---------------: | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Produit et cycles            |                5 | Confirmé avec correction     | « Retirement Date » conservé comme libellé Microsoft ; trois conditions cumulatives du cycle moderne ajoutées            |
+| Spécifications et structure  |                3 | Confirmé avec correction     | 2 Go moins objets système ; 255 reste un maximum ; Structure et Database Documenter ont désormais deux cartes distinctes |
+| Dépendances et SSMA          |                5 | Confirmé                     | exclusions Object Dependencies et SSMA explicites ; guide de validation source/cible ajouté comme source autonome        |
+| Dataverse                    |                2 | Confirmé avec séparation     | différences de types/licences séparées du scénario hybride Access–Dataverse                                              |
+| Partage, WAN et scission     |                3 | Confirmé avec séparation     | OneDrive, WAN/Azure file shares et base scindée ont chacun leur propre carte                                             |
+| Anciennes Web Apps           |                1 | Confirmé                     | retrait Access Services SharePoint ≠ retrait Access desktop                                                              |
+| Sauvegarde et migration sûre |                2 | Confirmé, portée limitée     | CNIL pour données personnelles ; ANSSI pour migration SI générale, à proportionner                                       |
+| **Total**                    |           **21** | **21/21 ouvert et attribué** | **21 cartes visibles pour 21 preuves, aucune carte parapluie**                                                           |
+
+### Modifications factuelles apportées à la page
+
+1. Remplacement de « fin de support » par le champ exact « Retirement Date »
+   pour Access 2021 et Access 2024, avec avertissement contre toute promesse
+   autonome de support jusqu’à cette date.
+2. Ajout des trois conditions cumulatives du cycle moderne : rester à jour
+   selon les exigences publiées, conserver le droit d’usage et vérifier que
+   Microsoft propose encore la prise en charge.
+3. Correction du plafond Access : 2 Go par base moins l’espace nécessaire aux
+   objets système ; 255 utilisateurs simultanés reste un maximum publié, pas
+   une capacité pratique promise.
+4. Passage de 17 à 21 cartes de sources visibles : Database Documenter, guide
+   Access vers SQL Server, scénario hybride Dataverse et base scindée ont
+   chacun reçu leur source autonome.
+5. Ajout de la méthode Microsoft de validation Access vers SQL Server :
+   requêtes de validation sur source et cible, environnement isolé et tests de
+   performance, sans la présenter comme une garantie ni comme une preuve des
+   écrans et règles métier.
+
+### Contre-audit de l’outil local
+
+- Une fiche vide conserve exactement neuf inconnues.
+- Criticité élevée sans responsable et sans preuve produit deux blocages.
+- Données sensibles sans responsable produit un blocage distinct.
+- Chacune des six cibles de changement ou suppression bloque si les dépendances
+  restent vides ; `keep-access` n’ajoute pas ce blocage, mais la dépendance
+  demeure une inconnue.
+- Une fiche n’est prête que si les neuf champs sont renseignés et si aucun
+  blocage ne subsiste ; « prête » signifie seulement discussion de pilote.
+- Les 12 types d’éléments et les 8 choix de cible sont couverts par test.
+- Les ajouts successifs gardent des IDs monotones uniques, même après
+  suppression ; le composant refuse de descendre sous une fiche.
+- Les compteurs visibles ont été exercés de `0` à `4` blocages puis jusqu’à une
+  fiche complète, sans produire de recommandation d’architecture.
+- La copie réussie et la copie refusée ont chacune un message vérifié ; l’échec
+  ne conserve pas de faux succès. L’impression n’est déclenchée qu’au clic.
+
+### Contrôles ciblés déjà obtenus
+
+```text
+Vitest outil : 15/15
+Vitest contenu : 14/14
+Total ciblé P2 : 29/29
+Temps de lecture recalculé : 18 min à 200 mots/minute
+Sources visibles : 21
+Route : ready-for-human-review, noindex/nofollow, hors registre
+```
+
+### Risques et inconnues maintenus après P2
+
+- Aucun fichier `.accdb`, pilote réel, mesure de performance ou restauration
+  d’un cas client n’a été fourni : les procédures doivent être rejouées sur le
+  dossier réel.
+- Le coût, le délai, la fenêtre d’indisponibilité, les licences et la cible
+  restent inconnus ; aucun chiffre ou score n’a été inventé.
+- Les pages Microsoft peuvent changer ; leur état au 1er août 2026 ne constitue
+  pas une preuve durable de support futur.
+- Le guide reste privé. La présence du slug dans la redirection partagée et son
+  absence du registre restent les deux échecs globaux attendus, hors périmètre
+  d’écriture P2.
+- Le BAT du build a confirmé 320 et 390 px sans débordement horizontal et sans
+  overlay. La revendication initiale « sans erreur ni avertissement console »
+  est retirée : le contrôle contradictoire du 2 août 2026 observe cinq
+  avertissements de préchargement CSS à 390 px, mais aucune erreur console,
+  aucun `pageerror` et aucune exception non interceptée. Le contrôle
+  d’impression a découvert puis fait corriger un doublon formulaire/synthèse.
+
+### Correction administrative P2 — console de production
+
+Le contrôle a été rejoué avec le Playwright bundlé, Google Chrome et un serveur
+`next start` local. Chaque mesure utilise un contexte neuf `390 × 844`, une URL
+rendue unique par `?bat=<timestamp>`, `goto(..., { waitUntil: "networkidle" })`,
+puis une attente de 5 000 ms. Les événements `console` de niveaux
+`warning`/`error` et les événements `pageerror` sont enregistrés séparément.
+
+| Route et exécution | HTTP | Avertissements console | Erreurs console | `pageerror` |
+| --- | ---: | ---: | ---: | ---: |
+| brouillon Access — contexte neuf 1 | 200 | 5 | 0 | 0 |
+| brouillon Access — contexte neuf 2 | 200 | 5 | 0 | 0 |
+| guide publié `prix-gestion-google-ads` — contexte neuf 1 | 200 | 5 | 0 | 0 |
+| guide publié `prix-gestion-google-ads` — contexte neuf 2 | 200 | 5 | 0 | 0 |
+
+Les vingt avertissements ont le même type : une ressource `.css` préchargée
+n’a pas été utilisée dans les secondes suivant l’événement `load`. Quatre
+chunks sont communs aux deux routes (`2ex5f0c4zd6wb.css`,
+`0hgyiq83kzx9s.css`, `1g-iq7euvgg-e.css`, `1303sz2qab4qb.css`) ; le cinquième
+est propre au bundle de chaque route (`16tl6dhkhmjty.css` pour Access,
+`184zxh522cuj-.css` pour le témoin Ads). Une capture CDP séparée sur Access,
+cache désactivé, retrouve les mêmes cinq avertissements, zéro
+`Runtime.exceptionThrown` et aucun overlay.
+
+La symétrie avec une route déjà publiée qualifie ce signal de comportement
+générique du préchargement CSS du build Next.js, et non de régression
+fonctionnelle propre au guide Access. Cette correction P2 ne prétend pas
+supprimer ces avertissements et laisse donc le code du guide intact. Leur
+éventuelle suppression relève d’un chantier partagé de chargement CSS, hors du
+périmètre exclusif de cette passe.
+
+### Inconnues conservées après P2
+
+- Volumes de recherche réels et données Search Console : inconnus.
+- Version, architecture et licence du lecteur : inconnues.
+- Coût, délai, gains, indisponibilité, volumes et criticité : inconnus.
+- Besoin juridique, localisation, conservation et exigences sectorielles : inconnus.
+- Compatibilité exacte d’un type/driver/connecteur : à tester sur le dossier réel.
+- Adéquation d’un standard, d’une plateforme ou du sur-mesure : non décidée.
 
 ### Calculs reproductibles
 
-Aucun calcul financier. Le nombre de tables n’est pas un indicateur suffisant du
-coût : écrans, documents, règles, interfaces, qualité des données, tests et
-bascule doivent être examinés séparément.
+Aucun calcul ni prix publié en P1 ou P2. Le dossier compte seulement les champs
+complétés, inconnus et points bloquants ; il ne produit ni score, ni ROI, ni
+orientation automatique.
 
-## 6. Empreinte éditoriale à ne pas reproduire
+## 6. Empreinte éditoriale
 
-| Guide voisin                            | Progression                      | Dispositif à ne pas copier |
-| --------------------------------------- | -------------------------------- | -------------------------- |
-| `transformer-excel-en-application`      | diagnostic puis quatre solutions | score de tableur           |
-| `reprendre-logiciel-metier-existant`    | sécurisation d’une reprise       | crise et contrôle d’accès  |
-| `erp-ou-logiciel-sur-mesure`            | comparaison des cibles           | matrice ERP/sur-mesure     |
-| `cahier-des-charges-application-metier` | modèle du futur outil            | cahier des charges général |
+| Guide voisin                | Ouverture            | Progression                 | Dispositif           | Différence retenue                                            |
+| --------------------------- | -------------------- | --------------------------- | -------------------- | ------------------------------------------------------------- |
+| besoin logiciel métier      | trois situations     | six réponses                | diagnostic orientant | ici aucun moteur de recommandation ; inventaire objet/tâche   |
+| transformer Excel           | limites d’un tableur | choix d’outil               | comparaison          | Access exige requêtes, écrans, rapports, VBA et connexions    |
+| reprendre logiciel existant | reprise d’un actif   | audit puis feuille de route | checklist            | ici capacités/limites Microsoft sourcées et sept trajectoires |
 
 ```text
-Tension : l’entreprise possède le fichier, mais ignore ce qu’elle perdrait en
-ne migrant que les données.
-Ouverture : situation vécue, réponse « pas forcément », sans alarme.
-Progression : tâches réelles → six parties → automatisable/non automatisable →
-quatre trajectoires → pilote → preuve de reprise → décision.
-Artefact signature : dossier de sortie Access, une ligne par objet.
-Rythme : concret, phrases courtes, un exemple fictif unique.
-CTA : après que le lecteur a produit son premier inventaire.
-Conclusion : choisir un parcours pilote, pas commander une réécriture totale.
-Différences : aucun score, aucun prix, aucune architecture imposée.
+Tension : moderniser sans effacer les règles et habitudes utiles.
+Ouverture : réponse négative honnête + urgence/restauration.
+Progression : sécuriser → comprendre → inventorier → limites outils → comparer → piloter → acheter → agir.
+Artefact : dossier de sortie local multi-fiches.
+Voix : dirigeant non technique, verbes concrets, aucun seuil magique.
+CTA : après coût, propriété et maintenance ; un seul lien éditorial.
+Conclusion : sept actions du lundi matin, pas un résumé commercial.
+Différences : sept trajectoires ; preuve de reprise par objet ; hybride Access explicite ; aucune orientation mécanique.
 ```
 
-## 7. Plan annoté
+## 7. Plan annoté et conservation des ancres
 
-| Section                         | Question résolue                            | Preuve ou exemple                      | Décision                           | Format                |
-| ------------------------------- | ------------------------------------------- | -------------------------------------- | ---------------------------------- | --------------------- |
-| Faut-il tout refaire ?          | Access est-il vraiment condamné ?           | cycles de support datés                | Vérifier la version et le besoin   | réponse directe       |
-| Montrez trois tâches            | Que fait l’outil pour les salariés ?        | résultats observables                  | Nommer les tâches critiques        | mini-fiches           |
-| Six parties à inventorier       | Que contient l’application ?                | sources Microsoft                      | Remplir le dossier de sortie       | cartes                |
-| Ce que les outils ne voient pas | L’inventaire automatique suffit-il ?        | limites Documenteur/dépendances        | Interroger les utilisateurs        | mise en garde         |
-| Ce qui se transfère             | Que peut faire SSMA ?                       | objets pris/non pris                   | Séparer données et usages          | comparaison mobile    |
-| Quatre trajectoires             | Garder, hybrider, acheter ou reconstruire ? | critères concrets                      | Choisir une trajectoire provisoire | cartes décisionnelles |
-| Un seul parcours pilote         | Comment éviter l’arrêt brutal ?             | ANSSI, sauvegarde et répétition        | Tester avant généralisation        | chronologie           |
-| Prouver la reprise              | Comment accepter le nouvel outil ?          | cas normal, exception, document, droit | Écrire les tests avant le devis    | feuille d’acceptation |
-| Comparer les propositions       | Que doit contenir un devis crédible ?       | exclusions et réversibilité            | Refuser les forfaits opaques       | liste                 |
-| Quand garder Access             | Dans quels cas ne pas migrer ?              | version supportée et besoin local      | Assumer le statu quo               | verdicts              |
-| Première action                 | Que faire lundi matin ?                     | copie, inventaire, démonstration       | Choisir un pilote                  | action finale         |
+| Ancre             | Question                         | Preuve/exemple                                   | Décision                              | Format                   |
+| ----------------- | -------------------------------- | ------------------------------------------------ | ------------------------------------- | ------------------------ |
+| `reponse`         | faut-il remplacer ?              | cycles, spécifications, urgence                  | vérifier avant migrer                 | réponse + mémo + image   |
+| `travail`         | que contient réellement Access ? | structure + 3 exemples fictifs                   | partir des tâches                     | cas + tableau            |
+| `inventaire`      | que documenter ?                 | CNIL + dossier local                             | produire les preuves                  | outil multi-fiches       |
+| `transfert`       | que voient les outils ?          | Microsoft Documenter/Dependencies/SSMA/Dataverse | automatiser sans déléguer le jugement | tableau 4 colonnes       |
+| `choix`           | quelles trajectoires ?           | limites réseau/web apps                          | 7 options équitables                  | cartes fit/preuve/risque |
+| `pilote`          | comment basculer ?               | ANSSI + validation Microsoft                     | progressif, retour explicite          | étapes + recette         |
+| `devis`           | comment comparer les offres ?    | périmètre complet                                | écrire licences/propriété/maintenance | tableau                  |
+| `premiere-action` | que faire lundi ?                | checklist                                        | lever une inconnue risquée            | conclusion actionnable   |
 
-## 8. Ressource et conversion
+Les huit IDs historiques sont conservés afin de ne pas casser les liens profonds.
+
+## 8. Ressource et logique de décision
 
 ```text
-Ressource téléchargeable : non pour cette première publication.
-Justification : le dossier HTML doit suffire et aucun fichier non produit ou non
-testé ne sera annoncé. Un futur classeur local pourra être ajouté séparément.
-Résultat autonome : une ligne par objet ou dépendance avec utilité, règle, sort
-envisagé et test de reprise.
-Exemple rempli : formulaire fictif de clôture d’intervention SAV.
-Conclusion « ne pas investir » : oui, si Access reste stable et adapté.
-Données saisies : aucune.
-Bon fit : règles propres à l’entreprise, besoin web, plusieurs sites, droits,
-intégrations ou traçabilité, responsable métier disponible.
-Mauvais fit : usage local stable, outil standard suffisant, personne ne peut
-valider les règles, droits contestés ou incident de cybersécurité en cours.
-Action non commerciale : inventorier une copie et choisir un parcours pilote.
-CTA : « Faire cadrer ma migration Access » vers /demarrer-un-projet.
+Ressource nécessaire : oui, dossier de sortie Access local.
+Problème : le fichier et un rapport automatique ne décrivent pas tout le travail.
+Résultat : plusieurs fiches copiables/imprimables avec objet, type, responsable,
+fréquence, criticité, dépendance, nature des données, cible et preuve de reprise.
+Format : composant navigateur ; aucun fichier XLS/XLSX/CSV/PDF généré.
+Conclusion « ne pas investir » : oui, trajectoire 7.
+Données : état React local ; aucun fetch, stockage navigateur ou soumission.
+Copie/impression : seulement à la demande ; erreur de copie annoncée sans faux succès.
+Logique : champs manquants et contradictions visibles ; aucun score ni recommandation.
+Confidentialité : ne pas saisir mot de passe, secret ou donnée personnelle.
+Bon fit : responsable disponible, copie saine, tâches observables, pilote arrêtable.
+Mauvais fit : incident actif, aucune copie, aucun utilisateur, réécriture imposée.
+Action non commerciale : compléter puis imprimer/copier le dossier.
+CTA : présenter dossier + trois tâches ; résultat attendu = vérifications suivantes.
 ```
 
-## 9. Rapports de sortie
+### Contrat de logique vérifié en P2
 
-### Rapport P1 — Recherche
+1. Une fiche vide conserve neuf inconnues.
+2. Criticité élevée + responsable absent produit un blocage.
+3. Criticité élevée + preuve absente produit un blocage.
+4. Cible autre que conservation + dépendances vides produit un blocage.
+5. Une fiche complète autorise seulement une discussion de pilote.
+6. Aucun champ ne déclenche automatiquement standard, low-code ou web dédié.
+7. Deux ajouts rapides gardent des identifiants uniques.
+8. Un échec de copie n’est pas rendu comme un succès vert.
+
+## 9. Exigences techniques P1 et handoff
+
+- Métadonnées construites par `buildGuideMetadata` avec entrée locale privée
+  `ready-for-human-review`, faute de droit P1 sur le registre partagé.
+- JSON-LD construit par `buildGuideStructuredData` : uniquement `Article` et
+  `BreadcrumbList`, avec trois ratios d’image Article.
+- OG dédiée `1200 × 630`.
+- Route absente du registre, hub, sitemap et `llms.txt` en P1.
+- Aucun redirect, CSS, dépendance ou fichier partagé modifié. Le slug reste dans
+  `src/lib/legacy-guide-redirects.ts` : la redirection peut masquer la route tant
+  que l’orchestrateur ne l’a pas retirée lors de l’intégration finale autorisée.
+- Sources visibles scindées lorsqu’un lien ne soutient pas plusieurs produits.
+
+### Handoff P2 obligatoire
+
+1. Recliquer chaque source dynamique et vérifier dates/version Microsoft.
+2. Contre-lire SSMA, Dataverse hybride, OneDrive, WAN et authentification liée.
+3. Vérifier le nombre exact d’inconnues/blocages et toutes les branches du composant.
+4. Tester clavier, lecteurs d’écran, 320/390 px, impression et copie refusée.
+5. Vérifier que « plateforme avec peu de code (low-code) » précède tout emploi nu.
+6. Contrôler que l’ouverture reste sans jargon et que chaque FAQ répond d’abord.
+7. Ne pas ajouter la route au registre ni l’indexer avant P4 + transversal.
+8. Après validation finale seulement, retirer le slug du redirect partagé et
+   vérifier la route servie ; P1 ne constitue pas cette preuve publique.
+
+## 10. Rapport P1 — candidat terminé, gate orchestrateur en attente
 
 ```text
-PASSE 1 TERMINÉE
+PASSE_1_TERMINEE
 Slug : remplacer-microsoft-access-application-web
-Lecteur : dirigeant dont une base Access critique dépend d’une personne ou ne
-répond plus aux usages à distance.
-Décision : garder, hybrider, remplacer par un outil ou reconstruire progressivement.
-Angle : inventorier le travail avant de comparer les technologies.
-Pages proches : Excel, ERP/sur-mesure, reprise de logiciel et cahier des charges ;
-aucune ne radiographie les objets Access.
-Sources décisives : Microsoft Lifecycle, Support et Learn, CNIL et ANSSI.
-Incertitudes exclues : seuils pratiques, prix, délais, conversion automatique,
-promesse de sécurité, de conformité ou de ROI.
-Action autonome : dossier de sortie objet par objet.
-CTA : faire cadrer la sortie d’Access, avec possibilité de recommander de garder l’outil.
-Snapshot : docs/research/manifests/remplacer-microsoft-access-application-web-p1.sha256
+Fichiers : dossier P1, page, outil, tests, OG, trois SVG Article, manifeste P1
+Contrat : sécuriser et inventorier avant de choisir parmi sept trajectoires
+Sources primaires : Microsoft Lifecycle/Support/Learn, CNIL, ANSSI
+SERP : 6 pages concurrentes, biais et angles manquants documentés
+Plan : 8 ancres historiques conservées
+Artefact : dossier local multi-fiches, inconnue ≠ zéro, aucune recommandation
+Contre-cas : conserver, stabiliser ou ne pas migrer
+CTA : un lien éditorial après la grille de devis ; CTAs partagés contextuels
+Contrôles : ESLint ciblé 0 erreur/0 avertissement ; Vitest ciblé 22/22 ;
+TypeScript `tsc --noEmit` vert ; rendu serveur avec H1 ; lecture mesurée 17 min ;
+XML des 3 SVG valide ; aperçu raster 16:9 contrôlé ; `git diff --check` vert ;
+suite complète 570/572, avec uniquement les deux échecs de gouvernance attendus :
+brouillon local non enregistré et slug encore présent dans la redirection partagée
+Risques résiduels : P2/P3/P4 et contrôle transversal non réalisés ;
+la redirection partagée masque encore potentiellement la route ; pas de BAT
+navigateur, build complet, publication, déploiement ou indexation en P1
+Manifeste P1 : docs/research/manifests/remplacer-microsoft-access-application-web-p1.sha256
 ```
 
-### Rapport P2 — Rédaction et intégration
+## 11. Rapport P2 — terminée, gate orchestrateur requis
 
 ```text
-PASSE 2 TERMINÉE
-Fichiers créés : page, image Open Graph et entrée du registre.
-Fichiers modifiés : guide de reprise d’un logiciel pour le lien entrant et
-registre d’icônes du hub.
-Ouverture : « faut-il tout refaire ? Pas forcément », avant toute technologie.
-Forme propre : six parties à inventorier et dossier de sortie en cartes, avec
-une preuve de reprise pour chaque élément.
-Exemple : PME de SAV explicitement fictive ; aucun résultat client inventé.
-Sources visibles : Microsoft Lifecycle, Support et Learn, CNIL et ANSSI,
-placées à côté des affirmations qu’elles étayent.
-Action autonome : travailler sur une copie, observer trois tâches et construire
-le dossier de sortie.
-Bon fit / mauvais fit : quatre trajectoires, dont conserver Access et choisir
-un logiciel standard ; le sur-mesure n’est pas présenté comme automatique.
-CTA : un seul, « Présenter ma base Access », vers /demarrer-un-projet.
-Contrôles rapides : Prettier, ESLint, TypeScript, 184/184 tests SEO et
-git diff --check passent.
-Snapshot : docs/research/manifests/remplacer-microsoft-access-application-web-p2.sha256
+PASSE_2_TERMINEE
+Slug : remplacer-microsoft-access-application-web
+Statut : correction P2 terminée — en attente du gate orchestrateur ; aucun lancement P3
+Entrée : manifeste P1 vérifié 9/9 avant le premier edit P2
+Prompt : Prompt #2 lu jusqu’à EOF et 28 pages rendues contrôlées
+Sources : 21/21 URL primaires ouvertes le 1er août 2026 ; 21 cartes visibles,
+une affirmation par source, aucune carte parapluie
+Corrections factuelles : Retirement Date distingué d’une promesse autonome de
+support ; trois conditions du cycle moderne ; 2 Go moins objets système ;
+255 qualifié comme maximum et non capacité pratique
+Enrichissements : quatre cartes autonomes ajoutées ; validation source/cible,
+environnement isolé et performance ajoutés pour la trajectoire SQL Server
+Outil : neuf inconnues ; quatre familles de blocage ; toutes les cibles de
+changement ; IDs monotones ; minimum une fiche ; copie succès/échec ; impression
+Correction issue du BAT : interface interactive masquée à l’impression ; synthèse
+textuelle complète conservée, deux fiches présentes, zéro contrôle interactif visible
+Vitest ciblé : 29/29 (outil 15/15, contenu 14/14)
+Suite complète : 577/579 ; seuls échecs attendus : brouillon local hors registre
+et slug encore déclaré dans la redirection partagée
+ESLint ciblé : 0 erreur, 0 avertissement
+TypeScript : `tsc --noEmit` vert
+Build : `npx next build` vert, 64 pages générées, route statique présente
+Artefact SEO : OK en preview noindex ; 47 URL sitemap, 30 liens llms.txt,
+47 pages, 5 temps de lecture et 82 blocs JSON-LD contrôlés
+BAT build de production : 390 × 844 et 320 × 700 ; aucun débordement horizontal,
+aucun ID dupliqué, huit H2, contrôles outil à 44 px minimum, aucun overlay
+Contre-BAT console du 2 août 2026 à 390 × 844 : deux contextes neufs Access et
+deux contextes neufs du guide publié prix-gestion-google-ads ; HTTP 200 à chaque
+fois ; exactement cinq avertissements de préchargement CSS par navigation ;
+zéro erreur console et zéro pageerror ; comportement partagé, non supprimé
+Interaction navigateur : une fiche complète donne 1 complet, 1 avec inconnues,
+0 blocage ; ajout d’une troisième fiche avec ID unique
+SEO rendu : canonical exact ; robots noindex,nofollow ; Article + BreadcrumbList ;
+trois images Article ; 21 liens de sources présents exactement une fois ; aucun
+FAQPage, HowTo, Offer, Review, AggregateRating ou SoftwareApplication
+Dates : datePublished P1 conservée ; dateModified P2 capturée par `date -Iseconds`
+à `2026-08-01T14:17:36+02:00`, sans heure reconstruite
+Serveurs locaux : dev et production arrêtés ; port 3107 sans écoute
+Périmètre Git : aucun commit, push, publication, registre, redirect ou fichier partagé
+Risques : aucune base .accdb réelle, aucun pilote client, prix/délai/licences/cible
+toujours inconnus ; sources dynamiques à recliquer avant une publication future
+Manifeste P2 : docs/research/manifests/remplacer-microsoft-access-application-web-p2.sha256
 ```
 
-### Rapport P3 — Contre-audit indépendant
+## 12. Rapport P3 — terminée, gate orchestrateur requis
 
 ```text
-PASSE 3 TERMINÉE
-Relecteur : agent p3_contenus_site, indépendant et en lecture seule.
-Sources rouvertes : Microsoft Lifecycle, Support et Learn, CNIL et ANSSI.
-Calcul : 2 742 mots dans l’article, soit 14 minutes à 200 mots/minute.
-P0 : aucun.
-P1 corrigés : temps de lecture ; portée des dates Access 2021/2024 et cas
-Microsoft 365 ; périmètre Dataverse ; authentification des tables liées ;
-fractionnement de base ; délai arbitraire ; incident cyber avant migration.
-Corrections pédagogiques : utilisateurs par rôle, accord, plateforme avec peu
-de code expliquée, Dataverse défini, portée CNIL précisée, prix nuancé et CTA
-plus neutre. knowsAbout Microsoft Access retiré faute d’attestation dédiée.
-Revalidation : PASS, 0 P0/P1.
-Contrôles : Prettier, ESLint, TypeScript, diff-check, 184/184 SEO et build
-indépendant du snapshot avant l’ajustement exact de lecture. L’ajustement 13→14
-est revalidé et impose seulement un nouveau build de fraîcheur en P4.
-Snapshot : docs/research/manifests/remplacer-microsoft-access-application-web-p3.sha256
+PASSE_3_TERMINEE
+Slug : remplacer-microsoft-access-application-web
+Statut : Terminée — en attente du gate orchestrateur ; aucun lancement P4
+Agent distinct : /root/access_p3_polish
+Entrée : manifeste P2 vérifié 9/9 avant le premier edit P3
+Prompt : Prompt #3 extrait intégralement (468 blocs, dont 418 paragraphes et
+50 tableaux), rendu en 33 pages PNG et 33/33 pages inspectées
+Périmètre édité : page dédiée et présent dossier ; aucun fichier partagé,
+aucune logique de l’outil, aucun test, aucune OG et aucun SVG modifiés
+Polish : titres et métadonnées rendus plus naturels ; paragraphes raccourcis ;
+transitions ajoutées ; jargon traduit ou expliqué ; répétitions de preuve,
+périmètre, trajectoire et pilote réduites ; comparaisons, devis, migration et
+CTA reformulés autour d’actions et de résultats observables
+Préservé : 21 sources, sept trajectoires équitables, huit ancres historiques,
+neuf FAQ directes, trois exemples fictifs, trois images Article, CTA prudent,
+ready-for-human-review, noindex/nofollow, Article + BreadcrumbList seulement
+Outil préservé : neuf inconnues, blocages, IDs monotones, copie et impression
+Temps de lecture mesuré : 19 min à 200 mots/minute
+Métadonnées : titre 48 caractères ; description 149 caractères ; datePublished
+P1 conservée ; dateModified P3 capturée par `date -Iseconds` à
+2026-08-02T10:18:51+02:00
+Vitest ciblé : 29/29 (outil 15/15, contenu 14/14)
+Suite complète : 577/579 ; seuls échecs attendus : brouillon local hors registre
+et slug encore déclaré dans la redirection partagée
+ESLint ciblé : 0 erreur, 0 avertissement
+TypeScript : `tsc --noEmit` vert
+Build : `npx next build` vert, 64 pages générées, route statique présente
+BAT production : HTTP 200 à 390 × 844 et 320 × 700 ; H1 exact ; huit H2
+éditoriaux sous les huit ancres historiques et onze H2 dans le DOM au total,
+les trois autres étant Sources, FAQ et contact ; `scrollWidth == clientWidth`
+pour le document aux deux largeurs ; la barre d’ancres conserve son débordement
+interne horizontal prévu ; aucun ID dupliqué, overlay d’erreur ou chevauchement
+imprévu ; CTA mobile sticky intentionnel ; contrôles outil à 44 px minimum ;
+hero, ouverture, outil, cartes et conclusion inspectés visuellement
+SEO rendu à 390 px : canonical exact ; robots noindex,nofollow ; Article +
+BreadcrumbList ; 21 liens de sources ; huit ancres historiques présentes
+Console production : à 390 px, cinq avertissements de préchargement CSS déjà
+qualifiés de génériques en P2, zéro erreur et zéro pageerror ; à 320 px, quatre
+de ces avertissements sur ce run, zéro erreur et zéro pageerror
+Contre-contrôle orchestrateur indépendant : six avertissements CSS génériques à
+390 px, aucun à 320 et 1 440 px, zéro erreur et zéro pageerror ; l’écart 5/4
+contre 6/0/0 confirme un déclenchement temporel variable, pas une régression
+fonctionnelle propre au guide
+Impression : média print contrôlé ; synthèse visible avec les fiches 1 et 2 ;
+zéro contrôle interactif visible sur 23 ; PDF A4 généré pour vérification locale
+Serveurs : navigateur et serveur de production arrêtés ; port 3108 sans écoute
+Périmètre Git : aucun commit, push, publication, déploiement, registre,
+redirection ou fichier partagé
+Risques : aucune base .accdb réelle, aucun pilote client, prix/délai/licences/cible
+toujours inconnus ; P4 et contrôle transversal non réalisés ; route non publiée
+Manifeste P3 : docs/research/manifests/remplacer-microsoft-access-application-web-p3.sha256
 ```
 
-### Rapport P4 — Plume humaine et contrôle final
+## 13. Rapport P4 — validée par l’orchestrateur
 
 ```text
-PASSE 4 TERMINÉE
-Passages humanisés : plateforme avec peu de code et Dataverse expliqués,
-utilisateurs définis par rôle, CTA neutralisé et délai arbitraire retiré.
-Coupe : huit H2, un exemple fictif et un artefact. Chaque bloc restant apporte
-une décision, une source, un risque ou une preuve.
-Retour P3 : oui ; les sept P1 et huit P2 ont été appliqués puis revalidés.
-Diff sémantique : les précisions Microsoft/CNIL/ANSSI ont resserré le périmètre
-sans transformer le verdict. La valeur de lecture 14 min a été revalidée.
-Validation humaine réelle : non ; lecture froide indépendante et navigateur,
-sans les présenter comme un lecteur humain extérieur.
-Autorisation : délégation du commanditaire ; route conservée en
-ready-for-human-review jusqu’au gel global des dix guides.
-Commandes : ESLint PASS ; TypeScript PASS ; SEO 184/184 ; tests 328/328 ;
-build production PASS ; postbuild PASS sur 88 URL, 48 temps de lecture et
-164 JSON-LD ; git diff --check PASS.
-Responsive : métriques exactes à 320, 390, 768, 1024 et 1440 px ; document égal
-à la fenêtre, un H1, aucune ancre manquante ni identifiant dupliqué. Seul
-débordement géométrique : halo décoratif du CTA contenu dans overflow-hidden.
-Visuel : héros observé à 390 et 1152 px ; cartes d’inventaire à 390 px.
-FAQ : huit questions, ouverture et fermeture au clic vérifiées.
-Route : HTTP 200, canonical exact, noindex/nofollow conforme à la porte locale
-et console sans erreur ni avertissement.
-Image sociale : HTTP 200 image/png, 1200 × 630, texte et marque non coupés.
-Verdict : PASS — publiable sous délégation, publication différée au gel du lot.
-Snapshot : docs/research/manifests/remplacer-microsoft-access-application-web-p4.sha256
+PASSE_4_TERMINEE_ET_VALIDEE
+Slug : remplacer-microsoft-access-application-web
+Statut : GO_P4 ; contrôle transversal indépendant requis avant intégration
+Entrée : manifeste P3 vérifié 9/9 avant le premier edit P4 ; snapshots locaux
+page et dossier concordants avec les SHA-256 du manifeste P3
+Prompt : Prompt 4 extrait intégralement (381 paragraphes, 0 tableau), rendu en
+9 pages PNG et 9/9 pages inspectées à leur résolution originale
+Organisation : huit rapports H2 en lecture seule produits par des agents
+distincts ; le coordinateur P4 ayant calé sans éditer, l’orchestrateur a
+consolidé les rapports et appliqué les corrections par lots contrôlés
+Périmètre édité : page dédiée et présent dossier ; outil, deux tests, OG et
+trois SVG inchangés par rapport au snapshot P3
+Polish : tournures binaires, fragments administratifs, personnifications et
+enchaînements mécaniques réduits ; exemples, inventaire, limites des outils,
+sept options, pilote, devis et première action rendus plus concrets
+Préservé : dates Lifecycle et leurs conditions ; 2 Go et 255 comme maxima non
+pratiques ; portées SSMA, Dataverse, OneDrive, WAN, CNIL et ANSSI ; incident
+actif ; sept trajectoires équitables ; inconnues visibles ; zéro interruption
+et conversion totale non promises ; validation SQL Server explicitement partielle
+Détecteur final distinct : GO_P4_DETECTEUR, puis GO_P4_DETECTEUR_RECONTROLE
+après l’horodatage final ; 18,8/20 global, minimum 18,5/20 sur chaque H2,
+trois tics faibles au total, zéro défaut critique, aucun fichier modifié
+Temps de lecture mesuré : 3 945 mots, 20 min à 200 mots/minute
+Métadonnées : datePublished P1 conservée ; dateModified finale capturée par
+`date -Iseconds` à 2026-08-02T11:51:04+02:00
+Vitest ciblé final : 29/29 (outil 15/15, contenu 14/14)
+ESLint ciblé : 0 erreur, 0 avertissement
+TypeScript : `tsc --noEmit` vert
+Suite complète : 577/579 ; seuls échecs attendus avant intégration : brouillon
+local hors registre et slug encore déclaré dans la redirection partagée
+Build direct : `npx next build` vert, 64 pages générées, route statique présente
+Artefact SEO : OK en preview noindex ; 47 URL sitemap, 30 liens llms.txt,
+47 pages, 5 temps de lecture et 82 blocs JSON-LD contrôlés
+Limite de commande : `npm run build` s’arrête volontairement au prebuild sur
+les deux mêmes gates d’intégration ; il ne remplace pas le build direct validé
+BAT production : HTTP 200 à 320 × 700, 390 × 844 et 1 440 × 1 000 ; un H1 ;
+huit H2 éditoriaux, onze H2 au total et huit ancres ; canonical exact ; robots
+noindex,nofollow ; Article + BreadcrumbList uniquement ; 21 sources officielles
+visibles ; aucun ID dupliqué, overlay ou débordement horizontal
+Accessibilité de l’outil : 23 contrôles, 18 champs tous reliés à un label,
+hauteur minimale 44 px ; CTA mobile affiché après le hero et masqué sur desktop
+Interaction : première fiche complétée = 1 complète, 1 avec inconnues et
+0 blocage ; ajout d’une troisième fiche, suppression et retour à deux ; copie
+confirmée avec en-tête et contenu renseigné dans le presse-papiers
+Impression : synthèse visible avec les deux fiches ; 0 contrôle interactif sur
+23 et CTA sticky masqué ; rendu détaillé inspecté
+Console : 4 avertissements CSS génériques à 320 px, 5 à 390 px et 0 à 1 440 px ;
+zéro erreur console, zéro pageerror et zéro requête en échec aux trois largeurs
+Contrôle visuel orchestrateur : hero mobile et desktop, outil, sept options,
+pilote, devis, conclusion, FAQ, contact et synthèse print inspectés ; hiérarchie,
+alignements, respiration, CTA latéral et lisibilité validés
+Serveurs : serveurs local et production arrêtés ; ports 3109 et 3110 libérés
+Gate G4 orchestrateur : GO_P4 ; diff P3 relu, tests et BAT recontrôlés, outil,
+tests, OG et trois SVG confirmés identiques au snapshot P3
+Périmètre Git : aucun commit, push, intégration, publication, déploiement,
+indexation, registre partagé ou redirection modifiés à ce stade
+Risques résiduels : aucune base .accdb réelle, aucun pilote client et aucune
+preuve propre à un contexte client ; prix, délai, licences et cible restent à
+confirmer ; contrôle transversal et intégration finale encore requis
+Manifeste P4 : docs/research/manifests/remplacer-microsoft-access-application-web-p4.sha256
 ```
 
-## 10. Revue finale
-
-| Axe         | Note | Preuve                                                               |
-| ----------- | ---: | -------------------------------------------------------------------- |
-| Intention   |    2 | La dépendance à Access et « faut-il tout refaire ? » ouvrent la page |
-| Décision    |    2 | Garder, hybrider, acheter ou reconstruire                            |
-| Pédagogie   |    2 | Tâches, six parties et dossier de sortie                             |
-| Profondeur  |    2 | Données, écrans, VBA, documents, sécurité, bascule et devis          |
-| Preuve      |    2 | Sources primaires adjacentes et limites explicites                   |
-| Comparaison |    2 | Quatre trajectoires et transfert objet par objet                     |
-| Originalité |    2 | Radiographie Access plutôt qu’une liste d’alternatives               |
-| Style       |    1 | Lecture froide et orale, sans lecteur humain réel distinct           |
-| Conversion  |    2 | Action autonome puis CTA acceptant le maintien d’Access              |
-| SEO/produit |    2 | Intent, maillage, metadata, OG, Article et responsive validés        |
-
-**Total : 19/20.** Les axes bloquants intention, décision, pédagogie et preuve
-obtiennent 2.
-
-### Test lecteur non technique
+## 14. Contrôle transversal initial — NO_GO et correction
 
 ```text
-Test réel : non.
-Simulation froide : dirigeant sachant ce que fait l’entreprise mais pas ce que
-signifient SSMA, VBA ou Dataverse.
-Réponse comprise : inventorier le travail avant de choisir la technologie.
-Décision : garder Access, déplacer les données, essayer un outil ou chiffrer
-un parcours web pilote.
-Point de survol : aucun P0/P1 ; les comparaisons larges sont en cartes.
-Termes : plateforme avec peu de code et Dataverse expliqués ; SSMA défini.
-CTA : crédible car il accepte une stabilisation ou un outil existant.
+CONTROLE_TRANSVERSAL_INITIAL
+Statut : NO_GO_CONTROLE_TRANSVERSAL ; aucune intégration autorisée sur ce verdict
+Agent distinct : /root/access_transversal_recovery ; mission strictement read-only
+Snapshot d’entrée : manifeste P4 historique vérifié 9/9
+Sources : 21/21 URL primaires ouvertes et assertions décisives confirmées le
+2 août 2026 ; exemples fictifs, aucun chiffre économique inventé
+Fond : 97/100 ; décision/exhaustivité : 96/100 ; exactitude/sources : 98/100 ;
+prudence juridique/sécurité : 95/100 ; SEO/E-E-A-T : 92/100 ;
+architecture/UX : 94/100 ; style/antipasse IA : 94/100 ;
+accessibilité/technique/rendu : 84/100 ; score global 94/100
+Défauts : P0 0 ; P1 1 de preuve, car le contrôleur navigateur n’a achevé que
+320 et 360 px avant instabilité ; P2 0 bloquant ; P3 1 typographique
+Correction P3 : le point final a été rattaché à « effacer le métier. » pour
+supprimer l’espace visible avant la ponctuation ; correction appliquée le
+2026-08-02T21:40:01+02:00 sans effet sur le sens, les faits ou dateModified
+Conséquence : le manifeste P4 reste une preuve historique et n’est pas réécrit ;
+le candidat corrigé exige un nouveau manifeste qualité et un nouveau contrôle
+indépendant exact, incluant les dix largeurs, zoom, police, paysage, thème sombre,
+clavier, interactions, impression, console et réseau
+Publication : interdite tant que le P1 de preuve n’est pas refermé et qu’un
+GO_CONTROLE_TRANSVERSAL conforme n’est pas obtenu sur la nouvelle empreinte
 ```
-
-### Contre-audit indépendant
-
-```text
-Auteur : agent p3_contenus_site, lecture seule.
-P0 : 0.
-P1 trouvés et corrigés : 7.
-P2 de plume appliqués : 8.
-Sources rouvertes : Microsoft, CNIL et ANSSI.
-Verdict final : PASS, 0 P0/P1.
-```
-
-- [x] réponse utile dans les 150 premiers mots ;
-- [x] cinq phrases passent sujet, action, résultat ;
-- [x] H2 compréhensibles isolément ;
-- [x] exemple fictif annoncé ;
-- [x] sources sensibles et fraîcheur revérifiées ;
-- [x] comparaison lisible à 390 px ;
-- [x] un CTA éditorial et liens valides ;
-- [x] metadata, JSON-LD, maillage et ancres cohérents ;
-- [x] tests, build, route et image sociale validés ;
-- [x] publication et indexation distinguées.
