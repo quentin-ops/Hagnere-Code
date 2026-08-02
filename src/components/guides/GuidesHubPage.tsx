@@ -8,6 +8,7 @@ import {
   Check,
   ChevronRight,
   ClipboardList,
+  Database,
   FileText,
   FlaskConical,
   Globe,
@@ -143,6 +144,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "automatiser-processus-metier": Cable,
   "calculer-roi-application-metier": Calculator,
   "signes-besoin-logiciel-metier": ClipboardList,
+  "remplacer-microsoft-access-application-web": Database,
   "valider-idee-saas-avant-developper": FlaskConical,
   "prix-gestion-google-ads": HandCoins,
 };

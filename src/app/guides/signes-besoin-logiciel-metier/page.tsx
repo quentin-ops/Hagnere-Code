@@ -423,8 +423,12 @@ export default function Page() {
             label: "Calculer le ROI d’une application métier",
             href: "/guides/calculer-roi-application-metier",
           },
+          {
+            label: "Remplacer Microsoft Access sans perdre le métier",
+            href: "/guides/remplacer-microsoft-access-application-web",
+          },
         ]}
-        relatedGuidesLabel="2 étapes suivantes possibles"
+        relatedGuidesLabel="3 étapes suivantes possibles"
       >
         <GuidePremiumSection
           id="reponse"

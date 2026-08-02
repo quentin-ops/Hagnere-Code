@@ -22,31 +22,13 @@ import {
   buildGuideMetadata,
   buildGuideStructuredData,
 } from "@/lib/guide-page-seo";
-import type { GuideEntry } from "@/lib/guides";
-import { formatGuideDate } from "@/lib/guides";
+import { formatGuideDate, getGuide } from "@/lib/guides";
 import { TEAM } from "@/lib/team";
 import { AccessExitDossierTool } from "./access-exit-dossier";
 
-export const accessGuide: GuideEntry = {
-  slug: "remplacer-microsoft-access-application-web",
-  title: "Remplacer Microsoft Access : 7 options comparées",
-  cardTitle: "Remplacer Microsoft Access sans perdre le métier",
-  metaDescription:
-    "Comment remplacer Access sans perdre données ni règles métier ? Inventaire, 7 options, limites des conversions automatiques et migration progressive.",
-  cardDescription:
-    "Un dossier de sortie local, sept options comparées sur les mêmes critères et une migration progressive, sans imposer d’emblée une application web.",
-  heroTitle: "Remplacer Microsoft Access sans perdre le travail qu’il contient",
-  section: "Outils internes et automatisation",
-  datePublished: "2026-08-01T12:58:33+02:00",
-  dateModified: "2026-08-02T11:51:04+02:00",
-  readTimeMin: 20,
-  articleImagePaths: [
-    "/guides/remplacer-microsoft-access-application-web/article-sortie-access-16x9.svg",
-    "/guides/remplacer-microsoft-access-application-web/article-sortie-access-4x3.svg",
-    "/guides/remplacer-microsoft-access-application-web/article-sortie-access-1x1.svg",
-  ],
-  editorialStatus: "ready-for-human-review",
-};
+export const accessGuide = getGuide(
+  "remplacer-microsoft-access-application-web",
+);
 
 const pagePath = `/guides/${accessGuide.slug}`;
 const breadcrumbName = "Remplacer Microsoft Access";

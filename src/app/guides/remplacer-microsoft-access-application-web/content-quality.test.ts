@@ -9,6 +9,10 @@ import Page, { accessGuide, metadata, structuredData } from "./page";
 
 const slugDirectory = dirname(fileURLToPath(import.meta.url));
 const pageSource = readFileSync(resolve(slugDirectory, "page.tsx"), "utf8");
+const inboundGuideSource = readFileSync(
+  resolve(slugDirectory, "../signes-besoin-logiciel-metier/page.tsx"),
+  "utf8",
+);
 const toolSource = readFileSync(
   resolve(slugDirectory, "access-exit-dossier.tsx"),
   "utf8",
@@ -87,15 +91,28 @@ describe("content quality for the Microsoft Access replacement guide", () => {
     );
   });
 
-  it("keeps the P1 route private and canonical without touching the registry", () => {
-    expect(accessGuide.editorialStatus).toBe("ready-for-human-review");
+  it("uses the approved central guide entry and keeps previews private", () => {
+    expect(accessGuide.editorialStatus).toBeUndefined();
+    expect(
+      PUBLISHED_GUIDES.some((guide) => guide.slug === accessGuide.slug),
+    ).toBe(true);
     expect(metadata.robots).toMatchObject({ index: false, follow: false });
     expect(metadata.alternates?.canonical).toBe(
       "https://hagnere-code.ai/guides/remplacer-microsoft-access-application-web",
     );
+    expect(metadata.openGraph).toMatchObject({
+      publishedTime: accessGuide.datePublished,
+      modifiedTime: accessGuide.dateModified,
+    });
     expect(pageSource).toContain("buildGuideMetadata(");
     expect(pageSource).toContain("buildGuideStructuredData(");
-    expect(pageSource).not.toContain("getGuide(");
+    expect(pageSource).toContain(
+      'getGuide(\n  "remplacer-microsoft-access-application-web",\n)',
+    );
+    expect(getLegacyGuideDestination(accessGuide.slug)).toBeNull();
+    expect(inboundGuideSource).toContain(
+      'href: "/guides/remplacer-microsoft-access-application-web"',
+    );
   });
 
   it("uses only Article and BreadcrumbList structured data", () => {

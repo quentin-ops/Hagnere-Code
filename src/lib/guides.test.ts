@@ -28,6 +28,7 @@ describe("guide registry after the editorial reset", () => {
       "automatiser-processus-metier",
       "calculer-roi-application-metier",
       "signes-besoin-logiciel-metier",
+      "remplacer-microsoft-access-application-web",
       "valider-idee-saas-avant-developper",
       "prix-gestion-google-ads",
     ]);
@@ -35,6 +36,7 @@ describe("guide registry after the editorial reset", () => {
       "automatiser-processus-metier",
       "calculer-roi-application-metier",
       "signes-besoin-logiciel-metier",
+      "remplacer-microsoft-access-application-web",
       "valider-idee-saas-avant-developper",
       "prix-gestion-google-ads",
     ]);
@@ -73,17 +75,15 @@ describe("guide registry after the editorial reset", () => {
     const registered = GUIDES.map((guide) => guide.slug).sort();
     const routed = fs
       .readdirSync(guidesRoot, { withFileTypes: true })
-      .filter(
-        (entry) => {
-          if (!entry.isDirectory() || entry.name === "[slug]") return false;
-          const pagePath = path.join(guidesRoot, entry.name, "page.tsx");
-          if (!fs.existsSync(pagePath)) return false;
+      .filter((entry) => {
+        if (!entry.isDirectory() || entry.name === "[slug]") return false;
+        const pagePath = path.join(guidesRoot, entry.name, "page.tsx");
+        if (!fs.existsSync(pagePath)) return false;
 
-          return !fs
-            .readFileSync(pagePath, "utf8")
-            .includes('editorialStatus: "ready-for-human-review"');
-        },
-      )
+        return !fs
+          .readFileSync(pagePath, "utf8")
+          .includes('editorialStatus: "ready-for-human-review"');
+      })
       .map((entry) => entry.name)
       .sort();
 

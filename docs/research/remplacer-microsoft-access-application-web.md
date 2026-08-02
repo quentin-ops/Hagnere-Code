@@ -1,10 +1,11 @@
-# Dossier P1–P4 — Remplacer Microsoft Access sans perdre le métier
+# Dossier P1–P4 et intégration — Remplacer Microsoft Access sans perdre le métier
 
 > Journal reconstruit de zéro le 1er août 2026 pour le guide
 > `remplacer-microsoft-access-application-web`. Aucun paragraphe, statut, score
-> ni verdict de l’ancien dossier n’a été repris. La route reste privée et
-> `noindex` jusqu’à la validation P4, au contrôle transversal et à l’intégration
-> explicitement autorisée par l’orchestrateur.
+> ni verdict de l’ancien dossier n’a été repris. Après quatre passes et le
+> contrôle transversal, le candidat est intégré au registre central et son
+> build local de production est indexable. Il n’est pas déclaré public tant
+> que le commit `main`, le déploiement READY et l’URL servie ne sont pas prouvés.
 
 ## Journal des quatre passes
 
@@ -15,7 +16,7 @@ Propriétaire éditorial unique : orchestrateur du lot Hagnéré Code.
 | 1. Création complète              | Validée par l’orchestrateur                 | 2026-08-01 | Agent `access_p1_creation`              | `remplacer-microsoft-access-application-web-p1.sha256` | `GO_PASSE_2` après correction du `NO_GO_P1` |
 | 2. Enrichissement et vérification | Validée par l’orchestrateur                  | 2026-08-02 | Agent distinct `access_p2_verification` | `remplacer-microsoft-access-application-web-p2.sha256` | `GO_PASSE_3` rendu                          |
 | 3. Polish rédactionnel            | Validée par l’orchestrateur                 | 2026-08-02 | Agent distinct `/root/access_p3_polish` | `remplacer-microsoft-access-application-web-p3.sha256` | `GO_PASSE_4` rendu                          |
-| 4. Antipasse IA et contrôle final | Validée par l’orchestrateur                 | 2026-08-02 | Agents H2 distincts + orchestrateur     | `remplacer-microsoft-access-application-web-p4.sha256` | Contrôle transversal requis                 |
+| 4. Antipasse IA et contrôle final | Validée par l’orchestrateur                 | 2026-08-02 | Agents H2 distincts + orchestrateur     | `remplacer-microsoft-access-application-web-p4.sha256` | `GO_QUALITE_GUIDE` 96/100 après correction  |
 
 Une modification d’un fichier du snapshot après calcul du manifeste invalide
 la passe concernée. Le fichier manifeste ne s’auto-hache pas.
@@ -706,4 +707,82 @@ indépendant exact, incluant les dix largeurs, zoom, police, paysage, thème som
 clavier, interactions, impression, console et réseau
 Publication : interdite tant que le P1 de preuve n’est pas refermé et qu’un
 GO_CONTROLE_TRANSVERSAL conforme n’est pas obtenu sur la nouvelle empreinte
+```
+
+## 15. Intégration du candidat de publication
+
+```text
+INTEGRATION_RELEASE_CANDIDATE
+Autorisation : le commanditaire a explicitement demandé à l’orchestrateur de
+contrôler lui-même les guides, de publier ceux qui passent les gates et de
+poursuivre en autonomie ; aucune validation éditoriale supplémentaire n’est
+revendiquée au nom d’une autre personne
+Gate qualité : GO_CONTROLE_TRANSVERSAL indépendant et GO_QUALITE_GUIDE de
+l’orchestrateur ; manifeste quality-1 13/13 ; score 96/100 ; chaque axe >=93 ;
+P0/P1/P2/P3 0 ; BAT privé 10/10 largeurs, zoom 200 %, police 150 %, paysage,
+thème sombre, clavier, outil, copie et impression
+Historique de l’URL : le guide antérieur a été servi en production indexable le
+22 juillet 2026 ; le déploiement Vercel dpl_6Aqz2HzCZ4xhpfby5VoJDPhQFzHw,
+construit depuis le commit main 780351a, a terminé à 2026-07-22T09:09:47Z,
+soit 2026-07-22T11:09:47+02:00 ; cette heure est conservée comme datePublished
+de l’article refondu au lieu de fabriquer une nouvelle première publication
+Modification : dateModified capturée par date -Iseconds lors du gel de
+l’intégration à 2026-08-02T22:15:51+02:00 ; registre, Open Graph, Article,
+badge visible et sitemap utilisent la même valeur
+Source de vérité : entrée publiée ajoutée à src/lib/guides.ts sans
+editorialStatus ; page dédiée reliée par getGuide ; métadonnées et JSON-LD
+dérivés du même objet central
+Découvrabilité : slug retiré de LEGACY_GUIDE_SLUGS ; compte exact 96 -> 95 et
+test d’absence ajoutés ; icône Database ajoutée au hub ; lien entrant contextuel
+ajouté depuis signes-besoin-logiciel-metier ; sitemap et llms.txt non modifiés
+manuellement
+Installation : npm ci, 750 paquets installés depuis le lockfile ; npm audit
+--omit=dev : 0 vulnérabilité
+Tests ciblés d’intégration : 73/73 ; ESLint ciblé, Prettier et tsc --noEmit verts
+Gates SEO : npm run check:seo 176/176 ; NODE_ENV=production npm run check:seo
+176/176
+Suite globale : 87 fichiers, 579/579 tests verts
+Build public : NEXT_PUBLIC_ENV=production npm run build vert ; 64 pages ; route
+Access statique ; artefact SEO indexable : 48 URL sitemap, 31 liens llms.txt,
+48 pages, 6 temps de lecture et 84 blocs JSON-LD
+Temps de lecture servi : 3 936 mots, 20 min à 200 mots/minute
+Contrôle HTTP local : guide 200 sans redirection ; hub 200 ; OG 200 image/png,
+262 728 octets ; URL présente exactement une fois dans sitemap et llms.txt
+SEO servi : canonical exact ; robots index,follow ; googleBot index,follow avec
+large image preview ; Article + BreadcrumbList uniquement ; dates cohérentes ;
+trois images Article ; HTML brut 496 561 octets, transfert gzip 76 895 octets
+Statut Git : snapshot éditorial cherry-pické dans le worktree propre au commit
+7060b59 ; raccordement partagé encore non committé, non poussé et non déployé
+Manifeste : un manifeste release-candidate distinct doit geler cet état après
+ce rapport ; le manifeste P4 reste historique et n’est pas réécrit
+Gate restant : contre-audit indépendant de l’empreinte release exacte, puis
+commit, push main, Vercel READY et preuve publique ; aucune indexation Google
+n’est revendiquée
+```
+
+## 16. Contre-audit du candidat intégré — GO
+
+```text
+GO_RELEASE_CANDIDATE
+Agent indépendant : /root/access_transversal_reaudit ; strictement read-only
+Empreinte auditée : release-candidate-1, 20/20 fichiers conformes avant et après BAT
+Intégrité : corps éditorial, 21 sources, FAQ, exemples, outil et règles métier
+inchangés depuis quality-1 ; diff page limité à getGuide, import central et
+retrait du statut draft ; aucun sitemap ou llms.txt édité manuellement
+Vérifications rejouées : 579/579 tests ; SEO 176/176 deux fois ; TypeScript,
+ESLint code, Prettier code et git diff --check verts ; audit dépendances 0
+Artefact : 48 URL sitemap, 31 liens llms.txt, 48 pages, 6 temps de lecture,
+84 JSON-LD ; guide et hub 200, OG 200 PNG, slug unique dans sitemap et llms.txt
+BAT release : 320, 390, 768, 1 440 et 1 600 px ; dark mobile/desktop ; paysage ;
+police 150 % ; zoom 200 % ; clavier FAQ ; outil vide/complet ; ajout, suppression,
+copie et impression ; aucun overflow, ID dupliqué, overlay, erreur console,
+pageerror ou requête échouée
+SEO servi : canonical unique ; index,follow ; Article + BreadcrumbList ; trois
+images ; datePublished historique, dateModified et lastmod cohérents ; 20 min
+Score : 96/100 ; valeur 97, décision 96, exactitude 98, prudence 96, SEO 96,
+architecture 96, style 94, accessibilité/release 98
+Gravité : P0 0 ; P1 0 ; P2 0 ; P3 1 documentaire uniquement, car le long journal
+Markdown historique n’est pas Prettier-conforme ; le code ciblé l’est
+Décision orchestrateur : GO_RELEASE_CANDIDATE validé ; commit, push et déploiement
+autorisés sous verrou d’intégration ; le guide n’est pas encore déclaré public
 ```

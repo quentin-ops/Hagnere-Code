@@ -108,6 +108,26 @@ export const GUIDES: GuideEntry[] = [
     ],
   },
   {
+    slug: "remplacer-microsoft-access-application-web",
+    title: "Remplacer Microsoft Access : 7 options comparées",
+    cardTitle: "Remplacer Microsoft Access sans perdre le métier",
+    metaDescription:
+      "Comment remplacer Access sans perdre données ni règles métier ? Inventaire, 7 options, limites des conversions automatiques et migration progressive.",
+    cardDescription:
+      "Un dossier de sortie local, sept options comparées sur les mêmes critères et une migration progressive, sans imposer d’emblée une application web.",
+    heroTitle:
+      "Remplacer Microsoft Access sans perdre le travail qu’il contient",
+    section: "Outils internes et automatisation",
+    datePublished: "2026-07-22T11:09:47+02:00",
+    dateModified: "2026-08-02T22:15:51+02:00",
+    readTimeMin: 20,
+    articleImagePaths: [
+      "/guides/remplacer-microsoft-access-application-web/article-sortie-access-16x9.svg",
+      "/guides/remplacer-microsoft-access-application-web/article-sortie-access-4x3.svg",
+      "/guides/remplacer-microsoft-access-application-web/article-sortie-access-1x1.svg",
+    ],
+  },
+  {
     slug: "valider-idee-saas-avant-developper",
     title: "Comment valider une idée SaaS avant de développer ?",
     cardTitle: "Valider une idée SaaS avant de développer",
