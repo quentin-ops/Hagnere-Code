@@ -2294,3 +2294,83 @@ ne contient ni manifeste antérieur, PDF, capture, cache ou dépendance.
 Décision de l'agent P4-v3 : **PASSE_4_V3_PRETE_G4 — snapshot final P4 à figer ;
 aucune autorisation de contre-audit Q, d'intégration, de déploiement, de
 publication ou d'indexation.**
+
+## 45. Contre-audit transversal indépendant Q4
+
+Le contre-audit final a repris le snapshot P4-v3 sans se fonder sur les notes
+des agents rédacteurs. Il a validé les **18 chemins sur 18** du manifeste dont
+la somme externe est
+`c30551eba962ff9b4145adae5a8aec907dc3cc60fed6e93ae233f53f049d635f`.
+
+Verdict : **GO_QUALITE_GUIDE, 95/100**, avec **0 P0, 0 P1 et 0 P2**. Tous les
+axes d'évaluation dépassent 80 %, y compris la performance, axe le plus bas à
+88 %. Le contrôle a notamment couvert dix couples largeur/thème, le zoom à
+200 %, Axe sans violation, les 26 liens de sources, les calculs, l'image
+1 200 × 630, le PDF navigateur complet de 52 pages et les douze questions de
+FAQ. La suite globale du snapshot comptait encore exactement deux échecs
+attendus : inscription au registre et retrait de la redirection historique.
+
+Cette décision a autorisé l'intégration, mais ne prouvait encore ni push, ni
+déploiement, ni disponibilité publique.
+
+## 46. Intégration et candidat release local
+
+L'orchestrateur a acquis le mutex central le 3 août 2026 à 08:46:50+02:00,
+puis a consolidé trois états sans écraser les travaux parallèles : le snapshot
+P4-v3 du guide, `origin/main` et le lot cumulatif arrêté au guide #28. Le
+snapshot rédactionnel a d'abord été figé au commit `5ea91fc`, avant la fusion
+partagée `1ba06a0`.
+
+### 46.1 Fermeture des deux portes d'intégration
+
+- le guide est inscrit dans `src/lib/guides.ts` sans statut de brouillon et
+  rejoint `PUBLISHED_GUIDES` ;
+- la page lit désormais cette source centrale avec `getGuide`, au lieu de
+  dupliquer ses métadonnées ;
+- le slug est retiré de `LEGACY_GUIDE_SLUGS` et sa destination historique vaut
+  désormais `null` ;
+- le hub, le sitemap et `llms.txt` découvrent le guide depuis le même registre ;
+- le CTA mobile conserve son action projet et son téléphone, puis sort du focus
+  devant la FAQ, le contact et le footer ;
+- les guides #6 à #28 importés par la fusion restent marqués
+  `ready-for-human-review` dans le registre central et ne sont donc pas rendus
+  indexables par cette release.
+
+La fusion a aussi fermé un défaut de build antérieur hors slug : les données
+du guide Microsoft Access ont été déplacées dans `guide-data.ts`, afin que sa
+page Next.js n'exporte plus de champs non autorisés. Le contenu et les
+métadonnées de ce guide n'ont pas changé.
+
+### 46.2 Batterie release locale
+
+- contrôle d'intégration ciblé : **9 fichiers, 115 tests, 115 réussites** ;
+- suite globale : **111 fichiers, 1 071 tests, 1 071 réussites** ;
+- `check:seo` : **33 fichiers, 186 tests, 186 réussites** ;
+- `tsc --noEmit`, ESLint et Prettier : succès ;
+- `npm audit --omit=dev` : **0 vulnérabilité** ;
+- build Next.js 16.2.12 production : compilation, TypeScript et génération
+  des **74 routes** réussis ;
+- artefacts SEO de production : **49 URL**, **32 liens `llms.txt`**, **16 temps
+  de lecture** et **86 blocs JSON-LD** contrôlés.
+
+### 46.3 Preuve servie locale
+
+La route de production locale répond directement **HTTP 200**, sans
+redirection. Elle expose le canonical public exact, `robots=index, follow` et
+exactement `Article` puis `BreadcrumbList`. Le hub, le sitemap et `llms.txt`
+contiennent le slug. L'image Open Graph répond en PNG et mesure
+**1 200 × 630 px**.
+
+Le rendu hydraté a été inspecté à **320, 390, 640 et 1 440 px**, en clair et
+en sombre selon les largeurs : aucun débordement horizontal, aucun overlay
+Next.js et aucun contenu vide. À 320 px, la barre mobile expose
+`/demarrer-un-projet` et `tel:+33374472018` avec deux liens tabulables dans
+l'article ; devant le footer, elle repasse à `aria-hidden=true` et ses liens à
+`tabindex=-1`. Le CTA de contexte et le CTA héros conservent leurs destinations
+distinctes.
+
+L'impression générée par le navigateur compte **52 pages** et contient les
+**12 questions sur 12**. Le candidat local est donc **GO_RELEASE_LOCAL**. Ce
+verdict ne vaut pas encore déploiement, publication publique ou indexation :
+ces états exigent le commit poussé, le déploiement production puis un BAT sur
+l'URL publique.
