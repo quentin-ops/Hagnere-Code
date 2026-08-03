@@ -328,12 +328,6 @@ function FaqAccordionItem({
         id={buttonId}
         type="button"
         onClick={onToggle}
-        onKeyDown={(event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            onToggle();
-          }
-        }}
         aria-expanded={isOpen}
         aria-controls={panelId}
         className={cn(

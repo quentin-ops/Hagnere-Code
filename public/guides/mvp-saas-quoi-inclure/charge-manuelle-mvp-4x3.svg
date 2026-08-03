@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Charge manuelle du pilote fictif Accordia</title>
+  <desc id="desc">Quatre opérations totalisent 237 minutes sur 300, avec 63 minutes restantes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fafaf9"/>
+      <stop offset="1" stop-color="#f5f3ff"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+    <filter id="card" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#18181b" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="900" fill="#f8fafc"/>
+  <circle cx="1080" cy="100" r="220" fill="#8b5cf6" opacity="0.07"/>
+  <circle cx="120" cy="810" r="180" fill="#06b6d4" opacity="0.06"/>
+
+  <text x="80" y="78" fill="#6d28d9" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="750" letter-spacing="3">CAS FICTIF · ACCORDIA · 3 CLIENTS</text>
+  <text x="80" y="130" fill="#18181b" font-family="Inter, Arial, sans-serif" font-size="43" font-weight="780">Le manuel doit tenir dans une capacité écrite</text>
+  <text x="80" y="171" fill="#52525b" font-family="Inter, Arial, sans-serif" font-size="21">Minutes × occurrences par client × clients : aucune inconnue n’est remplacée par zéro.</text>
+
+  <g filter="url(#card)" font-family="Inter, Arial, sans-serif">
+    <g transform="translate(80 230)">
+      <rect width="500" height="135" rx="22" fill="#ffffff" stroke="#ddd6fe"/>
+      <circle cx="48" cy="48" r="22" fill="#ede9fe"/>
+      <text x="48" y="55" text-anchor="middle" fill="#6d28d9" font-size="18" font-weight="750">01</text>
+      <text x="85" y="43" fill="#18181b" font-size="20" font-weight="720">Comptes et accès</text>
+      <text x="85" y="73" fill="#71717a" font-size="17">12 min × 2 occurrences × 3 clients</text>
+      <text x="430" y="116" text-anchor="end" fill="#6d28d9" font-size="37" font-weight="780">72 min</text>
+    </g>
+    <g transform="translate(620 230)">
+      <rect width="500" height="135" rx="22" fill="#ffffff" stroke="#ddd6fe"/>
+      <circle cx="48" cy="48" r="22" fill="#ede9fe"/>
+      <text x="48" y="55" text-anchor="middle" fill="#6d28d9" font-size="18" font-weight="750">02</text>
+      <text x="85" y="43" fill="#18181b" font-size="20" font-weight="720">Données et continuité</text>
+      <text x="85" y="73" fill="#71717a" font-size="17">20 min × 1 occurrence × 3 clients</text>
+      <text x="430" y="116" text-anchor="end" fill="#6d28d9" font-size="37" font-weight="780">60 min</text>
+    </g>
+    <g transform="translate(80 395)">
+      <rect width="500" height="135" rx="22" fill="#ffffff" stroke="#bae6fd"/>
+      <circle cx="48" cy="48" r="22" fill="#cffafe"/>
+      <text x="48" y="55" text-anchor="middle" fill="#0e7490" font-size="18" font-weight="750">03</text>
+      <text x="85" y="43" fill="#18181b" font-size="20" font-weight="720">Vente et droits</text>
+      <text x="85" y="73" fill="#71717a" font-size="17">15 min × 1 occurrence × 3 clients</text>
+      <text x="430" y="116" text-anchor="end" fill="#0e7490" font-size="37" font-weight="780">45 min</text>
+    </g>
+    <g transform="translate(620 395)">
+      <rect width="500" height="135" rx="22" fill="#ffffff" stroke="#bae6fd"/>
+      <circle cx="48" cy="48" r="22" fill="#cffafe"/>
+      <text x="48" y="55" text-anchor="middle" fill="#0e7490" font-size="18" font-weight="750">04</text>
+      <text x="85" y="43" fill="#18181b" font-size="20" font-weight="720">Aide et incidents</text>
+      <text x="85" y="73" fill="#71717a" font-size="17">10 min × 2 occurrences × 3 clients</text>
+      <text x="430" y="116" text-anchor="end" fill="#0e7490" font-size="37" font-weight="780">60 min</text>
+    </g>
+  </g>
+
+  <rect x="80" y="585" width="1040" height="235" rx="28" fill="#18181b"/>
+  <text x="125" y="630" fill="#c4b5fd" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="750" letter-spacing="2">CAPACITÉ DU PILOTE</text>
+  <text x="125" y="689" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="45" font-weight="780">237 min</text>
+  <text x="315" y="689" fill="#a1a1aa" font-family="Inter, Arial, sans-serif" font-size="24">sur 300 min disponibles</text>
+
+  <rect x="125" y="727" width="950" height="30" rx="15" fill="#3f3f46"/>
+  <rect x="125" y="727" width="751" height="30" rx="15" fill="#7c3aed"/>
+  <line x1="876" y1="715" x2="876" y2="770" stroke="#ffffff" stroke-width="2" opacity="0.85"/>
+  <text x="876" y="798" text-anchor="middle" fill="#67e8f9" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="750">63 min restantes</text>
+  <text x="1075" y="690" text-anchor="end" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="720">PILOTE CANDIDAT</text>
+  <text x="1075" y="715" text-anchor="end" fill="#a1a1aa" font-family="Inter, Arial, sans-serif" font-size="15">revue humaine requise</text>
+</svg>

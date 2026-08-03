@@ -135,6 +135,8 @@ export interface GuidePremiumStrategyCtaData {
   ctaHref?: string;
   phoneLabel?: string;
   phoneHref?: string;
+  /** Masque l'action téléphonique lorsqu'un guide impose un CTA unique. */
+  showPhoneCta?: boolean;
 }
 
 /** Repli de destination lorsqu'une page n'a pas fourni de lien d'action. */
@@ -545,7 +547,12 @@ export function GuidePremiumLayout({
               </div>
 
               {/* H1 — serif Playfair Display */}
-              <h1 className="max-w-3xl text-balance font-[family-name:var(--font-playfair)] text-[34px] font-bold leading-[1.05] tracking-[-0.02em] text-zinc-950 dark:text-white sm:text-[44px] sm:leading-[1.05] md:text-[52px] md:leading-[1.04]">
+              <h1
+                aria-label={[heroTitle, heroTitleEm, heroTitleSuffix]
+                  .filter(Boolean)
+                  .join(" ")}
+                className="max-w-3xl text-balance font-[family-name:var(--font-playfair)] text-[34px] font-bold leading-[1.05] tracking-[-0.02em] text-zinc-950 dark:text-white sm:text-[44px] sm:leading-[1.05] md:text-[52px] md:leading-[1.04]"
+              >
                 {heroTitle}
                 {heroTitleEm && (
                   <>
@@ -814,7 +821,10 @@ export function GuidePremiumCase({
    ────────────────────────────────────────────── */
 function PremiumStrategyCta({ data }: { data: GuidePremiumStrategyCtaData }) {
   return (
-    <section className="bg-[#fbfaf7] dark:bg-zinc-950 pt-12 sm:pt-14 md:pt-16 pb-2 print:hidden">
+    <section
+      data-guide-strategy-cta="true"
+      className="bg-[#fbfaf7] dark:bg-zinc-950 pt-12 sm:pt-14 md:pt-16 pb-2 print:hidden"
+    >
       <div className="container mx-auto px-4 max-w-[1180px]">
         <div
           className="relative overflow-hidden rounded-3xl border border-[#E8DFCF] bg-[#F5EFE0] dark:bg-zinc-900 p-6 sm:p-8 md:p-10"
@@ -890,6 +900,7 @@ function PremiumStrategyCta({ data }: { data: GuidePremiumStrategyCtaData }) {
 
             <div className="space-y-2.5 lg:pt-1">
               <Link
+                data-guide-primary-cta="true"
                 href={data.ctaHref ?? CTA_HREF_DEFAUT}
                 className="flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-xl bg-zinc-950 text-white text-sm font-semibold hover:bg-zinc-800 transition-colors"
               >
@@ -897,13 +908,15 @@ function PremiumStrategyCta({ data }: { data: GuidePremiumStrategyCtaData }) {
                 {data.ctaLabel ?? CTA_LABEL_DEFAUT}
                 <ArrowRight className="size-4" aria-hidden="true" />
               </Link>
-              <a
-                href={data.phoneHref ?? telHref(data.phoneLabel)}
-                className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 text-zinc-800 dark:text-white text-sm font-medium hover:bg-zinc-50 transition-colors"
-              >
-                <Phone className="size-4" aria-hidden="true" />
-                {data.phoneLabel ?? TEL_CABINET_LABEL}
-              </a>
+              {data.showPhoneCta !== false && (
+                <a
+                  href={data.phoneHref ?? telHref(data.phoneLabel)}
+                  className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 text-zinc-800 dark:text-white text-sm font-medium hover:bg-zinc-50 transition-colors"
+                >
+                  <Phone className="size-4" aria-hidden="true" />
+                  {data.phoneLabel ?? TEL_CABINET_LABEL}
+                </a>
+              )}
             </div>
           </div>
         </div>

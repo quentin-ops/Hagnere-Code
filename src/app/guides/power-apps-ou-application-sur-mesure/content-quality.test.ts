@@ -3,7 +3,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
-import { PUBLISHED_GUIDES } from "@/lib/guides";
+import { getGuide, PUBLISHED_GUIDES } from "@/lib/guides";
 import { getLegacyGuideDestination } from "@/lib/legacy-guide-redirects";
 import Page, { metadata } from "./page";
 
@@ -23,19 +23,7 @@ const ogSource = readFileSync(
 );
 const normalizedPage = pageSource.replace(/\s+/g, " ");
 const renderedPage = renderToStaticMarkup(Page());
-const powerAppsGuide = {
-  slug: "power-apps-ou-application-sur-mesure",
-  title: String(metadata.title),
-  metaDescription: String(metadata.description),
-  datePublished: "2026-07-23T21:31:02+02:00",
-  dateModified: pageSource.match(/dateModified: "([^"]+)"/)?.[1] ?? "missing",
-  readTimeMin: Number(pageSource.match(/readTimeMin: (\d+)/)?.[1]),
-  editorialStatus: pageSource.includes(
-    'editorialStatus: "ready-for-human-review"',
-  )
-    ? "ready-for-human-review"
-    : undefined,
-};
+const powerAppsGuide = getGuide("power-apps-ou-application-sur-mesure");
 const structuredData = [
   ...renderedPage.matchAll(
     /<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g,
@@ -147,11 +135,12 @@ describe("content quality for Power Apps or custom application guide", () => {
     );
   });
 
-  it("keeps the isolated P1 page private and outside central discovery", () => {
-    expect(powerAppsGuide.editorialStatus).toBe("ready-for-human-review");
+  it("publishes the approved guide through the central registry", () => {
+    expect(powerAppsGuide.editorialStatus).toBeUndefined();
     expect(
       PUBLISHED_GUIDES.some((guide) => guide.slug === powerAppsGuide.slug),
-    ).toBe(false);
+    ).toBe(true);
+    // A local or preview build remains private; production enables indexing.
     expect(metadata.robots).toMatchObject({ index: false, follow: false });
     expect(metadata.alternates?.canonical).toBe(
       "https://hagnere-code.ai/guides/power-apps-ou-application-sur-mesure",
@@ -160,11 +149,13 @@ describe("content quality for Power Apps or custom application guide", () => {
       publishedTime: "2026-07-23T21:31:02+02:00",
       modifiedTime: powerAppsGuide.dateModified,
     });
-    expect(getLegacyGuideDestination(powerAppsGuide.slug)).toBe(
-      "/services/outils-internes-sur-mesure",
+    expect(getLegacyGuideDestination(powerAppsGuide.slug)).toBeNull();
+    expect(pageSource).toContain(
+      'getGuide("power-apps-ou-application-sur-mesure")',
     );
-    expect(pageSource).not.toContain("getGuide(");
-    expect(pageSource).toContain('editorialStatus: "ready-for-human-review"');
+    expect(pageSource).not.toContain(
+      'editorialStatus: "ready-for-human-review"',
+    );
   });
 
   it("emits only Article and BreadcrumbList structured data", () => {
@@ -240,9 +231,10 @@ describe("content quality for Power Apps or custom application guide", () => {
       "Si la correction tient, une migration entière devient peut-être inutile",
       "Réunir les preuves et comparer quatre coûts totaux de possession (TCO)",
     ]) {
-      expect(`${normalizedPage} ${workbenchSource}`, formulation).toContain(
+      expect(
+        `${normalizedPage} ${workbenchSource} ${JSON.stringify(powerAppsGuide)}`,
         formulation,
-      );
+      ).toContain(formulation);
     }
 
     for (const residue of [

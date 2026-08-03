@@ -17,6 +17,66 @@ const guidesHubSource = fs.readFileSync(
   path.join(process.cwd(), "src/components/guides/GuidesHubPage.tsx"),
   "utf8",
 );
+const validationGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/valider-idee-saas-avant-developper/page.tsx",
+  ),
+  "utf8",
+);
+const repriseGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/reprendre-logiciel-metier-existant/page.tsx",
+  ),
+  "utf8",
+);
+const migrationGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/migrer-logiciel-metier-sans-interruption/page.tsx",
+  ),
+  "utf8",
+);
+const acceptancePlanGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/plan-recette-application-metier/page.tsx",
+  ),
+  "utf8",
+);
+const providerSelectionGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/choisir-prestataire-application-metier/page.tsx",
+  ),
+  "utf8",
+);
+const securityGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/securite-application-metier/page.tsx",
+  ),
+  "utf8",
+);
+const accessRightsGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/droits-acces-application-metier/page.tsx",
+  ),
+  "utf8",
+);
+const saasSpecificationGuideSource = fs.readFileSync(
+  path.join(process.cwd(), "src/app/guides/cahier-des-charges-saas/page.tsx"),
+  "utf8",
+);
+const outilsScenariosSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/components/outils-internes/sections/scenarios.ts",
+  ),
+  "utf8",
+);
 
 afterEach(() => {
   vi.unstubAllEnvs();
@@ -31,6 +91,16 @@ describe("guide registry after the editorial reset", () => {
       "remplacer-microsoft-access-application-web",
       "valider-idee-saas-avant-developper",
       "prix-gestion-google-ads",
+      "power-apps-ou-application-sur-mesure",
+      "reprendre-logiciel-metier-existant",
+      "migrer-logiciel-metier-sans-interruption",
+      "plan-recette-application-metier",
+      "choisir-prestataire-application-metier",
+      "securite-application-metier",
+      "droits-acces-application-metier",
+      "cahier-des-charges-saas",
+      "combien-de-temps-developper-saas",
+      "mvp-saas-quoi-inclure",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
@@ -39,7 +109,65 @@ describe("guide registry after the editorial reset", () => {
       "remplacer-microsoft-access-application-web",
       "valider-idee-saas-avant-developper",
       "prix-gestion-google-ads",
+      "power-apps-ou-application-sur-mesure",
     ]);
+  });
+
+  it("links the migration guide from the takeover guide and service context", () => {
+    const migrationPath = "/guides/migrer-logiciel-metier-sans-interruption";
+
+    expect(repriseGuideSource).toContain(migrationPath);
+    expect(outilsScenariosSource).toContain(migrationPath);
+  });
+
+  it("links the acceptance-plan guide from migration and service context", () => {
+    const acceptancePlanPath = "/guides/plan-recette-application-metier";
+
+    expect(migrationGuideSource).toContain(acceptancePlanPath);
+    expect(outilsScenariosSource).toContain(acceptancePlanPath);
+  });
+
+  it("links the provider-selection guide from acceptance and service context", () => {
+    const providerSelectionPath =
+      "/guides/choisir-prestataire-application-metier";
+
+    expect(acceptancePlanGuideSource).toContain(providerSelectionPath);
+    expect(outilsScenariosSource).toContain(providerSelectionPath);
+  });
+
+  it("links the security guide from provider selection and service context", () => {
+    const securityPath = "/guides/securite-application-metier";
+
+    expect(providerSelectionGuideSource).toContain(securityPath);
+    expect(outilsScenariosSource).toContain(securityPath);
+  });
+
+  it("links the access-rights guide from security and service context", () => {
+    const accessRightsPath = "/guides/droits-acces-application-metier";
+
+    expect(securityGuideSource).toContain(accessRightsPath);
+    expect(outilsScenariosSource).toContain(accessRightsPath);
+  });
+
+  it("links the SaaS specification guide from validation and access rights", () => {
+    const saasSpecificationPath = "/guides/cahier-des-charges-saas";
+
+    expect(validationGuideSource).toContain(saasSpecificationPath);
+    expect(accessRightsGuideSource).toContain(saasSpecificationPath);
+  });
+
+  it("links the SaaS schedule guide from validation and specification", () => {
+    const saasSchedulePath = "/guides/combien-de-temps-developper-saas";
+
+    expect(validationGuideSource).toContain(saasSchedulePath);
+    expect(saasSpecificationGuideSource).toContain(saasSchedulePath);
+  });
+
+  it("links the MVP contract guide from validation and specification", () => {
+    const mvpContractPath = "/guides/mvp-saas-quoi-inclure";
+
+    expect(validationGuideSource).toContain(mvpContractPath);
+    expect(saasSpecificationGuideSource).toContain(mvpContractPath);
   });
 
   it("keeps metadata unique, dated and restrained", () => {
@@ -182,12 +310,22 @@ describe("guide registry after the editorial reset", () => {
         path.join(guidesRoot, guide.slug, "page.tsx"),
         "utf8",
       );
+      const guideDataPath = path.join(
+        guidesRoot,
+        guide.slug,
+        "guide-data.ts",
+      );
+      const implementationSource = fs.existsSync(guideDataPath)
+        ? `${source}\n${fs.readFileSync(guideDataPath, "utf8")}`
+        : source;
       const [article, breadcrumb] = buildGuideStructuredData(
         guide,
         "Titre du fil d’Ariane",
       );
 
-      expect(source, guide.slug).toContain("buildGuideStructuredData");
+      expect(implementationSource, guide.slug).toContain(
+        "buildGuideStructuredData",
+      );
       expect(article["@type"], guide.slug).toBe("Article");
       expect(article.headline, guide.slug).toBe(guide.heroTitle);
       expect(article.author["@id"], guide.slug).toBe(QUENTIN_HAGNERE_ID);
@@ -202,7 +340,9 @@ describe("guide registry after the editorial reset", () => {
       expect(breadcrumb["@type"], guide.slug).toBe("BreadcrumbList");
 
       for (const pattern of prohibited) {
-        expect(source, `${guide.slug}: ${pattern}`).not.toMatch(pattern);
+        expect(implementationSource, `${guide.slug}: ${pattern}`).not.toMatch(
+          pattern,
+        );
       }
     }
   });

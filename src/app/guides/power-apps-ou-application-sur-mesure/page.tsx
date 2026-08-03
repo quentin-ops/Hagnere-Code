@@ -25,30 +25,11 @@ import {
   buildGuideMetadata,
   buildGuideStructuredData,
 } from "@/lib/guide-page-seo";
-import { formatGuideDate, type GuideEntry } from "@/lib/guides";
+import { formatGuideDate, getGuide } from "@/lib/guides";
 import { TEAM } from "@/lib/team";
 import { PowerAppsDecisionWorkbench } from "./power-apps-decision-workbench";
 
-const powerAppsGuide = {
-  slug: "power-apps-ou-application-sur-mesure",
-  title: "Power Apps ou application sur mesure : comment choisir ?",
-  cardTitle: "Power Apps ou application sur mesure",
-  metaDescription:
-    "Power Apps ou application sur mesure ? Comparez limites vérifiées, coûts à 1, 3 et 5 ans, gouvernance et sortie avant de choisir.",
-  cardDescription:
-    "Une méthode sans score opaque, quatre coûts totaux de possession (TCO) à renseigner et un plan de migration réversible pour comparer les options.",
-  heroTitle: "Power Apps ou application sur mesure : comment choisir ?",
-  section: "Outils internes et automatisation",
-  datePublished: "2026-07-23T21:31:02+02:00",
-  dateModified: "2026-08-03T07:58:56+02:00",
-  readTimeMin: 26,
-  articleImagePaths: [
-    "/guides/power-apps-ou-application-sur-mesure/article-power-apps-16x9.svg",
-    "/guides/power-apps-ou-application-sur-mesure/article-power-apps-4x3.svg",
-    "/guides/power-apps-ou-application-sur-mesure/article-power-apps-1x1.svg",
-  ],
-  editorialStatus: "ready-for-human-review",
-} satisfies GuideEntry;
+const powerAppsGuide = getGuide("power-apps-ou-application-sur-mesure");
 
 const breadcrumbName = "Power Apps ou sur mesure";
 

@@ -18,17 +18,11 @@ import {
 } from "@/components/guides/guide-premium-layout";
 import type { GuidePremiumFaqCategory } from "@/components/guides/guide-premium-types";
 import { GuidesShell } from "@/components/guides/GuidesShell";
-import {
-  buildGuideMetadata,
-  buildGuideStructuredData,
-} from "@/lib/guide-page-seo";
-import { formatGuideDate, getGuide } from "@/lib/guides";
+import { buildGuideMetadata } from "@/lib/guide-page-seo";
+import { formatGuideDate } from "@/lib/guides";
 import { TEAM } from "@/lib/team";
 import { AccessExitDossierTool } from "./access-exit-dossier";
-
-export const accessGuide = getGuide(
-  "remplacer-microsoft-access-application-web",
-);
+import { accessGuide, structuredData } from "./guide-data";
 
 const pagePath = `/guides/${accessGuide.slug}`;
 const breadcrumbName = "Remplacer Microsoft Access";
@@ -36,11 +30,6 @@ const breadcrumbName = "Remplacer Microsoft Access";
 export const metadata = buildGuideMetadata(
   accessGuide,
   "Dossier de sortie Microsoft Access : inventaire, options et contrôles de reprise",
-);
-
-export const structuredData = buildGuideStructuredData(
-  accessGuide,
-  breadcrumbName,
 );
 
 const toc = [

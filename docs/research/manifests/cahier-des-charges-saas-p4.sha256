@@ -1,1 +1,15 @@
-35488cc07f4a83f5518dc63be3c6fb268a4831f1d3f318fbccdcb2d1a3e5f071  docs/research/cahier-des-charges-saas.md
+a930c6d062c523f6f2fd4f584ba81c53122db349d0a735084d2514429bbf3ed4  docs/research/cahier-des-charges-saas-input-freeze.md
+94f878a972b9ad034dfaf5291043a9904cbfc133246f56bcf94a8d0b31e24adb  docs/research/cahier-des-charges-saas.md
+c1dad2b8d838ea8e10e942f15e462aca76596b054406af655a8bdf56b742154c  public/guides/cahier-des-charges-saas/cahier-saas-16x9.svg
+322e86b1f126db05f18b72e479c2475456f59fd9d4c81e7e673a3d7dff2e17a7  public/guides/cahier-des-charges-saas/cahier-saas-16x9.webp
+a24db70975422c4bfd6cd715709df84dcd35e7b65c948ea61a8be3dcb30e8be6  public/guides/cahier-des-charges-saas/cahier-saas-1x1.svg
+65493d81625d27aaf8a9612c923a288ce6cdf1e835f70e97bf20ea484a9c2ed2  public/guides/cahier-des-charges-saas/cahier-saas-1x1.webp
+04a2d6058a39bda5c361c2962cf123a46e96e8c69298326343f61fd02a3e5b57  public/guides/cahier-des-charges-saas/cahier-saas-4x3.svg
+8ed54cd9159604d3ea69f52bc8958115a9cccb71bf7e3381c14384fa625ab438  public/guides/cahier-des-charges-saas/cahier-saas-4x3.webp
+942792c91ef53fe147bf5a763dce9f0abd931a4c7e22b672505eecfc8af9ba8d  src/app/guides/cahier-des-charges-saas/content-quality.test.ts
+65a18ffa97c697e7c1b916453d401e700d35a0bf4c958721cb676c0dbf140ef1  src/app/guides/cahier-des-charges-saas/opengraph-image.tsx
+d9b9f598d20ace128947ed40d889ddbd9f4c609cd6190732c85fc7045003cbff  src/app/guides/cahier-des-charges-saas/page.tsx
+b592edd52984fec85064d4440b3991584c3cf138c48b5e6031c1d577ccac9b44  src/app/guides/cahier-des-charges-saas/saas-specification-engine.test.ts
+5e0b2b09cd4e6f238b0ea8706b884531a568f3f0d57377b12102d71bdb44c511  src/app/guides/cahier-des-charges-saas/saas-specification-engine.ts
+7f5201a164ffae116de8106fd6147e94b88a381d6b9c8f98baa724944c2fd9eb  src/app/guides/cahier-des-charges-saas/saas-specification-tool.test.tsx
+98eb24acb761e6bd3665aa6cc06e627c537065f175917b3711159a70819d839a  src/app/guides/cahier-des-charges-saas/saas-specification-tool.tsx

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Cycle d’un droit d’accès applicatif</title>
+  <desc id="desc">Schéma fictif sans score montrant la demande, la validation, l’application, le test, la revue et le retrait d’un droit.</desc>
+  <defs>
+    <linearGradient id="bg11" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#09090B"/>
+      <stop offset="1" stop-color="#172554"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1000" fill="url(#bg11)"/>
+  <circle cx="850" cy="90" r="220" fill="#1D4ED8" opacity=".17"/>
+  <text x="64" y="75" fill="#67E8F9" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="2.5">SCHÉMA · DONNÉES FICTIVES · SANS SCORE</text>
+  <text x="64" y="137" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700">Un droit a un début et une fin</text>
+  <text x="64" y="179" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="21">Le cycle évite l’accès temporaire devenu permanent</text>
+
+  <g fill="#67E8F9" opacity=".95" aria-hidden="true">
+    <path d="M624 350 L592 330 L596 366 Z"/>
+    <path d="M698 502 H722 L710 528 Z"/>
+    <path d="M588 710 L616 683 L622 716 Z"/>
+    <path d="M378 690 L410 684 L402 716 Z"/>
+    <path d="M278 528 L290 502 L302 528 Z"/>
+    <path d="M422 330 L390 338 L401 366 Z"/>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <circle cx="500" cy="285" r="70" fill="#0F172A"/>
+    <text x="500" y="278" text-anchor="middle" fill="#67E8F9" font-size="17" font-weight="700">DEMANDER</text>
+    <text x="500" y="307" text-anchor="middle" fill="#FFFFFF" font-size="18">Besoin + portée</text>
+
+    <circle cx="710" cy="400" r="70" fill="#0F172A"/>
+    <text x="710" y="393" text-anchor="middle" fill="#7DD3FC" font-size="17" font-weight="700">VALIDER</text>
+    <text x="710" y="422" text-anchor="middle" fill="#FFFFFF" font-size="18">Métier nommé</text>
+
+    <circle cx="710" cy="640" r="70" fill="#0F172A"/>
+    <text x="710" y="633" text-anchor="middle" fill="#93C5FD" font-size="17" font-weight="700">APPLIQUER</text>
+    <text x="710" y="662" text-anchor="middle" fill="#FFFFFF" font-size="18">Droit borné</text>
+
+    <circle cx="500" cy="760" r="70" fill="#0F172A"/>
+    <text x="500" y="753" text-anchor="middle" fill="#C7D2FE" font-size="17" font-weight="700">TESTER</text>
+    <text x="500" y="782" text-anchor="middle" fill="#FFFFFF" font-size="18">Passer + refuser</text>
+
+    <circle cx="290" cy="640" r="70" fill="#0F172A"/>
+    <text x="290" y="633" text-anchor="middle" fill="#DDD6FE" font-size="17" font-weight="700">REVOIR</text>
+    <text x="290" y="662" text-anchor="middle" fill="#FFFFFF" font-size="17">Événement + date</text>
+
+    <circle cx="290" cy="400" r="70" fill="#7F1D1D"/>
+    <text x="290" y="393" text-anchor="middle" fill="#FECACA" font-size="17" font-weight="700">RETIRER</text>
+    <text x="290" y="422" text-anchor="middle" fill="#FFFFFF" font-size="16">À la date prévue</text>
+
+    <circle cx="500" cy="520" r="115" fill="#111827"/>
+    <text x="500" y="490" text-anchor="middle" fill="#FFFFFF" font-size="27" font-weight="700">RÈGLE</text>
+    <text x="500" y="526" text-anchor="middle" fill="#E2E8F0" font-size="20">Objet · action</text>
+    <text x="500" y="556" text-anchor="middle" fill="#E2E8F0" font-size="20">relation · portée</text>
+    <text x="500" y="592" text-anchor="middle" fill="#FCA5A5" font-size="18" font-weight="700">INCONNU = STOP</text>
+  </g>
+
+  <text x="64" y="930" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="19">La trace documente le cycle ; elle ne crée pas une alerte ni une conformité.</text>
+</svg>

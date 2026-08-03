@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Cinq dimensions, deux tests et une trace</title>
+  <desc id="desc">Schéma fictif sans score : fonction, objet, action, relation et décision, puis un test autorisé, un test refusé et une trace.</desc>
+  <defs>
+    <linearGradient id="bg43" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#09090B"/>
+      <stop offset="1" stop-color="#172554"/>
+    </linearGradient>
+    <linearGradient id="line43" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22D3EE"/>
+      <stop offset="1" stop-color="#60A5FA"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg43)"/>
+  <circle cx="1050" cy="80" r="230" fill="#1D4ED8" opacity=".18"/>
+  <text x="70" y="82" fill="#67E8F9" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" letter-spacing="3">SCHÉMA · DONNÉES FICTIVES · SANS SCORE</text>
+  <text x="70" y="145" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700">Une autorisation doit être explicable</text>
+  <text x="70" y="191" fill="#CBD5E1" font-family="Arial, Helvetica, sans-serif" font-size="22">Cinq dimensions, deux tests et une trace</text>
+
+  <g>
+    <path d="M220 315 H980" stroke="url(#line43)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M220 515 H980" stroke="url(#line43)" stroke-width="6" stroke-linecap="round"/>
+
+    <g font-family="Arial, Helvetica, sans-serif">
+      <circle cx="220" cy="315" r="76" fill="#0F172A" stroke="#22D3EE" stroke-width="3"/>
+      <text x="220" y="307" text-anchor="middle" fill="#67E8F9" font-size="17" font-weight="700">FONCTION</text>
+      <text x="220" y="338" text-anchor="middle" fill="#FFFFFF" font-size="21">Responsable</text>
+
+      <circle cx="410" cy="315" r="76" fill="#0F172A" stroke="#38BDF8" stroke-width="3"/>
+      <text x="410" y="307" text-anchor="middle" fill="#7DD3FC" font-size="17" font-weight="700">OBJET</text>
+      <text x="410" y="338" text-anchor="middle" fill="#FFFFFF" font-size="21">Demande</text>
+
+      <circle cx="600" cy="315" r="76" fill="#0F172A" stroke="#60A5FA" stroke-width="3"/>
+      <text x="600" y="307" text-anchor="middle" fill="#93C5FD" font-size="17" font-weight="700">ACTION</text>
+      <text x="600" y="338" text-anchor="middle" fill="#FFFFFF" font-size="21">Valider</text>
+
+      <circle cx="790" cy="315" r="76" fill="#0F172A" stroke="#818CF8" stroke-width="3"/>
+      <text x="790" y="300" text-anchor="middle" fill="#A5B4FC" font-size="17" font-weight="700">RELATION</text>
+      <text x="790" y="330" text-anchor="middle" fill="#FFFFFF" font-size="20">Son équipe</text>
+      <text x="790" y="354" text-anchor="middle" fill="#94A3B8" font-size="15">soumise</text>
+
+      <circle cx="980" cy="315" r="76" fill="#064E3B" stroke="#34D399" stroke-width="3"/>
+      <text x="980" y="307" text-anchor="middle" fill="#A7F3D0" font-size="17" font-weight="700">DÉCISION</text>
+      <text x="980" y="338" text-anchor="middle" fill="#FFFFFF" font-size="20">Autorisé</text>
+
+      <circle cx="315" cy="515" r="76" fill="#0F172A" stroke="#22D3EE" stroke-width="3"/>
+      <text x="315" y="507" text-anchor="middle" fill="#67E8F9" font-size="17" font-weight="700">TEST +</text>
+      <text x="315" y="538" text-anchor="middle" fill="#FFFFFF" font-size="20">Bonne équipe</text>
+
+      <circle cx="600" cy="515" r="76" fill="#7F1D1D" stroke="#F87171" stroke-width="3"/>
+      <text x="600" y="507" text-anchor="middle" fill="#FECACA" font-size="17" font-weight="700">TEST −</text>
+      <text x="600" y="538" text-anchor="middle" fill="#FFFFFF" font-size="20">Autre équipe</text>
+
+      <circle cx="885" cy="515" r="76" fill="#312E81" stroke="#818CF8" stroke-width="3"/>
+      <text x="885" y="507" text-anchor="middle" fill="#C7D2FE" font-size="17" font-weight="700">TRACE</text>
+      <text x="885" y="538" text-anchor="middle" fill="#FFFFFF" font-size="20">Action + refus</text>
+    </g>
+  </g>
+
+  <rect x="70" y="665" width="1060" height="112" rx="24" fill="#0F172A" stroke="#334155" stroke-width="2"/>
+  <text x="105" y="711" fill="#FCA5A5" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700">STOP</text>
+  <text x="190" y="711" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="21">si l’objet, l’action ou le responsable reste inconnu.</text>
+  <text x="105" y="752" fill="#A7F3D0" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700">PRÊT À RELIRE</text>
+  <text x="290" y="752" fill="#E2E8F0" font-family="Arial, Helvetica, sans-serif" font-size="21">ne signifie ni appliqué, ni conforme.</text>
+
+  <text x="70" y="835" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="19">Refus par défaut · cycle arrivée–mobilité–départ · test autorisé + test refusé</text>
+</svg>

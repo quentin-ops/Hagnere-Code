@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Carte d'une décision de cahier des charges SaaS</title>
+  <desc id="desc">Cinq champs distinguent décision, responsable, preuve, exclusion et inconnue bloquante. Cette dernière reste un STOP sans score.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="1" stop-color="#17223a"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <rect x="72" y="64" width="756" height="772" rx="42" fill="#0d1d30" stroke="#294159" stroke-width="2"/>
+  <rect x="72" y="64" width="756" height="12" rx="6" fill="url(#bar)"/>
+  <text x="118" y="134" fill="#67e8f9" font-family="Arial, sans-serif" font-size="19" font-weight="700" letter-spacing="4">UNE RÈGLE PRODUIT</text>
+  <text x="118" y="188" fill="#f8fafc" font-family="Arial, sans-serif" font-size="40" font-weight="700">Cinq champs distincts</text>
+  <g font-family="Arial, sans-serif">
+    <g transform="translate(118 236)">
+      <rect width="312" height="166" rx="24" fill="#102b3d" stroke="#22d3ee" stroke-width="2"/>
+      <circle cx="42" cy="42" r="20" fill="#164e63"/>
+      <text x="42" y="49" text-anchor="middle" fill="#67e8f9" font-size="20" font-weight="700">1</text>
+      <text x="78" y="48" fill="#67e8f9" font-size="17" font-weight="700" letter-spacing="2">DÉCISION</text>
+      <text x="28" y="94" fill="#fff" font-size="20" font-weight="700">Comportement attendu</text>
+      <text x="28" y="126" fill="#a5b4c8" font-size="16">situation · règle · résultat</text>
+    </g>
+    <g transform="translate(470 236)">
+      <rect width="312" height="166" rx="24" fill="#112841" stroke="#60a5fa" stroke-width="2"/>
+      <circle cx="42" cy="42" r="20" fill="#1e3a8a"/>
+      <text x="42" y="49" text-anchor="middle" fill="#bfdbfe" font-size="20" font-weight="700">2</text>
+      <text x="78" y="48" fill="#93c5fd" font-size="17" font-weight="700" letter-spacing="2">RESPONSABLE</text>
+      <text x="28" y="94" fill="#fff" font-size="20" font-weight="700">Personne qui tranche</text>
+      <text x="28" y="126" fill="#a5b4c8" font-size="16">décide · exécute · accepte</text>
+    </g>
+    <g transform="translate(118 438)">
+      <rect width="312" height="166" rx="24" fill="#17243f" stroke="#818cf8" stroke-width="2"/>
+      <circle cx="42" cy="42" r="20" fill="#312e81"/>
+      <text x="42" y="49" text-anchor="middle" fill="#c7d2fe" font-size="20" font-weight="700">3</text>
+      <text x="78" y="48" fill="#a5b4fc" font-size="17" font-weight="700" letter-spacing="2">PREUVE</text>
+      <text x="28" y="94" fill="#fff" font-size="20" font-weight="700">Scénario rejouable</text>
+      <text x="28" y="126" fill="#a5b4c8" font-size="16">action · attendu · refus · trace</text>
+    </g>
+    <g transform="translate(470 438)">
+      <rect width="312" height="166" rx="24" fill="#211f3c" stroke="#a78bfa" stroke-width="2"/>
+      <circle cx="42" cy="42" r="20" fill="#4c1d95"/>
+      <text x="42" y="49" text-anchor="middle" fill="#ddd6fe" font-size="20" font-weight="700">4</text>
+      <text x="78" y="48" fill="#c4b5fd" font-size="17" font-weight="700" letter-spacing="2">EXCLUSION</text>
+      <text x="28" y="94" fill="#fff" font-size="20" font-weight="700">Hors du lot principal</text>
+      <text x="28" y="126" fill="#a5b4c8" font-size="16">séparé · visible · non chiffré</text>
+    </g>
+    <rect x="118" y="654" width="664" height="122" rx="28" fill="#3b1724" stroke="#fb7185" stroke-width="2"/>
+    <text x="154" y="700" fill="#fecdd3" font-size="17" font-weight="700" letter-spacing="3">INCONNUE BLOQUANTE</text>
+    <text x="154" y="744" fill="#fff" font-size="26" font-weight="700">À décider / STOP · aucun score ne compense</text>
+  </g>
+  <text x="450" y="816" text-anchor="middle" fill="#8293a8" font-family="Arial, sans-serif" font-size="16">Structure de consultation · pas une acceptation automatique</text>
+</svg>
