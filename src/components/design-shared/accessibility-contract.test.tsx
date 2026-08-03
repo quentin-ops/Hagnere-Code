@@ -14,6 +14,7 @@ import { faqHtml as auditFaq } from "@/components/audit-technique/sections/faq";
 import { faqHtml as maintenanceFaq } from "@/components/maintenance-evolution/sections/faq";
 import { GuideTable } from "@/components/guides/guide-content-blocks";
 import { MathChallenge } from "@/components/project-funnel/MathChallenge";
+import { ContactProjectSection } from "@/components/design-shared/SiteFooter";
 
 const scenarios = [
   auditScenarios,
@@ -31,6 +32,17 @@ function attribute(tag: string, name: string): string | undefined {
 }
 
 describe("public accessibility contracts", () => {
+  it("keeps the keyboard skip link out of printed pages", () => {
+    const globalStyles = readFileSync(
+      join(process.cwd(), "src/app/globals.css"),
+      "utf8",
+    );
+
+    expect(globalStyles).toMatch(
+      /@media print\s*{[\s\S]*?\.skip-to-content\s*{[\s\S]*?display:\s*none\s*!important;/,
+    );
+  });
+
   it.each(scenarios)("links every scenario tab to one named panel", (html) => {
     const tabs = html.match(/<button[^>]+role="tab"[^>]*>/g) || [];
     const panels = html.match(/<div[^>]+role="tabpanel"[^>]*>/g) || [];
@@ -49,7 +61,9 @@ describe("public accessibility contracts", () => {
       const selected = attribute(tab, "aria-selected");
       const tabId = attribute(tab, "id");
       const panelId = attribute(tab, "aria-controls");
-      const panel = panels.find((candidate) => attribute(candidate, "id") === panelId);
+      const panel = panels.find(
+        (candidate) => attribute(candidate, "id") === panelId,
+      );
 
       expect(tabId).toBeTruthy();
       expect(panelId).toBeTruthy();
@@ -75,7 +89,10 @@ describe("public accessibility contracts", () => {
 
   it("keeps scenario keyboard navigation and roving tabindex in shared code", () => {
     const source = readFileSync(
-      join(process.cwd(), "src/components/design-shared/useDesignInteractive.ts"),
+      join(
+        process.cwd(),
+        "src/components/design-shared/useDesignInteractive.ts",
+      ),
       "utf8",
     );
     expect(source).toContain('e.key === "Home"');
@@ -99,8 +116,14 @@ describe("public accessibility contracts", () => {
       />,
     );
 
-    const firstLabel = attribute(first.match(/<div[^>]+role="region"[^>]*>/)?.[0] || "", "aria-label");
-    const secondLabel = attribute(second.match(/<div[^>]+role="region"[^>]*>/)?.[0] || "", "aria-label");
+    const firstLabel = attribute(
+      first.match(/<div[^>]+role="region"[^>]*>/)?.[0] || "",
+      "aria-label",
+    );
+    const secondLabel = attribute(
+      second.match(/<div[^>]+role="region"[^>]*>/)?.[0] || "",
+      "aria-label",
+    );
     expect(first).toContain("<caption");
     expect(firstLabel).toContain("Hébergement");
     expect(secondLabel).toContain("Maintenance");
@@ -111,7 +134,8 @@ describe("public accessibility contracts", () => {
     const html = renderToStaticMarkup(
       <MathChallenge onChange={() => undefined} error="Réponse incorrecte" />,
     );
-    const input = html.match(/<input[^>]+name="mathChallengeAnswer"[^>]*>/)?.[0] || "";
+    const input =
+      html.match(/<input[^>]+name="mathChallengeAnswer"[^>]*>/)?.[0] || "";
     const describedBy = attribute(input, "aria-describedby") || "";
     const errorId = html.match(/<em id="([^"]+)" role="alert"/)?.[1];
 
@@ -158,5 +182,22 @@ describe("public accessibility contracts", () => {
     expect(calculator).toContain('role="alert"');
     expect(calculator).toContain("focusFirstCaptureError");
     expect(footer).toContain('aria-labelledby="contact-project-title"');
+  });
+
+  it("preserves the semantic space in the shared contact heading", () => {
+    const html = renderToStaticMarkup(<ContactProjectSection />);
+    const headingMarkup =
+      html.match(/<h2 id="contact-project-title">([\s\S]*?)<\/h2>/)?.[1] ?? "";
+    const headingText = headingMarkup
+      .replace(/<br\/>/g, " ")
+      .replace(/<[^>]+>/g, "")
+      .replace(/&[^;]+;/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    expect(headingText).toContain(
+      "Parlons de votre projet. 30 minutes, c est tout.",
+    );
+    expect(headingText).not.toContain("devotre");
   });
 });

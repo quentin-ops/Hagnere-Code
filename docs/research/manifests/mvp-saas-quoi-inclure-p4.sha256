@@ -1,0 +1,15 @@
+d95ed727fa9b10737c4e7b5e77437445ab24e9acf9e0048cdeeaf4ef6119b2da  docs/research/mvp-saas-quoi-inclure-input-freeze.md
+0f195c813c31c662b39fb5005c070da33d568041600b910a8185e3efa916221f  docs/research/mvp-saas-quoi-inclure.md
+9ee0a334c05e74c84e19d04924f7dee5b9ab5bac5d92a61ad2fc275f4ff14785  public/guides/mvp-saas-quoi-inclure/charge-manuelle-mvp-4x3.svg
+ffb9fc1aef5cadd84539b06063abe3c51913c982b890eb9530a62ac679fb5cb7  public/guides/mvp-saas-quoi-inclure/charge-manuelle-mvp-4x3.webp
+d560fbf5a679c02595c2d2a451905e9e98c08fe64b54a9263900b90f86524045  public/guides/mvp-saas-quoi-inclure/contrat-test-mvp-16x9.svg
+293cabed128847829f2e0aac07cf9a9cbf4cf3ea7aa34871794c6bd5d88fc405  public/guides/mvp-saas-quoi-inclure/contrat-test-mvp-16x9.webp
+cbdfbf39d7d72d2903ad7067789904a8da378fdcb1b217751f4ed1cf9f257a1e  public/guides/mvp-saas-quoi-inclure/decision-mvp-1x1.svg
+d44bac82092b648068215cd2cbe940e3042e55d0287d1e23f65621d9f6b43bb3  public/guides/mvp-saas-quoi-inclure/decision-mvp-1x1.webp
+1c664db9df9efb5a107566ef0d66ab04ef1bdba50c9541af91bcb0d256fa5813  src/app/guides/mvp-saas-quoi-inclure/content-quality.test.ts
+f04166d8aa2c7db2b5d4b1808fc5c2b016a202d757d50b838328b4e1f0dfeb21  src/app/guides/mvp-saas-quoi-inclure/mvp-contract-engine.test.ts
+c6a6063381cc1b2c584aef35d13a2053853af8c0f63e33ec4c8b37f763cb1684  src/app/guides/mvp-saas-quoi-inclure/mvp-contract-engine.ts
+aef79996edffc83d8fe6d3cab354f1848f41cf372c961762355716e72cd1d761  src/app/guides/mvp-saas-quoi-inclure/mvp-contract-tool.test.tsx
+f70284d4792e69a5b43499fea974df301dfdc34450c80b8a7a9cce77859a7bb8  src/app/guides/mvp-saas-quoi-inclure/mvp-contract-tool.tsx
+a1865057eba476fdbf6a6d4c51b203f7553e6d544f07e8b5d19df9967095a1a3  src/app/guides/mvp-saas-quoi-inclure/opengraph-image.tsx
+d3e100ccd0b6d3d9b9b561504d9b306605238e78a989878b717e558d455f350d  src/app/guides/mvp-saas-quoi-inclure/page.tsx

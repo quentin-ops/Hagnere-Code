@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Dossier de décision Power Apps</title>
+  <desc id="desc">Une matrice relie preuves, coût complet et cinq décisions possibles.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c0a09"/>
+      <stop offset="0.55" stop-color="#18181b"/>
+      <stop offset="1" stop-color="#3730a3"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" rx="32" fill="url(#bg)"/>
+  <circle cx="1120" cy="30" r="260" fill="#7c3aed" opacity="0.15"/>
+  <g transform="translate(68 58)" font-family="Arial, sans-serif">
+    <rect width="50" height="50" rx="14" fill="url(#line)"/>
+    <text x="25" y="34" text-anchor="middle" font-size="20" font-weight="800" fill="#09090b">HC</text>
+    <text x="70" y="34" font-size="28" font-weight="700" fill="#fafafa">Hagnéré Code</text>
+  </g>
+  <text x="68" y="180" fill="#ffffff" font-family="Arial, sans-serif" font-size="56" font-weight="800">Power Apps ou sur mesure ?</text>
+  <text x="68" y="230" fill="#c4b5fd" font-family="Arial, sans-serif" font-size="28">Le dossier qui interdit les raccourcis.</text>
+
+  <g transform="translate(68 292)" font-family="Arial, sans-serif">
+    <rect width="1064" height="208" rx="26" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.16"/>
+    <text x="32" y="50" fill="#a78bfa" font-size="22" font-weight="800">PREUVES À RÉUNIR</text>
+    <g fill="#f4f4f5" font-size="25">
+      <text x="32" y="102">Données &amp; requêtes</text>
+      <text x="400" y="102">Audience &amp; identité</text>
+      <text x="740" y="102">Hors-ligne &amp; UX</text>
+      <text x="32" y="158">Licences &amp; DLP</text>
+      <text x="400" y="158">ALM &amp; support</text>
+      <text x="740" y="158">Restauration &amp; sortie</text>
+    </g>
+  </g>
+
+  <path d="M600 518V566" stroke="url(#line)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M582 552L600 572L618 552" fill="none" stroke="#60a5fa" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g transform="translate(68 600)" font-family="Arial, sans-serif">
+    <g>
+      <rect width="194" height="192" rx="22" fill="#f59e0b" fill-opacity="0.13" stroke="#fbbf24" stroke-opacity="0.7"/>
+      <text x="22" y="48" fill="#fbbf24" font-size="22" font-weight="800">SUSPENDRE</text>
+      <text x="22" y="94" fill="#fff" font-size="27" font-weight="700">Preuve</text>
+      <text x="22" y="130" fill="#fff" font-size="27" font-weight="700">manquante</text>
+      <text x="22" y="166" fill="#d4d4d8" font-size="18">Pas de verdict</text>
+    </g>
+    <g transform="translate(218)">
+      <rect width="194" height="192" rx="22" fill="#10b981" fill-opacity="0.12" stroke="#34d399" stroke-opacity="0.7"/>
+      <text x="22" y="48" fill="#34d399" font-size="22" font-weight="800">GARDER</text>
+      <text x="22" y="94" fill="#fff" font-size="27" font-weight="700">Power Apps</text>
+      <text x="22" y="130" fill="#fff" font-size="27" font-weight="700">fonctionne</text>
+      <text x="22" y="166" fill="#d4d4d8" font-size="18">Preuves datées</text>
+    </g>
+    <g transform="translate(436)">
+      <rect width="194" height="192" rx="22" fill="#6366f1" fill-opacity="0.15" stroke="#818cf8" stroke-opacity="0.7"/>
+      <text x="22" y="48" fill="#a5b4fc" font-size="22" font-weight="800">RENFORCER</text>
+      <text x="22" y="94" fill="#fff" font-size="27" font-weight="700">Corriger</text>
+      <text x="22" y="130" fill="#fff" font-size="27" font-weight="700">avant sortie</text>
+      <text x="22" y="166" fill="#d4d4d8" font-size="18">Défaut borné</text>
+    </g>
+    <g transform="translate(654)">
+      <rect width="194" height="192" rx="22" fill="#0ea5e9" fill-opacity="0.13" stroke="#38bdf8" stroke-opacity="0.7"/>
+      <text x="22" y="48" fill="#7dd3fc" font-size="22" font-weight="800">HYBRIDE</text>
+      <text x="22" y="94" fill="#fff" font-size="27" font-weight="700">Séparer</text>
+      <text x="22" y="130" fill="#fff" font-size="27" font-weight="700">la limite</text>
+      <text x="22" y="166" fill="#d4d4d8" font-size="18">Frontière testée</text>
+    </g>
+    <g transform="translate(872)">
+      <rect width="192" height="192" rx="22" fill="#a855f7" fill-opacity="0.13" stroke="#c084fc" stroke-opacity="0.7"/>
+      <text x="22" y="48" fill="#d8b4fe" font-size="22" font-weight="800">DÉDIÉ</text>
+      <text x="22" y="94" fill="#fff" font-size="27" font-weight="700">Reconstruire</text>
+      <text x="22" y="130" fill="#fff" font-size="27" font-weight="700">Retour testé</text>
+      <text x="22" y="166" fill="#d4d4d8" font-size="18">Limite prouvée</text>
+    </g>
+  </g>
+</svg>

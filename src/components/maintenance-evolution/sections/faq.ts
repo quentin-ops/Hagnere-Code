@@ -88,7 +88,7 @@ export const faqHtml = `
             <div class="ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></div>
           </div>
           <div class="faq-a">
-            Nous proposons un inventaire des accès, une reprise progressive, des points avec le prestataire sortant et une documentation partagée. La durée et le coût de ce recouvrement sont définis au devis avec les parties concernées.
+            Le <a href="/guides/reprendre-logiciel-metier-existant">test de relève du logiciel existant</a> aide d'abord à distinguer les preuves disponibles, les inconnues et les blocages. Nous proposons ensuite un inventaire des accès, une reprise progressive, des points avec le prestataire sortant et une documentation partagée. La durée et le coût de ce recouvrement sont définis au devis avec les parties concernées.
           </div>
         </div>
 

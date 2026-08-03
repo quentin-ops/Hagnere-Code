@@ -55,7 +55,9 @@ describe("GuidePremiumFaqCategorized accessibility", () => {
   });
 
   it("links every tab, tabpanel, question and answer with unique ids", () => {
-    const tabs = [...container.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const tabs = [
+      ...container.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
+    ];
     const panels = [
       ...container.querySelectorAll<HTMLElement>('[role="tabpanel"]'),
     ];
@@ -76,7 +78,7 @@ describe("GuidePremiumFaqCategorized accessibility", () => {
 
     const questions = [
       ...container.querySelectorAll<HTMLButtonElement>(
-        'button[aria-expanded][aria-controls]',
+        "button[aria-expanded][aria-controls]",
       ),
     ];
     expect(questions).toHaveLength(2);
@@ -94,7 +96,9 @@ describe("GuidePremiumFaqCategorized accessibility", () => {
   });
 
   it("moves and activates tabs with arrow, Home and End keys", () => {
-    const tabs = [...container.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const tabs = [
+      ...container.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
+    ];
 
     flushSync(() => {
       tabs[0].focus();
@@ -122,7 +126,7 @@ describe("GuidePremiumFaqCategorized accessibility", () => {
     expect(document.activeElement).toBe(tabs[1]);
   });
 
-  it("opens and closes answers with Enter and Space without a native double activation", () => {
+  it("relies on one native button activation instead of toggling on keydown too", () => {
     const question = container.querySelector<HTMLButtonElement>(
       'button[aria-expanded="true"]',
     );
@@ -134,12 +138,22 @@ describe("GuidePremiumFaqCategorized accessibility", () => {
         new KeyboardEvent("keydown", { key: "Enter", bubbles: true }),
       );
     });
+    expect(question?.getAttribute("aria-expanded")).toBe("true");
+
+    flushSync(() => {
+      question?.click();
+    });
     expect(question?.getAttribute("aria-expanded")).toBe("false");
 
     flushSync(() => {
       question?.dispatchEvent(
         new KeyboardEvent("keydown", { key: " ", bubbles: true }),
       );
+    });
+    expect(question?.getAttribute("aria-expanded")).toBe("false");
+
+    flushSync(() => {
+      question?.click();
     });
     expect(question?.getAttribute("aria-expanded")).toBe("true");
   });

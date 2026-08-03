@@ -66,7 +66,12 @@ export const scenariosHtml = `
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="oi-scen-ref">À mesurer : temps de ressaisie, erreurs, délais de relance et adoption avant / après pilote.</div>
+          <div class="oi-scen-ref">
+            À mesurer : temps de ressaisie, erreurs, délais de relance et adoption avant / après pilote.
+            Avant de comparer les propositions, <a href="/guides/choisir-prestataire-application-metier">soumettez les candidats au même cas métier</a>.
+            <a href="/guides/securite-application-metier">Avant la mise en service, vérifiez que le socle de sécurité est prouvé et testé.</a>
+            <a href="/guides/droits-acces-application-metier">Définissez aussi qui peut voir, modifier, valider, exporter ou supprimer chaque objet métier.</a>
+          </div>
         </div>
       </div>
     </div>
@@ -107,7 +112,10 @@ export const scenariosHtml = `
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="oi-scen-ref">À comparer : licences, migration, maintenance, formation, réversibilité et coût total sur trois ans.</div>
+          <div class="oi-scen-ref">
+            À comparer : licences, migration, maintenance, formation, réversibilité et coût total sur trois ans.
+            Si le remplacement est retenu, <a href="/guides/migrer-logiciel-metier-sans-interruption">préparez une bascule réversible</a>.
+          </div>
         </div>
       </div>
     </div>
@@ -148,7 +156,10 @@ export const scenariosHtml = `
             Discuter de ce scénario
             <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <div class="oi-scen-ref">À tester : saisie hors ligne, qualité d'extraction, reprise sur erreur et usage réel sur le terrain.</div>
+          <div class="oi-scen-ref">
+            À tester : saisie hors ligne, qualité d'extraction, reprise sur erreur et usage réel sur le terrain.
+            Avant la livraison, <a href="/guides/plan-recette-application-metier">préparez des cas de recette rejouables</a>.
+          </div>
         </div>
       </div>
     </div>

@@ -5,10 +5,15 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { PUBLISHED_GUIDES } from "@/lib/guides";
 import { getLegacyGuideDestination } from "@/lib/legacy-guide-redirects";
-import Page, { accessGuide, metadata, structuredData } from "./page";
+import { accessGuide, structuredData } from "./guide-data";
+import Page, { metadata } from "./page";
 
 const slugDirectory = dirname(fileURLToPath(import.meta.url));
 const pageSource = readFileSync(resolve(slugDirectory, "page.tsx"), "utf8");
+const guideDataSource = readFileSync(
+  resolve(slugDirectory, "guide-data.ts"),
+  "utf8",
+);
 const inboundGuideSource = readFileSync(
   resolve(slugDirectory, "../signes-besoin-logiciel-metier/page.tsx"),
   "utf8",
@@ -105,8 +110,8 @@ describe("content quality for the Microsoft Access replacement guide", () => {
       modifiedTime: accessGuide.dateModified,
     });
     expect(pageSource).toContain("buildGuideMetadata(");
-    expect(pageSource).toContain("buildGuideStructuredData(");
-    expect(pageSource).toContain(
+    expect(guideDataSource).toContain("buildGuideStructuredData(");
+    expect(guideDataSource).toContain(
       'getGuide(\n  "remplacer-microsoft-access-application-web",\n)',
     );
     expect(getLegacyGuideDestination(accessGuide.slug)).toBeNull();

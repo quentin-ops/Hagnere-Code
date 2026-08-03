@@ -24,12 +24,7 @@ function htmlTagsWithAttribute(html, tagName, attribute, expectedValue) {
 }
 
 function htmlTagWithAttribute(html, tagName, attribute, expectedValue) {
-  return htmlTagsWithAttribute(
-    html,
-    tagName,
-    attribute,
-    expectedValue,
-  )[0];
+  return htmlTagsWithAttribute(html, tagName, attribute, expectedValue)[0];
 }
 
 function extractGuideArticleHtml(html) {
@@ -58,8 +53,24 @@ function extractGuideArticleHtml(html) {
 }
 
 function stripReadTimeExcludedElements(html) {
+  const voidElements = new Set([
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr",
+  ]);
   const openingElement =
-    /<([a-z][a-z0-9-]*)\b[^>]*\bdata-read-time-exclude=["']true["'][^>]*>/gi;
+    /<([a-z][a-z0-9-]*)\b(?=[^>]*(?:\bdata-read-time-exclude=["']true["']|\bclass=["'][^"']*\bsr-only\b[^"']*["']))[^>]*>/gi;
   let cursor = 0;
   let output = "";
 
@@ -70,7 +81,12 @@ function stripReadTimeExcludedElements(html) {
   ) {
     output += html.slice(cursor, opening.index);
 
-    const tagName = opening[1];
+    const tagName = opening[1].toLowerCase();
+    if (voidElements.has(tagName)) {
+      cursor = opening.index + opening[0].length;
+      openingElement.lastIndex = cursor;
+      continue;
+    }
     const matchingTag = new RegExp(`</?${tagName}\\b[^>]*>`, "gi");
     matchingTag.lastIndex = opening.index + opening[0].length;
     let depth = 1;
@@ -141,8 +157,8 @@ for (const slug of slugs) {
     stripReadTimeExcludedElements(articleHtml),
   );
   const wordCount =
-    visibleText.match(/[\p{L}\p{N}]+(?:[\u2019'\-][\p{L}\p{N}]+)*/gu)
-      ?.length ?? 0;
+    visibleText.match(/[\p{L}\p{N}]+(?:[\u2019'\-][\p{L}\p{N}]+)*/gu)?.length ??
+    0;
   const readTime = Math.max(1, Math.round(wordCount / WORDS_PER_MINUTE));
 
   console.log(`${slug}\t${wordCount} mots\t${readTime} min`);

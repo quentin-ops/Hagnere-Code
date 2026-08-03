@@ -1198,6 +1198,36 @@ export default function Page() {
             la sécurité, au consentement ou au résultat promis.
           </p>
 
+          <p>
+            Pour transformer ce minimum en périmètre testable, utilisez le guide{" "}
+            <Link href="/guides/mvp-saas-quoi-inclure">
+              MVP SaaS : quoi inclure avant le premier test
+            </Link>
+            . Il sépare ce qu’il faut construire, gérer manuellement, intégrer
+            ou reporter, puis rend visible la charge humaine avant un pilote ou
+            un premier client.
+          </p>
+
+          <p>
+            Quand les faits autorisent enfin un produit à construire, traduisez
+            le parcours vendu, les responsabilités, les preuves et les inconnues
+            restantes dans un{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges SaaS remis à tous les répondants
+            </Link>
+            . Ce document ne remplace pas la validation : il empêche surtout
+            chaque proposition de chiffrer un produit différent.
+          </p>
+
+          <p>
+            Le calendrier vient ensuite. Le guide sur{" "}
+            <Link href="/guides/combien-de-temps-developper-saas">
+              le temps nécessaire pour développer un SaaS
+            </Link>{" "}
+            relie les dépendances, les capacités et quatre scénarios sans
+            transformer une estimation en promesse de date.
+          </p>
+
           <FormulaBox>
             {[
               "FICHE DE DÉCISION — UNE PAGE",

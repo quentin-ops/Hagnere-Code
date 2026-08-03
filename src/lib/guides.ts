@@ -165,6 +165,206 @@ export const GUIDES: GuideEntry[] = [
       "/guides/prix-gestion-google-ads/article-prix-ads-1x1.webp",
     ],
   },
+  {
+    slug: "power-apps-ou-application-sur-mesure",
+    title: "Power Apps ou application sur mesure : comment choisir ?",
+    cardTitle: "Power Apps ou application sur mesure",
+    metaDescription:
+      "Power Apps ou application sur mesure ? Comparez limites vérifiées, coûts à 1, 3 et 5 ans, gouvernance et sortie avant de choisir.",
+    cardDescription:
+      "Une méthode sans score opaque, quatre coûts totaux de possession (TCO) à renseigner et un plan de migration réversible pour comparer les options.",
+    heroTitle: "Power Apps ou application sur mesure : comment choisir ?",
+    section: "Outils internes et automatisation",
+    datePublished: "2026-07-23T21:31:02+02:00",
+    dateModified: "2026-08-03T07:58:56+02:00",
+    readTimeMin: 26,
+    articleImagePaths: [
+      "/guides/power-apps-ou-application-sur-mesure/article-power-apps-16x9.svg",
+      "/guides/power-apps-ou-application-sur-mesure/article-power-apps-4x3.svg",
+      "/guides/power-apps-ou-application-sur-mesure/article-power-apps-1x1.svg",
+    ],
+  },
+  {
+    slug: "reprendre-logiciel-metier-existant",
+    title: "Reprendre un logiciel métier : le test de relève",
+    cardTitle: "Reprendre un logiciel métier existant",
+    metaDescription:
+      "Faites le test de relève : vérifiez code, accès, déploiement, sauvegardes, données et contrat avant de confier votre logiciel à une nouvelle équipe.",
+    cardDescription:
+      "Un test de relève en cinq capacités et un procès-verbal de reprise pour décider de reprendre, limiter la mission ou reporter la bascule.",
+    heroTitle: "Reprendre un logiciel métier existant sans signer à l’aveugle",
+    section: "Maintenance & reprise",
+    datePublished: "2026-07-30T12:47:39+02:00",
+    dateModified: "2026-07-30T12:47:39+02:00",
+    readTimeMin: 12,
+    articleImagePaths: [
+      "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-16x9.webp",
+      "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-4x3.webp",
+      "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
+  {
+    slug: "migrer-logiciel-metier-sans-interruption",
+    title: "Migrer un logiciel métier sans interruption",
+    cardTitle: "Migrer un logiciel métier sans interrompre l’activité",
+    metaDescription:
+      "Préparez une migration sans arrêt subi : un logiciel de référence, cinq preuves, une répétition et assez de temps pour décider ou revenir.",
+    cardDescription:
+      "Cinq preuves et un budget en minutes pour basculer, réduire le lot ou reporter sans masquer les inconnues.",
+    heroTitle: "Migrer un logiciel métier sans interrompre l’activité",
+    section: "Outils internes et migration",
+    datePublished: "2026-07-30T14:53:22+02:00",
+    dateModified: "2026-07-30T14:53:22+02:00",
+    readTimeMin: 19,
+    articleImagePaths: [
+      "/guides/migrer-logiciel-metier-sans-interruption/migration-reversible-16x9.webp",
+      "/guides/migrer-logiciel-metier-sans-interruption/migration-reversible-4x3.webp",
+      "/guides/migrer-logiciel-metier-sans-interruption/migration-reversible-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
+  {
+    slug: "plan-recette-application-metier",
+    title: "Plan de recette d’une application métier",
+    cardTitle: "Préparer la recette d’une application métier",
+    metaDescription:
+      "Transformez vos besoins métier en cas de recette rejouables, preuves et décision, sans masquer tests critiques, anomalies ni réserves.",
+    cardDescription:
+      "Une chaîne besoin, cas, preuve et huit points non compensables pour préparer une décision sans cacher les échecs ni les réserves.",
+    heroTitle:
+      "Plan de recette d’une application métier : prouver avant d’accepter",
+    section: "Préparer son projet",
+    datePublished: "2026-07-30T16:30:59+02:00",
+    dateModified: "2026-07-30T16:30:59+02:00",
+    readTimeMin: 16,
+    articleImagePaths: [
+      "/guides/plan-recette-application-metier/recette-preuve-16x9.webp",
+      "/guides/plan-recette-application-metier/recette-preuve-4x3.webp",
+      "/guides/plan-recette-application-metier/recette-preuve-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
+  {
+    slug: "choisir-prestataire-application-metier",
+    title: "Choisir un prestataire d’application métier",
+    cardTitle: "Choisir le prestataire de son application métier",
+    metaDescription:
+      "Comparez des prestataires sur un même cas : périmètre, coûts, validation, données, droits, maintenance et sortie, sans score global.",
+    cardDescription:
+      "Un cas métier commun, huit points non compensables et un outil local pour choisir, préciser, cadrer ou reporter.",
+    heroTitle: "Comment choisir le prestataire de votre application métier ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-30T18:41:28+02:00",
+    dateModified: "2026-07-30T18:41:28+02:00",
+    readTimeMin: 17,
+    articleImagePaths: [
+      "/guides/choisir-prestataire-application-metier/comparaison-preuves-16x9.webp",
+      "/guides/choisir-prestataire-application-metier/comparaison-preuves-4x3.webp",
+      "/guides/choisir-prestataire-application-metier/comparaison-preuves-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
+  {
+    slug: "securite-application-metier",
+    title: "Sécurité d’une application métier avant sa mise en service",
+    cardTitle: "Sécurité d’une application métier",
+    metaDescription:
+      "Menaces, sauvegardes testées, journaux, alertes et responsables : fixez des exigences proportionnées avant la mise en service.",
+    cardDescription:
+      "Une méthode sans score pour obtenir des preuves, tester la restauration, attribuer les alertes et décider de la mise en service.",
+    heroTitle: "Quel socle de sécurité exiger pour une application métier ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-30T22:03:29+02:00",
+    dateModified: "2026-07-30T22:03:29+02:00",
+    readTimeMin: 16,
+    articleImagePaths: [
+      "/guides/securite-application-metier/socle-securite-16x9.webp",
+      "/guides/securite-application-metier/socle-securite-4x3.webp",
+      "/guides/securite-application-metier/socle-securite-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
+  {
+    slug: "droits-acces-application-metier",
+    title: "Droits d’accès d’une application métier",
+    cardTitle: "Droits d’accès d’une application métier",
+    metaDescription:
+      "Définissez qui peut voir, modifier, valider, exporter ou supprimer quoi : matrice sans score, portée, refus, cycle de vie et tests d’accès.",
+    cardDescription:
+      "Une matrice de dix dimensions, des STOP non compensables et un outil local pour préciser rôles, portée, refus, revue et tests.",
+    heroTitle: "Qui peut voir et modifier quoi dans votre application métier ?",
+    section: "Applications métiers et outils internes",
+    datePublished: "2026-07-31T01:07:59+02:00",
+    dateModified: "2026-07-31T01:07:59+02:00",
+    readTimeMin: 14,
+    articleImagePaths: [
+      "/guides/droits-acces-application-metier/matrice-droits-16x9.webp",
+      "/guides/droits-acces-application-metier/matrice-droits-4x3.webp",
+      "/guides/droits-acces-application-metier/matrice-droits-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
+  {
+    slug: "cahier-des-charges-saas",
+    title: "Comment rédiger un cahier des charges SaaS ?",
+    cardTitle: "Rédiger un cahier des charges SaaS",
+    metaDescription:
+      "Rédigez un cahier des charges SaaS comparable : périmètre, droits, abonnement, données, support, sortie, preuves et inconnues bloquantes.",
+    cardDescription:
+      "Neuf blocs et cinq champs par bloc pour décrire le même produit, révéler les inconnues bloquantes et comparer des offres sur des preuves.",
+    heroTitle: "Cahier des charges SaaS : faire chiffrer le même produit",
+    section: "Préparer son projet",
+    datePublished: "2026-07-22T07:29:32+02:00",
+    dateModified: "2026-08-01T13:03:24+02:00",
+    readTimeMin: 42,
+    articleImagePaths: [
+      "/guides/cahier-des-charges-saas/cahier-saas-16x9.webp",
+      "/guides/cahier-des-charges-saas/cahier-saas-4x3.webp",
+      "/guides/cahier-des-charges-saas/cahier-saas-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
+  {
+    slug: "combien-de-temps-developper-saas",
+    title: "Combien de temps faut-il pour développer un SaaS ?",
+    cardTitle: "Estimer le délai de développement d’un SaaS",
+    metaDescription:
+      "Calculez un calendrier SaaS à partir des dépendances, des capacités et de quatre scénarios, sans durée moyenne ni promesse de date.",
+    cardDescription:
+      "Un planificateur local pour relier les tâches, tester quatre scénarios, garder les inconnues visibles et mesurer l’écart au délai disponible.",
+    heroTitle: "Combien de temps faut-il pour développer un SaaS ?",
+    section: "Préparer son projet",
+    datePublished: "2026-07-23T00:59:26+02:00",
+    dateModified: "2026-08-02T22:39:26+02:00",
+    readTimeMin: 17,
+    articleImagePaths: [
+      "/guides/combien-de-temps-developper-saas/calendrier-saas-16x9.webp",
+      "/guides/combien-de-temps-developper-saas/calendrier-saas-4x3.webp",
+      "/guides/combien-de-temps-developper-saas/calendrier-saas-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
+  {
+    slug: "mvp-saas-quoi-inclure",
+    title: "MVP SaaS : quoi inclure avant un premier client\u00a0?",
+    cardTitle: "MVP SaaS : quoi inclure\u00a0?",
+    metaDescription:
+      "Définissez le MVP SaaS d’un premier client : quoi construire, gérer manuellement, intégrer ou reporter, avec charge calculée et STOP explicites.",
+    cardDescription:
+      "Sept familles, cinq choix et une charge manuelle calculée pour délimiter un premier test exploitable.",
+    heroTitle: "MVP SaaS : quoi inclure avant le premier test\u00a0?",
+    section: "SaaS et MVP",
+    datePublished: "2026-07-20T15:19:41+02:00",
+    dateModified: "2026-08-03T04:14:58+02:00",
+    readTimeMin: 23,
+    articleImagePaths: [
+      "/guides/mvp-saas-quoi-inclure/contrat-test-mvp-16x9.webp",
+      "/guides/mvp-saas-quoi-inclure/charge-manuelle-mvp-4x3.webp",
+      "/guides/mvp-saas-quoi-inclure/decision-mvp-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */

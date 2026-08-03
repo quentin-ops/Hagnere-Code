@@ -402,8 +402,24 @@ function extractGuideArticleHtml(html) {
 }
 
 function stripReadTimeExcludedElements(html) {
+  const voidElements = new Set([
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr",
+  ]);
   const openingElement =
-    /<([a-z][a-z0-9-]*)\b[^>]*\bdata-read-time-exclude=["']true["'][^>]*>/gi;
+    /<([a-z][a-z0-9-]*)\b(?=[^>]*(?:\bdata-read-time-exclude=["']true["']|\bclass=["'][^"']*\bsr-only\b[^"']*["']))[^>]*>/gi;
   let cursor = 0;
   let output = "";
 
@@ -414,7 +430,12 @@ function stripReadTimeExcludedElements(html) {
   ) {
     output += html.slice(cursor, opening.index);
 
-    const tagName = opening[1];
+    const tagName = opening[1].toLowerCase();
+    if (voidElements.has(tagName)) {
+      cursor = opening.index + opening[0].length;
+      openingElement.lastIndex = cursor;
+      continue;
+    }
     const matchingTag = new RegExp(`</?${tagName}\\b[^>]*>`, "gi");
     matchingTag.lastIndex = opening.index + opening[0].length;
     let depth = 1;
