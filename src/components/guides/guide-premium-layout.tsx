@@ -927,7 +927,7 @@ function PremiumSources({ sources }: { sources: GuidePremiumLegalSource[] }) {
             {sources.map((entry) => (
               <li
                 key={entry.source}
-                className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 py-3.5 sm:py-3 px-4 sm:px-5"
+                className="flex flex-col gap-3 py-3.5 px-4 sm:py-3 sm:px-5 md:flex-row md:items-center md:gap-5"
               >
                 {entry.href ? (
                   <a

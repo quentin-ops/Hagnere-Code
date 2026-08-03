@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Power Apps ou sur mesure en cinq décisions</title>
+  <desc id="desc">Des preuves et quatre coûts complets conduisent à suspendre, conserver, renforcer, hybrider ou reconstruire.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#09090b"/>
+      <stop offset="0.65" stop-color="#18181b"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" rx="42" fill="url(#bg)"/>
+  <circle cx="1080" cy="100" r="310" fill="#7c3aed" opacity="0.16"/>
+  <circle cx="60" cy="1140" r="260" fill="#0284c7" opacity="0.10"/>
+
+  <g transform="translate(72 64)" font-family="Arial, sans-serif">
+    <rect width="54" height="54" rx="15" fill="url(#accent)"/>
+    <text x="27" y="37" text-anchor="middle" font-size="21" font-weight="800" fill="#09090b">HC</text>
+    <text x="76" y="37" font-size="30" font-weight="700" fill="#fafafa">Hagnéré Code</text>
+  </g>
+
+  <text x="72" y="214" fill="#ffffff" font-family="Arial, sans-serif" font-size="64" font-weight="800">Power Apps</text>
+  <text x="72" y="286" fill="#ffffff" font-family="Arial, sans-serif" font-size="64" font-weight="800">ou sur mesure ?</text>
+  <text x="72" y="348" fill="#c4b5fd" font-family="Arial, sans-serif" font-size="30">Décider avec les preuves et le coût complet.</text>
+
+  <g transform="translate(72 414)" font-family="Arial, sans-serif">
+    <rect width="1056" height="210" rx="28" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.16"/>
+    <text x="32" y="52" fill="#a78bfa" font-size="24" font-weight="800">DEUX QUESTIONS AVANT TOUT VERDICT</text>
+    <text x="32" y="112" fill="#ffffff" font-size="32" font-weight="700">1. Le cas le plus difficile fonctionne-t-il vraiment ?</text>
+    <text x="32" y="166" fill="#ffffff" font-size="32" font-weight="700">2. Le TCO reste-t-il défendable à 1, 3 et 5 ans ?</text>
+  </g>
+
+  <path d="M600 644V698" stroke="url(#accent)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M580 684L600 706L620 684" fill="none" stroke="#60a5fa" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g transform="translate(72 742)" font-family="Arial, sans-serif">
+    <g>
+      <rect width="326" height="150" rx="24" fill="#f59e0b" fill-opacity="0.13" stroke="#fbbf24" stroke-opacity="0.7"/>
+      <text x="28" y="52" fill="#fbbf24" font-size="25" font-weight="800">SUSPENDRE</text>
+      <text x="28" y="102" fill="#ffffff" font-size="31" font-weight="700">Prouver d’abord</text>
+      <text x="28" y="132" fill="#d4d4d8" font-size="19">Une inconnue peut tout changer</text>
+    </g>
+    <g transform="translate(365)">
+      <rect width="326" height="150" rx="24" fill="#10b981" fill-opacity="0.12" stroke="#34d399" stroke-opacity="0.7"/>
+      <text x="28" y="52" fill="#34d399" font-size="25" font-weight="800">CONSERVER</text>
+      <text x="28" y="102" fill="#ffffff" font-size="31" font-weight="700">Power Apps convient</text>
+      <text x="28" y="132" fill="#d4d4d8" font-size="19">Besoin, coût et exploitation validés</text>
+    </g>
+    <g transform="translate(730)">
+      <rect width="326" height="150" rx="24" fill="#6366f1" fill-opacity="0.15" stroke="#818cf8" stroke-opacity="0.7"/>
+      <text x="28" y="52" fill="#a5b4fc" font-size="25" font-weight="800">RENFORCER</text>
+      <text x="28" y="102" fill="#ffffff" font-size="31" font-weight="700">Corriger le socle</text>
+      <text x="28" y="132" fill="#d4d4d8" font-size="19">Données, ALM, rôles ou support</text>
+    </g>
+    <g transform="translate(182 184)">
+      <rect width="326" height="150" rx="24" fill="#0ea5e9" fill-opacity="0.13" stroke="#38bdf8" stroke-opacity="0.7"/>
+      <text x="28" y="52" fill="#7dd3fc" font-size="25" font-weight="800">HYBRIDE</text>
+      <text x="28" y="102" fill="#ffffff" font-size="31" font-weight="700">Isoler la limite</text>
+      <text x="28" y="132" fill="#d4d4d8" font-size="19">Une frontière propre et testée</text>
+    </g>
+    <g transform="translate(547 184)">
+      <rect width="326" height="150" rx="24" fill="#a855f7" fill-opacity="0.13" stroke="#c084fc" stroke-opacity="0.7"/>
+      <text x="28" y="52" fill="#d8b4fe" font-size="25" font-weight="800">DÉDIÉ</text>
+      <text x="28" y="102" fill="#ffffff" font-size="31" font-weight="700">Reconstruire</text>
+      <text x="28" y="132" fill="#d4d4d8" font-size="19">Coexistence et retour testés</text>
+    </g>
+  </g>
+</svg>

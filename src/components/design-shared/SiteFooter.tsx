@@ -168,8 +168,7 @@ export function ContactProjectSection({
     </>
   ) : (
     <>
-      Parlons de
-      <br />
+      Parlons de <br />
       votre projet.{" "}
       <span className="sf-accent">30 minutes, c&apos;est tout.</span>
     </>
@@ -487,18 +486,22 @@ export function ContactProjectSection({
               <input type="checkbox" name="consent" required />
               <span>
                 J&apos;ai pris connaissance de la{" "}
-                <a href="/legal/confidentialite">politique de confidentialité</a>{" "}
+                <a href="/legal/confidentialite">
+                  politique de confidentialité
+                </a>{" "}
                 et je demande à HAGNERE CODE de traiter mes informations afin de
-                répondre à ma demande. Selon que j&apos;agis en mon nom ou pour mon
-                organisation, ce traitement repose sur des mesures précontractuelles
-                ou sur l&apos;intérêt légitime à traiter une demande professionnelle.
-                Les données sont accessibles à HAGNERE CODE et aux prestataires
-                nécessaires, puis conservées au maximum trois ans après le dernier
-                échange utile en l&apos;absence de contrat. La politique détaille les
-                destinataires et vos droits.
+                répondre à ma demande. Selon que j&apos;agis en mon nom ou pour
+                mon organisation, ce traitement repose sur des mesures
+                précontractuelles ou sur l&apos;intérêt légitime à traiter une
+                demande professionnelle. Les données sont accessibles à HAGNERE
+                CODE et aux prestataires nécessaires, puis conservées au maximum
+                trois ans après le dernier échange utile en l&apos;absence de
+                contrat. La politique détaille les destinataires et vos droits.
               </span>
             </label>
-            {errs.consent && <em className="sf-consent-error">{errs.consent}</em>}
+            {errs.consent && (
+              <em className="sf-consent-error">{errs.consent}</em>
+            )}
 
             <button
               type="submit"
@@ -527,7 +530,9 @@ export function ContactProjectSection({
 
             {status.kind === "success" && (
               <div className="sf-alert sf-alert-ok" role="status">
-                ✓ {status.message || "Message bien reçu. Nous visons une réponse le prochain jour ouvré, sans délai garanti."}
+                ✓{" "}
+                {status.message ||
+                  "Message bien reçu. Nous visons une réponse le prochain jour ouvré, sans délai garanti."}
               </div>
             )}
             {status.kind === "error" && (
@@ -582,7 +587,8 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
               </p>
               <div className="sf-foot-trust">
                 <span className="sf-foot-chip">
-                  <span className="dot dot-green" /> {TEAM_TOTAL_COUNT} personnes
+                  <span className="dot dot-green" /> {TEAM_TOTAL_COUNT}{" "}
+                  personnes
                 </span>
                 <span className="sf-foot-chip">
                   <span className="dot dot-accent" /> Bassens · 100 % France
@@ -637,7 +643,9 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                     <path d="M8 9h6M8 13h4" />
                   </svg>
                 </span>
-                <span className="sf-tile-label">Développement SaaS sur mesure</span>
+                <span className="sf-tile-label">
+                  Développement SaaS sur mesure
+                </span>
               </Link>
               <Link
                 className="sf-tile"
@@ -1296,7 +1304,9 @@ export function SiteFooter({ showContact = true }: SiteFooterProps = {}) {
                     <path d="M8 9h8M8 13h5" />
                   </svg>
                 </span>
-                <span className="sf-tile-label">Réclamations &amp; médiation</span>
+                <span className="sf-tile-label">
+                  Réclamations &amp; médiation
+                </span>
               </Link>
               <Link className="sf-tile" href="/legal/accessibilite">
                 <span className="sf-tile-ic">

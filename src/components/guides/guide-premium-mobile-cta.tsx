@@ -26,9 +26,14 @@ export function GuidePremiumMobileCta({
 
   useEffect(() => {
     const trigger = document.getElementById(triggerId);
-    const competingSections = ["faq", "contact"]
-      .map((id) => document.getElementById(id))
-      .filter((element): element is HTMLElement => element !== null);
+    const competingSections = Array.from(
+      new Set([
+        ...["faq", "contact"]
+          .map((id) => document.getElementById(id))
+          .filter((element): element is HTMLElement => element !== null),
+        ...Array.from(document.querySelectorAll<HTMLElement>("footer")),
+      ]),
+    );
     let animationFrame = 0;
 
     const updateVisibility = () => {
@@ -69,9 +74,7 @@ export function GuidePremiumMobileCta({
     <div
       aria-hidden={!visible}
       className={`fixed inset-x-0 bottom-0 z-40 lg:hidden print:hidden transition-transform duration-300 ${
-        visible
-          ? "translate-y-0"
-          : "pointer-events-none translate-y-full"
+        visible ? "translate-y-0" : "pointer-events-none translate-y-full"
       }`}
     >
       <div className="bg-white/95 dark:bg-zinc-950/95 backdrop-blur border-t border-zinc-200 dark:border-zinc-800 shadow-[0_-8px_24px_-12px_rgba(0,0,0,0.12)] px-3 pt-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)]">
@@ -90,7 +93,10 @@ export function GuidePremiumMobileCta({
             aria-label={`Appeler ${phoneLabel}`}
             className="flex items-center justify-center size-12 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:border-indigo-300 hover:text-indigo-700 transition-colors shrink-0"
           >
-            <Phone className="size-5 text-zinc-700 dark:text-white" aria-hidden="true" />
+            <Phone
+              className="size-5 text-zinc-700 dark:text-white"
+              aria-hidden="true"
+            />
           </a>
         </div>
       </div>

@@ -1,1 +1,12 @@
-2bd19f838bf310e7370145e2143731a6de7d4eeb215b259a16dfe900f07706d4  docs/research/power-apps-ou-application-sur-mesure.md
+ddd850f52949bd92b2cceb92ed3ebd0c8ae5d1d30da5b4d9738eeb894dcd025e  docs/research/power-apps-ou-application-sur-mesure-p0.md
+74aab086dcc028b9a22f19fb65322ac1bf90459f71167e9e580d7d2f4b12449a  docs/research/power-apps-ou-application-sur-mesure.md
+4ccce4d8e0fcca51a45f97b80b93477bbe874bf016d4a9a6bc5fa04d08d2b272  src/app/guides/power-apps-ou-application-sur-mesure/page.tsx
+6302d05138c35aecf0cb1f4e3645a9bccb4b44e8eb191257e21df5970b83a684  src/app/guides/power-apps-ou-application-sur-mesure/opengraph-image.tsx
+a7da258834be1a30d46e6c40db2e4d6f89383613e2c98e3d75eec690e889786c  src/app/guides/power-apps-ou-application-sur-mesure/content-quality.test.ts
+46b3f36907d2022ea29b2a49b92ba25ccfe37c8ee39eb669b3404b78b415b5d5  src/app/guides/power-apps-ou-application-sur-mesure/power-apps-decision-model.ts
+16c5be59c93701275b75ef13281bd0c703d75765c203627c5e6a60e81f9dea3e  src/app/guides/power-apps-ou-application-sur-mesure/power-apps-decision-model.test.ts
+4284aa5e7d32d969369239f2962dc237190ffa147c52ddf9605ea7c652fa32af  src/app/guides/power-apps-ou-application-sur-mesure/power-apps-decision-workbench.tsx
+6ef044b0182a3c2ec342c329389f6f3e6af11cb7e8bcaa790d9e3364f10d95aa  src/app/guides/power-apps-ou-application-sur-mesure/power-apps-decision-workbench.test.tsx
+6eceefb01346a87c1efe8368eb2ff94255f2db5c35f262a225c1c9b2bb0ea39e  public/guides/power-apps-ou-application-sur-mesure/article-power-apps-16x9.svg
+cb1c8d45a3adf6cdcdbe2094fd426d61a51aaec5a28f223155591d3c2319669e  public/guides/power-apps-ou-application-sur-mesure/article-power-apps-4x3.svg
+50e95a9b07298480bcaecae887eb707fef536949714b8fbe4470f9b770d503d6  public/guides/power-apps-ou-application-sur-mesure/article-power-apps-1x1.svg
