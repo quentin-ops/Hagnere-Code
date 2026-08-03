@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Cinq décisions autour d’une revue humaine</title>
+  <desc id="desc">Construire, tester, traiter une voie critique, acheter ou intégrer, et reporter sont disposés sans podium autour d’une revue humaine centrale.</desc>
+  <defs>
+    <radialGradient id="bg" cx=".5" cy=".45" r=".75">
+      <stop offset="0" stop-color="#252040"/>
+      <stop offset="1" stop-color="#0c0b14"/>
+    </radialGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6366f1"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="900" height="900" rx="34" fill="#0c0b14"/>
+  <circle cx="450" cy="450" r="294" fill="none" stroke="#4b4761" stroke-width="2" stroke-dasharray="5 11"/>
+  <circle cx="450" cy="450" r="220" fill="none" stroke="#353148" stroke-width="2"/>
+
+  <g stroke="#77718f" stroke-width="3" stroke-linecap="round" opacity=".8">
+    <path d="M450 325V210"/>
+    <path d="m568 412 114-68"/>
+    <path d="m530 556 92 100"/>
+    <path d="m370 556-92 100"/>
+    <path d="m332 412-114-68"/>
+  </g>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="450" y="72" fill="#a5b4fc" font-size="17" font-weight="800" letter-spacing="2.4" text-anchor="middle">5 DÉCISIONS · REVUE HUMAINE · AUCUN SCORE</text>
+
+    <g filter="url(#shadow)">
+      <circle cx="450" cy="450" r="132" fill="#5b5ee6" stroke="#a5b4fc" stroke-width="3"/>
+      <text x="450" y="426" fill="#eef2ff" font-size="18" font-weight="750" letter-spacing="2" text-anchor="middle">REVUE</text>
+      <text x="450" y="466" fill="#fff" font-size="31" font-weight="800" text-anchor="middle">HUMAINE</text>
+      <text x="450" y="503" fill="#ddd6fe" font-size="17" text-anchor="middle">preuves · risques · capacité</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="304" y="118" width="292" height="96" rx="24" fill="#12382e" stroke="#34d399" stroke-width="2"/>
+      <circle cx="344" cy="166" r="12" fill="#34d399"/>
+      <text x="374" y="174" fill="#d1fae5" font-size="25" font-weight="750">Construire</text>
+
+      <rect x="624" y="268" width="232" height="96" rx="24" fill="#312052" stroke="#a78bfa" stroke-width="2"/>
+      <circle cx="664" cy="316" r="12" fill="#a78bfa"/>
+      <text x="694" y="324" fill="#ede9fe" font-size="25" font-weight="750">Tester</text>
+
+      <rect x="570" y="650" width="286" height="96" rx="24" fill="#3f1822" stroke="#fb7185" stroke-width="2"/>
+      <circle cx="610" cy="698" r="12" fill="#fb7185"/>
+      <text x="640" y="706" fill="#ffe4e6" font-size="24" font-weight="750">Traiter d’abord</text>
+
+      <rect x="44" y="650" width="424" height="96" rx="24" fill="#172d42" stroke="#60a5fa" stroke-width="2"/>
+      <circle cx="84" cy="698" r="12" fill="#60a5fa"/>
+      <text x="114" y="706" fill="#dbeafe" font-size="24" font-weight="750">Acheter ou intégrer</text>
+
+      <rect x="44" y="268" width="232" height="96" rx="24" fill="#3c2c10" stroke="#fbbf24" stroke-width="2"/>
+      <circle cx="84" cy="316" r="12" fill="#fbbf24"/>
+      <text x="114" y="324" fill="#fef3c7" font-size="25" font-weight="750">Reporter</text>
+    </g>
+
+    <rect x="108" y="802" width="684" height="54" rx="17" fill="#f6f3eb"/>
+    <text x="450" y="836" fill="#312e81" font-size="19" font-weight="800" text-anchor="middle">Le statut candidat ouvre une conversation, pas un chantier</text>
+  </g>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Lot, dépendance et capacité sur un exemple fictif</title>
+  <desc id="desc">Un lot de six jours-personne et une dépendance de trois jours-personne totalisent neuf sur une capacité de dix, laissant un jour-personne.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f9f7f2"/>
+      <stop offset="1" stop-color="#eee9ff"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset=".67" stop-color="#6366f1"/>
+      <stop offset=".9" stop-color="#8b5cf6"/>
+      <stop offset=".9" stop-color="#d4d4d8"/>
+      <stop offset="1" stop-color="#e4e4e7"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#312e81" flood-opacity=".14"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" rx="34" fill="#f9f7f2"/>
+  <circle cx="1085" cy="105" r="180" fill="#8b5cf6" opacity=".1"/>
+  <circle cx="95" cy="800" r="190" fill="#14b8a6" opacity=".08"/>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="76" y="82" fill="#5b55b6" font-size="19" font-weight="800" letter-spacing="3">EXEMPLE ENTIÈREMENT FICTIF</text>
+    <text x="76" y="143" fill="#18181b" font-size="45" font-weight="780">Compter le lot complet, une seule fois</text>
+    <text x="76" y="184" fill="#52525b" font-size="23">Même période · même unité · dépendances dédupliquées</text>
+
+    <g filter="url(#shadow)">
+      <rect x="76" y="246" width="1048" height="222" rx="28" fill="#fff" stroke="#ddd6fe" stroke-width="2"/>
+      <rect x="112" y="286" width="434" height="136" rx="20" fill="#eef2ff" stroke="#a5b4fc" stroke-width="2"/>
+      <text x="142" y="323" fill="#4338ca" font-size="18" font-weight="800" letter-spacing="1.4">LOT SÉLECTIONNÉ</text>
+      <text x="142" y="370" fill="#18181b" font-size="28" font-weight="750">REQ-BUILD</text>
+      <text x="443" y="370" fill="#4338ca" font-size="35" font-weight="800" text-anchor="end">6 j-p</text>
+      <text x="142" y="401" fill="#52525b" font-size="18">Validation groupée vérifiable</text>
+
+      <path d="M566 354h72" stroke="#7c6bc7" stroke-width="4" stroke-linecap="round"/>
+      <path d="m624 341 17 13-17 13" fill="none" stroke="#7c6bc7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <rect x="660" y="286" width="428" height="136" rx="20" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="2"/>
+      <text x="690" y="323" fill="#6d28d9" font-size="18" font-weight="800" letter-spacing="1.4">DÉPENDANCE NÉCESSAIRE</text>
+      <text x="690" y="370" fill="#18181b" font-size="28" font-weight="750">REQ-INTEGRATE</text>
+      <text x="1043" y="370" fill="#6d28d9" font-size="35" font-weight="800" text-anchor="end">3 j-p</text>
+      <text x="690" y="401" fill="#52525b" font-size="18">Notification et erreurs recettées</text>
+    </g>
+
+    <g filter="url(#shadow)">
+      <rect x="76" y="508" width="1048" height="250" rx="28" fill="#11111a"/>
+      <text x="112" y="555" fill="#c7d2fe" font-size="18" font-weight="800" letter-spacing="1.4">CAPACITÉ DÉCLARÉE · 3 AU 14 AOÛT 2026</text>
+      <rect x="112" y="592" width="976" height="74" rx="18" fill="#272733"/>
+      <path d="M130 592h568v74H130a18 18 0 0 1-18-18v-38a18 18 0 0 1 18-18Z" fill="#5551df"/>
+      <rect x="698" y="592" width="292" height="74" fill="#8b5cf6"/>
+      <path d="M990 592h80a18 18 0 0 1 18 18v38a18 18 0 0 1-18 18h-80Z" fill="#e4e4e7"/>
+      <line x1="990" y1="586" x2="990" y2="672" stroke="#fff" stroke-width="3" stroke-dasharray="6 6" opacity=".82"/>
+      <text x="112" y="707" fill="#fff" font-size="23" font-weight="750">6 + 3 = 9 jours-personne</text>
+      <text x="1088" y="707" fill="#d4d4d8" font-size="23" font-weight="750" text-anchor="end">Reste : 1</text>
+    </g>
+
+    <rect x="76" y="795" width="1048" height="54" rx="16" fill="#ede9fe"/>
+    <text x="600" y="829" fill="#4c1d95" font-size="19" font-weight="750" text-anchor="middle">Capacité 10 · total 9 · reste 1 · aucune date de livraison produite</text>
+  </g>
+</svg>

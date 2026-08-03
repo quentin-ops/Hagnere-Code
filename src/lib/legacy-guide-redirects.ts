@@ -63,7 +63,6 @@ export const LEGACY_GUIDE_SLUGS = [
   "pourquoi-mon-site-ne-convertit-pas",
   "pourquoi-site-pas-visible-google",
   "preparer-contenus-site-vitrine",
-  "prioriser-fonctionnalites-mvp-saas",
   "prise-rendez-vous-en-ligne-site-vitrine",
   "prix-logiciel-sur-mesure",
   "prix-referencement-naturel",

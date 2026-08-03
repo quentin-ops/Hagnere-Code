@@ -179,6 +179,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "cahier-des-charges-saas": ClipboardList,
   "combien-de-temps-developper-saas": Timer,
   "mvp-saas-quoi-inclure": FileText,
+  "prioriser-fonctionnalites-mvp-saas": GitBranch,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */

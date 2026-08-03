@@ -940,23 +940,23 @@ function PremiumSources({ sources }: { sources: GuidePremiumLegalSource[] }) {
             {sources.map((entry) => (
               <li
                 key={entry.source}
-                className="flex flex-col gap-3 py-3.5 px-4 sm:py-3 sm:px-5 md:flex-row md:items-center md:gap-5"
+                className="flex min-w-0 flex-col gap-3 py-3.5 px-4 sm:py-3 sm:px-5 lg:flex-row lg:items-center lg:gap-5"
               >
                 {entry.href ? (
                   <a
                     href={entry.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center px-3 py-1 rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em] text-zinc-700 dark:text-white shrink-0 w-fit underline decoration-zinc-300 underline-offset-2 transition-colors hover:border-indigo-400 hover:text-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="inline-flex max-w-full w-fit shrink-0 items-center justify-center whitespace-normal break-words px-3 py-1 rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 text-left text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em] text-zinc-700 dark:text-white underline decoration-zinc-300 underline-offset-2 transition-colors hover:border-indigo-400 hover:text-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                   >
                     {entry.source}
                   </a>
                 ) : (
-                  <span className="inline-flex items-center justify-center px-3 py-1 rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em] text-zinc-700 dark:text-white shrink-0 w-fit">
+                  <span className="inline-flex max-w-full w-fit shrink-0 items-center justify-center whitespace-normal break-words px-3 py-1 rounded-md border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 text-left text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em] text-zinc-700 dark:text-white">
                     {entry.source}
                   </span>
                 )}
-                <p className="text-[13px] sm:text-sm text-zinc-600 dark:text-white leading-relaxed">
+                <p className="min-w-0 break-words text-[13px] sm:text-sm text-zinc-600 dark:text-white leading-relaxed">
                   {entry.description}
                 </p>
               </li>
