@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">De la demande brute aux voies de décision</title>
+  <desc id="desc">Une demande reste distincte de la preuve, puis la revue humaine l’oriente vers une voie critique, un test ou un lot candidat sans classement automatique.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0b14"/>
+      <stop offset="1" stop-color="#18132d"/>
+    </linearGradient>
+    <linearGradient id="indigo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#000" flood-opacity=".32"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" rx="36" fill="url(#bg)"/>
+  <circle cx="1450" cy="80" r="230" fill="#6d5dfc" opacity=".12"/>
+  <circle cx="120" cy="850" r="270" fill="#14b8a6" opacity=".08"/>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="92" y="92" fill="#a5b4fc" font-size="22" font-weight="700" letter-spacing="3">AVANT DE DÉVELOPPER</text>
+    <text x="92" y="157" fill="#fff" font-size="48" font-weight="750">Une demande n’est pas encore une priorité</text>
+    <text x="92" y="204" fill="#b9bac7" font-size="25">Conserver la phrase, qualifier la preuve, puis choisir une voie humaine.</text>
+
+    <g filter="url(#shadow)">
+      <rect x="92" y="292" width="388" height="360" rx="28" fill="#171824" stroke="#343648" stroke-width="2"/>
+      <rect x="92" y="292" width="388" height="74" rx="28" fill="url(#indigo)"/>
+      <path d="M92 338h388v28H92z" fill="url(#indigo)"/>
+      <text x="126" y="339" fill="#fff" font-size="21" font-weight="750" letter-spacing="1.4">01 · DEMANDE BRUTE</text>
+      <text x="126" y="424" fill="#fff" font-size="31" font-weight="700">« Ajoutez un</text>
+      <text x="126" y="465" fill="#fff" font-size="31" font-weight="700">tableau de bord »</text>
+      <line x1="126" y1="510" x2="444" y2="510" stroke="#343648" stroke-width="2"/>
+      <text x="126" y="552" fill="#b9bac7" font-size="20">Phrase conservée</text>
+      <text x="126" y="584" fill="#b9bac7" font-size="20">Personne + situation</text>
+      <text x="126" y="616" fill="#b9bac7" font-size="20">Aucune solution présumée</text>
+    </g>
+
+    <path d="M500 472h92" stroke="#7c83a3" stroke-width="4" stroke-linecap="round"/>
+    <path d="m579 458 18 14-18 14" fill="none" stroke="#7c83a3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <g filter="url(#shadow)">
+      <rect x="618" y="292" width="388" height="360" rx="28" fill="#171824" stroke="#343648" stroke-width="2"/>
+      <rect x="618" y="292" width="388" height="74" rx="28" fill="#f59e0b"/>
+      <path d="M618 338h388v28H618z" fill="#f59e0b"/>
+      <text x="652" y="339" fill="#241706" font-size="21" font-weight="800" letter-spacing="1.4">02 · PREUVE BORNÉE</text>
+      <text x="652" y="418" fill="#fff" font-size="23" font-weight="700">Problème observé</text>
+      <text x="652" y="463" fill="#d6d6df" font-size="20">Source + période</text>
+      <text x="652" y="500" fill="#d6d6df" font-size="20">Limite de la preuve</text>
+      <text x="652" y="537" fill="#d6d6df" font-size="20">Résultat + mesure + seuil</text>
+      <rect x="652" y="575" width="318" height="45" rx="12" fill="#3b2a0e" stroke="#a86805"/>
+      <text x="673" y="604" fill="#fcd34d" font-size="18" font-weight="700">INCONNU ≠ 0</text>
+    </g>
+
+    <path d="M1026 472h74" stroke="#7c83a3" stroke-width="4" stroke-linecap="round"/>
+    <path d="m1087 458 18 14-18 14" fill="none" stroke="#7c83a3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <g filter="url(#shadow)">
+      <rect x="1128" y="292" width="380" height="360" rx="28" fill="#171824" stroke="#343648" stroke-width="2"/>
+      <text x="1162" y="339" fill="#fff" font-size="21" font-weight="750" letter-spacing="1.4">03 · REVUE DES VOIES</text>
+
+      <rect x="1162" y="386" width="312" height="62" rx="16" fill="#3f1822" stroke="#be4058"/>
+      <circle cx="1195" cy="417" r="10" fill="#fb7185"/>
+      <text x="1220" y="425" fill="#fecdd3" font-size="20" font-weight="700">Voie critique séparée</text>
+
+      <rect x="1162" y="468" width="312" height="62" rx="16" fill="#312052" stroke="#7751bd"/>
+      <circle cx="1195" cy="499" r="10" fill="#a78bfa"/>
+      <text x="1220" y="507" fill="#ddd6fe" font-size="20" font-weight="700">Test avant le code</text>
+
+      <rect x="1162" y="550" width="312" height="62" rx="16" fill="#12382e" stroke="#23856c"/>
+      <circle cx="1195" cy="581" r="10" fill="#34d399"/>
+      <text x="1220" y="589" fill="#a7f3d0" font-size="20" font-weight="700">Lot candidat à relire</text>
+    </g>
+
+    <rect x="92" y="728" width="1416" height="94" rx="24" fill="#f6f3eb"/>
+    <text x="126" y="770" fill="#312e81" font-size="20" font-weight="800" letter-spacing="1.2">AUCUNE PROGRESSION AUTOMATIQUE VERS « CONSTRUIRE »</text>
+    <text x="126" y="802" fill="#3f3f46" font-size="21">La preuve et la voie d’instruction restent visibles dans le brouillon de revue.</text>
+  </g>
+</svg>

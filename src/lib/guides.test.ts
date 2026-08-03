@@ -70,6 +70,10 @@ const saasSpecificationGuideSource = fs.readFileSync(
   path.join(process.cwd(), "src/app/guides/cahier-des-charges-saas/page.tsx"),
   "utf8",
 );
+const mvpContractGuideSource = fs.readFileSync(
+  path.join(process.cwd(), "src/app/guides/mvp-saas-quoi-inclure/page.tsx"),
+  "utf8",
+);
 const outilsScenariosSource = fs.readFileSync(
   path.join(
     process.cwd(),
@@ -101,6 +105,7 @@ describe("guide registry after the editorial reset", () => {
       "cahier-des-charges-saas",
       "combien-de-temps-developper-saas",
       "mvp-saas-quoi-inclure",
+      "prioriser-fonctionnalites-mvp-saas",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
@@ -168,6 +173,12 @@ describe("guide registry after the editorial reset", () => {
 
     expect(validationGuideSource).toContain(mvpContractPath);
     expect(saasSpecificationGuideSource).toContain(mvpContractPath);
+  });
+
+  it("links the SaaS prioritization guide from the MVP contract", () => {
+    const prioritizationPath = "/guides/prioriser-fonctionnalites-mvp-saas";
+
+    expect(mvpContractGuideSource).toContain(prioritizationPath);
   });
 
   it("keeps metadata unique, dated and restrained", () => {
@@ -310,11 +321,7 @@ describe("guide registry after the editorial reset", () => {
         path.join(guidesRoot, guide.slug, "page.tsx"),
         "utf8",
       );
-      const guideDataPath = path.join(
-        guidesRoot,
-        guide.slug,
-        "guide-data.ts",
-      );
+      const guideDataPath = path.join(guidesRoot, guide.slug, "guide-data.ts");
       const implementationSource = fs.existsSync(guideDataPath)
         ? `${source}\n${fs.readFileSync(guideDataPath, "utf8")}`
         : source;

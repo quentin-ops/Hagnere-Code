@@ -365,6 +365,27 @@ export const GUIDES: GuideEntry[] = [
     ],
     editorialStatus: "ready-for-human-review",
   },
+  {
+    slug: "prioriser-fonctionnalites-mvp-saas",
+    title: "Comment prioriser les fonctionnalités d’un SaaS ?",
+    cardTitle: "Prioriser les fonctionnalités d’un SaaS",
+    metaDescription:
+      "Transformez les demandes SaaS en problèmes prouvés, séparez les urgences, puis vérifiez dépendances et capacité avant de choisir le prochain lot.",
+    cardDescription:
+      "Un atelier sans score magique pour séparer les voies critiques, tester les hypothèses faibles et vérifier le prochain lot avec ses dépendances.",
+    heroTitle:
+      "Quelles fonctionnalités développer maintenant dans votre SaaS\u00a0?",
+    section: "SaaS et MVP",
+    datePublished: "2026-07-23T14:17:43+02:00",
+    dateModified: "2026-08-03T10:46:05+02:00",
+    readTimeMin: 10,
+    articleImagePaths: [
+      "/guides/prioriser-fonctionnalites-mvp-saas/demandes-preuves-voies-16x9.webp",
+      "/guides/prioriser-fonctionnalites-mvp-saas/lot-dependances-capacite-4x3.webp",
+      "/guides/prioriser-fonctionnalites-mvp-saas/revue-humaine-decisions-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */

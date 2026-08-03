@@ -398,8 +398,12 @@ export default function Page() {
             label: "Calculer un calendrier SaaS par dépendances",
             href: "/guides/combien-de-temps-developper-saas",
           },
+          {
+            label: "Prioriser les fonctionnalités après le socle",
+            href: "/guides/prioriser-fonctionnalites-mvp-saas",
+          },
         ]}
-        relatedGuidesLabel="3 décisions voisines à relier au contrat"
+        relatedGuidesLabel="4 décisions voisines à relier au contrat"
       >
         <GuidePremiumSection
           id="minimum"
