@@ -248,6 +248,26 @@ export const GUIDES: GuideEntry[] = [
     ],
     editorialStatus: "ready-for-human-review",
   },
+  {
+    slug: "mvp-saas-quoi-inclure",
+    title: "MVP SaaS : quoi inclure avant un premier client\u00a0?",
+    cardTitle: "MVP SaaS : quoi inclure\u00a0?",
+    metaDescription:
+      "Définissez le MVP SaaS d’un premier client : quoi construire, gérer manuellement, intégrer ou reporter, avec charge calculée et STOP explicites.",
+    cardDescription:
+      "Sept familles, cinq choix et une charge manuelle calculée pour délimiter un premier test exploitable.",
+    heroTitle: "MVP SaaS : quoi inclure avant le premier test\u00a0?",
+    section: "SaaS et MVP",
+    datePublished: "2026-07-20T15:19:41+02:00",
+    dateModified: "2026-08-03T04:14:58+02:00",
+    readTimeMin: 23,
+    articleImagePaths: [
+      "/guides/mvp-saas-quoi-inclure/contrat-test-mvp-16x9.webp",
+      "/guides/mvp-saas-quoi-inclure/charge-manuelle-mvp-4x3.webp",
+      "/guides/mvp-saas-quoi-inclure/decision-mvp-1x1.webp",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */

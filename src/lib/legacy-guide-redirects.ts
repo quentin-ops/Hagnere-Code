@@ -55,7 +55,6 @@ export const LEGACY_GUIDE_SLUGS = [
   "lovable-bolt-v0-ou-agence-saas",
   "migrer-wordpress-vers-nextjs",
   "mvp-prototype-ou-poc",
-  "mvp-saas-quoi-inclure",
   "nextjs-ou-wordpress",
   "no-code-ou-sur-mesure",
   "portail-client-b2b-sur-mesure",

@@ -95,6 +95,7 @@ describe("guide registry after the editorial reset", () => {
       "droits-acces-application-metier",
       "cahier-des-charges-saas",
       "combien-de-temps-developper-saas",
+      "mvp-saas-quoi-inclure",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
@@ -150,6 +151,13 @@ describe("guide registry after the editorial reset", () => {
 
     expect(validationGuideSource).toContain(saasSchedulePath);
     expect(saasSpecificationGuideSource).toContain(saasSchedulePath);
+  });
+
+  it("links the MVP contract guide from validation and specification", () => {
+    const mvpContractPath = "/guides/mvp-saas-quoi-inclure";
+
+    expect(validationGuideSource).toContain(mvpContractPath);
+    expect(saasSpecificationGuideSource).toContain(mvpContractPath);
   });
 
   it("keeps metadata unique, dated and restrained", () => {

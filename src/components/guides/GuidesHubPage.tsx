@@ -170,6 +170,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "droits-acces-application-metier": KeyRound,
   "cahier-des-charges-saas": ClipboardList,
   "combien-de-temps-developper-saas": Timer,
+  "mvp-saas-quoi-inclure": FileText,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */

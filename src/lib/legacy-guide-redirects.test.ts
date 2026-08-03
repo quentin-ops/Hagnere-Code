@@ -8,7 +8,7 @@ import {
 
 describe("legacy guide redirects", () => {
   it("keeps the reset inventory complete and unique", () => {
-    expect(LEGACY_GUIDE_SLUGS).toHaveLength(94);
+    expect(LEGACY_GUIDE_SLUGS).toHaveLength(93);
     expect(new Set(LEGACY_GUIDE_SLUGS).size).toBe(LEGACY_GUIDE_SLUGS.length);
     expect(LEGACY_GUIDE_SLUGS).not.toContain("automatiser-processus-metier");
     expect(LEGACY_GUIDE_SLUGS).not.toContain(
@@ -27,6 +27,7 @@ describe("legacy guide redirects", () => {
     expect(LEGACY_GUIDE_SLUGS).not.toContain(
       "combien-de-temps-developper-saas",
     );
+    expect(LEGACY_GUIDE_SLUGS).not.toContain("mvp-saas-quoi-inclure");
   });
 
   it("redirects only routes that actually existed", () => {

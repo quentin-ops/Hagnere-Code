@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Priorité des STOP et verdict propre à chaque format de test MVP SaaS</title>
+  <desc id="desc">Les quatre STOP sont évalués par priorité. S’il n’en reste aucun, le prototype, le pilote accompagné et le premier client gardent trois verdicts indépendants, sans progression automatique entre eux.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#09090b"/>
+      <stop offset="0.58" stop-color="#1e1538"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="go" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#0891b2"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="900" fill="#09090b"/>
+  <circle cx="770" cy="100" r="210" fill="#7c3aed" opacity="0.12"/>
+  <circle cx="130" cy="800" r="180" fill="#06b6d4" opacity="0.07"/>
+  <path d="M0 180H900M0 360H900M0 540H900M0 720H900" stroke="#ffffff" stroke-opacity="0.035"/>
+
+  <text x="70" y="72" fill="#c4b5fd" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="750" letter-spacing="3">DÉCISION · AUCUN SCORE</text>
+  <text x="70" y="122" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="780">Le premier STOP applicable</text>
+  <text x="70" y="163" fill="#a1a1aa" font-family="Inter, Arial, sans-serif" font-size="21">fixe le statut ; les totaux suivants ne le compensent pas.</text>
+
+  <g filter="url(#shadow)" font-family="Inter, Arial, sans-serif">
+    <g transform="translate(70 215)">
+      <rect width="760" height="96" rx="22" fill="#3f1624" stroke="#fb7185"/>
+      <circle cx="49" cy="48" r="24" fill="#881337"/>
+      <text x="49" y="55" text-anchor="middle" fill="#fecdd3" font-size="18" font-weight="800">1</text>
+      <text x="92" y="41" fill="#fecdd3" font-size="18" font-weight="750" letter-spacing="1">STOP</text>
+      <text x="92" y="70" fill="#ffffff" font-size="24" font-weight="720">Décision indispensable inconnue</text>
+      <text x="700" y="57" text-anchor="end" fill="#fda4af" font-size="16">À vérifier ≠ 0</text>
+    </g>
+
+    <g transform="translate(95 335)">
+      <rect width="710" height="92" rx="21" fill="#3b2316" stroke="#fb923c"/>
+      <circle cx="46" cy="46" r="23" fill="#9a3412"/>
+      <text x="46" y="53" text-anchor="middle" fill="#ffedd5" font-size="18" font-weight="800">2</text>
+      <text x="86" y="40" fill="#fed7aa" font-size="17" font-weight="750">STOP</text>
+      <text x="86" y="68" fill="#ffffff" font-size="23" font-weight="720">Capacité critique reportée</text>
+      <text x="655" y="54" text-anchor="end" fill="#fdba74" font-size="15">Le total ne compense pas</text>
+    </g>
+
+    <g transform="translate(120 451)">
+      <rect width="660" height="88" rx="20" fill="#352b13" stroke="#facc15"/>
+      <circle cx="44" cy="44" r="22" fill="#854d0e"/>
+      <text x="44" y="51" text-anchor="middle" fill="#fef9c3" font-size="17" font-weight="800">3</text>
+      <text x="83" y="39" fill="#fef08a" font-size="16" font-weight="750">STOP</text>
+      <text x="83" y="66" fill="#ffffff" font-size="22" font-weight="720">Opération manuelle non bornée</text>
+    </g>
+
+    <g transform="translate(145 563)">
+      <rect width="610" height="84" rx="20" fill="#1d3040" stroke="#38bdf8"/>
+      <circle cx="42" cy="42" r="21" fill="#075985"/>
+      <text x="42" y="49" text-anchor="middle" fill="#e0f2fe" font-size="17" font-weight="800">4</text>
+      <text x="80" y="37" fill="#bae6fd" font-size="16" font-weight="750">STOP</text>
+      <text x="80" y="63" fill="#ffffff" font-size="21" font-weight="720">Capacité manuelle dépassée</text>
+    </g>
+
+    <g data-format-verdict="independent">
+      <text x="450" y="684" text-anchor="middle" fill="#d8b4fe" font-size="14" font-weight="760" letter-spacing="1.2">SI AUCUN STOP · APPLIQUER LE VERDICT DU FORMAT CHOISI</text>
+
+      <g transform="translate(70 706)" data-status="TEST_FORMAT_NOT_PRODUCTION">
+        <rect width="240" height="124" rx="20" fill="#20233a" stroke="#818cf8"/>
+        <circle cx="30" cy="30" r="17" fill="#3730a3"/>
+        <text x="30" y="36" text-anchor="middle" fill="#e0e7ff" font-size="16" font-weight="820">P</text>
+        <text x="56" y="27" fill="#c7d2fe" font-size="13" font-weight="760" letter-spacing="0.8">PROTOTYPE</text>
+        <text x="56" y="47" fill="#ffffff" font-size="16" font-weight="740">HORS PRODUCTION</text>
+        <text x="20" y="82" fill="#a5b4fc" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">TEST_FORMAT_</text>
+        <text x="20" y="101" fill="#a5b4fc" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">NOT_PRODUCTION</text>
+      </g>
+
+      <g transform="translate(330 706)" data-status="PILOT_CANDIDATE_FOR_REVIEW">
+        <rect width="240" height="124" rx="20" fill="#17303b" stroke="#22d3ee"/>
+        <circle cx="30" cy="30" r="17" fill="#0e7490"/>
+        <text x="30" y="36" text-anchor="middle" fill="#cffafe" font-size="16" font-weight="820">A</text>
+        <text x="56" y="27" fill="#a5f3fc" font-size="13" font-weight="760" letter-spacing="0.5">PILOTE ACCOMPAGNÉ</text>
+        <text x="56" y="47" fill="#ffffff" font-size="16" font-weight="740">REVUE DE PILOTE</text>
+        <text x="20" y="82" fill="#67e8f9" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">PILOT_CANDIDATE_</text>
+        <text x="20" y="101" fill="#67e8f9" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">FOR_REVIEW</text>
+      </g>
+
+      <g transform="translate(590 706)" data-status="FIRST_CLIENT_CANDIDATE_FOR_REVIEW">
+        <rect width="240" height="124" rx="20" fill="#292044" stroke="#c084fc"/>
+        <circle cx="30" cy="30" r="17" fill="#7e22ce"/>
+        <text x="30" y="36" text-anchor="middle" fill="#f3e8ff" font-size="16" font-weight="820">1</text>
+        <text x="56" y="27" fill="#e9d5ff" font-size="13" font-weight="760" letter-spacing="0.5">PREMIER CLIENT</text>
+        <text x="56" y="47" fill="#ffffff" font-size="16" font-weight="740">REVUE PRODUCTION</text>
+        <text x="20" y="82" fill="#d8b4fe" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">FIRST_CLIENT_</text>
+        <text x="20" y="101" fill="#d8b4fe" font-family="ui-monospace, SFMono-Regular, monospace" font-size="11" font-weight="700">CANDIDATE_FOR_REVIEW</text>
+      </g>
+    </g>
+  </g>
+
+  <path d="M450 311V335M450 427V451M450 539V563" stroke="#a78bfa" stroke-width="3" stroke-dasharray="6 8"/>
+  <text x="450" y="870" text-anchor="middle" fill="#a1a1aa" font-family="Inter, Arial, sans-serif" font-size="17">Ni conformité · ni sécurité · ni autorisation automatique</text>
+</svg>

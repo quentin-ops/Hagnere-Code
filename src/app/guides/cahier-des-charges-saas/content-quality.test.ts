@@ -415,6 +415,7 @@ describe("public content quality for the SaaS specification guide", () => {
       "/guides/valider-idee-saas-avant-developper",
       "/guides/droits-acces-application-metier",
       "/guides/combien-de-temps-developper-saas",
+      "/guides/mvp-saas-quoi-inclure",
       "/guides",
       "/services/saas-applications-metier",
       "/demarrer-un-projet",
@@ -426,7 +427,7 @@ describe("public content quality for the SaaS specification guide", () => {
     }
 
     expect(pageSource).not.toMatch(
-      /href=["']\/guides\/(?:cahier-des-charges-application-web|creer-saas|mvp-saas)/,
+      /href=["']\/guides\/(?:cahier-des-charges-application-web|creer-saas|mvp-saas)(?:["'/#?])/,
     );
   });
 

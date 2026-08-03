@@ -1321,6 +1321,16 @@ export default function Page() {
             />
           </div>
 
+          <p>
+            Si le premier lot n’est pas encore délimité, commencez par le{" "}
+            <Link href="/guides/mvp-saas-quoi-inclure">
+              contrat de test du MVP SaaS
+            </Link>
+            . Il distingue les décisions indispensables, le travail manuel
+            borné, les intégrations et les reports avant de demander un prix sur
+            un périmètre encore ambigu.
+          </p>
+
           <h3>Le coût complet garde le même périmètre</h3>
           <p>
             Le prix initial ne suffit pas à comparer les réponses. Demandez à
