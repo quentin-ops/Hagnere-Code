@@ -6,7 +6,6 @@
  * réécrit et republié, son slug doit être retiré de cette liste.
  */
 export const LEGACY_GUIDE_SLUGS = [
-  "agence-saas-ou-freelance",
   "agence-web-ou-freelance",
   "aides-creation-site-internet",
   "application-gestion-interventions-terrain",

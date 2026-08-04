@@ -681,6 +681,7 @@ describe("public content quality for the MVP SaaS contract guide", () => {
       "guides/cahier-des-charges-saas",
       "guides/combien-de-temps-developper-saas",
       "guides/prioriser-fonctionnalites-mvp-saas",
+      "guides/agence-saas-ou-freelance",
       "demarrer-un-projet",
       "guides",
       "equipe",

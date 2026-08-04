@@ -20,6 +20,7 @@ import {
   Scale,
   ShieldCheck,
   Timer,
+  UsersRound,
   Wrench,
   type LucideIcon,
 } from "lucide-react";
@@ -180,6 +181,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "combien-de-temps-developper-saas": Timer,
   "mvp-saas-quoi-inclure": FileText,
   "prioriser-fonctionnalites-mvp-saas": GitBranch,
+  "agence-saas-ou-freelance": UsersRound,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */

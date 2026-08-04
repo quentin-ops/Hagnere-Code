@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000" role="img" aria-labelledby="title description">
+  <title id="title">Relais pendant un incident SaaS</title>
+  <desc id="description">La personne qui a écrit le mécanisme est indisponible. Un relais utilise des accès bornés, l'historique et une procédure, puis un contrôle distinct vérifie le rétablissement.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="1000" rx="48" fill="url(#bg)"/>
+  <circle cx="838" cy="155" r="208" fill="#7c3aed" opacity=".18"/>
+  <circle cx="113" cy="877" r="230" fill="#2563eb" opacity=".16"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="76" y="102" fill="#c4b5fd" font-size="21" font-weight="700" letter-spacing="2.8">EXERCICE FICTIF · INCIDENT</text>
+    <text x="76" y="162" fill="#ffffff" font-size="42" font-weight="750">La reprise doit fonctionner</text>
+    <text x="76" y="211" fill="#ffffff" font-size="42" font-weight="750">sans l'auteur du code.</text>
+
+    <g transform="translate(76 282)">
+      <path d="M103 98C270 98 286 258 450 258S625 300 787 300" fill="none" stroke="url(#flow)" stroke-width="9" stroke-linecap="round" stroke-dasharray="16 17"/>
+      <g transform="translate(103 98)">
+        <circle r="73" fill="#3f3f46" stroke="#71717a" stroke-width="3"/>
+        <circle cy="-16" r="20" fill="#a1a1aa"/>
+        <path d="M-36 36c8-38 64-38 72 0" fill="#a1a1aa"/>
+        <path d="M-50-50l100 100M50-50L-50 50" stroke="#fca5a5" stroke-width="9" stroke-linecap="round"/>
+        <text y="115" text-anchor="middle" fill="#d4d4d8" font-size="20" font-weight="700">Auteur absent</text>
+      </g>
+      <g transform="translate(450 258)">
+        <circle r="82" fill="#eef2ff" stroke="#818cf8" stroke-width="4"/>
+        <circle cy="-20" r="22" fill="#4f46e5"/>
+        <path d="M-40 37c9-42 71-42 80 0" fill="#4f46e5"/>
+        <path d="M52-5h54v72H52zM63 11h32M63 27h32M63 43h23" fill="#ffffff" stroke="#7c3aed" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <text y="126" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="700">Relais nommé</text>
+        <text y="155" text-anchor="middle" fill="#c4b5fd" font-size="17">accès + historique + procédure</text>
+      </g>
+      <g transform="translate(787 300)">
+        <circle r="76" fill="#ecfdf5" stroke="#34d399" stroke-width="4"/>
+        <circle r="28" fill="none" stroke="#047857" stroke-width="7"/>
+        <path d="M20 20l31 31" stroke="#047857" stroke-width="8" stroke-linecap="round"/>
+        <path d="M-13 0l10 10 18-22" fill="none" stroke="#047857" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <text y="119" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="700">Contrôle distinct</text>
+        <text y="148" text-anchor="middle" fill="#a7f3d0" font-size="17">service et cas refusés vérifiés</text>
+      </g>
+    </g>
+
+    <g transform="translate(76 790)">
+      <rect width="848" height="135" rx="28" fill="#ffffff" opacity=".08" stroke="#ffffff" stroke-opacity=".18" stroke-width="2"/>
+      <g fill="#ffffff" font-size="20" font-weight="700">
+        <text x="35" y="48">1 · qualifier l'impact</text>
+        <text x="313" y="48">2 · décider l'action</text>
+        <text x="586" y="48">3 · ouvrir l'accès borné</text>
+        <text x="35" y="92">4 · agir et tracer</text>
+        <text x="313" y="92">5 · contrôler</text>
+        <text x="586" y="92">6 · refermer l'accès</text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -405,6 +405,26 @@ export const GUIDES: GuideEntry[] = [
     ],
     editorialStatus: "ready-for-human-review",
   },
+  {
+    slug: "agence-saas-ou-freelance",
+    title: "Agence SaaS ou freelance : quelle équipe choisir ?",
+    cardTitle: "Agence SaaS ou freelance",
+    metaDescription:
+      "Choisissez freelance, agence, équipe interne ou hybride selon la phase du SaaS, les responsabilités, le relais et les éléments à récupérer.",
+    cardDescription:
+      "Une carte par phase pour nommer qui décide, réalise, contrôle, relaie et remet, puis comparer cinq formes d’équipe sans classement global.",
+    heroTitle: "Agence SaaS ou freelance\u00a0: quelle équipe choisir\u00a0?",
+    section: "SaaS et MVP",
+    datePublished: "2026-07-22T11:05:08+02:00",
+    dateModified: "2026-08-04T14:40:46+02:00",
+    readTimeMin: 13,
+    articleImagePaths: [
+      "/guides/agence-saas-ou-freelance/equipe-responsabilites-16x9.svg",
+      "/guides/agence-saas-ou-freelance/carte-responsabilites-4x3.svg",
+      "/guides/agence-saas-ou-freelance/relais-incident-1x1.svg",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */
