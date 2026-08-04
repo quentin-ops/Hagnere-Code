@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title description">
+  <title id="title">Choisir une équipe SaaS par responsabilités</title>
+  <desc id="description">Une phase SaaS traverse cinq responsabilités : décider, réaliser, contrôler, relayer et remettre. Les formes freelance, agence, interne et hybride, ainsi que l'option de report, sont comparées sur cette même ligne.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#faf7f1"/>
+      <stop offset="1" stop-color="#f0ecff"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#312e81" flood-opacity=".10"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" rx="44" fill="url(#background)"/>
+  <circle cx="1430" cy="105" r="210" fill="#c4b5fd" opacity=".22"/>
+  <circle cx="132" cy="812" r="230" fill="#bfdbfe" opacity=".20"/>
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="112" y="128" fill="#4338ca" font-size="22" font-weight="700" letter-spacing="3">PROCHAINE PHASE SAAS</text>
+    <text x="112" y="193" fill="#18181b" font-size="48" font-weight="750">Le statut ne remplit pas la ligne.</text>
+    <text x="112" y="238" fill="#52525b" font-size="25">Écrivez les noms, les accès et la trace de reprise avant de choisir.</text>
+
+    <g transform="translate(112 310)" filter="url(#shadow)">
+      <rect width="1376" height="260" rx="30" fill="#ffffff" stroke="#ddd6fe" stroke-width="2"/>
+      <path d="M156 125H1218" stroke="#c4b5fd" stroke-width="5" stroke-linecap="round"/>
+      <path d="M1200 108L1228 125L1200 142" fill="none" stroke="#7c3aed" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <g text-anchor="middle">
+        <g transform="translate(164 125)">
+          <circle r="55" fill="#eef2ff" stroke="#818cf8" stroke-width="3"/>
+          <path d="M-18 0l12 12 26-29" fill="none" stroke="#4338ca" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+          <text y="91" fill="#18181b" font-size="22" font-weight="700">Décider</text>
+          <text y="120" fill="#71717a" font-size="17">oui, non, plus tard</text>
+        </g>
+        <g transform="translate(426 125)">
+          <circle r="55" fill="#f5f3ff" stroke="#a78bfa" stroke-width="3"/>
+          <path d="M-25 17l9-36 41-8-9 36z" fill="none" stroke="#6d28d9" stroke-width="6" stroke-linejoin="round"/>
+          <text y="91" fill="#18181b" font-size="22" font-weight="700">Réaliser</text>
+          <text y="120" fill="#71717a" font-size="17">construire et opérer</text>
+        </g>
+        <g transform="translate(688 125)">
+          <circle r="55" fill="#ecfeff" stroke="#67e8f9" stroke-width="3"/>
+          <circle r="22" fill="none" stroke="#0e7490" stroke-width="6"/>
+          <path d="M16 16l20 20" stroke="#0e7490" stroke-width="7" stroke-linecap="round"/>
+          <text y="91" fill="#18181b" font-size="22" font-weight="700">Contrôler</text>
+          <text y="120" fill="#71717a" font-size="17">vérifier le résultat</text>
+        </g>
+        <g transform="translate(950 125)">
+          <circle r="55" fill="#eff6ff" stroke="#93c5fd" stroke-width="3"/>
+          <path d="M-27 9c17-30 37-30 54 0M-18 24c11-18 25-18 36 0M0-27v54" fill="none" stroke="#2563eb" stroke-width="6" stroke-linecap="round"/>
+          <text y="91" fill="#18181b" font-size="22" font-weight="700">Relayer</text>
+          <text y="120" fill="#71717a" font-size="17">reprendre sans l'auteur</text>
+        </g>
+        <g transform="translate(1212 125)">
+          <circle r="55" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="3"/>
+          <path d="M-26-20h40l13 13v35h-53zM14-20v14h13M-12 8h25M-12 19h18" fill="none" stroke="#047857" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text y="91" fill="#18181b" font-size="22" font-weight="700">Remettre</text>
+          <text y="120" fill="#71717a" font-size="17">code, accès, trace</text>
+        </g>
+      </g>
+    </g>
+
+    <g transform="translate(112 640)">
+      <text y="30" fill="#3f3f46" font-size="20" font-weight="700">MÊME QUESTION POUR CHAQUE FORME</text>
+      <g transform="translate(0 62)" font-size="22" font-weight="700" text-anchor="middle">
+        <rect width="252" height="84" rx="22" fill="#18181b"/>
+        <text x="126" y="53" fill="#ffffff">Freelance</text>
+        <rect x="281" width="252" height="84" rx="22" fill="#ffffff" stroke="#d4d4d8" stroke-width="2"/>
+        <text x="407" y="53" fill="#18181b">Agence</text>
+        <rect x="562" width="252" height="84" rx="22" fill="#ffffff" stroke="#d4d4d8" stroke-width="2"/>
+        <text x="688" y="53" fill="#18181b">Interne</text>
+        <rect x="843" width="252" height="84" rx="22" fill="#ffffff" stroke="#c4b5fd" stroke-width="2"/>
+        <text x="969" y="53" fill="#5b21b6">Hybride</text>
+        <rect x="1124" width="252" height="84" rx="22" fill="url(#accent)"/>
+        <text x="1250" y="53" fill="#ffffff">Reporter</text>
+      </g>
+      <text x="0" y="190" fill="#71717a" font-size="20">Une case vide reste visible : aucune qualité ailleurs ne la compense.</text>
+    </g>
+  </g>
+</svg>

@@ -2000,7 +2000,8 @@ partagés.
 1. Le CTA de stratégie accepte désormais showPhoneCta: false. Ce guide rend
    exactement une action projet et aucun second lien téléphonique dans ce bloc.
 2. Le comptage de lecture exclut aussi les messages sr-only, qui ne sont pas
-   visibles. La version intégrée H24 contient 4 546 mots visibles et demande
+   visibles. La version intégrée H24 contient 4 568 mots visibles après ajout
+   du maillage entrant vers le guide #30 et demande
    23 minutes à 200 mots par minute ; le Markdown volontairement visible reste
    compté.
 3. Une période inconnue rend la charge PARTIAL_UNUSABLE, la charge totale et
@@ -2033,7 +2034,7 @@ l’audit release indépendant.
 - build de production final : PASS, 69 pages, route statique du guide, puis
   artefact SEO post-build à 44 URL, 27 liens, 44 pages, 11 temps de lecture et
   76 blocs JSON-LD ;
-- mesure officielle sur la page servie : PASS, 4 546 mots visibles et 23
+- mesure officielle mise à jour après le maillage #30 : PASS, 4 568 mots visibles et 23
   minutes. Le compteur exclut `sr-only` sans interrompre le texte au premier
   élément HTML vide.
 

@@ -1,9 +1,7 @@
-15b56eb24b4b446f7b77545debdc944129ca8f0684689867f9340df3c90d8e64  docs/research/agence-saas-ou-freelance.md
-26a2008b2eedfd7b9d68db07cb6c346f45cf9c42b31eb175fd00287930943600  src/app/guides/agence-saas-ou-freelance/page.tsx
-519974e8ab8f7ee9fcb3572f49a1e56fd1c304eb5635a7fab1497b777019718a  src/app/guides/agence-saas-ou-freelance/opengraph-image.tsx
-b2eeda0fc3d7be23834108823176da59814d312e4b93c33426ab9e475a00ee3f  src/lib/guides.ts
-8f3b4bb5f66e54b60656cc97afb9e52d267626b482771c37a946c35ce1cba4ce  src/app/guides/mvp-saas-quoi-inclure/page.tsx
-276a6f9b64a4c1a7a9d7d620b1080625f11103fb03a2cdb04e93cec64481fe3d  src/components/guides/GuidesHubPage.tsx
-8fbf045722ebbda2bd46407564e40b92bdf5b17ce3cb087a27c776ddc4f73a7b  src/lib/guide-human-language.test.ts
-0d55dda9e33192fdc42172898dcbf7b084e77b6b60454c9c97423bd56e33bee5  src/lib/editorial-governance.test.ts
-b472449bf780d6e22da888e8a0ec2eee53e834b86ebbf97fbfb5e3bbdedba2f4  docs/roadmap-guides-seo.md
+48dfd22547e527971106abbee561de8ec430dadf243541e15051872c7009b4ab  docs/research/agence-saas-ou-freelance.md
+1078d51a465f2b300f7e118edd1218a8bb7061c5a6c5f7ff19094c55b0354062  src/app/guides/agence-saas-ou-freelance/page.tsx
+04e3d6ea1db749d21f97055c26553e13e89df2d44c4450aa154d56ff5f9d6bc6  src/app/guides/agence-saas-ou-freelance/opengraph-image.tsx
+6abe0c097aec31ed45202b91838ce07779d3fac7285ceb8f30fd338603fefddd  src/app/guides/agence-saas-ou-freelance/content-quality.test.ts
+d9db0adc5024d222039b958547b2c49e4d1bcaaee0f8b7dffc50c9898e696d2f  public/guides/agence-saas-ou-freelance/equipe-responsabilites-16x9.svg
+afad858c4bb4eeeeaa409e8e31ac9a4d63bfc0d9a22429325016a914da095106  public/guides/agence-saas-ou-freelance/carte-responsabilites-4x3.svg
+02443cf31f2a9fb84c5159987d3351950085dffa15203d70fb4ef6d91ec93275  public/guides/agence-saas-ou-freelance/relais-incident-1x1.svg

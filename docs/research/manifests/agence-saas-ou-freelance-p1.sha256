@@ -1,1 +1,7 @@
-fd90448ffccecce1bc03c6702f30dd2a9fbd03e6fbf17ae5aee25ef8f6a410d7  docs/research/agence-saas-ou-freelance.md
+eea917e032cba0abc15ce4478bc35865ace5810934efa37918aa9857d6a89381  docs/research/agence-saas-ou-freelance.md
+a5f07239eb446723f802ec4002042c0d5e0b4dd498fc6df47e13f80a1ad81efe  src/app/guides/agence-saas-ou-freelance/page.tsx
+1ed836a8f50965b475a4e589e1ace27d44855cce9bd9dbbce4f2fadfd1cbec2b  src/app/guides/agence-saas-ou-freelance/opengraph-image.tsx
+42df790442bfb05676f937a4618b0bd20d41a1c4197d4aead9f11278c1bf03a7  src/app/guides/agence-saas-ou-freelance/content-quality.test.ts
+d9db0adc5024d222039b958547b2c49e4d1bcaaee0f8b7dffc50c9898e696d2f  public/guides/agence-saas-ou-freelance/equipe-responsabilites-16x9.svg
+afad858c4bb4eeeeaa409e8e31ac9a4d63bfc0d9a22429325016a914da095106  public/guides/agence-saas-ou-freelance/carte-responsabilites-4x3.svg
+02443cf31f2a9fb84c5159987d3351950085dffa15203d70fb4ef6d91ec93275  public/guides/agence-saas-ou-freelance/relais-incident-1x1.svg

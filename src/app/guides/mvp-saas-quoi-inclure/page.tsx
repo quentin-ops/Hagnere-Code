@@ -1044,6 +1044,11 @@ export default function Page() {
           <Link href="/guides/cahier-des-charges-saas">
             cahier des charges SaaS
           </Link>
+          . Pour attribuer ensuite chaque responsabilité à une agence, un
+          freelance, l’interne ou une équipe hybride, utilisez le guide{" "}
+          <Link href="/guides/agence-saas-ou-freelance">
+            agence SaaS ou freelance
+          </Link>
           .
         </p>
       </GuidePremiumLayout>

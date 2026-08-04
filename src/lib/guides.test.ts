@@ -106,6 +106,7 @@ describe("guide registry after the editorial reset", () => {
       "combien-de-temps-developper-saas",
       "mvp-saas-quoi-inclure",
       "prioriser-fonctionnalites-mvp-saas",
+      "agence-saas-ou-freelance",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
@@ -179,6 +180,12 @@ describe("guide registry after the editorial reset", () => {
     const prioritizationPath = "/guides/prioriser-fonctionnalites-mvp-saas";
 
     expect(mvpContractGuideSource).toContain(prioritizationPath);
+  });
+
+  it("links the SaaS team-shape guide from the MVP contract", () => {
+    expect(mvpContractGuideSource).toContain(
+      "/guides/agence-saas-ou-freelance",
+    );
   });
 
   it("keeps metadata unique, dated and restrained", () => {
