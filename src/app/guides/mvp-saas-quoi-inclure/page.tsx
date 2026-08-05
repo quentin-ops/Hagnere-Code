@@ -1031,7 +1031,13 @@ export default function Page() {
             Non. Il organise les décisions du test. Architecture, isolation des
             clients, hébergement, contrôle d’accès et intégrations doivent être
             choisis selon les contraintes réelles et faire l’objet de leur
-            propre revue.
+            propre revue. Si l’alternative porte précisément sur une plateforme
+            no-code et une base de code dédiée, le guide{" "}
+            <Link href="/guides/bubble-ou-saas-sur-mesure">
+              Bubble ou SaaS sur mesure
+            </Link>{" "}
+            les compare sur les mêmes preuves, le coût total et la capacité à
+            changer de solution.
           </p>
 
           <h3>

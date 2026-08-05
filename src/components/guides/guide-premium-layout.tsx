@@ -870,7 +870,7 @@ function PremiumStrategyCta({ data }: { data: GuidePremiumStrategyCtaData }) {
 
               <h2 className="font-[family-name:var(--font-playfair)] text-[26px] leading-[1.12] sm:text-[32px] sm:leading-[1.1] md:text-[36px] md:leading-[1.08] font-bold tracking-[-0.02em] text-zinc-950 dark:text-white mb-4 max-w-2xl">
                 {data.titleStart}{" "}
-                <em className="italic font-medium text-indigo-600">
+                <em className="italic font-medium text-indigo-600 dark:text-indigo-300">
                   {data.titleEm}
                 </em>
               </h2>

@@ -33,8 +33,8 @@ export function buildGuideMetadata(
       description: guide.metaDescription,
       url,
       images: [{ url: image, width: 1200, height: 630, alt: imageAlt }],
-      publishedTime: guide.datePublished,
-      modifiedTime: guide.dateModified,
+      ...(guide.datePublished ? { publishedTime: guide.datePublished } : {}),
+      ...(guide.dateModified ? { modifiedTime: guide.dateModified } : {}),
       authors: [QUENTIN_HAGNERE_URL],
     },
     twitter: {
@@ -61,14 +61,13 @@ export function buildGuideStructuredData(
       description: guide.metaDescription,
       url,
       mainEntityOfPage: { "@type": "WebPage", "@id": url },
-      image:
-        guide.articleImagePaths?.map((path) => `${SITE_URL}${path}`) ?? [
-          `${url}/opengraph-image`,
-        ],
-      datePublished: guide.datePublished,
-      dateModified: guide.dateModified,
+      image: guide.articleImagePaths?.map((path) => `${SITE_URL}${path}`) ?? [
+        `${url}/opengraph-image`,
+      ],
+      ...(guide.datePublished ? { datePublished: guide.datePublished } : {}),
+      ...(guide.dateModified ? { dateModified: guide.dateModified } : {}),
       inLanguage: "fr-FR",
-      articleSection: guide.section,
+      articleSection: guide.articleSection ?? guide.section,
       isPartOf: {
         "@type": "CollectionPage",
         "@id": GUIDES_COLLECTION_ID,

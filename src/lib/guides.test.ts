@@ -116,6 +116,7 @@ describe("guide registry after the editorial reset", () => {
       "prioriser-fonctionnalites-mvp-saas",
       "agence-saas-ou-freelance",
       "mvp-prototype-ou-poc",
+      "bubble-ou-saas-sur-mesure",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
@@ -208,7 +209,13 @@ describe("guide registry after the editorial reset", () => {
     expect(mvpContractGuideSource).toContain("/guides/mvp-prototype-ou-poc");
   });
 
-  it("keeps metadata unique, dated and restrained", () => {
+  it("links the Bubble decision guide from the MVP architecture answer", () => {
+    expect(mvpContractGuideSource).toContain(
+      "/guides/bubble-ou-saas-sur-mesure",
+    );
+  });
+
+  it("keeps metadata unique, restrained and dated only from proven instants", () => {
     for (const key of ["slug", "title", "metaDescription"] as const) {
       const values = GUIDES.map((guide) => guide[key]);
       expect(new Set(values).size, key).toBe(values.length);
@@ -222,15 +229,24 @@ describe("guide registry after the editorial reset", () => {
         guide.metaDescription.length,
         `${guide.slug}: description`,
       ).toBeLessThanOrEqual(160);
-      expect(guide.datePublished).toMatch(
-        /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/,
+      expect(Boolean(guide.datePublished), guide.slug).toBe(
+        Boolean(guide.dateModified),
       );
-      expect(guide.dateModified).toMatch(
-        /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/,
-      );
-      expect(Date.parse(guide.dateModified)).toBeGreaterThanOrEqual(
-        Date.parse(guide.datePublished),
-      );
+      if (guide.datePublished && guide.dateModified) {
+        expect(guide.datePublished).toMatch(
+          /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/,
+        );
+        expect(guide.dateModified).toMatch(
+          /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:\d{2})$/,
+        );
+        expect(Date.parse(guide.dateModified)).toBeGreaterThanOrEqual(
+          Date.parse(guide.datePublished),
+        );
+      } else {
+        expect(guide.editorialStatus, guide.slug).toBe(
+          "ready-for-human-review",
+        );
+      }
       expect(guide.readTimeMin).toBeGreaterThan(0);
       expect(guide.articleImagePaths).toHaveLength(3);
     }

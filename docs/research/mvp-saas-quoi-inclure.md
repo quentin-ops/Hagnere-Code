@@ -2120,3 +2120,17 @@ statut éditorial du présent guide. Elle appartient au snapshot d’intégratio
 guide #31 et ne constitue ni une nouvelle publication ni une preuve publique.
 Après le maillage #31, le rendu contient 4 613 mots visibles ; l’arrondi à 200
 mots par minute reste donc 23 minutes et ne modifie pas le registre du guide.
+
+### H27. Maillage entrant vers le comparatif Bubble — 5 août 2026
+
+La réponse sur l’architecture relie désormais le guide
+`bubble-ou-saas-sur-mesure` lorsque l’alternative porte précisément sur une
+plateforme no-code et une base de code dédiée. L’ancre annonce la comparaison
+sur les mêmes preuves, le coût total et la capacité à changer de solution ;
+elle ne présente ni Bubble ni le code dédié comme choix automatique.
+
+Cette retouche ne change aucun calcul, exemple, média, CTA, metadata, date ou
+statut éditorial du présent guide. Elle appartient au snapshot d’intégration du
+guide #32 et ne constitue ni une nouvelle publication ni une preuve publique.
+Après le maillage #32, le rendu contient 4 650 mots visibles ; l’arrondi à 200
+mots par minute reste 23 minutes et ne modifie pas le registre du guide.

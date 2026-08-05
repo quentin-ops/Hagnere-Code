@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Coût total et changement de solution à examiner ensemble</title>
+  <desc id="desc">Deux vérifications relient le coût total sur un même horizon à un changement de solution réellement testé. Les détails restent disponibles dans le contenu HTML adjacent.</desc>
+  <rect width="1200" height="900" rx="48" fill="#0f172a"/>
+  <text x="80" y="88" fill="#c7d2fe" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="3">DEUX VÉRIFICATIONS À RELIER</text>
+  <text x="80" y="156" fill="#ffffff" font-family="Arial, sans-serif" font-size="48" font-weight="800">Compter et préparer le changement</text>
+
+  <g transform="translate(80 210)">
+    <rect width="1040" height="235" rx="30" fill="#f8fafc"/>
+    <circle cx="72" cy="72" r="34" fill="#4f46e5"/>
+    <text x="72" y="84" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="32" font-weight="800">€</text>
+    <text x="132" y="88" fill="#111827" font-family="Arial, sans-serif" font-size="48" font-weight="800">COÛT TOTAL</text>
+    <text x="132" y="146" fill="#374151" font-family="Arial, sans-serif" font-size="34" font-weight="700">8 postes · même horizon</text>
+    <text x="132" y="194" fill="#4b5563" font-family="Arial, sans-serif" font-size="30">Montants datés et sourcés · aucun double compte</text>
+  </g>
+
+  <g transform="translate(80 490)">
+    <rect width="1040" height="235" rx="30" fill="#eef2ff"/>
+    <circle cx="72" cy="72" r="34" fill="#0f766e"/>
+    <path d="M58 72h28m-10-10 10 10-10 10" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="132" y="88" fill="#111827" font-family="Arial, sans-serif" font-size="48" font-weight="800">CHANGER DE SOLUTION</text>
+    <text x="132" y="146" fill="#374151" font-family="Arial, sans-serif" font-size="34" font-weight="700">6 blocs à reprendre · retour arrière testé</text>
+    <text x="132" y="194" fill="#4b5563" font-family="Arial, sans-serif" font-size="30">Un export réussi ne prouve pas une reprise réussie</text>
+  </g>
+
+  <rect x="80" y="775" width="1040" height="70" rx="20" fill="#1e293b"/>
+  <text x="600" y="820" text-anchor="middle" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="30" font-weight="700">Les preuves détaillées restent dans les tableaux du guide.</text>
+</svg>

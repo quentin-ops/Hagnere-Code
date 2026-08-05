@@ -34,12 +34,14 @@ export interface GuideEntry {
   cardDescription: string;
   /** H1 de la page. */
   heroTitle: string;
-  /** Catégorie éditoriale (articleSection du JSON-LD + tag de carte). */
+  /** Catégorie éditoriale utilisée par le hub et le tag de carte. */
   section: string;
-  /** Instant réel de première publication, ISO 8601 avec fuseau. */
-  datePublished: string;
-  /** Instant réel de dernière modification substantielle, ISO 8601 avec fuseau. */
-  dateModified: string;
+  /** Libellé Article.articleSection si le H1 exige une forme plus courte. */
+  articleSection?: string;
+  /** Instant réel de première publication, ISO 8601 avec fuseau. Absent tant que le guide reste privé. */
+  datePublished?: string;
+  /** Instant réel de dernière modification substantielle, ISO 8601 avec fuseau. Absent tant que le guide reste privé. */
+  dateModified?: string;
   readTimeMin: number;
   /** Images éditoriales visibles, en chemins absolus du site, pour Article. */
   articleImagePaths?: string[];
@@ -445,12 +447,45 @@ export const GUIDES: GuideEntry[] = [
     ],
     editorialStatus: "ready-for-human-review",
   },
+  {
+    slug: "bubble-ou-saas-sur-mesure",
+    title: "Bubble ou SaaS sur mesure : comment choisir ?",
+    cardTitle: "Bubble ou SaaS sur mesure : la méthode de décision",
+    metaDescription:
+      "Comparez Bubble et une base de code dédiée avec les mêmes besoins : charge réelle, coût total, données, équipe, capacité à changer de solution et preuves.",
+    cardDescription:
+      "Une méthode en cinq sorties pour comparer Bubble et une base de code dédiée : preuves, coût total, équipe, données et changement de solution testé.",
+    heroTitle: "Bubble ou SaaS sur mesure : comment choisir ?",
+    section: "SaaS et MVP",
+    articleSection: "SaaS",
+    readTimeMin: 18,
+    articleImagePaths: [
+      "/guides/bubble-ou-saas-sur-mesure/cinq-sorties-decision-16x9.svg",
+      "/guides/bubble-ou-saas-sur-mesure/tco-et-plan-sortie-4x3.svg",
+      "/guides/bubble-ou-saas-sur-mesure/migration-par-capacite-1x1.svg",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
+export type PublishedGuideEntry = GuideEntry & {
+  datePublished: string;
+  dateModified: string;
+  editorialStatus?: never;
+};
+
+function isPublishedGuide(guide: GuideEntry): guide is PublishedGuideEntry {
+  if (guide.editorialStatus === "ready-for-human-review") return false;
+  if (!guide.datePublished || !guide.dateModified) {
+    throw new Error(
+      `Guide public sans dates éditoriales prouvées : ${guide.slug}`,
+    );
+  }
+  return true;
+}
+
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */
-export const PUBLISHED_GUIDES = GUIDES.filter(
-  (guide) => guide.editorialStatus !== "ready-for-human-review",
-);
+export const PUBLISHED_GUIDES = GUIDES.filter(isPublishedGuide);
 
 /**
  * Rend la politique d'indexation explicite au niveau de chaque guide.
@@ -482,7 +517,10 @@ export function getGuide(slug: string): GuideEntry {
 }
 
 /** « 13 juillet 2026 » à partir d'une date ISO. */
-export function formatGuideDate(iso: string): string {
+export function formatGuideDate(iso: string | undefined): string {
+  if (!iso) {
+    throw new Error("Impossible d’afficher une date éditoriale non prouvée.");
+  }
   return new Date(iso).toLocaleDateString("fr-FR", {
     day: "numeric",
     month: "long",

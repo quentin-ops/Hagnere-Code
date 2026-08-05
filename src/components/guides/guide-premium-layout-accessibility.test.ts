@@ -48,4 +48,10 @@ describe("GuidePremiumLayout accessibility contracts", () => {
     expect(faqSource).toContain('[data-state="closed"]');
     expect(faqSource).toContain("display: block !important");
   });
+
+  it("keeps the italic strategy title readable on its dark surface", () => {
+    expect(layoutSource).toContain(
+      'className="italic font-medium text-indigo-600 dark:text-indigo-300"',
+    );
+  });
 });

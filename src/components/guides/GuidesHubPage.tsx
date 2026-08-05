@@ -183,6 +183,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "prioriser-fonctionnalites-mvp-saas": GitBranch,
   "agence-saas-ou-freelance": UsersRound,
   "mvp-prototype-ou-poc": FlaskConical,
+  "bubble-ou-saas-sur-mesure": Scale,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */
