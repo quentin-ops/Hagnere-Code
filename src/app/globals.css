@@ -355,10 +355,9 @@
   .skip-to-content {
     display: none !important;
   }
-}
 
-@media print {
-  .skip-to-content {
+  /* Le document imprimé d'un guide s'arrête à son contenu éditorial. */
+  .guide-print-exclude {
     display: none !important;
   }
 }

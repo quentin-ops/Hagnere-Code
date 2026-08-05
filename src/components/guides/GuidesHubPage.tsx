@@ -169,6 +169,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "valider-idee-saas-avant-developper": FlaskConical,
   "prix-gestion-google-ads": HandCoins,
   "power-apps-ou-application-sur-mesure": GitBranch,
+  "airtable-notion-ou-application-metier": Scale,
   "reprendre-logiciel-metier-existant": Wrench,
   "migrer-logiciel-metier-sans-interruption": Route,
   "plan-recette-application-metier": ClipboardList,

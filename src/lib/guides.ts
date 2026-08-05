@@ -185,6 +185,25 @@ export const GUIDES: GuideEntry[] = [
     ],
   },
   {
+    slug: "airtable-notion-ou-application-metier",
+    title: "Airtable, Notion ou application métier : comment choisir ?",
+    cardTitle: "Airtable, Notion ou application métier",
+    metaDescription:
+      "Comparez Airtable, Notion et une application métier avec 12 tests sur les droits, les données, l’exploitation et la sortie, sans imposer le sur-mesure.",
+    cardDescription:
+      "Douze preuves, cinq issues et une grille de sortie pour décider s’il faut garder Airtable ou Notion, renforcer l’organisation, hybrider ou migrer.",
+    heroTitle: "Airtable, Notion ou application métier : comment choisir ?",
+    section: "Outils internes et automatisation",
+    datePublished: "2026-08-05T21:41:54+02:00",
+    dateModified: "2026-08-05T21:41:54+02:00",
+    readTimeMin: 24,
+    articleImagePaths: [
+      "/guides/airtable-notion-ou-application-metier/article-airtable-notion-16x9.svg",
+      "/guides/airtable-notion-ou-application-metier/article-airtable-notion-4x3.svg",
+      "/guides/airtable-notion-ou-application-metier/article-airtable-notion-1x1.svg",
+    ],
+  },
+  {
     slug: "reprendre-logiciel-metier-existant",
     title: "Reprendre un logiciel métier : le test de relève",
     cardTitle: "Reprendre un logiciel métier existant",

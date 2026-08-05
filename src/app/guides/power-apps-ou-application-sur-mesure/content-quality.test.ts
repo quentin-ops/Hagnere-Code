@@ -158,6 +158,12 @@ describe("content quality for Power Apps or custom application guide", () => {
     );
   });
 
+  it("offers a contextual path to the Airtable, Notion or custom-app decision", () => {
+    expect(normalizedPage).toContain(
+      'href: "/guides/airtable-notion-ou-application-metier"',
+    );
+  });
+
   it("emits only Article and BreadcrumbList structured data", () => {
     expect(structuredData.map((item) => item["@type"])).toEqual([
       "Article",

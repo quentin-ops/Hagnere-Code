@@ -483,8 +483,8 @@ export default function Page() {
             href: "/guides/calculer-roi-application-metier",
           },
           {
-            label: "Quel processus métier automatiser en premier ?",
-            href: "/guides/automatiser-processus-metier",
+            label: "Airtable, Notion ou application métier",
+            href: "/guides/airtable-notion-ou-application-metier",
           },
         ]}
         relatedGuidesLabel="3 guides complémentaires"

@@ -1,0 +1,12 @@
+5c5dfa77cddb2409d1045c1946cdbb19fb503ab999ac7782f4ef9b6284d33159  docs/research/airtable-notion-ou-application-metier.md
+212f666fe93a4d117fd2de035ec1dd8525242ab2f402c57309a67856b0ccb4b8  src/app/guides/airtable-notion-ou-application-metier/guide-data.ts
+5e5a4f520fdee9987d3e7060e1747f7f5a573bbf4bcd814d877f8e7b5d9f10d5  src/app/guides/airtable-notion-ou-application-metier/page.tsx
+32bf015ddfc1341598a89914db113c6ccbff832da4eeeddee5c4a37b38f54ae6  src/app/guides/airtable-notion-ou-application-metier/opengraph-image.tsx
+af212533d0f2cd3821152b99d25c930f193f4701691bb4625025dde15aa2bbdc  src/app/guides/airtable-notion-ou-application-metier/airtable-notion-decision-model.ts
+bc6143c7723bcc72f3af80365dc07a2107b1737ab5618db9c4ac455b318797e1  src/app/guides/airtable-notion-ou-application-metier/airtable-notion-decision-model.test.ts
+9426fe8638907736923c37c62e3313ddf1b40fa857d3e5c4d4a8edeb44d024fa  src/app/guides/airtable-notion-ou-application-metier/airtable-notion-decision-workbench.tsx
+fd7828247603d892a973d983b3f80b8ce8de71bd5606a51dc29f27e7e39ce4f3  src/app/guides/airtable-notion-ou-application-metier/airtable-notion-decision-workbench.test.tsx
+2fcf6edced9b921df7f4907c7685c4a9b2261358cc6eb8e7d5b0418079d10818  src/app/guides/airtable-notion-ou-application-metier/content-quality.test.ts
+b77a5c0d0eea3ddf9323fef2953de1a12149ea94c78d65390531e9b2b70931d0  public/guides/airtable-notion-ou-application-metier/article-airtable-notion-16x9.svg
+718c94b15861ea97ae86c28588eeec9bb061151cf19c9b36a48d24fc98eab9b2  public/guides/airtable-notion-ou-application-metier/article-airtable-notion-4x3.svg
+85a13480a282db63f34110f14caaf7aa5bf464751753a00b55c1a300a216847b  public/guides/airtable-notion-ou-application-metier/article-airtable-notion-1x1.svg
