@@ -474,6 +474,17 @@ export default function Page() {
             continuité et de support prévues pour ce cas.
           </p>
 
+          <p>
+            Si l’inconnue porte encore sur le format lui-même — compréhension,
+            faisabilité, travail réel ou apprentissage client — utilisez la
+            matrice{" "}
+            <Link href="/guides/mvp-prototype-ou-poc">
+              prototype, POC, pilote ou MVP
+            </Link>{" "}
+            avant de fixer ce contrat de test. Elle permet aussi de conclure
+            qu’un entretien, un test manuel ou un outil existant suffit.
+          </p>
+
           <div className="not-prose my-8 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
             <Image
               src="/guides/mvp-saas-quoi-inclure/contrat-test-mvp-16x9.webp"

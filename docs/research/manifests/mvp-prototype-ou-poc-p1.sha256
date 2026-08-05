@@ -1,1 +1,7 @@
-7d111e9ee545ea3325656f73296656eedfe9cf305a0fa59d2c06fdcd3380fd2f  docs/research/mvp-prototype-ou-poc.md
+e49f5c92b47978df61e53d17f404a3a6a4e2a2cf92f3d61ed4db7c5d38c94bbf  docs/research/mvp-prototype-ou-poc.md
+d8cad300849e554c9a9d4c3aa02eccef62a110b5a45eeb035f3b9438662d4d3b  public/guides/mvp-prototype-ou-poc/fiche-experience-4x3.svg
+d4e459be672f2eddb57f897ebeb01a2e963772e2a23946769057e3e76d34df07  public/guides/mvp-prototype-ou-poc/objectif-preuve-public-passage-16x9.svg
+94a22259ee4c1a2f6a8993e65ba8128d6d1dc4615a817e20d787334e8df041ed  public/guides/mvp-prototype-ou-poc/poursuivre-reduire-arreter-1x1.svg
+924c88406a9adaff958c564d458098eb91f79acdfdd6ba700c9dcb6d715102c8  src/app/guides/mvp-prototype-ou-poc/content-quality.test.ts
+baefe40087ecfaba444a0fae3185585ce4b7ae3e6ac58dc482cc489aba8cb317  src/app/guides/mvp-prototype-ou-poc/opengraph-image.tsx
+9262d088c1bb8c88f35fc60db274b3a5e59ff1231a391987475070d013c61a87  src/app/guides/mvp-prototype-ou-poc/page.tsx

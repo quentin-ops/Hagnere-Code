@@ -2105,3 +2105,18 @@ prototype vers pilote ou production.
 Ces preuves autorisent un audit release indépendant du snapshot exact qui sera
 gelé dans `mvp-saas-quoi-inclure-integration.sha256`. Elles ne constituent ni
 commit, push, déploiement, publication, indexation, ni preuve de route publique.
+
+### H26. Maillage entrant vers le guide de choix du format — 5 août 2026
+
+La section « Frontière du test » relie désormais naturellement le guide
+`mvp-prototype-ou-poc`. Le lien intervient lorsque le lecteur hésite encore
+entre compréhension, faisabilité, travail réel et apprentissage client, avant
+de fixer le contrat de test du MVP SaaS. Il rappelle qu’un entretien, un test
+manuel ou un outil existant peut suffire ; il ne présente donc ni le MVP ni le
+développement comme une conclusion automatique.
+
+Cette retouche ne change aucun calcul, exemple, média, CTA, metadata, date ou
+statut éditorial du présent guide. Elle appartient au snapshot d’intégration du
+guide #31 et ne constitue ni une nouvelle publication ni une preuve publique.
+Après le maillage #31, le rendu contient 4 613 mots visibles ; l’arrondi à 200
+mots par minute reste donc 23 minutes et ne modifie pas le registre du guide.

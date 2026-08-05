@@ -1,10 +1,7 @@
-cf187e27023f280f5e6f72cea74c6987aa43caf473a2454b5cc601b3a7dfba78  docs/research/mvp-prototype-ou-poc.md
-487a2c4a056ea4795b98b5b8093d2b4ced86e44f904e57c025a49a357aa05c9d  src/app/guides/mvp-prototype-ou-poc/page.tsx
-be9639b01ff2a049db6d072b39b3e76e381961f1d1d76fbe748c3c609268c1d1  src/app/guides/mvp-prototype-ou-poc/opengraph-image.tsx
-b2eeda0fc3d7be23834108823176da59814d312e4b93c33426ab9e475a00ee3f  src/lib/guides.ts
-276a6f9b64a4c1a7a9d7d620b1080625f11103fb03a2cdb04e93cec64481fe3d  src/components/guides/GuidesHubPage.tsx
-8fbf045722ebbda2bd46407564e40b92bdf5b17ce3cb087a27c776ddc4f73a7b  src/lib/guide-human-language.test.ts
-8f3b4bb5f66e54b60656cc97afb9e52d267626b482771c37a946c35ce1cba4ce  src/app/guides/mvp-saas-quoi-inclure/page.tsx
-fb6e7d2871b549bc2666ff5770cad9559b9fdb7594b272a1407eba499cf2307b  src/components/guides/guide-content-blocks.tsx
-f210600f7951c549fae472d789e4abecb21584df23c2cda04c771f99d6b50009  src/components/guides/guide-content-blocks.test.tsx
-0d55dda9e33192fdc42172898dcbf7b084e77b6b60454c9c97423bd56e33bee5  src/lib/editorial-governance.test.ts
+68b71395133166fe83de1657df3721c1118a3eba03eee810b45458094724a39e  docs/research/mvp-prototype-ou-poc.md
+804f214b13f9e7053ef8d85c5bb45589f206873008416224d9bb36858b9b0099  public/guides/mvp-prototype-ou-poc/fiche-experience-4x3.svg
+f9e824449dbb0d458bc09144452562af176ffff3dcd1432de736188c8941484d  public/guides/mvp-prototype-ou-poc/objectif-preuve-public-passage-16x9.svg
+af766921b2e8a05aa9ae53f19240a07fec7af9738fb64179689e7224312577ba  public/guides/mvp-prototype-ou-poc/poursuivre-reduire-arreter-1x1.svg
+6b454f7adb3daa074c73983876b89dbc5037e871dbcd0f94ca6bcf99e7160c41  src/app/guides/mvp-prototype-ou-poc/content-quality.test.ts
+75d3ef5d535b75e442d7f8cc1d034a2c3beab6066587977ed104a6dc60139e76  src/app/guides/mvp-prototype-ou-poc/opengraph-image.tsx
+9f29349120f590532d0118093d109f6ceda0d9b038afe08052b8e29c0a7ac334  src/app/guides/mvp-prototype-ou-poc/page.tsx

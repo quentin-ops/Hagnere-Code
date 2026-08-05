@@ -165,7 +165,9 @@ describe("public content quality for the MVP SaaS contract guide", () => {
     const declaredMinutes = registeredGuide.readTimeMin;
     const documentedWordCount = Number(
       researchSource
-        .match(/version intégrée H24\s+contient ([\d\s]+) mots visibles/i)?.[1]
+        .match(
+          /maillage #31[\s\S]{0,80}?contient ([\d\s]+) mots visibles/i,
+        )?.[1]
         .replace(/\s/g, ""),
     );
 
@@ -682,6 +684,7 @@ describe("public content quality for the MVP SaaS contract guide", () => {
       "guides/combien-de-temps-developper-saas",
       "guides/prioriser-fonctionnalites-mvp-saas",
       "guides/agence-saas-ou-freelance",
+      "guides/mvp-prototype-ou-poc",
       "demarrer-un-projet",
       "guides",
       "equipe",
@@ -690,6 +693,10 @@ describe("public content quality for the MVP SaaS contract guide", () => {
         existsSync(resolve(repositoryRoot, "src/app", route, "page.tsx")),
       ).toBe(true);
     }
+    expect(pageSource).toContain('href="/guides/mvp-prototype-ou-poc"');
+    expect(pageCompact).toContain(
+      "Si l’inconnue porte encore sur le format lui-même",
+    );
   });
 
   it("keeps the immutable freeze and rebuilt P1 dossier present", () => {

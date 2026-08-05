@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-labelledby="title desc">
+  <title id="title">Trois sorties après revue de la preuve</title>
+  <desc id="desc">Après le test, la décision peut être de poursuivre, réduire ou refaire, reporter ou arrêter.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fafaf9"/>
+      <stop offset="1" stop-color="#eef2ff"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#0284c7"/>
+    </linearGradient>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#172554" flood-opacity=".10"/>
+    </filter>
+  </defs>
+  <rect width="900" height="900" rx="42" fill="url(#background)"/>
+  <circle cx="790" cy="80" r="170" fill="#c7d2fe" opacity=".28"/>
+
+  <text x="58" y="72" fill="#4338ca" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">APRÈS LE TEST</text>
+  <text x="58" y="121" fill="#18181b" font-family="Arial, sans-serif" font-size="37" font-weight="750">La preuve borne la décision</text>
+  <text x="58" y="158" fill="#52525b" font-family="Arial, sans-serif" font-size="19">Les erreurs et les arrêts restent visibles dans la revue.</text>
+
+  <g filter="url(#shadow)">
+    <circle cx="450" cy="315" r="112" fill="#ffffff" stroke="url(#ring)" stroke-width="8"/>
+  </g>
+  <text x="450" y="295" text-anchor="middle" fill="#18181b" font-family="Arial, sans-serif" font-size="23" font-weight="700">Revoir</text>
+  <text x="450" y="329" text-anchor="middle" fill="#18181b" font-family="Arial, sans-serif" font-size="23" font-weight="700">preuves + limites</text>
+  <text x="450" y="362" text-anchor="middle" fill="#52525b" font-family="Arial, sans-serif" font-size="17">et chaque condition d’arrêt</text>
+
+  <path d="M365 388L236 497" fill="none" stroke="#4f46e5" stroke-width="4"/>
+  <path d="M450 427V497" fill="none" stroke="#0284c7" stroke-width="4"/>
+  <path d="M535 388L664 497" fill="none" stroke="#a16207" stroke-width="4"/>
+  <circle cx="236" cy="497" r="7" fill="#4f46e5"/>
+  <circle cx="450" cy="497" r="7" fill="#0284c7"/>
+  <circle cx="664" cy="497" r="7" fill="#a16207"/>
+
+  <g filter="url(#shadow)" font-family="Arial, sans-serif">
+    <rect x="54" y="520" width="250" height="214" rx="28" fill="#ffffff" stroke="#c7d2fe" stroke-width="2"/>
+    <text x="179" y="567" text-anchor="middle" fill="#4338ca" font-size="20" font-weight="700">POURSUIVRE</text>
+    <text x="82" y="610" fill="#18181b" font-size="18" font-weight="700">Seulement le périmètre</text>
+    <text x="82" y="637" fill="#18181b" font-size="18" font-weight="700">réellement prouvé.</text>
+    <text x="82" y="679" fill="#52525b" font-size="16">Prochaine inconnue,</text>
+    <text x="82" y="703" fill="#52525b" font-size="16">responsable et nouveau seuil.</text>
+
+    <rect x="325" y="520" width="250" height="214" rx="28" fill="#ffffff" stroke="#bae6fd" stroke-width="2"/>
+    <text x="450" y="567" text-anchor="middle" fill="#0369a1" font-size="20" font-weight="700">RÉDUIRE / REFAIRE</text>
+    <text x="353" y="610" fill="#18181b" font-size="18" font-weight="700">Résultat ambigu ou</text>
+    <text x="353" y="637" fill="#18181b" font-size="18" font-weight="700">inconnues mélangées.</text>
+    <text x="353" y="679" fill="#52525b" font-size="16">Test plus petit, méthode</text>
+    <text x="353" y="703" fill="#52525b" font-size="16">corrigée, aucune certitude.</text>
+
+    <rect x="596" y="520" width="250" height="214" rx="28" fill="#ffffff" stroke="#fde68a" stroke-width="2"/>
+    <text x="721" y="567" text-anchor="middle" fill="#a16207" font-size="20" font-weight="700">REPORTER / ARRÊTER</text>
+    <text x="624" y="610" fill="#18181b" font-size="18" font-weight="700">Arrêt, voie échouée ou</text>
+    <text x="624" y="637" fill="#18181b" font-size="18" font-weight="700">test plus simple suffisant.</text>
+    <text x="624" y="679" fill="#52525b" font-size="16">Fermer les accès et traiter</text>
+    <text x="624" y="703" fill="#52525b" font-size="16">données, actifs et résultats.</text>
+  </g>
+
+  <rect x="58" y="785" width="784" height="54" rx="27" fill="#18181b"/>
+  <text x="450" y="819" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="700">Une inconnue importante reste « à vérifier » — elle ne devient jamais zéro.</text>
+</svg>
