@@ -24,6 +24,13 @@ const validationGuideSource = fs.readFileSync(
   ),
   "utf8",
 );
+const powerAppsGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/power-apps-ou-application-sur-mesure/page.tsx",
+  ),
+  "utf8",
+);
 const repriseGuideSource = fs.readFileSync(
   path.join(
     process.cwd(),
@@ -92,6 +99,7 @@ describe("guide registry after the editorial reset", () => {
       "valider-idee-saas-avant-developper",
       "prix-gestion-google-ads",
       "power-apps-ou-application-sur-mesure",
+      "airtable-notion-ou-application-metier",
       "reprendre-logiciel-metier-existant",
       "migrer-logiciel-metier-sans-interruption",
       "plan-recette-application-metier",
@@ -110,7 +118,14 @@ describe("guide registry after the editorial reset", () => {
       "valider-idee-saas-avant-developper",
       "prix-gestion-google-ads",
       "power-apps-ou-application-sur-mesure",
+      "airtable-notion-ou-application-metier",
     ]);
+  });
+
+  it("links the Airtable and Notion decision guide from the Power Apps comparison", () => {
+    expect(powerAppsGuideSource).toContain(
+      "/guides/airtable-notion-ou-application-metier",
+    );
   });
 
   it("links the migration guide from the takeover guide and service context", () => {
@@ -310,11 +325,7 @@ describe("guide registry after the editorial reset", () => {
         path.join(guidesRoot, guide.slug, "page.tsx"),
         "utf8",
       );
-      const guideDataPath = path.join(
-        guidesRoot,
-        guide.slug,
-        "guide-data.ts",
-      );
+      const guideDataPath = path.join(guidesRoot, guide.slug, "guide-data.ts");
       const implementationSource = fs.existsSync(guideDataPath)
         ? `${source}\n${fs.readFileSync(guideDataPath, "utf8")}`
         : source;

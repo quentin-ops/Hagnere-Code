@@ -22,13 +22,15 @@ export function GuidesShell({ children }: { children: ReactNode }) {
   return (
     <div className="bg-white dark:bg-zinc-950 min-h-screen">
       <InteractiveDesignRoot
-        className="hc-design"
+        className="hc-design guide-print-exclude"
         style={{ display: "contents" }}
       >
         <MainNav />
       </InteractiveDesignRoot>
-      <main id="main-content" tabIndex={-1}>{children}</main>
-      <div className="hc-design">
+      <main id="main-content" tabIndex={-1}>
+        {children}
+      </main>
+      <div className="hc-design guide-print-exclude">
         <SiteFooter />
       </div>
     </div>
