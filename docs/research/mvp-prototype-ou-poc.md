@@ -1,767 +1,980 @@
-# Dossier de recherche — Prototype, POC ou MVP : que construire d'abord ?
+# Dossier de recherche — `mvp-prototype-ou-poc`
 
-> Ce dossier prépare un guide destiné à un dirigeant ou à un indépendant qui
-> reçoit des propositions de « prototype », de « POC » ou de « MVP » sans
-> savoir laquelle répond à son risque réel. Le guide ne choisira pas un sigle à
-> sa place : il reliera chaque inconnue à l'objet le plus simple capable de
-> produire une réponse utilisable.
+> Dossier reconstruit à partir de la P1 du 4 août 2026. Il remplace le dossier
+> historique du 22 juillet 2026 : aucune ancienne preuve, note, date ou
+> validation n’a été transférée. La route reste privée, non déployée, non
+> publiée et non indexée pendant tout le cycle local.
 
-Statut actuel : **P4 terminée localement — publication retenue jusqu'au gel
-commun du lot**.
+## A. Identité éditoriale
 
-## Journal des quatre passes
+### A1. Fiche de cadrage
 
-Propriétaire éditorial unique : **agent racine Codex**.
+| Champ                              | Décision P1                                                                                                                                                                      |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Slug                               | `mvp-prototype-ou-poc`                                                                                                                                                           |
+| Intention principale               | Choisir le plus petit dispositif qui peut lever l’incertitude principale avant un investissement logiciel plus large                                                             |
+| Lecteur                            | Dirigeant, responsable métier ou porteur de produit non technique                                                                                                                |
+| Question Google naturelle          | « Prototype, POC, pilote ou MVP : que faut-il construire d’abord ? »                                                                                                             |
+| Réponse courte                     | On ne choisit pas par vocabulaire ou par chronologie : on écrit la question à trancher, la preuve attendue, le public qui peut la produire et la condition de passage ou d’arrêt |
+| Promesse                           | Une matrice à quatre formats, une fiche d’expérience copiable, un cas fictif calculé et trois décisions finales                                                                  |
+| Non-promesses                      | Aucun délai, prix, taux de réussite, nombre universel de testeurs, validation de marché, conformité ou ordre obligatoire                                                         |
+| Différence avec les guides voisins | Le guide choisit **le type d’expérience** ; il ne valide pas toute l’idée, ne définit pas les fonctions du MVP, ne priorise pas une roadmap et ne choisit pas une équipe         |
+| Statut                             | Brouillon privé intégré, non déployé, non publié, non indexé                                                                                                                     |
 
-| Passe                        | État                     | Date       | Responsable                       | Snapshot                                   | Blocages |
-| ---------------------------- | ------------------------ | ---------- | --------------------------------- | ------------------------------------------ | -------- |
-| 1. Recherche                 | Terminée — porte validée | 2026-07-22 | Agent de recherche P1 et synthèse | `manifests/mvp-prototype-ou-poc-p1.sha256` | Aucun    |
-| 2. Rédaction et intégration  | Terminée — porte validée | 2026-07-22 | Agent P2 dédié, éditeur unique    | `manifests/mvp-prototype-ou-poc-p2.sha256` | Aucun    |
-| 3. Contre-audit indépendant  | Terminée — porte validée | 2026-07-22 | Relecteur P3 indépendant          | `manifests/mvp-prototype-ou-poc-p3.sha256` | Aucun    |
-| 4. Plume humaine et contrôle | Terminée — porte validée | 2026-07-22 | Agent racine Codex                | `manifests/mvp-prototype-ou-poc-p4.sha256` | Aucun    |
+### A2. Réponse éditoriale gelée
 
-### Manifeste du snapshot
+Il n’existe pas de séquence universelle `POC → prototype → pilote → MVP`. Ces
+objets peuvent se suivre, se chevaucher, être sautés ou être remplacés par un
+test sans logiciel. Le mot retenu ne vaut pas preuve. La décision se prend à
+partir de l’inconnue dominante :
 
-Le manifeste P1 contient uniquement le SHA-256 du présent dossier. Le hash
-n'est pas recopié ici afin de ne pas créer une référence circulaire.
+- si l’on ignore si une personne comprend ou sait parcourir la solution, un
+  **prototype** suffit souvent ;
+- si l’on ignore si une contrainte technique délimitée peut être franchie, un
+  **POC** est adapté ;
+- si l’on ignore si le dispositif tient dans le vrai travail, avec ses rôles,
+  ses données, son support et son repli, il faut un **pilote borné** ;
+- si l’on doit produire un apprentissage défini sur le comportement des
+  personnes visées, on parle ici de **MVP** ; l’usage répété n’est exigé que si
+  l’hypothèse porte sur leur retour. La même version peut aussi servir de pilote
+  si le périmètre opérationnel reste limité.
 
-## 1. Fiche d'identité
+Dans tous les cas, la fiche d’expérience doit précéder la construction :
+question, cas, public, preuve, condition de passage, condition d’arrêt,
+responsable, données et éléments remis.
 
-| Champ                            | Décision documentaire                                                                                                                                                                                                                                                  |
-| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Slug                             | `mvp-prototype-ou-poc`                                                                                                                                                                                                                                                 |
-| Titre SEO de travail             | Prototype, POC ou MVP : lequel choisir ?                                                                                                                                                                                                                               |
-| H1 de travail                    | Prototype, POC ou MVP : que faut-il construire d'abord ?                                                                                                                                                                                                               |
-| Requête principale qualitative   | mvp prototype ou poc                                                                                                                                                                                                                                                   |
-| Variantes utiles                 | différence POC prototype MVP ; prototype ou MVP ; à quoi sert un POC ; faut-il un prototype avant un MVP ; POC informatique ; pilote ou MVP                                                                                                                            |
-| Moment du parcours               | Décider quoi commander avant d'engager le budget de développement suivant                                                                                                                                                                                              |
-| Lecteur précis                   | Dirigeant de TPE/PME, indépendant ou porteur d'un logiciel qui connaît le problème métier, mais ne maîtrise ni le vocabulaire produit ni les différences de responsabilité entre démonstration et service utilisé pour de vrai                                         |
-| Situation déclenchante           | Plusieurs prestataires proposent des objets différents sous les mêmes mots, ou l'équipe veut commencer à développer sans avoir écrit la question qui pourrait encore arrêter le projet                                                                                 |
-| Phrase qu'il dirait au téléphone | « On me parle d'un prototype, d'un POC et d'un MVP. Je ne veux pas payer trois fois la même chose ni lancer un vrai produit trop tôt. Qu'est-ce que je dois faire construire pour répondre au doute qui bloque la décision ? »                                         |
-| Décision principale              | Choisir — ou refuser — le prochain objet à construire à partir d'une seule inconnue décisive, puis écrire la preuve attendue et la décision que cette preuve autorisera                                                                                                |
-| Niveau de connaissance initial   | Le lecteur sait expliquer son activité et le résultat attendu, mais peut croire qu'un prototype est forcément du code, qu'un POC garantit le projet ou qu'un MVP est seulement une petite liste de fonctions                                                           |
-| Action autonome                  | Remplir une fiche d'expérience avant tout devis : question unique, testeurs, réel ou simulé, preuve attendue, critère de réussite ou d'arrêt, actifs récupérés, limite de temps/budget et décision suivante                                                            |
-| CTA possible                     | « Choisir le prochain test utile » vers `/demarrer-un-projet`, après la fiche autonome ; le premier échange doit pouvoir recommander une démonstration plus légère, un essai technique, un pilote, un MVP, un outil existant ou un report                              |
-| Bon fit Hagnéré Code             | Projet logiciel ou SaaS dont le problème et le responsable métier sont identifiés, mais dont une inconnue de parcours, de faisabilité, d'exploitation ou d'usage empêche encore de chiffrer honnêtement la suite                                                       |
-| Mauvais fit                      | Recherche d'un financement garanti, idée sans personne accessible pour tester, audit juridique ou scientifique spécialisé, besoin déjà correctement couvert par un logiciel existant, ou demande d'un produit complet déguisé sous le mot « POC »                      |
-| Hors périmètre                   | Validation complète de l'idée et du marché, liste des fonctions d'un MVP SaaS, fourchettes de prix ou délais moyens, choix no-code/sur-mesure, architecture détaillée, cahier des charges complet, levée de fonds, conseil juridique, fiscal ou financier personnalisé |
-| Date et mode de recherche        | 22 juillet 2026 ; SERP francophone qualitative et lecture des pages originales ; sources primaires Eric Ries, GOV.UK Service Manual, EURAXESS/Commission européenne, CNIL et Légifrance ; aucun volume Keyword Planner ou Search Console attribuable disponible        |
-| Responsable de la synthèse       | Agent de recherche P1, sous contrôle de l'agent racine                                                                                                                                                                                                                 |
+### A3. Ce que le guide ne doit pas absorber
 
-### La décision en une phrase
+- Validation complète du problème, de l’acheteur ou du prix :
+  `/guides/valider-idee-saas-avant-developper`.
+- Contenu opérationnel d’un premier produit :
+  `/guides/mvp-saas-quoi-inclure`.
+- Priorisation d’un lot de fonctionnalités :
+  `/guides/prioriser-fonctionnalites-mvp-saas`.
+- Choix entre agence, freelance, interne ou hybride :
+  `/guides/agence-saas-ou-freelance`.
+- Offre commerciale : `/services/saas-applications-metier`.
 
-**Ne demandez pas d'abord « prototype, POC ou MVP ? ». Demandez quelle
-inconnue peut encore faire arrêter ou modifier le projet, puis commandez
-l'objet le moins lourd qui permettra à la bonne personne de trancher cette
-question.**
+## B. Corpus interne relu
 
-### Questions indispensables
+### B1. Documents de gouvernance
 
-1. Quelle différence concrète faire entre un prototype, un POC, un pilote et
-   un MVP sans supposer l'existence d'un lexique universel que les pages
-   observées ne partagent pas ?
-2. Quel objet choisir si le doute porte sur la compréhension du parcours par
-   les utilisateurs ?
-3. Quel objet choisir si une intégration, un algorithme, un matériel, un volume
-   ou une contrainte technique peut rendre la solution impossible ?
-4. Quand faut-il tester le travail quotidien avec de vraies personnes plutôt
-   que montrer une démonstration ?
-5. Quand un MVP devient-il nécessaire, et qu'ajoute-t-il en responsabilités par
-   rapport à un prototype ou à un POC ?
-6. Faut-il obligatoirement passer par les quatre formats, dans un ordre fixe ?
-7. Que doit contenir un devis pour que le test aboutisse à une décision plutôt
-   qu'à une démonstration flatteuse ?
-8. Quels fichiers, accès et documents l'entreprise récupère-t-elle à la fin,
-   et quels droits d'usage ou de cession le contrat documente-t-il, y compris
-   si le test échoue ?
-9. Quand faut-il acheter un outil existant, faire le test manuellement,
-   reporter ou ne rien construire ?
+Lecture intégrale avant écriture :
 
-### Objections et craintes
+1. `CLAUDE.md` ;
+2. règle d’or SEO/publication ;
+3. charte qualité ;
+4. workflow maître quatre passes ;
+5. instructions de qualité ;
+6. roadmap SEO ;
+7. registre de coordination ;
+8. modèle de dossier ;
+9. prompt maître du second orchestrateur, 1 906 lignes ;
+10. quatre DOCX sources des passes 1 à 4 ;
+11. ancien dossier, ancien historique Git de la page et registre central des
+    guides.
 
-- « Un POC jetable, c'est de l'argent perdu. »
-- « Si nous ne construisons pas déjà le MVP, nous allons payer deux fois. »
-- « Une maquette ne prouve rien parce qu'elle ne fonctionne pas vraiment. »
-- « Le prestataire dit que son prototype pourra devenir le produit final. »
-- « Puisque j'ai payé le test, je suppose que je possède tout ce qui a été
-  produit. »
-- « Si le test réussit, cela veut dire que le marché est validé. »
-- « Nous devons montrer quelque chose de complet à un investisseur ou à un
-  grand client. »
+Le détail du snapshot et des hashes historiques est conservé dans
+`mvp-prototype-ou-poc-input-freeze.md`.
 
-### Score de lancement issu du lot
+### B2. Empreinte des quatre voisins
 
-Cette note priorise le sujet. Elle ne prédit ni trafic, ni position Google, ni
-conversion.
+| Guide voisin                  | Outil signature                                    | Ce qui serait un doublon ici                                       | Frontière conservée                                                                  |
+| ----------------------------- | -------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| Valider une idée SaaS         | Six inconnues, niveaux d’engagement, carte de test | Refaire une méthode complète d’entretiens, prix et engagement      | Le présent guide suppose une question déjà assez précise pour choisir son expérience |
+| Que doit contenir un MVP      | Contrat de test en sept familles et moteur local   | Refaire le périmètre fonctionnel ou les calculs de charge manuelle | Ici, le MVP n’est qu’un des quatre formats et son contenu reste à cadrer ailleurs    |
+| Prioriser les fonctionnalités | Voies séparées, capacité et score RICE limité      | Classer un backlog                                                 | Ici, on choisit l’instrument de preuve avant le lot                                  |
+| Agence ou freelance           | Carte décider–réaliser–contrôler–relayer–remettre  | Comparer des statuts ou une organisation de delivery               | Ici, le responsable est un champ de l’expérience, pas une forme d’équipe             |
 
-| Critère                          |       Note | Justification                                                                                                                                |
-| -------------------------------- | ---------: | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| Adéquation avec une offre vendue |      25/25 | Le choix précède directement un cadrage de SaaS, d'application métier ou d'outil interne                                                     |
-| Proximité d'une demande de devis |      24/25 | Le lecteur compare déjà des façons de démarrer et peut devoir acheter une première mission courte                                            |
-| Preuve qualitative de demande    |      12/15 | La SERP francophone contient des comparatifs récents et des questions récurrentes, mais aucun volume propriétaire n'est disponible           |
-| Preuve ou outil original         |      15/15 | La fiche d'expérience transforme un mot commercial en question, preuve, limite et décision acceptables                                       |
-| Différenciation                  |       8/10 | Le sujet est déjà couvert par plusieurs définitions ; l'originalité vient de la fiche avant devis et de l'absence de chronologie obligatoire |
-| Maillage et CTA utile            |       7/10 | Maillage naturel vers validation, premier MVP, budget et prestataire ; le CTA reste utile seulement si la fiche ne suffit pas                |
-| **Total**                        | **91/100** | Sujet prioritaire ; la faiblesse principale reste l'absence de données de demande propres au site                                            |
+Empreinte propre retenue : la **carte objectif–preuve–public–passage**, puis la
+**fiche d’expérience en huit champs**. Le cas fictif mesure la couverture d’un
+POC ; il ne produit ni ROI, ni score de priorité, ni classement d’équipe.
 
-## 1 bis. Contrat de langage humain
+### B3. Cohérence avec la page service
 
-**Réponse attendue en une phrase :** un prototype sert surtout à voir et faire
-essayer un parcours, un POC à vérifier une difficulté précise, un pilote à
-observer le travail réel dans un cadre limité, et un MVP à utiliser une
-première version cohérente pour apprendre auprès de vrais utilisateurs ; si
-votre doute n'exige aucun de ces objets, ne les commandez pas.
+La page service présente plusieurs offres commerciales de MVP. Le guide ne
+reprend ni leurs prix, ni leur contenu comme norme, ni leur durée. Il peut
+relier tardivement `/demarrer-un-projet`, en expliquant que la première réponse
+peut être un prototype, un POC, un pilote, un test manuel, l’usage d’un outil
+existant, un report ou un arrêt. Aucun devis automatique ni disponibilité ne
+sont promis.
 
-**Définitions de travail, à annoncer comme telles :**
+## C. Recherche externe datée
 
-- un **prototype** est une représentation destinée à explorer ou faire essayer
-  une idée ; il peut être dessiné, cliquable ou codé, sans être exploitable en
-  production ;
-- un **POC**, pour « proof of concept » ou preuve de faisabilité, isole une
-  difficulté pour vérifier si elle peut fonctionner dans les conditions
-  définies ;
-- un **pilote** décrit un déploiement limité dans une situation réelle et
-  contrôlée afin d'observer le travail, l'accompagnement et les incidents ;
-- un **MVP**, pour « minimum viable product », décrit le test le plus léger qui
-  permet d'apprendre auprès de vrais utilisateurs ; il peut encore comporter
-  des étapes manuelles ou prendre la forme d'une première version utilisable.
+Recherche ouverte à nouveau le **4 août 2026**. Les sources vivantes ont été
+consultées pour leur champ propre. Les résultats commerciaux servent seulement
+à inventorier les formulations du marché ; les affirmations factuelles du guide
+s’appuient sur des sources primaires ou institutionnelles.
 
-Pilote et MVP peuvent se recouvrir : le premier terme décrit les conditions
-limitées du déploiement, le second ce qui est construit pour apprendre. Une
-même première version peut donc être un MVP testé sous forme de pilote.
+### C1. Sources primaires et institutionnelles retenues
 
-Ces définitions organisent le guide. Elles ne prétendent pas imposer un standard
-terminologique universel. Les sources observées se recouvrent ou se
-contredisent sur le prototype et le POC ; le devis doit donc écrire l'objectif
-et la preuve au lieu de s'appuyer sur le seul nom.
+#### 1. GOV.UK Service Manual — Making prototypes
 
-**Mots ordinaires à privilégier :** question qui bloque, montrer un parcours,
-faire essayer, vérifier si cela marche, vraie donnée ou donnée fictive, personne
-qui teste, résultat observé, seuil d'arrêt, version utilisable, travail manuel,
-ce qui sera récupéré, prochaine décision.
+- URL : <https://www.gov.uk/service-manual/design/making-prototypes>
+- Publication affichée : 18 octobre 2016 ; page encore accessible le
+  4 août 2026.
+- Apport : un prototype sert à explorer, partager et tester des conceptions
+  avant d’engager la construction ; sa fidélité doit répondre au besoin du
+  moment. Le manuel prévient qu’un prototype codé n’a pas nécessairement les
+  standards de sécurité, performance ou qualité de la production et ne doit pas
+  être copié tel quel en production.
+- Limite : prescription pour les services GOV.UK, pas définition universelle
+  ni obligation générale en France.
 
-**Mots à traduire ou éviter à l'ouverture :** discovery, product-market fit,
-desirability, feasibility, viability, UX, spike, alpha, beta, go/no-go,
-timebox, backlog, scope, hypothesis-driven, learning vehicle, livrable,
-réversibilité, preuve marché.
+#### 2. GOV.UK Service Manual — How the alpha phase works
 
-### Projet des 150 premiers mots
+- URL :
+  <https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works>
+- Apport : l’alpha se concentre sur les hypothèses les plus risquées ; il peut
+  ne prototyper qu’une partie difficile. Le passage dépend d’un prototype assez
+  substantiel pour décider de poursuivre ou non.
+- Limite : les mots alpha et beta appartiennent à ce cadre de delivery ; ils ne
+  sont pas transposés en étapes obligatoires du guide.
 
-> Vous devez montrer votre idée à de futurs utilisateurs, vérifier qu'une
-> connexion avec un logiciel existant est possible ou mettre une première
-> version entre les mains d'un client. On vous propose un prototype, un POC ou
-> un MVP, mais ces mots ne désignent pas toujours la même chose d'un devis à
-> l'autre.
->
-> Ne choisissez pas d'abord le nom. Écrivez la question qui pourrait encore
-> faire arrêter ou modifier le projet. Si vous voulez savoir si une personne
-> comprend le parcours, faites un prototype : une représentation qu'elle peut
-> essayer. Si une difficulté technique peut bloquer tout le projet, faites un
-> POC, c'est-à-dire un essai limité à cette difficulté. Si vous devez observer
-> un usage réel, un pilote encadré peut être nécessaire. Si vous devez apprendre
-> auprès de vrais utilisateurs avec le test le plus léger possible, choisissez
-> un MVP, qui peut lui-même être déployé sous forme de pilote. Ce guide vous aide
-> à choisir l'objet le plus simple,
-> la preuve à exiger et la décision à prendre quand le test se termine — y
-> compris ne rien développer maintenant.
+#### 3. GOV.UK Service Manual — User research in alpha
 
-**Ce que le lecteur saura décider après ces 150 mots :** il choisira la
-prochaine mission à partir de la question à trancher et non du terme le plus
-impressionnant ; il saura aussi qu'un test peut conclure à l'arrêt ou au report.
+- URL :
+  <https://www.gov.uk/service-manual/user-research/user-research-in-alpha>
+- Dernière mise à jour affichée : 3 octobre 2017.
+- Apport : tester les concepts avec des personnes susceptibles d’utiliser le
+  service et inclure des profils ayant des besoins d’accès ou de support. Le
+  parcours étudié doit inclure les interactions hors ligne et l’assistance.
+- Limite : aucun nombre universel de participants n’en est déduit.
 
-### Test de l'ouverture
+#### 4. UK Cabinet Office — Testing and piloting services
 
-- [x] la situation vécue précède toute méthode de l'agence ;
-- [x] prototype, POC et MVP sont traduits dans la phrase où ils deviennent
-      utiles ;
-- [x] la réponse principale est déjà donnée ;
-- [x] aucun mur de lexique ne retarde la décision ;
-- [x] aucune chronologie obligatoire n'est présentée comme un fait ;
-- [x] la possibilité de ne rien construire est visible ;
-- [x] le texte reste propre au sujet après le test de substitution.
+- URL de synthèse institutionnelle :
+  <https://www.procurementpathway.civilservice.gov.uk/documents/best-practice/testing-and-piloting-services-sourcing-playbook/business-need>
+- Note liée :
+  <https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/987136/Testing_and_piloting_services_guidance_note_May_2021.pdf>
+- Apport : les pilotes et autres tests servent à produire un éclairage et des
+  preuves sur ce qui fonctionne dans un service, notamment avant des décisions
+  d’externalisation ou d’internalisation.
+- Limite : corpus de commande publique britannique ; il soutient l’idée d’un
+  contexte opérationnel borné, pas une définition contractuelle française du
+  mot pilote.
 
-### Test sujet, action, résultat préparé pour P4
+#### 5. EURAXESS — Five major steps for research result valorisation
 
-| Formulation abstraite à bannir        | Qui agit ?                            | Action concrète                                                                     | Résultat attendu                                                         | Formulation humaine prévue                                                                                     |
-| ------------------------------------- | ------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| Lever l'incertitude principale        | Le dirigeant et le responsable métier | Écrivent la question qui pourrait arrêter ou modifier le projet                     | Le prestataire sait ce qu'il doit démontrer                              | « Écrivez la question qui vous ferait renoncer au budget suivant si la réponse était mauvaise. »               |
-| Cadrer le périmètre du POC            | L'entreprise et le prestataire        | Choisissent une entrée, un cas difficile, une sortie et ce qui restera simulé       | Le test ne se transforme pas en produit incomplet                        | « Nommez le cas exact à essayer, ce qui sera réel et ce qui sera simulé. »                                     |
-| Définir les critères de succès        | Le décideur métier                    | Écrit l'observation ou le nombre qui autorise la suite et celui qui impose l'arrêt  | Le résultat ne peut pas être réinterprété après coup                     | « Décidez avant le test quel résultat fera poursuivre, corriger ou arrêter. »                                  |
-| Assurer la réversibilité du prototype | Le prestataire                        | Rend les fichiers, notes, résultats, accès et limites dans des formats exploitables | L'entreprise conserve l'apprentissage même si le code est jeté           | « Écrivez ce que vous récupérez à la fin, même si le test échoue. »                                            |
-| Organiser un go/no-go                 | Le dirigeant                          | Compare le résultat au critère écrit et choisit la prochaine dépense                | Le test se termine par une décision et non par une nouvelle présentation | « À la date prévue, choisissez : poursuivre, refaire un essai ciblé, acheter autrement, reporter ou arrêter. » |
+- URL :
+  <https://euraxess.ec.europa.eu/career-development/researchers/manual-major-steps-for-research-valorisation>
+- Apport : le vocabulaire des niveaux de maturité place une « experimental
+  proof of concept » au TRL 3 et une démonstration de prototype en environnement
+  opérationnel au TRL 7. La même ressource décrit le POC comme une démonstration
+  de faisabilité.
+- Limite : contexte de valorisation de recherche. La coexistence de ces termes
+  illustre justement que les frontières dépendent du contexte ; elle ne fournit
+  pas un ordre universel pour un produit SaaS.
 
-## 2. Frontières et anti-cannibalisation
+#### 6. Eric Ries / Lean Startup Co. — What is an MVP?
 
-| Page existante ou prévue                   | Intention détenue                                                                                | Différence du nouveau guide                                                                                                                             | Lien ou arbitrage nécessaire                                                                   |
-| ------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `valider-idee-saas-avant-developper`       | Vérifier le problème, l'acheteur, l'accès au marché et l'engagement avant de financer le produit | Le nouveau guide commence lorsqu'une inconnue concrète exige peut-être un objet à tester ; il ne reprend ni les entretiens ni le plan de quatorze jours | Lien en amont si le problème ou l'acheteur restent hypothétiques                               |
-| `mvp-saas-quoi-inclure`                    | Définir ce qui doit fonctionner pour servir un premier client                                    | Ici, aucune liste de fonctions, de comptes, de support ou de sécurité ; le sujet est le choix du type d'expérience avant ce périmètre                   | Lien vers le guide MVP seulement quand une version réellement utilisable devient nécessaire    |
-| `reprendre-mvp-vibe-code`                  | Vérifier si un produit déjà généré peut être repris                                              | Le nouveau guide intervient avant la construction ; il ne diagnostique ni dépôt, ni base, ni hébergement existant                                       | Lien si un prototype ou MVP a déjà été construit et doit être repris                           |
-| `combien-coute-un-saas`                    | Préparer le budget complet du prototype à l'exploitation                                         | Aucun prix ou délai moyen ici ; la fiche demande seulement une limite écrite propre au test                                                             | Lien après le choix de l'objet, pour financer la suite à périmètre comparable                  |
-| `cahier-des-charges-saas`                  | Décrire la vie complète d'une entreprise cliente pour comparer des devis                         | La fiche des 10 questions avant le devis tient sur une page et ne remplace pas le cahier des charges du produit                                         | Lien lorsque la décision devient « construire un MVP exploitable »                             |
-| `choisir-prestataire-application-metier`   | Comparer plusieurs équipes, preuves, prix et contrats                                            | Le guide ne choisit pas l'équipe ; il définit ce que la mission courte doit rendre                                                                      | Lien pour mettre ensuite les prestataires en concurrence sur une question identique            |
-| `agence-saas-ou-freelance`                 | Choisir une organisation de réalisation et de continuité                                         | Ici, l'équipe n'est pas encore le sujet : prototype, POC, pilote ou MVP dépendent d'abord de la question à trancher                                     | Lien une fois l'objet et les responsabilités connus                                            |
-| `/services/saas-applications-metier`       | Présenter une offre transactionnelle de développement                                            | Le guide doit pouvoir recommander un outil existant, un test sans code, un report ou un arrêt                                                           | CTA tardif seulement si une incertitude justifie une mission de conception ou de développement |
-| futur `prioriser-fonctionnalites-mvp-saas` | Choisir entre des fonctions métier concurrentes                                                  | Aucun classement de backlog ici ; un MVP n'est qu'une sortie possible du choix d'expérience                                                             | Ne pas introduire une matrice valeur/effort                                                    |
-| futur `combien-de-temps-developper-saas`   | Construire un calendrier du prototype à la production                                            | Aucun délai générique par format ; la mission a une limite décidée pour sa question                                                                     | Lien éventuel seulement après la décision de développer                                        |
+- URL : <https://leanstartup.co/resources/articles/what-is-an-mvp/>
+- Auteur affiché : Eric Ries ; article republié par Lean Startup Co., consulté
+  le 4 août 2026.
+- Apport : le MVP vise l’apprentissage validé sur les clients avec le moins
+  d’effort nécessaire ; l’auteur avertit que le terme ne signifie pas fabriquer
+  simplement le plus petit produit possible et cite aussi un test publicitaire
+  comme moyen d’apprendre plus tôt.
+- Limite : cadre Lean Startup, ni norme juridique, ni garantie commerciale, ni
+  exigence que tout MVP soit un logiciel entièrement automatisé. Cette source
+  ne permet pas non plus d’imposer un usage réel répété à tout MVP : la répétition
+  devient nécessaire uniquement lorsque l’hypothèse testée porte sur le retour.
 
-**Justification d'une URL distincte :** aucune page actuelle ne part de la
-question d'achat « quel objet dois-je commander pour répondre au doute qui
-conditionne la prochaine dépense, et qu'est-ce que je dois récupérer même si
-le test échoue ? ».
+#### 7. CNIL — Sécurité : encadrer les développements informatiques
 
-### Frontière de réponse à conserver pendant P2
+- URL :
+  <https://www.cnil.fr/fr/securite-encadrer-les-developpements-informatiques>
+- Date affichée : 14 mars 2024 ; consultée le 4 août 2026.
+- Apport : intégrer sécurité et protection des données dès la conception,
+  séparer développement/test de la production et privilégier des données
+  fictives ou anonymisées. Lorsque des données réelles sont nécessaires en
+  préproduction, la CNIL demande un environnement sécurisé comme la production
+  et des tests préalables.
+- Limite : la fiche ne déclare aucun prototype ou POC conforme par lui-même ;
+  anonymiser véritablement ne signifie pas simplement pseudonymiser.
 
-- ne pas répéter le protocole d'entretiens, la validation du prix ou l'accès au
-  marché ;
-- ne pas reprendre les sept indispensables du MVP SaaS ;
-- ne donner aucune fourchette de prix ou de délai par format ;
-- ne pas choisir no-code, IA, freelance ou agence à la place du lecteur ;
-- ne pas transformer la fiche d'expérience en cahier des charges complet ;
-- ne pas prétendre qu'un POC, un prototype et un MVP forment toujours trois
-  étapes successives ;
-- ne pas traiter un prototype codé comme un début de production par défaut ;
-- accepter qu'un MVP soit déployé sous forme de pilote, à condition d'expliquer
-  séparément la version, le cadre limité, l'aide et ce qui reste manuel.
+#### 8. Légifrance — Code de la propriété intellectuelle
 
-## 3. Demande et vocabulaire du lecteur
+- Article L131-3 :
+  <https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006278958>
+- Article L113-9 :
+  <https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000039279818>
+- Apport : la transmission des droits d’auteur doit identifier les droits et
+  délimiter leur exploitation ; le régime cité pour les logiciels créés par des
+  employés s’applique dans les conditions précises de L113-9.
+- Limite : ces articles ne règlent pas seuls les prestataires, composants tiers,
+  licences, données, marques, secrets ou contrats particuliers. Le guide invite
+  à inventorier les actifs et à faire qualifier le cas, sans donner d’avis
+  juridique.
 
-### Observation qualitative du 22 juillet 2026
+#### 9. CNIL — L’anonymisation de données personnelles
 
-Requêtes et formulations observées dans les résultats francophones :
+- URL :
+  <https://www.cnil.fr/fr/technologies/lanonymisation-de-donnees-personnelles>
+- Date affichée : 19 mai 2020 ; consultée le 4 août 2026.
+- Apport : une anonymisation effective rend l’identification impossible en
+  pratique et de manière irréversible. Remplacer les identifiants directs par
+  des codes correspond généralement à une pseudonymisation ; les données
+  restent alors personnelles.
+- Limite : aucune méthode universelle ne garantit l’anonymisation. Le choix et
+  la vérification dépendent du jeu, des recoupements possibles et de l’usage.
 
-- « différence POC prototype MVP » ;
-- « POC, prototype et MVP : quelles différences ? » ;
-- « prototype vs MVP » ;
-- « quand utiliser le POC, le prototype et le MVP ? » ;
-- « quelle est la différence entre un POC et un pilote ? » ;
-- « faut-il commencer par un POC, un prototype ou un MVP ? » ;
-- « un prototype doit-il être fonctionnel ? » ;
-- « un MVP est-il forcément commercialisable ? ».
+#### 10. CNIL — Licéité et bases légales prévues par le RGPD
 
-Types de résultats observés : articles d'agences de développement, éditeurs de
-logiciels de gestion du travail, hébergeurs, glossaires et comparatifs. Le
-format dominant est un tableau définition / objectif / public / durée / coût,
-souvent suivi d'une chronologie POC → prototype → MVP et d'un CTA vers le
-prestataire.
+- URL :
+  <https://www.cnil.fr/fr/les-bases-legales/liceite-essentiel-sur-les-bases-legales>
+- Page vivante consultée le 4 août 2026.
+- Apport : une base légale doit être choisie avant le traitement, pour chaque
+  finalité, parmi les bases applicables au cas. Le consentement n’est ni
+  automatique, ni hiérarchiquement supérieur aux autres bases.
+- Limite : le guide ne choisit jamais la base légale à la place du responsable
+  de traitement ou de son conseil ; il exige seulement que cette décision soit
+  prise et documentée avant le test.
 
-**Limite de l'observation :** aucun accès Search Console ou Keyword Planner
-propre à cette requête n'a été fourni. Aucune estimation de volume, de
-difficulté ou de taux de conversion ne doit être inventée. La présence de
-pages récentes montre seulement que l'intention existe et reste couverte par
-des éditeurs actifs.
+### C2. Observation non exhaustive des résultats commerciaux
 
-### Champ lexical utile
+Requêtes observées le 4 août 2026 : « MVP prototype POC différences choisir
+guide français agence SaaS » et « prototype POC pilote MVP différence produit
+logiciel France ».
 
-| Famille                | Formulations à conserver                                                                                                 |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Problème vécu          | on me propose trois choses différentes ; je ne veux pas payer deux fois ; je ne sais pas ce qui sera vraiment utilisable |
-| Question               | que voulons-nous apprendre ; qu'est-ce qui pourrait arrêter le projet ; qui doit être convaincu par le résultat          |
-| Objet                  | dessin, écrans cliquables, essai technique isolé, test accompagné, première version utilisable                           |
-| Réalité du test        | données fictives, échantillon représentatif, personne réelle, environnement séparé, tâche quotidienne                    |
-| Réponse attendue       | compris ou incompris ; faisable ou bloqué ; utilisable ou abandonné ; coût supportable ou inconnu                        |
-| Décision               | poursuivre, corriger, refaire un test plus étroit, acheter un outil, reporter, arrêter                                   |
-| Ce qui reste au client | fichiers, notes, résultats, code éventuel, accès, limites, décisions et questions encore ouvertes                        |
+| Résultat observé                                                | Angle visible                                      | Limite utile au guide                                                                                                       |
+| --------------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Asana, « Proof of concept : guide pratique en 5 étapes [2026] » | Tableau POC / prototype / MVP, durée et public     | Présente les trois objets comme des étapes ; les durées génériques ne sont pas reprises                                     |
+| Asana, « MVP : définition, exemples et guide complet [2026] »   | Tableau MVP / POC / prototype / maquette           | Les colonnes visibles attribuent des rôles différents du premier article Asana ; preuve que l’étiquette seule ne suffit pas |
+| Hostinger, « Prototype vs MVP »                                 | Séquence explicite POC → prototype → MVP → produit | Le guide Hagnéré Code doit contredire l’ordre universel et réintroduire le pilote                                           |
+| Polara Studio, glossaire MVP                                    | Définition courte et mise en production réelle     | Utile pour l’intention de recherche, insuffisant pour choisir le test et écrire son arrêt                                   |
+| SuperForge, « Différence entre POC, MVP et prototype »          | Exemple SaaS et distinctions synthétiques          | Peu de place visible pour public, preuve contraire, remise et arrêt                                                         |
+| Space-O Technologies, guide 2026                                | Tableau, coûts et calendrier                       | Vocabulaire abondant mais fourchettes non transposables sans périmètre comparable                                           |
 
-## 4. Carte concurrentielle
+Constats : le tableau comparatif est attendu ; le pilote, les conditions
+d’arrêt, les données, la remise et la possibilité de ne rien construire sont
+souvent absents. Le guide doit répondre rapidement, puis aller plus loin avec
+une fiche de preuve exploitable. Aucun volume de recherche ou classement n’est
+déduit de cette observation.
 
-| Page consultée                                                                                                                                                  | Réponse et angle                                                                                     | Preuves ou artefacts                                                          | Bon point                                                                   | Manque décisionnel                                                                                                                                             | Conflit d'intérêt éventuel                                                  |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [Asana — Proof of concept : guide pratique en 5 étapes](https://asana.com/fr/resources/proof-of-concept), page 2026                                             | POC de faisabilité, méthode en cinq étapes, tableau POC/prototype/MVP et pilote                      | tableau, étapes, FAQ                                                          | distingue le pilote comme essai plus proche de la production                | donne des durées génériques sans corpus visible et appelle aussi le POC « projet pilote » ; sa taxonomie diffère de son autre article                          | vend un outil de gestion de projet et l'illustre avec ses propres fonctions |
-| [Asana — MVP : définition et guide](https://asana.com/fr/resources/mvp-minimum-viable-product), 15 avril 2026                                                   | MVP pour tester la valeur auprès de vrais utilisateurs, comparaison avec POC, prototype et maquette  | tableau et exemples célèbres                                                  | réponse rapide et distinction du public                                     | inverse POC et prototype par rapport à son article POC ; délai de 4 à 12 semaines présenté sans méthode publiable                                              | vend l'organisation de la feuille de route avec Asana                       |
-| [Hostinger — Prototype vs MVP](https://www.hostinger.com/fr/tutoriels/prototype-vs-mvp/), page consultée le 22 juillet 2026                                     | prototype pour expérience, POC pour faisabilité, MVP fonctionnel pour usage réel ; séquence linéaire | grand tableau objectif, audience, temps, coût et retour                       | différences accessibles et explicites                                       | suppose une chronologie unique, associe au MVP des données quantitatives et une base technique sans expliquer la décision d'acceptation                        | vend hébergement et outils web                                              |
-| [SuperForge — La différence entre POC, MVP et prototype](https://www.superforge.io/articles/la-difference-entre-poc-mvp-et-prototype), mise à jour 14 mars 2025 | POC technique, prototype animé, MVP sur le marché, puis exemple de SaaS de mise en relation          | exemple suivi et résumé                                                       | illustration simple de trois objets                                         | affirme que le prototype permet des économies et recommande la séquence sans preuve chiffrée ni option pilote/arrêt suffisamment développée                    | agence vendant MVP, itérations et développement no-code                     |
-| [Bocasay — POC, MVP, prototype](https://www.bocasay.com/fr/differences-poc-prototype-mvp/), 28 janvier 2022                                                     | trois étapes successives destinées notamment aux investisseurs                                       | définitions et progression                                                    | rend visible que le POC n'est pas un produit livrable                       | attribue au prototype « toutes les fonctionnalités », évoque une garantie de ROI et recommande le partage le plus large du MVP sans périmètre ; contenu ancien | société de développement présentant ses offres                              |
-| [GOV.UK — Making prototypes](https://www.gov.uk/service-manual/design/making-prototypes), consultée le 22 juillet 2026                                          | choisir le prototype adapté à la question, du croquis au code, puis tester avant la production       | règles de conception de services publics et distinctions prototype/production | précise qu'un prototype codé peut être réaliste sans être sûr ni performant | contexte gouvernemental britannique, pas méthode commerciale universelle pour les SaaS privés                                                                  | aucun conflit commercial direct ; doctrine de service public                |
+## D. Architecture d’information
 
-### Contradiction structurante
+### D1. Parcours retenu
 
-Deux pages Asana publiées ou mises à jour en 2026 n'attribuent pas le même rôle
-au POC et au prototype. D'autres pages imposent POC → prototype → MVP alors que
-le manuel GOV.UK recommande de construire seulement ce qui suffit à tester la
-supposition la plus risquée et accepte de jeter le code ou d'arrêter. La
-terminologie seule ne sécurise donc ni un achat, ni une décision.
+1. **Réponse directe** — choisir par inconnue, pas par ordre.
+2. **Matrice** — objectif, preuve attendue, public et condition de passage pour
+   les quatre formats.
+3. **Fiche d’expérience** — huit champs à remplir avant toute construction.
+4. **Prototype** — interaction et compréhension ; limites de fidélité et de
+   sécurité.
+5. **POC** — faisabilité technique sur un cas et un seuil définis.
+6. **Pilote** — rôles, données, assistance, exploitation et repli dans un cadre
+   réel borné.
+7. **MVP** — apprentissage client défini, sans confondre « minimum », usage
+   répété universel et produit négligé.
+8. **Cas fictif** — même besoin, quatre inconnues, calcul d’un POC.
+9. **Décision** — poursuivre, refaire un test plus petit, reporter ou arrêter ;
+   inventaire de remise.
+10. **FAQ visible** — huit questions, sans `FAQPage` ni `HowTo`.
 
-### Angle mort commun
+### D2. Matrice signature
 
-La majorité des comparatifs décrivent **ce que l'objet est censé être**, mais
-pas le contrat de décision : question unique, personne habilitée à répondre,
-réel ou simulé, cas testés, observation attendue, résultat qui impose l'arrêt,
-actifs rendus au client et dépense autorisée ensuite. Ils distinguent rarement
-le pilote comme une option propre, alors qu'il peut devenir nécessaire lorsque
-le doute porte sur le travail réel et non sur l'écran ou la faisabilité isolée.
+| Format    | Question dominante                                                                    | Preuve attendue                                                                 | Public capable de répondre                                                                                      | Condition de passage écrite avant le test                                                                                                  |
+| --------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Prototype | « La personne comprend-elle et sait-elle parcourir ce scénario ? »                    | Comportements observés sur des tâches précises, incompréhensions et corrections | Personnes représentatives du rôle étudié, y compris besoins d’accès pertinents                                  | Les tâches critiques sont comprises, ou les incompréhensions restantes sont explicitement acceptées pour le test suivant                   |
+| POC       | « Cette contrainte technique précise est-elle franchissable ? »                       | Mesures reproductibles sur le cas borné, erreurs et limites                     | Équipe technique + responsable métier capable de valider le cas                                                 | Le seuil écrit est atteint sur le corpus prévu et les limites sont documentées ; sinon arrêt ou nouvelle hypothèse                         |
+| Pilote    | « Le dispositif tient-il dans le vrai travail borné ? »                               | Usage, erreurs, interventions, charge, incidents, support et repli observés     | Groupe autorisé dans un contexte opérationnel défini                                                            | Les critères d’usage et d’exploitation sont atteints sans STOP ; sinon retour arrière ou réduction                                         |
+| MVP       | « Quel comportement des personnes visées doit produire l’apprentissage qui manque ? » | Usage, engagement, refus, sortie ou retour, selon le signal écrit dans la fiche | Personnes correspondant au public visé, face à une expérience assez crédible pour interpréter leur comportement | Le signal défini avant le test est observé ; s’il porte sur le retour, l’usage est réellement répété ; sinon modifier, reporter ou arrêter |
 
-### Valeur originale du guide
+Les formulations sont une convention éditoriale Hagnéré Code, pas une
+taxonomie officielle. Un MVP limité à une équipe peut être **aussi** un pilote :
+la fiche garde alors deux questions et deux conditions distinctes.
 
-Une progression répétée mais non mécanique :
+### D3. Fiche d’expérience en huit champs
 
 ```text
-QUESTION ENCORE INCONNUE
-        ↓
-OBJET LE PLUS LÉGER À CONSTRUIRE OU TESTER
-        ↓
-RÉPONSE OBSERVABLE ATTENDUE
-        ↓
-DÉCISION AUTORISÉE, Y COMPRIS ARRÊTER
+1. Décision que ce test doit rendre possible :
+2. Inconnue principale et hypothèse que le test peut contredire :
+3. Cas précis inclus / cas explicitement exclus :
+4. Personnes capables de produire la preuve :
+5. Événement ou mesure observé, avec méthode de collecte :
+6. Condition de passage / condition d’arrêt :
+7. Responsable, données, accès, sécurité et repli :
+8. Éléments remis : résultats, limites, code ou maquette, accès et prochaine décision :
 ```
 
-L'artefact signature n'est pas une nouvelle « matrice propriétaire ». C'est
-une **fiche des 10 questions avant le devis**, rédigée dans les mots du
-dirigeant et utilisable pour comparer deux propositions.
+Le champ 6 ne peut pas être remplacé par « retours positifs ». Le champ 7 ne
+peut pas être remplacé par « voir plus tard ». Toute inconnue matérielle reste
+visible et affectée à une prochaine vérification.
 
-## 5. Fiche de preuves
+### D4. Valeur, effort et risque sans faux tarif
 
-| Affirmation utilisable                                                                                                                                                             | Catégorie                   | Source primaire, URL et passage utile                                                                                                                                                                                                             | Périmètre                                                                                                                             | Consultation | Confiance                                                             | Emplacement du lien visible            | Conséquence lecteur                                                                                                                        | Fraîcheur                                                      |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------------------------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
-| Un MVP sert à obtenir un apprentissage validé sur les clients avec le moindre effort adapté ; il n'est pas défini comme un nombre universel de fonctions                           | FAIT VÉRIFIÉ                | Eric Ries, [Minimum Viable Product: a guide](https://www.startuplessonslearned.com/2009/08/minimum-viable-product-guide.html), définition publiée le 3 août 2009                                                                                  | Source originale de la doctrine Lean Startup ; non normative et non spécifique au SaaS B2B                                            | 2026-07-22   | Élevée pour la définition, limitée pour les obligations de production | Première définition du MVP             | Ne pas acheter une liste arbitraire de fonctions ; écrire l'apprentissage attendu                                                          | Page vivante à revalider lors d'une évolution substantielle    |
-| Un POC est une démonstration destinée à vérifier la possibilité d'une application réelle et ne constitue pas, dans cette source, un produit livrable                               | FAIT VÉRIFIÉ                | Commission européenne / EURAXESS, [Five Major Steps for Research Result Valorisation](https://euraxess.ec.europa.eu/career-development/researchers/manual-major-steps-for-research-valorisation), sections TRL et Proof of Concept                | Recherche et valorisation technologique ; l'échelle TRL n'est pas un standard de livraison de logiciel commercial                     | 2026-07-22   | Élevée dans son contexte, transposition limitée                       | Définition du POC et note de limite    | Traiter le POC comme une réponse de faisabilité, pas comme une promesse de produit exploitable                                             | Revalider si la page ou les annexes Horizon évoluent           |
-| Un prototype peut aller du croquis papier au code réaliste ; le bon niveau dépend de ce qu'il faut apprendre                                                                       | FAIT VÉRIFIÉ                | GOV.UK Service Manual, [Making prototypes](https://www.gov.uk/service-manual/design/making-prototypes), sections Types of prototype et Using code prototypes                                                                                      | Conception de services publics britanniques ; méthode transférable avec prudence, pas obligation française                            | 2026-07-22   | Élevée pour la méthode dans son contexte                              | Section prototype                      | Ne pas payer du code si un écran cliquable suffit, ni refuser le code si l'interaction réaliste est précisément la question                | Revalider avant republication                                  |
-| Le code d'un prototype réaliste ne répond pas nécessairement aux exigences de sécurité, qualité ou performance de la production et peut devoir être jeté                           | FAIT VÉRIFIÉ                | GOV.UK Service Manual, [Making prototypes](https://www.gov.uk/service-manual/design/making-prototypes), lignes consacrées aux standards du code et à l'interdiction d'utiliser le Prototype Kit en production                                     | Prototype GOV.UK ; l'avertissement illustre un risque général sans juger chaque base de code privée                                   | 2026-07-22   | Élevée pour l'outil et la méthode cités                               | Limites du prototype et devis          | Exiger que le devis dise si le code est jetable, réutilisable sous conditions ou construit pour la production                              | Revalider si le guide change                                   |
-| Une phase d'exploration peut ne prototyper que la partie la plus difficile ; le résultat doit permettre de décider de poursuivre ou non                                            | FAIT VÉRIFIÉ                | GOV.UK Service Manual, [How the alpha phase works](https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works), sections riskiest assumptions et deciding whether to move on                                                      | Services publics britanniques ; les durées alpha du manuel ne sont pas transposées au guide                                           | 2026-07-22   | Élevée pour la logique de test, non normative pour une PME française  | Question qui bloque et décision finale | Isoler la question décisive et accepter qu'un test réussi techniquement ne justifie pas toute la suite                                     | Revalider avant republication                                  |
-| Un test d'usage doit commencer par des questions de recherche, des utilisateurs réels ou probables et des tâches conçues pour y répondre                                           | FAIT VÉRIFIÉ                | GOV.UK Service Manual, [Using moderated usability testing](https://www.gov.uk/service-manual/user-research/using-moderated-usability-testing), sections Plan the sessions et Design the tasks                                                     | Tests d'utilisabilité modérés de services ; ne fixe aucun nombre universel de participants                                            | 2026-07-22   | Élevée pour la méthode                                                | Prototype et fiche de test             | Choisir les personnes qui accomplissent réellement la tâche et observer un objectif, pas demander si l'écran « plaît »                     | Revalider avant republication                                  |
-| Un essai limité avec de vraies personnes exige aussi une capacité d'aide, d'itération et des conditions de fonctionnement réelles                                                  | FAIT VÉRIFIÉ + DÉDUCTION    | GOV.UK Service Manual, [How the beta phase works](https://www.gov.uk/service-manual/agile-delivery/how-the-beta-phase-works), private beta, équipe et support                                                                                     | Le mot « pilote » est une traduction éditoriale ; la source décrit une bêta privée gouvernementale, pas un contrat SaaS universel     | 2026-07-22   | Élevée pour la source, moyenne pour la transposition                  | Section pilote                         | Un vrai usage ajoute des responsabilités absentes d'une démonstration ; le guide doit les nommer sans reprendre tout le guide MVP          | Revalider avant republication                                  |
-| Un POC ciblé ne remplace pas un pilote en conditions réelles ; un pilote limité ne suffit pas, à lui seul, à justifier toute la généralisation                                     | FAIT VÉRIFIÉ                | Cabinet Office, [Testing and Piloting Services guidance note](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/987136/Testing_and_piloting_services_guidance_note_May_2021.pdf), pp. 9-19 et 27-28 | Guide britannique de test de services et de politiques ; il ne normalise pas les contrats de développement logiciel privés            | 2026-07-22   | Élevée dans son contexte, transposition prudente                      | Distinction POC/pilote et limites      | Ne pas présenter ces formats comme interchangeables ni transformer un essai local réussi en garantie de déploiement général                | Revalider si le guide officiel évolue                          |
-| Les développements et tests devraient être séparés de la production et utiliser autant que possible des données fictives ou anonymisées ; les secrets changent avant la production | FAIT VÉRIFIÉ                | CNIL, [Sécurité : encadrer les développements informatiques](https://www.cnil.fr/fr/securite-encadrer-les-developpements-informatiques), mesures et « ce qu'il ne faut pas faire »                                                                | Traitements de données personnelles ; les mesures exactes dépendent du risque et du contexte                                          | 2026-07-22   | Élevée                                                                | Encadré réel/simulé et données         | Le mot prototype ou POC ne permet pas de copier des données personnelles réelles sans cadre ; préférer des données fictives ou anonymisées | Page mise à jour à surveiller                                  |
-| Lorsque des données réelles deviennent nécessaires en préproduction, l'environnement doit être protégé comme la production et les tests antérieurs déjà exécutés                   | FAIT VÉRIFIÉ                | CNIL, [Sécurité : encadrer les développements informatiques](https://www.cnil.fr/fr/securite-encadrer-les-developpements-informatiques), recommandations sur les données réelles en préproduction                                                 | Cas où les données fictives ou anonymisées ne suffisent pas ; application à faire selon le traitement réel                            | 2026-07-22   | Élevée                                                                | Section pilote/MVP et limites          | Le passage au réel change le niveau de sécurité, de responsabilité et de préparation ; il ne se décide pas par simple renommage            | Page mise à jour à surveiller                                  |
-| En cas de cession de droits d'auteur, chacun des droits cédés doit faire l'objet d'une mention distincte et le domaine d'exploitation doit être délimité                           | FAIT VÉRIFIÉ                | Légifrance, Code de la propriété intellectuelle, [article L131-3](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006278958), premier alinéa                                                                                            | Règle française sur la cession de droits d'auteur ; son application à un livrable ou à un contrat précis exige une analyse adaptée    | 2026-07-22   | Élevée pour le texte, aucune conclusion sur un contrat particulier    | Livrables, accès et limites            | Distinguer ce qui est matériellement remis des droits d'usage ou de cession prévus au contrat ; demander une rédaction explicite           | Vérifier la version en vigueur avant republication             |
-| Le Code prévoit une règle propre aux logiciels et à leur documentation créés par des employés dans l'exercice de leurs fonctions ou selon les instructions de leur employeur       | FAIT VÉRIFIÉ                | Légifrance, Code de la propriété intellectuelle, [article L113-9](https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000039279818), premier alinéa                                                                                            | Cas des employés et de leur employeur, sauf dispositions ou stipulations contraires ; ne décrit pas à lui seul une prestation externe | 2026-07-22   | Élevée pour le texte, transposition externe exclue                    | Note de prudence sur les droits        | Ne pas extrapoler la règle applicable aux employés au contrat passé avec un prestataire extérieur                                          | Vérifier la version en vigueur avant republication             |
-| Les résultats francophones emploient les mêmes mots avec des définitions incompatibles                                                                                             | OBSERVATION DATÉE           | Comparaison des pages Asana POC/MVP, Hostinger, SuperForge et Bocasay listées au §4                                                                                                                                                               | SERP qualitative, non exhaustive, localisée par le moteur disponible ; ne prouve pas l'absence de tout standard sectoriel             | 2026-07-22   | Moyenne                                                               | Avertissement d'ouverture              | Faire écrire le contenu de la mission et la preuve, jamais accepter le seul sigle comme périmètre                                          | Refaire la SERP avant une refonte majeure                      |
-| Le bon choix est l'objet le moins lourd qui permet à la bonne personne de trancher l'inconnue décisive                                                                             | RECOMMANDATION HAGNÉRÉ CODE | Synthèse des sources ci-dessus ; aucune attribution à un organisme externe                                                                                                                                                                        | Décision éditoriale générale, à adapter au risque et au secteur                                                                       | 2026-07-22   | Élevée comme méthode, non normative                                   | Fil conducteur de tout le guide        | Évite de sous-construire une vraie expérimentation ou de sur-construire avant d'apprendre                                                  | Réexaminer à partir des retours lecteurs et projets documentés |
+La comparaison économique ne publie aucune moyenne. Elle part de la décision
+que la preuve doit autoriser, puis inventorie cinq familles : préparation et
+construction ; participation des personnes ; données et exploitation ; sortie
+et remise ; travaux du test suivant. La valeur n’est pas le nombre de fichiers
+produits, mais l’investissement, l’engagement ou la voie que la preuve permet
+d’accepter, réduire ou refuser. Toute charge ou tout prix absent reste « à
+cadrer » avec un responsable ; il ne devient pas zéro.
 
-### Faits, déductions, recommandations et exemples
+## E. Registre des affirmations
 
-- **Fait vérifié :** la source originale d'Eric Ries définit le MVP par
-  l'apprentissage validé, pas par un nombre de fonctions ni par un délai.
-- **Fait vérifié :** EURAXESS rattache le POC à la faisabilité et précise qu'il
-  ne représente pas un produit livrable dans son contexte de valorisation.
-- **Fait vérifié :** le manuel GOV.UK accepte plusieurs niveaux de prototype
-  et avertit qu'un prototype codé réaliste n'est pas automatiquement du code de
-  production.
-- **Fait vérifié :** la CNIL recommande de séparer développement, test et
-  production et d'utiliser autant que possible des données fictives ou
-  anonymisées.
-- **Fait vérifié :** le Cabinet Office distingue le POC ciblé du pilote en
-  conditions réelles et explicite les conclusions qu'un pilote limité ne
-  permet pas de généraliser à lui seul.
-- **Fait vérifié :** l'article L131-3 du Code de la propriété intellectuelle
-  impose, lorsqu'il y a cession, de mentionner distinctement les droits cédés
-  et de délimiter leur domaine d'exploitation.
-- **Fait vérifié :** l'article L113-9 prévoit une règle propre aux logiciels et
-  à leur documentation créés par des employés dans le cadre défini par le
-  texte ; cette source n'est pas utilisée pour qualifier une prestation
-  externe.
-- **Observation datée :** les définitions de POC et prototype se contredisent
-  dans le corpus concurrentiel, parfois au sein d'un même éditeur.
-- **Déduction :** le sigle d'un devis ne suffit donc pas à définir le public, le
-  niveau de réalité, le résultat ou la propriété du travail produit.
-- **Déduction prudente :** le guide ne peut pas conclure qu'un paiement ou une
-  remise de fichiers règle, à lui seul, tous les droits sur les livrables. Il
-  doit inviter à distinguer les éléments remis, les accès et les droits
-  documentés au contrat, sans interpréter un contrat particulier.
-- **Recommandation Hagnéré Code :** l'inconnue, la personne qui répond et la
-  décision suivante sont écrites avant le choix de l'objet.
-- **Recommandation Hagnéré Code :** un pilote est traité comme une option
-  distincte lorsque le doute porte sur le travail réel, le support ou
-  l'exploitation, sans affirmer qu'il s'agit d'une étape obligatoire.
-- **Recommandation Hagnéré Code :** toute mission courte rend un dossier utile
-  même si elle conclut à l'arrêt : hypothèse, méthode, données, résultats,
-  limites, fichiers et accès créés.
-- **Exemple illustratif fictif prévu :** un logiciel de lecture de bons de
-  commande permettra de montrer comment quatre inconnues différentes conduisent
-  à quatre tests différents ; aucun résultat ne sera présenté comme un cas
-  client ou une moyenne.
+| ID  | Affirmation publique prévue                                                                                     | Preuve                                               | Niveau                                           | Formulation / limite                                                    |
+| --- | --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------------------------------- |
+| F01 | Un prototype sert à explorer et tester une conception avant la construction de production                       | GOV.UK Making prototypes                             | Élevé dans ce cadre                              | « peut servir », pas obligation universelle                             |
+| F02 | Le code d’un prototype ne doit pas être supposé prêt pour la production                                         | GOV.UK Making prototypes                             | Élevé                                            | Standards différents possibles ; audit nécessaire avant réemploi        |
+| F03 | Une expérience utile cible d’abord l’hypothèse risquée                                                          | GOV.UK alpha                                         | Élevé dans ce cadre                              | Principe de cadrage, pas séquence imposée                               |
+| F04 | Un POC cherche une preuve de faisabilité                                                                        | EURAXESS                                             | Moyen à élevé                                    | Contexte de valorisation de recherche, définition opérationnelle locale |
+| F05 | Un pilote produit des preuves sur ce qui fonctionne dans un service réel borné                                  | Cabinet Office                                       | Moyen à élevé                                    | Contexte public britannique ; pas qualification juridique française     |
+| F06 | Un MVP cherche un apprentissage validé sur les clients avec l’effort nécessaire                                 | Eric Ries / Lean Startup Co.                         | Source d’origine de la notion                    | Pas garantie d’adoption ; l’usage répété dépend de l’hypothèse          |
+| F07 | Les tests doivent privilégier des données fictives ou anonymisées et un environnement distinct de la production | CNIL                                                 | Élevé pour la recommandation                     | Le besoin de données réelles exige un examen spécifique                 |
+| F08 | Payer une prestation ne suffit pas à déduire tous les droits sur tous les actifs                                | L131-3 + L113-9                                      | Élevé sur les textes, qualification contextuelle | Inventaire + conseil juridique si enjeu matériel                        |
+| F09 | Aucun ordre universel n’est démontré                                                                            | Comparaison des cadres + contradictions SERP         | Conclusion éditoriale                            | Dire « le guide ne l’impose pas », pas « aucun ordre n’existe jamais »  |
+| F10 | Un MVP peut aussi être exploité comme pilote                                                                    | Déduction des dimensions distinctes usage / contexte | Inférence explicite                              | « peut », si les deux questions et critères sont suivis séparément      |
+| F11 | Des données pseudonymisées restent des données personnelles                                                     | CNIL, anonymisation                                  | Élevé                                            | Ne jamais appeler « anonymes » des données seulement codées             |
+| F12 | La base légale d’un traitement est choisie avant sa mise en œuvre, finalité par finalité                        | CNIL, licéité                                        | Élevé sur le principe                            | Le guide ne choisit pas la base applicable au cas                       |
 
-### Contradictions et données à ne pas publier
+### E1. Affirmations interdites sans nouvelle preuve
 
-- aucune définition présentée comme universelle ou normalisée pour les trois
-  sigles ;
-- aucune chronologie obligatoire POC → prototype → MVP ;
-- aucun budget, durée ou taille d'équipe « moyenne » sans corpus daté et
-  publiable ;
-- aucun nombre universel de testeurs ou de clients pilotes ;
-- aucune promesse qu'un POC réussi prouve le marché, la rentabilité, la
-  sécurité ou la capacité de mise en production ;
-- aucune promesse qu'un pilote limité garantit un déploiement général ou le
-  résultat à plus grande échelle ;
-- aucune promesse qu'un prototype réduit toujours le coût final ;
-- aucune affirmation qu'un code de prototype est toujours jetable ou toujours
-  réutilisable ;
-- aucune formule « vous avez payé, donc vous possédez tout le code » ni son
-  inverse ; les livrables, les accès et les droits documentés sont des sujets
-  distincts, et un enjeu juridique important appelle un conseil adapté ;
-- aucune assimilation d'un prototype cliquable à un produit réellement
-  utilisable ;
-- aucun « MVP vendable » sans préciser le type de vente, les utilisateurs, les
-  données, le support et les obligations applicables ;
-- aucun vrai fichier client, secret, donnée personnelle ou environnement de
-  production dans l'exemple ;
-- aucun ROI, économie garantie, taux de réussite ou statistique de startup ;
-- aucune citation ou faux cas attribué à un dirigeant, investisseur ou client ;
-- aucune garantie qu'un investisseur, un prospect ou une direction financera
-  la suite après une démonstration ;
-- aucune ressource téléchargeable annoncée tant qu'elle n'existe pas et n'est
-  pas testée.
+- « Un POC dure X semaines » ou « coûte X euros ».
+- « Il faut N utilisateurs ».
+- « Le POC vient toujours avant le prototype ».
+- « Un MVP est nécessairement public, payant ou entièrement automatisé ».
+- « Un prototype est sécurisé » ou « son code est jetable par définition ».
+- « Le pilote valide le marché ».
+- « X % de réussite prouve une faisabilité générale ».
+- « Hagnéré Code transfère automatiquement tous les droits » : dépend du devis,
+  des CGV, des auteurs, licences et actifs concernés.
 
-### Calculs reproductibles prévus
+## F. Cas calculé, contre-cas et limites
 
-Le guide n'a besoin ni de ROI ni de fourchette de marché. Le seul calcul
-possible servira l'exemple fictif de faisabilité et restera explicitement
-illustratif :
+### F1. Scène fictive
+
+Entreprise fictive **Lys Documents** : une PME veut réduire les ressaisies de
+factures fournisseurs. Aucun client, délai, tarif, performance réelle ou
+résultat Hagnéré Code n’est associé à ce scénario.
+
+L’équipe sait déjà que les opérateurs comprennent le parcours. Son inconnue
+dominante est plus étroite : « sur le corpus choisi, l’extraction restitue-t-elle
+exactement quatre champs critiques ? ». Elle choisit un POC, pas un MVP.
+
+Hypothèses fictives, décidées avant le test :
+
+- 40 documents autorisés, diversifiés selon les formats connus ;
+- 4 champs critiques par document : fournisseur, numéro, date, total TTC ;
+- un champ est correct seulement s’il correspond exactement à la valeur de
+  référence ;
+- passage fictif si au moins 152 champs sur 160 sont exacts **et** si aucun
+  document hors périmètre n’est présenté comme couvert ;
+- arrêt si le corpus de référence est incomplet, si un document contient des
+  données non autorisées ou si le résultat n’est pas reproductible.
+
+Calcul :
 
 ```text
-EXEMPLE ILLUSTRATIF FICTIF — extraction de bons de commande
-100 documents de test fictifs ou correctement anonymisés
-5 champs critiques attendus par document
-100 × 5 = 500 valeurs à comparer
-
-si le critère fictif exige 475 valeurs exactes :
-475 / 500 × 100 = 95 % de correspondance exacte
-
-contrôle inverse :
-500 × 95 / 100 = 475 valeurs exactes
+contrôles prévus = 40 documents × 4 champs = 160 contrôles
+contrôles exacts observés (fictifs) = 153
+taux de champs exacts = 153 ÷ 160 × 100 = 95,625 %
+contrôle inverse = 153 exacts + 7 inexacts = 160
+seuil fictif = 152 ÷ 160 × 100 = 95 %
+écart au seuil = 153 − 152 = 1 contrôle
 ```
 
-Ce seuil n'est ni une norme ni une recommandation générale. Dans la page, il
-sert uniquement à montrer qu'un POC doit définir **avant le test** ce qui sera
-mesuré et comment un résultat ambigu sera traité. Une erreur de montant, de
-client ou de date n'a pas nécessairement le même impact ; le nombre seul ne
-remplace pas l'analyse métier.
+Verdict limité : le seuil fictif est dépassé d’un contrôle sur **ce corpus et
+ces quatre champs**. Cela ne prouve ni performance en production, ni capacité à
+traiter d’autres documents, ni sécurité, ni coût acceptable, ni adoption. Le
+calcul global est exact, mais la répartition des sept erreurs par champ et par
+document n’est pas fournie dans le scénario. Elles pourraient être concentrées
+sur le total TTC ou sur quelques factures : le taux agrégé ne permet donc pas de
+conclure sur chaque champ ni de compenser un cas bloquant. Avant d’envisager un
+pilote, la décision reste de ventiler les sept erreurs, d’appliquer les critères
+critiques écrits avant le test et, si nécessaire, de refaire un POC plus étroit.
 
-## 6. Empreinte éditoriale à ne pas reproduire
+### F2. Contre-cas du même besoin
 
-| Guide voisin                         | Type d'ouverture                                     | Progression                                                        | Dispositif récurrent                      | Type d'exemple                       | Place du CTA                          | Type de conclusion                            |
-| ------------------------------------ | ---------------------------------------------------- | ------------------------------------------------------------------ | ----------------------------------------- | ------------------------------------ | ------------------------------------- | --------------------------------------------- |
-| `valider-idee-saas-avant-developper` | idée complimentée puis risque d'investir             | plan de terrain de quatorze jours, entretiens, tests puis décision | tableaux question / test / limite         | offre et tests sans produit complet  | après neuf sections et une liste 48 h | développer, modifier ou arrêter               |
-| `mvp-saas-quoi-inclure`              | premier client prêt et question « que construire ? » | journée du client, sept besoins d'exploitation, tests de lancement | cartes horaires et grande checklist       | SaaS fictif de validation de devis   | après la décision de lancement        | prototype, pilote, première version ou report |
-| `reprendre-mvp-vibe-code`            | démonstration déjà construite, faut-il tout jeter ?  | cinq preuves techniques puis cinq décisions                        | protocoles de reprise et dossier copiable | actifs d'un MVP existant             | après le dossier de reprise           | préserver puis exécuter un premier test       |
-| `combien-coute-un-saas`              | fourchettes éditoriales dès l'ouverture              | maturité, coûts, exploitation et devis                             | tableaux budgétaires                      | exemple de devis                     | après la comparaison des coûts        | relier technologie et budget au client        |
-| `cahier-des-charges-saas`            | chaque prestataire imagine un SaaS différent         | vie complète d'une entreprise cliente                              | scénario suivi et cas d'échec             | DossierClair et entreprises fictives | après le dossier complet              | faire chiffrer le même produit                |
+| Inconnue réellement dominante                                                                       | Dispositif plus juste                                | Pourquoi                                                                  |
+| --------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------- |
+| Les opérateurs ne comprennent pas comment corriger un champ                                         | Prototype cliquable avec tâches de correction        | Une précision technique ne répondrait pas à l’incompréhension du parcours |
+| Les quatre champs ne sont pas extractibles sur le corpus                                            | POC borné                                            | La faisabilité doit être mesurée avant l’exploitation                     |
+| L’extraction marche, mais on ignore qui corrige, qui répond et comment revenir à la saisie manuelle | Pilote dans une équipe autorisée                     | La question porte sur le vrai travail et le repli                         |
+| Le service tient, mais on ignore si les équipes reviennent l’utiliser pour traiter leurs factures   | MVP exploitable, éventuellement déployé comme pilote | L’usage répété devient la preuve recherchée                               |
+| Le processus lui-même change chaque semaine                                                         | Observation, entretien et test manuel avant logiciel | Construire figerait une hypothèse encore instable                         |
 
-### Choix du nouveau guide
+### F3. Stress tests oubliés à rendre visibles
+
+- Une source indispensable est indisponible : le résultat devient-il
+  « inconnu » ou est-il silencieusement compté comme échec/succès ?
+- Le volume double : le dispositif mesure-t-il seulement l’algorithme ou aussi
+  la charge humaine ?
+- Une personne exerce un droit ou souhaite quitter le test : quel droit
+  s’applique réellement, qui traite la demande et que prévoit le cadre de
+  conservation ? Un retrait ne signifie pas automatiquement effacement dans
+  tous les cas.
+- Un testeur utilise un lecteur d’écran ou uniquement le clavier : le prototype
+  est-il compatible avec la question posée ?
+- Le POC réussit grâce à une intervention manuelle non déclarée : la preuve
+  change-t-elle de nature ?
+- Le pilote exige des données réelles : pourquoi les données fictives ou
+  anonymisées ne suffisent-elles pas et qui autorise le traitement ?
+- Les noms ont seulement été remplacés par des identifiants : le jeu est-il
+  pseudonymisé plutôt qu’anonymisé, et reste-t-il traité comme donnée
+  personnelle ?
+- Le code du prototype contient un secret ou un composant sans licence claire :
+  le livrable est-il réellement transférable ?
+- Le responsable de la décision quitte le projet : qui peut accepter le
+  résultat et sur quelle trace ?
+
+## G. Contrat de page P1
+
+### G1. Métadonnées locales privées
+
+Proposition temporaire, tant que `src/lib/guides.ts` reste hors périmètre :
+
+- title : `Prototype, POC, pilote ou MVP : que choisir ?` ;
+- card / OG : `Prototype, POC, pilote ou MVP ?` ;
+- description : `Choisissez le test adapté à l’inconnue à lever : prototype, preuve de concept, pilote ou MVP, avec preuve, personnes, passage et arrêt.` ;
+- canonical :
+  `https://hagnere-code.ai/guides/mvp-prototype-ou-poc` ;
+- robots : `noindex, nofollow` via `PRIVATE_ROBOTS` ;
+- schémas P1 : `Article` sans date inventée + `BreadcrumbList`, jamais
+  `FAQPage`, `HowTo`, `Review`, `Product` ou `SoftwareApplication`.
+
+Après le GO P4, l’orchestrateur d’intégration partagée devra ajouter l’entrée
+centrale et remplacer la configuration locale par `buildGuideMetadata` et
+`buildGuideStructuredData`. Aucun agent slug-only ne ferme le registre, les
+dates ou le temps de lecture. La **vraie** `datePublished` restera STOP jusqu’à
+preuve de première publication ; `dateModified` devra correspondre au snapshot
+substantiel réellement intégré.
+
+### G2. Visuels originaux
+
+1. `objectif-preuve-public-passage-16x9.svg` — les quatre formats sur quatre
+   questions, avec les personnes capables de produire la preuve ;
+2. `fiche-experience-4x3.svg` — huit champs et séparation preuve / décision ;
+3. `poursuivre-reduire-arreter-1x1.svg` — trois sorties sans faux score.
+
+Ils sont explicatifs, accessibles par `title` et `desc`, sans interface fictive
+de client ni chiffres de performance.
+
+### G3. CTA et maillage
+
+- Un seul CTA projet, tardif : `/demarrer-un-projet`.
+- Pas de CTA de téléphone, pas de sidebar commerciale, pas de CTA dans la FAQ.
+- Texte transparent : apporter la fiche et l’inconnue ; la réponse peut être un
+  test plus petit, un outil existant, un report ou un arrêt ; aucun devis ou
+  délai automatique.
+- Liens voisins : validation d’idée, contenu du MVP, priorisation du lot et
+  choix d’équipe.
+
+## H. Matrice de couverture P1
+
+| Exigence                                     | Couverture P1                                         | État P1                   |
+| -------------------------------------------- | ----------------------------------------------------- | ------------------------- |
+| Réponse concrète avant 150 mots              | Hero + première section                               | Contrôlé statiquement     |
+| Matrice objectif / preuve / public / passage | Section 2 + SVG 16:9                                  | Implémentée et testée     |
+| Pas d’ordre universel                        | Hero, matrice, FAQ, tests                             | Implémenté et testé       |
+| Prototype / POC / pilote / MVP               | Sections propres + contre-cas                         | Implémenté et testé       |
+| Alternative sans construction                | Réponse, contre-cas, décision                         | Implémentée et testée     |
+| Calcul transparent                           | 40 × 4, 153/160, inverse, seuil, limites              | Rejoué statiquement       |
+| Répartition des erreurs                      | 7 erreurs à ventiler par champ/document avant pilote  | Implémentée et testée     |
+| Données / sécurité                           | Section fiche + CNIL + FAQ                            | Implémenté et testé       |
+| Pseudonymisation / base légale               | Pilote + sources CNIL                                 | Implémentée et testée     |
+| Droits / remise                              | Section décision + Légifrance + FAQ                   | Implémenté et testé       |
+| Inconnues non transformées en zéro           | Fiche, cas, tests                                     | Implémenté et testé       |
+| FAQ visible sans rich result                 | 8 questions                                           | Rendue statiquement · 8/8 |
+| CTA tardif transparent                       | 1 lien `/demarrer-un-projet`                          | Contrôlé statiquement     |
+| 3 SVG accessibles                            | 16:9, 4:3, 1:1                                        | Implémentés · XML 3/3     |
+| Metadata privée sans fausse date             | Config locale privée                                  | Contrôlée statiquement    |
+| Recherche source près des affirmations       | Sources du layout + liens dans les sections sensibles | Implémentée et testée     |
+
+## I. STOPs et inconnues transmis à P2
+
+1. `datePublished` inconnue : STOP publication, aucun substitut P1.
+2. Entrée #31 absente de `src/lib/guides.ts` : intégration partagée future.
+3. Aucun dirigeant ou utilisateur réel n’a relu la matrice : P2 doit challenger
+   les cas où le vocabulaire pourrait sembler normatif.
+4. Le seuil 95 % est entièrement fictif et ne doit jamais devenir référence
+   générale.
+5. La recherche concurrentielle est non exhaustive et sans volume SEO.
+6. La protection des données, les droits et la sécurité restent à qualifier sur
+   le cas réel ; aucune conformité n’est déclarée.
+7. P2 devra vérifier que le lecteur comprend qu’un MVP peut aussi être un
+   pilote, sans fusionner leurs deux preuves.
+8. Après G3, l’orchestrateur devra contrôler au navigateur le tableau mobile,
+   le reflow, les SVG, le clavier, les thèmes, le print et l’absence du CTA en
+   impression ; ces preuves ne sont pas produites par l’agent rédactionnel P3.
+9. P4 devra revalider les faits vivants, la plume et la cohérence du candidat
+   slug-only. Il ne ferme ni le registre central, ni `datePublished`, ni
+   `dateModified`, ni `readTimeMin`, ni la publication. Après GO P4, ces points
+   et leurs preuves relèvent exclusivement de l’orchestrateur d’intégration ;
+   une build locale ne prouvera ni déploiement, ni publication, ni indexation.
+
+## J. Journal P1
+
+- Snapshot Git, historique et périmètre gelés avant édition.
+- Gouvernance, ancien dossier, ancienne page, quatre DOCX et corpus voisin lus.
+- Recherche web primaire et SERP refaite le 4 août 2026.
+- Taxonomie traitée comme convention opérationnelle et non norme.
+- Architecture différenciée des quatre guides voisins.
+- Première implémentation contrôlée ; tests ciblés et manifeste exact rejoués.
+
+## K. Rapport de fermeture P1
 
 ```text
-Tension ou question motrice : quel est le plus petit achat qui donnera une réponse assez fiable pour autoriser ou refuser le budget suivant ?
-Type d'ouverture retenu : trois situations concrètes et réponse immédiate, sans lexique introductif
-Progression retenue : une inconnue vécue → un objet possible → la réponse qu'il doit produire → ce qu'il ne prouve pas
-Artefact signature : fiche des 10 questions avant le devis, copiable et utilisable pour comparer deux propositions
-Rythme et registre : questions directes, exemples brefs, une conséquence de gestion après chaque distinction
-Place naturelle du CTA : après la fiche remplie et les cinq sorties possibles, lorsque le lecteur sait déjà refuser une mission floue
-Forme de conclusion : choisir la prochaine dépense ou ne rien construire, puis nommer l'information encore manquante
-Différences avec les voisins : pas de plan de quatorze jours ; pas de journée du premier client ; pas de cinq preuves de reprise ; pas de fourchettes ; pas de cahier des charges narratif ; pas de grand lexique ; pas de score opaque
+PASSE_1_TERMINEE
+Vitest ciblé : 12/12
+TypeScript : npx tsc --noEmit — vert
+ESLint ciblé : vert
+Prettier ciblé : vert
+XML des SVG : 3/3
+Rendu statique React : vert
+Manifeste P1 : 7/7
+Espaces finaux, y compris fichiers untracked : aucun
+HEAD : d4a7fb58b44e46314156e60cd580c45a4224021d — inchangé
+Git : aucun git add, commit ou push
+Release : aucun deploy, déploiement, publication ou indexation
 ```
 
-## 7. Plan annoté
+Ce rapport clôt uniquement la production P1 et ses contrôles statiques. Il ne
+constitue ni la porte G1 de l’orchestrateur, ni un BAT navigateur, ni une preuve
+publique.
 
-| Section provisoire                                                  | Question résolue                                           | Preuve ou exemple                                                              | Conséquence ou décision                                                            | Format choisi                                        |
-| ------------------------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| Ouverture : trois mots pour trois achats différents                 | que signifie le choix pour le budget du dirigeant ?        | définitions opérationnelles et observation des contradictions                  | choisir par question, non par sigle                                                | prose courte + réponse en quatre lignes              |
-| 1. Quelle question pourrait encore arrêter le projet ?              | comment trouver l'inconnue décisive ?                      | logique GOV.UK de la supposition la plus risquée et exemples métier            | retirer toute mission qui ne répond à aucune décision                              | questions guidées, sans matrice abstraite            |
-| 2. Faites un prototype pour voir et faire essayer                   | quand une représentation suffit-elle ?                     | GOV.UK, croquis à code réaliste, tests auprès d'utilisateurs probables         | choisir fidélité et public ; accepter un artefact jetable                          | trois mini-situations « question → objet → réponse » |
-| 3. Faites un POC si une difficulté peut rendre le projet impossible | quand faut-il un essai de faisabilité ?                    | EURAXESS et exemple fictif d'extraction                                        | isoler cas difficile, mesure, limite et décision                                   | protocole court + calcul reproductible               |
-| 4. Choisissez un pilote si vous devez observer le travail réel      | pourquoi prototype ou POC ne suffisent-ils parfois pas ?   | Cabinet Office, charge de support et environnement contrôlé                    | nommer personnes, vraie tâche, durée propre au test, assistance et retour arrière  | scénario bref et liste des conditions                |
-| 5. Choisissez un MVP pour apprendre auprès de vrais utilisateurs    | quand faut-il le test le plus léger capable d'apprendre ?  | définition d'Eric Ries, renvoi vers le guide des fonctions                     | distinguer MVP et pilote tout en montrant qu'ils peuvent se recouvrir              | comparaison ciblée « ajoute / ne garantit pas »      |
-| 6. Vous n'avez pas à acheter les quatre                             | ordre, combinaison ou arrêt ?                              | alpha pouvant conclure à l'arrêt ; exemples prototype + POC combinés           | choisir un seul objet, les combiner si questions distinctes, acheter ou reporter   | cinq cartes de décision plutôt qu'un grand tableau   |
-| 7. Copiez les 10 questions avant le devis                           | comment éviter un devis impossible à accepter ?            | fiche en dix rubriques                                                         | comparer les prestataires et conserver l'apprentissage en cas d'échec              | modèle copiable dans la page                         |
-| 8. Exemple fictif : quatre inconnues autour d'un même logiciel      | comment appliquer la méthode sans confondre les réponses ? | lecture de bons de commande : parcours, extraction, travail réel, usage répété | montrer que quatre tests répondent à quatre questions et qu'aucun ne prouve tout   | progression narrative compacte                       |
-| 9. À la date prévue, choisissez une seule suite                     | comment fermer le test ?                                   | résultats comparés au critère écrit                                            | poursuivre, resserrer, acheter, reporter ou arrêter                                | cinq sorties avec question suivante                  |
-| 10. Quand Hagnéré Code peut aider — et quand commencer autrement    | le CTA est-il honnête ?                                    | bon fit, mauvais fit et résultat exact du clic                                 | contacter seulement si l'inconnue exige une mission ; sinon utiliser la fiche seul | encadré + un CTA maximum                             |
-| Sources et limites                                                  | sur quoi repose chaque distinction ?                       | liens primaires, contexte et limites                                           | vérifier sans transformer la bibliographie en preuve unique                        | liste courte ; liens déjà proches des faits          |
-| FAQ résiduelle                                                      | quelles objections restent après le corps ?                | réponses issues des sections, sans nouveau chapitre                            | lever le doute rapidement                                                          | 4 à 6 questions courtes, sans JSON-LD FAQ            |
+## L. Idéation contradictoire P2
 
-### Questions prévues pour la FAQ
+Relecture recommencée sans suivre le plan P1, le **4 août 2026** :
 
-1. Faut-il obligatoirement faire un POC avant un prototype ou un MVP ?
-2. Un prototype peut-il être développé avec du vrai code ?
-3. Peut-on réunir prototype et POC dans une seule mission ?
-4. Un POC réussi prouve-t-il que des clients achèteront ?
-5. Que doit-on récupérer à la fin d'un prototype ou d'un POC ?
-6. Un pilote et un MVP peuvent-ils être le même logiciel ?
+| Perspective             | Question contradictoire                                                                               | Statut P2           | Localisation ou justification                                                                                                               |
+| ----------------------- | ----------------------------------------------------------------------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Lecteur débutant        | « Un MVP exige-t-il toujours que les personnes reviennent utiliser le service ? »                     | `AJOUTEE → COUVERT` | Réponse, matrice, section MVP et SVG : l’apprentissage dépend de l’hypothèse ; la répétition n’est requise que pour tester le retour        |
+| Lecteur prêt à agir     | « Le score 153/160 cache-t-il un champ ou des documents qui échouent systématiquement ? »             | `AJOUTEE → COUVERT` | Cas Lys Documents : ventilation des sept erreurs exigée avant pilote                                                                        |
+| Autre profil            | « Les personnes ayant des besoins d’accès et celles qui assurent l’assistance sont-elles incluses ? » | `DEJA_COUVERTE`     | Prototype, public de preuve, source GOV.UK et pilote                                                                                        |
+| Scénario dégradé        | « Que devient la conclusion si le volume double ou si une dépendance tombe ? »                        | `DEJA_COUVERTE`     | Stress test du cas et table du pilote                                                                                                       |
+| Cas inverse             | « Si le processus change encore chaque semaine, faut-il vraiment construire ? »                       | `DEJA_COUVERTE`     | Contre-cas sans logiciel et réponse directe                                                                                                 |
+| Solution opposée        | « Un entretien, un test manuel ou une fonction déjà payée suffit-il ? »                               | `DEJA_COUVERTE`     | Héros, réponse, matrice et CTA                                                                                                              |
+| Chronologie             | « Un POC ou un pilote vert autorise-t-il directement plusieurs sites ou deux fois plus de volume ? »  | `AJOUTEE → COUVERT` | Décision : tout élargissement ouvre une nouvelle expérience avec mesure et repli                                                            |
+| Contradiction données   | « Des noms remplacés par des codes sont-ils vraiment anonymes ? »                                     | `AJOUTEE → COUVERT` | Pilote + source CNIL : pseudonymisation encore soumise au RGPD                                                                              |
+| Contradiction juridique | « Faut-il toujours recueillir le consentement pour tester ? »                                         | `AJOUTEE → COUVERT` | Pilote + source CNIL : base légale choisie au cas par cas avant traitement                                                                  |
+| Droits des personnes    | « Quitter le test impose-t-il toujours l’effacement immédiat ? »                                      | `ECARTEE_JUSTIFIEE` | Le dossier retire cet automatisme ; la réponse dépend du droit exercé, de la base et du cadre de conservation, à faire qualifier sur le cas |
+| Autonomie               | « Puis-je préparer la prochaine décision sans contacter l’agence ? »                                  | `DEJA_COUVERTE`     | Fiche d’expérience copiable, quatre sorties et inventaire de remise                                                                         |
 
-Les réponses importantes restent dans le corps. La FAQ répond dans sa première
-phrase et ne publie aucun schéma `FAQPage`.
+Aucun angle matériel ne reste `BLOQUANT` dans cette boucle. La date de première
+publication, le registre central et la validation par un lecteur humain restent
+des STOPs d’intégration ou de qualité, pas des lacunes à remplir en P2.
 
-## 8. Ressource et conversion
+## M. Contre-audit des affirmations et calculs P2
+
+### M1. Cartographie et verdicts
+
+- **12 affirmations contrôlées** dans le registre F01 à F12 ;
+- **3 corrections matérielles** : portée du MVP, portée du taux agrégé du POC,
+  et qualification données/base légale ;
+- **1 formulation retirée comme règle universelle** : « tout MVP exige un usage
+  réel répétable » ;
+- **0 prix, délai, taux de réussite réel ou nombre de testeurs ajouté** ;
+- **0 fait Hagnéré Code, client, devis, témoignage ou résultat commercial
+  ajouté**.
+
+### M2. Recalcul indépendant du scénario fictif
 
 ```text
-Une ressource est-elle naturellement nécessaire ? non pour la première publication
-Problème qu'elle résout après la lecture : la fiche copiable dans la page suffit pour demander et comparer une mission courte
-Résultat autonome produit : une fiche de 10 questions avant le devis
-Format éditable et format de consultation : texte copiable dans un document ou un e-mail ; aucun téléchargement promis
-Rubriques réellement livrées : décision bloquée ; question ; personnes qui testent ; objet et part simulée ; cas et données ; réponse attendue ; critères poursuivre/corriger/arrêter ; fichiers, accès, documentation et droits contractuels à vérifier ; limite propre de temps/budget ; décision suivante
-Exemple rempli : logiciel fictif de lecture de bons de commande
-Conclusion « ne pas investir » possible : oui, si l'inconnue peut être levée par une conversation, un outil existant, un échantillon ou si personne ne peut utiliser le résultat
-Sources, hypothèses et limites visibles : oui dans la page ; aucune norme universelle attribuée aux sigles
-Données saisies et destination : aucune saisie côté site ; le lecteur copie localement la fiche
-Processus de génération : non applicable
-Journal de QA : non applicable tant qu'aucun fichier n'est promis
-Limites connues et niveau de revue humaine : modèle éditorial à contre-auditer ; aucun test lecteur humain réalisé en P1
-Mode de maintenance : revalider sources et vocabulaire lors d'une évolution substantielle
-Test du fichier ou outil : non applicable
-Bon fit Hagnéré Code : question métier ou technique clairement formulée, responsable disponible, cas de test accessible, décision et dépense suivante identifiées
-Mauvais fit : demande de produit complet sans apprentissage attendu, idée sans utilisateur accessible, besoin standard déjà couvert, litige juridique, validation scientifique ou sécurité spécialisée hors compétence
-Action non commerciale : remplir la fiche, demander à deux prestataires quelle ligne ils contestent et refuser toute proposition qui ne précise pas ce qu'elle ne prouvera pas
-CTA principal : « Choisir le prochain test utile » vers `/demarrer-un-projet`
-Résultat après clic : identifier la question décisive, le test le moins lourd capable d'y répondre et les éléments encore nécessaires avant un devis ; possibilité explicite de recommander un outil existant ou d'attendre
+40 × 4 = 160 contrôles
+153 / 160 = 0,95625 = 95,625 %
+160 − 153 = 7 erreurs
+152 / 160 = 0,95 = 95 %
+153 − 152 = 1 contrôle au-dessus du seuil
 ```
 
-### Fiche des 10 questions avant le devis — structure à intégrer dans la page
+Les opérations P1 sont exactes. La contradiction P2 porte sur leur portée : la
+moyenne agrégée ne donne aucune répartition par champ ou document. La décision
+visible exige désormais cette ventilation et l’examen des cas bloquants avant
+un pilote.
+
+### M3. Sources vivantes ouvertes en P2
+
+- GOV.UK `Making prototypes`, `How the alpha phase works` et `User research in
+alpha` : accessibles, périmètre public britannique conservé ;
+- UK Cabinet Office / Procurement Pathway : accessible, conseil juridique et
+  commercial propre aux marchés concernés conservé comme limite ;
+- EURAXESS : page de valorisation et page TRL accessibles, contexte de recherche
+  et variations sectorielles confirmés ;
+- Eric Ries / Lean Startup Co. : définition et réserves relues ; la page source
+  ne fonde pas une exigence universelle d’usage répété ;
+- CNIL, développement informatique : environnement séparé, données fictives ou
+  anonymisées, préproduction réelle sécurisée comme la production et tests
+  préalables confirmés ;
+- CNIL, anonymisation : distinction irréversible avec la pseudonymisation
+  confirmée ;
+- CNIL, licéité : base légale avant traitement, finalité par finalité et sans
+  primauté automatique du consentement confirmée ;
+- Légifrance L131-3 et L113-9 : textes en vigueur et limites salariés/cession
+  confirmées.
+
+### M4. Risques résiduels transmis
+
+1. `datePublished` reste inconnue et bloque toute publication réelle.
+2. L’entrée centrale, le temps de lecture, le maillage entrant et la redirection
+   restent hors périmètre slug-only.
+3. Aucun lecteur humain n’a encore testé la reformulation et l’usage de la
+   fiche.
+4. Le scénario fictif ne fournit volontairement pas la répartition des sept
+   erreurs ; le guide en fait désormais une donnée à obtenir, pas un zéro ou une
+   conclusion inventée.
+5. Les bases légales, droits, licences et mesures de sécurité restent à choisir
+   sur le cas réel avec les responsables compétents.
+
+## N. Journal et rapport de fermeture P2
+
+- Agent distinct : `mvp_poc_p2`.
+- État d’entrée : G1 `GO_PASSE_2`, manifeste P1 conservé en lecture seule.
+- Fichiers modifiés : dossier, page, test et SVG 16:9 de la matrice.
+- Fichiers relus mais inchangés : image Open Graph et deux SVG 4:3 / 1:1.
+- Affirmations corrigées : portée du MVP, agrégation du calcul, vocabulaire et
+  cadre des données personnelles.
+- Affirmations retirées : usage réel répété comme condition universelle du MVP.
+- Calculs : cinq opérations reproduites ; aucune valeur P1 modifiée.
+- Tests non exécutés par P2 : build complet et BAT navigateur, réservés à
+  l’orchestrateur selon le périmètre confié.
+- Risques : STOPs M4 transmis sans les fermer artificiellement.
 
 ```text
-1. La décision aujourd'hui bloquée :
-2. La seule question à laquelle ce test doit répondre :
-3. Les personnes qui peuvent réellement répondre :
-4. Ce qui sera construit ou simulé :
-5. Les cas et données utilisés, avec leur niveau de réalité :
-6. La réponse observable attendue :
-7. Le résultat qui fera poursuivre, corriger ou arrêter :
-8. Les fichiers, accès et documents remis, ainsi que les droits d'usage ou de cession documentés dans le contrat :
-9. La limite de temps et de budget convenue pour cette question :
-10. La prochaine décision, à une date nommée :
+PASSE_2_TERMINEE
+Affirmations contrôlées : 12
+Affirmations corrigées : 3
+Affirmations retirées : 1 règle universelle non soutenue
+Contre-sources : Ries sur la portée non formule du MVP ; CNIL anonymisation, pseudonymisation et bases légales
+Calculs reproduits : 40 × 4 ; 153/160 ; 160 − 153 ; 152/160 ; 153 − 152
+Cas limites : erreurs concentrées, volume doublé, dépendance indisponible, élargissement, données pseudonymisées
+Enrichissements décisifs : apprentissage MVP conditionnel ; ventilation des erreurs ; passage à l’échelle comme nouveau test
+Risques résiduels : datePublished, intégration partagée, lecteur humain, qualification juridique/sécurité du cas réel
+Vitest ciblé : 12/12
+TypeScript : npx tsc --noEmit — vert
+ESLint ciblé : vert
+Prettier ciblé : vert
+XML des SVG : 3/3
+Rendu statique React : vert
+Manifeste P2 : 7/7
+Espaces finaux, y compris fichiers untracked : aucun
+HEAD : d4a7fb58b44e46314156e60cd580c45a4224021d — inchangé
+Git : aucun git add, commit ou push
+Release : aucun deploy, déploiement, publication ou indexation
+Manifeste P2 : docs/research/manifests/mvp-prototype-ou-poc-p2.sha256
 ```
 
-La page publique doit conserver ces dix rubriques ou annoncer un nombre ajusté
-au contenu réellement visible. Elle ne promet jamais davantage de contrôles que
-le modèle effectivement livré.
+Ce rapport clôt uniquement la production P2 et ses contrôles ciblés. Il ne
+constitue ni la porte G2 de l’orchestrateur, ni un BAT navigateur, ni une preuve
+publique.
 
-## 9. Rapport de sortie P1
+## O. Polish rédactionnel et rapport de fermeture P3
+
+- Agent distinct : `mvp_poc_p3`.
+- État d’entrée : G2 `GO_PASSE_3`, snapshot P2 relu en entier ; freeze et
+  manifestes P1/P2 conservés en lecture seule.
+- Problèmes de lisibilité corrigés : réponse d’ouverture allégée, sigles POC et
+  MVP développés dès l’entrée, H2 raccourcis, bloc CNIL séparé en trois idées et
+  cas calculé réparti en paragraphes plus courts.
+- Jargon retiré ou défini dans le visible : « public de preuve », « taxonomie »,
+  « hypothèse falsifiable », « corpus », « repli » et « STOP » ont été remplacés
+  par personnes à observer, règle universelle, hypothèse que le test peut
+  contredire, jeu d’essai, retour au fonctionnement précédent et condition
+  d’arrêt. La pseudonymisation, la base légale et la préproduction restent
+  présentes, avec une explication immédiate.
+- Transitions et cohérence : héros, réponse directe, matrice, fiche, sections des
+  quatre formats, décision, CTA, metadata, image OG et trois SVG emploient la
+  même logique inconnue → personnes → preuve → passage ou arrêt.
+- FAQ : les réponses sur le niveau de détail du prototype, le réemploi du code
+  et les droits répondent désormais dès leur première phrase, sans renforcer
+  une promesse.
+- Faits laissés inchangés : les 12 affirmations F01 à F12, les sources, dates,
+  périmètres et cinq opérations du scénario fictif n’ont reçu aucun fait neuf.
+- Nuances protégées : le MVP vise un apprentissage client et le retour répété
+  seulement si l’hypothèse le demande ; les sept erreurs doivent être ventilées
+  avant pilote ; pseudonymisation, anonymisation et base légale restent
+  distinctes ; tout élargissement ouvre un nouveau test ; aucune norme
+  universelle, conformité, prix, délai ou performance n’est affirmé.
+- Fichiers modifiés : dossier, page, OG, test et trois SVG propres au slug.
+- Contrôles non exécutés par P3 : build complet et BAT navigateur réel, réservés
+  à l’orchestrateur après G3.
 
 ```text
-PASSE 1 TERMINÉE
-Slug : mvp-prototype-ou-poc
-Lecteur et phrase réelle : dirigeant non technique auquel plusieurs prestataires proposent prototype, POC ou MVP ; « qu'est-ce que je dois faire construire pour répondre au doute qui bloque la décision ? »
-Décision : choisir ou refuser le prochain objet à partir d'une inconnue unique, d'une réponse observable et d'une décision suivante écrite
-Angle et forme dominante : question inconnue → objet le plus léger → réponse attendue → décision autorisée
-Pages proches et différence : validation d'idée, fonctions du MVP, reprise d'un MVP, budget, cahier des charges et choix du prestataire ; aucune ne traite la fiche des 10 questions à écrire avant le devis et le budget suivant
-Sources décisives : Eric Ries pour le MVP ; GOV.UK pour prototype, supposition risquée, test utilisateur et usage limité réel ; EURAXESS/Commission européenne pour le POC de faisabilité ; CNIL pour séparation des environnements et données de test ; Légifrance pour distinguer remise matérielle et droits documentés sans interpréter un contrat
-Incertitudes exclues : définitions universelles, ordre obligatoire, prix, délais, nombre de testeurs, promesse de marché, réutilisation automatique du code, propriété supposée par le seul paiement et garantie de financement
-Action autonome et CTA possible : fiche d'expérience copiable ; CTA tardif vers /demarrer-un-projet pour choisir le test utile, avec option d'attendre ou d'acheter un outil existant
-Plan : dix sections décisionnelles, un exemple fictif compact, sources proches et FAQ résiduelle
-Snapshot : docs/research/manifests/mvp-prototype-ou-poc-p1.sha256
+PASSE_3_TERMINEE
+Problèmes de lisibilité corrigés : ouverture allégée ; H2 raccourcis ; paragraphes CNIL et calcul séparés
+Jargon retiré ou défini : POC et MVP développés ; public de preuve, corpus, repli, STOP et taxonomie remplacés ; base légale et préproduction expliquées
+Transitions : logique inconnue → personnes → preuve → passage ou arrêt harmonisée du héros au CTA
+FAQ : trois premières réponses rendues plus directes ; portée juridique et technique inchangée
+Faits laissés inchangés : 12 affirmations, 10 sources, cinq opérations et scénario fictif sans fait neuf
+Nuances protégées : apprentissage MVP conditionnel ; sept erreurs à ventiler ; données/base légale ; élargissement = nouveau test ; aucune norme universelle
+Vitest ciblé P3 : 13/13
+TypeScript : npx tsc --noEmit — vert
+ESLint ciblé : vert
+Prettier ciblé, types supportés : vert
+XML des SVG : 3/3
+Rendu statique React : vert
+Manifeste P3 : 7/7
+Espaces finaux, y compris fichiers untracked : aucun
+HEAD : d4a7fb58b44e46314156e60cd580c45a4224021d — inchangé
+Git : aucun git add, commit ou push
+Release : aucun deploy, déploiement, publication ou indexation
+Manifeste P3 : docs/research/manifests/mvp-prototype-ou-poc-p3.sha256
 ```
 
-## 10. Porte de sortie P1 et score honnête
+Ce rapport clôt uniquement la production P3 et ses contrôles ciblés. Il ne
+constitue ni la porte G3 de l’orchestrateur, ni un BAT navigateur, ni une preuve
+publique.
 
-### Vérification de la porte
+## P. Antipasse IA et rapport de fermeture P4
 
-- [x] brief complet et décision principale unique ;
-- [x] URL distincte justifiée malgré les recouvrements du guide MVP ;
-- [x] recherche web actuelle, datée et ouverte sur les pages originales ;
-- [x] carte concurrentielle assez large pour identifier les contradictions ;
-- [x] fiche de preuves primaires exploitable par un autre rédacteur ;
-- [x] faits, observations, déductions, recommandations et exemple séparés ;
-- [x] aucune contradiction décisive masquée ;
-- [x] plan annoté distinct des voisins ;
-- [x] action autonome, bon fit et mauvais fit définis ;
-- [x] aucune page publique ni promesse de ressource créée en P1 ;
-- [x] propriétaire éditorial unique nommé ;
-- [x] manifeste P1 créé après formatage et relecture intégrale.
+### P1. Motifs repérés et corrections bornées
 
-### Score P1 — 19/20
+- **Symétrie de l’ouverture** : les quatre formats étaient définis par quatre
+  phrases presque identiques. L’entrée part maintenant de la décision bloquée,
+  puis varie naturellement la manière d’introduire prototype, POC, pilote et
+  MVP.
+- **Faux contrastes répétés** : les oppositions nom / preuve, chronologie /
+  inconnue et méthode / règle revenaient dans le héros, la FAQ et le disclaimer.
+  Une seule idée suffit désormais à chaque emplacement ; la limite sur
+  l’absence de définition officielle commune reste explicite.
+- **Formulations nominales et administratives** : le CTA, le sous-titre FAQ et
+  deux titres d’encadré nommaient le dispositif sans partir de l’action du
+  lecteur. Ils commencent maintenant par la décision, le cas ou l’effet à
+  observer.
+- **Triptyques saccadés** : « Huit champs. Une preuve. Une décision limitée. »
+  et l’accroche symétrique de l’image de sortie ont été remplacés par deux
+  phrases continues. Le CTA passe de trois badges parallèles à deux conditions
+  concrètes.
+- **Page qui parle d’elle-même** : la FAQ ne se donne plus comme origine d’un
+  nombre universel et le lien vers le guide voisin décrit directement la
+  frontière d’apprentissage.
+- **Rythme de la section MVP** : les trois paragraphes ne commencent plus
+  mécaniquement par « Le MVP », « La version » et « La source ». La définition,
+  les exigences du test et la condition de retour restent séparées.
 
-| Axe de recherche               |  Note 0-2 | Preuve                                                              | Réserve                                                       |
-| ------------------------------ | --------: | ------------------------------------------------------------------- | ------------------------------------------------------------- |
-| Décision du lecteur            |         2 | Une inconnue unique conditionne l'objet et la dépense suivante      | —                                                             |
-| Frontière éditoriale           |         2 | Dix pages voisines comparées, recouvrements explicitement interdits | —                                                             |
-| Demande observée               |         1 | SERP francophone actuelle et formulations réelles relevées          | Aucun volume Search Console ou Keyword Planner propre à l'URL |
-| Carte concurrentielle          |         2 | Cinq pages commerciales et une doctrine publique comparées          | —                                                             |
-| Sources primaires              |         2 | Eric Ries, GOV.UK, EURAXESS/Commission européenne, CNIL, Légifrance | —                                                             |
-| Qualification des affirmations |         2 | Faits, observation, déduction, recommandation et exemple séparés    | —                                                             |
-| Pédagogie prévue               |         2 | Ouverture humaine, définitions dans la phrase et H2 isolables       | À vérifier sur la rédaction finale                            |
-| Originalité utile              |         2 | Fiche des 10 questions et recouvrement pilote/MVP expliqué          | —                                                             |
-| Conversion honnête             |         2 | Action autonome, mauvais fit et possibilité de ne rien construire   | —                                                             |
-| Transmission au rédacteur      |         2 | Plan, preuves, limites, calcul, exemple et CTA documentés           | —                                                             |
-| **Total**                      | **19/20** | P1 défendable sans invention                                        | Demande quantitative non mesurée                              |
+Les tableaux comparatifs, les questions opérationnelles du POC et du pilote,
+la fiche numérotée et l’inventaire de remise conservent leur parallélisme : ici,
+il sert une comparaison ou une exécution réelle. Les listes n’ont pas été
+réécrites pour produire une variation artificielle.
 
-### Réserves à transmettre en P2
+### P2. Relecture de chaque H2 isolément
 
-1. Le recouvrement avec `mvp-saas-quoi-inclure` est réel. P2 doit rester centré
-   sur **le choix de l'expérience**, sans redévelopper le contenu opérationnel
-   du MVP.
-2. Le recouvrement avec `valider-idee-saas-avant-developper` est également
-   réel. P2 ne reprend ni entretiens, ni test de prix, ni plan de terrain ; il
-   suppose qu'une question exige peut-être un objet à construire.
-3. Le pilote doit être expliqué comme une option utile, pas comme un quatrième
-   mot ajouté artificiellement à la requête ni comme une étape obligatoire.
-4. Les sources GOV.UK et EURAXESS ont des contextes publics ou de recherche.
-   Chaque utilisation visible doit conserver cette limite et présenter la
-   règle de choix comme une recommandation Hagnéré Code.
-5. Aucune validation par un dirigeant réel n'a eu lieu. La P1 ne préjuge ni de
-   la qualité de la plume finale, ni de la lisibilité mobile, ni du statut de
-   publication.
-6. Le passage sur les droits doit rester bref et prudent : séparer les fichiers,
-   accès et documents remis des droits d'usage ou de cession écrits au contrat,
-   sans déduire une propriété du seul paiement ni interpréter le cas du lecteur.
+1. **Réponse directe** : réponse autonome, quatre formats distincts et option
+   sans construction conservés ; ouverture désuniformisée.
+2. **Matrice** : la grille répond à son titre ; son introduction explique le
+   mélange de preuves au lieu d’enchaîner deux slogans opposés.
+3. **Fiche** : les huit champs restent copiables ; le passage sur la valeur
+   part désormais de la décision plutôt que du nombre de fichiers.
+4. **Prototype** : compréhension, fidélité, accessibilité et réemploi du code
+   restent bornés ; l’encadré nomme le risque de confusion avec le produit.
+5. **POC** : cas, mesure, seuil, limites et remise restent intacts ; le mémo
+   rattache directement la réussite à la décision écrite.
+6. **Pilote** : rôles, charge, continuité, données, pseudonymisation, base
+   légale et retour arrière restent complets. Aucun allègement stylistique n’a
+   retiré une qualification CNIL.
+7. **MVP** : apprentissage client inchangé ; le retour réel reste exigé
+   seulement lorsque l’hypothèse porte sur le retour.
+8. **Cas fictif** : scène, formule, seuil, contrôle inverse et sept erreurs à
+   ventiler sont inchangés. Le caractère entièrement fictif reste visible à
+   proximité.
+9. **Décision** : poursuivre, refaire, reporter et arrêter restent des sorties
+   distinctes ; tout élargissement ouvre toujours un nouveau test.
+10. **FAQ** : huit réponses commencent directement et gardent les limites sur
+    le nombre de participants, les données, les droits et le résultat ambigu.
 
-## 11. Rapport de sortie P2
+### P3. Faits, calculs et nuances protégés
+
+- Registre F01 à F12, sources, URLs, dates et périmètres : inchangés.
+- Calcul fictif : `40 × 4 = 160`, `153 / 160 = 95,625 %`, `153 + 7 = 160`,
+  `152 / 160 = 95 %` et `153 − 152 = 1` : inchangé.
+- Sept erreurs : toujours à ventiler par champ et par document avant tout
+  pilote ; aucune répartition n’est inventée.
+- MVP : apprentissage client défini, avec retour répété conditionnel à
+  l’hypothèse ; aucune adoption n’est promise.
+- Données : anonymisation, pseudonymisation, base légale, environnement séparé
+  et qualification du cas restent distincts.
+- Élargissement : nouveau volume, site, donnée ou dépendance = nouveau test.
+- Taxonomie : aucun ordre, tarif, délai, seuil, nombre de testeurs ou standard
+  universel n’est ajouté.
+- Exemple Lys Documents : entièrement fictif, jamais présenté comme client,
+  mission, performance ou preuve commerciale.
+
+### P4. Fichiers et contrôles
+
+- Agent distinct : `mvp_poc_p4`.
+- État d’entrée : G3 `GO_PASSE_4`, build 77/77 et BAT 320–1 440 transmis par
+  l’orchestrateur ; snapshot P3 relu en entier.
+- Fichiers modifiés : dossier, page, image Open Graph, test, SVG 4:3 de la fiche
+  et SVG 1:1 de décision.
+- Fichier relu mais inchangé : SVG 16:9 de la matrice.
+- Freeze et manifestes P1/P2/P3 : lus puis conservés octet pour octet.
+- Build complet, BAT navigateur et contrôle transversal : non exécutés par P4,
+  réservés à l’orchestrateur sur le snapshot suivant.
 
 ```text
-PASSE 2 TERMINÉE
-Fichiers créés ou modifiés : page publique et image sociale dédiées ; entrée en tête du registre avec attente de revue humaine ; icône du hub ; garde-fou de langage humain ; un lien entrant depuis la section prototype/pilote/MVP du guide voisin ; présent dossier.
-Ouverture et réponse : les 150 premiers mots partent des trois situations vécues, expliquent prototype, POC, pilote et MVP, puis demandent de choisir par la question qui pourrait arrêter ou modifier le projet.
-Forme propre au sujet : progression question → test → limite de ce qu'il démontre ; fiche de 10 questions avant le devis, directement copiable pour comparer deux propositions.
-Exemples ou calculs : exemple illustratif fictif d'un logiciel de lecture de bons de commande ; 100 documents × 5 champs = 500 valeurs et 475 / 500 × 100 = 95 %, seuil inventé et non normatif.
-Sources visibles : Eric Ries près du MVP ; GOV.UK près du prototype et de la question risquée ; EURAXESS près du POC ; Cabinet Office près du pilote ; CNIL près des données de test ; Légifrance près des droits.
-Action autonome, bon fit et mauvais fit : fiche copiable sans collecte de données ; projet avec question, testeurs et décision identifiés ; outil existant, report, absence de testeur ou besoin spécialisé explicitement orientés autrement.
-CTA et destination : un seul CTA tardif, « Choisir le prochain test utile », vers /demarrer-un-projet ; le texte annonce qu'un outil existant ou un report peut être recommandé.
-Contrôles rapides : Prettier conforme ; ESLint conforme ; TypeScript conforme ; 26 tests ciblés conformes ; route locale HTTP 200 ; Article et BreadcrumbList présents sans FAQPage ni HowTo ; diff-check final consigné après le manifeste.
-Snapshot : docs/research/manifests/mvp-prototype-ou-poc-p2.sha256
+PASSE_4_TERMINEE
+Motifs repérés : symétrie de l’ouverture ; faux contrastes répétés ; style nominal du CTA ; triptyques saccadés ; page qui parle d’elle-même ; rythme uniforme du MVP
+Corrections : ouverture, FAQ, CTA, disclaimer, quatre titres ou transitions, sous-titre OG et deux accroches SVG
+Passages conservés et raison : tableaux, questions de contrôle, fiche numérotée et inventaire — parallélisme utile à la comparaison ou à l’exécution
+Faits inchangés : F01 à F12, dix sources, dates, périmètres et cinq opérations du scénario fictif
+Exemples contrôlés : Lys Documents reste entièrement fictif ; seuil, sept erreurs et limites inchangés
+Contradictions finales : aucune ; MVP et pilote gardent deux preuves séparées ; aucune définition universelle
+Vitest ciblé P4 : 14/14
+TypeScript : npx tsc --noEmit — vert
+ESLint ciblé : vert
+Prettier ciblé, types supportés : vert
+XML des SVG : 3/3
+Rendu statique React : vert
+Manifeste P4 : 7/7
+Diff-check et espaces finaux, y compris fichiers untracked : aucun défaut
+HEAD : d4a7fb58b44e46314156e60cd580c45a4224021d — inchangé
+Git : aucun git add, commit ou push
+Release : aucun deploy, déploiement, publication ou indexation
+Manifeste P4 : docs/research/manifests/mvp-prototype-ou-poc-p4.sha256
 ```
 
-### Décisions de rédaction P2
+Ce rapport clôt uniquement la production P4 et ses contrôles ciblés. Il ne
+constitue ni la porte G4 de l’orchestrateur, ni le contrôle transversal, ni une
+preuve publique.
 
-- les définitions sont annoncées comme des repères de travail, jamais comme une
-  taxonomie universelle ;
-- le pilote reste une option lorsque le travail réel doit être observé, pas une
-  étape supplémentaire imposée ; il peut aussi être le cadre de déploiement
-  d'un MVP ;
-- aucune fourchette, durée moyenne, chronologie obligatoire, nombre universel
-  de testeurs ou promesse de marché n'a été ajouté ;
-- le guide reste centré sur l'expérience à acheter et sur sa décision de
-  sortie ; la liste des fonctions du MVP demeure dans le guide voisin ;
-- les fichiers remis et les droits écrits au contrat sont séparés, avec une
-  information juridique générale et une limite explicite ;
-- aucune ressource téléchargeable n'est promise : la fiche visible est
-  directement copiable et autonome.
+## Reprise qualité post-Q
 
-### Vérification de la porte P2
+Le contre-audit indépendant a rendu `GO` à **95/100**, sans P0 ni P1, et a
+confirmé deux P2 visuels bornés :
 
-- [x] guide complet, sans placeholder ;
-- [x] décision et réponse présentes dès l'ouverture ;
-- [x] affirmations décisives reliées au dossier P1 et aux sources proches ;
-- [x] risques, responsabilités, alternatives et possibilité d'attendre
-      couverts sans élargir au cahier des charges du MVP ;
-- [x] exemple fictif et calcul cohérents, étiquetés avant les nombres ;
-- [x] action autonome disponible sans téléchargement ni contact ;
-- [x] page, image sociale, registre, données structurées, hub, test de langage
-      et maillage entrant intégrés ;
-- [x] un seul CTA tardif, fidèle à sa destination ;
-- [x] `editorialStatus: "ready-for-human-review"` conservé ;
-- [x] contrôle React : Server Component, aucun hook ni état, HTML sémantique,
-      listes stables, aucun média non optimisé ;
-- [x] contrôles rapides sans défaut introduit ;
-- [x] manifeste P2 créé sur tous les fichiers modifiés.
+1. à 1 024 px, la statistique du héros `Fiche / 8 champs` tronquait sa valeur ;
+   elle devient `Champs / 8`, sans changer l’information ;
+2. entre 320 et 430 px, `ARRÊT` débordait du médaillon fixe du dernier cas ;
+   l’initiale devient `!`, tandis que « Dernière vérification », le titre et la
+   décision « arrêter » restent visibles dans le contenu.
 
-### État transmis à P3
+Seuls le dossier, la page et le test propre au slug sont modifiés après P4.
+Aucun composant partagé ni manifeste P1–P4 n’est réécrit. Vitest ciblé 15/15,
+TypeScript, ESLint, Prettier et diff-check sont verts. Le manifeste post-Q
+rejouable couvre 3/3 fichiers :
+`docs/research/manifests/mvp-prototype-ou-poc-quality.sha256`.
 
-La P2 valide un **brouillon complet**, pas sa publication. Aucun lecteur humain
-réel n'a participé. Le prochain relecteur doit notamment contredire les
-définitions, la transposition des sources britanniques, la prudence CNIL, le
-passage Légifrance, le calcul fictif et la distinction avec
-`mvp-saas-quoi-inclure`.
+## Intégration centrale — snapshot privé
 
-## 12. Rapport de sortie P3
+L’intégration centrale a commencé le 5 août 2026 à 10:01:50 +02:00, après
+autorisation directe du commanditaire et acquisition atomique du mutex
+`integration.lock`. La branche part de
+`d4a7fb58b44e46314156e60cd580c45a4224021d`, soit deux commits au-dessus de
+`origin/main` `577a9ff9632cceba51e1a0c46cda3dbb3f7830c0` et exactement du dernier
+snapshot poussé du guide #30.
 
-PASSE 3 TERMINÉE
+La page utilise désormais le registre central, `buildGuideMetadata` et
+`buildGuideStructuredData`. Cette source unique ferme les deux P2 JSON-LD du
+contre-audit : `Article.headline` reprend le H1 complet « Prototype, POC,
+pilote ou MVP : que construire d’abord ? » et `Article.isPartOf` désigne la
+collection des guides. Le fil d’Ariane utilise le `cardTitle` du même registre.
 
-- **Entrée contrôlée :** manifeste P2 valide sur ses sept fichiers avant le
-  contre-audit. Les écarts ultérieurs correspondent exactement aux corrections
-  P3 du dossier, de la page et de l'image sociale ; le manifeste P2 reste une
-  trace historique et n'est pas réécrit.
-- **Premier verdict :** 16/20, aucun P0, mais trois P1 : distinction trop nette
-  entre pilote et MVP, formulation CNIL incomplète et expressions trop
-  méthodologiques pour un dirigeant.
-- **Corrections de fond :** le pilote décrit désormais le cadre limité du
-  déploiement et le MVP ce qui est construit pour apprendre ; une même version
-  peut être les deux. Le MVP n'est plus réduit à une version vendable ou
-  entièrement automatisée.
-- **Corrections de sécurité :** données fictives ou anonymisées et
-  environnement séparé pour les premiers tests ; données personnelles réelles
-  seulement si indispensables, en préproduction protégée comme la production
-  après les tests préalables indiqués par la CNIL. Aucun mot comme « pilote »
-  ne crée de dérogation.
-- **Corrections de plume :** suppression des phrases faisant « apprendre » une
-  version ou « répondre » le travail ; remplacement du faux « bon de commande
-  de l'expérience » par une fiche ordinaire de 10 questions avant le devis ;
-  ouverture, tableau, titres, exemple et CTA resserrés.
-- **Sources revérifiées :** Eric Ries, GOV.UK, EURAXESS, Cabinet Office, CNIL et
-  Légifrance. L'URL Légifrance courante répond en anti-robot à l'outil, mais le
-  texte de l'article L131-3 et son statut en vigueur avaient été contrôlés lors
-  de la première lecture officielle.
-- **Calcul refait :** `5 × 100 = 500`, `475 / 500 × 100 = 95 %` ; seuil
-  explicitement fictif et non normatif.
-- **Contrôles indépendants :** Prettier, ESLint, TypeScript,
-  `git diff --check` et 32 tests ciblés réussis. Route et image sociale locales
-  en 200 ; image PNG 1 200 × 630.
-- **Revalidation :** 20/20, aucun P0, P1 ou P2 restant.
-- **Snapshot :** `manifests/mvp-prototype-ou-poc-p3.sha256`.
+Le registre porte les trois illustrations, `readTimeMin: 15`, le statut
+`ready-for-human-review` et deux dates explicitement bornées :
 
-### Scorecard P3 justifiée
+- `datePublished: 2026-07-23T00:59:26+02:00` est l’horodatage d’auteur du
+  commit historique `14a388b91c2199ba1309cba304653248d6baf084`, première
+  trace Git retrouvée de la route. Cette trace ne prouve pas une première mise
+  en ligne publique : elle reste un **STOP opérationnel** à rapprocher du
+  snapshot réellement déployé avant toute future publication ;
+- `dateModified: 2026-08-05T10:01:50+02:00` borne le début de l’intégration et
+  sera utilisé comme date d’auteur du commit final ;
+- la mesure officielle du HTML post-Q comptait 2 902 mots visibles, soit 15
+  minutes à 200 mots par minute.
 
-| Axe         |      Note | Preuve finale                                                                | Réserve |
-| ----------- | --------: | ---------------------------------------------------------------------------- | ------- |
-| Intention   |         2 | Situation et choix visibles dans les 125 premiers mots                       | Aucune  |
-| Décision    |         2 | Cinq sorties, dont acheter autrement, reporter ou arrêter                    | Aucune  |
-| Pédagogie   |         2 | Définitions simples, chevauchement pilote/MVP et titres autonomes            | Aucune  |
-| Profondeur  |         2 | Question, format, données, critères, droits, exemple et décision finale      | Aucune  |
-| Preuve      |         2 | Sources primaires proches des affirmations et limites de contexte visibles   | Aucune  |
-| Comparaison |         2 | Même question, apport et limite pour prototype, POC, pilote et MVP           | Aucune  |
-| Originalité |         2 | Fiche de 10 questions réellement copiable, sans matrice propriétaire         | Aucune  |
-| Style       |         2 | Test dirigeant, garde-fou lexical et contre-lecture humaine validés          | Aucune  |
-| Conversion  |         2 | Action autonome, mauvais fit et CTA unique pouvant conclure au report        | Aucune  |
-| SEO/produit |         2 | Title 45, meta 134, H1 56, canonical, maillage et JSON-LD fidèles au visible | Aucune  |
-| **Total**   | **20/20** | **Porte P3 validée**                                                         | **—**   |
+La route reste volontairement privée : `noindex, nofollow`, badge « Brouillon
+privé », absence attendue du hub public, de `sitemap.xml` et de `llms.txt`.
+Les mutations partagées sont bornées à l’entrée du registre et à son icône, au
+retrait du slug des redirections héritées, aux tests correspondants et à un
+lien entrant depuis la section « Frontière du test » du guide
+`mvp-saas-quoi-inclure`. Le dossier voisin consigne ce lien sans changer ses
+calculs, médias, CTA, metadata, dates ou statut.
 
-### Limites transmises à P4
+À ce stade, aucun commit, push, déploiement, publication ou indexation n’est
+revendiqué. La batterie globale, le contrôle SEO, le build de production, le
+BAT lecteur, l’impression, le replay du manifeste d’intégration et le
+contre-audit release indépendant doivent encore être exécutés sur le snapshot
+exact.
 
-- aucun test n'a été mené avec un dirigeant réel ; la contre-lecture simule ce
-  profil mais ne prétend pas être un entretien utilisateur ;
-- la P4 doit encore vérifier les six largeurs, les cartes du tableau, la fiche
-  de 10 questions, le CTA, la console et l'image sociale réellement rendue ;
-- la page conserve `ready-for-human-review` et ne doit pas être publiée avant
-  le gel final du lot.
+### Preuves locales du snapshot intégré avant contre-audit release
 
-## 13. Rapport de sortie P4
+La batterie automatisée et le build complet ont été exécutés sur l’intégration
+centrale :
 
-PASSE 4 TERMINÉE LOCALEMENT
+- tests ciblés du guide, du voisin, du registre et des redirections : 4
+  fichiers, 65/65 tests verts ;
+- batterie Vitest globale : 116 fichiers et 1 191/1 191 tests verts ;
+- TypeScript sans émission, ESLint global, Prettier ciblé, XML des trois SVG et
+  `git diff --check` : verts ;
+- contrôle SEO : 33 fichiers et 189/189 tests verts ;
+- build de production : compilation et TypeScript verts, 77/77 pages statiques
+  générées ; postbuild noindex vert sur 49 URL, 32 liens, 49 pages, 19 temps de
+  lecture et 86 blocs JSON-LD.
 
-- **Passe lecteur dirigeant :** première contre-lecture à 16,5/20, puis 18,5/20
-  après retrait des anthropomorphismes, de l'expression fabriquée « bon de
-  commande de l'expérience » et de plusieurs formulations abstraites. Verdict
-  final de cette contre-lecture : PASS, aucun blocant.
-- **Ouverture finale :** 125 mots, situation vécue, quatre termes expliqués et
-  décision annoncée sans mot de consultant détecté par le garde-fou.
-- **Responsive réel :** DOM contrôlé à 320, 390, 640, 768, 1 024 et 1 440 px ;
-  un H1, toutes les ancres résolues, aucun débordement horizontal et uniquement
-  les JSON-LD `Article` et `BreadcrumbList`.
-- **Composants adaptatifs :** le comparatif devient quatre cartes sous 768 px,
-  puis un tableau à partir de 768 px. Les dix questions avant le devis, le CTA
-  et les quatre badges du héros restent visibles sur mobile.
-- **Correction issue du rendu :** la question MVP a été raccourcie en « De
-  vrais utilisateurs doivent-ils essayer une première version ? » afin de ne
-  pas laisser un point d'interrogation seul sur une ligne à 640 px.
-- **Contrôle visuel :** héros à 320 et 1 440 px, cartes à 640 px, tableau à
-  768 px, fiche et CTA à 390 px inspectés. Aucun défaut de hiérarchie, texte
-  masqué ou recouvrement n'a été constaté.
-- **Image sociale :** route en 200, PNG 1 200 × 630 inspecté ; les libellés
-  parcours, faisabilité, déploiement limité et apprentissage client sont
-  lisibles sans présenter les quatre formats comme une chronologie.
-- **Console :** aucune erreur navigateur ni surcouche d'erreur ; seuls les
-  messages d'information et de rechargement du serveur de développement sont
-  présents.
-- **Contrôles techniques finaux :** Prettier, ESLint, TypeScript,
-  `git diff --check` et 50 tests ciblés réussis.
-- **Test réel :** non. Les relectures indépendantes et le contrôle navigateur
-  ne remplacent pas un entretien avec un dirigeant ou un indépendant de la
-  cible.
-- **Indexation locale :** `noindex, nofollow`, état attendu en développement et
-  pendant la retenue éditoriale. Le passage en `index, follow` devra être prouvé
-  sur la production finale.
-- **Décision de publication :** autorisée explicitement par le commanditaire,
-  mais retenue jusqu'au gel commun des dix guides afin de conserver des
-  manifestes cohérents et un déploiement atomique.
-- **Snapshot final :** `manifests/mvp-prototype-ou-poc-p4.sha256`.
+La route de production locale répond directement en 200. Son canonical est
+`https://hagnere-code.ai/guides/mvp-prototype-ou-poc`, ses robots sont
+`noindex, nofollow`, le H1 accessible est exactement égal à
+`Article.headline`, et les seuls schémas sont `Article` et `BreadcrumbList`.
+`Article.isPartOf` vise `https://hagnere-code.ai/guides#collection`. La page
+compte un H1, un `main#main-content`, huit FAQ, un CTA principal propre au
+guide, aucun lien vide, aucun lien XLS/XLSX/CSV et aucun lien téléphonique dans
+le contenu principal. Le guide reste absent du hub, du sitemap et de
+`llms.txt`; le lien entrant apparaît deux fois dans le HTML rendu du guide MVP
+voisin. L’OG et les trois SVG répondent en 200 ; l’OG mesure 1 200 × 630 et les
+trois SVG chargent avec leurs dimensions et textes alternatifs.
 
-## Décision de gel commun — 22 juillet 2026
+Le responsive réel a été mesuré aux largeurs CSS 320, 360, 390, 430, 640, 768,
+1 024, 1 280, 1 440 et 1 920 px. À chaque largeur, le `scrollWidth` du document
+égale la largeur utile, le H1 reste contenu, les huit FAQ sont présentes, la
+statistique `Champs / 8` ne tronque rien et le médaillon `!` conserve
+`clientWidth = scrollWidth = 40`. Les tableaux sont remplacés par leurs cartes
+avant le breakpoint, puis réapparaissent sans élargir le document. Le thème
+sombre a été rejoué à 320, 390, 1 024 et 1 440 px, sans ellipsis ni
+débordement. La console ne contient aucune erreur ni alerte.
 
-Les mentions précédentes de publication différée décrivent l’état de contrôle
-avant le gel atomique des dix guides.
+La connexion navigateur intégrée a bien vérifié la structure, les thèmes, les
+largeurs, les médias et la console, mais son injection synthétique de touches
+n’a pas déclenché `Tab`, `Entrée` ou `Espace` sur ce snapshot. Cette limite de
+l’outil ne prouve pas un défaut de la page : le contrôle clavier exact reste
+attribué au contre-auditeur release indépendant, qui devra rendre un verdict
+avant commit.
 
-Statut éditorial final : **publiable — validation éditoriale déléguée**.
+Chrome a produit une épreuve PDF Letter balisée de 31 pages. Les huit questions
+de FAQ sont extraites et le CTA propre au guide est absent. Les pages 1, 16 et
+31 ont été rendues en PNG et inspectées : aucune coupe, superposition ou ligne
+illisible. En revanche, la navigation globale, son bouton « Démarrer un
+projet », le badge privé, le bloc commercial et formulaire de contact des pages
+27 à 30, puis le pied de page restent imprimés. Il s’agit d’un P2 partagé déjà
+borné, sans incidence sur la décision ou le contenu du guide privé. Aucune
+retouche de composant commun n’est introduite dans ce lot.
 
-Décision de publication : autorisée explicitement par le commanditaire.
+### Reprise de preuve après le premier contre-audit release
 
-Test réalisé par une personne réelle : non.
+Le premier contre-audit release a noté le contenu intégré 94/100, sans P0 ni
+P1, mais a rendu `NO_GO` parce que son instance navigateur n’était pas
+disponible. Il a aussi relevé deux imprécisions de preuve : l’en-tête du dossier
+le présentait encore comme un candidat P1 et le paragraphe d’impression disait
+à tort que le bloc commercial global était absent. Ces deux mentions sont
+rectifiées ci-dessus ; aucun texte lecteur ni composant n’est modifié.
 
-Le retrait du statut d’attente ouvre la route à `index, follow` dans un build de
-production. Il ne prouve ni le déploiement final ni l’indexation effective par
-Google, qui doivent être vérifiés séparément.
+L’orchestrateur a ensuite rejoué le rendu intégré dans une session navigateur
+neuve. En thème clair, les largeurs 320, 360, 390, 430, 640, 768, 1 024, 1 280,
+1 440 et 1 600 px gardent `scrollWidth` égal à la largeur utile, le H1 contenu,
+les huit FAQ et les correctifs `Champs / 8` et `!` intacts. Les cartes mobiles
+restent actives sous le breakpoint et les neuf tableaux reviennent sur le
+format bureau. L’échantillon sombre 320, 390, 1 024 et 1 440 px donne les mêmes
+résultats. Une seule ellipse demeure à partir de 1 280 px : le libellé global
+« Développement SaaS sur mesure » dans une tuile du bloc commercial commun,
+hors contenu du guide. Ce P2 partagé n’est pas masqué par une retouche du slug.
+
+Axe a rendu zéro violation en clair et en sombre, avec 50 règles passées dans
+chaque thème. Les 57 puis 56 contrôles `color-contrast` laissés incomplets
+correspondent aux dégradés et superpositions que l’outil ne sait pas trancher ;
+ils ne sont pas convertis artificiellement en succès. Les trois SVG ont ensuite
+été chargés par défilement réel, avec dimensions intrinsèques et textes
+alternatifs ; la console ne porte ni avertissement ni erreur, et le replay
+réseau n’a remonté aucun chargement échoué ni réponse HTTP en erreur.
+
+Le contrôle natif a confirmé que le skip-link puis les boutons de FAQ entrent
+bien dans l’ordre de focus. Son activation locale a toutefois été perturbée
+par le navigateur de secours, qui a forcé l’ancre HTTP de `localhost` vers
+HTTPS et chargé la page sans ses ressources. Cette tentative n’est donc pas
+présentée comme une preuve clavier release. Le navigateur principal a été
+entièrement libéré afin que le contre-auditeur indépendant puisse reprendre le
+test réel `Tab`, `Entrée` et `Espace` sur le snapshot final exact.
+
+Le prochain état sera gelé par
+`docs/research/manifests/mvp-prototype-ou-poc-integration.sha256`, manifeste
+lui-même exclu. Les manifestes P1 à P4 et `quality` restent les preuves
+historiques de leurs snapshots et ne sont pas réécrits après intégration.

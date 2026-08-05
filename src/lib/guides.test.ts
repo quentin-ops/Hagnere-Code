@@ -107,6 +107,7 @@ describe("guide registry after the editorial reset", () => {
       "mvp-saas-quoi-inclure",
       "prioriser-fonctionnalites-mvp-saas",
       "agence-saas-ou-freelance",
+      "mvp-prototype-ou-poc",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
@@ -186,6 +187,10 @@ describe("guide registry after the editorial reset", () => {
     expect(mvpContractGuideSource).toContain(
       "/guides/agence-saas-ou-freelance",
     );
+  });
+
+  it("links the experiment-format guide from the MVP contract", () => {
+    expect(mvpContractGuideSource).toContain("/guides/mvp-prototype-ou-poc");
   });
 
   it("keeps metadata unique, dated and restrained", () => {

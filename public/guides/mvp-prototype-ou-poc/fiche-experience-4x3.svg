@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Fiche d’expérience en huit champs</title>
+  <desc id="desc">La fiche sépare décision, inconnue, cas, personnes, observation, passage, responsabilités et remise.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef2ff"/>
+    </linearGradient>
+    <linearGradient id="rule" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#0284c7"/>
+    </linearGradient>
+    <filter id="shadow" x="-12%" y="-12%" width="124%" height="130%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#172554" flood-opacity=".10"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" rx="40" fill="url(#background)"/>
+  <circle cx="1070" cy="70" r="180" fill="#c7d2fe" opacity=".30"/>
+
+  <text x="76" y="80" fill="#4338ca" font-family="Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3">AVANT LE LIVRABLE</text>
+  <text x="76" y="132" fill="#18181b" font-family="Arial, sans-serif" font-size="40" font-weight="750">La fiche d’expérience</text>
+  <text x="76" y="172" fill="#52525b" font-family="Arial, sans-serif" font-size="20">Huit champs relient le test à la décision qu’il autorise.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="76" y="220" width="1048" height="570" rx="30" fill="#ffffff" stroke="#d4d4d8" stroke-width="2"/>
+  </g>
+  <rect x="76" y="220" width="12" height="570" rx="6" fill="url(#rule)"/>
+
+  <g font-family="Arial, sans-serif">
+    <g>
+      <circle cx="135" cy="286" r="23" fill="#eef2ff"/>
+      <text x="135" y="294" text-anchor="middle" fill="#4338ca" font-size="20" font-weight="700">1</text>
+      <text x="177" y="281" fill="#18181b" font-size="20" font-weight="700">Décision</text>
+      <text x="177" y="310" fill="#52525b" font-size="17">Que permettra exactement ce test ?</text>
+    </g>
+    <g>
+      <circle cx="135" cy="407" r="23" fill="#eef2ff"/>
+      <text x="135" y="415" text-anchor="middle" fill="#4338ca" font-size="20" font-weight="700">3</text>
+      <text x="177" y="402" fill="#18181b" font-size="20" font-weight="700">Cas inclus / exclus</text>
+      <text x="177" y="431" fill="#52525b" font-size="17">Jeu d’essai, parcours, volume et limites.</text>
+    </g>
+    <g>
+      <circle cx="135" cy="528" r="23" fill="#eef2ff"/>
+      <text x="135" y="536" text-anchor="middle" fill="#4338ca" font-size="20" font-weight="700">5</text>
+      <text x="177" y="523" fill="#18181b" font-size="20" font-weight="700">Observation</text>
+      <text x="177" y="552" fill="#52525b" font-size="17">Événement, mesure et collecte.</text>
+    </g>
+    <g>
+      <circle cx="135" cy="649" r="23" fill="#eef2ff"/>
+      <text x="135" y="657" text-anchor="middle" fill="#4338ca" font-size="20" font-weight="700">7</text>
+      <text x="177" y="644" fill="#18181b" font-size="20" font-weight="700">Responsabilités</text>
+      <text x="177" y="673" fill="#52525b" font-size="17">Données, accès, sécurité et retour arrière.</text>
+    </g>
+
+    <g>
+      <circle cx="638" cy="286" r="23" fill="#e0f2fe"/>
+      <text x="638" y="294" text-anchor="middle" fill="#0369a1" font-size="20" font-weight="700">2</text>
+      <text x="680" y="281" fill="#18181b" font-size="20" font-weight="700">Inconnue principale</text>
+      <text x="680" y="310" fill="#52525b" font-size="17">Hypothèse qui peut être contredite.</text>
+    </g>
+    <g>
+      <circle cx="638" cy="407" r="23" fill="#e0f2fe"/>
+      <text x="638" y="415" text-anchor="middle" fill="#0369a1" font-size="20" font-weight="700">4</text>
+      <text x="680" y="402" fill="#18181b" font-size="20" font-weight="700">Personnes à observer</text>
+      <text x="680" y="431" fill="#52525b" font-size="17">Qui peut réellement répondre ?</text>
+    </g>
+    <g>
+      <circle cx="638" cy="528" r="23" fill="#e0f2fe"/>
+      <text x="638" y="536" text-anchor="middle" fill="#0369a1" font-size="20" font-weight="700">6</text>
+      <text x="680" y="523" fill="#18181b" font-size="20" font-weight="700">Passage / arrêt</text>
+      <text x="680" y="552" fill="#52525b" font-size="17">Écrit avant de voir le résultat.</text>
+    </g>
+    <g>
+      <circle cx="638" cy="649" r="23" fill="#e0f2fe"/>
+      <text x="638" y="657" text-anchor="middle" fill="#0369a1" font-size="20" font-weight="700">8</text>
+      <text x="680" y="644" fill="#18181b" font-size="20" font-weight="700">Remise</text>
+      <text x="680" y="673" fill="#52525b" font-size="17">Résultats, limites, actifs et accès.</text>
+    </g>
+  </g>
+
+  <path d="M560 260V728" stroke="#e4e4e7" stroke-width="2" stroke-dasharray="7 9"/>
+  <path d="M110 346H1090M110 467H1090M110 588H1090M110 709H1090" stroke="#e4e4e7" stroke-width="2"/>
+
+  <rect x="110" y="728" width="980" height="42" rx="21" fill="#fef3c7"/>
+  <text x="600" y="755" text-anchor="middle" fill="#854d0e" font-family="Arial, sans-serif" font-size="17" font-weight="700">« À vérifier » + responsable + prochaine preuve — jamais une inconnue transformée en zéro</text>
+
+  <text x="76" y="844" fill="#52525b" font-family="Arial, sans-serif" font-size="18">La condition d’arrêt protège autant la décision que la condition de passage.</text>
+</svg>

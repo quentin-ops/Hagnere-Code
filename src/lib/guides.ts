@@ -406,6 +406,26 @@ export const GUIDES: GuideEntry[] = [
     ],
     editorialStatus: "ready-for-human-review",
   },
+  {
+    slug: "mvp-prototype-ou-poc",
+    title: "Prototype, POC, pilote ou MVP : que choisir ?",
+    cardTitle: "Prototype, POC, pilote ou MVP ?",
+    metaDescription:
+      "Choisissez le test adapté à l’inconnue à lever : prototype, preuve de concept, pilote ou MVP, avec preuve, personnes, passage et arrêt.",
+    cardDescription:
+      "Une matrice de preuve, une fiche en huit champs et un cas calculé pour choisir, combiner, reporter ou arrêter avant de construire.",
+    heroTitle: "Prototype, POC, pilote ou MVP\u00a0: que construire d’abord ?",
+    section: "SaaS et MVP",
+    datePublished: "2026-07-23T00:59:26+02:00",
+    dateModified: "2026-08-05T10:01:50+02:00",
+    readTimeMin: 15,
+    articleImagePaths: [
+      "/guides/mvp-prototype-ou-poc/objectif-preuve-public-passage-16x9.svg",
+      "/guides/mvp-prototype-ou-poc/fiche-experience-4x3.svg",
+      "/guides/mvp-prototype-ou-poc/poursuivre-reduire-arreter-1x1.svg",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */

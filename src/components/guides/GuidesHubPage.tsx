@@ -181,6 +181,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "mvp-saas-quoi-inclure": FileText,
   "prioriser-fonctionnalites-mvp-saas": GitBranch,
   "agence-saas-ou-freelance": UsersRound,
+  "mvp-prototype-ou-poc": FlaskConical,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */

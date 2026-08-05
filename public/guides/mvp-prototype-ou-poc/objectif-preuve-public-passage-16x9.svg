@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Objectif, preuve, public et passage pour quatre formats de test</title>
+  <desc id="desc">Quatre cartes comparent le prototype, le POC, le pilote et le MVP sans imposer de chronologie.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fafaf9"/>
+      <stop offset="1" stop-color="#eef2ff"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4f46e5"/>
+      <stop offset="1" stop-color="#0284c7"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#172554" flood-opacity=".09"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" rx="42" fill="url(#background)"/>
+  <circle cx="1460" cy="80" r="210" fill="#c7d2fe" opacity=".28"/>
+  <circle cx="100" cy="870" r="230" fill="#bae6fd" opacity=".22"/>
+
+  <text x="92" y="92" fill="#4338ca" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3">CHOISIR PAR L’INCONNUE</text>
+  <text x="92" y="146" fill="#18181b" font-family="Arial, sans-serif" font-size="43" font-weight="750">Quatre formats, quatre preuves différentes</text>
+  <text x="92" y="187" fill="#52525b" font-family="Arial, sans-serif" font-size="22">Le mot vient après la question. Aucun ordre universel n’est imposé.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="92" y="238" width="688" height="250" rx="28" fill="#ffffff" stroke="#c7d2fe" stroke-width="2"/>
+    <rect x="820" y="238" width="688" height="250" rx="28" fill="#ffffff" stroke="#bae6fd" stroke-width="2"/>
+    <rect x="92" y="528" width="688" height="250" rx="28" fill="#ffffff" stroke="#bbf7d0" stroke-width="2"/>
+    <rect x="820" y="528" width="688" height="250" rx="28" fill="#ffffff" stroke="#fde68a" stroke-width="2"/>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="120" y="266" width="150" height="38" rx="19" fill="#eef2ff"/>
+    <text x="195" y="292" text-anchor="middle" fill="#4338ca" font-size="18" font-weight="700">PROTOTYPE</text>
+    <text x="120" y="337" fill="#18181b" font-size="24" font-weight="700">Question · Le parcours est-il compris ?</text>
+    <text x="120" y="378" fill="#52525b" font-size="18"><tspan font-weight="700">Preuve</tspan><tspan> · tâches, hésitations, incompréhensions</tspan></text>
+    <text x="120" y="411" fill="#52525b" font-size="18"><tspan font-weight="700">Personnes</tspan><tspan> · profils représentatifs du rôle</tspan></text>
+    <text x="120" y="444" fill="#4338ca" font-size="18" font-weight="700">Passage · tâches critiques comprises — sinon corriger</text>
+
+    <rect x="848" y="266" width="92" height="38" rx="19" fill="#e0f2fe"/>
+    <text x="894" y="292" text-anchor="middle" fill="#0369a1" font-size="18" font-weight="700">POC</text>
+    <text x="848" y="337" fill="#18181b" font-size="24" font-weight="700">Question · La contrainte est-elle franchissable ?</text>
+    <text x="848" y="378" fill="#52525b" font-size="18"><tspan font-weight="700">Preuve</tspan><tspan> · mesures reproductibles, erreurs, limites</tspan></text>
+    <text x="848" y="411" fill="#52525b" font-size="18"><tspan font-weight="700">Personnes</tspan><tspan> · technique + responsable du cas métier</tspan></text>
+    <text x="848" y="444" fill="#0369a1" font-size="18" font-weight="700">Passage · seuil atteint sur le jeu d’essai — sinon arrêter</text>
+
+    <rect x="120" y="556" width="118" height="38" rx="19" fill="#dcfce7"/>
+    <text x="179" y="582" text-anchor="middle" fill="#15803d" font-size="18" font-weight="700">PILOTE</text>
+    <text x="120" y="627" fill="#18181b" font-size="24" font-weight="700">Question · Le dispositif tient-il dans le vrai travail ?</text>
+    <text x="120" y="668" fill="#52525b" font-size="18"><tspan font-weight="700">Preuve</tspan><tspan> · usage, charge, aide, incidents, retour arrière</tspan></text>
+    <text x="120" y="701" fill="#52525b" font-size="18"><tspan font-weight="700">Personnes</tspan><tspan> · groupe autorisé dans un cadre borné</tspan></text>
+    <text x="120" y="734" fill="#15803d" font-size="18" font-weight="700">Passage · aucun arrêt déclenché — sinon revenir</text>
+
+    <rect x="848" y="556" width="94" height="38" rx="19" fill="#fef3c7"/>
+    <text x="895" y="582" text-anchor="middle" fill="#a16207" font-size="18" font-weight="700">MVP</text>
+    <text x="848" y="627" fill="#18181b" font-size="24" font-weight="700">Question · Quel apprentissage client manque ?</text>
+    <text x="848" y="668" fill="#52525b" font-size="18"><tspan font-weight="700">Preuve</tspan><tspan> · comportement, engagement, refus ou retour</tspan></text>
+    <text x="848" y="701" fill="#52525b" font-size="18"><tspan font-weight="700">Personnes</tspan><tspan> · profils visés par l’hypothèse</tspan></text>
+    <text x="848" y="734" fill="#a16207" font-size="18" font-weight="700">Passage · signal prévu observé — sinon modifier</text>
+  </g>
+
+  <rect x="92" y="818" width="1416" height="2" fill="url(#accent)" opacity=".45"/>
+  <text x="92" y="858" fill="#52525b" font-family="Arial, sans-serif" font-size="18">Une même version peut être MVP et pilote : conservez alors deux questions et deux conditions.</text>
+</svg>

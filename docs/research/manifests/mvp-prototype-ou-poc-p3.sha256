@@ -1,7 +1,7 @@
-384a0f6fd10237a0911a1c5625ba286aa891cd2ff786d1d54fa7c58b4292d306  docs/research/mvp-prototype-ou-poc.md
-4ae3e857c6525fd8b7f013fddcb60cb44c9063bbcd5cf370975e78146f3bb518  src/app/guides/mvp-prototype-ou-poc/page.tsx
-be9639b01ff2a049db6d072b39b3e76e381961f1d1d76fbe748c3c609268c1d1  src/app/guides/mvp-prototype-ou-poc/opengraph-image.tsx
-4f451e2cf7df8bdd451a008bc1e62ad4f7039a8670f0f0f75f705be5ca118296  src/lib/guides.ts
-7a0d98930813f54a67a69625c3679f0d8fdc51b9c829c3179c1310517e21d02d  src/components/guides/GuidesHubPage.tsx
-3962b0edc08dc4d74b68005814fa6366c5e93f3dd24955bb308de34901441f38  src/lib/guide-human-language.test.ts
-774069b76f69ab3bf275668abceb91d85c3a9998065438108169a1ab28fcbfe4  src/app/guides/mvp-saas-quoi-inclure/page.tsx
+907af2194468d04cfefd50897c787ae245577a876a8ed1477532c901946d2ca7  docs/research/mvp-prototype-ou-poc.md
+1c1ded2f08b8a7e5d96bab38154a2078a0475125275dd2b370f3811b14599fd7  public/guides/mvp-prototype-ou-poc/fiche-experience-4x3.svg
+f9e824449dbb0d458bc09144452562af176ffff3dcd1432de736188c8941484d  public/guides/mvp-prototype-ou-poc/objectif-preuve-public-passage-16x9.svg
+41322130ba2d7b17354f274efc77fdf068bcc1d15bc44e3010aa77ff343f08b7  public/guides/mvp-prototype-ou-poc/poursuivre-reduire-arreter-1x1.svg
+d7590d35c3ec556205af352cbef32d9b7e22677d1c9731d8f893f2f96bb18e29  src/app/guides/mvp-prototype-ou-poc/content-quality.test.ts
+016e21fccd4d2ef44106c299d04c90f0dd4d1876dcee23c5422672321e604c10  src/app/guides/mvp-prototype-ou-poc/opengraph-image.tsx
+f1deaa39708b204b8b2fa4f50cbc0a6b3d5bff48ca7e2fc52d99ee5626b44628  src/app/guides/mvp-prototype-ou-poc/page.tsx
