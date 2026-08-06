@@ -110,6 +110,25 @@ export const GUIDES: GuideEntry[] = [
     ],
   },
   {
+    slug: "back-office-sur-mesure-pme",
+    title: "Back-office sur mesure PME : quels écrans prévoir ?",
+    cardTitle: "Back-office PME : cadrer les écrans avant de développer",
+    metaDescription:
+      "Éprouvez 8 familles d’écran, leurs droits, erreurs et reprises, puis comparez l’existant, un standard, un assemblage léger, le sur-mesure ou le report.",
+    cardDescription:
+      "Un contrat d’écran à douze champs, huit familles à éprouver et cinq issues pour comparer l’existant, un standard, le sur-mesure ou le report.",
+    heroTitle:
+      "Back-office sur mesure pour PME\u00a0: quels écrans prévoir, et faut-il vraiment le développer\u00a0?",
+    section: "Outils internes et automatisation",
+    readTimeMin: 21,
+    articleImagePaths: [
+      "/guides/back-office-sur-mesure-pme/article-back-office-contrat-ecran-16x9.svg",
+      "/guides/back-office-sur-mesure-pme/article-back-office-contrat-ecran-4x3.svg",
+      "/guides/back-office-sur-mesure-pme/article-back-office-contrat-ecran-1x1.svg",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
+  {
     slug: "remplacer-microsoft-access-application-web",
     title: "Remplacer Microsoft Access : 7 options comparées",
     cardTitle: "Remplacer Microsoft Access sans perdre le métier",

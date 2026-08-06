@@ -1,1 +1,13 @@
-ad6478b34019d3e9c56fe9d060d5d877c626f7c142dccf4d3ce8c6361a6d6025  docs/research/back-office-sur-mesure-pme.md
+5c0fa55ffed83e00d90e3129059597349446351ce03f8a8e0bc4e21ae5ceed10  docs/research/back-office-sur-mesure-pme-p0.md
+2ea4f2398a4272ecd4c042f6e776205fbfdef74d3c5a011e02d3d7e6d3438dae  docs/research/back-office-sur-mesure-pme.md
+eae0822e4277dec11a1a87ae77388ec709ee4a873d58d42f1645d145e12e8577  public/guides/back-office-sur-mesure-pme/article-back-office-contrat-ecran-16x9.svg
+cad6495ec63679f38ab1175cfc4d4212f8a2860fd7a6470d906743646b8215c5  public/guides/back-office-sur-mesure-pme/article-back-office-contrat-ecran-1x1.svg
+bcdecbb345b87e52404a57a4e2225281beab30e604bd97330f9763ee841c12e5  public/guides/back-office-sur-mesure-pme/article-back-office-contrat-ecran-4x3.svg
+f0112a51ee01312386eff6661c54dbc025fa3985a4a0d283ebf1e0008b5b49cf  src/app/guides/back-office-sur-mesure-pme/back-office-decision-model.test.ts
+5ee93600464ec3f176da96f27429d675afb9b2a947fa907150d1ae9d3b55b20e  src/app/guides/back-office-sur-mesure-pme/back-office-decision-model.ts
+65a248390ad4dbde696dc91ca8d46aed0313b1f5069088a9c5e8bc37fac5cb0f  src/app/guides/back-office-sur-mesure-pme/back-office-decision-workbench.test.tsx
+ba8d5f83605f6ae4b8752b693906fb0a3744f566a8632ea48239a753b6708d20  src/app/guides/back-office-sur-mesure-pme/back-office-decision-workbench.tsx
+6cd2bea857dc4510e508f69be0c8615c8a437de36a297b9800ff12b9ef805bfd  src/app/guides/back-office-sur-mesure-pme/content-quality.test.ts
+18b1d6fa069dd2020db78391304469012cafdfddfb41d4adfe1a684121bbfa4a  src/app/guides/back-office-sur-mesure-pme/guide-data.ts
+99e9ccc16331610291531e4a1ca850dbef32b776557f30e7ab995f6d0aae21e1  src/app/guides/back-office-sur-mesure-pme/opengraph-image.tsx
+32cc18e89989701ae24f231a540a93e00a199a997e0d124d8e8b7a96d29bfe6e  src/app/guides/back-office-sur-mesure-pme/page.tsx

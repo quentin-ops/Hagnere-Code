@@ -8,7 +8,7 @@ import {
 
 describe("legacy guide redirects", () => {
   it("keeps the reset inventory complete and unique", () => {
-    expect(LEGACY_GUIDE_SLUGS).toHaveLength(84);
+    expect(LEGACY_GUIDE_SLUGS).toHaveLength(83);
     expect(new Set(LEGACY_GUIDE_SLUGS).size).toBe(LEGACY_GUIDE_SLUGS.length);
     expect(LEGACY_GUIDE_SLUGS).not.toContain("automatiser-processus-metier");
     expect(LEGACY_GUIDE_SLUGS).not.toContain(
@@ -17,6 +17,7 @@ describe("legacy guide redirects", () => {
     expect(LEGACY_GUIDE_SLUGS).not.toContain("prix-gestion-google-ads");
     expect(LEGACY_GUIDE_SLUGS).not.toContain("calculer-roi-application-metier");
     expect(LEGACY_GUIDE_SLUGS).not.toContain("signes-besoin-logiciel-metier");
+    expect(LEGACY_GUIDE_SLUGS).not.toContain("back-office-sur-mesure-pme");
     expect(LEGACY_GUIDE_SLUGS).not.toContain(
       "remplacer-microsoft-access-application-web",
     );

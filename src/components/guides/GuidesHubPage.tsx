@@ -166,6 +166,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "automatiser-processus-metier": Cable,
   "calculer-roi-application-metier": Calculator,
   "signes-besoin-logiciel-metier": ClipboardList,
+  "back-office-sur-mesure-pme": Database,
   "remplacer-microsoft-access-application-web": Database,
   "valider-idee-saas-avant-developper": FlaskConical,
   "prix-gestion-google-ads": HandCoins,

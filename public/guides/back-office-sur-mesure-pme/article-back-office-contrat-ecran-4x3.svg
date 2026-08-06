@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Contrat d’écran, format quatre tiers</title>
+  <desc id="desc">Le parcours file, fiche, action, exception et reprise est entouré par les contrôles de rôle, données, preuve et support. La maquette utilise des données fictives.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fafafa"/><stop offset="1" stop-color="#eef2ff"/></linearGradient>
+    <linearGradient id="main" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f46e5"/><stop offset="1" stop-color="#7c3aed"/></linearGradient>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" fill="#6366f1"/></marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#312e81" flood-opacity="0.11"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="1120" cy="70" r="180" fill="#c4b5fd" opacity="0.2"/>
+  <text x="80" y="90" fill="#4338ca" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" letter-spacing="3">CONTRAT D’ÉCRAN</text>
+  <text x="80" y="142" fill="#18181b" font-family="Georgia, serif" font-size="40" font-weight="700">Prévoir le travail qui échoue</text>
+  <text x="80" y="178" fill="#52525b" font-family="Arial, Helvetica, sans-serif" font-size="19">Rôle · action · données · preuve · exception · reprise</text>
+  <rect x="842" y="86" width="278" height="44" rx="22" fill="#ffffff" stroke="#c7d2fe"/>
+  <text x="981" y="114" text-anchor="middle" fill="#4338ca" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">Maquette — données fictives</text>
+
+  <g filter="url(#shadow)" font-family="Arial, Helvetica, sans-serif">
+    <rect x="75" y="270" width="190" height="180" rx="24" fill="#ffffff" stroke="#c7d2fe" stroke-width="2"/>
+    <rect x="290" y="270" width="190" height="180" rx="24" fill="#ffffff" stroke="#c7d2fe" stroke-width="2"/>
+    <rect x="505" y="270" width="190" height="180" rx="24" fill="url(#main)"/>
+    <rect x="720" y="270" width="190" height="180" rx="24" fill="#fff7ed" stroke="#fdba74" stroke-width="2"/>
+    <rect x="935" y="270" width="190" height="180" rx="24" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="2"/>
+  </g>
+  <g fill="none" stroke="#6366f1" stroke-width="4" marker-end="url(#arrow)"><path d="M265 360h17"/><path d="M480 360h17"/><path d="M695 360h17"/><path d="M910 360h17"/></g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="110" y="338" fill="#18181b" font-size="24" font-weight="700">File</text><text x="110" y="374" fill="#52525b" font-size="16">Priorité et</text><text x="110" y="398" fill="#52525b" font-size="16">attribution</text>
+    <text x="325" y="338" fill="#18181b" font-size="24" font-weight="700">Fiche</text><text x="325" y="374" fill="#52525b" font-size="16">État et source</text><text x="325" y="398" fill="#52525b" font-size="16">de vérité</text>
+    <text x="540" y="338" fill="#ffffff" font-size="24" font-weight="700">Action</text><text x="540" y="374" fill="#ede9fe" font-size="16">Effet autorisé</text><text x="540" y="398" fill="#ede9fe" font-size="16">et prouvé</text>
+    <text x="755" y="338" fill="#9a3412" font-size="24" font-weight="700">Exception</text><text x="755" y="374" fill="#7c2d12" font-size="16">État atteint et</text><text x="755" y="398" fill="#7c2d12" font-size="16">message utile</text>
+    <text x="970" y="338" fill="#065f46" font-size="24" font-weight="700">Reprise</text><text x="970" y="374" fill="#065f46" font-size="16">Réparer sans</text><text x="970" y="398" fill="#065f46" font-size="16">double effet</text>
+  </g>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="110" y="545" width="220" height="110" rx="20" fill="#ffffff" stroke="#d4d4d8"/><circle cx="150" cy="600" r="20" fill="#eef2ff"/><text x="185" y="590" fill="#18181b" font-size="20" font-weight="700">Rôle</text><text x="185" y="619" fill="#52525b" font-size="15">Qui peut agir ?</text>
+    <rect x="365" y="545" width="220" height="110" rx="20" fill="#ffffff" stroke="#d4d4d8"/><circle cx="405" cy="600" r="20" fill="#eef2ff"/><text x="440" y="590" fill="#18181b" font-size="20" font-weight="700">Données</text><text x="440" y="619" fill="#52525b" font-size="15">Qu’est-ce qui fait foi ?</text>
+    <rect x="620" y="545" width="220" height="110" rx="20" fill="#ffffff" stroke="#d4d4d8"/><circle cx="660" cy="600" r="20" fill="#eef2ff"/><text x="695" y="590" fill="#18181b" font-size="20" font-weight="700">Preuve</text><text x="695" y="619" fill="#52525b" font-size="15">Quel effet garder ?</text>
+    <rect x="875" y="545" width="220" height="110" rx="20" fill="#ffffff" stroke="#d4d4d8"/><circle cx="915" cy="600" r="20" fill="#eef2ff"/><text x="950" y="590" fill="#18181b" font-size="20" font-weight="700">Support</text><text x="950" y="619" fill="#52525b" font-size="15">Qui remet en état ?</text>
+  </g>
+  <g fill="none" stroke="#a5b4fc" stroke-width="3" stroke-dasharray="7 7"><path d="M220 545c0-55 65-65 110-95"/><path d="M475 545c0-45 80-55 125-95"/><path d="M730 545c0-48 75-58 85-95"/><path d="M985 545c0-55 40-65 45-95"/></g>
+  <rect x="80" y="735" width="1040" height="82" rx="22" fill="#ffffff" stroke="#c7d2fe"/>
+  <text x="600" y="768" text-anchor="middle" fill="#312e81" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Une inconnue qui change l’architecture suspend la décision.</text>
+  <text x="600" y="796" text-anchor="middle" fill="#52525b" font-family="Arial, Helvetica, sans-serif" font-size="16">À définir ne vaut ni autorisation, ni refus, ni zéro.</text>
+</svg>

@@ -14,7 +14,6 @@ export const LEGACY_GUIDE_SLUGS = [
   "audit-seo-que-contient-il",
   "audit-technique-avant-reprendre-site",
   "automatiser-saisie-donnees-entreprise",
-  "back-office-sur-mesure-pme",
   "budget-google-ads-pme",
   "cahier-des-charges-application-metier",
   "cahier-des-charges-application-mobile",

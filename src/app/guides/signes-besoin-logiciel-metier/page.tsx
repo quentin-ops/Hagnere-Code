@@ -686,6 +686,17 @@ export default function Page() {
 
           <SixResponses />
 
+          <p>
+            Si la sixième réponse reste plausible, ne partez pas d’une liste
+            d’écrans. Le guide{" "}
+            <Link href="/guides/back-office-sur-mesure-pme">
+              Back-office sur mesure pour PME
+            </Link>{" "}
+            aide à décrire une tâche, ses droits, ses erreurs et sa reprise,
+            puis à comparer l’existant, un standard, un assemblage léger, le
+            sur-mesure ou le report sur le même contrat.
+          </p>
+
           <div className="not-prose my-8 rounded-2xl border border-amber-200 bg-amber-50 p-5 dark:border-amber-900 dark:bg-amber-950/30 sm:p-6">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-amber-800 dark:text-amber-300">
               Verdict possible · hors décompte

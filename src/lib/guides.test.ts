@@ -24,6 +24,13 @@ const validationGuideSource = fs.readFileSync(
   ),
   "utf8",
 );
+const signsGuideSource = fs.readFileSync(
+  path.join(
+    process.cwd(),
+    "src/app/guides/signes-besoin-logiciel-metier/page.tsx",
+  ),
+  "utf8",
+);
 const powerAppsGuideSource = fs.readFileSync(
   path.join(
     process.cwd(),
@@ -99,6 +106,7 @@ describe("guide registry after the editorial reset", () => {
       "automatiser-processus-metier",
       "calculer-roi-application-metier",
       "signes-besoin-logiciel-metier",
+      "back-office-sur-mesure-pme",
       "remplacer-microsoft-access-application-web",
       "valider-idee-saas-avant-developper",
       "prix-gestion-google-ads",
@@ -135,6 +143,10 @@ describe("guide registry after the editorial reset", () => {
     expect(powerAppsGuideSource).toContain(
       "/guides/airtable-notion-ou-application-metier",
     );
+  });
+
+  it("links the back-office screen guide from the software-need diagnosis", () => {
+    expect(signsGuideSource).toContain("/guides/back-office-sur-mesure-pme");
   });
 
   it("links the migration guide from the takeover guide and service context", () => {

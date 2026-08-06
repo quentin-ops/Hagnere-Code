@@ -195,6 +195,13 @@ describe("content quality for the software-needs guide", () => {
     );
   });
 
+  it("links the dedicated back-office guide only after simpler answers", () => {
+    expect(pageSource).toContain('href="/guides/back-office-sur-mesure-pme"');
+    expect(normalizedPage).toContain(
+      "Si la sixième réponse reste plausible, ne partez pas d’une liste d’écrans.",
+    );
+  });
+
   it("keeps the 320 px mobile CTA short and tied to the internal-tools service", () => {
     expect(pageSource).toContain('mobileCtaLabel="Outils internes"');
     expect(pageSource).not.toContain(
