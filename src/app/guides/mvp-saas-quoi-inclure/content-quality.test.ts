@@ -166,7 +166,7 @@ describe("public content quality for the MVP SaaS contract guide", () => {
     const documentedWordCount = Number(
       researchSource
         .match(
-          /maillage #32[\s\S]{0,80}?contient ([\d\s]+) mots visibles/i,
+          /maillage #33[\s\S]{0,80}?contient ([\d\s]+) mots visibles/i,
         )?.[1]
         .replace(/\s/g, ""),
     );
@@ -686,6 +686,7 @@ describe("public content quality for the MVP SaaS contract guide", () => {
       "guides/agence-saas-ou-freelance",
       "guides/mvp-prototype-ou-poc",
       "guides/bubble-ou-saas-sur-mesure",
+      "guides/lovable-bolt-v0-ou-agence-saas",
       "demarrer-un-projet",
       "guides",
       "equipe",
@@ -696,6 +697,9 @@ describe("public content quality for the MVP SaaS contract guide", () => {
     }
     expect(pageSource).toContain('href="/guides/mvp-prototype-ou-poc"');
     expect(pageSource).toContain('href="/guides/bubble-ou-saas-sur-mesure"');
+    expect(pageSource).toContain(
+      'href="/guides/lovable-bolt-v0-ou-agence-saas"',
+    );
     expect(pageCompact).toContain(
       "Si l’inconnue porte encore sur le format lui-même",
     );

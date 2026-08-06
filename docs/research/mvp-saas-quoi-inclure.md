@@ -2134,3 +2134,18 @@ statut éditorial du présent guide. Elle appartient au snapshot d’intégratio
 guide #32 et ne constitue ni une nouvelle publication ni une preuve publique.
 Après le maillage #32, le rendu contient 4 650 mots visibles ; l’arrondi à 200
 mots par minute reste 23 minutes et ne modifie pas le registre du guide.
+
+### H28. Maillage entrant vers Lovable, Bolt, v0 ou agence — 6 août 2026
+
+La réponse sur l’architecture relie désormais le guide
+`lovable-bolt-v0-ou-agence-saas` lorsque la décision porte encore sur la
+personne ou le mode qui construira le premier test. L’ancre annonce quatre
+voies, les responsabilités et les preuves de reprise ; elle ne classe ni les
+trois générateurs ni l’accompagnement comme solution automatique.
+
+Cette retouche ne change aucun calcul, exemple, média, CTA, metadata, date ou
+statut éditorial du présent guide. Elle appartient au snapshot d’intégration du
+guide #33 et ne constitue ni une nouvelle publication ni une preuve publique.
+Après le maillage #33, le HTML réellement servi contient 4 681 mots visibles ;
+l’arrondi à 200 mots par minute reste 23 minutes et ne modifie pas le registre
+du guide.

@@ -1,0 +1,341 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1000 750"
+  role="img"
+  aria-labelledby="title desc"
+  font-family="Arial, sans-serif"
+>
+  <title id="title">
+    Frontières de responsabilité d’un SaaS construit avec un outil IA
+  </title>
+  <desc id="desc">
+    Six parties montrent que l’interface de génération ne prend pas en charge
+    automatiquement les comptes, le code, les données, le déploiement, les
+    secrets et l’exploitation.
+  </desc>
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc" />
+      <stop offset="1" stop-color="#eef2ff" />
+    </linearGradient>
+    <style>
+      .txt {
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+      }
+      .eyebrow {
+        font-size: 17px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        fill: #4338ca;
+      }
+      .heading {
+        font-size: 36px;
+        font-weight: 780;
+        fill: #111827;
+      }
+      .sub {
+        font-size: 18px;
+        fill: #4b5563;
+      }
+      .layer {
+        font-size: 20px;
+        font-weight: 760;
+        fill: #111827;
+      }
+      .detail {
+        font-size: 15px;
+        fill: #374151;
+      }
+      .owner {
+        font-size: 14px;
+        font-weight: 700;
+        fill: #312e81;
+      }
+      .footer {
+        font-size: 17px;
+        font-weight: 650;
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <rect width="1000" height="750" rx="34" fill="#f8fafc" />
+  <text
+    class="txt eyebrow"
+    x="60"
+    y="64"
+    font-size="17"
+    font-weight="800"
+    fill="#4338ca"
+  >
+    CARTE DE RESPONSABILITÉ
+  </text>
+  <text
+    class="txt heading"
+    x="60"
+    y="112"
+    font-size="36"
+    font-weight="700"
+    fill="#111827"
+  >
+    L’outil ne prend pas tout en charge
+  </text>
+  <text class="txt sub" x="60" y="148" font-size="18" fill="#4b5563">
+    Nommez une personne responsable et une preuve pour chaque partie.
+  </text>
+
+  <g transform="translate(60 190)">
+    <rect
+      width="880"
+      height="74"
+      rx="18"
+      fill="#ffffff"
+      stroke="#c7d2fe"
+      stroke-width="2"
+    />
+    <circle cx="39" cy="37" r="22" fill="#e0e7ff" />
+    <path
+      d="M30 37h18M39 28v18"
+      stroke="#4338ca"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
+    <text
+      class="txt layer"
+      x="78"
+      y="32"
+      font-size="20"
+      font-weight="700"
+      fill="#111827"
+    >
+      Comptes &amp; droits
+    </text>
+    <text class="txt detail" x="78" y="55" font-size="15" fill="#374151">
+      projet, dépôt, hébergeur, domaine, administrateurs et récupération
+    </text>
+    <text
+      class="txt owner"
+      x="738"
+      y="42"
+      font-size="14"
+      font-weight="700"
+      fill="#312e81"
+    >
+      QUI AUTORISE ?
+    </text>
+  </g>
+  <g transform="translate(60 276)">
+    <rect
+      width="880"
+      height="74"
+      rx="18"
+      fill="#ffffff"
+      stroke="#bae6fd"
+      stroke-width="2"
+    />
+    <circle cx="39" cy="37" r="22" fill="#e0f2fe" />
+    <path
+      d="M48 30 42 37l6 7M30 30l-6 7 6 7"
+      fill="none"
+      stroke="#0369a1"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <text
+      class="txt layer"
+      x="78"
+      y="32"
+      font-size="20"
+      font-weight="700"
+      fill="#111827"
+    >
+      Code &amp; dépendances
+    </text>
+    <text class="txt detail" x="78" y="55" font-size="15" fill="#374151">
+      dépôt ou ZIP, versions, licences, installation et compilation
+    </text>
+    <text
+      class="txt owner"
+      x="731"
+      y="42"
+      font-size="14"
+      font-weight="700"
+      fill="#312e81"
+    >
+      QUI RECONSTRUIT ?
+    </text>
+  </g>
+  <g transform="translate(60 362)">
+    <rect
+      width="880"
+      height="74"
+      rx="18"
+      fill="#ffffff"
+      stroke="#bbf7d0"
+      stroke-width="2"
+    />
+    <circle cx="39" cy="37" r="22" fill="#dcfce7" />
+    <ellipse
+      cx="39"
+      cy="30"
+      rx="11"
+      ry="5"
+      fill="none"
+      stroke="#047857"
+      stroke-width="2.5"
+    />
+    <path
+      d="M28 30v15c0 3 5 5 11 5s11-2 11-5V30M28 37c0 3 5 5 11 5s11-2 11-5"
+      fill="none"
+      stroke="#047857"
+      stroke-width="2.5"
+    />
+    <text
+      class="txt layer"
+      x="78"
+      y="32"
+      font-size="20"
+      font-weight="700"
+      fill="#111827"
+    >
+      Données &amp; identités
+    </text>
+    <text class="txt detail" x="78" y="55" font-size="15" fill="#374151">
+      schéma, lignes, fichiers, utilisateurs, export, restauration et migration
+    </text>
+    <text
+      class="txt owner"
+      x="746"
+      y="42"
+      font-size="14"
+      font-weight="700"
+      fill="#312e81"
+    >
+      QUI RESTAURE ?
+    </text>
+  </g>
+  <g transform="translate(60 448)">
+    <rect
+      width="880"
+      height="74"
+      rx="18"
+      fill="#ffffff"
+      stroke="#fde68a"
+      stroke-width="2"
+    />
+    <circle cx="39" cy="37" r="22" fill="#fef3c7" />
+    <path
+      d="M28 44h22M32 40V31l7-6 7 6v9"
+      fill="none"
+      stroke="#a16207"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <text
+      class="txt layer"
+      x="78"
+      y="32"
+      font-size="20"
+      font-weight="700"
+      fill="#111827"
+    >
+      Déploiement &amp; domaine
+    </text>
+    <text class="txt detail" x="78" y="55" font-size="15" fill="#374151">
+      commit livré, URL, environnement, retrait et protection de production
+    </text>
+    <text
+      class="txt owner"
+      x="744"
+      y="42"
+      font-size="14"
+      font-weight="700"
+      fill="#312e81"
+    >
+      QUI MET EN LIGNE ?
+    </text>
+  </g>
+  <g transform="translate(60 534)">
+    <rect
+      width="880"
+      height="74"
+      rx="18"
+      fill="#ffffff"
+      stroke="#fecdd3"
+      stroke-width="2"
+    />
+    <circle cx="39" cy="37" r="22" fill="#ffe4e6" />
+    <path
+      d="M39 27a7 7 0 1 0 0 14h12M45 41v7M51 41v5"
+      fill="none"
+      stroke="#be123c"
+      stroke-width="2.8"
+      stroke-linecap="round"
+    />
+    <text
+      class="txt layer"
+      x="78"
+      y="32"
+      font-size="20"
+      font-weight="700"
+      fill="#111827"
+    >
+      Secrets &amp; intégrations
+    </text>
+    <text class="txt detail" x="78" y="55" font-size="15" fill="#374151">
+      portée, coffre, rotation, révocation, fournisseurs et journaux
+    </text>
+    <text
+      class="txt owner"
+      x="754"
+      y="42"
+      font-size="14"
+      font-weight="700"
+      fill="#312e81"
+    >
+      QUI RÉVOQUE ?
+    </text>
+  </g>
+  <g transform="translate(60 620)" fill="#ffffff">
+    <rect width="880" height="74" rx="18" fill="#312e81" />
+    <circle cx="39" cy="37" r="22" fill="#818cf8" />
+    <path
+      d="M29 38h6l3-9 5 17 4-8h5"
+      fill="none"
+      stroke="#fff"
+      stroke-width="2.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <text
+      class="txt layer"
+      x="78"
+      y="32"
+      font-size="20"
+      font-weight="700"
+      fill="#ffffff"
+    >
+      Suivi &amp; reprise
+    </text>
+    <text class="txt detail" x="78" y="55" font-size="15" fill="#e0e7ff">
+      alerte, décision, correction, retour et reprise par une autre personne
+    </text>
+    <text
+      class="txt footer"
+      x="720"
+      y="42"
+      font-size="17"
+      font-weight="700"
+      fill="#ffffff"
+    >
+      QUI RÉPOND ?
+    </text>
+  </g>
+</svg>

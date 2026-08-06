@@ -95,6 +95,13 @@ describe("GuidePremiumFaqCategorized accessibility", () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
+  it("presents the default response time as a non-guaranteed objective", () => {
+    expect(container.textContent).toContain(
+      "Objectif : vous répondre le prochain jour ouvré, sans délai garanti.",
+    );
+    expect(container.textContent).not.toMatch(/rappelle sous 24 h/i);
+  });
+
   it("moves and activates tabs with arrow, Home and End keys", () => {
     const tabs = [
       ...container.querySelectorAll<HTMLButtonElement>('[role="tab"]'),

@@ -200,4 +200,20 @@ describe("public accessibility contracts", () => {
     );
     expect(headingText).not.toContain("devotre");
   });
+
+  it("associates the project message label without nesting the dictation button", () => {
+    const html = renderToStaticMarkup(<ContactProjectSection />);
+    const fieldHead =
+      html.match(/<div class="sf-field-head">([\s\S]*?)<\/div>/)?.[1] ?? "";
+    const messageLabel =
+      html.match(/<label for="sf-project-message">[\s\S]*?<\/label>/)?.[0] ??
+      "";
+
+    expect(messageLabel).toBe(
+      '<label for="sf-project-message">En quelques phrases</label>',
+    );
+    expect(messageLabel).not.toContain("<button");
+    expect(fieldHead).toContain("<button");
+    expect(html).toContain('<textarea id="sf-project-message"');
+  });
 });

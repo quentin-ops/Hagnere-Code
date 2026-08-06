@@ -31,7 +31,7 @@ export function GuidePremiumFaqCategorized({
   titleEnd = "voulez savoir.",
   subtitle = "Les questions qu'on nous pose le plus — avec des réponses sans détour.",
   ctaTitle = "Pas trouvé votre réponse ?",
-  ctaDescription = "Un conseiller vous rappelle sous 24 h.",
+  ctaDescription = "Objectif : vous répondre le prochain jour ouvré, sans délai garanti.",
   ctaLabel = "Poser ma question",
   ctaHref = "/contact",
 }: GuidePremiumFaqCategorizedProps) {

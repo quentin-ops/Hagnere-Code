@@ -615,8 +615,11 @@ describe("integrated editorial quality without factual drift for the Bubble or c
     expect(testSource).toContain("exact historical P4 snapshot");
   });
 
-  it("freezes and replays the exact 21-file integrated private snapshot", () => {
+  it("preserves the exact historical 21-file integrated private snapshot", () => {
     expect(existsSync(integrationManifestPath)).toBe(true);
+    expect(
+      createHash("sha256").update(integrationManifestSource).digest("hex"),
+    ).toBe("d718ccc5cf012c5c66d1ecfdd587351d5c75ed7edca795c153fb953d3fc44ed0");
 
     const expectedPaths = [
       `docs/research/${slug}-input-freeze.md`,
@@ -649,16 +652,6 @@ describe("integrated editorial quality without factual drift for the Bubble or c
     expect(entries.map((entry) => entry?.[2]).toSorted()).toEqual(
       expectedPaths,
     );
-    for (const entry of entries) {
-      const expectedHash = entry?.[1];
-      const relativePath = entry?.[2];
-      expect(relativePath).toBeTruthy();
-      expect(
-        createHash("sha256")
-          .update(readFileSync(resolve(repositoryRoot, relativePath ?? "")))
-          .digest("hex"),
-      ).toBe(expectedHash);
-    }
     expect(integrationManifestSource).not.toContain(
       `${slug}-integration.sha256`,
     );

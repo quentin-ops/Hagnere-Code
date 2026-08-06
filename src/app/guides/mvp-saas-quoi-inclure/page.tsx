@@ -1037,7 +1037,13 @@ export default function Page() {
               Bubble ou SaaS sur mesure
             </Link>{" "}
             les compare sur les mêmes preuves, le coût total et la capacité à
-            changer de solution.
+            changer de solution. Si vous devez encore choisir qui construit le
+            premier test, le guide{" "}
+            <Link href="/guides/lovable-bolt-v0-ou-agence-saas">
+              Lovable, Bolt, v0 ou agence
+            </Link>{" "}
+            répartit les responsabilités et les preuves de reprise entre quatre
+            voies, sans classement universel.
           </p>
 
           <h3>

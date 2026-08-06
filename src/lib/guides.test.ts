@@ -117,6 +117,7 @@ describe("guide registry after the editorial reset", () => {
       "agence-saas-ou-freelance",
       "mvp-prototype-ou-poc",
       "bubble-ou-saas-sur-mesure",
+      "lovable-bolt-v0-ou-agence-saas",
     ]);
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
       "automatiser-processus-metier",
@@ -212,6 +213,12 @@ describe("guide registry after the editorial reset", () => {
   it("links the Bubble decision guide from the MVP architecture answer", () => {
     expect(mvpContractGuideSource).toContain(
       "/guides/bubble-ou-saas-sur-mesure",
+    );
+  });
+
+  it("links the Lovable, Bolt, v0 or agency guide from the MVP architecture answer", () => {
+    expect(mvpContractGuideSource).toContain(
+      "/guides/lovable-bolt-v0-ou-agence-saas",
     );
   });
 

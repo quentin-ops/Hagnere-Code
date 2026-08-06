@@ -466,6 +466,25 @@ export const GUIDES: GuideEntry[] = [
     ],
     editorialStatus: "ready-for-human-review",
   },
+  {
+    slug: "lovable-bolt-v0-ou-agence-saas",
+    title: "Lovable, Bolt, v0 ou agence : comment lancer votre SaaS ?",
+    cardTitle: "Lovable, Bolt, v0 ou agence : lancer un SaaS",
+    metaDescription:
+      "Lovable, Bolt, v0 ou agence : choisissez qui construit votre SaaS et vérifiez code, accès, données, mise en ligne, incidents et reprise.",
+    cardDescription:
+      "Quatre voies et huit vérifications pour choisir qui construit, contrôle et reprend le SaaS, sans classement universel ni promesse de sécurité.",
+    heroTitle: "Lovable, Bolt, v0 ou agence : comment lancer votre SaaS ?",
+    section: "SaaS et MVP",
+    articleSection: "SaaS",
+    readTimeMin: 15,
+    articleImagePaths: [
+      "/guides/lovable-bolt-v0-ou-agence-saas/chaine-garde-produit.svg",
+      "/guides/lovable-bolt-v0-ou-agence-saas/frontieres-responsabilite.svg",
+      "/guides/lovable-bolt-v0-ou-agence-saas/colis-remise-saas.svg",
+    ],
+    editorialStatus: "ready-for-human-review",
+  },
 ];
 
 export type PublishedGuideEntry = GuideEntry & {

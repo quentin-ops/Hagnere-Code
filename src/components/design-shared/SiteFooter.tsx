@@ -434,15 +434,16 @@ export function ContactProjectSection({
               </label>
             </div>
 
-            <label className="sf-field sf-field-message">
+            <div className="sf-field sf-field-message">
               <div className="sf-field-head">
-                <span>En quelques phrases</span>
+                <label htmlFor="sf-project-message">En quelques phrases</label>
                 <VoiceDictateButton
                   className="sf-mic"
                   onTranscribed={handleTranscribed}
                 />
               </div>
               <textarea
+                id="sf-project-message"
                 ref={messageRef}
                 name="message"
                 rows={3}
@@ -453,7 +454,7 @@ export function ContactProjectSection({
                 placeholder="Ex. : on veut remplacer nos Excels par une plateforme qui centralise nos 42 clients et sort les factures auto. Cliquez sur Dicter pour parler au lieu d'écrire."
               />
               {errs.message && <em>{errs.message}</em>}
-            </label>
+            </div>
 
             {/* honeypot (invisible) */}
             <label className="sf-honeypot" aria-hidden="true">

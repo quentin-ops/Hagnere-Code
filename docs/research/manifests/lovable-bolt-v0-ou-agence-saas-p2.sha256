@@ -1,4 +1,7 @@
-654993004c30a62f27ca825d8bbcf7cdf621a4d3a1fd4e0142eda8e4435bac9e  docs/research/lovable-bolt-v0-ou-agence-saas.md
-7baf9b2fe516c0d590e9bc3789222424db9994eef20d1409ae3cd37cec9a9720  src/app/guides/lovable-bolt-v0-ou-agence-saas/page.tsx
-77ee2c8fb3a46899581129e86de4853582f90c46485943fc170ad340c9ed5718  src/app/guides/lovable-bolt-v0-ou-agence-saas/opengraph-image.tsx
-cd815deb1fec4d4b3f4a6e9cb615054081c917ce4e61a4b41f139f1e8af88842  src/lib/guides.ts
+d9f7af88f010d3f2a52d34e4f9b52f213de608ffb503895c0471d7316a69dd29  docs/research/lovable-bolt-v0-ou-agence-saas.md
+d85676a1326d1aaf7c849a7b508e3bfc5baa9194ee79d10112b63d6b0b8e7d5b  src/app/guides/lovable-bolt-v0-ou-agence-saas/page.tsx
+23585039ecbc675b73a08fcceb7788a5af95b3038a91b6e3f0156b7cdda05b3f  src/app/guides/lovable-bolt-v0-ou-agence-saas/opengraph-image.tsx
+1dfcc42ef0e4b9016ab1ec6b9098503bafeeaf49e939de28f89eadb4951d5b97  src/app/guides/lovable-bolt-v0-ou-agence-saas/content-quality.test.ts
+7e64e7d45a81d334b079f93ffe1be292b71ac86f13c649597547112732342d09  public/guides/lovable-bolt-v0-ou-agence-saas/chaine-garde-produit.svg
+972ddec947ab31b4350d1e177b9b81719d77845db7e40a8d23a330a02de7da44  public/guides/lovable-bolt-v0-ou-agence-saas/frontieres-responsabilite.svg
+f3b30479ea12c7365582aa652c262a87869cb962e1c48cf2ad1cb2f3cff58cc2  public/guides/lovable-bolt-v0-ou-agence-saas/colis-remise-saas.svg

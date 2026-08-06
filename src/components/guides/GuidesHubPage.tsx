@@ -184,6 +184,7 @@ const GUIDE_ICONS: Record<string, LucideIcon> = {
   "agence-saas-ou-freelance": UsersRound,
   "mvp-prototype-ou-poc": FlaskConical,
   "bubble-ou-saas-sur-mesure": Scale,
+  "lovable-bolt-v0-ou-agence-saas": GitBranch,
 };
 
 /** Étapes du visuel du premier guide, sans chiffre de marché ni promesse. */

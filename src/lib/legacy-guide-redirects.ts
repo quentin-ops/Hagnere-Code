@@ -50,7 +50,6 @@ export const LEGACY_GUIDE_SLUGS = [
   "leads-google-ads-non-qualifies",
   "logiciel-gestion-stock-sur-mesure",
   "logiciel-planning-sur-mesure",
-  "lovable-bolt-v0-ou-agence-saas",
   "migrer-wordpress-vers-nextjs",
   "nextjs-ou-wordpress",
   "no-code-ou-sur-mesure",
