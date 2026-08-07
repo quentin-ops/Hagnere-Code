@@ -177,7 +177,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Outils internes et automatisation",
     datePublished: "2026-07-23T21:31:02+02:00",
     dateModified: "2026-08-03T07:58:56+02:00",
-    readTimeMin: 26,
+    readTimeMin: 27,
     articleImagePaths: [
       "/guides/power-apps-ou-application-sur-mesure/article-power-apps-16x9.svg",
       "/guides/power-apps-ou-application-sur-mesure/article-power-apps-4x3.svg",
@@ -196,7 +196,7 @@ export const GUIDES: GuideEntry[] = [
     section: "Outils internes et automatisation",
     datePublished: "2026-08-05T21:41:54+02:00",
     dateModified: "2026-08-05T21:41:54+02:00",
-    readTimeMin: 24,
+    readTimeMin: 25,
     articleImagePaths: [
       "/guides/airtable-notion-ou-application-metier/article-airtable-notion-16x9.svg",
       "/guides/airtable-notion-ou-application-metier/article-airtable-notion-4x3.svg",
@@ -221,7 +221,6 @@ export const GUIDES: GuideEntry[] = [
       "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-4x3.webp",
       "/guides/reprendre-logiciel-metier-existant/reprise-logiciel-1x1.webp",
     ],
-    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "migrer-logiciel-metier-sans-interruption",
@@ -241,7 +240,6 @@ export const GUIDES: GuideEntry[] = [
       "/guides/migrer-logiciel-metier-sans-interruption/migration-reversible-4x3.webp",
       "/guides/migrer-logiciel-metier-sans-interruption/migration-reversible-1x1.webp",
     ],
-    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "plan-recette-application-metier",
@@ -262,7 +260,6 @@ export const GUIDES: GuideEntry[] = [
       "/guides/plan-recette-application-metier/recette-preuve-4x3.webp",
       "/guides/plan-recette-application-metier/recette-preuve-1x1.webp",
     ],
-    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "choisir-prestataire-application-metier",
@@ -282,7 +279,6 @@ export const GUIDES: GuideEntry[] = [
       "/guides/choisir-prestataire-application-metier/comparaison-preuves-4x3.webp",
       "/guides/choisir-prestataire-application-metier/comparaison-preuves-1x1.webp",
     ],
-    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "securite-application-metier",
@@ -302,7 +298,6 @@ export const GUIDES: GuideEntry[] = [
       "/guides/securite-application-metier/socle-securite-4x3.webp",
       "/guides/securite-application-metier/socle-securite-1x1.webp",
     ],
-    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "droits-acces-application-metier",
@@ -322,7 +317,6 @@ export const GUIDES: GuideEntry[] = [
       "/guides/droits-acces-application-metier/matrice-droits-4x3.webp",
       "/guides/droits-acces-application-metier/matrice-droits-1x1.webp",
     ],
-    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "cahier-des-charges-saas",
@@ -342,7 +336,6 @@ export const GUIDES: GuideEntry[] = [
       "/guides/cahier-des-charges-saas/cahier-saas-4x3.webp",
       "/guides/cahier-des-charges-saas/cahier-saas-1x1.webp",
     ],
-    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "combien-de-temps-developper-saas",
@@ -362,7 +355,6 @@ export const GUIDES: GuideEntry[] = [
       "/guides/combien-de-temps-developper-saas/calendrier-saas-4x3.webp",
       "/guides/combien-de-temps-developper-saas/calendrier-saas-1x1.webp",
     ],
-    editorialStatus: "ready-for-human-review",
   },
   {
     slug: "mvp-saas-quoi-inclure",
@@ -382,7 +374,6 @@ export const GUIDES: GuideEntry[] = [
       "/guides/mvp-saas-quoi-inclure/charge-manuelle-mvp-4x3.webp",
       "/guides/mvp-saas-quoi-inclure/decision-mvp-1x1.webp",
     ],
-    editorialStatus: "ready-for-human-review",
   },
 ];
 

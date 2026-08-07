@@ -1048,6 +1048,49 @@ export default function Page() {
             automatique de sécurité.
           </p>
 
+          <p>
+            Ces contrôles ne vivent pas isolément. Ils commencent par les{" "}
+            <Link href="/guides/droits-acces-application-metier">
+              droits d’accès
+            </Link>
+            , se rédigent comme exigences dans le{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges
+            </Link>{" "}
+            et se prouvent par le{" "}
+            <Link href="/guides/plan-recette-application-metier">
+              plan de recette
+            </Link>
+            , restauration et journalisation comprises. Un prestataire se juge
+            aussi là-dessus, comme le détaille{" "}
+            <Link href="/guides/choisir-prestataire-application-metier">
+              le choix d’un prestataire sur preuves
+            </Link>
+            .
+          </p>
+
+          <p>
+            Deux situations imposent une vigilance supplémentaire. Reprendre un{" "}
+            <Link href="/guides/reprendre-logiciel-metier-existant">
+              logiciel métier existant
+            </Link>{" "}
+            oblige à inventorier des accès dont plus personne ne connaît le
+            périmètre, et une{" "}
+            <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+              migration sans interruption de service
+            </Link>{" "}
+            multiplie temporairement les copies de données. Sur une plateforme
+            partagée, enfin, les guides{" "}
+            <Link href="/guides/airtable-notion-ou-application-metier">
+              Airtable ou Notion face à une application métier
+            </Link>{" "}
+            et{" "}
+            <Link href="/guides/power-apps-ou-application-sur-mesure">
+              Power Apps face à une application sur mesure
+            </Link>{" "}
+            précisent ce que le plan souscrit couvre réellement.
+          </p>
+
           <InfoBox variant="emerald" title="Terminez par une action datée">
             <p>
               Inscrivez l’action qui manque, la personne qui la mène et la date

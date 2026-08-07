@@ -1,42 +1,46 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { GUIDES } from "./guides";
 import {
   getLegacyGuideDestination,
   LEGACY_GUIDE_SLUGS,
 } from "./legacy-guide-redirects";
 
+/**
+ * L'inventaire du reset du 29 juillet 2026 comptait 88 routes. Il ne peut que
+ * décroître : chaque guide reconstruit sort de la liste. Une borne haute
+ * remplace donc l'égalité stricte, qu'il fallait décrémenter à la main.
+ */
+const RESET_INVENTORY_SIZE = 88;
+
 describe("legacy guide redirects", () => {
-  it("keeps the reset inventory complete and unique", () => {
-    expect(LEGACY_GUIDE_SLUGS).toHaveLength(88);
+  it("keeps the reset inventory bounded and unique", () => {
+    expect(LEGACY_GUIDE_SLUGS.length).toBeLessThanOrEqual(
+      RESET_INVENTORY_SIZE,
+    );
+    expect(LEGACY_GUIDE_SLUGS.length).toBeGreaterThan(0);
     expect(new Set(LEGACY_GUIDE_SLUGS).size).toBe(LEGACY_GUIDE_SLUGS.length);
-    expect(LEGACY_GUIDE_SLUGS).not.toContain("automatiser-processus-metier");
-    expect(LEGACY_GUIDE_SLUGS).not.toContain(
-      "valider-idee-saas-avant-developper",
-    );
-    expect(LEGACY_GUIDE_SLUGS).not.toContain("prix-gestion-google-ads");
-    expect(LEGACY_GUIDE_SLUGS).not.toContain("calculer-roi-application-metier");
-    expect(LEGACY_GUIDE_SLUGS).not.toContain("signes-besoin-logiciel-metier");
-    expect(LEGACY_GUIDE_SLUGS).not.toContain(
-      "remplacer-microsoft-access-application-web",
-    );
-    expect(LEGACY_GUIDE_SLUGS).not.toContain(
-      "power-apps-ou-application-sur-mesure",
-    );
-    expect(LEGACY_GUIDE_SLUGS).not.toContain(
-      "reprendre-logiciel-metier-existant",
-    );
-    expect(LEGACY_GUIDE_SLUGS).not.toContain(
-      "migrer-logiciel-metier-sans-interruption",
-    );
-    expect(LEGACY_GUIDE_SLUGS).not.toContain(
-      "choisir-prestataire-application-metier",
-    );
-    expect(LEGACY_GUIDE_SLUGS).not.toContain("cahier-des-charges-saas");
-    expect(LEGACY_GUIDE_SLUGS).not.toContain(
-      "combien-de-temps-developper-saas",
-    );
-    expect(LEGACY_GUIDE_SLUGS).not.toContain("mvp-saas-quoi-inclure");
+  });
+
+  /**
+   * Garde-fou générique. La version précédente listait treize slugs à la main :
+   * le quatorzième guide reconstruit ne pouvait pas être protégé sans une
+   * modification du test. Un guide actif encore présent dans la liste serait
+   * redirigé au niveau du routage, avant toute lecture de son entrée de
+   * registre — donc invisible malgré une page valide.
+   */
+  it("ne redirige jamais un guide actif du registre", () => {
+    for (const guide of GUIDES) {
+      expect(
+        LEGACY_GUIDE_SLUGS,
+        `${guide.slug} est actif mais reste dans la liste des routes retirées`,
+      ).not.toContain(guide.slug);
+      expect(
+        getLegacyGuideDestination(guide.slug),
+        `${guide.slug} ne doit pas avoir de destination de repli`,
+      ).toBeNull();
+    }
   });
 
   it("redirects only routes that actually existed", () => {

@@ -14,6 +14,15 @@ import { WHITE_PAPERS } from "./white-papers";
 const markdownUrls = (text: string): string[] =>
   Array.from(text.matchAll(/\]\((https:\/\/[^)]+)\)/g), (match) => match[1]);
 
+/**
+ * `buildLlmsText` normalise les espaces via `markdownText` : une espace
+ * insécable présente dans un titre de registre devient une espace ordinaire
+ * dans le fichier publié. La comparaison doit appliquer la même normalisation,
+ * sinon tout titre contenant « ? » ou « : » précédé d'une insécable échoue.
+ */
+const normalizeForLlms = (value: string): string =>
+  value.replace(/\s+/g, " ").replace(/[[\]]/g, "").trim();
+
 describe("llms.txt", () => {
   const text = buildLlmsText();
   const urls = markdownUrls(text);
@@ -32,7 +41,7 @@ describe("llms.txt", () => {
     for (const guide of PUBLISHED_GUIDES) {
       const url = `${SITE_URL}/guides/${guide.slug}`;
       expect(urls.filter((candidate) => candidate === url), guide.slug).toHaveLength(1);
-      expect(text, guide.slug).toContain(guide.cardTitle);
+      expect(text, guide.slug).toContain(normalizeForLlms(guide.cardTitle));
       expect(text, guide.slug).toContain(`Mise à jour réelle : ${guide.dateModified}.`);
     }
 

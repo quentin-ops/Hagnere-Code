@@ -1076,6 +1076,43 @@ export default function Page() {
             version sans donnée sensible.
           </p>
 
+          <p>
+            Un calendrier ne se raccourcit pas en pressant l’équipe, mais en
+            réduisant le périmètre : le guide{" "}
+            <Link href="/guides/mvp-saas-quoi-inclure">
+              ce qu’un MVP doit contenir
+            </Link>{" "}
+            explique quelles fonctions peuvent attendre sans vider le produit de
+            son intérêt. En amont, la{" "}
+            <Link href="/guides/valider-idee-saas-avant-developper">
+              validation d’une idée de SaaS
+            </Link>{" "}
+            évite de planifier un développement dont l’hypothèse principale n’a
+            jamais été confrontée à un client.
+          </p>
+
+          <p>
+            Trois inconnues pèsent plus lourd que les autres sur une date. Le{" "}
+            <Link href="/guides/calculer-roi-application-metier">
+              calcul du retour sur investissement
+            </Link>{" "}
+            arbitre ce qui justifie d’allonger le calendrier. La reprise d’un{" "}
+            <Link href="/guides/reprendre-logiciel-metier-existant">
+              logiciel métier existant
+            </Link>{" "}
+            et la{" "}
+            <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+              migration sans interruption de service
+            </Link>{" "}
+            ajoutent des tâches que les plannings oublient presque toujours :
+            inventaire, reprise de données, coexistence et retour arrière.
+            Enfin,{" "}
+            <Link href="/guides/choisir-prestataire-application-metier">
+              choisir un prestataire sur preuves
+            </Link>{" "}
+            évite d’accepter une date qu’aucun élément ne soutient.
+          </p>
+
           <GuidePremiumMemo
             eyebrow="Statut du calcul"
             title="CALENDAR_CANDIDATE_FOR_REVIEW reste un brouillon"

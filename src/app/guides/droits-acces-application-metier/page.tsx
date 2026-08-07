@@ -931,6 +931,42 @@ export default function Page() {
             mais le scénario ne fixe aucune durée de conservation universelle.
           </p>
 
+          <p>
+            Les droits sont le premier chapitre d’un ensemble plus large : les{" "}
+            <Link href="/guides/securite-application-metier">
+              contrôles de sécurité d’une application métier
+            </Link>{" "}
+            couvrent la suite — journalisation, restauration, sous-traitance.
+            Dès qu’une donnée réelle entre dans le produit, ces exigences
+            appartiennent au premier lot, comme le rappelle le guide sur{" "}
+            <Link href="/guides/mvp-saas-quoi-inclure">
+              ce qu’un MVP doit contenir
+            </Link>
+            .
+          </p>
+
+          <p>
+            Deux contextes rendent l’exercice plus difficile. Reprendre un{" "}
+            <Link href="/guides/reprendre-logiciel-metier-existant">
+              logiciel métier existant
+            </Link>{" "}
+            suppose d’inventorier des comptes dont plus personne ne connaît le
+            périmètre, et une{" "}
+            <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+              migration sans interruption de service
+            </Link>{" "}
+            fait cohabiter deux modèles de droits le temps de la bascule. Sur
+            une plateforme partagée,{" "}
+            <Link href="/guides/airtable-notion-ou-application-metier">
+              Airtable ou Notion face à une application métier
+            </Link>{" "}
+            et{" "}
+            <Link href="/guides/power-apps-ou-application-sur-mesure">
+              Power Apps face à une application sur mesure
+            </Link>{" "}
+            expliquent ce que le plan souscrit permet réellement de cloisonner.
+          </p>
+
           <GuidePremiumMemo title="Commencez par un seul objet">
             <p>
               Prenez un objet critique de votre activité. Remplissez ses actions

@@ -2000,9 +2000,11 @@ partagés.
 1. Le CTA de stratégie accepte désormais showPhoneCta: false. Ce guide rend
    exactement une action projet et aucun second lien téléphonique dans ce bloc.
 2. Le comptage de lecture exclut aussi les messages sr-only, qui ne sont pas
-   visibles. La version intégrée H24 contient 4 546 mots visibles et demande
+   visibles. La version intégrée H24 contient 4 640 mots visibles et demande
    23 minutes à 200 mots par minute ; le Markdown volontairement visible reste
-   compté.
+   compté. Le comptage a été mis à jour le 7 août 2026 après l’ajout du
+   maillage interne contextuel (94 mots visibles supplémentaires) ; la durée
+   arrondie reste inchangée.
 3. Une période inconnue rend la charge PARTIAL_UNUSABLE, la charge totale et
    la capacité restante inexploitables même lorsqu’aucune opération manuelle
    n’est encore déclarée. Un test adversarial couvre explicitement ce cas,

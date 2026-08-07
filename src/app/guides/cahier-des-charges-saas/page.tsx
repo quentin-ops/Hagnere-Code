@@ -1420,6 +1420,35 @@ export default function Page() {
             disponibles et les inconnues qui interdisent encore une date.
           </p>
 
+          <p>
+            Trois chapitres du cahier des charges méritent leur propre dossier,
+            parce qu’ils sont les plus souvent sous-spécifiés. Les critères
+            d’acceptation se construisent avec le{" "}
+            <Link href="/guides/plan-recette-application-metier">
+              plan de recette d’une application métier
+            </Link>
+            . Les exigences de protection se rédigent à partir des{" "}
+            <Link href="/guides/securite-application-metier">
+              contrôles de sécurité d’une application métier
+            </Link>
+            . Et si le produit remplace un outil existant, la clause de bascule
+            se prépare avec la{" "}
+            <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+              migration sans interruption de service
+            </Link>
+            .
+          </p>
+
+          <p>
+            Un cahier des charges ne vaut enfin que par la façon dont les
+            réponses sont comparées : le guide{" "}
+            <Link href="/guides/choisir-prestataire-application-metier">
+              choisir un prestataire sur preuves
+            </Link>{" "}
+            décrit les pièces à exiger pour que deux devis portent réellement
+            sur le même périmètre.
+          </p>
+
           <GuidePremiumMemo
             eyebrow="Décision finale"
             title="Comparable ne veut pas dire prêt à signer"

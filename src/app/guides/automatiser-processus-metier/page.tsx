@@ -1304,6 +1304,43 @@ export default function Page() {
             <Link href="/guides">répertoire des guides Hagnéré Code</Link>.
           </p>
 
+          <p>
+            Avant d’outiller le processus retenu, deux vérifications évitent de
+            construire au mauvais endroit. Le{" "}
+            <Link href="/guides/calculer-roi-application-metier">
+              calcul du retour sur investissement
+            </Link>{" "}
+            chiffre ce que l’automatisation libère vraiment, et distingue une
+            facture évitée d’un temps rendu disponible. Si l’équipe a déjà
+            bricolé une solution, la comparaison porte alors sur{" "}
+            <Link href="/guides/airtable-notion-ou-application-metier">
+              Airtable ou Notion face à une application métier
+            </Link>{" "}
+            — ou sur{" "}
+            <Link href="/guides/power-apps-ou-application-sur-mesure">
+              Power Apps face à une application sur mesure
+            </Link>{" "}
+            dans un environnement Microsoft.
+          </p>
+
+          <p>
+            Une fois le processus choisi, trois dossiers cadrent l’exécution :
+            le{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges
+            </Link>{" "}
+            pour figer les règles et les exceptions, la{" "}
+            <Link href="/guides/droits-acces-application-metier">
+              gestion des droits d’accès
+            </Link>{" "}
+            pour décider qui valide et qui corrige, et le{" "}
+            <Link href="/guides/plan-recette-application-metier">
+              plan de recette
+            </Link>{" "}
+            pour prouver que l’automatisation tient sur les cas difficiles, pas
+            seulement sur le cas nominal.
+          </p>
+
           <GuidePremiumMemo
             eyebrow="Décision finale"
             title="Ne choisissez l’outil qu’après avoir écrit l’échec"

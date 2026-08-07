@@ -416,6 +416,12 @@ describe("public content quality for the SaaS specification guide", () => {
       "/guides/droits-acces-application-metier",
       "/guides/combien-de-temps-developper-saas",
       "/guides/mvp-saas-quoi-inclure",
+      // Ajoutés le 7 août 2026 lors de la reprise du maillage interne :
+      // chapitres du cahier des charges qui possèdent leur propre dossier.
+      "/guides/plan-recette-application-metier",
+      "/guides/securite-application-metier",
+      "/guides/migrer-logiciel-metier-sans-interruption",
+      "/guides/choisir-prestataire-application-metier",
       "/guides",
       "/services/saas-applications-metier",
       "/demarrer-un-projet",

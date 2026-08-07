@@ -1073,6 +1073,40 @@ export default function Page() {
             <Link href="/demarrer-un-projet">décrire le contexte</Link>.
           </p>
 
+          <p>
+            Une recette ne s’écrit pas après coup : ses critères viennent du{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges
+            </Link>{" "}
+            et du périmètre retenu pour{" "}
+            <Link href="/guides/mvp-saas-quoi-inclure">le premier lot</Link>. Si
+            l’un des deux reste flou, les cas de test le seront aussi, et
+            l’acceptation se jouera sur des impressions.
+          </p>
+
+          <p>
+            Deux familles de tests sont régulièrement oubliées et méritent leur
+            propre dossier : la{" "}
+            <Link href="/guides/droits-acces-application-metier">
+              vérification des droits d’accès
+            </Link>
+            , qui contrôle ce que chaque rôle ne doit pas pouvoir faire, et les{" "}
+            <Link href="/guides/securite-application-metier">
+              contrôles de sécurité d’une application métier
+            </Link>
+            , dont la restauration et la journalisation. Le calendrier de
+            recette, enfin, s’estime avec{" "}
+            <Link href="/guides/combien-de-temps-developper-saas">
+              combien de temps il faut pour développer un SaaS
+            </Link>{" "}
+            — et le prestataire s’évalue sur ses preuves d’acceptation passées,
+            comme l’explique{" "}
+            <Link href="/guides/choisir-prestataire-application-metier">
+              le guide du choix sur preuves
+            </Link>
+            .
+          </p>
+
           <GuidePremiumMemo title="Gardez les quatre statuts séparés dans le relevé">
             <p>
               Réussi, échoué, bloqué et non exécuté décrivent quatre situations

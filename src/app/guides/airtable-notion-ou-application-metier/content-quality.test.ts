@@ -183,7 +183,7 @@ describe("P3 content quality for Airtable, Notion or custom application", () => 
     expect(pageSource).not.toContain(
       'editorialStatus: "ready-for-human-review"',
     );
-    expect(airtableNotionGuide.readTimeMin).toBe(24);
+    expect(airtableNotionGuide.readTimeMin).toBe(25);
     expect(structuredData[0]).toMatchObject({
       datePublished: airtableNotionGuide.datePublished,
       dateModified: airtableNotionGuide.dateModified,

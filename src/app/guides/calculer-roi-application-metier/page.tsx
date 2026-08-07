@@ -1102,6 +1102,43 @@ export default function Page() {
           </GuidePremiumMemo>
 
           <p>
+            Ce calcul n’a de sens qu’adossé à un problème observé. Si le besoin
+            lui-même reste flou, le{" "}
+            <Link href="/guides/signes-besoin-logiciel-metier">
+              diagnostic en trois situations
+            </Link>{" "}
+            précède utilement toute estimation. Deux postes du TCO se chiffrent
+            par ailleurs dans des dossiers dédiés : la durée, avec{" "}
+            <Link href="/guides/combien-de-temps-developper-saas">
+              combien de temps faut-il pour développer un SaaS
+            </Link>
+            , et le périmètre de départ, avec{" "}
+            <Link href="/guides/mvp-saas-quoi-inclure">
+              ce qu’un MVP doit contenir
+            </Link>
+            .
+          </p>
+
+          <p>
+            Si la comparaison porte sur une plateforme existante, les deux
+            guides{" "}
+            <Link href="/guides/airtable-notion-ou-application-metier">
+              Airtable ou Notion face à une application métier
+            </Link>{" "}
+            et{" "}
+            <Link href="/guides/power-apps-ou-application-sur-mesure">
+              Power Apps face à une application sur mesure
+            </Link>{" "}
+            détaillent les coûts cachés à intégrer au calcul : licences par
+            utilisateur, connecteurs, environnements et coût de sortie. Enfin,
+            un devis ne se compare pas au seul montant :{" "}
+            <Link href="/guides/choisir-prestataire-application-metier">
+              choisir un prestataire sur preuves
+            </Link>{" "}
+            explique ce qu’il faut exiger avant de signer.
+          </p>
+
+          <p>
             Vous pouvez maintenant{" "}
             <Link href="/demarrer-un-projet">
               faire vérifier votre dossier économique

@@ -560,8 +560,15 @@ Propriétaire éditorial : orchestrateur du lot des 100 guides.
 | --------------------------------- | --------------------------- | ---------- | --------------------------- | -------------------- | --------------------------------------- |
 | 1. Création complète              | G1 — GO_PASSE_2             | 30/07/2026 | second orchestrateur — P1   | manifeste P1 du slug | aucun pour ouvrir P2                    |
 | 2. Enrichissement et vérification | G2 — GO_PASSE_3             | 30/07/2026 | contre-auditeur P2 distinct | manifeste P2 du slug | aucun pour ouvrir P3                    |
-| 3. Polish rédactionnel            | Terminée — en attente de G3 | 30/07/2026 | agent P3 distinct           | manifeste P3 du slug | verdict G3 à rendre par l’orchestrateur |
-| 4. Antipasse IA et contrôle final | Bloquée                     |            | agent P4 distinct           |                      | G3 non rendu                            |
+| 3. Polish rédactionnel            | G3 — GO_PASSE_4             | 30/07/2026 | agent P3 distinct           | manifeste P3 du slug | aucun pour ouvrir P4                    |
+| 4. Antipasse IA et contrôle final | PASSE_4_TERMINEE            | 30/07/2026 | agent P4 distinct           | manifeste P4 du slug | 0 défaut P0, 0 défaut P1                |
+
+> Correction du 7 août 2026 : ce tableau indiquait encore « P3 en attente de G3 »
+> et « P4 bloquée » alors que le dossier se termine par `PASSE_4_TERMINEE`, que
+> le `GO_PASSE_4` est consigné plus bas et que les manifestes P3 et P4 existent.
+> L’état réel des portes a été reporté ici. Le tableau de journal doit être mis
+> à jour au moment où la porte est rendue, sans quoi la traçabilité affirme le
+> contraire du dossier qu’elle résume.
 
 Une modification d’un fichier du snapshot après création du manifeste invalide
 la porte P1 jusqu’à régénération et revue du diff.

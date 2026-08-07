@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { getGuide } from "@/lib/guides";
+import { GUIDES, getGuide } from "@/lib/guides";
 
 const slugDirectory = dirname(fileURLToPath(import.meta.url));
 const guide = getGuide("calculer-roi-application-metier");
@@ -159,13 +159,22 @@ describe("public content quality for the application ROI guide", () => {
     );
   });
 
-  it("keeps the internal guide link restricted to the current published upstream guide", () => {
+  it("ne pointe que vers des guides réellement publiés", () => {
     const guideLinks = [
-      ...pageSource.matchAll(/href="(\/guides\/[^"]+)"/g),
+      ...pageSource.matchAll(/href="\/guides\/([a-z0-9-]+)"/g),
     ].map((match) => match[1]);
-    expect([...new Set(guideLinks)]).toEqual([
-      "/guides/automatiser-processus-metier",
-    ]);
+    const known = new Set(GUIDES.map((entry) => entry.slug));
+
+    // Le maillage a été repris le 7 août 2026 : la liste figée d'un seul lien
+    // sortant est remplacée par l'invariant qui compte vraiment — aucun lien
+    // ne doit viser un slug absent du registre.
+    expect(new Set(guideLinks).size).toBeGreaterThanOrEqual(6);
+    for (const slug of guideLinks) {
+      expect(known.has(slug), `/guides/${slug} est inconnu du registre`).toBe(
+        true,
+      );
+    }
+
     for (const legacySlug of [
       "prix-logiciel-sur-mesure",
       "erp-ou-logiciel-sur-mesure",

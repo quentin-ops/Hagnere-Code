@@ -1438,6 +1438,34 @@ Coût économique connu
             contacter.
           </p>
 
+          <p>
+            La méthode de comparaison décrite ici — exiger des preuves plutôt
+            que des promesses, vérifier qui garde les accès, borner la perte
+            maximale — vaut au-delà de la publicité. Elle est développée pour
+            les prestations logicielles dans le guide{" "}
+            <Link href="/guides/choisir-prestataire-application-metier">
+              choisir un prestataire sur preuves
+            </Link>
+            , dont la grille d’évaluation des devis s’applique presque
+            telle quelle à une offre média.
+          </p>
+
+          <p>
+            Deux prolongements utiles si la publicité sert un produit et non un
+            catalogue existant. Le{" "}
+            <Link href="/guides/calculer-roi-application-metier">
+              calcul du retour sur investissement
+            </Link>{" "}
+            explique comment séparer un gain de trésorerie d’un gain de capacité
+            — la même rigueur évite de confondre un prospect et une vente. Et
+            avant d’acheter du trafic vers une offre encore incertaine, le guide{" "}
+            <Link href="/guides/valider-idee-saas-avant-developper">
+              valider une idée de SaaS avant de développer
+            </Link>{" "}
+            décrit les tests d’acquisition qui coûtent moins cher qu’une
+            campagne lancée trop tôt.
+          </p>
+
           <InfoBox
             variant="emerald"
             title="Préparez une fiche d’une page pour comparer les offres"

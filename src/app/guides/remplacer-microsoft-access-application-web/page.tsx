@@ -1117,6 +1117,45 @@ export default function Page() {
             lieu de lui attribuer un coût nul.
           </p>
 
+          <p>
+            Deux plateformes reviennent systématiquement dans cette comparaison,
+            et chacune a son guide dédié :{" "}
+            <Link href="/guides/power-apps-ou-application-sur-mesure">
+              Power Apps face à une application sur mesure
+            </Link>{" "}
+            lorsque l’entreprise est déjà équipée Microsoft 365, et{" "}
+            <Link href="/guides/airtable-notion-ou-application-metier">
+              Airtable ou Notion face à une application métier
+            </Link>{" "}
+            lorsque l’équipe a déjà commencé à reconstruire ailleurs. Le{" "}
+            <Link href="/guides/calculer-roi-application-metier">
+              calcul du retour sur investissement
+            </Link>{" "}
+            fournit la méthode pour comparer ces coûts totaux sans forcer le
+            résultat.
+          </p>
+
+          <p>
+            Le remplacement lui-même se prépare avec trois autres dossiers : la{" "}
+            <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+              migration sans interruption de service
+            </Link>{" "}
+            pour la bascule et son retour arrière, le{" "}
+            <Link href="/guides/plan-recette-application-metier">
+              plan de recette
+            </Link>{" "}
+            pour prouver que les règles métier survivent au changement, et la{" "}
+            <Link href="/guides/droits-acces-application-metier">
+              gestion des droits d’accès
+            </Link>{" "}
+            pour remplacer un fichier partagé par des rôles explicites. Si
+            l’application Access a été écrite par une personne partie depuis, la{" "}
+            <Link href="/guides/reprendre-logiciel-metier-existant">
+              reprise d’un logiciel métier existant
+            </Link>{" "}
+            précise ce qu’il faut obtenir avant d’y toucher.
+          </p>
+
           <InfoBox
             variant="emerald"
             title="Ce qu’il faut réunir avant de solliciter Hagnéré Code"

@@ -905,6 +905,47 @@ export default function Page() {
             contractuelles restent à définir.
           </p>
 
+          <p>
+            La relève établie, trois vérifications viennent immédiatement après.
+            La{" "}
+            <Link href="/guides/droits-acces-application-metier">
+              reprise en main des droits d’accès
+            </Link>{" "}
+            traite des comptes hérités dont plus personne ne connaît le
+            périmètre. Les{" "}
+            <Link href="/guides/securite-application-metier">
+              contrôles de sécurité d’une application métier
+            </Link>{" "}
+            fixent ce qu’il faut prouver avant d’engager sa responsabilité sur
+            l’existant. Et le{" "}
+            <Link href="/guides/plan-recette-application-metier">
+              plan de recette
+            </Link>{" "}
+            transforme la connaissance acquise en scénarios opposables.
+          </p>
+
+          <p>
+            Si la reprise débouche sur un remplacement plutôt que sur une
+            continuité, deux dossiers prennent le relais : le{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges
+            </Link>{" "}
+            pour figer ce qui doit être reconstruit, et le{" "}
+            <Link href="/guides/calculer-roi-application-metier">
+              calcul du retour sur investissement
+            </Link>{" "}
+            pour comparer honnêtement maintenir et refaire. Le cas particulier
+            d’une base{" "}
+            <Link href="/guides/remplacer-microsoft-access-application-web">
+              Microsoft Access héritée
+            </Link>{" "}
+            est traité à part. Enfin,{" "}
+            <Link href="/guides/choisir-prestataire-application-metier">
+              choisir un prestataire sur preuves
+            </Link>{" "}
+            évite de confier un existant mal documenté sur une simple promesse.
+          </p>
+
           <GuidePremiumMemo
             eyebrow="Dernier contrôle"
             title="La prochaine équipe doit aussi pouvoir partir"
