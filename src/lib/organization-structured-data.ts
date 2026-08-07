@@ -1,4 +1,5 @@
 import { SITE_URL } from "@/lib/seo";
+import { SERVICE_LINKS } from "@/lib/services";
 import { TEAM } from "@/lib/team";
 
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
@@ -21,7 +22,16 @@ export const PUBLIC_ORGANIZATION_ENTITY = {
   alternateName: ["Hagnere Code", "HAGNÉRÉ CODE"],
   legalName: "HAGNERE CODE",
   url: SITE_URL,
-  logo: `${SITE_URL}/logos/logo-dark.png`,
+  // Google demande un logo carré ou rectangulaire d'au moins 112 px de côté,
+  // et recommande la forme ImageObject avec ses dimensions réelles plutôt
+  // qu'une simple URL : le fichier mesure 770 × 479 px.
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/logos/logo-dark.png`,
+    width: 770,
+    height: 479,
+    caption: "Logo Hagnéré Code",
+  },
   image: `${SITE_URL}/og-image.png`,
   description:
     "Agence web complète basée à Bassens, aux portes de Chambéry (Savoie) : développement sur mesure de sites vitrines, e-commerce, SaaS, applications métier, outils internes, SEO et Google Ads.",
@@ -73,6 +83,30 @@ export const PUBLIC_ORGANIZATION_ENTITY = {
     "Refonte de site internet",
     "Maintenance et infogérance web",
   ],
+  // Effectif public de l'équipe, dérivé du registre `TEAM` pour rester
+  // synchronisé avec les pages publiques. Aucune extrapolation : la
+  // composition déclarée dans CLAUDE.md fait autorité.
+  numberOfEmployees: {
+    "@type": "QuantitativeValue",
+    value: Object.keys(TEAM).length,
+  },
+  // Catalogue d'offres dérivé du registre des services : il décrit ce que
+  // l'entreprise propose réellement, sans prix ni engagement, et aide les
+  // moteurs comme les assistants à relier l'entité à ses prestations.
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Prestations Hagnéré Code",
+    itemListElement: SERVICE_LINKS.map((service) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: service.title,
+        description: service.description,
+        url: `${SITE_URL}${service.path}`,
+        provider: { "@id": ORGANIZATION_ID },
+      },
+    })),
+  },
   // Identifiants légaux stables de la personne morale. Aucun SIRET
   // d'établissement n'est publié tant que le transfert de siège est en cours.
   taxID: "FR30993672856",

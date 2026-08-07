@@ -14,6 +14,8 @@ import {
   WEBSITE_ID,
 } from "@/lib/organization-structured-data";
 import { SITE_URL } from "@/lib/seo";
+import { SERVICE_LINKS } from "@/lib/services";
+import { TEAM } from "@/lib/team";
 
 const projectRoot = process.cwd();
 
@@ -136,6 +138,36 @@ describe("public structured data safeguards", () => {
     expect("sameAs" in PUBLIC_ORGANIZATION_JSON_LD).toBe(false);
     expect(PUBLIC_ORGANIZATION_JSON_LD).toMatchObject(
       PUBLIC_ORGANIZATION_ENTITY,
+    );
+
+    // Logo : Google demande au moins 112 px de côté et recommande la forme
+    // ImageObject avec ses dimensions réelles plutôt qu'une simple URL.
+    const logo = PUBLIC_ORGANIZATION_ENTITY.logo;
+    expect(typeof logo).toBe("object");
+    expect(logo).toMatchObject({ "@type": "ImageObject" });
+    expect(logo.url).toBe(`${SITE_URL}/logos/logo-dark.png`);
+    expect(Math.min(logo.width, logo.height)).toBeGreaterThanOrEqual(112);
+
+    // Effectif dérivé du registre d'équipe : aucune valeur écrite à la main,
+    // donc aucune dérive possible entre le schéma et les pages publiques.
+    expect(PUBLIC_ORGANIZATION_ENTITY.numberOfEmployees.value).toBe(
+      Object.keys(TEAM).length,
+    );
+
+    // Catalogue d'offres : strictement les services réellement publiés,
+    // sans prix ni engagement, chacun rattaché à l'entité unique.
+    const offers = PUBLIC_ORGANIZATION_ENTITY.hasOfferCatalog.itemListElement;
+    expect(offers).toHaveLength(SERVICE_LINKS.length);
+    for (const offer of offers) {
+      expect(offer.itemOffered.provider).toEqual({ "@id": ORGANIZATION_ID });
+      expect(offer.itemOffered.url.startsWith(`${SITE_URL}/services/`)).toBe(
+        true,
+      );
+      expect("price" in offer).toBe(false);
+      expect("priceSpecification" in offer).toBe(false);
+    }
+    expect(offers.map((offer) => offer.itemOffered.url)).toEqual(
+      SERVICE_LINKS.map((service) => `${SITE_URL}${service.path}`),
     );
 
     const contactSource = read("src/app/contact/page.tsx");
