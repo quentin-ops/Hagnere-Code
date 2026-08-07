@@ -534,9 +534,23 @@ export function GuidePremiumLayout({
         className="pt-10 sm:pt-12 md:pt-14 pb-10 sm:pb-12 md:pb-14 bg-[#fbfaf7] dark:bg-zinc-950"
       >
         <div className="container mx-auto px-4 max-w-[1180px]">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] xl:grid-cols-[1fr_400px] gap-10 lg:gap-12 xl:gap-16 items-start">
-            {/* Left column */}
-            <div className="min-w-0">
+          {/*
+            Le bloc d'appel à l'action n'est rendu qu'une seule fois. Il était
+            auparavant écrit deux fois — une version `lg:hidden` et une version
+            `hidden lg:block` — ce qui plaçait tout son texte en double dans le
+            HTML servi, donc dans ce que lisent les extracteurs de texte des
+            assistants. Le placement de grille suffit à obtenir les deux mises
+            en page : sous l'accroche en une colonne, en colonne de droite à
+            partir de `lg`.
+
+            Les espacements verticaux restent portés par les marges des blocs
+            (`mt-7` du bloc d'action, marges internes des statistiques et de
+            l'auteur) : la grille ne prend une gouttière qu'à partir de `lg`,
+            et uniquement horizontale.
+          */}
+          <div className="grid grid-cols-1 items-start gap-0 lg:grid-cols-[1fr_360px] lg:gap-x-12 lg:gap-y-0 xl:grid-cols-[1fr_400px] xl:gap-x-16">
+            {/* Colonne de gauche — en-tête éditorial */}
+            <div className="min-w-0 lg:col-start-1 lg:row-start-1">
               <PremiumBreadcrumbs breadcrumbs={breadcrumbs} />
 
               {/* Badges row */}
@@ -570,26 +584,24 @@ export function GuidePremiumLayout({
                 {heroDescription}
               </p>
 
-              {/* Mobile-only CTA — visible above the fold on mobile */}
-              {sidebarHeroCta && (
-                <div className="mt-7 lg:hidden">
-                  <PremiumSidebarHeroCta cta={sidebarHeroCta} />
-                </div>
-              )}
-
-              {/* Stats */}
-              {stats.length > 0 && <PremiumStatsGrid stats={stats} />}
-
-              {/* Author */}
-              <PremiumAuthorCard author={author} />
             </div>
 
-            {/* Right column — sidebar hero CTA (desktop only) */}
+            {/*
+              Bloc d'action, rendu une seule fois. En une colonne il suit
+              l'accroche et reste visible sans défilement ; à partir de `lg` il
+              rejoint la colonne de droite et couvre les deux rangées.
+            */}
             {sidebarHeroCta && (
-              <div className="hidden lg:block lg:pt-2">
+              <div className="mt-7 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mt-0 lg:pt-2">
                 <PremiumSidebarHeroCta cta={sidebarHeroCta} />
               </div>
             )}
+
+            {/* Colonne de gauche — repères chiffrés et signature */}
+            <div className="min-w-0 lg:col-start-1 lg:row-start-2">
+              {stats.length > 0 && <PremiumStatsGrid stats={stats} />}
+              <PremiumAuthorCard author={author} />
+            </div>
           </div>
         </div>
       </section>
