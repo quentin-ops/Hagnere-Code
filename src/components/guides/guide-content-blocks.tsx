@@ -102,9 +102,9 @@ export function GuideTable({ headers, rows, caption }: GuideTableProps) {
   const isWide = headers.length >= 4;
   const minWidthClass =
     headers.length >= 5
-      ? "min-w-[680px]"
+      ? "md:min-w-[680px]"
       : headers.length === 4
-        ? "min-w-[560px]"
+        ? "md:min-w-[560px]"
         : "";
   const rowLabels = rows
     .slice(0, 3)
@@ -115,118 +115,104 @@ export function GuideTable({ headers, rows, caption }: GuideTableProps) {
     caption ||
     `Comparaison ${headers.join(", ")}${rowLabels ? ` — ${rowLabels}` : ""}`;
 
+  /*
+    Un seul tableau dans le DOM.
+
+    Ce composant rendait auparavant deux fois le même contenu : des cartes
+    `md:hidden` pour le téléphone et un tableau `hidden md:block` pour les
+    écrans larges. La feuille de style n'en montrait qu'un, mais les deux
+    étaient servis — donc lus deux fois par tout extracteur de texte qui
+    n'applique pas le CSS, à commencer par les robots des assistants.
+
+    La présentation en cartes est désormais obtenue par CSS (classe
+    `guide-table` dans globals.css) : les libellés de colonne sont réinjectés
+    depuis l'attribut `data-label`, qui n'est pas du contenu textuel. Les rôles
+    ARIA sont déclarés explicitement car la mise en cartes change le `display`
+    des éléments de tableau, ce qui suffirait sinon à leur faire perdre leur
+    sémantique auprès des technologies d'assistance.
+  */
   return (
-    <>
-      <div
-        className="not-prose my-6 md:hidden"
-        data-read-time-exclude="true"
-        role="group"
-        aria-label={tableCaption}
+    <div
+      className="not-prose my-6 md:overflow-x-auto"
+      tabIndex={isWide ? 0 : undefined}
+      role={isWide ? "region" : undefined}
+      aria-label={isWide ? `Tableau défilable : ${tableCaption}` : undefined}
+    >
+      <table
+        role="table"
+        className={`guide-table w-full ${minWidthClass} border-collapse text-xs md:text-sm`}
       >
-        {caption && (
-          <p className="mb-3 text-sm font-semibold leading-relaxed text-zinc-900 dark:text-zinc-100">
-            {caption}
-          </p>
-        )}
-        <div className="space-y-3">
+        <caption
+          className={`text-left ${
+            caption
+              ? "mb-3 text-sm font-semibold leading-relaxed text-zinc-900 dark:text-zinc-100"
+              : "sr-only"
+          } md:sr-only`}
+        >
+          {caption || tableCaption}
+        </caption>
+        <thead role="rowgroup">
+          <tr role="row" className="bg-zinc-50 dark:bg-zinc-900">
+            {headers.map((header, i) => (
+              <th
+                key={i}
+                role="columnheader"
+                scope="col"
+                className="border border-zinc-200 p-2 text-left font-semibold text-zinc-900 dark:border-zinc-700 dark:text-zinc-100 md:p-3"
+              >
+                {header}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
           {rows.map((row, rowIndex) => (
-            <dl
-              key={rowIndex}
-              className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
-            >
+            <tr role="row" key={rowIndex}>
               {row.map((cell, cellIndex) => {
                 const isObj = typeof cell === "object";
-                const valueClassName =
+                const className = `border border-zinc-200 p-2 dark:border-zinc-700 md:p-3 ${
                   isObj && cell.className
                     ? cell.className
                     : cellIndex === 0
-                      ? "font-semibold text-zinc-950 dark:text-zinc-100"
-                      : "text-zinc-700 dark:text-zinc-300";
+                      ? "font-semibold text-zinc-900 dark:text-zinc-100"
+                      : "text-zinc-600 dark:text-zinc-400"
+                }`;
+                const colSpan = isObj ? cell.colSpan : undefined;
                 const content = isObj ? cell.text : cell;
+                const label = headers[cellIndex] || `Information ${cellIndex + 1}`;
 
-                return (
-                  <div
-                    key={cellIndex}
-                    className="border-b border-zinc-200 p-4 last:border-b-0 dark:border-zinc-800"
-                  >
-                    <dt className="text-[11px] font-bold uppercase tracking-[0.1em] text-zinc-500 dark:text-zinc-400">
-                      {headers[cellIndex] || `Information ${cellIndex + 1}`}
-                    </dt>
-                    <dd
-                      className={`mb-0 mt-1.5 text-sm leading-relaxed ${valueClassName}`}
+                if (cellIndex === 0) {
+                  return (
+                    <th
+                      key={cellIndex}
+                      role="rowheader"
+                      scope="row"
+                      data-label={label}
+                      className={className}
+                      colSpan={colSpan}
                     >
                       {content}
-                    </dd>
-                  </div>
+                    </th>
+                  );
+                }
+
+                return (
+                  <td
+                    key={cellIndex}
+                    role="cell"
+                    data-label={label}
+                    className={className}
+                    colSpan={colSpan}
+                  >
+                    {content}
+                  </td>
                 );
               })}
-            </dl>
-          ))}
-        </div>
-      </div>
-
-      <div
-        className="not-prose my-6 hidden overflow-x-auto md:block"
-        tabIndex={isWide ? 0 : undefined}
-        role={isWide ? "region" : undefined}
-        aria-label={isWide ? `Tableau défilable : ${tableCaption}` : undefined}
-      >
-        <table
-          className={`w-full ${minWidthClass} border-collapse text-xs md:text-sm`}
-        >
-          <caption className="sr-only">{tableCaption}</caption>
-          <thead>
-            <tr className="bg-zinc-50 dark:bg-zinc-900">
-              {headers.map((header, i) => (
-                <th
-                  key={i}
-                  className="border border-zinc-200 p-2 text-left font-semibold text-zinc-900 dark:border-zinc-700 dark:text-zinc-100 md:p-3"
-                >
-                  {header}
-                </th>
-              ))}
             </tr>
-          </thead>
-          <tbody>
-            {rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {row.map((cell, cellIndex) => {
-                  const isObj = typeof cell === "object";
-                  const className = `border border-zinc-200 p-2 dark:border-zinc-700 md:p-3 ${
-                    isObj && cell.className
-                      ? cell.className
-                      : cellIndex === 0
-                        ? "font-semibold text-zinc-900 dark:text-zinc-100"
-                        : "text-zinc-600 dark:text-zinc-400"
-                  }`;
-                  const colSpan = isObj ? cell.colSpan : undefined;
-                  const content = isObj ? cell.text : cell;
-
-                  if (cellIndex === 0) {
-                    return (
-                      <th
-                        key={cellIndex}
-                        scope="row"
-                        className={className}
-                        colSpan={colSpan}
-                      >
-                        {content}
-                      </th>
-                    );
-                  }
-
-                  return (
-                    <td key={cellIndex} className={className} colSpan={colSpan}>
-                      {content}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
