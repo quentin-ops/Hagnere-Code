@@ -110,16 +110,17 @@ describe("guide registry after the editorial reset", () => {
       "combien-de-temps-developper-saas",
       "mvp-saas-quoi-inclure",
     ]);
-    expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual([
-      "automatiser-processus-metier",
-      "calculer-roi-application-metier",
-      "signes-besoin-logiciel-metier",
-      "remplacer-microsoft-access-application-web",
-      "valider-idee-saas-avant-developper",
-      "prix-gestion-google-ads",
-      "power-apps-ou-application-sur-mesure",
-      "airtable-notion-ou-application-metier",
-    ]);
+    // Revue humaine du 7 août 2026 : les neuf guides restés en
+    // `ready-for-human-review` ont été relus, leurs quatre passes vérifiées
+    // (dossier de recherche, manifestes P1 à P4, test de contenu dédié) et
+    // leur maillage interne repris. Ils sont donc indexables.
+    expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual(
+      GUIDES.map((guide) => guide.slug),
+    );
+    expect(
+      GUIDES.filter((guide) => guide.editorialStatus),
+      "aucun guide ne doit rester en attente de revue sans décision",
+    ).toHaveLength(0);
   });
 
   it("links the Airtable and Notion decision guide from the Power Apps comparison", () => {

@@ -1075,6 +1075,43 @@ export default function Page() {
           </FormulaBox>
 
           <p>
+            Deux devis ne sont comparables que s’ils portent sur le même
+            périmètre. Celui-ci se fige dans le{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges
+            </Link>{" "}
+            et se borne avec{" "}
+            <Link href="/guides/mvp-saas-quoi-inclure">
+              ce qu’un premier lot doit contenir
+            </Link>
+            . Une date annoncée s’apprécie ensuite à l’aide du guide{" "}
+            <Link href="/guides/combien-de-temps-developper-saas">
+              combien de temps faut-il pour développer un SaaS
+            </Link>
+            , et le prix se rapporte à un gain attendu grâce au{" "}
+            <Link href="/guides/calculer-roi-application-metier">
+              calcul du retour sur investissement
+            </Link>
+            .
+          </p>
+
+          <p>
+            Trois preuves discriminent plus que le reste. Demandez au
+            prestataire ce qu’il propose comme{" "}
+            <Link href="/guides/plan-recette-application-metier">
+              plan de recette
+            </Link>{" "}
+            — un candidat qui n’a rien à répondre sur l’acceptation vend une
+            livraison, pas un résultat. La même logique de comparaison sur
+            preuves s’applique hors logiciel : elle est déclinée pour la
+            publicité dans le guide sur le{" "}
+            <Link href="/guides/prix-gestion-google-ads">
+              prix d’une gestion Google Ads
+            </Link>
+            .
+          </p>
+
+          <p>
             Si vous voulez faire relire les écarts entre votre besoin et les
             propositions, vous pouvez{" "}
             <Link href="/demarrer-un-projet">

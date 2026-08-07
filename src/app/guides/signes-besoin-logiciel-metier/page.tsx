@@ -1106,6 +1106,45 @@ export default function Page() {
             financer une solution qui ne traite pas le problème observé.
           </p>
 
+          <p>
+            Chacune de ces suites possibles a son dossier. Si le blocage est une
+            tâche répétitive, commencez par choisir{" "}
+            <Link href="/guides/automatiser-processus-metier">
+              quel processus métier automatiser en premier
+            </Link>
+            . Si vous devez défendre un budget, le{" "}
+            <Link href="/guides/calculer-roi-application-metier">
+              calcul du retour sur investissement
+            </Link>{" "}
+            sépare le gain de trésorerie du gain de capacité, sans les
+            additionner à tort.
+          </p>
+
+          <p>
+            Si un outil existe déjà et atteint ses limites, la comparaison utile
+            dépend de ce qui est en place :{" "}
+            <Link href="/guides/airtable-notion-ou-application-metier">
+              Airtable ou Notion face à une application métier
+            </Link>
+            ,{" "}
+            <Link href="/guides/power-apps-ou-application-sur-mesure">
+              Power Apps face à une application sur mesure
+            </Link>{" "}
+            en environnement Microsoft, ou le remplacement d’une base{" "}
+            <Link href="/guides/remplacer-microsoft-access-application-web">
+              Microsoft Access par une application web
+            </Link>
+            . Si la décision est prise, le{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges
+            </Link>{" "}
+            fige ce qui doit être construit, et le guide sur{" "}
+            <Link href="/guides/choisir-prestataire-application-metier">
+              le choix d’un prestataire sur preuves
+            </Link>{" "}
+            évite de confier ce travail sur une simple impression.
+          </p>
+
           <div className="not-prose my-8 rounded-3xl bg-zinc-950 p-6 text-white sm:p-8">
             <div className="flex items-start gap-4">
               <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-indigo-600">

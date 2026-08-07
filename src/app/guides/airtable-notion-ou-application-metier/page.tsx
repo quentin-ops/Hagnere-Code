@@ -1396,7 +1396,13 @@ export default function Page() {
             source et la cible. Répétez sur une copie instantanée plus récente.
             Mesurez durée, indisponibilité et charge humaine. Une bascule n’est
             prête que si l’équipe sait aussi l’arrêter et revenir au point de
-            départ sans improviser.
+            départ sans improviser. La méthode complète, avec ses fenêtres de
+            bascule et son plan de retour arrière, est détaillée dans le guide
+            sur la{" "}
+            <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+              migration sans interruption de service
+            </Link>
+            .
           </p>
           <p>
             Les tests d’acceptation par les utilisateurs — souvent appelés «
@@ -1405,7 +1411,12 @@ export default function Page() {
             rechercher, partager, exporter, travailler en réseau dégradé et
             reprendre après erreur. Incluez l’exception rare qui a motivé le
             projet. Une nouvelle interface agréable ne compense pas une règle
-            métier perdue ou un historique devenu inutilisable.
+            métier perdue ou un historique devenu inutilisable. Pour construire
+            ces scénarios et leurs critères d’acceptation, appuyez-vous sur le{" "}
+            <Link href="/guides/plan-recette-application-metier">
+              plan de recette d’une application métier
+            </Link>
+            .
           </p>
 
           <GuidePremiumMemo
@@ -1501,6 +1512,39 @@ export default function Page() {
             </div>
           </div>
 
+          <p>
+            Selon ce que votre inventaire révèle, la suite du parcours n’est pas
+            la même. Si le doute porte encore sur l’opportunité même d’un outil
+            dédié, reprenez le{" "}
+            <Link href="/guides/signes-besoin-logiciel-metier">
+              diagnostic en trois situations
+            </Link>{" "}
+            avant toute comparaison. Si la contrainte vient de l’écosystème
+            Microsoft de votre entreprise, la comparaison utile est celle entre{" "}
+            <Link href="/guides/power-apps-ou-application-sur-mesure">
+              Power Apps et une application sur mesure
+            </Link>
+            ; si elle vient d’une base Access héritée, lisez plutôt comment{" "}
+            <Link href="/guides/remplacer-microsoft-access-application-web">
+              remplacer Microsoft Access par une application web
+            </Link>
+            .
+          </p>
+          <p>
+            Trois vérifications conditionnent la suite. Le{" "}
+            <Link href="/guides/calculer-roi-application-metier">
+              calcul du retour sur investissement
+            </Link>{" "}
+            dit si l’écart de coût total justifie une reconstruction. La{" "}
+            <Link href="/guides/droits-acces-application-metier">
+              gestion des droits d’accès
+            </Link>{" "}
+            met à l’épreuve ce que votre base partagée autorise réellement. Les{" "}
+            <Link href="/guides/securite-application-metier">
+              contrôles de sécurité d’une application métier
+            </Link>{" "}
+            précisent ce qu’un plan gratuit ou intermédiaire ne couvre pas.
+          </p>
           <p>
             Si vous souhaitez un regard extérieur, transmettez le dossier sans
             donnée personnelle ni secret via la page{" "}

@@ -1560,12 +1560,51 @@ coût confirmé à 0 € : le total peut être calculé`}
           </GuidePremiumMemo>
 
           <p>
+            Si la question dépasse Power Platform, deux comparaisons voisines
+            éclairent la même décision. Le guide{" "}
+            <Link href="/guides/airtable-notion-ou-application-metier">
+              Airtable, Notion ou application métier
+            </Link>{" "}
+            traite du même arbitrage hors écosystème Microsoft, et celui
+            consacré au remplacement de{" "}
+            <Link href="/guides/remplacer-microsoft-access-application-web">
+              Microsoft Access par une application web
+            </Link>{" "}
+            couvre le cas d’une base héritée. Si le besoin lui-même n’est pas
+            encore établi, le{" "}
+            <Link href="/guides/signes-besoin-logiciel-metier">
+              diagnostic en trois situations
+            </Link>{" "}
+            évite d’acheter une solution avant d’avoir nommé le problème.
+          </p>
+          <p>
+            Trois contrôles décident ensuite du niveau d’exigence. La{" "}
+            <Link href="/guides/droits-acces-application-metier">
+              gestion des droits d’accès
+            </Link>{" "}
+            confronte les rôles réellement appliqués dans le tenant à ceux que
+            le métier croit en place. Les{" "}
+            <Link href="/guides/securite-application-metier">
+              contrôles de sécurité d’une application métier
+            </Link>{" "}
+            listent ce qu’il faut prouver avant d’élargir l’audience. Une
+            bascule éventuelle suit la méthode de{" "}
+            <Link href="/guides/migrer-logiciel-metier-sans-interruption">
+              migration sans interruption de service
+            </Link>
+            , retour arrière compris.
+          </p>
+          <p>
             Si votre équipe ne peut pas réunir ces éléments, ne commandez pas
             encore une réécriture. Commencez par un inventaire et un prototype
             des cas difficiles. Vous pouvez ensuite{` `}
             <Link href="/demarrer-un-projet">décrire votre projet</Link> à
-            Hagnéré Code ; indiquez explicitement que conserver Power Apps reste
-            une issue acceptable.
+            Hagnéré Code — ou d’abord vérifier{" "}
+            <Link href="/guides/choisir-prestataire-application-metier">
+              comment choisir un prestataire sur preuves
+            </Link>{" "}
+            ; indiquez explicitement que conserver Power Apps reste une issue
+            acceptable.
           </p>
           <p>
             Avant de transmettre ce dossier, vérifiez enfin ce que chaque source

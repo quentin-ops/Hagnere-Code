@@ -1201,6 +1201,46 @@ export default function Page() {
             bascule.
           </p>
 
+          <p>
+            Une bascule ne se valide pas sur une impression : les critères
+            d’acceptation viennent du{" "}
+            <Link href="/guides/plan-recette-application-metier">
+              plan de recette
+            </Link>{" "}
+            et les exigences de la cible du{" "}
+            <Link href="/guides/cahier-des-charges-saas">
+              cahier des charges
+            </Link>
+            . Pendant la coexistence, deux modèles de{" "}
+            <Link href="/guides/droits-acces-application-metier">
+              droits d’accès
+            </Link>{" "}
+            se superposent et les{" "}
+            <Link href="/guides/securite-application-metier">
+              contrôles de sécurité
+            </Link>{" "}
+            doivent couvrir les copies temporaires de données.
+          </p>
+
+          <p>
+            Le point de départ change la méthode. Une base{" "}
+            <Link href="/guides/remplacer-microsoft-access-application-web">
+              Microsoft Access
+            </Link>{" "}
+            et un espace{" "}
+            <Link href="/guides/airtable-notion-ou-application-metier">
+              Airtable ou Notion
+            </Link>{" "}
+            n’exportent pas les mêmes garanties : leurs guides respectifs
+            détaillent ce qui est réellement récupérable. Si la migration est
+            confiée à l’extérieur,{" "}
+            <Link href="/guides/choisir-prestataire-application-metier">
+              choisir un prestataire sur preuves
+            </Link>{" "}
+            précise les engagements à obtenir sur la reprise de données et le
+            retour arrière.
+          </p>
+
           <GuidePremiumMemo
             eyebrow="Dernière consigne"
             title="Chaque équipe doit pouvoir nommer le logiciel qui fait foi"

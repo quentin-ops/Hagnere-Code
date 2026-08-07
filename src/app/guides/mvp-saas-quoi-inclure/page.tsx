@@ -1042,6 +1042,41 @@ export default function Page() {
           </Link>
           .
         </p>
+
+        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          Un périmètre réduit ne dispense d’aucune obligation. Les{" "}
+          <Link href="/guides/droits-acces-application-metier">
+            droits d’accès
+          </Link>{" "}
+          et les{" "}
+          <Link href="/guides/securite-application-metier">
+            contrôles de sécurité
+          </Link>{" "}
+          font partie du premier lot dès qu’une donnée réelle entre dans le
+          produit : les repousser coûte plus cher que les intégrer. Les critères
+          d’acceptation du lot se rédigent avec le{" "}
+          <Link href="/guides/plan-recette-application-metier">
+            plan de recette
+          </Link>
+          .
+        </p>
+
+        <p className="text-sm text-zinc-500 dark:text-zinc-400">
+          Côté décision, le{" "}
+          <Link href="/guides/calculer-roi-application-metier">
+            calcul du retour sur investissement
+          </Link>{" "}
+          arbitre ce qui mérite d’entrer dans le premier lot, et{" "}
+          <Link href="/guides/combien-de-temps-developper-saas">
+            combien de temps il faut pour développer un SaaS
+          </Link>{" "}
+          traduit ce périmètre en calendrier défendable. Pour comparer les
+          réponses reçues, appuyez-vous sur{" "}
+          <Link href="/guides/choisir-prestataire-application-metier">
+            le choix d’un prestataire sur preuves
+          </Link>
+          .
+        </p>
       </GuidePremiumLayout>
     </GuidesShell>
   );

@@ -1260,6 +1260,34 @@ export default function Page() {
             <Link href="/guides">répertoire des guides Hagnéré Code</Link>.
           </p>
 
+          <p>
+            Si une hypothèse a tenu, la suite se joue sur quatre dossiers. Le{" "}
+            <Link href="/guides/calculer-roi-application-metier">
+              calcul du retour sur investissement
+            </Link>{" "}
+            transforme un intérêt déclaré en économie ou en capacité chiffrée.
+            Le guide{" "}
+            <Link href="/guides/choisir-prestataire-application-metier">
+              choisir un prestataire sur preuves
+            </Link>{" "}
+            évite de confier le premier développement sur une impression, et le{" "}
+            <Link href="/guides/plan-recette-application-metier">
+              plan de recette
+            </Link>{" "}
+            fixe dès le départ ce qui vaudra acceptation.
+          </p>
+
+          <p>
+            Une réserve sur l’acquisition, enfin. Beaucoup de tests concluants
+            en entretien ne résistent pas au coût réel d’un prospect payant :
+            avant d’investir en publicité, lisez ce que recouvre le{" "}
+            <Link href="/guides/prix-gestion-google-ads">
+              prix d’une gestion Google Ads
+            </Link>{" "}
+            et les coûts unitaires à mesurer. Un canal payant non rentable
+            invalide une idée aussi sûrement qu’un refus client.
+          </p>
+
           <GuidePremiumMemo
             eyebrow="Décision finale"
             title="Ne demandez pas « l’idée est-elle validée ? »"
