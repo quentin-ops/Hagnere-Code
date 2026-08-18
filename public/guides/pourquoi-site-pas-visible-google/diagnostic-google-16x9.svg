@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Parcours de diagnostic d’une page dans Google</title>
+  <desc id="desc">Une fiche associant une URL et une recherche mène successivement à quatre contrôles : exploration, indexation, impressions et clics.</desc>
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="40%" r="70%">
+      <stop offset="0" stop-color="#312e81" stop-opacity=".72"/>
+      <stop offset=".58" stop-color="#18181b" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#09090b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#60a5fa"/>
+      <stop offset=".5" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#34d399"/>
+    </linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#000000" flood-opacity=".32"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#34d399"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="900" rx="32" fill="#09090b"/>
+  <rect width="1600" height="900" rx="32" fill="url(#glow)"/>
+  <circle cx="144" cy="99" r="126.00000000000001" fill="#60a5fa" opacity=".08"/>
+  <circle cx="1472" cy="792" r="198" fill="#34d399" opacity=".07"/>
+  <g filter="url(#shadow)">
+    <rect x="80" y="285" width="330" height="330" rx="29.7" fill="#fafafa"/>
+    <rect x="80" y="285" width="330" height="66" rx="29.7" fill="#27272a"/>
+    <circle cx="113" cy="318" r="7.26" fill="#a78bfa"/>
+    <circle cx="132.8" cy="318" r="7.26" fill="#60a5fa"/>
+    <circle cx="152.6" cy="318" r="7.26" fill="#34d399"/>
+    <rect x="113" y="397.2" width="264" height="36.3" rx="18.15" fill="#e4e4e7"/>
+    <circle cx="132.8" cy="415.35" r="8.25" fill="none" stroke="#52525b" stroke-width="5.9399999999999995"/>
+    <path d="M138.41 420.96L147.64999999999998 430.2" stroke="#52525b" stroke-width="5.9399999999999995" stroke-linecap="round"/>
+    <rect x="172.4" y="408.75" width="161.7" height="13.200000000000001" rx="6.6000000000000005" fill="#a1a1aa"/>
+    <rect x="113" y="509.4" width="204.6" height="14.85" rx="7.26" fill="#818cf8" opacity=".55"/>
+    <rect x="113" y="542.4" width="138.6" height="11.55" rx="5.61" fill="#a1a1aa" opacity=".75"/>
+  </g>
+      <path d="M410 450H500" stroke="url(#flow)" stroke-width="10" stroke-linecap="round" marker-end="url(#arrow)"/>
+      <path d="M650 450H1360" stroke="url(#flow)" stroke-width="10" stroke-linecap="round" marker-end="url(#arrow)" opacity=".74"/>
+      <g filter="url(#shadow)">
+    <circle cx="570" cy="450" r="76" fill="#09090b" stroke="#60a5fa" stroke-width="3" opacity=".98"/>
+    <circle cx="570" cy="450" r="66" fill="#60a5fa" opacity=".22"/>
+    <circle cx="561.75" cy="441.75" r="29.90625" fill="#fafafa"/>
+      <circle cx="561.75" cy="441.75" r="19.59375" fill="#18181b"/>
+      <path d="M582.375 462.375L613.3125 493.3125L601.96875 504.65625L571.03125 473.71875Z" fill="#fafafa"/>
+    <circle cx="522.48" cy="402.48" r="9.24" fill="#60a5fa" opacity="0.65"/>
+  </g>
+<g filter="url(#shadow)">
+    <circle cx="860" cy="450" r="76" fill="#09090b" stroke="#818cf8" stroke-width="3" opacity=".98"/>
+    <circle cx="860" cy="450" r="66" fill="#818cf8" opacity=".22"/>
+    <path d="M820.8125 410.8125H874.4375L899.1875 435.5625V489.1875H820.8125Z" fill="#fafafa"/>
+      <path d="M874.4375 410.8125V435.5625H899.1875Z" fill="#a1a1aa"/>
+      <path d="M837.3125 455.15625L853.8125 472.6875L884.75 437.625L875.46875 429.375L852.78125 456.1875L845.5625 447.9375Z" fill="#34d399"/>
+    <circle cx="812.48" cy="402.48" r="9.24" fill="#818cf8" opacity="0.75"/>
+  </g>
+<g filter="url(#shadow)">
+    <circle cx="1150" cy="450" r="76" fill="#09090b" stroke="#a78bfa" stroke-width="3" opacity=".98"/>
+    <circle cx="1150" cy="450" r="66" fill="#a78bfa" opacity=".22"/>
+    <path d="M1100.5 450Q1150 402.5625 1199.5 450Q1150 497.4375 1100.5 450Z" fill="#fafafa"/>
+      <circle cx="1150" cy="450" r="20.625" fill="#18181b"/>
+      <circle cx="1150" cy="450" r="8.25" fill="#818cf8"/>
+    <circle cx="1102.48" cy="402.48" r="9.24" fill="#a78bfa" opacity="0.8500000000000001"/>
+  </g>
+<g filter="url(#shadow)">
+    <circle cx="1440" cy="450" r="76" fill="#09090b" stroke="#34d399" stroke-width="3" opacity=".98"/>
+    <circle cx="1440" cy="450" r="66" fill="#34d399" opacity=".22"/>
+    <polygon points="1409.0625,410.8125 1464.75,458.25 1436.90625,462.375 1452.375,493.3125 1435.875,500.53125 1421.4375,469.59375 1400.8125,488.15625" fill="#fafafa"/>
+    <circle cx="1471.96875" cy="422.15625" r="5.15625" fill="#34d399"/>
+    <circle cx="1488.46875" cy="441.75" r="5.15625" fill="#34d399"/>
+    <circle cx="1451.34375" cy="398.4375" r="5.15625" fill="#34d399"/>
+    <circle cx="1392.48" cy="402.48" r="9.24" fill="#34d399" opacity="0.9500000000000001"/>
+  </g>
+</svg>

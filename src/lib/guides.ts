@@ -392,6 +392,26 @@ export const GUIDES: GuideEntry[] = [
       "/guides/mvp-saas-quoi-inclure/decision-mvp-1x1.webp",
     ],
   },
+  {
+    slug: "pourquoi-site-pas-visible-google",
+    title: "Pourquoi mon site n’est-il pas visible sur Google ?",
+    cardTitle: "Pourquoi mon site n’est-il pas visible sur Google ?",
+    metaDescription:
+      "Suivez une URL de l’exploration aux clics dans Search Console, puis remplissez une fiche pour choisir entre corriger, recontrôler ou faire auditer.",
+    cardDescription:
+      "Une URL, une recherche et quatre contrôles dans Search Console pour trouver où la visibilité s’arrête avant de corriger.",
+    heroTitle: "Pourquoi mon site n’est-il pas visible sur Google ?",
+    section: "Référencement naturel",
+    editorialStatus: "published",
+    datePublished: "2026-08-18T12:42:00Z",
+    dateModified: "2026-08-18T12:42:00Z",
+    readTimeMin: 13,
+    articleImagePaths: [
+      "/guides/pourquoi-site-pas-visible-google/diagnostic-google-16x9.svg",
+      "/guides/pourquoi-site-pas-visible-google/diagnostic-google-4x3.svg",
+      "/guides/pourquoi-site-pas-visible-google/diagnostic-google-1x1.svg",
+    ],
+  },
 ];
 
 /** Une entrée n'est publique que si sa porte éditoriale est explicitement ouverte. */

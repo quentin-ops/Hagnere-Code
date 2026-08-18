@@ -2,115 +2,129 @@ import { describe, expect, it } from "vitest";
 import {
   findFirstUnprovedStep,
   formatSearchVisibilityDiagnostic,
+  SEARCH_VISIBILITY_RULES,
   type SearchVisibilityIdentity,
   type SearchVisibilitySteps,
 } from "./search-visibility-diagnostic";
 
 const completeSteps: SearchVisibilitySteps = {
-  discovery: { status: "proved", evidence: "URL reconnue" },
-  crawl: { status: "success", evidence: "Exploration réussie" },
-  index: { status: "indexed", evidence: "URL sur Google" },
-  impressions: { status: "visible-value", evidence: "54 impressions" },
-  clicks: { status: "visible-value", evidence: "1 clic" },
-  leads: { status: "attributed-value", evidence: "1 demande attribuée" },
+  crawl: { status: "crawl-success", evidence: "Exploration réussie" },
+  index: { status: "indexed", evidence: "Cette version est indexée" },
+  impressions: {
+    status: "visible-impressions",
+    evidence: "Impressions visibles",
+  },
+  clicks: { status: "visible-clicks", evidence: "Clics visibles" },
 };
 
 const identity: SearchVisibilityIdentity = {
-  checkedAt: "2026-07-21",
+  checkedAt: "2026-08-18",
   period: "28 jours",
   url: "https://example.com/page",
   query: "service exemple",
   queryType: "Recherche métier",
   context: "France · mobile",
   owner: "Direction",
-  recheckAt: "2026-08-04",
+  recheckAt: "2026-09-01",
 };
 
 describe("search visibility diagnostic", () => {
-  it("stops at discovery when its evidence is unknown", () => {
-    const finding = findFirstUnprovedStep({
-      ...completeSteps,
-      discovery: { status: "unknown", evidence: "Inspection à faire" },
-    });
-    expect(finding.stepId).toBe("discovery");
-    expect(finding.limit).toContain("sitemap");
-  });
-
-  it("does not treat observed but unattributed requests as conversions", () => {
-    const finding = findFirstUnprovedStep({
-      ...completeSteps,
-      leads: {
-        status: "observed-unattributed",
-        evidence: "2 demandes observées, source inconnue",
-      },
-    });
-    expect(finding.stepId).toBe("leads");
-    expect(finding.action).toContain("attribution");
-  });
-
   it.each([
-    ["crawl", "failed", "crawl"],
+    ["crawl", "url-unknown", "crawl"],
+    ["crawl", "crawl-failed", "crawl"],
     ["index", "not-indexed", "index"],
     ["impressions", "no-visible-data", "impressions"],
     ["clicks", "zero-visible-clicks", "clicks"],
-    ["leads", "not-tracked", "leads"],
   ] as const)(
-    "keeps a negative %s status at the correct step",
+    "stops a %s control on its observed negative state",
     (step, status, expected) => {
       const finding = findFirstUnprovedStep({
         ...completeSteps,
-        [step]: { status, evidence: "État négatif recopié" },
+        [step]: { status, evidence: "État recopié" },
       });
       expect(finding.stepId).toBe(expected);
     },
   );
 
-  it("requires written evidence even when a positive status is selected", () => {
+  it("requires a written observation even after a positive selection", () => {
     const finding = findFirstUnprovedStep({
       ...completeSteps,
-      index: { status: "indexed", evidence: "" },
+      index: { status: "indexed", evidence: "   " },
     });
     expect(finding.stepId).toBe("index");
-    expect(finding.conclusion).toContain("preuve");
+    expect(finding.conclusion).toContain("constat manque");
   });
 
-  it("reports a completed chain without promising performance", () => {
+  it.each([
+    ["crawl", ["unknown", "url-unknown", "crawl-failed"]],
+    ["index", ["unknown", "not-indexed"]],
+    ["impressions", ["unknown", "no-visible-data"]],
+    ["clicks", ["unknown", "zero-visible-clicks", "no-visible-data"]],
+  ] as const)(
+    "rejects every incomplete status offered for %s",
+    (step, incompleteStatuses) => {
+      for (const status of incompleteStatuses) {
+        const finding = findFirstUnprovedStep({
+          ...completeSteps,
+          [step]: { status, evidence: "État recopié" },
+        });
+        expect(finding.stepId, `${step}: ${status}`).toBe(step);
+      }
+    },
+  );
+
+  it("always stops at the first incomplete control", () => {
+    const finding = findFirstUnprovedStep({
+      crawl: { status: "crawl-failed", evidence: "Erreur serveur" },
+      index: { status: "not-indexed", evidence: "Noindex" },
+      impressions: { status: "no-visible-data", evidence: "Aucune ligne" },
+      clicks: { status: "zero-visible-clicks", evidence: "0 clic" },
+    });
+    expect(finding.stepId).toBe("crawl");
+  });
+
+  it("classifies a completed chain without diagnosing traffic", () => {
     const finding = findFirstUnprovedStep(completeSteps);
-    expect(finding.stepId).toBe("complete");
-    expect(finding.conclusion).toContain("ne prouve ni");
+    expect(finding.stepId).toBe("classified");
+    expect(finding.limit).toContain("s’arrête volontairement ici");
 
     const output = formatSearchVisibilityDiagnostic(
       identity,
       completeSteps,
       finding,
     );
-    expect(output).toContain("DIAGNOSTIC URL–RECHERCHE");
-    expect(output).toContain("54 impressions");
-    expect(output).toContain("Au moins une valeur positive est visible");
-    expect(output).not.toContain("visible-value");
+    expect(output).toContain("FICHE URL–RECHERCHE");
+    expect(output).toContain("Impressions visibles");
+    expect(output).toContain("Des impressions sont visibles");
+    expect(output).toContain("Vue Index Google : cette version est indexée");
+    expect(output).not.toContain("visible-impressions");
     expect(output).toContain("ne constitue pas un verdict de Google");
   });
 
-  it("prints whitespace-only evidence as not supplied", () => {
+  it("preserves canonical attribution and query-filter limits", () => {
+    const impressionsRule = SEARCH_VISIBILITY_RULES.find(
+      (rule) => rule.id === "impressions",
+    );
+    expect(impressionsRule?.action).toContain("adresse canonique Google");
+    expect(impressionsRule?.action).toContain(
+      "Ajoutez la recherche exacte en dernier",
+    );
+    expect(impressionsRule?.limit).toContain("requêtes anonymisées");
+    expect(impressionsRule?.limit).toContain("filtre de requête");
+  });
+
+  it("prints blank observations and identity fields as not supplied", () => {
     const steps = {
       ...completeSteps,
-      crawl: { status: "success" as const, evidence: "   " },
+      crawl: { status: "crawl-success" as const, evidence: "   " },
     };
     const output = formatSearchVisibilityDiagnostic(
-      identity,
+      { ...identity, url: "   ", owner: "   " },
       steps,
       findFirstUnprovedStep(steps),
     );
-    expect(output).toContain("Preuve : non renseignée");
-  });
-
-  it("normalizes whitespace-only identity fields", () => {
-    const output = formatSearchVisibilityDiagnostic(
-      { ...identity, url: "   ", owner: "   " },
-      completeSteps,
-      findFirstUnprovedStep(completeSteps),
-    );
     expect(output).toContain("URL : non renseignée");
     expect(output).toContain("Responsable : non renseigné");
+    expect(output).toContain("Constat relevé : non renseigné");
   });
 });

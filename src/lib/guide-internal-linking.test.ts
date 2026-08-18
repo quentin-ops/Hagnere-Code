@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { GUIDES } from "./guides";
+import { GUIDES, PUBLISHED_GUIDES } from "./guides";
 
 /**
  * Contrôle structurel du maillage interne entre guides.
@@ -28,6 +28,31 @@ const TOPICAL_OUTLIERS: Record<string, number> = {
   // Gestion publicitaire : seuls le choix d'un prestataire, le calcul du ROI
   // et la validation d'une offre partagent réellement sa logique de décision.
   "prix-gestion-google-ads": 3,
+  // Premier guide de son silo SEO : ses voisins pertinents sont pour l'instant
+  // les pages de service SEO et d'audit, pas les guides SaaS ou applicatifs.
+  // Cette exception doit disparaître à mesure que les guides SEO frères sont
+  // publiés ; les liens de site réellement disponibles sont contrôlés plus bas.
+  "pourquoi-site-pas-visible-google": 0,
+};
+
+const INCOMING_TOPICAL_OUTLIERS: Record<string, number> = {
+  // Le guide est déjà relié depuis le hub et deux pages de service. Exiger deux
+  // liens depuis d'autres guides avant que le silo SEO existe fabriquerait des
+  // rapprochements hors sujet.
+  "pourquoi-site-pas-visible-google": 0,
+};
+
+const SITE_LEVEL_LINK_REQUIREMENTS: Record<
+  string,
+  { outgoingServices: number; inboundSources: string[] }
+> = {
+  "pourquoi-site-pas-visible-google": {
+    outgoingServices: 2,
+    inboundSources: [
+      "src/components/seo-referencement/content.ts",
+      "src/components/audit-technique/sections/what-we-do.ts",
+    ],
+  },
 };
 
 function pageSourceFor(slug: string): string {
@@ -47,11 +72,11 @@ function outgoingGuideLinks(slug: string): Set<string> {
 }
 
 const linkGraph = new Map<string, Set<string>>(
-  GUIDES.map((guide) => [guide.slug, outgoingGuideLinks(guide.slug)]),
+  PUBLISHED_GUIDES.map((guide) => [guide.slug, outgoingGuideLinks(guide.slug)]),
 );
 
 const incoming = new Map<string, number>(
-  GUIDES.map((guide) => [guide.slug, 0]),
+  PUBLISHED_GUIDES.map((guide) => [guide.slug, 0]),
 );
 for (const targets of linkGraph.values()) {
   for (const target of targets) {
@@ -62,8 +87,24 @@ for (const targets of linkGraph.values()) {
 }
 
 describe("maillage interne des guides", () => {
+  it("réserve les invariants de maillage aux seuls guides publiés", () => {
+    expect([...linkGraph.keys()]).toEqual(
+      PUBLISHED_GUIDES.map((guide) => guide.slug),
+    );
+
+    for (const guide of GUIDES) {
+      if (guide.editorialStatus !== "published") {
+        expect(
+          linkGraph.has(guide.slug),
+          `${guide.slug} : un ${guide.editorialStatus} ne doit pas entrer dans le graphe publié`,
+        ).toBe(false);
+        expect(incoming.has(guide.slug)).toBe(false);
+      }
+    }
+  });
+
   it("ne contient aucun lien vers un guide inexistant", () => {
-    const known = new Set(GUIDES.map((guide) => guide.slug));
+    const known = new Set(PUBLISHED_GUIDES.map((guide) => guide.slug));
     for (const [slug, targets] of linkGraph) {
       for (const target of targets) {
         expect(known.has(target), `${slug} -> ${target}`).toBe(true);
@@ -72,7 +113,7 @@ describe("maillage interne des guides", () => {
   });
 
   it("donne à chaque guide au moins six liens sortants contextuels", () => {
-    for (const guide of GUIDES) {
+    for (const guide of PUBLISHED_GUIDES) {
       const expected = TOPICAL_OUTLIERS[guide.slug] ?? MIN_OUTGOING;
       expect(
         linkGraph.get(guide.slug)?.size ?? 0,
@@ -82,11 +123,38 @@ describe("maillage interne des guides", () => {
   });
 
   it("ne laisse aucun guide orphelin", () => {
-    for (const guide of GUIDES) {
+    for (const guide of PUBLISHED_GUIDES) {
+      const expected =
+        INCOMING_TOPICAL_OUTLIERS[guide.slug] ?? MIN_INCOMING;
       expect(
         incoming.get(guide.slug) ?? 0,
         `${guide.slug} : aucun guide ne pointe vers lui`,
-      ).toBeGreaterThanOrEqual(MIN_INCOMING);
+      ).toBeGreaterThanOrEqual(expected);
+    }
+  });
+
+  it("compense chaque exception thématique par un maillage de site vérifiable", () => {
+    for (const [slug, requirement] of Object.entries(
+      SITE_LEVEL_LINK_REQUIREMENTS,
+    )) {
+      const guideSource = pageSourceFor(slug);
+      const outgoingServices = new Set(
+        [...guideSource.matchAll(/href="(\/services\/[a-z0-9-]+)"/g)].map(
+          (match) => match[1],
+        ),
+      );
+      expect(
+        outgoingServices.size,
+        `${slug} : liens de service sortants insuffisants`,
+      ).toBeGreaterThanOrEqual(requirement.outgoingServices);
+
+      for (const sourcePath of requirement.inboundSources) {
+        const source = readFileSync(path.join(process.cwd(), sourcePath), "utf8");
+        expect(
+          source,
+          `${sourcePath} doit pointer vers ${slug}`,
+        ).toContain(`/guides/${slug}`);
+      }
     }
   });
 
@@ -99,7 +167,7 @@ describe("maillage interne des guides", () => {
       "lire la suite",
       "ce lien",
     ];
-    for (const guide of GUIDES) {
+    for (const guide of PUBLISHED_GUIDES) {
       const source = pageSourceFor(guide.slug);
       const anchors = [
         ...source.matchAll(
