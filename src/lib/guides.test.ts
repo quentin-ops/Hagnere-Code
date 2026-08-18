@@ -5,7 +5,12 @@ import {
   GUIDES_COLLECTION_ID,
   buildGuideStructuredData,
 } from "./guide-page-seo";
-import { GUIDES, PUBLISHED_GUIDES, guideRobots } from "./guides";
+import {
+  GUIDES,
+  PUBLISHED_GUIDES,
+  guideRobots,
+  isGuidePublished,
+} from "./guides";
 import {
   ORGANIZATION_ID,
   QUENTIN_HAGNERE_ID,
@@ -110,17 +115,17 @@ describe("guide registry after the editorial reset", () => {
       "combien-de-temps-developper-saas",
       "mvp-saas-quoi-inclure",
     ]);
-    // Revue humaine du 7 août 2026 : les neuf guides restés en
-    // `ready-for-human-review` ont été relus, leurs quatre passes vérifiées
+    // Revue humaine du 7 août 2026 : les neuf guides restés en revue ont été
+    // relus, leurs quatre passes vérifiées
     // (dossier de recherche, manifestes P1 à P4, test de contenu dédié) et
     // leur maillage interne repris. Ils sont donc indexables.
     expect(PUBLISHED_GUIDES.map((guide) => guide.slug)).toEqual(
       GUIDES.map((guide) => guide.slug),
     );
     expect(
-      GUIDES.filter((guide) => guide.editorialStatus),
-      "aucun guide ne doit rester en attente de revue sans décision",
-    ).toHaveLength(0);
+      GUIDES.every((guide) => guide.editorialStatus === "published"),
+      "chaque guide actuel doit porter sa décision de publication explicite",
+    ).toBe(true);
   });
 
   it("links the Airtable and Notion decision guide from the Power Apps comparison", () => {
@@ -221,12 +226,7 @@ describe("guide registry after the editorial reset", () => {
       .readdirSync(guidesRoot, { withFileTypes: true })
       .filter((entry) => {
         if (!entry.isDirectory() || entry.name === "[slug]") return false;
-        const pagePath = path.join(guidesRoot, entry.name, "page.tsx");
-        if (!fs.existsSync(pagePath)) return false;
-
-        return !fs
-          .readFileSync(pagePath, "utf8")
-          .includes('editorialStatus: "ready-for-human-review"');
+        return fs.existsSync(path.join(guidesRoot, entry.name, "page.tsx"));
       })
       .map((entry) => entry.name)
       .sort();
@@ -251,7 +251,7 @@ describe("guide registry after the editorial reset", () => {
     }
   });
 
-  it("permits only explicit unregistered local drafts and keeps them undiscoverable", () => {
+  it("requires every static guide route to use the explicit central registry", () => {
     const staticRoutes = fs
       .readdirSync(guidesRoot, { withFileTypes: true })
       .filter(
@@ -260,36 +260,16 @@ describe("guide registry after the editorial reset", () => {
           entry.name !== "[slug]" &&
           fs.existsSync(path.join(guidesRoot, entry.name, "page.tsx")),
       )
-      .map((entry) => {
-        const source = fs.readFileSync(
-          path.join(guidesRoot, entry.name, "page.tsx"),
-          "utf8",
-        );
-        return {
-          slug: entry.name,
-          explicitLocalDraft: source.includes(
-            'editorialStatus: "ready-for-human-review"',
-          ),
-        };
-      });
+      .map((entry) => entry.name);
     const registered = new Set(GUIDES.map((guide) => guide.slug));
-    const published = new Set(PUBLISHED_GUIDES.map((guide) => guide.slug));
-    const localDrafts = staticRoutes.filter(
-      (route) => !registered.has(route.slug),
-    );
+    const localDrafts = staticRoutes.filter((slug) => !registered.has(slug));
 
     expect(localDrafts).toEqual([]);
-    for (const route of staticRoutes) {
-      if (registered.has(route.slug)) {
-        expect(route.explicitLocalDraft, route.slug).toBe(false);
-        continue;
-      }
-
-      // Anti-contournement : une route statique hors registre n'est tolérée
-      // que si sa page porte le statut draft exact, et elle ne peut pas être
-      // publiée par le filtre central utilisé par le hub, sitemap et llms.
-      expect(route.explicitLocalDraft, route.slug).toBe(true);
-      expect(published.has(route.slug), route.slug).toBe(false);
+    for (const guide of GUIDES) {
+      expect(
+        ["draft", "review", "published"],
+        `${guide.slug}: statut éditorial explicite`,
+      ).toContain(guide.editorialStatus);
     }
     expect(guidesHubSource).toContain("PUBLISHED_GUIDES");
   });
@@ -380,11 +360,21 @@ describe("guide registry after the editorial reset", () => {
         "max-video-preview": -1,
       },
     });
-    expect(
-      guideRobots({
-        ...guide,
-        editorialStatus: "ready-for-human-review",
-      }),
-    ).toEqual({ index: false, follow: false });
+    for (const editorialStatus of ["draft", "review"] as const) {
+      const privateGuide = { ...guide, editorialStatus };
+      expect(isGuidePublished(privateGuide)).toBe(false);
+      expect(guideRobots(privateGuide)).toEqual({
+        index: false,
+        follow: false,
+      });
+    }
+    const malformedGuide = { ...guide } as Partial<typeof guide>;
+    delete malformedGuide.editorialStatus;
+    expect(isGuidePublished(malformedGuide as typeof guide)).toBe(false);
+    expect(guideRobots(malformedGuide as typeof guide)).toEqual({
+      index: false,
+      follow: false,
+    });
+    expect(isGuidePublished(guide)).toBe(true);
   });
 });

@@ -24,7 +24,7 @@ describe("publication integration for the application ROI guide", () => {
     const guide = GUIDES.find((entry) => entry.slug === slug);
 
     expect(guide).toBeDefined();
-    expect(guide?.editorialStatus).toBeUndefined();
+    expect(guide?.editorialStatus).toBe("published");
     expect(PUBLISHED_GUIDES.some((entry) => entry.slug === slug)).toBe(true);
     expect(
       sitemap().some((entry) => entry.url.endsWith(`/guides/${slug}`)),

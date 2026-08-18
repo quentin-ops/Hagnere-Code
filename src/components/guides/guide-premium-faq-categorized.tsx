@@ -2,13 +2,13 @@
 
 import { useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
-import Link from "next/link";
 import { ArrowRight, Plus, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type {
   GuidePremiumFaqCategory,
   GuidePremiumFaqItem,
 } from "./guide-premium-types";
+import { TrackedGuideCtaLink } from "./tracked-guide-cta-link";
 
 interface GuidePremiumFaqCategorizedProps {
   categories: GuidePremiumFaqCategory[];
@@ -31,7 +31,8 @@ export function GuidePremiumFaqCategorized({
   titleEnd = "voulez savoir.",
   subtitle = "Les questions qu'on nous pose le plus — avec des réponses sans détour.",
   ctaTitle = "Pas trouvé votre réponse ?",
-  ctaDescription = "Un conseiller vous rappelle sous 24 h.",
+  ctaDescription =
+    "Objectif de réponse le prochain jour ouvré, sans délai garanti.",
   ctaLabel = "Poser ma question",
   ctaHref = "/contact",
 }: GuidePremiumFaqCategorizedProps) {
@@ -227,8 +228,10 @@ export function GuidePremiumFaqCategorized({
               <p className="mt-1 text-[12px] text-zinc-500 dark:text-white">
                 {ctaDescription}
               </p>
-              <Link
+              <TrackedGuideCtaLink
                 href={ctaHref}
+                placement="faq"
+                primary
                 className={cn(
                   "group mt-4 inline-flex h-11 w-full items-center justify-between gap-2 rounded-lg pl-3.5 pr-1.5 text-[12.5px] font-semibold",
                   "bg-zinc-950 text-white hover:bg-zinc-800",
@@ -242,7 +245,7 @@ export function GuidePremiumFaqCategorized({
                 >
                   <ArrowRight className="size-3" strokeWidth={2.4} />
                 </span>
-              </Link>
+              </TrackedGuideCtaLink>
             </div>
           </div>
 

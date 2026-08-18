@@ -1459,3 +1459,23 @@ contenu.
 - déploiement : non effectué ;
 - publication : non effectuée ;
 - indexation : non vérifiée.
+
+### P9. Correction de lisibilité et nouveau snapshot — 18 août 2026
+
+Le texte public n'affiche plus les codes internes de moteur
+`STOP_REQUIRED_INPUTS_UNKNOWN`, `STOP_INVALID_DEPENDENCY_NETWORK` ou
+`CALENDAR_CANDIDATE_FOR_REVIEW`. Ils restent stables dans la logique et les
+tests, mais l'interface, le Markdown copiable, l'OG et l'illustration 1:1 les
+traduisent en français : informations à compléter, ordre des tâches à
+corriger, disponibilités à clarifier et calendrier prêt à relire.
+
+Le contrôle différentiel couvre la page, l'outil, le moteur, le Markdown, les
+tests et les visuels. L'ouverture contient 147 mots avant le premier tableau,
+répond directement et ne place plus un vocabulaire de statut devant la
+décision. Résultats : tests ciblés 62/62, `check:seo` 206/206, suite globale
+1 163/1 163, ESLint, TypeScript et build de production verts ; audit npm à
+zéro vulnérabilité. P0 : 0. P1 : 0.
+
+Le manifeste P4 est remplacé par le snapshot exact de cette correction. Le
+guide reste `PUBLISHED`; le déploiement de cette révision doit encore être
+vérifié publiquement. Cette vérification ne prouvera pas son indexation Google.

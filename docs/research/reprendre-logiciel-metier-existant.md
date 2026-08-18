@@ -827,3 +827,14 @@ publication restent hors périmètre de cette correction. Le manifeste quality
 doit figer ce snapshot exact après ces contrôles.
 
 Verdict du correcteur : **PRET_POUR_RECONTROLE_Q**.
+
+## 18. Réconciliation du statut — 18 août 2026
+
+La revue humaine globale du 7 août 2026 a ouvert ce guide dans le registre
+central. Le 18 août, sa route publique, son canonical, son statut `index,
+follow`, sa présence dans le hub, le sitemap et `llms.txt` ont été vérifiés.
+La batterie courante est verte : `check:seo` 206/206, suite globale 1 163/1 163,
+TypeScript, ESLint et build de production. Le statut de référence est donc
+`PUBLISHED`; les phrases de la section 17 décrivent le snapshot antérieur et
+ne doivent plus être lues comme l'état de diffusion actuel. Cette vérification
+ne prouve ni exploration, ni indexation Search Console, ni classement.

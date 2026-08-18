@@ -6,6 +6,8 @@ import {
   PayloadTooLargeError,
   readRequestBytesWithLimit,
 } from "@/lib/read-request-body";
+import { getDb } from "@/db";
+import { funnelAnalyticsEvent } from "@/db/schema";
 
 export const runtime = "nodejs";
 
@@ -93,29 +95,21 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ error: "Événement invalide." }, { status: 400 });
   }
 
-  // `next dev` ne dispose pas du binding Worker. Le log rend les parcours
-  // testables localement sans prétendre avoir persisté l'événement.
+  // En développement, aucun événement n'est ajouté à la base de production.
+  // Le log rend le parcours observable sans prétendre l'avoir persisté.
   if (process.env.NEXT_PUBLIC_ENV !== "production") {
     console.info("[funnel-analytics:dev]", payload);
     return new Response(null, { status: 204 });
   }
 
   try {
-    // Import tardif : la cible Vercel n'embarque ce chemin que si la collecte
-    // Cloudflare a été explicitement activée.
-    const { getCloudflareContext } = await import("@opennextjs/cloudflare");
-    const { env } = await getCloudflareContext({ async: true });
-    if (!env.FUNNEL_ANALYTICS) {
-      console.error("[funnel-analytics] Binding FUNNEL_ANALYTICS absent.");
-      return Response.json({ error: "Collecteur indisponible." }, { status: 503 });
-    }
-
     // Aucune IP, aucun user-agent, aucun cookie ni identifiant persistant.
-    // Analytics Engine horodate lui-même chaque point à l'écriture.
-    env.FUNNEL_ANALYTICS.writeDataPoint({
-      indexes: [payload.name],
-      blobs: [payload.path, JSON.stringify(payload.props)],
-      doubles: [Object.keys(payload.props).length],
+    // Neon est déjà la persistance partagée par les déploiements Vercel et
+    // Cloudflare ; ce stockage rend donc le collecteur réellement portable.
+    await getDb().insert(funnelAnalyticsEvent).values({
+      eventName: payload.name,
+      path: payload.path,
+      props: JSON.stringify(payload.props),
     });
     return new Response(null, { status: 204 });
   } catch (error) {

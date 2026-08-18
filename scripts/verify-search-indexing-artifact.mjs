@@ -705,9 +705,12 @@ const guideEntries = guidesSource
       (match) => {
         const imageBlock =
           match[2].match(/articleImagePaths:\s*\[([\s\S]*?)\]/)?.[1] ?? "";
+        const editorialStatus = match[2].match(
+          /editorialStatus:\s*"([^"]+)"/,
+        )?.[1];
         return {
           slug: match[1],
-          pending: /editorialStatus:\s*"ready-for-human-review"/.test(match[2]),
+          editorialStatus,
           datePublished: match[2].match(/datePublished:\s*"([^"]+)"/)?.[1],
           dateModified: match[2].match(/dateModified:\s*"([^"]+)"/)?.[1],
           readTimeMin: Number(
@@ -721,6 +724,18 @@ const guideEntries = guidesSource
       },
     )
   : [];
+
+for (const { slug, editorialStatus } of guideEntries) {
+  if (!editorialStatus) {
+    fail(`statut éditorial explicite absent du registre : /guides/${slug}`);
+    continue;
+  }
+  if (!["draft", "review", "published"].includes(editorialStatus)) {
+    fail(
+      `statut éditorial inconnu pour /guides/${slug} : ${editorialStatus}`,
+    );
+  }
+}
 
 if (sitemapXml && sitemapUrls.length === 0) {
   fail("sitemap.xml ne contient aucune URL.");
@@ -862,10 +877,10 @@ if (llms) {
 }
 
 const pendingGuideSlugs = guideEntries
-  .filter(({ pending }) => pending)
+  .filter(({ editorialStatus }) => editorialStatus !== "published")
   .map(({ slug }) => slug);
 const publishedGuideSlugs = guideEntries
-  .filter(({ pending }) => !pending)
+  .filter(({ editorialStatus }) => editorialStatus === "published")
   .map(({ slug }) => slug);
 const guidesHub = readRequired(
   resolve(artifactRoot, "guides.html"),

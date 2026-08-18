@@ -675,7 +675,7 @@ describe("public content quality for the MVP SaaS contract guide", () => {
     // Revue humaine du 7 août 2026 : le guide est sorti de l'état d'attente.
     // Les mentions de provenance ci-dessus restent obligatoires — elles
     // distinguent la date de première trace Git d'une preuve d'indexation.
-    expect(registeredGuide.editorialStatus).toBeUndefined();
+    expect(registeredGuide.editorialStatus).toBe("published");
   });
 
   it("keeps every editorial or commercial internal link on an existing route", () => {

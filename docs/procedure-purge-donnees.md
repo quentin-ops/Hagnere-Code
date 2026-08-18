@@ -14,6 +14,7 @@ purge a été exécutée.
   remonte à plus de 3 ans, après exclusion documentée des clients et obligations
   de conservation associées.
 - `ai_call_log` : supprimer les lignes âgées de plus de 12 mois.
+- `funnel_analytics_event` : supprimer les événements âgés de plus de 13 mois.
 - IP et user-agent éventuellement présents dans les colonnes historiques de
   `project_brief` : supprimer ou mettre à null au
   plus tard après 12 mois, sans attendre la suppression du brief, sauf nécessité
@@ -45,6 +46,10 @@ SELECT COUNT(*) AS ai_logs_a_supprimer
 FROM ai_call_log
 WHERE created_at < now() - interval '12 months';
 
+SELECT COUNT(*) AS evenements_parcours_a_supprimer
+FROM funnel_analytics_event
+WHERE created_at < now() - interval '13 months';
+
 SELECT COUNT(*) AS briefs_prospects_a_revoir
 FROM project_brief
 WHERE updated_at < now() - interval '3 years';
@@ -63,6 +68,9 @@ La suppression des logs peut être exécutée dans une transaction après valida
 BEGIN;
 DELETE FROM ai_call_log
 WHERE created_at < now() - interval '12 months';
+
+DELETE FROM funnel_analytics_event
+WHERE created_at < now() - interval '13 months';
 -- Vérifier le nombre de lignes affectées avant COMMIT.
 COMMIT;
 ```

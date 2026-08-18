@@ -46,6 +46,7 @@ export const confidentialiteSections: LegalSection[] = [
           <li><strong>informations de projet</strong> : besoins, périmètre, budget, échéance, outils existants et messages saisis dans les champs prévus ;</li>
           <li><strong>données de relation</strong> : échanges, rendez-vous, devis, contrats, livrables et factures ;</li>
           <li><strong>données techniques et de sécurité</strong> : adresse IP, user-agent, date, route appelée, résultat d'un contrôle anti-abus et journaux nécessaires au diagnostic ;</li>
+          <li><strong>mesure de parcours facultative</strong> : après consentement, nom d'action, chemin sans paramètres, propriétés primitives bornées et date, sans identifiant visiteur ajouté par le collecteur ;</li>
           <li><strong>dictée facultative</strong> : flux audio transmis pour transcription et texte obtenu.</li>
         </ul>
         <p>
@@ -220,6 +221,7 @@ export const confidentialiteSections: LegalSection[] = [
               <tr><td>Dossier client et échanges contractuels</td><td>Pendant la relation puis durée nécessaire à la preuve, en principe 5 ans</td></tr>
               <tr><td>Factures et pièces comptables</td><td>10 ans à compter de la clôture de l'exercice concerné</td></tr>
               <tr><td>Journaux applicatifs de sécurité et de limitation d'abus</td><td>12 mois maximum dans la base HAGNERE CODE</td></tr>
+              <tr><td>Événements de parcours first-party après consentement</td><td>13 mois maximum dans la table de mesure, sans IP, user-agent, cookie ni identifiant visiteur ajouté par le collecteur</td></tr>
               <tr><td>Brouillon du formulaire dans votre navigateur, uniquement après activation volontaire</td><td>24 heures au plus après la dernière sauvegarde, sans dépasser la session de l'onglet ; les coordonnées et identifiants de contact ne sont pas enregistrés dans ce brouillon</td></tr>
               <tr><td>Préférence relative aux traceurs</td><td>6 mois, puis le choix est redemandé si la bannière est active</td></tr>
               <tr><td>Audio de dictée</td><td>Non stocké volontairement par HAGNERE CODE ; Groq annonce ne pas conserver les requêtes d'inférence par défaut, sous réserve de journaux temporaires pouvant aller jusqu'à 30 jours pour diagnostiquer une défaillance ou examiner un abus suspecté</td></tr>

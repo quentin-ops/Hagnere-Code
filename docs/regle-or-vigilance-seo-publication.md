@@ -280,6 +280,26 @@ consommateurs.
 
 ### Ajouter un guide
 
+La coque privée peut être créée sans recopier le contenu d'un autre guide :
+
+```bash
+npm run scaffold:guide -- \
+  --slug mon-guide \
+  --title "Titre du guide" \
+  --section "Silo éditorial" \
+  --description "Meta description provisoire de moins de 156 caractères."
+```
+
+Le script refuse tout écrasement, copie le modèle de dossier, crée la route et
+l'image sociale génériques, puis ajoute une entrée explicitement `draft`. Il
+ne crée aucun manifeste de passe et n'ouvre aucune surface publique : les
+agents remplacent ensuite la coque, le plan, les preuves et les artefacts par
+un travail propre au sujet.
+
+Si un dossier historique existe déjà, ajouter `--reuse-research` : le script
+vérifie sa présence et le conserve à l'octet près. Sans ce drapeau, il refuse
+de l'écraser.
+
 1. respecter l'ordre de lecture unique défini dans
    `docs/workflow-maitre-guides-4-passes.md`, sans sauter la charte, la roadmap
    ni le modèle de dossier ;
@@ -287,16 +307,17 @@ consommateurs.
    quatre passes ;
 3. créer `src/app/guides/<slug>/page.tsx` ;
 4. créer son image `opengraph-image.tsx` dédiée ;
-5. ajouter une entrée complète et datée dans `GUIDES`, avec
-   `editorialStatus: "ready-for-human-review"` tant que la validation
-   éditoriale n'est pas réellement acquise ;
+5. ajouter une entrée complète et datée dans `GUIDES`, avec un statut
+   obligatoire parmi `draft`, `review` et `published` ; utiliser
+   `editorialStatus: "draft"` par défaut, puis `review` lorsque le guide est
+   complet mais que la validation éditoriale n'est pas réellement acquise ;
 6. ne modifier manuellement ni le sitemap, ni `llms.txt` : la route reste alors
    accessible en `noindex,nofollow`, mais absente du hub, sitemap et `llms.txt` ;
-7. retirer `editorialStatus` seulement après l'une des deux validations
-   documentées : soit un test lecteur humain suivi des corrections, soit une
-   autorisation explicite du commanditaire déléguant la décision à un
-   contre-audit indépendant qui dépasse le seuil de la charte et ne conserve
-   aucun blocage factuel, éditorial, commercial ou technique ;
+7. passer explicitement à `editorialStatus: "published"` seulement après l'une
+   des deux validations documentées : soit un test lecteur humain suivi des
+   corrections, soit une autorisation explicite du commanditaire déléguant la
+   décision à un contre-audit indépendant qui dépasse le seuil de la charte et
+   ne conserve aucun blocage factuel, éditorial, commercial ou technique ;
 8. ajouter des liens entrants contextuels depuis les pages réellement proches ;
 9. lancer la batterie du §11.
 
@@ -739,8 +760,10 @@ une URL du registre pour « faire passer le build » sans résoudre la divergenc
 Tests responsables :
 
 - `src/lib/guides.test.ts` : registre ↔ routes ↔ images sociales ;
-- `src/lib/editorial-governance.test.ts` : trace la délégation éditoriale des
-  huit guides concernés, leur dossier de recherche et leur statut publié ;
+- `src/lib/editorial-governance.test.ts` : exige pour chaque guide un statut
+  éditorial explicite, son dossier de recherche et ses manifestes P1 à P4 ; il
+  vérifie aussi que `published-guides-current.sha256` correspond exactement au
+  code et aux actifs du corpus publié courant ;
 - `src/app/sitemap.test.ts` : pages ↔ sitemap et vraies dates ;
 - `src/lib/llms.test.ts` : registres et services ↔ `llms.txt` ;
 - `src/app/llms.txt/route.test.ts` : réponse HTTP texte et cache ;

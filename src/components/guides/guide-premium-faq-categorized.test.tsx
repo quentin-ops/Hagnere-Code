@@ -157,4 +157,11 @@ describe("GuidePremiumFaqCategorized accessibility", () => {
     });
     expect(question?.getAttribute("aria-expanded")).toBe("true");
   });
+
+  it("qualifies the default response objective without promising a deadline", () => {
+    expect(container.textContent).toContain(
+      "Objectif de réponse le prochain jour ouvré, sans délai garanti.",
+    );
+    expect(container.textContent).not.toMatch(/sous 24\s*h/i);
+  });
 });

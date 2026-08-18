@@ -1,11 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-const writeDataPoint = vi.hoisted(() => vi.fn());
-const getCloudflareContext = vi.hoisted(() =>
-  vi.fn(async () => ({ env: { FUNNEL_ANALYTICS: { writeDataPoint } } })),
-);
+const persistValues = vi.hoisted(() => vi.fn(async () => undefined));
+const insertEvent = vi.hoisted(() => vi.fn(() => ({ values: persistValues })));
 
-vi.mock("@opennextjs/cloudflare", () => ({ getCloudflareContext }));
+vi.mock("@/db", () => ({
+  getDb: () => ({ insert: insertEvent }),
+}));
 
 import { POST } from "./route";
 
@@ -41,13 +41,14 @@ describe("POST /api/funnel-analytics", () => {
     );
 
     expect(response.status).toBe(204);
-    expect(writeDataPoint).toHaveBeenCalledWith({
-      indexes: ["white_paper_grid_copy"],
-      blobs: [
-        "/livres-blancs/comparer-devis-site-internet",
-        JSON.stringify({ resource: "comparaison_devis_web_3_ans", count: 1 }),
-      ],
-      doubles: [2],
+    expect(insertEvent).toHaveBeenCalledOnce();
+    expect(persistValues).toHaveBeenCalledWith({
+      eventName: "white_paper_grid_copy",
+      path: "/livres-blancs/comparer-devis-site-internet",
+      props: JSON.stringify({
+        resource: "comparaison_devis_web_3_ans",
+        count: 1,
+      }),
     });
   });
 
@@ -57,7 +58,7 @@ describe("POST /api/funnel-analytics", () => {
     );
 
     expect(response.status).toBe(400);
-    expect(writeDataPoint).not.toHaveBeenCalled();
+    expect(insertEvent).not.toHaveBeenCalled();
   });
 
   it("rejects cross-origin submissions", async () => {
@@ -69,7 +70,7 @@ describe("POST /api/funnel-analytics", () => {
     );
 
     expect(response.status).toBe(403);
-    expect(writeDataPoint).not.toHaveBeenCalled();
+    expect(insertEvent).not.toHaveBeenCalled();
   });
 
   it("stays explicitly unavailable until a compatible collector is enabled", async () => {
@@ -87,7 +88,23 @@ describe("POST /api/funnel-analytics", () => {
     await expect(response.json()).resolves.toEqual({
       error: "Mesure de parcours désactivée.",
     });
-    expect(getCloudflareContext).not.toHaveBeenCalled();
-    expect(writeDataPoint).not.toHaveBeenCalled();
+    expect(insertEvent).not.toHaveBeenCalled();
+  });
+
+  it("returns 503 without claiming persistence when the database fails", async () => {
+    persistValues.mockRejectedValueOnce(new Error("database unavailable"));
+
+    const response = await POST(
+      analyticsRequest({
+        name: "guide_cta_click",
+        path: "/guides/un-guide",
+        props: { placement: "hero" },
+      }),
+    );
+
+    expect(response.status).toBe(503);
+    await expect(response.json()).resolves.toEqual({
+      error: "Collecteur indisponible.",
+    });
   });
 });

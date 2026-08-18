@@ -17,11 +17,10 @@ comme porte de sortie, mais elle n'est pas la cible de production actuelle.
 - **Hébergement** : Vercel (production). Alternative outillée mais non active :
   Cloudflare Workers (`@opennextjs/cloudflare` + Wrangler, scripts `cf:*`)
 - **Mesure de parcours** : événements first-party désactivés par défaut, puis
-  envoyés uniquement si un collecteur compatible est explicitement activé et
-  après opt-in analytics. Le collecteur actuel dépend d'un binding Cloudflare
-  Analytics Engine absent de la production Vercel : il ne faut pas activer la
-  variable ni présenter cette mesure comme opérationnelle tant que
-  l'infrastructure et la documentation ne sont pas alignées.
+  envoyés uniquement après opt-in analytics et activation explicite. Le
+  collecteur commun à Vercel et Cloudflare persiste dans Neon le nom allowlisté,
+  le chemin sans query string, des propriétés primitives bornées et la date,
+  sans IP, user-agent, cookie ni identifiant visiteur dans la table dédiée.
 
 ## Commandes
 
@@ -47,14 +46,15 @@ npm run cf:deploy        # déploiement Cloudflare
 
 | Variable | Usage |
 |---|---|
-| `DATABASE_URL` | URL Postgres Neon (briefs projet + `ai_call_log`) |
+| `DATABASE_URL` | URL Postgres Neon (briefs projet, journaux anti-abus et mesure first-party consentie) |
 | `RESEND_API_KEY` | Envoi des emails transactionnels |
 | `CONTACT_TO_EMAIL` | Destinataire interne des formulaires |
 | `CONTACT_FROM_EMAIL` | Expéditeur Resend (domaine DKIM-validé) |
 | `GROQ_API_KEY` | Transcription audio Whisper (`/api/transcribe`) |
 | `MATH_CHALLENGE_SECRET` | Signature HMAC serveur du contrôle anti-robot ; secret distinct par environnement |
 | `NEXT_PUBLIC_ENV` | Hors Vercel : `production` active l'indexation (sinon `noindex`) |
-| `NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED` | Drapeau public (`true`/`1`) à définir uniquement lorsqu'un collecteur first-party compatible est réellement déployé ; absent ou `false` sur Vercel actuellement |
+| `NEXT_PUBLIC_COOKIE_BANNER` | Affiche le choix analytics lorsque sa valeur vaut `true`/`1` ; aucun événement facultatif ne part avant acceptation |
+| `NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED` | Drapeau public (`true`/`1`) du collecteur first-party Neon ; à activer avec la bannière après migration et audit |
 | `NEXT_PUBLIC_CALENDLY_URL` | URL HTTPS `calendly.com` optionnelle ; tous les liens utilisent `src/lib/calendly.ts` et son fallback unique |
 | `TRUST_CF_CONNECTING_IP` | À laisser absent sur Vercel ; `1` uniquement derrière un proxy Cloudflare attesté |
 | `TRUST_X_FORWARDED_FOR` | Absent sur Vercel et sur un serveur directement exposé ; `1` uniquement derrière un proxy explicitement administré qui réécrit cet en-tête |

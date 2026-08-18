@@ -36,7 +36,7 @@ function simpleValidNetwork(): SchedulePlannerInput {
 }
 
 describe("assessSaasSchedule", () => {
-  it("keeps an empty schedule in an explicit STOP without calculations", () => {
+  it("keeps an empty schedule blocked without exposing its internal code", () => {
     const result = assessSaasSchedule(createEmptySaasSchedule());
 
     expect(result.status).toBe("STOP_REQUIRED_INPUTS_UNKNOWN");
@@ -49,7 +49,11 @@ describe("assessSaasSchedule", () => {
       ]),
     );
     expect(result.scenarios).toEqual([]);
-    expect(result.markdown).toContain("STOP — ligne d’arrivée inconnue");
+    expect(result.markdown).toContain("Ligne d’arrivée à renseigner");
+    expect(result.markdown).toContain(
+      "Calcul en attente : informations à compléter",
+    );
+    expect(result.markdown).not.toContain("STOP_REQUIRED_INPUTS_UNKNOWN");
     expect(result.markdown).not.toContain("NaN");
   });
 

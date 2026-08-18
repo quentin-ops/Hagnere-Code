@@ -147,7 +147,7 @@ const faqCategories: GuidePremiumFaqCategory[] = [
       {
         question: "Que faire lorsqu’une dépendance reste inconnue ?",
         answer:
-          "Ne calculez aucune date tant que son résultat, son responsable ou sa durée manque : le statut reste STOP_REQUIRED_INPUTS_UNKNOWN. Si l’identifiant visé n’existe pas ou si les dépendances forment une boucle, le statut devient STOP_INVALID_DEPENDENCY_NETWORK. Recalculez ensuite depuis les entrées corrigées.",
+          "Ne calculez aucune date tant que le résultat, le responsable ou la durée d’une tâche manque : le calcul reste en attente. Si la tâche visée n’existe pas ou si les dépendances forment une boucle, corrigez l’ordre des travaux. Recalculez ensuite depuis les entrées corrigées.",
       },
       {
         question: "Comment passer de J+N à une date réelle ?",
@@ -155,7 +155,7 @@ const faqCategories: GuidePremiumFaqCategory[] = [
           "Après revue humaine, fixez J1 et la convention de jours ouvrés : fuseau, jours non travaillés, disponibilité de chaque capacité et calendriers des tiers. Recalculez ensuite. Aucune date civile n’est fabriquée automatiquement.",
       },
       {
-        question: "Que signifie CALENDAR_CANDIDATE_FOR_REVIEW ?",
+        question: "Que signifie « calendrier prêt à relire » ?",
         answer:
           "C’est un calcul à relire, pas un engagement. Une personne doit encore confirmer ce qui doit être prêt, qui répond de chaque résultat, l’ordre des tâches, les personnes disponibles, les conditions d’exploitation et la décision à prendre si le délai ne tient pas.",
       },
@@ -224,7 +224,7 @@ export default function Page() {
         heroDescription="Il n’existe pas de durée universelle. Définissez ce qui doit être prêt, reliez les travaux qui s’attendent, nommez les personnes réellement disponibles, puis comparez quatre scénarios au temps dont vous disposez."
         stats={[
           { label: "Scénarios sans probabilité", value: "4" },
-          { label: "Statuts de décision", value: "4" },
+          { label: "Résultats du contrôle", value: "4" },
           { label: "Date civile générée", value: "Aucune" },
           { label: "Score global", value: "Aucun" },
           { label: "Données envoyées", value: "Aucune" },
@@ -368,42 +368,42 @@ export default function Page() {
               [
                 "Ligne d’arrivée",
                 "Quel résultat, quelles preuves et quelles conditions d’exploitation sont inclus ?",
-                "STOP_REQUIRED_INPUTS_UNKNOWN",
+                "Calcul en attente tant que le résultat visé n’est pas précisé",
               ],
               [
                 "Travail",
                 "Quel résultat observable produit chaque tâche ?",
-                "STOP_REQUIRED_INPUTS_UNKNOWN",
+                "Calcul en attente tant que ce résultat manque",
               ],
               [
                 "Responsable",
                 "Qui possède le résultat et répond à une demande de décision ?",
-                "STOP_REQUIRED_INPUTS_UNKNOWN",
+                "Calcul en attente tant que le responsable manque",
               ],
               [
                 "Personne ou équipe disponible (capacité dédiée)",
                 "Qui peut vraiment travailler sur cette tâche, et quand ?",
-                "CLARIFY_CAPACITY_BEFORE_CALENDAR si elle est partagée sans ordre",
+                "Disponibilités à clarifier si deux tâches partagent la même personne ou équipe sans ordre",
               ],
               [
                 "Dépendances",
                 "Quel résultat doit exister avant de commencer ?",
-                "STOP_INVALID_DEPENDENCY_NETWORK si le réseau est incohérent",
+                "Ordre des tâches à corriger si un lien manque ou forme une boucle",
               ],
               [
                 "Durées F/C/P",
                 "Quelles hypothèses expliquent les trois valeurs ?",
-                "STOP_REQUIRED_INPUTS_UNKNOWN",
+                "Calcul en attente tant qu’une durée ou son explication manque",
               ],
               [
                 "Réserve séparée",
                 "Combien de jours de prudence la décision ajoute-t-elle explicitement ?",
-                "STOP_REQUIRED_INPUTS_UNKNOWN",
+                "Calcul en attente tant que la réserve n’est pas renseignée",
               ],
               [
                 "Maximum disponible",
                 "Quel nombre de jours ouvrés impose le raisonnement inverse ?",
-                "STOP_REQUIRED_INPUTS_UNKNOWN",
+                "Calcul en attente tant que le temps disponible n’est pas renseigné",
               ],
             ]}
           />
@@ -485,7 +485,7 @@ export default function Page() {
               ],
               [
                 "Cycle ou dépendance absente",
-                "STOP_INVALID_DEPENDENCY_NETWORK",
+                "Corriger l’ordre des tâches avant tout calcul",
                 "Aucun ordre de calcul cohérent n’existe",
               ],
             ]}
@@ -517,9 +517,8 @@ export default function Page() {
             désigne la personne ou l’équipe réellement disponible. Ces deux
             informations sont distinctes : deux tâches sans ordre métier peuvent
             pourtant se disputer la même personne ou équipe. Dans ce cas, le
-            planificateur retourne
-            <strong> CLARIFY_CAPACITY_BEFORE_CALENDAR</strong> jusqu’à ce qu’un
-            ordre soit écrit ou qu’une personne ou équipe distincte soit
+            planificateur demande de clarifier les disponibilités jusqu’à ce
+            qu’un ordre soit écrit ou qu’une personne ou équipe distincte soit
             confirmée.
           </p>
 
@@ -772,7 +771,7 @@ export default function Page() {
             title={relaisPro.title}
           >
             <p>
-              Statut : <strong>{relaisPro.status}</strong>. Le prudent avec
+              Résultat : <strong>{relaisPro.title}</strong>. Le prudent avec
               réserve séparée atteint J+
               {relaisPro.reverseReasoning?.prudentWithReserveDays}. Face au
               maximum de {relaisPro.reverseReasoning?.maxWorkingDays} jours,
@@ -796,7 +795,7 @@ export default function Page() {
             Commencez vide ou chargez RelaisPro. Le moteur vérifie les
             identifiants, les responsables, les trois durées, l’ordre des
             tâches, les boucles et les personnes ou équipes partagées. Il ne
-            calcule les quatre scénarios qu’après ces portes. Le brouillon
+            calcule les quatre scénarios qu’après ces contrôles. Le brouillon
             Markdown reste visible et sélectionnable pour être relu.
           </p>
           <p>
@@ -804,8 +803,8 @@ export default function Page() {
             Le point est le seul séparateur décimal accepté (par exemple 0.5),
             sans exposant, avec au plus six décimales significatives et une
             borne technique de 1 000 000 jours ouvrés. Toute entrée ou somme qui
-            dépasse ces règles place les quatre scénarios en STOP : elle n’est
-            jamais arrondie ni partiellement calculée.
+            dépasse ces règles empêche le calcul des quatre scénarios : elle
+            n’est jamais arrondie ni partiellement calculée.
           </p>
 
           <SaasSchedulePlannerTool />
@@ -915,7 +914,7 @@ export default function Page() {
           <div className="not-prose my-8 mx-auto max-w-xl overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800">
             <Image
               src="/guides/combien-de-temps-developper-saas/calendrier-saas-1x1.webp"
-              alt="Portes STOP, clarification de capacité et calendrier candidat à revoir"
+              alt="Quatre résultats possibles : informations à compléter, ordre à corriger, disponibilités à clarifier ou calendrier prêt à relire"
               width={900}
               height={900}
               sizes="(max-width: 640px) 100vw, 560px"
@@ -1114,11 +1113,11 @@ export default function Page() {
           </p>
 
           <GuidePremiumMemo
-            eyebrow="Statut du calcul"
-            title="CALENDAR_CANDIDATE_FOR_REVIEW reste un brouillon"
+            eyebrow="État du calcul"
+            title="Un calendrier prêt à relire reste un brouillon"
           >
             <p>
-              Le statut autorise une revue humaine du calendrier relatif. Il ne
+              Cet état autorise une revue humaine du calendrier relatif. Il ne
               prouve ni disponibilité future, ni acceptation, ni engagement, ni
               mise en ligne. Toute correction substantielle invalide le résultat
               précédent et demande un nouveau contrôle.

@@ -80,7 +80,7 @@ export const cookiesSections: LegalSection[] = [
     body: (
       <>
         <p>
-          Lorsqu'elle est autorisée et techniquement disponible, la mesure interne
+          Lorsqu'elle est autorisée, la mesure interne
           transmet à une route du même domaine un nom d'action, le chemin de la
           page sans paramètres et quelques propriétés primitives liées à l'étape.
           Le navigateur n'ajoute aucun identifiant publicitaire ou identifiant
@@ -89,9 +89,10 @@ export const cookiesSections: LegalSection[] = [
         <p>
           Comme toute requête web, l'hébergeur peut traiter l'adresse IP et le
           user-agent dans ses journaux techniques. Le collecteur applicatif n'a
-          pas vocation à les ajouter au jeu de données de mesure. Si la bannière
-          n'est pas configurée, la mesure reste désactivée plutôt que de partir
-          sans choix.
+          pas vocation à les ajouter au jeu de données de mesure. La table de
+          mesure Neon conserve le nom de l'action, le chemin, les propriétés
+          bornées et la date pendant 13 mois au plus. Si la bannière n'est pas
+          configurée, la mesure reste désactivée plutôt que de partir sans choix.
         </p>
       </>
     ),

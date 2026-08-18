@@ -97,7 +97,7 @@ describe("content quality for the Microsoft Access replacement guide", () => {
   });
 
   it("uses the approved central guide entry and keeps previews private", () => {
-    expect(accessGuide.editorialStatus).toBeUndefined();
+    expect(accessGuide.editorialStatus).toBe("published");
     expect(
       PUBLISHED_GUIDES.some((guide) => guide.slug === accessGuide.slug),
     ).toBe(true);

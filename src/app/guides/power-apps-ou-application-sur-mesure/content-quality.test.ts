@@ -136,7 +136,7 @@ describe("content quality for Power Apps or custom application guide", () => {
   });
 
   it("publishes the approved guide through the central registry", () => {
-    expect(powerAppsGuide.editorialStatus).toBeUndefined();
+    expect(powerAppsGuide.editorialStatus).toBe("published");
     expect(
       PUBLISHED_GUIDES.some((guide) => guide.slug === powerAppsGuide.slug),
     ).toBe(true);
