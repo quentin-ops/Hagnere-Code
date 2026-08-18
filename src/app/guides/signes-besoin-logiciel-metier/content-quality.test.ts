@@ -37,7 +37,7 @@ describe("content quality for the software-needs guide", () => {
     expect(pageSource).toContain("formatGuideDate(guide.dateModified)");
     expect(pageSource).not.toContain("editorialStatus");
     expect(pageSource).not.toContain("type GuideEntry");
-    expect(guide.editorialStatus).toBeUndefined();
+    expect(guide.editorialStatus).toBe("published");
     expect(metadata.robots).toMatchObject({
       index: false,
       follow: false,

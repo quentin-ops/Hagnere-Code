@@ -1,0 +1,80 @@
+import {
+  GuidePremiumLayout,
+  GuidePremiumSection,
+} from "@/components/guides/guide-premium-layout";
+import { GuidesShell } from "@/components/guides/GuidesShell";
+import {
+  buildGuideMetadata,
+  buildGuideStructuredData,
+} from "@/lib/guide-page-seo";
+import { formatGuideDate, getGuide } from "@/lib/guides";
+import { TEAM } from "@/lib/team";
+
+const guide = getGuide(__SLUG_JSON__);
+const breadcrumbName = __TITLE_JSON__;
+
+export const metadata = buildGuideMetadata(guide);
+const structuredData = buildGuideStructuredData(guide, breadcrumbName);
+
+export default function Page() {
+  return (
+    <GuidesShell>
+      {structuredData.map((item) => (
+        <script
+          key={item["@type"]}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(item).replace(/</g, "\\u003c"),
+          }}
+        />
+      ))}
+
+      <GuidePremiumLayout
+        breadcrumbs={[
+          { label: "Guides", href: "/guides" },
+          { label: breadcrumbName },
+        ]}
+        badges={[
+          { label: "Brouillon privé", variant: "muted" },
+          {
+            label: `Mis à jour le ${formatGuideDate(guide.dateModified)}`,
+            variant: "muted",
+          },
+        ]}
+        heroTitle={guide.heroTitle}
+        heroDescription={guide.cardDescription}
+        stats={[
+          { label: "Statut", value: "Brouillon" },
+          { label: "Lecture", value: `${guide.readTimeMin} min` },
+        ]}
+        author={{
+          initials: TEAM.quentin.initials,
+          name: TEAM.quentin.fullName,
+          role: TEAM.quentin.role,
+          profileUrl: "/equipe#fondateur",
+        }}
+        toc={[
+          {
+            id: "reponse",
+            number: "01",
+            label: "Réponse à construire",
+            shortLabel: "Réponse",
+          },
+        ]}
+      >
+        <GuidePremiumSection
+          id="reponse"
+          number="01"
+          label="Brouillon"
+          title="Remplacer cette coque par une réponse originale et vérifiée"
+        >
+          <p>
+            Cette route reste privée et hors du hub, du sitemap et de llms.txt
+            tant que ses quatre passes et sa décision de publication ne sont
+            pas documentées.
+          </p>
+        </GuidePremiumSection>
+      </GuidePremiumLayout>
+    </GuidesShell>
+  );
+}

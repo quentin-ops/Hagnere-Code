@@ -8,12 +8,6 @@
     "directory": ".open-next/assets",
     "binding": "ASSETS"
   },
-  "analytics_engine_datasets": [
-    {
-      "binding": "FUNNEL_ANALYTICS",
-      "dataset": "hagnere_code_funnel"
-    }
-  ],
   "vars": {
     // Valeur runtime alignée avec la production. Les scripts build/cf:build
     // imposent aussi cette valeur pendant le rendu statique des métadonnées.

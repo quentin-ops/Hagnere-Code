@@ -74,10 +74,13 @@ afterEach(() => {
 });
 
 describe("SaasSchedulePlannerTool", () => {
-  it("starts in STOP and exposes every required input family", () => {
+  it("starts with a plain-language request for missing information", () => {
     const status = container.querySelector('[role="status"]');
 
-    expect(status?.textContent).toContain("STOP_REQUIRED_INPUTS_UNKNOWN");
+    expect(status?.textContent).toContain(
+      "Calcul en attente : informations à compléter",
+    );
+    expect(container.textContent).not.toContain("STOP_REQUIRED_INPUTS_UNKNOWN");
     expect(container.querySelector("#schedule-finish-line")).not.toBeNull();
     const reserve =
       container.querySelector<HTMLInputElement>("#schedule-reserve");
@@ -96,7 +99,7 @@ describe("SaasSchedulePlannerTool", () => {
     );
     expect(container.textContent).toContain("Aucune tâche renseignée");
     expect(container.querySelector("pre")?.textContent).toContain(
-      "STOP — ligne d’arrivée inconnue",
+      "Ligne d’arrivée à renseigner",
     );
   });
 
@@ -153,7 +156,7 @@ describe("SaasSchedulePlannerTool", () => {
         ?.value,
     ).toContain("pilote privé");
     expect(container.querySelector('[role="status"]')?.textContent).toContain(
-      "CALENDAR_CANDIDATE_FOR_REVIEW",
+      "Calendrier prêt à relire",
     );
     expect(container.textContent).toContain("J+16");
     expect(container.textContent).toContain("J+25");
@@ -180,7 +183,7 @@ describe("SaasSchedulePlannerTool", () => {
 
     expect(reserve.value).toBe("9000000000.1234567");
     expect(container.querySelector('[role="status"]')?.textContent).toContain(
-      "STOP_INVALID_DEPENDENCY_NETWORK",
+      "Calcul bloqué : ordre des tâches à corriger",
     );
     expect(container.textContent).toContain(
       "plus de 6 décimales significatives ; saisie refusée avant conversion",
@@ -204,7 +207,7 @@ describe("SaasSchedulePlannerTool", () => {
     expect(document.activeElement).toBe(accessInput);
     expect(accessInput.id).toBe("schedule-task-0-id");
     expect(container.querySelector('[role="status"]')?.textContent).toContain(
-      "STOP_INVALID_DEPENDENCY_NETWORK",
+      "Calcul bloqué : ordre des tâches à corriger",
     );
     expect(container.textContent).toContain(
       "Dépendance inconnue pour parcours-construit : parcours",
@@ -221,23 +224,23 @@ describe("SaasSchedulePlannerTool", () => {
     await typeIdentifier(firstIdentifier, ["parcours-renomme"]);
 
     expect(container.querySelector('[role="status"]')?.textContent).toContain(
-      "STOP_INVALID_DEPENDENCY_NETWORK",
+      "Calcul bloqué : ordre des tâches à corriger",
     );
     expect(container.textContent).toContain(
       "Dépendance inconnue pour parcours-construit : parcours",
     );
   });
 
-  it("resets the fictitious example to the original STOP", async () => {
+  it("resets the fictitious example to missing-information guidance", async () => {
     await click(findButton("Charger l’exemple fictif"));
     await click(findButton("Réinitialiser"));
 
     expect(container.querySelectorAll("fieldset")).toHaveLength(0);
     expect(container.querySelector('[role="status"]')?.textContent).toContain(
-      "STOP_REQUIRED_INPUTS_UNKNOWN",
+      "Calcul en attente : informations à compléter",
     );
     expect(container.textContent).toContain(
-      "Plan réinitialisé. Le statut revient au STOP.",
+      "Plan réinitialisé. Le calcul revient à l’état « informations à compléter ».",
     );
     const feedback = findAnnouncedFeedback("Plan réinitialisé");
     expect(feedback.getAttribute("aria-live")).toBe("polite");
@@ -258,8 +261,9 @@ describe("SaasSchedulePlannerTool", () => {
     expect(writeText.mock.calls[0]?.[0]).toContain(
       "# Plan de calendrier SaaS — brouillon local",
     );
-    expect(writeText.mock.calls[0]?.[0]).toContain(
-      "CALENDAR_CANDIDATE_FOR_REVIEW",
+    expect(writeText.mock.calls[0]?.[0]).toContain("Calendrier prêt à relire");
+    expect(writeText.mock.calls[0]?.[0]).not.toMatch(
+      /STOP_REQUIRED_INPUTS_UNKNOWN|STOP_INVALID_DEPENDENCY_NETWORK|CLARIFY_CAPACITY_BEFORE_CALENDAR|CALENDAR_CANDIDATE_FOR_REVIEW|external-wait|internal-validation/,
     );
     expect(container.textContent).toContain("Brouillon Markdown copié");
     const feedback = findAnnouncedFeedback("Brouillon Markdown copié");

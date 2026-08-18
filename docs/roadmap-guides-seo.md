@@ -1,18 +1,41 @@
-# Roadmap de 100 nouveaux guides orientés conversion
+# Roadmap de 100 guides orientés conversion
 
-> Dernière révision : 29 juillet 2026. Cette roadmap est la file canonique des
-> **100 sujets à reconstruire** après la remise à zéro du corpus public. Un
-> sujet n’est compté comme publié qu’après ses quatre passes, les quatre gates
-> de l’orchestrateur et la vérification de sa page en production. Le premier
-> sujet reconstruit et autorisé à publication est
-> `automatiser-processus-metier` ; les 99 autres restent dans l’ordre
-> ci-dessous. Ce portefeuille éditorial n'est pas une promesse que le volume
-> constitue en lui-même un facteur de classement.
+> Dernière révision : 18 août 2026. Cette roadmap est la file canonique des
+> **100 sujets du portefeuille reconstruit**. Dix-sept sont aujourd'hui
+> publiés par le registre central ; les autres restent privés tant qu'ils
+> n'ont pas franchi les quatre passes, les gates de l'orchestrateur et la
+> vérification de production. Ce portefeuille n'est pas une promesse que le
+> nombre de pages constitue en lui-même un facteur de classement.
 
 Avant toute rédaction, suivre l’
 [ordre de lecture unique du workflow maître](workflow-maitre-guides-4-passes.md).
 La roadmap choisit les sujets ; elle ne redéfinit ni le processus, ni ses
 statuts, ni ses portes.
+
+## 0. État opérationnel au 18 août 2026
+
+La source de vérité machine est `src/lib/guides.ts`. Elle compte 17 guides
+explicitement `published` :
+
+| Silo opérationnel | Guides publics | Slugs |
+| --- | ---: | --- |
+| Applications, outils internes et préparation de projet | 11 | `automatiser-processus-metier`, `calculer-roi-application-metier`, `signes-besoin-logiciel-metier`, `remplacer-microsoft-access-application-web`, `power-apps-ou-application-sur-mesure`, `airtable-notion-ou-application-metier`, `migrer-logiciel-metier-sans-interruption`, `plan-recette-application-metier`, `choisir-prestataire-application-metier`, `securite-application-metier`, `droits-acces-application-metier` |
+| SaaS et MVP | 4 | `valider-idee-saas-avant-developper`, `mvp-saas-quoi-inclure`, `cahier-des-charges-saas`, `combien-de-temps-developper-saas` |
+| Google Ads | 1 | `prix-gestion-google-ads` |
+| Maintenance et reprise | 1 | `reprendre-logiciel-metier-existant` |
+| Référencement naturel | 0 | — |
+| Sites vitrines | 0 | — |
+
+Le prochain lot corrige donc en priorité le vide SEO, puis consolide Ads,
+sites vitrines et TMA. « Publié » signifie ici servi par le site, indexable et
+présent dans ses surfaces de découverte. Cela ne prouve pas que Google l'a
+indexé, classé ou qu'il reçoit du trafic ; ces états exigent Search Console.
+
+Les 23 candidats prioritaires ci-dessous ont tous un historique de page dans
+Git. Dix-huit possèdent encore un manifeste P4 historique. Cet historique est
+une matière à récupérer, pas une autorisation de republier : chaque sujet est
+confronté au `HEAD`, actualisé, puis repasse les contrôles différentiels et les
+gates courants.
 
 ## 1. Décision stratégique
 
@@ -52,7 +75,7 @@ Références de cadrage :
 | Applications métiers et outils internes |              24 | Priorité commerciale : besoins d'entreprise concrets, projets à forte valeur et prolongement naturel en maintenance |
 | SaaS et MVP                             |              18 | Fondateurs ayant une idée, un prototype ou un produit à reprendre                                                   |
 | Référencement naturel                   |              17 | Construire un vrai silo de décision autour de l'offre SEO, aujourd'hui peu couverte                                 |
-| Google Ads                              |              15 | Combler le plus gros trou du corpus : aucun guide dédié pour une offre déjà commercialisée                          |
+| Google Ads                              |              15 | Élargir un silo encore limité à un seul guide pour une offre déjà commercialisée                                    |
 | Maintenance, TMA et reprise             |              13 | Besoins urgents, récurrents et directement reliés aux projets web, SaaS et métiers                                  |
 | Sites vitrines pour professionnels      |              13 | Construire un silo de décisions et de situations propres aux professionnels                                          |
 | **Total**                               |         **100** | **100 intentions dans la nouvelle file canonique**                                                                  |
@@ -90,28 +113,45 @@ dans le dossier de recherche. Le petit formulaire du footer ne couvre pas
 toutes ces missions ; il ne doit donc pas être la seule sortie des guides SEO,
 Ads, TMA ou automatisation.
 
-## 4. Ordre du premier sprint éditorial
+## 4. File active après les 17 publications
 
-Ces quinze sujets ouvrent rapidement les silos les plus proches d'une demande
-de devis, sans attendre la fin de la roadmap :
+Légende de demande : `D1` = douleur active ou dépense déjà engagée ; `D2` =
+arbitrage avant achat ou signature ; `D3` = apprentissage plus en amont.
+Confiance `A` = intention exacte visible dans plusieurs résultats français
+actuels ; `B` = problème manifeste mais vocabulaire dispersé ; `C` = sujet
+émergent ou surtout formulé par les prestataires. Cette confiance n'est jamais
+un volume mensuel. La concurrence décrit uniquement la SERP observée le
+18 août 2026, pas une difficulté SEO calculée.
 
-| Ordre | Guide                                  | Motif                                                                          |
-| ----: | -------------------------------------- | ------------------------------------------------------------------------------ |
-|     1 | `automatiser-processus-metier`         | Douleur large de dirigeant, pont direct vers les outils internes               |
-|     2 | `valider-idee-saas-avant-developper`   | Capte les porteurs de projet avant qu'un mauvais MVP ne consomme le budget     |
-|     3 | `prix-gestion-google-ads`              | Intention commerciale forte et silo actuellement vide                          |
-|     4 | `calculer-roi-application-metier`      | Transforme un problème de temps en décision d'investissement                   |
-|     5 | `reprendre-logiciel-metier-existant`   | Besoin urgent et qualifié, propice à une mission puis à une TMA                |
-|     6 | `mvp-saas-quoi-inclure`                | Aide à définir un premier lot achetable                                        |
-|     7 | `audit-google-ads-que-verifier`        | Produit une passerelle naturelle vers l'audit Ads                              |
-|     8 | `audit-seo-que-contient-il`            | Clarifie le livrable avant achat d'une prestation SEO                          |
-|     9 | `seo-ou-google-ads`                    | Arbitrage budgétaire fréquent entre deux offres réelles du site                |
-|    10 | `contrat-tma-application`              | Prépare un besoin récurrent de maintenance applicative                         |
-|    11 | `template-ou-site-sur-mesure`          | Décision claire pour un prospect de site vitrine                               |
-|    12 | `signes-besoin-logiciel-metier`        | Aide l'entreprise à choisir la première réponse utile sans seuil arbitraire    |
-|    13 | `reprendre-mvp-vibe-code`              | Sujet actuel, mais traité sous l'angle de la reprise et des preuves techniques |
-|    14 | `pourquoi-google-ads-ne-convertit-pas` | Diagnostic directement relié à une dépense active                              |
-|    15 | `preparer-contenus-site-vitrine`       | Retire un frein concret avant devis et raccourcit le démarrage du projet       |
+| # | Guide | Demande | Signal actuel | Concurrence | Artefact et frontière propres | Décision |
+| --: | --- | :---: | --- | :---: | --- | --- |
+| 1 | `pourquoi-site-pas-visible-google` | D1 / A | Problème exact documenté par Google et fortement couvert | Forte | Arbre URL → exploration → indexation → impressions → clics ; s'arrête avant le cas « indexé sans trafic » | Premier guide : récupérer, actualiser les sources Google, repasser P1–P4 |
+| 2 | `pourquoi-google-ads-ne-convertit-pas` | D1 / A | Budget déjà dépensé ; contenus français très frais | Forte | Rapprochement clic → formulaire reçu → prospect qualifié → vente → marge | Récupérer et actualiser l'interface Ads |
+| 3 | `audit-seo-que-contient-il` | D2 / A | SERP dense et dossier France Num de mars 2026 | Forte | Fiche de réception : fait, périmètre, conséquence, action, responsable, contrôle | Récupérer ; nouveaux snapshots P1–P4 |
+| 4 | `audit-google-ads-que-verifier` | D1–D2 / A | Checklists françaises récentes | Forte | Registre Ads/CRM et six décisions, distinct d'un diagnostic symptomatique | Récupérer ; nouveaux snapshots P1–P4 |
+| 5 | `suivi-conversions-google-ads` | D1 / A | Documentation Google activement modifiée en 2026 | Moyenne à forte | Plan de mesure, tests, déduplication et remontée CRM | Fact-check produit complet avant QA |
+| 6 | `seo-ou-google-ads` | D2 / A | Intention durable, dont France Num | Forte | Arbre urgence, demande, marge, mesure et trésorerie | Récupérer ; nouveaux snapshots P1–P4 |
+| 7 | `template-ou-site-sur-mesure` | D2 / A | Comparatifs français actualisés en 2026 | Forte | TCO, contraintes, évolution et réversibilité, avec issue « template suffisant » | Récupérer ; nouveaux snapshots P1–P4 |
+| 8 | `preparer-contenus-site-vitrine` | D2 / B | Checklists fraîches, vocabulaire réparti | Moyenne | Six dossiers et une fiche d'offre transmissible ; ne refait pas le cahier des charges | Récupérer P4 ; revoir toutes les preuves commerciales |
+| 9 | `contrat-tma-application` | D2 / B | Intention niche, résultats 2026 d'agence et d'avocat | Moyenne | Simulation du premier incident et du premier mois de tickets | Récupérer ; relecture juridique et snapshots neufs |
+| 10 | `reprendre-mvp-vibe-code` | D1 / C | Tendance réelle, peu de résultats français exacts | Faible | Dossier de reprise et cinq preuves en environnement isolé | Pari commercial ; ne jamais revendiquer un fort volume sans Planner |
+| 11 | `leads-google-ads-non-qualifies` | D1 / A | Problème très présent autour des prospects qualifiés et conversions hors ligne | Moyenne | Trajet requête → formulaire → qualification → refus ou vente | Récupérer P4 |
+| 12 | `calculer-cout-par-lead-google-ads` | D1–D2 / A | SERP fraîche, benchmarks nombreux mais peu comparables | Forte | Coût par demande, demande qualifiée et client à partir d'Ads, CRM et facturation | Récupérer P4 ; exclure les moyennes invérifiables |
+| 13 | `budget-google-ads-pme` | D2 / A | Requête et calculateurs largement couverts | Forte | Calcul marge, transformation, volume testable et condition d'arrêt | Récupérer P4 |
+| 14 | `landing-page-google-ads` | D2 / A | Intention établie, SERP saturée de checklists | Forte | Wireframe commenté et continuité requête/annonce/page | Récupérer P4 |
+| 15 | `cout-maintenance-application-metier` | D2 / B | Requêtes mêlant création, TMA et hébergement | Moyenne | Registre annuel par poste, sans pourcentage magique du coût initial | Récupérer P4 |
+| 16 | `reprendre-saas-developpe-par-freelance` | D1 / B | Problème net, formulations dispersées | Faible à moyenne | Registre des comptes vitaux et retrait vérifié des anciens accès | Récupérer P4 |
+| 17 | `prioriser-fonctionnalites-mvp-saas` | D1–D2 / B | SERP dominée par RICE/MoSCoW et outils produit | Moyenne | Fiches problème, preuve, contrainte, dépendance, test et décision | Quick win : récupérer P4 après le premier guide |
+| 18 | `site-indexe-sans-trafic` | D1 / B | Symptôme présent sous plusieurs formulations | Moyenne | Registre page-requête ; commence là où le guide n°1 s'arrête | Publier après le guide parent |
+| 19 | `positions-google-baissent` | D1 / B | Symptôme fréquent, vocabulaire varié | Forte | Fiche d'incident, exports comparables, hypothèse et action réversible | Récupérer P4 |
+| 20 | `combien-de-temps-resultats-seo` | D2 / A | Intention durable et très couverte | Très forte | Journal de preuves reliant modification, indexation, impressions, clics et demandes | Récupérer P4 ; angle décisionnel obligatoire |
+| 21 | `seo-local-pme` | D2 / A | Nombreux guides 2026 et contenus France Num | Très forte | Rejouer une recherche locale jusqu'au contact, sans pages ville artificielles | Récupérer P4 ; ancrage Savoie utile seulement s'il est réel |
+| 22 | `mvp-prototype-ou-poc` | D2–D3 / A | SERP forte avec éditeurs, médias et agences produit | Très forte | Fiche question, testeurs, preuve, arrêt et actifs récupérés | Récupérer P4 ; guide carrefour |
+| 23 | `back-office-sur-mesure-pme` | D2 / C | Résultats surtout transactionnels | Faible à moyenne | Suivi d'un dossier réel entre équipes, cas normal/incomplet/urgent | Récupérer P4 ; tester aussi « outil de gestion interne PME » |
+
+Les neuf propositions du premier arbitrage restent toutes retenues. Le n°10,
+`reprendre-mvp-vibe-code`, est un pari éditorial justifié par la proximité
+commerciale et l'espace concurrentiel, pas par un volume démontré.
 
 ## 5. Les 100 guides
 
@@ -270,6 +310,37 @@ Keyword Planner apporte un signal de demande et d'enchère, pas une mesure de
 difficulté SEO. Les observations de SERP et les impressions Search Console
 restent nécessaires.
 
+### Protocole obligatoire de validation de la demande
+
+Aucun export Search Console ou Keyword Planner n'est présent dans le dépôt au
+18 août 2026. La colonne volume reste donc `NON_MESURE` jusqu'à l'ajout d'un
+export daté ; aucun agent ne transforme une suggestion, un indice Trends ou un
+nombre de résultats en volume mensuel.
+
+Avant chaque lot :
+
+1. exporter 16 mois de Search Console, type Web, pays France, avec requêtes et
+   pages ; séparer marque et non-marque, puis ordinateur et mobile ;
+2. préparer pour chaque sujet 5 à 15 formulations réellement distinctes, sans
+   additionner les synonymes que Keyword Planner regroupe déjà ;
+3. exporter Keyword Planner pour France, français, réseau Google, sur 12 puis
+   24 mois : moyenne mensuelle, variations 3 mois et annuelle, concurrence
+   publicitaire et enchère haute ; l'enchère signale une valeur commerciale,
+   pas une difficulté SEO ;
+4. contrôler Google Trends sur France, recherche Web, cinq ans puis douze
+   mois ; son indice relatif ne devient jamais un volume ;
+5. dater une photographie des dix premiers résultats, mobile et ordinateur,
+   avec intention, type de page, fraîcheur et présence d'une source officielle ;
+6. arbitrer relativement au portefeuille : demande observée, proximité d'une
+   mission, espace différenciant et risque de cannibalisation ;
+7. quatre à huit semaines après publication, relever indexation, impressions,
+   requêtes et clics ; à 90 jours, décider de garder, enrichir, fusionner ou
+   repositionner.
+
+Chaque dossier de recherche conserve l'export ou sa référence, la date, les
+filtres et la personne qui a effectué la mesure. Une donnée non accessible est
+écrite `NON_MESUREE`, jamais remplacée par une estimation silencieuse.
+
 ## 7. Règles anti-cannibalisation
 
 1. La page service conserve l'intention transactionnelle
@@ -325,17 +396,25 @@ impressions non-marque, requêtes, CTR, clics vers les pages service, démarrage
 de formulaire et demandes qualifiées. Une position moyenne isolée ou un temps
 passé ne suffit pas à juger un guide.
 
-## 10. État après la remise à zéro
+## 10. État de reprise et règle de provenance
 
-Le corpus précédent ne constitue plus une référence de qualité ni un état
-publié à prolonger. Les routes historiques sont traitées comme des routes
-héritées à rediriger ; elles ne comptent plus dans la file éditoriale.
+Le corpus retiré ne constitue ni une référence de qualité ni un état publié à
+prolonger. Les routes historiques restent des archives de travail. Une ancienne
+page ou un ancien manifeste peut accélérer l'inventaire des sources et la
+comparaison des diffs ; il ne transfère jamais son autorisation de publication.
 
-`automatiser-processus-metier` est le premier guide reconstruit. Il a suivi les
-quatre passes successives et les quatre gates documentées dans son dossier de
-recherche. Il est autorisé à rejoindre le hub, le sitemap et `llms.txt` dans un
-artefact de production indexable. Cette autorisation ne prouve ni déploiement,
-ni exploration, ni indexation effective, ni classement.
+Les 17 guides listés en section 0 sont les seuls publiés au 18 août 2026. Leur
+présence dans le hub, le sitemap et `llms.txt` est dérivée du statut explicite
+`published`. Un statut absent, `draft` ou `review` reste fermé par défaut.
 
-Les 99 sujets suivants conservent le statut `NON_LANCE`. Aucun ancien contenu,
-ancien score ou ancien contrôle ne leur est transféré.
+Pour tout autre sujet, employer les états suivants dans le dossier :
+
+- `HISTORIQUE_A_RECUPERER` : une page ou des manifests anciens existent ;
+- `EN_PASSES` : le guide courant a commencé P1–P4 sur le snapshot du `HEAD` ;
+- `PRET_REVUE_HUMAINE` : P1–P4 et contre-audit sont verts, mais le registre
+  reste privé ;
+- `PUBLISHED` : décision documentée, statut ouvert, production vérifiée.
+
+Le prochain guide engagé est `pourquoi-site-pas-visible-google`. Son objectif
+est de créer le premier vrai point d'entrée du silo SEO ; cette décision ne
+préjuge ni de son indexation future, ni de son classement, ni de son trafic.

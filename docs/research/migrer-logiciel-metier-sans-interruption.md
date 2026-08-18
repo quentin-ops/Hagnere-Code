@@ -917,3 +917,13 @@ Manifeste P4 : docs/research/manifests/migrer-logiciel-metier-sans-interruption-
 P0 : 0
 P1 : 0
 ```
+
+## 21. Réconciliation du statut — 18 août 2026
+
+La revue humaine globale du 7 août 2026 a ouvert ce guide dans le registre
+central. Le 18 août, sa route publique, son canonical, son statut `index,
+follow`, sa présence dans le hub, le sitemap et `llms.txt` ont été vérifiés.
+La batterie courante est verte : `check:seo` 206/206, suite globale 1 163/1 163,
+TypeScript, ESLint et build de production. Le statut de référence est donc
+`PUBLISHED`. Les passes et le manifeste restent des preuves de snapshots ;
+ils ne prouvent ni exploration, ni indexation Search Console, ni classement.

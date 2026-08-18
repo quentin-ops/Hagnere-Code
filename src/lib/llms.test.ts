@@ -45,7 +45,9 @@ describe("llms.txt", () => {
       expect(text, guide.slug).toContain(`Mise à jour réelle : ${guide.dateModified}.`);
     }
 
-    for (const guide of GUIDES.filter((entry) => entry.editorialStatus)) {
+    for (const guide of GUIDES.filter(
+      (entry) => entry.editorialStatus !== "published",
+    )) {
       expect(urls).not.toContain(`${SITE_URL}/guides/${guide.slug}`);
     }
   });

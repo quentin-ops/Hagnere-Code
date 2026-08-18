@@ -184,7 +184,9 @@ export function SaasSchedulePlannerTool() {
 
   function reset() {
     setDraft(createEmptyScheduleDraft());
-    setCopyStatus("Plan réinitialisé. Le statut revient au STOP.");
+    setCopyStatus(
+      "Plan réinitialisé. Le calcul revient à l’état « informations à compléter ».",
+    );
   }
 
   async function copyMarkdown() {
@@ -223,8 +225,8 @@ export function SaasSchedulePlannerTool() {
           Chaque chaîne saisie est contrôlée avant conversion : utilisez le
           point décimal (par exemple 0.5), sans exposant, avec au plus 6
           décimales significatives et au maximum 1 000 000 jours ouvrés. Une
-          saisie ou une somme hors borne laisse tous les scénarios en STOP,
-          jamais dans un résultat arrondi ou partiel.
+          saisie ou une somme hors borne empêche le calcul des scénarios : elle
+          n’est jamais transformée en résultat arrondi ou partiel.
         </p>
       </div>
 
@@ -255,7 +257,7 @@ export function SaasSchedulePlannerTool() {
                 }));
                 setCopyStatus("");
               }}
-              placeholder="STOP tant que prototype, pilote privé, mise en production ou service soutenable ne sont pas distingués"
+              placeholder="Précisez si vous visez un prototype, un pilote privé, une mise en production ou un service soutenable"
               className="mt-2 w-full resize-y rounded-xl border border-zinc-300 bg-white px-3 py-3 text-sm leading-relaxed text-zinc-950 outline-none transition placeholder:text-zinc-400 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500/20 motion-reduce:transition-none dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-500"
             />
           </label>
@@ -309,8 +311,8 @@ export function SaasSchedulePlannerTool() {
 
           {draft.tasks.length === 0 ? (
             <p className="mt-5 rounded-2xl border border-dashed border-red-300 bg-red-50 p-4 text-sm text-red-900 dark:border-red-900 dark:bg-red-950/30 dark:text-red-100">
-              STOP — ajoutez au moins une tâche, son résultat et son
-              responsable.
+              Ajoutez au moins une tâche, son résultat et son responsable avant
+              de calculer le calendrier.
             </p>
           ) : (
             <div className="mt-5 space-y-5">
@@ -386,7 +388,7 @@ export function SaasSchedulePlannerTool() {
                       </span>
                       <span className="mt-1 block text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
                         Renommer ou retirer une tâche ne réécrit pas ces liens :
-                        toute référence devenue inconnue déclenche un STOP.
+                        toute référence devenue inconnue empêche le calcul.
                       </span>
                       <input
                         id={`schedule-task-${index}-dependencies`}
@@ -494,14 +496,14 @@ export function SaasSchedulePlannerTool() {
             id="schedule-result-heading"
             className="text-lg font-semibold text-zinc-950 dark:text-white"
           >
-            3. Lire le statut avant de regarder les scénarios
+            3. Vérifier si le calendrier peut être calculé
           </h4>
           <div
             className={`mt-4 rounded-2xl border p-4 sm:p-5 ${statusClasses[assessment.status]}`}
           >
             <div role="status" aria-live="polite" aria-atomic="true">
               <p className="text-xs font-bold uppercase tracking-[0.14em]">
-                {assessment.status}
+                Résultat du contrôle
               </p>
               <p className="mt-2 text-base font-semibold">{assessment.title}</p>
               <p className="mt-1 text-sm leading-relaxed">

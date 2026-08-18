@@ -38,15 +38,15 @@ la base du seul contenu du dossier.
 | Variable | Valeur attendue | Usage |
 |---|---|---|
 | `NEXT_PUBLIC_ENV` | `production` en Production ; `preview` en Preview | Active `index/follow` uniquement pour la production. Toute preview reste `noindex,nofollow`. Les deux portées Vercel ont été séparées le 20 juillet 2026. |
-| `DATABASE_URL` | URL Neon prod | Persistance des briefs, ai_call_log. |
+| `DATABASE_URL` | URL Neon prod | Persistance des briefs, journaux anti-abus et événements first-party consentis. |
 | `RESEND_API_KEY` | Clé Resend prod | Envoi emails formulaire. |
 | `GROQ_API_KEY` | Clé Groq prod | Transcription audio `/api/transcribe`. |
 | `MATH_CHALLENGE_SECRET` | Secret aléatoire d'au moins 32 caractères | Signe les contrôles anti-robot des formulaires. À définir séparément dans Preview et Production, sans jamais le committer. |
 | `CONTACT_TO_EMAIL` | `quentin@hagnere-patrimoine.fr` ou boîte suivie | Destinataire interne formulaire. |
 | `CONTACT_FROM_EMAIL` | `contact@hagnere-code.ai` | Expéditeur Resend (doit être DKIM-validé). |
 | `NEXT_PUBLIC_CALENDLY_URL` | URL Calendly réelle | Optionnel — fallback `https://calendly.com/hagnere-patrimoine/hagnere-code-entretien-de-decouverte`. |
-| `NEXT_PUBLIC_COOKIE_BANNER` | `0` ou absent | Active l'interface de consentement uniquement après audit des traceurs. |
-| `NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED` | `false` ou absent | Garde le collecteur first-party désactivé tant qu'aucun stockage compatible et audité n'est déployé. |
+| `NEXT_PUBLIC_COOKIE_BANNER` | `1` après migration et audit | Affiche un choix accepter/refuser symétrique ; aucun événement facultatif ne part sans acceptation. |
+| `NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED` | `true` après migration et audit | Autorise le collecteur first-party Neon, sans IP, user-agent, cookie ni identifiant visiteur dans la table de mesure. |
 | `TRUST_CF_CONNECTING_IP` | absent sur Vercel | À mettre à `1` uniquement sur un runtime réellement placé derrière Cloudflare ; sinon un client pourrait choisir son bucket IP. |
 | `TRUST_X_FORWARDED_FOR` | absent sur Vercel | À mettre à `1` uniquement derrière un proxy administré qui réécrit l'en-tête ; absent sur un serveur directement exposé. |
 

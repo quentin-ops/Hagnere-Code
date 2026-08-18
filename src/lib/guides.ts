@@ -44,8 +44,8 @@ export interface GuideEntry {
   /** Images éditoriales visibles, en chemins absolus du site, pour Article. */
   articleImagePaths?: string[];
   featured?: boolean;
-  /** Tant que la validation éditoriale manque, la route reste accessible mais noindex. */
-  editorialStatus?: "ready-for-human-review";
+  /** Porte de publication explicite : seuls les guides `published` sont publics. */
+  editorialStatus: "draft" | "review" | "published";
 }
 
 export const GUIDES: GuideEntry[] = [
@@ -59,6 +59,7 @@ export const GUIDES: GuideEntry[] = [
       "Cinq portes bloquantes, sept réponses possibles et un calcul transparent pour choisir, reporter ou refuser une automatisation.",
     heroTitle: "Quel processus métier automatiser en premier ?",
     section: "Outils internes et automatisation",
+    editorialStatus: "published",
     datePublished: "2026-07-29T17:01:33+02:00",
     dateModified: "2026-07-29T19:07:13Z",
     readTimeMin: 20,
@@ -79,6 +80,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle:
       "Calculer le ROI d’une application métier sans inventer les gains",
     section: "Outils internes et automatisation",
+    editorialStatus: "published",
     datePublished: "2026-07-31T05:30:49+02:00",
     dateModified: "2026-07-31T05:30:49+02:00",
     readTimeMin: 23,
@@ -98,6 +100,7 @@ export const GUIDES: GuideEntry[] = [
       "Trois situations réelles, six réponses comparées et une décision qui peut rester « observer ».",
     heroTitle: "Votre entreprise a-t-elle besoin d’un logiciel métier ?",
     section: "Outils internes et automatisation",
+    editorialStatus: "published",
     datePublished: "2026-08-01T11:59:46+02:00",
     dateModified: "2026-08-01T11:59:46+02:00",
     readTimeMin: 21,
@@ -118,6 +121,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle:
       "Remplacer Microsoft Access sans perdre le travail qu’il contient",
     section: "Outils internes et automatisation",
+    editorialStatus: "published",
     datePublished: "2026-07-22T11:09:47+02:00",
     dateModified: "2026-08-02T22:15:51+02:00",
     readTimeMin: 20,
@@ -137,6 +141,7 @@ export const GUIDES: GuideEntry[] = [
       "Séparez six questions, choisissez un test sans produit et décidez s’il faut continuer, changer l’idée, attendre ou arrêter.",
     heroTitle: "Valider une idée SaaS avant de développer",
     section: "SaaS et MVP",
+    editorialStatus: "published",
     datePublished: "2026-07-30T07:04:32+02:00",
     dateModified: "2026-07-30T07:04:32+02:00",
     readTimeMin: 20,
@@ -156,6 +161,7 @@ export const GUIDES: GuideEntry[] = [
       "Un guide et un calculateur local pour remettre quatre modes de rémunération sur la même base, sans confondre média, honoraires et acquisition.",
     heroTitle: "Combien coûte vraiment la gestion de Google Ads ?",
     section: "Google Ads & acquisition",
+    editorialStatus: "published",
     datePublished: "2026-07-31T00:24:23+02:00",
     dateModified: "2026-07-31T00:24:23+02:00",
     readTimeMin: 32,
@@ -175,6 +181,7 @@ export const GUIDES: GuideEntry[] = [
       "Une méthode sans score opaque, quatre coûts totaux de possession (TCO) à renseigner et un plan de migration réversible pour comparer les options.",
     heroTitle: "Power Apps ou application sur mesure : comment choisir ?",
     section: "Outils internes et automatisation",
+    editorialStatus: "published",
     datePublished: "2026-07-23T21:31:02+02:00",
     dateModified: "2026-08-03T07:58:56+02:00",
     readTimeMin: 27,
@@ -194,6 +201,7 @@ export const GUIDES: GuideEntry[] = [
       "Douze preuves, cinq issues et une grille de sortie pour décider s’il faut garder Airtable ou Notion, renforcer l’organisation, hybrider ou migrer.",
     heroTitle: "Airtable, Notion ou application métier : comment choisir ?",
     section: "Outils internes et automatisation",
+    editorialStatus: "published",
     datePublished: "2026-08-05T21:41:54+02:00",
     dateModified: "2026-08-05T21:41:54+02:00",
     readTimeMin: 25,
@@ -213,6 +221,7 @@ export const GUIDES: GuideEntry[] = [
       "Un test de relève en cinq capacités et un procès-verbal de reprise pour décider de reprendre, limiter la mission ou reporter la bascule.",
     heroTitle: "Reprendre un logiciel métier existant sans signer à l’aveugle",
     section: "Maintenance & reprise",
+    editorialStatus: "published",
     datePublished: "2026-07-30T12:47:39+02:00",
     dateModified: "2026-07-30T12:47:39+02:00",
     readTimeMin: 12,
@@ -232,6 +241,7 @@ export const GUIDES: GuideEntry[] = [
       "Cinq preuves et un budget en minutes pour basculer, réduire le lot ou reporter sans masquer les inconnues.",
     heroTitle: "Migrer un logiciel métier sans interrompre l’activité",
     section: "Outils internes et migration",
+    editorialStatus: "published",
     datePublished: "2026-07-30T14:53:22+02:00",
     dateModified: "2026-07-30T14:53:22+02:00",
     readTimeMin: 19,
@@ -252,6 +262,7 @@ export const GUIDES: GuideEntry[] = [
     heroTitle:
       "Plan de recette d’une application métier : prouver avant d’accepter",
     section: "Préparer son projet",
+    editorialStatus: "published",
     datePublished: "2026-07-30T16:30:59+02:00",
     dateModified: "2026-07-30T16:30:59+02:00",
     readTimeMin: 16,
@@ -271,6 +282,7 @@ export const GUIDES: GuideEntry[] = [
       "Un cas métier commun, huit points non compensables et un outil local pour choisir, préciser, cadrer ou reporter.",
     heroTitle: "Comment choisir le prestataire de votre application métier ?",
     section: "Préparer son projet",
+    editorialStatus: "published",
     datePublished: "2026-07-30T18:41:28+02:00",
     dateModified: "2026-07-30T18:41:28+02:00",
     readTimeMin: 17,
@@ -290,6 +302,7 @@ export const GUIDES: GuideEntry[] = [
       "Une méthode sans score pour obtenir des preuves, tester la restauration, attribuer les alertes et décider de la mise en service.",
     heroTitle: "Quel socle de sécurité exiger pour une application métier ?",
     section: "Préparer son projet",
+    editorialStatus: "published",
     datePublished: "2026-07-30T22:03:29+02:00",
     dateModified: "2026-07-30T22:03:29+02:00",
     readTimeMin: 16,
@@ -309,6 +322,7 @@ export const GUIDES: GuideEntry[] = [
       "Une matrice de dix dimensions, des STOP non compensables et un outil local pour préciser rôles, portée, refus, revue et tests.",
     heroTitle: "Qui peut voir et modifier quoi dans votre application métier ?",
     section: "Applications métiers et outils internes",
+    editorialStatus: "published",
     datePublished: "2026-07-31T01:07:59+02:00",
     dateModified: "2026-07-31T01:07:59+02:00",
     readTimeMin: 14,
@@ -328,6 +342,7 @@ export const GUIDES: GuideEntry[] = [
       "Neuf blocs et cinq champs par bloc pour décrire le même produit, révéler les inconnues bloquantes et comparer des offres sur des preuves.",
     heroTitle: "Cahier des charges SaaS : faire chiffrer le même produit",
     section: "Préparer son projet",
+    editorialStatus: "published",
     datePublished: "2026-07-22T07:29:32+02:00",
     dateModified: "2026-08-01T13:03:24+02:00",
     readTimeMin: 42,
@@ -347,6 +362,7 @@ export const GUIDES: GuideEntry[] = [
       "Un planificateur local pour relier les tâches, tester quatre scénarios, garder les inconnues visibles et mesurer l’écart au délai disponible.",
     heroTitle: "Combien de temps faut-il pour développer un SaaS ?",
     section: "Préparer son projet",
+    editorialStatus: "published",
     datePublished: "2026-07-23T00:59:26+02:00",
     dateModified: "2026-08-02T22:39:26+02:00",
     readTimeMin: 17,
@@ -366,6 +382,7 @@ export const GUIDES: GuideEntry[] = [
       "Sept familles, cinq choix et une charge manuelle calculée pour délimiter un premier test exploitable.",
     heroTitle: "MVP SaaS : quoi inclure avant le premier test\u00a0?",
     section: "SaaS et MVP",
+    editorialStatus: "published",
     datePublished: "2026-07-20T15:19:41+02:00",
     dateModified: "2026-08-03T04:14:58+02:00",
     readTimeMin: 23,
@@ -377,10 +394,13 @@ export const GUIDES: GuideEntry[] = [
   },
 ];
 
+/** Une entrée n'est publique que si sa porte éditoriale est explicitement ouverte. */
+export function isGuidePublished(guide: GuideEntry): boolean {
+  return guide.editorialStatus === "published";
+}
+
 /** Guides ayant franchi la porte éditoriale documentée et donc découvrables. */
-export const PUBLISHED_GUIDES = GUIDES.filter(
-  (guide) => guide.editorialStatus !== "ready-for-human-review",
-);
+export const PUBLISHED_GUIDES = GUIDES.filter(isGuidePublished);
 
 /**
  * Rend la politique d'indexation explicite au niveau de chaque guide.
@@ -388,7 +408,7 @@ export const PUBLISHED_GUIDES = GUIDES.filter(
  */
 export function guideRobots(guide: GuideEntry) {
   const canBeIndexed =
-    guide.editorialStatus !== "ready-for-human-review" &&
+    isGuidePublished(guide) &&
     isSearchIndexingEnabled(
       process.env.NEXT_PUBLIC_ENV,
       process.env.VERCEL_ENV,

@@ -15,6 +15,7 @@ import { GuidePremiumFaq } from "./guide-premium-faq";
 import { GuidePremiumFaqCategorized } from "./guide-premium-faq-categorized";
 import { GuidePremiumMobileCta } from "./guide-premium-mobile-cta";
 import { GuidePremiumTocPills } from "./guide-premium-toc-pills";
+import { TrackedGuideCtaLink } from "./tracked-guide-cta-link";
 import type { GuidePremiumFaqCategory } from "./guide-premium-types";
 
 /* ──────────────────────────────────────────────
@@ -384,20 +385,23 @@ function PremiumSidebarHeroCta({ cta }: { cta: GuidePremiumSidebarHeroCta }) {
         </ul>
 
         <div className="space-y-2.5">
-          <Link
+          <TrackedGuideCtaLink
             href={cta.primaryCtaHref ?? cta.ctaHref ?? CTA_HREF_DEFAUT}
+            placement="hero"
+            primary
             className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-semibold rounded-xl bg-white dark:bg-zinc-950 text-zinc-900 dark:text-white hover:bg-zinc-50 transition-colors"
           >
             <MessageSquareText className="size-4" aria-hidden="true" />
             {cta.primaryCtaLabel ?? cta.ctaLabel ?? CTA_LABEL_DEFAUT}
-          </Link>
-          <a
+          </TrackedGuideCtaLink>
+          <TrackedGuideCtaLink
             href={cta.phoneHref ?? telHref(cta.phoneLabel)}
+            placement="hero"
             className="flex items-center justify-center gap-2 w-full px-4 py-2.5 text-sm font-medium rounded-xl border border-white/30 text-white hover:bg-white/10 transition-colors"
           >
             <Phone className="size-4" aria-hidden="true" />
             {cta.phoneLabel ?? TEL_CABINET_LABEL}
-          </a>
+          </TrackedGuideCtaLink>
         </div>
       </div>
     </div>
@@ -472,25 +476,28 @@ function ContextCtaCard({ data }: { data: GuidePremiumContextCta }) {
         )}
 
         <div className="space-y-2">
-          <Link
+          <TrackedGuideCtaLink
             href={data.ctaHref ?? CTA_HREF_DEFAUT}
+            placement="sidebar"
+            primary
             className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl bg-zinc-950 text-white text-sm font-semibold hover:bg-zinc-800 transition-colors"
           >
             <MessageSquareText className="size-4" aria-hidden="true" />
             {data.ctaLabel ?? CTA_LABEL_DEFAUT}
             <ArrowRight className="size-4" aria-hidden="true" />
-          </Link>
+          </TrackedGuideCtaLink>
           {data.secondaryLabel && (
-            <a
+            <TrackedGuideCtaLink
               href={
                 data.secondaryHref ??
                 `tel:${data.secondaryLabel.replace(/\s/g, "")}`
               }
+              placement="sidebar"
               className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 text-zinc-800 dark:text-white text-sm font-medium hover:border-indigo-300 hover:text-indigo-700 transition-colors"
             >
               <Phone className="size-4" aria-hidden="true" />
               {data.secondaryLabel}
-            </a>
+            </TrackedGuideCtaLink>
           )}
         </div>
       </div>
@@ -911,23 +918,25 @@ function PremiumStrategyCta({ data }: { data: GuidePremiumStrategyCtaData }) {
             </div>
 
             <div className="space-y-2.5 lg:pt-1">
-              <Link
-                data-guide-primary-cta="true"
+              <TrackedGuideCtaLink
                 href={data.ctaHref ?? CTA_HREF_DEFAUT}
+                placement="article_end"
+                primary
                 className="flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-xl bg-zinc-950 text-white text-sm font-semibold hover:bg-zinc-800 transition-colors"
               >
                 <MessageSquareText className="size-4" aria-hidden="true" />
                 {data.ctaLabel ?? CTA_LABEL_DEFAUT}
                 <ArrowRight className="size-4" aria-hidden="true" />
-              </Link>
+              </TrackedGuideCtaLink>
               {data.showPhoneCta !== false && (
-                <a
+                <TrackedGuideCtaLink
                   href={data.phoneHref ?? telHref(data.phoneLabel)}
+                  placement="article_end"
                   className="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-950 text-zinc-800 dark:text-white text-sm font-medium hover:bg-zinc-50 transition-colors"
                 >
                   <Phone className="size-4" aria-hidden="true" />
                   {data.phoneLabel ?? TEL_CABINET_LABEL}
-                </a>
+                </TrackedGuideCtaLink>
               )}
             </div>
           </div>

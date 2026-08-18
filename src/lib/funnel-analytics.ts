@@ -1,7 +1,8 @@
 /**
  * Événements de conversion first-party. Le navigateur envoie uniquement le
  * nom, le chemin (sans query string) et des propriétés primitives à une route
- * du même domaine. Le Worker les écrit dans Cloudflare Analytics Engine.
+ * du même domaine. La route les écrit dans la table Neon dédiée, sans IP,
+ * user-agent, cookie ni identifiant visiteur.
  */
 
 import { isAnalyticsAllowed } from "@/lib/cookie-consent";
@@ -32,11 +33,9 @@ export const FUNNEL_EVENT_NAMES = [
 export type FunnelEventName = (typeof FUNNEL_EVENT_NAMES)[number];
 
 /**
- * La production Vercel ne dispose pas du binding Analytics Engine utilisé par
- * le collecteur Cloudflare. La mesure reste donc explicitement inactive tant
- * qu'un collecteur compatible n'a pas été déployé et validé. Ce drapeau ne
- * contient aucun secret : il empêche surtout le navigateur d'émettre des
- * requêtes vouées à échouer.
+ * La mesure reste explicitement inactive tant que le stockage, la bannière et
+ * le consentement n'ont pas été déployés et validés. Ce drapeau public ne
+ * contient aucun secret.
  */
 export function isFunnelAnalyticsCollectionEnabled(): boolean {
   const value = process.env.NEXT_PUBLIC_FUNNEL_ANALYTICS_ENABLED;

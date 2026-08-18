@@ -56,6 +56,11 @@ const publicCopy = [
   toolSource,
   ...svgSources,
 ].join("\n");
+const readerFacingStaticCopy = [
+  pageSource,
+  ogSource.replace('export const runtime = "edge";', ""),
+  ...svgSources,
+].join("\n");
 const toolMarkup = renderToStaticMarkup(createElement(SaasSchedulePlannerTool));
 
 describe("public content quality for the SaaS schedule guide", () => {
@@ -118,14 +123,24 @@ describe("public content quality for the SaaS schedule guide", () => {
     );
   });
 
-  it("implements the four exact statuses without a score", () => {
+  it("keeps the four engine statuses internal and shows plain French labels", () => {
     for (const status of [
       "STOP_REQUIRED_INPUTS_UNKNOWN",
       "STOP_INVALID_DEPENDENCY_NETWORK",
       "CLARIFY_CAPACITY_BEFORE_CALENDAR",
       "CALENDAR_CANDIDATE_FOR_REVIEW",
     ]) {
-      expect(publicCopy).toContain(status);
+      expect(engineSource).toContain(status);
+      expect(readerFacingStaticCopy).not.toContain(status);
+      expect(toolMarkup).not.toContain(status);
+    }
+    for (const label of [
+      "Calcul en attente : informations à compléter",
+      "Ordre des tâches à corriger",
+      "Disponibilités à clarifier",
+      "Calendrier prêt à relire",
+    ]) {
+      expect(publicCopy).toContain(label);
     }
     expect(pageSource).toContain('{ label: "Score global", value: "Aucun" }');
     expect(toolSource).toContain("aucun score");
@@ -269,7 +284,25 @@ describe("public content quality for the SaaS schedule guide", () => {
       expect(toolSource).not.toMatch(forbidden);
     }
 
-    expect(toolMarkup).toContain("STOP_REQUIRED_INPUTS_UNKNOWN");
+    expect(toolMarkup).toContain(
+      "Calcul en attente : informations à compléter",
+    );
+    expect(toolMarkup).not.toMatch(
+      /STOP_REQUIRED_INPUTS_UNKNOWN|STOP_INVALID_DEPENDENCY_NETWORK|CLARIFY_CAPACITY_BEFORE_CALENDAR|CALENDAR_CANDIDATE_FOR_REVIEW/,
+    );
+    for (const result of [
+      assessSaasSchedule(createRelaisProExample()),
+      assessSaasSchedule({
+        finishLine: "",
+        tasks: [],
+        reserveDays: null,
+        maxWorkingDays: null,
+      }),
+    ]) {
+      expect(result.markdown).not.toMatch(
+        /STOP_REQUIRED_INPUTS_UNKNOWN|STOP_INVALID_DEPENDENCY_NETWORK|CLARIFY_CAPACITY_BEFORE_CALENDAR|CALENDAR_CANDIDATE_FOR_REVIEW|external-wait|internal-validation/,
+      );
+    }
     expect(toolMarkup).toContain("Plan de calendrier SaaS généré en Markdown");
     expect(toolSource).toContain("key={draft.taskUiIds[index]}");
     expect(toolSource).toContain('aria-live="polite"');

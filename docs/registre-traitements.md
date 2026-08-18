@@ -71,10 +71,10 @@ purges et revues d'accès doivent être archivés séparément.
 | Finalités | Après activation volontaire, éviter la perte d'un brouillon ; mémoriser un choix de traceurs ; mesurer facultativement des étapes |
 | Régime | Exemption de consentement uniquement si le brouillon est strictement nécessaire au service expressément demandé ; consentement pour l'analytics (art. 6.1.a RGPD et art. 82 loi Informatique et Libertés) |
 | Données | Brouillon limité aux informations de projet dans l'onglet ; nom, courriel, téléphone, SIREN, société, rôle et accusé de lecture exclus ; choix ; nom d'événement, chemin sans paramètres et propriétés primitives |
-| Conservation | Brouillon : 24 heures au plus après la dernière sauvegarde, sans dépasser la session de l'onglet ; choix 183 jours ; clés analytics limitées à la session |
-| État actuel | Analytics désactivé sans bannière ; collecteur Cloudflare non opérationnel dans la production Vercel actuelle |
+| Conservation | Brouillon : 24 heures au plus après la dernière sauvegarde, sans dépasser la session de l'onglet ; choix 183 jours ; clés analytics limitées à la session ; événements first-party 13 mois maximum |
+| État actuel | Collecteur Neon compatible Vercel et Cloudflare ; analytics désactivé sans bannière, sans activation explicite ou sans choix positif |
 | Identifiant | Aucun identifiant publicitaire ou persistant ajouté au payload applicatif |
-| Contrôle à effectuer | Vérifier à chaque évolution que les coordonnées restent exclues, que les anciennes clés durables sont purgées et que l'exemption demeure limitée à ce qui est strictement nécessaire |
+| Contrôle à effectuer | Vérifier à chaque évolution que les coordonnées restent exclues, que les anciennes clés durables sont purgées, que les événements de plus de 13 mois sont supprimés et que l'exemption demeure limitée à ce qui est strictement nécessaire |
 
 ## T6 — Prestations réalisées pour le compte d'un client
 

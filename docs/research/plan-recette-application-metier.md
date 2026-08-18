@@ -1054,3 +1054,14 @@ Route testée :
 - refaire les preuves HTTP, hub, sitemap, `llms.txt` et indexation après un
   éventuel déploiement ;
 - conserver le verrou du slug tant que la publication n’est pas vérifiée.
+
+## Réconciliation du statut — 18 août 2026
+
+La revue humaine globale du 7 août 2026 a ouvert ce guide dans le registre
+central. Le 18 août, sa route publique, son canonical, son statut `index,
+follow`, sa présence dans le hub, le sitemap et `llms.txt` ont été vérifiés.
+La batterie courante est verte : `check:seo` 206/206, suite globale 1 163/1 163,
+TypeScript, ESLint et build de production. Les risques ci-dessus sont donc un
+historique prépublication : le statut de référence est `PUBLISHED`. Aucune de
+ces preuves ne démontre l'exploration, l'indexation Search Console ou le
+classement.

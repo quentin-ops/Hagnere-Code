@@ -16,7 +16,7 @@ export default function OpenGraphImage() {
       "Dépendances",
       "Capacité",
       "Stress combiné",
-      "STOP sans score",
+      "Calcul bloqué si incomplet",
     ],
     accent: "violet",
   });

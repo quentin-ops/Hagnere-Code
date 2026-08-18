@@ -176,7 +176,7 @@ describe("P3 content quality for Airtable, Notion or custom application", () => 
   it("publishes the approved guide through the central registry with exact dates", () => {
     expect(metadata.robots).toMatchObject({ index: false, follow: false });
     expect(metadata.alternates?.canonical).toBe(AIRTABLE_NOTION_URL);
-    expect(airtableNotionGuide.editorialStatus).toBeUndefined();
+    expect(airtableNotionGuide.editorialStatus).toBe("published");
     expect(
       PUBLISHED_GUIDES.some((guide) => guide.slug === airtableNotionGuide.slug),
     ).toBe(true);

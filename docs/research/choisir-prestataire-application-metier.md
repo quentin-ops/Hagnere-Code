@@ -559,3 +559,14 @@ déploiement, ni publication, ni indexation.
 - publication : non effectuée ;
 - URL publique : non vérifiée ;
 - indexation : non vérifiée.
+
+## Réconciliation du statut — 18 août 2026
+
+La revue humaine globale du 7 août 2026 a ouvert ce guide dans le registre
+central. Le 18 août, sa route publique, son canonical, son statut `index,
+follow`, sa présence dans le hub, le sitemap et `llms.txt` ont été vérifiés.
+La batterie courante est verte : `check:seo` 206/206, suite globale 1 163/1 163,
+TypeScript, ESLint et build de production. Le statut de référence est donc
+`PUBLISHED`; la section « Passes suivantes » reste l'état historique de
+l'intégration du 30 juillet. La présence publique ne prouve ni exploration,
+ni indexation Search Console, ni classement.

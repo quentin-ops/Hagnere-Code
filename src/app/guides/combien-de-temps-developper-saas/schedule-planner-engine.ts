@@ -242,7 +242,9 @@ function formatDays(value: number): string {
 function formatInputDays(value: WorkingDaysInput): string {
   if (isMissingNumber(value)) return "?";
   const units = workingDayUnits(value);
-  return units === null ? "STOP" : formatNumber(units / WORKING_DAY_SCALE);
+  return units === null
+    ? "valeur à corriger"
+    : formatNumber(units / WORKING_DAY_SCALE);
 }
 
 function formatNumber(value: number): string {
@@ -810,7 +812,7 @@ function statusCopy(status: SchedulePlannerStatus): {
   switch (status) {
     case "STOP_REQUIRED_INPUTS_UNKNOWN":
       return {
-        title: "STOP — les entrées nécessaires restent inconnues",
+        title: "Calcul en attente : informations à compléter",
         explanation:
           "Le calcul ne remplace pas une ligne d’arrivée, un résultat, un responsable, une capacité, trois durées et une incertitude explicitement renseignés.",
         nextAction:
@@ -818,7 +820,7 @@ function statusCopy(status: SchedulePlannerStatus): {
       };
     case "STOP_INVALID_DEPENDENCY_NETWORK":
       return {
-        title: "STOP — le réseau de dépendances est invalide",
+        title: "Calcul bloqué : ordre des tâches à corriger",
         explanation:
           "Une valeur non calculable, une dépendance inconnue ou dupliquée, un identifiant dupliqué ou un cycle empêche de calculer une chaîne cohérente.",
         nextAction:
@@ -826,7 +828,7 @@ function statusCopy(status: SchedulePlannerStatus): {
       };
     case "CLARIFY_CAPACITY_BEFORE_CALENDAR":
       return {
-        title: "Clarifier la capacité avant toute date candidate",
+        title: "Disponibilités à clarifier avant le calcul",
         explanation:
           "Au moins deux tâches utilisent la même capacité sans ordre explicite. Le calcul ne suppose pas qu’une même personne ou équipe exécute deux travaux en parallèle.",
         nextAction:
@@ -834,7 +836,7 @@ function statusCopy(status: SchedulePlannerStatus): {
       };
     case "CALENDAR_CANDIDATE_FOR_REVIEW":
       return {
-        title: "Calendrier candidat à une revue humaine",
+        title: "Calendrier prêt à relire",
         explanation:
           "Les entrées permettent de calculer des fins relatives et de montrer la chaîne déterminante. Le résultat n’est ni une promesse, ni une date contractuelle.",
         nextAction:
@@ -850,7 +852,6 @@ function bulletList(items: string[], fallback: string): string {
 
 function buildMarkdown(
   input: SchedulePlannerInput,
-  status: SchedulePlannerStatus,
   copy: ReturnType<typeof statusCopy>,
   missingInputs: string[],
   networkErrors: string[],
@@ -863,9 +864,13 @@ function buildMarkdown(
       ? task.dependsOn.join(", ")
       : "aucune";
     const stress = task.stress
-      ? ` ; stress ${task.stress.kind} +${formatInputDays(task.stress.extraDays)} j`
+      ? ` ; stress ${
+          task.stress.kind === "external-wait"
+            ? "attente externe"
+            : "validation interne"
+        } +${formatInputDays(task.stress.extraDays)} j`
       : "";
-    return `- **${task.id}** — ${task.result || "STOP : résultat inconnu"} ; responsable ${task.owner || "STOP"} ; capacité ${task.capacityId || "STOP"} ; dépend de ${dependencies} ; F/C/P ${formatInputDays(task.durations.favorable)}/${formatInputDays(task.durations.central)}/${formatInputDays(task.durations.prudent)} j ; incertitude ${task.uncertainty || "STOP"}${stress}`;
+    return `- **${task.id}** — ${task.result || "résultat à renseigner"} ; responsable ${task.owner || "à renseigner"} ; capacité ${task.capacityId || "à renseigner"} ; dépend de ${dependencies} ; F/C/P ${formatInputDays(task.durations.favorable)}/${formatInputDays(task.durations.central)}/${formatInputDays(task.durations.prudent)} j ; incertitude ${task.uncertainty || "à renseigner"}${stress}`;
   });
   const scenarioBlocks = scenarios.map((scenario) => {
     const paths = scenario.determiningPathsIds
@@ -890,9 +895,9 @@ function buildMarkdown(
           ? "l’écart impose une décision humaine sur la ligne d’arrivée, le périmètre, l’ordre, la capacité ou la date ; aucune réduction n’est inventée"
           : "aucun écart arithmétique, sous réserve de confirmer les hypothèses"
       }`
-    : "## Raisonnement inverse\n\n- STOP : impossible avant validation des entrées et du réseau.";
+    : "## Raisonnement inverse\n\n- Calcul impossible avant de compléter les informations et de corriger l’ordre des tâches.";
 
-  return `# Plan de calendrier SaaS — brouillon local\n\n## Statut\n\n**${status}** — ${copy.title}\n\n${copy.explanation}\n\nProchaine action : ${copy.nextAction}\n\n## Ligne d’arrivée\n\n${input.finishLine || "STOP — ligne d’arrivée inconnue"}\n\n## Travail, responsables, capacités et dépendances\n\n${taskLines.length ? taskLines.join("\n") : "- STOP — aucune tâche renseignée"}\n\n## Entrées manquantes\n\n${bulletList(missingInputs, "Aucune entrée manquante détectée")}\n\n## Erreurs de réseau\n\n${bulletList(networkErrors, "Aucune erreur de réseau détectée")}\n\n## Conflits de capacité à clarifier\n\n${bulletList(
+  return `# Plan de calendrier SaaS — brouillon local\n\n## État du calcul\n\n**${copy.title}**\n\n${copy.explanation}\n\nProchaine action : ${copy.nextAction}\n\n## Ligne d’arrivée\n\n${input.finishLine || "Ligne d’arrivée à renseigner"}\n\n## Travail, responsables, capacités et dépendances\n\n${taskLines.length ? taskLines.join("\n") : "- Aucune tâche renseignée"}\n\n## Entrées manquantes\n\n${bulletList(missingInputs, "Aucune entrée manquante détectée")}\n\n## Erreurs de réseau\n\n${bulletList(networkErrors, "Aucune erreur de réseau détectée")}\n\n## Conflits de capacité à clarifier\n\n${bulletList(
     capacityConflicts.map(
       (conflict) =>
         `${conflict.capacityId} : ${conflict.firstTaskId} et ${conflict.secondTaskId} n’ont pas d’ordre explicite`,
@@ -901,7 +906,7 @@ function buildMarkdown(
   )}\n\n## Scénarios déterministes\n\n${
     scenarioBlocks.length
       ? scenarioBlocks.join("\n\n")
-      : "STOP — aucun scénario calculé"
+      : "Aucun scénario calculé tant que les corrections demandées ne sont pas terminées"
   }\n\n${reverseBlock}\n\n## Limites\n\n- J+N signifie N jours ouvrés écoulés depuis l’ouverture de J1, pas le numéro ordinal du jour : une tâche de 1 jour occupe J1 et atteint son jalon à J+1.\n- La réserve reste distincte des durées et ne représente aucune probabilité.\n- Les tâches réellement parallèles ne sont pas additionnées ; tous les chemins dépendants ex aequo qui déterminent la fin relative sont affichés.\n- Cet outil calcule. Une personne décide de la ligne d’arrivée, du périmètre, de la capacité et de l’engagement éventuel.`;
 }
 
@@ -974,7 +979,6 @@ export function assessSaasSchedule(
     reverseReasoning,
     markdown: buildMarkdown(
       input,
-      status,
       copy,
       missingInputs,
       networkErrors,

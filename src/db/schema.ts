@@ -146,3 +146,26 @@ export const aiCallLog = pgTable("ai_call_log", {
     .on(t.service, t.createdAt)
     .where(sql`${t.status} = 'reserved'`),
 ]);
+
+/**
+ * funnel_analytics_event — événements de parcours first-party et anonymes.
+ *
+ * Le navigateur n'envoie cet événement qu'après un consentement analytics
+ * positif. La route ne persiste ni adresse IP, ni user-agent, ni cookie, ni
+ * identifiant visiteur : uniquement un nom allowlisté, le chemin sans query
+ * string et quelques propriétés primitives bornées.
+ */
+export const funnelAnalyticsEvent = pgTable("funnel_analytics_event", {
+  id: serial("id").primaryKey(),
+  eventName: text("event_name").notNull(),
+  path: text("path").notNull(),
+  /** JSON sérialisé après allowlist, bornage et suppression des valeurs non primitives. */
+  props: text("props").notNull().default("{}"),
+  createdAt: timestamp("created_at", { mode: "date" }).defaultNow().notNull(),
+}, (t) => [
+  index("funnel_analytics_event_name_created_at_idx").on(
+    t.eventName,
+    t.createdAt,
+  ),
+  index("funnel_analytics_event_path_created_at_idx").on(t.path, t.createdAt),
+]);

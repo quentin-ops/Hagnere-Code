@@ -6,7 +6,7 @@
  * src/app : toute nouvelle page doit être ajoutée au sitemap (ou à la liste
  * d'exclusions volontaires ci-dessous) pour que la suite reste verte.
  */
-import { readFileSync, readdirSync } from "node:fs";
+import { readdirSync } from "node:fs";
 import { join, relative } from "node:path";
 import { describe, it, expect } from "vitest";
 import { GUIDES, PUBLISHED_GUIDES } from "@/lib/guides";
@@ -25,7 +25,7 @@ const EXCLUDED_ROUTES = [
   "/outils", // permanentRedirect → /demarrer-un-projet
   "/outils/estimer-mon-projet", // permanentRedirect → /demarrer-un-projet
   "/demarrer-un-projet/merci", // page de confirmation, noindex
-  ...GUIDES.filter((guide) => guide.editorialStatus).map(
+  ...GUIDES.filter((guide) => guide.editorialStatus !== "published").map(
     (guide) => `/guides/${guide.slug}`,
   ), // brouillons accessibles par URL mais noindex jusqu'à la revue humaine
 ];
@@ -44,13 +44,13 @@ function collectPageRoutes(dir: string, appDir: string): string[] {
   return routes;
 }
 
-function isLocalNoindexGuideDraft(route: string, appDir: string): boolean {
+function isRegisteredPrivateGuide(route: string): boolean {
   if (!route.startsWith("/guides/")) return false;
-  const source = readFileSync(
-    join(appDir, route.replace(/^\//, ""), "page.tsx"),
-    "utf8",
+  const slug = route.slice("/guides/".length);
+  return GUIDES.some(
+    (guide) =>
+      guide.slug === slug && guide.editorialStatus !== "published",
   );
-  return source.includes('editorialStatus: "ready-for-human-review"');
 }
 
 describe("sitemap", () => {
@@ -101,7 +101,9 @@ describe("sitemap", () => {
       expect(entry?.lastModified, guide.slug).toBe(guide.dateModified);
     }
 
-    for (const guide of GUIDES.filter((entry) => entry.editorialStatus)) {
+    for (const guide of GUIDES.filter(
+      (entry) => entry.editorialStatus !== "published",
+    )) {
       expect(urls).not.toContain(`${BASE}/guides/${guide.slug}`);
     }
   });
@@ -181,9 +183,9 @@ describe("sitemap", () => {
       // Les routes dynamiques ([slug]) sont couvertes par des assertions dédiées.
       .filter((r) => !r.includes("["))
       .filter((r) => !EXCLUDED_ROUTES.includes(r))
-      // Une passe éditoriale peut créer une route locale explicitement noindex
-      // avant que l'orchestrateur ne l'ajoute au registre de publication.
-      .filter((r) => !isLocalNoindexGuideDraft(r, appDir));
+      // Les routes enregistrées en brouillon ou revue restent volontairement
+      // hors du sitemap. Une route non enregistrée fait échouer ce contrôle.
+      .filter((r) => !isRegisteredPrivateGuide(r));
 
     for (const route of routes) {
       const expected = route === "/" ? BASE : `${BASE}${route}`;

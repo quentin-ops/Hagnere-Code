@@ -87,10 +87,11 @@ automatiquement un `?` cliquable (CSS `.pf-chip.has-tooltip`).
 `trackFunnelEvent(name, props)` (`src/lib/funnel-analytics.ts`) peut envoyer un
 payload first-party à `/api/funnel-analytics`, uniquement si la bannière est
 activée et que l'utilisateur a accepté l'analytics. Sans bannière, la mesure
-reste désactivée. La route sait écrire dans le dataset Cloudflare Analytics
-Engine `hagnere_code_funnel`, mais ce binding n'est pas disponible sur la
-production Vercel actuelle : ne pas considérer les événements comme persistés
-tant qu'un collecteur compatible n'a pas été déployé et documenté.
+reste désactivée. La route écrit dans la table Neon
+`funnel_analytics_event`, commune aux runtimes Vercel et Cloudflare, sans IP,
+user-agent, cookie ni identifiant visiteur. L'activation en production exige
+la migration de cette table et les deux drapeaux publics documentés dans le
+README racine.
 
 Events émis :
 
